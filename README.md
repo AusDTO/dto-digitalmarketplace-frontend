@@ -2,9 +2,14 @@
 
 ### Getting started for local dev
 
+Install yarn
+```bash
+$ npm i -g yarn
+```
+
 Install dependencies
 ```bash
-$ npm install
+$ yarn install
 ```
 
 Run local environment
