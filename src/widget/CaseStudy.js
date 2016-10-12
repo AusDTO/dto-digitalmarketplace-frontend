@@ -13,7 +13,7 @@ const store = createStore(initialState)
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter basename={window.__ROUTER_BASENAME__}>
+    <BrowserRouter basename={/*FIXME temporary hack for local harness*/window.__ROUTER_BASENAME__}>
       <CaseStudy />
     </BrowserRouter>
   </Provider>,
