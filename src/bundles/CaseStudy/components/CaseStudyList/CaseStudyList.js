@@ -21,7 +21,7 @@ class CaseStudyList extends Component {
             </li>
           ))}
         </ul>
-        <Link to="/case-studies/add">{({onClick, href}) => (
+        <Link to="/add">{({onClick, href}) => (
             <a href={href} onClick={onClick} role="button">
               {studies.length > 0 ? 'Add more' : 'Add case study'}
             </a>

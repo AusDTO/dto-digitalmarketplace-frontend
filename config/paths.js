@@ -38,5 +38,8 @@ module.exports = {
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
-  nodePaths: nodePaths
+  nodePaths: nodePaths,
+  entryPoints: {
+    'casestudy': resolveApp('src/widget/CaseStudy')
+  }
 };

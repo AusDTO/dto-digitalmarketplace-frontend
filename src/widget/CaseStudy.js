@@ -13,7 +13,7 @@ const store = createStore(initialState)
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename={window.__ROUTER_BASENAME__}>
       <CaseStudy />
     </BrowserRouter>
   </Provider>,
