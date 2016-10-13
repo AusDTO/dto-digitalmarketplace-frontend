@@ -1,7 +1,6 @@
 // Required so we can process presentational components
 require('babel-register')
 
-import fs from 'fs'
 import path from 'path'
 import express from 'express'
 import morgan from 'morgan'
@@ -9,7 +8,6 @@ import bodyParser from 'body-parser'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { ServerRouter, createServerRenderContext } from 'react-router'
-import { Provider } from 'react-redux'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -38,49 +36,31 @@ class Component {
 
   constructor(pathToSource) {
     this.pathToSource = path.relative(__dirname, pathToSource);
-    this.component = require(this.pathToSource);
+    let element = require(this.pathToSource);
 
     // Detect bad JS file
-    if (!this.component) {
+    if (!element) {
       throw new Error('JS file did not export anything: ' + this.pathToSource);
     }
-    if (typeof this.component.default !== 'undefined') {
+    if (typeof element.default !== 'undefined') {
       // ES6 'export default' support
-      this.component = this.component.default;
+      element = element.default;
     }
 
-    try {
-      this.factory = React.createFactory(this.component);
-    } catch(e) {
-      throw new Error('Not a React component: ' + this.pathToSource);
-    }
-  }
-
-  getStore(props) {
-    const parsedPath = path.parse(this.pathToSource)
-    let createStore = require(parsedPath.dir + '/redux/create')
-    if (typeof createStore.default !== 'undefined') {
-      // ES6 'export default' support
-      createStore = createStore.default;
-    }
-    return createStore(props)
+    this.element = element
   }
 
   render(props, toStaticMarkup, callback) {
-    const pythonContext = props._pythonContext
+    const pythonContext = props._serverContext
     const location = pythonContext.location;
-    delete props._pythonContext;
+    delete props._serverContext;
 
-    const element = this.factory(props);
     const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString'
     const context = createServerRenderContext()
-    const store = this.getStore(props)
     callback(ReactDOMServer[renderMethod](
-      <Provider store={store}>
-        <ServerRouter location={location} context={context}>
-          {element}
-        </ServerRouter>
-      </Provider>
+      <ServerRouter location={location} context={context}>
+        {this.element.instance(props)}
+      </ServerRouter>
     ))
   }
 }
@@ -114,10 +94,9 @@ app.post('/render', function service(request, response) {
 
   var component = cache[pathToSource];
   component.render(props, toStaticMarkup, function(markup) {
-    const parsedPath = path.parse(pathToSource)
     response.send({
       markup,
-      slug: parsedPath.name.toLowerCase().replace(/\s/g, '')
+      slug: component.element.key
     })
   });
 });

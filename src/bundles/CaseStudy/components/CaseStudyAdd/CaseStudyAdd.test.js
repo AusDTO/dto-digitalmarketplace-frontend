@@ -3,7 +3,7 @@ import CaseStudyAdd, { mapStateToProps } from './CaseStudyAdd'
 import renderer from 'react-test-renderer'
 
 import createStore from '../../redux/create'
-const store = createStore({ _pythonContext: {} })
+const store = createStore({ _serverContext: {} })
 
 test('Structure of CaseStudyAdd', () => {
   const component = renderer.create(
