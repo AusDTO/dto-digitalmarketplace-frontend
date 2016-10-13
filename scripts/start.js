@@ -21,7 +21,7 @@ var config = require('../config/webpack.config.dev');
 var paths = require('../config/paths');
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([paths.appHtml])) {
   process.exit(1);
 }
 
@@ -183,6 +183,18 @@ function addMiddleware(devServer) {
 }
 
 function runDevServer(host, port, protocol) {
+  var routesFallbacks = []
+  for (var key in paths.entryPoints) {
+    if (paths.entryPoints.hasOwnProperty(key)) {
+      var template = '/' + key + '.html';
+      var regexp = new RegExp(template)
+      routesFallbacks = routesFallbacks.concat({
+        from: regexp,
+        to: template
+      })
+    }
+  }
+
   var devServer = new WebpackDevServer(compiler, {
     // Silence WebpackDevServer's own logs since they're generally not useful.
     // It will still show compile warnings and errors with this setting.
@@ -221,7 +233,11 @@ function runDevServer(host, port, protocol) {
     },
     // Enable HTTPS if the HTTPS environment variable is set to 'true'
     https: protocol === "https",
-    host: host
+    host: host,
+    historyApiFallback: {
+      index: 'index.html',
+      rewrites: routesFallbacks
+    }
   });
 
   // Our custom middleware proxies requests to /index.html or a remote API.

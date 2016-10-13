@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" href="%PUBLIC_URL%/ui-kit.css">
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -16,7 +17,30 @@
     <title>React App</title>
   </head>
   <body>
-    <div id="root"></div>
+    <main>
+      <article>
+        <% if (htmlWebpackPlugin.options.filename === 'index.html') { %>
+          <h1>Pick a bundle to preview:</h1>
+          <ul>
+          <% for (var key in webpackConfig.entry) {
+            if (webpackConfig.entry.hasOwnProperty(key) && key !== 'vendor') { %>
+              <li>
+                <a href="/<%= key %>.html"><%= key %></a>
+              </li>
+            <% }
+          } %>
+          </ul>
+        <% } else { %>
+          <script>
+            window.__ROUTER_BASENAME__ = '/<%= htmlWebpackPlugin.options.filename %>'
+          </script>
+          <% var bundleName = htmlWebpackPlugin.options.filename.split('.')[0] %>
+          <div id="react-bundle-<%= bundleName %>"></div>
+        <% } %>
+      </article>
+    </main>
+
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

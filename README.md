@@ -1,25 +1,20 @@
 ## Marketplace Buyer React frontend
 
-### Getting started
+### Getting started for local dev
+
+Install yarn
+```bash
+$ npm i -g yarn
+```
 
 Install dependencies
 ```bash
-$ npm install
+$ yarn install
 ```
 
-Local isolated dev environment
+Run local environment
 ```bash
 $ npm start
-```
-
-Production build
-```bash
-$ npm run build
-```
-
-Running in conjunction with python app
-```bash
-$ npm run build:development
 ```
 
 Run tests
@@ -27,31 +22,25 @@ Run tests
 $ npm test
 ```
 
-Run local rendering service
+### Running the server side rendering service
+
+_Note: This is only needed for server side rendering, not required for local development._
+
+Install dependencies
 ```bash
-$ NODE_ENV=development npm run server
+$ npm install
 ```
 
-## Rendering a React component in Python
+Run local rendering service
+```bash
+$ NODE_ENV=production npm run server
+```
 
-### `render_component`
 
-Generate the markup for a React component for server-side rendering. Currently only available inside a python view
+### Generate production assets
 
-#### Arguments
+Run:
 
-1. `path`: Relative path to component from `static/src`.
-2. `props`: Initial state/props for component
-3. `to_static_markup`: Whether to return plain markup or React bound markup
-4. `request_headers`: Headers to send to node service on render request
-
-#### Returns
-
-`Object`: With either a key for resulting `markup` or a key for `errors`
-
-#### Examples
-
-Rendering basic component:
-```python
-render_component('App.js', { 'foo': 'bar' })
+```bash
+$ npm run build
 ```

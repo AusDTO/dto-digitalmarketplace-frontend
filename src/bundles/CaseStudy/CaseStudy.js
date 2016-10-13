@@ -11,9 +11,9 @@ import SellerList from './components/SellerList'
 const CaseStudyApp = () => (
   <Layout>
     <h2>Case Studies</h2>
-    <Match pattern="/case-studies" exactly component={CaseStudyList} />
-    <Match pattern="/case-studies/add" exactly component={CaseStudyAdd} />
-    <Match pattern="/case-studies/sellers" exactly component={SellerList} />
+    <Match pattern="/" exactly component={CaseStudyList} />
+    <Match pattern="/add" exactly component={CaseStudyAdd} />
+    <Match pattern="/sellers" exactly component={SellerList} />
   </Layout>
 )
 

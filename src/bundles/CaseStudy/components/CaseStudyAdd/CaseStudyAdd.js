@@ -8,7 +8,7 @@ const CaseStudyAdd = ({ redirect, dispatch }) => {
   let link
 
   if (redirect) {
-    return <Redirect to="/case-studies" />
+    return <Redirect to="/" />
   }
 
   return (
