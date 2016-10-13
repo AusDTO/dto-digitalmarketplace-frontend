@@ -40,6 +40,7 @@ module.exports = {
   ownNodeModules: resolveApp('node_modules'),
   nodePaths: nodePaths,
   entryPoints: {
-    'casestudy': resolveApp('src/widget/CaseStudy')
+    'casestudy': resolveApp('src/widget/CaseStudy'),
+    'shared': resolveApp('src/shared/sharedEntry')
   }
 };

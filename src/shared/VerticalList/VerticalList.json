@@ -1,0 +1,17 @@
+{
+  "requiredItems": [
+    { "title": "Hello World", "link": "http://hello.world" }
+  ],
+  "items": [
+    {
+      "title": "Hello World",
+      "link": "http://hello.world",
+      "meta": "<time datetime=\"2016-05-08 00:00\">08 May 2016</time> <a href=\"#\" rel=\"author\">Author</a>",
+      "description": "The Digital Transformation Office (DTO) was established as an executive agency in July 2015. Its mission is to lead the […]",
+      "figure": {
+        "src": "/img-placeholder.gif",
+        "alt": "Default image for items without an image specified"
+      }
+    }
+  ]
+}
