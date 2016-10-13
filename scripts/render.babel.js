@@ -17,7 +17,7 @@ var argv = require('yargs')
   .describe('host', 'The host address to bind to')
   .describe('debug', 'Print stack traces on error').alias('debug', 'd')
   .describe('whitelist', 'Whitelist a root directory where the javascript files can be')
-  .default('port', process.env.REACT_PORT)
+  .default('port', process.env.PORT)
   .default('whitelist', process.env.REACT_WHITELIST)
   .help('h').alias('h', 'help')
   .argv;
