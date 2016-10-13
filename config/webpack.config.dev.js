@@ -1,4 +1,3 @@
-var path = require('path');
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var findCacheDir = require('find-cache-dir');
@@ -27,6 +26,7 @@ for (var key in entryPoints) {
       new HtmlWebpackPlugin({
         chunks: ['vendor', key],
         inject: true,
+        hash: true,
         template: paths.appHtml,
         filename: key + '.html'
       })
