@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Match } from 'react-router'
 
-import Layout from '../../base/Layout'
+import Layout from '../../shared/Layout'
 import CaseStudyList from './components/CaseStudyList'
 import CaseStudyAdd from './components/CaseStudyAdd'
 import SellerList from './components/SellerList'
