@@ -1,60 +1,33 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
-import { addStudy } from '../../redux/modules/casestudies'
+import React from 'react'
+import { Field, reduxForm } from 'redux-form'
 
-const CaseStudyAdd = ({ redirect, dispatch }) => {
-  let title
-  let link
+const submit = () => {}
 
-  if (redirect) {
-    return <Redirect to="/" />
-  }
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+)
 
+const CaseStudyAdd = ({ error, handleSubmit, pristine, reset, submitting }) => {
   return (
-    <form onSubmit={e => {
-      e.preventDefault()
-      if (!title.value.trim() || !link.value.trim()) {
-        return
-      }
-
-      dispatch(addStudy(title.value, link.value))
-      title.value = ''
-      link.value = ''
-    }}>
-      <fieldset>
-        <legend>Add a Case Study</legend>
-        <div>
-          <label htmlFor="casestudy__title">Title</label>
-          <input
-            type="text" id="casestudy__title" name="title"
-            ref={node => { title = node }}
-          />
-        </div>
-        <div>
-          <label htmlFor="casestudy__link">Links</label>
-          <input
-            type="text" id="casestudy__link" name="link"
-            ref={node => { link = node }}
-          />
-        </div>
-        <input type="submit" value="Add" role="button" />
-      </fieldset>
+    <form onSubmit={handleSubmit(submit)}>
+      <Field name="username" type="text" component={renderField} label="Username"/>
+      <Field name="password" type="password" component={renderField} label="Password"/>
+      {error && <strong>{error}</strong>}
+      <div>
+        <button type="submit" disabled={submitting}>Log In</button>
+        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+      </div>
     </form>
   )
 }
 
-CaseStudyAdd.propTypes = {
-  redirect: PropTypes.bool,
-  dispatch: PropTypes.func.isRequired
-}
-
-export const mapStateToProps = ({ casestudies }) => {
-  return {
-    redirect: casestudies.added
-  }
-}
-
-
-
-export default connect(mapStateToProps)(CaseStudyAdd)
+export default reduxForm({
+  form: 'caseStudyAdd'
+})(CaseStudyAdd)
+//export default connect(mapStateToProps)(CaseStudyAdd)
