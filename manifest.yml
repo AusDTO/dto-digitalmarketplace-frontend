@@ -1,0 +1,10 @@
+applications:
+    - name: dm-dev-frontend
+      command: npm run server
+      buildpack: https://github.com/cloudfoundry/buildpack-nodejs.git
+      memory: 128M
+      disk_quota: 1G
+      instances: 1
+      env:
+          NODE_ENV: production
+
