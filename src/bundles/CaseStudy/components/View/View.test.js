@@ -1,14 +1,15 @@
 import React from 'react'
-import { ViewWidget } from './View'
+import View from './View'
 import renderer from 'react-test-renderer'
 
-import testData from './View.json'
+import sampleState from './View.json'
+import createStore from '../../redux/create'
+const store = createStore({ _serverContext: {}, casestudy: sampleState })
 
-const View = ViewWidget({ casestudy: testData })
 
 test('VerticalList with required attributes', () => {
   const component = renderer.create(
-    <View />
+    <View store={store} />
   )
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
