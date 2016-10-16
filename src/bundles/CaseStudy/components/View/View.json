@@ -1,0 +1,24 @@
+{
+  "title":"My Sydney",
+  "company":"Transport for NSW",
+  "timeframe":"January to October 2015",
+  "links": {
+    "edit": "#",
+    "delete": "#"
+  },
+  "sections": [
+    { "title": "Objective", "content": "The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction." },
+    { "title": "Approach", "content": "We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together." },
+    { "title": "Outcome", "items": [
+        "We gathered all requirements for maps including what was to be shown, what data was available.",
+        "We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.",
+        "We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes."
+      ]
+    },
+    { "title": "Visit the product", "items": [
+        "http://google.com",
+        "http://facebook.com"
+      ]
+    }
+  ]
+}
