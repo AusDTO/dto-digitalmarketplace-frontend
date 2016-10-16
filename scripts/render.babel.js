@@ -12,9 +12,8 @@ import { ServerRouter, createServerRenderContext } from 'react-router'
 const isDev = process.env.NODE_ENV !== 'production'
 
 var argv = require('yargs')
-  .usage('Usage: $0 [--port NUM] [--host ADDRESS]')
+  .usage('Usage: $0 [--port NUM]')
   .describe('port', 'The port to listen to')
-  .describe('host', 'The host address to bind to')
   .describe('debug', 'Print stack traces on error').alias('debug', 'd')
   .describe('whitelist', 'Whitelist a root directory where the javascript files can be')
   .default('port', process.env.PORT)
@@ -22,13 +21,11 @@ var argv = require('yargs')
   .help('h').alias('h', 'help')
   .argv;
 
-morgan.token('file', function(req, res){
-  return path.basename(req.body.path);
-});
-
 var app = express();
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(morgan('[:date[iso]] :method :url :status :response-time ms - :file :res[content-length]'));
+
+if (isDev)
+    app.use(morgan('tiny'));
 
 // Component cache living in global scope
 var cache = {};
@@ -65,6 +62,10 @@ class Component {
     ))
   }
 }
+
+app.get('/', function (req, res) {
+  res.send('ok');
+});
 
 app.post('/render', function service(request, response) {
   var toStaticMarkup = request.body.toStaticMarkup || false;
@@ -107,8 +108,8 @@ app.use(function errorHandler(err, request, response, next) {
   response.status(500).send(argv.debug ? err.stack : err.toString());
 });
 
-var server = app.listen(argv.port || 63578, argv.host || 'localhost', function() {
-  console.log('Started server at http://%s:%s', server.address().address, server.address().port);
+var server = app.listen(process.env.PORT || 63578, function() {
+  console.log('Started server at port %s', server.address().port);
 });
 
 module.exports = app;
