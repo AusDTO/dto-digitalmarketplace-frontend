@@ -4,13 +4,9 @@ import Registry from '../../registry'
 
 import createStore from './redux/create'
 import View from './components/View'
-import { sampleState } from './components/View'
 
 const CaseStudyViewWidget = (props, _context) => {
-  const store = createStore({
-    _serverContext: {},
-    casestudy: sampleState
-  })
+  const store = createStore(props)
   return (
     <Provider store={store}>
       <View />
