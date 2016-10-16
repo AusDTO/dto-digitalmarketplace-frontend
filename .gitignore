@@ -43,4 +43,4 @@ jspm_packages
 # Output of 'npm pack'
 *.tgz
 
-public/ui-kit.css
+public/main.css
