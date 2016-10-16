@@ -15,7 +15,7 @@ test('Structure of CaseStudyAdd', () => {
 
 test('mapStateToProps', () => {
   const state = {
-    casestudies: {
+    casestudy: {
       added: true
     }
   }
