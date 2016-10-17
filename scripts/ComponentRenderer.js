@@ -14,7 +14,7 @@ export default class ComponentRenderer {
     // If file exists require will return an object even if it exports nothing
     // Ensure we have something to work with
     if (_.isEmpty(element)) {
-      throw new Error('File did not export anything: ' + this.pathToSource);
+      throw new Error(`File did not export anything: '${this.pathToSource}'`);
     }
 
     // ES6 'export default' support

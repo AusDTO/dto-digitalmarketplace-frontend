@@ -32,6 +32,6 @@ test('ComponentRenderer throws error on bad path', () => {
 test('ComponentRenderer throws error on path with no module', () => {
   expect(() => {
     new ComponentRenderer('__mocks__/badModule')
-  }).toThrowError('File did not export anything: ../__mocks__/badModule')
+  }).toThrowError('File did not export anything: \'../__mocks__/badModule\'')
 
 })
