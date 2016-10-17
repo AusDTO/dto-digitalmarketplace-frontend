@@ -21,7 +21,7 @@ var recursive = require('recursive-readdir');
 var stripAnsi = require('strip-ansi');
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([paths.appHtml])) {
   process.exit(1);
 }
 
