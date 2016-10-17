@@ -73,7 +73,7 @@
     "build": "node scripts/build.js",
     "build:development": "NODE_ENV=development webpack -w --config config/webpack.config.dev.js",
     "test": "node scripts/test.js --env=jsdom",
-    "server": "node scripts/render.js"
+    "server": "node build/render.webpack.js"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -103,6 +103,6 @@
     "extends": "react-app"
   },
   "engines": {
-      "node": "6.7.0"
+    "node": "6.7.0"
   }
 }
