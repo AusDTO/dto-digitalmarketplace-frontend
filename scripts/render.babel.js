@@ -62,12 +62,11 @@ app.post('/render', function service(request, response) {
     cache[pathToSource] = new ComponentRenderer(pathToSource)
   }
 
-  var component = cache[pathToSource];
-  component.render(props, toStaticMarkup, function(markup) {
-    response.send({
-      markup,
-      slug: component.element.key
-    })
+  const component = cache[pathToSource];
+  const markup = component.render(props, toStaticMarkup);
+  response.send({
+    markup,
+    slug: component.element.key
   });
 });
 
