@@ -73,7 +73,7 @@
     "build": "node scripts/build.js",
     "build:development": "NODE_ENV=development webpack -w --config config/webpack.config.dev.js",
     "test": "node scripts/test.js --env=jsdom",
-    "server": "node scripts/render.js"
+    "server": "node server/render.js"
   },
   "jest": {
     "moduleFileExtensions": [
