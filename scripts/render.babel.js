@@ -5,9 +5,8 @@ import path from 'path'
 import express from 'express'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
-import { ServerRouter, createServerRenderContext } from 'react-router'
+
+import ComponentRenderer from './ComponentRenderer'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -29,39 +28,6 @@ if (isDev)
 
 // Component cache living in global scope
 var cache = {};
-
-class Component {
-
-  constructor(pathToSource) {
-    this.pathToSource = path.relative(__dirname, pathToSource);
-    let element = require(this.pathToSource);
-
-    // Detect bad JS file
-    if (!element) {
-      throw new Error('JS file did not export anything: ' + this.pathToSource);
-    }
-    if (typeof element.default !== 'undefined') {
-      // ES6 'export default' support
-      element = element.default;
-    }
-
-    this.element = element
-  }
-
-  render(props, toStaticMarkup, callback) {
-    const pythonContext = props._serverContext
-    const location = pythonContext.location;
-    delete props._serverContext;
-
-    const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString'
-    const context = createServerRenderContext()
-    callback(ReactDOMServer[renderMethod](
-      <ServerRouter location={location} context={context}>
-        {this.element.instance(props)}
-      </ServerRouter>
-    ))
-  }
-}
 
 app.use('/bundle', express.static('build'));
 
@@ -93,7 +59,7 @@ app.post('/render', function service(request, response) {
 
   if (isDev || !(pathToSource in cache)) {
     console.log('[%s] Loading new component %s', new Date().toISOString(), pathToSource);
-    cache[pathToSource] = new Component(pathToSource)
+    cache[pathToSource] = new ComponentRenderer(pathToSource)
   }
 
   var component = cache[pathToSource];
@@ -114,4 +80,4 @@ var server = app.listen(process.env.PORT || 63578, function() {
   console.log('Started server at port %s', server.address().port);
 });
 
-module.exports = app;
+export default app;
