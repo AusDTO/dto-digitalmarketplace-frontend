@@ -31,16 +31,19 @@ Install dependencies
 $ npm install
 ```
 
+```bash
+$ npm run build
+```
+
 Run local rendering service
 ```bash
-$ NODE_ENV=production npm run server
+$ npm run server
 ```
 
 
 ### Generate production assets
 
 Run:
-
 ```bash
 $ npm run build
 ```
