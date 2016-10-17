@@ -31,11 +31,20 @@
           } %>
           </ul>
         <% } else { %>
+        <%
+          var filename = htmlWebpackPlugin.options.filename
+          var slug = filename.slice(0, -5)
+          var mock = webpackConfig.mocks[slug]
+        %>
           <script>
-            window.__ROUTER_BASENAME__ = '/<%= htmlWebpackPlugin.options.filename %>'
+            window.__ROUTER_BASENAME__ = '/<%= filename %>'
           </script>
-          <% var bundleName = htmlWebpackPlugin.options.filename.split('.')[0] %>
-          <div id="react-bundle-<%= bundleName %>"></div>
+          <% if (mock) { %>
+          <div id="react-bundle-<%= slug %>-state" style="display:none">
+            <%= JSON.stringify(mock) %>
+          </div>
+          <% } %>
+          <div id="react-bundle-<%= slug %>"></div>
         <% } %>
       </article>
     </main>

@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 
 import sampleState from './View.json'
 import createStore from '../../redux/create'
-const store = createStore({ _serverContext: {}, casestudy: sampleState })
+const store = createStore(Object.assign({}, { _serverContext: {} },  sampleState))
 
 
 test('VerticalList with required attributes', () => {
