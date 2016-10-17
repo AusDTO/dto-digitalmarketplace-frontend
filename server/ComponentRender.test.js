@@ -1,4 +1,4 @@
-import ComponentRenderer from '../scripts/ComponentRenderer'
+import ComponentRenderer from './ComponentRenderer'
 
 const helloWorldWidgetPath = 'src/bundles/HelloWorld/HelloWorldWidget.js'
 
