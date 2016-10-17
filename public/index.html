@@ -14,12 +14,17 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title><%= htmlWebpackPlugin.options.filename.slice(0, -5) %></title>
+    <%
+      var filename = htmlWebpackPlugin.options.filename
+      var slug = filename.slice(0, -5)
+      var mock = webpackConfig.mocks[slug]
+    %>
+    <title><%= slug %></title>
   </head>
   <body>
     <main>
       <article>
-        <% if (htmlWebpackPlugin.options.filename === 'index.html') { %>
+        <% if (filename === 'index.html') { %>
           <h1>Pick a bundle to preview:</h1>
           <ul>
           <% for (var key in webpackConfig.entry) {
@@ -31,11 +36,6 @@
           } %>
           </ul>
         <% } else { %>
-        <%
-          var filename = htmlWebpackPlugin.options.filename
-          var slug = filename.slice(0, -5)
-          var mock = webpackConfig.mocks[slug]
-        %>
           <script>
             window.__ROUTER_BASENAME__ = '/<%= filename %>'
           </script>
