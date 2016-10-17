@@ -63,6 +63,8 @@ class Component {
   }
 }
 
+app.use('/bundle', express.static('build'));
+
 app.get('/', function (req, res) {
   res.send('ok');
 });
