@@ -28,3 +28,10 @@ test('ComponentRenderer throws error on bad path', () => {
     new ComponentRenderer('bad/path/to/HelloWorldWidget.js')
   }).toThrowError('Cannot find module \'../bad/path/to/HelloWorldWidget.js\' from \'ComponentRenderer.js\'')
 })
+
+test('ComponentRenderer throws error on path with no module', () => {
+  expect(() => {
+    new ComponentRenderer('__mocks__/badModule')
+  }).toThrowError('File did not export anything: ../__mocks__/badModule')
+
+})
