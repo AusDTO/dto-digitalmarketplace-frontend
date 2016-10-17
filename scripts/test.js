@@ -15,5 +15,8 @@ if (!process.env.CI) {
   argv.push('--watch');
 }
 
+if (process.env.CIRCLE_ARTIFACTS) {
+  argv.push('--coverageDirectory ' + process.env.CIRCLE_ARTIFACTS)
+}
 
 jest.run(argv);
