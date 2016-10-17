@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { addStudy } from '../../redux/modules/casestudies'
+import { addStudy } from '../../redux/modules/casestudy'
 
 const CaseStudyAdd = ({ redirect, dispatch }) => {
   let title
@@ -49,9 +49,9 @@ CaseStudyAdd.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export const mapStateToProps = ({ casestudies }) => {
+export const mapStateToProps = ({ casestudy }) => {
   return {
-    redirect: casestudies.added
+    redirect: casestudy.added
   }
 }
 

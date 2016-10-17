@@ -7,18 +7,8 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action = {}) {
-  const { type, title, link } = action
+  const { type } = action
   switch (type) {
-    case ADD:
-      return {
-        added: true,
-        studies: state.studies.concat({ title, link })
-      }
-    case INIT:
-     return {
-       ...state,
-       added: false
-     }
     default:
       return state;
   }
