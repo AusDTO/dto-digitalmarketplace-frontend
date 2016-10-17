@@ -1,2 +1,4 @@
 node_modules/
 public/
+__tests__
+__mocks__
