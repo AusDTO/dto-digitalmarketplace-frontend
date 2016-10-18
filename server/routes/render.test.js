@@ -1,6 +1,6 @@
 import renderRoute from './render'
 
-const helloWorldWidgetPath = 'src/bundles/HelloWorld/HelloWorldWidget.js'
+const helloWorldWidgetPath = 'bundles/HelloWorld/HelloWorldWidget.js'
 
 let defaultProps = {
   _serverContext: {
@@ -119,5 +119,5 @@ test('render route with a bad path supplied in request', () => {
 
   expect(() => {
     renderRoute(req, response);
-  }).toThrowError('Cannot find module \'../bad/path/to/HelloWorldWidget.js\' from \'ComponentRenderer.js\'');
+  }).toThrowError('Cannot find module \'../src/bad/path/to/HelloWorldWidget.js\' from \'ComponentRenderer.js\'');
 })
