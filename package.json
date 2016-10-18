@@ -74,7 +74,7 @@
     "build:development": "NODE_ENV=development webpack -w --config config/webpack.config.dev.js",
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
-    "server": "node server/render.js"
+    "server": "node build/render-server.js"
   },
   "jest": {
     "coverageDirectory": "coverage",

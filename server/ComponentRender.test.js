@@ -1,6 +1,6 @@
 import ComponentRenderer from './ComponentRenderer'
 
-const helloWorldWidgetPath = 'src/bundles/HelloWorld/HelloWorldWidget.js'
+const helloWorldWidgetPath = 'bundles/HelloWorld/HelloWorldWidget.js'
 
 test('ComponentRenderer renders static markup', () => {
   const component = new ComponentRenderer(helloWorldWidgetPath)
@@ -26,12 +26,12 @@ test('ComponentRenderer renders static markup with props', () => {
 test('ComponentRenderer throws error on bad path', () => {
   expect(() => {
     new ComponentRenderer('bad/path/to/HelloWorldWidget.js')
-  }).toThrowError('Cannot find module \'../bad/path/to/HelloWorldWidget.js\' from \'ComponentRenderer.js\'')
+  }).toThrowError('Cannot find module \'../src/bad/path/to/HelloWorldWidget.js\' from \'ComponentRenderer.js\'')
 })
 
 test('ComponentRenderer throws error on path with no module', () => {
   expect(() => {
     new ComponentRenderer('__mocks__/badModule')
-  }).toThrowError('File did not export anything: \'../__mocks__/badModule\'')
+  }).toThrowError('File did not export anything: \'__mocks__/badModule\'')
 
 })

@@ -230,11 +230,11 @@ module.exports = [{
   }
 }, {
   name: 'server-side render',
-  entry: './scripts/render',
+  entry: './server/render',
   target: 'node',
   output: {
     path: './build',
-    filename: 'render.webpack.js',
+    filename: 'render-server.js',
     publicPath: publicPath,
     libraryTarget: "commonjs2"
   },
