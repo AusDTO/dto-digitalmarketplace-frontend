@@ -35,12 +35,17 @@ module.exports = {
 
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
+  appServer: resolveApp('server'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
   nodePaths: nodePaths,
   entryPoints: {
-    'casestudy': resolveApp('src/bundles/CaseStudy/CaseStudyWidget'),
-    'shared': resolveApp('src/shared/sharedEntry')
+    'casestudy': [resolveApp('src/bundles/CaseStudy/CaseStudyWidget')],
+    'casestudy-view': [resolveApp('src/bundles/CaseStudy/CaseStudyViewWidget')],
+    'shared': [resolveApp('src/shared/sharedEntry')]
+  },
+  entryPointMocks: {
+    'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json'))
   }
 };

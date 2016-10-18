@@ -110,7 +110,7 @@ function printFileSizes(stats, previousSizeMap) {
 // Create the production build and print the deployment instructions.
 function build(previousSizeMap) {
   console.log('Creating an optimized production build...');
-  webpack(config).run((err, stats) => {
+  webpack(config).run((err, MultiStats) => {
     if (err) {
       console.error('Failed to create a production build. Reason:');
       console.error(err.message || err);
@@ -122,12 +122,12 @@ function build(previousSizeMap) {
 
     console.log('File sizes after gzip:');
     console.log();
-    printFileSizes(stats, previousSizeMap);
+    MultiStats.stats.forEach(stat => printFileSizes(stat, previousSizeMap))
     console.log();
 
     var openCommand = process.platform === 'win32' ? 'start' : 'open';
     var homepagePath = require(paths.appPackageJson).homepage;
-    var publicPath = config.output.publicPath;
+    var publicPath = config[0].output.publicPath;
     if (homepagePath && homepagePath.indexOf('.github.io/') !== -1) {
       // "homepage": "http://user.github.io/project"
       console.log('The project was built assuming it is hosted at ' + chalk.green(publicPath) + '.');

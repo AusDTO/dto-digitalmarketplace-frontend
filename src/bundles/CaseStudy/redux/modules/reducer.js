@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux'
 
-import casestudies from './casestudies'
-import sellers from './sellers'
+import casestudy from './casestudy'
 
 export default combineReducers({
-  casestudies,
-  sellers
+  casestudy
 });

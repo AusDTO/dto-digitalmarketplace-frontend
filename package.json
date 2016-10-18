@@ -69,14 +69,21 @@
     "yargs": "^6.0.0"
   },
   "scripts": {
-    "prestart": "node-sass node_modules/gov-au-ui-kit/assets/sass/ui-kit.scss -o public",
+    "prestart": "node-sass --include-path=./node_modules src/main.scss -o public",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "build:development": "NODE_ENV=development webpack -w --config config/webpack.config.dev.js",
     "test": "node scripts/test.js --env=jsdom",
-    "server": "node scripts/render.js"
+    "test:coverage": "node scripts/test.js --env=jsdom --coverage",
+    "server": "node build/render-server.js"
   },
   "jest": {
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "server/**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
     "moduleFileExtensions": [
       "jsx",
       "js",
@@ -104,6 +111,6 @@
     "extends": "react-app"
   },
   "engines": {
-      "node": "6.7.0"
+    "node": "6.7.0"
   }
 }

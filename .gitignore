@@ -44,4 +44,4 @@ jspm_packages
 *.tgz
 build
 
-public/ui-kit.css
+public/main.css
