@@ -73,9 +73,16 @@
     "build": "node scripts/build.js",
     "build:development": "NODE_ENV=development webpack -w --config config/webpack.config.dev.js",
     "test": "node scripts/test.js --env=jsdom",
-    "server": "node scripts/render.js"
+    "test:coverage": "node scripts/test.js --env=jsdom --coverage",
+    "server": "node server/render.js"
   },
   "jest": {
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "server/**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
     "moduleFileExtensions": [
       "jsx",
       "js",
