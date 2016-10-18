@@ -45,7 +45,7 @@ const loaders = [
   // Process JS with Babel.
   {
     test: /\.(js|jsx)$/,
-    include: [paths.appSrc, paths.appScripts],
+    include: [paths.appSrc, paths.appServer],
     loader: 'babel',
 
   },
