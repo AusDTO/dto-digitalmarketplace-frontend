@@ -19,3 +19,11 @@ test('VerticalList with all attributes', () => {
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+test('VerticalList with no attributes', () => {
+  const component = renderer.create(
+    <VerticalList />
+  )
+  let tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})

@@ -29,6 +29,8 @@ exports[`test VerticalList with all attributes 1`] = `
 </ul>
 `;
 
+exports[`test VerticalList with no attributes 1`] = `<span />`;
+
 exports[`test VerticalList with required attributes 1`] = `
 <ul
   className="list-vertical">
