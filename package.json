@@ -84,6 +84,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "server/**/*.{js,jsx}",
+      "!src/**/index.js",
       "!**/node_modules/**"
     ],
     "moduleFileExtensions": [
