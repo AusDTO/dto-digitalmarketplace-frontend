@@ -13,7 +13,7 @@ exports[`test VerticalList with all attributes 1`] = `
         className="meta"
         dangerouslySetInnerHTML={
           Object {
-            "_html": "<time datetime=\"2016-05-08 00:00\">08 May 2016</time> <a href=\"#\" rel=\"author\">Author</a>",
+            "__html": "<time datetime=\"2016-05-08 00:00\">08 May 2016</time> <a href=\"#\" rel=\"author\">Author</a>",
           }
         } />
       <p>
