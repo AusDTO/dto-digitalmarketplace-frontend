@@ -1,50 +1,64 @@
 import React, { Component, PropTypes } from 'react'
 
 class Textarea extends Component {
-  state = {
-    wordsLeft: void 0
+
+  constructor(props) {
+    super(props)
+    const { value = '', limit = 0 } = props
+    const words = this.countWords(value)
+
+    this.state = {
+      wordsLeft: limit - words,
+    }
   }
 
   countWords(s: string) {
-    //exclude  start and end white-space
-    s = s.replace(/(^\s*)|(\s*$)/gi,'')
-
-    //2 or more space to 1
-    s = s.replace(/[ ]{2,}/gi,' ')
-
-    // exclude newline with a start spacing
-    s = s.replace(/\n /,'\n')
-
-    s = s.replace(/\n/, ' ')
-
-    return s.split(' ').length
+    const count =  s.match(/\S+/g) || [];
+    return count.length;
   }
 
   onChange(e) {
-    const content = this.refs.textarea.value
+    const content = e.target.value
     const words = this.countWords(content)
     const { limit } = this.props
-    console.log(words)
     this.setState({
       wordsLeft: limit - words,
-      maxLength: content.length
     })
   }
 
+  limitText(counter: number, wordsLeft: number) {
+    let words = 'words'
+    let affix = 'remaining'
+
+    if (counter === 1 || counter === -1) {
+      words = 'word'
+    }
+
+    if (wordsLeft < 0) {
+      affix = 'too many'
+    }
+
+    return `${counter} ${words} ${affix}`
+  }
 
   render() {
     const { value, limit } = this.props
-    const { wordsLeft = limit, maxLength } = this.state
+    let { wordsLeft } = this.state
+
+    let counter = wordsLeft
+    if (counter < 0) {
+      counter *= -1
+    }
+
     return (
       <div>
         <textarea
           ref="textarea"
           defaultValue={value}
-
           onChange={this.onChange.bind(this)}
         ></textarea>
         {limit ? (
-          <span className="limit">{wordsLeft} Remaining</span>
+          <span className="limit">{this.limitText(counter, wordsLeft)}</span>
         ) : ''}
 
       </div>

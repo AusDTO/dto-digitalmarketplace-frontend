@@ -1,0 +1,44 @@
+exports[`test Textarea with limit 5, 10 words 1`] = `
+<div>
+  <textarea
+    defaultValue="1 2 3 4 5 6 7 8 9 10"
+    onChange={[Function]} />
+  <span
+    className="limit">
+    5 words too many
+  </span>
+</div>
+`;
+
+exports[`test Textarea with limit 100, 10 words 1`] = `
+<div>
+  <textarea
+    defaultValue="1 2 3 4 5 6 7 8 9 10"
+    onChange={[Function]} />
+  <span
+    className="limit">
+    90 words remaining
+  </span>
+</div>
+`;
+
+exports[`test Textarea with limit 100, no words 1`] = `
+<div>
+  <textarea
+    defaultValue={undefined}
+    onChange={[Function]} />
+  <span
+    className="limit">
+    100 words remaining
+  </span>
+</div>
+`;
+
+exports[`test Textarea with no words, no limit 1`] = `
+<div>
+  <textarea
+    defaultValue={undefined}
+    onChange={[Function]} />
+  
+</div>
+`;
