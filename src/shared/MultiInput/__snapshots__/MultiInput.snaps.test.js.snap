@@ -6,9 +6,11 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs0"
-      name="nodejs0"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
   </div>
   <div>
@@ -17,9 +19,11 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs1"
-      name="nodejs1"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
     <a
       href="#"
@@ -33,9 +37,11 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs2"
-      name="nodejs2"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
     <a
       href="#"
@@ -49,9 +55,11 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs3"
-      name="nodejs3"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
     <a
       href="#"
@@ -75,9 +83,11 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="One"
-      id="nodejs0"
-      name="nodejs0"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
   </div>
   <div>
@@ -86,9 +96,11 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Two"
-      id="nodejs1"
-      name="nodejs1"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
     <a
       href="#"
@@ -102,9 +114,11 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Three"
-      id="nodejs2"
-      name="nodejs2"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
     <a
       href="#"
@@ -118,9 +132,11 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Four"
-      id="nodejs3"
-      name="nodejs3"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
     <a
       href="#"
@@ -144,9 +160,11 @@ exports[`test MultiInput with no props 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs0"
-      name="nodejs0"
+      id="test[]"
+      name="test[]"
+      onBlur={[Function]}
       onChange={[Function]}
+      onFocus={[Function]}
       type="text" />
   </div>
   <a

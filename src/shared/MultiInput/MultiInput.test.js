@@ -15,7 +15,7 @@ test('removeRow', () => {
 		{ id: 3, value: 'Four' },
 	];
 
-	const component = mount(<MultiInput rows={rows} />);
+	const component = mount(<MultiInput name="test" rows={rows} />);
 	
 	component.instance().removeRow(2, eventMock);
 	
@@ -33,7 +33,7 @@ test('addRow in correct order', () => {
 		{ id: 1, value: 'Two' },
 	];
 
-	const component = mount(<MultiInput rows={rows} />);
+	const component = mount(<MultiInput name="test" rows={rows} />);
 	
 	component.instance().addRow(eventMock);
 	
@@ -51,7 +51,7 @@ test('addRow in odd order', () => {
 		{ id: 0, value: 'One' },
 	];
 
-	const component = mount(<MultiInput rows={rows} />);
+	const component = mount(<MultiInput name="test" rows={rows} />);
 	
 	component.instance().addRow(eventMock);
 	
@@ -65,7 +65,7 @@ test('addRow in odd order', () => {
 
 
 test('emptyRow', () => {
-	const component = mount(<MultiInput />);
+	const component = mount(<MultiInput name="test" />);
 
 	expect(component.instance().emptyRow(1)).toEqual({ id: 1, value: '' })
 	expect(component.instance().emptyRow(5, 'somevalue')).toEqual({ id: 5, value: 'somevalue' })
@@ -73,7 +73,7 @@ test('emptyRow', () => {
 
 test('passed onChange is fired', () => {
 	const onChange = jest.fn()
-	const component = mount(<MultiInput onChange={onChange} defaultRows={2} />);
+	const component = mount(<MultiInput name="test" onChange={onChange} defaultRows={2} />);
 
 	component.find('input').first().simulate('change', {
     target: { value: 'One' }
@@ -84,8 +84,10 @@ test('passed onChange is fired', () => {
 })
 
 test('default onChange', () => {
-	const component = mount(<MultiInput />);
+	const component = mount(<MultiInput name="test" />);
 	expect(component.prop('onChange')()).toBeUndefined()
+	expect(component.prop('onBlur')()).toBeUndefined()
+	expect(component.prop('onFocus')()).toBeUndefined()
 })
 
 
@@ -95,7 +97,7 @@ test('getValues', () => {
 		{ id: 1, value: 'Two' },
 	];
 
-	const component = mount(<MultiInput rows={rows} />);
+	const component = mount(<MultiInput name="test" rows={rows} />);
 	
 	expect(component.instance().getValues()).toEqual(['One', 'Two'])
 })

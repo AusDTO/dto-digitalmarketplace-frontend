@@ -4,11 +4,14 @@ class MultiInput extends React.Component {
 	static propTypes = {
 		rows: React.PropTypes.array,
 		defaultRows: React.PropTypes.number,
-		onChange: React.PropTypes.func
+		onChange: React.PropTypes.func,
+		name: React.PropTypes.string.isRequired
 	}
 
 	static defaultProps = {
 		onChange: () => {},
+		onBlur: () => {},
+		onFocus: () => {},
 	}
 
 	emptyRow(id, value = '') {
@@ -83,14 +86,22 @@ class MultiInput extends React.Component {
 
 	render() {
 		const { inputs } = this.state;
+		const { name, onBlur, onFocus } = this.props;
 		return (
 			<div>
 				{inputs.map(({ id, value }, i) => {
-					let fieldName = `${name}${i}`;
+					let fieldName = `${name}[]`;
 					return (
 						<div key={id}>
 							<label>{i + 1}</label>
-							<input type="text" name={fieldName} onChange={this.onChange.bind(this, id)} id={fieldName} defaultValue={value} />
+							<input
+								type="text"
+								name={fieldName}
+								id={fieldName}
+								onChange={this.onChange.bind(this, id)}
+								onBlur={onBlur}
+								onFocus={onFocus}
+								defaultValue={value} />
 							{i > 0 && (
 								<a href="#" onClick={this.removeRow.bind(this, id)}>remove</a>
 							)}

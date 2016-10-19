@@ -5,7 +5,7 @@ import MultiInput from './MultiInput'
 
 test('MultiInput with no props', () => {
   const component = renderer.create(
-    <MultiInput />
+    <MultiInput name="test" />
   )
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
@@ -20,7 +20,7 @@ test('MultiInput with 4 rows', () => {
   ];
 
   const component = renderer.create(
-    <MultiInput rows={rows} />
+    <MultiInput name="test" rows={rows} />
   )
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
@@ -28,7 +28,7 @@ test('MultiInput with 4 rows', () => {
 
 test('MultiInput with 4 default rows', () => {
   const component = renderer.create(
-    <MultiInput defaultRows={4} />
+    <MultiInput name="test" defaultRows={4} />
   )
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
