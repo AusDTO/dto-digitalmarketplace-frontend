@@ -120,11 +120,21 @@ class CaseStudyForm extends React.Component {
                 id: 'approach',
                 name: 'approach'
               }}
+              validators={{ required }}
               component={Textarea} />
+
+            <Errors
+              className="errors"
+              model='form.caseStudyForm.approach'
+              show="touched"
+              messages={{
+                required: 'You must outline your approach'
+              }}
+              />
           </div>
 
           <div className="field">
-            <label htmlFor="outcome[]">What was the outcome?</label>
+            <label htmlFor="outcome-0">What was the outcome?</label>
             <p>Describe the project goal and any relevant background information.</p>
             <Control
               model=".outcome"
@@ -143,7 +153,7 @@ class CaseStudyForm extends React.Component {
           </div>
 
            <div className="field">
-            <label htmlFor="links[]">Project links</label>
+            <label htmlFor="links-0">Project links</label>
             <p>Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.</p>
             <Control
               model=".links"
