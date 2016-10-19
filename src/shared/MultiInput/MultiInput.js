@@ -14,18 +14,29 @@ class MultiInput extends React.Component {
     onFocus: () => {},
   }
 
-  emptyRow(id, value = '') {
-    return { id, value }
-  }
-
   constructor(props) {
     super(props);
 
+    let inputs;
+    if (props.rows) {
+      inputs = props.rows.map((row, i) => this.createRow(i, row))
+    }
+
     this.state = {
-      inputs: props.rows || Array
+      inputs: inputs || Array
         .from({ length: props.defaultRows || 1 })
-        .map((_, i) => this.emptyRow(i))
+        .map((_, i) => this.createRow(i))
     };
+  }
+
+  /**
+   * Pad out new row
+   * @param  {number}
+   * @param  {String}
+   * @return {object}
+   */
+  createRow(id: number, value: string = '') {
+    return { id, value }
   }
 
   /**
@@ -37,7 +48,7 @@ class MultiInput extends React.Component {
     return this.state.inputs.map(input => input.value).filter(i => i);
   }
 
-  onChange(id, e) {
+  onChange(id: number, e: ReactEvent) {
     const { onChange } = this.props;
 
     // @see https://fb.me/react-event-pooling
@@ -57,24 +68,18 @@ class MultiInput extends React.Component {
 
   }
 
-  addRow(e) {
+  addRow(e: ReactEvent) {
     e.preventDefault();
     const { inputs } = this.state;
-    const highestRow = inputs.reduce((current, previous) => {
-      if (current.id > previous.id) {
-        return current;
-      } else {
-        return previous;
-      }
-    })
+    const lastRow = inputs[inputs.length - 1];
 
     this.setState({
-      inputs: inputs.concat(this.emptyRow(highestRow.id + 1))
+      inputs: inputs.concat(this.createRow(lastRow.id + 1))
     });
 
   }
 
-  removeRow(id, e) {
+  removeRow(id: number, e: ReactEvent) {
     e.preventDefault()
     const { inputs } = this.state;
     const { onChange } = this.props;
@@ -91,13 +96,14 @@ class MultiInput extends React.Component {
       <div>
         {inputs.map(({ id, value }, i) => {
           let fieldName = `${name}[]`;
+          let fieldId = `${name}-${i}`;
           return (
             <div key={id}>
               <label>{i + 1}</label>
               <input
                 type="text"
                 name={fieldName}
-                id={fieldName}
+                id={fieldId}
                 onChange={this.onChange.bind(this, id)}
                 onBlur={onBlur}
                 onFocus={onFocus}

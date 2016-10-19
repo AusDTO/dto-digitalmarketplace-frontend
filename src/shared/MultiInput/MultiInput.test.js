@@ -8,12 +8,7 @@ const eventMock = { preventDefault };
 
 
 test('removeRow', () => {
-  const rows = [
-    { id: 0, value: 'One' },
-    { id: 1, value: 'Two' },
-    { id: 2, value: 'Three' },
-    { id: 3, value: 'Four' },
-  ];
+  const rows = [ 'One', 'Two', 'Three', 'Four' ];
 
   const component = mount(<MultiInput name="test" rows={rows} />);
 
@@ -28,10 +23,7 @@ test('removeRow', () => {
 });
 
 test('addRow in correct order', () => {
-  const rows = [
-    { id: 0, value: 'One' },
-    { id: 1, value: 'Two' },
-  ];
+  const rows = [ 'One', 'Two' ];
 
   const component = mount(<MultiInput name="test" rows={rows} />);
 
@@ -46,10 +38,7 @@ test('addRow in correct order', () => {
 });
 
 test('addRow in odd order', () => {
-  const rows = [
-    { id: 1, value: 'Two' },
-    { id: 0, value: 'One' },
-  ];
+  const rows = [ 'Two', 'One' ];
 
   const component = mount(<MultiInput name="test" rows={rows} />);
 
@@ -57,18 +46,18 @@ test('addRow in odd order', () => {
 
   expect(preventDefault).toHaveBeenCalled();
   expect(component.state().inputs).toEqual([
-    { id: 1, value: 'Two' },
-    { id: 0, value: 'One' },
+    { id: 0, value: 'Two' },
+    { id: 1, value: 'One' },
     { id: 2, value: '' }
   ]);
 });
 
 
-test('emptyRow', () => {
+test('createRow', () => {
   const component = mount(<MultiInput name="test" />);
 
-  expect(component.instance().emptyRow(1)).toEqual({ id: 1, value: '' })
-  expect(component.instance().emptyRow(5, 'somevalue')).toEqual({ id: 5, value: 'somevalue' })
+  expect(component.instance().createRow(1)).toEqual({ id: 1, value: '' })
+  expect(component.instance().createRow(5, 'somevalue')).toEqual({ id: 5, value: 'somevalue' })
 })
 
 test('passed onChange is fired', () => {
@@ -92,10 +81,7 @@ test('default onChange', () => {
 
 
 test('getValues', () => {
-  const rows = [
-    { id: 0, value: 'One' },
-    { id: 1, value: 'Two' },
-  ];
+  const rows = [ 'One', 'Two' ];
 
   const component = mount(<MultiInput name="test" rows={rows} />);
 

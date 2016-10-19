@@ -12,13 +12,7 @@ test('MultiInput with no props', () => {
 })
 
 test('MultiInput with 4 rows', () => {
-  const rows = [
-    { id: 0, value: 'One' },
-    { id: 1, value: 'Two' },
-    { id: 2, value: 'Three' },
-    { id: 3, value: 'Four' },
-  ];
-
+  const rows = [ 'One', 'Two', 'Three', 'Four' ];
   const component = renderer.create(
     <MultiInput name="test" rows={rows} />
   )
