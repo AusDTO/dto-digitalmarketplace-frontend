@@ -1,26 +1,46 @@
-// import React from 'react'
-// import CaseStudyAdd, { mapStateToProps } from './CaseStudyAdd'
-// import renderer from 'react-test-renderer'
+import React from 'react';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import { actions } from 'react-redux-form';
 
-// import createStore from '../../redux/create'
-// const store = createStore({ _serverContext: {} })
+import CaseStudyForm, { mapStateToProps, Form } from './CaseStudyForm';
 
-test('', () => {})
+import createStore from '../../redux/create'
 
-// test('Structure of CaseStudyAdd', () => {
-//   const component = renderer.create(
-//     <CaseStudyAdd store={store} />
-//   )
-//   let tree = component.toJSON()
-//   expect(tree).toMatchSnapshot()
-// })
-//
-// test('mapStateToProps', () => {
-//   const state = {
-//     casestudy: {
-//       added: true
-//     }
-//   }
-//   const props = mapStateToProps(state)
-//   expect(props).toEqual({ redirect: true })
-// })
+
+const generateFormValidilityState = (valid) => {
+	return {
+    form: {
+    	forms: {
+    		caseStudyForm: {
+    			$form: { valid }
+    		}
+    	}
+    }
+  }
+}
+
+test('mapStateToProps', () => {
+  let state = generateFormValidilityState(true);
+  let props = mapStateToProps(state);
+  expect(props).toEqual({ formValid: true });
+
+  state = generateFormValidilityState(false);
+  props = mapStateToProps(state);
+  expect(props).toEqual({ formValid: false });
+});
+
+test('handleClick with formValid=false', () => {
+	let store = createStore(Object.assign({}, { _serverContext: {} }))
+	const wrapper = mount(
+		<Provider store={store}>
+			<Form />
+		</Provider>
+	)
+
+	wrapper.find('input[type="submit"]').simulate('click')
+	expect(store.getState().form.forms.caseStudyForm.$form.valid).toBeFalsy()
+});
+
+
+
