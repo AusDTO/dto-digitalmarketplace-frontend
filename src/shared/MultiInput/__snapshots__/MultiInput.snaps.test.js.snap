@@ -6,7 +6,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="test[]"
+      id="test-0"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -19,7 +19,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="test[]"
+      id="test-1"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -37,7 +37,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="test[]"
+      id="test-2"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -55,7 +55,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="test[]"
+      id="test-3"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -83,7 +83,7 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="One"
-      id="test[]"
+      id="test-0"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -96,7 +96,7 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Two"
-      id="test[]"
+      id="test-1"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -114,7 +114,7 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Three"
-      id="test[]"
+      id="test-2"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -132,7 +132,7 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Four"
-      id="test[]"
+      id="test-3"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}
@@ -160,7 +160,7 @@ exports[`test MultiInput with no props 1`] = `
     </label>
     <input
       defaultValue=""
-      id="test[]"
+      id="test-0"
       name="test[]"
       onBlur={[Function]}
       onChange={[Function]}

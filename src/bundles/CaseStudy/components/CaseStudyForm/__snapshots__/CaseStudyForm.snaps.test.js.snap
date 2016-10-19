@@ -130,7 +130,7 @@ exports[`test CaseStudyForm renders 1`] = `
           </label>
           <input
             defaultValue=""
-            id="outcome[]"
+            id="outcome-0"
             name="outcome[]"
             onBlur={[Function]}
             onChange={[Function]}
@@ -160,7 +160,7 @@ exports[`test CaseStudyForm renders 1`] = `
           </label>
           <input
             defaultValue=""
-            id="links[]"
+            id="links-0"
             name="links[]"
             onBlur={[Function]}
             onChange={[Function]}
