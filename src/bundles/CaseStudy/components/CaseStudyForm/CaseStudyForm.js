@@ -36,6 +36,10 @@ class CaseStudyForm extends React.Component {
   }
 
   handleClick() {
+    /**
+     * FIXME
+     * This is a workaround to complete a normal form submit
+     */
     const { formValid } = this.props;
     if (formValid) {
       this._form.submit = this.refs.submittable.submit;
@@ -46,7 +50,7 @@ class CaseStudyForm extends React.Component {
   render() {
     return (
       <Layout>
-        {/*FIXME: this form exist purely to steal its submit method.*/}
+        {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
         <Form model="form.caseStudyForm" method="post" ref={this.attachNode.bind(this)}>
           <Textfield

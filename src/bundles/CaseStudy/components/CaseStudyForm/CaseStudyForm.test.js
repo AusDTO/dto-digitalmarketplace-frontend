@@ -9,13 +9,13 @@ import createStore from '../../redux/create'
 
 
 const generateFormValidilityState = (valid) => {
-	return {
+  return {
     form: {
-    	forms: {
-    		caseStudyForm: {
-    			$form: { valid }
-    		}
-    	}
+      forms: {
+        caseStudyForm: {
+          $form: { valid }
+        }
+      }
     }
   }
 }
@@ -31,16 +31,13 @@ test('mapStateToProps', () => {
 });
 
 test('handleClick with formValid=false', () => {
-	let store = createStore(Object.assign({}, { _serverContext: {} }))
-	const wrapper = mount(
-		<Provider store={store}>
-			<Form />
-		</Provider>
-	)
+  let store = createStore(Object.assign({}, { _serverContext: {} }))
+  const wrapper = mount(
+    <Provider store={store}>
+      <Form />
+    </Provider>
+  )
 
-	wrapper.find('input[type="submit"]').simulate('click')
-	expect(store.getState().form.forms.caseStudyForm.$form.valid).toBeFalsy()
+  wrapper.find('input[type="submit"]').simulate('click')
+  expect(store.getState().form.forms.caseStudyForm.$form.valid).toBeFalsy()
 });
-
-
-

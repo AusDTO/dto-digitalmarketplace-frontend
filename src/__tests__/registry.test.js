@@ -6,7 +6,6 @@ test('Add empty widget', () => {
 	let Registry = require('../registry').default;
 	Registry.add({ widget: () => {} });
 
-
 	expect(Registry.key).toEqual('widget')
 	expect(typeof Registry.instance).toEqual('function')
 });
