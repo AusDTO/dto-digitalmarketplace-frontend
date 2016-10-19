@@ -26,7 +26,7 @@ class Registry {
 
         try {
           // Try and get the state otherwise be empty
-          initialState = JSON.parse(stateNode && stateNode.innerText) || initialState
+          initialState = JSON.parse(stateNode.innerText)
         } catch (e) {}
 
         /*FIXME temporary hack for local harness*/
