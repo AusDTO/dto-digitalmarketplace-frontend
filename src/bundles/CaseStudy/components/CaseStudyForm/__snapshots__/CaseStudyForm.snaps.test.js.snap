@@ -117,7 +117,7 @@ exports[`test CaseStudyForm renders 1`] = `
     <div
       className="field">
       <label
-        htmlFor="outcome[]">
+        htmlFor="outcome-0">
         What was the outcome?
       </label>
       <p>
@@ -147,7 +147,7 @@ exports[`test CaseStudyForm renders 1`] = `
     <div
       className="field">
       <label
-        htmlFor="links[]">
+        htmlFor="links-0">
         Project links
       </label>
       <p>
