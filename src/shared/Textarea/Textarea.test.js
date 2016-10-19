@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 import Textarea from './Textarea'
 
 test('onChange', () => {
-  const wrapper = mount(<Textarea limit={10} />)
+  const wrapper = mount(<Textarea name="test" limit={10} />)
   let { wordsLeft } = wrapper.state()
   expect(wordsLeft).toEqual(10)
 
@@ -45,4 +45,11 @@ test('limitText', () => {
 
   text = txtarea.limitText(1, -1);
   expect(text).toEqual('1 word too many')
+})
+
+test('default event handlers onChange', () => {
+  const wrapper = mount(<Textarea name="test" />);
+  expect(wrapper.prop('onChange')()).toBeUndefined()
+  expect(wrapper.prop('onBlur')()).toBeUndefined()
+  expect(wrapper.prop('onFocus')()).toBeUndefined()
 })

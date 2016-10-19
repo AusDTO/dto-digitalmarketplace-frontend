@@ -2,6 +2,12 @@ import React, { Component, PropTypes } from 'react'
 
 class Textarea extends Component {
 
+  static defaultProps = {
+    onChange: () => {},
+    onBlur: () => {},
+    onFocus: () => {}
+  }
+
   constructor(props) {
     super(props)
     const { value = '', limit = 0 } = props
@@ -20,10 +26,11 @@ class Textarea extends Component {
   onChange(e) {
     const content = e.target.value
     const words = this.countWords(content)
-    const { limit } = this.props
+    const { limit, onChange } = this.props
     this.setState({
       wordsLeft: limit - words,
     })
+    onChange(content);
   }
 
   limitText(counter: number, wordsLeft: number) {
@@ -42,7 +49,7 @@ class Textarea extends Component {
   }
 
   render() {
-    const { value, limit } = this.props
+    const { value, limit, name, id, onBlur, onFocus } = this.props
     let { wordsLeft } = this.state
 
     let counter = wordsLeft
@@ -54,7 +61,11 @@ class Textarea extends Component {
       <div>
         <textarea
           ref="textarea"
+          name={name}
+          id={id}
           defaultValue={value}
+          onBlur={onBlur}
+          onFocus={onFocus}
           onChange={this.onChange.bind(this)}
         ></textarea>
         {limit ? (
@@ -67,6 +78,8 @@ class Textarea extends Component {
 }
 
 Textarea.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
   limit: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
