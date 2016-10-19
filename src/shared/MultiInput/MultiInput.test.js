@@ -73,13 +73,18 @@ test('emptyRow', () => {
 
 test('passed onChange is fired', () => {
 	const onChange = jest.fn()
-	const component = mount(<MultiInput onChange={onChange} />);
+	const resultRows = [
+		{ id: 0, value: 'One' },
+		{ id: 1, value: '' }
+	]
+	const component = mount(<MultiInput onChange={onChange} defaultRows={2} />);
 
-	component.find('input').simulate('change', {
+	component.find('input').first().simulate('change', {
     target: { value: 'One' }
   })
 
   expect(onChange).toHaveBeenCalled()
+  expect(onChange).toHaveBeenLastCalledWith(resultRows);
 })
 
 test('default onChange', () => {

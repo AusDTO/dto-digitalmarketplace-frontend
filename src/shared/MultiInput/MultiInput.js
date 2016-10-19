@@ -25,10 +25,22 @@ class MultiInput extends React.Component {
 		};
 	}
 
-	onChange(e) {
+	onChange(id, e) {
 		const { inputs } = this.state;
 		const { onChange } = this.props
-		onChange(inputs)
+		const newInputs = inputs.map(input => {
+			if (input.id === id) {
+				input.value = e.target.value;
+			}
+			return input;
+		});
+
+		
+		this.setState({
+			inputs: newInputs
+		});
+
+		onChange(newInputs);
 	}
 
 	addRow(e) {
@@ -65,7 +77,7 @@ class MultiInput extends React.Component {
 					return (
 						<div key={id}>
 							<label>{i + 1}</label>
-							<input type="text" name={fieldName} onChange={this.onChange.bind(this)} id={fieldName} defaultValue={value} />
+							<input type="text" name={fieldName} onChange={this.onChange.bind(this, id)} id={fieldName} defaultValue={value} />
 							{i > 0 && (
 								<a href="#" onClick={this.removeRow.bind(this, id)}>remove</a>
 							)}
