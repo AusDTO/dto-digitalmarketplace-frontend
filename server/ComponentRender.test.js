@@ -1,3 +1,5 @@
+jest.mock('react-dom')
+
 import ComponentRenderer from './ComponentRenderer'
 
 const helloWorldWidgetPath = 'bundles/HelloWorld/HelloWorldWidget.js'

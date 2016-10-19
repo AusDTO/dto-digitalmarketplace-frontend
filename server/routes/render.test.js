@@ -1,3 +1,5 @@
+jest.mock('react-dom')
+
 import renderRoute from './render'
 
 const helloWorldWidgetPath = 'bundles/HelloWorld/HelloWorldWidget.js'

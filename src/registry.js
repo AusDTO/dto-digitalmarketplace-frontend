@@ -17,7 +17,7 @@ class Registry {
 
         // If a server render exit early, dont process client side rendering functions
         // We need the key and instance for server rendering though
-        if (typeof window === 'undefined' || process.env.NODE_ENV === 'test') {
+        if (typeof window === 'undefined') {
           return
         }
 
