@@ -1,3 +1,7 @@
+// FIXME This is a workaround.
+// @see https://github.com/facebook/react/issues/7386
+jest.mock('react-dom');
+
 import React from 'react'
 import View from './View'
 import renderer from 'react-test-renderer'
