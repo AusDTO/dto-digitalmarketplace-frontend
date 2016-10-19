@@ -6,8 +6,8 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs-0"
-      name="nodejs-0"
+      id="nodejs0"
+      name="nodejs0"
       onChange={[Function]}
       type="text" />
   </div>
@@ -17,8 +17,8 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs-1"
-      name="nodejs-1"
+      id="nodejs1"
+      name="nodejs1"
       onChange={[Function]}
       type="text" />
     <a
@@ -33,8 +33,8 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs-2"
-      name="nodejs-2"
+      id="nodejs2"
+      name="nodejs2"
       onChange={[Function]}
       type="text" />
     <a
@@ -49,8 +49,8 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs-3"
-      name="nodejs-3"
+      id="nodejs3"
+      name="nodejs3"
       onChange={[Function]}
       type="text" />
     <a
@@ -75,8 +75,8 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="One"
-      id="nodejs-0"
-      name="nodejs-0"
+      id="nodejs0"
+      name="nodejs0"
       onChange={[Function]}
       type="text" />
   </div>
@@ -86,8 +86,8 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Two"
-      id="nodejs-1"
-      name="nodejs-1"
+      id="nodejs1"
+      name="nodejs1"
       onChange={[Function]}
       type="text" />
     <a
@@ -102,8 +102,8 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Three"
-      id="nodejs-2"
-      name="nodejs-2"
+      id="nodejs2"
+      name="nodejs2"
       onChange={[Function]}
       type="text" />
     <a
@@ -118,8 +118,8 @@ exports[`test MultiInput with 4 rows 1`] = `
     </label>
     <input
       defaultValue="Four"
-      id="nodejs-3"
-      name="nodejs-3"
+      id="nodejs3"
+      name="nodejs3"
       onChange={[Function]}
       type="text" />
     <a
@@ -144,8 +144,8 @@ exports[`test MultiInput with no props 1`] = `
     </label>
     <input
       defaultValue=""
-      id="nodejs-0"
-      name="nodejs-0"
+      id="nodejs0"
+      name="nodejs0"
       onChange={[Function]}
       type="text" />
   </div>

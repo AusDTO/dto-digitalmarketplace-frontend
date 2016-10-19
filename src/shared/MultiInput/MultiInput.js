@@ -25,22 +25,33 @@ class MultiInput extends React.Component {
 		};
 	}
 
+	/**
+	 * Get an array of values from the inputs.
+	 * Removes empty values
+	 * @return {array}
+	 */
+	getValues() {
+		return this.state.inputs.map(input => input.value).filter(i => i);
+	}
+
 	onChange(id, e) {
-		const { inputs } = this.state;
-		const { onChange } = this.props
-		const newInputs = inputs.map(input => {
-			if (input.id === id) {
-				input.value = e.target.value;
-			}
-			return input;
-		});
+		const { onChange } = this.props;
 
-		
-		this.setState({
-			inputs: newInputs
-		});
+		// @see https://fb.me/react-event-pooling
+		e.persist();
 
-		onChange(newInputs);
+		this.setState((previousState) => {
+			let newInputs = previousState.inputs.map(input => {
+				if (input.id === id) {
+					input.value = e.target.value;
+				}
+
+				return input;
+			});
+
+			return { inputs: newInputs };
+		}, () => onChange(this.getValues()));
+
 	}
 
 	addRow(e) {
@@ -62,10 +73,12 @@ class MultiInput extends React.Component {
 
 	removeRow(id, e) {
 		e.preventDefault()
-		let { inputs } = this.state;
+		const { inputs } = this.state;
+		const { onChange } = this.props;
+
 		this.setState({
 			inputs: inputs.filter(r => r.id !== id)
-		})
+		}, () => onChange(this.getValues()));
 	}
 
 	render() {
@@ -73,7 +86,7 @@ class MultiInput extends React.Component {
 		return (
 			<div>
 				{inputs.map(({ id, value }, i) => {
-					let fieldName = `${name}-${i}`;
+					let fieldName = `${name}${i}`;
 					return (
 						<div key={id}>
 							<label>{i + 1}</label>
