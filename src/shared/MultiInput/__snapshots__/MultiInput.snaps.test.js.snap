@@ -1,3 +1,72 @@
+exports[`test MultiInput adding and removing rows 1`] = `
+<div>
+  <div>
+    <label>
+      1
+    </label>
+    <input
+      defaultValue=""
+      id="nodejs-0"
+      name="nodejs-0"
+      onChange={[Function]}
+      type="text" />
+  </div>
+  <div>
+    <label>
+      2
+    </label>
+    <input
+      defaultValue=""
+      id="nodejs-1"
+      name="nodejs-1"
+      onChange={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <div>
+    <label>
+      3
+    </label>
+    <input
+      defaultValue=""
+      id="nodejs-2"
+      name="nodejs-2"
+      onChange={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <div>
+    <label>
+      4
+    </label>
+    <input
+      defaultValue=""
+      id="nodejs-3"
+      name="nodejs-3"
+      onChange={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <a
+    href="#"
+    onClick={[Function]}>
+    Add another row
+  </a>
+</div>
+`;
+
 exports[`test MultiInput with 4 default rows 1`] = `
 <div>
   <div>
