@@ -5,17 +5,12 @@ import VerticalList, { testData } from './VerticalList'
 import Textarea from './Textarea'
 import MultiInput from './MultiInput'
 
-const rows = [
-  { id: 0, value: 'One' },
-  { id: 1, value: 'Two' },
-  { id: 2, value: 'Three' },
-  { id: 3, value: 'Four' },
-]
+const rows = [ 'One', 'Two', 'Three', 'Fourth Item' ];
 
 ReactDOM.render(
   <div>
     <form>
-      <MultiInput rows={rows} />
+      <MultiInput name="test" rows={rows} />
       <Textarea limit={10} name="shared" />
     </form>
     <VerticalList items={testData.items} />
