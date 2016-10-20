@@ -5,6 +5,7 @@ import casestudy from './casestudy'
 
 export default combineReducers({
   casestudy,
+  form_options: (state = {}) => state,
   form: combineForms({
     caseStudyForm: { title: '' , opportunity: '' }
   }, 'form'),

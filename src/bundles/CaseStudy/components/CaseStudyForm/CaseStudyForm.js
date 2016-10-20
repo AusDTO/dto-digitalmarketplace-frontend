@@ -45,11 +45,15 @@ class CaseStudyForm extends React.Component {
   }
 
   render() {
+    const { action, csrf_token } = this.props;
     return (
       <Layout>
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-        <Form model="form.caseStudyForm" method="post" ref={this.attachNode.bind(this)}>
+        <Form model="form.caseStudyForm" action={action} method="post" ref={this.attachNode.bind(this)}>
+          {csrf_token && (
+            <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
+          )}
           <Textfield
             model="form.caseStudyForm.title"
             name="title"
@@ -198,7 +202,8 @@ class CaseStudyForm extends React.Component {
 const mapStateToProps = (state) => {
   const formValid = state.form.forms.caseStudyForm.$form.valid;
   return {
-    formValid
+    formValid,
+    ...state.form_options
   }
 }
 
