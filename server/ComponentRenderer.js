@@ -24,7 +24,6 @@ export default class ComponentRenderer {
       throw new Error('Component must be registered in the Registry')
     }
 
-    this.pathToSource = pathToSource;
     this.element = element;
   }
 
@@ -37,10 +36,12 @@ export default class ComponentRenderer {
     const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString';
     const context = createServerRenderContext();
 
-    return ReactDOMServer[renderMethod](
-      <ServerRouter location={location} context={context}>
-        {this.element.instance(props)}
-      </ServerRouter>
+    return (
+      ReactDOMServer[renderMethod](
+        <ServerRouter location={location} context={context}>
+          {this.element.instance(props)}
+        </ServerRouter>
+      )
     );
   }
 }
