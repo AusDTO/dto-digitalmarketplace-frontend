@@ -12,7 +12,7 @@ export default function createStore(data) {
   delete data._serverContext
 
   let composeEnhancers = compose;
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
   }
 

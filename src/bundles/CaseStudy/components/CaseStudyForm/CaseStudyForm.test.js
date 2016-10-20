@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { actions } from 'react-redux-form';
 
-import CaseStudyForm, { mapStateToProps, Form } from './CaseStudyForm';
+import CaseStudyForm, { mapStateToProps } from './CaseStudyForm';
 
 import createStore from '../../redux/create'
 
@@ -34,7 +34,7 @@ test('handleClick with formValid=false', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))
   const wrapper = mount(
     <Provider store={store}>
-      <Form />
+      <CaseStudyForm />
     </Provider>
   )
 
