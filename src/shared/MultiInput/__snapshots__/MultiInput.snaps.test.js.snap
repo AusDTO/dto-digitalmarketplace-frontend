@@ -1,10 +1,14 @@
 exports[`test MultiInput with 4 default rows 1`] = `
 <div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-0">
       1
     </label>
     <input
+      className="text-box"
       defaultValue=""
       id="test-0"
       name="test[]"
@@ -13,11 +17,15 @@ exports[`test MultiInput with 4 default rows 1`] = `
       onFocus={[Function]}
       type="text" />
   </div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-1">
       2
     </label>
     <input
+      className="text-box"
       defaultValue=""
       id="test-1"
       name="test[]"
@@ -25,17 +33,27 @@ exports[`test MultiInput with 4 default rows 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       type="text" />
-    <a
-      href="#"
-      onClick={[Function]}>
-      remove
-    </a>
+    <button
+      className="button-secondary"
+      onClick={[Function]}
+      type="button">
+      remove 
+      <span
+        className="visuallyhidden">
+        number 
+        1
+      </span>
+    </button>
   </div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-2">
       3
     </label>
     <input
+      className="text-box"
       defaultValue=""
       id="test-2"
       name="test[]"
@@ -43,17 +61,27 @@ exports[`test MultiInput with 4 default rows 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       type="text" />
-    <a
-      href="#"
-      onClick={[Function]}>
-      remove
-    </a>
+    <button
+      className="button-secondary"
+      onClick={[Function]}
+      type="button">
+      remove 
+      <span
+        className="visuallyhidden">
+        number 
+        2
+      </span>
+    </button>
   </div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-3">
       4
     </label>
     <input
+      className="text-box"
       defaultValue=""
       id="test-3"
       name="test[]"
@@ -61,27 +89,38 @@ exports[`test MultiInput with 4 default rows 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       type="text" />
-    <a
-      href="#"
-      onClick={[Function]}>
-      remove
-    </a>
+    <button
+      className="button-secondary"
+      onClick={[Function]}
+      type="button">
+      remove 
+      <span
+        className="visuallyhidden">
+        number 
+        3
+      </span>
+    </button>
   </div>
-  <a
-    href="#"
-    onClick={[Function]}>
+  <button
+    className="button-secondary"
+    onClick={[Function]}
+    type="button">
     Add another row
-  </a>
+  </button>
 </div>
 `;
 
 exports[`test MultiInput with 4 rows 1`] = `
 <div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-0">
       1
     </label>
     <input
+      className="text-box"
       defaultValue="One"
       id="test-0"
       name="test[]"
@@ -90,11 +129,15 @@ exports[`test MultiInput with 4 rows 1`] = `
       onFocus={[Function]}
       type="text" />
   </div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-1">
       2
     </label>
     <input
+      className="text-box"
       defaultValue="Two"
       id="test-1"
       name="test[]"
@@ -102,17 +145,27 @@ exports[`test MultiInput with 4 rows 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       type="text" />
-    <a
-      href="#"
-      onClick={[Function]}>
-      remove
-    </a>
+    <button
+      className="button-secondary"
+      onClick={[Function]}
+      type="button">
+      remove 
+      <span
+        className="visuallyhidden">
+        number 
+        1
+      </span>
+    </button>
   </div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-2">
       3
     </label>
     <input
+      className="text-box"
       defaultValue="Three"
       id="test-2"
       name="test[]"
@@ -120,17 +173,27 @@ exports[`test MultiInput with 4 rows 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       type="text" />
-    <a
-      href="#"
-      onClick={[Function]}>
-      remove
-    </a>
+    <button
+      className="button-secondary"
+      onClick={[Function]}
+      type="button">
+      remove 
+      <span
+        className="visuallyhidden">
+        number 
+        2
+      </span>
+    </button>
   </div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-3">
       4
     </label>
     <input
+      className="text-box"
       defaultValue="Four"
       id="test-3"
       name="test[]"
@@ -138,27 +201,38 @@ exports[`test MultiInput with 4 rows 1`] = `
       onChange={[Function]}
       onFocus={[Function]}
       type="text" />
-    <a
-      href="#"
-      onClick={[Function]}>
-      remove
-    </a>
+    <button
+      className="button-secondary"
+      onClick={[Function]}
+      type="button">
+      remove 
+      <span
+        className="visuallyhidden">
+        number 
+        3
+      </span>
+    </button>
   </div>
-  <a
-    href="#"
-    onClick={[Function]}>
+  <button
+    className="button-secondary"
+    onClick={[Function]}
+    type="button">
     Add another row
-  </a>
+  </button>
 </div>
 `;
 
 exports[`test MultiInput with no props 1`] = `
 <div>
-  <div>
-    <label>
+  <div
+    className="list-entry">
+    <label
+      className="text-box-number-label"
+      htmlFor="test-0">
       1
     </label>
     <input
+      className="text-box"
       defaultValue=""
       id="test-0"
       name="test[]"
@@ -167,10 +241,11 @@ exports[`test MultiInput with no props 1`] = `
       onFocus={[Function]}
       type="text" />
   </div>
-  <a
-    href="#"
-    onClick={[Function]}>
+  <button
+    className="button-secondary"
+    onClick={[Function]}
+    type="button">
     Add another row
-  </a>
+  </button>
 </div>
 `;

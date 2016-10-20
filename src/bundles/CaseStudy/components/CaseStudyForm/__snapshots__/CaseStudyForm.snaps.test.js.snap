@@ -19,7 +19,6 @@ exports[`test CaseStudyForm renders 1`] = `
         htmlFor="title">
         Give your case study a title
       </label>
-      <p />
       <input
         id="title"
         name="title"
@@ -37,7 +36,6 @@ exports[`test CaseStudyForm renders 1`] = `
         htmlFor="client">
         Who was the client?
       </label>
-      <p />
       <input
         id="client"
         name="client"
@@ -55,7 +53,8 @@ exports[`test CaseStudyForm renders 1`] = `
         htmlFor="timeframe">
         What was the time frame?
       </label>
-      <p>
+      <p
+        className="hint">
         For example,  January 2016 — June 2016
       </p>
       <input
@@ -74,7 +73,8 @@ exports[`test CaseStudyForm renders 1`] = `
         htmlFor="opportunity">
         Outline the problem or opportunity
       </label>
-      <p>
+      <p
+        className="hint">
         Describe the project goal and any relevant background information.
       </p>
       <div>
@@ -97,7 +97,8 @@ exports[`test CaseStudyForm renders 1`] = `
         htmlFor="approach">
         Describe your approach
       </label>
-      <p>
+      <p
+        className="hint">
         How did your capabilities and methods contribute to achieving the project goals?
       </p>
       <div>
@@ -120,15 +121,20 @@ exports[`test CaseStudyForm renders 1`] = `
         htmlFor="outcome-0">
         What was the outcome?
       </label>
-      <p>
-        Describe the project goal and any relevant background information.
+      <p
+        className="hint">
+        List the key benefits of this project.
       </p>
       <div>
-        <div>
-          <label>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="outcome-0">
             1
           </label>
           <input
+            className="text-box"
             defaultValue=""
             id="outcome-0"
             name="outcome[]"
@@ -137,11 +143,12 @@ exports[`test CaseStudyForm renders 1`] = `
             onFocus={[Function]}
             type="text" />
         </div>
-        <a
-          href="#"
-          onClick={[Function]}>
+        <button
+          className="button-secondary"
+          onClick={[Function]}
+          type="button">
           Add another row
-        </a>
+        </button>
       </div>
     </div>
     <div
@@ -150,15 +157,20 @@ exports[`test CaseStudyForm renders 1`] = `
         htmlFor="links-0">
         Project links
       </label>
-      <p>
+      <p
+        className="hint">
         Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
       </p>
       <div>
-        <div>
-          <label>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="links-0">
             1
           </label>
           <input
+            className="text-box"
             defaultValue=""
             id="links-0"
             name="links[]"
@@ -167,11 +179,12 @@ exports[`test CaseStudyForm renders 1`] = `
             onFocus={[Function]}
             type="text" />
         </div>
-        <a
-          href="#"
-          onClick={[Function]}>
+        <button
+          className="button-secondary"
+          onClick={[Function]}
+          type="button">
           Add another row
-        </a>
+        </button>
       </div>
     </div>
     <div
