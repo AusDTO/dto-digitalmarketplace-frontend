@@ -133,7 +133,7 @@ class CaseStudyForm extends React.Component {
 
           <div className="field">
             <label htmlFor="outcome-0">What was the outcome?</label>
-            <p className="hint">Describe the project goal and any relevant background information.</p>
+            <p className="hint">List the key benefits of this project.</p>
             <Errors
               className="errors validation-message"
               model='form.caseStudyForm.outcome'
