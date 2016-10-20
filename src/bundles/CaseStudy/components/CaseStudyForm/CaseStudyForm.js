@@ -28,6 +28,12 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
 
 class CaseStudyForm extends React.Component {
 
+  static propTypes = {
+    action: React.PropTypes.string,
+    csrf_token: React.PropTypes.string,
+    formValid: React.PropTypes.bool.isRequired
+  }
+
   attachNode(node) {
     this._form = ReactDOM.findDOMNode(node);
   }
@@ -45,11 +51,15 @@ class CaseStudyForm extends React.Component {
   }
 
   render() {
+    const { action, csrf_token } = this.props;
     return (
       <Layout>
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-        <Form model="form.caseStudyForm" method="post" ref={this.attachNode.bind(this)}>
+        <Form model="form.caseStudyForm" action={action} method="post" ref={this.attachNode.bind(this)}>
+          {csrf_token && (
+            <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
+          )}
           <Textfield
             model="form.caseStudyForm.title"
             name="title"
@@ -175,6 +185,7 @@ class CaseStudyForm extends React.Component {
             <Control.checkbox
               model=".acknowledge"
               id="acknowledge"
+              name="acknowledge"
               validators={{ required }}
             />
             <label htmlFor="acknowledge">I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.</label>
@@ -198,7 +209,8 @@ class CaseStudyForm extends React.Component {
 const mapStateToProps = (state) => {
   const formValid = state.form.forms.caseStudyForm.$form.valid;
   return {
-    formValid
+    formValid,
+    ...state.form_options
   }
 }
 
