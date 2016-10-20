@@ -11,8 +11,10 @@ export default function createStore(data) {
 
   delete data._serverContext
 
-  const composeEnhancers =
-    typeof window !== 'undefined' &&  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  let composeEnhancers = compose;
+  if (typeof window !== 'undefined') {
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+  }
 
   const finalCreateStore = composeEnhancers(applyMiddleware(...middleware))(_createStore);
   const store = finalCreateStore(reducer, data);
