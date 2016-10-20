@@ -1,6 +1,6 @@
 {
   "form": {
-    "caseStudyForm": {
+    "caseStudy": {
         "title": "Case Study Title",
         "opportunity": "The opportunity",
         "client": "The Client Name",
