@@ -193,7 +193,7 @@ exports[`test CaseStudyForm renders 1`] = `
       <input
         checked={false}
         id="acknowledge"
-        name="form.caseStudyForm.acknowledge"
+        name="acknowledge"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -413,7 +413,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       <input
         checked={false}
         id="acknowledge"
-        name="form.caseStudyForm.acknowledge"
+        name="acknowledge"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
