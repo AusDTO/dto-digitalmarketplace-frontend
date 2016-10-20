@@ -1,0 +1,18 @@
+{
+  "form": {
+    "caseStudyForm": {
+        "title": "Case Study Title",
+        "opportunity": "The opportunity",
+        "client": "The Client Name",
+        "timeframe": "January 2016 — June 2016",
+        "approach": "The approach",
+        "outcome": [
+            "Outcome 1",
+            "Outcome 2"
+        ],
+        "links": [
+            "http://gov.au/"
+        ]
+    }
+  }
+}
