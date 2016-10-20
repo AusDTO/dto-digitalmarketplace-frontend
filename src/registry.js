@@ -17,7 +17,7 @@ class Registry {
 
         // If a server render exit early, dont process client side rendering functions
         // We need the key and instance for server rendering though
-        if (typeof window === 'undefined' || process.env.NODE_ENV === 'test') {
+        if (typeof window === 'undefined') {
           return
         }
 
@@ -26,7 +26,7 @@ class Registry {
 
         try {
           // Try and get the state otherwise be empty
-          initialState = JSON.parse(stateNode && stateNode.innerText) || initialState
+          initialState = JSON.parse(stateNode.innerText)
         } catch (e) {}
 
         /*FIXME temporary hack for local harness*/

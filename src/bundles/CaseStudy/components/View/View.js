@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import './View.css'
 
-const View = ({ title, company, timeframe, links = {}, sections = [] }) => (
+const View = ({ title, company, timeframe, links, sections }) => (
   <section>
     <header className="row">
       <div className="col-md-12">
@@ -58,7 +58,7 @@ View.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string,
     items: PropTypes.array
-  }))
+  })).isRequired
 }
 
 const mapStateToProps = (state) => {

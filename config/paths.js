@@ -42,7 +42,8 @@ module.exports = {
   nodePaths: nodePaths,
   entryPoints: {
     'casestudy': [resolveApp('src/bundles/CaseStudy/CaseStudyWidget')],
-    'casestudy-view': [resolveApp('src/bundles/CaseStudy/CaseStudyViewWidget')]
+    'casestudy-view': [resolveApp('src/bundles/CaseStudy/CaseStudyViewWidget')],
+    'shared': [resolveApp('src/shared/sharedEntry')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json'))

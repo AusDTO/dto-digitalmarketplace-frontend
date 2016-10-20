@@ -20,6 +20,10 @@ export default class ComponentRenderer {
       element = element.default;
     }
 
+    if (!element.instance) {
+      throw new Error('Component must be registered in the Registry')
+    }
+
     this.element = element;
   }
 

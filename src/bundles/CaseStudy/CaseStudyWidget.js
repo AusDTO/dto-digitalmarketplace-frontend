@@ -5,18 +5,16 @@ import Registry from '../../registry'
 // Need to make this work.
 // import { CaseStudy, createStore } from '../bundles/CaseStudy'
 import createStore from './redux/create'
-import CaseStudy from './CaseStudy'
-
+import CaseStudyForm from './components/CaseStudyForm'
 
 const CaseStudyWidget = (props, _context) => {
   const store = createStore(props)
   return (
     <Provider store={store}>
-      <CaseStudy />
+      <CaseStudyForm />
     </Provider>
   )
 }
-
 
 Registry.add({
   casestudy: CaseStudyWidget

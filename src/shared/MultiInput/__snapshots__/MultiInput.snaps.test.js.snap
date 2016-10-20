@@ -1,0 +1,176 @@
+exports[`test MultiInput with 4 default rows 1`] = `
+<div>
+  <div>
+    <label>
+      1
+    </label>
+    <input
+      defaultValue=""
+      id="test-0"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+  </div>
+  <div>
+    <label>
+      2
+    </label>
+    <input
+      defaultValue=""
+      id="test-1"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <div>
+    <label>
+      3
+    </label>
+    <input
+      defaultValue=""
+      id="test-2"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <div>
+    <label>
+      4
+    </label>
+    <input
+      defaultValue=""
+      id="test-3"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <a
+    href="#"
+    onClick={[Function]}>
+    Add another row
+  </a>
+</div>
+`;
+
+exports[`test MultiInput with 4 rows 1`] = `
+<div>
+  <div>
+    <label>
+      1
+    </label>
+    <input
+      defaultValue="One"
+      id="test-0"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+  </div>
+  <div>
+    <label>
+      2
+    </label>
+    <input
+      defaultValue="Two"
+      id="test-1"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <div>
+    <label>
+      3
+    </label>
+    <input
+      defaultValue="Three"
+      id="test-2"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <div>
+    <label>
+      4
+    </label>
+    <input
+      defaultValue="Four"
+      id="test-3"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+    <a
+      href="#"
+      onClick={[Function]}>
+      remove
+    </a>
+  </div>
+  <a
+    href="#"
+    onClick={[Function]}>
+    Add another row
+  </a>
+</div>
+`;
+
+exports[`test MultiInput with no props 1`] = `
+<div>
+  <div>
+    <label>
+      1
+    </label>
+    <input
+      defaultValue=""
+      id="test-0"
+      name="test[]"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text" />
+  </div>
+  <a
+    href="#"
+    onClick={[Function]}>
+    Add another row
+  </a>
+</div>
+`;

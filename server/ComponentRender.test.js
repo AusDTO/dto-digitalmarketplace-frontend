@@ -1,3 +1,5 @@
+jest.mock('react-dom')
+
 import ComponentRenderer from './ComponentRenderer'
 
 const helloWorldWidgetPath = 'bundles/HelloWorld/HelloWorldWidget.js'
@@ -33,5 +35,12 @@ test('ComponentRenderer throws error on path with no module', () => {
   expect(() => {
     new ComponentRenderer('__mocks__/badModule')
   }).toThrowError('File did not export anything: \'__mocks__/badModule\'')
+})
+
+test('ComponentRenderer requiring es5 module', () => {
+  expect(() => {
+    const component = new ComponentRenderer('__mocks__/es5Module')
+    component.render({ _serverContext: { location: '/' }})
+  }).toThrowError('Component must be registered in the Registry')
 
 })

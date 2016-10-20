@@ -174,3 +174,23 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
   }
   @include grid-core(lg);
 }
+
+
+
+.field {
+  margin: 10px 0;
+  padding: 20px 0 30px;
+  border-bottom: 1px solid #777;
+
+  label {
+    font-size: 1em;
+  }
+  p {
+    font-size: 0.75em;
+  }
+
+  .errors span {
+    font-weight: 700;
+    color: red;
+  }
+}
