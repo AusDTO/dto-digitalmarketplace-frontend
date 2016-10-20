@@ -38,11 +38,17 @@ const render = (request, response) => {
   }
 
   const component = cache[pathToSource];
-  const markup = component.render(props, toStaticMarkup);
-  response.send({
-    markup,
-    slug: component.element.key
-  });
+
+  // TODO test this behaviour
+  try {
+    const markup = component.render(props, toStaticMarkup);
+    response.send({
+      markup,
+      slug: component.element.key
+    });
+  } catch(e) {
+    return response.status(400).send({ error: e.message });
+  }
 }
 
 

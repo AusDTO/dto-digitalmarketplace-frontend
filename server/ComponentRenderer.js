@@ -24,6 +24,7 @@ export default class ComponentRenderer {
       throw new Error('Component must be registered in the Registry')
     }
 
+    this.pathToSource = pathToSource;
     this.element = element;
   }
 
@@ -36,12 +37,18 @@ export default class ComponentRenderer {
     const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString';
     const context = createServerRenderContext();
 
-    return (
-      ReactDOMServer[renderMethod](
+    // TODO test this behaviour
+    let markup;
+    try {
+      markup = ReactDOMServer[renderMethod](
         <ServerRouter location={location} context={context}>
           {this.element.instance(props)}
         </ServerRouter>
-      )
-    );
+      );
+    } catch (e) {
+      throw new Error(`Error rendering component: '${this.pathToSource}' with message: '${e.message}'`)
+    }
+
+    return markup;
   }
 }
