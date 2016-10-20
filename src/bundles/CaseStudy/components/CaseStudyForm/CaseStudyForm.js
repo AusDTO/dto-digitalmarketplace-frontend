@@ -12,19 +12,16 @@ import MultiInput from '../../../../shared/MultiInput';
 const Textfield = ({ name, id, htmlFor, label, model, validators, messages, description }) => (
   <div className="field">
     <label htmlFor={htmlFor} className="question-heading">{label}</label>
-    <p>{description}</p>
+    {description && (
+      <p className="hint">{description}</p>
+    )}
+    <Errors className="errors validation-message" model={model} show="touched" messages={messages} />
     <Control.text
       model={model}
       name={name}
       id={id}
       type="text"
       validators={validators}
-    />
-    <Errors
-      className="errors"
-      model={model}
-      show="touched"
-      messages={messages}
     />
   </div>
 )
@@ -90,7 +87,15 @@ class CaseStudyForm extends React.Component {
 
           <div className="field">
             <label htmlFor="opportunity">Outline the problem or opportunity</label>
-            <p>Describe the project goal and any relevant background information.</p>
+            <p className="hint">Describe the project goal and any relevant background information.</p>
+            <Errors
+              className="errors validation-message"
+              model='form.caseStudyForm.opportunity'
+              show="touched"
+              messages={{
+                required: 'You must outline the opportunity'
+              }}
+            />
             <Control
               model=".opportunity"
               controlProps={{
@@ -99,20 +104,21 @@ class CaseStudyForm extends React.Component {
                 name: 'opportunity'
               }}
               validators={{ required }}
-              component={Textarea} />
-            <Errors
-              className="errors"
-              model='form.caseStudyForm.opportunity'
-              show="touched"
-              messages={{
-                required: 'You must outline the opportunity'
-              }}
-              />
+              component={Textarea}
+            />
           </div>
 
           <div className="field">
             <label htmlFor="approach">Describe your approach</label>
-            <p>How did your capabilities and methods contribute to achieving the project goals?</p>
+            <p className="hint">How did your capabilities and methods contribute to achieving the project goals?</p>
+             <Errors
+              className="errors validation-message"
+              model='form.caseStudyForm.approach'
+              show="touched"
+              messages={{
+                required: 'You must outline your approach'
+              }}
+            />
             <Control
               model=".approach"
               controlProps={{
@@ -121,21 +127,19 @@ class CaseStudyForm extends React.Component {
                 name: 'approach'
               }}
               validators={{ required }}
-              component={Textarea} />
-
-            <Errors
-              className="errors"
-              model='form.caseStudyForm.approach'
-              show="touched"
-              messages={{
-                required: 'You must outline your approach'
-              }}
-              />
+              component={Textarea}
+            />
           </div>
 
           <div className="field">
             <label htmlFor="outcome-0">What was the outcome?</label>
-            <p>Describe the project goal and any relevant background information.</p>
+            <p className="hint">Describe the project goal and any relevant background information.</p>
+            <Errors
+              className="errors validation-message"
+              model='form.caseStudyForm.outcome'
+              show="touched"
+              messages={{ minArrayLength: 'You must provide at least one outcome.' }}
+            />
             <Control
               model=".outcome"
               controlProps={{
@@ -143,18 +147,19 @@ class CaseStudyForm extends React.Component {
                 name: 'outcome'
               }}
               validators={{ minArrayLength: minArrayLength(1) }}
-              component={MultiInput} />
-            <Errors
-              className="errors"
-              model='form.caseStudyForm.outcome'
-              show="touched"
-              messages={{ minArrayLength: 'You must provide at least one outcome.' }}
-              />
+              component={MultiInput}
+            />
           </div>
 
            <div className="field">
             <label htmlFor="links-0">Project links</label>
-            <p>Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.</p>
+            <p className="hint">Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.</p>
+            <Errors
+              className="errors validation-message"
+              model='form.caseStudyForm.links'
+              show="touched"
+              messages={{ minArrayLength: 'You must provide at least one project link.' }}
+            />
             <Control
               model=".links"
               controlProps={{
@@ -162,13 +167,8 @@ class CaseStudyForm extends React.Component {
                 name: 'links'
               }}
               validators={{ minArrayLength: minArrayLength(1) }}
-              component={MultiInput} />
-            <Errors
-              className="errors"
-              model='form.caseStudyForm.links'
-              show="touched"
-              messages={{ minArrayLength: 'You must provide at least one project link.' }}
-              />
+              component={MultiInput}
+            />
           </div>
 
           <div className="field">
@@ -179,7 +179,7 @@ class CaseStudyForm extends React.Component {
             />
             <label htmlFor="acknowledge">I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.</label>
             <Errors
-              className="errors"
+              className="errors validation-message"
               model='form.caseStudyForm.acknowledge'
               show="touched"
               messages={{
