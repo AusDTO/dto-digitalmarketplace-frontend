@@ -117,6 +117,6 @@
     "extends": "react-app"
   },
   "engines": {
-    "node": "6.7.0"
+    "node": "6.9.0"
   }
 }
