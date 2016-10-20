@@ -37,18 +37,10 @@ export default class ComponentRenderer {
     const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString';
     const context = createServerRenderContext();
 
-    // TODO test this behaviour
-    let markup;
-    try {
-      markup = ReactDOMServer[renderMethod](
-        <ServerRouter location={location} context={context}>
-          {this.element.instance(props)}
-        </ServerRouter>
-      );
-    } catch (e) {
-      throw new Error(`Error rendering component: '${this.pathToSource}' with message: '${e.message}'`)
-    }
-
-    return markup;
+    return ReactDOMServer[renderMethod](
+      <ServerRouter location={location} context={context}>
+        {this.element.instance(props)}
+      </ServerRouter>
+    );
   }
 }

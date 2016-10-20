@@ -47,7 +47,10 @@ const render = (request, response) => {
       slug: component.element.key
     });
   } catch(e) {
-    return response.status(400).send({ error: e.message });
+    return response.status(400).send({ 
+      error: `Error rendering component: '${pathToSource}'`, 
+      stack: e.stack 
+    });
   }
 }
 
