@@ -156,6 +156,9 @@ class CaseStudyForm extends React.Component {
                 id: 'outcome',
                 name: 'outcome'
               }}
+              mapProps={{
+                rows: (props) => props.viewValue,
+              }}
               validators={{ minArrayLength: minArrayLength(1) }}
               component={MultiInput}
             />
@@ -175,6 +178,9 @@ class CaseStudyForm extends React.Component {
               controlProps={{
                 id: 'links',
                 name: 'links'
+              }}
+              mapProps={{
+                rows: (props) => props.viewValue,
               }}
               validators={{ minArrayLength: minArrayLength(1) }}
               component={MultiInput}
