@@ -1,11 +1,11 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import Registry from '../../registry'
+import RegisterComponent from '../../RegisterComponent'
 
 import createStore from './redux/create'
 import View from './components/View'
 
-const CaseStudyViewWidget = (props, _context) => {
+const CaseStudyViewWidget = (props) => {
   const store = createStore(props)
   return (
     <Provider store={store}>
@@ -14,9 +14,4 @@ const CaseStudyViewWidget = (props, _context) => {
   )
 }
 
-
-Registry.add({
-  'casestudy-view': CaseStudyViewWidget
-})
-
-export default Registry
+export default new RegisterComponent({ 'casestudy-view': CaseStudyViewWidget })
