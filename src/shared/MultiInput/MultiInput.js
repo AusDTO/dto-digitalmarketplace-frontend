@@ -98,8 +98,8 @@ class MultiInput extends React.Component {
           let fieldName = `${name}[]`;
           let fieldId = `${name}-${i}`;
           return (
-            <div key={id}>
-              <label>{i + 1}</label>
+            <div key={id} className="list-entry">
+              <label htmlFor={fieldId} className="text-box-number-label">{i + 1}</label>
               <input
                 type="text"
                 name={fieldName}
@@ -107,14 +107,19 @@ class MultiInput extends React.Component {
                 onChange={this.onChange.bind(this, id)}
                 onBlur={onBlur}
                 onFocus={onFocus}
+                className="text-box"
                 defaultValue={value} />
               {i > 0 && (
-                <a href="#" onClick={this.removeRow.bind(this, id)}>remove</a>
+                <button type="button" className="button-secondary" onClick={this.removeRow.bind(this, id)}>
+                  remove <span className="visuallyhidden">number {i}</span>
+                </button>
               )}
             </div>
           )
         })}
-        <a href="#" onClick={this.addRow.bind(this)}>Add another row</a>
+        <button type="button" className="button-secondary" onClick={this.addRow.bind(this)}>
+          Add another row
+        </button>
       </div>
     )
   }
