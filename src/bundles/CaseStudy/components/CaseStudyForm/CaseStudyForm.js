@@ -28,6 +28,12 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
 
 class CaseStudyForm extends React.Component {
 
+  static propTypes = {
+    action: PropTypes.string,
+    csrf_token: PropTypes.string,
+    formValid: PropTypes.bool.isRequired
+  }
+
   attachNode(node) {
     this._form = ReactDOM.findDOMNode(node);
   }
