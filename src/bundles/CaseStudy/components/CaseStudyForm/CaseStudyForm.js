@@ -185,6 +185,7 @@ class CaseStudyForm extends React.Component {
             <Control.checkbox
               model=".acknowledge"
               id="acknowledge"
+              name="acknowledge"
               validators={{ required }}
             />
             <label htmlFor="acknowledge">I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.</label>
