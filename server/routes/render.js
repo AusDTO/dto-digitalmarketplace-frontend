@@ -64,7 +64,6 @@ const render = (request, response) => {
 
   const component = cache[pathToSource];
 
-  getHashedFilename(component.element.key)
   // TODO test this behaviour
   try {
     const markup = component.render(props, toStaticMarkup);

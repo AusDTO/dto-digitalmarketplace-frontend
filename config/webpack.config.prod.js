@@ -221,10 +221,9 @@ module.exports = [{
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin('[name].css'),
     function() {
-      let path = require('path')
-      this.plugin("done", function(stats) {
-        require("fs").writeFileSync(
-          path.join(__dirname, "..", "assetsByChunkName.json"),
+      this.plugin('done', function(stats) {
+        require('fs').writeFileSync(
+          require('path').join(__dirname, '..', 'assetsByChunkName.json'),
           JSON.stringify(stats.toJson().assetsByChunkName));
       });
     }
