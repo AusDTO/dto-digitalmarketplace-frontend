@@ -158,6 +158,9 @@ class CaseStudyForm extends React.Component {
               }}
               mapProps={{
                 rows: (props) => props.viewValue,
+                onChange: (props) => props.onChange,
+                onBlur: (props) => props.onBlur,
+                onFocus: (props) => props.onFocus,
               }}
               validators={{ minArrayLength: minArrayLength(1) }}
               component={MultiInput}
@@ -181,6 +184,9 @@ class CaseStudyForm extends React.Component {
               }}
               mapProps={{
                 rows: (props) => props.viewValue,
+                onChange: (props) => props.onChange,
+                onBlur: (props) => props.onBlur,
+                onFocus: (props) => props.onFocus,
               }}
               validators={{ minArrayLength: minArrayLength(1) }}
               component={MultiInput}
