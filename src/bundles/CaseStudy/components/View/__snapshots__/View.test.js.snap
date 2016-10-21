@@ -18,17 +18,6 @@ exports[`test VerticalList with required attributes 1`] = `
             Transport for NSW
           </small>
         </div>
-        <div
-          className="col-sm-12 col-md-5 actions">
-          <a
-            href="#">
-            Edit case study
-          </a>
-          <a
-            href="#">
-            Delete case study
-          </a>
-        </div>
       </div>
     </div>
   </header>
@@ -38,7 +27,7 @@ exports[`test VerticalList with required attributes 1`] = `
       Timeframe
     </h4>
     <p>
-      January to October 2015
+      January 2016 — June 2016
     </p>
   </aside>
   <article
@@ -64,7 +53,7 @@ exports[`test VerticalList with required attributes 1`] = `
       </section>
       <section>
         <h3>
-          Outcome
+          Outcomes and benefits
         </h3>
         <ul>
           <li>
@@ -82,22 +71,106 @@ exports[`test VerticalList with required attributes 1`] = `
         <h3>
           Visit the product
         </h3>
+        <a
+          href="http://gov.au/"
+          rel="external">
+          http://gov.au/
+        </a>
+      </section>
+    </div>
+  </article>
+</section>
+`;
+
+exports[`test VerticalList with required attributes and meta links 1`] = `
+<section>
+  <header
+    className="row">
+    <div
+      className="col-md-12">
+      <h2>
+        My Sydney
+      </h2>
+    </div>
+    <div
+      className="meta col-md-12">
+      <div
+        className="row">
+        <div
+          className="col-sm-12 col-md-7">
+          <small>
+            Transport for NSW
+          </small>
+        </div>
+        <div
+          className="col-sm-12 col-md-5 actions">
+          <a
+            href="link/to/edit">
+            Edit case study
+          </a>
+          <a
+            href="link/to/delete">
+            Delete case study
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <aside
+    className="sidebar">
+    <h4>
+      Timeframe
+    </h4>
+    <p>
+      January 2016 — June 2016
+    </p>
+  </aside>
+  <article
+    className="content-main row"
+    role="main">
+    <div
+      className="col-md-8 col-sm-12">
+      <section>
+        <h3>
+          Objective
+        </h3>
+        <p>
+          The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
+        </p>
+      </section>
+      <section>
+        <h3>
+          Approach
+        </h3>
+        <p>
+          We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions\' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
+        </p>
+      </section>
+      <section>
+        <h3>
+          Outcomes and benefits
+        </h3>
         <ul>
           <li>
-            <a
-              href="http://google.com"
-              rel="external">
-              http://google.com
-            </a>
+            We gathered all requirements for maps including what was to be shown, what data was available.
           </li>
           <li>
-            <a
-              href="http://facebook.com"
-              rel="external">
-              http://facebook.com
-            </a>
+            We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
+          </li>
+          <li>
+            We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
           </li>
         </ul>
+      </section>
+      <section>
+        <h3>
+          Visit the product
+        </h3>
+        <a
+          href="http://gov.au/"
+          rel="external">
+          http://gov.au/
+        </a>
       </section>
     </div>
   </article>
