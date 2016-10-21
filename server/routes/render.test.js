@@ -16,6 +16,8 @@ class Response {
   statusCode = 200
 
   send = (object) => {
+    // vendor will always be dynamic!
+    if (object && object.files) delete object.files.vendor;
     this.sendResponse = object;
     return this;
   }
@@ -48,7 +50,9 @@ test('render route with standard request', () => {
     .toEqual({
       markup: '<h1 data-reactroot="" data-reactid="1" data-react-checksum="55251490">Hello World</h1>',
       slug: 'helloworld',
-      file: 'helloworld'
+      files: {
+        'helloworld': 'helloworld'
+      }
     });
 });
 
@@ -66,7 +70,9 @@ test('render route with standard request with custom props', () => {
     .toEqual({
       markup: '<h1 id="hello-world" data-reactroot="" data-reactid="1" data-react-checksum="1940985849">Hello World</h1>',
       slug: 'helloworld',
-      file: 'helloworld'
+      files: {
+        'helloworld': 'helloworld'
+      }
     });
 });
 
@@ -84,7 +90,9 @@ test('render route with toStaticMarkup flag', () => {
     .toEqual({
       markup: '<h1>Hello World</h1>',
       slug: 'helloworld',
-      file: 'helloworld'
+      files: {
+        'helloworld': 'helloworld'
+      }
     });
 });
 
@@ -103,7 +111,9 @@ test('render route with toStaticMarkup flag and custom props', () => {
     .toEqual({
       markup: '<h1 id="hello-world">Hello World</h1>',
       slug: 'helloworld',
-      file: 'helloworld'
+      files: {
+        'helloworld': 'helloworld'
+      }
     });
 });
 

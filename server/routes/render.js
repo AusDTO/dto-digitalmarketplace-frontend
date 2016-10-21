@@ -70,7 +70,10 @@ const render = (request, response) => {
     response.send({
       markup,
       slug: component.element.key,
-      file: getHashedFilename(component.element.key)
+      files: {
+        [component.element.key]: getHashedFilename(component.element.key),
+        vendor: getHashedFilename('vendor')
+      }
     });
   } catch(e) {
     return response.status(400).send({ 
