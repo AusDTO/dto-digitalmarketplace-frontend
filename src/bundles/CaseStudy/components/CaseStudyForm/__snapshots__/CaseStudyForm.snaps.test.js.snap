@@ -155,7 +155,7 @@ exports[`test CaseStudyForm renders 1`] = `
     <div
       className="field">
       <label
-        htmlFor="links-0">
+        htmlFor="projectLinks-0">
         Project links
       </label>
       <p
@@ -167,14 +167,14 @@ exports[`test CaseStudyForm renders 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="links-0">
+            htmlFor="projectLinks-0">
             1
           </label>
           <input
             className="text-box"
             defaultValue=""
-            id="links-0"
-            name="links"
+            id="projectLinks-0"
+            name="projectLinks"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -375,7 +375,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
     <div
       className="field">
       <label
-        htmlFor="links-0">
+        htmlFor="projectLinks-0">
         Project links
       </label>
       <p
@@ -387,14 +387,14 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="links-0">
+            htmlFor="projectLinks-0">
             1
           </label>
           <input
             className="text-box"
             defaultValue=""
-            id="links-0"
-            name="links"
+            id="projectLinks-0"
+            name="projectLinks"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -618,7 +618,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
     <div
       className="field">
       <label
-        htmlFor="links-0">
+        htmlFor="projectLinks-0">
         Project links
       </label>
       <p
@@ -630,14 +630,14 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="links-0">
+            htmlFor="projectLinks-0">
             1
           </label>
           <input
             className="text-box"
             defaultValue="http://gov.au/"
-            id="links-0"
-            name="links"
+            id="projectLinks-0"
+            name="projectLinks"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}

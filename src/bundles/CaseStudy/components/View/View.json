@@ -10,7 +10,7 @@
       "We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.",
       "We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes."
     ],
-    "links": [
+    "projectLinks": [
         "http://gov.au/"
     ]
   }

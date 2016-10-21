@@ -165,19 +165,19 @@ class CaseStudyForm extends React.Component {
           </div>
 
            <div className="field">
-            <label htmlFor="links-0">Project links</label>
+            <label htmlFor="projectLinks-0">Project links</label>
             <p className="hint">Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.</p>
             <Errors
               className="errors validation-message"
-              model='form.caseStudy.links'
+              model='form.caseStudy.projectLinks'
               show="touched"
               messages={{ minArrayLength: 'You must provide at least one project link.' }}
             />
             <Control
-              model=".links"
+              model=".projectLinks"
               controlProps={{
-                id: 'links',
-                name: 'links'
+                id: 'projectLinks',
+                name: 'projectLinks'
               }}
               mapProps={{
                 rows: (props) => props.viewValue,

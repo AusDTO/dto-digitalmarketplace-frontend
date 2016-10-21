@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import './View.css'
 
-const View = ({ title, opportunity, client, approach, timeframe, outcome, links, meta }) => (
+const View = ({ title, opportunity, client, approach, timeframe, outcome, projectLinks, meta }) => (
   <section>
     <header className="row">
       <div className="col-md-12">
@@ -45,7 +45,7 @@ const View = ({ title, opportunity, client, approach, timeframe, outcome, links,
         </section>
         <section>
           <h3>Visit the product</h3>
-          {links.map((item, i) => <a href={item} key={i} rel="external">{item}</a>)}
+          {projectLinks.map((item, i) => <a href={item} key={i} rel="external">{item}</a>)}
         </section>
       </div>
     </article>
@@ -60,7 +60,7 @@ View.propTypes = {
   approach: PropTypes.string.isRequired,
   timeframe: PropTypes.string.isRequired,
   outcome: PropTypes.arrayOf(PropTypes.string).isRequired,
-  links: PropTypes.arrayOf(PropTypes.string).isRequired,
+  projectLinks: PropTypes.arrayOf(PropTypes.string).isRequired,
   meta: PropTypes.objectOf(PropTypes.string),
 }
 
