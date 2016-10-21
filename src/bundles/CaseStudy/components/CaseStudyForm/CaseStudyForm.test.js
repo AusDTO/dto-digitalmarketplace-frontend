@@ -12,7 +12,7 @@ const generateFormValidilityState = (valid) => {
   return {
     form: {
       forms: {
-        caseStudyForm: {
+        caseStudy: {
           $form: { valid }
         }
       }
@@ -39,5 +39,5 @@ test('handleClick with formValid=false', () => {
   )
 
   wrapper.find('input[type="submit"]').simulate('click')
-  expect(store.getState().form.forms.caseStudyForm.$form.valid).toBeFalsy()
+  expect(store.getState().form.forms.caseStudy.$form.valid).toBeFalsy()
 });

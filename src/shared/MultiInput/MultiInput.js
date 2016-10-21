@@ -110,7 +110,7 @@ class MultiInput extends React.Component {
                 defaultValue={value} />
               {i > 0 && (
                 <button type="button" className="button-secondary" onClick={this.removeRow.bind(this, id)}>
-                  remove <span className="visuallyhidden">number {i}</span>
+                  remove <span className="visuallyhidden">number {i + 1}</span>
                 </button>
               )}
             </div>

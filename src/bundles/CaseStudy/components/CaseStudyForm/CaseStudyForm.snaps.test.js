@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import renderer from 'react-test-renderer'
 
 import CaseStudyForm, { Textfield } from './CaseStudyForm'
+import sampleState from './CaseStudyForm.json'
 import createStore from '../../redux/create'
 
 test('CaseStudyForm renders', () => {
@@ -36,4 +37,16 @@ test('CaseStudyForm renders with form_options', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test('CaseStudyForm renders with populated fields', () => {
+  let store = createStore(Object.assign({}, { _serverContext: {} }, sampleState))
+  const component = renderer.create(
+    <Provider store={store}>
+      <CaseStudyForm />
+    </Provider>
+  );
+
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+})
 
