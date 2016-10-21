@@ -46,6 +46,7 @@ module.exports = {
     'shared': [resolveApp('src/shared/sharedEntry')]
   },
   entryPointMocks: {
-    'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json'))
+    'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
+    'casestudy': require(resolveApp('src/bundles/CaseStudy/components/CaseStudyForm/CaseStudyForm.json'))
   }
 };

@@ -7,6 +7,6 @@ export default combineReducers({
   casestudy,
   form_options: (state = {}) => state,
   form: combineForms({
-    caseStudyForm: { title: '' , opportunity: '' }
+    caseStudy: {}
   }, 'form'),
 })

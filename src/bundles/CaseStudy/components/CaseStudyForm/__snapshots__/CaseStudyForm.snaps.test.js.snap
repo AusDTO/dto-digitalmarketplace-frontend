@@ -432,3 +432,246 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
   </form>
 </div>
 `;
+
+exports[`test CaseStudyForm renders with populated fields 1`] = `
+<div
+  className="layout">
+  <form
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    tabIndex="-1" />
+  <form
+    action={undefined}
+    method="post"
+    onReset={[Function]}
+    onSubmit={[Function]}>
+    <div
+      className="field">
+      <label
+        className="question-heading"
+        htmlFor="title">
+        Give your case study a title
+      </label>
+      <input
+        id="title"
+        name="title"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        type="text"
+        value="Case Study Title" />
+    </div>
+    <div
+      className="field">
+      <label
+        className="question-heading"
+        htmlFor="client">
+        Who was the client?
+      </label>
+      <input
+        id="client"
+        name="client"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        type="text"
+        value="The Client Name" />
+    </div>
+    <div
+      className="field">
+      <label
+        className="question-heading"
+        htmlFor="timeframe">
+        What was the time frame?
+      </label>
+      <p
+        className="hint">
+        For example,  January 2016 — June 2016
+      </p>
+      <input
+        id="timeframe"
+        name="timeframe"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        type="text"
+        value="January 2016 — June 2016" />
+    </div>
+    <div
+      className="field">
+      <label
+        htmlFor="opportunity">
+        Outline the problem or opportunity
+      </label>
+      <p
+        className="hint">
+        Describe the project goal and any relevant background information.
+      </p>
+      <div>
+        <textarea
+          defaultValue="The opportunity"
+          id="opportunity"
+          name="opportunity"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]} />
+        <span
+          className="limit">
+          198 words remaining
+        </span>
+      </div>
+    </div>
+    <div
+      className="field">
+      <label
+        htmlFor="approach">
+        Describe your approach
+      </label>
+      <p
+        className="hint">
+        How did your capabilities and methods contribute to achieving the project goals?
+      </p>
+      <div>
+        <textarea
+          defaultValue="The approach"
+          id="approach"
+          name="approach"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]} />
+        <span
+          className="limit">
+          198 words remaining
+        </span>
+      </div>
+    </div>
+    <div
+      className="field">
+      <label
+        htmlFor="outcome-0">
+        What was the outcome?
+      </label>
+      <p
+        className="hint">
+        List the key benefits of this project.
+      </p>
+      <div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="outcome-0">
+            1
+          </label>
+          <input
+            className="text-box"
+            defaultValue="Outcome 1"
+            id="outcome-0"
+            name="outcome"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+        </div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="outcome-1">
+            2
+          </label>
+          <input
+            className="text-box"
+            defaultValue="Outcome 2"
+            id="outcome-1"
+            name="outcome"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button">
+            remove 
+            <span
+              className="visuallyhidden">
+              number 
+              2
+            </span>
+          </button>
+        </div>
+        <button
+          className="button-secondary"
+          onClick={[Function]}
+          type="button">
+          Add another row
+        </button>
+      </div>
+    </div>
+    <div
+      className="field">
+      <label
+        htmlFor="links-0">
+        Project links
+      </label>
+      <p
+        className="hint">
+        Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+      </p>
+      <div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="links-0">
+            1
+          </label>
+          <input
+            className="text-box"
+            defaultValue="http://gov.au/"
+            id="links-0"
+            name="links"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+        </div>
+        <button
+          className="button-secondary"
+          onClick={[Function]}
+          type="button">
+          Add another row
+        </button>
+      </div>
+    </div>
+    <div
+      className="field">
+      <input
+        checked={false}
+        id="acknowledge"
+        name="acknowledge"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        type="checkbox" />
+      <label
+        htmlFor="acknowledge">
+        I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
+      </label>
+    </div>
+    <input
+      onClick={[Function]}
+      role="button"
+      type="submit"
+      value="Submit" />
+  </form>
+</div>
+`;

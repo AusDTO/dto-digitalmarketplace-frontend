@@ -56,12 +56,12 @@ class CaseStudyForm extends React.Component {
       <Layout>
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-        <Form model="form.caseStudyForm" action={action} method="post" ref={this.attachNode.bind(this)}>
+        <Form model="form.caseStudy" action={action} method="post" ref={this.attachNode.bind(this)}>
           {csrf_token && (
             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
           )}
           <Textfield
-            model="form.caseStudyForm.title"
+            model="form.caseStudy.title"
             name="title"
             id="title"
             htmlFor="title"
@@ -72,7 +72,7 @@ class CaseStudyForm extends React.Component {
             }} />
 
           <Textfield
-            model="form.caseStudyForm.client"
+            model="form.caseStudy.client"
             name="client"
             id="client"
             htmlFor="client"
@@ -83,7 +83,7 @@ class CaseStudyForm extends React.Component {
             }} />
 
           <Textfield
-            model="form.caseStudyForm.timeframe"
+            model="form.caseStudy.timeframe"
             name="timeframe"
             id="timeframe"
             htmlFor="timeframe"
@@ -100,7 +100,7 @@ class CaseStudyForm extends React.Component {
             <p className="hint">Describe the project goal and any relevant background information.</p>
             <Errors
               className="errors validation-message"
-              model='form.caseStudyForm.opportunity'
+              model='form.caseStudy.opportunity'
               show="touched"
               messages={{
                 required: 'You must outline the opportunity'
@@ -123,7 +123,7 @@ class CaseStudyForm extends React.Component {
             <p className="hint">How did your capabilities and methods contribute to achieving the project goals?</p>
              <Errors
               className="errors validation-message"
-              model='form.caseStudyForm.approach'
+              model='form.caseStudy.approach'
               show="touched"
               messages={{
                 required: 'You must outline your approach'
@@ -146,7 +146,7 @@ class CaseStudyForm extends React.Component {
             <p className="hint">List the key benefits of this project.</p>
             <Errors
               className="errors validation-message"
-              model='form.caseStudyForm.outcome'
+              model='form.caseStudy.outcome'
               show="touched"
               messages={{ minArrayLength: 'You must provide at least one outcome.' }}
             />
@@ -155,6 +155,9 @@ class CaseStudyForm extends React.Component {
               controlProps={{
                 id: 'outcome',
                 name: 'outcome'
+              }}
+              mapProps={{
+                rows: (props) => props.viewValue,
               }}
               validators={{ minArrayLength: minArrayLength(1) }}
               component={MultiInput}
@@ -166,7 +169,7 @@ class CaseStudyForm extends React.Component {
             <p className="hint">Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.</p>
             <Errors
               className="errors validation-message"
-              model='form.caseStudyForm.links'
+              model='form.caseStudy.links'
               show="touched"
               messages={{ minArrayLength: 'You must provide at least one project link.' }}
             />
@@ -175,6 +178,9 @@ class CaseStudyForm extends React.Component {
               controlProps={{
                 id: 'links',
                 name: 'links'
+              }}
+              mapProps={{
+                rows: (props) => props.viewValue,
               }}
               validators={{ minArrayLength: minArrayLength(1) }}
               component={MultiInput}
@@ -191,7 +197,7 @@ class CaseStudyForm extends React.Component {
             <label htmlFor="acknowledge">I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.</label>
             <Errors
               className="errors validation-message"
-              model='form.caseStudyForm.acknowledge'
+              model='form.caseStudy.acknowledge'
               show="touched"
               messages={{
                 required: 'You must acknowledge this case study will be shared.'
@@ -207,7 +213,7 @@ class CaseStudyForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const formValid = state.form.forms.caseStudyForm.$form.valid;
+  const formValid = state.form.forms.caseStudy.$form.valid;
   return {
     formValid,
     ...state.form_options
