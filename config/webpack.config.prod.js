@@ -120,7 +120,7 @@ module.exports = [{
     // Generated JS file names (with nested folders).
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
-    filename: '[name].js',
+    filename: '[name].[chunkhash:8].js',
     chunkFilename: '[name].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath
@@ -219,7 +219,15 @@ module.exports = [{
       }
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].css'),
+    function() {
+      let path = require('path')
+      this.plugin("done", function(stats) {
+        require("fs").writeFileSync(
+          path.join(__dirname, "..", "assetsByChunkName.json"),
+          JSON.stringify(stats.toJson().assetsByChunkName));
+      });
+    }
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

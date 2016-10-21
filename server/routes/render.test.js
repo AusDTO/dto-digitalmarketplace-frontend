@@ -47,7 +47,8 @@ test('render route with standard request', () => {
   expect(response.sendResponse)
     .toEqual({
       markup: '<h1 data-reactroot="" data-reactid="1" data-react-checksum="55251490">Hello World</h1>',
-      slug: 'helloworld'
+      slug: 'helloworld',
+      file: 'helloworld'
     });
 });
 
@@ -64,7 +65,8 @@ test('render route with standard request with custom props', () => {
   expect(response.sendResponse)
     .toEqual({
       markup: '<h1 id="hello-world" data-reactroot="" data-reactid="1" data-react-checksum="1940985849">Hello World</h1>',
-      slug: 'helloworld'
+      slug: 'helloworld',
+      file: 'helloworld'
     });
 });
 
@@ -81,7 +83,8 @@ test('render route with toStaticMarkup flag', () => {
   expect(response.sendResponse)
     .toEqual({
       markup: '<h1>Hello World</h1>',
-      slug: 'helloworld'
+      slug: 'helloworld',
+      file: 'helloworld'
     });
 });
 
@@ -99,7 +102,8 @@ test('render route with toStaticMarkup flag and custom props', () => {
   expect(response.sendResponse)
     .toEqual({
       markup: '<h1 id="hello-world">Hello World</h1>',
-      slug: 'helloworld'
+      slug: 'helloworld',
+      file: 'helloworld'
     });
 });
 
