@@ -95,13 +95,14 @@ class MultiInput extends React.Component {
     return (
       <div>
         {inputs.map(({ id, value }, i) => {
+          let fieldName = `${name}[]`;
           let fieldId = `${name}-${i}`;
           return (
             <div key={id} className="list-entry">
               <label htmlFor={fieldId} className="text-box-number-label">{i + 1}</label>
               <input
                 type="text"
-                name={name}
+                name={fieldName}
                 id={fieldId}
                 onChange={this.onChange.bind(this, id)}
                 onBlur={onBlur}
