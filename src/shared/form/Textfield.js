@@ -12,7 +12,7 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
       show="touched"
       messages={messages}
       wrapper={(props) => (
-        <a className="error validation-message" href={`#${id}`}><span className="visuallyhidden">Validation Error: </span>{props.children}</a>
+        <a className="validation-message" href={`#${id}`}><span className="visuallyhidden">Validation Error: </span>{props.children}</a>
       )}
     />
     <Control.text
