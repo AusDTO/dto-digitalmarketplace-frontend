@@ -45,6 +45,10 @@ const MultiInput = (props) => {
   );
 };
 
+MultiInput.defaultProps = {
+  mapProps: {},
+};
+
 MultiInput.propTypes = {
   id: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
