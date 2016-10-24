@@ -38,13 +38,19 @@ Textarea.propTypes = {
   name: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   label: React.PropTypes.string.isRequired,
-  model: React.PropTypes.string.isRequired,
+  model: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.string,
+  ]).isRequired,
 
   validators: React.PropTypes.object,
   messages: React.PropTypes.object,
   description: React.PropTypes.string,
   controlProps: React.PropTypes.object,
-  mapProps: React.PropTypes.object,
+  mapProps: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.object,
+  ]),
 };
 
 

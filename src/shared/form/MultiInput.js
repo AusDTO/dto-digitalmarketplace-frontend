@@ -45,4 +45,24 @@ const MultiInput = (props) => {
   );
 };
 
+MultiInput.propTypes = {
+  id: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
+  htmlFor: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string.isRequired,
+  model: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.string,
+  ]).isRequired,
+
+  messages: React.PropTypes.object,
+  validators: React.PropTypes.object,
+  description: React.PropTypes.string,
+  controlProps: React.PropTypes.object,
+  mapProps: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.object,
+  ]),
+}
+
 export default MultiInput;
