@@ -6,25 +6,10 @@ import { Form, Control, Errors } from 'react-redux-form';
 import { required, minArrayLength } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
-import Textarea from '../../../../shared/Textarea';
-import MultiInput from '../../../../shared/MultiInput';
 
-const Textfield = ({ name, id, htmlFor, label, model, validators, messages, description }) => (
-  <div className="field">
-    <label htmlFor={htmlFor} className="question-heading">{label}</label>
-    {description && (
-      <p className="hint">{description}</p>
-    )}
-    <Errors className="errors validation-message" model={model} show="touched" messages={messages} />
-    <Control.text
-      model={model}
-      name={name}
-      id={id}
-      type="text"
-      validators={validators}
-    />
-  </div>
-)
+import MultiInput from '../../../../shared/form/MultiInput';
+import Textarea   from '../../../../shared/form/Textarea';
+import Textfield  from '../../../../shared/form/Textfield';
 
 class CaseStudyForm extends React.Component {
 
@@ -56,10 +41,16 @@ class CaseStudyForm extends React.Component {
       <Layout>
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-        <Form model="form.caseStudy" action={action} method="post" ref={this.attachNode.bind(this)}>
+        <Form model="form.caseStudy"
+          action={action}
+          method="post"
+          id="casestudy__create"
+          ref={this.attachNode.bind(this)}
+        >
           {csrf_token && (
             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
           )}
+
           <Textfield
             model="form.caseStudy.title"
             name="title"
@@ -69,7 +60,8 @@ class CaseStudyForm extends React.Component {
             validators={{ required }}
             messages={{
               required: 'Title is required',
-            }} />
+            }}
+          />
 
           <Textfield
             model="form.caseStudy.client"
@@ -95,103 +87,53 @@ class CaseStudyForm extends React.Component {
             }}
           />
 
-          <div className="field">
-            <label htmlFor="opportunity">Outline the problem or opportunity</label>
-            <p className="hint">Describe the project goal and any relevant background information.</p>
-            <Errors
-              className="errors validation-message"
-              model='form.caseStudy.opportunity'
-              show="touched"
-              messages={{
-                required: 'You must outline the opportunity'
-              }}
-            />
-            <Control
-              model=".opportunity"
-              controlProps={{
-                limit: 200,
-                id: 'opportunity',
-                name: 'opportunity'
-              }}
-              validators={{ required }}
-              component={Textarea}
-            />
-          </div>
+          <Textarea
+            model="form.caseStudy.opportunity"
+            name="opportunity"
+            id="opportunity"
+            controlProps={{ limit: 200 }}
+            label="Outline the problem or opportunity"
+            description="Describe the project goal and any relevant background information."
+            messages={{
+              required: 'You must outline the opportunity'
+            }}
+            validators={{ required }}
+          />
 
-          <div className="field">
-            <label htmlFor="approach">Describe your approach</label>
-            <p className="hint">How did your capabilities and methods contribute to achieving the project goals?</p>
-             <Errors
-              className="errors validation-message"
-              model='form.caseStudy.approach'
-              show="touched"
-              messages={{
-                required: 'You must outline your approach'
-              }}
-            />
-            <Control
-              model=".approach"
-              controlProps={{
-                limit: 200,
-                id: 'approach',
-                name: 'approach'
-              }}
-              validators={{ required }}
-              component={Textarea}
-            />
-          </div>
+          <Textarea
+            model="form.caseStudy.approach"
+            name="approach"
+            id="approach"
+            controlProps={{ limit: 200 }}
+            label="Describe your approach"
+            description="How did your capabilities and methods contribute to achieving the project goals?"
+            messages={{
+              required: 'You must outline your approach'
+            }}
+            validators={{ required }}
+          />
 
-          <div className="field">
-            <label htmlFor="outcome-0">What was the outcome?</label>
-            <p className="hint">List the key benefits of this project.</p>
-            <Errors
-              className="errors validation-message"
-              model='form.caseStudy.outcome'
-              show="touched"
-              messages={{ minArrayLength: 'You must provide at least one outcome.' }}
-            />
-            <Control
-              model=".outcome"
-              controlProps={{
-                id: 'outcome',
-                name: 'outcome'
-              }}
-              mapProps={{
-                rows: (props) => props.viewValue,
-                onChange: (props) => props.onChange,
-                onBlur: (props) => props.onBlur,
-                onFocus: (props) => props.onFocus,
-              }}
-              validators={{ minArrayLength: minArrayLength(1) }}
-              component={MultiInput}
-            />
-          </div>
+          <MultiInput
+            id="outcome"
+            model="form.caseStudy.outcome"
+            name="outcome"
+            htmlFor="outcome-0"
+            label="What was the outcome?"
+            description="List the key benefits of this project."
+            messages={{ minArrayLength: 'You must provide at least one outcome.' }}
+            validators={{ minArrayLength: minArrayLength(1) }}
+          />
 
-           <div className="field">
-            <label htmlFor="projectLinks-0">Project links</label>
-            <p className="hint">Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.</p>
-            <Errors
-              className="errors validation-message"
-              model='form.caseStudy.projectLinks'
-              show="touched"
-              messages={{ minArrayLength: 'You must provide at least one project link.' }}
-            />
-            <Control
-              model=".projectLinks"
-              controlProps={{
-                id: 'projectLinks',
-                name: 'projectLinks'
-              }}
-              mapProps={{
-                rows: (props) => props.viewValue,
-                onChange: (props) => props.onChange,
-                onBlur: (props) => props.onBlur,
-                onFocus: (props) => props.onFocus,
-              }}
-              validators={{ minArrayLength: minArrayLength(1) }}
-              component={MultiInput}
-            />
-          </div>
+          <MultiInput
+            id="projectLinks"
+            model="form.caseStudy.projectLinks"
+            name="projectLinks"
+            htmlFor="projectLinks-0"
+            label="Project links"
+            description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
+            messages={{ minArrayLength: 'You must provide at least one project link.' }}
+            validators={{ minArrayLength: minArrayLength(1) }}
+          />
 
           <div className="field">
             <Control.checkbox
@@ -208,7 +150,7 @@ class CaseStudyForm extends React.Component {
               messages={{
                 required: 'You must acknowledge this case study will be shared.'
               }}
-              />
+            />
           </div>
 
           <input type="submit" value="Submit" role="button" onClick={this.handleClick.bind(this)} />

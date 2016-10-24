@@ -175,6 +175,19 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
   @include grid-core(lg);
 }
 
+form {
+  .validation-message {
+    color: $error-colour;
+    display: block;
+    font-size: rem(14);
+    font-weight: $base-font-weight;
+    border: 0;
+
+    &:hover {
+      background: none;
+    }
+  }
+}
 
 
 .field {
@@ -187,10 +200,5 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
   }
   p {
     font-size: 0.75em;
-  }
-
-  .errors span {
-    font-weight: 700;
-    color: red;
   }
 }

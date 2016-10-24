@@ -91,7 +91,7 @@ class MultiInput extends React.Component {
 
   render() {
     const { inputs } = this.state;
-    const { name, onBlur, onFocus } = this.props;
+    const { name, onBlur, onFocus, className = '' } = this.props;
     return (
       <div>
         {inputs.map(({ id, value }, i) => {
@@ -107,7 +107,7 @@ class MultiInput extends React.Component {
                 onChange={this.onChange.bind(this, id)}
                 onBlur={onBlur}
                 onFocus={onFocus}
-                className="text-box"
+                className={`text-box ${className}`}
                 defaultValue={value} />
               {i > 0 && (
                 <button type="button" className="button-secondary" onClick={this.removeRow.bind(this, id)}>
