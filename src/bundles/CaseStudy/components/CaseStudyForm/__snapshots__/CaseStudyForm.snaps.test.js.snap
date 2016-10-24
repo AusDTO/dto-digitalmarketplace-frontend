@@ -10,6 +10,7 @@ exports[`test CaseStudyForm renders 1`] = `
     tabIndex="-1" />
   <form
     action={undefined}
+    id="casestudy__create"
     method="post"
     onReset={[Function]}
     onSubmit={[Function]}>
@@ -21,6 +22,7 @@ exports[`test CaseStudyForm renders 1`] = `
         Give your case study a title
       </label>
       <input
+        className=""
         id="title"
         name="title"
         onBlur={[Function]}
@@ -38,6 +40,7 @@ exports[`test CaseStudyForm renders 1`] = `
         Who was the client?
       </label>
       <input
+        className=""
         id="client"
         name="client"
         onBlur={[Function]}
@@ -59,6 +62,7 @@ exports[`test CaseStudyForm renders 1`] = `
         For example,  January 2016 — June 2016
       </p>
       <input
+        className=""
         id="timeframe"
         name="timeframe"
         onBlur={[Function]}
@@ -80,6 +84,7 @@ exports[`test CaseStudyForm renders 1`] = `
       </p>
       <div>
         <textarea
+          className=""
           defaultValue=""
           id="opportunity"
           name="opportunity"
@@ -104,6 +109,7 @@ exports[`test CaseStudyForm renders 1`] = `
       </p>
       <div>
         <textarea
+          className=""
           defaultValue=""
           id="approach"
           name="approach"
@@ -135,7 +141,7 @@ exports[`test CaseStudyForm renders 1`] = `
             1
           </label>
           <input
-            className="text-box"
+            className="text-box "
             defaultValue=""
             id="outcome-0"
             name="outcome[]"
@@ -171,7 +177,7 @@ exports[`test CaseStudyForm renders 1`] = `
             1
           </label>
           <input
-            className="text-box"
+            className="text-box "
             defaultValue=""
             id="projectLinks-0"
             name="projectLinks[]"
@@ -225,6 +231,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
     tabIndex="-1" />
   <form
     action="/foo/bar"
+    id="casestudy__create"
     method="post"
     onReset={[Function]}
     onSubmit={[Function]}>
@@ -241,6 +248,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         Give your case study a title
       </label>
       <input
+        className=""
         id="title"
         name="title"
         onBlur={[Function]}
@@ -258,6 +266,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         Who was the client?
       </label>
       <input
+        className=""
         id="client"
         name="client"
         onBlur={[Function]}
@@ -279,6 +288,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         For example,  January 2016 — June 2016
       </p>
       <input
+        className=""
         id="timeframe"
         name="timeframe"
         onBlur={[Function]}
@@ -300,6 +310,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       </p>
       <div>
         <textarea
+          className=""
           defaultValue=""
           id="opportunity"
           name="opportunity"
@@ -324,6 +335,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       </p>
       <div>
         <textarea
+          className=""
           defaultValue=""
           id="approach"
           name="approach"
@@ -355,7 +367,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             1
           </label>
           <input
-            className="text-box"
+            className="text-box "
             defaultValue=""
             id="outcome-0"
             name="outcome[]"
@@ -391,7 +403,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             1
           </label>
           <input
-            className="text-box"
+            className="text-box "
             defaultValue=""
             id="projectLinks-0"
             name="projectLinks[]"
@@ -445,6 +457,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
     tabIndex="-1" />
   <form
     action={undefined}
+    id="casestudy__create"
     method="post"
     onReset={[Function]}
     onSubmit={[Function]}>
@@ -456,6 +469,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         Give your case study a title
       </label>
       <input
+        className=""
         id="title"
         name="title"
         onBlur={[Function]}
@@ -473,6 +487,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         Who was the client?
       </label>
       <input
+        className=""
         id="client"
         name="client"
         onBlur={[Function]}
@@ -494,6 +509,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         For example,  January 2016 — June 2016
       </p>
       <input
+        className=""
         id="timeframe"
         name="timeframe"
         onBlur={[Function]}
@@ -515,6 +531,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       </p>
       <div>
         <textarea
+          className=""
           defaultValue="The opportunity"
           id="opportunity"
           name="opportunity"
@@ -539,6 +556,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       </p>
       <div>
         <textarea
+          className=""
           defaultValue="The approach"
           id="approach"
           name="approach"
@@ -570,7 +588,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             1
           </label>
           <input
-            className="text-box"
+            className="text-box "
             defaultValue="Outcome 1"
             id="outcome-0"
             name="outcome[]"
@@ -587,7 +605,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             2
           </label>
           <input
-            className="text-box"
+            className="text-box "
             defaultValue="Outcome 2"
             id="outcome-1"
             name="outcome[]"
@@ -634,7 +652,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             1
           </label>
           <input
-            className="text-box"
+            className="text-box "
             defaultValue="http://gov.au/"
             id="projectLinks-0"
             name="projectLinks[]"
