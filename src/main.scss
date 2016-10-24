@@ -183,7 +183,7 @@ form {
     font-weight: $base-font-weight;
     border: 0;
 
-    &:hover {
+    &:hover, &:active, &:focus {
       background: none;
     }
   }
