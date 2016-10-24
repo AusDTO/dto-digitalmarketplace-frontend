@@ -60,12 +60,12 @@ class CaseStudyForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token } = this.props;
+    const { action, csrf_token, model } = this.props;
     return (
       <Layout>
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-        <Form model="form.caseStudy"
+        <Form model={model}
           action={action}
           method="post"
           id="casestudy__create"
@@ -76,7 +76,7 @@ class CaseStudyForm extends React.Component {
           )}
 
           <Textfield
-            model="form.caseStudy.title"
+            model={`${model}.title`}
             name="title"
             id="title"
             htmlFor="title"
@@ -88,7 +88,7 @@ class CaseStudyForm extends React.Component {
           />
 
           <Textfield
-            model="form.caseStudy.client"
+            model={`${model}.client`}
             name="client"
             id="client"
             htmlFor="client"
@@ -99,7 +99,7 @@ class CaseStudyForm extends React.Component {
             }} />
 
           <Textfield
-            model="form.caseStudy.timeframe"
+            model={`${model}.timeframe`}
             name="timeframe"
             id="timeframe"
             htmlFor="timeframe"
@@ -112,7 +112,7 @@ class CaseStudyForm extends React.Component {
           />
 
           <Textarea
-            model="form.caseStudy.opportunity"
+            model={`${model}.opportunity`}
             name="opportunity"
             id="opportunity"
             controlProps={{ limit: 200 }}
@@ -125,7 +125,7 @@ class CaseStudyForm extends React.Component {
           />
 
           <Textarea
-            model="form.caseStudy.approach"
+            model={`${model}.approach`}
             name="approach"
             id="approach"
             controlProps={{ limit: 200 }}
@@ -139,7 +139,7 @@ class CaseStudyForm extends React.Component {
 
           <MultiInput
             id="outcome"
-            model="form.caseStudy.outcome"
+            model={`${model}.outcome`}
             name="outcome"
             htmlFor="outcome-0"
             label="What was the outcome?"
@@ -150,7 +150,7 @@ class CaseStudyForm extends React.Component {
 
           <MultiInput
             id="projectLinks"
-            model="form.caseStudy.projectLinks"
+            model={`${model}.projectLinks`}
             name="projectLinks"
             htmlFor="projectLinks-0"
             label="Project links"
@@ -161,15 +161,15 @@ class CaseStudyForm extends React.Component {
 
           <div className="field">
             <Control.checkbox
-              model=".acknowledge"
+              model={`${model}.acknowledge`}
               id="acknowledge"
               name="acknowledge"
               validators={{ required }}
             />
             <label htmlFor="acknowledge">I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.</label>
             <Errors
-              className="errors validation-message"
-              model='form.caseStudy.acknowledge'
+              className="validation-message"
+              model={`${model}.acknowledge`}
               show="touched"
               messages={{
                 required: 'You must acknowledge this case study will be shared.'
