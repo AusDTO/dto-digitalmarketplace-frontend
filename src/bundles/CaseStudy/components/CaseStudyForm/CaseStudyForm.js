@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { Form, Control, Errors } from 'react-redux-form';
+import { Form, Control, Errors, actions } from 'react-redux-form';
 
 import { required, minArrayLength } from '../../../../validators';
 
@@ -17,6 +17,30 @@ class CaseStudyForm extends React.Component {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
     formValid: React.PropTypes.bool.isRequired
+  }
+
+  /**
+   * We are calling this on `Will` instead of `Did` for server rendering purposes.
+   * If there are formErrors available, set the appropriate errors and show them.
+   * @return {void}
+   */
+  componentWillMount() {
+    const { dispatch, formErrors, model } = this.props;
+
+    if (!formErrors) {
+      return;
+    }
+
+    let errors = {};
+    Object.keys(formErrors).forEach((key) => {
+      errors[key] = {
+        valid: false,
+        errors: formErrors[key]
+      }
+    });
+
+    dispatch(actions.setFieldsErrors(model, errors))
+    dispatch(actions.setSubmitFailed(model))
   }
 
   attachNode(node) {
@@ -163,7 +187,9 @@ class CaseStudyForm extends React.Component {
 const mapStateToProps = (state) => {
   const formValid = state.form.forms.caseStudy.$form.valid;
   return {
+    model: 'form.caseStudy',
     formValid,
+    formErrors: state.form_options && state.form_options.errors,
     ...state.form_options
   }
 }
