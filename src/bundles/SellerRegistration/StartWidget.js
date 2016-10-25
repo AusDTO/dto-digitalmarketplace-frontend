@@ -1,8 +1,7 @@
 import React from 'react'
 import RegisterComponent from '../../RegisterComponent'
 
-export const StartWidget = (props) => {
-    return (
+export const StartWidget = (props) => (
         <div>
         <h1>Joining the Digital Marketplace</h1>
         <p>To join the Marketplace you need to:</p>
@@ -21,7 +20,6 @@ export const StartWidget = (props) => {
           <a role="button" href={props.signup}>Start Now </a>
         </p>
         </div>
-    )
-}
+)
 
 export default new RegisterComponent({ 'seller-registration-start': StartWidget })
