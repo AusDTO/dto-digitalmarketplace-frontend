@@ -5,6 +5,7 @@ const RadioList = (props) => {
   const {
     id,
     label,
+    name,
     options,
     model,
     messages,
@@ -28,7 +29,7 @@ const RadioList = (props) => {
             <div key={i}>
               <Control.radio
                 model={model}
-                name={option.value}
+                name={name}
                 id={fieldId}
                 value={option.value}
                 validators={validators}
@@ -45,6 +46,7 @@ const RadioList = (props) => {
 RadioList.propTypes = {
   id: React.PropTypes.string.isRequired,
   label: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
   model: React.PropTypes.oneOfType([
     React.PropTypes.func,
     React.PropTypes.string,
