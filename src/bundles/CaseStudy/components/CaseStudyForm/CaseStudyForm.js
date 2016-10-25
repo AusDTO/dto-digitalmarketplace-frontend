@@ -19,7 +19,8 @@ class CaseStudyForm extends React.Component {
   static propTypes = {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired
+    form: React.PropTypes.object.isRequired,
+    returnLink: React.PropTypes.string
   }
 
   /**
@@ -63,7 +64,7 @@ class CaseStudyForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token, model, form } = this.props;
+    const { action, csrf_token, model, form, returnLink } = this.props;
     return (
       <Layout>
         <h1>Add a case study</h1>
@@ -182,8 +183,9 @@ class CaseStudyForm extends React.Component {
             />
           </div>
 
-          <input type="submit" value="Submit" role="button" onClick={this.handleClick.bind(this)} />
+          <input type="submit" value="Publish case study" role="button" onClick={this.handleClick.bind(this)} />
         </Form>
+        {returnLink && <a href={returnLink}>Return without saving</a>}
       </Layout>
     )
   }
@@ -195,6 +197,7 @@ const mapStateToProps = (state) => {
     model: 'form.caseStudy',
     formErrors: state.form_options && state.form_options.errors,
     form,
+    returnLink: state.casestudy && state.casestudy.returnLink,
     ...state.form_options
   }
 }
