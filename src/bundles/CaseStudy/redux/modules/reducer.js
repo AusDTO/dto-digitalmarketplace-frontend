@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
 import { combineForms } from 'react-redux-form';
 
-import casestudy from './casestudy'
+import casestudy from './casestudy';
+import errorMessage from './errorMessage';
 
 export default combineReducers({
   casestudy,
@@ -9,4 +10,5 @@ export default combineReducers({
   form: combineForms({
     caseStudy: {}
   }, 'form'),
+  errorMessage,
 })

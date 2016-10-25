@@ -1,22 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { Form, Control, Errors, actions } from 'react-redux-form';
+import { Form, Control, actions } from 'react-redux-form';
 
 import { required, minArrayLength } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
-import MultiInput from '../../../../shared/form/MultiInput';
-import Textarea   from '../../../../shared/form/Textarea';
-import Textfield  from '../../../../shared/form/Textfield';
+import ErrorBox      from '../../../../shared/form/ErrorBox';
+import StatefulError from '../../../../shared/form/StatefulError';
+import MultiInput    from '../../../../shared/form/MultiInput';
+import Textarea      from '../../../../shared/form/Textarea';
+import Textfield     from '../../../../shared/form/Textfield';
+
 
 class CaseStudyForm extends React.Component {
 
   static propTypes = {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
-    formValid: React.PropTypes.bool.isRequired
+    form: React.PropTypes.object.isRequired
   }
 
   /**
@@ -52,17 +55,18 @@ class CaseStudyForm extends React.Component {
      * FIXME
      * This is a workaround to complete a normal form submit
      */
-    const { formValid } = this.props;
-    if (formValid) {
+    const { form } = this.props;
+    if (form.valid) {
       this._form.submit = this.refs.submittable.submit;
-      this._form.submit();  
+      this._form.submit();
     }
   }
 
   render() {
-    const { action, csrf_token, model } = this.props;
+    const { action, csrf_token, model, form } = this.props;
     return (
       <Layout>
+        {form.valid === false && form.submitFailed && <ErrorBox boxRef={input => input && input.focus()} />}
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
         <Form model={model}
@@ -167,10 +171,9 @@ class CaseStudyForm extends React.Component {
               validators={{ required }}
             />
             <label htmlFor="acknowledge">I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.</label>
-            <Errors
-              className="validation-message"
+            <StatefulError
               model={`${model}.acknowledge`}
-              show="touched"
+              id="acknowledge"
               messages={{
                 required: 'You must acknowledge this case study will be shared.'
               }}
@@ -185,11 +188,11 @@ class CaseStudyForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const formValid = state.form.forms.caseStudy.$form.valid;
+  const form = state.form.forms.caseStudy.$form;
   return {
     model: 'form.caseStudy',
-    formValid,
     formErrors: state.form_options && state.form_options.errors,
+    form,
     ...state.form_options
   }
 }

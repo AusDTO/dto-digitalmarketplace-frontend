@@ -137,13 +137,13 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="outcome-0">
+            htmlFor="outcome">
             1
           </label>
           <input
             className="text-box "
             defaultValue=""
-            id="outcome-0"
+            id="outcome"
             name="outcome[]"
             onBlur={[Function]}
             onChange={[Function]}
@@ -173,13 +173,13 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="projectLinks-0">
+            htmlFor="projectLinks">
             1
           </label>
           <input
             className="text-box "
             defaultValue=""
-            id="projectLinks-0"
+            id="projectLinks"
             name="projectLinks[]"
             onBlur={[Function]}
             onChange={[Function]}
