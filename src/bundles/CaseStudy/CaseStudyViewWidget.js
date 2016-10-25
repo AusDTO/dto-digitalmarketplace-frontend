@@ -5,7 +5,7 @@ import RegisterComponent from '../../RegisterComponent'
 import createStore from './redux/create'
 import View from './components/View'
 
-const CaseStudyViewWidget = (props) => {
+export const CaseStudyViewWidget = (props) => {
   const store = createStore(props)
   return (
     <Provider store={store}>

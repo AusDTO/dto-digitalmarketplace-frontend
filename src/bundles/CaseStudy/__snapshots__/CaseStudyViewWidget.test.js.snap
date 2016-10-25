@@ -1,0 +1,80 @@
+exports[`test CaseStudyViewWidget renders without errrors 1`] = `
+<section>
+  <header
+    className="row">
+    <div
+      className="col-md-12">
+      <h2>
+        A Case Study
+      </h2>
+    </div>
+    <div
+      className="meta col-md-12">
+      <div
+        className="row">
+        <div
+          className="col-sm-12 col-md-7">
+          <small>
+            A Case study client
+          </small>
+        </div>
+      </div>
+    </div>
+  </header>
+  <aside
+    className="sidebar">
+    <h4>
+      Timeframe
+    </h4>
+    <p>
+      2016
+    </p>
+  </aside>
+  <article
+    className="content-main row"
+    role="main">
+    <div
+      className="col-md-8 col-sm-12">
+      <section>
+        <h3>
+          Objective
+        </h3>
+        <p>
+          A Case Study Opportunity
+        </p>
+      </section>
+      <section>
+        <h3>
+          Approach
+        </h3>
+        <p>
+          A simple approach
+        </p>
+      </section>
+      <section>
+        <h3>
+          Outcomes and benefits
+        </h3>
+        <ul>
+          <li>
+            a
+          </li>
+          <li>
+            b
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>
+          Visit the product
+        </h3>
+        <a
+          href="http://facebook.com"
+          rel="external">
+          http://facebook.com
+        </a>
+      </section>
+    </div>
+  </article>
+</section>
+`;
