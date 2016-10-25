@@ -98,7 +98,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           onChange={[Function]}
           onFocus={[Function]} />
         <span
-          className="limit">
+          className="word-count-counter">
           200 words remaining
         </span>
       </div>
@@ -123,7 +123,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           onChange={[Function]}
           onFocus={[Function]} />
         <span
-          className="limit">
+          className="word-count-counter">
           200 words remaining
         </span>
       </div>

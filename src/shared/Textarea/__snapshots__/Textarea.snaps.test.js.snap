@@ -9,7 +9,7 @@ exports[`test Textarea with limit 5, 10 words 1`] = `
     onChange={[Function]}
     onFocus={[Function]} />
   <span
-    className="limit">
+    className="word-count-counter">
     5 words too many
   </span>
 </div>
@@ -26,7 +26,7 @@ exports[`test Textarea with limit 100, 10 words 1`] = `
     onChange={[Function]}
     onFocus={[Function]} />
   <span
-    className="limit">
+    className="word-count-counter">
     90 words remaining
   </span>
 </div>
@@ -43,7 +43,7 @@ exports[`test Textarea with limit 100, no words 1`] = `
     onChange={[Function]}
     onFocus={[Function]} />
   <span
-    className="limit">
+    className="word-count-counter">
     100 words remaining
   </span>
 </div>
