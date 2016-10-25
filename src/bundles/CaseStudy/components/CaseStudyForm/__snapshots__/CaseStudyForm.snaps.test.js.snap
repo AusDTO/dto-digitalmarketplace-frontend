@@ -1,6 +1,12 @@
 exports[`test CaseStudyForm renders 1`] = `
 <div
   className="layout">
+  <h1>
+    Add a case study
+  </h1>
+  <p>
+    Show the range of skills and experience you can provide by completing the form below.
+  </p>
   <form
     style={
       Object {
@@ -125,12 +131,12 @@ exports[`test CaseStudyForm renders 1`] = `
     <div
       className="field">
       <label
-        htmlFor="outcome-0">
+        htmlFor="outcome">
         What was the outcome?
       </label>
       <p
         className="hint">
-        List the key benefits of this project.
+        List the key achievements of this project.
       </p>
       <div>
         <div
@@ -139,6 +145,7 @@ exports[`test CaseStudyForm renders 1`] = `
             className="text-box-number-label"
             htmlFor="outcome">
             1
+            .
           </label>
           <input
             className="text-box "
@@ -149,6 +156,35 @@ exports[`test CaseStudyForm renders 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             type="text" />
+        </div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="outcome-1">
+            2
+            .
+          </label>
+          <input
+            className="text-box "
+            defaultValue=""
+            id="outcome-1"
+            name="outcome[]"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button">
+            remove 
+            <span
+              className="visuallyhidden">
+              number 
+              2
+            </span>
+          </button>
         </div>
         <button
           className="button-secondary"
@@ -161,7 +197,7 @@ exports[`test CaseStudyForm renders 1`] = `
     <div
       className="field">
       <label
-        htmlFor="projectLinks-0">
+        htmlFor="projectLinks">
         Project links
       </label>
       <p
@@ -175,6 +211,7 @@ exports[`test CaseStudyForm renders 1`] = `
             className="text-box-number-label"
             htmlFor="projectLinks">
             1
+            .
           </label>
           <input
             className="text-box "
@@ -185,6 +222,35 @@ exports[`test CaseStudyForm renders 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             type="text" />
+        </div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="projectLinks-1">
+            2
+            .
+          </label>
+          <input
+            className="text-box "
+            defaultValue=""
+            id="projectLinks-1"
+            name="projectLinks[]"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button">
+            remove 
+            <span
+              className="visuallyhidden">
+              number 
+              2
+            </span>
+          </button>
         </div>
         <button
           className="button-secondary"
@@ -214,7 +280,7 @@ exports[`test CaseStudyForm renders 1`] = `
       onClick={[Function]}
       role="button"
       type="submit"
-      value="Submit" />
+      value="Publish case study" />
   </form>
 </div>
 `;
@@ -222,6 +288,12 @@ exports[`test CaseStudyForm renders 1`] = `
 exports[`test CaseStudyForm renders with form_options 1`] = `
 <div
   className="layout">
+  <h1>
+    Add a case study
+  </h1>
+  <p>
+    Show the range of skills and experience you can provide by completing the form below.
+  </p>
   <form
     style={
       Object {
@@ -351,12 +423,12 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
     <div
       className="field">
       <label
-        htmlFor="outcome-0">
+        htmlFor="outcome">
         What was the outcome?
       </label>
       <p
         className="hint">
-        List the key benefits of this project.
+        List the key achievements of this project.
       </p>
       <div>
         <div
@@ -365,6 +437,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             className="text-box-number-label"
             htmlFor="outcome">
             1
+            .
           </label>
           <input
             className="text-box "
@@ -375,6 +448,35 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             type="text" />
+        </div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="outcome-1">
+            2
+            .
+          </label>
+          <input
+            className="text-box "
+            defaultValue=""
+            id="outcome-1"
+            name="outcome[]"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button">
+            remove 
+            <span
+              className="visuallyhidden">
+              number 
+              2
+            </span>
+          </button>
         </div>
         <button
           className="button-secondary"
@@ -387,7 +489,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
     <div
       className="field">
       <label
-        htmlFor="projectLinks-0">
+        htmlFor="projectLinks">
         Project links
       </label>
       <p
@@ -401,6 +503,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             className="text-box-number-label"
             htmlFor="projectLinks">
             1
+            .
           </label>
           <input
             className="text-box "
@@ -411,6 +514,35 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             type="text" />
+        </div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="projectLinks-1">
+            2
+            .
+          </label>
+          <input
+            className="text-box "
+            defaultValue=""
+            id="projectLinks-1"
+            name="projectLinks[]"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button">
+            remove 
+            <span
+              className="visuallyhidden">
+              number 
+              2
+            </span>
+          </button>
         </div>
         <button
           className="button-secondary"
@@ -440,7 +572,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       onClick={[Function]}
       role="button"
       type="submit"
-      value="Submit" />
+      value="Publish case study" />
   </form>
 </div>
 `;
@@ -448,6 +580,12 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
 exports[`test CaseStudyForm renders with populated fields 1`] = `
 <div
   className="layout">
+  <h1>
+    Add a case study
+  </h1>
+  <p>
+    Show the range of skills and experience you can provide by completing the form below.
+  </p>
   <div
     aria-labelledby="validation-masthead-heading"
     aria-role="group"
@@ -614,12 +752,12 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
     <div
       className="field">
       <label
-        htmlFor="outcome-0">
+        htmlFor="outcome">
         What was the outcome?
       </label>
       <p
         className="hint">
-        List the key benefits of this project.
+        List the key achievements of this project.
       </p>
       <div>
         <div
@@ -628,6 +766,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             className="text-box-number-label"
             htmlFor="outcome">
             1
+            .
           </label>
           <input
             className="text-box "
@@ -645,6 +784,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             className="text-box-number-label"
             htmlFor="outcome-1">
             2
+            .
           </label>
           <input
             className="text-box "
@@ -678,7 +818,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
     <div
       className="field">
       <label
-        htmlFor="projectLinks-0">
+        htmlFor="projectLinks">
         Project links
       </label>
       <p
@@ -703,6 +843,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             className="text-box-number-label"
             htmlFor="projectLinks">
             1
+            .
           </label>
           <input
             className="text-box invalid"
@@ -713,6 +854,35 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             type="text" />
+        </div>
+        <div
+          className="list-entry">
+          <label
+            className="text-box-number-label"
+            htmlFor="projectLinks-1">
+            2
+            .
+          </label>
+          <input
+            className="text-box invalid"
+            defaultValue=""
+            id="projectLinks-1"
+            name="projectLinks[]"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text" />
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button">
+            remove 
+            <span
+              className="visuallyhidden">
+              number 
+              2
+            </span>
+          </button>
         </div>
         <button
           className="button-secondary"
@@ -753,7 +923,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       onClick={[Function]}
       role="button"
       type="submit"
-      value="Submit" />
+      value="Publish case study" />
   </form>
 </div>
 `;

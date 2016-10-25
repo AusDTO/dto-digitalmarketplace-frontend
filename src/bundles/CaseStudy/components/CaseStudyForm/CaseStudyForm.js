@@ -148,8 +148,9 @@ class CaseStudyForm extends React.Component {
             id="outcome"
             model={`${model}.outcome`}
             name="outcome"
-            htmlFor="outcome-0"
+            htmlFor="outcome"
             label="What was the outcome?"
+            controlProps={{ defaultRows: 2 }}
             description="List the key achievements of this project."
             messages={{ minArrayLength: 'You must provide at least one outcome.' }}
             validators={{ minArrayLength: minArrayLength(1) }}
@@ -159,8 +160,9 @@ class CaseStudyForm extends React.Component {
             id="projectLinks"
             model={`${model}.projectLinks`}
             name="projectLinks"
-            htmlFor="projectLinks-0"
+            htmlFor="projectLinks"
             label="Project links"
+            controlProps={{ defaultRows: 2 }}
             description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
             messages={{ minArrayLength: 'You must provide at least one project link.' }}
             validators={{ minArrayLength: minArrayLength(1) }}
