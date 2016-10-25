@@ -137,13 +137,13 @@ exports[`test CaseStudyForm renders 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="outcome-0">
+            htmlFor="outcome">
             1
           </label>
           <input
             className="text-box "
             defaultValue=""
-            id="outcome-0"
+            id="outcome"
             name="outcome[]"
             onBlur={[Function]}
             onChange={[Function]}
@@ -173,13 +173,13 @@ exports[`test CaseStudyForm renders 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="projectLinks-0">
+            htmlFor="projectLinks">
             1
           </label>
           <input
             className="text-box "
             defaultValue=""
-            id="projectLinks-0"
+            id="projectLinks"
             name="projectLinks[]"
             onBlur={[Function]}
             onChange={[Function]}
@@ -363,13 +363,13 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="outcome-0">
+            htmlFor="outcome">
             1
           </label>
           <input
             className="text-box "
             defaultValue=""
-            id="outcome-0"
+            id="outcome"
             name="outcome[]"
             onBlur={[Function]}
             onChange={[Function]}
@@ -399,13 +399,13 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="projectLinks-0">
+            htmlFor="projectLinks">
             1
           </label>
           <input
             className="text-box "
             defaultValue=""
-            id="projectLinks-0"
+            id="projectLinks"
             name="projectLinks[]"
             onBlur={[Function]}
             onChange={[Function]}
@@ -595,13 +595,13 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="outcome-0">
+            htmlFor="outcome">
             1
           </label>
           <input
             className="text-box "
             defaultValue="Outcome 1"
-            id="outcome-0"
+            id="outcome"
             name="outcome[]"
             onBlur={[Function]}
             onChange={[Function]}
@@ -670,13 +670,13 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           className="list-entry">
           <label
             className="text-box-number-label"
-            htmlFor="projectLinks-0">
+            htmlFor="projectLinks">
             1
           </label>
           <input
             className="text-box invalid"
             defaultValue=""
-            id="projectLinks-0"
+            id="projectLinks"
             name="projectLinks[]"
             onBlur={[Function]}
             onChange={[Function]}
