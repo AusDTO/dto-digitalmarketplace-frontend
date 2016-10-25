@@ -7,7 +7,7 @@ import RegisterComponent from '../../RegisterComponent'
 import createStore from './redux/create'
 import CaseStudyForm from './components/CaseStudyForm'
 
-const CaseStudyWidget = (props) => {
+export const CaseStudyWidget = (props) => {
   const store = createStore(props)
   return (
     <Provider store={store}>

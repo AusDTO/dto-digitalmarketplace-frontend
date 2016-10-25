@@ -468,8 +468,19 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         htmlFor="title">
         Give your case study a title
       </label>
+      <a
+        className="validation-message"
+        href="#title">
+        <span
+          className="visuallyhidden">
+          Validation Error: 
+        </span>
+        <span>
+          Title is required
+        </span>
+      </a>
       <input
-        className=""
+        className="invalid"
         id="title"
         name="title"
         onBlur={[Function]}
@@ -477,7 +488,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         onFocus={[Function]}
         onKeyPress={[Function]}
         type="text"
-        value="Case Study Title" />
+        value="" />
     </div>
     <div
       className="field">
@@ -643,6 +654,17 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         className="hint">
         Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
       </p>
+      <a
+        className="validation-message"
+        href="#projectLinks">
+        <span
+          className="visuallyhidden">
+          Validation Error: 
+        </span>
+        <span>
+          You must provide at least one project link.
+        </span>
+      </a>
       <div>
         <div
           className="list-entry">
@@ -652,8 +674,8 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             1
           </label>
           <input
-            className="text-box "
-            defaultValue="http://gov.au/"
+            className="text-box invalid"
+            defaultValue=""
             id="projectLinks-0"
             name="projectLinks[]"
             onBlur={[Function]}
@@ -684,6 +706,12 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         htmlFor="acknowledge">
         I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
       </label>
+      <div
+        className="validation-message">
+        <span>
+          You must acknowledge this case study will be shared.
+        </span>
+      </div>
     </div>
     <input
       onClick={[Function]}

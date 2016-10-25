@@ -23,11 +23,11 @@ const generateFormValidilityState = (valid) => {
 test('mapStateToProps', () => {
   let state = generateFormValidilityState(true);
   let props = mapStateToProps(state);
-  expect(props).toEqual({ formValid: true });
+  expect(props).toEqual({ formValid: true, formErrors: void 0, model: 'form.caseStudy' });
 
   state = generateFormValidilityState(false);
   props = mapStateToProps(state);
-  expect(props).toEqual({ formValid: false });
+  expect(props).toEqual({ formValid: false, formErrors: void 0, model: 'form.caseStudy' });
 });
 
 test('handleClick with formValid=false', () => {
