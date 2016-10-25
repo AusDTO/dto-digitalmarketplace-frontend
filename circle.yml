@@ -10,8 +10,7 @@ dependencies:
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
   override:
-    - npm install -g yarn
-    - yarn install
+    - npm install
     - npm run build
 
 deployment:
