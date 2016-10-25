@@ -448,6 +448,37 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
 exports[`test CaseStudyForm renders with populated fields 1`] = `
 <div
   className="layout">
+  <div
+    aria-labelledby="validation-masthead-heading"
+    aria-role="group"
+    className="callout--warning"
+    role="alert"
+    tabIndex="-1">
+    <h4
+      className="validation-masthead-heading">
+      There was a problem with the details you gave
+    </h4>
+    <ul>
+      <li>
+        <a
+          href="#title">
+          Title is required
+        </a>
+      </li>
+      <li>
+        <a
+          href="#acknowledge">
+          You must acknowledge this case study will be shared.
+        </a>
+      </li>
+      <li>
+        <a
+          href="#projectLinks">
+          You must provide at least one project link.
+        </a>
+      </li>
+    </ul>
+  </div>
   <form
     style={
       Object {
@@ -706,12 +737,17 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         htmlFor="acknowledge">
         I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
       </label>
-      <div
-        className="validation-message">
+      <a
+        className="validation-message"
+        href="#acknowledge">
+        <span
+          className="visuallyhidden">
+          Validation Error: 
+        </span>
         <span>
           You must acknowledge this case study will be shared.
         </span>
-      </div>
+      </a>
     </div>
     <input
       onClick={[Function]}

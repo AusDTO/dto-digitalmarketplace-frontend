@@ -1,6 +1,7 @@
 import React from 'react';
-import { Errors, Control, controls } from 'react-redux-form';
+import { Control, controls } from 'react-redux-form';
 
+import StatefulError from './StatefulError';
 import MultiInputComponent from '../MultiInput';
 
 const MultiInput = (props) => {
@@ -21,13 +22,10 @@ const MultiInput = (props) => {
     <div className="field">
       <label htmlFor={htmlFor}>{label}</label>
       <p className="hint">{description}</p>
-      <Errors
+      <StatefulError
         model={model}
-        show="touched"
         messages={messages}
-        wrapper={(props) => (
-          <a className="validation-message" href={`#${id}`}><span className="visuallyhidden">Validation Error: </span>{props.children}</a>
-        )}
+        id={id}
       />
       <Control
         model={model}

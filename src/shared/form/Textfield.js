@@ -1,5 +1,7 @@
 import React from 'react';
-import { Control, Errors } from 'react-redux-form';
+import { Control } from 'react-redux-form';
+
+import StatefulError from './StatefulError';
 
 const Textfield = ({ name, id, htmlFor, label, model, validators, messages, description }) => (
   <div className="field">
@@ -7,14 +9,7 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
     {description && (
       <p className="hint">{description}</p>
     )}
-    <Errors 
-      model={model}
-      show="touched"
-      messages={messages}
-      wrapper={(props) => (
-        <a className="validation-message" href={`#${id}`}><span className="visuallyhidden">Validation Error: </span>{props.children}</a>
-      )}
-    />
+    <StatefulError model={model} messages={messages} id={id} />
     <Control.text
       model={model}
       name={name}

@@ -1,20 +1,14 @@
 import React from 'react';
-import { Control, Errors, controls } from 'react-redux-form';
+import { Control, controls } from 'react-redux-form';
 
+import StatefulError from './StatefulError';
 import TextareaComponent from '../Textarea';
 
 const Textarea = ({ name, id, label, model, validators, messages, description, controlProps, mapProps }) => (
   <div className="field">
     <label htmlFor={id}>{label}</label>
     <p className="hint">{description}</p>
-    <Errors
-      model={model}
-      show="touched"
-      messages={messages}
-      wrapper={(props) => (
-        <a className="validation-message" href={`#${id}`}><span className="visuallyhidden">Validation Error: </span>{props.children}</a>
-      )}
-    />
+    <StatefulError model={model} messages={messages} id={id} />
     <Control
       model={model}
       controlProps={{ name, id, ...controlProps}}
