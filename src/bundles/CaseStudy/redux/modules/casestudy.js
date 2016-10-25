@@ -1,10 +1,7 @@
 const ADD = 'casestudies/ADD'
 const INIT = 'casestudies/INIT'
 
-const initialState = {
-  studies: [],
-  added: false
-};
+const initialState = {};
 
 export default function reducer(state = initialState, action = {}) {
   const { type } = action

@@ -64,7 +64,7 @@ class CaseStudyForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token, model, form, returnLink } = this.props;
+    const { action, csrf_token, model, form, returnLink, mode } = this.props;
     return (
       <Layout>
         <h1>Add a case study</h1>
@@ -185,7 +185,7 @@ class CaseStudyForm extends React.Component {
             />
           </div>
 
-          <input type="submit" value="Publish case study" role="button" onClick={this.handleClick.bind(this)} />
+          <input type="submit" value={mode === 'add' ? 'Publish case study' : 'Update case study'} role="button" onClick={this.handleClick.bind(this)} />
         </Form>
         {returnLink && <a href={returnLink}>Return without saving</a>}
       </Layout>
@@ -200,6 +200,7 @@ const mapStateToProps = (state) => {
     formErrors: state.form_options && state.form_options.errors,
     form,
     returnLink: state.casestudy && state.casestudy.returnLink,
+    mode: state.form_options.mode || 'add',
     ...state.form_options
   }
 }
