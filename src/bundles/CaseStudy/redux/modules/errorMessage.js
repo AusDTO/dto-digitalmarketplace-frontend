@@ -5,13 +5,16 @@ export default function reducer(state = {}, action = {}) {
   const { type, key, value } = action
   switch (type) {
     case MESSAGE:
-      state[key] = value;
-      return state;
+      return Object.assign({}, state, {
+        [key]: value
+      });
     case REMOVE:
-      if (key in state) {
-        delete state[key];
-      }
-      return state;
+      return Object.keys(state)
+        .filter(k => k !== key)
+        .reduce((result, current) => {
+          result[current] = state[current];
+          return result;
+      }, {});
     default:
       return state;
   }
