@@ -22,3 +22,9 @@ header {
 header h2 {
   margin-bottom: 0;
 }
+
+.project ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
