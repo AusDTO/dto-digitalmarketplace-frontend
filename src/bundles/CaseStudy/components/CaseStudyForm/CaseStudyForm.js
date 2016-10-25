@@ -66,6 +66,8 @@ class CaseStudyForm extends React.Component {
     const { action, csrf_token, model, form } = this.props;
     return (
       <Layout>
+        <h1>Add a case study</h1>
+        <p>Show the range of skills and experience you can provide by completing the form below.</p>
         {form.valid === false && form.submitFailed && <ErrorBox boxRef={input => input && input.focus()} />}
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
@@ -147,7 +149,7 @@ class CaseStudyForm extends React.Component {
             name="outcome"
             htmlFor="outcome-0"
             label="What was the outcome?"
-            description="List the key benefits of this project."
+            description="List the key achievements of this project."
             messages={{ minArrayLength: 'You must provide at least one outcome.' }}
             validators={{ minArrayLength: minArrayLength(1) }}
           />
