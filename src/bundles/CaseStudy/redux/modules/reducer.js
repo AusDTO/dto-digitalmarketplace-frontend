@@ -8,7 +8,10 @@ export default combineReducers({
   casestudy,
   form_options: (state = {}) => state,
   form: combineForms({
-    caseStudy: {}
+    caseStudy: {
+      outcome: Array(2).fill(''),
+      projectLinks: Array(2).fill('')
+    }
   }, 'form'),
   errorMessage,
 })
