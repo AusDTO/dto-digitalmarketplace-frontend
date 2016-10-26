@@ -33,7 +33,7 @@ class RegisterComponent {
 
         try {
           // Try and get the state otherwise be empty
-          initialState = JSON.parse(stateNode.innerText);
+          initialState = JSON.parse(JSON.parse(stateNode.innerText));
         } catch (e) {}
 
         /*FIXME temporary hack for local harness*/
