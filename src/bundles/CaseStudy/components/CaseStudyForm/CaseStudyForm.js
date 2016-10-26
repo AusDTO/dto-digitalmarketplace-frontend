@@ -152,8 +152,8 @@ class CaseStudyForm extends React.Component {
             label="What was the outcome?"
             controlProps={{ defaultRows: 2 }}
             description="List the key achievements of this project."
-            messages={{ minArrayLength: 'You must provide at least one outcome.' }}
-            validators={{ minArrayLength: minArrayLength(1) }}
+            messages={{ required: 'You must provide at least one outcome.' }}
+            validators={{ required }}
           />
 
           <MultiInput
@@ -164,8 +164,8 @@ class CaseStudyForm extends React.Component {
             label="Project links"
             controlProps={{ defaultRows: 2 }}
             description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
-            messages={{ minArrayLength: 'You must provide at least one project link.' }}
-            validators={{ minArrayLength: minArrayLength(1) }}
+            messages={{ required: 'You must provide at least one project link.' }}
+            validators={{ required }}
           />
 
           <div className="field">
