@@ -33,7 +33,11 @@ class RegisterComponent {
 
         try {
           // Try and get the state otherwise be empty
-          initialState = JSON.parse(JSON.parse(stateNode.innerText));
+          initialState = JSON.parse(stateNode.innerText);
+          // If state is escaped as a string, may need to parse twice.
+          if (typeof initialState === 'string') {
+            initialState = JSON.parse(initialState)
+          }
         } catch (e) {}
 
         /*FIXME temporary hack for local harness*/
