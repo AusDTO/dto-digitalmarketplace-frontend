@@ -25,6 +25,8 @@ test('validLinks', () => {
 	expect(validator.validLinks('somerandomtext')).toBeFalsy()
 	expect(validator.validLinks('htp://badproto')).toBeFalsy()
 
+	expect(validator.validLinks(['http://badproto', 'google.com'])).toBeFalsy()
+
 	expect(validator.validLinks('http://www.google.com')).toBeTruthy()
 	expect(validator.validLinks('http://google.com')).toBeTruthy()
 	expect(validator.validLinks()).toBeTruthy()

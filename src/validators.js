@@ -23,7 +23,7 @@ export const validLinks = (val) => {
     val = [val];
   }
 
-  return val.filter(v => v.match(/^http/)).length
+  return val.filter(v => v.match(/^http/)).length === val.length;
 };
 
 export default {
