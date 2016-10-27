@@ -3,20 +3,20 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
   <header
     className="row">
     <div
-      className="col-md-12">
-      <h2>
+      className="col-xs-12">
+      <h1>
         A Case Study
-      </h2>
+      </h1>
     </div>
     <div
-      className="meta col-md-12">
+      className="meta col-xs-12">
       <div
         className="row">
         <div
-          className="col-sm-12 col-md-7">
-          <small>
+          className="col-xs-12 col-sm-7">
+          <p>
             A Case study client
-          </small>
+          </p>
         </div>
       </div>
     </div>
@@ -34,12 +34,13 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
     className="content-main row"
     role="main">
     <div
-      className="col-md-8 col-sm-12">
+      className="col-sm-8 col-xs-12">
       <section>
         <h3>
-          Objective
+          Challenge
         </h3>
-        <p>
+        <p
+          className="freetext">
           A Case Study Opportunity
         </p>
       </section>
@@ -67,7 +68,7 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
       <section
         className="project">
         <h3>
-          Visit the product
+          Project Links
         </h3>
         <ul>
           <li>

@@ -3,20 +3,20 @@ exports[`test VerticalList with required attributes 1`] = `
   <header
     className="row">
     <div
-      className="col-md-12">
-      <h2>
+      className="col-xs-12">
+      <h1>
         My Sydney
-      </h2>
+      </h1>
     </div>
     <div
-      className="meta col-md-12">
+      className="meta col-xs-12">
       <div
         className="row">
         <div
-          className="col-sm-12 col-md-7">
-          <small>
+          className="col-xs-12 col-sm-7">
+          <p>
             Transport for NSW
-          </small>
+          </p>
         </div>
       </div>
     </div>
@@ -34,12 +34,13 @@ exports[`test VerticalList with required attributes 1`] = `
     className="content-main row"
     role="main">
     <div
-      className="col-md-8 col-sm-12">
+      className="col-sm-8 col-xs-12">
       <section>
         <h3>
-          Objective
+          Challenge
         </h3>
-        <p>
+        <p
+          className="freetext">
           The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
         </p>
       </section>
@@ -70,7 +71,7 @@ exports[`test VerticalList with required attributes 1`] = `
       <section
         className="project">
         <h3>
-          Visit the product
+          Project Links
         </h3>
         <ul>
           <li>
@@ -93,23 +94,23 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
   <header
     className="row">
     <div
-      className="col-md-12">
-      <h2>
+      className="col-xs-12">
+      <h1>
         My Sydney
-      </h2>
+      </h1>
     </div>
     <div
-      className="meta col-md-12">
+      className="meta col-xs-12">
       <div
         className="row">
         <div
-          className="col-sm-12 col-md-7">
-          <small>
+          className="col-xs-12 col-sm-7">
+          <p>
             Transport for NSW
-          </small>
+          </p>
         </div>
         <div
-          className="col-sm-12 col-md-5 actions">
+          className="col-xs-12 col-sm-5 actions">
           <a
             href="link/to/edit">
             Edit case study
@@ -135,12 +136,13 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
     className="content-main row"
     role="main">
     <div
-      className="col-md-8 col-sm-12">
+      className="col-sm-8 col-xs-12">
       <section>
         <h3>
-          Objective
+          Challenge
         </h3>
-        <p>
+        <p
+          className="freetext">
           The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
         </p>
       </section>
@@ -171,7 +173,7 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
       <section
         className="project">
         <h3>
-          Visit the product
+          Project Links
         </h3>
         <ul>
           <li>
