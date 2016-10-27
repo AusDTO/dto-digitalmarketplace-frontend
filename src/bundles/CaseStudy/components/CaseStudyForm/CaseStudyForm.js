@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Form, Control, actions } from 'react-redux-form';
 
-import { required, minArrayLength } from '../../../../validators';
+import { required } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
