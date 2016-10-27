@@ -16,18 +16,19 @@ const generateFormValidilityState = (valid) => {
           $form: { valid }
         }
       }
-    }
+    },
+    form_options: {}
   }
 }
 
 test('mapStateToProps', () => {
   let state = generateFormValidilityState(true);
   let props = mapStateToProps(state);
-  expect(props).toEqual({ formValid: true, formErrors: void 0, model: 'form.caseStudy' });
+  expect(props).toEqual({ form: { valid: true }, formErrors: void 0, model: 'form.caseStudy', mode: 'add' });
 
   state = generateFormValidilityState(false);
   props = mapStateToProps(state);
-  expect(props).toEqual({ formValid: false, formErrors: void 0, model: 'form.caseStudy' });
+  expect(props).toEqual({ form: { valid: false }, formErrors: void 0, model: 'form.caseStudy', mode: 'add' });
 });
 
 test('handleClick with formValid=false', () => {

@@ -2,6 +2,11 @@ export const required = (val) => {
   if (typeof val === 'boolean') {
     return val;
   }
+
+  if (Array.isArray(val)) {
+    return val.filter(v => v.trim()).length
+  }
+
   return val && val.trim().length;
 };
 
