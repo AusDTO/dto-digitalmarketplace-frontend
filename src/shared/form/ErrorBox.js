@@ -10,8 +10,8 @@ const ErrorBox = ({ invalidFields, boxRef }) => (
     {invalidFields && (
       <ul>
         {invalidFields.map(({ messages, id }, i) => {
-          return messages.map((message) => (
-            <li key={i}>
+          return messages.map((message, j) => (
+            <li key={`${i}${j}`}>
               <a href={`#${id}`}>{message}</a>
             </li>
           ))
