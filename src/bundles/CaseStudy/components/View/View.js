@@ -43,12 +43,14 @@ const View = ({ title, opportunity, client, approach, timeframe, outcome, projec
             {outcome.map((content, i) => <li key={i}>{content}</li>)}
           </ul>
         </section>
-        <section className="project">
-          <h3>Project Links</h3>
-          <ul>
-            {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
-          </ul>
-        </section>
+        {projectLinks && (
+          <section className="project">
+            <h3>Project Links</h3>
+            <ul>
+              {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
+            </ul>
+          </section>
+        )}
       </article>
     </div>
   </section>
@@ -62,7 +64,7 @@ View.propTypes = {
   approach: PropTypes.string.isRequired,
   timeframe: PropTypes.string.isRequired,
   outcome: PropTypes.arrayOf(PropTypes.string).isRequired,
-  projectLinks: PropTypes.arrayOf(PropTypes.string).isRequired,
+  projectLinks: PropTypes.arrayOf(PropTypes.string),
   meta: PropTypes.objectOf(PropTypes.string),
 }
 
