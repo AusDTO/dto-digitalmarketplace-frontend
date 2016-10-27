@@ -6,6 +6,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
       className="text-box-number-label"
       htmlFor="test">
       1
+      .
     </label>
     <input
       className="text-box "
@@ -23,6 +24,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
       className="text-box-number-label"
       htmlFor="test-1">
       2
+      .
     </label>
     <input
       className="text-box "
@@ -51,6 +53,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
       className="text-box-number-label"
       htmlFor="test-2">
       3
+      .
     </label>
     <input
       className="text-box "
@@ -79,6 +82,7 @@ exports[`test MultiInput with 4 default rows 1`] = `
       className="text-box-number-label"
       htmlFor="test-3">
       4
+      .
     </label>
     <input
       className="text-box "
@@ -118,6 +122,7 @@ exports[`test MultiInput with 4 rows 1`] = `
       className="text-box-number-label"
       htmlFor="test">
       1
+      .
     </label>
     <input
       className="text-box "
@@ -135,6 +140,7 @@ exports[`test MultiInput with 4 rows 1`] = `
       className="text-box-number-label"
       htmlFor="test-1">
       2
+      .
     </label>
     <input
       className="text-box "
@@ -163,6 +169,7 @@ exports[`test MultiInput with 4 rows 1`] = `
       className="text-box-number-label"
       htmlFor="test-2">
       3
+      .
     </label>
     <input
       className="text-box "
@@ -191,6 +198,7 @@ exports[`test MultiInput with 4 rows 1`] = `
       className="text-box-number-label"
       htmlFor="test-3">
       4
+      .
     </label>
     <input
       className="text-box "
@@ -230,6 +238,7 @@ exports[`test MultiInput with no props 1`] = `
       className="text-box-number-label"
       htmlFor="test">
       1
+      .
     </label>
     <input
       className="text-box "

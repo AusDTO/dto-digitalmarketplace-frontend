@@ -19,7 +19,8 @@ class CaseStudyForm extends React.Component {
   static propTypes = {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired
+    form: React.PropTypes.object.isRequired,
+    returnLink: React.PropTypes.string
   }
 
   /**
@@ -63,9 +64,11 @@ class CaseStudyForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token, model, form } = this.props;
+    const { action, csrf_token, model, form, returnLink, mode } = this.props;
     return (
       <Layout>
+        <h1>Add a case study</h1>
+        <p>Show the range of skills and experience you can provide by completing the form below.</p>
         {form.valid === false && form.submitFailed && <ErrorBox boxRef={input => input && input.focus()} />}
         {/*FIXME: this form exists purely to steal its submit method.*/}
         <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
@@ -145,22 +148,24 @@ class CaseStudyForm extends React.Component {
             id="outcome"
             model={`${model}.outcome`}
             name="outcome"
-            htmlFor="outcome-0"
+            htmlFor="outcome"
             label="What was the outcome?"
-            description="List the key benefits of this project."
-            messages={{ minArrayLength: 'You must provide at least one outcome.' }}
-            validators={{ minArrayLength: minArrayLength(1) }}
+            controlProps={{ defaultRows: 2 }}
+            description="List the key achievements of this project."
+            messages={{ required: 'You must provide at least one outcome.' }}
+            validators={{ required }}
           />
 
           <MultiInput
             id="projectLinks"
             model={`${model}.projectLinks`}
             name="projectLinks"
-            htmlFor="projectLinks-0"
+            htmlFor="projectLinks"
             label="Project links"
+            controlProps={{ defaultRows: 2 }}
             description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
-            messages={{ minArrayLength: 'You must provide at least one project link.' }}
-            validators={{ minArrayLength: minArrayLength(1) }}
+            messages={{ required: 'You must provide at least one project link.' }}
+            validators={{ required }}
           />
 
           <div className="field">
@@ -180,8 +185,9 @@ class CaseStudyForm extends React.Component {
             />
           </div>
 
-          <input type="submit" value="Submit" role="button" onClick={this.handleClick.bind(this)} />
+          <input type="submit" value={mode === 'add' ? 'Publish case study' : 'Update case study'} role="button" onClick={this.handleClick.bind(this)} />
         </Form>
+        {returnLink && <a href={returnLink}>Return without saving</a>}
       </Layout>
     )
   }
@@ -193,6 +199,8 @@ const mapStateToProps = (state) => {
     model: 'form.caseStudy',
     formErrors: state.form_options && state.form_options.errors,
     form,
+    returnLink: state.casestudy && state.casestudy.returnLink,
+    mode: state.form_options.mode || 'add',
     ...state.form_options
   }
 }

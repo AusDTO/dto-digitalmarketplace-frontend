@@ -43,9 +43,11 @@ const View = ({ title, opportunity, client, approach, timeframe, outcome, projec
             {outcome.map((content, i) => <li key={i}>{content}</li>)}
           </ul>
         </section>
-        <section>
+        <section className="project">
           <h3>Visit the product</h3>
-          {projectLinks.map((item, i) => <a href={item} key={i} rel="external">{item}</a>)}
+          <ul>
+            {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
+          </ul>
         </section>
       </div>
     </article>
