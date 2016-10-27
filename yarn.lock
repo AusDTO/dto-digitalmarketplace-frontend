@@ -2697,9 +2697,9 @@ globule@^1.0.0:
     lodash "~4.9.0"
     minimatch "~3.0.0"
 
-"gov-au-ui-kit@git+https://github.com/AusDTO/gov-au-ui-kit.git":
+"gov-au-ui-kit@git+https://github.com/AusDTO/gov-au-ui-kit.git#1.8.0":
   version "1.8.0"
-  resolved "git+https://github.com/AusDTO/gov-au-ui-kit.git#5150af737acec36871b7d167a48591bbc34f5c82"
+  resolved "git+https://github.com/AusDTO/gov-au-ui-kit.git#aa369d3740e953ef931f4f80437195d551765b9f"
 
 graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6, graceful-fs@~4.1.2:
   version "4.1.9"
