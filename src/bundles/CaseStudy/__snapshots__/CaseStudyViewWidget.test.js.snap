@@ -21,20 +21,20 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
       </div>
     </div>
   </header>
-  <aside
-    className="sidebar">
-    <h4>
-      Timeframe
-    </h4>
-    <p>
-      2016
-    </p>
-  </aside>
-  <article
-    className="content-main row"
-    role="main">
-    <div
-      className="col-sm-8 col-xs-12">
+  <div
+    className="row">
+    <aside
+      className="col-sm-3 col-xs-12">
+      <h4>
+        Timeframe
+      </h4>
+      <p>
+        2016
+      </p>
+    </aside>
+    <article
+      className="col-sm-9 col-xs-12"
+      role="main">
       <section>
         <h3>
           Challenge
@@ -48,7 +48,8 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
         <h3>
           Approach
         </h3>
-        <p>
+        <p
+          className="freetext">
           A simple approach
         </p>
       </section>
@@ -81,7 +82,7 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
           </li>
         </ul>
       </section>
-    </div>
-  </article>
+    </article>
+  </div>
 </section>
 `;

@@ -1,42 +1,48 @@
 exports[`test MultiInput with 4 default rows 1`] = `
 <div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test">
-      1
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue=""
-      id="test"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test">
+        1
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue=""
+        id="test"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
   </div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test-1">
-      2
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue=""
-      id="test-1"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test-1">
+        2
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue=""
+        id="test-1"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
     <button
-      className="button-secondary"
+      className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
       type="button">
       remove 
@@ -48,24 +54,27 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </button>
   </div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test-2">
-      3
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue=""
-      id="test-2"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test-2">
+        3
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue=""
+        id="test-2"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
     <button
-      className="button-secondary"
+      className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
       type="button">
       remove 
@@ -77,24 +86,27 @@ exports[`test MultiInput with 4 default rows 1`] = `
     </button>
   </div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test-3">
-      4
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue=""
-      id="test-3"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test-3">
+        4
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue=""
+        id="test-3"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
     <button
-      className="button-secondary"
+      className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
       type="button">
       remove 
@@ -117,42 +129,48 @@ exports[`test MultiInput with 4 default rows 1`] = `
 exports[`test MultiInput with 4 rows 1`] = `
 <div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test">
-      1
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue="One"
-      id="test"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test">
+        1
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue="One"
+        id="test"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
   </div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test-1">
-      2
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue="Two"
-      id="test-1"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test-1">
+        2
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue="Two"
+        id="test-1"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
     <button
-      className="button-secondary"
+      className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
       type="button">
       remove 
@@ -164,24 +182,27 @@ exports[`test MultiInput with 4 rows 1`] = `
     </button>
   </div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test-2">
-      3
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue="Three"
-      id="test-2"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test-2">
+        3
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue="Three"
+        id="test-2"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
     <button
-      className="button-secondary"
+      className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
       type="button">
       remove 
@@ -193,24 +214,27 @@ exports[`test MultiInput with 4 rows 1`] = `
     </button>
   </div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test-3">
-      4
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue="Four"
-      id="test-3"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test-3">
+        4
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue="Four"
+        id="test-3"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
     <button
-      className="button-secondary"
+      className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
       type="button">
       remove 
@@ -233,22 +257,25 @@ exports[`test MultiInput with 4 rows 1`] = `
 exports[`test MultiInput with no props 1`] = `
 <div>
   <div
-    className="list-entry">
-    <label
-      className="text-box-number-label"
-      htmlFor="test">
-      1
-      .
-    </label>
-    <input
-      className="text-box "
-      defaultValue=""
-      id="test"
-      name="test[]"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="text" />
+    className="list-entry row">
+    <div
+      className="col-xs-12 col-sm-9">
+      <label
+        className="text-box-number-label"
+        htmlFor="test">
+        1
+        .
+      </label>
+      <input
+        className="text-box "
+        defaultValue=""
+        id="test"
+        name="test[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text" />
+    </div>
   </div>
   <button
     className="button-secondary"

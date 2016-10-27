@@ -8,7 +8,7 @@ class ErrorBox extends React.Component {
 
   componentDidMount() {
     const { focusOnMount } = this.props;
-    if (focusOnMount) {
+    if (focusOnMount && this.refs.errorBox) {
       this.refs.errorBox.focus();
     }
   }

@@ -23,19 +23,19 @@ const View = ({ title, opportunity, client, approach, timeframe, outcome, projec
         </div>
       </div>
     </header>
-    <aside className="sidebar">
-      <h4>Timeframe</h4>
-      <p>{timeframe}</p>
-    </aside>
-    <article role="main" className="content-main row">
-      <div className="col-sm-8 col-xs-12">
+    <div className="row">
+      <aside className="col-sm-3 col-xs-12">
+        <h4>Timeframe</h4>
+        <p>{timeframe}</p>
+      </aside>
+      <article role="main" className="col-sm-9 col-xs-12">
         <section>
           <h3>Challenge</h3>
           <p className="freetext">{opportunity}</p>
         </section>
         <section>
           <h3>Approach</h3>
-          <p>{approach}</p>
+          <p className="freetext">{approach}</p>
         </section>
         <section>
           <h3>Outcomes and benefits</h3>
@@ -49,8 +49,8 @@ const View = ({ title, opportunity, client, approach, timeframe, outcome, projec
             {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
           </ul>
         </section>
-      </div>
-    </article>
+      </article>
+    </div>
   </section>
 )
 

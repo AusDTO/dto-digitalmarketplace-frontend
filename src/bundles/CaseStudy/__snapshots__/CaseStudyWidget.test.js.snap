@@ -4,7 +4,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
   <header>
     <h1>
       Add
-       a case study
+       case study
     </h1>
     <p>
       Show the range of skills and experience you can provide by completing the form below.
@@ -146,42 +146,48 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
         </p>
         <div>
           <div
-            className="list-entry">
-            <label
-              className="text-box-number-label"
-              htmlFor="outcome">
-              1
-              .
-            </label>
-            <input
-              className="text-box "
-              defaultValue=""
-              id="outcome"
-              name="outcome[]"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              type="text" />
+            className="list-entry row">
+            <div
+              className="col-xs-12 col-sm-9">
+              <label
+                className="text-box-number-label"
+                htmlFor="outcome">
+                1
+                .
+              </label>
+              <input
+                className="text-box "
+                defaultValue=""
+                id="outcome"
+                name="outcome[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text" />
+            </div>
           </div>
           <div
-            className="list-entry">
-            <label
-              className="text-box-number-label"
-              htmlFor="outcome-1">
-              2
-              .
-            </label>
-            <input
-              className="text-box "
-              defaultValue=""
-              id="outcome-1"
-              name="outcome[]"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              type="text" />
+            className="list-entry row">
+            <div
+              className="col-xs-12 col-sm-9">
+              <label
+                className="text-box-number-label"
+                htmlFor="outcome-1">
+                2
+                .
+              </label>
+              <input
+                className="text-box "
+                defaultValue=""
+                id="outcome-1"
+                name="outcome[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text" />
+            </div>
             <button
-              className="button-secondary"
+              className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
               type="button">
               remove 
@@ -212,42 +218,48 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
         </p>
         <div>
           <div
-            className="list-entry">
-            <label
-              className="text-box-number-label"
-              htmlFor="projectLinks">
-              1
-              .
-            </label>
-            <input
-              className="text-box "
-              defaultValue=""
-              id="projectLinks"
-              name="projectLinks[]"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              type="text" />
+            className="list-entry row">
+            <div
+              className="col-xs-12 col-sm-9">
+              <label
+                className="text-box-number-label"
+                htmlFor="projectLinks">
+                1
+                .
+              </label>
+              <input
+                className="text-box "
+                defaultValue=""
+                id="projectLinks"
+                name="projectLinks[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text" />
+            </div>
           </div>
           <div
-            className="list-entry">
-            <label
-              className="text-box-number-label"
-              htmlFor="projectLinks-1">
-              2
-              .
-            </label>
-            <input
-              className="text-box "
-              defaultValue=""
-              id="projectLinks-1"
-              name="projectLinks[]"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              type="text" />
+            className="list-entry row">
+            <div
+              className="col-xs-12 col-sm-9">
+              <label
+                className="text-box-number-label"
+                htmlFor="projectLinks-1">
+                2
+                .
+              </label>
+              <input
+                className="text-box "
+                defaultValue=""
+                id="projectLinks-1"
+                name="projectLinks[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text" />
+            </div>
             <button
-              className="button-secondary"
+              className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
               type="button">
               remove 

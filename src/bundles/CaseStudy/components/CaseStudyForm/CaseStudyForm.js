@@ -68,7 +68,7 @@ class CaseStudyForm extends React.Component {
     return (
       <Layout>
         <header>
-          <h1>{mode === 'edit' ? 'Edit' : 'Add'} a case study</h1>
+          <h1>{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
           <p>Show the range of skills and experience you can provide by completing the form below.</p>
         </header>
         <article role="main" className="content-main">
@@ -167,11 +167,8 @@ class CaseStudyForm extends React.Component {
               label="Project links"
               controlProps={{ defaultRows: 2 }}
               description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
-              messages={{ 
-                required: 'You must provide at least one project link.', 
-                validLinks: 'All links provided must begin with \'http\'' 
-              }}
-              validators={{ required, validLinks }}
+              messages={{ validLinks: 'All links provided must begin with \'http\'' }}
+              validators={{ validLinks }}
             />
 
             <div className="field">
