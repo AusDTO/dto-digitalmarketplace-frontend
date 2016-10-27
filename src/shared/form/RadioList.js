@@ -1,5 +1,7 @@
 import React from 'react';
-import { Control, Errors } from 'react-redux-form';
+import { Control } from 'react-redux-form';
+
+import StatefulError from './StatefulError';
 
 const RadioList = (props) => {
   const {
@@ -15,14 +17,7 @@ const RadioList = (props) => {
     <div className="field">
       <fieldset>
         <legend>{label}</legend>
-        <Errors
-          model={model}
-          show="touched"
-          messages={messages}
-          wrapper={(props) => (
-            <a className="validation-message" href={`#${id}`}><span className="visuallyhidden">Validation Error: </span>{props.children}</a>
-          )}
-        />
+        <StatefulError model={model} messages={messages} id={id} />
         {options.map((option, i) => {
           let fieldId = `${id}-${option.value}`;
           return (
