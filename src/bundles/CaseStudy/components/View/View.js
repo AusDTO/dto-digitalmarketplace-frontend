@@ -5,17 +5,17 @@ import './View.css'
 const View = ({ title, opportunity, client, approach, timeframe, outcome, projectLinks, meta }) => (
   <section>
     <header className="row">
-      <div className="col-md-12">
-        <h2>{title}</h2>
+      <div className="col-xs-12">
+        <h1>{title}</h1>
       </div>
 
-      <div className="meta col-md-12">
+      <div className="meta col-xs-12">
         <div className="row">
-          <div className="col-sm-12 col-md-7">
-            <small>{client}</small>
+          <div className="col-xs-12 col-sm-7">
+            <p>{client}</p>
           </div>
           {meta && (
-            <div className="col-sm-12 col-md-5 actions">
+            <div className="col-xs-12 col-sm-5 actions">
               <a href={meta.editLink}>Edit case study</a>
               <a href={meta.deleteLink}>Delete case study</a>
             </div>
@@ -28,10 +28,10 @@ const View = ({ title, opportunity, client, approach, timeframe, outcome, projec
       <p>{timeframe}</p>
     </aside>
     <article role="main" className="content-main row">
-      <div className="col-md-8 col-sm-12">
+      <div className="col-sm-8 col-xs-12">
         <section>
-          <h3>Objective</h3>
-          <p>{opportunity}</p>
+          <h3>Challenge</h3>
+          <p className="freetext">{opportunity}</p>
         </section>
         <section>
           <h3>Approach</h3>
@@ -44,7 +44,7 @@ const View = ({ title, opportunity, client, approach, timeframe, outcome, projec
           </ul>
         </section>
         <section className="project">
-          <h3>Visit the product</h3>
+          <h3>Project Links</h3>
           <ul>
             {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
           </ul>
