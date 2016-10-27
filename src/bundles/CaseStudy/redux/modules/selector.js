@@ -17,7 +17,7 @@ export const getInvalidFields = createSelector(
           let result = { id: key, messages: [] };
 
           for(let errorKey in form[key].errors) {
-            if (form[key].errors.hasOwnProperty(errorKey)) {
+            if (form[key].errors.hasOwnProperty(errorKey) && form[key].errors[errorKey]) {
               result.messages = result.messages.concat(messages[modelKey][errorKey])  
             }
           }
