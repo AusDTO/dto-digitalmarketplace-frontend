@@ -72,7 +72,7 @@ class CaseStudyForm extends React.Component {
           <p>Show the range of skills and experience you can provide by completing the form below.</p>
         </header>
         <article role="main" className="content-main">
-          {form.valid === false && form.submitFailed && <ErrorBox boxRef={input => input && input.focus()} />}
+          {form.valid === false && form.submitFailed && <ErrorBox focusOnMount={true} />}
           {/*FIXME: this form exists purely to steal its submit method.*/}
           <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
           <Form model={model}
