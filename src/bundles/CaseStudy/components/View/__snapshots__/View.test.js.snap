@@ -18,6 +18,18 @@ exports[`test VerticalList with required attributes 1`] = `
             Transport for NSW
           </p>
         </div>
+        <div
+          className="col-xs-12 col-sm-5 actions">
+          <a
+            href="#">
+            Edit case study
+          </a>
+          <button
+            className="button-secondary"
+            onClick={[Function]}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -116,10 +128,11 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
             href="link/to/edit">
             Edit case study
           </a>
-          <a
-            href="link/to/delete">
-            Delete case study
-          </a>
+          <button
+            className="button-secondary"
+            onClick={[Function]}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
