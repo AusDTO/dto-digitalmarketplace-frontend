@@ -18,7 +18,7 @@ class MultiInput extends React.Component {
     super(props);
 
     let inputs;
-    if (props.rows) {
+    if (props.rows && props.rows.length) {
       inputs = props.rows.map((row, i) => this.createRow(i, row))
     }
 
