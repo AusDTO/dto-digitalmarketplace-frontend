@@ -12,6 +12,10 @@
     ],
     "projectLinks": [
         "http://gov.au/"
-    ]
+    ],
+    "meta": {
+      "deleteLink": "#",
+      "editLink": "#"
+    }
   }
 }
