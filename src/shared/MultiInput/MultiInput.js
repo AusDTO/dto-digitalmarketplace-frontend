@@ -99,7 +99,7 @@ class MultiInput extends React.Component {
           let fieldId = i > 0 ? `${name}-${i}` : name
           return (
             <div key={id} className="list-entry">
-              <label htmlFor={fieldId} className="text-box-number-label">{i + 1}</label>
+              <label htmlFor={fieldId} className="text-box-number-label">{i + 1}.</label>
               <input
                 type="text"
                 name={fieldName}

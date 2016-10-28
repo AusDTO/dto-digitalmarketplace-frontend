@@ -64,15 +64,21 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
           </li>
         </ul>
       </section>
-      <section>
+      <section
+        className="project">
         <h3>
           Visit the product
         </h3>
-        <a
-          href="http://facebook.com"
-          rel="external">
-          http://facebook.com
-        </a>
+        <ul>
+          <li>
+            <a
+              className="project__links"
+              href="http://facebook.com"
+              rel="external">
+              http://facebook.com
+            </a>
+          </li>
+        </ul>
       </section>
     </div>
   </article>

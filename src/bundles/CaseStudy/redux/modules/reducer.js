@@ -6,7 +6,7 @@ import errorMessage from './errorMessage';
 
 export default combineReducers({
   casestudy,
-  form_options: (state = {}) => state,
+  form_options: (state = { mode: 'add' }) => state,
   form: combineForms({
     caseStudy: {}
   }, 'form'),

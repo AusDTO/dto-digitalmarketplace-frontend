@@ -70,7 +70,7 @@ class Textarea extends Component {
           onChange={this.onChange.bind(this)}
         ></textarea>
         {limit ? (
-          <span className="limit">{this.limitText(counter, wordsLeft)}</span>
+          <span className="word-count-counter">{this.limitText(counter, wordsLeft)}</span>
         ) : ''}
       </div>
     )
