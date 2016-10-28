@@ -34,6 +34,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           Give your case study a title
         </label>
         <input
+          aria-describedby={undefined}
           className=""
           id="title"
           name="title"
@@ -52,6 +53,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           Who was the client?
         </label>
         <input
+          aria-describedby={undefined}
           className=""
           id="client"
           name="client"
@@ -70,10 +72,12 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           What was the time frame?
         </label>
         <p
-          className="hint">
+          className="hint"
+          id="timeframe-hint">
           For example,  January 2016 — June 2016
         </p>
         <input
+          aria-describedby="timeframe-hint"
           className=""
           id="timeframe"
           name="timeframe"
@@ -91,11 +95,13 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           Outline the problem or opportunity
         </label>
         <p
-          className="hint">
+          className="hint"
+          id="opportunity-hint">
           Describe the project goal and any relevant background information.
         </p>
         <div>
           <textarea
+            aria-describedby="opportunity-hint"
             className=""
             defaultValue=""
             id="opportunity"
@@ -116,11 +122,13 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           Describe your approach
         </label>
         <p
-          className="hint">
+          className="hint"
+          id="approach-hint">
           How did your capabilities and methods contribute to achieving the project goals?
         </p>
         <div>
           <textarea
+            aria-describedby="approach-hint"
             className=""
             defaultValue=""
             id="approach"
@@ -141,7 +149,8 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           What was the outcome?
         </label>
         <p
-          className="hint">
+          className="hint"
+          id="outcome-hint">
           List the key achievements of this project.
         </p>
         <div>
@@ -156,6 +165,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
                 .
               </label>
               <input
+                aria-describedby="outcome-hint"
                 className="text-box "
                 defaultValue=""
                 id="outcome"
@@ -177,6 +187,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
                 .
               </label>
               <input
+                aria-describedby="outcome-hint"
                 className="text-box "
                 defaultValue=""
                 id="outcome-1"
@@ -213,7 +224,8 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
           Project links
         </label>
         <p
-          className="hint">
+          className="hint"
+          id="projectLinks-hint">
           Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
         </p>
         <div>
@@ -228,6 +240,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
                 .
               </label>
               <input
+                aria-describedby="projectLinks-hint"
                 className="text-box "
                 defaultValue=""
                 id="projectLinks"
@@ -249,6 +262,7 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
                 .
               </label>
               <input
+                aria-describedby="projectLinks-hint"
                 className="text-box "
                 defaultValue=""
                 id="projectLinks-1"

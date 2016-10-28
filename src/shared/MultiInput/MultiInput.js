@@ -91,7 +91,7 @@ class MultiInput extends React.Component {
 
   render() {
     const { inputs } = this.state;
-    const { name, onBlur, onFocus, className = '' } = this.props;
+    const { name, onBlur, onFocus, className = '', describedby, hint } = this.props;
     return (
       <div>
         {inputs.map(({ id, value }, i) => {
@@ -109,6 +109,7 @@ class MultiInput extends React.Component {
                   onBlur={onBlur}
                   onFocus={onFocus}
                   className={`text-box ${className}`}
+                  aria-describedby={hint && describedby}
                   defaultValue={value} />
               </div>
               {i > 0 && (

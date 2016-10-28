@@ -7,7 +7,7 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
   <div className="field">
     <label htmlFor={htmlFor} className="question-heading">{label}</label>
     {description && (
-      <p className="hint">{description}</p>
+      <p className="hint" id={`${id}-hint`}>{description}</p>
     )}
     <StatefulError model={model} messages={messages} id={id} />
     <Control.text
@@ -15,6 +15,7 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
       name={name}
       id={id}
       type="text"
+      aria-describedby={description && `${id}-hint`}
       mapProps={{
         className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
       }}

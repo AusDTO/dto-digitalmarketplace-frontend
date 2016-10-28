@@ -49,7 +49,7 @@ class Textarea extends Component {
   }
 
   render() {
-    const { value, limit, name, id, onBlur, onFocus, className = '' } = this.props
+    const { value, limit, name, id, onBlur, onFocus, className = '', describedby, hint } = this.props
     let { wordsLeft } = this.state
 
     let counter = wordsLeft
@@ -67,6 +67,7 @@ class Textarea extends Component {
           defaultValue={value}
           onBlur={onBlur}
           onFocus={onFocus}
+          aria-describedby={hint && describedby}
           onChange={this.onChange.bind(this)}
         ></textarea>
         {limit ? (

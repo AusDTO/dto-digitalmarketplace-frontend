@@ -21,7 +21,9 @@ const MultiInput = (props) => {
   return (
     <div className="field">
       <label htmlFor={htmlFor}>{label}</label>
-      <p className="hint">{description}</p>
+      {description && (
+        <p className="hint" id={`${id}-hint`}>{description}</p>
+      )}
       <StatefulError
         model={model}
         messages={messages}
@@ -29,7 +31,7 @@ const MultiInput = (props) => {
       />
       <Control
         model={model}
-        controlProps={{ id, name, ...controlProps }}
+        controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
         mapProps={{
           rows: ({ viewValue }) => viewValue,
           className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
