@@ -4,20 +4,39 @@ const getCaseStudyForm = (state) => state.form.forms.caseStudy
 const getErrorMessages = (state) => state.errorMessage
 const getModelPath = () => 'form.caseStudy'
 
+// FIXME this spaghetti could do with a refactor.
 export const getInvalidFields = createSelector(
   [ getCaseStudyForm, getErrorMessages, getModelPath ],
   (form, messages, model) => {
     return Object.keys(form)
-      .filter(key => !key.match(/^\$/) && !form[key].valid)
+      .filter(key => {
+        if (key.match(/^\$/)) {
+          return false;
+        }
+
+        const field = form[key];
+
+        if ('$form' in field) {
+          return !field.$form.valid;
+        }
+
+        return !field.valid
+      })
       .reverse()
       .map(key => {
         let modelKey = `${model}.${key}`;
         if (modelKey in messages) {
 
+          let field = form[key];
+          if ('$form' in field) {
+            field = field.$form;
+          }
+
           let result = { id: key, messages: [] };
 
-          for(let errorKey in form[key].errors) {
-            if (form[key].errors.hasOwnProperty(errorKey) && form[key].errors[errorKey]) {
+          let fieldErrors = field.errors;
+          for(let errorKey in fieldErrors) {
+            if (fieldErrors.hasOwnProperty(errorKey) && fieldErrors[errorKey]) {
               result.messages = result.messages.concat(messages[modelKey][errorKey])  
             }
           }
