@@ -70,7 +70,7 @@ class CaseStudyForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token, model, form, returnLink, mode } = this.props;
+    const { action, csrf_token, model, form, returnLink, mode, step } = this.props;
     return (
       <Layout>
         <header>
@@ -81,6 +81,7 @@ class CaseStudyForm extends React.Component {
           {form.valid === false && form.submitFailed && <ErrorBox focusOnMount={true} model={model} />}
           {/*FIXME: this form exists purely to steal its submit method.*/}
           <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
+
           <Form model={model}
             action={action}
             method="post"

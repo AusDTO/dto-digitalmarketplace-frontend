@@ -10,25 +10,27 @@ import createStore from '../../redux/create'
 
 const generateFormValidilityState = (valid) => {
   return {
-    form: {
-      forms: {
-        caseStudy: {
-          $form: { valid }
-        }
+    forms: {
+      caseStudyForm: {
+        $form: { valid }
       }
     },
-    form_options: {}
+    form_options: {
+      mode: 'add',
+      errors: []
+    },
+    casestudy: {}
   }
 }
 
 test('mapStateToProps', () => {
   let state = generateFormValidilityState(true);
   let props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: true }, formErrors: void 0, model: 'form.caseStudy', mode: 'add' });
+  expect(props).toEqual({ form: { valid: true }, formErrors: [], model: 'caseStudyForm', mode: 'add', errors: [], returnLink: void 0 });
 
   state = generateFormValidilityState(false);
   props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: false }, formErrors: void 0, model: 'form.caseStudy', mode: 'add' });
+  expect(props).toEqual({ form: { valid: false }, formErrors: [], model: 'caseStudyForm', mode: 'add', errors: [], returnLink: void 0 });
 });
 
 test('handleClick with formValid=false', () => {
@@ -40,5 +42,5 @@ test('handleClick with formValid=false', () => {
   )
 
   wrapper.find('input[type="submit"]').simulate('click')
-  expect(store.getState().form.forms.caseStudy.$form.valid).toBeFalsy()
+  expect(store.getState().forms.caseStudyForm.$form.valid).toBeFalsy()
 });

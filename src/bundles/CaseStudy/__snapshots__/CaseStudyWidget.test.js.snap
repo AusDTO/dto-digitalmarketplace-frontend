@@ -13,6 +13,61 @@ exports[`test CaseStudyWidget renders without errrors 1`] = `
   <article
     className="content-main"
     role="main">
+    <div
+      aria-labelledby="validation-masthead-heading"
+      aria-role="group"
+      className="callout--warning"
+      role="alert"
+      tabIndex="-1">
+      <h4
+        className="validation-masthead-heading">
+        There was a problem with the details you gave
+      </h4>
+      <ul>
+        <li>
+          <a
+            href="#title">
+            Title is required
+          </a>
+        </li>
+        <li>
+          <a
+            href="#client">
+            Client is required
+          </a>
+        </li>
+        <li>
+          <a
+            href="#timeframe">
+            Timeframe is required
+          </a>
+        </li>
+        <li>
+          <a
+            href="#opportunity">
+            You must outline the opportunity
+          </a>
+        </li>
+        <li>
+          <a
+            href="#approach">
+            You must outline your approach
+          </a>
+        </li>
+        <li>
+          <a
+            href="#outcome">
+            You must provide at least one outcome.
+          </a>
+        </li>
+        <li>
+          <a
+            href="#acknowledge">
+            You must acknowledge this case study will be shared.
+          </a>
+        </li>
+      </ul>
+    </div>
     <form
       style={
         Object {
