@@ -1,7 +1,8 @@
 const STEP = 'navigate/step'
 
 const initialState = {
-  mode: 'add'
+  mode: 'add',
+  errors: []
 }
 
 export default function reducer(state = initialState, action = {}) {
