@@ -18,9 +18,6 @@
         },
         "acknowledge": {
             "required": true
-        },
-        "projectLinks": {
-            "required": true
         }
     }
   }

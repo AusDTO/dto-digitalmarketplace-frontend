@@ -2,58 +2,81 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import './View.css'
 
-const View = ({ title, opportunity, client, approach, timeframe, outcome, projectLinks, meta }) => (
-  <section>
-    <header className="row">
-      <div className="col-md-12">
-        <h2>{title}</h2>
-      </div>
 
-      <div className="meta col-md-12">
-        <div className="row">
-          <div className="col-sm-12 col-md-7">
-            <small>{client}</small>
+class View extends React.Component {
+  state = { showConfirm: false }
+
+  toggleConfirm(show = true) {
+    this.setState({
+      showConfirm: show
+    }, () => this.state.showConfirm && this.refs.confirm.focus());
+  }
+
+  render() {
+    const { title, opportunity, client, approach, timeframe, outcome, projectLinks, meta } = this.props;
+    const { showConfirm } = this.state;
+    return (
+      <section>
+        {showConfirm && (
+          <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" aria-role="group" tabIndex="-1" role="alert">
+              <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
+              <a href={meta.deleteLink} role="button">Delete this case study</a>
+              <button className="button-secondary" onClick={this.toggleConfirm.bind(this, false)}>No, keep this case study</button>
           </div>
-          {meta && (
-            <div className="col-sm-12 col-md-5 actions">
-              <a href={meta.editLink}>Edit case study</a>
-              <a href={meta.deleteLink}>Delete case study</a>
-            </div>
-          )}
-        </div>
-      </div>
-    </header>
-    <aside className="sidebar">
-      <h4>Timeframe</h4>
-      <p>{timeframe}</p>
-    </aside>
-    <article role="main" className="content-main row">
-      <div className="col-md-8 col-sm-12">
-        <section>
-          <h3>Objective</h3>
-          <p>{opportunity}</p>
-        </section>
-        <section>
-          <h3>Approach</h3>
-          <p>{approach}</p>
-        </section>
-        <section>
-          <h3>Outcomes and benefits</h3>
-          <ul>
-            {outcome.map((content, i) => <li key={i}>{content}</li>)}
-          </ul>
-        </section>
-        <section className="project">
-          <h3>Visit the product</h3>
-          <ul>
-            {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
-          </ul>
-        </section>
-      </div>
-    </article>
-  </section>
-)
+        )}
+        <header className="row">
+          <div className="col-xs-12">
+            <h1>{title}</h1>
+          </div>
 
+          <div className="meta col-xs-12">
+            <div className="row">
+              <div className="col-xs-12 col-sm-7">
+                <p>{client}</p>
+              </div>
+              {meta && (
+                <div className="col-xs-12 col-sm-5 actions">
+                  <a href={meta.editLink}>Edit case study</a>
+                  <button className="button-secondary" onClick={this.toggleConfirm.bind(this)}>Delete</button>
+                </div>
+              )}
+            </div>
+          </div>
+        </header>
+        <div className="row">
+          <aside className="col-sm-3 col-xs-12">
+            <h4>Timeframe</h4>
+            <p>{timeframe}</p>
+          </aside>
+          <article role="main" className="col-sm-9 col-xs-12">
+            <section>
+              <h3>Challenge</h3>
+              <p className="freetext">{opportunity}</p>
+            </section>
+            <section>
+              <h3>Approach</h3>
+              <p className="freetext">{approach}</p>
+            </section>
+            <section>
+              <h3>Outcomes and benefits</h3>
+              <ul>
+                {outcome.map((content, i) => <li key={i}>{content}</li>)}
+              </ul>
+            </section>
+            {projectLinks && projectLinks.length > 0 && (
+              <section className="project">
+                <h3>Project Links</h3>
+                <ul>
+                  {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
+                </ul>
+              </section>
+            )}
+          </article>
+        </div>
+      </section>
+    )
+  }
+}
 
 View.propTypes = {
   title: PropTypes.string.isRequired,
@@ -62,7 +85,7 @@ View.propTypes = {
   approach: PropTypes.string.isRequired,
   timeframe: PropTypes.string.isRequired,
   outcome: PropTypes.arrayOf(PropTypes.string).isRequired,
-  projectLinks: PropTypes.arrayOf(PropTypes.string).isRequired,
+  projectLinks: PropTypes.arrayOf(PropTypes.string),
   meta: PropTypes.objectOf(PropTypes.string),
 }
 

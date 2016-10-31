@@ -3,43 +3,56 @@ exports[`test VerticalList with required attributes 1`] = `
   <header
     className="row">
     <div
-      className="col-md-12">
-      <h2>
+      className="col-xs-12">
+      <h1>
         My Sydney
-      </h2>
+      </h1>
     </div>
     <div
-      className="meta col-md-12">
+      className="meta col-xs-12">
       <div
         className="row">
         <div
-          className="col-sm-12 col-md-7">
-          <small>
+          className="col-xs-12 col-sm-7">
+          <p>
             Transport for NSW
-          </small>
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-5 actions">
+          <a
+            href="#">
+            Edit case study
+          </a>
+          <button
+            className="button-secondary"
+            onClick={[Function]}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
   </header>
-  <aside
-    className="sidebar">
-    <h4>
-      Timeframe
-    </h4>
-    <p>
-      January 2016 — June 2016
-    </p>
-  </aside>
-  <article
-    className="content-main row"
-    role="main">
-    <div
-      className="col-md-8 col-sm-12">
+  <div
+    className="row">
+    <aside
+      className="col-sm-3 col-xs-12">
+      <h4>
+        Timeframe
+      </h4>
+      <p>
+        January 2016 — June 2016
+      </p>
+    </aside>
+    <article
+      className="col-sm-9 col-xs-12"
+      role="main">
       <section>
         <h3>
-          Objective
+          Challenge
         </h3>
-        <p>
+        <p
+          className="freetext">
           The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
         </p>
       </section>
@@ -47,7 +60,8 @@ exports[`test VerticalList with required attributes 1`] = `
         <h3>
           Approach
         </h3>
-        <p>
+        <p
+          className="freetext">
           We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions\' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
         </p>
       </section>
@@ -70,7 +84,7 @@ exports[`test VerticalList with required attributes 1`] = `
       <section
         className="project">
         <h3>
-          Visit the product
+          Project Links
         </h3>
         <ul>
           <li>
@@ -83,8 +97,8 @@ exports[`test VerticalList with required attributes 1`] = `
           </li>
         </ul>
       </section>
-    </div>
-  </article>
+    </article>
+  </div>
 </section>
 `;
 
@@ -93,54 +107,56 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
   <header
     className="row">
     <div
-      className="col-md-12">
-      <h2>
+      className="col-xs-12">
+      <h1>
         My Sydney
-      </h2>
+      </h1>
     </div>
     <div
-      className="meta col-md-12">
+      className="meta col-xs-12">
       <div
         className="row">
         <div
-          className="col-sm-12 col-md-7">
-          <small>
+          className="col-xs-12 col-sm-7">
+          <p>
             Transport for NSW
-          </small>
+          </p>
         </div>
         <div
-          className="col-sm-12 col-md-5 actions">
+          className="col-xs-12 col-sm-5 actions">
           <a
             href="link/to/edit">
             Edit case study
           </a>
-          <a
-            href="link/to/delete">
-            Delete case study
-          </a>
+          <button
+            className="button-secondary"
+            onClick={[Function]}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
   </header>
-  <aside
-    className="sidebar">
-    <h4>
-      Timeframe
-    </h4>
-    <p>
-      January 2016 — June 2016
-    </p>
-  </aside>
-  <article
-    className="content-main row"
-    role="main">
-    <div
-      className="col-md-8 col-sm-12">
+  <div
+    className="row">
+    <aside
+      className="col-sm-3 col-xs-12">
+      <h4>
+        Timeframe
+      </h4>
+      <p>
+        January 2016 — June 2016
+      </p>
+    </aside>
+    <article
+      className="col-sm-9 col-xs-12"
+      role="main">
       <section>
         <h3>
-          Objective
+          Challenge
         </h3>
-        <p>
+        <p
+          className="freetext">
           The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
         </p>
       </section>
@@ -148,7 +164,8 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
         <h3>
           Approach
         </h3>
-        <p>
+        <p
+          className="freetext">
           We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions\' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
         </p>
       </section>
@@ -171,7 +188,7 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
       <section
         className="project">
         <h3>
-          Visit the product
+          Project Links
         </h3>
         <ul>
           <li>
@@ -184,7 +201,7 @@ exports[`test VerticalList with required attributes and meta links 1`] = `
           </li>
         </ul>
       </section>
-    </div>
-  </article>
+    </article>
+  </div>
 </section>
 `;

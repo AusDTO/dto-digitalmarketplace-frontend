@@ -7,13 +7,16 @@ import TextareaComponent from '../Textarea';
 const Textarea = ({ name, id, label, model, validators, messages, description, controlProps, mapProps }) => (
   <div className="field">
     <label htmlFor={id}>{label}</label>
-    <p className="hint">{description}</p>
+    {description && (
+      <p className="hint" id={`${id}-hint`}>{description}</p>
+    )}
     <StatefulError model={model} messages={messages} id={id} />
     <Control
       model={model}
-      controlProps={{ name, id, ...controlProps}}
+      controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
       validators={validators}
       component={TextareaComponent}
+
       mapProps={{
         className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
         value: (props) => props.viewValue,

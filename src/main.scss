@@ -186,6 +186,10 @@ form {
     &:hover, &:active, &:focus {
       background: none;
     }
+
+    span {
+      display: block;
+    }
   }
 }
 
