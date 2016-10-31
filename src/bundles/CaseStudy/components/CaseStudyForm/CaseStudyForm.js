@@ -198,13 +198,12 @@ class CaseStudyForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const form = state.form.forms.caseStudy.$form;
+  const form = state.forms.caseStudyForm.$form;
   return {
-    model: 'form.caseStudy',
+    model: 'caseStudyForm',
     formErrors: state.form_options && state.form_options.errors,
     form,
     returnLink: state.casestudy && state.casestudy.returnLink,
-    mode: state.form_options.mode || 'add',
     ...state.form_options
   }
 }
