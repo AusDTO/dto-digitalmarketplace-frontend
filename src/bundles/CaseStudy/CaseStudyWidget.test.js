@@ -3,13 +3,11 @@
 jest.mock('react-dom');
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { CaseStudyWidget } from './CaseStudyWidget';
-import renderer from 'react-test-renderer';
 
-test('CaseStudyWidget renders without errrors', () => {
-  const component = renderer.create(
-    <CaseStudyWidget />
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-})
+
+test('CaseStudyWidget renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<CaseStudyWidget />, div);
+});
