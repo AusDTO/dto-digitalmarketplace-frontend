@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-const getCaseStudyForm = (state, model) => state.forms[model];
-const getErrorMessages = (state, model) => state.errorMessage;
-const getModelPath = (state, model) => model;
+export const getForm = (state, model) => state.forms[model];
+export const getErrorMessages = (state = {}) => state.errorMessage;
+export const getModelPath = (state, model) => model;
 
 export const mapErrorMessages = (form, messages, model) => {
   if (!form) {
@@ -65,4 +65,4 @@ export const mapErrorMessages = (form, messages, model) => {
     }).filter(e => e.messages.length)
 }
 
-export const getInvalidFields = createSelector([ getCaseStudyForm, getErrorMessages, getModelPath ], mapErrorMessages)
+export const getInvalidFields = createSelector([ getForm, getErrorMessages, getModelPath ], mapErrorMessages)
