@@ -39,9 +39,9 @@ class ErrorBox extends React.Component {
   }
 }
 
-export const mapStateToProps = (state, { focusOnMount }) => {
+export const mapStateToProps = (state, { focusOnMount, model }) => {
   return {
-    invalidFields: getInvalidFields(state),
+    invalidFields: getInvalidFields(state, model),
     focusOnMount
   }
 }
