@@ -13,6 +13,8 @@ import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 
+import { navigateStep } from '../../redux/modules/form_options';
+
 
 class CaseStudyForm extends React.Component {
 
@@ -43,8 +45,12 @@ class CaseStudyForm extends React.Component {
       }
     });
 
-    dispatch(actions.setFieldsErrors(model, errors))
-    dispatch(actions.setSubmitFailed(model))
+    dispatch(actions.setFieldsErrors(model, errors));
+    dispatch(actions.setSubmitFailed(model));
+  }
+
+  componentDidMount() {
+    this.props.dispatch(navigateStep(1));
   }
 
   attachNode(node) {
