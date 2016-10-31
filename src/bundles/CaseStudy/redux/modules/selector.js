@@ -48,6 +48,6 @@ export const getInvalidFields = createSelector(
           id: key,
           messages: []
         }
-      })
+      }).filter(e => e.messages.length)
   }
 )

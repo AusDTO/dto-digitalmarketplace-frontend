@@ -15,6 +15,11 @@ class ErrorBox extends React.Component {
 
   render() {
     const { invalidFields } = this.props;
+
+    if (!invalidFields.length) {
+      return <span/>
+    }
+
     return (
       <div ref="errorBox" className="callout--warning" aria-labelledby="validation-masthead-heading" aria-role="group" tabIndex="-1" role="alert">
         <h4 className="validation-masthead-heading">There was a problem with the details you gave</h4>
