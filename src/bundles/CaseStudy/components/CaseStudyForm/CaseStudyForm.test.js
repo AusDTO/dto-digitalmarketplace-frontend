@@ -1,3 +1,5 @@
+jest.mock('react-router');
+
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -19,18 +21,29 @@ const generateFormValidilityState = (valid) => {
       mode: 'add',
       errors: []
     },
-    casestudy: {}
+    casestudy: {},
+    router: {}
   }
 }
 
 test('mapStateToProps', () => {
+  const baseProps = {
+    formErrors: [], 
+    model: 'caseStudyForm', 
+    mode: 'add', 
+    errors: [], 
+    returnLink: void 0,
+    maxSteps: 2,
+    router: {}
+  };
+
   let state = generateFormValidilityState(true);
   let props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: true }, formErrors: [], model: 'caseStudyForm', mode: 'add', errors: [], returnLink: void 0 });
+  expect(props).toEqual(Object.assign({}, baseProps, { form: { valid: true } }));
 
   state = generateFormValidilityState(false);
   props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: false }, formErrors: [], model: 'caseStudyForm', mode: 'add', errors: [], returnLink: void 0 });
+  expect(props).toEqual(Object.assign({}, baseProps, { form: { valid: false }}));
 });
 
 test('handleClick with formValid=false', () => {
