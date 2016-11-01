@@ -14,9 +14,9 @@ class ErrorBox extends React.Component {
   }
 
   render() {
-    const { invalidFields } = this.props;
+    const { invalidFields, form } = this.props;
 
-    if (!invalidFields.length) {
+    if (form.submitFailed === false || !invalidFields.length) {
       return <span/>
     }
 
@@ -39,10 +39,20 @@ class ErrorBox extends React.Component {
   }
 }
 
+ErrorBox.propTypes = {
+  focusOnMount: React.PropTypes.bool,
+  invalidFields: React.PropTypes.arrayOf(React.PropTypes.shape({
+    id: React.PropTypes.string,
+    message: React.PropTypes.arrayOf(React.PropTypes.string)
+  })).isRequired,
+  form: React.PropTypes.object
+}
+
 export const mapStateToProps = (state, { focusOnMount, model }) => {
   return {
     invalidFields: getInvalidFields(state, model),
-    focusOnMount
+    focusOnMount,
+    form: state.forms[model].$form
   }
 }
 

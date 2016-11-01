@@ -36,7 +36,12 @@ class StatefulError extends React.Component {
 
 };
 
-StatefulError.propTypes = {};
+StatefulError.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  id:       React.PropTypes.string.isRequired,
+  messages: React.PropTypes.objectOf(React.PropTypes.string).isRequired,
+  model:    React.PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {
