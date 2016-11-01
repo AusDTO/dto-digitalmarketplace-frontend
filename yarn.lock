@@ -4943,12 +4943,6 @@ react-dom@^15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
 
-react-history@^0.14.0:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/react-history/-/react-history-0.14.1.tgz#0b97763c1bc96aee6bb59ed9702b86f731869369"
-  dependencies:
-    history "^4.3.0"
-
 react-redux-form:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.0.11.tgz#3423f50159eae4f657f1ea3008ecb68587bb1a98"
@@ -4966,14 +4960,14 @@ react-redux@^5.0.0-beta.3:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
 
-react-router@^4.0.0-alpha.4:
-  version "4.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.4.tgz#5f19e97b8df497e6f77f68bb1bd9441f56103335"
+react-router@^4.0.0-alpha.5:
+  version "4.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.5.tgz#9d80514f9bbbec040dffbd4f9cf241da2830e318"
   dependencies:
+    history "^4.3.0"
     path-to-regexp "^1.5.3"
     query-string "4.2.3"
     react-broadcast "^0.1.1"
-    react-history "^0.14.0"
 
 react-test-renderer@^15.3.2:
   version "15.3.2"

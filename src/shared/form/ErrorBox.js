@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-// TODO this should be more generic.
-import { getInvalidFields } from '../../bundles/CaseStudy/redux/modules/selector';
+import { getInvalidFields } from '../reduxModules/errorMessageSelector';
 
 class ErrorBox extends React.Component {
 
@@ -14,7 +13,12 @@ class ErrorBox extends React.Component {
   }
 
   render() {
-    const { invalidFields } = this.props;
+    const { invalidFields, form } = this.props;
+
+    if (form.submitFailed === false || !invalidFields.length) {
+      return <span/>
+    }
+
     return (
       <div ref="errorBox" className="callout--warning" aria-labelledby="validation-masthead-heading" aria-role="group" tabIndex="-1" role="alert">
         <h4 className="validation-masthead-heading">There was a problem with the details you gave</h4>
@@ -34,10 +38,20 @@ class ErrorBox extends React.Component {
   }
 }
 
-export const mapStateToProps = (state, { focusOnMount }) => {
+ErrorBox.propTypes = {
+  focusOnMount: React.PropTypes.bool,
+  invalidFields: React.PropTypes.arrayOf(React.PropTypes.shape({
+    id: React.PropTypes.string,
+    message: React.PropTypes.arrayOf(React.PropTypes.string)
+  })).isRequired,
+  form: React.PropTypes.object
+}
+
+export const mapStateToProps = (state, { focusOnMount, model }) => {
   return {
-    invalidFields: getInvalidFields(state),
-    focusOnMount
+    invalidFields: getInvalidFields(state, model),
+    focusOnMount,
+    form: state.forms[model].$form
   }
 }
 
