@@ -8,7 +8,7 @@ import { required, validLinks } from '../../../../validators';
 import Layout from '../../../../shared/Layout';
 
 import ErrorBox      from '../../../../shared/form/ErrorBox';
-import StatefulError from '../../../../shared/form/StatefulError';
+import RadioList from '../../../../shared/form/RadioList';
 import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
@@ -67,10 +67,18 @@ class BusinessDetailsForm extends React.Component {
     const { action, csrf_token, model, form, returnLink, mode } = this.props;
     return (
       <Layout>
-        <header>
-          <h1>{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
-          <p>Show the range of skills and experience you can provide by completing the form below.</p>
-        </header>
+        <div className="grid-row">
+          <div className="column-one-whole">
+
+            <header className="page-heading page-heading-with-context page-heading-without-breadcrumb"><p className="context">
+              {mode === 'edit' ? 'Edit' : 'Add'} seller information
+            </p><h1>
+              # seller.name
+            </h1>
+            </header>
+
+          </div>
+        </div>
         <article role="main" className="content-main">
           {form.valid === false && form.submitFailed && <ErrorBox focusOnMount={true} />}
           {/*FIXME: this form exists purely to steal its submit method.*/}
@@ -85,110 +93,62 @@ class BusinessDetailsForm extends React.Component {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
-            <Textfield
-              model={`${model}.title`}
-              name="title"
-              id="title"
-              htmlFor="title"
-              label="Give your case study a title"
-              validators={{ required }}
-              messages={{
-                required: 'Title is required',
-              }}
-            />
-
-            <Textfield
-              model={`${model}.client`}
-              name="client"
-              id="client"
-              htmlFor="client"
-              label="Who was the client?"
-              validators={{ required }}
-              messages={{
-                required: 'Client is required',
-              }} />
-
-            <Textfield
-              model={`${model}.timeframe`}
-              name="timeframe"
-              id="timeframe"
-              htmlFor="timeframe"
-              label="What was the time frame?"
-              description="For example,  January 2016 — June 2016"
-              validators={{ required }}
-              messages={{
-                required: 'Timeframe is required',
-              }}
-            />
 
             <Textarea
-              model={`${model}.opportunity`}
-              name="opportunity"
-              id="opportunity"
+              model={`${model}.summary`}
+              name="summary"
+              id="summary"
               controlProps={{ limit: 200 }}
-              label="Outline the problem or opportunity"
-              description="Describe the project goal and any relevant background information."
+              label="Seller summary"
+              description=""
               messages={{
-                required: 'You must outline the opportunity'
+                required: 'You must provide a seller summary'
               }}
               validators={{ required }}
             />
 
-            <Textarea
-              model={`${model}.approach`}
-              name="approach"
-              id="approach"
-              controlProps={{ limit: 200 }}
-              label="Describe your approach"
-              description="How did your capabilities and methods contribute to achieving the project goals?"
-              messages={{
-                required: 'You must outline your approach'
-              }}
-              validators={{ required }}
-            />
-
-            <MultiInput
-              id="outcome"
-              model={`${model}.outcome`}
-              name="outcome"
-              htmlFor="outcome"
-              label="What was the outcome?"
-              controlProps={{ defaultRows: 2 }}
-              description="List the key achievements of this project."
-              messages={{ required: 'You must provide at least one outcome.' }}
-              validators={{ required }}
-            />
-
-            <MultiInput
-              id="projectLinks"
-              model={`${model}.projectLinks`}
-              name="projectLinks"
-              htmlFor="projectLinks"
-              label="Project links"
-              controlProps={{ defaultRows: 2 }}
-              description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
-              messages={{ validLinks: 'All links provided must begin with \'http\'' }}
-              validators={{ validLinks }}
-            />
-
-            <div className="field">
-              <Control.checkbox
-                model={`${model}.acknowledge`}
-                id="acknowledge"
-                name="acknowledge"
-                validators={{ required }}
-              />
-              <label htmlFor="acknowledge">I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.</label>
-              <StatefulError
-                model={`${model}.acknowledge`}
-                id="acknowledge"
+            <RadioList
+                model={`${model}.trading_status`}
+                name="trading_status"
+                id="trading_status"
+                label="Your trading status"
+                options={[
+                  {"value": "Company","label": "Company"},
+                  {"value": "Trustee","label": "Trustee"},
+                  {"value": "Partnership","label": "Partnership"},
+                  {"value": "Sole Trader","label": "Sole Trader"},
+                  {"value": "An Association","label": "An Association"},
+                  {"value": "Government","label": "Government"}
+                ]}
+                description=""
                 messages={{
-                  required: 'You must acknowledge this case study will be shared.'
+                  required: 'You must provide your trading status'
                 }}
-              />
-            </div>
+                validators={{ required }}
+            />
 
-            <input type="submit" value={mode === 'add' ? 'Publish case study' : 'Update case study'} role="button" onClick={this.handleClick.bind(this)} />
+            <RadioList
+                model={`${model}.business_age`}
+                name="business_age"
+                id="business_age"
+                label="How long have you been in business for?"
+                options={[
+                  {"value": "Less than 12 months","label": "Less than 12 months"},
+                  {"value": "1 - 2 years","label": "1 - 2 years"},
+                  {"value": "2 - 4 years","label": "2 - 4 years"},
+                  {"value": "4 - 6 years","label": "4 - 6 years"},
+                  {"value": "6 - 8 years","label": "6 - 8 years"},
+                  {"value": "Longer than 8 years","label": "Longer than 8 years"},
+
+                ]}
+                description=""
+                messages={{
+                  required: 'You must provide your trading status'
+                }}
+                validators={{ required }}
+            />
+
+            <input type="submit" value={mode === 'add' ? 'Next' : 'Save and return'} role="button" onClick={this.handleClick.bind(this)} />
           </Form>
           {returnLink && <a href={returnLink}>Return without saving</a>}
         </article>
