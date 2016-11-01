@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Errors } from 'react-redux-form';
 
-import { addMessage, removeMessage } from '../../bundles/CaseStudy/redux/modules/errorMessage';
+import { addMessage, removeMessage } from '../reduxModules/errorMessage';
 
 
 class StatefulError extends React.Component {

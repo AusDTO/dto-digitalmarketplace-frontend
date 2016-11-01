@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-// TODO this should be more generic.
-import { getInvalidFields } from '../../bundles/CaseStudy/redux/modules/selector';
+import { getInvalidFields } from '../reduxModules/errorMessageSelector';
 
 class ErrorBox extends React.Component {
 
