@@ -1,9 +1,8 @@
-jest.mock('react-router');
-
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { actions } from 'react-redux-form';
+import { BrowserRouter } from 'react-router';
 
 import CaseStudyForm, { mapStateToProps } from './CaseStudyForm';
 
@@ -34,7 +33,7 @@ test('mapStateToProps', () => {
     errors: [], 
     returnLink: void 0,
     maxSteps: 2,
-    router: {}
+    caseStudyForm: void 0
   };
 
   let state = generateFormValidilityState(true);
@@ -49,9 +48,11 @@ test('mapStateToProps', () => {
 test('handleClick with formValid=false', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))
   const wrapper = mount(
-    <Provider store={store}>
-      <CaseStudyForm />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <CaseStudyForm />
+      </Provider>
+    </BrowserRouter>
   )
 
   wrapper.find('input[type="submit"]').simulate('click')
