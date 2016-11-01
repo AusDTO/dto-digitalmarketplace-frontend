@@ -9,6 +9,7 @@ export default combineReducers({
   casestudy,
   form_options,
   errorMessage,
+  options: (state = {}) => state,
   ...createForms({
     caseStudyForm: {}
   })

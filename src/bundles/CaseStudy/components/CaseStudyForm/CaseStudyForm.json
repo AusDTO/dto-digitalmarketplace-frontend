@@ -10,13 +10,6 @@
     ]
   },
   "form_options": {
-    "errors": {
-        "title": {
-            "required": true
-        },
-        "acknowledge": {
-            "required": true
-        }
-    }
+    "action": "https://httpbin.org/post"
   }
 }

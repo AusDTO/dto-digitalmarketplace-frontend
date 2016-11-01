@@ -10,6 +10,9 @@ export default function createStore(data) {
   ]
 
   delete data._serverContext
+  data.options = {
+    serverRender: typeof window === 'undefined'
+  }
 
   let composeEnhancers = compose;
   if (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
