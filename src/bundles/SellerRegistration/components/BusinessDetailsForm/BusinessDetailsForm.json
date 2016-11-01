@@ -1,0 +1,17 @@
+{
+  "form": {
+    "businessdetails": {
+        "trading_status": "Company",
+      "business_age": "4 - 6 years",
+      "abn":"123",
+      "website": "www.com"
+    }
+  },
+  "form_options": {
+    "errors": {
+      "business_type": {
+          "required": true
+      }
+    }
+  }
+}
