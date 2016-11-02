@@ -6,6 +6,7 @@ import { Match, Miss } from 'react-router';
 
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
+import NotFound from '../../../../shared/NotFound';
 
 class CaseStudyForm extends React.Component {
 
@@ -96,17 +97,20 @@ class CaseStudyForm extends React.Component {
     const props = {
       ...this.props,
       sidebarOptions,
+      mounted: this.state.mounted,
       attachNode: this.attachNode.bind(this),
       onClick: this.handleClick.bind(this)
     }
 
     return (
         <div>
-          {/*FIXME: this form exists purely to steal its submit method.*/}
+          {/*
+            FIXME: this form exists purely to steal its submit method, limitation of RRF.
+          */}
           <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-          <Match pattern="/" exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
-          <Miss render={(routerProps) => <StepOne {...routerProps} {...props} />} />
-          <Match pattern="/reference" exactly render={(routerProps) => <StepTwo {...routerProps} {...props} />} /> 
+          <Match pattern='/' exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
+          <Match pattern='/reference' render={(routerProps) => <StepTwo {...routerProps} {...props} />} />
+          <Miss component={NotFound} />
         </div>
     )
   }
