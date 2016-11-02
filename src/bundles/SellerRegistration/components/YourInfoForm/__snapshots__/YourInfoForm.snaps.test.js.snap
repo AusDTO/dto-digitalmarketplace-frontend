@@ -1,0 +1,394 @@
+exports[`test YourInfoForm renders 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Your Information
+    </h1>
+  </header>
+  <article
+    className="content-main"
+    role="main">
+    <span />
+    <form
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      tabIndex="-1" />
+    <form
+      action={undefined}
+      id="yourinfo"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="representative">
+          Company Representative
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="representative"
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Company Name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="abn">
+          ABN
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="abn"
+          name="abn"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="phone"
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <input
+        onClick={[Function]}
+        role="button"
+        type="submit"
+        value="Save & Continue" />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test YourInfoForm renders with form_options 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Your Information
+    </h1>
+  </header>
+  <article
+    className="content-main"
+    role="main">
+    <span />
+    <form
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      tabIndex="-1" />
+    <form
+      action="/foo/bar"
+      id="yourinfo"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <input
+        id="csrf_token"
+        name="csrf_token"
+        type="hidden"
+        value="sometoken" />
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="representative">
+          Company Representative
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="representative"
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Company Name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="abn">
+          ABN
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="abn"
+          name="abn"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="phone"
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <input
+        onClick={[Function]}
+        role="button"
+        type="submit"
+        value="Save & Continue" />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test YourInfoForm renders with populated fields 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Your Information
+    </h1>
+  </header>
+  <article
+    className="content-main"
+    role="main">
+    <span />
+    <form
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      tabIndex="-1" />
+    <form
+      action="https://httpbin.org/post"
+      id="yourinfo"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="representative">
+          Company Representative
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="representative"
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="My Rep" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Company Name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="The Company Name" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="abn">
+          ABN
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="abn"
+          name="abn"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="1234567" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="phone"
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="5555555555" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="test@company.com" />
+      </div>
+      <input
+        onClick={[Function]}
+        role="button"
+        type="submit"
+        value="Save & Continue" />
+    </form>
+  </article>
+</div>
+`;

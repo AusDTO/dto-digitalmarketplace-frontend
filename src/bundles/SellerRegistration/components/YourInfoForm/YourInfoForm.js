@@ -67,7 +67,7 @@ class YourInfoForm extends React.Component {
           <h1>Your Information</h1>
         </header>
         <article role="main" className="content-main">
-          {form.valid === false && form.submitFailed && <ErrorBox focusOnMount={true} />}
+          <ErrorBox focusOnMount={true} model={model}/>
           {/*FIXME: this form exists purely to steal its submit method.*/}
           <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
           <Form model={model}
@@ -148,9 +148,9 @@ class YourInfoForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const form = state.form.forms.yourInfo.$form;
+  const form = state.forms.yourInfoForm.$form;
   return {
-    model: 'form.yourInfo',
+    model: 'yourInfoForm',
     formErrors: state.form_options && state.form_options.errors,
     form,
     ...state.form_options

@@ -3,13 +3,11 @@
 jest.mock('react-dom');
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { YourInfoWidget } from './YourInfoWidget';
-import renderer from 'react-test-renderer';
 
-test('YourInfoWidget renders without errors', () => {
-  const component = renderer.create(
-    <YourInfoWidget />
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-})
+
+test('YourInfoWidget renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<YourInfoWidget />, div);
+});

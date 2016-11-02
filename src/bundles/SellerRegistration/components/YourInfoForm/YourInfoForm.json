@@ -1,0 +1,12 @@
+{
+  "yourInfoForm": {
+    "representative": "My Rep",
+    "name": "The Company Name",
+    "abn": "1234567",
+    "phone": "5555555555",
+    "email": "test@company.com"
+  },
+  "form_options": {
+    "action": "https://httpbin.org/post"
+  }
+}

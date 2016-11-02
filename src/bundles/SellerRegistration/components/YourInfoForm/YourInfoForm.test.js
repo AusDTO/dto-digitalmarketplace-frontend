@@ -10,25 +10,24 @@ import createStore from '../../redux/create'
 
 const generateFormValidilityState = (valid) => {
   return {
-    form: {
       forms: {
-        yourInfo: {
+        yourInfoForm: {
           $form: { valid }
         }
       }
-    },
+    ,
     form_options: {}
   }
-}
+  }
 
 test('mapStateToProps', () => {
   let state = generateFormValidilityState(true);
   let props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: true }, formErrors: void 0, model: 'form.yourInfo' });
+  expect(props).toEqual({ form: { valid: true }, formErrors: void 0, model: 'yourInfoForm' });
 
   state = generateFormValidilityState(false);
   props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: false }, formErrors: void 0, model: 'form.yourInfo' });
+  expect(props).toEqual({ form: { valid: false }, formErrors: void 0, model: 'yourInfoForm' });
 });
 
 test('handleClick with formValid=false', () => {
@@ -40,5 +39,5 @@ test('handleClick with formValid=false', () => {
   )
 
   wrapper.find('input[type="submit"]').simulate('click')
-  expect(store.getState().form.forms.yourInfo.$form.valid).toBeFalsy()
+  expect(store.getState().forms.yourInfoForm.$form.valid).toBeFalsy()
 });
