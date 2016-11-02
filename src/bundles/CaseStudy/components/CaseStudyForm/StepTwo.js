@@ -126,6 +126,23 @@ class StepTwo extends React.Component {
                 required: 'Email is required',
               }}
             />
+
+            <div className="field">
+              <Control.checkbox
+                model={`${model}.permission`}
+                id="permission"
+                name="permission"
+                validators={{ required }}
+              />
+              <label htmlFor="permission">I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.</label>
+              <StatefulError
+                model={`${model}.permission`}
+                id="permission"
+                messages={{
+                  required: 'You must acknowledge your reference has given permission.'
+                }}
+              />
+            </div>
             
             <div className="field">
               <Control.checkbox

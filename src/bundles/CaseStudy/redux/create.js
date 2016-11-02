@@ -11,7 +11,7 @@ export default function createStore(data) {
 
   delete data._serverContext;
   delete data.basename;
-  
+
   let initialState = Object.assign({}, data, { 
     options: {
       serverRender: typeof window === 'undefined'
