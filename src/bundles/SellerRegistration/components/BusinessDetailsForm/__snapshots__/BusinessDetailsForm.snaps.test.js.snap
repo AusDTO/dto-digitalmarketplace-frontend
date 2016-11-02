@@ -1,0 +1,364 @@
+exports[`test BusinessDetailsForm renders 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Company details
+    </h1>
+  </header>
+  <article
+    className="content-main"
+    role="main">
+    <form
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      tabIndex="-1" />
+    <form
+      action={undefined}
+      id="BusinessDetails__create"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <div
+        className="field">
+        <label
+          htmlFor="summary">
+          Company summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint">
+          This will be displayed in search results
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className=""
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]} />
+          <span
+            className="word-count-counter">
+            200 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="website">
+          Website URL
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="website"
+          name="website"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="linkedin">
+          LinkedIn URL
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="linkedin"
+          name="linkedin"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <fieldset>
+        <legend>
+          Company address
+        </legend>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="addressLine">
+            Address
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="addressLine"
+            name="address.addressLine"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="suburb">
+            Suburb
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="suburb"
+            name="address.suburb"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="state">
+            State
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="state"
+            name="address.state"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="postalCode">
+            Postcode
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="postalCode"
+            name="address.postalCode"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+      </fieldset>
+      <input
+        onClick={[Function]}
+        role="button"
+        type="submit"
+        value="Next" />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test BusinessDetailsForm renders with form_options 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Company details
+    </h1>
+  </header>
+  <article
+    className="content-main"
+    role="main">
+    <form
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      tabIndex="-1" />
+    <form
+      action="/foo/bar"
+      id="BusinessDetails__create"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <input
+        id="csrf_token"
+        name="csrf_token"
+        type="hidden"
+        value="sometoken" />
+      <div
+        className="field">
+        <label
+          htmlFor="summary">
+          Company summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint">
+          This will be displayed in search results
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className=""
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]} />
+          <span
+            className="word-count-counter">
+            200 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="website">
+          Website URL
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="website"
+          name="website"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="linkedin">
+          LinkedIn URL
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="linkedin"
+          name="linkedin"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <fieldset>
+        <legend>
+          Company address
+        </legend>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="addressLine">
+            Address
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="addressLine"
+            name="address.addressLine"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="suburb">
+            Suburb
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="suburb"
+            name="address.suburb"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="state">
+            State
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="state"
+            name="address.state"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+        <div
+          className="field">
+          <label
+            className="question-heading"
+            htmlFor="postalCode">
+            Postcode
+          </label>
+          <input
+            aria-describedby={undefined}
+            className=""
+            id="postalCode"
+            name="address.postalCode"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="text"
+            value="" />
+        </div>
+      </fieldset>
+      <input
+        onClick={[Function]}
+        role="button"
+        type="submit"
+        value="Next" />
+    </form>
+  </article>
+</div>
+`;

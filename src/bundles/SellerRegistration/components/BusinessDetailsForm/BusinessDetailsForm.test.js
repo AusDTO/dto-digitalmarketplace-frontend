@@ -12,7 +12,7 @@ const generateFormValidilityState = (valid) => {
   return {
     form: {
       forms: {
-        businessdetails: {
+        businessDetails: {
           $form: { valid }
         }
       }
@@ -24,11 +24,11 @@ const generateFormValidilityState = (valid) => {
 test('mapStateToProps', () => {
   let state = generateFormValidilityState(true);
   let props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: true }, formErrors: void 0, model: 'form.businessdetails', mode: 'add' });
+  expect(props).toEqual({ form: { valid: true }, formErrors: void 0, model: 'form.businessDetails', mode: 'add' });
 
   state = generateFormValidilityState(false);
   props = mapStateToProps(state);
-  expect(props).toEqual({ form: { valid: false }, formErrors: void 0, model: 'form.businessdetails', mode: 'add' });
+  expect(props).toEqual({ form: { valid: false }, formErrors: void 0, model: 'form.businessDetails', mode: 'add' });
 });
 
 test('handleClick with formValid=false', () => {
@@ -40,5 +40,5 @@ test('handleClick with formValid=false', () => {
   )
 
   wrapper.find('input[type="submit"]').simulate('click')
-  expect(store.getState().form.forms.businessdetails.$form.valid).toBeFalsy()
+  expect(store.getState().form.forms.businessDetails.$form.valid).toBeFalsy()
 });

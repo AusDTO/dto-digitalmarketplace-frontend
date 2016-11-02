@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 const getBusinessDetailsForm = (state) => state.form.forms.businessDetails
 const getErrorMessages = (state) => state.errorMessage
-const getModelPath = () => 'form.businessdetails'
+const getModelPath = () => 'form.businessDetails'
 
 // FIXME this spaghetti could do with a refactor.
 export const getInvalidFields = createSelector(

@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { Form, Control, actions } from 'react-redux-form';
+import { Form, actions } from 'react-redux-form';
 
-import { required, validLinks } from '../../../../validators';
+import { required } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
 import ErrorBox      from '../../../../shared/form/ErrorBox';
-import RadioList from '../../../../shared/form/RadioList';
-import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 
@@ -67,18 +65,9 @@ class BusinessDetailsForm extends React.Component {
     const { action, csrf_token, model, form, returnLink, mode } = this.props;
     return (
       <Layout>
-        <div className="grid-row">
-          <div className="column-one-whole">
-
-            <header className="page-heading page-heading-with-context page-heading-without-breadcrumb"><p className="context">
-              {mode === 'edit' ? 'Edit' : 'Add'} seller information
-            </p><h1>
-              # seller.name
-            </h1>
-            </header>
-
-          </div>
-        </div>
+        <header>
+          <h1>Company details</h1>
+        </header>
         <article role="main" className="content-main">
           {form.valid === false && form.submitFailed && <ErrorBox focusOnMount={true} />}
           {/*FIXME: this form exists purely to steal its submit method.*/}
@@ -98,56 +87,63 @@ class BusinessDetailsForm extends React.Component {
               model={`${model}.summary`}
               name="summary"
               id="summary"
-              controlProps={{ limit: 200 }}
-              label="Seller summary"
-              description=""
+              controlProps={{ limit: 50 }}
+              label="Company summary"
+              description="This will be displayed in search results"
               messages={{
-                required: 'You must provide a seller summary'
-              }}
+              required: 'You must provide a seller summary'
+            }}
               validators={{ required }}
             />
 
-            <RadioList
-                model={`${model}.trading_status`}
-                name="trading_status"
-                id="trading_status"
-                label="Your trading status"
-                options={[
-                  {"value": "Company","label": "Company"},
-                  {"value": "Trustee","label": "Trustee"},
-                  {"value": "Partnership","label": "Partnership"},
-                  {"value": "Sole Trader","label": "Sole Trader"},
-                  {"value": "An Association","label": "An Association"},
-                  {"value": "Government","label": "Government"}
-                ]}
-                description=""
-                messages={{
-                  required: 'You must provide your trading status'
-                }}
-                validators={{ required }}
+            <Textfield
+                model={`${model}.website`}
+                name="website"
+                id="website"
+                htmlFor="website"
+                label="Website URL"
             />
 
-            <RadioList
-                model={`${model}.business_age`}
-                name="business_age"
-                id="business_age"
-                label="How long have you been in business for?"
-                options={[
-                  {"value": "Less than 12 months","label": "Less than 12 months"},
-                  {"value": "1 - 2 years","label": "1 - 2 years"},
-                  {"value": "2 - 4 years","label": "2 - 4 years"},
-                  {"value": "4 - 6 years","label": "4 - 6 years"},
-                  {"value": "6 - 8 years","label": "6 - 8 years"},
-                  {"value": "Longer than 8 years","label": "Longer than 8 years"},
-
-                ]}
-                description=""
-                messages={{
-                  required: 'You must provide your trading status'
-                }}
-                validators={{ required }}
+            <Textfield
+                model={`${model}.linkedin`}
+                name="linkedin"
+                id="linkedin"
+                htmlFor="linkedin"
+                label="LinkedIn URL"
             />
 
+            <fieldset>
+              <legend>Company address</legend>
+              <Textfield
+                  model={`${model}.address.addressLine`}
+                  name="address.addressLine"
+                  id="addressLine"
+                  htmlFor="addressLine"
+                  label="Address"
+              />
+
+              <Textfield
+                  model={`${model}.address.suburb`}
+                  name="address.suburb"
+                  id="suburb"
+                  htmlFor="suburb"
+                  label="Suburb"
+              />
+              <Textfield
+                  model={`${model}.address.state`}
+                  name="address.state"
+                  id="state"
+                  htmlFor="state"
+                  label="State"
+              />
+              <Textfield
+                  model={`${model}.address.postalCode`}
+                  name="address.postalCode"
+                  id="postalCode"
+                  htmlFor="postalCode"
+                  label="Postcode"
+              />
+            </fieldset>
             <input type="submit" value={mode === 'add' ? 'Next' : 'Save and return'} role="button" onClick={this.handleClick.bind(this)} />
           </Form>
           {returnLink && <a href={returnLink}>Return without saving</a>}
@@ -163,7 +159,7 @@ const mapStateToProps = (state) => {
     model: 'form.businessDetails',
     formErrors: state.form_options && state.form_options.errors,
     form,
-    returnLink: state.businessdetails && state.businessdetails.returnLink,
+    returnLink: state.businessDetails && state.businessDetails.returnLink,
     mode: state.form_options.mode || 'add',
     ...state.form_options
   }
