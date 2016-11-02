@@ -11,7 +11,7 @@ import NotFound from '../../../../shared/NotFound';
 class CaseStudyForm extends React.Component {
 
   static propTypes = {
-    action: React.PropTypes.string.isRequired,
+    action: React.PropTypes.string,
     form: React.PropTypes.object.isRequired,
     caseStudyForm: React.PropTypes.object.isRequired,
     router: React.PropTypes.shape({
@@ -27,7 +27,7 @@ class CaseStudyForm extends React.Component {
     serverRender: React.PropTypes.bool
   }
 
-  statis defaultProps = {
+  static defaultProps = {
     maxSteps: 1
   }
 
