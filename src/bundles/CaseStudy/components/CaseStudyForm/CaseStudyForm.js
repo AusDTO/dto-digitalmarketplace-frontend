@@ -13,16 +13,20 @@ import { navigateStep } from '../../../../shared/reduxModules/form_options';
 class CaseStudyForm extends React.Component {
 
   static propTypes = {
-    action: React.PropTypes.string,
-    csrf_token: React.PropTypes.string,
+    action: React.PropTypes.string.isRequired,
     form: React.PropTypes.object.isRequired,
-    returnLink: React.PropTypes.string
-  }
-
-  static contextTypes = {
+    caseStudyForm: React.PropTypes.object.isRequired,
     router: React.PropTypes.shape({
-      transitionTo: React.PropTypes.func.isRequired
-    })
+      transitionTo: React.PropTypes.func
+    }).isRequired,
+    maxSteps: React.PropTypes.number.isRequired,
+    model: React.PropTypes.string.isRequired,
+
+    formErrors: React.PropTypes.object,
+    returnLink: React.PropTypes.string,
+    mode: React.PropTypes.oneOf(['add', 'edit']),
+    csrf_token: React.PropTypes.string,
+    serverRender: React.PropTypes.bool
   }
 
   state = {
@@ -73,15 +77,10 @@ class CaseStudyForm extends React.Component {
      * FIXME
      * This is a workaround to complete a normal form submit
      */
-    const { form, step, maxSteps, dispatch } = this.props;
+    const { form, step, maxSteps, dispatch, model, router } = this.props;
     if (form.valid) {
       if (step < maxSteps) {
         e.preventDefault();
-
-        const { router } = this.context;
-        const nextStep = step + 1;
-
-        dispatch(navigateStep(nextStep));
         router.transitionTo('/reference');
 
         this.setState({

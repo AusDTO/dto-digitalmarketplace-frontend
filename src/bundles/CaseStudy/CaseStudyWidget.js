@@ -7,10 +7,10 @@ import createStore from './redux/create'
 import CaseStudyForm from './components/CaseStudyForm'
 
 export const CaseStudyWidget = (props) => {
-  const store = createStore(props)
-  return (
+  const store = createStore(props);
+  return ({ action, location, router }) => (
     <Provider store={store}>
-      <CaseStudyForm />
+      <CaseStudyForm router={router} />
     </Provider>
   )
 }
