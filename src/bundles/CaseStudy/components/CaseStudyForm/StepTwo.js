@@ -18,6 +18,9 @@ class StepTwo extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(navigateStep(2));
+    if (this.props.mounted) {
+      this.refs['header'].focus();
+    }
   }
 
   render() {
@@ -34,13 +37,13 @@ class StepTwo extends React.Component {
     } = this.props;
 
     // List form elements on step two, we dont want to send these fields twice.
-    const exlcudedKeys = ['acknowledge', 'name', 'role', 'phone', 'email'];
+    const exlcudedKeys = ['acknowledge', 'name', 'role', 'phone', 'email', 'permission'];
 
     return (
       <Layout>
         <header>
-          <h1>Reference for {caseStudyForm.title}</h1>
-          <p>Show the range of skills and experience you can provide by completing the form below.</p>
+          <h1 tabIndex="-1" ref="header" aria-describedby="header-description">Reference for {caseStudyForm.title || 'case study'}</h1>
+          <p id="header-description">Show the range of skills and experience you can provide by completing the form below.</p>
         </header>
         <StepSidebar items={sidebarOptions} />
         <article role="main" className="content-main">

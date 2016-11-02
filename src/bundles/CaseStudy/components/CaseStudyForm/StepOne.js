@@ -19,6 +19,9 @@ class StepOne extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(navigateStep(1));
+    if (this.props.mounted) {
+      this.refs['header'].focus();
+    }
   }
 
   render() {
@@ -36,8 +39,8 @@ class StepOne extends React.Component {
     return (
       <Layout>
         <header>
-          <h1>{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
-          <p>Show the range of skills and experience you can provide by completing the form below.</p>
+          <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
+          <p id="header-description">Show the range of skills and experience you can provide by completing the form below.</p>
         </header>
         <StepSidebar items={sidebarOptions} />
         <article role="main" className="content-main">

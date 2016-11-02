@@ -28,7 +28,7 @@ class CaseStudyForm extends React.Component {
   }
 
   state = {
-    localSubmitFailed: false
+    mounted: false
   }
 
   /**
@@ -51,6 +51,7 @@ class CaseStudyForm extends React.Component {
           errors: formErrors[key]
         }
       });
+
       dispatch(actions.setFieldsErrors(model, errors));
       dispatch(actions.setSubmitFailed(model));
     }
@@ -58,6 +59,10 @@ class CaseStudyForm extends React.Component {
 
   componentDidMount() {
     const { dispatch, formErrors, model } = this.props;
+
+    this.setState({
+      mounted: true
+    })
 
     if (!formErrors) {
       return;
