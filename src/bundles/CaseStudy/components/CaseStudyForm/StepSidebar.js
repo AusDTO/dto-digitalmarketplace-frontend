@@ -4,7 +4,7 @@ import StepLink from '../StepLink';
 
 const StepSidebar = ({ items, step, location, action, dispatch }) => (
   <aside className="sidebar">
-    <nav className="local-nav nav-collapse">
+    <nav className="local-nav">
       <ul>
         {items.map(({ path, label }, i) => (
           <li key={i}>
