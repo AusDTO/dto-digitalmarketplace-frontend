@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-
 import { getInvalidFields } from '../reduxModules/errorMessageSelector';
 
 class ErrorBox extends React.Component {
