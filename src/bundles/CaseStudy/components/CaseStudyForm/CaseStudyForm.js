@@ -27,6 +27,10 @@ class CaseStudyForm extends React.Component {
     serverRender: React.PropTypes.bool
   }
 
+  statis defaultProps = {
+    maxSteps: 1
+  }
+
   state = {
     mounted: false
   }
@@ -121,15 +125,12 @@ class CaseStudyForm extends React.Component {
   }
 }
 
-CaseStudyForm.defaultProps = {
-  maxSteps: 1
-}
-
-const mapStateToProps = ({ forms, casestudy, form_options, caseStudyForm, options }) => {
+const mapStateToProps = ({ forms, casestudy, form_options, caseStudyForm, options }, { router }) => {
   const form = forms.caseStudyForm.$form;
   return {
     form,
     caseStudyForm,
+    router,
     maxSteps: 2,
     model: 'caseStudyForm',
     formErrors: form_options.errors,
