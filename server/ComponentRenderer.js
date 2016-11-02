@@ -29,16 +29,22 @@ export default class ComponentRenderer {
 
   render(props, toStaticMarkup) {
     const serverContext = props._serverContext;
-    const location = serverContext.location;
+    const basename = props.basename;
+    let location = serverContext.location;
 
+    delete props.basename;
     delete props._serverContext;
 
     const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString';
     const context = createServerRenderContext();
 
+    if (basename) {
+      location = location.replace(basename, '');
+    }
+
     return (
       ReactDOMServer[renderMethod](
-        <ServerRouter location={location} context={context}>
+        <ServerRouter location={location} context={context} basename={basename}>
           {this.element.instance(props)}
         </ServerRouter>
       )

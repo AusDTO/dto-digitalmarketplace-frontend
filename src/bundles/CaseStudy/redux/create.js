@@ -9,7 +9,9 @@ export default function createStore(data) {
     thunk.withExtraArgument(api.bind(null, data._serverContext))
   ]
 
-  delete data._serverContext
+  delete data._serverContext;
+  delete data.basename;
+  
   let initialState = Object.assign({}, data, { 
     options: {
       serverRender: typeof window === 'undefined'

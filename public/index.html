@@ -36,12 +36,9 @@
           } %>
           </ul>
         <% } else { %>
-          <script>
-            window.__ROUTER_BASENAME__ = '/<%= filename %>'
-          </script>
           <% if (mock) { %>
           <div id="react-bundle-<%= slug %>-state" style="display:none">
-            <%= JSON.stringify(mock) %>
+            <%= JSON.stringify(Object.assign({}, mock, { basename: '/' + filename })) %>
           </div>
           <% } %>
           <div id="react-bundle-<%= slug %>"></div>

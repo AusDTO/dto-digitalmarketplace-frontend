@@ -40,8 +40,10 @@ class RegisterComponent {
           }
         } catch (e) {}
 
-        /*FIXME temporary hack for local harness*/
-        const basename = window.__ROUTER_BASENAME__;
+        let basename;
+        if (initialState.basename) {
+          basename = initialState.basename;
+        }
 
         let result = this.instance(initialState);
         ReactDOM.render(
