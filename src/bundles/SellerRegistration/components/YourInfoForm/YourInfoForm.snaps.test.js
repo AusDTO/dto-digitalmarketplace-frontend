@@ -9,7 +9,6 @@ import { BrowserRouter } from 'react-router';
 import renderer from 'react-test-renderer';
 
 import YourInfoForm, { Textfield } from './YourInfoForm';
-import sampleState from './YourInfoForm.json';
 import createStore from '../../redux/create';
 
 test('YourInfoForm renders', () => {
@@ -43,18 +42,3 @@ test('YourInfoForm renders with form_options', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
-
-test('YourInfoForm renders with populated fields', () => {
-  let store = createStore(Object.assign({}, { _serverContext: {} }, sampleState))
-  const component = renderer.create(
-    <BrowserRouter>
-      <Provider store={store}>
-        <YourInfoForm />
-      </Provider>
-    </BrowserRouter>
-  );
-
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-})
-

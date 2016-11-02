@@ -60,7 +60,7 @@ class YourInfoForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token, model, form } = this.props;
+    const { action, csrf_token, model } = this.props;
     return (
       <Layout>
         <header>
