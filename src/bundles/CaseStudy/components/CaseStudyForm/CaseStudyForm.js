@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
+import { actions, actionTypes } from 'react-redux-form';
 import { Match, Miss } from 'react-router';
 
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
-
-import { navigateStep } from '../../../../shared/reduxModules/form_options';
-
 
 class CaseStudyForm extends React.Component {
 
@@ -54,6 +51,7 @@ class CaseStudyForm extends React.Component {
         }
       });
       dispatch(actions.setFieldsErrors(model, errors));
+      dispatch(actions.setSubmitFailed(model));
     }
   }
 
@@ -82,18 +80,11 @@ class CaseStudyForm extends React.Component {
       if (step < maxSteps) {
         e.preventDefault();
         router.transitionTo('/reference');
-
-        this.setState({
-          localSubmitFailed: false
-        });
+        dispatch({ type: actionTypes.SET_SUBMIT_FAILED, model, submitFailed: false })
       } else {
         this._form.submit = this.refs.submittable.submit;
         this._form.submit();
       }
-    } else {
-      this.setState({
-        localSubmitFailed: true
-      });
     }
   }
 
