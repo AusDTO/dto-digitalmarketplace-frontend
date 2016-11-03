@@ -89,26 +89,3 @@ test('getOptions', () => {
   expect(getOptions(void 0)).toBeUndefined();
   expect(getOptions({ options: { foo: 'bar' }})).toEqual({ foo: 'bar' });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
