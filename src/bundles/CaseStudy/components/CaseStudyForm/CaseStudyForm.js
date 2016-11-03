@@ -34,20 +34,11 @@ class CaseStudyForm extends BaseForm {
   }
 
   handleSubmit(e) {
-    /**
-     * FIXME
-     * This is a workaround to complete a normal form submit
-     */
     const { form, step, maxSteps, dispatch, model, router } = this.props;
-    if (form.valid) {
-      if (step < maxSteps) {
-        e.preventDefault();
-        router.transitionTo('/reference');
-        dispatch({ type: actionTypes.SET_SUBMIT_FAILED, model, submitFailed: false })
-      } else {
-        this._form.submit = this.refs.submittable.submit;
-        this._form.submit();
-      }
+    if (form.valid && step < maxSteps) {
+      e.preventDefault();
+      router.transitionTo('/reference');
+      dispatch({ type: actionTypes.SET_SUBMIT_FAILED, model, submitFailed: false })
     }
   }
 
@@ -61,7 +52,6 @@ class CaseStudyForm extends BaseForm {
       ...this.props,
       sidebarOptions,
       mounted: this.state.mounted,
-      attachNode: this.attachNode.bind(this),
       onClick: this.handleSubmit.bind(this)
     };
 

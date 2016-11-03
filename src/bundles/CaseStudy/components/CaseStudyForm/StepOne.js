@@ -6,6 +6,8 @@ import { required, validLinks } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
+import BaseForm      from '../../../../shared/form/BaseForm';
+import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
@@ -15,7 +17,7 @@ import { navigateStep } from '../../../../shared/reduxModules/form_options';
 
 import StepSidebar from './StepSidebar';
 
-class StepOne extends React.Component {
+class StepOne extends BaseForm {
 
   componentDidMount() {
     this.props.dispatch(navigateStep(1));
@@ -32,8 +34,8 @@ class StepOne extends React.Component {
       returnLink,
       mode,
       onClick,
-      attachNode,
-      sidebarOptions
+      sidebarOptions,
+      form
     } = this.props;
 
     return (
@@ -54,7 +56,8 @@ class StepOne extends React.Component {
               action={action}
               method="post"
               id="casestudy__create"
-              ref={attachNode}
+              component={SubmitForm}
+              valid={form.valid}
             >
               {csrf_token && (
                 <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
