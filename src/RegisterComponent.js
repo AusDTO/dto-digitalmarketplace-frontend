@@ -43,6 +43,7 @@ class RegisterComponent {
         let basename;
         if (initialState.basename) {
           basename = initialState.basename;
+          delete initialState.basename;
         }
 
         let result = this.instance(initialState);
