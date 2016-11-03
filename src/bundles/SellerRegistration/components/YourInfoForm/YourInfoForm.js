@@ -4,13 +4,12 @@ import { Form } from 'react-redux-form';
 
 import { required } from '../../../../validators';
 
-import Layout from '../../../../shared/Layout';
-
+import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
-
+import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 class YourInfoForm extends BaseForm {
 
@@ -110,12 +109,8 @@ class YourInfoForm extends BaseForm {
 }
 
 const mapStateToProps = (state) => {
-  const form = state.forms.yourInfoForm.$form;
   return {
-    model: 'yourInfoForm',
-    formErrors: state.form_options && state.form_options.errors,
-    form,
-    ...state.form_options
+    ...formProps(state, 'yourInfoForm')
   }
 }
 
