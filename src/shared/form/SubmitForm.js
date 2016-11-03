@@ -1,14 +1,18 @@
 import React from 'react';
 
 const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset }) => (
-  <form method={method} id={id} action={action} onReset={onReset} onSubmit={e => {
-    onSubmit();
-    if (!valid) {
-      e.preventDefault();
-    }
-  }}>
-    {children}
-  </form>
+  <form
+    method={method}
+    id={id}
+    action={action}
+    onReset={onReset}
+    onSubmit={e => {
+      onSubmit();
+      if (!valid) {
+        e.preventDefault();
+      }
+    }}
+    children={children} />
 )
 
 SubmitForm.propTypes = {
