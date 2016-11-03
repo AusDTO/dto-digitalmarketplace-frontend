@@ -61,18 +61,6 @@ class BaseForm extends React.Component {
     this._form = ReactDOM.findDOMNode(node);
   }
 
-  handleSubmit() {
-    /**
-     * FIXME
-     * This is a workaround to complete a normal form submit
-     */
-    const { form } = this.props;
-    if (form.valid && this.refs.submittable) {
-      this._form.submit = this.refs.submittable.submit;
-      this._form.submit();
-    }
-  }
-
 }
 
 export default BaseForm;

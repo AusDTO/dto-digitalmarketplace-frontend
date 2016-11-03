@@ -11,13 +11,6 @@ exports[`test YourInfoForm renders 1`] = `
     role="main">
     <span />
     <form
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      tabIndex="-1" />
-    <form
       action={undefined}
       id="yourinfo"
       method="post"
@@ -129,7 +122,6 @@ exports[`test YourInfoForm renders 1`] = `
           value="" />
       </div>
       <input
-        onClick={[Function]}
         role="button"
         type="submit"
         value="Continue" />
@@ -151,13 +143,6 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
     role="main">
     <span />
     <form
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      tabIndex="-1" />
-    <form
       action="/foo/bar"
       id="yourinfo"
       method="post"
@@ -274,7 +259,6 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
           value="" />
       </div>
       <input
-        onClick={[Function]}
         role="button"
         type="submit"
         value="Save & Continue" />
@@ -296,13 +280,6 @@ exports[`test YourInfoForm renders with form_options 1`] = `
     role="main">
     <span />
     <form
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      tabIndex="-1" />
-    <form
       action="/foo/bar"
       id="yourinfo"
       method="post"
@@ -419,7 +396,6 @@ exports[`test YourInfoForm renders with form_options 1`] = `
           value="" />
       </div>
       <input
-        onClick={[Function]}
         role="button"
         type="submit"
         value="Continue" />

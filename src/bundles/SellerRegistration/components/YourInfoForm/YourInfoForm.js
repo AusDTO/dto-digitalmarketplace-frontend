@@ -7,11 +7,13 @@ import { required } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
+import BaseForm      from '../../../../shared/form/BaseForm';
+import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
 
 
-class YourInfoForm extends React.Component {
+class YourInfoForm extends BaseForm {
 
   static propTypes = {
     action: React.PropTypes.string,
@@ -19,48 +21,8 @@ class YourInfoForm extends React.Component {
     form: React.PropTypes.object.isRequired
   }
 
-  /**
-   * We are calling this on `Will` instead of `Did` for server rendering purposes.
-   * If there are formErrors available, set the appropriate errors and show them.
-   * @return {void}
-   */
-  componentWillMount() {
-    const { dispatch, formErrors, model } = this.props;
-
-    if (!formErrors) {
-      return;
-    }
-
-    let errors = {};
-    Object.keys(formErrors).forEach((key) => {
-      errors[key] = {
-        valid: false,
-        errors: formErrors[key]
-      }
-    });
-
-    dispatch(actions.setFieldsErrors(model, errors))
-    dispatch(actions.setSubmitFailed(model))
-  }
-
-  attachNode(node) {
-    this._form = ReactDOM.findDOMNode(node);
-  }
-
-  handleClick() {
-    /**
-     * FIXME
-     * This is a workaround to complete a normal form submit
-     */
-    const { form } = this.props;
-    if (form.valid) {
-      this._form.submit = this.refs.submittable.submit;
-      this._form.submit();
-    }
-  }
-
   render() {
-    const { action, csrf_token, model, mode } = this.props;
+    const { action, csrf_token, model, mode, form } = this.props;
     return (
       <Layout>
         <header>
@@ -68,12 +30,12 @@ class YourInfoForm extends React.Component {
         </header>
         <article role="main" className="content-main">
           <ErrorBox focusOnMount={true} model={model}/>
-          {/*FIXME: this form exists purely to steal its submit method.*/}
-          <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
           <Form model={model}
             action={action}
             method="post"
             id="yourinfo"
+            component={SubmitForm}
+            valid={form.valid}
             ref={this.attachNode.bind(this)}
           >
             {csrf_token && (
@@ -141,7 +103,7 @@ class YourInfoForm extends React.Component {
               }}
             />
 
-            <input type="submit" value={mode === 'edit' ? 'Save & Continue' : 'Continue'} role="button" onClick={this.handleClick.bind(this)} />
+            <input type="submit" value={mode === 'edit' ? 'Save & Continue' : 'Continue'} role="button" />
           </Form>
         </article>
       </Layout>
