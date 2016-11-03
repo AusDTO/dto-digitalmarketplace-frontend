@@ -9,7 +9,7 @@ import renderer from 'react-test-renderer';
 import sampleState from './View.json';
 import createStore from '../../redux/create';
 
-test('VerticalList with required attributes', () => {
+test('View with required attributes', () => {
   const store = createStore(Object.assign({}, { _serverContext: {} },  sampleState));
   const component = renderer.create(
     <View store={store} />
@@ -18,7 +18,7 @@ test('VerticalList with required attributes', () => {
   expect(tree).toMatchSnapshot();
 })
 
-test('VerticalList with required attributes and meta links', () => {
+test('View with required attributes and meta links', () => {
   let state = Object.assign({}, sampleState);
   state.casestudy.meta = {
     editLink: 'link/to/edit',
@@ -31,4 +31,26 @@ test('VerticalList with required attributes and meta links', () => {
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
-})
+});
+
+test('View with reference', () => {
+  let state = Object.assign({}, sampleState);
+  state.casestudy = Object.assign({}, sampleState.casestudy, {
+      meta: {
+        editLink: 'link/to/edit',
+        deleteLink: 'link/to/delete'
+      },
+      name: 'Spongebob',
+      role: 'Chief Aquaman',
+      phone: '040000000',
+      email: 'spongebob@aquaman.com',
+  })
+
+
+  const store = createStore(Object.assign({}, { _serverContext: {} },  state));
+  const component = renderer.create(
+    <View store={store} />
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});

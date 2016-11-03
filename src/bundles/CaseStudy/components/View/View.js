@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import './View.css'
 
+import hasReference from '../../redux/modules/hasReferenceSelector';
 
 class View extends React.Component {
   state = { showConfirm: false }
@@ -13,7 +14,21 @@ class View extends React.Component {
   }
 
   render() {
-    const { title, opportunity, client, approach, timeframe, outcome, projectLinks, meta } = this.props;
+    const {
+      title,
+      opportunity,
+      client,
+      approach,
+      timeframe,
+      outcome,
+      projectLinks,
+      meta,
+      name,
+      role,
+      phone,
+      email,
+      hasReference
+    } = this.props;
     const { showConfirm } = this.state;
     return (
       <section>
@@ -71,6 +86,27 @@ class View extends React.Component {
                 </ul>
               </section>
             )}
+            {hasReference && (
+              <section>
+                <h3>Reference</h3>
+                <div className="title-block">
+                  {name && <p className="title-block__name">{name}</p>}
+                  {role && <p className="title-block__role">{role}</p>}
+                </div>
+                {phone && (
+                  <span>
+                    <strong>Phone</strong>
+                    <p>{phone}</p>
+                  </span>
+                )}
+                {email && (
+                  <span>
+                    <strong>Email</strong>
+                    <p>{email}</p>
+                  </span>
+                )}
+              </section>
+            )}
           </article>
         </div>
       </section>
@@ -87,11 +123,17 @@ View.propTypes = {
   outcome: PropTypes.arrayOf(PropTypes.string).isRequired,
   projectLinks: PropTypes.arrayOf(PropTypes.string),
   meta: PropTypes.objectOf(PropTypes.string),
+
+  name: PropTypes.string,
+  role: PropTypes.string,
+  phone: PropTypes.string,
+  email: PropTypes.string
 }
 
 const mapStateToProps = (state) => {
   return {
-    ...state.casestudy
+    ...state.casestudy,
+    hasReference: hasReference(state.casestudy, ['name', 'role', 'phone', 'email'])
   }
 }
 
