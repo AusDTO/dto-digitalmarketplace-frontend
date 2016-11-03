@@ -46,7 +46,8 @@ module.exports = {
     'shared': [resolveApp('src/shared/sharedEntry')],
     'seller-registration-start': [resolveApp('src/bundles/SellerRegistration/StartWidget')],
     'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')],
-    'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')]
+    'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')],
+    'applicant-signup': [resolveApp('src/bundles/ApplicantSignup/ApplicantSignupWidget')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
