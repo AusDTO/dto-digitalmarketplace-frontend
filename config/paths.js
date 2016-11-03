@@ -45,10 +45,12 @@ module.exports = {
     'casestudy-view': [resolveApp('src/bundles/CaseStudy/CaseStudyViewWidget')],
     'shared': [resolveApp('src/shared/sharedEntry')],
     'seller-registration-start': [resolveApp('src/bundles/SellerRegistration/StartWidget')],
-    'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')]
+    'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')],
+    'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
-    'casestudy': require(resolveApp('src/bundles/CaseStudy/components/CaseStudyForm/CaseStudyForm.json'))
+    'casestudy': require(resolveApp('src/bundles/CaseStudy/components/CaseStudyForm/CaseStudyForm.json')),
+    'seller-business-details': require(resolveApp('src/bundles/SellerRegistration/components/BusinessDetailsForm/BusinessDetailsForm.json'))
   }
 };

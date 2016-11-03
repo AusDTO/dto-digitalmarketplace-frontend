@@ -42,3 +42,22 @@ test('YourInfoForm renders with form_options', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test('YourInfoForm renders with edit mode', () => {
+  const form_options = {
+    csrf_token: 'sometoken',
+    action: '/foo/bar',
+    mode: 'edit'
+  }
+  let store = createStore(Object.assign({}, { _serverContext: {}, form_options }))
+  const component = renderer.create(
+    <BrowserRouter>
+      <Provider store={store}>
+        <YourInfoForm />
+      </Provider>
+    </BrowserRouter>
+  );
+
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
