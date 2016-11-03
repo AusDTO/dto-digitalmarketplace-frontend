@@ -6,6 +6,8 @@ import { Match, Miss } from 'react-router';
 import BaseForm from '../../../../shared/form/BaseForm';
 import NotFound from '../../../../shared/NotFound';
 
+import formProps from '../../../../shared/reduxModules/formPropsSelector';
+
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 
@@ -65,18 +67,13 @@ class CaseStudyForm extends BaseForm {
   }
 }
 
-const mapStateToProps = ({ forms, casestudy, form_options, caseStudyForm, options }, { router }) => {
-  const form = forms.caseStudyForm.$form;
+const mapStateToProps = (state, { router }) => {
+  const { casestudy } = state;
   return {
-    form,
-    caseStudyForm,
     router,
     maxSteps: 2,
-    model: 'caseStudyForm',
-    formErrors: form_options.errors,
     returnLink: casestudy.returnLink,
-    ...form_options,
-    ...options
+    ...formProps(state, 'caseStudyForm'),
   }
 }
 
