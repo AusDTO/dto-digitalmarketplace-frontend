@@ -9,10 +9,14 @@ export default function createStore(data) {
     thunk.withExtraArgument(api.bind(null, data._serverContext))
   ]
 
-  delete data._serverContext
+  delete data._serverContext;
+  delete data.basename;
+
+  let options = data.options || {}
+
   let initialState = Object.assign({}, data, { 
     options: {
-      serverRender: typeof window === 'undefined'
+      serverRender: options.serverRender || typeof window === 'undefined'
     }
   });
 

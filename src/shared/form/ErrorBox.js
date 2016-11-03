@@ -1,15 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
+
 import { getInvalidFields } from '../reduxModules/errorMessageSelector';
 
 class ErrorBox extends React.Component {
-
-  componentDidMount() {
-    const { focusOnMount } = this.props;
-    if (focusOnMount && this.refs.errorBox) {
-      this.refs.errorBox.focus();
-    }
-  }
 
   render() {
     const { invalidFields, form } = this.props;
@@ -49,6 +43,7 @@ ErrorBox.propTypes = {
 export const mapStateToProps = (state, { focusOnMount, model }) => {
   return {
     invalidFields: getInvalidFields(state, model),
+    // Currently does nada, since cDM since render is not blocked internally.
     focusOnMount,
     form: state.forms[model].$form
   }
