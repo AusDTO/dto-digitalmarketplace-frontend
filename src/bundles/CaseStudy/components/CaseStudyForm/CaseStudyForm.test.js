@@ -2,9 +2,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { BrowserRouter } from 'react-router';
+import { MemoryRouter } from 'react-router';
 
 import CaseStudyForm, { mapStateToProps } from './CaseStudyForm';
+import sampleState from './CaseStudyForm.json';
 
 import createStore from '../../redux/create'
 
@@ -33,28 +34,108 @@ test('mapStateToProps', () => {
     errors: [], 
     returnLink: void 0,
     maxSteps: 2,
-    caseStudyForm: void 0
+    caseStudyForm: void 0,
+    router: {}
   };
 
   let state = generateFormValidilityState(true);
-  let props = mapStateToProps(state);
+  let props = mapStateToProps(state, { router: {} });
   expect(props).toEqual(Object.assign({}, baseProps, { form: { valid: true } }));
 
   state = generateFormValidilityState(false);
-  props = mapStateToProps(state);
+  props = mapStateToProps(state, { router: {} });
   expect(props).toEqual(Object.assign({}, baseProps, { form: { valid: false }}));
 });
+
+test('form renders server side with errors', () => {
+  const form_options = {
+    csrf_token: 'sometoken',
+    action: '/foo/bar',
+    errors: {
+      title: {
+        required: true
+      }
+    }
+  }
+
+  let store = createStore(Object.assign({}, sampleState, { _serverContext: {}, form_options, options: { serverRender: true } }))
+  const wrapper = mount(
+    <MemoryRouter>
+      {({router}) => (
+        <Provider store={store}>
+          <CaseStudyForm router={router} />
+        </Provider>
+      )}
+    </MemoryRouter>
+  )
+
+  let errors = wrapper.find('.validation-message');
+  expect(errors.length).toBe(1);
+})
 
 test('handleClick with formValid=false', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))
   const wrapper = mount(
-    <BrowserRouter>
-      <Provider store={store}>
-        <CaseStudyForm />
-      </Provider>
-    </BrowserRouter>
+    <MemoryRouter>
+      {({router}) => (
+        <Provider store={store}>
+          <CaseStudyForm router={router} />
+        </Provider>
+      )}
+    </MemoryRouter>
   )
 
   wrapper.find('input[type="submit"]').simulate('click')
   expect(store.getState().forms.caseStudyForm.$form.valid).toBeFalsy()
 });
+
+
+test('handleClick with formValid=true', () => {
+  let state = Object.assign({}, sampleState);
+  state.caseStudyForm.title = 'FooBar';
+
+  let store = createStore(Object.assign({}, { _serverContext: {} }, state))
+  const wrapper = mount(
+    <MemoryRouter>
+      {({router}) => (
+        <Provider store={store}>
+          <CaseStudyForm router={router} />
+        </Provider>
+      )}
+    </MemoryRouter>
+  )
+
+  wrapper.find('input[type="submit"]').simulate('click');
+  expect(wrapper.find('h1').text()).toBe('Reference for FooBar');
+});
+
+test('handleClick when on last step', () => {
+  let state = Object.assign({}, sampleState);
+  state.caseStudyForm = Object.assign({}, state.caseStudyForm, {
+    title: 'FooBar',
+    acknowledge: true,
+    permission: true,
+    name: 'Full Name',
+    role: 'Some Role',
+    phone: '0000',
+    email: 'MAIL'
+  });
+
+  let store = createStore(Object.assign({}, { _serverContext: {} }, state))
+  const wrapper = mount(
+    <MemoryRouter>
+      {({router}) => (
+        <Provider store={store}>
+          <CaseStudyForm router={router} />
+        </Provider>
+      )}
+    </MemoryRouter>
+  )
+
+  wrapper.find('input[type="submit"]').simulate('click');
+  expect(wrapper.find('h1').text()).toBe('Reference for FooBar');
+  // Submit the form!
+  wrapper.find('input[type="submit"]').simulate('click');
+});
+
+

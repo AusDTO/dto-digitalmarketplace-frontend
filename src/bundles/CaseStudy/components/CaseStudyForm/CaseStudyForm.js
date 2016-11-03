@@ -1,32 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
+import { actions, actionTypes } from 'react-redux-form';
 import { Match, Miss } from 'react-router';
 
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
-
-import { navigateStep } from '../../../../shared/reduxModules/form_options';
-
+import NotFound from '../../../../shared/NotFound';
 
 class CaseStudyForm extends React.Component {
 
   static propTypes = {
     action: React.PropTypes.string,
-    csrf_token: React.PropTypes.string,
     form: React.PropTypes.object.isRequired,
-    returnLink: React.PropTypes.string
+    caseStudyForm: React.PropTypes.object.isRequired,
+    router: React.PropTypes.shape({
+      transitionTo: React.PropTypes.func
+    }).isRequired,
+    maxSteps: React.PropTypes.number.isRequired,
+    model: React.PropTypes.string.isRequired,
+
+    formErrors: React.PropTypes.object,
+    returnLink: React.PropTypes.string,
+    mode: React.PropTypes.oneOf(['add', 'edit']),
+    csrf_token: React.PropTypes.string,
+    serverRender: React.PropTypes.bool
   }
 
-  static contextTypes = {
-    router: React.PropTypes.shape({
-      transitionTo: React.PropTypes.func.isRequired
-    })
+  static defaultProps = {
+    maxSteps: 1
   }
 
   state = {
-    localSubmitFailed: false
+    mounted: false
   }
 
   /**
@@ -49,12 +55,18 @@ class CaseStudyForm extends React.Component {
           errors: formErrors[key]
         }
       });
+
       dispatch(actions.setFieldsErrors(model, errors));
+      dispatch(actions.setSubmitFailed(model));
     }
   }
 
   componentDidMount() {
     const { dispatch, formErrors, model } = this.props;
+
+    this.setState({
+      mounted: true
+    })
 
     if (!formErrors) {
       return;
@@ -73,28 +85,16 @@ class CaseStudyForm extends React.Component {
      * FIXME
      * This is a workaround to complete a normal form submit
      */
-    const { form, step, maxSteps, dispatch } = this.props;
+    const { form, step, maxSteps, dispatch, model, router } = this.props;
     if (form.valid) {
       if (step < maxSteps) {
         e.preventDefault();
-
-        const { router } = this.context;
-        const nextStep = step + 1;
-
-        dispatch(navigateStep(nextStep));
         router.transitionTo('/reference');
-
-        this.setState({
-          localSubmitFailed: false
-        });
+        dispatch({ type: actionTypes.SET_SUBMIT_FAILED, model, submitFailed: false })
       } else {
         this._form.submit = this.refs.submittable.submit;
         this._form.submit();
       }
-    } else {
-      this.setState({
-        localSubmitFailed: true
-      });
     }
   }
 
@@ -106,31 +106,31 @@ class CaseStudyForm extends React.Component {
     const props = {
       ...this.props,
       sidebarOptions,
+      mounted: this.state.mounted,
       attachNode: this.attachNode.bind(this),
       onClick: this.handleClick.bind(this)
     }
 
     return (
         <div>
-          {/*FIXME: this form exists purely to steal its submit method.*/}
+          {/*
+            FIXME: this form exists purely to steal its submit method, limitation of RRF.
+          */}
           <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-          <Match pattern="/" exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
-          <Miss render={(routerProps) => <StepOne {...routerProps} {...props} />} />
-          <Match pattern="/reference" exactly render={(routerProps) => <StepTwo {...routerProps} {...props} />} /> 
+          <Match pattern='/' exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
+          <Match pattern='/reference' render={(routerProps) => <StepTwo {...routerProps} {...props} />} />
+          <Miss component={NotFound} />
         </div>
     )
   }
 }
 
-CaseStudyForm.defaultProps = {
-  maxSteps: 1
-}
-
-const mapStateToProps = ({ forms, casestudy, form_options, caseStudyForm, options }) => {
+const mapStateToProps = ({ forms, casestudy, form_options, caseStudyForm, options }, { router }) => {
   const form = forms.caseStudyForm.$form;
   return {
     form,
     caseStudyForm,
+    router,
     maxSteps: 2,
     model: 'caseStudyForm',
     formErrors: form_options.errors,

@@ -1,0 +1,22 @@
+{
+  "businessDetailsForm": {
+    "name": "SupCo Pty. Ltd.",
+    "summary": "",
+    "linkedin": "www.linked.in",
+    "website": "www.com",
+    "address": {
+      "addressLine": "Level 5, 77 Devon Street",
+      "suburb": "Surry Hills",
+      "state": "NSW",
+      "postalCode": "2010",
+      "country": "Australia"
+    }
+  },
+  "form_options": {
+    "errors": {
+      "summary": {
+        "required": true
+      }
+    }
+  }
+}

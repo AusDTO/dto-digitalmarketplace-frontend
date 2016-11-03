@@ -27,7 +27,34 @@ test('validLinks', () => {
 
 	expect(validator.validLinks(['http://badproto', 'google.com'])).toBeFalsy()
 
+	expect(validator.validLinks(['', void 0])).toBeTruthy()
+	expect(validator.validLinks(['', {}])).toBeTruthy()
 	expect(validator.validLinks('http://www.google.com')).toBeTruthy()
 	expect(validator.validLinks('http://google.com')).toBeTruthy()
 	expect(validator.validLinks()).toBeTruthy()
 })
+
+test('dependantRequired', () => {
+	const formValues = {
+		title: void 0,
+		role: 'CTO',
+		email: 'some@mail.com',
+		'null': null
+	}
+
+	// Empty check
+	expect(validator.dependantRequired({}, [])()).toBe(true);
+
+	const oneInvalidField = validator.dependantRequired(formValues, ['title', 'email']);
+	const twoInvalidFields = validator.dependantRequired(formValues, ['title', 'null']);
+	const validFields = validator.dependantRequired(formValues, ['role', 'email']);
+
+	expect(oneInvalidField(false)).toBe(false);
+	expect(oneInvalidField(true)).toBe(true)
+
+	expect(twoInvalidFields(false)).toBe(true);
+	expect(twoInvalidFields(true)).toBe(true);
+
+	expect(validFields(true)).toBe(true);
+	expect(validFields(false)).toBe(false)
+});

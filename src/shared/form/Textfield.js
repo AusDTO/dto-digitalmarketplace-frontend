@@ -9,7 +9,7 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
     {description && (
       <p className="hint" id={`${id}-hint`}>{description}</p>
     )}
-    <StatefulError model={model} messages={messages} id={id} />
+    {messages && <StatefulError model={model} messages={messages} id={id} />}
     <Control.text
       model={model}
       name={name}

@@ -6,11 +6,18 @@ import { navigateStep } from '../../../shared/reduxModules/form_options';
 
 class StepLink extends React.Component {
   render() {
-    const { step, children, to, className, role, dispatch } = this.props
+    const { step, children, to, role, dispatch, active, current } = this.props
+    let className = [];
+    if (active) {
+      className = className.concat('is-active');
+    }
+    if (current) {
+      className = className.concat('is-current');
+    }
     return (
       <Link to={to || `/step/${step}`}>{
         ({isActive, location, href, onClick, transition}) =>
-          <a href={href} role={role} className={className} onClick={e => {
+          <a href={href} role={role} className={className.join(' ')} onClick={e => {
             dispatch(navigateStep(step));
             onClick(e)
           }}>{children}</a>
