@@ -58,7 +58,7 @@ class StepTwo extends React.Component {
               ref={attachNode}
               validators={{
                 permission: {
-                  dependantRequired: (val) => dependantRequired(caseStudyForm, ['name', 'role', 'phone', 'email'])(val)
+                  required: (val) => dependantRequired(caseStudyForm, ['name', 'role', 'phone', 'email'])(val)
                 }
               }}
             >
@@ -130,7 +130,7 @@ class StepTwo extends React.Component {
                   model={`${model}.permission`}
                   id="permission"
                   messages={{
-                    dependantRequired: 'You must acknowledge your reference has given permission.'
+                    required: 'You must acknowledge your reference has given permission.'
                   }}
                 />
               </div>
