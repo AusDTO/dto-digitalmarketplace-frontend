@@ -21,315 +21,320 @@ exports[`test CaseStudyForm renders 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
-      <span />
-      <form
-        action={undefined}
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="title">
-            Give your case study a title
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="title"
-            name="title"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="client">
-            Who was the client?
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="client"
-            name="client"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="timeframe">
-            What was the time frame?
-          </label>
-          <p
-            className="hint"
-            id="timeframe-hint">
-            For example,  January 2016 — June 2016
-          </p>
-          <input
-            aria-describedby="timeframe-hint"
-            className=""
-            id="timeframe"
-            name="timeframe"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="opportunity">
-            Outline the problem or opportunity
-          </label>
-          <p
-            className="hint"
-            id="opportunity-hint">
-            Describe the project goal and any relevant background information.
-          </p>
-          <div>
-            <textarea
-              aria-describedby="opportunity-hint"
+    <div
+      className="row">
+      <div
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                </a>
+              </li>
+              <li>
+                <a
+                  className=""
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
+        <span />
+        <form
+          action={undefined}
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="title">
+              Give your case study a title
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue=""
-              id="opportunity"
-              name="opportunity"
+              id="title"
+              name="title"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="approach">
-            Describe your approach
-          </label>
-          <p
-            className="hint"
-            id="approach-hint">
-            How did your capabilities and methods contribute to achieving the project goals?
-          </p>
-          <div>
-            <textarea
-              aria-describedby="approach-hint"
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="client">
+              Who was the client?
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue=""
-              id="approach"
-              name="approach"
+              id="client"
+              name="client"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="outcome">
-            What was the outcome?
-          </label>
-          <p
-            className="hint"
-            id="outcome-hint">
-            List the key achievements of this project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
-              <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
-              </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="timeframe">
+              What was the time frame?
+            </label>
+            <p
+              className="hint"
+              id="timeframe-hint">
+              For example,  January 2016 — June 2016
+            </p>
+            <input
+              aria-describedby="timeframe-hint"
+              className=""
+              id="timeframe"
+              name="timeframe"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="opportunity">
+              Outline the problem or opportunity
+            </label>
+            <p
+              className="hint"
+              id="opportunity-hint">
+              Describe the project goal and any relevant background information.
+            </p>
+            <div>
+              <textarea
+                aria-describedby="opportunity-hint"
+                className=""
+                defaultValue=""
+                id="opportunity"
+                name="opportunity"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
             </div>
-            <div
-              className="list-entry row">
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="approach">
+              Describe your approach
+            </label>
+            <p
+              className="hint"
+              id="approach-hint">
+              How did your capabilities and methods contribute to achieving the project goals?
+            </p>
+            <div>
+              <textarea
+                aria-describedby="approach-hint"
+                className=""
+                defaultValue=""
+                id="approach"
+                name="approach"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
+            </div>
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="outcome">
+              What was the outcome?
+            </label>
+            <p
+              className="hint"
+              id="outcome-hint">
+              List the key achievements of this project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+              </div>
+              <div
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="projectLinks">
-            Project links
-          </label>
-          <p
-            className="hint"
-            id="projectLinks-hint">
-            Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
+          <div
+            className="field">
+            <label
+              htmlFor="projectLinks">
+              Project links
+            </label>
+            <p
+              className="hint"
+              id="projectLinks-hint">
+              Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row">
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks-1"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks-1"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Save & Continue" />
-      </form>
-    </article>
+          <input
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Save & Continue" />
+        </form>
+      </article>
+    </div>
   </div>
 </div>
 `;
@@ -357,203 +362,208 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-              <i
-                aria-hidden="true"
-                className="fa fa-check green" />
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
-      <span />
-      <form
-        action="https://httpbin.org/post"
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <input
-          id="csrf_token"
-          name="csrf_token"
-          type="hidden"
-          value="somecsrftoken" />
-        <input
-          name="opportunity"
-          type="hidden"
-          value="The opportunity" />
-        <input
-          name="client"
-          type="hidden"
-          value="The Client Name" />
-        <input
-          name="timeframe"
-          type="hidden"
-          value="January 2016 — June 2016" />
-        <input
-          name="approach"
-          type="hidden"
-          value="The approach" />
-        <input
-          name="outcome[]"
-          type="hidden"
-          value="Outcome 1" />
-        <input
-          name="outcome[]"
-          type="hidden"
-          value="Outcome 2" />
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="name">
-            Full name
-          </label>
-          <p
-            className="hint"
-            id="name-hint">
-            Add the full name of the person who has agreed to be your reference.
-          </p>
+    <div
+      className="row">
+      <div
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className=""
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-check green" />
+                </a>
+              </li>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
+        <span />
+        <form
+          action="https://httpbin.org/post"
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
           <input
-            aria-describedby="name-hint"
-            className=""
-            id="name"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="Your full name" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="role">
-            Role and place to work
-          </label>
-          <p
-            className="hint"
-            id="role-hint">
-            For example,  Delivery Manager, Digital Transformation Agency.
-          </p>
+            id="csrf_token"
+            name="csrf_token"
+            type="hidden"
+            value="somecsrftoken" />
           <input
-            aria-describedby="role-hint"
-            className=""
-            id="role"
-            name="role"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="phone">
-            Phone number
-          </label>
+            name="opportunity"
+            type="hidden"
+            value="The opportunity" />
           <input
-            aria-describedby={undefined}
-            className=""
-            id="phone"
-            name="phone"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="email">
-            Email
-          </label>
+            name="client"
+            type="hidden"
+            value="The Client Name" />
           <input
-            aria-describedby={undefined}
-            className=""
-            id="email"
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
+            name="timeframe"
+            type="hidden"
+            value="January 2016 — June 2016" />
           <input
-            checked={false}
-            id="permission"
-            name="permission"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox" />
-          <label
-            htmlFor="permission">
-            I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.
-          </label>
-        </div>
-        <div
-          className="field">
+            name="approach"
+            type="hidden"
+            value="The approach" />
           <input
-            checked={false}
-            id="acknowledge"
-            name="acknowledge"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox" />
-          <label
-            htmlFor="acknowledge">
-            I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
-          </label>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Publish case study" />
-      </form>
-      <a
-        href="http://www.right.back/to/where/you/came/from">
-        Return without saving
-      </a>
-    </article>
+            name="outcome[]"
+            type="hidden"
+            value="Outcome 1" />
+          <input
+            name="outcome[]"
+            type="hidden"
+            value="Outcome 2" />
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="name">
+              Full name
+            </label>
+            <p
+              className="hint"
+              id="name-hint">
+              Add the full name of the person who has agreed to be your reference.
+            </p>
+            <input
+              aria-describedby="name-hint"
+              className=""
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="Your full name" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="role">
+              Role and place to work
+            </label>
+            <p
+              className="hint"
+              id="role-hint">
+              For example,  Delivery Manager, Digital Transformation Agency.
+            </p>
+            <input
+              aria-describedby="role-hint"
+              className=""
+              id="role"
+              name="role"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone number
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="phone"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <input
+              checked={false}
+              id="permission"
+              name="permission"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="checkbox" />
+            <label
+              htmlFor="permission">
+              I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.
+            </label>
+          </div>
+          <div
+            className="field">
+            <input
+              checked={false}
+              id="acknowledge"
+              name="acknowledge"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="checkbox" />
+            <label
+              htmlFor="acknowledge">
+              I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
+            </label>
+          </div>
+          <input
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Publish case study" />
+        </form>
+        <a
+          href="http://www.right.back/to/where/you/came/from">
+          Return without saving
+        </a>
+      </article>
+    </div>
   </div>
 </div>
 `;
@@ -581,170 +591,175 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-              <i
-                aria-hidden="true"
-                className="fa fa-check green" />
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
-      <span />
-      <form
-        action={undefined}
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="name">
-            Full name
-          </label>
-          <p
-            className="hint"
-            id="name-hint">
-            Add the full name of the person who has agreed to be your reference.
-          </p>
+    <div
+      className="row">
+      <div
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className=""
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-check green" />
+                </a>
+              </li>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
+        <span />
+        <form
+          action={undefined}
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="name">
+              Full name
+            </label>
+            <p
+              className="hint"
+              id="name-hint">
+              Add the full name of the person who has agreed to be your reference.
+            </p>
+            <input
+              aria-describedby="name-hint"
+              className=""
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="role">
+              Role and place to work
+            </label>
+            <p
+              className="hint"
+              id="role-hint">
+              For example,  Delivery Manager, Digital Transformation Agency.
+            </p>
+            <input
+              aria-describedby="role-hint"
+              className=""
+              id="role"
+              name="role"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone number
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="phone"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <input
+              checked={false}
+              id="permission"
+              name="permission"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="checkbox" />
+            <label
+              htmlFor="permission">
+              I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.
+            </label>
+          </div>
+          <div
+            className="field">
+            <input
+              checked={false}
+              id="acknowledge"
+              name="acknowledge"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="checkbox" />
+            <label
+              htmlFor="acknowledge">
+              I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
+            </label>
+          </div>
           <input
-            aria-describedby="name-hint"
-            className=""
-            id="name"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="role">
-            Role and place to work
-          </label>
-          <p
-            className="hint"
-            id="role-hint">
-            For example,  Delivery Manager, Digital Transformation Agency.
-          </p>
-          <input
-            aria-describedby="role-hint"
-            className=""
-            id="role"
-            name="role"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="phone">
-            Phone number
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="phone"
-            name="phone"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="email">
-            Email
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="email"
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <input
-            checked={false}
-            id="permission"
-            name="permission"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox" />
-          <label
-            htmlFor="permission">
-            I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.
-          </label>
-        </div>
-        <div
-          className="field">
-          <input
-            checked={false}
-            id="acknowledge"
-            name="acknowledge"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox" />
-          <label
-            htmlFor="acknowledge">
-            I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
-          </label>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Publish case study" />
-      </form>
-    </article>
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Publish case study" />
+        </form>
+      </article>
+    </div>
   </div>
 </div>
 `;
@@ -772,170 +787,175 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-              <i
-                aria-hidden="true"
-                className="fa fa-check green" />
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
-      <span />
-      <form
-        action={undefined}
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="name">
-            Full name
-          </label>
-          <p
-            className="hint"
-            id="name-hint">
-            Add the full name of the person who has agreed to be your reference.
-          </p>
+    <div
+      className="row">
+      <div
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className=""
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-check green" />
+                </a>
+              </li>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
+        <span />
+        <form
+          action={undefined}
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="name">
+              Full name
+            </label>
+            <p
+              className="hint"
+              id="name-hint">
+              Add the full name of the person who has agreed to be your reference.
+            </p>
+            <input
+              aria-describedby="name-hint"
+              className=""
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="role">
+              Role and place to work
+            </label>
+            <p
+              className="hint"
+              id="role-hint">
+              For example,  Delivery Manager, Digital Transformation Agency.
+            </p>
+            <input
+              aria-describedby="role-hint"
+              className=""
+              id="role"
+              name="role"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone number
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="phone"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <input
+              checked={false}
+              id="permission"
+              name="permission"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="checkbox" />
+            <label
+              htmlFor="permission">
+              I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.
+            </label>
+          </div>
+          <div
+            className="field">
+            <input
+              checked={false}
+              id="acknowledge"
+              name="acknowledge"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="checkbox" />
+            <label
+              htmlFor="acknowledge">
+              I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
+            </label>
+          </div>
           <input
-            aria-describedby="name-hint"
-            className=""
-            id="name"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="role">
-            Role and place to work
-          </label>
-          <p
-            className="hint"
-            id="role-hint">
-            For example,  Delivery Manager, Digital Transformation Agency.
-          </p>
-          <input
-            aria-describedby="role-hint"
-            className=""
-            id="role"
-            name="role"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="phone">
-            Phone number
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="phone"
-            name="phone"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="email">
-            Email
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="email"
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <input
-            checked={false}
-            id="permission"
-            name="permission"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox" />
-          <label
-            htmlFor="permission">
-            I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.
-          </label>
-        </div>
-        <div
-          className="field">
-          <input
-            checked={false}
-            id="acknowledge"
-            name="acknowledge"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox" />
-          <label
-            htmlFor="acknowledge">
-            I acknowledge this case study may be shared with registered buyers in the Digital Marketplace.
-          </label>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Update case study" />
-      </form>
-    </article>
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Update case study" />
+        </form>
+      </article>
+    </div>
   </div>
 </div>
 `;
@@ -963,319 +983,324 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
-      <span />
-      <form
-        action={undefined}
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="title">
-            Give your case study a title
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="title"
-            name="title"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="client">
-            Who was the client?
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="client"
-            name="client"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="timeframe">
-            What was the time frame?
-          </label>
-          <p
-            className="hint"
-            id="timeframe-hint">
-            For example,  January 2016 — June 2016
-          </p>
-          <input
-            aria-describedby="timeframe-hint"
-            className=""
-            id="timeframe"
-            name="timeframe"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="opportunity">
-            Outline the problem or opportunity
-          </label>
-          <p
-            className="hint"
-            id="opportunity-hint">
-            Describe the project goal and any relevant background information.
-          </p>
-          <div>
-            <textarea
-              aria-describedby="opportunity-hint"
+    <div
+      className="row">
+      <div
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                </a>
+              </li>
+              <li>
+                <a
+                  className=""
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
+        <span />
+        <form
+          action={undefined}
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="title">
+              Give your case study a title
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue=""
-              id="opportunity"
-              name="opportunity"
+              id="title"
+              name="title"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="approach">
-            Describe your approach
-          </label>
-          <p
-            className="hint"
-            id="approach-hint">
-            How did your capabilities and methods contribute to achieving the project goals?
-          </p>
-          <div>
-            <textarea
-              aria-describedby="approach-hint"
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="client">
+              Who was the client?
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue=""
-              id="approach"
-              name="approach"
+              id="client"
+              name="client"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="outcome">
-            What was the outcome?
-          </label>
-          <p
-            className="hint"
-            id="outcome-hint">
-            List the key achievements of this project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
-              <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
-              </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="timeframe">
+              What was the time frame?
+            </label>
+            <p
+              className="hint"
+              id="timeframe-hint">
+              For example,  January 2016 — June 2016
+            </p>
+            <input
+              aria-describedby="timeframe-hint"
+              className=""
+              id="timeframe"
+              name="timeframe"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="opportunity">
+              Outline the problem or opportunity
+            </label>
+            <p
+              className="hint"
+              id="opportunity-hint">
+              Describe the project goal and any relevant background information.
+            </p>
+            <div>
+              <textarea
+                aria-describedby="opportunity-hint"
+                className=""
+                defaultValue=""
+                id="opportunity"
+                name="opportunity"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
             </div>
-            <div
-              className="list-entry row">
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="approach">
+              Describe your approach
+            </label>
+            <p
+              className="hint"
+              id="approach-hint">
+              How did your capabilities and methods contribute to achieving the project goals?
+            </p>
+            <div>
+              <textarea
+                aria-describedby="approach-hint"
+                className=""
+                defaultValue=""
+                id="approach"
+                name="approach"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
+            </div>
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="outcome">
+              What was the outcome?
+            </label>
+            <p
+              className="hint"
+              id="outcome-hint">
+              List the key achievements of this project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+              </div>
+              <div
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="projectLinks">
-            Project links
-          </label>
-          <p
-            className="hint"
-            id="projectLinks-hint">
-            Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
+          <div
+            className="field">
+            <label
+              htmlFor="projectLinks">
+              Project links
+            </label>
+            <p
+              className="hint"
+              id="projectLinks-hint">
+              Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row">
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks-1"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks-1"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Save & Continue" />
-      </form>
-      <a
-        href="http://www.right.back/to/where/you/came/from">
-        Return without saving
-      </a>
-    </article>
+          <input
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Save & Continue" />
+        </form>
+        <a
+          href="http://www.right.back/to/where/you/came/from">
+          Return without saving
+        </a>
+      </article>
+    </div>
   </div>
 </div>
 `;
@@ -1303,434 +1328,439 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
+    <div
+      className="row">
       <div
-        aria-labelledby="validation-masthead-heading"
-        aria-role="group"
-        className="callout--warning"
-        role="alert"
-        tabIndex="-1">
-        <h4
-          className="validation-masthead-heading">
-          There was a problem with the details you gave
-        </h4>
-        <ul>
-          <li>
-            <a
-              href="#title">
-              Title is required
-            </a>
-          </li>
-          <li>
-            <a
-              href="#client">
-              Client is required
-            </a>
-          </li>
-          <li>
-            <a
-              href="#timeframe">
-              Timeframe is required
-            </a>
-          </li>
-          <li>
-            <a
-              href="#opportunity">
-              You must outline the opportunity
-            </a>
-          </li>
-          <li>
-            <a
-              href="#approach">
-              You must outline your approach
-            </a>
-          </li>
-          <li>
-            <a
-              href="#outcome">
-              You must provide at least one outcome.
-            </a>
-          </li>
-        </ul>
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                </a>
+              </li>
+              <li>
+                <a
+                  className=""
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
       </div>
-      <form
-        action="/foo/bar"
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <input
-          id="csrf_token"
-          name="csrf_token"
-          type="hidden"
-          value="sometoken" />
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
         <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="title">
-            Give your case study a title
-          </label>
-          <a
-            className="validation-message"
-            href="#title">
-            <span
-              className="visuallyhidden">
-              Validation Error: 
-            </span>
-            <span>
-              Title is required
-            </span>
-          </a>
-          <input
-            aria-describedby={undefined}
-            className="invalid"
-            id="title"
-            name="title"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
+          aria-labelledby="validation-masthead-heading"
+          aria-role="group"
+          className="callout--warning"
+          role="alert"
+          tabIndex="-1">
+          <h4
+            className="validation-masthead-heading">
+            There was a problem with the details you gave
+          </h4>
+          <ul>
+            <li>
+              <a
+                href="#title">
+                Title is required
+              </a>
+            </li>
+            <li>
+              <a
+                href="#client">
+                Client is required
+              </a>
+            </li>
+            <li>
+              <a
+                href="#timeframe">
+                Timeframe is required
+              </a>
+            </li>
+            <li>
+              <a
+                href="#opportunity">
+                You must outline the opportunity
+              </a>
+            </li>
+            <li>
+              <a
+                href="#approach">
+                You must outline your approach
+              </a>
+            </li>
+            <li>
+              <a
+                href="#outcome">
+                You must provide at least one outcome.
+              </a>
+            </li>
+          </ul>
         </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="client">
-            Who was the client?
-          </label>
-          <a
-            className="validation-message"
-            href="#client">
-            <span
-              className="visuallyhidden">
-              Validation Error: 
-            </span>
-            <span>
-              Client is required
-            </span>
-          </a>
+        <form
+          action="/foo/bar"
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
           <input
-            aria-describedby={undefined}
-            className="invalid"
-            id="client"
-            name="client"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="timeframe">
-            What was the time frame?
-          </label>
-          <p
-            className="hint"
-            id="timeframe-hint">
-            For example,  January 2016 — June 2016
-          </p>
-          <a
-            className="validation-message"
-            href="#timeframe">
-            <span
-              className="visuallyhidden">
-              Validation Error: 
-            </span>
-            <span>
-              Timeframe is required
-            </span>
-          </a>
-          <input
-            aria-describedby="timeframe-hint"
-            className="invalid"
-            id="timeframe"
-            name="timeframe"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="opportunity">
-            Outline the problem or opportunity
-          </label>
-          <p
-            className="hint"
-            id="opportunity-hint">
-            Describe the project goal and any relevant background information.
-          </p>
-          <a
-            className="validation-message"
-            href="#opportunity">
-            <span
-              className="visuallyhidden">
-              Validation Error: 
-            </span>
-            <span>
-              You must outline the opportunity
-            </span>
-          </a>
-          <div>
-            <textarea
-              aria-describedby="opportunity-hint"
+            id="csrf_token"
+            name="csrf_token"
+            type="hidden"
+            value="sometoken" />
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="title">
+              Give your case study a title
+            </label>
+            <a
+              className="validation-message"
+              href="#title">
+              <span
+                className="visuallyhidden">
+                Validation Error: 
+              </span>
+              <span>
+                Title is required
+              </span>
+            </a>
+            <input
+              aria-describedby={undefined}
               className="invalid"
-              defaultValue=""
-              id="opportunity"
-              name="opportunity"
+              id="title"
+              name="title"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="approach">
-            Describe your approach
-          </label>
-          <p
-            className="hint"
-            id="approach-hint">
-            How did your capabilities and methods contribute to achieving the project goals?
-          </p>
-          <a
-            className="validation-message"
-            href="#approach">
-            <span
-              className="visuallyhidden">
-              Validation Error: 
-            </span>
-            <span>
-              You must outline your approach
-            </span>
-          </a>
-          <div>
-            <textarea
-              aria-describedby="approach-hint"
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="client">
+              Who was the client?
+            </label>
+            <a
+              className="validation-message"
+              href="#client">
+              <span
+                className="visuallyhidden">
+                Validation Error: 
+              </span>
+              <span>
+                Client is required
+              </span>
+            </a>
+            <input
+              aria-describedby={undefined}
               className="invalid"
-              defaultValue=""
-              id="approach"
-              name="approach"
+              id="client"
+              name="client"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="outcome">
-            What was the outcome?
-          </label>
-          <p
-            className="hint"
-            id="outcome-hint">
-            List the key achievements of this project.
-          </p>
-          <a
-            className="validation-message"
-            href="#outcome">
-            <span
-              className="visuallyhidden">
-              Validation Error: 
-            </span>
-            <span>
-              You must provide at least one outcome.
-            </span>
-          </a>
-          <div>
-            <div
-              className="list-entry row">
-              <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box invalid"
-                  defaultValue=""
-                  id="outcome"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
-              </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="timeframe">
+              What was the time frame?
+            </label>
+            <p
+              className="hint"
+              id="timeframe-hint">
+              For example,  January 2016 — June 2016
+            </p>
+            <a
+              className="validation-message"
+              href="#timeframe">
+              <span
+                className="visuallyhidden">
+                Validation Error: 
+              </span>
+              <span>
+                Timeframe is required
+              </span>
+            </a>
+            <input
+              aria-describedby="timeframe-hint"
+              className="invalid"
+              id="timeframe"
+              name="timeframe"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="opportunity">
+              Outline the problem or opportunity
+            </label>
+            <p
+              className="hint"
+              id="opportunity-hint">
+              Describe the project goal and any relevant background information.
+            </p>
+            <a
+              className="validation-message"
+              href="#opportunity">
+              <span
+                className="visuallyhidden">
+                Validation Error: 
+              </span>
+              <span>
+                You must outline the opportunity
+              </span>
+            </a>
+            <div>
+              <textarea
+                aria-describedby="opportunity-hint"
+                className="invalid"
+                defaultValue=""
+                id="opportunity"
+                name="opportunity"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
             </div>
-            <div
-              className="list-entry row">
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="approach">
+              Describe your approach
+            </label>
+            <p
+              className="hint"
+              id="approach-hint">
+              How did your capabilities and methods contribute to achieving the project goals?
+            </p>
+            <a
+              className="validation-message"
+              href="#approach">
+              <span
+                className="visuallyhidden">
+                Validation Error: 
+              </span>
+              <span>
+                You must outline your approach
+              </span>
+            </a>
+            <div>
+              <textarea
+                aria-describedby="approach-hint"
+                className="invalid"
+                defaultValue=""
+                id="approach"
+                name="approach"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
+            </div>
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="outcome">
+              What was the outcome?
+            </label>
+            <p
+              className="hint"
+              id="outcome-hint">
+              List the key achievements of this project.
+            </p>
+            <a
+              className="validation-message"
+              href="#outcome">
+              <span
+                className="visuallyhidden">
+                Validation Error: 
+              </span>
+              <span>
+                You must provide at least one outcome.
+              </span>
+            </a>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box invalid"
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box invalid"
+                    defaultValue=""
+                    id="outcome"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+              </div>
+              <div
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box invalid"
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="projectLinks">
-            Project links
-          </label>
-          <p
-            className="hint"
-            id="projectLinks-hint">
-            Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
+          <div
+            className="field">
+            <label
+              htmlFor="projectLinks">
+              Project links
+            </label>
+            <p
+              className="hint"
+              id="projectLinks-hint">
+              Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row">
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks-1"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks-1"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Save & Continue" />
-      </form>
-    </article>
+          <input
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Save & Continue" />
+        </form>
+      </article>
+    </div>
   </div>
 </div>
 `;
@@ -1758,320 +1788,325 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
-      <span />
-      <form
-        action="/foo/bar"
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <input
-          id="csrf_token"
-          name="csrf_token"
-          type="hidden"
-          value="sometoken" />
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="title">
-            Give your case study a title
-          </label>
+    <div
+      className="row">
+      <div
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                </a>
+              </li>
+              <li>
+                <a
+                  className=""
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
+        <span />
+        <form
+          action="/foo/bar"
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
           <input
-            aria-describedby={undefined}
-            className=""
-            id="title"
-            name="title"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="client">
-            Who was the client?
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="client"
-            name="client"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="timeframe">
-            What was the time frame?
-          </label>
-          <p
-            className="hint"
-            id="timeframe-hint">
-            For example,  January 2016 — June 2016
-          </p>
-          <input
-            aria-describedby="timeframe-hint"
-            className=""
-            id="timeframe"
-            name="timeframe"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="opportunity">
-            Outline the problem or opportunity
-          </label>
-          <p
-            className="hint"
-            id="opportunity-hint">
-            Describe the project goal and any relevant background information.
-          </p>
-          <div>
-            <textarea
-              aria-describedby="opportunity-hint"
+            id="csrf_token"
+            name="csrf_token"
+            type="hidden"
+            value="sometoken" />
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="title">
+              Give your case study a title
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue=""
-              id="opportunity"
-              name="opportunity"
+              id="title"
+              name="title"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="approach">
-            Describe your approach
-          </label>
-          <p
-            className="hint"
-            id="approach-hint">
-            How did your capabilities and methods contribute to achieving the project goals?
-          </p>
-          <div>
-            <textarea
-              aria-describedby="approach-hint"
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="client">
+              Who was the client?
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue=""
-              id="approach"
-              name="approach"
+              id="client"
+              name="client"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              200 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="outcome">
-            What was the outcome?
-          </label>
-          <p
-            className="hint"
-            id="outcome-hint">
-            List the key achievements of this project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
-              <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
-              </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="timeframe">
+              What was the time frame?
+            </label>
+            <p
+              className="hint"
+              id="timeframe-hint">
+              For example,  January 2016 — June 2016
+            </p>
+            <input
+              aria-describedby="timeframe-hint"
+              className=""
+              id="timeframe"
+              name="timeframe"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="opportunity">
+              Outline the problem or opportunity
+            </label>
+            <p
+              className="hint"
+              id="opportunity-hint">
+              Describe the project goal and any relevant background information.
+            </p>
+            <div>
+              <textarea
+                aria-describedby="opportunity-hint"
+                className=""
+                defaultValue=""
+                id="opportunity"
+                name="opportunity"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
             </div>
-            <div
-              className="list-entry row">
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="approach">
+              Describe your approach
+            </label>
+            <p
+              className="hint"
+              id="approach-hint">
+              How did your capabilities and methods contribute to achieving the project goals?
+            </p>
+            <div>
+              <textarea
+                aria-describedby="approach-hint"
+                className=""
+                defaultValue=""
+                id="approach"
+                name="approach"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                200 words remaining
+              </span>
+            </div>
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="outcome">
+              What was the outcome?
+            </label>
+            <p
+              className="hint"
+              id="outcome-hint">
+              List the key achievements of this project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+              </div>
+              <div
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="projectLinks">
-            Project links
-          </label>
-          <p
-            className="hint"
-            id="projectLinks-hint">
-            Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
+          <div
+            className="field">
+            <label
+              htmlFor="projectLinks">
+              Project links
+            </label>
+            <p
+              className="hint"
+              id="projectLinks-hint">
+              Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row">
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks-1"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks-1"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Save & Continue" />
-      </form>
-    </article>
+          <input
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Save & Continue" />
+        </form>
+      </article>
+    </div>
   </div>
 </div>
 `;
@@ -2099,315 +2134,320 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         Show the range of skills and experience you can provide by completing the form below.
       </p>
     </header>
-    <aside
-      className="sidebar">
-      <nav
-        className="local-nav">
-        <ul>
-          <li>
-            <a
-              className={undefined}
-              href="/"
-              onClick={[Function]}
-              role={undefined}>
-              Add case study
-            </a>
-          </li>
-          <li>
-            <a
-              className={undefined}
-              href="/reference"
-              onClick={[Function]}
-              role={undefined}>
-              Add reference
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <article
-      className="content-main"
-      role="main">
-      <span />
-      <form
-        action="https://httpbin.org/post"
-        id="casestudy__create"
-        method="post"
-        onReset={[Function]}
-        onSubmit={[Function]}>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="title">
-            Give your case study a title
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="title"
-            name="title"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="client">
-            Who was the client?
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="client"
-            name="client"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="The Client Name" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="timeframe">
-            What was the time frame?
-          </label>
-          <p
-            className="hint"
-            id="timeframe-hint">
-            For example,  January 2016 — June 2016
-          </p>
-          <input
-            aria-describedby="timeframe-hint"
-            className=""
-            id="timeframe"
-            name="timeframe"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="text"
-            value="January 2016 — June 2016" />
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="opportunity">
-            Outline the problem or opportunity
-          </label>
-          <p
-            className="hint"
-            id="opportunity-hint">
-            Describe the project goal and any relevant background information.
-          </p>
-          <div>
-            <textarea
-              aria-describedby="opportunity-hint"
+    <div
+      className="row">
+      <div
+        className="col-xs-12 col-sm-4">
+        <aside>
+          <nav
+            className="local-nav step-navigation">
+            <ul>
+              <li>
+                <a
+                  className="is-active is-current"
+                  href="/"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add case study
+                </a>
+              </li>
+              <li>
+                <a
+                  className=""
+                  href="/reference"
+                  onClick={[Function]}
+                  role={undefined}>
+                  Add reference
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      <article
+        className="col-xs-12 col-sm-8"
+        role="main">
+        <span />
+        <form
+          action="https://httpbin.org/post"
+          id="casestudy__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="title">
+              Give your case study a title
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue="The opportunity"
-              id="opportunity"
-              name="opportunity"
+              id="title"
+              name="title"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              198 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="approach">
-            Describe your approach
-          </label>
-          <p
-            className="hint"
-            id="approach-hint">
-            How did your capabilities and methods contribute to achieving the project goals?
-          </p>
-          <div>
-            <textarea
-              aria-describedby="approach-hint"
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="client">
+              Who was the client?
+            </label>
+            <input
+              aria-describedby={undefined}
               className=""
-              defaultValue="The approach"
-              id="approach"
-              name="approach"
+              id="client"
+              name="client"
               onBlur={[Function]}
               onChange={[Function]}
-              onFocus={[Function]} />
-            <span
-              className="word-count-counter">
-              198 words remaining
-            </span>
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="The Client Name" />
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="outcome">
-            What was the outcome?
-          </label>
-          <p
-            className="hint"
-            id="outcome-hint">
-            List the key achievements of this project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
-              <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue="Outcome 1"
-                  id="outcome"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
-              </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="timeframe">
+              What was the time frame?
+            </label>
+            <p
+              className="hint"
+              id="timeframe-hint">
+              For example,  January 2016 — June 2016
+            </p>
+            <input
+              aria-describedby="timeframe-hint"
+              className=""
+              id="timeframe"
+              name="timeframe"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="January 2016 — June 2016" />
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="opportunity">
+              Outline the problem or opportunity
+            </label>
+            <p
+              className="hint"
+              id="opportunity-hint">
+              Describe the project goal and any relevant background information.
+            </p>
+            <div>
+              <textarea
+                aria-describedby="opportunity-hint"
+                className=""
+                defaultValue="The opportunity"
+                id="opportunity"
+                name="opportunity"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                198 words remaining
+              </span>
             </div>
-            <div
-              className="list-entry row">
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="approach">
+              Describe your approach
+            </label>
+            <p
+              className="hint"
+              id="approach-hint">
+              How did your capabilities and methods contribute to achieving the project goals?
+            </p>
+            <div>
+              <textarea
+                aria-describedby="approach-hint"
+                className=""
+                defaultValue="The approach"
+                id="approach"
+                name="approach"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                198 words remaining
+              </span>
+            </div>
+          </div>
+          <div
+            className="field">
+            <label
+              htmlFor="outcome">
+              What was the outcome?
+            </label>
+            <p
+              className="hint"
+              id="outcome-hint">
+              List the key achievements of this project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue="Outcome 2"
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue="Outcome 1"
+                    id="outcome"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+              </div>
+              <div
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue="Outcome 2"
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <div
-          className="field">
-          <label
-            htmlFor="projectLinks">
-            Project links
-          </label>
-          <p
-            className="hint"
-            id="projectLinks-hint">
-            Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
-          </p>
-          <div>
-            <div
-              className="list-entry row">
+          <div
+            className="field">
+            <label
+              htmlFor="projectLinks">
+              Project links
+            </label>
+            <p
+              className="hint"
+              id="projectLinks-hint">
+              Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+            </p>
+            <div>
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks">
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks">
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row">
               <div
-                className="col-xs-12 col-sm-9">
-                <label
-                  className="text-box-number-label"
-                  htmlFor="projectLinks-1">
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="projectLinks-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="projectLinks-1"
-                  name="projectLinks[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text" />
+                className="list-entry row">
+                <div
+                  className="col-xs-12 col-sm-9">
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="projectLinks-1">
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="projectLinks-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="projectLinks-1"
+                    name="projectLinks[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text" />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button">
+                  remove 
+                  <span
+                    className="visuallyhidden">
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button">
-                remove 
-                <span
-                  className="visuallyhidden">
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button">
-              Add another row
-            </button>
           </div>
-        </div>
-        <input
-          onClick={[Function]}
-          role="button"
-          type="submit"
-          value="Save & Continue" />
-      </form>
-    </article>
+          <input
+            onClick={[Function]}
+            role="button"
+            type="submit"
+            value="Save & Continue" />
+        </form>
+      </article>
+    </div>
   </div>
 </div>
 `;
