@@ -14,9 +14,10 @@ const generateFormValidilityState = (valid) => {
             businessDetailsForm: {
                 $form: { valid }
             }
+        },
+        form_options: {
+            mode: 'add'
         }
-        ,
-        form_options: {}
     }
 }
 

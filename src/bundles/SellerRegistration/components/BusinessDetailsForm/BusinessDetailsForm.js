@@ -43,7 +43,6 @@ class BusinessDetailsForm extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
-
             <Textarea
               model={`${model}.summary`}
               name="summary"
@@ -139,7 +138,6 @@ const mapStateToProps = (state) => {
     formErrors: state.form_options && state.form_options.errors,
     form,
     returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
-    mode: state.form_options.mode || 'add',
     ...state.form_options
   }
 }
