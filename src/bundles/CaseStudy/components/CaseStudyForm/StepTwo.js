@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 
-import { required } from '../../../../validators';
+import { required, dependantRequired } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -56,6 +56,11 @@ class StepTwo extends React.Component {
               method="post"
               id="casestudy__create"
               ref={attachNode}
+              validators={{
+                permission: {
+                  dependantRequired: (val) => dependantRequired(caseStudyForm, ['name', 'role', 'phone', 'email'])(val)
+                }
+              }}
             >
               {csrf_token && (
                 <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
@@ -85,12 +90,8 @@ class StepTwo extends React.Component {
                 name="name"
                 id="name"
                 htmlFor="name"
-                label="Full name"
+                label="Full name (optional)"
                 description="Add the full name of the person who has agreed to be your reference."
-                validators={{ required }}
-                messages={{
-                  required: 'Full name is required',
-                }}
               />
 
               <Textfield
@@ -98,12 +99,8 @@ class StepTwo extends React.Component {
                 name="role"
                 id="role"
                 htmlFor="role"
-                label="Role and place to work"
+                label="Role and place to work (optional)"
                 description="For example,  Delivery Manager, Digital Transformation Agency."
-                validators={{ required }}
-                messages={{
-                  required: 'Role and place to work is required',
-                }}
               />
 
               <Textfield
@@ -111,11 +108,7 @@ class StepTwo extends React.Component {
                 name="phone"
                 id="phone"
                 htmlFor="phone"
-                label="Phone number"
-                validators={{ required }}
-                messages={{
-                  required: 'Phone number is required',
-                }}
+                label="Phone number (optional)"
               />
 
               <Textfield
@@ -123,11 +116,7 @@ class StepTwo extends React.Component {
                 name="email"
                 id="email"
                 htmlFor="email"
-                label="Email"
-                validators={{ required }}
-                messages={{
-                  required: 'Email is required',
-                }}
+                label="Email (optional)"
               />
 
               <div className="field">
@@ -135,14 +124,13 @@ class StepTwo extends React.Component {
                   model={`${model}.permission`}
                   id="permission"
                   name="permission"
-                  validators={{ required }}
                 />
                 <label htmlFor="permission">I acknowledge my reference gives permission to be contacted and have their details shared in the Digital Marketplace.</label>
                 <StatefulError
                   model={`${model}.permission`}
                   id="permission"
                   messages={{
-                    required: 'You must acknowledge your reference has given permission.'
+                    dependantRequired: 'You must acknowledge your reference has given permission.'
                   }}
                 />
               </div>
