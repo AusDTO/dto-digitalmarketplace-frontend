@@ -210,3 +210,13 @@ form {
     font-size: 0.75em;
   }
 }
+
+ .title-block {
+  &__name {
+    margin-bottom: 0.3em;
+  }
+  &__role {
+    color: $grey;
+  }
+
+ }

@@ -86,6 +86,27 @@ class View extends React.Component {
                 </ul>
               </section>
             )}
+            {hasReference && (
+              <section>
+                <h3>Reference</h3>
+                <div className="title-block">
+                  {name && <p className="title-block__name">{name}</p>}
+                  {role && <p className="title-block__role">{role}</p>}
+                </div>
+                {phone && (
+                  <span>
+                    <strong>Phone</strong>
+                    <p>{phone}</p>
+                  </span>
+                )}
+                {email && (
+                  <span>
+                    <strong>Email</strong>
+                    <p>{email}</p>
+                  </span>
+                )}
+              </section>
+            )}
           </article>
         </div>
       </section>
