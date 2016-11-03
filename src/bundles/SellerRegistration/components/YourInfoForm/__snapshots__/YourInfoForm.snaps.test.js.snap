@@ -3,7 +3,7 @@ exports[`test YourInfoForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Your Information
+      Create a Seller Account
     </h1>
   </header>
   <article
@@ -30,8 +30,13 @@ exports[`test YourInfoForm renders 1`] = `
           htmlFor="representative">
           Company Representative
         </label>
+        <p
+          className="hint"
+          id="representative-hint">
+          The authorised person who signs contracts with clients
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="representative-hint"
           className=""
           id="representative"
           name="representative"
@@ -49,8 +54,158 @@ exports[`test YourInfoForm renders 1`] = `
           htmlFor="name">
           Company Name
         </label>
+        <p
+          className="hint"
+          id="name-hint">
+          As you would like it displayed on the Marketplace
+        </p>
+        <input
+          aria-describedby="name-hint"
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="abn">
+          ABN
+        </label>
         <input
           aria-describedby={undefined}
+          className=""
+          id="abn"
+          name="abn"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="phone"
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <input
+        onClick={[Function]}
+        role="button"
+        type="submit"
+        value="Continue" />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test YourInfoForm renders with edit mode 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Your Information
+    </h1>
+  </header>
+  <article
+    className="content-main"
+    role="main">
+    <span />
+    <form
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      tabIndex="-1" />
+    <form
+      action="/foo/bar"
+      id="yourinfo"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <input
+        id="csrf_token"
+        name="csrf_token"
+        type="hidden"
+        value="sometoken" />
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="representative">
+          Company Representative
+        </label>
+        <p
+          className="hint"
+          id="representative-hint">
+          The authorised person who signs contracts with clients
+        </p>
+        <input
+          aria-describedby="representative-hint"
+          className=""
+          id="representative"
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Company Name
+        </label>
+        <p
+          className="hint"
+          id="name-hint">
+          As you would like it displayed on the Marketplace
+        </p>
+        <input
+          aria-describedby="name-hint"
           className=""
           id="name"
           name="name"
@@ -133,7 +288,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Your Information
+      Create a Seller Account
     </h1>
   </header>
   <article
@@ -165,8 +320,13 @@ exports[`test YourInfoForm renders with form_options 1`] = `
           htmlFor="representative">
           Company Representative
         </label>
+        <p
+          className="hint"
+          id="representative-hint">
+          The authorised person who signs contracts with clients
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="representative-hint"
           className=""
           id="representative"
           name="representative"
@@ -184,8 +344,13 @@ exports[`test YourInfoForm renders with form_options 1`] = `
           htmlFor="name">
           Company Name
         </label>
+        <p
+          className="hint"
+          id="name-hint">
+          As you would like it displayed on the Marketplace
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="name-hint"
           className=""
           id="name"
           name="name"
@@ -257,7 +422,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         onClick={[Function]}
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Continue" />
     </form>
   </article>
 </div>
