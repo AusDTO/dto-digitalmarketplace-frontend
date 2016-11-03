@@ -60,11 +60,11 @@ class YourInfoForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token, model } = this.props;
+    const { action, csrf_token, model, mode } = this.props;
     return (
       <Layout>
         <header>
-          <h1>Your Information</h1>
+          <h1>{mode === 'edit' ? 'Your Information' : 'Create a Seller Account'}</h1>
         </header>
         <article role="main" className="content-main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -86,6 +86,7 @@ class YourInfoForm extends React.Component {
               id="representative"
               htmlFor="representative"
               label="Company Representative"
+              description="The authorised person who signs contracts with clients"
               validators={{ required }}
               messages={{
                 required: 'Company representative is required',
@@ -98,6 +99,7 @@ class YourInfoForm extends React.Component {
               id="name"
               htmlFor="name"
               label="Company Name"
+              description="As you would like it displayed on the Marketplace"
               validators={{ required }}
               messages={{
                 required: 'Company name is required',
@@ -139,7 +141,7 @@ class YourInfoForm extends React.Component {
               }}
             />
 
-            <input type="submit" value='Save & Continue' role="button" onClick={this.handleClick.bind(this)} />
+            <input type="submit" value={mode === 'edit' ? 'Save & Continue' : 'Continue'} role="button" onClick={this.handleClick.bind(this)} />
           </Form>
         </article>
       </Layout>
