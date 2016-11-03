@@ -11,13 +11,6 @@ exports[`test BusinessDetailsForm renders 1`] = `
     role="main">
     <span />
     <form
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      tabIndex="-1" />
-    <form
       action={undefined}
       id="BusinessDetails__create"
       method="post"
@@ -170,7 +163,6 @@ exports[`test BusinessDetailsForm renders 1`] = `
         </div>
       </fieldset>
       <input
-        onClick={[Function]}
         role="button"
         type="submit"
         value="Next" />
@@ -191,13 +183,6 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
     className="content-main"
     role="main">
     <span />
-    <form
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      tabIndex="-1" />
     <form
       action="/foo/bar"
       id="BusinessDetails__create"
@@ -356,7 +341,6 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         </div>
       </fieldset>
       <input
-        onClick={[Function]}
         role="button"
         type="submit"
         value="Next" />
@@ -395,13 +379,6 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         </li>
       </ul>
     </div>
-    <form
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      tabIndex="-1" />
     <form
       action={undefined}
       id="BusinessDetails__create"
@@ -566,7 +543,6 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         </div>
       </fieldset>
       <input
-        onClick={[Function]}
         role="button"
         type="submit"
         value="Next" />
