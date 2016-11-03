@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { Form, actions } from 'react-redux-form';
+import { Form } from 'react-redux-form';
 
 import { required } from '../../../../validators';
 
@@ -36,7 +35,6 @@ class YourInfoForm extends BaseForm {
             id="yourinfo"
             component={SubmitForm}
             valid={form.valid}
-            ref={this.attachNode.bind(this)}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />

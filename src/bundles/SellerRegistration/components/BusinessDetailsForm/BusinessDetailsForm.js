@@ -37,7 +37,6 @@ class BusinessDetailsForm extends BaseForm {
             id="BusinessDetails__create"
             valid={form.valid}
             component={SubmitForm}
-            ref={this.attachNode.bind(this)}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
