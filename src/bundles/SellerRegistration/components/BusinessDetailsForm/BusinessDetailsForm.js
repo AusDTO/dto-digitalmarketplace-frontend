@@ -62,14 +62,14 @@ class BusinessDetailsForm extends React.Component {
   }
 
   render() {
-    const { action, csrf_token, model, form, returnLink, mode } = this.props;
+    const { action, csrf_token, model, returnLink, mode } = this.props;
     return (
       <Layout>
         <header>
           <h1>Company details</h1>
         </header>
         <article role="main" className="content-main">
-          {form.valid === false && form.submitFailed && <ErrorBox focusOnMount={true} />}
+          <ErrorBox focusOnMount={true} model={model}/>
           {/*FIXME: this form exists purely to steal its submit method.*/}
           <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
           <Form model={model}
@@ -102,6 +102,9 @@ class BusinessDetailsForm extends React.Component {
                 id="website"
                 htmlFor="website"
                 label="Website URL"
+                messages={{
+                    required: 'You must provide a website'
+                }}
             />
 
             <Textfield
@@ -110,6 +113,9 @@ class BusinessDetailsForm extends React.Component {
                 id="linkedin"
                 htmlFor="linkedin"
                 label="LinkedIn URL"
+                messages={{
+                    required: 'You must provide a LinkedIn'
+                }}
             />
 
             <fieldset>
@@ -120,6 +126,9 @@ class BusinessDetailsForm extends React.Component {
                   id="addressLine"
                   htmlFor="addressLine"
                   label="Address"
+                  messages={{
+                      required: 'You must provide a LinkedIn'
+                  }}
               />
 
               <Textfield
@@ -128,6 +137,9 @@ class BusinessDetailsForm extends React.Component {
                   id="suburb"
                   htmlFor="suburb"
                   label="Suburb"
+                  messages={{
+                      required: 'You must provide a LinkedIn'
+                  }}
               />
               <Textfield
                   model={`${model}.address.state`}
@@ -135,6 +147,9 @@ class BusinessDetailsForm extends React.Component {
                   id="state"
                   htmlFor="state"
                   label="State"
+                  messages={{
+                      required: 'You must provide a LinkedIn'
+                  }}
               />
               <Textfield
                   model={`${model}.address.postalCode`}
@@ -142,6 +157,9 @@ class BusinessDetailsForm extends React.Component {
                   id="postalCode"
                   htmlFor="postalCode"
                   label="Postcode"
+                  messages={{
+                      required: 'You must provide a LinkedIn'
+                  }}
               />
             </fieldset>
             <input type="submit" value={mode === 'add' ? 'Next' : 'Save and return'} role="button" onClick={this.handleClick.bind(this)} />
@@ -154,12 +172,12 @@ class BusinessDetailsForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const form = state.form.forms.businessDetails.$form;
+  const form = state.forms.businessDetailsForm.$form;
   return {
-    model: 'form.businessDetails',
+    model: 'businessDetailsForm',
     formErrors: state.form_options && state.form_options.errors,
     form,
-    returnLink: state.businessDetails && state.businessDetails.returnLink,
+    returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
     mode: state.form_options.mode || 'add',
     ...state.form_options
   }

@@ -3,7 +3,7 @@
 jest.mock('react-dom');
 
 import React from 'react';
-import {StartWidget} from './StartWidget';
+import {BusinessDetailsWidget} from './BusinessDetailsWidget';
 import renderer from 'react-test-renderer';
 
 test('BusinessDetailsWidget renders correctly', () => {

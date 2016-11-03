@@ -15,6 +15,6 @@ export default combineReducers({
   options: (state = {}) => state,
   ...createForms({
     yourInfoForm: {},
-    businessdetailsForm: {},
+    businessDetailsForm: {},
   })
 })
