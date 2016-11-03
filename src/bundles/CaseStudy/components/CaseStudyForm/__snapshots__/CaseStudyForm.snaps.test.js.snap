@@ -439,7 +439,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="name">
-              Full name
+              Full name (optional)
             </label>
             <p
               className="hint"
@@ -463,7 +463,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="role">
-              Role and place to work
+              Role and place to work (optional)
             </label>
             <p
               className="hint"
@@ -487,7 +487,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="phone">
-              Phone number
+              Phone number (optional)
             </label>
             <input
               aria-describedby={undefined}
@@ -506,7 +506,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="email">
-              Email
+              Email (optional)
             </label>
             <input
               aria-describedby={undefined}
@@ -639,7 +639,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="name">
-              Full name
+              Full name (optional)
             </label>
             <p
               className="hint"
@@ -663,7 +663,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="role">
-              Role and place to work
+              Role and place to work (optional)
             </label>
             <p
               className="hint"
@@ -687,7 +687,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="phone">
-              Phone number
+              Phone number (optional)
             </label>
             <input
               aria-describedby={undefined}
@@ -706,7 +706,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
             <label
               className="question-heading"
               htmlFor="email">
-              Email
+              Email (optional)
             </label>
             <input
               aria-describedby={undefined}
@@ -835,7 +835,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
             <label
               className="question-heading"
               htmlFor="name">
-              Full name
+              Full name (optional)
             </label>
             <p
               className="hint"
@@ -859,7 +859,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
             <label
               className="question-heading"
               htmlFor="role">
-              Role and place to work
+              Role and place to work (optional)
             </label>
             <p
               className="hint"
@@ -883,7 +883,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
             <label
               className="question-heading"
               htmlFor="phone">
-              Phone number
+              Phone number (optional)
             </label>
             <input
               aria-describedby={undefined}
@@ -902,7 +902,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
             <label
               className="question-heading"
               htmlFor="email">
-              Email
+              Email (optional)
             </label>
             <input
               aria-describedby={undefined}
