@@ -56,15 +56,11 @@ class CaseStudyForm extends BaseForm {
     };
 
     return (
-        <div>
-          {/*
-            FIXME: this form exists purely to steal its submit method, limitation of RRF.
-          */}
-          <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-          <Match pattern='/' exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
-          <Match pattern='/reference' render={(routerProps) => <StepTwo {...routerProps} {...props} />} />
-          <Miss component={NotFound} />
-        </div>
+      <div>
+        <Match pattern='/' exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
+        <Match pattern='/reference' render={(routerProps) => <StepTwo {...routerProps} {...props} />} />
+        <Miss component={NotFound} />
+      </div>
     )
   }
 }

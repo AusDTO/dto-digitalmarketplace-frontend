@@ -1,12 +1,5 @@
 exports[`test CaseStudyForm renders 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
@@ -341,13 +334,6 @@ exports[`test CaseStudyForm renders 1`] = `
 
 exports[`test CaseStudyForm renders a populated reference page 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
@@ -570,13 +556,6 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
 
 exports[`test CaseStudyForm renders an empty reference page 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
@@ -766,13 +745,6 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
 
 exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
@@ -962,13 +934,6 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
 
 exports[`test CaseStudyForm renders empty in edit mode 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
@@ -1307,13 +1272,6 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
 
 exports[`test CaseStudyForm renders with errors 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
@@ -1767,13 +1725,6 @@ exports[`test CaseStudyForm renders with errors 1`] = `
 
 exports[`test CaseStudyForm renders with form_options 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
@@ -2113,13 +2064,6 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
 
 exports[`test CaseStudyForm renders with populated fields 1`] = `
 <div>
-  <form
-    style={
-      Object {
-        "display": "none",
-      }
-    }
-    tabIndex="-1" />
   <div
     className="layout">
     <header>
