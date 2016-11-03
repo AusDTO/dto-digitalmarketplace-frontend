@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import './View.css'
 
+import hasReference from '../../redux/modules/hasReferenceSelector';
 
 class View extends React.Component {
   state = { showConfirm: false }
@@ -13,7 +14,21 @@ class View extends React.Component {
   }
 
   render() {
-    const { title, opportunity, client, approach, timeframe, outcome, projectLinks, meta } = this.props;
+    const {
+      title,
+      opportunity,
+      client,
+      approach,
+      timeframe,
+      outcome,
+      projectLinks,
+      meta,
+      name,
+      role,
+      phone,
+      email,
+      hasReference
+    } = this.props;
     const { showConfirm } = this.state;
     return (
       <section>
@@ -87,11 +102,17 @@ View.propTypes = {
   outcome: PropTypes.arrayOf(PropTypes.string).isRequired,
   projectLinks: PropTypes.arrayOf(PropTypes.string),
   meta: PropTypes.objectOf(PropTypes.string),
+
+  name: PropTypes.string,
+  role: PropTypes.string,
+  phone: PropTypes.string,
+  email: PropTypes.string
 }
 
 const mapStateToProps = (state) => {
   return {
-    ...state.casestudy
+    ...state.casestudy,
+    hasReference: hasReference(state.casestudy, ['name', 'role', 'phone', 'email'])
   }
 }
 
