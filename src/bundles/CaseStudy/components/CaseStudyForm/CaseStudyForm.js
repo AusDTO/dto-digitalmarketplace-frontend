@@ -1,14 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { actions, actionTypes } from 'react-redux-form';
+import { actionTypes } from 'react-redux-form';
 import { Match, Miss } from 'react-router';
+
+import BaseForm from '../../../../shared/form/BaseForm';
+import NotFound from '../../../../shared/NotFound';
 
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
-import NotFound from '../../../../shared/NotFound';
 
-class CaseStudyForm extends React.Component {
+
+class CaseStudyForm extends BaseForm {
 
   static propTypes = {
     action: React.PropTypes.string,
@@ -31,70 +33,12 @@ class CaseStudyForm extends React.Component {
     maxSteps: 1
   }
 
-  state = {
-    mounted: false
-  }
-
-  /**
-   * We are calling this on `Will` instead of `Did` for server rendering purposes.
-   * If there are formErrors available, set the appropriate errors and show them.
-   * @return {void}
-   */
-  componentWillMount() {
-    const { dispatch, formErrors, model, serverRender } = this.props;
-
-    if (!formErrors) {
-      return;
-    }
-
-    if (serverRender) {
-      let errors = {};
-      Object.keys(formErrors).forEach((key) => {
-        errors[key] = {
-          valid: false,
-          errors: formErrors[key]
-        }
-      });
-
-      dispatch(actions.setFieldsErrors(model, errors));
-      dispatch(actions.setSubmitFailed(model));
-    }
-  }
-
-  componentDidMount() {
-    const { dispatch, formErrors, model } = this.props;
-
-    this.setState({
-      mounted: true
-    })
-
-    if (!formErrors) {
-      return;
-    }
-
-    dispatch(actions.setSubmitFailed(model));
-    dispatch(actions.setFieldsValidity(model, {}, { errors: true }));
-  }
-
-  attachNode(node) {
-    this._form = ReactDOM.findDOMNode(node);
-  }
-
-  handleClick(e) {
-    /**
-     * FIXME
-     * This is a workaround to complete a normal form submit
-     */
+  handleSubmit(e) {
     const { form, step, maxSteps, dispatch, model, router } = this.props;
-    if (form.valid) {
-      if (step < maxSteps) {
-        e.preventDefault();
-        router.transitionTo('/reference');
-        dispatch({ type: actionTypes.SET_SUBMIT_FAILED, model, submitFailed: false })
-      } else {
-        this._form.submit = this.refs.submittable.submit;
-        this._form.submit();
-      }
+    if (form.valid && step < maxSteps) {
+      e.preventDefault();
+      router.transitionTo('/reference');
+      dispatch({ type: actionTypes.SET_SUBMIT_FAILED, model, submitFailed: false })
     }
   }
 
@@ -102,25 +46,21 @@ class CaseStudyForm extends React.Component {
     const sidebarOptions = [
       { path: '/', label: 'Add case study' },
       { path: '/reference', label: 'Add reference' }
-    ]
+    ];
+
     const props = {
       ...this.props,
       sidebarOptions,
       mounted: this.state.mounted,
-      attachNode: this.attachNode.bind(this),
-      onClick: this.handleClick.bind(this)
-    }
+      onClick: this.handleSubmit.bind(this)
+    };
 
     return (
-        <div>
-          {/*
-            FIXME: this form exists purely to steal its submit method, limitation of RRF.
-          */}
-          <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
-          <Match pattern='/' exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
-          <Match pattern='/reference' render={(routerProps) => <StepTwo {...routerProps} {...props} />} />
-          <Miss component={NotFound} />
-        </div>
+      <div>
+        <Match pattern='/' exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
+        <Match pattern='/reference' render={(routerProps) => <StepTwo {...routerProps} {...props} />} />
+        <Miss component={NotFound} />
+      </div>
     )
   }
 }

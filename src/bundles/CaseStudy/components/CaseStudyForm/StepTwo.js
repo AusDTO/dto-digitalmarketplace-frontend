@@ -6,6 +6,8 @@ import { required, dependantRequired } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
+import BaseForm      from '../../../../shared/form/BaseForm';
+import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import StatefulError from '../../../../shared/form/StatefulError';
 import Textfield     from '../../../../shared/form/Textfield';
@@ -14,7 +16,7 @@ import { navigateStep } from '../../../../shared/reduxModules/form_options';
 
 import StepSidebar from './StepSidebar';
 
-class StepTwo extends React.Component {
+class StepTwo extends BaseForm {
 
   componentDidMount() {
     this.props.dispatch(navigateStep(2));
@@ -32,8 +34,8 @@ class StepTwo extends React.Component {
       mode,
       caseStudyForm,
       onClick,
-      attachNode,
-      sidebarOptions
+      sidebarOptions,
+      form
     } = this.props;
 
     // List form elements on step two, we dont want to send these fields twice.
@@ -55,7 +57,8 @@ class StepTwo extends React.Component {
               action={action}
               method="post"
               id="casestudy__create"
-              ref={attachNode}
+              component={SubmitForm}
+              valid={form.valid}
               validators={{
                 permission: {
                   required: (val) => dependantRequired(caseStudyForm, ['name', 'role', 'phone', 'email'])(val)

@@ -10,7 +10,6 @@ export default function createStore(data) {
   ]
 
   delete data._serverContext;
-  delete data.basename;
 
   let options = data.options || {}
 

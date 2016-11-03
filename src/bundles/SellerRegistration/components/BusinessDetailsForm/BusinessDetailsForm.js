@@ -1,18 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { Form, actions } from 'react-redux-form';
+import { Form } from 'react-redux-form';
 
 import { required } from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
-import ErrorBox      from '../../../../shared/form/ErrorBox';
-import Textarea      from '../../../../shared/form/Textarea';
-import Textfield     from '../../../../shared/form/Textfield';
+import BaseForm     from '../../../../shared/form/BaseForm';
+import SubmitForm   from '../../../../shared/form/SubmitForm';
+import ErrorBox     from '../../../../shared/form/ErrorBox';
+import Textarea     from '../../../../shared/form/Textarea';
+import Textfield    from '../../../../shared/form/Textfield';
 
 
-class BusinessDetailsForm extends React.Component {
+class BusinessDetailsForm extends BaseForm {
 
   static propTypes = {
     action: React.PropTypes.string,
@@ -21,48 +22,8 @@ class BusinessDetailsForm extends React.Component {
     returnLink: React.PropTypes.string
   }
 
-  /**
-   * We are calling this on `Will` instead of `Did` for server rendering purposes.
-   * If there are formErrors available, set the appropriate errors and show them.
-   * @return {void}
-   */
-  componentWillMount() {
-    const { dispatch, formErrors, model } = this.props;
-
-    if (!formErrors) {
-      return;
-    }
-
-    let errors = {};
-    Object.keys(formErrors).forEach((key) => {
-      errors[key] = {
-        valid: false,
-        errors: formErrors[key]
-      }
-    });
-
-    dispatch(actions.setFieldsErrors(model, errors))
-    dispatch(actions.setSubmitFailed(model))
-  }
-
-  attachNode(node) {
-    this._form = ReactDOM.findDOMNode(node);
-  }
-
-  handleClick() {
-    /**
-     * FIXME
-     * This is a workaround to complete a normal form submit
-     */
-    const { form } = this.props;
-    if (form.valid) {
-      this._form.submit = this.refs.submittable.submit;
-      this._form.submit();
-    }
-  }
-
   render() {
-    const { action, csrf_token, model, returnLink, mode } = this.props;
+    const { action, csrf_token, model, returnLink, mode, form } = this.props;
     return (
       <Layout>
         <header>
@@ -70,18 +31,16 @@ class BusinessDetailsForm extends React.Component {
         </header>
         <article role="main" className="content-main">
           <ErrorBox focusOnMount={true} model={model}/>
-          {/*FIXME: this form exists purely to steal its submit method.*/}
-          <form ref="submittable" tabIndex="-1" style={{ display: "none" }} />
           <Form model={model}
             action={action}
             method="post"
             id="BusinessDetails__create"
-            ref={this.attachNode.bind(this)}
+            valid={form.valid}
+            component={SubmitForm}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
-
 
             <Textarea
               model={`${model}.summary`}
@@ -162,7 +121,7 @@ class BusinessDetailsForm extends React.Component {
                   }}
               />
             </fieldset>
-            <input type="submit" value={mode === 'add' ? 'Next' : 'Save and return'} role="button" onClick={this.handleClick.bind(this)} />
+            <input type="submit" value={mode === 'add' ? 'Next' : 'Save and return'} role="button"  />
           </Form>
           {returnLink && <a href={returnLink}>Return without saving</a>}
         </article>
@@ -178,7 +137,6 @@ const mapStateToProps = (state) => {
     formErrors: state.form_options && state.form_options.errors,
     form,
     returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
-    mode: state.form_options.mode || 'add',
     ...state.form_options
   }
 }

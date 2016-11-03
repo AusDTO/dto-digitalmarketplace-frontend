@@ -11,13 +11,6 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
     role="main">
     <span />
     <form
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-      tabIndex="-1" />
-    <form
       action={undefined}
       id="BusinessDetails__create"
       method="post"
@@ -170,7 +163,6 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
         </div>
       </fieldset>
       <input
-        onClick={[Function]}
         role="button"
         type="submit"
         value="Next" />
