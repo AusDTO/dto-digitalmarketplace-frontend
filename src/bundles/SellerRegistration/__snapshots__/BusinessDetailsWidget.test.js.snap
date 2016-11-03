@@ -48,7 +48,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
         <label
           className="question-heading"
           htmlFor="website">
-          Website URL
+          Website URL (optional)
         </label>
         <input
           aria-describedby={undefined}
@@ -59,6 +59,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
           type="text"
           value="" />
       </div>
@@ -67,7 +68,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
         <label
           className="question-heading"
           htmlFor="linkedin">
-          LinkedIn URL
+          LinkedIn URL (optional)
         </label>
         <input
           aria-describedby={undefined}
@@ -78,6 +79,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
           type="text"
           value="" />
       </div>
@@ -101,6 +103,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
+            pattern={undefined}
             type="text"
             value="" />
         </div>
@@ -120,6 +123,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
+            pattern={undefined}
             type="text"
             value="" />
         </div>
@@ -139,6 +143,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
+            pattern={undefined}
             type="text"
             value="" />
         </div>
@@ -158,6 +163,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
+            pattern="[0-9]{4}"
             type="text"
             value="" />
         </div>
@@ -165,7 +171,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
       <input
         role="button"
         type="submit"
-        value="Next" />
+        value="Update profile" />
     </form>
   </article>
 </div>

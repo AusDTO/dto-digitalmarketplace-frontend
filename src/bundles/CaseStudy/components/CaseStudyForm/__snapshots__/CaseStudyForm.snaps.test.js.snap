@@ -70,6 +70,7 @@ exports[`test CaseStudyForm renders 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -89,6 +90,7 @@ exports[`test CaseStudyForm renders 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -113,6 +115,7 @@ exports[`test CaseStudyForm renders 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -441,6 +444,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="Your full name" />
           </div>
@@ -465,6 +469,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -484,6 +489,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -503,6 +509,7 @@ exports[`test CaseStudyForm renders a populated reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -634,6 +641,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -658,6 +666,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -677,6 +686,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -696,6 +706,7 @@ exports[`test CaseStudyForm renders an empty reference page 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -823,6 +834,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -847,6 +859,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -866,6 +879,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -885,6 +899,7 @@ exports[`test CaseStudyForm renders an empty reference page in edit mode 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1004,6 +1019,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1023,6 +1039,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1047,6 +1064,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1406,6 +1424,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1436,6 +1455,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1471,6 +1491,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1800,6 +1821,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1819,6 +1841,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -1843,6 +1866,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -2134,6 +2158,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="" />
           </div>
@@ -2153,6 +2178,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="The Client Name" />
           </div>
@@ -2177,6 +2203,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              pattern={undefined}
               type="text"
               value="January 2016 — June 2016" />
           </div>

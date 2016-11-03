@@ -60,10 +60,7 @@ class BusinessDetailsForm extends BaseForm {
                 name="website"
                 id="website"
                 htmlFor="website"
-                label="Website URL"
-                messages={{
-                    required: 'You must provide a website'
-                }}
+                label="Website URL (optional)"
             />
 
             <Textfield
@@ -71,10 +68,7 @@ class BusinessDetailsForm extends BaseForm {
                 name="linkedin"
                 id="linkedin"
                 htmlFor="linkedin"
-                label="LinkedIn URL"
-                messages={{
-                    required: 'You must provide a LinkedIn'
-                }}
+                label="LinkedIn URL (optional)"
             />
 
             <fieldset>
@@ -86,8 +80,9 @@ class BusinessDetailsForm extends BaseForm {
                   htmlFor="addressLine"
                   label="Address"
                   messages={{
-                      required: 'You must provide a LinkedIn'
+                      required: 'You must provide an address'
                   }}
+                  validators={{ required }}
               />
 
               <Textfield
@@ -97,8 +92,9 @@ class BusinessDetailsForm extends BaseForm {
                   htmlFor="suburb"
                   label="Suburb"
                   messages={{
-                      required: 'You must provide a LinkedIn'
+                      required: 'You must provide a suburb'
                   }}
+                  validators={{ required }}
               />
               <Textfield
                   model={`${model}.address.state`}
@@ -107,8 +103,9 @@ class BusinessDetailsForm extends BaseForm {
                   htmlFor="state"
                   label="State"
                   messages={{
-                      required: 'You must provide a LinkedIn'
+                      required: 'You must provide a state'
                   }}
+                  validators={{ required }}
               />
               <Textfield
                   model={`${model}.address.postalCode`}
@@ -117,11 +114,13 @@ class BusinessDetailsForm extends BaseForm {
                   htmlFor="postalCode"
                   label="Postcode"
                   messages={{
-                      required: 'You must provide a LinkedIn'
+                      required: 'You must provide a postal code'
                   }}
+                  validators={{ required }}
+                  pattern="[0-9]{4}"
               />
             </fieldset>
-            <input type="submit" value={mode === 'add' ? 'Next' : 'Save and return'} role="button"  />
+            <input type="submit" value='Update profile' role="button"  />
           </Form>
           {returnLink && <a href={returnLink}>Return without saving</a>}
         </article>
