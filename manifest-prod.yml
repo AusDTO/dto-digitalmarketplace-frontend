@@ -1,4 +1,4 @@
-host: dm-dev-frontend
+host: dm-frontend
 command: npm run server
 buildpack: https://github.com/AusDTO/nodejs-buildpack.git#yarn
 memory: 128M
@@ -7,5 +7,5 @@ instances: 1
 env:
     NODE_ENV: production
 applications:
-- name: dm-dev-frontend-blue
-- name: dm-dev-frontend-green
+- name: dm-frontend-blue
+- name: dm-frontend-green
