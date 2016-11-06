@@ -18,10 +18,10 @@ deployment:
     branch: master
     commands:
       - cf login -a https://api.system.staging.digital.gov.au -o dto -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
-      - cf push
+      - cf push -f manifest.yml
   production:
     tag: /[0-9]+(\.[0-9]+)*/
     commands:
       - cf login -a https://api.system.platform.digital.gov.au -o dto -u $CF_USER_PROD -p $CF_PASSWORD_PROD
-      - cf push dm-frontend
+      - cf push -f manifest-prod.yml
       - ./scripts/ci-notify.sh
