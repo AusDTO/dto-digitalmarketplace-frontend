@@ -23,13 +23,13 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, mode, form} = this.props;
+        const {action, csrf_token, model, returnLink, form} = this.props;
         return (
             <Layout>
                 <header>
                     <h1>Company details</h1>
                 </header>
-                <article role="main" className="content-main">
+                <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
                     <Form model={model}
                           action={action}

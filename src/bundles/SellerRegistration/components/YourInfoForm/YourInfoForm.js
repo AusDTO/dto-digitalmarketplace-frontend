@@ -26,7 +26,7 @@ class YourInfoForm extends BaseForm {
         <header>
           <h1>{mode === 'edit' ? 'Your Information' : 'Create a Seller Account'}</h1>
         </header>
-        <article role="main" className="content-main">
+        <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
           <Form model={model}
             action={action}

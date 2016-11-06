@@ -52,6 +52,7 @@ module.exports = {
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
     'casestudy': require(resolveApp('src/bundles/CaseStudy/components/CaseStudyForm/CaseStudyForm.json')),
-    'seller-business-details': require(resolveApp('src/bundles/SellerRegistration/components/BusinessDetailsForm/BusinessDetailsForm.json'))
+    'seller-business-details': require(resolveApp('src/bundles/SellerRegistration/components/BusinessDetailsForm/BusinessDetailsForm.json')),
+    'applicant-signup': require(resolveApp('src/bundles/ApplicantSignup/ApplicantSignup.json')),
   }
 };
