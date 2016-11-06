@@ -65,7 +65,7 @@
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-redux": "5.0.0-beta.3",
-    "react-redux-form": "1.0.11",
+    "react-redux-form": "1.2.2",
     "react-router": "4.0.0-alpha.5",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
