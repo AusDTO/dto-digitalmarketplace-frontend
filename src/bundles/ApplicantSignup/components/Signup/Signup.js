@@ -5,6 +5,8 @@ import findIndex from 'lodash/findIndex';
 
 import NotFound from '../../../../shared/NotFound';
 
+import { stepNext, stepNextPersist } from '../../redux/modules/signup';
+
 // Step Components
 import Start from '../../../SellerRegistration/components/Start';
 import YourInfoForm from '../../../SellerRegistration/components/YourInfoForm';
@@ -22,10 +24,29 @@ class Signup extends React.Component {
   elementProps = {
     onClick: (e) => {
       e.preventDefault();
-      const { dispatch, router, location } = this.props;
-      let idx = findIndex(this.steps, { pattern: location.pathname });
-      dispatch({ type: 'step/next', transition: router.transitionTo, step: this.steps[idx + 1] })
+      const { dispatch, router } = this.props;
+
+      dispatch(stepNext(router.transitionTo, this.nextStep.pattern))
+    },
+    onSubmit: (e) => {
+      if (e && 'preventDefault' in e) {
+        e.preventDefault();
+      }
+
+      const { dispatch, router } = this.props;
+      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern))
     }
+  }
+
+  get nextStep () {
+    const { location } = this.props;
+    let idx = findIndex(this.steps, { pattern: location.pathname });
+    let nextStep = this.steps[idx + 1];
+    if (!nextStep) {
+      // What happens here? Navigate to another page?
+    }
+
+    return nextStep;
   }
 
   render() {
