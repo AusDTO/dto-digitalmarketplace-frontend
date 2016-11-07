@@ -20,7 +20,7 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, mode, form } = this.props;
+    const { action, csrf_token, model, mode, form, onCustomSubmit } = this.props;
     return (
       <Layout>
         <header>
@@ -34,6 +34,7 @@ class YourInfoForm extends BaseForm {
             id="yourinfo"
             component={SubmitForm}
             valid={form.valid}
+            onCustomSubmit={onSubmit}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
