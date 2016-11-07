@@ -7,7 +7,6 @@ exports[`test BusinessDetailsForm renders 1`] = `
     </h1>
   </header>
   <article
-    className="content-main"
     role="main">
     <span />
     <form
@@ -181,7 +180,6 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
     </h1>
   </header>
   <article
-    className="content-main"
     role="main">
     <span />
     <form
@@ -360,7 +358,6 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
     </h1>
   </header>
   <article
-    className="content-main"
     role="main">
     <div
       aria-labelledby="validation-masthead-heading"

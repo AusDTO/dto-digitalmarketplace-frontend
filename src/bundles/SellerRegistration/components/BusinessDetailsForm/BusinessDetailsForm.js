@@ -11,6 +11,7 @@ import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textarea     from '../../../../shared/form/Textarea';
 import Textfield    from '../../../../shared/form/Textfield';
+import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 
 class BusinessDetailsForm extends BaseForm {
@@ -128,13 +129,9 @@ class BusinessDetailsForm extends BaseForm {
 }
 
 const mapStateToProps = (state) => {
-    const form = state.forms.businessDetailsForm.$form;
     return {
-        model: 'businessDetailsForm',
-        formErrors: state.form_options && state.form_options.errors,
-        form,
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
-        ...state.form_options
+        ...formProps(state, 'businessDetailsForm')
     }
 }
 

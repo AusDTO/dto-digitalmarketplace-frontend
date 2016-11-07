@@ -20,7 +20,7 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, mode, form, onCustomSubmit } = this.props;
+    const { action, csrf_token, model, mode, form, onSubmit } = this.props;
     return (
       <Layout>
         <header>

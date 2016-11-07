@@ -7,7 +7,6 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
     </h1>
   </header>
   <article
-    className="content-main"
     role="main">
     <span />
     <form
