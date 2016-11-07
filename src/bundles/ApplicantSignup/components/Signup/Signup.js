@@ -18,7 +18,6 @@ class Signup extends React.Component {
     { label: 'Start', component: Start, pattern: '/start', exact: true },
     { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
     { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
-    { label: 'Case Study', component: NotFound, pattern: '/case-study', exact: true },
   ]
 
   elementProps = {
