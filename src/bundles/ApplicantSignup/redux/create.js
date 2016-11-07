@@ -9,7 +9,15 @@ export default function createStore(data) {
     thunk.withExtraArgument(api)
   ]
 
-  delete data._serverContext
+  delete data._serverContext;
+
+  let options = data.options || {}
+
+  let initialState = Object.assign({}, data, {
+    options: {
+      serverRender: options.serverRender || typeof window === 'undefined'
+    }
+  });
 
   let composeEnhancers = compose;
   if (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
@@ -17,7 +25,7 @@ export default function createStore(data) {
   }
 
   const finalCreateStore = composeEnhancers(applyMiddleware(...middleware))(_createStore);
-  const store = finalCreateStore(reducer, data);
+  const store = finalCreateStore(reducer, initialState);
 
   return store;
 }
