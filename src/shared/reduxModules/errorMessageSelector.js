@@ -1,68 +1,63 @@
 import { createSelector } from 'reselect';
+import get from 'lodash/get';
 
-export const getForm = (state, model) => state.forms[model];
+export const getForms = (state, model) => state.forms;
 export const getErrorMessages = (state = {}) => state.errorMessage;
 export const getModelPath = (state, model) => model;
 
-export const mapErrorMessages = (form, messages, model) => {
-  if (!form) {
+export const mapErrorMessages = (forms, messages, model) => {
+  if (!forms) {
     return [];
   }
 
-  return Object.keys(form)
-    // Filter out valid fields
+  return Object.keys(messages)
     .filter(key => {
-      // If key starts with '$' aka '$form'
-      if (key.match(/^\$/)) {
+      // If key has '$form' filter it out.
+      // TODO this probably needs to be checked as valid.
+      if (key.match(/(\$form)/)) {
         return false;
       }
 
-      const field = form[key];
+      let field = get(forms, key, {})
 
       // Array fields have their validity nested
       if ('$form' in field) {
         return !field.$form.valid;
       }
 
-      // Check to see if single value field is valid
-      return !field.valid
+      return !field.valid;
     })
-    .reverse()
     .map(key => {
-      // Grab the keypath of the current field
-      // e.g. caseStudyForm.title
-      let modelKey = `${model}.${key}`;
-
-      // If there is no message present in state, return default object.
-      if (!messages[modelKey]) {
-        return { id: key, messages: [] }
-      }
+      let parts = key.split('.').reverse();
 
       // If field has nested '$form' use that instead
       // $form contains the correct meta if found.
-      let field = form[key];
+      let field = get(forms, key, {})
       if ('$form' in field) {
         field = field.$form;
       }
 
       // Some validation fields have nested 'errors' objects
       // Pick them out as they contain the correct keys.
-      let fieldErrors = field.errors;
+      let fieldErrors = field.errors || {};
       if ('errors' in fieldErrors) {
         fieldErrors = fieldErrors.errors;
       }
 
-      let result = { id: key };
+      let result = { id: parts[0] };
       // Map fieldErrors keys (e.g. required) to errorMessages stored in the state
       // e.g.
       // caseStudyForm.title: { required: 'Title is required' }
       // Will result in the array ['Title is required']
       result.messages = Object.keys(fieldErrors).reduce((errors, errorKey) => {
-        return errors.concat(messages[modelKey][errorKey]);
+        let messageObject = get(messages, key, {});
+        let error = get(messageObject, errorKey)
+        return errors.concat(error);
       }, []);
 
       return result;
-    }).filter(e => e.messages.length)
+    })
+    .filter(e => e.messages.length);
 }
 
-export const getInvalidFields = createSelector([ getForm, getErrorMessages, getModelPath ], mapErrorMessages)
+export const getInvalidFields = createSelector([ getForms, getErrorMessages, getModelPath ], mapErrorMessages)

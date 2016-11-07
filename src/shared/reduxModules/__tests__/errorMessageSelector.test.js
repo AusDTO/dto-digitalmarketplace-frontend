@@ -1,4 +1,4 @@
-import { mapErrorMessages, getForm, getErrorMessages, getModelPath } from '../errorMessageSelector';
+import { mapErrorMessages, getForms, getErrorMessages, getModelPath } from '../errorMessageSelector';
 
 test('mapErrorMessages produces to the correct list from a simple state', () => {
   const messages = {
@@ -8,10 +8,12 @@ test('mapErrorMessages produces to the correct list from a simple state', () => 
   };
 
   const form = {
-    title: {
-      valid: false,
-      errors: {
-        required: true
+    modelName: {
+      title: {
+        valid: false,
+        errors: {
+          required: true
+        }
       }
     }
   };
@@ -23,6 +25,49 @@ test('mapErrorMessages produces to the correct list from a simple state', () => 
   expect(mapErrorMessages(form, messages, 'modelName')).toEqual(errorMap);
 });
 
+it('mapErrorMessages produces to the correct list from a nested state', () => {
+  const messages = {
+    'modelName.title': {
+      'required': 'Title is required'
+    },
+    'modelName.nested.role': {
+      'required': 'Role is required'
+    },
+    'modelName.nested.name': {
+      'required': 'Name is required'
+    }
+  };
+
+  const forms = {
+    modelName: {
+      title: {
+        valid: false,
+        errors: {
+          required: true
+        }
+      },
+      nested: {
+        role: {
+          valid: false,
+          errors: {
+            required: true
+          }
+        },
+        name: {
+          valid: true
+        }
+      }
+    }
+  };
+
+  const errorMap = [
+    { id: 'title', messages: ['Title is required'] },
+    { id: 'role', messages: ['Role is required'] }
+  ];
+
+  expect(mapErrorMessages(forms, messages, 'modelName')).toEqual(errorMap);
+});
+
 test('mapErrorMessages filters out $form fields correctly', () => {
   const messages = {
     'modelName.$form': {
@@ -31,11 +76,13 @@ test('mapErrorMessages filters out $form fields correctly', () => {
   };
 
   const form = {
-    $form: {
-      valid: false,
-      errors: {
-        required: true
-      }
+    modelName: {
+      $form: {
+        valid: false,
+        errors: {
+          required: true
+        }
+      }  
     }
   };
 
@@ -50,14 +97,16 @@ test('mapErrorMessages maps errors from fields that have array values', () => {
   };
 
   const form = {
-    names: {
-      '$form': {
-        errors: {
+    modelName: {
+      names: {
+        '$form': {
           errors: {
-            required: true
-          }
-        },
-        valid: false
+            errors: {
+              required: true
+            }
+          },
+          valid: false
+        }
       }
     }
   };
@@ -86,7 +135,7 @@ test('mapErrorMessages returns an empty array if the form doesnt exist', () => {
   expect(mapErrorMessages(void 0)).toEqual([]);
 });
 
-test('getForm return values', () => {
+test('getForms return values', () => {
   const state = {
     forms: {
       modelName: {
@@ -95,8 +144,8 @@ test('getForm return values', () => {
     }
   };
 
-  expect(getForm(state, 'modelName')).toEqual({ foo: 'bar' });
-  expect(getForm(state, 'nonExistingKey')).toBeUndefined();
+  expect(getForms(state)).toEqual({ modelName: { foo: 'bar' }});
+  expect(getForms({})).toBeUndefined();
 });
 
 test('getErrorMessages return values', () => {
