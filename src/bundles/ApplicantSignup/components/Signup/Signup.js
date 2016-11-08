@@ -91,7 +91,6 @@ Signup.propTypes = {
 
 const mapStateToProps = (state) => {
   return {};
-
 };
 
 export default connect(mapStateToProps)(Signup);
