@@ -43,6 +43,7 @@ exports[`test StartWidget renders correctly 1`] = `
   <p>
     <a
       href="/signup"
+      onClick={[Function]}
       role="button">
       Start Now 
     </a>

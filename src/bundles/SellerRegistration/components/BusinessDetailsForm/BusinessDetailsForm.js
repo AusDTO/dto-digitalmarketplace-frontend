@@ -11,6 +11,7 @@ import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textarea     from '../../../../shared/form/Textarea';
 import Textfield    from '../../../../shared/form/Textfield';
+import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 
 class BusinessDetailsForm extends BaseForm {
@@ -23,13 +24,13 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, form} = this.props;
+        const {action, csrf_token, model, returnLink, form, onSubmit } = this.props;
         return (
             <Layout>
                 <header>
                     <h1>Company details</h1>
                 </header>
-                <article role="main" className="content-main">
+                <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
                     <Form model={model}
                           action={action}
@@ -37,6 +38,7 @@ class BusinessDetailsForm extends BaseForm {
                           id="BusinessDetails__create"
                           valid={form.valid}
                           component={SubmitForm}
+                          onCustomSubmit={onSubmit}
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
@@ -127,13 +129,9 @@ class BusinessDetailsForm extends BaseForm {
 }
 
 const mapStateToProps = (state) => {
-    const form = state.forms.businessDetailsForm.$form;
     return {
-        model: 'businessDetailsForm',
-        formErrors: state.form_options && state.form_options.errors,
-        form,
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
-        ...state.form_options
+        ...formProps(state, 'businessDetailsForm')
     }
 }
 

@@ -20,13 +20,13 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, mode, form } = this.props;
+    const { action, csrf_token, model, mode, form, onSubmit } = this.props;
     return (
       <Layout>
         <header>
           <h1>{mode === 'edit' ? 'Your Information' : 'Create a Seller Account'}</h1>
         </header>
-        <article role="main" className="content-main">
+        <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
           <Form model={model}
             action={action}
@@ -34,6 +34,7 @@ class YourInfoForm extends BaseForm {
             id="yourinfo"
             component={SubmitForm}
             valid={form.valid}
+            onCustomSubmit={onSubmit}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />

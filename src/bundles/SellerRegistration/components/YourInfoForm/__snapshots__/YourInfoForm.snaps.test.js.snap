@@ -7,7 +7,6 @@ exports[`test YourInfoForm renders 1`] = `
     </h1>
   </header>
   <article
-    className="content-main"
     role="main">
     <span />
     <form
@@ -144,7 +143,6 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
     </h1>
   </header>
   <article
-    className="content-main"
     role="main">
     <span />
     <form
@@ -286,7 +284,6 @@ exports[`test YourInfoForm renders with form_options 1`] = `
     </h1>
   </header>
   <article
-    className="content-main"
     role="main">
     <span />
     <form
