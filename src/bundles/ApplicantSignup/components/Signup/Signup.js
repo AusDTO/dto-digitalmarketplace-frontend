@@ -5,7 +5,7 @@ import findIndex from 'lodash/findIndex';
 
 import NotFound from '../../../../shared/NotFound';
 
-import { stepNext, stepNextPersist } from '../../redux/modules/signup';
+import { stepNext, stepNextPersist, submitApplication } from '../../redux/modules/signup';
 
 // Step Components
 import Start from '../../../SellerRegistration/components/Start';
@@ -33,7 +33,13 @@ class Signup extends React.Component {
       }
 
       const { dispatch, router } = this.props;
-      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern))
+
+      if (!this.nextStep) {
+        dispatch(submitApplication());
+        return;
+      }
+
+      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern));
     }
   }
 
