@@ -1,5 +1,3 @@
-import merge from 'lodash/merge';
-
 const STEP_NEXT = 'step/next';
 const STEP_PRE = 'step/pre';
 const STEP_MODEL = 'step/model';
@@ -10,8 +8,6 @@ const APP_POST_SUBMIT = 'application/post-submit';
 export default function reducer(state = {}, action = {}) {
   const { type, model } = action;
   switch (type) {
-    case STEP_MODEL:
-      return Object.assign({}, merge(state, model));
     default:
       return state;
   }
