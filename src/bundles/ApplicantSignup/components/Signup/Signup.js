@@ -88,12 +88,7 @@ Signup.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return {
-    startProps: {
-      deed: 'http://',
-      signup: 'http://'
-    }
-  };
+  return {};
 };
 
 export default connect(mapStateToProps)(Signup);
