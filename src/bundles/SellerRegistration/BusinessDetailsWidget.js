@@ -11,7 +11,11 @@ export const BusinessDetailsWidget = (props) => {
     const store = createStore(props)
     return (
         <Provider store={store}>
-            <BusinessDetailsForm />
+          <div className="row">
+            <div className="col-sm-push-2 col-sm-8 col-xs-12">
+              <BusinessDetailsForm />
+            </div>
+          </div>
         </Provider>
     )
 }
