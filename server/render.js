@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
+import compression from 'compression'
 
 import renderRoute from './routes/render'
 
@@ -19,6 +20,7 @@ var argv = require('yargs')
 var app = express();
 
 app.use(bodyParser.json({limit: '50mb'}));
+app.use(compression());
 app.use('/bundle', express.static('build'));
 app.use(function errorHandler(err, request, response, next) {
   console.log('[' + new Date().toISOString() + '] ' + err.stack);
