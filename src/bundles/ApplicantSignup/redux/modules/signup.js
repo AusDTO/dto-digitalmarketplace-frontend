@@ -7,7 +7,6 @@ const APP_SUBMIT = 'application/submit';
 const APP_PRE_SUBMIT = 'application/pre-submit';
 const APP_POST_SUBMIT = 'application/post-submit';
 
-
 export default function reducer(state = {}, action = {}) {
   const { type, model } = action;
   switch (type) {
@@ -16,35 +15,9 @@ export default function reducer(state = {}, action = {}) {
     default:
       return state;
   }
-}
+};
 
-export const preSubmit = () => ({ type: APP_PRE_SUBMIT });
-export const postSubmit = () => ({ type: APP_POST_SUBMIT });
-
-export const preStep = () => ({ type: STEP_PRE });
-export const next = () => ({ type: STEP_PRE });
-export const syncSteps = (model) => ({ type: STEP_MODEL, model })
-
-export const stepNext = (transition, to) => {
-  return dispatch => {
-    dispatch({ type: STEP_NEXT, to });
-    transition(to);
-  }
-}
-
-export const stepNextPersist = (transition, to) => {
-  return (dispatch, getState, api) => {
-    dispatch(preStep());
-    return api('/persist')
-      .then(json => {
-        dispatch({ type: STEP_NEXT, to });
-        return dispatch(syncSteps())
-      }).then(() => {
-        transition(to);
-      });
-  }
-}
-
+// Helpers
 const getAllFormValues = (state) => {
   return Object.keys(state)
     .filter(key => key.match(/Form$/))
@@ -52,21 +25,42 @@ const getAllFormValues = (state) => {
       result[key] = state[key];
       return result;
     }, {});
-}
+};
 
-export const submitApplication = ({ pathname }) => {
+
+export const preSubmit = () => ({ type: APP_PRE_SUBMIT });
+export const postSubmit = () => ({ type: APP_POST_SUBMIT });
+export const submit = (payload) => ({ type: APP_SUBMIT, payload });
+
+export const preStep = () => ({ type: STEP_PRE });
+export const nextStep = (to) => ({ type: STEP_NEXT, to });
+
+export const stepNext = (transition, to) => {
+  return (dispatch) => {
+    dispatch(nextStep(to));
+    transition(to);
+  }
+};
+
+export const submitApplication = () => {
   return (dispatch, getState, api) => {
     dispatch(preSubmit());
     const payload = getAllFormValues(getState());
     return api(window.location.pathname, {
       method: 'POST',
       body: JSON.stringify({ ...payload })
-    }).then((json) => {
-      return dispatch({
-        type: APP_SUBMIT,
-        payload
-      })
-    }).then(() => dispatch(postSubmit));
+    })
+    .then(() => dispatch(submit(payload)))
+    .then(() => dispatch(postSubmit()));
   }
-}
+};
+
+export const stepNextPersist = (transition, to) => {
+  return (dispatch) => {
+    return dispatch(submitApplication())
+      .then(() => dispatch(preStep()))
+      .then(() => dispatch(nextStep(to)))
+      .then(() => transition(to));
+  }
+};
 
