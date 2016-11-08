@@ -1,12 +1,11 @@
 const STEP_NEXT = 'step/next';
 const STEP_PRE = 'step/pre';
-const STEP_MODEL = 'step/model';
 const APP_SUBMIT = 'application/submit';
 const APP_PRE_SUBMIT = 'application/pre-submit';
 const APP_POST_SUBMIT = 'application/post-submit';
 
 export default function reducer(state = {}, action = {}) {
-  const { type, model } = action;
+  const { type } = action;
   switch (type) {
     default:
       return state;
