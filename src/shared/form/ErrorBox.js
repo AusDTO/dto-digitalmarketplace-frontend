@@ -9,8 +9,11 @@ class ErrorBox extends React.Component {
     focusedOnce: false
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.refs.box && !this.state.focusedOnce) {
+  componentDidUpdate() {
+    const { focusOnMount } = this.props;
+    const { focusedOnce } = this.state;
+
+    if (this.refs['box'] && !focusedOnce && focusOnMount) {
       this.setState({ focusedOnce: true });
       this.refs.box.focus();
     }
