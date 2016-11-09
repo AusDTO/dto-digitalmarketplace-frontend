@@ -20,6 +20,17 @@ test('minArrayLength', () => {
 	expect(min(['a', 'b', 'c'])).toBeTruthy()
 })
 
+test('min', () => {
+	const min = validator.min(5)
+
+	expect(min('a')).toBeFalsy()
+	expect(min('')).toBeFalsy()
+	expect(min('1234')).toBeFalsy()
+
+	expect(min('12345')).toBeTruthy()
+	expect(min('123456')).toBeTruthy()
+})
+
 test('validLinks', () => {
 	expect(validator.validLinks('www.google.com')).toBeFalsy()
 	expect(validator.validLinks('somerandomtext')).toBeFalsy()
