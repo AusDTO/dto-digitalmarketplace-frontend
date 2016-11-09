@@ -27,10 +27,6 @@ export const preSubmit = () => ({ type: APP_PRE_SUBMIT });
 export const postSubmit = () => ({ type: APP_POST_SUBMIT });
 export const submit = (payload) => ({ type: APP_SUBMIT, payload });
 
-export const preSubmit = () => ({ type: APP_PRE_SUBMIT });
-export const postSubmit = () => ({ type: APP_POST_SUBMIT });
-export const submit = (payload) => ({ type: APP_SUBMIT, payload });
-
 export const preStep = () => ({ type: STEP_PRE });
 export const nextStep = (to) => ({ type: STEP_NEXT, to });
 
