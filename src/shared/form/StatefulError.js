@@ -22,7 +22,7 @@ class StatefulError extends React.Component {
     return (
       <Errors 
         model={model}
-        show="touched"
+        show={(field) => field.touched && !field.focus}
         messages={messages}
         wrapper={(props) => (
           <a className="validation-message" href={`#${id}`}>
