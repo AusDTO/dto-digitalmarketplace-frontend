@@ -31,7 +31,7 @@ class StepOne extends BaseForm {
       model,
       returnLink,
       mode,
-      onClick,
+      onSubmit,
       form
     } = this.props;
 
@@ -49,6 +49,7 @@ class StepOne extends BaseForm {
             id="casestudy__create"
             component={SubmitForm}
             valid={form.valid}
+            onCustomSubmit={onSubmit}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
@@ -139,7 +140,7 @@ class StepOne extends BaseForm {
               validators={{ validLinks }}
             />
 
-            <input type="submit" value='Save &amp; Continue' role="button" onClick={onClick} />
+            <input type="submit" value='Save &amp; Continue' role="button" />
           </Form>
           {returnLink && <a href={returnLink}>Return without saving</a>}
         </article>

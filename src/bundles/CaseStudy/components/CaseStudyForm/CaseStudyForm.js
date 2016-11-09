@@ -12,9 +12,6 @@ class CaseStudyForm extends BaseForm {
     action: React.PropTypes.string,
     form: React.PropTypes.object.isRequired,
     caseStudyForm: React.PropTypes.object.isRequired,
-    router: React.PropTypes.shape({
-      transitionTo: React.PropTypes.func
-    }).isRequired,
     maxSteps: React.PropTypes.number.isRequired,
     model: React.PropTypes.string.isRequired,
 
@@ -46,7 +43,7 @@ class CaseStudyForm extends BaseForm {
 }
 
 const mapStateToProps = (state, { router }) => {
-  const { casestudy } = state;
+  const { casestudy = {} } = state;
   return {
     router,
     maxSteps: 2,
