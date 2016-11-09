@@ -11,6 +11,7 @@ import { stepNext, stepNextPersist, submitApplication } from '../../redux/module
 import Start from '../../../SellerRegistration/components/Start';
 import YourInfoForm from '../../../SellerRegistration/components/YourInfoForm';
 import BusinessDetailsForm from '../../../SellerRegistration/components/BusinessDetailsForm';
+import CaseStudyForm from '../../../CaseStudy/components/CaseStudyForm';
 
 class Signup extends React.Component {
 
@@ -18,6 +19,7 @@ class Signup extends React.Component {
     { label: 'Start', component: Start, pattern: '/start', exact: true },
     { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
     { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
+    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
   ]
 
   elementProps = {
