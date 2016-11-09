@@ -8,7 +8,6 @@ exports[`test BusinessDetailsForm renders 1`] = `
   </header>
   <article
     role="main">
-    <span />
     <form
       action={undefined}
       id="BusinessDetails__create"
@@ -181,7 +180,6 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
   </header>
   <article
     role="main">
-    <span />
     <form
       action="/foo/bar"
       id="BusinessDetails__create"
@@ -360,13 +358,13 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
   <article
     role="main">
     <div
-      aria-labelledby="validation-masthead-heading"
+      aria-describedby="validation-masthead-heading"
       aria-role="group"
       className="callout--warning"
       role="alert"
       tabIndex="-1">
       <h4
-        className="validation-masthead-heading">
+        id="validation-masthead-heading">
         There was a problem with the details you gave
       </h4>
       <ul>

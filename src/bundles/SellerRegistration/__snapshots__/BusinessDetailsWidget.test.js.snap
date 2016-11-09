@@ -12,7 +12,6 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
       </header>
       <article
         role="main">
-        <span />
         <form
           action={undefined}
           id="BusinessDetails__create"
