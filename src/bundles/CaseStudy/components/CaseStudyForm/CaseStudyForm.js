@@ -1,16 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actionTypes } from 'react-redux-form';
-import { Match, Miss } from 'react-router';
 
 import BaseForm from '../../../../shared/form/BaseForm';
-import NotFound from '../../../../shared/NotFound';
-
 import formProps from '../../../../shared/reduxModules/formPropsSelector';
 
 import StepOne from './StepOne';
-import StepTwo from './StepTwo';
-
 
 class CaseStudyForm extends BaseForm {
 
@@ -35,15 +29,6 @@ class CaseStudyForm extends BaseForm {
     maxSteps: 1
   }
 
-  handleSubmit(e) {
-    const { form, step, maxSteps, dispatch, model, router } = this.props;
-    if (form.valid && step < maxSteps) {
-      e.preventDefault();
-      router.transitionTo('/reference');
-      dispatch({ type: actionTypes.SET_SUBMIT_FAILED, model, submitFailed: false })
-    }
-  }
-
   render() {
     const sidebarOptions = [
       { path: '/', label: 'Add case study' },
@@ -53,17 +38,10 @@ class CaseStudyForm extends BaseForm {
     const props = {
       ...this.props,
       sidebarOptions,
-      mounted: this.state.mounted,
-      onClick: this.handleSubmit.bind(this)
+      mounted: this.state.mounted
     };
 
-    return (
-      <div>
-        <Match pattern='/' exactly render={(routerProps) => <StepOne {...routerProps} {...props} />} />
-        <Match pattern='/reference' render={(routerProps) => <StepTwo {...routerProps} {...props} />} />
-        <Miss component={NotFound} />
-      </div>
-    )
+    return <StepOne {...props} />
   }
 }
 
