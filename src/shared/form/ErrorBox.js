@@ -24,8 +24,8 @@ class ErrorBox extends React.Component {
     }
 
     return (
-      <div ref="box" className="callout--warning" aria-labelledby="validation-masthead-heading" aria-role="group" tabIndex="-1" role="alert">
-        <h4 className="validation-masthead-heading">There was a problem with the details you gave</h4>
+      <div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" aria-role="group" tabIndex="-1" role="alert">
+        <h4 id="validation-masthead-heading">There was a problem with the details you gave</h4>
         {invalidFields && (
           <ul>
             {invalidFields.map(({ messages, id }, i) => {
