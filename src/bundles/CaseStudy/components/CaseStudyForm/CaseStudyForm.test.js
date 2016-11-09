@@ -90,7 +90,7 @@ test('handleClick with formValid=false', () => {
 });
 
 
-test('handleClick with formValid=true', () => {
+test.skip('handleClick with formValid=true', () => {
   let state = Object.assign({}, sampleState);
   state.caseStudyForm.title = 'FooBar';
 
@@ -109,7 +109,7 @@ test('handleClick with formValid=true', () => {
   expect(wrapper.find('h1').text()).toBe('Reference for FooBar');
 });
 
-test('handleClick when on last step', () => {
+test.skip('handleClick when on last step', () => {
   let state = Object.assign({}, sampleState);
   state.caseStudyForm = Object.assign({}, state.caseStudyForm, {
     title: 'FooBar',
