@@ -10,7 +10,11 @@ export const CaseStudyWidget = (props) => {
   const store = createStore(props);
   return ({ action, location, router }) => (
     <Provider store={store}>
-      <CaseStudyForm router={router} />
+      <div className="row">
+        <div className="col-sm-push-2 col-sm-8 col-xs-12">
+          <CaseStudyForm router={router} />
+        </div>
+      </div>
     </Provider>
   )
 }

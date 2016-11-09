@@ -115,7 +115,7 @@ test('CaseStudyForm renders empty in edit mode', () => {
   expect(tree).toMatchSnapshot();
 });
 
-test('CaseStudyForm renders an empty reference page', () => {
+test.skip('CaseStudyForm renders an empty reference page', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))
   const component = renderer.create(
     <MemoryRouter initialEntries={['/reference']} initialIndex={0}>
@@ -131,7 +131,7 @@ test('CaseStudyForm renders an empty reference page', () => {
   expect(tree).toMatchSnapshot();
 });
 
-test('CaseStudyForm renders an empty reference page in edit mode', () => {
+test.skip('CaseStudyForm renders an empty reference page in edit mode', () => {
   let store = createStore(Object.assign({}, { _serverContext: {}, form_options: { mode: 'edit' } }))
   const component = renderer.create(
     <MemoryRouter initialEntries={['/reference']} initialIndex={0}>
@@ -147,7 +147,7 @@ test('CaseStudyForm renders an empty reference page in edit mode', () => {
   expect(tree).toMatchSnapshot();
 });
 
-test('CaseStudyForm renders a populated reference page', () => {
+test.skip('CaseStudyForm renders a populated reference page', () => {
   const state = {
     casestudy: {
       returnLink: 'http://www.right.back/to/where/you/came/from'
