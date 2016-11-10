@@ -5,6 +5,7 @@ import findIndex from 'lodash/findIndex';
 
 import NotFound from '../../../../shared/NotFound';
 
+import { getStateForms, dispatchFormState } from '../../redux/helpers';
 import { stepNext, stepNextPersist, submitApplication } from '../../redux/modules/signup';
 
 // Step Components
@@ -56,6 +57,11 @@ class Signup extends React.Component {
     return nextStep;
   }
 
+  componentDidMount() {
+    const { forms = {}, applicant, dispatch } = this.props;
+    dispatchFormState(dispatch, forms, applicant)
+  }
+
   render() {
     return (
       <div className="row">
@@ -90,7 +96,11 @@ Signup.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return {};
+  const { applicant = {} } = state;
+  return {
+    forms: getStateForms(state),
+    applicant
+  };
 };
 
 export default connect(mapStateToProps)(Signup);

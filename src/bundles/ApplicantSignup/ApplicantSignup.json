@@ -1,3 +1,19 @@
 {
-  "basename": "/applicant-signup.html" 
+  "basename": "/applicant-signup.html",
+  "applicant": {
+    "representative": "representative",
+    "name": "name",
+    "abn": "abn",
+    "phone": "phone",
+    "email": "email",
+
+    "summary": "summary",
+    "website": "website",
+    "linkedin": "linkedin",
+    "address": {
+      "addressLine": "data_addressLine",
+      "suburb": "St Ives",
+      "state": "NSW"
+    }
+  }
 }
