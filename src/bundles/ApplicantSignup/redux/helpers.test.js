@@ -1,4 +1,4 @@
-import { getStateForms, dispatchFormState } from './helpers';
+import { getStateForms, dispatchFormState, flattenStateForms } from './helpers';
 
 test('getStateForms with default regex', () => {
   const state = {
@@ -78,4 +78,35 @@ test('dispatchFormState with empty schema', () => {
   expect(result).toEqual([]);
   expect(voidResult).toEqual([]);
   expect(dispatch).toHaveBeenCalledTimes(0);
+});
+
+
+test('flattenStateForms', () => {
+  const state = {
+    firstForm: {
+      foo: 'bar',
+      baz: 'foo'
+    },
+    secondForm: {
+      bar: 'baz',
+      foobar: 'barfoo'
+    },
+    // This should be pruned
+    options: {
+      serverRender: false
+    }
+  };
+
+  const expectedResult = {
+    foo: 'bar',
+    baz: 'foo',
+    bar: 'baz',
+    foobar: 'barfoo'
+  };
+
+  expect(flattenStateForms(state)).toEqual(expectedResult);
+});
+
+test('flattenStateForms with no state', () => {
+  expect(flattenStateForms()).toEqual({});
 });

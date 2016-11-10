@@ -81,7 +81,7 @@ test('stepNextPersist action', () => {
 
   const expectedActions = [
     { type: types.APP_PRE_SUBMIT },
-    { type: types.APP_SUBMIT, payload: {} },
+    { type: types.APP_SUBMIT, payload: { applicant: {} } },
     { type: types.APP_POST_SUBMIT },
     { type: types.STEP_PRE },
     { type: types.STEP_NEXT, to }
@@ -103,13 +103,37 @@ test('submitApplcation action', () => {
 
   const middlewares = [ thunk.withExtraArgument(apiMock) ];
   const mockStore = configureMockStore(middlewares);
+
+  const expectedPayload = {
+    applicant: {
+      foo: 'bar',
+      baz: 'foo',
+      bar: 'baz',
+      foobar: 'barfoo'
+    }
+  };
+
   const expectedActions = [
     { type: types.APP_PRE_SUBMIT },
-    { type: types.APP_SUBMIT, payload: {} },
+    { type: types.APP_SUBMIT, payload: expectedPayload },
     { type: types.APP_POST_SUBMIT },
   ]
 
-  const store = mockStore({});
+  const store = mockStore({
+    firstForm: {
+      foo: 'bar',
+      baz: 'foo'
+    },
+    secondForm: {
+      bar: 'baz',
+      foobar: 'barfoo'
+    },
+    // This should be pruned
+    options: {
+      serverRender: false
+    }
+  });
+
   return store.dispatch(actions.submitApplication())
     .then(() => { // return of async actions
       expect(store.getActions()).toEqual(expectedActions)

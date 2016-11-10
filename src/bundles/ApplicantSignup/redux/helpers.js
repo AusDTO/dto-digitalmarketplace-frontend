@@ -25,3 +25,11 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
       return { [form]: mappedFields };
     })
 }
+
+export const flattenStateForms = (state = {}) => {
+  const forms = getStateForms(state);
+  return Object.keys(forms)
+    .reduce((flat, key) => {
+      return Object.assign({}, flat, forms[key])
+    }, {});
+}

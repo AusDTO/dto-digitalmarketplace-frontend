@@ -1,4 +1,4 @@
-import { getStateForms } from '../helpers';
+import { flattenStateForms } from '../helpers';
 
 const STEP_NEXT = 'step/next';
 const STEP_PRE = 'step/pre';
@@ -31,12 +31,12 @@ export const stepNext = (transition, to) => {
 export const submitApplication = () => {
   return (dispatch, getState, api) => {
     dispatch(preSubmit());
-    const payload = getStateForms(getState());
+    const applicant = flattenStateForms(getState());
     return api(window.location.pathname, {
       method: 'POST',
-      body: JSON.stringify({ ...payload })
+      body: JSON.stringify({ applicant })
     })
-    .then(() => dispatch(submit(payload)))
+    .then(() => dispatch(submit({ applicant })))
     .then(() => dispatch(postSubmit()));
   }
 };
