@@ -133,7 +133,7 @@ class StepOne extends BaseForm {
               model={`${model}.projectLinks`}
               name="projectLinks"
               htmlFor="projectLinks"
-              label="Project links"
+              label="Project links (optional)"
               controlProps={{ defaultRows: 2 }}
               description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
               messages={{ validLinks: 'All links provided must begin with \'http\'' }}
