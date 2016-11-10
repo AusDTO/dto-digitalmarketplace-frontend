@@ -159,7 +159,6 @@ exports[`test Signup renders empty Your Info form 1`] = `
       </header>
       <article
         role="main">
-        <span />
         <form
           action={undefined}
           id="yourinfo"
@@ -345,7 +344,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
       </header>
       <article
         role="main">
-        <span />
         <form
           action={undefined}
           id="yourinfo"
