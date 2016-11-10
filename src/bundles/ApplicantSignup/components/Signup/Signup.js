@@ -92,7 +92,7 @@ class Signup extends React.Component {
 Signup.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   router: React.PropTypes.object.isRequired,
-  location: React.PropTypes.object.isRequired
+  location: React.PropTypes.object.isRequired,
   applicant: React.PropTypes.object,
   forms: React.PropTypes.object
 };
