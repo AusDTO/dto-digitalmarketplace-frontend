@@ -31,12 +31,20 @@ export const stepNext = (transition, to) => {
 export const submitApplication = () => {
   return (dispatch, getState, api) => {
     dispatch(preSubmit());
-    const applicant = flattenStateForms(getState());
+    const state = getState();
+    const { form_options = {} } = state;
+    const applicant = flattenStateForms(state);
+
+    const payload = {
+      applicant,
+      csrf_token: form_options.csrf_token
+    };
+
     return api(window.location.pathname, {
       method: 'POST',
-      body: JSON.stringify({ applicant })
+      body: JSON.stringify(payload)
     })
-    .then(() => dispatch(submit({ applicant })))
+    .then(() => dispatch(submit(payload)))
     .then(() => dispatch(postSubmit()));
   }
 };

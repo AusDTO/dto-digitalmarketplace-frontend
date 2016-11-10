@@ -105,6 +105,7 @@ test('submitApplcation action', () => {
   const mockStore = configureMockStore(middlewares);
 
   const expectedPayload = {
+    csrf_token: 'randomtoken',
     applicant: {
       foo: 'bar',
       baz: 'foo',
@@ -131,6 +132,9 @@ test('submitApplcation action', () => {
     // This should be pruned
     options: {
       serverRender: false
+    },
+    form_options: {
+      csrf_token: 'randomtoken'
     }
   });
 
