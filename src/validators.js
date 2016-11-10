@@ -16,6 +16,10 @@ export const minArrayLength = (len) => (arr = []) => {
   return Array.isArray(arr) && arr.filter(v => v.trim()).length >= len;
 };
 
+export const min = (len) => (val = '') => {
+  return val.length >= len;
+};
+
 export const validLinks = (val) => {
   if (!val) {
     return true;
@@ -56,8 +60,9 @@ export const dependantRequired = (values = {}, keys = []) => (val) => {
 }
 
 export default {
-	required,
-	minArrayLength,
+  required,
+  minArrayLength,
+  min,
   validLinks,
   dependantRequired
 }

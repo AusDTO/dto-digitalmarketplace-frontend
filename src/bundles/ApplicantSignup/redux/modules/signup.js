@@ -51,7 +51,6 @@ export const stepNextPersist = (transition, to) => {
 };
 
 
-
 const constants = {
   STEP_NEXT,
   STEP_PRE,
