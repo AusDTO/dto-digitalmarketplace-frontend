@@ -1,3 +1,5 @@
+import { getStateForms } from '../helpers';
+
 const STEP_NEXT = 'step/next';
 const STEP_PRE = 'step/pre';
 const APP_SUBMIT = 'application/submit';
@@ -12,20 +14,9 @@ export default function reducer(state = {}, action = {}) {
   }
 };
 
-// Helpers
-const getAllFormValues = (state) => {
-  return Object.keys(state)
-    .filter(key => key.match(/Form$/))
-    .reduce((result, key) => {
-      result[key] = state[key];
-      return result;
-    }, {});
-};
-
-
 export const preSubmit = () => ({ type: APP_PRE_SUBMIT });
 export const postSubmit = () => ({ type: APP_POST_SUBMIT });
-export const submit = (payload) => ({ type: APP_SUBMIT, payload });
+export const submit = (payload = {}) => ({ type: APP_SUBMIT, payload });
 
 export const preStep = () => ({ type: STEP_PRE });
 export const nextStep = (to) => ({ type: STEP_NEXT, to });
@@ -40,7 +31,7 @@ export const stepNext = (transition, to) => {
 export const submitApplication = () => {
   return (dispatch, getState, api) => {
     dispatch(preSubmit());
-    const payload = getAllFormValues(getState());
+    const payload = getStateForms(getState());
     return api(window.location.pathname, {
       method: 'POST',
       body: JSON.stringify({ ...payload })
@@ -59,3 +50,28 @@ export const stepNextPersist = (transition, to) => {
   }
 };
 
+
+
+const constants = {
+  STEP_NEXT,
+  STEP_PRE,
+  APP_SUBMIT,
+  APP_POST_SUBMIT,
+  APP_PRE_SUBMIT
+};
+
+const actions = {
+  preSubmit,
+  postSubmit,
+  submit,
+  preStep,
+  nextStep,
+  stepNext,
+  stepNextPersist,
+  submitApplication
+};
+
+export {
+  constants,
+  actions
+}

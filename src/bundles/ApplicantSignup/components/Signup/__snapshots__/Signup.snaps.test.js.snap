@@ -1,0 +1,474 @@
+exports[`test Signup renders 1`] = `
+<div
+  className="row">
+  <aside
+    className="col-xs-12 col-sm-4">
+    <nav
+      className="local-nav step-navigation">
+      <ul>
+        <li>
+          <a
+            className=""
+            href="/start"
+            onClick={[Function]}
+            style={Object {}}>
+            Start
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/your-info"
+            onClick={[Function]}
+            style={Object {}}>
+            Your Info
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/business-details"
+            onClick={[Function]}
+            style={Object {}}>
+            Business Details
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/case-study"
+            onClick={[Function]}
+            style={Object {}}>
+            Case Study
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <article
+    className="col-xs-12 col-sm-8">
+    <div>
+      <h1>
+        Joining the Digital Marketplace
+      </h1>
+      <p>
+        To join the Marketplace you need to:
+      </p>
+      <ul>
+        <li>
+          Tell us about your company
+        </li>
+        <li>
+          Describe the digital services you\'ll offer and their rates.
+        </li>
+        <li>
+          Provide evidence of your skills for assessment.
+        </li>
+        <li>
+          Agree to the 
+          <a
+            href="#">
+            terms in the deed
+          </a>
+          .
+        </li>
+      </ul>
+      <p>
+        Registering takes about 
+        <b>
+          30 mins
+        </b>
+        . You can save your application and continue it later.
+      </p>
+      <p>
+        Before you start
+      </p>
+      <ul>
+        <li>
+          By completing this process you are signing the deed, so be sure the authorised person in the company completes this form.
+        </li>
+      </ul>
+      <p>
+        <a
+          href="#"
+          onClick={[Function]}
+          role="button">
+          Start Now 
+        </a>
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`test Signup renders empty Your Info form 1`] = `
+<div
+  className="row">
+  <aside
+    className="col-xs-12 col-sm-4">
+    <nav
+      className="local-nav step-navigation">
+      <ul>
+        <li>
+          <a
+            className=""
+            href="/start"
+            onClick={[Function]}
+            style={Object {}}>
+            Start
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/your-info"
+            onClick={[Function]}
+            style={Object {}}>
+            Your Info
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/business-details"
+            onClick={[Function]}
+            style={Object {}}>
+            Business Details
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/case-study"
+            onClick={[Function]}
+            style={Object {}}>
+            Case Study
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <article
+    className="col-xs-12 col-sm-8">
+    <div
+      className="layout">
+      <header>
+        <h1>
+          Create a Seller Account
+        </h1>
+      </header>
+      <article
+        role="main">
+        <span />
+        <form
+          action={undefined}
+          id="yourinfo"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="representative">
+              Company Representative
+            </label>
+            <p
+              className="hint"
+              id="representative-hint">
+              The authorised person who signs contracts with clients
+            </p>
+            <input
+              aria-describedby="representative-hint"
+              className=""
+              id="representative"
+              name="representative"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="name">
+              Company Name
+            </label>
+            <p
+              className="hint"
+              id="name-hint">
+              As you would like it displayed on the Marketplace
+            </p>
+            <input
+              aria-describedby="name-hint"
+              className=""
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="abn">
+              ABN
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="abn"
+              name="abn"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="phone"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <input
+            role="button"
+            type="submit"
+            value="Continue" />
+        </form>
+      </article>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`test Signup renders populated Your Info form 1`] = `
+<div
+  className="row">
+  <aside
+    className="col-xs-12 col-sm-4">
+    <nav
+      className="local-nav step-navigation">
+      <ul>
+        <li>
+          <a
+            className=""
+            href="/start"
+            onClick={[Function]}
+            style={Object {}}>
+            Start
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/your-info"
+            onClick={[Function]}
+            style={Object {}}>
+            Your Info
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/business-details"
+            onClick={[Function]}
+            style={Object {}}>
+            Business Details
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/case-study"
+            onClick={[Function]}
+            style={Object {}}>
+            Case Study
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <article
+    className="col-xs-12 col-sm-8">
+    <div
+      className="layout">
+      <header>
+        <h1>
+          Create a Seller Account
+        </h1>
+      </header>
+      <article
+        role="main">
+        <span />
+        <form
+          action={undefined}
+          id="yourinfo"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="representative">
+              Company Representative
+            </label>
+            <p
+              className="hint"
+              id="representative-hint">
+              The authorised person who signs contracts with clients
+            </p>
+            <input
+              aria-describedby="representative-hint"
+              className=""
+              id="representative"
+              name="representative"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="representative" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="name">
+              Company Name
+            </label>
+            <p
+              className="hint"
+              id="name-hint">
+              As you would like it displayed on the Marketplace
+            </p>
+            <input
+              aria-describedby="name-hint"
+              className=""
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="name" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="abn">
+              ABN
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="abn"
+              name="abn"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="abn" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="phone"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="phone" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="email" />
+          </div>
+          <input
+            role="button"
+            type="submit"
+            value="Continue" />
+        </form>
+      </article>
+    </div>
+  </article>
+</div>
+`;

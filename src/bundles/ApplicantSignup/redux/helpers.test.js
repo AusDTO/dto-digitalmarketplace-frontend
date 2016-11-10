@@ -37,6 +37,7 @@ test('getStateForms with custom regex', () => {
 
 test('getStateForms with empty state', () => {
   expect(getStateForms({})).toEqual({});
+  expect(getStateForms()).toEqual({});
 });
 
 test('dispatchFormState dispatchs and returns correct values', () => {
@@ -72,7 +73,9 @@ test('dispatchFormState with empty schema', () => {
     baz: 'foo'
   };
   let result = dispatchFormState(dispatch, {}, data);
+  let voidResult = dispatchFormState(dispatch, void 0, data);
 
   expect(result).toEqual([]);
+  expect(voidResult).toEqual([]);
   expect(dispatch).toHaveBeenCalledTimes(0);
 });
