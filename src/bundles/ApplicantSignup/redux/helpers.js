@@ -1,6 +1,6 @@
 import { actions } from 'react-redux-form';
 
-export const getStateForms = (state, regex = /Form$/) => {
+export const getStateForms = (state = {}, regex = /Form$/) => {
   return Object.keys(state)
     .filter(key => key.match(regex))
     .reduce((forms, val) => {
@@ -9,7 +9,7 @@ export const getStateForms = (state, regex = /Form$/) => {
     }, {});
 }
 
-export const dispatchFormState = (dispatch, schemas, data) => {
+export const dispatchFormState = (dispatch, schemas = {}, data) => {
   return Object.keys(schemas)
     .map(form => {
       let fields = schemas[form];

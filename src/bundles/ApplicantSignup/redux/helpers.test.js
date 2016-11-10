@@ -35,6 +35,10 @@ test('getStateForms with custom regex', () => {
   expect(getStateForms(state, /^Form|Key$/)).toEqual(expectedState);
 });
 
+test('getStateForms with empty state', () => {
+  expect(getStateForms({})).toEqual({});
+});
+
 test('dispatchFormState dispatchs and returns correct values', () => {
   let dispatch = jest.fn();
   let schemas = {
@@ -59,4 +63,16 @@ test('dispatchFormState dispatchs and returns correct values', () => {
 
   expect(result).toEqual(expectedResult);
   expect(dispatch).toHaveBeenCalledTimes(1);
+});
+
+test('dispatchFormState with empty schema', () => {
+  const dispatch = jest.fn();
+  const data = {
+    foo: 'bar',
+    baz: 'foo'
+  };
+  let result = dispatchFormState(dispatch, {}, data);
+
+  expect(result).toEqual([]);
+  expect(dispatch).toHaveBeenCalledTimes(0);
 });
