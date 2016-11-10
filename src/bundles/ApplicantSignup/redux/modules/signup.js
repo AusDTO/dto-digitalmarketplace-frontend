@@ -58,4 +58,3 @@ export const stepNextPersist = (transition, to) => {
       .then(() => transition(to));
   }
 };
-
