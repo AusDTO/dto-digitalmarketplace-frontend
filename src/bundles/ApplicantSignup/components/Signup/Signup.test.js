@@ -4,13 +4,11 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { compose } from 'redux';
 import { actions } from 'react-redux-form';
-//import { MemoryRouter } from 'react-router';
 
 import Signup, { mapStateToProps, SignupClass } from './Signup';
 import sampleState from '../../ApplicantSignup.json';
 
 import createStore from '../../redux/create'
-
 
 test('mapStateToProps with applicant', () => {
   const state = {
@@ -63,7 +61,6 @@ test('elementProps onClick', () => {
     sampleState, 
     { _serverContext: {} }
   ));
-
 
   const dispatch = jest.fn();
   const transitionTo = jest.fn();

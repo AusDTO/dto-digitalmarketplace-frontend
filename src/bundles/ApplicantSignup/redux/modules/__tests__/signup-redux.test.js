@@ -60,7 +60,6 @@ test('stepNext action', () => {
     { type: types.STEP_NEXT, to }
   ]
   
-
   const store = mockStore({});
   store.dispatch(actions.stepNext(transition, to))
 
@@ -70,7 +69,7 @@ test('stepNext action', () => {
 });
 
 test('stepNextPersist action', () => {
-  // TODO when we figure out what we're posting/receive
+  // TODO when we figure out what we're posting/receiving
   // this will need to change
   const apiMock = () => { return Promise.resolve() }
 
@@ -89,7 +88,6 @@ test('stepNextPersist action', () => {
   ]
 
   const store = mockStore({});
-
   return store.dispatch(actions.stepNextPersist(transition, to))
     .then(() => { // return of async actions
       expect(store.getActions()).toEqual(expectedActions)
@@ -99,7 +97,7 @@ test('stepNextPersist action', () => {
 });
 
 test('submitApplcation action', () => {
-  // TODO when we figure out what we're posting/receive
+  // TODO when we figure out what we're posting/receiving
   // this will need to change
   const apiMock = () => { return Promise.resolve() }
 
@@ -112,7 +110,6 @@ test('submitApplcation action', () => {
   ]
 
   const store = mockStore({});
-
   return store.dispatch(actions.submitApplication())
     .then(() => { // return of async actions
       expect(store.getActions()).toEqual(expectedActions)
@@ -124,5 +121,3 @@ test('default reducer', () => {
   expect(reducer({})).toEqual({});
   expect(reducer({ foo: 'bar' })).toEqual({ foo: 'bar' });
 });
-
-
