@@ -33,7 +33,7 @@ class View extends React.Component {
     return (
       <section>
         {showConfirm && (
-          <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" aria-role="group" tabIndex="-1" role="alert">
+          <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" tabIndex="-1" role="alert">
               <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
               <a href={meta.deleteLink} role="button">Delete this case study</a>
               <button className="button-secondary" onClick={this.toggleConfirm.bind(this, false)}>No, keep this case study</button>

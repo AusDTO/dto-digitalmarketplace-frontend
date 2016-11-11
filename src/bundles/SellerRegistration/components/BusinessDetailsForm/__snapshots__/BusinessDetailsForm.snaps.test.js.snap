@@ -359,7 +359,6 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
     role="main">
     <div
       aria-describedby="validation-masthead-heading"
-      aria-role="group"
       className="callout--warning"
       role="alert"
       tabIndex="-1">
