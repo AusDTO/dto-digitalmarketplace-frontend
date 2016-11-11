@@ -237,13 +237,27 @@ if (process.env.CI) {
     config.user = process.env.BROWSERSTACK_USERNAME;
     config.key = process.env.BROWSERSTACK_ACCESS_KEY;
     config.screenshotPath = process.env.CIRCLE_ARTIFACTS;
-    config.project = process.env.CIRCLE_PROJECT_REPONAME;
-    config.build = process.env.CIRCLE_BUILD_NUM;
     config.capabilities = [
-        { browser: 'chrome' },
-        { browser: 'firefox' },
-        { browser: 'internet explorer' },
-        { browser: 'safari' }
+        {
+            browser: 'chrome',
+            project: process.env.CIRCLE_PROJECT_REPONAME,
+            build: process.env.CIRCLE_BUILD_NUM
+        },
+        {
+            browser: 'firefox',
+            project: process.env.CIRCLE_PROJECT_REPONAME,
+            build: process.env.CIRCLE_BUILD_NUM
+        },
+        {
+            browser: 'internet explorer',
+            project: process.env.CIRCLE_PROJECT_REPONAME,
+            build: process.env.CIRCLE_BUILD_NUM
+        },
+        {
+            browser: 'safari',
+            project: process.env.CIRCLE_PROJECT_REPONAME,
+            build: process.env.CIRCLE_BUILD_NUM
+        }
     ];
 }
 
