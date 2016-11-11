@@ -237,6 +237,10 @@ if (process.env.CI) {
     config.user = process.env.BROWSERSTACK_USERNAME;
     config.key = process.env.BROWSERSTACK_ACCESS_KEY;
     config.screenshotPath = process.env.CIRCLE_ARTIFACTS;
+    config.commonCapabilities: {
+        name: 'marketplace_test',
+        build: [process.env.CIRCLE_PROJECT_REPONAME, process.env.CIRCLE_BUILD_NUM].join('_')
+    }
     config.capabilities = [
         { browser: 'chrome' },
         { browser: 'firefox' },
