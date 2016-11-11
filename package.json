@@ -73,6 +73,8 @@
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "2.1.0",
     "reselect": "2.5.4",
+    "wdio-mocha-framework": "^0.5.3",
+    "webdriverio": "^4.4.0",
     "yargs": "6.0.0"
   },
   "scripts": {
@@ -82,7 +84,8 @@
     "build:development": "NODE_ENV=development webpack -w --config config/webpack.config.dev.js",
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
-    "server": "node build/render-server.js"
+    "server": "node build/render-server.js",
+    "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js"
   },
   "jest": {
     "coverageDirectory": "coverage",
