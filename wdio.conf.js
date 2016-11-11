@@ -237,28 +237,32 @@ if (process.env.CI) {
     config.user = process.env.BROWSERSTACK_USERNAME;
     config.key = process.env.BROWSERSTACK_ACCESS_KEY;
     config.screenshotPath = process.env.CIRCLE_ARTIFACTS;
-    config.capabilities = [
+    var capabilities = [
         {
-            browser: 'chrome',
-            project: process.env.CIRCLE_PROJECT_REPONAME,
-            build: process.env.CIRCLE_BUILD_NUM
+            'browserName' : 'chrome',
+            'os' : 'Windows',
+            'os_version' : '7',
+            'resolution' : '1024x768'
         },
         {
-            browser: 'firefox',
-            project: process.env.CIRCLE_PROJECT_REPONAME,
-            build: process.env.CIRCLE_BUILD_NUM
+            'browserName' : 'IE',
+            'browser_version' : '10.0',
+            'os' : 'Windows',
+            'os_version' : '7',
+            'resolution' : '1024x768'
         },
         {
-            browser: 'internet explorer',
-            project: process.env.CIRCLE_PROJECT_REPONAME,
-            build: process.env.CIRCLE_BUILD_NUM
+            'browser': 'iPhone',
+            'platform' : 'MAC',
+            'device' : 'iPhone 6S Plus'
         },
-        {
-            browser: 'safari',
-            project: process.env.CIRCLE_PROJECT_REPONAME,
-            build: process.env.CIRCLE_BUILD_NUM
-        }
     ];
+    config.capabilities = capabilities.map(function (capability) {
+        return Object.assign({}, capability, {
+            project: process.env.CIRCLE_PROJECT_REPONAME,
+            build: process.env.CIRCLE_BUILD_NUM
+        })
+    });
 }
 
 exports.config = config
