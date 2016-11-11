@@ -219,7 +219,7 @@ exports[`test CaseStudyForm renders 1`] = `
         className="field">
         <label
           htmlFor="projectLinks">
-          Project links
+          Project links (optional)
         </label>
         <p
           className="hint"
@@ -1132,7 +1132,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         className="field">
         <label
           htmlFor="projectLinks">
-          Project links
+          Project links (optional)
         </label>
         <p
           className="hint"
@@ -1557,7 +1557,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         className="field">
         <label
           htmlFor="projectLinks">
-          Project links
+          Project links (optional)
         </label>
         <p
           className="hint"
@@ -1863,7 +1863,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         className="field">
         <label
           htmlFor="projectLinks">
-          Project links
+          Project links (optional)
         </label>
         <p
           className="hint"
@@ -2164,7 +2164,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         className="field">
         <label
           htmlFor="projectLinks">
-          Project links
+          Project links (optional)
         </label>
         <p
           className="hint"

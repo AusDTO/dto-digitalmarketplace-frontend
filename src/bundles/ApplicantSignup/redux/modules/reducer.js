@@ -7,10 +7,38 @@ import form_options from '../../../../shared/reduxModules/form_options';
 export default combineReducers({
   form_options,
   errorMessage,
+  applicant: (state = {}) => state,
   options: (state = {}) => state,
   ...createForms({
-    yourInfoForm: {},
-    businessDetailsForm: {},
-    caseStudyForm: {},
+    // We need to define the schemas of each form
+    // Applicant is a flat object, these keys are used
+    // for mapping values.
+    yourInfoForm: {
+      representative: '',
+      name: '',
+      abn: '',
+      phone: '',
+      email: '',
+    },
+    businessDetailsForm: {
+      summary: '',
+      website: '',
+      linkedin: '',
+      address: {
+        addressLine: '',
+        suburb: '',
+        state: '',
+        postalCode: ''
+      }
+    },
+    caseStudyForm: {
+      title: '',
+      client: '',
+      timeframe: '',
+      opportunity: '',
+      approach: '',
+      outcome: [],
+      projectLinks: []
+    },
   })
 })
