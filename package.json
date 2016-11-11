@@ -62,6 +62,7 @@
     "body-parser": "1.15.2",
     "chokidar": "1.0.0",
     "compression": "1.6.2",
+    "eslint-plugin-jsx-a11y": "^3.0.1",
     "express": "4.14.0",
     "morgan": "1.7.0",
     "react": "15.3.2",
@@ -118,7 +119,7 @@
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ["react-app", "plugin:jsx-a11y/recommended"]
   },
   "engines": {
     "node": "6.9.0"
