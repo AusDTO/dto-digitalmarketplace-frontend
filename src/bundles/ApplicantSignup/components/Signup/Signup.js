@@ -16,6 +16,14 @@ import CaseStudyForm from '../../../CaseStudy/components/CaseStudyForm';
 
 class Signup extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    if (props.filterSteps) {
+      this.steps = this.steps.filter(props.filterSteps);
+    }
+  }
+
   steps = [
     { label: 'Start', component: Start, pattern: '/start', exact: true },
     { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
@@ -94,14 +102,16 @@ Signup.propTypes = {
   router: React.PropTypes.object.isRequired,
   location: React.PropTypes.object.isRequired,
   applicant: React.PropTypes.object,
-  forms: React.PropTypes.object
+  forms: React.PropTypes.object,
+  filterSteps: React.PropTypes.func
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const { applicant = {} } = state;
   return {
     forms: getStateForms(state),
-    applicant
+    applicant,
+    ...ownProps
   };
 };
 
