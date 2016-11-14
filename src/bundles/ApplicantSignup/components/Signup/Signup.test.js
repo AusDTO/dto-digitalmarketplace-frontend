@@ -203,5 +203,85 @@ test('elementProps onSubmit with no steps left', () => {
   expect(dispatch).toHaveBeenCalledTimes(1);
 });
 
+test('without filterSteps', () => {
+
+  const Start = require('../../../SellerRegistration/components/Start').default;
+  const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
+  const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
+  const CaseStudyForm = require('../../../CaseStudy/components/CaseStudyForm').default;
+
+  delete sampleState.basename;
+  let store = createStore(Object.assign({},
+    sampleState,
+    { _serverContext: {} }
+  ));
+
+  const expectedSteps = [
+    { label: 'Start', component: Start, pattern: '/start', exact: true },
+    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
+    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
+    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
+  ];
+
+  const props = {
+    location: {
+      pathname: '/start'
+    },
+    router: {},
+    dispatch: () => {},
+    store
+  }
+
+  const wrapper = mount(
+    <SignupClass {...props} />
+  )
+
+  const { steps } = wrapper.instance();
+
+  expect(steps).toEqual(expectedSteps);
+  expect(steps.length).toBe(4);
+});
+
+test('filterSteps', () => {
+
+  const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
+  const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
+
+  delete sampleState.basename;
+  let store = createStore(Object.assign({},
+    sampleState,
+    { _serverContext: {} }
+  ));
+
+  const expectedSteps = [
+    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
+    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
+  ];
+
+  const filterSteps = (step) => {
+    // Remove steps with patterns of /start and /case-study
+    return !step.pattern.match(/\/start|\/case-study/);
+  }
+
+  const props = {
+    location: {
+      pathname: '/start'
+    },
+    router: {},
+    filterSteps,
+    dispatch: () => {},
+    store
+  }
+
+  const wrapper = mount(
+    <SignupClass {...props} />
+  )
+
+  const { steps } = wrapper.instance();
+
+  expect(steps).toEqual(expectedSteps);
+  expect(steps.length).toBe(2);
+});
+
 
 
