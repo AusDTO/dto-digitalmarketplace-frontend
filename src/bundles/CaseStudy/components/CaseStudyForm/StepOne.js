@@ -140,7 +140,7 @@ class StepOne extends BaseForm {
               validators={{ validLinks }}
             />
 
-            <input type="submit" value='Save &amp; Continue' role="button" />
+            <input type="submit" value={mode === 'edit' ? 'Save Changes' : 'Publish Case Study'} role="button" />
           </Form>
           {returnLink && <a href={returnLink}>Return without saving</a>}
         </article>
