@@ -36,13 +36,16 @@ export const submitApplication = () => {
     const applicant = flattenStateForms(state);
 
     const payload = {
-      applicant,
-      csrf_token: form_options.csrf_token
+      applicant
     };
 
     return api(window.location.pathname, {
       method: 'POST',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      headers: {
+        // Flask expects the token as a header.
+        'X-CSRFToken': form_options.csrf_token
+      }
     })
     .then(() => dispatch(submit(payload)))
     .then(() => dispatch(postSubmit()));
