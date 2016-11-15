@@ -7,7 +7,7 @@ import form_options from '../../../../shared/reduxModules/form_options';
 export default combineReducers({
   form_options,
   errorMessage,
-  applicant: (state = {}) => state,
+  application: (state = {}) => state,
   options: (state = {}) => state,
   ...createForms({
     // We need to define the schemas of each form
