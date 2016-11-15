@@ -1,6 +1,6 @@
 {
   "basename": "/applicant-signup.html",
-  "applicant": {
+  "application": {
     "representative": "representative",
     "name": "name",
     "abn": "abn",

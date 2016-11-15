@@ -10,13 +10,13 @@ import sampleState from '../../ApplicantSignup.json';
 
 import createStore from '../../redux/create'
 
-test('mapStateToProps with applicant', () => {
+test('mapStateToProps with application', () => {
   const state = {
     someForm: {
       foo: 'bar'
     },
     randomKey: 'baz',
-    applicant: {
+    application: {
       bar: 'baz'
     }
   };
@@ -27,7 +27,7 @@ test('mapStateToProps with applicant', () => {
         foo: 'bar'
       }
     },
-    applicant: {
+    application: {
       bar: 'baz'
     }
   };
@@ -35,7 +35,7 @@ test('mapStateToProps with applicant', () => {
   expect(mapStateToProps(state)).toEqual(expectedProps);
 });
 
-test('mapStateToProps without applicant', () => {
+test('mapStateToProps without application', () => {
   const state = {
     someForm: {
       foo: 'bar'
@@ -49,7 +49,7 @@ test('mapStateToProps without applicant', () => {
         foo: 'bar'
       }
     },
-    applicant: {}
+    application: {}
   };
 
   expect(mapStateToProps(state)).toEqual(expectedProps);

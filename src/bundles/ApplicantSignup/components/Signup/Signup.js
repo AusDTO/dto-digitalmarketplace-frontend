@@ -66,8 +66,8 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    const { forms = {}, applicant, dispatch } = this.props;
-    dispatchFormState(dispatch, forms, applicant)
+    const { forms = {}, application, dispatch } = this.props;
+    dispatchFormState(dispatch, forms, application)
   }
 
   render() {
@@ -108,10 +108,10 @@ Signup.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { applicant = {} } = state;
+  const { application = {} } = state;
   return {
     forms: getStateForms(state),
-    applicant,
+    application,
     ...ownProps
   };
 };
