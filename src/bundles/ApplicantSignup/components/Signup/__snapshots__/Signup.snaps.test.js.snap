@@ -276,6 +276,10 @@ exports[`test Signup renders empty Your Info form 1`] = `
               value="" />
           </div>
           <input
+            name="next_step_slug"
+            type="hidden"
+            value="business-details" />
+          <input
             role="button"
             type="submit"
             value="Continue" />
@@ -460,6 +464,10 @@ exports[`test Signup renders populated Your Info form 1`] = `
               type="text"
               value="email" />
           </div>
+          <input
+            name="next_step_slug"
+            type="hidden"
+            value="business-details" />
           <input
             role="button"
             type="submit"

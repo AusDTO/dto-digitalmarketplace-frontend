@@ -20,7 +20,7 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, mode, form, onSubmit } = this.props;
+    const { action, csrf_token, model, mode, form, children, onSubmit } = this.props;
     return (
       <Layout>
         <header>
@@ -100,6 +100,8 @@ class YourInfoForm extends BaseForm {
                 required: 'Email is required',
               }}
             />
+
+            {children}
 
             <input type="submit" value={mode === 'edit' ? 'Save & Continue' : 'Continue'} role="button" />
           </Form>
