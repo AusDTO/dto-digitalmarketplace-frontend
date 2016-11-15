@@ -33,10 +33,10 @@ export const submitApplication = () => {
     dispatch(preSubmit());
     const state = getState();
     const { form_options = {} } = state;
-    const applicant = flattenStateForms(state);
+    const application = flattenStateForms(state);
 
     const payload = {
-      applicant
+      application
     };
 
     return api(window.location.pathname, {

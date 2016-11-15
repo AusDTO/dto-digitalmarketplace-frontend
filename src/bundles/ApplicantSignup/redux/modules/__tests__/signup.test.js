@@ -81,7 +81,7 @@ test('stepNextPersist action', () => {
 
   const expectedActions = [
     { type: types.APP_PRE_SUBMIT },
-    { type: types.APP_SUBMIT, payload: { applicant: {} } },
+    { type: types.APP_SUBMIT, payload: { application: {} } },
     { type: types.APP_POST_SUBMIT },
     { type: types.STEP_PRE },
     { type: types.STEP_NEXT, to }
@@ -105,7 +105,7 @@ test('submitApplcation action', () => {
   const mockStore = configureMockStore(middlewares);
 
   const expectedPayload = {
-    applicant: {
+    application: {
       foo: 'bar',
       baz: 'foo',
       bar: 'baz',
