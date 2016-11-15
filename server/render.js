@@ -1,5 +1,8 @@
 require('dotenv').config({silent: true});
-require('newrelic');
+
+if (process.env.NEW_RELIC_LICENSE_KEY) {
+  require('newrelic');
+}
 
 import express from 'express'
 import morgan from 'morgan'
