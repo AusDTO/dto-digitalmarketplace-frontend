@@ -6,6 +6,7 @@ disk_quota: 1G
 instances: 1
 env:
     NODE_ENV: production
+    NODE_MODULES_CACHE: false
 applications:
 - name: dm-dev-frontend-blue
 - name: dm-dev-frontend-green

@@ -1,3 +1,9 @@
+require('dotenv').config({silent: true});
+
+if (process.env.NEW_RELIC_LICENSE_KEY) {
+  require('newrelic');
+}
+
 import express from 'express'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
