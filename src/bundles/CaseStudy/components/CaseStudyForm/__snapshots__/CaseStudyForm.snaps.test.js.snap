@@ -293,7 +293,7 @@ exports[`test CaseStudyForm renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Publish Case Study" />
     </form>
   </article>
 </div>
@@ -1206,7 +1206,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save Changes" />
     </form>
     <a
       href="http://www.right.back/to/where/you/came/from">
@@ -1630,7 +1630,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Publish Case Study" />
     </form>
   </article>
 </div>
@@ -1936,7 +1936,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Publish Case Study" />
     </form>
   </article>
 </div>
@@ -2237,7 +2237,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Publish Case Study" />
     </form>
   </article>
 </div>
