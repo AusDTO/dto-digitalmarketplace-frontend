@@ -24,7 +24,7 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, form, onSubmit } = this.props;
+        const {action, csrf_token, model, returnLink, form, children, onSubmit } = this.props;
         return (
             <Layout>
                 <header>
@@ -119,6 +119,9 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                             pattern="[0-9]{4}"
                         />
+
+                        {children}
+
                         <input type="submit" value='Update profile' role="button"/>
                     </Form>
                     {returnLink && <a href={returnLink}>Return without saving</a>}

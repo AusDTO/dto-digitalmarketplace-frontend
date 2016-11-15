@@ -51,7 +51,7 @@ class Signup extends React.Component {
       }
 
       dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern));
-    }
+    },
   }
 
   get nextStep () {
@@ -86,7 +86,8 @@ class Signup extends React.Component {
           {this.steps.map(({pattern, exact, component}, i) => {
             return (
               <Match key={i} pattern={pattern} exactly={exact} render={(routerProps) => {
-                return React.createElement(component, Object.assign({}, routerProps, this.elementProps));
+                let children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
+                return React.createElement(component, Object.assign({}, routerProps, this.elementProps), children);
               }} />
             )
           })}

@@ -32,7 +32,8 @@ class StepOne extends BaseForm {
       returnLink,
       mode,
       onSubmit,
-      form
+      form,
+      children
     } = this.props;
 
     return (
@@ -139,6 +140,8 @@ class StepOne extends BaseForm {
               messages={{ validLinks: 'All links provided must begin with \'http\'' }}
               validators={{ validLinks }}
             />
+
+            {children}
 
             <input type="submit" value={mode === 'edit' ? 'Save Changes' : 'Publish Case Study'} role="button" />
           </Form>
