@@ -44,8 +44,7 @@
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
-    "webpack-dev-server": "1.16.1",
-    "whatwg-fetch": "1.0.0"
+    "webpack-dev-server": "1.16.1"
   },
   "dependencies": {
     "babel-cli": "^6.16.0",
@@ -77,6 +76,7 @@
     "reselect": "2.5.4",
     "wdio-mocha-framework": "^0.5.3",
     "webdriverio": "^4.4.0",
+    "whatwg-fetch": "2.0.0",
     "yargs": "6.0.0"
   },
   "scripts": {
