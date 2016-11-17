@@ -190,7 +190,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       className="layout">
       <header>
         <h1>
-          Create a Seller Account
+          Your Information
         </h1>
       </header>
       <article
@@ -318,7 +318,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <input
             role="button"
             type="submit"
-            value="Continue" />
+            value="Save & Continue" />
         </form>
       </article>
     </div>
@@ -397,7 +397,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
       className="layout">
       <header>
         <h1>
-          Create a Seller Account
+          Your Information
         </h1>
       </header>
       <article
@@ -525,7 +525,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <input
             role="button"
             type="submit"
-            value="Continue" />
+            value="Save & Continue" />
         </form>
       </article>
     </div>
