@@ -8,8 +8,8 @@ import { addMessage, removeMessage } from '../reduxModules/errorMessage';
 class StatefulError extends React.Component {
 
   componentDidMount() {
-    const { dispatch, messages, model } = this.props;
-    dispatch(addMessage(model, messages));
+    const { dispatch, messages, model, id } = this.props;
+    dispatch(addMessage(model, messages, id));
   }
 
   componentWillUnmount() {

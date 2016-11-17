@@ -29,8 +29,8 @@ export const mapErrorMessages = (forms, messages, model) => {
     })
     .map(key => {
       let parts = key.split('.').reverse();
-      let result = { id: parts[0] };
       let messageObject = get(messages, key, {});
+      let result = { id: get(messageObject, 'id', parts[0]) };
 
       // If field has nested '$form' use that instead
       // $form contains the correct meta if found.
