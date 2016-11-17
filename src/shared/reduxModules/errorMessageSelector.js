@@ -29,6 +29,8 @@ export const mapErrorMessages = (forms, messages, model) => {
     })
     .map(key => {
       let parts = key.split('.').reverse();
+      let result = { id: parts[0] };
+      let messageObject = get(messages, key, {});
 
       // If field has nested '$form' use that instead
       // $form contains the correct meta if found.
@@ -37,21 +39,25 @@ export const mapErrorMessages = (forms, messages, model) => {
         field = field.$form;
       }
 
+      if (typeof field.errors === 'boolean') {
+        let keypath = key.split('.').slice(1);
+        result.messages = [get(messageObject, keypath)];
+        return result;
+      }
+
       // Some validation fields have nested 'errors' objects
       // Pick them out as they contain the correct keys.
       let fieldErrors = field.errors || {};
       if ('errors' in fieldErrors) {
         fieldErrors = fieldErrors.errors;
       }
-
-      let result = { id: parts[0] };
+      
       // Map fieldErrors keys (e.g. required) to errorMessages stored in the state
       // e.g.
       // caseStudyForm.title: { required: 'Title is required' }
       // Will result in the array ['Title is required']
       result.messages = Object.keys(fieldErrors).reduce((errors, errorKey) => {
-        let messageObject = get(messages, key, {});
-        let error = get(messageObject, errorKey)
+        let error = get(messageObject, errorKey);
         return errors.concat(error);
       }, []);
 
