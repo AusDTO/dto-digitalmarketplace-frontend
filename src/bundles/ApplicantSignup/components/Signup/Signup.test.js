@@ -209,6 +209,8 @@ test('without filterSteps', () => {
   const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const CaseStudyForm = require('../../../CaseStudy/components/CaseStudyForm').default;
+  const Review = require('../../../SellerRegistration/components/Review').default;
+  const Submit = require('../../../SellerRegistration/components/Submit').default;
 
   delete sampleState.basename;
   let store = createStore(Object.assign({},
@@ -221,6 +223,8 @@ test('without filterSteps', () => {
     { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
     { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
+    { label: 'Review', component: Review, pattern: '/review', exact: true },
+    { label: 'Submit', component: Submit, pattern: '/submit', exact: true },
   ];
 
   const props = {
@@ -239,7 +243,7 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(4);
+  expect(steps.length).toBe(6);
 });
 
 test('filterSteps', () => {
@@ -259,8 +263,8 @@ test('filterSteps', () => {
   ];
 
   const filterSteps = (step) => {
-    // Remove steps with patterns of /start and /case-study
-    return !step.pattern.match(/\/start|\/case-study/);
+    // Remove steps with patterns of /start and /case-study and /review and /submit
+    return !step.pattern.match(/\/start|\/case-study|\/review|\/submit/);
   }
 
   const props = {
