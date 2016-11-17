@@ -31,6 +31,10 @@ export default combineReducers({
         postalCode: ''
       }
     },
+    domainSelectorForm: {
+      domains: []
+    },
+    pricingForm: {},
     caseStudyForm: {
       title: '',
       client: '',
