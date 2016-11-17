@@ -1,4 +1,4 @@
-import { getStateForms, dispatchFormState, flattenStateForms } from './helpers';
+import { getStateForms, dispatchFormState, flattenStateForms, findValidDomains } from './helpers';
 
 test('getStateForms with default regex', () => {
   const state = {
@@ -109,4 +109,60 @@ test('flattenStateForms', () => {
 
 test('flattenStateForms with no state', () => {
   expect(flattenStateForms()).toEqual({});
+});
+
+test('findValidDomains will remove top level key with no valid services', () => {
+
+  const domains = [
+    {
+      "User research & design": {
+        "User research": false
+      },
+      "Content & publishing": {
+        "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+        "Content management": true
+      }
+    }
+  ];
+
+  const expectedDomains = [
+    {
+      "Content & publishing": {
+        "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+        "Content management": true
+      }
+    }
+  ];
+
+  expect(findValidDomains(domains)).toEqual(expectedDomains);
+});
+
+test('findValidDomains will remove only invalid services', () => {
+
+  const domains = [
+    {
+      "User research & design": {
+        "User research": false,
+        "Random Key": true
+      },
+      "Content & publishing": {
+        "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+        "Content management": true
+      }
+    }
+  ];
+
+  const expectedDomains = [
+    {
+      "User research & design": {
+        "Random Key": true
+      },
+      "Content & publishing": {
+        "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+        "Content management": true
+      }
+    }
+  ];
+
+  expect(findValidDomains(domains)).toEqual(expectedDomains);
 });
