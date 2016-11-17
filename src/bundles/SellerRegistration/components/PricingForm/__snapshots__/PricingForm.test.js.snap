@@ -55,11 +55,12 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
           <div
             className="col-sm-5 col-xs-12">
             <label
-              htmlFor="x">
+              htmlFor="user-research-design-minprice">
               Min. Daily Price
             </label>
             <input
-              name="pricingForm.User research & design.minPrice"
+              id="user-research-design-minprice"
+              name="User research & design[].minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -70,11 +71,12 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
           <div
             className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="y">
+              htmlFor="user-research-design-maxprice">
               Max. Daily Price
             </label>
             <input
-              name="pricingForm.User research & design.maxPrice"
+              id="user-research-design-maxprice"
+              name="User research & design[].maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -94,11 +96,12 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
           <div
             className="col-sm-5 col-xs-12">
             <label
-              htmlFor="x">
+              htmlFor="content-publishing-minprice">
               Min. Daily Price
             </label>
             <input
-              name="pricingForm.Content & publishing.minPrice"
+              id="content-publishing-minprice"
+              name="Content & publishing[].minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -109,11 +112,12 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
           <div
             className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="y">
+              htmlFor="content-publishing-maxprice">
               Max. Daily Price
             </label>
             <input
-              name="pricingForm.Content & publishing.maxPrice"
+              id="content-publishing-maxprice"
+              name="Content & publishing[].maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}

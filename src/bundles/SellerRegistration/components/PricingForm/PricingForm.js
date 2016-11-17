@@ -3,6 +3,7 @@ import { connect }          from 'react-redux';
 import { Link }             from 'react-router';
 import { Form, Control }    from 'react-redux-form';
 import isEmpty              from 'lodash/isEmpty';
+import kebabCase            from 'lodash/kebabCase';
 
 import Layout               from '../../../../shared/Layout';
 import BaseForm             from '../../../../shared/form/BaseForm';
@@ -63,16 +64,20 @@ class PricingForm extends BaseForm {
                 <legend>{domain}</legend>
                 <div className="row">
                   <div className="col-sm-5 col-xs-12">
-                    <label htmlFor="x">Min. Daily Price</label>
+                    <label htmlFor={`${kebabCase(domain)}-minprice`}>Min. Daily Price</label>
                     <Control.text 
                       type="number"
+                      id={`${kebabCase(domain)}-minprice`}
+                      name={`${domain}[].minPrice`}
                       model={`${model}.${domain}.minPrice`}
                     />
                   </div>
                   <div className="col-sm-push-1 col-sm-5 col-xs-12">
-                    <label htmlFor="y">Max. Daily Price</label>
+                    <label htmlFor={`${kebabCase(domain)}-maxprice`}>Max. Daily Price</label>
                     <Control.text 
                       type="number"
+                      id={`${kebabCase(domain)}-maxprice`}
+                      name={`${domain}[].maxPrice`}
                       model={`${model}.${domain}.maxPrice`}
                     />
                   </div>
