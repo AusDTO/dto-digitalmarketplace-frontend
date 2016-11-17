@@ -112,22 +112,6 @@ exports[`test DomainSelector renders 1`] = `
             Content development (copywriting, translation, illustration, photography, video and animation)
           </label>
         </div>
-        <div>
-          <input
-            checked={false}
-            id="content-management"
-            name="content-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Content management" />
-          <label
-            htmlFor="content-management">
-            Content management
-          </label>
-        </div>
       </fieldset>
       <fieldset
         className="field">
@@ -153,22 +137,6 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="communications-internal-external"
-            name="communications-internal-external"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Communications (internal & external)" />
-          <label
-            htmlFor="communications-internal-external">
-            Communications (internal & external)
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
             id="community-engagement-eg-social-media-events"
             name="community-engagement-eg-social-media-events"
             onBlur={[Function]}
@@ -180,22 +148,6 @@ exports[`test DomainSelector renders 1`] = `
           <label
             htmlFor="community-engagement-eg-social-media-events">
             Community engagement (eg social media & events)
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="business-development"
-            name="business-development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Business development" />
-          <label
-            htmlFor="business-development">
-            Business development
           </label>
         </div>
       </fieldset>
@@ -385,145 +337,17 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="information-security"
-            name="information-security"
+            id="ethical-hacker"
+            name="ethical-hacker"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Information security" />
+            value="Ethical Hacker" />
           <label
-            htmlFor="information-security">
-            Information security
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="architecture"
-            name="architecture"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Architecture" />
-          <label
-            htmlFor="architecture">
-            Architecture
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="assessments-eg-ethical-hacker"
-            name="assessments-eg-ethical-hacker"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Assessments (eg ethical hacker)" />
-          <label
-            htmlFor="assessments-eg-ethical-hacker">
-            Assessments (eg ethical hacker)
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="penetration-testing"
-            name="penetration-testing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Penetration testing" />
-          <label
-            htmlFor="penetration-testing">
-            Penetration testing
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="monitoring"
-            name="monitoring"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Monitoring" />
-          <label
-            htmlFor="monitoring">
-            Monitoring
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="incidence-response"
-            name="incidence-response"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Incidence response" />
-          <label
-            htmlFor="incidence-response">
-            Incidence response
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="ism-advisory"
-            name="ism-advisory"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="ISM advisory" />
-          <label
-            htmlFor="ism-advisory">
-            ISM advisory
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="data-privacy"
-            name="data-privacy"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Data Privacy" />
-          <label
-            htmlFor="data-privacy">
-            Data Privacy
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="digital-forensics"
-            name="digital-forensics"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital forensics" />
-          <label
-            htmlFor="digital-forensics">
-            Digital forensics
+            htmlFor="ethical-hacker">
+            Ethical Hacker
           </label>
         </div>
       </fieldset>
@@ -580,44 +404,12 @@ exports[`test DomainSelector renders 1`] = `
             Delivery management
           </label>
         </div>
-        <div>
-          <input
-            checked={false}
-            id="program-management"
-            name="program-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Program management" />
-          <label
-            htmlFor="program-management">
-            Program management
-          </label>
-        </div>
       </fieldset>
       <fieldset
         className="field">
         <legend>
           Operations
         </legend>
-        <div>
-          <input
-            checked={false}
-            id="administration"
-            name="administration"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Administration" />
-          <label
-            htmlFor="administration">
-            Administration
-          </label>
-        </div>
         <div>
           <input
             checked={false}
@@ -648,22 +440,6 @@ exports[`test DomainSelector renders 1`] = `
           <label
             htmlFor="tech-support">
             Tech support
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="financial-analysis"
-            name="financial-analysis"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Financial analysis" />
-          <label
-            htmlFor="financial-analysis">
-            Financial analysis
           </label>
         </div>
       </fieldset>
@@ -926,22 +702,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             Content development (copywriting, translation, illustration, photography, video and animation)
           </label>
         </div>
-        <div>
-          <input
-            checked={true}
-            id="content-management"
-            name="content-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Content management" />
-          <label
-            htmlFor="content-management">
-            Content management
-          </label>
-        </div>
       </fieldset>
       <fieldset
         className="field">
@@ -967,22 +727,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="communications-internal-external"
-            name="communications-internal-external"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Communications (internal & external)" />
-          <label
-            htmlFor="communications-internal-external">
-            Communications (internal & external)
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
             id="community-engagement-eg-social-media-events"
             name="community-engagement-eg-social-media-events"
             onBlur={[Function]}
@@ -994,22 +738,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           <label
             htmlFor="community-engagement-eg-social-media-events">
             Community engagement (eg social media & events)
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="business-development"
-            name="business-development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Business development" />
-          <label
-            htmlFor="business-development">
-            Business development
           </label>
         </div>
       </fieldset>
@@ -1199,145 +927,17 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="information-security"
-            name="information-security"
+            id="ethical-hacker"
+            name="ethical-hacker"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Information security" />
+            value="Ethical Hacker" />
           <label
-            htmlFor="information-security">
-            Information security
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="architecture"
-            name="architecture"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Architecture" />
-          <label
-            htmlFor="architecture">
-            Architecture
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="assessments-eg-ethical-hacker"
-            name="assessments-eg-ethical-hacker"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Assessments (eg ethical hacker)" />
-          <label
-            htmlFor="assessments-eg-ethical-hacker">
-            Assessments (eg ethical hacker)
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="penetration-testing"
-            name="penetration-testing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Penetration testing" />
-          <label
-            htmlFor="penetration-testing">
-            Penetration testing
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="monitoring"
-            name="monitoring"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Monitoring" />
-          <label
-            htmlFor="monitoring">
-            Monitoring
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="incidence-response"
-            name="incidence-response"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Incidence response" />
-          <label
-            htmlFor="incidence-response">
-            Incidence response
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="ism-advisory"
-            name="ism-advisory"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="ISM advisory" />
-          <label
-            htmlFor="ism-advisory">
-            ISM advisory
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="data-privacy"
-            name="data-privacy"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Data Privacy" />
-          <label
-            htmlFor="data-privacy">
-            Data Privacy
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="digital-forensics"
-            name="digital-forensics"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital forensics" />
-          <label
-            htmlFor="digital-forensics">
-            Digital forensics
+            htmlFor="ethical-hacker">
+            Ethical Hacker
           </label>
         </div>
       </fieldset>
@@ -1394,44 +994,12 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             Delivery management
           </label>
         </div>
-        <div>
-          <input
-            checked={false}
-            id="program-management"
-            name="program-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Program management" />
-          <label
-            htmlFor="program-management">
-            Program management
-          </label>
-        </div>
       </fieldset>
       <fieldset
         className="field">
         <legend>
           Operations
         </legend>
-        <div>
-          <input
-            checked={false}
-            id="administration"
-            name="administration"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Administration" />
-          <label
-            htmlFor="administration">
-            Administration
-          </label>
-        </div>
         <div>
           <input
             checked={false}
@@ -1462,22 +1030,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           <label
             htmlFor="tech-support">
             Tech support
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="financial-analysis"
-            name="financial-analysis"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Financial analysis" />
-          <label
-            htmlFor="financial-analysis">
-            Financial analysis
           </label>
         </div>
       </fieldset>
