@@ -14,7 +14,6 @@ export default [
     label: 'Content & publishing',
     services: [
       'Content development (copywriting, translation, illustration, photography, video and animation)',
-      'Content management',
     ]
   },
   {
@@ -22,9 +21,7 @@ export default [
     label: 'Marketing, comms & engagement',
     services: [
       'Digital marketing (eg SEO, branding & marketing automation)',
-      'Communications (internal & external)',
       'Community engagement (eg social media & events)',
-      'Business development'
     ]
   },
   {
@@ -59,15 +56,7 @@ export default [
     key: 'cyber',
     label: 'Cyber security',
     services: [
-      'Information security',
-      'Architecture',
-      'Assessments (eg ethical hacker)',
-      'Penetration testing',
-      'Monitoring',
-      'Incidence response',
-      'ISM advisory',
-      'Data Privacy',
-      'Digital forensics',
+      'Ethical Hacker'
     ]
   },
   {
@@ -77,17 +66,14 @@ export default [
       'Business analysis',
       'Product management',
       'Delivery management',
-      'Program management',
     ]
   },
   {
     key: 'ops',
     label: 'Operations',
     services: [
-      'Administration',
       'Business operations',
       'Tech support',
-      'Financial analysis',
     ]
   },
   {
