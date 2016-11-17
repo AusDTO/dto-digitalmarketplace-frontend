@@ -8,9 +8,11 @@ import kebabCase            from 'lodash/kebabCase';
 import Layout               from '../../../../shared/Layout';
 import BaseForm             from '../../../../shared/form/BaseForm';
 import ErrorBox             from '../../../../shared/form/ErrorBox';
+import StatefulError        from '../../../../shared/form/StatefulError';
 import formProps            from '../../../../shared/reduxModules/formPropsSelector';
 
 import { findValidDomains } from '../../../ApplicantSignup/redux/helpers'
+import { required }         from '../../../../validators';
 
 class PricingForm extends BaseForm {
 
@@ -65,20 +67,40 @@ class PricingForm extends BaseForm {
                 <div className="row">
                   <div className="col-sm-5 col-xs-12">
                     <label htmlFor={`${kebabCase(domain)}-minprice`}>Min. Daily Price</label>
+
+                    <StatefulError
+                      model={`${model}.${domain}.minPrice`}
+                      messages={{
+                        required: `You must provide a min price for ${domain}`
+                      }}
+                      id={`${kebabCase(domain)}-minprice`}
+                    />
+
                     <Control.text 
                       type="number"
                       id={`${kebabCase(domain)}-minprice`}
                       name={`${domain}[].minPrice`}
                       model={`${model}.${domain}.minPrice`}
+                      validators={{ required }}
                     />
                   </div>
                   <div className="col-sm-push-1 col-sm-5 col-xs-12">
                     <label htmlFor={`${kebabCase(domain)}-maxprice`}>Max. Daily Price</label>
+
+                    <StatefulError
+                      model={`${model}.${domain}.maxPrice`}
+                      messages={{
+                        required: `You must provide a max price for ${domain}`
+                      }}
+                      id={`${kebabCase(domain)}-maxprice`}
+                    />
+
                     <Control.text 
                       type="number"
                       id={`${kebabCase(domain)}-maxprice`}
                       name={`${domain}[].maxPrice`}
                       model={`${model}.${domain}.maxPrice`}
+                      validators={{ required }}
                     />
                   </div>
                 </div>
