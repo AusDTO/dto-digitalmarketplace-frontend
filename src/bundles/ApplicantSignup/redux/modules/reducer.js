@@ -34,7 +34,9 @@ export default combineReducers({
     domainSelectorForm: {
       services: {}
     },
-    pricingForm: {},
+    pricingForm: {
+      pricing: {}
+    },
     caseStudyForm: {
       title: '',
       client: '',

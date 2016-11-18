@@ -61,7 +61,7 @@ class PricingForm extends BaseForm {
                     <label htmlFor={`${kebabCase(service)}-minprice`}>Min. Daily Price</label>
 
                     <StatefulError
-                      model={`${model}.${service}.minPrice`}
+                      model={`${model}.pricing.${service}.minPrice`}
                       messages={{
                         required: `You must provide a min price for ${service}`
                       }}
@@ -72,7 +72,7 @@ class PricingForm extends BaseForm {
                       type="number"
                       id={`${kebabCase(service)}-minprice`}
                       name={`services.${service}.minPrice`}
-                      model={`${model}.${service}.minPrice`}
+                      model={`${model}.pricing.${service}.minPrice`}
                       validators={{ required }}
                     />
                   </div>
@@ -80,7 +80,7 @@ class PricingForm extends BaseForm {
                     <label htmlFor={`${kebabCase(service)}-maxprice`}>Max. Daily Price</label>
 
                     <StatefulError
-                      model={`${model}.${service}.maxPrice`}
+                      model={`${model}.pricing.${service}.maxPrice`}
                       messages={{
                         required: `You must provide a max price for ${service}`
                       }}
@@ -91,7 +91,7 @@ class PricingForm extends BaseForm {
                       type="number"
                       id={`${kebabCase(service)}-maxprice`}
                       name={`services.${service}.maxPrice`}
-                      model={`${model}.${service}.maxPrice`}
+                      model={`${model}.pricing.${service}.maxPrice`}
                       validators={{ required }}
                     />
                   </div>
