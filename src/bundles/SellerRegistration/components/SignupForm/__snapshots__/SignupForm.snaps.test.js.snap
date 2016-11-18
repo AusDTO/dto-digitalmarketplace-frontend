@@ -38,6 +38,16 @@ exports[`test SignupForm renders 1`] = `
         role="button"
         type="submit"
         value="Send Email" />
+      <p>
+        <small>
+          By requesting an account invitation, you agree to the 
+          <a
+            href="/terms-of-use">
+            Terms of Use
+          </a>
+          .
+        </small>
+      </p>
     </form>
   </article>
 </div>
@@ -88,6 +98,16 @@ exports[`test SignupForm renders with form_options 1`] = `
         role="button"
         type="submit"
         value="Send Email" />
+      <p>
+        <small>
+          By requesting an account invitation, you agree to the 
+          <a
+            href="/terms-of-use">
+            Terms of Use
+          </a>
+          .
+        </small>
+      </p>
     </form>
   </article>
 </div>

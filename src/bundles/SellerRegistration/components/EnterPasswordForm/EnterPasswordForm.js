@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form } from 'react-redux-form';
+import { Form, Control } from 'react-redux-form';
 
 import { min } from '../../../../validators';
 
@@ -54,6 +54,15 @@ class EnterPasswordForm extends BaseForm {
               }}
               type="password"
             />
+
+            <div>
+              <Control.checkbox
+                model={`${model}.terms`}
+                id="terms" 
+                name="terms"
+              />
+              <label htmlFor="terms">I accept the <a href="/terms-of-use">Terms of Use</a>.</label>
+            </div>
 
             <input type="submit" value='Join the Marketplace' role="button" />
           </Form>

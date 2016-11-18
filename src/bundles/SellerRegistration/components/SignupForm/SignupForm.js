@@ -55,6 +55,11 @@ class SignupForm extends BaseForm {
             {children}
 
             <input type="submit" value='Send Email' role="button" />
+            <p>
+              <small>
+                By requesting an account invitation, you agree to the <a href="/terms-of-use">Terms of Use</a>.
+              </small>
+            </p>             
           </Form>
         </article>
       </Layout>
