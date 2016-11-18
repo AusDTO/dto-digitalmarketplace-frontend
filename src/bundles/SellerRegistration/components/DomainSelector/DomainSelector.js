@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import kebabCase from 'lodash/kebabCase';
+import isEmpty from 'lodash/isEmpty';
 
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
@@ -39,14 +40,7 @@ class DomainSelector extends BaseForm {
             method="post"
             id="DomainSelector__create"
             validators={{
-              domains: (domainList) => {
-                return !!domainList.filter(list => {
-                  return Object.keys(list).filter(domain => {
-                    return Object.keys(list[domain])
-                      .filter(service => list[domain][service]).length;
-                  }).length;
-                }).length;
-              }
+              services: (services) => !isEmpty(services)
             }}
             onSubmit={onSubmit}>
 
@@ -58,7 +52,7 @@ class DomainSelector extends BaseForm {
               let additionalProps = {}
               if (i === 0) {
                 additionalProps = {
-                  id: 'domains',
+                  id: 'services',
                   tabIndex: -1
                 }
               }
@@ -68,7 +62,7 @@ class DomainSelector extends BaseForm {
                   {services.map((service, i) => (
                     <div key={kebabCase(service)}>
                       <Control.checkbox
-                        model={`${model}.domains[0].${label}.${service}`}
+                        model={`${model}.services.${service}`}
                         id={kebabCase(service)} 
                         name={kebabCase(service)} 
                         value={service}

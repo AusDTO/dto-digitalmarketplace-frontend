@@ -48,19 +48,19 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
       <fieldset
         className="field">
         <legend>
-          User research & design
+          User research
         </legend>
         <div
           className="row">
           <div
             className="col-sm-5 col-xs-12">
             <label
-              htmlFor="user-research-design-minprice">
+              htmlFor="user-research-minprice">
               Min. Daily Price
             </label>
             <input
-              id="user-research-design-minprice"
-              name="User research & design[].minPrice"
+              id="user-research-minprice"
+              name="services.User research.minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -71,12 +71,12 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
           <div
             className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="user-research-design-maxprice">
+              htmlFor="user-research-maxprice">
               Max. Daily Price
             </label>
             <input
-              id="user-research-design-maxprice"
-              name="User research & design[].maxPrice"
+              id="user-research-maxprice"
+              name="services.User research.maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -89,19 +89,19 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
       <fieldset
         className="field">
         <legend>
-          Content & publishing
+          Content development (copywriting, translation, illustration, photography, video and animation)
         </legend>
         <div
           className="row">
           <div
             className="col-sm-5 col-xs-12">
             <label
-              htmlFor="content-publishing-minprice">
+              htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation-minprice">
               Min. Daily Price
             </label>
             <input
-              id="content-publishing-minprice"
-              name="Content & publishing[].minPrice"
+              id="content-development-copywriting-translation-illustration-photography-video-and-animation-minprice"
+              name="services.Content development (copywriting, translation, illustration, photography, video and animation).minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -112,12 +112,53 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
           <div
             className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="content-publishing-maxprice">
+              htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation-maxprice">
               Max. Daily Price
             </label>
             <input
-              id="content-publishing-maxprice"
-              name="Content & publishing[].maxPrice"
+              id="content-development-copywriting-translation-illustration-photography-video-and-animation-maxprice"
+              name="services.Content development (copywriting, translation, illustration, photography, video and animation).maxPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="number"
+              value="" />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset
+        className="field">
+        <legend>
+          Content management
+        </legend>
+        <div
+          className="row">
+          <div
+            className="col-sm-5 col-xs-12">
+            <label
+              htmlFor="content-management-minprice">
+              Min. Daily Price
+            </label>
+            <input
+              id="content-management-minprice"
+              name="services.Content management.minPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="number"
+              value="" />
+          </div>
+          <div
+            className="col-sm-push-1 col-sm-5 col-xs-12">
+            <label
+              htmlFor="content-management-maxprice">
+              Max. Daily Price
+            </label>
+            <input
+              id="content-management-maxprice"
+              name="services.Content management.maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}

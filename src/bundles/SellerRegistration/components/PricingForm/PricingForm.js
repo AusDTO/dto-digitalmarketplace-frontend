@@ -11,20 +11,17 @@ import ErrorBox             from '../../../../shared/form/ErrorBox';
 import StatefulError        from '../../../../shared/form/StatefulError';
 import formProps            from '../../../../shared/reduxModules/formPropsSelector';
 
-import { findValidDomains } from '../../../ApplicantSignup/redux/helpers'
+import { findValidServices } from '../../../ApplicantSignup/redux/helpers'
 import { required }         from '../../../../validators';
 
 class PricingForm extends BaseForm {
 
-  hasDomains() {
-    const { domainSelectorForm } = this.props;
-    const { domains } = domainSelectorForm;
-
-    return !isEmpty(findValidDomains(domains)[0]);
-  }
-
   render() {
-    if (!this.hasDomains()) {
+    const { model, action, csrf_token, domainSelectorForm, onSubmit } = this.props;
+    const { services } = domainSelectorForm;
+    let validServices = findValidServices(services);
+
+    if (isEmpty(validServices)) {
       return (
         <Layout>
           <header>
@@ -37,11 +34,6 @@ class PricingForm extends BaseForm {
         </Layout>
       )
     }
-
-    const { model, action, csrf_token, domainSelectorForm, onSubmit } = this.props;
-    const { domains } = domainSelectorForm;
-
-    let validDomains = findValidDomains(domains)[0];
 
     return (
       <Layout>
@@ -61,45 +53,45 @@ class PricingForm extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
             )}
             
-            {Object.keys(validDomains).map((domain, i) => (
-              <fieldset key={`pricing.${domain}.${i}`} className="field">
-                <legend>{domain}</legend>
+            {Object.keys(validServices).map((service, i) => (
+              <fieldset key={`pricing.${service}.${i}`} className="field">
+                <legend>{service}</legend>
                 <div className="row">
                   <div className="col-sm-5 col-xs-12">
-                    <label htmlFor={`${kebabCase(domain)}-minprice`}>Min. Daily Price</label>
+                    <label htmlFor={`${kebabCase(service)}-minprice`}>Min. Daily Price</label>
 
                     <StatefulError
-                      model={`${model}.${domain}.minPrice`}
+                      model={`${model}.${service}.minPrice`}
                       messages={{
-                        required: `You must provide a min price for ${domain}`
+                        required: `You must provide a min price for ${service}`
                       }}
-                      id={`${kebabCase(domain)}-minprice`}
+                      id={`${kebabCase(service)}-minprice`}
                     />
 
                     <Control.text 
                       type="number"
-                      id={`${kebabCase(domain)}-minprice`}
-                      name={`${domain}[].minPrice`}
-                      model={`${model}.${domain}.minPrice`}
+                      id={`${kebabCase(service)}-minprice`}
+                      name={`services.${service}.minPrice`}
+                      model={`${model}.${service}.minPrice`}
                       validators={{ required }}
                     />
                   </div>
                   <div className="col-sm-push-1 col-sm-5 col-xs-12">
-                    <label htmlFor={`${kebabCase(domain)}-maxprice`}>Max. Daily Price</label>
+                    <label htmlFor={`${kebabCase(service)}-maxprice`}>Max. Daily Price</label>
 
                     <StatefulError
-                      model={`${model}.${domain}.maxPrice`}
+                      model={`${model}.${service}.maxPrice`}
                       messages={{
-                        required: `You must provide a max price for ${domain}`
+                        required: `You must provide a max price for ${service}`
                       }}
-                      id={`${kebabCase(domain)}-maxprice`}
+                      id={`${kebabCase(service)}-maxprice`}
                     />
 
                     <Control.text 
                       type="number"
-                      id={`${kebabCase(domain)}-maxprice`}
-                      name={`${domain}[].maxPrice`}
-                      model={`${model}.${domain}.maxPrice`}
+                      id={`${kebabCase(service)}-maxprice`}
+                      name={`services.${service}.maxPrice`}
+                      model={`${model}.${service}.maxPrice`}
                       validators={{ required }}
                     />
                   </div>

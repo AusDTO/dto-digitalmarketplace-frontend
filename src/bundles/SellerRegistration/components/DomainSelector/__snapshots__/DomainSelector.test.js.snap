@@ -22,7 +22,7 @@ exports[`test DomainSelector renders 1`] = `
       <fieldset
         className="field">
         <legend
-          id="domains"
+          id="services"
           tabIndex={-1}>
           User research & design
         </legend>
@@ -612,13 +612,13 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       <fieldset
         className="field">
         <legend
-          id="domains"
+          id="services"
           tabIndex={-1}>
           User research & design
         </legend>
         <div>
           <input
-            checked={true}
+            checked={false}
             id="user-research"
             name="user-research"
             onBlur={[Function]}
@@ -688,7 +688,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         </legend>
         <div>
           <input
-            checked={true}
+            checked={false}
             id="content-development-copywriting-translation-illustration-photography-video-and-animation"
             name="content-development-copywriting-translation-illustration-photography-video-and-animation"
             onBlur={[Function]}

@@ -14,17 +14,6 @@
       "addressLine": "data_addressLine",
       "suburb": "St Ives",
       "state": "NSW"
-    },
-    "domains": [
-      {
-        "User research & design": {
-          "User research": true
-        },
-        "Content & publishing": {
-          "Content development (copywriting, translation, illustration, photography, video and animation)": true,
-          "Content management": true
-        }
-      }
-    ]
+    }
   }
 }

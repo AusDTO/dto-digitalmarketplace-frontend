@@ -32,7 +32,7 @@ export default combineReducers({
       }
     },
     domainSelectorForm: {
-      domains: []
+      services: {}
     },
     pricingForm: {},
     caseStudyForm: {

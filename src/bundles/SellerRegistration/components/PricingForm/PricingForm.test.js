@@ -33,17 +33,11 @@ test('PricingForm renders price fields when domains are present', () => {
       csrf_token: 'abc'
     },
     domainSelectorForm: {
-      domains: [
-        {
-          'User research & design': {
-            'User research': true
-          },
-          'Content & publishing': {
-            'Content development (copywriting, translation, illustration, photography, video and animation)': true,
-            'Content management': true
-          }
-        }
-      ]
+      services: {  
+        'User research': true,
+        'Content development (copywriting, translation, illustration, photography, video and animation)': true,
+        'Content management': true
+      }
     }
   });
 
