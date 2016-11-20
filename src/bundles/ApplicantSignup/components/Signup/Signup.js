@@ -15,8 +15,8 @@ import BusinessDetailsForm  from '../../../SellerRegistration/components/Busines
 import DomainSelector       from '../../../SellerRegistration/components/DomainSelector';
 import PricingForm          from '../../../SellerRegistration/components/PricingForm';
 import CaseStudyForm        from '../../../CaseStudy/components/CaseStudyForm';
-import Review 				from '../../../SellerRegistration/components/Review';
-import Submit 				from '../../../SellerRegistration/components/Submit';
+import Review               from '../../../SellerRegistration/components/Review';
+import Submit               from '../../../SellerRegistration/components/Submit';
 
 class Signup extends React.Component {
 
