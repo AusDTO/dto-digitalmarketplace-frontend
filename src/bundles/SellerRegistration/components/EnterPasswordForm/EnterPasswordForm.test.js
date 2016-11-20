@@ -31,7 +31,7 @@ test('mapStateToProps', () => {
 });
 
 test('short password', () => {
-    let store = createStore(Object.assign({}, { _serverContext: {}, enterPasswordForm: {password: 'short'} }))
+    let store = createStore(Object.assign({}, { _serverContext: {}, enterPasswordForm: {password: 'short', 'terms': 'on'} }))
     const wrapper = mount(
         <Provider store={store}>
           <EnterPasswordForm />
@@ -43,7 +43,7 @@ test('short password', () => {
 });
 
 test('valid password', () => {
-    let store = createStore(Object.assign({}, { _serverContext: {}, enterPasswordForm: {password: '0123456789'} }))
+    let store = createStore(Object.assign({}, { _serverContext: {}, enterPasswordForm: {password: '0123456789', 'terms': 'on'} }))
     const wrapper = mount(
         <Provider store={store}>
           <EnterPasswordForm />
