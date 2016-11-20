@@ -247,7 +247,7 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(6);
+  expect(steps.length).toBe(8);
 });
 
 test('filterSteps', () => {
