@@ -13,6 +13,8 @@ import Start from '../../../SellerRegistration/components/Start';
 import YourInfoForm from '../../../SellerRegistration/components/YourInfoForm';
 import BusinessDetailsForm from '../../../SellerRegistration/components/BusinessDetailsForm';
 import CaseStudyForm from '../../../CaseStudy/components/CaseStudyForm';
+import Review from '../../../SellerRegistration/components/Review';
+import Submit from '../../../SellerRegistration/components/Submit';
 
 class Signup extends React.Component {
 
@@ -29,6 +31,8 @@ class Signup extends React.Component {
     { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
     { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
+    { label: 'Review', component: Review, pattern: '/review', exact: true },
+    { label: 'Submit', component: Submit, pattern: '/submit', exact: true },
   ]
 
   elementProps = {

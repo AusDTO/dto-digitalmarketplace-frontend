@@ -42,6 +42,24 @@ exports[`test Signup renders 1`] = `
             Case Study
           </a>
         </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}
+            style={Object {}}>
+            Review
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/submit"
+            onClick={[Function]}
+            style={Object {}}>
+            Submit
+          </a>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -143,6 +161,24 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Case Study
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}
+            style={Object {}}>
+            Review
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/submit"
+            onClick={[Function]}
+            style={Object {}}>
+            Submit
           </a>
         </li>
       </ul>
@@ -332,6 +368,24 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Case Study
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}
+            style={Object {}}>
+            Review
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/submit"
+            onClick={[Function]}
+            style={Object {}}>
+            Submit
           </a>
         </li>
       </ul>
