@@ -5,7 +5,7 @@ import findIndex from 'lodash/findIndex';
 
 import NotFound from '../../../../shared/NotFound';
 
-import { getStateForms, dispatchFormState } from '../../redux/helpers';
+import { getStateForms, dispatchFormState, validForms } from '../../redux/helpers';
 import { stepNext, stepNextPersist, submitApplication } from '../../redux/modules/signup';
 
 // Step Components
@@ -27,12 +27,12 @@ class Signup extends React.Component {
   }
 
   steps = [
-    { label: 'Start', component: Start, pattern: '/start', exact: true },
-    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
-    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
-    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
-    { label: 'Review', component: Review, pattern: '/review', exact: true },
-    { label: 'Submit', component: Submit, pattern: '/submit', exact: true },
+    { label: 'Start', component: Start, pattern: '/start'},
+    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm'},
+    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm'},
+    { label: 'Review', component: Review, pattern: '/review' },
+    { label: 'Submit', component: Submit, pattern: '/submit'},
   ]
 
   elementProps = {
@@ -75,13 +75,19 @@ class Signup extends React.Component {
   }
 
   render() {
+    const { validForms } = this.props;
     return (
       <div className="row">
         <aside className="col-xs-12 col-sm-4">
           <nav className="local-nav step-navigation">
             <ul>
-              {this.steps.map(({ pattern, label }, i) => (
-                <li key={i}><Link to={pattern}>{label}</Link></li>
+              {this.steps.map(({ pattern, label, formKey }, i) => (
+                <li key={i}>
+                  <Link to={pattern}>{label}</Link>
+                  {(formKey && validForms[formKey]) && (
+                    <b>valid</b>
+                  )}
+                </li>
               ))}
             </ul>
           </nav>
@@ -89,7 +95,7 @@ class Signup extends React.Component {
         <article className="col-xs-12 col-sm-8">
           {this.steps.map(({pattern, exact, component}, i) => {
             return (
-              <Match key={i} pattern={pattern} exactly={exact} render={(routerProps) => {
+              <Match key={i} pattern={pattern} exactly render={(routerProps) => {
                 let children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
                 return React.createElement(component, Object.assign({}, routerProps, this.elementProps), children);
               }} />
@@ -116,6 +122,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     forms: getStateForms(state),
     application,
+    validForms: validForms(state),
     ...ownProps
   };
 };

@@ -1,4 +1,9 @@
-import { getStateForms, dispatchFormState, flattenStateForms } from './helpers';
+import {
+  getStateForms,
+  dispatchFormState,
+  flattenStateForms,
+  validForms
+} from './helpers';
 
 test('getStateForms with default regex', () => {
   const state = {
@@ -110,3 +115,33 @@ test('flattenStateForms', () => {
 test('flattenStateForms with no state', () => {
   expect(flattenStateForms()).toEqual({});
 });
+
+
+test('validForms', () => {
+  const state = {
+    forms: {
+      oneForm: {
+        $form: {
+          valid: true
+        }
+      },
+      twoForm: {
+        $form: {
+          valid: false
+        }
+      },
+      threeForm: {
+        $form: {
+          valid: true
+        }
+      }
+    }
+  }
+
+  const expectedResult = {
+    oneForm: true,
+    threeForm: true
+  }
+
+  expect(validForms(state)).toEqual(expectedResult);
+})
