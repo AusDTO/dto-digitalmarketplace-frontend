@@ -18,6 +18,26 @@ exports[`test SignupForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="name">
+          Your full name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="email">
           Email
         </label>
@@ -74,6 +94,26 @@ exports[`test SignupForm renders with form_options 1`] = `
         name="csrf_token"
         type="hidden"
         value="sometoken" />
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Your full name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
       <div
         className="field">
         <label

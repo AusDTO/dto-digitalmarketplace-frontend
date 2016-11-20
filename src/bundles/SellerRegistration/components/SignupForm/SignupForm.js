@@ -41,6 +41,18 @@ class SignupForm extends BaseForm {
             )}
 
             <Textfield
+              model={`${model}.name`}
+              name="name"
+              id="name"
+              htmlFor="name"
+              label="Your full name"
+              validators={{ required }}
+              messages={{
+                required: 'Name is required',
+              }}
+            />
+
+            <Textfield
               model={`${model}.email`}
               name="email"
               id="email"
