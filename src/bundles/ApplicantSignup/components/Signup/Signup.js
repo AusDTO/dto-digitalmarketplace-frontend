@@ -12,9 +12,11 @@ import { stepNext, stepNextPersist, submitApplication } from '../../redux/module
 import Start                from '../../../SellerRegistration/components/Start';
 import YourInfoForm         from '../../../SellerRegistration/components/YourInfoForm';
 import BusinessDetailsForm  from '../../../SellerRegistration/components/BusinessDetailsForm';
-import CaseStudyForm        from '../../../CaseStudy/components/CaseStudyForm';
 import DomainSelector       from '../../../SellerRegistration/components/DomainSelector';
 import PricingForm          from '../../../SellerRegistration/components/PricingForm';
+import CaseStudyForm        from '../../../CaseStudy/components/CaseStudyForm';
+import Review 				from '../../../SellerRegistration/components/Review';
+import Submit 				from '../../../SellerRegistration/components/Submit';
 
 class Signup extends React.Component {
 
@@ -33,6 +35,8 @@ class Signup extends React.Component {
     { label: 'Domains', component: DomainSelector, pattern: '/domains', exact: true },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', exact: true },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
+    { label: 'Review', component: Review, pattern: '/review', exact: true },
+    { label: 'Submit', component: Submit, pattern: '/submit', exact: true },
   ]
 
   elementProps = {

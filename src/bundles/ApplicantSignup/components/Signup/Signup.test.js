@@ -211,6 +211,8 @@ test('without filterSteps', () => {
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
   const CaseStudyForm = require('../../../CaseStudy/components/CaseStudyForm').default;
+  const Review = require('../../../SellerRegistration/components/Review').default;
+  const Submit = require('../../../SellerRegistration/components/Submit').default;
 
   delete sampleState.basename;
   let store = createStore(Object.assign({},
@@ -225,6 +227,8 @@ test('without filterSteps', () => {
     { label: 'Domains', component: DomainSelector, pattern: '/domains', exact: true },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', exact: true },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
+    { label: 'Review', component: Review, pattern: '/review', exact: true },
+    { label: 'Submit', component: Submit, pattern: '/submit', exact: true },
   ];
 
   const props = {
@@ -267,8 +271,8 @@ test('filterSteps', () => {
   ];
 
   const filterSteps = (step) => {
-    // Remove steps with patterns of /start and /case-study
-    return !step.pattern.match(/\/start|\/case-study/);
+    // Remove steps with patterns of /start and /case-study and /review and /submit
+    return !step.pattern.match(/\/start|\/case-study|\/review|\/submit/);
   }
 
   const props = {
