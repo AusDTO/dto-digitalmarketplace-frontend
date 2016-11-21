@@ -8,7 +8,7 @@ exports[`test Signup renders 1`] = `
       <ul>
         <li>
           <a
-            className=""
+            className="is-active is-current"
             href="/start"
             onClick={[Function]}
             style={Object {}}>
@@ -152,11 +152,12 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Start
+            ✓
           </a>
         </li>
         <li>
           <a
-            className=""
+            className="is-active is-current"
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
@@ -377,15 +378,17 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Start
+            ✓
           </a>
         </li>
         <li>
           <a
-            className=""
+            className="is-active is-current"
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
             Your Info
+            ✓
           </a>
         </li>
         <li>
@@ -395,6 +398,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Business Details
+            ✓
           </a>
         </li>
         <li>
@@ -457,11 +461,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
       <article
         role="main">
         <form
-          action={undefined}
+          action="https://httpbin.org/post"
           id="yourinfo"
           method="post"
           onReset={[Function]}
           onSubmit={[Function]}>
+          <input
+            id="csrf_token"
+            name="csrf_token"
+            type="hidden"
+            value="abc" />
           <div
             className="field">
             <label

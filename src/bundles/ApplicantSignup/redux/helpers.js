@@ -1,5 +1,7 @@
 import { actions } from 'react-redux-form';
 import omitBy from 'lodash/omitBy';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
 
 export const getStateForms = (state = {}, regex = /Form$/) => {
   return Object.keys(state)
@@ -22,6 +24,13 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
         }, {})
     
       dispatch(actions.merge(form, mappedFields))
+
+      // If form has values, it is assumed it's 'completed'.
+      if (!isEmpty(mappedFields)) {
+        dispatch(actions.setSubmitted(form));
+        dispatch(actions.setPristine(form));
+      }
+
       // Return what the state shape should look like.
       return { [form]: mappedFields };
     })
@@ -62,5 +71,18 @@ export const findValidServices = (services) => {
     .reduce((serviceObj, service) => {
       serviceObj[service] = true;
       return serviceObj;
+    }, {});
+}
+
+export const validForms = (state = {}) => {
+  const forms = state.forms || {}
+  return Object.keys(forms)
+    .filter(key => get(forms[key], '$form.touched'))
+    .filter(key => get(forms[key], '$form.submitted'))
+    .filter(key => get(forms[key], '$form.valid'))
+    .filter(key => get(forms[key], '$form.pristine'))
+    .reduce((valid, key) => {
+      valid[key] = true;
+      return valid;
     }, {});
 }

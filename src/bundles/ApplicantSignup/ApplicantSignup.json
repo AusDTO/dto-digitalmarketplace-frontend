@@ -1,5 +1,9 @@
 {
   "basename": "/applicant-signup.html",
+  "form_options": {
+    "action": "https://httpbin.org/post",
+    "csrf_token": "abc"
+  },
   "application": {
     "representative": "representative",
     "name": "name",
@@ -13,7 +17,8 @@
     "address": {
       "addressLine": "data_addressLine",
       "suburb": "St Ives",
-      "state": "NSW"
+      "state": "NSW",
+      "postalCode": "2000"
     }
   }
 }

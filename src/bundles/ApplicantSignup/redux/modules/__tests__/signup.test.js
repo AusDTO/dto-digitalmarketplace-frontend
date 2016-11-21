@@ -1,5 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { actionTypes } from 'react-redux-form';
 
 import reducer, {
   actions,
@@ -78,17 +79,22 @@ test('stepNextPersist action', () => {
 
   const transition = jest.fn();
   const to = '/bar/baz';
+  const step = {
+    formKey: 'fooBar'
+  }
 
   const expectedActions = [
     { type: types.APP_PRE_SUBMIT },
     { type: types.APP_SUBMIT, payload: { application: {} } },
     { type: types.APP_POST_SUBMIT },
     { type: types.STEP_PRE },
+    { type: actionTypes.SET_SUBMITTED, model: 'fooBar', submitted: true },
+    { type: actionTypes.SET_PRISTINE, model: 'fooBar' },
     { type: types.STEP_NEXT, to }
   ]
 
   const store = mockStore({});
-  return store.dispatch(actions.stepNextPersist(transition, to))
+  return store.dispatch(actions.stepNextPersist(transition, to, step))
     .then(() => { // return of async actions
       expect(store.getActions()).toEqual(expectedActions)
       expect(transition).toHaveBeenCalledTimes(1);

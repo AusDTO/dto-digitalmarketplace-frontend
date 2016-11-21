@@ -1,4 +1,10 @@
-import { getStateForms, dispatchFormState, flattenStateForms, findValidServices } from './helpers';
+import {
+  getStateForms,
+  dispatchFormState,
+  flattenStateForms,
+  findValidServices,
+  validForms
+} from './helpers';
 
 test('getStateForms with default regex', () => {
   const state = {
@@ -63,7 +69,7 @@ test('dispatchFormState dispatchs and returns correct values', () => {
   let result = dispatchFormState(dispatch, schemas, data);
 
   expect(result).toEqual(expectedResult);
-  expect(dispatch).toHaveBeenCalledTimes(1);
+  expect(dispatch).toHaveBeenCalledTimes(3);
 });
 
 test('dispatchFormState with empty schema', () => {
@@ -212,4 +218,47 @@ test('findValidServices will remove only invalid services', () => {
   };
 
   expect(findValidServices(domains)).toEqual(expectedDomains);
+});
+
+
+test('validForms', () => {
+  const state = {
+    forms: {
+      oneForm: {
+        $form: {
+          valid: true,
+          touched: true,
+          submitted: true,
+          pristine: true
+        }
+      },
+      twoForm: {
+        $form: {
+          valid: false,
+          touched: true,
+          submitted: true,
+          pristine: false
+        }
+      },
+      threeForm: {
+        $form: {
+          valid: true,
+          touched: true,
+          submitted: true,
+          pristine: true
+        }
+      }
+    }
+  }
+
+  const expectedResult = {
+    oneForm: true,
+    threeForm: true
+  }
+
+  expect(validForms(state)).toEqual(expectedResult);
+});
+
+test('validForms with no state', () => {
+  expect(validForms()).toEqual({});
 });
