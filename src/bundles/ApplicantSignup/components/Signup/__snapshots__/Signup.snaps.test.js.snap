@@ -355,7 +355,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <input
             role="button"
             type="submit"
-            value="Save &amp; Continue" />
+            value="Save & Continue" />
         </form>
       </article>
     </div>
@@ -588,7 +588,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <input
             role="button"
             type="submit"
-            value="Save &amp; Continue" />
+            value="Save & Continue" />
         </form>
       </article>
     </div>

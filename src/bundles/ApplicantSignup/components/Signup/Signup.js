@@ -112,7 +112,7 @@ class Signup extends React.Component {
                   routerProps,
                   {
                     title: label,
-                    buttonText: 'Save &amp; Continue'
+                    buttonText: 'Save & Continue'
                   },
                   this.elementProps
                 );
