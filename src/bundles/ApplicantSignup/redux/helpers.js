@@ -35,9 +35,22 @@ export const flattenStateForms = (state = {}) => {
     }, {});
 
   if (flatState.services) {
-    return Object.assign({}, flatState, {
+    flatState = Object.assign({}, flatState, {
       services: omitBy(flatState.services, (service) => !service)
     });  
+  }
+
+  if (flatState.pricing) {
+    const { services } = flatState;
+    let pricing = Object.keys(flatState.pricing)
+      // Ensure service is still selected, otherwise omit.
+      .filter(key => services[key])
+      .reduce((prices, key) => {
+        prices[key] = flatState.pricing[key]
+        return prices;
+      }, {})
+
+    flatState = Object.assign({}, flatState, { pricing });
   }
 
   return flatState;

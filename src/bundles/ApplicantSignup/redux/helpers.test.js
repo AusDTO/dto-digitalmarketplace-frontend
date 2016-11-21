@@ -107,6 +107,75 @@ test('flattenStateForms', () => {
   expect(flattenStateForms(state)).toEqual(expectedResult);
 });
 
+test('flattenStateForms with services', () => {
+  const state = {
+    firstForm: {
+      services: {
+        service1: true,
+        service2: true,
+        service3: false,
+        service4: true
+      }
+    }
+  };
+
+  const expectedResult = {
+    services: {
+      service1: true,
+      service2: true,
+      service4: true
+    }
+  };
+
+  expect(flattenStateForms(state)).toEqual(expectedResult);
+})
+
+test('flattenStateForms with pricing', () => {
+  const state = {
+    firstForm: {
+      services: {
+        service1: true,
+        service3: true
+      }
+    },
+    secondForm: {
+      pricing: {
+        service1: {
+          minPrice: 40,
+          maxPrice: 50
+        },
+        service2: {
+          minPrice: 40,
+          maxPrice: 70
+        },
+        service3: {
+          minPrice: 100,
+          maxPrice: 120
+        }
+      }
+    }
+  };
+
+  const expectedResult = {
+    services: {
+      service1: true,
+      service3: true,
+    },
+    pricing: {
+      service1: {
+        minPrice: 40,
+        maxPrice: 50
+      },
+      service3: {
+        minPrice: 100,
+        maxPrice: 120
+      }
+    }
+  };
+
+  expect(flattenStateForms(state)).toEqual(expectedResult);
+})
+
 test('flattenStateForms with no state', () => {
   expect(flattenStateForms()).toEqual({});
 });
