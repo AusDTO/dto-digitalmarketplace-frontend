@@ -20,11 +20,11 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, children, onSubmit } = this.props;
+    const { action, csrf_token, model, form, title, buttonText, children, onSubmit } = this.props;
     return (
       <Layout>
         <header>
-          <h1>{'Your Information'}</h1>
+          <h1>{title || 'Your Information'}</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -103,12 +103,16 @@ class YourInfoForm extends BaseForm {
 
             {children}
 
-            <input type="submit" value={'Save & Continue'} role="button" />
+            <input type="submit" value={buttonText} role="button" />
           </Form>
         </article>
       </Layout>
     )
   }
+}
+
+YourInfoForm.defaultProps = {
+  buttonText: 'Save & Continue'
 }
 
 const mapStateToProps = (state) => {
