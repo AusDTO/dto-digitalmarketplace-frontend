@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {flattenStateForms} from '../../ApplicantSignup/redux/helpers.js'
 
-const Review = ({submit, deed, onClick, data}) => (
+const Review = ({submit, onClick, data}) => (
     <div>
         <div className="callout--calendar-event">
             <h3>Review your profile</h3>
@@ -34,7 +34,6 @@ const Review = ({submit, deed, onClick, data}) => (
             }
             <li>
                 <p>Company Details</p>
-                <figure></figure>
                 <article>
                     <p>
                         <strong>ABN</strong><br/>
@@ -58,7 +57,6 @@ const Review = ({submit, deed, onClick, data}) => (
             </li>
             <li>
                 <p>Address</p>
-                <figure></figure>
                 <article>
                     <p>
                         { data.address.addressLine }<br/>
