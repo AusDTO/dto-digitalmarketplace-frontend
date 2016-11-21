@@ -80,20 +80,20 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { validForms } = this.props;
+    const { validForms = {} } = this.props;
     return (
       <div className="row">
         <aside className="col-xs-12 col-sm-4">
           <nav className="local-nav step-navigation">
             <ul>
-              {this.steps.map(({ pattern, label, formKey }, i) => (
-                <li key={i}>
-                  <Link to={pattern}>{label}</Link>
-                  {(formKey && validForms[formKey]) && (
-                    <b>valid</b>
-                  )}
-                </li>
-              ))}
+              {this.steps.map(({ pattern, label, formKey }, i) => {
+                const isValid = formKey && validForms[formKey];
+                return (
+                  <li key={i}>
+                    <Link to={pattern}>{label}{isValid && '\u2713'}</Link>
+                  </li>
+                )
+              })}
             </ul>
           </nav>
         </aside>

@@ -386,6 +386,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Your Info
+            ✓
           </a>
         </li>
         <li>
@@ -395,6 +396,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Business Details
+            ✓
           </a>
         </li>
         <li>

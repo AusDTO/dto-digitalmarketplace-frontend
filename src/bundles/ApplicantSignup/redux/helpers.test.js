@@ -69,7 +69,7 @@ test('dispatchFormState dispatchs and returns correct values', () => {
   let result = dispatchFormState(dispatch, schemas, data);
 
   expect(result).toEqual(expectedResult);
-  expect(dispatch).toHaveBeenCalledTimes(1);
+  expect(dispatch).toHaveBeenCalledTimes(2);
 });
 
 test('dispatchFormState with empty schema', () => {
@@ -226,17 +226,23 @@ test('validForms', () => {
     forms: {
       oneForm: {
         $form: {
-          valid: true
+          valid: true,
+          touched: true,
+          submitted: true
         }
       },
       twoForm: {
         $form: {
-          valid: false
+          valid: false,
+          touched: true,
+          submitted: true
         }
       },
       threeForm: {
         $form: {
-          valid: true
+          valid: true,
+          touched: true,
+          submitted: true
         }
       }
     }
