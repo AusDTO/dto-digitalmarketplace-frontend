@@ -1,4 +1,5 @@
 import { flattenStateForms } from '../helpers';
+import { actions } from 'react-redux-form';
 
 const STEP_NEXT = 'step/next';
 const STEP_PRE = 'step/pre';
@@ -52,10 +53,11 @@ export const submitApplication = () => {
   }
 };
 
-export const stepNextPersist = (transition, to) => {
+export const stepNextPersist = (transition, to, step) => {
   return (dispatch) => {
     return dispatch(submitApplication())
       .then(() => dispatch(preStep()))
+      .then(() => dispatch(actions.setSubmitted(step.formKey)))
       .then(() => dispatch(nextStep(to)))
       .then(() => transition(to));
   }
@@ -70,7 +72,7 @@ const constants = {
   APP_PRE_SUBMIT
 };
 
-const actions = {
+const actionCreators = {
   preSubmit,
   postSubmit,
   submit,
@@ -83,5 +85,5 @@ const actions = {
 
 export {
   constants,
-  actions
+  actionCreators as actions
 }

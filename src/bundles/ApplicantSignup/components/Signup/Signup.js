@@ -44,7 +44,7 @@ class Signup extends React.Component {
       e.preventDefault();
       const { dispatch, router } = this.props;
 
-      dispatch(stepNext(router.transitionTo, this.nextStep.pattern))
+      dispatch(stepNext(router.transitionTo, this.nextStep.pattern, this.step))
     },
     onSubmit: (e) => {
       if (e && 'preventDefault' in e) {
@@ -58,19 +58,20 @@ class Signup extends React.Component {
         return;
       }
 
-      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern));
+      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern, this.step));
     },
   }
 
-  get nextStep () {
+  get step() {
     const { location } = this.props;
     let idx = findIndex(this.steps, { pattern: location.pathname });
-    let nextStep = this.steps[idx + 1];
-    if (!nextStep) {
-      // What happens here? Navigate to another page?
-    }
+    return this.steps[idx];
+  }
 
-    return nextStep;
+  get nextStep() {
+    const { location } = this.props;
+    let idx = findIndex(this.steps, { pattern: location.pathname });
+    return this.steps[idx + 1];
   }
 
   componentWillMount() {
