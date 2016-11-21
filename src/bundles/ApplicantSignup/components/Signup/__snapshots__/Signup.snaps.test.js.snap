@@ -36,6 +36,24 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/domains"
+            onClick={[Function]}
+            style={Object {}}>
+            Domains
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/pricing"
+            onClick={[Function]}
+            style={Object {}}>
+            Pricing
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/case-study"
             onClick={[Function]}
             style={Object {}}>
@@ -152,6 +170,24 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Business Details
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/domains"
+            onClick={[Function]}
+            style={Object {}}>
+            Domains
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/pricing"
+            onClick={[Function]}
+            style={Object {}}>
+            Pricing
           </a>
         </li>
         <li>
@@ -359,6 +395,24 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Business Details
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/domains"
+            onClick={[Function]}
+            style={Object {}}>
+            Domains
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/pricing"
+            onClick={[Function]}
+            style={Object {}}>
+            Pricing
           </a>
         </li>
         <li>

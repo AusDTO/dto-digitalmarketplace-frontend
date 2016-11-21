@@ -2,11 +2,11 @@ const MESSAGE = 'error/message'
 const REMOVE = 'error/remove'
 
 export default function reducer(state = {}, action = {}) {
-  const { type, key, value } = action
+  const { type, key, value, id } = action
   switch (type) {
     case MESSAGE:
       return Object.assign({}, state, {
-        [key]: value
+        [key]: Object.assign({}, value, { id })
       });
     case REMOVE:
       return Object.keys(state)
@@ -20,5 +20,5 @@ export default function reducer(state = {}, action = {}) {
   }
 }
 
-export const addMessage = (key, value) => ({ type: MESSAGE, key, value })
+export const addMessage = (key, value, id) => ({ type: MESSAGE, key, value, id })
 export const removeMessage = (key) => ({ type: REMOVE, key })
