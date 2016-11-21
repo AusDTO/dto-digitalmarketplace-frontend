@@ -1,0 +1,154 @@
+exports[`test SignupForm renders 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Create a Seller Account
+    </h1>
+  </header>
+  <article
+    role="main">
+    <form
+      action={undefined}
+      id="signup"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Your full name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <input
+        role="button"
+        type="submit"
+        value="Send Email" />
+      <p>
+        <small>
+          By requesting an account invitation, you agree to the 
+          <a
+            href="/terms-of-use">
+            Terms of Use
+          </a>
+          .
+        </small>
+      </p>
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test SignupForm renders with form_options 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Create a Seller Account
+    </h1>
+  </header>
+  <article
+    role="main">
+    <form
+      action="/foo/bar"
+      id="signup"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <input
+        id="csrf_token"
+        name="csrf_token"
+        type="hidden"
+        value="sometoken" />
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Your full name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="name"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <input
+        role="button"
+        type="submit"
+        value="Send Email" />
+      <p>
+        <small>
+          By requesting an account invitation, you agree to the 
+          <a
+            href="/terms-of-use">
+            Terms of Use
+          </a>
+          .
+        </small>
+      </p>
+    </form>
+  </article>
+</div>
+`;

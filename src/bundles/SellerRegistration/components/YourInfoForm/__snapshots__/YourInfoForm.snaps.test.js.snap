@@ -3,7 +3,7 @@ exports[`test YourInfoForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Create a Seller Account
+      Your Information
     </h1>
   </header>
   <article
@@ -127,7 +127,7 @@ exports[`test YourInfoForm renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Continue" />
+        value="Save & Continue" />
     </form>
   </article>
 </div>
@@ -278,7 +278,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Create a Seller Account
+      Your Information
     </h1>
   </header>
   <article
@@ -407,7 +407,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
       <input
         role="button"
         type="submit"
-        value="Continue" />
+        value="Save & Continue" />
     </form>
   </article>
 </div>
