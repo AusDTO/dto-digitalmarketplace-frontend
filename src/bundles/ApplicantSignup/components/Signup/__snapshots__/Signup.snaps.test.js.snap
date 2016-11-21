@@ -8,7 +8,7 @@ exports[`test Signup renders 1`] = `
       <ul>
         <li>
           <a
-            className=""
+            className="is-active is-current"
             href="/start"
             onClick={[Function]}
             style={Object {}}>
@@ -152,11 +152,12 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Start
+            ✓
           </a>
         </li>
         <li>
           <a
-            className=""
+            className="is-active is-current"
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
@@ -377,11 +378,12 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Start
+            ✓
           </a>
         </li>
         <li>
           <a
-            className=""
+            className="is-active is-current"
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
