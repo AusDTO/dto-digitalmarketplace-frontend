@@ -62,16 +62,17 @@ class Signup extends React.Component {
     },
   }
 
-  get step() {
+  get currentStepIndex() {
     const { location } = this.props;
-    let idx = findIndex(this.steps, { pattern: location.pathname });
-    return this.steps[idx];
+    return findIndex(this.steps, { pattern: location.pathname });
+  }
+
+  get step() {
+    return this.steps[this.currentStepIndex];
   }
 
   get nextStep() {
-    const { location } = this.props;
-    let idx = findIndex(this.steps, { pattern: location.pathname });
-    return this.steps[idx + 1];
+    return this.steps[this.currentStepIndex + 1];
   }
 
   componentWillMount() {
@@ -81,16 +82,21 @@ class Signup extends React.Component {
 
   render() {
     const { validForms = {} } = this.props;
+    const currentStepIdx = this.currentStepIndex;
     return (
       <div className="row">
         <aside className="col-xs-12 col-sm-4">
           <nav className="local-nav step-navigation">
             <ul>
               {this.steps.map(({ pattern, label, formKey }, i) => {
-                const isValid = formKey && validForms[formKey];
+                let isValid = formKey && validForms[formKey];
+                // If a step doesnt have a formKey and we've passed it, tick it!
+                if (!formKey && currentStepIdx > i) {
+                  isValid = true;
+                }
                 return (
                   <li key={i}>
-                    <Link to={pattern}>{label}{isValid && '\u2713'}</Link>
+                    <Link activeClassName="is-active is-current" to={pattern}>{label}{isValid && '\u2713'}</Link>
                   </li>
                 )
               })}
