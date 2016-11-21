@@ -223,14 +223,14 @@ test('without filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Start', component: Start, pattern: '/start', exact: true },
-    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
-    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
-    { label: 'Domains', component: DomainSelector, pattern: '/domains', exact: true },
-    { label: 'Pricing', component: PricingForm, pattern: '/pricing', exact: true },
-    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
-    { label: 'Review', component: Review, pattern: '/review', exact: true },
-    { label: 'Submit', component: Submit, pattern: '/submit', exact: true },
+    { label: 'Start', component: Start, pattern: '/start' },
+    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { label: 'Domains', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { label: 'Review', component: Review, pattern: '/review' },
+    { label: 'Submit', component: Submit, pattern: '/submit' },
   ];
 
   const props = {
@@ -266,10 +266,10 @@ test('filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
-    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
-    { label: 'Domains', component: DomainSelector, pattern: '/domains', exact: true },
-    { label: 'Pricing', component: PricingForm, pattern: '/pricing', exact: true },
+    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { label: 'Domains', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
   ];
 
   const filterSteps = (step) => {
