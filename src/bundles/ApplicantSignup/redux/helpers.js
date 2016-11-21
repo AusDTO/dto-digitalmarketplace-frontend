@@ -1,4 +1,5 @@
 import { actions } from 'react-redux-form';
+import omitBy from 'lodash/omitBy';
 import get from 'lodash/get';
 
 export const getStateForms = (state = {}, regex = /Form$/) => {
@@ -29,9 +30,39 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
 
 export const flattenStateForms = (state = {}) => {
   const forms = getStateForms(state);
-  return Object.keys(forms)
+  let flatState = Object.keys(forms)
     .reduce((flat, key) => {
       return Object.assign({}, flat, forms[key])
+    }, {});
+
+  if (flatState.services) {
+    flatState = Object.assign({}, flatState, {
+      services: omitBy(flatState.services, (service) => !service)
+    });  
+  }
+
+  if (flatState.pricing) {
+    const { services } = flatState;
+    let pricing = Object.keys(flatState.pricing)
+      // Ensure service is still selected, otherwise omit.
+      .filter(key => services[key])
+      .reduce((prices, key) => {
+        prices[key] = flatState.pricing[key]
+        return prices;
+      }, {})
+
+    flatState = Object.assign({}, flatState, { pricing });
+  }
+
+  return flatState;
+}
+
+export const findValidServices = (services) => {
+  return Object.keys(services)
+    .filter(service => services[service])
+    .reduce((serviceObj, service) => {
+      serviceObj[service] = true;
+      return serviceObj;
     }, {});
 }
 

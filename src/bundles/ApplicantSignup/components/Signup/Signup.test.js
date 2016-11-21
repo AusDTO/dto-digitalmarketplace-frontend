@@ -29,7 +29,8 @@ test('mapStateToProps with application', () => {
     },
     application: {
       bar: 'baz'
-    }
+    },
+    validForms: {}
   };
 
   expect(mapStateToProps(state)).toEqual(expectedProps);
@@ -49,7 +50,8 @@ test('mapStateToProps without application', () => {
         foo: 'bar'
       }
     },
-    application: {}
+    application: {},
+    validForms: {}
   };
 
   expect(mapStateToProps(state)).toEqual(expectedProps);
@@ -208,6 +210,8 @@ test('without filterSteps', () => {
   const Start = require('../../../SellerRegistration/components/Start').default;
   const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
+  const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
+  const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
   const CaseStudyForm = require('../../../CaseStudy/components/CaseStudyForm').default;
   const Review = require('../../../SellerRegistration/components/Review').default;
   const Submit = require('../../../SellerRegistration/components/Submit').default;
@@ -222,6 +226,8 @@ test('without filterSteps', () => {
     { label: 'Start', component: Start, pattern: '/start', exact: true },
     { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
     { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
+    { label: 'Domains', component: DomainSelector, pattern: '/domains', exact: true },
+    { label: 'Pricing', component: PricingForm, pattern: '/pricing', exact: true },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', exact: true },
     { label: 'Review', component: Review, pattern: '/review', exact: true },
     { label: 'Submit', component: Submit, pattern: '/submit', exact: true },
@@ -243,13 +249,15 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(6);
+  expect(steps.length).toBe(8);
 });
 
 test('filterSteps', () => {
 
   const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
+  const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
+  const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
 
   delete sampleState.basename;
   let store = createStore(Object.assign({},
@@ -260,6 +268,8 @@ test('filterSteps', () => {
   const expectedSteps = [
     { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', exact: true },
     { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', exact: true },
+    { label: 'Domains', component: DomainSelector, pattern: '/domains', exact: true },
+    { label: 'Pricing', component: PricingForm, pattern: '/pricing', exact: true },
   ];
 
   const filterSteps = (step) => {
@@ -284,7 +294,7 @@ test('filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(2);
+  expect(steps.length).toBe(4);
 });
 
 
