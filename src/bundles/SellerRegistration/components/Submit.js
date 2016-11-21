@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 const Submit = ({submitUrl, onClick}) => (
     <div>
@@ -32,4 +33,14 @@ Submit.propTypes = {
     onClick: React.PropTypes.func
 };
 
-export default Submit;
+const mapStateToProps = (state) => {
+    return {
+        submitUrl: state.form_options.submit_url
+    }
+}
+
+export {
+    mapStateToProps
+}
+
+export default connect(mapStateToProps)(Submit);
