@@ -184,7 +184,7 @@ test('elementProps onSubmit with no steps left', () => {
 
   const props = {
     location: {
-      pathname: '/case-study'
+      pathname: '/submit'
     },
     router: {
       transitionTo

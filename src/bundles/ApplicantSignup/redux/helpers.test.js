@@ -254,4 +254,8 @@ test('validForms', () => {
   }
 
   expect(validForms(state)).toEqual(expectedResult);
-})
+});
+
+test('validForms with no state', () => {
+  expect(validForms()).toEqual({});
+});
