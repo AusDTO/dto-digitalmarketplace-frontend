@@ -12,7 +12,7 @@ exports[`test Signup renders 1`] = `
             href="/start"
             onClick={[Function]}
             style={Object {}}>
-            Start
+            Become a seller
           </a>
         </li>
         <li>
@@ -21,7 +21,7 @@ exports[`test Signup renders 1`] = `
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
-            Your Info
+            Business representative
           </a>
         </li>
         <li>
@@ -30,7 +30,7 @@ exports[`test Signup renders 1`] = `
             href="/business-details"
             onClick={[Function]}
             style={Object {}}>
-            Business Details
+            Create your profile
           </a>
         </li>
         <li>
@@ -39,7 +39,7 @@ exports[`test Signup renders 1`] = `
             href="/domains"
             onClick={[Function]}
             style={Object {}}>
-            Domains
+            Digital Services
           </a>
         </li>
         <li>
@@ -66,7 +66,7 @@ exports[`test Signup renders 1`] = `
             href="/review"
             onClick={[Function]}
             style={Object {}}>
-            Review
+            Review your profile
           </a>
         </li>
         <li>
@@ -151,7 +151,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/start"
             onClick={[Function]}
             style={Object {}}>
-            Start
+            Become a seller
             ✓
           </a>
         </li>
@@ -161,7 +161,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
-            Your Info
+            Business representative
           </a>
         </li>
         <li>
@@ -170,7 +170,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/business-details"
             onClick={[Function]}
             style={Object {}}>
-            Business Details
+            Create your profile
           </a>
         </li>
         <li>
@@ -179,7 +179,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/domains"
             onClick={[Function]}
             style={Object {}}>
-            Domains
+            Digital Services
           </a>
         </li>
         <li>
@@ -206,7 +206,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/review"
             onClick={[Function]}
             style={Object {}}>
-            Review
+            Review your profile
           </a>
         </li>
         <li>
@@ -227,7 +227,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       className="layout">
       <header>
         <h1>
-          Your Information
+          Business representative
         </h1>
       </header>
       <article
@@ -355,7 +355,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <input
             role="button"
             type="submit"
-            value="Save & Continue" />
+            value="Save &amp; Continue" />
         </form>
       </article>
     </div>
@@ -377,7 +377,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/start"
             onClick={[Function]}
             style={Object {}}>
-            Start
+            Become a seller
             ✓
           </a>
         </li>
@@ -387,7 +387,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
-            Your Info
+            Business representative
             ✓
           </a>
         </li>
@@ -397,7 +397,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/business-details"
             onClick={[Function]}
             style={Object {}}>
-            Business Details
+            Create your profile
             ✓
           </a>
         </li>
@@ -407,7 +407,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/domains"
             onClick={[Function]}
             style={Object {}}>
-            Domains
+            Digital Services
           </a>
         </li>
         <li>
@@ -434,7 +434,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/review"
             onClick={[Function]}
             style={Object {}}>
-            Review
+            Review your profile
           </a>
         </li>
         <li>
@@ -455,7 +455,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
       className="layout">
       <header>
         <h1>
-          Your Information
+          Business representative
         </h1>
       </header>
       <article
@@ -588,7 +588,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <input
             role="button"
             type="submit"
-            value="Save & Continue" />
+            value="Save &amp; Continue" />
         </form>
       </article>
     </div>

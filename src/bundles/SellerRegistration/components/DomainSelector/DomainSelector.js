@@ -81,7 +81,7 @@ class DomainSelector extends BaseForm {
   }
 }
 
-DomainSelector.propTypes = {
+DomainSelector.defaultProps = {
   buttonText: 'Save &amp; Continue'
 }
 

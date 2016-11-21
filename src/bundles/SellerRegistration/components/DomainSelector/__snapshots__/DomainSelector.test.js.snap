@@ -582,7 +582,7 @@ exports[`test DomainSelector renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save &amp; Continue" />
     </form>
   </article>
 </div>
@@ -1172,7 +1172,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save &amp; Continue" />
     </form>
   </article>
 </div>

@@ -223,13 +223,13 @@ test('without filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Start', component: Start, pattern: '/start' },
-    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Domains', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { label: 'Become a seller', component: Start, pattern: '/start' },
+    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { label: 'Review', component: Review, pattern: '/review' },
+    { label: 'Review your profile', component: Review, pattern: '/review' },
     { label: 'Submit', component: Submit, pattern: '/submit' },
   ];
 
@@ -266,9 +266,9 @@ test('filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Domains', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
   ];
 

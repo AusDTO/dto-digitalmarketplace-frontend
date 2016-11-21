@@ -32,7 +32,7 @@ class Signup extends React.Component {
     { label: 'Become a seller', component: Start, pattern: '/start' },
     { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Digital Services  ', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm' },
     { label: 'Review your profile', component: Review, pattern: '/review' },
@@ -112,7 +112,7 @@ class Signup extends React.Component {
                   routerProps,
                   {
                     title: label,
-                    buttonText: 'Save & Continue'
+                    buttonText: 'Save &amp; Continue'
                   },
                   this.elementProps
                 );
