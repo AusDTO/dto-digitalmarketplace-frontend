@@ -15,6 +15,23 @@ const Review = ({submit, deed, onClick, data}) => (
         <p>{data.summary}</p>
         <hr/>
         <ul className="list-horizontal">
+            {data.services &&
+                <li>
+                    <p>Seller capabilities</p>
+                    <article>
+                        <footer className="tags">
+                            <dl className="visually-hidden">
+                                <dt>Capabilities</dt>
+                            </dl>
+                            {Object.keys(data.services).map((key, val) =>
+                                <dd key={val}>
+                                    <a className="disabled">{key}</a>
+                                </dd>
+                            )}
+                        </footer>
+                    </article>
+                </li>
+            }
             <li>
                 <p>Company Details</p>
                 <figure></figure>
@@ -24,17 +41,19 @@ const Review = ({submit, deed, onClick, data}) => (
                         { data.abn }
                     </p>
 
-                    {data.website ?
-                    <p>
-                        <strong>Website</strong><br/>
-                        <a href={data.website} target="_blank" rel="external">{ data.website }</a>
-                    </p>: null}
+                    {data.website &&
+                        <p>
+                            <strong>Website</strong><br/>
+                            <a href={data.website} target="_blank" rel="external">{ data.website }</a>
+                        </p>
+                    }
 
-                    {data.linkedin ?
-                    <p>
-                        <strong>LinkedIn</strong><br/>
-                        <a href={data.linkedin} target="_blank" rel="external">{ data.linkedin }</a>
-                    </p>: null}
+                    {data.linkedin &&
+                        <p>
+                            <strong>LinkedIn</strong><br/>
+                            <a href={data.linkedin} target="_blank" rel="external">{ data.linkedin }</a>
+                        </p>
+                    }
                 </article>
             </li>
             <li>
@@ -48,6 +67,30 @@ const Review = ({submit, deed, onClick, data}) => (
                     </p>
                 </article>
             </li>
+            {data.pricing &&
+                <li>
+                    <p>Rate card</p>
+
+                    <article>
+                        <table className="content-table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Roles</th>
+                                <th scope="col">Day rates</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {Object.keys(data.pricing).map((key, val) =>
+                                <tr key={val}>
+                                    <th scope="row">{key}</th>
+                                    <td>{data.pricing[key].minPrice } - {data.pricing[key].maxPrice}</td>
+                                </tr>
+                            )}
+                            </tbody>
+                        </table>
+                    </article>
+                </li>
+            }
         </ul>
         <p>
             <a role="button" href={submit} onClick={onClick}>Save & Continue</a>
