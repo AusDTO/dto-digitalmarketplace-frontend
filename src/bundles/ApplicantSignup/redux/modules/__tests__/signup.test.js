@@ -89,6 +89,7 @@ test('stepNextPersist action', () => {
     { type: types.APP_POST_SUBMIT },
     { type: types.STEP_PRE },
     { type: actionTypes.SET_SUBMITTED, model: 'fooBar', submitted: true },
+    { type: actionTypes.SET_PRISTINE, model: 'fooBar' },
     { type: types.STEP_NEXT, to }
   ]
 
