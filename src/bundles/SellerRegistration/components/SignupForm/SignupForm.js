@@ -11,7 +11,7 @@ import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
-class YourInfoForm extends BaseForm {
+class SignupForm extends BaseForm {
 
   static propTypes = {
     action: React.PropTypes.string,
@@ -24,14 +24,14 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1>{'Your Information'}</h1>
+          <h1>{'Create a Seller Account'}</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
           <Form model={model}
             action={action}
             method="post"
-            id="yourinfo"
+            id="signup"
             component={SubmitForm}
             valid={form.valid}
             onCustomSubmit={onSubmit}
@@ -41,51 +41,14 @@ class YourInfoForm extends BaseForm {
             )}
 
             <Textfield
-              model={`${model}.representative`}
-              name="representative"
-              id="representative"
-              htmlFor="representative"
-              label="Company Representative"
-              description="The authorised person who signs contracts with clients"
-              validators={{ required }}
-              messages={{
-                required: 'Company representative is required',
-              }}
-            />
-
-            <Textfield
               model={`${model}.name`}
               name="name"
               id="name"
               htmlFor="name"
-              label="Company Name"
-              description="As you would like it displayed on the Marketplace"
+              label="Your full name"
               validators={{ required }}
               messages={{
-                required: 'Company name is required',
-              }} />
-
-            <Textfield
-              model={`${model}.abn`}
-              name="abn"
-              id="abn"
-              htmlFor="abn"
-              label="ABN"
-              validators={{ required }}
-              messages={{
-                required: 'ABN is required',
-              }}
-            />
-
-            <Textfield
-              model={`${model}.phone`}
-              name="phone"
-              id="phone"
-              htmlFor="phone"
-              label="Phone"
-              validators={{ required }}
-              messages={{
-                required: 'Phone is required',
+                required: 'Name is required',
               }}
             />
 
@@ -103,7 +66,12 @@ class YourInfoForm extends BaseForm {
 
             {children}
 
-            <input type="submit" value={'Save & Continue'} role="button" />
+            <input type="submit" value='Send Email' role="button" />
+            <p>
+              <small>
+                By requesting an account invitation, you agree to the <a href="/terms-of-use">Terms of Use</a>.
+              </small>
+            </p>             
           </Form>
         </article>
       </Layout>
@@ -113,14 +81,14 @@ class YourInfoForm extends BaseForm {
 
 const mapStateToProps = (state) => {
   return {
-    ...formProps(state, 'yourInfoForm')
+    ...formProps(state, 'signupForm')
   }
 }
 
 export {
   Textfield,
   mapStateToProps,
-  YourInfoForm as Form
+  SignupForm as Form
 }
 
-export default connect(mapStateToProps)(YourInfoForm);
+export default connect(mapStateToProps)(SignupForm);

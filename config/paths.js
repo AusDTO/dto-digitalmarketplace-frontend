@@ -48,7 +48,8 @@ module.exports = {
     'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')],
     'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')],
     'applicant-signup': [resolveApp('src/bundles/ApplicantSignup/ApplicantSignupWidget')],
-    'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')]
+    'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')],
+    'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
