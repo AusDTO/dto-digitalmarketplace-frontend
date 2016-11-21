@@ -1,4 +1,4 @@
-import { getStateForms, dispatchFormState, flattenStateForms } from './helpers';
+import { getStateForms, dispatchFormState, flattenStateForms, findValidServices } from './helpers';
 
 test('getStateForms with default regex', () => {
   const state = {
@@ -107,6 +107,109 @@ test('flattenStateForms', () => {
   expect(flattenStateForms(state)).toEqual(expectedResult);
 });
 
+test('flattenStateForms with services', () => {
+  const state = {
+    firstForm: {
+      services: {
+        service1: true,
+        service2: true,
+        service3: false,
+        service4: true
+      }
+    }
+  };
+
+  const expectedResult = {
+    services: {
+      service1: true,
+      service2: true,
+      service4: true
+    }
+  };
+
+  expect(flattenStateForms(state)).toEqual(expectedResult);
+})
+
+test('flattenStateForms with pricing', () => {
+  const state = {
+    firstForm: {
+      services: {
+        service1: true,
+        service3: true
+      }
+    },
+    secondForm: {
+      pricing: {
+        service1: {
+          minPrice: 40,
+          maxPrice: 50
+        },
+        service2: {
+          minPrice: 40,
+          maxPrice: 70
+        },
+        service3: {
+          minPrice: 100,
+          maxPrice: 120
+        }
+      }
+    }
+  };
+
+  const expectedResult = {
+    services: {
+      service1: true,
+      service3: true,
+    },
+    pricing: {
+      service1: {
+        minPrice: 40,
+        maxPrice: 50
+      },
+      service3: {
+        minPrice: 100,
+        maxPrice: 120
+      }
+    }
+  };
+
+  expect(flattenStateForms(state)).toEqual(expectedResult);
+})
+
 test('flattenStateForms with no state', () => {
   expect(flattenStateForms()).toEqual({});
+});
+
+test('findValidServices will remove top level key with no valid services', () => {
+
+  const domains = {
+    "User research": false,
+    "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+    "Content management": true
+  };
+
+  const expectedDomains = {
+    "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+    "Content management": true
+  };
+
+  expect(findValidServices(domains)).toEqual(expectedDomains);
+});
+
+test('findValidServices will remove only invalid services', () => {
+
+  const domains = {
+    "User research": false,
+    "Random Key": true,
+    "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+    "Content management": true
+  };
+
+  const expectedDomains = {
+    "Random Key": true,
+    "Content development (copywriting, translation, illustration, photography, video and animation)": true,
+    "Content management": true
+  };
+
+  expect(findValidServices(domains)).toEqual(expectedDomains);
 });

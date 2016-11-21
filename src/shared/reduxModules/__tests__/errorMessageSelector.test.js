@@ -135,6 +135,30 @@ test('mapErrorMessages returns an empty array if the form doesnt exist', () => {
   expect(mapErrorMessages(void 0)).toEqual([]);
 });
 
+test('mapErrorMessages gets errors for an array set', () => {
+  const form = {
+    modelName: {
+      arrayProp: {
+        $form: {
+          errors: true
+        }
+      }
+    }
+  }
+
+  const messages = {
+    'modelName.arrayProp': {
+      'arrayProp': 'You must provide a value for at least one item!'
+    }
+  }
+
+  const errorMap = [
+    { id: 'arrayProp', messages: ['You must provide a value for at least one item!'] }
+  ];
+
+  expect(mapErrorMessages(form, messages, 'modelName')).toEqual(errorMap);
+});
+
 test('getForms return values', () => {
   const state = {
     forms: {
