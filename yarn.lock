@@ -5049,9 +5049,9 @@ react-dom@15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
 
-react-redux-form:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.2.2.tgz#138d1d4229d8cb2f6e62d7088c112edf2cd83956"
+react-redux-form@1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.2.4.tgz#924c5ac06dd52f21efc961df6aed9c10bfe27de9"
   dependencies:
     icepick "^1.1.0"
     invariant "~2.2.1"
@@ -6214,13 +6214,9 @@ whatwg-encoding@^1.0.1:
   dependencies:
     iconv-lite "0.4.13"
 
-whatwg-fetch@2.0.0:
+whatwg-fetch@2.0.0, whatwg-fetch@>=0.10.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.0.tgz#cde428ac2b1dab717c96bc6785feb557619b249e"
-
-whatwg-fetch@>=0.10.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-1.0.0.tgz#01c2ac4df40e236aaa18480e3be74bd5c8eb798e"
 
 whatwg-url@^3.0.0:
   version "3.0.0"
