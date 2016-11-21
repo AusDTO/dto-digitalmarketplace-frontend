@@ -28,6 +28,7 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
       // If form has values, it is assumed it's 'completed'.
       if (!isEmpty(mappedFields)) {
         dispatch(actions.setSubmitted(form));
+        dispatch(actions.setPristine(form));
       }
 
       // Return what the state shape should look like.
@@ -79,6 +80,7 @@ export const validForms = (state = {}) => {
     .filter(key => get(forms[key], '$form.touched'))
     .filter(key => get(forms[key], '$form.submitted'))
     .filter(key => get(forms[key], '$form.valid'))
+    .filter(key => get(forms[key], '$form.pristine'))
     .reduce((valid, key) => {
       valid[key] = true;
       return valid;

@@ -58,6 +58,7 @@ export const stepNextPersist = (transition, to, step) => {
     return dispatch(submitApplication())
       .then(() => dispatch(preStep()))
       .then(() => dispatch(actions.setSubmitted(step.formKey)))
+      .then(() => dispatch(actions.setPristine(step.formKey)))
       .then(() => dispatch(nextStep(to)))
       .then(() => transition(to));
   }
