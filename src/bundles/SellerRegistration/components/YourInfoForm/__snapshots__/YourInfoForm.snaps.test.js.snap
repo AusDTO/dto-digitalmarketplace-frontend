@@ -18,19 +18,19 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Company Representative
+          htmlFor="name">
+          Business Name
         </label>
         <p
           className="hint"
-          id="representative-hint">
-          The authorised person who signs contracts with clients
+          id="name-hint">
+          As you would like it displayed on the Marketplace
         </p>
         <input
-          aria-describedby="representative-hint"
+          aria-describedby="name-hint"
           className=""
-          id="representative"
-          name="representative"
+          id="name"
+          name="name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -43,19 +43,19 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="name">
-          Company Name
+          htmlFor="representative">
+          Business Representative
         </label>
         <p
           className="hint"
-          id="name-hint">
-          As you would like it displayed on the Marketplace
+          id="representative-hint">
+          The authorised person who signs contracts with clients
         </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby="representative-hint"
           className=""
-          id="name"
-          name="name"
+          id="representative"
+          name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -89,7 +89,7 @@ exports[`test YourInfoForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="phone">
-          Phone
+          Representative\'s phone number
         </label>
         <input
           aria-describedby={undefined}
@@ -109,7 +109,7 @@ exports[`test YourInfoForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Email
+          Representative\'s email
         </label>
         <input
           aria-describedby={undefined}
@@ -158,19 +158,19 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Company Representative
+          htmlFor="name">
+          Business Name
         </label>
         <p
           className="hint"
-          id="representative-hint">
-          The authorised person who signs contracts with clients
+          id="name-hint">
+          As you would like it displayed on the Marketplace
         </p>
         <input
-          aria-describedby="representative-hint"
+          aria-describedby="name-hint"
           className=""
-          id="representative"
-          name="representative"
+          id="name"
+          name="name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -183,19 +183,19 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="name">
-          Company Name
+          htmlFor="representative">
+          Business Representative
         </label>
         <p
           className="hint"
-          id="name-hint">
-          As you would like it displayed on the Marketplace
+          id="representative-hint">
+          The authorised person who signs contracts with clients
         </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby="representative-hint"
           className=""
-          id="name"
-          name="name"
+          id="representative"
+          name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -229,7 +229,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="phone">
-          Phone
+          Representative\'s phone number
         </label>
         <input
           aria-describedby={undefined}
@@ -249,7 +249,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Email
+          Representative\'s email
         </label>
         <input
           aria-describedby={undefined}
@@ -298,19 +298,19 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Company Representative
+          htmlFor="name">
+          Business Name
         </label>
         <p
           className="hint"
-          id="representative-hint">
-          The authorised person who signs contracts with clients
+          id="name-hint">
+          As you would like it displayed on the Marketplace
         </p>
         <input
-          aria-describedby="representative-hint"
+          aria-describedby="name-hint"
           className=""
-          id="representative"
-          name="representative"
+          id="name"
+          name="name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -323,19 +323,19 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="name">
-          Company Name
+          htmlFor="representative">
+          Business Representative
         </label>
         <p
           className="hint"
-          id="name-hint">
-          As you would like it displayed on the Marketplace
+          id="representative-hint">
+          The authorised person who signs contracts with clients
         </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby="representative-hint"
           className=""
-          id="name"
-          name="name"
+          id="representative"
+          name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -369,7 +369,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="phone">
-          Phone
+          Representative\'s phone number
         </label>
         <input
           aria-describedby={undefined}
@@ -389,7 +389,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Email
+          Representative\'s email
         </label>
         <input
           aria-describedby={undefined}
