@@ -2,7 +2,7 @@ import React from 'react';
 
 const Start = ({ signup, deed, onClick }) => (
   <div>
-    <h1>Joining the Digital Marketplace</h1>
+    <h1>Become a seller</h1>
     <p>To join the Marketplace you need to:</p>
     <ul>
       <li>Tell us about your company</li>

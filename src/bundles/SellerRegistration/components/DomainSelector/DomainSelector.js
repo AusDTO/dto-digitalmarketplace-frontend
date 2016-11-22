@@ -15,12 +15,13 @@ import domains from './domains';
 class DomainSelector extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, onSubmit } = this.props;
+    const { model, action, csrf_token, title, buttonText, onSubmit } = this.props;
 
     return (
       <Layout>
         <header>
-            <h1>Digital Services</h1>
+            <h1>{title}</h1>
+            <p>You will need to provide a day rate and case study for each. <a href="#href">View criteria for each service</a></p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -73,12 +74,17 @@ class DomainSelector extends BaseForm {
                 </fieldset>
               )
             })}
-            <input type="submit" value="Save &amp; Continue" role="button" />
+            <input type="submit" value={buttonText}role="button" />
           </Form>
         </article>
       </Layout>
     )
   }
+}
+
+DomainSelector.defaultProps = {
+  buttonText: 'Save &amp; Continue',
+  title: 'Digital Services'
 }
 
 const mapStateToProps = (state) => {

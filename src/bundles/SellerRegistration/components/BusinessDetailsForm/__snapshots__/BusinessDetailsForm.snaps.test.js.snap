@@ -3,7 +3,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Company details
+      Business details
     </h1>
   </header>
   <article
@@ -28,7 +28,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <div>
           <textarea
             aria-describedby="summary-hint"
-            className=""
+            className="under-50"
             defaultValue=""
             id="summary"
             name="summary"
@@ -175,7 +175,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Company details
+      Business details
     </h1>
   </header>
   <article
@@ -205,7 +205,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <div>
           <textarea
             aria-describedby="summary-hint"
-            className=""
+            className="under-50"
             defaultValue=""
             id="summary"
             name="summary"
@@ -352,7 +352,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
   className="layout">
   <header>
     <h1>
-      Company details
+      Business details
     </h1>
   </header>
   <article
@@ -406,7 +406,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <div>
           <textarea
             aria-describedby="summary-hint"
-            className="invalid"
+            className="invalid under-50"
             defaultValue=""
             id="summary"
             name="summary"

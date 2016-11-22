@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 
 class Textarea extends Component {
 
@@ -49,7 +50,7 @@ class Textarea extends Component {
   }
 
   render() {
-    const { value, limit, name, id, onBlur, onFocus, className = '', describedby, hint } = this.props
+    let { value, limit, name, id, onBlur, onFocus, className = '', describedby, hint } = this.props
     let { wordsLeft } = this.state
 
     let counter = wordsLeft
@@ -57,10 +58,18 @@ class Textarea extends Component {
       counter *= -1
     }
 
+    if (limit) {
+      className = classNames(className, {
+        'under-50': limit <= 50,
+        'under-100': limit <= 100 && limit > 50,
+        'under-200': limit <= 200 && limit > 100,
+        'over-200': limit > 200,
+      })
+    }
+
     return (
       <div>
         <textarea
-          ref="textarea"
           className={className}
           name={name}
           id={id}

@@ -29,13 +29,13 @@ class Signup extends React.Component {
   }
 
   steps = [
-    { label: 'Start', component: Start, pattern: '/start' },
-    { label: 'Your Info', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Business Details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Domains', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { label: 'Become a seller', component: Start, pattern: '/start' },
+    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { label: 'Review', component: Review, pattern: '/review' },
+    { label: 'Review your profile', component: Review, pattern: '/review' },
     { label: 'Submit', component: Submit, pattern: '/submit' },
   ]
 
@@ -83,6 +83,9 @@ class Signup extends React.Component {
   render() {
     const { validForms = {} } = this.props;
     const currentStepIdx = this.currentStepIndex;
+    const formSteps = this.steps.map(step => step.formKey).filter(s => s);
+    const applicationValid = formSteps.length === Object.keys(validForms).length;
+
     return (
       <div className="row">
         <aside className="col-xs-12 col-sm-4">
@@ -104,11 +107,21 @@ class Signup extends React.Component {
           </nav>
         </aside>
         <article className="col-xs-12 col-sm-8">
-          {this.steps.map(({pattern, exact, component}, i) => {
+          {this.steps.map(({pattern, exact, component, label}, i) => {
             return (
               <Match key={i} pattern={pattern} exactly render={(routerProps) => {
-                let children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
-                return React.createElement(component, Object.assign({}, routerProps, this.elementProps), children);
+                const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
+                const props = Object.assign({},
+                  routerProps,
+                  {
+                    applicationValid,
+                    title: label,
+                    buttonText: 'Save & Continue'
+                  },
+                  this.elementProps
+                );
+
+                return React.createElement(component, props, children);
               }} />
             )
           })}

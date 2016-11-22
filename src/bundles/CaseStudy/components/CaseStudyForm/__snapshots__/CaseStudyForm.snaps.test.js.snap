@@ -100,7 +100,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <div>
           <textarea
             aria-describedby="opportunity-hint"
-            className=""
+            className="under-200"
             defaultValue=""
             id="opportunity"
             name="opportunity"
@@ -127,7 +127,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <div>
           <textarea
             aria-describedby="approach-hint"
-            className=""
+            className="under-200"
             defaultValue=""
             id="approach"
             name="approach"
@@ -1013,7 +1013,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <div>
           <textarea
             aria-describedby="opportunity-hint"
-            className=""
+            className="under-200"
             defaultValue=""
             id="opportunity"
             name="opportunity"
@@ -1040,7 +1040,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <div>
           <textarea
             aria-describedby="approach-hint"
-            className=""
+            className="under-200"
             defaultValue=""
             id="approach"
             name="approach"
@@ -1415,7 +1415,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <div>
           <textarea
             aria-describedby="opportunity-hint"
-            className="invalid"
+            className="invalid under-200"
             defaultValue=""
             id="opportunity"
             name="opportunity"
@@ -1453,7 +1453,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <div>
           <textarea
             aria-describedby="approach-hint"
-            className="invalid"
+            className="invalid under-200"
             defaultValue=""
             id="approach"
             name="approach"
@@ -1743,7 +1743,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <div>
           <textarea
             aria-describedby="opportunity-hint"
-            className=""
+            className="under-200"
             defaultValue=""
             id="opportunity"
             name="opportunity"
@@ -1770,7 +1770,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <div>
           <textarea
             aria-describedby="approach-hint"
-            className=""
+            className="under-200"
             defaultValue=""
             id="approach"
             name="approach"
@@ -2044,7 +2044,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <div>
           <textarea
             aria-describedby="opportunity-hint"
-            className=""
+            className="under-200"
             defaultValue="The opportunity"
             id="opportunity"
             name="opportunity"
@@ -2071,7 +2071,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <div>
           <textarea
             aria-describedby="approach-hint"
-            className=""
+            className="under-200"
             defaultValue="The approach"
             id="approach"
             name="approach"

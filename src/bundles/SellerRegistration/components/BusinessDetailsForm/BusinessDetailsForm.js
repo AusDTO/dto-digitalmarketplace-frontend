@@ -24,11 +24,11 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, form, children, onSubmit } = this.props;
+        const {action, csrf_token, model, returnLink, form, title, buttonText, children, onSubmit } = this.props;
         return (
             <Layout>
                 <header>
-                    <h1>Company details</h1>
+                    <h1>{title}</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -122,13 +122,18 @@ class BusinessDetailsForm extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value='Update profile' role="button"/>
+                        <input type="submit" value={buttonText} role="button"/>
                     </Form>
                     {returnLink && <a href={returnLink}>Return without saving</a>}
                 </article>
             </Layout>
         )
     }
+}
+
+BusinessDetailsForm.defaultProps = {
+  buttonText: 'Update profile',
+  title: 'Business details'
 }
 
 const mapStateToProps = (state) => {

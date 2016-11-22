@@ -31,6 +31,9 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
     <h1>
       Pricing
     </h1>
+    <p>
+      This will only be visible to government buyers, not to other sellers on the Marketplace.
+    </p>
   </header>
   <article
     role="main">
@@ -171,7 +174,7 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save &amp; Continue" />
     </form>
   </article>
 </div>

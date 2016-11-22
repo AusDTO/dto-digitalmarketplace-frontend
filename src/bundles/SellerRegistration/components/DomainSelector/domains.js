@@ -4,8 +4,8 @@ export default [
     label: 'User research & design',
     services: [
       'User research',
-      'Interaction design (inc usability tests)',
-      'Inclusive design (Accessibility, disabilty & minority groups)',
+      'Interaction design',
+      'Inclusive design',
       'Service design',
     ]
   },
@@ -13,15 +13,15 @@ export default [
     key: 'contentpub',
     label: 'Content & publishing',
     services: [
-      'Content development (copywriting, translation, illustration, photography, video and animation)',
+      'Content development',
     ]
   },
   {
     key: 'marketingcomms',
     label: 'Marketing, comms & engagement',
     services: [
-      'Digital marketing (eg SEO, branding & marketing automation)',
-      'Community engagement (eg social media & events)',
+      'Digital marketing',
+      'Community engagement',
     ]
   },
   {
@@ -30,18 +30,16 @@ export default [
     services: [
       'Architecture',
       'Technical leadership',
-      'Web Devops Engineer',
-      'Devops and continuous delivery',
-      'Software development',
-      'Testing & Quality Assurance',
-      'Cloud computing'
+      'Web Devops Engineering',
+      'Development',
+      'Quality Assurance'
     ]
   },
   {
     key: 'emergtech',
     label: 'Emerging technology',
     services: [
-      'Prototyping or commercial application of emerging technologies such as AI, beacons, 3d printing and VR'
+      'Emerging technology'
     ]
   },
   {
@@ -82,29 +80,13 @@ export default [
     services: [
       'Digital Transformation Advice',
       'Agile coaching',
-      'Change management',
-      'DSS training',
     ]
   },
   {
     key: 'polcy',
-    label: 'Policy & law',
+    label: 'Legal & Policy',
     services: [
       'Legal counsel',
-    ]
-  },
-  {
-    key: 'products',
-    label: 'Products',
-    services: [
-      'Your service is based on proprietary software or hardware',
-    ]
-  },
-  {
-    key: 'recruitment',
-    label: 'Recruitment',
-    services: [
-      'Recruitment',
     ]
   }
 ];

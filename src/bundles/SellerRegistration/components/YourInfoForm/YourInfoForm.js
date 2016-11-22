@@ -20,11 +20,11 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, children, onSubmit } = this.props;
+    const { action, csrf_token, model, form, title, buttonText, children, onSubmit } = this.props;
     return (
       <Layout>
         <header>
-          <h1>{'Your Information'}</h1>
+          <h1>{title}</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -41,29 +41,30 @@ class YourInfoForm extends BaseForm {
             )}
 
             <Textfield
-              model={`${model}.representative`}
-              name="representative"
-              id="representative"
-              htmlFor="representative"
-              label="Company Representative"
-              description="The authorised person who signs contracts with clients"
-              validators={{ required }}
-              messages={{
-                required: 'Company representative is required',
-              }}
-            />
-
-            <Textfield
               model={`${model}.name`}
               name="name"
               id="name"
               htmlFor="name"
-              label="Company Name"
+              label="Business Name"
               description="As you would like it displayed on the Marketplace"
               validators={{ required }}
               messages={{
-                required: 'Company name is required',
-              }} />
+                required: 'Business name is required',
+              }} 
+            />
+
+            <Textfield
+              model={`${model}.representative`}
+              name="representative"
+              id="representative"
+              htmlFor="representative"
+              label="Business Representative"
+              description="The authorised person who signs contracts with clients"
+              validators={{ required }}
+              messages={{
+                required: 'Business representative is required',
+              }}
+            />
 
             <Textfield
               model={`${model}.abn`}
@@ -82,10 +83,10 @@ class YourInfoForm extends BaseForm {
               name="phone"
               id="phone"
               htmlFor="phone"
-              label="Phone"
+              label="Representative's phone number"
               validators={{ required }}
               messages={{
-                required: 'Phone is required',
+                required: 'Representative\'s phone number is required',
               }}
             />
 
@@ -94,21 +95,26 @@ class YourInfoForm extends BaseForm {
               name="email"
               id="email"
               htmlFor="email"
-              label="Email"
+              label="Representative's email"
               validators={{ required }}
               messages={{
-                required: 'Email is required',
+                required: 'Representative\'s email is required',
               }}
             />
 
             {children}
 
-            <input type="submit" value={'Save & Continue'} role="button" />
+            <input type="submit" value={buttonText} role="button" />
           </Form>
         </article>
       </Layout>
     )
   }
+}
+
+YourInfoForm.defaultProps = {
+  buttonText: 'Save & Continue',
+  title: 'Your Information'
 }
 
 const mapStateToProps = (state) => {

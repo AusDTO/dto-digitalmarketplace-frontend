@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const Submit = ({submitUrl, onClick}) => (
+const Submit = ({submitUrl, applicationValid, onClick}) => (
     <div>
         <h1>I declare that:</h1>
         <ol>
@@ -17,25 +17,29 @@ const Submit = ({submitUrl, onClick}) => (
             </li>
         </ol>
         <p>
-            <a role="button" href={submitUrl}>Submit Application</a>
+            {applicationValid 
+                ? <a role="button" href={submitUrl}>Submit Application</a>
+                : <button disabled="disabled">Submit Application</button>
+            }
         </p>
     </div>
 );
 
 Submit.defaultProps = {
-    onClick: () => {
-    },
+    onClick: () => {},
     submitUrl: '#'
 }
 
 Submit.propTypes = {
     submitUrl: React.PropTypes.string,
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
+    applicationValid: React.PropTypes.bool
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        submitUrl: state.form_options.submit_url
+        submitUrl: state.form_options.submit_url,
+        applicationValid: ownProps.applicationValid
     }
 }
 

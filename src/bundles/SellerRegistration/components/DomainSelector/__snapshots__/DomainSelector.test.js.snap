@@ -5,6 +5,13 @@ exports[`test DomainSelector renders 1`] = `
     <h1>
       Digital Services
     </h1>
+    <p>
+      You will need to provide a day rate and case study for each. 
+      <a
+        href="#href">
+        View criteria for each service
+      </a>
+    </p>
   </header>
   <article
     role="main">
@@ -45,33 +52,33 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="interaction-design-inc-usability-tests"
-            name="interaction-design-inc-usability-tests"
+            id="interaction-design"
+            name="interaction-design"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Interaction design (inc usability tests)" />
+            value="Interaction design" />
           <label
-            htmlFor="interaction-design-inc-usability-tests">
-            Interaction design (inc usability tests)
+            htmlFor="interaction-design">
+            Interaction design
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="inclusive-design-accessibility-disabilty-minority-groups"
-            name="inclusive-design-accessibility-disabilty-minority-groups"
+            id="inclusive-design"
+            name="inclusive-design"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Inclusive design (Accessibility, disabilty & minority groups)" />
+            value="Inclusive design" />
           <label
-            htmlFor="inclusive-design-accessibility-disabilty-minority-groups">
-            Inclusive design (Accessibility, disabilty & minority groups)
+            htmlFor="inclusive-design">
+            Inclusive design
           </label>
         </div>
         <div>
@@ -99,17 +106,17 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="content-development-copywriting-translation-illustration-photography-video-and-animation"
-            name="content-development-copywriting-translation-illustration-photography-video-and-animation"
+            id="content-development"
+            name="content-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content development (copywriting, translation, illustration, photography, video and animation)" />
+            value="Content development" />
           <label
-            htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation">
-            Content development (copywriting, translation, illustration, photography, video and animation)
+            htmlFor="content-development">
+            Content development
           </label>
         </div>
       </fieldset>
@@ -121,33 +128,33 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="digital-marketing-eg-seo-branding-marketing-automation"
-            name="digital-marketing-eg-seo-branding-marketing-automation"
+            id="digital-marketing"
+            name="digital-marketing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Digital marketing (eg SEO, branding & marketing automation)" />
+            value="Digital marketing" />
           <label
-            htmlFor="digital-marketing-eg-seo-branding-marketing-automation">
-            Digital marketing (eg SEO, branding & marketing automation)
+            htmlFor="digital-marketing">
+            Digital marketing
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="community-engagement-eg-social-media-events"
-            name="community-engagement-eg-social-media-events"
+            id="community-engagement"
+            name="community-engagement"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Community engagement (eg social media & events)" />
+            value="Community engagement" />
           <label
-            htmlFor="community-engagement-eg-social-media-events">
-            Community engagement (eg social media & events)
+            htmlFor="community-engagement">
+            Community engagement
           </label>
         </div>
       </fieldset>
@@ -191,81 +198,49 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="web-devops-engineer"
-            name="web-devops-engineer"
+            id="web-devops-engineering"
+            name="web-devops-engineering"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Web Devops Engineer" />
+            value="Web Devops Engineering" />
           <label
-            htmlFor="web-devops-engineer">
-            Web Devops Engineer
+            htmlFor="web-devops-engineering">
+            Web Devops Engineering
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="devops-and-continuous-delivery"
-            name="devops-and-continuous-delivery"
+            id="development"
+            name="development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Devops and continuous delivery" />
+            value="Development" />
           <label
-            htmlFor="devops-and-continuous-delivery">
-            Devops and continuous delivery
+            htmlFor="development">
+            Development
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="software-development"
-            name="software-development"
+            id="quality-assurance"
+            name="quality-assurance"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Software development" />
+            value="Quality Assurance" />
           <label
-            htmlFor="software-development">
-            Software development
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="testing-quality-assurance"
-            name="testing-quality-assurance"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Testing & Quality Assurance" />
-          <label
-            htmlFor="testing-quality-assurance">
-            Testing & Quality Assurance
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="cloud-computing"
-            name="cloud-computing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Cloud computing" />
-          <label
-            htmlFor="cloud-computing">
-            Cloud computing
+            htmlFor="quality-assurance">
+            Quality Assurance
           </label>
         </div>
       </fieldset>
@@ -277,17 +252,17 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="prototyping-or-commercial-application-of-emerging-technologies-such-as-ai-beacons-3-d-printing-and-vr"
-            name="prototyping-or-commercial-application-of-emerging-technologies-such-as-ai-beacons-3-d-printing-and-vr"
+            id="emerging-technology"
+            name="emerging-technology"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Prototyping or commercial application of emerging technologies such as AI, beacons, 3d printing and VR" />
+            value="Emerging technology" />
           <label
-            htmlFor="prototyping-or-commercial-application-of-emerging-technologies-such-as-ai-beacons-3-d-printing-and-vr">
-            Prototyping or commercial application of emerging technologies such as AI, beacons, 3d printing and VR
+            htmlFor="emerging-technology">
+            Emerging technology
           </label>
         </div>
       </fieldset>
@@ -480,43 +455,11 @@ exports[`test DomainSelector renders 1`] = `
             Agile coaching
           </label>
         </div>
-        <div>
-          <input
-            checked={false}
-            id="change-management"
-            name="change-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change management" />
-          <label
-            htmlFor="change-management">
-            Change management
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="dss-training"
-            name="dss-training"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="DSS training" />
-          <label
-            htmlFor="dss-training">
-            DSS training
-          </label>
-        </div>
       </fieldset>
       <fieldset
         className="field">
         <legend>
-          Policy & law
+          Legal & Policy
         </legend>
         <div>
           <input
@@ -535,54 +478,10 @@ exports[`test DomainSelector renders 1`] = `
           </label>
         </div>
       </fieldset>
-      <fieldset
-        className="field">
-        <legend>
-          Products
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="your-service-is-based-on-proprietary-software-or-hardware"
-            name="your-service-is-based-on-proprietary-software-or-hardware"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Your service is based on proprietary software or hardware" />
-          <label
-            htmlFor="your-service-is-based-on-proprietary-software-or-hardware">
-            Your service is based on proprietary software or hardware
-          </label>
-        </div>
-      </fieldset>
-      <fieldset
-        className="field">
-        <legend>
-          Recruitment
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-          </label>
-        </div>
-      </fieldset>
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save &amp; Continue" />
     </form>
   </article>
 </div>
@@ -595,6 +494,13 @@ exports[`test DomainSelector renders with populated fields 1`] = `
     <h1>
       Digital Services
     </h1>
+    <p>
+      You will need to provide a day rate and case study for each. 
+      <a
+        href="#href">
+        View criteria for each service
+      </a>
+    </p>
   </header>
   <article
     role="main">
@@ -618,7 +524,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         </legend>
         <div>
           <input
-            checked={false}
+            checked={true}
             id="user-research"
             name="user-research"
             onBlur={[Function]}
@@ -635,33 +541,33 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="interaction-design-inc-usability-tests"
-            name="interaction-design-inc-usability-tests"
+            id="interaction-design"
+            name="interaction-design"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Interaction design (inc usability tests)" />
+            value="Interaction design" />
           <label
-            htmlFor="interaction-design-inc-usability-tests">
-            Interaction design (inc usability tests)
+            htmlFor="interaction-design">
+            Interaction design
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="inclusive-design-accessibility-disabilty-minority-groups"
-            name="inclusive-design-accessibility-disabilty-minority-groups"
+            id="inclusive-design"
+            name="inclusive-design"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Inclusive design (Accessibility, disabilty & minority groups)" />
+            value="Inclusive design" />
           <label
-            htmlFor="inclusive-design-accessibility-disabilty-minority-groups">
-            Inclusive design (Accessibility, disabilty & minority groups)
+            htmlFor="inclusive-design">
+            Inclusive design
           </label>
         </div>
         <div>
@@ -689,17 +595,17 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="content-development-copywriting-translation-illustration-photography-video-and-animation"
-            name="content-development-copywriting-translation-illustration-photography-video-and-animation"
+            id="content-development"
+            name="content-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content development (copywriting, translation, illustration, photography, video and animation)" />
+            value="Content development" />
           <label
-            htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation">
-            Content development (copywriting, translation, illustration, photography, video and animation)
+            htmlFor="content-development">
+            Content development
           </label>
         </div>
       </fieldset>
@@ -711,33 +617,33 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="digital-marketing-eg-seo-branding-marketing-automation"
-            name="digital-marketing-eg-seo-branding-marketing-automation"
+            id="digital-marketing"
+            name="digital-marketing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Digital marketing (eg SEO, branding & marketing automation)" />
+            value="Digital marketing" />
           <label
-            htmlFor="digital-marketing-eg-seo-branding-marketing-automation">
-            Digital marketing (eg SEO, branding & marketing automation)
+            htmlFor="digital-marketing">
+            Digital marketing
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="community-engagement-eg-social-media-events"
-            name="community-engagement-eg-social-media-events"
+            id="community-engagement"
+            name="community-engagement"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Community engagement (eg social media & events)" />
+            value="Community engagement" />
           <label
-            htmlFor="community-engagement-eg-social-media-events">
-            Community engagement (eg social media & events)
+            htmlFor="community-engagement">
+            Community engagement
           </label>
         </div>
       </fieldset>
@@ -781,81 +687,49 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="web-devops-engineer"
-            name="web-devops-engineer"
+            id="web-devops-engineering"
+            name="web-devops-engineering"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Web Devops Engineer" />
+            value="Web Devops Engineering" />
           <label
-            htmlFor="web-devops-engineer">
-            Web Devops Engineer
+            htmlFor="web-devops-engineering">
+            Web Devops Engineering
+          </label>
+        </div>
+        <div>
+          <input
+            checked={true}
+            id="development"
+            name="development"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Development" />
+          <label
+            htmlFor="development">
+            Development
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="devops-and-continuous-delivery"
-            name="devops-and-continuous-delivery"
+            id="quality-assurance"
+            name="quality-assurance"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Devops and continuous delivery" />
+            value="Quality Assurance" />
           <label
-            htmlFor="devops-and-continuous-delivery">
-            Devops and continuous delivery
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="software-development"
-            name="software-development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Software development" />
-          <label
-            htmlFor="software-development">
-            Software development
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="testing-quality-assurance"
-            name="testing-quality-assurance"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Testing & Quality Assurance" />
-          <label
-            htmlFor="testing-quality-assurance">
-            Testing & Quality Assurance
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="cloud-computing"
-            name="cloud-computing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Cloud computing" />
-          <label
-            htmlFor="cloud-computing">
-            Cloud computing
+            htmlFor="quality-assurance">
+            Quality Assurance
           </label>
         </div>
       </fieldset>
@@ -867,17 +741,17 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="prototyping-or-commercial-application-of-emerging-technologies-such-as-ai-beacons-3-d-printing-and-vr"
-            name="prototyping-or-commercial-application-of-emerging-technologies-such-as-ai-beacons-3-d-printing-and-vr"
+            id="emerging-technology"
+            name="emerging-technology"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Prototyping or commercial application of emerging technologies such as AI, beacons, 3d printing and VR" />
+            value="Emerging technology" />
           <label
-            htmlFor="prototyping-or-commercial-application-of-emerging-technologies-such-as-ai-beacons-3-d-printing-and-vr">
-            Prototyping or commercial application of emerging technologies such as AI, beacons, 3d printing and VR
+            htmlFor="emerging-technology">
+            Emerging technology
           </label>
         </div>
       </fieldset>
@@ -1070,43 +944,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             Agile coaching
           </label>
         </div>
-        <div>
-          <input
-            checked={false}
-            id="change-management"
-            name="change-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change management" />
-          <label
-            htmlFor="change-management">
-            Change management
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="dss-training"
-            name="dss-training"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="DSS training" />
-          <label
-            htmlFor="dss-training">
-            DSS training
-          </label>
-        </div>
       </fieldset>
       <fieldset
         className="field">
         <legend>
-          Policy & law
+          Legal & Policy
         </legend>
         <div>
           <input
@@ -1125,54 +967,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           </label>
         </div>
       </fieldset>
-      <fieldset
-        className="field">
-        <legend>
-          Products
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="your-service-is-based-on-proprietary-software-or-hardware"
-            name="your-service-is-based-on-proprietary-software-or-hardware"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Your service is based on proprietary software or hardware" />
-          <label
-            htmlFor="your-service-is-based-on-proprietary-software-or-hardware">
-            Your service is based on proprietary software or hardware
-          </label>
-        </div>
-      </fieldset>
-      <fieldset
-        className="field">
-        <legend>
-          Recruitment
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-          </label>
-        </div>
-      </fieldset>
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save &amp; Continue" />
     </form>
   </article>
 </div>

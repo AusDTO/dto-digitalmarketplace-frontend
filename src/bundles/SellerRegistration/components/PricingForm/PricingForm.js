@@ -17,7 +17,7 @@ import { required }         from '../../../../validators';
 class PricingForm extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, domainSelectorForm, onSubmit } = this.props;
+    const { model, action, csrf_token, domainSelectorForm, title, buttonText, onSubmit } = this.props;
     const { services } = domainSelectorForm;
     let validServices = findValidServices(services);
 
@@ -25,7 +25,7 @@ class PricingForm extends BaseForm {
       return (
         <Layout>
           <header>
-            <h1>Pricing</h1>
+            <h1>{title}</h1>
           </header>
           <article role="main">
             <p>You must select some domains before specifying pricing!</p>
@@ -38,7 +38,8 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header>
-            <h1>Pricing</h1>
+            <h1>{title}</h1>
+            <p>This will only be visible to government buyers, not to other sellers on the Marketplace.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -99,12 +100,17 @@ class PricingForm extends BaseForm {
               </fieldset>
             ))}
 
-            <input type="submit" value="Save &amp; Continue" role="button" />
+            <input type="submit" value={buttonText} role="button" />
           </Form>
         </article>
       </Layout>
     )
   }
+}
+
+PricingForm.defaultProps = {
+  buttonText: 'Save &amp; Continue',
+  title: 'Pricing'
 }
 
 const mapStateToProps = (state) => {
