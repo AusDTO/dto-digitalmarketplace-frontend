@@ -19,6 +19,13 @@
       "suburb": "St Ives",
       "state": "NSW",
       "postalCode": "2000"
+    },
+    "services": {
+      "User research": true,
+      "Development": true,
+      "Data science": true,
+      "Ethical Hacker": true,
+      "Tech support": true
     }
   }
 }
