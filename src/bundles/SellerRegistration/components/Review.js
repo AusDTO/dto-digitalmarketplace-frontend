@@ -17,7 +17,7 @@ const Review = ({submit, onClick, data}) => (
         <ul className="list-horizontal">
             {data.services &&
                 <li>
-                    <p>Seller capabilities</p>
+                    <p>Services</p>
                     <article>
                         <footer className="tags">
                             <dl className="visually-hidden">

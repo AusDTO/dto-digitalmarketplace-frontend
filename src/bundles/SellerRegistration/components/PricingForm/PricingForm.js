@@ -38,7 +38,8 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header>
-            <h1>Pricing</h1>
+            <h1>{title}</h1>
+            <p>This will only be visible to government buyers, not to other sellers on the Marketplace.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
