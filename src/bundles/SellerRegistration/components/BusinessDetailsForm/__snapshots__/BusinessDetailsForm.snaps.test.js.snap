@@ -3,7 +3,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Company details
+      Business details
     </h1>
   </header>
   <article
@@ -175,7 +175,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Company details
+      Business details
     </h1>
   </header>
   <article
@@ -352,7 +352,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
   className="layout">
   <header>
     <h1>
-      Company details
+      Business details
     </h1>
   </header>
   <article

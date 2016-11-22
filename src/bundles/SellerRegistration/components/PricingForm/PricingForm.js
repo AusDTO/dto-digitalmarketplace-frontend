@@ -25,7 +25,7 @@ class PricingForm extends BaseForm {
       return (
         <Layout>
           <header>
-            <h1>{title || 'Pricing'}</h1>
+            <h1>{title}</h1>
           </header>
           <article role="main">
             <p>You must select some domains before specifying pricing!</p>
@@ -108,7 +108,8 @@ class PricingForm extends BaseForm {
 }
 
 PricingForm.defaultProps = {
-  buttonText: 'Save &amp; Continue'
+  buttonText: 'Save &amp; Continue',
+  title: 'Pricing'
 }
 
 const mapStateToProps = (state) => {

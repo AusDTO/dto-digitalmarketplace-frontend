@@ -7,7 +7,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
       className="layout">
       <header>
         <h1>
-          Company details
+          Business details
         </h1>
       </header>
       <article

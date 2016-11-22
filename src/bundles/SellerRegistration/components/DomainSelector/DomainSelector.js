@@ -20,7 +20,7 @@ class DomainSelector extends BaseForm {
     return (
       <Layout>
         <header>
-            <h1>{title || 'Digital Services'}</h1>
+            <h1>{title}</h1>
             <p>You will need to provide a day rate and case study for each.</p>
         </header>
         <article role="main">
@@ -83,7 +83,8 @@ class DomainSelector extends BaseForm {
 }
 
 DomainSelector.defaultProps = {
-  buttonText: 'Save &amp; Continue'
+  buttonText: 'Save &amp; Continue',
+  title: 'Digital Services'
 }
 
 const mapStateToProps = (state) => {

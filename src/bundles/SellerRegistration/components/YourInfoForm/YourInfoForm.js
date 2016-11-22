@@ -24,7 +24,7 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1>{title || 'Your Information'}</h1>
+          <h1>{title}</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -113,7 +113,8 @@ class YourInfoForm extends BaseForm {
 }
 
 YourInfoForm.defaultProps = {
-  buttonText: 'Save & Continue'
+  buttonText: 'Save & Continue',
+  title: 'Your Information'
 }
 
 const mapStateToProps = (state) => {

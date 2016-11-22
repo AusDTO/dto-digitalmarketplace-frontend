@@ -28,7 +28,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1>{title || 'Company details'}</h1>
+                    <h1>{title}</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -132,7 +132,8 @@ class BusinessDetailsForm extends BaseForm {
 }
 
 BusinessDetailsForm.defaultProps = {
-  buttonText: 'Update profile'
+  buttonText: 'Update profile',
+  title: 'Business details'
 }
 
 const mapStateToProps = (state) => {
