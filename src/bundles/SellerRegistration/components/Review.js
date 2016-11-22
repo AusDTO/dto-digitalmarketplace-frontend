@@ -6,7 +6,7 @@ const Review = ({submit, deed, onClick, data}) => (
     <div>
         <div className="callout--calendar-event">
             <h3>Review your profile</h3>
-            <p> Buyers will see your company information as a profile, previewed below.
+            <p> Buyers will see your business information as a profile, previewed below.
                 If the information is correct, continue to the final step to submit your application.
             </p>
 
@@ -33,7 +33,7 @@ const Review = ({submit, deed, onClick, data}) => (
                 </li>
             }
             <li>
-                <p>Company Details</p>
+                <p>Business Details</p>
                 <figure></figure>
                 <article>
                     <p>
