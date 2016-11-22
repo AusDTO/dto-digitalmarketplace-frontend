@@ -32,7 +32,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <div>
               <textarea
                 aria-describedby="summary-hint"
-                className=""
+                className="under-50"
                 defaultValue=""
                 id="summary"
                 name="summary"
