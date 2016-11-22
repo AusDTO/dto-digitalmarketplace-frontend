@@ -6,7 +6,7 @@ export default function reducer(state = {}, action = {}) {
     case CONVERTED_SELLER:
       const applicationIndex = state.map(app => app.id).indexOf(id);
       const updatedApplication = Object.assign({}, state[applicationIndex], {
-        converted: true
+        status: 'approved'
       });
 
       return state

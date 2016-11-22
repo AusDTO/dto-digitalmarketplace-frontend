@@ -20,7 +20,7 @@
       "phone": "kjh",
       "representative": "kjh",
       "user_id": 89,
-      "status": "SELLER"
+      "status": "submitted"
     },
     {
       "abn": "hjk",
@@ -35,6 +35,7 @@
       "phone": "hjk",
       "representative": "asd",
       "user_id": 90,
+      "status": "saved",
       "converted": true
     },
     {

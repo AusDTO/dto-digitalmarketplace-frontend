@@ -17,4 +17,4 @@ const ApplicationsAdminWidget = (props) => {
   )
 }
 
-export default new RegisterComponent({ 'hello-applications': ApplicationsAdminWidget })
+export default new RegisterComponent({ 'applications-admin': ApplicationsAdminWidget })
