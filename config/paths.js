@@ -49,13 +49,15 @@ module.exports = {
     'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')],
     'applicant-signup': [resolveApp('src/bundles/ApplicantSignup/ApplicantSignupWidget')],
     'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')],
-    'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')]
+    'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')],
+    'applications-admin': [resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdminWidget')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
     'casestudy': require(resolveApp('src/bundles/CaseStudy/components/CaseStudyForm/CaseStudyForm.json')),
     'seller-business-details': require(resolveApp('src/bundles/SellerRegistration/components/BusinessDetailsForm/BusinessDetailsForm.json')),
     'applicant-signup': require(resolveApp('src/bundles/ApplicantSignup/ApplicantSignup.json')),
-    'enterpassword': require(resolveApp('src/bundles/SellerRegistration/components/EnterPasswordForm/EnterPasswordForm.json'))
+    'enterpassword': require(resolveApp('src/bundles/SellerRegistration/components/EnterPasswordForm/EnterPasswordForm.json')),
+    'applications-admin': require(resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdmin.json')),
   }
 };
