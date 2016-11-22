@@ -5,7 +5,7 @@ export default [
     services: [
       'User research',
       'Interaction design',
-      'Inclusive design (Accessibility, disabilty & minority groups)',
+      'Inclusive design',
       'Service design',
     ]
   },
@@ -13,15 +13,15 @@ export default [
     key: 'contentpub',
     label: 'Content & publishing',
     services: [
-      'Content development (copywriting, translation, illustration, photography, video and animation)',
+      'Content development',
     ]
   },
   {
     key: 'marketingcomms',
     label: 'Marketing, comms & engagement',
     services: [
-      'Digital marketing (eg SEO, branding & marketing automation)',
-      'Community engagement (eg social media & events)',
+      'Digital marketing',
+      'Community engagement',
     ]
   },
   {
