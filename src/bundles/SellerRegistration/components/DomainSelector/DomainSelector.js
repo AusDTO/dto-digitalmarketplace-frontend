@@ -21,7 +21,7 @@ class DomainSelector extends BaseForm {
       <Layout>
         <header>
             <h1>{title}</h1>
-            <p>You will need to provide a day rate and case study for each.</p>
+            <p>You will need to provide a day rate and case study for each. <a href="#href">View criteria for each service</a></p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>

@@ -85,7 +85,7 @@ exports[`test Signup renders 1`] = `
     className="col-xs-12 col-sm-8">
     <div>
       <h1>
-        Joining the Digital Marketplace
+        Become a seller
       </h1>
       <p>
         To join the Marketplace you need to:

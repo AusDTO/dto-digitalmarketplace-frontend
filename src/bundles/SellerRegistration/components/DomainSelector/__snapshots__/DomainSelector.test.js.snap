@@ -6,7 +6,11 @@ exports[`test DomainSelector renders 1`] = `
       Digital Services
     </h1>
     <p>
-      You will need to provide a day rate and case study for each.
+      You will need to provide a day rate and case study for each. 
+      <a
+        href="#href">
+        View criteria for each service
+      </a>
     </p>
   </header>
   <article
@@ -64,17 +68,17 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="inclusive-design-accessibility-disabilty-minority-groups"
-            name="inclusive-design-accessibility-disabilty-minority-groups"
+            id="inclusive-design"
+            name="inclusive-design"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Inclusive design (Accessibility, disabilty & minority groups)" />
+            value="Inclusive design" />
           <label
-            htmlFor="inclusive-design-accessibility-disabilty-minority-groups">
-            Inclusive design (Accessibility, disabilty & minority groups)
+            htmlFor="inclusive-design">
+            Inclusive design
           </label>
         </div>
         <div>
@@ -102,17 +106,17 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="content-development-copywriting-translation-illustration-photography-video-and-animation"
-            name="content-development-copywriting-translation-illustration-photography-video-and-animation"
+            id="content-development"
+            name="content-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content development (copywriting, translation, illustration, photography, video and animation)" />
+            value="Content development" />
           <label
-            htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation">
-            Content development (copywriting, translation, illustration, photography, video and animation)
+            htmlFor="content-development">
+            Content development
           </label>
         </div>
       </fieldset>
@@ -124,33 +128,33 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="digital-marketing-eg-seo-branding-marketing-automation"
-            name="digital-marketing-eg-seo-branding-marketing-automation"
+            id="digital-marketing"
+            name="digital-marketing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Digital marketing (eg SEO, branding & marketing automation)" />
+            value="Digital marketing" />
           <label
-            htmlFor="digital-marketing-eg-seo-branding-marketing-automation">
-            Digital marketing (eg SEO, branding & marketing automation)
+            htmlFor="digital-marketing">
+            Digital marketing
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="community-engagement-eg-social-media-events"
-            name="community-engagement-eg-social-media-events"
+            id="community-engagement"
+            name="community-engagement"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Community engagement (eg social media & events)" />
+            value="Community engagement" />
           <label
-            htmlFor="community-engagement-eg-social-media-events">
-            Community engagement (eg social media & events)
+            htmlFor="community-engagement">
+            Community engagement
           </label>
         </div>
       </fieldset>
@@ -491,7 +495,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       Digital Services
     </h1>
     <p>
-      You will need to provide a day rate and case study for each.
+      You will need to provide a day rate and case study for each. 
+      <a
+        href="#href">
+        View criteria for each service
+      </a>
     </p>
   </header>
   <article
@@ -549,17 +557,17 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="inclusive-design-accessibility-disabilty-minority-groups"
-            name="inclusive-design-accessibility-disabilty-minority-groups"
+            id="inclusive-design"
+            name="inclusive-design"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Inclusive design (Accessibility, disabilty & minority groups)" />
+            value="Inclusive design" />
           <label
-            htmlFor="inclusive-design-accessibility-disabilty-minority-groups">
-            Inclusive design (Accessibility, disabilty & minority groups)
+            htmlFor="inclusive-design">
+            Inclusive design
           </label>
         </div>
         <div>
@@ -587,17 +595,17 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="content-development-copywriting-translation-illustration-photography-video-and-animation"
-            name="content-development-copywriting-translation-illustration-photography-video-and-animation"
+            id="content-development"
+            name="content-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content development (copywriting, translation, illustration, photography, video and animation)" />
+            value="Content development" />
           <label
-            htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation">
-            Content development (copywriting, translation, illustration, photography, video and animation)
+            htmlFor="content-development">
+            Content development
           </label>
         </div>
       </fieldset>
@@ -609,33 +617,33 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="digital-marketing-eg-seo-branding-marketing-automation"
-            name="digital-marketing-eg-seo-branding-marketing-automation"
+            id="digital-marketing"
+            name="digital-marketing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Digital marketing (eg SEO, branding & marketing automation)" />
+            value="Digital marketing" />
           <label
-            htmlFor="digital-marketing-eg-seo-branding-marketing-automation">
-            Digital marketing (eg SEO, branding & marketing automation)
+            htmlFor="digital-marketing">
+            Digital marketing
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="community-engagement-eg-social-media-events"
-            name="community-engagement-eg-social-media-events"
+            id="community-engagement"
+            name="community-engagement"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Community engagement (eg social media & events)" />
+            value="Community engagement" />
           <label
-            htmlFor="community-engagement-eg-social-media-events">
-            Community engagement (eg social media & events)
+            htmlFor="community-engagement">
+            Community engagement
           </label>
         </div>
       </fieldset>
