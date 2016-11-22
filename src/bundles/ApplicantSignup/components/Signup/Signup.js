@@ -83,6 +83,9 @@ class Signup extends React.Component {
   render() {
     const { validForms = {} } = this.props;
     const currentStepIdx = this.currentStepIndex;
+    const formSteps = this.steps.map(step => step.formKey).filter(s => s);
+    const applicationValid = formSteps.length === Object.keys(validForms).length;
+
     return (
       <div className="row">
         <aside className="col-xs-12 col-sm-4">
@@ -111,6 +114,7 @@ class Signup extends React.Component {
                 const props = Object.assign({},
                   routerProps,
                   {
+                    applicationValid,
                     title: label,
                     buttonText: 'Save & Continue'
                   },
