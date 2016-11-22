@@ -17,8 +17,7 @@ import { required }         from '../../../../validators';
 class PricingForm extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, domainSelectorForm, title, buttonText, onSubmit } = this.props;
-    const { services } = domainSelectorForm;
+    const { model, action, csrf_token, title, buttonText, services, onSubmit } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {

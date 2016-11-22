@@ -81,10 +81,11 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { validForms = {} } = this.props;
+    const { validForms = {}, forms, router } = this.props;
     const currentStepIdx = this.currentStepIndex;
     const formSteps = this.steps.map(step => step.formKey).filter(s => s);
     const applicationValid = formSteps.length === Object.keys(validForms).length;
+    const { services = {} } = forms.domainSelectorForm;
 
     return (
       <div className="row">
@@ -109,12 +110,15 @@ class Signup extends React.Component {
         <article className="col-xs-12 col-sm-8">
           {this.steps.map(({pattern, exact, component, label}, i) => {
             return (
-              <Match key={i} pattern={pattern} exactly render={(routerProps) => {
+              <Match key={i} pattern={pattern} render={(routerProps) => {
                 const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
                 const props = Object.assign({},
                   routerProps,
                   {
                     applicationValid,
+                    services,
+                    router,
+                    nextRoute: this.nextStep.pattern,
                     title: label,
                     buttonText: 'Save & Continue'
                   },
