@@ -33,17 +33,11 @@ test('DomainSelector renders with populated fields', () => {
       csrf_token: 'abc'
     },
     domainSelectorForm: {
-      domains: [
-        {
-          'User research & design': {
-            'User research': true
-          },
-          'Content & publishing': {
-            'Content development (copywriting, translation, illustration, photography, video and animation)': true,
-            'Content management': true
-          }
-        }
-      ]
+      services: {
+        'User research': true,
+        'Development': true,
+        'Content management': false
+      }
     }
   });
 

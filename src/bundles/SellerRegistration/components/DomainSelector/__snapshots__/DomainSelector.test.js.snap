@@ -516,7 +516,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         </legend>
         <div>
           <input
-            checked={false}
+            checked={true}
             id="user-research"
             name="user-research"
             onBlur={[Function]}
@@ -694,7 +694,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         </div>
         <div>
           <input
-            checked={false}
+            checked={true}
             id="development"
             name="development"
             onBlur={[Function]}
