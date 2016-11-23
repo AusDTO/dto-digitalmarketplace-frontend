@@ -1,11 +1,8 @@
 var argv = require('yargs')
   .usage('Usage: $0 [--dev]')
-  .describe('dev', 'Signify if we\'re running a dev build or not.')
+  .describe('dev', 'Signal if we\'re running a dev build or not.')
   .help('h').alias('h', 'help')
   .argv;
-
-
-
 
 // Load environment variables from .env file. Surpress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
