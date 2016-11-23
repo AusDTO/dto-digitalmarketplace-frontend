@@ -48,7 +48,7 @@ const guid = () => {
 }
 
 const DomainList = (props) => {
-  const { 
+  let { 
     services,
     title,
     domainRoute,
@@ -59,6 +59,7 @@ const DomainList = (props) => {
     action,
     caseStudyForm,
     children,
+    actions: dispatchActions,
     getStudiesByService,
     calcRemaining,
     onSubmit,
@@ -66,6 +67,11 @@ const DomainList = (props) => {
     onEditCaseStudy,
     onAddCaseStudy
   } = props;
+
+  onCaseStudySubmit = onCaseStudySubmit.bind(this, {
+    router, 
+    dispatchActions
+  });
 
   const studies         = caseStudyForm.casestudies;
   const serviceCount    = Object.keys(services).length;
@@ -172,7 +178,7 @@ const DomainList = (props) => {
           model="casestudy"
           formName="casestudy"
           buttonText="Preview case study"
-          onSubmit={onCaseStudySubmit.bind(this, router, params)}
+          onSubmit={onCaseStudySubmit.bind(this, params)}
         />
 
       )} />
@@ -183,7 +189,7 @@ const DomainList = (props) => {
           formName="casestudy"
           mode="edit"
           buttonText="Preview case study"
-          onSubmit={onCaseStudySubmit.bind(this, router, params)}
+          onSubmit={onCaseStudySubmit.bind(this, params)}
         />
 
       )} />
@@ -217,7 +223,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onCaseStudySubmit: (router, params, e, values) => {
+    onCaseStudySubmit: ({ router, dispatchActions }, params, e, values) => {
       e.preventDefault();
       let { service, id } = params;
 
@@ -228,6 +234,7 @@ const mapDispatchToProps = (dispatch) => {
       const props = Object.assign({}, { service }, values)
       dispatch(actions.change(`caseStudyForm.casestudies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
+      dispatch(dispatchActions.submitApplication());
       router.transitionTo('/case-study');
     },
     onEditCaseStudy: (study) => {

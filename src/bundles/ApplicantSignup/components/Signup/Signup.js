@@ -120,7 +120,10 @@ class Signup extends React.Component {
                     router,
                     nextRoute: this.nextStep.pattern,
                     title: label,
-                    buttonText: 'Save & Continue'
+                    buttonText: 'Save & Continue',
+                    actions: {
+                      submitApplication
+                    }
                   },
                   this.elementProps
                 );
