@@ -49,6 +49,8 @@ export default combineReducers({
       outcome: [],
       projectLinks: []
     },
-    documentsForm: {}
+    documentsForm: {
+      documents: {}
+    }
   })
 })
