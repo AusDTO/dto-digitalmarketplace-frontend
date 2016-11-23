@@ -36,6 +36,17 @@ const calcRemaining = (studies, services) => {
   return serviceKeys.filter(service => uniqueServices.indexOf(service) !== -1);
 }
 
+const s4 = () => {
+  return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+}
+
+const guid = () => {
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+}
+
 const DomainList = (props) => {
   const { 
     services,
@@ -187,17 +198,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  function guid() {
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-      s4() + '-' + s4() + s4() + s4();
-  }
-
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-
   return {
     onCaseStudySubmit: (router, params, e, values) => {
       e.preventDefault();
