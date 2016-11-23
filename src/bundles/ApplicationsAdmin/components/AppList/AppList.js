@@ -10,7 +10,7 @@ const AppList = ({meta = {}, applications, onClick}) => (
     <th>id</th>
     <th>email</th>
     <th>status</th>
-    <th>convert</th>
+    <th>action</th>
   </tr>
   {applications.map((a, i) =>
     <tr key={a.id}>
@@ -20,7 +20,6 @@ const AppList = ({meta = {}, applications, onClick}) => (
       <td>{a.status}</td>
       <td>{ a.status === 'submitted' &&
         <input onClick={e => {
-                console.log('convertApplicationToSeller:' + a.id);
                e.preventDefault()
                onClick(a.id);
              }} style={{margin: '1rem', display: 'inline-block'}} type="button" value="Convert to seller" />
@@ -38,18 +37,6 @@ const mapStateToProps = ({applications, meta}, ownProps) => {
   };
 };
 
-//
-// function convertApplicationToSeller(id) {
-//   console.log('convertApplicationToSeller');
-//   return {
-//     type: CONVERT_TO_SELLER,
-//     id
-//   }
-// }
-// const convertApplicationToSeller = (id) => {
-//   console.log(id)
-// }
-
 const mapDispatchToProps = (dispatch) => {
   return {
     onClick: (id) => {
@@ -57,11 +44,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-
-// const state = {
-//   applications: {}
-//   meta: {},
-//   options: {}
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppList);

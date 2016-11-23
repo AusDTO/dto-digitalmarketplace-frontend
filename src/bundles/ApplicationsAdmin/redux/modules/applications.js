@@ -35,6 +35,5 @@ export const convertApplicationToSeller = (id) => {
     .then((json) => {
       dispatch(convertedSeller(id))
     })
-    // .then(() => dispatch(postSubmit()));
   }
 };

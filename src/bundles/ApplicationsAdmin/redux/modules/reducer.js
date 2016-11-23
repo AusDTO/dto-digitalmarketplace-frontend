@@ -1,8 +1,6 @@
-import { combineReducers } from 'redux'
-// import { createForms } from 'react-redux-form';
+import { combineReducers } from 'redux';
 
 import applications from './applications';
-// import form_options from '../../../../shared/reduxModules/form_options';
 
 export default combineReducers({
   applications,
