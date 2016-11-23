@@ -2,7 +2,7 @@ import React              from 'react';
 import { connect }        from 'react-redux';
 import { Link, Match }    from 'react-router';
 import { actions, Form }  from 'react-redux-form';
-import get                from 'lodash/get';
+import isEmpty            from 'lodash/isEmpty';
 import kebabCase          from 'lodash/kebabCase';
 
 import Layout         from '../../../../shared/Layout';
@@ -12,10 +12,29 @@ import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 
 import CaseStudyForm from '../CaseStudyForm';
 
-const getServiceList = (state, service) => {
-  let currentStudies = get(state, `caseStudyForm.casestudies.${service}`, {});
-  return Object.keys(currentStudies).map(key => currentStudies[key]);
+const getStudiesByService = (studies, service) => {
+  return Object
+    .keys(studies)
+    .filter(studyId => studies[studyId].service === service)
+    .reduce((list, guid, i, a) => {
+      list[guid] = studies[guid];
+      return list;
+    }, {})
 };
+
+const calcRemaining = (studies, services) => {
+  const serviceKeys = Object.keys(services);
+  const mappedServices = Object.keys(studies).map(studyId => studies[studyId].service);
+  const uniqueServices = mappedServices.reduce((unique, service) => {
+    if (unique.indexOf(service) === -1) {
+      return unique.concat(service);
+    }
+
+    return unique;
+  }, []);
+
+  return serviceKeys.filter(service => uniqueServices.indexOf(service) !== -1);
+}
 
 const DomainList = (props) => {
   const { 
@@ -23,20 +42,24 @@ const DomainList = (props) => {
     title,
     domainRoute,
     pathname,
-    getServiceList,
     router,
     buttonText,
     model,
     action,
     caseStudyForm,
+    getStudiesByService,
+    calcRemaining,
     onSubmit,
-    onCaseStudySubmit
+    onCaseStudySubmit,
+    onEditCaseStudy,
+    onAddCaseStudy
   } = props;
 
+  const studies         = caseStudyForm.casestudies;
   const serviceCount    = Object.keys(services).length;
-  const addedService    = Object.keys(caseStudyForm.casestudies);
-  const leftToAdd       = Object.keys(services).filter(service => addedService.indexOf(service) === -1);
-  const leftToAddCount  = leftToAdd.length;
+  const addedServices   = calcRemaining(studies, services);
+  const leftToAdd       = Object.keys(services).filter(service => addedServices.indexOf(service) === -1);
+  const leftToAddCount  = serviceCount - addedServices.length;
 
   if (!serviceCount) {
     return (
@@ -67,18 +90,36 @@ const DomainList = (props) => {
             <p>{leftToAddCount} services to add</p>
             <ul>
             {Object.keys(services).map((service, i) => {
-              let list = getServiceList(service);
+              let list = getStudiesByService(caseStudyForm.casestudies, service);
               return (
                 <li key={`casestudy.domain.${i}`}>
                   <h4>{service}</h4>
-                  {!!list.length && (
+                  {!isEmpty(list) && (
                     <ul>
-                      {list.map((study, i) => (
-                        <p key={`casestudy.${service}.${i}`}><b key={i}>{study.title}</b></p>
-                      ))}
+                      {Object.keys(list).map((guid, i) => {
+                        let study = list[guid];
+                        return (
+                          <p key={`casestudy.${service}.${guid}`}>
+                            <b key={i}>{study.title}</b>
+                            <Link to={`${pathname}/edit/${guid}`}>{
+                              ({ href, id, onClick }) =>
+                                <a href={href} id={`edit-${kebabCase(service)}-${i}`} onClick={(e) => {
+                                  onEditCaseStudy(study);
+                                  onClick(e);
+                                }}>Edit</a>
+                            }</Link>
+                          </p>
+                        )
+                      })}
                     </ul>
                   )}
-                  <Link id={`add-service-${kebabCase(service)}`} to={`${pathname}/add/${service}`}>Add case study</Link>
+                  <Link to={`${pathname}/add/${service}`}>{
+                    ({ href, id, onClick }) =>
+                      <a href={href} id={`add-service-${kebabCase(service)}`} onClick={(e) => {
+                        onAddCaseStudy();
+                        onClick(e);
+                      }}>Add case study</a>
+                  }</Link>
                 </li>
               )
               
@@ -90,7 +131,7 @@ const DomainList = (props) => {
               model={`${model}.casestudies`}
               id={`add-service-${kebabCase(leftToAdd[0])}`}
               messages={{
-                casestudies: `You must add case studies for each service. Remaining: ${leftToAdd.join(', ')}.`
+                casestudies: `You must add at least one case study for each service. Remaining: ${leftToAdd.join(', ')}.`
               }}
             />
 
@@ -112,7 +153,10 @@ const DomainList = (props) => {
         </Layout>
       )} />
       <Match pattern={`${pathname}/add/:service`} render={({ params }) => (
-        <CaseStudyForm model="casestudy" onSubmit={onCaseStudySubmit.bind(this, router, params.service)} formName="casestudy" />
+        <CaseStudyForm model="casestudy" onSubmit={onCaseStudySubmit.bind(this, router, params)} formName="casestudy" />
+      )} />
+      <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
+        <CaseStudyForm model="casestudy" mode="edit" onSubmit={onCaseStudySubmit.bind(this, router, params)} formName="casestudy" />
       )} />
     </div>
   )
@@ -134,17 +178,42 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...formProps(state, 'caseStudyForm'),
     ...ownProps,
-    getServiceList: getServiceList.bind(null, state)
+    getStudiesByService,
+    calcRemaining
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
+  function guid() {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+  }
+
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+
   return {
-    onCaseStudySubmit: (router, service, e, values) => {
+    onCaseStudySubmit: (router, params, e, values) => {
       e.preventDefault();
-      dispatch(actions.push(`caseStudyForm.casestudies.${service}[]`, values));
+      let { service, id } = params;
+
+      if (!id) {
+        id = guid();
+      }
+
+      const props = Object.assign({}, { service }, values)
+      dispatch(actions.change(`caseStudyForm.casestudies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
       router.transitionTo('/case-study');
+    },
+    onEditCaseStudy: (study) => {
+      dispatch(actions.change('casestudy', study));
+    },
+    onAddCaseStudy: () => {
+      dispatch(actions.reset('casestudy'));
     }
   }
 }
