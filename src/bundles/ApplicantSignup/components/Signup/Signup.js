@@ -14,7 +14,7 @@ import YourInfoForm         from '../../../SellerRegistration/components/YourInf
 import BusinessDetailsForm  from '../../../SellerRegistration/components/BusinessDetailsForm';
 import DomainSelector       from '../../../SellerRegistration/components/DomainSelector';
 import PricingForm          from '../../../SellerRegistration/components/PricingForm';
-import CaseStudyForm        from '../../../CaseStudy/components/CaseStudyForm';
+import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../../../SellerRegistration/components/Review';
 import Submit               from '../../../SellerRegistration/components/Submit';
 
@@ -34,7 +34,7 @@ class Signup extends React.Component {
     { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { label: 'Review your profile', component: Review, pattern: '/review' },
     { label: 'Submit', component: Submit, pattern: '/submit' },
   ]

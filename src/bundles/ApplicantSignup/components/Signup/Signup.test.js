@@ -224,7 +224,7 @@ test('without filterSteps', () => {
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
-  const CaseStudyForm = require('../../../CaseStudy/components/CaseStudyForm').default;
+  const DomainList = require('../../../CaseStudy/components/DomainList').default;
   const Review = require('../../../SellerRegistration/components/Review').default;
   const Submit = require('../../../SellerRegistration/components/Submit').default;
 
@@ -240,7 +240,7 @@ test('without filterSteps', () => {
     { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { label: 'Review your profile', component: Review, pattern: '/review' },
     { label: 'Submit', component: Submit, pattern: '/submit' },
   ];
