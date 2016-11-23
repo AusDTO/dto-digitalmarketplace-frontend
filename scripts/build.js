@@ -1,11 +1,26 @@
-// Do this as the first thing so that any code reading it knows the right env.
-process.env.NODE_ENV = 'production';
+var argv = require('yargs')
+  .usage('Usage: $0 [--dev]')
+  .describe('dev', 'Signify if we\'re running a dev build or not.')
+  .help('h').alias('h', 'help')
+  .argv;
+
+
+
 
 // Load environment variables from .env file. Surpress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
 require('dotenv').config({silent: true});
+
+// Do this as the first thing so that any code reading it knows the right env.
+process.env.NODE_ENV = 'production';
+var config = require('../config/webpack.config.prod');
+if (argv.dev) {
+  process.env.NODE_ENV = 'development';
+  config = require('../config/webpack.config.dev');
+}
+
 
 var chalk = require('chalk');
 var fs = require('fs-extra');
@@ -14,7 +29,6 @@ var filesize = require('filesize');
 var gzipSize = require('gzip-size').sync;
 var rimrafSync = require('rimraf').sync;
 var webpack = require('webpack');
-var config = require('../config/webpack.config.prod');
 var paths = require('../config/paths');
 var checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 var recursive = require('recursive-readdir');
@@ -122,12 +136,16 @@ function build(previousSizeMap) {
 
     console.log('File sizes after gzip:');
     console.log();
-    MultiStats.stats.forEach(stat => printFileSizes(stat, previousSizeMap))
+    if (Array.isArray(MultiStats.stats)) {
+      MultiStats.stats.forEach(stat => printFileSizes(stat, previousSizeMap))
+    } else {
+      printFileSizes(MultiStats, previousSizeMap);
+    }
     console.log();
 
     var openCommand = process.platform === 'win32' ? 'start' : 'open';
     var homepagePath = require(paths.appPackageJson).homepage;
-    var publicPath = config[0].output.publicPath;
+    var publicPath = Array.isArray(config) ? config[0].output.publicPath : config.output.publicPath;
     if (homepagePath && homepagePath.indexOf('.github.io/') !== -1) {
       // "homepage": "http://user.github.io/project"
       console.log('The project was built assuming it is hosted at ' + chalk.green(publicPath) + '.');
