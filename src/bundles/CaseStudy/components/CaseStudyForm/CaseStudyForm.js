@@ -37,10 +37,15 @@ class CaseStudyForm extends BaseForm {
       model,
       returnLink,
       mode,
-      onSubmit,
       form,
-      children
+      buttonText,
+      children,
+      onSubmit,
     } = this.props;
+
+    if (!buttonText) {
+      buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Case Study';
+    }
 
     return (
       <Layout>
@@ -58,9 +63,11 @@ class CaseStudyForm extends BaseForm {
             valid={form.valid}
             onCustomSubmit={onSubmit}
           >
+
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
+
             <Textfield
               model={`${model}.title`}
               name="title"
@@ -149,7 +156,7 @@ class CaseStudyForm extends BaseForm {
 
             {children}
 
-            <input type="submit" value={mode === 'edit' ? 'Save Changes' : 'Publish Case Study'} role="button" />
+            <input type="submit" value={buttonText} role="button" />
           </Form>
           {returnLink && <a href={returnLink}>Return without saving</a>}
         </article>

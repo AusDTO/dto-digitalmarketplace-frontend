@@ -111,7 +111,7 @@ const DomainList = (props) => {
                       {Object.keys(list).map((guid, i) => {
                         let study = list[guid];
                         return (
-                          <p key={`casestudy.${service}.${guid}`}>
+                          <li key={`casestudy.${service}.${guid}`}>
                             <b key={i}>{study.title}</b>
                             <Link to={`${pathname}/edit/${guid}`}>{
                               ({ href, id, onClick }) =>
@@ -120,7 +120,7 @@ const DomainList = (props) => {
                                   onClick(e);
                                 }}>Edit</a>
                             }</Link>
-                          </p>
+                          </li>
                         )
                       })}
                     </ul>
@@ -167,10 +167,28 @@ const DomainList = (props) => {
         </Layout>
       )} />
       <Match pattern={`${pathname}/add/:service`} render={({ params }) => (
-        <CaseStudyForm model="casestudy" onSubmit={onCaseStudySubmit.bind(this, router, params)} formName="casestudy" />
+
+        <CaseStudyForm
+          model="casestudy"
+          formName="casestudy"
+          buttonText="Preview case study"
+          onSubmit={onCaseStudySubmit.bind(this, router, params)}
+        />
+
       )} />
       <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
-        <CaseStudyForm model="casestudy" mode="edit" onSubmit={onCaseStudySubmit.bind(this, router, params)} formName="casestudy" />
+
+        <CaseStudyForm
+          model="casestudy"
+          formName="casestudy"
+          mode="edit"
+          buttonText="Preview case study"
+          onSubmit={onCaseStudySubmit.bind(this, router, params)}
+        />
+
+      )} />
+      <Match pattern={`${pathname}/view/:id`} render={({ params }) => (
+        <p>View {params.id}</p>
       )} />
     </div>
   )
