@@ -47,6 +47,7 @@ const DomainList = (props) => {
     model,
     action,
     caseStudyForm,
+    children,
     getStudiesByService,
     calcRemaining,
     onSubmit,
@@ -145,6 +146,8 @@ const DomainList = (props) => {
                 }
               }}
               onSubmit={onSubmit}>
+
+              {children}
 
               <input type="submit" role="button" value={buttonText} />
             </Form>

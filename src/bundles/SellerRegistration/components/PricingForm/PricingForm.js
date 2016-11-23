@@ -17,7 +17,7 @@ import { required }         from '../../../../validators';
 class PricingForm extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, title, buttonText, services, onSubmit } = this.props;
+    const { model, action, csrf_token, title, buttonText, services, children,  onSubmit } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {
@@ -98,6 +98,8 @@ class PricingForm extends BaseForm {
                 </div>
               </fieldset>
             ))}
+
+            {children}
 
             <input type="submit" value={buttonText} role="button" />
           </Form>
