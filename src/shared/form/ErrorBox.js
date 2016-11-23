@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import get from 'lodash/get';
 
 import { getInvalidFields } from '../reduxModules/errorMessageSelector';
 
@@ -59,7 +60,7 @@ export const mapStateToProps = (state, { focusOnMount, model }) => {
     invalidFields: getInvalidFields(state, model),
     // Currently does nada, since cDM since render is not blocked internally.
     focusOnMount,
-    form: state.forms[model].$form
+    form: get(state, `forms.${model}.$form`, {})
   }
 }
 
