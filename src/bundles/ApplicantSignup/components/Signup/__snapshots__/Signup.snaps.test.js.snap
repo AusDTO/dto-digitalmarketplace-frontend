@@ -408,6 +408,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Digital Services
+            ✓
           </a>
         </li>
         <li>

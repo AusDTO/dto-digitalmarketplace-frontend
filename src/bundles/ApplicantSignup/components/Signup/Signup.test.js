@@ -80,7 +80,10 @@ test('elementProps onClick', () => {
       transitionTo
     },
     dispatch,
-    store
+    store,
+    forms: {
+      domainSelectorForm: {}
+    }
   }
 
   const wrapper = mount(
@@ -92,7 +95,7 @@ test('elementProps onClick', () => {
   onClick(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(1);
+  expect(dispatch).toHaveBeenCalledTimes(2);
 });
 
 
@@ -119,7 +122,10 @@ test('elementProps onSubmit', () => {
       transitionTo
     },
     dispatch,
-    store
+    store,
+    forms: {
+      domainSelectorForm: {}
+    }
   }
 
   const wrapper = mount(
@@ -131,7 +137,7 @@ test('elementProps onSubmit', () => {
   onSubmit(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(1);
+  expect(dispatch).toHaveBeenCalledTimes(2);
 });
 
 test('elementProps onSubmit with no event', () => {
@@ -153,7 +159,10 @@ test('elementProps onSubmit with no event', () => {
       transitionTo
     },
     dispatch,
-    store
+    store,
+    forms: {
+      domainSelectorForm: {}
+    }
   }
 
   const wrapper = mount(
@@ -164,7 +173,7 @@ test('elementProps onSubmit with no event', () => {
 
   onSubmit();
 
-  expect(dispatch).toHaveBeenCalledTimes(1);
+  expect(dispatch).toHaveBeenCalledTimes(2);
 });
 
 test('elementProps onSubmit with no steps left', () => {
@@ -190,7 +199,10 @@ test('elementProps onSubmit with no steps left', () => {
       transitionTo
     },
     dispatch,
-    store
+    store,
+    forms: {
+      domainSelectorForm: {}
+    }
   }
 
   const wrapper = mount(
@@ -202,7 +214,7 @@ test('elementProps onSubmit with no steps left', () => {
   onSubmit(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(1);
+  expect(dispatch).toHaveBeenCalledTimes(2);
 });
 
 test('without filterSteps', () => {
@@ -239,7 +251,10 @@ test('without filterSteps', () => {
     },
     router: {},
     dispatch: () => {},
-    store
+    store,
+    forms: {
+      domainSelectorForm: {}
+    }
   }
 
   const wrapper = mount(
@@ -284,7 +299,10 @@ test('filterSteps', () => {
     router: {},
     filterSteps,
     dispatch: () => {},
-    store
+    store,
+    forms: {
+      domainSelectorForm: {}
+    }
   }
 
   const wrapper = mount(

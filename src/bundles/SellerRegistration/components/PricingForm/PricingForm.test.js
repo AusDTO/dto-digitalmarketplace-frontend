@@ -19,7 +19,7 @@ test('PricingForm renders a notice that domains are required', () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <PricingForm />
+      <PricingForm services={{}} />
     </Provider>
   );
 
@@ -28,22 +28,20 @@ test('PricingForm renders a notice that domains are required', () => {
 });
 
 test('PricingForm renders price fields when domains are present', () => {
+  const services = {
+    'User research': true,
+    'Content development': true,
+    'Content management': true
+  }
   const store = createStore({
     form_options: {
       csrf_token: 'abc'
-    },
-    domainSelectorForm: {
-      services: {  
-        'User research': true,
-        'Content development (copywriting, translation, illustration, photography, video and animation)': true,
-        'Content management': true
-      }
     }
   });
 
   const component = renderer.create(
     <Provider store={store}>
-      <PricingForm />
+      <PricingForm services={services} />
     </Provider>
   );
 
