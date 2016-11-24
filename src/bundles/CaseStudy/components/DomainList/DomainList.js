@@ -195,23 +195,37 @@ const DomainList = (props) => {
       )} />
       <Match pattern={`${pathname}/add/:service`} render={({ params }) => (
 
-        <CaseStudyForm
-          model="casestudy"
-          formName="casestudy"
-          buttonText="Preview case study"
-          onSubmit={onCaseStudySubmit.bind(this, params)}
-        />
+        <div className="row">
+          <div className="col-xs-12">
+            <CaseStudyForm
+              model="casestudy"
+              formName="casestudy"
+              buttonText="Save & Preview"
+              returnLink={() => (
+                <Link to={pathname}>Return without saving</Link>
+              )}
+              onSubmit={onCaseStudySubmit.bind(this, params)}
+            />
+          </div>
+        </div>
 
       )} />
       <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
 
-        <CaseStudyForm
-          model="casestudy"
-          formName="casestudy"
-          mode="edit"
-          buttonText="Preview case study"
-          onSubmit={onCaseStudySubmit.bind(this, params)}
-        />
+        <div className="row">
+          <div className="col-xs-12">
+            <CaseStudyForm
+              model={`caseStudyForm.casestudies.${params.id}`}
+              formName={`caseStudyForm.casestudies.${params.id}`}
+              mode="edit"
+              buttonText="Save & Preview"
+              returnLink={() => (
+                <Link to={pathname}>Return without saving</Link>
+              )}
+              onSubmit={onCaseStudySubmit.bind(this, params)}
+            />
+          </div>
+        </div>
 
       )} />
       <Match pattern={`${pathname}/view/:id`} render={({ params }) => (
