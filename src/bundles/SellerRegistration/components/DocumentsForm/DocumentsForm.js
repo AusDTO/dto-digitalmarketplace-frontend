@@ -10,6 +10,7 @@ import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
+import StatefulError from '../../../../shared/form/StatefulError';
 
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
@@ -23,6 +24,10 @@ class DocumentsForm extends BaseForm {
     model: React.PropTypes.string.isRequired
   }
 
+  state = {
+    errors: {}
+  }
+
   files = [
     { 'label': 'Finanical Statement', 'id': 'financial' },
     { 'label': 'Public Liability Insurance', 'id': 'liability' },
@@ -34,10 +39,13 @@ class DocumentsForm extends BaseForm {
     e.preventDefault();
     const { dispatch, model, action, csrf_token } = this.props;
     const file = this.refs[ref].files[0];
-    
+
     this.setState({
-      [ref]: true
+      [ref]: true,
+      errors: Object.assign({}, this.state.errors, {[ref]: void 0})
     })
+
+    dispatch(actions.remove(`${model}.documents.${ref}`))
 
     let data = new FormData()
     data.append(ref, file)
@@ -49,12 +57,26 @@ class DocumentsForm extends BaseForm {
         'X-CSRFToken': csrf_token
       }
     })
+    .then(response => {
+      if (response.status >= 200 && response.status < 300) {
+        return response
+      } else {
+        var error = new Error(response.statusText)
+        error.response = response
+        throw error
+      }
+    })
     .then(r => r.text())
     .then((filename) => {
       this.setState({
         [ref]: void 0
       });
       dispatch(actions.change(`${model}.documents.${ref}`, filename))
+    })
+    .catch((error) => {
+      this.setState({
+        [ref]: void 0,
+        errors: {[ref]: true}})
     });
   }
 
@@ -77,6 +99,14 @@ class DocumentsForm extends BaseForm {
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
+
+          <StatefulError
+            model={`${model}.documents`}
+            id="documents"
+            messages={{
+              documents: 'Please upload all documents.'
+            }}
+          />
           <Form model={model}
             action={action}
             method="post"
@@ -84,6 +114,9 @@ class DocumentsForm extends BaseForm {
             component={SubmitForm}
             valid={form.valid}
             onCustomSubmit={onSubmit}
+            validators={{
+              documents: (documents) => Object.keys(documents).length === 4
+            }}
           >
             {
               csrf_token && (
@@ -101,6 +134,7 @@ class DocumentsForm extends BaseForm {
                     </p>
                     <div>
                       {this.state[key] && 'Uploading...'}
+                      {this.state.errors[key] && 'There was an error uploading the file'}
                       {documentsForm.documents[key] && <p><a href={`${pathname.slice(1)}/${documentsForm.documents[key]}`} rel="external">{file.label}</a></p>}
                     </div>
                   </div>
