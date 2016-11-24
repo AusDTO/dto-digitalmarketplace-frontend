@@ -45,7 +45,7 @@ class DocumentsForm extends BaseForm {
       errors: Object.assign({}, this.state.errors, {[ref]: void 0})
     })
 
-    dispatch(actions.remove(`${model}.documents.${ref}`))
+    dispatch(actions.omit(`${model}.documents.${ref}`))
 
     let data = new FormData()
     data.append(ref, file)
