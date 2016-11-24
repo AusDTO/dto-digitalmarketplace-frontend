@@ -14,12 +14,12 @@ $ yarn install
 
 Run local environment
 ```bash
-$ npm start
+$ yarn start
 ```
 
 Run tests
 ```bash
-$ npm test
+$ yarn test
 ```
 
 ### Running the server side rendering service
@@ -28,16 +28,17 @@ _Note: This is only needed for server side rendering, not required for local dev
 
 Install dependencies
 ```bash
-$ npm install
+$ yarn install
 ```
 
+Generate the assets
 ```bash
-$ npm run build
+$ yarn build
 ```
 
 Run local rendering service
 ```bash
-$ npm run server
+$ yarn server
 ```
 
 
@@ -45,5 +46,30 @@ $ npm run server
 
 Run:
 ```bash
-$ npm run build
+$ yarn build
 ```
+
+### Generate development assets
+
+This is handy when running the server locally for integration.
+
+Run:
+```bash
+$ yarn build:development
+```
+
+This command also accepts the `bundle` argument
+
+```bash
+$ yarn build:development -- --bundle <bundle-slug>
+```
+
+### Compile only one bundle
+
+Helpful when you're trying to run an isolated bundle.
+
+Run:
+```bash
+$ yarn start -- --bundle <bundle-slug>
+```
+
