@@ -13,7 +13,6 @@ import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
 
-
 const getStudiesByService = (studies, service) => {
   return Object
     .keys(studies)
