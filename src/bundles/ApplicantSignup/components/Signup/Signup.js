@@ -89,24 +89,31 @@ class Signup extends React.Component {
 
     return (
       <div className="row">
-        <aside className="col-xs-12 col-sm-4">
-          <nav className="local-nav step-navigation">
-            <ul>
-              {this.steps.map(({ pattern, label, formKey }, i) => {
-                let isValid = formKey && validForms[formKey];
-                // If a step doesnt have a formKey and we've passed it, tick it!
-                if (!formKey && currentStepIdx > i) {
-                  isValid = true;
-                }
-                return (
-                  <li key={i}>
-                    <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
-        </aside>
+        <Match pattern="/:route/:subroute?" render={({ params }) => {
+          if (params.subroute === 'undefined') {
+            return (
+              <aside className="col-xs-12 col-sm-4">
+                <nav className="local-nav step-navigation">
+                  <ul>
+                    {this.steps.map(({ pattern, label, formKey }, i) => {
+                      let isValid = formKey && validForms[formKey];
+                      // If a step doesnt have a formKey and we've passed it, tick it!
+                      if (!formKey && currentStepIdx > i) {
+                        isValid = true;
+                      }
+                      return (
+                        <li key={i}>
+                          <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </nav>
+              </aside>
+            )
+          }
+          return null;
+        }} />
         <article className="col-xs-12 col-sm-8">
           {this.steps.map(({pattern, exact, component, label}, i) => {
             return (
