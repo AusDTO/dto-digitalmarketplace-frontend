@@ -1,5 +1,10 @@
 var path = require('path');
 var fs = require('fs');
+var argv = require('yargs')
+  .usage('Usage: $0 [--bundle SLUG]')
+  .describe('bundle', 'The single bundle to compile (based on slug)')
+  .help('h').alias('h', 'help')
+  .argv;
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
@@ -25,7 +30,8 @@ var nodePaths = (process.env.NODE_PATH || '')
   .map(resolveApp);
 
 // config after eject: we're in ./config/
-module.exports = {
+
+var config = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
@@ -61,3 +67,20 @@ module.exports = {
     'applications-admin': require(resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdmin.json')),
   }
 };
+
+function filterObjectByBundle(subject, key) {
+  return Object.keys(subject).filter(function (bundle) {
+    return bundle === key;
+  })
+  .reduce(function (entries, bundle) {
+    entries[bundle] = subject[bundle];
+    return entries;
+  }, {});
+}
+
+if (argv.bundle) {
+  config.entryPoints = filterObjectByBundle(config.entryPoints, argv.bundle);
+  config.entryPointMocks = filterObjectByBundle(config.entryPointMocks, argv.bundle);
+}
+
+module.exports = config;
