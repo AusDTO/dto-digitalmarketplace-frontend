@@ -65,7 +65,8 @@ const DomainList = (props) => {
     onSubmit,
     onCaseStudySubmit,
     onEditCaseStudy,
-    onAddCaseStudy
+    onAddCaseStudy,
+    onDeleteCaseStudy
   } = props;
 
   onCaseStudySubmit = onCaseStudySubmit.bind(this, {
@@ -106,26 +107,47 @@ const DomainList = (props) => {
             <ErrorBox focusOnMount={true} model={model}/>
 
             <p>{leftToAddCount} services to add</p>
-            <ul>
+
             {Object.keys(services).map((service, i) => {
               let list = getStudiesByService(caseStudyForm.casestudies, service);
               return (
-                <li key={`casestudy.domain.${i}`}>
+                <section key={`casestudy.domain.${i}`}>
                   <h4>{service}</h4>
                   {!isEmpty(list) && (
-                    <ul>
+                    <ul className="bordered-list">
                       {Object.keys(list).map((guid, i) => {
                         let study = list[guid];
                         return (
-                          <li key={`casestudy.${service}.${guid}`}>
-                            <b key={i}>{study.title}</b>
-                            <Link to={`${pathname}/edit/${guid}`}>{
-                              ({ href, id, onClick }) =>
-                                <a href={href} id={`edit-${kebabCase(service)}-${i}`} onClick={(e) => {
-                                  onEditCaseStudy(study);
-                                  onClick(e);
-                                }}>Edit</a>
-                            }</Link>
+                          <li key={`casestudy.${service}.${guid}`} className="bordered-list__item row">
+                            <div className="col-xs-6">
+                              <Link to={`${pathname}/edit/${guid}`}>{
+                                ({ href, id, onClick }) =>
+                                  <a
+                                    href={href}
+                                    id={`edit-${kebabCase(service)}-${i}`}
+                                    onClick={(e) => {
+                                      onEditCaseStudy(study);
+                                      onClick(e);
+                                    }}
+                                    children={study.title}
+                                  />
+                              }</Link>
+                              <p key={i}></p>
+                            </div>
+                            <div className="col-xs-6" style={{textAlign: 'right'}}>
+                              <Link to={`${pathname}/delete/${guid}`}>{
+                                ({ href, id, onClick }) =>
+                                  <a
+                                    href={href}
+                                    id={`delete-${kebabCase(service)}-${i}`}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      onDeleteCaseStudy(dispatchActions, guid);
+                                  }}>
+                                    Delete
+                                  </a>
+                              }</Link>
+                            </div>
                           </li>
                         )
                       })}
@@ -138,11 +160,10 @@ const DomainList = (props) => {
                         onClick(e);
                       }}>Add case study</a>
                   }</Link>
-                </li>
+                </section>
               )
               
             })}
-            </ul>
 
             {/* This error will never actually render */}
             <StatefulError
@@ -242,6 +263,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     onAddCaseStudy: () => {
       dispatch(actions.reset('casestudy'));
+    },
+    onDeleteCaseStudy: (dispatchActions, id) => {
+      dispatch(actions.omit('caseStudyForm.casestudies', id));
+      dispatch(dispatchActions.submitApplication());
     }
   }
 }
