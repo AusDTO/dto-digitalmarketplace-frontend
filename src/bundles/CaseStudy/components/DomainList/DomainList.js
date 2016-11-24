@@ -198,37 +198,29 @@ const DomainList = (props) => {
       )} />
       <Match pattern={`${pathname}/add/:service`} render={({ params }) => (
 
-        <div className="row">
-          <div className="col-xs-12">
-            <CaseStudyForm
-              model="casestudy"
-              formName="casestudy"
-              buttonText="Save & Preview"
-              returnLink={() => (
-                <Link to={pathname}>Return without saving</Link>
-              )}
-              onSubmit={onCaseStudySubmit.bind(this, params)}
-            />
-          </div>
-        </div>
+        <CaseStudyForm
+          model="casestudy"
+          formName="casestudy"
+          buttonText="Save & Preview"
+          returnLink={() => (
+            <Link to={pathname}>Return without saving</Link>
+          )}
+          onSubmit={onCaseStudySubmit.bind(this, params)}
+        />
 
       )} />
       <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
 
-        <div className="row">
-          <div className="col-xs-12">
-            <CaseStudyForm
-              model={`caseStudyForm.casestudies.${params.id}`}
-              formName={`caseStudyForm.casestudies.${params.id}`}
-              mode="edit"
-              buttonText="Save & Preview"
-              returnLink={() => (
-                <Link to={pathname}>Return without saving</Link>
-              )}
-              onSubmit={onCaseStudySubmit.bind(this, params)}
-            />
-          </div>
-        </div>
+        <CaseStudyForm
+          model={`caseStudyForm.casestudies.${params.id}`}
+          formName={`caseStudyForm.casestudies.${params.id}`}
+          mode="edit"
+          buttonText="Save & Preview"
+          returnLink={() => (
+            <Link to={pathname}>Return without saving</Link>
+          )}
+          onSubmit={onCaseStudySubmit.bind(this, params)}
+        />
 
       )} />
       <Match pattern={`${pathname}/view/:id?`} render={({ params }) => {
@@ -239,13 +231,7 @@ const DomainList = (props) => {
         return (
           <div>
             {currentStudy.title
-              ? (
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <View {...currentStudy} onSubmit={onCaseStudySubmit.bind(this, params)} />
-                    </div>
-                  </div>
-                )
+              ? <View {...currentStudy} onSubmit={onCaseStudySubmit.bind(this, params)} />
               : <Redirect to={pathname} />
             }
           </div>
