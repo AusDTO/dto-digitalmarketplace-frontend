@@ -1,6 +1,6 @@
-import React              from 'react';
-import { connect }        from 'react-redux';
-import { Link, Match }    from 'react-router';
+import React                     from 'react';
+import { connect }               from 'react-redux';
+import { Link, Match, Redirect } from 'react-router';
 import { actions, Form }  from 'react-redux-form';
 import isEmpty            from 'lodash/isEmpty';
 import kebabCase          from 'lodash/kebabCase';
@@ -11,6 +11,8 @@ import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 
 import CaseStudyForm from '../CaseStudyForm';
+import View from '../View';
+
 
 const getStudiesByService = (studies, service) => {
   return Object
@@ -59,6 +61,7 @@ const DomainList = (props) => {
     action,
     caseStudyForm,
     children,
+    currentStudy,
     actions: dispatchActions,
     getStudiesByService,
     calcRemaining,
@@ -70,7 +73,8 @@ const DomainList = (props) => {
   } = props;
 
   onCaseStudySubmit = onCaseStudySubmit.bind(this, {
-    router, 
+    router,
+    pathname,
     dispatchActions
   });
 
@@ -228,9 +232,26 @@ const DomainList = (props) => {
         </div>
 
       )} />
-      <Match pattern={`${pathname}/view/:id`} render={({ params }) => (
-        <p>View {params.id}</p>
-      )} />
+      <Match pattern={`${pathname}/view/:id?`} render={({ params }) => {
+        if (params.id && params.id !== 'undefined') {
+          // If `id` is present, load from pre-saved state.
+          currentStudy = caseStudyForm.casestudies[params.id];
+        }
+        return (
+          <div>
+            {currentStudy.title
+              ? (
+                  <div className="row">
+                    <div className="col-xs-12">
+                      <View {...currentStudy} onSubmit={onCaseStudySubmit.bind(this, params)} />
+                    </div>
+                  </div>
+                )
+              : <Redirect to={pathname} />
+            }
+          </div>
+        )
+      }} />
     </div>
   )
  
@@ -251,6 +272,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...formProps(state, 'caseStudyForm'),
     ...ownProps,
+    currentStudy: state.casestudy,
     getStudiesByService,
     calcRemaining
   };
@@ -258,7 +280,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onCaseStudySubmit: ({ router, dispatchActions }, params, e, values) => {
+    onCaseStudySubmit: ({ router, dispatchActions, pathname }, params, e, values) => {
       e.preventDefault();
       let { service, id } = params;
 
@@ -270,7 +292,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.change(`caseStudyForm.casestudies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
       dispatch(dispatchActions.submitApplication());
-      router.transitionTo('/case-study');
+      router.transitionTo(`${pathname}/view/${id}`);
     },
     onEditCaseStudy: (study) => {
       dispatch(actions.change('casestudy', study));

@@ -130,9 +130,10 @@ View.propTypes = {
   email: PropTypes.string
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     ...state.casestudy,
+    ...ownProps,
     hasReference: hasReference(state.casestudy, ['name', 'role', 'phone', 'email'])
   }
 }
