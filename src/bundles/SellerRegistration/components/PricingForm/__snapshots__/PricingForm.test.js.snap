@@ -92,19 +92,19 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
       <fieldset
         className="field">
         <legend>
-          Content development (copywriting, translation, illustration, photography, video and animation)
+          Content development
         </legend>
         <div
           className="row">
           <div
             className="col-sm-5 col-xs-12">
             <label
-              htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation-minprice">
+              htmlFor="content-development-minprice">
               Min. Daily Price
             </label>
             <input
-              id="content-development-copywriting-translation-illustration-photography-video-and-animation-minprice"
-              name="services.Content development (copywriting, translation, illustration, photography, video and animation).minPrice"
+              id="content-development-minprice"
+              name="services.Content development.minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -115,12 +115,12 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
           <div
             className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="content-development-copywriting-translation-illustration-photography-video-and-animation-maxprice">
+              htmlFor="content-development-maxprice">
               Max. Daily Price
             </label>
             <input
-              id="content-development-copywriting-translation-illustration-photography-video-and-animation-maxprice"
-              name="services.Content development (copywriting, translation, illustration, photography, video and animation).maxPrice"
+              id="content-development-maxprice"
+              name="services.Content development.maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}

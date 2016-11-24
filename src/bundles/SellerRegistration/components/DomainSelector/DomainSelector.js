@@ -15,7 +15,7 @@ import domains from './domains';
 class DomainSelector extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, title, buttonText, onSubmit } = this.props;
+    const { model, action, csrf_token, title, buttonText, children, onSubmit } = this.props;
 
     return (
       <Layout>
@@ -74,6 +74,9 @@ class DomainSelector extends BaseForm {
                 </fieldset>
               )
             })}
+
+            {children}
+
             <input type="submit" value={buttonText}role="button" />
           </Form>
         </article>

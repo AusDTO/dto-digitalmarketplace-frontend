@@ -40,7 +40,7 @@ export const submitApplication = () => {
       application
     };
 
-    return api(window.location.pathname, {
+    return api(form_options.action, {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {

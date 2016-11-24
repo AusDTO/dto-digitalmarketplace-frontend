@@ -14,7 +14,7 @@ import YourInfoForm         from '../../../SellerRegistration/components/YourInf
 import BusinessDetailsForm  from '../../../SellerRegistration/components/BusinessDetailsForm';
 import DomainSelector       from '../../../SellerRegistration/components/DomainSelector';
 import PricingForm          from '../../../SellerRegistration/components/PricingForm';
-import CaseStudyForm        from '../../../CaseStudy/components/CaseStudyForm';
+import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../../../SellerRegistration/components/Review';
 import Submit               from '../../../SellerRegistration/components/Submit';
 
@@ -34,7 +34,7 @@ class Signup extends React.Component {
     { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { label: 'Case Study', component: CaseStudyForm, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { label: 'Review your profile', component: Review, pattern: '/review' },
     { label: 'Submit', component: Submit, pattern: '/submit' },
   ]
@@ -81,10 +81,11 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { validForms = {} } = this.props;
+    const { validForms = {}, forms, router } = this.props;
     const currentStepIdx = this.currentStepIndex;
     const formSteps = this.steps.map(step => step.formKey).filter(s => s);
     const applicationValid = formSteps.length === Object.keys(validForms).length;
+    const { services = {} } = forms.domainSelectorForm;
 
     return (
       <div className="row">
@@ -99,7 +100,7 @@ class Signup extends React.Component {
                 }
                 return (
                   <li key={i}>
-                    <Link activeClassName="is-active is-current" to={pattern}>{label}{isValid && '\u2713'}</Link>
+                    <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
                   </li>
                 )
               })}
@@ -109,14 +110,20 @@ class Signup extends React.Component {
         <article className="col-xs-12 col-sm-8">
           {this.steps.map(({pattern, exact, component, label}, i) => {
             return (
-              <Match key={i} pattern={pattern} exactly render={(routerProps) => {
+              <Match key={i} pattern={pattern} render={(routerProps) => {
                 const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
                 const props = Object.assign({},
                   routerProps,
                   {
                     applicationValid,
+                    services,
+                    router,
+                    nextRoute: this.nextStep && this.nextStep.pattern,
                     title: label,
-                    buttonText: 'Save & Continue'
+                    buttonText: 'Save & Continue',
+                    actions: {
+                      submitApplication
+                    }
                   },
                   this.elementProps
                 );

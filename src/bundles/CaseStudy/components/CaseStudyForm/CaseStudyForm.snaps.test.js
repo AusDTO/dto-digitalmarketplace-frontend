@@ -7,9 +7,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
 import renderer from 'react-test-renderer';
 
-import CaseStudyForm, { Textfield } from './CaseStudyForm';
-import StepOne from './StepOne';
-import StepTwo from './StepTwo';
+import CaseStudyForm from './CaseStudyForm';
 import sampleState from './CaseStudyForm.json';
 import createStore from '../../redux/create';
 

@@ -33,7 +33,6 @@ test('mapStateToProps', () => {
     mode: 'add', 
     errors: [], 
     returnLink: void 0,
-    maxSteps: 2,
     caseStudyForm: void 0,
     router: {}
   };

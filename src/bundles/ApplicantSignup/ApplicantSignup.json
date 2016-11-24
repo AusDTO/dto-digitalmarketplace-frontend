@@ -15,10 +15,33 @@
     "website": "website",
     "linkedin": "linkedin",
     "address": {
-      "addressLine": "data_addressLine",
-      "suburb": "St Ives",
-      "state": "NSW",
-      "postalCode": "2000"
+        "addressLine": "241 Commonwealth Street",
+        "suburb": "Sydney",
+        "state": "NSW",
+        "postalCode": "2000"
+    },
+    "services": {
+        "User research": true,
+        "Development": true,
+        "Data science": true,
+        "Ethical Hacker": true,
+        "Tech support": true
+    },
+    "casestudies": {
+        "f29a3cbd-5d76-4fb1-f4ea-40e1b196a84e": {
+            "service": "User research",
+            "title": "User Research Role",
+            "client": "DTA",
+            "timeframe": "May 2016",
+            "opportunity": "Some blurb about the opportunity",
+            "approach": "Some blurb about the approach",
+            "outcome": [
+                "First Outcome"
+            ],
+            "projectLinks": [
+              "http://google.com"
+            ]
+        }
     }
-  }
+}
 }

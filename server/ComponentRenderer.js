@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { ServerRouter, createServerRenderContext } from 'react-router'
-import _ from 'lodash'
+import isEmpty from 'lodash/isEmpty';
 
 export default class ComponentRenderer {
 
@@ -11,7 +11,7 @@ export default class ComponentRenderer {
     // Detect bad module
     // If file exists require will return an object even if it exports nothing
     // Ensure we have something to work with
-    if (_.isEmpty(element)) {
+    if (isEmpty(element)) {
       throw new Error(`File did not export anything: '${pathToSource}'`);
     }
 

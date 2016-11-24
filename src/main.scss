@@ -220,3 +220,20 @@ form {
   }
 
  }
+
+.bordered-list {
+  margin: 0 0 1em;
+  padding: 0;
+  border-top: solid 1px #979797;
+
+  &__item {
+    list-style: none;
+    margin: 0;
+    border-bottom: solid 1px #979797;
+    padding: 1rem 0;
+
+    p {
+      margin: 0;
+    }
+  }
+}

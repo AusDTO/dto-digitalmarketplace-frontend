@@ -38,6 +38,9 @@ export default combineReducers({
       pricing: {}
     },
     caseStudyForm: {
+      casestudies: {}
+    },
+    casestudy: {
       title: '',
       client: '',
       timeframe: '',
@@ -45,6 +48,6 @@ export default combineReducers({
       approach: '',
       outcome: [],
       projectLinks: []
-    },
+    }
   })
 })
