@@ -100,7 +100,7 @@ class Signup extends React.Component {
                 }
                 return (
                   <li key={i}>
-                    <Link activeClassName="is-active is-current" to={pattern}>{label}{isValid && '\u2713'}</Link>
+                    <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
                   </li>
                 )
               })}
@@ -118,7 +118,7 @@ class Signup extends React.Component {
                     applicationValid,
                     services,
                     router,
-                    nextRoute: this.nextStep.pattern,
+                    nextRoute: this.nextStep && this.nextStep.pattern,
                     title: label,
                     buttonText: 'Save & Continue',
                     actions: {
