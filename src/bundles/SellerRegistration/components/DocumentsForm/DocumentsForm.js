@@ -35,21 +35,21 @@ class DocumentsForm extends BaseForm {
     { 'label': 'Signed copy of Deed of Standing Offer', 'id': 'deed' },
   ]
 
-  onUpload(ref, e) {
+  onUpload(id, e) {
     e.preventDefault();
     const { dispatch, model, action, csrf_token } = this.props;
-    const file = this.refs[ref].files[0];
+    const file = this.state[id].file;
 
     this.setState({
-      [ref]: true,
-      errors: Object.assign({}, this.state.errors, {[ref]: void 0})
+      [id]: Object.assign({}, this.state[id], {'uploading': true, 'file': void 0}),
+      errors: Object.assign({}, this.state.errors, {[id]: void 0})
     })
 
-    dispatch(actions.omit(`${model}.documents.${ref}`))
+    dispatch(actions.omit(`${model}.documents`, id))
 
     let data = new FormData()
-    data.append(ref, file)
-    fetch(`${action}/${ref}`, {
+    data.append(id, file)
+    fetch(`${action}/${id}`, {
       method: 'POST',
       body: data,
       credentials: 'same-origin',
@@ -69,24 +69,31 @@ class DocumentsForm extends BaseForm {
     .then(r => r.text())
     .then((filename) => {
       this.setState({
-        [ref]: void 0
+      [id]: Object.assign({}, this.state[id], {'uploading': false})
       });
-      dispatch(actions.change(`${model}.documents.${ref}`, filename))
+      dispatch(actions.change(`${model}.documents.${id}`, filename))
     })
     .catch((error) => {
       this.setState({
-        [ref]: void 0,
-        errors: {[ref]: true}})
+        [id]: void 0,
+        errors: {[id]: true}})
     });
   }
 
-  onReset(ref, e) {
+  onReset(id, e) {
     e.preventDefault();
     const { dispatch, model } = this.props;
-    this.refs[ref].value = '';
-    dispatch(actions.change(`${model}.${ref}`, ''))
+    dispatch(actions.omit(`${model}.documents`, id))
     this.setState({
-      [ref]: void 0
+      [id]: Object.assign({}, this.state[id], {'file': void 0})
+    })
+  }
+
+  onChange(id, e) {
+    e.preventDefault();
+    this.setState({
+      [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
+      errors: {[id]: void 0}
     })
   }
 
@@ -125,22 +132,25 @@ class DocumentsForm extends BaseForm {
 
             {this.files.map((file, i) => {
               const key = file.id;
+              const fieldState = this.state[key] || {}
+              const doc = documentsForm.documents[key]
+              const errors = this.state.errors[key]
               return (
                 <div key={key} className="callout">
                   <label htmlFor={key}>{file.label}</label>
                   <div>
                     <p>
-                      <input type="file" id={key} name={key} ref={key} />
+                      <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>
                     </p>
                     <div>
-                      {this.state[key] && 'Uploading...'}
-                      {this.state.errors[key] && 'There was an error uploading the file'}
-                      {documentsForm.documents[key] && <p><a href={`${pathname.slice(1)}/${documentsForm.documents[key]}`} rel="external">{file.label}</a></p>}
+                      {fieldState.uploading && 'Uploading...'}
+                      {errors && 'There was an error uploading the file'}
+                      {doc && <p><a href={`${pathname.slice(1)}/${documentsForm.documents[key]}`} rel="external">{file.label}</a></p>}
                     </div>
                   </div>
                   <div className="actions">
-                    <button type="submit" onClick={this.onUpload.bind(this, key)}>Upload</button>
-                    {(documentsForm.documents[key] || serverRender) && <button type="reset" onClick={this.onReset.bind(this, key)}>Reset</button>}
+                    {fieldState.file && <button type="submit" onClick={this.onUpload.bind(this, key)}>Upload</button>}
+                    {doc && <button type="reset" onClick={this.onReset.bind(this, key)}>Remove</button>}
                   </div>
                 </div>
               )
