@@ -22,7 +22,12 @@ const getHashedFilename = (key) => {
 
   let filename = key;
   if (key in assetsByChunkName) {
-    filename = assetsByChunkName[key].find(asset => asset.match(/\.js$/));
+    const chunk = assetsByChunkName[key];
+    if (Array.isArray(chunk)) {
+      filename = assetsByChunkName[key].find(asset => asset.match(/\.js$/));  
+    } else {
+      filename = chunk;
+    }
   }
 
   contentHashCache[key] = filename;

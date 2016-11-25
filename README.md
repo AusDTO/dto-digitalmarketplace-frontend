@@ -64,6 +64,11 @@ This command also accepts the `bundle` argument
 $ yarn build:development -- --bundle <bundle-slug>
 ```
 
+To run a hot reload server run:
+```
+yarn server:development
+```
+
 ### Compile only one bundle
 
 Helpful when you're trying to run an isolated bundle.
