@@ -31,6 +31,7 @@
     "jest": "17.0.3",
     "json-loader": "0.5.4",
     "node-sass": "3.10.1",
+    "nodemon": "1.11.0",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
     "postcss-loader": "0.13.0",
@@ -88,6 +89,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
     "server": "node build/render-server.js",
+    "server:development": "nodemon build/render-server.js --watch build/render-server.js",
     "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js"
   },
   "jest": {
