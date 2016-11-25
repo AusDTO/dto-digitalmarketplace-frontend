@@ -37,7 +37,7 @@ app.get('/', function (req, res) {
 
 app.post('/render', renderRoute);
 
-const server = app.listen(process.env.PORT || 63578, function() {
+const server = app.listen(process.env.PORT || 6000, function() {
   console.log('Started server at port %s', server.address().port);
 });
 
