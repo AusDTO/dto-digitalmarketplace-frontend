@@ -10,6 +10,8 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 
+import ProgressBar    from '../../../../shared/ProgressBar';
+
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
 
@@ -110,6 +112,7 @@ const DomainList = (props) => {
             <ErrorBox focusOnMount={true} model={model}/>
 
             <p>{leftToAddCount} services to add</p>
+            <ProgressBar value={addedServices.length} max={serviceCount} />
 
             {Object.keys(services).map((service, i) => {
               let list = getStudiesByService(caseStudyForm.casestudies, service);
@@ -202,9 +205,7 @@ const DomainList = (props) => {
           model="casestudy"
           formName="casestudy"
           buttonText="Save & Preview"
-          returnLink={() => (
-            <Link to={pathname}>Return without saving</Link>
-          )}
+          returnLink={<Link to={pathname}>Return without saving</Link>}
           onSubmit={onCaseStudySubmit.bind(this, params)}
         />
 
@@ -216,9 +217,7 @@ const DomainList = (props) => {
           formName={`caseStudyForm.casestudies.${params.id}`}
           mode="edit"
           buttonText="Save & Preview"
-          returnLink={() => (
-            <Link to={pathname}>Return without saving</Link>
-          )}
+          returnLink={<Link to={pathname}>Return without saving</Link>}
           onSubmit={onCaseStudySubmit.bind(this, params)}
         />
 
@@ -231,7 +230,12 @@ const DomainList = (props) => {
         return (
           <div>
             {currentStudy.title
-              ? <View {...currentStudy} onSubmit={onCaseStudySubmit.bind(this, params)} />
+              ? <View
+                  {...currentStudy}
+                  onSubmit={onCaseStudySubmit.bind(this, params)}
+                  confirmButton={<Link role="button" to={pathname}>Add another</Link>}
+                  returnLink={<Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link>}
+                />
               : <Redirect to={pathname} />
             }
           </div>

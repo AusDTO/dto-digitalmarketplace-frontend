@@ -96,7 +96,7 @@ test('CaseStudyForm renders empty in edit mode', () => {
       mode: 'edit' 
     },
     casestudy: {
-      returnLink: 'http://www.right.back/to/where/you/came/from'
+      returnLink: <a href="http://www.right.back/to/where/you/came/from">Return without saving</a>
     } 
   }))
   const component = renderer.create(

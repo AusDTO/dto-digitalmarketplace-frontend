@@ -32,25 +32,3 @@ test('View with required attributes and meta links', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
-
-test('View with reference', () => {
-  let state = Object.assign({}, sampleState);
-  state.casestudy = Object.assign({}, sampleState.casestudy, {
-      meta: {
-        editLink: 'link/to/edit',
-        deleteLink: 'link/to/delete'
-      },
-      name: 'Spongebob',
-      role: 'Chief Aquaman',
-      phone: '040000000',
-      email: 'spongebob@aquaman.com',
-  })
-
-
-  const store = createStore(Object.assign({}, { _serverContext: {} },  state));
-  const component = renderer.create(
-    <View store={store} />
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});

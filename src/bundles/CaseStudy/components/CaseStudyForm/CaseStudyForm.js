@@ -26,7 +26,7 @@ class CaseStudyForm extends BaseForm {
     formErrors: React.PropTypes.object,
     returnLink: React.PropTypes.oneOfType([
       React.PropTypes.string,
-      React.PropTypes.func
+      React.PropTypes.object
     ]),
     mode: React.PropTypes.oneOf(['add', 'edit']),
     csrf_token: React.PropTypes.string,
@@ -48,12 +48,6 @@ class CaseStudyForm extends BaseForm {
 
     if (!buttonText) {
       buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Case Study';
-    }
-
-    if (typeof returnLink === 'function') {
-      returnLink = returnLink();
-    } else if (returnLink !== null) {
-      returnLink = <a href={returnLink}>Return without saving</a>;
     }
 
     return (
