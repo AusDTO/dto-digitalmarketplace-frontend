@@ -1,0 +1,24 @@
+{
+  "basename": "/applicant-preview.html",
+  "form_options": {
+    "action": "https://httpbin.org/post",
+    "csrf_token": "abc"
+  },
+  "application": {
+    "representative": "representative",
+    "name": "name",
+    "abn": "abn",
+    "phone": "phone",
+    "email": "email",
+
+    "summary": "summary",
+    "website": "website",
+    "linkedin": "linkedin",
+    "address": {
+      "addressLine": "data_addressLine",
+      "suburb": "St Ives",
+      "state": "NSW",
+      "postalCode": "2000"
+    }
+  }
+}

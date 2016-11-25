@@ -14,7 +14,7 @@ const AppList = ({meta = {}, applications, onClick}) => (
   </tr>
   {applications.map((a, i) =>
     <tr key={a.id}>
-      <td>{a.name}</td>
+      <td><a href={meta.url_preview.concat(a.id) }>{a.name}</a></td>
       <td>{a.id}</td>
       <td>{a.email}</td>
       <td>{a.status}</td>
