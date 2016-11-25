@@ -88,8 +88,8 @@
     "build:development": "node scripts/build.js --dev",
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
-    "server": "node build/render-server.js",
-    "server:development": "nodemon build/render-server.js --watch build/render-server.js",
+    "server": "node scripts/server.js",
+    "server:development": "nodemon scripts/server.js --watch build/render-server.js",
     "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js"
   },
   "jest": {
