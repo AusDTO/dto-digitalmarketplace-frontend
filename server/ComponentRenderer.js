@@ -6,7 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 export default class ComponentRenderer {
 
   constructor(pathToSource) {
-    let element = require(`../src/${pathToSource}`);
+    let element = require(`../src/${pathToSource}Widget`);
 
     // Detect bad module
     // If file exists require will return an object even if it exports nothing
