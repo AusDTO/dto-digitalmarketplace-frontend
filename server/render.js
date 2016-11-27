@@ -1,5 +1,3 @@
-require('newrelic');
-
 import express from 'express'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
@@ -39,7 +37,7 @@ app.get('/', function (req, res) {
 
 app.post('/render', renderRoute);
 
-const server = app.listen(process.env.PORT || 63578, function() {
+const server = app.listen(process.env.PORT || 60000, function() {
   console.log('Started server at port %s', server.address().port);
 });
 
