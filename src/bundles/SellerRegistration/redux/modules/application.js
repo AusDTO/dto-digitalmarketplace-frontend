@@ -33,8 +33,6 @@ export const submitApplication = () => {
       application
     };
 
-    console.log('payload', payload)
-
     return api(form_options.action, {
       method: 'POST',
       body: JSON.stringify(payload),

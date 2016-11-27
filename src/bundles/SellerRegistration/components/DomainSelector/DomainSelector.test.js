@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer'
 import configureMockStore from 'redux-mock-store';
 
 import DomainSelector from './DomainSelector'
-import createStore from '../../../ApplicantSignup/redux/create'
+import createStore from '../../redux/create-signup'
 
 test('DomainSelector renders', () => {
   const store = createStore({

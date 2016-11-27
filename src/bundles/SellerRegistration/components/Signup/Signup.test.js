@@ -8,7 +8,7 @@ import { actions } from 'react-redux-form';
 import Signup, { mapStateToProps, SignupClass } from './Signup';
 import sampleState from '../../ApplicantSignup.json';
 
-import createStore from '../../redux/create'
+import createStore from '../../redux/create-signup'
 
 test('mapStateToProps with application', () => {
   const state = {

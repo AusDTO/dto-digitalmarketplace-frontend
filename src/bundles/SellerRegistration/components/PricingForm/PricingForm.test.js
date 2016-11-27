@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer'
 import configureMockStore from 'redux-mock-store';
 
 import PricingForm from './PricingForm'
-import createStore from '../../../ApplicantSignup/redux/create'
+import createStore from '../../redux/create-signup'
 
 test('PricingForm renders a notice that domains are required', () => {
   const store = createStore({
