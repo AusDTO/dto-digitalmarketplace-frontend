@@ -28,7 +28,7 @@ class DocumentsForm extends BaseForm {
     errors: {}
   }
 
-  files = [
+  formFields = [
     { 'label': 'Finanical Statement', 'id': 'financial' },
     { 'label': 'Public Liability Insurance', 'id': 'liability' },
     { 'label': 'Workers Compensation Insurance', 'id': 'workers' },
@@ -130,22 +130,22 @@ class DocumentsForm extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
-            {this.files.map((file, i) => {
-              const key = file.id;
+            {this.formFields.map((field, i) => {
+              const key = field.id;
               const fieldState = this.state[key] || {}
               const doc = documentsForm.documents[key]
               const errors = this.state.errors[key]
               return (
                 <div key={key} className="callout">
-                  <label htmlFor={key}>{file.label}</label>
+                  <label htmlFor={key}>{field.label}</label>
                   <div>
                     <p>
-                      <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>
+                      {!doc && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>}
                     </p>
                     <div>
                       {fieldState.uploading && 'Uploading...'}
                       {errors && 'There was an error uploading the file'}
-                      {doc && <p><a href={`${pathname.slice(1)}/${documentsForm.documents[key]}`} rel="external">{file.label}</a></p>}
+                      {doc && <p><a href={`${pathname.slice(1)}/${documentsForm.documents[key]}`} rel="external">{field.label}</a></p>}
                     </div>
                   </div>
                   <div className="actions">
