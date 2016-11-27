@@ -22,13 +22,6 @@ export const submit = (payload = {}) => ({ type: APP_SUBMIT, payload });
 export const preStep = () => ({ type: STEP_PRE });
 export const nextStep = (to) => ({ type: STEP_NEXT, to });
 
-export const stepNext = (transition, to) => {
-  return (dispatch) => {
-    dispatch(nextStep(to));
-    transition(to);
-  }
-};
-
 export const submitApplication = () => {
   return (dispatch, getState, api) => {
     dispatch(preSubmit());
@@ -39,6 +32,8 @@ export const submitApplication = () => {
     const payload = {
       application
     };
+
+    console.log('payload', payload)
 
     return api(form_options.action, {
       method: 'POST',
@@ -79,7 +74,6 @@ const actionCreators = {
   submit,
   preStep,
   nextStep,
-  stepNext,
   stepNextPersist,
   submitApplication
 };

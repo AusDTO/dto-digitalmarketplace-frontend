@@ -95,7 +95,7 @@ test('elementProps onClick', () => {
   onClick(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(2);
+  expect(dispatch).toHaveBeenCalledTimes(3);
 });
 
 
@@ -214,7 +214,7 @@ test('elementProps onSubmit with no steps left', () => {
   onSubmit(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(2);
+  expect(dispatch).toHaveBeenCalledTimes(3);
 });
 
 test('without filterSteps', () => {
@@ -235,14 +235,14 @@ test('without filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Become a seller', component: Start, pattern: '/start' },
-    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { label: 'Review your profile', component: Review, pattern: '/review' },
-    { label: 'Submit', component: Submit, pattern: '/submit' },
+    { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
+    { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+    { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
+    { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
   ];
 
   const props = {
@@ -281,10 +281,10 @@ test('filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+    { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
   ];
 
   const filterSteps = (step) => {

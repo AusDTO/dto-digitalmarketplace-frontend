@@ -5,7 +5,7 @@ import { actionTypes } from 'react-redux-form';
 import reducer, {
   actions,
   constants as types
-} from '../signup';
+} from '../application';
 
 
 test('preSubmit action', () => {
@@ -50,23 +50,6 @@ test('nextStep action', () => {
     type: types.STEP_NEXT
   };
   expect(actions.nextStep()).toEqual(expectedAction);
-});
-
-test('stepNext action', () => {
-  const middlewares = [ thunk ];
-  const mockStore = configureMockStore(middlewares);
-  const transition = jest.fn();
-  const to = '/foo/bar';
-  const expectedActions = [
-    { type: types.STEP_NEXT, to }
-  ]
-  
-  const store = mockStore({});
-  store.dispatch(actions.stepNext(transition, to))
-
-  expect(store.getActions()).toEqual(expectedActions);
-  expect(transition).toHaveBeenCalledTimes(1);
-  expect(transition).toHaveBeenCalledWith(to);
 });
 
 test('stepNextPersist action', () => {
