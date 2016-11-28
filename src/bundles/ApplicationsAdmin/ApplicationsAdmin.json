@@ -1,7 +1,8 @@
 {
   "meta": {
     "heading": "List of Applications",
-    "url_convert_to_seller": "http://httpbin.org/post"
+    "url_convert_to_seller": "http://httpbin.org/post",
+    "url_preview": "http://httpbin.org/post/"
   },
   "form_options": {
     "csrf_token": "whateva"
