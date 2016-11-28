@@ -18,6 +18,7 @@ import PricingForm          from '../../../SellerRegistration/components/Pricing
 import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../../../SellerRegistration/components/Review';
 import Submit               from '../../../SellerRegistration/components/Submit';
+import DocumentsForm from '../../../SellerRegistration/components/DocumentsForm';
 
 class Signup extends React.Component {
 
@@ -36,6 +37,7 @@ class Signup extends React.Component {
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
     { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
   ]
