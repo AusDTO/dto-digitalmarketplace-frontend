@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {flattenStateForms} from '../../ApplicantSignup/redux/helpers.js'
+import {flattenStateForms} from '../redux/helpers.js'
 
 const Review = ({submit, onClick, data}) => (
     <div>

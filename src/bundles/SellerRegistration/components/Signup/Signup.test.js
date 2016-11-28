@@ -8,7 +8,7 @@ import { actions } from 'react-redux-form';
 import Signup, { mapStateToProps, SignupClass } from './Signup';
 import sampleState from '../../ApplicantSignup.json';
 
-import createStore from '../../redux/create'
+import createStore from '../../redux/create-signup'
 
 test('mapStateToProps with application', () => {
   const state = {
@@ -95,7 +95,7 @@ test('elementProps onClick', () => {
   onClick(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(2);
+  expect(dispatch).toHaveBeenCalledTimes(3);
 });
 
 
@@ -214,7 +214,7 @@ test('elementProps onSubmit with no steps left', () => {
   onSubmit(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(2);
+  expect(dispatch).toHaveBeenCalledTimes(3);
 });
 
 test('without filterSteps', () => {
@@ -225,6 +225,7 @@ test('without filterSteps', () => {
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
   const DomainList = require('../../../CaseStudy/components/DomainList').default;
+  const Documents = require('../../../SellerRegistration/components/DocumentsForm').default;
   const Review = require('../../../SellerRegistration/components/Review').default;
   const Submit = require('../../../SellerRegistration/components/Submit').default;
 
@@ -235,14 +236,15 @@ test('without filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Become a seller', component: Start, pattern: '/start' },
-    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { label: 'Review your profile', component: Review, pattern: '/review' },
-    { label: 'Submit', component: Submit, pattern: '/submit' },
+    { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
+    { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+    { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+	{ id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
+    { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
+    { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
   ];
 
   const props = {
@@ -264,7 +266,7 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(8);
+  expect(steps.length).toBe(9);
 });
 
 test('filterSteps', () => {
@@ -273,6 +275,7 @@ test('filterSteps', () => {
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
+  const Documents = require('../../../SellerRegistration/components/DocumentsForm').default;
 
   delete sampleState.basename;
   let store = createStore(Object.assign({},
@@ -281,10 +284,11 @@ test('filterSteps', () => {
   ));
 
   const expectedSteps = [
-    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+    { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+	{ id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' }
   ];
 
   const filterSteps = (step) => {
@@ -312,7 +316,7 @@ test('filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(4);
+  expect(steps.length).toBe(5);
 });
 
 

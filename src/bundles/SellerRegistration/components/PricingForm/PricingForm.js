@@ -11,7 +11,7 @@ import ErrorBox             from '../../../../shared/form/ErrorBox';
 import StatefulError        from '../../../../shared/form/StatefulError';
 import formProps            from '../../../../shared/reduxModules/formPropsSelector';
 
-import { findValidServices } from '../../../ApplicantSignup/redux/helpers'
+import { findValidServices } from '../../redux/helpers'
 import { required }         from '../../../../validators';
 
 class PricingForm extends BaseForm {

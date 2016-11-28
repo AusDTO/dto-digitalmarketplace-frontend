@@ -10,7 +10,7 @@ import renderer from 'react-test-renderer';
 
 import Signup from './Signup';
 import sampleState from '../../ApplicantSignup.json';
-import createStore from '../../redux/create';
+import createStore from '../../redux/create-signup';
 
 test('Signup renders', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))

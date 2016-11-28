@@ -5,8 +5,9 @@ import findIndex from 'lodash/findIndex';
 
 import NotFound from '../../../../shared/NotFound';
 
+import { stepComplete, STATUS } from '../../redux/modules/steps';
 import { getStateForms, dispatchFormState, validForms } from '../../redux/helpers';
-import { stepNext, stepNextPersist, submitApplication } from '../../redux/modules/signup';
+import { stepNextPersist, submitApplication } from '../../redux/modules/application';
 
 // Step Components
 import Start                from '../../../SellerRegistration/components/Start';
@@ -17,6 +18,7 @@ import PricingForm          from '../../../SellerRegistration/components/Pricing
 import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../../../SellerRegistration/components/Review';
 import Submit               from '../../../SellerRegistration/components/Submit';
+import DocumentsForm from '../../../SellerRegistration/components/DocumentsForm';
 
 class Signup extends React.Component {
 
@@ -29,14 +31,15 @@ class Signup extends React.Component {
   }
 
   steps = [
-    { label: 'Become a seller', component: Start, pattern: '/start' },
-    { label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { label: 'Review your profile', component: Review, pattern: '/review' },
-    { label: 'Submit', component: Submit, pattern: '/submit' },
+    { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
+    { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+    { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
+    { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
+    { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
   ]
 
   elementProps = {
@@ -44,7 +47,11 @@ class Signup extends React.Component {
       e.preventDefault();
       const { dispatch, router } = this.props;
 
-      dispatch(stepNext(router.transitionTo, this.nextStep.pattern, this.step))
+      if (this.step && this.step.id) {
+        dispatch(stepComplete(this.step.id));
+      }
+
+      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern, this.step));
     },
     onSubmit: (e) => {
       if (e && 'preventDefault' in e) {
@@ -52,6 +59,10 @@ class Signup extends React.Component {
       }
 
       const { dispatch, router } = this.props;
+
+      if (this.step && this.step.id) {
+        dispatch(stepComplete(this.step.id));
+      }
 
       if (!this.nextStep) {
         dispatch(submitApplication());
@@ -81,8 +92,7 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { validForms = {}, forms, router } = this.props;
-    const currentStepIdx = this.currentStepIndex;
+    const { validForms = {}, forms, router, steps = {} } = this.props;
     const formSteps = this.steps.map(step => step.formKey).filter(s => s);
     const applicationValid = formSteps.length === Object.keys(validForms).length;
     const { services = {} } = forms.domainSelectorForm;
@@ -96,11 +106,7 @@ class Signup extends React.Component {
                 <nav className="local-nav step-navigation">
                   <ul>
                     {this.steps.map(({ pattern, label, formKey }, i) => {
-                      let isValid = formKey && validForms[formKey];
-                      // If a step doesnt have a formKey and we've passed it, tick it!
-                      if (!formKey && currentStepIdx > i) {
-                        isValid = true;
-                      }
+                      let isValid = steps[id] === STATUS.complete;
                       return (
                         <li key={i}>
                           <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
@@ -156,11 +162,12 @@ Signup.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { application = {} } = state;
+  const { application = {}, steps } = state;
   return {
     forms: getStateForms(state),
     application,
     validForms: validForms(state),
+    steps,
     ...ownProps
   };
 };

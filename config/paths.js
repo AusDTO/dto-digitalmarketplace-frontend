@@ -53,7 +53,7 @@ var config = {
     'seller-registration-start': [resolveApp('src/bundles/SellerRegistration/StartWidget')],
     'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')],
     'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')],
-    'applicant-signup': [resolveApp('src/bundles/ApplicantSignup/ApplicantSignupWidget')],
+    'applicant-signup': [resolveApp('src/bundles/SellerRegistration/ApplicantSignupWidget')],
     'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')],
     'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')],
     'applications-admin': [resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdminWidget')]
@@ -62,7 +62,7 @@ var config = {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
     'casestudy': require(resolveApp('src/bundles/CaseStudy/components/CaseStudyForm/CaseStudyForm.json')),
     'seller-business-details': require(resolveApp('src/bundles/SellerRegistration/components/BusinessDetailsForm/BusinessDetailsForm.json')),
-    'applicant-signup': require(resolveApp('src/bundles/ApplicantSignup/ApplicantSignup.json')),
+    'applicant-signup': require(resolveApp('src/bundles/SellerRegistration/ApplicantSignup.json')),
     'enterpassword': require(resolveApp('src/bundles/SellerRegistration/components/EnterPasswordForm/EnterPasswordForm.json')),
     'applications-admin': require(resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdmin.json')),
   }
