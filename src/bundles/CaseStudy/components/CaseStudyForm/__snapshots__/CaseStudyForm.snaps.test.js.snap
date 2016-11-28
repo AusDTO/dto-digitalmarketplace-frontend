@@ -113,6 +113,39 @@ exports[`test CaseStudyForm renders 1`] = `
           </span>
         </div>
       </div>
+      <h3>
+        Business approach to 
+      </h3>
+      <p>
+        Address each of the evaluation criteria for 
+         when describing your business’ approach to the project. 
+        <a
+          href="#eval-crit"
+          target="_blank">
+          Browse the evaluation criteria for 
+        </a>
+        . 
+      </p>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="roles">
+          What role/s did your business provide?
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="roles"
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
       <div
         className="field">
         <label
@@ -1026,6 +1059,39 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           </span>
         </div>
       </div>
+      <h3>
+        Business approach to 
+      </h3>
+      <p>
+        Address each of the evaluation criteria for 
+         when describing your business’ approach to the project. 
+        <a
+          href="#eval-crit"
+          target="_blank">
+          Browse the evaluation criteria for 
+        </a>
+        . 
+      </p>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="roles">
+          What role/s did your business provide?
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="roles"
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
       <div
         className="field">
         <label
@@ -1269,6 +1335,12 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         </li>
         <li>
           <a
+            href="#roles">
+            You must specify the roles you provided
+          </a>
+        </li>
+        <li>
+          <a
             href="#approach">
             You must outline your approach
           </a>
@@ -1427,6 +1499,50 @@ exports[`test CaseStudyForm renders with errors 1`] = `
             200 words remaining
           </span>
         </div>
+      </div>
+      <h3>
+        Business approach to 
+      </h3>
+      <p>
+        Address each of the evaluation criteria for 
+         when describing your business’ approach to the project. 
+        <a
+          href="#eval-crit"
+          target="_blank">
+          Browse the evaluation criteria for 
+        </a>
+        . 
+      </p>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="roles">
+          What role/s did your business provide?
+        </label>
+        <a
+          className="validation-message"
+          href="#roles">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            You must specify the roles you provided
+          </span>
+        </a>
+        <input
+          aria-describedby={undefined}
+          className="invalid"
+          id="roles"
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
       </div>
       <div
         className="field">
@@ -1756,6 +1872,39 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           </span>
         </div>
       </div>
+      <h3>
+        Business approach to 
+      </h3>
+      <p>
+        Address each of the evaluation criteria for 
+         when describing your business’ approach to the project. 
+        <a
+          href="#eval-crit"
+          target="_blank">
+          Browse the evaluation criteria for 
+        </a>
+        . 
+      </p>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="roles">
+          What role/s did your business provide?
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="roles"
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
       <div
         className="field">
         <label
@@ -2056,6 +2205,39 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             198 words remaining
           </span>
         </div>
+      </div>
+      <h3>
+        Business approach to 
+      </h3>
+      <p>
+        Address each of the evaluation criteria for 
+         when describing your business’ approach to the project. 
+        <a
+          href="#eval-crit"
+          target="_blank">
+          Browse the evaluation criteria for 
+        </a>
+        . 
+      </p>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="roles">
+          What role/s did your business provide?
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="roles"
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
       </div>
       <div
         className="field">

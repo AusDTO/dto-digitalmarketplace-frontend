@@ -1,8 +1,5 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import './View.css'
-
-import hasReference from '../../redux/modules/hasReferenceSelector';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 class View extends React.Component {
   state = { showConfirm: false }
@@ -23,15 +20,14 @@ class View extends React.Component {
       outcome,
       projectLinks,
       meta,
-      name,
-      role,
-      phone,
-      email,
-      hasReference
+      confirmButton = null,
+      returnLink = null
     } = this.props;
+
     const { showConfirm } = this.state;
+
     return (
-      <section>
+      <section id="casestudy__view">
         {showConfirm && (
           <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" tabIndex="-1" role="alert">
               <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
@@ -86,27 +82,9 @@ class View extends React.Component {
                 </ul>
               </section>
             )}
-            {hasReference && (
-              <section>
-                <h3>Reference</h3>
-                <div className="title-block">
-                  {name && <p className="title-block__name">{name}</p>}
-                  {role && <p className="title-block__role">{role}</p>}
-                </div>
-                {phone && (
-                  <span>
-                    <strong>Phone</strong>
-                    <p>{phone}</p>
-                  </span>
-                )}
-                {email && (
-                  <span>
-                    <strong>Email</strong>
-                    <p>{email}</p>
-                  </span>
-                )}
-              </section>
-            )}
+
+            {confirmButton}
+            {returnLink}
           </article>
         </div>
       </section>
@@ -124,16 +102,16 @@ View.propTypes = {
   projectLinks: PropTypes.arrayOf(PropTypes.string),
   meta: PropTypes.objectOf(PropTypes.string),
 
-  name: PropTypes.string,
-  role: PropTypes.string,
-  phone: PropTypes.string,
-  email: PropTypes.string
+  returnLink: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     ...state.casestudy,
-    hasReference: hasReference(state.casestudy, ['name', 'role', 'phone', 'email'])
+    ...ownProps
   }
 }
 

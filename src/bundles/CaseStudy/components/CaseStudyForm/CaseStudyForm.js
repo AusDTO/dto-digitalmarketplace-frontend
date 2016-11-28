@@ -24,7 +24,10 @@ class CaseStudyForm extends BaseForm {
     ]).isRequired,
 
     formErrors: React.PropTypes.object,
-    returnLink: React.PropTypes.string,
+    returnLink: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object
+    ]),
     mode: React.PropTypes.oneOf(['add', 'edit']),
     csrf_token: React.PropTypes.string,
     serverRender: React.PropTypes.bool
@@ -35,10 +38,11 @@ class CaseStudyForm extends BaseForm {
       action,
       csrf_token,
       model,
-      returnLink,
+      returnLink = null,
       mode,
       form,
       buttonText,
+      service,
       children,
       onSubmit,
     } = this.props;
@@ -117,6 +121,20 @@ class CaseStudyForm extends BaseForm {
               validators={{ required }}
             />
 
+            <h3>Business approach to {service}</h3>
+            <p>Address each of the evaluation criteria for {service} when describing your business’ approach to the project. <a href="#eval-crit" target="_blank">Browse the evaluation criteria for {service}</a>. </p>
+
+            <Textfield
+              model={`${model}.roles`}
+              name="roles"
+              id="roles"
+              htmlFor="roles"
+              label="What role/s did your business provide?"
+              validators={{ required }}
+              messages={{
+                required: 'You must specify the roles you provided',
+              }} />
+
             <Textarea
               model={`${model}.approach`}
               name="approach"
@@ -158,7 +176,7 @@ class CaseStudyForm extends BaseForm {
 
             <input type="submit" value={buttonText} role="button" />
           </Form>
-          {returnLink && <a href={returnLink}>Return without saving</a>}
+          {returnLink}
         </article>
       </Layout>
     )

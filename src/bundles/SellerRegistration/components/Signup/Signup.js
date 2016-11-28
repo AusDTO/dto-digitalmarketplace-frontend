@@ -5,20 +5,20 @@ import findIndex from 'lodash/findIndex';
 
 import NotFound from '../../../../shared/NotFound';
 
-import { stepComplete, STATUS } from '../../redux/modules/steps';
+import { stepComplete, setSteps, STATUS } from '../../redux/modules/steps';
 import { getStateForms, dispatchFormState, validForms } from '../../redux/helpers';
 import { stepNextPersist, submitApplication } from '../../redux/modules/application';
 
 // Step Components
-import Start                from '../../../SellerRegistration/components/Start';
-import YourInfoForm         from '../../../SellerRegistration/components/YourInfoForm';
-import BusinessDetailsForm  from '../../../SellerRegistration/components/BusinessDetailsForm';
-import DomainSelector       from '../../../SellerRegistration/components/DomainSelector';
-import PricingForm          from '../../../SellerRegistration/components/PricingForm';
+import Start                from '../Start';
+import YourInfoForm         from '../YourInfoForm';
+import BusinessDetailsForm  from '../BusinessDetailsForm';
+import DomainSelector       from '../DomainSelector';
+import PricingForm          from '../PricingForm';
+import Review               from '../Review';
+import Submit               from '../Submit';
+import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
-import Review               from '../../../SellerRegistration/components/Review';
-import Submit               from '../../../SellerRegistration/components/Submit';
-import DocumentsForm from '../../../SellerRegistration/components/DocumentsForm';
 
 class Signup extends React.Component {
 
@@ -87,8 +87,11 @@ class Signup extends React.Component {
   }
 
   componentWillMount() {
-    const { forms = {}, application, dispatch } = this.props;
-    dispatchFormState(dispatch, forms, application)
+    const { forms = {}, application = {}, dispatch } = this.props;
+    dispatchFormState(dispatch, forms, application);
+    if (application.steps) {
+      dispatch(setSteps(application.steps))
+    }
   }
 
   render() {
@@ -99,20 +102,27 @@ class Signup extends React.Component {
 
     return (
       <div className="row">
-        <aside className="col-xs-12 col-sm-4">
-          <nav className="local-nav step-navigation">
-            <ul>
-              {this.steps.map(({ pattern, label, formKey, id }, i) => {
-                let isValid = steps[id] === STATUS.complete;
-                return (
-                  <li key={i}>
-                    <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
-        </aside>
+        <Match pattern="/:route/:subroute?" render={({ params }) => {
+          if (params.subroute === 'undefined') {
+            return (
+              <aside className="col-xs-12 col-sm-4">
+                <nav className="local-nav step-navigation">
+                  <ul>
+                    {this.steps.map(({ pattern, label, formKey, id }, i) => {
+                      let isValid = steps[id] === STATUS.complete;
+                      return (
+                        <li key={i}>
+                          <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </nav>
+              </aside>
+            )
+          }
+          return null;
+        }} />
         <article className="col-xs-12 col-sm-8">
           {this.steps.map(({pattern, exact, component, label}, i) => {
             return (
