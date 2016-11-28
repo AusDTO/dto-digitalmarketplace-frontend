@@ -17,6 +17,7 @@ import PricingForm          from '../../../SellerRegistration/components/Pricing
 import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../../../SellerRegistration/components/Review';
 import Submit               from '../../../SellerRegistration/components/Submit';
+import DocumentsForm from '../../../SellerRegistration/components/DocumentsForm';
 
 class Signup extends React.Component {
 
@@ -35,9 +36,10 @@ class Signup extends React.Component {
     { label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { label: 'Review your profile', component: Review, pattern: '/review' },
     { label: 'Submit', component: Submit, pattern: '/submit' },
-  ]
+ ]
 
   elementProps = {
     onClick: (e) => {

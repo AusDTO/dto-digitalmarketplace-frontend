@@ -1,5 +1,5 @@
-const MESSAGE = 'error/message'
-const REMOVE = 'error/remove'
+export const MESSAGE = 'error/message'
+export const REMOVE = 'error/remove'
 
 export default function reducer(state = {}, action = {}) {
   const { type, key, value, id } = action
