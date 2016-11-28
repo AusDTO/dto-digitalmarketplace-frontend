@@ -1,6 +1,6 @@
 import { createStore as _createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './modules/reducer';
+import reducer from './modules/reducer-signup';
 
 import api from '../../../shared/reduxModules/api';
 

@@ -160,7 +160,6 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/start"
             onClick={[Function]}
             style={Object {}}>
-            ✓ 
             Become a seller
           </a>
         </li>
@@ -395,7 +394,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/start"
             onClick={[Function]}
             style={Object {}}>
-            ✓ 
             Become a seller
           </a>
         </li>
@@ -405,7 +403,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/your-info"
             onClick={[Function]}
             style={Object {}}>
-            ✓ 
             Business representative
           </a>
         </li>
@@ -415,7 +412,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/business-details"
             onClick={[Function]}
             style={Object {}}>
-            ✓ 
             Create your profile
           </a>
         </li>
@@ -425,7 +421,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/domains"
             onClick={[Function]}
             style={Object {}}>
-            ✓ 
             Digital Services
           </a>
         </li>
@@ -444,7 +439,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/case-study"
             onClick={[Function]}
             style={Object {}}>
-            ✓ 
             Case Study
           </a>
         </li>

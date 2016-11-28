@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import RegisterComponent from '../../RegisterComponent';
-import createStore from './redux/create';
+import createStore from './redux/create-signup';
 
 import Signup from './components/Signup';
 
