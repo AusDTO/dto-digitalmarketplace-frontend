@@ -87,7 +87,7 @@ class Signup extends React.Component {
   }
 
   componentWillMount() {
-    const { forms = {}, application, dispatch } = this.props;
+    const { forms = {}, application = {}, dispatch } = this.props;
     dispatchFormState(dispatch, forms, application);
     if (application.steps) {
       dispatch(setSteps(application.steps))
