@@ -61,6 +61,32 @@ export const stepNextPersist = (transition, to, step) => {
     }
 };
 
+export const uploadDocument = (id, file) => {
+    return (dispatch, getState, api) => {
+        const state = getState();
+        const { form_options = {} } = state;
+
+        let data = new FormData()
+        data.append(id, file)
+
+        return api(`${form_options.document_url}${id}`, {
+          method: 'POST',
+          body: data,
+          headers: {
+            'X-CSRFToken': form_options.csrf_token,
+          }
+        }).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response
+          } else {
+            var error = new Error(response.statusText)
+            error.response = response
+            throw error
+          }
+        }).then(r => r.text())
+    }
+};
+
 
 const constants = {
     STEP_NEXT,

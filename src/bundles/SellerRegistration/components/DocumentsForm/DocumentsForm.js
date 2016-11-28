@@ -2,10 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, actions } from 'react-redux-form';
 
-import 'whatwg-fetch';
-
-//import { required } from '../../../../validators';
-
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
@@ -13,6 +9,7 @@ import ErrorBox      from '../../../../shared/form/ErrorBox';
 import StatefulError from '../../../../shared/form/StatefulError';
 
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
+import { uploadDocument } from '../../redux/modules/application'
 
 class DocumentsForm extends BaseForm {
 
@@ -37,7 +34,7 @@ class DocumentsForm extends BaseForm {
 
   onUpload(id, e) {
     e.preventDefault();
-    const { dispatch, model, action, csrf_token } = this.props;
+    const { dispatch, model, action, csrf_token, onUpload } = this.props;
     const file = this.state[id].file;
 
     this.setState({
@@ -47,26 +44,7 @@ class DocumentsForm extends BaseForm {
 
     dispatch(actions.omit(`${model}.documents`, id))
 
-    let data = new FormData()
-    data.append(id, file)
-    fetch(`${action}/${id}`, {
-      method: 'POST',
-      body: data,
-      credentials: 'same-origin',
-      headers: {
-        'X-CSRFToken': csrf_token
-      }
-    })
-    .then(response => {
-      if (response.status >= 200 && response.status < 300) {
-        return response
-      } else {
-        var error = new Error(response.statusText)
-        error.response = response
-        throw error
-      }
-    })
-    .then(r => r.text())
+    onUpload(id, file)
     .then((filename) => {
       this.setState({
       [id]: Object.assign({}, this.state[id], {'uploading': false})
@@ -170,9 +148,18 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onUpload: (id, data) => {
+      return dispatch(uploadDocument(id, data))
+    },
+    dispatch
+  }
+}
+
 export {
   mapStateToProps,
   DocumentsForm as Form
 }
 
-export default connect(mapStateToProps)(DocumentsForm);
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentsForm);
