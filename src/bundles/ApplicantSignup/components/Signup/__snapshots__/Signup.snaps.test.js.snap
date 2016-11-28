@@ -63,6 +63,15 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/documents"
+            onClick={[Function]}
+            style={Object {}}>
+            Documents
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/review"
             onClick={[Function]}
             style={Object {}}>
@@ -198,6 +207,15 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}
             style={Object {}}>
             Case Study
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/documents"
+            onClick={[Function]}
+            style={Object {}}>
+            Documents
           </a>
         </li>
         <li>
@@ -433,6 +451,15 @@ exports[`test Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/documents"
+            onClick={[Function]}
+            style={Object {}}>
+            Documents
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/review"
             onClick={[Function]}
             style={Object {}}>
@@ -463,16 +490,11 @@ exports[`test Signup renders populated Your Info form 1`] = `
       <article
         role="main">
         <form
-          action="https://httpbin.org/post"
+          action="/documents"
           id="yourinfo"
           method="post"
           onReset={[Function]}
           onSubmit={[Function]}>
-          <input
-            id="csrf_token"
-            name="csrf_token"
-            type="hidden"
-            value="abc" />
           <div
             className="field">
             <label

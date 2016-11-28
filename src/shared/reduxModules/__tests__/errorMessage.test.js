@@ -26,7 +26,7 @@ test('reducer should return initial state', () => {
   expect(reducer()).toEqual({})
 });
 
-test('reducer should add message to state', () => {
+test.skip('reducer should add message to state', () => {
   expect(reducer({}, {
     type: MESSAGE,
     key: 'errorKey',
