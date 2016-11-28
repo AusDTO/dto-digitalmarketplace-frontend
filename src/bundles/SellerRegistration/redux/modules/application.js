@@ -26,8 +26,8 @@ export const submitApplication = () => {
     return (dispatch, getState, api) => {
         dispatch(preSubmit());
         const state = getState();
-        const { form_options = {} } = state;
-        const application = flattenStateForms(state);
+        const { form_options = {}, steps = {} } = state;
+        const application = Object.assign({}, flattenStateForms(state), { steps });
 
         const payload = {
             application

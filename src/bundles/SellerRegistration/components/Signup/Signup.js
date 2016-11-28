@@ -5,7 +5,7 @@ import findIndex from 'lodash/findIndex';
 
 import NotFound from '../../../../shared/NotFound';
 
-import { stepComplete, STATUS } from '../../redux/modules/steps';
+import { stepComplete, setSteps, STATUS } from '../../redux/modules/steps';
 import { getStateForms, dispatchFormState, validForms } from '../../redux/helpers';
 import { stepNextPersist, submitApplication } from '../../redux/modules/application';
 
@@ -88,7 +88,10 @@ class Signup extends React.Component {
 
   componentWillMount() {
     const { forms = {}, application, dispatch } = this.props;
-    dispatchFormState(dispatch, forms, application)
+    dispatchFormState(dispatch, forms, application);
+    if (application.steps) {
+      dispatch(setSteps(application.steps))
+    }
   }
 
   render() {
