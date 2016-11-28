@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
+import get from 'lodash/get';
 
 import { required, validLinks } from '../../../../validators';
 
@@ -185,9 +186,17 @@ class CaseStudyForm extends BaseForm {
 
 const mapStateToProps = (state, ownProps) => {
   const { casestudy = {} } = state;
+
+  let service;
+  let formName = ownProps.formName;
+  if (formName) {
+    service = get(state, `${formName}.service`);
+  }
+
   return {
     returnLink: casestudy.returnLink,
-    ...formProps(state, ownProps.formName || 'caseStudyForm'),
+    ...formProps(state, formName || 'caseStudyForm'),
+    service,
     ...ownProps
   }
 }

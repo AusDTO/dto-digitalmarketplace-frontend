@@ -218,7 +218,6 @@ const DomainList = (props) => {
           formName={`caseStudyForm.casestudies.${params.id}`}
           mode="edit"
           buttonText="Save & Preview"
-          service={params.service}
           returnLink={<Link to={pathname}>Return without saving</Link>}
           onSubmit={onCaseStudySubmit.bind(this, params)}
         />
