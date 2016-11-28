@@ -42,6 +42,7 @@ class CaseStudyForm extends BaseForm {
       mode,
       form,
       buttonText,
+      service,
       children,
       onSubmit,
     } = this.props;
@@ -119,6 +120,20 @@ class CaseStudyForm extends BaseForm {
               }}
               validators={{ required }}
             />
+
+            <h3>Business approach to {service}</h3>
+            <p>Address each of the evaluation criteria for {service} when describing your business’ approach to the project. <a href="#eval-crit" target="_blank">Browse the evaluation criteria for {service}</a>. </p>
+
+            <Textfield
+              model={`${model}.roles`}
+              name="roles"
+              id="roles"
+              htmlFor="roles"
+              label="What role/s did your business provide?"
+              validators={{ required }}
+              messages={{
+                required: 'You must specify the roles you provided',
+              }} />
 
             <Textarea
               model={`${model}.approach`}
