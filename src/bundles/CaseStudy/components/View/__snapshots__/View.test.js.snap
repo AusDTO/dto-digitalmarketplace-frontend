@@ -1,5 +1,6 @@
 exports[`test View with required attributes 1`] = `
-<section>
+<section
+  id="casestudy__view">
   <header
     className="row">
     <div
@@ -103,7 +104,8 @@ exports[`test View with required attributes 1`] = `
 `;
 
 exports[`test View with required attributes and meta links 1`] = `
-<section>
+<section
+  id="casestudy__view">
   <header
     className="row">
     <div

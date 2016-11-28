@@ -27,7 +27,7 @@ class View extends React.Component {
     const { showConfirm } = this.state;
 
     return (
-      <section>
+      <section id="casestudy__view">
         {showConfirm && (
           <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" tabIndex="-1" role="alert">
               <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
