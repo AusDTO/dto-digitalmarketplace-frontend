@@ -11,10 +11,7 @@ test('default fetch return values with route', () => {
   expect(fetchMock).toHaveBeenCalledTimes(1);
   expect(fetchMock.mock.calls[fetchMock.mock.calls.length - 1][0]).toBe('/route');
   expect(fetchMock).toBeCalledWith('/route', {
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    credentials: 'same-origin'
   });
 });
 
@@ -35,7 +32,6 @@ test('passing custom headers and body', () => {
   expect(fetchMock).toBeCalledWith('/route2', {
     credentials: 'same-origin',
     headers: {
-      'Content-Type': 'application/json',
       'X-Custom-Header': 'FooBar'
     },
     body: "{\"foo\":\"bar\"}"
