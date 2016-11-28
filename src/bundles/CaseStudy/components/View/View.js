@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import './View.css'
 
 class View extends React.Component {
   state = { showConfirm: false }

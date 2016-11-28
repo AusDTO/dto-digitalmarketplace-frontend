@@ -10,15 +10,15 @@ import { getStateForms, dispatchFormState, validForms } from '../../redux/helper
 import { stepNextPersist, submitApplication } from '../../redux/modules/application';
 
 // Step Components
-import Start                from '../../../SellerRegistration/components/Start';
-import YourInfoForm         from '../../../SellerRegistration/components/YourInfoForm';
-import BusinessDetailsForm  from '../../../SellerRegistration/components/BusinessDetailsForm';
-import DomainSelector       from '../../../SellerRegistration/components/DomainSelector';
-import PricingForm          from '../../../SellerRegistration/components/PricingForm';
+import Start                from '../Start';
+import YourInfoForm         from '../YourInfoForm';
+import BusinessDetailsForm  from '../BusinessDetailsForm';
+import DomainSelector       from '../DomainSelector';
+import PricingForm          from '../PricingForm';
+import Review               from '../Review';
+import Submit               from '../Submit';
+import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
-import Review               from '../../../SellerRegistration/components/Review';
-import Submit               from '../../../SellerRegistration/components/Submit';
-import DocumentsForm from '../../../SellerRegistration/components/DocumentsForm';
 
 class Signup extends React.Component {
 
