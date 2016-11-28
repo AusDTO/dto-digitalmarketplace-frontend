@@ -105,7 +105,7 @@ class Signup extends React.Component {
               <aside className="col-xs-12 col-sm-4">
                 <nav className="local-nav step-navigation">
                   <ul>
-                    {this.steps.map(({ pattern, label, formKey }, i) => {
+                    {this.steps.map(({ pattern, label, formKey, id }, i) => {
                       let isValid = steps[id] === STATUS.complete;
                       return (
                         <li key={i}>
