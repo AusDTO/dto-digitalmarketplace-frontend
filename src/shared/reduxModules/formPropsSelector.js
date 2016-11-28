@@ -1,12 +1,9 @@
 import { createSelector } from 'reselect';
+import get from 'lodash/get';
 
 export const getCurrentForm = (state = {}, model) => {
   const { forms = {} } = state;
-  if (model in forms) {
-    return forms[model].$form;
-  }
-
-  return {};
+  return get(forms, `${model}.$form`, {});
 }
 export const getFormValues = (state = {}, model) => state[model];
 export const getFormOptions = (state = {}) => state.form_options;

@@ -76,7 +76,7 @@ class DocumentsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, mode, form, documentsForm, serverRender, onSubmit, pathname } = this.props;
+    const { action, csrf_token, model, mode, form, documentsForm, onSubmit, pathname } = this.props;
     return (
       <Layout>
         <header>

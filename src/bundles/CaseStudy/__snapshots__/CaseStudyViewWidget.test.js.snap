@@ -1,5 +1,6 @@
 exports[`test CaseStudyViewWidget renders without errrors 1`] = `
-<section>
+<section
+  id="casestudy__view">
   <header
     className="row">
     <div

@@ -1,141 +1,6 @@
-exports[`test View with reference 1`] = `
-<section>
-  <header
-    className="row">
-    <div
-      className="col-xs-12">
-      <h1>
-        My Sydney
-      </h1>
-    </div>
-    <div
-      className="meta col-xs-12">
-      <div
-        className="row">
-        <div
-          className="col-xs-12 col-sm-7">
-          <p>
-            Transport for NSW
-          </p>
-        </div>
-        <div
-          className="col-xs-12 col-sm-5 actions">
-          <a
-            href="link/to/edit">
-            Edit case study
-          </a>
-          <button
-            className="button-secondary"
-            onClick={[Function]}>
-            Delete
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-  <div
-    className="row">
-    <aside
-      className="col-sm-3 col-xs-12">
-      <h4>
-        Timeframe
-      </h4>
-      <p>
-        January 2016 — June 2016
-      </p>
-    </aside>
-    <article
-      className="col-sm-9 col-xs-12"
-      role="main">
-      <section>
-        <h3>
-          Challenge
-        </h3>
-        <p
-          className="freetext">
-          The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
-        </p>
-      </section>
-      <section>
-        <h3>
-          Approach
-        </h3>
-        <p
-          className="freetext">
-          We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions\' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
-        </p>
-      </section>
-      <section>
-        <h3>
-          Outcomes and benefits
-        </h3>
-        <ul>
-          <li>
-            We gathered all requirements for maps including what was to be shown, what data was available.
-          </li>
-          <li>
-            We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
-          </li>
-          <li>
-            We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
-          </li>
-        </ul>
-      </section>
-      <section
-        className="project">
-        <h3>
-          Project Links
-        </h3>
-        <ul>
-          <li>
-            <a
-              className="project__links"
-              href="http://gov.au/"
-              rel="external">
-              http://gov.au/
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h3>
-          Reference
-        </h3>
-        <div
-          className="title-block">
-          <p
-            className="title-block__name">
-            Spongebob
-          </p>
-          <p
-            className="title-block__role">
-            Chief Aquaman
-          </p>
-        </div>
-        <span>
-          <strong>
-            Phone
-          </strong>
-          <p>
-            040000000
-          </p>
-        </span>
-        <span>
-          <strong>
-            Email
-          </strong>
-          <p>
-            spongebob@aquaman.com
-          </p>
-        </span>
-      </section>
-    </article>
-  </div>
-</section>
-`;
-
 exports[`test View with required attributes 1`] = `
-<section>
+<section
+  id="casestudy__view">
   <header
     className="row">
     <div
@@ -239,7 +104,8 @@ exports[`test View with required attributes 1`] = `
 `;
 
 exports[`test View with required attributes and meta links 1`] = `
-<section>
+<section
+  id="casestudy__view">
   <header
     className="row">
     <div
