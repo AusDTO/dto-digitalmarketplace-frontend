@@ -28,10 +28,10 @@ class DomainSelector extends BaseForm {
 
           {/* This error will never actually render */}
           <StatefulError
-            model={`${model}.domains`}
-            id="domains"
+            model={`${model}.services`}
+            id="services"
             messages={{
-              domains: 'You must select at least one service from the domains below.'
+              services: 'You must select at least one service from the services below.'
             }}
           />
 
@@ -41,7 +41,12 @@ class DomainSelector extends BaseForm {
             method="post"
             id="DomainSelector__create"
             validators={{
-              services: (services) => !isEmpty(services)
+              services: (services) => {
+                return Object
+                  .keys(services)
+                  .filter(s => services[s])
+                  .length;
+              }
             }}
             onSubmit={onSubmit}>
 

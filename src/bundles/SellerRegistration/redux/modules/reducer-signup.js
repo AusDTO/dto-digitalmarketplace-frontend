@@ -50,7 +50,9 @@ export default combineReducers({
       opportunity: '',
       approach: '',
       outcome: [],
-      projectLinks: []
+      projectLinks: [],
+      service: '',
+      roles: ''
     },
     documentsForm: {
       documents: {}

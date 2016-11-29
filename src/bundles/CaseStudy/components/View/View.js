@@ -19,6 +19,8 @@ class View extends React.Component {
       timeframe,
       outcome,
       projectLinks,
+      service,
+      roles,
       meta,
       confirmButton = null,
       returnLink = null
@@ -58,6 +60,12 @@ class View extends React.Component {
           <aside className="col-sm-3 col-xs-12">
             <h4>Timeframe</h4>
             <p>{timeframe}</p>
+
+            <h4>Service</h4>
+            <p>{service}</p>
+
+            <h4>Roles</h4>
+            <p>{roles}</p>
           </aside>
           <article role="main" className="col-sm-9 col-xs-12">
             <section>

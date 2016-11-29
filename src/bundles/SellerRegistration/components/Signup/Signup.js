@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Match, Miss, Link } from 'react-router';
 import findIndex from 'lodash/findIndex';
+import classNames from 'classnames';
 
 import NotFound from '../../../../shared/NotFound';
 
@@ -95,24 +96,42 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { validForms = {}, forms, router, steps = {} } = this.props;
+    const { validForms = {}, forms, router, steps = {}, location } = this.props;
     const formSteps = this.steps.map(step => step.formKey).filter(s => s);
     const applicationValid = formSteps.length === Object.keys(validForms).length;
     const { services = {} } = forms.domainSelectorForm;
+
+    let isSubFlow = location.pathname.match(/case-study\/(edit|view|add)/);
+    const articleClassNames = classNames('col-xs-12 col-sm-8', {
+      'col-sm-push-2': isSubFlow,
+      'col-sm-push-1': !isSubFlow
+    });
 
     return (
       <div className="row">
         <Match pattern="/:route/:subroute?" render={({ params }) => {
           if (params.subroute === 'undefined') {
             return (
-              <aside className="col-xs-12 col-sm-4">
+              <aside className="col-xs-12 col-sm-3">
                 <nav className="local-nav step-navigation">
                   <ul>
                     {this.steps.map(({ pattern, label, formKey, id }, i) => {
-                      let isValid = steps[id] === STATUS.complete;
                       return (
                         <li key={i}>
-                          <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
+                          <Link to={pattern}>{
+                            ({ isActive, href, onClick }) => (
+                              <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
+                                <i
+                                  className={classNames('fa', {
+                                    'fa-circle-thin incomplete': !steps[id] && !isActive,
+                                    'fa-circle': isActive && steps[id] !== STATUS.complete,
+                                    'fa-check-circle complete': steps[id] === STATUS.complete
+                                  })}
+                                  aria-hidden="true"
+                                />
+                                &nbsp;{label}
+                              </a>
+                          )}</Link>
                         </li>
                       )
                     })}
@@ -123,31 +142,28 @@ class Signup extends React.Component {
           }
           return null;
         }} />
-        <article className="col-xs-12 col-sm-8">
-          {this.steps.map(({pattern, exact, component, label}, i) => {
-            return (
-              <Match key={i} pattern={pattern} render={(routerProps) => {
-                const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
-                const props = Object.assign({},
-                  routerProps,
-                  {
-                    applicationValid,
-                    services,
-                    router,
-                    nextRoute: this.nextStep && this.nextStep.pattern,
-                    title: label,
-                    buttonText: 'Save & Continue',
-                    actions: {
-                      submitApplication
-                    }
-                  },
-                  this.elementProps
-                );
+        <article className={articleClassNames}>
+          {this.steps.map(({pattern, exact, component, label}, i) => (
+            <Match key={i} pattern={pattern} render={(routerProps) => {
+              const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
+              const props = Object.assign({},
+                routerProps, {
+                  applicationValid,
+                  services,
+                  router,
+                  nextRoute: this.nextStep && this.nextStep.pattern,
+                  title: label,
+                  buttonText: 'Save & Continue',
+                  actions: {
+                    submitApplication
+                  }
+                },
+                this.elementProps
+              );
 
-                return React.createElement(component, props, children);
-              }} />
-            )
-          })}
+              return React.createElement(component, props, children);
+            }} />
+          ))}
           <Miss  component={NotFound} />
         </article>
       </div>

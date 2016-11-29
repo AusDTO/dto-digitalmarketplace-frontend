@@ -89,6 +89,7 @@ exports[`test CaseStudyForm renders 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="opportunity">
           Outline the problem or opportunity
         </label>
@@ -149,6 +150,7 @@ exports[`test CaseStudyForm renders 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="approach">
           Describe your approach
         </label>
@@ -1035,6 +1037,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="opportunity">
           Outline the problem or opportunity
         </label>
@@ -1095,6 +1098,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="approach">
           Describe your approach
         </label>
@@ -1465,6 +1469,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="opportunity">
           Outline the problem or opportunity
         </label>
@@ -1547,6 +1552,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="approach">
           Describe your approach
         </label>
@@ -1848,6 +1854,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="opportunity">
           Outline the problem or opportunity
         </label>
@@ -1908,6 +1915,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="approach">
           Describe your approach
         </label>
@@ -2182,6 +2190,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="opportunity">
           Outline the problem or opportunity
         </label>
@@ -2242,6 +2251,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="approach">
           Describe your approach
         </label>

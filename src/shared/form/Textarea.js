@@ -6,7 +6,7 @@ import TextareaComponent from '../Textarea';
 
 const Textarea = ({ name, id, label, model, validators, messages, description, controlProps, mapProps }) => (
   <div className="field">
-    <label htmlFor={id}>{label}</label>
+    <label className="question-heading" htmlFor={id}>{label}</label>
     {description && (
       <p className="hint" id={`${id}-hint`}>{description}</p>
     )}
