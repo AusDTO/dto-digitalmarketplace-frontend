@@ -179,7 +179,7 @@ const DomainList = (props) => {
                 casestudies: `You must add at least one case study for each service. Remaining: ${leftToAdd.join(', ')}.`
               }}
             />
-
+            <br/>
             <Form 
               model={model}
               action={action}
