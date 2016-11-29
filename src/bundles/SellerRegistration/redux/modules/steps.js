@@ -3,9 +3,8 @@ const STEP_PARTIAL = 'step/partial';
 const STEP_INITIAL = 'step/initial';
 
 export const STATUS = {
-  complete: 2,
-  partial: 1,
-  pristine: 0
+  complete: 'complete',
+  partial: 'partial'
 };
 
 export default function reducer(state = {}, action = {}) {
