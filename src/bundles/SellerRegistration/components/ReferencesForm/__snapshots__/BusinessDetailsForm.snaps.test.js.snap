@@ -1,0 +1,552 @@
+exports[`test BusinessDetailsForm renders 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Business details
+    </h1>
+  </header>
+  <article
+    role="main">
+    <form
+      action={undefined}
+      id="BusinessDetails__create"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="summary">
+          Company summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint">
+          This will be displayed in search results
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]} />
+          <span
+            className="word-count-counter">
+            50 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="website">
+          Website URL (optional)
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="website"
+          name="website"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="linkedin">
+          LinkedIn URL (optional)
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="linkedin"
+          name="linkedin"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="addressLine">
+          Address
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="addressLine"
+          name="address.addressLine"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="suburb">
+          Suburb
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="suburb"
+          name="address.suburb"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="state">
+          State
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="state"
+          name="address.state"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="postalCode">
+          Postcode
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="postalCode"
+          name="address.postalCode"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern="[0-9]{4}"
+          type="text"
+          value="" />
+      </div>
+      <input
+        role="button"
+        type="submit"
+        value="Update profile" />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test BusinessDetailsForm renders with form_options 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Business details
+    </h1>
+  </header>
+  <article
+    role="main">
+    <form
+      action="/foo/bar"
+      id="BusinessDetails__create"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <input
+        id="csrf_token"
+        name="csrf_token"
+        type="hidden"
+        value="sometoken" />
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="summary">
+          Company summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint">
+          This will be displayed in search results
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]} />
+          <span
+            className="word-count-counter">
+            50 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="website">
+          Website URL (optional)
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="website"
+          name="website"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="linkedin">
+          LinkedIn URL (optional)
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="linkedin"
+          name="linkedin"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="addressLine">
+          Address
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="addressLine"
+          name="address.addressLine"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="suburb">
+          Suburb
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="suburb"
+          name="address.suburb"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="state">
+          State
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="state"
+          name="address.state"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="postalCode">
+          Postcode
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="postalCode"
+          name="address.postalCode"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern="[0-9]{4}"
+          type="text"
+          value="" />
+      </div>
+      <input
+        role="button"
+        type="submit"
+        value="Update profile" />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test BusinessDetailsForm renders with populated fields 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Business details
+    </h1>
+  </header>
+  <article
+    role="main">
+    <div
+      aria-describedby="validation-masthead-heading"
+      className="callout--warning"
+      role="alert"
+      tabIndex="-1">
+      <h4
+        id="validation-masthead-heading">
+        There was a problem with the details you gave
+      </h4>
+      <ul>
+        <li>
+          <a
+            href="#summary">
+            You must provide a seller summary
+          </a>
+        </li>
+      </ul>
+    </div>
+    <form
+      action={undefined}
+      id="BusinessDetails__create"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="summary">
+          Company summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint">
+          This will be displayed in search results
+        </p>
+        <a
+          className="validation-message"
+          href="#summary">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            You must provide a seller summary
+          </span>
+        </a>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="invalid under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]} />
+          <span
+            className="word-count-counter">
+            50 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="website">
+          Website URL (optional)
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="website"
+          name="website"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="www.com" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="linkedin">
+          LinkedIn URL (optional)
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="linkedin"
+          name="linkedin"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="www.linked.in" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="addressLine">
+          Address
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="addressLine"
+          name="address.addressLine"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="Level 5, 77 Devon Street" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="suburb">
+          Suburb
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="suburb"
+          name="address.suburb"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="Surry Hills" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="state">
+          State
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="state"
+          name="address.state"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="NSW" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="postalCode">
+          Postcode
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="postalCode"
+          name="address.postalCode"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern="[0-9]{4}"
+          type="text"
+          value="2010" />
+      </div>
+      <input
+        role="button"
+        type="submit"
+        value="Update profile" />
+    </form>
+  </article>
+</div>
+`;
