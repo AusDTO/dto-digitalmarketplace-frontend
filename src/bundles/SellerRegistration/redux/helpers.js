@@ -74,13 +74,11 @@ export const findValidServices = (services) => {
     }, {});
 }
 
-export const validForms = (state = {}) => {
+export const findDirtyForms = (state = {}) => {
   const forms = state.forms || {}
   return Object.keys(forms)
-    .filter(key => get(forms[key], '$form.touched'))
-    .filter(key => get(forms[key], '$form.submitted'))
-    .filter(key => get(forms[key], '$form.valid'))
-    .filter(key => get(forms[key], '$form.pristine'))
+    .filter(key => !key.match(/\$form/))
+    .filter(key => !get(forms[key], '$form.pristine'))
     .reduce((valid, key) => {
       valid[key] = true;
       return valid;

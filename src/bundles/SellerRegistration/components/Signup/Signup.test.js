@@ -30,7 +30,8 @@ test('mapStateToProps with application', () => {
     application: {
       bar: 'baz'
     },
-    validForms: {}
+    dirtyForms: {},
+    steps: void 0
   };
 
   expect(mapStateToProps(state)).toEqual(expectedProps);
@@ -51,7 +52,8 @@ test('mapStateToProps without application', () => {
       }
     },
     application: {},
-    validForms: {}
+    dirtyForms: {},
+    steps: void 0
   };
 
   expect(mapStateToProps(state)).toEqual(expectedProps);
