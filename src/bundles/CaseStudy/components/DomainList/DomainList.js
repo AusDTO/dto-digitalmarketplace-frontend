@@ -105,7 +105,7 @@ const DomainList = (props) => {
         <Layout>
           <header>
             <h1>{title}</h1>
-            <p>Add a case study for each of your selected services. Your case study must address the evaluation criteria</p>
+            <p>The DTA will evaluate your case study for each service to ensure services provided on the Marketplace meet a sufficient standard. <a href="#criteria">Browse criteria for each service</a></p>
           </header>
           <article role="main">
             
