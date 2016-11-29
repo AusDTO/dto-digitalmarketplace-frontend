@@ -34,7 +34,7 @@ class DocumentsForm extends BaseForm {
 
   onUpload(id, e) {
     e.preventDefault();
-    const { dispatch, model, action, csrf_token, onUpload } = this.props;
+    const { dispatch, model, onUpload } = this.props;
     const file = this.state[id].file;
 
     this.setState({
@@ -103,8 +103,7 @@ class DocumentsForm extends BaseForm {
               documents: (documents) => Object.keys(documents).length === 4
             }}
           >
-            {
-              csrf_token && (
+            {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
