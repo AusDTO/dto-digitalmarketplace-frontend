@@ -116,10 +116,22 @@ class Signup extends React.Component {
                 <nav className="local-nav step-navigation">
                   <ul>
                     {this.steps.map(({ pattern, label, formKey, id }, i) => {
-                      let isValid = steps[id] === STATUS.complete;
                       return (
                         <li key={i}>
-                          <Link activeClassName="is-active is-current" to={pattern}>{isValid && '\u2713 '}{label}</Link>
+                          <Link to={pattern}>{
+                            ({ isActive, href, onClick }) => (
+                              <a href={href} className={isActive && 'is-active is-current'} onClick={onClick}>
+                                <i
+                                  className={classNames('fa', {
+                                    'fa-circle-thin': !steps[id] && !isActive,
+                                    'fa-circle incomplete': isActive && steps[id] !== STATUS.complete,
+                                    'fa-check-circle complete': steps[id] === STATUS.complete
+                                  })}
+                                  aria-hidden="true"
+                                />
+                                &nbsp;{label}
+                              </a>
+                          )}</Link>
                         </li>
                       )
                     })}
