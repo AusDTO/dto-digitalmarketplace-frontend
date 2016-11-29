@@ -3,7 +3,6 @@ import { createForms } from 'react-redux-form';
 
 
 import businessDetails from './businessDetails';
-import references from './references';
 import yourinfo from './yourinfo';
 import enterpassword from './enterpassword';
 import signup from './signup';
@@ -17,7 +16,6 @@ export default combineReducers({
   yourinfo,
   enterpassword,
   signup,
-  references,
   form_options,
   errorMessage,
   options: (state = {}) => state,
@@ -25,7 +23,6 @@ export default combineReducers({
     yourInfoForm: {},
     businessDetailsForm: {},
     enterPasswordForm: {},
-    signupForm: {},
-    references: {},
+    signupForm: {}
   })
 })

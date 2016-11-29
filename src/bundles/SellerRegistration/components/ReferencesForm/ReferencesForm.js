@@ -13,56 +13,50 @@ import Textarea     from '../../../../shared/form/Textarea';
 import Textfield    from '../../../../shared/form/Textfield';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
-class Referee extends React.Component {
-    render() {
-        const {id, model} = this.props;
-        return (
-            <div>
-                <h2>Referee {id}</h2>
-                <Textfield
-                    model={`${model}.name`}
-                    name={`name-${id}`}
-                    id={`name-${id}`}
-                    htmlFor={`name-${id}`}
-                    label="Referee's name"
-                    description="The full name of the best person to contact about your experience"
-                    validators={{ required }}
-                    messages={{ required: `Please provide a name for Referee ${id}.`}}
-                />
-                <Textfield
-                    model={`${model}.phone`}
-                    name={`phone-${id}`}
-                    id={`phone-${id}`}
-                    htmlFor={`phone-${id}`}
-                    label="Referee's phone number"
-                    validators={{ required }}
-                    messages={{ required: `Please provide a phone number for Referee ${id}.`}}
-                />
-                <Textarea
-                    model={`${model}.services`}
-                    name="services"
-                    id="services"
-                    controlProps={{limit: 200}}
-                    label="Services provided by the business to the referee"
-                    messages={{required: `You must provide services for Referee ${id}`}}
-                    validators={{required}}
-                />
-            </div>
-        )
-    }
-}
+const Referee = ({id, model}) => (
+    <div>
+        <h2>Referee {id}</h2>
+        <Textfield
+            model={`${model}.name`}
+            name={`name-${id}`}
+            id={`name-${id}`}
+            htmlFor={`name-${id}`}
+            label="Referee's name"
+            description="The full name of the best person to contact about your experience"
+            validators={{ required }}
+            messages={{ required: `Please provide a name for Referee ${id}.`}}
+        />
+        <Textfield
+            model={`${model}.phone`}
+            name={`phone-${id}`}
+            id={`phone-${id}`}
+            htmlFor={`phone-${id}`}
+            label="Referee's phone number"
+            validators={{ required }}
+            messages={{ required: `Please provide a phone number for Referee ${id}.`}}
+        />
+        <Textarea
+            model={`${model}.services`}
+            name="services"
+            id="services"
+            controlProps={{limit: 200}}
+            label="Services provided by the business to the referee"
+            messages={{required: `You must provide services for Referee ${id}`}}
+            validators={{required}}
+        />
+    </div>
+)
 
 class ReferencesForm extends BaseForm {
 
     static propTypes = {
         action: React.PropTypes.string,
         csrf_token: React.PropTypes.string,
-        form: React.PropTypes.object.isRequired,
-        returnLink: React.PropTypes.string
+        form: React.PropTypes.object.isRequired
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, form, title, buttonText, onSubmit } = this.props;
+        const {action, csrf_token, model, form, title, buttonText, onSubmit } = this.props;
         return (
             <Layout>
                 <header>
@@ -91,7 +85,6 @@ class ReferencesForm extends BaseForm {
                         <Referee id="2" model={`${model}.references[1]`}/>
                         <input type="submit" value={buttonText} role="button"/>
                     </Form>
-                    {returnLink && <a href={returnLink}>Return without saving</a>}
                 </article>
             </Layout>
         )
@@ -105,7 +98,6 @@ ReferencesForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        returnLink: state.referencesForm && state.referencesForm.returnLink,
         ...formProps(state, 'referencesForm')
     }
 }
