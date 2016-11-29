@@ -123,11 +123,12 @@ class Signup extends React.Component {
                       ({ isActive, href, onClick }) => (
                         <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
                           <i
-                            className={classNames('fa', {
+                            className={classNames({
+                              'fa': !dirtyForms[formKey],
                               'fa-circle-thin incomplete': !steps[id] && !isActive && !dirtyForms[formKey],
                               'fa-circle': isActive && steps[id] !== STATUS.complete && !dirtyForms[formKey],
                               'fa-check-circle complete': steps[id] === STATUS.complete && !dirtyForms[formKey],
-                              'fa-times-circle dirty': dirtyForms[formKey]
+                              'dirty': dirtyForms[formKey]
                             })}
                             aria-hidden="true"
                           />
