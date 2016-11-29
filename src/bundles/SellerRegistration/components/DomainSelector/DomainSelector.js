@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import kebabCase from 'lodash/kebabCase';
-import isEmpty from 'lodash/isEmpty';
 
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
