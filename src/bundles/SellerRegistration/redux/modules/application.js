@@ -42,7 +42,8 @@ export const submitApplication = () => {
             body: JSON.stringify(payload),
             headers: {
                 // Flask expects the token as a header.
-                'X-CSRFToken': form_options.csrf_token
+                'X-CSRFToken': form_options.csrf_token,
+                'Content-Type': 'application/json'
             }
         })
             .then(() => dispatch(submit(payload)))

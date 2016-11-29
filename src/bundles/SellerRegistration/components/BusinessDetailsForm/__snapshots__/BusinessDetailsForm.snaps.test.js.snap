@@ -17,6 +17,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="summary">
           Company summary
         </label>
@@ -194,6 +195,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="summary">
           Company summary
         </label>
@@ -384,6 +386,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
       <div
         className="field">
         <label
+          className="question-heading"
           htmlFor="summary">
           Company summary
         </label>

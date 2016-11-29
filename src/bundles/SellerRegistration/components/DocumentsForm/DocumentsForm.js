@@ -115,7 +115,7 @@ class DocumentsForm extends BaseForm {
               const errors = this.state.errors[key]
               return (
                 <div key={key} className="callout">
-                  <label htmlFor={key}>{field.label}</label>
+                  <label className="question-heading" htmlFor={key}>{field.label}</label>
                   <div>
                     <p>
                       {!doc && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>}

@@ -44,6 +44,14 @@ exports[`test View with required attributes 1`] = `
       <p>
         January 2016 — June 2016
       </p>
+      <h4>
+        Service
+      </h4>
+      <p />
+      <h4>
+        Roles
+      </h4>
+      <p />
     </aside>
     <article
       className="col-sm-9 col-xs-12"
@@ -149,6 +157,14 @@ exports[`test View with required attributes and meta links 1`] = `
       <p>
         January 2016 — June 2016
       </p>
+      <h4>
+        Service
+      </h4>
+      <p />
+      <h4>
+        Roles
+      </h4>
+      <p />
     </aside>
     <article
       className="col-sm-9 col-xs-12"

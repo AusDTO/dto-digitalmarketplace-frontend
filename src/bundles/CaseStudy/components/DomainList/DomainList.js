@@ -179,7 +179,7 @@ const DomainList = (props) => {
                 casestudies: `You must add at least one case study for each service. Remaining: ${leftToAdd.join(', ')}.`
               }}
             />
-
+            <br/>
             <Form 
               model={model}
               action={action}
@@ -218,7 +218,6 @@ const DomainList = (props) => {
           formName={`caseStudyForm.casestudies.${params.id}`}
           mode="edit"
           buttonText="Save & Preview"
-          service={params.service}
           returnLink={<Link to={pathname}>Return without saving</Link>}
           onSubmit={onCaseStudySubmit.bind(this, params)}
         />
