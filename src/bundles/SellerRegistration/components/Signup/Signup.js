@@ -5,6 +5,7 @@ import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 
 import NotFound from '../../../../shared/NotFound';
+import LocalNav from '../../../../shared/LocalNav';
 
 import { stepComplete, setSteps, STATUS } from '../../redux/modules/steps';
 import { getStateForms, dispatchFormState, findDirtyForms } from '../../redux/helpers';
@@ -109,39 +110,38 @@ class Signup extends React.Component {
     return (
       <div className="row">
         <Match pattern="/:route/:subroute?" render={({ params }) => {
-          if (params.subroute === 'undefined') {
-            return (
-              <aside className="col-xs-12 col-sm-3">
-                <nav className="local-nav step-navigation">
-                  <ul>
-                    {this.steps.map(({ pattern, label, formKey, id }, i) => {
-                      return (
-                        <li key={i}>
-                          <Link to={pattern}>{
-                            ({ isActive, href, onClick }) => (
-                              <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
-                                <i
-                                  className={classNames('fa', {
-                                    'fa-circle-thin incomplete': !steps[id] && !isActive && !dirtyForms[formKey],
-                                    'fa-circle': isActive && steps[id] !== STATUS.complete && !dirtyForms[formKey],
-                                    'fa-check-circle complete': steps[id] === STATUS.complete && !dirtyForms[formKey],
-                                    'fa-times-circle dirty': dirtyForms[formKey]
-                                  })}
-                                  aria-hidden="true"
-                                />
-                                &nbsp;{label}
-                              </a>
-                          )}</Link>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </nav>
-              </aside>
-            )
+          if (params.subroute !== 'undefined') {
+            return null;
           }
-          return null;
+
+          return (
+            <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation">
+              {this.steps.map(({ pattern, label, formKey, id }, i) => {
+                return (
+                  <li key={i}>
+                    <Link to={pattern}>{
+                      ({ isActive, href, onClick }) => (
+                        <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
+                          <i
+                            className={classNames({
+                              'fa': !dirtyForms[formKey],
+                              'fa-circle-thin incomplete': !steps[id] && !isActive && !dirtyForms[formKey],
+                              'fa-circle': isActive && steps[id] !== STATUS.complete && !dirtyForms[formKey],
+                              'fa-check-circle complete': steps[id] === STATUS.complete && !dirtyForms[formKey],
+                              'dirty': dirtyForms[formKey]
+                            })}
+                            aria-hidden="true"
+                          />
+                          &nbsp;{label}
+                        </a>
+                    )}</Link>
+                  </li>
+                )
+              })}
+            </LocalNav>
+          )
         }} />
+
         <article className={articleClassNames}>
           {this.steps.map(({pattern, exact, component, label}, i) => (
             <Match key={i} pattern={pattern} render={(routerProps) => {

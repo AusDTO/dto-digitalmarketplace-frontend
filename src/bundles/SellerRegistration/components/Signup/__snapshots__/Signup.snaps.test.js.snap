@@ -3,8 +3,18 @@ exports[`test Signup renders 1`] = `
   className="row">
   <aside
     className="col-xs-12 col-sm-3">
+    <button
+      aria-controls="local-nav"
+      aria-expanded={false}
+      className="local-nav-toggle"
+      onClick={[Function]}>
+      Menu
+    </button>
     <nav
-      className="local-nav step-navigation">
+      aria-expanded={false}
+      aria-label="main navigation"
+      className="local-nav step-navigation"
+      open={false}>
       <ul>
         <li>
           <a
@@ -25,7 +35,7 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Business representative
           </a>
@@ -37,7 +47,7 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Create your profile
           </a>
@@ -49,7 +59,7 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Digital Services
           </a>
@@ -61,7 +71,7 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Pricing
           </a>
@@ -73,7 +83,7 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Case Study
           </a>
@@ -85,7 +95,7 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Documents
           </a>
@@ -178,8 +188,18 @@ exports[`test Signup renders empty Your Info form 1`] = `
   className="row">
   <aside
     className="col-xs-12 col-sm-3">
+    <button
+      aria-controls="local-nav"
+      aria-expanded={false}
+      className="local-nav-toggle"
+      onClick={[Function]}>
+      Menu
+    </button>
     <nav
-      className="local-nav step-navigation">
+      aria-expanded={false}
+      aria-label="main navigation"
+      className="local-nav step-navigation"
+      open={false}>
       <ul>
         <li>
           <a
@@ -200,7 +220,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Business representative
           </a>
@@ -212,7 +232,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Create your profile
           </a>
@@ -224,7 +244,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Digital Services
           </a>
@@ -236,7 +256,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Pricing
           </a>
@@ -248,7 +268,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Case Study
           </a>
@@ -260,7 +280,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Documents
           </a>
@@ -439,8 +459,18 @@ exports[`test Signup renders populated Your Info form 1`] = `
   className="row">
   <aside
     className="col-xs-12 col-sm-3">
+    <button
+      aria-controls="local-nav"
+      aria-expanded={false}
+      className="local-nav-toggle"
+      onClick={[Function]}>
+      Menu
+    </button>
     <nav
-      className="local-nav step-navigation">
+      aria-expanded={false}
+      aria-label="main navigation"
+      className="local-nav step-navigation"
+      open={false}>
       <ul>
         <li>
           <a
@@ -497,7 +527,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Pricing
           </a>
@@ -521,7 +551,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             Documents
           </a>
