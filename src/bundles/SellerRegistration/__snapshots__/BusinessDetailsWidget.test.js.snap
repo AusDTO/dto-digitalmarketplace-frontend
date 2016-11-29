@@ -21,6 +21,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
           <div
             className="field">
             <label
+              className="question-heading"
               htmlFor="summary">
               Company summary
             </label>

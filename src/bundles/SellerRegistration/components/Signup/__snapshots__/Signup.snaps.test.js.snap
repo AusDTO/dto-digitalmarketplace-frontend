@@ -2,7 +2,7 @@ exports[`test Signup renders 1`] = `
 <div
   className="row">
   <aside
-    className="col-xs-12 col-sm-4">
+    className="col-xs-12 col-sm-3">
     <nav
       className="local-nav step-navigation">
       <ul>
@@ -10,80 +10,107 @@ exports[`test Signup renders 1`] = `
           <a
             className="is-active is-current"
             href="/start"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle incomplete" />
+             
             Become a seller
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/your-info"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Business representative
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/business-details"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Create your profile
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/domains"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Digital Services
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/pricing"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Pricing
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/case-study"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Case Study
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/documents"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Documents
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/review"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Review your profile
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/submit"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Submit
           </a>
         </li>
@@ -91,7 +118,7 @@ exports[`test Signup renders 1`] = `
     </nav>
   </aside>
   <article
-    className="col-xs-12 col-sm-8">
+    className="col-xs-12 col-sm-8 col-sm-push-1">
     <div>
       <h1>
         Become a seller
@@ -150,16 +177,19 @@ exports[`test Signup renders empty Your Info form 1`] = `
 <div
   className="row">
   <aside
-    className="col-xs-12 col-sm-4">
+    className="col-xs-12 col-sm-3">
     <nav
       className="local-nav step-navigation">
       <ul>
         <li>
           <a
-            className=""
+            className={false}
             href="/start"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Become a seller
           </a>
         </li>
@@ -167,71 +197,95 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className="is-active is-current"
             href="/your-info"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle incomplete" />
+             
             Business representative
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/business-details"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Create your profile
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/domains"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Digital Services
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/pricing"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Pricing
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/case-study"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Case Study
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/documents"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Documents
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/review"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Review your profile
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/submit"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Submit
           </a>
         </li>
@@ -239,7 +293,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
     </nav>
   </aside>
   <article
-    className="col-xs-12 col-sm-8">
+    className="col-xs-12 col-sm-8 col-sm-push-1">
     <div
       className="layout">
       <header>
@@ -384,16 +438,19 @@ exports[`test Signup renders populated Your Info form 1`] = `
 <div
   className="row">
   <aside
-    className="col-xs-12 col-sm-4">
+    className="col-xs-12 col-sm-3">
     <nav
       className="local-nav step-navigation">
       <ul>
         <li>
           <a
-            className=""
+            className={false}
             href="/start"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Become a seller
           </a>
         </li>
@@ -401,71 +458,95 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className="is-active is-current"
             href="/your-info"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle incomplete" />
+             
             Business representative
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/business-details"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Create your profile
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/domains"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Digital Services
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/pricing"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Pricing
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/case-study"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Case Study
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/documents"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Documents
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/review"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Review your profile
           </a>
         </li>
         <li>
           <a
-            className=""
+            className={false}
             href="/submit"
-            onClick={[Function]}
-            style={Object {}}>
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="fa fa-circle-thin" />
+             
             Submit
           </a>
         </li>
@@ -473,7 +554,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
     </nav>
   </aside>
   <article
-    className="col-xs-12 col-sm-8">
+    className="col-xs-12 col-sm-8 col-sm-push-1">
     <div
       className="layout">
       <header>
