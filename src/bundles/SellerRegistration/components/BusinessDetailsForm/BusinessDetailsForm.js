@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Form} from 'react-redux-form';
+import { Form, Control } from 'react-redux-form';
 
 import {required} from '../../../../validators';
 
@@ -49,7 +49,7 @@ class BusinessDetailsForm extends BaseForm {
                             name="summary"
                             id="summary"
                             controlProps={{limit: 50}}
-                            label="Company summary"
+                            label="Summary"
                             description="This will be displayed in search results"
                             messages={{
                                 required: 'You must provide a seller summary'
@@ -119,6 +119,50 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                             pattern="[0-9]{4}"
                         />
+
+                        <fieldset>
+                            <legend>Select the following that apply (optional)</legend>
+
+                            <Control.checkbox
+                                model={`${model}.additionalInfo.start-up`}
+                                id="start-up"
+                                name="start-up"
+                                value="start-up"
+                            />
+                            <label htmlFor="start-up">Start up - up to 5 years from commencement of business, not listed on any stock exchange, and is able to capture a large addressable market using technology</label>
+
+                            <Control.checkbox
+                                model={`${model}.additionalInfo.sme`}
+                                id="sme"
+                                name="sme"
+                                value="sme"
+                            />
+                            <label htmlFor="sme">SME Your business has less than 200 employees and operates independently of any parent organisation for taxation arrangements</label>
+
+                            <Control.checkbox
+                                model={`${model}.additionalInfo.indigenous`}
+                                id="indigenous"
+                                name="indigenous"
+                                value="indigenous"
+                            />
+                            <label htmlFor="indigenous">Indigenous seller - your business is listed on a directory of Indigenous businesses, such as Supply Nation</label>
+
+                            <Control.checkbox
+                                model={`${model}.additionalInfo.recruitment`}
+                                id="recruitment"
+                                name="recruitment"
+                                value="recruitment"
+                            />
+                            <label htmlFor="recruitment">Recruitment agency - the primary purpose of the business is resourcing</label>
+
+                            <Control.checkbox
+                                model={`${model}.additionalInfo.product`}
+                                id="product"
+                                name="product"
+                                value="product"
+                            />
+                            <label htmlFor="product">Product based business - Your services require your proprietary software or hardware.</label>
+                        </fieldset>
 
                         {children}
 
