@@ -101,8 +101,10 @@ class Signup extends React.Component {
     const applicationValid = formSteps.length === Object.keys(validForms).length;
     const { services = {} } = forms.domainSelectorForm;
 
+    let isSubFlow = location.pathname.match(/case-study\/(edit|view|add)/);
     const articleClassNames = classNames('col-xs-12 col-sm-8', {
-      'col-sm-push-2': location.pathname.match(/case-study\/(edit|view|add)/)
+      'col-sm-push-2': isSubFlow,
+      'col-sm-push-1': !isSubFlow
     });
 
     return (
@@ -110,7 +112,7 @@ class Signup extends React.Component {
         <Match pattern="/:route/:subroute?" render={({ params }) => {
           if (params.subroute === 'undefined') {
             return (
-              <aside className="col-xs-12 col-sm-4">
+              <aside className="col-xs-12 col-sm-3">
                 <nav className="local-nav step-navigation">
                   <ul>
                     {this.steps.map(({ pattern, label, formKey, id }, i) => {
