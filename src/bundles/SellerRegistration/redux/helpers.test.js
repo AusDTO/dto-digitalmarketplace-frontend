@@ -3,7 +3,7 @@ import {
   dispatchFormState,
   flattenStateForms,
   findValidServices,
-  validForms
+  findDirtyForms
 } from './helpers';
 
 test('getStateForms with default regex', () => {
@@ -221,44 +221,37 @@ test('findValidServices will remove only invalid services', () => {
 });
 
 
-test('validForms', () => {
+test('findDirtyForms', () => {
   const state = {
     forms: {
       oneForm: {
         $form: {
-          valid: true,
-          touched: true,
-          submitted: true,
           pristine: true
         }
       },
       twoForm: {
         $form: {
-          valid: false,
-          touched: true,
-          submitted: true,
           pristine: false
         }
       },
       threeForm: {
         $form: {
-          valid: true,
-          touched: true,
-          submitted: true,
           pristine: true
         }
+      },
+      $form: {
+        pristine: false
       }
     }
   }
 
   const expectedResult = {
-    oneForm: true,
-    threeForm: true
+    twoForm: true
   }
 
-  expect(validForms(state)).toEqual(expectedResult);
+  expect(findDirtyForms(state)).toEqual(expectedResult);
 });
 
-test('validForms with no state', () => {
-  expect(validForms()).toEqual({});
+test('findDirtyForms with no state', () => {
+  expect(findDirtyForms()).toEqual({});
 });
