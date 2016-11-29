@@ -24,8 +24,57 @@ const ApplicationPreview = ({application}) => (
             </li>
             }
             <li>
+                <p>Case Studies</p>
+                <article>
+                    <ul>
+                        {Object.keys(application.casestudies).map((k, i) => {
+                                const casestudy = application.casestudies[k];
+                                return (
+                                    <li key={i}>
+                                        <article>
+                                            <h3>
+                                                { casestudy.title }
+                                            </h3>
+                                            <p>
+                                                <small>{ casestudy.client }</small>
+                                            </p>
+
+                                            <b>Timeframe:</b> { casestudy.timeframe }<br/>
+                                            <b>Problem or opportunity:</b> { casestudy.opportunity }<br/>
+                                            <b>Approach:</b> { casestudy.approach }<br/>
+                                            <b>Outcome:</b>
+                                            <ul>
+                                                {casestudy.outcome.map((outcome, i) =>
+                                                    <li key={i}>{outcome}</li>
+                                                )}
+                                            </ul>
+                                            <b>Project Links:</b>
+                                            { casestudy.projectLinks &&
+
+                                            <ul>
+                                                {casestudy.projectLinks.map((projectLink, i) =>
+                                                    <li key={i}><a href={projectLink}>{projectLink}</a></li>
+                                                )}
+                                            </ul>
+                                            }
+
+                                        </article>
+                                    </li>
+                                )
+                            }
+                        )}
+                    </ul>
+                </article>
+            </li>
+            <li>
                 <p>Business Details</p>
                 <article>
+                    <p>
+                        <strong>Business Representative</strong><br/>
+                        { application.representative }<br/>
+                        { application.email } { application.phone }
+                    </p>
+
                     <p>
                         <strong>ABN</strong><br/>
                         { application.abn }
@@ -47,6 +96,14 @@ const ApplicationPreview = ({application}) => (
                 </article>
             </li>
             <li>
+                <p>Documents</p>
+                <article>
+                    {Object.keys(application.documents).map((key, val) =>
+                        <p key={val}><b>{key}:</b> { application.documents[key] }</p>
+                    )}
+                </article>
+            </li>
+            <li>
                 <p>Address</p>
                 <article>
                     <p>
@@ -56,6 +113,7 @@ const ApplicationPreview = ({application}) => (
                     </p>
                 </article>
             </li>
+
             {application.pricing &&
             <li>
                 <p>Rate card</p>
