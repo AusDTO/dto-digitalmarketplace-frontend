@@ -120,7 +120,7 @@ class Signup extends React.Component {
                         <li key={i}>
                           <Link to={pattern}>{
                             ({ isActive, href, onClick }) => (
-                              <a href={href} className={isActive && 'is-active is-current'} onClick={onClick}>
+                              <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
                                 <i
                                   className={classNames('fa', {
                                     'fa-circle-thin incomplete': !steps[id] && !isActive,
