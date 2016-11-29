@@ -278,7 +278,11 @@ const mapDispatchToProps = (dispatch) => {
         id = guid();
       }
 
-      const props = Object.assign({}, { service }, values)
+      if (values.service) {
+        service = values.service;
+      }
+
+      const props = Object.assign({}, values, { service })
       dispatch(actions.change(`caseStudyForm.casestudies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
       dispatch(dispatchActions.submitApplication());
