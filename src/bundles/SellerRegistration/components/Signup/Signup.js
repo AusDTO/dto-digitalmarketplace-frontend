@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import NotFound from '../../../../shared/NotFound';
 
 import { stepComplete, setSteps, STATUS } from '../../redux/modules/steps';
-import { getStateForms, dispatchFormState, validForms } from '../../redux/helpers';
+import { getStateForms, dispatchFormState, findDirtyForms } from '../../redux/helpers';
 import { stepNextPersist, submitApplication } from '../../redux/modules/application';
 
 // Step Components
@@ -96,9 +96,8 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { validForms = {}, forms, router, steps = {}, location } = this.props;
-    const formSteps = this.steps.map(step => step.formKey).filter(s => s);
-    const applicationValid = formSteps.length === Object.keys(validForms).length;
+    const { dirtyForms = {}, forms, router, steps = {}, location } = this.props;
+    const applicationValid = this.steps.length === Object.keys(steps).length;
     const { services = {} } = forms.domainSelectorForm;
 
     let isSubFlow = location.pathname.match(/case-study\/(edit|view|add)/);
@@ -123,9 +122,10 @@ class Signup extends React.Component {
                               <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
                                 <i
                                   className={classNames('fa', {
-                                    'fa-circle-thin incomplete': !steps[id] && !isActive,
-                                    'fa-circle': isActive && steps[id] !== STATUS.complete,
-                                    'fa-check-circle complete': steps[id] === STATUS.complete
+                                    'fa-circle-thin incomplete': !steps[id] && !isActive && !dirtyForms[formKey],
+                                    'fa-circle': isActive && steps[id] !== STATUS.complete && !dirtyForms[formKey],
+                                    'fa-check-circle complete': steps[id] === STATUS.complete && !dirtyForms[formKey],
+                                    'fa-times-circle dirty': dirtyForms[formKey]
                                   })}
                                   aria-hidden="true"
                                 />
@@ -185,7 +185,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     forms: getStateForms(state),
     application,
-    validForms: validForms(state),
+    dirtyForms: findDirtyForms(state),
     steps,
     ...ownProps
   };
