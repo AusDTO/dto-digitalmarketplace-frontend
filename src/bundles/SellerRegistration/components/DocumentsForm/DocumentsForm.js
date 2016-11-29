@@ -76,7 +76,7 @@ class DocumentsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, mode, form, documentsForm, onSubmit, pathname } = this.props;
+    const { action, csrf_token, model, mode, form, documentsForm, onSubmit, pathname='' } = this.props;
     return (
       <Layout>
         <header>
@@ -123,7 +123,7 @@ class DocumentsForm extends BaseForm {
                     <div>
                       {fieldState.uploading && 'Uploading...'}
                       {errors && 'There was an error uploading the file'}
-                      {doc && <p><a href={`${pathname.slice(1)}/${documentsForm.documents[key]}`} rel="external">{field.label}</a></p>}
+                      {doc && <p><a href={`${pathname.slice(1)}/${doc}`} rel="external">{doc}</a></p>}
                     </div>
                   </div>
                   <div className="actions">
