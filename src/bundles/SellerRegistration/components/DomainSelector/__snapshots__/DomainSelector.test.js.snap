@@ -28,455 +28,190 @@ exports[`test DomainSelector renders 1`] = `
         value="abc" />
       <fieldset
         className="field">
-        <legend
-          id="services"
-          tabIndex={-1}>
-          User research & design
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="user-research"
-            name="user-research"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="User research" />
-          <label
-            htmlFor="user-research">
-            User research
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="interaction-design"
-            name="interaction-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Interaction design" />
-          <label
-            htmlFor="interaction-design">
-            Interaction design
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="inclusive-design"
-            name="inclusive-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Inclusive design" />
-          <label
-            htmlFor="inclusive-design">
-            Inclusive design
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="service-design"
-            name="service-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Service design" />
-          <label
-            htmlFor="service-design">
-            Service design
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="user-research-design"
+          name="user-research-design"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="User research & design" />
+        <label
+          htmlFor="user-research-design">
+          User research & design - User research, interaction design, inclusive design, service design
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Content & publishing
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="content-development"
-            name="content-development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Content development" />
-          <label
-            htmlFor="content-development">
-            Content development
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="content-publishing"
+          name="content-publishing"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Content & publishing" />
+        <label
+          htmlFor="content-publishing">
+          Content & publishing - Content development
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Marketing, comms & engagement
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="digital-marketing"
-            name="digital-marketing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital marketing" />
-          <label
-            htmlFor="digital-marketing">
-            Digital marketing
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="community-engagement"
-            name="community-engagement"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Community engagement" />
-          <label
-            htmlFor="community-engagement">
-            Community engagement
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="marketing-comms-engagement"
+          name="marketing-comms-engagement"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Marketing, comms & engagement" />
+        <label
+          htmlFor="marketing-comms-engagement">
+          Marketing, comms & engagement - Digital marketing, community engagement
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Engineering & Development
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="architecture"
-            name="architecture"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Architecture" />
-          <label
-            htmlFor="architecture">
-            Architecture
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="technical-leadership"
-            name="technical-leadership"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Technical leadership" />
-          <label
-            htmlFor="technical-leadership">
-            Technical leadership
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="web-devops-engineering"
-            name="web-devops-engineering"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Web Devops Engineering" />
-          <label
-            htmlFor="web-devops-engineering">
-            Web Devops Engineering
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="development"
-            name="development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Development" />
-          <label
-            htmlFor="development">
-            Development
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="quality-assurance"
-            name="quality-assurance"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Quality Assurance" />
-          <label
-            htmlFor="quality-assurance">
-            Quality Assurance
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="engineering-development"
+          name="engineering-development"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Engineering & Development" />
+        <label
+          htmlFor="engineering-development">
+          Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Emerging technology
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="emerging-technology"
-            name="emerging-technology"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Emerging technology" />
-          <label
-            htmlFor="emerging-technology">
-            Emerging technology
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="emerging-technology"
+          name="emerging-technology"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Emerging technology" />
+        <label
+          htmlFor="emerging-technology">
+          Emerging technology - Emerging technology
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Data & Analytics
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="data-science"
-            name="data-science"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Data science" />
-          <label
-            htmlFor="data-science">
-            Data science
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="performance-web-analysis"
-            name="performance-web-analysis"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Performance & web analysis" />
-          <label
-            htmlFor="performance-web-analysis">
-            Performance & web analysis
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="data-analytics"
+          name="data-analytics"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Data & Analytics" />
+        <label
+          htmlFor="data-analytics">
+          Data & Analytics - Data science, performance & web analysis
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Cyber security
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="ethical-hacker"
-            name="ethical-hacker"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Ethical Hacker" />
-          <label
-            htmlFor="ethical-hacker">
-            Ethical Hacker
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="cyber-security"
+          name="cyber-security"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Cyber security" />
+        <label
+          htmlFor="cyber-security">
+          Cyber security - Ethical hacker
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Strategy, delivery & governance
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="business-analysis"
-            name="business-analysis"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Business analysis" />
-          <label
-            htmlFor="business-analysis">
-            Business analysis
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="product-management"
-            name="product-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Product management" />
-          <label
-            htmlFor="product-management">
-            Product management
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="delivery-management"
-            name="delivery-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Delivery management" />
-          <label
-            htmlFor="delivery-management">
-            Delivery management
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="strategy-delivery-governance"
+          name="strategy-delivery-governance"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Strategy, delivery & governance" />
+        <label
+          htmlFor="strategy-delivery-governance">
+          Strategy, delivery & governance - Business analysis, product management, delivery management
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Operations
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="business-operations"
-            name="business-operations"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Business operations" />
-          <label
-            htmlFor="business-operations">
-            Business operations
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="tech-support"
-            name="tech-support"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Tech support" />
-          <label
-            htmlFor="tech-support">
-            Tech support
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="operations"
+          name="operations"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Operations" />
+        <label
+          htmlFor="operations">
+          Operations - Business operations, tech support
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Change & transformation
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="digital-transformation-advice"
-            name="digital-transformation-advice"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital Transformation Advice" />
-          <label
-            htmlFor="digital-transformation-advice">
-            Digital Transformation Advice
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="agile-coaching"
-            name="agile-coaching"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Agile coaching" />
-          <label
-            htmlFor="agile-coaching">
-            Agile coaching
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="change-transformation"
+          name="change-transformation"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Change & transformation" />
+        <label
+          htmlFor="change-transformation">
+          Change & transformation - Digital transformation advice, agile coaching
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Legal & Policy
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="legal-counsel"
-            name="legal-counsel"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Legal counsel" />
-          <label
-            htmlFor="legal-counsel">
-            Legal counsel
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="legal-policy"
+          name="legal-policy"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Legal & Policy" />
+        <label
+          htmlFor="legal-policy">
+          Legal & Policy - Legal counsel
+        </label>
       </fieldset>
       <input
         role="button"
@@ -517,455 +252,190 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         value="abc" />
       <fieldset
         className="field">
-        <legend
-          id="services"
-          tabIndex={-1}>
-          User research & design
-        </legend>
-        <div>
-          <input
-            checked={true}
-            id="user-research"
-            name="user-research"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="User research" />
-          <label
-            htmlFor="user-research">
-            User research
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="interaction-design"
-            name="interaction-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Interaction design" />
-          <label
-            htmlFor="interaction-design">
-            Interaction design
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="inclusive-design"
-            name="inclusive-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Inclusive design" />
-          <label
-            htmlFor="inclusive-design">
-            Inclusive design
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="service-design"
-            name="service-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Service design" />
-          <label
-            htmlFor="service-design">
-            Service design
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="user-research-design"
+          name="user-research-design"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="User research & design" />
+        <label
+          htmlFor="user-research-design">
+          User research & design - User research, interaction design, inclusive design, service design
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Content & publishing
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="content-development"
-            name="content-development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Content development" />
-          <label
-            htmlFor="content-development">
-            Content development
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="content-publishing"
+          name="content-publishing"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Content & publishing" />
+        <label
+          htmlFor="content-publishing">
+          Content & publishing - Content development
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Marketing, comms & engagement
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="digital-marketing"
-            name="digital-marketing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital marketing" />
-          <label
-            htmlFor="digital-marketing">
-            Digital marketing
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="community-engagement"
-            name="community-engagement"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Community engagement" />
-          <label
-            htmlFor="community-engagement">
-            Community engagement
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="marketing-comms-engagement"
+          name="marketing-comms-engagement"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Marketing, comms & engagement" />
+        <label
+          htmlFor="marketing-comms-engagement">
+          Marketing, comms & engagement - Digital marketing, community engagement
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Engineering & Development
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="architecture"
-            name="architecture"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Architecture" />
-          <label
-            htmlFor="architecture">
-            Architecture
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="technical-leadership"
-            name="technical-leadership"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Technical leadership" />
-          <label
-            htmlFor="technical-leadership">
-            Technical leadership
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="web-devops-engineering"
-            name="web-devops-engineering"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Web Devops Engineering" />
-          <label
-            htmlFor="web-devops-engineering">
-            Web Devops Engineering
-          </label>
-        </div>
-        <div>
-          <input
-            checked={true}
-            id="development"
-            name="development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Development" />
-          <label
-            htmlFor="development">
-            Development
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="quality-assurance"
-            name="quality-assurance"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Quality Assurance" />
-          <label
-            htmlFor="quality-assurance">
-            Quality Assurance
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="engineering-development"
+          name="engineering-development"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Engineering & Development" />
+        <label
+          htmlFor="engineering-development">
+          Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Emerging technology
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="emerging-technology"
-            name="emerging-technology"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Emerging technology" />
-          <label
-            htmlFor="emerging-technology">
-            Emerging technology
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="emerging-technology"
+          name="emerging-technology"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Emerging technology" />
+        <label
+          htmlFor="emerging-technology">
+          Emerging technology - Emerging technology
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Data & Analytics
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="data-science"
-            name="data-science"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Data science" />
-          <label
-            htmlFor="data-science">
-            Data science
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="performance-web-analysis"
-            name="performance-web-analysis"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Performance & web analysis" />
-          <label
-            htmlFor="performance-web-analysis">
-            Performance & web analysis
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="data-analytics"
+          name="data-analytics"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Data & Analytics" />
+        <label
+          htmlFor="data-analytics">
+          Data & Analytics - Data science, performance & web analysis
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Cyber security
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="ethical-hacker"
-            name="ethical-hacker"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Ethical Hacker" />
-          <label
-            htmlFor="ethical-hacker">
-            Ethical Hacker
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="cyber-security"
+          name="cyber-security"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Cyber security" />
+        <label
+          htmlFor="cyber-security">
+          Cyber security - Ethical hacker
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Strategy, delivery & governance
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="business-analysis"
-            name="business-analysis"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Business analysis" />
-          <label
-            htmlFor="business-analysis">
-            Business analysis
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="product-management"
-            name="product-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Product management" />
-          <label
-            htmlFor="product-management">
-            Product management
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="delivery-management"
-            name="delivery-management"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Delivery management" />
-          <label
-            htmlFor="delivery-management">
-            Delivery management
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="strategy-delivery-governance"
+          name="strategy-delivery-governance"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Strategy, delivery & governance" />
+        <label
+          htmlFor="strategy-delivery-governance">
+          Strategy, delivery & governance - Business analysis, product management, delivery management
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Operations
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="business-operations"
-            name="business-operations"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Business operations" />
-          <label
-            htmlFor="business-operations">
-            Business operations
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="tech-support"
-            name="tech-support"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Tech support" />
-          <label
-            htmlFor="tech-support">
-            Tech support
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="operations"
+          name="operations"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Operations" />
+        <label
+          htmlFor="operations">
+          Operations - Business operations, tech support
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Change & transformation
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="digital-transformation-advice"
-            name="digital-transformation-advice"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital Transformation Advice" />
-          <label
-            htmlFor="digital-transformation-advice">
-            Digital Transformation Advice
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="agile-coaching"
-            name="agile-coaching"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Agile coaching" />
-          <label
-            htmlFor="agile-coaching">
-            Agile coaching
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="change-transformation"
+          name="change-transformation"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Change & transformation" />
+        <label
+          htmlFor="change-transformation">
+          Change & transformation - Digital transformation advice, agile coaching
+        </label>
       </fieldset>
       <fieldset
         className="field">
-        <legend>
-          Legal & Policy
-        </legend>
-        <div>
-          <input
-            checked={false}
-            id="legal-counsel"
-            name="legal-counsel"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Legal counsel" />
-          <label
-            htmlFor="legal-counsel">
-            Legal counsel
-          </label>
-        </div>
+        <input
+          checked={false}
+          id="legal-policy"
+          name="legal-policy"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox"
+          value="Legal & Policy" />
+        <label
+          htmlFor="legal-policy">
+          Legal & Policy - Legal counsel
+        </label>
       </fieldset>
       <input
         role="button"
