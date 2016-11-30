@@ -17,10 +17,10 @@ class LocalNav extends React.Component {
   }
 
   render() {
-    const { children, className, navClassName } = this.props;
+    const { children, className, navClassName, id } = this.props;
     const { open } = this.state;
     return (
-      <aside className={className}>
+      <aside className={className} id={id}>
         <button aria-controls="local-nav" className="local-nav-toggle" aria-expanded={open} onClick={this.toggle}>
           Menu
         </button>
