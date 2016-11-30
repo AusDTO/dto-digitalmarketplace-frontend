@@ -107,7 +107,7 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             References
           </a>
@@ -304,7 +304,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             References
           </a>
@@ -587,7 +587,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}>
             <i
               aria-hidden="true"
-              className="fa fa-times-circle dirty" />
+              className="dirty" />
              
             References
           </a>
