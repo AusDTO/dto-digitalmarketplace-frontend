@@ -56,6 +56,9 @@ export default combineReducers({
     },
     documentsForm: {
       documents: {}
+    },
+    referencesForm: {
+      references: []
     }
   })
 })

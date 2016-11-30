@@ -103,6 +103,18 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/references"
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="dirty" />
+             
+            References
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/review"
             onClick={[Function]}>
             <i
@@ -283,6 +295,18 @@ exports[`test Signup renders empty Your Info form 1`] = `
               className="dirty" />
              
             Documents
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/references"
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="dirty" />
+             
+            References
           </a>
         </li>
         <li>
@@ -554,6 +578,18 @@ exports[`test Signup renders populated Your Info form 1`] = `
               className="dirty" />
              
             Documents
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/references"
+            onClick={[Function]}>
+            <i
+              aria-hidden="true"
+              className="dirty" />
+             
+            References
           </a>
         </li>
         <li>
