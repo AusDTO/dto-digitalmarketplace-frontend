@@ -2,7 +2,8 @@ exports[`test Signup renders 1`] = `
 <div
   className="row">
   <aside
-    className="col-xs-12 col-sm-3">
+    className="col-xs-12 col-sm-3"
+    id="main-navigation">
     <button
       aria-controls="local-nav"
       aria-expanded={false}
@@ -199,7 +200,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
 <div
   className="row">
   <aside
-    className="col-xs-12 col-sm-3">
+    className="col-xs-12 col-sm-3"
+    id="main-navigation">
     <button
       aria-controls="local-nav"
       aria-expanded={false}
@@ -341,7 +343,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
     <div
       className="layout">
       <header>
-        <h1>
+        <h1
+          tabIndex="-1">
           Business representative
         </h1>
       </header>
@@ -482,7 +485,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
 <div
   className="row">
   <aside
-    className="col-xs-12 col-sm-3">
+    className="col-xs-12 col-sm-3"
+    id="main-navigation">
     <button
       aria-controls="local-nav"
       aria-expanded={false}
@@ -624,7 +628,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
     <div
       className="layout">
       <header>
-        <h1>
+        <h1
+          tabIndex="-1">
           Business representative
         </h1>
       </header>

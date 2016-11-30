@@ -64,7 +64,8 @@ export const stepNextPersist = (transition, to, step) => {
                 // in the DOM and just managing focus, I think we're okay.
                 // findDOMNode doesn't break the lines of encapsulation.
                 if (typeof document !== 'undefined') {
-                    document.querySelector('h1').focus()
+                    const heading = document.querySelector('h1');
+                    return heading && heading.focus();
                 }
             });
     }
