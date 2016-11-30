@@ -40,7 +40,7 @@ exports[`test DomainSelector renders 1`] = `
           value="User research & design" />
         <label
           htmlFor="user-research-design">
-          User research & design - User research,Interaction design,Inclusive design,Service design
+          User research & design - User research, interaction design, inclusive design, service design
         </label>
       </fieldset>
       <fieldset
@@ -74,7 +74,7 @@ exports[`test DomainSelector renders 1`] = `
           value="Marketing, comms & engagement" />
         <label
           htmlFor="marketing-comms-engagement">
-          Marketing, comms & engagement - Digital marketing,Community engagement
+          Marketing, comms & engagement - Digital marketing, community engagement
         </label>
       </fieldset>
       <fieldset
@@ -91,7 +91,7 @@ exports[`test DomainSelector renders 1`] = `
           value="Engineering & Development" />
         <label
           htmlFor="engineering-development">
-          Engineering & Development - Architecture,Technical leadership,Web Devops Engineering,Development,Quality Assurance
+          Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
         </label>
       </fieldset>
       <fieldset
@@ -125,7 +125,7 @@ exports[`test DomainSelector renders 1`] = `
           value="Data & Analytics" />
         <label
           htmlFor="data-analytics">
-          Data & Analytics - Data science,Performance & web analysis
+          Data & Analytics - Data science, performance & web analysis
         </label>
       </fieldset>
       <fieldset
@@ -142,7 +142,7 @@ exports[`test DomainSelector renders 1`] = `
           value="Cyber security" />
         <label
           htmlFor="cyber-security">
-          Cyber security - Ethical Hacker
+          Cyber security - Ethical hacker
         </label>
       </fieldset>
       <fieldset
@@ -159,7 +159,7 @@ exports[`test DomainSelector renders 1`] = `
           value="Strategy, delivery & governance" />
         <label
           htmlFor="strategy-delivery-governance">
-          Strategy, delivery & governance - Business analysis,Product management,Delivery management
+          Strategy, delivery & governance - Business analysis, product management, delivery management
         </label>
       </fieldset>
       <fieldset
@@ -176,7 +176,7 @@ exports[`test DomainSelector renders 1`] = `
           value="Operations" />
         <label
           htmlFor="operations">
-          Operations - Business operations,Tech support
+          Operations - Business operations, tech support
         </label>
       </fieldset>
       <fieldset
@@ -193,7 +193,7 @@ exports[`test DomainSelector renders 1`] = `
           value="Change & transformation" />
         <label
           htmlFor="change-transformation">
-          Change & transformation - Digital Transformation Advice,Agile coaching
+          Change & transformation - Digital transformation advice, agile coaching
         </label>
       </fieldset>
       <fieldset
@@ -264,7 +264,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="User research & design" />
         <label
           htmlFor="user-research-design">
-          User research & design - User research,Interaction design,Inclusive design,Service design
+          User research & design - User research, interaction design, inclusive design, service design
         </label>
       </fieldset>
       <fieldset
@@ -298,7 +298,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="Marketing, comms & engagement" />
         <label
           htmlFor="marketing-comms-engagement">
-          Marketing, comms & engagement - Digital marketing,Community engagement
+          Marketing, comms & engagement - Digital marketing, community engagement
         </label>
       </fieldset>
       <fieldset
@@ -315,7 +315,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="Engineering & Development" />
         <label
           htmlFor="engineering-development">
-          Engineering & Development - Architecture,Technical leadership,Web Devops Engineering,Development,Quality Assurance
+          Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
         </label>
       </fieldset>
       <fieldset
@@ -349,7 +349,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="Data & Analytics" />
         <label
           htmlFor="data-analytics">
-          Data & Analytics - Data science,Performance & web analysis
+          Data & Analytics - Data science, performance & web analysis
         </label>
       </fieldset>
       <fieldset
@@ -366,7 +366,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="Cyber security" />
         <label
           htmlFor="cyber-security">
-          Cyber security - Ethical Hacker
+          Cyber security - Ethical hacker
         </label>
       </fieldset>
       <fieldset
@@ -383,7 +383,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="Strategy, delivery & governance" />
         <label
           htmlFor="strategy-delivery-governance">
-          Strategy, delivery & governance - Business analysis,Product management,Delivery management
+          Strategy, delivery & governance - Business analysis, product management, delivery management
         </label>
       </fieldset>
       <fieldset
@@ -400,7 +400,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="Operations" />
         <label
           htmlFor="operations">
-          Operations - Business operations,Tech support
+          Operations - Business operations, tech support
         </label>
       </fieldset>
       <fieldset
@@ -417,7 +417,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           value="Change & transformation" />
         <label
           htmlFor="change-transformation">
-          Change & transformation - Digital Transformation Advice,Agile coaching
+          Change & transformation - Digital transformation advice, agile coaching
         </label>
       </fieldset>
       <fieldset

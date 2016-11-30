@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import kebabCase from 'lodash/kebabCase';
+import capitalize from 'lodash/capitalize';
 
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
@@ -62,7 +63,7 @@ class DomainSelector extends BaseForm {
                     name={kebabCase(label)} 
                     value={label}
                   />
-                  <label htmlFor={kebabCase(label)}>{`${label} - ${services.join()}`}</label>
+                  <label htmlFor={kebabCase(label)}>{`${label} - ${capitalize(services.join(', '))}`}</label>
                 </fieldset>
               )
             })}
