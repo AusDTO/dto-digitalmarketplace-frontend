@@ -60,7 +60,7 @@ class ReferencesForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1>{title}</h1>
+                    <h1 tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={`${model}.references`}/>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ApplicationPreview = ({application}) => (
     <div>
-        <h1>{application.name}</h1>
+        <h1 tabIndex="-1">{application.name}</h1>
         <p> {application.summary}</p>
         <hr/>
         <ul className="list-horizontal">

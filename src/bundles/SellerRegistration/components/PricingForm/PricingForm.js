@@ -24,7 +24,7 @@ class PricingForm extends BaseForm {
       return (
         <Layout>
           <header>
-            <h1>{title}</h1>
+            <h1 tabIndex="-1">{title}</h1>
           </header>
           <article role="main">
             <p>You must select some domains before specifying pricing!</p>
@@ -37,7 +37,7 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header>
-            <h1>{title}</h1>
+            <h1 tabIndex="-1">{title}</h1>
             <p>This will only be visible to government buyers, not to other sellers on the Marketplace.</p>
         </header>
         <article role="main">

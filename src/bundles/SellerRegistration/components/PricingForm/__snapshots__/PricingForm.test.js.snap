@@ -2,7 +2,8 @@ exports[`test PricingForm renders a notice that domains are required 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Pricing
     </h1>
   </header>
@@ -28,7 +29,8 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Pricing
     </h1>
     <p>

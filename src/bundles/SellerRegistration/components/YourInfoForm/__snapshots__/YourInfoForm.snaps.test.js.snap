@@ -2,7 +2,8 @@ exports[`test YourInfoForm renders 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Your Information
     </h1>
   </header>
@@ -137,7 +138,8 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Your Information
     </h1>
   </header>
@@ -277,7 +279,8 @@ exports[`test YourInfoForm renders with form_options 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Your Information
     </h1>
   </header>
