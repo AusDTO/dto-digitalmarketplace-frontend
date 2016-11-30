@@ -54,27 +54,15 @@ class DomainSelector extends BaseForm {
             )}
 
             {domains.map(({ key, label, services }, i) => {
-              let additionalProps = {}
-              if (i === 0) {
-                additionalProps = {
-                  id: 'services',
-                  tabIndex: -1
-                }
-              }
               return (
                 <fieldset key={key} className="field">
-                  <legend {...additionalProps}>{label}</legend>
-                  {services.map((service, i) => (
-                    <div key={kebabCase(service)}>
-                      <Control.checkbox
-                        model={`${model}.services.${service}`}
-                        id={kebabCase(service)} 
-                        name={kebabCase(service)} 
-                        value={service}
-                      />
-                      <label htmlFor={kebabCase(service)}>{service}</label>
-                    </div>
-                  ))}
+                  <Control.checkbox
+                    model={`${model}.services.${label}`}
+                    id={kebabCase(label)} 
+                    name={kebabCase(label)} 
+                    value={label}
+                  />
+                  <label htmlFor={kebabCase(label)}>{`${label} - ${services.join()}`}</label>
                 </fieldset>
               )
             })}
