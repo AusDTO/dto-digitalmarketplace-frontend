@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 const Submit = ({submitUrl, applicationValid, onClick}) => (
     <div>
-        <h1>I declare that:</h1>
+        <h1 tabIndex="-1">I declare that:</h1>
         <ol>
             <li>To the best of my knowledge the answers submitted are correct.</li>
             <li>I understand that the information will be used to access my organisations ability to be invited to join

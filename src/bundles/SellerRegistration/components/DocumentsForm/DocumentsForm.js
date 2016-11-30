@@ -76,11 +76,11 @@ class DocumentsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, mode, form, documentsForm, onSubmit, pathname='' } = this.props;
+    const { action, csrf_token, model, form, documentsForm, onSubmit, pathname='', buttonText } = this.props;
     return (
       <Layout>
         <header>
-          <h1>Documents</h1>
+          <h1 tabIndex="-1">Documents</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -133,7 +133,7 @@ class DocumentsForm extends BaseForm {
               )
             })}
 
-            <input type="submit" value={mode === 'edit' ? 'Save & Continue' : 'Continue'} role="button" />
+            <input type="submit" value={buttonText} role="button" />
           </Form>
         </article>
       </Layout>
