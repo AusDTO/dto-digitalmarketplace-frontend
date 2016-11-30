@@ -187,9 +187,9 @@ class CaseStudyForm extends BaseForm {
 const mapStateToProps = (state, ownProps) => {
   const { casestudy = {} } = state;
 
-  let service;
+  let service = ownProps.service;
   let formName = ownProps.formName;
-  if (formName) {
+  if (formName && !service) {
     service = get(state, `${formName}.service`);
   }
 

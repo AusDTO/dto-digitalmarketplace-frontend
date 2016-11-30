@@ -66,7 +66,7 @@ var config = {
     'applicant-signup': require(resolveApp('src/bundles/SellerRegistration/ApplicantSignup.json')),
     'enterpassword': require(resolveApp('src/bundles/SellerRegistration/components/EnterPasswordForm/EnterPasswordForm.json')),
     'applications-admin': require(resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdmin.json')),
-    'application-preview': require(resolveApp('src/bundles/SellerRegistration/ApplicantSignup.json')),
+    'application-preview': require(resolveApp('src/bundles/SellerRegistration/components/ApplicationPreview/ApplicationPreview.json')),
     'enterpassword': require(resolveApp('src/bundles/SellerRegistration/components/EnterPasswordForm/EnterPasswordForm.json'))
   }
 };

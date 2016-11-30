@@ -5,20 +5,66 @@
     "csrf_token": "abc"
   },
   "application": {
-    "representative": "representative",
-    "name": "name",
-    "abn": "abn",
-    "phone": "phone",
-    "email": "email",
-
-    "summary": "summary",
-    "website": "website",
-    "linkedin": "linkedin",
+    "representative": "Example person",
+    "name": "Example Company",
+    "abn": "133",
+    "phone": "123",
+    "email": "example@gmail.com",
+    "summary": "good company",
+    "website": "https://www.alpha",
+    "linkedin": "https://www.linkedin.com/company/Jalpha",
     "address": {
-      "addressLine": "data_addressLine",
-      "suburb": "St Ives",
-      "state": "NSW",
-      "postalCode": "2000"
+      "addressLine": "123 fake st",
+      "suburb": "Town",
+      "state": "nsw",
+      "postalCode": "2602"
+    },
+    "services": {
+      "User research": true,
+      "Architecture": true
+    },
+    "pricing": {
+      "User research": {
+        "minPrice": "1",
+        "maxPrice": "2"
+      },
+      "Architecture": {
+        "minPrice": "3",
+        "maxPrice": "4"
+      }
+    },
+    "casestudies": {
+      "7958aa7d-0f21-2cbd-a9a2-0198c2468cb4": {
+        "service": "User research",
+        "title": "A user can upload files ",
+        "client": "dsfsdf",
+        "timeframe": " January 2016 — June 2016",
+        "opportunity": "fsdfsd",
+        "approach": "sfdsds",
+        "outcome": [
+          "dsfsd",
+          "sdffsd"
+        ],
+        "projectLinks": ["http://wwww"]
+      },
+      "bcec400b-bf71-22a6-9a84-d5a89431fb1a": {
+        "service": "Architecture",
+        "title": "sdfsdf",
+        "client": "fdgfd",
+        "timeframe": " January 2016 — June 2016",
+        "opportunity": "fsd",
+        "approach": "sdfsdf",
+        "outcome": [
+          "dsfsdf",
+          "sdfsdf"
+        ]
+      }
+    },
+    "documents": {
+      "deed": "deed.png",
+      "financial": "financial.pdf",
+      "liability": "liability.pdf",
+      "workers": "workers.pdf"
     }
   }
 }
