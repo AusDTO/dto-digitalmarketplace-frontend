@@ -67,18 +67,6 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/pricing"
-            onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Pricing
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/case-study"
             onClick={[Function]}>
             <i
@@ -259,18 +247,6 @@ exports[`test Signup renders empty Your Info form 1`] = `
               className="dirty" />
              
             Digital Services
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/pricing"
-            onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Pricing
           </a>
         </li>
         <li>
@@ -542,18 +518,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
               className="fa fa-circle-thin incomplete" />
              
             Digital Services
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/pricing"
-            onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Pricing
           </a>
         </li>
         <li>
