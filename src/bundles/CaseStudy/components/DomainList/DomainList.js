@@ -186,7 +186,14 @@ const DomainList = (props) => {
               method="post"
               validators={{
                 casestudies: (studies) => {
-                  return serviceCount === Object.keys(studies).length
+                  let studyServices = Object.keys(studies)
+                    .map(study => studies[study].service);
+
+                  let unique = studyServices.filter((s, i) => {
+                    return studyServices.indexOf(s) === i;
+                  })
+
+                  return serviceCount === unique.length
                 }
               }}
               onSubmit={onSubmit}>
