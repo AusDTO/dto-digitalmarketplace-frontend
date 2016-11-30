@@ -83,7 +83,7 @@ const loaders = [
   // "file" loader makes sure those assets end up in the `build` folder.
   // When you `import` an asset, you get its filename.
   {
-    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
     loader: 'file',
     query: {
       name: 'images/[name].[hash:8].[ext]'
@@ -98,6 +98,10 @@ const loaders = [
       limit: 10000,
       name: 'images/[name].[hash:8].[ext]'
     }
+  },
+  {
+    test: /\.svg$/,
+    loader: 'svg-inline'
   }
 ]
 
