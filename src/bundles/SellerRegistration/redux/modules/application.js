@@ -58,7 +58,15 @@ export const stepNextPersist = (transition, to, step) => {
             .then(() => dispatch(actions.setSubmitted(step.formKey)))
             .then(() => dispatch(actions.setPristine(step.formKey)))
             .then(() => dispatch(nextStep(to)))
-            .then(() => transition(to));
+            .then(() => transition(to))
+            .then(() => {
+                // Not the greatest thing, but since we're not mutating anything
+                // in the DOM and just managing focus, I think we're okay.
+                // findDOMNode doesn't break the lines of encapsulation.
+                if (typeof document !== 'undefined') {
+                    document.querySelector('h1').focus()
+                }
+            });
     }
 };
 
