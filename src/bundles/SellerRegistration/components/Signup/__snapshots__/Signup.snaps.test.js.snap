@@ -21,11 +21,9 @@ exports[`test Signup renders 1`] = `
             className="is-active is-current"
             href="/start"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle" />
-             
-            Become a seller
+            <span>
+              Become a seller
+            </span>
           </a>
         </li>
         <li>
@@ -33,11 +31,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/your-info"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Business representative
+            <span>
+              Business representative
+            </span>
           </a>
         </li>
         <li>
@@ -45,11 +41,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/business-details"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Create your profile
+            <span>
+              Create your profile
+            </span>
           </a>
         </li>
         <li>
@@ -57,11 +51,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/domains"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Digital Services
+            <span>
+              Digital Services
+            </span>
           </a>
         </li>
         <li>
@@ -69,11 +61,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/pricing"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Pricing
+            <span>
+              Pricing
+            </span>
           </a>
         </li>
         <li>
@@ -81,11 +71,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/case-study"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Case Study
+            <span>
+              Case Study
+            </span>
           </a>
         </li>
         <li>
@@ -93,11 +81,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/documents"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Documents
+            <span>
+              Documents
+            </span>
           </a>
         </li>
         <li>
@@ -105,11 +91,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/references"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            References
+            <span>
+              References
+            </span>
           </a>
         </li>
         <li>
@@ -117,11 +101,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/review"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Review your profile
+            <span>
+              Review your profile
+            </span>
           </a>
         </li>
         <li>
@@ -129,11 +111,9 @@ exports[`test Signup renders 1`] = `
             className=""
             href="/submit"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Submit
+            <span>
+              Submit
+            </span>
           </a>
         </li>
       </ul>
@@ -218,11 +198,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/start"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Become a seller
+            <span>
+              Become a seller
+            </span>
           </a>
         </li>
         <li>
@@ -230,11 +208,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="is-active is-current"
             href="/your-info"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Business representative
+            <span>
+              Business representative
+            </span>
           </a>
         </li>
         <li>
@@ -242,11 +218,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/business-details"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Create your profile
+            <span>
+              Create your profile
+            </span>
           </a>
         </li>
         <li>
@@ -254,11 +228,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/domains"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Digital Services
+            <span>
+              Digital Services
+            </span>
           </a>
         </li>
         <li>
@@ -266,11 +238,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/pricing"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Pricing
+            <span>
+              Pricing
+            </span>
           </a>
         </li>
         <li>
@@ -278,11 +248,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/case-study"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Case Study
+            <span>
+              Case Study
+            </span>
           </a>
         </li>
         <li>
@@ -290,11 +258,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/documents"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Documents
+            <span>
+              Documents
+            </span>
           </a>
         </li>
         <li>
@@ -302,11 +268,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/references"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            References
+            <span>
+              References
+            </span>
           </a>
         </li>
         <li>
@@ -314,11 +278,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/review"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Review your profile
+            <span>
+              Review your profile
+            </span>
           </a>
         </li>
         <li>
@@ -326,11 +288,9 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className=""
             href="/submit"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Submit
+            <span>
+              Submit
+            </span>
           </a>
         </li>
       </ul>
@@ -501,11 +461,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/start"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Become a seller
+            <span>
+              Become a seller
+            </span>
           </a>
         </li>
         <li>
@@ -513,11 +471,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className="is-active is-current"
             href="/your-info"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle" />
-             
-            Business representative
+            <span>
+              Business representative
+            </span>
           </a>
         </li>
         <li>
@@ -525,11 +481,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/business-details"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Create your profile
+            <span>
+              Create your profile
+            </span>
           </a>
         </li>
         <li>
@@ -537,11 +491,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/domains"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Digital Services
+            <span>
+              Digital Services
+            </span>
           </a>
         </li>
         <li>
@@ -549,11 +501,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/pricing"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Pricing
+            <span>
+              Pricing
+            </span>
           </a>
         </li>
         <li>
@@ -561,11 +511,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/case-study"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Case Study
+            <span>
+              Case Study
+            </span>
           </a>
         </li>
         <li>
@@ -573,11 +521,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/documents"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            Documents
+            <span>
+              Documents
+            </span>
           </a>
         </li>
         <li>
@@ -585,11 +531,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/references"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="dirty" />
-             
-            References
+            <span>
+              References
+            </span>
           </a>
         </li>
         <li>
@@ -597,11 +541,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/review"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Review your profile
+            <span>
+              Review your profile
+            </span>
           </a>
         </li>
         <li>
@@ -609,11 +551,9 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className=""
             href="/submit"
             onClick={[Function]}>
-            <i
-              aria-hidden="true"
-              className="fa fa-circle-thin incomplete" />
-             
-            Submit
+            <span>
+              Submit
+            </span>
           </a>
         </li>
       </ul>

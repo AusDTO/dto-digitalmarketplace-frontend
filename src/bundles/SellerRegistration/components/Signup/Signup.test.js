@@ -32,7 +32,6 @@ test('mapStateToProps with application', () => {
     application: {
       bar: 'baz'
     },
-    dirtyForms: {},
     steps: void 0
   };
 
@@ -54,7 +53,6 @@ test('mapStateToProps without application', () => {
       }
     },
     application: {},
-    dirtyForms: {},
     steps: void 0
   };
 
