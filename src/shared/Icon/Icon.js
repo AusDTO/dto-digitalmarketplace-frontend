@@ -20,6 +20,10 @@ const Icon = (props) => {
     svgStyle.stroke = color;
   }
 
+  if (!icons[value]) {
+    return null;
+  }
+
   return (
     <div style={divStyle} className="icon">
       <svg
