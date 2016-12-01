@@ -1,6 +1,7 @@
 // FIXME This is a workaround.
 // @see https://github.com/facebook/react/issues/7386
 jest.mock('react-dom');
+jest.mock('../../../../shared/Icon/_getIcons');
 
 import React from 'react';
 import { Provider } from 'react-redux';

@@ -4,11 +4,12 @@ import { Match, Miss, Link } from 'react-router';
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 
+import Icon     from '../../../../shared/Icon';
 import NotFound from '../../../../shared/NotFound';
 import LocalNav from '../../../../shared/LocalNav';
 
 import { stepComplete, setSteps, STATUS } from '../../redux/modules/steps';
-import { getStateForms, dispatchFormState, findDirtyForms } from '../../redux/helpers';
+import { getStateForms, dispatchFormState } from '../../redux/helpers';
 import { stepNextPersist, submitApplication } from '../../redux/modules/application';
 
 // Step Components
@@ -97,7 +98,7 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { dirtyForms = {}, forms, router, steps = {}, location } = this.props;
+    const { forms, router, steps = {}, location } = this.props;
     const applicationValid = this.steps.length === Object.keys(steps).length;
     const { services = {} } = forms.domainSelectorForm;
 
@@ -116,28 +117,22 @@ class Signup extends React.Component {
 
           return (
             <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
-              {this.steps.map(({ pattern, label, formKey, id }, i) => {
-                return (
-                  <li key={i}>
-                    <Link to={pattern}>{
-                      ({ isActive, href, onClick }) => (
-                        <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
-                          <i
-                            className={classNames({
-                              'fa': !dirtyForms[formKey],
-                              'fa-circle-thin incomplete': !steps[id] && !isActive && !dirtyForms[formKey],
-                              'fa-circle': isActive && steps[id] !== STATUS.complete && !dirtyForms[formKey],
-                              'fa-check-circle complete': steps[id] === STATUS.complete && !dirtyForms[formKey],
-                              'dirty': dirtyForms[formKey]
-                            })}
-                            aria-hidden="true"
-                          />
-                          &nbsp;{label}
-                        </a>
-                    )}</Link>
-                  </li>
-                )
-              })}
+              {this.steps.map(({ pattern, label, formKey, id }, i) => (
+                <li key={i}>
+                  <Link to={pattern}>{
+                    ({ isActive, href, onClick }) => (
+                      <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
+                        <Icon value={classNames({
+                            'to-do'       : !steps[id] && !isActive,
+                            'completed'   : steps[id] === STATUS.complete && !isActive,
+                            'in-progress' : isActive,
+                          })} size={34} aria-hidden="true"
+                        />
+                        <span>{label}</span>
+                      </a>
+                  )}</Link>
+                </li>
+              ))}
             </LocalNav>
           )
         }} />
@@ -185,7 +180,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     forms: getStateForms(state),
     application,
-    dirtyForms: findDirtyForms(state),
     steps,
     ...ownProps
   };
