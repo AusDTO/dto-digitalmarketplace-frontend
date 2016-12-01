@@ -37,9 +37,6 @@ export default combineReducers({
     domainSelectorForm: {
       services: {}
     },
-    pricingForm: {
-      pricing: {}
-    },
     caseStudyForm: {
       casestudies: {}
     },
@@ -56,9 +53,6 @@ export default combineReducers({
     },
     documentsForm: {
       documents: {}
-    },
-    referencesForm: {
-      references: []
     }
   })
 })
