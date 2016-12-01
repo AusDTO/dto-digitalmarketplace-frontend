@@ -115,7 +115,7 @@ class Signup extends React.Component {
           }
 
           return (
-            <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation">
+            <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
               {this.steps.map(({ pattern, label, formKey, id }, i) => {
                 return (
                   <li key={i}>

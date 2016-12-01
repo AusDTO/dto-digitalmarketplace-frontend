@@ -6,7 +6,8 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
     <div
       className="layout">
       <header>
-        <h1>
+        <h1
+          tabIndex="-1">
           Business details
         </h1>
       </header>

@@ -89,7 +89,7 @@ const DomainList = (props) => {
     return (
       <Layout>
         <header>
-          <h1>{title}</h1>
+          <h1 tabIndex="-1">{title}</h1>
         </header>
         <article role="main">
           <p>You must select some domains before adding case studies.</p>
@@ -104,7 +104,7 @@ const DomainList = (props) => {
       <Match pattern={pathname} exactly render={() => (
         <Layout>
           <header>
-            <h1>{title}</h1>
+            <h1 tabIndex="-1">{title}</h1>
             <p>The DTA will evaluate your case study for each service to ensure services provided on the Marketplace meet a sufficient standard. <a href="#criteria">Browse criteria for each service</a></p>
           </header>
           <article role="main">
