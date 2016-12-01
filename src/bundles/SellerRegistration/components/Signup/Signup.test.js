@@ -1,4 +1,6 @@
 jest.mock('react-router');
+jest.mock('../../../../shared/Icon/_getIcons');
+
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
