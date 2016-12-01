@@ -225,7 +225,6 @@ test('without filterSteps', () => {
   const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
-  const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
   const DomainList = require('../../../CaseStudy/components/DomainList').default;
   const Documents = require('../../../SellerRegistration/components/DocumentsForm').default;
   const References = require('../../../SellerRegistration/components/ReferencesForm').default;
@@ -243,7 +242,6 @@ test('without filterSteps', () => {
     { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
 	  { id: 'references', label: 'References', component: References, pattern: '/references', formKey: 'referencesForm' },
@@ -270,7 +268,7 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(10);
+  expect(steps.length).toBe(9);
 });
 
 test('filterSteps', () => {
@@ -278,7 +276,6 @@ test('filterSteps', () => {
   const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
-  const PricingForm = require('../../../SellerRegistration/components/PricingForm').default;
   const Documents = require('../../../SellerRegistration/components/DocumentsForm').default;
   const References = require('../../../SellerRegistration/components/ReferencesForm').default;
 
@@ -292,7 +289,6 @@ test('filterSteps', () => {
     { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
 	  { id: 'references', label: 'References', component: References, pattern: '/references', formKey: 'referencesForm' }
   ];
@@ -322,7 +318,7 @@ test('filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(6);
+  expect(steps.length).toBe(5);
 });
 
 
