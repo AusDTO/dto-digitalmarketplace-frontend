@@ -16,7 +16,6 @@ import Start                from '../Start';
 import YourInfoForm         from '../YourInfoForm';
 import BusinessDetailsForm  from '../BusinessDetailsForm';
 import DomainSelector       from '../DomainSelector';
-import PricingForm          from '../PricingForm';
 import Review               from '../Review';
 import Submit               from '../Submit';
 import DocumentsForm        from '../DocumentsForm';
@@ -38,7 +37,6 @@ class Signup extends React.Component {
     { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'references', label: 'References', component: ReferencesForm, pattern: '/references', formKey: 'referencesForm' },
