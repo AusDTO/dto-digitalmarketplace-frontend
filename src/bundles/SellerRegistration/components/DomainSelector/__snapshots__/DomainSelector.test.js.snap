@@ -2,7 +2,8 @@ exports[`test DomainSelector renders 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Digital Services
     </h1>
     <p>
@@ -226,7 +227,8 @@ exports[`test DomainSelector renders with populated fields 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Digital Services
     </h1>
     <p>

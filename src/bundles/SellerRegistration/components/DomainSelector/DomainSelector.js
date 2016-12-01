@@ -20,7 +20,7 @@ class DomainSelector extends BaseForm {
     return (
       <Layout>
         <header>
-            <h1>{title}</h1>
+            <h1 tabIndex="-1">{title}</h1>
             <p>You will need to provide a day rate and case study for each. <a href="#href">View criteria for each service</a></p>
         </header>
         <article role="main">

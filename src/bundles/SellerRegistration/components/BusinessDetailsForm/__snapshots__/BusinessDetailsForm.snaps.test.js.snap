@@ -2,7 +2,8 @@ exports[`test BusinessDetailsForm renders 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Business details
     </h1>
   </header>
@@ -250,7 +251,8 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Business details
     </h1>
   </header>
@@ -503,7 +505,8 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
 <div
   className="layout">
   <header>
-    <h1>
+    <h1
+      tabIndex="-1">
       Business details
     </h1>
   </header>
