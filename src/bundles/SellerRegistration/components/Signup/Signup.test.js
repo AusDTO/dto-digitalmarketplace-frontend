@@ -227,7 +227,6 @@ test('without filterSteps', () => {
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const DomainList = require('../../../CaseStudy/components/DomainList').default;
   const Documents = require('../../../SellerRegistration/components/DocumentsForm').default;
-  const References = require('../../../SellerRegistration/components/ReferencesForm').default;
   const Review = require('../../../SellerRegistration/components/Review').default;
   const Submit = require('../../../SellerRegistration/components/Submit').default;
 
@@ -244,7 +243,6 @@ test('without filterSteps', () => {
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
-	  { id: 'references', label: 'References', component: References, pattern: '/references', formKey: 'referencesForm' },
     { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
     { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
   ];
@@ -268,7 +266,7 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(9);
+  expect(steps.length).toBe(8);
 });
 
 test('filterSteps', () => {
@@ -277,7 +275,6 @@ test('filterSteps', () => {
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const Documents = require('../../../SellerRegistration/components/DocumentsForm').default;
-  const References = require('../../../SellerRegistration/components/ReferencesForm').default;
 
   delete sampleState.basename;
   let store = createStore(Object.assign({},
@@ -289,8 +286,7 @@ test('filterSteps', () => {
     { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
-	  { id: 'references', label: 'References', component: References, pattern: '/references', formKey: 'referencesForm' }
+    { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' }
   ];
 
   const filterSteps = (step) => {
@@ -318,7 +314,7 @@ test('filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(5);
+  expect(steps.length).toBe(4);
 });
 
 
