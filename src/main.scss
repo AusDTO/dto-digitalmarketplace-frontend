@@ -409,6 +409,18 @@ form {
     }
   }
 
+  &__row {
+    margin-bottom: 3em;
+
+    ul {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
   &__tile {
     border: solid 1px rgba(23, 120, 141, 0.5);
     box-shadow: 0 0 5px 0 rgba(187, 187, 187, 0.5);
