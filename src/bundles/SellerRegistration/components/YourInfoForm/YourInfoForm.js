@@ -54,19 +54,6 @@ class YourInfoForm extends BaseForm {
             />
 
             <Textfield
-              model={`${model}.representative`}
-              name="representative"
-              id="representative"
-              htmlFor="representative"
-              label="Business Representative"
-              description="The authorised person who signs contracts with clients"
-              validators={{ required }}
-              messages={{
-                required: 'Business representative is required',
-              }}
-            />
-
-            <Textfield
               model={`${model}.abn`}
               name="abn"
               id="abn"
@@ -79,14 +66,27 @@ class YourInfoForm extends BaseForm {
             />
 
             <Textfield
+              model={`${model}.contact_name`}
+              name="contact_name"
+              id="contact_name"
+              htmlFor="contact_name"
+              label="Contact Name"
+              description="The best person to contact for business opportunities"
+              validators={{ required }}
+              messages={{
+                required: 'Contact name is required',
+              }} 
+            />
+
+            <Textfield
               model={`${model}.phone`}
               name="phone"
               id="phone"
               htmlFor="phone"
-              label="Representative's phone number"
+              label="Contact's phone number"
               validators={{ required }}
               messages={{
-                required: 'Representative\'s phone number is required',
+                required: 'Contact\'s phone number is required',
               }}
             />
 
@@ -95,10 +95,23 @@ class YourInfoForm extends BaseForm {
               name="email"
               id="email"
               htmlFor="email"
-              label="Representative's email"
+              label="Contact's email"
               validators={{ required }}
               messages={{
-                required: 'Representative\'s email is required',
+                required: 'Contact\'s email is required',
+              }}
+            />
+
+            <Textfield
+              model={`${model}.representative`}
+              name="representative"
+              id="representative"
+              htmlFor="representative"
+              label="Authorised Representative"
+              description="The authorised person who signs contracts with clients"
+              validators={{ required }}
+              messages={{
+                required: 'Authorised representative is required',
               }}
             />
 

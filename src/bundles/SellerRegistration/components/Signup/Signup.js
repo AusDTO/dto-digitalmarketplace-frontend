@@ -34,7 +34,7 @@ class Signup extends React.Component {
 
   steps = [
     { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
-    { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'info', label: 'Business details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
