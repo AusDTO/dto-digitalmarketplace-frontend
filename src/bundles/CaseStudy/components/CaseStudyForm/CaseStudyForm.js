@@ -177,7 +177,7 @@ class CaseStudyForm extends BaseForm {
             <h3>Referee</h3>
 
             <Textfield
-                model={`${model}.refereeName`}
+                model={`${model}.referee_name`}
                 name="refereeName"
                 id="refereeName"
                 htmlFor="refereeName"
@@ -188,7 +188,7 @@ class CaseStudyForm extends BaseForm {
             />
 
             <Textfield
-                model={`${model}.refereeEmail`}
+                model={`${model}.referee_email`}
                 name="refereeEmail"
                 id="refereeEmail"
                 htmlFor="refereeEmail"
@@ -199,14 +199,14 @@ class CaseStudyForm extends BaseForm {
 
             <div>
               <StatefulError
-                model={`${model}.refereeContact`}
+                model={`${model}.referee_contact`}
                 id="refereeContact"
                 messages={{
                   required: 'Please ackknowledge the referee can be contacted.'
                 }}
               />
               <Control.checkbox
-                model={`${model}.refereeContact`}
+                model={`${model}.referee_contact`}
                 id="refereeContact" 
                 name="refereeContact"
                 validators={{ required }}

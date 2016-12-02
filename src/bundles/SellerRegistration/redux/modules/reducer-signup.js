@@ -49,7 +49,10 @@ export default combineReducers({
       outcome: [],
       projectLinks: [],
       service: '',
-      roles: ''
+      roles: '',
+      referee_name: '',
+      referee_email: '',
+      referee_contact: ''
     },
     documentsForm: {
       documents: {}
