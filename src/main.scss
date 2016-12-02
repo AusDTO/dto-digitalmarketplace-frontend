@@ -356,3 +356,98 @@ form {
     transform: rotate(180deg);
   }
 }
+
+// Hide visually and from screen readers: h5bp.com/u
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+// Hide visually and from screen readers, but maintain layout
+.invisible {
+  visibility: hidden;
+}
+
+// Hide only visually, but have it available for screen readers: h5bp.com/v
+.visuallyhidden,
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  // Allow .visuallyhidden element to be focusable via the keyboard: h5bp.com/p
+  &:active,
+  &:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+.seller-profile {
+
+  h1 {
+    margin: 0;
+  }
+
+  &__badges {
+    margin: 0 0 1.25rem;
+    span {
+      font-size: 12px;
+      margin-left: 5px;
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__tile {
+    border: solid 1px rgba(23, 120, 141, 0.5);
+    box-shadow: 0 0 5px 0 rgba(187, 187, 187, 0.5);
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+    text-align: center;
+
+    &-title {
+      display: block;
+      color: #6e6e6e;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    b {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    a[role="button"] {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      border-radius: 4px;
+    }
+  }
+
+  &__continue-link {
+    > * {
+      width: 100%;
+      text-align: center;
+      display: block;
+      margin: 5px 0;
+    }
+  }
+}
