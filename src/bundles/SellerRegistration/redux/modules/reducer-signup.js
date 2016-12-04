@@ -22,6 +22,7 @@ export default combineReducers({
       abn: '',
       phone: '',
       email: '',
+      contact_name: ''
     },
     businessDetailsForm: {
       summary: '',

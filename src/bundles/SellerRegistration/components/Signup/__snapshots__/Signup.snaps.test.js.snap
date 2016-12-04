@@ -33,7 +33,7 @@ exports[`test Signup renders 1`] = `
             href="/your-info"
             onClick={[Function]}>
             <span>
-              Business representative
+              Business details
             </span>
           </a>
         </li>
@@ -191,7 +191,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/your-info"
             onClick={[Function]}>
             <span>
-              Business representative
+              Business details
             </span>
           </a>
         </li>
@@ -265,7 +265,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Business representative
+          Business details
         </h1>
       </header>
       <article
@@ -305,31 +305,6 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="representative">
-              Business Representative
-            </label>
-            <p
-              className="hint"
-              id="representative-hint">
-              The authorised person who signs contracts with clients
-            </p>
-            <input
-              aria-describedby="representative-hint"
-              className=""
-              id="representative"
-              name="representative"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
               htmlFor="abn">
               ABN
             </label>
@@ -350,8 +325,33 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
+              htmlFor="contact_name">
+              Contact Name
+            </label>
+            <p
+              className="hint"
+              id="contact_name-hint">
+              The best person to contact for business opportunities
+            </p>
+            <input
+              aria-describedby="contact_name-hint"
+              className=""
+              id="contact_name"
+              name="contact_name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
               htmlFor="phone">
-              Representative\'s phone number
+              Contact\'s phone number
             </label>
             <input
               aria-describedby={undefined}
@@ -371,13 +371,38 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="email">
-              Representative\'s email
+              Contact\'s email
             </label>
             <input
               aria-describedby={undefined}
               className=""
               id="email"
               name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="representative">
+              Authorised Representative
+            </label>
+            <p
+              className="hint"
+              id="representative-hint">
+              The authorised person who signs contracts with clients
+            </p>
+            <input
+              aria-describedby="representative-hint"
+              className=""
+              id="representative"
+              name="representative"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -436,7 +461,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/your-info"
             onClick={[Function]}>
             <span>
-              Business representative
+              Business details
             </span>
           </a>
         </li>
@@ -510,7 +535,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Business representative
+          Business details
         </h1>
       </header>
       <article
@@ -550,31 +575,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="representative">
-              Business Representative
-            </label>
-            <p
-              className="hint"
-              id="representative-hint">
-              The authorised person who signs contracts with clients
-            </p>
-            <input
-              aria-describedby="representative-hint"
-              className=""
-              id="representative"
-              name="representative"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="representative" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
               htmlFor="abn">
               ABN
             </label>
@@ -595,8 +595,33 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
+              htmlFor="contact_name">
+              Contact Name
+            </label>
+            <p
+              className="hint"
+              id="contact_name-hint">
+              The best person to contact for business opportunities
+            </p>
+            <input
+              aria-describedby="contact_name-hint"
+              className=""
+              id="contact_name"
+              name="contact_name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
               htmlFor="phone">
-              Representative\'s phone number
+              Contact\'s phone number
             </label>
             <input
               aria-describedby={undefined}
@@ -616,7 +641,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="email">
-              Representative\'s email
+              Contact\'s email
             </label>
             <input
               aria-describedby={undefined}
@@ -630,6 +655,31 @@ exports[`test Signup renders populated Your Info form 1`] = `
               pattern={undefined}
               type="text"
               value="email" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="representative">
+              Authorised Representative
+            </label>
+            <p
+              className="hint"
+              id="representative-hint">
+              The authorised person who signs contracts with clients
+            </p>
+            <input
+              aria-describedby="representative-hint"
+              className=""
+              id="representative"
+              name="representative"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="representative" />
           </div>
           <input
             name="next_step_slug"
