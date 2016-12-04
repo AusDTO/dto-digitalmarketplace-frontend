@@ -1,12 +1,7 @@
 import React from 'react';
 
 const Row = ({ title, children, show }) => {
-  let test = show;
-  if (typeof show === 'function') {
-    test = show();
-  }
-
-  if (!test) {
+  if (!show) {
     return null;
   }
 
@@ -22,7 +17,7 @@ const Body = (props) => {
   const {
     evaluated,
     provides,
-    casestudies = {},
+    case_studies = {},
     representative,
     website,
     linkedin,
@@ -31,23 +26,23 @@ const Body = (props) => {
   } = props;
 
   return (
-    <article>
+    <article className="seller-profile">
       <Row title="Evaluted for" show={evaluated}>
 
       </Row>
 
       <Row title="Provides" show={provides}>
-        <div>
+        <div className="seller-profile__provides-badges">
           {Object.keys(provides).map((service, i) => (
             <span className="badge--default" key={i}>{service}</span>
           ))}
         </div>
       </Row>
 
-      <Row title="Case studies" show={Object.keys(casestudies).length}>
+      <Row title="Case studies" show={Object.keys(case_studies).length}>
         <ul className="list-vertical">
-        {Object.keys(casestudies).map((study, i) => {
-          const { title, service, client } = casestudies[study];
+        {Object.keys(case_studies).map((study, i) => {
+          const { title, service, client } = case_studies[study];
           return (
             <li key={i}>
               <article>
