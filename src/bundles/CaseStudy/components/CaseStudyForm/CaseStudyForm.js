@@ -164,7 +164,7 @@ class CaseStudyForm extends BaseForm {
 
             <MultiInput
               id="projectLinks"
-              model={`${model}.projectLinks`}
+              model={`${model}.project_links`}
               name="projectLinks"
               htmlFor="projectLinks"
               label="Project links (optional)"
