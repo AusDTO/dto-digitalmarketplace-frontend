@@ -24,7 +24,14 @@ class SignupForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1>{'Create a Seller Account'}</h1>
+          <h1>Claim your spot in the Marketplace</h1>
+          <p>
+            We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+          </p>
+          <p>
+            And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+          </p>
+          <h2>Ready to get started?</h2>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -57,7 +64,7 @@ class SignupForm extends BaseForm {
               name="email"
               id="email"
               htmlFor="email"
-              label="Email"
+              label="Email address"
               validators={{ required }}
               messages={{
                 required: 'Email is required',
@@ -66,10 +73,10 @@ class SignupForm extends BaseForm {
 
             {children}
 
-            <input type="submit" value='Send Email' role="button" />
+            <input type="submit" value='Create seller account' role="button" />
             <p>
               <small>
-                By requesting an account invitation, you agree to the <a href="/terms-of-use">Terms of Use</a>.
+                By requesting an account invitation you agree to the <a href="/terms-of-use">Terms of Use</a>.
               </small>
             </p>             
           </Form>
