@@ -74,10 +74,10 @@ class BusinessDetailsForm extends BaseForm {
                         />
 
                         <Textfield
-                            model={`${model}.address.addressLine`}
+                            model={`${model}.address.address_line`}
                             name="address.address_line"
-                            id="addressLine"
-                            htmlFor="addressLine"
+                            id="address_line"
+                            htmlFor="address_line"
                             label="Address"
                             messages={{
                                 required: 'You must provide an address'
@@ -108,10 +108,10 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                         />
                         <Textfield
-                            model={`${model}.address.postalCode`}
+                            model={`${model}.address.postal_code`}
                             name="address.postal_code"
-                            id="postalCode"
-                            htmlFor="postalCode"
+                            id="postal_code"
+                            htmlFor="postal_code"
                             label="Postcode"
                             messages={{
                                 required: 'You must provide a postal code'
