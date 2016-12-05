@@ -91,14 +91,14 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="addressLine">
+              htmlFor="address_line">
               Address
             </label>
             <input
               aria-describedby={undefined}
               className=""
-              id="addressLine"
-              name="address.addressLine"
+              id="address_line"
+              name="address.address_line"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -151,14 +151,14 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="postalCode">
+              htmlFor="postal_code">
               Postcode
             </label>
             <input
               aria-describedby={undefined}
               className=""
-              id="postalCode"
-              name="address.postalCode"
+              id="postal_code"
+              name="address.postal_code"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}

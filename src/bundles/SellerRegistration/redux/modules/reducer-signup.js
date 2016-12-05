@@ -29,17 +29,17 @@ export default combineReducers({
       website: '',
       linkedin: '',
       address: {
-        addressLine: '',
+        address_line: '',
         suburb: '',
         state: '',
-        postalCode: ''
+        postal_code: ''
       }
     },
     domainSelectorForm: {
       services: {}
     },
     caseStudyForm: {
-      casestudies: {}
+      case_studies: {}
     },
     casestudy: {
       title: '',
@@ -48,7 +48,7 @@ export default combineReducers({
       opportunity: '',
       approach: '',
       outcome: [],
-      projectLinks: [],
+      project_links: [],
       service: '',
       roles: '',
       referee_name: '',

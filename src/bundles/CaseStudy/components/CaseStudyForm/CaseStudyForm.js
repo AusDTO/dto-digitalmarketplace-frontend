@@ -163,10 +163,10 @@ class CaseStudyForm extends BaseForm {
             />
 
             <MultiInput
-              id="projectLinks"
-              model={`${model}.projectLinks`}
-              name="projectLinks"
-              htmlFor="projectLinks"
+              id="project_links"
+              model={`${model}.project_links`}
+              name="project_links"
+              htmlFor="project_links"
               label="Project links (optional)"
               controlProps={{ defaultRows: 2 }}
               description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."

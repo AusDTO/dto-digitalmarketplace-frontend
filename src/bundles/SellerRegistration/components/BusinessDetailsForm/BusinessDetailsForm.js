@@ -74,10 +74,10 @@ class BusinessDetailsForm extends BaseForm {
                         />
 
                         <Textfield
-                            model={`${model}.address.addressLine`}
-                            name="address.addressLine"
-                            id="addressLine"
-                            htmlFor="addressLine"
+                            model={`${model}.address.address_line`}
+                            name="address.address_line"
+                            id="address_line"
+                            htmlFor="address_line"
                             label="Address"
                             messages={{
                                 required: 'You must provide an address'
@@ -108,10 +108,10 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                         />
                         <Textfield
-                            model={`${model}.address.postalCode`}
-                            name="address.postalCode"
-                            id="postalCode"
-                            htmlFor="postalCode"
+                            model={`${model}.address.postal_code`}
+                            name="address.postal_code"
+                            id="postal_code"
+                            htmlFor="postal_code"
                             label="Postcode"
                             messages={{
                                 required: 'You must provide a postal code'
@@ -124,7 +124,7 @@ class BusinessDetailsForm extends BaseForm {
                                 <legend>Select the following that apply (optional)</legend>
 
                                 <Control.checkbox
-                                    model={`${model}.additionalInfo.start-up`}
+                                    model={`${model}.additional_info.start-up`}
                                     id="start-up"
                                     name="start-up"
                                     value="start-up"
@@ -134,7 +134,7 @@ class BusinessDetailsForm extends BaseForm {
                                     using technology</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additionalInfo.sme`}
+                                    model={`${model}.additional_info.sme`}
                                     id="sme"
                                     name="sme"
                                     value="sme"
@@ -143,7 +143,7 @@ class BusinessDetailsForm extends BaseForm {
                                     independently of any parent organisation for taxation arrangements</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additionalInfo.indigenous`}
+                                    model={`${model}.additional_info.indigenous`}
                                     id="indigenous"
                                     name="indigenous"
                                     value="indigenous"
@@ -152,7 +152,7 @@ class BusinessDetailsForm extends BaseForm {
                                     of Indigenous businesses, such as Supply Nation</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additionalInfo.recruitment`}
+                                    model={`${model}.additional_info.recruitment`}
                                     id="recruitment"
                                     name="recruitment"
                                     value="recruitment"
@@ -161,7 +161,7 @@ class BusinessDetailsForm extends BaseForm {
                                     resourcing</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additionalInfo.product`}
+                                    model={`${model}.additional_info.product`}
                                     id="product"
                                     name="product"
                                     value="product"

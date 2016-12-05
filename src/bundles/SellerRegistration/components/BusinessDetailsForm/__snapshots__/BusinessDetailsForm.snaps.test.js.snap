@@ -87,14 +87,14 @@ exports[`test BusinessDetailsForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="addressLine">
+          htmlFor="address_line">
           Address
         </label>
         <input
           aria-describedby={undefined}
           className=""
-          id="addressLine"
-          name="address.addressLine"
+          id="address_line"
+          name="address.address_line"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -147,14 +147,14 @@ exports[`test BusinessDetailsForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="postalCode">
+          htmlFor="postal_code">
           Postcode
         </label>
         <input
           aria-describedby={undefined}
           className=""
-          id="postalCode"
-          name="address.postalCode"
+          id="postal_code"
+          name="address.postal_code"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -341,14 +341,14 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="addressLine">
+          htmlFor="address_line">
           Address
         </label>
         <input
           aria-describedby={undefined}
           className=""
-          id="addressLine"
-          name="address.addressLine"
+          id="address_line"
+          name="address.address_line"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -401,14 +401,14 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="postalCode">
+          htmlFor="postal_code">
           Postcode
         </label>
         <input
           aria-describedby={undefined}
           className=""
-          id="postalCode"
-          name="address.postalCode"
+          id="postal_code"
+          name="address.postal_code"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -528,6 +528,18 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
             You must provide a seller summary
           </a>
         </li>
+        <li>
+          <a
+            href="#address_line">
+            You must provide an address
+          </a>
+        </li>
+        <li>
+          <a
+            href="#postal_code">
+            You must provide a postal code
+          </a>
+        </li>
       </ul>
     </div>
     <form
@@ -619,21 +631,32 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="addressLine">
+          htmlFor="address_line">
           Address
         </label>
+        <a
+          className="validation-message"
+          href="#address_line">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            You must provide an address
+          </span>
+        </a>
         <input
           aria-describedby={undefined}
-          className=""
-          id="addressLine"
-          name="address.addressLine"
+          className="invalid"
+          id="address_line"
+          name="address.address_line"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="Level 5, 77 Devon Street" />
+          value="" />
       </div>
       <div
         className="field">
@@ -679,21 +702,32 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="postalCode">
+          htmlFor="postal_code">
           Postcode
         </label>
+        <a
+          className="validation-message"
+          href="#postal_code">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            You must provide a postal code
+          </span>
+        </a>
         <input
           aria-describedby={undefined}
-          className=""
-          id="postalCode"
-          name="address.postalCode"
+          className="invalid"
+          id="postal_code"
+          name="address.postal_code"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern="[0-9]{4}"
           type="text"
-          value="2010" />
+          value="" />
       </div>
       <fieldset>
         <legend>
