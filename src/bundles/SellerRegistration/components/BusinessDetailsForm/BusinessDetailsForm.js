@@ -62,7 +62,11 @@ class BusinessDetailsForm extends BaseForm {
                             name="website"
                             id="website"
                             htmlFor="website"
-                            label="Website URL (optional)"
+                            label="Website URL"
+                            messages={{
+                                required: 'You must provide a website URL'
+                            }}
+                            validators={{required}}
                         />
 
                         <Textfield
