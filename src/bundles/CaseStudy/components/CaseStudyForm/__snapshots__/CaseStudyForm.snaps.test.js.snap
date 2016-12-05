@@ -325,6 +325,69 @@ exports[`test CaseStudyForm renders 1`] = `
           </button>
         </div>
       </div>
+      <h3>
+        Referee
+      </h3>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeName">
+          Referee\'s name
+        </label>
+        <p
+          className="hint"
+          id="refereeName-hint">
+          The full name of the best person to contact about your experience
+        </p>
+        <input
+          aria-describedby="refereeName-hint"
+          className=""
+          id="refereeName"
+          name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeEmail">
+          Referee\'s phone number
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="refereeEmail"
+          name="refereeEmail"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div>
+        <input
+          checked={false}
+          id="refereeContact"
+          name="refereeContact"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox" />
+        <label
+          htmlFor="refereeContact">
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+        </label>
+      </div>
       <input
         role="button"
         type="submit"
@@ -1273,6 +1336,69 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           </button>
         </div>
       </div>
+      <h3>
+        Referee
+      </h3>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeName">
+          Referee\'s name
+        </label>
+        <p
+          className="hint"
+          id="refereeName-hint">
+          The full name of the best person to contact about your experience
+        </p>
+        <input
+          aria-describedby="refereeName-hint"
+          className=""
+          id="refereeName"
+          name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeEmail">
+          Referee\'s phone number
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="refereeEmail"
+          name="refereeEmail"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div>
+        <input
+          checked={false}
+          id="refereeContact"
+          name="refereeContact"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox" />
+        <label
+          htmlFor="refereeContact">
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+        </label>
+      </div>
       <input
         role="button"
         type="submit"
@@ -1353,6 +1479,24 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           <a
             href="#outcome">
             You must provide at least one outcome.
+          </a>
+        </li>
+        <li>
+          <a
+            href="#refereeName">
+            Please provide a referee name.
+          </a>
+        </li>
+        <li>
+          <a
+            href="#refereeEmail">
+            Please provide a referee phone number.
+          </a>
+        </li>
+        <li>
+          <a
+            href="#refereeContact">
+            Please ackknowledge the referee can be contacted.
           </a>
         </li>
       </ul>
@@ -1749,6 +1893,102 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           </button>
         </div>
       </div>
+      <h3>
+        Referee
+      </h3>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeName">
+          Referee\'s name
+        </label>
+        <p
+          className="hint"
+          id="refereeName-hint">
+          The full name of the best person to contact about your experience
+        </p>
+        <a
+          className="validation-message"
+          href="#refereeName">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            Please provide a referee name.
+          </span>
+        </a>
+        <input
+          aria-describedby="refereeName-hint"
+          className="invalid"
+          id="refereeName"
+          name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeEmail">
+          Referee\'s phone number
+        </label>
+        <a
+          className="validation-message"
+          href="#refereeEmail">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            Please provide a referee phone number.
+          </span>
+        </a>
+        <input
+          aria-describedby={undefined}
+          className="invalid"
+          id="refereeEmail"
+          name="refereeEmail"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div>
+        <a
+          className="validation-message"
+          href="#refereeContact">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            Please ackknowledge the referee can be contacted.
+          </span>
+        </a>
+        <input
+          checked={false}
+          id="refereeContact"
+          name="refereeContact"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox" />
+        <label
+          htmlFor="refereeContact">
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+        </label>
+      </div>
       <input
         role="button"
         type="submit"
@@ -2090,6 +2330,69 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           </button>
         </div>
       </div>
+      <h3>
+        Referee
+      </h3>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeName">
+          Referee\'s name
+        </label>
+        <p
+          className="hint"
+          id="refereeName-hint">
+          The full name of the best person to contact about your experience
+        </p>
+        <input
+          aria-describedby="refereeName-hint"
+          className=""
+          id="refereeName"
+          name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeEmail">
+          Referee\'s phone number
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="refereeEmail"
+          name="refereeEmail"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div>
+        <input
+          checked={false}
+          id="refereeContact"
+          name="refereeContact"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox" />
+        <label
+          htmlFor="refereeContact">
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+        </label>
+      </div>
       <input
         role="button"
         type="submit"
@@ -2425,6 +2728,69 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             Add another row
           </button>
         </div>
+      </div>
+      <h3>
+        Referee
+      </h3>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeName">
+          Referee\'s name
+        </label>
+        <p
+          className="hint"
+          id="refereeName-hint">
+          The full name of the best person to contact about your experience
+        </p>
+        <input
+          aria-describedby="refereeName-hint"
+          className=""
+          id="refereeName"
+          name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereeEmail">
+          Referee\'s phone number
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="refereeEmail"
+          name="refereeEmail"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div>
+        <input
+          checked={false}
+          id="refereeContact"
+          name="refereeContact"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="checkbox" />
+        <label
+          htmlFor="refereeContact">
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+        </label>
       </div>
       <input
         role="button"

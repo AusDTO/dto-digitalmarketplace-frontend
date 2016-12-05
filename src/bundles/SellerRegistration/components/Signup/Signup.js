@@ -20,7 +20,6 @@ import DomainSelector       from '../DomainSelector';
 import Review               from '../Review';
 import Submit               from '../Submit';
 import DocumentsForm        from '../DocumentsForm';
-import ReferencesForm        from '../ReferencesForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
 
 class Signup extends React.Component {
@@ -35,12 +34,11 @@ class Signup extends React.Component {
 
   steps = [
     { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
-    { id: 'info', label: 'Business representative', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'info', label: 'Business details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
-    { id: 'references', label: 'References', component: ReferencesForm, pattern: '/references', formKey: 'referencesForm' },
     { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
     { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
   ]

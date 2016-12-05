@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form } from 'react-redux-form';
+import { Form, Control } from 'react-redux-form';
 import get from 'lodash/get';
 
 import { required, validLinks } from '../../../../validators';
@@ -12,6 +12,7 @@ import ErrorBox      from '../../../../shared/form/ErrorBox';
 import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
+import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 class CaseStudyForm extends BaseForm {
@@ -172,6 +173,49 @@ class CaseStudyForm extends BaseForm {
               messages={{ validLinks: 'All links provided must begin with \'http\'' }}
               validators={{ validLinks }}
             />
+
+            <h3>Referee</h3>
+
+            <Textfield
+                model={`${model}.referee_name`}
+                name="refereeName"
+                id="refereeName"
+                htmlFor="refereeName"
+                label="Referee's name"
+                description="The full name of the best person to contact about your experience"
+                validators={{ required }}
+                messages={{ required: 'Please provide a referee name.'}}
+            />
+
+            <Textfield
+                model={`${model}.referee_email`}
+                name="refereeEmail"
+                id="refereeEmail"
+                htmlFor="refereeEmail"
+                label="Referee's phone number"
+                validators={{ required }}
+                messages={{ required: 'Please provide a referee phone number.'}}
+            />
+
+            <div>
+              <StatefulError
+                model={`${model}.referee_contact`}
+                id="refereeContact"
+                messages={{
+                  required: 'Please ackknowledge the referee can be contacted.'
+                }}
+              />
+              <Control.checkbox
+                model={`${model}.referee_contact`}
+                id="refereeContact" 
+                name="refereeContact"
+                validators={{ required }}
+              />
+              <label htmlFor="refereeContact">I acknowledge my reference gives permission to be contacted 
+                and have their information be shared within the Digtal Transformation Agency for evaluation.
+              </label>
+            </div>
+
 
             {children}
 
