@@ -5,20 +5,20 @@
     "csrf_token": "abc"
   },
   "application": {
-    "representative": "representative",
-    "name": "name",
-    "abn": "abn",
-    "phone": "phone",
-    "email": "email",
+    "representative": "Paul Acron",
+    "name": "Super Fun Company",
+    "abn": "42346781341",
+    "phone": "0292000000",
+    "email": "email@domain.com",
 
-    "summary": "summary",
-    "website": "website",
-    "linkedin": "linkedin",
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus finibus ultrices. Nulla scelerisque justo a erat fringilla, ac tempor odio viverra. Etiam ut aliquam ante. Etiam quis lorem mollis, ultrices mi id, dictum leo. Integer rutrum, urna in pretium volutpat, nisi est rutrum magna, ac viverra augue turpis eget sem. Etiam accumsan efficitur dolor quis ultrices. Etiam ullamcorper nibh id imperdiet luctus. Duis nunc eros, fringilla et magna nec, efficitur ultrices magna.",
+    "website": "http://website.com",
+    "linkedin": "http://linkedin.com",
     "address": {
-        "addressLine": "241 Commonwealth Street",
+        "address_line": "241 Commonwealth Street",
         "suburb": "Sydney",
         "state": "NSW",
-        "postalCode": "2000"
+        "postal_code": "2000"
     },
     "services": {
         "User research": true,
@@ -38,7 +38,7 @@
             "outcome": [
                 "First Outcome"
             ],
-            "projectLinks": [
+            "project_links": [
               "http://google.com"
             ]
         }
