@@ -52,7 +52,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <label
               className="question-heading"
               htmlFor="website">
-              Website URL (optional)
+              Website URL
             </label>
             <input
               aria-describedby={undefined}

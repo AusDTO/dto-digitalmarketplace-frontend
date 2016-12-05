@@ -33,7 +33,8 @@ export default combineReducers({
         suburb: '',
         state: '',
         postal_code: ''
-      }
+      },
+      seller_type: {}
     },
     domainSelectorForm: {
       services: {}
