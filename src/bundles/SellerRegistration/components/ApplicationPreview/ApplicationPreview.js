@@ -27,8 +27,8 @@ const ApplicationPreview = ({application}) => (
                 <p>Case Studies</p>
                 <article>
                     <ul>
-                        {Object.keys(application.casestudies).map((k, i) => {
-                                const casestudy = application.casestudies[k];
+                        {Object.keys(application.case_studies).map((k, i) => {
+                                const casestudy = application.case_studies[k];
                                 return (
                                     <li key={i}>
                                         <article>
