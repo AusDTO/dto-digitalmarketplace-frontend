@@ -173,10 +173,10 @@ const DomainList = (props) => {
 
             {/* This error will never actually render */}
             <StatefulError
-              model={`${model}.casestudies`}
+              model={`${model}.case_studies`}
               id={`add-service-${kebabCase(leftToAdd[0])}`}
               messages={{
-                casestudies: `You must add at least one case study for each service. Remaining: ${leftToAdd.join(', ')}.`
+                case_studies: `You must add at least one case study for each service. Remaining: ${leftToAdd.join(', ')}.`
               }}
             />
             <br/>
