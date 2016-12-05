@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import RegisterComponent from '../../RegisterComponent'
 
 import createStore from './redux/create'
-import ApplicationPreviewOnly from './components/ApplicationPreview/ApplicationPreviewOnly'
+import ApplicationPreview from './components/ApplicationPreview/ApplicationPreview'
 
 export const ApplicationPreviewWidget = (props) => {
   const store = createStore(props)
@@ -11,7 +11,7 @@ export const ApplicationPreviewWidget = (props) => {
     <Provider store={store}>
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          <ApplicationPreviewOnly/>
+          <ApplicationPreview/>
         </div>
       </div>
     </Provider>

@@ -569,7 +569,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="name" />
+              value="Super Fun Company" />
           </div>
           <div
             className="field">
@@ -589,7 +589,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="abn" />
+              value="42346781341" />
           </div>
           <div
             className="field">
@@ -634,7 +634,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="phone" />
+              value="0292000000" />
           </div>
           <div
             className="field">
@@ -654,7 +654,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="email" />
+              value="email@domain.com" />
           </div>
           <div
             className="field">
@@ -679,7 +679,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="representative" />
+              value="Paul Acron" />
           </div>
           <input
             name="next_step_slug"
