@@ -35,7 +35,7 @@ const ApplicationPreview = ({ header, body, onClick }) => (
 const mapStateToProps = ({ application }, { onClick }) => {
     const {
       name,
-      sellerType,
+      seller_type,
       summary,
       website,
       email,
@@ -52,7 +52,7 @@ const mapStateToProps = ({ application }, { onClick }) => {
     return {
         header: {
           name,
-          sellerType,
+          seller_type,
           summary,
           website,
           email,

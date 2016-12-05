@@ -7,7 +7,7 @@ const Review = ({pathname, ...rest}) => (
     <div>
         <Match pattern={pathname} exactly render={() => (
             <div>
-                <h3>Review</h3>
+                <h1 tabIndex="-1">Review</h1>
                 <p>Review the information that Buyers will see on your company profile. If the information is correct, continue to the final step to submit your application. If not, you can continue editing.</p>
                 <p>
                     <Link to={`${pathname}/profile`}>Preview your profile</Link>
