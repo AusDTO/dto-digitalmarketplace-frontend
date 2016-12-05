@@ -8,7 +8,7 @@ const Row = ({ title, children, show }) => {
   return (
     <div className="row seller-profile__row">
       <div className="col-sm-3"><b>{title}</b></div>
-      <div className="col-sm-8 col-sm-1-push">{children}</div>
+      <div className="col-sm-8 col-sm-push-1">{children}</div>
     </div>
   )
 }
@@ -85,7 +85,7 @@ const Body = (props) => {
 Body.propTypes = {
   evaluated: React.PropTypes.object,
   provides: React.PropTypes.object,
-  casestudies: React.PropTypes.object,
+  case_studies: React.PropTypes.object,
   representative: React.PropTypes.string,
   website: React.PropTypes.string,
   linkedin: React.PropTypes.string,

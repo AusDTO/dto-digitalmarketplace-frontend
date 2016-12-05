@@ -62,6 +62,10 @@ const ReviewHeader = (props) => {
   )
 }
 
+ReviewHeader.defaultProps = {
+  sellerType: {}
+}
+
 ReviewHeader.propTypes = {
   name: React.PropTypes.string.isRequired,
   sellerType: React.PropTypes.objectOf(React.PropTypes.bool),

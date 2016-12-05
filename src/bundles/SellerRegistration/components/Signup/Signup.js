@@ -78,7 +78,10 @@ class Signup extends React.Component {
 
   get currentStepIndex() {
     const { location } = this.props;
-    return findIndex(this.steps, { pattern: location.pathname });
+    return findIndex(this.steps, (step) => {
+      let regex = new RegExp(`^${step.pattern}`);  
+      return location.pathname.match(regex);
+    });
   }
 
   get step() {
@@ -102,10 +105,11 @@ class Signup extends React.Component {
     const applicationValid = this.steps.length === Object.keys(steps).length;
     const { services = {} } = forms.domainSelectorForm;
 
-    let isSubFlow = location.pathname.match(/case-study\/(edit|view|add)/);
-    const articleClassNames = classNames('col-xs-12 col-sm-8', {
-      'col-sm-push-2': isSubFlow,
-      'col-sm-push-1': !isSubFlow
+    let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);
+    let isReivew = location.pathname.match(/profile$/)
+    const articleClassNames = classNames('col-xs-12', {
+      'col-sm-8 col-sm-push-2': isCaseStudyFlow,
+      'col-sm-8 col-sm-push-1': !isCaseStudyFlow && !isReivew
     });
 
     return (

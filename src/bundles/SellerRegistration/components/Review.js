@@ -1,39 +1,30 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import ApplicationPreview from './ApplicationPreview/ApplicationPreview'
-import {flattenStateForms} from '../redux/helpers.js'
+import { Match, Link } from 'react-router';
+import ApplicationPreview from './ApplicationPreview'
 
-const Review = ({submit, onClick, data}) => (
+const Review = ({pathname, ...rest}) => (
     <div>
-        <div className="callout--calendar-event">
-            <h3>Review your profile</h3>
-            <p> Buyers will see your business information as a profile, previewed below.
-                If the information is correct, continue to the final step to submit your application.
-            </p>
-
-        </div>
-        <ApplicationPreview application={data}/>
-        <p>
-            <a role="button" href={submit} onClick={onClick}>Save & Continue</a>
-        </p>
+        <Match pattern={pathname} exactly render={() => (
+            <div>
+                <h3>Review</h3>
+                <p>Review the information that Buyers will see on your company profile. If the information is correct, continue to the final step to submit your application. If not, you can continue editing.</p>
+                <p>
+                    <Link to={`${pathname}/profile`}>Preview your profile</Link>
+                </p>
+            </div>
+        )}/>
+        <Match 
+            pattern={`${pathname}/profile`}
+            render={(routerProps) => (
+                <ApplicationPreview {...routerProps} {...rest}  />
+            )}
+            component={ApplicationPreview} />
     </div>
 );
 
-Review.defaultProps = {
-    onClick: () => {
-    },
-    submit: '#'
-}
-
-Review.propTypes = {
-    submit: React.PropTypes.string,
-    onClick: React.PropTypes.func
-};
-
-const mapStateToProps = (state) => {
-    return {
-        data: flattenStateForms(state)
-    }
+const mapStateToProps = (state, ownProps) => {
+    return ownProps
 }
 
 export {
