@@ -124,7 +124,7 @@ class CaseStudyForm extends BaseForm {
             />
 
             <h3>Business approach to {service}</h3>
-            <p>Address each of the evaluation criteria for {service} when describing your business’ approach to the project. <a href="#eval-crit" target="_blank">Browse the evaluation criteria for {service}</a>. </p>
+            <p>Address each of the evaluation criteria for {service} when describing your business’ approach to the project. <a href="#eval-crit" target="_blank">Browse the evaluation criteria for {service} (opens in a new window)</a>. </p>
 
             <Textfield
               model={`${model}.roles`}
