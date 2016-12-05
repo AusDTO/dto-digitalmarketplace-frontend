@@ -62,7 +62,11 @@ class BusinessDetailsForm extends BaseForm {
                             name="website"
                             id="website"
                             htmlFor="website"
-                            label="Website URL (optional)"
+                            label="Website URL"
+                            messages={{
+                                required: 'You must provide a website URL'
+                            }}
+                            validators={{required}}
                         />
 
                         <Textfield
@@ -124,7 +128,7 @@ class BusinessDetailsForm extends BaseForm {
                                 <legend>Select the following that apply (optional)</legend>
 
                                 <Control.checkbox
-                                    model={`${model}.additional_info.start-up`}
+                                    model={`${model}.seller_type.start-up`}
                                     id="start-up"
                                     name="start-up"
                                     value="start-up"
@@ -134,7 +138,7 @@ class BusinessDetailsForm extends BaseForm {
                                     using technology</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additional_info.sme`}
+                                    model={`${model}.seller_type.sme`}
                                     id="sme"
                                     name="sme"
                                     value="sme"
@@ -143,7 +147,7 @@ class BusinessDetailsForm extends BaseForm {
                                     independently of any parent organisation for taxation arrangements</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additional_info.indigenous`}
+                                    model={`${model}.seller_type.indigenous`}
                                     id="indigenous"
                                     name="indigenous"
                                     value="indigenous"
@@ -152,7 +156,7 @@ class BusinessDetailsForm extends BaseForm {
                                     of Indigenous businesses, such as Supply Nation</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additional_info.recruitment`}
+                                    model={`${model}.seller_type.recruitment`}
                                     id="recruitment"
                                     name="recruitment"
                                     value="recruitment"
@@ -161,7 +165,7 @@ class BusinessDetailsForm extends BaseForm {
                                     resourcing</label>
 
                                 <Control.checkbox
-                                    model={`${model}.additional_info.product`}
+                                    model={`${model}.seller_type.product`}
                                     id="product"
                                     name="product"
                                     value="product"
