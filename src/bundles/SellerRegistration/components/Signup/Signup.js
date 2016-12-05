@@ -100,7 +100,7 @@ class Signup extends React.Component {
 
   render() {
     const { forms, router, steps = {}, location } = this.props;
-    const applicationValid = this.steps.length === Object.keys(steps).length;
+    const applicationValid = (this.steps.length - 1) === Object.keys(steps).length;
     const { services = {} } = forms.domainSelectorForm;
 
     let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);

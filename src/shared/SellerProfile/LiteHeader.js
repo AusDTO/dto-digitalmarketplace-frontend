@@ -5,7 +5,7 @@ const LiteHeader = (props) => {
 
   const {
     name,
-    sellerType,
+    seller_type,
     summary,
     website,
     email,
@@ -19,7 +19,7 @@ const LiteHeader = (props) => {
         <h1>{name}</h1>
 
         <div className="seller-profile__badges">
-        {Object.keys(sellerType).map((type, i) => (
+        {Object.keys(seller_type).map((type, i) => (
           <span key={i} className={classNames(
             'badge--default'
           )}>{type}</span>
@@ -48,7 +48,7 @@ const LiteHeader = (props) => {
 
 LiteHeader.propTypes = {
   name: React.PropTypes.string.isRequired,
-  sellerType: React.PropTypes.objectOf(React.PropTypes.bool),
+  seller_type: React.PropTypes.objectOf(React.PropTypes.bool),
   summary: React.PropTypes.string.isRequired,
   website: React.PropTypes.string.isRequired,
   email: React.PropTypes.string.isRequired,

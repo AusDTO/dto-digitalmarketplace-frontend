@@ -34,7 +34,7 @@ const Body = (props) => {
       <Row title="Provides" show={provides}>
         <div className="seller-profile__provides-badges">
           {Object.keys(provides).map((service, i) => (
-            <span className="badge--default" key={i}>{service}</span>
+            <span key={i}>{service}</span>
           ))}
         </div>
       </Row>
