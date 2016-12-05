@@ -48,7 +48,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="website">
-          Website URL (optional)
+          Website URL
         </label>
         <input
           aria-describedby={undefined}
@@ -302,7 +302,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="website">
-          Website URL (optional)
+          Website URL
         </label>
         <input
           aria-describedby={undefined}
@@ -592,7 +592,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <label
           className="question-heading"
           htmlFor="website">
-          Website URL (optional)
+          Website URL
         </label>
         <input
           aria-describedby={undefined}
