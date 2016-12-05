@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { actionTypes } from 'react-redux-form';
 
 import reducer, {
   actions,
@@ -71,8 +70,6 @@ test('stepNextPersist action', () => {
     { type: types.APP_SUBMIT, payload: { application: {} } },
     { type: types.APP_POST_SUBMIT },
     { type: types.STEP_PRE },
-    { type: actionTypes.SET_SUBMITTED, model: 'fooBar', submitted: true },
-    { type: actionTypes.SET_PRISTINE, model: 'fooBar' },
     { type: types.STEP_NEXT, to }
   ]
 
