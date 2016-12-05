@@ -104,10 +104,10 @@ class Signup extends React.Component {
     const { services = {} } = forms.domainSelectorForm;
 
     let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);
-    let isReivew = location.pathname.match(/profile$/)
+    let isReviewFlow = location.pathname.match(/profile$/)
     const articleClassNames = classNames('col-xs-12', {
       'col-sm-8 col-sm-push-2': isCaseStudyFlow,
-      'col-sm-8 col-sm-push-1': !isCaseStudyFlow && !isReivew
+      'col-sm-8 col-sm-push-1': !isCaseStudyFlow && !isReviewFlow
     });
 
     return (

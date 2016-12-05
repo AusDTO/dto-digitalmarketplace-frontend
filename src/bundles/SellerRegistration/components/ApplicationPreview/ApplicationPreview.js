@@ -10,13 +10,11 @@ const ApplicationPreview = ({ header, body, onClick }) => (
       <div className="callout--calendar-event col-sm-8 col-xs-12">
         <h3>Preview your profile</h3>
         <p>Buyers will see your company information previewed below. If the information is correct, continue to the final step to submit your application or continue editing.</p>
-        <Link to="/submit">{
-          ({ href }) => (
+        <Link to="/submit">{({ href }) => (
             <a
               href={href}
               role="button"
               onClick={onClick}
-              
             >Continue to submit</a>
           )
         }</Link>
