@@ -34,7 +34,7 @@ export default combineReducers({
         state: '',
         postal_code: ''
       },
-      additional_info: {}
+      seller_type: {}
     },
     domainSelectorForm: {
       services: {}
