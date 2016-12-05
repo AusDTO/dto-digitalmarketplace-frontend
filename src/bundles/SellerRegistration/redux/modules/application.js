@@ -1,5 +1,4 @@
 import { flattenStateForms } from '../helpers';
-import { actions } from 'react-redux-form';
 
 const STEP_NEXT = 'step/next';
 const STEP_PRE = 'step/pre';
@@ -8,8 +7,10 @@ const APP_PRE_SUBMIT = 'application/pre-submit';
 const APP_POST_SUBMIT = 'application/post-submit';
 
 export default function reducer(state = {}, action = {}) {
-    const { type } = action;
+    const { type, payload } = action;
     switch (type) {
+        case APP_SUBMIT:
+            return Object.assign({}, state, payload.application);
         default:
             return state;
     }
@@ -55,8 +56,6 @@ export const stepNextPersist = (transition, to, step) => {
     return (dispatch) => {
         return dispatch(submitApplication())
             .then(() => dispatch(preStep()))
-            .then(() => dispatch(actions.setSubmitted(step.formKey)))
-            .then(() => dispatch(actions.setPristine(step.formKey)))
             .then(() => dispatch(nextStep(to)))
             .then(() => transition(to))
             .then(() => {

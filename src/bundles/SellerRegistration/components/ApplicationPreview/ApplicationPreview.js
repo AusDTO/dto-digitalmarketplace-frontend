@@ -1,146 +1,79 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import { Link } from 'react-router';
 
-const ApplicationPreview = ({application}) => (
-    <div>
-        <h1 tabIndex="-1">{application.name}</h1>
-        <p> {application.summary}</p>
-        <hr/>
-        <ul className="list-horizontal">
-            {application.services &&
-            <li>
-                <p>Services</p>
-                <article>
-                    <footer className="tags">
-                        <dl className="visually-hidden">
-                            <dt>Capabilities</dt>
-                        </dl>
-                        {Object.keys(application.services).map((key, val) =>
-                            <dd key={val}>
-                                <a className="disabled">{key}</a>
-                            </dd>
-                        )}
-                    </footer>
-                </article>
-            </li>
-            }
-            <li>
-                <p>Case Studies</p>
-                <article>
-                    <ul>
-                        {Object.keys(application.case_studies).map((k, i) => {
-                                const casestudy = application.case_studies[k];
-                                return (
-                                    <li key={i}>
-                                        <article>
-                                            <h3>
-                                                { casestudy.title }
-                                            </h3>
-                                            <p>
-                                                <small>{ casestudy.client }</small>
-                                            </p>
+import { Body, ReviewHeader } from '../../../../shared/SellerProfile';
 
-                                            <b>Timeframe:</b> { casestudy.timeframe }<br/>
-                                            <b>Problem or opportunity:</b> { casestudy.opportunity }<br/>
-                                            <b>Approach:</b> { casestudy.approach }<br/>
-                                            <b>Outcome:</b>
-                                            <ul>
-                                                {casestudy.outcome.map((outcome, i) =>
-                                                    <li key={i}>{outcome}</li>
-                                                )}
-                                            </ul>
-                                            <b>Project Links:</b>
-                                            { casestudy.projectLinks &&
-
-                                            <ul>
-                                                {casestudy.projectLinks.map((projectLink, i) =>
-                                                    <li key={i}><a href={projectLink}>{projectLink}</a></li>
-                                                )}
-                                            </ul>
-                                            }
-
-                                        </article>
-                                    </li>
-                                )
-                            }
-                        )}
-                    </ul>
-                </article>
-            </li>
-            <li>
-                <p>Business Details</p>
-                <article>
-                    <p>
-                        <strong>Business Representative</strong><br/>
-                        { application.representative }<br/>
-                        { application.email } { application.phone }
-                    </p>
-
-                    <p>
-                        <strong>ABN</strong><br/>
-                        { application.abn }
-                    </p>
-
-                    {application.website &&
-                    <p>
-                        <strong>Website</strong><br/>
-                        <a href={application.website} target="_blank" rel="external">{ application.website }</a>
-                    </p>
-                    }
-
-                    {application.linkedin &&
-                    <p>
-                        <strong>LinkedIn</strong><br/>
-                        <a href={application.linkedin} target="_blank" rel="external">{ application.linkedin }</a>
-                    </p>
-                    }
-                </article>
-            </li>
-            <li>
-                <p>Documents</p>
-                <article>
-                    {Object.keys(application.documents).map((key, val) =>
-                        <p key={val}><b>{key}:</b> { application.documents[key] }</p>
-                    )}
-                </article>
-            </li>
-            <li>
-                <p>Address</p>
-                <article>
-                    <p>
-                        { application.address.addressLine }<br/>
-                        { application.address.suburb }<br/>
-                        { application.address.state } { application.address.postalCode }
-                    </p>
-                </article>
-            </li>
-
-            {application.pricing &&
-            <li>
-                <p>Rate card</p>
-
-                <article>
-                    <table className="content-table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Roles</th>
-                            <th scope="col">Day rates</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {Object.keys(application.pricing).map((key, val) =>
-                            <tr key={val}>
-                                <th scope="row">{key}</th>
-                                <td>{application.pricing[key].minPrice } - {application.pricing[key].maxPrice}</td>
-                            </tr>
-                        )}
-                        </tbody>
-                    </table>
-                </article>
-            </li>
-            }
-        </ul>
+const ApplicationPreview = ({ header, body, onClick }) => (
+  <div>
+    <div className="row">
+      <div className="callout--calendar-event col-sm-8 col-xs-12">
+        <h3>Preview your profile</h3>
+        <p>Buyers will see your company information previewed below. If the information is correct, continue to the final step to submit your application or continue editing.</p>
+        <Link to="/submit">{({ href }) => (
+            <a
+              href={href}
+              role="button"
+              onClick={onClick}
+            >Continue to submit</a>
+          )
+        }</Link>
+      </div>
     </div>
+    <ReviewHeader 
+      {...header}
+      continueLink={<Link role="button" to="/review">Continue Editing</Link>}
+    />
+    <div className="row">
+      <div className="col-sm-8 col-xs-12">
+        <Body {...body} />
+      </div>
+    </div>
+  </div>
 );
 
+const mapStateToProps = ({ application }, { onClick }) => {
+    const {
+      name,
+      sellerType,
+      summary,
+      website,
+      email,
+      phone,
+      representative,
 
-export default ApplicationPreview;
+      services: provides,
+      case_studies,
+      linkedin,
+      abn,
+      address
+    } = application;
+
+    return {
+        header: {
+          name,
+          sellerType,
+          summary,
+          website,
+          email,
+          phone,
+          representative
+        },
+        body: {
+          provides,
+          case_studies,
+          linkedin,
+          abn,
+          address,
+          representative,
+          website
+        },
+        onClick
+    }
+}
+
+export {
+    mapStateToProps
+}
+
+export default connect(mapStateToProps)(ApplicationPreview);
