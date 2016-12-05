@@ -253,12 +253,12 @@ exports[`test CaseStudyForm renders 1`] = `
       <div
         className="field">
         <label
-          htmlFor="projectLinks">
+          htmlFor="project_links">
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="projectLinks-hint">
+          id="project_links-hint">
           Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
         </p>
         <div>
@@ -268,16 +268,16 @@ exports[`test CaseStudyForm renders 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks">
+                htmlFor="project_links">
                 1
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks"
-                name="projectLinks[]"
+                id="project_links"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -290,16 +290,16 @@ exports[`test CaseStudyForm renders 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks-1">
+                htmlFor="project_links-1">
                 2
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks-1"
-                name="projectLinks[]"
+                id="project_links-1"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1264,12 +1264,12 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       <div
         className="field">
         <label
-          htmlFor="projectLinks">
+          htmlFor="project_links">
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="projectLinks-hint">
+          id="project_links-hint">
           Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
         </p>
         <div>
@@ -1279,16 +1279,16 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks">
+                htmlFor="project_links">
                 1
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks"
-                name="projectLinks[]"
+                id="project_links"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1301,16 +1301,16 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks-1">
+                htmlFor="project_links-1">
                 2
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks-1"
-                name="projectLinks[]"
+                id="project_links-1"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1821,12 +1821,12 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       <div
         className="field">
         <label
-          htmlFor="projectLinks">
+          htmlFor="project_links">
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="projectLinks-hint">
+          id="project_links-hint">
           Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
         </p>
         <div>
@@ -1836,16 +1836,16 @@ exports[`test CaseStudyForm renders with errors 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks">
+                htmlFor="project_links">
                 1
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks"
-                name="projectLinks[]"
+                id="project_links"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1858,16 +1858,16 @@ exports[`test CaseStudyForm renders with errors 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks-1">
+                htmlFor="project_links-1">
                 2
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks-1"
-                name="projectLinks[]"
+                id="project_links-1"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2258,12 +2258,12 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       <div
         className="field">
         <label
-          htmlFor="projectLinks">
+          htmlFor="project_links">
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="projectLinks-hint">
+          id="project_links-hint">
           Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
         </p>
         <div>
@@ -2273,16 +2273,16 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks">
+                htmlFor="project_links">
                 1
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks"
-                name="projectLinks[]"
+                id="project_links"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2295,16 +2295,16 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks-1">
+                htmlFor="project_links-1">
                 2
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks-1"
-                name="projectLinks[]"
+                id="project_links-1"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2657,12 +2657,12 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       <div
         className="field">
         <label
-          htmlFor="projectLinks">
+          htmlFor="project_links">
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="projectLinks-hint">
+          id="project_links-hint">
           Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
         </p>
         <div>
@@ -2672,16 +2672,16 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks">
+                htmlFor="project_links">
                 1
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks"
-                name="projectLinks[]"
+                id="project_links"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2694,16 +2694,16 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
               className="col-xs-12 col-sm-9">
               <label
                 className="text-box-number-label"
-                htmlFor="projectLinks-1">
+                htmlFor="project_links-1">
                 2
                 .
               </label>
               <input
-                aria-describedby="projectLinks-hint"
+                aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="projectLinks-1"
-                name="projectLinks[]"
+                id="project_links-1"
+                name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}

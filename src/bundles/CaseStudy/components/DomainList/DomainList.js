@@ -79,7 +79,7 @@ const DomainList = (props) => {
     dispatchActions
   });
 
-  const studies         = caseStudyForm.casestudies;
+  const studies         = caseStudyForm.case_studies;
   const serviceCount    = Object.keys(services).length;
   const addedServices   = calcRemaining(studies, services);
   const leftToAdd       = Object.keys(services).filter(service => addedServices.indexOf(service) === -1);
@@ -115,7 +115,7 @@ const DomainList = (props) => {
             <ProgressBar value={addedServices.length} max={serviceCount} />
 
             {Object.keys(services).map((service, i) => {
-              let list = getStudiesByService(caseStudyForm.casestudies, service);
+              let list = getStudiesByService(caseStudyForm.case_studies, service);
               return (
                 <section key={`casestudy.domain.${i}`}>
                   <h4>{service}</h4>
@@ -185,7 +185,7 @@ const DomainList = (props) => {
               action={action}
               method="post"
               validators={{
-                casestudies: (studies) => {
+                case_studies: (studies) => {
                   let studyServices = Object.keys(studies)
                     .map(study => studies[study].service);
 
@@ -221,8 +221,8 @@ const DomainList = (props) => {
       <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
 
         <CaseStudyForm
-          model={`caseStudyForm.casestudies.${params.id}`}
-          formName={`caseStudyForm.casestudies.${params.id}`}
+          model={`caseStudyForm.case_studies.${params.id}`}
+          formName={`caseStudyForm.case_studies.${params.id}`}
           mode="edit"
           buttonText="Save & Preview"
           returnLink={<Link to={pathname}>Return without saving</Link>}
@@ -233,7 +233,7 @@ const DomainList = (props) => {
       <Match pattern={`${pathname}/view/:id?`} render={({ params }) => {
         if (params.id && params.id !== 'undefined') {
           // If `id` is present, load from pre-saved state.
-          currentStudy = caseStudyForm.casestudies[params.id];
+          currentStudy = caseStudyForm.case_studies[params.id];
         }
         return (
           <div>
@@ -290,7 +290,7 @@ const mapDispatchToProps = (dispatch) => {
       }
 
       const props = Object.assign({}, values, { service })
-      dispatch(actions.change(`caseStudyForm.casestudies.${id}`, props ));
+      dispatch(actions.change(`caseStudyForm.case_studies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
       dispatch(dispatchActions.submitApplication());
       router.transitionTo(`${pathname}/view/${id}`);
@@ -302,7 +302,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.reset('casestudy'));
     },
     onDeleteCaseStudy: (dispatchActions, id) => {
-      dispatch(actions.omit('caseStudyForm.casestudies', id));
+      dispatch(actions.omit('caseStudyForm.case_studies', id));
       dispatch(dispatchActions.submitApplication());
     }
   }
