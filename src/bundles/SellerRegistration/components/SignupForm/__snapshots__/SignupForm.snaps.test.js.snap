@@ -5,20 +5,18 @@ exports[`test SignupForm renders 1`] = `
     <h1>
       Claim your spot in the Marketplace
     </h1>
-  </header>
-  <article
-    role="main">
-    <div>
-      <p>
-        We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
-      </p>
-      <p>
-        And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
-      </p>
-    </div>
+    <p>
+      We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+    </p>
+    <p>
+      And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+    </p>
     <h2>
       Ready to get started?
     </h2>
+  </header>
+  <article
+    role="main">
     <form
       action={undefined}
       id="signup"
@@ -91,20 +89,18 @@ exports[`test SignupForm renders with form_options 1`] = `
     <h1>
       Claim your spot in the Marketplace
     </h1>
-  </header>
-  <article
-    role="main">
-    <div>
-      <p>
-        We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
-      </p>
-      <p>
-        And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
-      </p>
-    </div>
+    <p>
+      We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+    </p>
+    <p>
+      And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+    </p>
     <h2>
       Ready to get started?
     </h2>
+  </header>
+  <article
+    role="main">
     <form
       action="/foo/bar"
       id="signup"

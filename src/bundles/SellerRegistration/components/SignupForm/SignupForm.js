@@ -25,17 +25,15 @@ class SignupForm extends BaseForm {
       <Layout>
         <header>
           <h1>Claim your spot in the Marketplace</h1>
+          <p>
+            We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+          </p>
+          <p>
+            And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+          </p>
+          <h2>Ready to get started?</h2>
         </header>
         <article role="main">
-          <div>
-            <p>
-              We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
-            </p>
-            <p>
-              And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
-            </p>
-          </div>
-          <h2>Ready to get started?</h2>
           <ErrorBox focusOnMount={true} model={model}/>
           <Form model={model}
             action={action}
