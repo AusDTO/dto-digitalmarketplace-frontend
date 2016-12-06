@@ -149,7 +149,7 @@ exports[`test Signup renders 1`] = `
       </p>
       <p>
         <a
-          href={undefined}
+          href="#"
           onClick={[Function]}
           role="button">
           Start Now 
