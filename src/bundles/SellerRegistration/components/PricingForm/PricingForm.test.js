@@ -14,6 +14,9 @@ test('PricingForm renders a notice that domains are required', () => {
   const store = createStore({
     form_options: {
       csrf_token: 'abc'
+    },
+    options: {
+      serverRender: false
     }
   });
 
@@ -36,6 +39,9 @@ test('PricingForm renders price fields when domains are present', () => {
   const store = createStore({
     form_options: {
       csrf_token: 'abc'
+    },
+    options: {
+      serverRender: false
     }
   });
 
