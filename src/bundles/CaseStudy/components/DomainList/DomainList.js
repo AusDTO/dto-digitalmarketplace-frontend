@@ -6,6 +6,7 @@ import isEmpty            from 'lodash/isEmpty';
 import kebabCase          from 'lodash/kebabCase';
 
 import Layout         from '../../../../shared/Layout';
+import BaseForm       from '../../../../shared/form/BaseForm';
 import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
@@ -50,220 +51,226 @@ const guid = () => {
       s4() + '-' + s4() + s4() + s4();
 }
 
-const DomainList = (props) => {
-  let { 
-    services,
-    title,
-    domainRoute,
-    pathname,
-    router,
-    buttonText,
-    model,
-    action,
-    caseStudyForm,
-    children,
-    currentStudy,
-    actions: dispatchActions,
-    getStudiesByService,
-    calcRemaining,
-    onSubmit,
-    onCaseStudySubmit,
-    onEditCaseStudy,
-    onAddCaseStudy,
-    onDeleteCaseStudy
-  } = props;
+class DomainList extends BaseForm {
 
-  onCaseStudySubmit = onCaseStudySubmit.bind(this, {
-    router,
-    pathname,
-    dispatchActions
-  });
+  static propTypes = {
+    services: React.PropTypes.object,
+    domainRoute: React.PropTypes.string
+  }
 
-  const studies         = caseStudyForm.case_studies;
-  const serviceCount    = Object.keys(services).length;
-  const addedServices   = calcRemaining(studies, services);
-  const leftToAdd       = Object.keys(services).filter(service => addedServices.indexOf(service) === -1);
-  const leftToAddCount  = serviceCount - addedServices.length;
+  static defaultProps = {
+    services: {},
+    title: 'Case Study Domain List',
+    domainRoute: '/domains'
+  }
 
-  if (!serviceCount) {
-    return (
-      <Layout>
-        <header>
-          <h1 tabIndex="-1">{title}</h1>
-        </header>
-        <article role="main">
-          <p>You must select some domains before adding case studies.</p>
-          <p><Link to={domainRoute}>Select domains</Link></p>
-        </article>
-      </Layout>
-    )
-  };
+  render() {
+    let { 
+      services,
+      title,
+      domainRoute,
+      pathname,
+      router,
+      buttonText,
+      model,
+      action,
+      caseStudyForm,
+      children,
+      currentStudy,
+      actions: dispatchActions,
+      getStudiesByService,
+      calcRemaining,
+      onSubmit,
+      onCaseStudySubmit,
+      onEditCaseStudy,
+      onAddCaseStudy,
+      onDeleteCaseStudy
+    } = this.props;
 
-  return (
-    <div>
-      <Match pattern={pathname} exactly render={() => (
+    onCaseStudySubmit = onCaseStudySubmit.bind(this, {
+      router,
+      pathname,
+      dispatchActions
+    });
+
+    const studies         = caseStudyForm.case_studies;
+    const serviceCount    = Object.keys(services).length;
+    const addedServices   = calcRemaining(studies, services);
+    const leftToAdd       = Object.keys(services).filter(service => addedServices.indexOf(service) === -1);
+    const leftToAddCount  = serviceCount - addedServices.length;
+
+    if (!serviceCount) {
+      return (
         <Layout>
           <header>
             <h1 tabIndex="-1">{title}</h1>
-            <p>The DTA will evaluate your case study for each service to ensure services provided on the Marketplace meet a sufficient standard. <a href="#criteria">Browse criteria for each service</a></p>
           </header>
           <article role="main">
-            
-            <ErrorBox focusOnMount={true} model={model}/>
-
-            <p>{leftToAddCount} services to add</p>
-            <ProgressBar value={addedServices.length} max={serviceCount} />
-
-            {Object.keys(services).map((service, i) => {
-              let list = getStudiesByService(caseStudyForm.case_studies, service);
-              return (
-                <section key={`casestudy.domain.${i}`}>
-                  <h4>{service}</h4>
-                  {!isEmpty(list) && (
-                    <ul className="bordered-list">
-                      {Object.keys(list).map((guid, i) => {
-                        let study = list[guid];
-                        return (
-                          <li key={`casestudy.${service}.${guid}`} className="bordered-list__item row">
-                            <div className="col-xs-6">
-                              <Link to={`${pathname}/edit/${guid}`}>{
-                                ({ href, id, onClick }) =>
-                                  <a
-                                    href={href}
-                                    id={`edit-${kebabCase(service)}-${i}`}
-                                    onClick={(e) => {
-                                      onEditCaseStudy(study);
-                                      onClick(e);
-                                    }}
-                                    children={study.title}
-                                  />
-                              }</Link>
-                              <p key={i}></p>
-                            </div>
-                            <div className="col-xs-6" style={{textAlign: 'right'}}>
-                              <Link to={`${pathname}/delete/${guid}`}>{
-                                ({ href, id, onClick }) =>
-                                  <a
-                                    href={href}
-                                    id={`delete-${kebabCase(service)}-${i}`}
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      onDeleteCaseStudy(dispatchActions, guid);
-                                  }}>
-                                    Delete
-                                  </a>
-                              }</Link>
-                            </div>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  )}
-                  <Link to={`${pathname}/add/${service}`}>{
-                    ({ href, id, onClick }) =>
-                      <a href={href} id={`add-service-${kebabCase(service)}`} onClick={(e) => {
-                        onAddCaseStudy();
-                        onClick(e);
-                      }}>Add case study</a>
-                  }</Link>
-                </section>
-              )
-              
-            })}
-
-            {/* This error will never actually render */}
-            <StatefulError
-              model={`${model}.case_studies`}
-              id={`add-service-${kebabCase(leftToAdd[0])}`}
-              messages={{
-                case_studies: `You must add at least one case study for each service. Remaining: ${leftToAdd.join(', ')}.`
-              }}
-            />
-            <br/>
-            <Form 
-              model={model}
-              action={action}
-              method="post"
-              validators={{
-                case_studies: (studies) => {
-                  let studyServices = Object.keys(studies)
-                    .map(study => studies[study].service);
-
-                  let unique = studyServices.filter((s, i) => {
-                    return studyServices.indexOf(s) === i;
-                  })
-
-                  return serviceCount === unique.length
-                }
-              }}
-              onSubmit={onSubmit}>
-
-              {children}
-
-              <input type="submit" role="button" value={buttonText} />
-            </Form>
-            
+            <p>You must select some domains before adding case studies.</p>
+            <p><Link to={domainRoute}>Select domains</Link></p>
           </article>
         </Layout>
-      )} />
-      <Match pattern={`${pathname}/add/:service`} render={({ params }) => (
+      )
+    };
 
-        <CaseStudyForm
-          model="casestudy"
-          formName="casestudy"
-          buttonText="Save & Preview"
-          service={params.service}
-          returnLink={<Link to={pathname}>Return without saving</Link>}
-          onSubmit={onCaseStudySubmit.bind(this, params)}
-        />
+    return (
+      <div>
+        <Match pattern={pathname} exactly render={() => (
+          <Layout>
+            <header>
+              <h1 tabIndex="-1">{title}</h1>
+              <p>The DTA will evaluate your case study for each service to ensure services provided on the Marketplace meet a sufficient standard. <a href="#criteria">Browse criteria for each service</a></p>
+            </header>
+            <article role="main">
+              
+              <ErrorBox focusOnMount={true} model={model}/>
 
-      )} />
-      <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
+              <strong>{leftToAddCount === 0
+                ? 'All services have a case study'
+                : `${leftToAddCount} services to add`
+              }</strong>
 
-        <CaseStudyForm
-          model={`caseStudyForm.case_studies.${params.id}`}
-          formName={`caseStudyForm.case_studies.${params.id}`}
-          mode="edit"
-          buttonText="Save & Preview"
-          returnLink={<Link to={pathname}>Return without saving</Link>}
-          onSubmit={onCaseStudySubmit.bind(this, params)}
-        />
+              <ProgressBar value={addedServices.length} max={serviceCount} />
 
-      )} />
-      <Match pattern={`${pathname}/view/:id?`} render={({ params }) => {
-        if (params.id && params.id !== 'undefined') {
-          // If `id` is present, load from pre-saved state.
-          currentStudy = caseStudyForm.case_studies[params.id];
-        }
-        return (
-          <div>
-            {currentStudy.title
-              ? <View
-                  {...currentStudy}
-                  onSubmit={onCaseStudySubmit.bind(this, params)}
-                  confirmButton={<Link role="button" to={pathname}>Add another</Link>}
-                  returnLink={<Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link>}
-                />
-              : <Redirect to={pathname} />
-            }
-          </div>
-        )
-      }} />
-    </div>
-  )
- 
-};
+              {Object.keys(services).map((service, i) => {
+                let list = getStudiesByService(caseStudyForm.case_studies, service);
+                return (
+                  <section key={`casestudy.domain.${i}`}>
+                    <h4>{service}</h4>
+                    {!isEmpty(list) && (
+                      <ul className="bordered-list">
+                        {Object.keys(list).map((guid, i) => {
+                          let study = list[guid];
+                          return (
+                            <li key={`casestudy.${service}.${guid}`} className="bordered-list__item row">
+                              <div className="col-xs-6">
+                                <Link to={`${pathname}/edit/${guid}`}>{
+                                  ({ href, id, onClick }) =>
+                                    <a
+                                      href={href}
+                                      id={`edit-${kebabCase(service)}-${i}`}
+                                      onClick={(e) => {
+                                        onEditCaseStudy(study);
+                                        onClick(e);
+                                      }}
+                                      children={study.title}
+                                    />
+                                }</Link>
+                                <p key={i}></p>
+                              </div>
+                              <div className="col-xs-6" style={{textAlign: 'right'}}>
+                                <Link to={`${pathname}/delete/${guid}`}>{
+                                  ({ href, id, onClick }) =>
+                                    <a
+                                      href={href}
+                                      id={`delete-${kebabCase(service)}-${i}`}
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        onDeleteCaseStudy(dispatchActions, guid);
+                                    }}>
+                                      Delete
+                                    </a>
+                                }</Link>
+                              </div>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    )}
+                    <Link to={`${pathname}/add/${service}`}>{
+                      ({ href, id, onClick }) =>
+                        <a href={href} id={`add-service-${kebabCase(service)}`} onClick={(e) => {
+                          onAddCaseStudy();
+                          onClick(e);
+                        }}>Add case study</a>
+                    }</Link>
+                  </section>
+                )
+                
+              })}
 
-DomainList.propTypes = {
-  services: React.PropTypes.object,
-  domainRoute: React.PropTypes.string
-};
+              {/* This error will never actually render */}
+              <StatefulError
+                model={`${model}.case_studies`}
+                id={`add-service-${kebabCase(leftToAdd[0])}`}
+                messages={{
+                  case_studies: `You must add at least one case study for each service. Remaining: ${leftToAdd.join(', ')}.`
+                }}
+              />
+              <br/>
+              <Form 
+                model={model}
+                action={action}
+                method="post"
+                validators={{
+                  case_studies: (studies) => {
+                    let studyServices = Object.keys(studies)
+                      .map(study => studies[study].service);
 
-DomainList.defaultProps = {
-  services: {},
-  title: 'Case Study Domain List',
-  domainRoute: '/domains'
-};
+                    let unique = studyServices.filter((s, i) => {
+                      return studyServices.indexOf(s) === i;
+                    })
+
+                    return serviceCount === unique.length
+                  }
+                }}
+                onSubmit={onSubmit}>
+
+                {children}
+
+                <input type="submit" role="button" value={buttonText} />
+              </Form>
+              
+            </article>
+          </Layout>
+        )} />
+        <Match pattern={`${pathname}/add/:service`} render={({ params }) => (
+
+          <CaseStudyForm
+            model="casestudy"
+            formName="casestudy"
+            buttonText="Save & Preview"
+            service={params.service}
+            returnLink={<Link to={pathname}>Return without saving</Link>}
+            onSubmit={onCaseStudySubmit.bind(this, params)}
+          />
+
+        )} />
+        <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
+
+          <CaseStudyForm
+            model={`caseStudyForm.case_studies.${params.id}`}
+            formName={`caseStudyForm.case_studies.${params.id}`}
+            mode="edit"
+            buttonText="Save & Preview"
+            returnLink={<Link to={pathname}>Return without saving</Link>}
+            onSubmit={onCaseStudySubmit.bind(this, params)}
+          />
+
+        )} />
+        <Match pattern={`${pathname}/view/:id?`} render={({ params }) => {
+          if (params.id && params.id !== 'undefined') {
+            // If `id` is present, load from pre-saved state.
+            currentStudy = caseStudyForm.case_studies[params.id];
+          }
+          return (
+            <div>
+              {currentStudy.title
+                ? <View
+                    {...currentStudy}
+                    onSubmit={onCaseStudySubmit.bind(this, params)}
+                    confirmButton={<Link role="button" to={pathname}>Add case study</Link>}
+                    returnLink={<p><Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link></p>}
+                  />
+                : <Redirect to={pathname} />
+              }
+            </div>
+          )
+        }} />
+      </div>
+    )
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {

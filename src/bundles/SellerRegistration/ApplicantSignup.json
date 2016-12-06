@@ -21,15 +21,12 @@
         "postal_code": "2000"
     },
     "services": {
-        "User research": true,
-        "Development": true,
-        "Data science": true,
-        "Ethical Hacker": true,
-        "Tech support": true
+        "Change & transformation": true,
+        "Cyber security": true
     },
-    "casestudies": {
+    "case_studies": {
         "f29a3cbd-5d76-4fb1-f4ea-40e1b196a84e": {
-            "service": "User research",
+            "service": "Cyber security",
             "title": "User Research Role",
             "client": "DTA",
             "timeframe": "May 2016",

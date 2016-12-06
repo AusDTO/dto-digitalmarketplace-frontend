@@ -113,10 +113,11 @@ class Signup extends React.Component {
         return newServices;
       }, {});
 
+    let isCaseStudyEditFlow = location.pathname.match(/case-study\/(edit|add)/);
     let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);
     let isReviewFlow = location.pathname.match(/profile$/)
     const articleClassNames = classNames('col-xs-12', {
-      'col-sm-8 col-sm-push-2': isCaseStudyFlow,
+      'col-sm-8 col-sm-push-2': isCaseStudyEditFlow,
       'col-sm-8 col-sm-push-1': !isCaseStudyFlow && !isReviewFlow
     });
 

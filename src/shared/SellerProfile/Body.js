@@ -22,13 +22,18 @@ const Body = (props) => {
     website,
     linkedin,
     abn,
-    address
-  } = props;
+    address,
+    CaseStudyLink
+  } = props;  
 
   return (
     <article className="seller-profile">
       <Row title="Evaluted for" show={evaluated}>
-
+        <div className="seller-profile__evaluated-badges">
+          {Object.keys(evaluated).map((service, i) => (
+            <span key={i}>{service}</span>
+          ))}
+        </div>
       </Row>
 
       <Row title="Provides" show={provides}>
@@ -46,7 +51,11 @@ const Body = (props) => {
           return (
             <li key={i}>
               <article>
-                <h3><a href="#href">{title}</a></h3>
+                {/*
+                  CaseStudyLink is a configurable prop.
+                  Since it will point to different areas in different flows. 
+                */}
+                <h3><CaseStudyLink id={study}>{title}</CaseStudyLink></h3>
                 <div className="meta">
                   <span>{service}</span>
                 </div>
@@ -95,7 +104,8 @@ Body.propTypes = {
     suburb: React.PropTypes.string,
     state: React.PropTypes.string,
     postalCode: React.PropTypes.string
-  })
+  }),
+  CaseStudyLink: React.PropTypes.func.isRequired
 };
 
 export default Body;

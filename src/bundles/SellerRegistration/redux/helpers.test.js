@@ -69,7 +69,7 @@ test('dispatchFormState dispatchs and returns correct values', () => {
   let result = dispatchFormState(dispatch, schemas, data);
 
   expect(result).toEqual(expectedResult);
-  expect(dispatch).toHaveBeenCalledTimes(3);
+  expect(dispatch).toHaveBeenCalledTimes(1);
 });
 
 test('dispatchFormState with empty schema', () => {
@@ -107,7 +107,8 @@ test('flattenStateForms', () => {
     foo: 'bar',
     baz: 'foo',
     bar: 'baz',
-    foobar: 'barfoo'
+    foobar: 'barfoo',
+    services: {}
   };
 
   expect(flattenStateForms(state)).toEqual(expectedResult);
@@ -136,54 +137,8 @@ test('flattenStateForms with services', () => {
   expect(flattenStateForms(state)).toEqual(expectedResult);
 })
 
-test('flattenStateForms with pricing', () => {
-  const state = {
-    firstForm: {
-      services: {
-        service1: true,
-        service3: true
-      }
-    },
-    secondForm: {
-      pricing: {
-        service1: {
-          minPrice: 40,
-          maxPrice: 50
-        },
-        service2: {
-          minPrice: 40,
-          maxPrice: 70
-        },
-        service3: {
-          minPrice: 100,
-          maxPrice: 120
-        }
-      }
-    }
-  };
-
-  const expectedResult = {
-    services: {
-      service1: true,
-      service3: true,
-    },
-    pricing: {
-      service1: {
-        minPrice: 40,
-        maxPrice: 50
-      },
-      service3: {
-        minPrice: 100,
-        maxPrice: 120
-      }
-    }
-  };
-
-  expect(flattenStateForms(state)).toEqual(expectedResult);
-})
-
 test('flattenStateForms with no state', () => {
-  expect(flattenStateForms()).toEqual({});
+  expect(flattenStateForms()).toEqual({ services: {} });
 });
 
 test('findValidServices will remove top level key with no valid services', () => {

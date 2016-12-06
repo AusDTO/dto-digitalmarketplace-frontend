@@ -18,7 +18,7 @@ class View extends React.Component {
       approach,
       timeframe,
       outcome,
-      projectLinks,
+      project_links,
       service,
       roles,
       meta,
@@ -67,32 +67,33 @@ class View extends React.Component {
             <h4>Roles</h4>
             <p>{roles}</p>
           </aside>
-          <article role="main" className="col-sm-9 col-xs-12">
+          <article role="main" className="col-sm-7 col-xs-12">
             <section>
-              <h3>Challenge</h3>
+              <h2>Challenge</h2>
               <p className="freetext">{opportunity}</p>
             </section>
             <section>
-              <h3>Approach</h3>
+              <h2>Approach</h2>
               <p className="freetext">{approach}</p>
             </section>
             <section>
-              <h3>Outcomes and benefits</h3>
+              <h2>Outcomes and benefits</h2>
               <ul>
                 {outcome.map((content, i) => <li key={i}>{content}</li>)}
               </ul>
             </section>
-            {projectLinks && projectLinks.length > 0 && (
+            {project_links && project_links.length > 0 && (
               <section className="project">
-                <h3>Project Links</h3>
+                <h2>Project Links</h2>
                 <ul>
-                  {projectLinks.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
+                  {project_links.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
                 </ul>
               </section>
             )}
-
-            {confirmButton}
-            {returnLink}
+            <div className="casestudy__actions">
+              {confirmButton}
+              {returnLink}
+            </div>
           </article>
         </div>
       </section>
@@ -107,7 +108,7 @@ View.propTypes = {
   approach: PropTypes.string.isRequired,
   timeframe: PropTypes.string.isRequired,
   outcome: PropTypes.arrayOf(PropTypes.string).isRequired,
-  projectLinks: PropTypes.arrayOf(PropTypes.string),
+  project_links: PropTypes.arrayOf(PropTypes.string),
   meta: PropTypes.objectOf(PropTypes.string),
 
   returnLink: PropTypes.oneOfType([

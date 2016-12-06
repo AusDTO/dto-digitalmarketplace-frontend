@@ -66,7 +66,10 @@ const mapStateToProps = ({ application }, { onClick }) => {
           abn,
           address,
           representative,
-          website
+          website,
+          CaseStudyLink: ({id, children}) => (
+            <Link to={`/case-study/view/${id}`}>{children}</Link>
+          )
         },
         onClick
     }

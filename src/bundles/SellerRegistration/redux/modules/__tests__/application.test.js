@@ -1,10 +1,24 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
+import { actionTypes } from 'react-redux-form';
+
+import api from '../../../../../shared/reduxModules/api';
+
 import reducer, {
   actions,
   constants as types
 } from '../application';
+
+const mockResponse = (status, statusText, response) => {
+  return new window.Response(response, {
+    status: status,
+    statusText: statusText,
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+};
 
 
 test('preSubmit action', () => {
@@ -52,11 +66,10 @@ test('nextStep action', () => {
 });
 
 test('stepNextPersist action', () => {
-  // TODO when we figure out what we're posting/receiving
-  // this will need to change
-  const apiMock = () => { return Promise.resolve() }
+  window.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve(mockResponse(200, null, '{"application":{}}')));
 
-  const middlewares = [ thunk.withExtraArgument(apiMock) ];
+  const middlewares = [ thunk.withExtraArgument(api) ];
   const mockStore = configureMockStore(middlewares);
 
   const transition = jest.fn();
@@ -82,14 +95,8 @@ test('stepNextPersist action', () => {
     });
 });
 
-test('submitApplcation action', () => {
-  // TODO when we figure out what we're posting/receiving
-  // this will need to change
-  const apiMock = () => { return Promise.resolve() }
-
-  const middlewares = [ thunk.withExtraArgument(apiMock) ];
-  const mockStore = configureMockStore(middlewares);
-
+test('submitApplication action', () => {
+  
   const expectedPayload = {
     application: {
       foo: 'bar',
@@ -99,9 +106,18 @@ test('submitApplcation action', () => {
     }
   };
 
+  window.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve(mockResponse(200, null, JSON.stringify(expectedPayload))));
+
+  const middlewares = [ thunk.withExtraArgument(api) ];
+  const mockStore = configureMockStore(middlewares);
+
+
   const expectedActions = [
     { type: types.APP_PRE_SUBMIT },
     { type: types.APP_SUBMIT, payload: expectedPayload },
+    { type: actionTypes.CHANGE, model: 'firstForm', multi: false, silent: false, value: { foo: 'bar', baz: 'foo'}},
+    { type: actionTypes.CHANGE, model: 'secondForm', multi: false, silent: false, value: { bar: 'baz', foobar: 'barfoo'}},
     { type: types.APP_POST_SUBMIT },
   ]
 
