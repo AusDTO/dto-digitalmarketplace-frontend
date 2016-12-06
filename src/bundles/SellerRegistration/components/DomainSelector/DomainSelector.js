@@ -54,9 +54,20 @@ class DomainSelector extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
             )}
 
-            {domains.map(({ key, label, services }, i) => {
+            <fieldset className="field">
+            {domains.sort((domainA, domainB) => {
+              if (domainA.label.toLowerCase() < domainB.label.toLowerCase()) {
+                return -1;
+              }
+
+              if (domainA.label.toLowerCase() > domainB.label.toLowerCase()) {
+                return 1;
+              }
+
+              return 0;
+            }).map(({ key, label, services }, i) => {
               return (
-                <fieldset key={key} className="field">
+                <div key={key}>
                   <Control.checkbox
                     model={`${model}.services.${label}`}
                     id={kebabCase(label)} 
@@ -64,9 +75,10 @@ class DomainSelector extends BaseForm {
                     value={label}
                   />
                   <label htmlFor={kebabCase(label)}>{`${label} - ${capitalize(services.join(', '))}`}</label>
-                </fieldset>
+                </div>
               )
             })}
+            </fieldset>
 
             {children}
 

@@ -111,7 +111,11 @@ const DomainList = (props) => {
             
             <ErrorBox focusOnMount={true} model={model}/>
 
-            <p>{leftToAddCount} services to add</p>
+            <strong>{leftToAddCount === 0
+              ? 'All services have a case study'
+              : `${leftToAddCount} services to add`
+            }</strong>
+
             <ProgressBar value={addedServices.length} max={serviceCount} />
 
             {Object.keys(services).map((service, i) => {
@@ -241,8 +245,8 @@ const DomainList = (props) => {
               ? <View
                   {...currentStudy}
                   onSubmit={onCaseStudySubmit.bind(this, params)}
-                  confirmButton={<Link role="button" to={pathname}>Add another</Link>}
-                  returnLink={<Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link>}
+                  confirmButton={<Link role="button" to={pathname}>Add case study</Link>}
+                  returnLink={<p><Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link></p>}
                 />
               : <Redirect to={pathname} />
             }
