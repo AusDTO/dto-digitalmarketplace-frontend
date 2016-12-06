@@ -14,6 +14,9 @@ test('DomainSelector renders', () => {
   const store = createStore({
     form_options: {
       csrf_token: 'abc'
+    },
+    options: {
+      serverRender: false
     }
   });
 
@@ -38,6 +41,9 @@ test('DomainSelector renders with populated fields', () => {
         'Development': true,
         'Content management': false
       }
+    },
+    options: {
+      serverRender: false
     }
   });
 

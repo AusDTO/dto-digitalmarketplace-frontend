@@ -61,10 +61,7 @@ test('mapStateToProps without application', () => {
 
 test('elementProps onClick', () => {
   delete sampleState.basename;
-  let store = createStore(Object.assign({}, 
-    sampleState, 
-    { _serverContext: {} }
-  ));
+  let store = createStore(Object.assign({}, sampleState));
 
   const dispatch = jest.fn();
   const transitionTo = jest.fn();
@@ -103,10 +100,7 @@ test('elementProps onClick', () => {
 
 test('elementProps onSubmit', () => {
   delete sampleState.basename;
-  let store = createStore(Object.assign({}, 
-    sampleState, 
-    { _serverContext: {} }
-  ));
+  let store = createStore(Object.assign({}, sampleState));
 
   const dispatch = jest.fn();
   const transitionTo = jest.fn();
@@ -145,10 +139,7 @@ test('elementProps onSubmit', () => {
 test('elementProps onSubmit with no event', () => {
   delete sampleState.basename;
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ = compose;
-  let store = createStore(Object.assign({}, 
-    sampleState, 
-    { _serverContext: {} }
-  ));
+  let store = createStore(Object.assign({}, sampleState));
 
   const dispatch = jest.fn();
   const transitionTo = jest.fn();
@@ -180,10 +171,7 @@ test('elementProps onSubmit with no event', () => {
 
 test('elementProps onSubmit with no steps left', () => {
   delete sampleState.basename;
-  let store = createStore(Object.assign({}, 
-    sampleState, 
-    { _serverContext: {} }
-  ));
+  let store = createStore(Object.assign({}, sampleState));
 
   const dispatch = jest.fn();
   const transitionTo = jest.fn();
@@ -232,10 +220,7 @@ test('without filterSteps', () => {
   const Submit = require('../../../SellerRegistration/components/Submit').default;
 
   delete sampleState.basename;
-  let store = createStore(Object.assign({},
-    sampleState,
-    { _serverContext: {} }
-  ));
+  let store = createStore(Object.assign({}, sampleState));
 
   const expectedSteps = [
     { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
@@ -280,10 +265,7 @@ test('filterSteps', () => {
   const Documents = require('../../../SellerRegistration/components/DocumentsForm').default;
 
   delete sampleState.basename;
-  let store = createStore(Object.assign({},
-    sampleState,
-    { _serverContext: {} }
-  ));
+  let store = createStore(Object.assign({}, sampleState));
 
   const expectedSteps = [
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },

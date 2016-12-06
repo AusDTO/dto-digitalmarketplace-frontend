@@ -24,15 +24,15 @@ const Body = (props) => {
     abn,
     address,
     CaseStudyLink
-  } = props;  
+  } = props;
 
   return (
     <article className="seller-profile">
       <Row title="Evaluted for" show={evaluated}>
         <div className="seller-profile__evaluated-badges">
-          {Object.keys(evaluated).map((service, i) => (
+          {/*Object.keys(evaluated).map((service, i) => (
             <span key={i}>{service}</span>
-          ))}
+          ))*/}
         </div>
       </Row>
 
