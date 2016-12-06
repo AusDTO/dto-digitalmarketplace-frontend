@@ -462,3 +462,102 @@ form {
     }
   }
 }
+
+
+
+
+
+.form-validation {
+  position: relative;
+  margin: $base-spacing 0;
+  padding: $medium-spacing $medium-spacing $medium-spacing ( $large-spacing + $medium-spacing );
+  border: solid 1px $non-black;
+  border-radius: $base-border-radius;
+  overflow: hidden; //hides border-radius corners of.icon-box
+
+  .icon-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: $large-spacing;
+    background-color: $non-black;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: $base-spacing auto;
+    text-align: center;
+    padding-top: 1em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 1em;
+    font-weight: $bold-font-weight;
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5em;
+  }
+}
+
+.form-validation--type-error {
+  border-color: $error-colour;
+
+  .icon-box {
+    background-color: $error-colour;
+  }
+}
+
+.form-validation--type-warning {
+  border-color: $warning-colour;
+
+  .icon-box {
+    background-color: $warning-colour;
+  }
+}
+
+.form-validation--type-success {
+  border-color: $success-colour;
+
+  .icon-box {
+    background-color: $success-colour;
+  }
+}
+
+.form-validation--type-info {
+  border-color: $info-colour;
+
+  .icon-box {
+    background-color: $light-blue;
+    border-right: solid 1px $info-colour;
+
+    svg {
+      color: $info-colour;
+      fill: $info-colour;
+    }
+  }
+}
+
+
+//==================
+
+.field-validation-error {
+  display: block;
+  font-weight: $bold-font-weight;
+  color: $error-colour;
+  padding: $small-spacing $small-spacing $small-spacing $large-spacing ;
+  background-color: $light-red;
+  line-height: 1.2;
+  background-position: $small-spacing center;
+  background-repeat: no-repeat;
+  background-size: $base-spacing auto;
+  margin: $small-spacing auto;
+}
