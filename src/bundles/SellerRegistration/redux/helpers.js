@@ -25,12 +25,6 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
     
       dispatch(actions.change(form, mappedFields))
 
-      // If form has values, it is assumed it's 'completed'.
-      if (!isEmpty(mappedFields)) {
-        dispatch(actions.setSubmitted(form));
-        dispatch(actions.setPristine(form));
-      }
-
       // Return what the state shape should look like.
       return { [form]: mappedFields };
     })
