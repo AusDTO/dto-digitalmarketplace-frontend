@@ -97,7 +97,7 @@ test('elementProps onClick', () => {
   onClick(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(3);
+  expect(dispatch).toHaveBeenCalledTimes(2);
 });
 
 
@@ -139,7 +139,7 @@ test('elementProps onSubmit', () => {
   onSubmit(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(2);
+  expect(dispatch).toHaveBeenCalledTimes(1);
 });
 
 test('elementProps onSubmit with no event', () => {
@@ -175,7 +175,7 @@ test('elementProps onSubmit with no event', () => {
 
   onSubmit();
 
-  expect(dispatch).toHaveBeenCalledTimes(2);
+  expect(dispatch).toHaveBeenCalledTimes(1);
 });
 
 test('elementProps onSubmit with no steps left', () => {
@@ -216,7 +216,7 @@ test('elementProps onSubmit with no steps left', () => {
   onSubmit(mockEvent);
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(dispatch).toHaveBeenCalledTimes(3);
+  expect(dispatch).toHaveBeenCalledTimes(2);
 });
 
 test('without filterSteps', () => {
