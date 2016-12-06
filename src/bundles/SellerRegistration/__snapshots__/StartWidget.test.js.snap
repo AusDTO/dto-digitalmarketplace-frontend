@@ -1,45 +1,49 @@
 exports[`test StartWidget renders correctly 1`] = `
 <div>
   <h1>
-    Become a seller
+    Joining the Marketplace
   </h1>
   <p>
-    To join the Marketplace you need to:
+    Before you can join the Marketplace we need to know more about your business.
   </p>
+  <p>
+    The information you share will be used to evaluate your business and build your seller profile.
+  </p>
+  <p>
+    If your skills and experience meet the 
+    <a
+      href="/evaluation-criteria">
+      evaluation criteria
+    </a>
+     you’ll be able to join our panel and be given a presence in the Marketplace. This means buyers can find you and you can respond to opportunities.
+  </p>
+  <h2>
+    You’ll need
+  </h2>
   <ul>
     <li>
-      Tell us about your company
+      Case studies
     </li>
     <li>
-      Describe the digital services you\'ll offer and their rates.
+      References
     </li>
     <li>
-      Provide evidence of your skills for assessment.
+      Financial viability statement
     </li>
     <li>
-      Agree to the 
-      <a
-        href="/buyers-guide">
-        terms in the deed
-      </a>
-      .
+      Proof of worker’s compensation insurance and public liability insurance
     </li>
   </ul>
   <p>
-    Registering takes about 
-    <b>
-      30 mins
-    </b>
-    . You can save your application and continue it later.
+    This application takes about 
+    <strong>
+      30 minutes
+    </strong>
+     to complete.
   </p>
   <p>
-    Before you start
+    Your progress saves automatically, so you can continue later.
   </p>
-  <ul>
-    <li>
-      By completing this process you are signing the deed, so be sure the authorised person in the company completes this form.
-    </li>
-  </ul>
   <p>
     <a
       href="/signup"
