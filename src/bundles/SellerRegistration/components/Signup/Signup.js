@@ -16,6 +16,7 @@ import { stepNextPersist, submitApplication } from '../../redux/modules/applicat
 import Start                from '../Start';
 import YourInfoForm         from '../YourInfoForm';
 import BusinessDetailsForm  from '../BusinessDetailsForm';
+import BusinessInfoForm     from '../BusinessInfoForm';
 import DomainSelector       from '../DomainSelector';
 import Review               from '../Review';
 import Submit               from '../Submit';
@@ -34,8 +35,9 @@ class Signup extends React.Component {
 
   steps = [
     { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
-    { id: 'info', label: 'Business details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'business', label: 'Business information', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
+    { id: 'info', label: 'Business details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
@@ -158,7 +160,7 @@ class Signup extends React.Component {
                   router,
                   nextRoute: this.nextStep && this.nextStep.pattern,
                   title: label,
-                  buttonText: 'Save & Continue',
+                  buttonText: 'Save and continue',
                   actions: {
                     submitApplication
                   }
