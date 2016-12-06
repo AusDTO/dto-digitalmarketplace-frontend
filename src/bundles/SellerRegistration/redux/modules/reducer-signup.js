@@ -18,13 +18,18 @@ export default combineReducers({
     // for mapping values.
     yourInfoForm: {
       representative: '',
-      name: '',
-      abn: '',
       phone: '',
       email: '',
-      contact_name: ''
+      contact_name: '',
+      contact_phone: '',
+      contact_email: ''
+    },
+    businessInfoForm: {
+      seller_type: {}
     },
     businessDetailsForm: {
+      name: '',
+      abn: '',
       summary: '',
       website: '',
       linkedin: '',
@@ -34,7 +39,7 @@ export default combineReducers({
         state: '',
         postal_code: ''
       },
-      seller_type: {}
+      interstate: ''
     },
     domainSelectorForm: {
       services: {}

@@ -44,13 +44,42 @@ class BusinessDetailsForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
+                        {(seller_registration === true) &&
+                            <div>
+                                <Textfield
+                                  model={`${model}.name`}
+                                  name="name"
+                                  id="name"
+                                  htmlFor="name"
+                                  label="Business Name"
+                                  description="As you would like it shown on the Marketplace"
+                                  validators={{ required }}
+                                  messages={{
+                                    required: 'Business name is required',
+                                  }} 
+                                />
+
+                                <Textfield
+                                  model={`${model}.abn`}
+                                  name="abn"
+                                  id="abn"
+                                  htmlFor="abn"
+                                  label="ABN"
+                                  validators={{ required }}
+                                  messages={{
+                                    required: 'ABN is required',
+                                  }}
+                                />
+                            </div>
+                        }
+
                         <Textarea
                             model={`${model}.summary`}
                             name="summary"
                             id="summary"
                             controlProps={{limit: 50}}
                             label="Summary"
-                            description="This will be displayed in search results"
+                            description="3-4 sentences that describe your business."
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}
@@ -123,57 +152,15 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                             pattern="[0-9]{4}"
                         />
-                        {(seller_registration === undefined || seller_registration) &&
-                            <fieldset>
-                                <legend>Select the following that apply (optional)</legend>
 
-                                <Control.checkbox
-                                    model={`${model}.seller_type.start-up`}
-                                    id="start-up"
-                                    name="start-up"
-                                    value="start-up"
-                                />
-                                <label htmlFor="start-up">Start up - up to 5 years from commencement of business, not
-                                    listed on any stock exchange, and is able to capture a large addressable market
-                                    using technology</label>
-
-                                <Control.checkbox
-                                    model={`${model}.seller_type.sme`}
-                                    id="sme"
-                                    name="sme"
-                                    value="sme"
-                                />
-                                <label htmlFor="sme">SME Your business has less than 200 employees and operates
-                                    independently of any parent organisation for taxation arrangements</label>
-
-                                <Control.checkbox
-                                    model={`${model}.seller_type.indigenous`}
-                                    id="indigenous"
-                                    name="indigenous"
-                                    value="indigenous"
-                                />
-                                <label htmlFor="indigenous">Indigenous seller - your business is listed on a directory
-                                    of Indigenous businesses, such as Supply Nation</label>
-
-                                <Control.checkbox
-                                    model={`${model}.seller_type.recruitment`}
-                                    id="recruitment"
-                                    name="recruitment"
-                                    value="recruitment"
-                                />
-                                <label htmlFor="recruitment">Recruitment agency - the primary purpose of the business is
-                                    resourcing</label>
-
-                                <Control.checkbox
-                                    model={`${model}.seller_type.product`}
-                                    id="product"
-                                    name="product"
-                                    value="product"
-                                />
-                                <label htmlFor="product">Product based business - Your services require your proprietary
-                                    software or hardware.</label>
-                            </fieldset>
-                        }
+                        <Control.checkbox
+                          model={`${model}.interstate`}
+                          id="interstate" 
+                          name="interstate"
+                        />
+                        <label htmlFor="interstate">
+                            Able to work interstate
+                        </label>
 
                         {children}
 

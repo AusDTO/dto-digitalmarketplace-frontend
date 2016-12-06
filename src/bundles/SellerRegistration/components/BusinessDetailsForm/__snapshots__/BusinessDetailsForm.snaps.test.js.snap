@@ -25,7 +25,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          This will be displayed in search results
+          3-4 sentences that describe your business.
         </p>
         <div>
           <textarea
@@ -163,81 +163,19 @@ exports[`test BusinessDetailsForm renders 1`] = `
           type="text"
           value="" />
       </div>
-      <fieldset>
-        <legend>
-          Select the following that apply (optional)
-        </legend>
-        <input
-          checked={false}
-          id="start-up"
-          name="start-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="start-up" />
-        <label
-          htmlFor="start-up">
-          Start up - up to 5 years from commencement of business, not listed on any stock exchange, and is able to capture a large addressable market using technology
-        </label>
-        <input
-          checked={false}
-          id="sme"
-          name="sme"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="sme" />
-        <label
-          htmlFor="sme">
-          SME Your business has less than 200 employees and operates independently of any parent organisation for taxation arrangements
-        </label>
-        <input
-          checked={false}
-          id="indigenous"
-          name="indigenous"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="indigenous" />
-        <label
-          htmlFor="indigenous">
-          Indigenous seller - your business is listed on a directory of Indigenous businesses, such as Supply Nation
-        </label>
-        <input
-          checked={false}
-          id="recruitment"
-          name="recruitment"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="recruitment" />
-        <label
-          htmlFor="recruitment">
-          Recruitment agency - the primary purpose of the business is resourcing
-        </label>
-        <input
-          checked={false}
-          id="product"
-          name="product"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="product" />
-        <label
-          htmlFor="product">
-          Product based business - Your services require your proprietary software or hardware.
-        </label>
-      </fieldset>
+      <input
+        checked={false}
+        id="interstate"
+        name="interstate"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        type="checkbox" />
+      <label
+        htmlFor="interstate">
+        Able to work interstate
+      </label>
       <input
         role="button"
         type="submit"
@@ -279,7 +217,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          This will be displayed in search results
+          3-4 sentences that describe your business.
         </p>
         <div>
           <textarea
@@ -417,81 +355,19 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           type="text"
           value="" />
       </div>
-      <fieldset>
-        <legend>
-          Select the following that apply (optional)
-        </legend>
-        <input
-          checked={false}
-          id="start-up"
-          name="start-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="start-up" />
-        <label
-          htmlFor="start-up">
-          Start up - up to 5 years from commencement of business, not listed on any stock exchange, and is able to capture a large addressable market using technology
-        </label>
-        <input
-          checked={false}
-          id="sme"
-          name="sme"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="sme" />
-        <label
-          htmlFor="sme">
-          SME Your business has less than 200 employees and operates independently of any parent organisation for taxation arrangements
-        </label>
-        <input
-          checked={false}
-          id="indigenous"
-          name="indigenous"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="indigenous" />
-        <label
-          htmlFor="indigenous">
-          Indigenous seller - your business is listed on a directory of Indigenous businesses, such as Supply Nation
-        </label>
-        <input
-          checked={false}
-          id="recruitment"
-          name="recruitment"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="recruitment" />
-        <label
-          htmlFor="recruitment">
-          Recruitment agency - the primary purpose of the business is resourcing
-        </label>
-        <input
-          checked={false}
-          id="product"
-          name="product"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="product" />
-        <label
-          htmlFor="product">
-          Product based business - Your services require your proprietary software or hardware.
-        </label>
-      </fieldset>
+      <input
+        checked={false}
+        id="interstate"
+        name="interstate"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        type="checkbox" />
+      <label
+        htmlFor="interstate">
+        Able to work interstate
+      </label>
       <input
         role="button"
         type="submit"
@@ -558,7 +434,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          This will be displayed in search results
+          3-4 sentences that describe your business.
         </p>
         <a
           className="validation-message"
@@ -729,81 +605,19 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           type="text"
           value="" />
       </div>
-      <fieldset>
-        <legend>
-          Select the following that apply (optional)
-        </legend>
-        <input
-          checked={false}
-          id="start-up"
-          name="start-up"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="start-up" />
-        <label
-          htmlFor="start-up">
-          Start up - up to 5 years from commencement of business, not listed on any stock exchange, and is able to capture a large addressable market using technology
-        </label>
-        <input
-          checked={false}
-          id="sme"
-          name="sme"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="sme" />
-        <label
-          htmlFor="sme">
-          SME Your business has less than 200 employees and operates independently of any parent organisation for taxation arrangements
-        </label>
-        <input
-          checked={false}
-          id="indigenous"
-          name="indigenous"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="indigenous" />
-        <label
-          htmlFor="indigenous">
-          Indigenous seller - your business is listed on a directory of Indigenous businesses, such as Supply Nation
-        </label>
-        <input
-          checked={false}
-          id="recruitment"
-          name="recruitment"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="recruitment" />
-        <label
-          htmlFor="recruitment">
-          Recruitment agency - the primary purpose of the business is resourcing
-        </label>
-        <input
-          checked={false}
-          id="product"
-          name="product"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-          value="product" />
-        <label
-          htmlFor="product">
-          Product based business - Your services require your proprietary software or hardware.
-        </label>
-      </fieldset>
+      <input
+        checked={false}
+        id="interstate"
+        name="interstate"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        type="checkbox" />
+      <label
+        htmlFor="interstate">
+        Able to work interstate
+      </label>
       <input
         role="button"
         type="submit"
