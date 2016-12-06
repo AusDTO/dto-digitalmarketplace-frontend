@@ -44,10 +44,10 @@ class BusinessInfoForm extends BaseForm {
                             <legend>Select all that apply to your business (optional).</legend>
 
                             <Control.checkbox
-                                model={`${model}.seller_type.start-up`}
+                                model={`${model}.seller_type.start_up`}
                                 id="start-up"
                                 name="start-up"
-                                value="start-up"
+                                value="Start Up"
                             />
                             <label htmlFor="start-up"><strong>Start up</strong> Up to 5 years from business commencement. 
                                 Not listed on any stock exchange. Able to capture a large addressable market using 
@@ -57,7 +57,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.seller_type.sme`}
                                 id="sme"
                                 name="sme"
-                                value="sme"
+                                value="SME"
                             />
                             <label htmlFor="sme"><strong>SME</strong> Less than 200 employees and is independent of 
                                 any parent organisation for taxation.</label>
@@ -66,7 +66,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.seller_type.indigenous`}
                                 id="indigenous"
                                 name="indigenous"
-                                value="indigenous"
+                                value="Indigenous"
                             />
                             <label htmlFor="indigenous"><strong>Indigenous</strong> Business is listed on a directory 
                                 of indigenous businesses, such as Supply Nation.</label>
@@ -75,7 +75,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.seller_type.recruitment`}
                                 id="recruitment"
                                 name="recruitment"
-                                value="recruitment"
+                                value="Recruitment"
                             />
                             <label htmlFor="recruitment"><strong>Recruiter</strong> Primary business purpose 
                                 is resourcing.</label>
@@ -84,7 +84,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.seller_type.product`}
                                 id="product"
                                 name="product"
-                                value="product"
+                                value="Product"
                             />
                             <label htmlFor="product"><strong>Product based business</strong> Your services require 
                                 your proprietary software or hardware.</label>

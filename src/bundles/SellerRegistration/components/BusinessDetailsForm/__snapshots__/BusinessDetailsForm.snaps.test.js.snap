@@ -15,53 +15,6 @@ exports[`test BusinessDetailsForm renders 1`] = `
       method="post"
       onReset={[Function]}
       onSubmit={[Function]}>
-      <div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="name">
-            Business Name
-          </label>
-          <p
-            className="hint"
-            id="name-hint">
-            As you would like it shown on the Marketplace
-          </p>
-          <input
-            aria-describedby="name-hint"
-            className=""
-            id="name"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            pattern={undefined}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="abn">
-            ABN
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="abn"
-            name="abn"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            pattern={undefined}
-            type="text"
-            value="" />
-        </div>
-      </div>
       <div
         className="field">
         <label
@@ -254,53 +207,6 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         name="csrf_token"
         type="hidden"
         value="sometoken" />
-      <div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="name">
-            Business Name
-          </label>
-          <p
-            className="hint"
-            id="name-hint">
-            As you would like it shown on the Marketplace
-          </p>
-          <input
-            aria-describedby="name-hint"
-            className=""
-            id="name"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            pattern={undefined}
-            type="text"
-            value="" />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="abn">
-            ABN
-          </label>
-          <input
-            aria-describedby={undefined}
-            className=""
-            id="abn"
-            name="abn"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            pattern={undefined}
-            type="text"
-            value="" />
-        </div>
-      </div>
       <div
         className="field">
         <label
@@ -494,12 +400,6 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
       <ul>
         <li>
           <a
-            href="#abn">
-            ABN is required
-          </a>
-        </li>
-        <li>
-          <a
             href="#summary">
             You must provide a seller summary
           </a>
@@ -524,64 +424,6 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
       method="post"
       onReset={[Function]}
       onSubmit={[Function]}>
-      <div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="name">
-            Business Name
-          </label>
-          <p
-            className="hint"
-            id="name-hint">
-            As you would like it shown on the Marketplace
-          </p>
-          <input
-            aria-describedby="name-hint"
-            className=""
-            id="name"
-            name="name"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            pattern={undefined}
-            type="text"
-            value="SupCo Pty. Ltd." />
-        </div>
-        <div
-          className="field">
-          <label
-            className="question-heading"
-            htmlFor="abn">
-            ABN
-          </label>
-          <a
-            className="validation-message"
-            href="#abn">
-            <span
-              className="visuallyhidden">
-              Validation Error: 
-            </span>
-            <span>
-              ABN is required
-            </span>
-          </a>
-          <input
-            aria-describedby={undefined}
-            className="invalid"
-            id="abn"
-            name="abn"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            pattern={undefined}
-            type="text"
-            value="" />
-        </div>
-      </div>
       <div
         className="field">
         <label

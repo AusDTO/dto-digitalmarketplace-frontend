@@ -44,7 +44,7 @@ class BusinessDetailsForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-                        {(seller_registration === undefined || seller_registration) &&
+                        {(seller_registration === true) &&
                             <div>
                                 <Textfield
                                   model={`${model}.name`}
