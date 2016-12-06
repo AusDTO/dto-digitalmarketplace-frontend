@@ -26,8 +26,7 @@ const Start = ({ signup, onClick }) => (
 );
 
 Start.defaultProps = {
-  onClick: () => {},
-  criteria: '#'
+  onClick: () => {}
 }
 
 Start.propTypes = {
