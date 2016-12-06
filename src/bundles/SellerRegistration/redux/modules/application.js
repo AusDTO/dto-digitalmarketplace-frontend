@@ -60,10 +60,12 @@ export const submitApplication = () => {
         })
         .then(statusCheck)
         .then((response) => response.json())
+        // Update application in the state to match the server.
         .then((persistedModel) => {
             dispatch(submit(persistedModel))
             return persistedModel;
         })
+        // Disperse the data back into the redux store's form models, keeping everything in sync. 
         .then((model) => dispatchFormState(dispatch, getStateForms(state), model.application))
         .then(() => dispatch(postSubmit()))
         .catch((e) => {

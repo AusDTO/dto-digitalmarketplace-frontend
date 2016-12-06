@@ -55,7 +55,7 @@ export const pruneModel = (model) => {
         return studies;
       }, {});
 
-      newModel = Object.assign({}, model, { case_studies: casestudies });
+    newModel = Object.assign({}, model, { case_studies: casestudies });
   }
 
   return newModel;
