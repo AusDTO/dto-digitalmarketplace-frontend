@@ -40,11 +40,19 @@ class RegisterComponent {
           }
         } catch (e) {}
 
+        delete initialState._serverContext;
+
         let basename;
         if (initialState.basename) {
           basename = initialState.basename;
           delete initialState.basename;
         }
+
+        let options = Object.assign({}, initialState.options || {}, {
+          serverRender: false
+        });
+
+        initialState = Object.assign({}, initialState, { options });
 
         let result = this.instance(initialState);
         ReactDOM.render(
