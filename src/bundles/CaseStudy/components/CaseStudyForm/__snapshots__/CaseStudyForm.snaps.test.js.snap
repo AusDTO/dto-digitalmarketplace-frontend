@@ -124,6 +124,7 @@ exports[`test CaseStudyForm renders 1`] = `
           href="#eval-crit"
           target="_blank">
           Browse the evaluation criteria for 
+           (opens in a new window)
         </a>
         . 
       </p>
@@ -1135,6 +1136,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           href="#eval-crit"
           target="_blank">
           Browse the evaluation criteria for 
+           (opens in a new window)
         </a>
         . 
       </p>
@@ -1659,6 +1661,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           href="#eval-crit"
           target="_blank">
           Browse the evaluation criteria for 
+           (opens in a new window)
         </a>
         . 
       </p>
@@ -2129,6 +2132,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           href="#eval-crit"
           target="_blank">
           Browse the evaluation criteria for 
+           (opens in a new window)
         </a>
         . 
       </p>
@@ -2528,6 +2532,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           href="#eval-crit"
           target="_blank">
           Browse the evaluation criteria for 
+           (opens in a new window)
         </a>
         . 
       </p>
