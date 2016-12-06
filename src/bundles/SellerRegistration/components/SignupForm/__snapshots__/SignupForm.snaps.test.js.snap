@@ -3,8 +3,17 @@ exports[`test SignupForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Create a Seller Account
+      Claim your spot in the Marketplace
     </h1>
+    <p>
+      We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+    </p>
+    <p>
+      And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+    </p>
+    <h2>
+      Ready to get started?
+    </h2>
   </header>
   <article
     role="main">
@@ -39,7 +48,7 @@ exports[`test SignupForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Email
+          Email address
         </label>
         <input
           aria-describedby={undefined}
@@ -57,10 +66,10 @@ exports[`test SignupForm renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Send Email" />
+        value="Create seller account" />
       <p>
         <small>
-          By requesting an account invitation, you agree to the 
+          By requesting an account invitation you agree to the 
           <a
             href="/terms-of-use">
             Terms of Use
@@ -78,8 +87,17 @@ exports[`test SignupForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Create a Seller Account
+      Claim your spot in the Marketplace
     </h1>
+    <p>
+      We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+    </p>
+    <p>
+      And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+    </p>
+    <h2>
+      Ready to get started?
+    </h2>
   </header>
   <article
     role="main">
@@ -119,7 +137,7 @@ exports[`test SignupForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Email
+          Email address
         </label>
         <input
           aria-describedby={undefined}
@@ -137,10 +155,10 @@ exports[`test SignupForm renders with form_options 1`] = `
       <input
         role="button"
         type="submit"
-        value="Send Email" />
+        value="Create seller account" />
       <p>
         <small>
-          By requesting an account invitation, you agree to the 
+          By requesting an account invitation you agree to the 
           <a
             href="/terms-of-use">
             Terms of Use
