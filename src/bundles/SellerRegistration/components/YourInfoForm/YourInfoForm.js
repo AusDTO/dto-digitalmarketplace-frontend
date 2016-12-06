@@ -41,41 +41,16 @@ class YourInfoForm extends BaseForm {
             )}
 
             <Textfield
-              model={`${model}.name`}
-              name="name"
-              id="name"
-              htmlFor="name"
-              label="Business Name"
-              description="As you would like it displayed on the Marketplace"
+              model={`${model}.representative`}
+              name="representative"
+              id="representative"
+              htmlFor="representative"
+              label="Authorised Representative"
+              description="This person must be authorised to enter into contracts on behalf of the business."
               validators={{ required }}
               messages={{
-                required: 'Business name is required',
-              }} 
-            />
-
-            <Textfield
-              model={`${model}.abn`}
-              name="abn"
-              id="abn"
-              htmlFor="abn"
-              label="ABN"
-              validators={{ required }}
-              messages={{
-                required: 'ABN is required',
+                required: 'Authorised representative is required',
               }}
-            />
-
-            <Textfield
-              model={`${model}.contact_name`}
-              name="contact_name"
-              id="contact_name"
-              htmlFor="contact_name"
-              label="Contact Name"
-              description="The best person to contact for business opportunities"
-              validators={{ required }}
-              messages={{
-                required: 'Contact name is required',
-              }} 
             />
 
             <Textfield
@@ -83,7 +58,7 @@ class YourInfoForm extends BaseForm {
               name="phone"
               id="phone"
               htmlFor="phone"
-              label="Contact's phone number"
+              label="Phone"
               validators={{ required }}
               messages={{
                 required: 'Contact\'s phone number is required',
@@ -95,7 +70,7 @@ class YourInfoForm extends BaseForm {
               name="email"
               id="email"
               htmlFor="email"
-              label="Contact's email"
+              label="Email"
               validators={{ required }}
               messages={{
                 required: 'Contact\'s email is required',
@@ -103,16 +78,28 @@ class YourInfoForm extends BaseForm {
             />
 
             <Textfield
-              model={`${model}.representative`}
-              name="representative"
-              id="representative"
-              htmlFor="representative"
-              label="Authorised Representative"
-              description="The authorised person who signs contracts with clients"
-              validators={{ required }}
-              messages={{
-                required: 'Authorised representative is required',
-              }}
+              model={`${model}.contact_name`}
+              name="contact_name"
+              id="contact_name"
+              htmlFor="contact_name"
+              label="Additional contact (optional)"
+              description="You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities."
+            />
+
+            <Textfield
+              model={`${model}.contact_phone`}
+              name="contact_phone"
+              id="contact_phone"
+              htmlFor="contact_phone"
+              label="Phone"
+            />
+
+            <Textfield
+              model={`${model}.contact_email`}
+              name="contact_email"
+              id="contact_email"
+              htmlFor="contact_email"
+              label="Email"
             />
 
             {children}
@@ -126,8 +113,8 @@ class YourInfoForm extends BaseForm {
 }
 
 YourInfoForm.defaultProps = {
-  buttonText: 'Save & Continue',
-  title: 'Your Information'
+  buttonText: 'Save and continue',
+  title: 'Contact information'
 }
 
 const mapStateToProps = (state) => {

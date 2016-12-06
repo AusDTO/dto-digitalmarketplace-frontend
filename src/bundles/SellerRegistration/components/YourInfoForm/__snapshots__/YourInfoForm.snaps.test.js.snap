@@ -4,7 +4,7 @@ exports[`test YourInfoForm renders 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Your Information
+      Contact information
     </h1>
   </header>
   <article
@@ -19,64 +19,19 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="name">
-          Business Name
+          htmlFor="representative">
+          Authorised Representative
         </label>
         <p
           className="hint"
-          id="name-hint">
-          As you would like it displayed on the Marketplace
+          id="representative-hint">
+          This person must be authorised to enter into contracts on behalf of the business.
         </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby="representative-hint"
           className=""
-          id="name"
-          name="name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="abn">
-          ABN
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="abn"
-          name="abn"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="contact_name">
-          Contact Name
-        </label>
-        <p
-          className="hint"
-          id="contact_name-hint">
-          The best person to contact for business opportunities
-        </p>
-        <input
-          aria-describedby="contact_name-hint"
-          className=""
-          id="contact_name"
-          name="contact_name"
+          id="representative"
+          name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -90,7 +45,7 @@ exports[`test YourInfoForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="phone">
-          Contact\'s phone number
+          Phone
         </label>
         <input
           aria-describedby={undefined}
@@ -110,7 +65,7 @@ exports[`test YourInfoForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Contact\'s email
+          Email
         </label>
         <input
           aria-describedby={undefined}
@@ -129,19 +84,59 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Authorised Representative
+          htmlFor="contact_name">
+          Additional contact (optional)
         </label>
         <p
           className="hint"
-          id="representative-hint">
-          The authorised person who signs contracts with clients
+          id="contact_name-hint">
+          You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
         </p>
         <input
-          aria-describedby="representative-hint"
+          aria-describedby="contact_name-hint"
           className=""
-          id="representative"
-          name="representative"
+          id="contact_name"
+          name="contact_name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="contact_phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="contact_phone"
+          name="contact_phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="contact_email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="contact_email"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -153,7 +148,7 @@ exports[`test YourInfoForm renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save and continue" />
     </form>
   </article>
 </div>
@@ -165,7 +160,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Your Information
+      Contact information
     </h1>
   </header>
   <article
@@ -185,64 +180,19 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="name">
-          Business Name
+          htmlFor="representative">
+          Authorised Representative
         </label>
         <p
           className="hint"
-          id="name-hint">
-          As you would like it displayed on the Marketplace
+          id="representative-hint">
+          This person must be authorised to enter into contracts on behalf of the business.
         </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby="representative-hint"
           className=""
-          id="name"
-          name="name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="abn">
-          ABN
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="abn"
-          name="abn"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="contact_name">
-          Contact Name
-        </label>
-        <p
-          className="hint"
-          id="contact_name-hint">
-          The best person to contact for business opportunities
-        </p>
-        <input
-          aria-describedby="contact_name-hint"
-          className=""
-          id="contact_name"
-          name="contact_name"
+          id="representative"
+          name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -256,7 +206,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="phone">
-          Contact\'s phone number
+          Phone
         </label>
         <input
           aria-describedby={undefined}
@@ -276,7 +226,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Contact\'s email
+          Email
         </label>
         <input
           aria-describedby={undefined}
@@ -295,19 +245,59 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Authorised Representative
+          htmlFor="contact_name">
+          Additional contact (optional)
         </label>
         <p
           className="hint"
-          id="representative-hint">
-          The authorised person who signs contracts with clients
+          id="contact_name-hint">
+          You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
         </p>
         <input
-          aria-describedby="representative-hint"
+          aria-describedby="contact_name-hint"
           className=""
-          id="representative"
-          name="representative"
+          id="contact_name"
+          name="contact_name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="contact_phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="contact_phone"
+          name="contact_phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="contact_email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="contact_email"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -319,7 +309,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save and continue" />
     </form>
   </article>
 </div>
@@ -331,7 +321,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Your Information
+      Contact information
     </h1>
   </header>
   <article
@@ -351,64 +341,19 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="name">
-          Business Name
+          htmlFor="representative">
+          Authorised Representative
         </label>
         <p
           className="hint"
-          id="name-hint">
-          As you would like it displayed on the Marketplace
+          id="representative-hint">
+          This person must be authorised to enter into contracts on behalf of the business.
         </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby="representative-hint"
           className=""
-          id="name"
-          name="name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="abn">
-          ABN
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="abn"
-          name="abn"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="contact_name">
-          Contact Name
-        </label>
-        <p
-          className="hint"
-          id="contact_name-hint">
-          The best person to contact for business opportunities
-        </p>
-        <input
-          aria-describedby="contact_name-hint"
-          className=""
-          id="contact_name"
-          name="contact_name"
+          id="representative"
+          name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -422,7 +367,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="phone">
-          Contact\'s phone number
+          Phone
         </label>
         <input
           aria-describedby={undefined}
@@ -442,7 +387,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="email">
-          Contact\'s email
+          Email
         </label>
         <input
           aria-describedby={undefined}
@@ -461,19 +406,59 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Authorised Representative
+          htmlFor="contact_name">
+          Additional contact (optional)
         </label>
         <p
           className="hint"
-          id="representative-hint">
-          The authorised person who signs contracts with clients
+          id="contact_name-hint">
+          You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
         </p>
         <input
-          aria-describedby="representative-hint"
+          aria-describedby="contact_name-hint"
           className=""
-          id="representative"
-          name="representative"
+          id="contact_name"
+          name="contact_name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="contact_phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="contact_phone"
+          name="contact_phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="contact_email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="contact_email"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -485,7 +470,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save & Continue" />
+        value="Save and continue" />
     </form>
   </article>
 </div>
