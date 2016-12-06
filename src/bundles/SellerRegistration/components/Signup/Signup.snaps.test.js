@@ -14,7 +14,7 @@ import sampleState from '../../ApplicantSignup.json';
 import createStore from '../../redux/create-signup';
 
 test('Signup renders', () => {
-  let store = createStore(Object.assign({}, { _serverContext: {} }))
+  let store = createStore({})
   const component = renderer.create(
     <MemoryRouter initialEntries={['/start']} initialIndex={0}>
       {({ action, location, router }) => (
@@ -30,7 +30,7 @@ test('Signup renders', () => {
 });
 
 test('Signup renders empty Your Info form', () => {
-  let store = createStore(Object.assign({}, { _serverContext: {} }))
+  let store = createStore({})
   const component = renderer.create(
     <MemoryRouter initialEntries={['/your-info']} initialIndex={0}>
       {({ action, location, router }) => (
@@ -47,7 +47,7 @@ test('Signup renders empty Your Info form', () => {
 
 test('Signup renders populated Your Info form', () => {
   delete sampleState.basename;
-  let store = createStore(Object.assign({}, { _serverContext: {} }, sampleState))
+  let store = createStore(Object.assign({}, sampleState))
   const component = renderer.create(
     <MemoryRouter initialEntries={['/your-info']} initialIndex={0}>
       {({ action, location, router }) => (
