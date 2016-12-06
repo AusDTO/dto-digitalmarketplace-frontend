@@ -23,7 +23,7 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
           return result;
         }, {})
     
-      dispatch(actions.merge(form, mappedFields))
+      dispatch(actions.change(form, mappedFields))
 
       // If form has values, it is assumed it's 'completed'.
       if (!isEmpty(mappedFields)) {
@@ -36,6 +36,37 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
     })
 }
 
+export const pruneModel = (model) => {
+  const {
+    case_studies,
+    services = {}
+  } = model;
+
+  let newModel = model;
+
+  if (services) {
+    newModel = Object.assign({}, model, {
+      services: omitBy(services, (service) => !service)
+    });  
+  }
+
+  if (case_studies) {
+    const casestudies = Object.keys(case_studies)
+      .filter((key) => {
+        let study = case_studies[key];
+        return study.service in newModel.services;
+      })
+      .reduce((studies, key) => {
+        studies[key] = case_studies[key];
+        return studies;
+      }, {});
+
+      newModel = Object.assign({}, model, { case_studies: casestudies });
+  }
+
+  return newModel;
+}
+
 export const flattenStateForms = (state = {}) => {
   const forms = getStateForms(state);
   let flatState = Object.keys(forms)
@@ -43,26 +74,7 @@ export const flattenStateForms = (state = {}) => {
       return Object.assign({}, flat, forms[key])
     }, {});
 
-  if (flatState.services) {
-    flatState = Object.assign({}, flatState, {
-      services: omitBy(flatState.services, (service) => !service)
-    });  
-  }
-
-  if (flatState.pricing) {
-    const { services } = flatState;
-    let pricing = Object.keys(flatState.pricing)
-      // Ensure service is still selected, otherwise omit.
-      .filter(key => services[key])
-      .reduce((prices, key) => {
-        prices[key] = flatState.pricing[key]
-        return prices;
-      }, {})
-
-    flatState = Object.assign({}, flatState, { pricing });
-  }
-
-  return flatState;
+  return pruneModel(flatState);
 }
 
 export const findValidServices = (services) => {
