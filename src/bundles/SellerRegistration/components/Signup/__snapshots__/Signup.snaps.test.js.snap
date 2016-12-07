@@ -23,7 +23,7 @@ exports[`test Signup renders 1`] = `
             href="/start"
             onClick={[Function]}>
             <span>
-              Become a seller
+              Introduction
             </span>
           </a>
         </li>
@@ -33,7 +33,7 @@ exports[`test Signup renders 1`] = `
             href="/business-details"
             onClick={[Function]}>
             <span>
-              Create your profile
+              Business details
             </span>
           </a>
         </li>
@@ -43,7 +43,7 @@ exports[`test Signup renders 1`] = `
             href="/business-info"
             onClick={[Function]}>
             <span>
-              Business information
+              Classification
             </span>
           </a>
         </li>
@@ -53,7 +53,7 @@ exports[`test Signup renders 1`] = `
             href="/your-info"
             onClick={[Function]}>
             <span>
-              Business details
+              Contact details
             </span>
           </a>
         </li>
@@ -73,7 +73,7 @@ exports[`test Signup renders 1`] = `
             href="/case-study"
             onClick={[Function]}>
             <span>
-              Case Study
+              Case Studies
             </span>
           </a>
         </li>
@@ -117,46 +117,42 @@ exports[`test Signup renders 1`] = `
         Joining the Marketplace
       </h1>
       <p>
-        Before you can join the Marketplace we need to know more about your business.
-      </p>
-      <p>
-        The information you share will be used to evaluate your business and build your seller profile.
-      </p>
-      <p>
-        If your skills and experience meet the 
+        The information you share in this application will be assessed against our 
         <a
           href="/evaluation-criteria">
           evaluation criteria
         </a>
-         you’ll be able to join our panel and be given a presence in the Marketplace. This means buyers can find you and you can respond to opportunities.
+          and to create your seller profile.
+      </p>
+      <p>
+        Completing your application will take around 
+        <b>
+          30 minutes
+        </b>
+        . Your information will be saved automatically if you need to come back later.
       </p>
       <h2>
-        You’ll need
+        You\'ll need:
       </h2>
       <ul>
         <li>
-          Case studies
+          Your basic business information, for example
         </li>
         <li>
-          References
+          A financial viability statement from your accountant
         </li>
         <li>
-          Financial viability statement
-        </li>
-        <li>
-          Proof of worker’s compensation insurance and public liability insurance
+          Proof of worker’s compensation and public liability insurance
         </li>
       </ul>
-      <p>
-        This application takes about 
-        <strong>
-          30 minutes
-        </strong>
-         to complete.
-      </p>
-      <p>
-        Your progress saves automatically, so you can continue later.
-      </p>
+      <h2>
+        You\'ll be asked to provide:
+      </h2>
+      <ul>
+        <li>
+          Proof of successful projects and past client contact details
+        </li>
+      </ul>
       <p>
         <a
           href="#"
@@ -195,7 +191,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/start"
             onClick={[Function]}>
             <span>
-              Become a seller
+              Introduction
             </span>
           </a>
         </li>
@@ -205,7 +201,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/business-details"
             onClick={[Function]}>
             <span>
-              Create your profile
+              Business details
             </span>
           </a>
         </li>
@@ -215,7 +211,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/business-info"
             onClick={[Function]}>
             <span>
-              Business information
+              Classification
             </span>
           </a>
         </li>
@@ -225,7 +221,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/your-info"
             onClick={[Function]}>
             <span>
-              Business details
+              Contact details
             </span>
           </a>
         </li>
@@ -245,7 +241,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/case-study"
             onClick={[Function]}>
             <span>
-              Case Study
+              Case Studies
             </span>
           </a>
         </li>
@@ -289,7 +285,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Business details
+          Contact details
         </h1>
       </header>
       <article
@@ -304,83 +300,19 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="representative">
-              Authorised Representative
-            </label>
-            <p
-              className="hint"
-              id="representative-hint">
-              This person must be authorised to enter into contracts on behalf of the business.
-            </p>
-            <input
-              aria-describedby="representative-hint"
-              className=""
-              id="representative"
-              name="representative"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
-              htmlFor="phone">
-              Phone
-            </label>
-            <input
-              aria-describedby={undefined}
-              className=""
-              id="phone"
-              name="phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
-              htmlFor="email">
-              Email
-            </label>
-            <input
-              aria-describedby={undefined}
-              className=""
-              id="email"
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
               htmlFor="contact_name">
-              Additional contact (optional)
+              Primary contact
             </label>
             <p
               className="hint"
               id="contact_name-hint">
-              You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
+              This person may be contacted by government buyers and receive new opportunities by email.
             </p>
             <input
               aria-describedby="contact_name-hint"
               className=""
               id="contact_name"
+              maxLength={undefined}
               name="contact_name"
               onBlur={[Function]}
               onChange={[Function]}
@@ -401,6 +333,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
               aria-describedby={undefined}
               className=""
               id="contact_phone"
+              maxLength={undefined}
               name="contact_phone"
               onBlur={[Function]}
               onChange={[Function]}
@@ -421,7 +354,76 @@ exports[`test Signup renders empty Your Info form 1`] = `
               aria-describedby={undefined}
               className=""
               id="contact_email"
+              maxLength={undefined}
               name="contact_email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="representative">
+              Authorised Representative
+            </label>
+            <p
+              className="hint"
+              id="representative-hint">
+              This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact.
+            </p>
+            <input
+              aria-describedby="representative-hint"
+              className=""
+              id="representative"
+              maxLength={undefined}
+              name="representative"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="phone"
+              maxLength={undefined}
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="email"
+              maxLength={undefined}
+              name="email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -470,7 +472,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/start"
             onClick={[Function]}>
             <span>
-              Become a seller
+              Introduction
             </span>
           </a>
         </li>
@@ -480,7 +482,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/business-details"
             onClick={[Function]}>
             <span>
-              Create your profile
+              Business details
             </span>
           </a>
         </li>
@@ -490,7 +492,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/business-info"
             onClick={[Function]}>
             <span>
-              Business information
+              Classification
             </span>
           </a>
         </li>
@@ -500,7 +502,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/your-info"
             onClick={[Function]}>
             <span>
-              Business details
+              Contact details
             </span>
           </a>
         </li>
@@ -520,7 +522,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/case-study"
             onClick={[Function]}>
             <span>
-              Case Study
+              Case Studies
             </span>
           </a>
         </li>
@@ -564,7 +566,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Business details
+          Contact details
         </h1>
       </header>
       <article
@@ -579,83 +581,19 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="representative">
-              Authorised Representative
-            </label>
-            <p
-              className="hint"
-              id="representative-hint">
-              This person must be authorised to enter into contracts on behalf of the business.
-            </p>
-            <input
-              aria-describedby="representative-hint"
-              className=""
-              id="representative"
-              name="representative"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="Paul Acron" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
-              htmlFor="phone">
-              Phone
-            </label>
-            <input
-              aria-describedby={undefined}
-              className=""
-              id="phone"
-              name="phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="0292000000" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
-              htmlFor="email">
-              Email
-            </label>
-            <input
-              aria-describedby={undefined}
-              className=""
-              id="email"
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="email@domain.com" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
               htmlFor="contact_name">
-              Additional contact (optional)
+              Primary contact
             </label>
             <p
               className="hint"
               id="contact_name-hint">
-              You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
+              This person may be contacted by government buyers and receive new opportunities by email.
             </p>
             <input
               aria-describedby="contact_name-hint"
               className=""
               id="contact_name"
+              maxLength={undefined}
               name="contact_name"
               onBlur={[Function]}
               onChange={[Function]}
@@ -676,6 +614,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
               aria-describedby={undefined}
               className=""
               id="contact_phone"
+              maxLength={undefined}
               name="contact_phone"
               onBlur={[Function]}
               onChange={[Function]}
@@ -696,6 +635,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
               aria-describedby={undefined}
               className=""
               id="contact_email"
+              maxLength={undefined}
               name="contact_email"
               onBlur={[Function]}
               onChange={[Function]}
@@ -704,6 +644,74 @@ exports[`test Signup renders populated Your Info form 1`] = `
               pattern={undefined}
               type="text"
               value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="representative">
+              Authorised Representative
+            </label>
+            <p
+              className="hint"
+              id="representative-hint">
+              This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact.
+            </p>
+            <input
+              aria-describedby="representative-hint"
+              className=""
+              id="representative"
+              maxLength={undefined}
+              name="representative"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="Paul Acron" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="phone"
+              maxLength={undefined}
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="0292000000" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="email"
+              maxLength={undefined}
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="email@domain.com" />
           </div>
           <input
             name="next_step_slug"

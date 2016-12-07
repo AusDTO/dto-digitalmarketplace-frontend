@@ -8,7 +8,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Business details
+          Tell us about your business
         </h1>
       </header>
       <article
@@ -58,6 +58,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               aria-describedby={undefined}
               className=""
               id="website"
+              maxLength={undefined}
               name="website"
               onBlur={[Function]}
               onChange={[Function]}
@@ -78,6 +79,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               aria-describedby={undefined}
               className=""
               id="linkedin"
+              maxLength={undefined}
               name="linkedin"
               onBlur={[Function]}
               onChange={[Function]}
@@ -98,6 +100,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               aria-describedby={undefined}
               className=""
               id="address_line"
+              maxLength={undefined}
               name="address.address_line"
               onBlur={[Function]}
               onChange={[Function]}
@@ -118,6 +121,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               aria-describedby={undefined}
               className=""
               id="suburb"
+              maxLength={undefined}
               name="address.suburb"
               onBlur={[Function]}
               onChange={[Function]}
@@ -138,6 +142,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               aria-describedby={undefined}
               className=""
               id="state"
+              maxLength={undefined}
               name="address.state"
               onBlur={[Function]}
               onChange={[Function]}
@@ -158,6 +163,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               aria-describedby={undefined}
               className=""
               id="postal_code"
+              maxLength="4"
               name="address.postal_code"
               onBlur={[Function]}
               onChange={[Function]}

@@ -3,17 +3,22 @@ exports[`test SignupForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Claim your spot in the Marketplace
+      Ready to join the Marketplace?
     </h1>
     <p>
-      We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+      We’re looking for the very best digital businesses to help deliver 21st century products and services to government.
     </p>
     <p>
-      And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+      If you think you have what it takes, you can apply right here.
     </p>
-    <h2>
-      Ready to get started?
-    </h2>
+    <p>
+      You’ll be asked to create a profile about your business and, if you meet our 
+      <a
+        href="/evaluation-criteria">
+        evaluation criteria
+      </a>
+      , you\'ll be able to do business in the Marketplace.
+    </p>
   </header>
   <article
     role="main">
@@ -28,12 +33,13 @@ exports[`test SignupForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="name">
-          Your full name
+          Full name
         </label>
         <input
           aria-describedby={undefined}
           className=""
           id="name"
+          maxLength={undefined}
           name="name"
           onBlur={[Function]}
           onChange={[Function]}
@@ -54,6 +60,7 @@ exports[`test SignupForm renders 1`] = `
           aria-describedby={undefined}
           className=""
           id="email"
+          maxLength={undefined}
           name="email"
           onBlur={[Function]}
           onChange={[Function]}
@@ -66,10 +73,10 @@ exports[`test SignupForm renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Create seller account" />
+        value="Create your seller account" />
       <p>
         <small>
-          By requesting an account invitation you agree to the 
+          By creating a seller account you agree to the 
           <a
             href="/terms-of-use">
             Terms of Use
@@ -87,17 +94,22 @@ exports[`test SignupForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Claim your spot in the Marketplace
+      Ready to join the Marketplace?
     </h1>
     <p>
-      We’re looking for the very best digital businesses to help deliver 21st century digital products and services to government through the Digital Marketplace.
+      We’re looking for the very best digital businesses to help deliver 21st century products and services to government.
     </p>
     <p>
-      And the rewards? Only the chance to share in the $5.6B spent each year on ICT.
+      If you think you have what it takes, you can apply right here.
     </p>
-    <h2>
-      Ready to get started?
-    </h2>
+    <p>
+      You’ll be asked to create a profile about your business and, if you meet our 
+      <a
+        href="/evaluation-criteria">
+        evaluation criteria
+      </a>
+      , you\'ll be able to do business in the Marketplace.
+    </p>
   </header>
   <article
     role="main">
@@ -117,12 +129,13 @@ exports[`test SignupForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="name">
-          Your full name
+          Full name
         </label>
         <input
           aria-describedby={undefined}
           className=""
           id="name"
+          maxLength={undefined}
           name="name"
           onBlur={[Function]}
           onChange={[Function]}
@@ -143,6 +156,7 @@ exports[`test SignupForm renders with form_options 1`] = `
           aria-describedby={undefined}
           className=""
           id="email"
+          maxLength={undefined}
           name="email"
           onBlur={[Function]}
           onChange={[Function]}
@@ -155,10 +169,10 @@ exports[`test SignupForm renders with form_options 1`] = `
       <input
         role="button"
         type="submit"
-        value="Create seller account" />
+        value="Create your seller account" />
       <p>
         <small>
-          By requesting an account invitation you agree to the 
+          By creating a seller account you agree to the 
           <a
             href="/terms-of-use">
             Terms of Use

@@ -4,7 +4,7 @@ exports[`test YourInfoForm renders 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Contact information
+      Add your contact details
     </h1>
   </header>
   <article
@@ -19,83 +19,19 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Authorised Representative
-        </label>
-        <p
-          className="hint"
-          id="representative-hint">
-          This person must be authorised to enter into contracts on behalf of the business.
-        </p>
-        <input
-          aria-describedby="representative-hint"
-          className=""
-          id="representative"
-          name="representative"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="phone">
-          Phone
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="phone"
-          name="phone"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="email">
-          Email
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="email"
-          name="email"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
           htmlFor="contact_name">
-          Additional contact (optional)
+          Primary contact
         </label>
         <p
           className="hint"
           id="contact_name-hint">
-          You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
+          This person may be contacted by government buyers and receive new opportunities by email.
         </p>
         <input
           aria-describedby="contact_name-hint"
           className=""
           id="contact_name"
+          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
@@ -116,6 +52,7 @@ exports[`test YourInfoForm renders 1`] = `
           aria-describedby={undefined}
           className=""
           id="contact_phone"
+          maxLength={undefined}
           name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
@@ -136,7 +73,76 @@ exports[`test YourInfoForm renders 1`] = `
           aria-describedby={undefined}
           className=""
           id="contact_email"
+          maxLength={undefined}
           name="contact_email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="representative">
+          Authorised Representative
+        </label>
+        <p
+          className="hint"
+          id="representative-hint">
+          This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact.
+        </p>
+        <input
+          aria-describedby="representative-hint"
+          className=""
+          id="representative"
+          maxLength={undefined}
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="phone"
+          maxLength={undefined}
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          maxLength={undefined}
+          name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -160,7 +166,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Contact information
+      Add your contact details
     </h1>
   </header>
   <article
@@ -180,83 +186,19 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Authorised Representative
-        </label>
-        <p
-          className="hint"
-          id="representative-hint">
-          This person must be authorised to enter into contracts on behalf of the business.
-        </p>
-        <input
-          aria-describedby="representative-hint"
-          className=""
-          id="representative"
-          name="representative"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="phone">
-          Phone
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="phone"
-          name="phone"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="email">
-          Email
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="email"
-          name="email"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
           htmlFor="contact_name">
-          Additional contact (optional)
+          Primary contact
         </label>
         <p
           className="hint"
           id="contact_name-hint">
-          You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
+          This person may be contacted by government buyers and receive new opportunities by email.
         </p>
         <input
           aria-describedby="contact_name-hint"
           className=""
           id="contact_name"
+          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
@@ -277,6 +219,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
           aria-describedby={undefined}
           className=""
           id="contact_phone"
+          maxLength={undefined}
           name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
@@ -297,7 +240,76 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
           aria-describedby={undefined}
           className=""
           id="contact_email"
+          maxLength={undefined}
           name="contact_email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="representative">
+          Authorised Representative
+        </label>
+        <p
+          className="hint"
+          id="representative-hint">
+          This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact.
+        </p>
+        <input
+          aria-describedby="representative-hint"
+          className=""
+          id="representative"
+          maxLength={undefined}
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="phone"
+          maxLength={undefined}
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          maxLength={undefined}
+          name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -321,7 +333,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Contact information
+      Add your contact details
     </h1>
   </header>
   <article
@@ -341,83 +353,19 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="representative">
-          Authorised Representative
-        </label>
-        <p
-          className="hint"
-          id="representative-hint">
-          This person must be authorised to enter into contracts on behalf of the business.
-        </p>
-        <input
-          aria-describedby="representative-hint"
-          className=""
-          id="representative"
-          name="representative"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="phone">
-          Phone
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="phone"
-          name="phone"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="email">
-          Email
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          id="email"
-          name="email"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
           htmlFor="contact_name">
-          Additional contact (optional)
+          Primary contact
         </label>
         <p
           className="hint"
           id="contact_name-hint">
-          You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities.
+          This person may be contacted by government buyers and receive new opportunities by email.
         </p>
         <input
           aria-describedby="contact_name-hint"
           className=""
           id="contact_name"
+          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
@@ -438,6 +386,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
           aria-describedby={undefined}
           className=""
           id="contact_phone"
+          maxLength={undefined}
           name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
@@ -458,7 +407,76 @@ exports[`test YourInfoForm renders with form_options 1`] = `
           aria-describedby={undefined}
           className=""
           id="contact_email"
+          maxLength={undefined}
           name="contact_email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="representative">
+          Authorised Representative
+        </label>
+        <p
+          className="hint"
+          id="representative-hint">
+          This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact.
+        </p>
+        <input
+          aria-describedby="representative-hint"
+          className=""
+          id="representative"
+          maxLength={undefined}
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="phone">
+          Phone
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="phone"
+          maxLength={undefined}
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email">
+          Email
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          id="email"
+          maxLength={undefined}
+          name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
