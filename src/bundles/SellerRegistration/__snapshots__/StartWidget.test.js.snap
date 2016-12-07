@@ -4,46 +4,42 @@ exports[`test StartWidget renders correctly 1`] = `
     Joining the Marketplace
   </h1>
   <p>
-    Before you can join the Marketplace we need to know more about your business.
-  </p>
-  <p>
-    The information you share will be used to evaluate your business and build your seller profile.
-  </p>
-  <p>
-    If your skills and experience meet the 
+    The information you share in this application will be assessed against our 
     <a
       href="/evaluation-criteria">
       evaluation criteria
     </a>
-     you’ll be able to join our panel and be given a presence in the Marketplace. This means buyers can find you and you can respond to opportunities.
+      and to create your seller profile.
+  </p>
+  <p>
+    Completing your application will take around 
+    <b>
+      30 minutes
+    </b>
+    . Your information will be saved automatically if you need to come back later.
   </p>
   <h2>
-    You’ll need
+    You\'ll need:
   </h2>
   <ul>
     <li>
-      Case studies
+      Your basic business information, for example
     </li>
     <li>
-      References
+      A financial viability statement from your accountant
     </li>
     <li>
-      Financial viability statement
-    </li>
-    <li>
-      Proof of worker’s compensation insurance and public liability insurance
+      Proof of worker’s compensation and public liability insurance
     </li>
   </ul>
-  <p>
-    This application takes about 
-    <strong>
-      30 minutes
-    </strong>
-     to complete.
-  </p>
-  <p>
-    Your progress saves automatically, so you can continue later.
-  </p>
+  <h2>
+    You\'ll be asked to provide:
+  </h2>
+  <ul>
+    <li>
+      Proof of successful projects and past client contact details
+    </li>
+  </ul>
   <p>
     <a
       href="/signup"

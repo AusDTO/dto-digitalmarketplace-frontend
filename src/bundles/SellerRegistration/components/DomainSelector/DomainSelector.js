@@ -21,7 +21,7 @@ class DomainSelector extends BaseForm {
       <Layout>
         <header>
             <h1 tabIndex="-1">{title}</h1>
-            <p>You will need to provide a day rate and case study for each. <a href="#href">View criteria for each service</a></p>
+            <p> Select the digital services you’ll provide in the Marketplace. You’ll need to provide proof of successful projects (case studies) and past client contact details for each service. You can use the same case study for different services if applicable.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -92,7 +92,7 @@ class DomainSelector extends BaseForm {
 
 DomainSelector.defaultProps = {
   buttonText: 'Save &amp; Continue',
-  title: 'Digital Services'
+  title: 'What services will you offer? '
 }
 
 const mapStateToProps = (state) => {

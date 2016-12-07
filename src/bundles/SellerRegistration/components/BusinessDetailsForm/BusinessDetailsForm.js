@@ -146,6 +146,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="postal_code"
                             htmlFor="postal_code"
                             label="Postcode"
+                            maxLength="4"
                             messages={{
                                 required: 'You must provide a postal code'
                             }}
@@ -155,7 +156,7 @@ class BusinessDetailsForm extends BaseForm {
 
                         <Control.checkbox
                           model={`${model}.interstate`}
-                          id="interstate" 
+                          id="interstate"
                           name="interstate"
                         />
                         <label htmlFor="interstate">
@@ -175,7 +176,7 @@ class BusinessDetailsForm extends BaseForm {
 
 BusinessDetailsForm.defaultProps = {
   buttonText: 'Update profile',
-  title: 'Business details'
+  title: 'Tell us about your business'
 }
 
 const mapStateToProps = (state) => {

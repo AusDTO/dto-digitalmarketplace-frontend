@@ -42,16 +42,32 @@ class BusinessInfoForm extends BaseForm {
 
                         <fieldset>
                             <legend>Select all that apply to your business (optional).</legend>
+                            <Control.checkbox
+                                model={`${model}.seller_type.indigenous`}
+                                id="indigenous"
+                                name="indigenous"
+                                value="Indigenous"
+                            />
+                            <label htmlFor="indigenous"><strong>Indigenous</strong> Business is listed on a directory
+                                of indigenous businesses, such as Supply Nation.</label>
 
                             <Control.checkbox
-                                model={`${model}.seller_type.start_up`}
-                                id="start-up"
-                                name="start-up"
-                                value="Start Up"
+                                model={`${model}.seller_type.product`}
+                                id="product"
+                                name="product"
+                                value="Product"
                             />
-                            <label htmlFor="start-up"><strong>Start up</strong> Up to 5 years from business commencement. 
-                                Not listed on any stock exchange. Able to capture a large addressable market using 
-                                technology.</label>
+                            <label htmlFor="product"><strong>Product based business</strong> Your services require
+                                your proprietary software or hardware.</label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.recruitment`}
+                                id="recruitment"
+                                name="recruitment"
+                                value="Recruitment"
+                            />
+                            <label htmlFor="recruitment"><strong>Recruiter</strong> Primary business purpose
+                                is resourcing.</label>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.sme`}
@@ -63,31 +79,15 @@ class BusinessInfoForm extends BaseForm {
                                 any parent organisation for taxation.</label>
 
                             <Control.checkbox
-                                model={`${model}.seller_type.indigenous`}
-                                id="indigenous"
-                                name="indigenous"
-                                value="Indigenous"
+                                model={`${model}.seller_type.start_up`}
+                                id="start-up"
+                                name="start-up"
+                                value="Start Up"
                             />
-                            <label htmlFor="indigenous"><strong>Indigenous</strong> Business is listed on a directory 
-                                of indigenous businesses, such as Supply Nation.</label>
+                            <label htmlFor="start-up"><strong>Start up</strong> Up to 5 years from business commencement.
+                                Not listed on any stock exchange. Able to capture a large addressable market using
+                                technology.</label>
 
-                            <Control.checkbox
-                                model={`${model}.seller_type.recruitment`}
-                                id="recruitment"
-                                name="recruitment"
-                                value="Recruitment"
-                            />
-                            <label htmlFor="recruitment"><strong>Recruiter</strong> Primary business purpose 
-                                is resourcing.</label>
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.product`}
-                                id="product"
-                                name="product"
-                                value="Product"
-                            />
-                            <label htmlFor="product"><strong>Product based business</strong> Your services require 
-                                your proprietary software or hardware.</label>
                         </fieldset>
 
                         {children}
@@ -101,7 +101,7 @@ class BusinessInfoForm extends BaseForm {
 }
 
 BusinessInfoForm.defaultProps = {
-  title: 'Business information'
+  title: 'Select any descriptions that apply to your business'
 }
 
 const mapStateToProps = (state) => {

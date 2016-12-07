@@ -4,14 +4,10 @@ exports[`test DomainSelector renders 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Digital Services
+      What services will you offer? 
     </h1>
     <p>
-      You will need to provide a day rate and case study for each. 
-      <a
-        href="#href">
-        View criteria for each service
-      </a>
+       Select the digital services you’ll provide in the Marketplace. You’ll need to provide proof of successful projects (case studies) and past client contact details for each service. You can use the same case study for different services if applicable.
     </p>
   </header>
   <article
@@ -221,14 +217,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Digital Services
+      What services will you offer? 
     </h1>
     <p>
-      You will need to provide a day rate and case study for each. 
-      <a
-        href="#href">
-        View criteria for each service
-      </a>
+       Select the digital services you’ll provide in the Marketplace. You’ll need to provide proof of successful projects (case studies) and past client contact details for each service. You can use the same case study for different services if applicable.
     </p>
   </header>
   <article

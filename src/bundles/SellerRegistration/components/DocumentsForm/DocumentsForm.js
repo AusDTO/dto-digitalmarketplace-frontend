@@ -26,7 +26,7 @@ class DocumentsForm extends BaseForm {
   }
 
   formFields = [
-    { 'label': 'Finanical Statement', 'id': 'financial' },
+    { 'label': 'Financial Statement', 'id': 'financial' },
     { 'label': 'Public Liability Insurance', 'id': 'liability' },
     { 'label': 'Workers Compensation Insurance', 'id': 'workers' },
     { 'label': 'Signed copy of Deed of Standing Offer', 'id': 'deed' },

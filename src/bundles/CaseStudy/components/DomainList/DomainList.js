@@ -119,7 +119,13 @@ class DomainList extends BaseForm {
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
-              <p>The DTA will evaluate your case study for each service to ensure services provided on the Marketplace meet a sufficient standard. <a href="#criteria">Browse criteria for each service</a></p>
+              <p>Case studies about your past projects help government buyers understand what you have to offer and become part of your seller profile in the Marketplace.
+
+
+                The information you share here will be compared against our <a href="/evaluation-criteria">evaluation criteria</a>, to make sure you meet the Marketplace standard. Your client references will be contacted to confirm they were happy with the outcome.
+
+
+                Once you’re successfully evaluated you can update your information.</p>
             </header>
             <article role="main">
               

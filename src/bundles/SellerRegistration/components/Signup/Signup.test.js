@@ -223,15 +223,15 @@ test('without filterSteps', () => {
   let store = createStore(Object.assign({}, sampleState));
 
   const expectedSteps = [
-    { id: 'start', label: 'Become a seller', component: Start, pattern: '/start' },
-    { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { id: 'business', label: 'Business information', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
-    { id: 'info', label: 'Business details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'casestudy', label: 'Case Study', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
-    { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
-    { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
+      { id: 'start', label: 'Introduction', component: Start, pattern: '/start' },
+      { id: 'profile', label: 'Business details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+      { id: 'business', label: 'Classification', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
+      { id: 'info', label: 'Contact details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+      { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+      { id: 'casestudy', label: 'Case Studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+      { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
+      { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
+      { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
   ];
 
   const props = {
@@ -268,11 +268,12 @@ test('filterSteps', () => {
   let store = createStore(Object.assign({}, sampleState));
 
   const expectedSteps = [
-    { id: 'profile', label: 'Create your profile', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { id: 'business', label: 'Business information', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
-    { id: 'info', label: 'Business details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' }
+      { id: 'profile', label: 'Business details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+      { id: 'business', label: 'Classification', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
+      { id: 'info', label: 'Contact details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+      { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+      { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
+
   ];
 
   const filterSteps = (step) => {

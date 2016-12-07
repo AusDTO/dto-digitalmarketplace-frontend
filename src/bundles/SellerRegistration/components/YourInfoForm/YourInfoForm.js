@@ -39,6 +39,42 @@ class YourInfoForm extends BaseForm {
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
+            <Textfield
+                model={`${model}.contact_name`}
+                name="contact_name"
+                id="contact_name"
+                htmlFor="contact_name"
+                label="Primary contact"
+                description="This person may be contacted by government buyers and receive new opportunities by email."
+                validators={{ required }}
+                messages={{
+                    required: 'Primary contact is required',
+                }}
+            />
+
+            <Textfield
+                model={`${model}.contact_phone`}
+                name="contact_phone"
+                id="contact_phone"
+                htmlFor="contact_phone"
+                label="Phone"
+                validators={{ required }}
+                messages={{
+                    required: 'Primary contact phone is required',
+                }}
+            />
+
+            <Textfield
+                model={`${model}.contact_email`}
+                name="contact_email"
+                id="contact_email"
+                htmlFor="contact_email"
+                label="Email"
+                validators={{ required }}
+                messages={{
+                    required: 'Primary contact email is required',
+                }}
+            />
 
             <Textfield
               model={`${model}.representative`}
@@ -46,7 +82,7 @@ class YourInfoForm extends BaseForm {
               id="representative"
               htmlFor="representative"
               label="Authorised Representative"
-              description="This person must be authorised to enter into contracts on behalf of the business."
+              description="This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact."
               validators={{ required }}
               messages={{
                 required: 'Authorised representative is required',
@@ -61,7 +97,7 @@ class YourInfoForm extends BaseForm {
               label="Phone"
               validators={{ required }}
               messages={{
-                required: 'Contact\'s phone number is required',
+                required: 'Authorised representative\'s phone number is required',
               }}
             />
 
@@ -73,34 +109,11 @@ class YourInfoForm extends BaseForm {
               label="Email"
               validators={{ required }}
               messages={{
-                required: 'Contact\'s email is required',
+                required: 'Authorised representative\'s email is required',
               }}
             />
 
-            <Textfield
-              model={`${model}.contact_name`}
-              name="contact_name"
-              id="contact_name"
-              htmlFor="contact_name"
-              label="Additional contact (optional)"
-              description="You can nominate someone else in your organisation to receive Marketplace communications, such as new opportunities."
-            />
 
-            <Textfield
-              model={`${model}.contact_phone`}
-              name="contact_phone"
-              id="contact_phone"
-              htmlFor="contact_phone"
-              label="Phone"
-            />
-
-            <Textfield
-              model={`${model}.contact_email`}
-              name="contact_email"
-              id="contact_email"
-              htmlFor="contact_email"
-              label="Email"
-            />
 
             {children}
 
@@ -114,7 +127,7 @@ class YourInfoForm extends BaseForm {
 
 YourInfoForm.defaultProps = {
   buttonText: 'Save and continue',
-  title: 'Contact information'
+  title: 'Add your contact details'
 }
 
 const mapStateToProps = (state) => {

@@ -83,7 +83,7 @@ export default [
     ]
   },
   {
-    key: 'polcy',
+    key: 'policy',
     label: 'Legal & Policy',
     services: [
       'Legal counsel',
