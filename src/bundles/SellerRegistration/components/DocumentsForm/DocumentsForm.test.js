@@ -23,7 +23,7 @@ test('DocumentsForm renders inputs when no documents are present', () => {
   )
 
   let inputs = wrapper.find('[type="file"]');
-  expect(inputs.length).toBe(4);
+  expect(inputs.length).toBe(3);
 });
 
 test('DocumentsForm renders links when documents are present', () => {
@@ -47,5 +47,5 @@ test('DocumentsForm renders links when documents are present', () => {
   )
 
   let links = wrapper.find('a');
-  expect(links.length).toBe(4);
+  expect(links.length).toBe(3);
 });
