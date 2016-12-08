@@ -42,7 +42,7 @@ class Signup extends React.Component {
     { id: 'casestudy', label: 'Case Studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
-    { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
+    { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
   ]
 
   elementProps = {
@@ -104,6 +104,7 @@ class Signup extends React.Component {
     const { forms, router, steps = {}, location } = this.props;
     const applicationValid = (this.steps.length - 1) === Object.keys(steps).length;
     let { services = {} } = forms.domainSelectorForm;
+    let { name = ''} = forms.businessDetailsForm;
 
     services = Object
       .keys(services)
@@ -164,7 +165,8 @@ class Signup extends React.Component {
                   buttonText: 'Save and continue',
                   actions: {
                     submitApplication
-                  }
+                  },
+                  name
                 },
                 this.elementProps
               );

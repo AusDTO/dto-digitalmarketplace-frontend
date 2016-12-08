@@ -1,25 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const Submit = ({submitUrl, applicationValid, onClick}) => (
+const Submit = ({submitUrl, applicationValid, onClick, name}) => (
     <div>
-        <h1 tabIndex="-1">I declare that:</h1>
-        <ol>
-            <li>To the best of my knowledge the answers submitted are correct.</li>
-            <li>I understand that the information will be used to access my organisations ability to be invited to join
-                the Digital Service Panel.
-            </li>
-            <li>I understand that the DTO may reject this application if there is a failure to answer all relevant
-                questions fully or provide false or misleading information.
-            </li>
-            <li>There are no petitions, claims, actions, judgements or decisions which may adversly affect the companies
-                performance.
-            </li>
-        </ol>
+        <h1 tabIndex="-1">Almost there...</h1>
+        <h2>Your declaration</h2>
+        <p>I am an authorised representative of <strong>{name}</strong></p>
+        <p>There are no petitions, claims, actions, judgements or decisions which may adversely affect 
+            my organisation’s performance.
+        </p>
+        <p> To the best of my knowledge this information is true and correct.
+        </p>
+        <p>I understand this application can be rejected for incomplete, false or misleading information.
+        </p>
         <p>
             {applicationValid 
-                ? <a role="button" href={submitUrl}>Submit Application</a>
-                : <button disabled="disabled">Submit Application</button>
+                ? <a role="button" href={submitUrl}>Submit your application</a>
+                : <button disabled="disabled">Submit your application</button>
             }
         </p>
     </div>
@@ -33,13 +30,15 @@ Submit.defaultProps = {
 Submit.propTypes = {
     submitUrl: React.PropTypes.string,
     onClick: React.PropTypes.func,
-    applicationValid: React.PropTypes.bool
+    applicationValid: React.PropTypes.bool,
+    name: React.PropTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => {
     return {
         submitUrl: state.form_options.submit_url,
-        applicationValid: ownProps.applicationValid
+        applicationValid: ownProps.applicationValid,
+        name: ownProps.name
     }
 }
 

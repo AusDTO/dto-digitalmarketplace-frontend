@@ -28,17 +28,21 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="change-transformation"
-            name="change-transformation"
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change & transformation" />
+            value="Change, training and transformation" />
           <label
-            htmlFor="change-transformation">
-            Change & transformation - Digital transformation advice, agile coaching
+            htmlFor="change-training-and-transformation">
+            Change, training and transformation
+             
+            <p>
+              Includes services that assess, train and embed behaviours necessary for iterating digital government services.  Including, but not limited to, digital transformation advice, agile coaching, change management, training, capability uplift and Digital Service Standard assessment.
+            </p>
           </label>
         </div>
         <div>
@@ -54,7 +58,11 @@ exports[`test DomainSelector renders 1`] = `
             value="Content & publishing" />
           <label
             htmlFor="content-publishing">
-            Content & publishing - Content development
+            Content & publishing
+             
+            <p>
+              Content development
+            </p>
           </label>
         </div>
         <div>
@@ -70,23 +78,31 @@ exports[`test DomainSelector renders 1`] = `
             value="Cyber security" />
           <label
             htmlFor="cyber-security">
-            Cyber security - Ethical hacker
+            Cyber security
+             
+            <p>
+              Cyber security protects the Australian government and its citizens’ interests online.  Including, but not limited to, information security, assessments, ethical hacking, penetration testing, monitoring, incidence response, ISM advisory, data privacy and digital forensics.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="data-analytics"
-            name="data-analytics"
+            id="data-science"
+            name="data-science"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Data & Analytics" />
+            value="Data science" />
           <label
-            htmlFor="data-analytics">
-            Data & Analytics - Data science, performance & web analysis
+            htmlFor="data-science">
+            Data science
+             
+            <p>
+              Data science brings analytical rigour and statistical methods to measure quality, improve service and model behaviour.
+            </p>
           </label>
         </div>
         <div>
@@ -102,7 +118,11 @@ exports[`test DomainSelector renders 1`] = `
             value="Emerging technology" />
           <label
             htmlFor="emerging-technology">
-            Emerging technology - Emerging technology
+            Emerging technology
+             
+            <p>
+              Emerging technology
+            </p>
           </label>
         </div>
         <div>
@@ -118,7 +138,11 @@ exports[`test DomainSelector renders 1`] = `
             value="Engineering & Development" />
           <label
             htmlFor="engineering-development">
-            Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
+            Engineering & Development
+             
+            <p>
+              Architecture
+            </p>
           </label>
         </div>
         <div>
@@ -134,7 +158,11 @@ exports[`test DomainSelector renders 1`] = `
             value="Legal & Policy" />
           <label
             htmlFor="legal-policy">
-            Legal & Policy - Legal counsel
+            Legal & Policy
+             
+            <p>
+              Legal counsel
+            </p>
           </label>
         </div>
         <div>
@@ -150,7 +178,11 @@ exports[`test DomainSelector renders 1`] = `
             value="Marketing, comms & engagement" />
           <label
             htmlFor="marketing-comms-engagement">
-            Marketing, comms & engagement - Digital marketing, community engagement
+            Marketing, comms & engagement
+             
+            <p>
+              Digital marketing
+            </p>
           </label>
         </div>
         <div>
@@ -166,7 +198,11 @@ exports[`test DomainSelector renders 1`] = `
             value="Operations" />
           <label
             htmlFor="operations">
-            Operations - Business operations, tech support
+            Operations
+             
+            <p>
+              Business operations
+            </p>
           </label>
         </div>
         <div>
@@ -182,7 +218,11 @@ exports[`test DomainSelector renders 1`] = `
             value="Strategy, delivery & governance" />
           <label
             htmlFor="strategy-delivery-governance">
-            Strategy, delivery & governance - Business analysis, product management, delivery management
+            Strategy, delivery & governance
+             
+            <p>
+              Business analysis
+            </p>
           </label>
         </div>
         <div>
@@ -198,7 +238,11 @@ exports[`test DomainSelector renders 1`] = `
             value="User research & design" />
           <label
             htmlFor="user-research-design">
-            User research & design - User research, interaction design, inclusive design, service design
+            User research & design
+             
+            <p>
+              Including, but not limited to, user research, interaction design (including usability testing) inclusive design (accessibility & multicultural) design and testing and service design.
+            </p>
           </label>
         </div>
       </fieldset>
@@ -241,17 +285,21 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="change-transformation"
-            name="change-transformation"
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change & transformation" />
+            value="Change, training and transformation" />
           <label
-            htmlFor="change-transformation">
-            Change & transformation - Digital transformation advice, agile coaching
+            htmlFor="change-training-and-transformation">
+            Change, training and transformation
+             
+            <p>
+              Includes services that assess, train and embed behaviours necessary for iterating digital government services.  Including, but not limited to, digital transformation advice, agile coaching, change management, training, capability uplift and Digital Service Standard assessment.
+            </p>
           </label>
         </div>
         <div>
@@ -267,7 +315,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Content & publishing" />
           <label
             htmlFor="content-publishing">
-            Content & publishing - Content development
+            Content & publishing
+             
+            <p>
+              Content development
+            </p>
           </label>
         </div>
         <div>
@@ -283,23 +335,31 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Cyber security" />
           <label
             htmlFor="cyber-security">
-            Cyber security - Ethical hacker
+            Cyber security
+             
+            <p>
+              Cyber security protects the Australian government and its citizens’ interests online.  Including, but not limited to, information security, assessments, ethical hacking, penetration testing, monitoring, incidence response, ISM advisory, data privacy and digital forensics.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="data-analytics"
-            name="data-analytics"
+            id="data-science"
+            name="data-science"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Data & Analytics" />
+            value="Data science" />
           <label
-            htmlFor="data-analytics">
-            Data & Analytics - Data science, performance & web analysis
+            htmlFor="data-science">
+            Data science
+             
+            <p>
+              Data science brings analytical rigour and statistical methods to measure quality, improve service and model behaviour.
+            </p>
           </label>
         </div>
         <div>
@@ -315,7 +375,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Emerging technology" />
           <label
             htmlFor="emerging-technology">
-            Emerging technology - Emerging technology
+            Emerging technology
+             
+            <p>
+              Emerging technology
+            </p>
           </label>
         </div>
         <div>
@@ -331,7 +395,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Engineering & Development" />
           <label
             htmlFor="engineering-development">
-            Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
+            Engineering & Development
+             
+            <p>
+              Architecture
+            </p>
           </label>
         </div>
         <div>
@@ -347,7 +415,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Legal & Policy" />
           <label
             htmlFor="legal-policy">
-            Legal & Policy - Legal counsel
+            Legal & Policy
+             
+            <p>
+              Legal counsel
+            </p>
           </label>
         </div>
         <div>
@@ -363,7 +435,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Marketing, comms & engagement" />
           <label
             htmlFor="marketing-comms-engagement">
-            Marketing, comms & engagement - Digital marketing, community engagement
+            Marketing, comms & engagement
+             
+            <p>
+              Digital marketing
+            </p>
           </label>
         </div>
         <div>
@@ -379,7 +455,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Operations" />
           <label
             htmlFor="operations">
-            Operations - Business operations, tech support
+            Operations
+             
+            <p>
+              Business operations
+            </p>
           </label>
         </div>
         <div>
@@ -395,7 +475,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Strategy, delivery & governance" />
           <label
             htmlFor="strategy-delivery-governance">
-            Strategy, delivery & governance - Business analysis, product management, delivery management
+            Strategy, delivery & governance
+             
+            <p>
+              Business analysis
+            </p>
           </label>
         </div>
         <div>
@@ -411,7 +495,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="User research & design" />
           <label
             htmlFor="user-research-design">
-            User research & design - User research, interaction design, inclusive design, service design
+            User research & design
+             
+            <p>
+              Including, but not limited to, user research, interaction design (including usability testing) inclusive design (accessibility & multicultural) design and testing and service design.
+            </p>
           </label>
         </div>
       </fieldset>
