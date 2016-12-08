@@ -38,15 +38,19 @@ const mapStateToProps = ({ application }, { onClick }) => {
       seller_type,
       summary,
       website,
+      representative,
       email,
       phone,
-      representative,
-
+      contact_email,
+      contact_phone,
+      contact_name,
       services: provides,
       case_studies,
       linkedin,
       abn,
-      address
+      address,
+      interstate,
+      documents
     } = application;
 
     return {
@@ -55,9 +59,9 @@ const mapStateToProps = ({ application }, { onClick }) => {
           seller_type,
           summary,
           website,
-          email,
-          phone,
-          representative
+          contact_email,
+          contact_phone,
+          contact_name
         },
         body: {
           provides,
@@ -65,11 +69,16 @@ const mapStateToProps = ({ application }, { onClick }) => {
           linkedin,
           abn,
           address,
+          interstate,
           representative,
+          email,
+          phone,
           website,
-          CaseStudyLink: ({id, children}) => (
-            <Link to={`/case-study/view/${id}`}>{children}</Link>
-          )
+          documents,
+          CaseStudyLink: ({id, children}) => (<b>{children}</b>)
+          //CaseStudyLink: ({id, children}) => (
+          //  <Link to={`/case-study/view/${id}`}>{children}</Link>
+          //)
         },
         onClick
     }

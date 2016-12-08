@@ -392,7 +392,7 @@ exports[`test CaseStudyForm renders 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
         </label>
       </div>
       <input
@@ -1410,7 +1410,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
         </label>
       </div>
       <input
@@ -2007,7 +2007,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
         </label>
       </div>
       <input
@@ -2418,7 +2418,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
         </label>
       </div>
       <input
@@ -2824,7 +2824,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digtal Transformation Agency for evaluation.
+          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
         </label>
       </div>
       <input

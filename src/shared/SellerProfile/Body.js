@@ -19,10 +19,14 @@ const Body = (props) => {
     provides,
     case_studies = {},
     representative,
+    email,
+    phone,
     website,
     linkedin,
     abn,
     address,
+    interstate,
+    documents,
     CaseStudyLink
   } = props;
 
@@ -69,7 +73,12 @@ const Body = (props) => {
 
       <Row title="Company Details" show={true}>
         <b>Business Representative</b><br/>
-        <p>{representative}</p>
+          <p>
+              <span>{representative}</span><br/>
+              { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
+              { phone && <span>{phone}<br/></span>}
+          </p>
+        <p></p>
 
         <b>Website</b><br/>
         <p><a href={website} rel="external">{website}</a></p>
@@ -83,9 +92,14 @@ const Body = (props) => {
           <span>{address.suburb}</span><br/>
           <span>{address.state} {address.postal_code}</span>
         </p>
-
+          { interstate && <p><b>Able to work interstate</b></p>}
         <b>ABN</b><br/>
         <p>{abn}</p>
+      </Row>
+      <Row title="Documents" show={Object.keys(documents).length}>
+          {Object.keys(documents).map((key, val) =>
+              <p key={val}><b>{key}:</b> <a href={`../../documents/${documents[key]}`}>{ documents[key] }</a></p>
+          )}
       </Row>
     </article>
   )
@@ -94,11 +108,15 @@ const Body = (props) => {
 Body.propTypes = {
   evaluated: React.PropTypes.object,
   provides: React.PropTypes.object,
+  documents: React.PropTypes.object,
   case_studies: React.PropTypes.object,
   representative: React.PropTypes.string,
+  email: React.PropTypes.string,
+  phone: React.PropTypes.string,
   website: React.PropTypes.string,
   linkedin: React.PropTypes.string,
   abn: React.PropTypes.string,
+  interstate: React.PropTypes.bool,
   address: React.PropTypes.shape({
     address_line: React.PropTypes.string,
     suburb: React.PropTypes.string,
