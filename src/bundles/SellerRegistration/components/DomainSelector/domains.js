@@ -55,6 +55,11 @@ export default [
     description: 'Providing legal and policy advice for delivering digital services.'
   },
   {
+    key: 'recruit',
+    label: 'Recruitment',
+    description: 'Provides recruitment of digital specialists.'
+  },
+  {
     key: 'perf',
     label: 'Performance and web analytics',
     description: 'Specify, collect and present the key performance data and analysis for a government service.'
