@@ -13,7 +13,7 @@ exports[`test CaseStudyForm renders 1`] = `
       To be successfully evaluated, your case study must meet the 
        
       <a
-        href="/evaluation-criteria#undefined"
+        href="/evaluation-criteria"
         rel="external"
         target="_blank">
         evaluation criteria
@@ -1032,7 +1032,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       To be successfully evaluated, your case study must meet the 
        
       <a
-        href="/evaluation-criteria#undefined"
+        href="/evaluation-criteria"
         rel="external"
         target="_blank">
         evaluation criteria
@@ -1443,7 +1443,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       To be successfully evaluated, your case study must meet the 
        
       <a
-        href="/evaluation-criteria#undefined"
+        href="/evaluation-criteria"
         rel="external"
         target="_blank">
         evaluation criteria
@@ -2037,7 +2037,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       To be successfully evaluated, your case study must meet the 
        
       <a
-        href="/evaluation-criteria#undefined"
+        href="/evaluation-criteria"
         rel="external"
         target="_blank">
         evaluation criteria
@@ -2449,7 +2449,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       To be successfully evaluated, your case study must meet the 
        
       <a
-        href="/evaluation-criteria#undefined"
+        href="/evaluation-criteria"
         rel="external"
         target="_blank">
         evaluation criteria

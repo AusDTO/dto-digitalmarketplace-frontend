@@ -53,13 +53,12 @@ class CaseStudyForm extends BaseForm {
       buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Case Study';
     }
 
-    const serviceId = service && service.replace(',', '').replace(/\s+/g, '-').toLowerCase();
     return (
       <Layout>
         <header>
           <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
           <p id="header-description">
-            To be successfully evaluated, your case study must meet the {service} <a href={`/evaluation-criteria#${serviceId}`} target="_blank" rel="external">evaluation criteria</a></p>
+            To be successfully evaluated, your case study must meet the {service} <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a></p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model} />
