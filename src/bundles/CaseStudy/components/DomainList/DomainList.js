@@ -120,7 +120,9 @@ class DomainList extends BaseForm {
             <header>
               <h1 tabIndex="-1">{title}</h1>
               <p>Case studies about your past projects help government buyers understand what you have to offer 
-                and become part of your seller profile in the Marketplace. You can use the same case study for 
+                and become part of your seller profile in the Marketplace.
+              </p> 
+              <p>You can use the same case study for 
                 different services. To make sure you meet the Marketplace standard, each case study will be assessed 
                 against the relevant <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a>
               </p>

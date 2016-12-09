@@ -235,6 +235,26 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
+            id="recruitment"
+            name="recruitment"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Recruitment" />
+          <label
+            htmlFor="recruitment">
+            Recruitment
+             
+            <p>
+              Provides recruitment of digital specialists.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
             id="strategy-delivery-and-governance"
             name="strategy-delivery-and-governance"
             onBlur={[Function]}
@@ -513,6 +533,26 @@ exports[`test DomainSelector renders with populated fields 1`] = `
              
             <p>
               Specify, collect and present the key performance data and analysis for a government service.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            id="recruitment"
+            name="recruitment"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Recruitment" />
+          <label
+            htmlFor="recruitment">
+            Recruitment
+             
+            <p>
+              Provides recruitment of digital specialists.
             </p>
           </label>
         </div>
