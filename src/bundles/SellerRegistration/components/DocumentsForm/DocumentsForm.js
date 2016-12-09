@@ -26,10 +26,9 @@ class DocumentsForm extends BaseForm {
   }
 
   formFields = [
-    { 'label': 'Financial Statement', 'id': 'financial' },
-    { 'label': 'Public Liability Insurance', 'id': 'liability' },
-    { 'label': 'Workers Compensation Insurance', 'id': 'workers' },
-    { 'label': 'Signed copy of Deed of Standing Offer', 'id': 'deed' },
+    { 'label': 'Financial Statement', 'id': 'financial', 'description': 'Ask your accountant for proof of financial viability.' },
+    { 'label': 'Public Liability Insurance', 'id': 'liability', 'description': 'Your insurer can issue a certificate of currency.' },
+    { 'label': 'Workers Compensation Insurance', 'id': 'workers', 'description': 'Your insurer can issue a certificate of currency.' },
   ]
 
   onUpload(id, e) {
@@ -80,7 +79,9 @@ class DocumentsForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1">Documents</h1>
+          <h1 tabIndex="-1">Upload your documents</h1>
+          <p>As part of your evaluation we’ll need the following documents. 
+            Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG</strong> format.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -115,6 +116,7 @@ class DocumentsForm extends BaseForm {
               return (
                 <div key={key} className="callout">
                   <label className="question-heading" htmlFor={key}>{field.label}</label>
+                  <p>{field.description}</p>
                   <div>
                     <p>
                       {!doc && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>}
