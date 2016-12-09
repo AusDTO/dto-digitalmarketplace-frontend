@@ -81,7 +81,8 @@ test('elementProps onClick', () => {
     dispatch,
     store,
     forms: {
-      domainSelectorForm: {}
+      domainSelectorForm: {},
+      businessDetailsForm: {}
     }
   }
 
@@ -120,7 +121,8 @@ test('elementProps onSubmit', () => {
     dispatch,
     store,
     forms: {
-      domainSelectorForm: {}
+      domainSelectorForm: {},
+      businessDetailsForm: {}
     }
   }
 
@@ -154,7 +156,8 @@ test('elementProps onSubmit with no event', () => {
     dispatch,
     store,
     forms: {
-      domainSelectorForm: {}
+      domainSelectorForm: {},
+      businessDetailsForm: {}
     }
   }
 
@@ -191,7 +194,8 @@ test('elementProps onSubmit with no steps left', () => {
     dispatch,
     store,
     forms: {
-      domainSelectorForm: {}
+      domainSelectorForm: {},
+      businessDetailsForm: {}
     }
   }
 
@@ -231,7 +235,7 @@ test('without filterSteps', () => {
       { id: 'casestudy', label: 'Case Studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
       { id: 'documents', label: 'Documents', component: Documents, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
-      { id: 'submit', label: 'Submit', component: Submit, pattern: '/submit' },
+      { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
   ];
 
   const props = {
@@ -242,7 +246,8 @@ test('without filterSteps', () => {
     dispatch: () => {},
     store,
     forms: {
-      domainSelectorForm: {}
+      domainSelectorForm: {},
+      businessDetailsForm: {}
     }
   }
 
@@ -290,7 +295,8 @@ test('filterSteps', () => {
     dispatch: () => {},
     store,
     forms: {
-      domainSelectorForm: {}
+      domainSelectorForm: {},
+      businessDetailsForm: {}
     }
   }
 

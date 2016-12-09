@@ -103,7 +103,7 @@ exports[`test Signup renders 1`] = `
             href="/submit"
             onClick={[Function]}>
             <span>
-              Submit
+              Declaration
             </span>
           </a>
         </li>
@@ -119,7 +119,9 @@ exports[`test Signup renders 1`] = `
       <p>
         The information you share in this application will be assessed against our 
         <a
-          href="/evaluation-criteria">
+          href="/evaluation-criteria"
+          rel="external"
+          target="_blank">
           evaluation criteria
         </a>
           and to create your seller profile.
@@ -271,7 +273,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/submit"
             onClick={[Function]}>
             <span>
-              Submit
+              Declaration
             </span>
           </a>
         </li>
@@ -552,7 +554,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/submit"
             onClick={[Function]}>
             <span>
-              Submit
+              Declaration
             </span>
           </a>
         </li>

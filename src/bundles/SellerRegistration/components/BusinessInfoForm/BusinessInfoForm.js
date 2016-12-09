@@ -48,8 +48,10 @@ class BusinessInfoForm extends BaseForm {
                                 name="indigenous"
                                 value="Indigenous"
                             />
-                            <label htmlFor="indigenous"><strong>Indigenous</strong> Business is listed on a directory
-                                of indigenous businesses, such as Supply Nation.</label>
+                            <label htmlFor="indigenous">Indigenous
+                                <p>Business is listed on a directory
+                                    of indigenous businesses, such as Supply Nation.</p>
+                            </label>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.product`}
@@ -57,8 +59,10 @@ class BusinessInfoForm extends BaseForm {
                                 name="product"
                                 value="Product"
                             />
-                            <label htmlFor="product"><strong>Product based business</strong> Your services require
-                                your proprietary software or hardware.</label>
+                            <label htmlFor="product">Product based business 
+                                <p>Your services require
+                                    your proprietary software or hardware.</p>
+                            </label>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.recruitment`}
@@ -66,8 +70,9 @@ class BusinessInfoForm extends BaseForm {
                                 name="recruitment"
                                 value="Recruitment"
                             />
-                            <label htmlFor="recruitment"><strong>Recruiter</strong> Primary business purpose
-                                is resourcing.</label>
+                            <label htmlFor="recruitment">Recruiter 
+                                <p>Primary business purpose is resourcing.</p>
+                            </label>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.sme`}
@@ -75,8 +80,10 @@ class BusinessInfoForm extends BaseForm {
                                 name="sme"
                                 value="SME"
                             />
-                            <label htmlFor="sme"><strong>SME</strong> Less than 200 employees and is independent of 
-                                any parent organisation for taxation.</label>
+                            <label htmlFor="sme">SME
+                                <p>Less than 200 employees and is independent of 
+                                any parent organisation for taxation.</p>
+                            </label>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.start_up`}
@@ -84,9 +91,11 @@ class BusinessInfoForm extends BaseForm {
                                 name="start-up"
                                 value="Start Up"
                             />
-                            <label htmlFor="start-up"><strong>Start up</strong> Up to 5 years from business commencement.
-                                Not listed on any stock exchange. Able to capture a large addressable market using
-                                technology.</label>
+                            <label htmlFor="start-up">Start up 
+                                <p>Up to 5 years from business commencement.
+                                    Not listed on any stock exchange. Able to capture a large addressable market using
+                                    technology.</p>
+                            </label>
 
                         </fieldset>
 

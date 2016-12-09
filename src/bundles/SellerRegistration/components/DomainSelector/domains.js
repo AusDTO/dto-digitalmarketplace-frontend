@@ -1,92 +1,62 @@
 export default [
   {
     key: 'userresearch',
-    label: 'User research & design',
-    services: [
-      'User research',
-      'Interaction design',
-      'Inclusive design',
-      'Service design',
-    ]
+    label: 'User research and design',
+    description: 'Activites relating to the research and design of a service used by the entire population.  Such as user research, interaction, inclusive, and service design, participant recruitment and usability testing services.'
   },
   {
     key: 'contentpub',
-    label: 'Content & publishing',
-    services: [
-      'Content development',
-    ]
+    label: 'Content and publishing',
+    description: 'Any service that provides or manages government content.  Examples include content design, strategy and marketing.',
   },
   {
     key: 'marketingcomms',
-    label: 'Marketing, comms & engagement',
-    services: [
-      'Digital marketing',
-      'Community engagement',
-    ]
+    label: 'Marketing, communications and engagement',
+    description: 'Drive awareness, adoption and embedded use of a digital service.',
   },
   {
     key: 'engineering',
-    label: 'Engineering & Development',
-    services: [
-      'Architecture',
-      'Technical leadership',
-      'Web Devops Engineering',
-      'Development',
-      'Quality Assurance'
-    ]
+    label: 'Engineering and Development',
+    description: 'Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.',
   },
   {
     key: 'emergtech',
     label: 'Emerging technology',
-    services: [
-      'Emerging technology'
-    ]
+    description: 'Emerging technologists develop and adapt ideas and technology for commercial application.  Example technologies include artificial intelligence, robotics, wearables and virtual reality.'
   },
   {
     key: 'datalytics',
-    label: 'Data & Analytics',
-    services: [
-      'Data science',
-      'Performance & web analysis'
-    ]
+    label: 'Data science',
+    description: 'Data science brings analytical rigour and statistical methods to measure quality, improve service and model behaviour.'
   },
   {
     key: 'cyber',
     label: 'Cyber security',
-    services: [
-      'Ethical Hacker'
-    ]
+    description: 'Cyber security protects the Australian government and its citizens’ interests online.  Examples include information security, assessments, ethical hacking, penetration testing, monitoring, incidence response, ISM advisory, data privacy and digital forensics.'
   },
   {
     key: 'stratdeliv',
-    label: 'Strategy, delivery & governance',
-    services: [
-      'Business analysis',
-      'Product management',
-      'Delivery management',
-    ]
+    label: 'Strategy, delivery and governance',
+    description: 'Responsible for the strategic direction and delivery of a digital service or product.  Such as business analysis, product management and delivery management.',
   },
   {
     key: 'ops',
     label: 'Operations',
-    services: [
-      'Business operations',
-      'Tech support',
-    ]
+    description: 'Such as admin, ops, data entry and tech support.',
   },
   {
     key: 'change',
-    label: 'Change & transformation',
-    services: [
-      'Digital Transformation Advice',
-      'Agile coaching',
-    ]
+    label: 'Change, training and transformation',
+    description: 'Includes services that assess, train and embed behaviours for iterating digital government services.  Examples include digital transformation advice, agile coaching, change management, training, capability uplift and Digital Service Standard assessment.'
   },
   {
     key: 'policy',
-    label: 'Legal & Policy',
-    services: [
-      'Legal counsel',
-    ]
+    label: 'Legal and Policy',
+    description: 'Providing legal and policy advice for delivering digital services.'
+  },
+  {
+    key: 'perf',
+    label: 'Performance and web analytics',
+    description: 'Specify, collect and present the key performance data and analysis for a government service.'
   }
 ];

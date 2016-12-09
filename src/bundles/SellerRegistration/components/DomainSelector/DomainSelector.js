@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import kebabCase from 'lodash/kebabCase';
-import capitalize from 'lodash/capitalize';
 
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
@@ -21,7 +20,7 @@ class DomainSelector extends BaseForm {
       <Layout>
         <header>
             <h1 tabIndex="-1">{title}</h1>
-            <p> Select the digital services you’ll provide in the Marketplace. You’ll need to provide proof of successful projects (case studies) and past client contact details for each service. You can use the same case study for different services if applicable.</p>
+            <p> Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for <a href="/evaluation-criteria" target="_blank" rel="external">evaluation</a> You can use the same case study for different services.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -65,7 +64,7 @@ class DomainSelector extends BaseForm {
               }
 
               return 0;
-            }).map(({ key, label, services }, i) => {
+            }).map(({ key, label, description }, i) => {
               return (
                 <div key={key}>
                   <Control.checkbox
@@ -74,7 +73,7 @@ class DomainSelector extends BaseForm {
                     name={kebabCase(label)} 
                     value={label}
                   />
-                  <label htmlFor={kebabCase(label)}>{`${label} - ${capitalize(services.join(', '))}`}</label>
+                  <label htmlFor={kebabCase(label)}>{label} <p>{description}</p></label>
                 </div>
               )
             })}
@@ -91,7 +90,7 @@ class DomainSelector extends BaseForm {
 }
 
 DomainSelector.defaultProps = {
-  buttonText: 'Save &amp; Continue',
+  buttonText: 'Save and continue',
   title: 'What services will you offer? '
 }
 

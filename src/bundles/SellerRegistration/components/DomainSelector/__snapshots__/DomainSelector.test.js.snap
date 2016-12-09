@@ -7,7 +7,14 @@ exports[`test DomainSelector renders 1`] = `
       What services will you offer? 
     </h1>
     <p>
-       Select the digital services you’ll provide in the Marketplace. You’ll need to provide proof of successful projects (case studies) and past client contact details for each service. You can use the same case study for different services if applicable.
+       Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for 
+      <a
+        href="/evaluation-criteria"
+        rel="external"
+        target="_blank">
+        evaluation
+      </a>
+       You can use the same case study for different services.
     </p>
   </header>
   <article
@@ -28,33 +35,41 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="change-transformation"
-            name="change-transformation"
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change & transformation" />
+            value="Change, training and transformation" />
           <label
-            htmlFor="change-transformation">
-            Change & transformation - Digital transformation advice, agile coaching
+            htmlFor="change-training-and-transformation">
+            Change, training and transformation
+             
+            <p>
+              Includes services that assess, train and embed behaviours for iterating digital government services.  Examples include digital transformation advice, agile coaching, change management, training, capability uplift and Digital Service Standard assessment.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="content-publishing"
-            name="content-publishing"
+            id="content-and-publishing"
+            name="content-and-publishing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content & publishing" />
+            value="Content and publishing" />
           <label
-            htmlFor="content-publishing">
-            Content & publishing - Content development
+            htmlFor="content-and-publishing">
+            Content and publishing
+             
+            <p>
+              Any service that provides or manages government content.  Examples include content design, strategy and marketing.
+            </p>
           </label>
         </div>
         <div>
@@ -70,23 +85,31 @@ exports[`test DomainSelector renders 1`] = `
             value="Cyber security" />
           <label
             htmlFor="cyber-security">
-            Cyber security - Ethical hacker
+            Cyber security
+             
+            <p>
+              Cyber security protects the Australian government and its citizens’ interests online.  Examples include information security, assessments, ethical hacking, penetration testing, monitoring, incidence response, ISM advisory, data privacy and digital forensics.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="data-analytics"
-            name="data-analytics"
+            id="data-science"
+            name="data-science"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Data & Analytics" />
+            value="Data science" />
           <label
-            htmlFor="data-analytics">
-            Data & Analytics - Data science, performance & web analysis
+            htmlFor="data-science">
+            Data science
+             
+            <p>
+              Data science brings analytical rigour and statistical methods to measure quality, improve service and model behaviour.
+            </p>
           </label>
         </div>
         <div>
@@ -102,55 +125,71 @@ exports[`test DomainSelector renders 1`] = `
             value="Emerging technology" />
           <label
             htmlFor="emerging-technology">
-            Emerging technology - Emerging technology
+            Emerging technology
+             
+            <p>
+              Emerging technologists develop and adapt ideas and technology for commercial application.  Example technologies include artificial intelligence, robotics, wearables and virtual reality.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="engineering-development"
-            name="engineering-development"
+            id="engineering-and-development"
+            name="engineering-and-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Engineering & Development" />
+            value="Engineering and Development" />
           <label
-            htmlFor="engineering-development">
-            Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
+            htmlFor="engineering-and-development">
+            Engineering and Development
+             
+            <p>
+              Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="legal-policy"
-            name="legal-policy"
+            id="legal-and-policy"
+            name="legal-and-policy"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Legal & Policy" />
+            value="Legal and Policy" />
           <label
-            htmlFor="legal-policy">
-            Legal & Policy - Legal counsel
+            htmlFor="legal-and-policy">
+            Legal and Policy
+             
+            <p>
+              Providing legal and policy advice for delivering digital services.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="marketing-comms-engagement"
-            name="marketing-comms-engagement"
+            id="marketing-communications-and-engagement"
+            name="marketing-communications-and-engagement"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Marketing, comms & engagement" />
+            value="Marketing, communications and engagement" />
           <label
-            htmlFor="marketing-comms-engagement">
-            Marketing, comms & engagement - Digital marketing, community engagement
+            htmlFor="marketing-communications-and-engagement">
+            Marketing, communications and engagement
+             
+            <p>
+              Drive awareness, adoption and embedded use of a digital service.
+            </p>
           </label>
         </div>
         <div>
@@ -166,46 +205,78 @@ exports[`test DomainSelector renders 1`] = `
             value="Operations" />
           <label
             htmlFor="operations">
-            Operations - Business operations, tech support
+            Operations
+             
+            <p>
+              Such as admin, ops, data entry and tech support.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="strategy-delivery-governance"
-            name="strategy-delivery-governance"
+            id="performance-and-web-analytics"
+            name="performance-and-web-analytics"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy, delivery & governance" />
+            value="Performance and web analytics" />
           <label
-            htmlFor="strategy-delivery-governance">
-            Strategy, delivery & governance - Business analysis, product management, delivery management
+            htmlFor="performance-and-web-analytics">
+            Performance and web analytics
+             
+            <p>
+              Specify, collect and present the key performance data and analysis for a government service.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="user-research-design"
-            name="user-research-design"
+            id="strategy-delivery-and-governance"
+            name="strategy-delivery-and-governance"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research & design" />
+            value="Strategy, delivery and governance" />
           <label
-            htmlFor="user-research-design">
-            User research & design - User research, interaction design, inclusive design, service design
+            htmlFor="strategy-delivery-and-governance">
+            Strategy, delivery and governance
+             
+            <p>
+              Responsible for the strategic direction and delivery of a digital service or product.  Such as business analysis, product management and delivery management.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            id="user-research-and-design"
+            name="user-research-and-design"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="User research and design" />
+          <label
+            htmlFor="user-research-and-design">
+            User research and design
+             
+            <p>
+              Activites relating to the research and design of a service used by the entire population.  Such as user research, interaction, inclusive, and service design, participant recruitment and usability testing services.
+            </p>
           </label>
         </div>
       </fieldset>
       <input
         role="button"
         type="submit"
-        value="Save &amp; Continue" />
+        value="Save and continue" />
     </form>
   </article>
 </div>
@@ -220,7 +291,14 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       What services will you offer? 
     </h1>
     <p>
-       Select the digital services you’ll provide in the Marketplace. You’ll need to provide proof of successful projects (case studies) and past client contact details for each service. You can use the same case study for different services if applicable.
+       Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for 
+      <a
+        href="/evaluation-criteria"
+        rel="external"
+        target="_blank">
+        evaluation
+      </a>
+       You can use the same case study for different services.
     </p>
   </header>
   <article
@@ -241,33 +319,41 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         <div>
           <input
             checked={false}
-            id="change-transformation"
-            name="change-transformation"
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change & transformation" />
+            value="Change, training and transformation" />
           <label
-            htmlFor="change-transformation">
-            Change & transformation - Digital transformation advice, agile coaching
+            htmlFor="change-training-and-transformation">
+            Change, training and transformation
+             
+            <p>
+              Includes services that assess, train and embed behaviours for iterating digital government services.  Examples include digital transformation advice, agile coaching, change management, training, capability uplift and Digital Service Standard assessment.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="content-publishing"
-            name="content-publishing"
+            id="content-and-publishing"
+            name="content-and-publishing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content & publishing" />
+            value="Content and publishing" />
           <label
-            htmlFor="content-publishing">
-            Content & publishing - Content development
+            htmlFor="content-and-publishing">
+            Content and publishing
+             
+            <p>
+              Any service that provides or manages government content.  Examples include content design, strategy and marketing.
+            </p>
           </label>
         </div>
         <div>
@@ -283,23 +369,31 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Cyber security" />
           <label
             htmlFor="cyber-security">
-            Cyber security - Ethical hacker
+            Cyber security
+             
+            <p>
+              Cyber security protects the Australian government and its citizens’ interests online.  Examples include information security, assessments, ethical hacking, penetration testing, monitoring, incidence response, ISM advisory, data privacy and digital forensics.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="data-analytics"
-            name="data-analytics"
+            id="data-science"
+            name="data-science"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Data & Analytics" />
+            value="Data science" />
           <label
-            htmlFor="data-analytics">
-            Data & Analytics - Data science, performance & web analysis
+            htmlFor="data-science">
+            Data science
+             
+            <p>
+              Data science brings analytical rigour and statistical methods to measure quality, improve service and model behaviour.
+            </p>
           </label>
         </div>
         <div>
@@ -315,55 +409,71 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Emerging technology" />
           <label
             htmlFor="emerging-technology">
-            Emerging technology - Emerging technology
+            Emerging technology
+             
+            <p>
+              Emerging technologists develop and adapt ideas and technology for commercial application.  Example technologies include artificial intelligence, robotics, wearables and virtual reality.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="engineering-development"
-            name="engineering-development"
+            id="engineering-and-development"
+            name="engineering-and-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Engineering & Development" />
+            value="Engineering and Development" />
           <label
-            htmlFor="engineering-development">
-            Engineering & Development - Architecture, technical leadership, web devops engineering, development, quality assurance
+            htmlFor="engineering-and-development">
+            Engineering and Development
+             
+            <p>
+              Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="legal-policy"
-            name="legal-policy"
+            id="legal-and-policy"
+            name="legal-and-policy"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Legal & Policy" />
+            value="Legal and Policy" />
           <label
-            htmlFor="legal-policy">
-            Legal & Policy - Legal counsel
+            htmlFor="legal-and-policy">
+            Legal and Policy
+             
+            <p>
+              Providing legal and policy advice for delivering digital services.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="marketing-comms-engagement"
-            name="marketing-comms-engagement"
+            id="marketing-communications-and-engagement"
+            name="marketing-communications-and-engagement"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Marketing, comms & engagement" />
+            value="Marketing, communications and engagement" />
           <label
-            htmlFor="marketing-comms-engagement">
-            Marketing, comms & engagement - Digital marketing, community engagement
+            htmlFor="marketing-communications-and-engagement">
+            Marketing, communications and engagement
+             
+            <p>
+              Drive awareness, adoption and embedded use of a digital service.
+            </p>
           </label>
         </div>
         <div>
@@ -379,46 +489,78 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             value="Operations" />
           <label
             htmlFor="operations">
-            Operations - Business operations, tech support
+            Operations
+             
+            <p>
+              Such as admin, ops, data entry and tech support.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="strategy-delivery-governance"
-            name="strategy-delivery-governance"
+            id="performance-and-web-analytics"
+            name="performance-and-web-analytics"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy, delivery & governance" />
+            value="Performance and web analytics" />
           <label
-            htmlFor="strategy-delivery-governance">
-            Strategy, delivery & governance - Business analysis, product management, delivery management
+            htmlFor="performance-and-web-analytics">
+            Performance and web analytics
+             
+            <p>
+              Specify, collect and present the key performance data and analysis for a government service.
+            </p>
           </label>
         </div>
         <div>
           <input
             checked={false}
-            id="user-research-design"
-            name="user-research-design"
+            id="strategy-delivery-and-governance"
+            name="strategy-delivery-and-governance"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research & design" />
+            value="Strategy, delivery and governance" />
           <label
-            htmlFor="user-research-design">
-            User research & design - User research, interaction design, inclusive design, service design
+            htmlFor="strategy-delivery-and-governance">
+            Strategy, delivery and governance
+             
+            <p>
+              Responsible for the strategic direction and delivery of a digital service or product.  Such as business analysis, product management and delivery management.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            id="user-research-and-design"
+            name="user-research-and-design"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="User research and design" />
+          <label
+            htmlFor="user-research-and-design">
+            User research and design
+             
+            <p>
+              Activites relating to the research and design of a service used by the entire population.  Such as user research, interaction, inclusive, and service design, participant recruitment and usability testing services.
+            </p>
           </label>
         </div>
       </fieldset>
       <input
         role="button"
         type="submit"
-        value="Save &amp; Continue" />
+        value="Save and continue" />
     </form>
   </article>
 </div>

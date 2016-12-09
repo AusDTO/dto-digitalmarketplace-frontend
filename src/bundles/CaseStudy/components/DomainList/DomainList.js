@@ -119,16 +119,14 @@ class DomainList extends BaseForm {
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
-              <p>Case studies about your past projects help government buyers understand what you have to offer and become part of your seller profile in the Marketplace.
-
-
-                The information you share here will be compared against our <a href="/evaluation-criteria">evaluation criteria</a>, to make sure you meet the Marketplace standard. Your client references will be contacted to confirm they were happy with the outcome.
-
-
-                Once you’re successfully evaluated you can update your information.</p>
+              <p>Case studies about your past projects help government buyers understand what you have to offer 
+                and become part of your seller profile in the Marketplace. You can use the same case study for 
+                different services. To make sure you meet the Marketplace standard, each case study will be assessed 
+                against the relevant <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a>
+              </p>
             </header>
             <article role="main">
-              
+             
               <ErrorBox focusOnMount={true} model={model}/>
 
               <strong>{leftToAddCount === 0

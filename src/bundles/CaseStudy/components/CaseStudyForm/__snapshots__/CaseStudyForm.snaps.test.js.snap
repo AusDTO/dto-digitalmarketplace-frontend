@@ -10,7 +10,14 @@ exports[`test CaseStudyForm renders 1`] = `
     </h1>
     <p
       id="header-description">
-      Show the range of skills and experience you can provide by completing the form below.
+      To be successfully evaluated, your case study must meet the 
+       
+      <a
+        href="/evaluation-criteria"
+        rel="external"
+        target="_blank">
+        evaluation criteria
+      </a>
     </p>
   </header>
   <article
@@ -117,29 +124,20 @@ exports[`test CaseStudyForm renders 1`] = `
           </span>
         </div>
       </div>
-      <h3>
-        Business approach to 
-      </h3>
-      <p>
-        Address each of the evaluation criteria for 
-         when describing your business’ approach to the project. 
-        <a
-          href="#eval-crit"
-          target="_blank">
-          Browse the evaluation criteria for 
-           (opens in a new window)
-        </a>
-        . 
-      </p>
       <div
         className="field">
         <label
           className="question-heading"
           htmlFor="roles">
-          What role/s did your business provide?
+          What was your business responsible for?
         </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="roles-hint"
           className=""
           id="roles"
           maxLength={undefined}
@@ -333,6 +331,9 @@ exports[`test CaseStudyForm renders 1`] = `
       <h3>
         Referee
       </h3>
+      <p>
+        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+      </p>
       <div
         className="field">
         <label
@@ -1028,7 +1029,14 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
     </h1>
     <p
       id="header-description">
-      Show the range of skills and experience you can provide by completing the form below.
+      To be successfully evaluated, your case study must meet the 
+       
+      <a
+        href="/evaluation-criteria"
+        rel="external"
+        target="_blank">
+        evaluation criteria
+      </a>
     </p>
   </header>
   <article
@@ -1135,29 +1143,20 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           </span>
         </div>
       </div>
-      <h3>
-        Business approach to 
-      </h3>
-      <p>
-        Address each of the evaluation criteria for 
-         when describing your business’ approach to the project. 
-        <a
-          href="#eval-crit"
-          target="_blank">
-          Browse the evaluation criteria for 
-           (opens in a new window)
-        </a>
-        . 
-      </p>
       <div
         className="field">
         <label
           className="question-heading"
           htmlFor="roles">
-          What role/s did your business provide?
+          What was your business responsible for?
         </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="roles-hint"
           className=""
           id="roles"
           maxLength={undefined}
@@ -1351,6 +1350,9 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       <h3>
         Referee
       </h3>
+      <p>
+        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+      </p>
       <div
         className="field">
         <label
@@ -1438,7 +1440,14 @@ exports[`test CaseStudyForm renders with errors 1`] = `
     </h1>
     <p
       id="header-description">
-      Show the range of skills and experience you can provide by completing the form below.
+      To be successfully evaluated, your case study must meet the 
+       
+      <a
+        href="/evaluation-criteria"
+        rel="external"
+        target="_blank">
+        evaluation criteria
+      </a>
     </p>
   </header>
   <article
@@ -1666,27 +1675,18 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           </span>
         </div>
       </div>
-      <h3>
-        Business approach to 
-      </h3>
-      <p>
-        Address each of the evaluation criteria for 
-         when describing your business’ approach to the project. 
-        <a
-          href="#eval-crit"
-          target="_blank">
-          Browse the evaluation criteria for 
-           (opens in a new window)
-        </a>
-        . 
-      </p>
       <div
         className="field">
         <label
           className="question-heading"
           htmlFor="roles">
-          What role/s did your business provide?
+          What was your business responsible for?
         </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
+        </p>
         <a
           className="validation-message"
           href="#roles">
@@ -1699,7 +1699,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           </span>
         </a>
         <input
-          aria-describedby={undefined}
+          aria-describedby="roles-hint"
           className="invalid"
           id="roles"
           maxLength={undefined}
@@ -1915,6 +1915,9 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       <h3>
         Referee
       </h3>
+      <p>
+        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+      </p>
       <div
         className="field">
         <label
@@ -2031,7 +2034,14 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
     </h1>
     <p
       id="header-description">
-      Show the range of skills and experience you can provide by completing the form below.
+      To be successfully evaluated, your case study must meet the 
+       
+      <a
+        href="/evaluation-criteria"
+        rel="external"
+        target="_blank">
+        evaluation criteria
+      </a>
     </p>
   </header>
   <article
@@ -2143,29 +2153,20 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           </span>
         </div>
       </div>
-      <h3>
-        Business approach to 
-      </h3>
-      <p>
-        Address each of the evaluation criteria for 
-         when describing your business’ approach to the project. 
-        <a
-          href="#eval-crit"
-          target="_blank">
-          Browse the evaluation criteria for 
-           (opens in a new window)
-        </a>
-        . 
-      </p>
       <div
         className="field">
         <label
           className="question-heading"
           htmlFor="roles">
-          What role/s did your business provide?
+          What was your business responsible for?
         </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="roles-hint"
           className=""
           id="roles"
           maxLength={undefined}
@@ -2359,6 +2360,9 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       <h3>
         Referee
       </h3>
+      <p>
+        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+      </p>
       <div
         className="field">
         <label
@@ -2442,7 +2446,14 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
     </h1>
     <p
       id="header-description">
-      Show the range of skills and experience you can provide by completing the form below.
+      To be successfully evaluated, your case study must meet the 
+       
+      <a
+        href="/evaluation-criteria"
+        rel="external"
+        target="_blank">
+        evaluation criteria
+      </a>
     </p>
   </header>
   <article
@@ -2549,29 +2560,20 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           </span>
         </div>
       </div>
-      <h3>
-        Business approach to 
-      </h3>
-      <p>
-        Address each of the evaluation criteria for 
-         when describing your business’ approach to the project. 
-        <a
-          href="#eval-crit"
-          target="_blank">
-          Browse the evaluation criteria for 
-           (opens in a new window)
-        </a>
-        . 
-      </p>
       <div
         className="field">
         <label
           className="question-heading"
           htmlFor="roles">
-          What role/s did your business provide?
+          What was your business responsible for?
         </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="roles-hint"
           className=""
           id="roles"
           maxLength={undefined}
@@ -2765,6 +2767,9 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       <h3>
         Referee
       </h3>
+      <p>
+        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+      </p>
       <div
         className="field">
         <label
