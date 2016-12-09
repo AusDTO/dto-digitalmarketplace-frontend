@@ -53,11 +53,13 @@ class CaseStudyForm extends BaseForm {
       buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Case Study';
     }
 
+    const serviceId = service && service.replace(',', '').replace(/\s+/g, '-').toLowerCase();
     return (
       <Layout>
         <header>
           <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
-          <p id="header-description">Show the range of skills and experience you can provide by completing the form below.</p>
+          <p id="header-description">
+            To be successfully evaluated, your case study must meet the {service} <a href={`/evaluation-criteria#${serviceId}`} target="_blank" rel="external">evaluation criteria</a></p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model} />
@@ -123,15 +125,13 @@ class CaseStudyForm extends BaseForm {
               validators={{ required }}
             />
 
-            <h3>Business approach to {service}</h3>
-            <p>Address each of the evaluation criteria for {service} when describing your business’ approach to the project. <a href="#eval-crit" target="_blank">Browse the evaluation criteria for {service} (opens in a new window)</a>. </p>
-
             <Textfield
               model={`${model}.roles`}
               name="roles"
               id="roles"
               htmlFor="roles"
-              label="What role/s did your business provide?"
+              label="What was your business responsible for?"
+              description="e.g. Ran whole project, engaged in discovery activites or responsible for delivery."
               validators={{ required }}
               messages={{
                 required: 'You must specify the roles you provided',
@@ -175,6 +175,7 @@ class CaseStudyForm extends BaseForm {
             />
 
             <h3>Referee</h3>
+            <p>Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.</p>
 
             <Textfield
                 model={`${model}.referee_name`}

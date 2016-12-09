@@ -122,7 +122,7 @@ class DocumentsForm extends BaseForm {
                     <div>
                       {fieldState.uploading && 'Uploading...'}
                       {errors && 'There was an error uploading the file'}
-                      {doc && <p><a href={`${pathname.slice(1)}/${doc}`} rel="external">{doc}</a></p>}
+                      {doc && <p><a href={`${pathname.slice(1)}/${doc}`} target="_blank" rel="external">{doc}</a></p>}
                     </div>
                   </div>
                   <div className="actions">
