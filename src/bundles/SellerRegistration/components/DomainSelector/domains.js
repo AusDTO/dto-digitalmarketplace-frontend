@@ -16,7 +16,7 @@ export default [
   },
   {
     key: 'engineering',
-    label: 'Engineering and Development',
+    label: 'Engineering and development',
     description: 'Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.',
   },
   {
@@ -51,7 +51,7 @@ export default [
   },
   {
     key: 'policy',
-    label: 'Legal and Policy',
+    label: 'Legal and policy',
     description: 'Providing legal and policy advice for delivering digital services.'
   },
   {
