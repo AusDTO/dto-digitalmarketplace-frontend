@@ -26,7 +26,7 @@ class EnterPasswordForm extends BaseForm {
       <Layout>
         <header>
           <h1>Create a Password</h1>
-          <h2>{enterPasswordForm.email}</h2>
+          <p>To finish creating your account please provide the following details.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -41,6 +41,11 @@ class EnterPasswordForm extends BaseForm {
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
+
+            <div className="field">
+              <div className="question-heading">Email</div>
+              <p>{enterPasswordForm.email}</p>
+            </div>
 
             <Textfield
               model={`${model}.password`}

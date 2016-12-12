@@ -212,7 +212,7 @@ class CaseStudyForm extends BaseForm {
                 validators={{ required }}
               />
               <label htmlFor="refereeContact">I acknowledge my reference gives permission to be contacted 
-                and have their information be shared within the Digtal Transformation Agency for evaluation.
+                and have their information be shared within the Digital Transformation Agency for evaluation.
               </label>
             </div>
 
