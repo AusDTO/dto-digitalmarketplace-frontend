@@ -142,10 +142,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Engineering and Development" />
+            value="Engineering and development" />
           <label
             htmlFor="engineering-and-development">
-            Engineering and Development
+            Engineering and development
              
             <p>
               Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.
@@ -162,10 +162,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Legal and Policy" />
+            value="Legal and policy" />
           <label
             htmlFor="legal-and-policy">
-            Legal and Policy
+            Legal and policy
              
             <p>
               Providing legal and policy advice for delivering digital services.
@@ -446,10 +446,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Engineering and Development" />
+            value="Engineering and development" />
           <label
             htmlFor="engineering-and-development">
-            Engineering and Development
+            Engineering and development
              
             <p>
               Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.
@@ -466,10 +466,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Legal and Policy" />
+            value="Legal and policy" />
           <label
             htmlFor="legal-and-policy">
-            Legal and Policy
+            Legal and policy
              
             <p>
               Providing legal and policy advice for delivering digital services.
