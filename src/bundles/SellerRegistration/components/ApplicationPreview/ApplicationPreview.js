@@ -52,6 +52,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick }) => {
       interstate,
       documents
     } = application;
+    documentsUrl = application.documents_url;
     if (documentsUrl === undefined) {
         documentsUrl = "../documents/";
     }
