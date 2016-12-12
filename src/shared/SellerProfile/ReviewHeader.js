@@ -8,10 +8,9 @@ const ReviewHeader = (props) => {
     seller_type,
     summary,
     website,
-    email,
-    phone,
-    representative,
-    continueLink
+    contact_email,
+    contact_phone,
+    contact_name
   } = props;
 
   return (
@@ -20,16 +19,13 @@ const ReviewHeader = (props) => {
         <div className="col-sm-8">
           <h1>{name}</h1>
         </div>
-        <div className="col-sm-3 col-sm-push-1 seller-profile__continue-link">
-          {continueLink}
-        </div>
       </div>
       <div className="row">
         <div className="seller-profile__badges">
         {Object.keys(seller_type).map((type, i) => (
           <span key={i} className={classNames(
             'badge--default'
-          )}>{type}</span>
+          )}> { type === 'sme' ? 'SME' : type }</span>
         ))}
         </div>
       </div>
@@ -43,20 +39,20 @@ const ReviewHeader = (props) => {
             <a href={website} rel="external">Visit seller's website</a>
           </p>
         </article>
-        <article className="col-xs-12 col-sm-3 col-sm-push-1">
+          {/* <article className="col-xs-12 col-sm-3 col-sm-push-1">
           <p>
-            <b>Opportunities contact</b><br/>
-            <span>{representative}</span>
+            <b>For opportunities contact</b><br/>
+            <span>{contact_name}</span>
           </p>
           <p>
             <b>Phone</b><br/>
-            <span>{phone}</span>
+            <span>{contact_phone}</span>
           </p>
           <p>
             <b>Email</b><br/>
-            <a href={`mailto:${email}`}>{email}</a>
+            <a href={`mailto:${contact_email}`}>{contact_email}</a>
           </p>
-        </article>
+        </article> */}
       </div>
     </section>
   )
@@ -67,14 +63,13 @@ ReviewHeader.defaultProps = {
 }
 
 ReviewHeader.propTypes = {
-  name: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string,
   seller_type: React.PropTypes.objectOf(React.PropTypes.bool),
-  summary: React.PropTypes.string.isRequired,
-  website: React.PropTypes.string.isRequired,
-  email: React.PropTypes.string.isRequired,
-  phone: React.PropTypes.string.isRequired,
-  representative: React.PropTypes.string.isRequired,
-  continueLink: React.PropTypes.element
+  summary: React.PropTypes.string,
+  website: React.PropTypes.string,
+  contact_email: React.PropTypes.string,
+  contact_phone: React.PropTypes.string,
+  contact_name: React.PropTypes.string,
 }
 
 export default ReviewHeader;

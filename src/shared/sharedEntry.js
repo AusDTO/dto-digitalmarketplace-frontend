@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom'
 import { Body, ReviewHeader } from './SellerProfile';
 
 const header = {
-  representative: "Paul Ashson",
+  contact_: "Paul Ashson",
   name: "Zeta interactive",
-  phone: "02 8394 0000",
-  email: "example@domain.com",
+  contact_phone: "02 8394 0000",
+  contact_email: "example@domain.com",
   summary: "Zeta Interactive’s many services include digital strategy, user research/stories, requirements, personas, design, user testing, HTML prototyping, website build and CMS implementation. Established in 1996, with over 160 staff worldwide, we are award-winning and widely known as a “go-to” digital consultancy for many agencies especially in service design and digital government.",
   website: "http://google.com",
   continueLink: <a role="button" href="#href">Continue editing</a>,
