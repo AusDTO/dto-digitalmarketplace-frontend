@@ -83,7 +83,7 @@ const Body = (props) => {
         })}
         </ul>
       </Row>
-        <Row title="For opportunities" show={true}>
+        <Row title="For opportunities" show={contact_name}>
         <p>
             <b>Contact</b><br/>
             <span>{contact_name}</span>
@@ -114,7 +114,7 @@ const Body = (props) => {
 
         <b>Main Address</b><br/>
         <p>
-          <span>{address && address.address_line}</span><br/>
+          <span>{address && address.address_line}{address && address.addressLine}</span><br/>
           <span>{address && address.suburb}</span><br/>
           <span>{address && address.state} {address && address.postal_code}</span>
         </p>
