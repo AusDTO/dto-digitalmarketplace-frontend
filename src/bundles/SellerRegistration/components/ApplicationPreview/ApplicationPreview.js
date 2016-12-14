@@ -32,7 +32,7 @@ const ApplicationPreview = ({ header, body, onClick }) => (
   </div>
 );
 
-const mapStateToProps = ({ application }, { documentsUrl, onClick }) => {
+const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick }) => {
     const {
       name,
       seller_type,
@@ -53,6 +53,12 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick }) => {
       documents
     } = application;
     documentsUrl = application.documents_url;
+    caseStudyUrl = application.case_study_url;
+    if (caseStudyUrl === undefined) {
+        var caseStudyLink = ({id, children}) => (<b>{children}</b>)
+    } else {
+        var caseStudyLink = ({id, children}) => (<a href={`${caseStudyUrl}${id}`}>{children}</a>)
+    }
     if (documentsUrl === undefined) {
         documentsUrl = "../documents/";
     }
@@ -78,14 +84,11 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick }) => {
           phone,
           website,
           documents,
-            contact_email,
-            contact_phone,
-            contact_name,
-          CaseStudyLink: ({id, children}) => (<b>{children}</b>),
+          contact_email,
+          contact_phone,
+          contact_name,
+          CaseStudyLink: caseStudyLink,
           documentsUrl
-          //CaseStudyLink: ({id, children}) => (
-          //  <Link to={`/case-study/view/${id}`}>{children}</Link>
-          //)
         },
         onClick
     }
