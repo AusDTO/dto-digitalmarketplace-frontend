@@ -14,7 +14,6 @@ exports[`test DomainSelector renders 1`] = `
         target="_blank">
         evaluation
       </a>
-       You can use the same case study for different services.
     </p>
   </header>
   <article
@@ -318,7 +317,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         target="_blank">
         evaluation
       </a>
-       You can use the same case study for different services.
     </p>
   </header>
   <article

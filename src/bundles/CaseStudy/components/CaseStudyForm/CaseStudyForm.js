@@ -56,9 +56,11 @@ class CaseStudyForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
-          <p id="header-description">
-            To be successfully evaluated, your case study must meet the {service} <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a></p>
+          <div className="callout--calendar-event">
+            <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
+            <p id="header-description">
+              To be successfully evaluated, your case study must meet the {service} <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a></p>
+          </div>    
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model} />

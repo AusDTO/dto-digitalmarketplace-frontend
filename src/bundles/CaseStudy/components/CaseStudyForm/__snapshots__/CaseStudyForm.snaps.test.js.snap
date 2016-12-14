@@ -2,23 +2,26 @@ exports[`test CaseStudyForm renders 1`] = `
 <div
   className="layout">
   <header>
-    <h1
-      aria-describedby="header-description"
-      tabIndex="-1">
-      Add
-       case study
-    </h1>
-    <p
-      id="header-description">
-      To be successfully evaluated, your case study must meet the 
-       
-      <a
-        href="/evaluation-criteria"
-        rel="external"
-        target="_blank">
-        evaluation criteria
-      </a>
-    </p>
+    <div
+      className="callout--calendar-event">
+      <h1
+        aria-describedby="header-description"
+        tabIndex="-1">
+        Add
+         case study
+      </h1>
+      <p
+        id="header-description">
+        To be successfully evaluated, your case study must meet the 
+         
+        <a
+          href="/evaluation-criteria"
+          rel="external"
+          target="_blank">
+          evaluation criteria
+        </a>
+      </p>
+    </div>
   </header>
   <article
     role="main">
@@ -1021,23 +1024,26 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
 <div
   className="layout">
   <header>
-    <h1
-      aria-describedby="header-description"
-      tabIndex="-1">
-      Edit
-       case study
-    </h1>
-    <p
-      id="header-description">
-      To be successfully evaluated, your case study must meet the 
-       
-      <a
-        href="/evaluation-criteria"
-        rel="external"
-        target="_blank">
-        evaluation criteria
-      </a>
-    </p>
+    <div
+      className="callout--calendar-event">
+      <h1
+        aria-describedby="header-description"
+        tabIndex="-1">
+        Edit
+         case study
+      </h1>
+      <p
+        id="header-description">
+        To be successfully evaluated, your case study must meet the 
+         
+        <a
+          href="/evaluation-criteria"
+          rel="external"
+          target="_blank">
+          evaluation criteria
+        </a>
+      </p>
+    </div>
   </header>
   <article
     role="main">
@@ -1432,23 +1438,26 @@ exports[`test CaseStudyForm renders with errors 1`] = `
 <div
   className="layout">
   <header>
-    <h1
-      aria-describedby="header-description"
-      tabIndex="-1">
-      Add
-       case study
-    </h1>
-    <p
-      id="header-description">
-      To be successfully evaluated, your case study must meet the 
-       
-      <a
-        href="/evaluation-criteria"
-        rel="external"
-        target="_blank">
-        evaluation criteria
-      </a>
-    </p>
+    <div
+      className="callout--calendar-event">
+      <h1
+        aria-describedby="header-description"
+        tabIndex="-1">
+        Add
+         case study
+      </h1>
+      <p
+        id="header-description">
+        To be successfully evaluated, your case study must meet the 
+         
+        <a
+          href="/evaluation-criteria"
+          rel="external"
+          target="_blank">
+          evaluation criteria
+        </a>
+      </p>
+    </div>
   </header>
   <article
     role="main">
@@ -2026,23 +2035,26 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
 <div
   className="layout">
   <header>
-    <h1
-      aria-describedby="header-description"
-      tabIndex="-1">
-      Add
-       case study
-    </h1>
-    <p
-      id="header-description">
-      To be successfully evaluated, your case study must meet the 
-       
-      <a
-        href="/evaluation-criteria"
-        rel="external"
-        target="_blank">
-        evaluation criteria
-      </a>
-    </p>
+    <div
+      className="callout--calendar-event">
+      <h1
+        aria-describedby="header-description"
+        tabIndex="-1">
+        Add
+         case study
+      </h1>
+      <p
+        id="header-description">
+        To be successfully evaluated, your case study must meet the 
+         
+        <a
+          href="/evaluation-criteria"
+          rel="external"
+          target="_blank">
+          evaluation criteria
+        </a>
+      </p>
+    </div>
   </header>
   <article
     role="main">
@@ -2438,23 +2450,26 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
 <div
   className="layout">
   <header>
-    <h1
-      aria-describedby="header-description"
-      tabIndex="-1">
-      Add
-       case study
-    </h1>
-    <p
-      id="header-description">
-      To be successfully evaluated, your case study must meet the 
-       
-      <a
-        href="/evaluation-criteria"
-        rel="external"
-        target="_blank">
-        evaluation criteria
-      </a>
-    </p>
+    <div
+      className="callout--calendar-event">
+      <h1
+        aria-describedby="header-description"
+        tabIndex="-1">
+        Add
+         case study
+      </h1>
+      <p
+        id="header-description">
+        To be successfully evaluated, your case study must meet the 
+         
+        <a
+          href="/evaluation-criteria"
+          rel="external"
+          target="_blank">
+          evaluation criteria
+        </a>
+      </p>
+    </div>
   </header>
   <article
     role="main">

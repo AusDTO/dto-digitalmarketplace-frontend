@@ -92,9 +92,9 @@ class BusinessInfoForm extends BaseForm {
                                 value="Start Up"
                             />
                             <label htmlFor="start-up">Start up 
-                                <p>Up to 5 years from business commencement.
-                                    Not listed on any stock exchange. Able to capture a large addressable market using
-                                    technology.</p>
+                                <p>Able to disrupt an existing business model through technology 
+                                    with potential for high growth. Up to 5 years from business 
+                                    commencement and not listed on any stock exchange.</p>
                             </label>
 
                         </fieldset>
