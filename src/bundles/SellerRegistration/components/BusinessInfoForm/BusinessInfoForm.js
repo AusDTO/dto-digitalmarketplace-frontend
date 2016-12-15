@@ -91,10 +91,20 @@ class BusinessInfoForm extends BaseForm {
                                 name="start-up"
                                 value="Start Up"
                             />
-                            <label htmlFor="start-up">Start up 
-                                <p>Able to disrupt an existing business model through technology 
-                                    with potential for high growth. Up to 5 years from business 
+                            <label htmlFor="start-up">Start up
+                                <p>Able to disrupt an existing business model through technology
+                                    with potential for high growth. Up to 5 years from business
                                     commencement and not listed on any stock exchange.</p>
+                            </label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.nfp_social_enterprise`}
+                                id="nfp-social-enterprise"
+                                name="nfp-social-enterprise"
+                                value="Not-for-profit / social enterprise"
+                            />
+                            <label htmlFor="nfp-social-enterprise">Not-for-profit / social enterprise
+                                <p>You do not operate for profit or personal gain.</p>
                             </label>
 
                         </fieldset>

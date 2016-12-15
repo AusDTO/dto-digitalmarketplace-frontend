@@ -154,26 +154,6 @@ exports[`test DomainSelector renders 1`] = `
         <div>
           <input
             checked={false}
-            id="legal-and-policy"
-            name="legal-and-policy"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Legal and policy" />
-          <label
-            htmlFor="legal-and-policy">
-            Legal and policy
-             
-            <p>
-              Providing legal and policy advice for delivering digital services.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
             id="marketing-communications-and-engagement"
             name="marketing-communications-and-engagement"
             onBlur={[Function]}
@@ -451,26 +431,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
              
             <p>
               Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            id="legal-and-policy"
-            name="legal-and-policy"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Legal and policy" />
-          <label
-            htmlFor="legal-and-policy">
-            Legal and policy
-             
-            <p>
-              Providing legal and policy advice for delivering digital services.
             </p>
           </label>
         </div>

@@ -50,11 +50,6 @@ export default [
     description: 'Includes services that assess, train and embed behaviours for iterating digital government services.  Examples include digital transformation advice, agile coaching, change management, training, capability uplift and Digital Service Standard assessment.'
   },
   {
-    key: 'policy',
-    label: 'Legal and policy',
-    description: 'Providing legal and policy advice for delivering digital services.'
-  },
-  {
     key: 'recruit',
     label: 'Recruitment',
     description: 'Provides recruitment of digital specialists.'

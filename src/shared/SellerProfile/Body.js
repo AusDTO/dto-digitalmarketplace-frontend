@@ -114,7 +114,7 @@ const Body = (props) => {
 
         <b>Main Address</b><br/>
         <p>
-          <span>{address && address.address_line}{address && address.addressLine}</span><br/>
+          <span>{address && address.address_line}</span><br/>
           <span>{address && address.suburb}</span><br/>
           <span>{address && address.state} {address && address.postal_code}</span>
         </p>
@@ -138,7 +138,7 @@ Body.propTypes = {
   evaluated: React.PropTypes.object,
   provides: React.PropTypes.object,
   documents: React.PropTypes.object,
-  case_studies: React.PropTypes.object,
+  case_studies: React.PropTypes.array,
   representative: React.PropTypes.string,
   email: React.PropTypes.string,
   phone: React.PropTypes.string,
