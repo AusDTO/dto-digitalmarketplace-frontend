@@ -12,7 +12,14 @@ const ReviewHeader = (props) => {
     contact_phone,
     contact_name
   } = props;
-
+    var badgeTitle = {
+        "indigenous": "Indigenous",
+        "nfp_social_enterprise": "Not-for-profit / social enterprise",
+        "product": "Product based business",
+        "recruitment": "Recruiter",
+        "sme": "SME",
+        "start_up": "Start up"
+    }
   return (
     <section className="seller-profile seller-profile__review-header">
       <div className="row ">
@@ -25,7 +32,7 @@ const ReviewHeader = (props) => {
         {Object.keys(seller_type).map((type, i) => (
           <span key={i} className={classNames(
             'badge--default'
-          )}> { type === 'sme' ? 'SME' : type }</span>
+          )}> {badgeTitle[type]}</span>
         ))}
         </div>
       </div>
