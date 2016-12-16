@@ -5,7 +5,10 @@ import { Form, actions } from 'react-redux-form';
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
+import Textfield     from '../../../../shared/form/Textfield';
+import Datefield     from '../../../../shared/form/Datefield';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
+
 import StatefulError from '../../../../shared/form/StatefulError';
 
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
@@ -80,7 +83,7 @@ class DocumentsForm extends BaseForm {
       <Layout>
         <header>
           <h1 tabIndex="-1">Upload your documents</h1>
-          <p>As part of your evaluation we’ll need the following documents. 
+          <p>As part of your evaluation we’ll need the following documents.
             Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG</strong> format.</p>
         </header>
         <article role="main">
@@ -112,6 +115,8 @@ class DocumentsForm extends BaseForm {
               const key = field.id;
               const fieldState = this.state[key] || {}
               const doc = documentsForm.documents[key]
+              const expiry_date = documentsForm.expiry_dates[key]
+              const expiry_date_field = 'expiry_date_' + key
               const errors = this.state.errors[key]
               return (
                 <div key={key} className="callout">
@@ -131,6 +136,16 @@ class DocumentsForm extends BaseForm {
                     {fieldState.file && <button type="submit" onClick={this.onUpload.bind(this, key)}>Upload</button>}
                     {doc && <button type="reset" onClick={this.onReset.bind(this, key)}>Remove</button>}
                   </div>
+                  <Datefield
+                      model={`${model}.expiry_dates[${key}]`}
+                      name={expiry_date_field}
+                      id={expiry_date_field}
+                      htmlFor={expiry_date_field}
+                      label="Expiry date:"
+                      messages={{
+                          required: 'Expiry date is required for this document.',
+                      }}
+                  />
                 </div>
               )
             })}
