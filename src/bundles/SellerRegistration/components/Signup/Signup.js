@@ -104,7 +104,8 @@ class Signup extends React.Component {
     const { forms, router, steps = {}, location } = this.props;
     const applicationValid = (this.steps.length - 1) === Object.keys(steps).length;
     let { services = {} } = forms.domainSelectorForm;
-    let { name = ''} = forms.businessDetailsForm;
+    let { name = '' } = forms.businessDetailsForm;
+    let { email = '' } = forms.yourInfoForm;
 
     services = Object
       .keys(services)
@@ -166,7 +167,8 @@ class Signup extends React.Component {
                   actions: {
                     submitApplication
                   },
-                  name
+                  name,
+                  email
                 },
                 this.elementProps
               );
