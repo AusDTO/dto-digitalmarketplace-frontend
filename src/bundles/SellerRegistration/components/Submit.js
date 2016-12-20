@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoriseUrl, email}) => {
+const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoriseUrl, email, csrfToken}) => {
     let message;
     const userIsAuthorised = userEmail === email;
     const buttonText = userIsAuthorised ? 'Submit your application' : 'Send email to representative'; 
@@ -34,6 +34,7 @@ const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoris
             <h2>Your declaration</h2>
             { message }
             <form action={action} method="post">
+                <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
                 {applicationValid 
                     ? <button type="submit">{buttonText}</button>
                     : <button disabled="disabled">{buttonText}</button>
@@ -46,7 +47,7 @@ const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoris
 Submit.defaultProps = {
     onClick: () => {},
     submitUrl: '#',
-    authoriseUrl: '#'
+    authoriseUrl: '#',
 }
 
 Submit.propTypes = {
@@ -56,7 +57,8 @@ Submit.propTypes = {
     applicationValid: React.PropTypes.bool,
     name: React.PropTypes.string,
     email: React.PropTypes.string,
-    userEmail: React.PropTypes.string
+    userEmail: React.PropTypes.string,
+    csrfToken: React.PropTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -66,7 +68,8 @@ const mapStateToProps = (state, ownProps) => {
         applicationValid: ownProps.applicationValid,
         name: ownProps.name,
         email: ownProps.email,
-        userEmail: state.form_options.user_email
+        userEmail: state.form_options.user_email,
+        csrfToken: state.form_options.csrf_token
     }
 }
 
