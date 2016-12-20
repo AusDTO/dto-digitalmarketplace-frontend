@@ -83,7 +83,7 @@ const Body = (props) => {
         })}
         </ul>
       </Row>
-        <Row title="For opportunities" show={true}>
+        <Row title="For opportunities" show={contact_name}>
         <p>
             <b>Contact</b><br/>
             <span>{contact_name}</span>
@@ -138,7 +138,7 @@ Body.propTypes = {
   evaluated: React.PropTypes.object,
   provides: React.PropTypes.object,
   documents: React.PropTypes.object,
-  case_studies: React.PropTypes.object,
+  case_studies: React.PropTypes.array,
   representative: React.PropTypes.string,
   email: React.PropTypes.string,
   phone: React.PropTypes.string,
