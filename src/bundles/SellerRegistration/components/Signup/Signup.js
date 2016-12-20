@@ -19,6 +19,9 @@ import BusinessDetailsForm  from '../BusinessDetailsForm';
 import BusinessInfoForm     from '../BusinessInfoForm';
 import DomainSelector       from '../DomainSelector';
 import Review               from '../Review';
+import DisclosuresForm      from '../DisclosuresForm';
+import AwardsForm           from '../AwardsForm';
+import ToolsForm            from '../ToolsForm';
 import Submit               from '../Submit';
 import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
@@ -36,12 +39,15 @@ class Signup extends React.Component {
   steps = [
     { id: 'start', label: 'Introduction', component: Start, pattern: '/start' },
     { id: 'profile', label: 'Business details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { id: 'business', label: 'Classification', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
+    { id: 'business', label: 'About your business', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
     { id: 'info', label: 'Contact details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case Studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { id: 'tools', label: 'Tools and methodologies', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
+    { id: 'awards', label: 'Awards and recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
+    { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
     { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
   ]
 

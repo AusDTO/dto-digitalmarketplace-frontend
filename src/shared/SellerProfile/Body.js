@@ -120,7 +120,7 @@ const Body = (props) => {
         </p>
           { interstate && <p><b>This seller is able work interstate</b></p>}
         <b>ABN</b><br/>
-        <p>{abn}</p>
+        <p><a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} target="_blank">{abn}</a></p>
       </Row>
       <Row title="Documents" show={documents && Object.keys(documents).length}>
           {documents && Object.keys(documents).map((key, val) =>
