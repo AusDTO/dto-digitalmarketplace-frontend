@@ -104,7 +104,7 @@ class DocumentsForm extends BaseForm {
             valid={form.valid}
             onCustomSubmit={onSubmit}
             validators={{
-              documents: (documents) => Object.keys(documents).length === 3
+              documents: (documents) => documents && Object.keys(documents).length === 3
             }}
           >
             {csrf_token && (
@@ -114,7 +114,7 @@ class DocumentsForm extends BaseForm {
             {this.formFields.map((field, i) => {
               const key = field.id;
               const fieldState = this.state[key] || {}
-              const doc = documentsForm.documents[key]
+              const doc = documentsForm.documents && documentsForm.documents[key]
               const expiry_date = documentsForm.expiry_dates[key]
               const expiry_date_field = 'expiry_date_' + key
               const errors = this.state.errors[key]
