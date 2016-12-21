@@ -11,7 +11,7 @@
     "phone": "0292000000",
     "email": "email@domain.com",
 
-    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus finibus ultrices. Nulla scelerisque justo a erat fringilla, ac tempor odio viverra. Etiam ut aliquam ante. Etiam quis lorem mollis, ultrices mi id, dictum leo. Integer rutrum, urna in pretium volutpat, nisi est rutrum magna, ac viverra augue turpis eget sem. Etiam accumsan efficitur dolor quis ultrices. Etiam ullamcorper nibh id imperdiet luctus. Duis nunc eros, fringilla et magna nec, efficitur ultrices magna.",
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus finibus ultrices. Nulla scelerisque justo a erat fringilla, ac tempor odio viverra. Etiam ut aliquam ante. Etiam quis lorem mollis, ultrices mi id, dictum leo. Integer rutrum, urna in pretium volutpat, est rutrum magna, ac viverra augue turpis eget sem.",
     "website": "http://website.com",
     "linkedin": "http://linkedin.com",
     "address": {
@@ -39,7 +39,21 @@
               "http://google.com"
             ]
         }
-    }
+    },
+    "tools": "Jira, Basecamp, Digital Service Standard, Retros, Sharpies.",
+    "methodologies": "Kanban, lean, scaled agile (SAFe).",
+    "awards": ["Best Digital 2016", "Best Digital 2015"],
+    "certifications": ["Agile Certified", "SCRUM certified"],
+    "structual_changes": true,
+    "structual_changes_details": "",
+    "investigations": false,
+    "investigations_details": "",
+    "legal_proceedings": false,
+    "legal_proceedings_details": "",
+    "insurance_claims": false,
+    "insurance_claims_details": "",
+    "conflicts_of_interest": false,
+    "conflicts_of_interest_details": ""
   },
   "form_options": {
     "action": "/documents"

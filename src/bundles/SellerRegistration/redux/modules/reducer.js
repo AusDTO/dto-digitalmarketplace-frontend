@@ -23,6 +23,9 @@ export default combineReducers({
     yourInfoForm: {},
     businessDetailsForm: {},
     enterPasswordForm: {},
-    signupForm: {}
+    signupForm: {},
+    awardsForm: {},
+    toolsForm: {},
+    disclosuresForm: {}
   })
 })

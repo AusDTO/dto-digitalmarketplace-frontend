@@ -64,6 +64,26 @@ export default combineReducers({
     documentsForm: {
       documents: {},
       expiry_dates: {}
+    },
+    toolsForm: {
+      tools: '',
+      methodologies: ''
+    },
+    awardsForm: {
+        awards: '',
+        certifications: ''
+    },
+    disclosuresForm: {
+        structual_changes: false,
+        structual_changes_details: '',
+        investigations: false,
+        investigations_details: '',
+        legal_proceedings: false,
+        legal_proceedings_details: '',
+        insurance_claims: false,
+        insurance_claims_details: '',
+        conflicts_of_interest: false,
+        conflicts_of_interest_details: '',
     }
   })
 })

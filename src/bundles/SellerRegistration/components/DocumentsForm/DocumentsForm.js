@@ -5,7 +5,6 @@ import { Form, actions } from 'react-redux-form';
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
-import Textfield     from '../../../../shared/form/Textfield';
 import Datefield     from '../../../../shared/form/Datefield';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 
