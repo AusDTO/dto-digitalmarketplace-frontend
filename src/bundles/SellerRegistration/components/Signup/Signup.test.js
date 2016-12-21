@@ -82,7 +82,8 @@ test('elementProps onClick', () => {
     store,
     forms: {
       domainSelectorForm: {},
-      businessDetailsForm: {}
+      businessDetailsForm: {},
+      yourInfoForm: {}
     }
   }
 
@@ -122,7 +123,8 @@ test('elementProps onSubmit', () => {
     store,
     forms: {
       domainSelectorForm: {},
-      businessDetailsForm: {}
+      businessDetailsForm: {},
+      yourInfoForm: {}
     }
   }
 
@@ -157,7 +159,8 @@ test('elementProps onSubmit with no event', () => {
     store,
     forms: {
       domainSelectorForm: {},
-      businessDetailsForm: {}
+      businessDetailsForm: {},
+      yourInfoForm: {}
     }
   }
 
@@ -195,7 +198,8 @@ test('elementProps onSubmit with no steps left', () => {
     store,
     forms: {
       domainSelectorForm: {},
-      businessDetailsForm: {}
+      businessDetailsForm: {},
+      yourInfoForm: {}
     }
   }
 
@@ -247,7 +251,8 @@ test('without filterSteps', () => {
     store,
     forms: {
       domainSelectorForm: {},
-      businessDetailsForm: {}
+      businessDetailsForm: {},
+      yourInfoForm: {}
     }
   }
 
@@ -296,7 +301,8 @@ test('filterSteps', () => {
     store,
     forms: {
       domainSelectorForm: {},
-      businessDetailsForm: {}
+      businessDetailsForm: {},
+      yourInfoForm: {}
     }
   }
 
