@@ -4,7 +4,7 @@ const Finish = ({ onClick }) => (
   <div>
     <h1>Congratulations!</h1>
     <p>
-      This is great.  You have completed the most important step to becoming an active participant of the Marketplace.
+      You have completed the most important step to becoming an active participant of the Marketplace.
     </p>
     <p>
       We are still finalising our terms and conditions.
