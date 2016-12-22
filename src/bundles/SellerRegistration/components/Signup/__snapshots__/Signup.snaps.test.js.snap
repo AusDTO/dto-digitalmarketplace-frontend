@@ -130,10 +130,10 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/submit"
+            href="/finish"
             onClick={[Function]}>
             <span>
-              Declaration
+              Finish
             </span>
           </a>
         </li>
@@ -325,10 +325,10 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/submit"
+            href="/finish"
             onClick={[Function]}>
             <span>
-              Declaration
+              Finish
             </span>
           </a>
         </li>
@@ -636,10 +636,10 @@ exports[`test Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/submit"
+            href="/finish"
             onClick={[Function]}>
             <span>
-              Declaration
+              Finish
             </span>
           </a>
         </li>
