@@ -25,6 +25,7 @@ import ToolsForm            from '../ToolsForm';
 import Submit               from '../Submit';
 import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
+import Finish               from '../Finish';
 
 class Signup extends React.Component {
 
@@ -48,7 +49,7 @@ class Signup extends React.Component {
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
-    { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
+    { id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
   ]
 
   elementProps = {
