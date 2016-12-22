@@ -4,10 +4,10 @@ const Finish = ({ onClick }) => (
   <div>
     <h1>Congratulations!</h1>
     <p>
-      You made it!
+      This is great.  You have completed the most important step to becoming an active participant of the Marketplace.
     </p>
     <p>
-      Unfortunately, we are still finalising our terms and conditions.
+      We are still finalising our terms and conditions.
     </p>
     <p>
       Once the terms are completed in early 2017 you'll be able to put your new profile live!
