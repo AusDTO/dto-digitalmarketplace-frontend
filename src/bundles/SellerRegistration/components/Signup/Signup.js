@@ -48,7 +48,7 @@ class Signup extends React.Component {
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'digital', label: 'Digital services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { id: 'review', label: 'Review', component: Review, pattern: '/review' },
+    // { id: 'review', label: 'Review', component: Review, pattern: '/review' },
     // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
     { id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
   ]

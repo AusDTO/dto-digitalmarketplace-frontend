@@ -168,15 +168,35 @@ class BusinessInfoForm extends BaseForm {
                         
 
                         <fieldset>
-                            <legend></legend>
+                            <legend>If you have previous experience with government, who have you worked with?</legend>
                             <Control.checkbox
-                                model={`${model}.seller_type.new_to_gov`}
-                                id="new-to-gov"
-                                name="new-to-gov"
-                                value="worked with Government before"
-                            />
-                            <label htmlFor="new-to-gov">Have you worked with Government before?
+                                model={`${model}.seller_type.local_government_experience`}
+                                name="local_government_experience"
+                                id="local"
+                                value="Local"/>
+                            <label htmlFor="local">Local Government
+
                             </label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.state_government_experience`}
+                                name="state_government_experience"
+                                id="state"
+                                value="state"/>
+                            <label htmlFor="state">State and/or Territory Government
+
+                            </label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.federal_government_experience`}
+                                name="federal_government_experience"
+                                id="federal"
+                                value="federal"/>
+                            <label htmlFor="federal">Federal Government
+
+                            </label>
+
+                     
                             
                             <Textfield
                                 model={`${model}.other_panels`}

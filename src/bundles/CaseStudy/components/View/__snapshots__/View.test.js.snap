@@ -49,7 +49,7 @@ exports[`test View with required attributes 1`] = `
       </h4>
       <p />
       <h4>
-        Roles
+        Responsible for
       </h4>
       <p />
     </aside>
@@ -148,7 +148,7 @@ exports[`test View with required attributes and meta links 1`] = `
       </h4>
       <p />
       <h4>
-        Roles
+        Responsible for
       </h4>
       <p />
     </aside>

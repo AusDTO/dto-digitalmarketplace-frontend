@@ -3,14 +3,14 @@ import { Control } from 'react-redux-form';
 
 const YesNoDetailsField = ({ name, id, label, model, validators, messages, description, controlProps, mapProps }) => (
   <div className="field">
-          <Control.checkbox
+      {/*<Control.checkbox
                  name={name}
                  id={id}
                  value="Yes"
                  model={model}
-          />
+          />*/}
           <label htmlFor={id}>
-              {label}
+              <strong>{label}</strong>
           </label>
           If yes, provide details...
           <Control.textarea

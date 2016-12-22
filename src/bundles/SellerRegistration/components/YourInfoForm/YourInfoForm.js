@@ -24,7 +24,7 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1">Check your contact details</h1>
+          <h1 tabIndex="-1">Check your contacts</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>

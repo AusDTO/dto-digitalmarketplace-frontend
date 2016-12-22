@@ -59,7 +59,7 @@ class CaseStudyForm extends BaseForm {
           <div className="callout--calendar-event">
             <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
             <p id="header-description">
-              To be successfully evaluated, your case study must meet the {service} <a href="/evaluation-criteria" target="_blank" rel="external">assessment criteria</a></p>
+              To be successfully evaluated, your case study must meet the {service} <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
           </div>    
         </header>
         <article role="main">
@@ -118,11 +118,11 @@ class CaseStudyForm extends BaseForm {
                 name="roles"
                 id="roles"
                 htmlFor="roles"
-                label="What role did your business play?"
+                label="What was your business responsible for?"
                 description="For example, ran whole project, engaged in discovery activities or responsible for delivery."
                 validators={{ required }}
                 messages={{
-                    required: 'You must specify the roles you provided',
+                    required: 'You must specify the your business responsibilities',
                 }} />
 
             <Textarea

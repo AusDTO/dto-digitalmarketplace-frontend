@@ -123,7 +123,7 @@ class DomainList extends BaseForm {
 
                 You <strong>must</strong> add case studies for new services. We recommended adding case studies for pre-approved services.
                 If you use the same case study for different services, you must demonstrate how it met the
-                &nbsp;<a href="/evaluation-criteria" target="_blank" rel="external">assessment criteria</a> for that specific service.
+                &nbsp;<a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for that specific service.
 
               </p>
             </header>
@@ -265,7 +265,7 @@ class DomainList extends BaseForm {
                 ? <View
                     {...currentStudy}
                     onSubmit={onCaseStudySubmit.bind(this, params)}
-                    confirmButton={<Link role="button" to={pathname}>Add case study</Link>}
+                    confirmButton={<Link role="button" to={pathname}>Finish case study</Link>}
                     returnLink={<p><Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link></p>}
                   />
                 : <Redirect to={pathname} />

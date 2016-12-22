@@ -120,16 +120,6 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/review"
-            onClick={[Function]}>
-            <span>
-              Review
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/finish"
             onClick={[Function]}>
             <span>
@@ -173,7 +163,7 @@ exports[`test Signup renders 1`] = `
         <li>
           Proof of successful projects and past client contact details that will be assessed against 
           <a
-            href="/evaluation-criteria"
+            href="/assessment-criteria"
             rel="external"
             target="_blank">
             evaluation criteria
@@ -315,16 +305,6 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/review"
-            onClick={[Function]}>
-            <span>
-              Review
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/finish"
             onClick={[Function]}>
             <span>
@@ -342,7 +322,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your contact details
+          Check your contacts
         </h1>
       </header>
       <article
@@ -626,16 +606,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/review"
-            onClick={[Function]}>
-            <span>
-              Review
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/finish"
             onClick={[Function]}>
             <span>
@@ -653,7 +623,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your contact details
+          Check your contacts
         </h1>
       </header>
       <article
