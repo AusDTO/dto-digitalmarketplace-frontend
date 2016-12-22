@@ -41,31 +41,56 @@ class BusinessInfoForm extends BaseForm {
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
-                        <h2>Business size/status</h2>
-                        <Textfield
-                            model={`${model}.size`}
-                            name="size"
-                            id="size"
-                            htmlFor="size"
-                            label="Number of employees"
-                            validators={{ required }}
-                            messages={{
-                                required: 'Number of employees is required',
-                            }}
-                        />
+
                         <fieldset>
-                            <legend>Select all that apply to your business (optional).</legend>
-                            <Control.checkbox
-                                model={`${model}.seller_type.sme`}
-                                id="sme"
-                                name="sme"
-                                value="SME"
-                            />
-                            <label htmlFor="sme">SME
-                                <p>Less than 200 employees and is independent of
-                                    any parent organisation for taxation.</p>
+                            <legend>Number of employees</legend>
+                            <Control.radio
+                                model={`${model}.seller_type.number_of_employees`}
+                                name="number_of_employees"
+                                id="sole"
+                                value="Sole trader"/>
+                            <label htmlFor="sole">Sole trader
+
                             </label>
 
+                            <Control.radio
+                                model={`${model}.seller_type.number_of_employees`}
+                                name="number_of_employees"
+                                id="2to10"
+                                value="2-10"/>
+                            <label htmlFor="2to10">2-10
+
+                            </label>
+
+                            <Control.radio
+                                model={`${model}.seller_type.number_of_employees`}
+                                name="number_of_employees"
+                                id="11to50"
+                                value="11-50r"/>
+                            <label htmlFor="11to50">11-50
+
+                            </label>
+
+                            <Control.radio
+                                model={`${model}.seller_type.number_of_employees`}
+                                name="number_of_employees"
+                                id="51to200"
+                                value="51-200"/>
+                            <label htmlFor="51to200">51-200
+
+                            </label>
+
+                            <Control.radio
+                                model={`${model}.seller_type.number_of_employees`}
+                                name="number_of_employees"
+                                id="200plus"
+                                value="200+"/>
+                            <label htmlFor="200plus">200+
+
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Select all that apply to your business (optional).</legend>
                             <Control.checkbox
                                 model={`${model}.seller_type.start_up`}
                                 id="start-up"
@@ -73,10 +98,23 @@ class BusinessInfoForm extends BaseForm {
                                 value="Start Up"
                             />
                             <label htmlFor="start-up">Start up
-                                <p>Able to disrupt an existing business model through technology
-                                    with potential for high growth. Up to 5 years from business
-                                    commencement and not listed on any stock exchange.</p>
+                                <p>Your business aims to disrupt an established market using technology.
+                                    Up to 5 years from business
+                                    commencement. Not listed on any stock exchange.</p>
                             </label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.sme`}
+                                id="sme"
+                                name="sme"
+                                value="SME"
+                            />
+                            <label htmlFor="sme">SME
+                                <p>Your business has less than 200 employees and is independent of
+                                    any parent organisation for taxation purposes.</p>
+                            </label>
+
+
                             <Control.checkbox
                                 model={`${model}.seller_type.indigenous`}
                                 id="indigenous"
@@ -84,51 +122,24 @@ class BusinessInfoForm extends BaseForm {
                                 value="Indigenous"
                             />
                             <label htmlFor="indigenous">Indigenous
-                                <p>Business is listed on a directory
+                                <p>Your business is listed on a directory
                                     of indigenous businesses, such as Supply Nation.</p>
                             </label>
-                            <Control.checkbox
-                                model={`${model}.seller_type.rural`}
-                                id="rural"
-                                name="rural"
-                                value="Rural"
-                            />
-                            <label htmlFor="rural">Rurally based
-                                <p>...</p>
-                            </label>
+
                         </fieldset>
-                        <h2>Purpose</h2>
+
                         <fieldset>
-                            <Control.checkbox
-                                model={`${model}.seller_type.service`}
-                                id="service"
-                                name="service"
-                                value="Service"
-                            />
-                            <label htmlFor="service">Service based business
-                                <p>...</p>
-                            </label>
+                            <legend>Business purpose</legend>
+
                             <Control.checkbox
                                 model={`${model}.seller_type.product`}
                                 id="product"
                                 name="product"
                                 value="Product"
                             />
-                            <label htmlFor="product">Product based business 
-                                <p>Your services require
-                                    your proprietary software or hardware.</p>
+                            <label htmlFor="product">Product
+                                <p>You provide software, platform or infrastructure as a service</p>
                             </label>
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.recruitment`}
-                                id="recruitment"
-                                name="recruitment"
-                                value="Recruitment"
-                            />
-                            <label htmlFor="recruitment">Recruiter 
-                                <p>Primary business purpose is resourcing.</p>
-                            </label>
-                        
 
 
                             <Control.checkbox
@@ -138,20 +149,33 @@ class BusinessInfoForm extends BaseForm {
                                 value="Not-for-profit / social enterprise"
                             />
                             <label htmlFor="nfp-social-enterprise">Not-for-profit / social enterprise
-                                <p>You do not operate for profit or personal gain.</p>
+                                <p>An organisation that applies commercial strategies to maximize improvements in human or environmental well-being and reinvests profit to fulfil its mission.</p>
                             </label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.recruitment`}
+                                id="recruitment"
+                                name="recruitment"
+                                value="Recruitment"
+                            />
+                            <label htmlFor="recruitment">Recruiter 
+                                <p>Your primary purpose is resourcing and you don’t take responsibility for the quality of the work performed by specialists you place.</p>
+                            </label>
+                        
+
+
                         </fieldset>
                         
-                        <h2> Previous experience with Government </h2>
+
                         <fieldset>
+                            <legend></legend>
                             <Control.checkbox
                                 model={`${model}.seller_type.new_to_gov`}
                                 id="new-to-gov"
                                 name="new-to-gov"
-                                value="New to government"
+                                value="worked with Government before"
                             />
-                            <label htmlFor="new-to-gov">New to government?
-                                <p>...</p>
+                            <label htmlFor="new-to-gov">Have you worked with Government before?
                             </label>
                             
                             <Textfield
@@ -159,11 +183,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="other-panels"
                                 id="other-panels"
                                 htmlFor="other-panels"
-                                label="Are you on any government panels? "
-                                validators={{ required }}
-                                messages={{
-                                    required: 'Other panels is required',
-                                }}
+                                label="List any other Government panels you have joined (optional) "
                             />
                         </fieldset>
                         

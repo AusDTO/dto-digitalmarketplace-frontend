@@ -119,22 +119,25 @@ class DomainList extends BaseForm {
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
-              <p>To make sure you meet the Marketplace standard, each case study will be assessed 
-                against the relevant <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a>
-                You can use the same case study for different services. 
+              <p>Case studies help government buyers learn more about your expertise and helps them find you through search.<br/><br/>
+
+                You <strong>must</strong> add case studies for new services. We recommended adding case studies for pre-approved services.
+                If you use the same case study for different services, you must demonstrate how it met the
+                &nbsp;<a href="/evaluation-criteria" target="_blank" rel="external">assessment criteria</a> for that specific service.
+
               </p>
             </header>
             <article role="main">
              
               <ErrorBox focusOnMount={true} model={model}/>
-
+                {/* HACKHACKHACK
               <strong>{leftToAddCount === 0
                 ? 'All services have a case study'
                 : `${leftToAddCount} services to add`
               }</strong>
 
               <ProgressBar value={addedServices.length} max={serviceCount} />
-
+*/}
               {Object.keys(services).map((service, i) => {
                 let list = getStudiesByService(caseStudyForm.case_studies, service);
                 return (
@@ -213,8 +216,8 @@ class DomainList extends BaseForm {
                     let unique = studyServices.filter((s, i) => {
                       return studyServices.indexOf(s) === i;
                     })
-
-                    return serviceCount === unique.length
+// HACKHACKHACK disabling case study count validation for existing seller flow
+                    return true //serviceCount === unique.length
                   }
                 }}
                 onSubmit={onSubmit}>

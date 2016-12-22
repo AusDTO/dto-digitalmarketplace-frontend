@@ -44,13 +44,13 @@ class DisclosuresForm extends BaseForm {
                         <fieldset>
                             <legend>These responses are used by assessors but not visible on your profile.</legend>
                             <YesNoDetails name="structual_changes" id="structual_changes" model={`${model}.structual_changes`}
-                                          label="Are you in or contemplating discussions to sell, merge, or alter the corporate structure of your company?"/>
+                                          label="Are you planning to sell, merge, or alter the corporate structure of your company?"/>
                             <YesNoDetails name="investigations" id="investigations" model={`${model}.investigations`}
-                                          label="Has your organisation in the last 5 years been investigated by any agency, authority or regulator in connection with improper business practices?"/>
+                                          label="Has your organisation been investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"/>
                             <YesNoDetails name="legal_proceedings" id="legal_proceedings" model={`${model}.legal_proceedings`}
-                                          label="Has your organisation in the last 5 years been involved in relevant, material, legal proceedings?"/>
+                                          label="Has your organisation been involved in any legal proceedings in the last 5 years? "/>
                             <YesNoDetails name="insurance_claims" id="insurance_claims" model={`${model}.insurance_claims`}
-                                          label="Has your organisation in the last 5 years made any claims on your PI or where appropriate Fidelity insurance?"/>
+                                          label="Has your organisation made any claims on your professional indemnity or fidelity insurance in the last 5 years ?"/>
                             <YesNoDetails name="conflicts_of_interest" id="conflicts_of_interest" model={`${model}.conflicts_of_interest`}
                                           label="Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact on the Digital Marketplace?"/>
                         </fieldset>

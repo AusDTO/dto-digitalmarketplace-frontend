@@ -59,7 +59,7 @@ class CaseStudyForm extends BaseForm {
           <div className="callout--calendar-event">
             <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
             <p id="header-description">
-              To be successfully evaluated, your case study must meet the {service} <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a></p>
+              To be successfully evaluated, your case study must meet the {service} <a href="/evaluation-criteria" target="_blank" rel="external">assessment criteria</a></p>
           </div>    
         </header>
         <article role="main">
@@ -113,30 +113,30 @@ class CaseStudyForm extends BaseForm {
               }}
             />
 
+            <Textfield
+                model={`${model}.roles`}
+                name="roles"
+                id="roles"
+                htmlFor="roles"
+                label="What role did your business play?"
+                description="For example, ran whole project, engaged in discovery activities or responsible for delivery."
+                validators={{ required }}
+                messages={{
+                    required: 'You must specify the roles you provided',
+                }} />
+
             <Textarea
               model={`${model}.opportunity`}
               name="opportunity"
               id="opportunity"
               controlProps={{ limit: 200 }}
-              label="Outline the problem or opportunity"
+              label="Outline the challenge or opportunity"
               description="Describe the project goal and any relevant background information."
               messages={{
                 required: 'You must outline the opportunity'
               }}
               validators={{ required }}
             />
-
-            <Textfield
-              model={`${model}.roles`}
-              name="roles"
-              id="roles"
-              htmlFor="roles"
-              label="What was your business responsible for?"
-              description="e.g. Ran whole project, engaged in discovery activites or responsible for delivery."
-              validators={{ required }}
-              messages={{
-                required: 'You must specify the roles you provided',
-              }} />
 
             <Textarea
               model={`${model}.approach`}
@@ -176,17 +176,28 @@ class CaseStudyForm extends BaseForm {
             />
 
             <h3>Referee</h3>
-            <p>Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.</p>
+            <p>Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.</p>
 
             <Textfield
-                model={`${model}.referee_name`}
-                name="refereeName"
-                id="refereeName"
-                htmlFor="refereeName"
-                label="Referee's name"
-                description="The full name of the best person to contact about your experience"
+              model={`${model}.referee_name`}
+              name="refereeName"
+              id="refereeName"
+              htmlFor="refereeName"
+              label="Referee's name"
+              description="The full name of the best person to contact about your experience"
+              validators={{ required }}
+              messages={{ required: 'Please provide a referee name.'}}
+          />
+            
+            <Textfield
+                model={`${model}.referee_position`}
+                name="refereePosition"
+                id="refereePosition"
+                htmlFor="refereePosition"
+                label="Referee's position"
+                description="At the time of the project"
                 validators={{ required }}
-                messages={{ required: 'Please provide a referee name.'}}
+                messages={{ required: 'Please provide a referee position.'}}
             />
 
             <Textfield
@@ -204,7 +215,7 @@ class CaseStudyForm extends BaseForm {
                 model={`${model}.referee_contact`}
                 id="refereeContact"
                 messages={{
-                  required: 'Please ackknowledge the referee can be contacted.'
+                  required: 'Please acknowledge the referee can be contacted.'
                 }}
               />
               <Control.checkbox
@@ -213,8 +224,7 @@ class CaseStudyForm extends BaseForm {
                 name="refereeContact"
                 validators={{ required }}
               />
-              <label htmlFor="refereeContact">I acknowledge my reference gives permission to be contacted 
-                and have their information be shared within the Digital Transformation Agency for evaluation.
+              <label htmlFor="refereeContact">I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
               </label>
             </div>
 

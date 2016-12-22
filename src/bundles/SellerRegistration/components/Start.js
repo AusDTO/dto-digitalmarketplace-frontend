@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-const Start = ({ signup, onClick }) => (
+const Start = ({ supplierCode, signup, onClick }) => (
   <div>
     <h1>Joining the Marketplace</h1>
     <p>
@@ -35,4 +36,12 @@ Start.propTypes = {
   onClick: React.PropTypes.func
 };
 
-export default Start;
+const mapStateToProps = (state, ownProps) => {
+    return ownProps
+}
+
+export {
+    mapStateToProps
+}
+
+export default connect(mapStateToProps)(Start);

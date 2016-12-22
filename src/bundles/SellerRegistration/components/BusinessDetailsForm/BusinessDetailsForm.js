@@ -28,7 +28,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
+                    <h1 tabIndex="-1">Check your details</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -79,7 +79,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="summary"
                             controlProps={{limit: 50}}
                             label="Summary"
-                            description="3-4 sentences that describe your business."
+                            description="3-4 sentences that describe your business. This is visible to all viewers without a login."
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}
@@ -112,6 +112,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="address_line"
                             htmlFor="address_line"
                             label="Address"
+                            description="Principal place of business"
                             messages={{
                                 required: 'You must provide an address'
                             }}
@@ -160,7 +161,7 @@ class BusinessDetailsForm extends BaseForm {
                           name="interstate"
                         />
                         <label htmlFor="interstate">
-                            Able to work interstate
+                            Able to work regionally or interstate
                         </label>
 
                         {children}
