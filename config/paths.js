@@ -50,7 +50,6 @@ var config = {
     'casestudy': [resolveApp('src/bundles/CaseStudy/CaseStudyWidget')],
     'casestudy-view': [resolveApp('src/bundles/CaseStudy/CaseStudyViewWidget')],
     'shared': [resolveApp('src/shared/sharedEntry')],
-    'seller-registration-start': [resolveApp('src/bundles/SellerRegistration/StartWidget')],
     'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')],
     'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')],
     'applicant-signup': [resolveApp('src/bundles/SellerRegistration/ApplicantSignupWidget')],
