@@ -247,7 +247,7 @@ exports[`test DomainSelector renders 1`] = `
             Strategy, delivery and governance
              
             <p>
-              Responsible for the strategic direction and delivery of a digital service or product.  Such as business analysis, product management and delivery management.
+              Strategy and policy relates to the higher level planning of a digital product or service. This can include including the analysis of new technologies, providing legal assurance. 
             </p>
           </label>
         </div>
@@ -530,7 +530,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             Strategy, delivery and governance
              
             <p>
-              Responsible for the strategic direction and delivery of a digital service or product.  Such as business analysis, product management and delivery management.
+              Strategy and policy relates to the higher level planning of a digital product or service. This can include including the analysis of new technologies, providing legal assurance. 
             </p>
           </label>
         </div>

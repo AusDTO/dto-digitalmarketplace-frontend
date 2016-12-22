@@ -18,7 +18,7 @@ exports[`test CaseStudyForm renders 1`] = `
           href="/evaluation-criteria"
           rel="external"
           target="_blank">
-          evaluation criteria
+          assessment criteria
         </a>
       </p>
     </div>
@@ -103,8 +103,34 @@ exports[`test CaseStudyForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="roles">
+          What role did your business play?
+        </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          For example, ran whole project, engaged in discovery activities or responsible for delivery.
+        </p>
+        <input
+          aria-describedby="roles-hint"
+          className=""
+          id="roles"
+          maxLength={undefined}
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="opportunity">
-          Outline the problem or opportunity
+          Outline the challenge or opportunity
         </label>
         <p
           className="hint"
@@ -126,32 +152,6 @@ exports[`test CaseStudyForm renders 1`] = `
             200 words remaining
           </span>
         </div>
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="roles">
-          What was your business responsible for?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint">
-          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
       </div>
       <div
         className="field">
@@ -335,7 +335,7 @@ exports[`test CaseStudyForm renders 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -355,6 +355,32 @@ exports[`test CaseStudyForm renders 1`] = `
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereePosition">
+          Referee\'s position
+        </label>
+        <p
+          className="hint"
+          id="refereePosition-hint">
+          At the time of the project
+        </p>
+        <input
+          aria-describedby="refereePosition-hint"
+          className=""
+          id="refereePosition"
+          maxLength={undefined}
+          name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -396,7 +422,7 @@ exports[`test CaseStudyForm renders 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1040,7 +1066,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           href="/evaluation-criteria"
           rel="external"
           target="_blank">
-          evaluation criteria
+          assessment criteria
         </a>
       </p>
     </div>
@@ -1125,8 +1151,34 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="roles">
+          What role did your business play?
+        </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          For example, ran whole project, engaged in discovery activities or responsible for delivery.
+        </p>
+        <input
+          aria-describedby="roles-hint"
+          className=""
+          id="roles"
+          maxLength={undefined}
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="opportunity">
-          Outline the problem or opportunity
+          Outline the challenge or opportunity
         </label>
         <p
           className="hint"
@@ -1148,32 +1200,6 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
             200 words remaining
           </span>
         </div>
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="roles">
-          What was your business responsible for?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint">
-          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
       </div>
       <div
         className="field">
@@ -1357,7 +1383,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -1377,6 +1403,32 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereePosition">
+          Referee\'s position
+        </label>
+        <p
+          className="hint"
+          id="refereePosition-hint">
+          At the time of the project
+        </p>
+        <input
+          aria-describedby="refereePosition-hint"
+          className=""
+          id="refereePosition"
+          maxLength={undefined}
+          name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1418,7 +1470,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1454,7 +1506,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           href="/evaluation-criteria"
           rel="external"
           target="_blank">
-          evaluation criteria
+          assessment criteria
         </a>
       </p>
     </div>
@@ -1491,14 +1543,14 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         </li>
         <li>
           <a
-            href="#opportunity">
-            You must outline the opportunity
+            href="#roles">
+            You must specify the roles you provided
           </a>
         </li>
         <li>
           <a
-            href="#roles">
-            You must specify the roles you provided
+            href="#opportunity">
+            You must outline the opportunity
           </a>
         </li>
         <li>
@@ -1521,6 +1573,12 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         </li>
         <li>
           <a
+            href="#refereePosition">
+            Please provide a referee position.
+          </a>
+        </li>
+        <li>
+          <a
             href="#refereeEmail">
             Please provide a referee phone number.
           </a>
@@ -1528,7 +1586,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <li>
           <a
             href="#refereeContact">
-            Please ackknowledge the referee can be contacted.
+            Please acknowledge the referee can be contacted.
           </a>
         </li>
       </ul>
@@ -1649,8 +1707,45 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="roles">
+          What role did your business play?
+        </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          For example, ran whole project, engaged in discovery activities or responsible for delivery.
+        </p>
+        <a
+          className="validation-message"
+          href="#roles">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            You must specify the roles you provided
+          </span>
+        </a>
+        <input
+          aria-describedby="roles-hint"
+          className="invalid"
+          id="roles"
+          maxLength={undefined}
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="opportunity">
-          Outline the problem or opportunity
+          Outline the challenge or opportunity
         </label>
         <p
           className="hint"
@@ -1683,43 +1778,6 @@ exports[`test CaseStudyForm renders with errors 1`] = `
             200 words remaining
           </span>
         </div>
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="roles">
-          What was your business responsible for?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint">
-          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
-        </p>
-        <a
-          className="validation-message"
-          href="#roles">
-          <span
-            className="visuallyhidden">
-            Validation Error: 
-          </span>
-          <span>
-            You must specify the roles you provided
-          </span>
-        </a>
-        <input
-          aria-describedby="roles-hint"
-          className="invalid"
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
       </div>
       <div
         className="field">
@@ -1925,7 +1983,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -1956,6 +2014,43 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereePosition">
+          Referee\'s position
+        </label>
+        <p
+          className="hint"
+          id="refereePosition-hint">
+          At the time of the project
+        </p>
+        <a
+          className="validation-message"
+          href="#refereePosition">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            Please provide a referee position.
+          </span>
+        </a>
+        <input
+          aria-describedby="refereePosition-hint"
+          className="invalid"
+          id="refereePosition"
+          maxLength={undefined}
+          name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2005,7 +2100,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            Please ackknowledge the referee can be contacted.
+            Please acknowledge the referee can be contacted.
           </span>
         </a>
         <input
@@ -2019,7 +2114,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2051,7 +2146,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           href="/evaluation-criteria"
           rel="external"
           target="_blank">
-          evaluation criteria
+          assessment criteria
         </a>
       </p>
     </div>
@@ -2141,8 +2236,34 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="roles">
+          What role did your business play?
+        </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          For example, ran whole project, engaged in discovery activities or responsible for delivery.
+        </p>
+        <input
+          aria-describedby="roles-hint"
+          className=""
+          id="roles"
+          maxLength={undefined}
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="opportunity">
-          Outline the problem or opportunity
+          Outline the challenge or opportunity
         </label>
         <p
           className="hint"
@@ -2164,32 +2285,6 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             200 words remaining
           </span>
         </div>
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="roles">
-          What was your business responsible for?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint">
-          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
       </div>
       <div
         className="field">
@@ -2373,7 +2468,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -2393,6 +2488,32 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereePosition">
+          Referee\'s position
+        </label>
+        <p
+          className="hint"
+          id="refereePosition-hint">
+          At the time of the project
+        </p>
+        <input
+          aria-describedby="refereePosition-hint"
+          className=""
+          id="refereePosition"
+          maxLength={undefined}
+          name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2434,7 +2555,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2466,7 +2587,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           href="/evaluation-criteria"
           rel="external"
           target="_blank">
-          evaluation criteria
+          assessment criteria
         </a>
       </p>
     </div>
@@ -2551,8 +2672,34 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="roles">
+          What role did your business play?
+        </label>
+        <p
+          className="hint"
+          id="roles-hint">
+          For example, ran whole project, engaged in discovery activities or responsible for delivery.
+        </p>
+        <input
+          aria-describedby="roles-hint"
+          className=""
+          id="roles"
+          maxLength={undefined}
+          name="roles"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="opportunity">
-          Outline the problem or opportunity
+          Outline the challenge or opportunity
         </label>
         <p
           className="hint"
@@ -2574,32 +2721,6 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             198 words remaining
           </span>
         </div>
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="roles">
-          What was your business responsible for?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint">
-          e.g. Ran whole project, engaged in discovery activites or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
       </div>
       <div
         className="field">
@@ -2783,7 +2904,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators.  It will not be published anywhere on the marketplace.
+        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -2803,6 +2924,32 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="refereePosition">
+          Referee\'s position
+        </label>
+        <p
+          className="hint"
+          id="refereePosition-hint">
+          At the time of the project
+        </p>
+        <input
+          aria-describedby="refereePosition-hint"
+          className=""
+          id="refereePosition"
+          maxLength={undefined}
+          name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2844,7 +2991,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I acknowledge my reference gives permission to be contacted and have their information be shared within the Digital Transformation Agency for evaluation.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input

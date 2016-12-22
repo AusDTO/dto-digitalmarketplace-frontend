@@ -69,7 +69,7 @@ test('form renders server side with errors', () => {
   )
 
   let errors = wrapper.find('.validation-message');
-  expect(errors.length).toBe(5);
+  expect(errors.length).toBe(6);
 })
 
 test('handleClick with formValid=false', () => {
@@ -124,6 +124,7 @@ test.skip('handleClick when on last step', () => {
   const wrapper = mount(
     <MemoryRouter>
       {({router}) => (
+
         <Provider store={store}>
           <CaseStudyForm router={router} />
         </Provider>

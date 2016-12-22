@@ -37,7 +37,7 @@ export default [
   {
     key: 'stratdeliv',
     label: 'Strategy, delivery and governance',
-    description: 'Responsible for the strategic direction and delivery of a digital service or product.  Such as business analysis, product management and delivery management.',
+    description: 'Strategy and policy relates to the higher level planning of a digital product or service. This can include including the analysis of new technologies, providing legal assurance. ',
   },
   {
     key: 'ops',

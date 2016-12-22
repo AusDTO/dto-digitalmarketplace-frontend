@@ -30,26 +30,6 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/business-details"
-            onClick={[Function]}>
-            <span>
-              Business details
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/business-info"
-            onClick={[Function]}>
-            <span>
-              About your business
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/your-info"
             onClick={[Function]}>
             <span>
@@ -60,40 +40,30 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/domains"
+            href="/business-details"
             onClick={[Function]}>
             <span>
-              Digital Services
+              Business basics
             </span>
           </a>
         </li>
         <li>
           <a
             className=""
-            href="/case-study"
+            href="/business-info"
             onClick={[Function]}>
             <span>
-              Case Studies
+              Business details
             </span>
           </a>
         </li>
         <li>
           <a
             className=""
-            href="/tools"
+            href="/disclosures"
             onClick={[Function]}>
             <span>
-              Tools and methodologies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/awards"
-            onClick={[Function]}>
-            <span>
-              Awards and recognition
+              Disclosures
             </span>
           </a>
         </li>
@@ -110,20 +80,50 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/review"
+            href="/tools"
             onClick={[Function]}>
             <span>
-              Review your profile
+              Methods
             </span>
           </a>
         </li>
         <li>
           <a
             className=""
-            href="/disclosures"
+            href="/awards"
             onClick={[Function]}>
             <span>
-              Disclosures
+              Recognition
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/domains"
+            onClick={[Function]}>
+            <span>
+              Digital services
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/case-study"
+            onClick={[Function]}>
+            <span>
+              Case studies
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}>
+            <span>
+              Review
             </span>
           </a>
         </li>
@@ -224,26 +224,6 @@ exports[`test Signup renders empty Your Info form 1`] = `
         </li>
         <li>
           <a
-            className=""
-            href="/business-details"
-            onClick={[Function]}>
-            <span>
-              Business details
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/business-info"
-            onClick={[Function]}>
-            <span>
-              About your business
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
             className="is-active is-current"
             href="/your-info"
             onClick={[Function]}>
@@ -255,40 +235,30 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/domains"
+            href="/business-details"
             onClick={[Function]}>
             <span>
-              Digital Services
+              Business basics
             </span>
           </a>
         </li>
         <li>
           <a
             className=""
-            href="/case-study"
+            href="/business-info"
             onClick={[Function]}>
             <span>
-              Case Studies
+              Business details
             </span>
           </a>
         </li>
         <li>
           <a
             className=""
-            href="/tools"
+            href="/disclosures"
             onClick={[Function]}>
             <span>
-              Tools and methodologies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/awards"
-            onClick={[Function]}>
-            <span>
-              Awards and recognition
+              Disclosures
             </span>
           </a>
         </li>
@@ -305,20 +275,50 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/review"
+            href="/tools"
             onClick={[Function]}>
             <span>
-              Review your profile
+              Methods
             </span>
           </a>
         </li>
         <li>
           <a
             className=""
-            href="/disclosures"
+            href="/awards"
             onClick={[Function]}>
             <span>
-              Disclosures
+              Recognition
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/domains"
+            onClick={[Function]}>
+            <span>
+              Digital services
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/case-study"
+            onClick={[Function]}>
+            <span>
+              Case studies
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}>
+            <span>
+              Review
             </span>
           </a>
         </li>
@@ -342,7 +342,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Contact details
+          Check your contact details
         </h1>
       </header>
       <article
@@ -357,81 +357,13 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="contact_name">
-              Primary contact
-            </label>
-            <p
-              className="hint"
-              id="contact_name-hint">
-              This person may be contacted by government buyers and receive new opportunities by email.
-            </p>
-            <input
-              aria-describedby="contact_name-hint"
-              className=""
-              id="contact_name"
-              maxLength={undefined}
-              name="contact_name"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
-              htmlFor="contact_phone">
-              Phone
-            </label>
-            <input
-              aria-describedby={undefined}
-              className=""
-              id="contact_phone"
-              maxLength={undefined}
-              name="contact_phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
-              htmlFor="contact_email">
-              Email
-            </label>
-            <input
-              aria-describedby={undefined}
-              className=""
-              id="contact_email"
-              maxLength={undefined}
-              name="contact_email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
               htmlFor="representative">
               Authorised Representative
             </label>
             <p
               className="hint"
               id="representative-hint">
-              This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact.
+              This person must be authorised to enter into contracts on behalf of the business. 
             </p>
             <input
               aria-describedby="representative-hint"
@@ -489,192 +421,17 @@ exports[`test Signup renders empty Your Info form 1`] = `
               type="text"
               value="" />
           </div>
-          <input
-            name="next_step_slug"
-            type="hidden"
-            value="domains" />
-          <input
-            role="button"
-            type="submit"
-            value="Save and continue" />
-        </form>
-      </article>
-    </div>
-  </article>
-</div>
-`;
-
-exports[`test Signup renders populated Your Info form 1`] = `
-<div
-  className="row">
-  <aside
-    className="col-xs-12 col-sm-3"
-    id="main-navigation">
-    <button
-      aria-controls="local-nav"
-      aria-expanded={false}
-      className="local-nav-toggle"
-      onClick={[Function]}>
-      Menu
-    </button>
-    <nav
-      aria-expanded={false}
-      aria-label="main navigation"
-      className="local-nav step-navigation"
-      open={false}>
-      <ul>
-        <li>
-          <a
-            className=""
-            href="/start"
-            onClick={[Function]}>
-            <span>
-              Introduction
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/business-details"
-            onClick={[Function]}>
-            <span>
-              Business details
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/business-info"
-            onClick={[Function]}>
-            <span>
-              About your business
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className="is-active is-current"
-            href="/your-info"
-            onClick={[Function]}>
-            <span>
-              Contact details
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/domains"
-            onClick={[Function]}>
-            <span>
-              Digital Services
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/case-study"
-            onClick={[Function]}>
-            <span>
-              Case Studies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/tools"
-            onClick={[Function]}>
-            <span>
-              Tools and methodologies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/awards"
-            onClick={[Function]}>
-            <span>
-              Awards and recognition
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/documents"
-            onClick={[Function]}>
-            <span>
-              Documents
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/review"
-            onClick={[Function]}>
-            <span>
-              Review your profile
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/disclosures"
-            onClick={[Function]}>
-            <span>
-              Disclosures
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/finish"
-            onClick={[Function]}>
-            <span>
-              Finish
-            </span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
-  <article
-    className="col-xs-12 col-sm-8 col-sm-push-1">
-    <div
-      className="layout">
-      <header>
-        <h1
-          tabIndex="-1">
-          Contact details
-        </h1>
-      </header>
-      <article
-        role="main">
-        <form
-          action="/documents"
-          id="yourinfo"
-          method="post"
-          onReset={[Function]}
-          onSubmit={[Function]}>
           <div
             className="field">
             <label
               className="question-heading"
               htmlFor="contact_name">
-              Primary contact
+              Business contact
             </label>
             <p
               className="hint"
               id="contact_name-hint">
-              This person may be contacted by government buyers and receive new opportunities by email.
+              The contact listed in the seller catalogue and the person who receives new opportunities by email.
             </p>
             <input
               aria-describedby="contact_name-hint"
@@ -732,6 +489,181 @@ exports[`test Signup renders populated Your Info form 1`] = `
               type="text"
               value="" />
           </div>
+          <input
+            name="next_step_slug"
+            type="hidden"
+            value="business-details" />
+          <input
+            role="button"
+            type="submit"
+            value="Save and continue" />
+        </form>
+      </article>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`test Signup renders populated Your Info form 1`] = `
+<div
+  className="row">
+  <aside
+    className="col-xs-12 col-sm-3"
+    id="main-navigation">
+    <button
+      aria-controls="local-nav"
+      aria-expanded={false}
+      className="local-nav-toggle"
+      onClick={[Function]}>
+      Menu
+    </button>
+    <nav
+      aria-expanded={false}
+      aria-label="main navigation"
+      className="local-nav step-navigation"
+      open={false}>
+      <ul>
+        <li>
+          <a
+            className=""
+            href="/start"
+            onClick={[Function]}>
+            <span>
+              Introduction
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className="is-active is-current"
+            href="/your-info"
+            onClick={[Function]}>
+            <span>
+              Contact details
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/business-details"
+            onClick={[Function]}>
+            <span>
+              Business basics
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/business-info"
+            onClick={[Function]}>
+            <span>
+              Business details
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/disclosures"
+            onClick={[Function]}>
+            <span>
+              Disclosures
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/documents"
+            onClick={[Function]}>
+            <span>
+              Documents
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/tools"
+            onClick={[Function]}>
+            <span>
+              Methods
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/awards"
+            onClick={[Function]}>
+            <span>
+              Recognition
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/domains"
+            onClick={[Function]}>
+            <span>
+              Digital services
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/case-study"
+            onClick={[Function]}>
+            <span>
+              Case studies
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}>
+            <span>
+              Review
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/finish"
+            onClick={[Function]}>
+            <span>
+              Finish
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <article
+    className="col-xs-12 col-sm-8 col-sm-push-1">
+    <div
+      className="layout">
+      <header>
+        <h1
+          tabIndex="-1">
+          Check your contact details
+        </h1>
+      </header>
+      <article
+        role="main">
+        <form
+          action="/documents"
+          id="yourinfo"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
           <div
             className="field">
             <label
@@ -742,7 +674,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <p
               className="hint"
               id="representative-hint">
-              This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact.
+              This person must be authorised to enter into contracts on behalf of the business. 
             </p>
             <input
               aria-describedby="representative-hint"
@@ -800,10 +732,78 @@ exports[`test Signup renders populated Your Info form 1`] = `
               type="text"
               value="email@domain.com" />
           </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="contact_name">
+              Business contact
+            </label>
+            <p
+              className="hint"
+              id="contact_name-hint">
+              The contact listed in the seller catalogue and the person who receives new opportunities by email.
+            </p>
+            <input
+              aria-describedby="contact_name-hint"
+              className=""
+              id="contact_name"
+              maxLength={undefined}
+              name="contact_name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="contact_phone">
+              Phone
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="contact_phone"
+              maxLength={undefined}
+              name="contact_phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="contact_email">
+              Email
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              id="contact_email"
+              maxLength={undefined}
+              name="contact_email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
           <input
             name="next_step_slug"
             type="hidden"
-            value="domains" />
+            value="business-details" />
           <input
             role="button"
             type="submit"

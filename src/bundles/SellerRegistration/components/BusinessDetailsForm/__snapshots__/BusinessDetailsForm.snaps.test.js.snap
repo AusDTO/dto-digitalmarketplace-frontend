@@ -4,7 +4,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Tell us about your business
+      Check your details
     </h1>
   </header>
   <article
@@ -25,7 +25,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business.
+          3-4 sentences that describe your business. This is visible to all viewers without a login.
         </p>
         <div>
           <textarea
@@ -92,8 +92,13 @@ exports[`test BusinessDetailsForm renders 1`] = `
           htmlFor="address_line">
           Address
         </label>
+        <p
+          className="hint"
+          id="address_line-hint">
+          Principal place of business
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="address_line-hint"
           className=""
           id="address_line"
           maxLength={undefined}
@@ -180,7 +185,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         type="checkbox" />
       <label
         htmlFor="interstate">
-        Able to work interstate
+        Able to work regionally or interstate
       </label>
       <input
         role="button"
@@ -197,7 +202,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Tell us about your business
+      Check your details
     </h1>
   </header>
   <article
@@ -223,7 +228,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business.
+          3-4 sentences that describe your business. This is visible to all viewers without a login.
         </p>
         <div>
           <textarea
@@ -290,8 +295,13 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           htmlFor="address_line">
           Address
         </label>
+        <p
+          className="hint"
+          id="address_line-hint">
+          Principal place of business
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="address_line-hint"
           className=""
           id="address_line"
           maxLength={undefined}
@@ -378,7 +388,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         type="checkbox" />
       <label
         htmlFor="interstate">
-        Able to work interstate
+        Able to work regionally or interstate
       </label>
       <input
         role="button"
@@ -395,7 +405,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Tell us about your business
+      Check your details
     </h1>
   </header>
   <article
@@ -446,7 +456,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business.
+          3-4 sentences that describe your business. This is visible to all viewers without a login.
         </p>
         <a
           className="validation-message"
@@ -524,6 +534,11 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           htmlFor="address_line">
           Address
         </label>
+        <p
+          className="hint"
+          id="address_line-hint">
+          Principal place of business
+        </p>
         <a
           className="validation-message"
           href="#address_line">
@@ -536,7 +551,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           </span>
         </a>
         <input
-          aria-describedby={undefined}
+          aria-describedby="address_line-hint"
           className="invalid"
           id="address_line"
           maxLength={undefined}
@@ -634,7 +649,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         type="checkbox" />
       <label
         htmlFor="interstate">
-        Able to work interstate
+        Able to work regionally or interstate
       </label>
       <input
         role="button"

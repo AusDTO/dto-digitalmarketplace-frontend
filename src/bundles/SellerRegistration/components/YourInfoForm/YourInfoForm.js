@@ -24,7 +24,7 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1">{title}</h1>
+          <h1 tabIndex="-1">Check your contact details</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -39,16 +39,54 @@ class YourInfoForm extends BaseForm {
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
+
+              <Textfield
+                  model={`${model}.representative`}
+                  name="representative"
+                  id="representative"
+                  htmlFor="representative"
+                  label="Authorised Representative"
+                  description="This person must be authorised to enter into contracts on behalf of the business. "
+                  validators={{ required }}
+                  messages={{
+                      required: 'Authorised representative is required',
+                  }}
+              />
+
+              <Textfield
+                  model={`${model}.phone`}
+                  name="phone"
+                  id="phone"
+                  htmlFor="phone"
+                  label="Phone"
+                  validators={{ required }}
+                  messages={{
+                      required: 'Authorised representative\'s phone number is required',
+                  }}
+              />
+
+              <Textfield
+                  model={`${model}.email`}
+                  name="email"
+                  id="email"
+                  htmlFor="email"
+                  label="Email"
+                  validators={{ required }}
+                  messages={{
+                      required: 'Authorised representative\'s email is required',
+                  }}
+              />
+
             <Textfield
                 model={`${model}.contact_name`}
                 name="contact_name"
                 id="contact_name"
                 htmlFor="contact_name"
-                label="Primary contact"
-                description="This person may be contacted by government buyers and receive new opportunities by email."
+                label="Business contact"
+                description="The contact listed in the seller catalogue and the person who receives new opportunities by email."
                 validators={{ required }}
                 messages={{
-                    required: 'Primary contact is required',
+                    required: 'Business contact is required',
                 }}
             />
 
@@ -60,7 +98,7 @@ class YourInfoForm extends BaseForm {
                 label="Phone"
                 validators={{ required }}
                 messages={{
-                    required: 'Primary contact phone is required',
+                    required: 'Business contact phone is required',
                 }}
             />
 
@@ -72,46 +110,11 @@ class YourInfoForm extends BaseForm {
                 label="Email"
                 validators={{ required }}
                 messages={{
-                    required: 'Primary contact email is required',
+                    required: 'Business contact email is required',
                 }}
             />
 
-            <Textfield
-              model={`${model}.representative`}
-              name="representative"
-              id="representative"
-              htmlFor="representative"
-              label="Authorised Representative"
-              description="This person must be authorised to enter into contracts on behalf of the business. It can be the same person as your primary contact."
-              validators={{ required }}
-              messages={{
-                required: 'Authorised representative is required',
-              }}
-            />
 
-            <Textfield
-              model={`${model}.phone`}
-              name="phone"
-              id="phone"
-              htmlFor="phone"
-              label="Phone"
-              validators={{ required }}
-              messages={{
-                required: 'Authorised representative\'s phone number is required',
-              }}
-            />
-
-            <Textfield
-              model={`${model}.email`}
-              name="email"
-              id="email"
-              htmlFor="email"
-              label="Email"
-              validators={{ required }}
-              messages={{
-                required: 'Authorised representative\'s email is required',
-              }}
-            />
 
 
 

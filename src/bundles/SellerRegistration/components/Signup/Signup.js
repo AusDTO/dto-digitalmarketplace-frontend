@@ -39,16 +39,17 @@ class Signup extends React.Component {
 
   steps = [
     { id: 'start', label: 'Introduction', component: Start, pattern: '/start' },
-    { id: 'profile', label: 'Business details', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { id: 'business', label: 'About your business', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
     { id: 'info', label: 'Contact details', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { id: 'digital', label: 'Digital Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'casestudy', label: 'Case Studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { id: 'tools', label: 'Tools and methodologies', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
-    { id: 'awards', label: 'Awards and recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-    { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
-    { id: 'review', label: 'Review your profile', component: Review, pattern: '/review' },
+    { id: 'profile', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'business', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
+    { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
+    { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
+    { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
+    { id: 'digital', label: 'Digital services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { id: 'review', label: 'Review', component: Review, pattern: '/review' },
+    // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
     { id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
   ]
 

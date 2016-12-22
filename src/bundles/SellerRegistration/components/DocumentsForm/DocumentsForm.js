@@ -28,8 +28,8 @@ class DocumentsForm extends BaseForm {
   }
 
   formFields = [
-    { 'label': 'Financial Statement', 'id': 'financial', 'description': 'Ask your accountant for proof of financial viability.' },
-    { 'label': 'Public Liability Insurance', 'id': 'liability', 'description': 'Your insurer can issue a certificate of currency.' },
+    { 'label': 'Financial Statement', 'id': 'financial', 'description': 'Ideally this is financial accounts for 3 years. If you don’t have this, ask your accountant for a letter confirming proof of financial viability.' },
+    { 'label': 'Professional Indemnity and Public Liability Insurance', 'id': 'liability', 'description': 'Your insurer can issue a certificate of currency.' },
     { 'label': 'Workers Compensation Insurance', 'id': 'workers', 'description': 'Your insurer can issue a certificate of currency.' },
   ]
 
@@ -83,7 +83,9 @@ class DocumentsForm extends BaseForm {
         <header>
           <h1 tabIndex="-1">Upload your documents</h1>
           <p>As part of your evaluation we’ll need the following documents.
-            Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG</strong> format.</p>
+            Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG</strong> format.
+            If you have multiple files for a document, please scan and merge as one upload.
+          </p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
