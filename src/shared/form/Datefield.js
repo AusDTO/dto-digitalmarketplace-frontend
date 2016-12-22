@@ -4,12 +4,13 @@ import { Control } from 'react-redux-form';
 import StatefulError from './StatefulError';
 
 const Datefield = ({ name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, type }) => (
-  <div className="datefield">
+  <span className="datefield">
     <label htmlFor={htmlFor} className="question-heading">{label}</label>
     {description && (
       <p className="hint" id={`${id}-hint`}>{description}</p>
     )}
     {messages && <StatefulError model={model} messages={messages} id={id} />}
+    DD&nbsp;&nbsp; MM YYYY<br/>
     <Control.text
       model={`${model}.day`}
       name={`${name}-day`}
@@ -49,7 +50,7 @@ const Datefield = ({ name, id, htmlFor, label, model, validators, messages, desc
       pattern={pattern}
       maxLength={maxLength}
     />
-  </div>
+  </span>
 );
 
 Datefield.defaultProps = {
