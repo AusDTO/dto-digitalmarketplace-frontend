@@ -18,7 +18,7 @@ const Start = ({ supplierCode, signup, onClick }) => (
     </ul>
       <h2>You'll be asked to provide:</h2>
       <ul>
-          <li>Proof of successful projects and past client contact details that will be assessed against <a href="/evaluation-criteria" target="_blank" rel="external">evaluation criteria</a></li>
+          <li>Proof of successful projects and past client contact details that will be assessed against <a href="/assessment-criteria" target="_blank" rel="external">evaluation criteria</a></li>
       </ul>
     <p>
       <a role="button" href={signup} onClick={onClick}>Start Now </a>

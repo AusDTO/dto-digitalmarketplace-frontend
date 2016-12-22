@@ -20,7 +20,7 @@ class DomainSelector extends BaseForm {
       <Layout>
         <header>
             <h1 tabIndex="-1">{title}</h1>
-            <p> Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for <a href="/evaluation-criteria" target="_blank" rel="external">evaluation</a></p>
+            <p> Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for <a href="/assessment-criteria" target="_blank" rel="external">evaluation</a></p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>

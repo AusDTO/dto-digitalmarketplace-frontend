@@ -64,7 +64,7 @@ class View extends React.Component {
             <h4>Service</h4>
             <p>{service}</p>
 
-            <h4>Roles</h4>
+            <h4>Responsible for</h4>
             <p>{roles}</p>
           </aside>
           <article role="main" className="col-sm-7 col-xs-12">

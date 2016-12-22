@@ -14,7 +14,7 @@ exports[`test SignupForm renders 1`] = `
     <p>
       You’ll be asked to create a profile about your business and, if you meet our 
       <a
-        href="/evaluation-criteria">
+        href="/assessment-criteria">
         evaluation criteria
       </a>
       , you\'ll be able to do business in the Marketplace.
@@ -105,7 +105,7 @@ exports[`test SignupForm renders with form_options 1`] = `
     <p>
       You’ll be asked to create a profile about your business and, if you meet our 
       <a
-        href="/evaluation-criteria">
+        href="/assessment-criteria">
         evaluation criteria
       </a>
       , you\'ll be able to do business in the Marketplace.

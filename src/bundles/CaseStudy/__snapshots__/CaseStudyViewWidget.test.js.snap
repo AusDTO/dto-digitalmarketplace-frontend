@@ -37,7 +37,7 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
       </h4>
       <p />
       <h4>
-        Roles
+        Responsible for
       </h4>
       <p />
     </aside>

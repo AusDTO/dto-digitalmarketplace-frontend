@@ -31,7 +31,7 @@ class SignupForm extends BaseForm {
           <p>
             If you think you have what it takes, you can apply right here.
           </p>
-          <p>You’ll be asked to create a profile about your business and, if you meet our <a href="/evaluation-criteria">evaluation criteria</a>, you'll be able to do business in the Marketplace.
+          <p>You’ll be asked to create a profile about your business and, if you meet our <a href="/assessment-criteria">evaluation criteria</a>, you'll be able to do business in the Marketplace.
 </p>
         </header>
         <article role="main">

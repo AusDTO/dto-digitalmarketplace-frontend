@@ -9,7 +9,7 @@ exports[`test DomainSelector renders 1`] = `
     <p>
        Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for 
       <a
-        href="/evaluation-criteria"
+        href="/assessment-criteria"
         rel="external"
         target="_blank">
         evaluation
@@ -292,7 +292,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
     <p>
        Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for 
       <a
-        href="/evaluation-criteria"
+        href="/assessment-criteria"
         rel="external"
         target="_blank">
         evaluation
