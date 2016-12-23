@@ -180,16 +180,16 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
           </div>
           <input
             checked={false}
-            id="interstate"
-            name="interstate"
+            id="travel"
+            name="travel"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox" />
           <label
-            htmlFor="interstate">
-            Able to work regionally or interstate
+            htmlFor="travel">
+            Will travel regionally or interstate
           </label>
           <input
             role="button"

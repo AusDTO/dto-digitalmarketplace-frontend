@@ -176,16 +176,16 @@ exports[`test BusinessDetailsForm renders 1`] = `
       </div>
       <input
         checked={false}
-        id="interstate"
-        name="interstate"
+        id="travel"
+        name="travel"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
         type="checkbox" />
       <label
-        htmlFor="interstate">
-        Able to work regionally or interstate
+        htmlFor="travel">
+        Will travel regionally or interstate
       </label>
       <input
         role="button"
@@ -379,16 +379,16 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
       </div>
       <input
         checked={false}
-        id="interstate"
-        name="interstate"
+        id="travel"
+        name="travel"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
         type="checkbox" />
       <label
-        htmlFor="interstate">
-        Able to work regionally or interstate
+        htmlFor="travel">
+        Will travel regionally or interstate
       </label>
       <input
         role="button"
@@ -640,16 +640,16 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
       </div>
       <input
         checked={false}
-        id="interstate"
-        name="interstate"
+        id="travel"
+        name="travel"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
         type="checkbox" />
       <label
-        htmlFor="interstate">
-        Able to work regionally or interstate
+        htmlFor="travel">
+        Will travel regionally or interstate
       </label>
       <input
         role="button"

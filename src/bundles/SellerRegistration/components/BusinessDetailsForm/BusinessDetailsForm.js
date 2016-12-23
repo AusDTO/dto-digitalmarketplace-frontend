@@ -156,12 +156,12 @@ class BusinessDetailsForm extends BaseForm {
                         />
 
                         <Control.checkbox
-                          model={`${model}.interstate`}
-                          id="interstate"
-                          name="interstate"
+                          model={`${model}.travel`}
+                          id="travel"
+                          name="travel"
                         />
-                        <label htmlFor="interstate">
-                            Able to work regionally or interstate
+                        <label htmlFor="travel">
+                            Will travel regionally or interstate
                         </label>
 
                         {children}

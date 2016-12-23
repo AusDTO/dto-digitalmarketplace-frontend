@@ -19,8 +19,9 @@ class DomainSelector extends BaseForm {
     return (
       <Layout>
         <header>
-            <h1 tabIndex="-1">{title}</h1>
-            <p> Select the digital services you’ll provide. You’ll need to provide a case study for each as evidence for <a href="/assessment-criteria" target="_blank" rel="external">evaluation</a></p>
+            <h1 tabIndex="-1">What will you offer?</h1>
+            <p> On top of the services you already offer, select the any additional services and products you wish to provide.
+                For any new ones, you’ll need to add a case study that meets the <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -54,17 +55,7 @@ class DomainSelector extends BaseForm {
             )}
 
             <fieldset className="field">
-            {domains.sort((domainA, domainB) => {
-              if (domainA.label.toLowerCase() < domainB.label.toLowerCase()) {
-                return -1;
-              }
-
-              if (domainA.label.toLowerCase() > domainB.label.toLowerCase()) {
-                return 1;
-              }
-
-              return 0;
-            }).map(({ key, label, description }, i) => {
+            {domains.map(({ key, label, description }, i) => {
               return (
                 <div key={key}>
                   <Control.checkbox

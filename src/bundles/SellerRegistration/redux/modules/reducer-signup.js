@@ -70,8 +70,9 @@ export default combineReducers({
       methodologies: ''
     },
     awardsForm: {
-        awards: '',
-        certifications: ''
+        awards: [],
+        certifications: [],
+        boards: []
     },
     disclosuresForm: {
         structual_changes: false,
