@@ -26,6 +26,7 @@ class DisclosuresForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">{title}</h1>
+                    <p>These responses are used by assessors but are not visible on your profile.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -42,7 +43,7 @@ class DisclosuresForm extends BaseForm {
                         )}
 
                         <fieldset>
-                            <legend>These responses are used by assessors but not visible on your profile.</legend>
+
                             <YesNoDetails name="structual_changes" id="structual_changes" model={`${model}.structual_changes`}
                                           label="Are you planning to sell, merge, or alter the corporate structure of your company?"/>
                             <YesNoDetails name="investigations" id="investigations" model={`${model}.investigations`}
@@ -50,7 +51,7 @@ class DisclosuresForm extends BaseForm {
                             <YesNoDetails name="legal_proceedings" id="legal_proceedings" model={`${model}.legal_proceedings`}
                                           label="Has your organisation been involved in any legal proceedings in the last 5 years? "/>
                             <YesNoDetails name="insurance_claims" id="insurance_claims" model={`${model}.insurance_claims`}
-                                          label="Has your organisation made any claims on your professional indemnity or fidelity insurance in the last 5 years ?"/>
+                                          label="Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years ?"/>
                             <YesNoDetails name="conflicts_of_interest" id="conflicts_of_interest" model={`${model}.conflicts_of_interest`}
                                           label="Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact on the Digital Marketplace?"/>
                         </fieldset>

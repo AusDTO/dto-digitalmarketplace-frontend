@@ -1,62 +1,67 @@
 export default [
-  {
-    key: 'userresearch',
-    label: 'User research and design',
-    description: 'Activites relating to the research and design of a service used by the entire population.  Such as user research, interaction, inclusive, and service design, participant recruitment and usability testing services.'
-  },
-  {
-    key: 'contentpub',
-    label: 'Content and publishing',
-    description: 'Any service that provides or manages government content.  Examples include content design, strategy and marketing.',
-  },
-  {
-    key: 'marketingcomms',
-    label: 'Marketing, communications and engagement',
-    description: 'Drive awareness, adoption and embedded use of a digital service.',
-  },
-  {
-    key: 'engineering',
-    label: 'Engineering and development',
-    description: 'Such as technical architecture, technical leadership, engineering, devops, continuous delivery, software development, testing and quality assurance and cloud computing.',
-  },
-  {
-    key: 'emergtech',
-    label: 'Emerging technology',
-    description: 'Emerging technologists develop and adapt ideas and technology for commercial application.  Example technologies include artificial intelligence, robotics, wearables and virtual reality.'
-  },
-  {
-    key: 'datalytics',
-    label: 'Data science',
-    description: 'Data science brings analytical rigour and statistical methods to measure quality, improve service and model behaviour.'
-  },
-  {
-    key: 'cyber',
-    label: 'Cyber security',
-    description: 'Cyber security protects the Australian government and its citizens’ interests online.  Examples include information security, assessments, ethical hacking, penetration testing, monitoring, incidence response, ISM advisory, data privacy and digital forensics.'
-  },
-  {
-    key: 'stratdeliv',
-    label: 'Strategy, delivery and governance',
-    description: 'Strategy and policy relates to the higher level planning of a digital product or service. This can include including the analysis of new technologies, providing legal assurance. ',
-  },
-  {
-    key: 'ops',
-    label: 'Operations',
-    description: 'Such as admin, ops, data entry and tech support.',
-  },
-  {
-    key: 'change',
-    label: 'Change, training and transformation',
-    description: 'Includes services that assess, train and embed behaviours for iterating digital government services.  Examples include digital transformation advice, agile coaching, change management, training, capability uplift and Digital Service Standard assessment.'
-  },
-  {
-    key: 'recruit',
-    label: 'Recruitment',
-    description: 'Provides recruitment of digital specialists.'
-  },
-  {
-    key: 'perf',
-    label: 'Performance and web analytics',
-    description: 'Specify, collect and present the key performance data and analysis for a government service.'
-  }
+    {
+        key: 'strategy',
+        label: 'Strategy and Policy',
+        description: 'Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.',
+    },
+    {
+        key: 'change',
+        label: 'Change, Training and Transformation',
+        description: 'Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.'
+    },
+    {
+        key: 'userresearch',
+        label: 'User research and Design',
+        description: 'User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.'
+    },
+    {
+        key: 'deliverygov',
+        label: 'Agile delivery and Governance',
+        description: 'Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.'
+    },
+    {
+        key: 'recruit',
+        label: 'Recruitment',
+        description: 'Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.'
+    },
+    {
+        key: 'engineering',
+        label: 'Software engineering and Development',
+        description: 'Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.',
+    },
+    {
+        key: 'contentpub',
+        label: 'Content and Publishing',
+        description: 'Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.',
+    },
+    {
+        key: 'cyber',
+        label: 'Cyber security',
+        description: 'Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.'
+    },
+    {
+        key: 'marketingcomms',
+        label: 'Marketing, Communications and Engagement',
+        description: 'Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.',
+    },
+    {
+        key: 'ops',
+        label: 'Support and Operations',
+        description: 'Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.',
+    },
+    {
+        key: 'datasci',
+        label: 'Data science',
+        description: 'Data science brings analytical rigour and statistical methods to measure quality, improve services and model behaviour. Examples include statistical and scenario modelling and data visualisation.'
+    },
+    {
+        key: 'products',
+        label: 'Digital products',
+        description: 'Digital products relates to software, platforms or infrastructure provided as a service.'
+    },
+    {
+        key: 'emergtech',
+        label: 'Emerging technology',
+        description: 'Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.'
+    },
 ];

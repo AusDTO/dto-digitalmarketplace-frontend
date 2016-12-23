@@ -66,6 +66,16 @@ class AwardsForm extends BaseForm {
                             description="Does your business have any formal certifications you want to share?"
                         />
 
+                        <MultiInput
+                            id="boards"
+                            model={`${model}.boards`}
+                            name="boards"
+                            htmlFor="boards"
+                            label="Boards and committees"
+                            controlProps={{defaultRows: 2}}
+                            description="Do you sit on any relevant industry advisory boards or committees?"
+                        />
+
                         {children}
 
                         <input type="submit" value="Save and continue" role="button"/>

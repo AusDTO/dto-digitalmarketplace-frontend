@@ -242,7 +242,7 @@ test('without filterSteps', () => {
       { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-      { id: 'digital', label: 'Digital services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+      { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
       { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
       // { id: 'review', label: 'Review', component: Review, pattern: '/review' },
       // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
@@ -295,7 +295,7 @@ test('filterSteps', () => {
       { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-      { id: 'digital', label: 'Digital services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+      { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
   ];
 
   const filterSteps = (step) => {
