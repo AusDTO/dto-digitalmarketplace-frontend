@@ -19,6 +19,55 @@ exports[`test BusinessDetailsForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="name">
+          Business Name
+        </label>
+        <p
+          className="hint"
+          id="name-hint">
+          As you would like it shown on the Marketplace
+        </p>
+        <input
+          aria-describedby="name-hint"
+          className=""
+          disabled="disabled"
+          id="name"
+          maxLength={undefined}
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="abn">
+          ABN
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          disabled="disabled"
+          id="abn"
+          maxLength={undefined}
+          name="abn"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="summary">
           Summary
         </label>
@@ -53,6 +102,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="website"
           maxLength={undefined}
           name="website"
@@ -74,6 +124,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="linkedin"
           maxLength={undefined}
           name="linkedin"
@@ -100,6 +151,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby="address_line-hint"
           className=""
+          disabled={undefined}
           id="address_line"
           maxLength={undefined}
           name="address.address_line"
@@ -121,6 +173,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="suburb"
           maxLength={undefined}
           name="address.suburb"
@@ -142,6 +195,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="state"
           maxLength={undefined}
           name="address.state"
@@ -163,6 +217,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"
@@ -222,6 +277,55 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="name">
+          Business Name
+        </label>
+        <p
+          className="hint"
+          id="name-hint">
+          As you would like it shown on the Marketplace
+        </p>
+        <input
+          aria-describedby="name-hint"
+          className=""
+          disabled="disabled"
+          id="name"
+          maxLength={undefined}
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="abn">
+          ABN
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          disabled="disabled"
+          id="abn"
+          maxLength={undefined}
+          name="abn"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="summary">
           Summary
         </label>
@@ -256,6 +360,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="website"
           maxLength={undefined}
           name="website"
@@ -277,6 +382,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="linkedin"
           maxLength={undefined}
           name="linkedin"
@@ -303,6 +409,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby="address_line-hint"
           className=""
+          disabled={undefined}
           id="address_line"
           maxLength={undefined}
           name="address.address_line"
@@ -324,6 +431,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="suburb"
           maxLength={undefined}
           name="address.suburb"
@@ -345,6 +453,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="state"
           maxLength={undefined}
           name="address.state"
@@ -366,6 +475,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"
@@ -450,6 +560,55 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         className="field">
         <label
           className="question-heading"
+          htmlFor="name">
+          Business Name
+        </label>
+        <p
+          className="hint"
+          id="name-hint">
+          As you would like it shown on the Marketplace
+        </p>
+        <input
+          aria-describedby="name-hint"
+          className=""
+          disabled="disabled"
+          id="name"
+          maxLength={undefined}
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="SupCo Pty. Ltd." />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="abn">
+          ABN
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          disabled="disabled"
+          id="abn"
+          maxLength={undefined}
+          name="abn"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
           htmlFor="summary">
           Summary
         </label>
@@ -495,6 +654,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="website"
           maxLength={undefined}
           name="website"
@@ -516,6 +676,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="linkedin"
           maxLength={undefined}
           name="linkedin"
@@ -553,6 +714,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby="address_line-hint"
           className="invalid"
+          disabled={undefined}
           id="address_line"
           maxLength={undefined}
           name="address.address_line"
@@ -574,6 +736,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="suburb"
           maxLength={undefined}
           name="address.suburb"
@@ -595,6 +758,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="state"
           maxLength={undefined}
           name="address.state"
@@ -627,6 +791,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className="invalid"
+          disabled={undefined}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"

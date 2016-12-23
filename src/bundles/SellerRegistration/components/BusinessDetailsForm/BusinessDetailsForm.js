@@ -44,34 +44,25 @@ class BusinessDetailsForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-                        {(seller_registration === true) &&
-                            <div>
-                                <Textfield
-                                  model={`${model}.name`}
-                                  name="name"
-                                  id="name"
-                                  htmlFor="name"
-                                  label="Business Name"
-                                  description="As you would like it shown on the Marketplace"
-                                  validators={{ required }}
-                                  messages={{
-                                    required: 'Business name is required',
-                                  }} 
-                                />
 
-                                <Textfield
-                                  model={`${model}.abn`}
-                                  name="abn"
-                                  id="abn"
-                                  htmlFor="abn"
-                                  label="ABN"
-                                  validators={{ required }}
-                                  messages={{
-                                    required: 'ABN is required',
-                                  }}
-                                />
-                            </div>
-                        }
+                        <Textfield
+                          model={`${model}.name`}
+                          name="name"
+                          id="name"
+                          htmlFor="name"
+                          label="Business Name"
+                          description="As you would like it shown on the Marketplace"
+                          disabled="disabled"
+                        />
+
+                        <Textfield
+                          model={`${model}.abn`}
+                          name="abn"
+                          id="abn"
+                          htmlFor="abn"
+                          label="ABN"
+                          disabled="disabled"
+                        />
 
                         <Textarea
                             model={`${model}.summary`}

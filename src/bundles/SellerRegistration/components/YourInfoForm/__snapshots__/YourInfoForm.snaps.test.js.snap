@@ -30,6 +30,7 @@ exports[`test YourInfoForm renders 1`] = `
         <input
           aria-describedby="representative-hint"
           className=""
+          disabled={undefined}
           id="representative"
           maxLength={undefined}
           name="representative"
@@ -51,6 +52,7 @@ exports[`test YourInfoForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="phone"
           maxLength={undefined}
           name="phone"
@@ -72,6 +74,7 @@ exports[`test YourInfoForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="email"
           maxLength={undefined}
           name="email"
@@ -98,6 +101,7 @@ exports[`test YourInfoForm renders 1`] = `
         <input
           aria-describedby="contact_name-hint"
           className=""
+          disabled={undefined}
           id="contact_name"
           maxLength={undefined}
           name="contact_name"
@@ -119,6 +123,7 @@ exports[`test YourInfoForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="contact_phone"
           maxLength={undefined}
           name="contact_phone"
@@ -140,6 +145,7 @@ exports[`test YourInfoForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="contact_email"
           maxLength={undefined}
           name="contact_email"
@@ -197,6 +203,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <input
           aria-describedby="representative-hint"
           className=""
+          disabled={undefined}
           id="representative"
           maxLength={undefined}
           name="representative"
@@ -218,6 +225,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="phone"
           maxLength={undefined}
           name="phone"
@@ -239,6 +247,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="email"
           maxLength={undefined}
           name="email"
@@ -265,6 +274,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <input
           aria-describedby="contact_name-hint"
           className=""
+          disabled={undefined}
           id="contact_name"
           maxLength={undefined}
           name="contact_name"
@@ -286,6 +296,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="contact_phone"
           maxLength={undefined}
           name="contact_phone"
@@ -307,6 +318,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="contact_email"
           maxLength={undefined}
           name="contact_email"
@@ -364,6 +376,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <input
           aria-describedby="representative-hint"
           className=""
+          disabled={undefined}
           id="representative"
           maxLength={undefined}
           name="representative"
@@ -385,6 +398,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="phone"
           maxLength={undefined}
           name="phone"
@@ -406,6 +420,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="email"
           maxLength={undefined}
           name="email"
@@ -432,6 +447,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <input
           aria-describedby="contact_name-hint"
           className=""
+          disabled={undefined}
           id="contact_name"
           maxLength={undefined}
           name="contact_name"
@@ -453,6 +469,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="contact_phone"
           maxLength={undefined}
           name="contact_phone"
@@ -474,6 +491,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
+          disabled={undefined}
           id="contact_email"
           maxLength={undefined}
           name="contact_email"

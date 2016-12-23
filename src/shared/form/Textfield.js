@@ -3,7 +3,7 @@ import { Control } from 'react-redux-form';
 
 import StatefulError from './StatefulError';
 
-const Textfield = ({ name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, type }) => (
+const Textfield = ({ name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, disabled, type }) => (
   <div className="field">
     <label htmlFor={htmlFor} className="question-heading">{label}</label>
     {description && (
@@ -22,6 +22,7 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
       validators={validators}
       pattern={pattern}
       maxLength={maxLength}
+      disabled={disabled}
     />
   </div>
 );
@@ -44,6 +45,7 @@ Textfield.propTypes = {
   messages: React.PropTypes.object,
   description: React.PropTypes.string,
   pattern: React.PropTypes.string,
+  disabled: React.PropTypes.string,
   type: React.PropTypes.string
 };
 
