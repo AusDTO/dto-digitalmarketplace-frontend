@@ -51,7 +51,6 @@ class BusinessDetailsForm extends BaseForm {
                           id="name"
                           htmlFor="name"
                           label="Business Name"
-                          description="As you would like it shown on the Marketplace"
                           disabled="disabled"
                         />
 
@@ -152,7 +151,7 @@ class BusinessDetailsForm extends BaseForm {
                           name="travel"
                         />
                         <label htmlFor="travel">
-                            Will travel regionally or interstate
+                            Can travel for regional or interstate opportunities
                         </label>
 
                         {children}

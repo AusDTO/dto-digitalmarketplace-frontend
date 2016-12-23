@@ -91,6 +91,7 @@ class BusinessInfoForm extends BaseForm {
                         </fieldset>
                         <fieldset>
                             <legend>Select all that apply to your business (optional).</legend>
+
                             <Control.checkbox
                                 model={`${model}.seller_type.start_up`}
                                 id="start-up"
@@ -124,6 +125,16 @@ class BusinessInfoForm extends BaseForm {
                             <label htmlFor="indigenous">Indigenous
                                 <p>Your business is listed on a directory
                                     of indigenous businesses, such as Supply Nation.</p>
+                            </label>
+
+
+                            <Control.checkbox
+                                model={`${model}.regional`}
+                                id="regional"
+                                name="regional"
+                            />
+                            <label htmlFor="regional">
+                                Regional or non-metro based business
                             </label>
 
                         </fieldset>
