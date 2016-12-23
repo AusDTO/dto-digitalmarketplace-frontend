@@ -22,13 +22,8 @@ exports[`test BusinessDetailsForm renders 1`] = `
           htmlFor="name">
           Business Name
         </label>
-        <p
-          className="hint"
-          id="name-hint">
-          As you would like it shown on the Marketplace
-        </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby={undefined}
           className=""
           disabled="disabled"
           id="name"
@@ -240,7 +235,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         type="checkbox" />
       <label
         htmlFor="travel">
-        Will travel regionally or interstate
+        Can travel for regional or interstate opportunities
       </label>
       <input
         role="button"
@@ -280,13 +275,8 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           htmlFor="name">
           Business Name
         </label>
-        <p
-          className="hint"
-          id="name-hint">
-          As you would like it shown on the Marketplace
-        </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby={undefined}
           className=""
           disabled="disabled"
           id="name"
@@ -498,7 +488,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         type="checkbox" />
       <label
         htmlFor="travel">
-        Will travel regionally or interstate
+        Can travel for regional or interstate opportunities
       </label>
       <input
         role="button"
@@ -563,13 +553,8 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           htmlFor="name">
           Business Name
         </label>
-        <p
-          className="hint"
-          id="name-hint">
-          As you would like it shown on the Marketplace
-        </p>
         <input
-          aria-describedby="name-hint"
+          aria-describedby={undefined}
           className=""
           disabled="disabled"
           id="name"
@@ -814,7 +799,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         type="checkbox" />
       <label
         htmlFor="travel">
-        Will travel regionally or interstate
+        Can travel for regional or interstate opportunities
       </label>
       <input
         role="button"
