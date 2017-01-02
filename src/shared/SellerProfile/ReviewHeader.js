@@ -12,14 +12,15 @@ const ReviewHeader = (props) => {
     contact_phone,
     contact_name
   } = props;
-    var badgeTitle = {
+  var badgeTitle = {
         "indigenous": "Indigenous",
         "nfp_social_enterprise": "Not-for-profit / social enterprise",
         "product": "Product based business",
         "recruitment": "Recruiter",
         "sme": "SME",
-        "start_up": "Start up"
-    }
+        "start_up": "Start up",
+        "regional": "Regional or non-metro based business"
+  };
   return (
     <section className="seller-profile seller-profile__review-header">
       <div className="row ">
