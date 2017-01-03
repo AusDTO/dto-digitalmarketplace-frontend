@@ -81,9 +81,10 @@ recursive(paths.appBuild, (err, fileNames) => {
   if (argv.dev) {
     webpack(config).watch({}, (err, stats) => {
       console.log();
-      console.log(chalk.green('Compiled new assets') + chalk.dim(' - ' + new Date(stats.endTime).toUTCString()));
-      console.log('  Hash: ' + chalk.dim(stats.hash));
-      printFileSizes(stats, previousSizeMap);
+      console.log(stats.toString({
+        chunks: false, // Makes the build much quieter
+        colors: true
+      }))
       console.log();
     });
   } else {

@@ -28,6 +28,7 @@
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.22.0",
     "http-proxy-middleware": "0.17.1",
+    "ignore-loader": "0.1.2",
     "jest": "17.0.3",
     "json-loader": "0.5.4",
     "node-sass": "3.10.1",
