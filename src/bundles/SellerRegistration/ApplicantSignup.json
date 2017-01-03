@@ -40,6 +40,12 @@
             ]
         }
     },
+    "documents": {
+        "liability": "foobar.pdf"
+    },
+    "expiry_dates": {
+        "liability": "2020-02-01"
+    },
     "tools": "Jira, Basecamp, Digital Service Standard, Retros, Sharpies.",
     "methodologies": "Kanban, lean, scaled agile (SAFe).",
     "awards": ["Best Digital 2016", "Best Digital 2015"],

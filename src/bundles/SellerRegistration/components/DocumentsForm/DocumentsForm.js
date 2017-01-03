@@ -142,11 +142,11 @@ class DocumentsForm extends BaseForm {
                                     <p>{field.description}</p>
 
                                     <div>
-                                        <p>
+                                        <div>
                                             {!doc && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png"
                                                             onChange={this.onChange.bind(this, key)}/>}
                                             {(field.expires && (fieldState.file || doc)) && <Datefield
-                                                model={`${model}.expiry_dates[${key}]`}
+                                                model={`${model}.expiry_dates.${key}`}
                                                 name={expiry_date_field}
                                                 id={expiry_date_field}
                                                 htmlFor={expiry_date_field}
@@ -156,7 +156,7 @@ class DocumentsForm extends BaseForm {
                                                 }}
                                             />}
                                             <br/>
-                                        </p>
+                                        </div>
                                         <div>
                                             {fieldState.uploading && 'Uploading...'}
                                             {errors && 'There was an error uploading the file'}

@@ -1,60 +1,100 @@
 import React from 'react';
-import { Control } from 'react-redux-form';
+import { connect } from 'react-redux';
+import { actions } from 'react-redux-form';
+import format from 'date-fns/format';
+import get from 'lodash/get';
 
 import StatefulError from './StatefulError';
 
-const Datefield = ({ name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, type }) => (
-  <span className="datefield">
-    <label htmlFor={htmlFor} className="question-heading">{label}</label>
-    {description && (
-      <p className="hint" id={`${id}-hint`}>{description}</p>
-    )}
-    {messages && <StatefulError model={model} messages={messages} id={id} />}
-    DD&nbsp;&nbsp; MM YYYY<br/>
-    <Control.text
-      model={`${model}.day`}
-      name={`${name}-day`}
-      id={`${id}-day`}
-      type={type}
-      aria-describedby={description && `${id}-hint`}
-      mapProps={{
-        className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
-      }}
-      validators={validators}
-      pattern={pattern}
-      maxLength={maxLength}
-    />
-    <Control.text
-      model={`${model}.month`}
-      name={`${name}-month`}
-      id={`${id}-month`}
-      type={type}
-      aria-describedby={description && `${id}-hint`}
-      mapProps={{
-        className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
-      }}
-      validators={validators}
-      pattern={pattern}
-      maxLength={maxLength}
-    />
-    <Control.text
-      model={`${model}.year`}
-      name={`${name}-year`}
-      id={`${id}-year`}
-      type={type}
-      aria-describedby={description && `${id}-hint`}
-      mapProps={{
-        className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
-      }}
-      validators={validators}
-      pattern={pattern}
-      maxLength={maxLength}
-    />
-  </span>
-);
+class Datefield extends React.Component {
 
-Datefield.defaultProps = {
-    type: "text"
+  state = {
+    day: void 0,
+    month: void 0,
+    year: void 0
+  }
+
+  constructor(props) {
+    super(props);
+
+    if (props.date && typeof props.date === 'string') {
+      let propDate = new Date(props.date);
+      this.state = {
+        day: format(propDate, 'DD'),
+        month: format(propDate, 'MM'),
+        year: format(propDate, 'YYYY')
+      }
+    }
+  }
+
+  onChange(e) {
+    const { model, dispatch } = this.props;
+    this.setState({
+      [e.target.name]: e.target.value
+    }, () => {
+      const { year, month, day } = this.state;
+
+      let date = format(new Date(Number(year), Number(month) - 1, Number(day)), 'YYYY-MM-DD');
+
+      dispatch(actions.change(model, date));
+    });
+  }
+
+  render() {
+    const { id, htmlFor, label, model, messages, description } = this.props;
+    const {
+      day,
+      month,
+      year
+    } = this.state;
+
+    return (
+      <div className="datefield">
+        <label htmlFor={htmlFor} className="question-heading">{label}</label>
+        {description && (
+          <p className="hint" id={`${id}-hint`}>{description}</p>
+        )}
+        {messages && <StatefulError model={model} messages={messages} id={id} />}
+
+        <div className="field">
+          <label htmlFor={htmlFor} className="question-heading">DD</label>
+          <input
+            type="text"
+            name="day"
+            onChange={this.onChange.bind(this)}
+            defaultValue={day}
+          />
+        </div>
+
+        <div className="field">
+          <label htmlFor={htmlFor} className="question-heading">MM</label>
+          <input
+            type="text"
+            name="month"
+            onChange={this.onChange.bind(this)}
+            defaultValue={month}
+          />
+        </div>
+
+        <div className="field">
+          <label htmlFor={htmlFor} className="question-heading">YYYY</label>
+          <input
+            type="text"
+            name="year"
+            onChange={this.onChange.bind(this)}
+            defaultValue={year}
+          />
+        </div>
+      </div>
+    )
+  }
+}
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    date: get(state, ownProps.model)
+  }
 }
 
 Datefield.propTypes = {
@@ -74,4 +114,4 @@ Datefield.propTypes = {
   type: React.PropTypes.string
 };
 
-export default Datefield;
+export default connect(mapStateToProps)(Datefield);
