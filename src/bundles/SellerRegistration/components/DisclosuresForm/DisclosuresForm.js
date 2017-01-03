@@ -2,8 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Form } from 'react-redux-form';
 
-import Layout from '../../../../shared/Layout';
+import { required } from '../../../../validators';
 
+import Layout       from '../../../../shared/Layout';
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
@@ -43,19 +44,66 @@ class DisclosuresForm extends BaseForm {
                         )}
 
                         <fieldset>
-
-                            <YesNoDetails name="structual_changes" id="structual_changes" model={`${model}.structual_changes`}
-                                          label="Are you planning to sell, merge, or alter the corporate structure of your company?"/>
-                            <YesNoDetails name="investigations" id="investigations" model={`${model}.investigations`}
-                                          label="Has your organisation been investigated by an agency, authority or regulator in connection with any employment,  workplace relations, unpaid employee entitlements, Workplace Gender Equality Act 2012, workplace health and safety or improper business practices  (including any civil or criminal litigation or proceeding, actual or threatened involving you or related organisations or directors) in the last 5 years?"/>
-                            <YesNoDetails name="legal_proceedings" id="legal_proceedings" model={`${model}.legal_proceedings`}
-                                          label="Has your organisation been involved in any legal proceedings in the last 5 years? "/>
-                            <YesNoDetails name="insurance_claims" id="insurance_claims" model={`${model}.insurance_claims`}
-                                          label="Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years ?"/>
-                            <YesNoDetails name="conflicts_of_interest" id="conflicts_of_interest" model={`${model}.conflicts_of_interest`}
-                                          label="Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact on the Digital Marketplace?"/>
-                            <YesNoDetails name="other_circumstances" id="other_circumstances" model={`${model}.other_circumstances`}
-                                          label="Is there any other material circumstance that is likely to adversely affect your performance of any contract in the marketplace?"/>
+                            <YesNoDetails
+                              name="structual_changes"
+                              id="structual_changes"
+                              model={`${model}.structual_changes`}
+                              label="Are you planning to sell, merge, or alter the corporate structure of your company?"
+                              validators={{ required }}
+                              messages={{
+                                  required: 'Please provide an answer to the Structual Changes question',
+                              }}
+                            />
+                            <YesNoDetails
+                              name="investigations"
+                              id="investigations"
+                              model={`${model}.investigations`}
+                              label="Has your organisation been investigated by an agency, authority or regulator in connection with any employment, workplace relations, unpaid employee entitlements, Workplace Gender Equality Act 2012, workplace health and safety or improper business practices  (including any civil or criminal litigation or proceeding, actual or threatened involving you or related organisations or directors) in the last 5 years?"
+                              validators={{ required }}
+                              messages={{
+                                  required: 'Please provide an answer to the Investigations question',
+                              }}
+                            />
+                            <YesNoDetails
+                              name="legal_proceedings"
+                              id="legal_proceedings"
+                              model={`${model}.legal_proceedings`}
+                              label="Has your organisation been involved in any legal proceedings in the last 5 years?"
+                              validators={{ required }}
+                              messages={{
+                                  required: 'Please provide an answer to the Legal Proceedings question',
+                              }}
+                            />
+                            <YesNoDetails
+                              name="insurance_claims"
+                              id="insurance_claims"
+                              model={`${model}.insurance_claims`}
+                              label="Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years ?"
+                              validators={{ required }}
+                              messages={{
+                                  required: 'Please provide an answer to the Insurance Claims question',
+                              }}
+                            />
+                            <YesNoDetails
+                              name="conflicts_of_interest"
+                              id="conflicts_of_interest"
+                              model={`${model}.conflicts_of_interest`}
+                              label="Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact on the Digital Marketplace?"
+                              validators={{ required }}
+                              messages={{
+                                  required: 'Please provide an answer to the Conflicts of interest question',
+                              }}
+                            />
+                            <YesNoDetails
+                              name="other_circumstances"
+                              id="other_circumstances"
+                              model={`${model}.other_circumstances`}
+                              label="Is there any other material circumstance that is likely to adversely affect your performance of any contract in the marketplace?"
+                              validators={{ required }}
+                              messages={{
+                                  required: 'Please provide an answer to the Other circumstances question',
+                              }}
+                            />
                         </fieldset>
 
                         {children}
