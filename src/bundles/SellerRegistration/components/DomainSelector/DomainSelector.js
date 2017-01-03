@@ -14,7 +14,7 @@ import domains from './domains';
 class DomainSelector extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, title, buttonText, children, onSubmit } = this.props;
+    const { model, action, csrf_token, buttonText, children, onSubmit } = this.props;
 
     return (
       <Layout>

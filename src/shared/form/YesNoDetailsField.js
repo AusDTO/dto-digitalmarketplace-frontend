@@ -19,7 +19,7 @@ class YesNoDetailsField extends React.Component {
   }
 
   render() {
-    const { name, id, label, model, validators, messages, description, controlProps, mapProps } = this.props;
+    const { name, id, label, model, validators, messages } = this.props;
     return (
       <fieldset className="field">
         <legend><strong>{label}</strong></legend>

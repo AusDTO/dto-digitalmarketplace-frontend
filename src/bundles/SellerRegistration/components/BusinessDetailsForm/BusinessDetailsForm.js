@@ -24,7 +24,7 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, form, title, buttonText, seller_registration, children, onSubmit } = this.props;
+        const {action, csrf_token, model, returnLink, form, buttonText, children, onSubmit } = this.props;
         return (
             <Layout>
                 <header>

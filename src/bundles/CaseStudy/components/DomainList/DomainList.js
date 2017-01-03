@@ -11,8 +11,6 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 
-import ProgressBar    from '../../../../shared/ProgressBar';
-
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
 
@@ -97,7 +95,7 @@ class DomainList extends BaseForm {
     const serviceCount    = Object.keys(services).length;
     const addedServices   = calcRemaining(studies, services);
     const leftToAdd       = Object.keys(services).filter(service => addedServices.indexOf(service) === -1);
-    const leftToAddCount  = serviceCount - addedServices.length;
+    //const leftToAddCount  = serviceCount - addedServices.length;
 
     if (!serviceCount) {
       return (
@@ -210,12 +208,12 @@ class DomainList extends BaseForm {
                 method="post"
                 validators={{
                   case_studies: (studies) => {
-                    let studyServices = Object.keys(studies)
-                      .map(study => studies[study].service);
+                    // let studyServices = Object.keys(studies)
+                    //   .map(study => studies[study].service);
 
-                    let unique = studyServices.filter((s, i) => {
-                      return studyServices.indexOf(s) === i;
-                    })
+                    // let unique = studyServices.filter((s, i) => {
+                    //   return studyServices.indexOf(s) === i;
+                    // })
 // HACKHACKHACK disabling case study count validation for existing seller flow
                     return true //serviceCount === unique.length
                   }
