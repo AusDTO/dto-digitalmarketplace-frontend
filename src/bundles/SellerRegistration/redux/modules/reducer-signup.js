@@ -62,8 +62,7 @@ export default combineReducers({
       referee_contact: ''
     },
     documentsForm: {
-      documents: {},
-      expiry_dates: {}
+      documents: {}
     },
     toolsForm: {
       tools: '',

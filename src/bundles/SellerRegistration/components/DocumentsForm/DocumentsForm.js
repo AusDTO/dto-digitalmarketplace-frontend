@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Form, actions} from 'react-redux-form';
+import isEmpty from 'lodash/isEmpty';
+import get from 'lodash/get';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -45,7 +47,7 @@ class DocumentsForm extends BaseForm {
             'id': 'workers',
             'description': 'Your insurer can issue a certificate of currency.',
             'expires': true
-        },
+        }
     ]
 
     onUpload(id, e) {
@@ -58,14 +60,14 @@ class DocumentsForm extends BaseForm {
             errors: Object.assign({}, this.state.errors, {[id]: void 0})
         })
 
-        dispatch(actions.omit(`${model}.documents`, id))
+        dispatch(actions.omit(`${model}.documents.${id}`, 'filename'))
 
         onUpload(id, file)
             .then((filename) => {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
-                dispatch(actions.change(`${model}.documents.${id}`, filename))
+                dispatch(actions.change(`${model}.documents.${id}.filename`, filename))
             })
             .catch((error) => {
                 this.setState({
@@ -78,7 +80,7 @@ class DocumentsForm extends BaseForm {
     onReset(id, e) {
         e.preventDefault();
         const {dispatch, model} = this.props;
-        dispatch(actions.omit(`${model}.documents`, id))
+        dispatch(actions.omit(`${model}.documents.${id}`, 'filename'))
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': void 0})
         })
@@ -131,11 +133,10 @@ class DocumentsForm extends BaseForm {
 
                         {this.formFields.map((field, i) => {
                             const key = field.id;
-                            const fieldState = this.state[key] || {}
-                            const doc = documentsForm.documents && documentsForm.documents[key]
-                            const expiry_date = documentsForm.expiry_dates[key]
-                            const expiry_date_field = 'expiry_date_' + key
-                            const errors = this.state.errors[key]
+                            const fieldState = this.state[key] || {};
+                            const doc = get(documentsForm, `documents.${key}`, {});
+                            const expiry_date_field = 'expiry_date_' + key;
+                            const errors = this.state.errors[key];
                             return (
                                 <div key={key} className="callout">
                                     <label className="question-heading" htmlFor={key}>{field.label}</label>
@@ -143,10 +144,10 @@ class DocumentsForm extends BaseForm {
 
                                     <div>
                                         <div>
-                                            {!doc && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png"
+                                            {isEmpty(doc.filename) && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png"
                                                             onChange={this.onChange.bind(this, key)}/>}
-                                            {(field.expires && (fieldState.file || doc)) && <Datefield
-                                                model={`${model}.expiry_dates.${key}`}
+                                            {(field.expires && (fieldState.file || !isEmpty(doc))) && <Datefield
+                                                model={`${model}.documents.${key}.expiry`}
                                                 name={expiry_date_field}
                                                 id={expiry_date_field}
                                                 htmlFor={expiry_date_field}
@@ -157,17 +158,18 @@ class DocumentsForm extends BaseForm {
                                             />}
                                             <br/>
                                         </div>
+
                                         <div>
                                             {fieldState.uploading && 'Uploading...'}
                                             {errors && 'There was an error uploading the file'}
-                                            {doc && <p><a href={`${pathname.slice(1)}/${doc}`} target="_blank"
-                                                          rel="external">{doc}</a></p>}
+                                            {!isEmpty(doc.filename) && <p><a href={`${pathname.slice(1)}/${doc.filename}`} target="_blank"
+                                                          rel="external">{doc.filename}</a></p>}
                                         </div>
                                     </div>
                                     <div className="actions">
                                         {fieldState.file &&
                                         <button type="submit" onClick={this.onUpload.bind(this, key)}>Upload</button>}
-                                        {doc &&
+                                        {!isEmpty(doc) &&
                                         <button type="reset" onClick={this.onReset.bind(this, key)}>Remove</button>}
                                     </div>
 
