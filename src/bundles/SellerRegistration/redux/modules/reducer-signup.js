@@ -75,16 +75,18 @@ export default combineReducers({
         boards: []
     },
     disclosuresForm: {
-        structual_changes: false,
+        structual_changes: null,
         structual_changes_details: '',
-        investigations: false,
+        investigations: null,
         investigations_details: '',
-        legal_proceedings: false,
+        legal_proceedings: null,
         legal_proceedings_details: '',
-        insurance_claims: false,
+        insurance_claims: null,
         insurance_claims_details: '',
-        conflicts_of_interest: false,
+        conflicts_of_interest: null,
         conflicts_of_interest_details: '',
+        other_circumstances: null,
+        other_circumstances_details: ''
     }
   })
 })

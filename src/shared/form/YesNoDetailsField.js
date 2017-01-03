@@ -1,26 +1,66 @@
 import React from 'react';
 import { Control } from 'react-redux-form';
+import upperFirst from 'lodash/upperFirst';
 
-const YesNoDetailsField = ({ name, id, label, model, validators, messages, description, controlProps, mapProps }) => (
-  <div className="field">
-      {/*<Control.checkbox
-                 name={name}
-                 id={id}
-                 value="Yes"
-                 model={model}
-          />*/}
-          <label htmlFor={id}>
-              <strong>{label}</strong>
-          </label>
-          If yes, provide details...
-          <Control.textarea
-              name={`${name}_details`}
-              id={`${id}-details`}
-              model={`${model}_details`}
-          >
-          </Control.textarea>
-  </div>
-);
+import { required }     from '../../validators';
+import Textarea         from './Textarea';
+import StatefulError    from './StatefulError';
+
+class YesNoDetailsField extends React.Component {
+
+  state = {
+    showField: false
+  }
+
+  onToggle(e) {
+    this.setState({
+      showField: e.target.value === 'yes'
+    })
+  }
+
+  render() {
+    const { name, id, label, model, validators, messages, description, controlProps, mapProps } = this.props;
+    return (
+      <fieldset className="field">
+        <legend><strong>{label}</strong></legend>
+        <StatefulError model={model} messages={messages} id={id} />
+        <Control.radio
+          onClick={this.onToggle.bind(this)}
+          id={`${id}-yes`}
+          name={id}
+          value="yes"
+          model={model}
+          validators={validators}
+        />
+        <label htmlFor={`${id}-yes`}>Yes</label>
+
+
+        <Control.radio
+          onClick={this.onToggle.bind(this)}
+          id={`${id}-no`}
+          name={id}
+          value="no"
+          model={model}
+          validators={validators}
+        />
+        <label htmlFor={`${id}-no`}>No</label>
+
+        {this.state.showField && (
+          <Textarea
+            name={`${name}_details`}
+            id={`${id}-details`}
+            model={`${model}_details`}
+            label="Please provide details"
+            validators={{ required }}
+            messages={{
+                required: 'Please provide details for ' + upperFirst(id).replace('_', ' '),
+            }}
+          />
+        )}
+      </fieldset>
+    )
+  }
+}
 
 YesNoDetailsField.defaultProps = {
   mapProps: {}
