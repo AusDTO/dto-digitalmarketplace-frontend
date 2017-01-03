@@ -45,7 +45,7 @@ class BusinessInfoForm extends BaseForm {
                         <fieldset>
                             <legend>Number of employees</legend>
                             <Control.radio
-                                model={`${model}.seller_type.number_of_employees`}
+                                model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="sole"
                                 value="Sole trader"/>
@@ -54,7 +54,7 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.radio
-                                model={`${model}.seller_type.number_of_employees`}
+                                model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="2to10"
                                 value="2-10"/>
@@ -63,16 +63,16 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.radio
-                                model={`${model}.seller_type.number_of_employees`}
+                                model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="11to50"
-                                value="11-50r"/>
+                                value="11-50"/>
                             <label htmlFor="11to50">11-50
 
                             </label>
 
                             <Control.radio
-                                model={`${model}.seller_type.number_of_employees`}
+                                model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="51to200"
                                 value="51-200"/>
@@ -81,7 +81,7 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.radio
-                                model={`${model}.seller_type.number_of_employees`}
+                                model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="200plus"
                                 value="200+"/>
@@ -181,7 +181,7 @@ class BusinessInfoForm extends BaseForm {
                         <fieldset>
                             <legend>If you have previous experience with government, who have you worked with?</legend>
                             <Control.checkbox
-                                model={`${model}.seller_type.local_government_experience`}
+                                model={`${model}.local_government_experience`}
                                 name="local_government_experience"
                                 id="local"
                                 value="Local"/>
@@ -190,7 +190,7 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
-                                model={`${model}.seller_type.state_government_experience`}
+                                model={`${model}.state_government_experience`}
                                 name="state_government_experience"
                                 id="state"
                                 value="state"/>
@@ -199,7 +199,7 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
-                                model={`${model}.seller_type.federal_government_experience`}
+                                model={`${model}.federal_government_experience`}
                                 name="federal_government_experience"
                                 id="federal"
                                 value="federal"/>
