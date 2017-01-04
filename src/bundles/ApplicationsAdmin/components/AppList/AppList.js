@@ -4,7 +4,7 @@ import { convertApplicationToSeller } from '../../redux/modules/applications'
 
 const AppList = ({meta = {}, applications, onClick}) => (
   <div><h2>{meta.heading}</h2>
-  <table style={{margin: '0 auto'}}><tbody>
+  <table style={{margin: '0 auto', width: '100%'}}><tbody>
   <tr>
     <th>name</th>
     <th>id</th>
@@ -14,7 +14,8 @@ const AppList = ({meta = {}, applications, onClick}) => (
   </tr>
   {applications.map((a, i) =>
     <tr key={a.id}>
-      <td><a href={meta.url_preview.concat(a.id) }>{a.name}</a></td>
+      <td width="45%"><a href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
+        {a.supplier_code && (<span className="badge--default">Existing Seller</span>)}</a></td>
       <td>{a.id}</td>
       <td>{a.email}</td>
       <td>{a.status}</td>

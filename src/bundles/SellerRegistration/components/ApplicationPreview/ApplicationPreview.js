@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
 
-import { Body, ReviewHeader } from '../../../../shared/SellerProfile';
+import { Body, ReviewHeader, PrivateInfo } from '../../../../shared/SellerProfile';
 
-const ApplicationPreview = ({ header, body, onClick }) => (
+const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
   <div>
       {onClick && <div className="row">
       <div className="callout--calendar-event col-sm-8 col-xs-12">
@@ -27,6 +27,7 @@ const ApplicationPreview = ({ header, body, onClick }) => (
     <div className="row">
       <div className="col-sm-8 col-xs-12">
         <Body {...body} />
+          {!onClick && <PrivateInfo {...privateInfo} />}
       </div>
     </div>
   </div>
@@ -50,7 +51,24 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
       abn,
       address,
       interstate,
-      documents
+      documents,
+      number_of_employees,
+      local_government_experience,
+      state_government_experience,
+      federal_government_experience,
+      other_panels,
+      structual_changes,
+      investigations,
+      legal_proceedings,
+      insurance_claims,
+      conflicts_of_interest,
+      other_circumstances,
+      structual_changes_details,
+      investigations_details,
+      legal_proceedings_details,
+      insurance_claims_details,
+      conflicts_of_interest_details,
+      other_circumstances_details
     } = application;
     documentsUrl = application.documents_url;
     caseStudyUrl = application.case_study_url;
@@ -83,12 +101,32 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
           email,
           phone,
           website,
-          documents,
           contact_email,
           contact_phone,
           contact_name,
           CaseStudyLink: caseStudyLink,
+          documents,
           documentsUrl
+        },
+        privateInfo: {
+            case_studies,
+            number_of_employees,
+            local_government_experience,
+            state_government_experience,
+            federal_government_experience,
+            other_panels,
+            structual_changes,
+            investigations,
+            legal_proceedings,
+            insurance_claims,
+            conflicts_of_interest,
+            other_circumstances,
+            structual_changes_details,
+            investigations_details,
+            legal_proceedings_details,
+            insurance_claims_details,
+            conflicts_of_interest_details,
+            other_circumstances_details
         },
         onClick
     }
