@@ -28,7 +28,7 @@ class Datefield extends React.Component {
   }
 
   onChange(e) {
-    const { model, dispatch, setDate } = this.props;
+    const { model, setDate } = this.props;
     this.setState({
       [e.target.name]: e.target.value
     }, () => {
@@ -122,4 +122,4 @@ Datefield.propTypes = {
   type: React.PropTypes.string
 };
 
-export default connect(mapStateToProps)(Datefield);
+export default connect(mapStateToProps, mapDispatchToProps)(Datefield);
