@@ -28,7 +28,7 @@ class Datefield extends React.Component {
   }
 
   onChange(e) {
-    const { model, dispatch } = this.props;
+    const { model, dispatch, setDate } = this.props;
     this.setState({
       [e.target.name]: e.target.value
     }, () => {
@@ -36,7 +36,7 @@ class Datefield extends React.Component {
 
       let date = format(new Date(Number(year), Number(month) - 1, Number(day)), 'YYYY-MM-DD');
 
-      dispatch(actions.change(model, date));
+      setDate(model, date);
     });
   }
 
@@ -94,6 +94,14 @@ class Datefield extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     date: get(state, ownProps.model)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setDate: (model, date) => {
+      return dispatch(actions.change(model, date));
+    }
   }
 }
 
