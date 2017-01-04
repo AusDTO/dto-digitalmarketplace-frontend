@@ -74,6 +74,7 @@ export default combineReducers({
         boards: []
     },
     disclosuresForm: {
+      disclosures: {
         structual_changes: null,
         structual_changes_details: '',
         investigations: null,
@@ -86,6 +87,7 @@ export default combineReducers({
         conflicts_of_interest_details: '',
         other_circumstances: null,
         other_circumstances_details: ''
+      }
     }
   })
 })

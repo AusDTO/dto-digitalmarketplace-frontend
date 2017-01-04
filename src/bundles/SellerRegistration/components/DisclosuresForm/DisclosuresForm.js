@@ -48,7 +48,7 @@ class DisclosuresForm extends BaseForm {
                             <YesNoDetails
                               name="structual_changes"
                               id="structual_changes"
-                              model={`${model}.structual_changes`}
+                              model={`${model}.disclosures.structual_changes`}
                               label={questions["structual_changes"]}
                               validators={{ required }}
                               messages={{
@@ -58,7 +58,7 @@ class DisclosuresForm extends BaseForm {
                             <YesNoDetails
                               name="investigations"
                               id="investigations"
-                              model={`${model}.investigations`}
+                              model={`${model}.disclosures.investigations`}
                               label={questions["investigations"]}
                               validators={{ required }}
                               messages={{
@@ -68,7 +68,7 @@ class DisclosuresForm extends BaseForm {
                             <YesNoDetails
                               name="legal_proceedings"
                               id="legal_proceedings"
-                              model={`${model}.legal_proceedings`}
+                              model={`${model}.disclosures.legal_proceedings`}
                               label={questions["legal_proceedings"]}
                               validators={{ required }}
                               messages={{
@@ -78,7 +78,7 @@ class DisclosuresForm extends BaseForm {
                             <YesNoDetails
                               name="insurance_claims"
                               id="insurance_claims"
-                              model={`${model}.insurance_claims`}
+                              model={`${model}.disclosures.insurance_claims`}
                               label={questions["insurance_claims"]}
                               validators={{ required }}
                               messages={{
@@ -88,7 +88,7 @@ class DisclosuresForm extends BaseForm {
                             <YesNoDetails
                               name="conflicts_of_interest"
                               id="conflicts_of_interest"
-                              model={`${model}.conflicts_of_interest`}
+                              model={`${model}.disclosures.conflicts_of_interest`}
                               label={questions["conflicts_of_interest"]}
                               validators={{ required }}
                               messages={{
@@ -98,7 +98,7 @@ class DisclosuresForm extends BaseForm {
                             <YesNoDetails
                               name="other_circumstances"
                               id="other_circumstances"
-                              model={`${model}.other_circumstances`}
+                              model={`${model}.disclosures.other_circumstances`}
                               label={questions["other_circumstances"]}
                               validators={{ required }}
                               messages={{
