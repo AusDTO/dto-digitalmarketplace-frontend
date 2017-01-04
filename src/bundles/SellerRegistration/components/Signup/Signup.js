@@ -23,6 +23,7 @@ import AwardsForm           from '../AwardsForm';
 import ToolsForm            from '../ToolsForm';
 import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
+import Review               from '../Review';
 import Finish               from '../Finish';
 
 class Signup extends React.Component {
