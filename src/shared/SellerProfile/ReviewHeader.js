@@ -8,9 +8,6 @@ const ReviewHeader = (props) => {
     seller_type,
     summary,
     website,
-    contact_email,
-    contact_phone,
-    contact_name
   } = props;
   var badgeTitle = {
         "indigenous": "Indigenous",

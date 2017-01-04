@@ -129,7 +129,7 @@ Body.propTypes = {
   evaluated: React.PropTypes.object,
   provides: React.PropTypes.object,
   documents: React.PropTypes.object,
-  case_studies: React.PropTypes.array,
+  case_studies: React.PropTypes.object,
   representative: React.PropTypes.string,
   email: React.PropTypes.string,
   phone: React.PropTypes.string,

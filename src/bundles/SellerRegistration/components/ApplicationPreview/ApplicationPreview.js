@@ -68,18 +68,18 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
       legal_proceedings_details,
       insurance_claims_details,
       conflicts_of_interest_details,
-      other_circumstances_details
+      other_circumstances_details,
+      documents_url = '../documents/',
+      case_study_url
     } = application;
-    documentsUrl = application.documents_url;
-    caseStudyUrl = application.case_study_url;
-    if (caseStudyUrl === undefined) {
-        var caseStudyLink = ({id, children}) => (<b>{children}</b>)
+
+    let caseStudyLink = null;
+    if (typeof case_study_url !== 'undefined') {
+      caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`}>{children}</a>);
     } else {
-        var caseStudyLink = ({id, children}) => (<a href={`${caseStudyUrl}${id}`}>{children}</a>)
+      caseStudyLink = ({id, children}) => (<b>{children}</b>);
     }
-    if (documentsUrl === undefined) {
-        documentsUrl = "../documents/";
-    }
+
     return {
         header: {
           name,
@@ -106,7 +106,7 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
           contact_name,
           CaseStudyLink: caseStudyLink,
           documents,
-          documentsUrl
+          documentsUrl: documents_url
         },
         privateInfo: {
             case_studies,
