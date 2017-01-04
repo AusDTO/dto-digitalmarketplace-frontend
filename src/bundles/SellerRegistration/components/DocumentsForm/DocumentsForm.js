@@ -21,7 +21,6 @@ class DocumentsForm extends BaseForm {
         action: React.PropTypes.string,
         csrf_token: React.PropTypes.string,
         form: React.PropTypes.object.isRequired,
-        dispatch: React.PropTypes.func.isRequired,
         model: React.PropTypes.string.isRequired
     }
 
@@ -52,7 +51,7 @@ class DocumentsForm extends BaseForm {
 
     onUpload(id, e) {
         e.preventDefault();
-        const {dispatch, model, onUpload} = this.props;
+        const {model, onUpload, removeDocument, updateDocumentName} = this.props;
         const file = this.state[id].file;
 
         this.setState({
@@ -60,14 +59,14 @@ class DocumentsForm extends BaseForm {
             errors: Object.assign({}, this.state.errors, {[id]: void 0})
         })
 
-        dispatch(actions.omit(`${model}.documents.${id}`, 'filename'))
+        removeDocument(model, id);
 
         onUpload(id, file)
             .then((filename) => {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
-                dispatch(actions.change(`${model}.documents.${id}.filename`, filename))
+                updateDocumentName(model, id, filename);
             })
             .catch((error) => {
                 this.setState({
@@ -79,8 +78,8 @@ class DocumentsForm extends BaseForm {
 
     onReset(id, e) {
         e.preventDefault();
-        const {dispatch, model} = this.props;
-        dispatch(actions.omit(`${model}.documents.${id}`, 'filename'))
+        const {model, removeDocument} = this.props;
+        removeDocument(model, id);
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': void 0})
         })
@@ -194,9 +193,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onUpload: (id, data) => {
-            return dispatch(uploadDocument(id, data))
+            return dispatch(uploadDocument(id, data));
         },
-        dispatch
+        removeDocument: (model, id) => {
+            return dispatch(actions.omit(`${model}.documents`, id));
+        },
+        updateDocumentName: (model, id, filename) => {
+            return dispatch(actions.change(`${model}.documents.${id}.filename`, filename));
+        }
     }
 }
 
