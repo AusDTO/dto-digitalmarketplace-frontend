@@ -70,6 +70,16 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/documents"
+            onClick={[Function]}>
+            <span>
+              Documents
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/tools"
             onClick={[Function]}>
             <span>
@@ -104,6 +114,16 @@ exports[`test Signup renders 1`] = `
             onClick={[Function]}>
             <span>
               Case studies
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}>
+            <span>
+              Review
             </span>
           </a>
         </li>
@@ -217,6 +237,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/documents"
+            onClick={[Function]}>
+            <span>
+              Documents
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/tools"
             onClick={[Function]}>
             <span>
@@ -251,6 +281,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
             onClick={[Function]}>
             <span>
               Case studies
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}>
+            <span>
+              Review
             </span>
           </a>
         </li>
@@ -514,6 +554,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/documents"
+            onClick={[Function]}>
+            <span>
+              Documents
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/tools"
             onClick={[Function]}>
             <span>
@@ -548,6 +598,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
             onClick={[Function]}>
             <span>
               Case studies
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/review"
+            onClick={[Function]}>
+            <span>
+              Review
             </span>
           </a>
         </li>
