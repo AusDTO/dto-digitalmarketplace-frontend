@@ -239,12 +239,12 @@ test('without filterSteps', () => {
       { id: 'profile', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
       { id: 'business', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
       { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
-      // { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
+      { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
       { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
       { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-      // { id: 'review', label: 'Review', component: Review, pattern: '/review' },
+      { id: 'review', label: 'Review', component: Review, pattern: '/review' },
       // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
       { id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
   ];
@@ -270,7 +270,7 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(10);
+  expect(steps.length).toBe(12);
 });
 
 test('filterSteps', () => {
@@ -292,7 +292,7 @@ test('filterSteps', () => {
       { id: 'profile', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
       { id: 'business', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
       { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
-      // { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
+      { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
       { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
@@ -325,7 +325,7 @@ test('filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(7);
+  expect(steps.length).toBe(8);
 });
 
 
