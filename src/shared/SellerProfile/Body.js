@@ -115,7 +115,7 @@ const Body = (props) => {
                   {documentTitle[key]}
                 </a>
                 <p>
-                  <small>Expires {format(new Date(doc.expiry), 'Mo MMM YYYY')}</small>
+                  {doc.expiry && (<small>Expires {format(new Date(doc.expiry), 'Mo MMM YYYY')}</small>)}
                 </p>
               </div>
             )
