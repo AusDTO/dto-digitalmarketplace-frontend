@@ -87,6 +87,9 @@ class DocumentsForm extends BaseForm {
 
     onChange(id, e) {
         e.preventDefault();
+        const { model, createDocument } = this.props;
+        // Create empty object for current selected document.
+        createDocument(model, id);
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
             errors: {[id]: void 0}
@@ -199,6 +202,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         removeDocument: (model, id) => {
             return dispatch(actions.omit(`${model}.documents`, id));
+        },
+        createDocument: (model, id) => {
+            return dispatch(actions.change(`${model}.documents.${id}`, {}));
         },
         updateDocumentName: (model, id, filename) => {
             return dispatch(actions.change(`${model}.documents.${id}.filename`, filename));
