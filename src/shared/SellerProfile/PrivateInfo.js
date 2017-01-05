@@ -17,7 +17,7 @@ const PrivateInfo = (props) => {
         <Row title="Case Study Referees" show={true}>
         {case_studies && Object.keys(case_studies).map((study, i) => {
             const { title, referee_name, referee_email, referee_position } = case_studies[study];
-            return (<p>Case Study: "{title}" <br/> Referee: {referee_name} ({referee_position}) {referee_email} <hr/></p>)
+            return (<div key={i}>Case Study: "{title}" <br/> Referee: {referee_name} ({referee_position}) {referee_email} <hr/></div>)
             })
         }
         </Row>
@@ -33,7 +33,7 @@ const PrivateInfo = (props) => {
             const question = questions[key];
             const answer = props[key];
             const details = props[key + "_details"];
-            return (<p><b>{question}</b> {answer} - {details}</p>)
+            return (<p key={i}><b>{question}</b> {answer} - {details}</p>)
         })}
         </Row>
 
@@ -42,11 +42,11 @@ const PrivateInfo = (props) => {
 };
 
 PrivateInfo.propTypes = {
-    case_studies: React.PropTypes.array,
+    case_studies: React.PropTypes.object,
     number_of_employees: React.PropTypes.string,
-    local_government_experience: React.PropTypes.string,
-    state_government_experience: React.PropTypes.string,
-    federal_government_experience: React.PropTypes.string,
+    local_government_experience: React.PropTypes.bool,
+    state_government_experience: React.PropTypes.bool,
+    federal_government_experience: React.PropTypes.bool,
     other_panels: React.PropTypes.string,
     structual_changes: React.PropTypes.string,
     investigations: React.PropTypes.string,
