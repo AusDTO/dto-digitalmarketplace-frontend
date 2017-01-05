@@ -24,11 +24,13 @@ const MultiInput = (props) => {
       {description && (
         <p className="hint" id={`${id}-hint`}>{description}</p>
       )}
-      <StatefulError
-        model={model}
-        messages={messages}
-        id={id}
-      />
+      {messages &&
+        <StatefulError
+          model={model}
+          messages={messages}
+          id={id}
+        />
+      }
       <Control
         model={model}
         controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}

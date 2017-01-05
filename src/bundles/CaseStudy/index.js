@@ -1,4 +1,4 @@
-import CaseStudy from './CaseStudy'
+import CaseStudy from './CaseStudyWidget'
 import createStore from './redux/create'
 
 export default {

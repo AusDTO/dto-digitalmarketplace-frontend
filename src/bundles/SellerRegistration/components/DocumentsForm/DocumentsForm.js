@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Form, actions} from 'react-redux-form';
+import isEmpty from 'lodash/isEmpty';
+import get from 'lodash/get';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -19,7 +21,6 @@ class DocumentsForm extends BaseForm {
         action: React.PropTypes.string,
         csrf_token: React.PropTypes.string,
         form: React.PropTypes.object.isRequired,
-        dispatch: React.PropTypes.func.isRequired,
         model: React.PropTypes.string.isRequired
     }
 
@@ -45,12 +46,12 @@ class DocumentsForm extends BaseForm {
             'id': 'workers',
             'description': 'Your insurer can issue a certificate of currency.',
             'expires': true
-        },
+        }
     ]
 
     onUpload(id, e) {
         e.preventDefault();
-        const {dispatch, model, onUpload} = this.props;
+        const {model, onUpload, removeDocument, updateDocumentName, createDocument} = this.props;
         const file = this.state[id].file;
 
         this.setState({
@@ -58,14 +59,15 @@ class DocumentsForm extends BaseForm {
             errors: Object.assign({}, this.state.errors, {[id]: void 0})
         })
 
-        dispatch(actions.omit(`${model}.documents`, id))
+        removeDocument(model, id);
+        createDocument(model, id);
 
         onUpload(id, file)
             .then((filename) => {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
-                dispatch(actions.change(`${model}.documents.${id}`, filename))
+                updateDocumentName(model, id, filename);
             })
             .catch((error) => {
                 this.setState({
@@ -77,8 +79,9 @@ class DocumentsForm extends BaseForm {
 
     onReset(id, e) {
         e.preventDefault();
-        const {dispatch, model} = this.props;
-        dispatch(actions.omit(`${model}.documents`, id))
+        const {model, removeDocument, createDocument} = this.props;
+        removeDocument(model, id);
+        createDocument(model, id);
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': void 0})
         })
@@ -131,22 +134,24 @@ class DocumentsForm extends BaseForm {
 
                         {this.formFields.map((field, i) => {
                             const key = field.id;
-                            const fieldState = this.state[key] || {}
-                            const doc = documentsForm.documents && documentsForm.documents[key]
-                            const expiry_date = documentsForm.expiry_dates[key]
-                            const expiry_date_field = 'expiry_date_' + key
-                            const errors = this.state.errors[key]
+                            const fieldState = this.state[key] || {};
+                            const doc = get(documentsForm, `documents.${key}`, {});
+                            const expiry_date_field = 'expiry_date_' + key;
+                            const errors = this.state.errors[key];
                             return (
                                 <div key={key} className="callout">
                                     <label className="question-heading" htmlFor={key}>{field.label}</label>
                                     <p>{field.description}</p>
 
                                     <div>
-                                        <p>
-                                            {!doc && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png"
-                                                            onChange={this.onChange.bind(this, key)}/>}
-                                            {(field.expires && (fieldState.file || doc)) && <Datefield
-                                                model={`${model}.expiry_dates[${key}]`}
+                                        <div>
+                                            {isEmpty(doc.filename) && (
+                                                <p>
+                                                    <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>
+                                                </p>
+                                            )}
+                                            {(field.expires && !isEmpty(doc.filename)) && <Datefield
+                                                model={`${model}.documents.${key}.expiry`}
                                                 name={expiry_date_field}
                                                 id={expiry_date_field}
                                                 htmlFor={expiry_date_field}
@@ -155,19 +160,19 @@ class DocumentsForm extends BaseForm {
                                                     required: 'Expiry date is required for this document.',
                                                 }}
                                             />}
-                                            <br/>
-                                        </p>
+                                        </div>
+
                                         <div>
                                             {fieldState.uploading && 'Uploading...'}
                                             {errors && 'There was an error uploading the file'}
-                                            {doc && <p><a href={`${pathname.slice(1)}/${doc}`} target="_blank"
-                                                          rel="external">{doc}</a></p>}
+                                            {!isEmpty(doc.filename) && <p><a href={`${pathname.slice(1)}/${doc.filename}`} target="_blank"
+                                                          rel="external">{doc.filename}</a></p>}
                                         </div>
                                     </div>
                                     <div className="actions">
                                         {fieldState.file &&
                                         <button type="submit" onClick={this.onUpload.bind(this, key)}>Upload</button>}
-                                        {doc &&
+                                        {!isEmpty(doc) &&
                                         <button type="reset" onClick={this.onReset.bind(this, key)}>Remove</button>}
                                     </div>
 
@@ -192,9 +197,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onUpload: (id, data) => {
-            return dispatch(uploadDocument(id, data))
+            return dispatch(uploadDocument(id, data));
         },
-        dispatch
+        removeDocument: (model, id) => {
+            return dispatch(actions.omit(`${model}.documents`, id));
+        },
+        createDocument: (model, id) => {
+            return dispatch(actions.change(`${model}.documents.${id}`, {}));
+        },
+        updateDocumentName: (model, id, filename) => {
+            return dispatch(actions.change(`${model}.documents.${id}.filename`, filename));
+        }
     }
 }
 

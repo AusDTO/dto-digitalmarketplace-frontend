@@ -18,13 +18,12 @@ import YourInfoForm         from '../YourInfoForm';
 import BusinessDetailsForm  from '../BusinessDetailsForm';
 import BusinessInfoForm     from '../BusinessInfoForm';
 import DomainSelector       from '../DomainSelector';
-import Review               from '../Review';
 import DisclosuresForm      from '../DisclosuresForm';
 import AwardsForm           from '../AwardsForm';
 import ToolsForm            from '../ToolsForm';
-import Submit               from '../Submit';
 import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
+import Review               from '../Review';
 import Finish               from '../Finish';
 
 class Signup extends React.Component {

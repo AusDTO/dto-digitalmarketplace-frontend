@@ -1,5 +1,6 @@
 import React from 'react';
-import Row from "./Row";
+import Row from './Row';
+import format from 'date-fns/format';
 
 const Body = (props) => {
   const {
@@ -106,12 +107,19 @@ const Body = (props) => {
         <p><a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} target="_blank">{abn}</a></p>
       </Row>
       <Row title="Documents" show={documents && Object.keys(documents).length}>
-          {documents && Object.keys(documents).map((key, val) =>
-              <p key={val}>
-
-                  <a href={`${documentsUrl}${documents[key]}`}>{documentTitle[key]}</a><br/>
-              </p>
-          )}
+          {documents && Object.keys(documents).map((key, val) => {
+            let doc = documents[key];
+            return (
+              <div key={val}>
+                <a href={`${documentsUrl}${doc.filename}`}>
+                  {documentTitle[key]}
+                </a>
+                <p>
+                  <small>Expires {format(new Date(doc.expiry), 'Mo MMM YYYY')}</small>
+                </p>
+              </div>
+            )
+          })}
       </Row>
     </article>
   )
@@ -121,7 +129,7 @@ Body.propTypes = {
   evaluated: React.PropTypes.object,
   provides: React.PropTypes.object,
   documents: React.PropTypes.object,
-  case_studies: React.PropTypes.array,
+  case_studies: React.PropTypes.object,
   representative: React.PropTypes.string,
   email: React.PropTypes.string,
   phone: React.PropTypes.string,

@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Form, Control } from 'react-redux-form';
-import {required} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 

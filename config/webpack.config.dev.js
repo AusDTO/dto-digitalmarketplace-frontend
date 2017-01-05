@@ -89,6 +89,10 @@ var loaders = [
       {
         test: /\.svg$/,
         loader: 'svg-inline'
+      },
+      {
+        test: /\.scss$/,
+        loader: 'ignore-loader'
       }
     ]
 
