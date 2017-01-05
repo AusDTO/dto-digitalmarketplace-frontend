@@ -51,7 +51,7 @@ class DocumentsForm extends BaseForm {
 
     onUpload(id, e) {
         e.preventDefault();
-        const {model, onUpload, removeDocument, updateDocumentName} = this.props;
+        const {model, onUpload, removeDocument, updateDocumentName, createDocument} = this.props;
         const file = this.state[id].file;
 
         this.setState({
@@ -66,6 +66,7 @@ class DocumentsForm extends BaseForm {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
+                createDocument(model, id);
                 updateDocumentName(model, id, filename);
             })
             .catch((error) => {
@@ -87,9 +88,6 @@ class DocumentsForm extends BaseForm {
 
     onChange(id, e) {
         e.preventDefault();
-        const { model, createDocument } = this.props;
-        // Create empty object for current selected document.
-        createDocument(model, id);
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
             errors: {[id]: void 0}
