@@ -10,7 +10,7 @@ const Textarea = ({ name, id, label, model, validators, messages, description, c
     {description && (
       <p className="hint" id={`${id}-hint`}>{description}</p>
     )}
-    <StatefulError model={model} messages={messages} id={id} />
+    {messages && <StatefulError model={model} messages={messages} id={id} />}
     <Control
       model={model}
       controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
