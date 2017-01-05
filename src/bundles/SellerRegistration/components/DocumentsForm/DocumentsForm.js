@@ -60,13 +60,13 @@ class DocumentsForm extends BaseForm {
         })
 
         removeDocument(model, id);
+        createDocument(model, id);
 
         onUpload(id, file)
             .then((filename) => {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
-                createDocument(model, id);
                 updateDocumentName(model, id, filename);
             })
             .catch((error) => {
@@ -79,8 +79,9 @@ class DocumentsForm extends BaseForm {
 
     onReset(id, e) {
         e.preventDefault();
-        const {model, removeDocument} = this.props;
+        const {model, removeDocument, createDocument} = this.props;
         removeDocument(model, id);
+        createDocument(model, id);
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': void 0})
         })
@@ -149,7 +150,7 @@ class DocumentsForm extends BaseForm {
                                                     <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>
                                                 </p>
                                             )}
-                                            {(field.expires && (fieldState.file || !isEmpty(doc.filename))) && <Datefield
+                                            {(field.expires && !isEmpty(doc.filename)) && <Datefield
                                                 model={`${model}.documents.${key}.expiry`}
                                                 name={expiry_date_field}
                                                 id={expiry_date_field}
