@@ -143,19 +143,20 @@ class DocumentsForm extends BaseForm {
 
                                     <div>
                                         <div>
-                                            {isEmpty(doc.filename) && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png"
-                                                            onChange={this.onChange.bind(this, key)}/>}
-                                            {(field.expires && (fieldState.file || !isEmpty(doc))) && <Datefield
-                                                model={`${model}.documents.${key}.expiry`}
-                                                name={expiry_date_field}
-                                                id={expiry_date_field}
-                                                htmlFor={expiry_date_field}
-                                                label="Expiry date:"
-                                                messages={{
-                                                    required: 'Expiry date is required for this document.',
-                                                }}
-                                            />}
-                                            <br/>
+                                            <p>
+                                                {isEmpty(doc.filename) && <input type="file" id={key} name={key} accept=".pdf,.jpg,.png"
+                                                                onChange={this.onChange.bind(this, key)}/>}
+                                                {(field.expires && (fieldState.file || !isEmpty(doc))) && <Datefield
+                                                    model={`${model}.documents.${key}.expiry`}
+                                                    name={expiry_date_field}
+                                                    id={expiry_date_field}
+                                                    htmlFor={expiry_date_field}
+                                                    label="Expiry date:"
+                                                    messages={{
+                                                        required: 'Expiry date is required for this document.',
+                                                    }}
+                                                />}
+                                            </p>
                                         </div>
 
                                         <div>
