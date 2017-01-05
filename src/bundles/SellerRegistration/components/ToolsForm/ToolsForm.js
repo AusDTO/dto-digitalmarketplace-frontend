@@ -51,7 +51,6 @@ class ToolsForm extends BaseForm {
                             controlProps={{limit: 200}}
                             label="Tools"
                             description="What tools do you use on a day-to-day basis? For example Jira, Basecamp, Digital Service Standard, Sharpies."
-
                         />
 
                         <Textarea
@@ -61,7 +60,6 @@ class ToolsForm extends BaseForm {
                             controlProps={{limit: 200}}
                             label="Methodologies"
                             description="What methodologies form the core of your practice? For example, Kanban, lean, scaled agile (SAFe)."
-
                         />
 
                         <Textarea
@@ -71,7 +69,6 @@ class ToolsForm extends BaseForm {
                             controlProps={{limit: 200}}
                             label="Technologies (optional)"
                             description="What technologies do you typically use as part of your products and services? For example, Python, Drupal, React, .net, Java, Ruby on Rails"
-
                         />
                         {children}
 
