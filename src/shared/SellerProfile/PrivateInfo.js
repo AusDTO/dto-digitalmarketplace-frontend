@@ -31,8 +31,8 @@ const PrivateInfo = (props) => {
         <Row title="Disclosures" show={true}>
         {Object.keys(questions).map((key, i) => {
             const question = questions[key];
-            const answer = props[key];
-            const details = props[key + "_details"];
+            const answer = props['disclosures'][key];
+            const details = props['disclosures'][key + "_details"];
             return (<p key={i}><b>{question}</b> {answer} - {details}</p>)
         })}
         </Row>
@@ -48,18 +48,7 @@ PrivateInfo.propTypes = {
     state_government_experience: React.PropTypes.bool,
     federal_government_experience: React.PropTypes.bool,
     other_panels: React.PropTypes.string,
-    structual_changes: React.PropTypes.string,
-    investigations: React.PropTypes.string,
-    legal_proceedings: React.PropTypes.string,
-    insurance_claims: React.PropTypes.string,
-    conflicts_of_interest: React.PropTypes.string,
-    other_circumstances: React.PropTypes.string,
-    structual_changes_details: React.PropTypes.string,
-    investigations_details: React.PropTypes.string,
-    legal_proceedings_details: React.PropTypes.string,
-    insurance_claims_details: React.PropTypes.string,
-    conflicts_of_interest_details: React.PropTypes.string,
-    other_circumstances_details: React.PropTypes.string
+    disclosures: React.PropTypes.object
 };
 
 export default PrivateInfo;

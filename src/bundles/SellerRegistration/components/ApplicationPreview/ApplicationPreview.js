@@ -27,7 +27,7 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
     <div className="row">
       <div className="col-sm-8 col-xs-12">
         <Body {...body} />
-          {!onClick && <PrivateInfo {...privateInfo} />}
+          {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
       </div>
     </div>
   </div>
@@ -57,18 +57,7 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
       state_government_experience,
       federal_government_experience,
       other_panels,
-      structual_changes,
-      investigations,
-      legal_proceedings,
-      insurance_claims,
-      conflicts_of_interest,
-      other_circumstances,
-      structual_changes_details,
-      investigations_details,
-      legal_proceedings_details,
-      insurance_claims_details,
-      conflicts_of_interest_details,
-      other_circumstances_details,
+      disclosures,
       documents_url = '../documents/',
       case_study_url
     } = application;
@@ -108,26 +97,15 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
           documents,
           documentsUrl: documents_url
         },
-        privateInfo: {
+        privateInfo: (disclosures ? {
             case_studies,
             number_of_employees,
             local_government_experience,
             state_government_experience,
             federal_government_experience,
             other_panels,
-            structual_changes,
-            investigations,
-            legal_proceedings,
-            insurance_claims,
-            conflicts_of_interest,
-            other_circumstances,
-            structual_changes_details,
-            investigations_details,
-            legal_proceedings_details,
-            insurance_claims_details,
-            conflicts_of_interest_details,
-            other_circumstances_details
-        },
+            disclosures
+        } : {}),
         onClick
     }
 }
