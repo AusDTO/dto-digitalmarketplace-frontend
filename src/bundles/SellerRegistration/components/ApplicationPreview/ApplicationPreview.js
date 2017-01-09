@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
+import isEmpty from 'lodash/isEmpty';
 
 import { Body, ReviewHeader, PrivateInfo } from '../../../../shared/SellerProfile';
 
@@ -34,7 +35,7 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
 );
 
 const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick }) => {
-    const {
+    let {
       name,
       seller_type,
       summary,
@@ -50,7 +51,7 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
       linkedin,
       abn,
       address,
-      interstate,
+      travel: interstate,
       documents,
       number_of_employees,
       local_government_experience,
@@ -67,6 +68,14 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
       caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`}>{children}</a>);
     } else {
       caseStudyLink = ({id, children}) => (<b>{children}</b>);
+    }
+
+    // FIXME this is a workaround, somehow python returns empty case studies as a list.
+    // Either there is bad data floating around or something is turning empty objects
+    // into an array.
+    // Body expects object not array.
+    if (Array.isArray(case_studies) && isEmpty(case_studies)) {
+      case_studies = {};
     }
 
     return {

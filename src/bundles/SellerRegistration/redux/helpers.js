@@ -22,7 +22,7 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
            result[key] = data[key];
           return result;
         }, {})
-    
+
       // Only dispatch if we have values, dont override defaults.
       if (!isEmpty(mappedFields)) {
         dispatch(actions.change(form, mappedFields));
