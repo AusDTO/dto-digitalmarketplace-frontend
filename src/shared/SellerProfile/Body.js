@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from './Row';
 import format from 'date-fns/format';
+import isEmpty from 'lodash/isEmpty';
 
 const Body = (props) => {
   const {
@@ -19,21 +20,20 @@ const Body = (props) => {
     address,
     interstate,
     documents,
-    CaseStudyLink,
+    CaseStudyLink = () => null,
     documentsUrl
   } = props;
-    var documentTitle = {
-            "financial":"Financial Statement",
-            "liability":"Public Liability Insurance",
-            "workers":"Workers Compensation Insurance"
-    }
+
+  const documentTitle = {
+    financial: 'Financial Statement',
+    liability: 'Public Liability Insurance',
+    workers: 'Workers Compensation Insurance'
+  };
+
   return (
     <article className="seller-profile">
       <Row title="Evaluated for" show={evaluated}>
         <div className="seller-profile__evaluated-badges">
-          {/*Object.keys(evaluated).map((service, i) => (
-            <span key={i}>{service}</span>
-          ))*/}
         </div>
       </Row>
 
@@ -45,9 +45,9 @@ const Body = (props) => {
         </div>
       </Row>
 
-      <Row title="Case studies" show={Object.keys(case_studies).length}>
+      <Row title="Case studies" show={!isEmpty(case_studies)}>
         <ul className="list-vertical">
-        {case_studies && Object.keys(case_studies).map((study, i) => {
+        {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
           return (
             <li key={i}>
@@ -67,55 +67,68 @@ const Body = (props) => {
         })}
         </ul>
       </Row>
-        <Row title="For opportunities" show={contact_name}>
-        <p>
-            <b>Contact</b><br/>
-            <span>{contact_name}</span>
-        </p>
-        <p>
-            <b>Phone</b><br/>
-            <span>{contact_phone}</span>
-        </p>
-        <p>
-            <b>Email</b><br/>
-            <a href={`mailto:${contact_email}`}>{contact_email}</a>
-        </p>
-        </Row>
-      <Row title="Company Details" show={true}>
-        <b>Business Representative</b><br/>
-          <p>
-              <span>{representative}</span><br/>
-              { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
-              { phone && <span>{phone}<br/></span>}
-          </p>
-        <p></p>
-
-        <b>Website</b><br/>
-        <p><a href={website} rel="external" target="_blank">{website}</a></p>
-
-          { linkedin &&<span><b>Linkedin Profile</b><br/>
-           <p><a href={linkedin} rel="external">{linkedin}</a></p></span> }
-
-        <b>Main Address</b><br/>
-        <p>
-          <span>{address && address.address_line}</span><br/>
-          <span>{address && address.suburb}</span><br/>
-          <span>{address && address.state} {address && address.postal_code}</span>
-        </p>
-          { interstate && <p><b>This seller is able work interstate</b></p>}
-        <b>ABN</b><br/>
-        <p><a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} target="_blank">{abn}</a></p>
+      <Row title="For opportunities" show={contact_name || contact_phone || contact_email}>
+        <h4>Contact</h4>
+        <p>{contact_name}</p>
+        
+        <h4>Phone</h4>
+        <p>{contact_phone}</p>
+        
+        <h4>Email</h4>
+        <p><a href={`mailto:${contact_email}`}>{contact_email}</a></p>
       </Row>
-      <Row title="Documents" show={documents && Object.keys(documents).length}>
-          {documents && Object.keys(documents).map((key, val) => {
-            let doc = documents[key];
+
+      <Row title="Company Details" show={true}>
+        <h4>Business Representative</h4>
+        <p>
+            <span>{representative}</span><br/>
+            { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
+            { phone && <span>{phone}<br/></span>}
+        </p>
+
+        <p>
+          <a href={website} rel="external" target="_blank">Website</a>
+        </p>
+
+        {linkedin && (
+          <p>
+            <a href={linkedin} rel="external">Linkedin Profile</a>
+          </p>
+        )}
+
+        {!isEmpty(address) && (
+          <div>
+            <h4>Main Address</h4>
+            <p>
+              <span>{address.address_line}</span><br/>
+              <span>{address.suburb}</span><br/>
+              <span>{address.state} {address.postal_code}</span>
+            </p>
+          </div>
+        )}
+
+        {interstate && (
+          <p>
+            <b>This seller is able work interstate</b>
+          </p>
+        )}
+
+        <h4>ABN</h4>
+        <p>
+          <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external" target="_blank">{abn}</a>
+        </p>
+      </Row>
+
+      <Row title="Documents" show={!isEmpty(documents)}>
+          {Object.keys(documents).map((key, val) => {
+            const { filename, expiry } = documents[key];
             return (
               <div key={val}>
-                <a href={`${documentsUrl}${doc.filename}`}>
+                <a href={`${documentsUrl}${filename}`}>
                   {documentTitle[key]}
                 </a>
                 <p>
-                  {doc.expiry && (<small>Expires {format(new Date(doc.expiry), 'Mo MMM YYYY')}</small>)}
+                  {expiry && (<small>Expires {format(new Date(expiry), 'Mo MMM YYYY')}</small>)}
                 </p>
               </div>
             )
@@ -136,7 +149,7 @@ Body.propTypes = {
   website: React.PropTypes.string,
   linkedin: React.PropTypes.string,
   abn: React.PropTypes.string,
-  interstate: React.PropTypes.string,
+  interstate: React.PropTypes.bool,
   address: React.PropTypes.shape({
     address_line: React.PropTypes.string,
     suburb: React.PropTypes.string,
