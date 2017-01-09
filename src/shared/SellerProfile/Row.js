@@ -6,15 +6,15 @@ const Row = ({ title, children, show }) => {
     }
 
     return (
-        <span>
-            <hr/>
-            <br/>
-            <div className="row seller-profile__row">
-              <div className="col-sm-3"><b>{title}</b></div>
-              <div className="col-sm-8 col-sm-push-1">{children}</div>
+        <div className="row seller-profile__row">
+            <hr />
+            <div className="col-sm-3">
+                <h4 className="seller-profile__section-title">{title}</h4>
             </div>
-            <br/>
-        </span>
+            <div className="col-sm-8 col-sm-push-1">
+                {children}
+            </div>
+        </div>
     )
 }
 
