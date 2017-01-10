@@ -28,13 +28,13 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
     <div className="row">
       <div className="col-sm-8 col-xs-12">
         <Body {...body} />
-          {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
+        {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
       </div>
     </div>
   </div>
 );
 
-const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick }) => {
+const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) => {
     let {
       name,
       seller_type,
