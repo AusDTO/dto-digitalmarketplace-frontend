@@ -5,7 +5,8 @@ exports[`test CaseStudyViewWidget renders without errrors 1`] = `
     className="row">
     <div
       className="col-xs-12">
-      <h1>
+      <h1
+        tabIndex="-1">
         A Case Study
       </h1>
     </div>

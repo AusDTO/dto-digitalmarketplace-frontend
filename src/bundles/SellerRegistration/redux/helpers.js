@@ -93,3 +93,13 @@ export const findDirtyForms = (state = {}) => {
       return valid;
     }, {});
 }
+
+// Not the greatest thing, but since we're not mutating anything
+// in the DOM and just managing focus, I think we're okay.
+// findDOMNode doesn't break the lines of encapsulation.
+export const focusHeading = () => {
+  if (typeof document !== 'undefined') {
+      const heading = document.querySelector('h1');
+      return heading && heading.focus();
+  }
+}

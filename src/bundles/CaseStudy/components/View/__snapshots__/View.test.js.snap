@@ -5,7 +5,8 @@ exports[`test View with required attributes 1`] = `
     className="row">
     <div
       className="col-xs-12">
-      <h1>
+      <h1
+        tabIndex="-1">
         My Sydney
       </h1>
     </div>
@@ -104,7 +105,8 @@ exports[`test View with required attributes and meta links 1`] = `
     className="row">
     <div
       className="col-xs-12">
-      <h1>
+      <h1
+        tabIndex="-1">
         My Sydney
       </h1>
     </div>
