@@ -25,6 +25,8 @@ import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../Review';
 import Finish               from '../Finish';
+import FinishProfile        from '../FinishProfile';
+
 
 class Signup extends React.Component {
 
@@ -50,6 +52,7 @@ class Signup extends React.Component {
     { id: 'review', label: 'Review', component: Review, pattern: '/review' },
     // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
     { id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
+    { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ]
 
   elementProps = {

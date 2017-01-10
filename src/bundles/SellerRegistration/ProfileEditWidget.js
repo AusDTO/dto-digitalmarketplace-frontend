@@ -4,13 +4,17 @@ import { Provider } from 'react-redux';
 import RegisterComponent from '../../RegisterComponent';
 import createStore from './redux/create-signup';
 
-import ProfileEdit from './components/ProfileEdit';
+import Signup from './components/Signup';
 
 export const ProfileEditWidget = (props) => {
   const store = createStore(props);
+  const filterSteps = (step) => {
+    // Remove steps with patterns of /start and /case-study and /review and /submit
+    return !step.pattern.match(/\/start|\/finish/);
+  };
   return ({ router, location }) => (
     <Provider store={store}>
-      <ProfileEdit router={router} location={location} />
+      <Signup router={router} location={location} filterSteps={filterSteps}/>
     </Provider>
   )
 }
