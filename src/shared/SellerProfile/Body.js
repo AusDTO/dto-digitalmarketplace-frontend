@@ -120,7 +120,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-          {Object.keys(documents).map((key, val) => {
+          {!isEmpty(documents) && Object.keys(documents).map((key, val) => {
             const { filename, expiry } = documents[key];
             return (
               <div key={val}>
