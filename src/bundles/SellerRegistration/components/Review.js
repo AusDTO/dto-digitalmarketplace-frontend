@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Match, Link } from 'react-router';
-import ApplicationPreview from './ApplicationPreview'
+import { Match, Link, Redirect } from 'react-router';
 
-const Review = ({pathname, ...rest}) => (
+import ApplicationPreview from './ApplicationPreview'
+import View from '../../CaseStudy/components/View';
+
+const Review = ({pathname, caseStudyForm, ...rest}) => (
     <div>
         <Match pattern={pathname} exactly render={() => (
             <div>
@@ -16,15 +18,36 @@ const Review = ({pathname, ...rest}) => (
         )}/>
         <Match 
             pattern={`${pathname}/profile`}
+            exactly
             render={(routerProps) => (
                 <ApplicationPreview {...routerProps} {...rest}  />
             )}
-            component={ApplicationPreview} />
+            component={ApplicationPreview}
+        />
+
+        {/* Slight duplication but need to reconfigure the return link. */}
+        <Match pattern={`${pathname}/profile/case-study/:id`} render={({ params }) => {
+          const currentStudy = caseStudyForm.case_studies[params.id];
+          return (
+            <div>
+              {currentStudy.title
+                ? <View
+                    {...currentStudy}
+                    returnLink={<p><Link to={`${pathname}/profile`}>Return to Profile</Link></p>}
+                  />
+                : <Redirect to={`${pathname}/profile`} />
+              }
+            </div>
+          )
+        }} />
     </div>
 );
 
-const mapStateToProps = (state, ownProps) => {
-    return ownProps
+const mapStateToProps = ({ caseStudyForm }, ownProps) => {
+    return {
+        ...ownProps,
+        caseStudyForm
+    }
 }
 
 export {
