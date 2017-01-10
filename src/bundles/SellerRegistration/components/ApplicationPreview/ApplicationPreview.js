@@ -28,13 +28,13 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
     <div className="row">
       <div className="col-sm-8 col-xs-12">
         <Body {...body} />
-          {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
+        {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
       </div>
     </div>
   </div>
 );
 
-const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick }) => {
+const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) => {
     let {
       name,
       seller_type,
@@ -67,7 +67,9 @@ const mapStateToProps = ({ application }, { documentsUrl, caseStudyUrl, onClick 
     if (typeof case_study_url !== 'undefined') {
       caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`}>{children}</a>);
     } else {
-      caseStudyLink = ({id, children}) => (<b>{children}</b>);
+      caseStudyLink = ({id, children}) => (
+        <Link to={`${rest.pathname}/case-study/${id}`}>{children}</Link>
+      );
     }
 
     // FIXME this is a workaround, somehow python returns empty case studies as a list.
