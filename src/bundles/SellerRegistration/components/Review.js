@@ -26,7 +26,7 @@ const Review = ({pathname, caseStudyForm, ...rest}) => (
         />
 
         {/* Slight duplication but need to reconfigure the return link. */}
-        <Match pattern={`${pathname}/profile/case-study/:id?`} render={({ params }) => {
+        <Match pattern={`${pathname}/profile/case-study/:id`} render={({ params }) => {
           const currentStudy = caseStudyForm.case_studies[params.id];
           return (
             <div>
