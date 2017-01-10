@@ -11,6 +11,9 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 
+import ConnectedLink from '../../../SellerRegistration/components/ConnectedLink';
+import { linkClick } from '../../../SellerRegistration/redux/modules/application';
+
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
 
@@ -82,7 +85,8 @@ class DomainList extends BaseForm {
       onCaseStudySubmit,
       onEditCaseStudy,
       onAddCaseStudy,
-      onDeleteCaseStudy
+      onDeleteCaseStudy,
+      linkClick
     } = this.props;
 
     onCaseStudySubmit = onCaseStudySubmit.bind(this, {
@@ -156,6 +160,7 @@ class DomainList extends BaseForm {
                                       onClick={(e) => {
                                         onEditCaseStudy(study);
                                         onClick(e);
+                                        linkClick(href);
                                       }}
                                       children={study.title}
                                     />
@@ -186,6 +191,7 @@ class DomainList extends BaseForm {
                         <a href={href} id={`add-service-${kebabCase(service)}`} onClick={(e) => {
                           onAddCaseStudy();
                           onClick(e);
+                          linkClick(href);
                         }}>Add case study</a>
                     }</Link>
                   </section>
@@ -235,7 +241,7 @@ class DomainList extends BaseForm {
             formName="casestudy"
             buttonText="Save & Preview"
             service={params.service}
-            returnLink={<Link to={pathname}>Return without saving</Link>}
+            returnLink={<ConnectedLink to={pathname}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, params)}
           />
 
@@ -247,7 +253,7 @@ class DomainList extends BaseForm {
             formName={`caseStudyForm.case_studies.${params.id}`}
             mode="edit"
             buttonText="Save & Preview"
-            returnLink={<Link to={pathname}>Return without saving</Link>}
+            returnLink={<ConnectedLink to={pathname}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, params)}
           />
 
@@ -263,7 +269,7 @@ class DomainList extends BaseForm {
                 ? <View
                     {...currentStudy}
                     onSubmit={onCaseStudySubmit.bind(this, params)}
-                    confirmButton={<Link role="button" to={pathname}>Finish case study</Link>}
+                    confirmButton={<ConnectedLink role="button" to={pathname}>Finish case study</ConnectedLink>}
                     returnLink={<p><Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link></p>}
                   />
                 : <Redirect to={pathname} />
@@ -305,6 +311,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.reset('casestudy'));
       dispatch(dispatchActions.submitApplication());
       router.transitionTo(`${pathname}/view/${id}`);
+      dispatch(linkClick());
     },
     onEditCaseStudy: (study) => {
       dispatch(actions.change('casestudy', study));
@@ -315,6 +322,9 @@ const mapDispatchToProps = (dispatch) => {
     onDeleteCaseStudy: (dispatchActions, id) => {
       dispatch(actions.omit('caseStudyForm.case_studies', id));
       dispatch(dispatchActions.submitApplication());
+    },
+    linkClick: () => {
+      dispatch(linkClick());
     }
   }
 }

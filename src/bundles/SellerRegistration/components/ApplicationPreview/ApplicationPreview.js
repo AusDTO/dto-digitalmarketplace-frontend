@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
+import ConnectedLink from '../ConnectedLink';
 import isEmpty from 'lodash/isEmpty';
 
 import { Body, ReviewHeader, PrivateInfo } from '../../../../shared/SellerProfile';
@@ -68,7 +69,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`}>{children}</a>);
     } else {
       caseStudyLink = ({id, children}) => (
-        <Link to={`${rest.pathname}/case-study/${id}`}>{children}</Link>
+        <ConnectedLink to={`${rest.pathname}/case-study/${id}`}>{children}</ConnectedLink>
       );
     }
 
