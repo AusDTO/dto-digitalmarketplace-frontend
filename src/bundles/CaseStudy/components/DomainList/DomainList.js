@@ -11,6 +11,8 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 
+import ProgressBar    from '../../../../shared/ProgressBar';
+
 import ConnectedLink from '../../../SellerRegistration/components/ConnectedLink';
 import { linkClick } from '../../../SellerRegistration/redux/modules/application';
 
@@ -99,7 +101,7 @@ class DomainList extends BaseForm {
     const serviceCount    = Object.keys(services).length;
     const addedServices   = calcRemaining(studies, services);
     const leftToAdd       = Object.keys(services).filter(service => addedServices.indexOf(service) === -1);
-    //const leftToAddCount  = serviceCount - addedServices.length;
+    const leftToAddCount  = serviceCount - addedServices.length;
 
     if (!serviceCount) {
       return (
@@ -132,14 +134,14 @@ class DomainList extends BaseForm {
             <article role="main">
              
               <ErrorBox focusOnMount={true} model={model}/>
-                {/* HACKHACKHACK
+
               <strong>{leftToAddCount === 0
                 ? 'All services have a case study'
                 : `${leftToAddCount} services to add`
               }</strong>
 
               <ProgressBar value={addedServices.length} max={serviceCount} />
-*/}
+
               {Object.keys(services).map((service, i) => {
                 let list = getStudiesByService(caseStudyForm.case_studies, service);
                 return (
@@ -214,14 +216,13 @@ class DomainList extends BaseForm {
                 method="post"
                 validators={{
                   case_studies: (studies) => {
-                    // let studyServices = Object.keys(studies)
-                    //   .map(study => studies[study].service);
+                     let studyServices = Object.keys(studies)
+                       .map(study => studies[study].service);
 
-                    // let unique = studyServices.filter((s, i) => {
-                    //   return studyServices.indexOf(s) === i;
-                    // })
-// HACKHACKHACK disabling case study count validation for existing seller flow
-                    return true //serviceCount === unique.length
+                     let unique = studyServices.filter((s, i) => {
+                       return studyServices.indexOf(s) === i;
+                     })
+                    return serviceCount === unique.length
                   }
                 }}
                 onSubmit={onSubmit}>
