@@ -28,7 +28,7 @@ const ReviewHeader = (props) => {
     <section className="seller-profile seller-profile__review-header">
       <div className="row ">
         <div className="col-sm-8">
-          <h1>{name}</h1>
+          <h1 tabIndex="-1">{name}</h1>
         </div>
       </div>
       <div className="row">

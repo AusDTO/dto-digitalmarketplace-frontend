@@ -1,10 +1,13 @@
-import { flattenStateForms, dispatchFormState, getStateForms } from '../helpers';
+import defer from 'lodash/defer';
+import { flattenStateForms, dispatchFormState, getStateForms, focusHeading } from '../helpers';
 
 const STEP_NEXT = 'step/next';
 const STEP_PRE = 'step/pre';
 const APP_SUBMIT = 'application/submit';
 const APP_PRE_SUBMIT = 'application/pre-submit';
 const APP_POST_SUBMIT = 'application/post-submit';
+
+const LINK_CLICK = 'link/click';
 
 const statusCheck = (response) => {
     if (response.status >= 200 && response.status < 300) {
@@ -80,17 +83,16 @@ export const stepNextPersist = (transition, to, step) => {
             .then(() => dispatch(preStep()))
             .then(() => dispatch(nextStep(to)))
             .then(() => transition(to))
-            .then(() => {
-                // Not the greatest thing, but since we're not mutating anything
-                // in the DOM and just managing focus, I think we're okay.
-                // findDOMNode doesn't break the lines of encapsulation.
-                if (typeof document !== 'undefined') {
-                    const heading = document.querySelector('h1');
-                    return heading && heading.focus();
-                }
-            });
+            .then(() => focusHeading());
     }
 };
+
+export const linkClick = (to) => {
+    return (dispatch) => {
+        dispatch({ type: LINK_CLICK, to });
+        defer(focusHeading);
+    }
+}
 
 export const uploadDocument = (id, file) => {
     return (dispatch, getState, api) => {

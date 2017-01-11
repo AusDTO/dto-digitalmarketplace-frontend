@@ -39,7 +39,7 @@ class View extends React.Component {
         )}
         <header className="row">
           <div className="col-xs-12">
-            <h1>{title}</h1>
+            <h1 tabIndex="-1">{title}</h1>
           </div>
 
           <div className="meta col-xs-12">

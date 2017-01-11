@@ -2,7 +2,7 @@ import React from 'react';
 
 const Finish = ({onClick}) => (
     <div>
-        <h1>That’s it for now!</h1>
+        <h1 tabIndex="-1">That’s it for now!</h1>
         <p>
             We’re just putting the finishing touches on our improved Terms of Service and Marketplace Master
             Agreement.</p>

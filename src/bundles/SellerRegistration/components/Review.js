@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { Match, Link, Redirect } from 'react-router';
 
 import ApplicationPreview from './ApplicationPreview'
+import ConnectedLink from './ConnectedLink';
 import View from '../../CaseStudy/components/View';
 
 const Review = ({pathname, caseStudyForm, ...rest}) => (
@@ -33,7 +34,7 @@ const Review = ({pathname, caseStudyForm, ...rest}) => (
               {currentStudy.title
                 ? <View
                     {...currentStudy}
-                    returnLink={<p><Link to={`${pathname}/profile`}>Return to Profile</Link></p>}
+                    returnLink={<p><ConnectedLink to={`${pathname}/profile`}>Return to Profile</ConnectedLink></p>}
                   />
                 : <Redirect to={`${pathname}/profile`} />
               }
