@@ -8,20 +8,22 @@ const Body = (props) => {
     evaluated,
     provides,
     case_studies = {},
-    contact_name,
-    contact_phone,
-    contact_email,
     representative,
     email,
     phone,
-    website,
     linkedin,
     abn,
     address,
     interstate,
-    documents,
+    documents = {},
+    documentsUrl,
+    tools,
+    methodologies,
+    technologies,
+    awards = [],
+    certifications = [],
+    boards = [],
     CaseStudyLink = () => null,
-    documentsUrl
   } = props;
 
   const documentTitle = {
@@ -32,12 +34,12 @@ const Body = (props) => {
 
   return (
     <article className="seller-profile">
-      <Row title="Evaluated for" show={evaluated}>
+      <Row title="Approved services" show={evaluated}>
         <div className="seller-profile__evaluated-badges">
         </div>
       </Row>
 
-      <Row title="Provides" show={provides}>
+      <Row title="To be assessed" show={provides}>
         <div className="seller-profile__provides-badges">
           {provides && Object.keys(provides).map((service, i) => (
             <span key={i}>{service}</span>
@@ -57,25 +59,36 @@ const Body = (props) => {
                   Since it will point to different areas in different flows. 
                 */}
                 <h3><CaseStudyLink id={study}>{title}</CaseStudyLink></h3>
-                <div className="meta">
-                  <span>{service}</span>
-                </div>
                 <p>{client}</p>
+                <p>{service}</p>
               </article>
             </li>
           )
         })}
         </ul>
       </Row>
-      <Row title="For opportunities" show={contact_name || contact_phone || contact_email}>
-        <h4>Contact</h4>
-        <p>{contact_name}</p>
+
+      <Row title="Approach" show={tools || methodologies || technologies}>
+        {methodologies && (
+          <div>
+            <h4>Methodology</h4>
+            <p className="freetext">{methodologies}</p>
+          </div>
+        )}
         
-        <h4>Phone</h4>
-        <p>{contact_phone}</p>
+        {tools && (
+          <div>
+            <h4>Tools</h4>
+            <p className="freetext">{tools}</p>
+          </div>
+        )}
         
-        <h4>Email</h4>
-        <p><a href={`mailto:${contact_email}`}>{contact_email}</a></p>
+        {technologies && (
+          <div>
+            <h4>Programming Lanuages</h4>
+            <p className="freetext">{technologies}</p>
+          </div>
+        )}
       </Row>
 
       <Row title="Company Details" show={true}>
@@ -84,10 +97,6 @@ const Body = (props) => {
             <span>{representative}</span><br/>
             { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
             { phone && <span>{phone}<br/></span>}
-        </p>
-
-        <p>
-          <a href={website} rel="external" target="_blank">Website</a>
         </p>
 
         {linkedin && (
@@ -117,23 +126,61 @@ const Body = (props) => {
         <p>
           <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external" target="_blank">{abn}</a>
         </p>
+
+        {!isEmpty(certifications) && (
+          <div>
+            <h4>Certifications</h4>
+            {certifications.map((certification, i) => (
+              <p key={i}>{certification}</p>
+            ))}
+          </div>
+        )}
+
+        {!isEmpty(boards) && (
+          <div>
+            <h4>Boards and Commitee's</h4>
+            {boards.map((board, i) => (
+              <p key={i}>{board}</p>
+            ))}
+          </div>
+        )}
+
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-          {!isEmpty(documents) && Object.keys(documents).map((key, val) => {
-            const { filename, expiry } = documents[key];
-            return (
-              <div key={val}>
-                <a href={`${documentsUrl}${filename}`}>
-                  {documentTitle[key]}
-                </a>
-                <p>
-                  {expiry && (<small>Expires {format(new Date(expiry), 'Mo MMM YYYY')}</small>)}
-                </p>
-              </div>
-            )
-          })}
+        <table className="content-table">
+          <thead>
+            <tr>
+              <th>Document type</th>
+              <th>Expiry</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(documents).map((key, val) => {
+              const { filename, expiry } = documents[key];
+              return (
+                <tr key={val}>
+                  <td>
+                  <a href={`${documentsUrl}${filename}`}>
+                    {documentTitle[key]}
+                  </a>
+                  </td>
+                  <td>
+                    {expiry && format(new Date(expiry), 'MM/DD/YYYY')}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </Row>
+
+      <Row title="Awards" show={!isEmpty(awards)}>
+        {awards.map((award, i) => (
+          <h4 key={i}>{award}</h4>
+        ))}
+      </Row>
+
     </article>
   )
 };

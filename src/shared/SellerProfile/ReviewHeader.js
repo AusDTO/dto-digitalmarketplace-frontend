@@ -12,6 +12,7 @@ const ReviewHeader = (props) => {
     contact_name,
     contact_phone,
     contact_email,
+    number_of_employees,
   } = props;
 
   const badgeTitle = {
@@ -50,31 +51,37 @@ const ReviewHeader = (props) => {
             <p>{summary}</p>
           </div>
 
-          <p>
-            <a href={website} rel="external">Visit seller's website</a>
-          </p>
-        </article>
-        <article className="col-xs-12 col-sm-3 col-sm-push-1">
-          {contact_name && (
-            <p>
-              <b>For opportunities contact</b><br/>
-              <span>{contact_name}</span>
-            </p>
-          )}
+          <div className="row seller-profile__meta-row">
+            <div className="col-xs-12 col-sm-3">
+              <h4>Website</h4>
+            </div>
+            <div className="col-xs-12 col-sm-8 col-sm-push-1">
+              <p><a href={website} rel="external">{website}</a></p>
+            </div>
+          </div>
 
-          {contact_phone && (
-            <p>
-              <b>Phone</b><br/>
-              <span>{contact_phone}</span>
-            </p>
-          )}
+          <div className="row seller-profile__meta-row">
+            <div className="col-xs-12 col-sm-3">
+              <h4>Company Size</h4>
+            </div>
+            <div className="col-xs-12 col-sm-8 col-sm-push-1">
+              <p>{number_of_employees}</p>
+            </div>
+          </div>
 
-          {contact_email && (
-            <p>
-              <b>Email</b><br/>
-              <a href={`mailto:${contact_email}`}>{contact_email}</a>
-            </p>
-          )}
+          <div className="row seller-profile__meta-row">
+            <div className="col-xs-12 col-sm-3">
+              <h4>Business Contact</h4>
+            </div>
+            <div className="col-xs-12 col-sm-8 col-sm-push-1">
+              <p>
+                {contact_name}<br/>
+                {contact_phone}<br/>
+                <a href={`mailto:${contact_email}`}>{contact_email}</a>
+              </p>
+            </div>
+          </div>
+          
         </article>
       </div>
     </section>
