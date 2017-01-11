@@ -137,6 +137,16 @@ exports[`test Signup renders 1`] = `
             </span>
           </a>
         </li>
+        <li>
+          <a
+            className=""
+            href="/profile-finish"
+            onClick={[Function]}>
+            <span>
+              Finish
+            </span>
+          </a>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -298,6 +308,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/finish"
+            onClick={[Function]}>
+            <span>
+              Finish
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/profile-finish"
             onClick={[Function]}>
             <span>
               Finish
@@ -615,6 +635,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/finish"
+            onClick={[Function]}>
+            <span>
+              Finish
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/profile-finish"
             onClick={[Function]}>
             <span>
               Finish
