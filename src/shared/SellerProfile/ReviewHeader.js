@@ -56,7 +56,7 @@ const ReviewHeader = (props) => {
               <h4>Website</h4>
             </div>
             <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <a href={website} rel="external">{website}</a>
+              <p><a href={website} rel="external">{website}</a></p>
             </div>
           </div>
 
