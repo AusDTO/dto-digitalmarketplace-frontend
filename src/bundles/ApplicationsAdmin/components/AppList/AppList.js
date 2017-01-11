@@ -24,13 +24,13 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
           <button onClick={e => {
                  e.preventDefault();
                  onRejectClick(a.id);
-               }} style={{margin: '0.1rem', display: 'inline-block'}} name="Reject">Reject</button>
+               }} name="Reject">Reject</button>
           }</td>
       <td>{ a.status === 'submitted' &&
         <button onClick={e => {
                e.preventDefault();
                onAcceptClick(a.id);
-             }} style={{margin: '0.1rem', display: 'inline-block'}} name="Accept">Accept</button>
+             }} name="Accept">Accept</button>
         }</td>
     </tr>
   )}
