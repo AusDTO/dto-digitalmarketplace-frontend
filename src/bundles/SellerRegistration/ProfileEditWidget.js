@@ -6,11 +6,11 @@ import createStore from './redux/create-signup';
 
 import Signup from './components/Signup';
 
-export const ApplicantSignup = (props) => {
+export const ProfileEditWidget = (props) => {
   const store = createStore(props);
   const filterSteps = (step) => {
     // Remove steps with patterns of /start and /case-study and /review and /submit
-    return !step.pattern.match(/\/profile-finish/);
+    return !step.pattern.match(/\/start|\/finish/);
   };
   return ({ router, location }) => (
     <Provider store={store}>
@@ -19,4 +19,4 @@ export const ApplicantSignup = (props) => {
   )
 }
 
-export default new RegisterComponent({ 'applicant-signup': ApplicantSignup })
+export default new RegisterComponent({ 'profile-edit': ProfileEditWidget })
