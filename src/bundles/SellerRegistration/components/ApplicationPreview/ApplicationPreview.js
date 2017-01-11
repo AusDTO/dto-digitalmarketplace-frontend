@@ -41,19 +41,12 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       seller_type,
       summary,
       website,
-      representative,
-      email,
-      phone,
       contact_email,
       contact_phone,
       contact_name,
       services: provides,
       case_studies,
-      linkedin,
-      abn,
-      address,
       travel: interstate,
-      documents,
       number_of_employees,
       local_government_experience,
       state_government_experience,
@@ -61,7 +54,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       other_panels,
       disclosures,
       documents_url = '../documents/',
-      case_study_url
+      case_study_url,
+      ...body
     } = application;
 
     let caseStudyLink = null;
@@ -89,25 +83,16 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           website,
           contact_email,
           contact_phone,
-          contact_name
+          contact_name,
+          number_of_employees
         },
         body: {
           provides,
           case_studies,
-          linkedin,
-          abn,
-          address,
           interstate,
-          representative,
-          email,
-          phone,
-          website,
-          contact_email,
-          contact_phone,
-          contact_name,
           CaseStudyLink: caseStudyLink,
-          documents,
-          documentsUrl: documents_url
+          documentsUrl: documents_url,
+          ...body
         },
         privateInfo: (disclosures ? {
             case_studies,
