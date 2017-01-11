@@ -21,16 +21,16 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
         {a.supplier_code && (<span className="badge--default">Existing Seller</span>)}</a></td>
       <td>{a.status}</td>
         <td>{ a.status === 'submitted' &&
-          <button type="button" onClick={e => {
+          <button onClick={e => {
                  e.preventDefault();
                  onRejectClick(a.id);
-               }} style={{margin: '0.1rem', display: 'inline-block'}} type="button" name="Reject">Reject</button>
+               }} style={{margin: '0.1rem', display: 'inline-block'}} name="Reject">Reject</button>
           }</td>
       <td>{ a.status === 'submitted' &&
-        <button type="button" onClick={e => {
+        <button onClick={e => {
                e.preventDefault();
                onAcceptClick(a.id);
-             }} style={{margin: '0.1rem', display: 'inline-block'}} type="button" name="Accept">Accept</button>
+             }} style={{margin: '0.1rem', display: 'inline-block'}} name="Accept">Accept</button>
         }</td>
     </tr>
   )}
