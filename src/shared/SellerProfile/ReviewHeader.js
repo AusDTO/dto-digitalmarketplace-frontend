@@ -2,6 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import get from 'lodash/get';
 
+import profile from './profile.css'; // eslint-disable-line no-unused-vars
+
 const ReviewHeader = (props) => {
 
   const {
@@ -26,14 +28,14 @@ const ReviewHeader = (props) => {
   };
 
   return (
-    <section className="seller-profile seller-profile__review-header">
+    <section styleName="profile.review-header">
       <div className="row ">
         <div className="col-sm-8">
-          <h1 tabIndex="-1">{name}</h1>
+          <h1 tabIndex="-1" styleName="profile.heading">{name}</h1>
         </div>
       </div>
       <div className="row">
-        <div className="seller-profile__badges">
+        <div styleName="profile.badges">
         {Object.keys(seller_type)
           // If type is not in our list or falsy, dont render an empty span.
           .filter(type => get(seller_type, type) && `${type}` in badgeTitle)
@@ -51,7 +53,7 @@ const ReviewHeader = (props) => {
             <p>{summary}</p>
           </div>
 
-          <div className="row seller-profile__meta-row">
+          <div className="row" styleName="profile.meta-row">
             <div className="col-xs-12 col-sm-3">
               <h4>Website</h4>
             </div>
@@ -60,7 +62,7 @@ const ReviewHeader = (props) => {
             </div>
           </div>
 
-          <div className="row seller-profile__meta-row">
+          <div className="row" styleName="profile.meta-row">
             <div className="col-xs-12 col-sm-3">
               <h4>Company Size</h4>
             </div>
@@ -69,7 +71,7 @@ const ReviewHeader = (props) => {
             </div>
           </div>
 
-          <div className="row seller-profile__meta-row">
+          <div className="row" styleName="profile.meta-row">
             <div className="col-xs-12 col-sm-3">
               <h4>Business Contact</h4>
             </div>

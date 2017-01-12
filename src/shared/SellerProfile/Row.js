@@ -1,4 +1,5 @@
 import React from 'react';
+import profile from './profile.css'; // eslint-disable-line no-unused-vars
 
 const Row = ({ title, children, show }) => {
     if (!show) {
@@ -6,7 +7,7 @@ const Row = ({ title, children, show }) => {
     }
 
     return (
-        <div className="row seller-profile__row">
+        <div className="row" styleName="profile.row">
             <hr />
             <div className="col-sm-3 col-xs-12">
                 <h4 className="seller-profile__section-title">{title}</h4>

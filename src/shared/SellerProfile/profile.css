@@ -1,0 +1,99 @@
+.heading {
+  margin: 0;
+}
+
+.badges {
+  margin: 0 0 1.25rem;
+}
+
+.badges span {
+  font-size: 12px;
+  margin-left: 5px;
+  filter: grayscale(100%);
+}
+
+.badges span:first-of-type {
+  margin-left: 0;
+}
+
+.row {
+  margin-bottom: 3em;
+}
+
+.row hr {
+  margin-bottom: 3rem;
+}
+
+.row:last-of-type {
+  margin-bottom: 0;
+}
+
+.row h4:first-of-type, .row ul {
+  margin-top: 0;
+}
+
+.section-title {
+  margin-top: 0;
+}
+
+.tile {
+  border: solid 1px rgba(23, 120, 141, 0.5);
+  box-shadow: 0 0 5px 0 rgba(187, 187, 187, 0.5);
+  padding: 1.5rem 2rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.tile__title {
+  display: block;
+  color: #6e6e6e;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.tile b {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.tile p {
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+
+.tile a[role="button"] {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 4px;
+}
+
+.continue-link > * {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 5px 0;
+}
+
+.provides-badges span {
+  display: inline-block;
+  margin-right: 1em;
+  font-size: 14px;
+}
+
+.provides-badges span:last-of-type {
+  margin-right: 0;
+}
+
+.review-header {
+  margin: 2em 0 0;
+}
+
+.review-header h4:first-of-type, .review-header ul {
+  margin-top: 0;
+}
+
+.meta-row {
+  margin: 0 0 2em;
+}
