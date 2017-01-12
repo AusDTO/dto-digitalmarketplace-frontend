@@ -19,6 +19,6 @@ test('Doesn\'t display any invalid/empty/falsy badges', () => {
   );
 
   expect(
-    component.find('.seller-profile__badges span').length
+    component.find('.badge--default').length
   ).toEqual(2);
 });
