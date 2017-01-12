@@ -9,7 +9,6 @@
 .badges span {
   font-size: 12px;
   margin-left: 5px;
-  filter: grayscale(100%);
 }
 
 .badges span:first-of-type {
