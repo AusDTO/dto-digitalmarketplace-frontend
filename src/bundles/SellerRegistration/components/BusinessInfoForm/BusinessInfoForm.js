@@ -180,7 +180,7 @@ class BusinessInfoForm extends BaseForm {
                         <fieldset>
                             <legend>If you have previous experience with government, who have you worked with?</legend>
                             <Control.checkbox
-                                model={`${model}.local_government_experience`}
+                                model={`${model}.government_experience.local`}
                                 name="local_government_experience"
                                 id="local"
                                 value="Local"/>
@@ -189,7 +189,7 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
-                                model={`${model}.state_government_experience`}
+                                model={`${model}.government_experience.state`}
                                 name="state_government_experience"
                                 id="state"
                                 value="state"/>
@@ -198,7 +198,7 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
-                                model={`${model}.federal_government_experience`}
+                                model={`${model}.government_experience.federal`}
                                 name="federal_government_experience"
                                 id="federal"
                                 value="federal"/>
