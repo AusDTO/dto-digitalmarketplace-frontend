@@ -53,7 +53,7 @@ var loaders = [
           plugins: [
             [
               'react-css-modules',
-              { context: paths.appSrc, }
+              { context: paths.appSrc }
             ]
           ]
         }
