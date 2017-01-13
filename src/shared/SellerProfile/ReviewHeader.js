@@ -44,7 +44,7 @@ const ReviewHeader = (props) => {
           <span key={i} className={classNames(
             'badge--default',
             `badge__${type}`
-          )}> {badgeTitle[type]}</span>
+          )} styleName={`profile.badge__${type}`}> {badgeTitle[type]}</span>
         ))}
         </div>
       </div>
