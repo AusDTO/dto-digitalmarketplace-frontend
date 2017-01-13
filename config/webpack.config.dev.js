@@ -7,6 +7,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -48,17 +49,14 @@ var loaders = [
           // https://github.com/facebookincubator/create-react-app/issues/483
           cacheDirectory: findCacheDir({
             name: 'react-scripts'
-          })
+          }),
+          plugins: [
+            [
+              'react-css-modules',
+              { context: paths.appSrc }
+            ]
+          ]
         }
-      },
-      // "postcss" loader applies autoprefixer to our CSS.
-      // "css" loader resolves paths in CSS and adds assets as dependencies.
-      // "style" loader turns CSS into JS modules that inject <style> tags.
-      // In production, we use a plugin to extract that CSS to a file, but
-      // in development "style" loader enables hot editing of CSS.
-      {
-        test: /\.css$/,
-        loader: 'style!css!postcss'
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
@@ -171,7 +169,13 @@ module.exports = [{
         include: paths.appSrc,
       }
     ],
-    loaders: loaders
+    loaders: loaders.concat({
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract(
+        'style', 
+        'css?modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss'
+      )
+    })
   },
 
   // We use PostCSS for autoprefixing only.
@@ -213,6 +217,9 @@ module.exports = [{
     // makes the discovery automatic so you don't have to restart.
     // See https://github.com/facebookincubator/create-react-app/issues/186
     new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+    new ExtractTextPlugin('[name].css', {
+        allChunks: true
+    }),
     function() {
       this.plugin('done', function(stats) {
         require('fs').writeFileSync(
@@ -240,7 +247,10 @@ module.exports = [{
   },
   externals: /^[a-z\-0-9]+$/,
   module: {
-    loaders: loaders
+    loaders: loaders.concat({
+      test: /\.css$/,
+      loader: 'ignore-loader'
+    })
   },
   plugins: [
     new webpack.DefinePlugin(env),

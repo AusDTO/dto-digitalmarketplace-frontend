@@ -12,19 +12,20 @@ let contentHashCache = {};
  * @param  {string} key The slug of the current widget/component we're trying to render.
  * @return {string}     The hashed file name. Format: [slug].[contenthash].js
  */
-const getHashedFilename = (key) => {
-  if (key in contentHashCache) {
+const getHashedFilename = (key, extension = 'js') => {
+  const extensionRegex = new RegExp(`\.${extension}$`);
+
+  if (key in contentHashCache && contentHashCache[key].match(extensionRegex)) {
     return contentHashCache[key]
   }
 
   let assetsByChunkName = fs.readFileSync(process.cwd() + '/assetsByChunkName.json');
   assetsByChunkName = JSON.parse(assetsByChunkName.toString());
-
   let filename = key;
   if (key in assetsByChunkName) {
     const chunk = assetsByChunkName[key];
     if (Array.isArray(chunk)) {
-      filename = assetsByChunkName[key].find(asset => asset.match(/\.js$/));  
+      filename = assetsByChunkName[key].find(asset => asset.match(extensionRegex));
     } else {
       filename = chunk;
     }
@@ -72,12 +73,14 @@ const render = (request, response) => {
   // TODO test this behaviour
   try {
     const markup = component.render(props, toStaticMarkup);
+    const componentKey = component.element.key;
     response.send({
       markup,
-      slug: component.element.key,
+      slug: componentKey,
       files: {
-        [component.element.key]: getHashedFilename(component.element.key),
-        vendor: getHashedFilename('vendor')
+        [component.element.key]: getHashedFilename(componentKey),
+        vendor: getHashedFilename('vendor'),
+        stylesheet: getHashedFilename(componentKey, 'css')
       }
     });
   } catch(e) {
