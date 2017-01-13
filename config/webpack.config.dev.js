@@ -173,7 +173,7 @@ module.exports = [{
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
         'style', 
-        'css?modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss-loader'
+        'css?modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss'
       )
     })
   },
