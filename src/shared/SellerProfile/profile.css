@@ -93,6 +93,28 @@
   margin-top: 0;
 }
 
+.full-header {
+  background: #f0f3f5;
+  padding-top: 1.5em
+}
+
+.full-header h4:first-of-type, .full-header ul {
+  margin-top: 0;
+}
+
+.full-header > div {
+  max-width: 75em;
+  margin: 0 auto;
+}
+
+.full-profile {
+  padding-top: 3rem;
+}
+
+.full-profile > div:first-of-type hr {
+  display: none;
+}
+
 .meta-row {
   margin: 0 0 2em;
 }

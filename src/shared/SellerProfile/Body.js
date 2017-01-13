@@ -3,6 +3,8 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 
+import profile from './profile.css'; // eslint-disable-line no-unused-vars
+
 const Body = (props) => {
   const {
     evaluated,
@@ -23,6 +25,7 @@ const Body = (props) => {
     awards = [],
     certifications = [],
     boards = [],
+    public_profile,
     CaseStudyLink = () => null,
   } = props;
 
@@ -33,7 +36,7 @@ const Body = (props) => {
   };
 
   return (
-    <article className="seller-profile">
+    <article className="seller-profile" styleName={public_profile ? 'profile.full-profile' : 'profile.full-profile'}>
       <Row title="Approved services" show={evaluated}>
         <div className="seller-profile__evaluated-badges">
         </div>
@@ -161,9 +164,13 @@ const Body = (props) => {
               return (
                 <tr key={val}>
                   <td>
-                  <a href={`${documentsUrl}${filename}`}>
-                    {documentTitle[key]}
-                  </a>
+                    {public_profile ? 
+                      documentTitle[key] 
+                    : (
+                      <a href={`${documentsUrl}${filename}`}>
+                      {documentTitle[key]}
+                      </a>
+                    )}
                   </td>
                   <td>
                     {expiry && format(new Date(expiry), 'MM/DD/YYYY')}

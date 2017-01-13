@@ -57,6 +57,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       disclosures,
       documents_url = '../documents/',
       case_study_url,
+      public_profile,
       ...body
     } = application;
 
@@ -86,7 +87,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           contact_email,
           contact_phone,
           contact_name,
-          number_of_employees
+          number_of_employees,
+          public_profile
         },
         body: {
           provides,
@@ -94,6 +96,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           interstate,
           CaseStudyLink: caseStudyLink,
           documentsUrl: documents_url,
+          public_profile,
           ...body
         },
         privateInfo: (disclosures ? {

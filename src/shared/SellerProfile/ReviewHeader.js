@@ -15,6 +15,7 @@ const ReviewHeader = (props) => {
     contact_phone,
     contact_email,
     number_of_employees,
+    public_profile
   } = props;
 
   const badgeTitle = {
@@ -28,7 +29,7 @@ const ReviewHeader = (props) => {
   };
 
   return (
-    <section styleName="profile.review-header">
+    <section styleName={public_profile ? 'profile.full-header' : 'profile.review-header'}>
       <div className="row ">
         <div className="col-sm-8">
           <h1 tabIndex="-1" styleName="profile.heading">{name}</h1>
