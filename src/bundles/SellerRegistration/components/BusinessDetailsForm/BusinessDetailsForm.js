@@ -60,6 +60,9 @@ class BusinessDetailsForm extends BaseForm {
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
+                          description={(<span>You need an ABN to do business in Australia.&nbsp;
+                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/'>Apply for an ABN here.</a>
+                          </span>)}
                           disabled="disabled"
                         />
 

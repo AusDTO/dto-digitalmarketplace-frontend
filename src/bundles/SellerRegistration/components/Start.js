@@ -44,6 +44,7 @@ const Start = ({supplierCode, signup, onClick}) => {
                 <p>
                     <a role="button" href={signup} onClick={onClick}>Start Now </a>
                 </p>
+                All activity on the Digital Marketplace is subject to our <a href="/terms-of-use">Terms of Use.</a>
             </div>
         )
     }
