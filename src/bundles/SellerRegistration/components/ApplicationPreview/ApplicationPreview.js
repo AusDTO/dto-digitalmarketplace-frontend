@@ -74,8 +74,16 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
     // Either there is bad data floating around or something is turning empty objects
     // into an array.
     // Body expects object not array.
-    if (Array.isArray(case_studies) && isEmpty(case_studies)) {
-      case_studies = {};
+    if (Array.isArray(case_studies)) {
+      if (isEmpty(case_studies)) {
+        case_studies = {};
+      } else {
+        // Convert case study array to object format.
+        case_studies = case_studies.reduce((cso, study) => {
+          cso[study.id] = study;
+          return cso;
+        }, {});
+      }
     }
 
     return {
