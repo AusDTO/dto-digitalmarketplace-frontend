@@ -49,12 +49,9 @@ const loaders = [
     loader: 'babel',
     query: {
       plugins: [
-        'transform-react-jsx',
         [
           'react-css-modules',
-          {
-            context: paths.appSrc,
-          }
+          { context: paths.appSrc }
         ]
       ]
     }
