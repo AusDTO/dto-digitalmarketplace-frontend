@@ -16,7 +16,6 @@ const Body = (props) => {
     linkedin,
     abn,
     address,
-    interstate,
     documents = {},
     documentsUrl,
     tools,
@@ -95,7 +94,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Company Details" show={true}>
-        <h4>Business Representative</h4>
+        <h4>Authorised representative</h4>
         <p>
             <span>{representative}</span><br/>
             { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
@@ -117,12 +116,6 @@ const Body = (props) => {
               <span>{address.state} {address.postal_code}</span>
             </p>
           </div>
-        )}
-
-        {interstate && (
-          <p>
-            <b>This seller is able work interstate</b>
-          </p>
         )}
 
         <h4>ABN</h4>
@@ -147,11 +140,10 @@ const Body = (props) => {
             ))}
           </div>
         )}
-
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-        <table className="content-table">
+        <table className="content-table" styleName="profile.document-table">
           <thead>
             <tr>
               <th>Document type</th>

@@ -35,21 +35,23 @@ const ReviewHeader = (props) => {
           <h1 tabIndex="-1" styleName="profile.heading">{name}</h1>
         </div>
       </div>
-      <div className="row">
-        <div styleName="profile.badges">
-        {Object.keys(seller_type)
-          // If type is not in our list or falsy, dont render an empty span.
-          .filter(type => get(seller_type, type) && `${type}` in badgeTitle)
-          .map((type, i) => (
-          <span key={i} className={classNames(
-            'badge--default',
-            `badge__${type}`
-          )} styleName={`profile.badge__${type}`}> {badgeTitle[type]}</span>
-        ))}
-        </div>
-      </div>
+
       <div className="row">
         <article className="col-xs-12 col-sm-8">
+          <div className="row">
+            <div styleName="profile.badges">
+            {Object.keys(seller_type)
+              // If type is not in our list or falsy, dont render an empty span.
+              .filter(type => get(seller_type, type) && `${type}` in badgeTitle)
+              .map((type, i) => (
+              <span key={i} className={classNames(
+                'badge--default',
+                `badge__${type}`
+              )} styleName={`profile.badge__${type}`}> {badgeTitle[type]}</span>
+            ))}
+            </div>
+          </div>
+
           <div className="seller-profile__summary">
             <p>{summary}</p>
           </div>
@@ -72,27 +74,41 @@ const ReviewHeader = (props) => {
             </div>
           </div>
 
-          <div className="row" styleName="profile.meta-row">
-            <div className="col-xs-12 col-sm-3">
-              <h4>Business Contact</h4>
+          {!public_profile && (
+            <div className="row" styleName="profile.meta-row">
+              <div className="col-xs-12 col-sm-3">
+                <h4>Business Contact</h4>
+              </div>
+              <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                <p>
+                  {contact_name}<br/>
+                  {contact_phone}<br/>
+                  <a href={`mailto:${contact_email}`}>{contact_email}</a>
+                </p>
+              </div>
             </div>
-            <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <p>
-                {contact_name}<br/>
-                {contact_phone}<br/>
-                <a href={`mailto:${contact_email}`}>{contact_email}</a>
-              </p>
-            </div>
-          </div>
-          
+          )}
         </article>
+
+        {public_profile && (
+          <article className="col-xs-12 col-sm-3 col-sm-push-1">
+            <div className="seller-profile__tile" styleName="tile">
+              <span className="seller-profile__tile-title" styleName="tile-title">Business contact</span>
+              <b>{contact_name}</b>
+              <p>{contact_phone}</p>
+              <a href={`mailto:${contact_email}`} role="button">Email seller</a>
+            </div>
+          </article>
+        )}
+
       </div>
     </section>
   )
 }
 
 ReviewHeader.defaultProps = {
-  seller_type: {}
+  seller_type: {},
+  public_profile: false
 }
 
 ReviewHeader.propTypes = {
