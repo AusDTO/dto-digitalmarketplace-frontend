@@ -24,7 +24,8 @@ const ReviewHeader = (props) => {
     recruitment: 'Recruiter',
     sme: 'SME',
     start_up: 'Start up',
-    regional: 'Regional or non-metro based business'
+    regional: 'Regional or non-metro based business',
+    product: 'Product based business'
   };
 
   return (
