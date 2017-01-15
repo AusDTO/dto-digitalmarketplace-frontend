@@ -134,3 +134,7 @@
 .meta-row {
   margin: 0 0 2em;
 }
+
+.case-study-list > li {
+  border-top: 6px solid #18788d;
+}

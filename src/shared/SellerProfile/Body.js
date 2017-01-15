@@ -43,7 +43,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="To be assessed" show={provides}>
-        <div className="seller-profile__provides-badges">
+        <div className="seller-profile__provides-badges" styleName="provides-badges">
           {provides && Object.keys(provides).map((service, i) => (
             <span key={i}>{service}</span>
           ))}
@@ -51,7 +51,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Case studies" show={!isEmpty(case_studies)}>
-        <ul className="list-vertical">
+        <ul className="list-vertical" styleName="profile.case-study-list">
         {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
           return (
@@ -104,7 +104,7 @@ const Body = (props) => {
 
         {linkedin && (
           <p>
-            <a href={linkedin} rel="external">Linkedin Profile</a>
+            <a href={linkedin} rel="external">View Linkedin Profile</a>
           </p>
         )}
 
@@ -141,7 +141,7 @@ const Body = (props) => {
 
         {!isEmpty(boards) && (
           <div>
-            <h4>Boards and Commitee's</h4>
+            <h4>Boards and commitees</h4>
             {boards.map((board, i) => (
               <p key={i}>{board}</p>
             ))}
