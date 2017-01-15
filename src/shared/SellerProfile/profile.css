@@ -121,6 +121,7 @@
 .full-header > div {
   max-width: 75em;
   margin: 0 auto;
+  padding: 0 1.6em;
 }
 
 .full-profile {
