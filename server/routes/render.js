@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import get from 'lodash/get';
 import ComponentRenderer from '../ComponentRenderer';
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -15,7 +16,7 @@ let contentHashCache = {};
 const getHashedFilename = (key, extension = 'js') => {
   const extensionRegex = new RegExp(`\.${extension}$`);
 
-  if (key in contentHashCache && contentHashCache[key].match(extensionRegex)) {
+  if (key in contentHashCache && get(contentHashCache, key, '').match(extensionRegex)) {
     return contentHashCache[key]
   }
 

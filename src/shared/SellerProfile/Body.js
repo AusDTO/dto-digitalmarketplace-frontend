@@ -3,6 +3,8 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 
+import profile from './profile.css'; // eslint-disable-line no-unused-vars
+
 const Body = (props) => {
   const {
     evaluated,
@@ -14,7 +16,6 @@ const Body = (props) => {
     linkedin,
     abn,
     address,
-    interstate,
     documents = {},
     documentsUrl,
     tools,
@@ -23,6 +24,7 @@ const Body = (props) => {
     awards = [],
     certifications = [],
     boards = [],
+    public_profile,
     CaseStudyLink = () => null,
   } = props;
 
@@ -33,14 +35,14 @@ const Body = (props) => {
   };
 
   return (
-    <article className="seller-profile">
+    <article className="seller-profile" styleName={public_profile ? 'profile.full-profile' : 'profile.full-profile'}>
       <Row title="Approved services" show={evaluated}>
         <div className="seller-profile__evaluated-badges">
         </div>
       </Row>
 
       <Row title="To be assessed" show={provides}>
-        <div className="seller-profile__provides-badges">
+        <div className="seller-profile__provides-badges" styleName="provides-badges">
           {provides && Object.keys(provides).map((service, i) => (
             <span key={i}>{service}</span>
           ))}
@@ -48,7 +50,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Case studies" show={!isEmpty(case_studies)}>
-        <ul className="list-vertical">
+        <ul className="list-vertical" styleName="profile.case-study-list">
         {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
           return (
@@ -92,7 +94,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Company Details" show={true}>
-        <h4>Business Representative</h4>
+        <h4>Authorised representative</h4>
         <p>
             <span>{representative}</span><br/>
             { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
@@ -101,7 +103,7 @@ const Body = (props) => {
 
         {linkedin && (
           <p>
-            <a href={linkedin} rel="external">Linkedin Profile</a>
+            <a href={linkedin} rel="external">View Linkedin Profile</a>
           </p>
         )}
 
@@ -114,12 +116,6 @@ const Body = (props) => {
               <span>{address.state} {address.postal_code}</span>
             </p>
           </div>
-        )}
-
-        {interstate && (
-          <p>
-            <b>This seller is able work interstate</b>
-          </p>
         )}
 
         <h4>ABN</h4>
@@ -138,17 +134,16 @@ const Body = (props) => {
 
         {!isEmpty(boards) && (
           <div>
-            <h4>Boards and Commitee's</h4>
+            <h4>Boards and commitees</h4>
             {boards.map((board, i) => (
               <p key={i}>{board}</p>
             ))}
           </div>
         )}
-
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-        <table className="content-table">
+        <table className="content-table" styleName="profile.document-table">
           <thead>
             <tr>
               <th>Document type</th>
@@ -161,9 +156,13 @@ const Body = (props) => {
               return (
                 <tr key={val}>
                   <td>
-                  <a href={`${documentsUrl}${filename}`}>
-                    {documentTitle[key]}
-                  </a>
+                    {public_profile ? 
+                      documentTitle[key] 
+                    : (
+                      <a href={`${documentsUrl}${filename}`}>
+                      {documentTitle[key]}
+                      </a>
+                    )}
                   </td>
                   <td>
                     {expiry && format(new Date(expiry), 'MM/DD/YYYY')}

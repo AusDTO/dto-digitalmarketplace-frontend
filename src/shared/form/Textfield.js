@@ -43,7 +43,10 @@ Textfield.propTypes = {
 
   validators: React.PropTypes.object,
   messages: React.PropTypes.object,
-  description: React.PropTypes.string,
+  description: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.string,
+  ]),
   pattern: React.PropTypes.string,
   disabled: React.PropTypes.string,
   type: React.PropTypes.string

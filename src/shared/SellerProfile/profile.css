@@ -1,5 +1,5 @@
 .heading {
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 
 .badges {
@@ -13,6 +13,22 @@
 
 .badges span:first-of-type {
   margin-left: 0;
+}
+
+.badge__sme {
+  background-color: #17788d; 
+}
+.badge__indigenous {
+  background-color: #224a61;
+}
+.badge__nfp_social_enterprise {
+  background-color: #6e6e6e;
+}
+.badge__recruitment {
+  background-color: #880e48;
+}
+.badge__start_up {
+  background-color: #152d3b;
 }
 
 .row {
@@ -38,12 +54,13 @@
 .tile {
   border: solid 1px rgba(23, 120, 141, 0.5);
   box-shadow: 0 0 5px 0 rgba(187, 187, 187, 0.5);
+  background-color: #fff;
   padding: 1.5rem 2rem;
   border-radius: 4px;
   text-align: center;
 }
 
-.tile__title {
+.tile-title {
   display: block;
   color: #6e6e6e;
   margin-bottom: 10px;
@@ -52,7 +69,7 @@
 
 .tile b {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 0.25rem;
   font-size: 20px;
 }
 
@@ -93,6 +110,46 @@
   margin-top: 0;
 }
 
+.full-header {
+  background: #f0f3f5;
+  padding-top: 1.5em
+}
+
+.full-header h4:first-of-type, .full-header ul {
+  margin-top: 0;
+}
+
+.full-header > div {
+  max-width: 75em;
+  margin: 0 auto;
+  padding: 0 1.6em;
+}
+
+.full-profile {
+  padding-top: 3rem;
+}
+
+.full-profile > div:first-of-type hr {
+  display: none;
+}
+
 .meta-row {
   margin: 0 0 2em;
+}
+
+.case-study-list > li {
+  border-top: 6px solid #18788d;
+}
+
+.document-table {
+  border: 1px solid #bebebe;
+}
+
+.document-table td, .document-table th {
+  padding: 0.8em;
+  border-right: 1px solid #bebebe;
+}
+
+.document-table tbody tr:nth-child(odd) {
+  background-color: #f0f3f5;
 }

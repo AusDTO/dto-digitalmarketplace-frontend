@@ -6,6 +6,8 @@ import isEmpty from 'lodash/isEmpty';
 
 import { Body, ReviewHeader, PrivateInfo } from '../../../../shared/SellerProfile';
 
+import apppreview from './application-preview.css'; // eslint-disable-line no-unused-vars
+
 const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
   <div>
       {onClick && <div className="row">
@@ -26,7 +28,7 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
     <ReviewHeader 
       {...header}
     />
-    <div className="row">
+    <div className="row" styleName="apppreview.center">
       <div className="col-sm-8 col-xs-12">
         <Body {...body} />
         {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
@@ -55,6 +57,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       disclosures,
       documents_url = '../documents/',
       case_study_url,
+      public_profile,
       ...body
     } = application;
 
@@ -71,8 +74,16 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
     // Either there is bad data floating around or something is turning empty objects
     // into an array.
     // Body expects object not array.
-    if (Array.isArray(case_studies) && isEmpty(case_studies)) {
-      case_studies = {};
+    if (Array.isArray(case_studies)) {
+      if (isEmpty(case_studies)) {
+        case_studies = {};
+      } else {
+        // Convert case study array to object format.
+        case_studies = case_studies.reduce((cso, study) => {
+          cso[study.id] = study;
+          return cso;
+        }, {});
+      }
     }
 
     return {
@@ -84,7 +95,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           contact_email,
           contact_phone,
           contact_name,
-          number_of_employees
+          number_of_employees,
+          public_profile
         },
         body: {
           provides,
@@ -92,6 +104,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           interstate,
           CaseStudyLink: caseStudyLink,
           documentsUrl: documents_url,
+          public_profile,
           ...body
         },
         privateInfo: (disclosures ? {
