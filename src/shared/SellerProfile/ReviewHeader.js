@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import get from 'lodash/get';
 
-import profile from './profile.css'; // eslint-disable-line no-unused-vars
+import styles from './SellerProfile.css'; // eslint-disable-line no-unused-vars
 
 const ReviewHeader = (props) => {
 
@@ -29,17 +29,17 @@ const ReviewHeader = (props) => {
   };
 
   return (
-    <section styleName={public_profile ? 'profile.full-header' : 'profile.review-header'}>
+    <section styleName={public_profile ? 'styles.full-header' : 'styles.review-header'}>
       <div className="row ">
         <div className="col-sm-8">
-          <h1 tabIndex="-1" styleName="profile.heading">{name}</h1>
+          <h1 tabIndex="-1" styleName="styles.heading">{name}</h1>
         </div>
       </div>
 
       <div className="row">
         <article className="col-xs-12 col-sm-8">
           <div className="row">
-            <div styleName="profile.badges">
+            <div styleName="styles.badges">
             {Object.keys(seller_type)
               // If type is not in our list or falsy, dont render an empty span.
               .filter(type => get(seller_type, type) && `${type}` in badgeTitle)
@@ -47,7 +47,7 @@ const ReviewHeader = (props) => {
               <span key={i} className={classNames(
                 'badge--default',
                 `badge__${type}`
-              )} styleName={`profile.badge__${type}`}> {badgeTitle[type]}</span>
+              )} styleName={`styles.badge__${type}`}> {badgeTitle[type]}</span>
             ))}
             </div>
           </div>
@@ -56,7 +56,7 @@ const ReviewHeader = (props) => {
             <p>{summary}</p>
           </div>
 
-          <div className="row" styleName="profile.meta-row">
+          <div className="row" styleName="styles.meta-row">
             <div className="col-xs-12 col-sm-3">
               <h4>Website</h4>
             </div>
@@ -65,7 +65,7 @@ const ReviewHeader = (props) => {
             </div>
           </div>
 
-          <div className="row" styleName="profile.meta-row">
+          <div className="row" styleName="styles.meta-row">
             <div className="col-xs-12 col-sm-3">
               <h4>Company Size</h4>
             </div>
@@ -75,7 +75,7 @@ const ReviewHeader = (props) => {
           </div>
 
           {!public_profile && (
-            <div className="row" styleName="profile.meta-row">
+            <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
                 <h4>Business Contact</h4>
               </div>

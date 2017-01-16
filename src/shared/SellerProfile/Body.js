@@ -3,7 +3,9 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 
-import profile from './profile.css'; // eslint-disable-line no-unused-vars
+import SimpleAccordion from '../SimpleAccordion';
+
+import styles from './SellerProfile.css'; // eslint-disable-line no-unused-vars
 
 const Body = (props) => {
   const {
@@ -25,6 +27,7 @@ const Body = (props) => {
     certifications = [],
     boards = [],
     public_profile,
+    prices = [],
     CaseStudyLink = () => null,
   } = props;
 
@@ -35,7 +38,7 @@ const Body = (props) => {
   };
 
   return (
-    <article className="seller-profile" styleName={public_profile ? 'profile.full-profile' : 'profile.full-profile'}>
+    <article className="seller-profile" styleName={public_profile ? 'styles.full-profile' : 'styles.full-profile'}>
       <Row title="Approved services" show={evaluated}>
         <div className="seller-profile__evaluated-badges">
         </div>
@@ -50,7 +53,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Case studies" show={!isEmpty(case_studies)}>
-        <ul className="list-vertical" styleName="profile.case-study-list">
+        <ul className="list-vertical" styleName="styles.case-study-list">
         {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
           return (
@@ -91,6 +94,27 @@ const Body = (props) => {
             <p className="freetext">{technologies}</p>
           </div>
         )}
+      </Row>
+
+      <Row title="Pricing" show={!isEmpty(prices)}>
+        <SimpleAccordion title="Reveal rate card for services">
+          <table className="content-table" styleName="styles.content-table">
+            <thead>
+              <tr>
+                <th>Roles</th>
+                <th>Day rates</th>
+              </tr>
+            </thead>
+            <tbody>
+              {prices.map(({ service_role, hourly_rate }, i) => (
+                <tr key={i}>
+                  <td>{service_role.name}</td>
+                  <td>${hourly_rate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </SimpleAccordion>
       </Row>
 
       <Row title="Company Details" show={true}>
@@ -143,7 +167,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-        <table className="content-table" styleName="profile.document-table">
+        <table className="content-table" styleName="styles.content-table">
           <thead>
             <tr>
               <th>Document type</th>
