@@ -38,7 +38,7 @@ const Body = (props) => {
   };
 
   return (
-    <article className="seller-profile" styleName={public_profile ? 'profile.full-profile' : 'profile.full-profile'}>
+    <article className="seller-profile" styleName={public_profile ? 'styles.full-profile' : 'styles.full-profile'}>
       <Row title="Approved services" show={evaluated}>
         <div className="seller-profile__evaluated-badges">
         </div>

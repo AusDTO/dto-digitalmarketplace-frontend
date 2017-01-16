@@ -29,7 +29,7 @@ const ReviewHeader = (props) => {
   };
 
   return (
-    <section styleName={public_profile ? 'profile.full-header' : 'profile.review-header'}>
+    <section styleName={public_profile ? 'styles.full-header' : 'styles.review-header'}>
       <div className="row ">
         <div className="col-sm-8">
           <h1 tabIndex="-1" styleName="styles.heading">{name}</h1>
@@ -47,7 +47,7 @@ const ReviewHeader = (props) => {
               <span key={i} className={classNames(
                 'badge--default',
                 `badge__${type}`
-              )} styleName={`profile.badge__${type}`}> {badgeTitle[type]}</span>
+              )} styleName={`styles.badge__${type}`}> {badgeTitle[type]}</span>
             ))}
             </div>
           </div>
