@@ -3,6 +3,8 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 
+import SimpleAccordion from '../SimpleAccordion';
+
 import profile from './profile.css'; // eslint-disable-line no-unused-vars
 
 const Body = (props) => {
@@ -25,6 +27,7 @@ const Body = (props) => {
     certifications = [],
     boards = [],
     public_profile,
+    prices = [],
     CaseStudyLink = () => null,
   } = props;
 
@@ -93,6 +96,27 @@ const Body = (props) => {
         )}
       </Row>
 
+      <Row title="Pricing" show={!isEmpty(prices)}>
+        <SimpleAccordion title="Reveal rate card for services">
+          <table className="content-table" styleName="profile.content-table">
+            <thead>
+              <tr>
+                <th>Roles</th>
+                <th>Day rates</th>
+              </tr>
+            </thead>
+            <tbody>
+              {prices.map(({ service_role, hourly_rate }, i) => (
+                <tr key={i}>
+                  <td>{service_role.name}</td>
+                  <td>${hourly_rate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </SimpleAccordion>
+      </Row>
+
       <Row title="Company Details" show={true}>
         <h4>Authorised representative</h4>
         <p>
@@ -143,7 +167,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-        <table className="content-table" styleName="profile.document-table">
+        <table className="content-table" styleName="profile.content-table">
           <thead>
             <tr>
               <th>Document type</th>
