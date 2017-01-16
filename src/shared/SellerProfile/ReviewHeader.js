@@ -19,13 +19,13 @@ const ReviewHeader = (props) => {
   } = props;
 
   const badgeTitle = {
-    indigenous: 'Indigenous',
-    nfp_social_enterprise: 'Not-for-profit / social enterprise',
-    product: 'Product based business',
+    indigenous: 'Indigenous business',
+    nfp_social_enterprise: 'Not-for-profit',
     recruitment: 'Recruiter',
     sme: 'SME',
     start_up: 'Start up',
-    regional: 'Regional or non-metro based business'
+    regional: 'Regional or non-metro based business',
+    product: 'Product based business'
   };
 
   return (
