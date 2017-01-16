@@ -106,7 +106,7 @@ const Body = (props) => {
               </tr>
             </thead>
             <tbody>
-              {prices.map(({ service_role, hourly_rate }, i) => (
+              {prices.map(({ service_role = {}, hourly_rate }, i) => (
                 <tr key={i}>
                   <td>{service_role.name}</td>
                   <td>${hourly_rate}</td>
