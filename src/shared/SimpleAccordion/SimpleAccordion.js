@@ -7,7 +7,7 @@ import styles from './SimpleAccordion.css'; // eslint-disable-line no-unused-var
 
 export default ({ title, children }) => (
   <details styleName="styles.details">
-    <summary><span>{title}</span> <Icon value="arrow-down" size="10" /></summary>
+    <summary><span>{title}</span> <Icon value="arrow-down" size={10} /></summary>
     <div>{children}</div>
   </details>
 )

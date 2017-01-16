@@ -74,7 +74,14 @@ const ReviewHeader = (props) => {
             </div>
           </div>
 
-          {!public_profile && (
+          {/* 
+            public_profile has three possible values
+            1. Seller previewing/reviewing their profile in signup phase (public_profile=undefined)
+            2. Buyer viewing seller profile (public_profile=true)
+            3. Seller viewing their own profile (public_profile=false)
+          */}
+
+          {typeof public_profile === 'undefined' && (
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
                 <h4>Business Contact</h4>
@@ -101,14 +108,20 @@ const ReviewHeader = (props) => {
           </article>
         )}
 
+        {public_profile === false && (
+          <article className="col-xs-12 col-sm-3 col-sm-push-1">
+            {/* Hardcoded URL as buyer has no way to generate seller URLs */}
+            <a href="/sellers/edit/business-details" role="button">Update profile</a>
+          </article>
+        )}
+
       </div>
     </section>
   )
 }
 
 ReviewHeader.defaultProps = {
-  seller_type: {},
-  public_profile: false
+  seller_type: {}
 }
 
 ReviewHeader.propTypes = {
