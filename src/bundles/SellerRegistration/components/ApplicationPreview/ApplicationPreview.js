@@ -6,7 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import { Body, ReviewHeader, PrivateInfo } from '../../../../shared/SellerProfile';
 
-import apppreview from './application-preview.css'; // eslint-disable-line no-unused-vars
+import styles from './ApplicationPreview.css'; // eslint-disable-line no-unused-vars
 
 const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
   <div>
@@ -28,7 +28,7 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
     <ReviewHeader 
       {...header}
     />
-    <div className="row" styleName="apppreview.center">
+    <div className="row" styleName={body.public_profile ? 'styles.center' : ''}>
       <div className="col-sm-8 col-xs-12">
         <Body {...body} />
         {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
