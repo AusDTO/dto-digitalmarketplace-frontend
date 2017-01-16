@@ -1,0 +1,25 @@
+.details {
+  margin: 0;
+}
+
+.details summary {
+  background-color: transparent;
+  padding: 0;
+  display: inline-block;
+  width: auto;
+}
+
+.details summary span {
+  border-bottom: solid 1px #5bcbe3;
+  color: #313131;
+  font-weight: normal;
+}
+
+.details summary span:hover {
+  background-color: #5bcbe3;
+  color: #313131;  
+}
+
+.details summary::before {
+  background-image: none;
+}
