@@ -1,9 +1,9 @@
 import React from 'react';
 
-import sheet from './SimpleAccordion.css';
+import styles from './SimpleAccordion.css'; // eslint-disable-line no-unused-vars
 
 export default ({ title, children }) => (
-  <details styleName="sheet.details">
+  <details styleName="styles.details">
     <summary>{title}</summary>
     <div>{children}</div>
   </details>

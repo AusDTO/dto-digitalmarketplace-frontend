@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import SimpleAccordion from '../SimpleAccordion';
 
-import profile from './profile.css'; // eslint-disable-line no-unused-vars
+import styles from './SellerProfile.css'; // eslint-disable-line no-unused-vars
 
 const Body = (props) => {
   const {
@@ -53,7 +53,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Case studies" show={!isEmpty(case_studies)}>
-        <ul className="list-vertical" styleName="profile.case-study-list">
+        <ul className="list-vertical" styleName="styles.case-study-list">
         {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
           return (
@@ -98,7 +98,7 @@ const Body = (props) => {
 
       <Row title="Pricing" show={!isEmpty(prices)}>
         <SimpleAccordion title="Reveal rate card for services">
-          <table className="content-table" styleName="profile.content-table">
+          <table className="content-table" styleName="styles.content-table">
             <thead>
               <tr>
                 <th>Roles</th>
@@ -167,7 +167,7 @@ const Body = (props) => {
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-        <table className="content-table" styleName="profile.content-table">
+        <table className="content-table" styleName="styles.content-table">
           <thead>
             <tr>
               <th>Document type</th>
