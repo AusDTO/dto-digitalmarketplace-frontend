@@ -5320,9 +5320,9 @@ react-redux-form@1.2.4:
     invariant "~2.2.1"
     lodash "^4.10.0"
 
-react-redux@5.0.0-beta.3:
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.0-beta.3.tgz#d50bfb00799cf7d2a9fd55fe34d6b3ecc24d3072"
+react-redux@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.2.tgz#3d9878f5f71c6fafcd45de1fbb162ea31f389814"
   dependencies:
     hoist-non-react-statics "^1.0.3"
     invariant "^2.0.0"
