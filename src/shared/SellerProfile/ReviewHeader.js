@@ -37,7 +37,7 @@ const ReviewHeader = (props) => {
       </div>
 
       <div className="row">
-        <article className="col-xs-12 col-sm-8">
+        <article className="col-xs-12 col-md-8 col-sm-7">
           <div className="row">
             <div styleName="styles.badges">
             {Object.keys(seller_type)
@@ -98,7 +98,7 @@ const ReviewHeader = (props) => {
         </article>
 
         {public_profile && (
-          <article className="col-xs-12 col-sm-3 col-sm-push-1">
+          <article className="col-xs-12 col-sm-4 col-sm-push-1 col-md-3 col-md-push-1">
             <div className="seller-profile__tile" styleName="tile">
               <span className="seller-profile__tile-title" styleName="tile-title">Business contact</span>
               <b>{contact_name}</b>
