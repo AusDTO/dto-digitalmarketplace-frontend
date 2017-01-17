@@ -116,7 +116,8 @@
 
 .full-header {
   background: #f0f3f5;
-  padding-top: 1.5em
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
 }
 
 .full-header h4:first-of-type, .full-header ul {
