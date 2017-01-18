@@ -1,0 +1,36 @@
+.card {
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(187, 187, 187, 0.5);
+  border: solid 1px #bbbbbb;
+  margin-bottom: 1.5rem;
+}
+
+.card > article {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.card h3 {
+  margin: 0 0 0.75rem;
+}
+
+.card h3, .card div, .card p {
+  flex: 0 0 100%;
+}
+
+.badges {
+  order: -1;
+}
+
+.services {
+  background-color: rgba(240, 243, 245, 0.5);
+  border-top: solid 1px #bbbbbb;
+  padding: 1rem;
+}
+
+.services span {
+  margin-right: 1.25rem;
+  display: inline-block;
+  font-size: 14px;
+}
