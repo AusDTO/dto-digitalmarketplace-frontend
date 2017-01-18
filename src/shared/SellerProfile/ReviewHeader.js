@@ -1,6 +1,6 @@
 import React from 'react';
-import classNames from 'classnames';
-import get from 'lodash/get';
+
+import Badges from '../Badges';
 
 import styles from './SellerProfile.css'; // eslint-disable-line no-unused-vars
 
@@ -18,16 +18,6 @@ const ReviewHeader = (props) => {
     public_profile
   } = props;
 
-  const badgeTitle = {
-    indigenous: 'Indigenous business',
-    nfp_social_enterprise: 'Not-for-profit',
-    recruitment: 'Recruiter',
-    sme: 'SME',
-    start_up: 'Start up',
-    regional: 'Regional or non-metro based business',
-    product: 'Product based business'
-  };
-
   return (
     <section styleName={public_profile ? 'styles.full-header' : 'styles.review-header'}>
       <div className="row ">
@@ -39,17 +29,7 @@ const ReviewHeader = (props) => {
       <div className="row">
         <article className="col-xs-12 col-md-8 col-sm-7">
           <div className="row">
-            <div styleName="styles.badges">
-            {Object.keys(seller_type)
-              // If type is not in our list or falsy, dont render an empty span.
-              .filter(type => get(seller_type, type) && `${type}` in badgeTitle)
-              .map((type, i) => (
-              <span key={i} className={classNames(
-                'badge--default',
-                `badge__${type}`
-              )} styleName={`styles.badge__${type}`}> {badgeTitle[type]}</span>
-            ))}
-            </div>
+            <Badges badges={seller_type} />
           </div>
 
           <div className="seller-profile__summary">
