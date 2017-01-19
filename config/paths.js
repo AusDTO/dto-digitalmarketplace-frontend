@@ -57,7 +57,8 @@ var config = {
     'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')],
     'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')],
     'applications-admin': [resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdminWidget')],
-    'application-preview': [resolveApp('src/bundles/SellerRegistration/ApplicationPreviewWidget')]
+    'application-preview': [resolveApp('src/bundles/SellerRegistration/ApplicationPreviewWidget')],
+    'search': [resolveApp('src/bundles/Search/SearchWidget')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),

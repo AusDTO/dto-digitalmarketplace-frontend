@@ -199,9 +199,14 @@ form {
 
 
 .field {
-  margin: 10px 0;
-  padding: 20px 0 30px;
-  border-bottom: 1px solid #777;
+  list-style: none;
+  margin: $base-spacing 0;
+  padding: 0;
+
+  label:last-child  {
+    margin: 0;
+  }
+  
 
   label {
     font-size: 1em;
