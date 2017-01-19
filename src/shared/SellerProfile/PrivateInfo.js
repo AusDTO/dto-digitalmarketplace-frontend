@@ -1,6 +1,8 @@
 import React from 'react';
 import Row from "./Row";
 import questions from '../../bundles/SellerRegistration/components/DisclosuresForm/questions';
+import isEmpty from 'lodash/isEmpty';
+import format from 'date-fns/format';
 
 const PrivateInfo = (props) => {
   const {
@@ -9,7 +11,8 @@ const PrivateInfo = (props) => {
         local_government_experience,
         state_government_experience,
         federal_government_experience,
-        other_panels
+        other_panels,
+        signed_agreements = []
   } = props;
   return (
     <article className="private-info" style={{border: 'red 5px solid'}}>
@@ -36,6 +39,13 @@ const PrivateInfo = (props) => {
             return (<p key={i}><b>{question}</b> {answer} - {details}</p>)
         })}
         </Row>
+        <Row title="Master Agreement" show={!isEmpty(signed_agreements)}>
+        {signed_agreements.map((agreement, i) => {
+            console.log(agreement);
+            const { version, url, name, email_address, signed_at } = agreement;
+            return (<div key={i}>Agreement: <a href={url}>{version}</a> <br/> {name} ({email_address}) signed at {format(new Date(signed_at), 'YYYY-MM-DD HH:mm')} <hr/></div>)
+        })}
+        </Row>
 
     </article>
   )
@@ -48,7 +58,8 @@ PrivateInfo.propTypes = {
     state_government_experience: React.PropTypes.bool,
     federal_government_experience: React.PropTypes.bool,
     other_panels: React.PropTypes.string,
-    disclosures: React.PropTypes.object
+    disclosures: React.PropTypes.object,
+    signed_agreements: React.PropTypes.array
 };
 
 export default PrivateInfo;
