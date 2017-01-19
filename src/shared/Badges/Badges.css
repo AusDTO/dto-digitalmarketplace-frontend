@@ -1,0 +1,32 @@
+.badges {
+  margin: 0 0 1.25rem;
+}
+
+.badges span {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.badges span:first-of-type {
+  margin-left: 0;
+}
+
+.badge__sme {
+  background-color: #17788d; 
+}
+.badge__indigenous {
+  background-color: #224a61;
+}
+.badge__nfp_social_enterprise {
+  background-color: #6e6e6e;
+}
+.badge__recruitment {
+  background-color: #880e48;
+}
+.badge__start_up {
+  background-color: #152d3b;
+}
+
+.badge__product {
+  background-color: #fefefe;
+}

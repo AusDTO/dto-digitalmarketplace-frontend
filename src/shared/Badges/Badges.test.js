@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ReviewHeader from './ReviewHeader';
+import Badges from './Badges';
 
 test('Doesn\'t display any invalid/empty/falsy badges', () => {
   
   const props = {
-    seller_type: {
+    badges: {
       indigenous: true,
       sme: true,
       start_up: false,
@@ -15,7 +15,7 @@ test('Doesn\'t display any invalid/empty/falsy badges', () => {
   }
 
   const component = shallow(
-    <ReviewHeader {...props} />
+    <Badges {...props} />
   );
 
   expect(
