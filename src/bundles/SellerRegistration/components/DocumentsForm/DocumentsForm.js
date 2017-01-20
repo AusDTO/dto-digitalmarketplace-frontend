@@ -13,7 +13,7 @@ import ErrorBox      from '../../../../shared/form/ErrorBox';
 import StatefulError from '../../../../shared/form/StatefulError';
 
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
-import {uploadDocument} from '../../redux/modules/application'
+import {uploadDocument, submitApplication} from '../../redux/modules/application'
 
 class DocumentsForm extends BaseForm {
 
@@ -51,7 +51,7 @@ class DocumentsForm extends BaseForm {
 
     onUpload(id, e) {
         e.preventDefault();
-        const {model, onUpload, removeDocument, updateDocumentName, createDocument} = this.props;
+        const {model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication} = this.props;
         const file = this.state[id].file;
 
         this.setState({
@@ -69,6 +69,7 @@ class DocumentsForm extends BaseForm {
                 });
                 updateDocumentName(model, id, filename);
             })
+            .then(submitApplication)
             .catch((error) => {
                 this.setState({
                     [id]: void 0,
@@ -207,6 +208,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         updateDocumentName: (model, id, filename) => {
             return dispatch(actions.change(`${model}.documents.${id}.filename`, filename));
+        },
+        submitApplication: () => {
+            return dispatch(submitApplication());
         }
     }
 }
