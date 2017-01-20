@@ -126,7 +126,15 @@ class DocumentsForm extends BaseForm {
                           valid={form.valid}
                           onCustomSubmit={onSubmit}
                           validators={{
-                              documents: (documents) => documents && Object.keys(documents).length === 3
+                            documents: (documents = {}) => {
+                                let keys = Object.keys(documents);
+
+                                if (keys.length !== 3) {
+                                    return false;
+                                }
+
+                                return keys.filter((doc) => isEmpty(doc)).length;
+                            }
                           }}
                     >
                         {csrf_token && (
