@@ -6,7 +6,7 @@ import Autocomplete from 'react-autocomplete';
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
 
-import { actionCreators as actions } from '../../redux/modules/query';
+import { actionCreators as actions } from '../../redux/modules/search';
 
 import './Catalogue.css';
 
@@ -36,7 +36,7 @@ const sellerTypeList = [
 export class Catalogue extends React.Component {
 
   render () {
-    const { actions, results = [], keyword = '' } = this.props;
+    const { actions, results = [], search = {} } = this.props;
 
     return (
       <section>
@@ -46,7 +46,7 @@ export class Catalogue extends React.Component {
           </div>
           <div className="col-xs-12 col-sm-8 col-sm-push-1" styleName="autocomplete">
             <Autocomplete 
-              value={keyword}
+              value={search.keyword}
               inputProps={{name: 'keyword', id: 'keyword'}}
               items={results.slice(0, 10)}
               getItemValue={({ name }) => name}
@@ -101,8 +101,8 @@ export class Catalogue extends React.Component {
             {/*TODO*/}
             # Sellers Found
             <hr/>
-            {results.length ? (
-              results.map((result, i) => (
+            {search.results.length ? (
+              search.results.map((result, i) => (
                 <Card {...result} key={i} />
               ))
             ) : (
@@ -115,9 +115,10 @@ export class Catalogue extends React.Component {
   }
 };
 
-// TODO
-export const mapStateToProps = (state, ownProps) => {
-  return {}
+export const mapStateToProps = ({ search }, ownProps) => {
+  return {
+    search
+  }
 };
 
 const mapDispatchToProps = dispatch => ({
