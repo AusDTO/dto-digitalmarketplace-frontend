@@ -1,0 +1,20 @@
+{
+  "form_options": {
+    "action": "http://httpbin.org/post"
+  },
+  "search": {
+    "results": [
+      { 
+        "title": "Adelphi Digital Consulting Group", 
+        "link": "http://google.com", 
+        "description": "Adelphi Digital’s many services include digital strategy, user research/stories, requirements, personas, design, user testing, HTML prototyping, website build and CMS implementation. With offices in Canberra, Sydney, Melbourne and Brisbane, we are award-winning and widely known as a “go-to” digital consultancy for many agencies especially in service design and digital government.",
+        "services": {
+          "Strategy and Policy": true,
+          "Change, Training and Transformation": true,
+          "User research and Design": true,
+          "Agile deliver and Governance": true
+        }
+      }
+    ]
+  }
+}
