@@ -31,4 +31,5 @@
 .autocompleteMenu {
   border: 1px solid rgb(59, 153, 252);
   z-index: 999;
+  width: 100%;
 }
