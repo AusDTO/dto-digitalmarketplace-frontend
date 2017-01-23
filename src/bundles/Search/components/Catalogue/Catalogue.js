@@ -60,8 +60,10 @@ export class Catalogue extends React.Component {
                 >{item.name}</div>
               )}
               renderMenu={(items, value, style) => {
+                // renderMenu can't return null, internals of Autocomplete
+                // call clone on this result. Empty span will have to do.
                 if (!value || items.length === 0) {
-                  return null;
+                  return <span/>;
                 }
 
                 return (
