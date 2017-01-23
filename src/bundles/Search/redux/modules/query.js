@@ -1,9 +1,11 @@
-const UPDATE_ROLE = 'query/update/role';
-const UPDATE_TYPE = 'query/update/type';
+const UPDATE_ROLE     = 'query/role';
+const UPDATE_TYPE     = 'query/type';
+const UPDATE_KEYWORD  = 'query/keyword';
 
 const initialState = {
   role: {},
-  type: {}
+  type: {},
+  keyword: ''
 }
 
 const removeFromObject = (object, keyToRemove) => {
@@ -37,6 +39,8 @@ export default function reducer(state = initialState, action = {}) {
       }
       
       return Object.assign({}, state, { type: types });
+    case UPDATE_KEYWORD:
+      return Object.assign({}, state, { keyword: action.value });
     default:
       return state;
   }
@@ -44,13 +48,16 @@ export default function reducer(state = initialState, action = {}) {
 
 export const updateRole = (e) => ({ type: UPDATE_ROLE, value: e.target.value });
 export const updateType = (e) => ({ type: UPDATE_TYPE, value: e.target.value });
+export const updateKeyword = (value) => ({ type: UPDATE_KEYWORD, value });
 
 export const actionCreators = {
  updateRole,
- updateType
+ updateType,
+ updateKeyword
 };
 
 export const actionTypes = {
   UPDATE_ROLE,
-  UPDATE_TYPE
+  UPDATE_TYPE,
+  UPDATE_KEYWORD
 };

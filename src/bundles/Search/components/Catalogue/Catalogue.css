@@ -6,3 +6,29 @@
 .sidebar h4 {
   margin-top: 0;
 }
+
+.autocompleteItem {
+  background-color: #fff;
+  z-index: 999;
+  padding: 1rem;
+}
+
+.autocompleteItemHighlighted {
+  background-color: #cecece;
+  z-index: 999;
+  padding: 1rem;
+}
+
+.autocomplete input {
+  width: 100%;
+  padding: 1rem;
+}
+
+.autocomplete > div {
+  width: 85%;
+}
+
+.autocompleteMenu {
+  border: 1px solid rgb(59, 153, 252);
+  z-index: 999;
+}

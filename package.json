@@ -71,6 +71,7 @@
     "object-assign": "4.1.0",
     "promise": "7.1.1",
     "react": "15.3.2",
+    "react-autocomplete": "1.4.0",
     "react-dom": "15.3.2",
     "react-redux": "5.0.2",
     "react-redux-form": "1.2.4",
