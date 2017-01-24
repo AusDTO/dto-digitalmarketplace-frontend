@@ -61,8 +61,10 @@
       }
     },
     "documents": {
-      "deed": "deed.png",
-      "financial": "financial.pdf",
+      "financial": {
+        "filename": "financial.pdf",
+        "expiry": "2017-10-21"
+      },
       "liability": "liability.pdf",
       "workers": "workers.pdf"
     }
