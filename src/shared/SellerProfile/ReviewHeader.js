@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 
 import Badges from '../Badges';
 
@@ -11,12 +12,15 @@ const ReviewHeader = (props) => {
     seller_type,
     summary,
     website,
+    twitter,
     contact_name,
     contact_phone,
     contact_email,
     number_of_employees,
     public_profile
   } = props;
+
+  const hasContactDetails = ![contact_email, contact_name, contact_phone].filter(isEmpty).length;
 
   return (
     <section styleName={public_profile ? 'styles.full-header' : 'styles.review-header'}>
@@ -38,6 +42,15 @@ const ReviewHeader = (props) => {
 
           <div className="row" styleName="styles.meta-row">
             <div className="col-xs-12 col-sm-3">
+              <h4>Company Size</h4>
+            </div>
+            <div className="col-xs-12 col-sm-8 col-sm-push-1">
+              <p>{number_of_employees}</p>
+            </div>
+          </div>
+
+          <div className="row" styleName="styles.meta-row">
+            <div className="col-xs-12 col-sm-3">
               <h4>Website</h4>
             </div>
             <div className="col-xs-12 col-sm-8 col-sm-push-1">
@@ -45,14 +58,16 @@ const ReviewHeader = (props) => {
             </div>
           </div>
 
-          <div className="row" styleName="styles.meta-row">
-            <div className="col-xs-12 col-sm-3">
-              <h4>Company Size</h4>
+          {twitter && (
+            <div className="row" styleName="styles.meta-row">
+              <div className="col-xs-12 col-sm-3">
+                <h4>Twitter</h4>
+              </div>
+              <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                <p><a href={twitter} rel="external">{twitter}</a></p>
+              </div>
             </div>
-            <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <p>{number_of_employees}</p>
-            </div>
-          </div>
+          )}
 
           {/* 
             public_profile has three possible values
@@ -61,7 +76,7 @@ const ReviewHeader = (props) => {
             3. Seller viewing their own profile (public_profile=false)
           */}
 
-          {typeof public_profile === 'undefined' && (
+          {typeof public_profile === 'undefined' && hasContactDetails && (
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
                 <h4>Business Contact</h4>
