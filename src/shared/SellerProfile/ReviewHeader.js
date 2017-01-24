@@ -11,6 +11,7 @@ const ReviewHeader = (props) => {
     seller_type,
     summary,
     website,
+    twitter,
     contact_name,
     contact_phone,
     contact_email,
@@ -38,6 +39,15 @@ const ReviewHeader = (props) => {
 
           <div className="row" styleName="styles.meta-row">
             <div className="col-xs-12 col-sm-3">
+              <h4>Company Size</h4>
+            </div>
+            <div className="col-xs-12 col-sm-8 col-sm-push-1">
+              <p>{number_of_employees}</p>
+            </div>
+          </div>
+
+          <div className="row" styleName="styles.meta-row">
+            <div className="col-xs-12 col-sm-3">
               <h4>Website</h4>
             </div>
             <div className="col-xs-12 col-sm-8 col-sm-push-1">
@@ -45,14 +55,16 @@ const ReviewHeader = (props) => {
             </div>
           </div>
 
-          <div className="row" styleName="styles.meta-row">
-            <div className="col-xs-12 col-sm-3">
-              <h4>Company Size</h4>
+          {twitter && (
+            <div className="row" styleName="styles.meta-row">
+              <div className="col-xs-12 col-sm-3">
+                <h4>Twitter</h4>
+              </div>
+              <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                <p><a href={twitter} rel="external">{twitter}</a></p>
+              </div>
             </div>
-            <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <p>{number_of_employees}</p>
-            </div>
-          </div>
+          )}
 
           {/* 
             public_profile has three possible values
