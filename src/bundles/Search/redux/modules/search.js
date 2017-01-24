@@ -78,12 +78,10 @@ export const search = (type, value) => {
     }
 
     debounce(() => {
-      console.log('deb');
       const { search, form_options = {} } = getState();
       // Scrub results and querying from query, not valid filters.
       let query = removeFromObject(search, 'results');
       query = removeFromObject(query, 'querying')
-
 
       return api(form_options.action, {
         body: JSON.stringify(query),
