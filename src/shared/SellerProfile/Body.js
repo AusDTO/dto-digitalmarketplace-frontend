@@ -73,7 +73,28 @@ const Body = (props) => {
         </ul>
       </Row>
 
-      <Row title="Approach" show={tools || methodologies || technologies}>
+      <Row title="Pricing" show={!isEmpty(prices)}>
+        <SimpleAccordion title="Reveal rate card for services">
+          <table className="content-table" styleName="styles.content-table">
+            <thead>
+              <tr>
+                <th>Roles</th>
+                <th>Day rates</th>
+              </tr>
+            </thead>
+            <tbody>
+              {prices.map(({ service_role = {}, hourly_rate }, i) => (
+                <tr key={i}>
+                  <td>{service_role.name}</td>
+                  <td>${hourly_rate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </SimpleAccordion>
+      </Row>
+
+      <Row title="How we work" show={tools || methodologies || technologies}>
         {methodologies && (
           <div>
             <h4>Methodology</h4>
@@ -96,26 +117,7 @@ const Body = (props) => {
         )}
       </Row>
 
-      <Row title="Pricing" show={!isEmpty(prices)}>
-        <SimpleAccordion title="Reveal rate card for services">
-          <table className="content-table" styleName="styles.content-table">
-            <thead>
-              <tr>
-                <th>Roles</th>
-                <th>Day rates</th>
-              </tr>
-            </thead>
-            <tbody>
-              {prices.map(({ service_role = {}, hourly_rate }, i) => (
-                <tr key={i}>
-                  <td>{service_role.name}</td>
-                  <td>${hourly_rate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </SimpleAccordion>
-      </Row>
+      
 
       <Row title="Company Details" show={true}>
         <h4>Authorised representative</h4>
@@ -166,6 +168,12 @@ const Body = (props) => {
         )}
       </Row>
 
+      <Row title="Awards" show={!isEmpty(awards)}>
+        {awards.map((award, i) => (
+          <h4 key={i}>{award}</h4>
+        ))}
+      </Row>
+
       <Row title="Documents" show={!isEmpty(documents)}>
         <table className="content-table" styleName="styles.content-table">
           <thead>
@@ -196,12 +204,6 @@ const Body = (props) => {
             })}
           </tbody>
         </table>
-      </Row>
-
-      <Row title="Awards" show={!isEmpty(awards)}>
-        {awards.map((award, i) => (
-          <h4 key={i}>{award}</h4>
-        ))}
       </Row>
 
     </article>
