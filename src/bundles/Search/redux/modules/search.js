@@ -98,18 +98,10 @@ export const updateRole = (e) => search(UPDATE_ROLE, e.target.value);
 export const updateType = (e) => search(UPDATE_TYPE, e.target.value);
 export const updateKeyword = (value) => search(UPDATE_KEYWORD, value);
 
-const changeRole = (e) => {
-  return (dispatch, getState, api) => {
-    dispatch(updateRole(e));
-    dispatch(search());
-  }
-}
-
 export const actionCreators = {
  updateRole,
  updateType,
  updateKeyword,
- changeRole,
  search
 };
 
