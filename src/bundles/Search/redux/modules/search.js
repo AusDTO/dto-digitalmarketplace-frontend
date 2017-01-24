@@ -75,7 +75,6 @@ export const search = (type, value) => {
     query = removeFromObject(query, 'querying')
 
     return api(form_options.action, {
-      // TODO not body, should be query string
       body: JSON.stringify(query),
       method: 'POST',
       'Content-Type': 'application/json'
