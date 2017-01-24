@@ -1,3 +1,5 @@
+import debounce from 'lodash/debounce';
+
 const UPDATE_ROLE     = 'search/role';
 const UPDATE_TYPE     = 'search/type';
 const UPDATE_KEYWORD  = 'search/keyword';
@@ -74,13 +76,22 @@ export const search = (type, value) => {
     let query = removeFromObject(search, 'results');
     query = removeFromObject(query, 'querying')
 
-    return api(form_options.action, {
-      body: JSON.stringify(query),
-      method: 'POST',
-      'Content-Type': 'application/json'
-    })
-    .then(res => res.json())
-    .then(json => dispatch(syncResults(json)));
+    debounce(() => {
+      console.log('deb');
+      const { search, form_options = {} } = getState();
+      // Scrub results and querying from query, not valid filters.
+      let query = removeFromObject(search, 'results');
+      query = removeFromObject(query, 'querying')
+
+
+      return api(form_options.action, {
+        body: JSON.stringify(query),
+        method: 'POST',
+        'Content-Type': 'application/json'
+      })
+      .then(res => res.json())
+      .then(json => dispatch(syncResults(json)));
+    }, 500)();
   }
 }
 
