@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 
 import Badges from '../Badges';
 
@@ -18,6 +19,8 @@ const ReviewHeader = (props) => {
     number_of_employees,
     public_profile
   } = props;
+
+  const hasContactDetails = ![contact_email, contact_name, contact_phone].filter(isEmpty).length;
 
   return (
     <section styleName={public_profile ? 'styles.full-header' : 'styles.review-header'}>
@@ -73,7 +76,7 @@ const ReviewHeader = (props) => {
             3. Seller viewing their own profile (public_profile=false)
           */}
 
-          {typeof public_profile === 'undefined' && (
+          {typeof public_profile === 'undefined' && hasContactDetails && (
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
                 <h4>Business Contact</h4>
