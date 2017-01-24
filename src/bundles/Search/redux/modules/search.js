@@ -71,10 +71,11 @@ export const search = (type, value) => {
     // Update either role, type or keyword.
     dispatch({ type, value });
 
-    const { search, form_options = {} } = getState();
-    // Scrub results and querying from query, not valid filters.
-    let query = removeFromObject(search, 'results');
-    query = removeFromObject(query, 'querying')
+    // Only on keyword would length be blocking.
+    // TODO Arbitary number
+    if (type === UPDATE_KEYWORD && value.length < 4) {
+      return false;
+    }
 
     debounce(() => {
       console.log('deb');
