@@ -197,7 +197,7 @@ const Body = (props) => {
                     )}
                   </td>
                   <td>
-                    {expiry && format(new Date(expiry), 'MM/DD/YYYY')}
+                    {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
                   </td>
                 </tr>
               )
