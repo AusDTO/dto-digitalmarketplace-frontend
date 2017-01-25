@@ -10,29 +10,6 @@ import { actionCreators as actions } from '../../redux/modules/search';
 
 import './Catalogue.css';
 
-// Temp import until either moved to shared or provided via service.
-import domains from '../../../SellerRegistration/components/DomainSelector/domains';
-
-// Temp
-const sellerTypeList = [
-  {
-    key: 'travel',
-    label: 'Works regionally or interstate'
-  },
-  {
-    key: 'indigenous',
-    label: '50% Indigenous owned business'
-  },
-  {
-    key: 'disability',
-    label: 'Australian disability enterprise'
-  },
-  {
-    key: 'not_for_profit',
-    label: 'Not-for-profit organisation'
-  }
-];
-
 export class Catalogue extends React.Component {
 
   render () {
@@ -82,7 +59,7 @@ export class Catalogue extends React.Component {
             <form onSubmit={e => e.preventDefault()}>
               <CheckboxList 
                 id="role" 
-                list={domains} 
+                list={search.role}
                 onChange={actions.updateRole} 
               />
             </form>
@@ -92,7 +69,7 @@ export class Catalogue extends React.Component {
             <form onSubmit={e => e.preventDefault()}>
               <CheckboxList 
                 id="type" 
-                list={sellerTypeList} 
+                list={search.type}
                 onChange={actions.updateType} 
               />
             </form>
