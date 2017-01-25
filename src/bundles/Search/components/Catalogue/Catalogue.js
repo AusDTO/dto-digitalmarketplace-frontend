@@ -23,7 +23,7 @@ export class Catalogue extends React.Component {
           </div>
           <div className="col-xs-12 col-sm-8 col-sm-push-1" styleName="autocomplete">
             <Autocomplete 
-              value={search.keyword}
+              value={search.keyword || ''}
               inputProps={{name: 'keyword', id: 'keyword'}}
               items={results.slice(0, 10)}
               getItemValue={({ name }) => name}
