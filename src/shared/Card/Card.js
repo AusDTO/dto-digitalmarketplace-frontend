@@ -19,7 +19,7 @@ const Card = ({ title, link, badges = {}, description, products = {}, services =
       )}
       <p>{description}</p>
       <div className="products">
-        <Icon value="info" size={18} /> <strong>Digital products:</strong> CMS
+        <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
       </div>
     </article>
 
