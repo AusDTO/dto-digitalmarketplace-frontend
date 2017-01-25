@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
 
-import results from './results';
-import query from './query';
+import search from './search';
 
 export default combineReducers({
   options: (state = {}) => state,
-  results,
-  query
+  form_options: (state = {}) => state,
+  search
 });
