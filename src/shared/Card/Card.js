@@ -2,7 +2,7 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 
 import Badges from '../Badges';
-import Icon from '../Icon';
+//import Icon from '../Icon';
 
 import './Card.css';
 
@@ -18,9 +18,11 @@ const Card = ({ title, link, badges = {}, description, products = {}, services =
         </div>
       )}
       <p>{description}</p>
+      {/* TODO refactor when products exists
       <div className="products">
         <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
       </div>
+      */}
     </article>
 
     {!isEmpty(services) && (
