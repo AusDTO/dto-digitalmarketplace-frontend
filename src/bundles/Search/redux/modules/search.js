@@ -82,7 +82,7 @@ export const syncResults = (result) => ({ type: SYNC_RESULTS, result });
 export const preSearch = () => ({ type: PRE_SEARCH });
 
 export const search = (type, value) => {
-  return (dispatch, getState, api) => {
+  return (dispatch, getState, { api, debounceQueue }) => {
     dispatch(preSearch());
     // Update either role, type or keyword.
     dispatch({ type, value });
@@ -93,7 +93,7 @@ export const search = (type, value) => {
       return false;
     }
 
-    debounce(() => {
+    const deb = debounce(() => {
       const { search, form_options = {} } = getState();
       // Scrub results and querying from query, not valid filters.
       let query = scrubState(search);
@@ -116,7 +116,12 @@ export const search = (type, value) => {
       })
       .then(res => res.json())
       .then(json => dispatch(syncResults(json.results)));
-    }, 500)();
+    }, 500);
+
+    // Cancel queued requests and enqueue the latest one
+    debounceQueue.cancelAll();
+    debounceQueue.add(deb);
+    deb();
   }
 }
 
