@@ -54,19 +54,16 @@ export class Catalogue extends React.Component {
         </article>
         <article>
           <aside className="col-xs-12 col-sm-4" styleName="sidebar">
-            <h4>Filter by</h4>
+            <h4>Filter your results</h4>
             
+            <a href="">Learn more about these services</a>
+
             <form onSubmit={e => e.preventDefault()}>
               <CheckboxList 
                 id="role" 
                 list={search.role}
                 onChange={actions.updateRole} 
               />
-            </form>
-            
-            <a href="">Learn more about these services</a>
-
-            <form onSubmit={e => e.preventDefault()}>
               <CheckboxList 
                 id="type" 
                 list={search.type}
@@ -78,12 +75,14 @@ export class Catalogue extends React.Component {
             {/*TODO*/}
             # Sellers Found
             <hr/>
-            {search.results.length ? (
+            {search.querying ? (
+              <h4>Searching...</h4>
+            ) : isEmpty(search.results) ? (
+              <h4>No results found</h4>
+            ) : (
               search.results.map((result, i) => (
                 <Card {...result} key={i} />
               ))
-            ) : (
-              <h4>No results found</h4>
             )}
           </div>
         </article>
