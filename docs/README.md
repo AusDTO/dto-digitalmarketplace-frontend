@@ -6,3 +6,4 @@
 * [RegisterComponent](/docs/register-component.md)
 * [Render Server](/docs/render-server.md)
 * [Testing](/docs/testing.md)
+* [Things to note](/docs/things-to-note.md)
