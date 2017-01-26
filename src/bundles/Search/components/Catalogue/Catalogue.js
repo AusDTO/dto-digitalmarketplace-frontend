@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Autocomplete from 'react-autocomplete';
+import isEmpty from 'lodash/isEmpty';
 
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
