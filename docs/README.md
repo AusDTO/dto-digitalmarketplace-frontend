@@ -5,3 +5,4 @@
 * [Ducks](/docs/ducks.md)
 * [RegisterComponent](/docs/register-component.md)
 * [Render Server](/docs/render-server.md)
+* [Testing](/docs/testing.md)
