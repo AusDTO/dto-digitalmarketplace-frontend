@@ -96,15 +96,26 @@ export const search = (type, value) => {
     debounce(() => {
       const { search, form_options = {} } = getState();
       // Scrub results and querying from query, not valid filters.
-      let query = scrubState(search)
+      let query = scrubState(search);
 
-      return api(form_options.action, {
-        body: JSON.stringify(query),
-        method: 'POST',
-        'Content-Type': 'application/json'
+      let string = Object.keys(query).reduce((q, key) => {
+        let target = query[key];
+        let result;
+        if (isObject(target)) {
+          result = Object.keys(target).map((param) => `${key}=${param}`).join('&');
+        } else {
+          result = `${key}=${target}`;
+        }
+        return q += result;
+      }, '');
+
+      return api(`${form_options.action}?${string}`, {
+        headers: {
+          'Accept': 'application/json'
+        }
       })
       .then(res => res.json())
-      .then(json => dispatch(syncResults(json)));
+      .then(json => dispatch(syncResults(json.results)));
     }, 500)();
   }
 }
