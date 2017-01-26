@@ -10,7 +10,7 @@ entryPoints: {
 }
 ```
 
-The `entryPoints` object consists of two important pieces: `{ slug: [ path ] }`. The slug (aka id), is used internally by the [component registry](/docs/RegisterComponent.md) to build up unique identifiers and link up assets and files.
+The `entryPoints` object consists of two important pieces: `{ slug: [ path ] }`. The slug (aka id), is used internally by the [component registry](/docs/register-component.md) to build up unique identifiers and link up assets and files.
 
 You may also provide a mock to this entry point which will be passed in as initial state to this bundle when loaded in the [Local Environment](/README.md#local-development). This configuration can also be found in `config/paths.js`, right below `entryPoints`.
 
