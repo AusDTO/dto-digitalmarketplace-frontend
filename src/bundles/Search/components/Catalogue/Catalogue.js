@@ -7,14 +7,17 @@ import isEmpty from 'lodash/isEmpty';
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
 
+import Pagination from '../Pagination';
+
 import { actionCreators as actions } from '../../redux/modules/search';
+import { actionCreators as paginationActions } from '../../redux/modules/pagination';
 
 import './Catalogue.css';
 
 export class Catalogue extends React.Component {
 
   render () {
-    const { actions, results = [], search = {} } = this.props;
+    const { actions, results = [], search = {}, pagination = {} } = this.props;
 
     return (
       <section>
@@ -85,6 +88,13 @@ export class Catalogue extends React.Component {
                 <Card {...result} key={i} />
               ))
             )}
+            <hr/>
+            <Pagination 
+              {...pagination}
+              onClick={(page) => actions.updatePage(page)}
+              onBack={(page) => actions.updatePage(page)}
+              onNext={(page) => actions.updatePage(page)}
+            />
           </div>
         </article>
       </section>
@@ -92,14 +102,15 @@ export class Catalogue extends React.Component {
   }
 };
 
-export const mapStateToProps = ({ search }, ownProps) => {
+export const mapStateToProps = ({ search, pagination }, ownProps) => {
   return {
-    search
+    search,
+    pagination
   }
 };
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  actions: bindActionCreators({ ...actions, ...paginationActions }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);

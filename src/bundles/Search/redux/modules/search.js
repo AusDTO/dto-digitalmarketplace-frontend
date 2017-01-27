@@ -94,9 +94,9 @@ export const search = (type, value) => {
     }
 
     const deb = debounce(() => {
-      const { search, form_options = {} } = getState();
+      const { search, form_options = {}, pagination } = getState();
       // Scrub results and querying from query, not valid filters.
-      let query = scrubState(search);
+      let query = Object.assign({}, scrubState(search), { page: pagination.page });
 
       let string = Object.keys(query).reduce((q, key) => {
         let target = query[key];
@@ -125,14 +125,15 @@ export const search = (type, value) => {
   }
 }
 
-export const updateRole = (e) => search(UPDATE_ROLE, e.target.value);
-export const updateType = (e) => search(UPDATE_TYPE, e.target.value);
-export const updateKeyword = (value) => search(UPDATE_KEYWORD, value);
+export const updateRole     = (e) => search(UPDATE_ROLE, e.target.value);
+export const updateType     = (e) => search(UPDATE_TYPE, e.target.value);
+export const updateKeyword  = (value) => search(UPDATE_KEYWORD, value);
 
 export const actionCreators = {
  updateRole,
  updateType,
  updateKeyword,
+
  search
 };
 
