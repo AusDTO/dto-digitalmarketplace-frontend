@@ -266,27 +266,6 @@ exports[`test DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="digital-products"
-            name="digital-products"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital products" />
-          <label
-            htmlFor="digital-products">
-            Digital products
-             
-            <p>
-              Digital products relates to software, platforms or infrastructure provided as a service.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="emerging-technology"
             name="emerging-technology"
             onBlur={[Function]}
@@ -575,27 +554,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
              
             <p>
               Data science brings analytical rigour and statistical methods to measure quality, improve services and model behaviour. Examples include statistical and scenario modelling and data visualisation.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="digital-products"
-            name="digital-products"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Digital products" />
-          <label
-            htmlFor="digital-products">
-            Digital products
-             
-            <p>
-              Digital products relates to software, platforms or infrastructure provided as a service.
             </p>
           </label>
         </div>
