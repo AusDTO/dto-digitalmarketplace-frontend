@@ -230,6 +230,7 @@ test('without filterSteps', () => {
   const Review = require('../../../SellerRegistration/components/Review').default;
   const Finish = require('../../../SellerRegistration/components/Finish').default;
   const FinishProfile = require('../../../SellerRegistration/components/FinishProfile').default;
+  const ProductsForm = require('../../../SellerRegistration/components/ProductsForm').default;
 
   delete sampleState.basename;
   let store = createStore(Object.assign({}, sampleState));
@@ -243,7 +244,8 @@ test('without filterSteps', () => {
       { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-      { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+      { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
+      { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
       { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
       { id: 'review', label: 'Review', component: Review, pattern: '/review' },
       // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
@@ -272,7 +274,7 @@ test('without filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(13);
+  expect(steps.length).toBe(14);
 });
 
 test('filterSteps', () => {
@@ -285,6 +287,7 @@ test('filterSteps', () => {
   const AwardsForm = require('../../../SellerRegistration/components/AwardsForm').default;
   const ToolsForm = require('../../../SellerRegistration/components/ToolsForm').default;
   const DisclosuresForm = require('../../../SellerRegistration/components/DisclosuresForm').default;
+  const ProductsForm = require('../../../SellerRegistration/components/ProductsForm').default;
 
   delete sampleState.basename;
   let store = createStore(Object.assign({}, sampleState));
@@ -297,7 +300,8 @@ test('filterSteps', () => {
       { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-      { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+      { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
+      { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' }
   ];
 
   const filterSteps = (step) => {
@@ -327,7 +331,7 @@ test('filterSteps', () => {
   const { steps } = wrapper.instance();
 
   expect(steps).toEqual(expectedSteps);
-  expect(steps.length).toBe(8);
+  expect(steps.length).toBe(9);
 });
 
 

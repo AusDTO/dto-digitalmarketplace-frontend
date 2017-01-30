@@ -100,10 +100,20 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/products"
+            onClick={[Function]}>
+            <span>
+              Products
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/domains"
             onClick={[Function]}>
             <span>
-              Products and services
+              Services
             </span>
           </a>
         </li>
@@ -277,10 +287,20 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/products"
+            onClick={[Function]}>
+            <span>
+              Products
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/domains"
             onClick={[Function]}>
             <span>
-              Products and services
+              Services
             </span>
           </a>
         </li>
@@ -360,7 +380,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby="representative-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="representative"
               maxLength={undefined}
               name="representative"
@@ -382,7 +402,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="phone"
               maxLength={undefined}
               name="phone"
@@ -404,7 +424,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="email"
               maxLength={undefined}
               name="email"
@@ -431,7 +451,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby="contact_name-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_name"
               maxLength={undefined}
               name="contact_name"
@@ -453,7 +473,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_phone"
               maxLength={undefined}
               name="contact_phone"
@@ -475,7 +495,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_email"
               maxLength={undefined}
               name="contact_email"
@@ -604,10 +624,20 @@ exports[`test Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/products"
+            onClick={[Function]}>
+            <span>
+              Products
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/domains"
             onClick={[Function]}>
             <span>
-              Products and services
+              Services
             </span>
           </a>
         </li>
@@ -687,7 +717,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby="representative-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="representative"
               maxLength={undefined}
               name="representative"
@@ -709,7 +739,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="phone"
               maxLength={undefined}
               name="phone"
@@ -731,7 +761,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="email"
               maxLength={undefined}
               name="email"
@@ -758,7 +788,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby="contact_name-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_name"
               maxLength={undefined}
               name="contact_name"
@@ -780,7 +810,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_phone"
               maxLength={undefined}
               name="contact_phone"
@@ -802,7 +832,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_email"
               maxLength={undefined}
               name="contact_email"
