@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import api from '../../../../shared/reduxModules/api';
-import reducer, { actionTypes, actionCreators as actions } from './search';
+import reducer, { actionTypes, actionCreators as actions, scrubState } from './search';
 
 const mockResponse = (status, statusText, response) => {
   return new window.Response(response, {
@@ -57,7 +57,9 @@ test('should handle UPDATE_ROLE when role exists', () => {
   };
 
   const expectedResult = {
-    role: {},
+    role: {
+      BRole: false
+    },
     type: {},
   };
 
@@ -98,7 +100,9 @@ test('should handle UPDATE_TYPE when type exists', () => {
 
   const expectedResult = {
     role: {},
-    type: {},
+    type: {
+      TypeOne: false
+    },
   };
 
   expect(reducer(initialState, action)).toEqual(expectedResult);
@@ -147,4 +151,45 @@ test.skip('updateRole action', () => {
   expect(window.fetch).toHaveBeenCalledTimes(1);
   expect(window.fetch).toHaveBeenCalledWith('http://foo.bar', expectedFetchOptions)
   expect(store.getActions()).toEqual(expectedActions);
+});
+
+test('scrubState', () => {
+  const state = {
+    role: {
+      'Agile delivery and Governance': false,
+      'Change, Training and Transformation': false,
+      'Content and Publishing': false,
+      'Cyber security': true,
+      'Digital products': false,
+      'Emerging technology': false,
+      'Marketing, Communications and Engagement': false,
+      'Recruitment': true,
+      'Software engineering and Development': false,
+      'Strategy and Policy': false,
+      'Strategy and policy': false,
+      'Support and Operations': false,
+      'User research and Design': false
+    },
+    type: {
+      'Works regionally or interstate': false,
+      '50% Indigenous owned business': false,
+      'Australian disability enterprise': false,
+      'Not-for-profit organisation': true
+    },
+    keyword: '',
+    results: [],
+    querying: false
+  };
+
+  const expectedState = {
+    role: {
+      'Cyber security': true,
+      'Recruitment': true
+    },
+    type: {
+      'Not-for-profit organisation': true
+    }
+  }
+
+  expect(scrubState(state)).toEqual(expectedState);
 });
