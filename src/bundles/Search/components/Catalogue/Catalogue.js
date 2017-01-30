@@ -76,19 +76,24 @@ export class Catalogue extends React.Component {
             </form>
           </aside>
           <div className="col-xs-12 col-sm-8">
-            {/*TODO*/}
-            # Sellers Found
-            <hr/>
-            {search.querying ? (
-              <h4>Searching...</h4>
-            ) : isEmpty(search.results) ? (
+
+            <article styleName="filters">
+              <strong styleName="active-filter filter">
+                <span>{search.results.length}</span> Sellers found
+              </strong>
+              <hr/>
+            </article>
+
+            {isEmpty(search.results) ? (
               <h4>No results found</h4>
             ) : (
               search.results.map((result, i) => (
                 <Card {...result} key={i} />
               ))
             )}
+
             <hr/>
+
             <Pagination 
               {...pagination}
               onClick={(page) => actions.updatePage(page)}

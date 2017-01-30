@@ -34,3 +34,27 @@
   z-index: 999;
   width: 100%;
 }
+
+.filters {
+  margin: 1.5rem 0;
+}
+
+.filters hr {
+  margin: 0;
+}
+
+.active-filter {
+  border-bottom: solid 6px #17788d;
+}
+
+.filter {
+  display: inline-block;
+  padding-bottom: 0.65rem;
+  font-size: 1rem;
+}
+
+.filter span {
+  font-size: 1.65rem;
+  display: inline-block;
+  margin-right: 0.25rem;
+}
