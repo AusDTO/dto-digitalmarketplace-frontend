@@ -1,11 +1,21 @@
 import React from 'react';
+import snakeCase from 'lodash/snakeCase';
 
-export default ({ id, list = [], onChange = () => {} }) => (
-  <article>
-    {list.map(({ key, label, description }, i) => (
-      <div className="field" key={`${id}.${i}`}>
-        <input type="checkbox" name={key} id={key} value={key} onChange={onChange} />
-        <label htmlFor={key}>{label}</label>
+import './CheckboxList.css';
+
+export default ({ id, list = {}, onChange = () => {} }) => (
+  <article styleName="checkboxList">
+    {Object.keys(list).map((value, i) => (
+      <div key={`${id}.${i}`}>
+        <input
+          type="checkbox"
+          name={id}
+          id={snakeCase(value)}
+          value={value}
+          checked={list[value]}
+          onChange={onChange}
+        />
+        <label htmlFor={snakeCase(value)}>{value}</label>
       </div>
     ))}
   </article>

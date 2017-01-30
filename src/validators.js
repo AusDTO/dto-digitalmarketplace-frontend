@@ -59,10 +59,21 @@ export const dependantRequired = (values = {}, keys = []) => (val) => {
   return true;
 }
 
+export const minObjectLength = (object = {}, minLength = -1) => {
+  let keys = Object.keys(object);
+
+  if (keys.length !== minLength) {
+      return false;
+  }
+
+  return !keys.filter((key) => isEmpty(object[key])).length;
+}
+
 export default {
   required,
   minArrayLength,
   min,
   validLinks,
-  dependantRequired
+  dependantRequired,
+  minObjectLength
 }
