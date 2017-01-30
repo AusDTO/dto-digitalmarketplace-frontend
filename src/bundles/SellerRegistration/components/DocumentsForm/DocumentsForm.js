@@ -15,6 +15,8 @@ import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import {uploadDocument, submitApplication} from '../../redux/modules/application'
 
+import { minObjectLength } from '../../../../validators';
+
 class DocumentsForm extends BaseForm {
 
     static propTypes = {
@@ -126,15 +128,7 @@ class DocumentsForm extends BaseForm {
                           valid={form.valid}
                           onCustomSubmit={onSubmit}
                           validators={{
-                            documents: (documents = {}) => {
-                                let keys = Object.keys(documents);
-
-                                if (keys.length !== 3) {
-                                    return false;
-                                }
-
-                                return keys.filter((doc) => isEmpty(doc)).length;
-                            }
+                            documents: (documents = {}) => minObjectLength(documents, 3) 
                           }}
                     >
                         {csrf_token && (
