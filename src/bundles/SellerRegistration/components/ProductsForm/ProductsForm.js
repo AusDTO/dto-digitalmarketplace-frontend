@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Form, actions} from 'react-redux-form';
-import isEmpty from 'lodash/isEmpty';
 
 import { required } from '../../../../validators';
 
@@ -150,7 +149,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createProduct: (model, productsForm) => {
-            let index = isEmpty(productsForm.products) ? 0 : productsForm.products.length;
+            let index = (productsForm.products && productsForm.products.length) || 0;
             return dispatch(actions.change(`${model}.products.${index}`, {}));
         },
         removeProduct: (model, id) => {
