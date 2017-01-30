@@ -1,9 +1,9 @@
-import React from 'react'
-import { Provider } from 'react-redux'
+import React from 'react';
+import { Provider } from 'react-redux';
 
-import RegisterComponent from '../../RegisterComponent'
+import RegisterComponent from '../../RegisterComponent';
 
-import createStore from './redux/create'
+import createStore from './redux/create';
 import Catalogue from './components/Catalogue';
 
 export const SearchWidget = (props) => {

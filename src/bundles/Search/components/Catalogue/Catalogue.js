@@ -2,41 +2,22 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Autocomplete from 'react-autocomplete';
+import isEmpty from 'lodash/isEmpty';
 
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
 
+import Pagination from '../Pagination';
+
 import { actionCreators as actions } from '../../redux/modules/search';
+import { actionCreators as paginationActions } from '../../redux/modules/pagination';
 
 import './Catalogue.css';
-
-// Temp import until either moved to shared or provided via service.
-import domains from '../../../SellerRegistration/components/DomainSelector/domains';
-
-// Temp
-const sellerTypeList = [
-  {
-    key: 'travel',
-    label: 'Works regionally or interstate'
-  },
-  {
-    key: 'indigenous',
-    label: '50% Indigenous owned business'
-  },
-  {
-    key: 'disability',
-    label: 'Australian disability enterprise'
-  },
-  {
-    key: 'not_for_profit',
-    label: 'Not-for-profit organisation'
-  }
-];
 
 export class Catalogue extends React.Component {
 
   render () {
-    const { actions, results = [], search = {} } = this.props;
+    const { actions, results = [], search = {}, pagination = {} } = this.props;
 
     return (
       <section>
@@ -46,7 +27,7 @@ export class Catalogue extends React.Component {
           </div>
           <div className="col-xs-12 col-sm-8 col-sm-push-1" styleName="autocomplete">
             <Autocomplete 
-              value={search.keyword}
+              value={search.keyword || ''}
               inputProps={{name: 'keyword', id: 'keyword'}}
               items={results.slice(0, 10)}
               getItemValue={({ name }) => name}
@@ -77,22 +58,19 @@ export class Catalogue extends React.Component {
         </article>
         <article>
           <aside className="col-xs-12 col-sm-4" styleName="sidebar">
-            <h4>Filter by</h4>
-            
-            <form onSubmit={e => e.preventDefault()}>
-              <CheckboxList 
-                id="role" 
-                list={domains} 
-                onChange={actions.updateRole} 
-              />
-            </form>
+            <h4>Filter your results</h4>
             
             <a href="">Learn more about these services</a>
 
             <form onSubmit={e => e.preventDefault()}>
               <CheckboxList 
+                id="role" 
+                list={search.role}
+                onChange={actions.updateRole} 
+              />
+              <CheckboxList 
                 id="type" 
-                list={sellerTypeList} 
+                list={search.type}
                 onChange={actions.updateType} 
               />
             </form>
@@ -101,13 +79,22 @@ export class Catalogue extends React.Component {
             {/*TODO*/}
             # Sellers Found
             <hr/>
-            {search.results.length ? (
+            {search.querying ? (
+              <h4>Searching...</h4>
+            ) : isEmpty(search.results) ? (
+              <h4>No results found</h4>
+            ) : (
               search.results.map((result, i) => (
                 <Card {...result} key={i} />
               ))
-            ) : (
-              <h4>No results found</h4>
             )}
+            <hr/>
+            <Pagination 
+              {...pagination}
+              onClick={(page) => actions.updatePage(page)}
+              onBack={(page) => actions.updatePage(page)}
+              onNext={(page) => actions.updatePage(page)}
+            />
           </div>
         </article>
       </section>
@@ -115,14 +102,15 @@ export class Catalogue extends React.Component {
   }
 };
 
-export const mapStateToProps = ({ search }, ownProps) => {
+export const mapStateToProps = ({ search, pagination }, ownProps) => {
   return {
-    search
+    search,
+    pagination
   }
 };
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  actions: bindActionCreators({ ...actions, ...paginationActions }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);
