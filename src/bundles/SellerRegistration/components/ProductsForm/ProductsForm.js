@@ -64,7 +64,7 @@ class ProductsForm extends BaseForm {
                   <Textfield
                       model={`${model}.products.${key}.name`}
                       name="name"
-                      id={`name-${key}`}
+                      id="name"
                       htmlFor="name"
                       label="Product name"
                       validators={{ required }}
@@ -75,7 +75,7 @@ class ProductsForm extends BaseForm {
                   <Textarea
                       model={`${model}.products.${key}.summary`}
                       name="summary"
-                      id={`summary-${key}`}
+                      id="summary"
                       controlProps={{limit: 50}}
                       label="Product Summary"
                       description="This is your ‘elevator pitch’ — in a single sentence tell us about your product."
@@ -85,9 +85,9 @@ class ProductsForm extends BaseForm {
                       validators={{required}}
                   />
                   <Textfield
-                      model={`${model}.products.${key}.webaite`}
+                      model={`${model}.products.${key}.website`}
                       name="website"
-                      id={`website-${key}`}
+                      id="website"
                       htmlFor="website"
                       label="Product website link"
                       description="Add a link to your product’s website."
@@ -97,9 +97,9 @@ class ProductsForm extends BaseForm {
                       }}
                   />
                   <Textfield
-                      model={`${model}.products.${key}.website`}
+                      model={`${model}.products.${key}.pricing`}
                       name="pricing"
-                      id={`pricing-${key}`}
+                      id="pricing"
                       htmlFor="pricing"
                       label="Product pricing link"
                       description="Add a link to your product’s pricing page."
@@ -111,7 +111,7 @@ class ProductsForm extends BaseForm {
                   <Textfield
                       model={`${model}.products.${key}.support`}
                       name="support"
-                      id={`support-${key}`}
+                      id="support"
                       htmlFor="support"
                       label="Product support link"
                       description="Add a link to your product’s support page."
@@ -151,7 +151,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         createProduct: (model, productsForm) => {
             let index = isEmpty(productsForm.products) ? 0 : productsForm.products.length;
-            return dispatch(actions.push(`${model}.products.${index}`, {}));
+            return dispatch(actions.change(`${model}.products.${index}`, {}));
         },
         removeProduct: (model, id) => {
             return dispatch(actions.remove(`${model}.products`, id));
