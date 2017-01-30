@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Form, actions} from 'react-redux-form';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
 
 import { required } from '../../../../validators';
 
@@ -55,7 +57,7 @@ class ProductsForm extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
-            {productsForm.products && productsForm.products.map((product, key) => {
+            {isArray(productsForm.products) && productsForm.products.map((product, key) => {
               return (
                 <div key={key}>
                   <h2>{`Product ${key+1}`}</h2>
@@ -126,8 +128,8 @@ class ProductsForm extends BaseForm {
 
             {children}
 
-            <button type="submit" onClick={this.onAdd.bind(this)}>Add a product</button>
-            <input type="submit" value={buttonText} role="button" />
+            <button type="submit" onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
+            <input type="submit" value={isEmpty(productsForm.products) ? 'I do not have any products' : buttonText} role="button" />
           </Form>
         </article>
       </Layout>
@@ -148,9 +150,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createProduct: (model, productsForm) => {
-            let index = (productsForm.products && productsForm.products.length) || 0;
-            return dispatch(actions.change(`${model}.products.${index}`, {}));
+        createProduct: (model, products) => {
+            return dispatch(actions.push(`${model}.products`, {}));
         },
         removeProduct: (model, id) => {
             return dispatch(actions.remove(`${model}.products`, id));

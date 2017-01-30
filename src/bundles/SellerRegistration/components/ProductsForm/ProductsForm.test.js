@@ -25,8 +25,4 @@ test('mapStateToProps', () => {
     let state = generateFormValidilityState(true);
     let props = mapStateToProps(state);
     expect(props).toEqual({ form: {"valid": true}, "formErrors": undefined, "mode": "add", "model": "productsForm", "returnLink": undefined});
-
-    state = generateFormValidilityState(false);
-    props = mapStateToProps(state);
-    expect(props).toEqual({ form: { valid: false },"formErrors": undefined, "mode": "add", "model": "productsForm", "returnLink": undefined});
 });
