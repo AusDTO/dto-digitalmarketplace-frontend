@@ -9,7 +9,7 @@ export default ({ id, list = {}, onChange = () => {} }) => (
       <div key={`${id}.${i}`}>
         <input
           type="checkbox"
-          name={snakeCase(value)}
+          name={id}
           id={snakeCase(value)}
           value={value}
           checked={list[value]}

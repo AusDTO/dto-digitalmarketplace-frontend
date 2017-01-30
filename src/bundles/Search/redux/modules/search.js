@@ -100,16 +100,16 @@ export const search = (type, value) => {
 
       let string = Object.keys(query).reduce((q, key) => {
         let target = query[key];
-        let result;
+        let params = [];
         if (isObject(target)) {
-          result = Object.keys(target).map((param) => `${key}=${param}`).join('&');
+          params = Object.keys(target).map((param) => `${key}=${param}`);
         } else {
-          result = `${key}=${target}`;
+          params = [`${key}=${target}`];
         }
-        return q += result;
-      }, '');
+        return q.concat(params);
+      }, []);
 
-      return api(`${form_options.action}?${string}`, {
+      return api(`${form_options.action}?${string.join('&')}`, {
         headers: {
           'Accept': 'application/json'
         }
