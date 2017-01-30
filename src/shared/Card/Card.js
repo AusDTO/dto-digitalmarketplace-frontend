@@ -7,7 +7,7 @@ import Badges from '../Badges';
 import './Card.css';
 
 const Card = ({ title, link, badges = {}, description, products = {}, services = {} }) => (
-  <section styleName="card">
+  <section className="card" styleName="card">
     <article>
       <h3>
         <a href={link}>{title}</a>
