@@ -24,8 +24,8 @@ class ProductsForm extends BaseForm {
 
   onAdd(e) {
       e.preventDefault();
-      const {model, createProduct, productsForm} = this.props;
-      createProduct(model, productsForm);
+      const {model, createProduct} = this.props;
+      createProduct(model);
   }
 
   onRemove(id, e) {
@@ -150,7 +150,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createProduct: (model, products) => {
+        createProduct: (model) => {
             return dispatch(actions.push(`${model}.products`, {}));
         },
         removeProduct: (model, id) => {
