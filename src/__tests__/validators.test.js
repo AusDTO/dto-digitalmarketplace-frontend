@@ -69,3 +69,25 @@ test('dependantRequired', () => {
 	expect(validFields(true)).toBe(true);
 	expect(validFields(false)).toBe(false)
 });
+
+
+test('minObjectLength', () => {
+	const object = {
+    financial: {
+      filename: 'RTA-bond-lodgement-form2.pdf'
+    },
+    liability: {
+      expiry: '1900-02-01',
+      filename: 'RTA-bond-lodgement-form2.pdf'
+    },
+    workers: {
+      filename: 'RTA-bond-lodgement-form2.pdf'
+    }
+  };
+
+  expect(validator.minObjectLength(object, 3)).toBe(true);
+
+  expect(validator.minObjectLength({}, 3)).toBe(false);
+
+  expect(validator.minObjectLength()).toBe(false);
+})
