@@ -23,6 +23,10 @@
 .autocomplete input {
   width: 100%;
   padding: 1rem;
+  border-top: solid 2px #bbbbbb;
+  border-left: solid 2px #bbbbbb;
+  border-bottom: solid 2px #bbbbbb;
+  border-right: none;
 }
 
 .autocomplete > div {
@@ -57,4 +61,19 @@
   font-size: 1.65rem;
   display: inline-block;
   margin-right: 0.25rem;
+}
+
+.keyword-search > article > div {
+  width: 100%;
+}
+
+.keyword-search > article:first-of-type {
+  margin-right: 0;
+  width: 85.62178%;
+}
+
+.keyword-search button {
+  padding: 1rem 1rem 0.79rem;
+  margin: 0;
+  width: 100%;
 }
