@@ -249,9 +249,8 @@ test('without filterSteps', () => {
       { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
       { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
       { id: 'review', label: 'Review', component: Review, pattern: '/review' },
-      { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
-      //{ id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
       { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
+      { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
   ];
 
   const props = {
@@ -265,6 +264,9 @@ test('without filterSteps', () => {
       domainSelectorForm: {},
       businessDetailsForm: {},
       yourInfoForm: {}
+    },
+    options: {
+      submit_registration: true
     }
   }
 
@@ -307,7 +309,7 @@ test('filterSteps', () => {
 
   const filterSteps = (step) => {
     // Remove steps with patterns of /start and /case-study and /review and /submit
-    return !step.pattern.match(/\/start|\/case-study|\/review|\/submit|\/finish|\/profile-finish/);
+    return !step.pattern.match(/\/start|\/case-study|\/review|\/submit|\/profile-finish/);
   }
 
   const props = {

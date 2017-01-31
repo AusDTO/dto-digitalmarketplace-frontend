@@ -35,14 +35,10 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
 
-    if (props.filterSteps) {
-      this.steps = this.steps.filter(props.filterSteps);
-    }
-
     // Allow submit to be controlled by feature flag.
     // Use same pattern, so the URL can be consistent
     // Just different messaging/actions.
-    const { options = {} } = props;
+    const { options = {}, filterSteps } = props;
     if (options.submit_registration) {
       this.steps = this.steps.concat({
         id: 'submit',
@@ -57,6 +53,10 @@ class Signup extends React.Component {
         component: Finish,
         pattern: '/submit'
       });
+    }
+
+    if (filterSteps) {
+      this.steps = this.steps.filter(filterSteps);
     }
   }
 
