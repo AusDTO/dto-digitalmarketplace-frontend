@@ -133,7 +133,7 @@ class Signup extends React.Component {
 
   render() {
     const { forms, router, steps = {}, location } = this.props;
-    const applicationValid = true; // (this.steps.length - 1) === Object.keys(steps).length;
+    const applicationValid = (this.steps.length - 1) === Object.keys(steps).length;
     let { services = {} } = forms.domainSelectorForm;
     let { name = '' } = forms.businessDetailsForm;
     let { email = '' } = forms.yourInfoForm;
