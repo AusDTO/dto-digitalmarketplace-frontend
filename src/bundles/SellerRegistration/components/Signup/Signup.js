@@ -27,6 +27,7 @@ import Review               from '../Review';
 import Submit               from '../Submit';
 import Finish               from '../Finish';
 import FinishProfile        from '../FinishProfile';
+import ProductsForm        from '../ProductsForm';
 
 
 class Signup extends React.Component {
@@ -48,7 +49,8 @@ class Signup extends React.Component {
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-    { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
+    { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'review', label: 'Review', component: Review, pattern: '/review' },
     { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },

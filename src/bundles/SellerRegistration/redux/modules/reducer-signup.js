@@ -92,6 +92,9 @@ export default combineReducers({
           other_circumstances: null,
           other_circumstances_details: ''
         }
+    },
+    productsForm: {
+      products: []
     }
   })
 })

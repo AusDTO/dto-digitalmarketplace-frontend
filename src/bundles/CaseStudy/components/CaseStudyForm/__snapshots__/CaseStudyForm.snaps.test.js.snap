@@ -41,7 +41,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="title"
           maxLength={undefined}
           name="title"
@@ -63,7 +63,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="client"
           maxLength={undefined}
           name="client"
@@ -90,7 +90,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <input
           aria-describedby="timeframe-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="timeframe"
           maxLength={undefined}
           name="timeframe"
@@ -117,7 +117,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <input
           aria-describedby="roles-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="roles"
           maxLength={undefined}
           name="roles"
@@ -356,7 +356,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <input
           aria-describedby="refereeName-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
@@ -383,7 +383,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <input
           aria-describedby="refereePosition-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereePosition"
           maxLength={undefined}
           name="refereePosition"
@@ -405,7 +405,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeEmail"
           maxLength={undefined}
           name="refereeEmail"
@@ -420,6 +420,7 @@ exports[`test CaseStudyForm renders 1`] = `
       <div>
         <input
           checked={false}
+          disabled={false}
           id="refereeContact"
           name="refereeContact"
           onBlur={[Function]}
@@ -1096,7 +1097,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="title"
           maxLength={undefined}
           name="title"
@@ -1118,7 +1119,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="client"
           maxLength={undefined}
           name="client"
@@ -1145,7 +1146,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <input
           aria-describedby="timeframe-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="timeframe"
           maxLength={undefined}
           name="timeframe"
@@ -1172,7 +1173,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <input
           aria-describedby="roles-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="roles"
           maxLength={undefined}
           name="roles"
@@ -1411,7 +1412,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <input
           aria-describedby="refereeName-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
@@ -1438,7 +1439,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <input
           aria-describedby="refereePosition-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereePosition"
           maxLength={undefined}
           name="refereePosition"
@@ -1460,7 +1461,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeEmail"
           maxLength={undefined}
           name="refereeEmail"
@@ -1475,6 +1476,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       <div>
         <input
           checked={false}
+          disabled={false}
           id="refereeContact"
           name="refereeContact"
           onBlur={[Function]}
@@ -1637,7 +1639,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <input
           aria-describedby={undefined}
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="title"
           maxLength={undefined}
           name="title"
@@ -1670,7 +1672,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <input
           aria-describedby={undefined}
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="client"
           maxLength={undefined}
           name="client"
@@ -1708,7 +1710,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <input
           aria-describedby="timeframe-hint"
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="timeframe"
           maxLength={undefined}
           name="timeframe"
@@ -1746,7 +1748,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <input
           aria-describedby="roles-hint"
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="roles"
           maxLength={undefined}
           name="roles"
@@ -2029,7 +2031,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <input
           aria-describedby="refereeName-hint"
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
@@ -2067,7 +2069,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <input
           aria-describedby="refereePosition-hint"
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="refereePosition"
           maxLength={undefined}
           name="refereePosition"
@@ -2100,7 +2102,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <input
           aria-describedby={undefined}
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="refereeEmail"
           maxLength={undefined}
           name="refereeEmail"
@@ -2126,6 +2128,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         </a>
         <input
           checked={false}
+          disabled={false}
           id="refereeContact"
           name="refereeContact"
           onBlur={[Function]}
@@ -2195,7 +2198,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="title"
           maxLength={undefined}
           name="title"
@@ -2217,7 +2220,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="client"
           maxLength={undefined}
           name="client"
@@ -2244,7 +2247,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <input
           aria-describedby="timeframe-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="timeframe"
           maxLength={undefined}
           name="timeframe"
@@ -2271,7 +2274,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <input
           aria-describedby="roles-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="roles"
           maxLength={undefined}
           name="roles"
@@ -2510,7 +2513,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <input
           aria-describedby="refereeName-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
@@ -2537,7 +2540,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <input
           aria-describedby="refereePosition-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereePosition"
           maxLength={undefined}
           name="refereePosition"
@@ -2559,7 +2562,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeEmail"
           maxLength={undefined}
           name="refereeEmail"
@@ -2574,6 +2577,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       <div>
         <input
           checked={false}
+          disabled={false}
           id="refereeContact"
           name="refereeContact"
           onBlur={[Function]}
@@ -2638,7 +2642,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="title"
           maxLength={undefined}
           name="title"
@@ -2660,7 +2664,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="client"
           maxLength={undefined}
           name="client"
@@ -2687,7 +2691,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <input
           aria-describedby="timeframe-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="timeframe"
           maxLength={undefined}
           name="timeframe"
@@ -2714,7 +2718,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <input
           aria-describedby="roles-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="roles"
           maxLength={undefined}
           name="roles"
@@ -2953,7 +2957,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <input
           aria-describedby="refereeName-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeName"
           maxLength={undefined}
           name="refereeName"
@@ -2980,7 +2984,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <input
           aria-describedby="refereePosition-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereePosition"
           maxLength={undefined}
           name="refereePosition"
@@ -3002,7 +3006,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="refereeEmail"
           maxLength={undefined}
           name="refereeEmail"
@@ -3017,6 +3021,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       <div>
         <input
           checked={false}
+          disabled={false}
           id="refereeContact"
           name="refereeContact"
           onBlur={[Function]}
