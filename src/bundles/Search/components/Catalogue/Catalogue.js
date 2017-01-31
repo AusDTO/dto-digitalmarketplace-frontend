@@ -104,19 +104,22 @@ export class Catalogue extends React.Component {
             {isEmpty(search.results) ? (
               <h4>No results found</h4>
             ) : (
-              search.results.map((result, i) => (
-                <Card {...result} key={i} />
-              ))
+              <div>
+                {search.results.map((result, i) => (
+                  <Card {...result} key={i} />
+                ))}
+
+                <hr/>
+
+                <Pagination
+                  {...pagination}
+                  onClick={(page) => actions.updatePage(page)}
+                  onBack={(page) => actions.updatePage(page)}
+                  onNext={(page) => actions.updatePage(page)}
+                />
+              </div>
             )}
 
-            <hr/>
-
-            <Pagination 
-              {...pagination}
-              onClick={(page) => actions.updatePage(page)}
-              onBack={(page) => actions.updatePage(page)}
-              onNext={(page) => actions.updatePage(page)}
-            />
           </div>
         </article>
       </section>
