@@ -228,6 +228,7 @@ test('without filterSteps', () => {
   const ToolsForm = require('../../../SellerRegistration/components/ToolsForm').default;
   const DisclosuresForm = require('../../../SellerRegistration/components/DisclosuresForm').default;
   const Review = require('../../../SellerRegistration/components/Review').default;
+  const Submit = require('../../../SellerRegistration/components/Submit').default;
   const Finish = require('../../../SellerRegistration/components/Finish').default;
   const FinishProfile = require('../../../SellerRegistration/components/FinishProfile').default;
 
@@ -246,8 +247,8 @@ test('without filterSteps', () => {
       { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
       { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
       { id: 'review', label: 'Review', component: Review, pattern: '/review' },
-      // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
-      { id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
+      { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
+      //{ id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
       { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ];
 
