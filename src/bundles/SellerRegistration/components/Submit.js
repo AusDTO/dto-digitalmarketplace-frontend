@@ -1,6 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+const agreementStyle = {
+    width: '100%',
+    outlineOffset: 0,
+    border: '2px solid #bebebe',
+    borderRadius: 0,
+    backgroundColor: '#fff',
+    padding: '.4rem',
+    height: '14.375rem',
+    overflowY: 'scroll'
+}
+
 const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoriseUrl, email, csrfToken}) => {
     let message;
     const userIsAuthorised = userEmail === email;
@@ -11,7 +22,8 @@ const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoris
             <div>
                 <p>I am the authorised representative of <strong>{name}</strong></p>
                 <a href="/document/masteragreement.pdf">Download Master Agreement</a><br/><br/>
-                <div style={{width:"100%", overflowY: "scroll",height: "300px",border: "2px black solid"}}><p><strong>Master Agreement</strong> <br /><br /><strong>1. Introduction and scope</strong></p>
+
+                <div style={agreementStyle}><p><strong>Master Agreement</strong> <br /><br /><strong>1. Introduction and scope</strong></p>
 <p><br />This <strong>agreement</strong> covers all your interactions in the <strong>Digital Marketplace,</strong> including selling to buyers. This <strong>agreement</strong> also forms part of the terms incorporated into every <strong>Work Order</strong> contract agreed to by you and a <strong>buyer</strong>. </p>
 
 <p>Before you can join the Marketplace as a <strong>registered seller </strong>and join the Marketplace panel as an <strong>active seller</strong> you will need to accept this <strong>agreement</strong>. </p>
