@@ -24,6 +24,7 @@ import ToolsForm            from '../ToolsForm';
 import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../Review';
+import Submit               from '../Submit';
 import Finish               from '../Finish';
 import FinishProfile        from '../FinishProfile';
 
@@ -50,8 +51,8 @@ class Signup extends React.Component {
     { id: 'digital', label: 'Products and services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'review', label: 'Review', component: Review, pattern: '/review' },
-    // { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
-    { id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
+    { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
+    //{ id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
     { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ]
 
@@ -112,7 +113,7 @@ class Signup extends React.Component {
 
   render() {
     const { forms, router, steps = {}, location } = this.props;
-    const applicationValid = (this.steps.length - 1) === Object.keys(steps).length;
+    const applicationValid = true; // (this.steps.length - 1) === Object.keys(steps).length;
     let { services = {} } = forms.domainSelectorForm;
     let { name = '' } = forms.businessDetailsForm;
     let { email = '' } = forms.yourInfoForm;
