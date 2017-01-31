@@ -1,2 +1,5 @@
-import Badges from './Badges';
+import Badges, { titleMap } from './Badges';
 export default Badges;
+export {
+  titleMap
+}

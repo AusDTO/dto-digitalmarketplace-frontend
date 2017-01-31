@@ -1,6 +1,9 @@
+import { titleMap } from '../../../../shared/Badges';
+
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
+import findKey from 'lodash/findKey';
 
 const UPDATE_ROLE     = 'search/role';
 const UPDATE_TYPE     = 'search/type';
@@ -44,6 +47,21 @@ export const scrubState = (state) => {
   }, result);
 }
 
+const convertTypes = (query) => {
+  if (isEmpty(query.type)) {
+    return query;
+  }
+
+  let mappedTypes = Object
+    .keys(query.type)
+    .map(value => findKey(titleMap, (o) => o === value))
+    .reduce((object, type) => {
+      return { ...object, [type]: true}
+    }, {});
+
+  return { ...query, type: mappedTypes }
+}
+
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case UPDATE_ROLE:
@@ -74,7 +92,7 @@ export default function reducer(state = initialState, action = {}) {
         querying: false
       }
     default:
-      return Object.assign({}, initialState, state);
+      return { ...initialState, ...state }
   }
 }
 
@@ -97,6 +115,9 @@ export const search = (type, value) => {
       const { search, form_options = {}, pagination } = getState();
       // Scrub results and querying from query, not valid filters.
       let query = Object.assign({}, scrubState(search), { page: pagination.page });
+
+      // Map type pretty names back to their keys.
+      query = convertTypes(query);
 
       let string = Object.keys(query).reduce((q, key) => {
         let target = query[key];
