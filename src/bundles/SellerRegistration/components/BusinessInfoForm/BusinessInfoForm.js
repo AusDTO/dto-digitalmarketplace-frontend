@@ -55,27 +55,27 @@ class BusinessInfoForm extends BaseForm {
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="2to10"
-                                value="2-10"/>
-                            <label htmlFor="2to10">2-10
+                                id="2to4"
+                                value="2-4"/>
+                            <label htmlFor="2to4">2-4
 
                             </label>
 
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="11to50"
-                                value="11-50"/>
-                            <label htmlFor="11to50">11-50
+                                id="5to19"
+                                value="5-19"/>
+                            <label htmlFor="5to19">5-19
 
                             </label>
 
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="51to200"
-                                value="51-200"/>
-                            <label htmlFor="51to200">51-200
+                                id="20to199"
+                                value="20-199"/>
+                            <label htmlFor="20to199">20-199
 
                             </label>
 
