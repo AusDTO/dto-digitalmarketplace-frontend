@@ -63,7 +63,7 @@ class ProductsForm extends BaseForm {
                   <h2>{`Product ${key+1}`}</h2>
                   <button type="submit" onClick={this.onRemove.bind(this, key)}>Remove</button>
                   <Textfield
-                      model={`${model}.products.${key}.name`}
+                      model={`${model}.products[${key}].name`}
                       name="name"
                       id="name"
                       htmlFor="name"
@@ -74,7 +74,7 @@ class ProductsForm extends BaseForm {
                       }}
                   />
                   <Textarea
-                      model={`${model}.products.${key}.summary`}
+                      model={`${model}.products[${key}].summary`}
                       name="summary"
                       id="summary"
                       controlProps={{limit: 50}}
@@ -86,7 +86,7 @@ class ProductsForm extends BaseForm {
                       validators={{required}}
                   />
                   <Textfield
-                      model={`${model}.products.${key}.website`}
+                      model={`${model}.products[${key}].website`}
                       name="website"
                       id="website"
                       htmlFor="website"
@@ -98,7 +98,7 @@ class ProductsForm extends BaseForm {
                       }}
                   />
                   <Textfield
-                      model={`${model}.products.${key}.pricing`}
+                      model={`${model}.products[${key}].pricing`}
                       name="pricing"
                       id="pricing"
                       htmlFor="pricing"
@@ -110,7 +110,7 @@ class ProductsForm extends BaseForm {
                       }}
                   />
                   <Textfield
-                      model={`${model}.products.${key}.support`}
+                      model={`${model}.products[${key}].support`}
                       name="support"
                       id="support"
                       htmlFor="support"
