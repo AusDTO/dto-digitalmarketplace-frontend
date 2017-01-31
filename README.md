@@ -1,80 +1,40 @@
-## Marketplace Buyer React frontend
+# Marketplace React Frontend
 
-### Getting started for local dev
+Read the documentation
+* [Docs](/docs)
+
+## Getting started
+
+This project is an ejected [CRA](https://github.com/facebookincubator/create-react-app) project, with some heavy modifications to the build scripts to allow integrated and local development
+
+**It is preferred that you use yarn with this project to ensure deterministic builds**
 
 Install yarn
 ```bash
 $ npm i -g yarn
 ```
 
-Install dependencies
+Clone this repositry and install it's dependencies:
 ```bash
 $ yarn install
 ```
 
-Run local environment
-```bash
-$ yarn start
-```
+### Local Development
 
-Run tests
-```bash
-$ yarn test
-```
+The local environment is the basic webpack dev server (watching included), with some baked in routing config to allow easier integration with [React Router v4](https://github.com/ReactTraining/react-router/tree/v4)
 
-### Running the server side rendering service
+To boot up the basic environment run `yarn start`. Navigate to [localhost:3000](http://localhost:3000) and you will be prompted with a list of bundles to preview.
+Bundle is just a fancy term for an entry point.
 
-_Note: This is only needed for server side rendering, not required for local development._
+Another important feature of the local environment is mocks. You have the ability to define an initial state / mock (meant to replicate the servers datamodel). The only caveat is you can only have one mock per entry point and they are cache per run of the start command - as the are included via require at boot up time.
 
-Install dependencies
-```bash
-$ yarn install
-```
+### Integrated Development
 
-Generate the assets
-```bash
-$ yarn build
-```
+The integrated environment is the provides a development build of both assets and the rendering service. This allows us to test local features before they reach an integrated environment.
 
-Run local rendering service
-```bash
-$ yarn server
-```
+This style relies on two commands running: `yarn build:development` and `yarn server:development`, both these tasks come with watchers so you should never need to restart either. The development build command will log out webpack stats and any linter errors into your console as you are working.
+
+The server will load up on port `60000`, this a server side rendering service for React bundles. [Read More]()
 
 
-### Generate production assets
-
-Run:
-```bash
-$ yarn build
-```
-
-### Generate development assets
-
-This is handy when running the server locally for integration.
-
-Run:
-```bash
-$ yarn build:development
-```
-
-This command also accepts the `bundle` argument
-
-```bash
-$ yarn build:development -- --bundle <bundle-slug>
-```
-
-To run a hot reload server run:
-```
-yarn server:development
-```
-
-### Compile only one bundle
-
-Helpful when you're trying to run an isolated bundle.
-
-Run:
-```bash
-$ yarn start -- --bundle <bundle-slug>
-```
-
+Further information about this project can be found in the [docs](/docs).
