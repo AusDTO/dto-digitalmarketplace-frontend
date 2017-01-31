@@ -64,13 +64,14 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
               Min. Daily Price
             </label>
             <input
+              disabled={false}
               id="user-research-minprice"
               name="services.User research.minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value="" />
           </div>
           <div
@@ -80,13 +81,14 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
               Max. Daily Price
             </label>
             <input
+              disabled={false}
               id="user-research-maxprice"
               name="services.User research.maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value="" />
           </div>
         </div>
@@ -105,13 +107,14 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
               Min. Daily Price
             </label>
             <input
+              disabled={false}
               id="content-development-minprice"
               name="services.Content development.minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value="" />
           </div>
           <div
@@ -121,13 +124,14 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
               Max. Daily Price
             </label>
             <input
+              disabled={false}
               id="content-development-maxprice"
               name="services.Content development.maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value="" />
           </div>
         </div>
@@ -146,13 +150,14 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
               Min. Daily Price
             </label>
             <input
+              disabled={false}
               id="content-management-minprice"
               name="services.Content management.minPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value="" />
           </div>
           <div
@@ -162,13 +167,14 @@ exports[`test PricingForm renders price fields when domains are present 1`] = `
               Max. Daily Price
             </label>
             <input
+              disabled={false}
               id="content-management-maxprice"
               name="services.Content management.maxPrice"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value="" />
           </div>
         </div>

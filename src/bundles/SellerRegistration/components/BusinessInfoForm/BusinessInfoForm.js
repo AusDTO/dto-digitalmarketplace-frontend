@@ -142,17 +142,6 @@ class BusinessInfoForm extends BaseForm {
                             <legend>Business purpose</legend>
 
                             <Control.checkbox
-                                model={`${model}.seller_type.product`}
-                                id="product"
-                                name="product"
-                                value="Product"
-                            />
-                            <label htmlFor="product">Product
-                                <p>You provide software, platform or infrastructure as a service</p>
-                            </label>
-
-
-                            <Control.checkbox
                                 model={`${model}.seller_type.nfp_social_enterprise`}
                                 id="nfp-social-enterprise"
                                 name="nfp-social-enterprise"

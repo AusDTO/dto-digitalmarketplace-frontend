@@ -25,7 +25,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled="disabled"
+          disabled={false}
           id="name"
           maxLength={undefined}
           name="name"
@@ -58,7 +58,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby="abn-hint"
           className=""
-          disabled="disabled"
+          disabled={false}
           id="abn"
           maxLength={undefined}
           name="abn"
@@ -108,7 +108,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="website"
           maxLength={undefined}
           name="website"
@@ -130,7 +130,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="linkedin"
           maxLength={undefined}
           name="linkedin"
@@ -157,7 +157,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby="address_line-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="address_line"
           maxLength={undefined}
           name="address.address_line"
@@ -179,7 +179,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="suburb"
           maxLength={undefined}
           name="address.suburb"
@@ -201,7 +201,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="state"
           maxLength={undefined}
           name="address.state"
@@ -223,7 +223,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"
@@ -237,6 +237,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
       </div>
       <input
         checked={false}
+        disabled={false}
         id="travel"
         name="travel"
         onBlur={[Function]}
@@ -289,7 +290,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled="disabled"
+          disabled={false}
           id="name"
           maxLength={undefined}
           name="name"
@@ -322,7 +323,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby="abn-hint"
           className=""
-          disabled="disabled"
+          disabled={false}
           id="abn"
           maxLength={undefined}
           name="abn"
@@ -372,7 +373,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="website"
           maxLength={undefined}
           name="website"
@@ -394,7 +395,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="linkedin"
           maxLength={undefined}
           name="linkedin"
@@ -421,7 +422,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby="address_line-hint"
           className=""
-          disabled={undefined}
+          disabled={false}
           id="address_line"
           maxLength={undefined}
           name="address.address_line"
@@ -443,7 +444,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="suburb"
           maxLength={undefined}
           name="address.suburb"
@@ -465,7 +466,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="state"
           maxLength={undefined}
           name="address.state"
@@ -487,7 +488,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"
@@ -501,6 +502,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
       </div>
       <input
         checked={false}
+        disabled={false}
         id="travel"
         name="travel"
         onBlur={[Function]}
@@ -578,7 +580,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled="disabled"
+          disabled={false}
           id="name"
           maxLength={undefined}
           name="name"
@@ -611,7 +613,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby="abn-hint"
           className=""
-          disabled="disabled"
+          disabled={false}
           id="abn"
           maxLength={undefined}
           name="abn"
@@ -672,7 +674,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="website"
           maxLength={undefined}
           name="website"
@@ -694,7 +696,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="linkedin"
           maxLength={undefined}
           name="linkedin"
@@ -732,7 +734,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby="address_line-hint"
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="address_line"
           maxLength={undefined}
           name="address.address_line"
@@ -754,7 +756,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="suburb"
           maxLength={undefined}
           name="address.suburb"
@@ -776,7 +778,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className=""
-          disabled={undefined}
+          disabled={false}
           id="state"
           maxLength={undefined}
           name="address.state"
@@ -809,7 +811,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <input
           aria-describedby={undefined}
           className="invalid"
-          disabled={undefined}
+          disabled={false}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"
@@ -823,6 +825,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
       </div>
       <input
         checked={false}
+        disabled={false}
         id="travel"
         name="travel"
         onBlur={[Function]}

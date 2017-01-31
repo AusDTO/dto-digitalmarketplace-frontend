@@ -55,11 +55,6 @@ export default [
         description: 'Data science brings analytical rigour and statistical methods to measure quality, improve services and model behaviour. Examples include statistical and scenario modelling and data visualisation.'
     },
     {
-        key: 'products',
-        label: 'Digital products',
-        description: 'Digital products relates to software, platforms or infrastructure provided as a service.'
-    },
-    {
         key: 'emergtech',
         label: 'Emerging technology',
         description: 'Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.'
