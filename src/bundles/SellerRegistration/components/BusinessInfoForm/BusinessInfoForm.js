@@ -168,32 +168,34 @@ class BusinessInfoForm extends BaseForm {
 
                         <fieldset>
                             <legend>If you have previous experience with government, who have you worked with?</legend>
+
+                            <Control.checkbox
+                                model={`${model}.government_experience.no_experience`}
+                                name="no_experience"
+                                id="experience"
+                                value="experience"/>
+                            <label htmlFor="experience">No Government experience</label>
+
                             <Control.checkbox
                                 model={`${model}.government_experience.local`}
                                 name="local_government_experience"
                                 id="local"
                                 value="Local"/>
-                            <label htmlFor="local">Local Government
-
-                            </label>
+                            <label htmlFor="local">Local Government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.state`}
                                 name="state_government_experience"
                                 id="state"
                                 value="state"/>
-                            <label htmlFor="state">State and/or Territory Government
-
-                            </label>
+                            <label htmlFor="state">State and/or Territory Government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.federal`}
                                 name="federal_government_experience"
                                 id="federal"
                                 value="federal"/>
-                            <label htmlFor="federal">Federal Government
-
-                            </label>
+                            <label htmlFor="federal">Federal Government</label>
 
                      
                             
