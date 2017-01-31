@@ -23,6 +23,10 @@
 .autocomplete input {
   width: 100%;
   padding: 1rem;
+  border-top: solid 2px #bbbbbb;
+  border-left: solid 2px #bbbbbb;
+  border-bottom: solid 2px #bbbbbb;
+  border-right: none;
 }
 
 .autocomplete > div {
@@ -32,5 +36,44 @@
 .autocompleteMenu {
   border: 1px solid rgb(59, 153, 252);
   z-index: 999;
+  width: 100%;
+}
+
+.filters {
+  margin: 1.5rem 0;
+}
+
+.filters hr {
+  margin: 0;
+}
+
+.active-filter {
+  border-bottom: solid 6px #17788d;
+}
+
+.filter {
+  display: inline-block;
+  padding-bottom: 0.65rem;
+  font-size: 1rem;
+}
+
+.filter span {
+  font-size: 1.65rem;
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.keyword-search > article > div {
+  width: 100%;
+}
+
+.keyword-search > article:first-of-type {
+  margin-right: 0;
+  width: 85.62178%;
+}
+
+.keyword-search button {
+  padding: 1rem 1rem 0.79rem;
+  margin: 0;
   width: 100%;
 }
