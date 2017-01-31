@@ -152,6 +152,16 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
+                                model={`${model}.seller_type.disability`}
+                                id="disability"
+                                name="disability"
+                                value="Disability"
+                            />
+                            <label htmlFor="recruitment">Australian disability enterprise
+                                <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory" rel="external">Australian disability enterprise register</a>.</p>
+                            </label>
+
+                            <Control.checkbox
                                 model={`${model}.seller_type.recruitment`}
                                 id="recruitment"
                                 name="recruitment"
@@ -160,8 +170,6 @@ class BusinessInfoForm extends BaseForm {
                             <label htmlFor="recruitment">Recruiter 
                                 <p>Your primary purpose is resourcing and you don’t take responsibility for the quality of the work performed by specialists you place.</p>
                             </label>
-                        
-
 
                         </fieldset>
                         
