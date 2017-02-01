@@ -1,5 +1,7 @@
 import { titleMap } from '../../../../shared/Badges';
 
+import { actionTypes as paginationActionTypes } from './pagination';
+
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
@@ -62,9 +64,9 @@ export const convertTypes = (query) => {
   return { ...query, type: mappedTypes }
 }
 
-export const buildQueryString = ({ search = {}, pagination = { page: 1 } } = {}) => {
+export const buildQueryString = ({ search = {}, pagination = {} } = {}) => {
   // Scrub results and querying from query, not valid filters.
-  let query = { ...scrubState(search), page: pagination.page }
+  let query = { ...scrubState(search), ...pagination }
 
   // Map type pretty names back to their keys.
   query = convertTypes(query);
@@ -82,32 +84,34 @@ export const buildQueryString = ({ search = {}, pagination = { page: 1 } } = {})
 }
 
 export default function reducer(state = initialState, action = {}) {
-  switch (action.type) {
+  const { result, type: actionType, value } = action;
+  switch (actionType) {
     case UPDATE_ROLE:
       const role = {
         ...state.role,
-        [action.value]: !state.role[action.value]
+        [value]: !state.role[value]
       };
       
       return Object.assign({}, state, { role });
     case UPDATE_TYPE:
       const type = {
         ...state.type,
-        [action.value]: !state.type[action.value]
+        [value]: !state.type[value]
       };
       
       return Object.assign({}, state, { type });
     case UPDATE_KEYWORD:
-      return Object.assign({}, state, { keyword: action.value });
+      return Object.assign({}, state, { keyword: value });
     case PRE_SEARCH:
       return {
         ...state,
         querying: true
       };
     case SYNC_RESULTS:
+      const { results } = result.search;
       return {
         ...state,
-        results: action.result,
+        results,
         querying: false
       }
     default:
@@ -115,7 +119,7 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export const syncResults = (result) => ({ type: SYNC_RESULTS, result });
+export const syncResult = (result) => ({ type: SYNC_RESULTS, result });
 export const preSearch = () => ({ type: PRE_SEARCH });
 
 export const search = (type, value, router) => {
@@ -131,7 +135,15 @@ export const search = (type, value, router) => {
     }
 
     const deb = debounce(() => {
-      const { search, form_options = {}, pagination } = getState();
+      let { search, form_options = {}, pagination } = getState();
+
+      // If we aren't explicitly pressing pagination
+      // Don't pass pagination.
+      if (type !== paginationActionTypes.UPDATE_PAGE) {
+        pagination = {}
+      } else {
+        pagination = { page: pagination.page }
+      }
 
       let queryArray = buildQueryString({ search, pagination });
       let searchString = queryArray.join('&');
@@ -146,7 +158,7 @@ export const search = (type, value, router) => {
         }
       })
       .then(res => res.json())
-      .then(json => dispatch(syncResults(json.results)));
+      .then(json => dispatch(syncResult(json)));
     }, 500);
 
     // Cancel queued requests and enqueue the latest one
