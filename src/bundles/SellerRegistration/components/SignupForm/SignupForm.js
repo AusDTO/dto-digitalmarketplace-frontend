@@ -64,6 +64,7 @@ class SignupForm extends BaseForm {
               model={`${model}.email`}
               name="email"
               id="email"
+              type="email"
               htmlFor="email"
               label="Email address"
               validators={{ required }}

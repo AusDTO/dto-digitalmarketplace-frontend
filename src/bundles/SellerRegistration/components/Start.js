@@ -53,8 +53,7 @@ const Start = ({supplierCode, signup, onClick}) => {
 Start.defaultProps = {
     onClick: () => {
     },
-    signup: '#',
-    supplierCode: '1'
+    signup: '#'
 }
 
 Start.propTypes = {
@@ -64,7 +63,11 @@ Start.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return ownProps
+    return {
+        onClick: ownProps.onClick,
+        signup: ownProps.signup,
+        supplierCode: state.application.supplierCode,
+    }
 }
 
 export {
