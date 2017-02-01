@@ -1,4 +1,4 @@
-import { search } from './search';
+import { search, actionTypes as searchActionTypes } from './search';
 
 const UPDATE_PAGE = 'pagination/page';
 
@@ -9,15 +9,21 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action = {}) {
-  switch (action.type) {
+  const { type, result, value } = action;
+  switch (type) {
     case UPDATE_PAGE:
-      return { ...state, page: action.value }
+      return { ...state, page: value }
+    case searchActionTypes.SYNC_RESULTS:
+      return {
+        ...state,
+        ...result.pagination
+      }
     default:
       return Object.assign({}, initialState, state);
   }
 }
 
-export const updatePage = (value) => search(UPDATE_PAGE, value);
+export const updatePage = (router, value) => search(UPDATE_PAGE, value, router);
 
 export const actionCreators = {
  updatePage

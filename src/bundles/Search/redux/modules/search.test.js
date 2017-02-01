@@ -2,7 +2,13 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import api from '../../../../shared/reduxModules/api';
-import reducer, { actionTypes, actionCreators as actions, scrubState } from './search';
+import reducer, {
+  actionTypes,
+  actionCreators as actions,
+  scrubState,
+  convertTypes,
+  buildQueryString
+} from './search';
 
 const mockResponse = (status, statusText, response) => {
   return new window.Response(response, {
@@ -192,4 +198,55 @@ test('scrubState', () => {
   }
 
   expect(scrubState(state)).toEqual(expectedState);
+});
+
+
+test('convertTypes', () => {
+  const input = {
+    type: {
+      'Indigenous business': true,
+      'Not-for-profit': true,
+      'Start up': true
+    }
+  };
+
+  const output = {
+    type: {
+      indigenous: true,
+      nfp_social_enterprise: true,
+      start_up: true
+    }
+  };
+
+  expect(convertTypes(input)).toEqual(output);
+});
+
+test('buildQueryString', () => {
+  const input = {
+    search: {
+      type: {
+        'Start up': true
+      },
+      role: {
+        'Content Design': true,
+        'Agile Delivery': true
+      },
+      keyword: 'website'
+    },
+    pagination: {
+      page: 1
+    }
+  };
+
+  const output = [
+    'type=start_up',
+    'role=Content Design',
+    'role=Agile Delivery',
+    'keyword=website',
+    'page=1'
+  ];
+
+  expect(buildQueryString(input)).toEqual(output);
+  expect(buildQueryString()).toEqual([]);
+  expect(buildQueryString({})).toEqual([]);
 });

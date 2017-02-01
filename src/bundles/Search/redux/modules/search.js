@@ -1,5 +1,7 @@
 import { titleMap } from '../../../../shared/Badges';
 
+import { actionTypes as paginationActionTypes } from './pagination';
+
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
@@ -47,7 +49,7 @@ export const scrubState = (state) => {
   }, result);
 }
 
-const convertTypes = (query) => {
+export const convertTypes = (query) => {
   if (isEmpty(query.type)) {
     return query;
   }
@@ -62,33 +64,54 @@ const convertTypes = (query) => {
   return { ...query, type: mappedTypes }
 }
 
+export const buildQueryString = ({ search = {}, pagination = {} } = {}) => {
+  // Scrub results and querying from query, not valid filters.
+  let query = { ...scrubState(search), ...pagination }
+
+  // Map type pretty names back to their keys.
+  query = convertTypes(query);
+
+  return Object.keys(query).reduce((q, key) => {
+    let target = query[key];
+    let params = [];
+    if (isObject(target)) {
+      params = Object.keys(target).map((param) => `${key}=${param}`);
+    } else {
+      params = [`${key}=${target}`];
+    }
+    return q.concat(params);
+  }, []);
+}
+
 export default function reducer(state = initialState, action = {}) {
-  switch (action.type) {
+  const { result, type: actionType, value } = action;
+  switch (actionType) {
     case UPDATE_ROLE:
       const role = {
         ...state.role,
-        [action.value]: !state.role[action.value]
+        [value]: !state.role[value]
       };
       
       return Object.assign({}, state, { role });
     case UPDATE_TYPE:
       const type = {
         ...state.type,
-        [action.value]: !state.type[action.value]
+        [value]: !state.type[value]
       };
       
       return Object.assign({}, state, { type });
     case UPDATE_KEYWORD:
-      return Object.assign({}, state, { keyword: action.value });
+      return Object.assign({}, state, { keyword: value });
     case PRE_SEARCH:
       return {
         ...state,
         querying: true
       };
     case SYNC_RESULTS:
+      const { results } = result.search;
       return {
         ...state,
-        results: action.result,
+        results,
         querying: false
       }
     default:
@@ -96,10 +119,10 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export const syncResults = (result) => ({ type: SYNC_RESULTS, result });
+export const syncResult = (result) => ({ type: SYNC_RESULTS, result });
 export const preSearch = () => ({ type: PRE_SEARCH });
 
-export const search = (type, value) => {
+export const search = (type, value, router) => {
   return (dispatch, getState, { api, debounceQueue }) => {
     dispatch(preSearch());
     // Update either role, type or keyword.
@@ -112,31 +135,30 @@ export const search = (type, value) => {
     }
 
     const deb = debounce(() => {
-      const { search, form_options = {}, pagination } = getState();
-      // Scrub results and querying from query, not valid filters.
-      let query = Object.assign({}, scrubState(search), { page: pagination.page });
+      let { search, form_options = {}, pagination } = getState();
 
-      // Map type pretty names back to their keys.
-      query = convertTypes(query);
+      // If we aren't explicitly pressing pagination
+      // Don't pass pagination.
+      if (type !== paginationActionTypes.UPDATE_PAGE) {
+        pagination = {}
+      } else {
+        pagination = { page: pagination.page }
+      }
 
-      let string = Object.keys(query).reduce((q, key) => {
-        let target = query[key];
-        let params = [];
-        if (isObject(target)) {
-          params = Object.keys(target).map((param) => `${key}=${param}`);
-        } else {
-          params = [`${key}=${target}`];
-        }
-        return q.concat(params);
-      }, []);
+      let queryArray = buildQueryString({ search, pagination });
+      let searchString = queryArray.join('&');
 
-      return api(`${form_options.action}?${string.join('&')}`, {
+      router.replaceWith({
+        search: `?${searchString}`
+      });
+
+      return api(`${form_options.action}?${searchString}`, {
         headers: {
           'Accept': 'application/json'
         }
       })
       .then(res => res.json())
-      .then(json => dispatch(syncResults(json.results)));
+      .then(json => dispatch(syncResult(json)));
     }, 500);
 
     // Cancel queued requests and enqueue the latest one
@@ -146,9 +168,9 @@ export const search = (type, value) => {
   }
 }
 
-export const updateRole     = (e) => search(UPDATE_ROLE, e.target.value);
-export const updateType     = (e) => search(UPDATE_TYPE, e.target.value);
-export const updateKeyword  = (value) => search(UPDATE_KEYWORD, value);
+export const updateRole     = (router, e) => search(UPDATE_ROLE, e.target.value, router);
+export const updateType     = (router, e) => search(UPDATE_TYPE, e.target.value, router);
+export const updateKeyword  = (router, value) => search(UPDATE_KEYWORD, value, router);
 
 export const actionCreators = {
  updateRole,
