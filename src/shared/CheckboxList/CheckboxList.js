@@ -11,7 +11,7 @@ export default ({ id, list = {}, onChange = () => {} }) => (
           type="checkbox"
           name={id}
           id={snakeCase(value)}
-          value={value}
+          defaultValue={value}
           checked={list[value]}
           onChange={onChange}
         />

@@ -137,7 +137,6 @@ export const search = (type, value, router) => {
       let searchString = queryArray.join('&');
 
       router.replaceWith({
-        to: '/',
         search: `?${searchString}`
       });
 

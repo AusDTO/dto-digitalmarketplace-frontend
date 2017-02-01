@@ -13,16 +13,25 @@ export const SearchWidget = (props) => {
   // bit hacky
   const { search = {} } = props;
   let mappedTypes = search.type
+
   if (!isEmpty(search.type)) {
     mappedTypes = Object
       .keys(search.type)
-      .map(type => titleMap[type])
+      .map(type => {
+        return { [titleMap[type]]: search.type[type] }
+      })
       .reduce((object, type) => {
-        return { ...object, [type]: false}
+        return { ...object, ...type}
       }, {});
   }
 
-  const store = createStore({ ...props, search: { ...search, type: mappedTypes } });
+  const store = createStore({
+    ...props,
+    search: {
+      ...search,
+      type: mappedTypes
+    }
+  });
 
   return ({ router, location }) => (
     <Provider store={store}>
