@@ -35,8 +35,28 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
 
-    if (props.filterSteps) {
-      this.steps = this.steps.filter(props.filterSteps);
+    // Allow submit to be controlled by feature flag.
+    // Use same pattern, so the URL can be consistent
+    // Just different messaging/actions.
+    const { options = {}, filterSteps } = props;
+    if (options.submit_registration) {
+      this.steps = this.steps.concat({
+        id: 'submit',
+        label: 'Declaration',
+        component: Submit,
+        pattern: '/submit'
+      });
+    } else {
+      this.steps = this.steps.concat({
+        id: 'finish',
+        label: 'Finish',
+        component: Finish,
+        pattern: '/submit'
+      });
+    }
+
+    if (filterSteps) {
+      this.steps = this.steps.filter(filterSteps);
     }
   }
 
@@ -53,8 +73,6 @@ class Signup extends React.Component {
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
     { id: 'review', label: 'Review', component: Review, pattern: '/review' },
-    { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
-    //{ id: 'finish', label: 'Finish', component: Finish, pattern: '/finish' },
     { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ]
 
@@ -115,7 +133,7 @@ class Signup extends React.Component {
 
   render() {
     const { forms, router, steps = {}, location } = this.props;
-    const applicationValid = true; // (this.steps.length - 1) === Object.keys(steps).length;
+    const applicationValid = (this.steps.length - 1) === Object.keys(steps).length;
     let { services = {} } = forms.domainSelectorForm;
     let { name = '' } = forms.businessDetailsForm;
     let { email = '' } = forms.yourInfoForm;
@@ -206,11 +224,12 @@ Signup.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { application = {}, steps } = state;
+  const { application = {}, steps, options } = state;
   return {
     forms: getStateForms(state),
     application,
     steps,
+    options,
     ...ownProps
   };
 };
