@@ -154,14 +154,42 @@ exports[`test Signup renders 1`] = `
     className="col-xs-12 col-sm-8 col-sm-push-1">
     <div>
       <h1>
-        Get ready for tomorrow’s Marketplace
+        Joining the Marketplace
       </h1>
       <p>
-        In 2017, we’ll be giving you the opportunity to offer lots more services, digital products and showcase your expertise in a streamlined environment.
+        Sign up to the Digital Marketplace so buyers can find your business and you can apply for new opportunities.
       </p>
       <p>
-        You can begin adding more to your seller profile in anticipation of these changes now. It doesn’t matter if you don’t complete all your profile updates in one session, we’ll save as you go.
+        It takes around 30 minutes to complete and your information is saved automatically. 24 hours later, your profile will be visible to government buyers.
       </p>
+      <h2>
+        You\'ll need:
+      </h2>
+      <ul>
+        <li>
+          Your basic business information, for example
+        </li>
+        <li>
+          A financial viability statement from your accountant
+        </li>
+        <li>
+          Proof of worker’s compensation and public liability insurance
+        </li>
+      </ul>
+      <h2>
+        You\'ll be asked to provide:
+      </h2>
+      <ul>
+        <li>
+          Proof of successful projects and past client contact details that will be assessed against 
+          <a
+            href="/assessment-criteria"
+            rel="external"
+            target="_blank">
+            evaluation criteria
+          </a>
+        </li>
+      </ul>
       <p>
         <a
           href="#"
@@ -170,6 +198,11 @@ exports[`test Signup renders 1`] = `
           Start Now 
         </a>
       </p>
+      All activity on the Digital Marketplace is subject to our 
+      <a
+        href="/terms-of-use">
+        Terms of Use.
+      </a>
     </div>
   </article>
 </div>
