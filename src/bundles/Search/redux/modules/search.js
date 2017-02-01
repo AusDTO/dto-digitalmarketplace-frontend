@@ -62,6 +62,24 @@ const convertTypes = (query) => {
   return { ...query, type: mappedTypes }
 }
 
+export const buildQueryString = ({ search, pagination }) => {
+  let query = { ...scrubState(search), page: pagination.page }
+
+  // Map type pretty names back to their keys.
+  query = convertTypes(query);
+
+  return Object.keys(query).reduce((q, key) => {
+    let target = query[key];
+    let params = [];
+    if (isObject(target)) {
+      params = Object.keys(target).map((param) => `${key}=${param}`);
+    } else {
+      params = [`${key}=${target}`];
+    }
+    return q.concat(params);
+  }, []);
+}
+
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case UPDATE_ROLE:
@@ -114,21 +132,12 @@ export const search = (type, value, router) => {
     const deb = debounce(() => {
       const { search, form_options = {}, pagination } = getState();
       // Scrub results and querying from query, not valid filters.
-      let query = Object.assign({}, scrubState(search), { page: pagination.page });
+      let string = buildQueryString({ search, pagination });
 
-      // Map type pretty names back to their keys.
-      query = convertTypes(query);
-
-      let string = Object.keys(query).reduce((q, key) => {
-        let target = query[key];
-        let params = [];
-        if (isObject(target)) {
-          params = Object.keys(target).map((param) => `${key}=${param}`);
-        } else {
-          params = [`${key}=${target}`];
-        }
-        return q.concat(params);
-      }, []);
+      router.replaceWith({
+        to: '/',
+        search: `?${string.join('&')}`
+      });
 
       return api(`${form_options.action}?${string.join('&')}`, {
         headers: {
