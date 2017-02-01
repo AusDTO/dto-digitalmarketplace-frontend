@@ -247,6 +247,6 @@ test('buildQueryString', () => {
   ];
 
   expect(buildQueryString(input)).toEqual(output);
-  expect(buildQueryString()).toEqual(['page=1']);
-  expect(buildQueryString({})).toEqual(['page=1']);
+  expect(buildQueryString()).toEqual([]);
+  expect(buildQueryString({})).toEqual([]);
 });
