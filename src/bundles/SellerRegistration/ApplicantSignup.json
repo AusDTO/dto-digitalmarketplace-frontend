@@ -62,7 +62,7 @@
     "conflicts_of_interest": false,
     "conflicts_of_interest_details": ""
   },
-  "form_options": {
-    "action": "/documents"
+  "options": {
+    "submit_registration": true
   }
 }
