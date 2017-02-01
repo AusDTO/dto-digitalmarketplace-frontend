@@ -47,7 +47,7 @@ export const scrubState = (state) => {
   }, result);
 }
 
-const convertTypes = (query) => {
+export const convertTypes = (query) => {
   if (isEmpty(query.type)) {
     return query;
   }
@@ -62,7 +62,8 @@ const convertTypes = (query) => {
   return { ...query, type: mappedTypes }
 }
 
-export const buildQueryString = ({ search, pagination }) => {
+export const buildQueryString = ({ search = {}, pagination = { page: 1 } } = {}) => {
+  // Scrub results and querying from query, not valid filters.
   let query = { ...scrubState(search), page: pagination.page }
 
   // Map type pretty names back to their keys.
@@ -131,15 +132,16 @@ export const search = (type, value, router) => {
 
     const deb = debounce(() => {
       const { search, form_options = {}, pagination } = getState();
-      // Scrub results and querying from query, not valid filters.
-      let string = buildQueryString({ search, pagination });
+
+      let queryArray = buildQueryString({ search, pagination });
+      let searchString = queryArray.join('&');
 
       router.replaceWith({
         to: '/',
-        search: `?${string.join('&')}`
+        search: `?${searchString}`
       });
 
-      return api(`${form_options.action}?${string.join('&')}`, {
+      return api(`${form_options.action}?${searchString}`, {
         headers: {
           'Accept': 'application/json'
         }
