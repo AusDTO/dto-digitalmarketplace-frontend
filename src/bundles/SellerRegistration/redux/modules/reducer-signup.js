@@ -94,7 +94,7 @@ export default combineReducers({
         }
     },
     productsForm: {
-      products: []
+      products: {}
     }
   })
 })
