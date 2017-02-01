@@ -99,7 +99,7 @@ export default function reducer(state = initialState, action = {}) {
 export const syncResults = (result) => ({ type: SYNC_RESULTS, result });
 export const preSearch = () => ({ type: PRE_SEARCH });
 
-export const search = (type, value) => {
+export const search = (type, value, router) => {
   return (dispatch, getState, { api, debounceQueue }) => {
     dispatch(preSearch());
     // Update either role, type or keyword.
@@ -146,9 +146,9 @@ export const search = (type, value) => {
   }
 }
 
-export const updateRole     = (e) => search(UPDATE_ROLE, e.target.value);
-export const updateType     = (e) => search(UPDATE_TYPE, e.target.value);
-export const updateKeyword  = (value) => search(UPDATE_KEYWORD, value);
+export const updateRole     = (router, e) => search(UPDATE_ROLE, e.target.value, router);
+export const updateType     = (router, e) => search(UPDATE_TYPE, e.target.value, router);
+export const updateKeyword  = (router, value) => search(UPDATE_KEYWORD, value, router);
 
 export const actionCreators = {
  updateRole,

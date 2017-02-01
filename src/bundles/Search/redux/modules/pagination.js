@@ -17,7 +17,7 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export const updatePage = (value) => search(UPDATE_PAGE, value);
+export const updatePage = (router, value) => search(UPDATE_PAGE, value, router);
 
 export const actionCreators = {
  updatePage

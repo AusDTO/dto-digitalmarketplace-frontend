@@ -22,10 +22,11 @@ export const SearchWidget = (props) => {
       }, {});
   }
 
-  const store = createStore({ ...props, search: { ...search, type: mappedTypes } })
-  return (
+  const store = createStore({ ...props, search: { ...search, type: mappedTypes } });
+
+  return ({ router, location }) => (
     <Provider store={store}>
-      <Catalogue />
+      <Catalogue router={router} />
     </Provider>
   )
 }
