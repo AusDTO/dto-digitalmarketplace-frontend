@@ -55,27 +55,27 @@ class BusinessInfoForm extends BaseForm {
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="2to10"
-                                value="2-10"/>
-                            <label htmlFor="2to10">2-10
+                                id="2to4"
+                                value="2-4"/>
+                            <label htmlFor="2to4">2-4
 
                             </label>
 
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="11to50"
-                                value="11-50"/>
-                            <label htmlFor="11to50">11-50
+                                id="5to19"
+                                value="5-19"/>
+                            <label htmlFor="5to19">5-19
 
                             </label>
 
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="51to200"
-                                value="51-200"/>
-                            <label htmlFor="51to200">51-200
+                                id="20to199"
+                                value="20-199"/>
+                            <label htmlFor="20to199">20-199
 
                             </label>
 
@@ -152,6 +152,16 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
+                                model={`${model}.seller_type.disability`}
+                                id="disability"
+                                name="disability"
+                                value="Disability"
+                            />
+                            <label htmlFor="recruitment">Australian disability enterprise
+                                <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory" rel="external">Australian disability enterprise register</a>.</p>
+                            </label>
+
+                            <Control.checkbox
                                 model={`${model}.seller_type.recruitment`}
                                 id="recruitment"
                                 name="recruitment"
@@ -160,40 +170,40 @@ class BusinessInfoForm extends BaseForm {
                             <label htmlFor="recruitment">Recruiter 
                                 <p>Your primary purpose is resourcing and you don’t take responsibility for the quality of the work performed by specialists you place.</p>
                             </label>
-                        
-
 
                         </fieldset>
                         
 
                         <fieldset>
                             <legend>If you have previous experience with government, who have you worked with?</legend>
+
+                            <Control.checkbox
+                                model={`${model}.government_experience.no_experience`}
+                                name="no_experience"
+                                id="experience"
+                                value="experience"/>
+                            <label htmlFor="experience">No Government experience</label>
+
                             <Control.checkbox
                                 model={`${model}.government_experience.local`}
                                 name="local_government_experience"
                                 id="local"
                                 value="Local"/>
-                            <label htmlFor="local">Local Government
-
-                            </label>
+                            <label htmlFor="local">Local Government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.state`}
                                 name="state_government_experience"
                                 id="state"
                                 value="state"/>
-                            <label htmlFor="state">State and/or Territory Government
-
-                            </label>
+                            <label htmlFor="state">State and/or Territory Government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.federal`}
                                 name="federal_government_experience"
                                 id="federal"
                                 value="federal"/>
-                            <label htmlFor="federal">Federal Government
-
-                            </label>
+                            <label htmlFor="federal">Federal Government</label>
 
                      
                             

@@ -125,3 +125,8 @@
 .content-table tbody tr:nth-child(odd) {
   background-color: #f0f3f5;
 }
+
+.product-heading {
+  font-size: 1.625rem;
+  margin-top: 1rem;
+}
