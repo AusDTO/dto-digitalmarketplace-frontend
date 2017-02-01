@@ -3,7 +3,8 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 
-import SimpleAccordion from '../SimpleAccordion';
+import SimpleAccordion  from '../SimpleAccordion';
+import Alert            from '../Alert';
 
 import styles from './SellerProfile.css'; // eslint-disable-line no-unused-vars
 
@@ -28,6 +29,7 @@ const Body = (props) => {
     boards = [],
     public_profile,
     prices = [],
+    products = [],
     CaseStudyLink = () => null,
   } = props;
 
@@ -71,6 +73,35 @@ const Body = (props) => {
           )
         })}
         </ul>
+      </Row>
+
+      <Row title="Digital products" show={!isEmpty(products)}>
+        <Alert type="info">
+          The products below are not assessed or endorsed by the Digital Marketplace. 
+        </Alert>
+
+        {products.map((product, i) => (
+          <div key={`product.${i}`}>
+            <div className="col-xs-12">
+              <h3 styleName="styles.product-heading">
+                <a style={{ display: 'inline' }} href={product.website} rel="external">{product.name}</a>
+              </h3>
+            </div>
+            <div className="col-xs-12 col-sm-7">
+              <p className="freetext">
+                {product.summary}
+              </p>
+            </div>
+            <div className="col-xs-12 col-sm-5">
+              <p>
+                <a style={{ display: 'inline' }} href={product.pricing} rel="external">Product pricing</a>
+              </p>
+              <p>
+                <a style={{ display: 'inline' }} href={product.support} rel="external">Product support</a>
+              </p>
+            </div>
+          </div>
+        ))}
       </Row>
 
       <Row title="Pricing" show={!isEmpty(prices)}>

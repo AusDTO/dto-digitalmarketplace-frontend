@@ -85,6 +85,9 @@ export class Catalogue extends React.Component {
                 list={search.role}
                 onChange={actions.updateRole} 
               />
+
+              <hr/>
+
               <CheckboxList 
                 id="type" 
                 list={search.type}
