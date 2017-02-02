@@ -16,7 +16,7 @@ const ReviewHeader = (props) => {
     contact_name,
     contact_phone,
     contact_email,
-    number_of_employees,
+    linkedin,
     public_profile
   } = props;
 
@@ -42,19 +42,10 @@ const ReviewHeader = (props) => {
 
           <div className="row" styleName="styles.meta-row">
             <div className="col-xs-12 col-sm-3">
-              <h4>Company Size</h4>
-            </div>
-            <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <p>{number_of_employees}</p>
-            </div>
-          </div>
-
-          <div className="row" styleName="styles.meta-row">
-            <div className="col-xs-12 col-sm-3">
               <h4>Website</h4>
             </div>
             <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <p><a href={website} rel="external">{website}</a></p>
+              <p><a href={website} rel="external" styleName="external-link">{website}</a></p>
             </div>
           </div>
 
@@ -64,7 +55,18 @@ const ReviewHeader = (props) => {
                 <h4>Twitter</h4>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p><a href={twitter} rel="external">{twitter}</a></p>
+                <p><a href={twitter} rel="external" styleName="external-link">{twitter}</a></p>
+              </div>
+            </div>
+          )}
+
+          {linkedin && (
+            <div className="row" styleName="styles.meta-row">
+              <div className="col-xs-12 col-sm-3">
+                <h4>LinkedIn</h4>
+              </div>
+              <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                <p><a href={linkedin} rel="external" styleName="external-link">{linkedin}</a></p>
               </div>
             </div>
           )}
@@ -85,7 +87,7 @@ const ReviewHeader = (props) => {
                 <p>
                   {contact_name}<br/>
                   {contact_phone}<br/>
-                  <a href={`mailto:${contact_email}`}>{contact_email}</a>
+                  <a href={`mailto:${contact_email}`} styleName="external-link">{contact_email}</a>
                 </p>
               </div>
             </div>
@@ -98,7 +100,7 @@ const ReviewHeader = (props) => {
               <span className="seller-profile__tile-title" styleName="tile-title">Business contact</span>
               <b>{contact_name}</b>
               <p>{contact_phone}</p>
-              <a href={`mailto:${contact_email}`} role="button">Email seller</a>
+              <a href={`mailto:${contact_email}`} role="button" styleName="external-link">Email seller</a>
             </div>
           </article>
         )}

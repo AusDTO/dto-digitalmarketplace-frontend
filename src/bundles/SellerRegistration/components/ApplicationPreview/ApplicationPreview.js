@@ -50,7 +50,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       services: provides,
       case_studies,
       travel: interstate,
-      number_of_employees,
+      linkedin,
       local_government_experience,
       state_government_experience,
       federal_government_experience,
@@ -98,7 +98,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           contact_email,
           contact_phone,
           contact_name,
-          number_of_employees,
+          linkedin,
           public_profile
         },
         body: {
@@ -112,7 +112,6 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
         },
         privateInfo: (disclosures ? {
             case_studies,
-            number_of_employees,
             local_government_experience,
             state_government_experience,
             federal_government_experience,
