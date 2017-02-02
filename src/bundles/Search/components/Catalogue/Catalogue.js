@@ -96,20 +96,28 @@ export class Catalogue extends React.Component {
           </aside>
           <div className="col-xs-12 col-sm-8">
 
-            <article styleName="filters">
-              <strong styleName="active-filter filter">
-                <span>{search.results.length}</span> Sellers found
-              </strong>
-              <hr/>
-            </article>
-
             {isEmpty(search.results) ? (
-              <h4>No results found</h4>
+              <article>
+                <h2>No exact matches</h2>
+                <p>Try tweaking your search criteria for more results or <a href="" onClick={(e) => {
+                  e.preventDefault();
+                  actions.resetQuery(router);
+                }}>clear all and start again</a>.</p>
+              </article>
             ) : (
               <div>
-                {search.results.map((result, i) => (
-                  <Card {...result} key={i} />
-                ))}
+                <article styleName="filters">
+                  <strong styleName="active-filter filter">
+                    <span>{search.results.length}</span> Sellers found
+                  </strong>
+                  <hr/>
+                </article>
+
+                <article>
+                  {search.results.map((result, i) => (
+                    <Card {...result} key={i} />
+                  ))}
+                </article>
 
                 <hr/>
 

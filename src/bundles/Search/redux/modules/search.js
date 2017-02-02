@@ -12,6 +12,7 @@ const UPDATE_TYPE     = 'search/type';
 const UPDATE_KEYWORD  = 'search/keyword';
 const SYNC_RESULTS    = 'search/results';
 const PRE_SEARCH      = 'search/pre';
+const RESET_QUERY     = 'search/reset';
 
 const initialState = {
   role: {},
@@ -47,6 +48,19 @@ export const scrubState = (state) => {
 
     return { ...obj, [key]: pruned }
   }, result);
+}
+
+export const falseValues = (target) => {
+
+  if (isObject(target)) {
+    return Object
+      .keys(target)
+      .reduce((result, key) => {
+        return { ...result, [key]: false }
+      }, {});
+  }
+
+  return false;
 }
 
 export const convertTypes = (query) => {
@@ -114,6 +128,13 @@ export default function reducer(state = initialState, action = {}) {
         results,
         querying: false
       }
+    case RESET_QUERY:
+      return {
+        ...state,
+        role: falseValues(state.role),
+        type: falseValues(state.type),
+        keyword: ''
+      }
     default:
       return { ...initialState, ...state }
   }
@@ -168,15 +189,16 @@ export const search = (type, value, router) => {
   }
 }
 
-export const updateRole     = (router, e) => search(UPDATE_ROLE, e.target.value, router);
-export const updateType     = (router, e) => search(UPDATE_TYPE, e.target.value, router);
-export const updateKeyword  = (router, value) => search(UPDATE_KEYWORD, value, router);
+export const updateRole    = (router, e)     => search(UPDATE_ROLE, e.target.value, router);
+export const updateType    = (router, e)     => search(UPDATE_TYPE, e.target.value, router);
+export const updateKeyword = (router, value) => search(UPDATE_KEYWORD, value, router);
+export const resetQuery    = (router)        => search(RESET_QUERY, null, router);
 
 export const actionCreators = {
  updateRole,
  updateType,
  updateKeyword,
-
+ resetQuery,
  search
 };
 
@@ -185,5 +207,6 @@ export const actionTypes = {
   UPDATE_TYPE,
   UPDATE_KEYWORD,
   SYNC_RESULTS,
-  PRE_SEARCH
+  PRE_SEARCH,
+  RESET_QUERY
 };
