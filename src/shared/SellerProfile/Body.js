@@ -12,8 +12,8 @@ import './SellerProfile.css';
 
 const Body = (props) => {
   const {
-    evaluated = { 'Software engineering and Development': true, bar: true },
-    provides,
+    evaluated = {},
+    provides = {},
     case_studies = {},
     representative,
     email,
