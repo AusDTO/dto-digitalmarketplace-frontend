@@ -57,7 +57,7 @@ test('form renders server side with errors', () => {
     }
   }
 
-  let store = createStore(Object.assign({}, sampleState, { _serverContext: {}, form_options, options: { serverRender: true } }))
+  let store = createStore(Object.assign({}, sampleState, { _serverContext: {}, form_options, options: { serverRender: false } }))
   const wrapper = mount(
     <MemoryRouter>
       {({router}) => (
