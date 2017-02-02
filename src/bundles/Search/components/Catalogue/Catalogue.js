@@ -22,10 +22,10 @@ export class Catalogue extends React.Component {
     return (
       <section>
         <article className="row">
-          <div className="col-xs-12 col-sm-3">
+          <div className="col-xs-12 col-sm-4">
             <h2 styleName="heading">Seller catalogue</h2>
           </div>
-          <div className="col-xs-12 col-sm-8 col-sm-push-1" styleName="autocomplete">
+          <div className="col-xs-12 col-sm-8" styleName="autocomplete">
             <form onSubmit={e => e.preventDefault()} styleName="keyword-search">
               <article className="col-xs-10">
                 <label htmlFor="keyword" className="visually-hidden">
