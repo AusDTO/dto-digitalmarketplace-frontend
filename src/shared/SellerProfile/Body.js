@@ -12,8 +12,8 @@ import './SellerProfile.css';
 
 const Body = (props) => {
   const {
-    evaluated = {},
-    provides = {},
+    assessed = [],
+    unassessed = [],
     case_studies = {},
     representative,
     email,
@@ -44,21 +44,21 @@ const Body = (props) => {
   return (
     <article className="seller-profile" styleName={public_profile ? 'full-profile' : ''}>
 
-      <Row title="Services" show={!isEmpty(provides) || !isEmpty(evaluated)}>
+      <Row title="Services" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
 
-        {!isEmpty(evaluated) && (
+        {!isEmpty(assessed) && (
           <div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
             <h4>Approved</h4>
-            {evaluated && Object.keys(evaluated).map((service, i) => (
+            {assessed.map((service, i) => (
               <span key={i}>{service} <Icon value="completed" size={14} /></span>
             ))}
           </div>
         )}
 
-        {!isEmpty(provides) && (
+        {!isEmpty(unassessed) && (
           <div className="seller-profile__provides-badges" styleName="badges provides-badges">
             <h4>To be assessed</h4>
-            {provides && Object.keys(provides).map((service, i) => (
+            {unassessed.map((service, i) => (
               <span key={i}>{service}</span>
             ))}
           </div>
@@ -74,7 +74,7 @@ const Body = (props) => {
         <ul className="list-vertical" styleName="case-study-list">
         {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
-          const isEvaluted = get(evaluated, service); 
+          const isEvaluted = get(assessed, service); 
           const badgeStyleName = isEvaluted ? 'evaluated-badges' : 'provides-badges';
           return (
             <li key={i}>
