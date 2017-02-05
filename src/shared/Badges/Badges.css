@@ -1,14 +1,14 @@
 .badges {
-  margin: 0 0 1.25rem;
+  margin: 0 0 .5rem;
 }
 
 .badges span {
   font-size: 12px;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
-.badges span:first-of-type {
-  margin-left: 0;
+.badges span:last-of-type {
+  margin-right: 0;
 }
 
 .badge__sme {

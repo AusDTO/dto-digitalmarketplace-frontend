@@ -36,7 +36,7 @@ export class Catalogue extends React.Component {
                   inputProps={{
                     name: 'keyword',
                     id: 'keyword',
-                    placeholder: 'Search by company name, role you need or the outcome you’re after'
+                    placeholder: 'Type to search by company name, role you need or the outcome you\'re after'
                   }}
                   items={results.slice(0, 10)}
                   getItemValue={({ name }) => name}

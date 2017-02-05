@@ -1,5 +1,6 @@
 .heading {
   margin-top: 0;
+  margin-bottom: 1rem;
   font-size: 2rem;
 }
 
@@ -22,7 +23,7 @@
 
 .autocomplete input {
   width: 100%;
-  padding: 1rem;
+  padding: 0.75rem;
   border-top: solid 2px #bbbbbb;
   border-left: solid 2px #bbbbbb;
   border-bottom: solid 2px #bbbbbb;
@@ -53,7 +54,6 @@
 
 .filter {
   display: inline-block;
-  padding-bottom: 0.65rem;
   font-size: 1rem;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .keyword-search button {
-  padding: 1rem 1rem 0.79rem;
+  padding: 0.75rem 0.75rem 0.55rem;
   margin: 0;
   width: 100%;
 }
