@@ -77,3 +77,12 @@
   margin: 0;
   width: 100%;
 }
+
+.fadeIn {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+.fadeOut {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
