@@ -36,7 +36,7 @@ export class Catalogue extends React.Component {
                   inputProps={{
                     name: 'keyword',
                     id: 'keyword',
-                    placeholder: 'Search by company name, role you need or the outcome you’re after'
+                    placeholder: 'Type to search by company name, role you need or the outcome you\'re after'
                   }}
                   items={results.slice(0, 10)}
                   getItemValue={({ name }) => name}
@@ -95,9 +95,8 @@ export class Catalogue extends React.Component {
             </form>
           </aside>
           <div className="col-xs-12 col-sm-8">
-
             {isEmpty(search.results) ? (
-              <article>
+              <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                 <h2>No exact matches</h2>
                 <p>Try tweaking your search criteria for more results or <a href="" onClick={(e) => {
                   e.preventDefault();
@@ -105,7 +104,7 @@ export class Catalogue extends React.Component {
                 }}>clear all and start again</a>.</p>
               </article>
             ) : (
-              <div>
+              <div styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                 <article styleName="filters">
                   <strong styleName="active-filter filter">
                     <span>{search.results.length}</span> Sellers found

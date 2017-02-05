@@ -30,7 +30,15 @@
 }
 
 .services span {
-  margin-right: 1.25rem;
+  margin-right: 1.5rem;
   display: inline-block;
   font-size: 14px;
+}
+
+.description {
+  margin: 0;
+}
+
+.products {
+  margin-top: 1.2rem;
 }

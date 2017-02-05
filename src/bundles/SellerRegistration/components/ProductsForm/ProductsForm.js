@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Form, actions} from 'react-redux-form';
-import isArray from 'lodash/isArray';
 import isEmpty from 'lodash/isEmpty';
 import classNames from 'classnames';
 
-import { required } from '../../../../validators';
+import { required, validLinks } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -108,9 +107,10 @@ class ProductsForm extends BaseForm {
                           htmlFor={`website-${index}`}
                           label="Product website link"
                           description="Add a link to your product’s website."
-                          validators={{ required }}
+                          validators={{ required, validLinks }}
                           messages={{
                               required: `Product ${index} website link is required`,
+                              validLinks: `Product ${index} website link must begin with 'http'`,
                           }}
                       />
                       <Textfield
@@ -120,9 +120,10 @@ class ProductsForm extends BaseForm {
                           htmlFor={`pricing-${index}`}
                           label="Product pricing link"
                           description="Add a link to your product’s pricing page."
-                          validators={{ required }}
+                          validators={{ required, validLinks }}
                           messages={{
                               required: `Product ${index} pricing link is required`,
+                              validLinks: `Product ${index} pricing link must begin with 'http'`,
                           }}
                       />
                       <Textfield
@@ -132,9 +133,10 @@ class ProductsForm extends BaseForm {
                           htmlFor={`support-${index}`}
                           label="Product support link"
                           description="Add a link to your product’s support page."
-                          validators={{ required }}
+                          validators={{ required, validLinks }}
                           messages={{
                               required: `Product ${index} support link is required`,
+                              validLinks: `Product ${index} support link must begin with 'http'`,
                           }}
                       />
                     </div>

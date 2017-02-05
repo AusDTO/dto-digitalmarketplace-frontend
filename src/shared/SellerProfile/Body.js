@@ -2,21 +2,23 @@ import React from 'react';
 import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
+import get from 'lodash/get';
 
 import SimpleAccordion  from '../SimpleAccordion';
 import Alert            from '../Alert';
+import Icon             from '../Icon';
 
-import styles from './SellerProfile.css'; // eslint-disable-line no-unused-vars
+import './SellerProfile.css';
 
 const Body = (props) => {
   const {
-    evaluated,
-    provides,
+    assessed = [],
+    unassessed = [],
     case_studies = {},
     representative,
     email,
     phone,
-    linkedin,
+    number_of_employees,
     abn,
     address,
     documents = {},
@@ -29,7 +31,7 @@ const Body = (props) => {
     boards = [],
     public_profile,
     prices = [],
-    products = [],
+    products = {},
     CaseStudyLink = () => null,
   } = props;
 
@@ -40,24 +42,40 @@ const Body = (props) => {
   };
 
   return (
-    <article className="seller-profile" styleName={public_profile ? 'styles.full-profile' : ''}>
-      <Row title="Approved services" show={evaluated}>
-        <div className="seller-profile__evaluated-badges">
-        </div>
-      </Row>
+    <article className="seller-profile" styleName={public_profile ? 'full-profile' : ''}>
 
-      <Row title="To be assessed" show={provides}>
-        <div className="seller-profile__provides-badges" styleName="provides-badges">
-          {provides && Object.keys(provides).map((service, i) => (
-            <span key={i}>{service}</span>
-          ))}
-        </div>
+      <Row title="Services" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
+
+        {!isEmpty(assessed) && (
+          <div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
+            <h4>Approved</h4>
+            {assessed.map((service, i) => (
+              <span key={i}>{service} <Icon value="completed" size={14} /></span>
+            ))}
+          </div>
+        )}
+
+        {!isEmpty(unassessed) && (
+          <div className="seller-profile__provides-badges" styleName="badges provides-badges">
+            <h4>To be assessed</h4>
+            {unassessed.map((service, i) => (
+              <span key={i}>{service}</span>
+            ))}
+          </div>
+        )}
+
+        <p>
+          <a href="">Learn about assessments</a>
+        </p>
+        
       </Row>
 
       <Row title="Case studies" show={!isEmpty(case_studies)}>
-        <ul className="list-vertical" styleName="styles.case-study-list">
+        <ul className="list-vertical" styleName="case-study-list">
         {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
+          const isEvaluted = get(assessed, service); 
+          const badgeStyleName = isEvaluted ? 'evaluated-badges' : 'provides-badges';
           return (
             <li key={i}>
               <article>
@@ -67,7 +85,13 @@ const Body = (props) => {
                 */}
                 <h3><CaseStudyLink id={study}>{title}</CaseStudyLink></h3>
                 <p>{client}</p>
-                <p>{service}</p>
+                <div styleName={`badges ${badgeStyleName}`}>
+                  {isEvaluted ? (
+                    <span>{service} <Icon value="completed" size={14} /></span>
+                  ) : (
+                    <span>{service}</span>
+                  )}
+                </div>
               </article>
             </li>
           )
@@ -80,33 +104,36 @@ const Body = (props) => {
           The products below are not assessed or endorsed by the Digital Marketplace. 
         </Alert>
 
-        {products.map((product, i) => (
-          <div key={`product.${i}`}>
-            <div className="col-xs-12">
-              <h3 styleName="styles.product-heading">
-                <a style={{ display: 'inline' }} href={product.website} rel="external">{product.name}</a>
-              </h3>
+        {Object.keys(products).map((key, i) => {
+          const product = products[key];
+          return (
+            <div key={`product.${i}`}>
+              <div className="col-xs-12">
+                <h3 styleName="product-heading">
+                  <a style={{ display: 'inline' }} href={product.website} rel="external">{product.name}</a>
+                </h3>
+              </div>
+              <div className="col-xs-12 col-sm-7">
+                <p className="freetext">
+                  {product.summary}
+                </p>
+              </div>
+              <div className="col-xs-12 col-sm-5">
+                <p>
+                  <a style={{ display: 'inline' }} href={product.pricing} rel="external">Product pricing</a>
+                </p>
+                <p>
+                  <a style={{ display: 'inline' }} href={product.support} rel="external">Product support</a>
+                </p>
+              </div>
             </div>
-            <div className="col-xs-12 col-sm-7">
-              <p className="freetext">
-                {product.summary}
-              </p>
-            </div>
-            <div className="col-xs-12 col-sm-5">
-              <p>
-                <a style={{ display: 'inline' }} href={product.pricing} rel="external">Product pricing</a>
-              </p>
-              <p>
-                <a style={{ display: 'inline' }} href={product.support} rel="external">Product support</a>
-              </p>
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </Row>
 
       <Row title="Pricing" show={!isEmpty(prices)}>
         <SimpleAccordion title="Reveal rate card for services">
-          <table className="content-table" styleName="styles.content-table">
+          <table className="content-table" styleName="content-table">
             <thead>
               <tr>
                 <th>Roles</th>
@@ -158,10 +185,11 @@ const Body = (props) => {
             { phone && <span>{phone}<br/></span>}
         </p>
 
-        {linkedin && (
-          <p>
-            <a href={linkedin} rel="external">View Linkedin Profile</a>
-          </p>
+        {number_of_employees && (
+          <div>
+            <h4>Company size</h4>
+            <p>{number_of_employees}</p>
+          </div>
         )}
 
         {!isEmpty(address) && (
@@ -175,10 +203,14 @@ const Body = (props) => {
           </div>
         )}
 
-        <h4>ABN</h4>
-        <p>
-          <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external" target="_blank">{abn}</a>
-        </p>
+        {abn && (
+          <div>
+            <h4>ABN</h4>
+            <p>
+              <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external" target="_blank">{abn}</a>
+            </p>
+          </div>
+        )}
 
         {!isEmpty(certifications) && (
           <div>
@@ -201,12 +233,12 @@ const Body = (props) => {
 
       <Row title="Awards" show={!isEmpty(awards)}>
         {awards.map((award, i) => (
-          <h4 key={i}>{award}</h4>
+          <p key={i}>{award}</p>
         ))}
       </Row>
 
       <Row title="Documents" show={!isEmpty(documents)}>
-        <table className="content-table" styleName="styles.content-table">
+        <table className="content-table" styleName="content-table">
           <thead>
             <tr>
               <th>Document type</th>

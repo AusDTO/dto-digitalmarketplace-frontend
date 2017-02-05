@@ -47,10 +47,11 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       contact_email,
       contact_phone,
       contact_name,
-      services: provides,
+      services,
+      domains = {},
       case_studies,
       travel: interstate,
-      number_of_employees,
+      linkedin,
       local_government_experience,
       state_government_experience,
       federal_government_experience,
@@ -88,6 +89,17 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       }
     }
 
+    let { assessed, unassessed } = domains;
+    // If unassessed is falsy, assume we are on preview
+    // Where we just want to show the current selected
+    // services. Filter out falsy services and convert
+    // to an Array to keep type consistent
+    if (!unassessed) {
+      unassessed = Object
+        .keys(services)
+        .filter(key => services[key]);
+    }
+
     return {
         header: {
           name,
@@ -98,11 +110,12 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           contact_email,
           contact_phone,
           contact_name,
-          number_of_employees,
+          linkedin,
           public_profile
         },
         body: {
-          provides,
+          assessed,
+          unassessed,
           case_studies,
           interstate,
           CaseStudyLink: caseStudyLink,
@@ -112,7 +125,6 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
         },
         privateInfo: (disclosures ? {
             case_studies,
-            number_of_employees,
             local_government_experience,
             state_government_experience,
             federal_government_experience,

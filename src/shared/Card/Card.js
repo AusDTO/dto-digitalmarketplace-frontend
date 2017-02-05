@@ -17,7 +17,7 @@ const Card = ({ title, link, badges = {}, description, products = {}, services =
           <Badges badges={badges} />
         </div>
       )}
-      <p>{description}</p>
+      <p styleName="description">{description}</p>
       {/* TODO refactor when products exists
       <div className="products">
         <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
