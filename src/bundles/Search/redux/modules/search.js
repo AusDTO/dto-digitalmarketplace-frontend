@@ -149,12 +149,6 @@ export const search = (type, value, router) => {
     // Update either role, type or keyword.
     dispatch({ type, value });
 
-    // Only on keyword would length be blocking.
-    // TODO Arbitary number
-    if (type === UPDATE_KEYWORD && value.length < 4) {
-      return false;
-    }
-
     const deb = debounce(() => {
       let { search, form_options = {}, pagination } = getState();
 
