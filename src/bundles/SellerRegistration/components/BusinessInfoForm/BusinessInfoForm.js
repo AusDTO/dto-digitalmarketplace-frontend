@@ -157,7 +157,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="disability"
                                 value="Disability"
                             />
-                            <label htmlFor="recruitment">Australian disability enterprise
+                            <label htmlFor="disability">Australian disability enterprise
                                 <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory" rel="external">Australian disability enterprise register</a>.</p>
                             </label>
 
