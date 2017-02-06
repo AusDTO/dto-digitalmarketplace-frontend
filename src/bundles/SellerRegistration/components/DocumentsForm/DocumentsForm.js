@@ -107,7 +107,6 @@ class DocumentsForm extends BaseForm {
                     <p>As part of your assessment we’ll need the following documents.
                         Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG</strong>
                         format.
-                        If you have multiple files for a document, please scan and merge as one upload.
                     </p>
                 </header>
                 <article role="main">

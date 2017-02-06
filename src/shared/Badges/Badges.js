@@ -10,7 +10,7 @@ export const titleMap = {
   recruitment: 'Recruiter',
   sme: 'SME',
   start_up: 'Start up',
-  regional: 'Regional or non-metro based business',
+  disability: 'Australian disability enterprise',
   product: 'Product based business'
 };
 

@@ -12,6 +12,7 @@ const Review = ({match, caseStudyForm, ...rest}) => (
             <div>
                 <h1 tabIndex="-1">Preview your new profile</h1>
                 <p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Marketplace. </p>
+                <p>Once you’re happy we can email a link to this application to your authorised representative so they can complete the legal agreement step.</p>
                 <p>
                     <Link to={`${match.url}/profile`}>Preview your profile</Link>
                 </p>

@@ -28,7 +28,9 @@
             "sme": false,
             "nfp_social_enterprise": false,
             "product": false,
-            "indigenous": false
+            "indigenous": false,
+            "regional": false,
+            "disability": false
         },
         "keyword": null,
         "results": [

@@ -47,7 +47,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       contact_email,
       contact_phone,
       contact_name,
-      services,
+      services = {},
       domains = {},
       case_studies,
       travel: interstate,

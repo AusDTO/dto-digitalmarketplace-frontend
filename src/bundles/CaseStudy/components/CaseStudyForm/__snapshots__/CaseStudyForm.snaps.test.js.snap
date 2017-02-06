@@ -12,7 +12,7 @@ exports[`test CaseStudyForm renders 1`] = `
       </h1>
       <p
         id="header-description">
-        To be successfully evaluated, your case study must meet the 
+        Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria"
@@ -21,6 +21,7 @@ exports[`test CaseStudyForm renders 1`] = `
           assessment criteria
         </a>
       </p>
+      And, you can update your case studies any time before an assessment begins.
     </div>
   </header>
   <article
@@ -107,7 +108,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="roles">
-          What was your business responsible for?
+          What role did your business play?
         </label>
         <p
           className="hint"
@@ -134,7 +135,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="opportunity">
-          Outline the challenge or opportunity
+          Outline the problem or opportunity
         </label>
         <p
           className="hint"
@@ -339,7 +340,7 @@ exports[`test CaseStudyForm renders 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
       </p>
       <div
         className="field">
@@ -430,7 +431,7 @@ exports[`test CaseStudyForm renders 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1068,7 +1069,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
       </h1>
       <p
         id="header-description">
-        To be successfully evaluated, your case study must meet the 
+        Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria"
@@ -1077,6 +1078,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           assessment criteria
         </a>
       </p>
+      And, you can update your case studies any time before an assessment begins.
     </div>
   </header>
   <article
@@ -1163,7 +1165,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="roles">
-          What was your business responsible for?
+          What role did your business play?
         </label>
         <p
           className="hint"
@@ -1190,7 +1192,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="opportunity">
-          Outline the challenge or opportunity
+          Outline the problem or opportunity
         </label>
         <p
           className="hint"
@@ -1395,7 +1397,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
       </p>
       <div
         className="field">
@@ -1486,7 +1488,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1516,7 +1518,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       </h1>
       <p
         id="header-description">
-        To be successfully evaluated, your case study must meet the 
+        Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria"
@@ -1525,6 +1527,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           assessment criteria
         </a>
       </p>
+      And, you can update your case studies any time before an assessment begins.
     </div>
   </header>
   <article
@@ -1560,7 +1563,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <li>
           <a
             href="#roles">
-            You must specify the your business responsibilities
+            You must specify the your business\' role
           </a>
         </li>
         <li>
@@ -1727,7 +1730,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <label
           className="question-heading"
           htmlFor="roles">
-          What was your business responsible for?
+          What role did your business play?
         </label>
         <p
           className="hint"
@@ -1742,7 +1745,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            You must specify the your business responsibilities
+            You must specify the your business\' role
           </span>
         </a>
         <input
@@ -1765,7 +1768,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <label
           className="question-heading"
           htmlFor="opportunity">
-          Outline the challenge or opportunity
+          Outline the problem or opportunity
         </label>
         <p
           className="hint"
@@ -2003,7 +2006,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
       </p>
       <div
         className="field">
@@ -2138,7 +2141,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2164,7 +2167,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
       </h1>
       <p
         id="header-description">
-        To be successfully evaluated, your case study must meet the 
+        Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria"
@@ -2173,6 +2176,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           assessment criteria
         </a>
       </p>
+      And, you can update your case studies any time before an assessment begins.
     </div>
   </header>
   <article
@@ -2264,7 +2268,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="roles">
-          What was your business responsible for?
+          What role did your business play?
         </label>
         <p
           className="hint"
@@ -2291,7 +2295,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="opportunity">
-          Outline the challenge or opportunity
+          Outline the problem or opportunity
         </label>
         <p
           className="hint"
@@ -2496,7 +2500,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
       </p>
       <div
         className="field">
@@ -2587,7 +2591,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2613,7 +2617,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
       </h1>
       <p
         id="header-description">
-        To be successfully evaluated, your case study must meet the 
+        Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria"
@@ -2622,6 +2626,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           assessment criteria
         </a>
       </p>
+      And, you can update your case studies any time before an assessment begins.
     </div>
   </header>
   <article
@@ -2708,7 +2713,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <label
           className="question-heading"
           htmlFor="roles">
-          What was your business responsible for?
+          What role did your business play?
         </label>
         <p
           className="hint"
@@ -2735,7 +2740,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <label
           className="question-heading"
           htmlFor="opportunity">
-          Outline the challenge or opportunity
+          Outline the problem or opportunity
         </label>
         <p
           className="hint"
@@ -2940,7 +2945,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by assessors.  It will not be published anywhere on the Digital Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
       </p>
       <div
         className="field">
@@ -3031,7 +3036,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the assessment overseen by the Digital Transformation Agency.
+          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input

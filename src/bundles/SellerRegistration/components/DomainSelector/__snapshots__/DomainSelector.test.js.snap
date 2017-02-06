@@ -4,16 +4,19 @@ exports[`test DomainSelector renders 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      What will you offer?
+      What services will you offer?
     </h1>
     <p>
-       On top of the services you already offer, select the any additional services and products you wish to provide. For any new ones, you’ll need to add a case study that meets the 
+       Select the digital services you want to provide. You’ll need to provide a case study for each as evidence for 
       <a
         href="/assessment-criteria"
         rel="external"
         target="_blank">
-        assessment criteria
+        evaluation
       </a>
+    </p>
+    <p>
+      If you have any proprietary products you wish to offer you’ll have the opportunity to add them later. 
     </p>
   </header>
   <article
@@ -42,10 +45,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy and Policy" />
+            value="Strategy and policy" />
           <label
             htmlFor="strategy-and-policy">
-            Strategy and Policy
+            Strategy and policy
              
             <p>
               Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.
@@ -63,10 +66,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research and Design" />
+            value="User research and design" />
           <label
             htmlFor="user-research-and-design">
-            User research and Design
+            User research and design
              
             <p>
               User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.
@@ -84,10 +87,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Agile delivery and Governance" />
+            value="Agile delivery and governance" />
           <label
             htmlFor="agile-delivery-and-governance">
-            Agile delivery and Governance
+            Agile delivery and governance
              
             <p>
               Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.
@@ -105,10 +108,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Software engineering and Development" />
+            value="Software engineering and development" />
           <label
             htmlFor="software-engineering-and-development">
-            Software engineering and Development
+            Software engineering and development
              
             <p>
               Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.
@@ -126,10 +129,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Support and Operations" />
+            value="Support and operations" />
           <label
             htmlFor="support-and-operations">
-            Support and Operations
+            Support and operations
              
             <p>
               Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
@@ -147,10 +150,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content and Publishing" />
+            value="Content and publishing" />
           <label
             htmlFor="content-and-publishing">
-            Content and Publishing
+            Content and publishing
              
             <p>
               Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.
@@ -168,10 +171,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change, Training and Transformation" />
+            value="Change, training and transformation" />
           <label
             htmlFor="change-training-and-transformation">
-            Change, Training and Transformation
+            Change, training and transformation
              
             <p>
               Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
@@ -189,10 +192,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Marketing, Communications and Engagement" />
+            value="Marketing, communications and engagement" />
           <label
             htmlFor="marketing-communications-and-engagement">
-            Marketing, Communications and Engagement
+            Marketing, communications and engagement
              
             <p>
               Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
@@ -299,16 +302,19 @@ exports[`test DomainSelector renders with populated fields 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      What will you offer?
+      What services will you offer?
     </h1>
     <p>
-       On top of the services you already offer, select the any additional services and products you wish to provide. For any new ones, you’ll need to add a case study that meets the 
+       Select the digital services you want to provide. You’ll need to provide a case study for each as evidence for 
       <a
         href="/assessment-criteria"
         rel="external"
         target="_blank">
-        assessment criteria
+        evaluation
       </a>
+    </p>
+    <p>
+      If you have any proprietary products you wish to offer you’ll have the opportunity to add them later. 
     </p>
   </header>
   <article
@@ -337,10 +343,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy and Policy" />
+            value="Strategy and policy" />
           <label
             htmlFor="strategy-and-policy">
-            Strategy and Policy
+            Strategy and policy
              
             <p>
               Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.
@@ -358,10 +364,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research and Design" />
+            value="User research and design" />
           <label
             htmlFor="user-research-and-design">
-            User research and Design
+            User research and design
              
             <p>
               User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.
@@ -379,10 +385,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Agile delivery and Governance" />
+            value="Agile delivery and governance" />
           <label
             htmlFor="agile-delivery-and-governance">
-            Agile delivery and Governance
+            Agile delivery and governance
              
             <p>
               Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.
@@ -400,10 +406,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Software engineering and Development" />
+            value="Software engineering and development" />
           <label
             htmlFor="software-engineering-and-development">
-            Software engineering and Development
+            Software engineering and development
              
             <p>
               Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.
@@ -421,10 +427,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Support and Operations" />
+            value="Support and operations" />
           <label
             htmlFor="support-and-operations">
-            Support and Operations
+            Support and operations
              
             <p>
               Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
@@ -442,10 +448,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content and Publishing" />
+            value="Content and publishing" />
           <label
             htmlFor="content-and-publishing">
-            Content and Publishing
+            Content and publishing
              
             <p>
               Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.
@@ -463,10 +469,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change, Training and Transformation" />
+            value="Change, training and transformation" />
           <label
             htmlFor="change-training-and-transformation">
-            Change, Training and Transformation
+            Change, training and transformation
              
             <p>
               Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
@@ -484,10 +490,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Marketing, Communications and Engagement" />
+            value="Marketing, communications and engagement" />
           <label
             htmlFor="marketing-communications-and-engagement">
-            Marketing, Communications and Engagement
+            Marketing, communications and engagement
              
             <p>
               Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.

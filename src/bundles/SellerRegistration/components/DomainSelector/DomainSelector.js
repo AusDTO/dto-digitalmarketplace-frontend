@@ -19,9 +19,9 @@ class DomainSelector extends BaseForm {
     return (
       <Layout>
         <header>
-            <h1 tabIndex="-1">What will you offer?</h1>
-            <p> On top of the services you already offer, select the any additional services and products you wish to provide.
-                For any new ones, you’ll need to add a case study that meets the <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
+            <h1 tabIndex="-1">What services will you offer?</h1>
+            <p> Select the digital services you want to provide. You’ll need to provide a case study for each as evidence for <a href="/assessment-criteria" target="_blank" rel="external">evaluation</a></p>
+            <p>If you have any proprietary products you wish to offer you’ll have the opportunity to add them later. </p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
