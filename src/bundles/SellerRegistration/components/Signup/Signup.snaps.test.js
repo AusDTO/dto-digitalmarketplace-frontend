@@ -5,7 +5,8 @@ jest.mock('../../../../shared/Icon/_getIcons');
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router';
+import { Router as MemoryRouter } from 'react-router-dom';
+import createMemoryHistory from 'history/createMemoryHistory'
 import { actions } from 'react-redux-form';
 import renderer from 'react-test-renderer';
 
@@ -24,13 +25,17 @@ test('Signup renders', () => {
       submit_registration: true
     }
   })
+
+  const history = createMemoryHistory({
+    initialEntries: ['/start'],
+    initialIndex: 0
+  });
+
   const component = renderer.create(
-    <MemoryRouter initialEntries={['/start']} initialIndex={0}>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <Signup router={router} location={location} filterSteps={filterSteps} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <Signup router={history} location={history.location} filterSteps={filterSteps} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -42,15 +47,22 @@ test('Signup renders empty Your Info form', () => {
   let store = createStore({
     options: {
       submit_registration: true
+    },
+    form_options: {
+      action: void 0
     }
   })
+
+  const history = createMemoryHistory({
+    initialEntries: ['/your-info'],
+    initialIndex: 0
+  });
+
   const component = renderer.create(
-    <MemoryRouter initialEntries={['/your-info']} initialIndex={0}>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <Signup router={router} location={location} filterSteps={filterSteps} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <Signup router={history} location={history.location} filterSteps={filterSteps} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -65,13 +77,17 @@ test('Signup renders populated Your Info form', () => {
       submit_registration: true
     }
   }, sampleState))
+
+  const history = createMemoryHistory({
+    initialEntries: ['/your-info'],
+    initialIndex: 0
+  });
+
   const component = renderer.create(
-    <MemoryRouter initialEntries={['/your-info']} initialIndex={0}>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <Signup router={router} location={location} filterSteps={filterSteps} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <Signup router={history} location={history.location} filterSteps={filterSteps} />
+      </Provider>
     </MemoryRouter>
   );
 

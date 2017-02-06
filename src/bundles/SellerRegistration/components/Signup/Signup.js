@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Match, Miss, Link } from 'react-router';
+import { Route, Miss, Link, Switch, matchPath } from 'react-router-dom';
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 
@@ -156,58 +156,68 @@ class Signup extends React.Component {
 
     return (
       <div className="row">
-        <Match pattern="/:route/:subroute?" render={({ params }) => {
-          if (params.subroute !== 'undefined') {
+        <Route path="/:route/:subroute?" render={({ match }) => {
+          const { params = {} } = match;
+          if (params.subroute) {
             return null;
           }
 
           return (
             <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
-              {this.steps.map(({ pattern, label, formKey, id }, i) => (
-                <li key={i}>
-                  <Link to={pattern}>{
-                    ({ isActive, href, onClick }) => (
-                      <a href={href} className={classNames({'is-active is-current': isActive})} onClick={onClick}>
-                        <Icon value={classNames({
-                            'to-do'       : !steps[id] && !isActive,
-                            'completed'   : steps[id] === STATUS.complete && !isActive,
-                            'in-progress' : isActive,
-                          })} size={34} aria-hidden="true"
-                        />
-                        <span>{label}</span>
-                      </a>
-                  )}</Link>
-                </li>
-              ))}
+              {this.steps.map(({ pattern, label, formKey, id }, i) => {
+                const isActive = router.location.pathname === pattern;
+                return (
+                  <li key={i}>
+                    <a 
+                      href={pattern} 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        router.push(pattern);
+                      }} 
+                      className={classNames({'is-active is-current': isActive})}
+                    >
+                      <Icon value={classNames({
+                          'to-do'       : !steps[id] && !isActive,
+                          'completed'   : steps[id] === STATUS.complete && !isActive,
+                          'in-progress' : isActive,
+                        })} size={34} aria-hidden="true"
+                      />
+                      <span>{label}</span>
+                    </a>
+                  </li>
+                )
+              })}
             </LocalNav>
           )
         }} />
 
         <article className={articleClassNames}>
-          {this.steps.map(({pattern, exact, component, label}, i) => (
-            <Match key={i} pattern={pattern} render={(routerProps) => {
-              const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
-              const props = Object.assign({},
-                routerProps, {
-                  applicationValid,
-                  services,
-                  router,
-                  nextRoute: this.nextStep && this.nextStep.pattern,
-                  title: label,
-                  buttonText: 'Save and continue',
-                  actions: {
-                    submitApplication
+          <Switch>
+            {this.steps.map(({pattern, exact, component, label}, i) => (
+              <Route key={i} path={pattern} render={(routerProps) => {
+                const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
+                const props = Object.assign({},
+                  routerProps, {
+                    applicationValid,
+                    services,
+                    router,
+                    nextRoute: this.nextStep && this.nextStep.pattern,
+                    title: label,
+                    buttonText: 'Save and continue',
+                    actions: {
+                      submitApplication
+                    },
+                    name,
+                    email
                   },
-                  name,
-                  email
-                },
-                this.elementProps
-              );
+                  this.elementProps
+                );
 
-              return React.createElement(component, props, children);
-            }} />
-          ))}
-          <Miss  component={NotFound} />
+                return React.createElement(component, props, children);
+              }} />
+            ))}
+            <Route component={NotFound} />
+          </Switch>
         </article>
       </div>
     )

@@ -5,7 +5,7 @@ jest.mock('../../shared/Icon/_getIcons');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 import { ApplicantSignup } from './ApplicantSignupWidget';
 
 

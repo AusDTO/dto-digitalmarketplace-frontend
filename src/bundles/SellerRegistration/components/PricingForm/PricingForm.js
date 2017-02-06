@@ -1,6 +1,6 @@
 import React                from 'react';
 import { connect }          from 'react-redux';
-import { Link }             from 'react-router';
+import { Link }             from 'react-router-dom';
 import { Form, Control }    from 'react-redux-form';
 import isEmpty              from 'lodash/isEmpty';
 import kebabCase            from 'lodash/kebabCase';
@@ -111,7 +111,8 @@ class PricingForm extends BaseForm {
 
 PricingForm.defaultProps = {
   buttonText: 'Save &amp; Continue',
-  title: 'Pricing'
+  title: 'Pricing',
+  services: {}
 }
 
 const mapStateToProps = (state) => {

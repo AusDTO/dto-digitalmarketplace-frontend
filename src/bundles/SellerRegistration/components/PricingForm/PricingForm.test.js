@@ -7,6 +7,9 @@ import { Provider } from 'react-redux'
 import renderer from 'react-test-renderer'
 import configureMockStore from 'redux-mock-store';
 
+import { Router } from 'react-router-dom';
+import createMemoryHistory from 'history/createMemoryHistory'
+
 import PricingForm from './PricingForm'
 import createStore from '../../redux/create-signup'
 
@@ -20,10 +23,13 @@ test('PricingForm renders a notice that domains are required', () => {
     }
   });
 
+  const history = createMemoryHistory();
   const component = renderer.create(
-    <Provider store={store}>
-      <PricingForm services={{}} />
-    </Provider>
+    <Router history={history}>
+      <Provider store={store}>
+        <PricingForm services={{}} />
+      </Provider>
+    </Router>
   );
 
   let tree = component.toJSON();

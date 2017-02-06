@@ -1,6 +1,6 @@
 import React                     from 'react';
 import { connect }               from 'react-redux';
-import { Link, Match, Redirect } from 'react-router';
+import { Link, Route, Redirect } from 'react-router-dom';
 import { actions, Form }  from 'react-redux-form';
 import isEmpty            from 'lodash/isEmpty';
 import kebabCase          from 'lodash/kebabCase';
@@ -119,7 +119,7 @@ class DomainList extends BaseForm {
 
     return (
       <div>
-        <Match pattern={pathname} exactly render={() => (
+        <Route pattern={pathname} exactly render={() => (
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
@@ -235,7 +235,7 @@ class DomainList extends BaseForm {
             </article>
           </Layout>
         )} />
-        <Match pattern={`${pathname}/add/:service`} render={({ params }) => (
+        <Route pattern={`${pathname}/add/:service`} render={({ params }) => (
 
           <CaseStudyForm
             model="casestudy"
@@ -247,7 +247,7 @@ class DomainList extends BaseForm {
           />
 
         )} />
-        <Match pattern={`${pathname}/edit/:id`} render={({ params }) => (
+        <Route pattern={`${pathname}/edit/:id`} render={({ params }) => (
 
           <CaseStudyForm
             model={`caseStudyForm.case_studies.${params.id}`}
@@ -259,7 +259,7 @@ class DomainList extends BaseForm {
           />
 
         )} />
-        <Match pattern={`${pathname}/view/:id?`} render={({ params }) => {
+        <Route pattern={`${pathname}/view/:id?`} render={({ params }) => {
           if (params.id && params.id !== 'undefined') {
             // If `id` is present, load from pre-saved state.
             currentStudy = caseStudyForm.case_studies[params.id];

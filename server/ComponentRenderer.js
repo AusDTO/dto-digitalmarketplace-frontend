@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { ServerRouter, createServerRenderContext } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
 import isEmpty from 'lodash/isEmpty';
 
 export default class ComponentRenderer {
@@ -36,17 +36,13 @@ export default class ComponentRenderer {
     delete props._serverContext;
 
     const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString';
-    const context = createServerRenderContext();
-
-    if (basename) {
-      location = location.replace(basename, '');
-    }
+    const context = {};
 
     return (
       ReactDOMServer[renderMethod](
-        <ServerRouter location={location} context={context} basename={basename}>
+        <StaticRouter location={location} context={context} basename={basename}>
           {this.element.instance(props)}
-        </ServerRouter>
+        </StaticRouter>
       )
     );
   }

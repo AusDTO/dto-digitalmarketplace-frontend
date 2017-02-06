@@ -1,4 +1,4 @@
-jest.mock('react-router');
+jest.mock('react-router-dom');
 jest.mock('../../../../shared/Icon/_getIcons');
 
 import React from 'react';

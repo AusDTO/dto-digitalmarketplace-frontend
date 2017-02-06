@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Match, Link, Redirect } from 'react-router';
+import { Route, Link, Redirect } from 'react-router-dom';
 
 import ApplicationPreview from './ApplicationPreview'
 import ConnectedLink from './ConnectedLink';
@@ -8,7 +8,7 @@ import View from '../../CaseStudy/components/View';
 
 const Review = ({pathname, caseStudyForm, ...rest}) => (
     <div>
-        <Match pattern={pathname} exactly render={() => (
+        <Route pattern={pathname} exactly render={() => (
             <div>
                 <h1 tabIndex="-1">Preview your new profile</h1>
                 <p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Marketplace. </p>
@@ -17,7 +17,7 @@ const Review = ({pathname, caseStudyForm, ...rest}) => (
                 </p>
             </div>
         )}/>
-        <Match 
+        <Route 
             pattern={`${pathname}/profile`}
             exactly
             render={(routerProps) => (
@@ -27,7 +27,7 @@ const Review = ({pathname, caseStudyForm, ...rest}) => (
         />
 
         {/* Slight duplication but need to reconfigure the return link. */}
-        <Match pattern={`${pathname}/profile/case-study/:id`} render={({ params }) => {
+        <Route pattern={`${pathname}/profile/case-study/:id`} render={({ params }) => {
           const currentStudy = caseStudyForm.case_studies[params.id];
           return (
             <div>

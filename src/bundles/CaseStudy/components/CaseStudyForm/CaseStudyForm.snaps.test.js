@@ -4,7 +4,8 @@ jest.mock('react-dom');
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router-dom';
+import { Router as MemoryRouter } from 'react-router-dom';
+import createMemoryHistory from 'history/createMemoryHistory'
 import renderer from 'react-test-renderer';
 
 import CaseStudyForm from './CaseStudyForm';
@@ -13,13 +14,12 @@ import createStore from '../../redux/create';
 
 test('CaseStudyForm renders', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))
+  const history = createMemoryHistory();
   const component = renderer.create(
-    <MemoryRouter>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -32,14 +32,15 @@ test('CaseStudyForm renders with form_options', () => {
     csrf_token: 'sometoken',
     action: '/foo/bar'
   }
+
+  const history = createMemoryHistory();
+
   let store = createStore(Object.assign({}, { _serverContext: {}, form_options }))
   const component = renderer.create(
-    <MemoryRouter>
-      {({ router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -58,14 +59,14 @@ test('CaseStudyForm renders with errors', () => {
     }
   }
 
+  const history = createMemoryHistory();
+
   let store = createStore(Object.assign({}, { _serverContext: {}, form_options }))
   const component = renderer.create(
-    <MemoryRouter>
-      {({ router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -74,14 +75,13 @@ test('CaseStudyForm renders with errors', () => {
 });
 
 test('CaseStudyForm renders with populated fields', () => {
+  const history = createMemoryHistory();
   let store = createStore(Object.assign({}, { _serverContext: {} }, sampleState))
   const component = renderer.create(
-    <MemoryRouter>
-      {({ router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -99,13 +99,14 @@ test('CaseStudyForm renders empty in edit mode', () => {
       returnLink: <a href="http://www.right.back/to/where/you/came/from">Return without saving</a>
     } 
   }))
+
+  const history = createMemoryHistory();
+
   const component = renderer.create(
-    <MemoryRouter>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} mounted={true} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>      
+      <Provider store={store}>
+        <CaseStudyForm router={history} mounted={true} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -115,13 +116,15 @@ test('CaseStudyForm renders empty in edit mode', () => {
 
 test.skip('CaseStudyForm renders an empty reference page', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))
+  const history = createMemoryHistory({
+    initialEntries: ['/reference'],
+    initialIndex: 0
+  });
   const component = renderer.create(
-    <MemoryRouter initialEntries={['/reference']} initialIndex={0}>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -130,14 +133,16 @@ test.skip('CaseStudyForm renders an empty reference page', () => {
 });
 
 test.skip('CaseStudyForm renders an empty reference page in edit mode', () => {
+  const history = createMemoryHistory({
+    initialEntries: ['/reference'],
+    initialIndex: 0
+  });
   let store = createStore(Object.assign({}, { _serverContext: {}, form_options: { mode: 'edit' } }))
   const component = renderer.create(
-    <MemoryRouter initialEntries={['/reference']} initialIndex={0}>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} mounted={true} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} mounted={true} />
+      </Provider>
     </MemoryRouter>
   );
 
@@ -167,14 +172,17 @@ test.skip('CaseStudyForm renders a populated reference page', () => {
     }
   }
 
+  const history = createMemoryHistory({
+    initialEntries: ['/reference'],
+    initialIndex: 0
+  });
+
   let store = createStore(Object.assign({}, { _serverContext: {} }, state))
   const component = renderer.create(
-    <MemoryRouter initialEntries={['/reference']} initialIndex={0}>
-      {({ action, location, router }) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={router} />
+      </Provider>
     </MemoryRouter>
   );
 

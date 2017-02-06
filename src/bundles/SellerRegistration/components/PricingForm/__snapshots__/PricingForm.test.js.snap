@@ -14,10 +14,8 @@ exports[`test PricingForm renders a notice that domains are required 1`] = `
     </p>
     <p>
       <a
-        className=""
         href="/domains"
-        onClick={[Function]}
-        style={Object {}}>
+        onClick={[Function]}>
         Select domains
       </a>
     </p>

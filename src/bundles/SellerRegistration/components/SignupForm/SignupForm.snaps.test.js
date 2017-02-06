@@ -1,11 +1,10 @@
 // FIXME This is a workaround.
 // @see https://github.com/facebook/react/issues/7386
 jest.mock('react-dom');
-//jest.mock('react-router');
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import SignupForm, { Textfield } from './SignupForm';
