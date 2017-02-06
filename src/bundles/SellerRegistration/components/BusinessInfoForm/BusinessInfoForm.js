@@ -28,6 +28,7 @@ class BusinessInfoForm extends BaseForm {
                     <h1 tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
+                    <h2>About your business</h2>
                     <ErrorBox focusOnMount={true} model={model}/>
                     <Form model={model}
                           action={action}
@@ -55,18 +56,9 @@ class BusinessInfoForm extends BaseForm {
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="2to4"
-                                value="2-4"/>
-                            <label htmlFor="2to4">2-4
-
-                            </label>
-
-                            <Control.radio
-                                model={`${model}.number_of_employees`}
-                                name="number_of_employees"
-                                id="5to19"
-                                value="5-19"/>
-                            <label htmlFor="5to19">5-19
+                                id="2to19"
+                                value="2-19"/>
+                            <label htmlFor="2to19">2-19
 
                             </label>
 
@@ -110,8 +102,7 @@ class BusinessInfoForm extends BaseForm {
                                 value="SME"
                             />
                             <label htmlFor="sme">SME
-                                <p>Your business has less than 200 employees and is independent of
-                                    any parent organisation for taxation purposes.</p>
+                                <p>You have less than 200 employees and are independent of any parent organisation for taxation purposes.</p>
                             </label>
 
 
@@ -122,8 +113,7 @@ class BusinessInfoForm extends BaseForm {
                                 value="Indigenous"
                             />
                             <label htmlFor="indigenous">Indigenous
-                                <p>Your business is listed on a directory
-                                    of indigenous businesses, such as Supply Nation.</p>
+                                <p>Your business is listed on a directory of indigenous businesses, such as Supply Nation.</p>
                             </label>
 
 
@@ -133,7 +123,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="regional"
                             />
                             <label htmlFor="regional">
-                                Regional or non-metro based business
+                                Rural or non-metro based business
                             </label>
 
                         </fieldset>
@@ -161,51 +151,47 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory" rel="external">Australian disability enterprise register</a>.</p>
                             </label>
 
-                            <Control.checkbox
-                                model={`${model}.seller_type.recruitment`}
-                                id="recruitment"
-                                name="recruitment"
-                                value="Recruitment"
-                            />
-                            <label htmlFor="recruitment">Recruiter 
-                                <p>Your primary purpose is resourcing and you don’t take responsibility for the quality of the work performed by specialists you place.</p>
-                            </label>
-
                         </fieldset>
                         
 
                         <fieldset>
-                            <legend>If you have previous experience with government, who have you worked with?</legend>
+                            <legend>Have you ever worked with government before?</legend>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.no_experience`}
                                 name="no_experience"
                                 id="experience"
                                 value="experience"/>
-                            <label htmlFor="experience">No Government experience</label>
+                            <label htmlFor="experience">No, we're looking forward to working with government for the first time</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.local`}
                                 name="local_government_experience"
                                 id="local"
                                 value="Local"/>
-                            <label htmlFor="local">Local Government</label>
+                            <label htmlFor="local">Yes, with local government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.state`}
                                 name="state_government_experience"
                                 id="state"
                                 value="state"/>
-                            <label htmlFor="state">State and/or Territory Government</label>
+                            <label htmlFor="state">Yes, with state or territory government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.federal`}
                                 name="federal_government_experience"
                                 id="federal"
                                 value="federal"/>
-                            <label htmlFor="federal">Federal Government</label>
+                            <label htmlFor="federal">Yes, with federal government</label>
 
-                     
+                            <Control.checkbox
+                                model={`${model}.government_experience.international`}
+                                name="international_government_experience"
+                                id="international"
+                                value="international"/>
+                            <label htmlFor="international">Yes, with government outside Australia</label>
+
                             
                             <Textfield
                                 model={`${model}.other_panels`}
@@ -228,7 +214,7 @@ class BusinessInfoForm extends BaseForm {
 }
 
 BusinessInfoForm.defaultProps = {
-  title: 'Select any descriptions that apply to your business'
+  title: 'More about your business'
 }
 
 const mapStateToProps = (state) => {
