@@ -23,12 +23,12 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
   {applications.map((a, i) =>
     <tr key={a.id}>
       <td>{format(new Date(a.created_at), 'YYYY-MM-DD HH:mm')}</td>
-      <td><a href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
+      <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
         {a.supplier_code && (<span className="badge--default">Existing Seller</span>)}</a></td>
       <td>{a.status}</td>
       <td>
         {a.tasks && a.tasks.subtasks.map((t, i) =>
-          <a className={t.status} key={t.key} href={t.link}>{t.summary}</a>
+          <a target="_blank" className={t.status} key={t.key} href={t.link}>{t.summary}</a>
         )}
       </td>
         <td>{ a.status === 'submitted' &&
