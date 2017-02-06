@@ -26,7 +26,12 @@
 .badge__start_up {
   background-color: #152d3b;
 }
-
+.badge__regional {
+  background-color: #000000;
+}
+.badge__disability {
+  background-color: #007554;
+}
 .badge__product {
   background-color: #0A6FB6;
 }
