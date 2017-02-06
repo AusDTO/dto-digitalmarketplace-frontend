@@ -4,7 +4,7 @@ exports[`test YourInfoForm renders 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Check your contacts
+      Contact details
     </h1>
   </header>
   <article
@@ -172,7 +172,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Check your contacts
+      Contact details
     </h1>
   </header>
   <article
@@ -345,7 +345,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
   <header>
     <h1
       tabIndex="-1">
-      Check your contacts
+      Contact details
     </h1>
   </header>
   <article

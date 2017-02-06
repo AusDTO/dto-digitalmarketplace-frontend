@@ -45,8 +45,9 @@ class ProductsForm extends BaseForm {
       <Layout>
         <header>
           <h1 tabIndex="-1">Products</h1>
-          <Alert type="info">Please check if your product is already part of a whole-of-government panel arrangement. If it is, it can’t be included in the Digital Marketplace.</Alert>
-          <p>To add a product to your profile simply share your product name, product summary and add links to extra information for interested buyers. You can add as many products as you like.</p>
+          <p>If you business sells any digital software products, you can now them to your seller profile page.
+              To list any products you have in the Digital Marketplace, add your product name, summary and links to more information for interested buyers.
+              You can add as many products as you like.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>

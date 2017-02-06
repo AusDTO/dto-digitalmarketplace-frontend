@@ -12,7 +12,7 @@ const agreementStyle = {
     overflowY: 'scroll'
 }
 
-const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoriseUrl, email, csrfToken}) => {
+const Submit = ({submitUrl, applicationValid, onClick, name, representative, userEmail, authoriseUrl, email, csrfToken}) => {
     let message;
     const userIsAuthorised = userEmail === email;
     const buttonText = userIsAuthorised ? 'Submit my application' : 'Send email to representative';
@@ -20,7 +20,7 @@ const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoris
     if (userIsAuthorised) {
         message = (
             <div>
-                <p>I am the authorised representative of <strong>{name}</strong></p>
+                <p>Almost there now. All you need to do is review the content to make sure you’re completely happy, then complete the declaration below.</p>
                 <a href="/document/masteragreement.pdf">Download Master Agreement</a><br/><br/>
 
                 <div style={agreementStyle}><p><strong>Master Agreement</strong> <br /><br /><strong>1. Introduction and scope</strong></p>
@@ -335,7 +335,7 @@ const Submit = ({submitUrl, applicationValid, onClick, name, userEmail, authoris
 </div><br/>
                 <form>
                     <fieldset>
-                <input type="checkbox" id="agree"/><label htmlFor="agree">I accept the master agreement</label>
+                        <input type="checkbox" id="agree"/><label htmlFor="agree">I am <strong>{representative}</strong>, the authorised representative of <strong>{name}</strong> and I agree to the terms set out in <a href="/document/masteragreement.pdf">Master Agreement</a> and understand all activity in the Digital Marketplace is subject to the <a href="/terms-of-use">Terms of Use</a>.</label>
                     </fieldset>
                 </form>
             </div>
@@ -377,6 +377,7 @@ Submit.propTypes = {
     applicationValid: React.PropTypes.bool,
     name: React.PropTypes.string,
     email: React.PropTypes.string,
+    representative: React.PropTypes.string,
     userEmail: React.PropTypes.string,
     csrfToken: React.PropTypes.string
 };
@@ -388,6 +389,7 @@ const mapStateToProps = (state, ownProps) => {
         applicationValid: ownProps.applicationValid,
         name: ownProps.name,
         email: ownProps.email,
+        representative: ownProps.representative,
         userEmail: state.form_options.user_email,
         csrfToken: state.form_options.csrf_token
     }

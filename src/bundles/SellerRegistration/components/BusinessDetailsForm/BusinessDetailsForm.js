@@ -28,7 +28,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Check your details</h1>
+                    <h1 tabIndex="-1">Check your business details</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -51,6 +51,7 @@ class BusinessDetailsForm extends BaseForm {
                           id="name"
                           htmlFor="name"
                           label="Business Name"
+                          description="As you would like it shown on the Digital Marketplace."
                           disabled="disabled"
                         />
 

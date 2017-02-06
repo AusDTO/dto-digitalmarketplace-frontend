@@ -8,7 +8,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your details
+          Check your business details
         </h1>
       </header>
       <article
@@ -26,8 +26,13 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               htmlFor="name">
               Business Name
             </label>
+            <p
+              className="hint"
+              id="name-hint">
+              As you would like it shown on the Digital Marketplace.
+            </p>
             <input
-              aria-describedby={undefined}
+              aria-describedby="name-hint"
               className=""
               disabled={false}
               id="name"

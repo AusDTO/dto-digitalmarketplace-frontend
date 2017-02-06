@@ -26,8 +26,7 @@ class ToolsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Tools and methodologies</h1>
-                    <p>To help buyers understand your how you work and get a sense of your culture, please share your
-                        main tools and methodologies.</p>
+                    <p>Give buyers an insight into how you work, and more to search, by sharing your key practices. These questions are optional but can help you stand out.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -49,7 +48,7 @@ class ToolsForm extends BaseForm {
                             name="tools"
                             id="tools"
                             controlProps={{limit: 200}}
-                            label="Tools"
+                            label="Tools (optional)"
                             description="What tools do you use on a day-to-day basis? For example Jira, Basecamp, Digital Service Standard, Sharpies."
                         />
 
@@ -58,7 +57,7 @@ class ToolsForm extends BaseForm {
                             name="methodologies"
                             id="methodologies"
                             controlProps={{limit: 200}}
-                            label="Methodologies"
+                            label="Methodologies (optional)"
                             description="What methodologies form the core of your practice? For example, Kanban, lean, scaled agile (SAFe)."
                         />
 

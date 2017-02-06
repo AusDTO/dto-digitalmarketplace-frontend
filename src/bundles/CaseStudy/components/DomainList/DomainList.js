@@ -110,8 +110,8 @@ class DomainList extends BaseForm {
             <h1 tabIndex="-1">{title}</h1>
           </header>
           <article role="main">
-            <p>You must select some domains before adding case studies.</p>
-            <p><Link to={domainRoute}>Select domains</Link></p>
+            <p>Before you can add any case studies you need to select the services you will offer.</p>
+            <p><Link to={domainRoute}>Select services</Link></p>
           </article>
         </Layout>
       )
@@ -123,12 +123,9 @@ class DomainList extends BaseForm {
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
-              <p>Case studies help government buyers learn more about your expertise and helps them find you through search.<br/><br/>
-
-                You <strong>must</strong> add case studies for new services. We recommended adding case studies for pre-approved services.
-                If you use the same case study for different services, you must demonstrate how it met the
-                &nbsp;<a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for that specific service.
-
+              <p>Need a pep talk? Your case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>, like other tenders.
+                But they’re also much more. Think of them as the beginning of a conversation with hundreds of government buyers from all over Australia.
+                This a space for your stories that could spark all sorts of wonderful and productive relationships.
               </p>
             </header>
             <article role="main">

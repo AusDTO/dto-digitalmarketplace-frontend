@@ -154,20 +154,30 @@ exports[`test Signup renders 1`] = `
     className="col-xs-12 col-sm-8 col-sm-push-1">
     <div>
       <h1>
-        Joining the Marketplace
+        Joining the Digital Marketplace
       </h1>
       <p>
-        Sign up to the Digital Marketplace so buyers can find your business and you can apply for new opportunities.
+        To become a registered seller you need to tell us about your business.
       </p>
       <p>
-        It takes around 30 minutes to complete and your information is saved automatically. 24 hours later, your profile will be visible to government buyers.
+         The information you share will be used to create your seller profile, and later to confirm you meet the 
+        <a
+          href="/assessment-criteria"
+          rel="external"
+          target="_blank">
+          assessment criteria
+        </a>
+         to apply for opportunities.
+      </p>
+      <p>
+         It will take at least 30 minutes. But don’t worry, your information will be saved automatically if you need to come back later.
       </p>
       <h2>
         You\'ll need:
       </h2>
       <ul>
         <li>
-          Your basic business information, for example
+          Your basic business information
         </li>
         <li>
           A financial viability statement from your accountant
@@ -177,17 +187,14 @@ exports[`test Signup renders 1`] = `
         </li>
       </ul>
       <h2>
-        You\'ll be asked to provide:
+        You\'ll be asked to:
       </h2>
       <ul>
         <li>
-          Proof of successful projects and past client contact details that will be assessed against 
-          <a
-            href="/assessment-criteria"
-            rel="external"
-            target="_blank">
-            evaluation criteria
-          </a>
+          Create case studies about past projects and references
+        </li>
+        <li>
+          Accept the Marketplace Master Agreement
         </li>
       </ul>
       <p>
@@ -198,11 +205,6 @@ exports[`test Signup renders 1`] = `
           Start Now 
         </a>
       </p>
-      All activity on the Digital Marketplace is subject to our 
-      <a
-        href="/terms-of-use">
-        Terms of Use.
-      </a>
     </div>
   </article>
 </div>
@@ -367,7 +369,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your contacts
+          Contact details
         </h1>
       </header>
       <article
@@ -694,7 +696,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your contacts
+          Contact details
         </h1>
       </header>
       <article
