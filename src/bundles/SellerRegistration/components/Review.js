@@ -8,7 +8,7 @@ import View from '../../CaseStudy/components/View';
 
 const Review = ({pathname, caseStudyForm, ...rest}) => (
     <div>
-        <Route pattern={pathname} exactly render={() => (
+        <Route path={pathname} exactly render={() => (
             <div>
                 <h1 tabIndex="-1">Preview your new profile</h1>
                 <p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Marketplace. </p>
@@ -18,7 +18,7 @@ const Review = ({pathname, caseStudyForm, ...rest}) => (
             </div>
         )}/>
         <Route 
-            pattern={`${pathname}/profile`}
+            path={`${pathname}/profile`}
             exactly
             render={(routerProps) => (
                 <ApplicationPreview {...routerProps} {...rest}  />
@@ -27,7 +27,7 @@ const Review = ({pathname, caseStudyForm, ...rest}) => (
         />
 
         {/* Slight duplication but need to reconfigure the return link. */}
-        <Route pattern={`${pathname}/profile/case-study/:id`} render={({ params }) => {
+        <Route path={`${pathname}/profile/case-study/:id`} render={({ params }) => {
           const currentStudy = caseStudyForm.case_studies[params.id];
           return (
             <div>

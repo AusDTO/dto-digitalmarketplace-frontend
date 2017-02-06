@@ -119,7 +119,7 @@ class DomainList extends BaseForm {
 
     return (
       <div>
-        <Route pattern={pathname} exactly render={() => (
+        <Route path={pathname} exactly render={() => (
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
@@ -235,7 +235,7 @@ class DomainList extends BaseForm {
             </article>
           </Layout>
         )} />
-        <Route pattern={`${pathname}/add/:service`} render={({ params }) => (
+        <Route path={`${pathname}/add/:service`} render={({ params }) => (
 
           <CaseStudyForm
             model="casestudy"
@@ -247,7 +247,7 @@ class DomainList extends BaseForm {
           />
 
         )} />
-        <Route pattern={`${pathname}/edit/:id`} render={({ params }) => (
+        <Route path={`${pathname}/edit/:id`} render={({ params }) => (
 
           <CaseStudyForm
             model={`caseStudyForm.case_studies.${params.id}`}
@@ -259,7 +259,7 @@ class DomainList extends BaseForm {
           />
 
         )} />
-        <Route pattern={`${pathname}/view/:id?`} render={({ params }) => {
+        <Route path={`${pathname}/view/:id?`} render={({ params }) => {
           if (params.id && params.id !== 'undefined') {
             // If `id` is present, load from pre-saved state.
             currentStudy = caseStudyForm.case_studies[params.id];
