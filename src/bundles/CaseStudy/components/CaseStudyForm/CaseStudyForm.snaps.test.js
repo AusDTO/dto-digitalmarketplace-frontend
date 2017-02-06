@@ -4,7 +4,7 @@ jest.mock('react-dom');
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import CaseStudyForm from './CaseStudyForm';
