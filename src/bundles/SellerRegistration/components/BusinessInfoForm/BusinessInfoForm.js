@@ -118,9 +118,10 @@ class BusinessInfoForm extends BaseForm {
 
 
                             <Control.checkbox
-                                model={`${model}.regional`}
+                                model={`${model}.seller_type.regional`}
                                 id="regional"
                                 name="regional"
+                                value="Regional"
                             />
                             <label htmlFor="regional">
                                 Rural or non-metro based business
