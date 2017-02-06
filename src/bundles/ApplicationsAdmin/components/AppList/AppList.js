@@ -28,7 +28,7 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
       <td>{a.status}</td>
       <td>
         {a.tasks && a.tasks.subtasks.map((t, i) =>
-          <a target="_blank" className={t.status} key={t.key} href={t.link}>{t.summary}</a>
+          <a target="_blank" rel="external" className={t.status} key={t.key} href={t.link}>{t.summary}</a>
         )}
       </td>
         <td>{ a.status === 'submitted' &&
