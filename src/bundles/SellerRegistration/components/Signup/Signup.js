@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 
@@ -108,10 +108,10 @@ class Signup extends React.Component {
   }
 
   get currentStepIndex() {
-    const { location } = this.props;
+    const { router } = this.props;
     return findIndex(this.steps, (step) => {
       let regex = new RegExp(`^${step.pattern}`);  
-      return location.pathname.match(regex);
+      return router.location.pathname.match(regex);
     });
   }
 
@@ -132,7 +132,7 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { forms, router, steps = {}, location } = this.props;
+    const { forms, router, steps = {} } = this.props;
     const applicationValid = (this.steps.length - 1) === Object.keys(steps).length;
     let { services = {} } = forms.domainSelectorForm;
     let { name = '' } = forms.businessDetailsForm;
@@ -145,14 +145,6 @@ class Signup extends React.Component {
         newServices[key] = services[key];
         return newServices;
       }, {});
-
-    let isCaseStudyEditFlow = location.pathname.match(/case-study\/(edit|add)/);
-    let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);
-    let isReviewFlow = location.pathname.match(/profile$/)
-    const articleClassNames = classNames('col-xs-12', {
-      'col-sm-8 col-sm-push-2': isCaseStudyEditFlow,
-      'col-sm-8 col-sm-push-1': !isCaseStudyFlow && !isReviewFlow
-    });
 
     return (
       <div className="row">
@@ -191,34 +183,50 @@ class Signup extends React.Component {
           )
         }} />
 
-        <article className={articleClassNames}>
-          <Switch>
-            {this.steps.map(({pattern, exact, component, label}, i) => (
-              <Route key={i} path={pattern} render={(routerProps) => {
-                const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
-                const props = Object.assign({},
-                  routerProps, {
-                    applicationValid,
-                    services,
-                    router,
-                    nextRoute: this.nextStep && this.nextStep.pattern,
-                    title: label,
-                    buttonText: 'Save and continue',
-                    actions: {
-                      submitApplication
-                    },
-                    name,
-                    email
-                  },
-                  this.elementProps
-                );
+        <Switch>
+          {this.steps.map(({pattern, exact, component, label}, i) => (
+            <Route key={i} path={pattern} render={(routerProps) => {
+              const { location } = router;
+              let isCaseStudyEditFlow = location.pathname.match(/case-study\/(edit|add)/);
+              let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);
+              let isReviewFlow = location.pathname.match(/profile$/)
+              const articleClassNames = classNames('col-xs-12', {
+                'col-sm-8 col-sm-push-2': isCaseStudyEditFlow,
+                'col-sm-8 col-sm-push-1': !isCaseStudyFlow && !isReviewFlow
+              });
 
-                return React.createElement(component, props, children);
-              }} />
-            ))}
-            <Route component={NotFound} />
-          </Switch>
-        </article>
+              console.log('location.pathname', location.pathname, 'isCaseStudyFlow', isCaseStudyFlow);
+              console.log('isCaseStudyEditFlow', isCaseStudyEditFlow, 'isReviewFlow', isReviewFlow);
+              console.log('articleClassNames', articleClassNames, 'loc', this.props.location);
+
+              const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
+              const props = Object.assign({},
+                routerProps, {
+                  applicationValid,
+                  services,
+                  router,
+                  nextRoute: this.nextStep && this.nextStep.pattern,
+                  title: label,
+                  buttonText: 'Save and continue',
+                  actions: {
+                    submitApplication
+                  },
+                  name,
+                  email
+                },
+                this.elementProps
+              );
+
+              const element = React.createElement(component, props, children);
+              return (
+                <article className={articleClassNames}>
+                  {element}
+                </article>
+              )
+            }} />
+          ))}
+          <Route component={NotFound} />
+        </Switch>
       </div>
     )
   }
@@ -226,7 +234,7 @@ class Signup extends React.Component {
 
 Signup.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  location: React.PropTypes.object.isRequired,
+  router: React.PropTypes.object.isRequired,
   applicant: React.PropTypes.object,
   forms: React.PropTypes.object,
   filterSteps: React.PropTypes.func

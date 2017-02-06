@@ -119,7 +119,7 @@ class DomainList extends BaseForm {
 
     return (
       <div>
-        <Route path={pathname} exactly render={() => (
+        <Route path={pathname} exact render={() => (
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
