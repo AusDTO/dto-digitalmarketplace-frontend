@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { actions } from 'react-redux-form';
 import { Router as MemoryRouter } from 'react-router-dom';
-import createMemoryHistory from 'history/createMemoryHistory'
+import createMemoryHistory from 'history/createMemoryHistory';
 
 import CaseStudyForm, { mapStateToProps } from './CaseStudyForm';
 import sampleState from './CaseStudyForm.json';

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
+import createHistory from 'history/createBrowserHistory'
 
 class RegisterComponent {
 
@@ -54,11 +55,15 @@ class RegisterComponent {
 
         initialState = Object.assign({}, initialState, { options });
 
-        let result = this.instance(initialState);
+        const history = createHistory({
+          basename
+        });
+
+        let result = this.instance(initialState, history);
         ReactDOM.render(
-          <BrowserRouter basename={basename}>
+          <Router history={history}>
             {result}
-          </BrowserRouter>,
+          </Router>,
           document.getElementById(`react-bundle-${key}`)
         );
       }

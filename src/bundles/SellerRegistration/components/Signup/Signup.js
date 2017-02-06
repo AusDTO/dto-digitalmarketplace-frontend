@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Miss, Link, Switch, matchPath } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 
@@ -79,20 +79,20 @@ class Signup extends React.Component {
   elementProps = {
     onClick: (e) => {
       e.preventDefault();
-      const { dispatch, router } = this.props;
+      const { dispatch } = this.props;
 
       if (this.step && this.step.id) {
         dispatch(stepComplete(this.step.id));
       }
 
-      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern, this.step));
+      dispatch(stepNextPersist(this.nextStep.pattern, this.step));
     },
     onSubmit: (e) => {
       if (e && 'preventDefault' in e) {
         e.preventDefault();
       }
 
-      const { dispatch, router } = this.props;
+      const { dispatch } = this.props;
 
       if (this.step && this.step.id) {
         dispatch(stepComplete(this.step.id));
@@ -103,7 +103,7 @@ class Signup extends React.Component {
         return;
       }
 
-      dispatch(stepNextPersist(router.transitionTo, this.nextStep.pattern, this.step));
+      dispatch(stepNextPersist(this.nextStep.pattern, this.step));
     },
   }
 
@@ -165,7 +165,7 @@ class Signup extends React.Component {
           return (
             <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
               {this.steps.map(({ pattern, label, formKey, id }, i) => {
-                const isActive = router.location.pathname === pattern;
+                const isActive = location.pathname === pattern;
                 return (
                   <li key={i}>
                     <a 
@@ -226,7 +226,6 @@ class Signup extends React.Component {
 
 Signup.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  router: React.PropTypes.object.isRequired,
   location: React.PropTypes.object.isRequired,
   applicant: React.PropTypes.object,
   forms: React.PropTypes.object,

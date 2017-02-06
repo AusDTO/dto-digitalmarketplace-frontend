@@ -37,7 +37,7 @@ export const preStep = () => ({ type: STEP_PRE });
 export const nextStep = (to) => ({ type: STEP_NEXT, to });
 
 export const submitApplication = () => {
-    return (dispatch, getState, api) => {
+    return (dispatch, getState, { api, router }) => {
         dispatch(preSubmit());
 
         const state = getState();
@@ -77,12 +77,12 @@ export const submitApplication = () => {
     }
 };
 
-export const stepNextPersist = (transition, to, step) => {
-    return (dispatch) => {
+export const stepNextPersist = (to, step) => {
+    return (dispatch, getState, { router }) => {
         return dispatch(submitApplication())
             .then(() => dispatch(preStep()))
             .then(() => dispatch(nextStep(to)))
-            .then(() => transition(to))
+            .then(() => router.push(to))
             .then(() => focusHeading());
     }
 };
