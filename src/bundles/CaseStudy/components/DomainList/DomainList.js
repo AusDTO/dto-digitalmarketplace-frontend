@@ -311,7 +311,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDeleteCaseStudy: (dispatchActions, id) => {
       dispatch(actions.omit('caseStudyForm.case_studies', id));
-      //dispatchActions.submitApplication();
+      dispatchActions.submitApplication();
     },
     linkClick: (to) => {
       dispatch(linkClick(to));
