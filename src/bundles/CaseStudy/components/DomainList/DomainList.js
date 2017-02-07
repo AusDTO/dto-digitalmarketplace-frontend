@@ -307,7 +307,7 @@ const mapDispatchToProps = (dispatch) => {
       const props = Object.assign({}, values, { service })
       dispatch(actions.change(`caseStudyForm.case_studies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
-      dispatch(dispatchActions.submitApplication());
+      dispatchActions.submitApplication();
       router.transitionTo(`${pathname}/view/${id}`);
       dispatch(linkClick());
     },
@@ -319,7 +319,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDeleteCaseStudy: (dispatchActions, id) => {
       dispatch(actions.omit('caseStudyForm.case_studies', id));
-      dispatch(dispatchActions.submitApplication());
+      dispatchActions.submitApplication();
     },
     linkClick: () => {
       dispatch(linkClick());

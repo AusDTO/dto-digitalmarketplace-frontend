@@ -77,13 +77,19 @@ export const submitApplication = () => {
     }
 };
 
+export const navigateToStep = (to) => {
+    return (dispatch, getState, { router }) => {
+        dispatch(preStep);
+        dispatch(nextStep(to));
+        router.push(to);
+        focusHeading();
+    }
+}
+
 export const stepNextPersist = (to, step) => {
     return (dispatch, getState, { router }) => {
         return dispatch(submitApplication())
-            .then(() => dispatch(preStep()))
-            .then(() => dispatch(nextStep(to)))
-            .then(() => router.push(to))
-            .then(() => focusHeading());
+            .then(() => navigateToStep(to));
     }
 };
 
@@ -130,7 +136,8 @@ const actionCreators = {
     preStep,
     nextStep,
     stepNextPersist,
-    submitApplication
+    submitApplication,
+    navigateToStep
 };
 
 export {

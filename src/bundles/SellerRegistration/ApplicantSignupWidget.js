@@ -14,7 +14,7 @@ export const ApplicantSignup = (props, history) => {
   };
   return (
     <Provider store={store}>
-      <Signup router={history} location={history.location} filterSteps={filterSteps}/>
+      <Signup filterSteps={filterSteps}/>
     </Provider>
   )
 }
