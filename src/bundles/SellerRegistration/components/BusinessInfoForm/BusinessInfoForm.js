@@ -89,7 +89,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="start-up"
                                 value="Start Up"
                             />
-                            <label htmlFor="start-up">Start up
+                            <label htmlFor="start-up">Start-up
                                 <p>Your business aims to disrupt an established market using technology.
                                     Up to 5 years from business
                                     commencement. Not listed on any stock exchange.</p>
@@ -101,7 +101,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="sme"
                                 value="SME"
                             />
-                            <label htmlFor="sme">SME
+                            <label htmlFor="sme">Small to medium-sized enterprise (SME)
                                 <p>You have less than 200 employees and are independent of any parent organisation for taxation purposes.</p>
                             </label>
 
@@ -116,6 +116,15 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business is listed on a directory of indigenous businesses, such as Supply Nation.</p>
                             </label>
 
+                            <Control.checkbox
+                                model={`${model}.seller_type.disability`}
+                                id="disability"
+                                name="disability"
+                                value="Disability"
+                            />
+                            <label htmlFor="disability">Australian disability enterprise
+                                <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory" rel="external">Australian disability enterprise register</a>.</p>
+                            </label>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.regional`}
@@ -127,11 +136,6 @@ class BusinessInfoForm extends BaseForm {
                                 Rural or non-metro based business
                             </label>
 
-                        </fieldset>
-
-                        <fieldset>
-                            <legend>Business purpose</legend>
-
                             <Control.checkbox
                                 model={`${model}.seller_type.nfp_social_enterprise`}
                                 id="nfp-social-enterprise"
@@ -142,18 +146,7 @@ class BusinessInfoForm extends BaseForm {
                                 <p>An organisation that applies commercial strategies to maximize improvements in human or environmental well-being and reinvests profit to fulfil its mission.</p>
                             </label>
 
-                            <Control.checkbox
-                                model={`${model}.seller_type.disability`}
-                                id="disability"
-                                name="disability"
-                                value="Disability"
-                            />
-                            <label htmlFor="disability">Australian disability enterprise
-                                <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory" rel="external">Australian disability enterprise register</a>.</p>
-                            </label>
-
                         </fieldset>
-                        
 
                         <fieldset>
                             <legend>Have you ever worked with government before?</legend>

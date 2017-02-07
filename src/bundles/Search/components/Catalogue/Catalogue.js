@@ -7,6 +7,7 @@ import isEmpty from 'lodash/isEmpty';
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
 import Icon         from '../../../../shared/Icon';
+import LocalNav     from '../../../../shared/LocalNav';
 
 import Pagination from '../Pagination';
 
@@ -73,8 +74,8 @@ export class Catalogue extends React.Component {
           </div>
         </article>
         <article>
-          <aside className="col-xs-12 col-sm-4" styleName="sidebar">
-            <h4>Filter your results</h4>
+          <h4 className="local-nav-heading">Filter your results</h4>
+          <LocalNav className="col-xs-12 col-sm-4" navClassName="filter-navigation" text="Filter your results">
             
             <a href="">Learn more about these services</a>
 
@@ -93,7 +94,7 @@ export class Catalogue extends React.Component {
                 onChange={actions.updateType.bind(null, router)}
               />
             </form>
-          </aside>
+          </LocalNav>
           <div className="col-xs-12 col-sm-8">
             {isEmpty(search.results) ? (
               <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>

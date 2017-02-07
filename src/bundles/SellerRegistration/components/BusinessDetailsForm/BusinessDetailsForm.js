@@ -20,15 +20,21 @@ class BusinessDetailsForm extends BaseForm {
         action: React.PropTypes.string,
         csrf_token: React.PropTypes.string,
         form: React.PropTypes.object.isRequired,
-        returnLink: React.PropTypes.string
+        returnLink: React.PropTypes.string,
+        supplierCode: React.PropTypes.string,
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, form, buttonText, children, onSubmit } = this.props;
+        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit } = this.props;
+        if (supplierCode) {
+            var title = 'Check your business details'
+        } else {
+            var title = 'Tell us about your business'
+        }
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Check your business details</h1>
+                    <h1 tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -155,7 +161,7 @@ class BusinessDetailsForm extends BaseForm {
                           name="travel"
                         />
                         <label htmlFor="travel">
-                            Can travel for regional or interstate opportunities
+                            Happy to travel for regional or interstate opportunities
                         </label>
 
                         {children}
@@ -176,6 +182,7 @@ BusinessDetailsForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
+        supplierCode: (state.application && state.application.supplierCode),
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
         ...formProps(state, 'businessDetailsForm')
     }

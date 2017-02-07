@@ -3,23 +3,18 @@ exports[`test SignupForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Ready to join the Marketplace?
+      There you are!
     </h1>
     <p>
-      We’re looking for the very best digital businesses to help deliver 21st century products and services to government.
+      We’ve been looking for outstanding digital businesses to help deliver 21st century products and services to local, state and federal government through the Digital Marketplace.
     </p>
     <p>
-      If you think you have what it takes, you can apply right here.
-    </p>
-    <p>
-      You’ll be asked to create a profile about your business and, if you meet our 
-      <a
-        href="/assessment-criteria">
-        evaluation criteria
-      </a>
-      , you\'ll be able to do business in the Marketplace.
+      And better still, we’ve streamlined the process so you could be competing for new business within weeks — rather than months.
     </p>
   </header>
+  <h2>
+     Ready to get started?
+  </h2>
   <article
     role="main">
     <form
@@ -78,7 +73,7 @@ exports[`test SignupForm renders 1`] = `
         value="Create your seller account" />
       <p>
         <small>
-          By creating a seller account you agree to the 
+          All activity on the Digital Marketplace is subject to our 
           <a
             href="/terms-of-use">
             Terms of Use
@@ -96,23 +91,18 @@ exports[`test SignupForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Ready to join the Marketplace?
+      There you are!
     </h1>
     <p>
-      We’re looking for the very best digital businesses to help deliver 21st century products and services to government.
+      We’ve been looking for outstanding digital businesses to help deliver 21st century products and services to local, state and federal government through the Digital Marketplace.
     </p>
     <p>
-      If you think you have what it takes, you can apply right here.
-    </p>
-    <p>
-      You’ll be asked to create a profile about your business and, if you meet our 
-      <a
-        href="/assessment-criteria">
-        evaluation criteria
-      </a>
-      , you\'ll be able to do business in the Marketplace.
+      And better still, we’ve streamlined the process so you could be competing for new business within weeks — rather than months.
     </p>
   </header>
+  <h2>
+     Ready to get started?
+  </h2>
   <article
     role="main">
     <form
@@ -176,7 +166,7 @@ exports[`test SignupForm renders with form_options 1`] = `
         value="Create your seller account" />
       <p>
         <small>
-          By creating a seller account you agree to the 
+          All activity on the Digital Marketplace is subject to our 
           <a
             href="/terms-of-use">
             Terms of Use

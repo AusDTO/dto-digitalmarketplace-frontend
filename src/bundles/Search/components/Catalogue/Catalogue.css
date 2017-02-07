@@ -4,11 +4,6 @@
   font-size: 2rem;
 }
 
-.sidebar h4 {
-  margin-top: 0;
-  margin-bottom: 1.25rem;
-}
-
 .autocompleteItem {
   background-color: #fff;
   z-index: 999;
