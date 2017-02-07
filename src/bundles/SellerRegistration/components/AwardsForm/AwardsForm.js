@@ -26,7 +26,8 @@ class AwardsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">{title}</h1>
-                    <p>This section is optional but powerful for helping your business attract potential buyers.</p>
+                    <p>This is your opportunity to share some of the things you’re proud of.
+                        All questions are optional but powerful for helping your business attract potential buyers. </p>
 
                 </header>
                 <article role="main">
@@ -85,7 +86,7 @@ class AwardsForm extends BaseForm {
 }
 
 AwardsForm.defaultProps = {
-    title: 'Select any descriptions that apply to your business'
+    title: 'Awards and accreditations'
 }
 
 const mapStateToProps = (state) => {

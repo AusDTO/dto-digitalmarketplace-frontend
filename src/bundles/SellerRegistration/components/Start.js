@@ -48,7 +48,7 @@ const Start = ({supplierCode, signup, onClick}) => {
                     <li>Accept the Marketplace Master Agreement</li>
                 </ul>
                 <p>
-                    <a role="button" href={signup} onClick={onClick}>Start Now </a>
+                    <a role="button" href={signup} onClick={onClick}>Start now </a>
                 </p>
             </div>
         )

@@ -7,16 +7,16 @@ exports[`test DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-       Select the digital services you want to provide. You’ll need to provide a case study for each as evidence for 
+      Select the digital services you want to provide. You’ll need to provide a case study for each that meets our 
       <a
         href="/assessment-criteria"
         rel="external"
         target="_blank">
-        evaluation
+        assessment criteria
       </a>
     </p>
     <p>
-      If you have any proprietary products you wish to offer you’ll have the opportunity to add them later. 
+      If you have software products to offer, you can add them later. 
     </p>
   </header>
   <article
@@ -305,16 +305,16 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       What services will you offer?
     </h1>
     <p>
-       Select the digital services you want to provide. You’ll need to provide a case study for each as evidence for 
+      Select the digital services you want to provide. You’ll need to provide a case study for each that meets our 
       <a
         href="/assessment-criteria"
         rel="external"
         target="_blank">
-        evaluation
+        assessment criteria
       </a>
     </p>
     <p>
-      If you have any proprietary products you wish to offer you’ll have the opportunity to add them later. 
+      If you have software products to offer, you can add them later. 
     </p>
   </header>
   <article

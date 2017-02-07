@@ -16,15 +16,21 @@ class YourInfoForm extends BaseForm {
   static propTypes = {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired
+    form: React.PropTypes.object.isRequired,
+    supplierCode: React.PropTypes.string
   }
 
   render() {
-    const { action, csrf_token, model, form, buttonText, children, onSubmit } = this.props;
+    const { action, csrf_token, model, supplierCode, form, buttonText, children, onSubmit } = this.props;
+      if (supplierCode) {
+          var title = 'Check your contact details'
+      } else {
+          var title = 'Contact details'
+      }
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1">Contact details</h1>
+          <h1 tabIndex="-1">{title}</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -114,10 +120,6 @@ class YourInfoForm extends BaseForm {
                 }}
             />
 
-
-
-
-
             {children}
 
             <input type="submit" value={buttonText} role="button" />
@@ -135,6 +137,7 @@ YourInfoForm.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
+      supplierCode: (state.application && state.application.supplierCode),
     ...formProps(state, 'yourInfoForm')
   }
 }
