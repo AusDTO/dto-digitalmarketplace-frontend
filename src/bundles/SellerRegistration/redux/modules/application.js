@@ -97,8 +97,9 @@ export const stepNextPersist = (to, step) => {
 };
 
 export const linkClick = (to) => {
-    return (dispatch) => {
+    return (dispatch, getState, { router }) => {
         dispatch({ type: LINK_CLICK, to });
+        router.push(to)
         defer(focusHeading);
     }
 }

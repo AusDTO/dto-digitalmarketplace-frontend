@@ -1,6 +1,6 @@
 import React                     from 'react';
 import { connect }               from 'react-redux';
-import { Link, Route, Redirect } from 'react-router-dom';
+import { Link, Route, Redirect, Switch } from 'react-router-dom';
 import { actions, Form }  from 'react-redux-form';
 import isEmpty            from 'lodash/isEmpty';
 import kebabCase          from 'lodash/kebabCase';
@@ -72,7 +72,7 @@ class DomainList extends BaseForm {
       services,
       title,
       domainRoute,
-      pathname,
+      match = {},
       router,
       buttonText,
       model,
@@ -93,7 +93,7 @@ class DomainList extends BaseForm {
 
     onCaseStudySubmit = onCaseStudySubmit.bind(this, {
       router,
-      pathname,
+      pathname: match.url,
       dispatchActions
     });
 
@@ -118,8 +118,8 @@ class DomainList extends BaseForm {
     };
 
     return (
-      <div>
-        <Route path={pathname} exact render={() => (
+      <Switch>
+        <Route path={match.url} exact render={() => (
           <Layout>
             <header>
               <h1 tabIndex="-1">{title}</h1>
@@ -151,48 +151,41 @@ class DomainList extends BaseForm {
                           return (
                             <li key={`casestudy.${service}.${guid}`} className="bordered-list__item row">
                               <div className="col-xs-6">
-                                <Link to={`${pathname}/edit/${guid}`}>{
-                                  ({ href, id, onClick }) =>
-                                    <a
-                                      href={href}
-                                      id={`edit-${kebabCase(service)}-${i}`}
-                                      onClick={(e) => {
-                                        onEditCaseStudy(study);
-                                        onClick(e);
-                                        linkClick(href);
-                                      }}
-                                      children={study.title}
-                                    />
-                                }</Link>
+                                <a
+                                  href={`${match.url}/edit/${guid}`}
+                                  id={`edit-${kebabCase(service)}-${i}`}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    onEditCaseStudy(study);
+                                    linkClick(`${match.url}/edit/${guid}`);
+                                  }}
+                                  children={study.title}
+                                />
                                 <p key={i}></p>
                               </div>
                               <div className="col-xs-6" style={{textAlign: 'right'}}>
-                                <Link to={`${pathname}/delete/${guid}`}>{
-                                  ({ href, id, onClick }) =>
-                                    <a
-                                      href={href}
-                                      id={`delete-${kebabCase(service)}-${i}`}
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        onDeleteCaseStudy(dispatchActions, guid);
-                                    }}>
-                                      Delete
-                                    </a>
-                                }</Link>
+                                <a
+                                  href={`${match.url}/delete/${guid}`}
+                                  id={`delete-${kebabCase(service)}-${i}`}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    onDeleteCaseStudy(dispatchActions, guid);
+                                }}>
+                                  Delete
+                                </a>
                               </div>
                             </li>
                           )
                         })}
                       </ul>
                     )}
-                    <Link to={`${pathname}/add/${service}`}>{
-                      ({ href, id, onClick }) =>
-                        <a href={href} id={`add-service-${kebabCase(service)}`} onClick={(e) => {
-                          onAddCaseStudy();
-                          onClick(e);
-                          linkClick(href);
-                        }}>Add case study</a>
-                    }</Link>
+                    
+                    <a href={`${match.url}/add/${service}`} id={`add-service-${kebabCase(service)}`} onClick={(e) => {
+                      e.preventDefault();
+                      onAddCaseStudy();
+                      linkClick(`${match.url}/add/${service}`);
+                    }}>Add case study</a>
+                    
                   </section>
                 )
                 
@@ -232,50 +225,50 @@ class DomainList extends BaseForm {
             </article>
           </Layout>
         )} />
-        <Route path={`${pathname}/add/:service`} render={({ params }) => (
+        <Route path={`${match.url}/add/:service`} render={({ match }) => (
 
           <CaseStudyForm
             model="casestudy"
             formName="casestudy"
             buttonText="Save & Preview"
-            service={params.service}
-            returnLink={<ConnectedLink to={pathname}>Return without saving</ConnectedLink>}
-            onSubmit={onCaseStudySubmit.bind(this, params)}
+            service={match.params.service}
+            returnLink={<ConnectedLink to="/case-study">Return without saving</ConnectedLink>}
+            onSubmit={onCaseStudySubmit.bind(this, match.params)}
           />
 
         )} />
-        <Route path={`${pathname}/edit/:id`} render={({ params }) => (
+        <Route path={`${match.url}/edit/:id`} render={({ match }) => (
 
           <CaseStudyForm
-            model={`caseStudyForm.case_studies.${params.id}`}
-            formName={`caseStudyForm.case_studies.${params.id}`}
+            model={`caseStudyForm.case_studies.${match.params.id}`}
+            formName={`caseStudyForm.case_studies.${match.params.id}`}
             mode="edit"
             buttonText="Save & Preview"
-            returnLink={<ConnectedLink to={pathname}>Return without saving</ConnectedLink>}
-            onSubmit={onCaseStudySubmit.bind(this, params)}
+            returnLink={<ConnectedLink to="/case-study">Return without saving</ConnectedLink>}
+            onSubmit={onCaseStudySubmit.bind(this, match.params)}
           />
 
         )} />
-        <Route path={`${pathname}/view/:id?`} render={({ params }) => {
-          if (params.id && params.id !== 'undefined') {
+        <Route path={`${match.url}/view/:id?`} render={({ match }) => {
+          if (match.params.id && match.params.id !== 'undefined') {
             // If `id` is present, load from pre-saved state.
-            currentStudy = caseStudyForm.case_studies[params.id];
+            currentStudy = caseStudyForm.case_studies[match.params.id];
           }
           return (
             <div>
               {currentStudy.title
                 ? <View
                     {...currentStudy}
-                    onSubmit={onCaseStudySubmit.bind(this, params)}
-                    confirmButton={<ConnectedLink role="button" to={pathname}>Finish case study</ConnectedLink>}
-                    returnLink={<p><Link to={`${pathname}/edit/${params.id}`}>Continue Editing</Link></p>}
+                    onSubmit={onCaseStudySubmit.bind(this, match.params)}
+                    confirmButton={<ConnectedLink role="button" to="/case-study">Finish case study</ConnectedLink>}
+                    returnLink={<p><Link to={`/case-study/edit/${match.params.id}`}>Continue Editing</Link></p>}
                   />
-                : <Redirect to={pathname} />
+                : <Redirect to="/case-study" />
               }
             </div>
           )
         }} />
-      </div>
+      </Switch>
     )
   }
 }
@@ -308,8 +301,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.change(`caseStudyForm.case_studies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
       dispatchActions.submitApplication();
-      router.transitionTo(`${pathname}/view/${id}`);
-      dispatch(linkClick());
+      dispatch(linkClick(`${pathname}/view/${id}`));
     },
     onEditCaseStudy: (study) => {
       dispatch(actions.change('casestudy', study));
@@ -319,10 +311,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDeleteCaseStudy: (dispatchActions, id) => {
       dispatch(actions.omit('caseStudyForm.case_studies', id));
-      dispatchActions.submitApplication();
+      //dispatchActions.submitApplication();
     },
-    linkClick: () => {
-      dispatch(linkClick());
+    linkClick: (to) => {
+      dispatch(linkClick(to));
     }
   }
 }
