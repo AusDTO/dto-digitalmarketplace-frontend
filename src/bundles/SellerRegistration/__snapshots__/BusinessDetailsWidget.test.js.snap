@@ -8,7 +8,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your business details
+          Tell us about your business
         </h1>
       </header>
       <article
@@ -256,7 +256,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             type="checkbox" />
           <label
             htmlFor="travel">
-            Can travel for regional or interstate opportunities
+            Happy to travel for regional or interstate opportunities
           </label>
           <input
             role="button"
