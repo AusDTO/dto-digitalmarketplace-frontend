@@ -11,7 +11,7 @@ const Card = ({ title, link, badges = {}, description, products = {}, services =
     <section className="card" styleName="card">
       <article>
         <h3>
-          {title}
+          <span>{title}</span>
         </h3>
         {!isEmpty(badges) && (
           <div styleName="badges">

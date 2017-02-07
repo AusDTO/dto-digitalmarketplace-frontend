@@ -13,8 +13,10 @@
 
 .card h3 {
   margin: 0 0 0.75rem;
+}
+
+.card h3 span {
   border-bottom: solid 1px #5bcbe3;
-  display:table;
 }
 
 .card h3, .card div, .card p {
