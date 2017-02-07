@@ -228,7 +228,7 @@ test('without filterSteps', () => {
   const ToolsForm = require('../../../SellerRegistration/components/ToolsForm').default;
   const DisclosuresForm = require('../../../SellerRegistration/components/DisclosuresForm').default;
   const Review = require('../../../SellerRegistration/components/Review').default;
-  const Submit = require('../../../SellerRegistration/components/Submit').default;
+  const SubmitStepForm = require('../../../SellerRegistration/components/Submit').default;
   const Finish = require('../../../SellerRegistration/components/Finish').default;
   const FinishProfile = require('../../../SellerRegistration/components/FinishProfile').default;
   const ProductsForm = require('../../../SellerRegistration/components/ProductsForm').default;
@@ -250,7 +250,7 @@ test('without filterSteps', () => {
       { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
       { id: 'review', label: 'Review', component: Review, pattern: '/review' },
       { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
-      { id: 'submit', label: 'Declaration', component: Submit, pattern: '/submit' },
+      { id: 'submit', label: 'Declaration', component: SubmitStepForm, pattern: '/submit', formKey: 'submitStepForm' },
   ];
 
   const props = {

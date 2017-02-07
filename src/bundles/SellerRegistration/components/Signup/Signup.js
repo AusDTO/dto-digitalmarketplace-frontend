@@ -24,10 +24,10 @@ import ToolsForm            from '../ToolsForm';
 import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../Review';
-import Submit               from '../Submit';
+import SubmitStepForm       from '../Submit';
 import Finish               from '../Finish';
 import FinishProfile        from '../FinishProfile';
-import ProductsForm        from '../ProductsForm';
+import ProductsForm         from '../ProductsForm';
 
 
 class Signup extends React.Component {
@@ -43,7 +43,8 @@ class Signup extends React.Component {
       this.steps = this.steps.concat({
         id: 'submit',
         label: 'Declaration',
-        component: Submit,
+        component: SubmitStepForm,
+        formKey: 'submitStepForm',
         pattern: '/submit'
       });
     } else {

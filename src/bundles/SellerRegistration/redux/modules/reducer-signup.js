@@ -95,6 +95,9 @@ export default combineReducers({
     },
     productsForm: {
       products: {}
+    },
+    submitStepForm: {
+      agreed_to_master_agreement: null
     }
   })
 })
