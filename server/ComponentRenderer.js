@@ -38,6 +38,10 @@ export default class ComponentRenderer {
     const renderMethod = toStaticMarkup ? 'renderToStaticMarkup' : 'renderToString';
     const context = {};
 
+    if (basename) {
+      location = location.replace(basename, '');
+    }
+
     return (
       ReactDOMServer[renderMethod](
         <StaticRouter location={location} context={context} basename={basename}>
