@@ -45,13 +45,34 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy and policy" />
+            value="Strategy and Policy" />
           <label
             htmlFor="strategy-and-policy">
-            Strategy and policy
+            Strategy and Policy
              
             <p>
               Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Change, Training and Transformation" />
+          <label
+            htmlFor="change-training-and-transformation">
+            Change, Training and Transformation
+             
+            <p>
+              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
             </p>
           </label>
         </div>
@@ -66,10 +87,10 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research and design" />
+            value="User research and Design" />
           <label
             htmlFor="user-research-and-design">
-            User research and design
+            User research and Design
              
             <p>
               User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.
@@ -87,13 +108,34 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Agile delivery and governance" />
+            value="Agile delivery and Governance" />
           <label
             htmlFor="agile-delivery-and-governance">
-            Agile delivery and governance
+            Agile delivery and Governance
              
             <p>
               Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="recruitment"
+            name="recruitment"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Recruitment" />
+          <label
+            htmlFor="recruitment">
+            Recruitment
+             
+            <p>
+              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
             </p>
           </label>
         </div>
@@ -108,34 +150,13 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Software engineering and development" />
+            value="Software engineering and Development" />
           <label
             htmlFor="software-engineering-and-development">
-            Software engineering and development
+            Software engineering and Development
              
             <p>
               Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="support-and-operations"
-            name="support-and-operations"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Support and operations" />
-          <label
-            htmlFor="support-and-operations">
-            Support and operations
-             
-            <p>
-              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
             </p>
           </label>
         </div>
@@ -150,55 +171,13 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content and publishing" />
+            value="Content and Publishing" />
           <label
             htmlFor="content-and-publishing">
-            Content and publishing
+            Content and Publishing
              
             <p>
               Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="change-training-and-transformation"
-            name="change-training-and-transformation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change, training and transformation" />
-          <label
-            htmlFor="change-training-and-transformation">
-            Change, training and transformation
-             
-            <p>
-              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="marketing-communications-and-engagement"
-            name="marketing-communications-and-engagement"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Marketing, communications and engagement" />
-          <label
-            htmlFor="marketing-communications-and-engagement">
-            Marketing, communications and engagement
-             
-            <p>
-              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
             </p>
           </label>
         </div>
@@ -220,6 +199,48 @@ exports[`test DomainSelector renders 1`] = `
              
             <p>
               Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="marketing-communications-and-engagement"
+            name="marketing-communications-and-engagement"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Marketing, Communications and Engagement" />
+          <label
+            htmlFor="marketing-communications-and-engagement">
+            Marketing, Communications and Engagement
+             
+            <p>
+              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="support-and-operations"
+            name="support-and-operations"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Support and Operations" />
+          <label
+            htmlFor="support-and-operations">
+            Support and Operations
+             
+            <p>
+              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
             </p>
           </label>
         </div>
@@ -262,27 +283,6 @@ exports[`test DomainSelector renders 1`] = `
              
             <p>
               Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-             
-            <p>
-              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
             </p>
           </label>
         </div>
@@ -343,13 +343,34 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy and policy" />
+            value="Strategy and Policy" />
           <label
             htmlFor="strategy-and-policy">
-            Strategy and policy
+            Strategy and Policy
              
             <p>
               Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Change, Training and Transformation" />
+          <label
+            htmlFor="change-training-and-transformation">
+            Change, Training and Transformation
+             
+            <p>
+              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
             </p>
           </label>
         </div>
@@ -364,10 +385,10 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research and design" />
+            value="User research and Design" />
           <label
             htmlFor="user-research-and-design">
-            User research and design
+            User research and Design
              
             <p>
               User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.
@@ -385,13 +406,34 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Agile delivery and governance" />
+            value="Agile delivery and Governance" />
           <label
             htmlFor="agile-delivery-and-governance">
-            Agile delivery and governance
+            Agile delivery and Governance
              
             <p>
               Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="recruitment"
+            name="recruitment"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Recruitment" />
+          <label
+            htmlFor="recruitment">
+            Recruitment
+             
+            <p>
+              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
             </p>
           </label>
         </div>
@@ -406,34 +448,13 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Software engineering and development" />
+            value="Software engineering and Development" />
           <label
             htmlFor="software-engineering-and-development">
-            Software engineering and development
+            Software engineering and Development
              
             <p>
               Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="support-and-operations"
-            name="support-and-operations"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Support and operations" />
-          <label
-            htmlFor="support-and-operations">
-            Support and operations
-             
-            <p>
-              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
             </p>
           </label>
         </div>
@@ -448,55 +469,13 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content and publishing" />
+            value="Content and Publishing" />
           <label
             htmlFor="content-and-publishing">
-            Content and publishing
+            Content and Publishing
              
             <p>
               Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="change-training-and-transformation"
-            name="change-training-and-transformation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change, training and transformation" />
-          <label
-            htmlFor="change-training-and-transformation">
-            Change, training and transformation
-             
-            <p>
-              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="marketing-communications-and-engagement"
-            name="marketing-communications-and-engagement"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Marketing, communications and engagement" />
-          <label
-            htmlFor="marketing-communications-and-engagement">
-            Marketing, communications and engagement
-             
-            <p>
-              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
             </p>
           </label>
         </div>
@@ -518,6 +497,48 @@ exports[`test DomainSelector renders with populated fields 1`] = `
              
             <p>
               Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="marketing-communications-and-engagement"
+            name="marketing-communications-and-engagement"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Marketing, Communications and Engagement" />
+          <label
+            htmlFor="marketing-communications-and-engagement">
+            Marketing, Communications and Engagement
+             
+            <p>
+              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="support-and-operations"
+            name="support-and-operations"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Support and Operations" />
+          <label
+            htmlFor="support-and-operations">
+            Support and Operations
+             
+            <p>
+              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
             </p>
           </label>
         </div>
@@ -560,27 +581,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
              
             <p>
               Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-             
-            <p>
-              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
             </p>
           </label>
         </div>
