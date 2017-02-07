@@ -259,6 +259,9 @@ export {
   mapStateToProps
 }
 
-const SignupWithRouter = withRouter(Signup);
+const SignupWithRouter = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Signup));
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupWithRouter);
+export default SignupWithRouter;

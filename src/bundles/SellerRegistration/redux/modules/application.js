@@ -89,7 +89,10 @@ export const navigateToStep = (to) => {
 export const stepNextPersist = (to, step) => {
     return (dispatch, getState, { router }) => {
         return dispatch(submitApplication())
-            .then(() => navigateToStep(to));
+            .then(() => dispatch(preStep()))
+            .then(() => dispatch(nextStep(to)))
+            .then(() => router.push(to))
+            .then(() => focusHeading());
     }
 };
 
