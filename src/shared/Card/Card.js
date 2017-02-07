@@ -7,32 +7,34 @@ import Badges from '../Badges';
 import './Card.css';
 
 const Card = ({ title, link, badges = {}, description, products = {}, services = {} }) => (
-  <section className="card" styleName="card">
-    <article>
-      <h3>
-        <a href={link}>{title}</a>
-      </h3>
-      {!isEmpty(badges) && (
-        <div styleName="badges">
-          <Badges badges={badges} />
+  <a href={link}>
+    <section className="card" styleName="card">
+      <article>
+        <h3>
+          {title}
+        </h3>
+        {!isEmpty(badges) && (
+          <div styleName="badges">
+            <Badges badges={badges} />
+          </div>
+        )}
+        <p styleName="description">{description}</p>
+        {/* TODO refactor when products exists
+        <div className="products">
+          <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
+        </div>
+        */}
+      </article>
+
+      {!isEmpty(services) && (
+        <div styleName="services">
+          {Object.keys(services).map((service, i) => (
+            <span key={i}>{service}</span>
+          ))}
         </div>
       )}
-      <p styleName="description">{description}</p>
-      {/* TODO refactor when products exists
-      <div className="products">
-        <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
-      </div>
-      */}
-    </article>
-
-    {!isEmpty(services) && (
-      <div styleName="services">
-        {Object.keys(services).map((service, i) => (
-          <span key={i}>{service}</span>
-        ))}
-      </div>
-    )}
-  </section>
+    </section>
+  </a>
 );
 
 Card.propTypes = {
