@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 
@@ -162,12 +162,9 @@ class Signup extends React.Component {
                 const isActive = location.pathname === pattern;
                 return (
                   <li key={i}>
-                    <a 
-                      href={pattern} 
-                      onClick={(e) => {
-                        e.preventDefault();
-                        actions.navigateToStep(pattern);
-                      }} 
+                    <Link
+                      to={pattern}
+                      onClick={() => actions.navigateToStep(pattern)}
                       className={classNames({'is-active is-current': isActive})}
                     >
                       <Icon value={classNames({
@@ -177,7 +174,7 @@ class Signup extends React.Component {
                         })} size={34} aria-hidden="true"
                       />
                       <span>{label}</span>
-                    </a>
+                    </Link>
                   </li>
                 )
               })}
