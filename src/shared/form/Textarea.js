@@ -4,28 +4,51 @@ import { Control, controls } from 'react-redux-form';
 import StatefulError from './StatefulError';
 import TextareaComponent from '../Textarea';
 
-const Textarea = ({ name, id, label, model, validators, messages, description, controlProps, mapProps }) => (
-  <div className="field">
-    <label className="question-heading" htmlFor={id}>{label}</label>
-    {description && (
-      <p className="hint" id={`${id}-hint`}>{description}</p>
-    )}
-    {messages && <StatefulError model={model} messages={messages} id={id} />}
-    <Control
-      model={model}
-      controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
-      validators={validators}
-      component={TextareaComponent}
+const limitText = (limit) => (val = '') => {
+  return (val.match(/\S+/g) || []).length <= limit;
+}
 
-      mapProps={{
-        className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
-        value: (props) => props.viewValue,
-        ...mapProps,
-        ...controls.default,
-      }}
-    />
-  </div>
-);
+const Textarea = (props) => {
+  let {
+    name,
+    id,
+    label,
+    model,
+    validators,
+    messages,
+    description,
+    controlProps,
+    mapProps
+  } = props;
+
+  if (controlProps.limit) {
+    validators = { ...validators, limitText: limitText(controlProps.limit) }
+    messages = { ...messages, limitText: `${label} has exceeded the word limit.` }
+  }
+
+  return (
+    <div className="field">
+      <label className="question-heading" htmlFor={id}>{label}</label>
+      {description && (
+        <p className="hint" id={`${id}-hint`}>{description}</p>
+      )}
+      {messages && <StatefulError model={model} messages={messages} id={id} />}
+      <Control
+        model={model}
+        controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
+        validators={validators}
+        component={TextareaComponent}
+
+        mapProps={{
+          className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
+          value: (props) => props.viewValue,
+          ...mapProps,
+          ...controls.default,
+        }}
+      />
+    </div>
+  )
+};
 
 Textarea.defaultProps = {
   mapProps: {}
