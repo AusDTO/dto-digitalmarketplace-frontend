@@ -45,7 +45,7 @@ const ReviewHeader = (props) => {
               <h4>Website</h4>
             </div>
             <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <p><a href={website} rel="external" styleName="external-link">{website}</a></p>
+              <p><a href={website} target="_blank" rel="external" styleName="external-link">{website}</a></p>
             </div>
           </div>
 
@@ -55,7 +55,7 @@ const ReviewHeader = (props) => {
                 <h4>Twitter</h4>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p><a href={twitter} rel="external" styleName="external-link">{twitter}</a></p>
+                <p><a href={twitter} target="_blank" rel="external" styleName="external-link">{twitter}</a></p>
               </div>
             </div>
           )}
@@ -66,7 +66,7 @@ const ReviewHeader = (props) => {
                 <h4>LinkedIn</h4>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p><a href={linkedin} rel="external" styleName="external-link">{linkedin}</a></p>
+                <p><a href={linkedin} target="_blank" rel="external" styleName="external-link">{linkedin}</a></p>
               </div>
             </div>
           )}
@@ -126,6 +126,8 @@ ReviewHeader.propTypes = {
   seller_type: React.PropTypes.objectOf(React.PropTypes.bool),
   summary: React.PropTypes.string,
   website: React.PropTypes.string,
+  twitter: React.PropTypes.string,
+  linkedin: React.PropTypes.string,
   contact_email: React.PropTypes.string,
   contact_phone: React.PropTypes.string,
   contact_name: React.PropTypes.string,

@@ -31,7 +31,7 @@ const LiteHeader = (props) => {
         </div>
 
         <p>
-          <a href={website} rel="external">Visit seller's website</a>
+          <a href={website} target="_blank" rel="external">Visit seller's website</a>
         </p>
       </article>
       <article className="col-xs-12 col-sm-5 col-sm-push-1">
