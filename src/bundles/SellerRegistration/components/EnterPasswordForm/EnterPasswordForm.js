@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, Control } from 'react-redux-form';
+import { Form } from 'react-redux-form';
 
-import { min, required } from '../../../../validators';
+import { min } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
-import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 class EnterPasswordForm extends BaseForm {

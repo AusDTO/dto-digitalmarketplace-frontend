@@ -101,10 +101,9 @@ class DocumentsForm extends BaseForm {
 
     render() {
         const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, pathname = '', buttonText} = this.props;
+        let intro = 'As part of your assessment we’ll need the following documents.'
         if (sellerCode) {
-            var intro = 'It’s now been almost a year since you shared your insurance and financial documents with us. As such, we need more recent versions of the following documents. '
-        } else {
-            var intro = 'As part of your assessment we’ll need the following documents.'
+            intro = 'It’s now been almost a year since you shared your insurance and financial documents with us. As such, we need more recent versions of the following documents. '
         }
 
         return (

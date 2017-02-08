@@ -15,22 +15,27 @@ class DomainSelector extends BaseForm {
 
     render() {
         const {model, supplierCode, action, csrf_token, buttonText, children, onSubmit} = this.props;
-        if (supplierCode) {
-            var header = (        <header>
-                <h1 tabIndex="-1">What services will you offer?</h1>
-                <p>The services you’re currently approved for are already ticked. Select any others you want to provide
-                    — you’ll need to provide a case study for each as evidence for <a href="/assessment-criteria"
-                                                                                      target="_blank" rel="external">assessment</a>
-                </p>
-            </header>)
-        } else {
-            var header = (        <header>
+        let header = (
+            <header>
                 <h1 tabIndex="-1">What services will you offer?</h1>
                 <p>Select the digital services you want to provide. You’ll need to provide a case study for each that
                     meets our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
                 <p>If you have software products to offer, you can add them later. </p>
-            </header>)
+            </header>
+        )
+
+        if (supplierCode) {
+            header = (
+                <header>
+                    <h1 tabIndex="-1">What services will you offer?</h1>
+                    <p>The services you’re currently approved for are already ticked. Select any others you want to provide
+                        — you’ll need to provide a case study for each as evidence for <a href="/assessment-criteria"
+                                                                                          target="_blank" rel="external">assessment</a>
+                    </p>
+                </header>
+            )
         }
+
         return (
             <Layout>
                 {header}
