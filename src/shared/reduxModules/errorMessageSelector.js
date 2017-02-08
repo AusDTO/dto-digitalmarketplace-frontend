@@ -56,10 +56,14 @@ export const mapErrorMessages = (forms, messages, model) => {
       // e.g.
       // caseStudyForm.title: { required: 'Title is required' }
       // Will result in the array ['Title is required']
-      result.messages = Object.keys(fieldErrors).reduce((errors, errorKey) => {
-        let error = get(messageObject, errorKey);
-        return errors.concat(error);
-      }, []);
+      result.messages = Object
+        .keys(fieldErrors)
+        // Filter out any error keys that havent been triggered
+        .filter(key => get(fieldErrors, key))
+        .reduce((errors, errorKey) => {
+          let error = get(messageObject, errorKey);
+          return errors.concat(error);
+        }, []);
 
       return result;
     })
