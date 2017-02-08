@@ -715,9 +715,6 @@ class SubmitStepForm extends BaseForm {
                         id="agree"
                         name="agree"
                         validators={{required}}
-                        messages={{
-                            required: 'You must accept the Master Agreement and Terms of Use'
-                        }}
                     />
                     <label htmlFor="agree">I am <strong>{representative}</strong>, the authorised representative of
                         <strong> {name}</strong> and I agree to the terms set out in <a
