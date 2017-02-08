@@ -48,10 +48,12 @@ class DomainSelector extends BaseForm {
                     <Link
                         to="/products"
                         onClick={() => {
+                            // Hardcoded is ugly.
                             actions.stepComplete('casestudy');
                             actions.stepComplete('digital');
                             actions.navigateToStep('/products');
-                        }}>Skip this</Link>
+                        }}>If you have no services, skip to products
+                    </Link>
 
                     <ErrorBox focusOnMount={true} model={model}/>
 
