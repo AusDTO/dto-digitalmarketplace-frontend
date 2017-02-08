@@ -105,7 +105,7 @@ export const linkClick = (to) => {
 }
 
 export const uploadDocument = (id, file) => {
-    return (dispatch, getState, api) => {
+    return (dispatch, getState, { api }) => {
         const state = getState();
         const { form_options = {} } = state;
 
