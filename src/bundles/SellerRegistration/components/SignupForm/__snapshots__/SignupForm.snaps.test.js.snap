@@ -64,7 +64,7 @@ exports[`test SignupForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
-          type="text"
+          type="email"
           value="" />
       </div>
       <input
@@ -157,7 +157,7 @@ exports[`test SignupForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
-          type="text"
+          type="email"
           value="" />
       </div>
       <input
