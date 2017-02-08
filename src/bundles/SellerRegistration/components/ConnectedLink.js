@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { linkClick } from '../redux/modules/application';
 
 const ConnectedLink = ({to, children, linkClick, ...rest}) => (
-  <a
-    href={to}
-    onClick={(e) => {
-      e.preventDefault();
-      linkClick(to);
-    }} {...rest}>{children}</a>
+  <Link
+    to={to}
+    onClick={(e) => linkClick(to)}
+    {...rest}>
+    {children}
+  </Link>
 );
 
 const mapStateToProps = (state, ownProps) => ownProps;

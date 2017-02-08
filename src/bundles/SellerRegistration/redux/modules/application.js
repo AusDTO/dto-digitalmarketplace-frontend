@@ -97,12 +97,18 @@ export const stepNextPersist = (to, step) => {
 };
 
 export const linkClick = (to) => {
-    return (dispatch, getState, { router }) => {
+    return (dispatch) => {
         dispatch({ type: LINK_CLICK, to });
-        router.push(to)
         defer(focusHeading);
     }
 }
+
+export const push = (to) => {
+    return (dispatch, getState, { router }) => {
+        router.push(to);
+        dispatch(linkClick(to));
+    }
+};
 
 export const uploadDocument = (id, file) => {
     return (dispatch, getState, { api }) => {
@@ -143,7 +149,8 @@ const actionCreators = {
     submitApplication,
     navigateToStep,
     uploadDocument,
-    linkClick
+    linkClick,
+    push
 };
 
 export {
