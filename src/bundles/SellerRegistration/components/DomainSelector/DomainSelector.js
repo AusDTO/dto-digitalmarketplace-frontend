@@ -1,7 +1,9 @@
 import React from 'react';
+import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
 import {Form, Control} from 'react-redux-form';
 import kebabCase from 'lodash/kebabCase';
+import { Link } from 'react-router-dom';
 
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
@@ -9,12 +11,15 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 
+import { actions }    from '../../redux/modules/application';
+import { actions as stepActions }    from '../../redux/modules/steps';
+
 import domains from './domains';
 
 class DomainSelector extends BaseForm {
 
     render() {
-        const {model, supplierCode, action, csrf_token, buttonText, children, onSubmit} = this.props;
+        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit} = this.props;
         let header = (
             <header>
                 <h1 tabIndex="-1">What services will you offer?</h1>
@@ -40,6 +45,14 @@ class DomainSelector extends BaseForm {
             <Layout>
                 {header}
                 <article role="main">
+                    <Link
+                        to="/products"
+                        onClick={() => {
+                            actions.stepComplete('casestudy');
+                            actions.stepComplete('digital');
+                            actions.navigateToStep('/products');
+                        }}>Skip this</Link>
+
                     <ErrorBox focusOnMount={true} model={model}/>
 
                     {/* This error will never actually render */}
@@ -108,4 +121,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(DomainSelector);
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators({ ...actions, ...stepActions }, dispatch),
+    dispatch
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DomainSelector);
