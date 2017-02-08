@@ -21,6 +21,11 @@ exports[`test DomainSelector renders 1`] = `
   </header>
   <article
     role="main">
+    <a
+      href="/products"
+      onClick={[Function]}>
+      If you have no services, skip to products
+    </a>
     <form
       action={undefined}
       id="DomainSelector__create"
@@ -319,6 +324,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
   </header>
   <article
     role="main">
+    <a
+      href="/products"
+      onClick={[Function]}>
+      If you have no services, skip to products
+    </a>
     <form
       action={undefined}
       id="DomainSelector__create"
