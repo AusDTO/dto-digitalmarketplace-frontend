@@ -110,7 +110,7 @@ const Body = (props) => {
             <div key={`product.${i}`}>
               <div className="col-xs-12">
                 <h3 styleName="product-heading">
-                  <a style={{ display: 'inline' }} href={product.website} rel="external">{product.name}</a>
+                  <a style={{ display: 'inline' }} href={product.website} target="_blank" rel="external">{product.name}</a>
                 </h3>
               </div>
               <div className="col-xs-12 col-sm-7">
@@ -120,10 +120,10 @@ const Body = (props) => {
               </div>
               <div className="col-xs-12 col-sm-5">
                 <p>
-                  <a style={{ display: 'inline' }} href={product.pricing} rel="external">Product pricing</a>
+                  <a style={{ display: 'inline' }} href={product.pricing} target="_blank" rel="external">Product pricing</a>
                 </p>
                 <p>
-                  <a style={{ display: 'inline' }} href={product.support} rel="external">Product support</a>
+                  <a style={{ display: 'inline' }} href={product.support} target="_blank" rel="external">Product support</a>
                 </p>
               </div>
             </div>
