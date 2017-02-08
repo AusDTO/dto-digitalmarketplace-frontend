@@ -29,3 +29,9 @@ export default function reducer(state = {}, action = {}) {
 export const stepComplete = (step) => ({ type: STEP_COMPLETE, step });
 export const stepPartial = (step) => ({ type: STEP_PARTIAL, step });
 export const setSteps = (data) => ({ type: STEP_INITIAL, data });
+
+export const actions = {
+  stepComplete,
+  stepPartial,
+  setSteps
+};

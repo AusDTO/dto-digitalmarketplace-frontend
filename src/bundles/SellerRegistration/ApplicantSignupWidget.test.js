@@ -5,24 +5,16 @@ jest.mock('../../shared/Icon/_getIcons');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MemoryRouter } from 'react-router';
+import { Router as MemoryRouter } from 'react-router-dom';
+import createMemoryHistory from 'history/createMemoryHistory';
 import { ApplicantSignup } from './ApplicantSignupWidget';
 
 
 test('ApplicantSignupWidget renders without crashing', () => {
   const div = document.createElement('div');
+  const history = createMemoryHistory();
   ReactDOM.render(
-    <MemoryRouter>
+    <MemoryRouter history={history}>
       <ApplicantSignup />
     </MemoryRouter>, div);
 });
-
-test('ApplicantSignup returns a valid function and element', () => {
-  const applicantWidget = ApplicantSignup({ options: 'bar' });
-  const routerProps = {
-    router: {},
-    location: {}
-  }
-  expect(typeof applicantWidget).toBe('function')
-  expect(React.isValidElement(applicantWidget(routerProps))).toBe(true)
-})

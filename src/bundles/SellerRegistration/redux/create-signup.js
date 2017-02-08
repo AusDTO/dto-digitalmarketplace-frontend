@@ -4,9 +4,9 @@ import reducer from './modules/reducer-signup';
 
 import api from '../../../shared/reduxModules/api';
 
-export default function createStore(data) {
+export default function createStore(data, extraArgs) {
   const middleware = [
-    thunk.withExtraArgument(api)
+    thunk.withExtraArgument({ api, ...extraArgs })
   ]
 
   let composeEnhancers = compose;
