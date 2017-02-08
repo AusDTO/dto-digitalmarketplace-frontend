@@ -10,7 +10,7 @@ const Textfield = ({ name, id, htmlFor, label, model, validators, messages, desc
       <p className="hint" id={`${id}-hint`}>{description}</p>
     )}
     {messages && <StatefulError model={model} messages={messages} id={id} />}
-    <Control.text
+    <Control.input
       model={model}
       name={name}
       id={id}
