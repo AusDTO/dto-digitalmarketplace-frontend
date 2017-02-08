@@ -141,7 +141,9 @@ const actionCreators = {
     nextStep,
     stepNextPersist,
     submitApplication,
-    navigateToStep
+    navigateToStep,
+    uploadDocument,
+    linkClick
 };
 
 export {
