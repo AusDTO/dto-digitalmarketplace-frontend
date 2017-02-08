@@ -159,6 +159,33 @@ test('mapErrorMessages gets errors for an array set', () => {
   expect(mapErrorMessages(form, messages, 'modelName')).toEqual(errorMap);
 });
 
+test('mapErrorMessages gets errors with mulitple validation on field only one triggered.', () => {
+  const messages = {
+    'modelName.title': {
+      'required': 'Title is required',
+      'limitText': 'Title has exceeded the word limit.'
+    }
+  };
+
+  const forms = {
+    modelName: {
+      title: {
+        valid: false,
+        errors: {
+          required: false,
+          limitText: true
+        }
+      }
+    }
+  };
+
+  const errorMap = [
+    { id: 'title', messages: ['Title has exceeded the word limit.'] }
+  ];
+
+  expect(mapErrorMessages(forms, messages, 'modelName')).toEqual(errorMap);
+});
+
 test('getForms return values', () => {
   const state = {
     forms: {
