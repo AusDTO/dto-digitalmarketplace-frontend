@@ -19,7 +19,7 @@ import './Catalogue.css';
 export class Catalogue extends React.Component {
 
   render () {
-    const { router, actions, results = [], search = {}, pagination = {} } = this.props;
+    const { actions, results = [], search = {}, pagination = {} } = this.props;
     return (
       <section>
         <article className="row">
@@ -41,8 +41,8 @@ export class Catalogue extends React.Component {
                   }}
                   items={results.slice(0, 10)}
                   getItemValue={({ name }) => name}
-                  onSelect={(value, item) => actions.updateKeyword(router, value)}
-                  onChange={(e, value) => actions.updateKeyword(router, value)}
+                  onSelect={(value, item) => actions.updateKeyword(value)}
+                  onChange={(e, value) => actions.updateKeyword(value)}
                   renderItem={(item, isHighlighted) => (
                     <div
                       styleName={isHighlighted ? 'autocompleteItemHighlighted' : 'autocompleteItem' }
@@ -83,7 +83,7 @@ export class Catalogue extends React.Component {
               <CheckboxList 
                 id="role" 
                 list={search.role}
-                onChange={actions.updateRole.bind(null, router)}
+                onChange={actions.updateRole}
               />
 
               <hr/>
@@ -91,7 +91,7 @@ export class Catalogue extends React.Component {
               <CheckboxList 
                 id="type" 
                 list={search.type}
-                onChange={actions.updateType.bind(null, router)}
+                onChange={actions.updateType}
               />
             </form>
           </LocalNav>
@@ -101,7 +101,7 @@ export class Catalogue extends React.Component {
                 <h2>No exact matches</h2>
                 <p>Try tweaking your search criteria for more results or <a href="" onClick={(e) => {
                   e.preventDefault();
-                  actions.resetQuery(router);
+                  actions.resetQuery();
                 }}>clear all and start again</a>.</p>
               </article>
             ) : (
@@ -123,9 +123,9 @@ export class Catalogue extends React.Component {
 
                 <Pagination
                   {...pagination}
-                  onClick={(page) => actions.updatePage(router, page)}
-                  onBack={(page) => actions.updatePage(router, page)}
-                  onNext={(page) => actions.updatePage(router, page)}
+                  onClick={actions.updatePage}
+                  onBack={actions.updatePage}
+                  onNext={actions.updatePage}
                 />
               </div>
             )}

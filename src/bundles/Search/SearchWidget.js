@@ -9,7 +9,7 @@ import { titleMap } from '../../shared/Badges';
 import createStore from './redux/create';
 import Catalogue from './components/Catalogue';
 
-export const SearchWidget = (props) => {
+export const SearchWidget = (props, history) => {
   // bit hacky
   const { search = {} } = props;
   let mappedTypes = search.type
@@ -31,11 +31,11 @@ export const SearchWidget = (props) => {
       ...search,
       type: mappedTypes
     }
-  });
+  }, { router: history });
 
-  return ({ router, location }) => (
+  return (
     <Provider store={store}>
-      <Catalogue router={router} />
+      <Catalogue />
     </Provider>
   )
 }

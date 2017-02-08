@@ -143,8 +143,8 @@ export default function reducer(state = initialState, action = {}) {
 export const syncResult = (result) => ({ type: SYNC_RESULTS, result });
 export const preSearch = () => ({ type: PRE_SEARCH });
 
-export const search = (type, value, router) => {
-  return (dispatch, getState, { api, debounceQueue }) => {
+export const search = (type, value) => {
+  return (dispatch, getState, { api, debounceQueue, router }) => {
     dispatch(preSearch());
     // Update either role, type or keyword.
     dispatch({ type, value });
@@ -163,7 +163,7 @@ export const search = (type, value, router) => {
       let queryArray = buildQueryString({ search, pagination });
       let searchString = queryArray.join('&');
 
-      router.replaceWith({
+      router.replace({
         search: `?${searchString}`
       });
 
@@ -183,10 +183,10 @@ export const search = (type, value, router) => {
   }
 }
 
-export const updateRole    = (router, e)     => search(UPDATE_ROLE, e.target.value, router);
-export const updateType    = (router, e)     => search(UPDATE_TYPE, e.target.value, router);
-export const updateKeyword = (router, value) => search(UPDATE_KEYWORD, value, router);
-export const resetQuery    = (router)        => search(RESET_QUERY, null, router);
+export const updateRole    = (e)     => search(UPDATE_ROLE, e.target.value);
+export const updateType    = (e)     => search(UPDATE_TYPE, e.target.value);
+export const updateKeyword = (value) => search(UPDATE_KEYWORD, value);
+export const resetQuery    = ()      => search(RESET_QUERY);
 
 export const actionCreators = {
  updateRole,

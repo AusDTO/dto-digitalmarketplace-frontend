@@ -24,8 +24,14 @@ class DebounceQueue {
   }
 }
 
-export default function createStore(data) {
-  const middleware = [ thunk.withExtraArgument({ api, debounceQueue: new DebounceQueue() }) ]
+export default function createStore(data, thunkArgs) {
+  const middleware = [
+    thunk.withExtraArgument({
+      api,
+      debounceQueue: new DebounceQueue(),
+      ...thunkArgs
+    })
+  ];
 
   let composeEnhancers = compose;
   if (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {

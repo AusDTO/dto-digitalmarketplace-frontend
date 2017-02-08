@@ -14,7 +14,7 @@ import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 import ProgressBar    from '../../../../shared/ProgressBar';
 
 import ConnectedLink from '../../../SellerRegistration/components/ConnectedLink';
-import { linkClick } from '../../../SellerRegistration/redux/modules/application';
+import { push } from '../../../SellerRegistration/redux/modules/application';
 
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
@@ -87,8 +87,7 @@ class DomainList extends BaseForm {
       onCaseStudySubmit,
       onEditCaseStudy,
       onAddCaseStudy,
-      onDeleteCaseStudy,
-      linkClick
+      onDeleteCaseStudy
     } = this.props;
 
     onCaseStudySubmit = onCaseStudySubmit.bind(this, {
@@ -151,28 +150,25 @@ class DomainList extends BaseForm {
                           return (
                             <li key={`casestudy.${service}.${guid}`} className="bordered-list__item row">
                               <div className="col-xs-6">
-                                <a
-                                  href={`${match.url}/edit/${guid}`}
+                                <Link
+                                  to={`${match.url}/edit/${guid}`}
                                   id={`edit-${kebabCase(service)}-${i}`}
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    onEditCaseStudy(study);
-                                    linkClick(`${match.url}/edit/${guid}`);
-                                  }}
+                                  onClick={() => onEditCaseStudy(study)}
                                   children={study.title}
                                 />
                                 <p key={i}></p>
                               </div>
                               <div className="col-xs-6" style={{textAlign: 'right'}}>
-                                <a
-                                  href={`${match.url}/delete/${guid}`}
+                                <Link
+                                  to={`${match.url}/delete/${guid}`}
                                   id={`delete-${kebabCase(service)}-${i}`}
                                   onClick={(e) => {
                                     e.preventDefault();
-                                    onDeleteCaseStudy(dispatchActions, guid);
-                                }}>
+                                    onDeleteCaseStudy(dispatchActions, guid)
+                                  }}
+                                >
                                   Delete
-                                </a>
+                                </Link>
                               </div>
                             </li>
                           )
@@ -180,11 +176,12 @@ class DomainList extends BaseForm {
                       </ul>
                     )}
                     
-                    <a href={`${match.url}/add/${service}`} id={`add-service-${kebabCase(service)}`} onClick={(e) => {
-                      e.preventDefault();
-                      onAddCaseStudy();
-                      linkClick(`${match.url}/add/${service}`);
-                    }}>Add case study</a>
+                    <Link
+                      to={`${match.url}/add/${service}`}
+                      id={`add-service-${kebabCase(service)}`}
+                      onClick={() => onAddCaseStudy()}>
+                      Add case study
+                    </Link>
                     
                   </section>
                 )
@@ -301,7 +298,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.change(`caseStudyForm.case_studies.${id}`, props ));
       dispatch(actions.reset('casestudy'));
       dispatchActions.submitApplication();
-      dispatch(linkClick(`${pathname}/view/${id}`));
+      dispatch(push(`${pathname}/view/${id}`));
     },
     onEditCaseStudy: (study) => {
       dispatch(actions.change('casestudy', study));
@@ -312,9 +309,6 @@ const mapDispatchToProps = (dispatch) => {
     onDeleteCaseStudy: (dispatchActions, id) => {
       dispatch(actions.omit('caseStudyForm.case_studies', id));
       dispatchActions.submitApplication();
-    },
-    linkClick: (to) => {
-      dispatch(linkClick(to));
     }
   }
 }

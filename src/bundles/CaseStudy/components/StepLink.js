@@ -15,13 +15,13 @@ class StepLink extends React.Component {
       className = className.concat('is-current');
     }
     return (
-      <Link to={to || `/step/${step}`}>{
-        ({isActive, location, href, onClick, transition}) =>
-          <a href={href} role={role} className={className.join(' ')} onClick={e => {
-            dispatch(navigateStep(step));
-            onClick(e)
-          }}>{children}</a>
-      }</Link>
+      <Link
+        to={to || `/step/${step}`}
+        onClick={() => dispatch(navigateStep(step))}
+        role={role}
+        className={className.join(' ')}>
+        {children}
+      </Link>
     )
   }
 }
