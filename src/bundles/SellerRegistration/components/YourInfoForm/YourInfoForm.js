@@ -22,11 +22,11 @@ class YourInfoForm extends BaseForm {
 
   render() {
     const { action, csrf_token, model, supplierCode, form, buttonText, children, onSubmit } = this.props;
-      if (supplierCode) {
-          var title = 'Check your contact details'
-      } else {
-          var title = 'Contact details'
-      }
+    let title = 'Contact details';
+    if (supplierCode) {
+        title = 'Check your contact details'
+    }
+
     return (
       <Layout>
         <header>

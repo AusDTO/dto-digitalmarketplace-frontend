@@ -26,11 +26,11 @@ class BusinessDetailsForm extends BaseForm {
 
     render() {
         const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit } = this.props;
+        let title = 'Tell us about your business'
         if (supplierCode) {
-            var title = 'Check your business details'
-        } else {
-            var title = 'Tell us about your business'
+            title = 'Check your business details'
         }
+        
         return (
             <Layout>
                 <header>
