@@ -7,7 +7,7 @@ import createStore from './redux/create-signup';
 import Signup from './components/Signup';
 
 export const ProfileEditWidget = (props, history) => {
-  const store = createStore(props, history);
+  const store = createStore(props, { router: history });
   const filterSteps = (step) => {
     // Remove steps with patterns of /start and /case-study and /review and /submit
     return !step.pattern.match(/\/start|\/submit/);
