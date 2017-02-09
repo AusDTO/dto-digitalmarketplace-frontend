@@ -15,7 +15,7 @@ const Textarea = (props) => {
     validators,
     messages,
     description,
-    controlProps,
+    controlProps = {},
     mapProps
   } = props;
 
