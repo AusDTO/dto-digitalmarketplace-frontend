@@ -21,7 +21,7 @@ const Textarea = (props) => {
 
   if (controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
-    messages = { ...messages, limitWords: `${label} has exceeded the word limit.` }
+    messages = { limitWords: `${label} has exceeded the word limit.`, ...messages }
   }
 
   return (
