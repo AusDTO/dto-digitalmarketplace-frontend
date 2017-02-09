@@ -1,17 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { linkClick } from '../redux/modules/application';
 
 const ConnectedLink = ({to, children, linkClick, ...rest}) => (
-  <Link to={to}>
-    {({href, onClick}) => 
-      <a onClick={(e) => {
-        onClick(e);
-        linkClick(to);
-      }} href={href} {...rest}>{children}</a>
-    }
+  <Link
+    to={to}
+    onClick={(e) => linkClick(to)}
+    {...rest}>
+    {children}
   </Link>
 );
 

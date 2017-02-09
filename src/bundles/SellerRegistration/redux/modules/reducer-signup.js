@@ -92,6 +92,12 @@ export default combineReducers({
           other_circumstances: null,
           other_circumstances_details: ''
         }
+    },
+    productsForm: {
+      products: {}
+    },
+    submitStepForm: {
+      agreed_to_master_agreement: null
     }
   })
 })

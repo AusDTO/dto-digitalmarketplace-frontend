@@ -2,7 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { MemoryRouter } from 'react-router';
+import { Router as MemoryRouter } from 'react-router-dom';
+import createMemoryHistory from 'history/createMemoryHistory';
 
 import CaseStudyForm, { mapStateToProps } from './CaseStudyForm';
 import sampleState from './CaseStudyForm.json';
@@ -57,14 +58,13 @@ test('form renders server side with errors', () => {
     }
   }
 
-  let store = createStore(Object.assign({}, sampleState, { _serverContext: {}, form_options, options: { serverRender: true } }))
+  let store = createStore(Object.assign({}, sampleState, { _serverContext: {}, form_options, options: { serverRender: false } }))
+  const history = createMemoryHistory();
   const wrapper = mount(
-    <MemoryRouter>
-      {({router}) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   )
 
@@ -74,13 +74,12 @@ test('form renders server side with errors', () => {
 
 test('handleClick with formValid=false', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }))
+  const history = createMemoryHistory();
   const wrapper = mount(
-    <MemoryRouter>
-      {({router}) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   )
 
@@ -94,13 +93,12 @@ test.skip('handleClick with formValid=true', () => {
   state.caseStudyForm.title = 'FooBar';
 
   let store = createStore(Object.assign({}, { _serverContext: {} }, state))
+  const history = createMemoryHistory();
   const wrapper = mount(
-    <MemoryRouter>
-      {({router}) => (
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   )
 
@@ -121,14 +119,12 @@ test.skip('handleClick when on last step', () => {
   });
 
   let store = createStore(Object.assign({}, { _serverContext: {} }, state))
+  const history = createMemoryHistory();
   const wrapper = mount(
-    <MemoryRouter>
-      {({router}) => (
-
-        <Provider store={store}>
-          <CaseStudyForm router={router} />
-        </Provider>
-      )}
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
     </MemoryRouter>
   )
 

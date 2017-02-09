@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import ConnectedLink from '../ConnectedLink';
 import isEmpty from 'lodash/isEmpty';
 
@@ -14,15 +14,13 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
       <div className="callout--calendar-event col-sm-8 col-xs-12">
         <h3>Preview your profile</h3>
         <p>Buyers will see your business information previewed below. If the information is correct, continue to the final step to submit your application or continue editing.</p>
-        <Link to="/submit">{({ href }) => (
-            <a
-              href={href}
-              role="button"
-              onClick={onClick}
-            >Save and continue</a>
-          )
-        }</Link>
-          <Link  to="/review">Go back and edit</Link>
+        <Link
+          to="/submit"
+          role="button"
+          onClick={(e) => onClick(e)}>
+          Save and continue
+        </Link>
+        <Link to="/review">Go back and edit</Link>
       </div>
     </div>}
     <ReviewHeader 
@@ -47,10 +45,11 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       contact_email,
       contact_phone,
       contact_name,
-      services: provides,
+      services = {},
+      domains = {},
       case_studies,
       travel: interstate,
-      number_of_employees,
+      linkedin,
       local_government_experience,
       state_government_experience,
       federal_government_experience,
@@ -88,6 +87,17 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       }
     }
 
+    let { assessed, unassessed } = domains;
+    // If unassessed is falsy, assume we are on preview
+    // Where we just want to show the current selected
+    // services. Filter out falsy services and convert
+    // to an Array to keep type consistent
+    if (!unassessed) {
+      unassessed = Object
+        .keys(services)
+        .filter(key => services[key]);
+    }
+
     return {
         header: {
           name,
@@ -98,11 +108,12 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           contact_email,
           contact_phone,
           contact_name,
-          number_of_employees,
+          linkedin,
           public_profile
         },
         body: {
-          provides,
+          assessed,
+          unassessed,
           case_studies,
           interstate,
           CaseStudyLink: caseStudyLink,
@@ -112,7 +123,6 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
         },
         privateInfo: (disclosures ? {
             case_studies,
-            number_of_employees,
             local_government_experience,
             state_government_experience,
             federal_government_experience,

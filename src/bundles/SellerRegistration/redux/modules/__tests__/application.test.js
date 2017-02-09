@@ -69,10 +69,14 @@ test('stepNextPersist action', () => {
   window.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve(mockResponse(200, null, '{"application":{}}')));
 
-  const middlewares = [ thunk.withExtraArgument(api) ];
+  const pushMock = jest.fn();
+  const router = {
+    push: pushMock
+  };
+
+  const middlewares = [ thunk.withExtraArgument({ api, router }) ];
   const mockStore = configureMockStore(middlewares);
 
-  const transition = jest.fn();
   const to = '/bar/baz';
   const step = {
     formKey: 'fooBar'
@@ -87,11 +91,11 @@ test('stepNextPersist action', () => {
   ]
 
   const store = mockStore({});
-  return store.dispatch(actions.stepNextPersist(transition, to, step))
+  return store.dispatch(actions.stepNextPersist(to, step))
     .then(() => { // return of async actions
       expect(store.getActions()).toEqual(expectedActions)
-      expect(transition).toHaveBeenCalledTimes(1);
-      expect(transition).toHaveBeenCalledWith(to);
+      expect(pushMock).toHaveBeenCalledTimes(1);
+      expect(pushMock).toHaveBeenCalledWith(to);
     });
 });
 
@@ -109,7 +113,7 @@ test('submitApplication action', () => {
   window.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve(mockResponse(200, null, JSON.stringify(expectedPayload))));
 
-  const middlewares = [ thunk.withExtraArgument(api) ];
+  const middlewares = [ thunk.withExtraArgument({ api }) ];
   const mockStore = configureMockStore(middlewares);
 
 

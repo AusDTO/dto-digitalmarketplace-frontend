@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, Control } from 'react-redux-form';
+import { Form } from 'react-redux-form';
 
-import { min, required } from '../../../../validators';
+import { min } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
-import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 class EnterPasswordForm extends BaseForm {
@@ -25,8 +24,8 @@ class EnterPasswordForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1>Create a Password</h1>
-          <p>To finish creating your account please provide the following details.</p>
+          <h1>Create a password</h1>
+          <p>To finish creating your account you need to create a password.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -62,20 +61,7 @@ class EnterPasswordForm extends BaseForm {
             />
 
             <div>
-              <StatefulError
-                model={`${model}.terms`}
-                id="terms"
-                messages={{
-                  required: 'Please accept the terms of use.'
-                }}
-              />
-              <Control.checkbox
-                model={`${model}.terms`}
-                id="terms" 
-                name="terms"
-                validators={{ required }}
-              />
-              <label htmlFor="terms">I accept the <a href="/terms-of-use">Terms of Use</a>.</label>
+              All activity on the Digital Marketplace is subject to our <a href="/terms-of-use">Terms of Use</a>.
             </div>
 
             <input type="submit" value='Join the Marketplace' role="button" />

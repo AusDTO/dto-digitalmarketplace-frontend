@@ -23,7 +23,8 @@ class DocumentsForm extends BaseForm {
         action: React.PropTypes.string,
         csrf_token: React.PropTypes.string,
         form: React.PropTypes.object.isRequired,
-        model: React.PropTypes.string.isRequired
+        model: React.PropTypes.string.isRequired,
+        supplierCode: React.PropTypes.string
     }
 
     state = {
@@ -99,15 +100,19 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, documentsForm, onSubmit, pathname = '', buttonText} = this.props;
+        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, pathname = '', buttonText} = this.props;
+        let intro = 'As part of your assessment we’ll need the following documents.'
+        if (sellerCode) {
+            intro = 'It’s now been almost a year since you shared your insurance and financial documents with us. As such, we need more recent versions of the following documents. '
+        }
+
         return (
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Upload your documents</h1>
-                    <p>As part of your assessment we’ll need the following documents.
-                        Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG</strong>
+                    <p>{intro}
+                        Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG </strong>
                         format.
-                        If you have multiple files for a document, please scan and merge as one upload.
                     </p>
                 </header>
                 <article role="main">
@@ -193,6 +198,7 @@ class DocumentsForm extends BaseForm {
 
 const mapStateToProps = (state) => {
     return {
+        supplierCode: state.application.supplierCode,
         ...formProps(state, 'documentsForm')
     }
 }

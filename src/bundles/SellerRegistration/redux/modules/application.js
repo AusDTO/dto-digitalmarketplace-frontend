@@ -37,7 +37,7 @@ export const preStep = () => ({ type: STEP_PRE });
 export const nextStep = (to) => ({ type: STEP_NEXT, to });
 
 export const submitApplication = () => {
-    return (dispatch, getState, api) => {
+    return (dispatch, getState, { api, router }) => {
         dispatch(preSubmit());
 
         const state = getState();
@@ -77,12 +77,21 @@ export const submitApplication = () => {
     }
 };
 
-export const stepNextPersist = (transition, to, step) => {
-    return (dispatch) => {
+export const navigateToStep = (to) => {
+    return (dispatch, getState, { router }) => {
+        dispatch(preStep);
+        dispatch(nextStep(to));
+        router.push(to);
+        focusHeading();
+    }
+}
+
+export const stepNextPersist = (to, step) => {
+    return (dispatch, getState, { router }) => {
         return dispatch(submitApplication())
             .then(() => dispatch(preStep()))
             .then(() => dispatch(nextStep(to)))
-            .then(() => transition(to))
+            .then(() => router.push(to))
             .then(() => focusHeading());
     }
 };
@@ -94,8 +103,15 @@ export const linkClick = (to) => {
     }
 }
 
+export const push = (to) => {
+    return (dispatch, getState, { router }) => {
+        router.push(to);
+        dispatch(linkClick(to));
+    }
+};
+
 export const uploadDocument = (id, file) => {
-    return (dispatch, getState, api) => {
+    return (dispatch, getState, { api }) => {
         const state = getState();
         const { form_options = {} } = state;
 
@@ -130,7 +146,11 @@ const actionCreators = {
     preStep,
     nextStep,
     stepNextPersist,
-    submitApplication
+    submitApplication,
+    navigateToStep,
+    uploadDocument,
+    linkClick,
+    push
 };
 
 export {

@@ -69,11 +69,16 @@ export const minObjectLength = (object = {}, minLength = -1) => {
   return !keys.filter((key) => isEmpty(object[key])).length;
 }
 
+export const limitWords = (limit) => (val = '') => {
+  return (val.match(/\S+/g) || []).length <= limit;
+}
+
 export default {
   required,
   minArrayLength,
   min,
   validLinks,
   dependantRequired,
-  minObjectLength
+  minObjectLength,
+  limitWords
 }

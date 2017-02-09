@@ -5,14 +5,19 @@ const Start = ({supplierCode, signup, onClick}) => {
     if (supplierCode) {
         return (
             <div>
-                <h1>Get ready for tomorrow’s Marketplace</h1>
-                <p>
-                    In 2017, we’ll be giving you the opportunity to offer lots more services, digital products and
-                    showcase your expertise in a streamlined environment.
-                </p><p>
-                You can begin adding more to your seller profile in anticipation of these changes now. It doesn’t matter
-                if you don’t complete all your profile updates in one session, we’ll save as you go.
-            </p>
+                <h1>Do more in the Digital Marketplace</h1>
+                <p>With our latest release you can now offer more services, add more content and products to showcase
+                    your expertise to buyers.</p>
+                <p>To offer new services you’ll need to add case studies and references to confirm you meet <a
+                    href="/assessment-criteria" target="_blank" rel="external">our standard</a>.</p>
+                <p>It will take around 30 minutes — or more if you need to write new case studies.</p>
+                <p>Don’t worry, your information will be saved automatically as you go.</p>
+                <h2>You'll need</h2>
+                <li> Your basic business information</li>
+                <li> A financial viability statement from your accountant</li>
+                <li> Current worker’s compensation and public liability insurance documents</li>
+                <li> Case studies and references</li>
+                <li> To accept the new Marketplace Master Agreement.</li>
                 <p>
                     <a role="button" href={signup} onClick={onClick}>Start Now </a>
                 </p>
@@ -21,30 +26,30 @@ const Start = ({supplierCode, signup, onClick}) => {
     } else {
         return (
             <div>
-                <h1>Joining the Marketplace</h1>
+                <h1>Joining the Digital Marketplace</h1>
                 <p>
-                    Sign up to the Digital Marketplace so buyers can find your business and you can apply for new
-                    opportunities.
-                </p>
-                <p>
-                    It takes around 30 minutes to complete and your information is saved automatically. 24 hours later,
-                    your profile will be visible to government buyers.
+                    To become a registered seller you need to tell us about your business.</p>
+                <p> The information you share will be used to create your seller profile, and later to confirm you meet
+                    the <a
+                        href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> to apply for
+                    opportunities.</p>
+                <p> It will take at least 30 minutes. But don’t worry, your information will be saved automatically if
+                    you need to come back later.
                 </p>
                 <h2>You'll need:</h2>
                 <ul>
-                    <li>Your basic business information, for example</li>
+                    <li>Your basic business information</li>
                     <li>A financial viability statement from your accountant</li>
                     <li>Proof of worker’s compensation and public liability insurance</li>
                 </ul>
-                <h2>You'll be asked to provide:</h2>
+                <h2>You'll be asked to:</h2>
                 <ul>
-                    <li>Proof of successful projects and past client contact details that will be assessed against <a
-                        href="/assessment-criteria" target="_blank" rel="external">evaluation criteria</a></li>
+                    <li>Create case studies about past projects and references</li>
+                    <li>Accept the Marketplace Master Agreement</li>
                 </ul>
                 <p>
-                    <a role="button" href={signup} onClick={onClick}>Start Now </a>
+                    <a role="button" href={signup} onClick={onClick}>Start now </a>
                 </p>
-                All activity on the Digital Marketplace is subject to our <a href="/terms-of-use">Terms of Use.</a>
             </div>
         )
     }
@@ -53,8 +58,7 @@ const Start = ({supplierCode, signup, onClick}) => {
 Start.defaultProps = {
     onClick: () => {
     },
-    signup: '#',
-    supplierCode: '1'
+    signup: '#'
 }
 
 Start.propTypes = {
@@ -64,7 +68,11 @@ Start.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return ownProps
+    return {
+        onClick: ownProps.onClick,
+        signup: ownProps.signup,
+        supplierCode: state.application.supplierCode,
+    }
 }
 
 export {

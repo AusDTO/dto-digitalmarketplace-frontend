@@ -60,6 +60,15 @@
         ]
       }
     },
+    "products": [
+        {
+            "name": "Avoka Transact for Government",
+            "pricing": "http://www.avoka.com/request-a-demo",
+            "summary": "Avoka Transact is a digital business platform used to accelerate customer acquisition and increase business agility in financial services, government, education, field service and other industries. The system serves intelligent applications focused on customer acquisition, onboarding and service, creating a digital alternative to aging PDF or paper forms. ",
+            "support": "http://www.avoka.com/contact-us?utm_LSD=ContactUs&utm_OLSD=ContactUs",
+            "website": "http://www.avoka.com/avoka-transact"
+        }
+    ],
     "documents": {
       "financial": {
         "filename": "financial.pdf",

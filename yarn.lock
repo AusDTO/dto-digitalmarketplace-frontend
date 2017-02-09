@@ -3040,13 +3040,14 @@ header-case@^1.0.0:
     no-case "^2.2.0"
     upper-case "^1.1.3"
 
-history@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/history/-/history-4.3.0.tgz#42bc1067c22760ac0b792d80264c93591ed3900b"
+history@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/history/-/history-4.5.1.tgz#44935a51021e3b8e67ebac267a35675732aba569"
   dependencies:
     invariant "^2.2.1"
     loose-envify "^1.2.0"
     resolve-pathname "^2.0.0"
+    value-equal "^0.2.0"
     warning "^3.0.0"
 
 hoek@2.x.x:
@@ -3293,6 +3294,12 @@ interpret@^0.6.4:
 invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1, invariant@~2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.1.tgz#b097010547668c7e337028ebe816ebe36c8a8d54"
+  dependencies:
+    loose-envify "^1.0.0"
+
+invariant@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
     loose-envify "^1.0.0"
 
@@ -4139,6 +4146,10 @@ lodash.foreach@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
 
+lodash.get@~4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+
 lodash.indexof@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/lodash.indexof/-/lodash.indexof-4.0.5.tgz#53714adc2cddd6ed87638f893aa9b6c24e31ef3c"
@@ -4191,13 +4202,17 @@ lodash.some@^4.4.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.some/-/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
 
+lodash.topath@~4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/lodash.topath/-/lodash.topath-4.5.2.tgz#3616351f3bba61994a0931989660bd03254fd009"
+
 lodash.words@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/lodash.words/-/lodash.words-3.2.0.tgz#4e2a8649bc08745b17c695b1a3ce8fee596623b3"
   dependencies:
     lodash._root "^3.0.0"
 
-lodash@4.17.2, lodash@^4.0.0, lodash@^4.10.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.14.2, lodash@^4.15.0, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.8.0:
+lodash@4.17.2, lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.14.2, lodash@^4.15.0, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.8.0:
   version "4.17.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
@@ -4214,6 +4229,12 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0:
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.2.0.tgz#69a65aad3de542cf4ee0f4fe74e8e33c709ccb0f"
   dependencies:
     js-tokens "^1.0.1"
+
+loose-envify@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
+  dependencies:
+    js-tokens "^3.0.0"
 
 loud-rejection@^1.0.0:
   version "1.6.0"
@@ -4906,8 +4927,8 @@ path-to-regexp@0.1.7:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
 
 path-to-regexp@^1.5.3:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.6.0.tgz#4c59cfeab5e360a2657b180730a4bb4582ecec5b"
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
   dependencies:
     isarray "0.0.1"
 
@@ -5319,7 +5340,7 @@ qs@6.2.0, qs@~6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
-query-string@4.2.3, query-string@^4.1.0:
+query-string@^4.1.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.2.3.tgz#9f27273d207a25a8ee4c7b8c74dcd45d556db822"
   dependencies:
@@ -5376,12 +5397,6 @@ react-autocomplete@1.4.0:
   dependencies:
     dom-scroll-into-view "1.0.1"
 
-react-broadcast@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-broadcast/-/react-broadcast-0.1.1.tgz#d8da92dcfada6e666e95e153220f9e5bbb1b42f2"
-  dependencies:
-    invariant "^2.2.1"
-
 react-dev-utils@0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-0.2.1.tgz#c017d6f530502b28b735dbac3841a7b8665838f5"
@@ -5398,13 +5413,14 @@ react-dom@15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
 
-react-redux-form@1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.2.4.tgz#924c5ac06dd52f21efc961df6aed9c10bfe27de9"
+react-redux-form@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.5.3.tgz#776e731c72396a189a9e2599a8e236badcf7b247"
   dependencies:
     icepick "^1.1.0"
     invariant "~2.2.1"
-    lodash "^4.10.0"
+    lodash.get "~4.4.2"
+    lodash.topath "~4.5.2"
 
 react-redux@5.0.2:
   version "5.0.2"
@@ -5416,14 +5432,22 @@ react-redux@5.0.2:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
 
-react-router@4.0.0-alpha.5:
-  version "4.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.5.tgz#9d80514f9bbbec040dffbd4f9cf241da2830e318"
+react-router-dom@next:
+  version "4.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.0.0-beta.4.tgz#788f26a8cfd2669e6d615380da0ccefb33a941b1"
   dependencies:
-    history "^4.3.0"
+    history "^4.5.1"
+    react-router "^4.0.0-beta.4"
+
+react-router@^4.0.0-beta.4:
+  version "4.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-beta.4.tgz#6ab21755525ae3dfe7cca5e0176b05385a7b854d"
+  dependencies:
+    history "^4.5.1"
+    invariant "^2.2.2"
+    loose-envify "^1.3.1"
     path-to-regexp "^1.5.3"
-    query-string "4.2.3"
-    react-broadcast "^0.1.1"
+    warning "^3.0.0"
 
 react-test-renderer@15.3.2:
   version "15.3.2"
@@ -5652,7 +5676,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@2, request@2.74.0, request@^2.61.0:
+request@2, request@2.74.0, request@^2.55.0, request@^2.61.0:
   version "2.74.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.74.0.tgz#7693ca768bbb0ea5c8ce08c084a45efa05b892ab"
   dependencies:
@@ -5678,7 +5702,7 @@ request@2, request@2.74.0, request@^2.61.0:
     tough-cookie "~2.3.0"
     tunnel-agent "~0.4.1"
 
-request@^2.55.0, request@^2.75.0:
+request@^2.75.0:
   version "2.75.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.75.0.tgz#d2b8268a286da13eaa5d01adf5d18cc90f657d93"
   dependencies:
@@ -6514,6 +6538,10 @@ validate-npm-package-license@^3.0.1:
 validator@^5.4.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/validator/-/validator-5.7.0.tgz#7a87a58146b695ac486071141c0c49d67da05e5c"
+
+value-equal@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-0.2.0.tgz#4f41c60a3fc011139a2ec3d3340a8998ae8b69c0"
 
 vary@~1.1.0:
   version "1.1.0"

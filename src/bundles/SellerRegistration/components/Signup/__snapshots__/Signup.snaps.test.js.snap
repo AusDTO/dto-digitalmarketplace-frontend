@@ -103,7 +103,7 @@ exports[`test Signup renders 1`] = `
             href="/domains"
             onClick={[Function]}>
             <span>
-              Products and services
+              Services
             </span>
           </a>
         </li>
@@ -120,6 +120,16 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/products"
+            onClick={[Function]}>
+            <span>
+              Products
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/review"
             onClick={[Function]}>
             <span>
@@ -130,20 +140,10 @@ exports[`test Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/finish"
+            href="/submit"
             onClick={[Function]}>
             <span>
-              Finish
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/profile-finish"
-            onClick={[Function]}>
-            <span>
-              Finish
+              Declaration
             </span>
           </a>
         </li>
@@ -154,20 +154,55 @@ exports[`test Signup renders 1`] = `
     className="col-xs-12 col-sm-8 col-sm-push-1">
     <div>
       <h1>
-        Get ready for tomorrow’s Marketplace
+        Joining the Digital Marketplace
       </h1>
       <p>
-        In 2017, we’ll be giving you the opportunity to offer lots more services, digital products and showcase your expertise in a streamlined environment.
+        To become a registered seller you need to tell us about your business.
       </p>
       <p>
-        You can begin adding more to your seller profile in anticipation of these changes now. It doesn’t matter if you don’t complete all your profile updates in one session, we’ll save as you go.
+         The information you share will be used to create your seller profile, and later to confirm you meet the 
+        <a
+          href="/assessment-criteria"
+          rel="external"
+          target="_blank">
+          assessment criteria
+        </a>
+         to apply for opportunities.
       </p>
+      <p>
+         It will take at least 30 minutes. But don’t worry, your information will be saved automatically if you need to come back later.
+      </p>
+      <h2>
+        You\'ll need:
+      </h2>
+      <ul>
+        <li>
+          Your basic business information
+        </li>
+        <li>
+          A financial viability statement from your accountant
+        </li>
+        <li>
+          Proof of worker’s compensation and public liability insurance
+        </li>
+      </ul>
+      <h2>
+        You\'ll be asked to:
+      </h2>
+      <ul>
+        <li>
+          Create case studies about past projects and references
+        </li>
+        <li>
+          Accept the Marketplace Master Agreement
+        </li>
+      </ul>
       <p>
         <a
           href="#"
           onClick={[Function]}
           role="button">
-          Start Now 
+          Start now 
         </a>
       </p>
     </div>
@@ -280,7 +315,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/domains"
             onClick={[Function]}>
             <span>
-              Products and services
+              Services
             </span>
           </a>
         </li>
@@ -297,6 +332,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/products"
+            onClick={[Function]}>
+            <span>
+              Products
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/review"
             onClick={[Function]}>
             <span>
@@ -307,20 +352,10 @@ exports[`test Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/finish"
+            href="/submit"
             onClick={[Function]}>
             <span>
-              Finish
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/profile-finish"
-            onClick={[Function]}>
-            <span>
-              Finish
+              Declaration
             </span>
           </a>
         </li>
@@ -334,7 +369,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your contacts
+          Contact details
         </h1>
       </header>
       <article
@@ -360,7 +395,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby="representative-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="representative"
               maxLength={undefined}
               name="representative"
@@ -382,7 +417,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="phone"
               maxLength={undefined}
               name="phone"
@@ -404,7 +439,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="email"
               maxLength={undefined}
               name="email"
@@ -431,7 +466,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby="contact_name-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_name"
               maxLength={undefined}
               name="contact_name"
@@ -453,7 +488,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_phone"
               maxLength={undefined}
               name="contact_phone"
@@ -475,7 +510,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_email"
               maxLength={undefined}
               name="contact_email"
@@ -607,7 +642,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/domains"
             onClick={[Function]}>
             <span>
-              Products and services
+              Services
             </span>
           </a>
         </li>
@@ -624,6 +659,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/products"
+            onClick={[Function]}>
+            <span>
+              Products
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/review"
             onClick={[Function]}>
             <span>
@@ -634,20 +679,10 @@ exports[`test Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/finish"
+            href="/submit"
             onClick={[Function]}>
             <span>
-              Finish
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/profile-finish"
-            onClick={[Function]}>
-            <span>
-              Finish
+              Declaration
             </span>
           </a>
         </li>
@@ -661,17 +696,22 @@ exports[`test Signup renders populated Your Info form 1`] = `
       <header>
         <h1
           tabIndex="-1">
-          Check your contacts
+          Contact details
         </h1>
       </header>
       <article
         role="main">
         <form
-          action="/documents"
+          action="https://httpbin.org/post"
           id="yourinfo"
           method="post"
           onReset={[Function]}
           onSubmit={[Function]}>
+          <input
+            id="csrf_token"
+            name="csrf_token"
+            type="hidden"
+            value="abc" />
           <div
             className="field">
             <label
@@ -687,7 +727,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby="representative-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="representative"
               maxLength={undefined}
               name="representative"
@@ -709,7 +749,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="phone"
               maxLength={undefined}
               name="phone"
@@ -731,7 +771,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="email"
               maxLength={undefined}
               name="email"
@@ -758,7 +798,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby="contact_name-hint"
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_name"
               maxLength={undefined}
               name="contact_name"
@@ -780,7 +820,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_phone"
               maxLength={undefined}
               name="contact_phone"
@@ -802,7 +842,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <input
               aria-describedby={undefined}
               className=""
-              disabled={undefined}
+              disabled={false}
               id="contact_email"
               maxLength={undefined}
               name="contact_email"

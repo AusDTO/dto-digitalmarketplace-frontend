@@ -10,7 +10,7 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
 
   <thead>
     <tr>
-      <th>created_at</th>
+      <th>created_at/submitted_at</th>
       <th>name</th>
       <th>status</th>
       <th>jira</th>
@@ -20,15 +20,20 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
 
   <tbody>
 
-  {applications.map((a, i) =>
+  {applications.map((a, i) => {
+    var latestDate = a.created_at;
+    if (a.submitted_at) {
+        latestDate = a.submitted_at;
+    }
+    return (
     <tr key={a.id}>
-      <td>{format(new Date(a.created_at), 'YYYY-MM-DD HH:mm')}</td>
-      <td><a href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
+      <td>{format(new Date(latestDate), 'YYYY-MM-DD HH:mm')}</td>
+      <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
         {a.supplier_code && (<span className="badge--default">Existing Seller</span>)}</a></td>
       <td>{a.status}</td>
       <td>
         {a.tasks && a.tasks.subtasks.map((t, i) =>
-          <a className={t.status} key={t.key} href={t.link}>{t.summary}</a>
+          <a target="_blank" rel="external" className={t.status} key={t.key} href={t.link}>{t.summary}</a>
         )}
       </td>
         <td>{ a.status === 'submitted' &&
@@ -44,7 +49,7 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
              }} name="Accept">Accept</button>
         }</td>
     </tr>
-  )}
+  )})}
   </tbody></table></div>
 )
 

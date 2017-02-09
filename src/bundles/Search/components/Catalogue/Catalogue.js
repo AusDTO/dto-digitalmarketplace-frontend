@@ -7,6 +7,7 @@ import isEmpty from 'lodash/isEmpty';
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
 import Icon         from '../../../../shared/Icon';
+import LocalNav     from '../../../../shared/LocalNav';
 
 import Pagination from '../Pagination';
 
@@ -19,14 +20,13 @@ export class Catalogue extends React.Component {
 
   render () {
     const { actions, results = [], search = {}, pagination = {} } = this.props;
-
     return (
       <section>
         <article className="row">
-          <div className="col-xs-12 col-sm-3">
+          <div className="col-xs-12 col-sm-4">
             <h2 styleName="heading">Seller catalogue</h2>
           </div>
-          <div className="col-xs-12 col-sm-8 col-sm-push-1" styleName="autocomplete">
+          <div className="col-xs-12 col-sm-8" styleName="autocomplete">
             <form onSubmit={e => e.preventDefault()} styleName="keyword-search">
               <article className="col-xs-10">
                 <label htmlFor="keyword" className="visually-hidden">
@@ -37,7 +37,7 @@ export class Catalogue extends React.Component {
                   inputProps={{
                     name: 'keyword',
                     id: 'keyword',
-                    placeholder: 'Search by company name, role you need or the outcome you’re after'
+                    placeholder: 'Type to search by company name, role you need or the outcome you\'re after'
                   }}
                   items={results.slice(0, 10)}
                   getItemValue={({ name }) => name}
@@ -74,8 +74,8 @@ export class Catalogue extends React.Component {
           </div>
         </article>
         <article>
-          <aside className="col-xs-12 col-sm-4" styleName="sidebar">
-            <h4>Filter your results</h4>
+          <h4 className="local-nav-heading">Filter your results</h4>
+          <LocalNav className="col-xs-12 col-sm-4" navClassName="filter-navigation" text="Filter your results">
             
             <a href="">Learn more about these services</a>
 
@@ -83,39 +83,49 @@ export class Catalogue extends React.Component {
               <CheckboxList 
                 id="role" 
                 list={search.role}
-                onChange={actions.updateRole} 
+                onChange={actions.updateRole}
               />
+
+              <hr/>
+
               <CheckboxList 
                 id="type" 
                 list={search.type}
-                onChange={actions.updateType} 
+                onChange={actions.updateType}
               />
             </form>
-          </aside>
+          </LocalNav>
           <div className="col-xs-12 col-sm-8">
-
-            <article styleName="filters">
-              <strong styleName="active-filter filter">
-                <span>{search.results.length}</span> Sellers found
-              </strong>
-              <hr/>
-            </article>
-
             {isEmpty(search.results) ? (
-              <h4>No results found</h4>
+              <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
+                <h2>No exact matches</h2>
+                <p>Try tweaking your search criteria for more results or <a href="" onClick={(e) => {
+                  e.preventDefault();
+                  actions.resetQuery();
+                }}>clear all and start again</a>.</p>
+              </article>
             ) : (
-              <div>
-                {search.results.map((result, i) => (
-                  <Card {...result} key={i} />
-                ))}
+              <div styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
+                <article styleName="filters">
+                  <strong styleName="active-filter filter">
+                    <span>{search.results.length}</span> Sellers found
+                  </strong>
+                  <hr/>
+                </article>
+
+                <article>
+                  {search.results.map((result, i) => (
+                    <Card {...result} key={i} />
+                  ))}
+                </article>
 
                 <hr/>
 
                 <Pagination
                   {...pagination}
-                  onClick={(page) => actions.updatePage(page)}
-                  onBack={(page) => actions.updatePage(page)}
-                  onNext={(page) => actions.updatePage(page)}
+                  onClick={actions.updatePage}
+                  onBack={actions.updatePage}
+                  onNext={actions.updatePage}
                 />
               </div>
             )}

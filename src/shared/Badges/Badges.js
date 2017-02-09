@@ -4,13 +4,13 @@ import get from 'lodash/get';
 
 import styles from './Badges.css'; // eslint-disable-line no-unused-vars
 
-const titleMap = {
+export const titleMap = {
   indigenous: 'Indigenous business',
   nfp_social_enterprise: 'Not-for-profit',
   recruitment: 'Recruiter',
   sme: 'SME',
   start_up: 'Start up',
-  regional: 'Regional or non-metro based business',
+  disability: 'Australian disability enterprise',
   product: 'Product based business'
 };
 

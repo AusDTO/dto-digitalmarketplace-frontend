@@ -26,8 +26,8 @@ class AwardsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">{title}</h1>
-                    <p>This is your chance to tell buyers about any awards you’ve won or certifications you’ve
-                        earned.</p>
+                    <p>This is your opportunity to share some of the things you’re proud of.
+                        All questions are optional but powerful for helping your business attract potential buyers. </p>
 
                 </header>
                 <article role="main">
@@ -44,6 +44,25 @@ class AwardsForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
+                        <MultiInput
+                            id="certifications"
+                            model={`${model}.certifications`}
+                            name="certifications"
+                            htmlFor="certifications"
+                            label="Accreditations"
+                            controlProps={{defaultRows: 2}}
+                            description="Does your business have any formal accreditations you want to share? "
+                        />
+
+                        <MultiInput
+                            id="boards"
+                            model={`${model}.boards`}
+                            name="boards"
+                            htmlFor="boards"
+                            label="Industry engagement"
+                            controlProps={{defaultRows: 2}}
+                            description="Are you involved in any boards, committees or groups for your industry?"
+                        />
 
                         <MultiInput
                             id="awards"
@@ -54,26 +73,6 @@ class AwardsForm extends BaseForm {
                             controlProps={{defaultRows: 2}}
                             description="Has your work been recognised and awarded within your industry or by others?"
 
-                        />
-
-                        <MultiInput
-                            id="certifications"
-                            model={`${model}.certifications`}
-                            name="certifications"
-                            htmlFor="certifications"
-                            label="Certifications"
-                            controlProps={{defaultRows: 2}}
-                            description="Does your business have any formal certifications you want to share?"
-                        />
-
-                        <MultiInput
-                            id="boards"
-                            model={`${model}.boards`}
-                            name="boards"
-                            htmlFor="boards"
-                            label="Boards and committees"
-                            controlProps={{defaultRows: 2}}
-                            description="Do you sit on any relevant industry advisory boards or committees?"
                         />
 
                         {children}
@@ -87,7 +86,7 @@ class AwardsForm extends BaseForm {
 }
 
 AwardsForm.defaultProps = {
-    title: 'Select any descriptions that apply to your business'
+    title: 'Awards and accreditations'
 }
 
 const mapStateToProps = (state) => {

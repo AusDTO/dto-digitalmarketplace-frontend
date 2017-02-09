@@ -24,16 +24,15 @@ class SignupForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1>Ready to join the Marketplace?</h1>
+          <h1>There you are!</h1>
           <p>
-            We’re looking for the very best digital businesses to help deliver 21st century products and services to government.
+            We’ve been looking for outstanding digital businesses to help deliver 21st century products and services to local, state and federal government through the Digital Marketplace.
           </p>
           <p>
-            If you think you have what it takes, you can apply right here.
+            And better still, we’ve streamlined the process so you could be competing for new business within weeks — rather than months.
           </p>
-          <p>You’ll be asked to create a profile about your business and, if you meet our <a href="/assessment-criteria">evaluation criteria</a>, you'll be able to do business in the Marketplace.
-</p>
         </header>
+        <h2> Ready to get started?</h2>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
           <Form model={model}
@@ -64,6 +63,7 @@ class SignupForm extends BaseForm {
               model={`${model}.email`}
               name="email"
               id="email"
+              type="email"
               htmlFor="email"
               label="Email address"
               validators={{ required }}
@@ -77,7 +77,7 @@ class SignupForm extends BaseForm {
             <input type="submit" value='Create your seller account' role="button" />
             <p>
               <small>
-                By creating a seller account you agree to the <a href="/terms-of-use">Terms of Use</a>.
+                All activity on the Digital Marketplace is subject to our <a href="/terms-of-use">Terms of Use</a>.
               </small>
             </p>             
           </Form>

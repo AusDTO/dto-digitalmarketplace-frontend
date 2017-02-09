@@ -90,4 +90,14 @@ test('minObjectLength', () => {
   expect(validator.minObjectLength({}, 3)).toBe(false);
 
   expect(validator.minObjectLength()).toBe(false);
-})
+});
+
+test('limitWords', () => {
+  const limitValidator = validator.limitWords(5);
+
+  expect(limitValidator('one two three four five')).toBe(true);
+  expect(limitValidator('one four five')).toBe(true);
+  expect(limitValidator('one two three four five            ')).toBe(true);
+
+  expect(limitValidator('one two three four five six')).toBe(false);
+});

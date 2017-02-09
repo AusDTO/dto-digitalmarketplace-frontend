@@ -24,10 +24,13 @@
             "User research and Design": false
         },
         "type": {
-          "Works regionally or interstate": false,
-          "50% Indigenous owned business": false,
-          "Australian disability enterprise": false,
-          "Not-for-profit organisation": false
+            "start_up": false,
+            "sme": false,
+            "nfp_social_enterprise": false,
+            "product": false,
+            "indigenous": false,
+            "regional": false,
+            "disability": false
         },
         "keyword": null,
         "results": [
