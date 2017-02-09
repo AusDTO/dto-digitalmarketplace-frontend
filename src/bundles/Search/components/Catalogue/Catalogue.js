@@ -73,28 +73,30 @@ export class Catalogue extends React.Component {
             </form>
           </div>
         </article>
-        <article>
-          <h4 className="local-nav-heading">Filter your results</h4>
-          <LocalNav className="col-xs-12 col-sm-4" navClassName="filter-navigation" text="Filter your results">
-            
-            <a href="">Learn more about these services</a>
+        <article className="row">
+          <section className="col-xs-12 col-sm-4">
+            <h4 className="local-nav-heading">Filter your results</h4>
+            <LocalNav navClassName="filter-navigation" text="Filter your results">
 
-            <form onSubmit={e => e.preventDefault()}>
-              <CheckboxList 
-                id="role" 
-                list={search.role}
-                onChange={actions.updateRole}
-              />
+              <a href="">Learn more about these services</a>
 
-              <hr/>
+              <form onSubmit={e => e.preventDefault()}>
+                <CheckboxList
+                  id="role"
+                  list={search.role}
+                  onChange={actions.updateRole}
+                />
 
-              <CheckboxList 
-                id="type" 
-                list={search.type}
-                onChange={actions.updateType}
-              />
-            </form>
-          </LocalNav>
+                <hr/>
+
+                <CheckboxList
+                  id="type"
+                  list={search.type}
+                  onChange={actions.updateType}
+                />
+              </form>
+            </LocalNav>
+          </section>
           <div className="col-xs-12 col-sm-8">
             {isEmpty(search.results) ? (
               <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
