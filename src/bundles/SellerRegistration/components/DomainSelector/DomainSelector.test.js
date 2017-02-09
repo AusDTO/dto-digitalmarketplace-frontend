@@ -22,7 +22,7 @@ test('DomainSelector renders', () => {
   });
 
   const component = renderer.create(
-    <StaticRouter>
+    <StaticRouter context={{}}>
       <Provider store={store}>
         <DomainSelector />
       </Provider>
@@ -51,7 +51,7 @@ test('DomainSelector renders with populated fields', () => {
   });
 
   const component = renderer.create(
-    <StaticRouter>
+    <StaticRouter context={{}}>
       <Provider store={store}>
         <DomainSelector />
       </Provider>
