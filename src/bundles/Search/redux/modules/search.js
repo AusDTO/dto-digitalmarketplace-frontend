@@ -10,6 +10,7 @@ import findKey from 'lodash/findKey';
 const UPDATE_ROLE     = 'search/role';
 const UPDATE_TYPE     = 'search/type';
 const UPDATE_KEYWORD  = 'search/keyword';
+const UPDATE_SORT     = 'search/sort';
 const SYNC_RESULTS    = 'search/results';
 const PRE_SEARCH      = 'search/pre';
 const RESET_QUERY     = 'search/reset';
@@ -17,6 +18,7 @@ const RESET_QUERY     = 'search/reset';
 const initialState = {
   role: {},
   type: {},
+  sort_by: 'a-z',
   keyword: '',
   results: [],
   querying: false
@@ -106,16 +108,18 @@ export default function reducer(state = initialState, action = {}) {
         [value]: !state.role[value]
       };
       
-      return Object.assign({}, state, { role });
+      return { ...state, role };
     case UPDATE_TYPE:
       const type = {
         ...state.type,
         [value]: !state.type[value]
       };
       
-      return Object.assign({}, state, { type });
+      return { ...state, type };
     case UPDATE_KEYWORD:
-      return Object.assign({}, state, { keyword: value });
+      return { ...state, keyword: value };
+    case UPDATE_SORT:
+      return { ...state, sort_by: value };
     case PRE_SEARCH:
       return {
         ...state,
@@ -186,12 +190,14 @@ export const search = (type, value) => {
 export const updateRole    = (e)     => search(UPDATE_ROLE, e.target.value);
 export const updateType    = (e)     => search(UPDATE_TYPE, e.target.value);
 export const updateKeyword = (value) => search(UPDATE_KEYWORD, value);
+export const updateSort    = (e)     => search(UPDATE_SORT, e.target.value);
 export const resetQuery    = ()      => search(RESET_QUERY);
 
 export const actionCreators = {
  updateRole,
  updateType,
  updateKeyword,
+ updateSort,
  resetQuery,
  search
 };
@@ -200,6 +206,7 @@ export const actionTypes = {
   UPDATE_ROLE,
   UPDATE_TYPE,
   UPDATE_KEYWORD,
+  UPDATE_SORT,
   SYNC_RESULTS,
   PRE_SEARCH,
   RESET_QUERY

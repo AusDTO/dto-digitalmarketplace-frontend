@@ -81,3 +81,26 @@
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
+
+.sortBy div input[type='radio'] + label {
+  margin: 0;
+  padding-bottom: 11px;
+}
+
+.sortBy div input[type='radio']:checked + label {
+  outline: none;
+}
+
+.sortBy fieldset {
+  margin: 0;
+}
+
+.sortBy fieldset > div {
+  display: inline-block;
+}
+
+.sortBy fieldset > legend {
+  float: left;
+  line-height: 48px;
+  margin: 0;
+}

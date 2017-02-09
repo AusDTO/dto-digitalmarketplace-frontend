@@ -108,10 +108,43 @@ export class Catalogue extends React.Component {
               </article>
             ) : (
               <div styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
-                <article styleName="filters">
-                  <strong styleName="active-filter filter">
-                    <span>{search.results.length}</span> Sellers found
-                  </strong>
+                <article styleName="filters" className="row">
+                  <div className="row">
+                    <div className="col-xs-12 col-sm-6">
+                      <strong styleName="active-filter filter">
+                        <span>{pagination.total}</span> Sellers found
+                      </strong>
+                    </div>
+
+                    <form className="col-xs-12 col-sm-6" styleName="sortBy">
+                      <fieldset>
+                        <legend>Sort by</legend>
+                        <div>
+                          <input
+                            type="radio"
+                            name="sort_by"
+                            id="sort-a-z"
+                            value="a-z"
+                            checked={search.sort_by === 'a-z'}
+                            onChange={actions.updateSort}
+                          />
+                          <label htmlFor="sort-a-z">A to Z</label>
+                        </div>
+
+                        <div>
+                          <input
+                            type="radio"
+                            name="sort_by"
+                            id="sort-latest"
+                            value="latest"
+                            checked={search.sort_by === 'latest'}
+                            onChange={actions.updateSort}
+                          />
+                          <label htmlFor="sort-latest">Newest</label>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
                   <hr/>
                 </article>
 
