@@ -5,7 +5,9 @@ const UPDATE_PAGE = 'pagination/page';
 const initialState = {
   pages: [],
   page: 1,
-  pageCount: 1
+  pageCount: 1,
+  total: 0,
+  total_products: 0
 };
 
 export default function reducer(state = initialState, action = {}) {

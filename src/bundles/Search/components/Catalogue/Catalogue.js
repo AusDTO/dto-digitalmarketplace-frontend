@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Autocomplete from 'react-autocomplete';
 import isEmpty from 'lodash/isEmpty';
+import { Link } from 'react-router-dom';
 
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
@@ -19,7 +20,10 @@ import './Catalogue.css';
 export class Catalogue extends React.Component {
 
   render () {
-    const { actions, results = [], search = {}, pagination = {} } = this.props;
+    const { actions, search = {}, pagination = {} } = this.props;
+
+    const cards = search.view === 'sellers' ? search.results : search.products;
+
     return (
       <section>
         <article className="row">
@@ -39,7 +43,7 @@ export class Catalogue extends React.Component {
                     id: 'keyword',
                     placeholder: 'Type to search by company name, role you need or the outcome you\'re after'
                   }}
-                  items={results.slice(0, 10)}
+                  items={search.results.slice(0, 10)}
                   getItemValue={({ name }) => name}
                   onSelect={(value, item) => actions.updateKeyword(value)}
                   onChange={(e, value) => actions.updateKeyword(value)}
@@ -98,7 +102,7 @@ export class Catalogue extends React.Component {
             </LocalNav>
           </section>
           <div className="col-xs-12 col-sm-8">
-            {isEmpty(search.results) ? (
+            {isEmpty(cards) ? (
               <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                 <h2>No exact matches</h2>
                 <p>Try tweaking your search criteria for more results or <a href="" onClick={(e) => {
@@ -110,13 +114,28 @@ export class Catalogue extends React.Component {
               <div styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                 <article styleName="filters" className="row">
                   <div className="row">
-                    <div className="col-xs-12 col-sm-6">
-                      <strong styleName="active-filter filter">
+                    <div className="col-xs-12 col-sm-7">
+                      <Link
+                        to={{ search: 'view=sellers' }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          actions.updateView('sellers');
+                        }}
+                        styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
                         <span>{pagination.total}</span> Sellers found
-                      </strong>
+                      </Link>
+                      <Link
+                        to={{ search: 'view=products' }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          actions.updateView('products')
+                        }}
+                        styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
+                        <span>{pagination.total_products}</span> Products found
+                      </Link>
                     </div>
 
-                    <form className="col-xs-12 col-sm-6" styleName="sortBy">
+                    <form className="col-xs-12 col-sm-5" styleName="sortBy">
                       <fieldset>
                         <legend>Sort by</legend>
                         <div>
@@ -149,7 +168,7 @@ export class Catalogue extends React.Component {
                 </article>
 
                 <article>
-                  {search.results.map((result, i) => (
+                  {cards.map((result, i) => (
                     <Card {...result} key={i} />
                   ))}
                 </article>

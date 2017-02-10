@@ -26,7 +26,10 @@ test('reducer should return initial state', () => {
     type: {},
     querying: false,
     results: [],
-    keyword: ''
+    keyword: '',
+    sort_by: 'a-z',
+    view: 'sellers',
+    products: [],
   });
 });
 
@@ -43,7 +46,10 @@ test('should handle UPDATE_ROLE when role doesn\'t exist', () => {
     type: {},
     querying: false,
     results: [],
-    keyword: ''
+    keyword: '',
+    sort_by: 'a-z',
+    view: 'sellers',
+    products: [],
   };
 
   expect(reducer(undefined, action)).toEqual(expectedResult);
@@ -85,7 +91,10 @@ test('should handle UPDATE_TYPE when type doesn\'t exist', () => {
     },
     querying: false,
     results: [],
-    keyword: ''
+    keyword: '',
+    sort_by: 'a-z',
+    view: 'sellers',
+    products: [],
   };
 
   expect(reducer(undefined, action)).toEqual(expectedResult);

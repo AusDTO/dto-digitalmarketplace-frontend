@@ -43,19 +43,31 @@
   margin: 0;
 }
 
-.active-filter {
-  border-bottom: solid 6px #17788d;
-}
-
+/**
+ * These !importants are ugly
+ * But they exist to combat ui-kit's high specificity
+ * on anchor tag.
+ */
 .filter {
   display: inline-block;
   font-size: 1rem;
+  margin-right: 1rem;
+  border-bottom: none !important;
+}
+
+.filter:hover {
+  background-color: transparent !important;
 }
 
 .filter span {
   font-size: 1.65rem;
   display: inline-block;
   margin-right: 0.25rem;
+}
+
+.active-filter {
+  border-bottom: solid 6px #17788d !important;
+  font-weight: 700;
 }
 
 .keyword-search > article > div {
@@ -85,6 +97,7 @@
 .sortBy div input[type='radio'] + label {
   margin: 0;
   padding-bottom: 11px;
+  padding-left: 50px;
 }
 
 .sortBy div input[type='radio']:checked + label {
