@@ -1,5 +1,9 @@
 import validator from '../validators'
 
+import startOfToday from 'date-fns/start_of_today';
+import addDays from 'date-fns/add_days';
+import format from 'date-fns/format';
+
 test('required', () => {
 	expect(validator.required('')).toBeFalsy()
 	expect(validator.required(false)).toBeFalsy()
@@ -8,6 +12,20 @@ test('required', () => {
 	expect(validator.required('Words')).toBeTruthy()
 	expect(validator.required(true)).toBeTruthy()
 })
+
+test('validDate', () => {
+
+    expect(validator.validDate('')).toBeFalsy();
+    expect(validator.validDate(false)).toBeFalsy();
+    expect(validator.validDate('   ')).toBeFalsy();
+
+    expect(validator.validDate('2016-01-01')).toBeFalsy();
+    expect(validator.validDate(format(startOfToday(), 'YYYY-MM-DD'))).toBeFalsy();
+
+    expect(validator.validDate('2038-01-01')).toBeTruthy();
+    expect(validator.validDate(format(addDays(startOfToday(),1), 'YYYY-MM-DD'))).toBeTruthy();
+})
+
 
 test('minArrayLength', () => {
 	const min = validator.minArrayLength(2)
