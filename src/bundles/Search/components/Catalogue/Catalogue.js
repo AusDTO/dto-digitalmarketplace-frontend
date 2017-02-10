@@ -102,86 +102,94 @@ export class Catalogue extends React.Component {
               </LocalNav>
             </section>
             <div className="col-xs-12 col-sm-8">
-              {isEmpty(cards) ? (
+              {search.error ? (
                 <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
-                  <h2>No exact matches</h2>
-                  <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
+                  <h2>Something went wrong!</h2>
+                  <p><Link to="/" onClick={(e) => {
                     e.preventDefault();
                     actions.resetQuery();
-                  }}>clear all and start again</Link>.</p>
+                  }}>Reset and try again</Link>.</p>
                 </article>
-              ) : (
-                <div styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
-                  <article styleName="filters" className="row">
-                    <div className="row">
-                      <div className="col-xs-12 col-sm-7">
-                        <Link
-                          to={{ search: 'view=sellers' }}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            actions.updateView('sellers');
-                          }}
-                          styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
-                          <span>{pagination.total}</span> Sellers found
-                        </Link>
-                        <Link
-                          to={{ search: 'view=products' }}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            actions.updateView('products')
-                          }}
-                          styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
-                          <span>{pagination.total_products}</span> Products found
-                        </Link>
-                      </div>
+              ) : isEmpty(cards) ? (
+                  <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
+                    <h2>No exact matches</h2>
+                    <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
+                      e.preventDefault();
+                      actions.resetQuery();
+                    }}>clear all and start again</Link>.</p>
+                  </article>
+                ) : (
+                  <div styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
+                    <article styleName="filters" className="row">
+                      <div className="row">
+                        <div className="col-xs-12 col-sm-7">
+                          <Link
+                            to={{ search: 'view=sellers' }}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              actions.updateView('sellers');
+                            }}
+                            styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
+                            <span>{pagination.total}</span> Sellers found
+                          </Link>
+                          <Link
+                            to={{ search: 'view=products' }}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              actions.updateView('products')
+                            }}
+                            styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
+                            <span>{pagination.total_products}</span> Products found
+                          </Link>
+                        </div>
 
-                      <div className="col-xs-12 col-sm-5" styleName="sortBy">
-                        <fieldset>
-                          <legend>Sort by</legend>
-                          <div>
-                            <input
-                              type="radio"
-                              name="sort_by"
-                              id="sort-a-z"
-                              value="a-z"
-                              checked={search.sort_by === 'a-z'}
-                              onChange={actions.updateSort}
-                            />
-                            <label htmlFor="sort-a-z">A to Z</label>
-                          </div>
+                        <div className="col-xs-12 col-sm-5" styleName="sortBy">
+                          <fieldset>
+                            <legend>Sort by</legend>
+                            <div>
+                              <input
+                                type="radio"
+                                name="sort_by"
+                                id="sort-a-z"
+                                value="a-z"
+                                checked={search.sort_by === 'a-z'}
+                                onChange={actions.updateSort}
+                              />
+                              <label htmlFor="sort-a-z">A to Z</label>
+                            </div>
 
-                          <div>
-                            <input
-                              type="radio"
-                              name="sort_by"
-                              id="sort-latest"
-                              value="latest"
-                              checked={search.sort_by === 'latest'}
-                              onChange={actions.updateSort}
-                            />
-                            <label htmlFor="sort-latest">Newest</label>
-                          </div>
-                        </fieldset>
+                            <div>
+                              <input
+                                type="radio"
+                                name="sort_by"
+                                id="sort-latest"
+                                value="latest"
+                                checked={search.sort_by === 'latest'}
+                                onChange={actions.updateSort}
+                              />
+                              <label htmlFor="sort-latest">Newest</label>
+                            </div>
+                          </fieldset>
+                        </div>
                       </div>
-                    </div>
+                      <hr/>
+                    </article>
+
+                    <article>
+                      {cards.map((result, i) => (
+                        <Card {...result} key={i} />
+                      ))}
+                    </article>
+
                     <hr/>
-                  </article>
 
-                  <article>
-                    {cards.map((result, i) => (
-                      <Card {...result} key={i} />
-                    ))}
-                  </article>
-
-                  <hr/>
-
-                  <Pagination
-                    {...pagination}
-                    onClick={actions.updatePage}
-                    onBack={actions.updatePage}
-                    onNext={actions.updatePage}
-                  />
-                </div>
+                    <Pagination
+                      {...pagination}
+                      onClick={actions.updatePage}
+                      onBack={actions.updatePage}
+                      onNext={actions.updatePage}
+                    />
+                  </div>
               )}
 
             </div>

@@ -1,11 +1,8 @@
-import { titleMap } from '../../../../shared/Badges';
-
 import { actionTypes as paginationActionTypes } from './pagination';
 
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
-import findKey from 'lodash/findKey';
 
 const UPDATE_ROLE     = 'search/role';
 const UPDATE_TYPE     = 'search/type';
@@ -14,6 +11,7 @@ const UPDATE_SORT     = 'search/sort';
 const UPDATE_VIEW     = 'search/view';
 const SYNC_RESULTS    = 'search/results';
 const PRE_SEARCH      = 'search/pre';
+const ERROR_SEARCH    = 'search/error';
 const RESET_QUERY     = 'search/reset';
 
 const initialState = {
@@ -24,8 +22,19 @@ const initialState = {
   keyword: '',
   results: [],
   products: [],
-  querying: false
+  querying: false,
+  error: false
 }
+
+const statusCheck = (response) => {
+    if (response.status >= 200 && response.status < 300) {
+        return response
+    } else {
+        var error = new Error(response.statusText)
+        error.response = response
+        throw error
+    }
+} 
 
 const removeFromObject = (object, predicate) => {
   return Object.keys(object)
@@ -36,7 +45,7 @@ const removeFromObject = (object, predicate) => {
 }
 
 export const scrubState = (state) => {
-  let result = ['results', 'querying'].reduce((obj, key) => {
+  let result = ['results', 'querying', 'error'].reduce((obj, key) => {
     return removeFromObject(obj, (k) => key !== k)
   }, state);
 
@@ -87,6 +96,8 @@ export const buildQueryString = ({ search = {}, pagination = {} } = {}) => {
 export default function reducer(state = initialState, action = {}) {
   const { result, type: actionType, value } = action;
   switch (actionType) {
+    case ERROR_SEARCH:
+      return { ...state, error: true };
     case UPDATE_ROLE:
       const role = {
         ...state.role,
@@ -110,7 +121,8 @@ export default function reducer(state = initialState, action = {}) {
     case PRE_SEARCH:
       return {
         ...state,
-        querying: true
+        querying: true,
+        error: false
       };
     case SYNC_RESULTS:
       const { results } = result.search;
@@ -140,7 +152,6 @@ export const preSearch = () => ({ type: PRE_SEARCH });
 export const search = (type, value, options = {}) => {
   return (dispatch, getState, { api, debounceQueue, router }) => {
     const { doSearch = true } = options;
-
 
     dispatch(preSearch());
     // Update either role, type or keyword.
@@ -173,8 +184,10 @@ export const search = (type, value, options = {}) => {
           'Accept': 'application/json'
         }
       })
+      .then(statusCheck)
       .then(res => res.json())
-      .then(json => dispatch(syncResult(json)));
+      .then(json => dispatch(syncResult(json)))
+      .catch(() => dispatch({ type: ERROR_SEARCH }));
     }, 500);
 
     // Cancel queued requests and enqueue the latest one

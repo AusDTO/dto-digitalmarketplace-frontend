@@ -30,6 +30,7 @@ test('reducer should return initial state', () => {
     sort_by: 'a-z',
     view: 'sellers',
     products: [],
+    error: false
   });
 });
 
@@ -50,6 +51,7 @@ test('should handle UPDATE_ROLE when role doesn\'t exist', () => {
     sort_by: 'a-z',
     view: 'sellers',
     products: [],
+    error: false
   };
 
   expect(reducer(undefined, action)).toEqual(expectedResult);
@@ -95,6 +97,7 @@ test('should handle UPDATE_TYPE when type doesn\'t exist', () => {
     sort_by: 'a-z',
     view: 'sellers',
     products: [],
+    error: false
   };
 
   expect(reducer(undefined, action)).toEqual(expectedResult);
@@ -209,27 +212,6 @@ test('scrubState', () => {
   expect(scrubState(state)).toEqual(expectedState);
 });
 
-
-test('convertTypes', () => {
-  const input = {
-    type: {
-      'Indigenous business': true,
-      'Not-for-profit': true,
-      'Start up': true
-    }
-  };
-
-  const output = {
-    type: {
-      indigenous: true,
-      nfp_social_enterprise: true,
-      start_up: true
-    }
-  };
-
-  expect(convertTypes(input)).toEqual(output);
-});
-
 test('buildQueryString', () => {
   const input = {
     search: {
@@ -248,7 +230,7 @@ test('buildQueryString', () => {
   };
 
   const output = [
-    'type=start_up',
+    'type=Start up',
     'role=Content Design',
     'role=Agile Delivery',
     'keyword=website',
