@@ -1,0 +1,14 @@
+.user-type fieldset span input[type='radio'] + label{
+	display:inline-block;
+	width:50%;
+	border: 2px solid #bbbbbb;
+}
+
+.user-type fieldset span input[type='radio']:checked + label{
+	outline:none;
+	border: 2px solid #717171;
+}
+
+.employment-status div fieldset legend {
+	font-weight: normal;
+}
