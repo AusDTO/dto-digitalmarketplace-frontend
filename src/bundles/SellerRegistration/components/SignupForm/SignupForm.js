@@ -10,6 +10,9 @@ import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
+import RadioList     from '../../../../shared/form/RadioList';
+
+import './SignupForm.css'
 
 class SignupForm extends BaseForm {
 
@@ -20,19 +23,14 @@ class SignupForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, children, onSubmit } = this.props;
+    const { csrf_token, model, form, children, signupForm, buyer_url, seller_url, onSubmit } = this.props;
+    const isBuyer = signupForm.user_type === 'buyer';
+    const action = isBuyer ? buyer_url : seller_url;
     return (
       <Layout>
         <header>
-          <h1>There you are!</h1>
-          <p>
-            We’ve been looking for outstanding digital businesses to help deliver 21st century products and services to local, state and federal government through the Digital Marketplace.
-          </p>
-          <p>
-            And better still, we’ve streamlined the process so you could be competing for new business within weeks — rather than months.
-          </p>
+          <h1>Create an account</h1>
         </header>
-        <h2> Ready to get started?</h2>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
           <Form model={model}
@@ -60,11 +58,11 @@ class SignupForm extends BaseForm {
             />
 
             <Textfield
-              model={`${model}.email`}
-              name="email"
-              id="email"
+              model={`${model}.email_address`}
+              name="email_address"
+              id="email_address"
               type="email"
-              htmlFor="email"
+              htmlFor="email_address"
               label="Email address"
               validators={{ required }}
               messages={{
@@ -72,9 +70,46 @@ class SignupForm extends BaseForm {
               }}
             />
 
+            <div styleName="user-type">
+              <RadioList
+                model={`${model}.user_type`}
+                name="user_type"
+                id="user_type"
+                label="I want to"
+                options={[{value:'buyer', label:'Buy for government'}, {value: 'seller', label:'Sell ICT services'}]}
+                validators={{ required }}
+                messages={{
+                  required: 'You must select a user type',
+                }}
+              />
+            </div>
+
+            { isBuyer && (
+              <div styleName="employment-status">
+                <RadioList
+                  model={`${model}.employment_status`}
+                  name="employment_status"
+                  id="employment_status"
+                  label="To create a buyer account you need to be a government employee or be authorised by a government employee. Choose the option below that matches your situation."
+                  options={[{
+                    value:'employee', 
+                    label:'I am an employee under the Commonwealth Public Service ACT (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
+                  }, 
+                  {
+                    value: 'contractor', 
+                    label:'I am a contractor working in local, state or federal government.'
+                  }]}
+                  validators={{ required }}
+                  messages={{
+                    required: 'You must specify your employment status.',
+                  }}
+                />
+              </div>
+            )}
+
             {children}
 
-            <input type="submit" value='Create your seller account' role="button" />
+            <input type="submit" value='Create your account' role="button" />
             <p>
               <small>
                 All activity on the Digital Marketplace is subject to our <a href="/terms-of-use">Terms of Use</a>.
