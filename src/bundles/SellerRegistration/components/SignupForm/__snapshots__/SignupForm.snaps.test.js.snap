@@ -3,18 +3,9 @@ exports[`test SignupForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      There you are!
+      Create an account
     </h1>
-    <p>
-      We’ve been looking for outstanding digital businesses to help deliver 21st century products and services to local, state and federal government through the Digital Marketplace.
-    </p>
-    <p>
-      And better still, we’ve streamlined the process so you could be competing for new business within weeks — rather than months.
-    </p>
   </header>
-  <h2>
-     Ready to get started?
-  </h2>
   <article
     role="main">
     <form
@@ -49,16 +40,16 @@ exports[`test SignupForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="email">
+          htmlFor="email_address">
           Email address
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="email"
+          id="email_address"
           maxLength={undefined}
-          name="email"
+          name="email_address"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -67,10 +58,57 @@ exports[`test SignupForm renders 1`] = `
           type="email"
           value="" />
       </div>
+      <div
+        styleName="user-type">
+        <div
+          className="field">
+          <fieldset>
+            <legend>
+              I want to
+            </legend>
+            <div>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-buyer"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="buyer" />
+                <label
+                  htmlFor="user_type-buyer">
+                  Buy for government
+                </label>
+              </span>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-seller"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="seller" />
+                <label
+                  htmlFor="user_type-seller">
+                  Sell ICT services
+                </label>
+              </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
       <input
         role="button"
         type="submit"
-        value="Create your seller account" />
+        value="Create your account" />
       <p>
         <small>
           All activity on the Digital Marketplace is subject to our 
@@ -91,22 +129,13 @@ exports[`test SignupForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      There you are!
+      Create an account
     </h1>
-    <p>
-      We’ve been looking for outstanding digital businesses to help deliver 21st century products and services to local, state and federal government through the Digital Marketplace.
-    </p>
-    <p>
-      And better still, we’ve streamlined the process so you could be competing for new business within weeks — rather than months.
-    </p>
   </header>
-  <h2>
-     Ready to get started?
-  </h2>
   <article
     role="main">
     <form
-      action="/foo/bar"
+      action={undefined}
       id="signup"
       method="post"
       onReset={[Function]}
@@ -142,16 +171,16 @@ exports[`test SignupForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="email">
+          htmlFor="email_address">
           Email address
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="email"
+          id="email_address"
           maxLength={undefined}
-          name="email"
+          name="email_address"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -160,10 +189,57 @@ exports[`test SignupForm renders with form_options 1`] = `
           type="email"
           value="" />
       </div>
+      <div
+        styleName="user-type">
+        <div
+          className="field">
+          <fieldset>
+            <legend>
+              I want to
+            </legend>
+            <div>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-buyer"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="buyer" />
+                <label
+                  htmlFor="user_type-buyer">
+                  Buy for government
+                </label>
+              </span>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-seller"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="seller" />
+                <label
+                  htmlFor="user_type-seller">
+                  Sell ICT services
+                </label>
+              </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
       <input
         role="button"
         type="submit"
-        value="Create your seller account" />
+        value="Create your account" />
       <p>
         <small>
           All activity on the Digital Marketplace is subject to our 
