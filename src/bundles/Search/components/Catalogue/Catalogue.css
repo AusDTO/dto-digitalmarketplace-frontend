@@ -97,7 +97,7 @@
 .sortBy div input[type='radio'] + label {
   margin: 0;
   padding-bottom: 11px;
-  padding-left: 50px;
+  padding-left: 48px;
 }
 
 .sortBy div input[type='radio']:checked + label {
