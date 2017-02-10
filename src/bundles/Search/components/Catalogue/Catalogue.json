@@ -32,13 +32,13 @@
             "User research and Design": false
         },
         "type": {
-            "start_up": false,
-            "sme": false,
-            "nfp_social_enterprise": false,
-            "product": false,
-            "indigenous": false,
-            "regional": false,
-            "disability": false
+            "Start up": false,
+            "SME": false,
+            "Not-for-profit": false,
+            "Product based business": false,
+            "Indigenous business": false,
+            "Regional": false,
+            "Australian disability enterprise": false
         },
         "keyword": null,
         "results": [

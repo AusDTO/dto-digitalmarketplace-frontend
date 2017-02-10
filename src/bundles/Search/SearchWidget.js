@@ -10,28 +10,7 @@ import createStore from './redux/create';
 import Catalogue from './components/Catalogue';
 
 export const SearchWidget = (props, history) => {
-  // bit hacky
-  const { search = {} } = props;
-  let mappedTypes = search.type
-
-  if (!isEmpty(search.type)) {
-    mappedTypes = Object
-      .keys(search.type)
-      .map(type => {
-        return { [titleMap[type]]: search.type[type] }
-      })
-      .reduce((object, type) => {
-        return { ...object, ...type}
-      }, {});
-  }
-
-  const store = createStore({
-    ...props,
-    search: {
-      ...search,
-      type: mappedTypes
-    }
-  }, { router: history });
+  const store = createStore(props, { router: history });
 
   return (
     <Provider store={store}>

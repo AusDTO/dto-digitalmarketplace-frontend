@@ -68,27 +68,9 @@ export const falseValues = (target) => {
   return false;
 }
 
-export const convertTypes = (query) => {
-  if (isEmpty(query.type)) {
-    return query;
-  }
-
-  let mappedTypes = Object
-    .keys(query.type)
-    .map(value => findKey(titleMap, (o) => o === value))
-    .reduce((object, type) => {
-      return { ...object, [type]: true}
-    }, {});
-
-  return { ...query, type: mappedTypes }
-}
-
 export const buildQueryString = ({ search = {}, pagination = {} } = {}) => {
   // Scrub results and querying from query, not valid filters.
   let query = { ...scrubState(search), ...pagination }
-
-  // Map type pretty names back to their keys.
-  query = convertTypes(query);
 
   return Object.keys(query).reduce((q, key) => {
     let target = query[key];
