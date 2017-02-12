@@ -27,8 +27,8 @@ const Review = ({match, caseStudyForm, ...rest}) => (
         />
 
         {/* Slight duplication but need to reconfigure the return link. */}
-        <Route path={`${match.url}/profile/case-study/:id`} render={({ params }) => {
-          const currentStudy = caseStudyForm.case_studies[params.id];
+        <Route path={`${match.url}/profile/case-study/:id`} render={({ match: subMatch }) => {
+          const currentStudy = caseStudyForm.case_studies[subMatch.params.id];
           return (
             <div>
               {currentStudy.title

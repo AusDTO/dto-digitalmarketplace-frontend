@@ -67,7 +67,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`}>{children}</a>);
     } else {
       caseStudyLink = ({id, children}) => (
-        <ConnectedLink to={`${rest.pathname}/case-study/${id}`}>{children}</ConnectedLink>
+        <ConnectedLink to={`${rest.match.url}/case-study/${id}`}>{children}</ConnectedLink>
       );
     }
 
