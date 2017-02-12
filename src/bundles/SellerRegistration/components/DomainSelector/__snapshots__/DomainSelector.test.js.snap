@@ -7,7 +7,7 @@ exports[`test DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the digital services you want to provide. You’ll need to provide a case study for each that meets our 
+      Select the digital services you want to provide. You’ll need to add a case study for each that meets our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -15,16 +15,13 @@ exports[`test DomainSelector renders 1`] = `
         assessment criteria
       </a>
     </p>
-    <p>
-      If you have software products to offer, you can add them later. 
-    </p>
   </header>
   <article
     role="main">
     <a
       href="/products"
       onClick={[Function]}>
-      If you have no services, skip to products
+      If you only have software products to offer, skip to the product section.
     </a>
     <form
       action={undefined}
@@ -310,7 +307,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the digital services you want to provide. You’ll need to provide a case study for each that meets our 
+      Select the digital services you want to provide. You’ll need to add a case study for each that meets our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -318,16 +315,13 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         assessment criteria
       </a>
     </p>
-    <p>
-      If you have software products to offer, you can add them later. 
-    </p>
   </header>
   <article
     role="main">
     <a
       href="/products"
       onClick={[Function]}>
-      If you have no services, skip to products
+      If you only have software products to offer, skip to the product section.
     </a>
     <form
       action={undefined}
