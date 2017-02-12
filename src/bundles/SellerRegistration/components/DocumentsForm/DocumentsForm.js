@@ -28,7 +28,7 @@ class DocumentsForm extends BaseForm {
     }
 
     static defaultProps = {
-        location: {pathname: ''}
+        match: {url: ''}
     }
     state = {
         errors: {}
@@ -103,7 +103,7 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, location, buttonText} = this.props;
+        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, match, buttonText} = this.props;
         let intro = 'As part of your assessment we’ll need the following documents.'
         if (sellerCode) {
             intro = 'It’s now been almost a year since you shared your insurance and financial documents with us. As such, we need more recent versions of the following documents. '
@@ -176,7 +176,7 @@ class DocumentsForm extends BaseForm {
                                         <div>
                                             {fieldState.uploading && 'Uploading...'}
                                             {errors && 'There was an error uploading the file'}
-                                            {!isEmpty(doc.filename) && <p><a href={`${location.pathname.slice(1)}/${doc.filename}`} target="_blank"
+                                            {!isEmpty(doc.filename) && <p><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank"
                                                                              rel="external">{doc.filename}</a></p>}
                                         </div>
                                     </div>
