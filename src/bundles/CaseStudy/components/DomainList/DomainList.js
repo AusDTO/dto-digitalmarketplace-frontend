@@ -222,43 +222,43 @@ class DomainList extends BaseForm {
             </article>
           </Layout>
         )} />
-        <Route path={`${match.url}/add/:service`} render={({ match }) => (
+        <Route path={`${match.url}/add/:service`} render={({ match: subMatch }) => (
 
           <CaseStudyForm
             model="casestudy"
             formName="casestudy"
             buttonText="Save & Preview"
-            service={match.params.service}
-            returnLink={<ConnectedLink to="/case-study">Return without saving</ConnectedLink>}
-            onSubmit={onCaseStudySubmit.bind(this, match.params)}
+            service={subMatch.params.service}
+            returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
+            onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
           />
 
         )} />
-        <Route path={`${match.url}/edit/:id`} render={({ match }) => (
+        <Route path={`${match.url}/edit/:id`} render={({ match: subMatch }) => (
 
           <CaseStudyForm
-            model={`caseStudyForm.case_studies.${match.params.id}`}
-            formName={`caseStudyForm.case_studies.${match.params.id}`}
+            model={`caseStudyForm.case_studies.${subMatch.params.id}`}
+            formName={`caseStudyForm.case_studies.${subMatch.params.id}`}
             mode="edit"
             buttonText="Save & Preview"
-            returnLink={<ConnectedLink to="/case-study">Return without saving</ConnectedLink>}
-            onSubmit={onCaseStudySubmit.bind(this, match.params)}
+            returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
+            onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
           />
 
         )} />
-        <Route path={`${match.url}/view/:id?`} render={({ match }) => {
-          if (match.params.id && match.params.id !== 'undefined') {
+        <Route path={`${match.url}/view/:id?`} render={({ match: subMatch }) => {
+          if (subMatch.params.id && subMatch.params.id !== 'undefined') {
             // If `id` is present, load from pre-saved state.
-            currentStudy = caseStudyForm.case_studies[match.params.id];
+            currentStudy = caseStudyForm.case_studies[subMatch.params.id];
           }
           return (
             <div>
               {currentStudy.title
                 ? <View
                     {...currentStudy}
-                    onSubmit={onCaseStudySubmit.bind(this, match.params)}
-                    confirmButton={<ConnectedLink role="button" to="/case-study">Finish case study</ConnectedLink>}
-                    returnLink={<p><Link to={`/case-study/edit/${match.params.id}`}>Continue Editing</Link></p>}
+                    onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
+                    confirmButton={<ConnectedLink role="button" to={match.url}>Finish case study</ConnectedLink>}
+                    returnLink={<p><Link to={`${match.url}/edit/${subMatch.params.id}`}>Continue Editing</Link></p>}
                   />
                 : <Redirect to="/case-study" />
               }

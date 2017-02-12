@@ -7,6 +7,14 @@
         "action": "/search/sellers",
         "csrf_token": "506bf06f173ab657292b421e6f50434e5959f4d5013f825ce2fc39aa791cd24d"
     },
+    "pagination": {
+        "page": 1, 
+        "pageCount": 1, 
+        "pages": [
+          1
+        ], 
+        "total": 18
+    },
     "search": {
         "role": {
             "Agile delivery and Governance": false,
@@ -24,13 +32,13 @@
             "User research and Design": false
         },
         "type": {
-            "start_up": false,
-            "sme": false,
-            "nfp_social_enterprise": false,
-            "product": false,
-            "indigenous": false,
-            "regional": false,
-            "disability": false
+            "Start up": false,
+            "SME": false,
+            "Not-for-profit": false,
+            "Product based business": false,
+            "Indigenous business": false,
+            "Regional": false,
+            "Australian disability enterprise": false
         },
         "keyword": null,
         "results": [

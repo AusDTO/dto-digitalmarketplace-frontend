@@ -18,21 +18,23 @@ const RadioList = (props) => {
             <fieldset>
                 <legend>{label}</legend>
                 <StatefulError model={model} messages={messages} id={id} />
-                {options.map((option, i) => {
-                    let fieldId = `${id}-${option.value}`;
-                    return (
-                        <span key={i}>
-                            <Control.radio
-                                model={model}
-                                name={name}
-                                id={fieldId}
-                                value={option.value}
-                                validators={validators}
-                            />
-                            <label htmlFor={fieldId}>{option.label}</label>
-                        </span>
-                    )
-                })}
+                <div>
+                    {options.map((option, i) => {
+                        let fieldId = `${id}-${option.value}`;
+                        return (
+                            <span key={i}>
+                                <Control.radio
+                                    model={model}
+                                    name={name}
+                                    id={fieldId}
+                                    value={option.value}
+                                    validators={validators}
+                                />
+                                <label htmlFor={fieldId}>{option.label}</label>
+                            </span>
+                        )
+                    })}
+                </div>
             </fieldset>
         </div>
     );

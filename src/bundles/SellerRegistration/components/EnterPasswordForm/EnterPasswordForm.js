@@ -43,7 +43,7 @@ class EnterPasswordForm extends BaseForm {
 
             <div className="field">
               <div className="question-heading">Email</div>
-              <p>{enterPasswordForm.email}</p>
+              <p>{enterPasswordForm.email_address}</p>
             </div>
 
             <Textfield
