@@ -101,3 +101,16 @@ test('limitWords', () => {
 
   expect(limitValidator('one two three four five six')).toBe(false);
 });
+
+test('limitNumbers', () => {
+    const limitValidator = validator.limitNumbers(4);
+
+    expect(limitValidator('1234')).toBe(true);
+    expect(limitValidator('0001')).toBe(true);
+    expect(limitValidator('1000')).toBe(true);
+
+    expect(limitValidator('10000')).toBe(false);
+    expect(limitValidator('100')).toBe(false);
+    expect(limitValidator('100a')).toBe(false);
+    expect(limitValidator('onea')).toBe(false);
+});

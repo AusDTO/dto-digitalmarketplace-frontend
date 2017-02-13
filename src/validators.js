@@ -70,7 +70,12 @@ export const minObjectLength = (object = {}, minLength = -1) => {
 }
 
 export const limitWords = (limit) => (val = '') => {
-  return (val.match(/\S+/g) || []).length <= limit;
+    return (val.match(/\S+/g) || []).length <= limit;
+}
+
+export const limitNumbers = (limit) => (val = '') => {
+    const length = (val.match(/[0-9]/g) || []).length
+    return length === limit && length === val.length;
 }
 
 export default {
@@ -80,5 +85,6 @@ export default {
   validLinks,
   dependantRequired,
   minObjectLength,
-  limitWords
+  limitWords,
+  limitNumbers
 }
