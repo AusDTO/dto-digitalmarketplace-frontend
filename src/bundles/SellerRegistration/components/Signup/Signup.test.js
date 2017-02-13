@@ -253,7 +253,7 @@ test.skip('without filterSteps', () => {
       { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
       { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
       { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
-      { id: 'review', label: 'Review', component: Review, pattern: '/review' },
+      { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
       { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
       { id: 'submit', label: 'Declaration', component: SubmitStepForm, pattern: '/submit', formKey: 'submitStepForm' },
   ];
