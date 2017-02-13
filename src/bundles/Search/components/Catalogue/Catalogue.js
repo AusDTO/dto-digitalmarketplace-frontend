@@ -98,7 +98,7 @@ export class Catalogue extends React.Component {
                   list={search.type}
                   onChange={actions.updateType}
                 />
-                
+
               </LocalNav>
             </section>
             <div className="col-xs-12 col-sm-8">
@@ -130,7 +130,7 @@ export class Catalogue extends React.Component {
                               actions.updateView('sellers');
                             }}
                             styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination.total}</span> Sellers found
+                            <span>{pagination.total}</span> Sellers
                           </Link>
                           <Link
                             to={{ search: 'view=products' }}
@@ -139,7 +139,16 @@ export class Catalogue extends React.Component {
                               actions.updateView('products')
                             }}
                             styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination.total_products}</span> Products found
+                            <span>{pagination.total_products}</span> Products
+                          </Link>
+                          <Link
+                            to={{ search: 'view=casestudies' }}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              actions.updateView('casestudies')
+                            }}
+                            styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
+                            <span>{pagination.total_casestudies}</span> Case Studies
                           </Link>
                         </div>
 
