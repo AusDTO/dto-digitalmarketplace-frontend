@@ -60,7 +60,8 @@ class CaseStudyForm extends BaseForm {
             <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
             <p id="header-description">
               Remember, your case study must meet the {service} <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
-              And, you can update your case studies any time before an assessment begins.
+            And, you can update your case studies any time before an assessment begins.
+            For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller’s guide</a>.
           </div>    
         </header>
         <article role="main">
@@ -225,7 +226,7 @@ class CaseStudyForm extends BaseForm {
                 name="refereeContact"
                 validators={{ required }}
               />
-              <label htmlFor="refereeContact">I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+              <label htmlFor="refereeContact">I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
               </label>
             </div>
 

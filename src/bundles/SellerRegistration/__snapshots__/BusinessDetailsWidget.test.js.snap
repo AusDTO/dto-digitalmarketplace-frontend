@@ -24,7 +24,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <label
               className="question-heading"
               htmlFor="name">
-              Business Name
+              Business name
             </label>
             <p
               className="hint"

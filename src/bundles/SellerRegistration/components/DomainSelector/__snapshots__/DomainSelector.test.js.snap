@@ -15,14 +15,14 @@ exports[`test DomainSelector renders 1`] = `
         assessment criteria
       </a>
     </p>
-  </header>
-  <article
-    role="main">
     <a
       href="/products"
       onClick={[Function]}>
       If you only have software products to offer, skip to the product section.
     </a>
+  </header>
+  <article
+    role="main">
     <form
       action={undefined}
       id="DomainSelector__create"
@@ -315,14 +315,14 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         assessment criteria
       </a>
     </p>
-  </header>
-  <article
-    role="main">
     <a
       href="/products"
       onClick={[Function]}>
       If you only have software products to offer, skip to the product section.
     </a>
+  </header>
+  <article
+    role="main">
     <form
       action={undefined}
       id="DomainSelector__create"

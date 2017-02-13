@@ -28,7 +28,9 @@ class DisclosuresForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">{title}</h1>
-                    <p>These responses are used by assessors but are not visible on your profile.</p>
+                    <p>These responses are only seen by assessors but are not visible on your profile.
+
+                        Please note, answering ‘yes’ to any question may not disqualify you from the Digital Marketplace, it’s just more information for our assessors.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>

@@ -28,7 +28,7 @@ class BusinessInfoForm extends BaseForm {
                     <h1 tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
-                    <h2>About your business</h2>
+                    <h2>More about your business</h2>
                     <ErrorBox focusOnMount={true} model={model}/>
                     <Form model={model}
                           action={action}
@@ -186,14 +186,6 @@ class BusinessInfoForm extends BaseForm {
                                 value="international"/>
                             <label htmlFor="international">Yes, with government outside Australia</label>
 
-                            
-                            <Textfield
-                                model={`${model}.other_panels`}
-                                name="other-panels"
-                                id="other-panels"
-                                htmlFor="other-panels"
-                                label="List any other Government panels you have joined (optional) "
-                            />
                         </fieldset>
                         
                         

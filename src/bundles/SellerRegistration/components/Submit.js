@@ -5,6 +5,8 @@ import SubmitForm    from '../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../shared/form/ErrorBox';
 import StatefulError from '../../../shared/form/StatefulError';
 import {Form, Control} from 'react-redux-form';
+import { Link } from 'react-router-dom';
+
 import {required} from '../../../validators';
 import formProps     from '../../../shared/reduxModules/formPropsSelector';
 
@@ -53,17 +55,15 @@ class SubmitStepForm extends BaseForm {
         let {model, submitUrl, applicationValid, name, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit} = this.props;
         let message;
         const userIsAuthorised = userEmail === email;
-        const buttonText = userIsAuthorised ? 'Submit my application' : 'Send email to representative';
+        const buttonText = userIsAuthorised ? 'Complete application' : 'Send email to representative';
         const action = userIsAuthorised ? submitUrl : authoriseUrl;
 
         if (userIsAuthorised) {
             message = (
                 <div>
-                    <p>Almost there now. All you need to do is review the content to make sure you’re completely
-                        happy, then
-                        complete the declaration below.</p>
-                    <a href="/document/masteragreement.pdf">Download Master Agreement</a><br/><br/>
-
+                    <p>All you need to do now is review the content in the application and the
+                        <a href="/document/masteragreement.pdf">Marketplace Master Agreement</a>to make sure you’re happy, then complete the declaration below.<br/><br/>
+                    </p>
                     <div style={agreementStyle}><p><strong>Master Agreement</strong> <br /><br /><strong>1.
                         Introduction and
                         scope</strong></p>
@@ -717,10 +717,9 @@ class SubmitStepForm extends BaseForm {
                         validators={{required}}
                     />
                     <label htmlFor="agree">I am <strong>{representative}</strong>, the authorised representative of
-                        <strong> {name}</strong> and I agree to the terms set out in <a
-                            href="/document/masteragreement.pdf">Master
-                            Agreement</a> and understand all activity in the Digital Marketplace is subject to the <a
-                            href="/terms-of-use">Terms of Use</a>.</label>
+                        <strong> {name}</strong> and I agree to the terms set out in the <a
+                            href="/document/masteragreement.pdf">Marketplace Master
+                            Agreement</a>.</label>
 
                 </div>
             )
@@ -728,8 +727,14 @@ class SubmitStepForm extends BaseForm {
         else {
             message = (
                 <div>
-                    <p>You are not the authorised representative of <strong>{name}</strong></p>
-                    <p>A link will be sent to <strong>{email}</strong> to authorise these changes.</p>
+                    <p>Only the authorised representative, <strong>{representative}</strong>, can accept the Master Agreement terms on behalf of <strong>{name}</strong>.</p>
+                    <p>Would you like us to send an email now to <strong>{email}</strong> so they can complete the last step?</p>
+                    To change the authorised representative, update your <Link
+                        to="/your-info"
+                        onClick={() => {
+                            actions.navigateToStep('/your-info');
+                        }}>contact details
+                    </Link>.
                 </div>
             )
         }

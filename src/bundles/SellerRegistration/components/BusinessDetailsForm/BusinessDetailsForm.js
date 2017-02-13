@@ -56,7 +56,7 @@ class BusinessDetailsForm extends BaseForm {
                           name="name"
                           id="name"
                           htmlFor="name"
-                          label="Business Name"
+                          label="Business name"
                           description="As you would like it shown on the Digital Marketplace."
                           disabled="disabled"
                         />

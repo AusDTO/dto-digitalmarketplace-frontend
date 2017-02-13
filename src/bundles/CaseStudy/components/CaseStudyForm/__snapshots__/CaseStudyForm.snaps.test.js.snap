@@ -21,7 +21,14 @@ exports[`test CaseStudyForm renders 1`] = `
           assessment criteria
         </a>
       </p>
-      And, you can update your case studies any time before an assessment begins.
+      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+      <a
+        href="/sellers-guide"
+        rel="external"
+        target="_blank">
+        seller’s guide
+      </a>
+      .
     </div>
   </header>
   <article
@@ -431,7 +438,7 @@ exports[`test CaseStudyForm renders 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1078,7 +1085,14 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           assessment criteria
         </a>
       </p>
-      And, you can update your case studies any time before an assessment begins.
+      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+      <a
+        href="/sellers-guide"
+        rel="external"
+        target="_blank">
+        seller’s guide
+      </a>
+      .
     </div>
   </header>
   <article
@@ -1488,7 +1502,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1527,7 +1541,14 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           assessment criteria
         </a>
       </p>
-      And, you can update your case studies any time before an assessment begins.
+      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+      <a
+        href="/sellers-guide"
+        rel="external"
+        target="_blank">
+        seller’s guide
+      </a>
+      .
     </div>
   </header>
   <article
@@ -2141,7 +2162,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2176,7 +2197,14 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           assessment criteria
         </a>
       </p>
-      And, you can update your case studies any time before an assessment begins.
+      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+      <a
+        href="/sellers-guide"
+        rel="external"
+        target="_blank">
+        seller’s guide
+      </a>
+      .
     </div>
   </header>
   <article
@@ -2591,7 +2619,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2626,7 +2654,14 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           assessment criteria
         </a>
       </p>
-      And, you can update your case studies any time before an assessment begins.
+      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+      <a
+        href="/sellers-guide"
+        rel="external"
+        target="_blank">
+        seller’s guide
+      </a>
+      .
     </div>
   </header>
   <article
@@ -3036,7 +3071,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my reference gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
         </label>
       </div>
       <input
