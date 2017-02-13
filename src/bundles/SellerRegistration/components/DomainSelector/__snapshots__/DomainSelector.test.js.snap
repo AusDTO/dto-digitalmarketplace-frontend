@@ -127,27 +127,6 @@ exports[`test DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-             
-            <p>
-              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="software-engineering-and-development"
             name="software-engineering-and-development"
             onBlur={[Function]}
@@ -423,27 +402,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
              
             <p>
               Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-             
-            <p>
-              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
             </p>
           </label>
         </div>
