@@ -143,7 +143,7 @@ exports[`test Signup renders 1`] = `
             href="/review"
             onClick={[Function]}>
             <span>
-              Review
+              Preview profile
             </span>
           </a>
         </li>
@@ -365,7 +365,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             href="/review"
             onClick={[Function]}>
             <span>
-              Review
+              Preview profile
             </span>
           </a>
         </li>
@@ -702,7 +702,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             href="/review"
             onClick={[Function]}>
             <span>
-              Review
+              Preview profile
             </span>
           </a>
         </li>
