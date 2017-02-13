@@ -94,6 +94,10 @@
   opacity: 0;
 }
 
+.sortBy {
+  display: none;
+}
+
 .sortBy div input[type='radio'] + label {
   margin: 0;
   padding-bottom: 11px;
