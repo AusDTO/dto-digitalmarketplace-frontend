@@ -85,7 +85,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business. This is visible to all viewers without a login.
+          3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
         </p>
         <div>
           <textarea
@@ -355,7 +355,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business. This is visible to all viewers without a login.
+          3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
         </p>
         <div>
           <textarea
@@ -650,7 +650,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business. This is visible to all viewers without a login.
+          3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
         </p>
         <a
           className="validation-message"

@@ -33,19 +33,20 @@ const Start = ({supplierCode, signup, onClick}) => {
                     the <a
                         href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> to apply for
                     opportunities.</p>
-                <p> It will take at least 30 minutes. But don’t worry, your information will be saved automatically if
+                <p> It may take more than one visit to complete this application. But don’t worry, your information will be saved automatically if
                     you need to come back later.
                 </p>
-                <h2>You'll need:</h2>
+                <h2>You'll need</h2>
                 <ul>
                     <li>Your basic business information</li>
                     <li>A financial viability statement from your accountant</li>
                     <li>Proof of worker’s compensation and public liability insurance</li>
                 </ul>
-                <h2>You'll be asked to:</h2>
+                <h2>You'll be asked to</h2>
                 <ul>
                     <li>Create case studies about past projects and references</li>
-                    <li>Accept the Marketplace Master Agreement</li>
+                    <li>Accept the Digital Marketplace Master Agreement
+                        <a href="agreement.pdf">Download Digital Marketplace Master Agreement PDF</a></li>
                 </ul>
                 <p>
                     <a role="button" href={signup} onClick={onClick}>Start now </a>

@@ -21,7 +21,7 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, supplierCode, form, buttonText, children, onSubmit } = this.props;
+    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit } = this.props;
     let title = 'Contact details';
     if (supplierCode) {
         title = 'Check your contact details'
@@ -47,12 +47,51 @@ class YourInfoForm extends BaseForm {
             )}
 
               <Textfield
+                  model={`${model}.contact_name`}
+                  name="contact_name"
+                  id="contact_name"
+                  htmlFor="contact_name"
+                  label="Business contact"
+                  description="The contact listed on your seller profile page and the person who receives new opportunities by email."
+                  validators={{ required }}
+                  messages={{
+                      required: 'Business contact is required',
+                  }}
+                  default={userName}
+              />
+
+              <Textfield
+                  model={`${model}.contact_phone`}
+                  name="contact_phone"
+                  id="contact_phone"
+                  htmlFor="contact_phone"
+                  label="Phone"
+                  validators={{ required }}
+                  messages={{
+                      required: 'Business contact phone is required',
+                  }}
+              />
+
+              <Textfield
+                  model={`${model}.contact_email`}
+                  name="contact_email"
+                  id="contact_email"
+                  htmlFor="contact_email"
+                  label="Email"
+                  validators={{ required }}
+                  messages={{
+                      required: 'Business contact email is required',
+                  }}
+                  default={userEmail}
+              />
+
+              <Textfield
                   model={`${model}.representative`}
                   name="representative"
                   id="representative"
                   htmlFor="representative"
-                  label="Authorised Representative"
-                  description="This person must be authorised to enter into contracts on behalf of the business. "
+                  label="Authorised representative"
+                  description="This is the person authorised to enter into contracts on behalf of the business. "
                   validators={{ required }}
                   messages={{
                       required: 'Authorised representative is required',
@@ -83,43 +122,6 @@ class YourInfoForm extends BaseForm {
                   }}
               />
 
-            <Textfield
-                model={`${model}.contact_name`}
-                name="contact_name"
-                id="contact_name"
-                htmlFor="contact_name"
-                label="Business contact"
-                description="The contact listed in the seller catalogue and the person who receives new opportunities by email."
-                validators={{ required }}
-                messages={{
-                    required: 'Business contact is required',
-                }}
-            />
-
-            <Textfield
-                model={`${model}.contact_phone`}
-                name="contact_phone"
-                id="contact_phone"
-                htmlFor="contact_phone"
-                label="Phone"
-                validators={{ required }}
-                messages={{
-                    required: 'Business contact phone is required',
-                }}
-            />
-
-            <Textfield
-                model={`${model}.contact_email`}
-                name="contact_email"
-                id="contact_email"
-                htmlFor="contact_email"
-                label="Email"
-                validators={{ required }}
-                messages={{
-                    required: 'Business contact email is required',
-                }}
-            />
-
             {children}
 
             <input type="submit" value={buttonText} role="button" />
@@ -137,6 +139,8 @@ YourInfoForm.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
+      userName: state.form_options.user_name,
+      userEmail: state.form_options.user_email,
       supplierCode: (state.application && state.application.supplierCode),
     ...formProps(state, 'yourInfoForm')
   }

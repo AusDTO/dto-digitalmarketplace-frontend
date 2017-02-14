@@ -359,7 +359,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <p
           className="hint"
           id="refereeName-hint">
-          The full name of the best person to contact about your experience
+          The full name of the best person to contact about your experience.
         </p>
         <input
           aria-describedby="refereeName-hint"
@@ -386,7 +386,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <p
           className="hint"
           id="refereePosition-hint">
-          At the time of the project
+          At the time of the project.
         </p>
         <input
           aria-describedby="refereePosition-hint"
@@ -438,7 +438,7 @@ exports[`test CaseStudyForm renders 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1423,7 +1423,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <p
           className="hint"
           id="refereeName-hint">
-          The full name of the best person to contact about your experience
+          The full name of the best person to contact about your experience.
         </p>
         <input
           aria-describedby="refereeName-hint"
@@ -1450,7 +1450,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <p
           className="hint"
           id="refereePosition-hint">
-          At the time of the project
+          At the time of the project.
         </p>
         <input
           aria-describedby="refereePosition-hint"
@@ -1502,7 +1502,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2039,7 +2039,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <p
           className="hint"
           id="refereeName-hint">
-          The full name of the best person to contact about your experience
+          The full name of the best person to contact about your experience.
         </p>
         <a
           className="validation-message"
@@ -2077,7 +2077,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <p
           className="hint"
           id="refereePosition-hint">
-          At the time of the project
+          At the time of the project.
         </p>
         <a
           className="validation-message"
@@ -2162,7 +2162,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2540,7 +2540,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <p
           className="hint"
           id="refereeName-hint">
-          The full name of the best person to contact about your experience
+          The full name of the best person to contact about your experience.
         </p>
         <input
           aria-describedby="refereeName-hint"
@@ -2567,7 +2567,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <p
           className="hint"
           id="refereePosition-hint">
-          At the time of the project
+          At the time of the project.
         </p>
         <input
           aria-describedby="refereePosition-hint"
@@ -2619,7 +2619,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2992,7 +2992,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="refereeName-hint">
-          The full name of the best person to contact about your experience
+          The full name of the best person to contact about your experience.
         </p>
         <input
           aria-describedby="refereeName-hint"
@@ -3019,7 +3019,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="refereePosition-hint">
-          At the time of the project
+          At the time of the project.
         </p>
         <input
           aria-describedby="refereePosition-hint"
@@ -3071,7 +3071,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
         </label>
       </div>
       <input

@@ -50,7 +50,6 @@ class BusinessDetailsForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-
                         <Textfield
                           model={`${model}.name`}
                           name="name"
@@ -79,7 +78,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="summary"
                             controlProps={{limit: 50}}
                             label="Summary"
-                            description="3-4 sentences that describe your business. This is visible to all viewers without a login."
+                            description="3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in."
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}

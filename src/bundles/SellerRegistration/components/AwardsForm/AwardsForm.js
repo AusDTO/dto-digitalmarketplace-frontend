@@ -25,7 +25,7 @@ class AwardsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
+                    <h1 tabIndex="-1">Awards and accreditations</h1>
                     <p>This is your opportunity to share some of the things you’re proud of.
                         All questions are optional but powerful for helping your business attract potential buyers. </p>
 
