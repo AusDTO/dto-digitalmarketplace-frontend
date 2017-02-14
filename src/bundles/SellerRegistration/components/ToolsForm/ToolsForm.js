@@ -9,6 +9,7 @@ import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textarea     from '../../../../shared/form/Textarea';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+import { required } from '../../../../validators';
 
 
 class ToolsForm extends BaseForm {
