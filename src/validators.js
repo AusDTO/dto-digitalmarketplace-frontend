@@ -1,4 +1,7 @@
 import isEmpty from 'lodash/isEmpty'
+import parse_date from 'date-fns/parse'
+import isValid from 'date-fns/is_valid';
+import isFuture from 'date-fns/is_future';
 
 export const required = (val) => {
   if (typeof val === 'boolean') {
@@ -12,6 +15,17 @@ export const required = (val) => {
   return val && val.trim().length;
 };
 
+export const validDate = (val) => {
+    if (!val || !isValid(parse_date(val))) {
+        return false;
+    }
+    if (isFuture(val)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 export const minArrayLength = (len) => (arr = []) => {
   return Array.isArray(arr) && arr.filter(v => v.trim()).length >= len;
 };
@@ -21,9 +35,9 @@ export const min = (len) => (val = '') => {
 };
 
 export const validLinks = (val) => {
-  if (!val) {
-    return true;
-  }
+    if (!val) {
+        return true;
+    }
 
   if (!Array.isArray(val)) {
     val = [val];
@@ -78,6 +92,7 @@ export default {
   minArrayLength,
   min,
   validLinks,
+  validDate,
   dependantRequired,
   minObjectLength,
   limitWords
