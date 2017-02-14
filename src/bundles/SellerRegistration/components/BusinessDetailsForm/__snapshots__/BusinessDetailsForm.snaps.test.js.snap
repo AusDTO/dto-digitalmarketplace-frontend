@@ -236,7 +236,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern="[0-9]{4}"
+          pattern={undefined}
           type="text"
           value="" />
       </div>
@@ -506,7 +506,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern="[0-9]{4}"
+          pattern={undefined}
           type="text"
           value="" />
       </div>
@@ -569,7 +569,13 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <li>
           <a
             href="#postal_code">
-            You must provide a postal code
+            You must provide a postal code. 
+          </a>
+        </li>
+        <li>
+          <a
+            href="#postal_code">
+            Postal codes must be four digits long and only numbers.
           </a>
         </li>
       </ul>
@@ -820,7 +826,10 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
             Validation Error: 
           </span>
           <span>
-            You must provide a postal code
+            You must provide a postal code. 
+          </span>
+          <span>
+            Postal codes must be four digits long and only numbers.
           </span>
         </a>
         <input
@@ -834,7 +843,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern="[0-9]{4}"
+          pattern={undefined}
           type="text"
           value="" />
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 
-import {required} from '../../../../validators';
+import {required, limitNumbers} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -149,10 +149,10 @@ class BusinessDetailsForm extends BaseForm {
                             label="Postcode"
                             maxLength="4"
                             messages={{
-                                required: 'You must provide a postal code'
+                                required: 'You must provide a postal code. ',
+                                limitNumbers: 'Postal codes must be four digits long and only numbers.'
                             }}
-                            validators={{required}}
-                            pattern="[0-9]{4}"
+                            validators={{required, limitNumbers: limitNumbers(4)}}
                         />
 
                         <Control.checkbox

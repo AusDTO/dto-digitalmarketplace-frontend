@@ -240,7 +240,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern="[0-9]{4}"
+              pattern={undefined}
               type="text"
               value="" />
           </div>
