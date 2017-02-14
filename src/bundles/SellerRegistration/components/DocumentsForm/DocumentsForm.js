@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Form, actions} from 'react-redux-form';
+import {Form, Control, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 
@@ -15,7 +15,7 @@ import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import {uploadDocument, submitApplication} from '../../redux/modules/application'
 
-import { minObjectLength } from '../../../../validators';
+import { minObjectLength, validDate } from '../../../../validators';
 
 class DocumentsForm extends BaseForm {
 
@@ -27,6 +27,9 @@ class DocumentsForm extends BaseForm {
         supplierCode: React.PropTypes.string
     }
 
+    static defaultProps = {
+        match: {url: ''}
+    }
     state = {
         errors: {}
     }
@@ -100,7 +103,7 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, pathname = '', buttonText} = this.props;
+        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, match, buttonText} = this.props;
         let intro = 'As part of your assessment we’ll need the following documents.'
         if (sellerCode) {
             intro = 'It’s now been almost a year since you shared your insurance and financial documents with us. As such, we need more recent versions of the following documents. '
@@ -122,7 +125,7 @@ class DocumentsForm extends BaseForm {
                         model={`${model}.documents`}
                         id="documents"
                         messages={{
-                            documents: 'Please upload all documents.'
+                            documents: 'Please upload all documents.',
                         }}
                     />
                     <Form model={model}
@@ -133,7 +136,7 @@ class DocumentsForm extends BaseForm {
                           valid={form.valid}
                           onCustomSubmit={onSubmit}
                           validators={{
-                            documents: (documents = {}) => minObjectLength(documents, 3) 
+                            documents: (documents = {}) => minObjectLength(documents, 3)
                           }}
                     >
                         {csrf_token && (
@@ -152,29 +155,42 @@ class DocumentsForm extends BaseForm {
                                     <p>{field.description}</p>
 
                                     <div>
-                                        <div>
+                                        <div id={expiry_date_field}>
                                             {isEmpty(doc.filename) && (
                                                 <p>
                                                     <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>
                                                 </p>
                                             )}
-                                            {(field.expires && !isEmpty(doc.filename)) && <Datefield
+                                            {(field.expires && !isEmpty(doc.filename)) && <div>
+                                                <StatefulError
+                                                    model={`${model}.documents.${key}.expiry`}
+                                                    id={expiry_date_field}
+                                                    messages={{
+                                                        validDate: 'Expiry date is required for this document and must be in the future.',
+                                                    }}
+                                                />
+                                                <Control
                                                 model={`${model}.documents.${key}.expiry`}
+                                                component={Datefield}
                                                 name={expiry_date_field}
                                                 id={expiry_date_field}
                                                 htmlFor={expiry_date_field}
                                                 label="Expiry date:"
-                                                messages={{
-                                                    required: 'Expiry date is required for this document.',
+                                                validators={{validDate}}
+                                                controlProps={{
+                                                    id: expiry_date_field,
+                                                    model: `${model}.documents.${key}.expiry`,
+                                                    htmlFor: expiry_date_field,
+                                                    label: "Expiry date:"
                                                 }}
-                                            />}
+                                            /></div>}
                                         </div>
 
                                         <div>
                                             {fieldState.uploading && 'Uploading...'}
                                             {errors && 'There was an error uploading the file'}
-                                            {!isEmpty(doc.filename) && <p><a href={`${pathname.slice(1)}/${doc.filename}`} target="_blank"
-                                                          rel="external">{doc.filename}</a></p>}
+                                            {!isEmpty(doc.filename) && <p><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank"
+                                                                             rel="external">{doc.filename}</a></p>}
                                         </div>
                                     </div>
                                     <div className="actions">
