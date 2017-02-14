@@ -61,9 +61,9 @@ class SubmitStepForm extends BaseForm {
         if (userIsAuthorised) {
             message = (
                 <div>
-                    <p>All you need to do now is review the content in the application and the
-                        <a href="/document/masteragreement.pdf">Marketplace Master Agreement</a>to make sure you’re happy, then complete the declaration below.<br/><br/>
-                    </p>
+                    <p>All you need to do now is review the content in the application and the Digital Marketplace Master Agreement to make sure you’re happy, then complete the declaration below.</p>
+                        <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a>
+
                     <div style={agreementStyle}><p><strong>Master Agreement</strong> <br /><br /><strong>1.
                         Introduction and
                         scope</strong></p>
@@ -740,7 +740,7 @@ class SubmitStepForm extends BaseForm {
         }
         return (
             <div>
-                <h1 tabIndex="-1">Accept Master Agreement</h1>
+                <h1 tabIndex="-1">Your declaration</h1>
                 <Form model={model}
                       action={action}
                       method="post"

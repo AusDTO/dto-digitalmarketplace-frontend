@@ -89,7 +89,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <p
               className="hint"
               id="summary-hint">
-              3-4 sentences that describe your business. This is visible to all viewers without a login.
+              3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
             </p>
             <div>
               <textarea

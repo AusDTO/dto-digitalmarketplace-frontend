@@ -49,7 +49,10 @@ RadioList.propTypes = {
         React.PropTypes.string,
     ]).isRequired,
     options: React.PropTypes.arrayOf(React.PropTypes.shape({
-        label: React.PropTypes.string,
+        label: React.PropTypes.oneOfType([
+            React.PropTypes.string,
+            React.PropTypes.object
+        ]),
         value: React.PropTypes.oneOfType([
             React.PropTypes.string,
             React.PropTypes.number

@@ -7,7 +7,7 @@ exports[`test DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the digital services you want to provide. You’ll need to add a case study for each that meets our 
+      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and reference. We’ll use these to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -221,7 +221,7 @@ exports[`test DomainSelector renders 1`] = `
             Marketing, Communications and Engagement
              
             <p>
-              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
+              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.
             </p>
           </label>
         </div>
@@ -307,7 +307,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the digital services you want to provide. You’ll need to add a case study for each that meets our 
+      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and reference. We’ll use these to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -521,7 +521,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             Marketing, Communications and Engagement
              
             <p>
-              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
+              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.
             </p>
           </label>
         </div>

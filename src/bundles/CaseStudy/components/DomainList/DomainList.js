@@ -77,6 +77,7 @@ class DomainList extends BaseForm {
       buttonText,
       model,
       action,
+      sellerCode,
       caseStudyForm,
       children,
       currentStudy,
@@ -118,10 +119,9 @@ class DomainList extends BaseForm {
 
       let header = (<header>
         <h1 tabIndex="-1">{title}</h1>
-        <p>Like with other government applications, case studies are important for showing you meet the
-          <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.
-          But they’re also much more. They’ll become part of your seller profile so think of them as the beginning
-          of your conversation with hundreds of buyers and a tool to help them find you through keyword search.
+        <p>Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.
+          They become part of your seller profile, so think of them as the beginning of your conversation
+          with hundreds of buyers and a tool to help them find you through keyword search.
         </p>
       </header>)
       if (sellerCode) {
@@ -244,7 +244,7 @@ class DomainList extends BaseForm {
           <CaseStudyForm
             model="casestudy"
             formName="casestudy"
-            buttonText="Save & Preview"
+            buttonText="Save and preview"
             service={subMatch.params.service}
             returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
@@ -257,7 +257,7 @@ class DomainList extends BaseForm {
             model={`caseStudyForm.case_studies.${subMatch.params.id}`}
             formName={`caseStudyForm.case_studies.${subMatch.params.id}`}
             mode="edit"
-            buttonText="Save & Preview"
+            buttonText="Save and preview"
             returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
           />
@@ -291,6 +291,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...formProps(state, 'caseStudyForm'),
     ...ownProps,
+    supplierCode: state.application.supplierCode,
     currentStudy: state.casestudy,
     getStudiesByService,
     calcRemaining
