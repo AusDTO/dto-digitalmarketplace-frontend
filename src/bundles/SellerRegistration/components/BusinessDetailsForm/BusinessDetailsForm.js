@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Form, Control } from 'react-redux-form';
+import { Form, actions } from 'react-redux-form';
 
 import {required} from '../../../../validators';
 
@@ -24,8 +24,14 @@ class BusinessDetailsForm extends BaseForm {
         supplierCode: React.PropTypes.string,
     }
 
+    onAdd(e) {
+        e.preventDefault();
+        const {model, addAddress, businessDetailsForm} = this.props;
+        addAddress(model, businessDetailsForm.other_addresses || {});
+    }
+
     render() {
-        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit } = this.props;
+        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, businessDetailsForm } = this.props;
         let title = 'Tell us about your business'
         if (supplierCode) {
             title = 'Check your business details'
@@ -111,7 +117,7 @@ class BusinessDetailsForm extends BaseForm {
                             name="address.address_line"
                             id="address_line"
                             htmlFor="address_line"
-                            label="Address"
+                            label="Primary Address"
                             description="Principal place of business"
                             messages={{
                                 required: 'You must provide an address'
@@ -154,15 +160,64 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                             pattern="[0-9]{4}"
                         />
+                        <div>
+                            {businessDetailsForm.other_addresses && Object.keys(businessDetailsForm.other_addresses).map((key, i) => {
+                              return (
+                                <div key={key}>
+                                    <hr/>
+                                    <h3>Additional address</h3>
+                                    <Textfield
+                                        model={`${model}.other_addresses[${i}].address_line`}
+                                        name={`address_line-${i}`}
+                                        id={`address_line-${i}`}
+                                        htmlFor={`address_line-${i}`}
+                                        label="Address"
+                                        messages={{
+                                            required: 'You must provide address'
+                                        }}
+                                        validators={{required}}
+                                    />
+                                    <Textfield
+                                        model={`${model}.other_addresses[${i}].suburb`}
+                                        name={`suburb-${i}`}
+                                        id={`suburb-${i}`}
+                                        htmlFor={`suburb-${i}`}
+                                        label="Suburb"
+                                        messages={{
+                                            required: 'You must provide a suburb'
+                                        }}
+                                        validators={{required}}
+                                    />
+                                    <Textfield
+                                        model={`${model}.other_addresses[${i}].state`}
+                                        name={`state-${i}`}
+                                        id={`state-${i}`}
+                                        htmlFor={`state-${i}`}
+                                        label="State"
+                                        messages={{
+                                            required: 'You must provide a state'
+                                        }}
+                                        validators={{required}}
+                                    />
+                                    <Textfield
+                                        model={`${model}.other_addresses[${i}].postal_code`}
+                                        name={`postal_code-${i}`}
+                                        id={`postal_code-${i}`}
+                                        htmlFor={`postal_code-${i}`}
+                                        label="Postcode"
+                                        maxLength="4"
+                                        messages={{
+                                            required: 'You must provide a postal code'
+                                        }}
+                                        validators={{required}}
+                                        pattern="[0-9]{4}"
+                                    />
+                                </div>    
+                              )
+                            })}
 
-                        <Control.checkbox
-                          model={`${model}.travel`}
-                          id="travel"
-                          name="travel"
-                        />
-                        <label htmlFor="travel">
-                            Happy to travel for regional or interstate opportunities
-                        </label>
+                            <button type="submit" className="button-secondary" onClick={this.onAdd.bind(this)}>Add another address</button>
+                        </div>
 
                         {children}
 
@@ -188,10 +243,18 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addAddress: (model, other_addresses) => {
+            dispatch(actions.change(`${model}.other_addresses.${Object.keys(other_addresses).length}`, {}));
+        }
+    }
+}
+
 export {
     Textfield,
     mapStateToProps,
     BusinessDetailsForm as Form
 }
 
-export default connect(mapStateToProps)(BusinessDetailsForm);
+export default connect(mapStateToProps, mapDispatchToProps)(BusinessDetailsForm);

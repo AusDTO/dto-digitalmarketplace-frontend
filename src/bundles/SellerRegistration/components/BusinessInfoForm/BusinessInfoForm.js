@@ -188,6 +188,15 @@ class BusinessInfoForm extends BaseForm {
 
                         </fieldset>
                         
+                        <legend>Travel arrangements</legend>
+                        <Control.checkbox
+                          model={`${model}.travel`}
+                          id="travel"
+                          name="travel"
+                        />
+                        <label htmlFor="travel">
+                            Happy to travel for regional or interstate opportunities
+                        </label>
                         
                         {children}
 

@@ -87,7 +87,8 @@ class DomainList extends BaseForm {
       onCaseStudySubmit,
       onEditCaseStudy,
       onAddCaseStudy,
-      onDeleteCaseStudy
+      onDeleteCaseStudy,
+      sellerCode
     } = this.props;
 
     onCaseStudySubmit = onCaseStudySubmit.bind(this, {

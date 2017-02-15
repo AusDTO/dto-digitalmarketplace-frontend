@@ -28,7 +28,8 @@ export default combineReducers({
       seller_type: {},
       number_of_employees: '',
       other_panels: '',
-      government_experience: {}
+      government_experience: {},
+      travel: ''
     },
     businessDetailsForm: {
       name: '',
@@ -42,7 +43,7 @@ export default combineReducers({
         state: '',
         postal_code: ''
       },
-      travel: ''
+      other_addresses: {}
     },
     domainSelectorForm: {
       services: {}
