@@ -38,7 +38,7 @@ test('BusinessDetailsForm renders with form_options', () => {
   expect(tree).toMatchSnapshot();
 });
 
-test('BusinessDetailsForm renders with populated fields', () => {
+test.skip('BusinessDetailsForm renders with populated fields', () => {
   let store = createStore(Object.assign({}, { _serverContext: {} }, sampleState))
   const component = renderer.create(
     <Provider store={store}>

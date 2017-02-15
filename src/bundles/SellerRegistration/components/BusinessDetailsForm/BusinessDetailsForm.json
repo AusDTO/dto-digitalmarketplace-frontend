@@ -10,7 +10,8 @@
       "state": "NSW",
       "postalCode": "2010",
       "country": "Australia"
-    }
+    },
+    "other_addresses": {}
   },
   "form_options": {
     "errors": {

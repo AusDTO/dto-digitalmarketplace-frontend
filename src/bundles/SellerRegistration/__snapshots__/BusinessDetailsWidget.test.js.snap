@@ -156,7 +156,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <label
               className="question-heading"
               htmlFor="address_line">
-              Address
+              Primary Address
             </label>
             <p
               className="hint"
@@ -244,20 +244,18 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               type="text"
               value="" />
           </div>
-          <input
-            checked={false}
-            disabled={false}
-            id="travel"
-            name="travel"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox" />
-          <label
-            htmlFor="travel">
-            Happy to travel for regional or interstate opportunities
-          </label>
+          <div>
+            <p
+              styleName="footer">
+              More offices?
+            </p>
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              type="submit">
+              Add another address
+            </button>
+          </div>
           <input
             role="button"
             type="submit"
