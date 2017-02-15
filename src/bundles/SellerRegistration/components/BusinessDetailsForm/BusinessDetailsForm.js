@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Form, actions } from 'react-redux-form';
+import isEmpty from 'lodash/isEmpty';
 
 import {required} from '../../../../validators';
 
@@ -13,6 +14,7 @@ import Textarea     from '../../../../shared/form/Textarea';
 import Textfield    from '../../../../shared/form/Textfield';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
+import './BusinessDetailsForm.css'
 
 class BusinessDetailsForm extends BaseForm {
 
@@ -28,6 +30,12 @@ class BusinessDetailsForm extends BaseForm {
         e.preventDefault();
         const {model, addAddress, businessDetailsForm} = this.props;
         addAddress(model, businessDetailsForm.other_addresses || {});
+    }
+
+    onRemove(id, e) {
+        e.preventDefault();
+        const {model, removeAddress} = this.props;
+        removeAddress(model, id);
     }
 
     render() {
@@ -163,59 +171,72 @@ class BusinessDetailsForm extends BaseForm {
                         <div>
                             {businessDetailsForm.other_addresses && Object.keys(businessDetailsForm.other_addresses).map((key, i) => {
                               return (
-                                <div key={key}>
-                                    <hr/>
-                                    <h3>Additional address</h3>
-                                    <Textfield
-                                        model={`${model}.other_addresses[${i}].address_line`}
-                                        name={`address_line-${i}`}
-                                        id={`address_line-${i}`}
-                                        htmlFor={`address_line-${i}`}
-                                        label="Address"
-                                        messages={{
-                                            required: 'You must provide address'
-                                        }}
-                                        validators={{required}}
-                                    />
-                                    <Textfield
-                                        model={`${model}.other_addresses[${i}].suburb`}
-                                        name={`suburb-${i}`}
-                                        id={`suburb-${i}`}
-                                        htmlFor={`suburb-${i}`}
-                                        label="Suburb"
-                                        messages={{
-                                            required: 'You must provide a suburb'
-                                        }}
-                                        validators={{required}}
-                                    />
-                                    <Textfield
-                                        model={`${model}.other_addresses[${i}].state`}
-                                        name={`state-${i}`}
-                                        id={`state-${i}`}
-                                        htmlFor={`state-${i}`}
-                                        label="State"
-                                        messages={{
-                                            required: 'You must provide a state'
-                                        }}
-                                        validators={{required}}
-                                    />
-                                    <Textfield
-                                        model={`${model}.other_addresses[${i}].postal_code`}
-                                        name={`postal_code-${i}`}
-                                        id={`postal_code-${i}`}
-                                        htmlFor={`postal_code-${i}`}
-                                        label="Postcode"
-                                        maxLength="4"
-                                        messages={{
-                                            required: 'You must provide a postal code'
-                                        }}
-                                        validators={{required}}
-                                        pattern="[0-9]{4}"
-                                    />
+                                <div styleName="address-wrapper" key={key}>
+                                    <hr styleName="hr"/>
+                                    <div className="row">
+                                        <div className="col-xs-12 col-sm-10">
+                                          <h3 styleName="heading">Additional address</h3>
+                                        </div>
+                                        <div className="col-xs-12 col-sm-2">
+                                            <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
+                                        </div>  
+                                    </div>  
+                                    <div className="row">
+                                        <div className="col-xs-12 col-sm-10">
+                                            <Textfield
+                                                model={`${model}.other_addresses[${i}].address_line`}
+                                                name={`address_line-${i}`}
+                                                id={`address_line-${i}`}
+                                                htmlFor={`address_line-${i}`}
+                                                label="Address"
+                                                messages={{
+                                                    required: 'You must provide address'
+                                                }}
+                                                validators={{required}}
+                                            />
+                                            <Textfield
+                                                model={`${model}.other_addresses[${i}].suburb`}
+                                                name={`suburb-${i}`}
+                                                id={`suburb-${i}`}
+                                                htmlFor={`suburb-${i}`}
+                                                label="Suburb"
+                                                messages={{
+                                                    required: 'You must provide a suburb'
+                                                }}
+                                                validators={{required}}
+                                            />
+                                            <Textfield
+                                                model={`${model}.other_addresses[${i}].state`}
+                                                name={`state-${i}`}
+                                                id={`state-${i}`}
+                                                htmlFor={`state-${i}`}
+                                                label="State"
+                                                messages={{
+                                                    required: 'You must provide a state'
+                                                }}
+                                                validators={{required}}
+                                            />
+                                            <Textfield
+                                                model={`${model}.other_addresses[${i}].postal_code`}
+                                                name={`postal_code-${i}`}
+                                                id={`postal_code-${i}`}
+                                                htmlFor={`postal_code-${i}`}
+                                                label="Postcode"
+                                                maxLength="4"
+                                                messages={{
+                                                    required: 'You must provide a postal code'
+                                                }}
+                                                validators={{required}}
+                                                pattern="[0-9]{4}"
+                                            />
+                                        </div>
+                                    </div>        
                                 </div>    
                               )
                             })}
-
+                            {isEmpty(businessDetailsForm.other_addresses) &&
+                                <p styleName="footer">More offices?</p>
+                            }
                             <button type="submit" className="button-secondary" onClick={this.onAdd.bind(this)}>Add another address</button>
                         </div>
 
@@ -247,6 +268,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addAddress: (model, other_addresses) => {
             dispatch(actions.change(`${model}.other_addresses.${Object.keys(other_addresses).length}`, {}));
+        },
+        removeAddress: (model, id) => {
+            dispatch(actions.omit(`${model}.other_addresses`, id));
+            // added due to bug in adding empty address then removing without submit
+            dispatch(actions.setValidity(`${model}.other_addresses.${id}`, true));
         }
     }
 }
