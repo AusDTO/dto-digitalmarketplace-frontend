@@ -37,7 +37,7 @@ export default [
     {
         key: 'marketingcomms',
         label: 'Marketing, Communications and Engagement',
-        description: 'Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.',
+        description: 'Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.',
     },
     {
         key: 'ops',

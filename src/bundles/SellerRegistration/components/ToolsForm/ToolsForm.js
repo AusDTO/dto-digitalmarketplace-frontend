@@ -9,6 +9,7 @@ import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textarea     from '../../../../shared/form/Textarea';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+import { required } from '../../../../validators';
 
 
 class ToolsForm extends BaseForm {
@@ -26,7 +27,9 @@ class ToolsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Tools and methodologies</h1>
-                    <p>Give buyers an insight into how you work, and more to search, by sharing your key practices. These questions are optional but can help you stand out.</p>
+                    <p>There’s lots of good reasons to share an insight into how you work.
+                        We use this information during assessment if it’s relevant to a selected area of expertise.
+                        It also enriches your profile and gives buyers more ways to find you through keyword search.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -48,8 +51,12 @@ class ToolsForm extends BaseForm {
                             name="tools"
                             id="tools"
                             controlProps={{limit: 200}}
-                            label="Tools (optional)"
+                            label="Tools"
                             description="What tools do you use on a day-to-day basis? For example Jira, Basecamp, Digital Service Standard, Sharpies."
+                            validators={{ required }}
+                            messages={{
+                                required: `Tools is required`,
+                            }}
                         />
 
                         <Textarea
@@ -57,8 +64,12 @@ class ToolsForm extends BaseForm {
                             name="methodologies"
                             id="methodologies"
                             controlProps={{limit: 200}}
-                            label="Methodologies (optional)"
+                            label="Methodologies"
                             description="What methodologies form the core of your practice? For example, Kanban, lean, scaled agile (SAFe)."
+                            validators={{ required }}
+                            messages={{
+                                required: `Methodologies is required`,
+                            }}
                         />
 
                         <Textarea
@@ -66,7 +77,7 @@ class ToolsForm extends BaseForm {
                             name="technologies"
                             id="technologies"
                             controlProps={{limit: 200}}
-                            label="Technologies (optional)"
+                            label="Technologies"
                             description="What technologies do you typically use as part of your products and services? For example, Python, Drupal, React, .net, Java, Ruby on Rails"
                         />
                         {children}

@@ -44,9 +44,7 @@ class ProductsForm extends BaseForm {
       <Layout>
         <header>
           <h1 tabIndex="-1">Products</h1>
-          <p>If you business sells any digital software products, you can now them to your seller profile page.
-              To list any products you have in the Digital Marketplace, add your product name, summary and links to more information for interested buyers.
-              You can add as many products as you like.</p>
+          <p>If your business has developed any software products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you’re reselling.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -93,7 +91,7 @@ class ProductsForm extends BaseForm {
                           name={`summary-${index}`}
                           id={`summary-${index}`}
                           controlProps={{limit: 50}}
-                          label="Product Summary"
+                          label="Product summary"
                           description="This is your ‘elevator pitch’ — in a single sentence tell us about your product."
                           messages={{
                               required: `You must provide a summary for product ${index}`

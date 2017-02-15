@@ -1,6 +1,6 @@
 host: dm-dev-frontend
 command: npm run server
-buildpack: https://github.com/AusDTO/nodejs-buildpack.git#yarn
+buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git
 memory: 128M
 disk_quota: 1G
 instances: 1

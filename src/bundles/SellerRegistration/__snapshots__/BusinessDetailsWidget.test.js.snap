@@ -24,7 +24,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <label
               className="question-heading"
               htmlFor="name">
-              Business Name
+              Business name
             </label>
             <p
               className="hint"
@@ -89,7 +89,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <p
               className="hint"
               id="summary-hint">
-              3-4 sentences that describe your business. This is visible to all viewers without a login.
+              3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
             </p>
             <div>
               <textarea
@@ -240,7 +240,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern="[0-9]{4}"
+              pattern={undefined}
               type="text"
               value="" />
           </div>

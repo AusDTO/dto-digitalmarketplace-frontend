@@ -77,6 +77,7 @@ class DomainList extends BaseForm {
       buttonText,
       model,
       action,
+      sellerCode,
       caseStudyForm,
       children,
       currentStudy,
@@ -106,7 +107,7 @@ class DomainList extends BaseForm {
       return (
         <Layout>
           <header>
-            <h1 tabIndex="-1">{title}</h1>
+            <h1 tabIndex="-1">Add case studies</h1>
           </header>
           <article role="main">
             <p>Before you can add any case studies you need to select the services you will offer.</p>
@@ -116,17 +117,33 @@ class DomainList extends BaseForm {
       )
     };
 
+      let header = (<header>
+        <h1 tabIndex="-1">{title}</h1>
+        <p>Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.
+          They become part of your seller profile, so think of them as the beginning of your conversation
+          with hundreds of buyers and a tool to help them find you through keyword search.
+        </p>
+      </header>)
+      if (sellerCode) {
+        header = (<header>
+          <h1 tabIndex="-1">{title}</h1>
+          <p>Case studies are important for showing you meet our
+            <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>for any new
+            services you wish to offer. But they’re also much more. Think of them as the beginning of a
+            conversation with hundreds of government buyers from all over Australia.
+          </p>
+          <ul>
+            <li>You <b>must</b> add case studies for new services.</li>
+            <li>We recommended adding case studies for pre-approved services.</li>
+          </ul>
+        </header>)
+      }
+
     return (
       <Switch>
         <Route path={match.url} exact render={() => (
           <Layout>
-            <header>
-              <h1 tabIndex="-1">{title}</h1>
-              <p>Need a pep talk? Your case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>, like other tenders.
-                But they’re also much more. Think of them as the beginning of a conversation with hundreds of government buyers from all over Australia.
-                This a space for your stories that could spark all sorts of wonderful and productive relationships.
-              </p>
-            </header>
+              {header}
             <article role="main">
              
               <ErrorBox focusOnMount={true} model={model}/>
@@ -227,7 +244,7 @@ class DomainList extends BaseForm {
           <CaseStudyForm
             model="casestudy"
             formName="casestudy"
-            buttonText="Save & Preview"
+            buttonText="Save and preview"
             service={subMatch.params.service}
             returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
@@ -240,7 +257,7 @@ class DomainList extends BaseForm {
             model={`caseStudyForm.case_studies.${subMatch.params.id}`}
             formName={`caseStudyForm.case_studies.${subMatch.params.id}`}
             mode="edit"
-            buttonText="Save & Preview"
+            buttonText="Save and preview"
             returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
           />
@@ -274,6 +291,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...formProps(state, 'caseStudyForm'),
     ...ownProps,
+    supplierCode: state.application.supplierCode,
     currentStudy: state.casestudy,
     getStudiesByService,
     calcRemaining

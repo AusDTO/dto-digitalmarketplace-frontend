@@ -3,7 +3,7 @@ exports[`test SignupForm renders 1`] = `
   className="layout">
   <header>
     <h1>
-      Create an account
+      Let’s get started
     </h1>
   </header>
   <article
@@ -14,6 +14,70 @@ exports[`test SignupForm renders 1`] = `
       method="post"
       onReset={[Function]}
       onSubmit={[Function]}>
+      To create an account first tell us how you want to use the Digital Marketplace.
+      <div
+        styleName="user-type">
+        <div
+          className="field">
+          <fieldset>
+            <legend>
+              I want to...
+            </legend>
+            <div>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-buyer"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="buyer" />
+                <label
+                  htmlFor="user_type-buyer">
+                  <span>
+                    <b>
+                      Buyer
+                    </b>
+                    <br />
+                     I want to buy on behalf 
+                    <br />
+                    of government.
+                    <br />
+                  </span>
+                </label>
+              </span>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-seller"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="seller" />
+                <label
+                  htmlFor="user_type-seller">
+                  <span>
+                    <b>
+                      Seller
+                    </b>
+                    <br />
+                     I want to sell digital products or services.
+                  </span>
+                </label>
+              </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      Now enter your name and your work email address.
       <div
         className="field">
         <label
@@ -58,60 +122,9 @@ exports[`test SignupForm renders 1`] = `
           type="email"
           value="" />
       </div>
-      <div
-        styleName="user-type">
-        <div
-          className="field">
-          <fieldset>
-            <legend>
-              I want to
-            </legend>
-            <div>
-              <span>
-                <input
-                  checked={false}
-                  disabled={false}
-                  id="user_type-buyer"
-                  name="user_type"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  type="radio"
-                  value="buyer" />
-                <label
-                  htmlFor="user_type-buyer">
-                  Buy for government
-                </label>
-              </span>
-              <span>
-                <input
-                  checked={false}
-                  disabled={false}
-                  id="user_type-seller"
-                  name="user_type"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  type="radio"
-                  value="seller" />
-                <label
-                  htmlFor="user_type-seller">
-                  Sell ICT services
-                </label>
-              </span>
-            </div>
-          </fieldset>
-        </div>
-      </div>
-      <input
-        role="button"
-        type="submit"
-        value="Create your account" />
       <p>
         <small>
-          All activity on the Digital Marketplace is subject to our 
+          By creating an account you confirm your acceptance of our 
           <a
             href="/terms-of-use">
             Terms of Use
@@ -119,6 +132,10 @@ exports[`test SignupForm renders 1`] = `
           .
         </small>
       </p>
+      <input
+        role="button"
+        type="submit"
+        value="Create your account" />
     </form>
   </article>
 </div>
@@ -129,7 +146,7 @@ exports[`test SignupForm renders with form_options 1`] = `
   className="layout">
   <header>
     <h1>
-      Create an account
+      Let’s get started
     </h1>
   </header>
   <article
@@ -145,6 +162,70 @@ exports[`test SignupForm renders with form_options 1`] = `
         name="csrf_token"
         type="hidden"
         value="sometoken" />
+      To create an account first tell us how you want to use the Digital Marketplace.
+      <div
+        styleName="user-type">
+        <div
+          className="field">
+          <fieldset>
+            <legend>
+              I want to...
+            </legend>
+            <div>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-buyer"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="buyer" />
+                <label
+                  htmlFor="user_type-buyer">
+                  <span>
+                    <b>
+                      Buyer
+                    </b>
+                    <br />
+                     I want to buy on behalf 
+                    <br />
+                    of government.
+                    <br />
+                  </span>
+                </label>
+              </span>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-seller"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="seller" />
+                <label
+                  htmlFor="user_type-seller">
+                  <span>
+                    <b>
+                      Seller
+                    </b>
+                    <br />
+                     I want to sell digital products or services.
+                  </span>
+                </label>
+              </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      Now enter your name and your work email address.
       <div
         className="field">
         <label
@@ -189,60 +270,9 @@ exports[`test SignupForm renders with form_options 1`] = `
           type="email"
           value="" />
       </div>
-      <div
-        styleName="user-type">
-        <div
-          className="field">
-          <fieldset>
-            <legend>
-              I want to
-            </legend>
-            <div>
-              <span>
-                <input
-                  checked={false}
-                  disabled={false}
-                  id="user_type-buyer"
-                  name="user_type"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  type="radio"
-                  value="buyer" />
-                <label
-                  htmlFor="user_type-buyer">
-                  Buy for government
-                </label>
-              </span>
-              <span>
-                <input
-                  checked={false}
-                  disabled={false}
-                  id="user_type-seller"
-                  name="user_type"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  type="radio"
-                  value="seller" />
-                <label
-                  htmlFor="user_type-seller">
-                  Sell ICT services
-                </label>
-              </span>
-            </div>
-          </fieldset>
-        </div>
-      </div>
-      <input
-        role="button"
-        type="submit"
-        value="Create your account" />
       <p>
         <small>
-          All activity on the Digital Marketplace is subject to our 
+          By creating an account you confirm your acceptance of our 
           <a
             href="/terms-of-use">
             Terms of Use
@@ -250,6 +280,10 @@ exports[`test SignupForm renders with form_options 1`] = `
           .
         </small>
       </p>
+      <input
+        role="button"
+        type="submit"
+        value="Create your account" />
     </form>
   </article>
 </div>

@@ -28,7 +28,7 @@ class BusinessInfoForm extends BaseForm {
                     <h1 tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
-                    <h2>About your business</h2>
+                    <h2>More about your business</h2>
                     <ErrorBox focusOnMount={true} model={model}/>
                     <Form model={model}
                           action={action}
@@ -81,30 +81,10 @@ class BusinessInfoForm extends BaseForm {
                             </label>
                         </fieldset>
                         <fieldset>
-                            <legend>Select all that apply to your business (optional).</legend>
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.start_up`}
-                                id="start-up"
-                                name="start-up"
-                                value="Start Up"
-                            />
-                            <label htmlFor="start-up">Start-up
-                                <p>Your business aims to disrupt an established market using technology.
-                                    Up to 5 years from business
-                                    commencement. Not listed on any stock exchange.</p>
-                            </label>
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.sme`}
-                                id="sme"
-                                name="sme"
-                                value="SME"
-                            />
-                            <label htmlFor="sme">Small to medium-sized enterprise (SME)
-                                <p>You have less than 200 employees and are independent of any parent organisation for taxation purposes.</p>
-                            </label>
-
+                            <legend>Select any identifiers that apply to your business</legend>
+                            <p>
+                            Buyers often search for sellers that have specific characteristics, whether through size or the people who make up the organisation. This is optional, so it’s up to you whether you’d like to share this information.
+                            </p>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.indigenous`}
@@ -115,6 +95,19 @@ class BusinessInfoForm extends BaseForm {
                             <label htmlFor="indigenous">Indigenous
                                 <p>Your business is listed on a directory of indigenous businesses, such as Supply Nation.</p>
                             </label>
+
+                            {/*<Textfield
+                                model={`${model}.supply_nation`}
+                                name="supply_nation"
+                                id="supply_nation"
+                                htmlFor="supply_nation"
+                                label="Please add your Supply Nation certification number."
+                                style={{display: 'none'}}
+                                messages={{
+                                    required: 'Supply Nation certification number is required',
+                                }}
+                            />*/}
+
 
                             <Control.checkbox
                                 model={`${model}.seller_type.disability`}
@@ -137,6 +130,16 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
+                                model={`${model}.seller_type.start_up`}
+                                id="start-up"
+                                name="start-up"
+                                value="Start Up"
+                            />
+                            <label htmlFor="start-up">Start-up
+                                <p>Your business aims to disrupt an established market using technology.It’s not listed on any stock exchange and is less than 5 years old.</p>
+                            </label>
+
+                            <Control.checkbox
                                 model={`${model}.seller_type.nfp_social_enterprise`}
                                 id="nfp-social-enterprise"
                                 name="nfp-social-enterprise"
@@ -149,7 +152,7 @@ class BusinessInfoForm extends BaseForm {
                         </fieldset>
 
                         <fieldset>
-                            <legend>Have you ever worked with government before?</legend>
+                            <legend>Have you ever worked with government before? Choose one or more.</legend>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.no_experience`}
@@ -186,14 +189,6 @@ class BusinessInfoForm extends BaseForm {
                                 value="international"/>
                             <label htmlFor="international">Yes, with government outside Australia</label>
 
-                            
-                            <Textfield
-                                model={`${model}.other_panels`}
-                                name="other-panels"
-                                id="other-panels"
-                                htmlFor="other-panels"
-                                label="List any other Government panels you have joined (optional) "
-                            />
                         </fieldset>
                         
                         
@@ -211,7 +206,7 @@ BusinessInfoForm.defaultProps = {
   title: 'More about your business'
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         ...formProps(state, 'businessInfoForm')
     }

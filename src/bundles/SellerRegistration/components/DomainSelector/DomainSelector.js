@@ -23,8 +23,16 @@ class DomainSelector extends BaseForm {
         let header = (
             <header>
                 <h1 tabIndex="-1">What services will you offer?</h1>
-                <p>Select the digital services you want to provide. You’ll need to add a case study for each that meets 
-                   our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
+                <p>Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and reference. We’ll use these to ensure you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
+                <Link
+                    to="/products"
+                    onClick={() => {
+                        // Hardcoded is ugly.
+                        actions.stepComplete('casestudy');
+                        actions.stepComplete('digital');
+                        actions.navigateToStep('/products');
+                    }}>If you only have software products to offer, skip to the product section.
+                </Link>
             </header>
         )
 
@@ -44,15 +52,6 @@ class DomainSelector extends BaseForm {
             <Layout>
                 {header}
                 <article role="main">
-                    <Link
-                        to="/products"
-                        onClick={() => {
-                            // Hardcoded is ugly.
-                            actions.stepComplete('casestudy');
-                            actions.stepComplete('digital');
-                            actions.navigateToStep('/products');
-                        }}>If you only have software products to offer, skip to the product section.
-                    </Link>
 
                     <ErrorBox focusOnMount={true} model={model}/>
 

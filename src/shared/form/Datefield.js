@@ -4,8 +4,6 @@ import { actions } from 'react-redux-form';
 import format from 'date-fns/format';
 import get from 'lodash/get';
 
-import StatefulError from './StatefulError';
-
 class Datefield extends React.Component {
 
   state = {
@@ -41,7 +39,7 @@ class Datefield extends React.Component {
   }
 
   render() {
-    const { id, htmlFor, label, model, messages, description } = this.props;
+    const { id, htmlFor, label, description } = this.props;
     const {
       day,
       month,
@@ -54,13 +52,13 @@ class Datefield extends React.Component {
         {description && (
           <p className="hint" id={`${id}-hint`}>{description}</p>
         )}
-        {messages && <StatefulError model={model} messages={messages} id={id} />}
 
         <div className="field">
           <label htmlFor={htmlFor} className="question-heading">DD</label>
           <input
             type="text"
             name="day"
+            maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={day}
           />
@@ -71,6 +69,7 @@ class Datefield extends React.Component {
           <input
             type="text"
             name="month"
+            maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={month}
           />
@@ -81,6 +80,7 @@ class Datefield extends React.Component {
           <input
             type="text"
             name="year"
+            maxLength="4"
             onChange={this.onChange.bind(this)}
             defaultValue={year}
           />
@@ -114,9 +114,6 @@ Datefield.propTypes = {
     React.PropTypes.func,
     React.PropTypes.string,
   ]).isRequired,
-
-  validators: React.PropTypes.object,
-  messages: React.PropTypes.object,
   description: React.PropTypes.string,
   pattern: React.PropTypes.string,
   type: React.PropTypes.string

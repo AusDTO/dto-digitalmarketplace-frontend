@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 
-import {required} from '../../../../validators';
+import {required, limitNumbers} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -50,13 +50,12 @@ class BusinessDetailsForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-
                         <Textfield
                           model={`${model}.name`}
                           name="name"
                           id="name"
                           htmlFor="name"
-                          label="Business Name"
+                          label="Business name"
                           description="As you would like it shown on the Digital Marketplace."
                           disabled="disabled"
                         />
@@ -79,7 +78,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="summary"
                             controlProps={{limit: 50}}
                             label="Summary"
-                            description="3-4 sentences that describe your business. This is visible to all viewers without a login."
+                            description="3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in."
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}
@@ -149,10 +148,10 @@ class BusinessDetailsForm extends BaseForm {
                             label="Postcode"
                             maxLength="4"
                             messages={{
-                                required: 'You must provide a postal code'
+                                required: 'You must provide a postal code. ',
+                                limitNumbers: 'Postal codes must be four digits long and only numbers.'
                             }}
-                            validators={{required}}
-                            pattern="[0-9]{4}"
+                            validators={{required, limitNumbers: limitNumbers(4)}}
                         />
 
                         <Control.checkbox

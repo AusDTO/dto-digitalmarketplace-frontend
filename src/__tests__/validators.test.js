@@ -1,5 +1,9 @@
 import validator from '../validators'
 
+import startOfToday from 'date-fns/start_of_today';
+import addDays from 'date-fns/add_days';
+import format from 'date-fns/format';
+
 test('required', () => {
 	expect(validator.required('')).toBeFalsy()
 	expect(validator.required(false)).toBeFalsy()
@@ -8,6 +12,20 @@ test('required', () => {
 	expect(validator.required('Words')).toBeTruthy()
 	expect(validator.required(true)).toBeTruthy()
 })
+
+test('validDate', () => {
+
+    expect(validator.validDate('')).toBeFalsy();
+    expect(validator.validDate(false)).toBeFalsy();
+    expect(validator.validDate('   ')).toBeFalsy();
+
+    expect(validator.validDate('2016-01-01')).toBeFalsy();
+    expect(validator.validDate(format(startOfToday(), 'YYYY-MM-DD'))).toBeFalsy();
+
+    expect(validator.validDate('2038-01-01')).toBeTruthy();
+    expect(validator.validDate(format(addDays(startOfToday(),1), 'YYYY-MM-DD'))).toBeTruthy();
+})
+
 
 test('minArrayLength', () => {
 	const min = validator.minArrayLength(2)
@@ -100,4 +118,17 @@ test('limitWords', () => {
   expect(limitValidator('one two three four five            ')).toBe(true);
 
   expect(limitValidator('one two three four five six')).toBe(false);
+});
+
+test('limitNumbers', () => {
+    const limitValidator = validator.limitNumbers(4);
+
+    expect(limitValidator('1234')).toBe(true);
+    expect(limitValidator('0001')).toBe(true);
+    expect(limitValidator('1000')).toBe(true);
+
+    expect(limitValidator('10000')).toBe(false);
+    expect(limitValidator('100')).toBe(false);
+    expect(limitValidator('100a')).toBe(false);
+    expect(limitValidator('onea')).toBe(false);
 });
