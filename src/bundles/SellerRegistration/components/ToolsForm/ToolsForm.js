@@ -79,10 +79,6 @@ class ToolsForm extends BaseForm {
                             controlProps={{limit: 200}}
                             label="Technologies"
                             description="What technologies do you typically use as part of your products and services? For example, Python, Drupal, React, .net, Java, Ruby on Rails"
-                            validators={{ required }}
-                            messages={{
-                                required: `Technologies is required`,
-                            }}
                         />
                         {children}
 
