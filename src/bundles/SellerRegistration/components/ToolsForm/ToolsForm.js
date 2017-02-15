@@ -9,6 +9,7 @@ import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textarea     from '../../../../shared/form/Textarea';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+import { required } from '../../../../validators';
 
 
 class ToolsForm extends BaseForm {
@@ -78,10 +79,6 @@ class ToolsForm extends BaseForm {
                             controlProps={{limit: 200}}
                             label="Technologies"
                             description="What technologies do you typically use as part of your products and services? For example, Python, Drupal, React, .net, Java, Ruby on Rails"
-                            validators={{ required }}
-                            messages={{
-                                required: `Technologies is required`,
-                            }}
                         />
                         {children}
 
