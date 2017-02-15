@@ -53,6 +53,20 @@ test('validPhoneNumber', () => {
     expect(validator.validPhoneNumber('+61 2 12345678')).toBeTruthy();
 })
 
+test('validABN', () => {
+
+    expect(validator.validABN('')).toBeFalsy();
+    expect(validator.validABN(false)).toBeFalsy();
+    expect(validator.validABN('   ')).toBeFalsy();
+    expect(validator.validABN('abn')).toBeFalsy();
+    expect(validator.validABN('0212345678')).toBeFalsy();
+
+    expect(validator.validABN('53 004 085 614')).toBeFalsy();
+    expect(validator.validABN('53004085614')).toBeFalsy();
+
+    expect(validator.validABN('53 004 085 616')).toBeTruthy();
+    expect(validator.validABN('53004085616')).toBeTruthy();
+})
 
 test('minArrayLength', () => {
 	const min = validator.minArrayLength(2)

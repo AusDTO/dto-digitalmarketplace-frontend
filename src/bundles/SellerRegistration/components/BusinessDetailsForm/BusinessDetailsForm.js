@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Form, Control } from 'react-redux-form';
-import {isValidABN} from 'abnacn-validator';
 
-import {required, limitNumbers, validLinks} from '../../../../validators';
+import {required, limitNumbers, validLinks, validABN} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -76,9 +75,9 @@ class BusinessDetailsForm extends BaseForm {
                           </span>)}
                           disabled="disabled"
                           messages={{
-                              isValidABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
+                              validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
                           }}
-                          validators={{isValidABN}}
+                          validators={{validABN}}
                         />
 
                         <Textarea

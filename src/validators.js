@@ -2,6 +2,7 @@ import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid';
 import isFuture from 'date-fns/is_future';
+import {isValidABN} from 'abnacn-validator';
 
 export const required = (val) => {
   if (typeof val === 'boolean') {
@@ -45,6 +46,13 @@ export const minArrayLength = (len) => (arr = []) => {
 export const min = (len) => (val = '') => {
   return val.length >= len;
 };
+
+export const validABN = (val) => {
+    if (!val) {
+        return false;
+    }
+    return isValidABN(val)
+}
 
 export const validLink = (val) => {
     return val.match(/^http/)
@@ -122,6 +130,7 @@ export default {
   required,
   minArrayLength,
   min,
+  validABN,
   validLinks,
   validDate,
   validEmail,
