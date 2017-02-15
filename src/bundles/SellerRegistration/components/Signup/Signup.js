@@ -29,6 +29,7 @@ import SubmitStepForm       from '../Submit';
 import Finish               from '../Finish';
 import FinishProfile        from '../FinishProfile';
 import ProductsForm         from '../ProductsForm';
+import RecruiterForm         from '../RecruiterForm';
 
 
 class Signup extends React.Component {
@@ -70,6 +71,7 @@ class Signup extends React.Component {
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
+    { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
