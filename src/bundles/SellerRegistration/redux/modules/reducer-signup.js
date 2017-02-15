@@ -98,6 +98,13 @@ export default combineReducers({
     },
     submitStepForm: {
       agreed_to_master_agreement: null
+    },
+    recruiterForm: {
+      recruiter: '',
+      database_size: '',
+      active_candidates: '',
+      markup: '',
+      margin:'',
     }
   })
 })
