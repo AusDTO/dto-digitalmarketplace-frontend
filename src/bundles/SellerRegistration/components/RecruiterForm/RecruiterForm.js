@@ -31,12 +31,13 @@ class RecruiterForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit, recruiterForm, navigateToStep, stepComplete, setRecruiter} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, recruiterForm, navigateToStep, stepComplete, setRecruiter} = this.props;
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
-                    <p>If your primary purpose is the sourcing of digital specialists.</p>
+                    <h1 tabIndex="-1">Are you a recruitment service?</h1>
+                    <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables. 
+                       Examples include temporary, contract and permanent recruitment.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -114,7 +115,7 @@ class RecruiterForm extends BaseForm {
                             onClick={() => {
                                 // Hardcoded is ugly.
                                 setRecruiter(model, false);
-                                stepComplete('casestudy');
+                                stepComplete('recruiter');
                                 navigateToStep('/domains');
                             }}>I am not a recruiter
                         </Link>
@@ -126,7 +127,7 @@ class RecruiterForm extends BaseForm {
 }
 
 RecruiterForm.defaultProps = {
-    title: 'Recruiters'
+    title: 'Recruiter'
 }
 
 const mapStateToProps = (state) => {

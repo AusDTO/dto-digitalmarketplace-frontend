@@ -4,7 +4,7 @@ import BaseForm      from '../../../shared/form/BaseForm';
 import SubmitForm    from '../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../shared/form/ErrorBox';
 import StatefulError from '../../../shared/form/StatefulError';
-import {Form, Control} from 'react-redux-form';
+import {Form, Control, actions} from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
 import {required} from '../../../validators';
