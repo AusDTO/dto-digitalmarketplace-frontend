@@ -26,6 +26,18 @@ export const validDate = (val) => {
     }
 }
 
+export const validEmail = (val) => {
+    if (!val) {
+        return true;
+    }
+    if (val.includes('@') && val.includes('.') && !val.includes(' ')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 export const minArrayLength = (len) => (arr = []) => {
   return Array.isArray(arr) && arr.filter(v => v.trim()).length >= len;
 };
@@ -98,6 +110,7 @@ export default {
   min,
   validLinks,
   validDate,
+  validEmail,
   dependantRequired,
   minObjectLength,
   limitWords,

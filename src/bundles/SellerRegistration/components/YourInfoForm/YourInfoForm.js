@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 
-import { required } from '../../../../validators';
+import { required, validEmail } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -78,9 +78,10 @@ class YourInfoForm extends BaseForm {
                   id="contact_email"
                   htmlFor="contact_email"
                   label="Email"
-                  validators={{ required }}
+                  validators={{ required, validEmail }}
                   messages={{
                       required: 'Business contact email is required',
+                      validEmail: 'Business contact email must be a valid email address',
                   }}
                   default={userEmail}
               />
@@ -116,9 +117,10 @@ class YourInfoForm extends BaseForm {
                   id="email"
                   htmlFor="email"
                   label="Email"
-                  validators={{ required }}
+                  validators={{ required, validEmail }}
                   messages={{
                       required: 'Authorised representative\'s email is required',
+                      validEmail: 'Authorised representative\'s email must be a valid email address',
                   }}
               />
 

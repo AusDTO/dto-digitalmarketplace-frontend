@@ -26,6 +26,21 @@ test('validDate', () => {
     expect(validator.validDate(format(addDays(startOfToday(),1), 'YYYY-MM-DD'))).toBeTruthy();
 })
 
+test('validEmail', () => {
+
+    expect(validator.validEmail(false)).toBeTruthy();
+
+    expect(validator.validEmail('@')).toBeFalsy();
+    expect(validator.validEmail(' ')).toBeFalsy();
+    expect(validator.validEmail('.')).toBeFalsy();
+    expect(validator.validEmail('me.com')).toBeFalsy();
+    expect(validator.validEmail('me@')).toBeFalsy();
+    expect(validator.validEmail('me @me.com')).toBeFalsy();
+
+    expect(validator.validEmail('me@me.com')).toBeTruthy();
+    expect(validator.validEmail('me.name@me-too.com')).toBeTruthy();
+})
+
 
 test('minArrayLength', () => {
 	const min = validator.minArrayLength(2)
