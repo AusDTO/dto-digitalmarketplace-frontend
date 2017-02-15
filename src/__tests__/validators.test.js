@@ -41,6 +41,18 @@ test('validEmail', () => {
     expect(validator.validEmail('me.name@me-too.com')).toBeTruthy();
 })
 
+test('validPhoneNumber', () => {
+
+    expect(validator.validPhoneNumber(false)).toBeTruthy();
+
+    expect(validator.validPhoneNumber('02 1234 567')).toBeFalsy();
+    expect(validator.validPhoneNumber(' ')).toBeFalsy();
+
+    expect(validator.validPhoneNumber('0212345678')).toBeTruthy();
+    expect(validator.validPhoneNumber('(02) 1234 5678')).toBeTruthy();
+    expect(validator.validPhoneNumber('+61 2 12345678')).toBeTruthy();
+})
+
 
 test('minArrayLength', () => {
 	const min = validator.minArrayLength(2)

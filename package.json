@@ -49,6 +49,7 @@
     "webpack-dev-server": "1.16.1"
   },
   "dependencies": {
+    "abnacn-validator": "0.0.5",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
     "babel-jest": "16.0.0",

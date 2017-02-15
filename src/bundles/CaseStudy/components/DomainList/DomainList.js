@@ -148,9 +148,12 @@ class DomainList extends BaseForm {
              
               <ErrorBox focusOnMount={true} model={model}/>
 
-              <strong>{leftToAddCount === 0
-                ? 'All services have a case study'
-                : `${leftToAddCount} services to add`
+              <strong>{leftToAddCount === 0 ?
+                'All services have a case study':
+                  (leftToAddCount === 1 ?
+                      `${leftToAddCount} service to add` :
+                      `${leftToAddCount} services to add`
+                  )
               }</strong>
 
               <ProgressBar value={addedServices.length} max={serviceCount} />

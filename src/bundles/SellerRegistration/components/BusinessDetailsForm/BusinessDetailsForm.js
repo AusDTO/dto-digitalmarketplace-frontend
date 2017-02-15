@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Form, Control } from 'react-redux-form';
+import {isValidABN} from 'abnacn-validator';
 
-import {required, limitNumbers} from '../../../../validators';
+import {required, limitNumbers, validLinks} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -58,6 +59,10 @@ class BusinessDetailsForm extends BaseForm {
                           label="Business name"
                           description="As you would like it shown on the Digital Marketplace."
                           disabled="disabled"
+                          validators={{required}}
+                          messages={{
+                              required: 'Business name is required',
+                          }}
                         />
 
                         <Textfield
@@ -70,6 +75,10 @@ class BusinessDetailsForm extends BaseForm {
                               <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/'>Apply for an ABN here.</a>
                           </span>)}
                           disabled="disabled"
+                          messages={{
+                              isValidABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
+                          }}
+                          validators={{isValidABN}}
                         />
 
                         <Textarea
@@ -91,8 +100,9 @@ class BusinessDetailsForm extends BaseForm {
                             id="website"
                             htmlFor="website"
                             label="Website URL"
+                            description="Provide a link to your website beginning with http"
                             messages={{
-                                required: 'You must provide a website URL'
+                                required: 'You must provide a website link beginning with http'
                             }}
                             validators={{required}}
                         />
@@ -103,6 +113,11 @@ class BusinessDetailsForm extends BaseForm {
                             id="linkedin"
                             htmlFor="linkedin"
                             label="LinkedIn URL (optional)"
+                            description="Provide a LinkedIn URL beginning with http"
+                            messages={{
+                                validLinks: 'Links provided must begin with http'
+                            }}
+                            validators={{validLinks}}
                         />
 
                         <Textfield

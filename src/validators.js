@@ -46,6 +46,10 @@ export const min = (len) => (val = '') => {
   return val.length >= len;
 };
 
+export const validLink = (val) => {
+    return val.match(/^http/)
+}
+
 export const validLinks = (val) => {
     if (!val) {
         return true;
@@ -60,7 +64,7 @@ export const validLinks = (val) => {
     return true;
   }
 
-  return val.filter(v => v.match(/^http/)).length === val.length;
+  return val.filter(v => validLink(v)).length === val.length;
 };
 
 /**
@@ -104,6 +108,16 @@ export const limitNumbers = (limit) => (val = '') => {
     return length === limit && length === val.length;
 }
 
+export const validPhoneNumber = (val) => {
+
+    if (!val) {
+        return true;
+    }
+
+    const length = (val.match(/[0-9]/g) || []).length
+    return length >= 10;
+}
+
 export default {
   required,
   minArrayLength,
@@ -111,6 +125,7 @@ export default {
   validLinks,
   validDate,
   validEmail,
+  validPhoneNumber,
   dependantRequired,
   minObjectLength,
   limitWords,
