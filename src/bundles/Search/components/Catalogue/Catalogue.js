@@ -45,7 +45,7 @@ export class Catalogue extends React.Component {
                       placeholder: 'Type to search by company name, role you need or the outcome you\'re after'
                     }}
                     items={search.results.slice(0, 10)}
-                    getItemValue={({ name }) => name}
+                    getItemValue={({ title }) => title}
                     onSelect={(value, item) => actions.updateKeyword(value)}
                     onChange={(e, value) => actions.updateKeyword(value)}
                     renderItem={(item, isHighlighted) => (
@@ -53,7 +53,7 @@ export class Catalogue extends React.Component {
                         styleName={isHighlighted ? 'autocompleteItemHighlighted' : 'autocompleteItem' }
                         key={item.abbr}
                         id={item.abbr}
-                      >{item.name}</div>
+                      >{item.title}</div>
                     )}
                     renderMenu={(items, value, style) => {
                       // renderMenu can't return null, internals of Autocomplete
