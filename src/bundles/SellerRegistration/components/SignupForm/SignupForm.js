@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 
-import { required } from '../../../../validators';
+import { required, validEmail } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -29,7 +29,7 @@ class SignupForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1>Create an account</h1>
+          <h1>Let’s get started</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -45,6 +45,25 @@ class SignupForm extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
+            To create an account first tell us how you want to use the Digital Marketplace.
+
+            <div styleName="user-type">
+              <RadioList
+                  model={`${model}.user_type`}
+                  name="user_type"
+                  id="user_type"
+                  label="I want to..."
+                  options={[{value:'buyer', label:(<span><b>Buyer</b><br/> I want to buy on behalf <br/>of government.<br/></span>)},
+                      {value: 'seller', label:(<span><b>Seller</b><br/> I want to sell digital products or services.</span>)}]}
+                  validators={{ required }}
+                  messages={{
+                      required: 'You must select a user type',
+                  }}
+              />
+            </div>
+
+            Now enter your name and your work email address.
+
             <Textfield
               model={`${model}.name`}
               name="name"
@@ -56,7 +75,10 @@ class SignupForm extends BaseForm {
                 required: 'Name is required',
               }}
             />
-
+              { isBuyer && (
+                  <p>Enter your government email address ending in <b>.gov.au.</b>&nbsp;
+                If your email is different, request your account from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</p>
+              )}
             <Textfield
               model={`${model}.email_address`}
               name="email_address"
@@ -64,25 +86,14 @@ class SignupForm extends BaseForm {
               type="email"
               htmlFor="email_address"
               label="Email address"
-              validators={{ required }}
+              validators={{ required, validEmail }}
               messages={{
                 required: 'Email is required',
+                  validEmail: 'Email address must be valid'
               }}
             />
 
-            <div styleName="user-type">
-              <RadioList
-                model={`${model}.user_type`}
-                name="user_type"
-                id="user_type"
-                label="I want to"
-                options={[{value:'buyer', label:'Buy for government'}, {value: 'seller', label:'Sell ICT services'}]}
-                validators={{ required }}
-                messages={{
-                  required: 'You must select a user type',
-                }}
-              />
-            </div>
+
 
             { isBuyer && (
               <div styleName="employment-status">
@@ -93,7 +104,7 @@ class SignupForm extends BaseForm {
                   label="To create a buyer account you need to be a government employee or be authorised by a government employee. Choose the option below that matches your situation."
                   options={[{
                     value:'employee', 
-                    label:'I am an employee under the Commonwealth Public Service ACT (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
+                    label:'I am an employee under the Commonwealth Public Service Act (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
                   }, 
                   {
                     value: 'contractor', 
@@ -108,13 +119,13 @@ class SignupForm extends BaseForm {
             )}
 
             {children}
-
-            <input type="submit" value='Create your account' role="button" />
             <p>
               <small>
-                All activity on the Digital Marketplace is subject to our <a href="/terms-of-use">Terms of Use</a>.
+                By creating an account you confirm your acceptance of our <a href="/terms-of-use">Terms of Use</a>.
               </small>
-            </p>             
+            </p>
+            <input type="submit" value='Create your account' role="button" />
+
           </Form>
         </article>
       </Layout>

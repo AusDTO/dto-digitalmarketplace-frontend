@@ -26,6 +26,47 @@ test('validDate', () => {
     expect(validator.validDate(format(addDays(startOfToday(),1), 'YYYY-MM-DD'))).toBeTruthy();
 })
 
+test('validEmail', () => {
+
+    expect(validator.validEmail(false)).toBeTruthy();
+
+    expect(validator.validEmail('@')).toBeFalsy();
+    expect(validator.validEmail(' ')).toBeFalsy();
+    expect(validator.validEmail('.')).toBeFalsy();
+    expect(validator.validEmail('me.com')).toBeFalsy();
+    expect(validator.validEmail('me@')).toBeFalsy();
+    expect(validator.validEmail('me @me.com')).toBeFalsy();
+
+    expect(validator.validEmail('me@me.com')).toBeTruthy();
+    expect(validator.validEmail('me.name@me-too.com')).toBeTruthy();
+})
+
+test('validPhoneNumber', () => {
+
+    expect(validator.validPhoneNumber(false)).toBeTruthy();
+
+    expect(validator.validPhoneNumber('02 1234 567')).toBeFalsy();
+    expect(validator.validPhoneNumber(' ')).toBeFalsy();
+
+    expect(validator.validPhoneNumber('0212345678')).toBeTruthy();
+    expect(validator.validPhoneNumber('(02) 1234 5678')).toBeTruthy();
+    expect(validator.validPhoneNumber('+61 2 12345678')).toBeTruthy();
+})
+
+test('validABN', () => {
+
+    expect(validator.validABN('')).toBeFalsy();
+    expect(validator.validABN(false)).toBeFalsy();
+    expect(validator.validABN('   ')).toBeFalsy();
+    expect(validator.validABN('abn')).toBeFalsy();
+    expect(validator.validABN('0212345678')).toBeFalsy();
+
+    expect(validator.validABN('53 004 085 614')).toBeFalsy();
+    expect(validator.validABN('53004085614')).toBeFalsy();
+
+    expect(validator.validABN('53 004 085 616')).toBeTruthy();
+    expect(validator.validABN('53004085616')).toBeTruthy();
+})
 
 test('minArrayLength', () => {
 	const min = validator.minArrayLength(2)
@@ -118,4 +159,17 @@ test('limitWords', () => {
   expect(limitValidator('one two three four five            ')).toBe(true);
 
   expect(limitValidator('one two three four five six')).toBe(false);
+});
+
+test('limitNumbers', () => {
+    const limitValidator = validator.limitNumbers(4);
+
+    expect(limitValidator('1234')).toBe(true);
+    expect(limitValidator('0001')).toBe(true);
+    expect(limitValidator('1000')).toBe(true);
+
+    expect(limitValidator('10000')).toBe(false);
+    expect(limitValidator('100')).toBe(false);
+    expect(limitValidator('100a')).toBe(false);
+    expect(limitValidator('onea')).toBe(false);
 });

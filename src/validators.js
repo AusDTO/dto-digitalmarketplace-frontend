@@ -2,6 +2,7 @@ import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid';
 import isFuture from 'date-fns/is_future';
+import {isValidABN} from 'abnacn-validator';
 
 export const required = (val) => {
   if (typeof val === 'boolean') {
@@ -26,6 +27,18 @@ export const validDate = (val) => {
     }
 }
 
+export const validEmail = (val) => {
+    if (!val) {
+        return true;
+    }
+    if (val.includes('@') && val.includes('.') && !val.includes(' ')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 export const minArrayLength = (len) => (arr = []) => {
   return Array.isArray(arr) && arr.filter(v => v.trim()).length >= len;
 };
@@ -33,6 +46,17 @@ export const minArrayLength = (len) => (arr = []) => {
 export const min = (len) => (val = '') => {
   return val.length >= len;
 };
+
+export const validABN = (val) => {
+    if (!val) {
+        return false;
+    }
+    return isValidABN(val)
+}
+
+export const validLink = (val) => {
+    return val.match(/^http/)
+}
 
 export const validLinks = (val) => {
     if (!val) {
@@ -48,7 +72,7 @@ export const validLinks = (val) => {
     return true;
   }
 
-  return val.filter(v => v.match(/^http/)).length === val.length;
+  return val.filter(v => validLink(v)).length === val.length;
 };
 
 /**
@@ -84,16 +108,35 @@ export const minObjectLength = (object = {}, minLength = -1) => {
 }
 
 export const limitWords = (limit) => (val = '') => {
-  return (val.match(/\S+/g) || []).length <= limit;
+    return (val.match(/\S+/g) || []).length <= limit;
+}
+
+export const limitNumbers = (limit) => (val = '') => {
+    const length = (val.match(/[0-9]/g) || []).length
+    return length === limit && length === val.length;
+}
+
+export const validPhoneNumber = (val) => {
+
+    if (!val) {
+        return true;
+    }
+
+    const length = (val.match(/[0-9]/g) || []).length
+    return length >= 10;
 }
 
 export default {
   required,
   minArrayLength,
   min,
+  validABN,
   validLinks,
   validDate,
+  validEmail,
+  validPhoneNumber,
   dependantRequired,
   minObjectLength,
-  limitWords
+  limitWords,
+  limitNumbers
 }

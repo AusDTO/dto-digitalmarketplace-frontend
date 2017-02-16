@@ -7,7 +7,7 @@ exports[`test DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the digital services you want to provide. You’ll need to add a case study for each that meets our 
+      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and reference. We’ll use these to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -124,27 +124,6 @@ exports[`test DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-             
-            <p>
-              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="software-engineering-and-development"
             name="software-engineering-and-development"
             onBlur={[Function]}
@@ -221,7 +200,7 @@ exports[`test DomainSelector renders 1`] = `
             Marketing, Communications and Engagement
              
             <p>
-              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
+              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.
             </p>
           </label>
         </div>
@@ -307,7 +286,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the digital services you want to provide. You’ll need to add a case study for each that meets our 
+      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and reference. We’ll use these to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -424,27 +403,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="recruitment"
-            name="recruitment"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Recruitment" />
-          <label
-            htmlFor="recruitment">
-            Recruitment
-             
-            <p>
-              Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="software-engineering-and-development"
             name="software-engineering-and-development"
             onBlur={[Function]}
@@ -521,7 +479,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             Marketing, Communications and Engagement
              
             <p>
-              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.
+              Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.
             </p>
           </label>
         </div>

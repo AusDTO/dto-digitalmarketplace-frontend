@@ -104,7 +104,7 @@ class DocumentsForm extends BaseForm {
 
     render() {
         const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, match, buttonText} = this.props;
-        let intro = 'As part of your assessment we’ll need the following documents.'
+        let intro = 'As part of your assessment we’ll need the following documents. ';
         if (sellerCode) {
             intro = 'It’s now been almost a year since you shared your insurance and financial documents with us. As such, we need more recent versions of the following documents. '
         }
@@ -181,7 +181,7 @@ class DocumentsForm extends BaseForm {
                                                     id: expiry_date_field,
                                                     model: `${model}.documents.${key}.expiry`,
                                                     htmlFor: expiry_date_field,
-                                                    label: "Expiry date:"
+                                                    label: "Expiry date"
                                                 }}
                                             /></div>}
                                         </div>

@@ -13,5 +13,5 @@ export default {
     "organisation's application to register or transact on the Digital Marketplace?",
 
     "other_circumstances":"Is there any other material circumstance that is likely to adversely affect your " +
-    "performance of any contract in the marketplace?"
+    "performance of any contract in the Digital Marketplace?"
 };

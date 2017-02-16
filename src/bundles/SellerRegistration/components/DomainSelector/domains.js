@@ -20,11 +20,6 @@ export default [
         description: 'Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.'
     },
     {
-        key: 'recruit',
-        label: 'Recruitment',
-        description: 'Recruitment is the provision of digital specialists where the recruiter does not oversee their work or warrant their performance or deliverables. Examples include temporary, contract and permanent recruitment.'
-    },
-    {
         key: 'engineering',
         label: 'Software engineering and Development',
         description: 'Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.',
@@ -42,7 +37,7 @@ export default [
     {
         key: 'marketingcomms',
         label: 'Marketing, Communications and Engagement',
-        description: 'Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social media and SEO.',
+        description: 'Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.',
     },
     {
         key: 'ops',

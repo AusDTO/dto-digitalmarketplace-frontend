@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import get from 'lodash/get';
 
-import { required, validLinks } from '../../../../validators';
+import { required, validLinks, validPhoneNumber } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -172,8 +172,8 @@ class CaseStudyForm extends BaseForm {
               htmlFor="project_links"
               label="Project links (optional)"
               controlProps={{ defaultRows: 2 }}
-              description="Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project."
-              messages={{ validLinks: 'All links provided must begin with \'http\'' }}
+              description="Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http"
+              messages={{ validLinks: 'Links must begin with \'http\'' }}
               validators={{ validLinks }}
             />
 
@@ -186,7 +186,7 @@ class CaseStudyForm extends BaseForm {
               id="refereeName"
               htmlFor="refereeName"
               label="Referee's name"
-              description="The full name of the best person to contact about your experience"
+              description="The full name of the best person to contact about your experience."
               validators={{ required }}
               messages={{ required: 'Please provide a referee name.'}}
           />
@@ -197,7 +197,7 @@ class CaseStudyForm extends BaseForm {
                 id="refereePosition"
                 htmlFor="refereePosition"
                 label="Referee's position"
-                description="At the time of the project"
+                description="At the time of the project."
                 validators={{ required }}
                 messages={{ required: 'Please provide a referee position.'}}
             />
@@ -208,8 +208,11 @@ class CaseStudyForm extends BaseForm {
                 id="refereeEmail"
                 htmlFor="refereeEmail"
                 label="Referee's phone number"
-                validators={{ required }}
-                messages={{ required: 'Please provide a referee phone number.'}}
+                validators={{ required, validPhoneNumber }}
+                messages={{
+                  required: 'Please provide a referee phone number.',
+                  validPhoneNumber: 'Referee phone number must be a valid phone number'
+                }}
             />
 
             <div>
@@ -226,7 +229,8 @@ class CaseStudyForm extends BaseForm {
                 name="refereeContact"
                 validators={{ required }}
               />
-              <label htmlFor="refereeContact">I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation overseen by the Digital Transformation Agency.
+              <label htmlFor="refereeContact">I confirm my referee gives permission to be contacted
+                and have their information shared as part of the evaluation led by the Digital Transformation Agency.
               </label>
             </div>
 

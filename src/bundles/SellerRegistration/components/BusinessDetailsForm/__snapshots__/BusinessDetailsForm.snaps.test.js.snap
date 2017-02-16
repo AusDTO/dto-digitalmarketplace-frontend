@@ -85,7 +85,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business. This is visible to all viewers without a login.
+          3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
         </p>
         <div>
           <textarea
@@ -110,8 +110,13 @@ exports[`test BusinessDetailsForm renders 1`] = `
           htmlFor="website">
           Website URL
         </label>
+        <p
+          className="hint"
+          id="website-hint">
+          Provide a link to your website beginning with http
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="website-hint"
           className=""
           disabled={false}
           id="website"
@@ -132,8 +137,13 @@ exports[`test BusinessDetailsForm renders 1`] = `
           htmlFor="linkedin">
           LinkedIn URL (optional)
         </label>
+        <p
+          className="hint"
+          id="linkedin-hint">
+          Provide a LinkedIn URL beginning with http
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="linkedin-hint"
           className=""
           disabled={false}
           id="linkedin"
@@ -236,7 +246,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern="[0-9]{4}"
+          pattern={undefined}
           type="text"
           value="" />
       </div>
@@ -353,7 +363,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business. This is visible to all viewers without a login.
+          3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
         </p>
         <div>
           <textarea
@@ -378,8 +388,13 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           htmlFor="website">
           Website URL
         </label>
+        <p
+          className="hint"
+          id="website-hint">
+          Provide a link to your website beginning with http
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="website-hint"
           className=""
           disabled={false}
           id="website"
@@ -400,8 +415,13 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           htmlFor="linkedin">
           LinkedIn URL (optional)
         </label>
+        <p
+          className="hint"
+          id="linkedin-hint">
+          Provide a LinkedIn URL beginning with http
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="linkedin-hint"
           className=""
           disabled={false}
           id="linkedin"
@@ -504,7 +524,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern="[0-9]{4}"
+          pattern={undefined}
           type="text"
           value="" />
       </div>
@@ -552,8 +572,20 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
       <ul>
         <li>
           <a
+            href="#abn">
+            ABN is required and must match a valid ABN as listed on the Australian Business Register
+          </a>
+        </li>
+        <li>
+          <a
             href="#summary">
             You must provide a seller summary
+          </a>
+        </li>
+        <li>
+          <a
+            href="#linkedin">
+            Links provided must begin with http
           </a>
         </li>
         <li>
@@ -565,7 +597,13 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <li>
           <a
             href="#postal_code">
-            You must provide a postal code
+            You must provide a postal code. 
+          </a>
+        </li>
+        <li>
+          <a
+            href="#postal_code">
+            Postal codes must be four digits long and only numbers.
           </a>
         </li>
       </ul>
@@ -621,9 +659,20 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
             </a>
           </span>
         </p>
+        <a
+          className="validation-message"
+          href="#abn">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            ABN is required and must match a valid ABN as listed on the Australian Business Register
+          </span>
+        </a>
         <input
           aria-describedby="abn-hint"
-          className=""
+          className="invalid"
           disabled={false}
           id="abn"
           maxLength={undefined}
@@ -646,7 +695,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="summary-hint">
-          3-4 sentences that describe your business. This is visible to all viewers without a login.
+          3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
         </p>
         <a
           className="validation-message"
@@ -682,8 +731,13 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           htmlFor="website">
           Website URL
         </label>
+        <p
+          className="hint"
+          id="website-hint">
+          Provide a link to your website beginning with http
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="website-hint"
           className=""
           disabled={false}
           id="website"
@@ -704,9 +758,25 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           htmlFor="linkedin">
           LinkedIn URL (optional)
         </label>
+        <p
+          className="hint"
+          id="linkedin-hint">
+          Provide a LinkedIn URL beginning with http
+        </p>
+        <a
+          className="validation-message"
+          href="#linkedin">
+          <span
+            className="visuallyhidden">
+            Validation Error: 
+          </span>
+          <span>
+            Links provided must begin with http
+          </span>
+        </a>
         <input
-          aria-describedby={undefined}
-          className=""
+          aria-describedby="linkedin-hint"
+          className="invalid"
           disabled={false}
           id="linkedin"
           maxLength={undefined}
@@ -816,7 +886,10 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
             Validation Error: 
           </span>
           <span>
-            You must provide a postal code
+            You must provide a postal code. 
+          </span>
+          <span>
+            Postal codes must be four digits long and only numbers.
           </span>
         </a>
         <input
@@ -830,7 +903,7 @@ exports[`test BusinessDetailsForm renders with populated fields 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern="[0-9]{4}"
+          pattern={undefined}
           type="text"
           value="" />
       </div>
