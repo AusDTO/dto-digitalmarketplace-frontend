@@ -237,10 +237,10 @@ class BusinessDetailsForm extends BaseForm {
                                                 label="Postcode"
                                                 maxLength="4"
                                                 messages={{
-                                                    required: 'You must provide a postal code'
+                                                    required: 'You must provide a postal code. ',
+                                                    limitNumbers: 'Postal codes must be four digits long and only numbers.'
                                                 }}
-                                                validators={{required}}
-                                                pattern="[0-9]{4}"
+                                                validators={{required, limitNumbers: limitNumbers(4)}}
                                             />
                                         </div>
                                     </div>        
