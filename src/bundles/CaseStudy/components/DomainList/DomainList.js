@@ -19,6 +19,8 @@ import { push } from '../../../SellerRegistration/redux/modules/application';
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
 
+import domains from '../../../SellerRegistration/components/DomainSelector/domains';
+
 const getStudiesByService = (studies, service) => {
   return Object
     .keys(studies)
@@ -158,21 +160,22 @@ class DomainList extends BaseForm {
 
               <ProgressBar value={addedServices.length} max={serviceCount} />
 
-              {Object.keys(services).map((service, i) => {
-                let list = getStudiesByService(caseStudyForm.case_studies, service);
+              {domains.map((domain, i) => {
+                if (services[domain.label]) {
+                let list = getStudiesByService(caseStudyForm.case_studies, domain.label);
                 return (
                   <section key={`casestudy.domain.${i}`}>
-                    <h4>{service}</h4>
+                    <h4>{domain.label}</h4>
                     {!isEmpty(list) && (
                       <ul className="bordered-list">
                         {Object.keys(list).map((guid, i) => {
                           let study = list[guid];
                           return (
-                            <li key={`casestudy.${service}.${guid}`} className="bordered-list__item row">
+                            <li key={`casestudy.${domain.label}.${guid}`} className="bordered-list__item row">
                               <div className="col-xs-6">
                                 <Link
                                   to={`${match.url}/edit/${guid}`}
-                                  id={`edit-${kebabCase(service)}-${i}`}
+                                  id={`edit-${kebabCase(domain.label)}-${i}`}
                                   onClick={() => onEditCaseStudy(study)}
                                   children={study.title}
                                 />
@@ -181,7 +184,7 @@ class DomainList extends BaseForm {
                               <div className="col-xs-6" style={{textAlign: 'right'}}>
                                 <Link
                                   to={`${match.url}/delete/${guid}`}
-                                  id={`delete-${kebabCase(service)}-${i}`}
+                                  id={`delete-${kebabCase(domain.label)}-${i}`}
                                   onClick={(e) => {
                                     e.preventDefault();
                                     onDeleteCaseStudy(dispatchActions, guid)
@@ -197,8 +200,8 @@ class DomainList extends BaseForm {
                     )}
                     
                     <Link
-                      to={`${match.url}/add/${service}`}
-                      id={`add-service-${kebabCase(service)}`}
+                      to={`${match.url}/add/${domain.label}`}
+                      id={`add-service-${kebabCase(domain.label)}`}
                       onClick={() => onAddCaseStudy()}>
                       Add case study
                     </Link>
@@ -206,7 +209,8 @@ class DomainList extends BaseForm {
                   </section>
                 )
                 
-              })}
+              }}
+              )}
 
               {/* This error will never actually render */}
               <StatefulError
