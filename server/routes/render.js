@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import get from 'lodash/get';
+import rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer';
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -85,6 +86,7 @@ const render = (request, response) => {
       }
     });
   } catch(e) {
+    rollbar.handleError(e, request);
     return response.status(400).send({ 
       error: `Error rendering component: '${pathToSource}'`, 
       stack: e.stack 
