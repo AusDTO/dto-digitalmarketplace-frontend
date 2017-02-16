@@ -114,8 +114,13 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               htmlFor="website">
               Website URL
             </label>
+            <p
+              className="hint"
+              id="website-hint">
+              Provide a link to your website beginning with http
+            </p>
             <input
-              aria-describedby={undefined}
+              aria-describedby="website-hint"
               className=""
               disabled={false}
               id="website"
@@ -136,8 +141,13 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               htmlFor="linkedin">
               LinkedIn URL (optional)
             </label>
+            <p
+              className="hint"
+              id="linkedin-hint">
+              Provide a LinkedIn URL beginning with http
+            </p>
             <input
-              aria-describedby={undefined}
+              aria-describedby="linkedin-hint"
               className=""
               disabled={false}
               id="linkedin"

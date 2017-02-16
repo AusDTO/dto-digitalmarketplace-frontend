@@ -277,7 +277,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <p
           className="hint"
           id="project_links-hint">
-          Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+          Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
@@ -1341,7 +1341,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <p
           className="hint"
           id="project_links-hint">
-          Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+          Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
@@ -1957,7 +1957,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <p
           className="hint"
           id="project_links-hint">
-          Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+          Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
@@ -2458,7 +2458,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <p
           className="hint"
           id="project_links-hint">
-          Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+          Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
@@ -2910,7 +2910,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="project_links-hint">
-          Link to any supporting material for your case study. This can include a case study on your  website, case study video or the live project.
+          Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div

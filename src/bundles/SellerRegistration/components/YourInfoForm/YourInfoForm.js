@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 
-import { required } from '../../../../validators';
+import { required, validEmail, validPhoneNumber } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -66,9 +66,10 @@ class YourInfoForm extends BaseForm {
                   id="contact_phone"
                   htmlFor="contact_phone"
                   label="Phone"
-                  validators={{ required }}
+                  validators={{ required, validPhoneNumber }}
                   messages={{
                       required: 'Business contact phone is required',
+                      validPhoneNumber: 'Business contact phone number must be a valid phone number',
                   }}
               />
 
@@ -78,9 +79,10 @@ class YourInfoForm extends BaseForm {
                   id="contact_email"
                   htmlFor="contact_email"
                   label="Email"
-                  validators={{ required }}
+                  validators={{ required, validEmail }}
                   messages={{
                       required: 'Business contact email is required',
+                      validEmail: 'Business contact email must be a valid email address',
                   }}
                   default={userEmail}
               />
@@ -104,9 +106,10 @@ class YourInfoForm extends BaseForm {
                   id="phone"
                   htmlFor="phone"
                   label="Phone"
-                  validators={{ required }}
+                  validators={{ required, validPhoneNumber }}
                   messages={{
                       required: 'Authorised representative\'s phone number is required',
+                      validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
                   }}
               />
 
@@ -116,9 +119,10 @@ class YourInfoForm extends BaseForm {
                   id="email"
                   htmlFor="email"
                   label="Email"
-                  validators={{ required }}
+                  validators={{ required, validEmail }}
                   messages={{
                       required: 'Authorised representative\'s email is required',
+                      validEmail: 'Authorised representative\'s email must be a valid email address',
                   }}
               />
 
