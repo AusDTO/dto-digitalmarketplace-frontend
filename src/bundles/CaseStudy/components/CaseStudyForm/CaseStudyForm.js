@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import get from 'lodash/get';
+import find from 'lodash/find';
 
 import { required, validLinks, validPhoneNumber } from '../../../../validators';
 
@@ -14,6 +15,8 @@ import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
+
+import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 
 class CaseStudyForm extends BaseForm {
 
@@ -45,6 +48,7 @@ class CaseStudyForm extends BaseForm {
       form,
       buttonText,
       service,
+      service_slug,
       children,
       onSubmit,
     } = this.props;
@@ -59,7 +63,7 @@ class CaseStudyForm extends BaseForm {
           <div className="callout--calendar-event">
             <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
             <p id="header-description">
-              Remember, your case study must meet the {service} <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
+              Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a></p>
             And, you can update your case studies any time before an assessment begins.
             For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller’s guide</a>.
           </div>    
@@ -254,11 +258,16 @@ const mapStateToProps = (state, ownProps) => {
   if (formName && !service) {
     service = get(state, `${formName}.service`);
   }
+  let service_slug = '';
+  if (find(domains, {'label': service})) {
+      service_slug = find(domains, {'label': service})['key'];
+  }
 
   return {
     returnLink: casestudy.returnLink,
     ...formProps(state, formName || 'caseStudyForm'),
     service,
+    service_slug,
     ...ownProps
   }
 }
