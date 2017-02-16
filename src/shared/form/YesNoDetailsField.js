@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Control } from 'react-redux-form';
+import { Control, actions } from 'react-redux-form';
 import upperFirst from 'lodash/upperFirst';
 import get from 'lodash/get';
 
@@ -25,6 +25,9 @@ class YesNoDetailsField extends React.Component {
     this.setState({
       showField: e.target.value === 'yes'
     })
+
+    const {model, revalidateDetails} = this.props;
+    revalidateDetails(`${model}_details`);
   }
 
   render() {
@@ -101,4 +104,12 @@ export const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(YesNoDetailsField);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        revalidateDetails: (detailsModel) => {
+            dispatch(actions.setValidity(detailsModel, true));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(YesNoDetailsField);

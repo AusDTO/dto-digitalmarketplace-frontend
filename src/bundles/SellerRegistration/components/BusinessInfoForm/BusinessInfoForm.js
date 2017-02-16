@@ -7,7 +7,7 @@ import Layout from '../../../../shared/Layout';
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
-import Textfield    from '../../../../shared/form/Textfield';
+import CheckboxDetailsField  from '../../../../shared/form/CheckboxDetailsField';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 
@@ -86,28 +86,15 @@ class BusinessInfoForm extends BaseForm {
                             Buyers often search for sellers that have specific characteristics, whether through size or the people who make up the organisation. This is optional, so it’s up to you whether you’d like to share this information.
                             </p>
 
-                            <Control.checkbox
+                            <CheckboxDetailsField
                                 model={`${model}.seller_type.indigenous`}
+                                label={(<span>Indigenous <p>Your business is listed on a directory of indigenous businesses, such as Supply Nation.</p></span>)}
+                                detailsLabel="Please add your Supply Nation certification number."
+                                detailsModel={`${model}.supply_nation`}
                                 id="indigenous"
                                 name="indigenous"
                                 value="Indigenous"
                             />
-                            <label htmlFor="indigenous">Indigenous
-                                <p>Your business is listed on a directory of indigenous businesses, such as Supply Nation.</p>
-                            </label>
-
-                            {/*<Textfield
-                                model={`${model}.supply_nation`}
-                                name="supply_nation"
-                                id="supply_nation"
-                                htmlFor="supply_nation"
-                                label="Please add your Supply Nation certification number."
-                                style={{display: 'none'}}
-                                messages={{
-                                    required: 'Supply Nation certification number is required',
-                                }}
-                            />*/}
-
 
                             <Control.checkbox
                                 model={`${model}.seller_type.disability`}
