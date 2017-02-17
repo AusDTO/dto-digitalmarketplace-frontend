@@ -14,14 +14,13 @@ exports[`test SignupForm renders 1`] = `
       method="post"
       onReset={[Function]}
       onSubmit={[Function]}>
-      To create an account first tell us how you want to use the Digital Marketplace.
       <div
         styleName="user-type">
         <div
           className="field">
           <fieldset>
             <legend>
-              I want to...
+              First, tell us how you want to use the Digital Marketplace
             </legend>
             <div>
               <span>
@@ -39,14 +38,12 @@ exports[`test SignupForm renders 1`] = `
                 <label
                   htmlFor="user_type-buyer">
                   <span>
-                    <b>
-                      Buyer
-                    </b>
-                    <br />
-                     I want to buy on behalf 
-                    <br />
-                    of government.
-                    <br />
+                    Buyer
+                    <p>
+                       I want to buy on behalf of
+                      <br />
+                      government.
+                    </p>
                   </span>
                 </label>
               </span>
@@ -65,11 +62,10 @@ exports[`test SignupForm renders 1`] = `
                 <label
                   htmlFor="user_type-seller">
                   <span>
-                    <b>
-                      Seller
-                    </b>
-                    <br />
-                     I want to sell digital products or services.
+                    Seller
+                    <p>
+                       I want to sell digital products or services.
+                    </p>
                   </span>
                 </label>
               </span>
@@ -107,8 +103,13 @@ exports[`test SignupForm renders 1`] = `
           htmlFor="email_address">
           Email address
         </label>
+        <p
+          className="hint"
+          id="email_address-hint">
+          <br />
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="email_address-hint"
           className=""
           disabled={false}
           id="email_address"
@@ -162,14 +163,13 @@ exports[`test SignupForm renders with form_options 1`] = `
         name="csrf_token"
         type="hidden"
         value="sometoken" />
-      To create an account first tell us how you want to use the Digital Marketplace.
       <div
         styleName="user-type">
         <div
           className="field">
           <fieldset>
             <legend>
-              I want to...
+              First, tell us how you want to use the Digital Marketplace
             </legend>
             <div>
               <span>
@@ -187,14 +187,12 @@ exports[`test SignupForm renders with form_options 1`] = `
                 <label
                   htmlFor="user_type-buyer">
                   <span>
-                    <b>
-                      Buyer
-                    </b>
-                    <br />
-                     I want to buy on behalf 
-                    <br />
-                    of government.
-                    <br />
+                    Buyer
+                    <p>
+                       I want to buy on behalf of
+                      <br />
+                      government.
+                    </p>
                   </span>
                 </label>
               </span>
@@ -213,11 +211,10 @@ exports[`test SignupForm renders with form_options 1`] = `
                 <label
                   htmlFor="user_type-seller">
                   <span>
-                    <b>
-                      Seller
-                    </b>
-                    <br />
-                     I want to sell digital products or services.
+                    Seller
+                    <p>
+                       I want to sell digital products or services.
+                    </p>
                   </span>
                 </label>
               </span>
@@ -255,8 +252,13 @@ exports[`test SignupForm renders with form_options 1`] = `
           htmlFor="email_address">
           Email address
         </label>
+        <p
+          className="hint"
+          id="email_address-hint">
+          <br />
+        </p>
         <input
-          aria-describedby={undefined}
+          aria-describedby="email_address-hint"
           className=""
           disabled={false}
           id="email_address"
