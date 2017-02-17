@@ -20,15 +20,15 @@ exports[`test CaseStudyForm renders 1`] = `
           target="_blank">
           assessment criteria
         </a>
+        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        <a
+          href="/sellers-guide"
+          rel="external"
+          target="_blank">
+          seller guide
+        </a>
+        .
       </p>
-      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
-      <a
-        href="/sellers-guide"
-        rel="external"
-        target="_blank">
-        seller’s guide
-      </a>
-      .
     </div>
   </header>
   <article
@@ -93,7 +93,7 @@ exports[`test CaseStudyForm renders 1`] = `
         <p
           className="hint"
           id="timeframe-hint">
-          For example,  January 2016 — June 2016
+          For example, January 2016 — June 2016.
         </p>
         <input
           aria-describedby="timeframe-hint"
@@ -347,7 +347,7 @@ exports[`test CaseStudyForm renders 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -438,7 +438,7 @@ exports[`test CaseStudyForm renders 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1084,15 +1084,15 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           target="_blank">
           assessment criteria
         </a>
+        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        <a
+          href="/sellers-guide"
+          rel="external"
+          target="_blank">
+          seller guide
+        </a>
+        .
       </p>
-      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
-      <a
-        href="/sellers-guide"
-        rel="external"
-        target="_blank">
-        seller’s guide
-      </a>
-      .
     </div>
   </header>
   <article
@@ -1157,7 +1157,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         <p
           className="hint"
           id="timeframe-hint">
-          For example,  January 2016 — June 2016
+          For example, January 2016 — June 2016.
         </p>
         <input
           aria-describedby="timeframe-hint"
@@ -1411,7 +1411,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -1502,7 +1502,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -1540,15 +1540,15 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           target="_blank">
           assessment criteria
         </a>
+        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        <a
+          href="/sellers-guide"
+          rel="external"
+          target="_blank">
+          seller guide
+        </a>
+        .
       </p>
-      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
-      <a
-        href="/sellers-guide"
-        rel="external"
-        target="_blank">
-        seller’s guide
-      </a>
-      .
     </div>
   </header>
   <article
@@ -1718,7 +1718,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         <p
           className="hint"
           id="timeframe-hint">
-          For example,  January 2016 — June 2016
+          For example, January 2016 — June 2016.
         </p>
         <a
           className="validation-message"
@@ -2027,7 +2027,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -2162,7 +2162,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2196,15 +2196,15 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           target="_blank">
           assessment criteria
         </a>
+        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        <a
+          href="/sellers-guide"
+          rel="external"
+          target="_blank">
+          seller guide
+        </a>
+        .
       </p>
-      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
-      <a
-        href="/sellers-guide"
-        rel="external"
-        target="_blank">
-        seller’s guide
-      </a>
-      .
     </div>
   </header>
   <article
@@ -2274,7 +2274,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         <p
           className="hint"
           id="timeframe-hint">
-          For example,  January 2016 — June 2016
+          For example, January 2016 — June 2016.
         </p>
         <input
           aria-describedby="timeframe-hint"
@@ -2528,7 +2528,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -2619,7 +2619,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
@@ -2653,15 +2653,15 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           target="_blank">
           assessment criteria
         </a>
+        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        <a
+          href="/sellers-guide"
+          rel="external"
+          target="_blank">
+          seller guide
+        </a>
+        .
       </p>
-      And, you can update your case studies any time before an assessment begins. For more about assessments see the 
-      <a
-        href="/sellers-guide"
-        rel="external"
-        target="_blank">
-        seller’s guide
-      </a>
-      .
     </div>
   </header>
   <article
@@ -2726,7 +2726,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         <p
           className="hint"
           id="timeframe-hint">
-          For example,  January 2016 — June 2016
+          For example, January 2016 — June 2016.
         </p>
         <input
           aria-describedby="timeframe-hint"
@@ -2980,7 +2980,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         Referee
       </h3>
       <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.
+        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
         className="field">
@@ -3071,7 +3071,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           type="checkbox" />
         <label
           htmlFor="refereeContact">
-          I confirm my referee gives permission to be contacted and have their information shared as part of the evaluation led by the Digital Transformation Agency.
+          I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input

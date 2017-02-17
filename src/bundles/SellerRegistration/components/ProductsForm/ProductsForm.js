@@ -44,7 +44,8 @@ class ProductsForm extends BaseForm {
       <Layout>
         <header>
           <h1 tabIndex="-1">Products</h1>
-          <p>If your business has developed any software products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you’re reselling.</p>
+          <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you’re reselling.</p>
+            <p>For now this is an MVP. We want to learn more about the types of products sellers are offering before we create a solution for selling them through the Digital Marketplace. </p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -147,7 +148,7 @@ class ProductsForm extends BaseForm {
 
             <button type="submit" className={addClass} onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
             {!isEmpty(productsForm.products) && <br/>}
-            <input type="submit" className={submitClass} value={isEmpty(productsForm.products) ? 'I do not have any products' : buttonText} role="button" />
+            <input type="submit" className={submitClass} value={isEmpty(productsForm.products) ? 'I don\'t have any products' : buttonText} role="button" />
           </Form>
         </article>
       </Layout>

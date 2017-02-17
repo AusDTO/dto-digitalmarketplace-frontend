@@ -121,7 +121,7 @@ class DomainList extends BaseForm {
 
       let header = (<header>
         <h1 tabIndex="-1">{title}</h1>
-        <p>Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.
+        <p>Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
           They become part of your seller profile, so think of them as the beginning of your conversation
           with hundreds of buyers and a tool to help them find you through keyword search.
         </p>
@@ -131,7 +131,8 @@ class DomainList extends BaseForm {
           <h1 tabIndex="-1">{title}</h1>
           <p>Case studies are important for showing you meet our
             <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>for any new
-            services you wish to offer. But they’re also much more. Think of them as the beginning of a
+            services you wish to offer.</p>
+          <p> But they’re also much more. Think of them as the beginning of a
             conversation with hundreds of government buyers from all over Australia.
           </p>
           <ul>

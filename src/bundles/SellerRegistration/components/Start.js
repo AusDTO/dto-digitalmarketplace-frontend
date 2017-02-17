@@ -28,26 +28,30 @@ const Start = ({supplierCode, signup, onClick}) => {
             <div>
                 <h1>Joining the Digital Marketplace</h1>
                 <p>
-                    To become a registered seller you need to tell us about your business.</p>
+                    To become a registered seller and offer your services or software products to government you need to
+                    tell us about your business. </p>
                 <p> The information you share will be used to create your seller profile, and later to confirm you meet
                     the <a
                         href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> to apply for
                     opportunities.</p>
-                <p> It may take more than one visit to complete this application. But don’t worry, your information will be saved automatically if
+                <p> It may take more than one visit to complete this application. But don’t worry, your information will
+                    be saved automatically if
                     you need to come back later.
                 </p>
                 <h2>You'll need</h2>
                 <ul>
                     <li>Your basic business information</li>
-                    <li>A financial viability statement from your accountant</li>
-                    <li>Proof of worker’s compensation and public liability insurance</li>
+                    <li>Recent financial records or a viability statement from your accountant</li>
+                    <li>Proof of relevant insurance cover</li>
                 </ul>
                 <h2>You'll be asked to</h2>
                 <ul>
-                    <li>Create case studies about past projects and references</li>
-                    <li>Accept the Digital Marketplace Master Agreement
+                    <li>Select the services you wish to provide</li>
+                    <li> Provide case studies and referees to support your application</li>
+                    <li>Accept the Digital Marketplace Master Agreement<br/>
                         <a href="agreement.pdf">Download Digital Marketplace Master Agreement PDF</a></li>
                 </ul>
+                The terms and conditions for this application are available in our <a href="http://tenders.gov.au">open invitation to join the Digital Marketplace</a>.
                 <p>
                     <a role="button" href={signup} onClick={onClick}>Start now </a>
                 </p>
@@ -64,7 +68,7 @@ Start.defaultProps = {
 
 Start.propTypes = {
     signup: React.PropTypes.string,
-    supplierCode: React.PropTypes.string,
+    supplierCode: React.PropTypes.number,
     onClick: React.PropTypes.func
 };
 
