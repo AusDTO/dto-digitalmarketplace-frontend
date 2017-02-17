@@ -49,7 +49,7 @@ class AwardsForm extends BaseForm {
                             model={`${model}.certifications`}
                             name="certifications"
                             htmlFor="certifications"
-                            label="Accreditations (optional)"
+                            label="Accreditations"
                             controlProps={{defaultRows: 2}}
                             description="Does your business have any formal accreditations you want to share? "
                         />
@@ -59,7 +59,7 @@ class AwardsForm extends BaseForm {
                             model={`${model}.boards`}
                             name="boards"
                             htmlFor="boards"
-                            label="Industry engagement (optional)"
+                            label="Industry engagement"
                             controlProps={{defaultRows: 2}}
                             description="Are you involved in any boards, committees or groups for your industry?"
                         />
@@ -69,7 +69,7 @@ class AwardsForm extends BaseForm {
                             model={`${model}.awards`}
                             name="awards"
                             htmlFor="awards"
-                            label="Awards (optional)"
+                            label="Awards"
                             controlProps={{defaultRows: 2}}
                             description="Has your work been recognised and awarded within your industry or by others?"
 

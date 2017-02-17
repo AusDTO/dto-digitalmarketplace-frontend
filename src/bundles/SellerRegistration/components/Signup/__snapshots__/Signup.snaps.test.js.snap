@@ -167,7 +167,7 @@ exports[`test Signup renders 1`] = `
         Joining the Digital Marketplace
       </h1>
       <p>
-        To become a registered seller you need to tell us about your business.
+        To become a registered seller and offer your services or software products to government you need to tell us about your business. 
       </p>
       <p>
          The information you share will be used to create your seller profile, and later to confirm you meet the 
@@ -190,10 +190,10 @@ exports[`test Signup renders 1`] = `
           Your basic business information
         </li>
         <li>
-          A financial viability statement from your accountant
+          Recent financial records or a viability statement from your accountant
         </li>
         <li>
-          Proof of worker’s compensation and public liability insurance
+          Proof of relevant insurance cover
         </li>
       </ul>
       <h2>
@@ -201,16 +201,26 @@ exports[`test Signup renders 1`] = `
       </h2>
       <ul>
         <li>
-          Create case studies about past projects and references
+          Select the services you wish to provide
+        </li>
+        <li>
+           Provide case studies and referees to support your application
         </li>
         <li>
           Accept the Digital Marketplace Master Agreement
+          <br />
           <a
             href="agreement.pdf">
             Download Digital Marketplace Master Agreement PDF
           </a>
         </li>
       </ul>
+      The terms and conditions for this application are available in our 
+      <a
+        href="http://tenders.gov.au">
+        open invitation to join the Digital Marketplace
+      </a>
+      .
       <p>
         <a
           href="#"
@@ -435,16 +445,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="contact_phone">
-              Phone
+              htmlFor="contact_email">
+              Email
             </label>
             <input
               aria-describedby={undefined}
               className=""
               disabled={false}
-              id="contact_phone"
+              id="contact_email"
               maxLength={undefined}
-              name="contact_phone"
+              name="contact_email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -457,16 +467,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="contact_email">
-              Email
+              htmlFor="contact_phone">
+              Phone
             </label>
             <input
               aria-describedby={undefined}
               className=""
               disabled={false}
-              id="contact_email"
+              id="contact_phone"
               maxLength={undefined}
-              name="contact_email"
+              name="contact_phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -506,16 +516,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="phone">
-              Phone
+              htmlFor="email">
+              Email
             </label>
             <input
               aria-describedby={undefined}
               className=""
               disabled={false}
-              id="phone"
+              id="email"
               maxLength={undefined}
-              name="phone"
+              name="email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -528,16 +538,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="email">
-              Email
+              htmlFor="phone">
+              Phone
             </label>
             <input
               aria-describedby={undefined}
               className=""
               disabled={false}
-              id="email"
+              id="phone"
               maxLength={undefined}
-              name="email"
+              name="phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -777,16 +787,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="contact_phone">
-              Phone
+              htmlFor="contact_email">
+              Email
             </label>
             <input
               aria-describedby={undefined}
               className=""
               disabled={false}
-              id="contact_phone"
+              id="contact_email"
               maxLength={undefined}
-              name="contact_phone"
+              name="contact_email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -799,16 +809,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="contact_email">
-              Email
+              htmlFor="contact_phone">
+              Phone
             </label>
             <input
               aria-describedby={undefined}
               className=""
               disabled={false}
-              id="contact_email"
+              id="contact_phone"
               maxLength={undefined}
-              name="contact_email"
+              name="contact_phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -848,28 +858,6 @@ exports[`test Signup renders populated Your Info form 1`] = `
             className="field">
             <label
               className="question-heading"
-              htmlFor="phone">
-              Phone
-            </label>
-            <input
-              aria-describedby={undefined}
-              className=""
-              disabled={false}
-              id="phone"
-              maxLength={undefined}
-              name="phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              type="text"
-              value="0292000000" />
-          </div>
-          <div
-            className="field">
-            <label
-              className="question-heading"
               htmlFor="email">
               Email
             </label>
@@ -887,6 +875,28 @@ exports[`test Signup renders populated Your Info form 1`] = `
               pattern={undefined}
               type="text"
               value="email@domain.com" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="phone">
+              Phone
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              disabled={false}
+              id="phone"
+              maxLength={undefined}
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="0292000000" />
           </div>
           <input
             name="next_step_slug"
