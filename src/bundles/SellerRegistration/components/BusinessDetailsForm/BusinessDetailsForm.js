@@ -182,7 +182,10 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required, limitNumbers: limitNumbers(4)}}
                         />
                         <div>
-                            {businessDetailsForm.addresses && Object.keys(businessDetailsForm.addresses).filter((value) => {return value > 0;}).map((key, i) => {
+                            {businessDetailsForm.addresses && 
+                                Object.keys(businessDetailsForm.addresses)
+                                    .filter((value) => {return value > 0;})
+                                    .map((key, i) => {
                               return (
                                 <div styleName="address-wrapper" key={key}>
                                     <hr styleName="hr"/>
@@ -247,7 +250,7 @@ class BusinessDetailsForm extends BaseForm {
                                 </div>    
                               )
                             })}
-                            {isEmpty(businessDetailsForm.other_addresses) &&
+                            {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
                                 <p styleName="footer">More offices?</p>
                             }
                             <button type="submit" className="button-secondary" onClick={this.onAdd.bind(this)}>Add another address</button>
