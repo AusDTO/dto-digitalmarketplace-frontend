@@ -29,7 +29,7 @@ class BusinessDetailsForm extends BaseForm {
     onAdd(e) {
         e.preventDefault();
         const {model, addAddress, businessDetailsForm} = this.props;
-        addAddress(model, businessDetailsForm.other_addresses || {});
+        addAddress(model, businessDetailsForm.addresses || {});
     }
 
     onRemove(id, e) {
@@ -134,7 +134,7 @@ class BusinessDetailsForm extends BaseForm {
                         />
 
                         <Textfield
-                            model={`${model}.address.address_line`}
+                            model={`${model}.addresses.0.address_line`}
                             name="address.address_line"
                             id="address_line"
                             htmlFor="address_line"
@@ -147,7 +147,7 @@ class BusinessDetailsForm extends BaseForm {
                         />
 
                         <Textfield
-                            model={`${model}.address.suburb`}
+                            model={`${model}.addresses.0.suburb`}
                             name="address.suburb"
                             id="suburb"
                             htmlFor="suburb"
@@ -158,7 +158,7 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                         />
                         <Textfield
-                            model={`${model}.address.state`}
+                            model={`${model}.addresses.0.state`}
                             name="address.state"
                             id="state"
                             htmlFor="state"
@@ -169,7 +169,7 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required}}
                         />
                         <Textfield
-                            model={`${model}.address.postal_code`}
+                            model={`${model}.addresses.0.postal_code`}
                             name="address.postal_code"
                             id="postal_code"
                             htmlFor="postal_code"
@@ -182,7 +182,7 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required, limitNumbers: limitNumbers(4)}}
                         />
                         <div>
-                            {businessDetailsForm.other_addresses && Object.keys(businessDetailsForm.other_addresses).map((key, i) => {
+                            {businessDetailsForm.addresses && Object.keys(businessDetailsForm.addresses).filter((value) => {return value > 0;}).map((key, i) => {
                               return (
                                 <div styleName="address-wrapper" key={key}>
                                     <hr styleName="hr"/>
@@ -197,10 +197,10 @@ class BusinessDetailsForm extends BaseForm {
                                     <div className="row">
                                         <div className="col-xs-12 col-sm-10">
                                             <Textfield
-                                                model={`${model}.other_addresses[${i}].address_line`}
-                                                name={`address_line-${i}`}
-                                                id={`address_line-${i}`}
-                                                htmlFor={`address_line-${i}`}
+                                                model={`${model}.addresses.${key}.address_line`}
+                                                name={`address_line-${key}`}
+                                                id={`address_line-${key}`}
+                                                htmlFor={`address_line-${key}`}
                                                 label="Address"
                                                 messages={{
                                                     required: 'You must provide address'
@@ -208,10 +208,10 @@ class BusinessDetailsForm extends BaseForm {
                                                 validators={{required}}
                                             />
                                             <Textfield
-                                                model={`${model}.other_addresses[${i}].suburb`}
-                                                name={`suburb-${i}`}
-                                                id={`suburb-${i}`}
-                                                htmlFor={`suburb-${i}`}
+                                                model={`${model}.addresses.${key}.suburb`}
+                                                name={`suburb-${key}`}
+                                                id={`suburb-${key}`}
+                                                htmlFor={`suburb-${key}`}
                                                 label="Suburb"
                                                 messages={{
                                                     required: 'You must provide a suburb'
@@ -219,10 +219,10 @@ class BusinessDetailsForm extends BaseForm {
                                                 validators={{required}}
                                             />
                                             <Textfield
-                                                model={`${model}.other_addresses[${i}].state`}
-                                                name={`state-${i}`}
-                                                id={`state-${i}`}
-                                                htmlFor={`state-${i}`}
+                                                model={`${model}.addresses.${key}.state`}
+                                                name={`state-${key}`}
+                                                id={`state-${key}`}
+                                                htmlFor={`state-${key}`}
                                                 label="State"
                                                 messages={{
                                                     required: 'You must provide a state'
@@ -230,10 +230,10 @@ class BusinessDetailsForm extends BaseForm {
                                                 validators={{required}}
                                             />
                                             <Textfield
-                                                model={`${model}.other_addresses[${i}].postal_code`}
-                                                name={`postal_code-${i}`}
-                                                id={`postal_code-${i}`}
-                                                htmlFor={`postal_code-${i}`}
+                                                model={`${model}.addresses.${key}.postal_code`}
+                                                name={`postal_code-${key}`}
+                                                id={`postal_code-${key}`}
+                                                htmlFor={`postal_code-${key}`}
                                                 label="Postcode"
                                                 maxLength="4"
                                                 messages={{
@@ -279,13 +279,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addAddress: (model, other_addresses) => {
-            dispatch(actions.change(`${model}.other_addresses.${Object.keys(other_addresses).length}`, {}));
+        addAddress: (model, addresses) => {
+            dispatch(actions.change(`${model}.addresses.${Object.keys(addresses).length || 1}`, {}));
         },
         removeAddress: (model, id) => {
-            dispatch(actions.omit(`${model}.other_addresses`, id));
+            dispatch(actions.omit(`${model}.addresses`, id));
             // added due to bug in adding empty address then removing without submit
-            dispatch(actions.setValidity(`${model}.other_addresses.${id}`, true));
+            dispatch(actions.setValidity(`${model}.addresses.${id}`, true));
         }
     }
 }

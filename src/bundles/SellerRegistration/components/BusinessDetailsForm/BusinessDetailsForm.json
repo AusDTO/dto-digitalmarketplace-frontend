@@ -4,14 +4,13 @@
     "summary": "",
     "linkedin": "www.linked.in",
     "website": "www.com",
-    "address": {
-      "addressLine": "Level 5, 77 Devon Street",
+    "addresses": [{
+      "address_line": "Level 5, 77 Devon Street",
       "suburb": "Surry Hills",
       "state": "NSW",
-      "postalCode": "2010",
+      "postal_code": "2010",
       "country": "Australia"
-    },
-    "other_addresses": {}
+    }]
   },
   "form_options": {
     "errors": {

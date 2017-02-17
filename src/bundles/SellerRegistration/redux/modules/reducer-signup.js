@@ -37,13 +37,7 @@ export default combineReducers({
       summary: '',
       website: '',
       linkedin: '',
-      address: {
-        address_line: '',
-        suburb: '',
-        state: '',
-        postal_code: ''
-      },
-      other_addresses: {}
+      addresses: {}
     },
     domainSelectorForm: {
       services: {}
