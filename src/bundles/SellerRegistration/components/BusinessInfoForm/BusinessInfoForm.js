@@ -8,6 +8,7 @@ import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import CheckboxDetailsField  from '../../../../shared/form/CheckboxDetailsField';
+
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 
@@ -197,6 +198,15 @@ class BusinessInfoForm extends BaseForm {
 
                         </fieldset>
                         
+                        <legend>Travel arrangements</legend>
+                        <Control.checkbox
+                          model={`${model}.travel`}
+                          id="travel"
+                          name="travel"
+                        />
+                        <label htmlFor="travel">
+                            Happy to travel for regional or interstate opportunities
+                        </label>
                         
                         {children}
 
