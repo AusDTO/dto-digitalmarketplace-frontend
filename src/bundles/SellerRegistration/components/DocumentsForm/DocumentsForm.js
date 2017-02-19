@@ -24,7 +24,7 @@ class DocumentsForm extends BaseForm {
         csrf_token: React.PropTypes.string,
         form: React.PropTypes.object.isRequired,
         model: React.PropTypes.string.isRequired,
-        supplierCode: React.PropTypes.string
+        supplierCode: React.PropTypes.number
     }
 
     static defaultProps = {
@@ -36,9 +36,9 @@ class DocumentsForm extends BaseForm {
 
     formFields = [
         {
-            'label': 'Financial Statement',
+            'label': 'Financial statement',
             'id': 'financial',
-            'description': 'Ideally this is financial accounts for 3 years. If you don’t have this, ask your accountant for a letter confirming proof of financial viability.',
+            'description': 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability.',
             'expires': false
         },
         {
@@ -104,9 +104,9 @@ class DocumentsForm extends BaseForm {
 
     render() {
         const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, match, buttonText} = this.props;
-        let intro = 'As part of your assessment we’ll need the following documents. ';
+        let intro = 'Please share the following documents for assessment. They’re not published on your seller profile but buyers may request them from us when considering awarding a contract. ';
         if (sellerCode) {
-            intro = 'It’s now been almost a year since you shared your insurance and financial documents with us. As such, we need more recent versions of the following documents. '
+            intro = 'It’s been almost a year now since you shared these documents with us. So please share more recent copies for our records, and for buyers on request.  '
         }
 
         return (
@@ -115,7 +115,7 @@ class DocumentsForm extends BaseForm {
                     <h1 tabIndex="-1">Upload your documents</h1>
                     <p>{intro}
                         Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG </strong>
-                        format.
+                        format.If you have multiple files for a document, please scan and merge as one upload.
                     </p>
                 </header>
                 <article role="main">
@@ -203,7 +203,7 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-
+                        <p>Your insurance needs to be up to date. We’ll send a reminder when your cover is close to expiry.</p>
                         <input type="submit" value={buttonText} role="button"/>
                     </Form>
                 </article>

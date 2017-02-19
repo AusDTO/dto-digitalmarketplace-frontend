@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import get from 'lodash/get';
+import find from 'lodash/find';
 
 import { required, validLinks, validPhoneNumber } from '../../../../validators';
 
@@ -14,6 +15,8 @@ import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
+
+import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 
 class CaseStudyForm extends BaseForm {
 
@@ -45,6 +48,7 @@ class CaseStudyForm extends BaseForm {
       form,
       buttonText,
       service,
+      service_slug,
       children,
       onSubmit,
     } = this.props;
@@ -59,9 +63,10 @@ class CaseStudyForm extends BaseForm {
           <div className="callout--calendar-event">
             <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
             <p id="header-description">
-              Remember, your case study must meet the {service} <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
+              Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
             And, you can update your case studies any time before an assessment begins.
-            For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller’s guide</a>.
+            For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
+            </p>
           </div>    
         </header>
         <article role="main">
@@ -108,7 +113,7 @@ class CaseStudyForm extends BaseForm {
               id="timeframe"
               htmlFor="timeframe"
               label="What was the time frame?"
-              description="For example,  January 2016 — June 2016"
+              description="For example, January 2016 — June 2016."
               validators={{ required }}
               messages={{
                 required: 'Timeframe is required',
@@ -178,7 +183,7 @@ class CaseStudyForm extends BaseForm {
             />
 
             <h3>Referee</h3>
-            <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Marketplace.</p>
+            <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
 
             <Textfield
               model={`${model}.referee_name`}
@@ -230,7 +235,7 @@ class CaseStudyForm extends BaseForm {
                 validators={{ required }}
               />
               <label htmlFor="refereeContact">I confirm my referee gives permission to be contacted
-                and have their information shared as part of the evaluation led by the Digital Transformation Agency.
+                and have their information shared as part of the assessment led by the Digital Transformation Agency.
               </label>
             </div>
 
@@ -254,11 +259,16 @@ const mapStateToProps = (state, ownProps) => {
   if (formName && !service) {
     service = get(state, `${formName}.service`);
   }
+  let service_slug = '';
+  if (find(domains, {'label': service})) {
+      service_slug = find(domains, {'label': service})['key'];
+  }
 
   return {
     returnLink: casestudy.returnLink,
     ...formProps(state, formName || 'caseStudyForm'),
     service,
+    service_slug,
     ...ownProps
   }
 }

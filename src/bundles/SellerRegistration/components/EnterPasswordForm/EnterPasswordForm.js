@@ -52,7 +52,7 @@ class EnterPasswordForm extends BaseForm {
               id="password"
               htmlFor="password"
               label="Password"
-              description="At least 10 characters"
+              description="At least 10 characters."
               validators={{ min : min(10) }}
               messages={{
                 min: 'Your password must be at least 10 characters',
@@ -60,11 +60,7 @@ class EnterPasswordForm extends BaseForm {
               type="password"
             />
 
-            <div>
-              All activity on the Digital Marketplace is subject to our <a href="/terms-of-use">Terms of Use</a>.
-            </div>
-
-            <input type="submit" value='Join the Marketplace' role="button" />
+            <input type="submit" value='Complete account creation' role="button" />
           </Form>
         </article>
       </Layout>

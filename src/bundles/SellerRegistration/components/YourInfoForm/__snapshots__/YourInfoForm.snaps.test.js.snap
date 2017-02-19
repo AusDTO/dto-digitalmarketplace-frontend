@@ -46,16 +46,16 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="contact_phone">
-          Phone
+          htmlFor="contact_email">
+          Email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="contact_phone"
+          id="contact_email"
           maxLength={undefined}
-          name="contact_phone"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -68,16 +68,16 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="contact_email">
-          Email
+          htmlFor="contact_phone">
+          Phone
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="contact_email"
+          id="contact_phone"
           maxLength={undefined}
-          name="contact_email"
+          name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -117,16 +117,16 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="phone">
-          Phone
+          htmlFor="email">
+          Email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="phone"
+          id="email"
           maxLength={undefined}
-          name="phone"
+          name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -139,16 +139,16 @@ exports[`test YourInfoForm renders 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="email">
-          Email
+          htmlFor="phone">
+          Phone
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="email"
+          id="phone"
           maxLength={undefined}
-          name="email"
+          name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -219,16 +219,16 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="contact_phone">
-          Phone
+          htmlFor="contact_email">
+          Email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="contact_phone"
+          id="contact_email"
           maxLength={undefined}
-          name="contact_phone"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -241,16 +241,16 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="contact_email">
-          Email
+          htmlFor="contact_phone">
+          Phone
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="contact_email"
+          id="contact_phone"
           maxLength={undefined}
-          name="contact_email"
+          name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -290,16 +290,16 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="phone">
-          Phone
+          htmlFor="email">
+          Email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="phone"
+          id="email"
           maxLength={undefined}
-          name="phone"
+          name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -312,16 +312,16 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="email">
-          Email
+          htmlFor="phone">
+          Phone
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="email"
+          id="phone"
           maxLength={undefined}
-          name="email"
+          name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -392,16 +392,16 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="contact_phone">
-          Phone
+          htmlFor="contact_email">
+          Email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="contact_phone"
+          id="contact_email"
           maxLength={undefined}
-          name="contact_phone"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -414,16 +414,16 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="contact_email">
-          Email
+          htmlFor="contact_phone">
+          Phone
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="contact_email"
+          id="contact_phone"
           maxLength={undefined}
-          name="contact_email"
+          name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -463,16 +463,16 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="phone">
-          Phone
+          htmlFor="email">
+          Email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="phone"
+          id="email"
           maxLength={undefined}
-          name="phone"
+          name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -485,16 +485,16 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         className="field">
         <label
           className="question-heading"
-          htmlFor="email">
-          Email
+          htmlFor="phone">
+          Phone
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="email"
+          id="phone"
           maxLength={undefined}
-          name="email"
+          name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}

@@ -23,7 +23,7 @@ class BusinessDetailsForm extends BaseForm {
         csrf_token: React.PropTypes.string,
         form: React.PropTypes.object.isRequired,
         returnLink: React.PropTypes.string,
-        supplierCode: React.PropTypes.string,
+        supplierCode: React.PropTypes.number
     }
 
     onAdd(e) {
@@ -84,7 +84,8 @@ class BusinessDetailsForm extends BaseForm {
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
-                          description={(<span>You need an ABN to do business in Australia.&nbsp;
+                          description={supplierCode ? "You need an Australian Business Number to do business in Australia." :
+                              (<span>You need an Australian Business Number to do business in Australia.&nbsp;
                               <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/'>Apply for an ABN here.</a>
                           </span>)}
                           disabled="disabled"
@@ -100,7 +101,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="summary"
                             controlProps={{limit: 50}}
                             label="Summary"
-                            description="3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in."
+                            description="3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in."
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}

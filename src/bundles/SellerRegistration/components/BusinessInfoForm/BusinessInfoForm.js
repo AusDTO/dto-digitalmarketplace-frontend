@@ -26,10 +26,9 @@ class BusinessInfoForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
+                    <h1 tabIndex="-1">More about your business</h1>
                 </header>
                 <article role="main">
-                    <h2>More about your business</h2>
                     <ErrorBox focusOnMount={true} model={model}/>
                     <Form model={model}
                           action={action}
@@ -82,15 +81,13 @@ class BusinessInfoForm extends BaseForm {
                             </label>
                         </fieldset>
                         <fieldset>
-                            <legend>Select any identifiers that apply to your business</legend>
-                            <p>
-                            Buyers often search for sellers that have specific characteristics, whether through size or the people who make up the organisation. This is optional, so it’s up to you whether you’d like to share this information.
-                            </p>
+                            <legend>Choose if you’d like to give buyers more insight into your business</legend>
+                                <p>Buyers have told us they sometimes look for sellers that have specific characteristics, whether through size or the people who make up the organisation. This is optional, so it’s up to you whether you’d like to share this information. </p>
 
                             <CheckboxDetailsField
                                 model={`${model}.seller_type.indigenous`}
-                                label={(<span>Indigenous <p>Your business is listed on a directory of indigenous businesses, such as Supply Nation.</p></span>)}
-                                detailsLabel="Please add your Supply Nation certification number."
+                                label={(<span>Indigenous <p>Your business is at least 50% Indigenous owned and listed on Supply Nation.</p></span>)}
+                                detailsLabel="Please add your Supply Nation certification number"
                                 detailsModel={`${model}.supply_nation`}
                                 id="indigenous"
                                 name="indigenous"
@@ -108,16 +105,6 @@ class BusinessInfoForm extends BaseForm {
                             </label>
 
                             <Control.checkbox
-                                model={`${model}.seller_type.regional`}
-                                id="regional"
-                                name="regional"
-                                value="Regional"
-                            />
-                            <label htmlFor="regional">
-                                Rural or non-metro based business
-                            </label>
-
-                            <Control.checkbox
                                 model={`${model}.seller_type.start_up`}
                                 id="start-up"
                                 name="start-up"
@@ -127,6 +114,38 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business aims to disrupt an established market using technology.It’s not listed on any stock exchange and is less than 5 years old.</p>
                             </label>
 
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.start_up`}
+                                id="female-owned"
+                                name="female-owned"
+                                value="Female owned"
+                            />
+                            <label htmlFor="female-owned">Female owned
+                                <p>Your business has at least 51% female ownership. </p>
+                            </label>
+
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.start_up`}
+                                id="lgbtqi-owned"
+                                name="lgbtqi-owned"
+                                value="LGBTQI owned"
+                            />
+                            <label htmlFor="lgbtqi-owned">LGBTQI owned
+                                <p>Your business identifies as a LGBTQI enterprise. </p>
+                            </label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.sme`}
+                                id="sme"
+                                name="sme"
+                                value="SME"
+                            />
+                            <label htmlFor="sme">Small to medium-sized enterprise (SME)
+                                <p>You have less than 200 employees and are independent of any parent organisation for taxation purposes.</p>
+                            </label>
+
                             <Control.checkbox
                                 model={`${model}.seller_type.nfp_social_enterprise`}
                                 id="nfp-social-enterprise"
@@ -134,7 +153,7 @@ class BusinessInfoForm extends BaseForm {
                                 value="Not-for-profit / social enterprise"
                             />
                             <label htmlFor="nfp-social-enterprise">Not-for-profit / social enterprise
-                                <p>An organisation that applies commercial strategies to maximize improvements in human or environmental well-being and reinvests profit to fulfil its mission.</p>
+                                <p>An organisation that applies commercial strategies to maximize improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.</p>
                             </label>
 
                         </fieldset>
