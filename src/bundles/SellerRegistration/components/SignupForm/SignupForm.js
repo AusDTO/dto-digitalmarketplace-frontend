@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 
-import { required } from '../../../../validators';
+import { required, validEmail } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -19,11 +19,12 @@ class SignupForm extends BaseForm {
   static propTypes = {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired
+    form: React.PropTypes.object.isRequired,
+      errors: React.PropTypes.object
   }
 
   render() {
-    const { csrf_token, model, form, children, signupForm, buyer_url, seller_url, onSubmit } = this.props;
+    const { csrf_token, model, form, formErrors, children, signupForm, buyer_url, seller_url, onSubmit } = this.props;
     const isBuyer = signupForm.user_type === 'buyer';
     const action = isBuyer ? buyer_url : seller_url;
     return (
@@ -32,6 +33,10 @@ class SignupForm extends BaseForm {
           <h1>Let’s get started</h1>
         </header>
         <article role="main">
+            {formErrors && formErrors.email_address && formErrors.email_address.government_email && (      <div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
+              <h4 id="validation-masthead-heading">Email needs to be a government email address</h4>
+              Enter your government email address ending in <b>.gov.au.</b>&nbsp;
+              If your email is different, request your account from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</div>)}
           <ErrorBox focusOnMount={true} model={model}/>
           <Form model={model}
             action={action}
@@ -45,16 +50,16 @@ class SignupForm extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
-            To create an account first tell us how you want to use the Digital Marketplace.
-
             <div styleName="user-type">
               <RadioList
                   model={`${model}.user_type`}
                   name="user_type"
                   id="user_type"
-                  label="I want to..."
-                  options={[{value:'buyer', label:(<span><b>Buyer</b><br/> I want to buy on behalf <br/>of government.<br/></span>)},
-                      {value: 'seller', label:(<span><b>Seller</b><br/> I want to sell digital products or services.</span>)}]}
+                  label="First, tell us how you want to use the Digital Marketplace"
+                  options={[
+                      {value: 'buyer' , label:(<span>Buyer<p> I want to buy on behalf of<br/>government.</p></span>)},
+                      {value: 'seller', label:(<span>Seller<p> I want to sell digital products or services.</p></span>)}
+                      ]}
                   validators={{ required }}
                   messages={{
                       required: 'You must select a user type',
@@ -75,20 +80,21 @@ class SignupForm extends BaseForm {
                 required: 'Name is required',
               }}
             />
-              { isBuyer && (
-                  <p>Enter your government email address ending in <b>.gov.au.</b>&nbsp;
-                If your email is different, request your account from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</p>
-              )}
+
             <Textfield
               model={`${model}.email_address`}
               name="email_address"
               id="email_address"
               type="email"
               htmlFor="email_address"
-              label="Email address"
-              validators={{ required }}
+              label={isBuyer ? (<span>Email address ending in <b>.gov.au.</b></span>) : "Email address"}
+              description= {isBuyer ? (
+                  <span>If your email is different, request your account from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
+              ) : (<br/>)}
+              validators={{ required, validEmail }}
               messages={{
                 required: 'Email is required',
+                  validEmail: 'Email address must be valid'
               }}
             />
 

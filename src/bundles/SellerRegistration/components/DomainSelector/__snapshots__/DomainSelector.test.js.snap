@@ -7,7 +7,7 @@ exports[`test DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and reference. We’ll use these to ensure you meet our 
+      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and referee. We’ll use these to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -54,27 +54,6 @@ exports[`test DomainSelector renders 1`] = `
              
             <p>
               Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="change-training-and-transformation"
-            name="change-training-and-transformation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change, Training and Transformation" />
-          <label
-            htmlFor="change-training-and-transformation">
-            Change, Training and Transformation
-             
-            <p>
-              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
             </p>
           </label>
         </div>
@@ -145,6 +124,27 @@ exports[`test DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
+            id="support-and-operations"
+            name="support-and-operations"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Support and Operations" />
+          <label
+            htmlFor="support-and-operations">
+            Support and Operations
+             
+            <p>
+              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
             id="content-and-publishing"
             name="content-and-publishing"
             onBlur={[Function]}
@@ -166,20 +166,20 @@ exports[`test DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="cyber-security"
-            name="cyber-security"
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Cyber security" />
+            value="Change, Training and Transformation" />
           <label
-            htmlFor="cyber-security">
-            Cyber security
+            htmlFor="change-training-and-transformation">
+            Change, Training and Transformation
              
             <p>
-              Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
+              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
             </p>
           </label>
         </div>
@@ -208,20 +208,20 @@ exports[`test DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="support-and-operations"
-            name="support-and-operations"
+            id="cyber-security"
+            name="cyber-security"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Support and Operations" />
+            value="Cyber security" />
           <label
-            htmlFor="support-and-operations">
-            Support and Operations
+            htmlFor="cyber-security">
+            Cyber security
              
             <p>
-              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
+              Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
             </p>
           </label>
         </div>
@@ -250,17 +250,17 @@ exports[`test DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="emerging-technology"
-            name="emerging-technology"
+            id="emerging-technologies"
+            name="emerging-technologies"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Emerging technology" />
+            value="Emerging technologies" />
           <label
-            htmlFor="emerging-technology">
-            Emerging technology
+            htmlFor="emerging-technologies">
+            Emerging technologies
              
             <p>
               Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.
@@ -286,7 +286,7 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and reference. We’ll use these to ensure you meet our 
+      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and referee. We’ll use these to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -333,27 +333,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
              
             <p>
               Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.
-            </p>
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="change-training-and-transformation"
-            name="change-training-and-transformation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change, Training and Transformation" />
-          <label
-            htmlFor="change-training-and-transformation">
-            Change, Training and Transformation
-             
-            <p>
-              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
             </p>
           </label>
         </div>
@@ -424,6 +403,27 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
+            id="support-and-operations"
+            name="support-and-operations"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Support and Operations" />
+          <label
+            htmlFor="support-and-operations">
+            Support and Operations
+             
+            <p>
+              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
             id="content-and-publishing"
             name="content-and-publishing"
             onBlur={[Function]}
@@ -445,20 +445,20 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="cyber-security"
-            name="cyber-security"
+            id="change-training-and-transformation"
+            name="change-training-and-transformation"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Cyber security" />
+            value="Change, Training and Transformation" />
           <label
-            htmlFor="cyber-security">
-            Cyber security
+            htmlFor="change-training-and-transformation">
+            Change, Training and Transformation
              
             <p>
-              Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
+              Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
             </p>
           </label>
         </div>
@@ -487,20 +487,20 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="support-and-operations"
-            name="support-and-operations"
+            id="cyber-security"
+            name="cyber-security"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Support and Operations" />
+            value="Cyber security" />
           <label
-            htmlFor="support-and-operations">
-            Support and Operations
+            htmlFor="cyber-security">
+            Cyber security
              
             <p>
-              Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.
+              Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
             </p>
           </label>
         </div>
@@ -529,17 +529,17 @@ exports[`test DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="emerging-technology"
-            name="emerging-technology"
+            id="emerging-technologies"
+            name="emerging-technologies"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Emerging technology" />
+            value="Emerging technologies" />
           <label
-            htmlFor="emerging-technology">
-            Emerging technology
+            htmlFor="emerging-technologies">
+            Emerging technologies
              
             <p>
               Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.

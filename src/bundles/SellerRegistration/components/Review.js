@@ -6,13 +6,16 @@ import ApplicationPreview from './ApplicationPreview'
 import ConnectedLink from './ConnectedLink';
 import View from '../../CaseStudy/components/View';
 
-const Review = ({match, caseStudyForm, ...rest}) => (
+const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
     <Switch>
         <Route path={match.url} exact render={() => (
             <div>
                 <h1 tabIndex="-1">Preview your new profile</h1>
-                <p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Marketplace. </p>
-                <p>Once you’re happy we can email a link to this application to your authorised representative so they can complete the legal agreement step.</p>
+                {supplierCode ? (<span><p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Digital Marketplace.</p>
+                    <p>Once you’re happy we can email a link to this application to your authorised representative so they can complete the legal agreement step.</p></span>)
+                :(<span><p>Take a moment to preview your new seller profile. This what government buyers (and assessors, if you’re offering new services) will see in the Digital Marketplace.</p>
+                        <p>If the information is correct, you can continue to the legal disclosures and agreement.</p></span>) }
+
                 <p>
                     <Link role="button" to={`${match.url}/profile`}>Preview your profile</Link>
                 </p>
@@ -44,9 +47,10 @@ const Review = ({match, caseStudyForm, ...rest}) => (
     </Switch>
 );
 
-const mapStateToProps = ({ caseStudyForm }, ownProps) => {
+const mapStateToProps = (state, { caseStudyForm }, ownProps) => {
     return {
         ...ownProps,
+        supplierCode: (state.application && state.application.supplierCode),
         caseStudyForm
     }
 }

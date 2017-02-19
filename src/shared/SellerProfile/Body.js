@@ -223,7 +223,7 @@ const Body = (props) => {
 
         {!isEmpty(boards) && (
           <div>
-            <h4>Boards and commitees</h4>
+            <h4>Boards and committees</h4>
             {boards.map((board, i) => (
               <p key={i}>{board}</p>
             ))}

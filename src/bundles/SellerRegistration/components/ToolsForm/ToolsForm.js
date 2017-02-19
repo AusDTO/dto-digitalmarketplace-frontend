@@ -28,8 +28,8 @@ class ToolsForm extends BaseForm {
                 <header>
                     <h1 tabIndex="-1">Tools and methodologies</h1>
                     <p>There’s lots of good reasons to share an insight into how you work.
-                        We use this information during assessment if it’s relevant to a selected area of expertise.
-                        It also enriches your profile and gives buyers more ways to find you through keyword search.</p>
+                        If it’s relevant to an assessment for a new area of expertise, we may take a look.
+                        Plus, it enriches your profile and gives buyers more ways to find you through keyword search. </p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -52,7 +52,7 @@ class ToolsForm extends BaseForm {
                             id="tools"
                             controlProps={{limit: 200}}
                             label="Tools"
-                            description="What tools do you use on a day-to-day basis? For example Jira, Basecamp, Digital Service Standard, Sharpies."
+                            description="What delivery management software, tools or other artefacts do you use day-to-day?."
                             validators={{ required }}
                             messages={{
                                 required: `Tools is required`,
@@ -65,7 +65,7 @@ class ToolsForm extends BaseForm {
                             id="methodologies"
                             controlProps={{limit: 200}}
                             label="Methodologies"
-                            description="What methodologies form the core of your practice? For example, Kanban, lean, scaled agile (SAFe)."
+                            description="What methodologies form the core of your practice?"
                             validators={{ required }}
                             messages={{
                                 required: `Methodologies is required`,
@@ -77,8 +77,8 @@ class ToolsForm extends BaseForm {
                             name="technologies"
                             id="technologies"
                             controlProps={{limit: 200}}
-                            label="Technologies"
-                            description="What technologies do you typically use as part of your products and services? For example, Python, Drupal, React, .net, Java, Ruby on Rails"
+                            label="Technologies (optional)"
+                            description="What technologies or programming languages do you typically use as part of your products and services?"
                         />
                         {children}
 

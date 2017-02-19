@@ -107,8 +107,8 @@ const ReviewHeader = (props) => {
 
         {public_profile === false && (
           <article className="col-xs-12 col-sm-3 col-sm-push-1">
-            {/* Hardcoded URL as buyer has no way to generate seller URLs */}
-            <a href="/sellers/edit/business-details" role="button">Update profile</a>
+            {/* Hardcoded URL as buyer has no way to generate seller URLs
+            <a href="/sellers/edit/business-details" role="button">Update profile</a> */}
           </article>
         )}
 

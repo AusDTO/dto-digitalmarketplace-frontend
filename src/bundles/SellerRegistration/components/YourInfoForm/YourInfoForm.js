@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 
-import { required } from '../../../../validators';
+import { required, validEmail, validPhoneNumber } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -17,7 +17,7 @@ class YourInfoForm extends BaseForm {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
     form: React.PropTypes.object.isRequired,
-    supplierCode: React.PropTypes.string
+    supplierCode: React.PropTypes.number
   }
 
   render() {
@@ -61,28 +61,31 @@ class YourInfoForm extends BaseForm {
               />
 
               <Textfield
-                  model={`${model}.contact_phone`}
-                  name="contact_phone"
-                  id="contact_phone"
-                  htmlFor="contact_phone"
-                  label="Phone"
-                  validators={{ required }}
-                  messages={{
-                      required: 'Business contact phone is required',
-                  }}
-              />
-
-              <Textfield
                   model={`${model}.contact_email`}
                   name="contact_email"
                   id="contact_email"
                   htmlFor="contact_email"
                   label="Email"
-                  validators={{ required }}
+                  validators={{ required, validEmail }}
                   messages={{
                       required: 'Business contact email is required',
+                      validEmail: 'Business contact email must be a valid email address',
                   }}
                   default={userEmail}
+              />
+
+
+              <Textfield
+                  model={`${model}.contact_phone`}
+                  name="contact_phone"
+                  id="contact_phone"
+                  htmlFor="contact_phone"
+                  label="Phone"
+                  validators={{ required, validPhoneNumber }}
+                  messages={{
+                      required: 'Business contact phone is required',
+                      validPhoneNumber: 'Business contact phone number must be a valid phone number',
+                  }}
               />
 
               <Textfield
@@ -98,17 +101,6 @@ class YourInfoForm extends BaseForm {
                   }}
               />
 
-              <Textfield
-                  model={`${model}.phone`}
-                  name="phone"
-                  id="phone"
-                  htmlFor="phone"
-                  label="Phone"
-                  validators={{ required }}
-                  messages={{
-                      required: 'Authorised representative\'s phone number is required',
-                  }}
-              />
 
               <Textfield
                   model={`${model}.email`}
@@ -116,9 +108,23 @@ class YourInfoForm extends BaseForm {
                   id="email"
                   htmlFor="email"
                   label="Email"
-                  validators={{ required }}
+                  validators={{ required, validEmail }}
                   messages={{
                       required: 'Authorised representative\'s email is required',
+                      validEmail: 'Authorised representative\'s email must be a valid email address',
+                  }}
+              />
+
+              <Textfield
+                  model={`${model}.phone`}
+                  name="phone"
+                  id="phone"
+                  htmlFor="phone"
+                  label="Phone"
+                  validators={{ required, validPhoneNumber }}
+                  messages={{
+                      required: 'Authorised representative\'s phone number is required',
+                      validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
                   }}
               />
 

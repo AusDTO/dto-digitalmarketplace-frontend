@@ -5,7 +5,7 @@ export const AuthWidget = (props) => {
     if (props.isAuthenticated) {
         return (
             <ul className="inline-links--inverted">
-                <li><a href={props.dashboardUrl}>Dashboard</a></li>
+                <li><a href={props.dashboardUrl}>{props.dashboardText}</a></li>
                 <li><a href={props.logoutUrl}>Log out</a></li>
             </ul>
         )
@@ -29,7 +29,8 @@ AuthWidget.propTypes = {
 }
 
 AuthWidget.defaultProps = {
-    registerText: 'Register'
+    registerText: 'Register',
+    dashboardText: 'Dashboard'
 }
 
 export default new RegisterComponent({'auth-header': AuthWidget})

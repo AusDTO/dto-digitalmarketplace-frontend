@@ -40,6 +40,7 @@ class SubmitStepForm extends BaseForm {
         onClick: React.PropTypes.func,
         applicationValid: React.PropTypes.bool,
         name: React.PropTypes.string,
+        abn: React.PropTypes.string,
         email: React.PropTypes.string,
         representative: React.PropTypes.string,
         userEmail: React.PropTypes.string,
@@ -52,10 +53,11 @@ class SubmitStepForm extends BaseForm {
     }
 
     render() {
-        let {model, submitUrl, applicationValid, name, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit} = this.props;
+        let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit} = this.props;
         let message;
         const userIsAuthorised = userEmail === email;
-        const buttonText = userIsAuthorised ? 'Complete application' : 'Send email to representative';
+        const title = userIsAuthorised ? 'Your declaration': 'Share with authorised representative';
+        const buttonText = userIsAuthorised ? 'Submit application' : 'Send email to representative';
         const action = userIsAuthorised ? submitUrl : authoriseUrl;
 
         if (userIsAuthorised) {
@@ -716,8 +718,8 @@ class SubmitStepForm extends BaseForm {
                         name="agree"
                         validators={{required}}
                     />
-                    <label htmlFor="agree">I am <strong>{representative}</strong>, the authorised representative of
-                        <strong> {name}</strong> and I agree to the terms set out in the <a
+                    <label htmlFor="agree">I am <strong>{representative}</strong>, an authorised representative of
+                        <strong> {name}</strong> (ABN: {abn}) and I agree to the terms set out in the <a
                             href="/document/masteragreement.pdf">Marketplace Master
                             Agreement</a>.</label>
 
@@ -740,7 +742,7 @@ class SubmitStepForm extends BaseForm {
         }
         return (
             <div>
-                <h1 tabIndex="-1">Your declaration</h1>
+                <h1 tabIndex="-1">{title}</h1>
                 <Form model={model}
                       action={action}
                       method="post"
@@ -770,6 +772,7 @@ const mapStateToProps = (state, ownProps) => {
         authoriseUrl: state.form_options.authorise_url,
         applicationValid: ownProps.applicationValid,
         name: ownProps.name,
+        abn: ownProps.abn,
         email: ownProps.email,
         representative: ownProps.representative,
         userEmail: state.form_options.user_email,

@@ -44,7 +44,8 @@ class ProductsForm extends BaseForm {
       <Layout>
         <header>
           <h1 tabIndex="-1">Products</h1>
-          <p>If your business has developed any software products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you’re reselling.</p>
+          <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you’re reselling.</p>
+            <p>For now this is an MVP. We want to learn more about the types of products sellers are offering before we create a solution for selling them through the Digital Marketplace. </p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -94,7 +95,7 @@ class ProductsForm extends BaseForm {
                           label="Product summary"
                           description="This is your ‘elevator pitch’ — in a single sentence tell us about your product."
                           messages={{
-                              required: `You must provide a summary for product ${index}`
+                              required: `Please provide a product summary`
                           }}
                           validators={{required}}
                       />
@@ -104,11 +105,11 @@ class ProductsForm extends BaseForm {
                           id={`website-${index}`}
                           htmlFor={`website-${index}`}
                           label="Product website link"
-                          description="Add a link to your product’s website."
+                          description="Add a link to your product’s website. The link must start with http"
                           validators={{ required, validLinks }}
                           messages={{
-                              required: `Product ${index} website link is required`,
-                              validLinks: `Product ${index} website link must begin with 'http'`,
+                              required: `Please add the product website starting with http`,
+                              validLinks: `Please add the product website starting with http`,
                           }}
                       />
                       <Textfield
@@ -117,11 +118,11 @@ class ProductsForm extends BaseForm {
                           id={`pricing-${index}`}
                           htmlFor={`pricing-${index}`}
                           label="Product pricing link"
-                          description="Add a link to your product’s pricing page."
+                          description="Add a link to your product’s pricing page. The link must start with http"
                           validators={{ required, validLinks }}
                           messages={{
-                              required: `Product ${index} pricing link is required`,
-                              validLinks: `Product ${index} pricing link must begin with 'http'`,
+                              required: `Please add the product pricing webpage link starting with http`,
+                              validLinks: `Please add the product pricing webpage link starting with http`,
                           }}
                       />
                       <Textfield
@@ -130,11 +131,11 @@ class ProductsForm extends BaseForm {
                           id={`support-${index}`}
                           htmlFor={`support-${index}`}
                           label="Product support link"
-                          description="Add a link to your product’s support page."
+                          description="Add a link to your product’s support page. The link must start with http"
                           validators={{ required, validLinks }}
                           messages={{
-                              required: `Product ${index} support link is required`,
-                              validLinks: `Product ${index} support link must begin with 'http'`,
+                              required: `Please add the product support webpage link starting with http`,
+                              validLinks: `Please add the product support webpage link starting with http`,
                           }}
                       />
                     </div>
@@ -147,7 +148,7 @@ class ProductsForm extends BaseForm {
 
             <button type="submit" className={addClass} onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
             {!isEmpty(productsForm.products) && <br/>}
-            <input type="submit" className={submitClass} value={isEmpty(productsForm.products) ? 'I do not have any products' : buttonText} role="button" />
+            <input type="submit" className={submitClass} value={isEmpty(productsForm.products) ? 'I don\'t have any products' : buttonText} role="button" />
           </Form>
         </article>
       </Layout>

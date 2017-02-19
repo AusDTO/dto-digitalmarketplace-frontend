@@ -57,7 +57,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               className="hint"
               id="abn-hint">
               <span>
-                You need an ABN to do business in Australia. 
+                You need an Australian Business Number to do business in Australia. 
                 <a
                   href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/">
                   Apply for an ABN here.
@@ -89,7 +89,7 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
             <p
               className="hint"
               id="summary-hint">
-              3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors, even without signing in.
+              3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
             </p>
             <div>
               <textarea
@@ -114,8 +114,13 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               htmlFor="website">
               Website URL
             </label>
+            <p
+              className="hint"
+              id="website-hint">
+              Provide a link to your website beginning with http
+            </p>
             <input
-              aria-describedby={undefined}
+              aria-describedby="website-hint"
               className=""
               disabled={false}
               id="website"
@@ -136,8 +141,13 @@ exports[`test BusinessDetailsWidget renders correctly 1`] = `
               htmlFor="linkedin">
               LinkedIn URL (optional)
             </label>
+            <p
+              className="hint"
+              id="linkedin-hint">
+              Provide a LinkedIn URL beginning with http
+            </p>
             <input
-              aria-describedby={undefined}
+              aria-describedby="linkedin-hint"
               className=""
               disabled={false}
               id="linkedin"

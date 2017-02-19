@@ -35,7 +35,9 @@ test('mapStateToProps', () => {
     errors: [], 
     returnLink: void 0,
     caseStudyForm: void 0,
-    router: {}
+    router: {},
+    service: undefined,
+    service_slug: ""
   };
 
   let state = generateFormValidilityState(true);
