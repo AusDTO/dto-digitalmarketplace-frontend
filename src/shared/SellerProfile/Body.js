@@ -301,12 +301,7 @@ Body.propTypes = {
   linkedin: React.PropTypes.string,
   abn: React.PropTypes.string,
   interstate: React.PropTypes.bool,
-  address: React.PropTypes.shape({
-    address_line: React.PropTypes.string,
-    suburb: React.PropTypes.string,
-    state: React.PropTypes.string,
-    postalCode: React.PropTypes.string
-  }),
+  addresses: React.PropTypes.object,
   CaseStudyLink: React.PropTypes.func,
   documentsUrl: React.PropTypes.string,
   contact_email: React.PropTypes.string,
