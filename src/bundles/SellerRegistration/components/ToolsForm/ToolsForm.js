@@ -55,6 +55,7 @@ class ToolsForm extends BaseForm {
                             label="Tools"
                             description="What delivery management software, tools or other artefacts do you use day-to-day?."
                             validators={{ required }}
+                            showMessagesDuringFocus={true}
                             messages={{
                                 required: `Tools is required`,
                             }}
@@ -68,6 +69,7 @@ class ToolsForm extends BaseForm {
                             label="Methodologies"
                             description="What methodologies form the core of your practice?"
                             validators={{ required }}
+                            showMessagesDuringFocus={true}
                             messages={{
                                 required: `Methodologies is required`,
                             }}
@@ -80,6 +82,7 @@ class ToolsForm extends BaseForm {
                             controlProps={{limit: 200}}
                             label="Technologies (optional)"
                             description="What technologies or programming languages do you typically use as part of your products and services?"
+                            showMessagesDuringFocus={true}
                         />
                         {children}
 
