@@ -233,10 +233,11 @@ const Body = (props) => {
             return (
 
                 <p>
-                  <span>{addresses[i].address_line}</span><br/>
-                  <span>{addresses[i].suburb}</span><br/>
-                  <span>{addresses[i].state} {addresses[i].postal_code}</span>
+                  <span>{addresses[key].address_line}</span><br/>
+                  <span>{addresses[key].suburb}</span><br/>
+                  <span>{addresses[key].state} {addresses[key].postal_code}</span>
                 </p>
+
             )
           })}
 
