@@ -51,6 +51,7 @@ class CaseStudyForm extends BaseForm {
       service_slug,
       children,
       onSubmit,
+      onSubmitFailed
     } = this.props;
 
     if (!buttonText) {
@@ -78,6 +79,7 @@ class CaseStudyForm extends BaseForm {
             component={SubmitForm}
             valid={form.valid}
             onCustomSubmit={onSubmit}
+            onSubmitFailed={onSubmitFailed}
           >
 
             {csrf_token && (

@@ -37,7 +37,7 @@ class ProductsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, buttonText, children, onSubmit, productsForm } = this.props;
+    const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm } = this.props;
     const submitClass = classNames({'button-secondary': isEmpty(productsForm.products)})
     const addClass = classNames({'button-secondary': !isEmpty(productsForm.products)})
     return (
@@ -56,6 +56,7 @@ class ProductsForm extends BaseForm {
             component={SubmitForm}
             valid={form.valid}
             onCustomSubmit={onSubmit}
+            onSubmitFailed={onSubmitFailed}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />

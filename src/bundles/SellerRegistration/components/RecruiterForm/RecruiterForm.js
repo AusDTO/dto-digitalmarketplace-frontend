@@ -31,7 +31,7 @@ class RecruiterForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, recruiterForm, navigateToStep, stepComplete, setRecruiter} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, recruiterForm, navigateToStep, stepComplete, setRecruiter} = this.props;
         return (
             <Layout>
                 <header>
@@ -48,6 +48,7 @@ class RecruiterForm extends BaseForm {
                           valid={form.valid}
                           component={SubmitForm}
                           onCustomSubmit={onSubmit}
+                          onSubmitFailed={onSubmitFailed}
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>

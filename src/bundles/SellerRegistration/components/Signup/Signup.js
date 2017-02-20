@@ -109,6 +109,10 @@ class Signup extends React.Component {
 
       actions.stepNextPersist(this.nextStep.pattern, this.step);
     },
+    onSubmitFailed: (e) => {
+      const { actions } = this.props;
+      actions.stepPartial(this.step.id);
+    }
   }
 
   get currentStepIndex() {
@@ -170,7 +174,7 @@ class Signup extends React.Component {
                       className={classNames({'is-active is-current': isActive})}
                     >
                       <Icon value={classNames({
-                          'to-do'       : !steps[id] && !isActive,
+                          'to-do'       : (!steps[id] || steps[id] === STATUS.partial) && !isActive,
                           'completed'   : steps[id] === STATUS.complete && !isActive,
                           'in-progress' : isActive,
                         })} size={34} aria-hidden="true"

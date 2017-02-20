@@ -24,7 +24,7 @@ class SignupForm extends BaseForm {
   }
 
   render() {
-    const { csrf_token, model, form, formErrors, children, signupForm, buyer_url, seller_url, onSubmit } = this.props;
+    const { csrf_token, model, form, formErrors, children, signupForm, buyer_url, seller_url, onSubmit, onSubmitFailed } = this.props;
     const isBuyer = signupForm.user_type === 'buyer';
     const action = isBuyer ? buyer_url : seller_url;
     return (
@@ -45,6 +45,7 @@ class SignupForm extends BaseForm {
             component={SubmitForm}
             valid={form.valid}
             onCustomSubmit={onSubmit}
+            onSubmitFailed={onSubmitFailed}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />

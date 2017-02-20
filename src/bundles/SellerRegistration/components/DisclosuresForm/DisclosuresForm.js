@@ -23,7 +23,7 @@ class DisclosuresForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit } = this.props;
+        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed } = this.props;
         return (
             <Layout>
                 <header>
@@ -41,6 +41,7 @@ class DisclosuresForm extends BaseForm {
                           valid={form.valid}
                           component={SubmitForm}
                           onCustomSubmit={onSubmit}
+                          onSubmitFailed={onSubmitFailed}
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
