@@ -233,10 +233,13 @@ const Body = (props) => {
             return (
 
                 <p>
-                  <span>{addresses[i].address_line}</span><br/>
-                  <span>{addresses[i].suburb}</span><br/>
-                  <span>{addresses[i].state} {addresses[i].postal_code}</span>
+
+                  <span>{addresses[key].address_line}</span><br/>
+                  <span>{addresses[key].suburb}</span><br/>
+                  <span>{addresses[key].state} {addresses[key].postal_code}</span>
                 </p>
+
+
             )
           })}
 
@@ -301,12 +304,7 @@ Body.propTypes = {
   linkedin: React.PropTypes.string,
   abn: React.PropTypes.string,
   interstate: React.PropTypes.bool,
-  address: React.PropTypes.shape({
-    address_line: React.PropTypes.string,
-    suburb: React.PropTypes.string,
-    state: React.PropTypes.string,
-    postalCode: React.PropTypes.string
-  }),
+  addresses: React.PropTypes.object,
   CaseStudyLink: React.PropTypes.func,
   documentsUrl: React.PropTypes.string,
   contact_email: React.PropTypes.string,
