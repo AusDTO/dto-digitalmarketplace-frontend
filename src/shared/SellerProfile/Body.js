@@ -20,7 +20,7 @@ const Body = (props) => {
     phone,
     number_of_employees,
     abn,
-    addresses = [],
+    addresses,
     documents = {},
     documentsUrl,
     tools,
@@ -35,8 +35,7 @@ const Body = (props) => {
     CaseStudyLink = () => null,
   } = props;
 
-console.log(addresses);
-console.log(awards);
+
 
   const documentTitle = {
     financial: 'Financial Statement',
@@ -233,11 +232,11 @@ console.log(awards);
                   .map((key, i) => {
             return (
 
-              <p>
-                <span>{addresses[i].address_line}</span><br/>
-                <span>{addresses[i].suburb}</span><br/>
-                <span>{addresses[i].state} {addresses[i].postal_code}</span>
-              </p>
+                <p>
+                  <span>{addresses[i].address_line}</span><br/>
+                  <span>{addresses[i].suburb}</span><br/>
+                  <span>{addresses[i].state} {addresses[i].postal_code}</span>
+                </p>
             )
           })}
 
