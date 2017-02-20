@@ -195,27 +195,6 @@ console.log(awards);
           </div>
         )}
 
-        {!isEmpty(addresses) && (
-          <div>
-            <h4>Main Address </h4>
-    
-            {Object.keys(addresses)
-                    .map((key, i) => {
-              return (
-
-                <p>
-                  <span>{addresses[i].address_line}</span><br/>
-                  <span>{addresses[i].suburb}</span><br/>
-                  <span>{addresses[i].state} {addresses[i].postal_code}</span>
-                </p>
-              )
-            })}
-
-          </div>
-        )}
-
-
-
         {abn && (
           <div>
             <h4>ABN</h4>
@@ -245,9 +224,27 @@ console.log(awards);
       </Row>
 
       <Row title="Location" show={!isEmpty(awards)}>
-        {awards.map((award, i) => (
-          <p key={i}>{award}</p>
-        ))}
+
+      {!isEmpty(addresses) && (
+        <div>
+          <h4>Main Address </h4>
+
+          {Object.keys(addresses)
+                  .map((key, i) => {
+            return (
+
+              <p>
+                <span>{addresses[i].address_line}</span><br/>
+                <span>{addresses[i].suburb}</span><br/>
+                <span>{addresses[i].state} {addresses[i].postal_code}</span>
+              </p>
+            )
+          })}
+
+        </div>
+      )}
+
+
       </Row>
 
 
