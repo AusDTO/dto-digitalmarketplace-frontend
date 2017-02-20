@@ -14,12 +14,26 @@
     "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus finibus ultrices. Nulla scelerisque justo a erat fringilla, ac tempor odio viverra. Etiam ut aliquam ante. Etiam quis lorem mollis, ultrices mi id, dictum leo. Integer rutrum, urna in pretium volutpat, est rutrum magna, ac viverra augue turpis eget sem.",
     "website": "http://website.com",
     "linkedin": "http://linkedin.com",
-    "addresses": [{
+    "addresses": {
+      "0" : {
         "address_line": "241 Commonwealth Street",
         "suburb": "Sydney",
         "state": "NSW",
         "postal_code": "2000"
-    }],
+      },
+      "1" :{
+        "address_line": "242 Commonwealth Street",
+        "suburb": "Manly",
+        "state": "NSW",
+        "postal_code": "2095"
+      },
+      "2" : {
+        "address_line": "242 Brookvale Test",
+        "suburb": "Brook",
+        "state": "NSW",
+        "postal_code": "1092"
+      }
+    },
     "services": {
         "Change & transformation": true,
         "Cyber security": true

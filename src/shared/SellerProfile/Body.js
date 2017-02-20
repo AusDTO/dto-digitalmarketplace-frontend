@@ -20,7 +20,7 @@ const Body = (props) => {
     phone,
     number_of_employees,
     abn,
-    address,
+    addresses,
     documents = {},
     documentsUrl,
     tools,
@@ -34,6 +34,8 @@ const Body = (props) => {
     products = {},
     CaseStudyLink = () => null,
   } = props;
+
+
 
   const documentTitle = {
     financial: 'Financial Statement',
@@ -67,21 +69,21 @@ const Body = (props) => {
         <p>
           <a href="">Learn about assessments</a>
         </p>
-        
+
       </Row>
 
       <Row title="Case studies" show={!isEmpty(case_studies)}>
         <ul className="list-vertical" styleName="case-study-list">
         {Object.keys(case_studies).map((study, i) => {
           const { title, service, client } = case_studies[study];
-          const isEvaluted = get(assessed, service); 
+          const isEvaluted = get(assessed, service);
           const badgeStyleName = isEvaluted ? 'evaluated-badges' : 'provides-badges';
           return (
             <li key={i}>
               <article>
                 {/*
                   CaseStudyLink is a configurable prop.
-                  Since it will point to different areas in different flows. 
+                  Since it will point to different areas in different flows.
                 */}
                 <h3><CaseStudyLink id={study}>{title}</CaseStudyLink></h3>
                 <p>{client}</p>
@@ -101,7 +103,7 @@ const Body = (props) => {
 
       <Row title="Digital products" show={!isEmpty(products)}>
         <Alert type="info">
-          The products below are not assessed or endorsed by the Digital Marketplace. 
+          The products below are not assessed or endorsed by the Digital Marketplace.
         </Alert>
 
         {Object.keys(products).map((key, i) => {
@@ -159,14 +161,14 @@ const Body = (props) => {
             <p className="freetext">{methodologies}</p>
           </div>
         )}
-        
+
         {tools && (
           <div>
             <h4>Tools</h4>
             <p className="freetext">{tools}</p>
           </div>
         )}
-        
+
         {technologies && (
           <div>
             <h4>Programming Lanuages</h4>
@@ -175,7 +177,7 @@ const Body = (props) => {
         )}
       </Row>
 
-      
+
 
       <Row title="Company Details" show={true}>
         <h4>Authorised representative</h4>
@@ -189,17 +191,6 @@ const Body = (props) => {
           <div>
             <h4>Company size</h4>
             <p>{number_of_employees}</p>
-          </div>
-        )}
-
-        {!isEmpty(address) && (
-          <div>
-            <h4>Main Address</h4>
-            <p>
-              <span>{address.address_line}</span><br/>
-              <span>{address.suburb}</span><br/>
-              <span>{address.state} {address.postal_code}</span>
-            </p>
           </div>
         )}
 
@@ -231,7 +222,32 @@ const Body = (props) => {
         )}
       </Row>
 
-      <Row title="Awards" show={!isEmpty(awards)}>
+      <Row title="Location" show={!isEmpty(awards)}>
+
+      {!isEmpty(addresses) && (
+        <div>
+          <h4>Main Address </h4>
+
+          {Object.keys(addresses)
+                  .map((key, i) => {
+            return (
+
+                <p>
+                  <span>{addresses[i].address_line}</span><br/>
+                  <span>{addresses[i].suburb}</span><br/>
+                  <span>{addresses[i].state} {addresses[i].postal_code}</span>
+                </p>
+            )
+          })}
+
+        </div>
+      )}
+
+
+      </Row>
+
+
+      <Row title="Recognition" show={!isEmpty(awards)}>
         {awards.map((award, i) => (
           <p key={i}>{award}</p>
         ))}
@@ -251,8 +267,8 @@ const Body = (props) => {
               return (
                 <tr key={val}>
                   <td>
-                    {public_profile ? 
-                      documentTitle[key] 
+                    {public_profile ?
+                      documentTitle[key]
                     : (
                       <a href={`${documentsUrl}${filename}`}>
                       {documentTitle[key]}
