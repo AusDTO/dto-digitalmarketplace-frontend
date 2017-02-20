@@ -15,6 +15,7 @@ const Textarea = (props) => {
     validators,
     messages,
     description,
+    showMessagesDuringFocus = false,
     controlProps = {},
     mapProps
   } = props;
@@ -30,13 +31,12 @@ const Textarea = (props) => {
       {description && (
         <p className="hint" id={`${id}-hint`}>{description}</p>
       )}
-      {messages && <StatefulError model={model} messages={messages} id={id} />}
+      {messages && <StatefulError model={model} messages={messages} id={id} showMessagesDuringFocus={showMessagesDuringFocus} />}
       <Control
         model={model}
         controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
         validators={validators}
         component={TextareaComponent}
-
         mapProps={{
           className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
           value: (props) => props.viewValue,
