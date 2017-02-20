@@ -222,7 +222,7 @@ const Body = (props) => {
         )}
       </Row>
 
-      <Row title="Location" show={!isEmpty(awards)}>
+      <Row title="Location" show={!isEmpty(addresses)}>
 
       {!isEmpty(addresses) && (
         <div>
