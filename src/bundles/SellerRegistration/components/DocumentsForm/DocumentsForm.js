@@ -103,7 +103,7 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, match, buttonText} = this.props;
+        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText} = this.props;
         let intro = 'Please share the following documents for assessment. They’re not published on your seller profile but buyers may request them from us when considering awarding a contract. ';
         if (sellerCode) {
             intro = 'It’s been almost a year now since you shared these documents with us. So please share more recent copies for our records, and for buyers on request.  '
@@ -135,6 +135,7 @@ class DocumentsForm extends BaseForm {
                           component={SubmitForm}
                           valid={form.valid}
                           onCustomSubmit={onSubmit}
+                          onSubmitFailed={onSubmitFailed}
                           validators={{
                             documents: (documents = {}) => minObjectLength(documents, 3)
                           }}

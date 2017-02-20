@@ -20,7 +20,7 @@ class EnterPasswordForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, onSubmit, enterPasswordForm } = this.props;
+    const { action, csrf_token, model, form, onSubmit, onSubmitFailed, enterPasswordForm } = this.props;
     return (
       <Layout>
         <header>
@@ -36,6 +36,7 @@ class EnterPasswordForm extends BaseForm {
             component={SubmitForm}
             valid={form.valid}
             onCustomSubmit={onSubmit}
+            onSubmitFailed={onSubmitFailed}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />

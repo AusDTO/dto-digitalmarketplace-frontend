@@ -21,7 +21,7 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit } = this.props;
+    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed } = this.props;
     let title = 'Contact details';
     if (supplierCode) {
         title = 'Check your contact details'
@@ -41,6 +41,7 @@ class YourInfoForm extends BaseForm {
             component={SubmitForm}
             valid={form.valid}
             onCustomSubmit={onSubmit}
+            onSubmitFailed={onSubmitFailed}
           >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />

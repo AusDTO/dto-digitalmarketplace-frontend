@@ -39,7 +39,7 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, businessDetailsForm } = this.props;
+        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm } = this.props;
         let title = 'Tell us about your business'
         if (supplierCode) {
             title = 'Check your business details'
@@ -59,6 +59,7 @@ class BusinessDetailsForm extends BaseForm {
                           valid={form.valid}
                           component={SubmitForm}
                           onCustomSubmit={onSubmit}
+                          onSubmitFailed={onSubmitFailed}
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
