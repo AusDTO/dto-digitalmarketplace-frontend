@@ -18,8 +18,12 @@ import domains from './domains';
 
 class DomainSelector extends BaseForm {
 
+  static propTypes = {
+    recruiter: React.PropTypes.string
+  }
+
     render() {
-        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit} = this.props;
+        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter} = this.props;
         let header = (
             <header>
                 <h1 tabIndex="-1">What services will you offer?</h1>
@@ -44,6 +48,14 @@ class DomainSelector extends BaseForm {
                         — you’ll need to provide a case study for each as evidence for <a href="/assessment-criteria"
                                                                                           target="_blank" rel="external">assessment</a>
                     </p>
+                </header>
+            )
+        }
+
+        if (recruiter === 'yes') {
+            header = (
+                <header>
+                    <h1 tabIndex="-1">What services do your candidates offer?</h1>
                 </header>
             )
         }
@@ -111,7 +123,8 @@ class DomainSelector extends BaseForm {
 
 DomainSelector.defaultProps = {
     buttonText: 'Save and continue',
-    title: 'What services will you offer? '
+    title: 'What services will you offer? ',
+    recruiter: ''
 }
 
 const mapStateToProps = (state) => {

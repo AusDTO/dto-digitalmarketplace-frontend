@@ -21,7 +21,7 @@ class AwardsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed} = this.props;
         return (
             <Layout>
                 <header>
