@@ -29,7 +29,7 @@ class CandidatesForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Candidates</h1>
-                    <p>Blurb</p>
+                    <p>Provide database and candidate details for each service you selected.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
