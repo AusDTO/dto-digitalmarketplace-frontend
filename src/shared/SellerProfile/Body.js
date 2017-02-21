@@ -22,7 +22,6 @@ const Body = (props) => {
     abn,
     addresses,
     documents = {},
-    documentsUrl,
     tools,
     methodologies,
     technologies,
@@ -232,7 +231,7 @@ const Body = (props) => {
                   .map((key, i) => {
             return (
 
-                <p>
+                <p key={i}>
 
                   <span>{addresses[key].address_line}</span><br/>
                   <span>{addresses[key].suburb}</span><br/>
@@ -266,17 +265,11 @@ const Body = (props) => {
           </thead>
           <tbody>
             {Object.keys(documents).map((key, val) => {
-              const { filename, expiry } = documents[key];
+              const { expiry } = documents[key];
               return (
                 <tr key={val}>
                   <td>
-                    {public_profile ?
-                      documentTitle[key]
-                    : (
-                      <a href={`${documentsUrl}${filename}`}>
-                      {documentTitle[key]}
-                      </a>
-                    )}
+                    {documentTitle[key]}
                   </td>
                   <td>
                     {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
@@ -306,7 +299,6 @@ Body.propTypes = {
   interstate: React.PropTypes.bool,
   addresses: React.PropTypes.object,
   CaseStudyLink: React.PropTypes.func,
-  documentsUrl: React.PropTypes.string,
   contact_email: React.PropTypes.string,
   contact_phone: React.PropTypes.string,
   contact_name: React.PropTypes.string,

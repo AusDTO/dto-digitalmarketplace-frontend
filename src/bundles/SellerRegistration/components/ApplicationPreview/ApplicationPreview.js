@@ -55,6 +55,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       federal_government_experience,
       other_panels,
       disclosures,
+      documents,
       documents_url = '../documents/',
       case_study_url,
       public_profile,
@@ -117,11 +118,13 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           case_studies,
           interstate,
           CaseStudyLink: caseStudyLink,
-          documentsUrl: documents_url,
+          documents,
           public_profile,
           ...body
         },
         privateInfo: (disclosures ? {
+            documents,
+            documentsUrl: documents_url,
             case_studies,
             local_government_experience,
             state_government_experience,

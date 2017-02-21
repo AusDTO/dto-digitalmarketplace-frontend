@@ -47,11 +47,11 @@ const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
     </Switch>
 );
 
-const mapStateToProps = (state, { caseStudyForm }, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         ...ownProps,
         supplierCode: (state.application && state.application.supplierCode),
-        caseStudyForm
+        caseStudyForm: state.caseStudyForm
     }
 }
 
