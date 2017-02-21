@@ -157,6 +157,17 @@ class BusinessInfoForm extends BaseForm {
                                 <p>An organisation that applies commercial strategies to maximize improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.</p>
                             </label>
 
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.regional`}
+                                id="regional"
+                                name="regional"
+                                value="Regional"
+                            />
+                            <label htmlFor="regional">
+                                Regional or non-metropolitan based business
+                            </label>
+
                         </fieldset>
 
                         <fieldset>
