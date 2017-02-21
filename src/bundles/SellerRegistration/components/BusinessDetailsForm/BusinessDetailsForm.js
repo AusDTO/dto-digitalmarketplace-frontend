@@ -103,6 +103,7 @@ class BusinessDetailsForm extends BaseForm {
                             controlProps={{limit: 50}}
                             label="Summary"
                             description="3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in."
+                            showMessagesDuringFocus={true}
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}
