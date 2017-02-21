@@ -29,7 +29,8 @@ import SubmitStepForm       from '../Submit';
 import Finish               from '../Finish';
 import FinishProfile        from '../FinishProfile';
 import ProductsForm         from '../ProductsForm';
-import RecruiterForm         from '../RecruiterForm';
+import RecruiterForm        from '../RecruiterForm';
+import CandidatesForm       from '../CandidatesForm';
 
 
 class Signup extends React.Component {
@@ -61,6 +62,8 @@ class Signup extends React.Component {
     if (filterSteps) {
       this.steps = this.steps.filter(filterSteps);
     }
+
+    this.filteredSteps = this.steps.slice();
   }
 
   steps = [
@@ -74,12 +77,14 @@ class Signup extends React.Component {
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
-    { id: 'candidates', label: 'Candidates', component: DomainList, pattern: '/candidates', formKey: 'caseStudyForm' },
+    { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
     { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
     { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ]
+
+  filteredSteps = [];
 
   elementProps = {
     onClick: (e) => {
@@ -118,18 +123,18 @@ class Signup extends React.Component {
 
   get currentStepIndex() {
     const { location } = this.props;
-    return findIndex(this.steps, (step) => {
+    return findIndex(this.filteredSteps, (step) => {
       let regex = new RegExp(`^${step.pattern}`);  
       return location.pathname.match(regex);
     });
   }
 
   get step() {
-    return this.steps[this.currentStepIndex];
+    return this.filteredSteps[this.currentStepIndex];
   }
 
   get nextStep() {
-    return this.steps[this.currentStepIndex + 1];
+    return this.filteredSteps[this.currentStepIndex + 1];
   }
 
   componentWillMount() {
@@ -142,11 +147,12 @@ class Signup extends React.Component {
 
   render() {
     const { forms, location, steps = {}, actions } = this.props;
-    const applicationValid = (this.steps.length - 1) <= Object.keys(steps).length;
+    const applicationValid = (this.filteredSteps.length - 1) <= Object.keys(steps).length;
     let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
     let { recruiter = 'no'} = forms.recruiterForm;
+    let filter = recruiter === 'yes' ? /\/case-study/ : /\/candidates/;
 
     services = Object
       .keys(services)
@@ -156,7 +162,7 @@ class Signup extends React.Component {
         return newServices;
       }, {});
 
-    let filter = recruiter === 'yes' ? /\/case-study/ : /\/candidates/;
+    this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
     return (
       <div className="row">
@@ -168,7 +174,7 @@ class Signup extends React.Component {
 
           return (
             <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
-              {this.steps.filter(s => !s.pattern.match(filter)).map(({ pattern, label, formKey, id }, i) => {
+              {this.filteredSteps.map(({ pattern, label, formKey, id }, i) => {
                 const isActive = location.pathname === pattern;
                 return (
                   <li key={i}>
@@ -195,7 +201,7 @@ class Signup extends React.Component {
 
 
         <Switch>
-          {this.steps.map(({pattern, exact, component, label}, i) => (
+          {this.filteredSteps.map(({pattern, exact, component, label}, i) => (
             <Route key={i} path={pattern} render={(routerProps) => {
               let isCaseStudyEditFlow = location.pathname.match(/case-study\/(edit|add)/);
               let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);
@@ -268,7 +274,7 @@ export {
   mapStateToProps
 }
 
-const SignupWithRouter = connect(
+const SignupWithRouter = connect(q
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(Signup));

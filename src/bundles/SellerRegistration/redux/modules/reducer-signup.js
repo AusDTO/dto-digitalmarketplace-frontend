@@ -98,7 +98,7 @@ export default combineReducers({
       recruiter: '',
     },
     candidatesForm: {
-      candidates: [],
+      candidates: {},
     }
   })
 })
