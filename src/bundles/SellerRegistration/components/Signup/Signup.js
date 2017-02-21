@@ -274,7 +274,7 @@ export {
   mapStateToProps
 }
 
-const SignupWithRouter = connect(q
+const SignupWithRouter = connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(Signup));

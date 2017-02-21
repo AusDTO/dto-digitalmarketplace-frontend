@@ -89,7 +89,7 @@ class SignupForm extends BaseForm {
               type="email"
               htmlFor="email_address"
               label={isBuyer ? (<span>Email address ending in <b>.gov.au.</b></span>) : "Email address"}
-              description= {isBuyer ? (
+              description={isBuyer ? (
                   <span>If your email is different, request your account from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
               ) : (<br/>)}
               validators={{ required, validEmail }}
