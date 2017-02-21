@@ -6,7 +6,7 @@ export const AuthWidget = (props) => {
         return (
             <ul className="inline-links--inverted">
                 <li><a href={props.dashboardUrl}>{props.dashboardText}</a></li>
-                <li><a href={props.logoutUrl}>Log out</a></li>
+                <li><a href={props.logoutUrl}>Sign out</a></li>
             </ul>
         )
     }
@@ -14,7 +14,7 @@ export const AuthWidget = (props) => {
     return (
         <ul className="inline-links--inverted">
             <li><a href={props.registerUrl}>{props.registerText}</a></li>
-            <li><a href={props.loginUrl}>Log in</a></li>
+            <li><a href={props.loginUrl}>Sign in</a></li>
         </ul>
     )
 }
