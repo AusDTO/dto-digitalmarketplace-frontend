@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Form, actions } from 'react-redux-form';
+import { Form, actions, dispatch } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 
 import {required, limitNumbers, validLinks, validABN} from '../../../../validators';
@@ -43,6 +43,16 @@ class BusinessDetailsForm extends BaseForm {
         let title = 'Tell us about your business'
         if (supplierCode) {
             title = 'Check your business details'
+        }
+
+        const websiteOrLinkedin = (val, field) => {
+            const {model, businessDetailsForm, revalidate} = this.props;
+            if (field == ".linkedin") {
+                revalidate(model + ".website",'websiteOrLinkedin');
+            } else {
+                revalidate(model + ".linkedin", 'websiteOrLinkedin');
+            }
+            return !isEmpty(businessDetailsForm.website) || !isEmpty(businessDetailsForm.linkedin)
         }
         
         return (
@@ -117,9 +127,10 @@ class BusinessDetailsForm extends BaseForm {
                             label="Website URL"
                             description="Provide a link to your website beginning with http"
                             messages={{
-                                required: 'You must provide a website link beginning with http'
+                                validLinks: 'Links provided must begin with http',
+                                websiteOrLinkedin: 'Either Website or LinkedIn URL must be provided'
                             }}
-                            validators={{required}}
+                            validators={{validLinks, websiteOrLinkedin: (val) => websiteOrLinkedin(val,".website")}}
                         />
 
                         <Textfield
@@ -130,9 +141,10 @@ class BusinessDetailsForm extends BaseForm {
                             label="LinkedIn URL (optional)"
                             description="Provide a LinkedIn URL beginning with http"
                             messages={{
-                                validLinks: 'Links provided must begin with http'
+                                validLinks: 'Links provided must begin with http',
+                                websiteOrLinkedin: 'Either Website or LinkedIn URL must be provided'
                             }}
-                            validators={{validLinks}}
+                            validators={{validLinks, websiteOrLinkedin: (val) => websiteOrLinkedin(val,".linkedin")}}
                         />
 
                         <Textfield
@@ -291,8 +303,14 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actions.omit(`${model}.addresses`, id));
             // added due to bug in adding empty address then removing without submit
             dispatch(actions.setValidity(`${model}.addresses.${id}`, true));
+        },
+        revalidate: (model, validator) => {
+            var validators = {};
+            validators[validator] = true;
+            dispatch(actions.setValidity(model, validators));
         }
     }
+
 }
 
 export {
