@@ -50,7 +50,7 @@ class CandidatesForm extends BaseForm {
                                 <div key={domain.label}>
                                     <h4>{domain.label}</h4>
                                     <Textfield
-                                        model={`${model}.candidates.${domain.label}.database_size`}
+                                        model={`${model}.recruiter_info.${domain.label}.database_size`}
                                         name={`${domain.label}-database_size`}
                                         id={`${domain.label}-database_size`}
                                         htmlFor={`${domain.label}-database_size`}
@@ -61,7 +61,7 @@ class CandidatesForm extends BaseForm {
                                         validators={{required}}
                                     />
                                      <Textfield
-                                        model={`${model}.candidates.${domain.label}.active_candidates`}
+                                        model={`${model}.recruiter_info.${domain.label}.active_candidates`}
                                         name={`${domain.label}-active_candidates`}
                                         id={`${domain.label}-active_candidates`}
                                         htmlFor={`${domain.label}-active_candidates`}
@@ -72,7 +72,7 @@ class CandidatesForm extends BaseForm {
                                         validators={{required}}
                                     />
                                      <Textfield
-                                        model={`${model}.candidates.${domain.label}.markup`}
+                                        model={`${model}.recruiter_info.${domain.label}.markup`}
                                         name={`${domain.label}-markup`}
                                         id={`${domain.label}-markup`}
                                         htmlFor={`${domain.label}-markup`}
@@ -83,7 +83,7 @@ class CandidatesForm extends BaseForm {
                                         validators={{required}}
                                     />
                                      <Textfield
-                                        model={`${model}.candidates.${domain.label}.margin`}
+                                        model={`${model}.recruiter_info.${domain.label}.margin`}
                                         name={`${domain.label}-margin`}
                                         id={`${domain.label}-margin`}
                                         htmlFor={`${domain.label}-margin`}
