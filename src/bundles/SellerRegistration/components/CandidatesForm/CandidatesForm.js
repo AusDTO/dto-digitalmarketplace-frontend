@@ -60,7 +60,7 @@ class CandidatesForm extends BaseForm {
                                         }}
                                         validators={{required}}
                                     />
-                                     <Textfield
+                                    <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.active_candidates`}
                                         name={`${domain.label}-active_candidates`}
                                         id={`${domain.label}-active_candidates`}
@@ -71,30 +71,43 @@ class CandidatesForm extends BaseForm {
                                         }}
                                         validators={{required}}
                                     />
-                                     <Textfield
+                                    <Textfield
+                                       model={`${model}.recruiter_info.${domain.label}.placed_candidates`}
+                                       name={`${domain.label}-placed_candidates`}
+                                       id={`${domain.label}-placed_candidates`}
+                                       htmlFor={`${domain.label}-=placed_candidates`}
+                                       label="How many candidates have you successfully placed in the last 12 months?"
+                                       messages={{
+                                           required: 'You must supply the number of candidates successfully placed'
+                                       }}
+                                       validators={{required}}
+                                    />
+                                    <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.markup`}
                                         name={`${domain.label}-markup`}
                                         id={`${domain.label}-markup`}
                                         htmlFor={`${domain.label}-markup`}
                                         label="What is your mark-up?"
+                                        description="Markup is the percentage you apply to a contractor’s daily fee."
                                         messages={{
                                             required: 'You must supply your mark-up'
                                         }}
                                         validators={{required}}
                                     />
-                                     <Textfield
+                                    <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.margin`}
                                         name={`${domain.label}-margin`}
                                         id={`${domain.label}-margin`}
                                         htmlFor={`${domain.label}-margin`}
                                         label="What is your margin?"
+                                        description="Margin is the percentage of the total daily fee paid to your recruitment company."
                                         messages={{
                                             required: 'You must supply your margin'
                                         }}
                                         validators={{required}}
                                     />
                                 </div>
-                            )    
+                            )
                         })}
 
 
