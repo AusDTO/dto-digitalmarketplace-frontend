@@ -73,8 +73,8 @@ class ProductsForm extends BaseForm {
                     </div>
                     <div className="col-xs-12 col-sm-2">
                       <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
-                    </div>  
-                  </div>  
+                    </div>
+                  </div>
                   <div className="row">
                     <div className="col-xs-12 col-sm-10">
                       <Textfield
@@ -95,6 +95,7 @@ class ProductsForm extends BaseForm {
                           controlProps={{limit: 50}}
                           label="Product summary"
                           description="This is your ‘elevator pitch’ — in a single sentence tell us about your product."
+                          showMessagesDuringFocus={true}
                           messages={{
                               required: `Please provide a product summary`
                           }}
