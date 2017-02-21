@@ -1,17 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Form, actions} from 'react-redux-form';
-import { Link } from 'react-router-dom';
+import {Form, Control} from 'react-redux-form';
 
 import Layout from '../../../../shared/Layout';
-import {required} from '../../../../validators';
-import {navigateToStep} from '../../redux/modules/application'
-import {stepComplete}    from '../../redux/modules/steps';
 
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
-import Textfield    from '../../../../shared/form/Textfield';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 
@@ -24,20 +19,14 @@ class RecruiterForm extends BaseForm {
         returnLink: React.PropTypes.string
     }
 
-    onAdd(e) {
-        e.preventDefault();
-        const {model, setRecruiter} = this.props;
-        setRecruiter(model, true);
-    }
-
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, recruiterForm, navigateToStep, stepComplete, setRecruiter} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit} = this.props;
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Are you a recruitment service?</h1>
+                    <h1 tabIndex="-1">Are you a recruiter?</h1>
                     <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables. 
-                       Examples include temporary, contract and permanent recruitment.</p>
+                       Examples include temporary and contract recruitment.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -48,78 +37,30 @@ class RecruiterForm extends BaseForm {
                           valid={form.valid}
                           component={SubmitForm}
                           onCustomSubmit={onSubmit}
-                          onSubmitFailed={onSubmitFailed}
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-                        { recruiterForm.recruiter && (
-                            <div>
-                                 <Textfield
-                                    model={`${model}.database_size`}
-                                    name="database_size"
-                                    id="database_size"
-                                    htmlFor="database_size"
-                                    label="What is the size of your candidate database?"
-                                    messages={{
-                                        required: 'You must supply the candidate database size'
-                                    }}
-                                    validators={{required}}
-                                />
-                                 <Textfield
-                                    model={`${model}.active_candidates`}
-                                    name="active_candidates"
-                                    id="active_candidates"
-                                    htmlFor="active_candidates"
-                                    label="How many candidates are actively looking now?"
-                                    messages={{
-                                        required: 'You must supply the number of candidates looking'
-                                    }}
-                                    validators={{required}}
-                                />
-                                 <Textfield
-                                    model={`${model}.markup`}
-                                    name="markup"
-                                    id="markup"
-                                    htmlFor="markup"
-                                    label="What is your markup?"
-                                    messages={{
-                                        required: 'You must supply your markup'
-                                    }}
-                                    validators={{required}}
-                                />
-                                 <Textfield
-                                    model={`${model}.margin`}
-                                    name="margin"
-                                    id="margin"
-                                    htmlFor="margin"
-                                    label="What is your margin?"
-                                    messages={{
-                                        required: 'You must supply your margin'
-                                    }}
-                                    validators={{required}}
-                                />
+                        <fieldset className="field">
+                          <Control.radio
+                            model={`${model}.recruiter`}
+                            name="recruiter"
+                            id="yes"
+                            value="yes"/>
+                          <label htmlFor="yes">Yes</label>
 
-                                {children}
+                          <Control.radio
+                            model={`${model}.recruiter`}
+                            name="recruiter"
+                            id="no"
+                            value="no"/>
+                          <label htmlFor="no">No</label>
+                        </fieldset>
 
-                            </div>
-                        )}
-                        { recruiterForm.recruiter ?
-                            <button type="submit"> Save and continue</button>
-                            :
-                            <button type="submit" onClick={this.onAdd.bind(this)}>I am a recruiter</button>
-                        }
-                        <Link
-                            className="button-secondary"
-                            to="/domains"
-                            onClick={() => {
-                                // Hardcoded is ugly.
-                                setRecruiter(model, false);
-                                stepComplete('recruiter');
-                                navigateToStep('/domains');
-                            }}>I am not a recruiter
-                        </Link>
+                        {children}
+
+                        <button type="submit"> Save and continue</button>
                     </Form>
                 </article>
             </Layout>
@@ -137,23 +78,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setRecruiter: (model, value) => {
-            dispatch(actions.change(`${model}.recruiter`, value));
-        },
-        navigateToStep: (to) => {
-            return dispatch(navigateToStep(to));
-        },
-        stepComplete: (step) => {
-            return dispatch(stepComplete(step));
-        }
-    }
-}
-
 export {
     mapStateToProps,
     RecruiterForm as Form
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecruiterForm);
+export default connect(mapStateToProps)(RecruiterForm);
