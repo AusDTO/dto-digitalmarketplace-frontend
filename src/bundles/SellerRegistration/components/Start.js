@@ -30,10 +30,8 @@ const Start = ({supplierCode, signup, onClick}) => {
                 <p>
                     To become a registered seller and offer your services or software products to government you need to
                     tell us about your business. </p>
-                <p> The information you share will be used to create your seller profile, and later to confirm you meet
-                    the <a
-                        href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> to apply for
-                    opportunities.</p>
+                <p> The information you share will be used to create your seller profile. If you offer services it will also be used to confirm you meet the <a
+                        href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> when when you express interest in opportunities.</p>
                 <p> It may take more than one visit to complete this application. But don’t worry, your information will
                     be saved automatically if
                     you need to come back later.
@@ -46,7 +44,7 @@ const Start = ({supplierCode, signup, onClick}) => {
                 </ul>
                 <h2>You'll be asked to</h2>
                 <ul>
-                    <li>Select the services you wish to provide</li>
+                    <li>Share details about services or products you wish to provide</li>
                     <li> Provide case studies and referees to support your application</li>
                     <li>Accept the Digital Marketplace Master Agreement<br/>
                         <a href="agreement.pdf">Download Digital Marketplace Master Agreement PDF</a></li>

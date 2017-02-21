@@ -141,7 +141,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="address_line"
                             htmlFor="address_line"
                             label="Primary Address"
-                            description="Principal place of business"
+                            description="Principal place of business."
                             messages={{
                                 required: 'You must provide an address'
                             }}
