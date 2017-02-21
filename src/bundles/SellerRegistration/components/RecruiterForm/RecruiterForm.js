@@ -24,9 +24,9 @@ class RecruiterForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Are you a recruitment service?</h1>
+                    <h1 tabIndex="-1">Are you a recruiter?</h1>
                     <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables. 
-                       Examples include temporary, contract and permanent recruitment.</p>
+                       Examples include temporary and contract recruitment.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>

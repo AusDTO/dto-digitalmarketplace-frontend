@@ -28,8 +28,8 @@ class CandidatesForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Candidates</h1>
-                    <p>Provide database and candidate details for each service you selected.</p>
+                    <h1 tabIndex="-1">Tell us more about your candidates</h1>
+                    <p>Share database and candidate details for each service you selected.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -76,9 +76,9 @@ class CandidatesForm extends BaseForm {
                                         name={`${domain.label}-markup`}
                                         id={`${domain.label}-markup`}
                                         htmlFor={`${domain.label}-markup`}
-                                        label="What is your markup?"
+                                        label="What is your mark-up?"
                                         messages={{
-                                            required: 'You must supply your markup'
+                                            required: 'You must supply your mark-up'
                                         }}
                                         validators={{required}}
                                     />
