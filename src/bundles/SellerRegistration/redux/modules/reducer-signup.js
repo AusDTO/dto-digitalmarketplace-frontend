@@ -96,10 +96,9 @@ export default combineReducers({
     },
     recruiterForm: {
       recruiter: '',
-      database_size: '',
-      active_candidates: '',
-      markup: '',
-      margin:'',
+    },
+    candidatesForm: {
+      candidates: [],
     }
   })
 })

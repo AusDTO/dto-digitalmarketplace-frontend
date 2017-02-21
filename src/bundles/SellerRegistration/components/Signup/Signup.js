@@ -71,9 +71,10 @@ class Signup extends React.Component {
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-    //{ id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
+    { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { id: 'candidates', label: 'Candidates', component: DomainList, pattern: '/candidates', formKey: 'caseStudyForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
     { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
@@ -145,6 +146,7 @@ class Signup extends React.Component {
     let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
+    let { recruiter = 'no'} = forms.recruiterForm;
 
     services = Object
       .keys(services)
@@ -153,6 +155,8 @@ class Signup extends React.Component {
         newServices[key] = services[key];
         return newServices;
       }, {});
+
+    let filter = recruiter === 'yes' ? /\/case-study/ : /\/candidates/;
 
     return (
       <div className="row">
@@ -164,7 +168,7 @@ class Signup extends React.Component {
 
           return (
             <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
-              {this.steps.map(({ pattern, label, formKey, id }, i) => {
+              {this.steps.filter(s => !s.pattern.match(filter)).map(({ pattern, label, formKey, id }, i) => {
                 const isActive = location.pathname === pattern;
                 return (
                   <li key={i}>
