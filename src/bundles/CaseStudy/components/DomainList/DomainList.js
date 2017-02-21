@@ -161,8 +161,7 @@ class DomainList extends BaseForm {
 
               <ProgressBar value={addedServices.length} max={serviceCount} />
 
-              {domains.map((domain, i) => {
-                if (services[domain.label]) {
+              {domains.filter(d => services[d.label]).map((domain, i) => {
                 let list = getStudiesByService(caseStudyForm.case_studies, domain.label);
                 return (
                   <section key={`casestudy.domain.${i}`}>
@@ -209,9 +208,7 @@ class DomainList extends BaseForm {
                     
                   </section>
                 )
-                
-              }}
-              )}
+              })}
 
               {/* This error will never actually render */}
               <StatefulError

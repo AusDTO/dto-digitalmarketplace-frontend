@@ -22,7 +22,7 @@ class BusinessInfoForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed } = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed } = this.props;
         return (
             <Layout>
                 <header>
@@ -117,7 +117,7 @@ class BusinessInfoForm extends BaseForm {
 
 
                             <Control.checkbox
-                                model={`${model}.seller_type.start_up`}
+                                model={`${model}.seller_type.female_owned`}
                                 id="female-owned"
                                 name="female-owned"
                                 value="Female owned"
@@ -128,7 +128,7 @@ class BusinessInfoForm extends BaseForm {
 
 
                             <Control.checkbox
-                                model={`${model}.seller_type.start_up`}
+                                model={`${model}.seller_type.lgbtqi_owned`}
                                 id="lgbtqi-owned"
                                 name="lgbtqi-owned"
                                 value="LGBTQI owned"
