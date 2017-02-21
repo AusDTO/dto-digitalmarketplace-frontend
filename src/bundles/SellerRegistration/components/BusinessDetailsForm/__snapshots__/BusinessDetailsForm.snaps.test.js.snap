@@ -167,7 +167,7 @@ exports[`test BusinessDetailsForm renders 1`] = `
         <p
           className="hint"
           id="address_line-hint">
-          Principal place of business
+          Principal place of business.
         </p>
         <input
           aria-describedby="address_line-hint"
@@ -445,7 +445,7 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
         <p
           className="hint"
           id="address_line-hint">
-          Principal place of business
+          Principal place of business.
         </p>
         <input
           aria-describedby="address_line-hint"
