@@ -117,7 +117,7 @@ class BusinessInfoForm extends BaseForm {
 
 
                             <Control.checkbox
-                                model={`${model}.seller_type.start_up`}
+                                model={`${model}.seller_type.female_owned`}
                                 id="female-owned"
                                 name="female-owned"
                                 value="Female owned"
@@ -128,7 +128,7 @@ class BusinessInfoForm extends BaseForm {
 
 
                             <Control.checkbox
-                                model={`${model}.seller_type.start_up`}
+                                model={`${model}.seller_type.lgbtqi_owned`}
                                 id="lgbtqi-owned"
                                 name="lgbtqi-owned"
                                 value="LGBTQI owned"
