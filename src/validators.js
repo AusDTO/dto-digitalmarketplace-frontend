@@ -13,6 +13,12 @@ export const required = (val) => {
     return val.filter(v => v.trim()).length
   }
 
+    if (val !== null && typeof val === 'object') {
+        return Object.values(val).filter(function (v) {
+            return v
+        }).length;
+    }
+
   return val && val.trim().length;
 };
 

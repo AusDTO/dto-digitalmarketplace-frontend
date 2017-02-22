@@ -35,7 +35,7 @@ export class Catalogue extends React.Component {
               <article styleName="keyword-search">
                 <article className="col-xs-10">
                   <label htmlFor="keyword" className="visually-hidden">
-                    Search by company name, role you need or the outcome you’re after
+                    Search by company name, role you need or the outcome you are after
                   </label>
                   <Autocomplete
                     value={search.keyword || ''}

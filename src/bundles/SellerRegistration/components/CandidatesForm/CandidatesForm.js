@@ -48,7 +48,7 @@ class CandidatesForm extends BaseForm {
                         {domains.filter(d => services[d.label]).map((domain, i) => {
                             return (
                                 <div key={domain.label}>
-                                    <h4>{domain.label}</h4>
+                                    <h2>{domain.label}</h2>
                                     <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.database_size`}
                                         name={`${domain.label}-database_size`}

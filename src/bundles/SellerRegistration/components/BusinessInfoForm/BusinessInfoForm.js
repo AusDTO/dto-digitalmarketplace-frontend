@@ -90,7 +90,7 @@ class BusinessInfoForm extends BaseForm {
                                 value="Start Up"
                             />
                             <label htmlFor="start-up">Start-up
-                                <p>Your business aims to disrupt an established market using technology.It’s not listed
+                                <p>Your business aims to disrupt an established market using technology. It is not listed
                                     on any stock exchange and is less than 5 years old.</p>
                             </label>
                             <Control.checkbox
@@ -190,7 +190,7 @@ class BusinessInfoForm extends BaseForm {
                         </fieldset>
 
                         <fieldset>
-                            <legend>Have you worked with government before?</legend>
+                            <legend>Has your business worked with government before?</legend>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.no_experience`}

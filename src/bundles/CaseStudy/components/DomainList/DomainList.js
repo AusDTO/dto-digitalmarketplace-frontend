@@ -132,7 +132,7 @@ class DomainList extends BaseForm {
           <p>Case studies are important for showing you meet our
             <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>for any new
             services you wish to offer.</p>
-          <p> But they’re also much more. Think of them as the beginning of a
+          <p> But they are also much more. Think of them as the beginning of a
             conversation with hundreds of government buyers from all over Australia.
           </p>
           <ul>
