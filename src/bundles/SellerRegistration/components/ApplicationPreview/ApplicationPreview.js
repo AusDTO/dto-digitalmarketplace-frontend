@@ -18,12 +18,12 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
           to="/submit"
           role="button"
           onClick={(e) => onClick(e)}>
-          Save and continue
+          Continue to next step
         </Link>
         <Link to="/review">Go back and edit</Link>
       </div>
     </div>}
-    <ReviewHeader 
+    <ReviewHeader
       {...header}
     />
     <div className="row" styleName={body.public_profile ? 'styles.center' : ''}>
