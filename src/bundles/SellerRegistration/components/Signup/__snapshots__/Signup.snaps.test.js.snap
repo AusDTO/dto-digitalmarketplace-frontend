@@ -170,6 +170,15 @@ exports[`test Signup renders 1`] = `
         To become a registered seller and offer your services or software products to government you need to tell us about your business. 
       </p>
       <p>
+        By completing this application you are automatically responding to an open approach to market, whose terms and conditions, like other government tenders, are 
+        <a
+          href="http://tenders.gov.au"
+          rel="external"
+          target="_blank">
+          publicly available.
+        </a>
+      </p>
+      <p>
          The information you share will be used to create your seller profile. If you offer services it will also be used to confirm you meet the 
         <a
           href="/assessment-criteria"
@@ -177,13 +186,13 @@ exports[`test Signup renders 1`] = `
           target="_blank">
           assessment criteria
         </a>
-         when when you express interest in opportunities.
+         when you express interest in opportunities.
       </p>
       <p>
-         It may take more than one visit to complete this application. But don’t worry, your information will be saved automatically if you need to come back later.
+         It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
       </p>
       <h2>
-        You\'ll need
+        You will need
       </h2>
       <ul>
         <li>
@@ -197,7 +206,7 @@ exports[`test Signup renders 1`] = `
         </li>
       </ul>
       <h2>
-        You\'ll be asked to
+        You will be asked to
       </h2>
       <ul>
         <li>
@@ -208,19 +217,14 @@ exports[`test Signup renders 1`] = `
         </li>
         <li>
           Accept the Digital Marketplace Master Agreement
-          <br />
-          <a
-            href="agreement.pdf">
-            Download Digital Marketplace Master Agreement PDF
-          </a>
         </li>
       </ul>
-      The terms and conditions for this application are available in our 
       <a
-        href="http://tenders.gov.au">
-        open invitation to join the Digital Marketplace
+        href="agreement.pdf">
+        Download Digital Marketplace Master Agreement PDF
       </a>
-      .
+      <br />
+      <br />
       <p>
         <a
           href="#"
@@ -419,7 +423,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="contact_name">
-              Business contact
+              Business contact name
             </label>
             <p
               className="hint"
@@ -490,7 +494,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="representative">
-              Authorised representative
+              Authorised representative name
             </label>
             <p
               className="hint"
@@ -761,7 +765,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="contact_name">
-              Business contact
+              Business contact name
             </label>
             <p
               className="hint"
@@ -832,7 +836,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="representative">
-              Authorised representative
+              Authorised representative name
             </label>
             <p
               className="hint"

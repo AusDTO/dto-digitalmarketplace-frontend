@@ -20,7 +20,7 @@ exports[`test YourInfoForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="contact_name">
-          Business contact
+          Business contact name
         </label>
         <p
           className="hint"
@@ -91,7 +91,7 @@ exports[`test YourInfoForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="representative">
-          Authorised representative
+          Authorised representative name
         </label>
         <p
           className="hint"
@@ -193,7 +193,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="contact_name">
-          Business contact
+          Business contact name
         </label>
         <p
           className="hint"
@@ -264,7 +264,7 @@ exports[`test YourInfoForm renders with edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="representative">
-          Authorised representative
+          Authorised representative name
         </label>
         <p
           className="hint"
@@ -366,7 +366,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="contact_name">
-          Business contact
+          Business contact name
         </label>
         <p
           className="hint"
@@ -437,7 +437,7 @@ exports[`test YourInfoForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="representative">
-          Authorised representative
+          Authorised representative name
         </label>
         <p
           className="hint"

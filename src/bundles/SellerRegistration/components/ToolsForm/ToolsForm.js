@@ -27,9 +27,7 @@ class ToolsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Tools and methodologies</h1>
-                    <p>There’s lots of good reasons to share an insight into how you work.
-                        If it’s relevant to an assessment for a new area of expertise, we may take a look.
-                        Plus, it enriches your profile and gives buyers more ways to find you through keyword search. </p>
+                    <p>Enhance your profile and give buyers more ways to find you through keyword search</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -81,7 +79,7 @@ class ToolsForm extends BaseForm {
                             id="technologies"
                             controlProps={{limit: 200}}
                             label="Technologies (optional)"
-                            description="What technologies or programming languages do you typically use as part of your products and services?"
+                            description="What technologies or programming languages do you use?"
                             showMessagesDuringFocus={true}
                         />
                         {children}

@@ -63,8 +63,11 @@ class SubmitStepForm extends BaseForm {
         if (userIsAuthorised) {
             message = (
                 <div>
-                    <p>All you need to do now is review the content in the application and the Digital Marketplace Master Agreement to make sure you’re happy, then complete the declaration below.</p>
-                        <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a>
+                    <p>All you need to do now is:</p>
+                    <ol><li>Review your application and the Master Agreement</li>
+                        <li>Complete the declaration below</li>
+                    </ol>
+                    <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a><br/><br/>
 
                     <div style={agreementStyle}><p><strong>Master Agreement</strong> <br /><br /><strong>1.
                         Introduction and
@@ -709,7 +712,7 @@ class SubmitStepForm extends BaseForm {
                         model={`${model}.agreed_to_master_agreement`}
                         id="agree"
                         messages={{
-                            required: 'You must accept the Master Agreement and Terms of Use'
+                            required: 'You must accept the Master Agreement'
                         }}
                     />
                     <Control.checkbox
@@ -731,12 +734,6 @@ class SubmitStepForm extends BaseForm {
                 <div>
                     <p>Only the authorised representative, <strong>{representative}</strong>, can accept the Master Agreement terms on behalf of <strong>{name}</strong>.</p>
                     <p>Would you like us to send an email now to <strong>{email}</strong> so they can complete the last step?</p>
-                    To change the authorised representative, update your <Link
-                        to="/your-info"
-                        onClick={() => {
-                            actions.navigateToStep('/your-info');
-                        }}>contact details
-                    </Link>.
                 </div>
             )
         }
@@ -752,6 +749,11 @@ class SubmitStepForm extends BaseForm {
                       onSubmit={onSubmit}
                 >
                     <ErrorBox focusOnMount={true} model={model}/>
+                    {!applicationValid &&
+                    (<div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
+                        <h4 id="validation-masthead-heading">All steps must be completed before submitting</h4></div>)
+                    }
+
                     <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
                     { message }
                     {applicationValid

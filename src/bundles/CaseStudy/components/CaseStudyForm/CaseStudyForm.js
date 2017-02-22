@@ -65,7 +65,7 @@ class CaseStudyForm extends BaseForm {
             <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
             <p id="header-description">
               Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
-            And, you can update your case studies any time before an assessment begins.
+            You can update your case studies before an assessment begins.
             For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
             </p>
           </div>    

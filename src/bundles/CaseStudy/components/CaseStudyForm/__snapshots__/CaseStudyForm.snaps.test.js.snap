@@ -20,7 +20,7 @@ exports[`test CaseStudyForm renders 1`] = `
           target="_blank">
           assessment criteria
         </a>
-        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
@@ -1084,7 +1084,7 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           target="_blank">
           assessment criteria
         </a>
-        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
@@ -1540,7 +1540,7 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           target="_blank">
           assessment criteria
         </a>
-        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
@@ -2196,7 +2196,7 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           target="_blank">
           assessment criteria
         </a>
-        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
@@ -2653,7 +2653,7 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           target="_blank">
           assessment criteria
         </a>
-        . And, you can update your case studies any time before an assessment begins. For more about assessments see the 
+        . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
