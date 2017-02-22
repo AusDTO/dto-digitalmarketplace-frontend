@@ -44,7 +44,7 @@ class BusinessDetailsForm extends BaseForm {
         if (supplierCode) {
             title = 'Check your business details'
         }
-        
+
         return (
             <Layout>
                 <header>
@@ -87,7 +87,7 @@ class BusinessDetailsForm extends BaseForm {
                           label="ABN"
                           description={supplierCode ? "You need an Australian Business Number to do business in Australia." :
                               (<span>You need an Australian Business Number to do business in Australia.&nbsp;
-                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/'>Apply for an ABN here.</a>
+                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
                           </span>)}
                           disabled="disabled"
                           messages={{
@@ -185,7 +185,7 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required, limitNumbers: limitNumbers(4)}}
                         />
                         <div>
-                            {businessDetailsForm.addresses && 
+                            {businessDetailsForm.addresses &&
                                 Object.keys(businessDetailsForm.addresses)
                                     .filter((value) => {return value > 0;})
                                     .map((key, i) => {
@@ -198,8 +198,8 @@ class BusinessDetailsForm extends BaseForm {
                                         </div>
                                         <div className="col-xs-12 col-sm-2">
                                             <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
-                                        </div>  
-                                    </div>  
+                                        </div>
+                                    </div>
                                     <div className="row">
                                         <div className="col-xs-12 col-sm-10">
                                             <Textfield
@@ -249,8 +249,8 @@ class BusinessDetailsForm extends BaseForm {
                                                 validators={{required, limitNumbers: limitNumbers(4)}}
                                             />
                                         </div>
-                                    </div>        
-                                </div>    
+                                    </div>
+                                </div>
                               )
                             })}
                             {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&

@@ -60,7 +60,7 @@ const Start = ({supplierCode, signup, onClick}) => {
                     <li> Provide case studies and referees to support your application</li>
                     <li>Accept the Digital Marketplace Master Agreement</li>
                 </ul>
-                <a href="agreement.pdf">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
+                <a href="/static/media/documents/agreement.pdf">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
                 <p>
                     <a role="button" href={signup} onClick={onClick}>Start now </a>
                 </p>
