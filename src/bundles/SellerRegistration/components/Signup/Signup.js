@@ -147,7 +147,7 @@ class Signup extends React.Component {
 
   render() {
     const { forms, location, steps = {}, actions } = this.props;
-    const applicationValid = (this.filteredSteps.length - 1) <= Object.keys(steps).length;
+    const applicationValid = (this.filteredSteps.length - 1) <= Object.values(steps).filter(s => s == "complete").length;
     let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
