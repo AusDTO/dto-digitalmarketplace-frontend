@@ -64,7 +64,7 @@ class SubmitStepForm extends BaseForm {
             message = (
                 <div>
                     <p>All you need to do now is review the content in the application and the Digital Marketplace Master Agreement to make sure you’re happy, then complete the declaration below.</p>
-                        <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a>
+                        <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a><br/>
 
                     <div style={agreementStyle}><p><strong>Master Agreement</strong> <br /><br /><strong>1.
                         Introduction and
@@ -709,7 +709,7 @@ class SubmitStepForm extends BaseForm {
                         model={`${model}.agreed_to_master_agreement`}
                         id="agree"
                         messages={{
-                            required: 'You must accept the Master Agreement and Terms of Use'
+                            required: 'You must accept the Master Agreement'
                         }}
                     />
                     <Control.checkbox
