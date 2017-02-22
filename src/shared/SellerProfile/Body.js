@@ -66,7 +66,7 @@ const Body = (props) => {
         )}
 
         <p>
-          <a href="">Learn about assessments</a>
+          <a href="/assessment-criteria">Learn about assessments</a>
         </p>
 
       </Row>
