@@ -234,7 +234,6 @@ test.skip('without filterSteps', () => {
   const DisclosuresForm = require('../../../SellerRegistration/components/DisclosuresForm').default;
   const Review = require('../../../SellerRegistration/components/Review').default;
   const SubmitStepForm = require('../../../SellerRegistration/components/Submit').default;
-  const Finish = require('../../../SellerRegistration/components/Finish').default;
   const FinishProfile = require('../../../SellerRegistration/components/FinishProfile').default;
   const ProductsForm = require('../../../SellerRegistration/components/ProductsForm').default;
 

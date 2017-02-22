@@ -26,7 +26,6 @@ import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../Review';
 import SubmitStepForm       from '../Submit';
-import Finish               from '../Finish';
 import FinishProfile        from '../FinishProfile';
 import ProductsForm         from '../ProductsForm';
 import RecruiterForm        from '../RecruiterForm';
@@ -42,22 +41,9 @@ class Signup extends React.Component {
     // Use same pattern, so the URL can be consistent
     // Just different messaging/actions.
     const { options = {}, filterSteps } = props;
-    if (options.submit_registration) {
-      this.steps = this.steps.concat({
-        id: 'submit',
-        label: 'Declaration',
-        component: SubmitStepForm,
-        formKey: 'submitStepForm',
-        pattern: '/submit'
-      });
-    } else {
-      this.steps = this.steps.concat({
-        id: 'finish',
-        label: 'Finish',
-        component: Finish,
-        pattern: '/submit'
-      });
-    }
+
+      this.steps = this.steps.concat();
+
 
     if (filterSteps) {
       this.steps = this.steps.filter(filterSteps);
@@ -82,6 +68,7 @@ class Signup extends React.Component {
     { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
     { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
+    { id: 'submit', label: 'Declaration', component: SubmitStepForm, formKey: 'submitStepForm', pattern: '/submit' }
   ]
 
   filteredSteps = [];
