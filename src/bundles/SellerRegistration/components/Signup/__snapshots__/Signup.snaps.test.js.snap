@@ -189,10 +189,10 @@ exports[`test Signup renders 1`] = `
          when you express interest in opportunities.
       </p>
       <p>
-         It may take more than one visit to complete this application. But don’t worry, your information will be saved automatically if you need to come back later.
+         It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
       </p>
       <h2>
-        You\'ll need
+        You will need
       </h2>
       <ul>
         <li>
@@ -206,7 +206,7 @@ exports[`test Signup renders 1`] = `
         </li>
       </ul>
       <h2>
-        You\'ll be asked to
+        You will be asked to
       </h2>
       <ul>
         <li>
@@ -217,13 +217,14 @@ exports[`test Signup renders 1`] = `
         </li>
         <li>
           Accept the Digital Marketplace Master Agreement
-          <br />
-          <a
-            href="agreement.pdf">
-            Download Digital Marketplace Master Agreement PDF
-          </a>
         </li>
       </ul>
+      <a
+        href="agreement.pdf">
+        Download Digital Marketplace Master Agreement PDF
+      </a>
+      <br />
+      <br />
       <p>
         <a
           href="#"
@@ -422,7 +423,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="contact_name">
-              Business contact
+              Business contact name
             </label>
             <p
               className="hint"
@@ -493,7 +494,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="representative">
-              Authorised representative
+              Authorised representative name
             </label>
             <p
               className="hint"
@@ -764,7 +765,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="contact_name">
-              Business contact
+              Business contact name
             </label>
             <p
               className="hint"
@@ -835,7 +836,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <label
               className="question-heading"
               htmlFor="representative">
-              Authorised representative
+              Authorised representative name
             </label>
             <p
               className="hint"

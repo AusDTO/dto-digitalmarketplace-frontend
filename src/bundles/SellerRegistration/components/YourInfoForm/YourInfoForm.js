@@ -52,7 +52,7 @@ class YourInfoForm extends BaseForm {
                   name="contact_name"
                   id="contact_name"
                   htmlFor="contact_name"
-                  label="Business contact"
+                  label="Business contact name"
                   description="The contact listed on your seller profile page and the person who receives new opportunities by email."
                   validators={{ required }}
                   messages={{
@@ -94,7 +94,7 @@ class YourInfoForm extends BaseForm {
                   name="representative"
                   id="representative"
                   htmlFor="representative"
-                  label="Authorised representative"
+                  label="Authorised representative name"
                   description="This is the person authorised to enter into contracts on behalf of the business. "
                   validators={{ required }}
                   messages={{

@@ -13,8 +13,8 @@ const ApplicationPreview = ({ header, body, privateInfo, onClick }) => (
       {onClick && <div className="row">
       <div className="callout--calendar-event col-sm-8 col-xs-12">
         <h3>Preview your profile</h3>
-        <p>Buyers will see your business information previewed below. If the information is correct, continue to the final step to submit your application or continue editing.</p>
-        <Link
+          <p>Buyers will see the information below when they visit your seller profile. If correct, continue to the legal disclosures and agreement.</p>
+          <Link
           to="/submit"
           role="button"
           onClick={(e) => onClick(e)}>

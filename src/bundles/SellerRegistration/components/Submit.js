@@ -63,8 +63,11 @@ class SubmitStepForm extends BaseForm {
         if (userIsAuthorised) {
             message = (
                 <div>
-                    <p>All you need to do now is review the content in the application and the Digital Marketplace Master Agreement to make sure you’re happy, then complete the declaration below.</p>
-                        <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a><br/>
+                    <p>All you need to do now is:</p>
+                    <ol><li>Review your application and the Master Agreement</li>
+                        <li>Complete the declaration below</li>
+                    </ol>
+                    <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a><br/><br/>
 
                     <div style={agreementStyle}><p><strong>Master Agreement</strong> <br /><br /><strong>1.
                         Introduction and
@@ -731,12 +734,6 @@ class SubmitStepForm extends BaseForm {
                 <div>
                     <p>Only the authorised representative, <strong>{representative}</strong>, can accept the Master Agreement terms on behalf of <strong>{name}</strong>.</p>
                     <p>Would you like us to send an email now to <strong>{email}</strong> so they can complete the last step?</p>
-                    To change the authorised representative, update your <Link
-                        to="/your-info"
-                        onClick={() => {
-                            actions.navigateToStep('/your-info');
-                        }}>contact details
-                    </Link>.
                 </div>
             )
         }

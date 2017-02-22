@@ -7,7 +7,15 @@ exports[`test DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and referee. We’ll use these to ensure you meet our 
+       If you only have software products to offer, 
+      <a
+        href="/products"
+        onClick={[Function]}>
+        skip to the product section.
+      </a>
+    </p>
+    <p>
+      Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -15,11 +23,6 @@ exports[`test DomainSelector renders 1`] = `
         assessment criteria
       </a>
     </p>
-    <a
-      href="/products"
-      onClick={[Function]}>
-      If you only have software products to offer, skip to the product section.
-    </a>
   </header>
   <article
     role="main">
@@ -286,7 +289,15 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       What services will you offer?
     </h1>
     <p>
-      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and referee. We’ll use these to ensure you meet our 
+       If you only have software products to offer, 
+      <a
+        href="/products"
+        onClick={[Function]}>
+        skip to the product section.
+      </a>
+    </p>
+    <p>
+      Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
@@ -294,11 +305,6 @@ exports[`test DomainSelector renders with populated fields 1`] = `
         assessment criteria
       </a>
     </p>
-    <a
-      href="/products"
-      onClick={[Function]}>
-      If you only have software products to offer, skip to the product section.
-    </a>
   </header>
   <article
     role="main">

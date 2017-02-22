@@ -104,17 +104,13 @@ class DocumentsForm extends BaseForm {
 
     render() {
         const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText} = this.props;
-        let intro = 'Please share the following documents for assessment. They’re not published on your seller profile but buyers may request them from us when considering awarding a contract. ';
-        if (sellerCode) {
-            intro = 'It’s been almost a year now since you shared these documents with us. So please share more recent copies for our records, and for buyers on request.  '
-        }
 
         return (
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Upload your documents</h1>
-                    <p>{intro}
-                        Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG </strong>
+                    <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
+                     <p>   Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG </strong>
                         format.If you have multiple files for a document, please scan and merge as one upload.
                     </p>
                 </header>
@@ -204,7 +200,7 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-                        <p>Your insurance needs to be up to date. We’ll send a reminder when your cover is close to expiry.</p>
+
                         <input type="submit" value={buttonText} role="button"/>
                     </Form>
                 </article>

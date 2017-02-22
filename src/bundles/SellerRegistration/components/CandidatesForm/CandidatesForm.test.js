@@ -23,6 +23,6 @@ test('Candidates form displays list of domains', () => {
       </Provider>
     </StaticRouter>
   )
-  let inputs = wrapper.find('h4');
+  let inputs = wrapper.find('h2');
   expect(inputs.length).toBe(2);
 });

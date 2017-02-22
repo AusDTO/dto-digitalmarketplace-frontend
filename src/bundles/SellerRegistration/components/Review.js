@@ -11,9 +11,8 @@ const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
         <Route path={match.url} exact render={() => (
             <div>
                 <h1 tabIndex="-1">Preview your new profile</h1>
-                {supplierCode ? (<span><p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Digital Marketplace.</p>
-                    <p>Once you’re happy we can email a link to this application to your authorised representative so they can complete the legal agreement step.</p></span>)
-                :(<span><p>Take a moment to preview your new seller profile. This what government buyers (and assessors, if you’re offering new services) will see in the Digital Marketplace.</p>
+                {supplierCode ? (<span><p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Digital Marketplace.</p></span>)
+                :(<span><p>Take a moment to preview your new seller profile. This what government buyers (and assessors, if you are offering new services) will see in the Digital Marketplace.</p>
                         <p>If the information is correct, you can continue to the legal disclosures and agreement.</p></span>) }
 
                 <p>
