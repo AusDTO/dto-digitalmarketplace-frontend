@@ -243,7 +243,7 @@ exports[`Signup renders 1`] = `
         </li>
       </ul>
       <a
-        href="/static/media/documents/agreement.pdf"
+        href="/static/media/documents/digital-marketplace-master-agreement.pdf"
       >
         Download Digital Marketplace Master Agreement PDF
       </a>
