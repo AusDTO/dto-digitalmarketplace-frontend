@@ -7,7 +7,9 @@ import Layout from '../../../../shared/Layout';
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
+import StatefulError from '../../../../shared/form/StatefulError';
 import CheckboxDetailsField  from '../../../../shared/form/CheckboxDetailsField';
+import {required} from '../../../../validators';
 
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
@@ -45,11 +47,22 @@ class BusinessInfoForm extends BaseForm {
 
                         <fieldset>
                             <legend>Number of employees</legend>
+
+                            <StatefulError
+                                model={`${model}.number_of_employees`}
+                                id="sole"
+                                messages={{
+                                    required: 'You must provide number of employees'
+                                }}
+                            />
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="sole"
-                                value="Sole trader"/>
+                                value="Sole trader"
+                                validators={{
+                                    required
+                                }}/>
                             <label htmlFor="sole">Sole trader
 
                             </label>
@@ -58,7 +71,10 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="2to19"
-                                value="2-19"/>
+                                value="2-19"
+                                validators={{
+                                    required
+                                }}/>
                             <label htmlFor="2to19">2-19
 
                             </label>
@@ -67,7 +83,10 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="20to199"
-                                value="20-199"/>
+                                value="20-199"
+                                validators={{
+                                    required
+                                }}/>
                             <label htmlFor="20to199">20-199
 
                             </label>
@@ -76,7 +95,10 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
                                 id="200plus"
-                                value="200+"/>
+                                value="200+"
+                                validators={{
+                                    required
+                                }}/>
                             <label htmlFor="200plus">200+
 
                             </label>
@@ -195,9 +217,9 @@ class BusinessInfoForm extends BaseForm {
                             <Control.checkbox
                                 model={`${model}.government_experience.no_experience`}
                                 name="no_experience"
-                                id="experience"
-                                value="experience"/>
-                            <label htmlFor="experience">No, we're looking forward to working with government for the
+                                id="no_experience"
+                                value="no_experience"/>
+                            <label htmlFor="no_experience">No, we're looking forward to working with government for the
                                 first time</label>
 
                             <Control.checkbox
