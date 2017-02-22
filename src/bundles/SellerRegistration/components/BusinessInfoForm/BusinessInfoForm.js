@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Form, Control } from 'react-redux-form';
+import {Form, Control} from 'react-redux-form';
 
 import Layout from '../../../../shared/Layout';
 
@@ -22,7 +22,7 @@ class BusinessInfoForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed } = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed} = this.props;
         return (
             <Layout>
                 <header>
@@ -82,29 +82,7 @@ class BusinessInfoForm extends BaseForm {
                             </label>
                         </fieldset>
                         <fieldset>
-                            <legend>Choose if you’d like to give buyers more insight into your business</legend>
-                                <p>Buyers have told us they sometimes look for sellers that have specific characteristics, whether through size or the people who make up the organisation. This is optional, so it’s up to you whether you’d like to share this information. </p>
-
-                            <CheckboxDetailsField
-                                model={`${model}.seller_type.indigenous`}
-                                label={(<span>Indigenous <p>Your business is at least 50% Indigenous owned and listed on Supply Nation.</p></span>)}
-                                detailsLabel="Please add your Supply Nation certification number"
-                                detailsModel={`${model}.supply_nation`}
-                                id="indigenous"
-                                name="indigenous"
-                                value="Indigenous"
-                            />
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.disability`}
-                                id="disability"
-                                name="disability"
-                                value="Disability"
-                            />
-                            <label htmlFor="disability">Australian disability enterprise
-                                <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory" rel="external">Australian disability enterprise register</a>.</p>
-                            </label>
-
+                            <legend>Business identifiers (optional)</legend>
                             <Control.checkbox
                                 model={`${model}.seller_type.start_up`}
                                 id="start-up"
@@ -112,7 +90,67 @@ class BusinessInfoForm extends BaseForm {
                                 value="Start Up"
                             />
                             <label htmlFor="start-up">Start-up
-                                <p>Your business aims to disrupt an established market using technology.It’s not listed on any stock exchange and is less than 5 years old.</p>
+                                <p>Your business aims to disrupt an established market using technology.It’s not listed
+                                    on any stock exchange and is less than 5 years old.</p>
+                            </label>
+                            <Control.checkbox
+                                model={`${model}.seller_type.sme`}
+                                id="sme"
+                                name="sme"
+                                value="SME"
+                            />
+                            <label htmlFor="sme">Small to medium-sized enterprise (SME)
+                                <p>You have less than 200 employees and are independent of any parent organisation for
+                                    taxation purposes.</p>
+                            </label>
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.nfp_social_enterprise`}
+                                id="nfp-social-enterprise"
+                                name="nfp-social-enterprise"
+                                value="Not-for-profit / social enterprise"
+                            />
+                            <label htmlFor="nfp-social-enterprise">Not-for-profit / social enterprise
+                                <p>An organisation that applies commercial strategies to maximize improvements in human
+                                    or environmental wellbeing and reinvests profit to fulfil its mission.</p>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Location (optional)</legend>
+
+
+                            <Control.checkbox
+                                model={`${model}.seller_type.regional`}
+                                id="regional"
+                                name="regional"
+                                value="Regional"
+                            />
+                            <label htmlFor="regional">
+                                Regional or non-metropolitan business
+                            </label>
+                            <Control.checkbox
+                                model={`${model}.travel`}
+                                id="travel"
+                                name="travel"
+                            />
+                            <label htmlFor="travel">
+                                Happy to travel for regional or interstate opportunities
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Diversity and inclusion (optional)</legend>
+                            <p>The Marketplace is committed to providing a diverse and inclusive environment.<br/>
+                                Responses are optional and for demographic purposes only.</p>
+                            <Control.checkbox
+                                model={`${model}.seller_type.disability`}
+                                id="disability"
+                                name="disability"
+                                value="Disability"
+                            />
+                            <label htmlFor="disability">Australian disability enterprise
+                                <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory"
+                                                                     rel="external" target="_blank">Australian
+                                    disability enterprise register</a>.</p>
                             </label>
 
 
@@ -137,48 +175,30 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business identifies as a LGBTQI enterprise. </p>
                             </label>
 
-                            <Control.checkbox
-                                model={`${model}.seller_type.sme`}
-                                id="sme"
-                                name="sme"
-                                value="SME"
+                            <CheckboxDetailsField
+                                model={`${model}.seller_type.indigenous`}
+                                label={(
+                                    <span>Indigenous <p>Your business is at least 50% Indigenous owned and listed on <a
+                                        href="http://www.supplynation.org.au/search" rel="external" target="_blank">Supply Nation.</a></p></span>)}
+                                detailsLabel="Please add your Supply Nation certification number"
+                                detailsModel={`${model}.supply_nation`}
+                                id="indigenous"
+                                name="indigenous"
+                                value="Indigenous"
                             />
-                            <label htmlFor="sme">Small to medium-sized enterprise (SME)
-                                <p>You have less than 200 employees and are independent of any parent organisation for taxation purposes.</p>
-                            </label>
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.nfp_social_enterprise`}
-                                id="nfp-social-enterprise"
-                                name="nfp-social-enterprise"
-                                value="Not-for-profit / social enterprise"
-                            />
-                            <label htmlFor="nfp-social-enterprise">Not-for-profit / social enterprise
-                                <p>An organisation that applies commercial strategies to maximize improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.</p>
-                            </label>
-
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.regional`}
-                                id="regional"
-                                name="regional"
-                                value="Regional"
-                            />
-                            <label htmlFor="regional">
-                                Regional or non-metropolitan based business
-                            </label>
 
                         </fieldset>
 
                         <fieldset>
-                            <legend>Have you ever worked with government before? Choose one or more.</legend>
+                            <legend>Have you worked with government before?</legend>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.no_experience`}
                                 name="no_experience"
                                 id="experience"
                                 value="experience"/>
-                            <label htmlFor="experience">No, we're looking forward to working with government for the first time</label>
+                            <label htmlFor="experience">No, we're looking forward to working with government for the
+                                first time</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.local`}
@@ -209,17 +229,8 @@ class BusinessInfoForm extends BaseForm {
                             <label htmlFor="international">Yes, with government outside Australia</label>
 
                         </fieldset>
-                        
-                        <legend>Travel arrangements</legend>
-                        <Control.checkbox
-                          model={`${model}.travel`}
-                          id="travel"
-                          name="travel"
-                        />
-                        <label htmlFor="travel">
-                            Happy to travel for regional or interstate opportunities
-                        </label>
-                        
+
+
                         {children}
 
                         <input type="submit" value="Save and continue" role="button"/>
@@ -231,7 +242,7 @@ class BusinessInfoForm extends BaseForm {
 }
 
 BusinessInfoForm.defaultProps = {
-  title: 'More about your business'
+    title: 'More about your business'
 }
 
 const mapStateToProps = (state, ownProps) => {
