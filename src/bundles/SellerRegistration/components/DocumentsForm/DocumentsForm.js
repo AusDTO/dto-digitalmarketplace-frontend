@@ -103,7 +103,7 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, sellerCode, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText} = this.props;
+        const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText} = this.props;
 
         return (
             <Layout>
