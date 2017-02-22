@@ -1,30 +1,39 @@
-exports[`test BusinessDetailsForm renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BusinessDetailsForm renders 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <h1
-      tabIndex="-1">
+      tabIndex="-1"
+    >
       Tell us about your business
     </h1>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action={undefined}
       id="BusinessDetails__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="name">
+          htmlFor="name"
+        >
           Business name
         </label>
         <p
           className="hint"
-          id="name-hint">
+          id="name-hint"
+        >
           As you would like it shown on the Digital Marketplace.
         </p>
         <input
@@ -40,22 +49,29 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="abn">
+          htmlFor="abn"
+        >
           ABN
         </label>
         <p
           className="hint"
-          id="abn-hint">
+          id="abn-hint"
+        >
           <span>
             You need an Australian Business Number to do business in Australia. 
             <a
-              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/">
+              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/"
+              rel="external"
+              target="_blank"
+            >
               Apply for an ABN here.
             </a>
           </span>
@@ -73,18 +89,22 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="summary">
+          htmlFor="summary"
+        >
           Summary
         </label>
         <p
           className="hint"
-          id="summary-hint">
+          id="summary-hint"
+        >
           3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
         </p>
         <div>
@@ -96,23 +116,28 @@ exports[`test BusinessDetailsForm renders 1`] = `
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             50 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="website">
+          htmlFor="website"
+        >
           Website URL
         </label>
         <p
           className="hint"
-          id="website-hint">
+          id="website-hint"
+        >
           Provide a link to your website beginning with http
         </p>
         <input
@@ -128,18 +153,22 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="linkedin">
+          htmlFor="linkedin"
+        >
           LinkedIn URL (optional)
         </label>
         <p
           className="hint"
-          id="linkedin-hint">
+          id="linkedin-hint"
+        >
           Provide a LinkedIn URL beginning with http
         </p>
         <input
@@ -155,18 +184,22 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="address_line">
+          htmlFor="address_line"
+        >
           Primary Address
         </label>
         <p
           className="hint"
-          id="address_line-hint">
+          id="address_line-hint"
+        >
           Principal place of business.
         </p>
         <input
@@ -182,13 +215,16 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="suburb">
+          htmlFor="suburb"
+        >
           Suburb
         </label>
         <input
@@ -204,13 +240,16 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="state">
+          htmlFor="state"
+        >
           State
         </label>
         <input
@@ -226,13 +265,16 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="postal_code">
+          htmlFor="postal_code"
+        >
           Postcode
         </label>
         <input
@@ -248,61 +290,73 @@ exports[`test BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <p
-          styleName="footer">
+          styleName="footer"
+        >
           More offices?
         </p>
         <button
           className="button-secondary"
           onClick={[Function]}
-          type="submit">
+          type="submit"
+        >
           Add another address
         </button>
       </div>
       <input
         role="button"
         type="submit"
-        value="Update profile" />
+        value="Update profile"
+      />
     </form>
   </article>
 </div>
 `;
 
-exports[`test BusinessDetailsForm renders with form_options 1`] = `
+exports[`BusinessDetailsForm renders with form_options 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <h1
-      tabIndex="-1">
+      tabIndex="-1"
+    >
       Tell us about your business
     </h1>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action="/foo/bar"
       id="BusinessDetails__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="sometoken" />
+        value="sometoken"
+      />
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="name">
+          htmlFor="name"
+        >
           Business name
         </label>
         <p
           className="hint"
-          id="name-hint">
+          id="name-hint"
+        >
           As you would like it shown on the Digital Marketplace.
         </p>
         <input
@@ -318,22 +372,29 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="abn">
+          htmlFor="abn"
+        >
           ABN
         </label>
         <p
           className="hint"
-          id="abn-hint">
+          id="abn-hint"
+        >
           <span>
             You need an Australian Business Number to do business in Australia. 
             <a
-              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/">
+              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/"
+              rel="external"
+              target="_blank"
+            >
               Apply for an ABN here.
             </a>
           </span>
@@ -351,18 +412,22 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="summary">
+          htmlFor="summary"
+        >
           Summary
         </label>
         <p
           className="hint"
-          id="summary-hint">
+          id="summary-hint"
+        >
           3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
         </p>
         <div>
@@ -374,23 +439,28 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             50 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="website">
+          htmlFor="website"
+        >
           Website URL
         </label>
         <p
           className="hint"
-          id="website-hint">
+          id="website-hint"
+        >
           Provide a link to your website beginning with http
         </p>
         <input
@@ -406,18 +476,22 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="linkedin">
+          htmlFor="linkedin"
+        >
           LinkedIn URL (optional)
         </label>
         <p
           className="hint"
-          id="linkedin-hint">
+          id="linkedin-hint"
+        >
           Provide a LinkedIn URL beginning with http
         </p>
         <input
@@ -433,18 +507,22 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="address_line">
+          htmlFor="address_line"
+        >
           Primary Address
         </label>
         <p
           className="hint"
-          id="address_line-hint">
+          id="address_line-hint"
+        >
           Principal place of business.
         </p>
         <input
@@ -460,13 +538,16 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="suburb">
+          htmlFor="suburb"
+        >
           Suburb
         </label>
         <input
@@ -482,13 +563,16 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="state">
+          htmlFor="state"
+        >
           State
         </label>
         <input
@@ -504,13 +588,16 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="postal_code">
+          htmlFor="postal_code"
+        >
           Postcode
         </label>
         <input
@@ -526,405 +613,28 @@ exports[`test BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <p
-          styleName="footer">
+          styleName="footer"
+        >
           More offices?
         </p>
         <button
           className="button-secondary"
           onClick={[Function]}
-          type="submit">
+          type="submit"
+        >
           Add another address
         </button>
       </div>
       <input
         role="button"
         type="submit"
-        value="Update profile" />
-    </form>
-  </article>
-</div>
-`;
-
-exports[`test BusinessDetailsForm renders with populated fields 1`] = `
-<div
-  className="layout">
-  <header>
-    <h1
-      tabIndex="-1">
-      Tell us about your business
-    </h1>
-  </header>
-  <article
-    role="main">
-    <div
-      aria-describedby="validation-masthead-heading"
-      className="callout--warning"
-      role="alert"
-      tabIndex="-1">
-      <h4
-        id="validation-masthead-heading">
-        There was a problem with the details you gave
-      </h4>
-      <ul>
-        <li>
-          <a
-            href="#abn">
-            ABN is required and must match a valid ABN as listed on the Australian Business Register
-          </a>
-        </li>
-        <li>
-          <a
-            href="#summary">
-            You must provide a seller summary
-          </a>
-        </li>
-        <li>
-          <a
-            href="#linkedin">
-            Links provided must begin with http
-          </a>
-        </li>
-        <li>
-          <a
-            href="#address_line">
-            You must provide an address
-          </a>
-        </li>
-        <li>
-          <a
-            href="#postal_code">
-            You must provide a postal code. 
-          </a>
-        </li>
-        <li>
-          <a
-            href="#postal_code">
-            Postal codes must be four digits long and only numbers.
-          </a>
-        </li>
-      </ul>
-    </div>
-    <form
-      action={undefined}
-      id="BusinessDetails__create"
-      method="post"
-      onReset={[Function]}
-      onSubmit={[Function]}>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="name">
-          Business name
-        </label>
-        <p
-          className="hint"
-          id="name-hint">
-          As you would like it shown on the Digital Marketplace.
-        </p>
-        <input
-          aria-describedby="name-hint"
-          className=""
-          disabled={false}
-          id="name"
-          maxLength={undefined}
-          name="name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="SupCo Pty. Ltd." />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="abn">
-          ABN
-        </label>
-        <p
-          className="hint"
-          id="abn-hint">
-          <span>
-            You need an Australian Business Number to do business in Australia. 
-            <a
-              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/">
-              Apply for an ABN here.
-            </a>
-          </span>
-        </p>
-        <a
-          className="validation-message"
-          href="#abn">
-          <span
-            className="visuallyhidden">
-            Validation Error: 
-          </span>
-          <span>
-            ABN is required and must match a valid ABN as listed on the Australian Business Register
-          </span>
-        </a>
-        <input
-          aria-describedby="abn-hint"
-          className="invalid"
-          disabled={false}
-          id="abn"
-          maxLength={undefined}
-          name="abn"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="summary">
-          Summary
-        </label>
-        <p
-          className="hint"
-          id="summary-hint">
-          3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
-        </p>
-        <a
-          className="validation-message"
-          href="#summary">
-          <span
-            className="visuallyhidden">
-            Validation Error: 
-          </span>
-          <span>
-            You must provide a seller summary
-          </span>
-        </a>
-        <div>
-          <textarea
-            aria-describedby="summary-hint"
-            className="invalid under-50"
-            defaultValue=""
-            id="summary"
-            name="summary"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]} />
-          <span
-            className="word-count-counter">
-            50 words remaining
-          </span>
-        </div>
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="website">
-          Website URL
-        </label>
-        <p
-          className="hint"
-          id="website-hint">
-          Provide a link to your website beginning with http
-        </p>
-        <input
-          aria-describedby="website-hint"
-          className=""
-          disabled={false}
-          id="website"
-          maxLength={undefined}
-          name="website"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="www.com" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="linkedin">
-          LinkedIn URL (optional)
-        </label>
-        <p
-          className="hint"
-          id="linkedin-hint">
-          Provide a LinkedIn URL beginning with http
-        </p>
-        <a
-          className="validation-message"
-          href="#linkedin">
-          <span
-            className="visuallyhidden">
-            Validation Error: 
-          </span>
-          <span>
-            Links provided must begin with http
-          </span>
-        </a>
-        <input
-          aria-describedby="linkedin-hint"
-          className="invalid"
-          disabled={false}
-          id="linkedin"
-          maxLength={undefined}
-          name="linkedin"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="www.linked.in" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="address_line">
-          Address
-        </label>
-        <p
-          className="hint"
-          id="address_line-hint">
-          Principal place of business
-        </p>
-        <a
-          className="validation-message"
-          href="#address_line">
-          <span
-            className="visuallyhidden">
-            Validation Error: 
-          </span>
-          <span>
-            You must provide an address
-          </span>
-        </a>
-        <input
-          aria-describedby="address_line-hint"
-          className="invalid"
-          disabled={false}
-          id="address_line"
-          maxLength={undefined}
-          name="address.address_line"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="suburb">
-          Suburb
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          disabled={false}
-          id="suburb"
-          maxLength={undefined}
-          name="address.suburb"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="Surry Hills" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="state">
-          State
-        </label>
-        <input
-          aria-describedby={undefined}
-          className=""
-          disabled={false}
-          id="state"
-          maxLength={undefined}
-          name="address.state"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="NSW" />
-      </div>
-      <div
-        className="field">
-        <label
-          className="question-heading"
-          htmlFor="postal_code">
-          Postcode
-        </label>
-        <a
-          className="validation-message"
-          href="#postal_code">
-          <span
-            className="visuallyhidden">
-            Validation Error: 
-          </span>
-          <span>
-            You must provide a postal code. 
-          </span>
-          <span>
-            Postal codes must be four digits long and only numbers.
-          </span>
-        </a>
-        <input
-          aria-describedby={undefined}
-          className="invalid"
-          disabled={false}
-          id="postal_code"
-          maxLength="4"
-          name="address.postal_code"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          type="text"
-          value="" />
-      </div>
-      <input
-        checked={false}
-        disabled={false}
-        id="travel"
-        name="travel"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onKeyPress={[Function]}
-        type="checkbox" />
-      <label
-        htmlFor="travel">
-        Happy to travel for regional or interstate opportunities
-      </label>
-      <input
-        role="button"
-        type="submit"
-        value="Update profile" />
+        value="Update profile"
+      />
     </form>
   </article>
 </div>

@@ -1,27 +1,34 @@
-exports[`test Signup renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup renders 1`] = `
 <div
-  className="row">
+  className="row"
+>
   <aside
     className="col-xs-12 col-sm-3"
-    id="main-navigation">
+    id="main-navigation"
+  >
     <button
       aria-controls="local-nav"
       aria-expanded={false}
       className="local-nav-toggle"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Menu
     </button>
     <nav
       aria-expanded={false}
       aria-label="main navigation"
       className="local-nav step-navigation"
-      open={false}>
+      open={false}
+    >
       <ul>
         <li>
           <a
             className="is-active is-current"
             href="/start"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Introduction
             </span>
@@ -31,7 +38,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/business-details"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Business basics
             </span>
@@ -41,7 +49,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/business-info"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Business details
             </span>
@@ -51,7 +60,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/your-info"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Contacts
             </span>
@@ -61,7 +71,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/documents"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Documents
             </span>
@@ -71,7 +82,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/tools"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Methods
             </span>
@@ -81,7 +93,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/awards"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Recognition
             </span>
@@ -91,7 +104,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/recruiter"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Recruiter
             </span>
@@ -101,7 +115,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/domains"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Services
             </span>
@@ -111,7 +126,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/case-study"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Case studies
             </span>
@@ -121,7 +137,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/products"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Products
             </span>
@@ -131,7 +148,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/review"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Preview profile
             </span>
@@ -141,7 +159,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/disclosures"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Disclosures
             </span>
@@ -151,7 +170,8 @@ exports[`test Signup renders 1`] = `
           <a
             className=""
             href="/submit"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Declaration
             </span>
@@ -161,7 +181,8 @@ exports[`test Signup renders 1`] = `
     </nav>
   </aside>
   <article
-    className="col-xs-12 col-sm-8 col-sm-push-1">
+    className="col-xs-12 col-sm-8 col-sm-push-1"
+  >
     <div>
       <h1>
         Joining the Digital Marketplace
@@ -174,7 +195,8 @@ exports[`test Signup renders 1`] = `
         <a
           href="http://tenders.gov.au"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           publicly available.
         </a>
       </p>
@@ -183,7 +205,8 @@ exports[`test Signup renders 1`] = `
         <a
           href="/assessment-criteria"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           assessment criteria
         </a>
          when you express interest in opportunities.
@@ -220,7 +243,8 @@ exports[`test Signup renders 1`] = `
         </li>
       </ul>
       <a
-        href="agreement.pdf">
+        href="/static/media/documents/agreement.pdf"
+      >
         Download Digital Marketplace Master Agreement PDF
       </a>
       <br />
@@ -229,7 +253,8 @@ exports[`test Signup renders 1`] = `
         <a
           href="#"
           onClick={[Function]}
-          role="button">
+          role="button"
+        >
           Start now 
         </a>
       </p>
@@ -238,30 +263,35 @@ exports[`test Signup renders 1`] = `
 </div>
 `;
 
-exports[`test Signup renders empty Your Info form 1`] = `
+exports[`Signup renders empty Your Info form 1`] = `
 <div
-  className="row">
+  className="row"
+>
   <aside
     className="col-xs-12 col-sm-3"
-    id="main-navigation">
+    id="main-navigation"
+  >
     <button
       aria-controls="local-nav"
       aria-expanded={false}
       className="local-nav-toggle"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Menu
     </button>
     <nav
       aria-expanded={false}
       aria-label="main navigation"
       className="local-nav step-navigation"
-      open={false}>
+      open={false}
+    >
       <ul>
         <li>
           <a
             className=""
             href="/start"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Introduction
             </span>
@@ -271,7 +301,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/business-details"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Business basics
             </span>
@@ -281,7 +312,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/business-info"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Business details
             </span>
@@ -291,7 +323,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className="is-active is-current"
             href="/your-info"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Contacts
             </span>
@@ -301,7 +334,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/documents"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Documents
             </span>
@@ -311,7 +345,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/tools"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Methods
             </span>
@@ -321,7 +356,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/awards"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Recognition
             </span>
@@ -331,7 +367,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/recruiter"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Recruiter
             </span>
@@ -341,7 +378,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/domains"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Services
             </span>
@@ -351,7 +389,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/case-study"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Case studies
             </span>
@@ -361,7 +400,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/products"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Products
             </span>
@@ -371,7 +411,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/review"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Preview profile
             </span>
@@ -381,7 +422,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/disclosures"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Disclosures
             </span>
@@ -391,7 +433,8 @@ exports[`test Signup renders empty Your Info form 1`] = `
           <a
             className=""
             href="/submit"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Declaration
             </span>
@@ -401,33 +444,41 @@ exports[`test Signup renders empty Your Info form 1`] = `
     </nav>
   </aside>
   <article
-    className="col-xs-12 col-sm-8 col-sm-push-1">
+    className="col-xs-12 col-sm-8 col-sm-push-1"
+  >
     <div
-      className="layout">
+      className="layout"
+    >
       <header>
         <h1
-          tabIndex="-1">
+          tabIndex="-1"
+        >
           Contact details
         </h1>
       </header>
       <article
-        role="main">
+        role="main"
+      >
         <form
           action={undefined}
           id="yourinfo"
           method="post"
           onReset={[Function]}
-          onSubmit={[Function]}>
+          onSubmit={[Function]}
+        >
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="contact_name">
+              htmlFor="contact_name"
+            >
               Business contact name
             </label>
             <p
               className="hint"
-              id="contact_name-hint">
+              id="contact_name-hint"
+            >
               The contact listed on your seller profile page and the person who receives new opportunities by email.
             </p>
             <input
@@ -443,13 +494,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="contact_email">
+              htmlFor="contact_email"
+            >
               Email
             </label>
             <input
@@ -465,13 +519,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="contact_phone">
+              htmlFor="contact_phone"
+            >
               Phone
             </label>
             <input
@@ -487,18 +544,22 @@ exports[`test Signup renders empty Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="representative">
+              htmlFor="representative"
+            >
               Authorised representative name
             </label>
             <p
               className="hint"
-              id="representative-hint">
+              id="representative-hint"
+            >
               This is the person authorised to enter into contracts on behalf of the business. 
             </p>
             <input
@@ -514,13 +575,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="email">
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -536,13 +600,16 @@ exports[`test Signup renders empty Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="phone">
+              htmlFor="phone"
+            >
               Phone
             </label>
             <input
@@ -558,16 +625,19 @@ exports[`test Signup renders empty Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <input
             name="next_step_slug"
             type="hidden"
-            value="documents" />
+            value="documents"
+          />
           <input
             role="button"
             type="submit"
-            value="Save and continue" />
+            value="Save and continue"
+          />
         </form>
       </article>
     </div>
@@ -575,30 +645,35 @@ exports[`test Signup renders empty Your Info form 1`] = `
 </div>
 `;
 
-exports[`test Signup renders populated Your Info form 1`] = `
+exports[`Signup renders populated Your Info form 1`] = `
 <div
-  className="row">
+  className="row"
+>
   <aside
     className="col-xs-12 col-sm-3"
-    id="main-navigation">
+    id="main-navigation"
+  >
     <button
       aria-controls="local-nav"
       aria-expanded={false}
       className="local-nav-toggle"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Menu
     </button>
     <nav
       aria-expanded={false}
       aria-label="main navigation"
       className="local-nav step-navigation"
-      open={false}>
+      open={false}
+    >
       <ul>
         <li>
           <a
             className=""
             href="/start"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Introduction
             </span>
@@ -608,7 +683,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/business-details"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Business basics
             </span>
@@ -618,7 +694,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/business-info"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Business details
             </span>
@@ -628,7 +705,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className="is-active is-current"
             href="/your-info"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Contacts
             </span>
@@ -638,7 +716,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/documents"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Documents
             </span>
@@ -648,7 +727,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/tools"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Methods
             </span>
@@ -658,7 +738,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/awards"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Recognition
             </span>
@@ -668,7 +749,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/recruiter"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Recruiter
             </span>
@@ -678,7 +760,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/domains"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Services
             </span>
@@ -688,7 +771,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/case-study"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Case studies
             </span>
@@ -698,7 +782,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/products"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Products
             </span>
@@ -708,7 +793,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/review"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Preview profile
             </span>
@@ -718,7 +804,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/disclosures"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Disclosures
             </span>
@@ -728,7 +815,8 @@ exports[`test Signup renders populated Your Info form 1`] = `
           <a
             className=""
             href="/submit"
-            onClick={[Function]}>
+            onClick={[Function]}
+          >
             <span>
               Declaration
             </span>
@@ -738,38 +826,47 @@ exports[`test Signup renders populated Your Info form 1`] = `
     </nav>
   </aside>
   <article
-    className="col-xs-12 col-sm-8 col-sm-push-1">
+    className="col-xs-12 col-sm-8 col-sm-push-1"
+  >
     <div
-      className="layout">
+      className="layout"
+    >
       <header>
         <h1
-          tabIndex="-1">
+          tabIndex="-1"
+        >
           Contact details
         </h1>
       </header>
       <article
-        role="main">
+        role="main"
+      >
         <form
           action="https://httpbin.org/post"
           id="yourinfo"
           method="post"
           onReset={[Function]}
-          onSubmit={[Function]}>
+          onSubmit={[Function]}
+        >
           <input
             id="csrf_token"
             name="csrf_token"
             type="hidden"
-            value="abc" />
+            value="abc"
+          />
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="contact_name">
+              htmlFor="contact_name"
+            >
               Business contact name
             </label>
             <p
               className="hint"
-              id="contact_name-hint">
+              id="contact_name-hint"
+            >
               The contact listed on your seller profile page and the person who receives new opportunities by email.
             </p>
             <input
@@ -785,13 +882,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="contact_email">
+              htmlFor="contact_email"
+            >
               Email
             </label>
             <input
@@ -807,13 +907,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="contact_phone">
+              htmlFor="contact_phone"
+            >
               Phone
             </label>
             <input
@@ -829,18 +932,22 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="" />
+              value=""
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="representative">
+              htmlFor="representative"
+            >
               Authorised representative name
             </label>
             <p
               className="hint"
-              id="representative-hint">
+              id="representative-hint"
+            >
               This is the person authorised to enter into contracts on behalf of the business. 
             </p>
             <input
@@ -856,13 +963,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="Paul Acron" />
+              value="Paul Acron"
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="email">
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -878,13 +988,16 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="email@domain.com" />
+              value="email@domain.com"
+            />
           </div>
           <div
-            className="field">
+            className="field"
+          >
             <label
               className="question-heading"
-              htmlFor="phone">
+              htmlFor="phone"
+            >
               Phone
             </label>
             <input
@@ -900,16 +1013,19 @@ exports[`test Signup renders populated Your Info form 1`] = `
               onKeyPress={[Function]}
               pattern={undefined}
               type="text"
-              value="0292000000" />
+              value="0292000000"
+            />
           </div>
           <input
             name="next_step_slug"
             type="hidden"
-            value="documents" />
+            value="documents"
+          />
           <input
             role="button"
             type="submit"
-            value="Save and continue" />
+            value="Save and continue"
+          />
         </form>
       </article>
     </div>
