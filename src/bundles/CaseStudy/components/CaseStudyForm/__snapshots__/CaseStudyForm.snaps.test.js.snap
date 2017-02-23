@@ -1,30 +1,38 @@
-exports[`test CaseStudyForm renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CaseStudyForm renders 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <div
-      className="callout--calendar-event">
+      className="callout--calendar-event"
+    >
       <h1
         aria-describedby="header-description"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         Add
          case study
       </h1>
       <p
-        id="header-description">
+        id="header-description"
+      >
         Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria#"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           assessment criteria
         </a>
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           seller guide
         </a>
         .
@@ -32,18 +40,22 @@ exports[`test CaseStudyForm renders 1`] = `
     </div>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action={undefined}
       id="casestudy__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="title">
+          htmlFor="title"
+        >
           Give your case study a title
         </label>
         <input
@@ -59,13 +71,16 @@ exports[`test CaseStudyForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="client">
+          htmlFor="client"
+        >
           Who was the client?
         </label>
         <input
@@ -81,18 +96,22 @@ exports[`test CaseStudyForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="timeframe">
+          htmlFor="timeframe"
+        >
           What was the time frame?
         </label>
         <p
           className="hint"
-          id="timeframe-hint">
+          id="timeframe-hint"
+        >
           For example, January 2016 — June 2016.
         </p>
         <input
@@ -108,18 +127,22 @@ exports[`test CaseStudyForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="roles">
+          htmlFor="roles"
+        >
           What role did your business play?
         </label>
         <p
           className="hint"
-          id="roles-hint">
+          id="roles-hint"
+        >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
         <input
@@ -135,18 +158,22 @@ exports[`test CaseStudyForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="opportunity">
+          htmlFor="opportunity"
+        >
           Outline the problem or opportunity
         </label>
         <p
           className="hint"
-          id="opportunity-hint">
+          id="opportunity-hint"
+        >
           Describe the project goal and any relevant background information.
         </p>
         <div>
@@ -158,23 +185,28 @@ exports[`test CaseStudyForm renders 1`] = `
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="approach">
+          htmlFor="approach"
+        >
           Describe your approach
         </label>
         <p
           className="hint"
-          id="approach-hint">
+          id="approach-hint"
+        >
           How did your capabilities and methods contribute to achieving the project goals?
         </p>
         <div>
@@ -186,32 +218,40 @@ exports[`test CaseStudyForm renders 1`] = `
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="outcome">
+          htmlFor="outcome"
+        >
           What was the outcome?
         </label>
         <p
           className="hint"
-          id="outcome-hint">
+          id="outcome-hint"
+        >
           List the key achievements of this project.
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome">
+                htmlFor="outcome"
+              >
                 1
                 .
               </label>
@@ -224,16 +264,20 @@ exports[`test CaseStudyForm renders 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome-1">
+                htmlFor="outcome-1"
+              >
                 2
                 .
               </label>
@@ -246,15 +290,18 @@ exports[`test CaseStudyForm renders 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -263,30 +310,37 @@ exports[`test CaseStudyForm renders 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="project_links">
+          htmlFor="project_links"
+        >
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="project_links-hint">
+          id="project_links-hint"
+        >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links">
+                htmlFor="project_links"
+              >
                 1
                 .
               </label>
@@ -299,16 +353,20 @@ exports[`test CaseStudyForm renders 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links-1">
+                htmlFor="project_links-1"
+              >
                 2
                 .
               </label>
@@ -321,15 +379,18 @@ exports[`test CaseStudyForm renders 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -338,7 +399,8 @@ exports[`test CaseStudyForm renders 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
@@ -350,15 +412,18 @@ exports[`test CaseStudyForm renders 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeName">
-          Referee\'s name
+          htmlFor="refereeName"
+        >
+          Referee's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint">
+          id="refereeName-hint"
+        >
           The full name of the best person to contact about your experience.
         </p>
         <input
@@ -374,18 +439,22 @@ exports[`test CaseStudyForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereePosition">
-          Referee\'s position
+          htmlFor="refereePosition"
+        >
+          Referee's position
         </label>
         <p
           className="hint"
-          id="refereePosition-hint">
+          id="refereePosition-hint"
+        >
           At the time of the project.
         </p>
         <input
@@ -401,14 +470,17 @@ exports[`test CaseStudyForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeEmail">
-          Referee\'s phone number
+          htmlFor="refereeEmail"
+        >
+          Referee's phone number
         </label>
         <input
           aria-describedby={undefined}
@@ -423,7 +495,8 @@ exports[`test CaseStudyForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <input
@@ -435,48 +508,57 @@ exports[`test CaseStudyForm renders 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          type="checkbox" />
+          type="checkbox"
+        />
         <label
-          htmlFor="refereeContact">
+          htmlFor="refereeContact"
+        >
           I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
         role="button"
         type="submit"
-        value="Publish Case Study" />
+        value="Publish Case Study"
+      />
     </form>
   </article>
 </div>
 `;
 
-exports[`test CaseStudyForm renders empty in edit mode 1`] = `
+exports[`CaseStudyForm renders empty in edit mode 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <div
-      className="callout--calendar-event">
+      className="callout--calendar-event"
+    >
       <h1
         aria-describedby="header-description"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         Edit
          case study
       </h1>
       <p
-        id="header-description">
+        id="header-description"
+      >
         Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria#"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           assessment criteria
         </a>
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           seller guide
         </a>
         .
@@ -484,18 +566,22 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
     </div>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action={undefined}
       id="casestudy__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="title">
+          htmlFor="title"
+        >
           Give your case study a title
         </label>
         <input
@@ -511,13 +597,16 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="client">
+          htmlFor="client"
+        >
           Who was the client?
         </label>
         <input
@@ -533,18 +622,22 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="timeframe">
+          htmlFor="timeframe"
+        >
           What was the time frame?
         </label>
         <p
           className="hint"
-          id="timeframe-hint">
+          id="timeframe-hint"
+        >
           For example, January 2016 — June 2016.
         </p>
         <input
@@ -560,18 +653,22 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="roles">
+          htmlFor="roles"
+        >
           What role did your business play?
         </label>
         <p
           className="hint"
-          id="roles-hint">
+          id="roles-hint"
+        >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
         <input
@@ -587,18 +684,22 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="opportunity">
+          htmlFor="opportunity"
+        >
           Outline the problem or opportunity
         </label>
         <p
           className="hint"
-          id="opportunity-hint">
+          id="opportunity-hint"
+        >
           Describe the project goal and any relevant background information.
         </p>
         <div>
@@ -610,23 +711,28 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="approach">
+          htmlFor="approach"
+        >
           Describe your approach
         </label>
         <p
           className="hint"
-          id="approach-hint">
+          id="approach-hint"
+        >
           How did your capabilities and methods contribute to achieving the project goals?
         </p>
         <div>
@@ -638,32 +744,40 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="outcome">
+          htmlFor="outcome"
+        >
           What was the outcome?
         </label>
         <p
           className="hint"
-          id="outcome-hint">
+          id="outcome-hint"
+        >
           List the key achievements of this project.
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome">
+                htmlFor="outcome"
+              >
                 1
                 .
               </label>
@@ -676,16 +790,20 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome-1">
+                htmlFor="outcome-1"
+              >
                 2
                 .
               </label>
@@ -698,15 +816,18 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -715,30 +836,37 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="project_links">
+          htmlFor="project_links"
+        >
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="project_links-hint">
+          id="project_links-hint"
+        >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links">
+                htmlFor="project_links"
+              >
                 1
                 .
               </label>
@@ -751,16 +879,20 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links-1">
+                htmlFor="project_links-1"
+              >
                 2
                 .
               </label>
@@ -773,15 +905,18 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -790,7 +925,8 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
@@ -802,15 +938,18 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeName">
-          Referee\'s name
+          htmlFor="refereeName"
+        >
+          Referee's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint">
+          id="refereeName-hint"
+        >
           The full name of the best person to contact about your experience.
         </p>
         <input
@@ -826,18 +965,22 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereePosition">
-          Referee\'s position
+          htmlFor="refereePosition"
+        >
+          Referee's position
         </label>
         <p
           className="hint"
-          id="refereePosition-hint">
+          id="refereePosition-hint"
+        >
           At the time of the project.
         </p>
         <input
@@ -853,14 +996,17 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeEmail">
-          Referee\'s phone number
+          htmlFor="refereeEmail"
+        >
+          Referee's phone number
         </label>
         <input
           aria-describedby={undefined}
@@ -875,7 +1021,8 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <input
@@ -887,52 +1034,62 @@ exports[`test CaseStudyForm renders empty in edit mode 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          type="checkbox" />
+          type="checkbox"
+        />
         <label
-          htmlFor="refereeContact">
+          htmlFor="refereeContact"
+        >
           I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
         role="button"
         type="submit"
-        value="Save Changes" />
+        value="Save Changes"
+      />
     </form>
     <a
-      href="http://www.right.back/to/where/you/came/from">
+      href="http://www.right.back/to/where/you/came/from"
+    >
       Return without saving
     </a>
   </article>
 </div>
 `;
 
-exports[`test CaseStudyForm renders with errors 1`] = `
+exports[`CaseStudyForm renders with errors 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <div
-      className="callout--calendar-event">
+      className="callout--calendar-event"
+    >
       <h1
         aria-describedby="header-description"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         Add
          case study
       </h1>
       <p
-        id="header-description">
+        id="header-description"
+      >
         Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria#"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           assessment criteria
         </a>
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           seller guide
         </a>
         .
@@ -940,80 +1097,94 @@ exports[`test CaseStudyForm renders with errors 1`] = `
     </div>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <div
       aria-describedby="validation-masthead-heading"
       className="callout--warning"
       role="alert"
-      tabIndex="-1">
+      tabIndex="-1"
+    >
       <h4
-        id="validation-masthead-heading">
+        id="validation-masthead-heading"
+      >
         There was a problem with the details you gave
       </h4>
       <ul>
         <li>
           <a
-            href="#title">
+            href="#title"
+          >
             Title is required
           </a>
         </li>
         <li>
           <a
-            href="#client">
+            href="#client"
+          >
             Client is required
           </a>
         </li>
         <li>
           <a
-            href="#timeframe">
+            href="#timeframe"
+          >
             Timeframe is required
           </a>
         </li>
         <li>
           <a
-            href="#roles">
-            You must specify the your business\' role
+            href="#roles"
+          >
+            You must specify the your business' role
           </a>
         </li>
         <li>
           <a
-            href="#opportunity">
+            href="#opportunity"
+          >
             You must outline the opportunity
           </a>
         </li>
         <li>
           <a
-            href="#approach">
+            href="#approach"
+          >
             You must outline your approach
           </a>
         </li>
         <li>
           <a
-            href="#outcome">
+            href="#outcome"
+          >
             You must provide at least one outcome.
           </a>
         </li>
         <li>
           <a
-            href="#refereeName">
+            href="#refereeName"
+          >
             Please provide a referee name.
           </a>
         </li>
         <li>
           <a
-            href="#refereePosition">
+            href="#refereePosition"
+          >
             Please provide a referee position.
           </a>
         </li>
         <li>
           <a
-            href="#refereeEmail">
+            href="#refereeEmail"
+          >
             Please provide a referee phone number.
           </a>
         </li>
         <li>
           <a
-            href="#refereeContact">
+            href="#refereeContact"
+          >
             Please acknowledge the referee can be contacted.
           </a>
         </li>
@@ -1024,24 +1195,30 @@ exports[`test CaseStudyForm renders with errors 1`] = `
       id="casestudy__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="sometoken" />
+        value="sometoken"
+      />
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="title">
+          htmlFor="title"
+        >
           Give your case study a title
         </label>
         <a
           className="validation-message"
-          href="#title">
+          href="#title"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1061,20 +1238,25 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="client">
+          htmlFor="client"
+        >
           Who was the client?
         </label>
         <a
           className="validation-message"
-          href="#client">
+          href="#client"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1094,25 +1276,31 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="timeframe">
+          htmlFor="timeframe"
+        >
           What was the time frame?
         </label>
         <p
           className="hint"
-          id="timeframe-hint">
+          id="timeframe-hint"
+        >
           For example, January 2016 — June 2016.
         </p>
         <a
           className="validation-message"
-          href="#timeframe">
+          href="#timeframe"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1132,29 +1320,35 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="roles">
+          htmlFor="roles"
+        >
           What role did your business play?
         </label>
         <p
           className="hint"
-          id="roles-hint">
+          id="roles-hint"
+        >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
         <a
           className="validation-message"
-          href="#roles">
+          href="#roles"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
-            You must specify the your business\' role
+            You must specify the your business' role
           </span>
         </a>
         <input
@@ -1170,25 +1364,31 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="opportunity">
+          htmlFor="opportunity"
+        >
           Outline the problem or opportunity
         </label>
         <p
           className="hint"
-          id="opportunity-hint">
+          id="opportunity-hint"
+        >
           Describe the project goal and any relevant background information.
         </p>
         <a
           className="validation-message"
-          href="#opportunity">
+          href="#opportunity"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1204,30 +1404,37 @@ exports[`test CaseStudyForm renders with errors 1`] = `
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="approach">
+          htmlFor="approach"
+        >
           Describe your approach
         </label>
         <p
           className="hint"
-          id="approach-hint">
+          id="approach-hint"
+        >
           How did your capabilities and methods contribute to achieving the project goals?
         </p>
         <a
           className="validation-message"
-          href="#approach">
+          href="#approach"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1243,29 +1450,36 @@ exports[`test CaseStudyForm renders with errors 1`] = `
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="outcome">
+          htmlFor="outcome"
+        >
           What was the outcome?
         </label>
         <p
           className="hint"
-          id="outcome-hint">
+          id="outcome-hint"
+        >
           List the key achievements of this project.
         </p>
         <a
           className="validation-message"
-          href="#outcome">
+          href="#outcome"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1274,12 +1488,15 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         </a>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome">
+                htmlFor="outcome"
+              >
                 1
                 .
               </label>
@@ -1292,16 +1509,20 @@ exports[`test CaseStudyForm renders with errors 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome-1">
+                htmlFor="outcome-1"
+              >
                 2
                 .
               </label>
@@ -1314,15 +1535,18 @@ exports[`test CaseStudyForm renders with errors 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -1331,30 +1555,37 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="project_links">
+          htmlFor="project_links"
+        >
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="project_links-hint">
+          id="project_links-hint"
+        >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links">
+                htmlFor="project_links"
+              >
                 1
                 .
               </label>
@@ -1367,16 +1598,20 @@ exports[`test CaseStudyForm renders with errors 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links-1">
+                htmlFor="project_links-1"
+              >
                 2
                 .
               </label>
@@ -1389,15 +1624,18 @@ exports[`test CaseStudyForm renders with errors 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -1406,7 +1644,8 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
@@ -1418,22 +1657,27 @@ exports[`test CaseStudyForm renders with errors 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeName">
-          Referee\'s name
+          htmlFor="refereeName"
+        >
+          Referee's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint">
+          id="refereeName-hint"
+        >
           The full name of the best person to contact about your experience.
         </p>
         <a
           className="validation-message"
-          href="#refereeName">
+          href="#refereeName"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1453,25 +1697,31 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereePosition">
-          Referee\'s position
+          htmlFor="refereePosition"
+        >
+          Referee's position
         </label>
         <p
           className="hint"
-          id="refereePosition-hint">
+          id="refereePosition-hint"
+        >
           At the time of the project.
         </p>
         <a
           className="validation-message"
-          href="#refereePosition">
+          href="#refereePosition"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1491,20 +1741,25 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeEmail">
-          Referee\'s phone number
+          htmlFor="refereeEmail"
+        >
+          Referee's phone number
         </label>
         <a
           className="validation-message"
-          href="#refereeEmail">
+          href="#refereeEmail"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1524,14 +1779,17 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <a
           className="validation-message"
-          href="#refereeContact">
+          href="#refereeContact"
+        >
           <span
-            className="visuallyhidden">
+            className="visuallyhidden"
+          >
             Validation Error: 
           </span>
           <span>
@@ -1547,48 +1805,57 @@ exports[`test CaseStudyForm renders with errors 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          type="checkbox" />
+          type="checkbox"
+        />
         <label
-          htmlFor="refereeContact">
+          htmlFor="refereeContact"
+        >
           I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
         role="button"
         type="submit"
-        value="Publish Case Study" />
+        value="Publish Case Study"
+      />
     </form>
   </article>
 </div>
 `;
 
-exports[`test CaseStudyForm renders with form_options 1`] = `
+exports[`CaseStudyForm renders with form_options 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <div
-      className="callout--calendar-event">
+      className="callout--calendar-event"
+    >
       <h1
         aria-describedby="header-description"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         Add
          case study
       </h1>
       <p
-        id="header-description">
+        id="header-description"
+      >
         Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria#"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           assessment criteria
         </a>
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           seller guide
         </a>
         .
@@ -1596,23 +1863,28 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
     </div>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action="/foo/bar"
       id="casestudy__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="sometoken" />
+        value="sometoken"
+      />
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="title">
+          htmlFor="title"
+        >
           Give your case study a title
         </label>
         <input
@@ -1628,13 +1900,16 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="client">
+          htmlFor="client"
+        >
           Who was the client?
         </label>
         <input
@@ -1650,18 +1925,22 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="timeframe">
+          htmlFor="timeframe"
+        >
           What was the time frame?
         </label>
         <p
           className="hint"
-          id="timeframe-hint">
+          id="timeframe-hint"
+        >
           For example, January 2016 — June 2016.
         </p>
         <input
@@ -1677,18 +1956,22 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="roles">
+          htmlFor="roles"
+        >
           What role did your business play?
         </label>
         <p
           className="hint"
-          id="roles-hint">
+          id="roles-hint"
+        >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
         <input
@@ -1704,18 +1987,22 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="opportunity">
+          htmlFor="opportunity"
+        >
           Outline the problem or opportunity
         </label>
         <p
           className="hint"
-          id="opportunity-hint">
+          id="opportunity-hint"
+        >
           Describe the project goal and any relevant background information.
         </p>
         <div>
@@ -1727,23 +2014,28 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="approach">
+          htmlFor="approach"
+        >
           Describe your approach
         </label>
         <p
           className="hint"
-          id="approach-hint">
+          id="approach-hint"
+        >
           How did your capabilities and methods contribute to achieving the project goals?
         </p>
         <div>
@@ -1755,32 +2047,40 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             200 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="outcome">
+          htmlFor="outcome"
+        >
           What was the outcome?
         </label>
         <p
           className="hint"
-          id="outcome-hint">
+          id="outcome-hint"
+        >
           List the key achievements of this project.
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome">
+                htmlFor="outcome"
+              >
                 1
                 .
               </label>
@@ -1793,16 +2093,20 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome-1">
+                htmlFor="outcome-1"
+              >
                 2
                 .
               </label>
@@ -1815,15 +2119,18 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -1832,30 +2139,37 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="project_links">
+          htmlFor="project_links"
+        >
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="project_links-hint">
+          id="project_links-hint"
+        >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links">
+                htmlFor="project_links"
+              >
                 1
                 .
               </label>
@@ -1868,16 +2182,20 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links-1">
+                htmlFor="project_links-1"
+              >
                 2
                 .
               </label>
@@ -1890,15 +2208,18 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -1907,7 +2228,8 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
@@ -1919,15 +2241,18 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeName">
-          Referee\'s name
+          htmlFor="refereeName"
+        >
+          Referee's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint">
+          id="refereeName-hint"
+        >
           The full name of the best person to contact about your experience.
         </p>
         <input
@@ -1943,18 +2268,22 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereePosition">
-          Referee\'s position
+          htmlFor="refereePosition"
+        >
+          Referee's position
         </label>
         <p
           className="hint"
-          id="refereePosition-hint">
+          id="refereePosition-hint"
+        >
           At the time of the project.
         </p>
         <input
@@ -1970,14 +2299,17 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeEmail">
-          Referee\'s phone number
+          htmlFor="refereeEmail"
+        >
+          Referee's phone number
         </label>
         <input
           aria-describedby={undefined}
@@ -1992,7 +2324,8 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <input
@@ -2004,48 +2337,57 @@ exports[`test CaseStudyForm renders with form_options 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          type="checkbox" />
+          type="checkbox"
+        />
         <label
-          htmlFor="refereeContact">
+          htmlFor="refereeContact"
+        >
           I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
         role="button"
         type="submit"
-        value="Publish Case Study" />
+        value="Publish Case Study"
+      />
     </form>
   </article>
 </div>
 `;
 
-exports[`test CaseStudyForm renders with populated fields 1`] = `
+exports[`CaseStudyForm renders with populated fields 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <div
-      className="callout--calendar-event">
+      className="callout--calendar-event"
+    >
       <h1
         aria-describedby="header-description"
-        tabIndex="-1">
+        tabIndex="-1"
+      >
         Add
          case study
       </h1>
       <p
-        id="header-description">
+        id="header-description"
+      >
         Remember, your case study must meet the 
          
         <a
           href="/assessment-criteria#"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           assessment criteria
         </a>
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
           rel="external"
-          target="_blank">
+          target="_blank"
+        >
           seller guide
         </a>
         .
@@ -2053,18 +2395,22 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
     </div>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action="https://httpbin.org/post"
       id="casestudy__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="title">
+          htmlFor="title"
+        >
           Give your case study a title
         </label>
         <input
@@ -2080,13 +2426,16 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="client">
+          htmlFor="client"
+        >
           Who was the client?
         </label>
         <input
@@ -2102,18 +2451,22 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="The Client Name" />
+          value="The Client Name"
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="timeframe">
+          htmlFor="timeframe"
+        >
           What was the time frame?
         </label>
         <p
           className="hint"
-          id="timeframe-hint">
+          id="timeframe-hint"
+        >
           For example, January 2016 — June 2016.
         </p>
         <input
@@ -2129,18 +2482,22 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="January 2016 — June 2016" />
+          value="January 2016 — June 2016"
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="roles">
+          htmlFor="roles"
+        >
           What role did your business play?
         </label>
         <p
           className="hint"
-          id="roles-hint">
+          id="roles-hint"
+        >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
         <input
@@ -2156,18 +2513,22 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="opportunity">
+          htmlFor="opportunity"
+        >
           Outline the problem or opportunity
         </label>
         <p
           className="hint"
-          id="opportunity-hint">
+          id="opportunity-hint"
+        >
           Describe the project goal and any relevant background information.
         </p>
         <div>
@@ -2179,23 +2540,28 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             198 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="approach">
+          htmlFor="approach"
+        >
           Describe your approach
         </label>
         <p
           className="hint"
-          id="approach-hint">
+          id="approach-hint"
+        >
           How did your capabilities and methods contribute to achieving the project goals?
         </p>
         <div>
@@ -2207,32 +2573,40 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]} />
+            onFocus={[Function]}
+          />
           <span
-            className="word-count-counter">
+            className="word-count-counter"
+          >
             198 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="outcome">
+          htmlFor="outcome"
+        >
           What was the outcome?
         </label>
         <p
           className="hint"
-          id="outcome-hint">
+          id="outcome-hint"
+        >
           List the key achievements of this project.
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome">
+                htmlFor="outcome"
+              >
                 1
                 .
               </label>
@@ -2245,16 +2619,20 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome-1">
+                htmlFor="outcome-1"
+              >
                 2
                 .
               </label>
@@ -2267,15 +2645,18 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -2284,30 +2665,37 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
-          htmlFor="project_links">
+          htmlFor="project_links"
+        >
           Project links (optional)
         </label>
         <p
           className="hint"
-          id="project_links-hint">
+          id="project_links-hint"
+        >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links">
+                htmlFor="project_links"
+              >
                 1
                 .
               </label>
@@ -2320,16 +2708,20 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
           </div>
           <div
-            className="list-entry row">
+            className="list-entry row"
+          >
             <div
-              className="col-xs-12 col-sm-9">
+              className="col-xs-12 col-sm-9"
+            >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links-1">
+                htmlFor="project_links-1"
+              >
                 2
                 .
               </label>
@@ -2342,15 +2734,18 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                type="text" />
+                type="text"
+              />
             </div>
             <button
               className="button-secondary col-xs-12 col-sm-3"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               remove 
               <span
-                className="visuallyhidden">
+                className="visuallyhidden"
+              >
                 number 
                 2
               </span>
@@ -2359,7 +2754,8 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
-            type="button">
+            type="button"
+          >
             Add another row
           </button>
         </div>
@@ -2371,15 +2767,18 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeName">
-          Referee\'s name
+          htmlFor="refereeName"
+        >
+          Referee's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint">
+          id="refereeName-hint"
+        >
           The full name of the best person to contact about your experience.
         </p>
         <input
@@ -2395,18 +2794,22 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereePosition">
-          Referee\'s position
+          htmlFor="refereePosition"
+        >
+          Referee's position
         </label>
         <p
           className="hint"
-          id="refereePosition-hint">
+          id="refereePosition-hint"
+        >
           At the time of the project.
         </p>
         <input
@@ -2422,14 +2825,17 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="refereeEmail">
-          Referee\'s phone number
+          htmlFor="refereeEmail"
+        >
+          Referee's phone number
         </label>
         <input
           aria-describedby={undefined}
@@ -2444,7 +2850,8 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <input
@@ -2456,16 +2863,19 @@ exports[`test CaseStudyForm renders with populated fields 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          type="checkbox" />
+          type="checkbox"
+        />
         <label
-          htmlFor="refereeContact">
+          htmlFor="refereeContact"
+        >
           I confirm my referee gives permission to be contacted and have their information shared as part of the assessment led by the Digital Transformation Agency.
         </label>
       </div>
       <input
         role="button"
         type="submit"
-        value="Publish Case Study" />
+        value="Publish Case Study"
+      />
     </form>
   </article>
 </div>
