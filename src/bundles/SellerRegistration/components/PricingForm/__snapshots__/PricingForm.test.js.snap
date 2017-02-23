@@ -1,27 +1,21 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`PricingForm renders a notice that domains are required 1`] = `
+exports[`test PricingForm renders a notice that domains are required 1`] = `
 <div
-  className="layout"
->
+  className="layout">
   <header>
     <h1
-      tabIndex="-1"
-    >
+      tabIndex="-1">
       Pricing
     </h1>
   </header>
   <article
-    role="main"
-  >
+    role="main">
     <p>
       You must select some domains before specifying pricing!
     </p>
     <p>
       <a
         href="/domains"
-        onClick={[Function]}
-      >
+        onClick={[Function]}>
         Select domains
       </a>
     </p>
@@ -29,14 +23,12 @@ exports[`PricingForm renders a notice that domains are required 1`] = `
 </div>
 `;
 
-exports[`PricingForm renders price fields when domains are present 1`] = `
+exports[`test PricingForm renders price fields when domains are present 1`] = `
 <div
-  className="layout"
->
+  className="layout">
   <header>
     <h1
-      tabIndex="-1"
-    >
+      tabIndex="-1">
       Pricing
     </h1>
     <p>
@@ -44,36 +36,29 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
     </p>
   </header>
   <article
-    role="main"
-  >
+    role="main">
     <form
       action={undefined}
       id="DomainSelector__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}
-    >
+      onSubmit={[Function]}>
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="abc"
-      />
+        value="abc" />
       <fieldset
-        className="field"
-      >
+        className="field">
         <legend>
           User research
         </legend>
         <div
-          className="row"
-        >
+          className="row">
           <div
-            className="col-sm-5 col-xs-12"
-          >
+            className="col-sm-5 col-xs-12">
             <label
-              htmlFor="user-research-minprice"
-            >
+              htmlFor="user-research-minprice">
               Min. Daily Price
             </label>
             <input
@@ -85,15 +70,12 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               type="text"
-              value=""
-            />
+              value="" />
           </div>
           <div
-            className="col-sm-push-1 col-sm-5 col-xs-12"
-          >
+            className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="user-research-maxprice"
-            >
+              htmlFor="user-research-maxprice">
               Max. Daily Price
             </label>
             <input
@@ -105,26 +87,21 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               type="text"
-              value=""
-            />
+              value="" />
           </div>
         </div>
       </fieldset>
       <fieldset
-        className="field"
-      >
+        className="field">
         <legend>
           Content development
         </legend>
         <div
-          className="row"
-        >
+          className="row">
           <div
-            className="col-sm-5 col-xs-12"
-          >
+            className="col-sm-5 col-xs-12">
             <label
-              htmlFor="content-development-minprice"
-            >
+              htmlFor="content-development-minprice">
               Min. Daily Price
             </label>
             <input
@@ -136,15 +113,12 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               type="text"
-              value=""
-            />
+              value="" />
           </div>
           <div
-            className="col-sm-push-1 col-sm-5 col-xs-12"
-          >
+            className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="content-development-maxprice"
-            >
+              htmlFor="content-development-maxprice">
               Max. Daily Price
             </label>
             <input
@@ -156,26 +130,21 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               type="text"
-              value=""
-            />
+              value="" />
           </div>
         </div>
       </fieldset>
       <fieldset
-        className="field"
-      >
+        className="field">
         <legend>
           Content management
         </legend>
         <div
-          className="row"
-        >
+          className="row">
           <div
-            className="col-sm-5 col-xs-12"
-          >
+            className="col-sm-5 col-xs-12">
             <label
-              htmlFor="content-management-minprice"
-            >
+              htmlFor="content-management-minprice">
               Min. Daily Price
             </label>
             <input
@@ -187,15 +156,12 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               type="text"
-              value=""
-            />
+              value="" />
           </div>
           <div
-            className="col-sm-push-1 col-sm-5 col-xs-12"
-          >
+            className="col-sm-push-1 col-sm-5 col-xs-12">
             <label
-              htmlFor="content-management-maxprice"
-            >
+              htmlFor="content-management-maxprice">
               Max. Daily Price
             </label>
             <input
@@ -207,16 +173,14 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               type="text"
-              value=""
-            />
+              value="" />
           </div>
         </div>
       </fieldset>
       <input
         role="button"
         type="submit"
-        value="Save &amp; Continue"
-      />
+        value="Save &amp; Continue" />
     </form>
   </article>
 </div>
