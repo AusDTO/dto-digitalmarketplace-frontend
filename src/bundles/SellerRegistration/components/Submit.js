@@ -16,7 +16,7 @@ const agreementStyle = {
     borderRadius: 0,
     backgroundColor: '#fff',
     padding: '.4rem',
-    height: '14.375rem',
+    height: '24rem',
     overflowY: 'scroll'
 }
 
@@ -66,7 +66,7 @@ class SubmitStepForm extends BaseForm {
                     <ol><li>Review your application and the Master Agreement</li>
                         <li>Complete the declaration below</li>
                     </ol>
-                    <a href="/document/masteragreement.pdf">Download Master Agreement PDF</a><br/><br/>
+                    <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" rel="external" target="_blank">Download Master Agreement PDF</a><br/><br/>
 
                     <div style={agreementStyle}>
                         <h1>Master Agreement</h1>
@@ -288,6 +288,7 @@ class SubmitStepForm extends BaseForm {
                         <p><strong>you or your</strong> means the party specified as the <strong>seller</strong> and includes <strong>your personnel</strong>.</p>
                         <p>Last updated: 23 February 2017</p>
                     </div>
+                    <br/>
                     <StatefulError
                         model={`${model}.agreed_to_master_agreement`}
                         id="agree"
@@ -303,7 +304,7 @@ class SubmitStepForm extends BaseForm {
                     />
                     <label htmlFor="agree">I am <strong>{representative}</strong>, an authorised representative of
                         <strong> {name}</strong> (ABN: {abn}) and I agree to the terms set out in the <a
-                            href="/document/masteragreement.pdf">Marketplace Master
+                            href="/static/media/documents/digital-marketplace-master-agreement.pdf" rel="external" target="_blank">Marketplace Master
                             Agreement</a>.</label>
 
                 </div>
