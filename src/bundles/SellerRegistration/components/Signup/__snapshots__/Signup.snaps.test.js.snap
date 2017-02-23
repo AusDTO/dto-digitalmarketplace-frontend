@@ -70,6 +70,17 @@ exports[`Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/disclosures"
+            onClick={[Function]}
+          >
+            <span>
+              Disclosures
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/documents"
             onClick={[Function]}
           >
@@ -152,17 +163,6 @@ exports[`Signup renders 1`] = `
           >
             <span>
               Preview profile
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/disclosures"
-            onClick={[Function]}
-          >
-            <span>
-              Disclosures
             </span>
           </a>
         </li>
@@ -333,6 +333,17 @@ exports[`Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/disclosures"
+            onClick={[Function]}
+          >
+            <span>
+              Disclosures
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/documents"
             onClick={[Function]}
           >
@@ -415,17 +426,6 @@ exports[`Signup renders empty Your Info form 1`] = `
           >
             <span>
               Preview profile
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/disclosures"
-            onClick={[Function]}
-          >
-            <span>
-              Disclosures
             </span>
           </a>
         </li>
@@ -631,7 +631,7 @@ exports[`Signup renders empty Your Info form 1`] = `
           <input
             name="next_step_slug"
             type="hidden"
-            value="documents"
+            value="disclosures"
           />
           <input
             role="button"
@@ -709,6 +709,17 @@ exports[`Signup renders populated Your Info form 1`] = `
           >
             <span>
               Contacts
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/disclosures"
+            onClick={[Function]}
+          >
+            <span>
+              Disclosures
             </span>
           </a>
         </li>
@@ -797,17 +808,6 @@ exports[`Signup renders populated Your Info form 1`] = `
           >
             <span>
               Preview profile
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/disclosures"
-            onClick={[Function]}
-          >
-            <span>
-              Disclosures
             </span>
           </a>
         </li>
@@ -1019,7 +1019,7 @@ exports[`Signup renders populated Your Info form 1`] = `
           <input
             name="next_step_slug"
             type="hidden"
-            value="documents"
+            value="disclosures"
           />
           <input
             role="button"
