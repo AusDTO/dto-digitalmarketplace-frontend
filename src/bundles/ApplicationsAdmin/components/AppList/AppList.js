@@ -29,7 +29,9 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
     <tr key={a.id}>
       <td>{format(new Date(latestDate), 'YYYY-MM-DD HH:mm')}</td>
       <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
-        {a.supplier_code && (<span className="badge--default">Existing Seller</span>)}</a></td>
+        {a.supplier_code && (<span className="badge--default">Existing</span>)}
+        {a.recruiter === 'yes' && (<span className="badge--beta">Recruiter</span>)}
+      </a></td>
       <td>{a.status}</td>
       <td>
         {a.tasks && a.tasks.subtasks.map((t, i) =>
