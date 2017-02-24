@@ -13,15 +13,21 @@ const documentTitle = {
     workers: 'Workers Compensation Insurance'
 };
 
+const govExperienceTitle = {
+    no_experience: "None yet",
+    local: "Local government",
+    state: "State/territory government",
+    federal: "Federal/Commonwealth government",
+    international: "International government"
+}
+
 const PrivateInfo = (props) => {
     const {
         documents = {},
         documentsUrl,
         case_studies = {},
         number_of_employees,
-        local_government_experience,
-        state_government_experience,
-        federal_government_experience,
+        government_experience,
         other_panels,
         signed_agreements = [],
         recruiter_info = {}
@@ -41,9 +47,12 @@ const PrivateInfo = (props) => {
             </Row>
             <Row title="Business Details" show={true}>
                 Number of Employees: {number_of_employees}<br/>
-                {local_government_experience && <p>Local Government Experience ✓</p>}
-                {state_government_experience && <p>State Government Experience ✓</p>}
-                {federal_government_experience && <p>Federal Government Experience ✓</p>}
+                Government experience: <ul>
+                {Object.keys(government_experience).map((key, i) => {
+                    return (<li key={i}>{govExperienceTitle[key]}</li>)
+                })
+                }
+            </ul>
                 {other_panels && <p>Other panels: {other_panels}</p>}
             </Row>
             <Row title="Disclosures" show={true}>
@@ -116,9 +125,7 @@ PrivateInfo.propTypes = {
     documentsUrl: React.PropTypes.string,
     case_studies: React.PropTypes.object,
     number_of_employees: React.PropTypes.string,
-    local_government_experience: React.PropTypes.bool,
-    state_government_experience: React.PropTypes.bool,
-    federal_government_experience: React.PropTypes.bool,
+    government_experience: React.PropTypes.object,
     other_panels: React.PropTypes.string,
     disclosures: React.PropTypes.object,
     signed_agreements: React.PropTypes.array,
