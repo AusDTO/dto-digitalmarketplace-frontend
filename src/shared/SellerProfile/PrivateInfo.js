@@ -3,6 +3,7 @@ import Row from "./Row";
 import questions from '../../bundles/SellerRegistration/components/DisclosuresForm/questions';
 import isEmpty from 'lodash/isEmpty';
 import format from 'date-fns/format';
+import startCase from 'lodash/startCase';
 
 import './SellerProfile.css';
 
@@ -22,7 +23,8 @@ const PrivateInfo = (props) => {
         state_government_experience,
         federal_government_experience,
         other_panels,
-        signed_agreements = []
+        signed_agreements = [],
+        recruiter_info = {}
     } = props;
     return (
         <article className="private-info" style={{border: 'red 5px solid'}}>
@@ -88,6 +90,23 @@ const PrivateInfo = (props) => {
                     </tbody>
                 </table>
             </Row>
+            <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
+            {console.log(recruiter_info)}
+            {Object.keys(recruiter_info).map((key, i) => {
+                return (
+                    <div>
+                    <h4>{key}</h4> 
+                    {Object.keys(recruiter_info[key]).map((subKey, j) => {
+                        return (
+                            <div key={`${key}-${subKey}`}>
+                                {startCase(subKey)}:{recruiter_info[key][subKey]}
+                            </div>
+                        )
+                    })}
+                    </div>
+                )
+            })}
+            </Row>
         </article>
     )
 };
@@ -102,7 +121,8 @@ PrivateInfo.propTypes = {
     federal_government_experience: React.PropTypes.bool,
     other_panels: React.PropTypes.string,
     disclosures: React.PropTypes.object,
-    signed_agreements: React.PropTypes.array
+    signed_agreements: React.PropTypes.array,
+    recruiter_info: React.PropTypes.object,
 };
 
 export default PrivateInfo;

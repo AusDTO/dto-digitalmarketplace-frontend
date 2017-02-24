@@ -60,6 +60,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       case_study_url,
       public_profile,
       signed_agreements,
+      recruiter_info,
       ...body
     } = application;
 
@@ -131,7 +132,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
             federal_government_experience,
             other_panels,
             disclosures,
-            signed_agreements
+            signed_agreements,
+            recruiter_info
         } : {}),
         onClick
     }
