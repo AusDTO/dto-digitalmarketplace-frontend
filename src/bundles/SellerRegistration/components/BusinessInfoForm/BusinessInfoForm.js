@@ -82,12 +82,36 @@ class BusinessInfoForm extends BaseForm {
                             <Control.radio
                                 model={`${model}.number_of_employees`}
                                 name="number_of_employees"
-                                id="20to199"
-                                value="20-199"
+                                id="20to49"
+                                value="20-49"
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="20to199">20-199
+                            <label htmlFor="20to49">20-49
+
+                            </label>
+
+                            <Control.radio
+                                model={`${model}.number_of_employees`}
+                                name="number_of_employees"
+                                id="50to99"
+                                value="50-99"
+                                validators={{
+                                    required
+                                }}/>
+                            <label htmlFor="50to99">50-99
+
+                            </label>
+
+                            <Control.radio
+                                model={`${model}.number_of_employees`}
+                                name="number_of_employees"
+                                id="100to199"
+                                value="100-199"
+                                validators={{
+                                    required
+                                }}/>
+                            <label htmlFor="100to199">100-199
 
                             </label>
 
