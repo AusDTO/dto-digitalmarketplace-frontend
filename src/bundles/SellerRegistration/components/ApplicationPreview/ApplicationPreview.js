@@ -118,6 +118,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           interstate,
           CaseStudyLink: caseStudyLink,
           documents,
+          documentsUrl: documents_url,
           public_profile,
           ...body
         },

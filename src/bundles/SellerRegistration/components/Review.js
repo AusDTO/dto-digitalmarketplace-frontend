@@ -12,8 +12,7 @@ const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
             <div>
                 <h1 tabIndex="-1">Preview your new profile</h1>
                 {supplierCode ? (<span><p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Digital Marketplace.</p></span>)
-                :(<span><p>Take a moment to preview your new seller profile. This what government buyers (and assessors, if you are offering new services) will see in the Digital Marketplace.</p>
-                        <p>If the information is correct, you can continue to the legal disclosures and agreement.</p></span>) }
+                :(<span><p>Take a moment to preview your new seller profile. This what government buyers (and assessors, if you are offering new services) will see in the Digital Marketplace.</p></span>) }
 
                 <p>
                     <Link role="button" to={`${match.url}/profile`}>Preview your profile</Link>
