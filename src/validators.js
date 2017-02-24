@@ -123,6 +123,15 @@ export const limitNumbers = (limit) => (val = '') => {
     return length === limit && length === val.length;
 }
 
+export const validPercentage = (val) => {
+    if (!val) {
+        return true;
+    }
+
+    const length = (val.match(/[0-9.% ]/g) || []).length
+    return length === val.length;
+}
+
 export const validPhoneNumber = (val) => {
 
     if (!val) {
@@ -142,6 +151,7 @@ export default {
   validDate,
   validEmail,
   validPhoneNumber,
+  validPercentage,
   dependantRequired,
   minObjectLength,
   limitWords,

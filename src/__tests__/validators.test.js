@@ -53,6 +53,22 @@ test('validPhoneNumber', () => {
     expect(validator.validPhoneNumber('+61 2 12345678')).toBeTruthy();
 })
 
+test('validPercentage', () => {
+
+    expect(validator.validPercentage(false)).toBeTruthy();
+
+
+    expect(validator.validPercentage('one percent')).toBeFalsy();
+
+    expect(validator.validPercentage('1 ')).toBeTruthy();
+    expect(validator.validPercentage('1% ')).toBeTruthy();
+    expect(validator.validPercentage('1')).toBeTruthy();
+    expect(validator.validPercentage('1.1')).toBeTruthy();
+    expect(validator.validPercentage('11.11')).toBeTruthy();
+    expect(validator.validPercentage('1.1%')).toBeTruthy();
+    expect(validator.validPercentage('11.1%')).toBeTruthy();
+})
+
 test('validABN', () => {
 
     expect(validator.validABN('')).toBeFalsy();

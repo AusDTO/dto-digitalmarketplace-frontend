@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Form} from 'react-redux-form';
 
 import Layout     from '../../../../shared/Layout';
-import {required} from '../../../../validators';
+import {required, validPercentage} from '../../../../validators';
 
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
@@ -90,9 +90,10 @@ class CandidatesForm extends BaseForm {
                                         label="What is your mark-up?"
                                         description="Markup is the percentage you apply to a contractor’s daily fee."
                                         messages={{
-                                            required: 'You must supply your mark-up'
+                                            required: 'You must supply your mark-up',
+                                            validPercentage: 'You must supply your mark-up as a percentage'
                                         }}
-                                        validators={{required}}
+                                        validators={{required, validPercentage}}
                                     />
                                     <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.margin`}
@@ -102,9 +103,10 @@ class CandidatesForm extends BaseForm {
                                         label="What is your margin?"
                                         description="Margin is the percentage of the total daily fee paid to your recruitment company."
                                         messages={{
-                                            required: 'You must supply your margin'
+                                            required: 'You must supply your margin',
+                                            validPercentage: 'You must supply your margin as percentage'
                                         }}
-                                        validators={{required}}
+                                        validators={{required, validPercentage}}
                                     />
                                 </div>
                             )
