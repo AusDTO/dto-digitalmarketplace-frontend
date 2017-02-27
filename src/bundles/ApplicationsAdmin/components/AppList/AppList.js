@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { convertApplicationToSeller, rejectApplication } from '../../redux/modules/applications'
+import { convertApplicationToSeller, rejectApplication, revertApplication } from '../../redux/modules/applications'
 import format from 'date-fns/format';
 
 
-const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
+const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAcceptClick}) => (
   <div><h2>{meta.heading}</h2>
   <table className="content-table">
 
@@ -38,12 +38,20 @@ const AppList = ({meta = {}, applications, onRejectClick, onAcceptClick}) => (
           <a target="_blank" rel="external" className={t.status} key={t.key} href={t.link}>{t.summary}</a>
         )}
       </td>
-        <td>{ a.status === 'submitted' &&
-          <button onClick={e => {
-                 e.preventDefault();
-                 onRejectClick(a.id);
-               }} name="Reject">Reject</button>
-          }
+        <td>
+
+            { a.status === 'submitted' &&
+            <button onClick={e => {
+                e.preventDefault();
+                onRejectClick(a.id);
+            }} name="Reject">Reject</button>
+            }
+            { a.status === 'submitted' &&
+            <button onClick={e => {
+                e.preventDefault();
+                onRevertClick(a.id);
+            }} name="Revert">Revert</button>
+            }
           { a.status === 'submitted' &&
         <button onClick={e => {
                e.preventDefault();
@@ -67,6 +75,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAcceptClick: (id) => {
       dispatch(convertApplicationToSeller(id))
+    },
+    onRevertClick: (id) => {
+        dispatch(revertApplication(id))
     },
     onRejectClick: (id) => {
       dispatch(rejectApplication(id))
