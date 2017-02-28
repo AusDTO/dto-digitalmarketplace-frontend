@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import { convertApplicationToSeller, rejectApplication, revertApplication } from '../../redux/modules/applications'
 import format from 'date-fns/format';
 
+import './AppList.css'
 
 const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAcceptClick}) => (
-  <div><h2>{meta.heading}</h2>
+  <div styleName="appList">
+    <h2>{meta.heading}</h2>
   <table className="content-table">
 
   <thead>
@@ -35,7 +37,7 @@ const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAccep
       <td>{a.status}</td>
       <td>
         {a.tasks && a.tasks.subtasks.map((t, i) =>
-          <a target="_blank" rel="external" className={t.status} key={t.key} href={t.link}>{t.summary}</a>
+          <a target="_blank" rel="external" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
         )}
       </td>
         <td>
@@ -44,13 +46,13 @@ const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAccep
             <button onClick={e => {
                 e.preventDefault();
                 onRejectClick(a.id);
-            }} name="Reject">Reject</button>
+            }} name="Reject" styleName="reject">Reject</button>
             }
             { a.status === 'submitted' &&
             <button onClick={e => {
                 e.preventDefault();
                 onRevertClick(a.id);
-            }} name="Revert">Revert</button>
+            }} name="Revert" styleName="revert">Revert</button>
             }
           { a.status === 'submitted' &&
         <button onClick={e => {
@@ -60,7 +62,8 @@ const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAccep
         }</td>
     </tr>
   )})}
-  </tbody></table></div>
+  </tbody></table>
+  </div>
 )
 
 const mapStateToProps = ({applications, meta}, ownProps) => {
