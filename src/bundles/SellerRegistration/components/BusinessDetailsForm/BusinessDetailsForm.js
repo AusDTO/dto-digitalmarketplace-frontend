@@ -187,7 +187,7 @@ class BusinessDetailsForm extends BaseForm {
                         <div>
                             {businessDetailsForm.addresses &&
                                 Object.keys(businessDetailsForm.addresses)
-                                    .filter((value) => {return value > 0;})
+                                    .filter((value) => {return value > 0 && businessDetailsForm.addresses[value] !== null;})
                                     .map((key, i) => {
                               return (
                                 <div styleName="address-wrapper" key={key}>
