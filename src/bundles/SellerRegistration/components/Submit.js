@@ -54,7 +54,7 @@ class SubmitStepForm extends BaseForm {
     render() {
         let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit} = this.props;
         let message;
-        const userIsAuthorised = userEmail === email;
+        const userIsAuthorised = userEmail && email && userEmail.toLowerCase() === email.toLowerCase();
         const title = userIsAuthorised ? 'Your declaration': 'Share with authorised representative';
         const buttonText = userIsAuthorised ? 'Submit application' : 'Send email to representative';
         const action = userIsAuthorised ? submitUrl : authoriseUrl;
