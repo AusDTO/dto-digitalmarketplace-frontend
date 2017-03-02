@@ -118,7 +118,8 @@ class BusinessDetailsForm extends BaseForm {
                             label="Website URL"
                             description="Provide a link to your website beginning with http"
                             messages={{
-                                required: 'You must provide a website link beginning with http'
+                                required: 'You must provide a website link beginning with http',
+                                validLinks: 'Links provided must begin with http'
                             }}
                             validators={{required, validLinks}}
                         />
