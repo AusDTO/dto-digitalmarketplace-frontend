@@ -120,7 +120,7 @@ class BusinessDetailsForm extends BaseForm {
                             messages={{
                                 required: 'You must provide a website link beginning with http'
                             }}
-                            validators={{required}}
+                            validators={{required, validLinks}}
                         />
 
                         <Textfield
