@@ -4,6 +4,7 @@
 
 .remove-button {
 	float:right;
+	margin: 0;
 }
 
 .address-wrapper {
