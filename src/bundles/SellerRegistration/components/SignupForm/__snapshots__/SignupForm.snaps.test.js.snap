@@ -106,6 +106,7 @@ exports[`SignupForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -137,6 +138,7 @@ exports[`SignupForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="email"
           value=""
         />
@@ -276,6 +278,7 @@ exports[`SignupForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -307,6 +310,7 @@ exports[`SignupForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="email"
           value=""
         />
