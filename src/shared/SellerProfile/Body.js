@@ -114,13 +114,9 @@ const Body = (props) => {
                                     <a style={{display: 'inline'}} href={product.website} target="_blank"
                                        rel="external">{product.name}</a>
                                 </h3>
-                            </div>
-                            <div className="col-xs-12 col-sm-7">
                                 <p className="freetext">
                                     {product.summary}
                                 </p>
-                            </div>
-                            <div className="col-xs-12 col-sm-5">
                                 <p>
                                     <a style={{display: 'inline'}} href={product.pricing} target="_blank"
                                        rel="external">Product pricing</a>
