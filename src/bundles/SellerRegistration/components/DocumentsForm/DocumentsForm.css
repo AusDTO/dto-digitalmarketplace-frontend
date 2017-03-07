@@ -1,0 +1,47 @@
+.question-heading {
+
+  font-weight: bold;
+}
+
+.uploadStyle {
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+  border-bottom: solid 1px #5bcbe3;
+}
+
+
+
+form p {
+  margin-top: 0px;
+  margin-bottom: 1.2em;
+}
+
+.paddTop{
+  padding-top: 1.2em;
+  height: 0px;
+  margin-bottom: 0px;
+}
+.inputfileHide {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.uploadContainer{
+    margin: 1.6em 0;
+    padding: 0 1.2em 0 1.6em;
+    box-shadow: none;
+    background-color: #e8f5fa;
+}
+
+.sumbitInContainer{
+  margin-top: 0px;
+}
+
+.textRight {
+  text-align: right;
+}

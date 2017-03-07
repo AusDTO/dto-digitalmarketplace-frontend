@@ -32,7 +32,7 @@ Another important feature of the local environment is mocks. You have the abilit
 
 The integrated environment is the provides a development build of both assets and the rendering service. This allows us to test local features before they reach an integrated environment.
 
-This style relies on two commands running: `yarn build:development` and `yarn server:development`, both these tasks come with watchers so you should never need to restart either. The development build command will log out webpack stats and any linter errors into your console as you are working.
+This style relies on two commands running: `yarn build:development` and `yarn server:development`, both these tasks come with watchers so you should never need to restart either. The development build command will sign out webpack stats and any linter errors into your console as you are working.
 
 The server will load up on port `60000`, this a server side rendering service for React bundles. [Read More]()
 

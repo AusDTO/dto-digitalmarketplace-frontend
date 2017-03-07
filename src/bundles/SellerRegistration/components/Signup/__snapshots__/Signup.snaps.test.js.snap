@@ -157,10 +157,10 @@ exports[`test Signup renders 1`] = `
         Joining the Digital Marketplace
       </h1>
       <p>
-        To become a registered seller and offer your services or software products to government you need to tell us about your business. 
+        To become a registered seller and offer your services or software products to government you need to tell us about your business.
       </p>
       <p>
-         The information you share will be used to create your seller profile, and later to confirm you meet the 
+         The information you share will be used to create your seller profile, and later to confirm you meet the
         <a
           href="/assessment-criteria"
           rel="external"
@@ -205,7 +205,7 @@ exports[`test Signup renders 1`] = `
           </a>
         </li>
       </ul>
-      The terms and conditions for this application are available in our 
+      The terms and conditions for this application are available in our
       <a
         href="http://tenders.gov.au">
         open invitation to join the Digital Marketplace
@@ -216,7 +216,7 @@ exports[`test Signup renders 1`] = `
           href="#"
           onClick={[Function]}
           role="button">
-          Start now 
+          Start now
         </a>
       </p>
     </div>
@@ -475,7 +475,7 @@ exports[`test Signup renders empty Your Info form 1`] = `
             <p
               className="hint"
               id="representative-hint">
-              This is the person authorised to enter into contracts on behalf of the business. 
+              This is the person authorised to enter into contracts on behalf of the business.
             </p>
             <input
               aria-describedby="representative-hint"
@@ -807,7 +807,7 @@ exports[`test Signup renders populated Your Info form 1`] = `
             <p
               className="hint"
               id="representative-hint">
-              This is the person authorised to enter into contracts on behalf of the business. 
+              This is the person authorised to enter into contracts on behalf of the business.
             </p>
             <input
               aria-describedby="representative-hint"

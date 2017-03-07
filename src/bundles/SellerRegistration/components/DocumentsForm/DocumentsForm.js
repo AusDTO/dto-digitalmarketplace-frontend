@@ -17,6 +17,9 @@ import {uploadDocument, submitApplication} from '../../redux/modules/application
 
 import { minObjectLength, validDate } from '../../../../validators';
 
+import './DocumentsForm.css';
+
+
 class DocumentsForm extends BaseForm {
 
     static propTypes = {
@@ -68,12 +71,15 @@ class DocumentsForm extends BaseForm {
         removeDocument(model, id);
         createDocument(model, id);
 
-        onUpload(id, file)
+        onUpload(id, file, e)
             .then((filename) => {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
                 updateDocumentName(model, id, filename);
+                var spantToHide= "span_" + id;
+                document.getElementById(spantToHide).style.display = "none";
+
             })
             .then(submitApplication)
             .catch((error) => {
@@ -99,7 +105,8 @@ class DocumentsForm extends BaseForm {
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
             errors: {[id]: void 0}
-        })
+        });
+        getFileName(e);
     }
 
     render() {
@@ -114,7 +121,7 @@ class DocumentsForm extends BaseForm {
                 <header>
                     <h1 tabIndex="-1">Upload your documents</h1>
                     <p>{intro}
-                        Each should be no larger than 5MB and in <strong>PDF</strong>, <strong>PNG</strong> or <strong>JPEG </strong>
+                        Each should be no larger than 5MB and in PDF, PNG or JPEG
                         format.If you have multiple files for a document, please scan and merge as one upload.
                     </p>
                 </header>
@@ -151,54 +158,65 @@ class DocumentsForm extends BaseForm {
                             const expiry_date_field = 'expiry_date_' + key;
                             const errors = this.state.errors[key];
                             return (
-                                <div key={key} className="callout">
-                                    <label className="question-heading" htmlFor={key}>{field.label}</label>
+                                <div key={key} className="callout-no-margin">
+                                    <label styleName="question-heading" htmlFor={key}>{field.label}</label>
                                     <p>{field.description}</p>
 
                                     <div>
                                         <div id={expiry_date_field}>
                                             {isEmpty(doc.filename) && (
                                                 <p>
-                                                    <input type="file" id={key} name={key} accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)}/>
+                                                    <input type="file" id={key} name={key} styleName="inputfileHide" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
+                                                    <label htmlFor={key} id={"label_" + key}  styleName="uploadStyle">Choose file</label>
+
                                                 </p>
+
+
                                             )}
-                                            {(field.expires && !isEmpty(doc.filename)) && <div>
-                                                <StatefulError
-                                                    model={`${model}.documents.${key}.expiry`}
-                                                    id={expiry_date_field}
-                                                    messages={{
-                                                        validDate: 'Expiry date is required for this document and must be in the future.',
-                                                    }}
-                                                />
-                                                <Control
-                                                model={`${model}.documents.${key}.expiry`}
-                                                component={Datefield}
-                                                name={expiry_date_field}
-                                                id={expiry_date_field}
-                                                htmlFor={expiry_date_field}
-                                                label="Expiry date:"
-                                                validators={{validDate}}
-                                                controlProps={{
-                                                    id: expiry_date_field,
-                                                    model: `${model}.documents.${key}.expiry`,
-                                                    htmlFor: expiry_date_field,
-                                                    label: "Expiry date"
-                                                }}
-                                            /></div>}
                                         </div>
 
                                         <div>
-                                            {fieldState.uploading && 'Uploading...'}
-                                            {errors && 'There was an error uploading the file'}
-                                            {!isEmpty(doc.filename) && <p><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank"
-                                                                             rel="external">{doc.filename}</a></p>}
+                                                                                        {!isEmpty(doc.filename) && <ul className="bordered-list"><li className="bordered-list__item row"><div className="col-xs-9"><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a></div><div className="col-xs-3" styleName="textRight"><a href="3" onClick={this.onReset.bind(this, key)}>Delete</a></div></li></ul>}
+
+
                                         </div>
+
+                                        {(field.expires && !isEmpty(doc.filename)) && <div>
+                                            <StatefulError
+                                                model={`${model}.documents.${key}.expiry`}
+                                                id={expiry_date_field}
+                                                messages={{
+                                                    validDate: 'Expiry date is required for this document and must be in the future.',
+                                                }}
+                                            />
+                                            <Control
+                                            model={`${model}.documents.${key}.expiry`}
+                                            component={Datefield}
+                                            name={expiry_date_field}
+                                            id={expiry_date_field}
+                                            htmlFor={expiry_date_field}
+                                            label="Expiry date:"
+                                            validators={{validDate}}
+                                            controlProps={{
+                                                id: expiry_date_field,
+                                                model: `${model}.documents.${key}.expiry`,
+                                                htmlFor: expiry_date_field,
+                                                label: "Enter the expiry date of attached document"
+                                            }}
+                                        /></div>}
                                     </div>
-                                    <div className="actions">
+                                    <div styleName="uploadContainer">
                                         {fieldState.file &&
-                                        <button type="submit" onClick={this.onUpload.bind(this, key)}>Upload</button>}
-                                        {!isEmpty(doc) &&
-                                        <button type="reset" onClick={this.onReset.bind(this, key)}>Remove</button>}
+                                        <p styleName="paddTop">&nbsp;</p>}
+                                        {fieldState.uploading && <p><strong>Uploading...</strong></p>}
+                                        {errors && 'There was an error uploading the file'}
+                                        <p id={"span_" + key}></p>
+                                        {fieldState.file &&
+                                        <button type="submit" styleName="sumbitInContainer" onClick={this.onUpload.bind(this, key)}>Upload</button>}
+
+                                        {fieldState.file &&
+                                        <label htmlFor={key} styleName="uploadStyle">Choose file</label>}
+
                                     </div>
 
                                 </div>
@@ -218,6 +236,18 @@ const mapStateToProps = (state) => {
         supplierCode: state.application.supplierCode,
         ...formProps(state, 'documentsForm')
     }
+}
+
+function getFileName(e) {
+  var fileName, labelid, doc, spanid;
+  spanid= "span_" + e.target.id;
+  labelid= "label_" + e.target.id;
+  fileName = e.target.value.split( '\\' ).pop();
+
+  var doc = document.getElementById("spanid");
+  document.getElementById(spanid).innerHTML = fileName;
+  document.getElementById(labelid).style.display = "none";
+
 }
 
 const mapDispatchToProps = (dispatch) => {
