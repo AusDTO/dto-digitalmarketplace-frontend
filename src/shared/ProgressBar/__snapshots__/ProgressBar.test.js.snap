@@ -1,5 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`Incomplete progress 1`] = `
 <div
   className="progress-bar"
@@ -27,6 +25,45 @@ exports[`Maxed out progressbar 1`] = `
       }
     }
   />
+</div>
+`;
+
+exports[`test Incomplete progress 1`] = `
+<div
+  className="progress-bar">
+  <div
+    className="progress-bar__progress"
+    style={
+      Object {
+        "width": "60%",
+      }
+    } />
+</div>
+`;
+
+exports[`test Maxed out progressbar 1`] = `
+<div
+  className="progress-bar">
+  <div
+    className="progress-bar__progress progress-bar--max"
+    style={
+      Object {
+        "width": "100%",
+      }
+    } />
+</div>
+`;
+
+exports[`test value greater than max 1`] = `
+<div
+  className="progress-bar">
+  <div
+    className="progress-bar__progress progress-bar--max"
+    style={
+      Object {
+        "width": "100%",
+      }
+    } />
 </div>
 `;
 

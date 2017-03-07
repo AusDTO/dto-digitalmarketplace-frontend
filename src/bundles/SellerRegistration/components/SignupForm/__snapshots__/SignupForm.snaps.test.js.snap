@@ -1,5 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`SignupForm renders 1`] = `
 <div
   className="layout"
@@ -329,6 +327,303 @@ exports[`SignupForm renders with form_options 1`] = `
         type="submit"
         value="Create your account"
       />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test SignupForm renders 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Let’s get started
+    </h1>
+  </header>
+  <article
+    role="main">
+    <form
+      action={undefined}
+      id="signup"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <div
+        styleName="user-type">
+        <div
+          className="field">
+          <fieldset>
+            <legend>
+              First, tell us how you want to use the Digital Marketplace
+            </legend>
+            <div>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-buyer"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="buyer" />
+                <label
+                  htmlFor="user_type-buyer">
+                  <span>
+                    Buyer
+                    <p>
+                       I want to buy on behalf of
+                      <br />
+                      government.
+                    </p>
+                  </span>
+                </label>
+              </span>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-seller"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="seller" />
+                <label
+                  htmlFor="user_type-seller">
+                  <span>
+                    Seller
+                    <p>
+                       I want to sell digital products or services.
+                    </p>
+                  </span>
+                </label>
+              </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      Now enter your name and your work email address.
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Full name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          disabled={false}
+          id="name"
+          maxLength={undefined}
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email_address">
+          Email address
+        </label>
+        <p
+          className="hint"
+          id="email_address-hint">
+          <br />
+        </p>
+        <input
+          aria-describedby="email_address-hint"
+          className=""
+          disabled={false}
+          id="email_address"
+          maxLength={undefined}
+          name="email_address"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="email"
+          value="" />
+      </div>
+      <p>
+        <small>
+          By creating an account you confirm your acceptance of our 
+          <a
+            href="/terms-of-use"
+            rel="external"
+            target="_blank">
+            Terms of Use
+          </a>
+          .
+        </small>
+      </p>
+      <input
+        role="button"
+        type="submit"
+        value="Create your account" />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test SignupForm renders with form_options 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1>
+      Let’s get started
+    </h1>
+  </header>
+  <article
+    role="main">
+    <form
+      action={undefined}
+      id="signup"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <input
+        id="csrf_token"
+        name="csrf_token"
+        type="hidden"
+        value="sometoken" />
+      <div
+        styleName="user-type">
+        <div
+          className="field">
+          <fieldset>
+            <legend>
+              First, tell us how you want to use the Digital Marketplace
+            </legend>
+            <div>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-buyer"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="buyer" />
+                <label
+                  htmlFor="user_type-buyer">
+                  <span>
+                    Buyer
+                    <p>
+                       I want to buy on behalf of
+                      <br />
+                      government.
+                    </p>
+                  </span>
+                </label>
+              </span>
+              <span>
+                <input
+                  checked={false}
+                  disabled={false}
+                  id="user_type-seller"
+                  name="user_type"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyPress={[Function]}
+                  type="radio"
+                  value="seller" />
+                <label
+                  htmlFor="user_type-seller">
+                  <span>
+                    Seller
+                    <p>
+                       I want to sell digital products or services.
+                    </p>
+                  </span>
+                </label>
+              </span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      Now enter your name and your work email address.
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="name">
+          Full name
+        </label>
+        <input
+          aria-describedby={undefined}
+          className=""
+          disabled={false}
+          id="name"
+          maxLength={undefined}
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="field">
+        <label
+          className="question-heading"
+          htmlFor="email_address">
+          Email address
+        </label>
+        <p
+          className="hint"
+          id="email_address-hint">
+          <br />
+        </p>
+        <input
+          aria-describedby="email_address-hint"
+          className=""
+          disabled={false}
+          id="email_address"
+          maxLength={undefined}
+          name="email_address"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          type="email"
+          value="" />
+      </div>
+      <p>
+        <small>
+          By creating an account you confirm your acceptance of our 
+          <a
+            href="/terms-of-use"
+            rel="external"
+            target="_blank">
+            Terms of Use
+          </a>
+          .
+        </small>
+      </p>
+      <input
+        role="button"
+        type="submit"
+        value="Create your account" />
     </form>
   </article>
 </div>

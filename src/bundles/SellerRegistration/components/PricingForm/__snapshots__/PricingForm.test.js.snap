@@ -1,5 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`PricingForm renders a notice that domains are required 1`] = `
 <div
   className="layout"
@@ -217,6 +215,194 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         type="submit"
         value="Save &amp; Continue"
       />
+    </form>
+  </article>
+</div>
+`;
+
+exports[`test PricingForm renders a notice that domains are required 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1
+      tabIndex="-1">
+      Pricing
+    </h1>
+  </header>
+  <article
+    role="main">
+    <p>
+      You must select some domains before specifying pricing!
+    </p>
+    <p>
+      <a
+        href="/domains"
+        onClick={[Function]}>
+        Select domains
+      </a>
+    </p>
+  </article>
+</div>
+`;
+
+exports[`test PricingForm renders price fields when domains are present 1`] = `
+<div
+  className="layout">
+  <header>
+    <h1
+      tabIndex="-1">
+      Pricing
+    </h1>
+    <p>
+      This will only be visible to government buyers, not to other sellers on the Marketplace.
+    </p>
+  </header>
+  <article
+    role="main">
+    <form
+      action={undefined}
+      id="DomainSelector__create"
+      method="post"
+      onReset={[Function]}
+      onSubmit={[Function]}>
+      <input
+        id="csrf_token"
+        name="csrf_token"
+        type="hidden"
+        value="abc" />
+      <fieldset
+        className="field">
+        <legend>
+          User research
+        </legend>
+        <div
+          className="row">
+          <div
+            className="col-sm-5 col-xs-12">
+            <label
+              htmlFor="user-research-minprice">
+              Min. Daily Price
+            </label>
+            <input
+              disabled={false}
+              id="user-research-minprice"
+              name="services.User research.minPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="col-sm-push-1 col-sm-5 col-xs-12">
+            <label
+              htmlFor="user-research-maxprice">
+              Max. Daily Price
+            </label>
+            <input
+              disabled={false}
+              id="user-research-maxprice"
+              name="services.User research.maxPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset
+        className="field">
+        <legend>
+          Content development
+        </legend>
+        <div
+          className="row">
+          <div
+            className="col-sm-5 col-xs-12">
+            <label
+              htmlFor="content-development-minprice">
+              Min. Daily Price
+            </label>
+            <input
+              disabled={false}
+              id="content-development-minprice"
+              name="services.Content development.minPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="col-sm-push-1 col-sm-5 col-xs-12">
+            <label
+              htmlFor="content-development-maxprice">
+              Max. Daily Price
+            </label>
+            <input
+              disabled={false}
+              id="content-development-maxprice"
+              name="services.Content development.maxPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset
+        className="field">
+        <legend>
+          Content management
+        </legend>
+        <div
+          className="row">
+          <div
+            className="col-sm-5 col-xs-12">
+            <label
+              htmlFor="content-management-minprice">
+              Min. Daily Price
+            </label>
+            <input
+              disabled={false}
+              id="content-management-minprice"
+              name="services.Content management.minPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="col-sm-push-1 col-sm-5 col-xs-12">
+            <label
+              htmlFor="content-management-maxprice">
+              Max. Daily Price
+            </label>
+            <input
+              disabled={false}
+              id="content-management-maxprice"
+              name="services.Content management.maxPrice"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="text"
+              value="" />
+          </div>
+        </div>
+      </fieldset>
+      <input
+        role="button"
+        type="submit"
+        value="Save &amp; Continue" />
     </form>
   </article>
 </div>

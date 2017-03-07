@@ -1,5 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`BusinessDetailsWidget renders correctly 1`] = `
 <div
   className="row"
@@ -318,6 +316,287 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
             type="submit"
             value="Update profile"
           />
+        </form>
+      </article>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test BusinessDetailsWidget renders correctly 1`] = `
+<div
+  className="row">
+  <div
+    className="col-sm-push-2 col-sm-8 col-xs-12">
+    <div
+      className="layout">
+      <header>
+        <h1
+          tabIndex="-1">
+          Tell us about your business
+        </h1>
+      </header>
+      <article
+        role="main">
+        <form
+          action={undefined}
+          id="BusinessDetails__create"
+          method="post"
+          onReset={[Function]}
+          onSubmit={[Function]}>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="name">
+              Business name
+            </label>
+            <p
+              className="hint"
+              id="name-hint">
+              As you would like it shown on the Digital Marketplace.
+            </p>
+            <input
+              aria-describedby="name-hint"
+              className=""
+              disabled={false}
+              id="name"
+              maxLength={undefined}
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="abn">
+              ABN
+            </label>
+            <p
+              className="hint"
+              id="abn-hint">
+              <span>
+                You need an Australian Business Number to do business in Australia. 
+                <a
+                  href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/"
+                  rel="external"
+                  target="_blank">
+                  Apply for an ABN here.
+                </a>
+              </span>
+            </p>
+            <input
+              aria-describedby="abn-hint"
+              className=""
+              disabled={false}
+              id="abn"
+              maxLength={undefined}
+              name="abn"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="summary">
+              Summary
+            </label>
+            <p
+              className="hint"
+              id="summary-hint">
+              3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
+            </p>
+            <div>
+              <textarea
+                aria-describedby="summary-hint"
+                className="under-50"
+                defaultValue=""
+                id="summary"
+                name="summary"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]} />
+              <span
+                className="word-count-counter">
+                50 words remaining
+              </span>
+            </div>
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="website">
+              Website URL
+            </label>
+            <p
+              className="hint"
+              id="website-hint">
+              Provide a link to your website beginning with http
+            </p>
+            <input
+              aria-describedby="website-hint"
+              className=""
+              disabled={false}
+              id="website"
+              maxLength={undefined}
+              name="website"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="linkedin">
+              LinkedIn URL (optional)
+            </label>
+            <p
+              className="hint"
+              id="linkedin-hint">
+              Provide a LinkedIn URL beginning with http
+            </p>
+            <input
+              aria-describedby="linkedin-hint"
+              className=""
+              disabled={false}
+              id="linkedin"
+              maxLength={undefined}
+              name="linkedin"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="address_line">
+              Primary Address
+            </label>
+            <p
+              className="hint"
+              id="address_line-hint">
+              Principal place of business.
+            </p>
+            <input
+              aria-describedby="address_line-hint"
+              className=""
+              disabled={false}
+              id="address_line"
+              maxLength={undefined}
+              name="address.address_line"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="suburb">
+              Suburb
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              disabled={false}
+              id="suburb"
+              maxLength={undefined}
+              name="address.suburb"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="state">
+              State
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              disabled={false}
+              id="state"
+              maxLength={undefined}
+              name="address.state"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="field">
+            <label
+              className="question-heading"
+              htmlFor="postal_code">
+              Postcode
+            </label>
+            <input
+              aria-describedby={undefined}
+              className=""
+              disabled={false}
+              id="postal_code"
+              maxLength="4"
+              name="address.postal_code"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              type="text"
+              value="" />
+          </div>
+          <div>
+            <p
+              styleName="footer">
+              More offices?
+            </p>
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              type="submit">
+              Add another address
+            </button>
+          </div>
+          <input
+            role="button"
+            type="submit"
+            value="Update profile" />
         </form>
       </article>
     </div>
