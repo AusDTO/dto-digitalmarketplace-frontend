@@ -1,23 +1,30 @@
-exports[`test SignupForm renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignupForm renders 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <h1>
       Let’s get started
     </h1>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action={undefined}
       id="signup"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <div
-        styleName="user-type">
+        styleName="user-type"
+      >
         <div
-          className="field">
+          className="field"
+        >
           <fieldset>
             <legend>
               First, tell us how you want to use the Digital Marketplace
@@ -34,9 +41,11 @@ exports[`test SignupForm renders 1`] = `
                   onFocus={[Function]}
                   onKeyPress={[Function]}
                   type="radio"
-                  value="buyer" />
+                  value="buyer"
+                />
                 <label
-                  htmlFor="user_type-buyer">
+                  htmlFor="user_type-buyer"
+                >
                   <span>
                     Buyer
                     <p>
@@ -58,9 +67,11 @@ exports[`test SignupForm renders 1`] = `
                   onFocus={[Function]}
                   onKeyPress={[Function]}
                   type="radio"
-                  value="seller" />
+                  value="seller"
+                />
                 <label
-                  htmlFor="user_type-seller">
+                  htmlFor="user_type-seller"
+                >
                   <span>
                     Seller
                     <p>
@@ -75,10 +86,12 @@ exports[`test SignupForm renders 1`] = `
       </div>
       Now enter your name and your work email address.
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="name">
+          htmlFor="name"
+        >
           Full name
         </label>
         <input
@@ -94,18 +107,22 @@ exports[`test SignupForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="email_address">
+          htmlFor="email_address"
+        >
           Email address
         </label>
         <p
           className="hint"
-          id="email_address-hint">
+          id="email_address-hint"
+        >
           <br />
         </p>
         <input
@@ -121,7 +138,8 @@ exports[`test SignupForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="email"
-          value="" />
+          value=""
+        />
       </div>
       <p>
         <small>
@@ -129,7 +147,8 @@ exports[`test SignupForm renders 1`] = `
           <a
             href="/terms-of-use"
             rel="external"
-            target="_blank">
+            target="_blank"
+          >
             Terms of Use
           </a>
           .
@@ -138,37 +157,44 @@ exports[`test SignupForm renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Create your account" />
+        value="Create your account"
+      />
     </form>
   </article>
 </div>
 `;
 
-exports[`test SignupForm renders with form_options 1`] = `
+exports[`SignupForm renders with form_options 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <h1>
       Let’s get started
     </h1>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action={undefined}
       id="signup"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="sometoken" />
+        value="sometoken"
+      />
       <div
-        styleName="user-type">
+        styleName="user-type"
+      >
         <div
-          className="field">
+          className="field"
+        >
           <fieldset>
             <legend>
               First, tell us how you want to use the Digital Marketplace
@@ -185,9 +211,11 @@ exports[`test SignupForm renders with form_options 1`] = `
                   onFocus={[Function]}
                   onKeyPress={[Function]}
                   type="radio"
-                  value="buyer" />
+                  value="buyer"
+                />
                 <label
-                  htmlFor="user_type-buyer">
+                  htmlFor="user_type-buyer"
+                >
                   <span>
                     Buyer
                     <p>
@@ -209,9 +237,11 @@ exports[`test SignupForm renders with form_options 1`] = `
                   onFocus={[Function]}
                   onKeyPress={[Function]}
                   type="radio"
-                  value="seller" />
+                  value="seller"
+                />
                 <label
-                  htmlFor="user_type-seller">
+                  htmlFor="user_type-seller"
+                >
                   <span>
                     Seller
                     <p>
@@ -226,10 +256,12 @@ exports[`test SignupForm renders with form_options 1`] = `
       </div>
       Now enter your name and your work email address.
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="name">
+          htmlFor="name"
+        >
           Full name
         </label>
         <input
@@ -245,18 +277,22 @@ exports[`test SignupForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="field">
+        className="field"
+      >
         <label
           className="question-heading"
-          htmlFor="email_address">
+          htmlFor="email_address"
+        >
           Email address
         </label>
         <p
           className="hint"
-          id="email_address-hint">
+          id="email_address-hint"
+        >
           <br />
         </p>
         <input
@@ -272,7 +308,8 @@ exports[`test SignupForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="email"
-          value="" />
+          value=""
+        />
       </div>
       <p>
         <small>
@@ -280,7 +317,8 @@ exports[`test SignupForm renders with form_options 1`] = `
           <a
             href="/terms-of-use"
             rel="external"
-            target="_blank">
+            target="_blank"
+          >
             Terms of Use
           </a>
           .
@@ -289,7 +327,8 @@ exports[`test SignupForm renders with form_options 1`] = `
       <input
         role="button"
         type="submit"
-        value="Create your account" />
+        value="Create your account"
+      />
     </form>
   </article>
 </div>

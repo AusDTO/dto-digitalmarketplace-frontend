@@ -1,4 +1,6 @@
-exports[`test Textarea with limit 5, 10 words 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea with limit 5, 10 words 1`] = `
 <div>
   <textarea
     aria-describedby={undefined}
@@ -8,15 +10,17 @@ exports[`test Textarea with limit 5, 10 words 1`] = `
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
-    onFocus={[Function]} />
+    onFocus={[Function]}
+  />
   <span
-    className="word-count-counter">
+    className="word-count-counter"
+  >
     5 words too many
   </span>
 </div>
 `;
 
-exports[`test Textarea with limit 100, 10 words 1`] = `
+exports[`Textarea with limit 100, 10 words 1`] = `
 <div>
   <textarea
     aria-describedby={undefined}
@@ -26,15 +30,17 @@ exports[`test Textarea with limit 100, 10 words 1`] = `
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
-    onFocus={[Function]} />
+    onFocus={[Function]}
+  />
   <span
-    className="word-count-counter">
+    className="word-count-counter"
+  >
     90 words remaining
   </span>
 </div>
 `;
 
-exports[`test Textarea with limit 100, no words 1`] = `
+exports[`Textarea with limit 100, no words 1`] = `
 <div>
   <textarea
     aria-describedby={undefined}
@@ -44,15 +50,17 @@ exports[`test Textarea with limit 100, no words 1`] = `
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
-    onFocus={[Function]} />
+    onFocus={[Function]}
+  />
   <span
-    className="word-count-counter">
+    className="word-count-counter"
+  >
     100 words remaining
   </span>
 </div>
 `;
 
-exports[`test Textarea with no words, no limit 1`] = `
+exports[`Textarea with no words, no limit 1`] = `
 <div>
   <textarea
     aria-describedby={undefined}
@@ -62,7 +70,8 @@ exports[`test Textarea with no words, no limit 1`] = `
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
-    onFocus={[Function]} />
+    onFocus={[Function]}
+  />
   
 </div>
 `;
