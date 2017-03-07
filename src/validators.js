@@ -3,6 +3,7 @@ import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid';
 import isFuture from 'date-fns/is_future';
 import {isValidABN} from 'abnacn-validator';
+import values from 'lodash/values';
 
 export const required = (val) => {
   if (typeof val === 'boolean') {
@@ -12,6 +13,12 @@ export const required = (val) => {
   if (Array.isArray(val)) {
     return val.filter(v => v.trim()).length
   }
+
+    if (val !== null && typeof val === 'object') {
+        return values(val).filter(function (v) {
+            return v
+        }).length;
+    }
 
   return val && val.trim().length;
 };
@@ -116,6 +123,15 @@ export const limitNumbers = (limit) => (val = '') => {
     return length === limit && length === val.length;
 }
 
+export const validPercentage = (val) => {
+    if (!val) {
+        return true;
+    }
+
+    const length = (val.match(/[0-9.% ]/g) || []).length
+    return length === val.length;
+}
+
 export const validPhoneNumber = (val) => {
 
     if (!val) {
@@ -135,6 +151,7 @@ export default {
   validDate,
   validEmail,
   validPhoneNumber,
+  validPercentage,
   dependantRequired,
   minObjectLength,
   limitWords,

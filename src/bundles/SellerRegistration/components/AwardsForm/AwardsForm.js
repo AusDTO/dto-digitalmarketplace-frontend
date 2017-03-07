@@ -21,13 +21,13 @@ class AwardsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed} = this.props;
         return (
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Awards and accreditations</h1>
-                    <p>This is your opportunity to share some of the things you’re proud of.
-                        All questions are optional but powerful for helping your business attract potential buyers. </p>
+                    <p>This is your opportunity to share some of the things you are proud of.
+                        All questions are optional but can help your business attract potential buyers. </p>
 
                 </header>
                 <article role="main">
@@ -50,7 +50,7 @@ class AwardsForm extends BaseForm {
                             model={`${model}.certifications`}
                             name="certifications"
                             htmlFor="certifications"
-                            label="Accreditations"
+                            label="Accreditations (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Does your business have any formal accreditations you want to share? "
                         />
@@ -60,7 +60,7 @@ class AwardsForm extends BaseForm {
                             model={`${model}.boards`}
                             name="boards"
                             htmlFor="boards"
-                            label="Industry engagement"
+                            label="Industry engagement (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Are you involved in any boards, committees or groups for your industry?"
                         />
@@ -70,7 +70,7 @@ class AwardsForm extends BaseForm {
                             model={`${model}.awards`}
                             name="awards"
                             htmlFor="awards"
-                            label="Awards"
+                            label="Awards (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Has your work been recognised and awarded within your industry or by others?"
 

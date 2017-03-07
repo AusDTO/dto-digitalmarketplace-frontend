@@ -44,8 +44,8 @@ class ProductsForm extends BaseForm {
       <Layout>
         <header>
           <h1 tabIndex="-1">Products</h1>
-          <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you’re reselling.</p>
-            <p>For now this is an MVP. We want to learn more about the types of products sellers are offering before we create a solution for selling them through the Digital Marketplace. </p>
+            <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you are reselling.</p>
+            <p>This feature is an MVP, meaning we want to learn more about the types of products sellers are offering so we can create a solution for selling them through the Digital Marketplace.</p>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -73,8 +73,8 @@ class ProductsForm extends BaseForm {
                     </div>
                     <div className="col-xs-12 col-sm-2">
                       <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
-                    </div>  
-                  </div>  
+                    </div>
+                  </div>
                   <div className="row">
                     <div className="col-xs-12 col-sm-10">
                       <Textfield
@@ -95,6 +95,7 @@ class ProductsForm extends BaseForm {
                           controlProps={{limit: 50}}
                           label="Product summary"
                           description="This is your ‘elevator pitch’ — in a single sentence tell us about your product."
+                          showMessagesDuringFocus={true}
                           messages={{
                               required: `Please provide a product summary`
                           }}

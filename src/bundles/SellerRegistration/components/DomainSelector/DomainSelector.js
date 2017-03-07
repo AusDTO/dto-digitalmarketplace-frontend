@@ -18,21 +18,27 @@ import domains from './domains';
 
 class DomainSelector extends BaseForm {
 
+  static propTypes = {
+    recruiter: React.PropTypes.string
+  }
+
     render() {
-        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit} = this.props;
+        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter} = this.props;
         let header = (
             <header>
                 <h1 tabIndex="-1">What services will you offer?</h1>
-                <p>Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and referee. We’ll use these to ensure you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
-                <Link
+                <p> If you only have software products to offer, <Link
                     to="/products"
                     onClick={() => {
                         // Hardcoded is ugly.
                         actions.stepComplete('casestudy');
                         actions.stepComplete('digital');
                         actions.navigateToStep('/products');
-                    }}>If you only have software products to offer, skip to the product section.
-                </Link>
+                    }}>skip to the product section.
+                </Link></p>
+                <p>Select the services you have the expertise to provide.  For each you choose you will need to provide
+                    a case study and referee to ensure you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
+
             </header>
         )
 
@@ -40,10 +46,18 @@ class DomainSelector extends BaseForm {
             header = (
                 <header>
                     <h1 tabIndex="-1">What services will you offer?</h1>
-                    <p>The services you’re currently approved for are already ticked. Select any others you want to provide
-                        — you’ll need to provide a case study for each as evidence for <a href="/assessment-criteria"
-                                                                                          target="_blank" rel="external">assessment</a>
+                    <p>The services you are currently approved for are already ticked. Select any others you have the skills and experience to provide.
+                        You will need to provide a case study and referee for each to meet the <a href="/assessment-criteria"
+                                                                                          target="_blank" rel="external">assessment criteria</a>
                     </p>
+                </header>
+            )
+        }
+
+        if (recruiter === 'yes') {
+            header = (
+                <header>
+                    <h1 tabIndex="-1">What services do your candidates offer?</h1>
                 </header>
             )
         }
@@ -111,7 +125,8 @@ class DomainSelector extends BaseForm {
 
 DomainSelector.defaultProps = {
     buttonText: 'Save and continue',
-    title: 'What services will you offer? '
+    title: 'What services will you offer? ',
+    recruiter: ''
 }
 
 const mapStateToProps = (state) => {

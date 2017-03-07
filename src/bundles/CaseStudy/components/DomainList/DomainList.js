@@ -132,7 +132,7 @@ class DomainList extends BaseForm {
           <p>Case studies are important for showing you meet our
             <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>for any new
             services you wish to offer.</p>
-          <p> But they’re also much more. Think of them as the beginning of a
+          <p> But they are also much more. Think of them as the beginning of a
             conversation with hundreds of government buyers from all over Australia.
           </p>
           <ul>
@@ -161,8 +161,7 @@ class DomainList extends BaseForm {
 
               <ProgressBar value={addedServices.length} max={serviceCount} />
 
-              {domains.map((domain, i) => {
-                if (services[domain.label]) {
+              {domains.filter(d => services[d.label]).map((domain, i) => {
                 let list = getStudiesByService(caseStudyForm.case_studies, domain.label);
                 return (
                   <section key={`casestudy.domain.${i}`}>
@@ -209,9 +208,7 @@ class DomainList extends BaseForm {
                     
                   </section>
                 )
-                
-              }}
-              )}
+              })}
 
               {/* This error will never actually render */}
               <StatefulError

@@ -89,7 +89,7 @@ class SignupForm extends BaseForm {
               type="email"
               htmlFor="email_address"
               label={isBuyer ? (<span>Email address ending in <b>.gov.au.</b></span>) : "Email address"}
-              description= {isBuyer ? (
+              description={isBuyer ? (
                   <span>If your email is different, request your account from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
               ) : (<br/>)}
               validators={{ required, validEmail }}
@@ -109,11 +109,11 @@ class SignupForm extends BaseForm {
                   id="employment_status"
                   label="To create a buyer account you need to be a government employee or be authorised by a government employee. Choose the option below that matches your situation."
                   options={[{
-                    value:'employee', 
+                    value:'employee',
                     label:'I am an employee under the Commonwealth Public Service Act (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
-                  }, 
+                  },
                   {
-                    value: 'contractor', 
+                    value: 'contractor',
                     label:'I am a contractor working in local, state or federal government.'
                   }]}
                   validators={{ required }}
@@ -127,7 +127,7 @@ class SignupForm extends BaseForm {
             {children}
             <p>
               <small>
-                By creating an account you confirm your acceptance of our <a href="/terms-of-use">Terms of Use</a>.
+                By creating an account you confirm your acceptance of our <a href="/terms-of-use" target="_blank" rel="external">Terms of Use</a>.
               </small>
             </p>
             <input type="submit" value='Create your account' role="button" />

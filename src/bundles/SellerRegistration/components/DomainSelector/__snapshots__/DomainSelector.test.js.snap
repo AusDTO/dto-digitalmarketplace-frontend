@@ -1,41 +1,54 @@
-exports[`test DomainSelector renders 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DomainSelector renders 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <h1
-      tabIndex="-1">
+      tabIndex="-1"
+    >
       What services will you offer?
     </h1>
     <p>
-      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and referee. We’ll use these to ensure you meet our 
+       If you only have software products to offer, 
+      <a
+        href="/products"
+        onClick={[Function]}
+      >
+        skip to the product section.
+      </a>
+    </p>
+    <p>
+      Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
-        target="_blank">
+        target="_blank"
+      >
         assessment criteria
       </a>
     </p>
-    <a
-      href="/products"
-      onClick={[Function]}>
-      If you only have software products to offer, skip to the product section.
-    </a>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action={undefined}
       id="DomainSelector__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="abc" />
+        value="abc"
+      />
       <fieldset
-        className="field">
+        className="field"
+      >
         <div>
           <input
             checked={false}
@@ -47,9 +60,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy and Policy" />
+            value="Strategy and Policy"
+          />
           <label
-            htmlFor="strategy-and-policy">
+            htmlFor="strategy-and-policy"
+          >
             Strategy and Policy
              
             <p>
@@ -68,9 +83,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research and Design" />
+            value="User research and Design"
+          />
           <label
-            htmlFor="user-research-and-design">
+            htmlFor="user-research-and-design"
+          >
             User research and Design
              
             <p>
@@ -89,9 +106,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Agile delivery and Governance" />
+            value="Agile delivery and Governance"
+          />
           <label
-            htmlFor="agile-delivery-and-governance">
+            htmlFor="agile-delivery-and-governance"
+          >
             Agile delivery and Governance
              
             <p>
@@ -110,9 +129,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Software engineering and Development" />
+            value="Software engineering and Development"
+          />
           <label
-            htmlFor="software-engineering-and-development">
+            htmlFor="software-engineering-and-development"
+          >
             Software engineering and Development
              
             <p>
@@ -131,9 +152,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Support and Operations" />
+            value="Support and Operations"
+          />
           <label
-            htmlFor="support-and-operations">
+            htmlFor="support-and-operations"
+          >
             Support and Operations
              
             <p>
@@ -152,9 +175,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content and Publishing" />
+            value="Content and Publishing"
+          />
           <label
-            htmlFor="content-and-publishing">
+            htmlFor="content-and-publishing"
+          >
             Content and Publishing
              
             <p>
@@ -173,9 +198,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change, Training and Transformation" />
+            value="Change, Training and Transformation"
+          />
           <label
-            htmlFor="change-training-and-transformation">
+            htmlFor="change-training-and-transformation"
+          >
             Change, Training and Transformation
              
             <p>
@@ -194,9 +221,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Marketing, Communications and Engagement" />
+            value="Marketing, Communications and Engagement"
+          />
           <label
-            htmlFor="marketing-communications-and-engagement">
+            htmlFor="marketing-communications-and-engagement"
+          >
             Marketing, Communications and Engagement
              
             <p>
@@ -215,9 +244,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Cyber security" />
+            value="Cyber security"
+          />
           <label
-            htmlFor="cyber-security">
+            htmlFor="cyber-security"
+          >
             Cyber security
              
             <p>
@@ -236,9 +267,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Data science" />
+            value="Data science"
+          />
           <label
-            htmlFor="data-science">
+            htmlFor="data-science"
+          >
             Data science
              
             <p>
@@ -257,9 +290,11 @@ exports[`test DomainSelector renders 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Emerging technologies" />
+            value="Emerging technologies"
+          />
           <label
-            htmlFor="emerging-technologies">
+            htmlFor="emerging-technologies"
+          >
             Emerging technologies
              
             <p>
@@ -271,50 +306,62 @@ exports[`test DomainSelector renders 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save and continue" />
+        value="Save and continue"
+      />
     </form>
   </article>
 </div>
 `;
 
-exports[`test DomainSelector renders with populated fields 1`] = `
+exports[`DomainSelector renders with populated fields 1`] = `
 <div
-  className="layout">
+  className="layout"
+>
   <header>
     <h1
-      tabIndex="-1">
+      tabIndex="-1"
+    >
       What services will you offer?
     </h1>
     <p>
-      Select the areas of expertise you want to provide.  For each you choose you’ll need to provide a case study and referee. We’ll use these to ensure you meet our 
+       If you only have software products to offer, 
+      <a
+        href="/products"
+        onClick={[Function]}
+      >
+        skip to the product section.
+      </a>
+    </p>
+    <p>
+      Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
         rel="external"
-        target="_blank">
+        target="_blank"
+      >
         assessment criteria
       </a>
     </p>
-    <a
-      href="/products"
-      onClick={[Function]}>
-      If you only have software products to offer, skip to the product section.
-    </a>
   </header>
   <article
-    role="main">
+    role="main"
+  >
     <form
       action={undefined}
       id="DomainSelector__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="abc" />
+        value="abc"
+      />
       <fieldset
-        className="field">
+        className="field"
+      >
         <div>
           <input
             checked={false}
@@ -326,9 +373,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Strategy and Policy" />
+            value="Strategy and Policy"
+          />
           <label
-            htmlFor="strategy-and-policy">
+            htmlFor="strategy-and-policy"
+          >
             Strategy and Policy
              
             <p>
@@ -347,9 +396,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="User research and Design" />
+            value="User research and Design"
+          />
           <label
-            htmlFor="user-research-and-design">
+            htmlFor="user-research-and-design"
+          >
             User research and Design
              
             <p>
@@ -368,9 +419,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Agile delivery and Governance" />
+            value="Agile delivery and Governance"
+          />
           <label
-            htmlFor="agile-delivery-and-governance">
+            htmlFor="agile-delivery-and-governance"
+          >
             Agile delivery and Governance
              
             <p>
@@ -389,9 +442,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Software engineering and Development" />
+            value="Software engineering and Development"
+          />
           <label
-            htmlFor="software-engineering-and-development">
+            htmlFor="software-engineering-and-development"
+          >
             Software engineering and Development
              
             <p>
@@ -410,9 +465,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Support and Operations" />
+            value="Support and Operations"
+          />
           <label
-            htmlFor="support-and-operations">
+            htmlFor="support-and-operations"
+          >
             Support and Operations
              
             <p>
@@ -431,9 +488,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Content and Publishing" />
+            value="Content and Publishing"
+          />
           <label
-            htmlFor="content-and-publishing">
+            htmlFor="content-and-publishing"
+          >
             Content and Publishing
              
             <p>
@@ -452,9 +511,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Change, Training and Transformation" />
+            value="Change, Training and Transformation"
+          />
           <label
-            htmlFor="change-training-and-transformation">
+            htmlFor="change-training-and-transformation"
+          >
             Change, Training and Transformation
              
             <p>
@@ -473,9 +534,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Marketing, Communications and Engagement" />
+            value="Marketing, Communications and Engagement"
+          />
           <label
-            htmlFor="marketing-communications-and-engagement">
+            htmlFor="marketing-communications-and-engagement"
+          >
             Marketing, Communications and Engagement
              
             <p>
@@ -494,9 +557,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Cyber security" />
+            value="Cyber security"
+          />
           <label
-            htmlFor="cyber-security">
+            htmlFor="cyber-security"
+          >
             Cyber security
              
             <p>
@@ -515,9 +580,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Data science" />
+            value="Data science"
+          />
           <label
-            htmlFor="data-science">
+            htmlFor="data-science"
+          >
             Data science
              
             <p>
@@ -536,9 +603,11 @@ exports[`test DomainSelector renders with populated fields 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Emerging technologies" />
+            value="Emerging technologies"
+          />
           <label
-            htmlFor="emerging-technologies">
+            htmlFor="emerging-technologies"
+          >
             Emerging technologies
              
             <p>
@@ -550,7 +619,8 @@ exports[`test DomainSelector renders with populated fields 1`] = `
       <input
         role="button"
         type="submit"
-        value="Save and continue" />
+        value="Save and continue"
+      />
     </form>
   </article>
 </div>

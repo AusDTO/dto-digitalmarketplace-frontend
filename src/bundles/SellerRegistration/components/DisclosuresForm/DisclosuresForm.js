@@ -28,7 +28,7 @@ class DisclosuresForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">{title}</h1>
-                    <p>These responses are only seen by assessors, they’re not visible on your profile.</p>
+                    <p>These responses are not visible on your profile but may be provided to buyers who are considering awarding you a contract. </p>
 
                         <p>Please note, answering ‘yes’ to any question will not automatically disqualify you from the Digital Marketplace, however our assessors may contact you to request more information.</p>
                 </header>

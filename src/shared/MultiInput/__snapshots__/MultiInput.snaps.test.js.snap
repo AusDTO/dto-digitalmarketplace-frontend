@@ -1,12 +1,17 @@
-exports[`test MultiInput with 4 default rows 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiInput with 4 default rows 1`] = `
 <div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test">
+        htmlFor="test"
+      >
         1
         .
       </label>
@@ -19,16 +24,20 @@ exports[`test MultiInput with 4 default rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
   </div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test-1">
+        htmlFor="test-1"
+      >
         2
         .
       </label>
@@ -41,27 +50,33 @@ exports[`test MultiInput with 4 default rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
     <button
       className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
-      type="button">
+      type="button"
+    >
       remove 
       <span
-        className="visuallyhidden">
+        className="visuallyhidden"
+      >
         number 
         2
       </span>
     </button>
   </div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test-2">
+        htmlFor="test-2"
+      >
         3
         .
       </label>
@@ -74,27 +89,33 @@ exports[`test MultiInput with 4 default rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
     <button
       className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
-      type="button">
+      type="button"
+    >
       remove 
       <span
-        className="visuallyhidden">
+        className="visuallyhidden"
+      >
         number 
         3
       </span>
     </button>
   </div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test-3">
+        htmlFor="test-3"
+      >
         4
         .
       </label>
@@ -107,15 +128,18 @@ exports[`test MultiInput with 4 default rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
     <button
       className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
-      type="button">
+      type="button"
+    >
       remove 
       <span
-        className="visuallyhidden">
+        className="visuallyhidden"
+      >
         number 
         4
       </span>
@@ -124,21 +148,25 @@ exports[`test MultiInput with 4 default rows 1`] = `
   <button
     className="button-secondary"
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
     Add another row
   </button>
 </div>
 `;
 
-exports[`test MultiInput with 4 rows 1`] = `
+exports[`MultiInput with 4 rows 1`] = `
 <div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test">
+        htmlFor="test"
+      >
         1
         .
       </label>
@@ -151,16 +179,20 @@ exports[`test MultiInput with 4 rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
   </div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test-1">
+        htmlFor="test-1"
+      >
         2
         .
       </label>
@@ -173,27 +205,33 @@ exports[`test MultiInput with 4 rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
     <button
       className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
-      type="button">
+      type="button"
+    >
       remove 
       <span
-        className="visuallyhidden">
+        className="visuallyhidden"
+      >
         number 
         2
       </span>
     </button>
   </div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test-2">
+        htmlFor="test-2"
+      >
         3
         .
       </label>
@@ -206,27 +244,33 @@ exports[`test MultiInput with 4 rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
     <button
       className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
-      type="button">
+      type="button"
+    >
       remove 
       <span
-        className="visuallyhidden">
+        className="visuallyhidden"
+      >
         number 
         3
       </span>
     </button>
   </div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test-3">
+        htmlFor="test-3"
+      >
         4
         .
       </label>
@@ -239,15 +283,18 @@ exports[`test MultiInput with 4 rows 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
     <button
       className="button-secondary col-xs-12 col-sm-3"
       onClick={[Function]}
-      type="button">
+      type="button"
+    >
       remove 
       <span
-        className="visuallyhidden">
+        className="visuallyhidden"
+      >
         number 
         4
       </span>
@@ -256,21 +303,25 @@ exports[`test MultiInput with 4 rows 1`] = `
   <button
     className="button-secondary"
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
     Add another row
   </button>
 </div>
 `;
 
-exports[`test MultiInput with no props 1`] = `
+exports[`MultiInput with no props 1`] = `
 <div>
   <div
-    className="list-entry row">
+    className="list-entry row"
+  >
     <div
-      className="col-xs-12 col-sm-9">
+      className="col-xs-12 col-sm-9"
+    >
       <label
         className="text-box-number-label"
-        htmlFor="test">
+        htmlFor="test"
+      >
         1
         .
       </label>
@@ -283,13 +334,15 @@ exports[`test MultiInput with no props 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        type="text" />
+        type="text"
+      />
     </div>
   </div>
   <button
     className="button-secondary"
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
     Add another row
   </button>
 </div>

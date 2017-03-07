@@ -25,6 +25,9 @@ class Datefield extends React.Component {
         year: format(propDate, 'YYYY')
       }
     }
+    else {
+      props.setDate(props.model, '2017-01-01');
+    }
   }
 
   onChange(e) {

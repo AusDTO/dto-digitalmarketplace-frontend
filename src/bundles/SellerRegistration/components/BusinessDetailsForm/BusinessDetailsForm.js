@@ -44,7 +44,7 @@ class BusinessDetailsForm extends BaseForm {
         if (supplierCode) {
             title = 'Check your business details'
         }
-        
+
         return (
             <Layout>
                 <header>
@@ -87,7 +87,7 @@ class BusinessDetailsForm extends BaseForm {
                           label="ABN"
                           description={supplierCode ? "You need an Australian Business Number to do business in Australia." :
                               (<span>You need an Australian Business Number to do business in Australia.&nbsp;
-                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/'>Apply for an ABN here.</a>
+                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
                           </span>)}
                           disabled="disabled"
                           messages={{
@@ -103,6 +103,7 @@ class BusinessDetailsForm extends BaseForm {
                             controlProps={{limit: 50}}
                             label="Summary"
                             description="3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in."
+                            showMessagesDuringFocus={true}
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}
@@ -117,9 +118,10 @@ class BusinessDetailsForm extends BaseForm {
                             label="Website URL"
                             description="Provide a link to your website beginning with http"
                             messages={{
-                                required: 'You must provide a website link beginning with http'
+                                required: 'You must provide a website link beginning with http',
+                                validLinks: 'Links provided must begin with http'
                             }}
-                            validators={{required}}
+                            validators={{required, validLinks}}
                         />
 
                         <Textfield
@@ -141,7 +143,7 @@ class BusinessDetailsForm extends BaseForm {
                             id="address_line"
                             htmlFor="address_line"
                             label="Primary Address"
-                            description="Principal place of business"
+                            description="Principal place of business."
                             messages={{
                                 required: 'You must provide an address'
                             }}
@@ -184,9 +186,9 @@ class BusinessDetailsForm extends BaseForm {
                             validators={{required, limitNumbers: limitNumbers(4)}}
                         />
                         <div>
-                            {businessDetailsForm.addresses && 
+                            {businessDetailsForm.addresses &&
                                 Object.keys(businessDetailsForm.addresses)
-                                    .filter((value) => {return value > 0;})
+                                    .filter((value) => {return value > 0 && businessDetailsForm.addresses[value] !== null;})
                                     .map((key, i) => {
                               return (
                                 <div styleName="address-wrapper" key={key}>
@@ -197,8 +199,8 @@ class BusinessDetailsForm extends BaseForm {
                                         </div>
                                         <div className="col-xs-12 col-sm-2">
                                             <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
-                                        </div>  
-                                    </div>  
+                                        </div>
+                                    </div>
                                     <div className="row">
                                         <div className="col-xs-12 col-sm-10">
                                             <Textfield
@@ -248,8 +250,8 @@ class BusinessDetailsForm extends BaseForm {
                                                 validators={{required, limitNumbers: limitNumbers(4)}}
                                             />
                                         </div>
-                                    </div>        
-                                </div>    
+                                    </div>
+                                </div>
                               )
                             })}
                             {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
