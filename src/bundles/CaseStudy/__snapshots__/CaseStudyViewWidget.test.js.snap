@@ -1,30 +1,21 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CaseStudyViewWidget renders without errrors 1`] = `
+exports[`test CaseStudyViewWidget renders without errrors 1`] = `
 <section
-  id="casestudy__view"
->
+  id="casestudy__view">
   <header
-    className="row"
-  >
+    className="row">
     <div
-      className="col-xs-12"
-    >
+      className="col-xs-12">
       <h1
-        tabIndex="-1"
-      >
+        tabIndex="-1">
         A Case Study
       </h1>
     </div>
     <div
-      className="meta col-xs-12"
-    >
+      className="meta col-xs-12">
       <div
-        className="row"
-      >
+        className="row">
         <div
-          className="col-xs-12 col-sm-7"
-        >
+          className="col-xs-12 col-sm-7">
           <p>
             A Case study client
           </p>
@@ -33,11 +24,9 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
     </div>
   </header>
   <div
-    className="row"
-  >
+    className="row">
     <aside
-      className="col-sm-3 col-xs-12"
-    >
+      className="col-sm-3 col-xs-12">
       <h4>
         Timeframe
       </h4>
@@ -55,15 +44,13 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
     </aside>
     <article
       className="col-sm-7 col-xs-12"
-      role="main"
-    >
+      role="main">
       <section>
         <h2>
           Challenge
         </h2>
         <p
-          className="freetext"
-        >
+          className="freetext">
           A Case Study Opportunity
         </p>
       </section>
@@ -72,8 +59,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
           Approach
         </h2>
         <p
-          className="freetext"
-        >
+          className="freetext">
           A simple approach
         </p>
       </section>
@@ -91,8 +77,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
         </ul>
       </section>
       <div
-        className="casestudy__actions"
-      />
+        className="casestudy__actions" />
     </article>
   </div>
 </section>

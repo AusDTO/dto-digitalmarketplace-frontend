@@ -1,39 +1,30 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`BusinessDetailsForm renders 1`] = `
+exports[`test BusinessDetailsForm renders 1`] = `
 <div
-  className="layout"
->
+  className="layout">
   <header>
     <h1
-      tabIndex="-1"
-    >
+      tabIndex="-1">
       Tell us about your business
     </h1>
   </header>
   <article
-    role="main"
-  >
+    role="main">
     <form
       action={undefined}
       id="BusinessDetails__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}
-    >
+      onSubmit={[Function]}>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="name"
-        >
+          htmlFor="name">
           Business name
         </label>
         <p
           className="hint"
-          id="name-hint"
-        >
+          id="name-hint">
           As you would like it shown on the Digital Marketplace.
         </p>
         <input
@@ -49,29 +40,24 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="abn"
-        >
+          htmlFor="abn">
           ABN
         </label>
         <p
           className="hint"
-          id="abn-hint"
-        >
+          id="abn-hint">
           <span>
             You need an Australian Business Number to do business in Australia. 
             <a
               href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/"
               rel="external"
-              target="_blank"
-            >
+              target="_blank">
               Apply for an ABN here.
             </a>
           </span>
@@ -89,22 +75,18 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="summary"
-        >
+          htmlFor="summary">
           Summary
         </label>
         <p
           className="hint"
-          id="summary-hint"
-        >
+          id="summary-hint">
           3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
         </p>
         <div>
@@ -116,28 +98,23 @@ exports[`BusinessDetailsForm renders 1`] = `
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]}
-          />
+            onFocus={[Function]} />
           <span
-            className="word-count-counter"
-          >
+            className="word-count-counter">
             50 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="website"
-        >
+          htmlFor="website">
           Website URL
         </label>
         <p
           className="hint"
-          id="website-hint"
-        >
+          id="website-hint">
           Provide a link to your website beginning with http
         </p>
         <input
@@ -153,22 +130,18 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="linkedin"
-        >
+          htmlFor="linkedin">
           LinkedIn URL (optional)
         </label>
         <p
           className="hint"
-          id="linkedin-hint"
-        >
+          id="linkedin-hint">
           Provide a LinkedIn URL beginning with http
         </p>
         <input
@@ -184,22 +157,18 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="address_line"
-        >
+          htmlFor="address_line">
           Primary Address
         </label>
         <p
           className="hint"
-          id="address_line-hint"
-        >
+          id="address_line-hint">
           Principal place of business.
         </p>
         <input
@@ -215,16 +184,13 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="suburb"
-        >
+          htmlFor="suburb">
           Suburb
         </label>
         <input
@@ -240,16 +206,13 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="state"
-        >
+          htmlFor="state">
           State
         </label>
         <input
@@ -265,16 +228,13 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="postal_code"
-        >
+          htmlFor="postal_code">
           Postcode
         </label>
         <input
@@ -290,73 +250,61 @@ exports[`BusinessDetailsForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div>
         <p
-          styleName="footer"
-        >
+          styleName="footer">
           More offices?
         </p>
         <button
           className="button-secondary"
           onClick={[Function]}
-          type="submit"
-        >
+          type="submit">
           Add another address
         </button>
       </div>
       <input
         role="button"
         type="submit"
-        value="Update profile"
-      />
+        value="Update profile" />
     </form>
   </article>
 </div>
 `;
 
-exports[`BusinessDetailsForm renders with form_options 1`] = `
+exports[`test BusinessDetailsForm renders with form_options 1`] = `
 <div
-  className="layout"
->
+  className="layout">
   <header>
     <h1
-      tabIndex="-1"
-    >
+      tabIndex="-1">
       Tell us about your business
     </h1>
   </header>
   <article
-    role="main"
-  >
+    role="main">
     <form
       action="/foo/bar"
       id="BusinessDetails__create"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}
-    >
+      onSubmit={[Function]}>
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="sometoken"
-      />
+        value="sometoken" />
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="name"
-        >
+          htmlFor="name">
           Business name
         </label>
         <p
           className="hint"
-          id="name-hint"
-        >
+          id="name-hint">
           As you would like it shown on the Digital Marketplace.
         </p>
         <input
@@ -372,29 +320,24 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="abn"
-        >
+          htmlFor="abn">
           ABN
         </label>
         <p
           className="hint"
-          id="abn-hint"
-        >
+          id="abn-hint">
           <span>
             You need an Australian Business Number to do business in Australia. 
             <a
               href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/"
               rel="external"
-              target="_blank"
-            >
+              target="_blank">
               Apply for an ABN here.
             </a>
           </span>
@@ -412,22 +355,18 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="summary"
-        >
+          htmlFor="summary">
           Summary
         </label>
         <p
           className="hint"
-          id="summary-hint"
-        >
+          id="summary-hint">
           3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
         </p>
         <div>
@@ -439,28 +378,23 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
-            onFocus={[Function]}
-          />
+            onFocus={[Function]} />
           <span
-            className="word-count-counter"
-          >
+            className="word-count-counter">
             50 words remaining
           </span>
         </div>
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="website"
-        >
+          htmlFor="website">
           Website URL
         </label>
         <p
           className="hint"
-          id="website-hint"
-        >
+          id="website-hint">
           Provide a link to your website beginning with http
         </p>
         <input
@@ -476,22 +410,18 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="linkedin"
-        >
+          htmlFor="linkedin">
           LinkedIn URL (optional)
         </label>
         <p
           className="hint"
-          id="linkedin-hint"
-        >
+          id="linkedin-hint">
           Provide a LinkedIn URL beginning with http
         </p>
         <input
@@ -507,22 +437,18 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="address_line"
-        >
+          htmlFor="address_line">
           Primary Address
         </label>
         <p
           className="hint"
-          id="address_line-hint"
-        >
+          id="address_line-hint">
           Principal place of business.
         </p>
         <input
@@ -538,16 +464,13 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="suburb"
-        >
+          htmlFor="suburb">
           Suburb
         </label>
         <input
@@ -563,16 +486,13 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="state"
-        >
+          htmlFor="state">
           State
         </label>
         <input
@@ -588,16 +508,13 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="postal_code"
-        >
+          htmlFor="postal_code">
           Postcode
         </label>
         <input
@@ -613,28 +530,24 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div>
         <p
-          styleName="footer"
-        >
+          styleName="footer">
           More offices?
         </p>
         <button
           className="button-secondary"
           onClick={[Function]}
-          type="submit"
-        >
+          type="submit">
           Add another address
         </button>
       </div>
       <input
         role="button"
         type="submit"
-        value="Update profile"
-      />
+        value="Update profile" />
     </form>
   </article>
 </div>

@@ -1,15 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`VerticalList with all attributes 1`] = `
+exports[`test VerticalList with all attributes 1`] = `
 <ul
-  className="list-vertical"
->
+  className="list-vertical">
   <li>
     <article>
       <h3>
         <a
-          href="http://hello.world"
-        >
+          href="http://hello.world">
           Hello World
         </a>
       </h3>
@@ -17,10 +13,9 @@ exports[`VerticalList with all attributes 1`] = `
         className="meta"
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<time datetime=\\"2016-05-08 00:00\\">08 May 2016</time> <a href=\\"#\\" rel=\\"author\\">Author</a>",
+            "__html": "<time datetime=\"2016-05-08 00:00\">08 May 2016</time> <a href=\"#\" rel=\"author\">Author</a>",
           }
-        }
-      />
+        } />
       <p>
         The Digital Transformation Office (DTO) was established as an executive agency in July 2015. Its mission is to lead the […]
       </p>
@@ -28,25 +23,22 @@ exports[`VerticalList with all attributes 1`] = `
     <figure>
       <img
         alt="Default image for items without an image specified"
-        src="/img-placeholder.gif"
-      />
+        src="/img-placeholder.gif" />
     </figure>
   </li>
 </ul>
 `;
 
-exports[`VerticalList with no attributes 1`] = `<span />`;
+exports[`test VerticalList with no attributes 1`] = `<span />`;
 
-exports[`VerticalList with required attributes 1`] = `
+exports[`test VerticalList with required attributes 1`] = `
 <ul
-  className="list-vertical"
->
+  className="list-vertical">
   <li>
     <article>
       <h3>
         <a
-          href="http://hello.world"
-        >
+          href="http://hello.world">
           Hello World
         </a>
       </h3>

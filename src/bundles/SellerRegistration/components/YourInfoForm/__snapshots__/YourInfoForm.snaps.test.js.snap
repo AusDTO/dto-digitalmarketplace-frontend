@@ -1,39 +1,30 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`YourInfoForm renders 1`] = `
+exports[`test YourInfoForm renders 1`] = `
 <div
-  className="layout"
->
+  className="layout">
   <header>
     <h1
-      tabIndex="-1"
-    >
+      tabIndex="-1">
       Contact details
     </h1>
   </header>
   <article
-    role="main"
-  >
+    role="main">
     <form
       action={undefined}
       id="yourinfo"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}
-    >
+      onSubmit={[Function]}>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_name"
-        >
+          htmlFor="contact_name">
           Business contact name
         </label>
         <p
           className="hint"
-          id="contact_name-hint"
-        >
+          id="contact_name-hint">
           The contact listed on your seller profile page and the person who receives new opportunities by email.
         </p>
         <input
@@ -49,16 +40,13 @@ exports[`YourInfoForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_email"
-        >
+          htmlFor="contact_email">
           Email
         </label>
         <input
@@ -74,16 +62,13 @@ exports[`YourInfoForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_phone"
-        >
+          htmlFor="contact_phone">
           Phone
         </label>
         <input
@@ -99,22 +84,18 @@ exports[`YourInfoForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="representative"
-        >
+          htmlFor="representative">
           Authorised representative name
         </label>
         <p
           className="hint"
-          id="representative-hint"
-        >
+          id="representative-hint">
           This is the person authorised to enter into contracts on behalf of the business. 
         </p>
         <input
@@ -130,16 +111,13 @@ exports[`YourInfoForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="email"
-        >
+          htmlFor="email">
           Email
         </label>
         <input
@@ -155,16 +133,13 @@ exports[`YourInfoForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="phone"
-        >
+          htmlFor="phone">
           Phone
         </label>
         <input
@@ -180,59 +155,49 @@ exports[`YourInfoForm renders 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <input
         role="button"
         type="submit"
-        value="Save and continue"
-      />
+        value="Save and continue" />
     </form>
   </article>
 </div>
 `;
 
-exports[`YourInfoForm renders with edit mode 1`] = `
+exports[`test YourInfoForm renders with edit mode 1`] = `
 <div
-  className="layout"
->
+  className="layout">
   <header>
     <h1
-      tabIndex="-1"
-    >
+      tabIndex="-1">
       Contact details
     </h1>
   </header>
   <article
-    role="main"
-  >
+    role="main">
     <form
       action="/foo/bar"
       id="yourinfo"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}
-    >
+      onSubmit={[Function]}>
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="sometoken"
-      />
+        value="sometoken" />
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_name"
-        >
+          htmlFor="contact_name">
           Business contact name
         </label>
         <p
           className="hint"
-          id="contact_name-hint"
-        >
+          id="contact_name-hint">
           The contact listed on your seller profile page and the person who receives new opportunities by email.
         </p>
         <input
@@ -248,16 +213,13 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_email"
-        >
+          htmlFor="contact_email">
           Email
         </label>
         <input
@@ -273,16 +235,13 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_phone"
-        >
+          htmlFor="contact_phone">
           Phone
         </label>
         <input
@@ -298,22 +257,18 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="representative"
-        >
+          htmlFor="representative">
           Authorised representative name
         </label>
         <p
           className="hint"
-          id="representative-hint"
-        >
+          id="representative-hint">
           This is the person authorised to enter into contracts on behalf of the business. 
         </p>
         <input
@@ -329,16 +284,13 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="email"
-        >
+          htmlFor="email">
           Email
         </label>
         <input
@@ -354,16 +306,13 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="phone"
-        >
+          htmlFor="phone">
           Phone
         </label>
         <input
@@ -379,59 +328,49 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <input
         role="button"
         type="submit"
-        value="Save and continue"
-      />
+        value="Save and continue" />
     </form>
   </article>
 </div>
 `;
 
-exports[`YourInfoForm renders with form_options 1`] = `
+exports[`test YourInfoForm renders with form_options 1`] = `
 <div
-  className="layout"
->
+  className="layout">
   <header>
     <h1
-      tabIndex="-1"
-    >
+      tabIndex="-1">
       Contact details
     </h1>
   </header>
   <article
-    role="main"
-  >
+    role="main">
     <form
       action="/foo/bar"
       id="yourinfo"
       method="post"
       onReset={[Function]}
-      onSubmit={[Function]}
-    >
+      onSubmit={[Function]}>
       <input
         id="csrf_token"
         name="csrf_token"
         type="hidden"
-        value="sometoken"
-      />
+        value="sometoken" />
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_name"
-        >
+          htmlFor="contact_name">
           Business contact name
         </label>
         <p
           className="hint"
-          id="contact_name-hint"
-        >
+          id="contact_name-hint">
           The contact listed on your seller profile page and the person who receives new opportunities by email.
         </p>
         <input
@@ -447,16 +386,13 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_email"
-        >
+          htmlFor="contact_email">
           Email
         </label>
         <input
@@ -472,16 +408,13 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="contact_phone"
-        >
+          htmlFor="contact_phone">
           Phone
         </label>
         <input
@@ -497,22 +430,18 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="representative"
-        >
+          htmlFor="representative">
           Authorised representative name
         </label>
         <p
           className="hint"
-          id="representative-hint"
-        >
+          id="representative-hint">
           This is the person authorised to enter into contracts on behalf of the business. 
         </p>
         <input
@@ -528,16 +457,13 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="email"
-        >
+          htmlFor="email">
           Email
         </label>
         <input
@@ -553,16 +479,13 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <div
-        className="field"
-      >
+        className="field">
         <label
           className="question-heading"
-          htmlFor="phone"
-        >
+          htmlFor="phone">
           Phone
         </label>
         <input
@@ -578,14 +501,12 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onKeyPress={[Function]}
           pattern={undefined}
           type="text"
-          value=""
-        />
+          value="" />
       </div>
       <input
         role="button"
         type="submit"
-        value="Save and continue"
-      />
+        value="Save and continue" />
     </form>
   </article>
 </div>
