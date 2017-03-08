@@ -40,6 +40,8 @@ class DocumentsForm extends BaseForm {
         fileLabels: []
     }
 
+    spanToHide = []
+
     formFields = [
         {
             'label': 'Financial statement',
@@ -65,6 +67,7 @@ class DocumentsForm extends BaseForm {
         e.preventDefault();
         const {model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication} = this.props;
         const file = this.state[id].file;
+        const spantToHide= "span_" + id;
         this.setState({
             [id]: Object.assign({}, this.state[id], {'uploading': true, 'file': void 0}),
             errors: Object.assign({}, this.state.errors, {[id]: void 0})
@@ -79,8 +82,7 @@ class DocumentsForm extends BaseForm {
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
                 updateDocumentName(model, id, filename);
-                var spantToHide= "span_" + id;
-                document.getElementById(spantToHide).style.display = "none";
+                this.refs[spantToHide].style.display = "none";
 
             })
             .then(submitApplication)
@@ -110,12 +112,13 @@ class DocumentsForm extends BaseForm {
         this.setState(stateCopy);
 
         this.setState({
-            [id]: Object.assign({}, this.state[id], {'file': 'e.target.files[0]'}),
+            [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
             errors: {[id]: void 0}
         });
 
 
     }
+
 
     onToggle(e) {
       this.setState({
@@ -217,7 +220,8 @@ class DocumentsForm extends BaseForm {
                                         <p styleName="paddTop">&nbsp;</p>}
                                         {fieldState.uploading && <p><strong>Uploading...</strong></p>}
                                         {errors && 'There was an error uploading the file'}
-                                        <p id={"span_" + key}>{!isEmpty(this.state.fileLabels[key]) && this.state.fileLabels[key] }</p>
+
+                                        <p id={"span_" + key} ref={"span_" + key}>{!isEmpty(this.state.fileLabels[key]) && this.state.fileLabels[key] }</p>
                                         {fieldState.file &&
                                         <button type="submit" styleName="sumbitInContainer" onClick={this.onUpload.bind(this, key)}>Upload</button>}
 
