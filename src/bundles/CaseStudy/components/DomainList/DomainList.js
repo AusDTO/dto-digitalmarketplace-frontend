@@ -238,7 +238,7 @@ class DomainList extends BaseForm {
 
                 {children}
 
-                <input type="submit" role="button" value={buttonText} />
+                <input type="submit" value={buttonText} />
               </Form>
               
             </article>

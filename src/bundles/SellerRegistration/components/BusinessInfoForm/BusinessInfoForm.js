@@ -279,7 +279,7 @@ class BusinessInfoForm extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value="Save and continue" role="button"/>
+                        <input type="submit" value="Save and continue"/>
                     </Form>
                 </article>
             </Layout>
