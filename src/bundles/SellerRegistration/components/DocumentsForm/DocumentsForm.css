@@ -45,3 +45,7 @@ form p {
 .textRight {
   text-align: right;
 }
+
+.hide{
+  display: none
+}

@@ -4,6 +4,8 @@ import {Form, Control, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 
+import classNames from 'classnames';
+
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
@@ -34,7 +36,8 @@ class DocumentsForm extends BaseForm {
         match: {url: ''}
     }
     state = {
-        errors: {}
+        errors: {},
+        fileLabels: []
     }
 
     formFields = [
@@ -62,7 +65,6 @@ class DocumentsForm extends BaseForm {
         e.preventDefault();
         const {model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication} = this.props;
         const file = this.state[id].file;
-
         this.setState({
             [id]: Object.assign({}, this.state[id], {'uploading': true, 'file': void 0}),
             errors: Object.assign({}, this.state.errors, {[id]: void 0})
@@ -102,11 +104,23 @@ class DocumentsForm extends BaseForm {
 
     onChange(id, e) {
         e.preventDefault();
+
+        var stateCopy = Object.assign({}, this.state);
+        stateCopy.fileLabels[id] = e.target.files[0].name;
+        this.setState(stateCopy);
+
         this.setState({
-            [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
+            [id]: Object.assign({}, this.state[id], {'file': 'e.target.files[0]'}),
             errors: {[id]: void 0}
         });
-        getFileName(e);
+
+
+    }
+
+    onToggle(e) {
+      this.setState({
+        showField: e.target.value === 'yes'
+      })
     }
 
     render() {
@@ -152,6 +166,7 @@ class DocumentsForm extends BaseForm {
                             const doc = get(documentsForm, `documents.${key}`, {});
                             const expiry_date_field = 'expiry_date_' + key;
                             const errors = this.state.errors[key];
+                            const addClass = classNames({'hide': !isEmpty(this.state.fileLabels[key])})
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <label styleName="question-heading" htmlFor={key}>{field.label}</label>
@@ -160,10 +175,9 @@ class DocumentsForm extends BaseForm {
                                     <div>
                                         <div id={expiry_date_field}>
                                             {isEmpty(doc.filename) && (
-                                                <p>
+                                                <p styleName={addClass} >
                                                     <input type="file" id={key} name={key} styleName="inputfileHide" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
-                                                    <label htmlFor={key} id={"label_" + key}  styleName="uploadStyle">Choose file</label>
-
+                                                    <label htmlFor={key} id={"label_" + key}  styleName="uploadStyle"> {isEmpty(this.state.fileLabels[key]) && "Choose file" } </label>
                                                 </p>
 
 
@@ -171,9 +185,7 @@ class DocumentsForm extends BaseForm {
                                         </div>
 
                                         <div>
-                                                                                        {!isEmpty(doc.filename) && <ul className="bordered-list"><li className="bordered-list__item row"><div className="col-xs-9"><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a></div><div className="col-xs-3" styleName="textRight"><a href="3" onClick={this.onReset.bind(this, key)}>Delete</a></div></li></ul>}
-
-
+                                        {!isEmpty(doc.filename) && <ul className="bordered-list"><li className="bordered-list__item row"><div className="col-xs-9"><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a></div><div className="col-xs-3" styleName="textRight"><a href="3" onClick={this.onReset.bind(this, key)}>Delete</a></div></li></ul>}
                                         </div>
 
                                         {(field.expires && !isEmpty(doc.filename)) && <div>
@@ -205,7 +217,7 @@ class DocumentsForm extends BaseForm {
                                         <p styleName="paddTop">&nbsp;</p>}
                                         {fieldState.uploading && <p><strong>Uploading...</strong></p>}
                                         {errors && 'There was an error uploading the file'}
-                                        <p id={"span_" + key}></p>
+                                        <p id={"span_" + key}>{!isEmpty(this.state.fileLabels[key]) && this.state.fileLabels[key] }</p>
                                         {fieldState.file &&
                                         <button type="submit" styleName="sumbitInContainer" onClick={this.onUpload.bind(this, key)}>Upload</button>}
 
@@ -233,17 +245,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-function getFileName(e) {
-  var fileName, labelid, doc, spanid;
-  spanid= "span_" + e.target.id;
-  labelid= "label_" + e.target.id;
-  fileName = e.target.value.split( '\\' ).pop();
-
-  var doc = document.getElementById("spanid");
-  document.getElementById(spanid).innerHTML = fileName;
-  document.getElementById(labelid).style.display = "none";
-
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
