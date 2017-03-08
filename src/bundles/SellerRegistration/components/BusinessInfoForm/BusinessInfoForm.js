@@ -12,6 +12,7 @@ import CheckboxDetailsField  from '../../../../shared/form/CheckboxDetailsField'
 import {required} from '../../../../validators';
 
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+import StepNav      from '../StepNav';
 
 
 class BusinessInfoForm extends BaseForm {
@@ -24,7 +25,7 @@ class BusinessInfoForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute} = this.props;
         return (
             <Layout>
                 <header>
@@ -279,7 +280,7 @@ class BusinessInfoForm extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value="Save and continue" role="button"/>
+                        <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

@@ -11,6 +11,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import YesNoDetails from '../../../../shared/form/YesNoDetailsField';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import questions    from './questions';
+import StepNav      from '../StepNav';
 
 
 class DisclosuresForm extends BaseForm {
@@ -23,7 +24,7 @@ class DisclosuresForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed } = this.props;
+        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed, nextRoute } = this.props;
         return (
             <Layout>
                 <header>
@@ -112,7 +113,7 @@ class DisclosuresForm extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value="Save and continue" role="button"/>
+                        <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

@@ -10,6 +10,7 @@ import BaseForm       from '../../../../shared/form/BaseForm';
 import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
+import StepNav        from '../StepNav';
 
 import { actions }    from '../../redux/modules/application';
 import { actions as stepActions }    from '../../redux/modules/steps';
@@ -23,7 +24,7 @@ class DomainSelector extends BaseForm {
   }
 
     render() {
-        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter} = this.props;
+        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter, nextRoute} = this.props;
         let header = (
             <header>
                 <h1 tabIndex="-1">What services will you offer?</h1>
@@ -115,8 +116,8 @@ class DomainSelector extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value={buttonText} role="button"/>
-                    </Form>
+                        <StepNav buttonText={buttonText} to={nextRoute}/>
+                  </Form>
                 </article>
             </Layout>
         )

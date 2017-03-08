@@ -10,6 +10,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textarea     from '../../../../shared/form/Textarea';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import { required } from '../../../../validators';
+import StepNav      from '../StepNav';
 
 
 class ToolsForm extends BaseForm {
@@ -22,7 +23,7 @@ class ToolsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute} = this.props;
         return (
             <Layout>
                 <header>
@@ -84,7 +85,7 @@ class ToolsForm extends BaseForm {
                         />
                         {children}
 
-                        <input type="submit" value="Save and continue" role="button"/>
+                        <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

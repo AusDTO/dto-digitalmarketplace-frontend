@@ -7,8 +7,9 @@ import Layout from '../../../../shared/Layout';
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
-import MultiInput    from '../../../../shared/form/MultiInput';
+import MultiInput   from '../../../../shared/form/MultiInput';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+import StepNav      from '../StepNav';
 
 
 class AwardsForm extends BaseForm {
@@ -21,7 +22,7 @@ class AwardsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute} = this.props;
         return (
             <Layout>
                 <header>
@@ -78,7 +79,7 @@ class AwardsForm extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value="Save and continue" role="button"/>
+                        <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>
