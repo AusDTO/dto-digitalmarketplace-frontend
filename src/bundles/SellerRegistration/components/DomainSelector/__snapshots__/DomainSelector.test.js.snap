@@ -304,7 +304,6 @@ exports[`DomainSelector renders 1`] = `
         </div>
       </fieldset>
       <input
-        role="button"
         type="submit"
         value="Save and continue"
       />
@@ -617,7 +616,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
         </div>
       </fieldset>
       <input
-        role="button"
         type="submit"
         value="Save and continue"
       />

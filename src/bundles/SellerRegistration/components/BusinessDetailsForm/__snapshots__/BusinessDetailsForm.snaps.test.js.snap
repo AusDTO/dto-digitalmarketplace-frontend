@@ -308,7 +308,6 @@ exports[`BusinessDetailsForm renders 1`] = `
         </button>
       </div>
       <input
-        role="button"
         type="submit"
         value="Update profile"
       />
@@ -631,7 +630,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </button>
       </div>
       <input
-        role="button"
         type="submit"
         value="Update profile"
       />

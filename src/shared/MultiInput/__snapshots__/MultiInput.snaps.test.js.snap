@@ -10,7 +10,7 @@ exports[`MultiInput with 4 default rows 1`] = `
     >
       <label
         className="text-box-number-label"
-        htmlFor="test"
+        htmlFor="test-0"
       >
         1
         .
@@ -19,7 +19,7 @@ exports[`MultiInput with 4 default rows 1`] = `
         aria-describedby={undefined}
         className="text-box "
         defaultValue=""
-        id="test"
+        id="test-0"
         name="test[]"
         onBlur={[Function]}
         onChange={[Function]}
@@ -165,7 +165,7 @@ exports[`MultiInput with 4 rows 1`] = `
     >
       <label
         className="text-box-number-label"
-        htmlFor="test"
+        htmlFor="test-0"
       >
         1
         .
@@ -174,7 +174,7 @@ exports[`MultiInput with 4 rows 1`] = `
         aria-describedby={undefined}
         className="text-box "
         defaultValue="One"
-        id="test"
+        id="test-0"
         name="test[]"
         onBlur={[Function]}
         onChange={[Function]}
@@ -320,7 +320,7 @@ exports[`MultiInput with no props 1`] = `
     >
       <label
         className="text-box-number-label"
-        htmlFor="test"
+        htmlFor="test-0"
       >
         1
         .
@@ -329,7 +329,7 @@ exports[`MultiInput with no props 1`] = `
         aria-describedby={undefined}
         className="text-box "
         defaultValue=""
-        id="test"
+        id="test-0"
         name="test[]"
         onBlur={[Function]}
         onChange={[Function]}

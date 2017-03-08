@@ -96,7 +96,7 @@ class MultiInput extends React.Component {
       <div>
         {inputs.map(({ id, value }, i) => {
           let fieldName = `${name}[]`;
-          let fieldId = i > 0 ? `${name}-${i}` : name
+          let fieldId = `${name}-${i}`
           return (
             <div key={id} className="list-entry row">
               <div className="col-xs-12 col-sm-9">
