@@ -88,7 +88,7 @@ class CandidatesForm extends BaseForm {
                                         id={`${domain.label}-markup`}
                                         htmlFor={`${domain.label}-markup`}
                                         label="What is your mark-up?"
-                                        description="Markup is the percentage you apply to a contractor’s daily fee."
+                                        description="Definition of mark up is the total of oncosts to the day rate (including workers compensation, payroll tax, etc)."
                                         messages={{
                                             required: 'You must supply your mark-up',
                                             validPercentage: 'You must supply your mark-up as a percentage'
@@ -101,7 +101,7 @@ class CandidatesForm extends BaseForm {
                                         id={`${domain.label}-margin`}
                                         htmlFor={`${domain.label}-margin`}
                                         label="What is your margin?"
-                                        description="Margin is the percentage of the total daily fee paid to your recruitment company."
+                                        description="Definition of margin is the percentage charged on top of oncosts by agency for providing the candidate and service."
                                         messages={{
                                             required: 'You must supply your margin',
                                             validPercentage: 'You must supply your margin as percentage'

@@ -207,7 +207,7 @@ class BusinessInfoForm extends BaseForm {
                                 value="Female owned"
                             />
                             <label htmlFor="female-owned">Female owned
-                                <p>Your business has at least 51% female ownership. </p>
+                                <p>Your business has at least 50% female ownership. </p>
                             </label>
 
 
