@@ -188,7 +188,7 @@ class DocumentsForm extends BaseForm {
                                         </div>
 
                                         <div>
-                                        {!isEmpty(doc.filename) && <ul className="bordered-list"><li className="bordered-list__item row"><div className="col-xs-9"><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a></div><div className="col-xs-3" styleName="textRight"><a href="3" onClick={this.onReset.bind(this, key)}>Delete</a></div></li></ul>}
+                                        {!isEmpty(doc.filename) && <ul className="bordered-list"><li className="bordered-list__item row"><div className="col-xs-9" styleName="overflowHidden"><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a></div><div className="col-xs-3" styleName="textRight"><a href="3" onClick={this.onReset.bind(this, key)}>Delete</a></div></li></ul>}
                                         </div>
 
                                         {(field.expires && !isEmpty(doc.filename)) && <div>

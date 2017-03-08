@@ -49,3 +49,7 @@ form p {
 .hide{
   display: none
 }
+
+.overflowHidden{
+  overflow: hidden;
+}
