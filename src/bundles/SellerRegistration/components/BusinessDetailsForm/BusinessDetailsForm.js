@@ -72,7 +72,6 @@ class BusinessDetailsForm extends BaseForm {
                           htmlFor="name"
                           label="Business name"
                           description="As you would like it shown on the Digital Marketplace."
-                          disabled="disabled"
                           validators={{required}}
                           messages={{
                               required: 'Business name is required',
@@ -89,7 +88,8 @@ class BusinessDetailsForm extends BaseForm {
                               (<span>You need an Australian Business Number to do business in Australia.&nbsp;
                               <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
                           </span>)}
-                          disabled="disabled"
+                          readOnly={!!supplierCode}
+                          disabled={!supplierCode ? "disabled": ""}
                           messages={{
                               validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
                           }}

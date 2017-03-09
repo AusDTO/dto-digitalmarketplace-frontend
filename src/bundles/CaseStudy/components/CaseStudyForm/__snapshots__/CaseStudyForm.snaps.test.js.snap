@@ -70,6 +70,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -95,6 +96,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -126,6 +128,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -157,6 +160,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -438,6 +442,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -469,6 +474,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -494,6 +500,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -595,6 +602,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -620,6 +628,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -651,6 +660,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -682,6 +692,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -963,6 +974,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -994,6 +1006,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1019,6 +1032,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1235,6 +1249,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1273,6 +1288,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1317,6 +1333,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1361,6 +1378,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1694,6 +1712,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1738,6 +1757,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1776,6 +1796,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1896,6 +1917,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1921,6 +1943,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1952,6 +1975,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1983,6 +2007,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2264,6 +2289,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2295,6 +2321,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2320,6 +2347,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2421,6 +2449,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2446,6 +2475,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value="The Client Name"
         />
@@ -2477,6 +2507,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value="January 2016 — June 2016"
         />
@@ -2508,6 +2539,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2789,6 +2821,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2820,6 +2853,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2845,6 +2879,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />

@@ -48,6 +48,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -73,6 +74,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -98,6 +100,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -129,6 +132,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -154,6 +158,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -179,6 +184,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -246,6 +252,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -271,6 +278,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -296,6 +304,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -327,6 +336,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -352,6 +362,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -377,6 +388,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -444,6 +456,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -469,6 +482,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -494,6 +508,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -525,6 +540,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -550,6 +566,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -575,6 +592,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />

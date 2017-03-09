@@ -504,6 +504,7 @@ exports[`Signup renders empty Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -529,6 +530,7 @@ exports[`Signup renders empty Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -554,6 +556,7 @@ exports[`Signup renders empty Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -585,6 +588,7 @@ exports[`Signup renders empty Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -610,6 +614,7 @@ exports[`Signup renders empty Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -635,6 +640,7 @@ exports[`Signup renders empty Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -891,6 +897,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -916,6 +923,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -941,6 +949,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -972,6 +981,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value="Paul Acron"
             />
@@ -997,6 +1007,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value="email@domain.com"
             />
@@ -1022,6 +1033,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value="0292000000"
             />
