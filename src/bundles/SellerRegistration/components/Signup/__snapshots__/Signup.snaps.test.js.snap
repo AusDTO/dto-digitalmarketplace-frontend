@@ -251,6 +251,15 @@ exports[`Signup renders 1`] = `
       </a>
       <br />
       <br />
+      <a
+        href="/static/media/documents/digital-marketplace-master-agreement.html"
+        rel="external"
+        target="_blank"
+      >
+        View Digital Marketplace Master Agreement in HTML
+      </a>
+      <br />
+      <br />
       <p>
         <a
           href="#"
