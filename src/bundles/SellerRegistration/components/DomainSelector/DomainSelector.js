@@ -115,7 +115,7 @@ class DomainSelector extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value={buttonText} role="button"/>
+                        <input type="submit" value={buttonText}/>
                     </Form>
                 </article>
             </Layout>

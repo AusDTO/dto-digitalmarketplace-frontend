@@ -150,7 +150,7 @@ class ProductsForm extends BaseForm {
 
             <button type="submit" className={addClass} onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
             {!isEmpty(productsForm.products) && <br/>}
-            <input type="submit" className={submitClass} value={isEmpty(productsForm.products) ? 'I don\'t have any products' : buttonText} role="button" />
+            <input type="submit" className={submitClass} value={isEmpty(productsForm.products) ? 'I don\'t have any products' : buttonText} />
           </Form>
         </article>
       </Layout>

@@ -184,7 +184,6 @@ exports[`YourInfoForm renders 1`] = `
         />
       </div>
       <input
-        role="button"
         type="submit"
         value="Save and continue"
       />
@@ -383,7 +382,6 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         />
       </div>
       <input
-        role="button"
         type="submit"
         value="Save and continue"
       />
@@ -582,7 +580,6 @@ exports[`YourInfoForm renders with form_options 1`] = `
         />
       </div>
       <input
-        role="button"
         type="submit"
         value="Save and continue"
       />

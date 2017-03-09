@@ -262,7 +262,7 @@ class BusinessDetailsForm extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value={buttonText} role="button"/>
+                        <input type="submit" value={buttonText}/>
                     </Form>
                     {returnLink && <a href={returnLink}>Return without saving</a>}
                 </article>

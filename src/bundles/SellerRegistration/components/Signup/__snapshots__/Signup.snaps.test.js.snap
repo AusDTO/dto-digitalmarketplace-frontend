@@ -636,7 +636,6 @@ exports[`Signup renders empty Your Info form 1`] = `
             value="disclosures"
           />
           <input
-            role="button"
             type="submit"
             value="Save and continue"
           />
@@ -1024,7 +1023,6 @@ exports[`Signup renders populated Your Info form 1`] = `
             value="disclosures"
           />
           <input
-            role="button"
             type="submit"
             value="Save and continue"
           />

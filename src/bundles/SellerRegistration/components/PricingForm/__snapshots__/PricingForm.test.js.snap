@@ -213,7 +213,6 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         </div>
       </fieldset>
       <input
-        role="button"
         type="submit"
         value="Save &amp; Continue"
       />

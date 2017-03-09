@@ -155,7 +155,6 @@ exports[`SignupForm renders 1`] = `
         </small>
       </p>
       <input
-        role="button"
         type="submit"
         value="Create your account"
       />
@@ -325,7 +324,6 @@ exports[`SignupForm renders with form_options 1`] = `
         </small>
       </p>
       <input
-        role="button"
         type="submit"
         value="Create your account"
       />

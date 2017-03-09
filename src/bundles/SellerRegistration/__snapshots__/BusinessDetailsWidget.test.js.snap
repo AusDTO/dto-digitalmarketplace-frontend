@@ -314,7 +314,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
             </button>
           </div>
           <input
-            role="button"
             type="submit"
             value="Update profile"
           />
