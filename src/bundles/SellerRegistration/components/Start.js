@@ -1,10 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Icon     from '../../../shared/Icon';
+
+import './Start.css';
 
 const Start = ({supplierCode, signup, onClick, saved}) => {
     return (
         <div>
-            {saved && <div className="callout--info"><strong>Your application has been saved.</strong></div>}
+            {saved && 
+                <div className="callout--info">
+                    <Icon value="complete-tick" size={20}/><span styleName="callout-heading">Your progress has been saved</span>
+                    <p>Click 'continue application' in the header above when you're ready to go on.</p>
+                </div>
+            }
             {supplierCode &&
                 <div>
                     <h1>Do more in the Digital Marketplace</h1>
