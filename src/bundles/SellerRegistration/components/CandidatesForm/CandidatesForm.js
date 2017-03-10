@@ -11,6 +11,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textfield    from '../../../../shared/form/Textfield';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import domains      from '../DomainSelector/domains';
+import StepNav      from '../StepNav';
 
 
 class CandidatesForm extends BaseForm {
@@ -24,7 +25,7 @@ class CandidatesForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, services} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, services, nextRoute} = this.props;
         return (
             <Layout>
                 <header>
@@ -115,7 +116,7 @@ class CandidatesForm extends BaseForm {
 
                         {children}
 
-                        <button type="submit"> Save and continue</button>
+                        <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

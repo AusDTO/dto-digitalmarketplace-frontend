@@ -95,7 +95,8 @@
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
     "server": "node scripts/server.js",
     "server:development": "nodemon scripts/server.js --watch build/render-server.js",
-    "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js"
+    "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js",
+    "lint": "eslint ."
   },
   "jest": {
     "coverageDirectory": "coverage",

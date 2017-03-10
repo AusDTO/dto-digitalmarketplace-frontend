@@ -6,6 +6,8 @@ const STEP_PRE = 'step/pre';
 const APP_SUBMIT = 'application/submit';
 const APP_PRE_SUBMIT = 'application/pre-submit';
 const APP_POST_SUBMIT = 'application/post-submit';
+const APP_SAVED = 'application/saved';
+const APP_CLEAR = 'application/clear';
 
 const LINK_CLICK = 'link/click';
 
@@ -24,6 +26,10 @@ export default function reducer(state = {}, action = {}) {
     switch (type) {
         case APP_SUBMIT:
             return Object.assign({}, state, payload.application);
+        case APP_SAVED:
+            return Object.assign({}, state, {saved: true});
+        case APP_CLEAR:
+            return state.saved ? Object.assign({}, state, {saved: void 0}) : state;
         default:
             return state;
     }
@@ -32,6 +38,8 @@ export default function reducer(state = {}, action = {}) {
 export const preSubmit = () => ({ type: APP_PRE_SUBMIT });
 export const postSubmit = () => ({ type: APP_POST_SUBMIT });
 export const submit = (payload = {}) => ({ type: APP_SUBMIT, payload });
+export const saveApplication = () => ({ type: APP_SAVED });
+export const clearApplication = () => ({ type: APP_CLEAR });
 
 export const preStep = () => ({ type: STEP_PRE });
 export const nextStep = (to) => ({ type: STEP_NEXT, to });
@@ -143,6 +151,8 @@ const actionCreators = {
     preSubmit,
     postSubmit,
     submit,
+    saveApplication,
+    clearApplication,
     preStep,
     nextStep,
     stepNextPersist,

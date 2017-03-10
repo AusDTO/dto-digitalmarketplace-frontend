@@ -10,6 +10,7 @@ import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
+import StepNav       from '../StepNav';
 
 class YourInfoForm extends BaseForm {
 
@@ -21,7 +22,7 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed } = this.props;
+    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed, nextRoute } = this.props;
     let title = 'Contact details';
     if (supplierCode) {
         title = 'Check your contact details'
@@ -131,7 +132,7 @@ class YourInfoForm extends BaseForm {
 
             {children}
 
-            <input type="submit" value={buttonText} />
+            <StepNav buttonText={buttonText} to={nextRoute}/>
           </Form>
         </article>
       </Layout>

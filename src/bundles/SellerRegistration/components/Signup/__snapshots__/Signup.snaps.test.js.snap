@@ -184,91 +184,84 @@ exports[`Signup renders 1`] = `
     className="col-xs-12 col-sm-8 col-sm-push-1"
   >
     <div>
-      <h1>
-        Joining the Digital Marketplace
-      </h1>
-      <p>
-        To become a registered seller and offer your services or software products to government you need to tell us about your business. 
-      </p>
-      <p>
-        By completing this application you are automatically responding to an open approach to market, whose terms and conditions, like other government tenders, are 
+      <div>
+        <h1>
+          Joining the Digital Marketplace
+        </h1>
+        <p>
+          To become a registered seller and offer your services or software products to government you need to tell us about your business. 
+        </p>
+        <p>
+          By completing this application you are automatically responding to an open approach to market, whose terms and conditions, like other government tenders, are 
+          <a
+            href="http://tenders.gov.au"
+            rel="external"
+            target="_blank"
+          >
+            publicly available.
+          </a>
+        </p>
+        <p>
+           The information you share will be used to create your seller profile. If you offer services it will also be used to confirm you meet the 
+          <a
+            href="/assessment-criteria"
+            rel="external"
+            target="_blank"
+          >
+            assessment criteria
+          </a>
+           when you express interest in opportunities.
+        </p>
+        <p>
+           It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
+        </p>
+        <h2>
+          You will need
+        </h2>
+        <ul>
+          <li>
+            Your basic business information
+          </li>
+          <li>
+            Recent financial records or a viability statement from your accountant
+          </li>
+          <li>
+            Proof of relevant insurance cover
+          </li>
+        </ul>
+        <h2>
+          You will be asked to
+        </h2>
+        <ul>
+          <li>
+            Share details about services or products you wish to provide
+          </li>
+          <li>
+             Provide case studies and referees to support your application
+          </li>
+          <li>
+            Accept the Digital Marketplace Master Agreement
+          </li>
+        </ul>
         <a
-          href="http://tenders.gov.au"
+          href="/static/media/documents/digital-marketplace-master-agreement.pdf"
           rel="external"
           target="_blank"
         >
-          publicly available.
+          Download Digital Marketplace Master Agreement PDF
         </a>
-      </p>
-      <p>
-         The information you share will be used to create your seller profile. If you offer services it will also be used to confirm you meet the 
-        <a
-          href="/assessment-criteria"
-          rel="external"
-          target="_blank"
-        >
-          assessment criteria
-        </a>
-         when you express interest in opportunities.
-      </p>
-      <p>
-         It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
-      </p>
-      <h2>
-        You will need
-      </h2>
-      <ul>
-        <li>
-          Your basic business information
-        </li>
-        <li>
-          Recent financial records or a viability statement from your accountant
-        </li>
-        <li>
-          Proof of relevant insurance cover
-        </li>
-      </ul>
-      <h2>
-        You will be asked to
-      </h2>
-      <ul>
-        <li>
-          Share details about services or products you wish to provide
-        </li>
-        <li>
-           Provide case studies and referees to support your application
-        </li>
-        <li>
-          Accept the Digital Marketplace Master Agreement
-        </li>
-      </ul>
-      <a
-        href="/static/media/documents/digital-marketplace-master-agreement.pdf"
-        rel="external"
-        target="_blank"
-      >
-        Download Digital Marketplace Master Agreement PDF
-      </a>
-      <br />
-      <br />
-      <a
-        href="/static/media/documents/digital-marketplace-master-agreement.html"
-        rel="external"
-        target="_blank"
-      >
-        View Digital Marketplace Master Agreement in HTML
-      </a>
-      <br />
-      <br />
-      <p>
-        <a
-          href="#"
-          onClick={[Function]}
-          role="button"
-        >
-          Start now 
-        </a>
-      </p>
+        <br />
+        <br />
+        <p>
+          <a
+            href="#"
+            onClick={[Function]}
+            role="button"
+          >
+            Start now 
+          </a>
+        </p>
+      </div>
     </div>
   </article>
 </div>
@@ -650,10 +643,40 @@ exports[`Signup renders empty Your Info form 1`] = `
             type="hidden"
             value="disclosures"
           />
-          <input
-            type="submit"
-            value="Save and continue"
-          />
+          <div
+            className="row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <button
+                type="submit"
+              >
+                Save and continue
+              </button>
+              <button
+                className="save-button"
+                onClick={[Function]}
+              >
+                Save and finish later
+              </button>
+            </div>
+            <div
+              className="col-xs-12 col-sm-3"
+            >
+              <div
+                styleName="skip"
+              >
+                <button
+                  className="button-secondary"
+                  onClick={[Function]}
+                  styleName="skip-link"
+                >
+                  Skip for now
+                </button>
+              </div>
+            </div>
+          </div>
         </form>
       </article>
     </div>
@@ -1043,10 +1066,40 @@ exports[`Signup renders populated Your Info form 1`] = `
             type="hidden"
             value="disclosures"
           />
-          <input
-            type="submit"
-            value="Save and continue"
-          />
+          <div
+            className="row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <button
+                type="submit"
+              >
+                Save and continue
+              </button>
+              <button
+                className="save-button"
+                onClick={[Function]}
+              >
+                Save and finish later
+              </button>
+            </div>
+            <div
+              className="col-xs-12 col-sm-3"
+            >
+              <div
+                styleName="skip"
+              >
+                <button
+                  className="button-secondary"
+                  onClick={[Function]}
+                  styleName="skip-link"
+                >
+                  Skip for now
+                </button>
+              </div>
+            </div>
+          </div>
         </form>
       </article>
     </div>

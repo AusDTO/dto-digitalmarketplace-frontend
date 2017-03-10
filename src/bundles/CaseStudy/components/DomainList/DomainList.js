@@ -10,6 +10,7 @@ import BaseForm       from '../../../../shared/form/BaseForm';
 import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
+import StepNav        from '../../../SellerRegistration/components/StepNav';
 
 import ProgressBar    from '../../../../shared/ProgressBar';
 
@@ -90,7 +91,8 @@ class DomainList extends BaseForm {
       onCaseStudySubmit,
       onEditCaseStudy,
       onAddCaseStudy,
-      onDeleteCaseStudy
+      onDeleteCaseStudy,
+      nextRoute
     } = this.props;
 
     onCaseStudySubmit = onCaseStudySubmit.bind(this, {
@@ -238,7 +240,7 @@ class DomainList extends BaseForm {
 
                 {children}
 
-                <input type="submit" value={buttonText} />
+                <StepNav buttonText={buttonText} to={nextRoute}/>
               </Form>
               
             </article>
