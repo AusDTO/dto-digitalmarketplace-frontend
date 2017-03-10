@@ -4,8 +4,6 @@ import {Form, Control, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 
-import classNames from 'classnames';
-
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
@@ -36,11 +34,8 @@ class DocumentsForm extends BaseForm {
         match: {url: ''}
     }
     state = {
-        errors: {},
-        fileLabels: []
+        errors: {}
     }
-
-    spanToHide = []
 
     formFields = [
         {
@@ -67,7 +62,6 @@ class DocumentsForm extends BaseForm {
         e.preventDefault();
         const {model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication} = this.props;
         const file = this.state[id].file;
-        const spantToHide= "span_" + id;
         this.setState({
             [id]: Object.assign({}, this.state[id], {'uploading': true, 'file': void 0}),
             errors: Object.assign({}, this.state.errors, {[id]: void 0})
@@ -75,14 +69,12 @@ class DocumentsForm extends BaseForm {
 
         removeDocument(model, id);
         createDocument(model, id);
-
-        onUpload(id, file, e)
+        onUpload(id, file)
             .then((filename) => {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
                 updateDocumentName(model, id, filename);
-                this.refs[spantToHide].style.display = "none";
 
             })
             .then(submitApplication)
@@ -107,16 +99,10 @@ class DocumentsForm extends BaseForm {
     onChange(id, e) {
         e.preventDefault();
 
-        var stateCopy = Object.assign({}, this.state);
-        stateCopy.fileLabels[id] = e.target.files[0].name;
-        this.setState(stateCopy);
-
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
             errors: {[id]: void 0}
         });
-
-
     }
 
 
@@ -166,70 +152,80 @@ class DocumentsForm extends BaseForm {
                         {this.formFields.map((field, i) => {
                             const key = field.id;
                             const fieldState = this.state[key] || {};
+                            const name = (fieldState.file && fieldState.file.name) || {};
                             const doc = get(documentsForm, `documents.${key}`, {});
-                            const expiry_date_field = 'expiry_date_' + key;
+                            const expiry_date_field = `expiry_date_${key}`;
                             const errors = this.state.errors[key];
-                            const addClass = classNames({'hide': !isEmpty(this.state.fileLabels[key])})
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <label styleName="question-heading" htmlFor={key}>{field.label}</label>
-                                    <p>{field.description}</p>
+                                    <span>{field.description}</span>
 
                                     <div>
-                                        <div id={expiry_date_field}>
-                                            {isEmpty(doc.filename) && (
-                                                <p styleName={addClass} >
-                                                    <input type="file" id={key} name={key} styleName="inputfileHide" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
-                                                    <label htmlFor={key} id={"label_" + key}  styleName="uploadStyle"> {isEmpty(this.state.fileLabels[key]) && "Choose file" } </label>
+                                        {errors && <span className="validation-message">There was an error uploading the file</span>}
+
+                                        {isEmpty(doc.filename) && !fieldState.uploading && !fieldState.file &&
+                                            <div id={expiry_date_field}>
+                                                <p>
+                                                    <input type="file" id={key} name={key} styleName="hidden-input" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
+                                                    <label htmlFor={key} id={`label_${key}`}  styleName="custom-input"> {isEmpty(name) && "Choose file" } </label>
                                                 </p>
-
-
-                                            )}
-                                        </div>
-
-                                        <div>
-                                        {!isEmpty(doc.filename) && <ul className="bordered-list"><li className="bordered-list__item row"><div className="col-xs-9" styleName="overflowHidden"><a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a></div><div className="col-xs-3" styleName="textRight"><a href="3" onClick={this.onReset.bind(this, key)}>Delete</a></div></li></ul>}
-                                        </div>
-
-                                        {(field.expires && !isEmpty(doc.filename)) && <div>
-                                            <StatefulError
-                                                model={`${model}.documents.${key}.expiry`}
-                                                id={expiry_date_field}
-                                                messages={{
-                                                    validDate: 'Expiry date is required for this document and must be in the future.',
-                                                }}
-                                            />
-                                            <Control
-                                            model={`${model}.documents.${key}.expiry`}
-                                            component={Datefield}
-                                            name={expiry_date_field}
-                                            id={expiry_date_field}
-                                            htmlFor={expiry_date_field}
-                                            label="Expiry date:"
-                                            validators={{validDate}}
-                                            controlProps={{
-                                                id: expiry_date_field,
-                                                model: `${model}.documents.${key}.expiry`,
-                                                htmlFor: expiry_date_field,
-                                                label: "Enter the expiry date of attached document"
-                                            }}
-                                        /></div>}
-                                    </div>
-                                    <div styleName="uploadContainer">
-                                        {fieldState.file &&
-                                        <p styleName="paddTop">&nbsp;</p>}
-                                        {fieldState.uploading && <p><strong>Uploading...</strong></p>}
-                                        {errors && 'There was an error uploading the file'}
-
-                                        <p id={"span_" + key} ref={"span_" + key}>{!isEmpty(this.state.fileLabels[key]) && this.state.fileLabels[key] }</p>
-                                        {fieldState.file &&
-                                        <button type="submit" styleName="sumbitInContainer" onClick={this.onUpload.bind(this, key)}>Upload</button>}
-
-                                        {fieldState.file &&
-                                        <label htmlFor={key} styleName="uploadStyle">Choose file</label>}
-
+                                            </div>
+                                        }
+    
+                                        {!isEmpty(doc.filename) && 
+                                            <div>
+                                                <ul className="bordered-list">
+                                                    <li className="bordered-list__item row">
+                                                        <div className="col-xs-9" styleName="overflow-hidden">
+                                                            <a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a>
+                                                        </div>
+                                                        <div className="col-xs-3" styleName="text-right">
+                                                            <a href="3" onClick={this.onReset.bind(this, key)}>Delete</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        }
+    
+                                        {(field.expires && !isEmpty(doc.filename)) && 
+                                            <div>
+                                                <StatefulError
+                                                    model={`${model}.documents.${key}.expiry`}
+                                                    id={expiry_date_field}
+                                                    messages={{
+                                                        validDate: 'Expiry date is required for this document and must be in the future.',
+                                                    }}
+                                                />
+                                                <Control
+                                                    model={`${model}.documents.${key}.expiry`}
+                                                    component={Datefield}
+                                                    name={expiry_date_field}
+                                                    id={expiry_date_field}
+                                                    htmlFor={expiry_date_field}
+                                                    label="Expiry date:"
+                                                    validators={{validDate}}
+                                                    controlProps={{
+                                                        id: expiry_date_field,
+                                                        model: `${model}.documents.${key}.expiry`,
+                                                        htmlFor: expiry_date_field,
+                                                        label: "Enter the expiry date of attached document"
+                                                    }}
+                                                />
+                                            </div>
+                                        }
                                     </div>
 
+                                    {fieldState.uploading && <span>Uploading...</span>}
+
+                                    {fieldState.file &&
+                                        <div styleName="upload-container">
+                                            <p styleName="filler">&nbsp;</p>
+                                            <p id={`span_${key}`} ref={`span_${key}`}>{!isEmpty(name) && name }</p>
+                                            <button type="submit" styleName="sumbit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
+                                            <label htmlFor={key} styleName="custom-input">Choose file</label>
+                                        </div>
+                                    }
                                 </div>
                             )
                         })}
