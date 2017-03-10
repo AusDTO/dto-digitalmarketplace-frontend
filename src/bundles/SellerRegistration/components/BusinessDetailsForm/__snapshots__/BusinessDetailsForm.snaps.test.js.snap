@@ -48,6 +48,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -88,6 +89,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={false}
           type="text"
           value=""
         />
@@ -152,6 +154,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -183,6 +186,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -214,6 +218,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -239,6 +244,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -264,6 +270,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -289,6 +296,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -307,11 +315,40 @@ exports[`BusinessDetailsForm renders 1`] = `
           Add another address
         </button>
       </div>
-      <input
-        role="button"
-        type="submit"
-        value="Update profile"
-      />
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12 col-sm-9"
+        >
+          <button
+            type="submit"
+          >
+            Update profile
+          </button>
+          <button
+            className="save-button"
+            onClick={[Function]}
+          >
+            Save and finish later
+          </button>
+        </div>
+        <div
+          className="col-xs-12 col-sm-3"
+        >
+          <div
+            styleName="skip"
+          >
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              styleName="skip-link"
+            >
+              Skip for now
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   </article>
 </div>
@@ -371,6 +408,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -411,6 +449,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={false}
           type="text"
           value=""
         />
@@ -475,6 +514,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -506,6 +546,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -537,6 +578,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -562,6 +604,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -587,6 +630,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -612,6 +656,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -630,11 +675,40 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           Add another address
         </button>
       </div>
-      <input
-        role="button"
-        type="submit"
-        value="Update profile"
-      />
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12 col-sm-9"
+        >
+          <button
+            type="submit"
+          >
+            Update profile
+          </button>
+          <button
+            className="save-button"
+            onClick={[Function]}
+          >
+            Save and finish later
+          </button>
+        </div>
+        <div
+          className="col-xs-12 col-sm-3"
+        >
+          <div
+            styleName="skip"
+          >
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              styleName="skip-link"
+            >
+              Skip for now
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   </article>
 </div>

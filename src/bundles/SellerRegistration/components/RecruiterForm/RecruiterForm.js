@@ -8,6 +8,7 @@ import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+import StepNav      from '../StepNav';
 
 
 class RecruiterForm extends BaseForm {
@@ -20,7 +21,7 @@ class RecruiterForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, nextRoute} = this.props;
         return (
             <Layout>
                 <header>
@@ -60,7 +61,7 @@ class RecruiterForm extends BaseForm {
 
                         {children}
 
-                        <button type="submit"> Save and continue</button>
+                        <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

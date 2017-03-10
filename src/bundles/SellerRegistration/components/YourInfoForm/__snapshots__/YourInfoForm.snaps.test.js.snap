@@ -48,6 +48,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -73,6 +74,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -98,6 +100,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -129,6 +132,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -154,6 +158,7 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -179,15 +184,45 @@ exports[`YourInfoForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
       </div>
-      <input
-        role="button"
-        type="submit"
-        value="Save and continue"
-      />
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12 col-sm-9"
+        >
+          <button
+            type="submit"
+          >
+            Save and continue
+          </button>
+          <button
+            className="save-button"
+            onClick={[Function]}
+          >
+            Save and finish later
+          </button>
+        </div>
+        <div
+          className="col-xs-12 col-sm-3"
+        >
+          <div
+            styleName="skip"
+          >
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              styleName="skip-link"
+            >
+              Skip for now
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   </article>
 </div>
@@ -247,6 +282,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -272,6 +308,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -297,6 +334,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -328,6 +366,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -353,6 +392,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -378,15 +418,45 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
       </div>
-      <input
-        role="button"
-        type="submit"
-        value="Save and continue"
-      />
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12 col-sm-9"
+        >
+          <button
+            type="submit"
+          >
+            Save and continue
+          </button>
+          <button
+            className="save-button"
+            onClick={[Function]}
+          >
+            Save and finish later
+          </button>
+        </div>
+        <div
+          className="col-xs-12 col-sm-3"
+        >
+          <div
+            styleName="skip"
+          >
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              styleName="skip-link"
+            >
+              Skip for now
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   </article>
 </div>
@@ -446,6 +516,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -471,6 +542,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -496,6 +568,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -527,6 +600,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -552,6 +626,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -577,15 +652,45 @@ exports[`YourInfoForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
       </div>
-      <input
-        role="button"
-        type="submit"
-        value="Save and continue"
-      />
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12 col-sm-9"
+        >
+          <button
+            type="submit"
+          >
+            Save and continue
+          </button>
+          <button
+            className="save-button"
+            onClick={[Function]}
+          >
+            Save and finish later
+          </button>
+        </div>
+        <div
+          className="col-xs-12 col-sm-3"
+        >
+          <div
+            styleName="skip"
+          >
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              styleName="skip-link"
+            >
+              Skip for now
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   </article>
 </div>

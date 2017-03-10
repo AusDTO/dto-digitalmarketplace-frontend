@@ -13,6 +13,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import Textarea     from '../../../../shared/form/Textarea';
 import Textfield    from '../../../../shared/form/Textfield';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+import StepNav      from '../StepNav';
 
 import './BusinessDetailsForm.css'
 
@@ -39,7 +40,7 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm } = this.props;
+        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm, nextRoute } = this.props;
         let title = 'Tell us about your business'
         if (supplierCode) {
             title = 'Check your business details'
@@ -72,7 +73,6 @@ class BusinessDetailsForm extends BaseForm {
                           htmlFor="name"
                           label="Business name"
                           description="As you would like it shown on the Digital Marketplace."
-                          disabled="disabled"
                           validators={{required}}
                           messages={{
                               required: 'Business name is required',
@@ -89,7 +89,8 @@ class BusinessDetailsForm extends BaseForm {
                               (<span>You need an Australian Business Number to do business in Australia.&nbsp;
                               <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
                           </span>)}
-                          disabled="disabled"
+                          readOnly={!!supplierCode}
+                          disabled={!supplierCode ? "disabled": ""}
                           messages={{
                               validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
                           }}
@@ -262,7 +263,7 @@ class BusinessDetailsForm extends BaseForm {
 
                         {children}
 
-                        <input type="submit" value={buttonText} role="button"/>
+                        <StepNav buttonText={buttonText} to={nextRoute}/>
                     </Form>
                     {returnLink && <a href={returnLink}>Return without saving</a>}
                 </article>

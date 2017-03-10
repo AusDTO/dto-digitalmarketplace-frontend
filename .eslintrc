@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "jsx-a11y",
+    "react"
+  ],
+  "extends": [
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    "react/display-name": "off",
+  }
+}

@@ -9,6 +9,7 @@ import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import Datefield     from '../../../../shared/form/Datefield';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
+import StepNav       from '../StepNav';
 
 import StatefulError from '../../../../shared/form/StatefulError';
 
@@ -104,7 +105,7 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText} = this.props;
+        const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute} = this.props;
 
         return (
             <Layout>
@@ -221,7 +222,7 @@ class DocumentsForm extends BaseForm {
                             )
                         })}
 
-                        <input type="submit" value={buttonText} role="button"/>
+                        <StepNav buttonText={buttonText} to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

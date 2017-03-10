@@ -39,6 +39,6 @@ test('handleClick with formValid=false', () => {
         </Provider>
     )
 
-    wrapper.find('input[type="submit"]').simulate('click')
+    wrapper.find('button[type="submit"]').first().simulate('click')
     expect(store.getState().forms.businessDetailsForm.$form.valid).toBeFalsy()
 });

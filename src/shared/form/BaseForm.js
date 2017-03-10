@@ -58,7 +58,7 @@ class BaseForm extends React.Component {
   }
 
   attachNode(node) {
-    this._form = ReactDOM.findDOMNode(node);
+    this._form = ReactDOM.findDOMNode(node);  // eslint-disable-line react/no-find-dom-node
   }
 
 }
