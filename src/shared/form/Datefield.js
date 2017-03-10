@@ -4,6 +4,8 @@ import { actions } from 'react-redux-form';
 import format from 'date-fns/format';
 import get from 'lodash/get';
 
+import './css/Datefield.css';
+
 class Datefield extends React.Component {
 
   state = {
@@ -50,39 +52,46 @@ class Datefield extends React.Component {
     } = this.state;
 
     return (
-      <div className="datefield">
+      <div styleName="date-input">
         <label htmlFor={htmlFor} className="question-heading">{label}</label>
         {description && (
           <p className="hint" id={`${id}-hint`}>{description}</p>
         )}
 
-        <div className="field">
-          <label htmlFor={htmlFor} className="question-heading">DD</label>
+        <div styleName="fields flush">
+          <label htmlFor={htmlFor} styleName="date-heading">Day</label>
           <input
             type="text"
             name="day"
+            id="day"
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={day}
           />
         </div>
 
-        <div className="field">
-          <label htmlFor={htmlFor} className="question-heading">MM</label>
+          <div styleName="slashSpacer">/</div>
+
+        <div styleName="fields flush">
+          <label htmlFor={htmlFor} styleName="date-heading">Month</label>
           <input
             type="text"
             name="month"
+            id='month'
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={month}
           />
         </div>
 
-        <div className="field">
-          <label htmlFor={htmlFor} className="question-heading">YYYY</label>
+          <div styleName="slashSpacer">/</div>
+
+        <div styleName="fields">
+          <label htmlFor={htmlFor} styleName="date-heading">Year</label>
           <input
             type="text"
             name="year"
+            id="year"
             maxLength="4"
             onChange={this.onChange.bind(this)}
             defaultValue={year}

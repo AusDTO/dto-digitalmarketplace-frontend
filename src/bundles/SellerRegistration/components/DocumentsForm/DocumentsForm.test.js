@@ -43,7 +43,7 @@ test('DocumentsForm renders links when documents are present', () => {
         filename: 'financial1.pdf'
       }
     }
-  
+
   const store = createStore({
     form_options: {
       csrf_token: 'abc',
@@ -57,6 +57,6 @@ test('DocumentsForm renders links when documents are present', () => {
     </Provider>
   )
 
-  let links = wrapper.find('a');
+  let links = wrapper.find('ul');
   expect(links.length).toBe(3);
 });
