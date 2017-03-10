@@ -61,7 +61,7 @@ class EnterPasswordForm extends BaseForm {
               type="password"
             />
 
-            <input type="submit" value='Complete account creation' role="button" />
+            <input type="submit" value='Complete account creation' />
           </Form>
         </article>
       </Layout>

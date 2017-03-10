@@ -27,7 +27,7 @@ exports[`SignupForm renders 1`] = `
         >
           <fieldset>
             <legend>
-              First, tell us how you want to use the Digital Marketplace
+              Have you got digital expertise to sell to government? Or do you want to buy digital products and services on behalf of your government office? Choose the option that matches your situation.
             </legend>
             <div>
               <span>
@@ -106,6 +106,7 @@ exports[`SignupForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -137,6 +138,7 @@ exports[`SignupForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="email"
           value=""
         />
@@ -155,7 +157,6 @@ exports[`SignupForm renders 1`] = `
         </small>
       </p>
       <input
-        role="button"
         type="submit"
         value="Create your account"
       />
@@ -197,7 +198,7 @@ exports[`SignupForm renders with form_options 1`] = `
         >
           <fieldset>
             <legend>
-              First, tell us how you want to use the Digital Marketplace
+              Have you got digital expertise to sell to government? Or do you want to buy digital products and services on behalf of your government office? Choose the option that matches your situation.
             </legend>
             <div>
               <span>
@@ -276,6 +277,7 @@ exports[`SignupForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -307,6 +309,7 @@ exports[`SignupForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="email"
           value=""
         />
@@ -325,7 +328,6 @@ exports[`SignupForm renders with form_options 1`] = `
         </small>
       </p>
       <input
-        role="button"
         type="submit"
         value="Create your account"
       />

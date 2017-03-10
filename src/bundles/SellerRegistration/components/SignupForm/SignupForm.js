@@ -56,7 +56,7 @@ class SignupForm extends BaseForm {
                   model={`${model}.user_type`}
                   name="user_type"
                   id="user_type"
-                  label="First, tell us how you want to use the Digital Marketplace"
+                  label="Have you got digital expertise to sell to government? Or do you want to buy digital products and services on behalf of your government office? Choose the option that matches your situation."
                   options={[
                       {value: 'buyer' , label:(<span>Buyer<p> I want to buy on behalf of<br/>government.</p></span>)},
                       {value: 'seller', label:(<span>Seller<p> I want to sell digital products or services.</p></span>)}
@@ -130,7 +130,7 @@ class SignupForm extends BaseForm {
                 By creating an account you confirm your acceptance of our <a href="/terms-of-use" target="_blank" rel="external">Terms of Use</a>.
               </small>
             </p>
-            <input type="submit" value='Create your account' role="button" />
+            <input type="submit" value='Create your account' />
 
           </Form>
         </article>

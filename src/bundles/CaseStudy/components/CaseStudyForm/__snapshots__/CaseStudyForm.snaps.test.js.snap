@@ -70,6 +70,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -95,6 +96,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -126,6 +128,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -157,6 +160,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -250,7 +254,7 @@ exports[`CaseStudyForm renders 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome"
+                htmlFor="outcome-0"
               >
                 1
                 .
@@ -259,7 +263,7 @@ exports[`CaseStudyForm renders 1`] = `
                 aria-describedby="outcome-hint"
                 className="text-box "
                 defaultValue=""
-                id="outcome"
+                id="outcome-0"
                 name="outcome[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -339,7 +343,7 @@ exports[`CaseStudyForm renders 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links"
+                htmlFor="project_links-0"
               >
                 1
                 .
@@ -348,7 +352,7 @@ exports[`CaseStudyForm renders 1`] = `
                 aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="project_links"
+                id="project_links-0"
                 name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -438,6 +442,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -469,6 +474,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -494,6 +500,7 @@ exports[`CaseStudyForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -517,7 +524,6 @@ exports[`CaseStudyForm renders 1`] = `
         </label>
       </div>
       <input
-        role="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -596,6 +602,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -621,6 +628,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -652,6 +660,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -683,6 +692,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -776,7 +786,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome"
+                htmlFor="outcome-0"
               >
                 1
                 .
@@ -785,7 +795,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                 aria-describedby="outcome-hint"
                 className="text-box "
                 defaultValue=""
-                id="outcome"
+                id="outcome-0"
                 name="outcome[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -865,7 +875,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links"
+                htmlFor="project_links-0"
               >
                 1
                 .
@@ -874,7 +884,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                 aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="project_links"
+                id="project_links-0"
                 name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -964,6 +974,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -995,6 +1006,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1020,6 +1032,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1043,7 +1056,6 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         </label>
       </div>
       <input
-        role="button"
         type="submit"
         value="Save Changes"
       />
@@ -1237,6 +1249,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1275,6 +1288,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1319,6 +1333,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1363,6 +1378,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1495,7 +1511,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome"
+                htmlFor="outcome-0"
               >
                 1
                 .
@@ -1504,7 +1520,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
                 aria-describedby="outcome-hint"
                 className="text-box invalid"
                 defaultValue=""
-                id="outcome"
+                id="outcome-0"
                 name="outcome[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -1584,7 +1600,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links"
+                htmlFor="project_links-0"
               >
                 1
                 .
@@ -1593,7 +1609,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
                 aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="project_links"
+                id="project_links-0"
                 name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -1696,6 +1712,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1740,6 +1757,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1778,6 +1796,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1814,7 +1833,6 @@ exports[`CaseStudyForm renders with errors 1`] = `
         </label>
       </div>
       <input
-        role="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -1899,6 +1917,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1924,6 +1943,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1955,6 +1975,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -1986,6 +2007,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2079,7 +2101,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome"
+                htmlFor="outcome-0"
               >
                 1
                 .
@@ -2088,7 +2110,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                 aria-describedby="outcome-hint"
                 className="text-box "
                 defaultValue=""
-                id="outcome"
+                id="outcome-0"
                 name="outcome[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -2168,7 +2190,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links"
+                htmlFor="project_links-0"
               >
                 1
                 .
@@ -2177,7 +2199,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                 aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="project_links"
+                id="project_links-0"
                 name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -2267,6 +2289,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2298,6 +2321,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2323,6 +2347,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2346,7 +2371,6 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         </label>
       </div>
       <input
-        role="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -2425,6 +2449,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2450,6 +2475,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value="The Client Name"
         />
@@ -2481,6 +2507,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value="January 2016 — June 2016"
         />
@@ -2512,6 +2539,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2605,7 +2633,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="outcome"
+                htmlFor="outcome-0"
               >
                 1
                 .
@@ -2614,7 +2642,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                 aria-describedby="outcome-hint"
                 className="text-box "
                 defaultValue="Outcome 1"
-                id="outcome"
+                id="outcome-0"
                 name="outcome[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -2694,7 +2722,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             >
               <label
                 className="text-box-number-label"
-                htmlFor="project_links"
+                htmlFor="project_links-0"
               >
                 1
                 .
@@ -2703,7 +2731,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                 aria-describedby="project_links-hint"
                 className="text-box "
                 defaultValue=""
-                id="project_links"
+                id="project_links-0"
                 name="project_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -2793,6 +2821,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2824,6 +2853,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2849,6 +2879,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           pattern={undefined}
+          readOnly={undefined}
           type="text"
           value=""
         />
@@ -2872,7 +2903,6 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         </label>
       </div>
       <input
-        role="button"
         type="submit"
         value="Publish Case Study"
       />

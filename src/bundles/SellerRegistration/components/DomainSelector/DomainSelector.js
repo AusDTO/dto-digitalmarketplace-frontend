@@ -117,7 +117,7 @@ class DomainSelector extends BaseForm {
                         {children}
 
                         <StepNav buttonText={buttonText} to={nextRoute}/>
-                  </Form>
+                    </Form>
                 </article>
             </Layout>
         )

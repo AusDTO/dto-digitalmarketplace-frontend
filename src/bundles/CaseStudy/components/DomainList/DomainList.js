@@ -240,7 +240,7 @@ class DomainList extends BaseForm {
 
                 {children}
 
-                 <StepNav buttonText={buttonText} to={nextRoute}/>
+                <StepNav buttonText={buttonText} to={nextRoute}/>
               </Form>
               
             </article>

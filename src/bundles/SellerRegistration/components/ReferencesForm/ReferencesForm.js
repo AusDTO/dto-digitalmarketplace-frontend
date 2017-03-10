@@ -84,7 +84,7 @@ class ReferencesForm extends BaseForm {
                         </p>
                         <Referee id="1" model={`${model}.references[0]`}/>
                         <Referee id="2" model={`${model}.references[1]`}/>
-                        <input type="submit" value={buttonText} role="button"/>
+                        <input type="submit" value={buttonText}/>
                     </Form>
                 </article>
             </Layout>

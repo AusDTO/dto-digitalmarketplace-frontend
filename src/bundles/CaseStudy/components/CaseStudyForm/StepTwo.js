@@ -155,7 +155,7 @@ class StepTwo extends BaseForm {
                 />
               </div>
 
-              <input type="submit" value={mode === 'add' ? 'Publish case study' : 'Update case study'} role="button" onClick={onClick} />
+              <input type="submit" value={mode === 'add' ? 'Publish case study' : 'Update case study'} onClick={onClick} />
             </Form>
             {returnLink && <a href={returnLink}>Return without saving</a>}
           </article>

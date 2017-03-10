@@ -54,6 +54,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -94,6 +95,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={false}
               type="text"
               value=""
             />
@@ -158,6 +160,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -189,6 +192,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -220,6 +224,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -245,6 +250,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -270,6 +276,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
@@ -295,6 +302,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onFocus={[Function]}
               onKeyPress={[Function]}
               pattern={undefined}
+              readOnly={undefined}
               type="text"
               value=""
             />
