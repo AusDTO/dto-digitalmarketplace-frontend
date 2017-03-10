@@ -69,7 +69,6 @@ class DocumentsForm extends BaseForm {
 
         removeDocument(model, id);
         createDocument(model, id);
-        
         onUpload(id, file)
             .then((filename) => {
                 this.setState({
@@ -83,7 +82,7 @@ class DocumentsForm extends BaseForm {
                     [id]: void 0,
                     errors: {[id]: true}
                 })
-            });
+            })
     }
 
     onReset(id, e) {
@@ -180,7 +179,7 @@ class DocumentsForm extends BaseForm {
                                             </div>
                                         }
     
-                                        {(field.expires && !isEmpty(doc.filename)) && 
+                                        {!isEmpty(doc.filename) && field.expires && 
                                             <div>
                                                 <StatefulError
                                                     model={`${model}.documents.${key}.expiry`}
@@ -208,7 +207,7 @@ class DocumentsForm extends BaseForm {
                                         }
                                     </div>
 
-                                    {fieldState.uploading && <span>Uploading...</span>}
+                                    {fieldState.uploading && <p>Uploading...</p>}
 
                                     {fieldState.file &&
                                         <div styleName="upload-container">
