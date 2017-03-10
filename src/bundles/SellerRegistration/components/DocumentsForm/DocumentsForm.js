@@ -69,13 +69,13 @@ class DocumentsForm extends BaseForm {
 
         removeDocument(model, id);
         createDocument(model, id);
+        
         onUpload(id, file)
             .then((filename) => {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
                 updateDocumentName(model, id, filename);
-
             })
             .then(submitApplication)
             .catch((error) => {
@@ -98,18 +98,10 @@ class DocumentsForm extends BaseForm {
 
     onChange(id, e) {
         e.preventDefault();
-
         this.setState({
             [id]: Object.assign({}, this.state[id], {'file': e.target.files[0]}),
             errors: {[id]: void 0}
         });
-    }
-
-
-    onToggle(e) {
-      this.setState({
-        showField: e.target.value === 'yes'
-      })
     }
 
     render() {

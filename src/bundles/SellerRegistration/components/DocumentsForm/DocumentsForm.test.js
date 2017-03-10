@@ -57,6 +57,6 @@ test('DocumentsForm renders links when documents are present', () => {
     </Provider>
   )
 
-  let links = wrapper.find('a');
-  expect(links.length).toBe(6);
+  let links = wrapper.find('ul');
+  expect(links.length).toBe(3);
 });
