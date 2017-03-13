@@ -14,11 +14,10 @@ class Datefield extends React.Component {
     year: void 0
   }
 
-  constructor(props) {
-    super(props);
-
-    if (props.date && typeof props.date === 'string') {
-      let propDate = new Date(props.date);
+  componentWillMount() {
+    const { date, model, setDate } = this.props;
+    if (date && typeof date === 'string') {
+      let propDate = new Date(date);
       this.state = {
         day: format(propDate, 'DD'),
         month: format(propDate, 'MM'),
@@ -26,7 +25,7 @@ class Datefield extends React.Component {
       }
     }
     else {
-      props.setDate(props.model, '2017-01-01');
+      setDate(model, '2017-01-01');
     }
   }
 
