@@ -292,7 +292,12 @@ const Body = (props) => {
                     })}
                     </tbody>
                 </table>
+
+                <p>
+                <span styleName="border">  This sellers financial statement is available to view upon request. </span>
+                </p>
             </Row>
+
 
         </article>
     )

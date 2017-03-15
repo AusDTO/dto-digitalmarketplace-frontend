@@ -100,7 +100,7 @@ const ReviewHeader = (props) => {
               <span className="seller-profile__tile-title" styleName="tile-title">Business contact</span>
               <b>{contact_name}</b>
               <p>{contact_phone}</p>
-              <a href={`mailto:${contact_email}`} role="button" styleName="external-link white">Email seller</a>
+              <a href={`mailto:${contact_email}`} role="button" styleName="external-link white external-link-hover">Email seller</a>
             </div>
           </article>
         )}

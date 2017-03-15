@@ -52,7 +52,6 @@
   width: 100%;
   height: auto;
   margin: 0;
-  border-radius: 4px;
 }
 
 .continue-link > * {
@@ -101,6 +100,13 @@
   border-top: 6px solid #00BFE9;
 }
 
+@media (max-width: 768px) {
+
+  .case-study-list li {
+    flex-basis: 100%
+  }
+}
+
 
 .content-table tbody tr td:nth-child(1), .content-table tbody tr th:nth-child(1) {
   width: 70%;
@@ -108,6 +114,10 @@
 
 .content-table tr:first-child {
     border-top: none !important;
+}
+
+table.content-table {
+    margin-top: 0;
 }
 
 .product-heading {
@@ -143,9 +153,23 @@
   border: solid 1px #bbbbbb;
 }
 
+span.border {
+  border: solid 1px #bbbbbb;
+  display: inline-block;
+  padding: 6px;
+  margin-bottom: 10px;
+  margin-right: 0.75em;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
 .external-link {
   word-break: break-word;
   font-weight: normal;
+}
+
+.external-link-hover:hover {
+  background-color: #115361 !important;
 }
 
 .white {
