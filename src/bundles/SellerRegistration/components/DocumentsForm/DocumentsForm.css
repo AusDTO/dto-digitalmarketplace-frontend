@@ -9,6 +9,10 @@
   border-bottom: solid 1px #5bcbe3;
 }
 
+.custom-input:hover{
+  background-color: #5bcbe3;
+}
+
 .filler {
   padding-top: 1.2em;
   height: 0px;
