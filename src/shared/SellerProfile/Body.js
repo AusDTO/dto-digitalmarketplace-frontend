@@ -180,13 +180,14 @@ const Body = (props) => {
                 <h4>Authorised representative</h4>
                 <p>
                     <span>{representative}</span><br/>
-                    { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
                     { phone && <span>{phone}<br/></span>}
+                    { email && <span><a href={`mailto:${email}`}>{email}</a><br/></span>}
+
                 </p>
 
                 {number_of_employees && (
                     <div>
-                        <h4>Company size</h4>
+                        <h4>Number of employees</h4>
                         <p>{number_of_employees}</p>
                     </div>
                 )}
@@ -203,19 +204,23 @@ const Body = (props) => {
 
                 {!isEmpty(certifications) && (
                     <div>
-                        <h4>Certifications</h4>
+                        <h4>Accreditions</h4>
+                        <ul>
                         {certifications.map((certification, i) => (
-                            <p key={i}>{certification}</p>
+                            <li key={i}>{certification}</li>
                         ))}
+                        </ul>
                     </div>
                 )}
 
                 {!isEmpty(boards) && (
                     <div>
-                        <h4>Boards and committees</h4>
+                        <h4>Industy engagement</h4>
+                        <ul>
                         {boards.map((board, i) => (
-                            <p key={i}>{board}</p>
+                            <li key={i}>{board}</li>
                         ))}
+                        </ul>
                     </div>
                 )}
             </Row>
@@ -249,17 +254,23 @@ const Body = (props) => {
 
 
             <Row title="Recognition" show={!isEmpty(awards)}>
+                <h4>Awards</h4>
+                <ul>
                 {awards.map((award, i) => (
-                    <p key={i}>{award}</p>
+                    <li key={i}>{award}</li>
                 ))}
+                </ul>
             </Row>
 
-            <Row title="Documents" show={!isEmpty(documents)}>
+            <hr />
+
+            <div className="col-sm-8 col-sm-push-1 col-xs-12">
+
                 <table className="content-table" styleName="content-table">
                     <thead>
                     <tr>
-                        <th>Document type</th>
-                        <th>Expiry</th>
+                        <th scope="col">Document type</th>
+                        <th scope="col">Expiry</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -284,7 +295,7 @@ const Body = (props) => {
                     })}
                     </tbody>
                 </table>
-            </Row>
+              </div>
 
         </article>
     )

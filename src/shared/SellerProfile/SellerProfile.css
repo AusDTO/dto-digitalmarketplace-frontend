@@ -73,7 +73,6 @@
 .full-header {
   background: #f0f3f5;
   padding-top: 1.5em;
-  padding-bottom: 1.5em;
 }
 
 .full-header h4:first-of-type, .full-header ul {
@@ -102,21 +101,13 @@
   border-top: 6px solid #00BFE9;
 }
 
-.content-table {
-  border: 1px solid #bebebe;
-}
-
-.content-table td, .content-table th {
-  padding: 0.8em;
-  border-right: 1px solid #bebebe;
-}
-
-.content-table tbody tr:nth-child(odd) {
-  background-color: #f0f3f5;
-}
 
 .content-table tbody tr td:nth-child(1), .content-table tbody tr th:nth-child(1) {
   width: 70%;
+}
+
+.content-table tr:first-child {
+    border-top: none !important;
 }
 
 .product-heading {
@@ -154,4 +145,9 @@
 
 .external-link {
   word-break: break-word;
+  font-weight: normal;
+}
+
+.white {
+  color: #FFFFFF !important;
 }

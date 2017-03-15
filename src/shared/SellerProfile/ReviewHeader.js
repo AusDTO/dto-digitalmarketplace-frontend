@@ -71,7 +71,7 @@ const ReviewHeader = (props) => {
             </div>
           )}
 
-          {/* 
+          {/*
             public_profile has three possible values
             1. Seller previewing/reviewing their profile in signup phase (public_profile=undefined)
             2. Buyer viewing seller profile (public_profile=true)
@@ -100,7 +100,7 @@ const ReviewHeader = (props) => {
               <span className="seller-profile__tile-title" styleName="tile-title">Business contact</span>
               <b>{contact_name}</b>
               <p>{contact_phone}</p>
-              <a href={`mailto:${contact_email}`} role="button" styleName="external-link">Email seller</a>
+              <a href={`mailto:${contact_email}`} role="button" styleName="external-link white">Email seller</a>
             </div>
           </article>
         )}
