@@ -21,16 +21,7 @@ import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
 
 import domains from '../../../SellerRegistration/components/DomainSelector/domains';
-
-const getStudiesByService = (studies, service) => {
-  return Object
-    .keys(studies)
-    .filter(studyId => studies[studyId].service === service)
-    .reduce((list, guid, i, a) => {
-      list[guid] = studies[guid];
-      return list;
-    }, {})
-};
+import CaseStudy from './CaseStudy';
 
 const calcRemaining = (studies, services) => {
   const serviceKeys = Object.keys(services);
@@ -80,19 +71,19 @@ class DomainList extends BaseForm {
       buttonText,
       model,
       action,
-      sellerCode,
+      supplierCode,
       caseStudyForm,
       children,
       currentStudy,
       actions: dispatchActions,
-      getStudiesByService,
       calcRemaining,
       onSubmit,
       onCaseStudySubmit,
       onEditCaseStudy,
       onAddCaseStudy,
       onDeleteCaseStudy,
-      nextRoute
+      nextRoute,
+      assessedDomains
     } = this.props;
 
     onCaseStudySubmit = onCaseStudySubmit.bind(this, {
@@ -102,9 +93,11 @@ class DomainList extends BaseForm {
     });
 
     const studies         = caseStudyForm.case_studies;
-    const serviceCount    = Object.keys(services).length;
-    const addedServices   = calcRemaining(studies, services);
-    const leftToAdd       = Object.keys(services).filter(service => addedServices.indexOf(service) === -1);
+    const recommended     = assessedDomains && Object.keys(services).filter(s => assessedDomains.includes(s)) || [];
+    const essential       = Object.keys(services).filter(s => !recommended.includes(s));
+    const serviceCount    = essential.length;
+    const addedServices   = calcRemaining(studies, essential);
+    const leftToAdd       = essential.filter(service => addedServices.indexOf(service) === -1);
     const leftToAddCount  = serviceCount - addedServices.length;
 
     if (!serviceCount) {
@@ -128,11 +121,10 @@ class DomainList extends BaseForm {
           with hundreds of buyers and a tool to help them find you through keyword search.
         </p>
       </header>)
-      if (sellerCode) {
+      if (supplierCode) {
         header = (<header>
           <h1 tabIndex="-1">{title}</h1>
-          <p>Case studies are important for showing you meet our
-            <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>for any new
+          <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
             services you wish to offer.</p>
           <p> But they are also much more. Think of them as the beginning of a
             conversation with hundreds of government buyers from all over Australia.
@@ -153,64 +145,33 @@ class DomainList extends BaseForm {
              
               <ErrorBox focusOnMount={true} model={model}/>
 
-              <strong>{leftToAddCount === 0 ?
-                'All services have a case study':
-                  (leftToAddCount === 1 ?
-                      `${leftToAddCount} service to add` :
-                      `${leftToAddCount} services to add`
-                  )
-              }</strong>
+              {!isEmpty(essential) &&
+                <div>
+                  <h2>Essential</h2>
+                  <strong>{leftToAddCount === 0 ?
+                    'All services have a case study':
+                      (leftToAddCount === 1 ?
+                          `${leftToAddCount} service to add` :
+                          `${leftToAddCount} services to add`
+                      )
+                  }</strong>
 
-              <ProgressBar value={addedServices.length} max={serviceCount} />
+                  <ProgressBar value={addedServices.length} max={serviceCount} />
 
-              {domains.filter(d => services[d.label]).map((domain, i) => {
-                let list = getStudiesByService(caseStudyForm.case_studies, domain.label);
-                return (
-                  <section key={`casestudy.domain.${i}`}>
-                    <h4>{domain.label}</h4>
-                    {!isEmpty(list) && (
-                      <ul className="bordered-list">
-                        {Object.keys(list).map((guid, i) => {
-                          let study = list[guid];
-                          return (
-                            <li key={`casestudy.${domain.label}.${guid}`} className="bordered-list__item row">
-                              <div className="col-xs-6">
-                                <Link
-                                  to={`${match.url}/edit/${guid}`}
-                                  id={`edit-${kebabCase(domain.label)}-${i}`}
-                                  onClick={() => onEditCaseStudy(study)}
-                                  children={study.title}
-                                />
-                                <p key={i}></p>
-                              </div>
-                              <div className="col-xs-6" style={{textAlign: 'right'}}>
-                                <Link
-                                  to={`${match.url}/delete/${guid}`}
-                                  id={`delete-${kebabCase(domain.label)}-${i}`}
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    onDeleteCaseStudy(dispatchActions, guid)
-                                  }}
-                                >
-                                  Delete
-                                </Link>
-                              </div>
-                            </li>
-                          )
-                        })}
-                      </ul>
-                    )}
-                    
-                    <Link
-                      to={`${match.url}/add/${domain.label}`}
-                      id={`add-service-${kebabCase(domain.label)}`}
-                      onClick={() => onAddCaseStudy()}>
-                      Add case study
-                    </Link>
-                    
-                  </section>
-                )
-              })}
+                  {essential.map((domain, index) => 
+                    <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, ...this.props}}/>
+                  )}
+                </div>
+              }
+
+              {!isEmpty(recommended) &&
+                <div>
+                  <h2>Recommended</h2>
+                  {recommended.map((domain, index) =>
+                    <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, ...this.props}}/>
+                  )}
+                </div>
+              }  
 
               {/* This error will never actually render */}
               <StatefulError
@@ -300,7 +261,7 @@ const mapStateToProps = (state, ownProps) => {
     ...ownProps,
     supplierCode: state.application.supplierCode,
     currentStudy: state.casestudy,
-    getStudiesByService,
+    assessedDomains: state.application.assessed_domains,
     calcRemaining
   };
 };
