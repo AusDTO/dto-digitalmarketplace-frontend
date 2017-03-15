@@ -262,10 +262,7 @@ const Body = (props) => {
                 </ul>
             </Row>
 
-            <hr />
-
-            <div className="col-sm-8 col-sm-push-1 col-xs-12">
-
+            <Row title="Documents" show={!isEmpty(documents)}>
                 <table className="content-table" styleName="content-table">
                     <thead>
                     <tr>
@@ -295,7 +292,7 @@ const Body = (props) => {
                     })}
                     </tbody>
                 </table>
-              </div>
+            </Row>
 
         </article>
     )
