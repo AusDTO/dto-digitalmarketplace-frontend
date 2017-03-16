@@ -24,7 +24,7 @@ class StepNav extends React.Component {
 
   componentWillMount() {
     const { actions } = this.props;
-    actions.clearApplication();  
+    actions.clearApplication();
   }
 
   render() {
@@ -32,11 +32,11 @@ class StepNav extends React.Component {
 
     return (
       <div className="row">
-          <div className="col-xs-12 col-sm-9">
-              <button type="submit">{buttonText || 'Save and continue'}</button>
-              <button className="save-button" onClick={this.onSave.bind(this)}>Save and finish later</button>
+          <div className="col-xs-12 col-sm-12">
+              <button type="submit" className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
+              <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
           </div>
-          <div className="col-xs-12 col-sm-3">
+          <div className="col-xs-12 col-sm-12">
               <div styleName="skip">
                 <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
               </div>
