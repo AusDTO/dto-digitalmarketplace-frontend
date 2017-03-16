@@ -24,7 +24,6 @@ import domains from '../../../SellerRegistration/components/DomainSelector/domai
 import CaseStudy from './CaseStudy';
 
 const calcRemaining = (studies, services) => {
-  const serviceKeys = Object.keys(services);
   const mappedServices = Object.keys(studies).map(studyId => studies[studyId].service);
   const uniqueServices = mappedServices.reduce((unique, service) => {
     if (unique.indexOf(service) === -1) {
@@ -34,7 +33,7 @@ const calcRemaining = (studies, services) => {
     return unique;
   }, []);
 
-  return serviceKeys.filter(service => uniqueServices.indexOf(service) !== -1);
+  return services.filter(service => uniqueServices.indexOf(service) !== -1);
 }
 
 const s4 = () => {
@@ -100,7 +99,7 @@ class DomainList extends BaseForm {
     const leftToAdd       = essential.filter(service => addedServices.indexOf(service) === -1);
     const leftToAddCount  = serviceCount - addedServices.length;
 
-    if (!serviceCount) {
+    if (!(essential.length + recommended.length)) {
       return (
         <Layout>
           <header>
@@ -192,7 +191,7 @@ class DomainList extends BaseForm {
                        .map(study => studies[study].service);
 
                      let unique = studyServices.filter((s, i) => {
-                       return studyServices.indexOf(s) === i;
+                       return studyServices.indexOf(s) === i && essential.includes(s);
                      })
                     return serviceCount === unique.length
                   }
