@@ -42,7 +42,7 @@ class StepNav extends React.Component {
               </div>
           </div>
       </div>
-    )
+    ) 
   }
 }
 
