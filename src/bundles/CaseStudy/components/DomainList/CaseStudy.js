@@ -15,8 +15,7 @@ const getStudiesByService = (studies, service) => {
     }, {})
 };
 
-const CaseStudy = props => {
-  let {match, domain, index, caseStudyForm, onEditCaseStudy, onDeleteCaseStudy, onAddCaseStudy, actions} = props;
+const CaseStudy = ({match, domain, index, caseStudyForm, onEditCaseStudy, onDeleteCaseStudy, onAddCaseStudy, actions}) => {
   let list = getStudiesByService(caseStudyForm.case_studies, domain);
 
   return (
