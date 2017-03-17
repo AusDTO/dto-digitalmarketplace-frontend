@@ -37,6 +37,7 @@ class StepNav extends React.Component {
               <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
           </div>
           <div className="col-xs-12 col-sm-12 col-md-3">
+
               <div styleName="skip">
                 <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
               </div>
