@@ -193,22 +193,23 @@ exports[`YourInfoForm renders 1`] = `
         className="row"
       >
         <div
-          className="col-xs-12 col-sm-9"
+          className="col-xs-12 col-sm-12"
         >
           <button
+            className="button-width button-width-left"
             type="submit"
           >
             Save and continue
           </button>
           <button
-            className="save-button"
+            className="save-button button-width button-width-right"
             onClick={[Function]}
           >
             Save and finish later
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-3"
+          className="col-xs-12 col-sm-12"
         >
           <div
             styleName="skip"
@@ -427,22 +428,23 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         className="row"
       >
         <div
-          className="col-xs-12 col-sm-9"
+          className="col-xs-12 col-sm-12"
         >
           <button
+            className="button-width button-width-left"
             type="submit"
           >
             Save and continue
           </button>
           <button
-            className="save-button"
+            className="save-button button-width button-width-right"
             onClick={[Function]}
           >
             Save and finish later
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-3"
+          className="col-xs-12 col-sm-12"
         >
           <div
             styleName="skip"
@@ -661,22 +663,23 @@ exports[`YourInfoForm renders with form_options 1`] = `
         className="row"
       >
         <div
-          className="col-xs-12 col-sm-9"
+          className="col-xs-12 col-sm-12"
         >
           <button
+            className="button-width button-width-left"
             type="submit"
           >
             Save and continue
           </button>
           <button
-            className="save-button"
+            className="save-button button-width button-width-right"
             onClick={[Function]}
           >
             Save and finish later
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-3"
+          className="col-xs-12 col-sm-12"
         >
           <div
             styleName="skip"
