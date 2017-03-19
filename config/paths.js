@@ -49,6 +49,7 @@ var config = {
   entryPoints: {
     'casestudy': [resolveApp('src/bundles/CaseStudy/CaseStudyWidget')],
     'casestudy-view': [resolveApp('src/bundles/CaseStudy/CaseStudyViewWidget')],
+    'casestudy-submit-confirmation': [resolveApp('src/bundles/CaseStudy/CaseStudySubmitConfirmationWidget')],
     'shared': [resolveApp('src/shared/sharedEntry')],
     'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')],
     'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')],
@@ -64,6 +65,7 @@ var config = {
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
     'casestudy': require(resolveApp('src/bundles/CaseStudy/components/CaseStudyForm/CaseStudyForm.json')),
+    'casestudy-submit-confirmation': require(resolveApp('src/bundles/CaseStudy/components/SubmitConfirmation/SubmitConfirmation.json')),
     'seller-business-details': require(resolveApp('src/bundles/SellerRegistration/components/BusinessDetailsForm/BusinessDetailsForm.json')),
     'applicant-signup': require(resolveApp('src/bundles/SellerRegistration/ApplicantSignup.json')),
     'profile-edit': require(resolveApp('src/bundles/SellerRegistration/ApplicantSignup.json')),
