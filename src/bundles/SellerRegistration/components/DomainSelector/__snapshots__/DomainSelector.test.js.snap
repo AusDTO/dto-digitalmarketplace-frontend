@@ -307,7 +307,7 @@ exports[`DomainSelector renders 1`] = `
         className="row"
       >
         <div
-          className="col-xs-12 col-sm-12"
+          className="col-xs-12 col-sm-12 col-md-9"
         >
           <button
             className="button-width button-width-left"
@@ -323,7 +323,7 @@ exports[`DomainSelector renders 1`] = `
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-12"
+          className="col-xs-12 col-sm-12 col-md-3"
         >
           <div
             styleName="skip"
@@ -650,7 +650,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
         className="row"
       >
         <div
-          className="col-xs-12 col-sm-12"
+          className="col-xs-12 col-sm-12 col-md-9"
         >
           <button
             className="button-width button-width-left"
@@ -666,7 +666,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-12"
+          className="col-xs-12 col-sm-12 col-md-3"
         >
           <div
             styleName="skip"
