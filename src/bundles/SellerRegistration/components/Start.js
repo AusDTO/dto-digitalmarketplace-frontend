@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Icon     from '../../../shared/Icon';
+import SaveError from '../../../shared/SaveError';
 
 import './Start.css';
 
@@ -36,6 +37,7 @@ const Start = ({supplierCode, signup, onClick, saved}) => {
                         <li>Accept the Digital Marketplace Master Agreement</li>
                     </ul>
                     <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
+                    <SaveError/>
                     <p>
                         <a role="button" href={signup} onClick={onClick}>Start Now </a>
                     </p>
@@ -70,6 +72,7 @@ const Start = ({supplierCode, signup, onClick, saved}) => {
                         <li>Accept the Digital Marketplace Master Agreement</li>
                     </ul>
                     <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
+                    <SaveError/>
                     <p>
                         <a role="button" href={signup} onClick={onClick}>Start now </a>
                     </p>
