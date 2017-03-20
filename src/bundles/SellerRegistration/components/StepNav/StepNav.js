@@ -10,9 +10,11 @@ class StepNav extends React.Component {
   onSave(e) {
       const { actions } = this.props;
       e.preventDefault();
-      focusHeading(); // could not figure out focus() in thenable
       return actions.submitApplication()
-        .then(() => actions.navigateToStep('/start'))
+        .then(() => { 
+          focusHeading(); 
+          actions.navigateToStep('/start');
+        })
         .then(() => actions.saveApplication())
         .catch((e) => {
             console.error(`Error: ${e.message}`, e);
