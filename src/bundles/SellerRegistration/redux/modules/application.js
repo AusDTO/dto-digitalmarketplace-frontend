@@ -7,8 +7,7 @@ const APP_SUBMIT = 'application/submit';
 const APP_PRE_SUBMIT = 'application/pre-submit';
 const APP_POST_SUBMIT = 'application/post-submit';
 const APP_SAVED = 'application/saved';
-const APP_CLEAR = 'application/clear';
-
+const APP_ERROR = 'application/error';
 const LINK_CLICK = 'link/click';
 
 const statusCheck = (response) => {
@@ -28,8 +27,12 @@ export default function reducer(state = {}, action = {}) {
             return Object.assign({}, state, payload.application);
         case APP_SAVED:
             return Object.assign({}, state, {saved: true});
-        case APP_CLEAR:
-            return state.saved ? Object.assign({}, state, {saved: void 0}) : state;
+        case APP_ERROR:
+            return Object.assign({}, state, {error: true});
+        case STEP_PRE:
+            return Object.assign({}, state, {saved: void 0});
+        case APP_PRE_SUBMIT:
+            return Object.assign({}, state, {error: void 0});
         default:
             return state;
     }
@@ -39,7 +42,7 @@ export const preSubmit = () => ({ type: APP_PRE_SUBMIT });
 export const postSubmit = () => ({ type: APP_POST_SUBMIT });
 export const submit = (payload = {}) => ({ type: APP_SUBMIT, payload });
 export const saveApplication = () => ({ type: APP_SAVED });
-export const clearApplication = () => ({ type: APP_CLEAR });
+export const errorApplication = () => ({ type: APP_ERROR });
 
 export const preStep = () => ({ type: STEP_PRE });
 export const nextStep = (to) => ({ type: STEP_NEXT, to });
@@ -78,16 +81,13 @@ export const submitApplication = () => {
         })
         // Disperse the data back into the redux store's form models, keeping everything in sync. 
         .then((model) => dispatchFormState(dispatch, getStateForms(state), model.application))
-        .then(() => dispatch(postSubmit()))
-        .catch((e) => {
-            console.error(`Error: ${e.message}`, e);
-        });
+        .then(() => dispatch(postSubmit()));
     }
 };
 
 export const navigateToStep = (to) => {
     return (dispatch, getState, { router }) => {
-        dispatch(preStep);
+        dispatch(preStep());
         dispatch(nextStep(to));
         router.push(to);
         focusHeading();
@@ -100,12 +100,17 @@ export const stepNextPersist = (to, step) => {
             .then(() => dispatch(preStep()))
             .then(() => dispatch(nextStep(to)))
             .then(() => router.push(to))
-            .then(() => focusHeading());
+            .then(() => focusHeading())
+            .catch((e) => {
+                console.error(`Error: ${e.message}`, e);
+                dispatch(errorApplication());
+            });
     }
 };
 
 export const linkClick = (to) => {
     return (dispatch) => {
+        dispatch(preStep());
         dispatch({ type: LINK_CLICK, to });
         defer(focusHeading);
     }
@@ -152,7 +157,7 @@ const actionCreators = {
     postSubmit,
     submit,
     saveApplication,
-    clearApplication,
+    errorApplication,
     preStep,
     nextStep,
     stepNextPersist,

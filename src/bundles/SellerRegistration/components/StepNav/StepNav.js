@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import { actions } from '../../redux/modules/application';
+import { focusHeading } from '../../redux/helpers';
 
 import './StepNav.css';
 
@@ -9,10 +10,14 @@ class StepNav extends React.Component {
   onSave(e) {
       const { actions } = this.props;
       e.preventDefault();
-      actions.submitApplication();
-      actions.saveApplication();
-      actions.navigateToStep('/start');
-      return;
+      focusHeading(); // could not figure out focus() in thenable
+      return actions.submitApplication()
+        .then(() => actions.navigateToStep('/start'))
+        .then(() => actions.saveApplication())
+        .catch((e) => {
+            console.error(`Error: ${e.message}`, e);
+            actions.errorApplication();
+        });
   }
 
   onSkip(to, e) {
@@ -22,26 +27,27 @@ class StepNav extends React.Component {
       return;
   }
 
-  componentWillMount() {
-    const { actions } = this.props;
-    actions.clearApplication();
-  }
-
   render() {
-    const { buttonText, to } = this.props;
+    const { buttonText, to, error } = this.props;
 
     return (
       <div className="row">
-          <div className="col-xs-12 col-sm-12">
-              <button type="submit" className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
-              <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
+        {error && 
+          <div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
+            <h4 id="validation-masthead-heading">There was a problem saving your information.</h4>
+              Please check your internet connection before closing the browser as any unsaved information will be lost.
           </div>
-          <div className="col-xs-12 col-sm-12">
-              <div styleName="skip">
-                <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
-              </div>
-          </div>
-      </div>
+        }
+        <div className="col-xs-12 col-sm-12">
+            <button type="submit" className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
+            <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
+        </div>
+        <div className="col-xs-12 col-sm-12">
+            <div styleName="skip">
+              <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
+            </div>
+        </div>
+    </div>
     )
   }
 }
@@ -49,11 +55,12 @@ class StepNav extends React.Component {
 StepNav.propTypes = {
   buttonText: React.PropTypes.string.isRequired,
   to: React.PropTypes.string.isRequired,
+  error: React.PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    ...ownProps
+    error: state.application.error
   }
 }
 
