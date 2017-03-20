@@ -14,6 +14,7 @@ import Textfield     from '../../../../shared/form/Textfield';
 import Textarea      from '../../../../shared/form/Textarea';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav       from '../StepNav';
+import SaveError     from '../../../../shared/SaveError';
 
 import './ProductsForm.css';
 
@@ -39,8 +40,9 @@ class ProductsForm extends BaseForm {
 
   render() {
     const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm, nextRoute } = this.props;
-    const submitClass = classNames({'button-secondary': isEmpty(productsForm.products)})
-    const addClass = classNames({'button-secondary': !isEmpty(productsForm.products)})
+    const hasProducts = productsForm.products && !isEmpty(productsForm.products.filter(e => e !== undefined));
+    const submitClass = classNames({'button-secondary': !hasProducts});
+    const addClass = classNames({'button-secondary': hasProducts});
     return (
       <Layout>
         <header>
@@ -149,14 +151,16 @@ class ProductsForm extends BaseForm {
 
             {children}
 
+            {!hasProducts && <SaveError/>}
             <button type="submit" className={addClass} onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
-            {isEmpty(productsForm.products) && <input type="submit" className={submitClass} value="I don't have any products" />}
-            {!isEmpty(productsForm.products) && 
+            {!hasProducts ? (
+                <input type="submit" className={submitClass} value="I don't have any products" />
+            ) : (
               <div>
                 <div className="row"/>
                 <StepNav buttonText={buttonText} to={nextRoute}/>
               </div>
-            }  
+            )}  
           </Form>
         </article>
       </Layout>

@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import { actions } from '../../redux/modules/application';
 import { focusHeading } from '../../redux/helpers';
 
+import SaveError from '../../../../shared/SaveError';
+
 import './StepNav.css';
 
 class StepNav extends React.Component {
@@ -30,16 +32,11 @@ class StepNav extends React.Component {
   }
 
   render() {
-    const { buttonText, to, error } = this.props;
+    const { buttonText, to } = this.props;
 
     return (
       <div className="row">
-        {error && 
-          <div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
-            <h4 id="validation-masthead-heading">There was a problem saving your information.</h4>
-              Please check your internet connection before closing the browser as any unsaved information will be lost.
-          </div>
-        }
+        <SaveError />
         <div className="col-xs-12 col-sm-12">
             <button type="submit" className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
             <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
@@ -57,12 +54,11 @@ class StepNav extends React.Component {
 StepNav.propTypes = {
   buttonText: React.PropTypes.string.isRequired,
   to: React.PropTypes.string.isRequired,
-  error: React.PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    error: state.application.error
+    ...ownProps
   }
 }
 
