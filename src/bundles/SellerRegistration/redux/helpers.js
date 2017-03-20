@@ -36,7 +36,8 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
 export const pruneModel = (model) => {
   const {
     case_studies,
-    services = {}
+    services = {},
+    products
   } = model;
 
   let newModel = model;
@@ -59,6 +60,12 @@ export const pruneModel = (model) => {
       }, {});
 
     newModel = Object.assign({}, model, { case_studies: casestudies });
+  }
+
+  if (products) {
+    newModel = Object.assign({}, model, {
+      products: omitBy(products, product => !product)
+    });      
   }
 
   return newModel;

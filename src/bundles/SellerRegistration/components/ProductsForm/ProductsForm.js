@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Form, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
+import omitBy from 'lodash/omitBy';
 import classNames from 'classnames';
 
 import { required, validLinks } from '../../../../validators';
@@ -17,6 +18,10 @@ import StepNav       from '../StepNav';
 import SaveError     from '../../../../shared/SaveError';
 
 import './ProductsForm.css';
+
+const filterProducts = products => {
+  return omitBy(products, product => !product);
+};
 
 class ProductsForm extends BaseForm {
 
@@ -40,7 +45,7 @@ class ProductsForm extends BaseForm {
 
   render() {
     const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm, nextRoute } = this.props;
-    const hasProducts = productsForm.products && !isEmpty(productsForm.products.filter(e => e !== undefined));
+    const hasProducts = !isEmpty(filterProducts(productsForm.products));
     const submitClass = classNames({'button-secondary': !hasProducts});
     const addClass = classNames({'button-secondary': hasProducts});
     return (
