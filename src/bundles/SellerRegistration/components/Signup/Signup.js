@@ -5,6 +5,7 @@ import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 import values from 'lodash/values';
+import keys from 'lodash/keys';
 
 import Icon     from '../../../../shared/Icon';
 import NotFound from '../../../../shared/NotFound';
@@ -125,7 +126,7 @@ class Signup extends React.Component {
   get currentStepIndex() {
     const { location } = this.props;
     return findIndex(this.filteredSteps, (step) => {
-      let regex = new RegExp(`^${step.pattern}`);  
+      let regex = new RegExp(`^${step.pattern}`);
       return location.pathname.match(regex);
     });
   }
@@ -148,7 +149,18 @@ class Signup extends React.Component {
 
   render() {
     const { forms, location, steps = {}, actions } = this.props;
-    const applicationValid = (this.filteredSteps.length - 1) <= values(steps).filter(s => s === "complete").length;
+
+    let stepKeys = this.filteredSteps.map(s => s['id']);
+    stepKeys = stepKeys.filter(s => s !== 'start' && s != 'submit');
+    let doneKeys = keys(steps).filter(s => steps[s] === "complete" && s !== 'start' && s != 'submit');
+
+    let stepsSet = new Set(stepKeys);
+    let doneSet = new Set(doneKeys);
+
+    let difference = new Set([...stepsSet].filter(x => !doneSet.has(x)));
+
+    const applicationValid = stepsSet === doneSet;
+
     let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
