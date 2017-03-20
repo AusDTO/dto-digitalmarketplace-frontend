@@ -38,6 +38,7 @@ class SubmitStepForm extends BaseForm {
         authoriseUrl: React.PropTypes.string,
         onClick: React.PropTypes.func,
         applicationValid: React.PropTypes.bool,
+        stepsRemaining: React.PropTypes.string,
         name: React.PropTypes.string,
         abn: React.PropTypes.string,
         email: React.PropTypes.string,
@@ -52,7 +53,7 @@ class SubmitStepForm extends BaseForm {
     }
 
     render() {
-        let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit} = this.props;
+        let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit, stepsRemaining} = this.props;
         let message;
         const userIsAuthorised = userEmail && email && userEmail.toLowerCase() === email.toLowerCase();
         const title = userIsAuthorised ? 'Your declaration': 'Share with authorised representative';
@@ -313,6 +314,8 @@ class SubmitStepForm extends BaseForm {
             )
         }
         else {
+
+
             message = (
                 <div>
                     <p>Only the authorised representative, <strong>{representative}</strong>, can accept the Master Agreement terms on behalf of <strong>{name}</strong>.</p>
@@ -334,7 +337,7 @@ class SubmitStepForm extends BaseForm {
                     <ErrorBox focusOnMount={true} model={model}/>
                     {!applicationValid &&
                     (<div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
-                        <h4 id="validation-masthead-heading">All steps must be completed before submitting</h4></div>)
+                        <h4 id="validation-masthead-heading">All steps must be completed before submitting. You are yet to complete the following sections: {stepsRemaining}</h4></div>)
                     }
 
                     <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>

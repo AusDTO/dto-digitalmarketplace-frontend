@@ -149,7 +149,6 @@ class Signup extends React.Component {
 
   render() {
     const { forms, location, steps = {}, actions } = this.props;
-
     let stepKeys = this.filteredSteps.map(s => s['id']);
     stepKeys = stepKeys.filter(s => s !== 'start' && s != 'submit');
     let doneKeys = keys(steps).filter(s => steps[s] === "complete" && s !== 'start' && s != 'submit');
@@ -157,7 +156,8 @@ class Signup extends React.Component {
     let stepsSet = new Set(stepKeys);
     let doneSet = new Set(doneKeys);
 
-    let difference = new Set([...stepsSet].filter(x => !doneSet.has(x)));
+    let stepsRemaining = new Set([...stepsSet].filter(x => !doneSet.has(x)));
+    stepsRemaining = this.filteredSteps.filter(s => stepsRemaining.has(s['id'])).map(s => s.label).join(', ');
 
     const applicationValid = stepsSet === doneSet;
 
@@ -228,6 +228,7 @@ class Signup extends React.Component {
               const props = Object.assign({},
                 routerProps, {
                   applicationValid,
+                  stepsRemaining,
                   services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
                   title: label,
