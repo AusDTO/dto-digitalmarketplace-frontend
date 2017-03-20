@@ -28,8 +28,10 @@ const Start = ({supplierCode, signup, onClick, saved}) => {
                     <p>It may take more than one visit to complete your profile update. But do not worry, your information
                         will be saved as you go.</p>
                     <h2>You will need</h2>
-                    <li> Recent financial records or a viability statement from your accountant</li>
-                    <li> Proof of current insurance cover</li>
+                    <ul>
+                        <li> Recent financial records or a viability statement from your accountant</li>
+                        <li> Proof of current insurance cover</li>
+                    </ul>
                     <h2>You will be asked to</h2>
                     <ul>
                         <li>Share details about services or products you wish to provide</li>
