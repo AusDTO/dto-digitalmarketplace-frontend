@@ -5,8 +5,8 @@ const SaveError = ({error}) => (
 	<div>
 		{error && 
 		  <div className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
-		    <h4 id="validation-masthead-heading">There was a problem saving your information.</h4>
-		      Please check your internet connection before closing the browser as any unsaved information will be lost.
+		    <h4 id="validation-masthead-heading">We couldn't save your information.</h4>
+		      Check your internet connection and if there's still a problem email marketplace@digital.gov.au
 		  </div>
 		 }
 	</div>
