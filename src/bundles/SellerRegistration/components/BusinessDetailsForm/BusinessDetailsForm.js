@@ -90,7 +90,7 @@ class BusinessDetailsForm extends BaseForm {
                               <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
                           </span>)}
                           readOnly={!!supplierCode}
-                          disabled={!supplierCode ? "disabled": ""}
+                          disabled={!!supplierCode}
                           messages={{
                               validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
                           }}
