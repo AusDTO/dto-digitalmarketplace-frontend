@@ -16,6 +16,8 @@ const Icon = (props) => {
   let svgStyle = {};
   if (value.includes('filled')) {
     svgStyle.fill = color;
+  } else if (value.includes('nostroke')) {
+    //do nothing
   } else {
     svgStyle.stroke = color;
   }

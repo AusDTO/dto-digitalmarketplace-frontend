@@ -45,29 +45,35 @@ const Body = (props) => {
     return (
         <article className="seller-profile" styleName={public_profile ? 'full-profile' : ''}>
 
-            <Row title="Services" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
+            <Row title="Areas of expertise" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
 
                 {!isEmpty(assessed) && (
                     <div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
-                        <h4>Approved</h4>
+                        <p styleName="bold">Approved</p>
                         {assessed.map((service, i) => (
-                            <span key={i}>{service} <Icon value="completed" size={14}/></span>
+                            <span key={i}>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
                         ))}
                     </div>
                 )}
 
                 {!isEmpty(unassessed) && (
                     <div className="seller-profile__provides-badges" styleName="badges provides-badges">
-                        <h4>To be assessed</h4>
+                        <p styleName="bold">Also offers</p>
                         {unassessed.map((service, i) => (
                             <span key={i}>{service}</span>
                         ))}
                     </div>
                 )}
 
-                <p>
-                    <a href="/sellers-guide#assessment" target="_blank" rel="external">Learn about assessments</a>
-                </p>
+
+                <SimpleAccordion title="Learn about assessments">
+                  <span styleName="accordianPaddTopp">
+                    These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
+
+                  </span>
+                </SimpleAccordion>
+
+
 
             </Row>
 
@@ -88,7 +94,7 @@ const Body = (props) => {
                                     <p>{client}</p>
                                     <div styleName={`badges ${badgeStyleName}`}>
                                         {isEvaluted ? (
-                                            <span>{service} <Icon value="completed" size={14}/></span>
+                                            <span>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
                                         ) : (
                                             <span>{service}</span>
                                         )}
@@ -101,9 +107,13 @@ const Body = (props) => {
             </Row>
 
             <Row title="Digital products" show={!isEmpty(products)}>
-                <Alert type="info">
-                    The products below are not assessed or endorsed by the Digital Marketplace.
-                </Alert>
+
+            <SimpleAccordion title="Learn about assessments">
+              <span styleName="accordianPaddTopp">
+                The products below are not assessed or endorsed by the Digital Marketplace.
+            </span>
+            </SimpleAccordion>
+
 
                 {Object.keys(products).map((key, i) => {
                     const product = products[key];
@@ -155,21 +165,21 @@ const Body = (props) => {
             <Row title="How we work" show={tools || methodologies || technologies}>
                 {methodologies && (
                     <div>
-                        <h4>Methodology</h4>
+                        <p styleName="bold">Methodology</p>
                         <p className="freetext">{methodologies}</p>
                     </div>
                 )}
 
                 {tools && (
                     <div>
-                        <h4>Tools</h4>
+                        <p styleName="bold">Tools</p>
                         <p className="freetext">{tools}</p>
                     </div>
                 )}
 
                 {technologies && (
                     <div>
-                        <h4>Technologies</h4>
+                        <p styleName="bold">Technologies</p>
                         <p className="freetext">{technologies}</p>
                     </div>
                 )}
@@ -177,7 +187,7 @@ const Body = (props) => {
 
 
             <Row title="Company Details" show={true}>
-                <h4>Authorised representative</h4>
+                <p styleName="bold">Authorised representative</p>
                 <p>
                     <span>{representative}</span><br/>
                     { phone && <span>{phone}<br/></span>}
@@ -187,14 +197,14 @@ const Body = (props) => {
 
                 {number_of_employees && (
                     <div>
-                        <h4>Number of employees</h4>
+                        <p styleName="bold">Number of employees</p>
                         <p>{number_of_employees}</p>
                     </div>
                 )}
 
                 {abn && (
                     <div>
-                        <h4>ABN</h4>
+                        <p styleName="bold">ABN</p>
                         <p>
                             <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external"
                                target="_blank">{abn}</a>
@@ -204,7 +214,7 @@ const Body = (props) => {
 
                 {!isEmpty(certifications) && (
                     <div>
-                        <h4>Accreditions</h4>
+                        <p styleName="bold">Accreditions</p>
                         <ul>
                         {certifications.map((certification, i) => (
                             <li key={i}>{certification}</li>
@@ -215,7 +225,7 @@ const Body = (props) => {
 
                 {!isEmpty(boards) && (
                     <div>
-                        <h4>Industy engagement</h4>
+                        <p styleName="bold">Industy engagement</p>
                         <ul>
                         {boards.map((board, i) => (
                             <li key={i}>{board}</li>
@@ -229,7 +239,7 @@ const Body = (props) => {
 
                 {!isEmpty(addresses) && (
                     <div>
-                        <h4>Main Address </h4>
+                        <p styleName="bold">Main Address </p>
 
                         {Object.keys(addresses)
                             .map((key, i) => {
@@ -254,7 +264,7 @@ const Body = (props) => {
 
 
             <Row title="Recognition" show={!isEmpty(awards)}>
-                <h4>Awards</h4>
+                <p styleName="bold">Awards</p>
                 <ul>
                 {awards.map((award, i) => (
                     <li key={i}>{award}</li>
@@ -268,6 +278,7 @@ const Body = (props) => {
                     <tr>
                         <th scope="col">Document type</th>
                         <th scope="col">Expiry</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -279,7 +290,7 @@ const Body = (props) => {
                                     {public_profile || key == 'financial' ?
                                         documentTitle[key]
                                         : (
-                                            <a href={`${documentsUrl}${filename}`}>
+                                            <a href={`${documentsUrl}${filename}`} rel="external">
                                                 {documentTitle[key]}
                                             </a>
                                         )}
@@ -288,14 +299,14 @@ const Body = (props) => {
                                     {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
                                 </td>
                             </tr>
+
                         )
                     })}
                     </tbody>
                 </table>
 
-                <p>
-                <span styleName="border">  This sellers financial statement is available to view upon request. </span>
-                </p>
+                <p className="callout">  This sellers financial statement is available to view upon request.   </p>
+
             </Row>
 
 

@@ -164,8 +164,8 @@ class DocumentsForm extends BaseForm {
                                                 </p>
                                             </div>
                                         }
-    
-                                        {!isEmpty(doc.filename) && 
+
+                                        {!isEmpty(doc.filename) &&
                                             <div>
                                                 <ul className="bordered-list">
                                                     <li className="bordered-list__item row">
@@ -179,8 +179,8 @@ class DocumentsForm extends BaseForm {
                                                 </ul>
                                             </div>
                                         }
-    
-                                        {!isEmpty(doc.filename) && field.expires && 
+
+                                        {!isEmpty(doc.filename) && field.expires &&
                                             <div>
                                                 <StatefulError
                                                     model={`${model}.documents.${key}.expiry`}
