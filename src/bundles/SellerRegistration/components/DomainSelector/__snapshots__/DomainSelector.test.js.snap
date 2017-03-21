@@ -252,7 +252,7 @@ exports[`DomainSelector renders 1`] = `
             Cyber security
              
             <p>
-              Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
+              Cyber security protects the Australian government and its citizens’ interests online. Examples include cyber security advice, cyber security education, information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
             </p>
           </label>
         </div>
@@ -595,7 +595,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
             Cyber security
              
             <p>
-              Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
+              Cyber security protects the Australian government and its citizens’ interests online. Examples include cyber security advice, cyber security education, information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.
             </p>
           </label>
         </div>
