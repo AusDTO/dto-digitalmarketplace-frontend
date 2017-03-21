@@ -192,8 +192,9 @@ exports[`YourInfoForm renders 1`] = `
       <div
         className="row"
       >
+        <div />
         <div
-          className="col-xs-12 col-sm-12 col-md-9"
+          className="col-xs-12 col-sm-12"
         >
           <button
             className="button-width button-width-left"
@@ -209,7 +210,7 @@ exports[`YourInfoForm renders 1`] = `
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-12 col-md-3"
+          className="col-xs-12 col-sm-12"
         >
           <div
             styleName="skip"
@@ -427,8 +428,9 @@ exports[`YourInfoForm renders with edit mode 1`] = `
       <div
         className="row"
       >
+        <div />
         <div
-          className="col-xs-12 col-sm-12 col-md-9"
+          className="col-xs-12 col-sm-12"
         >
           <button
             className="button-width button-width-left"
@@ -444,7 +446,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-12 col-md-3"
+          className="col-xs-12 col-sm-12"
         >
           <div
             styleName="skip"
@@ -662,8 +664,9 @@ exports[`YourInfoForm renders with form_options 1`] = `
       <div
         className="row"
       >
+        <div />
         <div
-          className="col-xs-12 col-sm-12 col-md-9"
+          className="col-xs-12 col-sm-12"
         >
           <button
             className="button-width button-width-left"
@@ -679,7 +682,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           </button>
         </div>
         <div
-          className="col-xs-12 col-sm-12 col-md-3"
+          className="col-xs-12 col-sm-12"
         >
           <div
             styleName="skip"

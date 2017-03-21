@@ -43,7 +43,7 @@ export default [
     {
         key: 'cyber',
         label: 'Cyber security',
-        description: 'Cyber security protects the Australian government and its citizens’ interests online. Examples include information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.'
+        description: 'Cyber security protects the Australian government and its citizens’ interests online. Examples include cyber security advice, cyber security education, information security, assessments, ethical hacking, monitoring, incident response, data privacy and digital forensics.'
     },
     {
         key: 'datasci',
