@@ -54,7 +54,7 @@ Textfield.propTypes = {
         React.PropTypes.string,
     ]),
     pattern: React.PropTypes.string,
-    disabled: React.PropTypes.string,
+    disabled: React.PropTypes.bool,
     readOnly: React.PropTypes.bool,
     type: React.PropTypes.string
 };
