@@ -6,6 +6,7 @@ import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 import values from 'lodash/values';
 import keys from 'lodash/keys';
+import difference from 'lodash/difference';
 
 import Icon     from '../../../../shared/Icon';
 import NotFound from '../../../../shared/NotFound';
@@ -153,13 +154,10 @@ class Signup extends React.Component {
     stepKeys = stepKeys.filter(s => s !== 'start' && s != 'submit');
     let doneKeys = keys(steps).filter(s => steps[s] === "complete" && s !== 'start' && s != 'submit');
 
-    let stepsSet = new Set(stepKeys);
-    let doneSet = new Set(doneKeys);
+    let stepsRemainingSet = new Set(difference(stepKeys, doneKeys));
+    let stepsRemaining = this.filteredSteps.filter(s => stepsRemainingSet.has(s['id'])).map(s => s.label).join(', ');
 
-    let stepsRemaining = new Set([...stepsSet].filter(x => !doneSet.has(x)));
-    stepsRemaining = this.filteredSteps.filter(s => stepsRemaining.has(s['id'])).map(s => s.label).join(', ');
-
-    const applicationValid = stepsSet === doneSet;
+    const applicationValid = stepsRemainingSet.size === 0;
 
     let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
