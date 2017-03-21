@@ -28,6 +28,7 @@
   background-color: #fff;
   padding: 1.5rem 2rem;
   text-align: center;
+  margin-bottom: 2em;
 }
 
 .tile-title {
@@ -92,18 +93,19 @@
   display: none;
 }
 
-.meta-row {
-  margin: 0 0 2em;
+.meta-row-top {
+  margin: 0 0 1em;
 }
+
 
 .case-study-list > li {
   border-top: 6px solid #00BFE9;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
   .case-study-list li {
-    flex-basis: 100%
+    flex-basis: 100% !important;
   }
 }
 
@@ -120,6 +122,16 @@ table.content-table {
     margin-top: 0;
 }
 
+table.content-table thead {
+    border-bottom: solid 2px #6e6e6e;
+}
+
+table.content-table tr th  {
+
+  font-size: 16px !important;
+  padding-top: 0px;
+}
+
 .product-heading {
   font-size: 1.625rem;
   margin-top: 1rem;
@@ -131,7 +143,7 @@ table.content-table {
 
 .badges span {
   display: inline-block;
-  padding: 6px;
+  padding: 3px 6px;
   margin-bottom: 10px;
   margin-right: 0.75em;
   border-radius: 2px;
@@ -165,7 +177,7 @@ span.border {
 
 .external-link {
   word-break: break-word;
-  font-weight: normal;
+  border-bottom:0px !important;
 }
 
 .external-link-hover:hover {
@@ -174,4 +186,13 @@ span.border {
 
 .white {
   color: #FFFFFF !important;
+}
+
+.accordianPaddTopp{
+  margin-top: 0.75rem;
+  display: block;
+}
+
+.bold{
+  font-weight: bold;
 }

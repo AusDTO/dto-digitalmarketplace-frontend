@@ -17,7 +17,7 @@
 
 .details summary span:hover {
   background-color: #5bcbe3;
-  color: #313131;  
+  color: #313131;
 }
 
 .details summary::before {
