@@ -326,7 +326,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
           >
             <div />
             <div
-              className="col-xs-12 col-sm-12"
+              className="col-xs-12 col-sm-12 col-md-9"
             >
               <button
                 className="button-width button-width-left"
@@ -342,7 +342,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               </button>
             </div>
             <div
-              className="col-xs-12 col-sm-12"
+              className="col-xs-12 col-sm-12 col-md-3"
             >
               <div
                 styleName="skip"
