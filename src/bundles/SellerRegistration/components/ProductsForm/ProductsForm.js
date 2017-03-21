@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Form, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
+import omitBy from 'lodash/omitBy';
 import classNames from 'classnames';
 
 import { required, validLinks } from '../../../../validators';
@@ -14,8 +15,13 @@ import Textfield     from '../../../../shared/form/Textfield';
 import Textarea      from '../../../../shared/form/Textarea';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav       from '../StepNav';
+import SaveError     from '../../../../shared/SaveError';
 
 import './ProductsForm.css';
+
+const filterProducts = products => {
+  return omitBy(products, product => !product);
+};
 
 class ProductsForm extends BaseForm {
 
@@ -39,8 +45,9 @@ class ProductsForm extends BaseForm {
 
   render() {
     const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm, nextRoute } = this.props;
-    const submitClass = classNames({'button-secondary': isEmpty(productsForm.products)})
-    const addClass = classNames({'button-secondary': !isEmpty(productsForm.products)})
+    const hasProducts = !isEmpty(filterProducts(productsForm.products));
+    const submitClass = classNames({'button-secondary': !hasProducts});
+    const addClass = classNames({'button-secondary': hasProducts});
     return (
       <Layout>
         <header>
@@ -149,14 +156,16 @@ class ProductsForm extends BaseForm {
 
             {children}
 
+            {!hasProducts && <SaveError/>}
             <button type="submit" className={addClass} onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
-            {isEmpty(productsForm.products) && <input type="submit" className={submitClass} value="I don't have any products" />}
-            {!isEmpty(productsForm.products) && 
+            {!hasProducts ? (
+                <input type="submit" className={submitClass} value="I don't have any products" />
+            ) : (
               <div>
                 <div className="row"/>
                 <StepNav buttonText={buttonText} to={nextRoute}/>
               </div>
-            }  
+            )}  
           </Form>
         </article>
       </Layout>
