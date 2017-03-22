@@ -40,4 +40,16 @@ test('handleClick with formValid=false', () => {
 
   wrapper.find('button[type="submit"]').simulate('click')
   expect(store.getState().forms.yourInfoForm.$form.valid).toBeFalsy()
+  expect(wrapper.find('h1').text()).toBe('Contact details');
+});
+
+test('render existing supplier copy', () => {
+  let store = createStore({application: {supplier_code: 999}});
+  const wrapper = mount(
+    <Provider store={store}>
+      <YourInfoForm />
+    </Provider>
+  )
+
+  expect(wrapper.find('h1').text()).toBe('Check your contact details');
 });

@@ -4,6 +4,7 @@ import { Link, Route, Redirect, Switch } from 'react-router-dom';
 import { actions, Form }  from 'react-redux-form';
 import isEmpty            from 'lodash/isEmpty';
 import kebabCase          from 'lodash/kebabCase';
+import isNumber           from 'lodash/isNumber';
 
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
@@ -85,12 +86,6 @@ class DomainList extends BaseForm {
       assessedDomains
     } = this.props;
 
-    onCaseStudySubmit = onCaseStudySubmit.bind(this, {
-      router,
-      pathname: match.url,
-      dispatchActions
-    });
-
     const studies         = caseStudyForm.case_studies;
     const recommended     = assessedDomains && Object.keys(services).filter(s => assessedDomains.includes(s)) || [];
     const essential       = Object.keys(services).filter(s => !recommended.includes(s));
@@ -98,6 +93,13 @@ class DomainList extends BaseForm {
     const addedServices   = calcRemaining(studies, essential);
     const leftToAdd       = essential.filter(service => addedServices.indexOf(service) === -1);
     const leftToAddCount  = serviceCount - addedServices.length;
+    const pathname        = match.url;
+
+    onCaseStudySubmit = onCaseStudySubmit.bind(this, {
+      router,
+      pathname,
+      dispatchActions
+    });
 
     if (!(essential.length + recommended.length)) {
       return (
@@ -120,7 +122,7 @@ class DomainList extends BaseForm {
           with hundreds of buyers and a tool to help them find you through keyword search.
         </p>
       </header>)
-      if (supplierCode) {
+      if (isNumber(supplierCode)) {
         header = (<header>
           <h1 tabIndex="-1">{title}</h1>
           <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
@@ -137,7 +139,7 @@ class DomainList extends BaseForm {
 
     return (
       <Switch>
-        <Route path={match.url} exact render={() => (
+        <Route path={pathname} exact render={() => (
           <Layout>
               {header}
             <article role="main">
@@ -158,7 +160,7 @@ class DomainList extends BaseForm {
                   <ProgressBar value={addedServices.length} max={serviceCount} />
 
                   {essential.map((domain, index) => 
-                    <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, ...this.props}}/>
+                    <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, pathname, ...this.props}}/>
                   )}
                 </div>
               }
@@ -167,7 +169,7 @@ class DomainList extends BaseForm {
                 <div>
                   <h2>Recommended</h2>
                   {recommended.map((domain, index) =>
-                    <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, ...this.props}}/>
+                    <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, pathname, ...this.props}}/>
                   )}
                 </div>
               }  
@@ -206,31 +208,31 @@ class DomainList extends BaseForm {
             </article>
           </Layout>
         )} />
-        <Route path={`${match.url}/add/:service`} render={({ match: subMatch }) => (
+        <Route path={`${pathname}/add/:service`} render={({ match: subMatch }) => (
 
           <CaseStudyForm
             model="casestudy"
             formName="casestudy"
             buttonText="Save and preview"
             service={subMatch.params.service}
-            returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
+            returnLink={<ConnectedLink to={pathname}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
           />
 
         )} />
-        <Route path={`${match.url}/edit/:id`} render={({ match: subMatch }) => (
+        <Route path={`${pathname}/edit/:id`} render={({ match: subMatch }) => (
 
           <CaseStudyForm
             model={`caseStudyForm.case_studies.${subMatch.params.id}`}
             formName={`caseStudyForm.case_studies.${subMatch.params.id}`}
             mode="edit"
             buttonText="Save and preview"
-            returnLink={<ConnectedLink to={match.url}>Return without saving</ConnectedLink>}
+            returnLink={<ConnectedLink to={pathname}>Return without saving</ConnectedLink>}
             onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
           />
 
         )} />
-        <Route path={`${match.url}/view/:id?`} render={({ match: subMatch }) => {
+        <Route path={`${pathname}/view/:id?`} render={({ match: subMatch }) => {
           if (subMatch.params.id && subMatch.params.id !== 'undefined') {
             // If `id` is present, load from pre-saved state.
             currentStudy = caseStudyForm.case_studies[subMatch.params.id];
@@ -241,8 +243,8 @@ class DomainList extends BaseForm {
                 ? <View
                     {...currentStudy}
                     onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
-                    confirmButton={<ConnectedLink role="button" to={match.url}>Finish case study</ConnectedLink>}
-                    returnLink={<p><Link to={`${match.url}/edit/${subMatch.params.id}`}>Continue Editing</Link></p>}
+                    confirmButton={<ConnectedLink role="button" to={pathname}>Finish case study</ConnectedLink>}
+                    returnLink={<p><Link to={`${pathname}/edit/${subMatch.params.id}`}>Continue Editing</Link></p>}
                   />
                 : <Redirect to="/case-study" />
               }
@@ -258,7 +260,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...formProps(state, 'caseStudyForm'),
     ...ownProps,
-    supplierCode: state.application.supplierCode,
+    supplierCode: state.application.supplier_code,
     currentStudy: state.casestudy,
     assessedDomains: state.application.assessed_domains,
     calcRemaining

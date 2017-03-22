@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
+import isNumber from 'lodash/isNumber';
 
 import './Start.css';
 
@@ -14,38 +15,7 @@ const Start = ({supplierCode, signup, onClick, saved}) => {
                     <p>Click 'continue application' in the header above when you're ready to go on.</p>
                 </div>
             }
-            {supplierCode &&
-                <div>
-                    <h1>Do more in the Digital Marketplace</h1>
-                    <p>With our latest release you can now offer more services, add more content and products to showcase
-                        your expertise to buyers. To make the most of these new features you will need to update your seller
-                        profile. </p>
-                    <p>By completing this application you are automatically responding to an open approach to market, whose terms and
-                        conditions, like other government tenders, are <a href="http://tenders.gov.au" target="_blank" rel="external">publicly available</a>.</p>
-                    <p>We recommend adding case studies for services you are already approved to offer. For additional
-                        services you will need to provide case studies and referees to confirm you meet our <a
-                            href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.</p>
-                    <p>It may take more than one visit to complete your profile update. But do not worry, your information
-                        will be saved as you go.</p>
-                    <h2>You will need</h2>
-                    <ul>
-                        <li> Recent financial records or a viability statement from your accountant</li>
-                        <li> Proof of current insurance cover</li>
-                    </ul>
-                    <h2>You will be asked to</h2>
-                    <ul>
-                        <li>Share details about services or products you wish to provide</li>
-                        <li> Provide case studies and referees to support your application</li>
-                        <li>Accept the Digital Marketplace Master Agreement</li>
-                    </ul>
-                    <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
-                    <SaveError/>
-                    <p>
-                        <a role="button" href={signup} onClick={onClick}>Start Now </a>
-                    </p>
-                </div>    
-            }
-            {!supplierCode &&
+            {!isNumber(supplierCode) ? (
                 <div>
                     <h1>Joining the Digital Marketplace</h1>
                     <p>
@@ -79,7 +49,37 @@ const Start = ({supplierCode, signup, onClick, saved}) => {
                         <a role="button" href={signup} onClick={onClick}>Start now </a>
                     </p>
                 </div>
-            }
+            ) : (
+                <div>
+                    <h1>Do more in the Digital Marketplace</h1>
+                    <p>With our latest release you can now offer more services, add more content and products to showcase
+                        your expertise to buyers. To make the most of these new features you will need to update your seller
+                        profile. </p>
+                    <p>By completing this application you are automatically responding to an open approach to market, whose terms and
+                        conditions, like other government tenders, are <a href="http://tenders.gov.au" target="_blank" rel="external">publicly available</a>.</p>
+                    <p>We recommend adding case studies for services you are already approved to offer. For additional
+                        services you will need to provide case studies and referees to confirm you meet our <a
+                            href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.</p>
+                    <p>It may take more than one visit to complete your profile update. But do not worry, your information
+                        will be saved as you go.</p>
+                    <h2>You will need</h2>
+                    <ul>
+                        <li> Recent financial records or a viability statement from your accountant</li>
+                        <li> Proof of current insurance cover</li>
+                    </ul>
+                    <h2>You will be asked to</h2>
+                    <ul>
+                        <li>Share details about services or products you wish to provide</li>
+                        <li> Provide case studies and referees to support your application</li>
+                        <li>Accept the Digital Marketplace Master Agreement</li>
+                    </ul>
+                    <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
+                    <SaveError/>
+                    <p>
+                        <a role="button" href={signup} onClick={onClick}>Start Now </a>
+                    </p>
+                </div>    
+            )}
         </div>
     )
 }
@@ -101,7 +101,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         onClick: ownProps.onClick,
         signup: ownProps.signup,
-        supplierCode: state.application.supplierCode,
+        supplierCode: state.application.supplier_code,
         saved: state.application.saved
     }
 }

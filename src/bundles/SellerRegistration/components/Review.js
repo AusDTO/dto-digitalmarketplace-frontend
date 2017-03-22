@@ -9,7 +9,7 @@ import View from '../../CaseStudy/components/View';
 const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
     <Switch>
         <Route path={match.url} exact render={() => (
-            <div>
+            <div id="preview-link">
                 <h1 tabIndex="-1">Preview your new profile</h1>
                 {supplierCode ? (<span><p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Digital Marketplace.</p></span>)
                 :(<span><p>Take a moment to preview your new seller profile. This what government buyers (and assessors, if you are offering new services) will see in the Digital Marketplace.</p></span>) }
@@ -48,7 +48,7 @@ const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
 const mapStateToProps = (state, ownProps) => {
     return {
         ...ownProps,
-        supplierCode: (state.application && state.application.supplierCode),
+        supplierCode: (state.application && state.application.supplier_code),
         caseStudyForm: state.caseStudyForm
     }
 }

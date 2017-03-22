@@ -15,7 +15,7 @@ const getStudiesByService = (studies, service) => {
     }, {})
 };
 
-const CaseStudy = ({match, domain, index, caseStudyForm, onEditCaseStudy, onDeleteCaseStudy, onAddCaseStudy, actions}) => {
+const CaseStudy = ({pathname, domain, index, caseStudyForm, onEditCaseStudy, onDeleteCaseStudy, onAddCaseStudy, actions}) => {
   let list = getStudiesByService(caseStudyForm.case_studies, domain);
 
   return (
@@ -29,7 +29,7 @@ const CaseStudy = ({match, domain, index, caseStudyForm, onEditCaseStudy, onDele
               <li key={`casestudy.${domain}.${guid}`} className="bordered-list__item row">
                 <div className="col-xs-6">
                   <Link
-                    to={`${match.url}/edit/${guid}`}
+                    to={`${pathname}/edit/${guid}`}
                     id={`edit-${kebabCase(domain)}-${i}`}
                     onClick={() => onEditCaseStudy(study)}
                     children={study.title}
@@ -38,7 +38,7 @@ const CaseStudy = ({match, domain, index, caseStudyForm, onEditCaseStudy, onDele
                 </div>
                 <div className="col-xs-6" style={{textAlign: 'right'}}>
                   <Link
-                    to={`${match.url}/delete/${guid}`}
+                    to={`${pathname}/delete/${guid}`}
                     id={`delete-${kebabCase(domain)}-${i}`}
                     onClick={(e) => {
                       e.preventDefault();
@@ -55,7 +55,7 @@ const CaseStudy = ({match, domain, index, caseStudyForm, onEditCaseStudy, onDele
       )}
       
       <Link
-        to={`${match.url}/add/${domain}`}
+        to={`${pathname}/add/${domain}`}
         id={`add-service-${kebabCase(domain)}`}
         onClick={() => onAddCaseStudy()}>
         Add case study

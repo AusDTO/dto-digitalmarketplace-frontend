@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Form, actions } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
+import isNumber from 'lodash/isNumber';
 
 import {required, limitNumbers, validLinks, validABN} from '../../../../validators';
 
@@ -42,7 +43,7 @@ class BusinessDetailsForm extends BaseForm {
     render() {
         const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm, nextRoute } = this.props;
         let title = 'Tell us about your business'
-        if (supplierCode) {
+        if (isNumber(supplierCode)) {
             title = 'Check your business details'
         }
 
@@ -85,7 +86,7 @@ class BusinessDetailsForm extends BaseForm {
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
-                          description={supplierCode ? "You need an Australian Business Number to do business in Australia." :
+                          description={isNumber(supplierCode) ? "You need an Australian Business Number to do business in Australia." :
                               (<span>You need an Australian Business Number to do business in Australia.&nbsp;
                               <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
                           </span>)}
@@ -279,7 +280,7 @@ BusinessDetailsForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        supplierCode: (state.application && state.application.supplierCode),
+        supplierCode: (state.application && state.application.supplier_code),
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
         ...formProps(state, 'businessDetailsForm')
     }
