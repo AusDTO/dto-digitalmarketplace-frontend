@@ -3,6 +3,7 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
+import {newline} from '../../helpers';
 
 import SimpleAccordion  from '../SimpleAccordion';
 import Alert            from '../Alert';
@@ -125,7 +126,7 @@ const Body = (props) => {
                                        rel="external">{product.name}</a>
                                 </h3>
                                 <p className="freetext">
-                                    {product.summary}
+                                    {newline(product.summary)}
                                 </p>
                                 <p>
                                     <a style={{display: 'inline'}} href={product.pricing} target="_blank"
@@ -166,21 +167,21 @@ const Body = (props) => {
                 {methodologies && (
                     <div>
                         <p styleName="bold">Methodology</p>
-                        <p className="freetext">{methodologies}</p>
+                        <p className="freetext">{newline(methodologies)}</p>
                     </div>
                 )}
 
                 {tools && (
                     <div>
                         <p styleName="bold">Tools</p>
-                        <p className="freetext">{tools}</p>
+                        <p className="freetext">{newline(tools)}</p>
                     </div>
                 )}
 
                 {technologies && (
                     <div>
                         <p styleName="bold">Technologies</p>
-                        <p className="freetext">{technologies}</p>
+                        <p className="freetext">{newline(technologies)}</p>
                     </div>
                 )}
             </Row>
@@ -225,7 +226,7 @@ const Body = (props) => {
 
                 {!isEmpty(boards) && (
                     <div>
-                        <p styleName="bold">Industy engagement</p>
+                        <p styleName="bold">Industry engagement</p>
                         <ul>
                         {boards.map((board, i) => (
                             <li key={i}>{board}</li>
