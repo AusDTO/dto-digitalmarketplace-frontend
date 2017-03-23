@@ -46,7 +46,7 @@ test('handleClick with formValid=false', () => {
 });
 
 test('render existing supplier copy', () => {
-  let store = createStore({application: {supplier_code: 999}});
+  let store = createStore({application: {supplier_code: 0}});
   const wrapper = mount(
     <Provider store={store}>
       <BusinessDetailsForm />
@@ -54,4 +54,6 @@ test('render existing supplier copy', () => {
   )
 
   expect(wrapper.find('h1').text()).toBe('Check your business details');
+  expect(wrapper.find('#abn').prop('readOnly')).toBeTruthy();
+  expect(wrapper.find('#abn').prop('disabled')).toBeTruthy();
 });
