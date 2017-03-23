@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
 import {Form, Control} from 'react-redux-form';
 import kebabCase from 'lodash/kebabCase';
+import isNumber from 'lodash/isNumber';
 import { Link } from 'react-router-dom';
 
 import Layout         from '../../../../shared/Layout';
@@ -43,7 +44,7 @@ class DomainSelector extends BaseForm {
             </header>
         )
 
-        if (supplierCode) {
+        if (isNumber(supplierCode)) {
             header = (
                 <header>
                     <h1 tabIndex="-1">What services will you offer?</h1>
@@ -132,7 +133,7 @@ DomainSelector.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        supplierCode: state.application.supplierCode,
+        supplierCode: state.application.supplier_code,
         ...formProps(state, 'domainSelectorForm')
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
+import isNumber from 'lodash/isNumber';
 
 import { required, validEmail, validPhoneNumber } from '../../../../validators';
 
@@ -24,7 +25,7 @@ class YourInfoForm extends BaseForm {
   render() {
     const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed, nextRoute } = this.props;
     let title = 'Contact details';
-    if (supplierCode) {
+    if (isNumber(supplierCode)) {
         title = 'Check your contact details'
     }
 
@@ -149,7 +150,7 @@ const mapStateToProps = (state) => {
   return {
       userName: state.form_options.user_name,
       userEmail: state.form_options.user_email,
-      supplierCode: (state.application && state.application.supplierCode),
+      supplierCode: state.application && state.application.supplier_code,
     ...formProps(state, 'yourInfoForm')
   }
 }
