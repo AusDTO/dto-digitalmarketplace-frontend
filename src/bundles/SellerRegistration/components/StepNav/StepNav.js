@@ -52,8 +52,8 @@ class StepNav extends React.Component {
 }
 
 StepNav.propTypes = {
-  buttonText: React.PropTypes.string.isRequired,
-  to: React.PropTypes.string.isRequired,
+  buttonText: React.PropTypes.string,
+  to: React.PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => {

@@ -28,7 +28,6 @@ class DocumentsForm extends BaseForm {
         csrf_token: React.PropTypes.string,
         form: React.PropTypes.object.isRequired,
         model: React.PropTypes.string.isRequired,
-        supplierCode: React.PropTypes.number
     }
 
     static defaultProps = {
@@ -232,7 +231,6 @@ class DocumentsForm extends BaseForm {
 
 const mapStateToProps = (state) => {
     return {
-        supplierCode: state.application.supplierCode,
         ...formProps(state, 'documentsForm')
     }
 }

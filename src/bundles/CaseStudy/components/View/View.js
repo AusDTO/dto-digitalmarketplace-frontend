@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import { newline } from '../../../../helpers';
+
 class View extends React.Component {
   state = { showConfirm: false }
 
@@ -70,11 +72,11 @@ class View extends React.Component {
           <article role="main" className="col-sm-7 col-xs-12">
             <section>
               <h2>Challenge</h2>
-              <p className="freetext">{opportunity}</p>
+              <p className="freetext">{newline(opportunity)}</p>
             </section>
             <section>
               <h2>Approach</h2>
-              <p className="freetext">{approach}</p>
+              <p className="freetext">{newline(approach)}</p>
             </section>
             <section>
               <h2>Outcomes and benefits</h2>
