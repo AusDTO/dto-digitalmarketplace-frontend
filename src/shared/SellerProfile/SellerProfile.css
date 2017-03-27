@@ -6,8 +6,21 @@
   margin-bottom: 3em;
 }
 
+.rowNoMargin {
+  margin-bottom: 0em;
+}
+
+
 .row hr {
   margin-bottom: 3rem;
+}
+
+.row hr.productHr {
+  margin: 1.5rem 0 0.5rem 0;
+  display: inline-block;
+  position: relative;
+  clear: both;
+  width: 100%;
 }
 
 .row:last-of-type {
@@ -118,6 +131,17 @@
     border-top: none !important;
 }
 
+.content-table td, .content-table th {
+    border-right:none !important;
+}
+
+.content-table {
+    border:none !important;
+}
+.content-table tr:nth-child(even) {
+    background-color: #ffffff !important;
+}
+
 table.content-table {
     margin-top: 0;
 }
@@ -133,7 +157,6 @@ table.content-table tr th  {
 }
 
 .product-heading {
-  font-size: 1.625rem;
   margin-top: 1rem;
 }
 
@@ -177,7 +200,12 @@ span.border {
 
 .external-link {
   word-break: break-word;
+
+}
+
+.external-link-hover{
   border-bottom:0px !important;
+
 }
 
 .external-link-hover:hover {
@@ -193,6 +221,15 @@ span.border {
   display: block;
 }
 
+.bold-noMargin{
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
 .bold{
   font-weight: bold;
+}
+
+h3, h3 a {
+  font-size: 1.25rem;
 }

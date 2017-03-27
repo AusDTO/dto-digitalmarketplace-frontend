@@ -76,7 +76,7 @@ const PrivateInfo = (props) => {
                 <table className="content-table" styleName="content-table">
                     <thead>
                     <tr>
-                        <th>Document type</th>
+                        <th>Document type </th>
                         <th>Expiry</th>
                     </tr>
                     </thead>
@@ -104,7 +104,7 @@ const PrivateInfo = (props) => {
             {Object.keys(recruiter_info).map((key, i) => {
                 return (
                     <div>
-                    <h4>{key}</h4> 
+                    <h4>{key}</h4>
                     {Object.keys(recruiter_info[key]).map((subKey, j) => {
                         return (
                             <div key={`${key}-${subKey}`}>

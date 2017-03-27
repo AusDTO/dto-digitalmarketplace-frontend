@@ -78,7 +78,7 @@ const Body = (props) => {
 
             </Row>
 
-            <Row title="Case studies" show={!isEmpty(case_studies)}>
+            <Row title="Case studies" marginBot="true" show={!isEmpty(case_studies)}>
                 <ul className="list-vertical" styleName="case-study-list">
                     {Object.keys(case_studies).map((study, i) => {
                         const {title, service, client} = case_studies[study];
@@ -109,12 +109,13 @@ const Body = (props) => {
 
             <Row title="Digital products" show={!isEmpty(products)}>
 
-            <SimpleAccordion title="Learn about assessments">
+            <SimpleAccordion title="Learn more">
               <span styleName="accordianPaddTopp">
                 The products below are not assessed or endorsed by the Digital Marketplace.
             </span>
             </SimpleAccordion>
 
+            <hr styleName="productHr" />
 
                 {Object.keys(products).map((key, i) => {
                     const product = products[key];
@@ -137,6 +138,7 @@ const Body = (props) => {
                                        rel="external">Product support</a>
                                 </p>
                             </div>
+                            <hr styleName="productHr" />
                         </div>
                     )
                 })}
@@ -166,29 +168,33 @@ const Body = (props) => {
             <Row title="How we work" show={tools || methodologies || technologies}>
                 {methodologies && (
                     <div>
-                        <p styleName="bold">Methodology</p>
+
+                        <p styleName="bold-noMargin">Methodology</p>
                         <p className="freetext">{newline(methodologies)}</p>
+
                     </div>
                 )}
 
                 {tools && (
                     <div>
-                        <p styleName="bold">Tools</p>
+                        <p styleName="bold-noMargin">Tools</p>
                         <p className="freetext">{newline(tools)}</p>
+
                     </div>
                 )}
 
                 {technologies && (
                     <div>
-                        <p styleName="bold">Technologies</p>
+                        <p styleName="bold-noMargin">Technologies</p>
                         <p className="freetext">{newline(technologies)}</p>
+
                     </div>
                 )}
             </Row>
 
 
             <Row title="Company Details" show={true}>
-                <p styleName="bold">Authorised representative</p>
+                <p styleName="bold-noMargin">Authorised representative</p>
                 <p>
                     <span>{representative}</span><br/>
                     { phone && <span>{phone}<br/></span>}
@@ -198,14 +204,14 @@ const Body = (props) => {
 
                 {number_of_employees && (
                     <div>
-                        <p styleName="bold">Number of employees</p>
+                        <p styleName="bold-noMargin">Number of employees</p>
                         <p>{number_of_employees}</p>
                     </div>
                 )}
 
                 {abn && (
                     <div>
-                        <p styleName="bold">ABN</p>
+                        <p styleName="bold-noMargin">ABN</p>
                         <p>
                             <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external"
                                target="_blank">{abn}</a>
@@ -215,7 +221,7 @@ const Body = (props) => {
 
                 {!isEmpty(certifications) && (
                     <div>
-                        <p styleName="bold">Accreditions</p>
+                        <p styleName="bold-noMargin">Accreditions</p>
                         <ul>
                         {certifications.map((certification, i) => (
                             <li key={i}>{certification}</li>
@@ -226,7 +232,9 @@ const Body = (props) => {
 
                 {!isEmpty(boards) && (
                     <div>
-                        <p styleName="bold">Industry engagement</p>
+
+                        <p styleName="bold-noMargin">Industy engagement</p>
+
                         <ul>
                         {boards.map((board, i) => (
                             <li key={i}>{board}</li>
@@ -240,7 +248,7 @@ const Body = (props) => {
 
                 {!isEmpty(addresses) && (
                     <div>
-                        <p styleName="bold">Main Address </p>
+                        <p styleName="bold-noMargin">Main Address </p>
 
                         {Object.keys(addresses)
                             .map((key, i) => {
@@ -265,7 +273,7 @@ const Body = (props) => {
 
 
             <Row title="Recognition" show={!isEmpty(awards)}>
-                <p styleName="bold">Awards</p>
+                <p styleName="bold-noMargin">Awards</p>
                 <ul>
                 {awards.map((award, i) => (
                     <li key={i}>{award}</li>
@@ -306,7 +314,7 @@ const Body = (props) => {
                     </tbody>
                 </table>
 
-                <p className="callout">  This sellers financial statement is available to view upon request.   </p>
+                <p className="callout">  This seller's financial statement has been provided to the DTA. It's available on request from the seller.   </p>
 
             </Row>
 
