@@ -4,7 +4,6 @@ import RegisterComponent from '../../RegisterComponent'
 
 import createStore from './redux/create'
 
-import Overview from './components/Overview'
 import TeamView from './components/TeamView'
 
 const BuyerDashboardWidget = (props) => {
