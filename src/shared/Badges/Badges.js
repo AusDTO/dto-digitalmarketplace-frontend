@@ -5,18 +5,18 @@ import get from 'lodash/get';
 import styles from './Badges.css'; // eslint-disable-line no-unused-vars
 
 export const titleMap = {
-  indigenous: 'Indigenous business',
-  nfp_social_enterprise: 'Not-for-profit',
   recruitment: 'Recruiter',
-  sme: 'SME',
-  start_up: 'Start up',
+  indigenous: 'Indigenous business',
   disability: 'Australian disability enterprise',
-  product: 'Product based business'
+  nfp_social_enterprise: 'Not-for-profit',
+  start_up: 'Start up',
+  sme: 'SME',
+  product: 'Products'
 };
 
 const Badges = ({ badges = {} }) => (
   <div styleName="styles.badges">
-    {Object.keys(badges)
+    {Object.keys(titleMap)
       // If type is not in our list or falsy, dont render an empty span.
       .filter(type => get(badges, type) && `${type}` in titleMap)
       .map((type, i) => (
