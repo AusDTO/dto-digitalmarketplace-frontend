@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './TeamView.css'
 
 const TeamView = ({teammembers, meta = {}}) => (
-  <div>
+  <div className="content-main">
   <h1>Team: {meta.teamname}</h1>
 
   <h2>Active team members</h2>
@@ -21,7 +21,7 @@ const TeamView = ({teammembers, meta = {}}) => (
       return (
         <tr>
             <td>{tm.name}</td>
-            <td><a href="mailto:{tm.email_address}">{tm.email_address}</a></td>
+            <td><a href={"mailto:" + tm.email_address}>{tm.email_address}</a></td>
             {/* <td>{tm.briefs.map((b, i) => (
               <div>{b.title}</div>
             ))}</td> */}
