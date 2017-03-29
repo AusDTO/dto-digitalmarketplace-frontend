@@ -22,6 +22,7 @@ const initialState = {
   keyword: '',
   results: [],
   products: [],
+  casestudies: [],
   querying: false,
   error: false
 }
@@ -34,7 +35,7 @@ const statusCheck = (response) => {
         error.response = response
         throw error
     }
-} 
+}
 
 const removeFromObject = (object, predicate) => {
   return Object.keys(object)
@@ -45,7 +46,7 @@ const removeFromObject = (object, predicate) => {
 }
 
 export const scrubState = (state) => {
-  let result = ['results', 'querying', 'error'].reduce((obj, key) => {
+  let result = ['results', 'products', 'casestudies', 'querying', 'error'].reduce((obj, key) => {
     return removeFromObject(obj, (k) => key !== k)
   }, state);
 
@@ -103,14 +104,14 @@ export default function reducer(state = initialState, action = {}) {
         ...state.role,
         [value]: !state.role[value]
       };
-      
+
       return { ...state, role };
     case UPDATE_TYPE:
       const type = {
         ...state.type,
         [value]: !state.type[value]
       };
-      
+
       return { ...state, type };
     case UPDATE_KEYWORD:
       return { ...state, keyword: value };
