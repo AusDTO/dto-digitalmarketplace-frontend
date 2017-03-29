@@ -2,7 +2,6 @@ import React from 'react';
 import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
-import get from 'lodash/get';
 import {newline} from '../../helpers';
 
 import SimpleAccordion  from '../SimpleAccordion';
@@ -68,7 +67,7 @@ const Body = (props) => {
 
 
                 <SimpleAccordion title="Learn about assessments">
-                  <span styleName="accordianPaddTopp">
+                  <span styleName="accordionPaddTopp">
                     These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
 
                   </span>
@@ -82,8 +81,8 @@ const Body = (props) => {
                 <ul className="list-vertical" styleName="case-study-list">
                     {Object.keys(case_studies).map((study, i) => {
                         const {title, service, client} = case_studies[study];
-                        const isEvaluted = get(assessed, service);
-                        const badgeStyleName = isEvaluted ? 'evaluated-badges' : 'provides-badges';
+                        const isEvaluated = assessed.includes(service);
+                        const badgeStyleName = isEvaluated ? 'evaluated-badges' : 'provides-badges';
                         return (
                             <li key={i}>
                                 <article>
@@ -94,7 +93,7 @@ const Body = (props) => {
                                     <h3><CaseStudyLink id={study}>{title}</CaseStudyLink></h3>
                                     <p>{client}</p>
                                     <div styleName={`badges ${badgeStyleName}`}>
-                                        {isEvaluted ? (
+                                        {isEvaluated ? (
                                             <span>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
                                         ) : (
                                             <span>{service}</span>
@@ -109,8 +108,8 @@ const Body = (props) => {
 
             <Row title="Digital products" show={!isEmpty(products)}>
 
-            <SimpleAccordion title="Learn more">
-              <span styleName="accordianPaddTopp">
+            <SimpleAccordion title="Learn more" show={!isEmpty(public_profile)}>
+              <span styleName="accordionPaddTopp">
                 The products below are not assessed or endorsed by the Digital Marketplace.
             </span>
             </SimpleAccordion>
@@ -142,27 +141,6 @@ const Body = (props) => {
                         </div>
                     )
                 })}
-            </Row>
-
-            <Row title="Pricing" show={!isEmpty(prices)}>
-                <SimpleAccordion title="Reveal rate card for services">
-                    <table className="content-table" styleName="content-table">
-                        <thead>
-                        <tr>
-                            <th>Roles</th>
-                            <th>Day rates</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {prices.map(({service_role = {}, hourly_rate}, i) => (
-                            <tr key={i}>
-                                <td>{service_role.name}</td>
-                                <td>${hourly_rate}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                </SimpleAccordion>
             </Row>
 
             <Row title="How we work" show={tools || methodologies || technologies}>
@@ -293,23 +271,25 @@ const Body = (props) => {
                     <tbody>
                     {Object.keys(documents).map((key, val) => {
                         const {filename, expiry} = documents[key];
-                        return (
-                            <tr key={val}>
-                                <td>
-                                    {public_profile || key == 'financial' ?
-                                        documentTitle[key]
-                                        : (
-                                            <a href={`${documentsUrl}${filename}`} rel="external">
-                                                {documentTitle[key]}
-                                            </a>
-                                        )}
-                                </td>
-                                <td>
-                                    {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
-                                </td>
-                            </tr>
+                        if (public_profile === false || key != 'financial') {
+                            return (
+                                <tr key={val}>
+                                    <td>
+                                        {public_profile ?
+                                            documentTitle[key]
+                                            : (
+                                                <a href={`${documentsUrl}${filename}`} rel="external">
+                                                    {documentTitle[key]}
+                                                </a>
+                                            )}
+                                    </td>
+                                    <td>
+                                        {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
+                                    </td>
+                                </tr>
 
-                        )
+                            )
+                        }
                     })}
                     </tbody>
                 </table>
@@ -335,8 +315,7 @@ Body.propTypes = {
     website: React.PropTypes.string,
     linkedin: React.PropTypes.string,
     abn: React.PropTypes.string,
-    interstate: React.PropTypes.bool,
-    addresses: React.PropTypes.object,
+    addresses: React.PropTypes.array,
     CaseStudyLink: React.PropTypes.func,
     contact_email: React.PropTypes.string,
     contact_phone: React.PropTypes.string,

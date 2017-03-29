@@ -32,7 +32,7 @@ const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
           const currentStudy = caseStudyForm.case_studies[subMatch.params.id];
           return (
             <div>
-              {currentStudy.title
+              {!isEmpty(currentStudy) && !isEmpty(currentStudy.title)
                 ? <View
                     {...currentStudy}
                     returnLink={<p><ConnectedLink to={`${match.url}/profile`}>Return to Profile</ConnectedLink></p>}

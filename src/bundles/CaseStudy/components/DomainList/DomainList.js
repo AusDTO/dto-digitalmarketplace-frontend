@@ -239,7 +239,7 @@ class DomainList extends BaseForm {
           }
           return (
             <div>
-              {currentStudy.title
+              {!isEmpty(currentStudy) && !isEmpty(currentStudy.title)
                 ? <View
                     {...currentStudy}
                     onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}

@@ -39,11 +39,10 @@ export const pruneModel = (model) => {
     services = {},
     products
   } = model;
-
   let newModel = model;
 
   if (services) {
-    newModel = Object.assign({}, model, {
+    newModel = Object.assign({}, newModel, {
       services: omitBy(services, (service) => !service)
     });  
   }
@@ -58,12 +57,12 @@ export const pruneModel = (model) => {
         studies[key] = case_studies[key];
         return studies;
       }, {});
-
-    newModel = Object.assign({}, model, { case_studies: casestudies });
+    delete newModel['case_studies'];
+    newModel = Object.assign({}, newModel, { case_studies: casestudies });
   }
 
   if (products) {
-    newModel = Object.assign({}, model, {
+    newModel = Object.assign({}, newModel, {
       products: omitBy(products, product => !product)
     });      
   }

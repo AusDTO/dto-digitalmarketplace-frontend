@@ -59,9 +59,19 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       case_study_url,
       public_profile,
       signed_agreements,
+      recruiter,
       recruiter_info,
       ...body
     } = application;
+    let unassessed = domains.unassessed;
+    let assessed = application.assessed_domains;
+
+    // calculate badges
+    var calculated_seller_types = new Object();
+    Object.assign(calculated_seller_types, seller_type);
+    calculated_seller_types['recruitment'] = (recruiter === 'yes');
+    calculated_seller_types['product'] = !isEmpty(application.products)
+    seller_type = calculated_seller_types;
 
     let caseStudyLink = null;
     if (typeof case_study_url !== 'undefined') {
@@ -88,7 +98,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       }
     }
 
-    let { assessed, unassessed } = domains;
+
     // If unassessed is falsy, assume we are on preview
     // Where we just want to show the current selected
     // services. Filter out falsy services and convert

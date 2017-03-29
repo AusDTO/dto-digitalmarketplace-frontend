@@ -3,7 +3,8 @@ import {
   dispatchFormState,
   flattenStateForms,
   findValidServices,
-  findDirtyForms
+  findDirtyForms,
+  pruneModel
 } from './helpers';
 
 test('getStateForms with default regex', () => {
@@ -86,6 +87,31 @@ test('dispatchFormState with empty schema', () => {
   expect(dispatch).toHaveBeenCalledTimes(0);
 });
 
+
+test('pruneModel', () => {
+    var case_studies = new Array();
+    case_studies['abc-def'] = {'title': 'keep this case study', service: 'ServiceA'};
+    case_studies['xyz-ijk'] = {'title': 'remove this case study', service: 'ServiceB'};
+    const model = {
+        case_studies: case_studies,
+        services: {'ServiceA': true },
+        products: [
+            false,
+            undefined,
+            null
+        ]
+    };
+
+    const expectedResult = {
+        case_studies: {
+            'abc-def': {'title': 'keep this case study', service: 'ServiceA'}
+        },
+        services: {'ServiceA': true},
+        products: {}
+    };
+
+    expect(pruneModel(model)).toEqual(expectedResult);
+});
 
 test('flattenStateForms', () => {
   const state = {
