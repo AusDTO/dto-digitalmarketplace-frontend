@@ -13,7 +13,7 @@ const TeamView = ({teammembers, meta = {}}) => (
       <tr>
         <th>name</th>
         <th>email</th>
-        <th>briefs</th>
+        {/* <th>briefs</th> */}
       </tr>
     </thead>
     <tbody>
@@ -22,9 +22,9 @@ const TeamView = ({teammembers, meta = {}}) => (
         <tr>
             <td>{tm.name}</td>
             <td><a href="mailto:{tm.email_address}">{tm.email_address}</a></td>
-            <td>{tm.briefs.map((b, i) => (
+            {/* <td>{tm.briefs.map((b, i) => (
               <div>{b.title}</div>
-            ))}</td>
+            ))}</td> */}
         </tr>
       )
     })}
