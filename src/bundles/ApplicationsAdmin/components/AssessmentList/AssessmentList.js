@@ -42,12 +42,6 @@ const AssessmentList = ({ assessments }) => (
   </div>
 )
 
-const mapStateToProps = ({assessments}, ownProps) => {
-  return {
-    ...ownProps,
-    assessments,
-  };
-};
-
+const mapStateToProps = ({assessments}) => {return {assessments}};
 
 export default connect(mapStateToProps)(AssessmentList);
