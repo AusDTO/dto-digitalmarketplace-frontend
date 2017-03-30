@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import format from 'date-fns/format';
+import distanceInWords from 'date-fns/distance_in_words';
 
 import '../AppList/AppList.css'
 
@@ -11,11 +12,11 @@ const AssessmentList = ({ assessments }) => (
     <table className="content-table">
       <thead>
         <tr>
-          <th>created</th>
+          <th>days left</th>
+          <th>applied</th>
           <th>name</th>
           <th>domain</th>
           <th>briefs</th>
-          <th>status</th>
           <th>jira</th>
           <th>actions</th>
         </tr>
@@ -25,11 +26,15 @@ const AssessmentList = ({ assessments }) => (
         {assessments && assessments.map((a, i) => {
           return (
           <tr key={a.id}>
+            <td>
+              {a.briefs.map((b, i) => {
+                return `${distanceInWords(new Date(a.created_at), new Date(b.dates.closing_time))} `
+              })}
+            </td>
             <td>{format(new Date(a.created_at), 'YYYY-MM-DD HH:mm')}</td>
             <td>{a.supplier_domain.supplier.name}</td>
             <td>{a.supplier_domain.domain.name}</td>
-            <td>{a.briefs.map((b, i) => {return `${b.title} `})}</td>
-            <td>{a.supplier_domain.status}</td>
+            <td>{a.briefs.map((b, i) => {return `${b.title}:${b.id} `})}</td>
             <td></td>
             <td>
               <button name="Reject" styleName="reject">Reject</button>

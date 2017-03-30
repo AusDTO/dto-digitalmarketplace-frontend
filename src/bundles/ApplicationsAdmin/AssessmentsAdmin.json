@@ -4,7 +4,6 @@
   },
   "assessments": [
     {
-      "createdAt": "2016-11-14T03:34:26.170508+00:00",
       "created_at": "2017-01-03T14:15:19.131000+00:00",
       "id": 2,
       "links": {
@@ -14,7 +13,10 @@
       "briefs": [
         {
           "id": 1,
-          "title": "Web-ops Engineers x2"
+          "title": "Web-ops Engineers x2",
+          "dates": {
+            "closing_time": "2017-01-13T14:15:19.131000+00:00"
+          }
         }
       ],
       "supplier_domain": {
@@ -33,7 +35,6 @@
       }
     },
     {
-      "createdAt": "2016-11-15T03:34:26.170508+00:00",
       "created_at": "2017-01-04T14:15:19.131000+00:00",
       "id": 3,
       "links": {
@@ -43,7 +44,10 @@
       "briefs": [
         {
           "id": 3,
-          "title": "Redevelop an existing system"
+          "title": "Redevelop an existing system",
+          "dates": {
+            "closing_time": "2017-01-07T14:15:19.131000+00:00"
+          }
         }
       ],
       "supplier_domain": {
