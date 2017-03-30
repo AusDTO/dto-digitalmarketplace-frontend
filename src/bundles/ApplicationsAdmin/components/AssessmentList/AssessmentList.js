@@ -4,15 +4,15 @@ import { connect } from 'react-redux'
 import format from 'date-fns/format';
 import distanceInWords from 'date-fns/distance_in_words';
 
-import '../AppList/AppList.css'
+import './AssessmentList.css'
 
 const AssessmentList = ({ assessments }) => (
-  <div styleName="appList">
+  <div>
     <h2>Assessments</h2>
     <table className="content-table">
       <thead>
         <tr>
-          <th>days left</th>
+          <th>closing</th>
           <th>applied</th>
           <th>name</th>
           <th>domain</th>
@@ -34,9 +34,9 @@ const AssessmentList = ({ assessments }) => (
             <td>{format(new Date(a.created_at), 'YYYY-MM-DD HH:mm')}</td>
             <td>{a.supplier_domain.supplier.name}</td>
             <td>{a.supplier_domain.domain.name}</td>
-            <td>{a.briefs.map((b, i) => {return `${b.title}:${b.id} `})}</td>
+            <td>{a.briefs.map((b, i) => {return `${b.title} `})}</td>
             <td></td>
-            <td>
+            <td styleName="buttons">
               <button name="Reject" styleName="reject">Reject</button>
               <button name="Accept">Accept</button>
             </td>
