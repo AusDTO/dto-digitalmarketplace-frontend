@@ -28,7 +28,7 @@ const AssessmentList = ({ assessments }) => (
           <tr key={a.id}>
             <td>
               {a.briefs.map((b, i) => {
-                return `${distanceInWords(new Date(a.created_at), new Date(b.dates.closing_time))} `
+                return `${distanceInWords(new Date(), new Date(b.dates.closing_time))} `
               })}
             </td>
             <td>{format(new Date(a.created_at), 'YYYY-MM-DD HH:mm')}</td>
