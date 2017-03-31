@@ -230,6 +230,7 @@ const Body = (props) => {
 
                         {Object.keys(addresses)
                             .map((key, i) => {
+                            if (!isEmpty(addresses[key])) {
                                 return (
 
                                     <p key={i}>
@@ -241,6 +242,7 @@ const Body = (props) => {
 
 
                                 )
+                            }
                             })}
 
                     </div>
@@ -278,7 +280,7 @@ const Body = (props) => {
                                         {public_profile ?
                                             documentTitle[key]
                                             : (
-                                                <a href={`${documentsUrl}${filename}`} rel="external">
+                                                <a href={`${documentsUrl}${filename}`} rel="external" target="_blank">
                                                     {documentTitle[key]}
                                                 </a>
                                             )}
