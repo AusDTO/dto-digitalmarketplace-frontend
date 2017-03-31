@@ -63,14 +63,25 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       recruiter_info,
       ...body
     } = application;
-    let unassessed = domains.unassessed;
+
     let assessed = application.assessed_domains;
+    let unassessed = domains.unassessed;
+    // If unassessed is falsy, assume we are on preview
+    // Where we just want to show the current selected
+    // services. Filter out falsy services and convert
+    // to an Array to keep type consistent
+    if (!unassessed) {
+        unassessed = Object
+            .keys(services)
+            .filter(key => services[key])
+            .filter(key => !assessed.includes(key));
+    }
 
     // calculate badges
     var calculated_seller_types = new Object();
     Object.assign(calculated_seller_types, seller_type);
     calculated_seller_types['recruitment'] = (recruiter === 'yes');
-    calculated_seller_types['product'] = !isEmpty(application.products)
+    calculated_seller_types['product'] = !isEmpty(application.products);
     seller_type = calculated_seller_types;
 
     let caseStudyLink = null;
@@ -96,17 +107,6 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           return cso;
         }, {});
       }
-    }
-
-
-    // If unassessed is falsy, assume we are on preview
-    // Where we just want to show the current selected
-    // services. Filter out falsy services and convert
-    // to an Array to keep type consistent
-    if (!unassessed) {
-      unassessed = Object
-        .keys(services)
-        .filter(key => services[key]);
     }
 
     return {
