@@ -8,7 +8,7 @@ import createStore from '../../redux/create'
 
 describe('<ApplicationPreview />', () => {
   it('should render new applicant text', () => {
-  const store = createStore({'application': {'services': ['service1'], 'assessed_domains': ['service2']}});
+  const store = createStore({application: {services: ['service1'], assessed_domains: ['service2']}});
     const wrapper = mount(
     <Provider store={store}>
         <ApplicationPreview />
