@@ -73,8 +73,10 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
     if (!unassessed) {
         unassessed = Object
             .keys(services)
-            .filter(key => services[key])
-            .filter(key => !assessed.includes(key));
+            .filter(key => services[key]);
+        if (assessed) {
+            unassessed = unassessed.filter(key => !assessed.includes(key));
+        }
     }
 
     // calculate badges
