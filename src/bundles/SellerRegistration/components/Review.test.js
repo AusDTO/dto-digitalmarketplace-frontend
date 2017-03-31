@@ -21,7 +21,7 @@ describe('<Review />', () => {
     expect(wrapper.find('#preview-link').text()).toMatch(/Take a moment to preview your profile/);
   });
   
-  it('should render existing supplier text', () => {
+  it('should render a case study', () => {
 	const store = createStore({
     application: {supplier_code: 999}, 
     caseStudyForm: {
@@ -41,7 +41,7 @@ describe('<Review />', () => {
   	  </Provider>
     </MemoryRouter>
     );
-
     expect(wrapper.find('h1').text()).toBe('title 1');
+    expect(wrapper.find('a').text()).toBe('Return to Profile');
   });
 });
