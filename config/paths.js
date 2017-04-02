@@ -58,6 +58,7 @@ var config = {
     'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')],
     'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')],
     'applications-admin': [resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdminWidget')],
+    'assessments-admin': [resolveApp('src/bundles/ApplicationsAdmin/AssessmentsAdminWidget')],
     'application-preview': [resolveApp('src/bundles/SellerRegistration/ApplicationPreviewWidget')],
     'search': [resolveApp('src/bundles/Search/SearchWidget')],
     'auth-header': [resolveApp('src/bundles/Header/AuthWidget')]
@@ -71,6 +72,7 @@ var config = {
     'profile-edit': require(resolveApp('src/bundles/SellerRegistration/ApplicantSignup.json')),
     'enterpassword': require(resolveApp('src/bundles/SellerRegistration/components/EnterPasswordForm/EnterPasswordForm.json')),
     'applications-admin': require(resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdmin.json')),
+    'assessments-admin': require(resolveApp('src/bundles/ApplicationsAdmin/AssessmentsAdmin.json')),
     'application-preview': require(resolveApp('src/bundles/SellerRegistration/components/ApplicationPreview/ApplicationPreview.json')),
     'search': require(resolveApp('src/bundles/Search/components/Catalogue/Catalogue.json')),
   }
