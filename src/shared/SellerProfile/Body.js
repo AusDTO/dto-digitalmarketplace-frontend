@@ -108,7 +108,7 @@ const Body = (props) => {
 
             <Row title="Digital products" show={!isEmpty(products)}>
 
-            <SimpleAccordion title="Learn more" show={!isEmpty(public_profile)}>
+            <SimpleAccordion title="Learn more" show={isEmpty(public_profile) || public_profile !== false}>
               <span styleName="accordionPaddTopp">
                 The products below are not assessed or endorsed by the Digital Marketplace.
             </span>
@@ -137,7 +137,7 @@ const Body = (props) => {
                                        rel="external">Product support</a>
                                 </p>
                             </div>
-                            <hr styleName="productHr" />
+                            {i < Object.keys(products).length-1 && (<hr styleName="productHr" />)}
                         </div>
                     )
                 })}
@@ -277,13 +277,9 @@ const Body = (props) => {
                             return (
                                 <tr key={val}>
                                     <td>
-                                        {public_profile ?
-                                            documentTitle[key]
-                                            : (
-                                                <a href={`${documentsUrl}${filename}`} rel="external" target="_blank">
-                                                    {documentTitle[key]}
-                                                </a>
-                                            )}
+                                        <a href={`${documentsUrl}${filename}`} rel="external" target="_blank">
+                                            {documentTitle[key]}
+                                        </a>
                                     </td>
                                     <td>
                                         {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
