@@ -64,7 +64,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       ...body
     } = application;
 
-    let assessed = application.assessed_domains;
+    let assessed = application.assessed_domains || domains.assessed || [];
     let unassessed = domains.unassessed;
     // If unassessed is falsy, assume we are on preview
     // Where we just want to show the current selected
@@ -80,11 +80,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
     }
 
     // calculate badges
-    var calculated_seller_types = new Object();
-    Object.assign(calculated_seller_types, seller_type);
-    calculated_seller_types['recruitment'] = (recruiter === 'yes');
-    calculated_seller_types['product'] = !isEmpty(application.products);
-    seller_type = calculated_seller_types;
+    seller_type = Object.assign({}, {product: !isEmpty(application.products), recruitment: (recruiter === 'yes')}, seller_type);
 
     let caseStudyLink = null;
     if (typeof case_study_url !== 'undefined') {

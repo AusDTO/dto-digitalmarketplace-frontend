@@ -6,36 +6,42 @@ import Badges from '../Badges';
 
 import './Card.css';
 
-const Card = ({ title, link, badges = {}, description, products = {}, services = {} }) => (
-  <a href={link}>
-    <section className="card" styleName="card">
-      <article>
-        <h3>
-          <span>{title}</span>
-        </h3>
-        {!isEmpty(badges) && (
-          <div styleName="badges">
-            <Badges badges={badges} />
-          </div>
-        )}
-        <p styleName="description">{description}</p>
-        {/* TODO refactor when products exists
-        <div className="products">
-          <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
-        </div>
-        */}
-      </article>
+const Card = ({ title, link, badges = {}, description, products = {}, services = {} }) => {
+    // calculate badges
+    badges = Object.assign({}, {product: !isEmpty(products)}, badges);
 
-      {!isEmpty(services) && (
-        <div styleName="services">
-          {Object.keys(services).map((service, i) => (
-            <span key={i}>{service}</span>
-          ))}
-        </div>
-      )}
-    </section>
-  </a>
-);
+    return (
+        <a href={link}>
+          <section className="card" styleName="card">
+            <article>
+              <h3>
+                <span>{title}</span>
+              </h3>
+                {!isEmpty(badges) && (
+                    <div styleName="badges">
+                      <Badges badges={badges}/>
+                    </div>
+                )}
+              <p styleName="description">{description}</p>
+                {/* TODO refactor when products exists
+                 <div className="products">
+                 <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
+                 </div>
+                 */}
+            </article>
+
+              {!isEmpty(services) && (
+                  <div styleName="services">
+                      {Object.keys(services).map((service, i) => (
+                          <span key={i}>{service}</span>
+                      ))}
+                  </div>
+              )}
+          </section>
+        </a>
+    );
+};
+
 
 Card.propTypes = {
   title: React.PropTypes.string.isRequired,
