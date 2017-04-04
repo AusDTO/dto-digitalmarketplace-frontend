@@ -46,7 +46,7 @@ const removeFromObject = (object, predicate) => {
 }
 
 export const scrubState = (state) => {
-  let result = ['results', 'products', 'casestudies', 'querying', 'error'].reduce((obj, key) => {
+  let result = ['results', 'products', 'casestudies', 'querying', 'error', 'pagination'].reduce((obj, key) => {
     return removeFromObject(obj, (k) => key !== k)
   }, state);
 
@@ -118,7 +118,7 @@ export default function reducer(state = initialState, action = {}) {
     case UPDATE_SORT:
       return { ...state, sort_by: value };
     case UPDATE_VIEW:
-      return { ...state, view: value };
+      return { ...state, view: value, pagination: initialState };
     case PRE_SEARCH:
       return {
         ...state,
@@ -126,12 +126,16 @@ export default function reducer(state = initialState, action = {}) {
         error: false
       };
     case SYNC_RESULTS:
-      const { results } = result.search;
+      const { results, products, casestudies } = result.search;
+
       return {
         ...state,
         results,
+        products,
+        casestudies,
         querying: false
-      }
+      };
+
     case RESET_QUERY:
       const  { keyword, sort_by, view } = initialState;
       return {
