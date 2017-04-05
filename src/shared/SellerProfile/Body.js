@@ -118,28 +118,30 @@ const Body = (props) => {
 
                 {Object.keys(products).map((key, i) => {
                     const product = products[key];
-                    return (
-                        <div key={`product.${i}`}>
-                            <div className="col-xs-12">
-                                <h3 styleName="product-heading">
-                                    <a style={{display: 'inline'}} href={product.website} target="_blank"
-                                       rel="external">{product.name}</a>
-                                </h3>
-                                <p className="freetext">
-                                    {newline(product.summary)}
-                                </p>
-                                <p>
-                                    <a style={{display: 'inline'}} href={product.pricing} target="_blank"
-                                       rel="external">Product pricing</a>
-                                </p>
-                                <p>
-                                    <a style={{display: 'inline'}} href={product.support} target="_blank"
-                                       rel="external">Product support</a>
-                                </p>
+                    if (!isEmpty(product)) {
+                        return (
+                            <div key={`product.${i}`}>
+                                <div className="col-xs-12">
+                                    <h3 styleName="product-heading">
+                                        <a style={{display: 'inline'}} href={product.website} target="_blank"
+                                           rel="external">{product.name}</a>
+                                    </h3>
+                                    <p className="freetext">
+                                        {newline(product.summary)}
+                                    </p>
+                                    <p>
+                                        <a style={{display: 'inline'}} href={product.pricing} target="_blank"
+                                           rel="external">Product pricing</a>
+                                    </p>
+                                    <p>
+                                        <a style={{display: 'inline'}} href={product.support} target="_blank"
+                                           rel="external">Product support</a>
+                                    </p>
+                                </div>
+                                {i < Object.keys(products).length - 1 && (<hr styleName="productHr"/>)}
                             </div>
-                            {i < Object.keys(products).length-1 && (<hr styleName="productHr" />)}
-                        </div>
-                    )
+                        )
+                    }
                 })}
             </Row>
 
