@@ -12,10 +12,12 @@ const initialState = {
 
 export default function reducer(state = initialState, action = {}) {
   const { type, result, value } = action;
+
   switch (type) {
     case UPDATE_PAGE:
       return { ...state, page: value }
     case searchActionTypes.SYNC_RESULTS:
+
       return {
         ...state,
         ...result.pagination
@@ -25,7 +27,7 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export const updatePage = (router, value) => search(UPDATE_PAGE, value, router);
+export const updatePage = (value, router) => search(UPDATE_PAGE, value, router);
 
 export const actionCreators = {
  updatePage

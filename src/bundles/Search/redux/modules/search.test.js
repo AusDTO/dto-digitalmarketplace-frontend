@@ -30,6 +30,7 @@ test('reducer should return initial state', () => {
     sort_by: 'a-z',
     view: 'sellers',
     products: [],
+    casestudies: [],
     error: false
   });
 });
@@ -51,6 +52,7 @@ test('should handle UPDATE_ROLE when role doesn\'t exist', () => {
     sort_by: 'a-z',
     view: 'sellers',
     products: [],
+    casestudies: [],
     error: false
   };
 
@@ -97,6 +99,7 @@ test('should handle UPDATE_TYPE when type doesn\'t exist', () => {
     sort_by: 'a-z',
     view: 'sellers',
     products: [],
+    casestudies: [],
     error: false
   };
 
@@ -145,10 +148,10 @@ test.skip('updateRole action', () => {
   const expectedFetchOptions = {
     'Content-Type': 'application/json',
     body: JSON.stringify({ role: {}, type: {}, keyword: ''}),
-    credentials: 'same-origin', 
+    credentials: 'same-origin',
     method: 'POST'
   }
-  
+
 
   const store = mockStore({
     form_options: {
@@ -165,7 +168,7 @@ test.skip('updateRole action', () => {
 
 
   store.dispatch(actions.updateRole({ target: { value: 'strategy' }}));
- 
+
   expect(window.fetch).toHaveBeenCalledTimes(1);
   expect(window.fetch).toHaveBeenCalledWith('http://foo.bar', expectedFetchOptions)
   expect(store.getActions()).toEqual(expectedActions);
