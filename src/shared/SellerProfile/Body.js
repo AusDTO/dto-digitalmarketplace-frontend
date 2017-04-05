@@ -211,7 +211,7 @@ const Body = (props) => {
                 {!isEmpty(boards) && (
                     <div>
 
-                        <p styleName="bold-noMargin">Industy engagement</p>
+                        <p styleName="bold-noMargin">Industry engagement</p>
 
                         <ul>
                         {boards.map((board, i) => (
