@@ -48,7 +48,8 @@ test('steps reducer should handle STEP_CLEAR', () => {
     };
 
     const action = {
-      type: types.STEP_CLEAR
+      type: types.STEP_CLEAR,
+      step: 'digital'
     }
 
     const expectedNewState = {

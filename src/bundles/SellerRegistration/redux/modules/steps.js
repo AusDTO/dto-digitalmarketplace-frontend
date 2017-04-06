@@ -21,7 +21,7 @@ export default function reducer(state = {}, action = {}) {
       });
     case STEP_CLEAR:
       return Object.assign({}, state, {
-        ['digital']: void 0
+        [step]: void 0
       });
     case STEP_INITIAL:
       return data;

@@ -207,7 +207,7 @@ const mapDispatchToProps = (dispatch) => {
         clearProducts: (services) => {
           // if no services are selected, set it's completion status to false
           if(!some(Object.values(services))) {
-            dispatch(stepActions.stepClear());
+            dispatch(stepActions.stepClear('digital'));
             dispatch(applicationActions.navigateToStep('/domains'));
           } else {
             dispatch(stepActions.stepComplete('products'))
