@@ -49,7 +49,7 @@ const Body = (props) => {
 
                 {!isEmpty(assessed) && (
                     <div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
-                        <p styleName="bold">Approved</p>
+                        <p styleName="bold">Assessed for</p>
                         {assessed.map((service, i) => (
                             <span key={i}>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
                         ))}
@@ -58,7 +58,7 @@ const Body = (props) => {
 
                 {!isEmpty(unassessed) && (
                     <div className="seller-profile__provides-badges" styleName="badges provides-badges">
-                        <p styleName="bold">Also offers</p>
+                        <p styleName="bold">Experience in</p>
                         {unassessed.map((service, i) => (
                             <span key={i}>{service}</span>
                         ))}
@@ -275,7 +275,7 @@ const Body = (props) => {
                     <tbody>
                     {Object.keys(documents).map((key, val) => {
                         const {filename, expiry} = documents[key];
-                        if (public_profile === false || key != 'financial') {
+                        if (key != 'financial') {
                             return (
                                 <tr key={val}>
                                     <td>
