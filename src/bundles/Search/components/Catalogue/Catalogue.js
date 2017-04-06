@@ -83,9 +83,6 @@ export class Catalogue extends React.Component {
             <section className="col-xs-12 col-sm-4">
               <h4 className="local-nav-heading">Filter your results</h4>
               <LocalNav navClassName="filter-navigation" text="Filter your results">
-
-                <a href="">Learn more about these services</a>
-
                 <CheckboxList
                   id="role"
                   list={search.role}
@@ -111,16 +108,8 @@ export class Catalogue extends React.Component {
                     actions.resetQuery();
                   }}>Reset and try again</Link>.</p>
                 </article>
-              ) : isEmpty(cards) ? (
-                  <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
-                    <h2>No exact matches</h2>
-                    <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
-                      e.preventDefault();
-                      actions.resetQuery();
-                    }}>clear all and start again</Link>.</p>
-                  </article>
-                ) : (
-                  <div styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
+              ) : (
+                  <div>
                     <article styleName="filters" className="row">
                       <div className="row">
                         <div className="col-xs-12 col-sm-7">
@@ -199,12 +188,20 @@ export class Catalogue extends React.Component {
                       </div>
                       <hr/>
                     </article>
-
-                    <article>
+                    {isEmpty(cards) ? (
+                        <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
+                          <h2>No exact matches</h2>
+                          <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
+                            e.preventDefault();
+                            actions.resetQuery();
+                          }}>clear all and start again</Link>.</p>
+                        </article>
+                      ) :
+                    (<article>
                       {cards.map((result, i) => (
                         <Card {...result} key={i} />
                       ))}
-                    </article>
+                    </article>)}
 
                     <hr/>
 
