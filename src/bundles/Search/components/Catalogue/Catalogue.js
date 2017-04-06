@@ -125,7 +125,7 @@ export class Catalogue extends React.Component {
                               actions.updateView('sellers');
                             }}
                             styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination.total}</span> Sellers
+                            <span>{pagination['sellers'].total}</span> Sellers
                           </Link>
                           <Link
                             to={{ search: 'view=products' }}
@@ -139,7 +139,7 @@ export class Catalogue extends React.Component {
                               actions.updateView('products');
                             }}
                             styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination.total_products}</span> Products
+                            <span>{pagination['products'].total}</span> Products
                           </Link>
                           <Link
                             to={{ search: 'view=casestudies' }}
@@ -153,7 +153,7 @@ export class Catalogue extends React.Component {
                               actions.updateView('casestudies');
                             }}
                             styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination.total_casestudies}</span> Case Studies
+                            <span>{pagination['casestudies'].total}</span> Case Studies
                           </Link>
                         </div>
 
@@ -206,7 +206,7 @@ export class Catalogue extends React.Component {
                     <hr/>
 
                     <Pagination
-                      {...pagination}
+                      {...pagination[search.view]}
                       onClick={actions.updatePage}
                       onBack={actions.updatePage}
                       onNext={actions.updatePage}
