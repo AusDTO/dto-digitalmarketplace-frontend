@@ -48,8 +48,8 @@ class ProductsForm extends BaseForm {
   }
 
   onClearProducts() {
-    const {clearProducts} = this.props;
-    clearProducts(this.props)
+    const {clearProducts, services} = this.props;
+    clearProducts(services)
   }
 
   render() {
@@ -174,7 +174,7 @@ class ProductsForm extends BaseForm {
               </div>
             }
             {!hasProducts &&
-              <button className={submitClass} onClick={() => this.onClearProducts()}>I don't have any products</button>
+              <button type="button" className={submitClass} onClick={() => this.onClearProducts()}>I don't have any products</button>
             }
           </Form>
         </article>
@@ -204,7 +204,7 @@ const mapDispatchToProps = (dispatch) => {
             // added due to bug in adding empty product then removing without submit
             dispatch(actions.setValidity(`${model}.products.${id}`, true));
         },
-        clearProducts: ({services}) => {
+        clearProducts: (services) => {
           // if no services are selected, set it's completion status to false
           if(!some(Object.values(services))) {
             dispatch(stepActions.stepClear());
