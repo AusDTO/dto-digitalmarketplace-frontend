@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import {Form, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import omitBy from 'lodash/omitBy';
+import some from 'lodash/some';
 import classNames from 'classnames';
 
 import { required, validLinks } from '../../../../validators';
+
+import { actions as applicationActions }    from '../../redux/modules/application';
+import { actions as stepActions }    from '../../redux/modules/steps';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -41,6 +45,11 @@ class ProductsForm extends BaseForm {
       e.preventDefault();
       const {model, removeProduct} = this.props;
       removeProduct(model, id);
+  }
+
+  onClearProducts() {
+    const {clearProducts, services} = this.props;
+    clearProducts(services)
   }
 
   render() {
@@ -158,14 +167,15 @@ class ProductsForm extends BaseForm {
 
             {!hasProducts && <SaveError/>}
             <button type="submit" className={addClass} onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
-            {!hasProducts ? (
-                <input type="submit" className={submitClass} value="I don't have any products" />
-            ) : (
+            {hasProducts &&
               <div>
                 <div className="row"/>
                 <StepNav buttonText={buttonText} to={nextRoute}/>
               </div>
-            )}  
+            }
+            {!hasProducts &&
+              <button type="button" className={submitClass} onClick={() => this.onClearProducts()}>I don't have any products</button>
+            }
           </Form>
         </article>
       </Layout>
@@ -193,6 +203,16 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actions.omit(`${model}.products`, id));
             // added due to bug in adding empty product then removing without submit
             dispatch(actions.setValidity(`${model}.products.${id}`, true));
+        },
+        clearProducts: (services) => {
+          // if no services are selected, set it's completion status to false
+          if(!some(Object.values(services))) {
+            dispatch(stepActions.stepClear('digital'));
+            dispatch(applicationActions.navigateToStep('/domains'));
+          } else {
+            dispatch(stepActions.stepComplete('products'))
+            dispatch(applicationActions.navigateToStep('/review'));
+          }
         }
     }
 }
@@ -204,3 +224,5 @@ export {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsForm);
+
+

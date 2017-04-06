@@ -35,8 +35,8 @@
       }
     },
     "services": {
-        "Change & transformation": true,
-        "Cyber security": true
+        "Change & transformation": false,
+        "Cyber security": false
     },
     "case_studies": {
         "f29a3cbd-5d76-4fb1-f4ea-40e1b196a84e": {
