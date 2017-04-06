@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import get from 'lodash/get';
 import find from 'lodash/find';
+import startCase from 'lodash/startCase';
 
 import { required, validLinks, validPhoneNumber } from '../../../../validators';
 
@@ -51,7 +52,8 @@ class CaseStudyForm extends BaseForm {
       service_slug,
       children,
       onSubmit,
-      onSubmitFailed
+      onSubmitFailed,
+      isAssessment
     } = this.props;
 
     if (!buttonText) {
@@ -61,14 +63,23 @@ class CaseStudyForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <div className="callout--calendar-event">
-            <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
-            <p id="header-description">
-              Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
-            You can update your case studies before an assessment begins.
-            For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
-            </p>
-          </div>    
+            {isAssessment ? (
+              <div className="callout--calendar-event">
+                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
+                <p>Before you can apply for this opportunity you need to provide a case study and reference that meets our <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.</p>
+                <p><b>If we can confirm your expertise before the opportunity closes we will invite you to apply.</b></p>
+                <p>If successful you can apply for {startCase(service)} opportunities in future without the need for further assessment.</p>
+              </div>
+            ) : (
+              <div className="callout--calendar-event">
+                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
+                <p id="header-description">
+                  Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
+                  You can update your case studies before an assessment begins.
+                  For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
+                </p>
+              </div>    
+            )}
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model} />
@@ -261,6 +272,11 @@ const mapStateToProps = (state, ownProps) => {
   if (formName && !service) {
     service = get(state, `${formName}.service`);
   }
+
+  if (casestudy.service && !service ) {
+    service = casestudy.service;
+  }
+
   let service_slug = '';
   if (find(domains, {'label': service})) {
       service_slug = find(domains, {'label': service})['key'];
@@ -268,6 +284,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     returnLink: casestudy.returnLink,
+    isAssessment: casestudy.is_assessment,
     ...formProps(state, formName || 'caseStudyForm'),
     service,
     service_slug,

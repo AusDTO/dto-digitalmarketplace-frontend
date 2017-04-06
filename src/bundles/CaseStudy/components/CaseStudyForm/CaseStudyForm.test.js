@@ -136,4 +136,28 @@ test.skip('handleClick when on last step', () => {
   wrapper.find('input[type="submit"]').simulate('click');
 });
 
+test('display assessment header', () => {
+  let state = {
+    form_options: {
+    },
+    casestudy: {
+        domain_id: 1,
+        service: 'Data science',
+        is_assessment: true
+    },
+    basename: '/case-study'
+    }
+
+  let store = createStore(Object.assign({}, { _serverContext: {} }, state))
+  const history = createMemoryHistory();
+  const wrapper = mount(
+    <MemoryRouter history={history}>
+      <Provider store={store}>
+        <CaseStudyForm router={history} />
+      </Provider>
+    </MemoryRouter>
+  )
+
+  expect(wrapper.find('h1').text()).toBe('Have you got expertise in Data Science?');
+});
 

@@ -1,0 +1,15 @@
+.buttons {
+    white-space: nowrap;
+}
+
+.buttons button {
+    display: inline-block;
+    font-size: 1.1rem;
+    margin: 0 0.1rem;
+    padding: 0 0.1rem;
+    border: none;
+}
+
+.reject {
+    background: red;
+}

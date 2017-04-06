@@ -22,7 +22,7 @@ export class Catalogue extends React.Component {
   render () {
     const { actions, search = {}, pagination = {} } = this.props;
 
-    const cards = search.view === 'sellers' ? search.results : search.products;
+    const cards = search.view === 'sellers' ? search.results : search[search.view];
 
     return (
       <section>
@@ -56,6 +56,7 @@ export class Catalogue extends React.Component {
                       >{item.title}</div>
                     )}
                     renderMenu={(items, value, style) => {
+                      //return <span/>;
                       // renderMenu can't return null, internals of Autocomplete
                       // call clone on this result. Empty span will have to do.
                       if (!value || items.length === 0) {
@@ -63,7 +64,7 @@ export class Catalogue extends React.Component {
                       }
 
                       return (
-                        <div styleName="autocompleteMenu" style={{...style, position: 'absolute', left: 0, top: '53px'}}>
+                        <div styleName="autocompleteMenu" style={{...style, position: 'absolute', display: 'none', left: 0, top: '53px'}}>
                           {items}
                         </div>
                       )
@@ -127,6 +128,11 @@ export class Catalogue extends React.Component {
                             to={{ search: 'view=sellers' }}
                             onClick={(e) => {
                               e.preventDefault();
+
+                              if (pagination.page !== 1) {
+                                  actions.updatePage(1);
+                              }
+
                               actions.updateView('sellers');
                             }}
                             styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
@@ -136,7 +142,12 @@ export class Catalogue extends React.Component {
                             to={{ search: 'view=products' }}
                             onClick={(e) => {
                               e.preventDefault();
-                              actions.updateView('products')
+
+                              if (pagination.page !== 1) {
+                                  actions.updatePage(1);
+                              }
+
+                              actions.updateView('products');
                             }}
                             styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
                             <span>{pagination.total_products}</span> Products
@@ -145,7 +156,12 @@ export class Catalogue extends React.Component {
                             to={{ search: 'view=casestudies' }}
                             onClick={(e) => {
                               e.preventDefault();
-                              actions.updateView('casestudies')
+
+                              if (pagination.page !== 1) {
+                                  actions.updatePage(1);
+                              }
+
+                              actions.updateView('casestudies');
                             }}
                             styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
                             <span>{pagination.total_casestudies}</span> Case Studies

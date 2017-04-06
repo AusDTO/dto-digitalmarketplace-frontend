@@ -7,15 +7,8 @@ const Row = ({ title, children, marginBot, show }) => {
         return null;
     }
 
-    var margin = "";
-    if (marginBot) {
-        margin = "styles.row rowNoMargin";
-    } else {
-        margin = "styles.row";
-    }
-    
     return (
-        <div className="row"  styleName={margin}>
+        <div className="row"  styleName={marginBot ? "styles.row rowNoMargin" : "styles.row"}>
             <hr />
             <div className="col-sm-3 col-xs-12">
                 <h4 className="seller-profile__section-title">{title}</h4>

@@ -74,8 +74,8 @@ const ReviewHeader = (props) => {
           {/*
             public_profile has three possible values
             1. Seller previewing/reviewing their profile in signup phase (public_profile=undefined)
-            2. Buyer viewing seller profile (public_profile=true)
-            3. Seller viewing their own profile (public_profile=false)
+            2. Buyer/Seller viewing seller profile (public_profile=true)
+            3. Admin viewing the own profile (public_profile=false)
           */}
 
           {typeof public_profile === 'undefined' && hasContactDetails && (

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Route, Link, Redirect, Switch } from 'react-router-dom';
+import isEmpty from 'lodash/isEmpty';
 
 import ApplicationPreview from './ApplicationPreview'
 import ConnectedLink from './ConnectedLink';
@@ -32,7 +33,7 @@ const Review = ({supplierCode, match, caseStudyForm, ...rest}) => (
           const currentStudy = caseStudyForm.case_studies[subMatch.params.id];
           return (
             <div>
-              {currentStudy.title
+              {!isEmpty(currentStudy) && !isEmpty(currentStudy.title)
                 ? <View
                     {...currentStudy}
                     returnLink={<p><ConnectedLink to={`${match.url}/profile`}>Return to Profile</ConnectedLink></p>}

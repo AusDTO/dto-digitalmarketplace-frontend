@@ -59,9 +59,28 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       case_study_url,
       public_profile,
       signed_agreements,
+      recruiter,
       recruiter_info,
       ...body
     } = application;
+
+    let assessed = application.assessed_domains || domains.assessed || [];
+    let unassessed = domains.unassessed;
+    // If unassessed is falsy, assume we are on preview
+    // Where we just want to show the current selected
+    // services. Filter out falsy services and convert
+    // to an Array to keep type consistent
+    if (!unassessed) {
+        unassessed = Object
+            .keys(services)
+            .filter(key => services[key]);
+        if (assessed) {
+            unassessed = unassessed.filter(key => !assessed.includes(key));
+        }
+    }
+
+    // calculate badges
+    seller_type = Object.assign({}, {product: !isEmpty(application.products), recruitment: (recruiter === 'yes')}, seller_type);
 
     let caseStudyLink = null;
     if (typeof case_study_url !== 'undefined') {
@@ -86,17 +105,6 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           return cso;
         }, {});
       }
-    }
-
-    let { assessed, unassessed } = domains;
-    // If unassessed is falsy, assume we are on preview
-    // Where we just want to show the current selected
-    // services. Filter out falsy services and convert
-    // to an Array to keep type consistent
-    if (!unassessed) {
-      unassessed = Object
-        .keys(services)
-        .filter(key => services[key]);
     }
 
     return {

@@ -64,7 +64,10 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
         <p
           className="freetext"
         >
-          A Case Study Opportunity
+          <span>
+            A Case Study Opportunity
+            <br />
+          </span>
         </p>
       </section>
       <section>
@@ -74,7 +77,10 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
         <p
           className="freetext"
         >
-          A simple approach
+          <span>
+            A simple approach
+            <br />
+          </span>
         </p>
       </section>
       <section>
