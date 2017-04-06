@@ -201,7 +201,7 @@ const Body = (props) => {
 
                 {!isEmpty(certifications) && (
                     <div>
-                        <p styleName="bold-noMargin">Accreditions</p>
+                        <p styleName="bold-noMargin">Accreditations</p>
                         <ul>
                         {certifications.map((certification, i) => (
                             <li key={i}>{certification}</li>
