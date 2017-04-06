@@ -47,12 +47,9 @@ class ProductsForm extends BaseForm {
       removeProduct(model, id);
   }
 
-  onEmptyNav() {
-    const {navFromProducts} = this.props;
-    let servicesEmpty = !some(Object.values(this.props.services));
-    let stepsToClear = [];
-    if(servicesEmpty) { stepsToClear.push('digital') };
-    navFromProducts(servicesEmpty, stepsToClear)
+  onClearProducts() {
+    const {clearProducts} = this.props;
+    clearProducts(this.props)
   }
 
   render() {
@@ -177,7 +174,7 @@ class ProductsForm extends BaseForm {
               </div>
             }
             {!hasProducts &&
-              <button className={submitClass} onClick={() => this.onEmptyNav()}>I don't have any products</button>
+              <button className={submitClass} onClick={() => this.onClearProducts()}>I don't have any products</button>
             }
           </Form>
         </article>
@@ -207,12 +204,15 @@ const mapDispatchToProps = (dispatch) => {
             // added due to bug in adding empty product then removing without submit
             dispatch(actions.setValidity(`${model}.products.${id}`, true));
         },
-        navFromProducts: (servicesEmpty, stepsToClear) => {
-          stepsToClear.map((step) => {
-            dispatch(stepActions.stepClear(step));
-          });
-          dispatch(stepActions.stepComplete('products'))
-          dispatch(applicationActions.navigateToStep((servicesEmpty ? '/domains' : '/review')));
+        clearProducts: ({services}) => {
+          // if no services are selected, set it's completion status to false
+          if(!some(Object.values(services))) {
+            dispatch(stepActions.stepClear());
+            dispatch(applicationActions.navigateToStep('/domains'));
+          } else {
+            dispatch(stepActions.stepComplete('products'))
+            dispatch(applicationActions.navigateToStep('/review'));
+          }
         }
     }
 }

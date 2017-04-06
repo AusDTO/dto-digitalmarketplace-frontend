@@ -20,8 +20,8 @@ export default function reducer(state = {}, action = {}) {
         [step]: STATUS.partial
       });
     case STEP_CLEAR:
-      delete state[step]
       return Object.assign({}, state, {
+        ['digital']: void 0
       });
     case STEP_INITIAL:
       return data;
