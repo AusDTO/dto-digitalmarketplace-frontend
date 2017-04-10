@@ -6,10 +6,10 @@
   },
   "application": {
     "representative": "Example person",
-    "name": "Example Company",
+    "contact_name": "Example Company",
     "abn": "133",
-    "phone": "123",
-    "email": "example@gmail.com",
+    "contact_phone": "123",
+    "contact_email": "example@gmail.com",
     "summary": "good company",
     "website": "https://www.alpha",
     "linkedin": "https://www.linkedin.com/company/Jalpha",

@@ -65,14 +65,14 @@ const Body = (props) => {
                     </div>
                 )}
 
-
+                /* Hide learn about assessments link MAR-490
                 <SimpleAccordion title="Learn about assessments">
                   <span styleName="accordionPaddTopp">
                     These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
 
                   </span>
                 </SimpleAccordion>
-
+                */
 
 
             </Row>
@@ -263,13 +263,12 @@ const Body = (props) => {
                 </ul>
             </Row>
 
-            <Row title="Documents" show={!isEmpty(documents)}>
+            <Row title="Documents provided to the Marketplace" show={!isEmpty(documents)}>
                 <table className="content-table" styleName="content-table">
                     <thead>
                     <tr>
-                        <th scope="col">Document type</th>
-                        <th scope="col">Expiry</th>
-
+                        <th scope="col">Document</th>
+                        <th scope="col">Expires</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -279,11 +278,9 @@ const Body = (props) => {
                             return (
                                 <tr key={val}>
                                     <td>
-                                        <a href={`${documentsUrl}${filename}`} rel="external" target="_blank">
-                                            {documentTitle[key]}
-                                        </a>
+                                        {documentTitle[key]}
                                     </td>
-                                    <td>
+                                    <td className="table-align-right">
                                         {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
                                     </td>
                                 </tr>
@@ -294,7 +291,7 @@ const Body = (props) => {
                     </tbody>
                 </table>
 
-                <p className="callout">  This seller's financial statement has been provided to the DTA. It's available on request from the seller.   </p>
+                <p className="callout">The above documents have been provided by the seller. They are available upon request, contact marketplace@digital.gov.au.</p>
 
             </Row>
 
