@@ -5,23 +5,24 @@ import './TeamView.css'
 
 const TeamView = ({teammembers, meta = {}}) => (
   <div className="content-main">
-  <h1>Team: {meta.teamname}</h1>
+  <a href="/buyers">Back to briefs</a>
+  <h1>{meta.teamname}</h1>
 
   <h2>Active team members</h2>
-  <table className="content-table">
-    <thead>
+  <table className="content-table summary-item-body">
+    <thead className="summary-item-field-headings-visible">
       <tr>
-        <th>name</th>
-        <th>email</th>
+        <th className="summary-item-field-heading-first">Name</th>
+        <th className="summary-item-field-heading">Email</th>
         {/* <th>briefs</th> */}
       </tr>
     </thead>
     <tbody>
     {teammembers.map((tm, i) => {
       return (
-        <tr>
-            <td>{tm.name}</td>
-            <td><a href={"mailto:" + tm.email_address}>{tm.email_address}</a></td>
+        <tr className="summary-item-row">
+            <td className="summary-item-field">{tm.name}</td>
+            <td className="summary-item-field"><a href={"mailto:" + tm.email_address}>{tm.email_address}</a></td>
             {/* <td>{tm.briefs.map((b, i) => (
               <div>{b.title}</div>
             ))}</td> */}
