@@ -156,6 +156,10 @@ table.content-table tr th  {
   padding-top: 0px;
 }
 
+.table-align-right {
+  text-align: right;
+}
+
 .product-heading {
   margin-top: 1rem;
 }
