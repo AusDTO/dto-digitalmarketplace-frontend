@@ -24,7 +24,7 @@ const AssessmentList = ({ assessments, url_approve, onApproveClick }) => (
       </thead>
 
       <tbody>
-        {assessments && assessments.map((a, i) => {
+        {assessments && assessments.filter(a => {return a.supplier_domain.status !== 'assessed'}).map((a, i) => {
           return (
           <tr key={a.id}>
             <td>
