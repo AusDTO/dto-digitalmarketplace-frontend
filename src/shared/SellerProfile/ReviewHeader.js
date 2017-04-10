@@ -81,7 +81,7 @@ const ReviewHeader = (props) => {
           {typeof public_profile === 'undefined' && hasContactDetails && (
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
-                <h4>Business Contact</h4>
+                <h4>Business contact</h4>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
                 <p>
