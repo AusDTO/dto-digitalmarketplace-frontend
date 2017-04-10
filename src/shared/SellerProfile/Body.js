@@ -65,16 +65,6 @@ const Body = (props) => {
                     </div>
                 )}
 
-                /* Hide learn about assessments link MAR-490
-                <SimpleAccordion title="Learn about assessments">
-                  <span styleName="accordionPaddTopp">
-                    These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
-
-                  </span>
-                </SimpleAccordion>
-                */
-
-
             </Row>
 
             <Row title="Case studies" marginBot="true" show={!isEmpty(case_studies)}>
