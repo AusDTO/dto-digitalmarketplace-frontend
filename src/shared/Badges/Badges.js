@@ -9,7 +9,7 @@ export const titleMap = {
   indigenous: 'Indigenous business',
   disability: 'Australian disability enterprise',
   nfp_social_enterprise: 'Not-for-profit',
-  start_up: 'Start up',
+  start_up: 'Start-up',
   sme: 'SME',
   product: 'Products'
 };
