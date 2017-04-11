@@ -227,7 +227,7 @@ const Body = (props) => {
 
                 {!isEmpty(addresses) && (
                     <div>
-                        <p styleName="bold-noMargin">Main Address </p>
+                        <p styleName="bold-noMargin">Main address </p>
 
                         {Object.keys(addresses)
                             .map((key, i) => {
