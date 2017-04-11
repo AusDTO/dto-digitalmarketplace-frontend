@@ -65,6 +65,15 @@ const Body = (props) => {
                     </div>
                 )}
 
+                {isEmpty(assessed) || !isEmpty(unassessed) && (
+                <SimpleAccordion title="Learn about assessments">
+                  <span styleName="accordionPaddTopp">
+                    These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
+
+                  </span>
+                </SimpleAccordion>
+                )}
+
             </Row>
 
             <Row title="Case studies" marginBot="true" show={!isEmpty(case_studies)}>
