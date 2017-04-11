@@ -1,12 +1,13 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
 import format from 'date-fns/format';
 import distanceInWords from 'date-fns/distance_in_words';
+import { approveAssessment } from '../../redux/modules/assessments';
 
-import './AssessmentList.css'
+import './AssessmentList.css';
 
-const AssessmentList = ({ assessments }) => (
+const AssessmentList = ({ assessments, url_approve, onApproveClick }) => (
   <div>
     <h2>Assessments</h2>
     <table className="content-table">
@@ -23,7 +24,7 @@ const AssessmentList = ({ assessments }) => (
       </thead>
 
       <tbody>
-        {assessments && assessments.map((a, i) => {
+        {assessments && assessments.filter(a => {return a.supplier_domain.status !== 'assessed'}).map((a, i) => {
           return (
           <tr key={a.id}>
             <td>
@@ -38,7 +39,10 @@ const AssessmentList = ({ assessments }) => (
             <td></td>
             <td styleName="buttons">
               <button name="Reject" styleName="reject">Reject</button>
-              <button name="Accept">Accept</button>
+              <button onClick={e => {
+               e.preventDefault();
+               onApproveClick(a.id);
+             }} name="Approve">Approve</button>
             </td>
           </tr>
         )})}
@@ -47,6 +51,14 @@ const AssessmentList = ({ assessments }) => (
   </div>
 )
 
-const mapStateToProps = ({assessments}) => {return {assessments}};
+const mapStateToProps = ({assessments, meta}) => {return {assessments, meta}};
 
-export default connect(mapStateToProps)(AssessmentList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onApproveClick: (id) => {
+      dispatch(approveAssessment(id))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AssessmentList);
