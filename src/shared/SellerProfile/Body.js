@@ -32,6 +32,8 @@ const Body = (props) => {
         public_profile,
         prices = [],
         products = {},
+        digital_marketplace_panel,
+        dsp_panel,
         CaseStudyLink = () => null,
     } = props;
 
@@ -71,8 +73,13 @@ const Body = (props) => {
                     These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
 
                   </span>
-                </SimpleAccordion>
+                    </SimpleAccordion>
                 )}
+            </Row>
+            <Row title="Transacts on" show={digital_marketplace_panel || dsp_panel }>
+                {digital_marketplace_panel && <span><a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=4E10C3C3-99F9-34E1-61CDE299C229AAEF">SON3413842 Digital Marketplace Panel</a><br/></span>}
+
+                {dsp_panel && <a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=ACD40659-0FEB-07D3-291A8F6C6FAB4184">SON3364729 Digital Services Professionals</a>}
 
             </Row>
 
@@ -314,6 +321,8 @@ Body.propTypes = {
     contact_email: React.PropTypes.string,
     contact_phone: React.PropTypes.string,
     contact_name: React.PropTypes.string,
+    digital_marketplace_panel: React.PropTypes.bool,
+    dsp_panel: React.PropTypes.bool
 };
 
 export default Body;
