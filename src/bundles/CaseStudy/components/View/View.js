@@ -88,7 +88,9 @@ class View extends React.Component {
               <section className="project">
                 <h2>Project Links</h2>
                 <ul>
-                  {project_links.map((item, i) => <li key={i}><a className="project__links" href={item} rel="external">{item}</a></li>)}
+                  {project_links.map((item, i) => <li key={i}>
+                    <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                  </li>)}
                 </ul>
               </section>
             )}
