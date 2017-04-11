@@ -272,18 +272,14 @@ const Body = (props) => {
                     </thead>
                     <tbody>
                     {Object.keys(documents).map((key, val) => {
-                        const {filename, expiry} = documents[key];
+                        const {expiry} = documents[key];
                             return (
                                 <tr key={val}>
                                     <td>
                                         {documentTitle[key]}
                                     </td>
                                     <td className="table-align-right">
-                                        {
-                                          key == 'financial'
-                                          ? documents[key].expiry && format(new Date(documents[key].expiry), 'DD/MM/YYYY')
-                                          : expiry && format(new Date(expiry), 'DD/MM/YYYY')
-                                        }
+                                      {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
                                     </td>
                                 </tr>
 
