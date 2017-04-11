@@ -74,8 +74,14 @@
         "filename": "financial.pdf",
         "expiry": "2017-10-21"
       },
-      "liability": "liability.pdf",
-      "workers": "workers.pdf"
+      "liability": {
+        "filename": "liability.pdf",
+        "expiry": "2017-10-21"
+      },
+      "workers": {
+        "filename": "workers.pdf",
+        "expiry": "2017-12-25"
+      }
     }
   }
 }

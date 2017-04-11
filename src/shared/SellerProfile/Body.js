@@ -272,25 +272,23 @@ const Body = (props) => {
                     </thead>
                     <tbody>
                     {Object.keys(documents).map((key, val) => {
-                        const {filename, expiry} = documents[key];
-                        if (key != 'financial') {
+                        const {expiry} = documents[key];
                             return (
                                 <tr key={val}>
                                     <td>
                                         {documentTitle[key]}
                                     </td>
                                     <td className="table-align-right">
-                                        {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
+                                      {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
                                     </td>
                                 </tr>
 
                             )
-                        }
                     })}
                     </tbody>
                 </table>
 
-                <p className="callout">The above documents have been provided by the seller. They are available upon request, contact marketplace@digital.gov.au.</p>
+              <p className="callout">The above documents have been provided by the seller. They are available upon request, contact <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a></p>
 
             </Row>
 
