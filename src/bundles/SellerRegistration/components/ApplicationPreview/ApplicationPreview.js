@@ -61,6 +61,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       signed_agreements,
       recruiter,
       recruiter_info,
+      digital_marketplace_panel,
+      dsp_panel,
       ...body
     } = application;
 
@@ -129,6 +131,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           documents,
           documentsUrl: documents_url,
           public_profile,
+          digital_marketplace_panel,
+          dsp_panel,
           ...body
         },
         privateInfo: (disclosures ? {
