@@ -50,21 +50,25 @@ const Body = (props) => {
             <Row title="Areas of expertise" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
 
                 {!isEmpty(assessed) && (
-                    <div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
+                    <span><div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
                         <p styleName="bold">Assessed for</p>
                         {assessed.map((service, i) => (
                             <span key={i}>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
                         ))}
 
-                        <p styleName="bold">Transacts on</p>
+                    </div>
+                        <p>
+                            <b>Transacts on</b><br/>
                         {digital_marketplace_panel  &&
-                            <span><a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=4E10C3C3-99F9-34E1-61CDE299C229AAEF"
-                                     rel="external" target="_blank">SON3413842 Digital Marketplace Panel</a><br/></span>
+                        <span><a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=4E10C3C3-99F9-34E1-61CDE299C229AAEF"
+                                rel="external" target="_blank">SON3413842 Digital Marketplace Panel</a><br/></span>
                         }
 
                         {dsp_panel && <a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=ACD40659-0FEB-07D3-291A8F6C6FAB4184"
                                          rel="external" target="_blank">SON3364729 Digital Services Professionals</a>}
-                    </div>
+                        </p>
+
+                    </span>
 
                 )}
 
