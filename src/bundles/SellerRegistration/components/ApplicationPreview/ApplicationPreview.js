@@ -86,7 +86,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
 
     let caseStudyLink = null;
     if (typeof case_study_url !== 'undefined') {
-      caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`}>{children}</a>);
+      caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`} target="_blank" rel="external">{children}</a>);
     } else {
       caseStudyLink = ({id, children}) => (
         <ConnectedLink to={`${rest.match.url}/case-study/${id}`}>{children}</ConnectedLink>

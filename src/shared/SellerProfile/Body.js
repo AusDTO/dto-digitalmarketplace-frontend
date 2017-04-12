@@ -55,38 +55,28 @@ const Body = (props) => {
                         {assessed.map((service, i) => (
                             <span key={i}>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
                         ))}
+
+                        <p styleName="bold">Transacts on</p>
+                        {digital_marketplace_panel  &&
+                            <span><a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=4E10C3C3-99F9-34E1-61CDE299C229AAEF"
+                                     rel="external" target="_blank">SON3413842 Digital Marketplace Panel</a><br/></span>
+                        }
+
+                        {dsp_panel && <a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=ACD40659-0FEB-07D3-291A8F6C6FAB4184"
+                                         rel="external" target="_blank">SON3364729 Digital Services Professionals</a>}
                     </div>
+
                 )}
 
                 {!isEmpty(unassessed) && (
                     <div className="seller-profile__provides-badges" styleName="badges provides-badges">
-                        <p styleName="bold">Experience in</p>
+                        <p><b>Experience in</b><br/>
+                        These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.</p>
                         {unassessed.map((service, i) => (
                             <span key={i}>{service}</span>
                         ))}
                     </div>
                 )}
-
-                {!isEmpty(unassessed) && (
-                <SimpleAccordion title="Learn about assessments">
-                  <span styleName="accordionPaddTopp">
-                    These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
-
-                  </span>
-                    </SimpleAccordion>
-                )}
-            </Row>
-            <Row title="Transacts on" show={digital_marketplace_panel || dsp_panel }>
-                {digital_marketplace_panel  &&
-                    (isEmpty(assessed) ?
-                        <span>Not yet assessed</span>
-                        :
-                        <span><a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=4E10C3C3-99F9-34E1-61CDE299C229AAEF"
-                             rel="external" target="_blank">SON3413842 Digital Marketplace Panel</a><br/></span>)
-                }
-
-                {dsp_panel && <a href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=ACD40659-0FEB-07D3-291A8F6C6FAB4184"
-                                 rel="external" target="_blank">SON3364729 Digital Services Professionals</a>}
 
             </Row>
 

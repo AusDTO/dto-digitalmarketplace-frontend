@@ -17,6 +17,8 @@ class View extends React.Component {
       title,
       opportunity,
       client,
+      supplier_name,
+      supplier_url = null,
       approach,
       timeframe,
       outcome,
@@ -47,7 +49,7 @@ class View extends React.Component {
           <div className="meta col-xs-12">
             <div className="row">
               <div className="col-xs-12 col-sm-7">
-                <p>{client}</p>
+                <p>by {supplier_url ? <a href={supplier_url}>{supplier_name}</a> : supplier_name}</p>
               </div>
               {meta && (
                 <div className="col-xs-12 col-sm-5 actions">
@@ -60,10 +62,13 @@ class View extends React.Component {
         </header>
         <div className="row">
           <aside className="col-sm-3 col-xs-12">
+            <h4>Client</h4>
+            <p>{client}</p>
+
             <h4>Timeframe</h4>
             <p>{timeframe}</p>
 
-            <h4>Service</h4>
+            <h4>Area of expertise</h4>
             <p>{service}</p>
 
             <h4>Responsible for</h4>
