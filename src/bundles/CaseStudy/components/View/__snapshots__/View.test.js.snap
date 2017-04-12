@@ -26,7 +26,7 @@ exports[`View with required attributes 1`] = `
           className="col-xs-12 col-sm-7"
         >
           <p>
-            Transport for NSW
+            by 
           </p>
         </div>
         <div
@@ -54,13 +54,19 @@ exports[`View with required attributes 1`] = `
       className="col-sm-3 col-xs-12"
     >
       <h4>
+        Client
+      </h4>
+      <p>
+        Transport for NSW
+      </p>
+      <h4>
         Timeframe
       </h4>
       <p>
         January 2016 — June 2016
       </p>
       <h4>
-        Service
+        Area of expertise
       </h4>
       <p />
       <h4>
@@ -148,7 +154,7 @@ exports[`View with required attributes and meta links 1`] = `
           className="col-xs-12 col-sm-7"
         >
           <p>
-            Transport for NSW
+            by 
           </p>
         </div>
         <div
@@ -176,13 +182,19 @@ exports[`View with required attributes and meta links 1`] = `
       className="col-sm-3 col-xs-12"
     >
       <h4>
+        Client
+      </h4>
+      <p>
+        Transport for NSW
+      </p>
+      <h4>
         Timeframe
       </h4>
       <p>
         January 2016 — June 2016
       </p>
       <h4>
-        Service
+        Area of expertise
       </h4>
       <p />
       <h4>
