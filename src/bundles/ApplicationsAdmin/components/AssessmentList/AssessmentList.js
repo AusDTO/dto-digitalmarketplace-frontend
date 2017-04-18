@@ -15,7 +15,7 @@ const AssessmentList = ({ assessments, url_approve, onApproveClick }) => (
         <tr>
           <th>closing</th>
           <th>applied</th>
-          <th>name</th>
+          <th>supplier</th>
           <th>domain</th>
           <th>briefs</th>
           <th>jira</th>
@@ -33,7 +33,7 @@ const AssessmentList = ({ assessments, url_approve, onApproveClick }) => (
               })}
             </td>
             <td>{format(new Date(a.created_at), 'YYYY-MM-DD HH:mm')}</td>
-            <td>{a.supplier_domain.supplier.name}</td>
+            <td><a href={"/admin/assessments/supplier/"+a.supplier_domain.supplier.code}>{a.supplier_domain.supplier.name} (#{a.supplier_domain.supplier.code})</a></td>
             <td>{a.supplier_domain.domain.name}</td>
             <td>{a.briefs.map((b, i) => {return `${b.title} `})}</td>
             <td></td>
