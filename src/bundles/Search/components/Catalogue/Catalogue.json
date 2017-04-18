@@ -78,9 +78,7 @@
             {
                 "description": "test",
                 "link": "/supplier/4",
-                "services": {
-                    "Cyber security": true
-                },
+                "services": {},
                 "title": "Epsilon Security Group"
             },
             {

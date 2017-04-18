@@ -49,7 +49,6 @@ class SubmitStepForm extends BaseForm {
 
     handleSubmit(val) {
         // Do anything you want with the form value
-        console.log(val);
     }
 
     render() {

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
-import values from 'lodash/values';
 import keys from 'lodash/keys';
 import difference from 'lodash/difference';
 

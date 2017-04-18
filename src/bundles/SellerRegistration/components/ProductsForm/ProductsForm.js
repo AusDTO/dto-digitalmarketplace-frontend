@@ -204,13 +204,11 @@ const mapDispatchToProps = (dispatch) => {
             // added due to bug in adding empty product then removing without submit
             dispatch(actions.setValidity(`${model}.products.${id}`, true));
         },
+        // if services are empty, go back to services step, otherwise continue as normal
         clearProducts: (services) => {
-          // if no services are selected, set it's completion status to false
           if(!some(Object.values(services))) {
-            dispatch(stepActions.stepClear('digital'));
             dispatch(applicationActions.navigateToStep('/domains'));
           } else {
-            dispatch(stepActions.stepComplete('products'))
             dispatch(applicationActions.navigateToStep('/review'));
           }
         }
