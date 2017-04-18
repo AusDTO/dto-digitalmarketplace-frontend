@@ -100,7 +100,6 @@ const PrivateInfo = (props) => {
                 </table>
             </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
-            {console.log(recruiter_info)}
             {Object.keys(recruiter_info).map((key, i) => {
                 return (
                     <div>

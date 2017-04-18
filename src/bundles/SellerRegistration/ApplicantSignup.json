@@ -38,22 +38,6 @@
         "Change & transformation": false,
         "Cyber security": false
     },
-    "case_studies": {
-        "f29a3cbd-5d76-4fb1-f4ea-40e1b196a84e": {
-            "service": "Cyber security",
-            "title": "User Research Role",
-            "client": "DTA",
-            "timeframe": "May 2016",
-            "opportunity": "Some blurb about the opportunity",
-            "approach": "Some blurb about the approach",
-            "outcome": [
-                "First Outcome"
-            ],
-            "project_links": [
-              "http://google.com"
-            ]
-        }
-    },
     "documents": {
         "liability": {
             "filename": "foobar.pdf",
