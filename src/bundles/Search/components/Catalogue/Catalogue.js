@@ -141,7 +141,7 @@ export class Catalogue extends React.Component {
                             styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
                             <span>{pagination['products'].total}</span> Products
                           </Link>
-                          <Link
+                            {search['casestudies'] !== null  && <Link
                             to={{ search: 'view=casestudies' }}
                             onClick={(e) => {
                               e.preventDefault();
@@ -154,7 +154,7 @@ export class Catalogue extends React.Component {
                             }}
                             styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
                             <span>{pagination['casestudies'].total}</span> Case Studies
-                          </Link>
+                          </Link> }
                         </div>
 
                         <div className="col-xs-12 col-sm-5" styleName="sortBy">

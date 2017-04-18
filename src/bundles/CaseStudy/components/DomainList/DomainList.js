@@ -71,6 +71,7 @@ class DomainList extends BaseForm {
       buttonText,
       model,
       action,
+      supplierName,
       supplierCode,
       caseStudyForm,
       children,
@@ -242,6 +243,7 @@ class DomainList extends BaseForm {
               {!isEmpty(currentStudy) && !isEmpty(currentStudy.title)
                 ? <View
                     {...currentStudy}
+                    supplier_name={supplierName}
                     onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
                     confirmButton={<ConnectedLink role="button" to={pathname}>Finish case study</ConnectedLink>}
                     returnLink={<p><Link to={`${pathname}/edit/${subMatch.params.id}`}>Continue Editing</Link></p>}
@@ -260,6 +262,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...formProps(state, 'caseStudyForm'),
     ...ownProps,
+    supplierName: state.application.name,
     supplierCode: state.application.supplier_code,
     currentStudy: state.casestudy,
     assessedDomains: state.application.assessed_domains,

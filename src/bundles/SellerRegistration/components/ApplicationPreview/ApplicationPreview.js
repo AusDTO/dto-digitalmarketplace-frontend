@@ -61,6 +61,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
       signed_agreements,
       recruiter,
       recruiter_info,
+      digital_marketplace_panel,
+      dsp_panel,
       ...body
     } = application;
 
@@ -84,7 +86,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
 
     let caseStudyLink = null;
     if (typeof case_study_url !== 'undefined') {
-      caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`}>{children}</a>);
+      caseStudyLink = ({id, children}) => (<a href={`${case_study_url}${id}`} target="_blank" rel="external">{children}</a>);
     } else {
       caseStudyLink = ({id, children}) => (
         <ConnectedLink to={`${rest.match.url}/case-study/${id}`}>{children}</ConnectedLink>
@@ -129,6 +131,8 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
           documents,
           documentsUrl: documents_url,
           public_profile,
+          digital_marketplace_panel,
+          dsp_panel,
           ...body
         },
         privateInfo: (disclosures ? {
