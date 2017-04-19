@@ -21,7 +21,7 @@ const initialState = {
   view: 'sellers',
   keyword: '',
   results: [],
-  products: {},
+  products: [],
   casestudies: [],
   querying: false,
   error: false
