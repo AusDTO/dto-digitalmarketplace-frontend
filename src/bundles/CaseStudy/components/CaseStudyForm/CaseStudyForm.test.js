@@ -41,6 +41,7 @@ test('mapStateToProps', () => {
   };
 
   let state = generateFormValidilityState(true);
+  delete state.basename;
   let props = mapStateToProps(state, { router: {} });
   expect(props).toEqual(Object.assign({}, baseProps, { form: { valid: true } }));
 
@@ -91,6 +92,7 @@ test('handleClick with formValid=false', () => {
 
 
 test.skip('handleClick with formValid=true', () => {
+  delete sampleState.basename;
   let state = Object.assign({}, sampleState);
   state.caseStudyForm.title = 'FooBar';
 
@@ -109,6 +111,7 @@ test.skip('handleClick with formValid=true', () => {
 });
 
 test.skip('handleClick when on last step', () => {
+  delete sampleState.basename;
   let state = Object.assign({}, sampleState);
   state.caseStudyForm = Object.assign({}, state.caseStudyForm, {
     title: 'FooBar',

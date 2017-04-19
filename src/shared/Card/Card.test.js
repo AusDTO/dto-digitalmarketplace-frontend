@@ -11,7 +11,14 @@ test('Displays card with no product badge', () => {
         badges: {'sme': true},
         description: "Result description",
         products: {},
-        services: {}
+        services: {},
+        supplier: {
+            'name': 'supplier name',
+            'profile_url': 'www.profileurl.com',
+            'supplier_url': 'www.supplierurl.com'
+        },
+        pricing: 'www.pricingurl.com',
+        case_study_service: 'case study service'
     }
 
     const component = mount(
@@ -31,7 +38,14 @@ test('Displays card with product badge', () => {
         badges: {'sme': true},
         description: "Result description",
         products: {"prodA": {}},
-        services: {}
+        services: {},
+        supplier: {
+            'name': 'supplier name',
+            'profile_url': 'www.profileurl.com',
+            'supplier_url': 'www.supplierurl.com'
+        },
+        pricing: 'www.pricingurl.com',
+        case_study_service: 'case study service'
     }
 
     const component = mount(
