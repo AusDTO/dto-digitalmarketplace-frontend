@@ -86,7 +86,8 @@ export class Catalogue extends React.Component {
             <section className="col-xs-12 col-sm-4">
               <h4 className="local-nav-heading">Filter your results</h4>
               { search.view !== "products" &&
-              < LocalNav navClassName="filter-navigation" text="Filter your results">
+              <LocalNav navClassName="filter-navigation" text="Filter your results">
+                <a href="/services" target="_blank" styleName="learn-services-link">Learn more about these services</a>
                 <CheckboxList
                 id="role"
                 list={search.role}
