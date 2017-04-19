@@ -88,18 +88,15 @@ export const submitApplication = () => {
   }
 };
 
-// where some steps have no saved form data, ensure their status is incomplete
+// when a user skips services as a product only seller, then goes back and adds a service, set case study completion
+// to incomplete
 export const validateCompletionStatus = (state, dispatch) => {
-  if (isEmpty(state.caseStudyForm.case_studies)) {
+  if (some(Object.values(state.domainSelectorForm.services)) && isEmpty(state.caseStudyForm.case_studies)) {
     dispatch(stepActions.stepClear('casestudy'))
   }
 
   if (isEmpty(state.productsForm.products)) {
     dispatch(stepActions.stepClear('products'))
-  }
-
-  if (!some(Object.values(state.domainSelectorForm.services))) {
-    dispatch(stepActions.stepClear('digital'))
   }
 }
 
