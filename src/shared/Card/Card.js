@@ -6,39 +6,60 @@ import Badges from '../Badges';
 
 import './Card.css';
 
-const Card = ({ title, link, badges = {}, description, products = {}, services = {} }) => {
+const Card = ({ title, link, badges = {}, description, products = {}, supplier, services = {}, pricing, case_study_service, view }) => {
     // calculate badges
     badges = Object.assign({}, {product: !isEmpty(products)}, badges);
 
     return (
-        <a href={link}>
-          <section className="card" styleName="card">
-            <article>
-              <h3>
-                <span>{title}</span>
-              </h3>
-                {!isEmpty(badges) && (
-                    <div styleName="badges">
-                      <Badges badges={badges}/>
-                    </div>
-                )}
-              <p styleName="description">{description}</p>
-                {/* TODO refactor when products exists
-                 <div className="products">
-                 <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
-                 </div>
-                 */}
-            </article>
+      <section className="card" styleName="card">
+        <article>
+          <h3>
+            <span>
+              {view === "products" ?
+                <a href={link} target="_blank" rel="external">{title}</a> :
+                <a href={link} target="_blank">{title}</a> }
+            </span>
+          </h3>
 
-              {!isEmpty(services) && (
-                  <div styleName="services">
-                      {Object.keys(services).map((service, i) => (
-                          <span key={i}>{service}</span>
-                      ))}
-                  </div>
-              )}
-          </section>
-        </a>
+          {view !== 'sellers' &&<div styleName="author">
+            <a href={supplier.profile_url}>{supplier.name}</a>
+          </div>}
+
+            {!isEmpty(badges) && (
+                <div styleName="badges">
+                  <Badges badges={badges}/>
+                </div>
+            )}
+          <p styleName="description">{description}</p>
+            {/* TODO refactor when products exists
+             <div className="products">
+             <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
+             </div>
+             */}
+          {view === "products" && <div styleName="product-links">
+               <span>
+                 <a href={pricing} target="_blank" rel="external" styleName="product-link-item">Product pricing</a>
+               </span>
+            <span>
+                 <a href={supplier.support_url} target="_blank" rel="external" styleName="product-link-item">Product support</a>
+               </span>
+          </div>
+          }
+        </article>
+
+          {!isEmpty(services) && view === 'sellers' && (
+              <div styleName="services">
+                  {Object.keys(services).map((service, i) => (
+                      <span key={i}>{service}</span>
+                  ))}
+              </div>
+          )}
+          {!isEmpty(services) && view === 'casestudies' && (
+              <div styleName="services">
+                <span>{case_study_service}</span>
+              </div>
+          )}
+      </section>
     );
 };
 

@@ -19,11 +19,14 @@ import './Catalogue.css';
 
 export class Catalogue extends React.Component {
 
+  componentDidUpdate() {
+    window.scrollTo(0,0)
+  }
+
   render () {
     const { actions, search = {}, pagination = {} } = this.props;
 
     const cards = search.view === 'sellers' ? search.results : search[search.view];
-
     return (
       <section>
         <form onSubmit={e => e.preventDefault()}>
@@ -82,22 +85,24 @@ export class Catalogue extends React.Component {
           <article className="row">
             <section className="col-xs-12 col-sm-4">
               <h4 className="local-nav-heading">Filter your results</h4>
-              <LocalNav navClassName="filter-navigation" text="Filter your results">
+              { search.view !== "products" &&
+              < LocalNav navClassName="filter-navigation" text="Filter your results">
                 <CheckboxList
-                  id="role"
-                  list={search.role}
-                  onChange={actions.updateRole}
+                id="role"
+                list={search.role}
+                onChange={actions.updateRole}
                 />
 
                 <hr/>
 
                 <CheckboxList
-                  id="type"
-                  list={search.type}
-                  onChange={actions.updateType}
+                id="type"
+                list={search.type}
+                onChange={actions.updateType}
                 />
 
-              </LocalNav>
+                </LocalNav>
+              }
             </section>
             <div className="col-xs-12 col-sm-8">
               {search.error ? (
@@ -199,7 +204,11 @@ export class Catalogue extends React.Component {
                       ) :
                     (<article>
                       {cards.map((result, i) => (
-                        <Card {...result} key={i} />
+                        <Card
+                          {...result}
+                          view={search.view}
+                          key={i}
+                        />
                       ))}
                     </article>)}
 
