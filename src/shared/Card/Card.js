@@ -6,7 +6,7 @@ import Badges from '../Badges';
 
 import './Card.css';
 
-const Card = ({ title, link, badges = {}, description, products = {}, supplier, services = {}, pricing, case_study_service, view }) => {
+const Card = ({ title, link, badges = {}, description, products = {}, services = {}, supplier,pricing, case_study_service, view }) => {
     // calculate badges
     badges = Object.assign({}, {product: !isEmpty(products)}, badges);
 
