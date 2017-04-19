@@ -27,6 +27,8 @@ export class Catalogue extends React.Component {
     const { actions, search = {}, pagination = {} } = this.props;
 
     const cards = search.view === 'sellers' ? search.results : search[search.view];
+    let nullCaseStudies = search['casestudies'] === null && search.view === 'casestudies';
+
     return (
       <section>
         <form onSubmit={e => e.preventDefault()}>
@@ -34,7 +36,7 @@ export class Catalogue extends React.Component {
             <div className="col-xs-12 col-sm-4">
               <h2 styleName="heading">Seller catalogue</h2>
             </div>
-            <div className="col-xs-12 col-sm-8" styleName="autocomplete">
+            {!nullCaseStudies && <div className="col-xs-12 col-sm-8" styleName="autocomplete">
               <article styleName="keyword-search">
                 <article className="col-xs-10">
                   <label htmlFor="keyword" className="visually-hidden">
@@ -80,12 +82,12 @@ export class Catalogue extends React.Component {
                   </button>
                 </article>
               </article>
-            </div>
+            </div> }
           </article>
           <article className="row">
             <section className="col-xs-12 col-sm-4">
               <h4 className="local-nav-heading">Filter your results</h4>
-              { search.view !== "products" &&
+              { search.view !== "products" && (search.view === 'sellers' || !nullCaseStudies) &&
               <LocalNav navClassName="filter-navigation" text="Filter your results">
                 <a href="/services" target="_blank" styleName="learn-services-link">Learn more about these services</a>
                 <CheckboxList
@@ -147,7 +149,7 @@ export class Catalogue extends React.Component {
                             styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
                             <span>{pagination['products'].total}</span> Products
                           </Link>
-                            {search['casestudies'] !== null  && <Link
+                          <Link
                             to={{ search: 'view=casestudies' }}
                             onClick={(e) => {
                               e.preventDefault();
@@ -160,7 +162,7 @@ export class Catalogue extends React.Component {
                             }}
                             styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
                             <span>{pagination['casestudies'].total}</span> Case Studies
-                          </Link> }
+                          </Link>
                         </div>
 
                         <div className="col-xs-12 col-sm-5" styleName="sortBy">
@@ -194,7 +196,7 @@ export class Catalogue extends React.Component {
                       </div>
                       <hr/>
                     </article>
-                    {isEmpty(cards) ? (
+                    {!nullCaseStudies && isEmpty(cards) ? (
                         <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                           <h2>No exact matches</h2>
                           <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
@@ -203,24 +205,38 @@ export class Catalogue extends React.Component {
                           }}>clear all and start again</Link>.</p>
                         </article>
                       ) :
-                    (<article>
-                      {cards.map((result, i) => (
-                        <Card
-                          {...result}
-                          view={search.view}
-                          key={i}
-                        />
-                      ))}
+                    (
+                    <article>
+                      {search.view === 'casestudies' && search['casestudies'] === null ?
+                        (<div styleName="case-study-signup">
+                          <div>
+                            <a href="/login" target="_blank">Sign in</a> with your buyer account to search seller case studies.
+                          </div>
+                          <div>
+                            New to the Marketplace? <a href="/signup" target="_blank">Create your account.</a>
+                          </div>
+                        </div>) :
+
+                        cards.map((result, i) => (
+                          <Card
+                            {...result}
+                            view={search.view}
+                            key={i}
+                          />
+                        ))
+                      }
                     </article>)}
 
-                    <hr/>
-
-                    <Pagination
-                      {...pagination[search.view]}
-                      onClick={actions.updatePage}
-                      onBack={actions.updatePage}
-                      onNext={actions.updatePage}
-                    />
+                    {!nullCaseStudies &&
+                    <div>
+                      <hr/>
+                      <Pagination
+                        {...pagination[search.view]}
+                        onClick={actions.updatePage}
+                        onBack={actions.updatePage}
+                        onNext={actions.updatePage}
+                      />
+                    </div> }
                   </div>
               )}
 
