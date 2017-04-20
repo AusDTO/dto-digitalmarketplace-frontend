@@ -61,7 +61,8 @@ var config = {
     'assessments-admin': [resolveApp('src/bundles/ApplicationsAdmin/AssessmentsAdminWidget')],
     'application-preview': [resolveApp('src/bundles/SellerRegistration/ApplicationPreviewWidget')],
     'search': [resolveApp('src/bundles/Search/SearchWidget')],
-    'auth-header': [resolveApp('src/bundles/Header/AuthWidget')]
+    'auth-header': [resolveApp('src/bundles/Header/AuthWidget')],
+    'collaborate-landing': [resolveApp('src/bundles/Collaborate/CollaborateLandingWidget')],
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
