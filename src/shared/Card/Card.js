@@ -31,11 +31,6 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
             </div>
           )}
           <p styleName="description">{description}</p>
-          {/* TODO refactor when products exists
-           <div className="products">
-           <Icon value="product" size={18} /> <strong>Digital products:</strong> CMS
-           </div>
-           */}
           {view === "products" &&
           <div styleName="product-links">
             <div className="row">
