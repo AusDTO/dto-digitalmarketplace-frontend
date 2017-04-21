@@ -2,18 +2,14 @@ import { createStore as _createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './modules/reducer';
 
-import api from '../../../shared/reduxModules/api';
-
 export default function createStore(data) {
-  const middleware = [
-    thunk.withExtraArgument(api)
-  ]
+  const middleware = [ thunk ]
 
   delete data._serverContext;
 
   let options = data.options || {}
 
-  let initialState = Object.assign({}, data, {
+  let initialState = Object.assign({}, data, { 
     options: {
       serverRender: options.serverRender || typeof window === 'undefined'
     }

@@ -6,7 +6,7 @@ import createStore from './redux/create'
 
 import Landing from './components/Landing'
 
-const CollaborateLandingWidget = (props) => {
+export const CollaborateLandingWidget = (props) => {
   const store = createStore(props)
 
   return (

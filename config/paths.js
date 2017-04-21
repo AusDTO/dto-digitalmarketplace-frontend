@@ -63,6 +63,8 @@ var config = {
     'search': [resolveApp('src/bundles/Search/SearchWidget')],
     'auth-header': [resolveApp('src/bundles/Header/AuthWidget')],
     'collaborate-landing': [resolveApp('src/bundles/Collaborate/CollaborateLandingWidget')],
+      'project-view': [resolveApp('src/bundles/Collaborate/ProjectViewWidget')],
+      'project-form': [resolveApp('src/bundles/Collaborate/ProjectFormWidget')],
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
@@ -76,6 +78,8 @@ var config = {
     'assessments-admin': require(resolveApp('src/bundles/ApplicationsAdmin/AssessmentsAdmin.json')),
     'application-preview': require(resolveApp('src/bundles/SellerRegistration/components/ApplicationPreview/ApplicationPreview.json')),
     'search': require(resolveApp('src/bundles/Search/components/Catalogue/Catalogue.json')),
+      'project-view': require(resolveApp('src/bundles/Collaborate/components/ProjectView/ProjectView.json')),
+      'project-form': require(resolveApp('src/bundles/Collaborate/components/ProjectForm/ProjectForm.json')),
   }
 };
 

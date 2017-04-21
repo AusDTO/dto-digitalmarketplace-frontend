@@ -1,10 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Icon} from 'leaflet'
+
+
 import 'd3';
 import C3Chart from 'react-c3js';
 import 'c3/c3.css';
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
+if (typeof window !== 'undefined') {
+var leaflet = require('leaflet');
+var react_leaflet = require('react-leaflet');
+}
 
 
 import './Landing.css'
@@ -14,10 +18,27 @@ class Landing extends React.Component {
     render() {
         const position = [-35.25, 149.25];
         const bounds = [[-20.133, 148.000], [-40.050, 132.467]];
-        const icon = new Icon({
-            iconUrl: 'http://www.googlemapsmarkers.com/v1/009900/',
-            iconSize: [21, 34], // size of the icon
-        });
+        let map;
+        if (leaflet && react_leaflet)
+        {
+            const icon = new leaflet.Icon({
+                iconUrl: 'http://www.googlemapsmarkers.com/v1/009900/',
+                iconSize: [21, 34], // size of the icon
+            });
+            map = (<react_leaflet.Map bounds={bounds} scrollWheelZoom={false}>
+                <react_leaflet.TileLayer
+                    url='http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg'
+                    attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+                />
+                <react_leaflet.Marker icon={icon} position={position}>
+                    <react_leaflet.Popup>
+                        <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+                    </react_leaflet.Popup>
+                </react_leaflet.Marker>
+            </react_leaflet.Map>)
+        } else {
+            map = (<span>no map</span>)
+        }
         var domains =
             ["Strategy and policy", "User research and design", "Agile delivery and governance", "Software engineering and development", "Support and operations", "Content and publishing", "Change, training and transformation", "Marketing, communications and engagement", "Cyber security", "Data science", "Emerging technologies"]
         return (
@@ -31,18 +52,8 @@ class Landing extends React.Component {
                     height: '580px', width: "100%", position: "absolute",
                     left: 0
                 }}>
+                    { map }
 
-                    <Map bounds={bounds} scrollWheelZoom={false}>
-                        <TileLayer
-                            url='http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg'
-                            attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
-                        />
-                        <Marker icon={icon} position={position}>
-                            <Popup>
-                                <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-                            </Popup>
-                        </Marker>
-                    </Map>
                     <div style={{
                         position: "absolute",
                         background: "white",
@@ -56,7 +67,7 @@ class Landing extends React.Component {
                         <span className="see-more">48</span> projects<br/>
                         <br/>
                         <div>
-                        <a href="#z" role="button">Add your councils project</a><br/>
+                        <a href="/collaborate/project/new" role="button">Add your councils project</a><br/>
                         </div>
                     </div>
                 </div>
@@ -225,7 +236,7 @@ class Landing extends React.Component {
 
 
                 <h2 style={{textAlign: "center"}}> Timeline</h2>
-                <ul className="list-vertical--thirds">
+                <ul className="list-vertical--fourths">
                     <li>
                         <article>
                             <h3>
