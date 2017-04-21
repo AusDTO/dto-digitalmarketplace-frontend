@@ -9,6 +9,9 @@ import classNames from 'classnames';
  * TODO:
  * Generate query string for each action below.
  */
+const handlePageScroll = () => {
+  typeof window !== 'undefined' ? window.scrollTo(0, 250) : '';
+}
 
 const Pagination = ({ page, pages, pageCount, onClick, onNext, onBack }) => (
   <div className="pagination">
@@ -27,6 +30,7 @@ const Pagination = ({ page, pages, pageCount, onClick, onNext, onBack }) => (
         { page - 1 > 0 && (
           <a href="#next" onClick={(e) => {
               e.preventDefault();
+              handlePageScroll()
               onBack(page - 1);
           }}>&lt; Back</a>
         )}
@@ -51,6 +55,7 @@ const Pagination = ({ page, pages, pageCount, onClick, onNext, onBack }) => (
           {pg !== '...' ? (
             <a href="#pg" onClick={(e) => {
               e.preventDefault();
+              handlePageScroll()
               onClick(pg);
             }}>{pg}</a>
           ) : (
@@ -69,11 +74,10 @@ const Pagination = ({ page, pages, pageCount, onClick, onNext, onBack }) => (
         {page + 1 <= pageCount && (
           <a href="#next" onClick={(e) => {
               e.preventDefault();
+              handlePageScroll()
               onNext(page + 1);
           }}>Next &gt;</a>
         )}
-
-
       </ul>
     </div>
   </div>

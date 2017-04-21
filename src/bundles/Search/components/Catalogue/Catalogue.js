@@ -19,10 +19,6 @@ import './Catalogue.css';
 
 export class Catalogue extends React.Component {
 
-  componentDidUpdate() {
-    window.scrollTo(0, 0)
-  }
-
   render() {
     const {actions, search = {}, pagination = {}} = this.props;
     const cards = search.view === 'sellers' ? search.results : search[search.view];
@@ -223,7 +219,6 @@ export class Catalogue extends React.Component {
                   </div> }
                 </div>
               )}
-
             </div>
           </article>
         </form>
