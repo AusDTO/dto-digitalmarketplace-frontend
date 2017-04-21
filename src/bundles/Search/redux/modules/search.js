@@ -24,7 +24,8 @@ const initialState = {
   products: [],
   casestudies: [],
   querying: false,
-  error: false
+  error: false,
+  user_role: ''
 }
 
 const statusCheck = (response) => {
