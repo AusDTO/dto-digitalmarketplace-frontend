@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { newline } from '../../../../helpers';
 
+import './ProjectView.css'
+
 class ProjectView extends React.Component {
   state = { showConfirm: false }
 
@@ -17,6 +19,8 @@ class ProjectView extends React.Component {
       title,
       opportunity,
       client,
+      referee_name,
+      referee_contact,
       supplier_name,
       supplier_url = null,
       approach,
@@ -24,6 +28,7 @@ class ProjectView extends React.Component {
       outcome,
       project_links,
       service,
+      stage,
       roles,
       meta,
       confirmButton = null,
@@ -49,40 +54,41 @@ class ProjectView extends React.Component {
           <div className="meta col-xs-12">
             <div className="row">
               <div className="col-xs-12 col-sm-7">
-                <p>by {supplier_url ? <a href={supplier_url}>{supplier_name}</a> : supplier_name}</p>
+                <p>by {client}</p>
               </div>
-              {meta && (
+              {meta && false && (
                 <div className="col-xs-12 col-sm-5 actions">
-                  <a href={meta.editLink}>Edit case study</a>
+                  <a href={meta.editLink}>Edit project</a>
                   <button className="button-secondary" onClick={this.toggleConfirm.bind(this)}>Delete</button>
                 </div>
               )}
+
             </div>
           </div>
+
         </header>
         <div className="row">
-          <aside className="col-sm-3 col-xs-12">
-            <h4>Client</h4>
-            <p>{client}</p>
 
-            <h4>Timeframe</h4>
-            <p>{timeframe}</p>
+          <article role="main" className="col-sm-9 col-xs-12">
 
-            <h4>Area of expertise</h4>
-            <p>{service}</p>
-
-            <h4>Responsible for</h4>
-            <p>{roles}</p>
-          </aside>
-          <article role="main" className="col-sm-7 col-xs-12">
             <section>
-              <h2>Challenge</h2>
+              <h2>Council service</h2>
+              <p className="freetext">{service}</p>
+            </section>
+            <section>
+              <h2>Project Stage</h2>
+              <p className="freetext">{stage}</p>
+            </section>
+
+            <section>
+              <h2>Aim</h2>
               <p className="freetext">{newline(opportunity)}</p>
             </section>
             <section>
-              <h2>Approach</h2>
+              <h2>How it ran</h2>
               <p className="freetext">{newline(approach)}</p>
             </section>
+
             <section>
               <h2>Outcomes and benefits</h2>
               <ul>
@@ -104,6 +110,19 @@ class ProjectView extends React.Component {
               {returnLink}
             </div>
           </article>
+          <aside className="col-sm-3 col-xs-12">
+
+
+            <div styleName="tile">
+              <span>{client}</span>
+              <b>{referee_name}</b>
+
+              <a href={`mailto:${referee_contact}`} role="button">Email organiser</a>
+            </div>
+
+
+
+          </aside>
         </div>
       </section>
     )
@@ -114,6 +133,10 @@ ProjectView.propTypes = {
   title: PropTypes.string.isRequired,
   opportunity: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
+    referee_name: PropTypes.string.isRequired,
+    referee_contact: PropTypes.string.isRequired,
+  stage: PropTypes.string.isRequired,
+  service: PropTypes.string.isRequired,
   approach: PropTypes.string.isRequired,
   timeframe: PropTypes.string.isRequired,
   outcome: PropTypes.arrayOf(PropTypes.string).isRequired,

@@ -14,14 +14,14 @@ main .sidebar {
   margin-right: 1em;
 }
 
-header {
+/*header {
   border-bottom: 1px solid #cecece;
   padding-bottom: 35px;
 }
 
 header h2 {
   margin-bottom: 0;
-}
+}*/
 
 .project ul {
   list-style: none;
@@ -55,6 +55,7 @@ header h2 {
 }
 
 .tile a[role="button"] {
+  color: white;
   width: 100%;
   height: auto;
   margin: 0;

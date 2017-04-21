@@ -8,11 +8,13 @@ import { required, validLinks, validEmail } from '../../../../validators';
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
+import StatefulError from '../../../../shared/form/StatefulError';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 
+import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 class ProjectForm extends BaseForm {
 
@@ -92,10 +94,10 @@ class ProjectForm extends BaseForm {
               name="client"
               id="client"
               htmlFor="client"
-              label="Who was the client?"
+              label="Which council was involved?"
               validators={{ required }}
               messages={{
-                required: 'Client is required',
+                required: 'Council is required',
               }} />
 
             <Textfield
@@ -123,15 +125,123 @@ class ProjectForm extends BaseForm {
                     required: 'You must specify the your business\' role',
                 }} />
 
+            <fieldset>
+              <legend>Project stage?</legend>
+
+
+              <StatefulError
+                  model={`${model}.stage`}
+                  id="discovery"
+                  messages={{
+                      required: 'You must provide project stage'
+                  }}
+              />
+              <Control.radio
+                model={`${model}.stage`}
+                name="stage"
+                id="discovery"
+                value="Discovery"
+                validators={{
+                    required
+                }}/>
+              <label htmlFor="discovery">Discovery
+
+              </label>
+              <Control.radio
+                  model={`${model}.stage`}
+                  name="stage"
+                  id="pilot"
+                  value="Pilot"
+                  validators={{
+                      required
+                  }}/>
+              <label htmlFor="pilot">Alpha/Pilot
+
+              </label>
+              
+              <Control.radio
+                  model={`${model}.stage`}
+                  name="stage"
+                  id="live"
+                  value="Live"
+                  validators={{
+                      required
+                  }}/>
+              <label htmlFor="live">Live/Operational
+
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Council service?</legend>
+
+
+              <StatefulError
+                  model={`${model}.service`}
+                  id="animal"
+                  messages={{
+                      required: 'You must provide project service'
+                  }}
+              />
+              <Control.radio
+                  model={`${model}.service`}
+                  name="service"
+                  id="animal"
+                  value="Animal Management"
+                  validators={{
+                      required
+                  }}/>
+              <label htmlFor="animal">Animal Management
+
+              </label>
+
+                <Control.radio
+                    model={`${model}.service`}
+                    name="service"
+                    id="planning"
+                    value="Planning"
+                    validators={{
+                        required
+                    }}/>
+                <label htmlFor="planning">Planning
+
+                </label>
+
+                <Control.radio
+                model={`${model}.service`}
+                name="service"
+                id="community"
+                value="Community Services"
+                validators={{
+                    required
+                }}/>
+                <label htmlFor="community">Community Services
+
+                </label>
+
+                <Control.radio
+                    model={`${model}.service`}
+                    name="service"
+                    id="roads"
+                    value="Roads and parking"
+                    validators={{
+                        required
+                    }}/>
+                <label htmlFor="roads">Roads and parking
+
+                </label>
+
+            </fieldset>
+            
             <Textarea
               model={`${model}.opportunity`}
               name="opportunity"
               id="opportunity"
               controlProps={{ limit: 200 }}
-              label="Outline the problem or opportunity"
+              label="Outline the Aims"
               description="Describe the project goal and any relevant background information."
               messages={{
-                required: 'You must outline the opportunity'
+                required: 'You must outline the aims'
               }}
               validators={{ required }}
             />
@@ -141,10 +251,10 @@ class ProjectForm extends BaseForm {
               name="approach"
               id="approach"
               controlProps={{ limit: 200 }}
-              label="Describe your approach"
+              label="Describe how it ran"
               description="How did your capabilities and methods contribute to achieving the project goals?"
               messages={{
-                required: 'You must outline your approach'
+                required: 'You must outline how it ran'
               }}
               validators={{ required }}
             />
