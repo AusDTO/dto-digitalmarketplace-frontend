@@ -1,7 +1,11 @@
 import React from 'react'
 import RegisterComponent from '../../RegisterComponent'
+import { returnPath } from './helper'
 
-export const AuthWidget = (props) => {
+export const AuthWidget = (props, history) => {
+
+    const _path = returnPath(history);
+
     if (props.isAuthenticated) {
         return (
             <ul className="inline-links--inverted">
@@ -12,10 +16,10 @@ export const AuthWidget = (props) => {
     }
 
     return (
-        <ul className="inline-links--inverted">
-            <li><a href={props.registerUrl}>{props.registerText}</a></li>
-            <li><a href={props.loginUrl}>Sign in</a></li>
-        </ul>
+    <ul className="inline-links--inverted">
+        <li><a href={props.registerUrl}>{props.registerText}</a></li>
+        <li><a href={props.loginUrl.concat(_path)}>Sign in</a></li>
+    </ul>
     )
 }
 

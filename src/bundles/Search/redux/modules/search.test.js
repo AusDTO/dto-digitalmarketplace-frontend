@@ -31,7 +31,8 @@ test('reducer should return initial state', () => {
     view: 'sellers',
     products: [],
     casestudies: [],
-    error: false
+    error: false,
+    user_role: ''
   });
 });
 
@@ -53,7 +54,8 @@ test('should handle UPDATE_ROLE when role doesn\'t exist', () => {
     view: 'sellers',
     products: [],
     casestudies: [],
-    error: false
+    error: false,
+    user_role: ''
   };
 
   expect(reducer(undefined, action)).toEqual(expectedResult);
@@ -100,7 +102,8 @@ test('should handle UPDATE_TYPE when type doesn\'t exist', () => {
     view: 'sellers',
     products: [],
     casestudies: [],
-    error: false
+    error: false,
+    user_role: ''
   };
 
   expect(reducer(undefined, action)).toEqual(expectedResult);

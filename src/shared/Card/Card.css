@@ -11,6 +11,14 @@
   padding: 1rem 1.4rem 1rem 1.4rem;
 }
 
+.card h4 {
+  margin: 0 0 0.75rem;
+}
+
+.card h4 span {
+  border-bottom: solid 1px #5bcbe3;
+}
+
 .card h3 {
   margin: 0 0 0.75rem;
 }
@@ -35,11 +43,10 @@
 .services span {
   margin-right: 14px;
   margin-bottom: 10px;
-  padding: 3px;
+  padding: 3px 6px 3px 6px;
   font-size: 14px;
   border-radius: 2px;
   border: solid 1px #17788d;
-  white-space: nowrap;
   float: left;
 }
 
@@ -48,11 +55,10 @@
 }
 
 .product-links {
-  width: 145px;
-  height: 27.2px;
+  max-width: 390px;
   font-size: 16px;
   line-height: 1.7;
-  padding: 15px 0px 30px 0px;
+  padding: 15px 0px 15px 0px;
 }
 
 .product-link-item {
@@ -61,13 +67,14 @@
 }
 
 .author {
+  font-size: 14px;
   width: 650px;
   height: 25.2px;
   margin-bottom: 10px;
 }
 
 .author > a {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.58;
   text-align: left;
   color: #6e6e6e !important;
