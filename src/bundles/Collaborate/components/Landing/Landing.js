@@ -77,7 +77,7 @@ class Landing extends React.Component {
                 <ul className="list-vertical--fourths">
                     <li>
                         <figure>
-                            <img src="http://lorempixel.com/260/150/cats/" alt="cat" width="260" height="150"/>
+                            <img src="https://www.adelaidesmartcitystudio.com/site/assets/files/1025/proj-light.jpg" alt="cat" width="260" height="150"/>
                         </figure>
                         <article>
                             <h3>
@@ -88,7 +88,7 @@ class Landing extends React.Component {
                     </li>
                     <li>
                         <figure>
-                            <img src="http://lorempixel.com/260/150/cats/" alt="cat" width="260" height="150"/>
+                            <img src="https://www.adelaidesmartcitystudio.com/site/assets/files/1025/proj-light.jpg" alt="cat" width="260" height="150"/>
                         </figure>
                         <article>
                             <h3>
@@ -99,7 +99,7 @@ class Landing extends React.Component {
                     </li>
                     <li>
                         <figure>
-                            <img src="http://lorempixel.com/260/150/cats/" alt="cat" width="260" height="150"/>
+                            <img src="https://www.adelaidesmartcitystudio.com/site/assets/files/1025/proj-light.jpg" alt="cat" width="260" height="150"/>
                         </figure>
                         <article>
                             <h3>
@@ -110,7 +110,7 @@ class Landing extends React.Component {
                     </li>
                     <li>
                         <figure>
-                            <img src="http://lorempixel.com/260/150/cats/" alt="cat" width="260" height="150"/>
+                            <img src="https://www.adelaidesmartcitystudio.com/site/assets/files/1025/proj-light.jpg" alt="cat" width="260" height="150"/>
                         </figure>
                         <article>
                             <h3>

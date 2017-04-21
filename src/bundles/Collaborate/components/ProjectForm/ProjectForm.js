@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
-import get from 'lodash/get';
-import find from 'lodash/find';
-import startCase from 'lodash/startCase';
 
-import { required, validLinks, validPhoneNumber } from '../../../../validators';
+
+import { required, validLinks, validEmail } from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -14,10 +12,7 @@ import ErrorBox      from '../../../../shared/form/ErrorBox';
 import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
-import StatefulError from '../../../../shared/form/StatefulError';
-import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
-import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 
 class ProjectForm extends BaseForm {
 
@@ -48,38 +43,21 @@ class ProjectForm extends BaseForm {
       mode,
       form,
       buttonText,
-      service,
-      service_slug,
       children,
       onSubmit,
-      onSubmitFailed,
-      isAssessment
+      onSubmitFailed
     } = this.props;
 
     if (!buttonText) {
-      buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Case Study';
+      buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Project';
     }
 
     return (
       <Layout>
         <header>
-            {isAssessment ? (
-              <div className="callout--calendar-event">
-                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
-                <p>Before you can apply for this opportunity you need to provide a case study and reference that meets our <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.</p>
-                <p><b>If we can confirm your expertise before the opportunity closes we will invite you to apply.</b></p>
-                <p>If successful you can apply for {startCase(service)} opportunities in future without the need for further assessment.</p>
-              </div>
-            ) : (
-              <div className="callout--calendar-event">
-                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
-                <p id="header-description">
-                  Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
-                  You can update your case studies before an assessment begins.
-                  For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
-                </p>
-              </div>    
-            )}
+
+                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} project</h1>
+
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model} />
@@ -102,7 +80,7 @@ class ProjectForm extends BaseForm {
               name="title"
               id="title"
               htmlFor="title"
-              label="Give your case study a title"
+              label="Give your project a title"
               validators={{ required }}
               messages={{
                 required: 'Title is required',
@@ -190,13 +168,12 @@ class ProjectForm extends BaseForm {
               htmlFor="project_links"
               label="Project links (optional)"
               controlProps={{ defaultRows: 2 }}
-              description="Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http"
+              description="Link to any supporting material for your project. This can include a project on your website, project video or the live project. Links must begin with http"
               messages={{ validLinks: 'Links must begin with \'http\'' }}
               validators={{ validLinks }}
             />
 
             <h3>Referee</h3>
-            <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
 
             <Textfield
               model={`${model}.referee_name`}
@@ -225,11 +202,11 @@ class ProjectForm extends BaseForm {
                 name="refereeEmail"
                 id="refereeEmail"
                 htmlFor="refereeEmail"
-                label="Referee's phone number"
-                validators={{ required, validPhoneNumber }}
+                label="Referee's email"
+                validators={{ required, validEmail }}
                 messages={{
-                  required: 'Please provide a referee phone number.',
-                  validPhoneNumber: 'Referee phone number must be a valid phone number'
+                  required: 'Please provide a referee email address.',
+                  validEmail: 'Referee email address must be valid'
                 }}
             />
 
@@ -247,8 +224,7 @@ class ProjectForm extends BaseForm {
                 name="refereeContact"
                 validators={{ required }}
               />
-              <label htmlFor="refereeContact">I confirm my referee gives permission to be contacted
-                and have their information shared as part of the assessment led by the Digital Transformation Agency.
+              <label htmlFor="refereeContact">I confirm the above information is correct and will be publicly available on the Digital Marketplace
               </label>
             </div>
 
@@ -266,28 +242,10 @@ class ProjectForm extends BaseForm {
 
 const mapStateToProps = (state, ownProps) => {
   const { Project = {} } = state;
-
-  let service = ownProps.service;
-  let formName = ownProps.formName;
-  if (formName && !service) {
-    service = get(state, `${formName}.service`);
-  }
-
-  if (Project.service && !service ) {
-    service = Project.service;
-  }
-
-  let service_slug = '';
-  if (find(domains, {'label': service})) {
-      service_slug = find(domains, {'label': service})['key'];
-  }
-
+    let formName = ownProps.formName;
   return {
     returnLink: Project.returnLink,
-    isAssessment: Project.is_assessment,
     ...formProps(state, formName || 'projectForm'),
-    service,
-    service_slug,
     ...ownProps
   }
 }
