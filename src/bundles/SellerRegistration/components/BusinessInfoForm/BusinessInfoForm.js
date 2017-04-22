@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Form, Control} from 'react-redux-form';
+import {Form, Fieldset, Control, Errors} from 'react-redux-form';
 
 import Layout from '../../../../shared/Layout';
 
@@ -41,6 +41,9 @@ class BusinessInfoForm extends BaseForm {
                           component={SubmitForm}
                           onCustomSubmit={onSubmit}
                           onSubmitFailed={onSubmitFailed}
+                          validators={{
+                              'government_experience': ({government_experience}) => required(government_experience),
+                          }}
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
@@ -236,8 +239,16 @@ class BusinessInfoForm extends BaseForm {
 
                         </fieldset>
 
-                        <fieldset>
-                            <legend>Has your business worked with government before?</legend>
+                        <Fieldset model={`${model}.government_experience`}>
+                            <legend id="government_experience">Has your business worked with government before?</legend>
+
+                            <StatefulError
+                                model={`${model}.government_experience`}
+                                id="government_experience"
+                                messages={{
+                                    government_experience: 'You must answer "Has your business worked with government before?"'
+                                }}
+                            />
 
                             <Control.checkbox
                                 model={`${model}.government_experience.no_experience`}
@@ -275,7 +286,7 @@ class BusinessInfoForm extends BaseForm {
                                 value="international"/>
                             <label htmlFor="international">Yes, with government outside Australia</label>
 
-                        </fieldset>
+                        </Fieldset>
 
 
                         {children}
