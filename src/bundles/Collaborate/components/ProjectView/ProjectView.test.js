@@ -20,7 +20,7 @@ test('ProjectView with required attributes', () => {
 
 test('ProjectView with required attributes and meta links', () => {
   let state = Object.assign({}, sampleState);
-  state.casestudy.meta = {
+  state.project.meta = {
     editLink: 'link/to/edit',
     deleteLink: 'link/to/delete'
   };

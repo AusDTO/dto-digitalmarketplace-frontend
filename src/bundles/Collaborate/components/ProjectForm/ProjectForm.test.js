@@ -22,31 +22,26 @@ const generateFormValidilityState = (valid) => {
       mode: 'add',
       errors: []
     },
-    Project: {},
+    project: {},
     router: {}
   }
 }
 
 test('mapStateToProps', () => {
   const baseProps = {
-    formErrors: [], 
-    model: 'ProjectForm',
+    formErrors: [],
+    form: {},
+    model: 'projectForm',
     mode: 'add', 
     errors: [], 
     returnLink: void 0,
-    ProjectForm: void 0,
+    projectForm: void 0,
     router: {},
-    service: undefined,
-    service_slug: ""
   };
 
   let state = generateFormValidilityState(true);
   let props = mapStateToProps(state, { router: {} });
-  expect(props).toEqual(Object.assign({}, baseProps, { form: { valid: true } }));
-
-  state = generateFormValidilityState(false);
-  props = mapStateToProps(state, { router: {} });
-  expect(props).toEqual(Object.assign({}, baseProps, { form: { valid: false }}));
+  expect(props).toEqual(baseProps);
 });
 
 test('form renders server side with errors', () => {
@@ -71,7 +66,7 @@ test('form renders server side with errors', () => {
   )
 
   let errors = wrapper.find('.validation-message');
-  expect(errors.length).toBe(6);
+  expect(errors.length).toBe(13);
 })
 
 test('handleClick with formValid=false', () => {
@@ -86,13 +81,13 @@ test('handleClick with formValid=false', () => {
   )
 
   wrapper.find('input[type="submit"]').simulate('click')
-  expect(store.getState().forms.ProjectForm.$form.valid).toBeFalsy()
+  expect(store.getState().forms.projectForm.$form.valid).toBeFalsy()
 });
 
 
 test.skip('handleClick with formValid=true', () => {
   let state = Object.assign({}, sampleState);
-  state.ProjectForm.title = 'FooBar';
+  state.projectForm.title = 'FooBar';
 
   let store = createStore(Object.assign({}, { _serverContext: {} }, state))
   const history = createMemoryHistory();
@@ -110,7 +105,7 @@ test.skip('handleClick with formValid=true', () => {
 
 test.skip('handleClick when on last step', () => {
   let state = Object.assign({}, sampleState);
-  state.ProjectForm = Object.assign({}, state.ProjectForm, {
+  state.projectForm = Object.assign({}, state.projectForm, {
     title: 'FooBar',
     acknowledge: true,
     permission: true,
@@ -140,7 +135,7 @@ test('display assessment header', () => {
   let state = {
     form_options: {
     },
-    Project: {
+    project: {
         domain_id: 1,
         service: 'Data science',
         is_assessment: true
@@ -158,6 +153,6 @@ test('display assessment header', () => {
     </MemoryRouter>
   )
 
-  expect(wrapper.find('h1').text()).toBe('Have you got expertise in Data Science?');
+  expect(wrapper.find('h1').text()).toBe('Add project');
 });
 
