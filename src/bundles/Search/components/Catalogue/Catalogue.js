@@ -1,9 +1,9 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Autocomplete from 'react-autocomplete';
 import isEmpty from 'lodash/isEmpty';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import Card         from '../../../../shared/Card';
 import CheckboxList from '../../../../shared/CheckboxList';
@@ -12,24 +12,24 @@ import LocalNav     from '../../../../shared/LocalNav';
 
 import Pagination from '../Pagination';
 
-import { actionCreators as actions } from '../../redux/modules/search';
-import { actionCreators as paginationActions } from '../../redux/modules/pagination';
+import {actionCreators as actions} from '../../redux/modules/search';
+import {actionCreators as paginationActions} from '../../redux/modules/pagination';
 
 import './Catalogue.css';
 
 export class Catalogue extends React.Component {
 
-  render () {
-    const { actions, search = {}, pagination = {} } = this.props;
-
+  render() {
+    const {actions, search = {}, pagination = {}} = this.props;
     const cards = search.view === 'sellers' ? search.results : search[search.view];
+    let nullCaseStudies = search['casestudies'] === null && search.view === 'casestudies';
 
     return (
       <section>
         <form onSubmit={e => e.preventDefault()}>
           <article className="row">
             <div className="col-xs-12 col-sm-4">
-              <h2 styleName="heading">Seller catalogue</h2>
+              <h1 styleName="heading">Seller catalogue</h1>
             </div>
             <div className="col-xs-12 col-sm-8" styleName="autocomplete">
               <article styleName="keyword-search">
@@ -45,7 +45,7 @@ export class Catalogue extends React.Component {
                       placeholder: 'Search'
                     }}
                     items={search.results.slice(0, 10)}
-                    getItemValue={({ title }) => title}
+                    getItemValue={({title}) => title}
                     onSelect={(value, item) => actions.updateKeyword(value)}
                     onChange={(e, value) => actions.updateKeyword(value)}
                     renderItem={(item, isHighlighted) => (
@@ -64,7 +64,8 @@ export class Catalogue extends React.Component {
                       }
 
                       return (
-                        <div styleName="autocompleteMenu" style={{...style, position: 'absolute', display: 'none', left: 0, top: '53px'}}>
+                        <div styleName="autocompleteMenu"
+                             style={{...style, position: 'absolute', display: 'none', left: 0, top: '53px'}}>
                           {items}
                         </div>
                       )
@@ -72,8 +73,8 @@ export class Catalogue extends React.Component {
                   />
                 </article>
                 <article className="col-xs-2">
-                  <button type="submit" value="" style={{ border: 'none', backgroundColor: '#18788d', color: '#fff' }}>
-                    <Icon value="search" size={22} />
+                  <button type="submit" value="" style={{border: 'none', backgroundColor: '#18788d', color: '#fff'}}>
+                    <Icon value="search" size={22}/>
                   </button>
                 </article>
               </article>
@@ -83,20 +84,24 @@ export class Catalogue extends React.Component {
             <section className="col-xs-12 col-sm-4">
               <h4 className="local-nav-heading">Filter your results</h4>
               <LocalNav navClassName="filter-navigation" text="Filter your results">
-                <CheckboxList
-                  id="role"
-                  list={search.role}
-                  onChange={actions.updateRole}
-                />
-
-                <hr/>
-
-                <CheckboxList
-                  id="type"
-                  list={search.type}
-                  onChange={actions.updateType}
-                />
-
+                { search.view !== "products" &&
+                <div>
+                  <a href="/services" styleName="learn-services-link">Learn more about these services</a>
+                  <CheckboxList
+                    id="role"
+                    list={search.role}
+                    onChange={actions.updateRole}
+                  />
+                  <hr/>
+                </div>
+                }
+                <div styleName={search.view === 'products' ? 'product-type-checkbox' : 'typecheckbox'}>
+                  <CheckboxList
+                    id="type"
+                    list={search.type}
+                    onChange={actions.updateType}
+                  />
+                </div>
               </LocalNav>
             </section>
             <div className="col-xs-12 col-sm-8">
@@ -109,120 +114,121 @@ export class Catalogue extends React.Component {
                   }}>Reset and try again</Link>.</p>
                 </article>
               ) : (
-                  <div>
-                    <article styleName="filters" className="row">
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-7">
-                          <Link
-                            to={{ search: 'view=sellers' }}
-                            onClick={(e) => {
-                              e.preventDefault();
-
-                              if (pagination.page !== 1) {
-                                  actions.updatePage(1);
-                              }
-
-                              actions.updateView('sellers');
-                            }}
-                            styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination['sellers'].total}</span> Sellers
-                          </Link>
-                          <Link
-                            to={{ search: 'view=products' }}
-                            onClick={(e) => {
-                              e.preventDefault();
-
-                              if (pagination.page !== 1) {
-                                  actions.updatePage(1);
-                              }
-
-                              actions.updateView('products');
-                            }}
-                            styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination['products'].total}</span> Products
-                          </Link>
-                            {search['casestudies'] !== null  && <Link
-                            to={{ search: 'view=casestudies' }}
-                            onClick={(e) => {
-                              e.preventDefault();
-
-                              if (pagination.page !== 1) {
-                                  actions.updatePage(1);
-                              }
-
-                              actions.updateView('casestudies');
-                            }}
-                            styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
-                            <span>{pagination['casestudies'].total}</span> Case Studies
-                          </Link> }
-                        </div>
-
-                        <div className="col-xs-12 col-sm-5" styleName="sortBy">
-                          <fieldset>
-                            <legend>Sort by</legend>
-                            <div>
-                              <input
-                                type="radio"
-                                name="sort_by"
-                                id="sort-a-z"
-                                value="a-z"
-                                checked={search.sort_by === 'a-z'}
-                                onChange={actions.updateSort}
-                              />
-                              <label htmlFor="sort-a-z">A to Z</label>
-                            </div>
-
-                            <div>
-                              <input
-                                type="radio"
-                                name="sort_by"
-                                id="sort-latest"
-                                value="latest"
-                                checked={search.sort_by === 'latest'}
-                                onChange={actions.updateSort}
-                              />
-                              <label htmlFor="sort-latest">Newest</label>
-                            </div>
-                          </fieldset>
-                        </div>
-                      </div>
-                      <hr/>
-                    </article>
-                    {isEmpty(cards) ? (
-                        <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
-                          <h2>No exact matches</h2>
-                          <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
+                <div>
+                  <article styleName="filters" className="row">
+                    <div className="row">
+                      <div className="col-xs-12 col-sm-12">
+                        <Link
+                          to={{search: 'view=sellers'}}
+                          onClick={(e) => {
                             e.preventDefault();
-                            actions.resetQuery();
-                          }}>clear all and start again</Link>.</p>
-                        </article>
-                      ) :
-                    (<article>
-                      {cards.map((result, i) => (
-                        <Card {...result} key={i} />
-                      ))}
-                    </article>)}
 
+                            if (pagination.page !== 1) {
+                              actions.updatePage(1);
+                            }
+
+                            actions.updateView('sellers');
+                          }}
+                          styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
+                          <span>{pagination['sellers'].total}</span>Sellers
+                        </Link>
+                        <Link
+                          to={{search: 'view=products'}}
+                          onClick={(e) => {
+                            e.preventDefault();
+
+                            if (pagination.page !== 1) {
+                              actions.updatePage(1);
+                            }
+
+                            actions.updateView('products');
+                          }}
+                          styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
+                          <span>{pagination['products'].total}</span>Products
+                        </Link>
+                        <Link
+                          to={{search: 'view=casestudies'}}
+                          onClick={(e) => {
+                            e.preventDefault();
+
+                            if (pagination.page !== 1) {
+                              actions.updatePage(1);
+                            }
+
+                            actions.updateView('casestudies');
+                          }}
+                          styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
+                          <span>{pagination['casestudies'].total}</span>Case Studies
+                        </Link>
+                      </div>
+                    </div>
                     <hr/>
+                  </article>
+                  {!nullCaseStudies && isEmpty(cards) ? (
+                    <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
+                      <h2>No exact matches</h2>
+                      <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
+                        e.preventDefault();
+                        actions.resetQuery();
+                      }}>clear all and start again</Link>.</p>
+                    </article>
+                  ) :
+                    (
+                      <article>
+                        {(search.view === 'casestudies' && search.user_role === 'supplier') &&
+                        <div className="callout--info">
+                          Only registered government buyers can view sellers’ case studies.
+                        </div>
+                        }
 
+                        {(search.view === 'casestudies' && search['casestudies'] === null && search.user_role !== 'supplier') ?
+                          (<div styleName="case-study-signup">
+                            <div>
+                              <a href='/login?next=/search/sellers/?view=casestudies'>
+                                Sign in
+                              </a> with your buyer account to search seller case studies.
+                            </div>
+                            <div>
+                              New to the Marketplace? <a href="/signup">Create your account.</a>
+                            </div>
+                          </div>) :
+
+                          <div>
+                            {(search.user_role !== '' && !nullCaseStudies) &&
+                            cards.map((result, i) => (
+                              <Card
+                                {...result}
+                                view={search.view}
+                                key={i}
+                              />
+                            ))
+                            }
+                          </div>
+                        }
+                      </article>)}
+
+                  {!nullCaseStudies &&
+                  <div>
+                    <hr/>
                     <Pagination
                       {...pagination[search.view]}
                       onClick={actions.updatePage}
                       onBack={actions.updatePage}
                       onNext={actions.updatePage}
                     />
-                  </div>
+                  </div> }
+                </div>
               )}
-
             </div>
           </article>
         </form>
       </section>
     )
   }
-};
+}
+;
 
-export const mapStateToProps = ({ search, pagination }, ownProps) => {
+export const mapStateToProps = ({search, pagination}, ownProps) => {
   return {
     search,
     pagination
@@ -230,7 +236,7 @@ export const mapStateToProps = ({ search, pagination }, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ ...actions, ...paginationActions }, dispatch)
+  actions: bindActionCreators({...actions, ...paginationActions}, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);
