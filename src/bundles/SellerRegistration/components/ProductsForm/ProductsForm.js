@@ -209,6 +209,7 @@ const mapDispatchToProps = (dispatch) => {
           if(!some(Object.values(services))) {
             dispatch(applicationActions.navigateToStep('/domains'));
           } else {
+            dispatch(stepActions.stepComplete('products'))
             dispatch(applicationActions.navigateToStep('/review'));
           }
         }

@@ -194,7 +194,7 @@ export class Catalogue extends React.Component {
                           </div>) :
 
                           <div>
-                            {(search.user_role !== '' && !nullCaseStudies) &&
+                            {(!nullCaseStudies) &&
                             cards.map((result, i) => (
                               <Card
                                 {...result}
