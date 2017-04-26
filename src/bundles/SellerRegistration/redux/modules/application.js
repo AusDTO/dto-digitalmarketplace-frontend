@@ -95,10 +95,10 @@ export const validateCompletionStatus = (state, dispatch) => {
     dispatch(stepActions.stepClear('casestudy'))
   }
 
-  if (isEmpty(state.productsForm.products)) {
+  if (!some(Object.values(state.domainSelectorForm.services)) && isEmpty(state.productsForm.products)) {
     dispatch(stepActions.stepClear('products'))
   }
-}
+};
 
 export const navigateToStep = (to) => {
   return (dispatch, getState, {router}) => {
@@ -109,7 +109,7 @@ export const navigateToStep = (to) => {
     router.push(to);
     focusHeading();
   }
-}
+};
 
 export const stepNextPersist = (to, step) => {
   return (dispatch, getState, {router}) => {
