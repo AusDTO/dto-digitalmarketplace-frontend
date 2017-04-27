@@ -164,7 +164,7 @@ export class Catalogue extends React.Component {
                     </div>
                     <hr/>
                   </article>
-                  {!nullCaseStudies && isEmpty(cards) ? (
+                  {isEmpty(cards) ? (
                     <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                       <h2>No exact matches</h2>
                       <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
@@ -175,14 +175,11 @@ export class Catalogue extends React.Component {
                   ) :
                     (
                       <article>
-                        {(search.view === 'casestudies' && search.user_role === 'supplier') &&
-                        <div className="callout--info">
-                          Only registered government buyers can view sellers’ case studies.
-                        </div>
-                        }
-
-                        {(search.view === 'casestudies' && search['casestudies'] === null && search.user_role !== 'supplier') ?
+                        {(search.view === 'casestudies' && search.user_role !== 'buyer') ?
                           (<div styleName="case-study-signup">
+                            <div className="callout--info">
+                              Only registered government buyers can view sellers’ case studies.
+                            </div>
                             <div>
                               <a href='/login?next=/search/sellers/?view=casestudies'>
                                 Sign in
@@ -207,7 +204,7 @@ export class Catalogue extends React.Component {
                         }
                       </article>)}
 
-                  {!nullCaseStudies &&
+                  {!isEmpty(cards) &&
                   <div>
                     <hr/>
                     <Pagination

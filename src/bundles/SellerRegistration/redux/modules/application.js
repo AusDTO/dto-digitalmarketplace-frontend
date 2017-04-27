@@ -92,7 +92,7 @@ export const submitApplication = () => {
 // to incomplete
 export const validateCompletionStatus = (state, dispatch) => {
   if (some(Object.values(state.domainSelectorForm.services)) && isEmpty(state.caseStudyForm.case_studies)) {
-    dispatch(stepActions.stepClear('casestudy'))
+    //dispatch(stepActions.stepClear('casestudy'))
   }
 
   if (!some(Object.values(state.domainSelectorForm.services)) && isEmpty(state.productsForm.products)) {

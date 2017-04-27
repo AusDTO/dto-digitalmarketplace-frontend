@@ -1,5 +1,6 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
+import { replaceMarkup } from '../../helpers'
 
 import Badges from '../Badges';
 //import Icon from '../Icon';
@@ -11,7 +12,6 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
   badges = Object.assign({}, {product: !isEmpty(products)}, badges);
 
   return (
-
       <section className="card" styleName="card">
         <article>
           <h4>
@@ -30,7 +30,7 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
               <Badges badges={badges}/>
             </div>
           )}
-          <p styleName="description">{description}</p>
+          <p styleName="description">{replaceMarkup(description, '<b>', '<mark>')}</p>
           {view === "products" &&
           <div styleName="product-links">
             <div className="row">
