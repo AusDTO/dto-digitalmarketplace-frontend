@@ -222,17 +222,16 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business identifies as a LGBTQI enterprise. </p>
                             </label>
 
-                            <CheckboxDetailsField
+                            <Control.checkbox
                                 model={`${model}.seller_type.indigenous`}
-                                label={(
-                                    <span>Indigenous <p>Your business is at least 50% Indigenous owned and listed on <a
-                                        href="http://www.supplynation.org.au/search" rel="external" target="_blank">Supply Nation.</a></p></span>)}
-                                detailsLabel="Please add your Supply Nation certification number"
-                                detailsModel={`${model}.supply_nation`}
                                 id="indigenous"
                                 name="indigenous"
                                 value="Indigenous"
                             />
+                            <label htmlFor="indigenous">Indigenous
+                                <p>Your business is at least 50% Indigenous owned and listed on <a
+                                href="http://www.supplynation.org.au/search" rel="external" target="_blank">Supply Nation.</a></p>
+                            </label>
 
                         </fieldset>
 
