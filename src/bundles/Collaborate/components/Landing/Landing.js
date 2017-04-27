@@ -33,40 +33,38 @@ class Landing extends React.Component {
 
             function style(feature) {
                 return {
-                    fillColor: (has(cityData, feature.properties.LGA_NAME16) ? '#00ff00' : '#800026'),
-                    weight: 2,
+                    fillColor: (has(cityData, feature.properties.LGA_NAME16) ? "#5bcbe3" : '#f0f3f5'),
+                    weight: 1,
                     opacity: 1,
-                    color: 'white',
-                    dashArray: '3',
+                    color: '#555',
                     fillOpacity: 0.7
                 };
             }
 
             map = (<react_leaflet.Map bounds={bounds} scrollWheelZoom={false}>
                 <react_leaflet.TileLayer
-                    url='//tile.stamen.com/terrain/{z}/{x}/{y}.jpg'
-                    attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>,
-                    under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>.
-                    Data by <a href="http://openstreetmap.org">OpenStreetMap</a>,
-                    under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+                    url='//cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
+                    attribution='
+                    &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;
+        <a href="https://carto.com/attribution">CARTO</a>, &copy; Australian Bureau of Statistics (ABS) under <a href="http://creativecommons.org/licenses/by/2.5/au/">CC-BY 2.5</a>'
                 />
                 <react_leaflet.GeoJSON data={lgaData} style={style} onEachFeature={onEachFeature}/>
             </react_leaflet.Map>)
         } else {
-            map = (<span>no map</span>)
+            map = (<span></span>)
         }
-        var domains =
-            ["Strategy and policy", "User research and design", "Agile delivery and governance",
-                "Software engineering and development", "Support and operations", "Content and publishing",
-                "Change, training and transformation", "Marketing, communications and engagement", "Cyber security",
-                "Data science", "Emerging technologies"]
+        let domains =
+            ["Strategy and Policy", "User research and Design", "Agile delivery and Governance",
+                "Software engineering and Development",
+                "Change, training and transformation", "Marketing, Communications and Engagement", "Cyber security",
+                "Data science", "Emerging technologies"];
         return (
             <div>
 
-                <h1>Smart Cities and Suburbs program</h1>
-                <p>Improve the liveability, productivity and sustainability of Australian cities, suburbs and towns with grants of up to $5 million.</p>
+                <h1>Smart Cities</h1>
+                <p className="uikit-display-3">Improve the liveability, productivity and sustainability of Australian cities, suburbs and towns with grants of up to $5 million.</p>
 
-                <h2>Who is getting involved?</h2>
+
                 <div style={{
                     height: '580px', width: "100%", position: "absolute",
                     left: 0
@@ -82,19 +80,20 @@ class Landing extends React.Component {
                         padding: "16px",
                         border: "2px grey"
                     }}>
+                        <h3>Who is getting involved?</h3>
                         <span className="see-more">107</span> councils<br/>
                         <span className="see-more">48</span> projects<br/>
                         <br/>
                         <div>
-                            <a href="/collaborate/project/new" role="button">Add a council project</a><br/>
+                            <a href="/collaborate/project/new" role="button">Add a Smart City project</a><br/>
                         </div>
                     </div>
                 </div>
                 <div style={{
                     height: '400px'
                 }}></div>
-                <h2>What types of initiatives are eligible?</h2>
-                <p>See indicative examples that may be eligible for funding under round one of the program. Activities should align with one or more of the <a href="#z" rel="external" target="blank">four program priority areas.</a></p>
+                <h2 style={{textAlign: "center"}}>From ideas to implementation</h2>
+                <p style={{textAlign: "center"}}>See indicative examples that may be eligible for funding under round one of the program.<br/> Activities should align with one or more of the <a href="#z" rel="external" target="blank">four program priority areas.</a></p>
                 <ul className="list-vertical--fourths">
                     <li>
                         <figure>
@@ -105,7 +104,8 @@ class Landing extends React.Component {
                             <h3>
                                 <a href="#z">Smart City Lighting Pilot</a>
                             </h3>
-                            <p>By Adelaide City Council</p>
+                            <p>Adelaide City Council</p>
+                            Getting Started
                         </article>
                     </li>
                     <li>
@@ -117,7 +117,8 @@ class Landing extends React.Component {
                             <h3>
                                 <a href="#z">Smart City Lighting Pilot</a>
                             </h3>
-                            <p>By Adelaide City Council</p>
+                            <p>Adelaide City Council</p>
+                            Discovery
                         </article>
                     </li>
                     <li>
@@ -129,7 +130,8 @@ class Landing extends React.Component {
                             <h3>
                                 <a href="#z">Smart City Lighting Pilot</a>
                             </h3>
-                            <p>By Adelaide City Council</p>
+                            <p>Adelaide City Council</p>
+                            Pilot
                         </article>
                     </li>
                     <li>
@@ -141,7 +143,8 @@ class Landing extends React.Component {
                             <h3>
                                 <a href="#z">Smart City Lighting Pilot</a>
                             </h3>
-                            <p>By Adelaide City Council</p>
+                            <p>Adelaide City Council</p>
+                            Live
                         </article>
                     </li>
                 </ul>
@@ -162,21 +165,22 @@ class Landing extends React.Component {
                                         <time dateTime="2017-05-05">Friday <span>5</span> May</time>
                                     </th>
                                     <td>Fast-start induction
-                                        <span className="date-info">Webinar</span>
+                                        <span className="date-info">Getting started with Future Ready <br/> <a href="https://www.eventbrite.com.au/e/future-ready-webinar-series-welcome-session-tickets-33967354271" rel="external" target="blank">Register for Webinar</a></span>
+
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-11">Thursday <span>11</span> May</time>
                                     </th>
-                                    <td>Global smart city perspectives <span className="date-info">Webinar</span>
+                                    <td>Global smart city perspectives <span className="date-info">Learn from international smart cities<br/> <a href="https://www.eventbrite.com.au/e/future-ready-webinar-series-session-2-tickets-33978417361" rel="external" target="blank">Register for Webinar</a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-17">Wednesday <span>17</span> May</time>
                                     </th>
-                                    <td>Masterclass <span className="date-info">Brisbane</span>
+                                    <td>Masterclass <span className="date-info">Get Smart Cities skills and tools <br/> <a href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-brisbane-tickets-33484479981" rel="external" target="blank">Register for Brisbane Workshop</a></span>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -191,21 +195,21 @@ class Landing extends React.Component {
                                     <th scope="row">
                                         <time dateTime="2017-05-18">Thursday <span>18</span> May</time>
                                     </th>
-                                    <td>A conversation with ...<span className="date-info">Webinar</span>
+                                    <td>A conversation with ...<span className="date-info">Learn from national and international smart city experts</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-22">Monday <span>22</span> May</time>
                                     </th>
-                                    <td>Masterclass <span className="date-info">Sydney</span>
+                                    <td>Masterclass <span className="date-info">Get Smart Cities skills and tools <br/> <a href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-sydney-tickets-33881032079" rel="external" target="blank">Register for Sydney Workshop</a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-29">Monday <span>29</span> May</time>
                                     </th>
-                                    <td>Co-learning lab<span className="date-info">Adelaide</span>
+                                    <td>Co-learning lab<span className="date-info">Learn, collaborate and create <br/> <a href="http://ascaconference.org.au/future-ready" rel="external" target="blank">Register for Adelaide Workshop</a></span>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -219,17 +223,34 @@ class Landing extends React.Component {
                 <p> Eligible projects must involve at least one local government agency or body, and <a href="https://marketplace.service.gov.au/search/sellers">one private sector organisation</a> during the life of the project.</p>
 
                 <C3Chart size={{height: 470}}
+                         oninit={function() {
+                d3.selectAll('.tick')
+                    .on('click', function(value,index){
+                        let domains =
+                            ["Strategy and Policy", "User research and Design", "Agile delivery and Governance",
+                                "Software engineering and Development",
+                                "Change, training and transformation", "Marketing, Communications and Engagement", "Cyber security",
+                                "Data science", "Emerging technologies"];
+                        window.location = "/search/sellers/?role="+domains[index];
+                    });
+            }}
                          data={{
-                             columns: [["unsubmitted", 178, 216, 239, 242, 143, 120, 191, 121, 123, 105, 151], ["completed", 104, 92, 106, 123, 80, 69, 80, 68, 53, 58, 63]],
+                             columns: [["completed", 104, 92, 106, 123, 80, 68, 53, 58, 63]],
                              type: 'bar',
-                             groups: [["unsubmitted", "completed"]],
+                             groups: [["completed"]],
                              colors: {
-                                 completed: '#224a61',
-                                 unsubmitted: '#5BCBE3'
+                                 completed: '#224a61'
                              },
-                             labels: true,
-                             onmouseover: function (d) {
-                                 this.focus(d.id);
+                             labels: {
+                                 format: function (v, id) {
+                                     if (v === null) {
+                                         return 'Not Applicable';
+                                     }
+                                     return v+" businesses";
+                                 }
+                             },
+                             onclick: function (d) {
+                                 window.location = "/search/sellers/?role="+this.internal.axis.getXAxisTickFormat()(d.x);
                              }
                          }}
                          legend={{
@@ -249,11 +270,7 @@ class Landing extends React.Component {
                                      fit: true,
                                      culling: false,
                                      format: function (x) {
-                                         /* if (domains[x].length > (window.innerWidth < 768 ? 10 : 15)) {
-                                          return (" " + domains[x]).substr(0, (window.innerWidth < 768 ? 10 : 15)) + '…';
-                                          } else {*/
                                          return domains[x];
-                                         //å}
                                      }
                                  }
                              }
@@ -289,7 +306,7 @@ class Landing extends React.Component {
                         </article>
                     </li>
                 </ul>
-
+                <h2 style={{textAlign: "center"}}>For questions and support about the smart cities program: <a href="tel:132846" rel="external" target="blank">13 28 46</a></h2>
             </div>
         )
     }
