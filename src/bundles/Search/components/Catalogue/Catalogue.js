@@ -164,7 +164,7 @@ export class Catalogue extends React.Component {
                     </div>
                     <hr/>
                   </article>
-                  {isEmpty(cards) ? (
+                  {(isEmpty(cards) && pagination.casestudies.total === 0) ? (
                     <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                       <h2>No exact matches</h2>
                       <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
