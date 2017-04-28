@@ -1,0 +1,25 @@
+.uikit-display-3 {
+    margin-top: 1.6em;
+    font-weight: normal;
+    font-family: "Open Sans",Verdana,"Bitstream Vera Sans",sans-serif;
+    color: #313131;
+    display: block;
+    line-height: 1.4;
+    margin: 0 0 .5em 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.tile {
+    border: 1px solid #bebebe;
+}
+
+.stage{
+    margin-right: 14px;
+    margin-bottom: 10px;
+    padding: 3px 6px 3px 6px;
+    font-size: 14px;
+    border-radius: 2px;
+    border: solid 1px #17788d;
+    float: left;
+}
