@@ -20,11 +20,7 @@ const filterSteps = (step) => {
 };
 
 test('Signup renders', () => {
-  let store = createStore({
-    options: {
-      submit_registration: true
-    }
-  })
+  let store = createStore();
 
   const history = createMemoryHistory({
     initialEntries: ['/start'],
@@ -45,13 +41,10 @@ test('Signup renders', () => {
 
 test('Signup renders empty Your Info form', () => {
   let store = createStore({
-    options: {
-      submit_registration: true
-    },
     form_options: {
       action: void 0
     }
-  })
+  });
 
   const history = createMemoryHistory({
     initialEntries: ['/your-info'],
@@ -72,11 +65,7 @@ test('Signup renders empty Your Info form', () => {
 
 test('Signup renders populated Your Info form', () => {
   delete sampleState.basename;
-  let store = createStore(Object.assign({
-    options: {
-      submit_registration: true
-    }
-  }, sampleState))
+  let store = createStore(sampleState);
 
   const history = createMemoryHistory({
     initialEntries: ['/your-info'],
