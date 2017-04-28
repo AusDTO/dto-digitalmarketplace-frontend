@@ -8,6 +8,7 @@
     margin: 0 0 .5em 0;
     font-size: 24px;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .tile {
@@ -22,4 +23,14 @@
     border-radius: 2px;
     border: solid 1px #17788d;
     float: left;
+}
+.bar {
+    background: #224a61;
+    padding: 16px 8px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    display: block;
+}
+a.bar {
+    color: white;
 }
