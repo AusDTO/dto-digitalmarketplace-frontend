@@ -71,7 +71,7 @@ var loaders = [
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
         loader: 'file',
         query: {
-          name: 'static/media/[name].[hash:8].[ext]'
+          name: 'static/media/[name].[ext]'
         }
       },
       // "url" loader works just like "file" loader but it also embeds
