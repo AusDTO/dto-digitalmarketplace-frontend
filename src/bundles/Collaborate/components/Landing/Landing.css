@@ -11,6 +11,12 @@
     padding-bottom: 20px;
 }
 
+.pop {
+    font-size: 24px;
+    color: #18788d;
+    padding-right: 6px;
+}
+
 .tile {
     border: 1px solid #bebebe;
 }
@@ -24,13 +30,36 @@
     border: solid 1px #17788d;
     float: left;
 }
-.bar {
-    background: #224a61;
-    padding: 16px 8px;
-    margin-bottom: 6px;
-    font-weight: bold;
-    display: block;
+@media only screen and (min-device-width: 768px) {
+    .chart {
+        background: #e0e3e5;
+        margin-bottom: 24px;
+    }
+    .chart span {
+        border-radius: 5px;
+    }
+    .chartContainer {
+        width: 75%;
+        margin-left: 12.5%;
+    }
 }
-a.bar {
+.chart {
+    padding: 4px 5px;
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+}
+.chart:link, .chart:visited, .chart:active {
     color: white;
+}
+.chart span {
+    background: #17788d;
+    padding: 7px 10px;
+    display: block;
+    border: solid 1px #224a61;
+}
+.chart:hover span, .chart:focus span {
+    background: #def4f9;
+    color: black;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
 }
