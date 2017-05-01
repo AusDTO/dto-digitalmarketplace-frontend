@@ -66,7 +66,7 @@ test('form renders server side with errors', () => {
   )
 
   let errors = wrapper.find('.validation-message');
-  expect(errors.length).toBe(13);
+  expect(errors.length).toBe(8);
 })
 
 test('handleClick with formValid=false', () => {

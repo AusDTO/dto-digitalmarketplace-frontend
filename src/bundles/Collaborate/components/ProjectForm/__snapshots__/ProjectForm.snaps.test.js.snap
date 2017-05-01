@@ -2886,7 +2886,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value="The Client Name"
         />
       </div>
       <div
@@ -2918,7 +2918,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value="January 2016 — June 2016"
         />
       </div>
       <div
@@ -3101,7 +3101,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue="The opportunity"
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -3111,7 +3111,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <span
             className="word-count-counter"
           >
-            200 words remaining
+            198 words remaining
           </span>
         </div>
       </div>
@@ -3134,7 +3134,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue="The approach"
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -3144,7 +3144,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <span
             className="word-count-counter"
           >
-            200 words remaining
+            198 words remaining
           </span>
         </div>
       </div>
@@ -3179,7 +3179,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
               <input
                 aria-describedby="outcome-hint"
                 className="text-box "
-                defaultValue=""
+                defaultValue="Outcome 1"
                 id="outcome-0"
                 name="outcome[]"
                 onBlur={[Function]}
@@ -3205,7 +3205,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
               <input
                 aria-describedby="outcome-hint"
                 className="text-box "
-                defaultValue=""
+                defaultValue="Outcome 2"
                 id="outcome-1"
                 name="outcome[]"
                 onBlur={[Function]}
