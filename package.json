@@ -78,7 +78,7 @@
     "react-leaflet": "^1.1.6",
     "react-redux": "5.0.2",
     "react-redux-form": "1.5.3",
-    "react-router-dom": "next",
+    "react-router-dom": "^4.1.1",
     "redux": "3.6.0",
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "2.1.0",

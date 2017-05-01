@@ -79,3 +79,7 @@
   text-align: left;
   color: #6e6e6e !important;
 }
+
+.uikit-body mark {
+  background-color: rgba(250,194,102,0.5)
+}
