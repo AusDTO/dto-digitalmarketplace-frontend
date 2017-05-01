@@ -23,6 +23,7 @@ export class Catalogue extends React.Component {
     const {actions, search = {}, pagination = {}} = this.props;
     const cards = search.view === 'sellers' ? search.results : search[search.view];
     let nullCaseStudies = search['casestudies'] === null && search.view === 'casestudies';
+    let returnOnSignInURL = buildNextURL(search);
 
     return (
       <section>
@@ -164,7 +165,24 @@ export class Catalogue extends React.Component {
                     </div>
                     <hr/>
                   </article>
-                  {(isEmpty(cards) && pagination.casestudies.total === 0) ? (
+                  {(search.view === 'casestudies' && search.user_role === 'supplier') ? (
+                    <div className="callout--info">
+                      Only registered government buyers can view sellers’ case studies.
+                    </div>
+                  ) :
+                    (search.view === 'casestudies' && search.user_role === null) ? (
+                      <div styleName="case-study-signup">
+                        <div>
+                          <a href={returnOnSignInURL}>
+                            Sign in
+                          </a> with your buyer account to search seller case studies.
+                        </div>
+                        <div>
+                          New to the Marketplace? <a href="/signup">Create your account.</a>
+                        </div>
+                      </div>
+                    ) :
+                    (isEmpty(cards) && pagination.casestudies.total === 0) ? (
                     <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
                       <h2>No exact matches</h2>
                       <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
@@ -175,13 +193,10 @@ export class Catalogue extends React.Component {
                   ) :
                     (
                       <article>
-                        {(search.view === 'casestudies' && search.user_role !== 'buyer') ?
+                        {(search.view === 'casestudies' && search.user_role === null) ?
                           (<div styleName="case-study-signup">
-                            <div className="callout--info">
-                              Only registered government buyers can view sellers’ case studies.
-                            </div>
                             <div>
-                              <a href='/login?next=/search/sellers/?view=casestudies'>
+                              <a href={returnOnSignInURL}>
                                 Sign in
                               </a> with your buyer account to search seller case studies.
                             </div>
@@ -191,7 +206,7 @@ export class Catalogue extends React.Component {
                           </div>) :
 
                           <div>
-                            {(!nullCaseStudies) &&
+                            {(!nullCaseStudies && typeof cards !== 'undefined') &&
                             cards.map((result, i) => (
                               <Card
                                 {...result}
@@ -222,8 +237,31 @@ export class Catalogue extends React.Component {
       </section>
     )
   }
+};
+
+const buildNextURL = ({role, type, keyword}) => {
+  role = role || {};
+  type = type || {};
+  keyword = ((keyword === '' || typeof keyword === 'undefined' || keyword === null) ?
+    '' : '&keyword=' + keyword.replace(/ /g, '&'));
+
+  let baseNextURL = '/login?next=/search/sellers?view=casestudies';
+  let roleString = '';
+  let typeString = '';
+
+  for(let i=0; i<Object.keys(role).length; i++) {
+    if(Object.values(role)[i]) {
+      roleString = roleString.concat('&role=',Object.keys(role)[i])
+    }
+  }
+
+  for(let i=0; i<Object.keys(type).length; i++) {
+    if(Object.values(type)[i]) {
+      typeString = typeString.concat('&type=',Object.keys(type)[i])
+    }
+  }
+  return baseNextURL.concat(roleString, typeString, keyword).replace(/&/g, '%26')
 }
-;
 
 export const mapStateToProps = ({search, pagination}, ownProps) => {
   return {
