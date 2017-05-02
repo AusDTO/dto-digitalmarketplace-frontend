@@ -14,6 +14,7 @@ if (typeof window !== 'undefined') {
 import styles from './Landing.css'
 import lgaData from './LGA_2016_AUST.geo5.json';
 import cityData from './citydata.json';
+import supplierData from './suppliers.geo.json';
 
 class Landing extends React.Component {
 
@@ -29,7 +30,13 @@ class Landing extends React.Component {
                     layer.bindPopup(cityData[feature.properties.LGA_NAME16]);
                 }
             }
-
+            const icon = new leaflet.Icon({
+                iconUrl: 'http://www.googlemapsmarkers.com/v1/18788d/',
+                iconSize: [21, 34], // size of the icon
+            });
+            function pointToLayer (feature, latlng) {
+                return leaflet.marker(latlng, {icon: icon });
+            }
             function style(feature) {
                 return {
                     fillColor: (has(cityData, feature.properties.LGA_NAME16) ? "#5bcbe3" : '#f0f3f5'),
@@ -47,22 +54,31 @@ class Landing extends React.Component {
                     &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;
         <a href="https://carto.com/attribution">CARTO</a>, &copy; Australian Bureau of Statistics (ABS) under <a href="http://creativecommons.org/licenses/by/2.5/au/">CC-BY 2.5</a>'
                 />
+                <react_leaflet.GeoJSON data={supplierData} icon={icon} onEachFeature={onEachFeature} pointToLayer={pointToLayer}/>
                 <react_leaflet.GeoJSON data={lgaData} style={style} onEachFeature={onEachFeature}/>
             </react_leaflet.Map>)
         } else {
             map = (<span></span>)
         }
         let domains =
-            {"User research and Design": 92, "Strategy and Policy": 104,  "Agile delivery and Governance": 106,
+            {
+                "User research and Design": 92,
+                "Strategy and Policy": 104,
+                "Agile delivery and Governance": 106,
                 "Software engineering and Development": 123,
-                "Change, training and transformation": 80, "Marketing, Communications and Engagement": 68, "Cyber security": 53,
-                "Data science":58, "Emerging technologies":63};
+                "Change, Training and Transformation": 80,
+                "Marketing, Communications and Engagement": 68,
+                "Cyber security": 53,
+                "Data science": 58,
+                "Emerging technologies": 63
+            };
         let maxDomain = 123;
         return (
             <div className="landing">
 
                 <h1 style={{textAlign: "center"}}>Smart cities</h1>
-                <p styleName="styles.uikit-display-3">Connect and collaborate to improve the liveability, <br/> productivity and sustainability of Australian communities.</p>
+                <p styleName="styles.uikit-display-3">Connect and collaborate to improve the liveability, <br/>
+                    productivity and sustainability of Australian communities.</p>
 
 
                 <div style={{
@@ -80,7 +96,8 @@ class Landing extends React.Component {
                         padding: "16px",
                         border: "2px grey"
                     }}>
-                        <strong styleName="styles.pop" style={{color: '#5bcbe3'}}>107</strong> Future Ready councils<br/>
+                        <strong styleName="styles.pop" style={{color: '#5bcbe3'}}>106</strong> Future Ready
+                        councils<br/>
                         <strong styleName="styles.pop">334</strong> Marketplace sellers<br/>
                     </div>
                 </div>
@@ -89,22 +106,10 @@ class Landing extends React.Component {
                 }}></div>
                 <h2 style={{textAlign: "center"}}>Council collaboration</h2>
                 <p style={{textAlign: "center"}}>Connect and learn from councils building smart communities<br/>
-                    and digital services in user-centred, data driven ways.</p>
+                    and digital services in user-centred, data informed ways.</p>
                 <ul className="list-vertical--fourths">
-                    <li style={{ border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
-                        <figure>
-                            <img src="/static/media/smart_lighting_adelaide.jpg"
-                                 alt="" width="260" height="150"/>
-                        </figure>
-                        <article style={{padding: "10px"}}>
-                            <h3>
-                                <a href="/collaborate/project/1">Smart City Lighting Pilot</a>
-                            </h3>
-                            <p style={{  color: "#717171",fontSize: "87.5%", marginBottom: 0}}>Adelaide City Council</p>
-                            <span styleName="styles.stage">Idea</span>
-                        </article>
-                    </li>
-                    <li style={{ border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                    <div style={{flex: "0 0 11%"}}></div>
+                    <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
                         <figure>
                             <img src="/static/media/asset_management_casey.jpg"
                                  alt="" width="260" height="150"/>
@@ -113,11 +118,11 @@ class Landing extends React.Component {
                             <h3>
                                 <a href="/collaborate/project/2">Finding value in data</a>
                             </h3>
-                            <p style={{  color: "#717171",fontSize: "87.5%", marginBottom: 0}}>City of Casey Council</p>
+                            <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>City of Casey Council</p>
                             <span styleName="styles.stage">Discovery</span>
                         </article>
                     </li>
-                    <li style={{ border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                    <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
                         <figure>
                             <img src="/static/media/smart_lighting_adelaide.jpg"
                                  alt="" width="260" height="150"/>
@@ -126,39 +131,42 @@ class Landing extends React.Component {
                             <h3>
                                 <a href="/collaborate/project/3">Smart City Lighting Pilot</a>
                             </h3>
-                            <p style={{  color: "#717171",fontSize: "87.5%", marginBottom: 0}}>Adelaide City Council</p>
+                            <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Adelaide City Council</p>
                             <span styleName="styles.stage">Pilot</span>
                         </article>
                     </li>
-                    <li style={{ border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                    <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
                         <figure>
-                            <img src="/static/media/smart_parking_act.jpg"
+                            <img src="/static/media/sunshine_coast_automated_waste.jpg"
                                  alt="" width="260" height="150"/>
                         </figure>
                         <article style={{padding: "10px"}}>
                             <h3>
-                                <a href="/collaborate/project/4">Smart Parking</a>
+                                <a href="/collaborate/project/1">Automated underground waste collection</a>
                             </h3>
-                            <p style={{  color: "#717171",fontSize: "87.5%", marginBottom: 0}}>ACT Government</p>
-                            <span styleName="styles.stage">Live</span>
+                            <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Sunshine Coast Council</p>
+                            <span styleName="styles.stage">In build</span>
                         </article>
                     </li>
+
+                    <div style={{flex: "0 0 11%"}}></div>
                 </ul>
-                <p style={{textAlign: "center"}}> <a href="/collaborate/project/new" role="button">Add a project</a></p>
+                <p style={{textAlign: "center"}}><a href="/collaborate/project/new" role="button">Add a project</a></p>
 
                 <h2 style={{textAlign: "center"}}> Build smart city know how</h2>
-               <p style={{textAlign: "center"}}> The Future Ready series brings people together to work through <br/>urban challenges, take ideas forward and learn from each other.</p>
+                <p style={{textAlign: "center"}}> The Future Ready series brings people together to work through <br/>urban
+                    challenges, take ideas forward and learn from each other.</p>
                 <ul className="list-vertical">
                     <li style={{borderTop: "0"}}>
                         <article>
-                            <table className="calendar-table" style={{marginTop:0}}>
+                            <table className="calendar-table" style={{marginTop: 0}}>
                                 <tbody>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-05">Friday <span>5</span> May</time>
                                     </th>
                                     <td>Fast-start induction
-                                        <span className="date-info">Getting started with Future Ready. <br/> <a href="https://www.eventbrite.com.au/e/future-ready-webinar-series-welcome-session-tickets-33967354271" rel="external" target="blank">Register for Webinar</a></span>
+                                        <span className="date-info">Getting started with Future Ready. <br/> <i>Fully Booked</i></span>
 
                                     </td>
                                 </tr>
@@ -166,21 +174,27 @@ class Landing extends React.Component {
                                     <th scope="row">
                                         <time dateTime="2017-05-11">Thursday <span>11</span> May</time>
                                     </th>
-                                    <td>Global smart city perspectives <span className="date-info">Learn from international smart cities.<br/> <a href="https://www.eventbrite.com.au/e/future-ready-webinar-series-session-2-tickets-33978417361" rel="external" target="blank">Register for Webinar</a></span>
+                                    <td>Global smart city perspectives <span className="date-info">Learn from international smart cities.<br/> <a
+                                        href="https://www.eventbrite.com.au/e/future-ready-webinar-series-session-2-tickets-33978417361"
+                                        rel="external" target="blank">Register for webinar</a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-17">Wednesday <span>17</span> May</time>
                                     </th>
-                                    <td>Brisbane Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-brisbane-tickets-33484479981" rel="external" target="blank">Register for workshop</a></span>
+                                    <td>Brisbane Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
+                                        href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-brisbane-tickets-33484479981"
+                                        rel="external" target="blank">Register for workshop</a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-18">Thursday <span>18</span> May</time>
                                     </th>
-                                    <td>A conversation with ...<span className="date-info">Learn from national and international smart city experts.</span>
+                                    <td>A conversation with ...<span className="date-info">Learn from national and international smart city experts.<br/>
+                                    <a href="https://www.eventbrite.com.au/e/future-ready-webinar-series-session-3-tickets-34024645631"
+                                       rel="external" target="blank">Register for workshop</a></span>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -189,34 +203,41 @@ class Landing extends React.Component {
                     </li>
                     <li style={{borderTop: "0"}}>
                         <article>
-                            <table className="calendar-table" style={{marginTop:0}}>
+                            <table className="calendar-table" style={{marginTop: 0}}>
                                 <tbody>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-22">Monday <span>22</span> May</time>
                                     </th>
-                                    <td>Sydney Masterclass <span className="date-info">Essentials for smart city leaders. <br/> <a href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-sydney-tickets-33881032079" rel="external" target="blank">Register for workshop</a></span>
+                                    <td>Sydney Masterclass <span className="date-info">Essentials for smart city leaders. <br/> <a
+                                        href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-sydney-tickets-33881032079"
+                                        rel="external" target="blank">Register for workshop</a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-05-29">Monday <span>29</span> May</time>
                                     </th>
-                                    <td>Adelaide Co-learning lab<span className="date-info">Learn, collaborate and create. <br/> <a href="http://ascaconference.org.au/future-ready" rel="external" target="blank">Register for workshop</a></span>
+                                    <td>Co-Learning Lab – Adelaide<span className="date-info">Learn, collaborate and create. <br/> <a
+                                        href="http://ascaconference.org.au/future-ready" rel="external" target="blank">Register for workshop</a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-06-08">Monday <span>8</span> June</time>
                                     </th>
-                                    <td>Melbourne Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-melbourne-tickets-33881210613" rel="external" target="blank">Register for workshop</a></span>
+                                    <td>Melbourne Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
+                                        href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-melbourne-tickets-33881210613"
+                                        rel="external" target="blank">Register for workshop</a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <time dateTime="2017-06-15">Monday <span>15</span> June</time>
                                     </th>
-                                    <td>Perth Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-perth-tickets-33881255748" rel="external" target="blank">Register for workshop</a></span>
+                                    <td>Perth Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
+                                        href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-perth-tickets-33881255748"
+                                        rel="external" target="blank">Register for workshop</a></span>
                                     </td>
 
                                 </tr>
@@ -230,31 +251,55 @@ class Landing extends React.Component {
                 <section style={{
                     textAlign: "center",
                     background: "#f0f3f5",
-                    width: "112%",
-                    marginLeft: "-6%",
+                    width: "150%",
+                    marginLeft: "-25%",
                     padding: "16px 16px 24px 16px",
                     float: "none"
                 }}>
                     <h2> Fund your smart city project</h2>
                     <p>
-                        The $50 million <a href="https://www.business.gov.au/~/media/business/smart-cities-and-suburbs/smart-cities-and-suburbs-program-guidelines-round-one-PDF" rel="external" target="blank">Smart Cities and Suburbs Program</a> supports <br/> local governments, private companies, academia and not-for-profits <br/>to collaboratively deliver innovative  <a href="https://s3-ap-southeast-2.amazonaws.com/ehq-production-australia/4eb02b0d21864be00a86c40f5e0b558aa3022cae/documents/attachments/000/054/266/original/Example_smart_city_projects.pdf?1492569019" rel="external" target="blank">smart city projects.</a><br/></p>
-                    <p><a href="https://www.business.gov.au/assistance/smart-cities-and-suburbs-program">Applications</a> for round one is open until 30 June 2017. <br/>
+                        The $50 million <a
+                        href="https://www.business.gov.au/~/media/business/smart-cities-and-suburbs/smart-cities-and-suburbs-program-guidelines-round-one-PDF"
+                        rel="external" target="blank">Smart Cities and Suburbs Program</a> supports <br/> local
+                        governments, private companies, academia and not-for-profits <br/>to collaboratively deliver <a
+                        href="https://s3-ap-southeast-2.amazonaws.com/ehq-production-australia/4eb02b0d21864be00a86c40f5e0b558aa3022cae/documents/attachments/000/054/266/original/Example_smart_city_projects.pdf?1492569019"
+                        rel="external" target="blank">innovative smart city projects.</a><br/></p>
+                    <p><a
+                        href="https://www.business.gov.au/assistance/smart-cities-and-suburbs-program">Applications
+                    </a> for round one are open until 30 June 2017. <br/>
                         For program support call <a href="tel:132846" rel="external" target="blank">13 28 46</a></p>
                 </section>
-                <h2 style={{textAlign: "center"}}> Find a smart city partner</h2>
-                <p style={{textAlign: "center"}}>The Digital Marketplace has been created so local council buyers <br/>can access digital expertise quickly and easily.  Find expertise to create <br/>smarter communities and deliver better digital services.</p>
+                <h2 style={{textAlign: "center"}}> Find partners on the Digital Marketplace</h2>
+                <p style={{textAlign: "center"}}>The Digital Marketplace has been created so local council buyers <br/>can
+                    access digital expertise quickly and easily. Find expertise to create <br/>smarter communities and
+                    deliver better digital services.</p>
 
                 <p styleName="styles.chartContainer">
-                    {Object.keys(domains).map((domain,i) => {
+                    {Object.keys(domains).map((domain, i) => {
                         let count = domains[domain];
                         return (<a styleName="styles.chart" key={i} href={`/search/sellers/?role=${domain}`}>
                             <span
-                                   style={{width: (typeof window !== 'undefined' && window.innerWidth < 768 ? "100%" : (count / maxDomain)*100+"%")}}
-                                   ><strong>{count}</strong> in {domain}</span></a>)
+                                style={{width: (typeof window !== 'undefined' && window.innerWidth < 768 ? "100%" : (count / maxDomain) * 100 + "%")}}
+                            ><strong>{count}</strong> in {domain}</span></a>)
                     })}
                 </p>
-                <article style={{textAlign: "center"}}><p>Are you a digital business offering smart city products or services?<br/>
-                    <a href="/become-a-seller">Join the Marketplace now</a></p></article>
+                <div className="row">
+                <article style={{textAlign: "center"}}>
+                    <h2>Join the Digital Marketplace</h2>
+                    <div style={{ textAlign: "center"}} className="col-xs-12 col-md-4 col-md-push-2">
+                        <h3> Need to buy digital products and services?</h3>
+                        <p>Our buyers are from across local, state, territory and federal government.</p>
+                        <a href="/signup" className="button" style={{color:"white"}}>Join as a buyer</a>
+                    </div>
+                    <div style={{borderLeft: "2px solid #bebebe", textAlign: "center"}} className="col-xs-12 col-md-4 col-md-push-2">
+                        <div style={{marginLeft: "30px"}}>
+                        <h3>Offer digital products <br/>or services to government</h3>
+                        <p>Access more digital opportunities across all levels of government.</p>
+                        <a href="/become-a-seller" className="button" style={{color:"white"}}>Become a seller</a>
+                        </div>
+                    </div>
+                </article>
+                </div>
             </div>
         )
     }

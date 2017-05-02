@@ -1,100 +1,124 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProjectViewWidget renders without errrors 1`] = `
-<section
-  id="project__ProjectView"
->
-  <header
-    className="row"
+<div>
+  <section
+    styleName="full-header"
   >
     <div
-      className="col-xs-12"
-    >
-      <h1
-        tabIndex="-1"
-      />
-    </div>
-    <div
-      className="meta col-xs-12"
+      className="row"
     >
       <div
-        className="row"
+        className="col-xs-12"
+      >
+        <h1
+          tabIndex="-1"
+        >
+          A Case Study
+        </h1>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <article
+        className="col-xs-12 col-md-8 col-sm-7"
+      >
+        <p
+          styleName="summary"
+        />
+        <p>
+          <strong>
+            Project stage
+          </strong>
+           
+        </p>
+      </article>
+      <article
+        className="col-xs-12 col-sm-8 col-sm-push-1 col-md-3 col-md-push-1"
       >
         <div
-          className="col-xs-12 col-sm-7"
+          style={
+            Object {
+              "backgroundColor": "white",
+            }
+          }
+          styleName="tile"
         >
-          <p>
-            by 
-          </p>
+          <span>
+            Council
+          </span>
+          <b>
+            A Case study client
+          </b>
+          <a
+            href="mailto:undefined"
+            role="button"
+          >
+            Email contact
+          </a>
         </div>
-      </div>
+      </article>
     </div>
-  </header>
-  <div
-    className="row"
+  </section>
+  <section
+    id="project__ProjectView"
+    styleName="center"
   >
-    <article
-      className="col-sm-9 col-xs-12"
-      role="main"
+    <div
+      className="row"
     >
-      <section>
-        <h2>
-          Council service
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          Project Stage
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          Aim
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          How it ran
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          Outcomes and benefits
-        </h2>
-        <ul />
-      </section>
-      <div
-        className="project__actions"
+      <aside
+        className="col-sm-3 col-xs-12"
       />
-    </article>
-    <aside
-      className="col-sm-3 col-xs-12"
-    >
-      <div
-        styleName="tile"
+      <article
+        className="col-sm-7 col-xs-12"
+        role="main"
       >
-        <span />
-        <b />
-        <a
-          href="mailto:undefined"
-          role="button"
-        >
-          Email organiser
-        </a>
-      </div>
-    </aside>
-  </div>
-</section>
+        <section>
+          <h2>
+            Why is the work being done?
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              A Case Study Opportunity
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2>
+            What's the key problem to solve?
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              A simple problem
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2>
+            Outcomes
+          </h2>
+          <ul>
+            <li>
+              a
+            </li>
+            <li>
+              b
+            </li>
+          </ul>
+        </section>
+        <div
+          className="project__actions"
+        />
+      </article>
+    </div>
+  </section>
+</div>
 `;
