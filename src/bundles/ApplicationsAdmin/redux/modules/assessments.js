@@ -11,7 +11,9 @@ export default function reducer(state = {}, action = {}) {
   const { type, id } = action;
   switch (type) {
     case APPROVED_ASSESSMENT:
-      return removeAssessmentRow(state, id);
+      return state;
+      // don't remove rows as it makes the UI move around
+      // return removeAssessmentRow(state, id);
     default:
       return state;
   }
