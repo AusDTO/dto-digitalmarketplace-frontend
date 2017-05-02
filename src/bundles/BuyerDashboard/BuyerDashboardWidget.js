@@ -4,14 +4,13 @@ import RegisterComponent from '../../RegisterComponent'
 
 import createStore from './redux/create'
 
-import TeamView from './components/TeamView'
+import BuyerDashboard from './components/Dashboard/BuyerDashboard'
 
 const BuyerDashboardWidget = (props) => {
   const store = createStore(props)
-
   return (
     <Provider store={store} >
-      <TeamView />
+      <BuyerDashboard/>
     </Provider>
   )
 }
