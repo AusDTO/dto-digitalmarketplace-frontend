@@ -95,7 +95,7 @@ test('ProjectForm renders empty in edit mode', () => {
     form_options: { 
       mode: 'edit' 
     },
-    Project: {
+    project: {
       returnLink: <a href="http://www.right.back/to/where/you/came/from">Return without saving</a>
     } 
   }))
@@ -152,14 +152,14 @@ test.skip('ProjectForm renders an empty reference page in edit mode', () => {
 
 test.skip('ProjectForm renders a populated reference page', () => {
   const state = {
-    Project: {
+    project: {
       returnLink: 'http://www.right.back/to/where/you/came/from'
     },
-    ProjectForm: {
+    projectForm: {
       opportunity: 'The opportunity',
       client: 'The Client Name',
       timeframe: 'January 2016 — June 2016',
-      approach: 'The approach',
+      problem: 'The problem',
       outcome: [
           'Outcome 1',
           'Outcome 2'

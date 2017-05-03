@@ -8,11 +8,11 @@ import renderer from 'react-test-renderer';
 
 test('ProjectViewWidget renders without errrors', () => {
   const state = {
-    casestudy: {
+    project: {
       title: 'A Case Study',
       opportunity: 'A Case Study Opportunity',
       client: 'A Case study client',
-      approach: 'A simple approach',
+      problem: 'A simple problem',
       timeframe: '2016',
       outcome: ['a', 'b'],
       projectLinks: ['http://facebook.com']

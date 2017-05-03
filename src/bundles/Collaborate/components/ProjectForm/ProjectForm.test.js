@@ -14,7 +14,7 @@ import createStore from '../../redux/create'
 const generateFormValidilityState = (valid) => {
   return {
     forms: {
-      ProjectForm: {
+      projectForm: {
         $form: { valid }
       }
     },
@@ -30,7 +30,7 @@ const generateFormValidilityState = (valid) => {
 test('mapStateToProps', () => {
   const baseProps = {
     formErrors: [],
-    form: {},
+    form: {"valid":true},
     model: 'projectForm',
     mode: 'add', 
     errors: [], 
@@ -66,7 +66,7 @@ test('form renders server side with errors', () => {
   )
 
   let errors = wrapper.find('.validation-message');
-  expect(errors.length).toBe(8);
+  expect(errors.length).toBe(7);
 })
 
 test('handleClick with formValid=false', () => {

@@ -1,9 +1,9 @@
 {
   "projectForm": {
-    "opportunity": "The opportunity",
+    "opportunity": "The opportunity/aim/goal",
     "client": "The Client Name",
     "timeframe": "January 2016 — June 2016",
-    "approach": "The approach",
+    "problem": "The main problem",
     "outcome": [
         "Outcome 1",
         "Outcome 2"
