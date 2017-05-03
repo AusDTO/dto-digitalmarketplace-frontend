@@ -107,8 +107,10 @@ const ReviewHeader = (props) => {
 
         {public_profile === false && (
           <article className="col-xs-12 col-sm-3 col-sm-push-1">
-            {/* Hardcoded URL as buyer has no way to generate seller URLs
-            <a href="/sellers/edit/business-details" role="button">Update profile</a> */}
+            <div className="seller-profile__tile" styleName="tile">
+              <p><b>Update the services you offer</b></p>
+              <a href="/sellers/edit" role="button" styleName="external-link white external-link-hover">Update profile</a>
+            </div>  
           </article>
         )}
 
