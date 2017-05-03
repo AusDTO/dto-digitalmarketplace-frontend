@@ -54,6 +54,39 @@ exports[`ProjectForm renders 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="summary"
+        >
+          Summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint"
+        >
+          A brief overview of the project
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            className="word-count-counter"
+          >
+            40 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="client"
         >
           Which council was involved?
@@ -75,70 +108,6 @@ exports[`ProjectForm renders 1`] = `
           value=""
         />
       </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="timeframe"
-        >
-          What was the time frame?
-        </label>
-        <p
-          className="hint"
-          id="timeframe-hint"
-        >
-          For example, January 2016 — June 2016.
-        </p>
-        <input
-          aria-describedby="timeframe-hint"
-          className=""
-          disabled={false}
-          id="timeframe"
-          maxLength={undefined}
-          name="timeframe"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="roles"
-        >
-          What role did your business play?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint"
-        >
-          For example, ran whole project, engaged in discovery activities or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
       <fieldset>
         <legend>
           Project stage?
@@ -146,10 +115,29 @@ exports[`ProjectForm renders 1`] = `
         <input
           checked={false}
           disabled={false}
+          id="idea"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="Idea"
+        />
+        <label
+          htmlFor="idea"
+        >
+          Idea
+        </label>
+        <input
+          checked={false}
+          disabled={false}
           id="discovery"
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -167,6 +155,7 @@ exports[`ProjectForm renders 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -175,7 +164,25 @@ exports[`ProjectForm renders 1`] = `
         <label
           htmlFor="pilot"
         >
-          Alpha/Pilot
+          Pilot
+        </label>
+        <input
+          checked={false}
+          disabled={false}
+          id="inBuild"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="In Build"
+        />
+        <label
+          htmlFor="inBuild"
+        >
+          In Build
         </label>
         <input
           checked={false}
@@ -184,6 +191,7 @@ exports[`ProjectForm renders 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -192,80 +200,7 @@ exports[`ProjectForm renders 1`] = `
         <label
           htmlFor="live"
         >
-          Live/Operational
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>
-          Council service?
-        </legend>
-        <input
-          checked={false}
-          disabled={false}
-          id="animal"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Animal Management"
-        />
-        <label
-          htmlFor="animal"
-        >
-          Animal Management
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="planning"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Planning"
-        />
-        <label
-          htmlFor="planning"
-        >
-          Planning
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="community"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Community Services"
-        />
-        <label
-          htmlFor="community"
-        >
-          Community Services
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="roads"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Roads and parking"
-        />
-        <label
-          htmlFor="roads"
-        >
-          Roads and parking
+          Live
         </label>
       </fieldset>
       <div
@@ -273,9 +208,41 @@ exports[`ProjectForm renders 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="service"
+        >
+          What council activity does it relate to?
+        </label>
+        <p
+          className="hint"
+          id="service-hint"
+        >
+          eg. Planning, Roads and Parking, Community Services, Waste Management
+        </p>
+        <input
+          aria-describedby="service-hint"
+          className=""
+          disabled={false}
+          id="service"
+          maxLength={undefined}
+          name="service"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="opportunity"
         >
-          Outline the Aims
+          Why is the work being done? What is the opportunity?
         </label>
         <p
           className="hint"
@@ -290,39 +257,6 @@ exports[`ProjectForm renders 1`] = `
             defaultValue=""
             id="opportunity"
             name="opportunity"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-          />
-          <span
-            className="word-count-counter"
-          >
-            200 words remaining
-          </span>
-        </div>
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="approach"
-        >
-          Describe how it ran
-        </label>
-        <p
-          className="hint"
-          id="approach-hint"
-        >
-          How did your capabilities and methods contribute to achieving the project goals?
-        </p>
-        <div>
-          <textarea
-            aria-describedby="approach-hint"
-            className="under-200"
-            defaultValue=""
-            id="approach"
-            name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -394,6 +328,95 @@ exports[`ProjectForm renders 1`] = `
                 defaultValue=""
                 id="outcome-1"
                 name="outcome[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button"
+          >
+            Add another row
+          </button>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          htmlFor="partner_links"
+        >
+          Partner links (optional)
+        </label>
+        <p
+          className="hint"
+          id="partner_links-hint"
+        >
+          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+        </p>
+        <div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-0"
+              >
+                1
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-0"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-1"
+                name="partner_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -513,30 +536,30 @@ exports[`ProjectForm renders 1`] = `
         </div>
       </div>
       <h3>
-        Referee
+        Project Contact
       </h3>
       <div
         className="field"
       >
         <label
           className="question-heading"
-          htmlFor="refereeName"
+          htmlFor="contactName"
         >
-          Referee's name
+          Contact's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint"
+          id="contactName-hint"
         >
-          The full name of the best person to contact about your experience.
+          The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="refereeName-hint"
+          aria-describedby="contactName-hint"
           className=""
           disabled={false}
-          id="refereeName"
+          id="contactName"
           maxLength={undefined}
-          name="refereeName"
+          name="contactName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -552,49 +575,17 @@ exports[`ProjectForm renders 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="refereePosition"
+          htmlFor="contactEmail"
         >
-          Referee's position
-        </label>
-        <p
-          className="hint"
-          id="refereePosition-hint"
-        >
-          At the time of the project.
-        </p>
-        <input
-          aria-describedby="refereePosition-hint"
-          className=""
-          disabled={false}
-          id="refereePosition"
-          maxLength={undefined}
-          name="refereePosition"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="refereeEmail"
-        >
-          Referee's email
+          Project contact email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="refereeEmail"
+          id="contactEmail"
           maxLength={undefined}
-          name="refereeEmail"
+          name="contactEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -609,8 +600,8 @@ exports[`ProjectForm renders 1`] = `
         <input
           checked={false}
           disabled={false}
-          id="refereeContact"
-          name="refereeContact"
+          id="contactAgreed"
+          name="contactAgreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -618,9 +609,9 @@ exports[`ProjectForm renders 1`] = `
           type="checkbox"
         />
         <label
-          htmlFor="refereeContact"
+          htmlFor="contactAgreed"
         >
-          I confirm the above information is correct and will be publicly available on the Digital Marketplace
+          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
         </label>
       </div>
       <input
@@ -686,6 +677,39 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="summary"
+        >
+          Summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint"
+        >
+          A brief overview of the project
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            className="word-count-counter"
+          >
+            40 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="client"
         >
           Which council was involved?
@@ -707,70 +731,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           value=""
         />
       </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="timeframe"
-        >
-          What was the time frame?
-        </label>
-        <p
-          className="hint"
-          id="timeframe-hint"
-        >
-          For example, January 2016 — June 2016.
-        </p>
-        <input
-          aria-describedby="timeframe-hint"
-          className=""
-          disabled={false}
-          id="timeframe"
-          maxLength={undefined}
-          name="timeframe"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="roles"
-        >
-          What role did your business play?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint"
-        >
-          For example, ran whole project, engaged in discovery activities or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
       <fieldset>
         <legend>
           Project stage?
@@ -778,10 +738,29 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         <input
           checked={false}
           disabled={false}
+          id="idea"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="Idea"
+        />
+        <label
+          htmlFor="idea"
+        >
+          Idea
+        </label>
+        <input
+          checked={false}
+          disabled={false}
           id="discovery"
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -799,6 +778,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -807,7 +787,25 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         <label
           htmlFor="pilot"
         >
-          Alpha/Pilot
+          Pilot
+        </label>
+        <input
+          checked={false}
+          disabled={false}
+          id="inBuild"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="In Build"
+        />
+        <label
+          htmlFor="inBuild"
+        >
+          In Build
         </label>
         <input
           checked={false}
@@ -816,6 +814,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -824,80 +823,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         <label
           htmlFor="live"
         >
-          Live/Operational
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>
-          Council service?
-        </legend>
-        <input
-          checked={false}
-          disabled={false}
-          id="animal"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Animal Management"
-        />
-        <label
-          htmlFor="animal"
-        >
-          Animal Management
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="planning"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Planning"
-        />
-        <label
-          htmlFor="planning"
-        >
-          Planning
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="community"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Community Services"
-        />
-        <label
-          htmlFor="community"
-        >
-          Community Services
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="roads"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Roads and parking"
-        />
-        <label
-          htmlFor="roads"
-        >
-          Roads and parking
+          Live
         </label>
       </fieldset>
       <div
@@ -905,9 +831,41 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="service"
+        >
+          What council activity does it relate to?
+        </label>
+        <p
+          className="hint"
+          id="service-hint"
+        >
+          eg. Planning, Roads and Parking, Community Services, Waste Management
+        </p>
+        <input
+          aria-describedby="service-hint"
+          className=""
+          disabled={false}
+          id="service"
+          maxLength={undefined}
+          name="service"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="opportunity"
         >
-          Outline the Aims
+          Why is the work being done? What is the opportunity?
         </label>
         <p
           className="hint"
@@ -922,39 +880,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
             defaultValue=""
             id="opportunity"
             name="opportunity"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-          />
-          <span
-            className="word-count-counter"
-          >
-            200 words remaining
-          </span>
-        </div>
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="approach"
-        >
-          Describe how it ran
-        </label>
-        <p
-          className="hint"
-          id="approach-hint"
-        >
-          How did your capabilities and methods contribute to achieving the project goals?
-        </p>
-        <div>
-          <textarea
-            aria-describedby="approach-hint"
-            className="under-200"
-            defaultValue=""
-            id="approach"
-            name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -1026,6 +951,95 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                 defaultValue=""
                 id="outcome-1"
                 name="outcome[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button"
+          >
+            Add another row
+          </button>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          htmlFor="partner_links"
+        >
+          Partner links (optional)
+        </label>
+        <p
+          className="hint"
+          id="partner_links-hint"
+        >
+          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+        </p>
+        <div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-0"
+              >
+                1
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-0"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-1"
+                name="partner_links[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1145,30 +1159,30 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         </div>
       </div>
       <h3>
-        Referee
+        Project Contact
       </h3>
       <div
         className="field"
       >
         <label
           className="question-heading"
-          htmlFor="refereeName"
+          htmlFor="contactName"
         >
-          Referee's name
+          Contact's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint"
+          id="contactName-hint"
         >
-          The full name of the best person to contact about your experience.
+          The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="refereeName-hint"
+          aria-describedby="contactName-hint"
           className=""
           disabled={false}
-          id="refereeName"
+          id="contactName"
           maxLength={undefined}
-          name="refereeName"
+          name="contactName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1184,49 +1198,17 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="refereePosition"
+          htmlFor="contactEmail"
         >
-          Referee's position
-        </label>
-        <p
-          className="hint"
-          id="refereePosition-hint"
-        >
-          At the time of the project.
-        </p>
-        <input
-          aria-describedby="refereePosition-hint"
-          className=""
-          disabled={false}
-          id="refereePosition"
-          maxLength={undefined}
-          name="refereePosition"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="refereeEmail"
-        >
-          Referee's email
+          Project contact email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="refereeEmail"
+          id="contactEmail"
           maxLength={undefined}
-          name="refereeEmail"
+          name="contactEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1241,8 +1223,8 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         <input
           checked={false}
           disabled={false}
-          id="refereeContact"
-          name="refereeContact"
+          id="contactAgreed"
+          name="contactAgreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1250,9 +1232,9 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           type="checkbox"
         />
         <label
-          htmlFor="refereeContact"
+          htmlFor="contactAgreed"
         >
-          I confirm the above information is correct and will be publicly available on the Digital Marketplace
+          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
         </label>
       </div>
       <input
@@ -1301,23 +1283,16 @@ exports[`ProjectForm renders with errors 1`] = `
         </li>
         <li>
           <a
+            href="#summary"
+          >
+            You must outline the project summary
+          </a>
+        </li>
+        <li>
+          <a
             href="#client"
           >
             Council is required
-          </a>
-        </li>
-        <li>
-          <a
-            href="#timeframe"
-          >
-            Timeframe is required
-          </a>
-        </li>
-        <li>
-          <a
-            href="#roles"
-          >
-            You must specify the your business' role
           </a>
         </li>
         <li>
@@ -1329,23 +1304,16 @@ exports[`ProjectForm renders with errors 1`] = `
         </li>
         <li>
           <a
-            href="#animal"
+            href="#service"
           >
-            You must provide project service
+            Council activity is required
           </a>
         </li>
         <li>
           <a
             href="#opportunity"
           >
-            You must outline the aims
-          </a>
-        </li>
-        <li>
-          <a
-            href="#approach"
-          >
-            You must outline how it ran
+            You must outline the opportunity
           </a>
         </li>
         <li>
@@ -1357,30 +1325,23 @@ exports[`ProjectForm renders with errors 1`] = `
         </li>
         <li>
           <a
-            href="#refereeName"
+            href="#contactName"
           >
-            Please provide a referee name.
+            Please provide a contact name.
           </a>
         </li>
         <li>
           <a
-            href="#refereePosition"
+            href="#contactEmail"
           >
-            Please provide a referee position.
+            Please provide a contact email address.
           </a>
         </li>
         <li>
           <a
-            href="#refereeEmail"
+            href="#contactAgreed"
           >
-            Please provide a referee email address.
-          </a>
-        </li>
-        <li>
-          <a
-            href="#refereeContact"
-          >
-            Please acknowledge the referee can be contacted.
+            Please acknowledge the contact point.
           </a>
         </li>
       </ul>
@@ -1442,6 +1403,52 @@ exports[`ProjectForm renders with errors 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="summary"
+        >
+          Summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint"
+        >
+          A brief overview of the project
+        </p>
+        <a
+          className="validation-message"
+          href="#summary"
+        >
+          <span
+            className="visuallyhidden"
+          >
+            Validation Error: 
+          </span>
+          <span>
+            You must outline the project summary
+          </span>
+        </a>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="invalid under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            className="word-count-counter"
+          >
+            40 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="client"
         >
           Which council was involved?
@@ -1476,96 +1483,6 @@ exports[`ProjectForm renders with errors 1`] = `
           value=""
         />
       </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="timeframe"
-        >
-          What was the time frame?
-        </label>
-        <p
-          className="hint"
-          id="timeframe-hint"
-        >
-          For example, January 2016 — June 2016.
-        </p>
-        <a
-          className="validation-message"
-          href="#timeframe"
-        >
-          <span
-            className="visuallyhidden"
-          >
-            Validation Error: 
-          </span>
-          <span>
-            Timeframe is required
-          </span>
-        </a>
-        <input
-          aria-describedby="timeframe-hint"
-          className="invalid"
-          disabled={false}
-          id="timeframe"
-          maxLength={undefined}
-          name="timeframe"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="roles"
-        >
-          What role did your business play?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint"
-        >
-          For example, ran whole project, engaged in discovery activities or responsible for delivery.
-        </p>
-        <a
-          className="validation-message"
-          href="#roles"
-        >
-          <span
-            className="visuallyhidden"
-          >
-            Validation Error: 
-          </span>
-          <span>
-            You must specify the your business' role
-          </span>
-        </a>
-        <input
-          aria-describedby="roles-hint"
-          className="invalid"
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
       <fieldset>
         <legend>
           Project stage?
@@ -1586,10 +1503,29 @@ exports[`ProjectForm renders with errors 1`] = `
         <input
           checked={false}
           disabled={false}
+          id="idea"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="Idea"
+        />
+        <label
+          htmlFor="idea"
+        >
+          Idea
+        </label>
+        <input
+          checked={false}
+          disabled={false}
           id="discovery"
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -1607,6 +1543,7 @@ exports[`ProjectForm renders with errors 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -1615,7 +1552,25 @@ exports[`ProjectForm renders with errors 1`] = `
         <label
           htmlFor="pilot"
         >
-          Alpha/Pilot
+          Pilot
+        </label>
+        <input
+          checked={false}
+          disabled={false}
+          id="inBuild"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="In Build"
+        />
+        <label
+          htmlFor="inBuild"
+        >
+          In Build
         </label>
         <input
           checked={false}
@@ -1624,6 +1579,7 @@ exports[`ProjectForm renders with errors 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -1632,93 +1588,7 @@ exports[`ProjectForm renders with errors 1`] = `
         <label
           htmlFor="live"
         >
-          Live/Operational
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>
-          Council service?
-        </legend>
-        <a
-          className="validation-message"
-          href="#animal"
-        >
-          <span
-            className="visuallyhidden"
-          >
-            Validation Error: 
-          </span>
-          <span>
-            You must provide project service
-          </span>
-        </a>
-        <input
-          checked={false}
-          disabled={false}
-          id="animal"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Animal Management"
-        />
-        <label
-          htmlFor="animal"
-        >
-          Animal Management
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="planning"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Planning"
-        />
-        <label
-          htmlFor="planning"
-        >
-          Planning
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="community"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Community Services"
-        />
-        <label
-          htmlFor="community"
-        >
-          Community Services
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="roads"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Roads and parking"
-        />
-        <label
-          htmlFor="roads"
-        >
-          Roads and parking
+          Live
         </label>
       </fieldset>
       <div
@@ -1726,9 +1596,54 @@ exports[`ProjectForm renders with errors 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="service"
+        >
+          What council activity does it relate to?
+        </label>
+        <p
+          className="hint"
+          id="service-hint"
+        >
+          eg. Planning, Roads and Parking, Community Services, Waste Management
+        </p>
+        <a
+          className="validation-message"
+          href="#service"
+        >
+          <span
+            className="visuallyhidden"
+          >
+            Validation Error: 
+          </span>
+          <span>
+            Council activity is required
+          </span>
+        </a>
+        <input
+          aria-describedby="service-hint"
+          className="invalid"
+          disabled={false}
+          id="service"
+          maxLength={undefined}
+          name="service"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="opportunity"
         >
-          Outline the Aims
+          Why is the work being done? What is the opportunity?
         </label>
         <p
           className="hint"
@@ -1746,7 +1661,7 @@ exports[`ProjectForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            You must outline the aims
+            You must outline the opportunity
           </span>
         </a>
         <div>
@@ -1756,52 +1671,6 @@ exports[`ProjectForm renders with errors 1`] = `
             defaultValue=""
             id="opportunity"
             name="opportunity"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-          />
-          <span
-            className="word-count-counter"
-          >
-            200 words remaining
-          </span>
-        </div>
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="approach"
-        >
-          Describe how it ran
-        </label>
-        <p
-          className="hint"
-          id="approach-hint"
-        >
-          How did your capabilities and methods contribute to achieving the project goals?
-        </p>
-        <a
-          className="validation-message"
-          href="#approach"
-        >
-          <span
-            className="visuallyhidden"
-          >
-            Validation Error: 
-          </span>
-          <span>
-            You must outline how it ran
-          </span>
-        </a>
-        <div>
-          <textarea
-            aria-describedby="approach-hint"
-            className="invalid under-200"
-            defaultValue=""
-            id="approach"
-            name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -1919,6 +1788,95 @@ exports[`ProjectForm renders with errors 1`] = `
         className="field"
       >
         <label
+          htmlFor="partner_links"
+        >
+          Partner links (optional)
+        </label>
+        <p
+          className="hint"
+          id="partner_links-hint"
+        >
+          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+        </p>
+        <div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-0"
+              >
+                1
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-0"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-1"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button"
+          >
+            Add another row
+          </button>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
           htmlFor="project_links"
         >
           Project links (optional)
@@ -2005,26 +1963,26 @@ exports[`ProjectForm renders with errors 1`] = `
         </div>
       </div>
       <h3>
-        Referee
+        Project Contact
       </h3>
       <div
         className="field"
       >
         <label
           className="question-heading"
-          htmlFor="refereeName"
+          htmlFor="contactName"
         >
-          Referee's name
+          Contact's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint"
+          id="contactName-hint"
         >
-          The full name of the best person to contact about your experience.
+          The full name of the best person to contact.
         </p>
         <a
           className="validation-message"
-          href="#refereeName"
+          href="#contactName"
         >
           <span
             className="visuallyhidden"
@@ -2032,16 +1990,16 @@ exports[`ProjectForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            Please provide a referee name.
+            Please provide a contact name.
           </span>
         </a>
         <input
-          aria-describedby="refereeName-hint"
+          aria-describedby="contactName-hint"
           className="invalid"
           disabled={false}
-          id="refereeName"
+          id="contactName"
           maxLength={undefined}
-          name="refereeName"
+          name="contactName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2057,19 +2015,13 @@ exports[`ProjectForm renders with errors 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="refereePosition"
+          htmlFor="contactEmail"
         >
-          Referee's position
+          Project contact email
         </label>
-        <p
-          className="hint"
-          id="refereePosition-hint"
-        >
-          At the time of the project.
-        </p>
         <a
           className="validation-message"
-          href="#refereePosition"
+          href="#contactEmail"
         >
           <span
             className="visuallyhidden"
@@ -2077,55 +2029,16 @@ exports[`ProjectForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            Please provide a referee position.
-          </span>
-        </a>
-        <input
-          aria-describedby="refereePosition-hint"
-          className="invalid"
-          disabled={false}
-          id="refereePosition"
-          maxLength={undefined}
-          name="refereePosition"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="refereeEmail"
-        >
-          Referee's email
-        </label>
-        <a
-          className="validation-message"
-          href="#refereeEmail"
-        >
-          <span
-            className="visuallyhidden"
-          >
-            Validation Error: 
-          </span>
-          <span>
-            Please provide a referee email address.
+            Please provide a contact email address.
           </span>
         </a>
         <input
           aria-describedby={undefined}
           className="invalid"
           disabled={false}
-          id="refereeEmail"
+          id="contactEmail"
           maxLength={undefined}
-          name="refereeEmail"
+          name="contactEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2139,7 +2052,7 @@ exports[`ProjectForm renders with errors 1`] = `
       <div>
         <a
           className="validation-message"
-          href="#refereeContact"
+          href="#contactAgreed"
         >
           <span
             className="visuallyhidden"
@@ -2147,14 +2060,14 @@ exports[`ProjectForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            Please acknowledge the referee can be contacted.
+            Please acknowledge the contact point.
           </span>
         </a>
         <input
           checked={false}
           disabled={false}
-          id="refereeContact"
-          name="refereeContact"
+          id="contactAgreed"
+          name="contactAgreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2162,9 +2075,9 @@ exports[`ProjectForm renders with errors 1`] = `
           type="checkbox"
         />
         <label
-          htmlFor="refereeContact"
+          htmlFor="contactAgreed"
         >
-          I confirm the above information is correct and will be publicly available on the Digital Marketplace
+          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
         </label>
       </div>
       <input
@@ -2236,6 +2149,39 @@ exports[`ProjectForm renders with form_options 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="summary"
+        >
+          Summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint"
+        >
+          A brief overview of the project
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            className="word-count-counter"
+          >
+            40 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="client"
         >
           Which council was involved?
@@ -2257,70 +2203,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           value=""
         />
       </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="timeframe"
-        >
-          What was the time frame?
-        </label>
-        <p
-          className="hint"
-          id="timeframe-hint"
-        >
-          For example, January 2016 — June 2016.
-        </p>
-        <input
-          aria-describedby="timeframe-hint"
-          className=""
-          disabled={false}
-          id="timeframe"
-          maxLength={undefined}
-          name="timeframe"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="roles"
-        >
-          What role did your business play?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint"
-        >
-          For example, ran whole project, engaged in discovery activities or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
       <fieldset>
         <legend>
           Project stage?
@@ -2328,10 +2210,29 @@ exports[`ProjectForm renders with form_options 1`] = `
         <input
           checked={false}
           disabled={false}
+          id="idea"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="Idea"
+        />
+        <label
+          htmlFor="idea"
+        >
+          Idea
+        </label>
+        <input
+          checked={false}
+          disabled={false}
           id="discovery"
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -2349,6 +2250,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -2357,7 +2259,25 @@ exports[`ProjectForm renders with form_options 1`] = `
         <label
           htmlFor="pilot"
         >
-          Alpha/Pilot
+          Pilot
+        </label>
+        <input
+          checked={false}
+          disabled={false}
+          id="inBuild"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="In Build"
+        />
+        <label
+          htmlFor="inBuild"
+        >
+          In Build
         </label>
         <input
           checked={false}
@@ -2366,6 +2286,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -2374,80 +2295,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         <label
           htmlFor="live"
         >
-          Live/Operational
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>
-          Council service?
-        </legend>
-        <input
-          checked={false}
-          disabled={false}
-          id="animal"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Animal Management"
-        />
-        <label
-          htmlFor="animal"
-        >
-          Animal Management
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="planning"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Planning"
-        />
-        <label
-          htmlFor="planning"
-        >
-          Planning
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="community"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Community Services"
-        />
-        <label
-          htmlFor="community"
-        >
-          Community Services
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="roads"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Roads and parking"
-        />
-        <label
-          htmlFor="roads"
-        >
-          Roads and parking
+          Live
         </label>
       </fieldset>
       <div
@@ -2455,9 +2303,41 @@ exports[`ProjectForm renders with form_options 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="service"
+        >
+          What council activity does it relate to?
+        </label>
+        <p
+          className="hint"
+          id="service-hint"
+        >
+          eg. Planning, Roads and Parking, Community Services, Waste Management
+        </p>
+        <input
+          aria-describedby="service-hint"
+          className=""
+          disabled={false}
+          id="service"
+          maxLength={undefined}
+          name="service"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="opportunity"
         >
-          Outline the Aims
+          Why is the work being done? What is the opportunity?
         </label>
         <p
           className="hint"
@@ -2472,39 +2352,6 @@ exports[`ProjectForm renders with form_options 1`] = `
             defaultValue=""
             id="opportunity"
             name="opportunity"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-          />
-          <span
-            className="word-count-counter"
-          >
-            200 words remaining
-          </span>
-        </div>
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="approach"
-        >
-          Describe how it ran
-        </label>
-        <p
-          className="hint"
-          id="approach-hint"
-        >
-          How did your capabilities and methods contribute to achieving the project goals?
-        </p>
-        <div>
-          <textarea
-            aria-describedby="approach-hint"
-            className="under-200"
-            defaultValue=""
-            id="approach"
-            name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -2609,6 +2456,95 @@ exports[`ProjectForm renders with form_options 1`] = `
         className="field"
       >
         <label
+          htmlFor="partner_links"
+        >
+          Partner links (optional)
+        </label>
+        <p
+          className="hint"
+          id="partner_links-hint"
+        >
+          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+        </p>
+        <div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-0"
+              >
+                1
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-0"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-1"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button"
+          >
+            Add another row
+          </button>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
           htmlFor="project_links"
         >
           Project links (optional)
@@ -2695,30 +2631,30 @@ exports[`ProjectForm renders with form_options 1`] = `
         </div>
       </div>
       <h3>
-        Referee
+        Project Contact
       </h3>
       <div
         className="field"
       >
         <label
           className="question-heading"
-          htmlFor="refereeName"
+          htmlFor="contactName"
         >
-          Referee's name
+          Contact's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint"
+          id="contactName-hint"
         >
-          The full name of the best person to contact about your experience.
+          The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="refereeName-hint"
+          aria-describedby="contactName-hint"
           className=""
           disabled={false}
-          id="refereeName"
+          id="contactName"
           maxLength={undefined}
-          name="refereeName"
+          name="contactName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2734,49 +2670,17 @@ exports[`ProjectForm renders with form_options 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="refereePosition"
+          htmlFor="contactEmail"
         >
-          Referee's position
-        </label>
-        <p
-          className="hint"
-          id="refereePosition-hint"
-        >
-          At the time of the project.
-        </p>
-        <input
-          aria-describedby="refereePosition-hint"
-          className=""
-          disabled={false}
-          id="refereePosition"
-          maxLength={undefined}
-          name="refereePosition"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="refereeEmail"
-        >
-          Referee's email
+          Project contact email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="refereeEmail"
+          id="contactEmail"
           maxLength={undefined}
-          name="refereeEmail"
+          name="contactEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2791,8 +2695,8 @@ exports[`ProjectForm renders with form_options 1`] = `
         <input
           checked={false}
           disabled={false}
-          id="refereeContact"
-          name="refereeContact"
+          id="contactAgreed"
+          name="contactAgreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2800,9 +2704,9 @@ exports[`ProjectForm renders with form_options 1`] = `
           type="checkbox"
         />
         <label
-          htmlFor="refereeContact"
+          htmlFor="contactAgreed"
         >
-          I confirm the above information is correct and will be publicly available on the Digital Marketplace
+          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
         </label>
       </div>
       <input
@@ -2868,6 +2772,39 @@ exports[`ProjectForm renders with populated fields 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="summary"
+        >
+          Summary
+        </label>
+        <p
+          className="hint"
+          id="summary-hint"
+        >
+          A brief overview of the project
+        </p>
+        <div>
+          <textarea
+            aria-describedby="summary-hint"
+            className="under-50"
+            defaultValue=""
+            id="summary"
+            name="summary"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            className="word-count-counter"
+          >
+            40 words remaining
+          </span>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="client"
         >
           Which council was involved?
@@ -2889,70 +2826,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           value="The Client Name"
         />
       </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="timeframe"
-        >
-          What was the time frame?
-        </label>
-        <p
-          className="hint"
-          id="timeframe-hint"
-        >
-          For example, January 2016 — June 2016.
-        </p>
-        <input
-          aria-describedby="timeframe-hint"
-          className=""
-          disabled={false}
-          id="timeframe"
-          maxLength={undefined}
-          name="timeframe"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value="January 2016 — June 2016"
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="roles"
-        >
-          What role did your business play?
-        </label>
-        <p
-          className="hint"
-          id="roles-hint"
-        >
-          For example, ran whole project, engaged in discovery activities or responsible for delivery.
-        </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
       <fieldset>
         <legend>
           Project stage?
@@ -2960,10 +2833,29 @@ exports[`ProjectForm renders with populated fields 1`] = `
         <input
           checked={false}
           disabled={false}
+          id="idea"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="Idea"
+        />
+        <label
+          htmlFor="idea"
+        >
+          Idea
+        </label>
+        <input
+          checked={false}
+          disabled={false}
           id="discovery"
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -2981,6 +2873,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -2989,7 +2882,25 @@ exports[`ProjectForm renders with populated fields 1`] = `
         <label
           htmlFor="pilot"
         >
-          Alpha/Pilot
+          Pilot
+        </label>
+        <input
+          checked={false}
+          disabled={false}
+          id="inBuild"
+          name="stage"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          type="radio"
+          value="In Build"
+        />
+        <label
+          htmlFor="inBuild"
+        >
+          In Build
         </label>
         <input
           checked={false}
@@ -2998,6 +2909,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           name="stage"
           onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
@@ -3006,80 +2918,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         <label
           htmlFor="live"
         >
-          Live/Operational
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>
-          Council service?
-        </legend>
-        <input
-          checked={false}
-          disabled={false}
-          id="animal"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Animal Management"
-        />
-        <label
-          htmlFor="animal"
-        >
-          Animal Management
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="planning"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Planning"
-        />
-        <label
-          htmlFor="planning"
-        >
-          Planning
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="community"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Community Services"
-        />
-        <label
-          htmlFor="community"
-        >
-          Community Services
-        </label>
-        <input
-          checked={false}
-          disabled={false}
-          id="roads"
-          name="service"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="radio"
-          value="Roads and parking"
-        />
-        <label
-          htmlFor="roads"
-        >
-          Roads and parking
+          Live
         </label>
       </fieldset>
       <div
@@ -3087,9 +2926,41 @@ exports[`ProjectForm renders with populated fields 1`] = `
       >
         <label
           className="question-heading"
+          htmlFor="service"
+        >
+          What council activity does it relate to?
+        </label>
+        <p
+          className="hint"
+          id="service-hint"
+        >
+          eg. Planning, Roads and Parking, Community Services, Waste Management
+        </p>
+        <input
+          aria-describedby="service-hint"
+          className=""
+          disabled={false}
+          id="service"
+          maxLength={undefined}
+          name="service"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
           htmlFor="opportunity"
         >
-          Outline the Aims
+          Why is the work being done? What is the opportunity?
         </label>
         <p
           className="hint"
@@ -3101,42 +2972,9 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue="The opportunity"
+            defaultValue="The opportunity/aim/goal"
             id="opportunity"
             name="opportunity"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-          />
-          <span
-            className="word-count-counter"
-          >
-            198 words remaining
-          </span>
-        </div>
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="approach"
-        >
-          Describe how it ran
-        </label>
-        <p
-          className="hint"
-          id="approach-hint"
-        >
-          How did your capabilities and methods contribute to achieving the project goals?
-        </p>
-        <div>
-          <textarea
-            aria-describedby="approach-hint"
-            className="under-200"
-            defaultValue="The approach"
-            id="approach"
-            name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -3241,6 +3079,95 @@ exports[`ProjectForm renders with populated fields 1`] = `
         className="field"
       >
         <label
+          htmlFor="partner_links"
+        >
+          Partner links (optional)
+        </label>
+        <p
+          className="hint"
+          id="partner_links-hint"
+        >
+          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+        </p>
+        <div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-0"
+              >
+                1
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-0"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="partner_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="partner_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="partner_links-1"
+                name="partner_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
+          <button
+            className="button-secondary"
+            onClick={[Function]}
+            type="button"
+          >
+            Add another row
+          </button>
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
           htmlFor="project_links"
         >
           Project links (optional)
@@ -3327,30 +3254,30 @@ exports[`ProjectForm renders with populated fields 1`] = `
         </div>
       </div>
       <h3>
-        Referee
+        Project Contact
       </h3>
       <div
         className="field"
       >
         <label
           className="question-heading"
-          htmlFor="refereeName"
+          htmlFor="contactName"
         >
-          Referee's name
+          Contact's name
         </label>
         <p
           className="hint"
-          id="refereeName-hint"
+          id="contactName-hint"
         >
-          The full name of the best person to contact about your experience.
+          The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="refereeName-hint"
+          aria-describedby="contactName-hint"
           className=""
           disabled={false}
-          id="refereeName"
+          id="contactName"
           maxLength={undefined}
-          name="refereeName"
+          name="contactName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3366,49 +3293,17 @@ exports[`ProjectForm renders with populated fields 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="refereePosition"
+          htmlFor="contactEmail"
         >
-          Referee's position
-        </label>
-        <p
-          className="hint"
-          id="refereePosition-hint"
-        >
-          At the time of the project.
-        </p>
-        <input
-          aria-describedby="refereePosition-hint"
-          className=""
-          disabled={false}
-          id="refereePosition"
-          maxLength={undefined}
-          name="refereePosition"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="refereeEmail"
-        >
-          Referee's email
+          Project contact email
         </label>
         <input
           aria-describedby={undefined}
           className=""
           disabled={false}
-          id="refereeEmail"
+          id="contactEmail"
           maxLength={undefined}
-          name="refereeEmail"
+          name="contactEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3423,8 +3318,8 @@ exports[`ProjectForm renders with populated fields 1`] = `
         <input
           checked={false}
           disabled={false}
-          id="refereeContact"
-          name="refereeContact"
+          id="contactAgreed"
+          name="contactAgreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3432,9 +3327,9 @@ exports[`ProjectForm renders with populated fields 1`] = `
           type="checkbox"
         />
         <label
-          htmlFor="refereeContact"
+          htmlFor="contactAgreed"
         >
-          I confirm the above information is correct and will be publicly available on the Digital Marketplace
+          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
         </label>
       </div>
       <input

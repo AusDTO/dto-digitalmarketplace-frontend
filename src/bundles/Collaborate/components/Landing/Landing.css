@@ -10,7 +10,15 @@
     text-align: center;
     padding-bottom: 20px;
 }
-
+.push {
+    text-align: center;
+    background: #f0f3f5;
+    padding: 16px 16px 24px 16px;
+    float: none;
+    max-width: 75em;
+    margin: 0 auto;
+    padding: 0 1.6em;
+}
 .pop {
     font-size: 24px;
     color: #18788d;
@@ -42,6 +50,13 @@
         width: 75%;
         margin-left: 12.5%;
     }
+
+}
+.push {
+    text-align: center;
+    background: #f0f3f5;
+    padding: 16px 16px 24px 16px;
+    float: none;
 }
 .chart {
     padding: 4px 5px;
