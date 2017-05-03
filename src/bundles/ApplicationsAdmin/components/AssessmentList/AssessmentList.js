@@ -21,7 +21,7 @@ class AssessmentList extends React.Component {
 
         assessments.forEach((assessment) => {
             assessment.briefs.forEach((brief) => {
-                if (!has(Object.keys(brief_assessments), brief.title)
+                if (!has(brief_assessments, brief.title)
                 ) {
 
                     brief_assessments[brief.title] = {
