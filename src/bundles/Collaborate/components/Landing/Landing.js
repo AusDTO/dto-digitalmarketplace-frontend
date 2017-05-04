@@ -99,6 +99,11 @@ class Landing extends React.Component {
                         <strong styleName="styles.pop" style={{color: '#5bcbe3'}}>106</strong> Future Ready
                         councils<br/>
                         <strong styleName="styles.pop">334</strong> Marketplace sellers<br/>
+                        <br/>
+                        <div>
+                            <p>Got an idea, pilot or<br/> live project to share?</p>
+                            <a href="/collaborate/project/new" role="button">Add your project</a><br/>
+                        </div>
                     </div>
                 </div>
                 <div style={{
@@ -287,7 +292,7 @@ class Landing extends React.Component {
                 <article style={{textAlign: "center"}}>
                     <h2>Join the Digital Marketplace</h2>
                     <div style={{ textAlign: "center"}} className="col-xs-12 col-md-4 col-md-push-2">
-                        <h3> Need to buy digital products and services?</h3>
+                        <h3>Need digital products or services for government?</h3>
                         <p>Our buyers are from across local, state, territory and federal government.</p>
                         <a href="/signup" className="button" style={{color:"white"}}>Join as a buyer</a>
                     </div>

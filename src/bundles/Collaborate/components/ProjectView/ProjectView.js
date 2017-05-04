@@ -11,25 +11,22 @@ class ProjectView extends React.Component {
     toggleConfirm(show = true) {
         this.setState({
             showConfirm: show
-        }, () => this.state.showConfirm && this.refs.confirm.focus());
+        }, () => showConfirm && this.refs.confirm.focus());
     }
 
     render() {
         const {
             title,
-            opportunity,
+            aim,
             client,
             contact_email,
             problem,
-            aim,
             users,
-            validation,
-            success,
+            progress,
             outcome,
             lessons,
             project_links,
             partner_links,
-            pilot_activities,
             about,
             stage,
             summary,
@@ -39,6 +36,17 @@ class ProjectView extends React.Component {
         } = this.props;
 
         const {showConfirm} = this.state;
+
+        let stage_name = 'project';
+        if (stage !== undefined) {
+            if (stage === 'Live') {
+                stage_name = 'launch';
+            } else if (stage === 'In build'){
+                stage_name = 'build';
+            } else {
+                stage_name = stage.toLowerCase();
+            }
+        }
 
         return (
             <div>
@@ -105,18 +113,6 @@ class ProjectView extends React.Component {
                             <h2>Aim</h2>
                             <p className="freetext">{newline(aim)}</p>
                         </section>}
-                        {opportunity && <section>
-                            <h2>Why is the work being done?</h2>
-                            <p className="freetext">{newline(opportunity)}</p>
-                        </section>}
-                        {pilot_activities && <section>
-                            <h2>About the pilot</h2>
-                            <p className="freetext">{newline(pilot_activities)}</p>
-                        </section>}
-                        {about && <section>
-                            <h2>About the build</h2>
-                            <p className="freetext">{newline(about)}</p>
-                        </section>}
                         {problem && <section>
                             <h2>What's the key problem to solve?</h2>
                             <p className="freetext">{newline(problem)}</p>
@@ -125,25 +121,24 @@ class ProjectView extends React.Component {
                             <h2>Who are the users and their needs?</h2>
                             <p className="freetext">{newline(users)}</p>
                         </section>}
-                        { validation && (<section>
-                            <h2>What do you need to validate the idea? - Do you have the abilty to validate this idea?
-                                If not, what do you need?</h2>
-                            <p className="freetext">{newline(validation)}</p>
-                        </section>) }
-                        {success && (<section>
-                            <h2>How would you measure the success?</h2>
-                            <p className="freetext">{newline(success)}</p>
+                        { progress && <section>
+                            <h2>What do you need to progress the idea further?</h2>
+                            <p className="freetext">{newline(progress)}</p>
+                        </section>}
+                        {about && <section>
+                            <h2>About the {stage_name}</h2>
+                            <p className="freetext">{newline(about)}</p>
+                        </section>}
+                        {lessons && (<section>
+                            <h2>Lessons learned</h2>
+                            <ul>
+                                {lessons && lessons.map((content, i) => <li key={i}>{content}</li>)}
+                            </ul>
                         </section>)}
                         {outcome && (<section>
                             <h2>Outcomes</h2>
                             <ul>
                                 {outcome && outcome.map((content, i) => <li key={i}>{content}</li>)}
-                            </ul>
-                        </section>)}
-                        {lessons && (<section>
-                            <h2>Lessons learned</h2>
-                            <ul>
-                                {lessons && lessons.map((content, i) => <li key={i}>{content}</li>)}
                             </ul>
                         </section>)}
                         {project_links && Object.keys(project_links).length > 0 && (
@@ -172,7 +167,7 @@ class ProjectView extends React.Component {
 
 ProjectView.propTypes = {
     title: PropTypes.string.isRequired,
-    opportunity: PropTypes.string.isRequired,
+    aim: PropTypes.string.isRequired,
     client: PropTypes.string.isRequired,
     about: PropTypes.string.isRequired,
     contact_email: PropTypes.string.isRequired,
@@ -180,9 +175,8 @@ ProjectView.propTypes = {
     partner_url:  PropTypes.string.isRequired,
     stage: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
+    progress: PropTypes.string.isRequired,
     service: PropTypes.string.isRequired,
-    pilot_activities: PropTypes.string.isRequired,
-    aim: PropTypes.string.isRequired,
     problem: PropTypes.string.isRequired,
     users: PropTypes.string.isRequired,
     timeframe: PropTypes.string.isRequired,
