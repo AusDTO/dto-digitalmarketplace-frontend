@@ -77,19 +77,6 @@ exports[`ProjectViewWidget renders without errrors 1`] = `
       >
         <section>
           <h2>
-            Why is the work being done?
-          </h2>
-          <p
-            className="freetext"
-          >
-            <span>
-              A Case Study Opportunity
-              <br />
-            </span>
-          </p>
-        </section>
-        <section>
-          <h2>
             What's the key problem to solve?
           </h2>
           <p

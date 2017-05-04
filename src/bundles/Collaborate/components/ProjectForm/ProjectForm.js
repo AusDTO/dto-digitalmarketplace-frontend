@@ -71,13 +71,27 @@ class ProjectForm extends BaseForm {
             buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Project';
         }
 
+
+        let stage_name = 'project';
+        if (this.state.stage !== undefined) {
+            if (this.state.stage === 'Live') {
+                stage_name = 'launch';
+            } else if (this.state.stage === 'In build'){
+                stage_name = 'build';
+            } else {
+                stage_name = this.state.stage.toLowerCase();
+            }
+        }
+
         return (
             <Layout>
                 <header>
 
                     <h1 tabIndex="-1" ref="header"
-                        aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} project</h1>
-
+                        aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add a'} project</h1>
+                    <p>Share ideas for collaboration, or lessons learned building smarter communities and digital
+                        services. Projects will be added to the new collaboration area on the Marketplace in the coming
+                        weeks.</p>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -126,16 +140,15 @@ class ProjectForm extends BaseForm {
                             name="client"
                             id="client"
                             htmlFor="client"
-                            label="Which council was involved?"
+                            label="Which local, state or federal government body is involved? "
                             validators={{required}}
                             messages={{
-                                required: 'Council is required',
+                                required: 'Government body is required',
                             }}/>
 
 
                         <fieldset>
-                            <legend>Project stage?</legend>
-
+                            <legend>What stage is the project at?</legend>
 
                             <StatefulError
                                 model={`${model}.stage`}
@@ -150,6 +163,7 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="idea"
                                 value="Idea"
+                                description="You have a problem or opportunity to explore."
                                 validators={{
                                     required
                                 }}/>
@@ -162,6 +176,7 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="discovery"
                                 value="Discovery"
+                                description="Researching user needs, understanding policy intent and technology constraints."
                                 validators={{
                                     required
                                 }}/>
@@ -174,6 +189,7 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="pilot"
                                 value="Pilot"
+                                description="Prototyping and iterating solutions to explore how to meet your users’ needs. "
                                 validators={{
                                     required
                                 }}/>
@@ -186,7 +202,8 @@ class ProjectForm extends BaseForm {
                                 onClick={this.onChangeState.bind(this)}
                                 name="stage"
                                 id="inBuild"
-                                value="In Build"
+                                value="Build"
+                                description="In the process of delivering a live implementation."
                                 validators={{
                                     required
                                 }}/>
@@ -200,6 +217,7 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="live"
                                 value="Live"
+                                description="Teams and processes in place operating and improving the live service. "
                                 validators={{
                                     required
                                 }}/>
@@ -214,26 +232,26 @@ class ProjectForm extends BaseForm {
                             name="service"
                             id="service"
                             htmlFor="service"
-                            label="What council activity does it relate to?"
+                            label="What service or activity does the project relate to?"
                             description="eg. Planning, Roads and Parking, Community Services, Waste Management"
                             validators={{required}}
                             messages={{
-                                required: 'Council activity is required',
+                                required: 'Service/activity is required',
                             }}/>
-
-                        <Textarea
-                            model={`${model}.opportunity`}
-                            name="opportunity"
-                            id="opportunity"
+                        { this.state.stage !== 'Idea' && <Textarea
+                            model={`${model}.aim`}
+                            name="aim"
+                            id="aim"
                             controlProps={{limit: 200}}
-                            label="Why is the work being done? What is the opportunity?"
+                            label="Why is the work being done?"
                             description="Describe the project goal and any relevant background information."
                             messages={{
-                                required: 'You must outline the opportunity'
+                                required: 'You must outline the aim'
                             }}
                             validators={{required}}
-                        />
-                        { this.state.stage == 'Idea' && (<div>
+                        /> }
+                        { (this.state.stage === 'Idea' || this.state.stage === 'Discovery') && (<div>
+
                         <Textarea
                             model={`${model}.problem`}
                             name="problem"
@@ -247,20 +265,20 @@ class ProjectForm extends BaseForm {
                             validators={{required}}
                         />
 
-                        <Textarea
-                            model={`${model}.users`}
-                            name="users"
-                            id="users"
-                            controlProps={{limit: 200}}
-                            label="Who are the users and their needs?"
-                            description=""
-                            messages={{
-                                required: 'You must outline the key users'
-                            }}
-                            validators={{required}}
-                        />
-
-                        <Textarea
+                            <Textarea
+                                model={`${model}.users`}
+                                name="users"
+                                id="users"
+                                controlProps={{limit: 200}}
+                                label="Who are the users and their needs?"
+                                description=""
+                                messages={{
+                                    required: 'You must outline the key users'
+                                }}
+                                validators={{required}}
+                            />
+                        </div>)}
+                        { this.state.stage === 'Idea' && <Textarea
                             model={`${model}.progress`}
                             name="progress"
                             id="progress"
@@ -271,19 +289,43 @@ class ProjectForm extends BaseForm {
                                 required: 'You must outline what you need to progress the idea'
                             }}
                             validators={{required}}
-                        /></div>) }
+                        /> }
 
-                        <MultiInput
-                            id="outcome"
-                            model={`${model}.outcome`}
-                            name="outcome"
-                            htmlFor="outcome"
-                            label="What was the outcome?"
-                            controlProps={{defaultRows: 2}}
-                            description="List the key achievements of this project."
-                            messages={{required: 'You must provide at least one outcome.'}}
-                            validators={{required}}
-                        />
+
+                        { this.state.stage !== 'Idea' && (<div>
+                            <Textarea
+                                model={`${model}.about`}
+                                name="about"
+                                id="about"
+                                controlProps={{limit: 200}}
+                                label={"What " + stage_name + " activities are you doing / did you do?"}
+                                description=""
+                                messages={{
+                                    required: 'You must outline about the ' + stage_name
+                                }}
+                                validators={{required}}
+                            />
+                            <MultiInput
+                                id="lessons"
+                                model={`${model}.lessons`}
+                                name="lessons"
+                                htmlFor="lessons"
+                                label="Lessons learned"
+                                controlProps={{defaultRows: 2}}
+                                description="What advice would you give others considering this type of project? Did anything made you pivot or adjust course?"
+                            />
+                            <MultiInput
+                                id="outcome"
+                                model={`${model}.outcome`}
+                                name="outcome"
+                                htmlFor="outcome"
+                                label="What was the outcome?"
+                                controlProps={{defaultRows: 2}}
+                                description="List the key achievements of this project."
+                                messages={{required: 'You must provide at least one outcome.'}}
+                                validators={{required}}
+                            />
+                        </div>)}
 
                         <MultiInput
                             id="partner_links"
@@ -292,7 +334,7 @@ class ProjectForm extends BaseForm {
                             htmlFor="partner_links"
                             label="Partner links (optional)"
                             controlProps={{defaultRows: 2}}
-                            description="Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http"
+                            description="Link to any supporting material or partner website. Links must begin with http"
                             messages={{validLinks: 'Links must begin with \'http\''}}
                             validators={{validLinks}}
                         />
@@ -304,7 +346,7 @@ class ProjectForm extends BaseForm {
                             htmlFor="project_links"
                             label="Project links (optional)"
                             controlProps={{defaultRows: 2}}
-                            description="Link to any supporting material for your project. This can include a project on your website, project video or the live project. Links must begin with http"
+                            description="Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http"
                             messages={{validLinks: 'Links must begin with \'http\''}}
                             validators={{validLinks}}
                         />
@@ -313,7 +355,7 @@ class ProjectForm extends BaseForm {
 
                         <Textfield
                             model={`${model}.contact_name`}
-                            name="contactName"
+                            name="contact_name"
                             id="contactName"
                             htmlFor="contactName"
                             label="Contact's name"
@@ -324,7 +366,7 @@ class ProjectForm extends BaseForm {
 
                         <Textfield
                             model={`${model}.contact_email`}
-                            name="contactEmail"
+                            name="contact_email"
                             id="contactEmail"
                             htmlFor="contactEmail"
                             label="Project contact email"
@@ -346,7 +388,7 @@ class ProjectForm extends BaseForm {
                             <Control.checkbox
                                 model={`${model}.contact_agreed`}
                                 id="contactAgreed"
-                                name="contactAgreed"
+                                name="contact_agreed"
                                 validators={{required}}
                             />
                             <label htmlFor="contactAgreed">I confirm this person gives permission to be contacted and

@@ -78,27 +78,6 @@ exports[`ProjectView with required attributes 1`] = `
       >
         <section>
           <h2>
-            Why is the work being done?
-          </h2>
-          <p
-            className="freetext"
-          >
-            <span>
-              Council owns assets across the City of Casey that are provided for the benefit of the community. These assets include community facilities, roads, buildings, trees, parks, drains, sports grounds, play grounds and nature reserves. These assets require an ongoing commitment from Council to manage their operations and to maintain them, or to renew, upgrade or expand the assets when they reach the end of their useful life. Council is committed (per the Asset Management Policy) to looking after these assets in a way that meets the expectations of present and future residents, at the lowest economic and environmental cost.
-              <br />
-            </span>
-            <span>
-              
-              <br />
-            </span>
-            <span>
-              Council maintains several datasets that contain information about these assets. Ideally, these datasets would be used to draw insights to inform long term strategic and budget decisions. We believe there are opportunities to link up our datasets and apply statistical & predictive modelling to save money and improve asset management.
-              <br />
-            </span>
-          </p>
-        </section>
-        <section>
-          <h2>
             What's the key problem to solve?
           </h2>
           <p
@@ -261,27 +240,6 @@ exports[`ProjectView with required attributes and meta links 1`] = `
         className="col-sm-7 col-xs-12"
         role="main"
       >
-        <section>
-          <h2>
-            Why is the work being done?
-          </h2>
-          <p
-            className="freetext"
-          >
-            <span>
-              Council owns assets across the City of Casey that are provided for the benefit of the community. These assets include community facilities, roads, buildings, trees, parks, drains, sports grounds, play grounds and nature reserves. These assets require an ongoing commitment from Council to manage their operations and to maintain them, or to renew, upgrade or expand the assets when they reach the end of their useful life. Council is committed (per the Asset Management Policy) to looking after these assets in a way that meets the expectations of present and future residents, at the lowest economic and environmental cost.
-              <br />
-            </span>
-            <span>
-              
-              <br />
-            </span>
-            <span>
-              Council maintains several datasets that contain information about these assets. Ideally, these datasets would be used to draw insights to inform long term strategic and budget decisions. We believe there are opportunities to link up our datasets and apply statistical & predictive modelling to save money and improve asset management.
-              <br />
-            </span>
-          </p>
-        </section>
         <section>
           <h2>
             What's the key problem to solve?

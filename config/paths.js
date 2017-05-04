@@ -65,6 +65,7 @@ var config = {
     'collaborate-landing': [resolveApp('src/bundles/Collaborate/CollaborateLandingWidget')],
       'project-view': [resolveApp('src/bundles/Collaborate/ProjectViewWidget')],
       'project-form': [resolveApp('src/bundles/Collaborate/ProjectFormWidget')],
+      'project-submit-confirmation':[resolveApp('src/bundles/Collaborate/ProjectSubmitConfirmationWidget')],
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),

@@ -9,9 +9,12 @@ exports[`ProjectForm renders 1`] = `
       aria-describedby="header-description"
       tabIndex="-1"
     >
-      Add
+      Add a
        project
     </h1>
+    <p>
+      Share ideas for collaboration, or lessons learned building smarter communities and digital services. Projects will be added to the new collaboration area on the Marketplace in the coming weeks.
+    </p>
   </header>
   <article
     role="main"
@@ -89,7 +92,7 @@ exports[`ProjectForm renders 1`] = `
           className="question-heading"
           htmlFor="client"
         >
-          Which council was involved?
+          Which local, state or federal government body is involved? 
         </label>
         <input
           aria-describedby={undefined}
@@ -110,10 +113,11 @@ exports[`ProjectForm renders 1`] = `
       </div>
       <fieldset>
         <legend>
-          Project stage?
+          What stage is the project at?
         </legend>
         <input
           checked={false}
+          description="You have a problem or opportunity to explore."
           disabled={false}
           id="idea"
           name="stage"
@@ -132,6 +136,7 @@ exports[`ProjectForm renders 1`] = `
         </label>
         <input
           checked={false}
+          description="Researching user needs, understanding policy intent and technology constraints."
           disabled={false}
           id="discovery"
           name="stage"
@@ -150,6 +155,7 @@ exports[`ProjectForm renders 1`] = `
         </label>
         <input
           checked={false}
+          description="Prototyping and iterating solutions to explore how to meet your users’ needs. "
           disabled={false}
           id="pilot"
           name="stage"
@@ -168,6 +174,7 @@ exports[`ProjectForm renders 1`] = `
         </label>
         <input
           checked={false}
+          description="In the process of delivering a live implementation."
           disabled={false}
           id="inBuild"
           name="stage"
@@ -177,7 +184,7 @@ exports[`ProjectForm renders 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
-          value="In Build"
+          value="Build"
         />
         <label
           htmlFor="inBuild"
@@ -186,6 +193,7 @@ exports[`ProjectForm renders 1`] = `
         </label>
         <input
           checked={false}
+          description="Teams and processes in place operating and improving the live service. "
           disabled={false}
           id="live"
           name="stage"
@@ -210,7 +218,7 @@ exports[`ProjectForm renders 1`] = `
           className="question-heading"
           htmlFor="service"
         >
-          What council activity does it relate to?
+          What service or activity does the project relate to?
         </label>
         <p
           className="hint"
@@ -240,23 +248,23 @@ exports[`ProjectForm renders 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="opportunity"
+          htmlFor="aim"
         >
-          Why is the work being done? What is the opportunity?
+          Why is the work being done?
         </label>
         <p
           className="hint"
-          id="opportunity-hint"
+          id="aim-hint"
         >
           Describe the project goal and any relevant background information.
         </p>
         <div>
           <textarea
-            aria-describedby="opportunity-hint"
+            aria-describedby="aim-hint"
             className="under-200"
             defaultValue=""
-            id="opportunity"
-            name="opportunity"
+            id="aim"
+            name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -268,93 +276,212 @@ exports[`ProjectForm renders 1`] = `
           </span>
         </div>
       </div>
-      <div
-        className="field"
-      >
-        <label
-          htmlFor="outcome"
+      <div>
+        <div
+          className="field"
         >
-          What was the outcome?
-        </label>
-        <p
-          className="hint"
-          id="outcome-hint"
-        >
-          List the key achievements of this project.
-        </p>
-        <div>
-          <div
-            className="list-entry row"
+          <label
+            className="question-heading"
+            htmlFor="about"
           >
-            <div
-              className="col-xs-12 col-sm-9"
+            What project activities are you doing / did you do?
+          </label>
+          
+          <div>
+            <textarea
+              aria-describedby=""
+              className="under-200"
+              defaultValue=""
+              id="about"
+              name="about"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+            />
+            <span
+              className="word-count-counter"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
-              >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
-            </div>
+              200 words remaining
+            </span>
           </div>
-          <div
-            className="list-entry row"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="lessons"
           >
+            Lessons learned
+          </label>
+          <p
+            className="hint"
+            id="lessons-hint"
+          >
+            What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
+          </p>
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-0"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-1"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="outcome"
           >
-            Add another row
-          </button>
+            What was the outcome?
+          </label>
+          <p
+            className="hint"
+            id="outcome-hint"
+          >
+            List the key achievements of this project.
+          </p>
+          <div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
+            </div>
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              type="button"
+            >
+              Add another row
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -369,7 +496,7 @@ exports[`ProjectForm renders 1`] = `
           className="hint"
           id="partner_links-hint"
         >
-          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+          Link to any supporting material or partner website. Links must begin with http
         </p>
         <div>
           <div
@@ -458,7 +585,7 @@ exports[`ProjectForm renders 1`] = `
           className="hint"
           id="project_links-hint"
         >
-          Link to any supporting material for your project. This can include a project on your website, project video or the live project. Links must begin with http
+          Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http
         </p>
         <div>
           <div
@@ -559,7 +686,7 @@ exports[`ProjectForm renders 1`] = `
           disabled={false}
           id="contactName"
           maxLength={undefined}
-          name="contactName"
+          name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -585,7 +712,7 @@ exports[`ProjectForm renders 1`] = `
           disabled={false}
           id="contactEmail"
           maxLength={undefined}
-          name="contactEmail"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -601,7 +728,7 @@ exports[`ProjectForm renders 1`] = `
           checked={false}
           disabled={false}
           id="contactAgreed"
-          name="contactAgreed"
+          name="contact_agreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -635,6 +762,9 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
       Edit
        project
     </h1>
+    <p>
+      Share ideas for collaboration, or lessons learned building smarter communities and digital services. Projects will be added to the new collaboration area on the Marketplace in the coming weeks.
+    </p>
   </header>
   <article
     role="main"
@@ -712,7 +842,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className="question-heading"
           htmlFor="client"
         >
-          Which council was involved?
+          Which local, state or federal government body is involved? 
         </label>
         <input
           aria-describedby={undefined}
@@ -733,10 +863,11 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
       </div>
       <fieldset>
         <legend>
-          Project stage?
+          What stage is the project at?
         </legend>
         <input
           checked={false}
+          description="You have a problem or opportunity to explore."
           disabled={false}
           id="idea"
           name="stage"
@@ -755,6 +886,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         </label>
         <input
           checked={false}
+          description="Researching user needs, understanding policy intent and technology constraints."
           disabled={false}
           id="discovery"
           name="stage"
@@ -773,6 +905,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         </label>
         <input
           checked={false}
+          description="Prototyping and iterating solutions to explore how to meet your users’ needs. "
           disabled={false}
           id="pilot"
           name="stage"
@@ -791,6 +924,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         </label>
         <input
           checked={false}
+          description="In the process of delivering a live implementation."
           disabled={false}
           id="inBuild"
           name="stage"
@@ -800,7 +934,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
-          value="In Build"
+          value="Build"
         />
         <label
           htmlFor="inBuild"
@@ -809,6 +943,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         </label>
         <input
           checked={false}
+          description="Teams and processes in place operating and improving the live service. "
           disabled={false}
           id="live"
           name="stage"
@@ -833,7 +968,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className="question-heading"
           htmlFor="service"
         >
-          What council activity does it relate to?
+          What service or activity does the project relate to?
         </label>
         <p
           className="hint"
@@ -863,23 +998,23 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="opportunity"
+          htmlFor="aim"
         >
-          Why is the work being done? What is the opportunity?
+          Why is the work being done?
         </label>
         <p
           className="hint"
-          id="opportunity-hint"
+          id="aim-hint"
         >
           Describe the project goal and any relevant background information.
         </p>
         <div>
           <textarea
-            aria-describedby="opportunity-hint"
+            aria-describedby="aim-hint"
             className="under-200"
             defaultValue=""
-            id="opportunity"
-            name="opportunity"
+            id="aim"
+            name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -891,93 +1026,212 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           </span>
         </div>
       </div>
-      <div
-        className="field"
-      >
-        <label
-          htmlFor="outcome"
+      <div>
+        <div
+          className="field"
         >
-          What was the outcome?
-        </label>
-        <p
-          className="hint"
-          id="outcome-hint"
-        >
-          List the key achievements of this project.
-        </p>
-        <div>
-          <div
-            className="list-entry row"
+          <label
+            className="question-heading"
+            htmlFor="about"
           >
-            <div
-              className="col-xs-12 col-sm-9"
+            What project activities are you doing / did you do?
+          </label>
+          
+          <div>
+            <textarea
+              aria-describedby=""
+              className="under-200"
+              defaultValue=""
+              id="about"
+              name="about"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+            />
+            <span
+              className="word-count-counter"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
-              >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
-            </div>
+              200 words remaining
+            </span>
           </div>
-          <div
-            className="list-entry row"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="lessons"
           >
+            Lessons learned
+          </label>
+          <p
+            className="hint"
+            id="lessons-hint"
+          >
+            What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
+          </p>
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-0"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-1"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="outcome"
           >
-            Add another row
-          </button>
+            What was the outcome?
+          </label>
+          <p
+            className="hint"
+            id="outcome-hint"
+          >
+            List the key achievements of this project.
+          </p>
+          <div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
+            </div>
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              type="button"
+            >
+              Add another row
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -992,7 +1246,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className="hint"
           id="partner_links-hint"
         >
-          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+          Link to any supporting material or partner website. Links must begin with http
         </p>
         <div>
           <div
@@ -1081,7 +1335,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className="hint"
           id="project_links-hint"
         >
-          Link to any supporting material for your project. This can include a project on your website, project video or the live project. Links must begin with http
+          Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http
         </p>
         <div>
           <div
@@ -1182,7 +1436,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           disabled={false}
           id="contactName"
           maxLength={undefined}
-          name="contactName"
+          name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1208,7 +1462,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           disabled={false}
           id="contactEmail"
           maxLength={undefined}
-          name="contactEmail"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1224,7 +1478,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           checked={false}
           disabled={false}
           id="contactAgreed"
-          name="contactAgreed"
+          name="contact_agreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -1255,9 +1509,12 @@ exports[`ProjectForm renders with errors 1`] = `
       aria-describedby="header-description"
       tabIndex="-1"
     >
-      Add
+      Add a
        project
     </h1>
+    <p>
+      Share ideas for collaboration, or lessons learned building smarter communities and digital services. Projects will be added to the new collaboration area on the Marketplace in the coming weeks.
+    </p>
   </header>
   <article
     role="main"
@@ -1292,7 +1549,7 @@ exports[`ProjectForm renders with errors 1`] = `
           <a
             href="#client"
           >
-            Council is required
+            Government body is required
           </a>
         </li>
         <li>
@@ -1306,14 +1563,21 @@ exports[`ProjectForm renders with errors 1`] = `
           <a
             href="#service"
           >
-            Council activity is required
+            Service/activity is required
           </a>
         </li>
         <li>
           <a
-            href="#opportunity"
+            href="#aim"
           >
-            You must outline the opportunity
+            You must outline the aim
+          </a>
+        </li>
+        <li>
+          <a
+            href="#about"
+          >
+            You must outline about the project
           </a>
         </li>
         <li>
@@ -1451,7 +1715,7 @@ exports[`ProjectForm renders with errors 1`] = `
           className="question-heading"
           htmlFor="client"
         >
-          Which council was involved?
+          Which local, state or federal government body is involved? 
         </label>
         <a
           className="validation-message"
@@ -1463,7 +1727,7 @@ exports[`ProjectForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            Council is required
+            Government body is required
           </span>
         </a>
         <input
@@ -1485,7 +1749,7 @@ exports[`ProjectForm renders with errors 1`] = `
       </div>
       <fieldset>
         <legend>
-          Project stage?
+          What stage is the project at?
         </legend>
         <a
           className="validation-message"
@@ -1502,6 +1766,7 @@ exports[`ProjectForm renders with errors 1`] = `
         </a>
         <input
           checked={false}
+          description="You have a problem or opportunity to explore."
           disabled={false}
           id="idea"
           name="stage"
@@ -1520,6 +1785,7 @@ exports[`ProjectForm renders with errors 1`] = `
         </label>
         <input
           checked={false}
+          description="Researching user needs, understanding policy intent and technology constraints."
           disabled={false}
           id="discovery"
           name="stage"
@@ -1538,6 +1804,7 @@ exports[`ProjectForm renders with errors 1`] = `
         </label>
         <input
           checked={false}
+          description="Prototyping and iterating solutions to explore how to meet your users’ needs. "
           disabled={false}
           id="pilot"
           name="stage"
@@ -1556,6 +1823,7 @@ exports[`ProjectForm renders with errors 1`] = `
         </label>
         <input
           checked={false}
+          description="In the process of delivering a live implementation."
           disabled={false}
           id="inBuild"
           name="stage"
@@ -1565,7 +1833,7 @@ exports[`ProjectForm renders with errors 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
-          value="In Build"
+          value="Build"
         />
         <label
           htmlFor="inBuild"
@@ -1574,6 +1842,7 @@ exports[`ProjectForm renders with errors 1`] = `
         </label>
         <input
           checked={false}
+          description="Teams and processes in place operating and improving the live service. "
           disabled={false}
           id="live"
           name="stage"
@@ -1598,7 +1867,7 @@ exports[`ProjectForm renders with errors 1`] = `
           className="question-heading"
           htmlFor="service"
         >
-          What council activity does it relate to?
+          What service or activity does the project relate to?
         </label>
         <p
           className="hint"
@@ -1616,7 +1885,7 @@ exports[`ProjectForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            Council activity is required
+            Service/activity is required
           </span>
         </a>
         <input
@@ -1641,19 +1910,19 @@ exports[`ProjectForm renders with errors 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="opportunity"
+          htmlFor="aim"
         >
-          Why is the work being done? What is the opportunity?
+          Why is the work being done?
         </label>
         <p
           className="hint"
-          id="opportunity-hint"
+          id="aim-hint"
         >
           Describe the project goal and any relevant background information.
         </p>
         <a
           className="validation-message"
-          href="#opportunity"
+          href="#aim"
         >
           <span
             className="visuallyhidden"
@@ -1661,16 +1930,16 @@ exports[`ProjectForm renders with errors 1`] = `
             Validation Error: 
           </span>
           <span>
-            You must outline the opportunity
+            You must outline the aim
           </span>
         </a>
         <div>
           <textarea
-            aria-describedby="opportunity-hint"
+            aria-describedby="aim-hint"
             className="invalid under-200"
             defaultValue=""
-            id="opportunity"
-            name="opportunity"
+            id="aim"
+            name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -1682,106 +1951,238 @@ exports[`ProjectForm renders with errors 1`] = `
           </span>
         </div>
       </div>
-      <div
-        className="field"
-      >
-        <label
-          htmlFor="outcome"
+      <div>
+        <div
+          className="field"
         >
-          What was the outcome?
-        </label>
-        <p
-          className="hint"
-          id="outcome-hint"
-        >
-          List the key achievements of this project.
-        </p>
-        <a
-          className="validation-message"
-          href="#outcome"
-        >
-          <span
-            className="visuallyhidden"
+          <label
+            className="question-heading"
+            htmlFor="about"
           >
-            Validation Error: 
-          </span>
-          <span>
-            You must provide at least one outcome.
-          </span>
-        </a>
-        <div>
-          <div
-            className="list-entry row"
+            What project activities are you doing / did you do?
+          </label>
+          
+          <a
+            className="validation-message"
+            href="#about"
           >
-            <div
-              className="col-xs-12 col-sm-9"
+            <span
+              className="visuallyhidden"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
-              >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box invalid"
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
-            </div>
+              Validation Error: 
+            </span>
+            <span>
+              You must outline about the project
+            </span>
+          </a>
+          <div>
+            <textarea
+              aria-describedby=""
+              className="invalid under-200"
+              defaultValue=""
+              id="about"
+              name="about"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+            />
+            <span
+              className="word-count-counter"
+            >
+              200 words remaining
+            </span>
           </div>
-          <div
-            className="list-entry row"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="lessons"
           >
+            Lessons learned
+          </label>
+          <p
+            className="hint"
+            id="lessons-hint"
+          >
+            What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
+          </p>
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box invalid"
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-0"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-1"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="outcome"
           >
-            Add another row
-          </button>
+            What was the outcome?
+          </label>
+          <p
+            className="hint"
+            id="outcome-hint"
+          >
+            List the key achievements of this project.
+          </p>
+          <a
+            className="validation-message"
+            href="#outcome"
+          >
+            <span
+              className="visuallyhidden"
+            >
+              Validation Error: 
+            </span>
+            <span>
+              You must provide at least one outcome.
+            </span>
+          </a>
+          <div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box invalid"
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box invalid"
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
+            </div>
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              type="button"
+            >
+              Add another row
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -1796,7 +2197,7 @@ exports[`ProjectForm renders with errors 1`] = `
           className="hint"
           id="partner_links-hint"
         >
-          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+          Link to any supporting material or partner website. Links must begin with http
         </p>
         <div>
           <div
@@ -1885,7 +2286,7 @@ exports[`ProjectForm renders with errors 1`] = `
           className="hint"
           id="project_links-hint"
         >
-          Link to any supporting material for your project. This can include a project on your website, project video or the live project. Links must begin with http
+          Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http
         </p>
         <div>
           <div
@@ -1999,7 +2400,7 @@ exports[`ProjectForm renders with errors 1`] = `
           disabled={false}
           id="contactName"
           maxLength={undefined}
-          name="contactName"
+          name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2038,7 +2439,7 @@ exports[`ProjectForm renders with errors 1`] = `
           disabled={false}
           id="contactEmail"
           maxLength={undefined}
-          name="contactEmail"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2067,7 +2468,7 @@ exports[`ProjectForm renders with errors 1`] = `
           checked={false}
           disabled={false}
           id="contactAgreed"
-          name="contactAgreed"
+          name="contact_agreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2098,9 +2499,12 @@ exports[`ProjectForm renders with form_options 1`] = `
       aria-describedby="header-description"
       tabIndex="-1"
     >
-      Add
+      Add a
        project
     </h1>
+    <p>
+      Share ideas for collaboration, or lessons learned building smarter communities and digital services. Projects will be added to the new collaboration area on the Marketplace in the coming weeks.
+    </p>
   </header>
   <article
     role="main"
@@ -2184,7 +2588,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           className="question-heading"
           htmlFor="client"
         >
-          Which council was involved?
+          Which local, state or federal government body is involved? 
         </label>
         <input
           aria-describedby={undefined}
@@ -2205,10 +2609,11 @@ exports[`ProjectForm renders with form_options 1`] = `
       </div>
       <fieldset>
         <legend>
-          Project stage?
+          What stage is the project at?
         </legend>
         <input
           checked={false}
+          description="You have a problem or opportunity to explore."
           disabled={false}
           id="idea"
           name="stage"
@@ -2227,6 +2632,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         </label>
         <input
           checked={false}
+          description="Researching user needs, understanding policy intent and technology constraints."
           disabled={false}
           id="discovery"
           name="stage"
@@ -2245,6 +2651,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         </label>
         <input
           checked={false}
+          description="Prototyping and iterating solutions to explore how to meet your users’ needs. "
           disabled={false}
           id="pilot"
           name="stage"
@@ -2263,6 +2670,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         </label>
         <input
           checked={false}
+          description="In the process of delivering a live implementation."
           disabled={false}
           id="inBuild"
           name="stage"
@@ -2272,7 +2680,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
-          value="In Build"
+          value="Build"
         />
         <label
           htmlFor="inBuild"
@@ -2281,6 +2689,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         </label>
         <input
           checked={false}
+          description="Teams and processes in place operating and improving the live service. "
           disabled={false}
           id="live"
           name="stage"
@@ -2305,7 +2714,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           className="question-heading"
           htmlFor="service"
         >
-          What council activity does it relate to?
+          What service or activity does the project relate to?
         </label>
         <p
           className="hint"
@@ -2335,23 +2744,23 @@ exports[`ProjectForm renders with form_options 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="opportunity"
+          htmlFor="aim"
         >
-          Why is the work being done? What is the opportunity?
+          Why is the work being done?
         </label>
         <p
           className="hint"
-          id="opportunity-hint"
+          id="aim-hint"
         >
           Describe the project goal and any relevant background information.
         </p>
         <div>
           <textarea
-            aria-describedby="opportunity-hint"
+            aria-describedby="aim-hint"
             className="under-200"
             defaultValue=""
-            id="opportunity"
-            name="opportunity"
+            id="aim"
+            name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -2363,93 +2772,212 @@ exports[`ProjectForm renders with form_options 1`] = `
           </span>
         </div>
       </div>
-      <div
-        className="field"
-      >
-        <label
-          htmlFor="outcome"
+      <div>
+        <div
+          className="field"
         >
-          What was the outcome?
-        </label>
-        <p
-          className="hint"
-          id="outcome-hint"
-        >
-          List the key achievements of this project.
-        </p>
-        <div>
-          <div
-            className="list-entry row"
+          <label
+            className="question-heading"
+            htmlFor="about"
           >
-            <div
-              className="col-xs-12 col-sm-9"
+            What project activities are you doing / did you do?
+          </label>
+          
+          <div>
+            <textarea
+              aria-describedby=""
+              className="under-200"
+              defaultValue=""
+              id="about"
+              name="about"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+            />
+            <span
+              className="word-count-counter"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
-              >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
-            </div>
+              200 words remaining
+            </span>
           </div>
-          <div
-            className="list-entry row"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="lessons"
           >
+            Lessons learned
+          </label>
+          <p
+            className="hint"
+            id="lessons-hint"
+          >
+            What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
+          </p>
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-0"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-1"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="outcome"
           >
-            Add another row
-          </button>
+            What was the outcome?
+          </label>
+          <p
+            className="hint"
+            id="outcome-hint"
+          >
+            List the key achievements of this project.
+          </p>
+          <div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
+            </div>
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              type="button"
+            >
+              Add another row
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -2464,7 +2992,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           className="hint"
           id="partner_links-hint"
         >
-          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+          Link to any supporting material or partner website. Links must begin with http
         </p>
         <div>
           <div
@@ -2553,7 +3081,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           className="hint"
           id="project_links-hint"
         >
-          Link to any supporting material for your project. This can include a project on your website, project video or the live project. Links must begin with http
+          Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http
         </p>
         <div>
           <div
@@ -2654,7 +3182,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           disabled={false}
           id="contactName"
           maxLength={undefined}
-          name="contactName"
+          name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2680,7 +3208,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           disabled={false}
           id="contactEmail"
           maxLength={undefined}
-          name="contactEmail"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2696,7 +3224,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           checked={false}
           disabled={false}
           id="contactAgreed"
-          name="contactAgreed"
+          name="contact_agreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -2727,9 +3255,12 @@ exports[`ProjectForm renders with populated fields 1`] = `
       aria-describedby="header-description"
       tabIndex="-1"
     >
-      Add
+      Add a
        project
     </h1>
+    <p>
+      Share ideas for collaboration, or lessons learned building smarter communities and digital services. Projects will be added to the new collaboration area on the Marketplace in the coming weeks.
+    </p>
   </header>
   <article
     role="main"
@@ -2807,7 +3338,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className="question-heading"
           htmlFor="client"
         >
-          Which council was involved?
+          Which local, state or federal government body is involved? 
         </label>
         <input
           aria-describedby={undefined}
@@ -2828,10 +3359,11 @@ exports[`ProjectForm renders with populated fields 1`] = `
       </div>
       <fieldset>
         <legend>
-          Project stage?
+          What stage is the project at?
         </legend>
         <input
           checked={false}
+          description="You have a problem or opportunity to explore."
           disabled={false}
           id="idea"
           name="stage"
@@ -2850,6 +3382,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         </label>
         <input
           checked={false}
+          description="Researching user needs, understanding policy intent and technology constraints."
           disabled={false}
           id="discovery"
           name="stage"
@@ -2868,6 +3401,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         </label>
         <input
           checked={false}
+          description="Prototyping and iterating solutions to explore how to meet your users’ needs. "
           disabled={false}
           id="pilot"
           name="stage"
@@ -2886,6 +3420,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         </label>
         <input
           checked={false}
+          description="In the process of delivering a live implementation."
           disabled={false}
           id="inBuild"
           name="stage"
@@ -2895,7 +3430,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           type="radio"
-          value="In Build"
+          value="Build"
         />
         <label
           htmlFor="inBuild"
@@ -2904,6 +3439,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         </label>
         <input
           checked={false}
+          description="Teams and processes in place operating and improving the live service. "
           disabled={false}
           id="live"
           name="stage"
@@ -2928,7 +3464,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className="question-heading"
           htmlFor="service"
         >
-          What council activity does it relate to?
+          What service or activity does the project relate to?
         </label>
         <p
           className="hint"
@@ -2958,23 +3494,23 @@ exports[`ProjectForm renders with populated fields 1`] = `
       >
         <label
           className="question-heading"
-          htmlFor="opportunity"
+          htmlFor="aim"
         >
-          Why is the work being done? What is the opportunity?
+          Why is the work being done?
         </label>
         <p
           className="hint"
-          id="opportunity-hint"
+          id="aim-hint"
         >
           Describe the project goal and any relevant background information.
         </p>
         <div>
           <textarea
-            aria-describedby="opportunity-hint"
+            aria-describedby="aim-hint"
             className="under-200"
-            defaultValue="The opportunity/aim/goal"
-            id="opportunity"
-            name="opportunity"
+            defaultValue=""
+            id="aim"
+            name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -2982,97 +3518,216 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <span
             className="word-count-counter"
           >
-            198 words remaining
+            200 words remaining
           </span>
         </div>
       </div>
-      <div
-        className="field"
-      >
-        <label
-          htmlFor="outcome"
+      <div>
+        <div
+          className="field"
         >
-          What was the outcome?
-        </label>
-        <p
-          className="hint"
-          id="outcome-hint"
-        >
-          List the key achievements of this project.
-        </p>
-        <div>
-          <div
-            className="list-entry row"
+          <label
+            className="question-heading"
+            htmlFor="about"
           >
-            <div
-              className="col-xs-12 col-sm-9"
+            What project activities are you doing / did you do?
+          </label>
+          
+          <div>
+            <textarea
+              aria-describedby=""
+              className="under-200"
+              defaultValue=""
+              id="about"
+              name="about"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+            />
+            <span
+              className="word-count-counter"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
-              >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue="Outcome 1"
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
-            </div>
+              200 words remaining
+            </span>
           </div>
-          <div
-            className="list-entry row"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="lessons"
           >
+            Lessons learned
+          </label>
+          <p
+            className="hint"
+            id="lessons-hint"
+          >
+            What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
+          </p>
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue="Outcome 2"
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-0"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="lessons-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="lessons-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="lessons-1"
+                  name="lessons[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="outcome"
           >
-            Add another row
-          </button>
+            What was the outcome?
+          </label>
+          <p
+            className="hint"
+            id="outcome-hint"
+          >
+            List the key achievements of this project.
+          </p>
+          <div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue="Outcome 1"
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              className="list-entry row"
+            >
+              <div
+                className="col-xs-12 col-sm-9"
+              >
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue="Outcome 2"
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
+            </div>
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              type="button"
+            >
+              Add another row
+            </button>
+          </div>
         </div>
       </div>
       <div
@@ -3087,7 +3742,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className="hint"
           id="partner_links-hint"
         >
-          Link to any supporting material for your partner. This can include a partner on your website, partner video or the live partner. Links must begin with http
+          Link to any supporting material or partner website. Links must begin with http
         </p>
         <div>
           <div
@@ -3176,7 +3831,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className="hint"
           id="project_links-hint"
         >
-          Link to any supporting material for your project. This can include a project on your website, project video or the live project. Links must begin with http
+          Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http
         </p>
         <div>
           <div
@@ -3277,7 +3932,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           disabled={false}
           id="contactName"
           maxLength={undefined}
-          name="contactName"
+          name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3303,7 +3958,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           disabled={false}
           id="contactEmail"
           maxLength={undefined}
-          name="contactEmail"
+          name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3319,7 +3974,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           checked={false}
           disabled={false}
           id="contactAgreed"
-          name="contactAgreed"
+          name="contact_agreed"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
