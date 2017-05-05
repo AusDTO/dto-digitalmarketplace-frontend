@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
+import isEmpty from 'lodash/isEmpty';
+
 import {newline} from '../../../../helpers';
 
 import './ProjectView.css'
@@ -64,9 +66,9 @@ class ProjectView extends React.Component {
 
                     {partner_links && Object.keys(partner_links).length > 0 && (
                         <p><strong>Partnering with </strong>
-                                {Object.keys(partner_links).map((item, i) =>
-                                    <a key={i}className="project__links" href={partner_links[item]} rel="external"
-                                       target="_blank">{item}</a>
+                                {Object.values(partner_links).map((item, i) =>
+                                    <a key={i} className="project__links" href={item.url} rel="external"
+                                       target="_blank">{item.title}</a>
                                 )}
                             </p>
                     )}
@@ -145,9 +147,12 @@ class ProjectView extends React.Component {
                             <section className="project">
                                 <h2>Project Links</h2>
                                 <ul>
-                                    {Object.keys(project_links).map((item, i) => <li key={i}>
-                                        <a className="project__links" href={project_links[item]} rel="external"
-                                           target="_blank">{item}</a>
+                                    {project_links.map((item, i) => <li key={i}>
+                                        {typeof item == 'object' ?
+                                            <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
+                                            :
+                                            <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                                        }
                                     </li>)}
                                 </ul>
                             </section>

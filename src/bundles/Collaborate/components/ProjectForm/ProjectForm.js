@@ -11,6 +11,7 @@ import SubmitForm    from '../../../../shared/form/SubmitForm';
 import StatefulError from '../../../../shared/form/StatefulError';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import MultiInput    from '../../../../shared/form/MultiInput';
+import LinkInput     from '../../../../shared/form/LinkInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 
@@ -68,7 +69,7 @@ class ProjectForm extends BaseForm {
         } = this.props;
 
         if (!buttonText) {
-            buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Project';
+            buttonText = mode === 'edit' ? 'Save Changes' : 'Submit Project';
         }
 
 
@@ -327,7 +328,7 @@ class ProjectForm extends BaseForm {
                             />
                         </div>)}
 
-                        <MultiInput
+                        <LinkInput
                             id="partner_links"
                             model={`${model}.partner_links`}
                             name="partner_links"
@@ -339,7 +340,7 @@ class ProjectForm extends BaseForm {
                             validators={{validLinks}}
                         />
 
-                        <MultiInput
+                        <LinkInput
                             id="project_links"
                             model={`${model}.project_links`}
                             name="project_links"

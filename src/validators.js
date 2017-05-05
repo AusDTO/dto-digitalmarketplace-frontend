@@ -79,6 +79,10 @@ export const validLinks = (val) => {
     return true;
   }
 
+  if (typeof val[0] == 'object') {
+      val = val.map(v => v.url);
+  }
+
   return val.filter(v => validLink(v)).length === val.length;
 };
 

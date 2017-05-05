@@ -150,7 +150,7 @@ exports[`ProjectView with required attributes 1`] = `
                 rel="external"
                 target="_blank"
               >
-                0
+                https://marketplace.service.gov.au/search/sellers/?role=Data science
               </a>
             </li>
           </ul>
@@ -314,7 +314,7 @@ exports[`ProjectView with required attributes and meta links 1`] = `
                 rel="external"
                 target="_blank"
               >
-                0
+                https://marketplace.service.gov.au/search/sellers/?role=Data science
               </a>
             </li>
           </ul>
