@@ -743,7 +743,7 @@ exports[`ProjectForm renders 1`] = `
       </div>
       <input
         type="submit"
-        value="Publish Project"
+        value="Submit Project"
       />
     </form>
   </article>
@@ -2483,7 +2483,7 @@ exports[`ProjectForm renders with errors 1`] = `
       </div>
       <input
         type="submit"
-        value="Publish Project"
+        value="Submit Project"
       />
     </form>
   </article>
@@ -3239,7 +3239,7 @@ exports[`ProjectForm renders with form_options 1`] = `
       </div>
       <input
         type="submit"
-        value="Publish Project"
+        value="Submit Project"
       />
     </form>
   </article>
@@ -3989,7 +3989,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
       </div>
       <input
         type="submit"
-        value="Publish Project"
+        value="Submit Project"
       />
     </form>
   </article>

@@ -68,7 +68,7 @@ class ProjectForm extends BaseForm {
         } = this.props;
 
         if (!buttonText) {
-            buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Project';
+            buttonText = mode === 'edit' ? 'Save Changes' : 'Submit Project';
         }
 
 
