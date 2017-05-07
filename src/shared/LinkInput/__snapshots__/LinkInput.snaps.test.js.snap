@@ -1,0 +1,538 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkInput with 4 default rows 1`] = `
+<div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        1
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-0"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-0"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-0"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue={undefined}
+        id="test-url-0"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        2
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-1"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-1"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-1"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue={undefined}
+        id="test-url-1"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+    <button
+      className="button-secondary col-xs-12 col-sm-3"
+      onClick={[Function]}
+      type="button"
+    >
+      remove 
+      <span
+        className="visuallyhidden"
+      >
+        number 
+        2
+      </span>
+    </button>
+  </div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        3
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-2"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-2"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-2"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue={undefined}
+        id="test-url-2"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+    <button
+      className="button-secondary col-xs-12 col-sm-3"
+      onClick={[Function]}
+      type="button"
+    >
+      remove 
+      <span
+        className="visuallyhidden"
+      >
+        number 
+        3
+      </span>
+    </button>
+  </div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        4
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-3"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-3"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-3"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue={undefined}
+        id="test-url-3"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+    <button
+      className="button-secondary col-xs-12 col-sm-3"
+      onClick={[Function]}
+      type="button"
+    >
+      remove 
+      <span
+        className="visuallyhidden"
+      >
+        number 
+        4
+      </span>
+    </button>
+  </div>
+  <button
+    className="button-secondary"
+    onClick={[Function]}
+    type="button"
+  >
+    Add another row
+  </button>
+</div>
+`;
+
+exports[`LinkInput with 4 rows 1`] = `
+<div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        1
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-0"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-0"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-0"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue="One"
+        id="test-url-0"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        2
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-1"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-1"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-1"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue="Two"
+        id="test-url-1"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+    <button
+      className="button-secondary col-xs-12 col-sm-3"
+      onClick={[Function]}
+      type="button"
+    >
+      remove 
+      <span
+        className="visuallyhidden"
+      >
+        number 
+        2
+      </span>
+    </button>
+  </div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        3
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-2"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-2"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-2"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue="Three"
+        id="test-url-2"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+    <button
+      className="button-secondary col-xs-12 col-sm-3"
+      onClick={[Function]}
+      type="button"
+    >
+      remove 
+      <span
+        className="visuallyhidden"
+      >
+        number 
+        3
+      </span>
+    </button>
+  </div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        4
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-3"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-3"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-3"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue="Four"
+        id="test-url-3"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+    <button
+      className="button-secondary col-xs-12 col-sm-3"
+      onClick={[Function]}
+      type="button"
+    >
+      remove 
+      <span
+        className="visuallyhidden"
+      >
+        number 
+        4
+      </span>
+    </button>
+  </div>
+  <button
+    className="button-secondary"
+    onClick={[Function]}
+    type="button"
+  >
+    Add another row
+  </button>
+</div>
+`;
+
+exports[`LinkInput with no props 1`] = `
+<div>
+  <div
+    className="link-entry list-entry row"
+  >
+    <div
+      className="col-xs-12 col-sm-9"
+    >
+      <strong>
+        1
+        .
+      </strong>
+      <br />
+      <label
+        htmlFor="test-title-0"
+      >
+         Title:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="title"
+        defaultValue={undefined}
+        id="test-title-0"
+        name="test-title[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+      <label
+        htmlFor="test-url-0"
+      >
+        URL:
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="text-box "
+        data-field="url"
+        defaultValue={undefined}
+        id="test-url-0"
+        name="test-url[]"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <button
+    className="button-secondary"
+    onClick={[Function]}
+    type="button"
+  >
+    Add another row
+  </button>
+</div>
+`;

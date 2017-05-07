@@ -336,24 +336,45 @@ exports[`CaseStudyForm renders 1`] = `
         </p>
         <div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
-              >
+              <strong>
                 1
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-0"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-0"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-0"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-0"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -362,24 +383,45 @@ exports[`CaseStudyForm renders 1`] = `
             </div>
           </div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
-              >
+              <strong>
                 2
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-1"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-1"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-1"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-1"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -868,24 +910,45 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         </p>
         <div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
-              >
+              <strong>
                 1
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-0"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-0"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-0"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-0"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -894,24 +957,45 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
             </div>
           </div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
-              >
+              <strong>
                 2
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-1"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-1"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-1"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-1"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1593,24 +1677,45 @@ exports[`CaseStudyForm renders with errors 1`] = `
         </p>
         <div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
-              >
+              <strong>
                 1
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-0"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-0"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-0"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-0"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1619,24 +1724,45 @@ exports[`CaseStudyForm renders with errors 1`] = `
             </div>
           </div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
-              >
+              <strong>
                 2
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-1"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-1"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-1"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-1"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2183,24 +2309,45 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         </p>
         <div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
-              >
+              <strong>
                 1
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-0"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-0"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-0"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-0"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2209,24 +2356,45 @@ exports[`CaseStudyForm renders with form_options 1`] = `
             </div>
           </div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
-              >
+              <strong>
                 2
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-1"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-1"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-1"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-1"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2715,24 +2883,45 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         </p>
         <div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
-              >
+              <strong>
                 1
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-0"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-0"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-0"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-0"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2741,24 +2930,45 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             </div>
           </div>
           <div
-            className="list-entry row"
+            className="link-entry list-entry row"
           >
             <div
               className="col-xs-12 col-sm-9"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
-              >
+              <strong>
                 2
                 .
+              </strong>
+              <br />
+              <label
+                htmlFor="project_links-title-1"
+              >
+                 Title:
               </label>
               <input
                 aria-describedby="project_links-hint"
                 className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
+                data-field="title"
+                defaultValue={undefined}
+                id="project_links-title-1"
+                name="project_links-title[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+              <label
+                htmlFor="project_links-url-1"
+              >
+                URL:
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                data-field="url"
+                defaultValue={undefined}
+                id="project_links-url-1"
+                name="project_links-url[]"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}

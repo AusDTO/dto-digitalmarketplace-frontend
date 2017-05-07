@@ -12,6 +12,7 @@ import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import MultiInput    from '../../../../shared/form/MultiInput';
+import LinkInput     from '../../../../shared/form/LinkInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 import StatefulError from '../../../../shared/form/StatefulError';
@@ -183,7 +184,7 @@ class CaseStudyForm extends BaseForm {
               validators={{ required }}
             />
 
-            <MultiInput
+            <LinkInput
               id="project_links"
               model={`${model}.project_links`}
               name="project_links"

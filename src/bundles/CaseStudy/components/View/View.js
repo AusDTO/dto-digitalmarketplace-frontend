@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import isEmpty from 'lodash/isEmpty';
+
 import { newline } from '../../../../helpers';
 
 class View extends React.Component {
@@ -94,7 +96,11 @@ class View extends React.Component {
                 <h2>Project Links</h2>
                 <ul>
                   {project_links.map((item, i) => <li key={i}>
-                    <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                      {typeof item == 'object' ?
+                          <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
+                          :
+                          <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                      }
                   </li>)}
                 </ul>
               </section>
