@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import {withRouter, Link} from 'react-router-dom';
-import {DashboardBriefs, TeamOverview} from '../Views/Views';
+import DashboardBriefs from '../DashboardBriefs';
+import TeamOverview from '../TeamOverview'
 
 import './BuyerDashboard.css'
 
