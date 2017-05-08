@@ -11,20 +11,15 @@ export const DashboardBriefs = ({live, closed, draft, all}) => (
     <div>
       <p>
         <a href={(!isEmpty(all) ?
-          "/buyers/frameworks/".concat(
-            all[0].frameworkSlug,
-            "/requirements/digital-professionals"
-          ) : '')}>
+          "/buyers/frameworks/digital-marketplace/requirements/digital-professionals"
+           : '')}>
           Create a new opportunity for a digital specialist
         </a>
       </p>
       <p>
         <a href={(!isEmpty(all) ?
-          "/buyers/frameworks/".concat(
-            all[0].frameworkSlug,
-            "/requirements/",
-            all[0].lotSlug, "/"
-          ) : '')}>
+          "/buyers/frameworks/digital-marketplace/requirements/digital-outcome/"
+          : '')}>
           Create a new opportunity for an outcome
         </a>
       </p>
