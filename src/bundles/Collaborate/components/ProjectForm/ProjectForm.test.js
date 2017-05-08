@@ -14,7 +14,7 @@ import createStore from '../../redux/create'
 const generateFormValidilityState = (valid) => {
   return {
     forms: {
-      ProjectForm: {
+      projectForm: {
         $form: { valid }
       }
     },
@@ -30,7 +30,7 @@ const generateFormValidilityState = (valid) => {
 test('mapStateToProps', () => {
   const baseProps = {
     formErrors: [],
-    form: {},
+    form: {"valid":true},
     model: 'projectForm',
     mode: 'add', 
     errors: [], 
@@ -66,7 +66,7 @@ test('form renders server side with errors', () => {
   )
 
   let errors = wrapper.find('.validation-message');
-  expect(errors.length).toBe(13);
+  expect(errors.length).toBe(9);
 })
 
 test('handleClick with formValid=false', () => {
@@ -131,12 +131,13 @@ test.skip('handleClick when on last step', () => {
   wrapper.find('input[type="submit"]').simulate('click');
 });
 
-test('display assessment header', () => {
+test('display project form header', () => {
   let state = {
     form_options: {
     },
     project: {
         domain_id: 1,
+        stage: 'Pilot',
         service: 'Data science',
         is_assessment: true
     },
@@ -153,6 +154,6 @@ test('display assessment header', () => {
     </MemoryRouter>
   )
 
-  expect(wrapper.find('h1').text()).toBe('Add project');
+  expect(wrapper.find('h1').text()).toBe('Add a project');
 });
 

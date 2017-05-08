@@ -44,22 +44,13 @@ class Signup extends React.Component {
     // Use same pattern, so the URL can be consistent
     // Just different messaging/actions.
     const { options = {}, filterSteps } = props;
-    if (options.submit_registration) {
-      this.steps = this.steps.concat({
-        id: 'submit',
-        label: 'Declaration',
-        component: SubmitStepForm,
-        formKey: 'submitStepForm',
-        pattern: '/submit'
-      });
-    } else {
-      this.steps = this.steps.concat({
-        id: 'finish',
-        label: 'Finish',
-        component: Finish,
-        pattern: '/submit'
-      });
-    }
+    this.steps = this.steps.concat({
+      id: 'submit',
+      label: 'Declaration',
+      component: SubmitStepForm,
+      formKey: 'submitStepForm',
+      pattern: '/submit'
+    });
 
     if (filterSteps) {
       this.steps = this.steps.filter(filterSteps);

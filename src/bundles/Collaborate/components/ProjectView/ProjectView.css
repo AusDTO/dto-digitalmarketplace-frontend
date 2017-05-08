@@ -13,7 +13,29 @@ main .sidebar {
 .actions a:first-of-type {
   margin-right: 1em;
 }
+.stage{
+  margin-right: 14px;
+  margin-bottom: 10px;
+  padding: 3px 6px 3px 6px;
+  font-size: 14px;
+  border-radius: 2px;
+  border: solid 1px #17788d;
+  float: left;
+}
+.full-header {
+  background: #f0f3f5;
+  padding-top: 1.5em;
+}
 
+.full-header h4:first-of-type, .full-header ul {
+  margin-top: 0;
+}
+
+.full-header > div {
+  max-width: 75em;
+  margin: 0 auto;
+  padding: 0 1.6em;
+}
 /*header {
   border-bottom: 1px solid #cecece;
   padding-bottom: 35px;
@@ -35,6 +57,7 @@ header h2 {
   padding: 1.5rem 2rem;
   border-radius: 4px;
   text-align: center;
+  margin-bottom: 2em;
 }
 .tile .title {
    display: block;
@@ -62,3 +85,12 @@ header h2 {
   border-radius: 4px;
 }
 
+.center {
+  max-width: 75em;
+  margin: 0 auto;
+  padding: 0 1.6em;
+}
+
+.summary {
+  font-size: 20px;
+}

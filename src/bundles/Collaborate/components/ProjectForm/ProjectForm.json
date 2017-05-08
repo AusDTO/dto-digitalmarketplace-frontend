@@ -1,13 +1,21 @@
 {
-  "ProjectForm": {
-    "opportunity": "The opportunity",
+  "projectForm": {
+    "opportunity": "The opportunity/aim/goal",
     "client": "The Client Name",
     "timeframe": "January 2016 — June 2016",
-    "approach": "The approach",
+    "problem": "The main problem",
     "outcome": [
         "Outcome 1",
         "Outcome 2"
-    ]
+    ],
+    "project_links": [{
+      "title": "Google",
+      "url": "http://www.google.com"
+    }],
+    "partner_links": [{
+      "title":"Cisco",
+      "url": "http://www.cisco.com"
+    }]
   },
   "form_options": {
     "action": "https://httpbin.org/post"

@@ -8,7 +8,7 @@ export const AuthWidget = (props, history) => {
 
     if (props.isAuthenticated) {
         return (
-            <ul className="inline-links--inverted">
+            <ul id="main-navigation" className="inline-links--inverted">
                 <li><a href={props.dashboardUrl}>{props.dashboardText}</a></li>
                 <li><a href={props.logoutUrl}>Sign out</a></li>
             </ul>
@@ -16,7 +16,7 @@ export const AuthWidget = (props, history) => {
     }
 
     return (
-    <ul className="inline-links--inverted">
+    <ul id="main-navigation" className="inline-links--inverted">
         <li><a href={props.registerUrl}>{props.registerText}</a></li>
         <li><a href={props.loginUrl.concat(_path)}>Sign in</a></li>
     </ul>
