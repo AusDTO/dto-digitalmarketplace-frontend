@@ -82,7 +82,7 @@ const mapStateToProps = ({ application }, { documentsUrl, onClick, ...rest }) =>
     }
 
     // calculate badges
-    seller_type = Object.assign({}, {product: !isEmpty(application.products), recruitment: (recruiter === 'yes')}, seller_type);
+    seller_type = Object.assign({}, {product: !isEmpty(application.products), recruitment: ((recruiter === 'yes' || recruiter === 'both'))}, seller_type);
 
     let caseStudyLink = null;
     if (typeof case_study_url !== 'undefined') {
