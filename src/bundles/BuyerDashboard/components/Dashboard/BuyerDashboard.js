@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import {withRouter, Link} from 'react-router-dom';
-import {MyBriefs, TeamBriefs, TeamOverview} from '../Views/Views';
+import {DashboardBriefs, TeamOverview} from '../Views/Views';
 
 import './BuyerDashboard.css'
 
@@ -16,10 +16,10 @@ class BuyerDashboard extends Component {
   }
 
   render() {
-    const {team = {}, match, location} = this.props;
+    const {team, location} = this.props;
     let pathname = location.pathname;
     let briefView = pathname.slice(pathname.lastIndexOf('/')+1, pathname.length);
-    if(briefView === 'buyers') { briefView = 'mybriefs'}
+    briefView = (['teambriefs', 'teamoverview'].includes(briefView) ? briefView : 'mybriefs')
 
     return (
       <section>
@@ -56,17 +56,16 @@ class BuyerDashboard extends Component {
             </article>
             <article>
               {(briefView === 'mybriefs') && (
-                <MyBriefs {...team.briefs}/>
+                <DashboardBriefs {...team.briefs}/>
               )}
               {(briefView === 'teambriefs') && (
-                <TeamBriefs {...team}/>
+                <DashboardBriefs {...team.teamBriefs}/>
               )}
               {(briefView === 'teamoverview') && (
                 <TeamOverview {...team}/>
               )}
             </article>
           </article>
-
       </section>
     )
   }
@@ -74,7 +73,7 @@ class BuyerDashboard extends Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const {team = {teamName, members, briefs}} = state;
+  const {team} = state;
   return {
     team,
     ...ownProps

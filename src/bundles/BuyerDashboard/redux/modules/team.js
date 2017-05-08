@@ -4,11 +4,7 @@ const initialState = {
   view: "mybriefs",
   briefs: {
     all: [],
-    closed: [
-      {
-        responses: []
-      }
-    ],
+    closed: [],
     draft: [],
     live:[
       {

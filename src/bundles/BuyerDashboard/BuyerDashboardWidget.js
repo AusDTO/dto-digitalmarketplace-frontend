@@ -1,9 +1,9 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import RegisterComponent from '../../RegisterComponent'
-
 import createStore from './redux/create'
 
+import sampleState from './components/Dashboard/BuyerDashboard.json';
 import BuyerDashboard from './components/Dashboard/BuyerDashboard'
 
 const BuyerDashboardWidget = (props) => {

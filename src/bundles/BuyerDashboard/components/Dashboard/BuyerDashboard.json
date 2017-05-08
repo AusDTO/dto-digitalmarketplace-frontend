@@ -1,5 +1,8 @@
 {
   "team": {
+    "currentUserName": "Matt Smith",
+    "view": "mybriefs",
+    "teamBriefs": {},
     "briefs": {
       "all": [
         {
