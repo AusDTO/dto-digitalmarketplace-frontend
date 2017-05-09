@@ -57,10 +57,16 @@ class BuyerDashboard extends Component {
             </article>
             <article>
               {(briefView === 'mybriefs') && (
-                <DashboardBriefs {...team.briefs}/>
+                <DashboardBriefs
+                  teamBriefView={false}
+                  briefs={team.briefs}
+                />
               )}
               {(briefView === 'teambriefs') && (
-                <DashboardBriefs {...team.teamBriefs}/>
+                <DashboardBriefs
+                  teamBriefView={true}
+                  briefs={team.teamBriefs}
+                />
               )}
               {(briefView === 'teamoverview') && (
                 <TeamOverview {...team}/>

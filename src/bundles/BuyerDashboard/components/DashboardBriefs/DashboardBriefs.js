@@ -5,46 +5,49 @@ import format from 'date-fns/format';
 import './DashboardBriefs.css'
 
 
-export const DashboardBriefs = ({live, closed, draft, all}) => (
-  <div className="content-main">
-    <DraftBriefs draft={draft}/>
-    <div>
-      <p>
-        <a href={(!isEmpty(all) ?
-          "/buyers/frameworks/digital-marketplace/requirements/digital-professionals"
-           : '')}>
-          Create a new opportunity for a digital specialist
-        </a>
-      </p>
-      <p>
-        <a href={(!isEmpty(all) ?
-          "/buyers/frameworks/digital-marketplace/requirements/digital-outcome/"
-          : '')}>
-          Create a new opportunity for an outcome
-        </a>
-      </p>
-    </div>
+export const DashboardBriefs = props => {
+  let {live = [], closed = [], draft = []} = props.briefs;
+  let teamBriefView = props.teamBriefView
 
-    <LiveBriefs live={live}/>
+  return (
+    <div className="content-main">
+      <DraftBriefs draft={draft}/>
+      {!teamBriefView && (
+        <div>
+          <p>
+            <a href={"/buyers/frameworks/digital-marketplace/requirements/digital-professionals"}>
+              Create a new opportunity for a digital specialist
+            </a>
+          </p>
+          <p>
+            <a href={"/buyers/frameworks/digital-marketplace/requirements/digital-outcome/"}>
+              Create a new opportunity for an outcome
+            </a>
+          </p>
+        </div>
+      )}
 
-    <ClosedBriefs closed={closed}/>
+      <LiveBriefs live={live}/>
 
-    <div>
-      <h3>Need a hand?</h3>
-      <span>
+      <ClosedBriefs closed={closed}/>
+
+      <div>
+        <h3>Need a hand?</h3>
+        <span>
         <a href="/buyers-guide">Read the buyers guide </a>or
         <a href={"mailto:" + "marketplace@digital.gov.au"}> send us an email </a>
         - We can help you write your brief.
       </span>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 DashboardBriefs.propTypes = {
   live: React.PropTypes.array,
   closed: React.PropTypes.array,
   draft: React.PropTypes.array,
-  all: React.PropTypes.array
+  teamBriefView: React.PropTypes.bool
 }
 
 export const DraftBriefs = ({draft}) => (
