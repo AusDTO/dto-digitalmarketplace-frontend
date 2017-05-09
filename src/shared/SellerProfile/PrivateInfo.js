@@ -82,11 +82,12 @@ const PrivateInfo = (props) => {
                     </thead>
                     <tbody>
                     {Object.keys(documents).map((key, val) => {
-                        const {filename, expiry} = documents[key];
+                        const {filename, expiry, application_id} = documents[key];
+                        const url = application_id ? `/admin/application/${application_id}/documents/` : documentsUrl
                         return (
                             <tr key={val}>
                                 <td>
-                                    <a href={`${documentsUrl}${filename}`}>
+                                    <a href={`${url}${filename}`}>
                                         {documentTitle[key]}
                                     </a>
                                 </td>
