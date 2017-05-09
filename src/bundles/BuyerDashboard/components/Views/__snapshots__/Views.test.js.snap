@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClosedBriefs renders with no props 1`] = `
+<section>
+  <h2>
+    Closed briefs
+  </h2>
+  You don't have any closed briefs.
+</section>
+`;
+
+exports[`ClosedBriefs renders with props 1`] = `
+<section>
+  <h2>
+    Closed briefs
+  </h2>
+  <table
+    className="content-table summary-item-body"
+  >
+    <thead
+      className="summary-item-field-headings-visible"
+    >
+      <tr>
+        <th
+          styleName="summary-item-field-heading-first"
+        >
+          Brief Overview
+        </th>
+        <th
+          styleName="summary-item-field-heading"
+        >
+          Closed
+        </th>
+        <th
+          styleName="summary-item-field-heading"
+        >
+          Work order
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="summary-item-row"
+      >
+        <td
+          className="summary-item-field"
+        >
+          <a
+            href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
+          >
+            Matts Brief
+          </a>
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          Invalid Date
+        </td>
+        <td
+          styleName="summary-item-field"
+        >
+          <span>
+            <a
+              href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/responses"
+            >
+              View responses
+            </a>
+             
+            <a
+              href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/work-orders/create"
+            >
+              Create work order
+            </a>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+`;
+
+exports[`DraftBriefs renders with no props 1`] = `
+<section>
+  <h2>
+    Draft briefs
+  </h2>
+  You haven't started any opportunities.
+</section>
+`;
+
+exports[`DraftBriefs renders with props 1`] = `
+<section>
+  <h2>
+    Draft briefs
+  </h2>
+  <table
+    className="content-table summary-item-body"
+  >
+    <thead
+      className="summary-item-field-headings-visible"
+    >
+      <tr>
+        <th
+          className="summary-item-field-heading-first"
+        >
+          Brief Overview
+        </th>
+        <th
+          className="summary-item-field-heading"
+        >
+          Created
+        </th>
+        <th
+          className="summary-item-field-heading"
+        >
+          Unanswered questions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="summary-item-row"
+      >
+        <td
+          className="summary-item-field"
+        >
+          <a
+            href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
+          >
+            Matts Brief
+          </a>
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          Thursday 4 October 2016
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          <div>
+            17
+             required
+          </div>
+          <div>
+            7
+             optional
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+`;
+
+exports[`LiveBriefs renders with no props 1`] = `
+<section>
+  <h2>
+    Live briefs
+  </h2>
+  You don't have any live briefs.
+</section>
+`;
+
+exports[`LiveBriefs renders with props 1`] = `
+<section>
+  <h2>
+    Live briefs
+  </h2>
+  <table
+    className="content-table summary-item-body"
+  >
+    <thead
+      className="summary-item-field-headings-visible"
+    >
+      <tr>
+        <th
+          className="summary-item-field-heading-first"
+        >
+          Brief Overview
+        </th>
+        <th
+          className="summary-item-field-heading"
+        >
+          Published
+        </th>
+        <th
+          className="summary-item-field-heading"
+        >
+          Closing
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="summary-item-row"
+      >
+        <td
+          className="summary-item-field"
+        >
+          <a
+            href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
+          >
+            Matts Brief
+          </a>
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          Invalid Date
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          Invalid Date
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+`;
+
+exports[`TeamOverview renders with no props 1`] = `
+<div
+  className="content-main"
+>
+  <h2>
+    Active team members
+  </h2>
+  You are the only registered buyer in your team
+</div>
+`;
+
+exports[`TeamOverview renders with props 1`] = `
+<div
+  className="content-main"
+>
+  <h2>
+    Active team members
+  </h2>
+  <table
+    className="content-table summary-item-body"
+  >
+    <thead
+      className="summary-item-field-headings-visible"
+    >
+      <tr>
+        <th
+          className="summary-item-field-heading-first"
+        >
+          Name
+        </th>
+        <th
+          className="summary-item-field-heading"
+        >
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="summary-item-row"
+      >
+        <td
+          className="summary-item-field"
+        >
+          AJ
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          <a
+            href="mailto:marketplace@digital.gov.au"
+          >
+            marketplace@digital.gov.au
+          </a>
+        </td>
+      </tr>
+      <tr
+        className="summary-item-row"
+      >
+        <td
+          className="summary-item-field"
+        >
+          Alex
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          <a
+            href="mailto:alex.sadleir+s@digital.gov.au"
+          >
+            alex.sadleir+s@digital.gov.au
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
