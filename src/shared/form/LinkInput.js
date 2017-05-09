@@ -19,24 +19,23 @@ const LinkInput = (props) => {
   } = props;
 
   return (
-    <div className="field">
-      <label htmlFor={htmlFor}>{label}</label>
+    <div className="field" id={id}>
+      <label htmlFor={htmlFor} className="question-heading">{label}</label>
       {description && (
         <p className="hint" id={`${id}-hint`}>{description}</p>
       )}
-      {messages &&
-        <StatefulError
-          model={model}
-          messages={messages}
-          id={id}
-        />
-      }
       <Control
         model={model}
         controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
         mapProps={{
           rows: ({ viewValue }) => viewValue,
           className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
+          errors:
+          (messages && <StatefulError
+              model={model}
+              messages={messages}
+              id={id}
+          />),
           ...mapProps,
           ...controls.default,
         }}

@@ -171,15 +171,6 @@ class Landing extends React.Component {
                                     <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-05-05">Friday <span>5</span> May</time>
-                                        </th>
-                                        <td>Fast-start induction
-                                            <span className="date-info">Getting started with Future Ready. <br/> <i>Fully Booked</i></span>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
                                             <time dateTime="2017-05-11">Thursday <span>11</span> May</time>
                                         </th>
                                         <td>Global smart city perspectives <span className="date-info">Learn from international smart cities.<br/> <a
