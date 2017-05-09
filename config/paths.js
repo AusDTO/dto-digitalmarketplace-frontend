@@ -66,6 +66,7 @@ var config = {
       'project-view': [resolveApp('src/bundles/Collaborate/ProjectViewWidget')],
       'project-form': [resolveApp('src/bundles/Collaborate/ProjectFormWidget')],
       'project-submit-confirmation':[resolveApp('src/bundles/Collaborate/ProjectSubmitConfirmationWidget')],
+    'buyer-dashboard': [resolveApp('src/bundles/BuyerDashboard/BuyerDashboardWidget')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
@@ -81,6 +82,7 @@ var config = {
     'search': require(resolveApp('src/bundles/Search/components/Catalogue/Catalogue.json')),
       'project-view': require(resolveApp('src/bundles/Collaborate/components/ProjectView/ProjectView.json')),
       'project-form': require(resolveApp('src/bundles/Collaborate/components/ProjectForm/ProjectForm.json')),
+    'buyer-dashboard-form': require(resolveApp('src/bundles/BuyerDashboard/components/Dashboard/BuyerDashboard.json')),
   }
 };
 
