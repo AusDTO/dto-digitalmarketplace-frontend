@@ -1,19 +1,20 @@
 export const APPROVED_ASSESSMENT = 'APPROVED_ASSESSMENT';
 
-const removeAssessmentRow = (state, id) => {
+const updateAssessmentRow = (state, id, status) => {
   const assessmentIndex = state && state.map(app => app.id).indexOf(id);
-  return state
-    .slice(0, assessmentIndex)
-    .concat(state.slice(assessmentIndex + 1, state.length));
+  const updatedAssessment = Object.assign({}, state[assessmentIndex]['supplier_domain'], {
+        status: status
+    });
+    return state
+        .slice(0, assessmentIndex)
+        .concat(updatedAssessment, state.slice(assessmentIndex + 1, state.length))
 }
 
 export default function reducer(state = {}, action = {}) {
   const { type, id } = action;
   switch (type) {
     case APPROVED_ASSESSMENT:
-      return state;
-      // don't remove rows as it makes the UI move around
-      // return removeAssessmentRow(state, id);
+      return updateAssessmentRow(state, id, 'assessed');
     default:
       return state;
   }
