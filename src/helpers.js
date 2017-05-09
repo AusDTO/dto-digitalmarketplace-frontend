@@ -18,6 +18,7 @@ export default {
 
 // takes html within a string and returns jsx
 export const replaceMarkup = (text, tagToReplace, replaceWithTag) => {
+  if (!text) return text;
   // format closing tag as required by createElement
   if (typeof(tagToReplace || replaceWithTag) === 'undefined' ||
     // if text has no markup, let it pass through

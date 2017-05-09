@@ -1,249 +1,329 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProjectView with required attributes 1`] = `
-<section
-  id="project__ProjectView"
->
-  <header
-    className="row"
+<div>
+  <section
+    styleName="full-header"
   >
     <div
-      className="col-xs-12"
-    >
-      <h1
-        tabIndex="-1"
-      >
-        My Sydney
-      </h1>
-    </div>
-    <div
-      className="meta col-xs-12"
+      className="row"
     >
       <div
-        className="row"
+        className="col-xs-12"
+      >
+        <h1
+          tabIndex="-1"
+        >
+          Finding value in asset data
+        </h1>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <article
+        className="col-xs-12 col-md-8 col-sm-7"
+      >
+        <p
+          styleName="summary"
+        />
+        <p>
+          <strong>
+            Project stage
+          </strong>
+           
+          Discovery
+        </p>
+      </article>
+      <article
+        className="col-xs-12 col-sm-8 col-sm-push-1 col-md-3 col-md-push-1"
       >
         <div
-          className="col-xs-12 col-sm-7"
+          style={
+            Object {
+              "backgroundColor": "white",
+            }
+          }
+          styleName="tile"
         >
-          <p>
-            by 
-            Transport for NSW
-          </p>
+          <span>
+            Council
+          </span>
+          <b>
+            City of Casey
+          </b>
+          <a
+            href="mailto:casey@casey.vic.gov.au"
+            role="button"
+          >
+            Email contact
+          </a>
         </div>
-      </div>
+      </article>
     </div>
-  </header>
-  <div
-    className="row"
+  </section>
+  <section
+    id="project__ProjectView"
+    styleName="center"
   >
-    <article
-      className="col-sm-9 col-xs-12"
-      role="main"
+    <div
+      className="row"
     >
-      <section>
-        <h2>
-          Council service
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          Project Stage
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          Aim
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          How it ran
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          Outcomes and benefits
-        </h2>
-        <ul>
-          <li>
-            We gathered all requirements for maps including what was to be shown, what data was available.
-          </li>
-          <li>
-            We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
-          </li>
-          <li>
-            We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
-          </li>
-        </ul>
-      </section>
-      <div
-        className="project__actions"
+      <aside
+        className="col-sm-3 col-xs-12"
       />
-    </article>
-    <aside
-      className="col-sm-3 col-xs-12"
-    >
-      <div
-        styleName="tile"
+      <article
+        className="col-sm-7 col-xs-12"
+        role="main"
       >
-        <span>
-          Transport for NSW
-        </span>
-        <b />
-        <a
-          href="mailto:undefined"
-          role="button"
+        <section>
+          <h2>
+            What's the key problem to solve?
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              Asset data is stored across a range of disparate and inconsistently structured datasets. 
+              <br />
+            </span>
+            <span>
+              Each dataset is maintained to different standards. For instance, the parks and reserves dataset is regularly  updated by dedicated resources. The bus shelters dataset hasn’t been updated in the last three years.
+              <br />
+            </span>
+            <span>
+              The inconsistent nature of these datasets means they cannot be used to reliably inform long term budget or strategic planning decisions. We think the most valuable datasets (ie. relating to those assets where Council invests the most) are:
+              <br />
+            </span>
+            <span>
+              -        Civil Assets (for example roads, paths, drains),
+              <br />
+            </span>
+            <span>
+              -        Buildings, and
+              <br />
+            </span>
+            <span>
+              -        Sports grounds.
+              <br />
+            </span>
+            <span>
+              Because our maturity in analysing data is low, we need some help to identify and capitalise on opportunities.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2>
+            Who are the users and their needs?
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              Given the purpose of this project is to run a discovery, we do not yet have a backlog of researched and validated user stories. Instead, we have a hypothesis that we can use our data to make better strategic and tactical decisions that save money and make the best use of our limited Council resources.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2>
+            Outcomes
+          </h2>
+          <ul>
+            <li>
+              We're seeking a data science expert sourced from the Digital Marketplace for 8 weeks with a budget range of $50-75k. During this short term project will run a discovery process to assess the quality of our data and identify opportunities to make better use of our limited resources. 
+            </li>
+          </ul>
+        </section>
+        <section
+          className="project"
         >
-          Email organiser
-        </a>
-      </div>
-    </aside>
-  </div>
-</section>
+          <h2>
+            Project Links
+          </h2>
+          <ul>
+            <li>
+              <a
+                className="project__links"
+                href="https://marketplace.service.gov.au/search/sellers/?role=Data science"
+                rel="external"
+                target="_blank"
+              >
+                https://marketplace.service.gov.au/search/sellers/?role=Data science
+              </a>
+            </li>
+          </ul>
+        </section>
+        <div
+          className="project__actions"
+        />
+      </article>
+    </div>
+  </section>
+</div>
 `;
 
 exports[`ProjectView with required attributes and meta links 1`] = `
-<section
-  id="project__ProjectView"
->
-  <header
-    className="row"
+<div>
+  <section
+    styleName="full-header"
   >
     <div
-      className="col-xs-12"
-    >
-      <h1
-        tabIndex="-1"
-      >
-        My Sydney
-      </h1>
-    </div>
-    <div
-      className="meta col-xs-12"
+      className="row"
     >
       <div
-        className="row"
+        className="col-xs-12"
+      >
+        <h1
+          tabIndex="-1"
+        >
+          Finding value in asset data
+        </h1>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <article
+        className="col-xs-12 col-md-8 col-sm-7"
+      >
+        <p
+          styleName="summary"
+        />
+        <p>
+          <strong>
+            Project stage
+          </strong>
+           
+          Discovery
+        </p>
+      </article>
+      <article
+        className="col-xs-12 col-sm-8 col-sm-push-1 col-md-3 col-md-push-1"
       >
         <div
-          className="col-xs-12 col-sm-7"
+          style={
+            Object {
+              "backgroundColor": "white",
+            }
+          }
+          styleName="tile"
         >
-          <p>
-            by 
-            Transport for NSW
-          </p>
+          <span>
+            Council
+          </span>
+          <b>
+            City of Casey
+          </b>
+          <a
+            href="mailto:casey@casey.vic.gov.au"
+            role="button"
+          >
+            Email contact
+          </a>
         </div>
-      </div>
+      </article>
     </div>
-  </header>
-  <div
-    className="row"
+  </section>
+  <section
+    id="project__ProjectView"
+    styleName="center"
   >
-    <article
-      className="col-sm-9 col-xs-12"
-      role="main"
+    <div
+      className="row"
     >
-      <section>
-        <h2>
-          Council service
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          Project Stage
-        </h2>
-        <p
-          className="freetext"
-        />
-      </section>
-      <section>
-        <h2>
-          Aim
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          How it ran
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          Outcomes and benefits
-        </h2>
-        <ul>
-          <li>
-            We gathered all requirements for maps including what was to be shown, what data was available.
-          </li>
-          <li>
-            We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
-          </li>
-          <li>
-            We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
-          </li>
-        </ul>
-      </section>
-      <div
-        className="project__actions"
+      <aside
+        className="col-sm-3 col-xs-12"
       />
-    </article>
-    <aside
-      className="col-sm-3 col-xs-12"
-    >
-      <div
-        styleName="tile"
+      <article
+        className="col-sm-7 col-xs-12"
+        role="main"
       >
-        <span>
-          Transport for NSW
-        </span>
-        <b />
-        <a
-          href="mailto:undefined"
-          role="button"
+        <section>
+          <h2>
+            What's the key problem to solve?
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              Asset data is stored across a range of disparate and inconsistently structured datasets. 
+              <br />
+            </span>
+            <span>
+              Each dataset is maintained to different standards. For instance, the parks and reserves dataset is regularly  updated by dedicated resources. The bus shelters dataset hasn’t been updated in the last three years.
+              <br />
+            </span>
+            <span>
+              The inconsistent nature of these datasets means they cannot be used to reliably inform long term budget or strategic planning decisions. We think the most valuable datasets (ie. relating to those assets where Council invests the most) are:
+              <br />
+            </span>
+            <span>
+              -        Civil Assets (for example roads, paths, drains),
+              <br />
+            </span>
+            <span>
+              -        Buildings, and
+              <br />
+            </span>
+            <span>
+              -        Sports grounds.
+              <br />
+            </span>
+            <span>
+              Because our maturity in analysing data is low, we need some help to identify and capitalise on opportunities.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2>
+            Who are the users and their needs?
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              Given the purpose of this project is to run a discovery, we do not yet have a backlog of researched and validated user stories. Instead, we have a hypothesis that we can use our data to make better strategic and tactical decisions that save money and make the best use of our limited Council resources.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2>
+            Outcomes
+          </h2>
+          <ul>
+            <li>
+              We're seeking a data science expert sourced from the Digital Marketplace for 8 weeks with a budget range of $50-75k. During this short term project will run a discovery process to assess the quality of our data and identify opportunities to make better use of our limited resources. 
+            </li>
+          </ul>
+        </section>
+        <section
+          className="project"
         >
-          Email organiser
-        </a>
-      </div>
-    </aside>
-  </div>
-</section>
+          <h2>
+            Project Links
+          </h2>
+          <ul>
+            <li>
+              <a
+                className="project__links"
+                href="https://marketplace.service.gov.au/search/sellers/?role=Data science"
+                rel="external"
+                target="_blank"
+              >
+                https://marketplace.service.gov.au/search/sellers/?role=Data science
+              </a>
+            </li>
+          </ul>
+        </section>
+        <div
+          className="project__actions"
+        />
+      </article>
+    </div>
+  </section>
+</div>
 `;

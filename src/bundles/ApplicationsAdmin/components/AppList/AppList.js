@@ -32,7 +32,7 @@ const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAccep
       <td>{format(new Date(latestDate), 'YYYY-MM-DD HH:mm')}</td>
       <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
         {a.supplier_code && (<span className="badge--default">Existing</span>)}
-        {a.recruiter === 'yes' && (<span className="badge--beta">Recruiter</span>)}
+        {(a.recruiter === 'yes' || a.recruiter === 'both') && (<span className="badge--beta">Recruiter</span>)}
       </a></td>
       <td>{a.status}</td>
       <td>

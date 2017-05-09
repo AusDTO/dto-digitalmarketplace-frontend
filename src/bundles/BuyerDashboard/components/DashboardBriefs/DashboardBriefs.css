@@ -1,0 +1,11 @@
+.summary-item-field a {
+    white-space: nowrap;
+}
+
+.summary-item-field-heading-first {
+    font-size: 1rem;
+}
+
+.summary-item-field-heading {
+    font-size: 1rem;
+}

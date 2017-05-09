@@ -20,26 +20,29 @@ class AssessmentList extends React.Component {
         let brief_assessments = {};
 
         assessments.forEach((assessment) => {
-            assessment.briefs.forEach((brief) => {
-                if (!has(Object.keys(brief_assessments), brief.title)
-                ) {
+            if (assessment.briefs) {
+                assessment.briefs.forEach((brief) => {
+                    if (!has(brief_assessments, brief.title)
+                    ) {
 
-                    brief_assessments[brief.title] = {
-                        'title': brief.title,
-                        'closing_at': brief.dates.closing_date,
-                        'assessments': []
+                        brief_assessments[brief.title] = {
+                            'title': brief.title,
+                            'closing_at': brief.dates.closing_date,
+                            'assessments': []
+                        }
                     }
-                }
-                if (assessment.supplier_domain.status !== 'assessed') {
-                    brief_assessments[brief.title].assessments.push(assessment)
-                }
-            })
+                    if (assessment.supplier_domain.status !== 'assessed') {
+                        brief_assessments[brief.title].assessments.push(assessment)
+                    }
+                })
+            }
         })
         let sorted_brief_assessments = orderBy(values(brief_assessments).filter(v => !isEmpty(v.assessments)), 'closing_at', 'asc');
         return (<span>{sorted_brief_assessments.map((brief, i) => {
-            let date = (isBefore( new Date(brief.closing_at), new Date()) ?
+            let closingTime = new Date(brief.closing_at +' UTC').setHours(18);
+            let date = (isBefore( closingTime, new Date()) ?
                 'closed on '+ brief.closing_at :
-                `${distanceInWords(new Date(), new Date(brief.closing_at), {addSuffix: true})} (${brief.closing_at})`);
+                `${distanceInWords(new Date(), closingTime, {addSuffix: true})} (${format(closingTime, 'YYYY-MM-DD HH:mm Z')} AEST)`);
             return (
                 <div key={i}>
                     <strong> {brief.title}</strong> <small>{date}</small>
@@ -63,11 +66,13 @@ class AssessmentList extends React.Component {
                                             (#{a.supplier_domain.supplier.code})</a></td>
                                         <td width="60%">{a.supplier_domain.domain.name}</td>
                                         <td styleName="buttons" width="10%">
-                                            <button name="Reject" styleName="reject">Reject</button>
+                                            <button name="Reject" styleName="reject" className={a.supplier_domain.status === 'unassessed' ? "" : "disabled"}>Reject</button>
                                             <button onClick={e => {
                                                 e.preventDefault();
-                                                onApproveClick(a.id);
-                                            }} name="Approve">Approve
+                                                if (window.confirm('Do you want to approve supplier "'+a.supplier_domain.supplier.name+"' for '"+a.supplier_domain.domain.name+"'?")) {
+                                                    onApproveClick(a.id);
+                                                }
+                                            }} name="Approve" className={a.supplier_domain.status === 'unassessed' ? "" : "disabled"}>Approve
                                             </button>
                                         </td>
                                     </tr>

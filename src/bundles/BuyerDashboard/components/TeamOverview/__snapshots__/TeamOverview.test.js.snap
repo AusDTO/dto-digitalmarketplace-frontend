@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamOverview renders with no props 1`] = `
+<div
+  className="content-main"
+>
+  <h2>
+    Active team members
+  </h2>
+  You are the only registered buyer in your team
+</div>
+`;
+
+exports[`TeamOverview renders with props 1`] = `
+<div
+  className="content-main"
+>
+  <h2>
+    Active team members
+  </h2>
+  <table
+    className="content-table summary-item-body"
+  >
+    <thead
+      className="summary-item-field-headings-visible"
+    >
+      <tr>
+        <th
+          className="summary-item-field-heading-first"
+        >
+          Name
+        </th>
+        <th
+          className="summary-item-field-heading"
+        >
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="summary-item-row"
+      >
+        <td
+          className="summary-item-field"
+        >
+          AJ
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          <a
+            href="mailto:marketplace@digital.gov.au"
+          >
+            marketplace@digital.gov.au
+          </a>
+        </td>
+      </tr>
+      <tr
+        className="summary-item-row"
+      >
+        <td
+          className="summary-item-field"
+        >
+          Alex
+        </td>
+        <td
+          className="summary-item-field"
+        >
+          <a
+            href="mailto:alex.sadleir+s@digital.gov.au"
+          >
+            alex.sadleir+s@digital.gov.au
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

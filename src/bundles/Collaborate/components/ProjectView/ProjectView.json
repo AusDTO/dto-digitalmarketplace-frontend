@@ -1,17 +1,21 @@
 {
   "project": {
-    "title": "My Sydney",
-    "opportunity": "The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.",
-    "client": "Transport for NSW",
+    "id": 2,
+    "title": "Finding value in asset data",
+    "opportunity": "Council owns assets across the City of Casey that are provided for the benefit of the community. These assets include community facilities, roads, buildings, trees, parks, drains, sports grounds, play grounds and nature reserves. These assets require an ongoing commitment from Council to manage their operations and to maintain them, or to renew, upgrade or expand the assets when they reach the end of their useful life. Council is committed (per the Asset Management Policy) to looking after these assets in a way that meets the expectations of present and future residents, at the lowest economic and environmental cost.\n\nCouncil maintains several datasets that contain information about these assets. Ideally, these datasets would be used to draw insights to inform long term strategic and budget decisions. We believe there are opportunities to link up our datasets and apply statistical & predictive modelling to save money and improve asset management.",
+    "client": "City of Casey",
+    "contact_name": "Casey",
+    "contact_email": "casey@casey.vic.gov.au",
+    "service": "Planning, Smart Cities",
+    "stage": "Discovery",
     "timeframe": "January 2016 — June 2016",
-    "approach": "We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.",
+    "problem": "Asset data is stored across a range of disparate and inconsistently structured datasets. \nEach dataset is maintained to different standards. For instance, the parks and reserves dataset is regularly  updated by dedicated resources. The bus shelters dataset hasn’t been updated in the last three years.\nThe inconsistent nature of these datasets means they cannot be used to reliably inform long term budget or strategic planning decisions. We think the most valuable datasets (ie. relating to those assets where Council invests the most) are:\n-        Civil Assets (for example roads, paths, drains),\n-        Buildings, and\n-        Sports grounds.\nBecause our maturity in analysing data is low, we need some help to identify and capitalise on opportunities.",
+    "users": "Given the purpose of this project is to run a discovery, we do not yet have a backlog of researched and validated user stories. Instead, we have a hypothesis that we can use our data to make better strategic and tactical decisions that save money and make the best use of our limited Council resources.",
     "outcome": [
-      "We gathered all requirements for maps including what was to be shown, what data was available.",
-      "We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.",
-      "We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes."
+      "We're seeking a data science expert sourced from the Digital Marketplace for 8 weeks with a budget range of $50-75k. During this short term project will run a discovery process to assess the quality of our data and identify opportunities to make better use of our limited resources. "
     ],
-    "projectLinks": [
-        "http://gov.au/"
+    "project_links": [
+      "https://marketplace.service.gov.au/search/sellers/?role=Data science"
     ],
     "meta": {
       "deleteLink": "#",

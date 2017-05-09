@@ -51,3 +51,6 @@ public/main.css
 errorShots
 .env
 .idea
+
+*.lock
+
