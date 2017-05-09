@@ -57,6 +57,13 @@ class RecruiterForm extends BaseForm {
                             id="no"
                             value="no"/>
                           <label htmlFor="no">No</label>
+
+                          <Control.radio
+                            model={`${model}.recruiter`}
+                            name="recruiter"
+                            id="both"
+                            value="both"/>
+                          <label htmlFor="both">We do both recruitment and services</label>
                         </fieldset>
 
                         {children}

@@ -64,6 +64,14 @@ class DomainSelector extends BaseForm {
             )
         }
 
+        if (recruiter === 'both') {
+            header = (
+                <header>
+                    <h1 tabIndex="-1">What services do you or your candidates offer?</h1>
+                </header>
+            )
+        }
+
         return (
             <Layout>
                 {header}

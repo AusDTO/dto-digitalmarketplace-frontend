@@ -153,7 +153,8 @@ class Signup extends React.Component {
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
     let { recruiter = 'no'} = forms.recruiterForm;
-    let filter = recruiter === 'yes' ? /\/case-study/ : /\/candidates/;
+
+    let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
 
     services = Object
       .keys(services)
