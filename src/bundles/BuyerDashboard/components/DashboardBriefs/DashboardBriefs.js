@@ -63,7 +63,7 @@ DashboardBriefs.propTypes = {
 export const DraftBriefs = props => {
   const {draft, teamBriefView} = props
 
-  return(
+  return (
     <section>
       <h2>Draft briefs</h2>
       {(isEmpty(draft) ?
@@ -82,7 +82,7 @@ export const DraftBriefs = props => {
                 <tr className="summary-item-row" key={i}>
                   <td styleName="item-field">
                     {(teamBriefView &&
-                    <a href = {"/" + item.frameworkSlug + "/opportunities/" + item.id}>
+                    <a href={"/" + item.frameworkSlug + "/opportunities/" + item.id}>
                       {item.title}
                     </a>)}
                     {(!teamBriefView &&
@@ -139,7 +139,7 @@ export const ClosedBriefs = props => {
                 <tr className="summary-item-row" key={i}>
                   <td styleName="closed-item-field-title">
                     {(teamBriefView &&
-                    <a href = {"/" + item.frameworkSlug + "/opportunities/" + item.id}>
+                    <a href={"/" + item.frameworkSlug + "/opportunities/" + item.id}>
                       {item.title}
                     </a>)}
                     {(!teamBriefView &&
@@ -167,18 +167,18 @@ export const ClosedBriefs = props => {
                     {(!teamBriefView &&
                       <span>
                       {(!item.work_order_id ?
-                      <a href={"/buyers/frameworks/".concat(
-                        item.frameworkSlug,
-                        "/requirements/",
-                        item.lotSlug, "/",
-                        item.id,
-                        '/work-orders/create')}>
-                        Create work order
-                      </a> :
+                        <a href={"/buyers/frameworks/".concat(
+                          item.frameworkSlug,
+                          "/requirements/",
+                          item.lotSlug, "/",
+                          item.id,
+                          '/work-orders/create')}>
+                          Create work order
+                        </a> :
                         <a href={
-                        '/work-orders/' +
-                        item.work_order_id}>
-                        Edit work order
+                          '/work-orders/' +
+                          item.work_order_id}>
+                          Edit work order
                         </a>)}
                       </span>
                     )}
@@ -219,19 +219,13 @@ export const LiveBriefs = props => {
               return (
                 <tr className="summary-item-row" key={i}>
                   <td styleName="item-field">
-                    {(teamBriefView &&
-                    <a href = {"/" + item.frameworkSlug + "/opportunities/" + item.id}>
+                    <a href={"/buyers/frameworks/".concat(
+                      item.frameworkSlug,
+                      "/requirements/",
+                      item.lotSlug, "/",
+                      item.id)}>
                       {item.title}
-                    </a>)}
-                    {(!teamBriefView &&
-                      <a href={"/buyers/frameworks/".concat(
-                        item.frameworkSlug,
-                        "/requirements/",
-                        item.lotSlug, "/",
-                        item.id)}>
-                        {item.title}
-                      </a>
-                    )}
+                    </a>
                   </td>
                   <td styleName="item-field">
                     {format(item.dates.published_date || '', 'dddd d MMMM YYYY')}
