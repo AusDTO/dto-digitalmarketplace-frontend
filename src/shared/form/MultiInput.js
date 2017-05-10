@@ -20,7 +20,7 @@ const MultiInput = (props) => {
 
   return (
     <div className="field">
-      <label htmlFor={htmlFor}>{label}</label>
+      <label htmlFor={htmlFor} className="question-heading">{label}</label>
       {description && (
         <p className="hint" id={`${id}-hint`}>{description}</p>
       )}
