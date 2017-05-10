@@ -21,17 +21,17 @@ exports[`TeamOverview renders with props 1`] = `
   <table
     className="content-table summary-item-body"
   >
-    <thead
-      className="summary-item-field-headings-visible"
-    >
-      <tr>
+    <thead>
+      <tr
+        styleName="teamoverview-table-row"
+      >
         <th
-          className="summary-item-field-heading-first"
+          styleName="teamoverview-table-heading"
         >
           Name
         </th>
         <th
-          className="summary-item-field-heading"
+          styleName="teamoverview-table-heading"
         >
           Email
         </th>
@@ -39,15 +39,15 @@ exports[`TeamOverview renders with props 1`] = `
     </thead>
     <tbody>
       <tr
-        className="summary-item-row"
+        styleName="summary-item-row"
       >
         <td
-          className="summary-item-field"
+          styleName="summary-item-field-name"
         >
           AJ
         </td>
         <td
-          className="summary-item-field"
+          styleName="summary-item-field"
         >
           <a
             href="mailto:marketplace@digital.gov.au"
@@ -57,15 +57,15 @@ exports[`TeamOverview renders with props 1`] = `
         </td>
       </tr>
       <tr
-        className="summary-item-row"
+        styleName="summary-item-row"
       >
         <td
-          className="summary-item-field"
+          styleName="summary-item-field-name"
         >
           Alex
         </td>
         <td
-          className="summary-item-field"
+          styleName="summary-item-field"
         >
           <a
             href="mailto:alex.sadleir+s@digital.gov.au"
