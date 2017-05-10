@@ -43,7 +43,7 @@ exports[`ClosedBriefs renders with props 1`] = `
         className="summary-item-row"
       >
         <td
-          className="summary-item-field"
+          styleName="closed-item-field-title"
         >
           <a
             href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
@@ -52,12 +52,12 @@ exports[`ClosedBriefs renders with props 1`] = `
           </a>
         </td>
         <td
-          className="summary-item-field"
+          styleName="closed-item-field-date"
         >
           Invalid Date
         </td>
         <td
-          styleName="summary-item-field"
+          styleName="closed-item-field-actions"
         >
           <span>
             <a
@@ -66,11 +66,13 @@ exports[`ClosedBriefs renders with props 1`] = `
               View responses
             </a>
              
-            <a
-              href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/work-orders/create"
-            >
-              Create work order
-            </a>
+            <span>
+              <a
+                href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/work-orders/create"
+              >
+                Create work order
+              </a>
+            </span>
           </span>
         </td>
       </tr>
@@ -101,17 +103,17 @@ exports[`DraftBriefs renders with props 1`] = `
     >
       <tr>
         <th
-          className="summary-item-field-heading-first"
+          styleName="summary-item-field-heading-first"
         >
           Brief Overview
         </th>
         <th
-          className="summary-item-field-heading"
+          styleName="summary-item-field-heading"
         >
           Created
         </th>
         <th
-          className="summary-item-field-heading"
+          styleName="summary-item-field-heading"
         >
           Unanswered questions
         </th>
@@ -122,7 +124,7 @@ exports[`DraftBriefs renders with props 1`] = `
         className="summary-item-row"
       >
         <td
-          className="summary-item-field"
+          styleName="item-field"
         >
           <a
             href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
@@ -131,12 +133,12 @@ exports[`DraftBriefs renders with props 1`] = `
           </a>
         </td>
         <td
-          className="summary-item-field"
+          styleName="item-field"
         >
           Thursday 4 October 2016
         </td>
         <td
-          className="summary-item-field"
+          styleName="item-field"
         >
           <div>
             17
@@ -196,7 +198,7 @@ exports[`LiveBriefs renders with props 1`] = `
         className="summary-item-row"
       >
         <td
-          className="summary-item-field"
+          styleName="item-field"
         >
           <a
             href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
@@ -205,12 +207,12 @@ exports[`LiveBriefs renders with props 1`] = `
           </a>
         </td>
         <td
-          className="summary-item-field"
+          styleName="item-field"
         >
           Invalid Date
         </td>
         <td
-          className="summary-item-field"
+          styleName="item-field"
         >
           Invalid Date
         </td>

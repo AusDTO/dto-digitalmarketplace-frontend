@@ -70,17 +70,17 @@ exports[`BuyerDashboard renders without errors 1`] = `
             >
               <tr>
                 <th
-                  className="summary-item-field-heading-first"
+                  styleName="summary-item-field-heading-first"
                 >
                   Brief Overview
                 </th>
                 <th
-                  className="summary-item-field-heading"
+                  styleName="summary-item-field-heading"
                 >
                   Created
                 </th>
                 <th
-                  className="summary-item-field-heading"
+                  styleName="summary-item-field-heading"
                 >
                   Unanswered questions
                 </th>
@@ -91,7 +91,7 @@ exports[`BuyerDashboard renders without errors 1`] = `
                 className="summary-item-row"
               >
                 <td
-                  className="summary-item-field"
+                  styleName="item-field"
                 >
                   <a
                     href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
@@ -100,12 +100,12 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   </a>
                 </td>
                 <td
-                  className="summary-item-field"
+                  styleName="item-field"
                 >
                   Thursday 4 October 2016
                 </td>
                 <td
-                  className="summary-item-field"
+                  styleName="item-field"
                 >
                   <div>
                     17
@@ -121,7 +121,7 @@ exports[`BuyerDashboard renders without errors 1`] = `
                 className="summary-item-row"
               >
                 <td
-                  className="summary-item-field"
+                  styleName="item-field"
                 >
                   <a
                     href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome/345"
@@ -130,12 +130,12 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   </a>
                 </td>
                 <td
-                  className="summary-item-field"
+                  styleName="item-field"
                 >
                   Thursday 4 April 2017
                 </td>
                 <td
-                  className="summary-item-field"
+                  styleName="item-field"
                 >
                   <div>
                     17

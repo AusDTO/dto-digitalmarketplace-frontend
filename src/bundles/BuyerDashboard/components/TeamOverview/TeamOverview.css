@@ -1,0 +1,65 @@
+/*@media (max-width: 767px) {
+    .team-overview-table-heading {
+        display: none;
+    }
+}*/
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, td, tr {
+        display: block;
+    }
+
+    .teamoverview-table-heading {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .teamoverview-table-row {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .summary-item-row td {
+        /* Behave  like a "row" */
+        border: hidden;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    thead {
+        border-bottom: 3px solid #717171 !important;
+        display: block;
+        vertical-align: middle;
+        border-color: inherit;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+
+    .summary-item-field-name {
+        font-weight: bold !important;
+        padding-bottom: 0px !important;
+        padding-top: 10px !important;
+        width: 100% !important;
+    }
+
+    .summary-item-field {
+        padding-bottom: 12px !important;
+        padding-top: 0px !important;
+    }
+
+}

@@ -9,3 +9,52 @@
 .summary-item-field-heading {
     font-size: 1rem;
 }
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+    .table-row {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .closed-item-row {
+        display: block;
+    }
+
+    .closed-item-field-title {
+        display: inline-block;
+        width: 33.3% !important;
+        border: hidden !important;
+    }
+
+    .closed-item-field-date {
+        display: inline-block;
+        width: 33.3% !important;
+        border: hidden !important;
+    }
+
+    .closed-item-field-actions {
+        display: inline-block;
+        width: 33.3% !important;
+    }
+
+    .closed-item-field-actions a{
+        white-space: nowrap;
+    }
+
+    .item-field {
+        display: inline-block;
+        width: 33.3% !important;
+        border: hidden !important;
+    }
+
+    .summary-item-field-heading {
+        vertical-align: bottom !important;
+    }
+
+    .summary-item-field-heading-first {
+        vertical-align: bottom !important;
+    }
+}
+
