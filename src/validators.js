@@ -62,6 +62,9 @@ export const validABN = (val) => {
 }
 
 export const validLink = (val) => {
+    if (!val) {
+        return true;
+    }
     return val.match(/^http/)
 }
 
