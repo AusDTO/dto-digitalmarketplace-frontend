@@ -60,7 +60,7 @@ class DocumentsForm extends BaseForm {
 
     onUpload(id, e) {
         e.preventDefault();
-        const {model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication} = this.props;
+        const {model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication, applicationId} = this.props;
         const file = this.state[id].file;
         this.setState({
             [id]: Object.assign({}, this.state[id], {'uploading': true, 'file': void 0}),
@@ -74,7 +74,7 @@ class DocumentsForm extends BaseForm {
                 this.setState({
                     [id]: Object.assign({}, this.state[id], {'uploading': false})
                 });
-                updateDocumentName(model, id, filename);
+                updateDocumentName(model, id, filename, applicationId);
             })
             .then(submitApplication)
             .catch((error) => {
@@ -147,6 +147,7 @@ class DocumentsForm extends BaseForm {
                             const doc = get(documentsForm, `documents.${key}`, {});
                             const expiry_date_field = `expiry_date_${key}`;
                             const errors = this.state.errors[key];
+                            const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents` : match.url.slice(1);
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <label styleName="question-heading" htmlFor={key}>{field.label}</label>
@@ -169,7 +170,7 @@ class DocumentsForm extends BaseForm {
                                                 <ul className="bordered-list">
                                                     <li className="bordered-list__item row">
                                                         <div className="col-xs-9" styleName="overflow-hidden">
-                                                            <a href={`${match.url.slice(1)}/${doc.filename}`} target="_blank" rel="external">{doc.filename}</a>
+                                                            <a href={url} target="_blank" rel="external">{doc.filename}</a>
                                                         </div>
                                                         <div className="col-xs-3" styleName="text-right">
                                                             <a href="3" onClick={this.onReset.bind(this, key)}>Delete</a>
@@ -231,7 +232,8 @@ class DocumentsForm extends BaseForm {
 
 const mapStateToProps = (state) => {
     return {
-        ...formProps(state, 'documentsForm')
+        ...formProps(state, 'documentsForm'),
+        applicationId: state.application.id,
     }
 }
 
@@ -247,8 +249,9 @@ const mapDispatchToProps = (dispatch) => {
         createDocument: (model, id) => {
             return dispatch(actions.change(`${model}.documents.${id}`, {}));
         },
-        updateDocumentName: (model, id, filename) => {
-            return dispatch(actions.change(`${model}.documents.${id}.filename`, filename));
+        updateDocumentName: (model, id, filename, applicationId) => {
+            dispatch(actions.change(`${model}.documents.${id}.filename`, filename));
+            return dispatch(actions.change(`${model}.documents.${id}.application_id`, applicationId));
         },
         submitApplication: () => {
             return dispatch(submitApplication());
