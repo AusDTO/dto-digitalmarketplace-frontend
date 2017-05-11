@@ -10,13 +10,13 @@ import orderBy from 'lodash/orderBy';
 import isEmpty from 'lodash/isEmpty';
 import values from 'lodash/values';
 
-import {approveAssessment} from '../../redux/modules/assessments';
+import {approveAssessment, rejectAssessment} from '../../redux/modules/assessments';
 
 import './AssessmentList.css';
 
 class AssessmentList extends React.Component {
     render() {
-        const {assessments, url_approve, onApproveClick} = this.props;
+        const {assessments, onApproveClick, onRejectClick} = this.props;
         let brief_assessments = {};
 
         assessments.forEach((assessment) => {
@@ -66,7 +66,12 @@ class AssessmentList extends React.Component {
                                             (#{a.supplier_domain.supplier.code})</a></td>
                                         <td width="60%">{a.supplier_domain.domain.name}</td>
                                         <td styleName="buttons" width="10%">
-                                            <button name="Reject" styleName="reject" className={a.supplier_domain.status === 'unassessed' ? "" : "disabled"}>Reject</button>
+                                            <button name="Reject" onClick={e => {
+                                                e.preventDefault();
+                                                if (window.confirm('Do you want to reject supplier "'+a.supplier_domain.supplier.name+"' for '"+a.supplier_domain.domain.name+"'?")) {
+                                                    onRejectClick(a.id);
+                                                }
+                                            }} styleName="reject" className={a.supplier_domain.status === 'unassessed' ? "" : "disabled"}>Reject</button>
                                             <button onClick={e => {
                                                 e.preventDefault();
                                                 if (window.confirm('Do you want to approve supplier "'+a.supplier_domain.supplier.name+"' for '"+a.supplier_domain.domain.name+"'?")) {
@@ -96,6 +101,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onApproveClick: (id) => {
             dispatch(approveAssessment(id))
+        },
+        onRejectClick: (id) => {
+            dispatch(rejectAssessment(id))
         }
     }
 }
