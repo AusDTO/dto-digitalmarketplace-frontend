@@ -32,7 +32,8 @@ class StepNav extends React.Component {
   }
 
   render() {
-    const { buttonText, to } = this.props;
+    const { buttonText, to, type } = this.props;
+    const skipText = type === 'edit' ? 'Cancel update': 'Skip for now';
 
     return (
       <div className="row">
@@ -43,7 +44,7 @@ class StepNav extends React.Component {
         </div>
         <div className="col-xs-12 col-sm-12 col-md-3">
             <div styleName="skip">
-              <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
+              <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>{skipText}</button>
             </div>
         </div>
     </div>
@@ -58,7 +59,9 @@ StepNav.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    ...ownProps
+    ...ownProps,
+    type: state.application.type,
+
   }
 }
 

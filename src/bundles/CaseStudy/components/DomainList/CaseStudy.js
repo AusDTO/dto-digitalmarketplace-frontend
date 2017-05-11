@@ -27,26 +27,33 @@ const CaseStudy = ({pathname, domain, index, caseStudyForm, onEditCaseStudy, onD
             let study = list[guid];
             return (
               <li key={`casestudy.${domain}.${guid}`} className="bordered-list__item row">
-                <div className="col-xs-6">
-                  <Link
-                    to={`${pathname}/edit/${guid}`}
-                    id={`edit-${kebabCase(domain)}-${i}`}
-                    onClick={() => onEditCaseStudy(study)}
-                    children={study.title}
-                  />
-                  <p key={i}></p>
+                <div className="col-xs-5">
+                  <p key={i}>{study.title}</p>
                 </div>
-                <div className="col-xs-6" style={{textAlign: 'right'}}>
-                  <Link
-                    to={`${pathname}/delete/${guid}`}
-                    id={`delete-${kebabCase(domain)}-${i}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      onDeleteCaseStudy(actions, guid)
-                    }}
-                  >
-                    Delete
-                  </Link>
+                <div className="col-xs-7">
+                  <div className="row">
+                    <div className="col-xs-9" style={{textAlign: 'right'}}>
+                      <Link
+                        to={`${pathname}/edit/${guid}`}
+                        id={`edit-${kebabCase(domain)}-${i}`}
+                        onClick={() => onEditCaseStudy(study)}
+                      >
+                        Edit
+                      </Link>
+                    </div>
+                    <div className="col-xs-3">
+                      <Link
+                        to={`${pathname}/delete/${guid}`}
+                        id={`delete-${kebabCase(domain)}-${i}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          onDeleteCaseStudy(actions, guid)
+                        }}
+                      >
+                        Delete
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </li>
             )
