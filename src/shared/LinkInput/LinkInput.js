@@ -119,10 +119,10 @@ class LinkInput extends React.Component {
                             {i > 0 && <span><hr styleName="hr"/>
 
                                 <div className="row">
-                                        <div className="col-xs-12 col-sm-10">
-                                          <div className="question-heading">Additional link (optional)</div>
+                                        <div className="col-xs-8 col-sm-10">
+                                          <h3 style={{marginTop: 0, marginBottom:0}}>Additional link (optional)</h3>
                                         </div>
-                                        <div className="col-xs-12 col-sm-2">
+                                        <div className="col-xs-4 col-sm-2">
                                              <button type="button" className="button-secondary col-xs-12 col-sm-3"
                                                      styleName="remove-button"
                                                      onClick={this.removeRow.bind(this, id)}>
@@ -148,9 +148,10 @@ class LinkInput extends React.Component {
                         defaultValue={value.title}
                         style={{outline: "0"}}/>
                 </div>
-                                            {!validLink(this.state.inputs[i].value.url) && errors}
+
                 <div className="field">
                     <label htmlFor={`${name}-url-${i}`} className="question-heading">Link URL</label>
+                    {!validLink(this.state.inputs[i].value.url) && errors}
                     <input
                         type="text"
                         name={`${name}-url[]`}
@@ -170,7 +171,7 @@ class LinkInput extends React.Component {
               </span>
                     )
                 })}
-                <button type="button" className="button-secondary" onClick={this.addRow.bind(this)}>
+                <button type="button" className="button-secondary" styleName="anotherLinkButton" onClick={this.addRow.bind(this)}>
                     Add another link
                 </button>
             </div>

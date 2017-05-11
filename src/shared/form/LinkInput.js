@@ -20,7 +20,7 @@ const LinkInput = (props) => {
 
   return (
     <div className="field" id={id}>
-      <label htmlFor={htmlFor} className="question-heading">{label}</label>
+      <h3 style={{marginTop: 0}}><label htmlFor={htmlFor}>{label}</label></h3>
       {description && (
         <p className="hint" id={`${id}-hint`}>{description}</p>
       )}
@@ -42,6 +42,8 @@ const LinkInput = (props) => {
         validators={validators}
         component={LinkInputComponent}
       />
+
+
     </div>
   );
 };
