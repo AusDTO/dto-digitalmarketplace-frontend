@@ -72,7 +72,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -98,7 +98,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -130,7 +130,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -162,7 +162,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -184,7 +184,7 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -217,7 +217,7 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -325,12 +325,19 @@ exports[`CaseStudyForm renders 1`] = `
         className="field"
         id="project_links"
       >
-        <label
-          className="question-heading"
-          htmlFor="project_links"
+        <h3
+          style={
+            Object {
+              "marginTop": 0,
+            }
+          }
         >
-          Project links (optional)
-        </label>
+          <label
+            htmlFor="project_links"
+          >
+            Project links (optional)
+          </label>
+        </h3>
         <p
           className="hint"
           id="project_links-hint"
@@ -350,26 +357,31 @@ exports[`CaseStudyForm renders 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-title-0"
+                    htmlFor="title"
                   >
                     Link Title
                   </label>
+                  <p
+                    className="hint"
+                    id="title-hint"
+                  >
+                    As you would like it shown on the Digital Marketplace.
+                  </p>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-0"
-                    name="project_links-title[]"
+                    aria-describedby="title-hint"
+                    className=""
+                    disabled={false}
+                    id="title"
+                    maxLength={undefined}
+                    name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
+                    value={undefined}
                   />
                 </div>
                 <div
@@ -377,126 +389,25 @@ exports[`CaseStudyForm renders 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-url-0"
+                    htmlFor="url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-0"
-                    name="project_links-url[]"
+                    aria-describedby={undefined}
+                    className=""
+                    disabled={false}
+                    id="url"
+                    maxLength={undefined}
+                    name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
-                  />
-                </div>
-              </div>
-            </div>
-          </span>
-          <span>
-            <span>
-              <hr
-                styleName="hr"
-              />
-              <div
-                className="row"
-              >
-                <div
-                  className="col-xs-12 col-sm-10"
-                >
-                  <div
-                    className="question-heading"
-                  >
-                    Additional link (optional)
-                  </div>
-                </div>
-                <div
-                  className="col-xs-12 col-sm-2"
-                >
-                  <button
-                    className="button-secondary col-xs-12 col-sm-3"
-                    onClick={[Function]}
-                    styleName="remove-button"
-                    type="button"
-                  >
-                    Remove 
-                    <span
-                      className="visuallyhidden"
-                    >
-                      number 
-                      2
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </span>
-            <div
-              className="row"
-            >
-              <div
-                className="col-xs-12 col-sm-10"
-              >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-title-1"
-                  >
-                    Link Title
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-1"
-                    name="project_links-title[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-url-1"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-1"
-                    name="project_links-url[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
+                    value={undefined}
                   />
                 </div>
               </div>
@@ -505,6 +416,7 @@ exports[`CaseStudyForm renders 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
+            styleName="anotherLinkButton"
             type="button"
           >
             Add another link
@@ -546,7 +458,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -578,7 +490,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -604,7 +516,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div>
@@ -706,7 +618,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -732,7 +644,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -764,7 +676,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -796,7 +708,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -818,7 +730,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -851,7 +763,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -959,12 +871,19 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         className="field"
         id="project_links"
       >
-        <label
-          className="question-heading"
-          htmlFor="project_links"
+        <h3
+          style={
+            Object {
+              "marginTop": 0,
+            }
+          }
         >
-          Project links (optional)
-        </label>
+          <label
+            htmlFor="project_links"
+          >
+            Project links (optional)
+          </label>
+        </h3>
         <p
           className="hint"
           id="project_links-hint"
@@ -984,26 +903,31 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-title-0"
+                    htmlFor="title"
                   >
                     Link Title
                   </label>
+                  <p
+                    className="hint"
+                    id="title-hint"
+                  >
+                    As you would like it shown on the Digital Marketplace.
+                  </p>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-0"
-                    name="project_links-title[]"
+                    aria-describedby="title-hint"
+                    className=""
+                    disabled={false}
+                    id="title"
+                    maxLength={undefined}
+                    name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
+                    value={undefined}
                   />
                 </div>
                 <div
@@ -1011,126 +935,25 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-url-0"
+                    htmlFor="url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-0"
-                    name="project_links-url[]"
+                    aria-describedby={undefined}
+                    className=""
+                    disabled={false}
+                    id="url"
+                    maxLength={undefined}
+                    name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
-                  />
-                </div>
-              </div>
-            </div>
-          </span>
-          <span>
-            <span>
-              <hr
-                styleName="hr"
-              />
-              <div
-                className="row"
-              >
-                <div
-                  className="col-xs-12 col-sm-10"
-                >
-                  <div
-                    className="question-heading"
-                  >
-                    Additional link (optional)
-                  </div>
-                </div>
-                <div
-                  className="col-xs-12 col-sm-2"
-                >
-                  <button
-                    className="button-secondary col-xs-12 col-sm-3"
-                    onClick={[Function]}
-                    styleName="remove-button"
-                    type="button"
-                  >
-                    Remove 
-                    <span
-                      className="visuallyhidden"
-                    >
-                      number 
-                      2
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </span>
-            <div
-              className="row"
-            >
-              <div
-                className="col-xs-12 col-sm-10"
-              >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-title-1"
-                  >
-                    Link Title
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-1"
-                    name="project_links-title[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-url-1"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-1"
-                    name="project_links-url[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
+                    value={undefined}
                   />
                 </div>
               </div>
@@ -1139,6 +962,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
+            styleName="anotherLinkButton"
             type="button"
           >
             Add another link
@@ -1180,7 +1004,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -1212,7 +1036,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -1238,7 +1062,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div>
@@ -1407,7 +1231,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
       </ul>
     </div>
     <form
-      action="/foo/bar"
+      action={undefined}
       id="casestudy__create"
       method="post"
       onReset={[Function]}
@@ -1455,7 +1279,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -1494,7 +1318,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -1539,7 +1363,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -1584,7 +1408,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -1619,7 +1443,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="invalid under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -1665,7 +1489,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="invalid under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -1786,12 +1610,19 @@ exports[`CaseStudyForm renders with errors 1`] = `
         className="field"
         id="project_links"
       >
-        <label
-          className="question-heading"
-          htmlFor="project_links"
+        <h3
+          style={
+            Object {
+              "marginTop": 0,
+            }
+          }
         >
-          Project links (optional)
-        </label>
+          <label
+            htmlFor="project_links"
+          >
+            Project links (optional)
+          </label>
+        </h3>
         <p
           className="hint"
           id="project_links-hint"
@@ -1811,26 +1642,31 @@ exports[`CaseStudyForm renders with errors 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-title-0"
+                    htmlFor="title"
                   >
                     Link Title
                   </label>
+                  <p
+                    className="hint"
+                    id="title-hint"
+                  >
+                    As you would like it shown on the Digital Marketplace.
+                  </p>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-0"
-                    name="project_links-title[]"
+                    aria-describedby="title-hint"
+                    className=""
+                    disabled={false}
+                    id="title"
+                    maxLength={undefined}
+                    name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
+                    value={undefined}
                   />
                 </div>
                 <div
@@ -1838,126 +1674,25 @@ exports[`CaseStudyForm renders with errors 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-url-0"
+                    htmlFor="url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-0"
-                    name="project_links-url[]"
+                    aria-describedby={undefined}
+                    className=""
+                    disabled={false}
+                    id="url"
+                    maxLength={undefined}
+                    name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
-                  />
-                </div>
-              </div>
-            </div>
-          </span>
-          <span>
-            <span>
-              <hr
-                styleName="hr"
-              />
-              <div
-                className="row"
-              >
-                <div
-                  className="col-xs-12 col-sm-10"
-                >
-                  <div
-                    className="question-heading"
-                  >
-                    Additional link (optional)
-                  </div>
-                </div>
-                <div
-                  className="col-xs-12 col-sm-2"
-                >
-                  <button
-                    className="button-secondary col-xs-12 col-sm-3"
-                    onClick={[Function]}
-                    styleName="remove-button"
-                    type="button"
-                  >
-                    Remove 
-                    <span
-                      className="visuallyhidden"
-                    >
-                      number 
-                      2
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </span>
-            <div
-              className="row"
-            >
-              <div
-                className="col-xs-12 col-sm-10"
-              >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-title-1"
-                  >
-                    Link Title
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-1"
-                    name="project_links-title[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-url-1"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-1"
-                    name="project_links-url[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
+                    value={undefined}
                   />
                 </div>
               </div>
@@ -1966,6 +1701,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
+            styleName="anotherLinkButton"
             type="button"
           >
             Add another link
@@ -2020,7 +1756,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2065,7 +1801,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2104,7 +1840,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div>
@@ -2190,7 +1926,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
     role="main"
   >
     <form
-      action="/foo/bar"
+      action={undefined}
       id="casestudy__create"
       method="post"
       onReset={[Function]}
@@ -2225,7 +1961,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2251,7 +1987,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2283,7 +2019,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2315,7 +2051,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2337,7 +2073,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -2370,7 +2106,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue=""
+            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -2478,12 +2214,19 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         className="field"
         id="project_links"
       >
-        <label
-          className="question-heading"
-          htmlFor="project_links"
+        <h3
+          style={
+            Object {
+              "marginTop": 0,
+            }
+          }
         >
-          Project links (optional)
-        </label>
+          <label
+            htmlFor="project_links"
+          >
+            Project links (optional)
+          </label>
+        </h3>
         <p
           className="hint"
           id="project_links-hint"
@@ -2503,26 +2246,31 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-title-0"
+                    htmlFor="title"
                   >
                     Link Title
                   </label>
+                  <p
+                    className="hint"
+                    id="title-hint"
+                  >
+                    As you would like it shown on the Digital Marketplace.
+                  </p>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-0"
-                    name="project_links-title[]"
+                    aria-describedby="title-hint"
+                    className=""
+                    disabled={false}
+                    id="title"
+                    maxLength={undefined}
+                    name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
+                    value={undefined}
                   />
                 </div>
                 <div
@@ -2530,126 +2278,25 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-url-0"
+                    htmlFor="url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-0"
-                    name="project_links-url[]"
+                    aria-describedby={undefined}
+                    className=""
+                    disabled={false}
+                    id="url"
+                    maxLength={undefined}
+                    name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
-                  />
-                </div>
-              </div>
-            </div>
-          </span>
-          <span>
-            <span>
-              <hr
-                styleName="hr"
-              />
-              <div
-                className="row"
-              >
-                <div
-                  className="col-xs-12 col-sm-10"
-                >
-                  <div
-                    className="question-heading"
-                  >
-                    Additional link (optional)
-                  </div>
-                </div>
-                <div
-                  className="col-xs-12 col-sm-2"
-                >
-                  <button
-                    className="button-secondary col-xs-12 col-sm-3"
-                    onClick={[Function]}
-                    styleName="remove-button"
-                    type="button"
-                  >
-                    Remove 
-                    <span
-                      className="visuallyhidden"
-                    >
-                      number 
-                      2
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </span>
-            <div
-              className="row"
-            >
-              <div
-                className="col-xs-12 col-sm-10"
-              >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-title-1"
-                  >
-                    Link Title
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-1"
-                    name="project_links-title[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-url-1"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-1"
-                    name="project_links-url[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
+                    value={undefined}
                   />
                 </div>
               </div>
@@ -2658,6 +2305,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
+            styleName="anotherLinkButton"
             type="button"
           >
             Add another link
@@ -2699,7 +2347,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2731,7 +2379,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2757,7 +2405,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div>
@@ -2830,7 +2478,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
     role="main"
   >
     <form
-      action="https://httpbin.org/post"
+      action={undefined}
       id="casestudy__create"
       method="post"
       onReset={[Function]}
@@ -2859,7 +2507,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -2949,7 +2597,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -3112,12 +2760,19 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         className="field"
         id="project_links"
       >
-        <label
-          className="question-heading"
-          htmlFor="project_links"
+        <h3
+          style={
+            Object {
+              "marginTop": 0,
+            }
+          }
         >
-          Project links (optional)
-        </label>
+          <label
+            htmlFor="project_links"
+          >
+            Project links (optional)
+          </label>
+        </h3>
         <p
           className="hint"
           id="project_links-hint"
@@ -3137,26 +2792,31 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-title-0"
+                    htmlFor="title"
                   >
                     Link Title
                   </label>
+                  <p
+                    className="hint"
+                    id="title-hint"
+                  >
+                    As you would like it shown on the Digital Marketplace.
+                  </p>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-0"
-                    name="project_links-title[]"
+                    aria-describedby="title-hint"
+                    className=""
+                    disabled={false}
+                    id="title"
+                    maxLength={undefined}
+                    name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
+                    value={undefined}
                   />
                 </div>
                 <div
@@ -3164,126 +2824,25 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="project_links-url-0"
+                    htmlFor="url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-0"
-                    name="project_links-url[]"
+                    aria-describedby={undefined}
+                    className=""
+                    disabled={false}
+                    id="url"
+                    maxLength={undefined}
+                    name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
+                    onKeyPress={[Function]}
+                    pattern={undefined}
+                    readOnly={undefined}
                     type="text"
-                  />
-                </div>
-              </div>
-            </div>
-          </span>
-          <span>
-            <span>
-              <hr
-                styleName="hr"
-              />
-              <div
-                className="row"
-              >
-                <div
-                  className="col-xs-12 col-sm-10"
-                >
-                  <div
-                    className="question-heading"
-                  >
-                    Additional link (optional)
-                  </div>
-                </div>
-                <div
-                  className="col-xs-12 col-sm-2"
-                >
-                  <button
-                    className="button-secondary col-xs-12 col-sm-3"
-                    onClick={[Function]}
-                    styleName="remove-button"
-                    type="button"
-                  >
-                    Remove 
-                    <span
-                      className="visuallyhidden"
-                    >
-                      number 
-                      2
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </span>
-            <div
-              className="row"
-            >
-              <div
-                className="col-xs-12 col-sm-10"
-              >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-title-1"
-                  >
-                    Link Title
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="title"
-                    defaultValue={undefined}
-                    id="project_links-title-1"
-                    name="project_links-title[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="project_links-url-1"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby="project_links-hint"
-                    className="text-box "
-                    data-field="url"
-                    defaultValue={undefined}
-                    id="project_links-url-1"
-                    name="project_links-url[]"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    style={
-                      Object {
-                        "outline": "0",
-                      }
-                    }
-                    type="text"
+                    value={undefined}
                   />
                 </div>
               </div>
@@ -3292,6 +2851,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           <button
             className="button-secondary"
             onClick={[Function]}
+            styleName="anotherLinkButton"
             type="button"
           >
             Add another link
@@ -3333,7 +2893,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -3365,7 +2925,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -3391,7 +2951,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div>

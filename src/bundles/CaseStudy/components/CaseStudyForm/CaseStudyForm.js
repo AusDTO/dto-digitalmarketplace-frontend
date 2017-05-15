@@ -60,7 +60,16 @@ class CaseStudyForm extends BaseForm {
     if (!buttonText) {
       buttonText = mode === 'edit' ? 'Save Changes' : 'Publish Case Study';
     }
-
+      const linkRequiredIfTitle = (vals) => {
+          if (!vals) return true;
+          let valid = true;
+          vals.forEach( (val) => {
+              if (!isEmpty(val.title) && isEmpty(val.url)) {
+                  valid = false;
+              }
+          });
+          return valid;
+      };
     return (
       <Layout>
         <header>
@@ -92,6 +101,9 @@ class CaseStudyForm extends BaseForm {
             valid={form.valid}
             onCustomSubmit={onSubmit}
             onSubmitFailed={onSubmitFailed}
+                validators={{
+                    "project_links": linkRequiredIfTitle
+                }}
           >
 
             {csrf_token && (
@@ -183,7 +195,13 @@ class CaseStudyForm extends BaseForm {
               messages={{ required: 'You must provide at least one outcome.' }}
               validators={{ required }}
             />
-
+            <StatefulError
+                model={`${model}.project_links`}
+                id="project_links"
+                messages={{
+                    "project_links": "Each project link title needs a corresponding URL"
+                }}
+            />
             <LinkInput
               id="project_links"
               model={`${model}.project_links`}
