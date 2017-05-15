@@ -8,10 +8,13 @@
 }
 
 .hr {
-    margin-top: 24px;
-    margin-bottom: 37px;
+    margin-bottom: 24px;
 }
 
 .footer {
     margin:0;
+}
+
+.anotherLinkButton {
+    margin-top: 0;
 }

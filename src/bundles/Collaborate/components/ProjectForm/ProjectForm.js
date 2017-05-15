@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Form, Control} from 'react-redux-form';
+import isEmpty from 'lodash/isEmpty'
 
-
-import {required, validLinks, validEmail} from '../../../../validators';
+import {required, validEmail} from '../../../../validators';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -54,6 +54,8 @@ class ProjectForm extends BaseForm {
         serverRender: React.PropTypes.bool
     }
 
+
+
     render() {
         let {
             action,
@@ -67,6 +69,17 @@ class ProjectForm extends BaseForm {
             onSubmit,
             onSubmitFailed
         } = this.props;
+
+        const linkRequiredIfTitle = (vals) => {
+            if (!vals) return true;
+            let valid = true;
+            vals.forEach( (val) => {
+                if (!isEmpty(val.title) && isEmpty(val.url)) {
+                    valid = false;
+                }
+            });
+            return valid;
+        };
 
         if (!buttonText) {
             buttonText = mode === 'edit' ? 'Save Changes' : 'Submit Project';
@@ -83,6 +96,7 @@ class ProjectForm extends BaseForm {
                 stage_name = this.state.stage.toLowerCase();
             }
         }
+
 
         return (
             <Layout>
@@ -104,6 +118,10 @@ class ProjectForm extends BaseForm {
                           valid={form.valid}
                           onCustomSubmit={onSubmit}
                           onSubmitFailed={onSubmitFailed}
+                          validators={{
+                          "partner_links": linkRequiredIfTitle,
+                          "project_links": linkRequiredIfTitle
+                        }}
                     >
 
                         {csrf_token && (
@@ -164,11 +182,10 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="idea"
                                 value="Idea"
-                                description="You have a problem or opportunity to explore."
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="idea">Idea
+                            <label htmlFor="idea">Idea <p>You have a problem or opportunity to explore.</p>
 
                             </label>
                             <Control.radio
@@ -177,11 +194,10 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="discovery"
                                 value="Discovery"
-                                description="Researching user needs, understanding policy intent and technology constraints."
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="discovery">Discovery
+                            <label htmlFor="discovery">Discovery <p>Researching user needs, understanding policy intent and technology constraints.</p>
 
                             </label>
                             <Control.radio
@@ -190,11 +206,10 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="pilot"
                                 value="Pilot"
-                                description="Prototyping and iterating solutions to explore how to meet your users’ needs. "
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="pilot">Pilot
+                            <label htmlFor="pilot">Pilot <p>Prototyping and iterating solutions to explore how to meet your users’ needs. </p>
 
                             </label>
 
@@ -204,11 +219,10 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="inBuild"
                                 value="Build"
-                                description="In the process of delivering a live implementation."
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="inBuild">In Build
+                            <label htmlFor="inBuild">In Build <p>In the process of delivering a live implementation.</p>
 
                             </label>
 
@@ -218,11 +232,10 @@ class ProjectForm extends BaseForm {
                                 name="stage"
                                 id="live"
                                 value="Live"
-                                description="Teams and processes in place operating and improving the live service. "
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="live">Live
+                            <label htmlFor="live">Live <p>Teams and processes in place operating and improving the live service.</p>
 
                             </label>
                         </fieldset>
@@ -328,6 +341,13 @@ class ProjectForm extends BaseForm {
                             />
                         </div>)}
 
+                        <StatefulError
+                            model={`${model}.partner_links`}
+                            id="partner_links"
+                            messages={{
+                                "partner_links": "Each partner link title needs a corresponding URL"
+                            }}
+                        />
                         <LinkInput
                             id="partner_links"
                             model={`${model}.partner_links`}
@@ -336,10 +356,14 @@ class ProjectForm extends BaseForm {
                             label="Partner links (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Link to any supporting material or partner website. Links must begin with http"
-                            messages={{validLinks: 'Links must begin with \'http\''}}
-                            validators={{validLinks}}
                         />
-
+                        <StatefulError
+                            model={`${model}.project_links`}
+                            id="project_links"
+                            messages={{
+                                "project_links": "Each project link title needs a corresponding URL"
+                            }}
+                        />
                         <LinkInput
                             id="project_links"
                             model={`${model}.project_links`}
@@ -348,8 +372,6 @@ class ProjectForm extends BaseForm {
                             label="Project links (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http"
-                            messages={{validLinks: 'Links must begin with \'http\''}}
-                            validators={{validLinks}}
                         />
 
                         <h3>Project Contact</h3>
