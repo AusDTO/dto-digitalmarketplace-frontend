@@ -2,7 +2,7 @@
 
 exports[`TeamOverview renders with no props 1`] = `
 <div
-  className="content-main"
+  styleName="teamoverview-main"
 >
   <h2>
     Active team members
@@ -13,7 +13,7 @@ exports[`TeamOverview renders with no props 1`] = `
 
 exports[`TeamOverview renders with props 1`] = `
 <div
-  className="content-main"
+  styleName="teamoverview-main"
 >
   <h2>
     Active team members
