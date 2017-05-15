@@ -15,26 +15,26 @@ exports[`ClosedBriefs renders with props 1`] = `
     Closed briefs
   </h2>
   <table
-    className="content-table summary-item-body"
+    styleName="brief-table summary-item-body"
   >
     <thead
       className="summary-item-field-headings-visible"
     >
       <tr>
         <th
-          styleName="summary-item-field-heading-first"
+          styleName="left-header"
         >
           Brief Overview
         </th>
         <th
-          styleName="summary-item-field-heading"
+          styleName="middle-header"
         >
           Closed
         </th>
         <th
-          styleName="summary-item-field-heading"
+          styleName="right-header"
         >
-          Work order
+          Work Order
         </th>
       </tr>
     </thead>
@@ -96,24 +96,22 @@ exports[`DraftBriefs renders with props 1`] = `
     Draft briefs
   </h2>
   <table
-    className="content-table summary-item-body"
+    styleName="brief-table summary-item-body"
   >
     <thead
       className="summary-item-field-headings-visible"
     >
       <tr>
         <th
-          styleName="summary-item-field-heading-first"
+          styleName="left-header"
         >
           Brief Overview
         </th>
-        <th
-          styleName="summary-item-field-heading"
-        >
+        <th>
           Created
         </th>
         <th
-          styleName="summary-item-field-heading"
+          styleName="right-header"
         >
           Unanswered questions
         </th>
@@ -135,7 +133,7 @@ exports[`DraftBriefs renders with props 1`] = `
         <td
           styleName="item-field"
         >
-          Thursday 4 October 2016
+          Thursday 6 October 2016
         </td>
         <td
           styleName="item-field"
@@ -156,7 +154,9 @@ exports[`DraftBriefs renders with props 1`] = `
 `;
 
 exports[`LiveBriefs renders with no props 1`] = `
-<section>
+<section
+  styleName="live-brief-container"
+>
   <h2>
     Live briefs
   </h2>
@@ -165,29 +165,29 @@ exports[`LiveBriefs renders with no props 1`] = `
 `;
 
 exports[`LiveBriefs renders with props 1`] = `
-<section>
+<section
+  styleName="live-brief-container"
+>
   <h2>
     Live briefs
   </h2>
   <table
-    className="content-table summary-item-body"
+    styleName="brief-table summary-item-body"
   >
-    <thead
-      className="summary-item-field-headings-visible"
-    >
+    <thead>
       <tr>
         <th
-          className="summary-item-field-heading-first"
+          styleName="left-header"
         >
           Brief Overview
         </th>
         <th
-          className="summary-item-field-heading"
+          styleName="middle-header"
         >
           Published
         </th>
         <th
-          className="summary-item-field-heading"
+          styleName="right-header"
         >
           Closing
         </th>

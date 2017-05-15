@@ -1,60 +1,184 @@
 .summary-item-field a {
-    white-space: nowrap;
+    white-space: nowrap
 }
 
 .summary-item-field-heading-first {
-    font-size: 1rem;
+    font-size: 1rem
 }
 
 .summary-item-field-heading {
-    font-size: 1rem;
+    font-size: 1rem
 }
 
-@media only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
+.create-opportunity-link {
+    padding-bottom: 0px
+}
+
+.create-opportunity-link p {
+    margin-bottom: 1rem
+}
+
+section.live-brief-container {
+    margin-top: 3.5rem
+}
+
+.dashboard-main {
+    width: 74.48861%
+}
+
+@media (max-width: 767px) {
+    .dashboard-main {
+        width: 100%
+    }
+
     .table-row {
         position: absolute;
         top: -9999px;
-        left: -9999px;
+        left: -9999px
     }
 
     .closed-item-row {
-        display: block;
+        display: block
     }
 
     .closed-item-field-title {
         display: inline-block;
         width: 33.3% !important;
-        border: hidden !important;
+        border: hidden !important
     }
 
     .closed-item-field-date {
         display: inline-block;
         width: 33.3% !important;
-        border: hidden !important;
+        border: hidden !important
     }
 
     .closed-item-field-actions {
         display: inline-block;
-        width: 33.3% !important;
+        width: 33.3% !important
     }
 
-    .closed-item-field-actions a{
-        white-space: nowrap;
+    .closed-item-field-actions a {
+        white-space: nowrap
     }
 
     .item-field {
         display: inline-block;
         width: 33.3% !important;
-        border: hidden !important;
+        border: hidden !important
     }
 
-    .summary-item-field-heading {
-        vertical-align: bottom !important;
+    .item-field a {
+        overflow-wrap: break-word;
     }
 
-    .summary-item-field-heading-first {
-        vertical-align: bottom !important;
+    table.brief-table td {
+        padding: 1em 1.2em
     }
+
+    table.brief-table thead tr th.middle-header {
+        padding-right: 20px;
+        text-align: left;
+        width: 50%
+    }
+
+    table.brief-table thead tr th.right-header {
+        width: 10%
+    }
+}
+
+table.brief-table {
+    margin: 1em 0 1em
+}
+
+table.brief-table caption {
+    font-size: 1.0625rem;
+    padding-bottom: 1em;
+    text-align: left
+}
+
+table.brief-table td {
+    padding: 1em 1.2em
+}
+
+table.brief-table tr {
+    border-bottom: 1px solid #bebebe
+}
+
+table.brief-table tr:first-child {
+    border-top: 1px solid #bebebe
+}
+
+table.brief-table thead tr th {
+    font-weight: 700;
+    text-align: left;
+    line-height: 18px
+}
+
+table.brief-table tr:nth-child(even) {
+    background-color: white
+
+}
+
+table.brief-table thead tr th.left-header {
+    padding-left: 5px
+}
+
+table.brief-table thead tr th.middle-header {
+    text-align: left
+}
+
+table.brief-table thead tr th:nth-child(3) {
+    color: #313131;
+    text-align: right
+}
+
+table.brief-table tr td, table.brief-table tr th {
+    font-size: .875rem;
+    font-weight: 400;
+    vertical-align: top
+}
+
+table.brief-table tr td:nth-child(1), table.brief-table tr th:nth-child(1) {
+    width: 40%;
+    text-align: left
+}
+
+table.brief-table tr td:nth-child(3), table.brief-table tr th:nth-child(3) {
+    color: #717171;
+    text-align: right
+}
+
+table.brief-table p, table.brief-table .sidebar h2 span, .sidebar h2 table.brief-table span, table.brief-table .sidebar .display span, .sidebar .display table.brief-table span {
+    font-size: .875rem
+}
+
+table.brief-table ul, table.brief-table ol {
+    font-size: .875rem;
+    padding-left: 1.5em
+}
+
+table.brief-table.summary-item-body {
+    width: 100%
+}
+
+table.brief-table.summary-item-body tr:first-child {
+    border-top: 0
+}
+
+table.brief-table.summary-item-body thead tr:first-child {
+    border-bottom: 3px solid #666666
+}
+
+table.brief-table.summary-item-body-no-bottom-border-row-bold-borders-text-large tr:first-child {
+    border-top: 0
+}
+
+table.brief-table .summary-item-field-headings th {
+    border-bottom: 0
+}
+
+table.brief-table .summary-item-free-text span {
+    white-space: pre-wrap
 }
 

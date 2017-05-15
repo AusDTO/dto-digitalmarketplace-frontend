@@ -56,31 +56,29 @@ exports[`BuyerDashboard renders without errors 1`] = `
     </article>
     <article>
       <div
-        className="content-main"
+        styleName="dashboard-main"
       >
         <section>
           <h2>
             Draft briefs
           </h2>
           <table
-            className="content-table summary-item-body"
+            styleName="brief-table summary-item-body"
           >
             <thead
               className="summary-item-field-headings-visible"
             >
               <tr>
                 <th
-                  styleName="summary-item-field-heading-first"
+                  styleName="left-header"
                 >
                   Brief Overview
                 </th>
-                <th
-                  styleName="summary-item-field-heading"
-                >
+                <th>
                   Created
                 </th>
                 <th
-                  styleName="summary-item-field-heading"
+                  styleName="right-header"
                 >
                   Unanswered questions
                 </th>
@@ -102,7 +100,7 @@ exports[`BuyerDashboard renders without errors 1`] = `
                 <td
                   styleName="item-field"
                 >
-                  Thursday 4 October 2016
+                  Thursday 6 October 2016
                 </td>
                 <td
                   styleName="item-field"
@@ -132,7 +130,7 @@ exports[`BuyerDashboard renders without errors 1`] = `
                 <td
                   styleName="item-field"
                 >
-                  Thursday 4 April 2017
+                  Thursday 6 April 2017
                 </td>
                 <td
                   styleName="item-field"
@@ -150,7 +148,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
             </tbody>
           </table>
         </section>
-        <div>
+        <div
+          styleName="create-opportunity-link"
+        >
           <p>
             <a
               href="/buyers/frameworks/digital-marketplace/requirements/digital-professionals"
@@ -166,7 +166,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
             </a>
           </p>
         </div>
-        <section>
+        <section
+          styleName="live-brief-container"
+        >
           <h2>
             Live briefs
           </h2>

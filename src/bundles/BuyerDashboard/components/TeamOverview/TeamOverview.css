@@ -1,11 +1,11 @@
-/*@media (max-width: 767px) {
-    .team-overview-table-heading {
-        display: none;
-    }
-}*/
+.teamoverview-main {
+    width: 74.48861%
+}
 
-@media only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
+@media (max-width: 767px) {
+    .teamoverview-main {
+        width: 100%
+    }
 
     /* Force table to not be like tables anymore */
     table, thead, tbody, td, tr {
@@ -41,20 +41,17 @@
         white-space: nowrap;
     }
 
-    thead {
+    .summary-item-body thead {
         border-bottom: 3px solid #717171 !important;
         display: block;
         vertical-align: middle;
-        border-color: inherit;
-        vertical-align: middle;
-        border-color: inherit;
     }
 
     .summary-item-field-name {
         font-weight: bold !important;
         padding-bottom: 0px !important;
         padding-top: 10px !important;
-        width: 100% !important;
+        /*width: 100% !important;*/
     }
 
     .summary-item-field {
