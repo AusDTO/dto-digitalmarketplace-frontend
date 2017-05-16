@@ -1,20 +1,27 @@
-.skip {
-	text-align: center;
-
+.nav-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-.skip-link {
+.nav-button {
+	flex: 1 0 15rem;
+}
+
+.nav-link {
+	align-self: center;
 	font-size: 1.2rem;
-	margin-right: 0;
 }
 
-
-
-
-@media (min-width: 768px) {
-
-	.skip {
-		text-align: right;
+@media (max-width: 767px) {
+	.skip-link {
+		margin-top: 1rem;
 	}
+}
 
+@media (min-width: 767px) {
+	.skip-button {
+		margin-top: 1rem;
+	}
 }

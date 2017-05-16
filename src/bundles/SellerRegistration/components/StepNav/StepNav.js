@@ -33,20 +33,16 @@ class StepNav extends React.Component {
 
   render() {
     const { buttonText, to, type } = this.props;
-    const skipText = type === 'edit' ? 'Cancel update': 'Skip for now';
 
     return (
-      <div className="row">
-        <SaveError />
-        <div className="col-xs-12 col-sm-12 col-md-9">
-            <button type="submit" className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
-            <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
-        </div>
-        <div className="col-xs-12 col-sm-12 col-md-3">
-            <div styleName="skip">
-              <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>{skipText}</button>
-            </div>
-        </div>
+      <div styleName="nav-row">
+            <button type="submit" styleName="nav-button">{buttonText || 'Save and continue'}</button>
+            <button className="save-button" styleName="nav-button" onClick={this.onSave.bind(this)}>Save and finish later</button>
+          {type === 'edit' ?
+              <a className="button-secondary" styleName="nav-link skip-link" href="/sellers">Cancel update</a>
+            :
+              <button className="button-secondary" styleName="nav-link skip-button" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
+            }
     </div>
     )
   }
