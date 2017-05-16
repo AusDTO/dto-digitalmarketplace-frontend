@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 import './TeamOverview.css'
 
 const TeamOverview = ({members}) => (
-  <div className="content-main">
+  <div styleName="teamoverview-main">
     <h2>Active team members</h2>
     {(isEmpty(members) ?
         "You are the only registered buyer in your team" :

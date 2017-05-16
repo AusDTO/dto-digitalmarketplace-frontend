@@ -1,6 +1,7 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import format from 'date-fns/format';
+import parse from 'date-fns/parse'
 
 import './DashboardBriefs.css'
 
@@ -10,14 +11,14 @@ export const DashboardBriefs = props => {
   let teamBriefView = props.teamBriefView
 
   return (
-    <div className="content-main">
+    <div styleName="dashboard-main">
       <DraftBriefs
         draft={draft}
         teamBriefView={teamBriefView}
       />
 
       {!teamBriefView && (
-        <div>
+        <div styleName="create-opportunity-link">
           <p>
             <a href={"/buyers/frameworks/digital-marketplace/requirements/digital-professionals"}>
               Create a new opportunity for a digital specialist
@@ -68,12 +69,12 @@ export const DraftBriefs = props => {
       <h2>Draft briefs</h2>
       {(isEmpty(draft) ?
           "You haven't started any opportunities." :
-          <table className="content-table summary-item-body">
+          <table styleName="brief-table summary-item-body">
             <thead className="summary-item-field-headings-visible">
             <tr>
-              <th styleName="summary-item-field-heading-first">Brief Overview</th>
-              <th styleName="summary-item-field-heading">Created</th>
-              <th styleName="summary-item-field-heading">Unanswered questions</th>
+              <th styleName="left-header">{(teamBriefView ? "Brief Preview" : "Brief Overview")}</th>
+              <th>Created</th>
+              <th styleName="right-header">Unanswered questions</th>
             </tr>
             </thead>
             <tbody>
@@ -96,7 +97,7 @@ export const DraftBriefs = props => {
                     )}
                   </td>
                   <td styleName="item-field">
-                    {format(item.createdAt, 'dddd d MMMM YYYY')}
+                    {formatDate(item.createdAt)}
                   </td>
                   <td styleName="item-field">
                     <div>{item.unanswered_required} required</div>
@@ -125,12 +126,12 @@ export const ClosedBriefs = props => {
       <h2>Closed briefs</h2>
       {(isEmpty(closed) ?
           "You don't have any closed briefs." :
-          <table className="content-table summary-item-body">
+          <table styleName="brief-table summary-item-body">
             <thead className="summary-item-field-headings-visible">
             <tr>
-              <th styleName="summary-item-field-heading-first">Brief Overview</th>
-              <th styleName="summary-item-field-heading">Closed</th>
-              <th styleName="summary-item-field-heading">Work order</th>
+              <th styleName="left-header">{(teamBriefView ? "Brief Preview" : "Brief Overview")}</th>
+              <th styleName="middle-header">Closed</th>
+              <th styleName="right-header">{teamBriefView ? "Brief Response" : "Work Order"}</th>
             </tr>
             </thead>
             <tbody>
@@ -153,7 +154,7 @@ export const ClosedBriefs = props => {
                     )}
                   </td>
                   <td styleName="closed-item-field-date">
-                    {format(item.dates.closing_date || '', 'dddd d MMMM YYYY')}
+                    {formatDate(item.dates.closing_date)}
                   </td>
                   <td styleName="closed-item-field-actions">
                   <span>
@@ -202,16 +203,16 @@ export const LiveBriefs = props => {
   const {live, teamBriefView} = props;
 
   return (
-    <section>
+    <section styleName="live-brief-container">
       <h2>Live briefs</h2>
       {(isEmpty(live) ?
           "You don't have any live briefs." :
-          <table className="content-table summary-item-body">
-            <thead className="summary-item-field-headings-visible">
+          <table styleName="brief-table summary-item-body">
+            <thead>
             <tr>
-              <th className="summary-item-field-heading-first">Brief Overview</th>
-              <th className="summary-item-field-heading">Published</th>
-              <th className="summary-item-field-heading">Closing</th>
+              <th styleName="left-header">Brief Overview</th>
+              <th styleName="middle-header">Published</th>
+              <th styleName="right-header">Closing</th>
             </tr>
             </thead>
             <tbody>
@@ -228,10 +229,10 @@ export const LiveBriefs = props => {
                     </a>
                   </td>
                   <td styleName="item-field">
-                    {format(item.dates.published_date || '', 'dddd d MMMM YYYY')}
+                    {formatDate(item.dates.published_date)}
                   </td>
                   <td styleName="item-field">
-                    {format(item.dates.closing_date || '', 'dddd d MMMM YYYY')}
+                    {formatDate(item.dates.closing_date)}
                   </td>
                 </tr>
               )
@@ -247,3 +248,7 @@ LiveBriefs.propTypes = {
   live: React.PropTypes.array.isRequired
 }
 
+const formatDate = date => {
+  let dateObj = parse(new Date(date || ''));
+  return format(dateObj, 'dddd D MMMM YYYY')
+}

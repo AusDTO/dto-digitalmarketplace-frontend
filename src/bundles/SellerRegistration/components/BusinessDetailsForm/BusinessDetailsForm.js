@@ -196,10 +196,10 @@ class BusinessDetailsForm extends BaseForm {
                                 <div styleName="address-wrapper" key={key}>
                                     <hr styleName="hr"/>
                                     <div className="row">
-                                        <div className="col-xs-12 col-sm-10">
+                                        <div className="col-xs-8 col-sm-10">
                                           <h3 styleName="heading">Additional address</h3>
                                         </div>
-                                        <div className="col-xs-12 col-sm-2">
+                                        <div className="col-xs-4 col-sm-2">
                                             <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
                                         </div>
                                     </div>
