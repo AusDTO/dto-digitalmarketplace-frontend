@@ -4,6 +4,22 @@
     "action": "https://httpbin.org/post",
     "csrf_token": "abc"
   },
+  "privateInfo": {
+    "disclosures" : {
+      "conflicts_of_interest": "no",
+      "conflicts_of_interest_details": "",
+      "insurance_claims": "no",
+      "insurance_claims_details": "",
+      "investigations": "no",
+      "investigations_details": "",
+      "legal_proceedings": "no",
+      "legal_proceedings_details": "",
+      "other_circumstances": "no",
+      "other_circumstances_details": "",
+      "structual_changes": "no",
+      "structual_changes_details": ""
+    }
+  },
   "application": {
     "representative": "Example person",
     "contact_name": "Example Company",
@@ -33,7 +49,7 @@
         "maxPrice": "4"
       }
     },
-    "casestudies": {
+    "case_studies": {
       "7958aa7d-0f21-2cbd-a9a2-0198c2468cb4": {
         "service": "User research",
         "title": "A user can upload files ",
