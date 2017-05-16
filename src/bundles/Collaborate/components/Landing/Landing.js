@@ -110,11 +110,23 @@ class Landing extends React.Component {
                     <p style={{textAlign: "center"}}>Connect and learn from councils building smart communities<br/>
                         and digital services in user-centred, data informed ways.</p>
                     <ul className="list-vertical--fourths" styleName="styles.cardList">
-                        <div></div>
+                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                            <figure>
+                                <img src="/static/media/5d_data_modelling.jpg"
+                                     alt="Computer model of suburban street" width="260"/>
+                            </figure>
+                            <article style={{padding: "10px"}}>
+                                <h3>
+                                    <a href="/collaborate/project/1">5D Data Modelling</a>
+                                </h3>
+                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Ipswich City Council</p>
+                                <span styleName="styles.stage">Discovery</span>
+                            </article>
+                        </li>
                         <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
                             <figure>
                                 <img src="/static/media/asset_management_casey.jpg"
-                                     alt="" width="260"/>
+                                     alt="Map of asset locations" width="260"/>
                             </figure>
                             <article style={{padding: "10px"}}>
                                 <h3>
@@ -128,7 +140,7 @@ class Landing extends React.Component {
                         <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
                             <figure>
                                 <img src="/static/media/smart_lighting_adelaide.jpg"
-                                     alt="" width="260"/>
+                                     alt="Street lamp with attached sensor" width="260"/>
                             </figure>
                             <article style={{padding: "10px"}}>
                                 <h3>
@@ -142,7 +154,7 @@ class Landing extends React.Component {
                         <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
                             <figure>
                                 <img src="/static/media/sunshine_coast_automated_waste.jpg"
-                                     alt="" width="260"/>
+                                     alt="Diagram of underground tubes transporting waste" width="260"/>
                             </figure>
                             <article style={{padding: "10px"}}>
                                 <h3>
@@ -153,8 +165,6 @@ class Landing extends React.Component {
                                 <span styleName="styles.stage">In build</span>
                             </article>
                         </li>
-
-                        <div></div>
                     </ul>
                     <p style={{textAlign: "center"}}><a href="/collaborate/project/new" role="button">Add a project</a>
                     </p>
