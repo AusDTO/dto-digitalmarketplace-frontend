@@ -12,7 +12,6 @@ import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
 import MultiInput    from '../../../../shared/form/MultiInput';
-import LinkInput     from '../../../../shared/form/LinkInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 import StatefulError from '../../../../shared/form/StatefulError';
@@ -101,9 +100,6 @@ class CaseStudyForm extends BaseForm {
             valid={form.valid}
             onCustomSubmit={onSubmit}
             onSubmitFailed={onSubmitFailed}
-                validators={{
-                    "project_links": linkRequiredIfTitle
-                }}
           >
 
             {csrf_token && (
@@ -195,14 +191,8 @@ class CaseStudyForm extends BaseForm {
               messages={{ required: 'You must provide at least one outcome.' }}
               validators={{ required }}
             />
-            <StatefulError
-                model={`${model}.project_links`}
-                id="project_links"
-                messages={{
-                    "project_links": "Each project link title needs a corresponding URL"
-                }}
-            />
-            <LinkInput
+
+           <MultiInput
               id="project_links"
               model={`${model}.project_links`}
               name="project_links"
@@ -212,7 +202,7 @@ class CaseStudyForm extends BaseForm {
               description="Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http"
               messages={{ validLinks: 'Links must begin with \'http\'' }}
               validators={{ validLinks }}
-            />
+           />
 
             <h3>Referee</h3>
             <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
