@@ -13,7 +13,8 @@ const Changes = body => {
   let {supplier_code, supplierCode} = body;
   supplierCode = (!supplier_code ? supplierCode : supplier_code)
 
-  let unassessedCaseStudies = Object.values(applicationCaseStudies).filter(study => !study.id)
+  // will look for changes is more data later so putting this here rather than conditional render
+  let unassessedCaseStudies = (!applicationCaseStudies ? [] : Object.values(applicationCaseStudies).filter(study => !study.id))
   return (isEmpty(unassessedCaseStudies) ? null :
     <div styleName="callout--info">
       <h3>
@@ -55,7 +56,7 @@ const ApplicationPreview = ({header, body, privateInfo, onClick}) => (
       </div>
     </div>}
     <div>
-      <Changes {...body}/>
+      {!onClick && <Changes {...body}/>}
     </div>
     <ReviewHeader
       {...header}
