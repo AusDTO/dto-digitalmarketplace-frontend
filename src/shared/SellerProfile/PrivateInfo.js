@@ -101,20 +101,20 @@ const PrivateInfo = (props) => {
                 </table>
             </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
-            {Object.keys(recruiter_info).map((key, i) => {
+              {Object.keys(recruiter_info).map((key, i) => {
                 return (
-                    <div>
+                  <div key={i}>
                     <h4>{key}</h4>
                     {Object.keys(recruiter_info[key]).map((subKey, j) => {
-                        return (
-                            <div key={`${key}-${subKey}`}>
-                                {startCase(subKey)}:{recruiter_info[key][subKey]}
-                            </div>
-                        )
+                      return (
+                        <div key={`${key}-${subKey}`}>
+                          {startCase(subKey)}:{recruiter_info[key][subKey]}
+                        </div>
+                      )
                     })}
-                    </div>
+                  </div>
                 )
-            })}
+              })}
             </Row>
         </article>
     )

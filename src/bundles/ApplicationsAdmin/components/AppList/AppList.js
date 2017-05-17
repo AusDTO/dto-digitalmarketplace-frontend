@@ -14,7 +14,7 @@ const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAccep
     <tr>
       <th>created_at/submitted_at</th>
       <th>name</th>
-      <th>status</th>
+      <th>type</th>
       <th>jira</th>
       <th>actions</th>
     </tr>
@@ -34,7 +34,7 @@ const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAccep
         {a.supplier_code && (<span className="badge--default">Existing</span>)}
         {(a.recruiter === 'yes' || a.recruiter === 'both') && (<span className="badge--beta">Recruiter</span>)}
       </a></td>
-      <td>{a.status}</td>
+      <td>{a.type}</td>
       <td>
         {a.tasks && a.tasks.subtasks.map((t, i) =>
           <a target="_blank" rel="external" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
