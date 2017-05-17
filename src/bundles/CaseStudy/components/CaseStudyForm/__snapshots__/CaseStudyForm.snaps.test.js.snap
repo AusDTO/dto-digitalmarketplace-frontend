@@ -323,21 +323,13 @@ exports[`CaseStudyForm renders 1`] = `
       </div>
       <div
         className="field"
-        id="project_links"
       >
-        <h3
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
+        <label
+          className="question-heading"
+          htmlFor="project_links"
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </label>
         <p
           className="hint"
           id="project_links-hint"
@@ -345,81 +337,77 @@ exports[`CaseStudyForm renders 1`] = `
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
-          <span>
+          <div
+            className="list-entry row"
+          >
             <div
-              className="row"
+              className="col-xs-12 col-sm-9"
             >
-              <div
-                className="col-xs-12 col-sm-10"
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-0"
               >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="title"
-                  >
-                    Link Title
-                  </label>
-                  <p
-                    className="hint"
-                    id="title-hint"
-                  >
-                    As you would like it shown on the Digital Marketplace.
-                  </p>
-                  <input
-                    aria-describedby="title-hint"
-                    className=""
-                    disabled={false}
-                    id="title"
-                    maxLength={undefined}
-                    name="title"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="url"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby={undefined}
-                    className=""
-                    disabled={false}
-                    id="url"
-                    maxLength={undefined}
-                    name="url"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-              </div>
+                1
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-0"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
             </div>
-          </span>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-1"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
           <button
             className="button-secondary"
             onClick={[Function]}
-            styleName="anotherLinkButton"
             type="button"
           >
-            Add another link
+            Add another row
           </button>
         </div>
       </div>
@@ -869,21 +857,13 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       </div>
       <div
         className="field"
-        id="project_links"
       >
-        <h3
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
+        <label
+          className="question-heading"
+          htmlFor="project_links"
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </label>
         <p
           className="hint"
           id="project_links-hint"
@@ -891,81 +871,77 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
-          <span>
+          <div
+            className="list-entry row"
+          >
             <div
-              className="row"
+              className="col-xs-12 col-sm-9"
             >
-              <div
-                className="col-xs-12 col-sm-10"
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-0"
               >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="title"
-                  >
-                    Link Title
-                  </label>
-                  <p
-                    className="hint"
-                    id="title-hint"
-                  >
-                    As you would like it shown on the Digital Marketplace.
-                  </p>
-                  <input
-                    aria-describedby="title-hint"
-                    className=""
-                    disabled={false}
-                    id="title"
-                    maxLength={undefined}
-                    name="title"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="url"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby={undefined}
-                    className=""
-                    disabled={false}
-                    id="url"
-                    maxLength={undefined}
-                    name="url"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-              </div>
+                1
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-0"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
             </div>
-          </span>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-1"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
           <button
             className="button-secondary"
             onClick={[Function]}
-            styleName="anotherLinkButton"
             type="button"
           >
-            Add another link
+            Add another row
           </button>
         </div>
       </div>
@@ -1608,21 +1584,13 @@ exports[`CaseStudyForm renders with errors 1`] = `
       </div>
       <div
         className="field"
-        id="project_links"
       >
-        <h3
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
+        <label
+          className="question-heading"
+          htmlFor="project_links"
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </label>
         <p
           className="hint"
           id="project_links-hint"
@@ -1630,81 +1598,77 @@ exports[`CaseStudyForm renders with errors 1`] = `
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
-          <span>
+          <div
+            className="list-entry row"
+          >
             <div
-              className="row"
+              className="col-xs-12 col-sm-9"
             >
-              <div
-                className="col-xs-12 col-sm-10"
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-0"
               >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="title"
-                  >
-                    Link Title
-                  </label>
-                  <p
-                    className="hint"
-                    id="title-hint"
-                  >
-                    As you would like it shown on the Digital Marketplace.
-                  </p>
-                  <input
-                    aria-describedby="title-hint"
-                    className=""
-                    disabled={false}
-                    id="title"
-                    maxLength={undefined}
-                    name="title"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="url"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby={undefined}
-                    className=""
-                    disabled={false}
-                    id="url"
-                    maxLength={undefined}
-                    name="url"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-              </div>
+                1
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-0"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
             </div>
-          </span>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-1"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
           <button
             className="button-secondary"
             onClick={[Function]}
-            styleName="anotherLinkButton"
             type="button"
           >
-            Add another link
+            Add another row
           </button>
         </div>
       </div>
@@ -2212,21 +2176,13 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       </div>
       <div
         className="field"
-        id="project_links"
       >
-        <h3
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
+        <label
+          className="question-heading"
+          htmlFor="project_links"
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </label>
         <p
           className="hint"
           id="project_links-hint"
@@ -2234,81 +2190,77 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
-          <span>
+          <div
+            className="list-entry row"
+          >
             <div
-              className="row"
+              className="col-xs-12 col-sm-9"
             >
-              <div
-                className="col-xs-12 col-sm-10"
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-0"
               >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="title"
-                  >
-                    Link Title
-                  </label>
-                  <p
-                    className="hint"
-                    id="title-hint"
-                  >
-                    As you would like it shown on the Digital Marketplace.
-                  </p>
-                  <input
-                    aria-describedby="title-hint"
-                    className=""
-                    disabled={false}
-                    id="title"
-                    maxLength={undefined}
-                    name="title"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="url"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby={undefined}
-                    className=""
-                    disabled={false}
-                    id="url"
-                    maxLength={undefined}
-                    name="url"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-              </div>
+                1
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-0"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
             </div>
-          </span>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-1"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
           <button
             className="button-secondary"
             onClick={[Function]}
-            styleName="anotherLinkButton"
             type="button"
           >
-            Add another link
+            Add another row
           </button>
         </div>
       </div>
@@ -2758,21 +2710,13 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       </div>
       <div
         className="field"
-        id="project_links"
       >
-        <h3
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
+        <label
+          className="question-heading"
+          htmlFor="project_links"
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </label>
         <p
           className="hint"
           id="project_links-hint"
@@ -2780,81 +2724,77 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
         <div>
-          <span>
+          <div
+            className="list-entry row"
+          >
             <div
-              className="row"
+              className="col-xs-12 col-sm-9"
             >
-              <div
-                className="col-xs-12 col-sm-10"
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-0"
               >
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="title"
-                  >
-                    Link Title
-                  </label>
-                  <p
-                    className="hint"
-                    id="title-hint"
-                  >
-                    As you would like it shown on the Digital Marketplace.
-                  </p>
-                  <input
-                    aria-describedby="title-hint"
-                    className=""
-                    disabled={false}
-                    id="title"
-                    maxLength={undefined}
-                    name="title"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-                <div
-                  className="field"
-                >
-                  <label
-                    className="question-heading"
-                    htmlFor="url"
-                  >
-                    Link URL
-                  </label>
-                  <input
-                    aria-describedby={undefined}
-                    className=""
-                    disabled={false}
-                    id="url"
-                    maxLength={undefined}
-                    name="url"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
-                    type="text"
-                    value={undefined}
-                  />
-                </div>
-              </div>
+                1
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-0"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
             </div>
-          </span>
+          </div>
+          <div
+            className="list-entry row"
+          >
+            <div
+              className="col-xs-12 col-sm-9"
+            >
+              <label
+                className="text-box-number-label"
+                htmlFor="project_links-1"
+              >
+                2
+                .
+              </label>
+              <input
+                aria-describedby="project_links-hint"
+                className="text-box "
+                defaultValue=""
+                id="project_links-1"
+                name="project_links[]"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+              />
+            </div>
+            <button
+              className="button-secondary col-xs-12 col-sm-3"
+              onClick={[Function]}
+              type="button"
+            >
+              remove 
+              <span
+                className="visuallyhidden"
+              >
+                number 
+                2
+              </span>
+            </button>
+          </div>
           <button
             className="button-secondary"
             onClick={[Function]}
-            styleName="anotherLinkButton"
             type="button"
           >
-            Add another link
+            Add another row
           </button>
         </div>
       </div>
