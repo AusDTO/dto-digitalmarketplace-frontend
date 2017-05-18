@@ -32,8 +32,7 @@ class StepNav extends React.Component {
   }
 
   render() {
-    const { buttonText, to, type } = this.props;
-    const skipText = type === 'edit' ? 'Cancel update': 'Skip for now';
+    const { buttonText, to, type, id } = this.props;
 
     return (
       <div className="row">
@@ -43,9 +42,15 @@ class StepNav extends React.Component {
             <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
         </div>
         <div className="col-xs-12 col-sm-12 col-md-3">
-            <div styleName="skip">
-              <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>{skipText}</button>
-            </div>
+              {type !== 'edit' ?
+                <div styleName="skip">
+                  <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
+                </div>
+              :
+                <div styleName="skip cancel-link">
+                  <a styleName="skip-link" href={`/sellers/application/${id}/discard`}>Discard all updates</a>
+                </div>
+              }
         </div>
     </div>
     )
@@ -61,7 +66,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...ownProps,
     type: state.application.type,
-
+    id: state.application.id
   }
 }
 

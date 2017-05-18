@@ -3,28 +3,50 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ConnectedLink from '../ConnectedLink';
 import isEmpty from 'lodash/isEmpty';
+import { Form } from 'react-redux-form';
+import SubmitForm    from '../../../../shared/form/SubmitForm';
 
 import {Body, ReviewHeader, PrivateInfo} from '../../../../shared/SellerProfile';
 import {AppChanges} from '../../../ApplicationsAdmin/components/AppChanges/AppChanges';
+import formProps from '../../../../shared/reduxModules/formPropsSelector';
 
 import styles from './ApplicationPreview.css'; // eslint-disable-line no-unused-vars
 
-const ApplicationPreview = ({header, body, privateInfo, onClick}) => (
+const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, onSubmit, csrfToken}) => (
   <div>
     {onClick && <div className="row">
-      <div className="callout--calendar-event col-sm-8 col-xs-12">
-        <h3>Preview your profile</h3>
-        <p>Buyers will see the information below when they visit your seller profile. If correct, continue to the
-          legal
-          disclosures and agreement.</p>
-        <Link
-          to="/submit"
-          role="button"
-          onClick={(e) => onClick(e)}>
-          Continue to next step
-        </Link>
-        <Link to="/review">Go back and edit</Link>
-      </div>
+      {header.type === 'edit' ?
+        <div className="callout--calendar-event col-sm-8 col-xs-12">
+          <h3>Preview your updated profile</h3>
+          <Form model={model}
+                    action={`/sellers/application/submit/${header.id}`}
+                    method="post"
+                    id="submit"
+                    component={SubmitForm}
+                    valid={true}
+                    onSubmit={onSubmit}
+              >
+            <p>Once you submit these updates we will review the changes before updating your profile on the Digital Marketplace.</p>
+            <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
+            <button type="submit">Submit updates</button>
+            <Link to="/update">Go back and edit</Link>
+          </Form>  
+        </div>
+      :
+        <div className="callout--calendar-event col-sm-8 col-xs-12">
+          <h3>Preview your profile</h3>
+          <p>Buyers will see the information below when they visit your seller profile. If correct, continue to the
+            legal
+            disclosures and agreement.</p>
+          <Link
+            to="/submit"
+            role="button"
+            onClick={(e) => onClick(e)}>
+            Continue to next step
+          </Link>
+          <Link to="/review">Go back and edit</Link>
+        </div>
+      }
     </div>}
     <div>
       {!onClick && <AppChanges body={body}/>}
@@ -41,8 +63,10 @@ const ApplicationPreview = ({header, body, privateInfo, onClick}) => (
   </div>
 );
 
-const mapStateToProps = ({application}, {documentsUrl, onClick, ...rest}) => {
+const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
   let {
+    id,
+    type,
     name,
     seller_type,
     summary,
@@ -70,9 +94,9 @@ const mapStateToProps = ({application}, {documentsUrl, onClick, ...rest}) => {
     digital_marketplace_panel,
     dsp_panel,
     ...body
-  } = application;
+  } = state.application;
 
-  let assessed = application.assessed_domains || domains.assessed || [];
+  let assessed = state.application.assessed_domains || domains.assessed || [];
   let unassessed = domains.unassessed;
   // If unassessed is falsy, assume we are on preview
   // Where we just want to show the current selected
@@ -89,7 +113,7 @@ const mapStateToProps = ({application}, {documentsUrl, onClick, ...rest}) => {
 
   // calculate badges
   seller_type = Object.assign({}, {
-    product: !isEmpty(application.products),
+    product: !isEmpty(state.application.products),
     recruitment: ((recruiter === 'yes' || recruiter === 'both'))
   }, seller_type);
 
@@ -121,6 +145,8 @@ const mapStateToProps = ({application}, {documentsUrl, onClick, ...rest}) => {
 
   return {
     header: {
+      id,
+      type,
       name,
       seller_type,
       summary,
@@ -146,17 +172,19 @@ const mapStateToProps = ({application}, {documentsUrl, onClick, ...rest}) => {
       ...body
     },
     privateInfo: (disclosures ? {
-      documents,
-      documentsUrl: documents_url,
-      case_studies,
-      number_of_employees,
-      government_experience,
-      other_panels,
-      disclosures,
-      signed_agreements,
-      recruiter_info
+        documents,
+        documentsUrl: documents_url,
+        case_studies,
+        number_of_employees,
+        government_experience,
+        other_panels,
+        disclosures,
+        signed_agreements,
+        recruiter_info
     } : {}),
-    onClick
+    onClick,
+    csrfToken: state.form_options.csrf_token,
+    ...formProps(state, 'ApplicationPreview')
   }
 }
 

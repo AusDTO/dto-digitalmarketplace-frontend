@@ -8,7 +8,9 @@
 	margin-right: 0;
 }
 
-
+.cancel-link {
+	margin-top: 1.5rem;
+}
 
 
 @media (min-width: 768px) {
