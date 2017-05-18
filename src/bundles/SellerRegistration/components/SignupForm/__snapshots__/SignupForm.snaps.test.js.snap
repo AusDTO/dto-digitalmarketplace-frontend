@@ -108,7 +108,7 @@ exports[`SignupForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -140,7 +140,7 @@ exports[`SignupForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="email"
-          value={undefined}
+          value=""
         />
       </div>
       <p>
@@ -279,7 +279,7 @@ exports[`SignupForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -311,7 +311,7 @@ exports[`SignupForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="email"
-          value={undefined}
+          value=""
         />
       </div>
       <p>

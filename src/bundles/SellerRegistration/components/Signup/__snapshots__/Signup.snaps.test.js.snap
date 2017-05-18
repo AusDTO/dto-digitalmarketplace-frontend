@@ -917,7 +917,7 @@ exports[`Signup renders populated Your Info form 1`] = `
         role="main"
       >
         <form
-          action={undefined}
+          action="https://httpbin.org/post"
           id="yourinfo"
           method="post"
           onReset={[Function]}
@@ -958,7 +958,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               pattern={undefined}
               readOnly={undefined}
               type="text"
-              value={undefined}
+              value=""
             />
           </div>
           <div
@@ -984,7 +984,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               pattern={undefined}
               readOnly={undefined}
               type="text"
-              value={undefined}
+              value=""
             />
           </div>
           <div
@@ -1010,7 +1010,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               pattern={undefined}
               readOnly={undefined}
               type="text"
-              value={undefined}
+              value=""
             />
           </div>
           <div
