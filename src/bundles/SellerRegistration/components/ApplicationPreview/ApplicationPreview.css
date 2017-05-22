@@ -3,3 +3,10 @@
   margin: 0 auto;
   padding: 0 1.6em;
 }
+
+.callout--info {
+  margin: 1.6em 0;
+  box-shadow: none;
+  background-color: #e8f5fa;
+  padding: 5px
+}

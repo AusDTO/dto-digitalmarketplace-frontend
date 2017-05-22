@@ -5207,7 +5207,7 @@ promise@7.1.1, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.0.0, prop-types@^15.5.0, prop-types@^15.5.4, prop-types@^15.5.6:
+prop-types@^15.0.0, prop-types@^15.5.0, prop-types@^15.5.4:
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
@@ -5357,16 +5357,14 @@ react-leaflet@^1.1.6:
     prop-types "^15.5.0"
     warning "^3.0.0"
 
-react-redux-form@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.11.0.tgz#81dd698a01687d81772381f792f7aa474de9ab80"
+react-redux-form@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.5.3.tgz#776e731c72396a189a9e2599a8e236badcf7b247"
   dependencies:
     icepick "^1.1.0"
     invariant "~2.2.1"
     lodash.get "~4.4.2"
     lodash.topath "~4.5.2"
-    prop-types "^15.5.6"
-    shallow-compare "1.2.1"
 
 react-redux@^5.0.4:
   version "5.0.4"
@@ -5907,10 +5905,6 @@ setprototypeof@1.0.2:
 sha.js@2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.2.6.tgz#17ddeddc5f722fb66501658895461977867315ba"
-
-shallow-compare@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/shallow-compare/-/shallow-compare-1.2.1.tgz#6a42931a81f8ab52bfad229c14f1635e5488ba7a"
 
 shebang-regex@^1.0.0:
   version "1.0.0"

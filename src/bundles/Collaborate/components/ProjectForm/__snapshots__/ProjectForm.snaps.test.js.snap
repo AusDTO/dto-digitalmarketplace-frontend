@@ -49,7 +49,7 @@ exports[`ProjectForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -71,7 +71,7 @@ exports[`ProjectForm renders 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
+            defaultValue=""
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -108,7 +108,7 @@ exports[`ProjectForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <fieldset>
@@ -250,7 +250,7 @@ exports[`ProjectForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -272,7 +272,7 @@ exports[`ProjectForm renders 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -301,7 +301,7 @@ exports[`ProjectForm renders 1`] = `
             <textarea
               aria-describedby=""
               className="under-200"
-              defaultValue={undefined}
+              defaultValue=""
               id="about"
               name="about"
               onBlur={[Function]}
@@ -556,7 +556,7 @@ exports[`ProjectForm renders 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -582,7 +582,7 @@ exports[`ProjectForm renders 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -658,7 +658,7 @@ exports[`ProjectForm renders 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -684,7 +684,7 @@ exports[`ProjectForm renders 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -732,7 +732,7 @@ exports[`ProjectForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -758,7 +758,7 @@ exports[`ProjectForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -837,7 +837,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -859,7 +859,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
+            defaultValue=""
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -896,7 +896,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <fieldset>
@@ -1038,7 +1038,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1060,7 +1060,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -1089,7 +1089,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
             <textarea
               aria-describedby=""
               className="under-200"
-              defaultValue={undefined}
+              defaultValue=""
               id="about"
               name="about"
               onBlur={[Function]}
@@ -1344,7 +1344,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -1370,7 +1370,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -1446,7 +1446,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -1472,7 +1472,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -1520,7 +1520,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1546,7 +1546,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -1687,7 +1687,7 @@ exports[`ProjectForm renders with errors 1`] = `
       </ul>
     </div>
     <form
-      action={undefined}
+      action="/foo/bar"
       id="Project__create"
       method="post"
       onReset={[Function]}
@@ -1735,7 +1735,7 @@ exports[`ProjectForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1770,7 +1770,7 @@ exports[`ProjectForm renders with errors 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="invalid under-50"
-            defaultValue={undefined}
+            defaultValue=""
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -1820,7 +1820,7 @@ exports[`ProjectForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <fieldset>
@@ -1988,7 +1988,7 @@ exports[`ProjectForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2023,7 +2023,7 @@ exports[`ProjectForm renders with errors 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="invalid under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -2065,7 +2065,7 @@ exports[`ProjectForm renders with errors 1`] = `
             <textarea
               aria-describedby=""
               className="invalid under-200"
-              defaultValue={undefined}
+              defaultValue=""
               id="about"
               name="about"
               onBlur={[Function]}
@@ -2333,7 +2333,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -2359,7 +2359,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -2435,7 +2435,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -2461,7 +2461,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -2522,7 +2522,7 @@ exports[`ProjectForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2561,7 +2561,7 @@ exports[`ProjectForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -2624,7 +2624,7 @@ exports[`ProjectForm renders with form_options 1`] = `
     role="main"
   >
     <form
-      action={undefined}
+      action="/foo/bar"
       id="Project__create"
       method="post"
       onReset={[Function]}
@@ -2659,7 +2659,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2681,7 +2681,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
+            defaultValue=""
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -2718,7 +2718,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <fieldset>
@@ -2860,7 +2860,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2882,7 +2882,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -2911,7 +2911,7 @@ exports[`ProjectForm renders with form_options 1`] = `
             <textarea
               aria-describedby=""
               className="under-200"
-              defaultValue={undefined}
+              defaultValue=""
               id="about"
               name="about"
               onBlur={[Function]}
@@ -3166,7 +3166,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -3192,7 +3192,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -3268,7 +3268,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
                 <div
@@ -3294,7 +3294,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     pattern={undefined}
                     readOnly={undefined}
                     type="text"
-                    value={undefined}
+                    value=""
                   />
                 </div>
               </div>
@@ -3342,7 +3342,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -3368,7 +3368,7 @@ exports[`ProjectForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -3418,7 +3418,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
     role="main"
   >
     <form
-      action={undefined}
+      action="https://httpbin.org/post"
       id="Project__create"
       method="post"
       onReset={[Function]}
@@ -3447,7 +3447,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -3469,7 +3469,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
+            defaultValue=""
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -3648,7 +3648,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -3670,7 +3670,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -3699,7 +3699,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
             <textarea
               aria-describedby=""
               className="under-200"
-              defaultValue={undefined}
+              defaultValue=""
               id="about"
               name="about"
               onBlur={[Function]}
@@ -4130,7 +4130,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -4156,7 +4156,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>

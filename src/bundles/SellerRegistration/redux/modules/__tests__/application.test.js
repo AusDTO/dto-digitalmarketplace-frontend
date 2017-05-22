@@ -120,8 +120,8 @@ test('submitApplication action', () => {
   const expectedActions = [
     { type: types.APP_PRE_SUBMIT },
     { type: types.APP_SUBMIT, payload: expectedPayload },
-    { type: actionTypes.CHANGE, model: 'firstForm', multi: false, silent: false, external: true, value: { foo: 'bar', baz: 'foo'}},
-    { type: actionTypes.CHANGE, model: 'secondForm', multi: false, silent: false, external: true, value: { bar: 'baz', foobar: 'barfoo'}},
+    { type: actionTypes.CHANGE, model: 'firstForm', multi: false, silent: false, value: { foo: 'bar', baz: 'foo'}},
+    { type: actionTypes.CHANGE, model: 'secondForm', multi: false, silent: false, value: { bar: 'baz', foobar: 'barfoo'}},
     { type: types.APP_POST_SUBMIT },
   ]
 

@@ -1,51 +1,23 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { convertApplicationToSeller, rejectApplication, revertApplication } from '../../redux/modules/applications';
-import {Modal} from '../../../../shared/Modal/Modal';
-import RevertNotificationForm from '../RevertNotification/RevertNotification'
+import React from 'react'
+import {connect} from 'react-redux'
+import {convertApplicationToSeller, rejectApplication, revertApplication} from '../../redux/modules/applications'
 import format from 'date-fns/format';
 
 import './AppList.css'
 
-class AppList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalOpen: false,
-      msg: ''
-    };
-  }
-
-  toggleModal(id) {
-    this.setState({
-      modalOpen: !this.state.modalOpen,
-      applicationID: id || ''
-    });
-  };
-
-  render() {
-    const {meta = {}, applications, onRejectClick, onRevertClick, onAcceptClick} = this.props;
-
-    return (
-      <div styleName="appList">
-        <h2>{meta.heading}</h2>
-        <Modal show={ this.state.modalOpen }
-           onClose={() => this.toggleModal()}>
-          <RevertNotificationForm
-            onSubmit={onRevertClick}
-            id={this.state.applicationID}
-          />
-        </Modal>
-      <table className="content-table">
+const AppList = ({meta = {}, applications, onRejectClick, onRevertClick, onAcceptClick}) => (
+  <div styleName="appList">
+    <h2>{meta.heading}</h2>
+    <table className="content-table">
 
       <thead>
-        <tr>
-          <th>created_at/submitted_at</th>
-          <th>name</th>
-          <th>type</th>
-          <th>jira</th>
-          <th>actions</th>
-        </tr>
+      <tr>
+        <th>created_at/submitted_at</th>
+        <th>name</th>
+        <th>type</th>
+        <th>jira</th>
+        <th>actions</th>
+      </tr>
       </thead>
 
       <tbody>
@@ -53,55 +25,54 @@ class AppList extends Component {
       {applications.map((a, i) => {
         var latestDate = a.created_at;
         if (a.submitted_at) {
-            latestDate = a.submitted_at;
+          latestDate = a.submitted_at;
         }
         return (
-        <tr key={a.id}>
-          <td>{format(new Date(latestDate), 'YYYY-MM-DD HH:mm')}</td>
-          <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
-            {a.supplier_code && (<span className="badge--default">Existing</span>)}
-            {(a.recruiter === 'yes' || a.recruiter === 'both') && (<span className="badge--beta">Recruiter</span>)}
-          </a></td>
-          <td>{a.type}</td>
-          <td>
-            {a.tasks && a.tasks.subtasks.map((t, i) =>
-              <a target="_blank" rel="external" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
-            )}
-          </td>
+          <tr key={a.id}>
+            <td>{format(new Date(latestDate), 'YYYY-MM-DD HH:mm')}</td>
+            <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
+              {a.supplier_code && (<span className="badge--default">Existing</span>)}
+              {(a.recruiter === 'yes' || a.recruiter === 'both') && (<span className="badge--beta">Recruiter</span>)}
+            </a></td>
+            <td>{a.type}</td>
             <td>
-              { a.status === 'submitted' &&
-                <button onClick={e => {
-                  e.preventDefault();
-                  onRejectClick(a.id);
-                }} name="Reject" styleName="reject">Reject</button>
-              }
-              { a.status === 'submitted' &&
-                <button onClick={e => {
-                  e.preventDefault();
-                  onAcceptClick(a.id);
-                }} name="Accept">Accept</button>
-              }
-              { (a.status === 'submitted' && a.type === 'edit') &&
-                <button onClick={e => {
-                  e.preventDefault();
-                  this.toggleModal(a.id)
-                }} name="Revert" styleName="revert">Revert</button>
-              }
+              {a.tasks && a.tasks.subtasks.map((t, i) =>
+                <a target="_blank" rel="external" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
+              )}
             </td>
-        </tr>
-      )})}
-      </tbody></table>
-      </div>
-    )
-  }
-}
+            <td>
 
-const mapStateToProps = ({applications, meta, form_options}, ownProps) => {
+              { a.status === 'submitted' &&
+              <button onClick={e => {
+                e.preventDefault();
+                onRejectClick(a.id);
+              }} name="Reject" styleName="reject">Reject</button>
+              }
+              { a.status === 'submitted' &&
+              <button onClick={e => {
+                e.preventDefault();
+                onRevertClick(a.id);
+              }} name="Revert" styleName="revert">Revert</button>
+              }
+              { a.status === 'submitted' &&
+              <button onClick={e => {
+                e.preventDefault();
+                onAcceptClick(a.id);
+              }} name="Accept">Accept</button>
+              }</td>
+          </tr>
+        )
+      })}
+      </tbody>
+    </table>
+  </div>
+)
+
+const mapStateToProps = ({applications, meta}, ownProps) => {
   return {
     ...ownProps,
     applications,
-    meta,
-    form_options
+    meta
   };
 };
 
@@ -110,8 +81,8 @@ const mapDispatchToProps = (dispatch) => {
     onAcceptClick: (id) => {
       dispatch(convertApplicationToSeller(id))
     },
-    onRevertClick: (id, msg) => {
-        dispatch(revertApplication(id, msg))
+    onRevertClick: (id) => {
+      dispatch(revertApplication(id))
     },
     onRejectClick: (id) => {
       dispatch(rejectApplication(id))

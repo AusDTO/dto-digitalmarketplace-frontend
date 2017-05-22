@@ -31,7 +31,7 @@ class AssessmentList extends React.Component {
                             'assessments': []
                         }
                     }
-                    if (assessment.supplier_domain.status !== 'assessed') {
+                    if (assessment.supplier_domain.status !== 'assessed' && assessment.active) {
                         brief_assessments[brief.title].assessments.push(assessment)
                     }
                 })
