@@ -35,15 +35,15 @@ export class AppChanges extends Component {
             })
           }
         </ul>
-        <a href="#" onClick={() => this.toggleChangeView()}>
+        <button onClick={() => this.toggleChangeView()}>
           {(this.state.changesView ? "Hide " : "Show ").concat("Detailed Changes")}
-        </a>
+        </button>
         {this.state.changesView && (
           <div>
             <AppChangesTable data={appDiffData}/>
-            <a href="#" onClick={() => this.toggleChangeView()}>
+            <button onClick={() => this.toggleChangeView()}>
               {(this.state.changesView ? "Hide " : "Show ").concat("Detailed Changes")}
-            </a>
+            </button>
           </div>
         )}
         {supplierCode && <div>

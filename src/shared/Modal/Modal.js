@@ -16,7 +16,7 @@ export const Modal = props => {
       <div styleName="modal-item">
         { props.children }
       </div>
-      <div styleName="close-modal-prompt" onClick={onClose}>close</div>
+      <div styleName="close-modal-prompt" onClick={onClose} onKeyUp={onClose} role="presentation">close</div>
     </div>
   )
 };
