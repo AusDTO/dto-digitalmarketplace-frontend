@@ -65,7 +65,6 @@
     "date-fns": "1.22.0",
     "dotenv": "2.0.0",
     "express": "4.14.0",
-    "fast-json-patch": "^1.1.10",
     "leaflet": "^1.0.3",
     "lodash": "4.17.2",
     "morgan": "1.7.0",
@@ -88,7 +87,7 @@
     "rollbar-browser": "^1.9.3",
     "wdio-mocha-framework": "^0.5.3",
     "webdriverio": "^4.4.0",
-    "whatwg-fetch": "^2.0.3",
+    "whatwg-fetch": "2.0.0",
     "yargs": "6.0.0"
   },
   "scripts": {
