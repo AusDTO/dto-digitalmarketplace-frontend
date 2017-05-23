@@ -1681,7 +1681,7 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
-console-polyfill@rollbar/console-polyfill#eab6ff9d2b7597fc2f259baa18100556bdb94dbe:
+"console-polyfill@github:rollbar/console-polyfill#eab6ff9d2b7597fc2f259baa18100556bdb94dbe":
   version "0.2.3"
   resolved "https://codeload.github.com/rollbar/console-polyfill/tar.gz/eab6ff9d2b7597fc2f259baa18100556bdb94dbe"
 
@@ -5747,24 +5747,19 @@ ripemd160@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-0.2.0.tgz#2bf198bde167cacfa51c0a928e84b68bbe171fce"
 
-rollbar-browser@^1.9.3:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/rollbar-browser/-/rollbar-browser-1.9.4.tgz#dcf183ed2b2f1901246604d69f93ded6bb27a84f"
-  dependencies:
-    console-polyfill rollbar/console-polyfill#eab6ff9d2b7597fc2f259baa18100556bdb94dbe
-    error-stack-parser "1.3.3"
-    extend "3.0.0"
-
-rollbar@^0.6.3:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/rollbar/-/rollbar-0.6.5.tgz#e20352201fdab79b96e3c6a02d7f4a12c3dc2dfe"
+rollbar@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rollbar/-/rollbar-2.0.1.tgz#16a6dd81548415c7c5763996aec9e5b74f4d9b84"
   dependencies:
     async "~1.2.1"
+    console-polyfill rollbar/console-polyfill#eab6ff9d2b7597fc2f259baa18100556bdb94dbe
     debug "2.2.0"
+    error-stack-parser "1.3.3"
+    extend "3.0.0"
     json-stringify-safe "~5.0.0"
     lru-cache "~2.2.1"
     request-ip "~1.2.3"
-    uuid "~3.0.0"
+    uuid "3.0.x"
   optionalDependencies:
     decache "^3.0.5"
 
@@ -6532,13 +6527,13 @@ utils-merge@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
 
+uuid@3.0.x, uuid@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
+
 uuid@^2.0.1, uuid@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
-
-uuid@^3.0.0, uuid@~3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.1"
