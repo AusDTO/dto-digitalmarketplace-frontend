@@ -5,9 +5,38 @@ import ConnectedLink from '../ConnectedLink';
 import isEmpty from 'lodash/isEmpty';
 
 import {Body, ReviewHeader, PrivateInfo} from '../../../../shared/SellerProfile';
-import {AppChanges} from '../../../ApplicationsAdmin/components/AppChanges/AppChanges';
 
 import styles from './ApplicationPreview.css'; // eslint-disable-line no-unused-vars
+
+const Changes = body => {
+  const {case_studies: applicationCaseStudies} = body;
+  let {supplier_code, supplierCode} = body;
+  supplierCode = (!supplier_code ? supplierCode : supplier_code)
+
+  // will look for changes is more data later so putting this here rather than conditional render
+  let unassessedCaseStudies = (!applicationCaseStudies ? [] : Object.values(applicationCaseStudies).filter(study => !study.id))
+  return (isEmpty(unassessedCaseStudies) ? null :
+    <div styleName="callout--info">
+      <h3>
+        Differences exist in this sellers's application compared to their live profile
+      </h3>
+      <ul>
+        {
+          unassessedCaseStudies.map((study, i) => {
+            return <li key={i}>Case study <b>{study.title}</b> was added</li>
+          })
+        }
+      </ul>
+      {supplierCode && <div>
+        <p>
+          <a href={`https://marketplace.service.gov.au/supplier/${supplierCode}`} target="_blank" rel="external">
+            Live Supplier Profile
+          </a>
+        </p>
+      </div>}
+    </div>
+  )
+}
 
 const ApplicationPreview = ({header, body, privateInfo, onClick}) => (
   <div>
@@ -27,7 +56,7 @@ const ApplicationPreview = ({header, body, privateInfo, onClick}) => (
       </div>
     </div>}
     <div>
-      {!onClick && <AppChanges body={body}/>}
+      {!onClick && <Changes {...body}/>}
     </div>
     <ReviewHeader
       {...header}
