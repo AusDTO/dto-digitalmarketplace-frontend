@@ -15,7 +15,15 @@ class RevertNotificationForm extends BaseForm {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
     form: React.PropTypes.object.isRequired,
-  }
+    action: React.PropTypes.string,
+    model: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.func
+    ]).isRequired,
+    id: React.PropTypes.number,
+    onSubmit: React.PropTypes.func.isRequired,
+    altSubmit: React.PropTypes.func
+  };
 
   render() {
     const {
@@ -25,6 +33,7 @@ class RevertNotificationForm extends BaseForm {
       revertEmailForm,
       onSubmitFailed,
       onSubmit,
+      altSubmit,
       id
     } = this.props;
 
@@ -52,8 +61,12 @@ class RevertNotificationForm extends BaseForm {
               htmlFor="message"
               label="Email Message"
             />
-            <div style={{width: '100%'}}>
-              <button onClick={() => onSubmit(id, revertEmailForm.message)}>Send email</button>
+            <div styleName="form-button-wrapper">
+              <button style={{ width: '100px' }} onClick={() => {
+                onSubmit(id, revertEmailForm.message);
+                altSubmit(id);
+              }}>Send
+              </button>
             </div>
           </Form>
         </article>
@@ -68,7 +81,7 @@ const mapStateToProps = (state, ownProps) => {
     ...ownProps,
     csrf_token: state.form_options.csrf_token,
   }
-}
+};
 
 export {
   Textarea,

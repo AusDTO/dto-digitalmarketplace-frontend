@@ -2,26 +2,27 @@ export const CONVERTED_SELLER = 'CONVERTED_SELLER';
 export const REJECTED_APPLICATION = 'REJECTED_APPLICATION';
 export const REVERTED_APPLICATION = 'REVERTED_APPLICATION';
 
-const updateApplicationRowStatus = (state, id, status) => {
+const updateApplicationRowStatus = (state, id, status, revertStatus) => {
   const applicationIndex = state.map(app => app.id).indexOf(id);
   const updatedApplication = Object.assign({}, state[applicationIndex], {
-    status: status
+    status: status,
   });
+  updatedApplication.revertStatus = revertStatus;
 
   return state
     .slice(0, applicationIndex)
     .concat(updatedApplication, state.slice(applicationIndex + 1, state.length))
-}
+};
 
 export default function reducer(state = {}, action = {}) {
-  const {type, id} = action;
+  const {type, id, revertStatus} = action;
   switch (type) {
     case CONVERTED_SELLER:
       return updateApplicationRowStatus(state, id, 'approved');
     case REJECTED_APPLICATION:
       return updateApplicationRowStatus(state, id, 'approval_rejected');
     case REVERTED_APPLICATION:
-      return updateApplicationRowStatus(state, id, 'saved');
+      return updateApplicationRowStatus(state, id, 'saved', revertStatus);
     default:
       return state;
   }
@@ -70,7 +71,7 @@ export const rejectApplication = (id) => {
   }
 };
 
-export const revertedApplication = (id) => ({type: REVERTED_APPLICATION, id});
+export const revertedApplication = (id, revertStatus) => ({type: REVERTED_APPLICATION, id, revertStatus});
 
 export const revertApplication = (id, msg) => {
   return (dispatch, getState, api) => {
@@ -79,12 +80,13 @@ export const revertApplication = (id, msg) => {
       method: 'POST',
       body: JSON.stringify({id, msg}),
       headers: {
-        'X-CSRFToken': state.form_options.csrf_token
+        'X-CSRFToken': state.form_options.csrf_token,
+        'Content-Type': 'application/json'
       }
     })
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch(revertedApplication(id))
+      .then((response) => {
+        let revertStatus = (response.status !== 200 ? false : true);
+        dispatch(revertedApplication(id, revertStatus))
       })
   }
 };

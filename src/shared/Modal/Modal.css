@@ -2,7 +2,8 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 50%;
+  width: 70%;
+  min-width: 375px;
   transform: translate(-50%, -50%);
   display: -webkit-flex;
   flex-direction: column;
@@ -18,8 +19,8 @@
 .close-modal-prompt {
   text-decoration: underline;
   color: blue;
-  margin-left: 50%;
-  margin-right: 50%
+  margin-left: 47%;
+  margin-right: 47%
 }
 
 .close-modal-prompt:hover {
@@ -28,7 +29,8 @@
 
 .modal-item {
   align-self: center;
-  padding: 20px
+  padding: 20px;
+  width: 100%
 }
 
 .glyphicon {
