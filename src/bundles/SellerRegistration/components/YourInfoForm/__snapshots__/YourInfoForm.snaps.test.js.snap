@@ -50,7 +50,7 @@ exports[`YourInfoForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -76,7 +76,7 @@ exports[`YourInfoForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -102,7 +102,7 @@ exports[`YourInfoForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -134,7 +134,7 @@ exports[`YourInfoForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -160,7 +160,7 @@ exports[`YourInfoForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -186,7 +186,7 @@ exports[`YourInfoForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -245,7 +245,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
     role="main"
   >
     <form
-      action="/foo/bar"
+      action={undefined}
       id="yourinfo"
       method="post"
       onReset={[Function]}
@@ -286,7 +286,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -312,7 +312,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -338,7 +338,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -370,7 +370,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -396,7 +396,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -422,7 +422,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -481,7 +481,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
     role="main"
   >
     <form
-      action="/foo/bar"
+      action={undefined}
       id="yourinfo"
       method="post"
       onReset={[Function]}
@@ -522,7 +522,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -548,7 +548,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -574,7 +574,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -606,7 +606,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -632,7 +632,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div
@@ -658,7 +658,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
       <div

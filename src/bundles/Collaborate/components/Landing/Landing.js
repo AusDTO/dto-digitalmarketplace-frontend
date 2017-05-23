@@ -117,7 +117,7 @@ class Landing extends React.Component {
                             </figure>
                             <article style={{padding: "10px"}}>
                                 <h3>
-                                    <a href="/collaborate/project/6">5D Data Modelling</a>
+                                    <a href="/collaborate/project/1">5D Data Modelling</a>
                                 </h3>
                                 <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Ipswich City Council</p>
                                 <span styleName="styles.stage">Discovery</span>

@@ -16,6 +16,6 @@ describe('<AssessmentList />', () => {
       </Provider>
     </MemoryRouter>
     );
-    expect(wrapper.find('tr').length).toBe(2);
+    expect(wrapper.find('tr').length).toBe(4);
   });
 });
