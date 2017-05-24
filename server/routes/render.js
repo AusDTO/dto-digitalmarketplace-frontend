@@ -110,7 +110,7 @@ const renderPage = (request, response) => {
 
   try {
     const component = renderComponent(pathToSource, props, false)
-    response.send(ReactDOMServer.renderToString(<App state={clonedProps} component={component}/>));
+    response.send('<!doctype html>' + ReactDOMServer.renderToString(<App state={clonedProps} component={component}/>));
   } catch(e) {
     rollbar.handleError(e, request);
     return response.status(400).send({ 
