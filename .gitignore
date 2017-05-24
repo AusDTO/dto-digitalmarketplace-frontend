@@ -53,4 +53,4 @@ errorShots
 .idea
 
 *.lock
-
+*.sublime-*
