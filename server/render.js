@@ -1,10 +1,21 @@
 import express from 'express'
-import rollbar from 'rollbar'
+import Rollbar from 'rollbar'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 
 import renderRoute from './routes/render'
+
+var rollbarConfig = {
+    accessToken: process.env.ROLLBAR_TOKEN,
+    handleUncaughtExceptions: true,
+    handleUnhandledRejections: true,
+    payload: {
+        environment: process.env.NODE_ENV || 'development',
+    }
+};
+
+var rollbar = new Rollbar(rollbarConfig);
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -28,7 +39,7 @@ app.use(function errorHandler(err, request, response, next) {
   response.status(500).send(argv.debug ? err.stack : err.toString());
 });
 // Use the rollbar error handler to send exceptions to your rollbar account
-app.use(rollbar.errorHandler(process.env.ROLLBAR_TOKEN));
+app.use(rollbar.errorHandler());
 
 if (isDev) {
   app.use(morgan('tiny'));
