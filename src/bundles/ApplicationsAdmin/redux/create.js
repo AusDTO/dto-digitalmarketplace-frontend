@@ -7,11 +7,11 @@ import api from '../../../shared/reduxModules/api';
 export default function createStore(data) {
   const middleware = [
     thunk.withExtraArgument(api)
-  ]
+  ];
 
   delete data._serverContext;
 
-  let options = data.options || {}
+  let options = data.options || {};
 
   let initialState = Object.assign({}, data, {
     options: {
@@ -25,6 +25,7 @@ export default function createStore(data) {
   }
 
   const finalCreateStore = composeEnhancers(applyMiddleware(...middleware))(_createStore);
+
   const store = finalCreateStore(reducer, initialState);
 
   return store;

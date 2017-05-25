@@ -4,7 +4,7 @@ import './Modal.css';
 
 export const Modal = props => {
 
-  let {show, onClose} = props;
+  let {show} = props;
   const styles = {
     modal: {
       display: (show ? null : 'none')
@@ -16,7 +16,6 @@ export const Modal = props => {
       <div styleName="modal-item">
         { props.children }
       </div>
-      <div styleName="close-modal-prompt" onClick={onClose} onKeyUp={onClose} role="presentation">close</div>
     </div>
   )
 };

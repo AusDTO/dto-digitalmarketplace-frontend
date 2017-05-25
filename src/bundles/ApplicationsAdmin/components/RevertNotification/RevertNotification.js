@@ -1,92 +1,114 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Form} from 'react-redux-form';
+import {revertApplication} from '../../redux/modules/applications';
+import './RevertNotification.css';
+import {templateString} from '../../revertEmailTemplate';
 
-import Layout        from '../../../../shared/Layout';
-import BaseForm      from '../../../../shared/form/BaseForm';
-import Textarea     from '../../../../shared/form/Textarea';
-import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
-import './RevertNotification.css'
-
-class RevertNotificationForm extends BaseForm {
+export default class RevertedNotificationForm extends Component {
 
   static propTypes = {
-    action: React.PropTypes.string,
-    csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired,
-    action: React.PropTypes.string,
-    model: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.func
-    ]).isRequired,
-    id: React.PropTypes.number,
-    onSubmit: React.PropTypes.func.isRequired,
-    altSubmit: React.PropTypes.func
+    appID: React.PropTypes.number.isRequired,
+    onClose: React.PropTypes.func.isRequired,
+    message: React.PropTypes.string.isRequired
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: templateString
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      message: e.target.value
+    })
+  }
+
+  resetMessageText(propsMessage) {
+    this.setState({
+      message: propsMessage
+    });
+  }
 
   render() {
     const {
-      action,
-      csrf_token,
-      model,
-      revertEmailForm,
-      onSubmitFailed,
-      onSubmit,
-      altSubmit,
-      id
+      message,
+      appID,
+      onClose,
+      onRevertClick
     } = this.props;
 
     return (
-      <Layout>
-        <header>
-          <h2>Application reversion email message</h2>
-        </header>
-        <article role="main">
-
-          <Form
-            model={model}
-            action={action}
-            method="post"
-            id="revertNotification"
-            onSubmitFailed={onSubmitFailed}
-          >
-
-            <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
-
-            <Textarea
-              model={`${model}.message`}
-              name="message"
-              id="message"
-              htmlFor="message"
-              label="Email Message"
-            />
-            <div styleName="form-button-wrapper">
-              <button style={{ width: '100px' }} onClick={() => {
-                onSubmit(id, revertEmailForm.message);
-                altSubmit(id);
-              }}>Send
-              </button>
-            </div>
-          </Form>
-        </article>
-      </Layout>
+      <form>
+        <label htmlFor="formHeading">
+          <h3>
+            Revert application with optional email to seller
+          </h3>
+          <b>
+            {`Provide a short clear reason, starting with a hyphen. Eg "${"- ABN missing a digit"}"`}
+          </b>
+          <textarea value={this.state.message} onChange={this.handleChange}/>
+        </label>
+        <div styleName="form-button-group">
+          <div styleName="form-button-wrapper">
+            <button
+              type="button"
+              style={{width: '200px'}}
+              onClick={() => {
+                onRevertClick(appID, this.state.message);
+                onClose(appID, this.state.message);
+                this.resetMessageText(message);
+              }}>Revert & Send Email
+            </button>
+          </div>
+          <div styleName="form-button-wrapper">
+            <button
+              type="button"
+              style={{width: '200px'}}
+              onClick={() => {
+                onRevertClick(appID, '');
+                onClose(appID, '');
+                this.resetMessageText(message);
+              }}>Revert Without Email
+            </button>
+          </div>
+        </div>
+        <div
+          styleName="close-modal-prompt"
+          onClick={() => {
+              onClose(appID, this.state.message);
+              this.resetMessageText(message);
+            }}
+          onKeyUp={() => {
+              onClose(appID, this.state.message);
+              this.resetMessageText(message);
+            }}
+          role="presentation">close
+        </div>
+      </form>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+
+export const mapStateToProps = (state, ownProps) => {
   return {
-    ...formProps(state, 'revertEmailForm'),
+    ...state,
     ...ownProps,
-    csrf_token: state.form_options.csrf_token,
   }
 };
 
-export {
-  Textarea,
-  mapStateToProps,
-  RevertNotificationForm as Form
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRevertClick: (id, msg = '') => {
+      dispatch(revertApplication(id, msg));
+    }
+  }
+};
 
-export default connect(mapStateToProps)(RevertNotificationForm);
+export const ConnectedRevertedForm = connect(mapStateToProps, mapDispatchToProps)(RevertedNotificationForm);
+
+

@@ -1,7 +1,29 @@
 form textarea {
-    height: 300px !important;
+    min-height: 440px !important;
+}
+
+.form-button-group {
+    display: block;
+    text-align: center;
 }
 
 .form-button-wrapper {
-    text-align: center
+    display: inline-block;
+    text-align: center;
+    padding: 10px
+}
+
+.close-modal-prompt {
+    text-decoration: underline;
+    color: blue;
+    margin-left: 47%;
+    margin-right: 47%
+}
+
+.close-modal-prompt:hover {
+    cursor: pointer
+}
+
+form label h3 {
+    margin-top: 0px
 }
