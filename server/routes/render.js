@@ -1,20 +1,17 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import path from 'path';
-import fs from 'fs';
-import get from 'lodash/get';
+import path from 'path'
+import fs from 'fs'
+import get from 'lodash/get'
 import rollbar from 'rollbar'
-import ComponentRenderer from '../ComponentRenderer';
-import App from './App';
+import ComponentRenderer from '../ComponentRenderer'
+import App from './App'
+import { StaticRouter } from 'react-router'
 
 const isDev = process.env.NODE_ENV !== 'production';
 
 let cache = {};
 let contentHashCache = {};
-let widgetPaths = {
-  '/collaborate': 'bundles/Collaborate/CollaborateLandingWidget.js',
-  '/hello': 'bundles/HelloWorld/HelloWorldWidget.js'
-};
 
 /**
  * Get hashed filename from webpack.
@@ -108,17 +105,13 @@ const render = (request, response) => {
 } 
 
 const renderPage = (request, response) => {
-  if (!widgetPaths.hasOwnProperty(request.url)) {
-    return response.status(404).send('Url not mapped to widget');
-  }
-
-  const pathToSource = widgetPaths[request.url];
-  let props = {_serverContext: {location: request.url}, form_options: {}, options: {serverRender: true}};
-  let clonedProps = Object.assign({}, props);
-
   try {
-    const component = renderComponent(pathToSource, props, false)
-    response.send('<!doctype html>' + ReactDOMServer.renderToString(<App state={clonedProps} component={component}/>));
+    const context = {};
+    response.send('<!doctype html>' + ReactDOMServer.renderToString(
+      <StaticRouter location={request.url} context={context}>
+        <App/>
+      </StaticRouter>
+    ));
   } catch(e) {
     rollbar.handleError(e, request);
     return response.status(400).send({ 
