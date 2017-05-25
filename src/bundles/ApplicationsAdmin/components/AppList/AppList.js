@@ -95,7 +95,7 @@ class AppList extends Component {
                     onAcceptClick(a.id);
                   }} name="Accept">Accept</button>
                   }
-                  { (a.status === 'submitted' && a.type === 'edit') &&
+                  { a.status === 'submitted' &&
                   <button onClick={e => {
                     e.preventDefault();
                     this.toggleModal(a.id)
