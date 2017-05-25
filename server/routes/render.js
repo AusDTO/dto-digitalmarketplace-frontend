@@ -11,6 +11,10 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 let cache = {};
 let contentHashCache = {};
+let widgetPaths = {
+  '/collaborate': 'bundles/Collaborate/CollaborateLandingWidget.js',
+  '/hello': 'bundles/HelloWorld/HelloWorldWidget.js'
+};
 
 /**
  * Get hashed filename from webpack.
@@ -44,7 +48,7 @@ const getHashedFilename = (key, extension = 'js') => {
 const renderComponent = (pathToSource,  props, toStaticMarkup) => {
 
   if (!pathToSource) {
-    return response.status(400).send({ error: 'You must supply a path' });
+    throw new Error('You must supply a path');
   }
 
   pathToSource = path.normalize(pathToSource);
@@ -104,7 +108,11 @@ const render = (request, response) => {
 } 
 
 const renderPage = (request, response) => {
-  const pathToSource = 'bundles/Collaborate/CollaborateLandingWidget.js';  // TODO: don't hardcode
+  if (!widgetPaths.hasOwnProperty(request.url)) {
+    return response.status(404).send('Url not mapped to widget');
+  }
+
+  const pathToSource = widgetPaths[request.url];
   let props = {_serverContext: {location: request.url}, form_options: {}, options: {serverRender: true}};
   let clonedProps = Object.assign({}, props);
 
