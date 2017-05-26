@@ -66,7 +66,8 @@ var config = {
       'project-view': [resolveApp('src/bundles/Collaborate/ProjectViewWidget')],
       'project-form': [resolveApp('src/bundles/Collaborate/ProjectFormWidget')],
       'project-submit-confirmation':[resolveApp('src/bundles/Collaborate/ProjectSubmitConfirmationWidget')],
-    'buyer-dashboard': [resolveApp('src/bundles/BuyerDashboard/BuyerDashboardWidget')]
+    'buyer-dashboard': [resolveApp('src/bundles/BuyerDashboard/BuyerDashboardWidget')],
+      'domain-choice': [resolveApp('src/bundles/Brief/DomainAssessmentChoiceWidget')]
   },
   entryPointMocks: {
     'casestudy-view': require(resolveApp('src/bundles/CaseStudy/components/View/View.json')),
@@ -83,6 +84,7 @@ var config = {
       'project-view': require(resolveApp('src/bundles/Collaborate/components/ProjectView/ProjectView.json')),
       'project-form': require(resolveApp('src/bundles/Collaborate/components/ProjectForm/ProjectForm.json')),
     'buyer-dashboard-form': require(resolveApp('src/bundles/BuyerDashboard/components/Dashboard/BuyerDashboard.json')),
+      'domain-choice': require(resolveApp('src/bundles/Brief/components/DomainAssessmentChoice/DomainAssessmentChoice.json'))
   }
 };
 
