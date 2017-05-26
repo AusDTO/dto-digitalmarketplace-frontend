@@ -10,7 +10,7 @@ export default class RevertedNotificationForm extends Component {
   static propTypes = {
     appID: React.PropTypes.number.isRequired,
     onClose: React.PropTypes.func.isRequired,
-    message: React.PropTypes.string.isRequired
+    defaultMessage: React.PropTypes.string.isRequired
   };
 
   constructor(props) {
@@ -35,7 +35,7 @@ export default class RevertedNotificationForm extends Component {
 
   render() {
     const {
-      message,
+      defaultMessage,
       appID,
       onClose,
       onRevertClick
@@ -59,8 +59,7 @@ export default class RevertedNotificationForm extends Component {
               style={{width: '200px'}}
               onClick={() => {
                 onRevertClick(appID, this.state.message);
-                onClose(appID, this.state.message);
-                this.resetMessageText(message);
+                this.resetMessageText(defaultMessage);
               }}>Revert & Send Email
             </button>
           </div>
@@ -70,24 +69,24 @@ export default class RevertedNotificationForm extends Component {
               style={{width: '200px'}}
               onClick={() => {
                 onRevertClick(appID, '');
-                onClose(appID, '');
-                this.resetMessageText(message);
+                this.resetMessageText(defaultMessage);
               }}>Revert Without Email
             </button>
           </div>
         </div>
-        <div
+        <a
           styleName="close-modal-prompt"
+          tabIndex="0"
           onClick={() => {
               onClose(appID, this.state.message);
-              this.resetMessageText(message);
+              this.resetMessageText(defaultMessage);
             }}
           onKeyUp={() => {
               onClose(appID, this.state.message);
-              this.resetMessageText(message);
+              this.resetMessageText(defaultMessage);
             }}
-          role="presentation">close
-        </div>
+          role="button">close
+        </a>
       </form>
     )
   }
@@ -101,9 +100,10 @@ export const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, {onClose}) => {
   return {
     onRevertClick: (id, msg = '') => {
+      onClose(id, msg);
       dispatch(revertApplication(id, msg));
     }
   }

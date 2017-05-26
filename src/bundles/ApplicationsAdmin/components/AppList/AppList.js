@@ -59,15 +59,16 @@ class AppList extends Component {
           )}
         </div>
         }
+        {this.state.applicationID &&
         <div id="modal-wrapper">
           <Modal show={ this.state.modalOpen }>
             <ConnectedRevertedForm
-              message={templateString}
+              defaultMessage={templateString}
               onClose={(id, msg) => this.toggleModal(id, msg)}
               appID={this.state.applicationID}
             />
           </Modal>
-        </div>
+        </div>}
         <table className="content-table">
 
           <thead>

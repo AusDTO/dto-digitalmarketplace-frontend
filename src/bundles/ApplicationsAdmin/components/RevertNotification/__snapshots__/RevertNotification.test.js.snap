@@ -62,13 +62,14 @@ exports[`RevertedNotificationForm with required attributes 1`] = `
       </button>
     </div>
   </div>
-  <div
+  <a
     onClick={[Function]}
     onKeyUp={[Function]}
-    role="presentation"
+    role="button"
     styleName="close-modal-prompt"
+    tabIndex="0"
   >
     close
-  </div>
+  </a>
 </form>
 `;
