@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RevertedNotificationForm with required attributes 1`] = `
+<form>
+  <label
+    htmlFor="formHeading"
+  >
+    <h3>
+      Revert application with optional email to seller
+    </h3>
+    <b>
+      Provide a short clear reason, starting with a hyphen. Eg "- ABN missing a digit"
+    </b>
+    <textarea
+      onChange={[Function]}
+      value="Thank you for submitting a seller application to the Digital Marketplace.
+    
+    We have just reviewed your application and it is looking good but there are a few small items to be attended to.
+    
+    - 
+    
+    We have reverted your application so you can sign in, amend, then resubmit your application. Please contact us if you require further clarification, or would like to discuss with our team.
+    
+    https://marketplace.service.gov.au/sellers/update
+    
+    Regards
+    
+    The Marketplace team"
+    />
+  </label>
+  <div
+    styleName="form-button-group"
+  >
+    <div
+      styleName="form-button-wrapper"
+    >
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "width": "200px",
+          }
+        }
+        type="button"
+      >
+        Revert & Send Email
+      </button>
+    </div>
+    <div
+      styleName="form-button-wrapper"
+    >
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "width": "200px",
+          }
+        }
+        type="button"
+      >
+        Revert Without Email
+      </button>
+    </div>
+  </div>
+  <a
+    onClick={[Function]}
+    onKeyUp={[Function]}
+    role="button"
+    styleName="close-modal-prompt"
+    tabIndex="0"
+  >
+    close
+  </a>
+</form>
+`;

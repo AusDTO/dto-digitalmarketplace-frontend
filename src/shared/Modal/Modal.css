@@ -16,13 +16,6 @@
   box-shadow: 0px 2px 6px 2px grey
 }
 
-.close-modal-prompt {
-  text-decoration: underline;
-  color: blue;
-  margin-left: 47%;
-  margin-right: 47%
-}
-
 .close-modal-prompt:hover {
   cursor: pointer
 }
