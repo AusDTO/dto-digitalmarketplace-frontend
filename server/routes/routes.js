@@ -1,5 +1,3 @@
-import Bundle from '../../src/shared/Bundle';
-
 export const routes = [
   { path: '/collaborate',
     widgetPath: 'bundles/Collaborate/CollaborateLandingWidget.js',
