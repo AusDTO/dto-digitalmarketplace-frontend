@@ -12,7 +12,7 @@ const App = () => (
     <body>
       <Switch>
       	{routes.map(route => (
-      		<Route key={route} path={route.path} render={props => <Bundle {...props} widgetPath={route.widgetPath}/>} />
+      		<Route key={route} component={Bundle} {...route}/>
     	))}
     	<Route component={NotFound}/>
       </Switch>
