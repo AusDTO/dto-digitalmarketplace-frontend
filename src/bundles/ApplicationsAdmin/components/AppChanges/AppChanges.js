@@ -9,6 +9,16 @@ import './AppChanges.css'; // eslint-disable-line no-unused-vars
 
 export class AppChanges extends Component {
 
+  static propTypes = {
+    body: React.PropTypes.shape({
+      case_studies: React.PropTypes.func.isRequired,
+      supplier_code: React.PropTypes.number,
+      supplierCode: React.PropTypes.number,
+      id: React.PropTypes.number.isRequired,
+      type: React.PropTypes.string.isRequired
+    })
+  };
+
   constructor(props) {
     super(props);
     this.state = {changesView: false};

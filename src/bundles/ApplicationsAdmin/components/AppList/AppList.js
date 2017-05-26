@@ -1,30 +1,47 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {convertApplicationToSeller, rejectApplication, revertApplication} from '../../redux/modules/applications';
+import {convertApplicationToSeller, rejectApplication} from '../../redux/modules/applications';
 import {Modal} from '../../../../shared/Modal/Modal';
-import RevertNotificationForm from '../RevertNotification/RevertNotification'
+import {ConnectedRevertedForm} from '../RevertNotification/RevertNotification'
 import format from 'date-fns/format';
 
+import {templateString} from '../../revertEmailTemplate';
 import './AppList.css'
 
 class AppList extends Component {
+
+  static propTypes = {
+    meta: React.PropTypes.object.isRequired,
+    applications: React.PropTypes.array,
+    onRejectClick: React.PropTypes.func.isRequired,
+    onAcceptClick: React.PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       modalOpen: false,
-      msg: ''
+      msg: '',
+      updated: false,
     };
   }
 
-  toggleModal(id) {
+  toggleModal(id, msg) {
     this.setState({
       modalOpen: !this.state.modalOpen,
-      applicationID: id || null
+      applicationID: id || null,
+      msg: msg
     });
   };
 
   render() {
-    const {meta = {}, applications, onRejectClick, onRevertClick, onAcceptClick} = this.props;
+    const {
+      meta = {},
+      applications = [],
+      onRejectClick,
+      onAcceptClick
+    } = this.props;
+
     let revertedAppID = this.state.applicationID || null;
     let revertedApp = (!revertedAppID ? null : applications.filter(x => x.id === revertedAppID)[0]);
 
@@ -34,21 +51,24 @@ class AppList extends Component {
       <div styleName="appList">
         <h2>{meta.heading}</h2>
         {typeof revertStatus === 'boolean' &&
-        <div styleName="callout--info">
-          {(revertStatus ?
+        <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
+          {(revertStatus ? (this.state.msg !== '' ?
               <h4>{`Reversion email sent successfully to ${revertName}`}</h4> :
+              <h4>{`Application from ${revertName} successfully reverted without email notification`}</h4>) :
               <h4>{`Reversion email was not sent to ${revertName}`}</h4>
           )}
         </div>
         }
-        <Modal show={ this.state.modalOpen }
-               onClose={() => this.toggleModal()}>
-          <RevertNotificationForm
-            onSubmit={onRevertClick}
-            altSubmit={(id) => this.toggleModal(id)}
-            id={this.state.applicationID}
-          />
-        </Modal>
+        {this.state.applicationID &&
+        <div id="modal-wrapper">
+          <Modal show={ this.state.modalOpen }>
+            <ConnectedRevertedForm
+              defaultMessage={templateString}
+              onClose={(id, msg) => this.toggleModal(id, msg)}
+              appID={this.state.applicationID}
+            />
+          </Modal>
+        </div>}
         <table className="content-table">
 
           <thead>
@@ -112,12 +132,13 @@ class AppList extends Component {
   }
 }
 
-const mapStateToProps = ({applications, meta, form_options}, ownProps) => {
+const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick}, ownProps) => {
   return {
     ...ownProps,
     applications,
     meta,
-    form_options
+    onRejectClick,
+    onAcceptClick
   };
 };
 
@@ -125,9 +146,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAcceptClick: (id) => {
       dispatch(convertApplicationToSeller(id))
-    },
-    onRevertClick: (id, msg) => {
-      dispatch(revertApplication(id, msg))
     },
     onRejectClick: (id) => {
       dispatch(rejectApplication(id))
