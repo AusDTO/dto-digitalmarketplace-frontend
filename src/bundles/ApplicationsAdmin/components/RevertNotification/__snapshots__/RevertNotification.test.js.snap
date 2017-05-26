@@ -15,7 +15,7 @@ exports[`RevertedNotificationForm with required attributes 1`] = `
       onChange={[Function]}
       value="Thank you for submitting a seller application to the Digital Marketplace.
     
-    We've just reviewed your application and it's looking good but there's a few small items to be attended to.
+    We have just reviewed your application and it is looking good but there are a few small items to be attended to.
     
     - 
     
