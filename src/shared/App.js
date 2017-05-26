@@ -4,8 +4,7 @@ import { routes } from '../../server/routes/routes'
 import Bundle from './Bundle'
 import NotFound from './NotFound'
 
-const App = () => {
-	return (
+const App = () => (
     <html lang="en">
     <head>
       <link type="text/css" rel="stylesheet" media="screen" href="/bundle/main.css"/>
@@ -19,6 +18,6 @@ const App = () => {
       </Switch>
     </body>
   </html>
-)}
+)
 
 export default App
