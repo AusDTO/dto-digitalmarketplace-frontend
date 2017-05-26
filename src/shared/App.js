@@ -1,7 +1,8 @@
 import React from 'react'
 import { Switch, Route, Router } from 'react-router'
-import { routes } from './routes'
+import { routes } from '../../server/routes/routes'
 import Bundle from './Bundle'
+import NotFound from './NotFound'
 
 const App = () => {
 	return (
@@ -11,7 +12,10 @@ const App = () => {
     </head>
     <body>
       <Switch>
-    	<Route path="/collaborate" render={() => <Bundle widgetPath="bundles/Collaborate/CollaborateLandingWidget.js"/>} />
+      	{routes.map(route => (
+      		<Route key={route} path={route.path} render={props => <Bundle {...props} widgetPath={route.widgetPath}/>} />
+    	))}
+    	<Route component={NotFound}/>
       </Switch>
     </body>
   </html>

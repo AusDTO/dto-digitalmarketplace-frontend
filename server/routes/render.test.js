@@ -165,5 +165,5 @@ test('render page with invalid url request', () => {
 
   expect(response.statusCode).toEqual(404);
   expect(response.sendResponse)
-    .toMatch('Url not mapped to widget');
+    .toMatch('Page not found');
 });

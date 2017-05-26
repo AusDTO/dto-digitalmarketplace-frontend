@@ -1,4 +1,4 @@
-import Bundle from './Bundle';
+import Bundle from '../../src/shared/Bundle';
 
 export const routes = [
   { path: '/collaborate',

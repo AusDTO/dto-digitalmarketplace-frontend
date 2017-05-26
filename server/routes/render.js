@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import { StaticRouter } from 'react-router'
 import path from 'path'
 import fs from 'fs'
 import get from 'lodash/get'
 import rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer'
-import App from './App'
-import { StaticRouter } from 'react-router'
+import App from '../../src/shared/App'
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -112,6 +112,10 @@ const renderPage = (request, response) => {
         <App/>
       </StaticRouter>
     ));
+
+    if (context.status === 404) {
+      response.status(404);
+    }
   } catch(e) {
     rollbar.handleError(e, request);
     return response.status(400).send({ 
@@ -121,4 +125,4 @@ const renderPage = (request, response) => {
   }
 }
 
-export {render, renderPage}
+export {render, renderPage, renderComponent}
