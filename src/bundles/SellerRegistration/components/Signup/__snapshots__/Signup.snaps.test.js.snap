@@ -180,6 +180,17 @@ exports[`Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/update"
+            onClick={[Function]}
+          >
+            <span>
+              Preview and update
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/submit"
             onClick={[Function]}
           >
@@ -459,6 +470,17 @@ exports[`Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
+            href="/update"
+            onClick={[Function]}
+          >
+            <span>
+              Preview and update
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/submit"
             onClick={[Function]}
           >
@@ -667,28 +689,40 @@ exports[`Signup renders empty Your Info form 1`] = `
             value="disclosures"
           />
           <div
-            styleName="nav-row"
+            className="row"
           >
-            <button
-              styleName="nav-button"
-              type="submit"
+            <div />
+            <div
+              className="col-xs-12 col-sm-12 col-md-9"
             >
-              Save and continue
-            </button>
-            <button
-              className="save-button"
-              onClick={[Function]}
-              styleName="nav-button"
+              <button
+                className="button-width button-width-left"
+                type="submit"
+              >
+                Save and continue
+              </button>
+              <button
+                className="save-button button-width button-width-right"
+                onClick={[Function]}
+              >
+                Save and finish later
+              </button>
+            </div>
+            <div
+              className="col-xs-12 col-sm-12 col-md-3"
             >
-              Save and finish later
-            </button>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="nav-link skip-button"
-            >
-              Skip for now
-            </button>
+              <div
+                styleName="skip"
+              >
+                <button
+                  className="button-secondary"
+                  onClick={[Function]}
+                  styleName="skip-link"
+                >
+                  Skip for now
+                </button>
+              </div>
+            </div>
           </div>
         </form>
       </article>
@@ -871,6 +905,17 @@ exports[`Signup renders populated Your Info form 1`] = `
           >
             <span>
               Preview profile
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/update"
+            onClick={[Function]}
+          >
+            <span>
+              Preview and update
             </span>
           </a>
         </li>
@@ -1091,28 +1136,40 @@ exports[`Signup renders populated Your Info form 1`] = `
             value="disclosures"
           />
           <div
-            styleName="nav-row"
+            className="row"
           >
-            <button
-              styleName="nav-button"
-              type="submit"
+            <div />
+            <div
+              className="col-xs-12 col-sm-12 col-md-9"
             >
-              Save and continue
-            </button>
-            <button
-              className="save-button"
-              onClick={[Function]}
-              styleName="nav-button"
+              <button
+                className="button-width button-width-left"
+                type="submit"
+              >
+                Save and continue
+              </button>
+              <button
+                className="save-button button-width button-width-right"
+                onClick={[Function]}
+              >
+                Save and finish later
+              </button>
+            </div>
+            <div
+              className="col-xs-12 col-sm-12 col-md-3"
             >
-              Save and finish later
-            </button>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="nav-link skip-button"
-            >
-              Skip for now
-            </button>
+              <div
+                styleName="skip"
+              >
+                <button
+                  className="button-secondary"
+                  onClick={[Function]}
+                  styleName="skip-link"
+                >
+                  Skip for now
+                </button>
+              </div>
+            </div>
           </div>
         </form>
       </article>
