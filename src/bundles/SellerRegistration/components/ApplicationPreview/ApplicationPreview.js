@@ -159,6 +159,8 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
       public_profile
     },
     body: {
+      id,
+      type,
       assessed,
       unassessed,
       case_studies,
