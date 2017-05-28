@@ -4,8 +4,9 @@ import {
     Field
 } from 'react-redux-form';
 
+import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 import Layout        from '../../../../shared/Layout';
-
+import find from 'lodash/find'
 export class DomainAssessmentChoice extends React.Component {
 
     state = {
@@ -28,22 +29,21 @@ export class DomainAssessmentChoice extends React.Component {
         return (
             <Layout>
                 <header>
-                    <h1>Choose Assessment Domain</h1>
+                    <h1>Choose Assessment Area of Expertise</h1>
                 </header>
                 <article role="main">
-                    <p>Before you apply for this opportunity, we need to assess one area of expertise. Please choose
-                        from the below areas.
-                        If you wish to add a different area of expertise, you will need to update your seller
-                        profile.</p>
+                    <p>Before you apply for this opportunity, we need to assess one area of expertise. <br/>
+                        If you wish to add a different area of expertise, you will need to <a href="/sellers/edit">update your seller
+                            profile.</a></p>
                     <LocalForm
                         action={props.assessmentUrl}
                         onSubmit={(val) => this.handleSubmit(val)}
                     >
                         <fieldset className="field" >
-                            <legend> Please choose from the below areas.</legend>
+                            <legend> Please choose from the following areas: </legend>
                             {this.state.error && <a className="validation-message" href="#domain">
                                 <span className="visuallyhidden">Validation Error: </span>
-                                <span>Please pick one domain</span>
+                                <span>Please pick one area of expertise</span>
                             </a>}
                             <Field id="domain" model=".domain" dynamic={false}>
 
@@ -56,7 +56,11 @@ export class DomainAssessmentChoice extends React.Component {
                                        id={fieldId}
                                        value={key}
                                 />
-                                <label htmlFor={fieldId}>{props.domains[key]}</label>
+                                <label htmlFor={fieldId}>{props.domains[key]} <p>{
+                                    find(domains, {'label':  props.domains[key]}) ?
+                                        find(domains, {'label':  props.domains[key]})['description'] : ""
+
+                                }</p></label>
                             </span>
                                     )
                                 })}
