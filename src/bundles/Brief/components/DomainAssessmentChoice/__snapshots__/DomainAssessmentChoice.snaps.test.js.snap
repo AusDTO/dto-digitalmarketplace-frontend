@@ -6,14 +6,21 @@ exports[`DomainAssessmentChoice renders 1`] = `
 >
   <header>
     <h1>
-      Choose Assessment Domain
+      Choose Assessment Area of Expertise
     </h1>
   </header>
   <article
     role="main"
   >
     <p>
-      Before you apply for this opportunity, we need to assess one area of expertise. Please choose from the below areas. If you wish to add a different area of expertise, you will need to update your seller profile.
+      Before you apply for this opportunity, we need to assess one area of expertise. 
+      <br />
+      If you wish to add a different area of expertise, you will need to 
+      <a
+        href="/sellers/edit"
+      >
+        update your seller profile.
+      </a>
     </p>
     <form
       action={undefined}
@@ -43,7 +50,7 @@ exports[`DomainAssessmentChoice renders 1`] = `
         className="field"
       >
         <legend>
-           Please choose from the below areas.
+           Please choose from the following areas: 
         </legend>
         <div
           id="domain"
@@ -84,6 +91,10 @@ exports[`DomainAssessmentChoice renders 1`] = `
               htmlFor="domain-1"
             >
               Strategy and Policy
+               
+              <p>
+                Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.
+              </p>
             </label>
           </span>
           <span>
@@ -103,6 +114,10 @@ exports[`DomainAssessmentChoice renders 1`] = `
               htmlFor="domain-13"
             >
               Emerging technologies
+               
+              <p>
+                Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.
+              </p>
             </label>
           </span>
         </div>
