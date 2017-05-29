@@ -66,17 +66,17 @@ class Landing extends React.Component {
         }
         let domains =
             {
-                "User research and Design": 92,
-                "Strategy and Policy": 104,
-                "Agile delivery and Governance": 106,
-                "Software engineering and Development": 123,
-                "Change, Training and Transformation": 80,
-                "Marketing, Communications and Engagement": 68,
-                "Cyber security": 53,
-                "Data science": 58,
-                "Emerging technologies": 63
+                "User research and Design": 124,
+                "Strategy and Policy": 151,
+                "Agile delivery and Governance": 134,
+                "Software engineering and Development": 152,
+                "Change, Training and Transformation": 109,
+                "Marketing, Communications and Engagement": 91,
+                "Cyber security": 84,
+                "Data science": 100,
+                "Emerging technologies": 99
             };
-        let maxDomain = 123;
+        let maxDomain = 152;
         return (
             <div className="landing">
 
@@ -95,7 +95,7 @@ class Landing extends React.Component {
                            <strong styleName="styles.pop" style={{color: '#5bcbe3'}}>106</strong> <div> Future Ready
                                 councils</div>
                             <br/>
-                            <strong styleName="styles.pop">334</strong> <div>Marketplace sellers</div>
+                            <strong styleName="styles.pop">403</strong> <div>Marketplace sellers</div>
                         </span>
                         <br/>
                         <div>
@@ -181,29 +181,20 @@ class Landing extends React.Component {
                                     <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-05-11">Thursday <span>11</span> May</time>
+                                            <time dateTime="2017-06-08">Monday <span>8</span> June</time>
                                         </th>
-                                        <td>Global smart city perspectives <span className="date-info">Learn from international smart cities.<br/> <a
-                                            href="https://www.eventbrite.com.au/e/future-ready-webinar-series-session-2-tickets-33978417361"
-                                            rel="external" target="blank">Register for webinar</a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-05-17">Wednesday <span>17</span> May</time>
-                                        </th>
-                                        <td>Brisbane Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
-                                            href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-brisbane-tickets-33484479981"
+                                        <td>Melbourne Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
+                                            href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-melbourne-tickets-33881210613"
                                             rel="external" target="blank">Register for workshop</a></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-05-18">Thursday <span>18</span> May</time>
+                                            <time dateTime="2017-06-13">Tuesday <span>13</span> June</time>
                                         </th>
-                                        <td>A conversation with ...<span className="date-info">Councils going smart: city, regional and remote.<br/>
-                                    <a href="https://www.eventbrite.com.au/e/future-ready-webinar-series-session-3-tickets-34024645631"
-                                       rel="external" target="blank">Register for workshop</a></span>
+                                        <td>Embracing the Internet of Things to accelerate smart cities outcomes <span className="date-info"> Join us to learn more about how IoT can help drive smart cities outcomes in your city. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/1381611509698580226"
+                                            rel="external" target="blank">Register for webinar</a></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -214,33 +205,7 @@ class Landing extends React.Component {
                             <article>
                                 <table className="calendar-table" style={{marginTop: 0}}>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-05-22">Monday <span>22</span> May</time>
-                                        </th>
-                                        <td>Sydney Masterclass <span className="date-info">Essentials for smart city leaders. <br/> <a
-                                            href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-sydney-tickets-33881032079"
-                                            rel="external" target="blank">Register for workshop</a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-05-29">Monday <span>29</span> May</time>
-                                        </th>
-                                        <td>Co-Learning Lab – Adelaide<span className="date-info">Learn, collaborate and create. <br/> <a
-                                            href="http://ascaconference.org.au/future-ready" rel="external"
-                                            target="blank">Register for workshop</a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-08">Monday <span>8</span> June</time>
-                                        </th>
-                                        <td>Melbourne Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
-                                            href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-melbourne-tickets-33881210613"
-                                            rel="external" target="blank">Register for workshop</a></span>
-                                        </td>
-                                    </tr>
+
                                     <tr>
                                         <th scope="row" styleName="styles.day">
                                             <time dateTime="2017-06-15">Monday <span>15</span> June</time>
@@ -251,6 +216,17 @@ class Landing extends React.Component {
                                         </td>
 
                                     </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-06-23">Friday <span>23</span> June</time>
+                                        </th>
+                                        <td>Community Engagement <span className="date-info">This webinar will examine community engagement and citizen-centric design.  <br/> <a
+                                            href="https://register.gotowebinar.com/register/4270158298238242050"
+                                            rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+
+                                    </tr>
+
                                     </tbody>
                                 </table>
                             </article>
