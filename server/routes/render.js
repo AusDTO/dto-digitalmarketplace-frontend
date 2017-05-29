@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { StaticRouter } from 'react-router'
+import { StaticRouter, matchPath } from 'react-router'
 import path from 'path'
 import fs from 'fs'
 import get from 'lodash/get'
 import rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer'
 import App from '../../src/shared/App'
+import {routes} from './routes' 
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -106,16 +107,28 @@ const render = (request, response) => {
 
 const renderPage = (request, response) => {
   try {
-    const context = {};
+    let component, initialState, context = {};
+
+    const validRoute = routes.some(route => {
+      const match = matchPath(request.url, route);
+      if (match) {
+        let props = {_serverContext: {location: request.url}, form_options: {}, options: {serverRender: true}};
+        initialState = Object.assign({}, props);
+        component = renderComponent(route.widgetPath, props, false);
+      }
+      return match
+    })
+
+    if (!validRoute) {
+      return response.status(404).send('Page not found');
+    }
+
     response.send('<!doctype html>' + ReactDOMServer.renderToString(
       <StaticRouter location={request.url} context={context}>
-        <App/>
+        <App component={component} initialState={initialState}/>
       </StaticRouter>
     ));
 
-    if (context.status === 404) {
-      response.status(404);
-    }
   } catch(e) {
     rollbar.handleError(e, request);
     return response.status(400).send({ 
