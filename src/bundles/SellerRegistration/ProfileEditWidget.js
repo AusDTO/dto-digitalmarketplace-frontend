@@ -10,7 +10,7 @@ export const ProfileEditWidget = (props, history) => {
   const store = createStore(props, { router: history });
   const filterSteps = (step) => {
     // Remove steps with patterns of /start and /case-study and /review and /submit
-    return step.pattern.match(/\/start|\/tools|\/awards|\/domains|\/case-study|\/review|\/submit/);
+    return step.pattern.match(/\/start|\/tools|\/awards|\/domains|\/case-study|\/update/);
   };
   return (
     <Provider store={store}>

@@ -11,7 +11,7 @@ export class AppChanges extends Component {
 
   static propTypes = {
     body: React.PropTypes.shape({
-      case_studies: React.PropTypes.func.isRequired,
+      case_studies: React.PropTypes.object.isRequired,
       supplier_code: React.PropTypes.number,
       supplierCode: React.PropTypes.number,
       id: React.PropTypes.number.isRequired,
