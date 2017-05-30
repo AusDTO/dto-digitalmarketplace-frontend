@@ -1,4 +1,5 @@
 var jsonpatch = require('fast-json-patch');
+import isEmpty from 'lodash/isEmpty';
 
 // filter out application changes to keys we don't care about
 let ignoreKeys = ["/supplier_code", "/supplier", "/submitted_at", "/status", "/seller_types/recruitment",
@@ -13,27 +14,46 @@ let ignoreKeys = ["/supplier_code", "/supplier", "/submitted_at", "/status", "/s
   "/digital_marketplace_panel", "/type", "/application_id", "/domains", "/assessed_domains", "/seller_type"
 ];
 
+// we don't want to see application changes that resolve to true below
+const ignoreCriteria = (application, supplier, key) => {
+  return application[key] === supplier[key] ||                  // values are unchanged from live supplier obj
+    (isEmpty(application[key]) || isEmpty(supplier[key])) ||    // value of both is an empty obj
+    typeof application[key] === 'object' ||                     // mvp2 does not yet handle diffing nested objs
+    typeof supplier[key] === 'object';
+};
+
+const appendIgnoredFields = (application, supplier) => {
+  let thisIgnoreKeys = Array.from(ignoreKeys);
+  Object.keys(application).map(key => {
+    if (ignoreCriteria(application, supplier, key)) {
+      thisIgnoreKeys.push('/' + key);
+    }
+  });
+  return thisIgnoreKeys
+};
+
 export const returnDiffedData = body => {
-  if(!body.supplier_code) { return []}
+  if (!body.supplier_code) { return []};
+  let thisIgnoreKeys = appendIgnoredFields(body, body.supplier);
   let diffedData = jsonpatch.compare(body, body.supplier);
   return Object.values(diffedData).filter(x => {
-    if (!ignoreKeys.includes(x.path)) {
-      return x
+    if (!thisIgnoreKeys.includes(x.path)) {
+      return x;
     }
-  })
+  });
 };
 
 const addApplicationUUID = originalCaseStudies => {
   let withUUIDs = Object.assign({}, originalCaseStudies);
   Object.entries(withUUIDs).map(x => {
     if (x[0].length > 1) {
-      x[1]['uuid'] = x[0]
+      x[1].uuid = x[0];
     }
   });
-  return withUUIDs
+  return withUUIDs;
 };
 
 export const returnUnassessedCaseStudies = applicationCaseStudies => {
   let appCaseStudies = addApplicationUUID(applicationCaseStudies);
-  return (!appCaseStudies ? [] : Object.values(appCaseStudies).filter(study => !study.id))
-}
+  return (!appCaseStudies ? [] : Object.values(appCaseStudies).filter(study => !study.id));
+};
