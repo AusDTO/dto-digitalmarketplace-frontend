@@ -1,8 +1,13 @@
-import path from 'path';
-import fs from 'fs';
-import get from 'lodash/get';
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { StaticRouter, matchPath } from 'react-router'
+import path from 'path'
+import fs from 'fs'
+import get from 'lodash/get'
 import rollbar from 'rollbar'
-import ComponentRenderer from '../ComponentRenderer';
+import ComponentRenderer from '../ComponentRenderer'
+import App from '../../src/shared/App'
+import {routes} from './routes' 
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -38,23 +43,10 @@ const getHashedFilename = (key, extension = 'js') => {
   return filename;
 }
 
-const render = (request, response) => {
-  let defaultProps = JSON.stringify({
-    _serverContext: {
-      location: ''
-    }
-  });
-
-  let {
-    toStaticMarkup = false,
-    path: pathToSource,
-    serializedProps = defaultProps
-  } = request.body;
-
-  let props = JSON.parse(serializedProps);
+const renderComponent = (pathToSource,  props, toStaticMarkup) => {
 
   if (!pathToSource) {
-    return response.status(400).send({ error: 'You must supply a path' });
+    throw new Error('You must supply a path');
   }
 
   pathToSource = path.normalize(pathToSource);
@@ -73,18 +65,37 @@ const render = (request, response) => {
   const component = cache[pathToSource];
 
   // TODO test this behaviour
+  const markup = component.render(props, toStaticMarkup);
+  const componentKey = component.element.key;
+  return{
+    markup,
+    slug: componentKey,
+    files: {
+      [component.element.key]: getHashedFilename(componentKey),
+      vendor: getHashedFilename('vendor'),
+      stylesheet: getHashedFilename(componentKey, 'css')
+    }
+  };
+}
+
+const render = (request, response) => {
+  let defaultProps = JSON.stringify({
+    _serverContext: {
+      location: ''
+    }
+  });
+
+  let {
+    toStaticMarkup = false,
+    path: pathToSource,
+    serializedProps = defaultProps
+  } = request.body;
+
+  let props = JSON.parse(serializedProps);  
+
+  // TODO test this behaviour
   try {
-    const markup = component.render(props, toStaticMarkup);
-    const componentKey = component.element.key;
-    response.send({
-      markup,
-      slug: componentKey,
-      files: {
-        [component.element.key]: getHashedFilename(componentKey),
-        vendor: getHashedFilename('vendor'),
-        stylesheet: getHashedFilename(componentKey, 'css')
-      }
-    });
+    response.send(renderComponent(pathToSource, props, toStaticMarkup));
   } catch(e) {
     rollbar.handleError(e, request);
     return response.status(400).send({ 
@@ -92,7 +103,39 @@ const render = (request, response) => {
       stack: e.stack 
     });
   }
+} 
+
+const renderPage = (request, response) => {
+  try {
+    let component, initialState, context = {};
+
+    const validRoute = routes.some(route => {
+      const match = matchPath(request.url, route);
+      if (match) {
+        let props = {_serverContext: {location: request.url}, form_options: {}, options: {serverRender: true}};
+        initialState = Object.assign({}, props);
+        component = renderComponent(route.widgetPath, props, false);
+      }
+      return match
+    })
+
+    if (!validRoute) {
+      return response.status(404).send('Page not found');
+    }
+
+    response.send('<!doctype html>' + ReactDOMServer.renderToString(
+      <StaticRouter location={request.url} context={context}>
+        <App component={component} initialState={initialState}/>
+      </StaticRouter>
+    ));
+
+  } catch(e) {
+    rollbar.handleError(e, request);
+    return response.status(400).send({ 
+      error: `Error rendering: '${request.url}'`, 
+      stack: e.stack 
+    });
+  }
 }
 
-
-export default render
+export {render, renderPage, renderComponent}

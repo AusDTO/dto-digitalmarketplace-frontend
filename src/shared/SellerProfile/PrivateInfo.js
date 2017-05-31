@@ -37,9 +37,9 @@ const PrivateInfo = (props) => {
             <h3> PRIVATE INFORMATION FOR DIGITAL MARKETPLACE ASSESSMENT PURPOSES ONLY </h3>
             <Row title="Case Study Referees" show={true}>
                 {case_studies && Object.keys(case_studies).map((study, i) => {
-                    const {title, referee_name, referee_email, referee_position} = case_studies[study];
-                    return (<div key={i}>Case Study: "{title}" <br/> Referee: {referee_name}
-                        ({referee_position}) {referee_email}
+                    const {title, referee_name, refereeName, referee_email, refereeEmail, referee_position, refereePosition} = case_studies[study];
+                    return (<div key={i}>Case Study: "{title}" <br/> Referee: {referee_name || refereeName}
+                        ({referee_position || refereePosition}) {referee_email || refereeEmail}
                         <hr/>
                     </div>)
                 })
