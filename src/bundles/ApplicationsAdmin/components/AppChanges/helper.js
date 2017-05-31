@@ -3,41 +3,52 @@ import isEmpty from 'lodash/isEmpty';
 
 // filter out application changes to keys we don't care about
 let ignoreKeys = ["/supplier_code", "/supplier", "/submitted_at", "/status", "/seller_types/recruitment",
-  "/links/supplier", "/links/self", "/last_update_time", "/lastUpdateTime", "/id", "/creation_time",
-  "/creationTime", "/created_at", "/createdAt", "/public_profile", "/documentsUrl", "/CaseStudyLink",
-  "/case_studies/11e27ef8-691b-38c9-4691-f48e6eef031e", "/case_studies/4/links/supplier",
-  "/case_studies/4/links/self", "/case_studies/3/links/supplier", "/case_studies/3/links/self",
-  "/case_studies/2/links/supplier", "/case_studies/2/links/self", "/case_studies/1/links/supplier",
-  "/case_studies/1/links/self", "/case_studies/0/links/supplier", "/case_studies/0/links/self", "/contacts",
-  "/longName", "/long_name", "/other_panels", "/addresses/0/links/self", "/addresses/0/links/supplier",
+  "/last_update_time", "/lastUpdateTime", "/id", "/creation_time",
+  "/creationTime", "/created_at", "/public_profile", "/documentsUrl", "/CaseStudyLink",
+  "/contacts", "/longName", "/long_name", "/other_panels", "/website", "/travel", "/other_panels",
+  "/linkedin",
   "/unassessed", "/assessed", "/frameworks", "/dsp_panel",
   "/digital_marketplace_panel", "/type", "/application_id", "/domains", "/assessed_domains", "/seller_type"
 ];
 
 // we don't want to see application changes that resolve to true below
-const ignoreCriteria = (application, supplier, key) => {
-  return application[key] === supplier[key] ||                  // values are unchanged from live supplier obj
-    (isEmpty(application[key]) || isEmpty(supplier[key])) ||    // value of both is an empty obj
-    typeof application[key] === 'object' ||                     // mvp2 does not yet handle diffing nested objs
+export const ignoreCriteria = (supplier, application, key) => {
+  return application[key] === supplier[key] ||                 // values are unchanged from live supplier obj
+    supplier[key] === '' ||
+    (isEmpty(application[key]) || isEmpty(supplier[key])) ||
+    supplier[key].length === 0 ||
+    typeof application[key] === 'object' ||
     typeof supplier[key] === 'object';
 };
 
-const appendIgnoredFields = (application, supplier) => {
+export const appendIgnoredKeys = (supplier, application, ignoreKeys) => {
   let thisIgnoreKeys = Array.from(ignoreKeys);
-  Object.keys(application).map(key => {
-    if (ignoreCriteria(application, supplier, key)) {
-      thisIgnoreKeys.push('/' + key);
+  Object.keys(supplier).map(key => {
+    if (ignoreCriteria(supplier, application, key)) {
+      if(thisIgnoreKeys.indexOf('/'+key) === -1) {
+        thisIgnoreKeys.push('/'+key);
+      }
     }
   });
-  return thisIgnoreKeys
+
+  return thisIgnoreKeys;
 };
 
 export const returnDiffedData = body => {
-  if (!body.supplier_code) { return []};
-  let thisIgnoreKeys = appendIgnoredFields(body, body.supplier);
-  let diffedData = jsonpatch.compare(body, body.supplier);
+  if (!body.supplier_code) {
+    return [];
+  }
+  ;
+
+  let thisIgnoreKeys = appendIgnoredKeys(body, body.supplier, ignoreKeys);
+  let diffedData = jsonpatch.compare(body.supplier, body);
   return Object.values(diffedData).filter(x => {
-    if (!thisIgnoreKeys.includes(x.path)) {
+    if (
+      !thisIgnoreKeys.includes(x.path) &&
+      x.op !== 'remove' &&
+      x.path.match(/links/g) <= 0 &&
+      x.path.match(/createdAt/g) <= 0
+    ) {
       return x;
     }
   });
