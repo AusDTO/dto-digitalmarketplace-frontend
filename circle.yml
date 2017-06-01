@@ -13,6 +13,7 @@ dependencies:
     - cf -v
   override:
     - yarn
+    - yarn prestart
     - yarn build
   cache_directories:
     - ~/.cache/yarn
