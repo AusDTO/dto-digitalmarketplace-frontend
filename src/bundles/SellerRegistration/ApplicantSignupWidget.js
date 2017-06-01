@@ -10,7 +10,7 @@ export const ApplicantSignup = (props, history) => {
   const store = createStore(props, { router: history });
   const filterSteps = (step) => {
     // Remove steps with patterns of /start and /case-study and /review and /submit
-    return !step.pattern.match(/\/profile-finish/);
+    return !step.pattern.match(/\/profile-finish|\/update/);
   };
   return (
     <Provider store={store}>
