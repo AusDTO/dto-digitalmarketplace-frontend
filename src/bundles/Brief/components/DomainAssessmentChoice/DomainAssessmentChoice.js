@@ -29,11 +29,10 @@ export class DomainAssessmentChoice extends React.Component {
         return (
             <Layout>
                 <header>
-                    <h1>Choose Assessment Area of Expertise</h1>
+                    <h1>Choose an area of expertise for assessment</h1>
                 </header>
                 <article role="main">
-                    <p>Before you apply for this opportunity, we need to assess one area of expertise. <br/>
-                        If you wish to add a different area of expertise, you will need to <a href="/sellers/edit">update your seller
+                    <p>To respond to an outcome opportunity, you need an assessed area of expertise. To add a different area of expertise, <a href="/sellers/edit">update your seller
                             profile.</a></p>
                     <LocalForm
                         action={props.assessmentUrl}
@@ -66,7 +65,7 @@ export class DomainAssessmentChoice extends React.Component {
                                 })}
                             </Field>
                         </fieldset>
-                        <button type="submit">Submit</button>
+                        <button type="submit">Request an assessment</button>
                     </LocalForm>
                 </article>
             </Layout>

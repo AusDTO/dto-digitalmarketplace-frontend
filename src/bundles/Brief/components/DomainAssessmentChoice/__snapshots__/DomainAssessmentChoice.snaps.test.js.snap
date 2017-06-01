@@ -6,16 +6,14 @@ exports[`DomainAssessmentChoice renders 1`] = `
 >
   <header>
     <h1>
-      Choose Assessment Area of Expertise
+      Choose an area of expertise for assessment
     </h1>
   </header>
   <article
     role="main"
   >
     <p>
-      Before you apply for this opportunity, we need to assess one area of expertise. 
-      <br />
-      If you wish to add a different area of expertise, you will need to 
+      To respond to an outcome opportunity, you need an assessed area of expertise. To add a different area of expertise, 
       <a
         href="/sellers/edit"
       >
@@ -125,7 +123,7 @@ exports[`DomainAssessmentChoice renders 1`] = `
       <button
         type="submit"
       >
-        Submit
+        Request an assessment
       </button>
     </form>
   </article>
