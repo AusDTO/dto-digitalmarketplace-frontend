@@ -36,4 +36,5 @@ deployment:
       - ./scripts/ci-notify.sh
 general:
   artifacts:
-    - "build" 
+    - "build"
+    - "public" 
