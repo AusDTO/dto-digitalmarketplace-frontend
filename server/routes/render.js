@@ -8,6 +8,7 @@ import rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer'
 import App from '../../src/shared/App'
 import {routes} from './routes' 
+import template from './template';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -123,11 +124,11 @@ const renderPage = (request, response) => {
       return response.status(404).send('Page not found');
     }
 
-    response.send('<!doctype html>' + ReactDOMServer.renderToString(
+    response.send(template(ReactDOMServer.renderToString(
       <StaticRouter location={request.url} context={context}>
         <App component={component} initialState={initialState}/>
       </StaticRouter>
-    ));
+    )));
 
   } catch(e) {
     rollbar.handleError(e, request);
