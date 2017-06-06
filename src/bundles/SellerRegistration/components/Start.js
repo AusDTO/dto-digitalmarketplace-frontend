@@ -51,22 +51,16 @@ const Start = ({supplierCode, signup, onClick, saved, type}) => {
                 </div>
             ) : (type === 'edit' ? (
                     <div>
-                        <h1>Update the services you offer</h1>
-                        <p>Before you can apply for an opportunity you need to provide a case study and reference that meets our <a
-                                href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.</p>
-                        <p>Adding new services and case studies to your profile will demonstrate your skills and experience on the Marketplace. Buyers use a keyword search to discover new sellers, 
-                            so be sure to go into detail and use keywords to increase your exposure. </p>
-                        <p>If you're collaborating on your case studies with colleagues, you can use our <a
-                                href="https://docs.google.com/spreadsheets/d/1sSesxeaHy5s5Kp7IIRPB4Q2WifXSdAPZOot_P5s8J6k/edit?usp=sharing" target="_blank" rel="external">Google spreadsheet template</a>.
-                        </p>
-                        <p>It may take more than one visit to complete your profile update. But do not worry, your information
-                            will be saved as you go.</p>
+                        <h1>Update your profile</h1>
+                        <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise. 
+                           You can do this by adding more services with supporting case studies.</p>
+                        <p>Your case study must include a referee and examples of how you meet the <a
+                                href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>. Use the <a
+                                href="https://docs.google.com/spreadsheets/d/1sSesxeaHy5s5Kp7IIRPB4Q2WifXSdAPZOot_P5s8J6k/edit?usp=sharing" target="_blank" rel="external">Google spreadsheet template</a> if 
+                            you need to collaborate on your case studies with colleagues.</p>
                         <h2>What happens next</h2>
-                        <p>We will review your profile updates to ensure the new content is suitable for the Digital Marketplace. We 
-                            will send you an email to let you know once your updated profile is live.</p>
-                        <p>You can request an assessment if you're interested in applying for an opportunity that needs expertise you’re not yet approved to 
-                            offer. If we can confirm your expertise before the opportunity closes we will invite you to apply.</p>
-                        <p>You can apply for opportunities you’ve been successfully assessed for in future without the need for further assessment.</p>
+                        <p>Once you submit the updates, we will review your updated profile and let you know once it is live. 
+                           Please note you cannot edit your profile while it is being reviewed.</p>
                         <SaveError/>
                         <p>
                             <a role="button" href={signup} onClick={onClick}>Start Now </a>
