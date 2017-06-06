@@ -1,7 +1,9 @@
 import React from 'react'
+import Head from './Head'
 
-const Widget = ({component, initialState}) => (
+const App = ({component, initialState}) => (
   <div id="content">
+	<Head />
     <div id={`react-bundle-${component.slug}-state`} style={{display:'none'}} dangerouslySetInnerHTML={{ __html: JSON.stringify(initialState) }} />
     <div id={`react-bundle-${component.slug}`} dangerouslySetInnerHTML={{ __html: component.markup }} />
     <script type="text/javascript" src={`/bundle/${component.files[component.slug]}`} defer></script>
@@ -9,4 +11,4 @@ const Widget = ({component, initialState}) => (
   </div>
 )
 
-export default Widget
+export default App

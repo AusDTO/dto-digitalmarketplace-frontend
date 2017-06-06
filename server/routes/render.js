@@ -6,9 +6,10 @@ import fs from 'fs'
 import get from 'lodash/get'
 import rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer'
-import App from '../../src/shared/App'
+import App from '../../src/components/App'
 import {routes} from './routes' 
-import template from './template';
+import template from './template'
+import {Helmet} from "react-helmet"
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -128,7 +129,7 @@ const renderPage = (request, response) => {
       <StaticRouter location={request.url} context={context}>
         <App component={component} initialState={initialState}/>
       </StaticRouter>
-    )));
+    ), Helmet.renderStatic()));
 
   } catch(e) {
     rollbar.handleError(e, request);

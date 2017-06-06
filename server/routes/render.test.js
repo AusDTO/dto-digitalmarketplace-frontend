@@ -1,6 +1,7 @@
 jest.mock('react-dom')
 
 import {render, renderPage} from './render'
+import Helmet from 'react-helmet'
 
 const helloWorldWidgetPath = 'bundles/HelloWorld/HelloWorldWidget.js'
 
@@ -38,11 +39,13 @@ const request = (body = {}) => {
   return { body }
 }
 
+beforeAll(() => {
+  Helmet.canUseDOM = false;
+});
 
 test('render route with standard request', () => {
   let response = new Response();
   let req = request({ path: helloWorldWidgetPath });
-
   render(req, response);
 
   expect(response.statusCode).toEqual(200);
@@ -152,6 +155,7 @@ test('render page with standard request', () => {
   renderPage(req, response);
 
   expect(response.statusCode).toEqual(200);
+  console.log(response.sendResponse)
   expect(response.sendResponse)
     .toMatch('<h1 data-reactroot="" data-reactid="1" data-react-checksum="55251490">Hello World</h1>');
 });

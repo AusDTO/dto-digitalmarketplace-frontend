@@ -1,9 +1,9 @@
-export default (content) => `
+export default (content, helmet) => `
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    ${helmet.meta.toString()}
+    ${helmet.link.toString()}
     <link rel="stylesheet" type="text/css" href="/bundle/main.css"/>
   </head>
   <body>
