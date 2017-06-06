@@ -155,7 +155,6 @@ test('render page with standard request', () => {
   renderPage(req, response);
 
   expect(response.statusCode).toEqual(200);
-  console.log(response.sendResponse)
   expect(response.sendResponse)
     .toMatch('<h1 data-reactroot="" data-reactid="1" data-react-checksum="55251490">Hello World</h1>');
 });
