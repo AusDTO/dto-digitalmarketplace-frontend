@@ -1,6 +1,7 @@
 jest.mock('react-dom')
 
 import {render, renderPage} from './render'
+import Helmet from 'react-helmet'
 
 const helloWorldWidgetPath = 'bundles/HelloWorld/HelloWorldWidget.js'
 
@@ -38,11 +39,13 @@ const request = (body = {}) => {
   return { body }
 }
 
+beforeAll(() => {
+  Helmet.canUseDOM = false;
+});
 
 test('render route with standard request', () => {
   let response = new Response();
   let req = request({ path: helloWorldWidgetPath });
-
   render(req, response);
 
   expect(response.statusCode).toEqual(200);
