@@ -8,7 +8,7 @@ export const templateString  = (
 
     "We have reverted your application so you can sign in, amend, then resubmit your application. Please contact us if you require further clarification, or would like to discuss with our team."+"\n"+"\n"+
 
-    "https://marketplace.service.gov.au/sellers/update"+"\n"+"\n"+
+    "https://marketplace.service.gov.au/sellers/application"+"\n"+"\n"+
 
 
     "Regards"+"\n"+"\n"+
