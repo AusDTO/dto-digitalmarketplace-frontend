@@ -62,6 +62,7 @@
     "c3": "^0.4.11",
     "classnames": "2.2.5",
     "compression": "1.6.2",
+    "config": "^1.26.1",
     "date-fns": "1.22.0",
     "dotenv": "2.0.0",
     "express": "4.14.0",
