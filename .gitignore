@@ -48,6 +48,8 @@ jspm_packages
 build
 assetsByChunkName.json
 public/main.css
+public/pancake.min.css
+public/autotrack.*
 errorShots
 .env
 .idea
