@@ -15,14 +15,30 @@ export default (content, helmet) => `
     ${helmet.meta.toString()}
     ${helmet.link.toString()}
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        window.ga = window.ga || function () {
+                (ga.q = ga.q || []).push(arguments)
+            };
+        ga.l = +new Date;
+        ga('create', '${config.get('trackingCode')}', 'auto');
+        ga('send', 'pageview');
 
-      ga('create', '${config.get('trackingCode')}', 'auto');
-      ga('send', 'pageview');
+        ga('require', 'outboundLinkTracker', {
+            shouldTrackOutboundLink: function (link, parseUrl) {
+                var href = link.getAttribute('href') || link.getAttribute('xlink:href');
+                var url = parseUrl(href);
+                var isExternal = (url.hostname != location.hostname && url.protocol.slice(0, 4) == 'http');
+
+                // treat downloads as external links
+                var exts = 'doc*|xls*|ppt*|pdf|zip|rar|exe|mp3';
+                var regExt = new RegExp(".*\\.(" + exts + ")(\\?.*)?$");
+                var isDownload = url.pathname.match(regExt);
+
+                return isDownload || isExternal;
+            }
+        });
+        ga('require', 'urlChangeTracker');
     </script>
+    ${helmet.script.toString()}
   </head>
   <body>
     <div id="root">${content}</div>
