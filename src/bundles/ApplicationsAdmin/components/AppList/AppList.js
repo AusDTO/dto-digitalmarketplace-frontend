@@ -27,6 +27,12 @@ class AppList extends Component {
     };
   }
 
+  sortDate(applications) {
+    return applications.sort(function (a, b) {
+     return new Date(a.submitted_at) - new Date(b.submitted_at);
+    });
+  }
+
   toggleModal(id, msg) {
     this.setState({
       modalOpen: !this.state.modalOpen,
@@ -88,7 +94,7 @@ class AppList extends Component {
 
           <thead>
           <tr>
-            <th>created_at/submitted_at</th>
+            <th>submitted_at</th>
             <th>name</th>
             <th>type</th>
             <th>jira</th>
@@ -98,14 +104,10 @@ class AppList extends Component {
 
           <tbody>
 
-          {applications.map((a, i) => {
-            var latestDate = a.created_at;
-            if (a.submitted_at) {
-              latestDate = a.submitted_at;
-            }
+          {(this.sortDate(applications) || applications).map((a, i) => {
             return (
-              <tr key={a.id}>
-                <td>{format(new Date(latestDate), 'YYYY-MM-DD HH:mm')}</td>
+              <tr key={i}>
+                <td>{format(new Date(a.submitted_at), 'YYYY-MM-DD HH:mm')}</td>
                 <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
                   {a.supplier_code && (<span className="badge--default">Existing</span>)}
                   {(a.recruiter === 'yes' || a.recruiter === 'both') && (
