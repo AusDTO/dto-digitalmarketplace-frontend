@@ -86,7 +86,9 @@ export const revertApplication = (id, msg) => {
     })
       .then((response) => {
         let revertStatus = (response.status !== 200 ? false : true);
-        dispatch(revertedApplication(id, revertStatus))
+        if (revertStatus) {
+          dispatch(revertedApplication(id, revertStatus))
+        }
       })
   }
 };
