@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "abnacn-validator": "0.0.5",
+    "autotrack": "^2.4.1",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
     "babel-jest": "16.0.0",
@@ -62,6 +63,7 @@
     "c3": "^0.4.11",
     "classnames": "2.2.5",
     "compression": "1.6.2",
+    "config": "^1.26.1",
     "date-fns": "1.22.0",
     "dotenv": "2.0.0",
     "express": "4.14.0",
@@ -92,7 +94,7 @@
     "yargs": "6.0.0"
   },
   "scripts": {
-    "prestart": "node-sass --include-path=./node_modules src/main.scss -o public",
+    "prestart": "node-sass --include-path=./node_modules src/main.scss -o public && ./node_modules/.bin/autotrack -o public/autotrack.custom.js -p outboundLinkTracker",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "build:development": "node scripts/build.js --dev",
