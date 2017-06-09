@@ -2,13 +2,19 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse'
+import {sortByDate} from '../../../../helpers'
 
 import './DashboardBriefs.css'
 
 
 export const DashboardBriefs = props => {
   let {live = [], closed = [], draft = []} = props.briefs;
-  let teamBriefView = props.teamBriefView
+  let teamBriefView = props.teamBriefView;
+
+  // sortByDate(dateArray, briefTypeString, sortDirections)
+  live = Array.from(sortByDate(live, 'live', 'asc')) || live;
+  closed = Array.from(sortByDate(closed, 'closed', 'asc')) || closed;
+  draft = Array.from(sortByDate(draft, 'draft', 'asc')) || draft;
 
   return (
     <div styleName="dashboard-main">
@@ -52,14 +58,14 @@ export const DashboardBriefs = props => {
       </div>
     </div>
   )
-}
+};
 
 DashboardBriefs.propTypes = {
   live: React.PropTypes.array,
   closed: React.PropTypes.array,
   draft: React.PropTypes.array,
   teamBriefView: React.PropTypes.bool
-}
+};
 
 export const DraftBriefs = props => {
   const {draft, teamBriefView} = props
@@ -70,18 +76,19 @@ export const DraftBriefs = props => {
       {(isEmpty(draft) ?
           "You haven't started any opportunities." :
           <table styleName="brief-table summary-item-body">
-            <thead className="summary-item-field-headings-visible">
+            <thead styleName="summary-item-field-heading">
             <tr>
               <th styleName="left-header">{(teamBriefView ? "Brief Preview" : "Brief Overview")}</th>
-              <th>Created</th>
-              <th styleName="right-header">Unanswered questions</th>
+              <th styleName="middle-header">{(teamBriefView ? "Author" : "Created")}</th>
+              <th styleName="middle-header">{(teamBriefView ? "Created" : "Questions left")}</th>
             </tr>
             </thead>
             <tbody>
             {draft.map((item, i) => {
               return (
                 <tr className="summary-item-row" key={i}>
-                  <td styleName="item-field">
+                  <td styleName="item-field-first-full">
+                    <h5>Brief overview</h5>
                     {(teamBriefView &&
                     <a href={"/" + item.frameworkSlug + "/opportunities/" + item.id}>
                       {item.title}
@@ -96,13 +103,30 @@ export const DraftBriefs = props => {
                       </a>
                     )}
                   </td>
-                  <td styleName="item-field">
-                    {formatDate(item.createdAt)}
-                  </td>
-                  <td styleName="item-field">
-                    <div>{item.unanswered_required} required</div>
-                    <div>{item.unanswered_optional} optional</div>
-                  </td>
+
+                  {(teamBriefView ?
+                    <td styleName="item-field-second-left">
+                      <h5>Author</h5>
+                      {item.author}
+                    </td>
+                      :
+                    <td styleName="item-field-second-left">
+                      <h5>Created</h5>
+                      {formatDate(item.createdAt)}
+                    </td>
+                  )}
+                  {(teamBriefView ?
+                    <td styleName="item-field-third-right">
+                    <h5>Created</h5>
+                      {formatDate(item.createdAt)}
+                    </td>
+                      :
+                    <td styleName="item-field-third-right">
+                      <h5>Questions left</h5>
+                      <div>{item.unanswered_required} required</div>
+                      <div>{item.unanswered_optional} optional</div>
+                    </td>
+                  )}
                 </tr>
               )
             })}
@@ -111,11 +135,11 @@ export const DraftBriefs = props => {
       )}
     </section>
   )
-}
+};
 
 DraftBriefs.propTypes = {
   draft: React.PropTypes.array.isRequired
-}
+};
 
 
 export const ClosedBriefs = props => {
@@ -127,18 +151,19 @@ export const ClosedBriefs = props => {
       {(isEmpty(closed) ?
           "You don't have any closed briefs." :
           <table styleName="brief-table summary-item-body">
-            <thead className="summary-item-field-headings-visible">
+            <thead styleName="summary-item-field-heading">
             <tr>
               <th styleName="left-header">{(teamBriefView ? "Brief Preview" : "Brief Overview")}</th>
+              <th styleName="middle-header">Author</th>
               <th styleName="middle-header">Closed</th>
-              <th styleName="right-header">{teamBriefView ? "Brief Response" : "Work Order"}</th>
             </tr>
             </thead>
             <tbody>
             {closed.map((item, i) => {
               return (
                 <tr className="summary-item-row" key={i}>
-                  <td styleName="closed-item-field-title">
+                  <td styleName="item-field-first-full">
+                    <h5>Brief preview</h5>
                     {(teamBriefView &&
                     <a href={"/" + item.frameworkSlug + "/opportunities/" + item.id}>
                       {item.title}
@@ -153,37 +178,13 @@ export const ClosedBriefs = props => {
                       </a>
                     )}
                   </td>
-                  <td styleName="closed-item-field-date">
-                    {formatDate(item.dates.closing_date)}
+                  <td styleName="item-field-second-left">
+                    <h5>Author</h5>
+                    {item.author}
                   </td>
-                  <td styleName="closed-item-field-actions">
-                  <span>
-                    <a href={"/buyers/frameworks/".concat(
-                      item.frameworkSlug,
-                      "/requirements/",
-                      item.lotSlug, "/",
-                      item.id, '/responses')}>
-                      View responses
-                    </a>{' '}
-                    {(!teamBriefView &&
-                      <span>
-                      {(!item.work_order_id ?
-                        <a href={"/buyers/frameworks/".concat(
-                          item.frameworkSlug,
-                          "/requirements/",
-                          item.lotSlug, "/",
-                          item.id,
-                          '/work-orders/create')}>
-                          Create work order
-                        </a> :
-                        <a href={
-                          '/work-orders/' +
-                          item.work_order_id}>
-                          Edit work order
-                        </a>)}
-                      </span>
-                    )}
-                  </span>
+                  <td styleName="item-field-third-right">
+                    <h5>Closed</h5>
+                    {formatDate(item.dates.closing_date)}
                   </td>
                 </tr>
               )
@@ -193,11 +194,11 @@ export const ClosedBriefs = props => {
       )}
     </section>
   )
-}
+};
 
 ClosedBriefs.propTypes = {
   closed: React.PropTypes.array.isRequired
-}
+};
 
 export const LiveBriefs = props => {
   const {live, teamBriefView} = props;
@@ -208,18 +209,20 @@ export const LiveBriefs = props => {
       {(isEmpty(live) ?
           "You don't have any live briefs." :
           <table styleName="brief-table summary-item-body">
-            <thead>
+            <thead styleName="summary-item-field-heading">
             <tr>
               <th styleName="left-header">Brief Overview</th>
+              <th styleName="middle-header">Author</th>
               <th styleName="middle-header">Published</th>
-              <th styleName="right-header">Closing</th>
+              <th styleName="middle-header">Closing</th>
             </tr>
             </thead>
             <tbody>
             {live.map((item, i) => {
               return (
                 <tr className="summary-item-row" key={i}>
-                  <td styleName="item-field">
+                  <td styleName="item-field-first">
+                    <h5>Brief preview</h5>
                     <a href={"/buyers/frameworks/".concat(
                       item.frameworkSlug,
                       "/requirements/",
@@ -228,10 +231,16 @@ export const LiveBriefs = props => {
                       {item.title}
                     </a>
                   </td>
-                  <td styleName="item-field">
+                  <td styleName="item-field-second-right">
+                    <h5>Author</h5>
+                    {item.author}
+                  </td>
+                  <td styleName="item-field-third-left">
+                    <h5>Published</h5>
                     {formatDate(item.dates.published_date)}
                   </td>
-                  <td styleName="item-field">
+                  <td styleName="item-field-fourth">
+                    <h5>Closing</h5>
                     {formatDate(item.dates.closing_date)}
                   </td>
                 </tr>
@@ -242,13 +251,13 @@ export const LiveBriefs = props => {
       )}
     </section>
   )
-}
+};
 
 LiveBriefs.propTypes = {
   live: React.PropTypes.array.isRequired
-}
+};
 
 const formatDate = date => {
   let dateObj = parse(new Date(date || ''));
   return format(dateObj, 'dddd D MMMM YYYY')
-}
+};

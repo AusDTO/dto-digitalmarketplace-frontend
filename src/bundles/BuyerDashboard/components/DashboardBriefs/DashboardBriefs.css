@@ -6,10 +6,6 @@
     font-size: 1rem
 }
 
-.summary-item-field-heading {
-    font-size: 1rem
-}
-
 .create-opportunity-link {
     padding-bottom: 0px
 }
@@ -26,10 +22,27 @@ section.live-brief-container {
     width: 74.48861%
 }
 
+@media (min-width: 768px) {
+    tbody tr td h5 {
+        display: none
+    }
+}
+
 @media (max-width: 767px) {
     .dashboard-main {
         width: 100%
     }
+
+    section h2 {
+        border-bottom: 3px solid #666666;
+        padding-bottom: 15px;
+        margin-bottom: 0px
+    }
+
+    .summary-item-field-heading {
+        display: none
+    }
+
 
     .table-row {
         position: absolute;
@@ -68,6 +81,53 @@ section.live-brief-container {
         border: hidden !important
     }
 
+    .item-field-first-full {
+        display: inline-block;
+        width: 100%;
+        padding-left: 0px
+    }
+
+    .item-field-first {
+        display: inline-block;
+        width: 50%;
+        padding-left: 0px
+    }
+
+    .item-field-second-left {
+        display: inline-block;
+        width: 50%;
+        text-align: left;
+        padding-left: 0px
+    }
+
+    .item-field-second-right {
+        display: inline-block;
+        width: 50%;
+        text-align: right
+    }
+
+    .item-field-third-left {
+        display: inline-block;
+        width: 50%;
+        text-align: left
+    }
+
+    .item-field-third-right {
+        display: inline-block;
+        width: 50%;
+        text-align: right;
+    }
+
+    .item-field-third-right div {
+        text-align: right;
+    }
+
+    .item-field-fourth {
+        display: inline-block;
+        width: 50%;
+        text-align: right
+    }
+
     .item-field a {
         overflow-wrap: break-word;
     }
@@ -78,12 +138,16 @@ section.live-brief-container {
 
     table.brief-table thead tr th.middle-header {
         padding-right: 20px;
-        text-align: left;
-        width: 50%
+        text-align: left
     }
 
     table.brief-table thead tr th.right-header {
+        text-align: right;
         width: 10%
+    }
+
+    tbody tr td h5 {
+        margin: 0px
     }
 }
 
@@ -98,7 +162,7 @@ table.brief-table caption {
 }
 
 table.brief-table td {
-    padding: 1em 1.2em
+    padding: 1em 1.2em 1em 0.4em
 }
 
 table.brief-table tr {
@@ -111,8 +175,8 @@ table.brief-table tr:first-child {
 
 table.brief-table thead tr th {
     font-weight: 700;
-    text-align: left;
-    line-height: 18px
+    line-height: 18px;
+    text-align: left
 }
 
 table.brief-table tr:nth-child(even) {
@@ -121,6 +185,7 @@ table.brief-table tr:nth-child(even) {
 }
 
 table.brief-table thead tr th.left-header {
+    text-align: left;
     padding-left: 5px
 }
 
@@ -128,7 +193,7 @@ table.brief-table thead tr th.middle-header {
     text-align: left
 }
 
-table.brief-table thead tr th:nth-child(3) {
+table.brief-table thead tr th.right-header {
     color: #313131;
     text-align: right
 }
@@ -136,17 +201,7 @@ table.brief-table thead tr th:nth-child(3) {
 table.brief-table tr td, table.brief-table tr th {
     font-size: .875rem;
     font-weight: 400;
-    vertical-align: top
-}
-
-table.brief-table tr td:nth-child(1), table.brief-table tr th:nth-child(1) {
-    width: 40%;
-    text-align: left
-}
-
-table.brief-table tr td:nth-child(3), table.brief-table tr th:nth-child(3) {
-    color: #717171;
-    text-align: right
+    vertical-align: top;
 }
 
 table.brief-table p, table.brief-table .sidebar h2 span, .sidebar h2 table.brief-table span, table.brief-table .sidebar .display span, .sidebar .display table.brief-table span {
@@ -159,7 +214,8 @@ table.brief-table ul, table.brief-table ol {
 }
 
 table.brief-table.summary-item-body {
-    width: 100%
+    width: 100%;
+    margin-top: 0px
 }
 
 table.brief-table.summary-item-body tr:first-child {
@@ -180,5 +236,9 @@ table.brief-table .summary-item-field-headings th {
 
 table.brief-table .summary-item-free-text span {
     white-space: pre-wrap
+}
+
+tbody tr td ul {
+    list-style: none
 }
 
