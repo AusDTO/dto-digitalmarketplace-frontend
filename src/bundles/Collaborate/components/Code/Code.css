@@ -1,0 +1,20 @@
+.uikit-display-3 {
+    margin-top: 1.6em;
+    font-weight: normal;
+    font-family: "Open Sans",Verdana,"Bitstream Vera Sans",sans-serif;
+    color: #313131;
+    display: block;
+    line-height: 1.4;
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 82%
+}
+
+@media only screen and (max-device-width: 768px) {
+    .title {
+        font-size: 28px;
+    }
+}
