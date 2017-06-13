@@ -96,7 +96,7 @@
     "yargs": "6.0.0"
   },
   "scripts": {
-    "prestart": "node-sass --include-path=./node_modules src/main.scss -o public && ./node_modules/.bin/autotrack -o public/autotrack.custom.js -p outboundLinkTracker",
+    "prestart": "node-sass --include-path=./node_modules src/main.scss -o public",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "build:development": "node scripts/build.js --dev",
