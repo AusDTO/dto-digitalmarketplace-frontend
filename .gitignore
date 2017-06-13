@@ -52,5 +52,4 @@ errorShots
 .env
 .idea
 
-*.lock
 *.sublime*
