@@ -5,7 +5,7 @@ import Banner from './Banner'
 import Header from '@gov.au/header'
 
 const App = ({component, initialState}) => (
-  <div id="Application" className="uikit-body">
+  <div id="Application">
 	  <Head />
 	  <header>
 		  <Banner />
