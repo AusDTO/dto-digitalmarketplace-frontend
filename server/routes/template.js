@@ -40,7 +40,7 @@ export default (content, helmet) => `
     </script>
     ${helmet.script.toString()}
   </head>
-  <body class="uikit-body">
+  <body>
     <div id="root">${content}</div>
     <!--
       This HTML file is a template.

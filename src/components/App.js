@@ -5,11 +5,13 @@ import Banner from './Banner'
 import Header from '@gov.au/header'
 
 const App = ({component, initialState}) => (
-  <div id="Application">
+  <div id="Application" className="uikit-body">
 	  <Head />
-	  <Banner />
-	  <GovAuBanner />
-	  <Header title="Digital Marketplace"/>
+	  <header>
+		  <Banner />
+		  <GovAuBanner />
+		  <Header title="Digital Marketplace"/>
+	  </header>
 	  <div id="content">
 	    <div id={`react-bundle-${component.slug}-state`} style={{display:'none'}} dangerouslySetInnerHTML={{ __html: JSON.stringify(initialState) }} />
 	    <div id={`react-bundle-${component.slug}`} dangerouslySetInnerHTML={{ __html: component.markup }} />
