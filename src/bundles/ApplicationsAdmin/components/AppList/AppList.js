@@ -108,7 +108,7 @@ class AppList extends Component {
             return (
               <tr key={i}>
                 <td>{format(new Date(a.submitted_at), 'YYYY-MM-DD HH:mm')}</td>
-                <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
+                <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"} className="application"
                   {a.supplier_code && (<span className="badge--default">Existing</span>)}
                   {(a.recruiter === 'yes' || a.recruiter === 'both') && (
                     <span className="badge--beta">Recruiter</span>)}
@@ -120,7 +120,8 @@ class AppList extends Component {
                   )}
                 </td>
                 <td>
-                  { (a.status === 'submitted' && !a.revertStatus) && <span>
+                  {
+                    (a.status === 'submitted' && !a.revertStatus) && <span>
                   <button onClick={e => {
                     e.preventDefault();
                     onRejectClick(a.id);
@@ -136,6 +137,8 @@ class AppList extends Component {
                     this.toggleModal(a.id)
                     this.toggleResponseModal()
                   }} name="Revert" styleName="revert">Revert</button>
+
+                       <a href={meta.url_edit_application.concat(a.id,'/start')} styleName="edit">Edit</a>
                     </span>
                   }
                 </td>
