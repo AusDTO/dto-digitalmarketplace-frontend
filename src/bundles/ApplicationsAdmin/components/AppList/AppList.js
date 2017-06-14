@@ -108,7 +108,7 @@ class AppList extends Component {
             return (
               <tr key={i}>
                 <td>{format(new Date(a.submitted_at), 'YYYY-MM-DD HH:mm')}</td>
-                <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"} className="application"
+                <td><a target="_blank" href={meta.url_preview.concat(a.id) } className="application">{a.name || "[no name]"}
                   {a.supplier_code && (<span className="badge--default">Existing</span>)}
                   {(a.recruiter === 'yes' || a.recruiter === 'both') && (
                     <span className="badge--beta">Recruiter</span>)}
