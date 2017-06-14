@@ -1,0 +1,34 @@
+.brief-choice-container .brief-choice-form a {
+  cursor: pointer
+}
+
+.brief-choice-container {
+  width: 75%;
+  float: left;
+  margin-left: 20%
+}
+
+.brief-choice-form input {
+  left: 0px !important;
+}
+
+.form-radio-container {
+  width: 75%;
+  padding: 7px;
+  margin-top: 15px
+}
+
+.form-radio-container.checked{
+  border: 1px solid;
+}
+
+.form-label {
+  padding-left: 15px;
+  font-weight: bold;
+  font-size: 13px
+}
+
+.form-submit-button {
+  margin-top: 75px
+}
+
