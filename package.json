@@ -131,7 +131,10 @@
       "<rootDir>/(build|docs|node_modules)/"
     ],
     "testEnvironment": "jsdom",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@gov.au)"
+    ]
   },
   "babel": {
     "presets": [
