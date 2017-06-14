@@ -21,8 +21,8 @@
 }
 
 @media (max-width: 767px) {
-  .team-view-username span {
-    width: 70%;
+  .team-view-username {
+    width: 65%;
   }
 }
 
@@ -32,12 +32,13 @@
   padding: 7px;
   font-size: 15px;
   font-weight: normal;
-  width: 340px;
+  width: 25%;
 }
 
 @media (max-width: 767px) {
   .team-view-username span button {
     float: left;
+    width: 300px
   }
 }
 
@@ -92,7 +93,6 @@
 
   .filters a {
     font-size: 0.875rem;
-    padding: 0px
   }
 
   .filters span {

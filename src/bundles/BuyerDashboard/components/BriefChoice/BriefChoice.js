@@ -7,7 +7,9 @@ const BriefChoice = props => {
   return (
     <div styleName="brief-choice-container">
       <h1>Post a brief</h1>
-      Create a new opportunity for a:
+      <p>
+        Create a new opportunity for a:
+      </p>
       <div styleName="brief-choice-form">
         <BriefChoiceForm/>
         <a tabIndex={0} role="link" onClick={props.handleToggle}>Return to dashboard</a>
@@ -22,15 +24,11 @@ class BriefChoiceForm extends Component {
     super(props)
 
     this.state = {
-      briefType: 'digital-specialist'
+      briefType: 'digital-professionals'
     };
     this.handleChange = this
       .handleChange
       .bind(this);
-  }
-
-  handleSubmit(e) {
-    
   }
 
   handleChange(e) {
@@ -40,33 +38,40 @@ class BriefChoiceForm extends Component {
   render() {
     return (
       <div>
-        <div styleName={
-          `form-radio-container ${(this.state.briefType === 'digital-specialist') ? 'checked' : ''}`}>
-          
-          <label htmlFor="digitalSpecialist">
+        <div
+          styleName={`form-radio-container ${ (this.state.briefType === 'digital-professionals')
+          ? 'checked'
+          : ''}`}>
+          <label htmlFor="digitalProfessionals">
             <input
-            type="radio"
-            name="digital-specialist"
-            value="digital-specialist"
-            checked={this.state.briefType === "digital-specialist"}
-            onChange={this.handleChange}/>
+              type="radio"
+              name="digital-professionals"
+              value="digital-professionals"
+              checked={this.state.briefType === "digital-professionals"}
+              onChange={this.handleChange}/>
             <span styleName="form-label">Digital Specialist</span>
           </label>
         </div>
-        <div styleName={
-          `form-radio-container ${(this.state.briefType === 'digital-outcome') ? 'checked' : ''}`
-        }>
-        <label htmlFor="digitalOutcome">
-          <input
-            type="radio"
-            name="digital-outcome"
-            value="digital-outcome"
-            checked={this.state.briefType === "digital-outcome"}
-            onChange={this.handleChange}/>
+        <div
+          styleName={`form-radio-container ${ (this.state.briefType === 'digital-outcome')
+          ? 'checked'
+          : ''}`}>
+          <label htmlFor="digitalOutcome">
+            <input
+              type="radio"
+              name="digital-outcome"
+              value="digital-outcome"
+              checked={this.state.briefType === "digital-outcome"}
+              onChange={this.handleChange}/>
             <span styleName="form-label">Digital Outcome</span>
           </label>
         </div>
-        <input styleName="form-submit-button" type="submit" value="Continue" onClick={() => this.handleSubmit()}/>
+        <a
+          href={`/buyers/frameworks/digital-marketplace/requirements/${this.state.briefType}`}>
+          <button styleName="form-submit-button">
+            Continue
+          </button>
+        </a>
       </div>
     );
   }

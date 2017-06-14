@@ -8,14 +8,22 @@
   margin-left: 20%
 }
 
-.brief-choice-form input {
-  left: 0px !important;
+.brief-choice-container p {
+  font-size: 17px
 }
 
 .form-radio-container {
   width: 75%;
   padding: 7px;
   margin-top: 15px
+}
+
+.form-radio-container p {
+  border: 1px solid;
+}
+
+.form-radio-container p input {
+  margin: 10px
 }
 
 .form-radio-container.checked{
@@ -29,6 +37,24 @@
 }
 
 .form-submit-button {
-  margin-top: 75px
+  margin-right: 0px
+}
+
+.format-radio-box {
+  padding: 0
+}
+
+.form-radio-container input[type='radio'] {
+  height: 1px;
+    left: -10000px;
+    position: absolute;
+    visibility: visible;
+    /*width: 1px;
+    outline-offset: 0;
+    border: 2px solid #bebebe;
+    border-radius: 0;
+    background-color: #fff;
+    padding: .4em;
+    box-sizing: border-box;*/
 }
 

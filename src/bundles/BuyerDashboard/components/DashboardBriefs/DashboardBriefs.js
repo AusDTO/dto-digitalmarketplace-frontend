@@ -23,21 +23,6 @@ export const DashboardBriefs = props => {
         teamBriefView={teamBriefView}
       />
 
-      {!teamBriefView && (
-        <div styleName="create-opportunity-link">
-          <p>
-            <a href={"/buyers/frameworks/digital-marketplace/requirements/digital-professionals"}>
-              Create a new opportunity for a digital specialist
-            </a>
-          </p>
-          <p>
-            <a href={"/buyers/frameworks/digital-marketplace/requirements/digital-outcome/"}>
-              Create a new opportunity for an outcome
-            </a>
-          </p>
-        </div>
-      )}
-
       <LiveBriefs
         live={live}
         teamBriefView={teamBriefView}
@@ -214,7 +199,7 @@ export const LiveBriefs = props => {
               <th styleName="left-header">Brief Overview</th>
               <th styleName="middle-header">Author</th>
               <th styleName="middle-header">Published</th>
-              <th styleName="middle-header">Closing</th>
+              <th styleName="middle-header">Q&A</th>
             </tr>
             </thead>
             <tbody>
@@ -240,8 +225,13 @@ export const LiveBriefs = props => {
                     {formatDate(item.dates.published_date)}
                   </td>
                   <td styleName="item-field-fourth">
-                    <h5>Closing</h5>
-                    {formatDate(item.dates.closing_date)}
+                    <h5>Q&A</h5>
+                    <a href={"/buyers/frameworks/digital-marketplace/requirements/".concat(
+                      item.lotSlug, "/",
+                      item.id,
+                      "/supplier-questions")}>
+                      Answer a question
+                    </a>
                   </td>
                 </tr>
               )
