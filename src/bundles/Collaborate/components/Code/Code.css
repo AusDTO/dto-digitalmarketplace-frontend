@@ -12,9 +12,56 @@
     margin-right: auto;
     max-width: 82%
 }
+.summary {
+    font-size: 24px;
+}
+
+.full-header {
+    background: #f0f3f5;
+    padding-top: 1.5em;
+}
+
+.full-header h4:first-of-type, .full-header ul {
+    margin-top: 0;
+}
+
+.full-header > div {
+    max-width: 75em;
+    margin: 0 auto;
+    padding: 0 1.6em;
+}
+.tiles {
+    padding: 0 55px;
+    float: left;
+}
+.tiles li {
+    width: 30%;
+    padding: 24px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(102, 102, 102, 0.3);
+    border: solid 1px #bbbbbb;
+    height: 309px;
+    display: inline-block;
+    margin-right: 32px;
+    float: left;
+}
+.tiles li h3{
+    margin-top: 0;
+}
+.fine {
+    color: #6e6e6e;
+    font-size: 14px;
+}
 
 @media only screen and (max-device-width: 768px) {
     .title {
         font-size: 28px;
+    }
+    .tiles li {
+        width: 40%;
+    }
+    .summary {
+        font-size: 20px;
     }
 }
