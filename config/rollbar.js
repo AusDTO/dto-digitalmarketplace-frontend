@@ -1,11 +1,11 @@
-var rollbarConfig = {
+var _rollbarConfig = {
     accessToken: process.env.ROLLBAR_CLIENT_TOKEN,
-    handleUncaughtExceptions: true,
-    handleUnhandledRejections: true,
+    captureUncaught: true,
+    captureUnhandledRejections: true,
     payload: {
         environment: process.env.NODE_ENV || 'development',
     }
 };
 
 var Rollbar = require("rollbar");
-var rollbar = new Rollbar(rollbarConfig);
+var rollbar = new Rollbar(_rollbarConfig);
