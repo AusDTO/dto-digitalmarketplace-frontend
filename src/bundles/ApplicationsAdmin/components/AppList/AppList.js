@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {convertApplicationToSeller, rejectApplication} from '../../redux/modules/applications';
+import {convertApplicationToSeller, rejectApplication, searchApplications} from '../../redux/modules/applications';
 import {Modal} from '../../../../shared/Modal/Modal';
 import {ConnectedRevertedForm} from '../RevertNotification/RevertNotification'
 import format from 'date-fns/format';
@@ -15,6 +15,7 @@ class AppList extends Component {
     applications: React.PropTypes.array,
     onRejectClick: React.PropTypes.func.isRequired,
     onAcceptClick: React.PropTypes.func.isRequired,
+    onKeywordChange: React.PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -52,7 +53,8 @@ class AppList extends Component {
       meta = {},
       applications = [],
       onRejectClick,
-      onAcceptClick
+      onAcceptClick,
+      onKeywordChange
     } = this.props;
 
     let revertedAppID = this.state.applicationID || null;
@@ -62,7 +64,15 @@ class AppList extends Component {
 
     return (
       <div styleName="appList">
-        <h2>{meta.heading}</h2>
+        <div className="row">
+            <div className="col-sm-8 col-xs-12">
+              <h2>{meta.heading}</h2>
+            </div>
+            <div className="col-sm-4 col-xs-12">
+              <label htmlFor="keyword">Search:</label>
+              <input id="keyword" type="text" size="30" onChange={onKeywordChange}/>
+            </div>
+        </div>
         <Modal show={this.state.responseModalOpen}>
           <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
             {(revertStatus ? (this.state.msg !== '' ?
@@ -97,6 +107,7 @@ class AppList extends Component {
             <th>submitted_at</th>
             <th>name</th>
             <th>type</th>
+            <th>status</th>
             <th>jira</th>
             <th>actions</th>
           </tr>
@@ -114,6 +125,7 @@ class AppList extends Component {
                     <span className="badge--beta">Recruiter</span>)}
                 </a></td>
                 <td>{a.type}</td>
+                <td>{a.status}</td>
                 <td>
                   {a.tasks && a.tasks.subtasks.map((t, i) =>
                     <a target="_blank" rel="external" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
@@ -152,13 +164,14 @@ class AppList extends Component {
   }
 }
 
-const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick}, ownProps) => {
+const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick, onKeywordChange}, ownProps) => {
   return {
     ...ownProps,
     applications,
     meta,
     onRejectClick,
-    onAcceptClick
+    onAcceptClick,
+    onKeywordChange
   };
 };
 
@@ -169,6 +182,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onRejectClick: (id) => {
       dispatch(rejectApplication(id))
+    },
+    onKeywordChange: (event) => {
+      dispatch(searchApplications(event.target.value))
     }
   }
 };
