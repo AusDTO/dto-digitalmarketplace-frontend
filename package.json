@@ -48,6 +48,10 @@
     "webpack-dev-server": "1.16.1"
   },
   "dependencies": {
+    "@gov.au/body": "^0.1.1",
+    "@gov.au/grid-12": "^0.1.0",
+    "@gov.au/header": "^1.1.0",
+    "@gov.au/pancake-sass": "^1.1.0",
     "abnacn-validator": "0.0.5",
     "autotrack": "^2.4.1",
     "babel-core": "6.14.0",
@@ -92,7 +96,7 @@
     "yargs": "6.0.0"
   },
   "scripts": {
-    "prestart": "node-sass --include-path=./node_modules src/main.scss -o public && ./node_modules/.bin/autotrack -o public/autotrack.custom.js -p outboundLinkTracker",
+    "prestart": "node-sass --include-path=./node_modules src/main.scss -o public",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "build:development": "node scripts/build.js --dev",
@@ -127,7 +131,10 @@
       "<rootDir>/(build|docs|node_modules)/"
     ],
     "testEnvironment": "jsdom",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@gov.au)"
+    ]
   },
   "babel": {
     "presets": [
@@ -144,5 +151,27 @@
   },
   "engines": {
     "node": "7.10.0"
+  },
+  "pancake": {
+    "auto-save": true,
+    "plugins": true,
+    "ignore": [],
+    "css": {
+      "minified": true,
+      "modules": false,
+      "browsers": [
+        "last 2 versions",
+        "ie 8",
+        "ie 9",
+        "ie 10"
+      ],
+      "location": "public/",
+      "name": "pancake.min.css"
+    },
+    "sass": {
+      "modules": false,
+      "location": "pancake/sass/",
+      "name": "pancake.scss"
+    }
   }
 }
