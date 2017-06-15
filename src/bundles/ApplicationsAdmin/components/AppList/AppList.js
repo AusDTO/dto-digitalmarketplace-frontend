@@ -63,7 +63,7 @@ class AppList extends Component {
     return (
       <div styleName="appList">
         <h2>{meta.heading}</h2>
-        <Modal show={typeof revertStatus === 'boolean' || this.state.responseModalOpen}>
+        <Modal show={this.state.responseModalOpen}>
           <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
             {(revertStatus ? (this.state.msg !== '' ?
                 <h4>{`Reversion email sent successfully to ${revertName}`}</h4> :
