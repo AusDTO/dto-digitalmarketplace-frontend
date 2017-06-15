@@ -69,7 +69,7 @@ class AppList extends Component {
               <h2>{meta.heading}</h2>
             </div>
             <div className="col-sm-4 col-xs-12">
-              <label>Search:</label>
+              <label htmlFor="keyword">Search:</label>
               <input id="keyword" type="text" size="30" onChange={onKeywordChange}/>
             </div>
         </div>
