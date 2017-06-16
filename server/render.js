@@ -6,16 +6,16 @@ import compression from 'compression'
 
 import { render, renderPage } from './routes/render'
 
-var rollbarConfig = {
+var _rollbarConfig = {
     accessToken: process.env.ROLLBAR_TOKEN,
-    handleUncaughtExceptions: true,
-    handleUnhandledRejections: true,
+    captureUncaught: true,
+    captureUnhandledRejections: true,
     payload: {
         environment: process.env.NODE_ENV || 'development',
     }
 };
 
-var rollbar = new Rollbar(rollbarConfig);
+var rollbar = new Rollbar(_rollbarConfig);
 
 const isDev = process.env.NODE_ENV !== 'production'
 
