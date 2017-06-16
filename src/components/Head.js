@@ -9,7 +9,10 @@ const Head = () => (
 	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/static/media/apple-touch-icon.png"/>
 	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/static/media/apple-touch-icon.png"/>
 	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/static/media/apple-touch-icon.png"/>
-	<link rel="apple-touch-icon-precomposed" href="/static/media/apple-touch-icon.png"/>  
+	<link rel="apple-touch-icon-precomposed" href="/static/media/apple-touch-icon.png"/>
+	<link rel="stylesheet" type="text/css" href="/bundle/pancake.min.css"/>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    <script async src="bundle/autotrack.custom.js"></script>
   </Helmet>
 )
 

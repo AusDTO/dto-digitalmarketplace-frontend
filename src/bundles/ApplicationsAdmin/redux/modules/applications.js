@@ -1,6 +1,7 @@
 export const CONVERTED_SELLER = 'CONVERTED_SELLER';
 export const REJECTED_APPLICATION = 'REJECTED_APPLICATION';
 export const REVERTED_APPLICATION = 'REVERTED_APPLICATION';
+export const RESET_APPLICATIONS = 'RESET_APPLICATIONS';
 
 const updateApplicationRowStatus = (state, id, status, revertStatus) => {
   const applicationIndex = state.map(app => app.id).indexOf(id);
@@ -15,7 +16,7 @@ const updateApplicationRowStatus = (state, id, status, revertStatus) => {
 };
 
 export default function reducer(state = {}, action = {}) {
-  const {type, id, revertStatus} = action;
+  const {type, id, revertStatus, applications} = action;
   switch (type) {
     case CONVERTED_SELLER:
       return updateApplicationRowStatus(state, id, 'approved');
@@ -23,6 +24,8 @@ export default function reducer(state = {}, action = {}) {
       return updateApplicationRowStatus(state, id, 'approval_rejected');
     case REVERTED_APPLICATION:
       return updateApplicationRowStatus(state, id, 'saved', revertStatus);
+    case RESET_APPLICATIONS:
+      return applications.slice();
     default:
       return state;
   }
@@ -86,7 +89,33 @@ export const revertApplication = (id, msg) => {
     })
       .then((response) => {
         let revertStatus = (response.status !== 200 ? false : true);
-        dispatch(revertedApplication(id, revertStatus))
+        if (revertStatus) {
+          dispatch(revertedApplication(id, revertStatus))
+        }
+      })
+  }
+};
+
+export const resetApplications = (applications) => ({type: RESET_APPLICATIONS, applications});
+
+export const searchApplications = (keyword) => {
+  return (dispatch, getState, api) => {
+    const state = getState();
+
+    if (keyword.length < 3) {
+      return dispatch(resetApplications([]))
+    }
+
+    return api(`${state.meta.url_search_applications}${keyword}`, {
+      method: 'GET',
+      headers: {
+        'X-CSRFToken': state.form_options.csrf_token,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+          dispatch(resetApplications(json.applications))
       })
   }
 };

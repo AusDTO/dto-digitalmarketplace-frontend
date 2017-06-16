@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {convertApplicationToSeller, rejectApplication} from '../../redux/modules/applications';
+import {convertApplicationToSeller, rejectApplication, searchApplications} from '../../redux/modules/applications';
 import {Modal} from '../../../../shared/Modal/Modal';
 import {ConnectedRevertedForm} from '../RevertNotification/RevertNotification'
 import format from 'date-fns/format';
@@ -15,6 +15,7 @@ class AppList extends Component {
     applications: React.PropTypes.array,
     onRejectClick: React.PropTypes.func.isRequired,
     onAcceptClick: React.PropTypes.func.isRequired,
+    onKeywordChange: React.PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -23,7 +24,14 @@ class AppList extends Component {
       modalOpen: false,
       msg: '',
       updated: false,
+      responseModalOpen: false
     };
+  }
+
+  sortDate(applications) {
+    return applications.sort(function (a, b) {
+     return new Date(a.submitted_at) - new Date(b.submitted_at);
+    });
   }
 
   toggleModal(id, msg) {
@@ -34,12 +42,19 @@ class AppList extends Component {
     });
   };
 
+  toggleResponseModal() {
+    this.setState({
+      responseModalOpen: !this.state.responseModalOpen
+    })
+  }
+
   render() {
     const {
       meta = {},
       applications = [],
       onRejectClick,
-      onAcceptClick
+      onAcceptClick,
+      onKeywordChange
     } = this.props;
 
     let revertedAppID = this.state.applicationID || null;
@@ -49,16 +64,31 @@ class AppList extends Component {
 
     return (
       <div styleName="appList">
-        <h2>{meta.heading}</h2>
-        {typeof revertStatus === 'boolean' &&
-        <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
-          {(revertStatus ? (this.state.msg !== '' ?
-              <h4>{`Reversion email sent successfully to ${revertName}`}</h4> :
-              <h4>{`Application from ${revertName} successfully reverted without email notification`}</h4>) :
-              <h4>{`Reversion email was not sent to ${revertName}`}</h4>
-          )}
+        <div className="row">
+            <div className="col-sm-8 col-xs-12">
+              <h2>{meta.heading}</h2>
+            </div>
+            <div className="col-sm-4 col-xs-12">
+              <label htmlFor="keyword">Search:</label>
+              <input id="keyword" type="text" size="30" onChange={onKeywordChange}/>
+            </div>
         </div>
-        }
+        <Modal show={this.state.responseModalOpen}>
+          <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
+            {(revertStatus ? (this.state.msg !== '' ?
+                <h4>{`Reversion email sent successfully to ${revertName}`}</h4> :
+                <h4>{`Application from ${revertName} successfully reverted without email notification`}</h4>) :
+                <h4>{`Reversion email was not sent to ${revertName}`}</h4>
+            )}
+          </div>
+          <button
+            type="button"
+            style={{width: '90px', height: '30px'}}
+            onClick={() => this.toggleResponseModal()}>
+            close
+          </button>
+        </Modal>
+
         {this.state.applicationID &&
         <div id="modal-wrapper">
           <Modal show={ this.state.modalOpen }>
@@ -66,6 +96,7 @@ class AppList extends Component {
               defaultMessage={templateString}
               onClose={(id, msg) => this.toggleModal(id, msg)}
               appID={this.state.applicationID}
+              revertStatus={revertStatus}
             />
           </Modal>
         </div>}
@@ -73,9 +104,10 @@ class AppList extends Component {
 
           <thead>
           <tr>
-            <th>created_at/submitted_at</th>
+            <th>submitted_at</th>
             <th>name</th>
             <th>type</th>
+            <th>status</th>
             <th>jira</th>
             <th>actions</th>
           </tr>
@@ -83,43 +115,43 @@ class AppList extends Component {
 
           <tbody>
 
-          {applications.map((a, i) => {
-            var latestDate = a.created_at;
-            if (a.submitted_at) {
-              latestDate = a.submitted_at;
-            }
+          {(this.sortDate(applications) || applications).map((a, i) => {
             return (
-              <tr key={a.id}>
-                <td>{format(new Date(latestDate), 'YYYY-MM-DD HH:mm')}</td>
-                <td><a target="_blank" href={meta.url_preview.concat(a.id) }>{a.name || "[no name]"}
+              <tr key={i}>
+                <td>{format(new Date(a.submitted_at), 'YYYY-MM-DD HH:mm')}</td>
+                <td><a target="_blank" href={meta.url_preview.concat(a.id) } className="application">{a.name || "[no name]"}
                   {a.supplier_code && (<span className="badge--default">Existing</span>)}
                   {(a.recruiter === 'yes' || a.recruiter === 'both') && (
                     <span className="badge--beta">Recruiter</span>)}
                 </a></td>
                 <td>{a.type}</td>
+                <td>{a.status}</td>
                 <td>
                   {a.tasks && a.tasks.subtasks.map((t, i) =>
                     <a target="_blank" rel="external" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
                   )}
                 </td>
                 <td>
-                  { a.status === 'submitted' &&
+                  {
+                    (a.status === 'submitted' && !a.revertStatus) && <span>
                   <button onClick={e => {
                     e.preventDefault();
                     onRejectClick(a.id);
                   }} name="Reject" styleName="reject">Reject</button>
-                  }
-                  { a.status === 'submitted' &&
+
                   <button onClick={e => {
                     e.preventDefault();
                     onAcceptClick(a.id);
                   }} name="Accept">Accept</button>
-                  }
-                  { a.status === 'submitted' &&
+
                   <button onClick={e => {
                     e.preventDefault();
                     this.toggleModal(a.id)
+                    this.toggleResponseModal()
                   }} name="Revert" styleName="revert">Revert</button>
+
+                       <a href={meta.url_edit_application.concat(a.id,'/start')} styleName="edit">Edit</a>
+                    </span>
                   }
                 </td>
               </tr>
@@ -132,13 +164,14 @@ class AppList extends Component {
   }
 }
 
-const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick}, ownProps) => {
+const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick, onKeywordChange}, ownProps) => {
   return {
     ...ownProps,
     applications,
     meta,
     onRejectClick,
-    onAcceptClick
+    onAcceptClick,
+    onKeywordChange
   };
 };
 
@@ -149,6 +182,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onRejectClick: (id) => {
       dispatch(rejectApplication(id))
+    },
+    onKeywordChange: (event) => {
+      dispatch(searchApplications(event.target.value))
     }
   }
 };

@@ -48,7 +48,12 @@
     "webpack-dev-server": "1.16.1"
   },
   "dependencies": {
+    "@gov.au/body": "^0.1.1",
+    "@gov.au/grid-12": "^0.1.0",
+    "@gov.au/header": "^1.1.0",
+    "@gov.au/pancake-sass": "^1.1.0",
     "abnacn-validator": "0.0.5",
+    "autotrack": "^2.4.1",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
     "babel-jest": "16.0.0",
@@ -59,22 +64,22 @@
     "babel-preset-react-app": "0.2.1",
     "babel-register": "6.16.3",
     "body-parser": "1.15.2",
-    "c3": "^0.4.11",
     "classnames": "2.2.5",
     "compression": "1.6.2",
+    "config": "^1.26.1",
     "date-fns": "1.22.0",
     "dotenv": "2.0.0",
     "express": "4.14.0",
     "fast-json-patch": "^1.1.10",
     "leaflet": "^1.0.3",
     "lodash": "4.17.2",
+    "mkdirp": "^0.5.1",
     "morgan": "1.7.0",
     "newrelic": "1.34.0",
     "object-assign": "4.1.0",
     "promise": "7.1.1",
     "react": "15.4.0",
     "react-autocomplete": "1.4.0",
-    "react-c3js": "0.1.17",
     "react-dom": "15.4.0",
     "react-helmet": "^5.1.3",
     "react-leaflet": "^1.1.6",
@@ -85,7 +90,7 @@
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "2.1.0",
     "reselect": "2.5.4",
-    "rollbar": "^2.0.1",
+    "rollbar": "^2.0.4",
     "wdio-mocha-framework": "^0.5.3",
     "webdriverio": "^4.4.0",
     "whatwg-fetch": "^2.0.3",
@@ -127,7 +132,10 @@
       "<rootDir>/(build|docs|node_modules)/"
     ],
     "testEnvironment": "jsdom",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@gov.au)"
+    ]
   },
   "babel": {
     "presets": [
@@ -144,5 +152,27 @@
   },
   "engines": {
     "node": "7.10.0"
+  },
+  "pancake": {
+    "auto-save": true,
+    "plugins": true,
+    "ignore": [],
+    "css": {
+      "minified": true,
+      "modules": false,
+      "browsers": [
+        "last 2 versions",
+        "ie 8",
+        "ie 9",
+        "ie 10"
+      ],
+      "location": "public/",
+      "name": "pancake.min.css"
+    },
+    "sass": {
+      "modules": false,
+      "location": "pancake/sass/",
+      "name": "pancake.scss"
+    }
   }
 }

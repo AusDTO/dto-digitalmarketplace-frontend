@@ -23,7 +23,7 @@
     text-align: left
 }
 
-.appList table a {
+.appList table a.application {
     margin: 0 0.1rem;
     padding: 0.5rem 0.5rem;
     border: none;
@@ -33,7 +33,7 @@
     overflow: hidden;
 }
 
-.appList button {
+.appList button, .edit {
     display: inline-block;
     font-size: 1.1rem;
     margin: 0 0.1rem;
@@ -47,6 +47,13 @@
 
 .revert {
     background: orange;
+}
+
+.edit {
+    background: #3e83c5;
+    color: white;
+    font-weight: bold;
+    padding: 5px 7px;
 }
 
 .to-do, .in-progress, .done {

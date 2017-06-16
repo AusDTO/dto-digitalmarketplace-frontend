@@ -63,6 +63,7 @@ var config = {
     'search': [resolveApp('src/bundles/Search/SearchWidget')],
     'auth-header': [resolveApp('src/bundles/Header/AuthWidget')],
     'collaborate-landing': [resolveApp('src/bundles/Collaborate/CollaborateLandingWidget')],
+      'collaborate-code': [resolveApp('src/bundles/Collaborate/CollaborateCodeWidget')],
       'project-view': [resolveApp('src/bundles/Collaborate/ProjectViewWidget')],
       'project-form': [resolveApp('src/bundles/Collaborate/ProjectFormWidget')],
       'project-submit-confirmation':[resolveApp('src/bundles/Collaborate/ProjectSubmitConfirmationWidget')],

@@ -10,13 +10,16 @@ export default class RevertedNotificationForm extends Component {
   static propTypes = {
     appID: React.PropTypes.number.isRequired,
     onClose: React.PropTypes.func.isRequired,
-    defaultMessage: React.PropTypes.string.isRequired
+    defaultMessage: React.PropTypes.string.isRequired,
+    onRevertClick: React.PropTypes.func.isRequired,
+    revertStatus: React.PropTypes.bool
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      message: templateString
+      message: templateString,
+      revertStatus: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -27,15 +30,25 @@ export default class RevertedNotificationForm extends Component {
     })
   }
 
-  resetMessageText(propsMessage) {
+  updateRevertStatus(status) {
     this.setState({
-      message: propsMessage
-    });
+      revertStatus: status,
+      message: this.props.defaultMessage
+    })
+  }
+
+  // parent component receives revertStatus via an action, as a result of successfully hitting
+  // the revert api
+  // use this to toggle which message will be seen on the email modal next time it opens
+  // instead of relying on handle button click which had no api response validation
+  componentWillReceiveProps(newProps) {
+    if (this.props.revertStatus !== newProps.revertStatus) {
+      this.updateRevertStatus(newProps.revertStatus)
+    }
   }
 
   render() {
     const {
-      defaultMessage,
       appID,
       onClose,
       onRevertClick
@@ -59,7 +72,6 @@ export default class RevertedNotificationForm extends Component {
               style={{width: '200px'}}
               onClick={() => {
                 onRevertClick(appID, this.state.message);
-                this.resetMessageText(defaultMessage);
               }}>Revert & Send Email
             </button>
           </div>
@@ -69,7 +81,6 @@ export default class RevertedNotificationForm extends Component {
               style={{width: '200px'}}
               onClick={() => {
                 onRevertClick(appID, '');
-                this.resetMessageText(defaultMessage);
               }}>Revert Without Email
             </button>
           </div>
@@ -78,13 +89,11 @@ export default class RevertedNotificationForm extends Component {
           styleName="close-modal-prompt"
           tabIndex="0"
           onClick={() => {
-              onClose(appID, this.state.message);
-              this.resetMessageText(defaultMessage);
-            }}
+            onClose(appID, this.state.message);
+          }}
           onKeyUp={() => {
-              onClose(appID, this.state.message);
-              this.resetMessageText(defaultMessage);
-            }}
+            onClose(appID, this.state.message);
+          }}
           role="button">close
         </a>
       </form>

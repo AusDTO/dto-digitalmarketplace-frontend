@@ -38,20 +38,21 @@ export const returnDiffedData = body => {
   if (!body.supplier_code) {
     return [];
   }
-  ;
 
-  let thisIgnoreKeys = appendIgnoredKeys(body, body.supplier, ignoreKeys);
-  let diffedData = jsonpatch.compare(body.supplier, body);
-  return Object.values(diffedData).filter(x => {
-    if (
-      !thisIgnoreKeys.includes(x.path) &&
-      x.op !== 'remove' &&
-      x.path.match(/links/g) <= 0 &&
-      x.path.match(/createdAt/g) <= 0
-    ) {
-      return x;
-    }
-  });
+  if (body.supplier) {
+      let thisIgnoreKeys = appendIgnoredKeys(body, body.supplier, ignoreKeys);
+      let diffedData = jsonpatch.compare(body.supplier, body);
+      return Object.values(diffedData).filter(x => {
+          if (
+              !thisIgnoreKeys.includes(x.path) &&
+              x.op !== 'remove' &&
+              x.path.match(/links/g) <= 0 &&
+              x.path.match(/createdAt/g) <= 0
+          ) {
+              return x;
+          }
+      });
+  }
 };
 
 const addApplicationUUID = originalCaseStudies => {

@@ -14,8 +14,12 @@ export class DomainAssessmentChoice extends React.Component {
     };
 
     handleSubmit(val) {
-        if (val['domain']) {
-            window.location.href = this.props.assessmentUrl + "/" + val['domain'];
+        var domain = val['domain'];
+        if (document.querySelector('input[name="domain"]:checked')) {
+            domain = document.querySelector('input[name="domain"]:checked').value
+        }
+        if (domain) {
+            window.location.href = this.props.assessmentUrl + "/" + domain;
         } else {
             this.setState({
                 error: true
@@ -52,6 +56,7 @@ export class DomainAssessmentChoice extends React.Component {
                                     return (
                                         <span key={i}>
                                 <input type="radio"
+                                       name="domain"
                                        id={fieldId}
                                        value={key}
                                 />

@@ -39,7 +39,11 @@ var loaders = [
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
-        include: [paths.appSrc, paths.appServer],
+        include: [
+          paths.appSrc, 
+          paths.appServer, 
+          paths.appNodeModules + '/@gov.au/header',
+        ],
         loader: 'babel',
         query: {
 

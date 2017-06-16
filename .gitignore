@@ -48,9 +48,10 @@ jspm_packages
 build
 assetsByChunkName.json
 public/main.css
+public/pancake.min.css
 errorShots
 .env
 .idea
 
-*.lock
 *.sublime*
+pancake
