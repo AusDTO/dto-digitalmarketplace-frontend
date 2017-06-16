@@ -179,6 +179,15 @@ class SubmitStepForm extends BaseForm {
                         <p><strong>Confidential information</strong> cannot be disclosed in any other circumstances without prior consent from the owner of the <strong>confidential information</strong>.</p>
                         <p><strong>You</strong> must, if requested, sign a non-disclosure agreement.</p>
                         <h3>17. Privacy obligations</h3>
+                        <p><strong>You</strong> agree, in providing the <strong>services</strong> or <strong>products</strong>:
+                        <ul>
+                            <li>Not to breach any requirement of the <i>Privacy Act 1988</i> (Cth) that applies to <strong>you</strong> in the fulfilment of a <strong>work order</strong>.</li>
+                            <li>Not to do anything, that if done by the <strong>buyer</strong>, would be a breach of an Australian Privacy Principle under the <i>Privacy Act 1988</i> (Cth).</li>
+                            <li>To comply with any directions, guidelines, determinations or recommendations referred to in the <strong>work order</strong> or made by the Australian Information Commissioner.</li>
+                            <li>To notify the <strong>buyer</strong> immediately if <strong>you</strong> become aware of a breach or possible breach of any of <strong>your</strong> privacy obligations.</li>
+                        </ul>
+                        </p>
+                        <h3>18. Conflict of interest</h3>
                         <p><strong>You</strong> confirm that, to the best of <strong>your</strong> knowledge and belief after making reasonable inquiries, <strong>you</strong> have no <strong>conflict of interest. </strong></p>
                         <p>If an actual or potential <strong>conflict of interest</strong> arises, <strong>you</strong> must notify <strong>us, </strong>and the <strong>buyer</strong> if relevant by email, and take all steps required to manage the <strong>conflict of interest</strong> as directed by <strong>us</strong> or the <strong>buyer</strong>.</p>
                         <h3>19. Audit and access</h3>
