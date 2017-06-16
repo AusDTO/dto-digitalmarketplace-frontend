@@ -2,6 +2,10 @@
     width: 74.48861%
 }
 
+.contact-us-exlink {
+    border-bottom: 1px solid #5bcbe3;    
+}
+
 @media (max-width: 767px) {
     .teamoverview-main {
         width: 100%

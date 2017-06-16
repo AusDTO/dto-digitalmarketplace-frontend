@@ -28,6 +28,50 @@ section.live-brief-container {
     }
 }
 
+.item-field-first-full {
+    width: 25%
+}
+
+.item-field-first {
+    width: 25%
+}
+
+.item-field-second-left {
+    width: 25%;
+    padding-top: 0px
+}
+
+.item-field-second-right {
+    width: 25%
+}
+
+.item-field-third-left {
+    width: 25%;
+    padding-top: 0px
+}
+
+.item-field-third-right {
+    width: 25%;
+    padding-top: 0px;
+    text-align: right
+}
+
+.item-field-third-right.teamview {
+    text-align: left
+}
+
+@media (max-width: 767px) {
+    .item-field-third-right.teamview {
+        text-align: right
+}
+}
+
+.item-field-fourth {
+    width: 25%;
+    padding-top: 0px;
+    text-align: right
+}
+
 @media (max-width: 767px) {
     .dashboard-main {
         width: 100%
@@ -118,25 +162,41 @@ section.live-brief-container {
         text-align: right;
     }
 
-    .item-field-third-right div {
-        text-align: right;
-    }
-
     .item-field-fourth {
         display: inline-block;
         width: 50%;
         text-align: right
     }
 
+    .item-field-fourth-empty {
+        display: none
+    }
+
     .item-field a {
         overflow-wrap: break-word;
     }
 
-    table.brief-table td {
-        padding: 1em 1.2em
+    table.brief-table tr td {
+        padding: 1em 1.2em 1em 0.4em
     }
 
-    table.brief-table thead tr th.middle-header {
+    table.brief-table tr td.item-field-second-left {
+        padding: 0 1.2em 1em 0.4em
+    }
+    
+    table.brief-table tr td.item-field-third-left {
+        padding: 0 1.2em 1em 0.4em
+    }
+    
+    table.brief-table tr td.item-field-third-right {
+        padding: 0 1.2em 1em 0.4em
+    }
+
+     table.brief-table tr td.item-field-fourth {
+        padding: 0 1.2em 1em 0.4em
+    }
+
+    table.brief-table thead tr th.center-header {
         padding-right: 20px;
         text-align: left
     }
@@ -175,8 +235,7 @@ table.brief-table tr:first-child {
 
 table.brief-table thead tr th {
     font-weight: 700;
-    line-height: 18px;
-    text-align: left
+    line-height: 18px
 }
 
 table.brief-table tr:nth-child(even) {
@@ -184,18 +243,19 @@ table.brief-table tr:nth-child(even) {
 
 }
 
-table.brief-table thead tr th.left-header {
+.left-header {
     text-align: left;
     padding-left: 5px
 }
 
-table.brief-table thead tr th.middle-header {
+.center-header {
     text-align: left
 }
 
-table.brief-table thead tr th.right-header {
+.right-header {
     color: #313131;
-    text-align: right
+    text-align: right;
+    padding-right: 15px
 }
 
 table.brief-table tr td, table.brief-table tr th {

@@ -2,7 +2,7 @@
 
 @media (max-width: 767px) {
   .team-view {
-    margin-left: -15px;
+    margin-left: -3px;
   }
 }
 
@@ -38,7 +38,7 @@
 @media (max-width: 767px) {
   .team-view-username span button {
     float: left;
-    width: 300px
+    width: 325px
   }
 }
 
@@ -112,7 +112,7 @@
 .filter {
   display: inline-block;
   font-size: 1.25rem;
-  margin-right: 1rem;
+  margin-right: 7px;
   border-bottom: none !important;
   padding: 10px
 }

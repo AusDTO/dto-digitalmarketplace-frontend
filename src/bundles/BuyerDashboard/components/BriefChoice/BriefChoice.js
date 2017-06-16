@@ -6,7 +6,7 @@ import './BriefChoice.css';
 const BriefChoice = props => {
   return (
     <div styleName="brief-choice-container">
-      <h1>Post a brief</h1>
+      <h1>Start a New Brief</h1>
       <p>
         Create a new opportunity for a:
       </p>
@@ -26,13 +26,10 @@ class BriefChoiceForm extends Component {
     this.state = {
       briefType: 'digital-professionals'
     };
-    this.handleChange = this
-      .handleChange
-      .bind(this);
   }
 
-  handleChange(e) {
-    this.setState({briefType: e.target.value})
+  handleChange(type) {
+    this.setState({briefType: type})
   }
 
   render() {
@@ -41,30 +38,30 @@ class BriefChoiceForm extends Component {
         <div
           styleName={`form-radio-container ${ (this.state.briefType === 'digital-professionals')
           ? 'checked'
-          : ''}`}>
-          <label htmlFor="digitalProfessionals">
-            <input
-              type="radio"
-              name="digital-professionals"
-              value="digital-professionals"
-              checked={this.state.briefType === "digital-professionals"}
-              onChange={this.handleChange}/>
-            <span styleName="form-label">Digital Specialist</span>
-          </label>
+            : ''}`}>
+          <form>
+            <label
+              htmlFor="digitalProfessionals"
+              onClick={() => this.handleChange('digital-professionals')}
+              onKeyUp={() => { }}
+              role="presentation" tabIndex="0">
+            <span>Digital Specialist</span>
+            </label>
+          </form>  
         </div>
         <div
           styleName={`form-radio-container ${ (this.state.briefType === 'digital-outcome')
           ? 'checked'
-          : ''}`}>
-          <label htmlFor="digitalOutcome">
-            <input
-              type="radio"
-              name="digital-outcome"
-              value="digital-outcome"
-              checked={this.state.briefType === "digital-outcome"}
-              onChange={this.handleChange}/>
-            <span styleName="form-label">Digital Outcome</span>
-          </label>
+            : ''}`}>
+          <form>
+            <label
+              htmlFor="digitalOutcome"
+              onClick={() => this.handleChange('digital-outcome')}
+              onKeyUp={() => { }}
+              role="presentation" tabIndex="0"> 
+            <span>Digital Outcome</span>
+            </label>
+          </form>  
         </div>
         <a
           href={`/buyers/frameworks/digital-marketplace/requirements/${this.state.briefType}`}>
@@ -78,3 +75,6 @@ class BriefChoiceForm extends Component {
 }
 
 export default BriefChoice
+
+
+
