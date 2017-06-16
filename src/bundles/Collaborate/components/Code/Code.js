@@ -9,85 +9,154 @@ class Code extends React.Component {
 
 
         return (
+            <div styleName="code">
+                <section styleName="full-header">
+                    <div className="row">
+                        <div className="col-sm-5 col-md-push-1">
+                            <h1 tabIndex="-1">Common components</h1>
 
-                <main role="main">
-                    <header><h1>Common Components</h1></header>
-                    <aside className="sidebar" id="nav" style={{float: "left", paddingRight: "30px"}}>
-                <nav className="local-nav local-nav-demo" aria-label="main navigation">
-                    <h1 className="is-visuallyhidden">Menu</h1>
-                    <ul>
-                        <li><a href="#a" className="is-active">Current section</a>
-                            <ul>
-                                <li><a href="#a" className="is-active">Child link (current sub-section)</a>
-                                    <ul>
-                                        <li><a href="#a">Grandchild link</a></li>
-                                        <li><a href="#a" className="is-active">Grandchild link (current page)</a></li>
-                                    </ul>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <article className="col-sm-5 col-md-push-1">
+                            <img styleName="illustration" src="/static/media/open_source_illustration.png" alt=""/>
+                        </article>
+                        <div className="col-md-5 col-md-push-1 col-sm-6 col-sm-push-1">
+                        <p styleName="summary">An open source library for building Australian Government
+                            services</p>
+                            <h3 style={{marginTop: "32px"}}> New to open source projects?</h3>
+                            <a href="/contact-us"
+                               role="button" style={{marginTop: "8px"}}>Get in touch</a>
+                        </div>
+                    </div>
+                </section>
+                <section >
+                    <div >
+                        <h2 style={{textAlign: "center"}}>Explore code</h2>
+                        <p  styleName="code-text">Reduce cost, effort and risk by re-using tried and tested open source
+                            projects to deliver digital services.</p>
+                    </div>
+                    <div className="row">
+                        <article role="main" styleName="center">
+
+                            <ul styleName="tiles">
+                                <li>
+                                    <article>
+                                        <h3>
+                                            <a rel="external" target="_blank" href="https://github.com/AusDTO/citizenship-appointment-client">Appointment
+                                                booking service</a>
+                                        </h3>
+                                        <p>The booking service enables users to book or reschedule an appointment for a
+                                            citizenship test.<br/><br/>
+                                            <a rel="external" target="_blank" href="https://citizenship-appointment-beta.herokuapp.com/login">View
+                                                demo</a></p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <h3>
+                                            <a rel="external" target="_blank"
+                                               href="https://github.com/govCMS/consultation">Bushfire Attack Level
+                                                Computation Software</a>
+                                        </h3>
+                                        <p>An ESRI ArcGIS toolbox to calculate severity of exposure to bushfire
+                                            attack<br/><br/>
+                                            <a rel="external" target="_blank"
+                                               href="https://geoscienceaustralia.github.io/BAL/docs/userguide/examples.html">View
+                                                demo</a></p>
+                                    </article>
+                                </li>
+
+                                <li>
+                                    <article>
+                                        <h3>
+                                            <a rel="external" target="_blank" href="https://github.com/govCMS/govCMS">GovCMS</a>
+                                        </h3>
+                                        <p>Online content management system built for the new digital
+                                            government<br/><br/>
+                                            <a rel="external" target="_blank" href="https://www.govcms.gov.au/">View
+                                                demo</a></p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <h3>
+                                            <a rel="external" target="_blank"
+                                               href="https://github.com/govCMS/govcms-ckan">GovCMS-CKAN</a>
+                                        </h3>
+                                        <p>A Drupal module to integrate with CKAN datasources such as
+                                            data.gov.au<br/><br/>
+                                            <a rel="external" target="_blank"
+                                               href="https://soe.environment.gov.au/theme/drivers/topic/economic-activity-driver-environmental-change">View
+                                                demo</a></p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <h3>
+                                            <a rel="external" target="_blank"
+                                               href="https://github.com/govCMS/consultation">GovCMS consultation
+                                                module</a>
+                                        </h3>
+                                        <p>The consultation module was initally built by the Department of
+                                            Communications and the Arts and contributed back to the govCMS
+                                            community<br/><br/>
+                                            <a rel="external" target="_blank"
+                                               href="https://www.communications.gov.au/have-your-say">View demo</a></p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <h3>
+                                            <a rel="external" target="_blank"
+                                               href="https://github.com/actgov/Mobile-Canberra">Mobile Canberra</a>
+                                        </h3>
+                                        <p>A powerful platform for showing points of interest and services on a map for
+                                            both Android and iOS<br/><br/>
+                                            <a rel="external" target="_blank"
+                                               href="https://github.com/actgov/Mobile-Canberra#mobile-canberra">View
+                                                demo</a></p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <h3>
+                                            <a rel="external" target="_blank" href="https://github.com/govau/uikit">UI-kit</a>
+                                        </h3>
+                                        <p>A design guide for building Australian Government services with UI-Kit CSS
+                                            framework.<br/><br/>
+                                            <a rel="external" target="_blank" href="https://github.com/govau/uikit">View
+                                                demo</a></p>
+                                    </article>
                                 </li>
                             </ul>
-                            <ul>
-                                <li><a href="#a">Child link</a></li>
-                                <li><span className="placeholder-link">Child link (placeholder styling)</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                    </aside>
-                    <article id="content" className="content-main">
-                        <small>The use of brand names or products listed does not imply endorsement by the Digital Marketplace or discrimination against
-                            similar products not mentioned. THIS LISTING IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
-                            IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
-                            WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</small>
-                    <ul className="list-horizontal">
-                    <li>
-                        <article>
-                            <h3>
-                                <a href="https://github.com/govCMS/govCMS">govCMS</a>
-                            </h3>
-                            <p>Online content management system built for the new digital government<br/><br/>
-                            <a role="button" href="https://www.govcms.gov.au/">Demo &rsaquo;</a></p>
                         </article>
-                    </li>
-                        <li>
-                        <article>
-                            <h3>
-                                <a href="https://github.com/govCMS/govcms-ckan">govcms-ckan</a>
-                            </h3>
-                            <p>A Drupal module to integrate with CKAN datasources such as data.gov.au<br/><br/>
-                                <a role="button" href="https://soe.environment.gov.au/theme/drivers/topic/economic-activity-driver-environmental-change">Demo &rsaquo;</a></p>
-                        </article>
-                        </li>
-                        <li>
-                        <article>
-                            <h3>
-                                <a href="https://github.com/govCMS/consultation">govCMS consultation module</a>
-                            </h3>
-                            <p>The consultation module (also known as "Have Your Say") was initially built by the Department of Communications and the Arts and contributed back to the govCMS community<br/><br/>
-                                <a role="button" href="https://www.communications.gov.au/have-your-say">Demo &rsaquo;</a></p>
-                        </article>
-                    </li>
-                        <li>
-                            <article>
-                                <h3>
-                                    <a href="https://github.com/actgov/Mobile-Canberra">Mobile Canberra</a>
-                                </h3>
-                                <p>A powerful platform for showing points of interest and services on a map for both Android and iOS<br/><br/>
-                                    <a role="button" href="https://github.com/actgov/Mobile-Canberra#mobile-canberra">Demo &rsaquo;</a></p>
-                            </article>
-                        </li>
-                        <li>
-                            <article>
-                                <h3>
-                                    <a href="https://github.com/govCMS/consultation">Bushfire Attack Level Computation Software</a>
-                                </h3>
-                                <p>An ESRI ArcGIS toolbox to calculate severity of exposure to bushfire attack<br/><br/>
-                                    <a role="button" href="https://geoscienceaustralia.github.io/BAL/docs/userguide/examples.html">Demo &rsaquo;</a></p>
-                            </article>
-                        </li>
-                </ul>
-                    </article>
+                    </div>
 
-                </main>
+                    <div>
+                        <article role="main" styleName="center">
+                            <h3 style={{textAlign: "center",  fontSize: "24px"}}>Can't find the code you're looking for?</h3>
+                            <p style={{textAlign: "center", fontSize: "20px"}}>
+                                <a href="/contact-us"
+                                   role="button">Ask us a question</a></p>
+                        </article>
+                    </div>
+
+                    <div className="row">
+                        <article role="main" styleName="center">
+                            <div styleName="fine">The use of brand names or products listed does not imply endorsement
+                                by the Digital Marketplace
+                                or discrimination against similar products not mentioned. This is listing is provided
+                                ‘as is’ and without any express
+                                or implied warranties, including, without limitation, the implied warranties of
+                                merchantability and fitness for a particular purpose.
+                            </div>
+                        </article>
+
+                    </div>
+
+                </section>
+            </div>
 
         )
     }

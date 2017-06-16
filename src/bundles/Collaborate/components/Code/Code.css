@@ -1,7 +1,7 @@
 .uikit-display-3 {
     margin-top: 1.6em;
     font-weight: normal;
-    font-family: "Open Sans",Verdana,"Bitstream Vera Sans",sans-serif;
+    font-family: "Open Sans", Verdana, "Bitstream Vera Sans", sans-serif;
     color: #313131;
     display: block;
     line-height: 1.4;
@@ -13,8 +13,159 @@
     max-width: 82%
 }
 
+.summary {
+    font-size: 24px;
+    line-height: 1.38;
+    margin-bottom: 20px;
+}
+
+.full-header {
+    background: #def4f9;
+    padding-top: 5em;
+}
+
+.full-header h4:first-of-type, .full-header ul {
+    margin-top: 0;
+}
+
+.full-header > div {
+    max-width: 75em;
+    margin: 0 auto;
+    padding: 0 1.6em;
+}
+
+.tiles {
+    padding: 0 55px;
+    padding-top: 46px;
+    float: left;
+}
+
+.tiles li {
+    width: 276px;
+    padding: 24px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(102, 102, 102, 0.3);
+    border: solid 1px #bbbbbb;
+    height: 309px;
+    display: inline-block;
+    float: left;
+    margin-right: 32px;
+
+}
+
+.tiles p {
+    font-size: 16px;
+}
+
+.tiles li h3 {
+    margin-top: 0;
+}
+
+.fine {
+    color: #6e6e6e;
+    font-size: 14px;
+    padding: 0 48px;
+}
+
+.code h2 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.code a[role="button"] {
+    color: white;
+    font-size: 16px;
+}
+
+.center {
+    width: 1024px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.illustration {
+    margin-top: 14px;
+    margin-bottom: 80px;
+    margin-left: 30px;
+}
+
+.code-text {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.35;
+    max-width: 630px;
+}
+
 @media only screen and (max-device-width: 768px) {
     .title {
         font-size: 28px;
+    }
+
+    .tiles {
+        padding-top: 16px;
+    }
+
+    .tiles li {
+        width: 307px;
+        height: 286px;
+        margin-right: 0px;
+        margin-top: 32px;
+    }
+
+    .tiles li:nth-child(odd) {
+        margin-right: 25px;
+    }
+
+    .summary {
+        font-size: 20px;
+    }
+
+    .illustration {
+        width: 306px;
+    }
+
+    .center {
+        width: 100%;
+    }
+
+    .code h2 {
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.6;
+    }
+
+    .tiles li h3 {
+        font-size: 20px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+    }
+
+    .code-text {
+
+        font-size: 18px;
+        max-width: 475px;
+    }
+}
+
+@media only screen and (max-device-width: 767px) {
+    .full-header {
+        padding-top: 2em;
+    }
+    .illustration {
+        margin: 0;
+    }
+    .tiles {
+        padding: 24px;
+    }
+    .tiles li {
+        width: 100%;
+        margin-top: 24px;
+        height: initial;
     }
 }
