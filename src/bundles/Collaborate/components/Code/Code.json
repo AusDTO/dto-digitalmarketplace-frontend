@@ -1,0 +1,68 @@
+[
+  {
+    "url": "https://github.com/govau/uikit",
+    "name": "UI-kit",
+    "description": "A design guide for building Australian Government services with UI-Kit CSS framework.",
+    "demo_url": "https://github.com/govau/uikit",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govau/performance-dashboard",
+    "name": "Performance Dashboard",
+    "description": "Performance Dashboard for Australian Government",
+    "demo_url": "https://dashboard.gov.au",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govCMS/govCMS",
+    "name": "GovCMS",
+    "description": "Online content management system built for the new digital government",
+    "demo_url": "https://www.govcms.gov.au/",
+    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govau/datavizkit",
+    "name": "datavizkit",
+    "description": "A fully featured data visualisation toolset built on top of Highcharts and React. ",
+    "demo_url": "http://datavizkit.surge.sh/",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/actgov/Mobile-Canberra",
+    "name": "Mobile Canberra",
+    "description": "A powerful platform for showing points of interest and services on a map for both Android and iOS",
+    "demo_url": "https://github.com/actgov/Mobile-Canberra#mobile-canberra",
+    "icon": "http://www.act.gov.au/__data/assets/image/0011/492995/apple-touch-icon-57x57-precomposed.png?v=0.1.1"
+  },
+  {
+    "url": "https://github.com/AusDTO/citizenship-appointment-client",
+    "name": "Appointment booking service",
+    "description": "The booking service enables users to book or reschedule an appointment for a citizenship test",
+    "demo_url": "https://citizenship-appointment-beta.herokuapp.com/login",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/GeoscienceAustralia/BAL",
+    "name": "Bushfire Attack Level Computation Software",
+    "description": "An ESRI ArcGIS toolbox to calculate severity of exposure to bushfire attack",
+    "demo_url": "https://geoscienceaustralia.github.io/BAL/docs/userguide/examples.html",
+    "icon":"https://avatars3.githubusercontent.com/u/4704285?v=3&s=48"
+  },
+
+  {
+    "url": "https://github.com/govCMS/govcms-ckan",
+    "name": "GovCMS-CKAN",
+    "description": "A Drupal module to integrate with CKAN datasources such as data.gov.au",
+    "demo_url": "https://soe.environment.gov.au/theme/drivers/topic/economic-activity-driver-environmental-change",
+    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govCMS/consultation",
+    "name": "GovCMS consultation module",
+    "description": "The consultation module was initally built by the Department of Communications and the Arts and contributed back to the govCMS community",
+    "demo_url": "https://www.communications.gov.au/have-your-say",
+    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+  }
+]
+
+

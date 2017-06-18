@@ -12,7 +12,11 @@
     margin-right: auto;
     max-width: 82%
 }
-
+.icon {
+    float: right;
+    width: 48px;
+    height: 48px;
+}
 .summary {
     font-size: 24px;
     line-height: 1.38;
@@ -36,7 +40,6 @@
 
 .tiles {
     padding: 0 55px;
-    padding-top: 46px;
     float: left;
 }
 
@@ -51,8 +54,22 @@
     display: inline-block;
     float: left;
     margin-right: 32px;
-
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position-x: 94%;
+    background-position-y: 94%;
+    margin-top: 24px;
 }
+.tiles li:hover, .tiles li:focus {
+    box-shadow: 0 2px 4px 0 rgba(102, 102, 200, 0.7);
+    border: solid 2px #5bcbe3;
+    cursor: pointer;
+}
+.tiles li:hover a:first-child, .tiles li:focus a:first-child{
+    background-color: #5bcbe3;
+    color: #313131;
+}
+
 
 .tiles p {
     font-size: 16px;
@@ -77,6 +94,11 @@
 .code a[role="button"] {
     color: white;
     font-size: 16px;
+    border-bottom: 0;
+}
+.code a[role="button"]:hover {
+    background-color: #115361;
+    color: white;
 }
 
 .center {
@@ -112,7 +134,6 @@
         width: 307px;
         height: 286px;
         margin-right: 0px;
-        margin-top: 32px;
     }
 
     .tiles li:nth-child(odd) {
@@ -156,6 +177,8 @@
 @media only screen and (max-device-width: 767px) {
     .full-header {
         padding-top: 2em;
+        text-align: center;
+        padding-bottom: 2em;
     }
     .illustration {
         margin: 0;
@@ -167,5 +190,19 @@
         width: 100%;
         margin-top: 24px;
         height: initial;
+    }
+    .code-text {
+        width: 88%;
+    }
+    .code a[role="button"] {
+        width: 80%;
+    }
+
+    .full-header a[role="button"] {
+        width: 100%;
+    }
+    .what-else {
+        width: 70%;
+        margin: auto;
     }
 }

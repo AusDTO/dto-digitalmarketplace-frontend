@@ -2,8 +2,13 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import styles from './Code.css'
+import data from './Code.json'
 
 class Code extends React.Component {
+    handleClick(event, url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
 
     render() {
 
@@ -22,10 +27,10 @@ class Code extends React.Component {
                             <img styleName="illustration" src="/static/media/open_source_illustration.png" alt=""/>
                         </article>
                         <div className="col-md-5 col-md-push-1 col-sm-6 col-sm-push-1">
-                        <p styleName="summary">An open source library for building Australian Government
-                            services</p>
+                            <p styleName="summary">An open source library for building Australian Government
+                                services</p>
                             <h3 style={{marginTop: "32px"}}> New to open source projects?</h3>
-                            <a href="/contact-us"
+                            <a href="mailto:marketplace@digital.gov.au?subject=Open source projects"
                                role="button" style={{marginTop: "8px"}}>Get in touch</a>
                         </div>
                     </div>
@@ -33,111 +38,50 @@ class Code extends React.Component {
                 <section >
                     <div >
                         <h2 style={{textAlign: "center"}}>Explore code</h2>
-                        <p  styleName="code-text">Reduce cost, effort and risk by re-using tried and tested open source
+                        <p styleName="code-text">Reduce cost, effort and risk by re-using tried and tested open source
                             projects to deliver digital services.</p>
                     </div>
                     <div className="row">
                         <article role="main" styleName="center">
 
                             <ul styleName="tiles">
-                                <li>
-                                    <article>
-                                        <h3>
-                                            <a rel="external" target="_blank" href="https://github.com/AusDTO/citizenship-appointment-client">Appointment
-                                                booking service</a>
-                                        </h3>
-                                        <p>The booking service enables users to book or reschedule an appointment for a
-                                            citizenship test.<br/><br/>
-                                            <a rel="external" target="_blank" href="https://citizenship-appointment-beta.herokuapp.com/login">View
-                                                demo</a></p>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article>
-                                        <h3>
-                                            <a rel="external" target="_blank"
-                                               href="https://github.com/govCMS/consultation">Bushfire Attack Level
-                                                Computation Software</a>
-                                        </h3>
-                                        <p>An ESRI ArcGIS toolbox to calculate severity of exposure to bushfire
-                                            attack<br/><br/>
-                                            <a rel="external" target="_blank"
-                                               href="https://geoscienceaustralia.github.io/BAL/docs/userguide/examples.html">View
-                                                demo</a></p>
-                                    </article>
-                                </li>
+                                {data.map((item, i) =>
+                                    <li key={i} style={{backgroundImage: 'url(' + item.icon + ')'}}
+                                        role="link"
+                                        onClick={(e) => this.handleClick(event, item.url)}
+                                        onKeyDown={(e) => {
+                                            if (e.keyCode == 13 || e.keyCode == 32) // enter or space
+                                            {
+                                                this.handleClick(event, item.url)
+                                            }
+                                        }}
+                                        tabIndex="0">
+                                        <article>
+                                            <h3>
+                                                <a rel="external" target="_blank" href={item.url}
+                                                   onClick={(e) => e.stopPropagation()}>{item.name}</a>
+                                            </h3>
+                                            <p>{item.description}<br/><br/>
+                                                <a rel="external" target="_blank" href={item.demo_url}
+                                                   onClick={(e) => e.stopPropagation()}>View
+                                                    demo</a></p>
 
-                                <li>
-                                    <article>
-                                        <h3>
-                                            <a rel="external" target="_blank" href="https://github.com/govCMS/govCMS">GovCMS</a>
-                                        </h3>
-                                        <p>Online content management system built for the new digital
-                                            government<br/><br/>
-                                            <a rel="external" target="_blank" href="https://www.govcms.gov.au/">View
-                                                demo</a></p>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article>
-                                        <h3>
-                                            <a rel="external" target="_blank"
-                                               href="https://github.com/govCMS/govcms-ckan">GovCMS-CKAN</a>
-                                        </h3>
-                                        <p>A Drupal module to integrate with CKAN datasources such as
-                                            data.gov.au<br/><br/>
-                                            <a rel="external" target="_blank"
-                                               href="https://soe.environment.gov.au/theme/drivers/topic/economic-activity-driver-environmental-change">View
-                                                demo</a></p>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article>
-                                        <h3>
-                                            <a rel="external" target="_blank"
-                                               href="https://github.com/govCMS/consultation">GovCMS consultation
-                                                module</a>
-                                        </h3>
-                                        <p>The consultation module was initally built by the Department of
-                                            Communications and the Arts and contributed back to the govCMS
-                                            community<br/><br/>
-                                            <a rel="external" target="_blank"
-                                               href="https://www.communications.gov.au/have-your-say">View demo</a></p>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article>
-                                        <h3>
-                                            <a rel="external" target="_blank"
-                                               href="https://github.com/actgov/Mobile-Canberra">Mobile Canberra</a>
-                                        </h3>
-                                        <p>A powerful platform for showing points of interest and services on a map for
-                                            both Android and iOS<br/><br/>
-                                            <a rel="external" target="_blank"
-                                               href="https://github.com/actgov/Mobile-Canberra#mobile-canberra">View
-                                                demo</a></p>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article>
-                                        <h3>
-                                            <a rel="external" target="_blank" href="https://github.com/govau/uikit">UI-kit</a>
-                                        </h3>
-                                        <p>A design guide for building Australian Government services with UI-Kit CSS
-                                            framework.<br/><br/>
-                                            <a rel="external" target="_blank" href="https://github.com/govau/uikit">View
-                                                demo</a></p>
-                                    </article>
-                                </li>
+                                        </article>
+                                    </li>
+                                )}
+
                             </ul>
                         </article>
                     </div>
 
                     <div>
                         <article role="main" styleName="center">
-                            <h3 style={{textAlign: "center",  fontSize: "24px"}}>Can't find the code you're looking for?</h3>
+                            <h3 styleName="what-else" style={{
+                                textAlign: "center",
+                                fontSize: "24px"
+                            }}>What else would you like to see?</h3>
                             <p style={{textAlign: "center", fontSize: "20px"}}>
-                                <a href="/contact-us"
+                                <a href="mailto:marketplace@digital.gov.au?subject=Feedback"
                                    role="button">Ask us a question</a></p>
                         </article>
                     </div>
