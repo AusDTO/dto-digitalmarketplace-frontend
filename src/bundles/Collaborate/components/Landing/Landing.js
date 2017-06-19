@@ -14,9 +14,15 @@ import cityData from './citydata.json';
 import supplierData from './suppliers.geo.json';
 
 class Landing extends React.Component {
+    static defaultProps = {
+        seller_count: 466
+    }
 
+    static propTypes = {
+        seller_count: React.PropTypes.number
+    };
     render() {
-
+        let {seller_count} = this.props;
         const bounds = [[-15.133, 148.000], [-40.050, 137.467]];
         let map;
         if (leaflet && react_leaflet) {
@@ -92,7 +98,7 @@ class Landing extends React.Component {
                            <strong styleName="styles.pop" style={{color: '#5bcbe3'}}>106</strong> <div> Future Ready
                                 councils</div>
                             <br/>
-                            <strong styleName="styles.pop">403</strong> <div>Marketplace sellers</div>
+                            <strong styleName="styles.pop">{seller_count}</strong> <div>Marketplace sellers</div>
                         </span>
                         <br/>
                         <div>
@@ -286,14 +292,11 @@ class Landing extends React.Component {
     }
 }
 
-const mapStateToProps = ({}, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
     return {
+        seller_count: state.form_options.seller_count,
         ...ownProps
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default connect(mapStateToProps)(Landing);
