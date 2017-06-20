@@ -42,6 +42,7 @@
     border-radius: 2px;
     border: solid 1px #17788d;
     float: left;
+    margin-top: 10px;
 }
 
 .fund {
@@ -75,6 +76,7 @@
     margin-bottom: 0;
     display: block;
 }
+
     .cardList img {
         height: auto;
     }
@@ -128,8 +130,24 @@
 
         padding-bottom: 24px;
     }
-    .cardList > div {
-        flex: 0 0 11%;
+    .cardList {
+        display: block;
+        width: 87%;
+        margin: 0 auto;
+    }
+    .cardList h3 {
+        margin-top: 5px;
+    }
+    .cardList img {
+        height: auto;
+    }
+    .cardList li {
+        width: 262px;
+        display: inline-block;
+        margin-right: 60px;
+        height: 320px;
+        float: left;
+        margin-top: 20px;
     }
     .becomeASeller {
         border-left: 2px solid #bebebe;
@@ -170,17 +188,11 @@
     }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1000px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     .cardList {
-        display: inline-flex;
+        width: 108%
     }
-    .cardList > li {
-        width: initial;
-        flex: 0 0 22%;
-    }
-    .cardList article h3 {
-        min-height: 103px;
-    }
+
     .mapOverlay {
         right: 60px;
         top: 15px;

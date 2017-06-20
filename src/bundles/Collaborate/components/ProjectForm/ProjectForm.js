@@ -70,17 +70,6 @@ class ProjectForm extends BaseForm {
             onSubmitFailed
         } = this.props;
 
-        const linkRequiredIfTitle = (vals) => {
-            if (!vals) return true;
-            let valid = true;
-            vals.forEach( (val) => {
-                if (!isEmpty(val.title) && isEmpty(val.url)) {
-                    valid = false;
-                }
-            });
-            return valid;
-        };
-
         if (!buttonText) {
             buttonText = mode === 'edit' ? 'Save Changes' : 'Submit Project';
         }
@@ -118,10 +107,6 @@ class ProjectForm extends BaseForm {
                           valid={form.valid}
                           onCustomSubmit={onSubmit}
                           onSubmitFailed={onSubmitFailed}
-                          validators={{
-                          "partner_links": linkRequiredIfTitle,
-                          "project_links": linkRequiredIfTitle
-                        }}
                     >
 
                         {csrf_token && (

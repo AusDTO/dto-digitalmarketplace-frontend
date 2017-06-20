@@ -21,7 +21,7 @@ class Code extends React.Component {
                 <section styleName="full-header">
                     <div className="row">
                         <div className="col-sm-5 col-sm-push-1">
-                            <h1 tabIndex="-1">Open source library</h1>
+                            <h1 tabIndex="-1">Shared model library</h1>
                             <p styleName="summary">A library of open source code from across government ready to use in
                                 your project.</p>
                         </div>
@@ -50,7 +50,7 @@ class Code extends React.Component {
                         </article>
                     </div>
                     <div className="row" styleName="explore">
-                        <h2 style={{textAlign: "center"}}>Browse code library</h2>
+                        <h2 style={{textAlign: "center"}}>Browse library</h2>
 
                         <article role="main" styleName="center">
 
