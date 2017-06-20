@@ -80,6 +80,10 @@
   margin-right: 0px
 }
 
+.form-submit-button.disabled {
+  cursor: not-allowed
+}
+
 .format-radio-box {
   padding: 0
 }

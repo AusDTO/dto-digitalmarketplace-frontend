@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {withRouter, Link} from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 import './BriefChoice.css';
 
@@ -24,7 +25,7 @@ class BriefChoiceForm extends Component {
     super(props)
 
     this.state = {
-      briefType: 'digital-professionals'
+      briefType: null
     };
   }
 
@@ -36,9 +37,10 @@ class BriefChoiceForm extends Component {
     return (
       <div>
         <div
-          styleName={`form-radio-container ${ (this.state.briefType === 'digital-professionals')
-          ? 'checked'
-            : ''}`}>
+          styleName={classNames(
+            'form-radio-container',
+            { 'checked': this.state.briefType === 'digital-professionals' }
+          )}>
           <form>
             <label
               htmlFor="digitalProfessionals"
@@ -50,9 +52,10 @@ class BriefChoiceForm extends Component {
           </form>  
         </div>
         <div
-          styleName={`form-radio-container ${ (this.state.briefType === 'digital-outcome')
-          ? 'checked'
-            : ''}`}>
+          styleName={classNames(
+            'form-radio-container',
+            { 'checked': this.state.briefType === 'digital-outcome' }
+          )}>
           <form>
             <label
               htmlFor="digitalOutcome"
@@ -65,7 +68,12 @@ class BriefChoiceForm extends Component {
         </div>
         <a
           href={`/buyers/frameworks/digital-marketplace/requirements/${this.state.briefType}`}>
-          <button styleName="form-submit-button">
+          <button styleName={classNames(
+            'form-submit-button',
+            { 'disabled': !this.state.briefType }
+          )}
+            disabled= {(!this.state.briefType)
+          }>
             Continue
           </button>
         </a>
