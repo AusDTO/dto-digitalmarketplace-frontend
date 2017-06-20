@@ -1,7 +1,7 @@
 .uikit-display-3 {
     margin-top: 1.6em;
     font-weight: normal;
-    font-family: "Open Sans",Verdana,"Bitstream Vera Sans",sans-serif;
+    font-family: "Open Sans", Verdana, "Bitstream Vera Sans", sans-serif;
     color: #313131;
     display: block;
     line-height: 1.4;
@@ -22,6 +22,7 @@
     margin: 0 auto;
     padding: 0 1.6em;
 }
+
 .pop {
     font-size: 24px;
     color: #18788d;
@@ -31,18 +32,9 @@
 .tile {
     border: 1px solid #bebebe;
 }
+
 .day {
     text-align: center;
-}
-.stage{
-    margin-right: 14px;
-    margin-bottom: 10px;
-    padding: 3px 6px 3px 6px;
-    font-size: 14px;
-    border-radius: 2px;
-    border: solid 1px #17788d;
-    float: left;
-    margin-top: 10px;
 }
 
 .fund {
@@ -53,6 +45,7 @@
     width: 100%;
     left: 0
 }
+
 .push {
     text-align: center;
     background: #f0f3f5;
@@ -65,49 +58,94 @@
 
 }
 
+.cardList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cardList li {
+    border: 1px solid #bebebe;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+.cardList li article {
+    padding: 10px;
+    height: 52%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardList li article p {
+    color: #717171;
+    font-size: 87.5%;
+    margin-bottom: auto;
+}
+
+.stage {
+    margin-right: 14px;
+    margin-bottom: 10px;
+    padding: 3px 6px 3px 6px;
+    font-size: 14px;
+    border-radius: 2px;
+    border: solid 1px #17788d;
+    float: left;
+    margin-top: auto;
+}
+
 @media only screen and (max-device-width: 768px) {
     .title {
         font-size: 28px;
     }
+
     .uikit-display-3 {
         font-size: 18px;
     }
-.cardList {
-    margin-bottom: 0;
-    display: block;
-}
+
+    .cardList {
+        margin-bottom: 0;
+        display: block;
+    }
 
     .cardList img {
         height: auto;
     }
+
     .cardList > li {
         width: 262px;
         margin: auto;
         flex: none;
         margin-bottom: 1.5em;
     }
+
     .mapOverlay {
         text-align: center;
         padding-top: 26px;
     }
+
     .mapOverlay div p {
         padding-top: 16px;
         margin-bottom: 24px;
     }
+
     .mapOverlay div a {
         margin-top: 0;
     }
+
     .day {
         text-align: center;
         width: 100%;
     }
+
     .day span {
         display: inline !important;
         font-size: initial !important;
     }
+
     .calendarColOne {
         padding-bottom: 0 !important;
     }
+
     .calendarColTwo {
         border-top: 0px !important;
         padding-top: 0px !important;
@@ -115,32 +153,37 @@
     }
 }
 
-
 @media only screen and (min-device-width: 768px) {
     .chart {
         background: #e0e3e5;
         margin-bottom: 24px;
     }
+
     .chart span {
         border-radius: 5px;
     }
+
     .chartContainer {
         width: 75%;
         margin-left: 12.5%;
 
         padding-bottom: 24px;
     }
+
     .cardList {
         display: block;
         width: 87%;
         margin: 0 auto;
     }
+
     .cardList h3 {
         margin-top: 5px;
     }
+
     .cardList img {
         height: auto;
     }
+
     .cardList li {
         width: 262px;
         display: inline-block;
@@ -149,38 +192,46 @@
         float: left;
         margin-top: 20px;
     }
+
     .becomeASeller {
         border-left: 2px solid #bebebe;
     }
+
     .becomeASeller div {
         margin-left: 30px;
     }
+
     .mapOverlay {
 
-    background: white;
-    top: 50px;
-    right: 176px;
-    z-index: 999;
-    padding: 16px;
-    border: 2px grey;
+        background: white;
+        top: 50px;
+        right: 176px;
+        z-index: 999;
+        padding: 16px;
+        border: 2px grey;
     }
+
     .mapOverlay div {
         text-align: center;
         padding-top: 13px;
     }
+
     .mapSpacer {
         height: 400px;
     }
+
     .fund {
-        width:100%;
+        width: 100%;
         margin: auto;
         float: none;
     }
+
     .fund p {
         max-width: 82%;
         margin: auto;
         margin-bottom: 24px;
     }
+
     .partners {
         max-width: 68%;
         margin-left: auto;
@@ -197,43 +248,54 @@
         right: 60px;
         top: 15px;
     }
+
     .mapOverlay span {
         width: 190px;
         display: block;
     }
+
     .mapOverlay div {
         padding-top: 0;
     }
+
     .mapOverlay span div {
         display: inline-block;
         width: 100px;
         text-align: left;
     }
+
     .pop {
         height: 50px;
         vertical-align: top;
     }
+
     .becomeASeller {
         border-left: none;
     }
+
     .becomeASeller div {
         margin-left: 0px;
     }
+
     .mapSpacer {
         height: 350px;
     }
+
     .day {
         text-align: center;
         width: 100%;
     }
+
     .day span {
-        font-size: 1.75rem  !important;
-        display: block  !important;
+        font-size: 1.75rem !important;
+        display: block !important;
     }
+
     .calendarColOne {
         padding-bottom: 0 !important;
         flex-basis: 100% !important;
     }
+
     .calendarColTwo {
         border-top: 0px !important;
         padding-top: 0px !important;
@@ -241,21 +303,25 @@
         flex-basis: 100% !important;
     }
 }
+
 .chart {
     padding: 4px 5px;
     width: 100%;
     display: block;
     margin-bottom: 5px;
 }
+
 .chart:link, .chart:visited, .chart:active {
     color: white;
 }
+
 .chart span {
     background: #17788d;
     padding: 7px 10px;
     display: block;
     border: solid 1px #224a61;
 }
+
 .chart:hover span, .chart:focus span {
     background: #def4f9;
     color: black;

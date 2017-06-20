@@ -113,7 +113,7 @@ class Landing extends React.Component {
                     <p style={{textAlign: "center"}}>Connect and learn from councils building smart communities<br/>
                         and digital services in user-centred, data informed ways.</p>
                     <ul styleName="styles.cardList">
-                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                        <li>
                             <figure>
                                 <img src="/static/media/5d_data_modelling.jpg"
                                      alt="Computer model of suburban street" width="260"/>
@@ -122,11 +122,11 @@ class Landing extends React.Component {
                                 <h3>
                                     <a href="/collaborate/project/6">5D Data Modelling</a>
                                 </h3>
-                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Ipswich City Council</p>
-                                <span styleName="styles.stage">Discovery</span>
+                                <p>Ipswich City Council</p>
+                                <div><span styleName="styles.stage">Discovery</span></div>
                             </article>
                         </li>
-                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                        <li>
                             <figure>
                                 <img src="/static/media/asset_management_casey.jpg"
                                      alt="Map of asset locations" width="260"/>
@@ -135,12 +135,12 @@ class Landing extends React.Component {
                                 <h3>
                                     <a href="/collaborate/project/2">Finding value in data</a>
                                 </h3>
-                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>City of Casey
+                                <p>City of Casey
                                     Council</p>
-                                <span styleName="styles.stage">Discovery</span>
+                                <div><span styleName="styles.stage">Discovery</span></div>
                             </article>
                         </li>
-                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                        <li>
                             <figure>
                                 <img src="/static/media/smart_lighting_adelaide.jpg"
                                      alt="Street lamp with attached sensor" width="260"/>
@@ -149,12 +149,12 @@ class Landing extends React.Component {
                                 <h3>
                                     <a href="/collaborate/project/3">Smart City Lighting Pilot</a>
                                 </h3>
-                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Adelaide City
+                                <p>Adelaide City
                                     Council</p>
-                                <span styleName="styles.stage">Pilot</span>
+                                <div><span styleName="styles.stage">Pilot</span></div>
                             </article>
                         </li>
-                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                        <li>
                             <figure>
                                 <img src="/static/media/sunshine_coast_automated_waste.jpg"
                                      alt="Diagram of underground tubes transporting waste" width="260"/>
@@ -163,12 +163,12 @@ class Landing extends React.Component {
                                 <h3>
                                     <a href="/collaborate/project/1">Underground waste collection</a>
                                 </h3>
-                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Sunshine Coast
+                                <p>Sunshine Coast
                                     Council</p>
-                                <span styleName="styles.stage">In build</span>
+                                <div><span styleName="styles.stage">In build</span></div>
                             </article>
                         </li>
-                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                        <li>
                             <figure>
                                 <img src="/static/media/smart_hub.jpg"
                                      alt="Illustration of the location of the smart hub building" width="260"/>
@@ -177,11 +177,11 @@ class Landing extends React.Component {
                                 <h3>
                                     <a href="/collaborate/project/7">The Smart Hub</a>
                                 </h3>
-                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Rockhampton Regional Council</p>
-                                <span styleName="styles.stage">Live</span>
+                                <p>Rockhampton Regional Council</p>
+                                <div><span styleName="styles.stage">Live</span></div>
                             </article>
                         </li>
-                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                        <li>
                             <figure>
                                 <img src="/static/media/rpv_trial.png"
                                      alt="Remotely piloted aircraft" width="260"/>
@@ -190,8 +190,8 @@ class Landing extends React.Component {
                                 <h3>
                                     <a href="/collaborate/project/8">UAV shark surveillance</a>
                                 </h3>
-                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Lake Macquarie City Council</p>
-                                <span styleName="styles.stage">Pilot</span>
+                                <p>Lake Macquarie City Council</p>
+                                <div><span styleName="styles.stage">Pilot</span></div>
                             </article>
                         </li>
                     </ul>
