@@ -112,7 +112,7 @@ class Landing extends React.Component {
                     <h2 style={{textAlign: "center"}}>Council collaboration</h2>
                     <p style={{textAlign: "center"}}>Connect and learn from councils building smart communities<br/>
                         and digital services in user-centred, data informed ways.</p>
-                    <ul className="list-vertical--fourths" styleName="styles.cardList">
+                    <ul styleName="styles.cardList">
                         <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
                             <figure>
                                 <img src="/static/media/5d_data_modelling.jpg"
@@ -161,11 +161,37 @@ class Landing extends React.Component {
                             </figure>
                             <article style={{padding: "10px"}}>
                                 <h3>
-                                    <a href="/collaborate/project/1">Automated underground waste collection</a>
+                                    <a href="/collaborate/project/1">Underground waste collection</a>
                                 </h3>
                                 <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Sunshine Coast
                                     Council</p>
                                 <span styleName="styles.stage">In build</span>
+                            </article>
+                        </li>
+                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                            <figure>
+                                <img src="/static/media/smart_hub.jpg"
+                                     alt="Illustration of the location of the smart hub building" width="260"/>
+                            </figure>
+                            <article style={{padding: "10px"}}>
+                                <h3>
+                                    <a href="/collaborate/project/7">The Smart Hub</a>
+                                </h3>
+                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Rockhampton Regional Council</p>
+                                <span styleName="styles.stage">Live</span>
+                            </article>
+                        </li>
+                        <li style={{border: "1px solid #bebebe", boxShadow: "0 2px 6px 0 rgba(0,0,0,0.1)", padding: 0}}>
+                            <figure>
+                                <img src="/static/media/rpv_trial.png"
+                                     alt="Remotely piloted aircraft" width="260"/>
+                            </figure>
+                            <article style={{padding: "10px"}}>
+                                <h3>
+                                    <a href="/collaborate/project/8">UAV shark surveillance</a>
+                                </h3>
+                                <p style={{color: "#717171", fontSize: "87.5%", marginBottom: 0}}>Lake Macquarie City Council</p>
+                                <span styleName="styles.stage">Pilot</span>
                             </article>
                         </li>
                     </ul>
@@ -184,20 +210,11 @@ class Landing extends React.Component {
                                     <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-08">Monday <span>8</span> June</time>
+                                            <time dateTime="2017-06-15">Monday <span>15</span> June</time>
                                         </th>
-                                        <td>Melbourne Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
-                                            href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-melbourne-tickets-33881210613"
-                                            rel="external" target="blank">Register for workshop</a></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-13">Tuesday <span>13</span> June</time>
-                                        </th>
-                                        <td>Embracing the Internet of Things to accelerate smart cities outcomes <span className="date-info"> Join us to learn more about how IoT can help drive smart cities outcomes in your city. <br/> <a
-                                            href="https://attendee.gotowebinar.com/register/1381611509698580226"
-                                            rel="external" target="blank">Register for webinar</a></span>
+                                        <td>Previous events <span className="date-info">Catch up on past Future Ready webinars. <br/> <a
+                                            href="http://australiansmartcommunities.org.au/future-ready"
+                                            rel="external" target="blank">View videos and resources</a></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -208,17 +225,6 @@ class Landing extends React.Component {
                             <article>
                                 <table className="calendar-table" style={{marginTop: 0}}>
                                     <tbody>
-
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-15">Monday <span>15</span> June</time>
-                                        </th>
-                                        <td>Perth Masterclass <span className="date-info">Get Smart Cities skills and tools. <br/> <a
-                                            href="https://www.eventbrite.com.au/e/build-your-smart-city-know-how-perth-tickets-33881255748"
-                                            rel="external" target="blank">Register for workshop</a></span>
-                                        </td>
-
-                                    </tr>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
                                             <time dateTime="2017-06-23">Friday <span>23</span> June</time>
@@ -227,9 +233,7 @@ class Landing extends React.Component {
                                             href="https://register.gotowebinar.com/register/4270158298238242050"
                                             rel="external" target="blank">Register for webinar</a></span>
                                         </td>
-
                                     </tr>
-
                                     </tbody>
                                 </table>
                             </article>
@@ -267,7 +271,7 @@ class Landing extends React.Component {
                     })}
                 </p>
                 </div>
-                <div className="row" style={{paddingTop: "10px"}}>
+                <div className="row" style={{padding: "0 10px"}}>
 
                     <div style={{textAlign: "center"}}>
                         <h2>Join the Digital Marketplace</h2>

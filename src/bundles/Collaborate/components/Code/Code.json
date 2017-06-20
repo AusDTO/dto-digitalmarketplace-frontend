@@ -16,12 +16,12 @@
     "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
   },
   {
-    "url": "https://github.com/govCMS/govCMS",
-    "name": "GovCMS",
-    "description": "A Content management system and website hosting for government websites.",
-    "uses": "Build, migrate and manage websites and its digital content.",
-    "demo_url": "https://www.govcms.gov.au/",
-    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+    "url": "https://github.com/govau/datavizkit",
+    "name": "datavizkit",
+    "description": "A data visualisation toolset built on top of Highcharts and React.",
+    "uses": "Highlight data insights through a variety of data visualisations.",
+    "demo_url": "http://datavizkit.surge.sh/",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
   },
   {
     "url": "https://github.com/AusDTO/citizenship-appointment-client",
@@ -40,20 +40,28 @@
     "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
   },
   {
+    "url": "https://github.com/govCMS/govCMS",
+    "name": "GovCMS",
+    "description": "A Content management system and website hosting for government websites.",
+    "uses": "Build, migrate and manage websites and its digital content.",
+    "demo_url": "https://www.govcms.gov.au/",
+    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+  },
+  {
     "url": "https://bitbucket.org/digitalcasey/pet-registration-and-hard-rubbish-booking",
-    "name": "City Council Services",
+    "name": "Pet Registration",
     "description": "Allows local councils to accept pet registration details and payment, and handle hard rubbish collection requests.",
     "uses": "Providing similar services in other councils.",
     "demo_url": "https://digital.casey.vic.gov.au/services/hard-rubbish-collection/",
     "icon": "https://pbs.twimg.com/profile_images/488486345136824320/mV_wm3zQ_bigger.png"
   },
   {
-    "url": "https://github.com/govau/datavizkit",
-    "name": "datavizkit",
-    "description": "A data visualisation toolset built on top of Highcharts and React.",
-    "uses": "Highlight data insights through a variety of data visualisations.",
-    "demo_url": "http://datavizkit.surge.sh/",
-    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+    "url": "https://bitbucket.org/digitalcasey/pet-registration-and-hard-rubbish-booking",
+    "name": "Hard Rubbish Booking",
+    "description": "Allows local councils to accept pet registration details and payment, and handle hard rubbish collection requests.",
+    "uses": "Providing similar services in other councils.",
+    "demo_url": "https://digital.casey.vic.gov.au/services/hard-rubbish-collection/",
+    "icon": "https://pbs.twimg.com/profile_images/488486345136824320/mV_wm3zQ_bigger.png"
   },
   {
     "url": "https://github.com/GeoscienceAustralia/BAL",
