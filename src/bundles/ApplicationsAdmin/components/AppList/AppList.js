@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {convertApplicationToSeller, rejectApplication, searchApplications} from '../../redux/modules/applications';
+import {convertApplicationToSeller, rejectApplication, searchApplications, deleteApplication} from '../../redux/modules/applications';
 import {Modal} from '../../../../shared/Modal/Modal';
 import {ConnectedRevertedForm} from '../RevertNotification/RevertNotification'
 import format from 'date-fns/format';
@@ -16,6 +16,7 @@ class AppList extends Component {
     onRejectClick: React.PropTypes.func.isRequired,
     onAcceptClick: React.PropTypes.func.isRequired,
     onKeywordChange: React.PropTypes.func.isRequired,
+    onDeleteClick: React.PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -54,7 +55,8 @@ class AppList extends Component {
       applications = [],
       onRejectClick,
       onAcceptClick,
-      onKeywordChange
+      onKeywordChange,
+      onDeleteClick
     } = this.props;
 
     let revertedAppID = this.state.applicationID || null;
@@ -70,7 +72,7 @@ class AppList extends Component {
             </div>
             <div className="col-sm-4 col-xs-12">
               <label htmlFor="keyword">Search:</label>
-              <input id="keyword" type="text" size="30" onChange={onKeywordChange}/>
+              <input id="keyword" type="text" size="30" placeholder="id or name" onChange={onKeywordChange}/>
             </div>
         </div>
         <Modal show={this.state.responseModalOpen}>
@@ -153,6 +155,14 @@ class AppList extends Component {
                        <a href={meta.url_edit_application.concat(a.id,'/start')} styleName="edit">Edit</a>
                     </span>
                   }
+                  {(a.status !== 'deleted' &&
+                    <button onClick={e => {
+                      e.preventDefault(); 
+                      if (window.confirm('Are you sure ?')) {
+                        onDeleteClick(a.id);
+                      }
+                    }} name="Delete" styleName="delete">Delete</button>
+                  )}
                 </td>
               </tr>
             )
@@ -164,14 +174,15 @@ class AppList extends Component {
   }
 }
 
-const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick, onKeywordChange}, ownProps) => {
+const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick, onKeywordChange, onDeleteClick}, ownProps) => {
   return {
     ...ownProps,
     applications,
     meta,
     onRejectClick,
     onAcceptClick,
-    onKeywordChange
+    onKeywordChange,
+    onDeleteClick
   };
 };
 
@@ -185,7 +196,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     onKeywordChange: (event) => {
       dispatch(searchApplications(event.target.value))
-    }
+    },
+    onDeleteClick: (id) => {
+      dispatch(deleteApplication(id))
+    },
   }
 };
 
