@@ -1,6 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {LocalForm} from 'react-redux-form';
+import {required} from '../../../../validators';
+import Textfield     from '../../../../shared/form/Textfield';
+import formProps    from '../../../../shared/reduxModules/formPropsSelector';
+
 import styles from './Code.css'
 import data from './Code.json'
 
@@ -11,37 +16,42 @@ class Code extends React.Component {
     }
 
     render() {
-
-
         return (
             <div styleName="code">
                 <section styleName="full-header">
                     <div className="row">
-                        <div className="col-sm-5 col-md-push-1">
-                            <h1 tabIndex="-1">Common components</h1>
-
+                        <div className="col-sm-5 col-sm-push-1">
+                            <h1 tabIndex="-1">Open source library</h1>
+                            <p styleName="summary">A library of open source code from across government ready to use in
+                                your project.</p>
                         </div>
-                    </div>
-                    <div className="row">
-                        <article className="col-sm-5 col-md-push-1">
+                        <div className="col-sm-5 col-sm-push-1">
                             <img styleName="illustration" src="/static/media/open_source_illustration.png" alt=""/>
-                        </article>
-                        <div className="col-md-5 col-md-push-1 col-sm-6 col-sm-push-1">
-                            <p styleName="summary">An open source library for building Australian Government
-                                services</p>
-                            <h3 style={{marginTop: "32px"}}> New to open source projects?</h3>
-                            <a href="mailto:marketplace@digital.gov.au?subject=Open source projects"
-                               role="button" style={{marginTop: "8px"}}>Get in touch</a>
                         </div>
                     </div>
                 </section>
                 <section >
-                    <div >
-                        <h2 style={{textAlign: "center"}}>Explore code</h2>
-                        <p styleName="code-text">Reduce cost, effort and risk by re-using tried and tested open source
-                            projects to deliver digital services.</p>
+                    <div className="row" style={{maxWidth: "80em", margin: "0 auto"}}>
+                        <article className="col-md-7 col-sm-12 col-md-push-1" styleName="code-text">
+
+
+                            <h2> New to open source?</h2>
+                            You can reduce cost, effort and risk by re-using tried and tested open source projects to
+                            build digital services.<br/>
+                            <br/>
+                            Making source code open is criteria 8 in the <a href="https://www.dta.gov.au/standard/"
+                                                                            rel="external" target="blank">Digital
+                            Service Standard</a>
+                            You can learn how to <a href="https://opensource.guide/" rel="external" target="blank">launch
+                            and grow your project</a> or contact us if you would like some help.<br/>
+
+                            <a href="mailto:marketplace@digital.gov.au?subject=Open source projects"
+                               role="button">Get in touch</a>
+                        </article>
                     </div>
-                    <div className="row">
+                    <div className="row" styleName="explore">
+                        <h2 style={{textAlign: "center"}}>Browse code library</h2>
+
                         <article role="main" styleName="center">
 
                             <ul styleName="tiles">
@@ -61,7 +71,8 @@ class Code extends React.Component {
                                                 <a rel="external" target="_blank" href={item.url}
                                                    onClick={(e) => e.stopPropagation()}>{item.name}</a>
                                             </h3>
-                                            <p>{item.description}<br/><br/>
+                                            <p><b>Description: </b>{item.description}<br/><br/>
+                                                <b>Uses: </b>{item.uses}<br/><br/>
                                                 <a rel="external" target="_blank" href={item.demo_url}
                                                    onClick={(e) => e.stopPropagation()}>View
                                                     demo</a></p>
@@ -71,23 +82,6 @@ class Code extends React.Component {
                                 )}
 
                             </ul>
-                        </article>
-                    </div>
-
-                    <div>
-                        <article role="main" styleName="center">
-                            <h3 styleName="what-else" style={{
-                                textAlign: "center",
-                                fontSize: "24px"
-                            }}>What else would you like to see?</h3>
-                            <p style={{textAlign: "center", fontSize: "20px"}}>
-                                <a href="mailto:marketplace@digital.gov.au?subject=Feedback"
-                                   role="button">Ask us a question</a></p>
-                        </article>
-                    </div>
-
-                    <div className="row">
-                        <article role="main" styleName="center">
                             <div styleName="fine">The use of brand names or products listed does not imply endorsement
                                 by the Digital Marketplace
                                 or discrimination against similar products not mentioned. This is listing is provided
@@ -97,6 +91,16 @@ class Code extends React.Component {
                             </div>
                         </article>
 
+                    </div>
+
+                    <div>
+                        <article role="main" styleName="what">
+                            <h2 >What features will help your team? </h2>
+                            <p>
+                                Let us know what you would like to see in the library<br/>
+                                <a href="mailto:marketplace@digital.gov.au?subject=Feedback"
+                                   role="button">Get in touch</a></p>
+                        </article>
                     </div>
 
                 </section>
@@ -112,8 +116,4 @@ const mapStateToProps = ({}, ownProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Code);
+export default connect(mapStateToProps)(Code);
