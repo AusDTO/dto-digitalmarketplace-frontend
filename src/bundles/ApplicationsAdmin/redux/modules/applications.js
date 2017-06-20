@@ -2,6 +2,7 @@ export const CONVERTED_SELLER = 'CONVERTED_SELLER';
 export const REJECTED_APPLICATION = 'REJECTED_APPLICATION';
 export const REVERTED_APPLICATION = 'REVERTED_APPLICATION';
 export const RESET_APPLICATIONS = 'RESET_APPLICATIONS';
+export const DELETED_APPLICATION = 'DELETE_APPLICATION';
 
 const updateApplicationRowStatus = (state, id, status, revertStatus) => {
   const applicationIndex = state.map(app => app.id).indexOf(id);
@@ -22,6 +23,8 @@ export default function reducer(state = {}, action = {}) {
       return updateApplicationRowStatus(state, id, 'approved');
     case REJECTED_APPLICATION:
       return updateApplicationRowStatus(state, id, 'approval_rejected');
+    case DELETED_APPLICATION:
+      return updateApplicationRowStatus(state, id, 'deleted');
     case REVERTED_APPLICATION:
       return updateApplicationRowStatus(state, id, 'saved', revertStatus);
     case RESET_APPLICATIONS:
@@ -119,3 +122,24 @@ export const searchApplications = (keyword) => {
       })
   }
 };
+
+export const deletedApplication = (id) => ({type: DELETED_APPLICATION, id});
+
+export const deleteApplication = (id) => {
+  return (dispatch, getState, api) => {
+    const state = getState();
+
+    return api(`${state.meta.url_delete_application.slice(0, -1)}${id}`, {
+      method: 'DELETE',
+      headers: {
+        'X-CSRFToken': state.form_options.csrf_token,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch(deletedApplication(id))
+      })
+  }
+};
+

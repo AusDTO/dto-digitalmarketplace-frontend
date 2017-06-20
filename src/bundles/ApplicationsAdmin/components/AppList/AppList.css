@@ -33,7 +33,7 @@
     overflow: hidden;
 }
 
-.appList button, .edit {
+.appList button, .edit, .delete {
     display: inline-block;
     font-size: 1.1rem;
     margin: 0 0.1rem;
@@ -47,6 +47,10 @@
 
 .revert {
     background: orange;
+}
+
+.delete {
+    background: black;
 }
 
 .edit {
