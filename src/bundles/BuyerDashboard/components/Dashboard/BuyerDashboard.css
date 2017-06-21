@@ -2,7 +2,7 @@
 
 @media (max-width: 767px) {
   .team-view {
-    margin-left: -15px;
+    margin-left: -3px;
   }
 }
 
@@ -16,6 +16,41 @@
   font-weight: bold;
 }
 
+.team-view-username span {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .team-view-username {
+    width: 65%;
+  }
+}
+
+.team-view-username span button {
+  margin: 10px 0px 50px 0px;
+  float: right;
+  padding: 7px;
+  font-size: 15px;
+  font-weight: normal;
+  width: 25%;
+}
+
+@media (max-width: 767px) {
+  .team-view-username span button {
+    float: left;
+    width: 325px
+  }
+}
+
+.team-view-username span a{
+  width: 320px;
+  height: 50px;
+  font-size: 17px;
+  float: right;
+  text-align: center;
+  color: white
+}
+
 .team-view-teamname {
   margin-bottom: 0px;
   font-size: 17px;
@@ -23,6 +58,9 @@
   line-height: initial;
 }
 
+.team-view-brief-button {
+  display: block
+}
 
 
 .heading {
@@ -55,7 +93,6 @@
 
   .filters a {
     font-size: 0.875rem;
-    padding: 0px
   }
 
   .filters span {
@@ -75,7 +112,7 @@
 .filter {
   display: inline-block;
   font-size: 1.25rem;
-  margin-right: 1rem;
+  margin-right: 7px;
   border-bottom: none !important;
   padding: 10px
 }

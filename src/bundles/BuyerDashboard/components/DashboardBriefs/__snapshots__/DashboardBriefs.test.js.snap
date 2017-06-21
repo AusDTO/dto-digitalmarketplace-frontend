@@ -18,7 +18,7 @@ exports[`ClosedBriefs renders with props 1`] = `
     styleName="brief-table summary-item-body"
   >
     <thead
-      className="summary-item-field-headings-visible"
+      styleName="summary-item-field-heading"
     >
       <tr>
         <th
@@ -27,7 +27,7 @@ exports[`ClosedBriefs renders with props 1`] = `
           Brief Overview
         </th>
         <th
-          styleName="middle-header"
+          styleName="center-header"
         >
           Closed
         </th>
@@ -43,8 +43,11 @@ exports[`ClosedBriefs renders with props 1`] = `
         className="summary-item-row"
       >
         <td
-          styleName="closed-item-field-title"
+          styleName="item-field-first-full"
         >
+          <h5>
+            Brief preview
+          </h5>
           <a
             href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
           >
@@ -52,27 +55,38 @@ exports[`ClosedBriefs renders with props 1`] = `
           </a>
         </td>
         <td
-          styleName="closed-item-field-date"
+          styleName="item-field-second-left"
         >
+          <h5>
+            Closed
+          </h5>
           Invalid Date
         </td>
         <td
-          styleName="closed-item-field-actions"
+          styleName="item-field-third-right"
         >
-          <span>
+          <h5>
+            Work order
+          </h5>
+          <span
+            style={
+              Object {
+                "marginRight": "5px",
+              }
+            }
+          >
             <a
               href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/responses"
             >
-              View responses
+              View responses 
             </a>
-             
-            <span>
-              <a
-                href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/work-orders/create"
-              >
-                Create work order
-              </a>
-            </span>
+          </span>
+          <span>
+            <a
+              href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/work-orders/create"
+            >
+              Create work order
+            </a>
           </span>
         </td>
       </tr>
@@ -84,7 +98,7 @@ exports[`ClosedBriefs renders with props 1`] = `
 exports[`DraftBriefs renders with no props 1`] = `
 <section>
   <h2>
-    Draft briefs
+    Drafts
   </h2>
   You haven't started any opportunities.
 </section>
@@ -93,13 +107,13 @@ exports[`DraftBriefs renders with no props 1`] = `
 exports[`DraftBriefs renders with props 1`] = `
 <section>
   <h2>
-    Draft briefs
+    Drafts
   </h2>
   <table
     styleName="brief-table summary-item-body"
   >
     <thead
-      className="summary-item-field-headings-visible"
+      styleName="summary-item-field-heading"
     >
       <tr>
         <th
@@ -107,13 +121,15 @@ exports[`DraftBriefs renders with props 1`] = `
         >
           Brief Overview
         </th>
-        <th>
+        <th
+          styleName="center-header"
+        >
           Created
         </th>
         <th
           styleName="right-header"
         >
-          Unanswered questions
+          Questions left
         </th>
       </tr>
     </thead>
@@ -122,8 +138,11 @@ exports[`DraftBriefs renders with props 1`] = `
         className="summary-item-row"
       >
         <td
-          styleName="item-field"
+          styleName="item-field-first-full"
         >
+          <h5>
+            Brief overview
+          </h5>
           <a
             href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
           >
@@ -131,13 +150,19 @@ exports[`DraftBriefs renders with props 1`] = `
           </a>
         </td>
         <td
-          styleName="item-field"
+          styleName="item-field-second-left"
         >
+          <h5>
+            Created
+          </h5>
           Thursday 6 October 2016
         </td>
         <td
-          styleName="item-field"
+          styleName="item-field-third-right"
         >
+          <h5>
+            Questions left
+          </h5>
           <div>
             17
              required
@@ -174,7 +199,9 @@ exports[`LiveBriefs renders with props 1`] = `
   <table
     styleName="brief-table summary-item-body"
   >
-    <thead>
+    <thead
+      styleName="summary-item-field-heading"
+    >
       <tr>
         <th
           styleName="left-header"
@@ -182,14 +209,14 @@ exports[`LiveBriefs renders with props 1`] = `
           Brief Overview
         </th>
         <th
-          styleName="middle-header"
+          styleName="center-header"
         >
-          Published
+          Closing
         </th>
         <th
           styleName="right-header"
         >
-          Closing
+          Q&A
         </th>
       </tr>
     </thead>
@@ -198,8 +225,11 @@ exports[`LiveBriefs renders with props 1`] = `
         className="summary-item-row"
       >
         <td
-          styleName="item-field"
+          styleName="item-field-first-full"
         >
+          <h5>
+            Brief preview
+          </h5>
           <a
             href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119"
           >
@@ -207,14 +237,24 @@ exports[`LiveBriefs renders with props 1`] = `
           </a>
         </td>
         <td
-          styleName="item-field"
+          styleName="item-field-second-left"
         >
+          <h5>
+            Closing
+          </h5>
           Invalid Date
         </td>
         <td
-          styleName="item-field"
+          styleName="item-field-third-right"
         >
-          Invalid Date
+          <h5>
+            Q&A
+          </h5>
+          <a
+            href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome/119/supplier-questions"
+          >
+            Answer a question
+          </a>
         </td>
       </tr>
     </tbody>

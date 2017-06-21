@@ -7,6 +7,21 @@ exports[`TeamOverview renders with no props 1`] = `
   <h2>
     Active team members
   </h2>
+  <p>
+    If this list contains members who have left your organisation, please 
+    <span
+      styleName="contact-us-exlink"
+    >
+      <a
+        href="/contact-us"
+        rel="external"
+        target="_blank"
+      >
+        contact us
+      </a>
+    </span>
+     to have them removed
+  </p>
   You are the only registered buyer in your team
 </div>
 `;
@@ -18,6 +33,21 @@ exports[`TeamOverview renders with props 1`] = `
   <h2>
     Active team members
   </h2>
+  <p>
+    If this list contains members who have left your organisation, please 
+    <span
+      styleName="contact-us-exlink"
+    >
+      <a
+        href="/contact-us"
+        rel="external"
+        target="_blank"
+      >
+        contact us
+      </a>
+    </span>
+     to have them removed
+  </p>
   <table
     className="content-table summary-item-body"
   >

@@ -57,5 +57,29 @@ export const replaceMarkup = (text, tagToReplace, replaceWithTag) => {
       }
     })
   }
-}
+};
+
+// if validations fail and sortByDate returns false, the component receives the default date order obj
+export const sortByDate = (dateArray, briefType, sortDirection) => {
+  if(!['live', 'draft', 'closed'].includes(briefType)) { return false }
+  if(!['dsc', 'asc'].includes(sortDirection)) { return false }
+  if(!Array.isArray(dateArray)) { return false }
+  if(dateArray.length === 0) { return false }
+
+  if(sortDirection === 'asc') {
+    return dateArray.sort(function (a, b) {
+      if(briefType === 'draft') return new Date(b.createdAt) - new Date(a.createdAt);
+      if(briefType === 'live') return new Date(b.publishedAt) - new Date(a.publishedAt);
+      if(briefType === 'closed') return new Date(b.dates.closing_date) - new Date(a.dates.closing_date);
+    });
+  }
+  else if(sortDirection === 'dsc') {
+    return dateArray.sort(function (b, a) {
+      if(briefType === 'draft') return new Date(b.createdAt) - new Date(a.createdAt);
+      if(briefType === 'live') return new Date(b.publishedAt) - new Date(a.publishedAt);
+      if(briefType === 'closed') return new Date(b.dates.closing_date) - new Date(a.dates.closing_date);
+    });
+  }
+  else return false
+};
 
