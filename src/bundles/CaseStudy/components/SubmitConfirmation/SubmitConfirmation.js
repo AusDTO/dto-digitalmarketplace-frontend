@@ -3,28 +3,111 @@ import {connect} from 'react-redux';
 import format from 'date-fns/format';
 import startCase from 'lodash/startCase';
 import Icon from '../../../../shared/Icon';
+import isEmpty from 'lodash/isEmpty'
 
 import './SubmitConfirmation.css'
 
 class SubmitConfirmation extends React.Component {
 
     render() {
+        console.log({this})
         const {
             opportunityUrl,
             domain,
-            closingDate
+            closingDate,
+            briefTitle,
+            previewUrl,
+            profileUrl,
+            unassessedDomains,
+            assessedDomains
         } = this.props;
+
+        let hasUnassessed = !isEmpty(unassessedDomains) && Object
+            .keys(unassessedDomains)
+            .length > 0;
 
         return (
             <section>
-                <h1><Icon value="complete-tick" size={30}/><span styleName="callout-heading">Your assessment is underway</span></h1>
-                <p>We will check that it meets our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> as soon as
-                possible.</p>
-                <h3>What happens next?</h3>
-                <p>If we can confirm your expertise before the opportunity closes on <b>{format(new Date(closingDate), 'Do MMMM YYYY')}</b>, you’ll be invited to apply.</p>
-                <p>If you’re successful but the opportunity has closed, you won’t need to be reassessed for {startCase(domain)} opportunities in future.</p>
-                <p>If your case study doesn’t meet our assessment criteria we will give you feedback.</p>
-                <p styleName="footer-link"><a href={opportunityUrl}> Return to opportunities</a></p>
+                {((hasUnassessed && !domain) &&
+                    <span>
+                        <h1>
+                            <span styleName="callout-heading">You have been prioritised for assessment</span>
+                        </h1>
+
+                        <span styleName="assessment-progress-wrapper">
+                            <span styleName="assessment-progress-item">
+                                <img src="/static/media/completed.svg" alt="Domain Selected" width="32" />
+                                <div styleName="status-connector-line-complete"></div>
+                                <p>Completed</p>
+                                <p>Demonstrate your experience in your seller profile</p>
+                            </span>
+                            <span styleName="assessment-progress-item">
+                                <img src="/static/media/in-progress.svg" alt="Domain Assessment" width="32" />
+                                <div styleName="status-connector-line-progress"></div>
+                                <p>To do</p>
+                                <p><b>We're assessing your expertise</b></p>
+                            </span>
+                            <span styleName="assessment-progress-item">
+                                <img src="/static/media/to-do.svg" alt="Domain Assessment" width="32" />
+                                <p>Up next</p>
+                                <p>You're ready to respond to briefs</p>
+                            </span>
+                        </span>
+
+                        <p>We are reviewing your profile and expertise,
+                        and will let you know soon if you're approved to be part of the Digital Marketplace.</p>
+                        
+                        <p>If we can confirm your expertise before the opportunity closes on
+                            <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>, you’ll be invited to apply.</p>
+                    
+                        <p>While you wait you can prepare your response
+                        to {briefTitle} using our Google sheets template.</p>
+                        <p styleName="footer-link">
+                            <a href={previewUrl} download>
+                                Download brief response template</a>
+                        </p>
+                    </span>
+                )}
+                
+                {((domain && (isEmpty(assessedDomains) || !assessedDomains)) &&
+                    <span>
+                        <h1>
+                        <span styleName="callout-heading">Have you got experience in {domain}?</span>
+                        </h1>
+
+                        <span styleName="assessment-progress-wrapper">
+                            <span styleName="assessment-progress-item">
+                                <img src="/static/media/in-progress.svg" alt="Domain Selected" width="32"/>
+                                <div styleName="status-connector-line-progress"></div>
+                                <p>To do</p>
+                                <p><b>Demonstrate your experience in your seller profile</b></p>
+                            </span>
+                            <span styleName="assessment-progress-item">
+                                <img src="/static/media/to-do.svg" alt="Domain Assessment" width="32"/>
+                                <div styleName="status-connector-line-progress"></div>
+                                <p>Up next</p>
+                                <p>We're assessing your expertise</p>
+                            </span>
+                            <span styleName="assessment-progress-item">
+                                <img src="/static/media/to-do.svg" alt="Domain Assessment" width="32"/>
+                                <p>Up next</p>
+                                <p>You're ready to respond to briefs</p>
+                            </span>
+                        </span>
+
+                        <p>Before you can apply for this opportunity you need to provide a case
+                        study and reference that meets our assessment criteria for {domain}.</p>
+                        
+                        <p>If we can confirm your expertise before the opportunity closes we will invite you to apply.</p>
+                    
+                        <p>If successful you can apply for {domain} opportunities in future
+                        without the need for further assessment.</p>
+                        <p styleName="footer-link">
+                            <a href={profileUrl} role="button">
+                                Edit your profile</a>
+                        </p>
+                    </span>
+                )}
             </section>
         )
     }
@@ -32,8 +115,13 @@ class SubmitConfirmation extends React.Component {
 
 SubmitConfirmation.propTypes = {
     opportunityUrl: PropTypes.string.isRequired,
-    domain: PropTypes.string.isRequired,
-    closingDate: PropTypes.string.isRequired
+    domain: PropTypes.string,
+    closingDate: PropTypes.string.isRequired,
+    briefTitle: PropTypes.string,
+    previewUrl: PropTypes.string,
+    profileUrl: PropTypes.string,
+    unassessedDomains: PropTypes.object,
+    assessedDomains: PropTypes.object,
 }
 
 const mapStateToProps = (state, ownProps) => {
