@@ -10,7 +10,6 @@ import './SubmitConfirmation.css'
 class SubmitConfirmation extends React.Component {
 
     render() {
-        console.log({this})
         const {
             opportunityUrl,
             domain,
@@ -25,10 +24,12 @@ class SubmitConfirmation extends React.Component {
         let hasUnassessed = !isEmpty(unassessedDomains) && Object
             .keys(unassessedDomains)
             .length > 0;
+        
+        let hasAssessed = !isEmpty(assessedDomains) && assessedDomains;
 
         return (
             <section>
-                {((hasUnassessed && !domain) &&
+                {((hasUnassessed || domain) &&
                     <span>
                         <h1>
                             <span styleName="callout-heading">You have been prioritised for assessment</span>
@@ -69,7 +70,7 @@ class SubmitConfirmation extends React.Component {
                     </span>
                 )}
                 
-                {((domain && (isEmpty(assessedDomains) || !assessedDomains)) &&
+                {((!hasUnassessed && !hasAssessed) &&
                     <span>
                         <h1>
                         <span styleName="callout-heading">Have you got experience in {domain}?</span>
