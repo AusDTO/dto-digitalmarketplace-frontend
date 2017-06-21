@@ -29,7 +29,6 @@ export class DomainAssessmentChoice extends React.Component {
     }
 
     render() {
-        console.log({this})
         let props = this.props;
         return (
             <Layout>
