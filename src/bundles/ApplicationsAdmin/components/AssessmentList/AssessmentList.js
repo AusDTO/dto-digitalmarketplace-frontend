@@ -22,17 +22,17 @@ class AssessmentList extends React.Component {
         assessments.forEach((assessment) => {
             if (assessment.briefs) {
                 assessment.briefs.forEach((brief) => {
-                    if (!has(brief_assessments, brief.title)
+                    if (!has(brief_assessments, brief.id)
                     ) {
 
-                        brief_assessments[brief.title] = {
+                        brief_assessments[brief.id] = {
                             'title': brief.title,
                             'closing_at': brief.dates.closing_date,
                             'assessments': []
                         }
                     }
                     if (assessment.supplier_domain.status !== 'assessed' && assessment.active) {
-                        brief_assessments[brief.title].assessments.push(assessment)
+                        brief_assessments[brief.id].assessments.push(assessment)
                     }
                 })
             }

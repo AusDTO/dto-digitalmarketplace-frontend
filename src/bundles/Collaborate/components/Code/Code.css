@@ -13,6 +13,12 @@
     max-width: 82%
 }
 
+.icon {
+    float: right;
+    width: 48px;
+    height: 48px;
+}
+
 .summary {
     font-size: 24px;
     line-height: 1.38;
@@ -36,26 +42,43 @@
 
 .tiles {
     padding: 0 55px;
-    padding-top: 46px;
-    float: left;
+    margin-top: 36px;
 }
 
 .tiles li {
-    width: 276px;
-    padding: 24px;
+    width: 100%;
     border-radius: 3px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(102, 102, 102, 0.3);
     border: solid 1px #bbbbbb;
-    height: 309px;
-    display: inline-block;
-    float: left;
-    margin-right: 32px;
+    display: block;
+    margin-top: 24px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position-x: 97%;
+    background-position-y: 83%;
+    padding: 24px;
+}
 
+.tiles li:hover, .tiles li:focus {
+    box-shadow: 0 2px 4px 0 rgba(102, 102, 200, 0.7);
+    border: solid 2px #5bcbe3;
+    cursor: pointer;
+}
+
+.tiles li:hover a:first-child, .tiles li:focus a:first-child {
+    background-color: #5bcbe3;
+    color: #313131;
+}
+
+.explore {
+    padding-top: 48px;
+    padding-bottom: 58px;
+    background-color: #f0f3f5;
 }
 
 .tiles p {
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .tiles li h3 {
@@ -63,8 +86,9 @@
 }
 
 .fine {
-    color: #6e6e6e;
+    color: #313131;
     font-size: 14px;
+    line-height: 1.57;
     padding: 0 48px;
 }
 
@@ -77,6 +101,12 @@
 .code a[role="button"] {
     color: white;
     font-size: 16px;
+    border-bottom: 0;
+}
+
+.code a[role="button"]:hover {
+    background-color: #115361;
+    color: white;
 }
 
 .center {
@@ -87,16 +117,27 @@
 
 .illustration {
     margin-top: 14px;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
     margin-left: 30px;
 }
 
 .code-text {
     margin: 0 auto;
-    text-align: center;
     font-size: 20px;
-    line-height: 1.35;
-    max-width: 630px;
+    line-height: 1.45;
+    padding-bottom: 48px;
+    padding-left: 48px;
+}
+
+.what {
+    width: 36%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.what p {
+    font-size: 20px;
 }
 
 @media only screen and (max-device-width: 768px) {
@@ -106,17 +147,6 @@
 
     .tiles {
         padding-top: 16px;
-    }
-
-    .tiles li {
-        width: 307px;
-        height: 286px;
-        margin-right: 0px;
-        margin-top: 32px;
-    }
-
-    .tiles li:nth-child(odd) {
-        margin-right: 25px;
     }
 
     .summary {
@@ -147,7 +177,6 @@
     }
 
     .code-text {
-
         font-size: 18px;
         max-width: 475px;
     }
@@ -156,16 +185,39 @@
 @media only screen and (max-device-width: 767px) {
     .full-header {
         padding-top: 2em;
+        text-align: center;
+        padding-bottom: 2em;
     }
+
     .illustration {
         margin: 0;
     }
+
     .tiles {
-        padding: 24px;
+        padding: 0 24px;
     }
+
     .tiles li {
+        background-position-y: 97%;
+    }
+
+    .code a[role="button"] {
+        text-align: center;
         width: 100%;
-        margin-top: 24px;
-        height: initial;
+    }
+
+    .code-text {
+        padding: 24px;
+
+    }
+
+    .explore {
+        padding-top: 1px;
+        padding-bottom: 48px;
+    }
+
+    .what {
+        padding: 0 24px;
+        width: 100%
     }
 }

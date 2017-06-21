@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://github.com/govau/uikit",
+    "name": "UI-kit",
+    "description": "A UI design guide for building Australian Government services with UI-Kit CSS framework.",
+    "uses": "Consistent, accessible and responsive UI designs for prototypes and live government services.",
+    "demo_url": "https://github.com/govau/uikit",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govau/performance-dashboard",
+    "name": "Performance Dashboard",
+    "description": "Promote government transparency and report the ongoing improvement of a service.",
+    "uses": "Report on the 4 key performance indicators; user satisfaction, cost per transaction, digital take up and completion rate.",
+    "demo_url": "https://dashboard.gov.au",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govau/datavizkit",
+    "name": "datavizkit",
+    "description": "A data visualisation toolset built on top of Highcharts and React.",
+    "uses": "Highlight data insights through a variety of data visualisations.",
+    "demo_url": "http://datavizkit.surge.sh/",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/AusDTO/citizenship-appointment-client",
+    "name": "Appointment booking service",
+    "description": "The booking service enables users to book or reschedule appointments.",
+    "uses": "Show available appointment times and let users book appointments.",
+    "demo_url": "https://citizenship-appointment-beta.herokuapp.com/login",
+    "icon": "https://avatars2.githubusercontent.com/u/25235510?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govCMS/govcms-ckan",
+    "name": "GovCMS-CKAN",
+    "description": "Visualise data from sources such as data.gov.au on a govCMS website with CKAN.",
+    "uses": "Make your data discoverable and presentable.",
+    "demo_url": "https://soe.environment.gov.au/theme/drivers/topic/economic-activity-driver-environmental-change",
+    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govCMS/govCMS",
+    "name": "GovCMS",
+    "description": "A Content management system and website hosting for government websites.",
+    "uses": "Build, migrate and manage websites and its digital content.",
+    "demo_url": "https://www.govcms.gov.au/",
+    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+  },
+  {
+    "url": "https://bitbucket.org/digitalcasey/pet-registration-and-hard-rubbish-booking",
+    "name": "Pet Registration",
+    "description": "Allows local councils to accept pet registration details and payment, and handle hard rubbish collection requests.",
+    "uses": "Providing similar services in other councils.",
+    "demo_url": "https://digital.casey.vic.gov.au/services/hard-rubbish-collection/",
+    "icon": "https://pbs.twimg.com/profile_images/488486345136824320/mV_wm3zQ_bigger.png"
+  },
+  {
+    "url": "https://bitbucket.org/digitalcasey/pet-registration-and-hard-rubbish-booking",
+    "name": "Hard Rubbish Booking",
+    "description": "Allows local councils to accept pet registration details and payment, and handle hard rubbish collection requests.",
+    "uses": "Providing similar services in other councils.",
+    "demo_url": "https://digital.casey.vic.gov.au/services/hard-rubbish-collection/",
+    "icon": "https://pbs.twimg.com/profile_images/488486345136824320/mV_wm3zQ_bigger.png"
+  },
+  {
+    "url": "https://github.com/GeoscienceAustralia/BAL",
+    "name": "Bushfire Attack Level Computation Software",
+    "description": "A toolbox to calculate severity of exposure to bushfire attack.",
+    "uses": "For bushfire threat analysis to improve the protection of buildings from bushfire attack.",
+    "demo_url": "https://geoscienceaustralia.github.io/BAL/docs/userguide/examples.html",
+    "icon":"https://avatars3.githubusercontent.com/u/4704285?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/govCMS/consultation",
+    "name": "GovCMS consultation module",
+    "description": "A “Have Your Say” component to capture user feedback.",
+    "uses": "Comments, share via social networks and join in formal consultations.",
+    "demo_url": "https://www.communications.gov.au/have-your-say",
+    "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"
+  },
+  {
+    "url": "https://github.com/actgov/Mobile-Canberra",
+    "name": "Mobile Canberra",
+    "description": "Shows points of interest and services on a map for both Android and iOS.",
+    "uses": "Examples include bus stops, playgrounds, libraries, TAFE campuses, schools, public art and public furniture.",
+    "demo_url": "https://github.com/actgov/Mobile-Canberra#mobile-canberra",
+    "icon": "http://www.act.gov.au/__data/assets/image/0011/492995/apple-touch-icon-57x57-precomposed.png?v=0.1.1"
+  }
+]
+
+
