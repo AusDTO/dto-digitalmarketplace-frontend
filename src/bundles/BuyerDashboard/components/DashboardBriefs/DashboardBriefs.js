@@ -51,7 +51,7 @@ export const DraftBriefs = props => {
   const {draft, teamBriefView} = props
 
   return (
-    <section>
+      !teamBriefView && <section>
       {(teamBriefView
         ? <h2>Team drafts</h2>
         : <h2>Drafts</h2>)}
