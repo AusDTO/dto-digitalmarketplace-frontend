@@ -31,8 +31,8 @@ export const DashboardBriefs = props => {
         <h3>Need a hand?</h3>
         <span>
           <a href="/buyers-guide">Read the buyers guide </a>
-          or <a href={"mailto:marketplace@digital.gov.au"}>
-            send us an email </a>
+          or <a href='/contact-us' target="_blank" rel="external">
+            contact us </a>
           - We can help you write your brief.
         </span>
       </div>
