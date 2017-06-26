@@ -88,7 +88,7 @@ class View extends React.Component {
             <section>
               <h2>Outcomes and benefits</h2>
               <ul>
-                {outcome.map((content, i) => <li key={i}>{content}</li>)}
+                {outcome && outcome.map((content, i) => <li key={i}>{content}</li>)}
               </ul>
             </section>
             {project_links && project_links.length > 0 && (
