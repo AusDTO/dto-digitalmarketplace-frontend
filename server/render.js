@@ -10,6 +10,7 @@ var _rollbarConfig = {
     accessToken: process.env.ROLLBAR_TOKEN,
     captureUncaught: true,
     captureUnhandledRejections: true,
+    verbose: true,
     payload: {
         environment: process.env.NODE_ENV || 'development',
     }
