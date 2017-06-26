@@ -273,13 +273,13 @@ class SubmitStepForm extends BaseForm {
                         <p><strong>infringe</strong> includes an act or omission that would, apart from the operation of section 163 of the <em>Patents Act 1990</em>, section 100 of the <em>Designs Act 2003</em>, section 183 of the <em>Copyright Act 1968</em>, or section 25 of the <em>Circuit Layouts Act 1989</em>, constitute an infringement of the right.</p>
                         <p><strong>insolvency event </strong>&nbsp;means the happening of any one or more of the following:</p>
                         <ul>
-                        <li><strong>you </strong>cease, or take steps to cease, to conduct <strong>your</strong> business in the normal manner</li>
-                        <li><strong>you</strong> enter into or resolve to enter into any arrangement, composition or compromise with or assignment for the benefit of <strong>your</strong> creditors or any class of them</li>
-                        <li><strong>you</strong> are unable to pay <strong>your</strong> debts when they are due or <strong>you</strong> are deemed under the <em>Corporations Act 2001</em> (Cth) to be insolvent</li>
-                        <li>a liquidator or provisional liquidator is appointed to <strong>you</strong> or a receiver, receiver and manager, official manager, trustee or similar official is appointed over any of <strong>your</strong> assets or undertakings</li>
-                        <li>an application or order is made or a resolution is passed for <strong>your</strong> winding up</li>
-                        <li>if <strong>you</strong> are an individual <strong>you</strong> are declared bankrupt, seek a composition of creditors, suspend payments or in any other way are deemed to be insolvent</li>
-                        <li>any act or event having a substantially similar effect to any of the events specified in the above sub- paragraphs apply</li>
+                        <li><strong>you </strong>cease, or take steps to cease, to conduct <strong>your</strong> business in the normal manner.</li>
+                        <li><strong>you</strong> enter into or resolve to enter into any arrangement, composition or compromise with or assignment for the benefit of <strong>your</strong> creditors or any class of them.</li>
+                        <li><strong>you</strong> are unable to pay <strong>your</strong> debts when they are due or <strong>you</strong> are deemed under the <em>Corporations Act 2001</em> (Cth) to be insolvent.</li>
+                        <li>a liquidator or provisional liquidator is appointed to <strong>you</strong> or a receiver, receiver and manager, official manager, trustee or similar official is appointed over any of <strong>your</strong> assets or undertakings.</li>
+                        <li>an application or order is made or a resolution is passed for <strong>your</strong> winding up.</li>
+                        <li>if <strong>you</strong> are an individual <strong>you</strong> are declared bankrupt, seek a composition of creditors, suspend payments or in any other way are deemed to be insolvent.</li>
+                        <li>any act or event having a substantially similar effect to any of the events specified in the above sub- paragraphs apply.</li>
                         </ul>
                         <p><strong>intellectual property rights </strong>means the rights of a creator or an owner relating to copyrights, trademarks, patents, know-how, models, drawings, designs, specifications, inventions, prototypes and software, whether or not in material form, and any application or right to apply for registration of any of these rights.</p>
                         <p><strong>loss</strong> means loss, damage, cost or expense (to any person or property) including <strong>consequential loss</strong> or indirect loss or any loss of profits, data or revenue.</p>
@@ -297,7 +297,7 @@ class SubmitStepForm extends BaseForm {
                         <p><strong>software</strong> means the programs, programming languages, and data that direct the operations of a computer system and includes any standard form documentation that is usually provided to customers with the software.</p>
                         <p><strong>work order </strong>means a contract formed between a <strong>buyer</strong> and a <strong>seller</strong> under this <strong>agreement </strong>for the provision of <strong>services</strong>, or <strong>products, </strong>or both. </p>
                         <p><strong>you or your</strong> means the party specified as the <strong>seller</strong> and includes <strong>your personnel</strong>.</p>
-                        <p>Last updated: 23 February 2017</p>
+                        <p>Last updated: 14 June 2017</p>
                     </div>
                     <br/>
                     <StatefulError
