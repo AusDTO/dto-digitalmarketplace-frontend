@@ -2,9 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {LocalForm} from 'react-redux-form';
-import {required} from '../../../../validators';
-import Textfield     from '../../../../shared/form/Textfield';
-import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 import styles from './Code.css'
 import data from './Code.json'
