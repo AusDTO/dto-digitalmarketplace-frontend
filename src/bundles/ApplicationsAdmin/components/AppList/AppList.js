@@ -153,6 +153,7 @@ class AppList extends Component {
                   }} name="Revert" styleName="revert">Revert</button>
 
                        <a href={meta.url_edit_application.concat(a.id,'/start')} styleName="edit">Edit</a>
+                       <a href={`/admin/applications/${a.id}/users`} styleName="users">Users</a>
                     </span>
                   }
                   {(a.status !== 'deleted' &&

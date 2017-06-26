@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { Control, LocalForm } from 'react-redux-form';
 import format from 'date-fns/format';
+import {moveUser} from '../../redux/modules/users';
+
 
 class AppUser extends Component {
 
@@ -9,10 +12,10 @@ class AppUser extends Component {
   };
 
   render() {
-    const {users, meta} = this.props;
+    const {users, meta, onMoveUser} = this.props;
     return (
-      <div>
-        <header class="page-heading page-heading-without-breadcrumb">
+      <article id="content" className="content-main">
+        <header className="page-heading page-heading-without-breadcrumb">
           <h1>
             {meta.application.name}
           </h1>
@@ -30,7 +33,7 @@ class AppUser extends Component {
           </thead>
           <tbody>
             {users.map((user, i) =>
-              <tr className="summary-item-row">
+              <tr key={i} className="summary-item-row">
                 <td  className="summary-item-field-first">
                   <span>{user.name}</span>
                 </td>
@@ -49,8 +52,23 @@ class AppUser extends Component {
               </tr>
             )}
           </tbody>
-        </table>      
-      </div>
+        </table>
+        <LocalForm onSubmit={onMoveUser}>
+            <div className="grid-row">
+                <div className="column-two-thirds">
+                    <div className="question">
+                        <label className="question-heading-with-hint" htmlFor="user_to_move_email_address">Move an existing user to this supplier</label>
+                        <p className="hint">
+                            Enter the email address of the existing user you wish to move to this supplier
+                        </p>
+                        
+                        <Control.text autoComplete="off" className="text-box" id="user_to_move_email_address" model=".email"/>
+                    </div>
+                    <button className="button-save">Move user to this supplier</button>
+                </div>
+            </div>
+        </LocalForm>      
+      </article>
     )
   }
 }
@@ -63,8 +81,8 @@ const mapStateToProps = (ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (id) => {
-      // dispatch(convertApplicationToSeller(id))
+    onMoveUser: (email) => {
+      dispatch(moveUser(email))
     },
   }
 };
