@@ -10,25 +10,23 @@ import './SubmitConfirmation.css'
 class SubmitConfirmation extends React.Component {
 
     render() {
-        console.log({this})
         const {
             opportunityUrl,
             domain,
             closingDate,
             briefTitle,
+            briefLot,
             previewUrl,
             profileUrl,
-            unassessedDomains,
-            assessedDomains
+            initial,        // arrives via brief response check that found no casestudies
+            inReview,       // supplier arrives after initiating a casestudy assessment
+            isRecruiter,
+            created         // if an assessment has been created
         } = this.props;
-
-        let hasUnassessed = !isEmpty(unassessedDomains) && Object
-            .keys(unassessedDomains)
-            .length > 0;
 
         return (
             <section>
-                {((hasUnassessed && !domain) &&
+                {((inReview || !initial) &&
                     <span>
                         <h1>
                             <span styleName="callout-heading">You have been prioritised for assessment</span>
@@ -55,24 +53,27 @@ class SubmitConfirmation extends React.Component {
                         </span>
 
                         <p>We are reviewing your profile and expertise,
-                        and will let you know soon if you're approved to be part of the Digital Marketplace.</p>
+                            and will let you know soon if you're approved to offer {domain} on the Digital Marketplace.
+                        </p>
                         
                         <p>If we can confirm your expertise before the opportunity closes on
-                            <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>, you’ll be invited to apply.</p>
-                    
+                            <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>, you’ll be invited to apply.
+                        </p>
+                        
                         <p>While you wait you can prepare your response
-                        to {briefTitle} using our Google sheets template.</p>
+                            using our Google sheets template.
+                        </p>
+
                         <p styleName="footer-link">
                             <a href={previewUrl} download>
                                 Download brief response template</a>
                         </p>
                     </span>
                 )}
-                
-                {((domain && (isEmpty(assessedDomains) || !assessedDomains)) &&
+                {(initial &&
                     <span>
                         <h1>
-                        <span styleName="callout-heading">Have you got experience in {domain}?</span>
+                            <span styleName="callout-heading">Have you got experience in {domain}?</span>
                         </h1>
 
                         <span styleName="assessment-progress-wrapper">
@@ -95,13 +96,24 @@ class SubmitConfirmation extends React.Component {
                             </span>
                         </span>
 
-                        <p>Before you can apply for this opportunity you need to provide a case
-                        study and reference that meets our assessment criteria for {domain}.</p>
+                        {(
+                            created && <p>We are reviewing your profile and expertise,
+                            and will let you know soon if you're approved to offer {domain} on the Digital Marketplace.</p>
+                        )}
                         
-                        <p>If we can confirm your expertise before the opportunity closes we will invite you to apply.</p>
+                        <p>
+                            If we can confirm your expertise before the opportunity closes on
+                            <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>, you’ll be invited to apply.
+                        </p>
                     
-                        <p>If successful you can apply for {domain} opportunities in future
-                        without the need for further assessment.</p>
+                        {(
+                            !isRecruiter && <p>While you wait you can prepare your response
+                             using our Google sheets template.</p>
+                        )}
+                        {(
+                            isRecruiter && <p>If you're successful but the opportunity has
+                            closed, you won't need to be reassessed for {domain} opportunties in future.</p>
+                        )}
                         <p styleName="footer-link">
                             <a href={profileUrl} role="button">
                                 Edit your profile</a>
@@ -118,10 +130,12 @@ SubmitConfirmation.propTypes = {
     domain: PropTypes.string,
     closingDate: PropTypes.string.isRequired,
     briefTitle: PropTypes.string,
+    briefLot: PropTypes.string,
     previewUrl: PropTypes.string,
     profileUrl: PropTypes.string,
     unassessedDomains: PropTypes.object,
     assessedDomains: PropTypes.object,
+    created: PropTypes.bool
 }
 
 const mapStateToProps = (state, ownProps) => {
