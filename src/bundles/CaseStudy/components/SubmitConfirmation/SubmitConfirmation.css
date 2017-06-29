@@ -1,7 +1,57 @@
 .callout-heading {
-    padding-left: 1rem;
+    padding-left: 0px
+}
+
+.callout-heading span {
+    display: block;
+    padding-top: 20px
+}
+
+.assessment-progress-wrapper {
+    display: block
+}
+
+.assessment-progress-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 226px
+}
+
+.assessment-progress-item p:first-of-type {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #4f4f4f;
+}
+
+.assessment-progress-item p:last-of-type{
+    font-size: 17px;
+    margin-right: 40px
 }
 
 .footer-link {
     padding-top: 1.5rem;
+}
+
+.status-connector-line-complete {
+    width: 184px;
+    border-bottom: 5px solid #17788d;
+    display: inline-block;
+    margin: 0px 5px 15px 5px;
+}
+
+.status-connector-line-progress {
+    width: 184px;
+    border-bottom: 5px dashed #bbbbbb;
+    display: inline-block;
+    margin: 0px 5px 15px 5px;
+}
+
+@media (max-width: 560px) {
+    .status-complete-solid-line {
+        width: 90px
+    }
+
+    .assessment-progress-item {
+    width: 132px
+}
 }
