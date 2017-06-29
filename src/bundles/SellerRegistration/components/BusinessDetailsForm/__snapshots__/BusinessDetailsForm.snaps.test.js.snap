@@ -69,7 +69,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           <span>
             You need an Australian Business Number to do business in Australia. 
             <a
-              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/"
+              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/"
               rel="external"
               target="_blank"
             >
@@ -431,7 +431,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           <span>
             You need an Australian Business Number to do business in Australia. 
             <a
-              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/Apply-for-an-ABN/"
+              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/"
               rel="external"
               target="_blank"
             >
