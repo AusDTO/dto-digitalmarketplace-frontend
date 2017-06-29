@@ -4,7 +4,7 @@ import { StaticRouter, matchPath } from 'react-router'
 import path from 'path'
 import fs from 'fs'
 import get from 'lodash/get'
-import rollbar from 'rollbar'
+import Rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer'
 import App from '../../src/components/App'
 import {routes} from './routes' 
@@ -12,6 +12,18 @@ import template from './template'
 import {Helmet} from "react-helmet"
 
 const isDev = process.env.NODE_ENV !== 'production';
+
+var _rollbarConfig = {
+    accessToken: process.env.ROLLBAR_TOKEN,
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+    verbose: true,
+    payload: {
+        environment: process.env.NODE_ENV || 'development',
+    }
+};
+
+var rollbar = new Rollbar(_rollbarConfig);
 
 let cache = {};
 let contentHashCache = {};

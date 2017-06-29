@@ -205,9 +205,11 @@ exports[`BuyerDashboard renders without errors 1`] = `
               </a>
               or 
               <a
-                href="mailto:marketplace@digital.gov.au"
+                href="/contact-us"
+                rel="external"
+                target="_blank"
               >
-                send us an email 
+                contact us 
               </a>
               - We can help you write your brief.
             </span>

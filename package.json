@@ -28,6 +28,7 @@
     "http-proxy-middleware": "0.17.1",
     "ignore-loader": "0.1.2",
     "jest": "^19.0.0",
+    "jest-cli": "^19.0.2",
     "json-loader": "0.5.4",
     "node-sass": "3.10.1",
     "nodemon": "1.11.0",

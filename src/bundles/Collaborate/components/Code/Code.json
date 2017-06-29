@@ -34,7 +34,7 @@
   {
     "url": "https://github.com/govCMS/govcms-ckan",
     "name": "GovCMS-CKAN",
-    "description": "Visualise data from sources such as data.gov.au on a govCMS website with CKAN.",
+    "description": "Visualise data from sources such as data.gov.au on any Drupal website",
     "uses": "Make your data discoverable and presentable.",
     "demo_url": "https://soe.environment.gov.au/theme/drivers/topic/economic-activity-driver-environmental-change",
     "icon": "https://avatars1.githubusercontent.com/u/9474842?v=3&s=48"

@@ -33,7 +33,7 @@
     overflow: hidden;
 }
 
-.appList button, .edit, .delete {
+.appList button, .edit, .users, .delete {
     display: inline-block;
     font-size: 1.1rem;
     margin: 0 0.1rem;
@@ -55,6 +55,13 @@
 
 .edit {
     background: #3e83c5;
+    color: white;
+    font-weight: bold;
+    padding: 5px 7px;
+}
+
+.users {
+    background: purple;
     color: white;
     font-weight: bold;
     padding: 5px 7px;
