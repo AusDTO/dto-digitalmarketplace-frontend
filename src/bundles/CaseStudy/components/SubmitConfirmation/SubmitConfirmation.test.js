@@ -19,6 +19,6 @@ describe('<SubmitConfirmation />', () => {
       </Provider>
     );
 
-    expect(wrapper.find('h1').text()).toBe('Your assessment is underway');
+    expect(wrapper.find('h1').first().text()).toBe('You have been prioritised for assessment');
   });
 });
