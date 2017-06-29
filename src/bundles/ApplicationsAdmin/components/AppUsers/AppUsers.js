@@ -53,21 +53,23 @@ class AppUser extends Component {
             )}
           </tbody>
         </table>
-        <LocalForm onSubmit={onMoveUser}>
-            <div className="grid-row">
-                <div className="column-two-thirds">
-                    <div className="question">
-                        <label className="question-heading-with-hint" htmlFor="user_to_move_email_address">Move an existing user to this supplier</label>
-                        <p className="hint">
-                            Enter the email address of the existing user you wish to move to this supplier
-                        </p>
-                        
-                        <Control.text autoComplete="off" className="text-box" id="user_to_move_email_address" model=".email"/>
-                    </div>
-                    <button className="button-save">Move user to this supplier</button>
-                </div>
-            </div>
-        </LocalForm>      
+        {meta.application.type === 'new' && (meta.application.status === 'saved' || meta.application.status === 'submitted') &&
+          <LocalForm onSubmit={onMoveUser}>
+              <div className="grid-row">
+                  <div className="column-two-thirds">
+                      <div className="question">
+                          <label className="question-heading-with-hint" htmlFor="user_to_move_email_address">Move an existing user to this application</label>
+                          <p className="hint">
+                              Enter the email address of the existing user you wish to move to this application
+                          </p>
+                          
+                          <Control.text autoComplete="off" className="text-box" id="user_to_move_email_address" model=".email"/>
+                      </div>
+                      <button className="button-save">Move user to this application</button>
+                  </div>
+              </div>
+          </LocalForm>
+        }      
       </article>
     )
   }
