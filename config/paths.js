@@ -57,6 +57,7 @@ var config = {
     'profile-edit': [resolveApp('src/bundles/SellerRegistration/ProfileEditWidget')],
     'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')],
     'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')],
+      'sign-msa': [resolveApp('src/bundles/SellerRegistration/SignMSAWidget')],
     'applications-admin': [resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdminWidget')],
     'assessments-admin': [resolveApp('src/bundles/ApplicationsAdmin/AssessmentsAdminWidget')],
     'application-preview': [resolveApp('src/bundles/SellerRegistration/ApplicationPreviewWidget')],
@@ -85,7 +86,8 @@ var config = {
       'project-view': require(resolveApp('src/bundles/Collaborate/components/ProjectView/ProjectView.json')),
       'project-form': require(resolveApp('src/bundles/Collaborate/components/ProjectForm/ProjectForm.json')),
     'buyer-dashboard-form': require(resolveApp('src/bundles/BuyerDashboard/components/Dashboard/BuyerDashboard.json')),
-      'domain-choice': require(resolveApp('src/bundles/Brief/components/DomainAssessmentChoice/DomainAssessmentChoice.json'))
+      'domain-choice': require(resolveApp('src/bundles/Brief/components/DomainAssessmentChoice/DomainAssessmentChoice.json')),
+      'sign-msa': require(resolveApp('src/bundles/SellerRegistration/SignMSA.json')),
   }
 };
 

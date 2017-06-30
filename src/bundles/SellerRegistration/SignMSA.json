@@ -1,0 +1,14 @@
+{
+
+    "applicationValid": true,
+    "name": "Bond Corp",
+    "abn": "123",
+    "email": "james@bond.com",
+    "representative": "James Bond",
+  "form_options": {
+    "submitUrl": "/submit",
+    "authoriseUrl": "/auth",
+    "userEmail": "james@bond.com",
+    "csrfToken": "zzzzy"
+  }
+}
