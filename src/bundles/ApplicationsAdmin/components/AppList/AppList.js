@@ -153,16 +153,18 @@ class AppList extends Component {
                   }} name="Revert" styleName="revert">Revert</button>
 
                        <a href={meta.url_edit_application.concat(a.id,'/start')} styleName="edit">Edit</a>
-                       <a href={`/admin/applications/${a.id}/users`} styleName="users">Users</a>
                     </span>
                   }
                   {(a.status !== 'deleted' &&
-                    <button onClick={e => {
-                      e.preventDefault(); 
-                      if (window.confirm('Are you sure ?')) {
-                        onDeleteClick(a.id);
-                      }
-                    }} name="Delete" styleName="delete">Delete</button>
+                    <span>
+                      <a href={`/admin/applications/${a.id}/users`} styleName="users">Users</a>
+                      <button onClick={e => {
+                        e.preventDefault(); 
+                        if (window.confirm('Are you sure ?')) {
+                          onDeleteClick(a.id);
+                        }
+                      }} name="Delete" styleName="delete">Delete</button>
+                    </span>
                   )}
                 </td>
               </tr>
