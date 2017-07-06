@@ -47,7 +47,10 @@ class BriefChoiceForm extends Component {
               onClick={() => this.handleChange('digital-professionals')}
               onKeyUp={() => { }}
               role="presentation" tabIndex="0">
-            <span>Digital Specialist</span>
+              <span>Digital Specialist</span>
+              <p>
+                Get seller responses to your criteria plus candidate resumes for shortlisting.  
+              </p>
             </label>
           </form>  
         </div>
@@ -62,7 +65,10 @@ class BriefChoiceForm extends Component {
               onClick={() => this.handleChange('digital-outcome')}
               onKeyUp={() => { }}
               role="presentation" tabIndex="0"> 
-            <span>Digital Outcome</span>
+              <span>Digital Outcome</span>
+              <p>
+                Get seller responses to your criteria, in spreadsheet format, for shortlisting. You will not receive RFPs at this stage.  
+              </p>
             </label>
           </form>  
         </div>
