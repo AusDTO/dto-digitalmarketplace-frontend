@@ -97,11 +97,15 @@ class YourInfoForm extends BaseForm {
                   id="representative"
                   htmlFor="representative"
                   label="Authorised representative name"
-                  description="This is the person authorised to enter into contracts on behalf of the business. "
+                  descriptionWithHtml={ isNumber(supplierCode)
+                    ? "This is the person authorised to enter into contracts on behalf of the business. To update this please <a href=\"\/contact-us\/\">contact us<\/a>."
+                    : "This is the person authorised to enter into contracts on behalf of the business. "
+                  }
                   validators={{ required }}
                   messages={{
                       required: 'Authorised representative is required',
                   }}
+                  disabled={isNumber(supplierCode)}
               />
 
 
@@ -116,6 +120,7 @@ class YourInfoForm extends BaseForm {
                       required: 'Authorised representative\'s email is required',
                       validEmail: 'Authorised representative\'s email must be a valid email address',
                   }}
+                  disabled={isNumber(supplierCode)}
               />
 
               <Textfield
@@ -129,6 +134,7 @@ class YourInfoForm extends BaseForm {
                       required: 'Authorised representative\'s phone number is required',
                       validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
                   }}
+                  disabled={isNumber(supplierCode)}
               />
 
             {children}

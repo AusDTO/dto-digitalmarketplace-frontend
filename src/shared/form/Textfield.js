@@ -5,14 +5,16 @@ import StatefulError from './StatefulError';
 
 class Textfield extends React.Component {
     render() {
-        const {name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, disabled, readOnly, type} = this.props;
+        const {name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, disabled, readOnly, type, descriptionWithHtml} = this.props;
         return (
             <div className="field">
                 <label htmlFor={htmlFor} className="question-heading">{label}</label>
                 {description && (
                     <p className="hint" id={`${id}-hint`}>{description}</p>
                 )}
-
+                {descriptionWithHtml && (
+                    <p className="hint" id={`${id}-hint-html`} dangerouslySetInnerHTML={{ __html: descriptionWithHtml }}></p>
+                )}
                 {messages && <StatefulError model={model} messages={messages} id={id}/>}
                 <Control.input
                     model={model}
@@ -56,7 +58,8 @@ Textfield.propTypes = {
     pattern: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     readOnly: React.PropTypes.bool,
-    type: React.PropTypes.string
+    type: React.PropTypes.string,
+    descriptionWithHtml: React.PropTypes.object
 };
 
 export default Textfield;
