@@ -98,7 +98,7 @@ class YourInfoForm extends BaseForm {
                   htmlFor="representative"
                   label="Authorised representative name"
                   description={ isNumber(supplierCode)
-                    ? ["This is the person authorised to enter into contracts on behalf of the business. To update this please " ,<a href="contact-us">contact us</a>, "."]
+                    ? ["This is the person authorised to enter into contracts on behalf of the business. To update this please " ,<a href="/contact-us">contact us</a>, "."]
                     : "This is the person authorised to enter into contracts on behalf of the business. "
                   }
                   validators={{ required }}
