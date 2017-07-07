@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Control, LocalForm } from 'react-redux-form';
 import format from 'date-fns/format';
-import {moveUser} from '../../redux/modules/users';
+import {moveUser, inviteUser} from '../../redux/modules/users';
+import './AppUsers.css';
 
 
 class AppUser extends Component {
@@ -12,7 +13,7 @@ class AppUser extends Component {
   };
 
   render() {
-    const {users, meta, onMoveUser} = this.props;
+    const {users, meta, onMoveUser, onInviteUser} = this.props;
     return (
       <article id="content" className="content-main">
         <header className="page-heading page-heading-without-breadcrumb">
@@ -32,7 +33,8 @@ class AppUser extends Component {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, i) =>
+            {
+             users.filter(user => !user.invited).map((user, i) =>
               <tr key={i} className="summary-item-row">
                 <td  className="summary-item-field-first">
                   <span>{user.name}</span>
@@ -54,22 +56,49 @@ class AppUser extends Component {
           </tbody>
         </table>
         {meta.application.type === 'new' && (meta.application.status === 'saved' || meta.application.status === 'submitted') &&
-          <LocalForm onSubmit={onMoveUser}>
-              <div className="grid-row">
-                  <div className="column-two-thirds">
-                      <div className="question">
-                          <label className="question-heading-with-hint" htmlFor="user_to_move_email_address">Move an existing user to this application</label>
-                          <p className="hint">
-                              Enter the email address of the existing user you wish to move to this application
-                          </p>
-                          
-                          <Control.text autoComplete="off" className="text-box" id="user_to_move_email_address" model=".email"/>
-                      </div>
-                      <button className="button-save">Move user to this application</button>
-                  </div>
-              </div>
-          </LocalForm>
-        }      
+          <div>
+            <LocalForm onSubmit={onInviteUser}>
+                <div className="grid-row">
+                    <div className="column-two-thirds">
+                        <div className="question">
+                            <label className="question-heading-with-hint" htmlFor="user_to_invite_name">Name</label>
+                            <p className="hint">
+                                Enter the name of the person you wish to invite
+                            </p>
+                            <Control.text autoComplete="off" className="text-box" id="user_to_invite_name" model=".name"/>
+                        </div>
+                        <div className="question">
+                            <label className="question-heading-with-hint" htmlFor="user_to_invite_email_address">Email address</label>
+                            <p className="hint">
+                                Enter the email address of the person you wish to invite
+                            </p>
+                            <Control.text autoComplete="off" className="text-box" id="user_to_invite_email_address" model=".email"/>
+                        </div>
+                        <button className="button-save">Send Invitation</button>
+                    </div>
+                </div>
+            </LocalForm>
+            <div>
+              {users.filter(user => user.invited).map((user, i) => 
+                  <div styleName="invited-message" key={i}>{`Invitation sent to ${user.email}`}</div>
+              )}
+            </div>
+            <LocalForm onSubmit={onMoveUser}>
+                <div className="grid-row">
+                    <div className="column-two-thirds">
+                        <div className="question">
+                            <label className="question-heading-with-hint" htmlFor="user_to_move_email_address">Move an existing user to this application</label>
+                            <p className="hint">
+                                Enter the email address of the existing user you wish to move to this application
+                            </p>
+                            <Control.text autoComplete="off" className="text-box" id="user_to_move_email_address" model=".email"/>
+                        </div>
+                        <button className="button-save">Move user to this application</button>
+                    </div>
+                </div>
+            </LocalForm>
+          </div>
+        }
       </article>
     )
   }
@@ -85,6 +114,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onMoveUser: (email) => {
       dispatch(moveUser(email))
+    },
+    onInviteUser: (user) => {
+      dispatch(inviteUser(user))
     },
   }
 };
