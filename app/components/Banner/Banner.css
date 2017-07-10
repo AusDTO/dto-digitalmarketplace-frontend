@@ -1,0 +1,86 @@
+.phase-banner {
+  background: #224a61;
+  color: #f0f3f5;
+  padding: 0.4em 0;
+}
+
+.phase-banner p, .phase-banner .sidebar h2 span, .sidebar h2 .phase-banner span, .phase-banner .sidebar .display span, .sidebar .display .phase-banner span {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.phase-banner a {
+  color: #f0f3f5;
+}
+
+.phase-banner a a {
+  color: #f0f3f5;
+  text-decoration: none;
+  outline: none;
+  border-bottom: solid 1px #fff;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.1s;
+  transition-property: background-color, border-color, color;
+  /*
+    See more link
+
+    Use see more links at the end of [lists](section-list-styles.html),
+    to take the user to a index page of all items.
+
+    Markup: <a class="see-more" href="#">See more</a>
+
+    Style guide: Link styles.2 See more link
+    */
+}
+
+.phase-banner a a:hover, .phase-banner a a:focus {
+  background-color: #fff;
+  color: #224a61;
+}
+
+.phase-banner a a[rel~='external'] {
+  display: inline;
+  position: relative;
+  margin-right: 1.6em;
+}
+
+.phase-banner a a[rel~='external']:hover {
+  border-color: transparent;
+}
+
+.phase-banner a a[rel~='external']::after {
+  background-size: 0.9em auto;
+}
+
+.phase-banner a a.see-more {
+  display: inline-block;
+  position: relative;
+  margin-right: 1.6em;
+  font-weight: 700;
+  color: #18788d;
+}
+
+.phase-banner a a.see-more::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -1.2em;
+  display: block;
+  width: 1.2em;
+  height: 1.2em;
+  background-repeat: no-repeat;
+  background-position: right 0.4em;
+  background-size: 0.64em auto;
+}
+
+.phase-banner a a.see-more:hover, .phase-banner a a.see-more:focus {
+  color: #224a61;
+}
+
+.phase-banner a.disabled {
+  outline: none;
+  color: rgba(240, 243, 245, 0.5);
+  text-decoration: none;
+  border-bottom: solid 1px;
+  outline-color: transparent;
+}

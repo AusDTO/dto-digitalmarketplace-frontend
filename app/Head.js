@@ -11,6 +11,7 @@ const Head = () => (
 	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/static/media/apple-touch-icon.png"/>
 	<link rel="apple-touch-icon-precomposed" href="/static/media/apple-touch-icon.png"/>
 	<link rel="stylesheet" type="text/css" href="/bundle/pancake.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/bundle/application.css"/>
     <script async src="//www.google-analytics.com/analytics.js"></script>
     <script async src="bundle/autotrack.custom.js"></script>
   </Helmet>
