@@ -12,7 +12,6 @@ class Textfield extends React.Component {
                 {description && (
                     <p className="hint" id={`${id}-hint`}>{description}</p>
                 )}
-
                 {messages && <StatefulError model={model} messages={messages} id={id}/>}
                 <Control.input
                     model={model}

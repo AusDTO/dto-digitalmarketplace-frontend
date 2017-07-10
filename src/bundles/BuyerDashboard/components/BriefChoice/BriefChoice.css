@@ -10,7 +10,8 @@
 
 @media (max-width: 767px) {
   .brief-choice-container {
-    margin-left: 0px
+    margin-left: 0px;
+    min-width: 250px
   }
 }
 
@@ -93,6 +94,11 @@
     left: -10000px;
     position: absolute;
     visibility: visible;
+}
+
+.form-radio-container p {
+  padding: 0px 0px 10px 42px;
+  margin-bottom: 0px
 }
 
 

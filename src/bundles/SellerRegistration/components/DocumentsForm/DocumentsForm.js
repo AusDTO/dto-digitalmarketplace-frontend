@@ -111,7 +111,7 @@ class DocumentsForm extends BaseForm {
                 <header>
                     <h1 tabIndex="-1">Upload your documents</h1>
                     <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
-                      <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format.If you have multiple files for a document, please scan and merge as one upload.
+                      <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
                     </p>
                 </header>
                 <article role="main">

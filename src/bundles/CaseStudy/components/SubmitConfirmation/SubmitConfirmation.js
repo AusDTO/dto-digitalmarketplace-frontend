@@ -31,36 +31,17 @@ class SubmitConfirmation extends React.Component {
                         <h1>
                             <span styleName="callout-heading">You have been prioritised for assessment</span>
                         </h1>
-
-                        <span styleName="assessment-progress-wrapper">
-                            <span styleName="assessment-progress-item">
-                                <img src="/static/media/completed.svg" alt="Domain Selected" width="32" />
-                                <div styleName="status-connector-line-complete"></div>
-                                <p>Completed</p>
-                                <p>Demonstrate your experience in your seller profile</p>
-                            </span>
-                            <span styleName="assessment-progress-item">
-                                <img src="/static/media/in-progress.svg" alt="Domain Assessment" width="32" />
-                                <div styleName="status-connector-line-progress"></div>
-                                <p>To do</p>
-                                <p><b>We're assessing your expertise</b></p>
-                            </span>
-                            <span styleName="assessment-progress-item">
-                                <img src="/static/media/to-do.svg" alt="Domain Assessment" width="32" />
-                                <p>Up next</p>
-                                <p>You're ready to respond to briefs</p>
-                            </span>
-                        </span>
-
-                        <p>We are reviewing your profile and expertise,
-                            and will let you know soon if you're approved to offer {domain} on the Digital Marketplace.
+                        <p>
+                            Before you can respond to this brief we need to assess your expertise in {domain}.
                         </p>
                         
-                        <p>If we can confirm your expertise before the opportunity closes on
-                            <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>, you’ll be invited to apply.
+                        <p>
+                            You’ll be able to apply if we can confirm your expertise before the opportunity closes on
+                            <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>.
                         </p>
                         
-                        <p>While you wait you can prepare your response
+                        <p>
+                            While you wait you can prepare your response
                             using our Google sheets template.
                         </p>
 
@@ -75,26 +56,6 @@ class SubmitConfirmation extends React.Component {
                         <h1>
                             <span styleName="callout-heading">Have you got experience in {domain}?</span>
                         </h1>
-
-                        <span styleName="assessment-progress-wrapper">
-                            <span styleName="assessment-progress-item">
-                                <img src="/static/media/in-progress.svg" alt="Domain Selected" width="32"/>
-                                <div styleName="status-connector-line-progress"></div>
-                                <p>To do</p>
-                                <p><b>Demonstrate your experience in your seller profile</b></p>
-                            </span>
-                            <span styleName="assessment-progress-item">
-                                <img src="/static/media/to-do.svg" alt="Domain Assessment" width="32"/>
-                                <div styleName="status-connector-line-progress"></div>
-                                <p>Up next</p>
-                                <p>We're assessing your expertise</p>
-                            </span>
-                            <span styleName="assessment-progress-item">
-                                <img src="/static/media/to-do.svg" alt="Domain Assessment" width="32"/>
-                                <p>Up next</p>
-                                <p>You're ready to respond to briefs</p>
-                            </span>
-                        </span>
 
                         {(
                             created && <p>We are reviewing your profile and expertise,
