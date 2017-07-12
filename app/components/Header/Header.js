@@ -14,7 +14,7 @@ export default class Header extends React.Component {
 					<div id="react-bundle-auth-header">
 						<ul data-reactroot="" id="main-navigation" className="inline-links--inverted">
 							<li>
-								<a href="/signup" styleName="styles.join">Join the Marketplace</a>
+								<a href="/signup">Join the Marketplace</a>
 							</li>
 							<li>
 								<a href="/login?next=/signup">Sign in</a>

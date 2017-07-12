@@ -41,8 +41,8 @@ var config = {
 
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
-  clientSrc: resolveApp('app'),
   appServer: resolveApp('server'),
+  clientSrc: resolveApp('app'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),

@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from './Head'
-import GovAuBanner from './GovAuBanner'
+import GovAuBanner from './components/GovAuBanner/GovAuBanner'
 import Banner from './components/Banner/Banner'
 import Header from './components/Header/Header'
 import PageFooter from './components/Footer/PageFooter'

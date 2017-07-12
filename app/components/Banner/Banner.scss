@@ -21,16 +21,6 @@
   transition-timing-function: ease-in-out;
   transition-duration: 0.1s;
   transition-property: background-color, border-color, color;
-  /*
-    See more link
-
-    Use see more links at the end of [lists](section-list-styles.html),
-    to take the user to a index page of all items.
-
-    Markup: <a class="see-more" href="#">See more</a>
-
-    Style guide: Link styles.2 See more link
-    */
 }
 
 .phase-banner a a:hover, .phase-banner a a:focus {

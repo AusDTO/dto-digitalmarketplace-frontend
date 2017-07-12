@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Banner.css'
+import './Banner.scss'
 
 const Banner = () => (
   <div className="phase-banner">

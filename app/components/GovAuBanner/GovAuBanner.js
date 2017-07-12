@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './GovAuBanner.scss'
 
 const GovAuBanner = () => (
   <div className="govau--header">
