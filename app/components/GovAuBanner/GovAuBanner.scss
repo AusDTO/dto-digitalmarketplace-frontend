@@ -14,60 +14,6 @@
   padding: 0.8em 0;
 }
 
-.govau--header a {
-  color: #fff;
-  text-decoration: none;
-  outline: none;
-  border-bottom: solid 1px #fff;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.1s;
-  transition-property: background-color, border-color, color;
-}
-
-.govau--header a:hover, .govau--header a:focus {
-  background-color: #fff;
-  color: #313131;
-}
-
-.govau--header a[rel~='external'] {
-  display: inline;
-  position: relative;
-  margin-right: 1.6em;
-}
-
-.govau--header a[rel~='external']:hover {
-  border-color: transparent;
-}
-
-.govau--header a[rel~='external']::after {
-  background-size: 0.9em auto;
-}
-
-.govau--header a.see-more {
-  display: inline-block;
-  position: relative;
-  margin-right: 1.6em;
-  font-weight: 700;
-  color: #18788d;
-}
-
-.govau--header a.see-more::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -1.2em;
-  display: block;
-  width: 1.2em;
-  height: 1.2em;
-  background-repeat: no-repeat;
-  background-position: right 0.4em;
-  background-size: 0.64em auto;
-}
-
-.govau--header a.see-more:hover, .govau--header a.see-more:focus {
-  color: #313131;
-}
-
 @media screen and (min-width: 768px) {
   .govau--header {
     padding-bottom: 1.2em;

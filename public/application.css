@@ -516,20 +516,6 @@ html {
   background-image: none, inline("assets/img/icons/arrow-right--white.svg"), linear-gradient(transparent, transparent);
 }
 
-/* line 16, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_icons.scss */
-.content-main a.see-more::after,
-footer[role='contentinfo'] a.see-more::after, .primary-nav ul a.see-more::after,
-.local-nav ul a.see-more::after, [class^='breadcrumbs'] a.see-more::after, [class^='breadcrumbs'][class$='--inverted'] a.see-more::after, .skip-to a.see-more::after, .list-horizontal .tags a.see-more::after, .list-vertical .tags a.see-more::after, .list-vertical--thirds .tags a.see-more::after, .list-vertical--fourths .tags a.see-more::after, .list-small .tags a.see-more::after, .list-highlighted .tags a.see-more::after, [class^='controls'] a.see-more::after, .govau--header a.see-more::after, .hero a.see-more::after, .callout--warn a.see-more::after, .sidebar a.see-more::after,
-main article:first-of-type a.see-more::after,
-main section:first-of-type a.see-more::after,
-main header:first-of-type a.see-more::after, .sidebar .button-secondary a.see-more::after,
-main article:first-of-type .button-secondary a.see-more::after,
-main section:first-of-type .button-secondary a.see-more::after,
-main header:first-of-type .button-secondary a.see-more::after, .catalogue .intro a.see-more::after, .marketplace--header a.see-more::after, .phase-banner a a.see-more::after, .hero a a.see-more::after, .hero-main a a.see-more::after, a.card::after, #react-bundle-casestudy-view .actions a.see-more::after, #react-bundle-casestudy-view article a.see-more::after {
-  background-image: inline("build/latest/img/icons/arrow-right--aqua.png");
-  background-image: none, inline("assets/img/icons/arrow-right--aqua.svg"), linear-gradient(transparent, transparent);
-}
-
 /* line 20, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_icons.scss */
 .global-nav-toggle::before {
   background-image: inline("build/latest/img/icons/bars.png");
@@ -7459,20 +7445,6 @@ footer[role='contentinfo'] .footer-top nav li .tagline {
   background-image: none, url("/static/images/icons/arrow-right--white.svg"), linear-gradient(transparent, transparent);
 }
 
-/* line 15, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/_icons.scss */
-.content-main a.see-more::after,
-footer[role='contentinfo'] a.see-more::after, .primary-nav ul a.see-more::after,
-.local-nav ul a.see-more::after, [class^='breadcrumbs'] a.see-more::after, [class^='breadcrumbs'][class$='--inverted'] a.see-more::after, .skip-to a.see-more::after, .list-horizontal .tags a.see-more::after, .list-vertical .tags a.see-more::after, .list-vertical--thirds .tags a.see-more::after, .list-vertical--fourths .tags a.see-more::after, .list-small .tags a.see-more::after, .list-highlighted .tags a.see-more::after, [class^='controls'] a.see-more::after, .govau--header a.see-more::after, .hero a.see-more::after, .callout--warn a.see-more::after, .sidebar a.see-more::after,
-main article:first-of-type a.see-more::after,
-main section:first-of-type a.see-more::after,
-main header:first-of-type a.see-more::after, .sidebar .button-secondary a.see-more::after,
-main article:first-of-type .button-secondary a.see-more::after,
-main section:first-of-type .button-secondary a.see-more::after,
-main header:first-of-type .button-secondary a.see-more::after, .catalogue .intro a.see-more::after, .marketplace--header a.see-more::after, .phase-banner a a.see-more::after, .hero a a.see-more::after, .hero-main a a.see-more::after, a.card::after, #react-bundle-casestudy-view .actions a.see-more::after, #react-bundle-casestudy-view article a.see-more::after {
-  background-image: url("/static/images/icons/arrow-right--aqua.png");
-  background-image: none, url("/static/images/icons/arrow-right--aqua.svg"), linear-gradient(transparent, transparent);
-}
-
 /* line 19, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/_icons.scss */
 .go-back::before {
   background-image: url("/static/images/icons/arrow-left--black.png");
@@ -7502,20 +7474,6 @@ summary::before {
 .scroll-to-top::before {
   background-image: url("/static/images/icons/chevron-up--white.png");
   background-image: none, url("/static/images/icons/chevron-up--white.svg"), linear-gradient(transparent, transparent);
-}
-
-/* line 40, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/_icons.scss */
-.content-main a[rel~='external']::after,
-footer[role='contentinfo'] a[rel~='external']::after, .primary-nav ul a[rel~='external']::after,
-.local-nav ul a[rel~='external']::after, [class^='breadcrumbs'] a[rel~='external']::after, [class^='breadcrumbs'][class$='--inverted'] a[rel~='external']::after, .skip-to a[rel~='external']::after, .list-horizontal .tags a[rel~='external']::after, .list-vertical .tags a[rel~='external']::after, .list-vertical--thirds .tags a[rel~='external']::after, .list-vertical--fourths .tags a[rel~='external']::after, .list-small .tags a[rel~='external']::after, .list-highlighted .tags a[rel~='external']::after, [class^='controls'] a[rel~='external']::after, .govau--header a[rel~='external']::after, .hero a[rel~='external']::after, .callout--warn a[rel~='external']::after, .sidebar a[rel~='external']::after,
-main article:first-of-type a[rel~='external']::after,
-main section:first-of-type a[rel~='external']::after,
-main header:first-of-type a[rel~='external']::after, .sidebar .button-secondary a[rel~='external']::after,
-main article:first-of-type .button-secondary a[rel~='external']::after,
-main section:first-of-type .button-secondary a[rel~='external']::after,
-main header:first-of-type .button-secondary a[rel~='external']::after, .catalogue .intro a[rel~='external']::after, .marketplace--header a[rel~='external']::after, .phase-banner a a[rel~='external']::after, .hero a a[rel~='external']::after, .hero-main a a[rel~='external']::after, #react-bundle-casestudy-view .actions a[rel~='external']::after, #react-bundle-casestudy-view article a[rel~='external']::after {
-  background-image: url("/static/images/icons/external-link--aqua.png");
-  background-image: none, url("/static/images/icons/external-link--aqua.svg"), linear-gradient(transparent, transparent);
 }
 
 /* line 1, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/_typography.scss */

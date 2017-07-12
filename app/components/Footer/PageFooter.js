@@ -38,18 +38,18 @@ export default class PageFooter extends React.Component {
 								<div className="col-md-3 col-sm-6">
 									<h3 className="uikit-display-1">Digital Marketplace brought to you by the DTA</h3>
 									<ul className="uikit-link-list">
-										<li><a href="https://www.dta.gov.au/tags/digital-marketplace/">DTA blog</a></li>
-										<li><a href="https://twitter.com/DTA">DTA twitter</a></li>
-										<li><a href="https://github.com/AusDTO">DTA github</a></li>
+										<li><a rel="external" href="https://www.dta.gov.au/tags/digital-marketplace/">DTA blog</a></li>
+										<li><a rel="external" href="https://twitter.com/DTA">DTA twitter</a></li>
+										<li><a rel="external" href="https://github.com/AusDTO">DTA github</a></li>
 									</ul>
 								</div>
 
 								<div className="col-md-3 col-sm-6">
 									<h3 className="uikit-display-1">DTA resources</h3>
 									<ul className="uikit-link-list">
-										<li><a href="https://www.dta.gov.au/our-work/">Our work</a></li>
-										<li><a href="https://www.dta.gov.au/standard/">Our standard</a></li>
-										<li><a href="https://www.dta.gov.au/design-guides/">Design guides</a></li>
+										<li><a rel="external" href="https://www.dta.gov.au/our-work/">Our work</a></li>
+										<li><a rel="external" href="https://www.dta.gov.au/standard/">Our standard</a></li>
+										<li><a rel="external" href="https://www.dta.gov.au/design-guides/">Design guides</a></li>
 									</ul>
 								</div>
 							</div>
