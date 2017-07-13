@@ -203,6 +203,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actions.omit(`${model}.products`, id));
             // added due to bug in adding empty product then removing without submit
             dispatch(actions.setValidity(`${model}.products.${id}`, true));
+            dispatch(applicationActions.submitApplication());
         },
         // if services are empty, go back to services step, otherwise continue as normal
         clearProducts: (services) => {
