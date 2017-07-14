@@ -265,6 +265,6 @@ module.exports = [{
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Try to dedupe duplicated modules, if any:
     new webpack.optimize.DedupePlugin(),
-    new ExtractTextPlugin( "bundle.css" )
+    new ExtractTextPlugin('[name].css')
   ]
 }];

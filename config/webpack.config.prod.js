@@ -47,6 +47,7 @@ const loaders = [
     test: /\.(js|jsx)$/,
     include: [
       paths.appSrc, 
+      paths.clientSrc,
       paths.appServer, 
       paths.appNodeModules + '/@gov.au/header',
     ],    
@@ -88,6 +89,11 @@ const loaders = [
   {
     test: /\.svg$/,
     loader: 'svg-inline'
+  },
+  {
+    test: /\.scss$/,
+    include: paths.clientSrc,
+    loader: ExtractTextPlugin.extract('style-loader', 'css!sass?&sourceMap=true')
   }
 ]
 
