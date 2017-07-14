@@ -41,8 +41,10 @@ var loaders = [
         test: /\.(js|jsx)$/,
         include: [
           paths.appSrc, 
-          paths.appServer, 
+          paths.appServer,
+          paths.clientSrc,
           paths.appNodeModules + '/@gov.au/header',
+          paths.appNodeModules + '/@gov.au/footer'
         ],
         loader: 'babel',
         query: {
@@ -90,11 +92,12 @@ var loaders = [
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline'
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.scss$/,
-        loader: 'ignore-loader'
+        include: paths.clientSrc,
+        loader: ExtractTextPlugin.extract('style-loader', 'css!sass?&sourceMap=true')
       }
     ]
 
@@ -261,6 +264,7 @@ module.exports = [{
     // This helps ensure the builds are consistent if source hasn't changed:
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Try to dedupe duplicated modules, if any:
-    new webpack.optimize.DedupePlugin()
+    new webpack.optimize.DedupePlugin(),
+    new ExtractTextPlugin('[name].css')
   ]
 }];

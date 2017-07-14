@@ -75,7 +75,9 @@ exports[`SignupForm renders 1`] = `
                   <span>
                     Seller
                     <p>
-                       I want to sell digital products or services.
+                       I want to sell digital products or
+                      <br />
+                      services.
                     </p>
                   </span>
                 </label>
@@ -246,7 +248,9 @@ exports[`SignupForm renders with form_options 1`] = `
                   <span>
                     Seller
                     <p>
-                       I want to sell digital products or services.
+                       I want to sell digital products or
+                      <br />
+                      services.
                     </p>
                   </span>
                 </label>
