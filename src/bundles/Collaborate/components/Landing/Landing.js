@@ -210,11 +210,39 @@ class Landing extends React.Component {
                                     <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-15">Monday <span>15</span> June</time>
+                                            <time dateTime="2017-07-19">Wednesday <span>19</span> July</time>
                                         </th>
-                                        <td>Previous events <span className="date-info">Catch up on past Future Ready webinars. <br/> <a
-                                            href="http://australiansmartcommunities.org.au/future-ready"
-                                            rel="external" target="blank">View videos and resources</a></span>
+                                        <td>The Digital Transformation Agency <span className="date-info">Spearheading a transformation of government services. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/3600653574649190659"
+                                            rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-08-03">Thursday <span>3</span> August</time>
+                                        </th>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/8643785756793183235"
+                                            rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-08-10">Thursday <span>10</span> August</time>
+                                        </th>
+                                        <td> Hobart masterclass <span className="date-info">Gain valuable insights into using digital technology to proactively engage citizens in building smart cities. <br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-community-engagement-customer-service-masterclass-tickets-35952923161"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-08-16">Wednesday <span>16</span> August</time>
+                                        </th>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/1759344332566794755"
+                                            rel="external" target="blank">Register for webinar</a></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -227,11 +255,48 @@ class Landing extends React.Component {
                                     <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-23">Friday <span>23</span> June</time>
+                                            <time dateTime="2017-08-17">Thursday <span>17</span> August</time>
                                         </th>
-                                        <td>Community Engagement <span className="date-info">This webinar will examine community engagement and citizen-centric design.  <br/> <a
-                                            href="https://register.gotowebinar.com/register/4270158298238242050"
+                                        <td> Adelaide masterclass <span className="date-info">Learn how to shape a culture of innovation in your council and community.<br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-thinking-smart-creating-a-culture-of-innovation-tickets-35953128776"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-08-31">Thursday <span>31</span> August</time>
+                                        </th>
+                                        <td> Darwin masterclass <span className="date-info">Explore how to fund smart city projects, select and manage partners and improve procurement.<br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-smart-financing-funding-and-procurement-tickets-35953323358"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-09-12">Tuesday <span>12</span> September</time>
+                                        </th>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/9195896724587921923"
                                             rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-09-27">Wednesday <span>27</span> September</time>
+                                        </th>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/2278966930784001027"
+                                            rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-09-28">Thursday <span>28</span> September</time>
+                                        </th>
+                                        <td> Canberra masterclass <span className="date-info">Urban Data and Governance.<br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-urban-data-and-governance-tickets-35953434691"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
                                         </td>
                                     </tr>
                                     </tbody>
