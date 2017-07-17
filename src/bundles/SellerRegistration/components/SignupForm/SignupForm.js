@@ -22,7 +22,7 @@ class SignupForm extends BaseForm {
     action: React.PropTypes.string,
     csrf_token: React.PropTypes.string,
     form: React.PropTypes.object.isRequired,
-      errors: React.PropTypes.object
+    errors: React.PropTypes.object
   }
 
   state = {
@@ -92,8 +92,7 @@ class SignupForm extends BaseForm {
                 method="post"
                 id="signup"
                 onSubmit={ (model) => this.handleSubmit(model) }
-                onSubmitFailed={onSubmitFailed}
-              >
+                onSubmitFailed={onSubmitFailed}>
                 {csrf_token && (
                   <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
                 )}
@@ -111,8 +110,7 @@ class SignupForm extends BaseForm {
                       validators={{ required }}
                       messages={{
                           required: 'You must select a user type',
-                      }}
-                  />
+                      }}/>
                 </div>
 
                 Now enter your name and your work email address.
@@ -126,8 +124,7 @@ class SignupForm extends BaseForm {
                   validators={{ required }}
                   messages={{
                     required: 'Name is required',
-                  }}
-                />
+                  }} />
 
                 <Textfield
                   model={`${model}.email_address`}
@@ -143,10 +140,7 @@ class SignupForm extends BaseForm {
                   messages={{
                     required: 'Email is required',
                       validEmail: 'Email address must be valid'
-                  }}
-                />
-
-
+                  }}/>
 
                 { isBuyer && (
                   <div styleName="employment-status">
@@ -166,8 +160,7 @@ class SignupForm extends BaseForm {
                       validators={{ required }}
                       messages={{
                         required: 'You must specify your employment status.',
-                      }}
-                    />
+                      }}/>
                   </div>
                 )}
 
