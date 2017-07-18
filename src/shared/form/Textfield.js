@@ -40,7 +40,10 @@ Textfield.propTypes = {
     name: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     htmlFor: React.PropTypes.string.isRequired,
-    label: React.PropTypes.string.isRequired,
+    label: React.PropTypes.oneOfType([
+        React.PropTypes.object.isRequired,
+        React.PropTypes.string.isRequired,
+    ]),
     model: React.PropTypes.oneOfType([
         React.PropTypes.func,
         React.PropTypes.string,
