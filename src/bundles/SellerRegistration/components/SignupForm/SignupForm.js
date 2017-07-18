@@ -25,17 +25,38 @@ class SignupForm extends BaseForm {
     errors: React.PropTypes.object
   }
 
-  state = {
-    signupSuccess: false
-  }
+  constructor(props) {
+    super(props)
+    this.state = {
+      signupSuccess: null,
+      signupMessage: ''
+    }
+    this.statusCheck = this.statusCheck.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);  
+  }  
 
   statusCheck(response) {
-    if (response.status >= 200 && response.status < 300) {
-      return response
-    } else {
+    if (response.status === 200) {
+      this.setState({
+        signupSuccess: true,
+        signupMessage: 'Signup email successfully sent.'
+      })
+    } else if (response.status === 409) {
+      console.log({ response })
       var error = new Error(response.statusText)
       error.response = response
+      this.setState({
+        signupSuccess: false,
+        signupMessage: 'An account with this email domain already exists.' +
+        'Someone in your team may have already created and account with the Marketplace.'
+      })
       throw error
+    } else {
+      this.setState({
+        signupSuccess: false,
+        signupMessage: 'Your signup email was not sent due to an unexpected system error.'.concat(
+        'Please try again later or ', <a href='/contact-us' target="_blank" rel="external">contact us</a>, ' for assistance.')
+      })
     }
   }
 
