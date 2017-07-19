@@ -155,7 +155,7 @@ exports[`SignupForm renders 1`] = `
               rel="external"
               target="_blank"
             >
-              Terms of Use
+               Terms of Use
             </a>
             .
           </small>
@@ -331,7 +331,7 @@ exports[`SignupForm renders with form_options 1`] = `
               rel="external"
               target="_blank"
             >
-              Terms of Use
+               Terms of Use
             </a>
             .
           </small>
