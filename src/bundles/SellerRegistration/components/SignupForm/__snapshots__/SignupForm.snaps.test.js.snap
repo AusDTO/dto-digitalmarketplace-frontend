@@ -50,7 +50,7 @@ exports[`SignupForm renders 1`] = `
                     <span>
                       Buyer
                       <p>
-                         I want to buy on behalf of
+                        I want to buy on behalf of
                         <br />
                         government.
                       </p>
@@ -76,7 +76,7 @@ exports[`SignupForm renders 1`] = `
                     <span>
                       Seller
                       <p>
-                         I want to sell digital products or
+                        I want to sell digital products or
                         <br />
                         services.
                       </p>
@@ -146,9 +146,10 @@ exports[`SignupForm renders 1`] = `
             value=""
           />
         </div>
+         
         <p>
           <small>
-            By creating an account you confirm your acceptance of our 
+            By creating an account you confirm your acceptance of our
             <a
               href="/terms-of-use"
               rel="external"
@@ -225,7 +226,7 @@ exports[`SignupForm renders with form_options 1`] = `
                     <span>
                       Buyer
                       <p>
-                         I want to buy on behalf of
+                        I want to buy on behalf of
                         <br />
                         government.
                       </p>
@@ -251,7 +252,7 @@ exports[`SignupForm renders with form_options 1`] = `
                     <span>
                       Seller
                       <p>
-                         I want to sell digital products or
+                        I want to sell digital products or
                         <br />
                         services.
                       </p>
@@ -321,9 +322,10 @@ exports[`SignupForm renders with form_options 1`] = `
             value=""
           />
         </div>
+         
         <p>
           <small>
-            By creating an account you confirm your acceptance of our 
+            By creating an account you confirm your acceptance of our
             <a
               href="/terms-of-use"
               rel="external"

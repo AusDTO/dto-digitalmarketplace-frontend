@@ -45,6 +45,17 @@ export const validEmail = (val) => {
     }
 }
 
+export const governmentEmail = (val) => {
+    if (!val) {
+        return true;
+    }
+    if (val.includes('gov.au')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 export const minArrayLength = (len) => (arr = []) => {
   return Array.isArray(arr) && arr.filter(v => v.trim()).length >= len;

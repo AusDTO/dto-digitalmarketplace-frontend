@@ -44,7 +44,8 @@ var loaders = [
           paths.appServer,
           paths.clientSrc,
           paths.appNodeModules + '/@gov.au/header',
-          paths.appNodeModules + '/@gov.au/footer'
+          paths.appNodeModules + '/@gov.au/footer',
+          paths.appNodeModules + '/@gov.au/page-alerts'
         ],
         loader: 'babel',
         query: {
