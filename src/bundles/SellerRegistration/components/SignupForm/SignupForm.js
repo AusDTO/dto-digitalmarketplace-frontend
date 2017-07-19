@@ -274,7 +274,7 @@ class SignupForm extends BaseForm {
               <p>
                 <small>
                   By creating an account you confirm your acceptance of our
-                  <a href="/terms-of-use" target="_blank" rel="external">Terms of Use</a>.
+                  <a href="/terms-of-use" target="_blank" rel="external"> Terms of Use</a>.
                 </small>
               </p>
               <input type="submit" value='Create your account'/>
