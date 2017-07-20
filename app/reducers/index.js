@@ -1,6 +1,8 @@
-import MemberReducer from './MemberReducer'
-import combineReducers from 'redux/lib/combineReducers'
+import { combineReducers } from 'redux';
+import { memberInfo, memberInfoHasErrored, memberInfoIsLoading } from './memberInfoReducers';
 
 export default combineReducers({
-  MemberReducer
-})
+    memberInfo,
+    memberInfoHasErrored,
+    memberInfoIsLoading
+});

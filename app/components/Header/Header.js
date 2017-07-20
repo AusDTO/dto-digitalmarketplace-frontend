@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { memberInfoFetchData } from '../../actions'
 import './Header.scss'
-import api from '../../services/api';
 
-export default class Header extends React.Component {
+class Header extends Component {
 	componentWillMount () {
-	    const memberInfo = api.fetchMemberInfo()
-	    memberInfo.then(function(response) {
-		   console.log("PROPS", this.props) //will log results.
-		   if (response.response.isAuthenticated) {
-
-		   }
-		})
+	    this.props.fetchData()
 	}
+
+	 dashBoardLink = () => {
+	    if (this.props.userType === 'buyer') {
+	      return <a href="/buyers">Dashboard</a>
+	    } else if (this.props.userType === 'applicant') {
+	    	return <a href="/sellers/application">Continue application</a>
+	    } else {
+	      return <a href="/sellers">Dashboard</a>
+	    }
+  	}
 
 	render() {
 	    return (
@@ -25,10 +30,18 @@ export default class Header extends React.Component {
 						<div id="react-bundle-auth-header">
 							<ul data-reactroot="" id="main-navigation" className="inline-links--inverted">
 								<li>
-									<a href="/signup">Join the Marketplace</a>
+									{this.props.memberInfo.isAuthenticated ?
+										<span>{ this.dashBoardLink() }</span>
+										:
+										<a href="/signup">Join the Marketplace</a>
+									}
 								</li>
 								<li>
-									<a href="/login?next=/signup">Sign in</a>
+									{this.props.memberInfo.isAuthenticated ?
+										<a href="/login?next=/signup">Sign out</a>
+										:
+										<a href="/login?next=/signup">Sign in</a>
+									}
 								</li>
 							</ul>
 						</div>
@@ -38,3 +51,25 @@ export default class Header extends React.Component {
 	    );
 	}
 }
+
+Header.propTypes = {
+    fetchData: PropTypes.func.isRequired,
+    hasErrored: PropTypes.bool,
+    isLoading: PropTypes.bool
+};
+
+const mapStateToProps = (state) => {
+    return {
+        memberInfo: state.memberInfo,
+        hasErrored: state.memberInfoHasErrored,
+        isLoading: state.memberInfoIsLoading
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: () => dispatch(memberInfoFetchData())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
