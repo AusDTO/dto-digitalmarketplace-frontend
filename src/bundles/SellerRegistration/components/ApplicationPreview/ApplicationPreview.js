@@ -171,6 +171,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
       public_profile,
       digital_marketplace_panel,
       dsp_panel,
+      signed_agreements,
       ...body
     },
     privateInfo: (disclosures ? {
