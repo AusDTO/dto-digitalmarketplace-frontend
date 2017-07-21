@@ -197,7 +197,7 @@ const Body = (props) => {
                     </div>
                 )}
 
-                {signed_agreements && signed_agreements[0]['agreement'] && (
+                {!isEmpty(signed_agreements) && !isEmpty(signed_agreements[0]) && (
                     <div>
                         <p styleName="bold-noMargin">Signed agreements</p>
                         <p>
