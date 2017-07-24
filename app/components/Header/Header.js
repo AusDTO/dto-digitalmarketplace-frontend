@@ -1,21 +1,33 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { memberInfoFetchData } from '../../actions'
+import { memberInfoFetchData, logoutUserAction } from '../../actions'
 import './Header.scss'
 
 class Header extends Component {
+	constructor(props) {
+	    super(props);
+
+	    this.toggle = this.logout.bind(this);
+	 }
+
 	componentWillMount () {
-	    this.props.fetchData()
+	    this.props.fetchData(this.props.cookie)
 	}
 
 	 dashBoardLink = () => {
-	    if (this.props.userType === 'buyer') {
+	    if (this.props.memberInfo.userType == 'buyer') {
 	      return <a href="/buyers">Dashboard</a>
-	    } else if (this.props.userType === 'applicant') {
+	    } else if (this.props.memberInfo.userType == 'applicant') {
 	    	return <a href="/sellers/application">Continue application</a>
 	    } else {
 	      return <a href="/sellers">Dashboard</a>
 	    }
+  	}
+
+  	logout(e) {
+  		console.log("HELLO")
+  		e.preventDefault();
+	    this.props.logoutUser();
   	}
 
 	render() {
@@ -38,9 +50,9 @@ class Header extends Component {
 								</li>
 								<li>
 									{this.props.memberInfo.isAuthenticated ?
-										<a href="/login?next=/signup">Sign out</a>
+										<a  href="/logout">Sign out</a>
 										:
-										<a href="/login?next=/signup">Sign in</a>
+										<a href="/login">Sign in</a>
 									}
 								</li>
 							</ul>
@@ -68,7 +80,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: () => dispatch(memberInfoFetchData())
+        fetchData: (cookie) => dispatch(memberInfoFetchData(cookie)),
+        logoutUser: () => dispatch(logoutUserAction())
     };
 };
 

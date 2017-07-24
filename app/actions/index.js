@@ -31,20 +31,30 @@ export function memberInfoFetchDataSuccess(memberInfo) {
     };
 }
 
-export function memberInfoFetchData() {
+export function memberInfoFetchData(cookie) {
     return (dispatch) => {
         dispatch(memberInfoIsLoading(true))
 
-        api.fetchMemberInfo()
+        api.fetchMemberInfo(cookie)
 	        .then((response) => {
 
 	            dispatch(memberInfoIsLoading(false))
-	            // dispatch(memberInfoFetchDataSuccess(response.response))
 	            
 	            return response.response
 	        })
 	        .then((response) => response)
 	        .then((memberInfo) => dispatch(memberInfoFetchDataSuccess(memberInfo)))
 	        .catch(() => dispatch(memberInfoHasErrored(true)))
-    };
+  	}
+}
+
+export function logoutUserAction() {
+  return (dispatch) => {
+    api.logoutMember()
+        .then((response) => {
+            return response.response
+            
+        })
+        .catch(() => dispatch(memberInfoHasErrored(true)))
+  }
 }

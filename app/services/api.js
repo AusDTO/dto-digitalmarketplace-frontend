@@ -1,22 +1,35 @@
 /*  global ENV  */
 import axios from 'axios'
 
-const memberUrl = 'api/ping'
+
+const memberUrl = '/api/ping'
 const logoutUrl = '/logout'
+
+const baseUrl = () => {
+  if ( process.env.NODE_ENV === 'production') {
+    return 'https://marketplace.service.gov.au'
+  } else if (process.env.NODE_ENV === 'staging') {
+    return 'https://dm-dev.apps.staging.digital.gov.au'
+  } else {
+    return 'http://localhost:8000'
+  }
+}
 /**
  * [fetchMemberInfo description]
  * @return {Object}           respnose object with error and fetched data
  */
-const fetchMemberInfo = () => {
+const fetchMemberInfo = (cookie) => {
   return axios({
-    baseURL: 'http://localhost:8000',
+    baseURL: baseUrl(),
     url: memberUrl,
     timeout: 20000,
     method: 'GET',
     responseType: 'json',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cookie': 'dm_session=' + cookie + ';' 
     },
+    withCredentials: true,
     validateStatus: (status) => status === 200
   })
   .then(response => {
@@ -29,6 +42,7 @@ const fetchMemberInfo = () => {
 
 const logoutMember = () => {
   return axios({
+    baseURL: baseUrl(),
     url: logoutUrl,
     timeout: 20000,
     method: 'POST',
@@ -36,10 +50,11 @@ const logoutMember = () => {
     headers: {
       'Content-Type': 'application/json'
     },
+    withCredentials: true,
     validateStatus: (status) => status === 200
   })
   .then(response => {
-    return { error: null, response }
+    return { error: null, response: response }
   })
   .catch(response => {
     return { error: response.error || 'error logging out member', response: null }
@@ -47,5 +62,6 @@ const logoutMember = () => {
 }
 
 export default {
-  fetchMemberInfo
+  fetchMemberInfo,
+  logoutMember
 }

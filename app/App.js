@@ -9,14 +9,14 @@ import configureStore from './store/index';
 
 const store = configureStore();
 
-const App = ({component, initialState}) => (
+const App = ({component, initialState, cookie}) => (
 	<Provider store={store}>
 		<div id="Application" className="uikit-grid uikit-body">
 		  <Head />
 		  <header role="banner">
 			  	<Banner />
 			  	<GovAuBanner />
-		  		<Header />
+		  		<Header cookie={cookie}/>
 		  </header>
 		  <main id="content">
 		    <div id={`react-bundle-${component.slug}-state`} style={{display:'none'}} dangerouslySetInnerHTML={{ __html: JSON.stringify(initialState) }} />
@@ -30,3 +30,4 @@ const App = ({component, initialState}) => (
 )
 
 export default App
+
