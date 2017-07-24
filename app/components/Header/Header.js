@@ -4,12 +4,6 @@ import { memberInfoFetchData, logoutUserAction } from '../../actions'
 import './Header.scss'
 
 class Header extends Component {
-	constructor(props) {
-	    super(props);
-
-	    this.toggle = this.logout.bind(this);
-	 }
-
 	componentWillMount () {
 	    this.props.fetchData(this.props.cookie)
 	}
@@ -22,12 +16,6 @@ class Header extends Component {
 	    } else {
 	      return <a href="/sellers">Dashboard</a>
 	    }
-  	}
-
-  	logout(e) {
-  		console.log("HELLO")
-  		e.preventDefault();
-	    this.props.logoutUser();
   	}
 
 	render() {
@@ -80,8 +68,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: (cookie) => dispatch(memberInfoFetchData(cookie)),
-        logoutUser: () => dispatch(logoutUserAction())
+        fetchData: (cookie) => dispatch(memberInfoFetchData(cookie))
     };
 };
 
