@@ -31,11 +31,61 @@ class SignupForm extends BaseForm {
     super(props)
     this.state = {
       signupSuccess: null,
-      signupMessage: null
+      signupMessage: null,
+      emailValidators: {
+        required, validEmail
+      },
+      emailErrorMessages: {
+        required: 'Email is required',
+        validEmail: 'A validly formatted email is required',
+        governmentEmail: 'Email should have a government domain'
+      },
+      isBuyer: this.props.signupForm.user_type === 'buyer'
     }
     this.statusCheck = this.statusCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);  
+    this.handleSubmitFailed = this.handleSubmitFailed.bind(this);
   }  
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.form.valid) {
+      if (!nextProps.form.valid) {
+        this.setState({
+          signupSuccess: null,
+          signupMessage: null
+        })
+      }
+    }
+
+    if (this.props.signupForm.user_type !== nextProps.signupForm.user_type) {
+      if (nextProps.signupForm.user_type === 'seller') {
+        this.setState({
+          emailValidators: {
+            required, validEmail
+          },
+          emailErrorMessages: {
+            required: 'Email is required',
+            validEmail: 'A validly formatted email is required'
+          },
+          isBuyer: false
+        }) 
+      }
+      
+      if (nextProps.signupForm.user_type === 'buyer') {
+        this.setState({
+          emailValidators: {
+            required, validEmail, governmentEmail
+          },
+          emailErrorMessages: {
+            required: 'Email is required',
+            validEmail: 'A validly formatted email is required',
+            governmentEmail: 'Email should have a government domain'
+          },
+          isBuyer: true
+        })  
+      }
+    }
+  }
 
   handleError({status}) {
     switch (status) {
@@ -59,11 +109,9 @@ class SignupForm extends BaseForm {
           signupSuccess: false, signupMessage: <li>
               <p>
                 The Digital Marketplace encountered an error trying to send your signup email.
-                Please try again later or
-                <a href='/contact-us' target="_blank" rel="external">
-                  contact us
-                </a>
-                for assistance.
+                Please try again later
+                or <a href='/contact-us' target="_blank" rel="external"> contact 
+                us </a> for assistance.
               </p>
             </li>
         };
@@ -77,6 +125,7 @@ class SignupForm extends BaseForm {
   }
 
   handleSubmit(model) {
+    this.setState({signupSuccess: null, signupMessage: null})
     return api('/api/signup', {
       method: 'POST',
       body: JSON.stringify(model),
@@ -88,6 +137,13 @@ class SignupForm extends BaseForm {
       .catch((error) => {
         this.setState({signupSuccess: false, signupMessage: error})
       })
+  }
+  
+  handleSubmitFailed() {
+    this.setState({
+      signupSuccess: null,
+      signupMessage: null
+    })
   }
 
   render() {
@@ -103,18 +159,25 @@ class SignupForm extends BaseForm {
       onSubmit,
       onSubmitFailed
     } = this.props;
-    const isBuyer = signupForm.user_type === 'buyer';
-    const action = isBuyer
+    let valid = form.valid;
+    let action = isBuyer
       ? buyer_url
       : seller_url;
-    let {signupSuccess, signupMessage} = this.state;
+    let {
+      signupSuccess,
+      signupMessage,
+      isBuyer,
+      emailValidators,
+      emailErrorMessages
+    } = this.state;
+    
     return (
       <div>
         {signupSuccess && <div>
           {signupMessage && <PageAlert as='success'>
             <h4>Signup email sent</h4>
           </PageAlert>
-}
+        }
           <article role="main">
             <header className="page-heading page-heading-without-breadcrumb">
               <h1>
@@ -122,45 +185,31 @@ class SignupForm extends BaseForm {
               </h1>
             </header>
             <p>
-              An email has been sent to
-              <strong>{signupForm.email_address}</strong>
-              with next steps.
+              An email has been sent 
+              to <strong>{signupForm.email_address}</strong> with next steps.
             </p>
             <p>
               If you don’t receive the email within the next 5 minutes or so, check to see if
               it’s been classified as spam or
-              <a href='/contact-us' target="_blank" rel="external">
-                contact us
-              </a>
-              for assistance.
+              <a href='/contact-us' target="_blank" rel="external"> contact us </a> for assistance.
             </p>
           </article>
         </div>
-}
-        {!signupSuccess && <Layout>
-          {signupMessage && <PageAlert as='error'>
-            <h4>Signup invite email was not sent</h4>
-            <ul>
-              {signupMessage}
-            </ul>
-          </PageAlert>
-}
-          <header>
-            <h1>Let’s get started</h1>
-          </header>
+        }
+        {!signupSuccess &&
+          <Layout>
+            <header>
+              <h1>Let’s get started</h1>
+            </header>
           <article role="main">
-            {formErrors && formErrors.email_address && formErrors.email_address.government_email && (
-              <div
-                ref="box"
-                className="callout--warning"
-                aria-describedby="validation-masthead-heading"
-                tabIndex="-1"
-                role="alert">
-                <h4 id="validation-masthead-heading">
-                  Email needs to be a government email address</h4>
-                Enter your government email address ending in
-                <b>.gov.au.</b>&nbsp; If your email is different, request your account from
-                <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</div>
+
+            {(signupMessage && valid &&
+              <PageAlert as='error'>
+                <h4>Signup invite email was not sent</h4>
+                <ul>
+                  {signupMessage}
+                </ul>
+              </PageAlert>
             )}
             <ErrorBox focusOnMount={true} model={model}/>
             <Form
@@ -237,15 +286,9 @@ class SignupForm extends BaseForm {
                   from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
                 )
                 : (<br/>)}
-                validators={isBuyer
-                  ? {required, validEmail, governmentEmail}
-                  : {required, validEmail}
-                }
-                messages={{
-                required: 'Email is required',
-                validEmail: 'Email address must be valid',
-                governmentEmail: "Email address must end in '.gov.au'"
-              }}/> {isBuyer && (
+                validators={emailValidators}
+                messages={emailErrorMessages} />
+              {isBuyer && (
                 <div styleName="employment-status">
                   <RadioList
                     model={`${model}.employment_status`}
