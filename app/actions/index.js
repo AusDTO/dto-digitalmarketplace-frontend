@@ -31,19 +31,11 @@ export function memberInfoFetchDataSuccess(memberInfo) {
     };
 }
 
-export function memberInfoFetchData(cookie) {
+
+export function memberInfoFetchData(userSessionCookie) {
     return (dispatch) => {
-        dispatch(memberInfoIsLoading(true))
-
-        api.fetchMemberInfo(cookie)
-	        .then((response) => {
-
-	            dispatch(memberInfoIsLoading(false))
-	            
-	            return response.response
-	        })
-	        .then((response) => response)
-	        .then((memberInfo) => dispatch(memberInfoFetchDataSuccess(memberInfo)))
+        return api.fetchMemberInfo(userSessionCookie)
+	        .then((response) => dispatch(memberInfoFetchDataSuccess(response.response)))
 	        .catch(() => dispatch(memberInfoHasErrored(true)))
   	}
 }

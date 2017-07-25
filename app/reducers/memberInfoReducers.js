@@ -32,7 +32,7 @@ export function memberInfoIsLoading(state = false, action) {
     }
 }
 
-export function memberInfo(state = [], action) {
+export function memberInfo(state = {}, action) {
     switch (action.type) {
         case MEMBER_INFO_FETCH_DATA_SUCCESS:
             return action.memberInfo;

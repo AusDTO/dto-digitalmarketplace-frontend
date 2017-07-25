@@ -18,7 +18,7 @@ const baseUrl = () => {
  * [fetchMemberInfo description]
  * @return {Object}           respnose object with error and fetched data
  */
-const fetchMemberInfo = (cookie) => {
+const fetchMemberInfo = (userSessionCookie) => {
   return axios({
     baseURL: baseUrl(),
     url: memberUrl,
@@ -27,7 +27,7 @@ const fetchMemberInfo = (cookie) => {
     responseType: 'json',
     headers: {
       'Content-Type': 'application/json',
-      'Cookie': 'dm_session=' + cookie + ';' 
+      'Cookie': 'dm_session=' + userSessionCookie + ';' 
     },
     withCredentials: true,
     validateStatus: (status) => status === 200

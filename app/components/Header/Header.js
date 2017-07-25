@@ -5,7 +5,7 @@ import './Header.scss'
 
 class Header extends Component {
 	componentWillMount () {
-	    this.props.fetchData(this.props.cookie)
+	    this.props.fetchData(this.props.userSessionCookie)
 	}
 
 	 dashBoardLink = () => {
@@ -68,7 +68,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: (cookie) => dispatch(memberInfoFetchData(cookie))
+        fetchData: (userSessionCookie) => dispatch(memberInfoFetchData(userSessionCookie))
     };
 };
 
