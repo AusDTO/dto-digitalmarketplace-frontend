@@ -1,17 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import has from 'lodash/has';
-
-if (typeof window !== 'undefined') {
-    var leaflet = require('leaflet');
-    var react_leaflet = require('react-leaflet');
-}
-
 import styles from './Landing.css'
-import lgaData from './LGA_2016_AUST.geo5.json';
-import cityData from './citydata.json';
-import supplierData from './suppliers.geo.json';
 
 class Landing extends React.Component {
     static defaultProps = {
@@ -23,50 +13,7 @@ class Landing extends React.Component {
     };
     render() {
         let {seller_count} = this.props;
-        const bounds = [[-15.133, 148.000], [-40.050, 137.467]];
-        let map;
-        if (leaflet && react_leaflet) {
 
-            function onEachFeature(feature, layer) {
-
-                if (feature.properties && feature.properties.LGA_NAME16 && has(cityData, feature.properties.LGA_NAME16)) {
-                    layer.bindPopup(cityData[feature.properties.LGA_NAME16]);
-                }
-            }
-
-            const icon = new leaflet.Icon({
-                iconUrl: 'http://www.googlemapsmarkers.com/v1/18788d/',
-                iconSize: [21, 34], // size of the icon
-            });
-
-            function pointToLayer(feature, latlng) {
-                return leaflet.marker(latlng, {icon: icon});
-            }
-
-            function style(feature) {
-                return {
-                    fillColor: (has(cityData, feature.properties.LGA_NAME16) ? "#5bcbe3" : '#f0f3f5'),
-                    weight: 1,
-                    opacity: 1,
-                    color: '#999',
-                    fillOpacity: 0.7
-                };
-            }
-
-            map = (<react_leaflet.Map bounds={bounds} scrollWheelZoom={false}>
-                <react_leaflet.TileLayer
-                    url='//cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
-                    attribution='
-                    &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;
-        <a href="https://carto.com/attribution">CARTO</a>, &copy; Australian Bureau of Statistics (ABS) under <a href="http://creativecommons.org/licenses/by/2.5/au/">CC-BY 2.5</a>'
-                />
-                <react_leaflet.GeoJSON data={supplierData} icon={icon} onEachFeature={onEachFeature}
-                                       pointToLayer={pointToLayer}/>
-                <react_leaflet.GeoJSON data={lgaData} style={style} onEachFeature={onEachFeature}/>
-            </react_leaflet.Map>)
-        } else {
-            map = (<span></span>)
-        }
         let domains =
             {
                 "User research and Design": 124,
@@ -88,17 +35,16 @@ class Landing extends React.Component {
                     productivity and sustainability of Australian communities.</p>
 
 
-                <div styleName="styles.map"
-                     style={{position: (typeof window !== 'undefined' && window.innerWidth < 630 ? "relative" : "absolute")}}>
-                    { map }
+                <div styleName="styles.map">
+                    <img src="/static/media/map.png" alt="Map of councils and Marketplace sellers across Australia"/>
 
-                    <div styleName="styles.mapOverlay"
-                         style={{position: (typeof window !== 'undefined' && window.innerWidth < 630 ? "relative" : "absolute")}}>
+                    <div styleName="styles.mapOverlay">
                         <span>
-                           <strong styleName="styles.pop" style={{color: '#5bcbe3'}}>106</strong> <div> Future Ready
+                           <strong styleName="styles.pop" >106</strong> <div style={{display: "inline-block"}}> Future Ready
                                 councils</div>
                             <br/>
-                            <strong styleName="styles.pop">{seller_count}</strong> <div>Marketplace sellers</div>
+                            <strong styleName="styles.pop" style={{color: '#870f48'}}>{seller_count}</strong> <article style={{display: "inline"}}>
+                            <a href="/search/sellers">Marketplace sellers</a></article>
                         </span>
                         <br/>
                         <div>
@@ -107,7 +53,7 @@ class Landing extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div styleName="styles.mapSpacer"></div>
+
                 <div>
                     <h2 style={{textAlign: "center"}}>Council collaboration</h2>
                     <p style={{textAlign: "center"}}>Connect and learn from councils building smart communities<br/>
@@ -208,15 +154,6 @@ class Landing extends React.Component {
                             <article>
                                 <table className="calendar-table" style={{marginTop: 0}}>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-07-19">Wednesday <span>19</span> July</time>
-                                        </th>
-                                        <td>The Digital Transformation Agency <span className="date-info">Spearheading a transformation of government services. <br/> <a
-                                            href="https://attendee.gotowebinar.com/register/3600653574649190659"
-                                            rel="external" target="blank">Register for webinar</a></span>
-                                        </td>
-                                    </tr>
 
                                     <tr>
                                         <th scope="row" styleName="styles.day">
@@ -245,14 +182,6 @@ class Landing extends React.Component {
                                             rel="external" target="blank">Register for webinar</a></span>
                                         </td>
                                     </tr>
-                                    </tbody>
-                                </table>
-                            </article>
-                        </li>
-                        <li styleName="styles.calendarColTwo" style={{borderTop: "0"}}>
-                            <article>
-                                <table className="calendar-table" style={{marginTop: 0}}>
-                                    <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
                                             <time dateTime="2017-08-17">Thursday <span>17</span> August</time>
@@ -262,7 +191,14 @@ class Landing extends React.Component {
                                             rel="external" target="blank">Register for the masterclass</a></span>
                                         </td>
                                     </tr>
-
+                                    </tbody>
+                                </table>
+                            </article>
+                        </li>
+                        <li styleName="styles.calendarColTwo" style={{borderTop: "0"}}>
+                            <article>
+                                <table className="calendar-table" style={{marginTop: 0}}>
+                                    <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
                                             <time dateTime="2017-08-31">Thursday <span>31</span> August</time>
