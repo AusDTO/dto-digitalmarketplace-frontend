@@ -1,5 +1,11 @@
-if ( process.env.NODE_ENV === 'development') {
-  module.exports = require('./development')
-} else {
-  module.exports = require('./production')
+import {createStore, applyMiddleware} from 'redux';
+import rootReducer from '../reducers';
+import thunk from 'redux-thunk';
+
+export default function configureStore(initialState) {
+  return createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(thunk)
+  );
 }

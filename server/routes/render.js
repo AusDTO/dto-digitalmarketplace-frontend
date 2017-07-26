@@ -6,7 +6,7 @@ import fs from 'fs'
 import get from 'lodash/get'
 import Rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer'
-import App from '../../app/App'
+// import App from '../../app/App'
 import {routes} from './routes' 
 import template from './template'
 import {Helmet} from "react-helmet"
