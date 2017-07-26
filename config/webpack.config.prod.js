@@ -50,6 +50,7 @@ const loaders = [
       paths.clientSrc,
       paths.appServer, 
       paths.appNodeModules + '/@gov.au/header',
+      paths.appNodeModules + '/@gov.au/page-alerts'
     ],    
     loader: 'babel',
     query: {
