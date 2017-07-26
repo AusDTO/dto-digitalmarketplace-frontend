@@ -122,7 +122,6 @@ const render = (request, response) => {
 const renderPage = (request, response) => {
   try {
     let component, initialState, context = {};
-    let userSessionCookie = request.universalCookies.get('dm_session');
     const validRoute = routes.some(route => {
       const match = matchPath(request.url, route);
       if (match) {
@@ -139,7 +138,7 @@ const renderPage = (request, response) => {
 
     response.send(template(ReactDOMServer.renderToString(
       <StaticRouter location={request.url} context={context}>
-        <App component={component} initialState={initialState} userSessionCookie={userSessionCookie}/>
+        <App component={component} initialState={initialState}/>
       </StaticRouter>
     ), Helmet.renderStatic()));
 
