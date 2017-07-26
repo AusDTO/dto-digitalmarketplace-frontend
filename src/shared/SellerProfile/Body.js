@@ -34,6 +34,7 @@ const Body = (props) => {
         products = {},
         digital_marketplace_panel,
         dsp_panel,
+        signed_agreements,
         CaseStudyLink = () => null,
     } = props;
 
@@ -196,6 +197,18 @@ const Body = (props) => {
                     </div>
                 )}
 
+                {!isEmpty(signed_agreements) && !isEmpty(signed_agreements[0]) && (
+                    <div>
+                        <p styleName="bold-noMargin">Signed agreements</p>
+                        <p>
+                        {signed_agreements[0]['agreement'] &&
+                        <a href={signed_agreements[0]['agreement']['url']}>{signed_agreements[0]['agreement']['version']}
+                        </a>} signed on {signed_agreements[0]['signed_at']
+                        && format(new Date(signed_agreements[0]['signed_at']), 'DD/MM/YYYY')}
+                            </p>
+                    </div>
+                )}
+
                 {abn && (
                     <div>
                         <p styleName="bold-noMargin">ABN</p>
@@ -311,6 +324,7 @@ Body.propTypes = {
     documents: React.PropTypes.object,
     documentsUrl: React.PropTypes.string,
     case_studies: React.PropTypes.object,
+    signed_agreements: React.PropTypes.array,
     representative: React.PropTypes.string,
     email: React.PropTypes.string,
     phone: React.PropTypes.string,
