@@ -259,7 +259,7 @@ module.exports = [{
     new webpack.optimize.DedupePlugin()
   ]
 }, {
-  name: 'new application',
+  name: 'client-side render',
   entry: './app/App.js',
   output: {
     path: './build',
