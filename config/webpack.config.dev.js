@@ -41,7 +41,8 @@ var loaders = [
         test: /\.(js|jsx)$/,
         include: [
           paths.appSrc, 
-          paths.appServer
+          paths.appServer,
+          paths.appNodeModules + '/@gov.au/page-alerts'
         ],
         loader: 'babel',
         query: {
@@ -259,7 +260,7 @@ module.exports = [{
     new webpack.optimize.DedupePlugin()
   ]
 }, {
-  name: 'new application',
+  name: 'client-side render',
   entry: './app/App.js',
   output: {
     path: './build',

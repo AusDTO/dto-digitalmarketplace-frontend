@@ -64,7 +64,7 @@ export const mapErrorMessages = (forms, messages, model) => {
           let error = get(messageObject, errorKey);
           return errors.concat(error);
         }, []);
-
+        result.messages = result.messages.filter(message => message)
       return result;
     })
     .filter(e => e.messages.length);

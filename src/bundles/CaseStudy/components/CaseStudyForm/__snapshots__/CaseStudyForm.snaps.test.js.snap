@@ -1116,10 +1116,8 @@ exports[`CaseStudyForm renders with errors 1`] = `
     role="main"
   >
     <div
-      aria-describedby="validation-masthead-heading"
-      className="callout--warning"
+      className="uikit-page-alerts uikit-page-alerts--error"
       role="alert"
-      tabIndex="-1"
     >
       <h4
         id="validation-masthead-heading"
