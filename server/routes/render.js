@@ -6,10 +6,6 @@ import fs from 'fs'
 import get from 'lodash/get'
 import Rollbar from 'rollbar'
 import ComponentRenderer from '../ComponentRenderer'
-// import App from '../../app/App'
-import {routes} from './routes' 
-import template from './template'
-import {Helmet} from "react-helmet"
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -119,36 +115,4 @@ const render = (request, response) => {
   }
 } 
 
-const renderPage = (request, response) => {
-  try {
-    let component, initialState, context = {};
-    const validRoute = routes.some(route => {
-      const match = matchPath(request.url, route);
-      if (match) {
-        let props = {_serverContext: {location: request.url}, form_options: {}, options: {serverRender: true}};
-        initialState = Object.assign({}, props);
-        component = renderComponent(route.widgetPath, props, false);
-      }
-      return match
-    })
-
-    if (!validRoute) {
-      return response.status(404).send('Page not found');
-    }
-
-    response.send(template(ReactDOMServer.renderToString(
-      <StaticRouter location={request.url} context={context}>
-        <App component={component} initialState={initialState}/>
-      </StaticRouter>
-    ), Helmet.renderStatic()));
-
-  } catch(e) {
-    rollbar.handleError(e, request);
-    return response.status(400).send({ 
-      error: `Error rendering: '${request.url}'`, 
-      stack: e.stack 
-    });
-  }
-}
-
-export {render, renderPage, renderComponent}
+export {render, renderComponent}

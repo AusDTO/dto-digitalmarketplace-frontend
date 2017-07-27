@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 
-import { render, renderPage } from './routes/render'
+import { render } from './routes/render'
 
 var _rollbarConfig = {
     accessToken: process.env.ROLLBAR_TOKEN,
@@ -53,8 +53,9 @@ app.get('/', function (req, res) {
 
 app.post('/render', render);
 
+app.set('view engine', 'ejs');
 app.get('/*', function(req, res) {
-  res.sendfile('public/indexReact.html');
+  res.render('index');
 })
 
 const server = app.listen(process.env.PORT || 60000, function() {
