@@ -47,7 +47,8 @@ const loaders = [
     test: /\.(js|jsx)$/,
     include: [
       paths.appSrc, 
-      paths.appServer, 
+      paths.appServer,
+      paths.appNodeModules + '/@gov.au/page-alerts'
     ],    
     loader: 'babel',
     query: {

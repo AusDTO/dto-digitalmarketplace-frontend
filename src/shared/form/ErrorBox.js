@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 
+import PageAlert from '@gov.au/page-alerts';
+
 import { getInvalidFields } from '../reduxModules/errorMessageSelector';
 
 class ErrorBox extends React.Component {
@@ -22,13 +24,12 @@ class ErrorBox extends React.Component {
 
   render() {
     const { invalidFields, form } = this.props;
-
     if (form.submitFailed === false || !invalidFields.length) {
       return null;
     }
 
     return (
-      <div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
+      <PageAlert as='error'>
         <h4 id="validation-masthead-heading">There was a problem with the details you gave</h4>
         {invalidFields && (
           <ul>
@@ -41,7 +42,7 @@ class ErrorBox extends React.Component {
             })}
           </ul>
         )}
-      </div>
+      </PageAlert>
     )
   }
 }
