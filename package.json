@@ -52,7 +52,7 @@
     "@gov.au/body": "^0.1.1",
     "@gov.au/grid-12": "^0.1.0",
     "@gov.au/header": "^1.1.0",
-    "@gov.au/pancake-sass": "^1.1.0",
+    "@gov.au/pancake-sass": "^1.1.1",
     "abnacn-validator": "0.0.5",
     "autotrack": "^2.4.1",
     "babel-core": "6.14.0",
@@ -150,7 +150,7 @@
     ]
   },
   "engines": {
-    "node": "7.10.0"
+    "node": "7.10.1"
   },
   "pancake": {
     "auto-save": true,
