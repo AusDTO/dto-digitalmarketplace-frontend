@@ -41,15 +41,8 @@ var loaders = [
         test: /\.(js|jsx)$/,
         include: [
           paths.appSrc, 
-<<<<<<< HEAD
-          paths.appServer
-=======
           paths.appServer,
-          paths.clientSrc,
-          paths.appNodeModules + '/@gov.au/header',
-          paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts'
->>>>>>> a2ee344182844b3198596b5f3810ed4faeca942a
         ],
         loader: 'babel',
         query: {
