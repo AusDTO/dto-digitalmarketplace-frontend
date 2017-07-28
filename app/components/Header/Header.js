@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { memberInfoFetchData, logoutUserAction } from '../../actions'
+import { memberInfoFetchData } from '../../actions/memberActions'
 import './Header.scss'
 
 class Header extends Component {
-	componentWillMount () {
+	componentDidMount () {
 	    this.props.fetchData()
 	}
 

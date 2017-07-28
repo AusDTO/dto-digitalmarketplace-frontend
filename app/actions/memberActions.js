@@ -1,32 +1,28 @@
 import { 
 	MEMBER_INFO_HAS_ERRORED, 
 	MEMBER_INFO_IS_LOADING, 
-	MEMBER_INFO_FETCH_DATA_SUCCESS 
+	MEMBER_INFO_FETCH_DATA_SUCCESS
 } from '../constants/constants';
 
 import apiFetch from '../services/apiFetch'
 
-export function setAuthState(newState) {
-  return { type: SET_AUTH, newState };
-}
-
 export function memberInfoHasErrored(bool) {
     return {
-        type: 'MEMBER_INFO_HAS_ERRORED',
+        type: MEMBER_INFO_HAS_ERRORED,
         hasErrored: bool
     };
 }
 
 export function memberInfoIsLoading(bool) {
     return {
-        type: 'MEMBER_INFO_IS_LOADING',
+        type: MEMBER_INFO_IS_LOADING,
         isLoading: bool
     };
 }
 
 export function memberInfoFetchDataSuccess(memberInfo) {
     return {
-        type: 'MEMBER_INFO_FETCH_DATA_SUCCESS',
+        type: MEMBER_INFO_FETCH_DATA_SUCCESS,
         memberInfo
     };
 }
@@ -34,7 +30,7 @@ export function memberInfoFetchDataSuccess(memberInfo) {
 
 export function memberInfoFetchData() {
     return (dispatch) => {
-
+    	dispatch(memberInfoIsLoading(true));
         apiFetch('/api/ping')
             .then((response) => {
                 if (!response.ok) {
@@ -49,15 +45,4 @@ export function memberInfoFetchData() {
             .then((memberInfo) => dispatch(memberInfoFetchDataSuccess(memberInfo)))
             .catch(() => dispatch(memberInfoHasErrored(true)));
   	}
-}
-
-export function logoutUserAction() {
-  return (dispatch) => {
-    api.logoutMember()
-        .then((response) => {
-            return response.response
-            
-        })
-        .catch(() => dispatch(memberInfoHasErrored(true)))
-  }
 }
