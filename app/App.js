@@ -11,18 +11,18 @@ import SignupForm from './components/SignupForm/SignupForm'
 const store = configureStore();
 
 render (
-    <Provider store={store}>
-        <div id="Application" className="uikit-grid uikit-body">
-		  <header role="banner">
-			  	<Banner />
-			  	<GovAuBanner />
-		  		<Header />
-		  </header>
-		  <main id="content">
-		  	<SignupForm />
-		  </main>
-		  <Footer />
-	  	</div>
-    </Provider>,
-    document.getElementById('appReact')
+  <Provider store={store}>
+    <div id="Application" className="uikit-grid uikit-body">
+      <header role="banner">
+      	<Banner />
+      	<GovAuBanner />
+    		<Header />
+      </header>
+      <main id="content">
+      	<SignupForm />
+      </main>
+      <Footer />
+  	</div>
+  </Provider>,
+  document.getElementById('appReact')
 );
