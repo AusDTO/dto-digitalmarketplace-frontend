@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "@gov.au/footer": "^0.2.0",
     "autoprefixer": "6.4.1",
     "babel-plugin-react-css-modules": "2.1.4",
     "babel-preset-stage-0": "6.16.0",
