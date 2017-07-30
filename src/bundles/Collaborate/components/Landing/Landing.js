@@ -46,9 +46,9 @@ class Landing extends React.Component {
                             <strong styleName="styles.pop" style={{color: '#870f48'}}>{seller_count}</strong> <article style={{display: "inline"}}>
                             <a href="/search/sellers">Marketplace sellers</a></article>
                         </span>
-                        <br/>
+                        <br/><br/>
                         <div>
-                            <p>Got an idea, pilot or<br/> live project to share?</p>
+                            <p style={{marginBottom: "0px"}}>Got an idea, pilot or<br/> live project to share?</p>
                             <a href="/collaborate/project/new" role="button">Add your project</a><br/>
                         </div>
                     </div>

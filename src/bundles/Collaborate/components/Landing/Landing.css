@@ -43,11 +43,12 @@
 
 .map {
     width: 100%;
+    min-height: 350px;
     left: 0;
     text-align: center;
 }
 .map img {
-    width: 74%;
+    width: 50%;
     display: inline-block;
 }
 .push {
@@ -172,7 +173,7 @@
     .cardList li {
         width: 262px;
         display: inline-block;
-        margin-right: 60px;
+        margin-right: 73px;
         height: 320px;
         float: left;
         margin-top: 20px;
@@ -216,17 +217,14 @@
         width: 108%
     }
     .map {
-        height: 230px;
-    }
-    .map img {
-        width: 65%;
+        height: 250px;
     }
     .mapOverlay {
-        width: 190px;
+        width: 250px;
         margin-top: 0;
+        margin-right: 0;
     }
     .mapOverlay span {
-        width: 190px;
         display: block;
     }
 
@@ -236,13 +234,13 @@
 
     .mapOverlay span div {
         display: inline-block;
-        width: 100px;
+        width: 178px;
         text-align: left;
     }
 
     .pop {
         height: 50px;
-        vertical-align: top;
+        vertical-align: middle;
     }
 
     .becomeASeller {
@@ -279,14 +277,16 @@
         flex-basis: 100% !important;
     }
 }
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-device-width: 767px) {
     .map img {
         width: 100%;
     }
-    .mapOverlay{
+
+    .mapOverlay {
         width: 100%;
     }
 }
+
 .chart {
     padding: 4px 5px;
     width: 100%;
