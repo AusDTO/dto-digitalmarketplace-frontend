@@ -41,8 +41,8 @@ var loaders = [
         test: /\.(js|jsx)$/,
         include: [
           paths.appSrc, 
-          paths.appServer, 
-          paths.appNodeModules + '/@gov.au/header',
+          paths.appServer,
+          paths.appNodeModules + '/@gov.au/page-alerts'
         ],
         loader: 'babel',
         query: {
@@ -90,11 +90,7 @@ var loaders = [
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline'
-      },
-      {
-        test: /\.scss$/,
-        loader: 'ignore-loader'
+        loader: 'svg-inline-loader'
       }
     ]
 
@@ -262,5 +258,47 @@ module.exports = [{
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Try to dedupe duplicated modules, if any:
     new webpack.optimize.DedupePlugin()
+  ]
+}, {
+  name: 'client-side render',
+  entry: './app/App.js',
+  output: {
+    path: './build',
+    filename: 'build.js',
+    publicPath: publicPath
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        include: [
+          paths.clientSrc,
+          paths.appNodeModules + '/@gov.au/footer',
+          paths.appNodeModules + '/@gov.au/page-alerts',
+        ],
+        loader: 'babel'
+      },
+      {
+        test: /\.scss$/,
+        include: paths.clientSrc,
+        loader: ExtractTextPlugin.extract('style-loader', 'css!sass?&sourceMap=true')
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      }
+    ],
+  },
+  plugins: [
+    new ExtractTextPlugin('[name].css'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      }
+    })
   ]
 }];

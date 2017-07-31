@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 
-import { render, renderPage } from './routes/render'
+import { render } from './routes/render'
 
 var _rollbarConfig = {
     accessToken: process.env.ROLLBAR_TOKEN,
@@ -31,11 +31,11 @@ var argv = require('yargs')
   .argv;
 
 var app = express();
-
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(compression());
 app.use('/bundle', express.static('build'));
 app.use('/static', express.static('build/static'));
+
 app.use(function errorHandler(err, request, response, next) {
   console.log('[' + new Date().toISOString() + '] ' + err.stack);
   response.status(500).send(argv.debug ? err.stack : err.toString());
@@ -53,7 +53,10 @@ app.get('/', function (req, res) {
 
 app.post('/render', render);
 
-app.get('/*', renderPage);
+app.set('view engine', 'ejs');
+app.get('/*', function(req, res) {
+  res.render('index');
+})
 
 const server = app.listen(process.env.PORT || 60000, function() {
   console.log('Started server at port %s', server.address().port);
