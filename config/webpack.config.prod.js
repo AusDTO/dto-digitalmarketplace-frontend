@@ -295,7 +295,8 @@ module.exports = [{
         test: /\.(js|jsx)$/,
         include: [
           paths.clientSrc,
-          paths.appNodeModules + '/@gov.au/footer'
+          paths.appNodeModules + '/@gov.au/footer',
+          paths.appNodeModules + '/@gov.au/page-alerts',
         ],
         loader: 'babel'
       },
