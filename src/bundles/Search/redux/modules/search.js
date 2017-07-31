@@ -163,7 +163,8 @@ export const search = (type, value, options = {}) => {
     // Update either role, type or keyword.
     dispatch({ type, value });
 
-    if (!doSearch) {
+    // don't search for less than 3 characters
+    if (!doSearch || value.length < 3) {
       return Promise.resolve();
     }
 
@@ -194,7 +195,7 @@ export const search = (type, value, options = {}) => {
       .then(res => res.json())
       .then(json => dispatch(syncResult(json)))
       .catch(() => dispatch({ type: ERROR_SEARCH }));
-    }, 500);
+    }, 250);
 
     // Cancel queued requests and enqueue the latest one
     debounceQueue.cancelAll();

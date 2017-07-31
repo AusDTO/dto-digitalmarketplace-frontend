@@ -64,7 +64,7 @@ class BusinessInfoForm extends BaseForm {
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="sole">Sole trader
+                            <label htmlFor="sole">1
 
                             </label>
 

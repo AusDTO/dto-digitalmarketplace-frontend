@@ -92,7 +92,6 @@
     "ejs": "^2.5.6",
     "express": "4.15.3",
     "fast-json-patch": "^1.1.10",
-    "leaflet": "^1.0.3",
     "lodash": "4.17.2",
     "mkdirp": "^0.5.1",
     "morgan": "1.8.2",
@@ -174,7 +173,7 @@
     ]
   },
   "engines": {
-    "node": "7.10.0"
+    "node": "7.10.1"
   },
   "pancake": {
     "auto-save": true,

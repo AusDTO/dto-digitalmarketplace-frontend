@@ -43,19 +43,19 @@
 
 .map {
     width: 100%;
-    left: 0
+    min-height: 350px;
+    left: 0;
+    text-align: center;
 }
-
+.map img {
+    width: 50%;
+    display: inline-block;
+}
 .push {
     text-align: center;
     background: #f0f3f5;
     padding: 16px 16px 24px 16px;
     float: none;
-}
-
-.mapOverlay span div {
-    display: inline;
-
 }
 
 .cardList {
@@ -118,20 +118,6 @@
         margin-bottom: 1.5em;
     }
 
-    .mapOverlay {
-        text-align: center;
-        padding-top: 26px;
-    }
-
-    .mapOverlay div p {
-        padding-top: 16px;
-        margin-bottom: 24px;
-    }
-
-    .mapOverlay div a {
-        margin-top: 0;
-    }
-
     .day {
         text-align: center;
         width: 100%;
@@ -187,7 +173,7 @@
     .cardList li {
         width: 262px;
         display: inline-block;
-        margin-right: 60px;
+        margin-right: 73px;
         height: 320px;
         float: left;
         margin-top: 20px;
@@ -202,22 +188,9 @@
     }
 
     .mapOverlay {
-
-        background: white;
-        top: 50px;
-        right: 176px;
-        z-index: 999;
-        padding: 16px;
-        border: 2px grey;
-    }
-
-    .mapOverlay div {
-        text-align: center;
-        padding-top: 13px;
-    }
-
-    .mapSpacer {
-        height: 400px;
+        float: right;
+        margin-top: 80px;
+        margin-right: 50px;
     }
 
     .fund {
@@ -243,14 +216,15 @@
     .cardList {
         width: 108%
     }
-
-    .mapOverlay {
-        right: 60px;
-        top: 15px;
+    .map {
+        height: 250px;
     }
-
+    .mapOverlay {
+        width: 250px;
+        margin-top: 0;
+        margin-right: 0;
+    }
     .mapOverlay span {
-        width: 190px;
         display: block;
     }
 
@@ -260,13 +234,13 @@
 
     .mapOverlay span div {
         display: inline-block;
-        width: 100px;
+        width: 178px;
         text-align: left;
     }
 
     .pop {
         height: 50px;
-        vertical-align: top;
+        vertical-align: middle;
     }
 
     .becomeASeller {
@@ -301,6 +275,15 @@
         padding-top: 0px !important;
         margin-top: -22px !important;
         flex-basis: 100% !important;
+    }
+}
+@media only screen and (max-device-width: 767px) {
+    .map img {
+        width: 100%;
+    }
+
+    .mapOverlay {
+        width: 100%;
     }
 }
 

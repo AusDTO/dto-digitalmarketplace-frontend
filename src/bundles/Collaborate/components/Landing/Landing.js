@@ -1,17 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import has from 'lodash/has';
-
-if (typeof window !== 'undefined') {
-    var leaflet = require('leaflet');
-    var react_leaflet = require('react-leaflet');
-}
-
 import styles from './Landing.css'
-import lgaData from './LGA_2016_AUST.geo5.json';
-import cityData from './citydata.json';
-import supplierData from './suppliers.geo.json';
 
 class Landing extends React.Component {
     static defaultProps = {
@@ -23,50 +13,7 @@ class Landing extends React.Component {
     };
     render() {
         let {seller_count} = this.props;
-        const bounds = [[-15.133, 148.000], [-40.050, 137.467]];
-        let map;
-        if (leaflet && react_leaflet) {
 
-            function onEachFeature(feature, layer) {
-
-                if (feature.properties && feature.properties.LGA_NAME16 && has(cityData, feature.properties.LGA_NAME16)) {
-                    layer.bindPopup(cityData[feature.properties.LGA_NAME16]);
-                }
-            }
-
-            const icon = new leaflet.Icon({
-                iconUrl: 'http://www.googlemapsmarkers.com/v1/18788d/',
-                iconSize: [21, 34], // size of the icon
-            });
-
-            function pointToLayer(feature, latlng) {
-                return leaflet.marker(latlng, {icon: icon});
-            }
-
-            function style(feature) {
-                return {
-                    fillColor: (has(cityData, feature.properties.LGA_NAME16) ? "#5bcbe3" : '#f0f3f5'),
-                    weight: 1,
-                    opacity: 1,
-                    color: '#999',
-                    fillOpacity: 0.7
-                };
-            }
-
-            map = (<react_leaflet.Map bounds={bounds} scrollWheelZoom={false}>
-                <react_leaflet.TileLayer
-                    url='//cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
-                    attribution='
-                    &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;
-        <a href="https://carto.com/attribution">CARTO</a>, &copy; Australian Bureau of Statistics (ABS) under <a href="http://creativecommons.org/licenses/by/2.5/au/">CC-BY 2.5</a>'
-                />
-                <react_leaflet.GeoJSON data={supplierData} icon={icon} onEachFeature={onEachFeature}
-                                       pointToLayer={pointToLayer}/>
-                <react_leaflet.GeoJSON data={lgaData} style={style} onEachFeature={onEachFeature}/>
-            </react_leaflet.Map>)
-        } else {
-            map = (<span></span>)
-        }
         let domains =
             {
                 "User research and Design": 124,
@@ -88,26 +35,25 @@ class Landing extends React.Component {
                     productivity and sustainability of Australian communities.</p>
 
 
-                <div styleName="styles.map"
-                     style={{position: (typeof window !== 'undefined' && window.innerWidth < 630 ? "relative" : "absolute")}}>
-                    { map }
+                <div styleName="styles.map">
+                    <img src="/static/media/map.png" alt="Map of councils and Marketplace sellers across Australia"/>
 
-                    <div styleName="styles.mapOverlay"
-                         style={{position: (typeof window !== 'undefined' && window.innerWidth < 630 ? "relative" : "absolute")}}>
+                    <div styleName="styles.mapOverlay">
                         <span>
-                           <strong styleName="styles.pop" style={{color: '#5bcbe3'}}>106</strong> <div> Future Ready
+                           <strong styleName="styles.pop" >106</strong> <div style={{display: "inline-block"}}> Future Ready
                                 councils</div>
                             <br/>
-                            <strong styleName="styles.pop">{seller_count}</strong> <div>Marketplace sellers</div>
+                            <strong styleName="styles.pop" style={{color: '#870f48'}}>{seller_count}</strong> <article style={{display: "inline"}}>
+                            <a href="/search/sellers">Marketplace sellers</a></article>
                         </span>
-                        <br/>
+                        <br/><br/>
                         <div>
-                            <p>Got an idea, pilot or<br/> live project to share?</p>
+                            <p style={{marginBottom: "0px"}}>Got an idea, pilot or<br/> live project to share?</p>
                             <a href="/collaborate/project/new" role="button">Add your project</a><br/>
                         </div>
                     </div>
                 </div>
-                <div styleName="styles.mapSpacer"></div>
+
                 <div>
                     <h2 style={{textAlign: "center"}}>Council collaboration</h2>
                     <p style={{textAlign: "center"}}>Connect and learn from councils building smart communities<br/>
@@ -208,13 +154,41 @@ class Landing extends React.Component {
                             <article>
                                 <table className="calendar-table" style={{marginTop: 0}}>
                                     <tbody>
+
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-15">Monday <span>15</span> June</time>
+                                            <time dateTime="2017-08-03">Thursday <span>3</span> August</time>
                                         </th>
-                                        <td>Previous events <span className="date-info">Catch up on past Future Ready webinars. <br/> <a
-                                            href="http://australiansmartcommunities.org.au/future-ready"
-                                            rel="external" target="blank">View videos and resources</a></span>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/8643785756793183235"
+                                            rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-08-10">Thursday <span>10</span> August</time>
+                                        </th>
+                                        <td> Hobart masterclass <span className="date-info">Gain valuable insights into using digital technology to proactively engage citizens in building smart cities. <br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-community-engagement-customer-service-masterclass-tickets-35952923161"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-08-16">Wednesday <span>16</span> August</time>
+                                        </th>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/1759344332566794755"
+                                            rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-08-17">Thursday <span>17</span> August</time>
+                                        </th>
+                                        <td> Adelaide masterclass <span className="date-info">Learn how to shape a culture of innovation in your council and community.<br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-thinking-smart-creating-a-culture-of-innovation-tickets-35953128776"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -227,11 +201,38 @@ class Landing extends React.Component {
                                     <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
-                                            <time dateTime="2017-06-23">Friday <span>23</span> June</time>
+                                            <time dateTime="2017-08-31">Thursday <span>31</span> August</time>
                                         </th>
-                                        <td>Community Engagement <span className="date-info">This webinar will examine community engagement and citizen-centric design.  <br/> <a
-                                            href="https://register.gotowebinar.com/register/4270158298238242050"
+                                        <td> Darwin masterclass <span className="date-info">Explore how to fund smart city projects, select and manage partners and improve procurement.<br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-smart-financing-funding-and-procurement-tickets-35953323358"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-09-12">Tuesday <span>12</span> September</time>
+                                        </th>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/9195896724587921923"
                                             rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-09-27">Wednesday <span>27</span> September</time>
+                                        </th>
+                                        <td> Global smart city perspectives <span className="date-info">Learn from leading smart city experts. Ask questions of the best in the business. <br/> <a
+                                            href="https://attendee.gotowebinar.com/register/2278966930784001027"
+                                            rel="external" target="blank">Register for webinar</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" styleName="styles.day">
+                                            <time dateTime="2017-09-28">Thursday <span>28</span> September</time>
+                                        </th>
+                                        <td> Canberra masterclass <span className="date-info">Urban Data and Governance.<br/> <a
+                                            href="https://www.eventbrite.com.au/e/be-a-smart-city-urban-data-and-governance-tickets-35953434691"
+                                            rel="external" target="blank">Register for the masterclass</a></span>
                                         </td>
                                     </tr>
                                     </tbody>
