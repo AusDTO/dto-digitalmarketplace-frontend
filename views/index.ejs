@@ -28,7 +28,7 @@
 	        ga.l = +new Date;
 			<% if (settings.env === 'development') { %>
 			   ga('create', 'UA-72722909-6', 'auto');
-			 <% } else{ %>  
+			 <% } else{ %>
 			   ga('create', 'UA-72722909-5', 'auto');
 			<% } %>
 	        ga('send', 'pageview');
@@ -50,7 +50,7 @@
 	        ga('require', 'urlChangeTracker');
 	    </script>
 	</head>
-	<body>
+	<body class="uikit-grid uikit-body">
 		<div id="appReact"></div>
 		<script src="bundle/build.js"></script>
 	</body>

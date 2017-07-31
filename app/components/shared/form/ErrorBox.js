@@ -4,7 +4,7 @@ import get from 'lodash/get';
 
 import PageAlert from '@gov.au/page-alerts';
 
-import { getInvalidFields } from '../reduxModules/errorMessageSelector';
+import { getInvalidFields } from './errorMessageSelector';
 
 class ErrorBox extends React.Component {
 

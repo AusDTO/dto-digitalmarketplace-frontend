@@ -4,7 +4,7 @@ import formProps, {
   getFormOptions,
   getOptions,
   getModel
-} from '../formPropsSelector';
+} from './formPropsSelector';
 
 
 let exampleState = {

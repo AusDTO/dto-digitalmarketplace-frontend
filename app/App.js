@@ -12,7 +12,7 @@ const store = configureStore();
 
 render (
   <Provider store={store}>
-    <div id="Application" className="uikit-grid uikit-body">
+    <div id="Application">
       <header role="banner">
       	<Banner />
       	<GovAuBanner />
