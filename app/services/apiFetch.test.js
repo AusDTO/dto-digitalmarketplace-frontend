@@ -1,6 +1,6 @@
 jest.mock('whatwg-fetch');
 
-import api from '../api';
+import api from './apiFetch';
 
 test('default fetch return values with route', () => {
   const fetchMock = jest.fn();

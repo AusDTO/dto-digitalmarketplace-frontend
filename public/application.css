@@ -1915,11 +1915,11 @@ dd {
 }
 
 /* line 459, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_typography.scss */
-li {
+/*li {
   margin-bottom: 0.53333em;
   margin-left: -0.2em;
   padding-left: 0.2em;
-}
+}*/
 
 /* line 464, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_typography.scss */
 li ul,
@@ -2323,7 +2323,7 @@ Markup: templates/basic-links.hbs
 Style guide: Link styles.1 Hover links
 */
 /* line 26, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
-.content-main a[rel~='external']::after,
+/*.content-main a[rel~='external']::after,
 footer[role='contentinfo'] a[rel~='external']::after, .primary-nav ul a[rel~='external']::after,
 .local-nav ul a[rel~='external']::after, [class^='breadcrumbs'] a[rel~='external']::after, [class^='breadcrumbs'][class$='--inverted'] a[rel~='external']::after, .skip-to a[rel~='external']::after, .list-horizontal .tags a[rel~='external']::after, .list-vertical .tags a[rel~='external']::after, .list-vertical--thirds .tags a[rel~='external']::after, .list-vertical--fourths .tags a[rel~='external']::after, .list-small .tags a[rel~='external']::after, .list-highlighted .tags a[rel~='external']::after, [class^='controls'] a[rel~='external']::after, .govau--header a[rel~='external']::after, .hero a[rel~='external']::after, .callout--warn a[rel~='external']::after, .sidebar a[rel~='external']::after,
 main article:first-of-type a[rel~='external']::after,
@@ -2340,7 +2340,7 @@ main header:first-of-type .button-secondary a[rel~='external']::after, .catalogu
   background-repeat: no-repeat;
   background-position: right 0.4em;
   border-bottom: 1px solid transparent;
-}
+}*/
 
 /* line 124, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
 .content-main,
@@ -2393,10 +2393,10 @@ footer[role='contentinfo'] a[rel~='external']:hover {
 }
 
 /* line 65, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
-.content-main a[rel~='external']::after,
+/*.content-main a[rel~='external']::after,
 footer[role='contentinfo'] a[rel~='external']::after {
   background-size: 0.9em auto;
-}
+}*/
 
 /* line 84, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
 .content-main a.see-more,
@@ -8180,12 +8180,12 @@ main header:first-of-type a[rel~='external']:hover {
 }
 
 /* line 65, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
-.sidebar a[rel~='external']::after,
+/*.sidebar a[rel~='external']::after,
 main article:first-of-type a[rel~='external']::after,
 main section:first-of-type a[rel~='external']::after,
 main header:first-of-type a[rel~='external']::after {
   background-size: 0.9em auto;
-}
+}*/
 
 /* line 84, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-buyer-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
 .sidebar a.see-more,
