@@ -16,7 +16,7 @@ render (
     <div id="Application">
       <header role="banner">
       	<Banner />
-      	<GovAuBanner />
+      	{/*<GovAuBanner />*/}
     		<Header />
       </header>
       <main id="content">
