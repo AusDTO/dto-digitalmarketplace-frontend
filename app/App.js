@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import GovAuBanner from './components/GovAuBanner/GovAuBanner'
 import Banner from './components/Banner/Banner'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/PageFooter'
@@ -16,7 +15,6 @@ render (
     <div id="Application">
       <header role="banner">
       	<Banner />
-      	{/*<GovAuBanner />*/}
     		<Header />
       </header>
       <main id="content">
