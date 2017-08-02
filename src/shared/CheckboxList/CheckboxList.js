@@ -3,8 +3,11 @@ import snakeCase from 'lodash/snakeCase';
 
 import './CheckboxList.css';
 
-export default ({ id, list = {}, onChange = () => {} }) => (
+export default ({ id, title, list = {}, onChange = () => {} }) => (
   <article styleName="checkboxList">
+    <fieldset>
+      <legend>{title}</legend>
+
     {Object.keys(list).map((value, i) => (
       <div key={`${id}.${i}`}>
         <input
@@ -18,5 +21,6 @@ export default ({ id, list = {}, onChange = () => {} }) => (
         <label htmlFor={snakeCase(value)}>{value}</label>
       </div>
     ))}
+    </fieldset>
   </article>
 );
