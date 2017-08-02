@@ -3,7 +3,7 @@ import reducer, {
   REMOVE,
   addMessage,
   removeMessage
-} from '../errorMessage';
+} from './errorMessage';
 
 test('addMessage action', () => {
   const expectedAction = {

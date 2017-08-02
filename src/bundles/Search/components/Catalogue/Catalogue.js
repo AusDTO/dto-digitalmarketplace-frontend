@@ -87,9 +87,9 @@ export class Catalogue extends React.Component {
               <LocalNav navClassName="filter-navigation" text="Filter your results">
                 { search.view !== "products" &&
                 <div>
-                  <a href="/services" styleName="learn-services-link">Learn more about these services</a>
                   <CheckboxList
                     id="role"
+                    title="Area of expertise"
                     list={search.role}
                     onChange={actions.updateRole}
                   />
@@ -99,6 +99,7 @@ export class Catalogue extends React.Component {
                 <div styleName={search.view === 'products' ? 'product-type-checkbox' : 'typecheckbox'}>
                   <CheckboxList
                     id="type"
+                    title="Business identifier"
                     list={search.type}
                     onChange={actions.updateType}
                   />
