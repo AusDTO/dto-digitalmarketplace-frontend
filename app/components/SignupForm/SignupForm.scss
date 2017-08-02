@@ -1,25 +1,35 @@
 .user-type fieldset span input[type='radio'] + label{
 	display:inline-block;
-	width: 360px;
+	width: 48%;
 	border: 2px solid #bbbbbb;
 	background-color: #e8f5fa;
 }
+
 .user-type fieldset span:first-child input[type='radio'] + label{
-	margin-right: 35px;
+	margin-right: 20px;
 }
+
 .user-type fieldset span input[type='radio'] + label::before {
 	background: white;
 }
+
 @media all and (max-width: 1024px) and (min-width: 768px) {
 	.user-type fieldset span input[type='radio'] + label {
-		width: 300px;
+		width: 100%;
 	}
 }
+
 @media all and (max-width: 768px) and (min-width: 320px) {
 	.user-type fieldset span input[type='radio'] + label{
 		display: block;
 		width: 100%;
 	}
+}
+
+@media all and (max-width: 1024px) {
+  .user-type fieldset span:first-child input[type='radio'] + label{
+    margin-bottom: 20px;
+  }
 }
 
 .user-type fieldset span input[type='radio'] + label > span p{
@@ -38,4 +48,11 @@
 
 .employment-status div fieldset legend {
 	font-weight: normal;
+}
+
+.user-type fieldset span input[type='radio'] + label > span p {
+  font-size: .875rem;
+  font-weight: 400;
+  margin-bottom: 0.1em;
+  padding-right: 20px;
 }
