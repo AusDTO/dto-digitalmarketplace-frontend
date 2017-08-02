@@ -1,23 +1,18 @@
 import React from 'react'
 import { BrowserRouter as Router, withRouter, Switch, Route } from 'react-router-dom';
-import SignupForm from './SignupForm'
+import SignupForm from './SignupForm';
+import NotFound from '../shared/NotFound';
 
-const NotFound = () => (
+const DummyCreateUserPage = () => (
   <div>
-    Route not found
+    will replace this with real CreateUserPage  
   </div>
 )
-
-const ExampleCreateUser = ({match}) => (
-    <div>
-      {`Example Create User Component with token: ${match.params.tokenstring}`}
-  </div>
-  )
 
 const Routes = ({match}) => (
   <Switch>
     <Route exact path={match.url} component={SignupForm} />    
-    <Route path={`${match.url}/createuser/:tokenstring`} component={ExampleCreateUser} />  
+    <Route path={`${match.url}/createuser/:tokenstring`} component={DummyCreateUserPage} />  
     <Route component={NotFound}/>
   </Switch>  
 )
