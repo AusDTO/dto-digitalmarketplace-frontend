@@ -104,44 +104,12 @@ form fieldset legend {
   padding: 0;
 }
 
-form input[type='radio'] + label, form input[type='checkbox'] + label {
-  display: inline-block;
-  margin-bottom: 8px;
-  padding: 15px 0 15px 60px;
-  position: relative;
-  width: 100%;
-  font-weight: normal;
-}
 
 main form .form-control label:last-child, main form .field label:last-child {
   margin: 0;
 }
 
-main form input[type='checkbox'] + label, main form input[type='radio'] + label {
-  margin: 0 0 8px;
-  padding: 12px 12px 12px 60px;
-}
 
-form input[type='radio'], form input[type='checkbox'] {
-  height: 1px;
-  left: -10000px;
-  position: absolute;
-  visibility: visible;
-  width: 1px;
-}
-
-form [type='text'], form [type='number'], form [type='tel'], form [type='email'], form [type='password'], form textarea, form input[type='radio'], form input[type='checkbox'] {
-  width: 100%;
-  outline-offset: 0;
-  border: 2px solid #bebebe;
-  border-radius: 0;
-  background-color: #fff;
-  padding: 0.4em;
-}
-
-form [type='text']:invalid, form [type='number']:invalid, form [type='tel']:invalid, form [type='email']:invalid, form [type='password']:invalid, form textarea:invalid, form input[type='radio']:invalid, form input[type='checkbox']:invalid, form .invalid[type='text'], form .invalid[type='number'], form .invalid[type='tel'], form .invalid[type='email'], form .invalid[type='password'], form textarea.invalid, form input.invalid[type='radio'], form input.invalid[type='checkbox'] {
-  outline: 2px solid #c00;
-}
 
 main form a.validation-message span {
   color: #c00;
@@ -169,10 +137,31 @@ main form a.validation-message {
   color: #313131;
   text-decoration: none;
   outline: none;
-  border-bottom: solid 1px #5bcbe3;
   transition-timing-function: ease-in-out;
   transition-duration: 0.1s;
   transition-property: background-color, border-color, color;
+}
+
+main form input[type='checkbox'] + label, main form input[type='radio'] + label {
+  margin: 0 0 8px;
+  padding: 12px 12px 12px 60px;
+}
+
+form input[type='radio'], form input[type='checkbox'] {
+  height: 1px;
+  left: -10000px;
+  position: absolute;
+  visibility: visible;
+  width: 1px;
+}
+
+form input[type='radio'] + label, form input[type='checkbox'] + label {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 15px 0 15px 60px;
+  position: relative;
+  width: 100%;
+  font-weight: normal;
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -206,10 +195,6 @@ main form input[type='checkbox'] + label::before, main form input[type='radio'] 
   top: 12px;
 }
 
-main form .question-heading, main form legend {
-  font-weight: 700;
-}
-
 main form input[type='checkbox']:checked + label::after, main form input[type='radio']:checked + label::after {
   top: 17px;
 }
@@ -226,15 +211,20 @@ form input[type='radio']:checked + label::after {
   position: absolute;
 }
 
+
+form input[type='radio']:checked + label::before {
+  border-radius: 50%;
+  content: '';
+}
+
 form label {
   display: block;
   margin-bottom: 0.4em;
   margin-top: 0.4em;
 }
 
-form input[type='radio']:checked + label::before {
-  border-radius: 50%;
-  content: '';
+main form .question-heading, main form legend {
+  font-weight: 700;
 }
 
 main form .hint {
@@ -247,36 +237,4 @@ form .hint {
   margin-bottom: 0.4em;
   font-size: 0.875rem;
   color: #313131;
-}
-
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-
-button, .button, [role='button'], [type='submit'], [type='reset'], [type='button'] {
-  height: auto;
-  margin: 1.2em 0.8em 0.8em 0;
-  background-color: #18788d;
-  color: #fff;
-  border-color: #115361;
-  border-width: 1px;
-}
-
-button, .button, [role='button'], [type='button'], [type='submit'], [type='reset'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  margin: 0 0.8em 0.8em 0;
-  height: 2.4em;
-  border-radius: 1px;
-  outline: 0;
-  padding: 0.4em 1.2em 0.52em;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-button:hover, button:focus, .button:hover, .button:focus, [role='button']:hover, [role='button']:focus, [type='submit']:hover, [type='submit']:focus, [type='reset']:hover, [type='reset']:focus, [type='button']:hover, [type='button']:focus {
-  background-color: #115361;
 }

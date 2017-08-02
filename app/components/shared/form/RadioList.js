@@ -28,8 +28,7 @@ const RadioList = (props) => {
                                     name={name}
                                     id={fieldId}
                                     value={option.value}
-                                    validators={validators}
-                                />
+                                    validators={validators} />
                                 <label htmlFor={fieldId}>{option.label}</label>
                             </span>
                         )

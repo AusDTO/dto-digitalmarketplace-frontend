@@ -8,7 +8,7 @@ class Textfield extends React.Component {
         const {name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, disabled, readOnly, type} = this.props;
         return (
             <div className="field">
-                <label htmlFor={htmlFor} className="question-heading">{label}</label>
+                <label htmlFor={htmlFor} className="question-heading uikit-text-input__label">{label}</label>
                 {description && (
                     <p className="hint" id={`${id}-hint`}>{description}</p>
                 )}
@@ -20,14 +20,13 @@ class Textfield extends React.Component {
                     type={type}
                     aria-describedby={description && `${id}-hint`}
                     mapProps={{
-                        className: ({fieldValue}) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
+                        className: ({fieldValue}) => !fieldValue.valid && fieldValue.touched ? 'uikit-text-input--invalid uikit-text-input uikit-text-input--block' : 'uikit-text-input uikit-text-input--block',
                     }}
                     validators={validators}
                     pattern={pattern}
                     maxLength={maxLength}
                     disabled={disabled}
-                    readOnly={readOnly}
-                />
+                    readOnly={readOnly} />
             </div>
         );
     }
