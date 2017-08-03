@@ -5,21 +5,21 @@ import './Header.scss'
 
 class Header extends Component {
   componentDidMount () {
-      this.props.fetchData()
+    this.props.fetchData()
   }
 
-   dashBoardLink = () => {
-      if (this.props.memberInfo.userType == 'buyer') {
-        return <a href="/buyers">Dashboard</a>
-      } else if (this.props.memberInfo.userType == 'applicant') {
-        return <a href="/sellers/application">Continue application</a>
-      } else {
-        return <a href="/sellers">Dashboard</a>
-      }
+  dashBoardLink = () => {
+    if (this.props.memberInfo.userType == 'buyer') {
+      return <a href="/buyers">Dashboard</a>
+    } else if (this.props.memberInfo.userType == 'applicant') {
+      return <a href="/sellers/application">Continue application</a>
+    } else {
+      return <a href="/sellers">Dashboard</a>
     }
+  }
 
   render() {
-      return (
+    return (
         <section className="marketplace--header">
             <div className="wrapper">
               <div className="marketplace--logo">
@@ -48,28 +48,28 @@ class Header extends Component {
               </div>
             </div>
         </section>
-      );
+    )
   }
 }
 
 Header.propTypes = {
-    fetchData: PropTypes.func.isRequired,
-    hasErrored: PropTypes.bool,
-    isLoading: PropTypes.bool
-};
+  fetchData: PropTypes.func.isRequired,
+  hasErrored: PropTypes.bool,
+  isLoading: PropTypes.bool
+}
 
 const mapStateToProps = (state) => {
-    return {
-        memberInfo: state.memberInfo,
-        hasErrored: state.memberInfoHasErrored,
-        isLoading: state.memberInfoIsLoading
-    };
-};
+  return {
+    memberInfo: state.memberInfo,
+    hasErrored: state.memberInfoHasErrored,
+    isLoading: state.memberInfoIsLoading
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchData: () => dispatch(memberInfoFetchData())
-    };
-};
+  return {
+    fetchData: () => dispatch(memberInfoFetchData())
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

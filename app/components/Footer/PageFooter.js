@@ -1,12 +1,12 @@
 import React from 'react'
 import Footer, { FooterNav, FooterEnd } from '@gov.au/footer'
 import './PageFooter.scss'
-import logoGovCrest from "./logo_govcrest.svg";
-import logoNisa from "./logo_nisa.svg";
+import logoGovCrest from './logo_govcrest.svg'
+import logoNisa from './logo_nisa.svg'
 
 export default class PageFooter extends React.Component {
   render() {
-      return (
+    return (
         <div className="uikit-grid uikit-body">
           <Footer>
             <div className="wrapper">
@@ -73,6 +73,6 @@ export default class PageFooter extends React.Component {
             </div>
           </Footer>
        </div>
-      );
+    )
   }
 }

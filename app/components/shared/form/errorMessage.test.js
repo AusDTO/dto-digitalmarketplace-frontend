@@ -3,19 +3,19 @@ import reducer, {
   REMOVE,
   addMessage,
   removeMessage
-} from './errorMessage';
+} from './errorMessage'
 
 test('addMessage action', () => {
-  expect(addMessage('errorKey', 'Some error text'));
-});
+  expect(addMessage('errorKey', 'Some error text'))
+})
 
 test('removeMessage action', () => {
-  expect(removeMessage('errorKey'));
-});
+  expect(removeMessage('errorKey'))
+})
 
 test('reducer should return initial state', () => {
   expect(reducer()).toEqual({})
-});
+})
 
 test.skip('reducer should add message to state', () => {
   expect(reducer({}, {
@@ -24,8 +24,8 @@ test.skip('reducer should add message to state', () => {
     value: 'errorKey error value'
   })).toEqual({
     errorKey: 'errorKey error value'
-  });
-});
+  })
+})
 
 test('reducer should remove message from state', () => {
   const initialState = {
@@ -41,5 +41,5 @@ test('reducer should remove message from state', () => {
     key1: 'ErrorOne',
     key2: 'ErrorTwo',
     key4: 'ErrorFour'
-  });
-});
+  })
+})

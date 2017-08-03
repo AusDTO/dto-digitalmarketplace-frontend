@@ -1,8 +1,8 @@
-import React from 'react';
-import { Control, controls } from 'react-redux-form';
+import React from 'react'
+import { Control, controls } from 'react-redux-form'
 
-import StatefulError from './StatefulError';
-import MultiInputComponent from '../MultiInput';
+import StatefulError from './StatefulError'
+import MultiInputComponent from '../MultiInput'
 
 const MultiInput = (props) => {
   const {
@@ -16,7 +16,7 @@ const MultiInput = (props) => {
     controlProps,
     mapProps,
     validators
-  } = props;
+  } = props
 
   return (
     <div className="field">
@@ -44,12 +44,12 @@ const MultiInput = (props) => {
         component={MultiInputComponent}
       />
     </div>
-  );
-};
+  )
+}
 
 MultiInput.defaultProps = {
   mapProps: {},
-};
+}
 
 MultiInput.propTypes = {
   id: React.PropTypes.string.isRequired,
@@ -71,4 +71,4 @@ MultiInput.propTypes = {
   ]),
 }
 
-export default MultiInput;
+export default MultiInput

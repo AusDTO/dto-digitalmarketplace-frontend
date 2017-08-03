@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
-import format from 'date-fns/format';
-import get from 'lodash/get';
+import React from 'react'
+import { connect } from 'react-redux'
+import { actions } from 'react-redux-form'
+import format from 'date-fns/format'
+import get from 'lodash/get'
 
-import './scss/Datefield.scss';
+import './scss/Datefield.scss'
 
 class Datefield extends React.Component {
 
@@ -15,9 +15,9 @@ class Datefield extends React.Component {
   }
 
   componentWillMount() {
-    const { date, model, setDate } = this.props;
+    const { date, model, setDate } = this.props
     if (date && typeof date === 'string') {
-      let propDate = new Date(date);
+      let propDate = new Date(date)
       this.state = {
         day: format(propDate, 'DD'),
         month: format(propDate, 'MM'),
@@ -25,28 +25,28 @@ class Datefield extends React.Component {
       }
     }
     else {
-      setDate(model, '2017-01-01');
+      setDate(model, '2017-01-01')
     }
   }
 
   onChange(e) {
-    const { model, setDate } = this.props;
+    const { model, setDate } = this.props
     this.setState({
       [e.target.name]: e.target.value
     }, () => {
-      const { year, month, day } = this.state;
-      let date = format(new Date(Number((year.length === 2 ? "20":"") + year), Number(month) - 1, Number(day)), 'YYYY-MM-DD');
-      setDate(model, date);
-    });
+      const { year, month, day } = this.state
+      let date = format(new Date(Number((year.length === 2 ? '20':'') + year), Number(month) - 1, Number(day)), 'YYYY-MM-DD')
+      setDate(model, date)
+    })
   }
 
   render() {
-    const { id, htmlFor, label, description } = this.props;
+    const { id, htmlFor, label, description } = this.props
     const {
       day,
       month,
       year
-    } = this.state;
+    } = this.state
 
     return (
       <div styleName="date-input">
@@ -109,7 +109,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setDate: (model, date) => {
-      return dispatch(actions.change(model, date));
+      return dispatch(actions.change(model, date))
     }
   }
 }
@@ -126,6 +126,6 @@ Datefield.propTypes = {
   description: React.PropTypes.string,
   pattern: React.PropTypes.string,
   type: React.PropTypes.string
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Datefield);
+export default connect(mapStateToProps, mapDispatchToProps)(Datefield)

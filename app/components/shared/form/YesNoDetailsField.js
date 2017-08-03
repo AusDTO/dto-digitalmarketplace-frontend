@@ -1,12 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Control, actions } from 'react-redux-form';
-import upperFirst from 'lodash/upperFirst';
-import get from 'lodash/get';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Control, actions } from 'react-redux-form'
+import upperFirst from 'lodash/upperFirst'
+import get from 'lodash/get'
 
-import { required }     from '../../validators';
-import Textarea         from './Textarea';
-import StatefulError    from './StatefulError';
+import { required }     from '../../validators'
+import Textarea         from './Textarea'
+import StatefulError    from './StatefulError'
 
 class YesNoDetailsField extends React.Component {
 
@@ -15,7 +15,7 @@ class YesNoDetailsField extends React.Component {
   }
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       showField: props.value === 'yes'
     }
@@ -26,12 +26,12 @@ class YesNoDetailsField extends React.Component {
       showField: e.target.value === 'yes'
     })
 
-    const {model, revalidateDetails} = this.props;
-    revalidateDetails(`${model}_details`);
+    const {model, revalidateDetails} = this.props
+    revalidateDetails(`${model}_details`)
   }
 
   render() {
-    const { name, id, label, model, validators, messages } = this.props;
+    const { name, id, label, model, validators, messages } = this.props
     return (
       <fieldset className="field">
         <legend><strong>{label}</strong></legend>
@@ -65,7 +65,7 @@ class YesNoDetailsField extends React.Component {
             label="Please provide details"
             validators={{ required }}
             messages={{
-                required: 'Please provide details for ' + upperFirst(id).replace('_', ' '),
+              required: 'Please provide details for ' + upperFirst(id).replace('_', ' '),
             }}
           />
         )}
@@ -95,7 +95,7 @@ YesNoDetailsField.propTypes = {
     React.PropTypes.func,
     React.PropTypes.object,
   ]),
-};
+}
 
 export const mapStateToProps = (state, ownProps) => {
   return {
@@ -105,11 +105,11 @@ export const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        revalidateDetails: (detailsModel) => {
-            dispatch(actions.setValidity(detailsModel, true));
-        }
+  return {
+    revalidateDetails: (detailsModel) => {
+      dispatch(actions.setValidity(detailsModel, true))
     }
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(YesNoDetailsField);
+export default connect(mapStateToProps, mapDispatchToProps)(YesNoDetailsField)

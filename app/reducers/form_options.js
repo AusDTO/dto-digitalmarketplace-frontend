@@ -7,12 +7,12 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   const { type, value } = action
   switch (type) {
-    case STEP:
-      return Object.assign({}, state, {
-        step: value
-      });
-    default:
-      return Object.assign({}, initialState, state);
+  case STEP:
+    return Object.assign({}, state, {
+      step: value
+    })
+  default:
+    return Object.assign({}, initialState, state)
   }
 }
 

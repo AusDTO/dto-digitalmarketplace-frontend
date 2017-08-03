@@ -3,7 +3,7 @@ import formProps, {
   getFormValues,
   getFormOptions,
   getOptions,
-} from './formPropsSelector';
+} from './formPropsSelector'
 
 
 let exampleState = {
@@ -37,10 +37,10 @@ test('formProps will reduce state to single object', () => {
     someForm: {
       foo: 'bar'
     }
-  };
+  }
 
-  expect(formProps(exampleState, 'someForm')).toEqual(expectedState);
-});
+  expect(formProps(exampleState, 'someForm')).toEqual(expectedState)
+})
 
 test('formProps will still provide a simplified shape if it can\'t find the form in state', () => {
   let expectedState = {
@@ -50,10 +50,10 @@ test('formProps will still provide a simplified shape if it can\'t find the form
     model: 'invalidFormKey',
     form: {},
     invalidFormKey: void 0
-  };
+  }
 
   expect(formProps(exampleState, 'invalidFormKey')).toEqual(expectedState)
-});
+})
 
 test('getCurrentForm return values', () => {
   let exampleState = {
@@ -64,27 +64,27 @@ test('getCurrentForm return values', () => {
         }
       }
     }
-  };
+  }
 
   let expectedFormState = {
     foo: 'bar'
-  };
+  }
 
   expect(getCurrentForm(exampleState, 'formKey')).toEqual(expectedFormState)
   expect(getCurrentForm(void 0, 'formKey')).toEqual({})
-});
+})
 
 test('getFormValues return value', () => {
-  expect(getFormValues(void 0, 'formKey')).toBeUndefined();
-  expect(getFormValues({ 'formKey': { foo: 'bar'} }, 'formKey')).toEqual({ foo: 'bar' });
-});
+  expect(getFormValues(void 0, 'formKey')).toBeUndefined()
+  expect(getFormValues({ 'formKey': { foo: 'bar'} }, 'formKey')).toEqual({ foo: 'bar' })
+})
 
 test('getFormOptions return value', () => {
-  expect(getFormOptions(void 0)).toBeUndefined();
-  expect(getFormOptions({ form_options: { foo: 'bar' }})).toEqual({ foo: 'bar' });
-});
+  expect(getFormOptions(void 0)).toBeUndefined()
+  expect(getFormOptions({ form_options: { foo: 'bar' }})).toEqual({ foo: 'bar' })
+})
 
 test('getOptions', () => {
-  expect(getOptions(void 0)).toBeUndefined();
-  expect(getOptions({ options: { foo: 'bar' }})).toEqual({ foo: 'bar' });
-});
+  expect(getOptions(void 0)).toBeUndefined()
+  expect(getOptions({ options: { foo: 'bar' }})).toEqual({ foo: 'bar' })
+})
