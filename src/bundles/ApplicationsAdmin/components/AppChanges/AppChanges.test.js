@@ -82,3 +82,78 @@ test('returnDiffedData fn returns diff array excluding keys in ignoreKeys array'
   expect(diffData).toEqual(expectedDiffData);
 });
 
+
+test("returnDiffedData fn returns name and description if they have 'remove' op value", () => {
+
+  let diffData = [
+    {
+      "op": 'remove',
+      "path": '/name',
+      "value": 'Application name'
+    },
+    {
+      "op": 'remove',
+      "path": '/description',
+      "value": 'Application description'
+    },
+    {
+      "op": 'replace',
+      "path": '/summary',
+      "value": 'New application summary'
+    },
+    {
+      "op": "add",
+      "path": "/technologies",
+      "value": "Application technologies",
+    },
+    {
+      "op": 'add',
+      "path": '/steps',
+      "value": {
+        "title": "Application steps are filtered out of diffData"
+      }
+    },
+  ];
+
+  let expectedFilteredData = [
+    {
+      "op": 'remove',
+      "path": '/name',
+      "value": 'Application name'
+    },
+    {
+      "op": 'remove',
+      "path": '/description',
+      "value": 'Application description'
+    },
+    {
+      "op": 'replace',
+      "path": '/summary',
+      "value": 'New application summary'
+    },
+    {
+      "op": "add",
+      "path": "/technologies",
+      "value": "Application technologies",
+    },
+  ];
+
+  let thisIgnoreKeys = ['steps',]
+
+  let diffFunction = diffedData => {
+    return Object.values(diffedData).filter(x => {
+        let changePath = (['name', 'description'].includes(x.path.slice(1, x.path.length)) && x.op == 'remove' ? 'keep' : x.op)
+          if (
+              !thisIgnoreKeys.includes(x.path) &&
+              changePath !== 'remove' && 
+              x.path.match(/links/g) <= 0 &&
+              x.path.match(/createdAt/g) <= 0 &&
+              x.path.match(/steps/g) <= 0 
+          ) {
+              return x;
+          }
+      });
+  }
+
+  expect(diffFunction(diffData)).toEqual(expectedFilteredData);
+});
