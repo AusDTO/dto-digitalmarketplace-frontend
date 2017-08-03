@@ -30,7 +30,7 @@ export function memberInfoFetchDataSuccess(memberInfo) {
 
 export function memberInfoFetchData() {
     return (dispatch) => {
-    	dispatch(memberInfoIsLoading(true));
+      dispatch(memberInfoIsLoading(true));
         apiFetch('/api/ping')
             .then((response) => {
                 if (!response.ok) {
@@ -44,5 +44,5 @@ export function memberInfoFetchData() {
             .then((response) => response.json())
             .then((memberInfo) => dispatch(memberInfoFetchDataSuccess(memberInfo)))
             .catch(() => dispatch(memberInfoHasErrored(true)));
-  	}
+    }
 }

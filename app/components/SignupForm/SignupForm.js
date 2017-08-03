@@ -6,7 +6,6 @@ import { required, validEmail, governmentEmail } from '../../components/validato
 
 import Layout        from '../../components/shared/Layout';
 import BaseForm      from '../../components/shared/form/BaseForm';
-import SubmitForm    from '../../components/shared/form/SubmitForm';
 import ErrorBox      from '../../components/shared/form/ErrorBox';
 import Textfield     from '../../components/shared/form/Textfield';
 import formProps     from '../../components/shared/form/formPropsSelector';
@@ -92,8 +91,6 @@ class SignupForm extends BaseForm {
     switch (status) {
       case 200:
         return {signupSuccess: true, signupMessage: 'success'};
-        break;
-
       case 409:
         return {
           signupSuccess: false, signupMessage: <li>
@@ -103,8 +100,6 @@ class SignupForm extends BaseForm {
               </p>
             </li>
         };
-        break;
-
       default:
         return {
           signupSuccess: false, signupMessage: <li>
@@ -116,7 +111,6 @@ class SignupForm extends BaseForm {
               </p>
             </li>
         };
-        break;
     }
   }
 
@@ -149,13 +143,10 @@ class SignupForm extends BaseForm {
       csrf_token,
       model,
       form,
-      formErrors,
       children,
       signupForm,
       buyer_url,
       seller_url,
-      onSubmit,
-      messages
     } = this.props;
     let valid = form.valid;
     let employmentStatus = signupForm.employment_status

@@ -11,6 +11,6 @@ export default combineReducers({
     form_options,
     errorMessage,
     ...createForms({
-	    signupForm: {}
-	})
+      signupForm: {}
+  })
 });

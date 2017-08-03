@@ -14,14 +14,14 @@ render (
   <Provider store={store}>
     <div id="Application">
       <header role="banner">
-      	<Banner />
-    		<Header />
+        <Banner />
+        <Header />
       </header>
       <main id="content">
-      	<SignupForm />
+        <SignupForm />
       </main>
       <Footer />
-  	</div>
+    </div>
   </Provider>,
   document.getElementById('appReact')
 );

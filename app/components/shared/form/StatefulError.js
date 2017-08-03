@@ -41,7 +41,7 @@ class StatefulError extends React.Component {
     )
   }
 
-};
+}
 
 StatefulError.propTypes = {
   dispatch: React.PropTypes.func.isRequired,

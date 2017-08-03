@@ -61,7 +61,6 @@ class LinkInput extends React.Component {
     render() {
         const {
             id,
-            name,
             htmlFor,
             label,
             description,
@@ -127,6 +126,6 @@ class LinkInput extends React.Component {
                 </div>
             </div>
         );
-    };
+    }
 }
 export default LinkInput;

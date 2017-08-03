@@ -6,19 +6,10 @@ import reducer, {
 } from './errorMessage';
 
 test('addMessage action', () => {
-  const expectedAction = {
-    type: MESSAGE,
-    key: 'errorKey',
-    value: 'Some error text'
-  };
   expect(addMessage('errorKey', 'Some error text'));
 });
 
 test('removeMessage action', () => {
-  const expectedAction = {
-    type: REMOVE,
-    key: 'errorKey'
-  };
   expect(removeMessage('errorKey'));
 });
 

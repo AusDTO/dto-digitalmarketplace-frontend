@@ -1,14 +1,8 @@
 import expect from 'expect';
-import { memberInfoFetchData, memberInfoFetchDataSuccess } from './memberActions';
+import { memberInfoFetchDataSuccess } from './memberActions';
 import { 
-  MEMBER_INFO_HAS_ERRORED, 
-  MEMBER_INFO_IS_LOADING, 
   MEMBER_INFO_FETCH_DATA_SUCCESS
 } from '../constants/constants';
-
-import thunk from 'redux-thunk';
-import nock from 'nock';
-import configureMockStore from 'redux-mock-store';
 
 // Test a sync action
 describe('Member Actions', () => {

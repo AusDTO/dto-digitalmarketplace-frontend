@@ -3,7 +3,6 @@ import formProps, {
   getFormValues,
   getFormOptions,
   getOptions,
-  getModel
 } from './formPropsSelector';
 
 

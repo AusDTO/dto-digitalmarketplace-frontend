@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 import get from 'lodash/get';
 
-export const getForms = (state, model) => state.forms;
+export const getForms = (state) => state.forms;
 export const getErrorMessages = (state = {}) => state.errorMessage;
 export const getModelPath = (state, model) => model;
 
-export const mapErrorMessages = (forms, messages, model) => {
+export const mapErrorMessages = (forms, messages) => {
   if (!forms) {
     return [];
   }
