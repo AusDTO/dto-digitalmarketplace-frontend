@@ -1,11 +1,11 @@
-jest.mock('react-dom');
+jest.mock('react-dom')
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Banner } from './Banner';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Banner } from './Banner'
 
 
 test('Banner renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Banner />, div);
-});
+  const div = document.createElement('div')
+  ReactDOM.render(<Banner />, div)
+})

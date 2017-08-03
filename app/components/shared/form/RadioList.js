@@ -1,10 +1,10 @@
-import React from 'react';
-import { Control } from 'react-redux-form';
+import React from 'react'
+import { Control } from 'react-redux-form'
 
-import StatefulError from './StatefulError';
+import StatefulError from './StatefulError'
 
 const RadioList = (props) => {
-    const {
+  const {
         id,
         label,
         name,
@@ -12,16 +12,16 @@ const RadioList = (props) => {
         model,
         messages,
         validators
-    } = props;
-    return (
+    } = props
+  return (
         <div className="field">
             <fieldset>
                 <legend>{label}</legend>
                 <StatefulError model={model} messages={messages} id={id} />
                 <div>
                     {options.map((option, i) => {
-                        let fieldId = `${id}-${option.value}`;
-                        return (
+                      let fieldId = `${id}-${option.value}`
+                      return (
                             <span key={i}>
                                 <Control.radio
                                     model={model}
@@ -32,36 +32,36 @@ const RadioList = (props) => {
                                 />
                                 <label htmlFor={fieldId}>{option.label}</label>
                             </span>
-                        )
+                      )
                     })}
                 </div>
             </fieldset>
         </div>
-    );
-};
+  )
+}
 
 RadioList.propTypes = {
-    id: React.PropTypes.string.isRequired,
-    label: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired,
-    model: React.PropTypes.oneOfType([
-        React.PropTypes.func,
-        React.PropTypes.string,
-    ]).isRequired,
-    options: React.PropTypes.arrayOf(React.PropTypes.shape({
-        label: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.object
-        ]),
-        value: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number
-        ])
-    })).isRequired,
+  id: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
+  model: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.string,
+  ]).isRequired,
+  options: React.PropTypes.arrayOf(React.PropTypes.shape({
+    label: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object
+    ]),
+    value: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ])
+  })).isRequired,
 
-    validators: React.PropTypes.object,
-    messages: React.PropTypes.object,
-};
+  validators: React.PropTypes.object,
+  messages: React.PropTypes.object,
+}
 
 
-export default RadioList;
+export default RadioList

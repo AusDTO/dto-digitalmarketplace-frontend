@@ -1,20 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Form } from 'react-redux-form';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Form } from 'react-redux-form'
 
-import { required, validEmail, governmentEmail } from '../../components/validators';
+import { required, validEmail, governmentEmail } from '../../components/validators'
 
-import Layout        from '../../components/shared/Layout';
-import BaseForm      from '../../components/shared/form/BaseForm';
-import SubmitForm    from '../../components/shared/form/SubmitForm';
-import ErrorBox      from '../../components/shared/form/ErrorBox';
-import Textfield     from '../../components/shared/form/Textfield';
-import formProps     from '../../components/shared/form/formPropsSelector';
-import RadioList     from '../../components/shared/form/RadioList';
+import Layout        from '../../components/shared/Layout'
+import BaseForm      from '../../components/shared/form/BaseForm'
+import ErrorBox      from '../../components/shared/form/ErrorBox'
+import Textfield     from '../../components/shared/form/Textfield'
+import formProps     from '../../components/shared/form/formPropsSelector'
+import RadioList     from '../../components/shared/form/RadioList'
 
-import PageAlert     from '@gov.au/page-alerts';
+import PageAlert     from '@gov.au/page-alerts'
 
-import api from '../../services/apiFetch';
+import api from '../../services/apiFetch'
 
 import './SignupForm.scss'
 
@@ -43,8 +42,8 @@ class SignupForm extends BaseForm {
       },
       isBuyer: this.props.signupForm.user_type === 'buyer'
     }
-    this.statusCheck = this.statusCheck.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.statusCheck = this.statusCheck.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }  
 
   componentWillReceiveProps(nextProps) {
@@ -90,24 +89,20 @@ class SignupForm extends BaseForm {
 
   handleError({status}) {
     switch (status) {
-      case 200:
-        return {signupSuccess: true, signupMessage: 'success'};
-        break;
-
-      case 409:
-        return {
-          signupSuccess: false, signupMessage: <li>
+    case 200:
+      return {signupSuccess: true, signupMessage: 'success'}
+    case 409:
+      return {
+        signupSuccess: false, signupMessage: <li>
               <p>
                 An account with this email domain already exists. Someone in your team may have
                 already created an account with the Marketplace.
               </p>
             </li>
-        };
-        break;
-
-      default:
-        return {
-          signupSuccess: false, signupMessage: <li>
+      }
+    default:
+      return {
+        signupSuccess: false, signupMessage: <li>
               <p>
                 The Digital Marketplace encountered an error trying to send your signup email.
                 Please try again later
@@ -115,8 +110,7 @@ class SignupForm extends BaseForm {
                 us </a> for assistance.
               </p>
             </li>
-        };
-        break;
+      }
     }
   }
 
@@ -130,10 +124,10 @@ class SignupForm extends BaseForm {
     return api('/api/signup', {
       method: 'POST',
       body: JSON.stringify(model),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then(this.statusCheck)
       .catch((error) => {
         this.setState({signupSuccess: false, signupMessage: error})
@@ -149,26 +143,23 @@ class SignupForm extends BaseForm {
       csrf_token,
       model,
       form,
-      formErrors,
       children,
       signupForm,
       buyer_url,
       seller_url,
-      onSubmit,
-      messages
-    } = this.props;
-    let valid = form.valid;
+    } = this.props
+    let valid = form.valid
     let employmentStatus = signupForm.employment_status
     let action = isBuyer
       ? buyer_url
-      : seller_url;
+      : seller_url
     let {
       signupSuccess,
       signupMessage,
       isBuyer,
       emailValidators,
       emailErrorMessages
-    } = this.state;
+    } = this.state
 
     return (
       <div className="row">
@@ -245,28 +236,28 @@ class SignupForm extends BaseForm {
                       id="user_type"
                       label="Have you got digital expertise to sell to government? Or do you want to buy digital products and services on behalf of your government office? Choose the option that matches your situation."
                       options={[
-                      {
-                        value: 'buyer',
-                        label: (
+                        {
+                          value: 'buyer',
+                          label: (
                           <span>Buyer<p>
                               I want to buy on behalf of<br/>government.</p>
                           </span>
                         )
-                      }, {
-                        value: 'seller',
-                        label: (
+                        }, {
+                          value: 'seller',
+                          label: (
                           <span>Seller<p>
                               I want to sell digital products or<br/>services.</p>
                           </span>
                         )
-                      }
-                    ]}
+                        }
+                      ]}
                       validators={{
-                      required
-                    }}
+                        required
+                      }}
                       messages={{
-                      required: 'You must select a user type'
-                    }}/>
+                        required: 'You must select a user type'
+                      }}/>
                   </div>
 
                   Now enter your name and your work email address.
@@ -278,11 +269,11 @@ class SignupForm extends BaseForm {
                     htmlFor="name"
                     label="Full name"
                     validators={{
-                    required
-                  }}
+                      required
+                    }}
                     messages={{
-                    required: 'Your name is required'
-                  }}/>
+                      required: 'Your name is required'
+                    }}/>
 
                   <Textfield
                     model={`${model}.email_address`}
@@ -296,7 +287,7 @@ class SignupForm extends BaseForm {
                         <b>.gov.au.</b>
                       </span>
                     )
-                    : "Email address"}
+                    : 'Email address'}
                     description={isBuyer
                     ? (
                         <span>If your email is different, request your account 
@@ -313,20 +304,20 @@ class SignupForm extends BaseForm {
                         id="employment_status"
                         label="To create a buyer account you need to be a government employee or be authorised by a government employee. Choose the option below that matches your situation."
                         options={[
-                        {
-                          value: 'employee',
-                          label: 'I am an employee under the Commonwealth Public Service Act (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
-                        }, {
-                          value: 'contractor',
-                          label: 'I am a contractor working in local, state or federal government.'
-                        }
-                      ]}
+                          {
+                            value: 'employee',
+                            label: 'I am an employee under the Commonwealth Public Service Act (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
+                          }, {
+                            value: 'contractor',
+                            label: 'I am a contractor working in local, state or federal government.'
+                          }
+                        ]}
                         validators={{
-                        required
-                      }}
+                          required
+                        }}
                         messages={{
-                        required: 'You must specify your employment status.'
-                      }}/>
+                          required: 'You must specify your employment status.'
+                        }}/>
                     </div>
                   )}
 
@@ -344,11 +335,11 @@ class SignupForm extends BaseForm {
                         htmlFor="line_manager_name"
                         label="Your manager's full name"
                         validators={{
-                        required
-                      }}
+                          required
+                        }}
                         messages={{
-                        required: "You must provide the name of your manager"
-                      }}/>
+                          required: 'You must provide the name of your manager'
+                        }}/>
                       <Textfield
                         model={`${model}.line_manager_email`}
                         name="line_manager_email"
@@ -359,7 +350,7 @@ class SignupForm extends BaseForm {
                           required, validEmail, governmentEmail
                         }}
                         messages={{
-                          required: "You must provide your manager's email address",
+                          required: 'You must provide your manager\'s email address',
                           validEmail: 'A validly formatted email is required',
                           governmentEmail: 'Email should have a government domain'
                         }}
@@ -400,4 +391,4 @@ export {
   SignupForm as Form
 }
 
-export default connect(mapStateToProps)(SignupForm);
+export default connect(mapStateToProps)(SignupForm)

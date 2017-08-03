@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import get from 'lodash/get';
+import React from 'react'
+import { connect } from 'react-redux'
+import get from 'lodash/get'
 
-import PageAlert from '@gov.au/page-alerts';
+import PageAlert from '@gov.au/page-alerts'
 
-import { getInvalidFields } from './errorMessageSelector';
+import { getInvalidFields } from './errorMessageSelector'
 
 class ErrorBox extends React.Component {
 
@@ -13,19 +13,19 @@ class ErrorBox extends React.Component {
   }
 
   componentDidUpdate() {
-    const { focusOnMount } = this.props;
-    const { focusedOnce } = this.state;
+    const { focusOnMount } = this.props
+    const { focusedOnce } = this.state
 
     if (this.refs['box'] && !focusedOnce && focusOnMount) {
-      this.setState({ focusedOnce: true });
-      this.refs.box.focus();
+      this.setState({ focusedOnce: true })
+      this.refs.box.focus()
     }
   }
 
   render() {
-    const { invalidFields, form } = this.props;
+    const { invalidFields, form } = this.props
     if (form.submitFailed === false || !invalidFields.length) {
-      return null;
+      return null
     }
 
     return (
@@ -65,4 +65,4 @@ export const mapStateToProps = (state, { focusOnMount, model }) => {
   }
 }
 
-export default connect(mapStateToProps)(ErrorBox);
+export default connect(mapStateToProps)(ErrorBox)

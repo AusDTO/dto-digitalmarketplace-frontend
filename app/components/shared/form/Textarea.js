@@ -1,10 +1,10 @@
-import React from 'react';
-import { Control, controls } from 'react-redux-form';
+import React from 'react'
+import { Control, controls } from 'react-redux-form'
 
-import StatefulError from './StatefulError';
-import TextareaComponent from '../Textarea';
+import StatefulError from './StatefulError'
+import TextareaComponent from '../Textarea'
 
-import { limitWords } from '../../validators';
+import { limitWords } from '../../validators'
 
 const Textarea = (props) => {
   let {
@@ -18,7 +18,7 @@ const Textarea = (props) => {
     showMessagesDuringFocus = false,
     controlProps = {},
     mapProps
-  } = props;
+  } = props
 
   if (controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
@@ -46,7 +46,7 @@ const Textarea = (props) => {
       />
     </div>
   )
-};
+}
 
 Textarea.defaultProps = {
   mapProps: {}
@@ -69,7 +69,7 @@ Textarea.propTypes = {
     React.PropTypes.func,
     React.PropTypes.object,
   ]),
-};
+}
 
 
-export default Textarea;
+export default Textarea

@@ -5,11 +5,25 @@
     "react"
   ],
   "extends": [
+    "eslint:recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended"
   ],
   "rules": {
     "react/prop-types": "off",
     "react/display-name": "off",
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"]
+  },
+  "globals": {
+    "document": false,
+    "window": false,
+    "fetch": false,
+    "global": false,
+    "ReactEvent": false
+  },
+  "env": {
+    "jest": true
   }
 }

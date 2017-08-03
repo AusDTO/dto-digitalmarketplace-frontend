@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { actions } from 'react-redux-form';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { actions } from 'react-redux-form'
 
 class BaseForm extends React.Component {
 
@@ -23,26 +23,26 @@ class BaseForm extends React.Component {
    * @return {void}
    */
   componentWillMount() {
-    const { dispatch, formErrors, model, serverRender } = this.props;
+    const { dispatch, formErrors, model, serverRender } = this.props
 
     if (!formErrors || !serverRender) {
-      return;
+      return
     }
     
-    let errors = {};
+    let errors = {}
     Object.keys(formErrors).forEach((key) => {
       errors[key] = {
         valid: false,
         errors: formErrors[key]
       }
-    });
+    })
 
-    dispatch(actions.setFieldsErrors(model, errors));
-    dispatch(actions.setSubmitFailed(model));
+    dispatch(actions.setFieldsErrors(model, errors))
+    dispatch(actions.setSubmitFailed(model))
   }
 
   componentDidMount() {
-    const { dispatch, formErrors, model } = this.props;
+    const { dispatch, formErrors, model } = this.props
 
     // Helpful with SPAs, changing of focus on route.
     this.setState({
@@ -50,17 +50,17 @@ class BaseForm extends React.Component {
     })
 
     if (!formErrors) {
-      return;
+      return
     }
 
-    dispatch(actions.setSubmitFailed(model));
-    dispatch(actions.setFieldsValidity(model, {}, { errors: true }));
+    dispatch(actions.setSubmitFailed(model))
+    dispatch(actions.setFieldsValidity(model, {}, { errors: true }))
   }
 
   attachNode(node) {
-    this._form = ReactDOM.findDOMNode(node);  // eslint-disable-line react/no-find-dom-node
+    this._form = ReactDOM.findDOMNode(node)  // eslint-disable-line react/no-find-dom-node
   }
 
 }
 
-export default BaseForm;
+export default BaseForm

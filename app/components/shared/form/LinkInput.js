@@ -1,74 +1,73 @@
-import React from 'react';
+import React from 'react'
 import times from 'lodash/times'
-import Textfield    from './Textfield';
-import './scss/LinkInput.scss';
+import Textfield    from './Textfield'
+import './scss/LinkInput.scss'
 
 import {validLink} from '../../validators'
 
 
 class LinkInput extends React.Component {
 
-    static defaultProps = {
-        mapProps: {},
-    };
+  static defaultProps = {
+    mapProps: {},
+  };
 
-    static propTypes = {
-        id: React.PropTypes.string.isRequired,
-        name: React.PropTypes.string.isRequired,
-        htmlFor: React.PropTypes.string.isRequired,
-        label: React.PropTypes.string.isRequired,
-        model: React.PropTypes.oneOfType([
-            React.PropTypes.func,
-            React.PropTypes.string,
-        ]).isRequired,
+  static propTypes = {
+    id: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    htmlFor: React.PropTypes.string.isRequired,
+    label: React.PropTypes.string.isRequired,
+    model: React.PropTypes.oneOfType([
+      React.PropTypes.func,
+      React.PropTypes.string,
+    ]).isRequired,
 
-        messages: React.PropTypes.object,
-        validators: React.PropTypes.object,
-        description: React.PropTypes.string,
-        controlProps: React.PropTypes.object,
-        mapProps: React.PropTypes.oneOfType([
-            React.PropTypes.func,
-            React.PropTypes.object,
-        ]),
-    }
+    messages: React.PropTypes.object,
+    validators: React.PropTypes.object,
+    description: React.PropTypes.string,
+    controlProps: React.PropTypes.object,
+    mapProps: React.PropTypes.oneOfType([
+      React.PropTypes.func,
+      React.PropTypes.object,
+    ]),
+  }
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props)
 
-        this.state = {length: props.defaultRows || 1}
-    }
-
-
-    addRow(e: ReactEvent) {
-        e.preventDefault();
-
-        this.setState({
-            length: this.state.length + 1
-        });
-
-    }
-
-    removeRow(id: number, e: ReactEvent) {
-        e.preventDefault()
-
-        this.setState({
-            length: this.state.length > 1 ? this.state.length - 1 : 1
-        });
-    }
+    this.state = {length: props.defaultRows || 1}
+  }
 
 
+  addRow(e: ReactEvent) {
+    e.preventDefault()
 
-    render() {
-        const {
+    this.setState({
+      length: this.state.length + 1
+    })
+
+  }
+
+  removeRow(id: number, e: ReactEvent) {
+    e.preventDefault()
+
+    this.setState({
+      length: this.state.length > 1 ? this.state.length - 1 : 1
+    })
+  }
+
+
+
+  render() {
+    const {
             id,
-            name,
             htmlFor,
             label,
             description,
             model,
-        } = this.props;
+        } = this.props
 
-        return (
+    return (
             <div className="field" id={id}>
                 <h3 style={{marginTop: 0}}><label htmlFor={htmlFor}>{label}</label></h3>
                 {description && (
@@ -76,7 +75,7 @@ class LinkInput extends React.Component {
                 )}
                 <div>
                     {times(this.state.length, (i) => {
-                        return (
+                      return (
                             <span key={id + i}>
                             {i > 0 && <span><hr styleName="hr"/>
 
@@ -112,13 +111,13 @@ class LinkInput extends React.Component {
                                             htmlFor="url"
                                             validators={{validLink}}
                                             messages={{
-                                                validLink: 'Links provided must begin with http'
+                                              validLink: 'Links provided must begin with http'
                                             }}
                                         />
                                     </div>
                                 </div>
                             </span>
-                        )
+                      )
                     })}
                     <button type="button" className="button-secondary" styleName="anotherLinkButton"
                             onClick={this.addRow.bind(this)}>
@@ -126,7 +125,7 @@ class LinkInput extends React.Component {
                     </button>
                 </div>
             </div>
-        );
-    };
+    )
+  }
 }
-export default LinkInput;
+export default LinkInput

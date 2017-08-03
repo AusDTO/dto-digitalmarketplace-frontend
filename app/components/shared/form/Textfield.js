@@ -1,12 +1,12 @@
-import React from 'react';
-import {Control} from 'react-redux-form';
+import React from 'react'
+import {Control} from 'react-redux-form'
 
-import StatefulError from './StatefulError';
+import StatefulError from './StatefulError'
 
 class Textfield extends React.Component {
-    render() {
-        const {name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, disabled, readOnly, type} = this.props;
-        return (
+  render() {
+    const {name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, disabled, readOnly, type} = this.props
+    return (
             <div className="field">
                 <label htmlFor={htmlFor} className="question-heading">{label}</label>
                 {description && (
@@ -20,7 +20,7 @@ class Textfield extends React.Component {
                     type={type}
                     aria-describedby={description && `${id}-hint`}
                     mapProps={{
-                        className: ({fieldValue}) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
+                      className: ({fieldValue}) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
                     }}
                     validators={validators}
                     pattern={pattern}
@@ -29,36 +29,36 @@ class Textfield extends React.Component {
                     readOnly={readOnly}
                 />
             </div>
-        );
-    }
+    )
+  }
 }
 Textfield.defaultProps = {
-    type: "text"
-};
+  type: 'text'
+}
 
 Textfield.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
-    htmlFor: React.PropTypes.string.isRequired,
-    label: React.PropTypes.oneOfType([
-        React.PropTypes.object.isRequired,
-        React.PropTypes.string.isRequired,
-    ]),
-    model: React.PropTypes.oneOfType([
-        React.PropTypes.func,
-        React.PropTypes.string,
-    ]).isRequired,
+  name: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
+  htmlFor: React.PropTypes.string.isRequired,
+  label: React.PropTypes.oneOfType([
+    React.PropTypes.object.isRequired,
+    React.PropTypes.string.isRequired,
+  ]),
+  model: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.string,
+  ]).isRequired,
 
-    validators: React.PropTypes.object,
-    messages: React.PropTypes.object,
-    description: React.PropTypes.oneOfType([
-        React.PropTypes.object,
-        React.PropTypes.string,
-    ]),
-    pattern: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    readOnly: React.PropTypes.bool,
-    type: React.PropTypes.string
-};
+  validators: React.PropTypes.object,
+  messages: React.PropTypes.object,
+  description: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.string,
+  ]),
+  pattern: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  readOnly: React.PropTypes.bool,
+  type: React.PropTypes.string
+}
 
-export default Textfield;
+export default Textfield
