@@ -6,7 +6,7 @@ let ignoreKeys = ["/supplier_code", "/supplier", "/submitted_at", "/status", "/s
   "/last_update_time", "/lastUpdateTime", "/id", "/creation_time",
   "/creationTime", "/created_at", "/public_profile", "/documentsUrl", "/CaseStudyLink",
   "/contacts", "/longName", "/long_name", "/other_panels", "/website", "/travel", "/other_panels",
-  "/linkedin",
+  "/linkedin", "/text_vector", "/createdAt",
   "/unassessed", "/assessed", "/frameworks", "/dsp_panel",
   "/digital_marketplace_panel", "/type", "/application_id", "/domains", "/assessed_domains", "/seller_type"
 ];
@@ -43,11 +43,13 @@ export const returnDiffedData = body => {
       let thisIgnoreKeys = appendIgnoredKeys(body, body.supplier, ignoreKeys);
       let diffedData = jsonpatch.compare(body.supplier, body);
       return Object.values(diffedData).filter(x => {
+        let changePath = (['name', 'description'].includes(x.path.slice(1,x.path.length)) && x.op == 'remove' ? 'keep' : x.op)
           if (
               !thisIgnoreKeys.includes(x.path) &&
-              x.op !== 'remove' &&
+              changePath !== 'remove' && 
               x.path.match(/links/g) <= 0 &&
-              x.path.match(/createdAt/g) <= 0
+              x.path.match(/createdAt/g) <= 0 &&
+              x.path.match(/steps/g) <= 0 
           ) {
               return x;
           }
