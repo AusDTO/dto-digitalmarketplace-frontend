@@ -122,7 +122,7 @@ exports[`ApplicationPreview renders with props 1`] = `
                   Experience in
                 </b>
                 <br />
-                These areas of expertise have not yet been formally assessed by the DTA.  They will be assessed once the seller expresses interest in a matching opportunity.
+                These areas of expertise have not yet been formally assessed by the DTA. They will be assessed once the seller expresses interest in a matching opportunity.
               </p>
               <span>
                 0
@@ -157,6 +157,24 @@ exports[`ApplicationPreview renders with props 1`] = `
               <br />
             </p>
           </div>
+        </div>
+        <div
+          className="row"
+          styleName="styles.row"
+        >
+          <hr />
+          <div
+            className="col-sm-3 col-xs-12"
+          >
+            <h4
+              className="seller-profile__section-title"
+            >
+              Signed agreement
+            </h4>
+          </div>
+          <div
+            className="col-sm-8 col-sm-push-1 col-xs-12"
+          />
         </div>
       </article>
     </div>
