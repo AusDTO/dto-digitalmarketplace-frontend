@@ -141,6 +141,11 @@ class Signup extends React.Component {
 
   render() {
     const { forms, location, steps = {}, actions } = this.props;
+    
+    let { recruiter = 'no'} = forms.recruiterForm;
+    let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
+    this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
+
     let stepKeys = this.filteredSteps.map(s => s['id']);
     stepKeys = stepKeys.filter(s => s !== 'start' && s != 'submit');
     let doneKeys = keys(steps).filter(s => steps[s] === "complete" && s !== 'start' && s != 'submit');
@@ -153,9 +158,6 @@ class Signup extends React.Component {
     let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
-    let { recruiter = 'no'} = forms.recruiterForm;
-
-    let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
 
     services = Object
       .keys(services)
@@ -164,8 +166,6 @@ class Signup extends React.Component {
         newServices[key] = services[key];
         return newServices;
       }, {});
-
-    this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
     return (
       <div className="row">

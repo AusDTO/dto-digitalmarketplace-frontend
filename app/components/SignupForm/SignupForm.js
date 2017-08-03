@@ -9,7 +9,7 @@ import BaseForm      from '../../components/shared/form/BaseForm';
 import SubmitForm    from '../../components/shared/form/SubmitForm';
 import ErrorBox      from '../../components/shared/form/ErrorBox';
 import Textfield     from '../../components/shared/form/Textfield';
-import formProps     from '../../components/shared/reduxModules/formPropsSelector';
+import formProps     from '../../components/shared/form/formPropsSelector';
 import RadioList     from '../../components/shared/form/RadioList';
 
 import PageAlert     from '@gov.au/page-alerts';
@@ -247,18 +247,10 @@ class SignupForm extends BaseForm {
                       options={[
                       {
                         value: 'buyer',
-                        label: (
-                          <span>Buyer<p>
-                              I want to buy on behalf of<br/>government.</p>
-                          </span>
-                        )
+                        label: [<span>Buyer</span> , <p>I want to buy on behalf of</p> , <p>government.</p>]
                       }, {
                         value: 'seller',
-                        label: (
-                          <span>Seller<p>
-                              I want to sell digital products or<br/>services.</p>
-                          </span>
-                        )
+                        label: [<span>Seller</span> , <p>I want to sell digital products or</p> , <p>services.</p>]
                       }
                     ]}
                       validators={{
@@ -302,7 +294,7 @@ class SignupForm extends BaseForm {
                         <span>If your email is different, request your account 
                       from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
                     )
-                    : (<br/>)}
+                    : ('')}
                     validators={emailValidators}
                     messages={emailErrorMessages} />
                   {isBuyer && (
@@ -371,11 +363,11 @@ class SignupForm extends BaseForm {
                   {children}
                   <p>
                     <small>
-                      By creating an account you confirm your acceptance of our
-                      <a href="/terms-of-use" target="_blank" rel="external"> Terms of Use</a>.
+                      By creating an account you confirm your acceptance of our{' '}
+                      <a href="/terms-of-use" target="_blank" rel="external">Terms of Use</a>
                     </small>
                   </p>
-                  <input type="submit" value='Create your account'/>
+                  <input className="uikit-btn" type="submit" value='Create your account'/>
 
                 </Form>
               </article>

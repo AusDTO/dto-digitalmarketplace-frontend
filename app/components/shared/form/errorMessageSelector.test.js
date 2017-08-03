@@ -1,4 +1,4 @@
-import { mapErrorMessages, getForms, getErrorMessages, getModelPath } from '../errorMessageSelector';
+import { mapErrorMessages, getForms, getErrorMessages, getModelPath } from './errorMessageSelector';
 
 test('mapErrorMessages produces to the correct list from a simple state', () => {
   const messages = {

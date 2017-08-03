@@ -8,12 +8,11 @@ export default class PageFooter extends React.Component {
 	render() {
 	    return (
 	  		<div className="uikit-grid uikit-body">
-				<Footer>
-					<div className="wrapper">
+  				<Footer>
 						<FooterNav>
 							<div className="row">
 								<div className="col-md-3 col-sm-6">
-									<h3 className="uikit-display-1">About</h3>
+									<h2 className="uikit-display-1">About</h2>
 									<ul className="uikit-link-list">
 										<li><a href="/about-us">About us</a></li>
 										<li><a href="/contact-us">Contact us</a></li>
@@ -25,7 +24,7 @@ export default class PageFooter extends React.Component {
 								</div>
 
 								<div className="col-md-3 col-sm-6">
-									<h3 className="uikit-display-1">Using the Digital Marketplace</h3>
+									<h2 className="uikit-display-1">Using the Digital Marketplace</h2>
 									<ul className="uikit-link-list">
 										<li><a href="/">Home</a></li>
 										<li><a href="/search/sellers">Seller catalogue</a></li>
@@ -36,7 +35,7 @@ export default class PageFooter extends React.Component {
 								</div>
 
 								<div className="col-md-3 col-sm-6">
-									<h3 className="uikit-display-1">Digital Marketplace brought to you by the DTA</h3>
+									<h2 className="uikit-display-1">Digital Marketplace brought to you by the <a rel="external" href="https://www.dta.gov.au/">DTA</a></h2>
 									<ul className="uikit-link-list">
 										<li><a rel="external" href="https://www.dta.gov.au/tags/digital-marketplace/">DTA blog</a></li>
 										<li><a rel="external" href="https://twitter.com/DTA">DTA twitter</a></li>
@@ -45,7 +44,7 @@ export default class PageFooter extends React.Component {
 								</div>
 
 								<div className="col-md-3 col-sm-6">
-									<h3 className="uikit-display-1">DTA resources</h3>
+									<h2 className="uikit-display-1">DTA resources</h2>
 									<ul className="uikit-link-list">
 										<li><a rel="external" href="https://www.dta.gov.au/our-work/">Our work</a></li>
 										<li><a rel="external" href="https://www.dta.gov.au/standard/">Our standard</a></li>
@@ -70,9 +69,8 @@ export default class PageFooter extends React.Component {
 								</div>
 							</div>
 						</FooterEnd>
-					</div>
-				</Footer>
-			</div>
+  				</Footer>
+			 </div>
 	    );
   }
 }

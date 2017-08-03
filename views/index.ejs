@@ -17,7 +17,6 @@
 		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/static/media/apple-touch-icon.png"/>
 		<link rel="apple-touch-icon-precomposed" href="/static/media/apple-touch-icon.png"/>
 		<link rel="stylesheet" type="text/css" href="/bundle/pancake.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/bundle/application.css"/>
 		<link rel="stylesheet" type="text/css" href="/bundle/main.css"/>
 	    <script async src="//www.google-analytics.com/analytics.js"></script>
 	    <script async src="bundle/autotrack.custom.js"></script>
@@ -28,7 +27,7 @@
 	        ga.l = +new Date;
 			<% if (settings.env === 'development') { %>
 			   ga('create', 'UA-72722909-6', 'auto');
-			 <% } else{ %>  
+			 <% } else{ %>
 			   ga('create', 'UA-72722909-5', 'auto');
 			<% } %>
 	        ga('send', 'pageview');
@@ -50,7 +49,7 @@
 	        ga('require', 'urlChangeTracker');
 	    </script>
 	</head>
-	<body>
+	<body class="uikit-grid uikit-body">
 		<div id="appReact"></div>
 		<script src="bundle/build.js"></script>
 	</body>

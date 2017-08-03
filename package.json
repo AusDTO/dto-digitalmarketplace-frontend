@@ -102,7 +102,6 @@
     "react-autocomplete": "1.4.0",
     "react-cookie": "^2.0.8",
     "react-dom": "15.4.0",
-    "react-leaflet": "^1.1.6",
     "react-redux": "^5.0.4",
     "react-redux-form": "1.5.3",
     "react-router-dom": "^4.1.1",
