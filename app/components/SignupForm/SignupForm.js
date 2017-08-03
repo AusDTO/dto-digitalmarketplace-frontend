@@ -247,18 +247,10 @@ class SignupForm extends BaseForm {
                       options={[
                       {
                         value: 'buyer',
-                        label: (
-                          <span>Buyer<p>
-                              I want to buy on behalf of<br/>government.</p>
-                          </span>
-                        )
+                        label: [<span>Buyer</span> , <p>I want to buy on behalf of</p> , <p>government.</p>]
                       }, {
                         value: 'seller',
-                        label: (
-                          <span>Seller<p>
-                              I want to sell digital products or<br/>services.</p>
-                          </span>
-                        )
+                        label: [<span>Seller</span> , <p>I want to sell digital products or</p> , <p>services.</p>]
                       }
                     ]}
                       validators={{
@@ -302,7 +294,7 @@ class SignupForm extends BaseForm {
                         <span>If your email is different, request your account 
                       from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
                     )
-                    : (<br/>)}
+                    : ('')}
                     validators={emailValidators}
                     messages={emailErrorMessages} />
                   {isBuyer && (
@@ -375,7 +367,7 @@ class SignupForm extends BaseForm {
                       <a href="/terms-of-use" target="_blank" rel="external">Terms of Use</a>
                     </small>
                   </p>
-                  <input type="submit" value='Create your account'/>
+                  <input className="uikit-btn" type="submit" value='Create your account'/>
 
                 </Form>
               </article>

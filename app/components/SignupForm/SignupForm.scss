@@ -1,41 +1,45 @@
-.user-type fieldset span input[type='radio'] + label{
-	display:inline-block;
-	width: 360px;
+.user-type .radio-list-container{
+	display: block;
+  width: 100%;
 	border: 2px solid #bbbbbb;
 	background-color: #e8f5fa;
-}
-.user-type fieldset span:first-child input[type='radio'] + label{
-	margin-right: 35px;
-}
-.user-type fieldset span input[type='radio'] + label::before {
-	background: white;
-}
-@media all and (max-width: 1024px) and (min-width: 768px) {
-	.user-type fieldset span input[type='radio'] + label {
-		width: 300px;
-	}
-}
-@media all and (max-width: 768px) and (min-width: 320px) {
-	.user-type fieldset span input[type='radio'] + label{
-		display: block;
-		width: 100%;
-	}
+  margin: 0;
+  padding: 15px 12px 0px 20px;
 }
 
-.user-type fieldset span input[type='radio'] + label > span p{
-	font-size: .875rem;
-	font-weight: 400;
-	margin-bottom: 0.1em;
-	padding-right: 20px;
+.employment-status .uikit-control-input--full {
+  margin-bottom: 0.4em;
+  margin-top: 0.4em;
 }
 
-.user-type fieldset span input[type='radio']:checked + label{
-	font-weight: bold;
-	outline:none;
-	border: 2px solid #717171;
-	background-color: white;
+.user-type .uikit-control-input__input:focus+.uikit-control-input__text {
+  outline: none;
 }
 
-.employment-status div fieldset legend {
-	font-weight: normal;
+.user-type .uikit-control-input__input:focus+.uikit-control-input__text > span {
+  outline: 1px solid #313131;
+}
+
+@media all and (max-width: 1024px) {
+  .user-type .radio-list-container:first-child {
+    margin-bottom: 20px;
+  }
+}
+
+@media all and (min-width: 1024px)  {
+  .user-type .radio-list-container {
+    width: 48%;
+    display:inline-block;
+  }
+
+  .user-type .radio-list-container:first-child {
+    margin-right: 20px;
+  }
+}
+
+.user-type fieldset span input[type='radio'] + label > p {
+  font-size: .875rem;
+  font-weight: 400;
+  margin-bottom: 0.1em;
+  padding-left: 35px;
 }

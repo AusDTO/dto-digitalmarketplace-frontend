@@ -22,15 +22,19 @@ const RadioList = (props) => {
                     {options.map((option, i) => {
                         let fieldId = `${id}-${option.value}`;
                         return (
-                            <span key={i}>
-                                <Control.radio
-                                    model={model}
-                                    name={name}
-                                    id={fieldId}
-                                    value={option.value}
-                                    validators={validators}
-                                />
-                                <label htmlFor={fieldId}>{option.label}</label>
+                            <span key={i} className="radio-list-container">
+                                <span className="uikit-control-input uikit-control-input--full">
+                                  <Control.radio
+                                      model={model}
+                                      name={name}
+                                      id={fieldId}
+                                      mapProps={{
+                                        className: 'uikit-control-input__input'
+                                      }}
+                                      value={option.value}
+                                      validators={validators} />
+                                  <label className="uikit-control-input__text" htmlFor={fieldId}>{option.label}</label>
+                                </span>
                             </span>
                         )
                     })}
