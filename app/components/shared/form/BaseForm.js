@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom'
 import { actions } from 'react-redux-form'
 
 class BaseForm extends React.Component {
-
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     model: React.PropTypes.string.isRequired,
     serverRender: React.PropTypes.bool.isRequired,
     form: React.PropTypes.object.isRequired,
 
-    formErrors: React.PropTypes.object,
+    formErrors: React.PropTypes.object
   }
 
   state = {
@@ -28,9 +27,9 @@ class BaseForm extends React.Component {
     if (!formErrors || !serverRender) {
       return
     }
-    
+
     let errors = {}
-    Object.keys(formErrors).forEach((key) => {
+    Object.keys(formErrors).forEach(key => {
       errors[key] = {
         valid: false,
         errors: formErrors[key]
@@ -58,9 +57,8 @@ class BaseForm extends React.Component {
   }
 
   attachNode(node) {
-    this._form = ReactDOM.findDOMNode(node)  // eslint-disable-line react/no-find-dom-node
+    this._form = ReactDOM.findDOMNode(node) // eslint-disable-line react/no-find-dom-node
   }
-
 }
 
 export default BaseForm

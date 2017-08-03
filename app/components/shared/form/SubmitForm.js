@@ -1,6 +1,15 @@
 import React from 'react'
 
-const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, onCustomSubmit }) => (
+const SubmitForm = ({
+  children,
+  method,
+  id,
+  action,
+  valid,
+  onSubmit,
+  onReset,
+  onCustomSubmit
+}) =>
   <form
     method={method}
     id={id}
@@ -14,8 +23,8 @@ const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, on
       }
       onCustomSubmit(e, values)
     }}
-    children={children} />
-)
+    children={children}
+  />
 
 SubmitForm.defaultProps = {
   onCustomSubmit: () => {}

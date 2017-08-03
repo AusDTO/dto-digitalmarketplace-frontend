@@ -7,12 +7,14 @@
   "extends": [
     "eslint:recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
   ],
   "rules": {
     "react/prop-types": "off",
     "react/display-name": "off",
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "quotes": ["error", "single"],
     "semi": ["error", "never"]
   },

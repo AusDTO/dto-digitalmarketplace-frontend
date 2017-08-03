@@ -1,7 +1,7 @@
-import { 
-	MEMBER_INFO_HAS_ERRORED, 
-	MEMBER_INFO_IS_LOADING, 
-	MEMBER_INFO_FETCH_DATA_SUCCESS
+import {
+  MEMBER_INFO_HAS_ERRORED,
+  MEMBER_INFO_IS_LOADING,
+  MEMBER_INFO_FETCH_DATA_SUCCESS
 } from '../constants/constants'
 
 import apiFetch from '../services/apiFetch'
@@ -27,22 +27,21 @@ export function memberInfoFetchDataSuccess(memberInfo) {
   }
 }
 
-
 export function memberInfoFetchData() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(memberInfoIsLoading(true))
     apiFetch('/api/ping')
-            .then((response) => {
-              if (!response.ok) {
-                throw Error(response.statusText)
-              }
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
 
-              dispatch(memberInfoIsLoading(false))
+        dispatch(memberInfoIsLoading(false))
 
-              return response
-            })
-            .then((response) => response.json())
-            .then((memberInfo) => dispatch(memberInfoFetchDataSuccess(memberInfo)))
-            .catch(() => dispatch(memberInfoHasErrored(true)))
+        return response
+      })
+      .then(response => response.json())
+      .then(memberInfo => dispatch(memberInfoFetchDataSuccess(memberInfo)))
+      .catch(() => dispatch(memberInfoHasErrored(true)))
   }
 }

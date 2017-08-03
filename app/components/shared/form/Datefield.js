@@ -7,7 +7,6 @@ import get from 'lodash/get'
 import './scss/Datefield.scss'
 
 class Datefield extends React.Component {
-
   state = {
     day: void 0,
     month: void 0,
@@ -23,40 +22,50 @@ class Datefield extends React.Component {
         month: format(propDate, 'MM'),
         year: format(propDate, 'YYYY')
       }
-    }
-    else {
+    } else {
       setDate(model, '2017-01-01')
     }
   }
 
   onChange(e) {
     const { model, setDate } = this.props
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      const { year, month, day } = this.state
-      let date = format(new Date(Number((year.length === 2 ? '20':'') + year), Number(month) - 1, Number(day)), 'YYYY-MM-DD')
-      setDate(model, date)
-    })
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      () => {
+        const { year, month, day } = this.state
+        let date = format(
+          new Date(
+            Number((year.length === 2 ? '20' : '') + year),
+            Number(month) - 1,
+            Number(day)
+          ),
+          'YYYY-MM-DD'
+        )
+        setDate(model, date)
+      }
+    )
   }
 
   render() {
     const { id, htmlFor, label, description } = this.props
-    const {
-      day,
-      month,
-      year
-    } = this.state
+    const { day, month, year } = this.state
 
     return (
       <div styleName="date-input">
-        <label htmlFor={htmlFor} className="question-heading">{label}</label>
-        {description && (
-          <p className="hint" id={`${id}-hint`}>{description}</p>
-        )}
+        <label htmlFor={htmlFor} className="question-heading">
+          {label}
+        </label>
+        {description &&
+          <p className="hint" id={`${id}-hint`}>
+            {description}
+          </p>}
 
         <div styleName="fields flush">
-          <label htmlFor={htmlFor} styleName="date-heading">Day</label>
+          <label htmlFor={htmlFor} styleName="date-heading">
+            Day
+          </label>
           <input
             type="text"
             name="day"
@@ -67,24 +76,28 @@ class Datefield extends React.Component {
           />
         </div>
 
-          <div styleName="slashSpacer">/</div>
+        <div styleName="slashSpacer">/</div>
 
         <div styleName="fields flush">
-          <label htmlFor={htmlFor} styleName="date-heading">Month</label>
+          <label htmlFor={htmlFor} styleName="date-heading">
+            Month
+          </label>
           <input
             type="text"
             name="month"
-            id='month'
+            id="month"
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={month}
           />
         </div>
 
-          <div styleName="slashSpacer">/</div>
+        <div styleName="slashSpacer">/</div>
 
         <div styleName="fields">
-          <label htmlFor={htmlFor} styleName="date-heading">Year</label>
+          <label htmlFor={htmlFor} styleName="date-heading">
+            Year
+          </label>
           <input
             type="text"
             name="year"
@@ -99,14 +112,13 @@ class Datefield extends React.Component {
   }
 }
 
-
 const mapStateToProps = (state, ownProps) => {
   return {
     date: get(state, ownProps.model)
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     setDate: (model, date) => {
       return dispatch(actions.change(model, date))
@@ -121,7 +133,7 @@ Datefield.propTypes = {
   label: React.PropTypes.string.isRequired,
   model: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.string,
+    React.PropTypes.string
   ]).isRequired,
   description: React.PropTypes.string,
   pattern: React.PropTypes.string,

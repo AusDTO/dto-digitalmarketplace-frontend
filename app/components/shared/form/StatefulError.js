@@ -4,9 +4,7 @@ import { Errors } from 'react-redux-form'
 
 import { addMessage, removeMessage } from './errorMessage'
 
-
 class StatefulError extends React.Component {
-
   componentDidMount() {
     const { dispatch, messages, model, id } = this.props
     dispatch(addMessage(model, messages, id))
@@ -23,7 +21,8 @@ class StatefulError extends React.Component {
     return (
       <Errors
         model={model}
-        show={(field) => field.touched && (showMessagesDuringFocus || !field.focus)}
+        show={field =>
+          field.touched && (showMessagesDuringFocus || !field.focus)}
         messages={messages}
         wrapper={({ children }) => {
           if (!children.length) {
@@ -40,14 +39,13 @@ class StatefulError extends React.Component {
       />
     )
   }
-
 }
 
 StatefulError.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  id:       React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
   messages: React.PropTypes.objectOf(React.PropTypes.string).isRequired,
-  model:    React.PropTypes.string.isRequired
+  model: React.PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {

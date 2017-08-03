@@ -1,9 +1,14 @@
-import { mapErrorMessages, getForms, getErrorMessages, getModelPath } from './errorMessageSelector'
+import {
+  mapErrorMessages,
+  getForms,
+  getErrorMessages,
+  getModelPath
+} from './errorMessageSelector'
 
 test('mapErrorMessages produces to the correct list from a simple state', () => {
   const messages = {
     'modelName.title': {
-      'required': 'Title is required'
+      required: 'Title is required'
     }
   }
 
@@ -18,9 +23,7 @@ test('mapErrorMessages produces to the correct list from a simple state', () => 
     }
   }
 
-  const errorMap = [
-    { id: 'title', messages: ['Title is required'] }
-  ]
+  const errorMap = [{ id: 'title', messages: ['Title is required'] }]
 
   expect(mapErrorMessages(form, messages, 'modelName')).toEqual(errorMap)
 })
@@ -28,13 +31,13 @@ test('mapErrorMessages produces to the correct list from a simple state', () => 
 it('mapErrorMessages produces to the correct list from a nested state', () => {
   const messages = {
     'modelName.title': {
-      'required': 'Title is required'
+      required: 'Title is required'
     },
     'modelName.nested.role': {
-      'required': 'Role is required'
+      required: 'Role is required'
     },
     'modelName.nested.name': {
-      'required': 'Name is required'
+      required: 'Name is required'
     }
   }
 
@@ -71,7 +74,7 @@ it('mapErrorMessages produces to the correct list from a nested state', () => {
 test('mapErrorMessages filters out $form fields correctly', () => {
   const messages = {
     'modelName.$form': {
-      'required': 'form is required'
+      required: 'form is required'
     }
   }
 
@@ -82,7 +85,7 @@ test('mapErrorMessages filters out $form fields correctly', () => {
         errors: {
           required: true
         }
-      }  
+      }
     }
   }
 
@@ -92,14 +95,14 @@ test('mapErrorMessages filters out $form fields correctly', () => {
 test('mapErrorMessages maps errors from fields that have array values', () => {
   const messages = {
     'modelName.names': {
-      'required': 'You need to specify at least one name!'
+      required: 'You need to specify at least one name!'
     }
   }
 
   const form = {
     modelName: {
       names: {
-        '$form': {
+        $form: {
           errors: {
             errors: {
               required: true
@@ -148,12 +151,15 @@ test('mapErrorMessages gets errors for an array set', () => {
 
   const messages = {
     'modelName.arrayProp': {
-      'arrayProp': 'You must provide a value for at least one item!'
+      arrayProp: 'You must provide a value for at least one item!'
     }
   }
 
   const errorMap = [
-    { id: 'arrayProp', messages: ['You must provide a value for at least one item!'] }
+    {
+      id: 'arrayProp',
+      messages: ['You must provide a value for at least one item!']
+    }
   ]
 
   expect(mapErrorMessages(form, messages, 'modelName')).toEqual(errorMap)
@@ -162,8 +168,8 @@ test('mapErrorMessages gets errors for an array set', () => {
 test('mapErrorMessages gets errors with mulitple validation on field only one triggered.', () => {
   const messages = {
     'modelName.title': {
-      'required': 'Title is required',
-      'limitText': 'Title has exceeded the word limit.'
+      required: 'Title is required',
+      limitText: 'Title has exceeded the word limit.'
     }
   }
 
@@ -195,7 +201,7 @@ test('getForms return values', () => {
     }
   }
 
-  expect(getForms(state)).toEqual({ modelName: { foo: 'bar' }})
+  expect(getForms(state)).toEqual({ modelName: { foo: 'bar' } })
   expect(getForms({})).toBeUndefined()
 })
 
@@ -214,4 +220,3 @@ test('getModelPath return values', () => {
   expect(getModelPath(void 0, 'modelName')).toEqual('modelName')
   expect(getModelPath()).toBeUndefined()
 })
-

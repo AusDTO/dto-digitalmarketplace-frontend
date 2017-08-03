@@ -1,14 +1,13 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {Control, actions} from 'react-redux-form'
+import { connect } from 'react-redux'
+import { Control, actions } from 'react-redux-form'
 import get from 'lodash/get'
 
-import {required}     from '../../validators'
-import Textfield         from './Textfield'
-import StatefulError    from './StatefulError'
+import { required } from '../../validators'
+import Textfield from './Textfield'
+import StatefulError from './StatefulError'
 
 class CheckboxDetailsField extends React.Component {
-
   state = {
     showField: false
   }
@@ -25,40 +24,48 @@ class CheckboxDetailsField extends React.Component {
       showField: e.target.checked === true
     })
 
-    const {detailsModel, revalidateDetails} = this.props
+    const { detailsModel, revalidateDetails } = this.props
     revalidateDetails(detailsModel)
-
   }
 
   render() {
-    const {name, id, label, model, detailsLabel, detailsModel, validators, messages} = this.props
+    const {
+      name,
+      id,
+      label,
+      model,
+      detailsLabel,
+      detailsModel,
+      validators,
+      messages
+    } = this.props
     return (
-            <span>
-        <StatefulError model={model} messages={messages} id={id}/>
+      <span>
+        <StatefulError model={model} messages={messages} id={id} />
         <Control.checkbox
-            onClick={this.onToggle.bind(this)}
-            id={id}
-            name={name}
-            value="yes"
-            model={model}
-            validators={validators}
+          onClick={this.onToggle.bind(this)}
+          id={id}
+          name={name}
+          value="yes"
+          model={model}
+          validators={validators}
         />
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={id}>
+          {label}
+        </label>
 
-
-                {this.state.showField && (
-                    <Textfield
-                        name={`${name}_details`}
-                        id={`${id}-details`}
-                        htmlFor={`${id}-details`}
-                        model={detailsModel}
-                        label={detailsLabel}
-                        validators={{required}}
-                        messages={{
-                          required: detailsLabel,
-                        }}
-                    />
-                )}
+        {this.state.showField &&
+          <Textfield
+            name={`${name}_details`}
+            id={`${id}-details`}
+            htmlFor={`${id}-details`}
+            model={detailsModel}
+            label={detailsLabel}
+            validators={{ required }}
+            messages={{
+              required: detailsLabel
+            }}
+          />}
       </span>
     )
   }
@@ -75,16 +82,16 @@ CheckboxDetailsField.propTypes = {
   id: React.PropTypes.string.isRequired,
   label: React.PropTypes.oneOfType([
     React.PropTypes.object,
-    React.PropTypes.string,
+    React.PropTypes.string
   ]).isRequired,
   model: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.string,
+    React.PropTypes.string
   ]).isRequired,
   detailsLabel: React.PropTypes.string,
   detailsModel: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.string,
+    React.PropTypes.string
   ]).isRequired,
 
   validators: React.PropTypes.object,
@@ -93,13 +100,13 @@ CheckboxDetailsField.propTypes = {
   controlProps: React.PropTypes.object,
   mapProps: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.object,
-  ]),
+    React.PropTypes.object
+  ])
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    revalidateDetails: (detailsModel) => {
+    revalidateDetails: detailsModel => {
       dispatch(actions.setValidity(detailsModel, true))
     }
   }
@@ -112,4 +119,6 @@ export const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CheckboxDetailsField)
+export default connect(mapStateToProps, mapDispatchToProps)(
+  CheckboxDetailsField
+)

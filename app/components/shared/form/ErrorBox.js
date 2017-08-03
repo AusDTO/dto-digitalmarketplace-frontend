@@ -7,7 +7,6 @@ import PageAlert from '@gov.au/page-alerts'
 import { getInvalidFields } from './errorMessageSelector'
 
 class ErrorBox extends React.Component {
-
   state = {
     focusedOnce: false
   }
@@ -29,19 +28,22 @@ class ErrorBox extends React.Component {
     }
 
     return (
-      <PageAlert as='error'>
-        <h4 id="validation-masthead-heading">There was a problem with the details you gave</h4>
-        {invalidFields && (
+      <PageAlert as="error">
+        <h4 id="validation-masthead-heading">
+          There was a problem with the details you gave
+        </h4>
+        {invalidFields &&
           <ul>
             {invalidFields.map(({ messages, id }, i) => {
-              return messages.map((message, j) => (
+              return messages.map((message, j) =>
                 <li key={`${i}${j}`}>
-                  <a href={`#${id}`}>{message}</a>
+                  <a href={`#${id}`}>
+                    {message}
+                  </a>
                 </li>
-              ))
+              )
             })}
-          </ul>
-        )}
+          </ul>}
       </PageAlert>
     )
   }
@@ -49,10 +51,12 @@ class ErrorBox extends React.Component {
 
 ErrorBox.propTypes = {
   focusOnMount: React.PropTypes.bool,
-  invalidFields: React.PropTypes.arrayOf(React.PropTypes.shape({
-    id: React.PropTypes.string,
-    message: React.PropTypes.arrayOf(React.PropTypes.string)
-  })).isRequired,
+  invalidFields: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      id: React.PropTypes.string,
+      message: React.PropTypes.arrayOf(React.PropTypes.string)
+    })
+  ).isRequired,
   form: React.PropTypes.object
 }
 

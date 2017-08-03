@@ -4,7 +4,7 @@ import { memberInfoFetchData } from '../../actions/memberActions'
 import './Header.scss'
 
 class Header extends Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchData()
   }
 
@@ -20,34 +20,39 @@ class Header extends Component {
 
   render() {
     return (
-        <section className="marketplace--header">
-            <div className="wrapper">
-              <div className="marketplace--logo">
-                  <a href="/" title="Go to the Marketplace homepage" className="logo">Digital Marketplace</a> <span className="badge--beta">BETA</span>
-              </div>
-              <div className="user-nav">    
-                  <div id="react-bundle-auth-header-state"></div>
+      <section className="marketplace--header">
+        <div className="wrapper">
+          <div className="marketplace--logo">
+            <a href="/" title="Go to the Marketplace homepage" className="logo">
+              Digital Marketplace
+            </a>{' '}
+            <span className="badge--beta">BETA</span>
+          </div>
+          <div className="user-nav">
+            <div id="react-bundle-auth-header-state" />
             <div id="react-bundle-auth-header">
-              <ul data-reactroot="" id="main-navigation" className="inline-links--inverted">
+              <ul
+                data-reactroot=""
+                id="main-navigation"
+                className="inline-links--inverted"
+              >
                 <li>
-                  {this.props.memberInfo.isAuthenticated ?
-                    <span>{ this.dashBoardLink() }</span>
-                    :
-                    <a href="/signup">Join the Marketplace</a>
-                  }
+                  {this.props.memberInfo.isAuthenticated
+                    ? <span>
+                        {this.dashBoardLink()}
+                      </span>
+                    : <a href="/signup">Join the Marketplace</a>}
                 </li>
                 <li>
-                  {this.props.memberInfo.isAuthenticated ?
-                    <a  href="/logout">Sign out</a>
-                    :
-                    <a href="/login">Sign in</a>
-                  }
+                  {this.props.memberInfo.isAuthenticated
+                    ? <a href="/logout">Sign out</a>
+                    : <a href="/login">Sign in</a>}
                 </li>
               </ul>
             </div>
-              </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
     )
   }
 }
@@ -58,7 +63,7 @@ Header.propTypes = {
   isLoading: PropTypes.bool
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     memberInfo: state.memberInfo,
     hasErrored: state.memberInfoHasErrored,
@@ -66,7 +71,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchData: () => dispatch(memberInfoFetchData())
   }

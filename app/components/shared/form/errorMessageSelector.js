@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import get from 'lodash/get'
 
-export const getForms = (state) => state.forms
+export const getForms = state => state.forms
 export const getErrorMessages = (state = {}) => state.errorMessage
 export const getModelPath = (state, model) => model
 
@@ -50,13 +50,12 @@ export const mapErrorMessages = (forms, messages) => {
       if ('errors' in fieldErrors) {
         fieldErrors = fieldErrors.errors
       }
-      
+
       // Map fieldErrors keys (e.g. required) to errorMessages stored in the state
       // e.g.
       // caseStudyForm.title: { required: 'Title is required' }
       // Will result in the array ['Title is required']
-      result.messages = Object
-        .keys(fieldErrors)
+      result.messages = Object.keys(fieldErrors)
         // Filter out any error keys that havent been triggered
         .filter(key => get(fieldErrors, key))
         .reduce((errors, errorKey) => {
@@ -69,4 +68,7 @@ export const mapErrorMessages = (forms, messages) => {
     .filter(e => e.messages.length)
 }
 
-export const getInvalidFields = createSelector([ getForms, getErrorMessages, getModelPath ], mapErrorMessages)
+export const getInvalidFields = createSelector(
+  [getForms, getErrorMessages, getModelPath],
+  mapErrorMessages
+)

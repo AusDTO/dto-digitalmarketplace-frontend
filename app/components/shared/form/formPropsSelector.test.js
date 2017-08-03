@@ -1,10 +1,9 @@
-import formProps, { 
+import formProps, {
   getCurrentForm,
   getFormValues,
   getFormOptions,
-  getOptions,
+  getOptions
 } from './formPropsSelector'
-
 
 let exampleState = {
   form_options: {
@@ -76,15 +75,19 @@ test('getCurrentForm return values', () => {
 
 test('getFormValues return value', () => {
   expect(getFormValues(void 0, 'formKey')).toBeUndefined()
-  expect(getFormValues({ 'formKey': { foo: 'bar'} }, 'formKey')).toEqual({ foo: 'bar' })
+  expect(getFormValues({ formKey: { foo: 'bar' } }, 'formKey')).toEqual({
+    foo: 'bar'
+  })
 })
 
 test('getFormOptions return value', () => {
   expect(getFormOptions(void 0)).toBeUndefined()
-  expect(getFormOptions({ form_options: { foo: 'bar' }})).toEqual({ foo: 'bar' })
+  expect(getFormOptions({ form_options: { foo: 'bar' } })).toEqual({
+    foo: 'bar'
+  })
 })
 
 test('getOptions', () => {
   expect(getOptions(void 0)).toBeUndefined()
-  expect(getOptions({ options: { foo: 'bar' }})).toEqual({ foo: 'bar' })
+  expect(getOptions({ options: { foo: 'bar' } })).toEqual({ foo: 'bar' })
 })

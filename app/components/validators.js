@@ -2,10 +2,10 @@ import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid'
 import isFuture from 'date-fns/is_future'
-import {isValidABN} from 'abnacn-validator'
+import { isValidABN } from 'abnacn-validator'
 import values from 'lodash/values'
 
-export const required = (val) => {
+export const required = val => {
   if (typeof val === 'boolean') {
     return val
   }
@@ -15,7 +15,7 @@ export const required = (val) => {
   }
 
   if (val !== null && typeof val === 'object') {
-    return values(val).filter(function (v) {
+    return values(val).filter(function(v) {
       return v
     }).length
   }
@@ -23,7 +23,7 @@ export const required = (val) => {
   return val && val.trim().length
 }
 
-export const validDate = (val) => {
+export const validDate = val => {
   if (!val || !isValid(parse_date(val))) {
     return false
   }
@@ -34,7 +34,7 @@ export const validDate = (val) => {
   }
 }
 
-export const validEmail = (val) => {
+export const validEmail = val => {
   if (!val) {
     return true
   }
@@ -45,7 +45,7 @@ export const validEmail = (val) => {
   }
 }
 
-export const governmentEmail = (val) => {
+export const governmentEmail = val => {
   if (!val) {
     return true
   }
@@ -56,30 +56,29 @@ export const governmentEmail = (val) => {
   }
 }
 
-
-export const minArrayLength = (len) => (arr = []) => {
+export const minArrayLength = len => (arr = []) => {
   return Array.isArray(arr) && arr.filter(v => v.trim()).length >= len
 }
 
-export const min = (len) => (val = '') => {
+export const min = len => (val = '') => {
   return val.length >= len
 }
 
-export const validABN = (val) => {
+export const validABN = val => {
   if (!val) {
     return false
   }
   return isValidABN(val)
 }
 
-export const validLink = (val) => {
+export const validLink = val => {
   if (!val) {
     return true
   }
   return val.match(/^http/)
 }
 
-export const validLinks = (val) => {
+export const validLinks = val => {
   if (!val) {
     return true
   }
@@ -107,7 +106,7 @@ export const validLinks = (val) => {
  * @param  {Array}  keys   Keys of form fields that require content for this to validate
  * @return {Boolean}       Whether the field is required or not.
  */
-export const dependantRequired = (values = {}, keys = []) => (val) => {
+export const dependantRequired = (values = {}, keys = []) => val => {
   let dependantFields = keys.filter(key => {
     return !isEmpty(values[key])
   })
@@ -129,19 +128,19 @@ export const minObjectLength = (object = {}, minLength = -1) => {
     return false
   }
 
-  return !keys.filter((key) => isEmpty(object[key])).length
+  return !keys.filter(key => isEmpty(object[key])).length
 }
 
-export const limitWords = (limit) => (val = '') => {
+export const limitWords = limit => (val = '') => {
   return (val.match(/\S+/g) || []).length <= limit
 }
 
-export const limitNumbers = (limit) => (val = '') => {
+export const limitNumbers = limit => (val = '') => {
   const length = (val.match(/[0-9]/g) || []).length
   return length === limit && length === val.length
 }
 
-export const validPercentage = (val) => {
+export const validPercentage = val => {
   if (!val) {
     return true
   }
@@ -150,8 +149,7 @@ export const validPercentage = (val) => {
   return length === val.length
 }
 
-export const validPhoneNumber = (val) => {
-
+export const validPhoneNumber = val => {
   if (!val) {
     return true
   }
