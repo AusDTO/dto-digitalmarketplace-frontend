@@ -405,7 +405,7 @@ class SignupForm extends BaseForm {
                           }}
                           messages={{
                             required:
-                              'You must provide your manager\'s email address',
+                              "You must provide your manager's email address",
                             validEmail: 'A validly formatted email is required',
                             governmentEmail:
                               'Email should have a government domain'

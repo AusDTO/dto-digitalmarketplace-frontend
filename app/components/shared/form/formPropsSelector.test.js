@@ -41,7 +41,7 @@ test('formProps will reduce state to single object', () => {
   expect(formProps(exampleState, 'someForm')).toEqual(expectedState)
 })
 
-test('formProps will still provide a simplified shape if it can\'t find the form in state', () => {
+test("formProps will still provide a simplified shape if it can't find the form in state", () => {
   let expectedState = {
     mode: 'add',
     serverRender: false,

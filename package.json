@@ -17,6 +17,7 @@
     "eslint-config-prettier": "^2.3.0",
     "eslint-loader": "1.5.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "6.3.0",
     "expect": "^1.20.2",
     "extract-text-webpack-plugin": "1.0.1",
@@ -127,7 +128,8 @@
     "server": "node scripts/server.js",
     "server:development": "nodemon scripts/server.js --watch build/render-server.js",
     "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js",
-    "lint": "eslint ."
+    "lint": "./node_modules/.bin/eslint app",
+    "prettier": "./node_modules/.bin/prettier --single-quote --no-semi --write \"app/**/*.js\""
   },
   "jest": {
     "coverageDirectory": "coverage",

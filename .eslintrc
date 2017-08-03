@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "plugins": [
     "jsx-a11y",
-    "react"
+    "react",
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",
@@ -15,8 +16,9 @@
     "react/prop-types": "off",
     "react/display-name": "off",
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    "quotes": ["error", "single"],
-    "semi": ["error", "never"]
+    "quotes": ["error", "single", {"avoidEscape": true}],
+    "semi": ["error", "never"],
+    "prettier/prettier": ["error",{"singleQuote": true, "semi": false}]
   },
   "globals": {
     "document": false,
