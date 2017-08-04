@@ -1,12 +1,12 @@
-import React from 'react';
-import { Control, controls } from 'react-redux-form';
+import React from 'react'
+import { Control, controls } from 'react-redux-form'
 
-import StatefulError from './StatefulError';
-import TextareaComponent from '../Textarea';
+import StatefulError from './StatefulError'
+import TextareaComponent from '../Textarea'
 
-import { limitWords } from '../../validators';
+import { limitWords } from '../../validators'
 
-const Textarea = (props) => {
+const Textarea = props => {
   let {
     name,
     id,
@@ -18,35 +18,54 @@ const Textarea = (props) => {
     showMessagesDuringFocus = false,
     controlProps = {},
     mapProps
-  } = props;
+  } = props
 
   if (controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
-    messages = { limitWords: `${label} has exceeded the word limit.`, ...messages }
+    messages = {
+      limitWords: `${label} has exceeded the word limit.`,
+      ...messages
+    }
   }
 
   return (
     <div className="field">
-      <label className="question-heading" htmlFor={id}>{label}</label>
-      {description && (
-        <p className="hint" id={`${id}-hint`}>{description}</p>
-      )}
-      {messages && <StatefulError model={model} messages={messages} id={id} showMessagesDuringFocus={showMessagesDuringFocus} />}
+      <label className="question-heading" htmlFor={id}>
+        {label}
+      </label>
+      {description &&
+        <p className="hint" id={`${id}-hint`}>
+          {description}
+        </p>}
+      {messages &&
+        <StatefulError
+          model={model}
+          messages={messages}
+          id={id}
+          showMessagesDuringFocus={showMessagesDuringFocus}
+        />}
       <Control
         model={model}
-        controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
+        controlProps={{
+          name,
+          id,
+          describedby: `${id}-hint`,
+          hint: description,
+          ...controlProps
+        }}
         validators={validators}
         component={TextareaComponent}
         mapProps={{
-          className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
-          value: (props) => props.viewValue,
+          className: ({ fieldValue }) =>
+            !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
+          value: props => props.viewValue,
           ...mapProps,
-          ...controls.default,
+          ...controls.default
         }}
       />
     </div>
   )
-};
+}
 
 Textarea.defaultProps = {
   mapProps: {}
@@ -58,7 +77,7 @@ Textarea.propTypes = {
   label: React.PropTypes.string.isRequired,
   model: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.string,
+    React.PropTypes.string
   ]).isRequired,
 
   validators: React.PropTypes.object,
@@ -67,9 +86,8 @@ Textarea.propTypes = {
   controlProps: React.PropTypes.object,
   mapProps: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.object,
-  ]),
-};
+    React.PropTypes.object
+  ])
+}
 
-
-export default Textarea;
+export default Textarea

@@ -1,21 +1,20 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Control, actions } from 'react-redux-form';
-import upperFirst from 'lodash/upperFirst';
-import get from 'lodash/get';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Control, actions } from 'react-redux-form'
+import upperFirst from 'lodash/upperFirst'
+import get from 'lodash/get'
 
-import { required }     from '../../validators';
-import Textarea         from './Textarea';
-import StatefulError    from './StatefulError';
+import { required } from '../../validators'
+import Textarea from './Textarea'
+import StatefulError from './StatefulError'
 
 class YesNoDetailsField extends React.Component {
-
   state = {
     showField: false
   }
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       showField: props.value === 'yes'
     }
@@ -26,15 +25,19 @@ class YesNoDetailsField extends React.Component {
       showField: e.target.value === 'yes'
     })
 
-    const {model, revalidateDetails} = this.props;
-    revalidateDetails(`${model}_details`);
+    const { model, revalidateDetails } = this.props
+    revalidateDetails(`${model}_details`)
   }
 
   render() {
-    const { name, id, label, model, validators, messages } = this.props;
+    const { name, id, label, model, validators, messages } = this.props
     return (
       <fieldset className="field">
-        <legend><strong>{label}</strong></legend>
+        <legend>
+          <strong>
+            {label}
+          </strong>
+        </legend>
         <StatefulError model={model} messages={messages} id={id} />
         <Control.radio
           onClick={this.onToggle.bind(this)}
@@ -46,7 +49,6 @@ class YesNoDetailsField extends React.Component {
         />
         <label htmlFor={`${id}-yes`}>Yes</label>
 
-
         <Control.radio
           onClick={this.onToggle.bind(this)}
           id={`${id}-no`}
@@ -57,7 +59,7 @@ class YesNoDetailsField extends React.Component {
         />
         <label htmlFor={`${id}-no`}>No</label>
 
-        {this.state.showField && (
+        {this.state.showField &&
           <Textarea
             name={`${name}_details`}
             id={`${id}-details`}
@@ -65,10 +67,10 @@ class YesNoDetailsField extends React.Component {
             label="Please provide details"
             validators={{ required }}
             messages={{
-                required: 'Please provide details for ' + upperFirst(id).replace('_', ' '),
+              required:
+                'Please provide details for ' + upperFirst(id).replace('_', ' ')
             }}
-          />
-        )}
+          />}
       </fieldset>
     )
   }
@@ -84,7 +86,7 @@ YesNoDetailsField.propTypes = {
   label: React.PropTypes.string.isRequired,
   model: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.string,
+    React.PropTypes.string
   ]).isRequired,
 
   validators: React.PropTypes.object,
@@ -93,9 +95,9 @@ YesNoDetailsField.propTypes = {
   controlProps: React.PropTypes.object,
   mapProps: React.PropTypes.oneOfType([
     React.PropTypes.func,
-    React.PropTypes.object,
-  ]),
-};
+    React.PropTypes.object
+  ])
+}
 
 export const mapStateToProps = (state, ownProps) => {
   return {
@@ -104,12 +106,12 @@ export const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        revalidateDetails: (detailsModel) => {
-            dispatch(actions.setValidity(detailsModel, true));
-        }
+const mapDispatchToProps = dispatch => {
+  return {
+    revalidateDetails: detailsModel => {
+      dispatch(actions.setValidity(detailsModel, true))
     }
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(YesNoDetailsField);
+export default connect(mapStateToProps, mapDispatchToProps)(YesNoDetailsField)

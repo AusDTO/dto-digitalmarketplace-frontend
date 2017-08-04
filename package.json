@@ -14,8 +14,10 @@
     "detect-port": "1.0.0",
     "enzyme": "2.5.1",
     "eslint": "^3.17.1",
+    "eslint-config-prettier": "^2.3.0",
     "eslint-loader": "1.5.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "6.3.0",
     "expect": "^1.20.2",
     "extract-text-webpack-plugin": "1.0.1",
@@ -36,6 +38,7 @@
     "nodemon": "1.11.0",
     "path-exists": "2.1.0",
     "postcss-loader": "0.13.0",
+    "prettier": "^1.5.3",
     "react-a11y": "^0.3.3",
     "react-addons-test-utils": "15.4.0",
     "react-axe": "^2.1.1",
@@ -125,7 +128,8 @@
     "server": "node scripts/server.js",
     "server:development": "nodemon scripts/server.js --watch build/render-server.js",
     "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js",
-    "lint": "eslint ."
+    "lint": "./node_modules/.bin/eslint app",
+    "prettier": "./node_modules/.bin/prettier --single-quote --no-semi --write \"app/**/*.js\""
   },
   "jest": {
     "coverageDirectory": "coverage",
