@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
 export default function configureStore(initialState) {
+  // eslint-disable-next-line no-undef
   if (process.env.NODE_ENV !== 'production') {
     const debugware = []
     debugware.push(createLogger({ collapsed: true }))

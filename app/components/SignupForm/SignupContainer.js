@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, withRouter, Switch, Route } from 'react-router-dom'
+import { withRouter, Switch, Route } from 'react-router-dom'
 import SignupForm from './SignupForm'
 import NotFound from '../shared/NotFound'
 
