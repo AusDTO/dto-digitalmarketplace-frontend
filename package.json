@@ -184,7 +184,7 @@
         "ie 10"
       ],
       "location": "public/",
-      "name": "pancake.min.css"
+      "name": "pancake.css"
     },
     "sass": {
       "modules": false,

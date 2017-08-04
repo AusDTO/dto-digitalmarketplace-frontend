@@ -230,11 +230,23 @@ class SignupForm extends BaseForm {
                         options={[
                           {
                             value: 'buyer',
-                            label: [<span>Buyer</span>, <p>I want to buy on behalf of</p>, <p>government.</p>]
+                            label: (
+                              <span>
+                                <span>Buyer</span>
+                                <p>I want to buy on behalf of</p>
+                                <p>government.</p>
+                              </span>
+                            )
                           },
                           {
                             value: 'seller',
-                            label: [<span>Seller</span>, <p>I want to sell digital products or</p>, <p>services.</p>]
+                            label: (
+                              <span>
+                                <span>Seller</span>
+                                <p>I want to sell digital products or</p>
+                                <p>services.</p>
+                              </span>
+                            )
                           }
                         ]}
                         validators={{

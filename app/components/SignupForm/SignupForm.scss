@@ -16,7 +16,7 @@
   outline: none;
 }
 
-.user-type .uikit-control-input__input:focus+.uikit-control-input__text > span {
+.user-type .uikit-control-input__input:focus+.uikit-control-input__text > span span {
   outline: 1px solid #313131;
 }
 
@@ -37,7 +37,7 @@
   }
 }
 
-.user-type fieldset span input[type='radio'] + label > p {
+.user-type fieldset span input[type='radio'] + label > span p {
   font-size: .875rem;
   font-weight: 400;
   margin-bottom: 0.1em;
