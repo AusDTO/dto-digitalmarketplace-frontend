@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
-const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, onCustomSubmit }) => (
+const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, onCustomSubmit }) =>
   <form
     method={method}
     id={id}
     action={action}
     onReset={onReset}
     onSubmit={e => {
-      let values = onSubmit();
+      let values = onSubmit()
       if (!valid) {
-        e.preventDefault();
-        return;
+        e.preventDefault()
+        return
       }
-      onCustomSubmit(e, values);
+      onCustomSubmit(e, values)
     }}
-    children={children} />
-)
+    children={children}
+  />
 
 SubmitForm.defaultProps = {
   onCustomSubmit: () => {}
@@ -33,4 +33,4 @@ SubmitForm.propTypes = {
   onReset: React.PropTypes.func.isRequired
 }
 
-export default SubmitForm;
+export default SubmitForm

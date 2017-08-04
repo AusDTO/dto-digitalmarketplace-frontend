@@ -19,7 +19,7 @@ dependencies:
 
 test:
   override:
-    - eslint .
+    - eslint app
     - yarn test
 
 deployment:

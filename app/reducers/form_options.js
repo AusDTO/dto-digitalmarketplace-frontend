@@ -10,10 +10,10 @@ export default function reducer(state = initialState, action = {}) {
     case STEP:
       return Object.assign({}, state, {
         step: value
-      });
+      })
     default:
-      return Object.assign({}, initialState, state);
+      return Object.assign({}, initialState, state)
   }
 }
 
-export const navigateStep = (value) => ({ type: STEP, value })
+export const navigateStep = value => ({ type: STEP, value })

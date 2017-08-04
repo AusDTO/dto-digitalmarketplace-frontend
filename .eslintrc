@@ -2,14 +2,32 @@
   "parser": "babel-eslint",
   "plugins": [
     "jsx-a11y",
-    "react"
+    "react",
+    "prettier"
   ],
   "extends": [
+    "eslint:recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
   ],
   "rules": {
     "react/prop-types": "off",
     "react/display-name": "off",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "quotes": ["error", "single", {"avoidEscape": true}],
+    "semi": ["error", "never"],
+    "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}]
+  },
+  "globals": {
+    "document": false,
+    "window": false,
+    "fetch": false,
+    "global": false,
+    "ReactEvent": false
+  },
+  "env": {
+    "jest": true
   }
 }
