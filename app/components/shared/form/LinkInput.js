@@ -15,19 +15,13 @@ class LinkInput extends React.Component {
     name: React.PropTypes.string.isRequired,
     htmlFor: React.PropTypes.string.isRequired,
     label: React.PropTypes.string.isRequired,
-    model: React.PropTypes.oneOfType([
-      React.PropTypes.func,
-      React.PropTypes.string
-    ]).isRequired,
+    model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
 
     messages: React.PropTypes.object,
     validators: React.PropTypes.object,
     description: React.PropTypes.string,
     controlProps: React.PropTypes.object,
-    mapProps: React.PropTypes.oneOfType([
-      React.PropTypes.func,
-      React.PropTypes.object
-    ])
+    mapProps: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.object])
   }
 
   constructor(props) {
@@ -76,9 +70,7 @@ class LinkInput extends React.Component {
 
                     <div className="row">
                       <div className="col-xs-8 col-sm-10">
-                        <h3 style={{ marginTop: 0, marginBottom: 0 }}>
-                          Additional link (optional)
-                        </h3>
+                        <h3 style={{ marginTop: 0, marginBottom: 0 }}>Additional link (optional)</h3>
                       </div>
                       <div className="col-xs-4 col-sm-2">
                         <button
@@ -87,8 +79,7 @@ class LinkInput extends React.Component {
                           styleName="remove-button"
                           onClick={this.removeRow.bind(this, i)}
                         >
-                          Remove{' '}
-                          <span className="visuallyhidden">number {i + 1}</span>
+                          Remove <span className="visuallyhidden">number {i + 1}</span>
                         </button>
                       </div>
                     </div>

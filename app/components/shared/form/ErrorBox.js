@@ -29,9 +29,7 @@ class ErrorBox extends React.Component {
 
     return (
       <PageAlert as="error">
-        <h4 id="validation-masthead-heading">
-          There was a problem with the details you gave
-        </h4>
+        <h4 id="validation-masthead-heading">There was a problem with the details you gave</h4>
         {invalidFields &&
           <ul>
             {invalidFields.map(({ messages, id }, i) => {

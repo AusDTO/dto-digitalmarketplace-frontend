@@ -29,16 +29,7 @@ class CheckboxDetailsField extends React.Component {
   }
 
   render() {
-    const {
-      name,
-      id,
-      label,
-      model,
-      detailsLabel,
-      detailsModel,
-      validators,
-      messages
-    } = this.props
+    const { name, id, label, model, detailsLabel, detailsModel, validators, messages } = this.props
     return (
       <span>
         <StatefulError model={model} messages={messages} id={id} />
@@ -80,28 +71,16 @@ CheckboxDetailsField.defaultProps = {
 CheckboxDetailsField.propTypes = {
   name: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
-  label: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.string
-  ]).isRequired,
-  model: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string
-  ]).isRequired,
+  label: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.string]).isRequired,
+  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
   detailsLabel: React.PropTypes.string,
-  detailsModel: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string
-  ]).isRequired,
+  detailsModel: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
 
   validators: React.PropTypes.object,
   messages: React.PropTypes.object,
   description: React.PropTypes.string,
   controlProps: React.PropTypes.object,
-  mapProps: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.object
-  ])
+  mapProps: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.object])
 }
 
 const mapDispatchToProps = dispatch => {
@@ -119,6 +98,4 @@ export const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  CheckboxDetailsField
-)
+export default connect(mapStateToProps, mapDispatchToProps)(CheckboxDetailsField)

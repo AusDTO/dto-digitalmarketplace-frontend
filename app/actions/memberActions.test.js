@@ -8,8 +8,7 @@ describe('Member Actions', () => {
     it('should create a MEMBER_INFO_FETCH_DATA_SUCCESS action', () => {
       // arrange
       const memberInfo = {
-        csrfToken:
-          '153d1b83ad20d5c4e681e0109c35d2fee7eaa5bdc4725140115587c245094cfd',
+        csrfToken: '153d1b83ad20d5c4e681e0109c35d2fee7eaa5bdc4725140115587c245094cfd',
         isAuthenticated: true,
         userType: 'buyer'
       }

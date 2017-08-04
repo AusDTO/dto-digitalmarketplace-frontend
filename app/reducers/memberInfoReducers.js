@@ -6,11 +6,7 @@
  *   });
  */
 
-import {
-  MEMBER_INFO_HAS_ERRORED,
-  MEMBER_INFO_IS_LOADING,
-  MEMBER_INFO_FETCH_DATA_SUCCESS
-} from '../constants/constants'
+import { MEMBER_INFO_HAS_ERRORED, MEMBER_INFO_IS_LOADING, MEMBER_INFO_FETCH_DATA_SUCCESS } from '../constants/constants'
 
 export function memberInfoHasErrored(state = false, action) {
   switch (action.type) {

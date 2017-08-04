@@ -1,9 +1,4 @@
-import {
-  mapErrorMessages,
-  getForms,
-  getErrorMessages,
-  getModelPath
-} from './errorMessageSelector'
+import { mapErrorMessages, getForms, getErrorMessages, getModelPath } from './errorMessageSelector'
 
 test('mapErrorMessages produces to the correct list from a simple state', () => {
   const messages = {
@@ -63,10 +58,7 @@ it('mapErrorMessages produces to the correct list from a nested state', () => {
     }
   }
 
-  const errorMap = [
-    { id: 'title', messages: ['Title is required'] },
-    { id: 'role', messages: ['Role is required'] }
-  ]
+  const errorMap = [{ id: 'title', messages: ['Title is required'] }, { id: 'role', messages: ['Role is required'] }]
 
   expect(mapErrorMessages(forms, messages, 'modelName')).toEqual(errorMap)
 })
@@ -114,9 +106,7 @@ test('mapErrorMessages maps errors from fields that have array values', () => {
     }
   }
 
-  const errorMap = [
-    { id: 'names', messages: ['You need to specify at least one name!'] }
-  ]
+  const errorMap = [{ id: 'names', messages: ['You need to specify at least one name!'] }]
 
   expect(mapErrorMessages(form, messages, 'modelName')).toEqual(errorMap)
 })
@@ -185,9 +175,7 @@ test('mapErrorMessages gets errors with mulitple validation on field only one tr
     }
   }
 
-  const errorMap = [
-    { id: 'title', messages: ['Title has exceeded the word limit.'] }
-  ]
+  const errorMap = [{ id: 'title', messages: ['Title has exceeded the word limit.'] }]
 
   expect(mapErrorMessages(forms, messages, 'modelName')).toEqual(errorMap)
 })

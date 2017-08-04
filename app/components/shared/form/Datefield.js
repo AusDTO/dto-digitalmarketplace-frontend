@@ -36,11 +36,7 @@ class Datefield extends React.Component {
       () => {
         const { year, month, day } = this.state
         let date = format(
-          new Date(
-            Number((year.length === 2 ? '20' : '') + year),
-            Number(month) - 1,
-            Number(day)
-          ),
+          new Date(Number((year.length === 2 ? '20' : '') + year), Number(month) - 1, Number(day)),
           'YYYY-MM-DD'
         )
         setDate(model, date)
@@ -66,14 +62,7 @@ class Datefield extends React.Component {
           <label htmlFor={htmlFor} styleName="date-heading">
             Day
           </label>
-          <input
-            type="text"
-            name="day"
-            id="day"
-            maxLength="2"
-            onChange={this.onChange.bind(this)}
-            defaultValue={day}
-          />
+          <input type="text" name="day" id="day" maxLength="2" onChange={this.onChange.bind(this)} defaultValue={day} />
         </div>
 
         <div styleName="slashSpacer">/</div>
@@ -131,10 +120,7 @@ Datefield.propTypes = {
   id: React.PropTypes.string.isRequired,
   htmlFor: React.PropTypes.string.isRequired,
   label: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string
-  ]).isRequired,
+  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
   description: React.PropTypes.string,
   pattern: React.PropTypes.string,
   type: React.PropTypes.string

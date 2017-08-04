@@ -38,12 +38,7 @@ const Textarea = props => {
           {description}
         </p>}
       {messages &&
-        <StatefulError
-          model={model}
-          messages={messages}
-          id={id}
-          showMessagesDuringFocus={showMessagesDuringFocus}
-        />}
+        <StatefulError model={model} messages={messages} id={id} showMessagesDuringFocus={showMessagesDuringFocus} />}
       <Control
         model={model}
         controlProps={{
@@ -56,8 +51,7 @@ const Textarea = props => {
         validators={validators}
         component={TextareaComponent}
         mapProps={{
-          className: ({ fieldValue }) =>
-            !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
+          className: ({ fieldValue }) => (!fieldValue.valid && fieldValue.touched ? 'invalid' : ''),
           value: props => props.viewValue,
           ...mapProps,
           ...controls.default
@@ -75,19 +69,13 @@ Textarea.propTypes = {
   name: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   label: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string
-  ]).isRequired,
+  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
 
   validators: React.PropTypes.object,
   messages: React.PropTypes.object,
   description: React.PropTypes.string,
   controlProps: React.PropTypes.object,
-  mapProps: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.object
-  ])
+  mapProps: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.object])
 }
 
 export default Textarea

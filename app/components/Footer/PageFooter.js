@@ -36,9 +36,7 @@ export default class PageFooter extends React.Component {
               </div>
 
               <div className="col-md-3 col-sm-6">
-                <h2 className="uikit-display-1">
-                  Using the Digital Marketplace
-                </h2>
+                <h2 className="uikit-display-1">Using the Digital Marketplace</h2>
                 <ul className="uikit-link-list">
                   <li>
                     <a href="/">Home</a>
@@ -67,10 +65,7 @@ export default class PageFooter extends React.Component {
                 </h2>
                 <ul className="uikit-link-list">
                   <li>
-                    <a
-                      rel="external"
-                      href="https://www.dta.gov.au/tags/digital-marketplace/"
-                    >
+                    <a rel="external" href="https://www.dta.gov.au/tags/digital-marketplace/">
                       DTA blog
                     </a>
                   </li>
@@ -101,10 +96,7 @@ export default class PageFooter extends React.Component {
                     </a>
                   </li>
                   <li>
-                    <a
-                      rel="external"
-                      href="https://www.dta.gov.au/design-guides/"
-                    >
+                    <a rel="external" href="https://www.dta.gov.au/design-guides/">
                       Design guides
                     </a>
                   </li>
@@ -123,8 +115,7 @@ export default class PageFooter extends React.Component {
                   <div dangerouslySetInnerHTML={{ __html: logoNisa }} />
                 </div>
                 <div className="footer-small-text">
-                  This program forms part of the National Innovation and Science
-                  Agenda.<br />Visit{' '}
+                  This program forms part of the National Innovation and Science Agenda.<br />Visit{' '}
                   <strong>
                     <a href="https://innovation.gov.au/">Innovation.gov.au</a>
                   </strong>{' '}

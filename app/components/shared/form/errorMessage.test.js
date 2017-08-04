@@ -1,9 +1,4 @@
-import reducer, {
-  MESSAGE,
-  REMOVE,
-  addMessage,
-  removeMessage
-} from './errorMessage'
+import reducer, { MESSAGE, REMOVE, addMessage, removeMessage } from './errorMessage'
 
 test('addMessage action', () => {
   expect(addMessage('errorKey', 'Some error text'))

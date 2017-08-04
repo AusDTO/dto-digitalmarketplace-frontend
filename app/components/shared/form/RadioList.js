@@ -28,10 +28,7 @@ const RadioList = props => {
                     value={option.value}
                     validators={validators}
                   />
-                  <label
-                    className="uikit-control-input__text"
-                    htmlFor={fieldId}
-                  >
+                  <label className="uikit-control-input__text" htmlFor={fieldId}>
                     {option.label}
                   </label>
                 </span>
@@ -48,20 +45,11 @@ RadioList.propTypes = {
   id: React.PropTypes.string.isRequired,
   label: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string
-  ]).isRequired,
+  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
   options: React.PropTypes.arrayOf(
     React.PropTypes.shape({
-      label: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object
-      ]),
-      value: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.number
-      ])
+      label: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
+      value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number])
     })
   ).isRequired,
 

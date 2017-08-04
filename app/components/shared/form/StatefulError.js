@@ -21,8 +21,7 @@ class StatefulError extends React.Component {
     return (
       <Errors
         model={model}
-        show={field =>
-          field.touched && (showMessagesDuringFocus || !field.focus)}
+        show={field => field.touched && (showMessagesDuringFocus || !field.focus)}
         messages={messages}
         wrapper={({ children }) => {
           if (!children.length) {

@@ -1,15 +1,6 @@
 import React from 'react'
 
-const SubmitForm = ({
-  children,
-  method,
-  id,
-  action,
-  valid,
-  onSubmit,
-  onReset,
-  onCustomSubmit
-}) =>
+const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, onCustomSubmit }) =>
   <form
     method={method}
     id={id}

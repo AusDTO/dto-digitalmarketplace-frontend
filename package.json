@@ -128,8 +128,8 @@
     "server": "node scripts/server.js",
     "server:development": "nodemon scripts/server.js --watch build/render-server.js",
     "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js",
-    "lint": "./node_modules/.bin/eslint app",
-    "prettier": "./node_modules/.bin/prettier --single-quote --no-semi --write \"app/**/*.js\""
+    "eslint": "./node_modules/.bin/eslint app",
+    "prettier": "./node_modules/.bin/prettier --print-width 120 --single-quote --no-semi --write \"app/**/*.js\""
   },
   "jest": {
     "coverageDirectory": "coverage",

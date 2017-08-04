@@ -31,11 +31,7 @@ class Header extends Component {
           <div className="user-nav">
             <div id="react-bundle-auth-header-state" />
             <div id="react-bundle-auth-header">
-              <ul
-                data-reactroot=""
-                id="main-navigation"
-                className="inline-links--inverted"
-              >
+              <ul data-reactroot="" id="main-navigation" className="inline-links--inverted">
                 <li>
                   {this.props.memberInfo.isAuthenticated
                     ? <span>

@@ -21,7 +21,4 @@ export const formProps = (form, formValues, form_options, options, model) => {
   }
 }
 
-export default createSelector(
-  [getCurrentForm, getFormValues, getFormOptions, getOptions, getModel],
-  formProps
-)
+export default createSelector([getCurrentForm, getFormValues, getFormOptions, getOptions, getModel], formProps)

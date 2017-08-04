@@ -1,9 +1,4 @@
-import formProps, {
-  getCurrentForm,
-  getFormValues,
-  getFormOptions,
-  getOptions
-} from './formPropsSelector'
+import formProps, { getCurrentForm, getFormValues, getFormOptions, getOptions } from './formPropsSelector'
 
 let exampleState = {
   form_options: {
