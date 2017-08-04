@@ -30,7 +30,7 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
               <Badges badges={badges}/>
             </div>
           )}
-          <p styleName="description">{replaceMarkup(description, '<b>', '<mark>')}</p>
+          <p styleName="description">{replaceMarkup(description + ' ...', '<b>', '<mark>')}</p>
           {view === "products" &&
           <div styleName="product-links">
             <div className="row">
