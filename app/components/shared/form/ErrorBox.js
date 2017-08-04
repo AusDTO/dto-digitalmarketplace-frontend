@@ -1,47 +1,47 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import get from 'lodash/get';
+import React from 'react'
+import { connect } from 'react-redux'
+import get from 'lodash/get'
 
-import PageAlert from '@gov.au/page-alerts';
+import PageAlert from '@gov.au/page-alerts'
 
-import { getInvalidFields } from './errorMessageSelector';
+import { getInvalidFields } from './errorMessageSelector'
 
 class ErrorBox extends React.Component {
-
   state = {
     focusedOnce: false
   }
 
   componentDidUpdate() {
-    const { focusOnMount } = this.props;
-    const { focusedOnce } = this.state;
+    const { focusOnMount } = this.props
+    const { focusedOnce } = this.state
 
     if (this.refs['box'] && !focusedOnce && focusOnMount) {
-      this.setState({ focusedOnce: true });
-      this.refs.box.focus();
+      this.setState({ focusedOnce: true })
+      this.refs.box.focus()
     }
   }
 
   render() {
-    const { invalidFields, form } = this.props;
+    const { invalidFields, form } = this.props
     if (form.submitFailed === false || !invalidFields.length) {
-      return null;
+      return null
     }
 
     return (
-      <PageAlert as='error'>
+      <PageAlert as="error">
         <h4 id="validation-masthead-heading">There was a problem with the details you gave</h4>
-        {invalidFields && (
+        {invalidFields &&
           <ul>
             {invalidFields.map(({ messages, id }, i) => {
-              return messages.map((message, j) => (
+              return messages.map((message, j) =>
                 <li key={`${i}${j}`}>
-                  <a href={`#${id}`}>{message}</a>
+                  <a href={`#${id}`}>
+                    {message}
+                  </a>
                 </li>
-              ))
+              )
             })}
-          </ul>
-        )}
+          </ul>}
       </PageAlert>
     )
   }
@@ -49,10 +49,12 @@ class ErrorBox extends React.Component {
 
 ErrorBox.propTypes = {
   focusOnMount: React.PropTypes.bool,
-  invalidFields: React.PropTypes.arrayOf(React.PropTypes.shape({
-    id: React.PropTypes.string,
-    message: React.PropTypes.arrayOf(React.PropTypes.string)
-  })).isRequired,
+  invalidFields: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      id: React.PropTypes.string,
+      message: React.PropTypes.arrayOf(React.PropTypes.string)
+    })
+  ).isRequired,
   form: React.PropTypes.object
 }
 
@@ -65,4 +67,4 @@ export const mapStateToProps = (state, { focusOnMount, model }) => {
   }
 }
 
-export default connect(mapStateToProps)(ErrorBox);
+export default connect(mapStateToProps)(ErrorBox)
