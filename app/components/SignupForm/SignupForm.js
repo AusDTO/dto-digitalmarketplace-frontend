@@ -160,7 +160,7 @@ class SignupForm extends BaseForm {
       children,
       signupForm,
       buyer_url,
-      seller_url 
+      seller_url
     } = this.props
     let valid = form.valid
     let employmentStatus = signupForm.employment_status
