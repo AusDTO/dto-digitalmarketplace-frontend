@@ -36,8 +36,8 @@ class SignupForm extends BaseForm {
       },
       emailErrorMessages: {
         required: 'Your email is required',
-        validEmail: 'A validly formatted email is required',
-        governmentEmail: 'Email should have a government domain'
+        validEmail: 'A validly formatted email is required.',
+        governmentEmail: ' Email should have a government domain.'
       },
       isBuyer: this.props.signupForm.user_type === 'buyer'
     }
@@ -64,7 +64,7 @@ class SignupForm extends BaseForm {
           },
           emailErrorMessages: {
             required: 'Your email is required',
-            validEmail: 'A validly formatted email is required'
+            validEmail: 'A validly formatted email is required.'
           },
           isBuyer: false
         })
@@ -79,8 +79,8 @@ class SignupForm extends BaseForm {
           },
           emailErrorMessages: {
             required: 'Your email is required',
-            validEmail: 'A validly formatted email is required',
-            governmentEmail: 'Email should have a government domain'
+            validEmail: 'A validly formatted email is required.',
+            governmentEmail: ' Email should have a government domain.'
           },
           isBuyer: true
         })
@@ -218,15 +218,14 @@ class SignupForm extends BaseForm {
                     method="post"
                     id="signup"
                     onSubmit={model => this.handleSubmit(model)}
-                    onSubmitFailed={this.onSubmitFailed}
-                  >
-                    {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
+                    onSubmitFailed={this.onSubmitFailed} >
+                    { csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} /> }
                     <div className="user-type">
                       <RadioList
                         model={`${model}.user_type`}
                         name="user_type"
                         id="user_type"
-                        label="Have you got digital expertise to sell to government? Or do you want to buy digital products and services on behalf of your government office? Choose the option that matches your situation."
+                        label="Choose the option that matches your situation."
                         options={[
                           {
                             value: 'buyer',
@@ -254,10 +253,8 @@ class SignupForm extends BaseForm {
                         }}
                         messages={{
                           required: 'You must select a user type'
-                        }}
-                      />
+                        }} />
                     </div>
-                    Now enter your name and your work email address.
                     <Textfield
                       model={`${model}.name`}
                       name="name"
@@ -269,8 +266,7 @@ class SignupForm extends BaseForm {
                       }}
                       messages={{
                         required: 'Your name is required'
-                      }}
-                    />
+                      }} />
                     <Textfield
                       model={`${model}.email_address`}
                       name="email_address"
@@ -294,8 +290,7 @@ class SignupForm extends BaseForm {
                           : ''
                       }
                       validators={emailValidators}
-                      messages={emailErrorMessages}
-                    />
+                      messages={emailErrorMessages} />
                     {isBuyer &&
                       <div className="employment-status">
                         <RadioList
@@ -319,8 +314,7 @@ class SignupForm extends BaseForm {
                           }}
                           messages={{
                             required: 'You must specify your employment status.'
-                          }}
-                        />
+                          }} />
                       </div>}
                     {employmentStatus &&
                       employmentStatus === 'contractor' &&
@@ -345,8 +339,7 @@ class SignupForm extends BaseForm {
                           }}
                           messages={{
                             required: 'You must provide the name of your manager'
-                          }}
-                        />
+                          }} />
                         <Textfield
                           model={`${model}.line_manager_email`}
                           name="line_manager_email"
@@ -360,14 +353,15 @@ class SignupForm extends BaseForm {
                           }}
                           messages={{
                             required: "You must provide your manager's email address",
-                            validEmail: 'A validly formatted email is required',
-                            governmentEmail: 'Email should have a government domain'
-                          }}
-                        />
-                        <p>
-                          Remember to let this person know we’ll be sending them an email requesting their
-                          authorisation.
-                        </p>
+                            validEmail: 'A validly formatted email is required.',
+                            governmentEmail: ' Email should have a government domain.'
+                          }} />
+                        <PageAlert as="info">
+                          <p>
+                            Remember to let this person know we’ll be sending them an email requesting their
+                            authorisation.
+                          </p>
+                        </PageAlert>
                       </div>}
                     {children}
                     <p>
@@ -378,7 +372,7 @@ class SignupForm extends BaseForm {
                         </a>
                       </small>
                     </p>
-                    <input className="uikit-btn" type="submit" value="Create your account" />
+                    <input className="uikit-btn" type="submit" value="Create your account"/>
                   </Form>
                 </article>
               </Layout>}

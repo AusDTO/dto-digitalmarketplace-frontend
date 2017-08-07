@@ -21,6 +21,8 @@ class ErrorBox extends React.Component {
     }
   }
 
+  
+
   render() {
     const { invalidFields, form } = this.props
     if (form.submitFailed === false || !invalidFields.length) {
@@ -29,7 +31,7 @@ class ErrorBox extends React.Component {
 
     return (
       <PageAlert as="error">
-        <h4 id="validation-masthead-heading">There was a problem with the details you gave</h4>
+        <h4 id="validation-masthead-heading" ref='box' tabIndex='0'>There was a problem with the details you gave</h4>
         {invalidFields &&
           <ul>
             {invalidFields.map(({ messages, id }, i) => {

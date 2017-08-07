@@ -24,9 +24,10 @@ class Header extends Component {
         <div className="wrapper">
           <div className="marketplace--logo">
             <a href="/" title="Go to the Marketplace homepage" className="logo">
-              Digital Marketplace
-            </a>{' '}
-            <span className="badge--beta">BETA</span>
+              <span>Digital Marketplace</span>
+              {' '}
+              <span className="badge--beta">BETA</span>
+            </a>
           </div>
           <div className="user-nav">
             <div id="react-bundle-auth-header-state" />
