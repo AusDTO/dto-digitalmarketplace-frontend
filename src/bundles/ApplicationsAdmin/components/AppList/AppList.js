@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {convertApplicationToSeller, rejectApplication, searchApplications, deleteApplication} from '../../redux/modules/applications';
 import {Modal} from '../../../../shared/Modal/Modal';
@@ -11,12 +12,12 @@ import './AppList.css'
 class AppList extends Component {
 
   static propTypes = {
-    meta: React.PropTypes.object.isRequired,
-    applications: React.PropTypes.array,
-    onRejectClick: React.PropTypes.func.isRequired,
-    onAcceptClick: React.PropTypes.func.isRequired,
-    onKeywordChange: React.PropTypes.func.isRequired,
-    onDeleteClick: React.PropTypes.func.isRequired,
+    meta: PropTypes.object.isRequired,
+    applications: PropTypes.array,
+    onRejectClick: PropTypes.func.isRequired,
+    onAcceptClick: PropTypes.func.isRequired,
+    onKeywordChange: PropTypes.func.isRequired,
+    onDeleteClick: PropTypes.func.isRequired,
   };
 
   constructor(props) {

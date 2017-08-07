@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 
@@ -14,9 +15,9 @@ import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 class EnterPasswordForm extends BaseForm {
 
   static propTypes = {
-    action: React.PropTypes.string,
-    csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired
+    action: PropTypes.string,
+    csrf_token: PropTypes.string,
+    form: PropTypes.object.isRequired
   }
 
   render() {

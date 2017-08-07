@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 
@@ -19,10 +20,10 @@ import './SignupForm.scss'
 
 class SignupForm extends BaseForm {
   static propTypes = {
-    action: React.PropTypes.string,
-    csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired,
-    errors: React.PropTypes.object
+    action: PropTypes.string,
+    csrf_token: PropTypes.string,
+    form: PropTypes.object.isRequired,
+    errors: PropTypes.object
   }
 
   constructor(props) {
@@ -153,6 +154,7 @@ class SignupForm extends BaseForm {
     let action = isBuyer ? buyer_url : seller_url
     let { signupSuccess, signupMessage, isBuyer, emailValidators, emailErrorMessages } = this.state
 
+    /*eslint-disable indent */
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">

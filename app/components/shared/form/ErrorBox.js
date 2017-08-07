@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import get from 'lodash/get'
 
@@ -15,9 +16,9 @@ class ErrorBox extends React.Component {
     const { focusOnMount } = this.props
     const { focusedOnce } = this.state
 
-    if (this.refs['box'] && !focusedOnce && focusOnMount) {
+    if (this.box && !focusedOnce && focusOnMount) {
       this.setState({ focusedOnce: true })
-      this.refs.box.focus()
+      this.box.focus()
     }
   }
 
@@ -48,14 +49,14 @@ class ErrorBox extends React.Component {
 }
 
 ErrorBox.propTypes = {
-  focusOnMount: React.PropTypes.bool,
-  invalidFields: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      id: React.PropTypes.string,
-      message: React.PropTypes.arrayOf(React.PropTypes.string)
+  focusOnMount: PropTypes.bool,
+  invalidFields: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      message: PropTypes.arrayOf(PropTypes.string)
     })
   ).isRequired,
-  form: React.PropTypes.object
+  form: PropTypes.object
 }
 
 export const mapStateToProps = (state, { focusOnMount, model }) => {

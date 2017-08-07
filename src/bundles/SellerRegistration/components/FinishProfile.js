@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const FinishProfile = ({onClick}) => (
     <div>
@@ -14,7 +15,7 @@ FinishProfile.defaultProps = {
 }
 
 FinishProfile.propTypes = {
-    onClick: React.PropTypes.func
+    onClick: PropTypes.func
 };
 
 export default FinishProfile;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import {Form, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
@@ -30,9 +31,9 @@ const filterProducts = products => {
 class ProductsForm extends BaseForm {
 
   static propTypes = {
-    action: React.PropTypes.string,
-    csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired
+    action: PropTypes.string,
+    csrf_token: PropTypes.string,
+    form: PropTypes.object.isRequired
   }
 
   onAdd(e) {

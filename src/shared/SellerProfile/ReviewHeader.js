@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty';
 
 import Badges from '../Badges';
@@ -124,15 +125,15 @@ ReviewHeader.defaultProps = {
 }
 
 ReviewHeader.propTypes = {
-  name: React.PropTypes.string,
-  seller_type: React.PropTypes.objectOf(React.PropTypes.bool),
-  summary: React.PropTypes.string,
-  website: React.PropTypes.string,
-  twitter: React.PropTypes.string,
-  linkedin: React.PropTypes.string,
-  contact_email: React.PropTypes.string,
-  contact_phone: React.PropTypes.string,
-  contact_name: React.PropTypes.string,
+  name: PropTypes.string,
+  seller_type: PropTypes.objectOf(PropTypes.bool),
+  summary: PropTypes.string,
+  website: PropTypes.string,
+  twitter: PropTypes.string,
+  linkedin: PropTypes.string,
+  contact_email: PropTypes.string,
+  contact_phone: PropTypes.string,
+  contact_name: PropTypes.string,
 }
 
 export default ReviewHeader;

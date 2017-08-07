@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import { Control, LocalForm } from 'react-redux-form';
 import format from 'date-fns/format';
@@ -9,7 +10,7 @@ import './AppUsers.css';
 class AppUser extends Component {
 
   static propTypes = {
-    meta: React.PropTypes.object.isRequired,
+    meta: PropTypes.object.isRequired,
   };
 
   render() {

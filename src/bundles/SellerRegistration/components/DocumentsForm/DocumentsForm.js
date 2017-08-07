@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {Form, Control, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
@@ -24,10 +25,10 @@ import './DocumentsForm.css';
 class DocumentsForm extends BaseForm {
 
     static propTypes = {
-        action: React.PropTypes.string,
-        csrf_token: React.PropTypes.string,
-        form: React.PropTypes.object.isRequired,
-        model: React.PropTypes.string.isRequired,
+        action: PropTypes.string,
+        csrf_token: PropTypes.string,
+        form: PropTypes.object.isRequired,
+        model: PropTypes.string.isRequired,
     }
 
     static defaultProps = {

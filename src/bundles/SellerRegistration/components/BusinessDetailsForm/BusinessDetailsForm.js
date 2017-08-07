@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import { Form, actions } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
@@ -21,11 +22,11 @@ import './BusinessDetailsForm.css'
 class BusinessDetailsForm extends BaseForm {
 
     static propTypes = {
-        action: React.PropTypes.string,
-        csrf_token: React.PropTypes.string,
-        form: React.PropTypes.object.isRequired,
-        returnLink: React.PropTypes.string,
-        supplierCode: React.PropTypes.number
+        action: PropTypes.string,
+        csrf_token: PropTypes.string,
+        form: PropTypes.object.isRequired,
+        returnLink: PropTypes.string,
+        supplierCode: PropTypes.number
     }
 
     onAdd(e) {

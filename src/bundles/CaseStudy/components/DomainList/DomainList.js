@@ -1,4 +1,5 @@
 import React                     from 'react';
+import PropTypes from 'prop-types'
 import { connect }               from 'react-redux';
 import { Link, Route, Redirect, Switch } from 'react-router-dom';
 import { actions, Form }  from 'react-redux-form';
@@ -51,8 +52,8 @@ const guid = () => {
 class DomainList extends BaseForm {
 
   static propTypes = {
-    services: React.PropTypes.object,
-    domainRoute: React.PropTypes.string
+    services: PropTypes.object,
+    domainRoute: PropTypes.string
   }
 
   static defaultProps = {

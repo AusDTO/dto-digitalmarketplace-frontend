@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
 import format from 'date-fns/format'
@@ -47,7 +48,7 @@ class Datefield extends React.Component {
   render() {
     const { id, htmlFor, label, description } = this.props
     const { day, month, year } = this.state
-
+    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <div styleName="date-input">
         <label htmlFor={htmlFor} className="question-heading">
@@ -116,14 +117,14 @@ const mapDispatchToProps = dispatch => {
 }
 
 Datefield.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  htmlFor: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
-  description: React.PropTypes.string,
-  pattern: React.PropTypes.string,
-  type: React.PropTypes.string
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+  description: PropTypes.string,
+  pattern: PropTypes.string,
+  type: PropTypes.string
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Datefield)

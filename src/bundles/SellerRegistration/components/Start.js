@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
@@ -110,10 +111,10 @@ Start.defaultProps = {
 }
 
 Start.propTypes = {
-    signup: React.PropTypes.string,
-    supplierCode: React.PropTypes.number,
-    onClick: React.PropTypes.func,
-    saved: React.PropTypes.bool
+    signup: PropTypes.string,
+    supplierCode: PropTypes.number,
+    onClick: PropTypes.func,
+    saved: PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {
