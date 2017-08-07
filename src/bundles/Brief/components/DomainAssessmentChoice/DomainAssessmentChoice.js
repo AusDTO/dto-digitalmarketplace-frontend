@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {
     LocalForm,
     Field
@@ -79,9 +80,9 @@ export class DomainAssessmentChoice extends React.Component {
 }
 
 DomainAssessmentChoice.propTypes = {
-    domains: React.PropTypes.object,
-    brief_id: React.PropTypes.number,
-    assessmentUrl: React.PropTypes.string
+    domains: PropTypes.object,
+    brief_id: PropTypes.number,
+    assessmentUrl: PropTypes.string
 }
 
 export default DomainAssessmentChoice;

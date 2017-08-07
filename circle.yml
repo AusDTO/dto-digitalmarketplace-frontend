@@ -4,7 +4,7 @@ general:
     
 machine:
   node:
-    version: 7.10.1
+    version: 8.2.1
   timezone:
     Australia/Sydney
   environment:

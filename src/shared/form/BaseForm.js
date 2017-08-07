@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom';
 import { actions } from 'react-redux-form';
 
 class BaseForm extends React.Component {
 
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired,
-    model: React.PropTypes.string.isRequired,
-    serverRender: React.PropTypes.bool.isRequired,
-    form: React.PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    model: PropTypes.string.isRequired,
+    serverRender: PropTypes.bool.isRequired,
+    form: PropTypes.object.isRequired,
 
-    formErrors: React.PropTypes.object,
+    formErrors: PropTypes.object,
   }
 
   state = {

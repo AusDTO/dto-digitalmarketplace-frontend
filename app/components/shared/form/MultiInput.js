@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form'
 
 import StatefulError from './StatefulError'
@@ -6,7 +7,7 @@ import MultiInputComponent from '../MultiInput'
 
 const MultiInput = props => {
   const { id, name, htmlFor, label, description, model, messages, controlProps, mapProps, validators } = props
-
+  /*eslint-disable jsx-a11y/label-has-for*/
   return (
     <div className="field">
       <label htmlFor={htmlFor} className="question-heading">
@@ -44,17 +45,17 @@ MultiInput.defaultProps = {
 }
 
 MultiInput.propTypes = {
-  id: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  htmlFor: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
 
-  messages: React.PropTypes.object,
-  validators: React.PropTypes.object,
-  description: React.PropTypes.string,
-  controlProps: React.PropTypes.object,
-  mapProps: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.object])
+  messages: PropTypes.object,
+  validators: PropTypes.object,
+  description: PropTypes.string,
+  controlProps: PropTypes.object,
+  mapProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 }
 
 export default MultiInput

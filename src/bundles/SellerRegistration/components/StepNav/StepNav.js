@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import { actions } from '../../redux/modules/application';
@@ -58,8 +59,8 @@ class StepNav extends React.Component {
 }
 
 StepNav.propTypes = {
-  buttonText: React.PropTypes.string,
-  to: React.PropTypes.string,
+  buttonText: PropTypes.string,
+  to: PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => {

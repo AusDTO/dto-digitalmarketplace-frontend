@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import RegisterComponent from '../../RegisterComponent'
 import { returnPath } from './helper'
 
@@ -24,12 +25,12 @@ export const AuthWidget = (props, history) => {
 }
 
 AuthWidget.propTypes = {
-    registerUrl: React.PropTypes.string,
-    registerText: React.PropTypes.string,
-    loginUrl: React.PropTypes.string,
-    dashboardUrl: React.PropTypes.string,
-    logoutUrl: React.PropTypes.string,
-    isAuthenticated: React.PropTypes.bool
+    registerUrl: PropTypes.string,
+    registerText: PropTypes.string,
+    loginUrl: PropTypes.string,
+    dashboardUrl: PropTypes.string,
+    logoutUrl: PropTypes.string,
+    isAuthenticated: PropTypes.bool
 }
 
 AuthWidget.defaultProps = {

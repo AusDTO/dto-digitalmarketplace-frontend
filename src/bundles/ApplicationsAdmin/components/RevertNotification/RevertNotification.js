@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {revertApplication} from '../../redux/modules/applications';
 import './RevertNotification.css';
@@ -8,11 +9,11 @@ import {templateString} from '../../revertEmailTemplate';
 export default class RevertedNotificationForm extends Component {
 
   static propTypes = {
-    appID: React.PropTypes.number.isRequired,
-    onClose: React.PropTypes.func.isRequired,
-    defaultMessage: React.PropTypes.string.isRequired,
-    onRevertClick: React.PropTypes.func.isRequired,
-    revertStatus: React.PropTypes.bool
+    appID: PropTypes.number.isRequired,
+    onClose: PropTypes.func.isRequired,
+    defaultMessage: PropTypes.string.isRequired,
+    onRevertClick: PropTypes.func.isRequired,
+    revertStatus: PropTypes.bool
   };
 
   constructor(props) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import BaseForm      from '../../../shared/form/BaseForm';
 import SubmitForm    from '../../../shared/form/SubmitForm';
@@ -29,22 +30,22 @@ class SubmitStepForm extends BaseForm {
     }
 
     static propTypes = {
-        model: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.func
+        model: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.func
         ]).isRequired,
-        form: React.PropTypes.object.isRequired,
-        submitUrl: React.PropTypes.string,
-        authoriseUrl: React.PropTypes.string,
-        onClick: React.PropTypes.func,
-        applicationValid: React.PropTypes.bool,
-        stepsRemaining: React.PropTypes.string,
-        name: React.PropTypes.string,
-        abn: React.PropTypes.string,
-        email: React.PropTypes.string,
-        representative: React.PropTypes.string,
-        userEmail: React.PropTypes.string,
-        csrfToken: React.PropTypes.string
+        form: PropTypes.object.isRequired,
+        submitUrl: PropTypes.string,
+        authoriseUrl: PropTypes.string,
+        onClick: PropTypes.func,
+        applicationValid: PropTypes.bool,
+        stepsRemaining: PropTypes.string,
+        name: PropTypes.string,
+        abn: PropTypes.string,
+        email: PropTypes.string,
+        representative: PropTypes.string,
+        userEmail: PropTypes.string,
+        csrfToken: PropTypes.string
     };
 
     handleSubmit(val) {

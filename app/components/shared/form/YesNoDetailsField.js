@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Control, actions } from 'react-redux-form'
 import upperFirst from 'lodash/upperFirst'
@@ -31,6 +32,7 @@ class YesNoDetailsField extends React.Component {
 
   render() {
     const { name, id, label, model, validators, messages } = this.props
+    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <fieldset className="field">
         <legend>
@@ -80,16 +82,16 @@ YesNoDetailsField.defaultProps = {
 }
 
 YesNoDetailsField.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
 
-  validators: React.PropTypes.object,
-  messages: React.PropTypes.object,
-  description: React.PropTypes.string,
-  controlProps: React.PropTypes.object,
-  mapProps: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.object])
+  validators: PropTypes.object,
+  messages: PropTypes.object,
+  description: PropTypes.string,
+  controlProps: PropTypes.object,
+  mapProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 }
 
 export const mapStateToProps = (state, ownProps) => {

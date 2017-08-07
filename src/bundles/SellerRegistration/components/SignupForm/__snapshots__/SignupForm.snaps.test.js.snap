@@ -17,6 +17,7 @@ exports[`SignupForm renders 1`] = `
         action={undefined}
         id="signup"
         method="post"
+        noValidate={undefined}
         onReset={[Function]}
         onSubmit={[Function]}
       >
@@ -111,7 +112,7 @@ exports[`SignupForm renders 1`] = `
             pattern={undefined}
             readOnly={undefined}
             type="text"
-            value=""
+            value={undefined}
           />
         </div>
         <div
@@ -143,7 +144,7 @@ exports[`SignupForm renders 1`] = `
             pattern={undefined}
             readOnly={undefined}
             type="email"
-            value=""
+            value={undefined}
           />
         </div>
         <p>
@@ -186,6 +187,7 @@ exports[`SignupForm renders with form_options 1`] = `
         action={undefined}
         id="signup"
         method="post"
+        noValidate={undefined}
         onReset={[Function]}
         onSubmit={[Function]}
       >
@@ -286,7 +288,7 @@ exports[`SignupForm renders with form_options 1`] = `
             pattern={undefined}
             readOnly={undefined}
             type="text"
-            value=""
+            value={undefined}
           />
         </div>
         <div
@@ -318,7 +320,7 @@ exports[`SignupForm renders with form_options 1`] = `
             pattern={undefined}
             readOnly={undefined}
             type="email"
-            value=""
+            value={undefined}
           />
         </div>
         <p>

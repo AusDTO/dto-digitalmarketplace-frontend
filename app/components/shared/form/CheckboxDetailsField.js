@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Control, actions } from 'react-redux-form'
 import get from 'lodash/get'
@@ -30,6 +31,7 @@ class CheckboxDetailsField extends React.Component {
 
   render() {
     const { name, id, label, model, detailsLabel, detailsModel, validators, messages } = this.props
+    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <span>
         <StatefulError model={model} messages={messages} id={id} />
@@ -69,18 +71,18 @@ CheckboxDetailsField.defaultProps = {
 }
 
 CheckboxDetailsField.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  label: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.string]).isRequired,
-  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
-  detailsLabel: React.PropTypes.string,
-  detailsModel: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+  detailsLabel: PropTypes.string,
+  detailsModel: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
 
-  validators: React.PropTypes.object,
-  messages: React.PropTypes.object,
-  description: React.PropTypes.string,
-  controlProps: React.PropTypes.object,
-  mapProps: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.object])
+  validators: PropTypes.object,
+  messages: PropTypes.object,
+  description: PropTypes.string,
+  controlProps: PropTypes.object,
+  mapProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 }
 
 const mapDispatchToProps = dispatch => {

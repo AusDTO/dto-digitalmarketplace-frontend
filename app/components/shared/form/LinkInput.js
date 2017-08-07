@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import times from 'lodash/times'
 import Textfield from './Textfield'
 import './scss/LinkInput.scss'
@@ -11,17 +12,17 @@ class LinkInput extends React.Component {
   }
 
   static propTypes = {
-    id: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired,
-    htmlFor: React.PropTypes.string.isRequired,
-    label: React.PropTypes.string.isRequired,
-    model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    htmlFor: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
 
-    messages: React.PropTypes.object,
-    validators: React.PropTypes.object,
-    description: React.PropTypes.string,
-    controlProps: React.PropTypes.object,
-    mapProps: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.object])
+    messages: PropTypes.object,
+    validators: PropTypes.object,
+    description: PropTypes.string,
+    controlProps: PropTypes.object,
+    mapProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
   }
 
   constructor(props) {
@@ -48,7 +49,7 @@ class LinkInput extends React.Component {
 
   render() {
     const { id, htmlFor, label, description, model } = this.props
-
+    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <div className="field" id={id}>
         <h3 style={{ marginTop: 0 }}>

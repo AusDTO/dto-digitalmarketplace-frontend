@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 import icons from './_getIcons';
 
@@ -39,9 +40,9 @@ const Icon = (props) => {
 }
 
 Icon.propTypes = {
-  color: React.PropTypes.string,
-  size: React.PropTypes.number,
-  value: React.PropTypes.string.isRequired
+  color: PropTypes.string,
+  size: PropTypes.number,
+  value: PropTypes.string.isRequired
 };
 
 Icon.defaultProps = {

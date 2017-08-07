@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { memberInfoFetchData } from '../../actions/memberActions'
 import './Header.scss'
@@ -33,11 +34,11 @@ class Header extends Component {
             <div id="react-bundle-auth-header">
               <ul data-reactroot="" id="main-navigation" className="inline-links--inverted">
                 <li>
-                  {this.props.memberInfo.isAuthenticated
+                  {this.props.memberInfo.isAuthenticated /*eslint-disable indent */
                     ? <span>
                         {this.dashBoardLink()}
                       </span>
-                    : <a href="/signup">Join the Marketplace</a>}
+                    : <a href="/signup">Join the Marketplace</a> /*eslint-enable indent */}
                 </li>
                 <li>
                   {this.props.memberInfo.isAuthenticated
