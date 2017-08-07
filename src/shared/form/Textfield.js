@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {Control} from 'react-redux-form';
 
 import StatefulError from './StatefulError';
@@ -37,28 +38,28 @@ Textfield.defaultProps = {
 };
 
 Textfield.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
-    htmlFor: React.PropTypes.string.isRequired,
-    label: React.PropTypes.oneOfType([
-        React.PropTypes.object.isRequired,
-        React.PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    htmlFor: PropTypes.string.isRequired,
+    label: PropTypes.oneOfType([
+        PropTypes.object.isRequired,
+        PropTypes.string.isRequired,
     ]),
-    model: React.PropTypes.oneOfType([
-        React.PropTypes.func,
-        React.PropTypes.string,
+    model: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.string,
     ]).isRequired,
 
-    validators: React.PropTypes.object,
-    messages: React.PropTypes.object,
-    description: React.PropTypes.oneOfType([
-        React.PropTypes.object,
-        React.PropTypes.string,
+    validators: PropTypes.object,
+    messages: PropTypes.object,
+    description: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.string,
     ]),
-    pattern: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    readOnly: React.PropTypes.bool,
-    type: React.PropTypes.string
+    pattern: PropTypes.string,
+    disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
+    type: PropTypes.string
 };
 
 export default Textfield;

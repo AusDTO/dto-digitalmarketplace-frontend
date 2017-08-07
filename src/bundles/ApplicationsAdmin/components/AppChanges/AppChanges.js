@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty';
 
 import {AppChangesTable} from '../AppChangesTable/AppChangesTable';
@@ -10,12 +11,12 @@ import './AppChanges.css'; // eslint-disable-line no-unused-vars
 export class AppChanges extends Component {
 
   static propTypes = {
-    body: React.PropTypes.shape({
-      case_studies: React.PropTypes.object.isRequired,
-      supplier_code: React.PropTypes.number,
-      supplierCode: React.PropTypes.number,
-      id: React.PropTypes.number.isRequired,
-      type: React.PropTypes.string.isRequired
+    body: PropTypes.shape({
+      case_studies: PropTypes.object.isRequired,
+      supplier_code: PropTypes.number,
+      supplierCode: PropTypes.number,
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired
     })
   };
 

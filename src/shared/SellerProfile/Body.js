@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 import head from 'lodash/head';
 import {newline} from '../../helpers';
 
-import SimpleAccordion from '../SimpleAccordion';
-import Icon from '../Icon';
+import SimpleAccordion  from '../SimpleAccordion';
+import Icon             from '../Icon';
 
 import './SellerProfile.css';
 
@@ -315,25 +316,25 @@ const Body = (props) => {
 };
 
 Body.propTypes = {
-  evaluated: React.PropTypes.object,
-  provides: React.PropTypes.object,
-  documents: React.PropTypes.object,
-  documentsUrl: React.PropTypes.string,
-  case_studies: React.PropTypes.object,
-  signed_agreements: React.PropTypes.array,
-  representative: React.PropTypes.string,
-  email: React.PropTypes.string,
-  phone: React.PropTypes.string,
-  website: React.PropTypes.string,
-  linkedin: React.PropTypes.string,
-  abn: React.PropTypes.string,
-  addresses: React.PropTypes.array,
-  CaseStudyLink: React.PropTypes.func,
-  contact_email: React.PropTypes.string,
-  contact_phone: React.PropTypes.string,
-  contact_name: React.PropTypes.string,
-  digital_marketplace_panel: React.PropTypes.bool,
-  dsp_panel: React.PropTypes.bool
+    evaluated: PropTypes.object,
+    provides: PropTypes.object,
+    documents: PropTypes.object,
+    documentsUrl: PropTypes.string,
+    case_studies: PropTypes.object,
+    signed_agreements: PropTypes.array,
+    representative: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.string,
+    website: PropTypes.string,
+    linkedin: PropTypes.string,
+    abn: PropTypes.string,
+    addresses: PropTypes.array,
+    CaseStudyLink: PropTypes.func,
+    contact_email: PropTypes.string,
+    contact_phone: PropTypes.string,
+    contact_name: PropTypes.string,
+    digital_marketplace_panel: PropTypes.bool,
+    dsp_panel: PropTypes.bool
 };
 
 export default Body;

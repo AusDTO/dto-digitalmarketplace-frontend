@@ -1,6 +1,10 @@
+general:
+  artifacts:
+    - "build"
+    
 machine:
   node:
-    version: 7.10.1
+    version: 8.2.1
   timezone:
     Australia/Sydney
   environment:
@@ -19,7 +23,7 @@ dependencies:
 
 test:
   override:
-    - eslint .
+    - eslint app
     - yarn test
 
 deployment:

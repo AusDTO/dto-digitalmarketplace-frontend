@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const Finish = ({onClick}) => (
     <div>
@@ -18,7 +19,7 @@ Finish.defaultProps = {
 }
 
 Finish.propTypes = {
-    onClick: React.PropTypes.func
+    onClick: PropTypes.func
 };
 
 export default Finish;

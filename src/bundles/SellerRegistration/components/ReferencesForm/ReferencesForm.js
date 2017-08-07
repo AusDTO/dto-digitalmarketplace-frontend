@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {Form} from 'react-redux-form';
 
@@ -50,9 +51,9 @@ const Referee = ({id, model}) => (
 class ReferencesForm extends BaseForm {
 
     static propTypes = {
-        action: React.PropTypes.string,
-        csrf_token: React.PropTypes.string,
-        form: React.PropTypes.object.isRequired
+        action: PropTypes.string,
+        csrf_token: PropTypes.string,
+        form: PropTypes.object.isRequired
     }
 
     render() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
 import {Form, Control} from 'react-redux-form';
@@ -21,7 +22,7 @@ import domains from './domains';
 class DomainSelector extends BaseForm {
 
   static propTypes = {
-    recruiter: React.PropTypes.string
+    recruiter: PropTypes.string
   }
 
     render() {

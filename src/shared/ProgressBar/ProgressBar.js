@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import classNames from 'classnames';
 
 const ProgressBar = ({ value, max }) => {
@@ -19,8 +20,8 @@ const ProgressBar = ({ value, max }) => {
 };
 
 ProgressBar.propTypes = {
-  value: React.PropTypes.number.isRequired,
-  max: React.PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired
 };
 
 export default ProgressBar;

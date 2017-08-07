@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form';
 
 import StatefulError from './StatefulError';
@@ -53,21 +54,21 @@ Textarea.defaultProps = {
 }
 
 Textarea.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.string,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  model: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
   ]).isRequired,
 
-  validators: React.PropTypes.object,
-  messages: React.PropTypes.object,
-  description: React.PropTypes.string,
-  controlProps: React.PropTypes.object,
-  mapProps: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.object,
+  validators: PropTypes.object,
+  messages: PropTypes.object,
+  description: PropTypes.string,
+  controlProps: PropTypes.object,
+  mapProps: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object,
   ]),
 };
 

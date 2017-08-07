@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import classNames from 'classnames';
 
 import Icon from '../Icon';
@@ -29,9 +30,9 @@ const Alert = ({ title, type, children }) => {
 };
 
 Alert.propTypes = {
-  type: React.PropTypes.oneOf([TYPE_WARNING, TYPE_ERROR, TYPE_SUCCESS, TYPE_INFO]).isRequired,
-  title: React.PropTypes.string,
-  children: React.PropTypes.any.isRequired
+  type: PropTypes.oneOf([TYPE_WARNING, TYPE_ERROR, TYPE_SUCCESS, TYPE_INFO]).isRequired,
+  title: PropTypes.string,
+  children: PropTypes.any.isRequired
 };
 
 export default Alert;

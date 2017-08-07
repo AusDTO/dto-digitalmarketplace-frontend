@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import classNames from 'classnames';
 
 const LiteHeader = (props) => {
@@ -53,13 +54,13 @@ const LiteHeader = (props) => {
 }
 
 LiteHeader.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  seller_type: React.PropTypes.objectOf(React.PropTypes.bool),
-  summary: React.PropTypes.string.isRequired,
-  website: React.PropTypes.string.isRequired,
-  contact_email: React.PropTypes.string.isRequired,
-  contact_phone: React.PropTypes.string.isRequired,
-  contact_name: React.PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  seller_type: PropTypes.objectOf(PropTypes.bool),
+  summary: PropTypes.string.isRequired,
+  website: PropTypes.string.isRequired,
+  contact_email: PropTypes.string.isRequired,
+  contact_phone: PropTypes.string.isRequired,
+  contact_name: PropTypes.string.isRequired,
 }
 
 export default LiteHeader;

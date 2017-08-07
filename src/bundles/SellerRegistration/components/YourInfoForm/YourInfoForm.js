@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 import isNumber from 'lodash/isNumber';
@@ -16,10 +17,10 @@ import StepNav       from '../StepNav';
 class YourInfoForm extends BaseForm {
 
   static propTypes = {
-    action: React.PropTypes.string,
-    csrf_token: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired,
-    supplierCode: React.PropTypes.number
+    action: PropTypes.string,
+    csrf_token: PropTypes.string,
+    form: PropTypes.object.isRequired,
+    supplierCode: PropTypes.number
   }
 
   render() {

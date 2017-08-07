@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
@@ -141,6 +142,11 @@ class Signup extends React.Component {
 
   render() {
     const { forms, location, steps = {}, actions } = this.props;
+    
+    let { recruiter = 'no'} = forms.recruiterForm;
+    let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
+    this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
+
     let stepKeys = this.filteredSteps.map(s => s['id']);
     stepKeys = stepKeys.filter(s => s !== 'start' && s != 'submit');
     let doneKeys = keys(steps).filter(s => steps[s] === "complete" && s !== 'start' && s != 'submit');
@@ -153,9 +159,6 @@ class Signup extends React.Component {
     let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
-    let { recruiter = 'no'} = forms.recruiterForm;
-
-    let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
 
     services = Object
       .keys(services)
@@ -164,8 +167,6 @@ class Signup extends React.Component {
         newServices[key] = services[key];
         return newServices;
       }, {});
-
-    this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
     return (
       <div className="row">
@@ -251,11 +252,11 @@ class Signup extends React.Component {
 }
 
 Signup.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  location: React.PropTypes.object.isRequired,
-  applicant: React.PropTypes.object,
-  forms: React.PropTypes.object,
-  filterSteps: React.PropTypes.func
+  dispatch: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  applicant: PropTypes.object,
+  forms: PropTypes.object,
+  filterSteps: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => {

@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class MultiInput extends React.Component {
   static propTypes = {
-    rows: React.PropTypes.array,
-    defaultRows: React.PropTypes.number,
-    onChange: React.PropTypes.func,
-    name: React.PropTypes.string.isRequired
+    rows: PropTypes.array,
+    defaultRows: PropTypes.number,
+    onChange: PropTypes.func,
+    name: PropTypes.string.isRequired
   }
 
   static defaultProps = {

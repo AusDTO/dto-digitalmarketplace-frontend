@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { Form, Control } from 'react-redux-form';
 import get from 'lodash/get';
@@ -22,21 +23,21 @@ import domains from '../../../SellerRegistration/components/DomainSelector/domai
 class CaseStudyForm extends BaseForm {
 
   static propTypes = {
-    action: React.PropTypes.string,
-    form: React.PropTypes.object.isRequired,
-    model: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.func
+    action: PropTypes.string,
+    form: PropTypes.object.isRequired,
+    model: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.func
     ]).isRequired,
 
-    formErrors: React.PropTypes.object,
-    returnLink: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object
+    formErrors: PropTypes.object,
+    returnLink: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object
     ]),
-    mode: React.PropTypes.oneOf(['add', 'edit']),
-    csrf_token: React.PropTypes.string,
-    serverRender: React.PropTypes.bool
+    mode: PropTypes.oneOf(['add', 'edit']),
+    csrf_token: PropTypes.string,
+    serverRender: PropTypes.bool
   }
 
   render() {

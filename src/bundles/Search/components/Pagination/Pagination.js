@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import classNames from 'classnames';
 
 /*
@@ -93,12 +94,12 @@ Pagination.defaultProps = {
 }
 
 Pagination.propTypes = {
-  pages: React.PropTypes.array.isRequired,
-  page: React.PropTypes.number.isRequired,
-  pageCount: React.PropTypes.number.isRequired,
-  onNext: React.PropTypes.func.isRequired,
-  onBack: React.PropTypes.func.isRequired,
-  onClick: React.PropTypes.func.isRequired
+  pages: PropTypes.array.isRequired,
+  page: PropTypes.number.isRequired,
+  pageCount: PropTypes.number.isRequired,
+  onNext: PropTypes.func.isRequired,
+  onBack: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Pagination;

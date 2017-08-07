@@ -1,33 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Errors } from 'react-redux-form';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Errors } from 'react-redux-form'
 
-import { addMessage, removeMessage } from './errorMessage';
-
+import { addMessage, removeMessage } from './errorMessage'
 
 class StatefulError extends React.Component {
-
   componentDidMount() {
-    const { dispatch, messages, model, id } = this.props;
-    dispatch(addMessage(model, messages, id));
+    const { dispatch, messages, model, id } = this.props
+    dispatch(addMessage(model, messages, id))
   }
 
   componentWillUnmount() {
-    const { dispatch, model } = this.props;
-    dispatch(removeMessage(model));
+    const { dispatch, model } = this.props
+    dispatch(removeMessage(model))
   }
 
   render() {
-    const { model, id, messages, showMessagesDuringFocus } = this.props;
+    const { model, id, messages, showMessagesDuringFocus } = this.props
 
     return (
       <Errors
         model={model}
-        show={(field) => field.touched && (showMessagesDuringFocus || !field.focus)}
+        show={field => field.touched && (showMessagesDuringFocus || !field.focus)}
         messages={messages}
         wrapper={({ children }) => {
           if (!children.length) {
-            return null;
+            return null
           }
 
           return (
@@ -40,15 +39,14 @@ class StatefulError extends React.Component {
       />
     )
   }
-
-};
+}
 
 StatefulError.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  id:       React.PropTypes.string.isRequired,
-  messages: React.PropTypes.objectOf(React.PropTypes.string).isRequired,
-  model:    React.PropTypes.string.isRequired
-};
+  dispatch: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  messages: PropTypes.objectOf(PropTypes.string).isRequired,
+  model: PropTypes.string.isRequired
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -56,4 +54,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(StatefulError);
+export default connect(mapStateToProps)(StatefulError)

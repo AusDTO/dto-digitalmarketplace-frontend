@@ -1,36 +1,38 @@
-import React from 'react';
-
-const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, onCustomSubmit }) => (
+import React from 'react'
+import PropTypes from 'prop-types'
+/*eslint-disable jsx-a11y/label-has-for*/
+const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, onCustomSubmit }) =>
   <form
     method={method}
     id={id}
     action={action}
     onReset={onReset}
     onSubmit={e => {
-      let values = onSubmit();
+      let values = onSubmit()
       if (!valid) {
-        e.preventDefault();
-        return;
+        e.preventDefault()
+        return
       }
-      onCustomSubmit(e, values);
+      onCustomSubmit(e, values)
     }}
-    children={children} />
-)
+  >
+    {children}
+  </form>
 
 SubmitForm.defaultProps = {
   onCustomSubmit: () => {}
 }
 
 SubmitForm.propTypes = {
-  children: React.PropTypes.any,
-  method: React.PropTypes.string,
-  id: React.PropTypes.string,
-  action: React.PropTypes.string,
-  onCustomSubmit: React.PropTypes.func,
+  children: PropTypes.any,
+  method: PropTypes.string,
+  id: PropTypes.string,
+  action: PropTypes.string,
+  onCustomSubmit: PropTypes.func,
 
-  valid: React.PropTypes.bool.isRequired,
-  onSubmit: React.PropTypes.func.isRequired,
-  onReset: React.PropTypes.func.isRequired
+  valid: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired
 }
 
-export default SubmitForm;
+export default SubmitForm

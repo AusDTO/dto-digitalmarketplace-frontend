@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 import './Modal.css';
 
@@ -21,6 +22,6 @@ export const Modal = props => {
 };
 
 Modal.propTypes = {
-  show: React.PropTypes.bool,
-  onClose: React.PropTypes.func
+  show: PropTypes.bool,
+  onClose: PropTypes.func
 };
