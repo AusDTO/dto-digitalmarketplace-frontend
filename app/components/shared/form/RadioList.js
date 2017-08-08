@@ -28,7 +28,8 @@ const RadioList = props => {
                       className: 'uikit-control-input__input'
                     }}
                     value={option.value}
-                    validators={validators} />
+                    validators={validators}
+                  />
                   <label className="uikit-control-input__text" htmlFor={fieldId}>
                     {option.label}
                   </label>

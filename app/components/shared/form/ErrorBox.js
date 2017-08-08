@@ -12,7 +12,7 @@ class ErrorBox extends React.Component {
     focusedOnce: false
   }
 
-  setRef = (c) => {
+  setRef = c => {
     this._container = c
   }
 
@@ -20,7 +20,7 @@ class ErrorBox extends React.Component {
     this.focusIfNeeded()
   }
 
-  focusIfNeeded () {
+  focusIfNeeded() {
     const { focusedOnce } = this.state
     const { focusOnMount } = this.props
 
@@ -42,7 +42,9 @@ class ErrorBox extends React.Component {
 
     return (
       <PageAlert as="error">
-        <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex='-1'>There was a problem with the details you gave</h4>
+        <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex="-1">
+          There was a problem with the details you gave
+        </h4>
         {invalidFields &&
           <ul>
             {invalidFields.map(({ messages, id }, i) => {

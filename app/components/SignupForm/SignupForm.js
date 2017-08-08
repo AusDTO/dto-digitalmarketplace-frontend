@@ -148,7 +148,7 @@ class SignupForm extends BaseForm {
     window.scrollTo(0, 0)
   }
 
-  onSubmitClicked= (event) => {
+  onSubmitClicked = () => {
     this.setState({
       submitClicked: new Date().valueOf()
     })
@@ -162,7 +162,7 @@ class SignupForm extends BaseForm {
     let { signupSuccess, signupMessage, isBuyer, emailValidators, emailErrorMessages } = this.state
 
     let hasFocused = false
-    const setFocus = (e) => {
+    const setFocus = e => {
       if (!hasFocused) {
         hasFocused = true
         e.focus()
@@ -227,15 +227,16 @@ class SignupForm extends BaseForm {
                         {signupMessage}
                       </ul>
                     </PageAlert>}
-                  <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus}/>
+                  <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
                   <Form
                     model={model}
                     action={action}
                     method="post"
                     id="signup"
                     onSubmit={model => this.handleSubmit(model)}
-                    onSubmitFailed={this.onSubmitFailed} >
-                    { csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} /> }
+                    onSubmitFailed={this.onSubmitFailed}
+                  >
+                    {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
                     <div className="user-type">
                       <RadioList
                         model={`${model}.user_type`}
@@ -269,7 +270,8 @@ class SignupForm extends BaseForm {
                         }}
                         messages={{
                           required: 'You must select a user type'
-                        }} />
+                        }}
+                      />
                     </div>
                     <Textfield
                       model={`${model}.name`}
@@ -282,7 +284,8 @@ class SignupForm extends BaseForm {
                       }}
                       messages={{
                         required: 'Your name is required'
-                      }} />
+                      }}
+                    />
                     <Textfield
                       model={`${model}.email_address`}
                       name="email_address"
@@ -306,7 +309,8 @@ class SignupForm extends BaseForm {
                           : ''
                       }
                       validators={emailValidators}
-                      messages={emailErrorMessages} />
+                      messages={emailErrorMessages}
+                    />
                     {isBuyer &&
                       <div className="employment-status">
                         <RadioList
@@ -330,7 +334,8 @@ class SignupForm extends BaseForm {
                           }}
                           messages={{
                             required: 'You must specify your employment status.'
-                          }} />
+                          }}
+                        />
                       </div>}
                     {employmentStatus &&
                       employmentStatus === 'contractor' &&
@@ -355,7 +360,8 @@ class SignupForm extends BaseForm {
                           }}
                           messages={{
                             required: 'You must provide the name of your manager'
-                          }} />
+                          }}
+                        />
                         <Textfield
                           model={`${model}.line_manager_email`}
                           name="line_manager_email"
@@ -371,7 +377,8 @@ class SignupForm extends BaseForm {
                             required: "You must provide your manager's email address",
                             validEmail: 'A validly formatted email is required.',
                             governmentEmail: ' Email should have a government domain.'
-                          }} />
+                          }}
+                        />
                         <PageAlert as="info">
                           <p>
                             Remember to let this person know we’ll be sending them an email requesting their
@@ -388,7 +395,12 @@ class SignupForm extends BaseForm {
                         </a>
                       </small>
                     </p>
-                    <input className="uikit-btn" type="submit" value="Create your account" onClick={this.onSubmitClicked}/>
+                    <input
+                      className="uikit-btn"
+                      type="submit"
+                      value="Create your account"
+                      onClick={this.onSubmitClicked}
+                    />
                   </Form>
                 </article>
               </Layout>}

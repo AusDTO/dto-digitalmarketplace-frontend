@@ -26,7 +26,6 @@ class Header extends Component {
           <div className="marketplace--logo">
             <a href="/" title="Go to the Marketplace homepage" className="logo">
               <span>Digital Marketplace</span>
-              {' '}
               <span className="badge--beta">BETA</span>
             </a>
           </div>
