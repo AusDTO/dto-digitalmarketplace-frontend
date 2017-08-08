@@ -154,6 +154,7 @@ class SignupForm extends BaseForm {
     })
   }
 
+  /*eslint-disable indent */
   render() {
     const { csrf_token, model, form, children, signupForm, buyer_url, seller_url } = this.props
     let valid = form.valid
