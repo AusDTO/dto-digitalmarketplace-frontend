@@ -11,17 +11,27 @@ class ErrorBox extends React.Component {
     focusedOnce: false
   }
 
-  componentDidUpdate() {
-    const { focusOnMount } = this.props
-    const { focusedOnce } = this.state
-
-    if (this.refs['box'] && !focusedOnce && focusOnMount) {
-      this.setState({ focusedOnce: true })
-      this.refs.box.focus()
-    }
+  setRef = (c) => {
+    this._container = c
   }
 
-  
+  componentDidUpdate() {
+    this.focusIfNeeded()
+  }
+
+  focusIfNeeded () {
+    const { focusedOnce } = this.state
+    const { focusOnMount } = this.props
+
+    if (this._container && !focusedOnce && focusOnMount) {
+      this.setState({ focusedOnce: true })
+      this.props.setFocus(this._container)
+    }
+
+    if (this._container && this.props.submitClicked) {
+      this.props.setFocus(this._container)
+    }
+  }
 
   render() {
     const { invalidFields, form } = this.props
@@ -31,7 +41,7 @@ class ErrorBox extends React.Component {
 
     return (
       <PageAlert as="error">
-        <h4 id="validation-masthead-heading" ref='box' tabIndex='0'>There was a problem with the details you gave</h4>
+        <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex='-1'>There was a problem with the details you gave</h4>
         {invalidFields &&
           <ul>
             {invalidFields.map(({ messages, id }, i) => {

@@ -39,7 +39,8 @@ class SignupForm extends BaseForm {
         validEmail: 'A validly formatted email is required.',
         governmentEmail: ' Email should have a government domain.'
       },
-      isBuyer: this.props.signupForm.user_type === 'buyer'
+      isBuyer: this.props.signupForm.user_type === 'buyer',
+      submitClicked: null
     }
     this.statusCheck = this.statusCheck.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -146,12 +147,26 @@ class SignupForm extends BaseForm {
     window.scrollTo(0, 0)
   }
 
+  onSubmitClicked= (event) => {
+    this.setState({
+      submitClicked: new Date().valueOf()
+    })
+  }
+
   render() {
     const { csrf_token, model, form, children, signupForm, buyer_url, seller_url } = this.props
     let valid = form.valid
     let employmentStatus = signupForm.employment_status
     let action = isBuyer ? buyer_url : seller_url
     let { signupSuccess, signupMessage, isBuyer, emailValidators, emailErrorMessages } = this.state
+
+    let hasFocused = false
+    const setFocus = (e) => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
 
     return (
       <div className="row">
@@ -211,7 +226,7 @@ class SignupForm extends BaseForm {
                         {signupMessage}
                       </ul>
                     </PageAlert>}
-                  <ErrorBox focusOnMount={true} model={model} />
+                  <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus}/>
                   <Form
                     model={model}
                     action={action}
@@ -372,7 +387,7 @@ class SignupForm extends BaseForm {
                         </a>
                       </small>
                     </p>
-                    <input className="uikit-btn" type="submit" value="Create your account"/>
+                    <input className="uikit-btn" type="submit" value="Create your account" onClick={this.onSubmitClicked}/>
                   </Form>
                 </article>
               </Layout>}
