@@ -17,7 +17,7 @@ dependencies:
     - cf -v
   override:
     - npm install
-    - npm build
+    - npm run build
   cache_directories:
     - ~/.cache/yarn
 
