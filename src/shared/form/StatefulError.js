@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { Errors } from 'react-redux-form';
 
@@ -44,10 +45,10 @@ class StatefulError extends React.Component {
 };
 
 StatefulError.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  id:       React.PropTypes.string.isRequired,
-  messages: React.PropTypes.objectOf(React.PropTypes.string).isRequired,
-  model:    React.PropTypes.string.isRequired
+  dispatch: PropTypes.func.isRequired,
+  id:       PropTypes.string.isRequired,
+  messages: PropTypes.objectOf(PropTypes.string).isRequired,
+  model:    PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

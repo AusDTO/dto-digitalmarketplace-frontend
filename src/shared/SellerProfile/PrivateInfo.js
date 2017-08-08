@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import Row from "./Row";
 import questions from '../../bundles/SellerRegistration/components/DisclosuresForm/questions';
 import isEmpty from 'lodash/isEmpty';
@@ -121,15 +122,15 @@ const PrivateInfo = (props) => {
 };
 
 PrivateInfo.propTypes = {
-    documents: React.PropTypes.object,
-    documentsUrl: React.PropTypes.string,
-    case_studies: React.PropTypes.object,
-    number_of_employees: React.PropTypes.string,
-    government_experience: React.PropTypes.object,
-    other_panels: React.PropTypes.string,
-    disclosures: React.PropTypes.object,
-    signed_agreements: React.PropTypes.array,
-    recruiter_info: React.PropTypes.object,
+    documents: PropTypes.object,
+    documentsUrl: PropTypes.string,
+    case_studies: PropTypes.object,
+    number_of_employees: PropTypes.string,
+    government_experience: PropTypes.object,
+    other_panels: PropTypes.string,
+    disclosures: PropTypes.object,
+    signed_agreements: PropTypes.array,
+    recruiter_info: PropTypes.object,
 };
 
 export default PrivateInfo;

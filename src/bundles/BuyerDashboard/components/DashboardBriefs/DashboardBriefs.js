@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse'
@@ -41,10 +42,10 @@ export const DashboardBriefs = props => {
 };
 
 DashboardBriefs.propTypes = {
-  live: React.PropTypes.array,
-  closed: React.PropTypes.array,
-  draft: React.PropTypes.array,
-  teamBriefView: React.PropTypes.bool
+  live: PropTypes.array,
+  closed: PropTypes.array,
+  draft: PropTypes.array,
+  teamBriefView: PropTypes.bool
 };
 
 export const DraftBriefs = props => {
@@ -123,7 +124,7 @@ export const DraftBriefs = props => {
 };
 
 DraftBriefs.propTypes = {
-  draft: React.PropTypes.array.isRequired
+  draft: PropTypes.array.isRequired
 };
 
 export const ClosedBriefs = props => {
@@ -215,7 +216,7 @@ export const ClosedBriefs = props => {
 };
 
 ClosedBriefs.propTypes = {
-  closed: React.PropTypes.array.isRequired
+  closed: PropTypes.array.isRequired
 };
 
 export const LiveBriefs = props => {
@@ -303,7 +304,7 @@ export const LiveBriefs = props => {
 };
 
 LiveBriefs.propTypes = {
-  live: React.PropTypes.array.isRequired
+  live: PropTypes.array.isRequired
 };
 
 const formatDate = date => {

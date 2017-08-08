@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
@@ -251,11 +252,11 @@ class Signup extends React.Component {
 }
 
 Signup.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  location: React.PropTypes.object.isRequired,
-  applicant: React.PropTypes.object,
-  forms: React.PropTypes.object,
-  filterSteps: React.PropTypes.func
+  dispatch: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  applicant: PropTypes.object,
+  forms: PropTypes.object,
+  filterSteps: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => {

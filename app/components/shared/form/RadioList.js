@@ -1,10 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
 
 import StatefulError from './StatefulError'
 
 const RadioList = props => {
   const { id, label, name, options, model, messages, validators } = props
+  /*eslint-disable jsx-a11y/label-has-for*/
   return (
     <div className="field">
       <fieldset>
@@ -41,19 +43,19 @@ const RadioList = props => {
 }
 
 RadioList.propTypes = {
-  id: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  model: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.string]).isRequired,
-  options: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      label: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-      value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number])
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     })
   ).isRequired,
 
-  validators: React.PropTypes.object,
-  messages: React.PropTypes.object
+  validators: PropTypes.object,
+  messages: PropTypes.object
 }
 
 export default RadioList

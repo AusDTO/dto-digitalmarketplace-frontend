@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty';
 
 import './TeamOverview.css'
@@ -37,7 +38,7 @@ const TeamOverview = ({members}) => (
 )
 
 TeamOverview.propTypes = {
-  members: React.PropTypes.array.isRequired
+  members: PropTypes.array.isRequired
 }
 
 export default TeamOverview

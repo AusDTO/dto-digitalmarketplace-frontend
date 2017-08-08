@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import styles from './Landing.css'
@@ -9,7 +10,7 @@ class Landing extends React.Component {
     }
 
     static propTypes = {
-        seller_count: React.PropTypes.number
+        seller_count: PropTypes.number
     };
     render() {
         let {seller_count} = this.props;

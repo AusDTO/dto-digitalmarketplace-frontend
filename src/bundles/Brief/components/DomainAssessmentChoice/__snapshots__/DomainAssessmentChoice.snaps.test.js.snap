@@ -22,27 +22,9 @@ exports[`DomainAssessmentChoice renders 1`] = `
     </p>
     <form
       action={undefined}
+      noValidate={undefined}
       onReset={[Function]}
       onSubmit={[Function]}
-      storeSubscription={
-        Subscription {
-          "listeners": Object {
-            "clear": [Function],
-            "notify": [Function],
-            "subscribe": [Function],
-          },
-          "onStateChange": [Function],
-          "parentSub": undefined,
-          "store": Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "replaceReducer": [Function],
-            "subscribe": [Function],
-            Symbol(Symbol.observable): [Function],
-          },
-          "unsubscribe": [Function],
-        }
-      }
     >
       <fieldset
         className="field"
@@ -52,25 +34,6 @@ exports[`DomainAssessmentChoice renders 1`] = `
         </legend>
         <div
           id="domain"
-          storeSubscription={
-            Subscription {
-              "listeners": Object {
-                "clear": [Function],
-                "notify": [Function],
-                "subscribe": [Function],
-              },
-              "onStateChange": [Function],
-              "parentSub": undefined,
-              "store": Object {
-                "dispatch": [Function],
-                "getState": [Function],
-                "replaceReducer": [Function],
-                "subscribe": [Function],
-                Symbol(Symbol.observable): [Function],
-              },
-              "unsubscribe": [Function],
-            }
-          }
         >
           <span>
             <input

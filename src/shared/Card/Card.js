@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty';
 import { replaceMarkup } from '../../helpers'
 
 import Badges from '../Badges';
-//import Icon from '../Icon';
 
 import './Card.css';
 
@@ -63,13 +63,13 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
 
 
 Card.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  link: React.PropTypes.string.isRequired,
-  description: React.PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 
-  badges: React.PropTypes.object,
-  services: React.PropTypes.object,
-  products: React.PropTypes.object
+  badges: PropTypes.object,
+  services: PropTypes.object,
+  products: PropTypes.object
 };
 
 export default Card;
