@@ -166,7 +166,7 @@ module.exports = [{
       {
         test: /\.(js|jsx)$/,
         loader: 'eslint',
-        include: paths.appSrc,
+        include: paths.clientSrc,
       }
     ],
     loaders: loaders.concat({
