@@ -37,10 +37,11 @@ class SignupForm extends BaseForm {
       },
       emailErrorMessages: {
         required: 'Your email is required',
-        validEmail: 'A validly formatted email is required',
-        governmentEmail: 'Email should have a government domain'
+        validEmail: 'A validly formatted email is required.',
+        governmentEmail: ' Email should have a government domain.'
       },
-      isBuyer: this.props.signupForm.user_type === 'buyer'
+      isBuyer: this.props.signupForm.user_type === 'buyer',
+      submitClicked: null
     }
     this.statusCheck = this.statusCheck.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -65,7 +66,7 @@ class SignupForm extends BaseForm {
           },
           emailErrorMessages: {
             required: 'Your email is required',
-            validEmail: 'A validly formatted email is required'
+            validEmail: 'A validly formatted email is required.'
           },
           isBuyer: false
         })
@@ -80,8 +81,8 @@ class SignupForm extends BaseForm {
           },
           emailErrorMessages: {
             required: 'Your email is required',
-            validEmail: 'A validly formatted email is required',
-            governmentEmail: 'Email should have a government domain'
+            validEmail: 'A validly formatted email is required.',
+            governmentEmail: ' Email should have a government domain.'
           },
           isBuyer: true
         })
@@ -147,6 +148,13 @@ class SignupForm extends BaseForm {
     window.scrollTo(0, 0)
   }
 
+  onSubmitClicked = () => {
+    this.setState({
+      submitClicked: new Date().valueOf()
+    })
+  }
+
+  /*eslint-disable indent */
   render() {
     const { csrf_token, model, form, children, signupForm, buyer_url, seller_url } = this.props
     let valid = form.valid
@@ -154,7 +162,14 @@ class SignupForm extends BaseForm {
     let action = isBuyer ? buyer_url : seller_url
     let { signupSuccess, signupMessage, isBuyer, emailValidators, emailErrorMessages } = this.state
 
-    /*eslint-disable indent */
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
@@ -213,7 +228,7 @@ class SignupForm extends BaseForm {
                         {signupMessage}
                       </ul>
                     </PageAlert>}
-                  <ErrorBox focusOnMount={true} model={model} />
+                  <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
                   <Form
                     model={model}
                     action={action}
@@ -228,7 +243,7 @@ class SignupForm extends BaseForm {
                         model={`${model}.user_type`}
                         name="user_type"
                         id="user_type"
-                        label="Have you got digital expertise to sell to government? Or do you want to buy digital products and services on behalf of your government office? Choose the option that matches your situation."
+                        label="Choose the option that matches your situation."
                         options={[
                           {
                             value: 'buyer',
@@ -259,7 +274,6 @@ class SignupForm extends BaseForm {
                         }}
                       />
                     </div>
-                    Now enter your name and your work email address.
                     <Textfield
                       model={`${model}.name`}
                       name="name"
@@ -362,14 +376,16 @@ class SignupForm extends BaseForm {
                           }}
                           messages={{
                             required: "You must provide your manager's email address",
-                            validEmail: 'A validly formatted email is required',
-                            governmentEmail: 'Email should have a government domain'
+                            validEmail: 'A validly formatted email is required.',
+                            governmentEmail: ' Email should have a government domain.'
                           }}
                         />
-                        <p>
-                          Remember to let this person know we’ll be sending them an email requesting their
-                          authorisation.
-                        </p>
+                        <PageAlert as="info">
+                          <p>
+                            Remember to let this person know we’ll be sending them an email requesting their
+                            authorisation.
+                          </p>
+                        </PageAlert>
                       </div>}
                     {children}
                     <p>
@@ -380,7 +396,12 @@ class SignupForm extends BaseForm {
                         </a>
                       </small>
                     </p>
-                    <input className="uikit-btn" type="submit" value="Create your account" />
+                    <input
+                      className="uikit-btn"
+                      type="submit"
+                      value="Create your account"
+                      onClick={this.onSubmitClicked}
+                    />
                   </Form>
                 </article>
               </Layout>}

@@ -22,6 +22,13 @@
   margin-top: 1.6em;
 }
 
+.marketplace--header a:hover, 
+.marketplace--header a:focus, 
+main form a.validation-message:focus,
+main form a.validation-message:hover {
+  background-color: transparent;
+}
+
 .marketplace--header a {
   color: rgb(255, 255, 255);
   transition-timing-function: ease-in-out;
@@ -35,19 +42,18 @@
 .marketplace--header [class^="badge"] {
   font-weight: 700;
   vertical-align: super;
-  margin-left: 0.4em;
 }
 
 .badge--beta {
   background-color: rgb(255, 255, 255);
   color: rgb(24, 120, 141);
-  margin-top: 0.8em;
   padding: 0.3em 0.6em;
   display: inline-block;
   line-height: 1;
   letter-spacing: 1px;
   font-size: 0.875rem;
   border-radius: 12px;
+  margin-left: 10px;
 }
 
 .marketplace--header .user-nav {
