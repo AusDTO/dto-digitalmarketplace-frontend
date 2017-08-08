@@ -72,7 +72,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -98,7 +98,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -130,7 +130,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -162,7 +162,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -184,7 +184,7 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -217,7 +217,7 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -446,7 +446,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -478,7 +478,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -504,7 +504,7 @@ exports[`CaseStudyForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -606,7 +606,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -632,7 +632,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -664,7 +664,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -696,7 +696,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -718,7 +718,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -751,7 +751,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -980,7 +980,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1012,7 +1012,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1038,7 +1038,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -1253,7 +1253,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1292,7 +1292,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1337,7 +1337,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1382,7 +1382,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1417,7 +1417,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="invalid under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -1463,7 +1463,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="invalid under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -1718,7 +1718,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1763,7 +1763,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1802,7 +1802,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -1923,7 +1923,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1949,7 +1949,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -1981,7 +1981,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2013,7 +2013,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2035,7 +2035,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -2068,7 +2068,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue={undefined}
+            defaultValue=""
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -2297,7 +2297,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2329,7 +2329,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2355,7 +2355,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -2457,7 +2457,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2547,7 +2547,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2831,7 +2831,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2863,7 +2863,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -2889,7 +2889,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>

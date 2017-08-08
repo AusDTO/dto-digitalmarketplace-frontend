@@ -50,7 +50,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -91,7 +91,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={false}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -113,7 +113,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
+            defaultValue=""
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -156,7 +156,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -188,7 +188,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -220,7 +220,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -246,7 +246,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -272,7 +272,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -298,7 +298,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>
@@ -412,7 +412,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -453,7 +453,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={false}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -475,7 +475,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
+            defaultValue=""
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -518,7 +518,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -550,7 +550,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -582,7 +582,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -608,7 +608,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -634,7 +634,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div
@@ -660,7 +660,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           pattern={undefined}
           readOnly={undefined}
           type="text"
-          value={undefined}
+          value=""
         />
       </div>
       <div>

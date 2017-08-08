@@ -50,7 +50,6 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       action={undefined}
       id="DomainSelector__create"
       method="post"
-      noValidate={undefined}
       onReset={[Function]}
       onSubmit={[Function]}
     >
@@ -85,7 +84,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </div>
@@ -105,7 +104,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </div>
@@ -136,7 +135,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </div>
@@ -156,7 +155,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </div>
@@ -187,7 +186,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </div>
@@ -207,7 +206,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </div>
