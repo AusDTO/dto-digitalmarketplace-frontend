@@ -1,4 +1,6 @@
-.footer-small-text { 
+@import "../../App.scss";
+
+.footerSmallText { 
 	display: inline-block;
   font-size: 14px;
   line-height: 21px;
@@ -7,7 +9,7 @@
   margin-left: 0.8em;
 }
 
-.logo-govcrest {
+.logoGovcrest {
 	display: inline-block;
   margin: 0 1.6em 0 0;
   max-height: 6.4em;
@@ -18,7 +20,7 @@
   margin-right: 2.4em;
 }
 
-.logo-nisa {
+.logoNisa {
 	display: inline-block;
   margin: 0 1.6em 0 0;
   max-height: 6.4em;

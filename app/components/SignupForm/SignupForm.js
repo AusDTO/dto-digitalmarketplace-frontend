@@ -11,12 +11,11 @@ import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
 import formProps from '../../components/shared/form/formPropsSelector'
 import RadioList from '../../components/shared/form/RadioList'
+import RadioListBox from '../../components/shared/form/RadioListBox/RadioListBox'
 
 import PageAlert from '@gov.au/page-alerts'
 
 import api from '../../services/apiFetch'
-
-import './SignupForm.scss'
 
 class SignupForm extends BaseForm {
   static propTypes = {
@@ -239,7 +238,7 @@ class SignupForm extends BaseForm {
                   >
                     {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
                     <div className="user-type">
-                      <RadioList
+                      <RadioListBox
                         model={`${model}.user_type`}
                         name="user_type"
                         id="user_type"
