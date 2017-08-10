@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "abnacn-validator": "0.0.5",
+    "axios": "^0.16.2",
     "body-parser": "1.17.2",
     "classnames": "2.2.5",
     "compression": "^1.7.0",

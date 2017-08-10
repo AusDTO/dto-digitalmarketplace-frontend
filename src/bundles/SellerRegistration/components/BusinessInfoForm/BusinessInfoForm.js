@@ -9,7 +9,6 @@ import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
 import StatefulError from '../../../../shared/form/StatefulError';
-import CheckboxDetailsField  from '../../../../shared/form/CheckboxDetailsField';
 import {required} from '../../../../validators';
 
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
