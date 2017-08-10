@@ -12,10 +12,11 @@ import Textfield from '../../components/shared/form/Textfield'
 import formProps from '../../components/shared/form/formPropsSelector'
 import RadioList from '../../components/shared/form/RadioList'
 import RadioListBox from '../../components/shared/form/RadioListBox/RadioListBox'
-
 import PageAlert from '@gov.au/page-alerts'
 
-import api from '../../services/apiFetch'
+import axios from 'axios'
+
+import './SignupForm.scss'
 
 class SignupForm extends BaseForm {
   static propTypes = {
@@ -130,12 +131,11 @@ class SignupForm extends BaseForm {
 
   handleSubmit(model) {
     this.setState({ signupSuccess: null, signupMessage: null })
-    return api('/api/signup', {
+    return axios({
+      url: '/api/signup',
       method: 'POST',
-      body: JSON.stringify(model),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      data: JSON.stringify(model),
+      headers: { 'Content-Type': 'application/json' }
     })
       .then(this.statusCheck)
       .catch(error => {
@@ -273,6 +273,7 @@ class SignupForm extends BaseForm {
                         }}
                       />
                     </div>
+                    Now enter your name and your work email address.
                     <Textfield
                       model={`${model}.name`}
                       name="name"

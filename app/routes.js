@@ -1,8 +1,7 @@
 import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import SignupContainer from './components/SignupForm/SignupContainer'
-
-const NotFound = () => <div>Route not found</div>
+import NotFound from './components/shared/NotFound'
 
 const Routes = () =>
   <Switch>

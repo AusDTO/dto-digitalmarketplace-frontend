@@ -68,9 +68,11 @@
   },
   "dependencies": {
     "abnacn-validator": "0.0.5",
+    "axios": "^0.16.2",
     "body-parser": "1.17.2",
     "classnames": "2.2.5",
     "compression": "^1.7.0",
+    "css-loader": "0.24.0",
     "date-fns": "^1.28.5",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
@@ -80,6 +82,7 @@
     "lodash": "^4.17.4",
     "morgan": "1.8.2",
     "newrelic": "^2.0.2",
+    "node-sass": "^4.5.3",
     "object-assign": "^4.1.1",
     "promise": "^8.0.1",
     "prop-types": "^15.5.10",
@@ -95,16 +98,13 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "rollbar": "^2.0.4",
-    "yargs": "^8.0.2",
-    "whatwg-fetch": "^2.0.3",
-
-    "css-loader": "0.24.0",
     "sass-loader": "^4.0.0",
-    "node-sass": "^4.5.3",
     "style-loader": "0.13.1",
     "svg-inline-loader": "0.7.1",
     "url-loader": "0.5.7",
-    "webpack": "1.13.2"
+    "webpack": "1.13.2",
+    "whatwg-fetch": "^2.0.3",
+    "yargs": "^8.0.2"
   },
   "scripts": {
     "start": "node scripts/start.js",
