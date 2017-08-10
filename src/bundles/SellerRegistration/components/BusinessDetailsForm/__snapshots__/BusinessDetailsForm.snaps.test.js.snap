@@ -121,6 +121,7 @@ exports[`BusinessDetailsForm renders 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             50 words remaining
@@ -483,6 +484,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             50 words remaining
