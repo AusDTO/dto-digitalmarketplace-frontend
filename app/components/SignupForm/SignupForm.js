@@ -16,8 +16,6 @@ import PageAlert from '@gov.au/page-alerts'
 
 import axios from 'axios'
 
-import './SignupForm.scss'
-
 class SignupForm extends BaseForm {
   static propTypes = {
     action: PropTypes.string,
@@ -90,7 +88,7 @@ class SignupForm extends BaseForm {
     }
   }
 
-  handleError({ status }) {
+  handleResponse({ status }) {
     switch (status) {
       case 200:
         return { signupSuccess: true, signupMessage: 'success' }
@@ -101,7 +99,7 @@ class SignupForm extends BaseForm {
             <li>
               <p>
                 An account with this email domain already exists. Someone in your team may have already created an
-                account with the Marketplace.
+                account with the Marketplace
               </p>
             </li>
           )
@@ -126,7 +124,7 @@ class SignupForm extends BaseForm {
 
   statusCheck(response) {
     window.scrollTo(0, 0)
-    this.setState(this.handleError(response))
+    this.setState(this.handleResponse(response))
   }
 
   handleSubmit(model) {
@@ -139,7 +137,8 @@ class SignupForm extends BaseForm {
     })
       .then(this.statusCheck)
       .catch(error => {
-        this.setState({ signupSuccess: false, signupMessage: error })
+        window.scrollTo(0, 0)
+        this.setState(this.handleResponse(error.response))
       })
   }
 
@@ -215,18 +214,18 @@ class SignupForm extends BaseForm {
               </div>}
             {!signupSuccess &&
               <Layout>
+                {signupMessage &&
+                  valid &&
+                  <PageAlert as="error">
+                    <h4>Signup invite email was not sent</h4>
+                    <ul>
+                      {signupMessage}
+                    </ul>
+                  </PageAlert>}
                 <header>
                   <h1>Let’s get started</h1>
                 </header>
                 <article role="main">
-                  {signupMessage &&
-                    valid &&
-                    <PageAlert as="error">
-                      <h4>Signup invite email was not sent</h4>
-                      <ul>
-                        {signupMessage}
-                      </ul>
-                    </PageAlert>}
                   <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
                   <Form
                     model={model}

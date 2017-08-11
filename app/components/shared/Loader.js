@@ -2,6 +2,10 @@ import React from 'react'
 import classNames from 'classnames'
 import './Loader.scss'
 
+/*
+  work in progress loader from https://ex-research-tfn.apps.staging.digital.gov.au/exchange-prelude/#
+  as requested by Lou
+*/
 const Loader = ({ show }) => {
   return (
     <div className={classNames('the__loader', { show: show })}>
