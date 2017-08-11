@@ -19,8 +19,7 @@ class Textfield extends React.Component {
       maxLength,
       disabled,
       readOnly,
-      type,
-      ariaDescribedBy
+      type
     } = this.props
     /*eslint-disable jsx-a11y/label-has-for*/
     return (
