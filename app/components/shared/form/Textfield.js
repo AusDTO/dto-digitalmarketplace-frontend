@@ -25,7 +25,7 @@ class Textfield extends React.Component {
     /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <div className="field">
-        <label htmlFor={htmlFor} className="question-heading uikit-text-input__label">
+        <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading uikit-text-input__label">
           {label}
         </label>
         {description &&
@@ -38,7 +38,7 @@ class Textfield extends React.Component {
           name={name}
           id={id}
           type={type}
-          aria-describedby={ariaDescribedBy}
+          aria-describedby={`${id}-label`}
           mapProps={{
             className: ({ fieldValue }) =>
               !fieldValue.valid && fieldValue.touched
