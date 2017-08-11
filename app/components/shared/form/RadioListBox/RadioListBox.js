@@ -10,14 +10,14 @@ const RadioListBox = props => {
   const { id, label, name, options, model, messages, validators } = props
   /*eslint-disable jsx-a11y/label-has-for*/
   const uiKitControl = classNames('uikit-control-input', 'uikit-control-input--full', styles.uiKitControl)
-
+  
   return (
     <div className="field">
       <fieldset>
         <legend>
           {label}
         </legend>
-        <StatefulError model={model} messages={messages} id={id} />
+        <StatefulError model={model} messages={messages} id={id + '-' + options[0].value} />
         <div>
           {options.map((option, i) => {
             let fieldId = `${id}-${option.value}`

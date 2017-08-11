@@ -279,6 +279,7 @@ class SignupForm extends BaseForm {
                       id="name"
                       htmlFor="name"
                       label="Full name"
+                      ariaDescribedBy="Full Name"
                       validators={{
                         required
                       }}
@@ -292,6 +293,7 @@ class SignupForm extends BaseForm {
                       id="email_address"
                       type="email"
                       htmlFor="email_address"
+                      ariaDescribedBy="Email Address"
                       label={
                         isBuyer
                           ? <span>

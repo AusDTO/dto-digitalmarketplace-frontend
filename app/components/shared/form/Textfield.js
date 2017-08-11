@@ -19,7 +19,8 @@ class Textfield extends React.Component {
       maxLength,
       disabled,
       readOnly,
-      type
+      type,
+      ariaDescribedBy
     } = this.props
     /*eslint-disable jsx-a11y/label-has-for*/
     return (
@@ -37,7 +38,7 @@ class Textfield extends React.Component {
           name={name}
           id={id}
           type={type}
-          aria-describedby={description && `${id}-hint`}
+          aria-describedby={ariaDescribedBy}
           mapProps={{
             className: ({ fieldValue }) =>
               !fieldValue.valid && fieldValue.touched
