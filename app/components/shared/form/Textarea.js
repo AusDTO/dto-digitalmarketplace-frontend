@@ -41,6 +41,7 @@ const Textarea = props => {
       {messages &&
         <StatefulError model={model} messages={messages} id={id} showMessagesDuringFocus={showMessagesDuringFocus} />}
       <Control
+        id={id}
         model={model}
         controlProps={{
           name,

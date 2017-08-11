@@ -127,6 +127,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
                 onFocus={[Function]}
               />
               <span
+                aria-live="polite"
                 className="word-count-counter"
               >
                 50 words remaining
