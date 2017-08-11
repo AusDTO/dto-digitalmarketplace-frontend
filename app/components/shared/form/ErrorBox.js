@@ -16,19 +16,16 @@ class ErrorBox extends React.Component {
     this._container = c
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.focusIfNeeded()
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this.focusIfNeeded()
   }
 
-  focusIfNeeded () {
-    if (
-      this._container &&
-      this.state.lastFocus !== this.props.submitClicked
-    ) {
+  focusIfNeeded() {
+    if (this._container && this.state.lastFocus !== this.props.submitClicked) {
       this.setState({
         lastFocus: this.props.submitClicked
       })
