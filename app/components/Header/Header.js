@@ -60,11 +60,11 @@ Header.propTypes = {
   isLoading: PropTypes.bool
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ user }) => {
   return {
-    memberInfo: state.memberInfo,
-    hasErrored: state.memberInfoHasErrored,
-    isLoading: state.memberInfoIsLoading
+    memberInfo: user.memberInfo,
+    hasErrored: user.memberInfoHasErrored,
+    isLoading: user.memberInfoIsLoading
   }
 }
 

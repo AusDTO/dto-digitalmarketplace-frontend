@@ -32,7 +32,9 @@ class CreateUserForm extends BaseForm {
   componentWillReceiveProps(nextProps) {
     if (nextProps.createUserErrored) {
       window.scrollTo(0, 0)
-      this.setState({ createMessage: this.handleAPIResponseError(nextProps.isDuplicate) })
+      this.setState({
+        createMessage: this.handleAPIResponseError(nextProps.isDuplicate)
+      })
     }
     if (this.props.createUserSuccess !== nextProps.createUserSuccess) {
       if (nextProps.createUserSuccess) {
@@ -73,83 +75,78 @@ class CreateUserForm extends BaseForm {
     let { createMessage } = this.state
 
     return (
-      <div>
-        {createUserLoading && <strong>....loading</strong>}
-        {createMessage &&
-          !createUserSuccess &&
-          valid &&
-          <PageAlert as="error">
-            <h4>We were unable to create your account</h4>
-            <ul>
-              {createMessage}
-            </ul>
-          </PageAlert>}
-        <ErrorBox focusOnMount={true} model={model} />
-        {userType === 'buyer'
-          ? <div>
-              <h1>Add your name and password</h1>
-              <p>To finish creating your account please provide the following details.</p>
-            </div>
-          : <div>
-              <h1>Add a password</h1>
-              <p>To finish creating your account please provide the following details.</p>
-            </div>}
-        <Form model={model} id="createuser" onSubmit={model => handleSubmit(model)}>
-          {userType === 'buyer' &&
-            <Textfield
-              model={`${model}.name`}
-              name="name"
-              id="name"
-              htmlFor="name"
-              label="Full name"
-              description="This name will be used throughout the Marketplace"
-              validators={{
-                required: val => val && val.length
-              }}
-              messages={{
-                required: 'A name is required'
-              }}
-            />}
+      <div className="row">
+        <div className="col-sm-push-2 col-sm-8 col-xs-12">
+          <article role="main">
+            {createUserLoading && <strong>....loading</strong>}
+            {createMessage &&
+              !createUserSuccess &&
+              valid &&
+              <PageAlert as="error">
+                <h4>We were unable to create your account</h4>
+                <ul>
+                  {createMessage}
+                </ul>
+              </PageAlert>}
+            <ErrorBox focusOnMount={true} model={model} />
+            {userType === 'buyer' /*eslint-disable indent */
+              ? <div>
+                  <h1>Add your name and password</h1>
+                  <p>To finish creating your account please provide the following details.</p>
+                </div>
+              : <div>
+                  <h1>Add a password</h1>
+                  <p>To finish creating your account please provide the following details.</p>
+                </div> /*eslint-disable indent */}
+            <Form model={model} id="createuser" onSubmit={model => handleSubmit(model)}>
+              {userType === 'buyer' &&
+                <Textfield
+                  model={`${model}.name`}
+                  name="name"
+                  id="name"
+                  htmlFor="name"
+                  label="Full name"
+                  description="This name will be used throughout the Marketplace"
+                  validators={{ required: val => val && val.length }}
+                  messages={{ required: 'A name is required' }}
+                />}
 
-          <Textfield
-            model={`${model}.password`}
-            name="password"
-            id="password"
-            htmlFor="password"
-            label="Password"
-            description="At least 10 characters"
-            validators={{
-              length: val => val && val.length >= 10
-            }}
-            messages={{
-              length: 'Your password must be at least 10 characters'
-            }}
-          />
-
-          <CheckboxDetailsField
-            model={`${model}.agree`}
-            id="agree"
-            name="agree"
-            value="agree"
-            label={
-              <span>
-                <span>I accept the </span>
-                <a href="/terms-of-use" target="_blank" rel="external">
-                  Terms of Use
-                </a>
-              </span>
-            }
-            description="blah"
-            detailsModel={model}
-            validators={{
-              required: val => val
-            }}
-            messages={{
-              required: 'Accept Terms of Use'
-            }}
-          />
-          <button type="submit">Join the Marketplace</button>
-        </Form>
+              <Textfield
+                model={`${model}.password`}
+                name="password"
+                id="password"
+                htmlFor="password"
+                label="Password"
+                description="At least 10 characters"
+                validators={{ length: val => val && val.length >= 10 }}
+                messages={{
+                  length: 'Your password must be at least 10 characters'
+                }}
+              />
+              <p>
+                <CheckboxDetailsField
+                  model={`${model}.agree`}
+                  id="agree"
+                  name="agree"
+                  value="agree"
+                  label={
+                    <span>
+                      <span>I accept the </span>
+                      <a href="/terms-of-use" target="_blank" rel="external">
+                        Terms of Use
+                      </a>
+                    </span>
+                  }
+                  description="blah"
+                  detailsModel={model}
+                  validators={{ required: val => val }}
+                  messages={{ required: 'Accept Terms of Use' }}
+                />
+              </p>
+              <input className="uikit-btn" type="submit" value="Join the Marketplace" />
+            </Form>
+          </article>
+        </div>
       </div>
     )
   }

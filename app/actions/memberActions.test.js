@@ -21,7 +21,7 @@ describe('Member Actions', () => {
       }
       const expectedAction = {
         type: MEMBER_INFO_FETCH_DATA_SUCCESS,
-        data: memberInfoResponse.data
+        memberInfo: memberInfoResponse.data
       }
 
       //act
@@ -29,7 +29,7 @@ describe('Member Actions', () => {
 
       //assert
       expect(action).toEqual(expectedAction)
-      expect(action.data.userType).toEqual('buyer')
+      expect(action.memberInfo.userType).toEqual('buyer')
     })
   })
 })

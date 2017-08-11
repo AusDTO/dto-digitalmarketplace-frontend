@@ -25,7 +25,7 @@ export function handleMemberInfoResponse(response) {
     case 200:
       return {
         type: MEMBER_INFO_FETCH_DATA_SUCCESS,
-        data: response.data
+        memberInfo: response.data
       }
 
     default:
