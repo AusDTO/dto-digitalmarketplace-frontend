@@ -16,15 +16,15 @@ dependencies:
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
   override:
-    - yarn
-    - yarn build
+    - npm install
+    - npm run build
   cache_directories:
     - ~/.cache/yarn
 
 test:
   override:
     - eslint app
-    - yarn test
+    - npm test
 
 deployment:
   development:

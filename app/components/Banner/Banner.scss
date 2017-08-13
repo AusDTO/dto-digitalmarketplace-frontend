@@ -1,14 +1,16 @@
-.phase-banner {
+@import "../../App.scss";
+
+.phaseBanner {
   background: #313131;
   color: #f0f3f5;
   padding: 0.4em 0;
 }
 
-.phase-banner a {
+.phaseBanner a {
   color: #f0f3f5;
 }
 
-.phase-banner p {
+.phaseBanner p {
   font-size: 0.875rem;
   margin: 0;
 }

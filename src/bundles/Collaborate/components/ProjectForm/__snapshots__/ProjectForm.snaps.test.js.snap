@@ -79,6 +79,7 @@ exports[`ProjectForm renders 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             40 words remaining
@@ -280,6 +281,7 @@ exports[`ProjectForm renders 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -309,6 +311,7 @@ exports[`ProjectForm renders 1`] = `
               onFocus={[Function]}
             />
             <span
+              aria-live="polite"
               className="word-count-counter"
             >
               200 words remaining
@@ -867,6 +870,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             40 words remaining
@@ -1068,6 +1072,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -1097,6 +1102,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
               onFocus={[Function]}
             />
             <span
+              aria-live="polite"
               className="word-count-counter"
             >
               200 words remaining
@@ -1776,6 +1782,7 @@ exports[`ProjectForm renders with errors 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             40 words remaining
@@ -2029,6 +2036,7 @@ exports[`ProjectForm renders with errors 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -2071,6 +2079,7 @@ exports[`ProjectForm renders with errors 1`] = `
               onFocus={[Function]}
             />
             <span
+              aria-live="polite"
               className="word-count-counter"
             >
               200 words remaining
@@ -2687,6 +2696,7 @@ exports[`ProjectForm renders with form_options 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             40 words remaining
@@ -2888,6 +2898,7 @@ exports[`ProjectForm renders with form_options 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -2917,6 +2928,7 @@ exports[`ProjectForm renders with form_options 1`] = `
               onFocus={[Function]}
             />
             <span
+              aria-live="polite"
               className="word-count-counter"
             >
               200 words remaining
@@ -3475,6 +3487,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             40 words remaining
@@ -3676,6 +3689,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -3705,6 +3719,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
               onFocus={[Function]}
             />
             <span
+              aria-live="polite"
               className="word-count-counter"
             >
               200 words remaining

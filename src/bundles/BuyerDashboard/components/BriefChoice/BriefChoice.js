@@ -67,7 +67,7 @@ class BriefChoiceForm extends Component {
               role="presentation" tabIndex="0"> 
               <span>Digital Outcome</span>
               <p>
-                Get seller responses to your criteria, in spreadsheet format, for shortlisting. You will not receive RFPs at this stage.  
+                Get seller responses to your criteria, in spreadsheet format, for shortlisting. You will not receive proposals at this stage.  
               </p>
             </label>
           </form>  

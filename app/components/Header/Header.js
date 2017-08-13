@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { memberInfoFetchData } from '../../actions/memberActions'
-import './Header.scss'
+import styles from './Header.scss'
 
 class Header extends Component {
   componentDidMount() {
@@ -21,18 +21,18 @@ class Header extends Component {
 
   render() {
     return (
-      <section className="marketplace--header">
-        <div className="wrapper">
-          <div className="marketplace--logo">
-            <a href="/" title="Go to the Marketplace homepage" className="logo">
-              Digital Marketplace
-            </a>{' '}
-            <span className="badge--beta">BETA</span>
+      <section className={styles.marketplaceHeader}>
+        <div className={styles.wrapper}>
+          <div className={styles.marketplaceLogo}>
+            <a href="/" title="Go to the Marketplace homepage" className={styles.logo}>
+              <span>Digital Marketplace</span>
+              <span className={styles.badgeBeta}>BETA</span>
+            </a>
           </div>
-          <div className="user-nav">
+          <div className={styles.userNav}>
             <div id="react-bundle-auth-header-state" />
             <div id="react-bundle-auth-header">
-              <ul data-reactroot="" id="main-navigation" className="inline-links--inverted">
+              <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
                 <li>
                   {this.props.memberInfo.isAuthenticated /*eslint-disable indent */
                     ? <span>

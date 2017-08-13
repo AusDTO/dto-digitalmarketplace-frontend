@@ -1,0 +1,32 @@
+.radioListContainer {
+  display: block;
+  width: 100%;
+  border: 2px solid #bbbbbb;
+  background-color: #e8f5fa;
+  margin: 0;
+  padding: 15px 12px 0px 20px;
+}
+
+@media all and (max-width: 1024px) {
+  .radioListContainer:first-child {
+    margin-bottom: 20px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .radioListContainer {
+    width: 48%;
+    display:inline-block;
+  }
+
+  .radioListContainer:first-child {
+    margin-right: 20px;
+  }
+}
+
+.radioListContainer > span p {
+  font-size: .875rem;
+  font-weight: 400;
+  margin-bottom: 0.1em;
+  padding-left: 40px;
+}

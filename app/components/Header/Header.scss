@@ -1,4 +1,6 @@
-.marketplace--header {
+@import "../../App.scss";
+
+.marketplaceHeader {
   position: relative;
   margin-bottom: 0px;
   background-color: #18788d;
@@ -6,11 +8,11 @@
   padding: 1.2em 0px;
 }
 
-.marketplace--header .marketplace--logo {
+.marketplaceHeader .marketplaceLogo {
   float: left;
 }
 
-.marketplace--header .logo {
+.marketplaceHeader .logo {
   padding-bottom: 0px;
   color: rgb(255, 255, 255);
   font-size: 1.625rem;
@@ -22,7 +24,15 @@
   margin-top: 1.6em;
 }
 
-.marketplace--header a {
+.marketplaceHeader a:hover, 
+.marketplaceHeader a:focus, 
+main form a.validation-message:focus,
+main form a.validation-message:hover {
+  background-color: white;
+  color: #000000;
+}
+
+.marketplaceHeader a {
   color: rgb(255, 255, 255);
   transition-timing-function: ease-in-out;
   transition-duration: 0.1s;
@@ -32,54 +42,50 @@
   border-bottom: 1px solid rgb(255, 255, 255);
 }
 
-.marketplace--header [class^="badge"] {
+.badgeBeta {
   font-weight: 700;
   vertical-align: super;
-  margin-left: 0.4em;
-}
-
-.badge--beta {
   background-color: rgb(255, 255, 255);
   color: rgb(24, 120, 141);
-  margin-top: 0.8em;
   padding: 0.3em 0.6em;
   display: inline-block;
   line-height: 1;
   letter-spacing: 1px;
   font-size: 0.875rem;
   border-radius: 12px;
+  margin-left: 10px;
 }
 
-.marketplace--header .user-nav {
+.marketplaceHeader .userNav {
   display: block;
   float: right;
   margin-left: 1.6em;
 }
 
-.marketplace--header [class^="inline-links"] {
+.marketplaceHeader .inlineLinks {
   margin-bottom: 0px;
   padding: 0.1em 0px;
 }
 
-.marketplace--header [class^="inline-links"] li:not(:last-child) {
+.marketplaceHeader .inlineLinks li:not(:last-child) {
   margin-right: 1.3em;
 }
 
-.marketplace--header [class^="inline-links"] li {
+.marketplaceHeader .inlineLinks li {
   display: inline-block;
   margin: 0px;
 }
 
-.marketplace--header [class^="inline-links"] li a {
+.marketplaceHeader .inlineLinks li a {
   padding-bottom: 0.06em;
 }
 
-[class^="inline-links"][class$="--inverted"] a {
+.inlineLinks a {
   color: rgb(255, 255, 255);
 }
 
 @media screen and (min-width: 768px) {
-  .marketplace--header {
+  .marketplaceHeader {
       padding-bottom: 1.2em;
   }
 }

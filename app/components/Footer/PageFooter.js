@@ -1,14 +1,14 @@
 import React from 'react'
 import Footer, { FooterNav, FooterEnd } from '@gov.au/footer'
-import './PageFooter.scss'
+import styles from './PageFooter.scss'
 import logoGovCrest from './logo_govcrest.svg'
 import logoNisa from './logo_nisa.svg'
 
 export default class PageFooter extends React.Component {
   render() {
     return (
-      <div className="uikit-grid uikit-body">
-        <Footer>
+      <Footer>
+        <div className={styles.wrapper}>
           <FooterNav>
             <div className="row">
               <div className="col-md-3 col-sm-6">
@@ -45,13 +45,17 @@ export default class PageFooter extends React.Component {
                     <a href="/search/sellers">Seller catalogue</a>
                   </li>
                   <li>
-                    <a href="/buyers-guide">Buyer&apos;s guide</a>
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb/categories/115001542047-Buyer-guide-and-FAQs">
+                      Buyer&rsquo;s guide and FAQs
+                    </a>
                   </li>
                   <li>
-                    <a href="/sellers-guide">Seller&apos;s guide</a>
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb/categories/115001540368-Seller-guide-and-FAQs">
+                      Seller&rsquo;s guide and FAQs
+                    </a>
                   </li>
                   <li>
-                    <a href="/faqs">FAQs</a>
+                    <a href="https://marketplace1.zendesk.com/">Support</a>
                   </li>
                 </ul>
               </div>
@@ -95,11 +99,6 @@ export default class PageFooter extends React.Component {
                       Our standard
                     </a>
                   </li>
-                  <li>
-                    <a rel="external" href="https://www.dta.gov.au/design-guides/">
-                      Design guides
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -108,13 +107,13 @@ export default class PageFooter extends React.Component {
           <FooterEnd>
             <div className="row">
               <div className="col-sm-12">
-                <div className="logo-govcrest">
+                <div className={styles.logoGovcrest}>
                   <div dangerouslySetInnerHTML={{ __html: logoGovCrest }} />
                 </div>
-                <div className="logo-nisa">
+                <div className={styles.logoNisa}>
                   <div dangerouslySetInnerHTML={{ __html: logoNisa }} />
                 </div>
-                <div className="footer-small-text">
+                <div className={styles.footerSmallText}>
                   This program forms part of the National Innovation and Science Agenda.<br />Visit{' '}
                   <strong>
                     <a href="https://innovation.gov.au/">Innovation.gov.au</a>
@@ -124,8 +123,8 @@ export default class PageFooter extends React.Component {
               </div>
             </div>
           </FooterEnd>
-        </Footer>
-      </div>
+        </div>
+      </Footer>
     )
   }
 }

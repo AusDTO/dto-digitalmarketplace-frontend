@@ -141,7 +141,7 @@ module.exports = [{
       {
         test: /\.(js|jsx)$/,
         loader: 'eslint',
-        include: paths.appSrc
+        include: paths.clientSrc
       }
     ],
     loaders: loaders.concat({
@@ -301,9 +301,14 @@ module.exports = [{
         loader: 'babel'
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         include: paths.clientSrc,
-        loader: ExtractTextPlugin.extract('style-loader', 'css!sass?&sourceMap=true')
+        loader: [
+          'style-loader?singleton', 
+          'css-loader?modules&importLoaders=1&context=' + paths.clientSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'postcss-loader',
+          'sass-loader'
+        ].join('!')
       },
       {
         test: /\.css$/,
@@ -316,10 +321,26 @@ module.exports = [{
     ],
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      }
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    // Try to dedupe duplicated modules, if any:
+    new webpack.optimize.DedupePlugin(),
+    // Minify the code.
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true, // React doesn't support IE8
+        warnings: false
+      },
+      mangle: {
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+        screw_ie8: true
       }
     })
   ]

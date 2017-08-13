@@ -192,6 +192,7 @@ exports[`CaseStudyForm renders 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -225,6 +226,7 @@ exports[`CaseStudyForm renders 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -726,6 +728,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -759,6 +762,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -1425,6 +1429,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -1471,6 +1476,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -2043,6 +2049,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -2076,6 +2083,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             200 words remaining
@@ -2577,6 +2585,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             198 words remaining
@@ -2610,6 +2619,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             onFocus={[Function]}
           />
           <span
+            aria-live="polite"
             className="word-count-counter"
           >
             198 words remaining
