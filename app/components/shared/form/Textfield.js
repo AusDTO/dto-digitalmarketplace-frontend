@@ -21,7 +21,6 @@ class Textfield extends React.Component {
       readOnly,
       type
     } = this.props
-    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <div className="field">
         <label htmlFor={htmlFor} className="question-heading uikit-text-input__label">

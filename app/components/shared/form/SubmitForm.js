@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-/*eslint-disable jsx-a11y/label-has-for*/
 const SubmitForm = ({ children, method, id, action, valid, onSubmit, onReset, onCustomSubmit }) =>
   <form
     method={method}

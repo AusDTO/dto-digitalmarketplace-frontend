@@ -23,7 +23,7 @@ dependencies:
 
 test:
   override:
-    - eslint app
+    - eslint .
     - npm test
 
 deployment:

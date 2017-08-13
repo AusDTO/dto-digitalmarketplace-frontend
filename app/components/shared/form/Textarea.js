@@ -28,7 +28,6 @@ const Textarea = props => {
       ...messages
     }
   }
-  /*eslint-disable jsx-a11y/label-has-for*/
   return (
     <div className="field">
       <label className="question-heading" htmlFor={id}>
