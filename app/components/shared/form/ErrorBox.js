@@ -42,7 +42,7 @@ class ErrorBox extends React.Component {
 
     return (
       <PageAlert as="error">
-        <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex="0">
+        <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex="-1">
           There was a problem with the details you gave
         </h4>
         {invalidFields &&
