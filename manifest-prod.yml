@@ -1,6 +1,6 @@
 host: dm-frontend
 command: npm run server
-buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git
+buildpack: nodejs_buildpack
 memory: 256M
 disk_quota: 1G
 instances: 1
