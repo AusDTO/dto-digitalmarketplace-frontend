@@ -45,13 +45,17 @@ export default class PageFooter extends React.Component {
                     <a href="/search/sellers">Seller catalogue</a>
                   </li>
                   <li>
-                    <a href="/buyers-guide">Buyer&apos;s guide</a>
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb/categories/115001542047-Buyer-guide-and-FAQs">
+                      Buyer&rsquo;s guide and FAQs
+                    </a>
                   </li>
                   <li>
-                    <a href="/sellers-guide">Seller&apos;s guide</a>
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb/categories/115001540368-Seller-guide-and-FAQs">
+                      Seller&rsquo;s guide and FAQs
+                    </a>
                   </li>
                   <li>
-                    <a href="/faqs">FAQs</a>
+                    <a href="https://marketplace1.zendesk.com/">Support</a>
                   </li>
                 </ul>
               </div>
@@ -93,11 +97,6 @@ export default class PageFooter extends React.Component {
                   <li>
                     <a rel="external" href="https://www.dta.gov.au/standard/">
                       Our standard
-                    </a>
-                  </li>
-                  <li>
-                    <a rel="external" href="https://www.dta.gov.au/design-guides/">
-                      Design guides
                     </a>
                   </li>
                 </ul>
