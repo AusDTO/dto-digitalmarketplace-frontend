@@ -41,7 +41,12 @@ const RadioListBox = props => {
             )
           })}
         </div>
-        <StatefulError model={model} messages={messages} id={id + '-' + options[0].value} showMessagesDuringFocus="false" />
+        <StatefulError
+          model={model}
+          messages={messages}
+          id={id + '-' + options[0].value}
+          showMessagesDuringFocus="false"
+        />
       </fieldset>
     </div>
   )
