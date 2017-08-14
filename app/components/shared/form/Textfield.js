@@ -27,11 +27,6 @@ class Textfield extends React.Component {
         <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading uikit-text-input__label">
           {label}
         </label>
-        {description &&
-          <p className="hint" id={`${id}-hint`}>
-            {description}
-          </p>}
-        {messages && <StatefulError model={model} messages={messages} id={id} />}
         <Control.input
           model={model}
           name={name}
@@ -49,7 +44,13 @@ class Textfield extends React.Component {
           maxLength={maxLength}
           disabled={disabled}
           readOnly={readOnly}
+          validateOn="blur"
         />
+        {description &&
+          <p className="hint" id={`${id}-hint`}>
+            {description}
+          </p>}
+        {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
       </div>
     )
   }
