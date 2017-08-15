@@ -16,7 +16,6 @@ const RadioListBox = props => {
         <legend>
           {label}
         </legend>
-        <StatefulError model={model} messages={messages} id={id} />
         <div>
           {options.map((option, i) => {
             let fieldId = `${id}-${option.value}`
@@ -41,6 +40,12 @@ const RadioListBox = props => {
             )
           })}
         </div>
+        <StatefulError
+          model={model}
+          messages={messages}
+          id={id + '-' + options[0].value}
+          showMessagesDuringFocus="false"
+        />
       </fieldset>
     </div>
   )

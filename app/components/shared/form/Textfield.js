@@ -23,20 +23,19 @@ class Textfield extends React.Component {
     } = this.props
     return (
       <div className="field">
-        <label htmlFor={htmlFor} className="question-heading uikit-text-input__label">
+        <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading uikit-text-input__label">
           {label}
         </label>
         {description &&
           <p className="hint" id={`${id}-hint`}>
             {description}
           </p>}
-        {messages && <StatefulError model={model} messages={messages} id={id} />}
         <Control.input
           model={model}
           name={name}
           id={id}
           type={type}
-          aria-describedby={description && `${id}-hint`}
+          aria-describedby={`${id}-label`}
           mapProps={{
             className: ({ fieldValue }) =>
               !fieldValue.valid && fieldValue.touched
@@ -48,7 +47,9 @@ class Textfield extends React.Component {
           maxLength={maxLength}
           disabled={disabled}
           readOnly={readOnly}
+          validateOn="blur"
         />
+        {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
       </div>
     )
   }

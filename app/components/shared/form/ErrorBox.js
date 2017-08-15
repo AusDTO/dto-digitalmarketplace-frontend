@@ -9,11 +9,15 @@ import { getInvalidFields } from './errorMessageSelector'
 
 class ErrorBox extends React.Component {
   state = {
-    focusedOnce: false
+    lastFocus: null
   }
 
   setRef = c => {
     this._container = c
+  }
+
+  componentDidMount() {
+    this.focusIfNeeded()
   }
 
   componentDidUpdate() {
@@ -21,15 +25,10 @@ class ErrorBox extends React.Component {
   }
 
   focusIfNeeded() {
-    const { focusedOnce } = this.state
-    const { focusOnMount } = this.props
-
-    if (this._container && !focusedOnce && focusOnMount) {
-      this.setState({ focusedOnce: true })
-      this.props.setFocus(this._container)
-    }
-
-    if (this._container && this.props.submitClicked) {
+    if (this._container && this.state.lastFocus !== this.props.submitClicked) {
+      this.setState({
+        lastFocus: this.props.submitClicked
+      })
       this.props.setFocus(this._container)
     }
   }
@@ -37,6 +36,7 @@ class ErrorBox extends React.Component {
   render() {
     const { invalidFields, form } = this.props
     if (form.submitFailed === false || !invalidFields.length) {
+      this._container = null
       return null
     }
 
@@ -63,7 +63,6 @@ class ErrorBox extends React.Component {
 }
 
 ErrorBox.propTypes = {
-  focusOnMount: PropTypes.bool,
   invalidFields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -73,11 +72,9 @@ ErrorBox.propTypes = {
   form: PropTypes.object
 }
 
-export const mapStateToProps = (state, { focusOnMount, model }) => {
+export const mapStateToProps = (state, { model }) => {
   return {
     invalidFields: getInvalidFields(state, model),
-    // Currently does nada, since cDM since render is not blocked internally.
-    focusOnMount,
     form: get(state, `forms.${model}.$form`, {})
   }
 }
