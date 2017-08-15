@@ -34,11 +34,11 @@ class Header extends Component {
             <div id="react-bundle-auth-header">
               <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
                 <li>
-                  {this.props.memberInfo.isAuthenticated /*eslint-disable indent */
+                  {this.props.memberInfo.isAuthenticated
                     ? <span>
                         {this.dashBoardLink()}
                       </span>
-                    : <a href="/signup">Join the Marketplace</a> /*eslint-enable indent */}
+                    : <a href="/signup">Join the Marketplace</a>}
                 </li>
                 <li>
                   {this.props.memberInfo.isAuthenticated

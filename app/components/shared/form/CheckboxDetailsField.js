@@ -31,7 +31,6 @@ class CheckboxDetailsField extends React.Component {
 
   render() {
     const { name, id, label, model, detailsLabel, detailsModel, validators, messages } = this.props
-    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <span>
         <StatefulError model={model} messages={messages} id={id} />

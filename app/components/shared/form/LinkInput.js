@@ -49,7 +49,6 @@ class LinkInput extends React.Component {
 
   render() {
     const { id, htmlFor, label, description, model } = this.props
-    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <div className="field" id={id}>
         <h3 style={{ marginTop: 0 }}>

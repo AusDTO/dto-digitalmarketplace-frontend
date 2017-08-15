@@ -48,7 +48,6 @@ class Datefield extends React.Component {
   render() {
     const { id, htmlFor, label, description } = this.props
     const { day, month, year } = this.state
-    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <div styleName="date-input">
         <label htmlFor={htmlFor} className="question-heading">
