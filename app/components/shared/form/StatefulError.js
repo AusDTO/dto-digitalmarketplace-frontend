@@ -17,7 +17,7 @@ class StatefulError extends React.Component {
   }
 
   render() {
-    const { model, id, messages, showMessagesDuringFocus } = this.props
+    const { model, messages, showMessagesDuringFocus } = this.props
 
     return (
       <Errors
@@ -30,10 +30,10 @@ class StatefulError extends React.Component {
           }
 
           return (
-            <a className="validation-message" href={`#${id}`}>
+            <div className="validation-message">
               <span className="visuallyhidden">Validation Error: </span>
               {children}
-            </a>
+            </div>
           )
         }}
       />
