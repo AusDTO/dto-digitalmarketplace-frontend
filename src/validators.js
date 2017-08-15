@@ -125,7 +125,7 @@ export const dependantRequired = (values = {}, keys = []) => (val) => {
 export const minObjectLength = (object = {}, minLength = -1) => {
   let keys = Object.keys(object);
 
-  if (keys.length !== minLength) {
+  if (!keys || keys.length !== minLength) {
       return false;
   }
 
