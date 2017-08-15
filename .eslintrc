@@ -15,9 +15,7 @@
   "rules": {
     "react/prop-types": "off",
     "react/display-name": "off",
-    "indent": ["error", 2, { "SwitchCase": 1 }],
-    "quotes": ["error", "single", {"avoidEscape": true}],
-    "semi": ["error", "never"],
+    "jsx-a11y/label-has-for": [ 2, {"required": {"some": [ "nesting", "id" ]},}],
     "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}]
   },
   "globals": {

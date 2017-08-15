@@ -6,7 +6,6 @@ import StatefulError from './StatefulError'
 
 const RadioList = props => {
   const { id, label, name, options, model, messages, validators } = props
-  /*eslint-disable jsx-a11y/label-has-for*/
   return (
     <div className="field">
       <fieldset>

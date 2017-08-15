@@ -32,7 +32,6 @@ class YesNoDetailsField extends React.Component {
 
   render() {
     const { name, id, label, model, validators, messages } = this.props
-    /*eslint-disable jsx-a11y/label-has-for*/
     return (
       <fieldset className="field">
         <legend>

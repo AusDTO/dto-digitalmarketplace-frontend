@@ -115,7 +115,7 @@
     "server": "node scripts/server.js",
     "server:development": "nodemon scripts/server.js --watch build/render-server.js",
     "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js",
-    "eslint": "./node_modules/.bin/eslint app",
+    "eslint": "./node_modules/.bin/eslint .",
     "prettier": "./node_modules/.bin/prettier --print-width 120 --single-quote --no-semi --write \"app/**/*.js\""
   },
   "jest": {

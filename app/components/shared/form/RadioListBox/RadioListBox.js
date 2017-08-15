@@ -8,7 +8,6 @@ import classNames from 'classnames'
 
 const RadioListBox = props => {
   const { id, label, name, options, model, messages, validators } = props
-  /*eslint-disable jsx-a11y/label-has-for*/
   const uiKitControl = classNames('uikit-control-input', 'uikit-control-input--full', styles.uiKitControl)
 
   return (

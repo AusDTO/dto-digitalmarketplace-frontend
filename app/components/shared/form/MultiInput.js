@@ -7,7 +7,6 @@ import MultiInputComponent from '../MultiInput'
 
 const MultiInput = props => {
   const { id, name, htmlFor, label, description, model, messages, controlProps, mapProps, validators } = props
-  /*eslint-disable jsx-a11y/label-has-for*/
   return (
     <div className="field">
       <label htmlFor={htmlFor} className="question-heading">
