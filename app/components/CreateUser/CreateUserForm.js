@@ -63,7 +63,7 @@ export class CreateUserForm extends BaseForm {
   handleSuccess() {}
 
   render() {
-    const { model, form, initialState, handleSubmit, createUserSuccess, createUserLoading } = this.props
+    const { model, form, initialState, handleSubmit, createUserSuccess } = this.props
     let valid = form.valid
     let userType = initialState.user_type
 

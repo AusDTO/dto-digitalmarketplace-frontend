@@ -11,11 +11,7 @@ export class CreateUser extends Component {
   }
 
   render() {
-    let {
-      loadCompleteSignupSuccess,
-      loadCompleteSignupErrored,
-      userRegisterDetails
-    } = this.props
+    let { loadCompleteSignupSuccess, loadCompleteSignupErrored, userRegisterDetails } = this.props
 
     return (
       <div className="row">
