@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CreateUserForm from './CreateUserForm'
+import Loader from '../shared/Loader'
 import { loadCompleteSignup } from '../../actions/memberActions'
 
-class CreateUser extends Component {
+export class CreateUser extends Component {
   componentDidMount() {
     let tokenString = this.props.match.params.tokenstring
     this.props.loadRegistrationData(tokenString)
@@ -21,7 +22,7 @@ class CreateUser extends Component {
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          {loadCompleteSignupLoading && <strong>....loading</strong>}
+          {loadCompleteSignupLoading && false && <Loader />}
           {loadCompleteSignupSuccess &&
             <div>
               <CreateUserForm initialState={userRegisterDetails} />

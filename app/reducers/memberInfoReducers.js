@@ -39,7 +39,7 @@ const userReducer = (state = defaultUserState, action) => {
     case MEMBER_INFO_FETCH_DATA_SUCCESS:
       return {
         ...state,
-        memberInfo: action.data,
+        memberInfo: action.memberInfo,
         memberInfoHasSuccess: true,
         memberInfoHasErrored: false
       }

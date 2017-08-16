@@ -7,18 +7,14 @@ import BaseForm from '../../components/shared/form/BaseForm'
 import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
 import CheckboxDetailsField from '../../components/shared/form/CheckboxDetailsField'
+import Loader from '../../components/shared/Loader'
 import formProps from '../../components/shared/form/formPropsSelector'
 
 import PageAlert from '@gov.au/page-alerts'
 
 import { createUser } from '../../actions/memberActions'
 
-class CreateUserForm extends BaseForm {
-  static propTypes = {
-    form: PropTypes.object.isRequired,
-    errors: PropTypes.object
-  }
-
+export class CreateUserForm extends BaseForm {
   constructor(props) {
     super(props)
     this.state = { createMessage: null }
@@ -78,7 +74,7 @@ class CreateUserForm extends BaseForm {
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
-            {createUserLoading && <strong>....loading</strong>}
+            {createUserLoading && false && <Loader />}
             {createMessage &&
               !createUserSuccess &&
               valid &&
@@ -152,15 +148,26 @@ class CreateUserForm extends BaseForm {
   }
 }
 
+CreateUserForm.propTypes = {
+  initialState: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email_address: PropTypes.string.isRequired,
+    user_type: PropTypes.string.isRequired
+  }),
+  createUserSuccess: PropTypes.bool,
+  createUserErrored: PropTypes.bool,
+  createUserLoading: PropTypes.bool,
+  isDuplicate: PropTypes.bool
+}
+
 const mapStateToProps = state => {
-  const { createUserSuccess, createUserErrored, createUserLoading, isDuplicate, user } = state.user
+  const { createUserSuccess, createUserErrored, createUserLoading, isDuplicate } = state.user
   return {
     ...formProps(state, 'createUserForm'),
     createUserSuccess: createUserSuccess,
     createUserErrored: createUserErrored,
     createUserLoading: createUserLoading,
-    isDuplicate: isDuplicate,
-    user: user
+    isDuplicate: isDuplicate
   }
 }
 
