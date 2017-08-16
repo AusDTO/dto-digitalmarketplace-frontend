@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CreateUserForm from './CreateUserForm'
-import Loader from '../shared/Loader'
 import { loadCompleteSignup } from '../../actions/memberActions'
 
 export class CreateUser extends Component {
@@ -13,7 +12,6 @@ export class CreateUser extends Component {
 
   render() {
     let {
-      loadCompleteSignupLoading,
       loadCompleteSignupSuccess,
       loadCompleteSignupErrored,
       userRegisterDetails
@@ -22,7 +20,6 @@ export class CreateUser extends Component {
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          {loadCompleteSignupLoading && false && <Loader />}
           {loadCompleteSignupSuccess &&
             <div>
               <CreateUserForm initialState={userRegisterDetails} />
