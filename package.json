@@ -63,6 +63,7 @@
     "react-test-renderer": "^15.6.1",
     "recursive-readdir": "^2.2.1",
     "redux-immutable-state-invariant": "^2.0.0",
+    "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.2.3",
     "rimraf": "^2.6.1",
     "sinon": "^3.2.0",
