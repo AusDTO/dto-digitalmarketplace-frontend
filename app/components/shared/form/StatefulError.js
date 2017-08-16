@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Errors } from 'react-redux-form'
-import classNames from 'classNames'
+import classNames from 'classnames'
 
 import { addMessage, removeMessage } from './errorMessage'
 import styles from './scss/StatefulError.scss'
