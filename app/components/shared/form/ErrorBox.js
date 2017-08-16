@@ -7,7 +7,7 @@ import PageAlert from '@gov.au/page-alerts'
 
 import { getInvalidFields } from './errorMessageSelector'
 
-class ErrorBox extends React.Component {
+export class ErrorBox extends React.Component {
   state = {
     focusedOnce: false
   }
