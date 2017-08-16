@@ -164,7 +164,7 @@ export const search = (type, value, options = {}) => {
     dispatch({ type, value });
 
     // don't search for less than 3 characters
-    if (!doSearch || value.length < 3) {
+    if (!doSearch || !value || value.length < 3) {
       return Promise.resolve();
     }
 
