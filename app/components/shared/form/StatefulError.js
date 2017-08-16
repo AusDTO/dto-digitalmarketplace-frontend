@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Errors } from 'react-redux-form'
+import classNames from 'classNames'
 
 import { addMessage, removeMessage } from './errorMessage'
+import styles from './scss/StatefulError.scss'
 
 class StatefulError extends React.Component {
   componentDidMount() {
@@ -30,7 +32,7 @@ class StatefulError extends React.Component {
           }
 
           return (
-            <div className="validation-message">
+            <div className={classNames('validation-message', styles.CheckboxErrorMessage)}>
               <span className="visuallyhidden">Validation Error: </span>
               {children}
             </div>

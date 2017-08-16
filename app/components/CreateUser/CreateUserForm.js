@@ -8,14 +8,16 @@ import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
 import CheckboxDetailsField from '../../components/shared/form/CheckboxDetailsField'
 import formProps from '../../components/shared/form/formPropsSelector'
-
 import PageAlert from '@gov.au/page-alerts'
-
 import { createUser } from '../../actions/memberActions'
+import styles from './CreateUserForm.scss'
 
 export class CreateUserForm extends BaseForm {
   constructor(props) {
     super(props)
+    this.state = {
+      submitClicked: null
+    }
     this.state = { createMessage: null }
     this.handleAPIResponseError = this.handleAPIResponseError.bind(this)
   }
@@ -60,7 +62,11 @@ export class CreateUserForm extends BaseForm {
       )
   }
 
-  handleSuccess() {}
+  onSubmitClicked = () => {
+    this.setState({
+      submitClicked: new Date().valueOf()
+    })
+  }
 
   render() {
     const { model, form, initialState, handleSubmit, createUserSuccess } = this.props
@@ -68,6 +74,14 @@ export class CreateUserForm extends BaseForm {
     let userType = initialState.user_type
 
     let { createMessage } = this.state
+
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
 
     return (
       <div className="row">
@@ -82,7 +96,7 @@ export class CreateUserForm extends BaseForm {
                   {createMessage}
                 </ul>
               </PageAlert>}
-            <ErrorBox focusOnMount={true} model={model} />
+            <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
             {userType === 'buyer' /*eslint-disable indent */
               ? <div>
                   <h1>Add your name and password</h1>
@@ -111,33 +125,39 @@ export class CreateUserForm extends BaseForm {
                 id="password"
                 htmlFor="password"
                 label="Password"
+                type="password"
                 description="At least 10 characters"
                 validators={{ length: val => val && val.length >= 10 }}
                 messages={{
                   length: 'Your password must be at least 10 characters'
                 }}
               />
-              <p>
-                <CheckboxDetailsField
-                  model={`${model}.agree`}
-                  id="agree"
-                  name="agree"
-                  value="agree"
-                  label={
-                    <span>
-                      <span>I accept the </span>
-                      <a href="/terms-of-use" target="_blank" rel="external">
-                        Terms of Use
-                      </a>
-                    </span>
-                  }
-                  description="blah"
-                  detailsModel={model}
-                  validators={{ required: val => val }}
-                  messages={{ required: 'Accept Terms of Use' }}
+              <CheckboxDetailsField
+                model={`${model}.agree`}
+                id="agree"
+                name="agree"
+                value="agree"
+                label={
+                  <span>
+                    <span>I accept the </span>
+                    <a href="/terms-of-use" target="_blank" rel="external">
+                      Terms of Use
+                    </a>
+                  </span>
+                }
+                description="blah"
+                detailsModel={model}
+                validators={{ required: val => val }}
+                messages={{ required: 'Accept Terms of Use' }}
+              />
+              <p className={styles.formSubmitBtnWrapper}>
+                <input
+                  className="uikit-btn"
+                  type="submit"
+                  value="Join the Marketplace"
+                  onClick={this.onSubmitClicked}
                 />
               </p>
-              <input className="uikit-btn" type="submit" value="Join the Marketplace" />
             </Form>
           </article>
         </div>
