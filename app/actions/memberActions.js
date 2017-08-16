@@ -120,18 +120,6 @@ export function handleCreateUserResponse(response) {
         errorMessage: response.data.message
       }
 
-    case 400:
-      return {
-        type: CREATE_USER_FAILURE,
-        errorMessage: response.data.message
-      }
-
-    case 500:
-      return {
-        type: CREATE_USER_FAILURE,
-        errorMessage: response.data.message
-      }
-
     default:
       return {
         type: CREATE_USER_FAILURE,
