@@ -167,7 +167,7 @@
     ]
   },
   "engines": {
-    "node": "8.3.0"
+    "node": "8.2.1"
   },
   "pancake": {
     "auto-save": true,
