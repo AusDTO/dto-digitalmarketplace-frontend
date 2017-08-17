@@ -1,39 +1,112 @@
-/*
- * Example:
- * case YOUR_ACTION_CONSTANT:
- *   return assign({}, state, {
- *       stateVariable: action.var
- *   });
- */
+import {
+  MEMBER_INFO_HAS_ERRORED,
+  MEMBER_INFO_IS_LOADING,
+  MEMBER_INFO_FETCH_DATA_SUCCESS,
+  LOAD_COMPLETE_SIGNUP_LOADING,
+  LOAD_COMPLETE_SIGNUP_SUCCESS,
+  LOAD_COMPLETE_SIGNUP_FAILURE,
+  CREATE_USER_LOADING,
+  CREATE_USER_SUCCESS,
+  CREATE_USER_FAILURE,
+  CREATE_USER_DUPLICATE_FAILURE
+} from '../constants/constants'
 
-import { MEMBER_INFO_HAS_ERRORED, MEMBER_INFO_IS_LOADING, MEMBER_INFO_FETCH_DATA_SUCCESS } from '../constants/constants'
-
-export function memberInfoHasErrored(state = false, action) {
-  switch (action.type) {
-    case MEMBER_INFO_HAS_ERRORED:
-      return action.hasErrored
-
-    default:
-      return state
-  }
+let defaultUserState = {
+  memberInfoIsLoading: null,
+  memberInfoHasSuccess: null,
+  memberInfoHasErrored: null,
+  memberInfo: { isAutheticated: false },
+  loadCompleteSignupLoading: null,
+  loadCompleteSignupSuccess: null,
+  loadCompleteSignupErrored: null,
+  userRegisterDetails: null,
+  createUserLoading: null,
+  createUserSuccess: null,
+  createUserErrored: null,
+  errorMessage: null,
+  isDuplicate: null,
+  user: {}
 }
 
-export function memberInfoIsLoading(state = false, action) {
+const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
     case MEMBER_INFO_IS_LOADING:
-      return action.isLoading
+      return {
+        ...state,
+        memberInfoIsLoading: action.isLoading
+      }
 
-    default:
-      return state
-  }
-}
-
-export function memberInfo(state = {}, action) {
-  switch (action.type) {
     case MEMBER_INFO_FETCH_DATA_SUCCESS:
-      return action.memberInfo
+      return {
+        ...state,
+        memberInfo: action.memberInfo,
+        memberInfoHasSuccess: true,
+        memberInfoHasErrored: false
+      }
+
+    case MEMBER_INFO_HAS_ERRORED:
+      return {
+        ...state,
+        memberInfoHasErrored: true,
+        memberInfoHasSuccess: false,
+        errorMessage: action.errorMessage
+      }
+
+    case LOAD_COMPLETE_SIGNUP_LOADING:
+      return {
+        ...state,
+        loadCompleteSignupLoading: action.loadCompleteSignupLoading
+      }
+
+    case LOAD_COMPLETE_SIGNUP_SUCCESS:
+      return {
+        ...state,
+        userRegisterDetails: action.data,
+        loadCompleteSignupSuccess: true,
+        loadCompleteSignupErrored: false
+      }
+
+    case LOAD_COMPLETE_SIGNUP_FAILURE:
+      return {
+        ...state,
+        loadCompleteSignupErrored: true,
+        loadCompleteSignupSuccess: false
+      }
+
+    case CREATE_USER_LOADING:
+      return {
+        ...state,
+        createUserLoading: action.createUserLoading
+      }
+
+    case CREATE_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.data,
+        createUserSuccess: true,
+        createUserErrored: false
+      }
+
+    case CREATE_USER_FAILURE:
+      return {
+        ...state,
+        createUserErrored: true,
+        createUserSuccess: false,
+        errorMessage: action.errorMessage
+      }
+
+    case CREATE_USER_DUPLICATE_FAILURE:
+      return {
+        ...state,
+        createUserErrored: true,
+        createUserSuccess: false,
+        isDuplicate: true,
+        errorMessage: action.errorMessage
+      }
 
     default:
       return state
   }
 }
+
+export default userReducer

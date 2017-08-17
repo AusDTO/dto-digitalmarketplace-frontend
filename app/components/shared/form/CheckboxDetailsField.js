@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Control, actions } from 'react-redux-form'
 import get from 'lodash/get'
-
-import { required } from '../../validators'
-import Textfield from './Textfield'
 import StatefulError from './StatefulError'
 
 class CheckboxDetailsField extends React.Component {
@@ -30,11 +27,13 @@ class CheckboxDetailsField extends React.Component {
   }
 
   render() {
-    const { name, id, label, model, detailsLabel, detailsModel, validators, messages } = this.props
+    const { name, id, label, model, validators, messages } = this.props
+    /*eslint-disable jsx-a11y/label-has-for*/
+
     return (
-      <span>
-        <StatefulError model={model} messages={messages} id={id} />
+      <label className="uikit-control-input" htmlFor={id}>
         <Control.checkbox
+          className="uikit-control-input__input"
           onClick={this.onToggle.bind(this)}
           id={id}
           name={name}
@@ -42,23 +41,11 @@ class CheckboxDetailsField extends React.Component {
           model={model}
           validators={validators}
         />
-        <label htmlFor={id}>
+        <span className="uikit-control-input__text">
           {label}
-        </label>
-
-        {this.state.showField &&
-          <Textfield
-            name={`${name}_details`}
-            id={`${id}-details`}
-            htmlFor={`${id}-details`}
-            model={detailsModel}
-            label={detailsLabel}
-            validators={{ required }}
-            messages={{
-              required: detailsLabel
-            }}
-          />}
-      </span>
+        </span>
+        <StatefulError model={model} messages={messages} id={id} />
+      </label>
     )
   }
 }
