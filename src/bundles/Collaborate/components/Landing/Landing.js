@@ -266,7 +266,8 @@ class Landing extends React.Component {
                 <p styleName="styles.chartContainer">
                     {Object.keys(domains).map((domain, i) => {
                         let count = domains[domain];
-                        return (<a styleName="styles.chart" key={i} href={`/search/sellers/?role=${domain}`}>
+                        let url_domain = domain.replace(/\s+/g, '%20')
+                        return (<a styleName="styles.chart" key={i} href={`/search/sellers/?role=${url_domain}`}>
                             <span
                                 style={{width: (typeof window !== 'undefined' && window.innerWidth < 768 ? "100%" : (count / maxDomain) * 100 + "%")}}
                             ><strong>{count}</strong> in {domain}</span></a>)
