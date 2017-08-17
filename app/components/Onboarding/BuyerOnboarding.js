@@ -8,7 +8,7 @@ const BuyerOnboarding = () =>
       <p>How can we help you?</p>
       <div className={styles.onBoardingItemWrapper}>
         <span>
-          <h4>Read the Marketplace guides, contracts and compliance information</h4>
+          <h2>Read the Marketplace guides, contracts and compliance information</h2>
         </span>
         <span>
           <a href="https://marketplace1.zendesk.com/hc/en-gb/categories/115001542047-Buyer-guide-and-FAQs">
@@ -18,7 +18,7 @@ const BuyerOnboarding = () =>
       </div>
       <div className={styles.onBoardingItemWrapper}>
         <span>
-          <h4>Request quotes, resumes or proposals</h4>
+          <h2>Request quotes, resumes or proposals</h2>
         </span>
         <span>
           <a href="/buyers">Post a brief</a>
@@ -26,10 +26,10 @@ const BuyerOnboarding = () =>
       </div>
       <div className={styles.onBoardingItemWrapper}>
         <span>
-          <h4>Need help writing a brief</h4>
+          <h2>Need help writing a brief?</h2>
         </span>
         <span>
-          <a href="/contact-us">We are online now</a>
+          All you need to do is <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new">contact us</a>
         </span>
       </div>
     </div>
