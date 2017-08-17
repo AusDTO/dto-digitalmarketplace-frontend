@@ -35,7 +35,7 @@ export class CreateUserForm extends BaseForm {
     }
     if (this.props.createUserSuccess !== nextProps.createUserSuccess) {
       if (nextProps.createUserSuccess) {
-        this.props.history.push('/signup/success')
+        this.props.history.push(`/signup/success/${nextProps.createUserForm.user_type}`)
       }
     }
   }
