@@ -30,7 +30,7 @@ deployment:
   development:
     branch: master
     commands:
-      - cf login -a https://api.system.staging.digital.gov.au -o dto -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
+      - cf login -a https://api.system.z.cld.gov.au -o dto -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
       - cf push -f manifest.yml
   production:
     tag: /[0-9]+(\.[0-9]+)*/
