@@ -251,7 +251,7 @@ class Landing extends React.Component {
                         rel="external" target="blank">Smart Cities and Suburbs Program</a> supports local
                         governments, private companies, academia and not-for-profits to collaboratively deliver <a
                         href="https://s3-ap-southeast-2.amazonaws.com/ehq-production-australia/4eb02b0d21864be00a86c40f5e0b558aa3022cae/documents/attachments/000/054/266/original/Example_smart_city_projects.pdf?1492569019"
-                        rel="external" target="blank">innovative smart city projects.</a></p>
+                        rel="external" target="blank">innovative smart city projects (PDF 318KB).</a></p>
                     <p><a
                         href="https://www.business.gov.au/assistance/smart-cities-and-suburbs-program">Applications
                     </a> for round one are open until 30 June 2017. <br/>
