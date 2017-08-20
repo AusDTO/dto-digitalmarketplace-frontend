@@ -67,7 +67,7 @@ class SubmitStepForm extends BaseForm {
                     <ol><li>Review your application and the Master Agreement</li>
                         <li>Complete the declaration below</li>
                     </ol>
-                    <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" rel="external" target="_blank">Download Master Agreement PDF</a><br/>
+                    <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" rel="external" target="_blank">Download Master Agreement (PDF 229KB)</a><br/>
                     <a href="/static/media/documents/digital-marketplace-master-agreement.html" target="_blank" rel="external">View Master Agreement in HTML</a><br/><br/>
 
 
