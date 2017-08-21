@@ -174,17 +174,17 @@ CreateUserForm.propTypes = {
   }),
   createUserSuccess: PropTypes.bool,
   createUserErrored: PropTypes.bool,
-  createUserLoading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   isDuplicate: PropTypes.bool
 }
 
 const mapStateToProps = state => {
-  const { createUserSuccess, createUserErrored, createUserLoading, isDuplicate } = state.user
+  const { createUserSuccess, createUserErrored, isLoading, isDuplicate } = state.user
   return {
     ...formProps(state, 'createUserForm'),
     createUserSuccess: createUserSuccess,
     createUserErrored: createUserErrored,
-    createUserLoading: createUserLoading,
+    isLoading: isLoading,
     isDuplicate: isDuplicate
   }
 }

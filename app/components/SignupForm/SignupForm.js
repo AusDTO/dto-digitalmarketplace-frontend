@@ -14,7 +14,7 @@ import RadioList from '../../components/shared/form/RadioList'
 import RadioListBox from '../../components/shared/form/RadioListBox/RadioListBox'
 import PageAlert from '@gov.au/page-alerts'
 
-import axios from 'axios'
+import { handleSignupSubmit } from '../../actions/memberActions'
 
 class SignupForm extends BaseForm {
   static propTypes = {
@@ -41,7 +41,6 @@ class SignupForm extends BaseForm {
       isBuyer: this.props.signupForm.user_type === 'buyer',
       submitClicked: null
     }
-    this.statusCheck = this.statusCheck.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -86,29 +85,18 @@ class SignupForm extends BaseForm {
         })
       }
     }
-  }
 
-  handleResponse({ status }) {
-    switch (status) {
-      case 200:
-        return { signupSuccess: true, signupMessage: 'success' }
-      case 409:
-        return {
-          signupSuccess: false,
-          signupMessage: (
-            <li>
+    if (this.props.signupSuccess !== nextProps.signupSuccess) {
+      this.setState({
+        signupSuccess: nextProps.signupSuccess,
+        signupMessage: nextProps.isDuplicate
+          ? <li>
               <p>
                 An account with this email domain already exists. Someone in your team may have already created an
                 account with the Marketplace
               </p>
             </li>
-          )
-        }
-      default:
-        return {
-          signupSuccess: false,
-          signupMessage: (
-            <li>
+          : <li>
               <p>
                 The Digital Marketplace encountered an error trying to send your signup email. Please try again later or{' '}
                 <a href="/contact-us" target="_blank" rel="external">
@@ -117,29 +105,13 @@ class SignupForm extends BaseForm {
                 for assistance.
               </p>
             </li>
-          )
-        }
+      })
     }
-  }
-
-  statusCheck(response) {
-    window.scrollTo(0, 0)
-    this.setState(this.handleResponse(response))
   }
 
   handleSubmit(model) {
     this.setState({ signupSuccess: null, signupMessage: null })
-    return axios({
-      url: '/api/signup',
-      method: 'POST',
-      data: JSON.stringify(model),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(this.statusCheck)
-      .catch(error => {
-        window.scrollTo(0, 0)
-        this.setState(this.handleResponse(error.response))
-      })
+    this.props.handleSignupSubmit(model)
   }
 
   onSubmitFailed() {
@@ -410,12 +382,21 @@ class SignupForm extends BaseForm {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    handleSignupSubmit: model => dispatch(handleSignupSubmit(model))
+  }
+}
+
 const mapStateToProps = state => {
   return {
-    ...formProps(state, 'signupForm')
+    ...formProps(state, 'signupForm'),
+    signupSuccess: state.user.signupSuccess,
+    signupErrored: state.user.signupErrored,
+    isDuplicate: state.user.isDuplicate
   }
 }
 
 export { Textfield, mapStateToProps, SignupForm as Form }
 
-export default connect(mapStateToProps)(SignupForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)

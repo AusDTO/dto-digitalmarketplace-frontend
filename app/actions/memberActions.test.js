@@ -1,10 +1,22 @@
 import expect from 'expect'
-import { handleMemberInfoResponse, handleLoadCompleteSignupResponse, handleCreateUserResponse } from './memberActions'
+import {
+  handleMemberInfoSuccess,
+  handleMemberInfoFailure,
+  handleSignupSuccess,
+  handleSignupFailure,
+  handleLoadSignupSuccess,
+  handleLoadSignupFailure,
+  handleCreateUserSuccess,
+  handleCreateUserFailure
+} from './memberActions'
 import {
   MEMBER_INFO_FETCH_DATA_SUCCESS,
   MEMBER_INFO_HAS_ERRORED,
-  LOAD_COMPLETE_SIGNUP_SUCCESS,
-  LOAD_COMPLETE_SIGNUP_FAILURE,
+  LOAD_SIGNUP_SUCCESS,
+  LOAD_SIGNUP_FAILURE,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  SIGNUP_DUPLICATE_FAILURE,
   CREATE_USER_SUCCESS,
   CREATE_USER_DUPLICATE_FAILURE,
   CREATE_USER_FAILURE
@@ -12,7 +24,7 @@ import {
 
 // Test a sync action
 describe('Member Actions', () => {
-  describe('memberInfoFetchData', () => {
+  describe('first api call for csrf token, authentication, and user type info', () => {
     it('should create a MEMBER_INFO_FETCH_DATA_SUCCESS action', () => {
       // arrange
       const memberInfoResponse = {
@@ -29,7 +41,7 @@ describe('Member Actions', () => {
       }
 
       //act
-      const action = handleMemberInfoResponse(memberInfoResponse)
+      const action = handleMemberInfoSuccess(memberInfoResponse)
 
       //assert
       expect(action).toEqual(expectedAction)
@@ -39,9 +51,9 @@ describe('Member Actions', () => {
     it('should create a MEMBER_INFO_HAS_ERRORED action', () => {
       // arrange
       const memberInfoResponse = {
-        status: 409,
+        status: 500,
         data: {
-          message: 'A user with this email address already exists'
+          message: 'Something bad happened on the server and request to ping failed'
         }
       }
       const expectedAction = {
@@ -50,17 +62,17 @@ describe('Member Actions', () => {
       }
 
       //act
-      const action = handleMemberInfoResponse(memberInfoResponse)
+      const action = handleMemberInfoFailure(memberInfoResponse)
 
       //assert
       expect(action).toEqual(expectedAction)
     })
   })
 
-  describe('loadCompleteSignup', () => {
+  describe('Signup new user form submit', () => {
     it('should create a MEMBER_INFO_FETCH_DATA_SUCCESS action', () => {
       // arrange
-      const completeSignupResponse = {
+      const submitSignupResponse = {
         status: 200,
         data: {
           name: 'Jeffrey Labowski',
@@ -68,39 +80,101 @@ describe('Member Actions', () => {
         }
       }
       const expectedAction = {
-        type: LOAD_COMPLETE_SIGNUP_SUCCESS,
-        data: completeSignupResponse.data
+        type: SIGNUP_SUCCESS
       }
 
       //act
-      const action = handleLoadCompleteSignupResponse(completeSignupResponse)
+      const action = handleSignupSuccess(submitSignupResponse)
 
       //assert
       expect(action).toEqual(expectedAction)
     })
 
-    it('should create a LOAD_COMPLETE_SIGNUP_FAILURE action', () => {
+    it('should create a SIGNUP_FAILURE action', () => {
       // arrange
-      const completeSignupResponse = {
+      const submitSignupResponse = {
         status: 400,
         data: {
-          message: 'Error occured during complete signup api request'
+          message: 'Error occured during signup api request'
         }
       }
       const expectedAction = {
-        type: LOAD_COMPLETE_SIGNUP_FAILURE,
-        errorMessage: completeSignupResponse.data.message
+        type: SIGNUP_FAILURE,
+        errorMessage: submitSignupResponse.data.message
       }
 
       //act
-      const action = handleLoadCompleteSignupResponse(completeSignupResponse)
+      const action = handleSignupFailure(submitSignupResponse)
+
+      //assert
+      expect(action).toEqual(expectedAction)
+    })
+
+    it('should create a SIGNUP_DUPLICATE_FAILURE action', () => {
+      // arrange
+      const submitSignupResponse = {
+        status: 409,
+        data: {
+          message: 'You tried to signup for an account with a duplicate email address'
+        }
+      }
+      const expectedAction = {
+        type: SIGNUP_DUPLICATE_FAILURE,
+        errorMessage: submitSignupResponse.data.message
+      }
+
+      //act
+      const action = handleSignupFailure(submitSignupResponse)
 
       //assert
       expect(action).toEqual(expectedAction)
     })
   })
 
-  describe('createUsre', () => {
+  describe('loading data to poplulate password entry form to complete new use creation', () => {
+    it('should create a MEMBER_INFO_FETCH_DATA_SUCCESS action', () => {
+      // arrange
+      const loadSignupResponse = {
+        status: 200,
+        data: {
+          name: 'Jeffrey Labowski',
+          email: 'the@dude.com'
+        }
+      }
+      const expectedAction = {
+        type: LOAD_SIGNUP_SUCCESS,
+        data: loadSignupResponse.data
+      }
+
+      //act
+      const action = handleLoadSignupSuccess(loadSignupResponse)
+
+      //assert
+      expect(action).toEqual(expectedAction)
+    })
+
+    it('should create a LOAD_SIGNUP_FAILURE action', () => {
+      // arrange
+      const loadSignupResponse = {
+        status: 400,
+        data: {
+          message: 'Error occured during complete signup api request'
+        }
+      }
+      const expectedAction = {
+        type: LOAD_SIGNUP_FAILURE,
+        errorMessage: loadSignupResponse.data.message
+      }
+
+      //act
+      const action = handleLoadSignupFailure(loadSignupResponse)
+
+      //assert
+      expect(action).toEqual(expectedAction)
+    })
+  })
+
+  describe('create new user form', () => {
     it('should create a CREATE_USER_SUCCESS action', () => {
       // arrange
       const createUserResponse = {
@@ -117,7 +191,7 @@ describe('Member Actions', () => {
       }
 
       //act
-      const action = handleCreateUserResponse(createUserResponse)
+      const action = handleCreateUserSuccess(createUserResponse)
 
       //assert
       expect(action).toEqual(expectedAction)
@@ -137,7 +211,7 @@ describe('Member Actions', () => {
       }
 
       //act
-      const action = handleCreateUserResponse(createUserResponse)
+      const action = handleCreateUserFailure(createUserResponse)
 
       //assert
       expect(action).toEqual(expectedAction)
@@ -157,7 +231,7 @@ describe('Member Actions', () => {
       }
 
       //act
-      const action = handleCreateUserResponse(createUserResponse)
+      const action = handleCreateUserFailure(createUserResponse)
 
       //assert
       expect(action).toEqual(expectedAction)

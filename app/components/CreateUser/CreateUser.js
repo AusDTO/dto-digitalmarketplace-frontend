@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CreateUserForm from './CreateUserForm'
-import { loadCompleteSignup } from '../../actions/memberActions'
+import { loadSignup } from '../../actions/memberActions'
 
 export class CreateUser extends Component {
   componentDidMount() {
@@ -11,16 +11,16 @@ export class CreateUser extends Component {
   }
 
   render() {
-    let { loadCompleteSignupSuccess, loadCompleteSignupErrored, userRegisterDetails } = this.props
+    let { loadSignupSuccess, loadSignupErrored, userRegisterDetails } = this.props
 
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          {loadCompleteSignupSuccess &&
+          {loadSignupSuccess &&
             <div>
               <CreateUserForm initialState={userRegisterDetails} />
             </div>}
-          {loadCompleteSignupErrored && <div>placeholder for failed loading of user registration details</div>}
+          {loadSignupErrored && <div>error loading user registration details</div>}
         </div>
       </div>
     )
@@ -34,16 +34,16 @@ CreateUser.propTypes = {
     manager_name: PropTypes.string,
     manager_email: PropTypes.string
   }),
-  loadCompleteSignupSuccess: PropTypes.bool,
+  loadSignupSuccess: PropTypes.bool,
   loadRegistrationData: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ({ user }) => {
   return {
     userRegisterDetails: user.userRegisterDetails,
-    loadCompleteSignupLoading: user.loadCompleteSignupLoading,
-    loadCompleteSignupSuccess: user.loadCompleteSignupSuccess,
-    loadCompleteSignupErrored: user.loadCompleteSignupErrored,
+    isLoading: user.isLoading,
+    loadSignupSuccess: user.loadSignupSuccess,
+    loadSignupErrored: user.loadSignupErrored,
     createUserSuccess: user.createUserSuccess,
     createUserErrored: user.createUserErrored,
     user: user.user
@@ -53,7 +53,7 @@ const mapStateToProps = ({ user }) => {
 const mapDispatchToProps = dispatch => {
   return {
     loadRegistrationData: tokenString => {
-      dispatch(loadCompleteSignup(tokenString))
+      dispatch(loadSignup(tokenString))
     }
   }
 }
