@@ -110,7 +110,7 @@ form .hint {
 }
 
 .user-type .uikit-control-input__input:focus+.uikit-control-input__text > span span {
-  outline: 1px solid #313131;
+  outline: none;
 }
 
 .uikit-control-input__text {
@@ -125,3 +125,56 @@ form .hint {
   margin-bottom: 0.4em;
   margin-top: 0.4em;
 }
+
+.uikit-text-input {
+  border: 2px solid #777;
+}
+
+.uikit-text-input:focus {
+  outline: 3px solid #e05200;
+  outline-offset: 0px;
+  background-color: transparent;
+}
+
+.uikit-text-input.uikit-text-input--invalid:focus {
+  background-color: transparent;
+}
+
+
+
+.uikit-control-input__input:focus + .uikit-control-input__text:before {
+  -webkit-box-shadow: 0 0 0 3px #e05200;
+  -moz-box-shadow: 0 0 0 3px #e05200;
+  box-shadow: 0 0 0 3px #e05200;
+  border-radius: 15px;
+}
+
+.uikit-btn:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px #e05200;
+  -moz-box-shadow: 0 0 0 3px #e05200;
+  box-shadow: 0 0 0 3px #e05200;
+}
+
+.uikit-btn {
+  border-radius: 0px;
+}
+
+.uikit-control-input__text {
+  display: block;
+  outline: none;
+}
+
+.radioListBoxElement > .uikit-control-input__input:focus + .uikit-control-input__text:before {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.uikit-body a:focus {
+  -webkit-box-shadow: 0 0 0 3px #ff8629;
+  -moz-box-shadow: 0 0 0 3px #ff8629;
+  box-shadow: 0 0 0 3px #ff8629;
+  outline: none;
+}
+
