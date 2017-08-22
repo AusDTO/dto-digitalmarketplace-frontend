@@ -283,7 +283,7 @@ module.exports = [{
   ]
 }, {
   name: 'client-side render',
-  entry: './app/App.js',
+  entry: ['core-js/fn/object/assign', 'core-js/fn/promise', './app/App.js'],
   output: {
     path: './build',
     filename: 'build.js',
