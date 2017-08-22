@@ -8,7 +8,7 @@ import configureStore from './store'
 import { BrowserRouter as Router } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 
-import Routes from './routes'
+import RootContainer from './routes'
 import './App.scss'
 
 const store = configureStore()
@@ -23,7 +23,7 @@ render(
           <Header />
         </header>
         <main id="content">
-          <Routes />
+          <RootContainer />
         </main>
         <Footer />
       </div>
