@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { memberInfoFetchData } from '../../actions/memberActions'
 import styles from './Header.scss'
+import { rootPath } from '../../routes'
 
 class Header extends Component {
   componentDidMount() {
@@ -38,7 +39,7 @@ class Header extends Component {
                     ? <span>
                         {this.dashBoardLink()}
                       </span>
-                    : <a href="/2/signup">Join the Marketplace</a>}
+                    : <a href={`${rootPath}/signup`}>Join the Marketplace</a>}
                 </li>
                 <li>
                   {this.props.memberInfo.isAuthenticated
