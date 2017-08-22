@@ -76,6 +76,7 @@ export class Catalogue extends React.Component {
                 <article className="col-xs-2">
                   <button type="submit" value="" style={{border: 'none', backgroundColor: '#18788d', color: '#fff'}}>
                     <Icon value="search" size={22}/>
+                    <span>&nbsp;Search</span>
                   </button>
                 </article>
               </article>
