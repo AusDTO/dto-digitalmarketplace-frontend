@@ -113,17 +113,23 @@ form .hint {
   outline: none;
 }
 
+.employment-status .uikit-control-input--full {
+  margin-bottom: 0.4em;
+  margin-top: 0.4em;
+}
+
+.radioListBoxElement > .uikit-control-input__input:focus + .uikit-control-input__text:before {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
 .uikit-control-input__text {
   margin-left: 40px;
 }
 
 .uikit-text-input__label {
   margin-bottom: .4em;
-}
-
-.employment-status .uikit-control-input--full {
-  margin-bottom: 0.4em;
-  margin-top: 0.4em;
 }
 
 .uikit-text-input {
@@ -140,8 +146,6 @@ form .hint {
   background-color: transparent;
 }
 
-
-
 .uikit-control-input__input:focus + .uikit-control-input__text:before {
   -webkit-box-shadow: 0 0 0 3px #e05200;
   -moz-box-shadow: 0 0 0 3px #e05200;
@@ -156,19 +160,12 @@ form .hint {
   box-shadow: 0 0 0 3px #e05200;
 }
 
-.uikit-btn {
+.uikit-btn:focus {
   border-radius: 0px;
 }
 
 .uikit-control-input__text {
   display: block;
-  outline: none;
-}
-
-.radioListBoxElement > .uikit-control-input__input:focus + .uikit-control-input__text:before {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
 }
 
 .uikit-body a:focus {
@@ -177,4 +174,3 @@ form .hint {
   box-shadow: 0 0 0 3px #ff8629;
   outline: none;
 }
-
