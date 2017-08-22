@@ -18,8 +18,6 @@ dependencies:
   override:
     - npm install
     - npm run build
-  cache_directories:
-    - ~/.cache/yarn
 
 test:
   override:
@@ -30,7 +28,8 @@ deployment:
   development:
     branch: master
     commands:
-      - cf login -a https://api.system.staging.digital.gov.au -o dto -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
+      - cf login -a https://api.system.z.cld.gov.au -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
+      - cf target -o dta -s marketplace
       - cf push -f manifest.yml
   production:
     tag: /[0-9]+(\.[0-9]+)*/
