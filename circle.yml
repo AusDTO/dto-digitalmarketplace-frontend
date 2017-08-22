@@ -18,8 +18,6 @@ dependencies:
   override:
     - npm install
     - npm run build
-  cache_directories:
-    - ~/.cache/yarn
 
 test:
   override:
