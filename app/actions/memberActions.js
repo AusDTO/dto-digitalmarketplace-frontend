@@ -133,7 +133,7 @@ export function createUser(values) {
     dispatch(createUserInitiate(true))
     axios({
       method: 'post',
-      url: '/api/signup/createuser',
+      url: '/api/createuser',
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify(values),
       withCredentials: true,
