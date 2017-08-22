@@ -47,7 +47,6 @@ class Textfield extends React.Component {
           maxLength={maxLength}
           disabled={disabled}
           readOnly={readOnly}
-          validateOn="blur"
         />
         {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
       </div>

@@ -14,3 +14,10 @@
   font-size: 0.875rem;
   margin: 0;
 }
+
+.phaseBanner a:focus {
+  -webkit-box-shadow: 0 0 0 3px #ff8629;
+  -moz-box-shadow: 0 0 0 3px #ff8629;
+  box-shadow: 0 0 0 3px #ff8629;
+  outline: none;
+}
