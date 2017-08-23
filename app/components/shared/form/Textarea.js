@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form'
 
 import StatefulError from './StatefulError'
-import TextareaComponent from '../Textarea'
+import TextareaComponent from './Textarea/Textarea'
 
 import { limitWords } from '../../validators'
 
@@ -52,7 +52,10 @@ const Textarea = props => {
         validators={validators}
         component={TextareaComponent}
         mapProps={{
-          className: ({ fieldValue }) => (!fieldValue.valid && fieldValue.touched ? 'invalid' : ''),
+          className: ({ fieldValue }) =>
+            !fieldValue.valid && fieldValue.touched
+              ? 'uikit-text-input--invalid uikit-text-input uikit-text-input--block uikit-text-input--textarea'
+              : 'uikit-text-input uikit-text-input--block uikit-text-input--textarea',
           value: props => props.viewValue,
           ...mapProps,
           ...controls.default

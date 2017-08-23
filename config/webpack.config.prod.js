@@ -285,6 +285,11 @@ module.exports = [{
         comments: false,
         screw_ie8: true
       }
+    }),
+    new RollbarSourceMapPlugin({
+      accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
+      version: process.env.CIRCLE_SHA1 || 'noversion',
+      publicPath: publicPath
     })
   ]
 }, {
@@ -328,11 +333,7 @@ module.exports = [{
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      }
-    }),
+    new webpack.DefinePlugin(env),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Try to dedupe duplicated modules, if any:
     new webpack.optimize.DedupePlugin(),
