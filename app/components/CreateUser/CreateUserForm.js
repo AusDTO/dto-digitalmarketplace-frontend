@@ -11,6 +11,7 @@ import formProps from '../../components/shared/form/formPropsSelector'
 import PageAlert from '@gov.au/page-alerts'
 import { createUser } from '../../actions/memberActions'
 import styles from './CreateUserForm.scss'
+import { rootPath } from '../../routes'
 
 export class CreateUserForm extends BaseForm {
   constructor(props) {
@@ -35,7 +36,7 @@ export class CreateUserForm extends BaseForm {
     }
     if (this.props.createUserSuccess !== nextProps.createUserSuccess) {
       if (nextProps.createUserSuccess) {
-        this.props.history.push(`/signup/success/${nextProps.createUserForm.user_type}`)
+        this.props.history.push(`${rootPath}/signup/success/${nextProps.createUserForm.user_type}`)
       }
     }
   }

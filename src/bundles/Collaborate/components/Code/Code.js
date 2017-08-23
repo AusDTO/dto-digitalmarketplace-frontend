@@ -23,7 +23,7 @@ class Code extends React.Component {
                                 your project.</p>
                         </div>
                         <div className="col-sm-5 col-sm-push-1">
-                            <img styleName="illustration" src="/static/media/open_source_illustration.png" alt=""/>
+                            <img styleName="illustration" src="/static/media/open_source_illustration.png" alt="Phone and tablet showing data visualisation with desktop browser showing online form"/>
                         </div>
                     </div>
                 </section>

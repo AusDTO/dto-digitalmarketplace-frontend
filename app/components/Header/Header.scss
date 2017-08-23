@@ -24,12 +24,19 @@
   margin-top: 1.6em;
 }
 
-.marketplaceHeader a:hover, 
-.marketplaceHeader a:focus, 
-main form a.validation-message:focus,
-main form a.validation-message:hover {
+.marketplaceHeader a:focus {
   background-color: white;
   color: #000000;
+  -webkit-box-shadow: 0 0 0 3px #ff8629;
+  -moz-box-shadow: 0 0 0 3px #ff8629;
+  box-shadow: 0 0 0 3px #ff8629;
+  outline: none;
+}
+
+.marketplaceHeader a:hover {
+  background-color: white;
+  color: #000000;
+  outline: none;
 }
 
 .marketplaceHeader a {

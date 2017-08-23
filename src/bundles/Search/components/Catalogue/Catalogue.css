@@ -109,9 +109,18 @@
 }
 
 .keyword-search button {
-  padding: 0.75rem 0.75rem 0.55rem;
+  padding: 0.75rem 0.75rem 0.35rem;
   margin: 0;
   width: 100%;
+}
+
+.keyword-search button span {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
 }
 
 .fadeIn {

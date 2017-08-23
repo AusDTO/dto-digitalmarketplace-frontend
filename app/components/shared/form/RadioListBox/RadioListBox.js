@@ -8,7 +8,12 @@ import classNames from 'classnames'
 
 const RadioListBox = props => {
   const { id, label, name, options, model, messages, validators } = props
-  const uiKitControl = classNames('uikit-control-input', 'uikit-control-input--full', styles.uiKitControl)
+  const uiKitControl = classNames(
+    'radioListBoxElement',
+    'uikit-control-input',
+    'uikit-control-input--full',
+    styles.uiKitControl
+  )
 
   return (
     <div className="field">
