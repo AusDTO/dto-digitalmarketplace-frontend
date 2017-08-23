@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import styles from './Landing.css'
+import { rootPath } from '../../../../../app/routes'
 
 class Landing extends React.Component {
     static defaultProps = {
@@ -281,7 +282,7 @@ class Landing extends React.Component {
                         <div style={{textAlign: "center"}} className="col-xs-12 col-md-4 col-md-push-2">
                             <h3>Need digital products or services for government?</h3>
                             <p>Our buyers are from across local, state, territory and federal government.</p>
-                            <p><a href="/signup" role="button" style={{color: "white"}}>Join as a buyer</a></p>
+                            <p><a href={`${rootPath}/signup`} role="button" style={{color: "white"}}>Join as a buyer</a></p>
                         </div>
                         <div style={{textAlign: "center"}} styleName="styles.becomeASeller"
                              className="col-xs-12 col-md-4 col-md-push-2">

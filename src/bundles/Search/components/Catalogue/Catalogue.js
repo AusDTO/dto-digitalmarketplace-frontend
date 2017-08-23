@@ -17,6 +17,8 @@ import {actionCreators as paginationActions} from '../../redux/modules/paginatio
 
 import './Catalogue.css';
 
+import { rootPath } from '../../../../../app/routes'
+
 export class Catalogue extends React.Component {
 
   render() {
@@ -180,7 +182,7 @@ export class Catalogue extends React.Component {
                           </a> with your buyer account to search seller case studies.
                         </div>
                         <div>
-                          New to the Marketplace? <a href="/signup">Create your account.</a>
+                          New to the Marketplace? <a href="/2/signup">Create your account.</a>
                         </div>
                       </div>
                     ) :
@@ -203,7 +205,7 @@ export class Catalogue extends React.Component {
                               </a> with your buyer account to search seller case studies.
                             </div>
                             <div>
-                              New to the Marketplace? <a href="/signup">Create your account.</a>
+                              New to the Marketplace? <a href={`${rootPath}/signup`}>Create your account.</a>
                             </div>
                           </div>) :
 
