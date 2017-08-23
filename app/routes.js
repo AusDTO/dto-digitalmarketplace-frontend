@@ -1,21 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import SignupContainer from './components/SignupForm/SignupContainer'
 import CreateUser from './components/CreateUser/CreateUser'
 import NotFound from './components/shared/NotFound'
 
 export const rootPath = '/2'
-
-const RootContainer = () => {
-  return (
-    <Switch>
-      <Route path={rootPath} component={Routes} />
-      <Route component={NotFound} />
-    </Switch>
-  )
-}
-
-export default withRouter(RootContainer)
 
 export const Routes = ({ match }) =>
   <Switch>
@@ -24,3 +13,16 @@ export const Routes = ({ match }) =>
     <Route path={`${match.url}/createuser/:tokenstring`} component={CreateUser} />
     <Route component={NotFound} />
   </Switch>
+
+class RootContainer extends Component {
+  render() {
+    return (
+      <Switch>
+        <Route path={rootPath} component={Routes} />
+        <Route component={NotFound} />
+      </Switch>
+    )
+  }
+}
+
+export default withRouter(RootContainer)
