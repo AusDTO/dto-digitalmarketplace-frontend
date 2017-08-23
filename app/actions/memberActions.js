@@ -1,119 +1,137 @@
 import {
-  MEMBER_INFO_HAS_ERRORED,
-  MEMBER_INFO_IS_LOADING,
+  DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
-  LOAD_COMPLETE_SIGNUP_LOADING,
-  LOAD_COMPLETE_SIGNUP_SUCCESS,
-  LOAD_COMPLETE_SIGNUP_FAILURE,
-  CREATE_USER_LOADING,
+  MEMBER_INFO_HAS_ERRORED,
+  LOAD_SIGNUP_SUCCESS,
+  LOAD_SIGNUP_FAILURE,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  SIGNUP_DUPLICATE_FAILURE,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAILURE,
   CREATE_USER_DUPLICATE_FAILURE
 } from '../constants/constants'
 
-import axios from 'axios'
+import dmapi from '../services/apiClient'
 
-export function memberInfoIsLoading(bool) {
+export function handleDataLoading(bool) {
   return {
-    type: MEMBER_INFO_IS_LOADING,
+    type: DATA_IS_LOADING,
     isLoading: bool
   }
 }
 
-export function handleMemberInfoResponse(response) {
-  switch (response.status) {
-    case 200:
-      return {
-        type: MEMBER_INFO_FETCH_DATA_SUCCESS,
-        memberInfo: response.data
-      }
+export function handleMemberInfoSuccess(response) {
+  return {
+    type: MEMBER_INFO_FETCH_DATA_SUCCESS,
+    memberInfo: response.data
+  }
+}
 
-    default:
-      return {
-        type: MEMBER_INFO_HAS_ERRORED,
-        errorMessage: response.data.message
-      }
+export function handleMemberInfoFailure(response) {
+  return {
+    type: MEMBER_INFO_HAS_ERRORED,
+    // eslint-disable-next-line
+    errorMessage: response.data ? response.data.message : 'unknown server error'
   }
 }
 
 export function memberInfoFetchData() {
   return dispatch => {
-    dispatch(memberInfoIsLoading(true))
-    axios({ url: '/api/ping', withCredentials: true })
-      .then(response => {
-        if (response) {
-          dispatch(handleMemberInfoResponse(response))
-          dispatch(memberInfoIsLoading(false))
-        }
-      })
-      .catch(error => {
-        if (error.response) {
-          dispatch(handleMemberInfoResponse(error.response))
-          dispatch(memberInfoIsLoading(false))
-        }
-      })
+    dispatch(handleDataLoading(true))
+    dmapi({ url: '/ping' }).then(response => {
+      if (response.error) {
+        dispatch(handleMemberInfoFailure(response))
+      } else {
+        dispatch(handleMemberInfoSuccess(response))
+      }
+      dispatch(handleDataLoading(false))
+    })
   }
 }
 
-// LOAD USER REGISTRATION DETAILS FOR SIGNUP COMPLETION FORM
-export function loadCompleteSignupLoading(bool) {
+export function handleSignupSuccess() {
   return {
-    type: LOAD_COMPLETE_SIGNUP_LOADING,
-    loadCompleteSignupLoading: bool
+    type: SIGNUP_SUCCESS
   }
 }
 
-export function handleLoadCompleteSignupResponse(response) {
+export function handleSignupFailure(response) {
   switch (response.status) {
-    case 200:
+    case 409:
       return {
-        type: LOAD_COMPLETE_SIGNUP_SUCCESS,
-        data: response.data
+        type: SIGNUP_DUPLICATE_FAILURE,
+        // eslint-disable-next-line
+        errorMessage: response.data ? response.data.message : 'a user with this email address already exists'
       }
 
     default:
       return {
-        type: LOAD_COMPLETE_SIGNUP_FAILURE,
-        errorMessage: response.data.message
+        type: SIGNUP_FAILURE,
+        // eslint-disable-next-line
+        errorMessage: response.data ? response.data.message : 'unknown server error'
       }
   }
 }
 
-export function loadCompleteSignup(token) {
+export function handleSignupSubmit(model) {
   return dispatch => {
-    dispatch(loadCompleteSignupLoading(true))
-    axios({ url: `/api/signup/validate-invite/${token}`, withCredentials: true })
-      .then(response => {
-        if (response) {
-          dispatch(loadCompleteSignupLoading(false))
-          dispatch(handleLoadCompleteSignupResponse(response))
-        }
-      })
-      .catch(error => {
-        if (error.response) {
-          dispatch(handleLoadCompleteSignupResponse())
-          dispatch(loadCompleteSignupLoading(false))
-        }
-      })
+    dispatch(handleDataLoading(true))
+    dmapi({
+      url: '/signup',
+      method: 'POST',
+      data: JSON.stringify(model)
+    }).then(response => {
+      if (response.error) {
+        dispatch(handleSignupFailure(response))
+      } else {
+        dispatch(handleSignupSuccess(response))
+      }
+      dispatch(handleDataLoading(false))
+    })
+  }
+}
+
+// LOAD USER REGISTRATION DETAILS FOR SIGNUP COMPLETION FORM
+export function handleLoadSignupSuccess(response) {
+  return {
+    type: LOAD_SIGNUP_SUCCESS,
+    data: response.data
+  }
+}
+
+export function handleLoadSignupFailure(response) {
+  return {
+    type: LOAD_SIGNUP_FAILURE,
+    // eslint-disable-next-line
+    errorMessage: response.data ? response.data.message : 'unknown server error'
+  }
+}
+
+export function loadSignup(token) {
+  return dispatch => {
+    dispatch(handleDataLoading(true))
+    dmapi({ url: `/signup/validate-invite/${token}` }).then(response => {
+      if (response.error) {
+        dispatch(handleLoadSignupFailure(response))
+      } else {
+        dispatch(handleLoadSignupSuccess(response))
+      }
+      dispatch(handleDataLoading(false))
+    })
   }
 }
 
 // PROVIDE PASSWORD AND/OR NAME TO COMPLETE ACCOUNT CREATION
-export function createUserInitiate(bool) {
+export function handleCreateUserSuccess(response) {
   return {
-    type: CREATE_USER_LOADING,
-    createUserLoading: bool
+    type: CREATE_USER_SUCCESS,
+    data: response.data
   }
 }
 
-export function handleCreateUserResponse(response) {
+export function handleCreateUserFailure(response) {
   switch (response.status) {
-    case 200:
-      return {
-        type: CREATE_USER_SUCCESS,
-        data: response.data
-      }
-
     case 409:
       return {
         type: CREATE_USER_DUPLICATE_FAILURE,
@@ -130,26 +148,19 @@ export function handleCreateUserResponse(response) {
 
 export function createUser(values) {
   return dispatch => {
-    dispatch(createUserInitiate(true))
-    axios({
+    dispatch(handleDataLoading(true))
+    dmapi({
       method: 'post',
-      url: '/api/createuser',
-      headers: { 'Content-Type': 'application/json' },
+      url: '/signup/createuser',
       data: JSON.stringify(values),
-      withCredentials: true,
-      credentials: 'same-origin'
+      validateStatus: status => status === 200
+    }).then(response => {
+      if (response.error) {
+        dispatch(handleCreateUserFailure(response))
+      } else {
+        dispatch(handleCreateUserSuccess(response))
+      }
+      dispatch(handleDataLoading(false))
     })
-      .then(response => {
-        if (response) {
-          dispatch(handleCreateUserResponse(response))
-          dispatch(createUserInitiate(false))
-        }
-      })
-      .catch(error => {
-        if (error.response) {
-          dispatch(handleCreateUserResponse(error.response))
-          dispatch(createUserInitiate(false))
-        }
-      })
   }
 }

@@ -1,26 +1,27 @@
 import {
   MEMBER_INFO_HAS_ERRORED,
-  MEMBER_INFO_IS_LOADING,
+  DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
-  LOAD_COMPLETE_SIGNUP_LOADING,
-  LOAD_COMPLETE_SIGNUP_SUCCESS,
-  LOAD_COMPLETE_SIGNUP_FAILURE,
-  CREATE_USER_LOADING,
+  LOAD_SIGNUP_SUCCESS,
+  LOAD_SIGNUP_FAILURE,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  SIGNUP_DUPLICATE_FAILURE,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAILURE,
   CREATE_USER_DUPLICATE_FAILURE
 } from '../constants/constants'
 
 let defaultUserState = {
-  memberInfoIsLoading: null,
+  isLoading: null,
   memberInfoHasSuccess: null,
   memberInfoHasErrored: null,
   memberInfo: { isAutheticated: false },
-  loadCompleteSignupLoading: null,
-  loadCompleteSignupSuccess: null,
-  loadCompleteSignupErrored: null,
+  loadSignupSuccess: null,
+  loadSignupErrored: null,
+  signupSuccess: null,
+  signupErrored: null,
   userRegisterDetails: null,
-  createUserLoading: null,
   createUserSuccess: null,
   createUserErrored: null,
   errorMessage: null,
@@ -30,10 +31,10 @@ let defaultUserState = {
 
 const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
-    case MEMBER_INFO_IS_LOADING:
+    case DATA_IS_LOADING:
       return {
         ...state,
-        memberInfoIsLoading: action.isLoading
+        isLoading: action.isLoading
       }
 
     case MEMBER_INFO_FETCH_DATA_SUCCESS:
@@ -52,31 +53,45 @@ const userReducer = (state = defaultUserState, action) => {
         errorMessage: action.errorMessage
       }
 
-    case LOAD_COMPLETE_SIGNUP_LOADING:
-      return {
-        ...state,
-        loadCompleteSignupLoading: action.loadCompleteSignupLoading
-      }
-
-    case LOAD_COMPLETE_SIGNUP_SUCCESS:
+    case LOAD_SIGNUP_SUCCESS:
       return {
         ...state,
         userRegisterDetails: action.data,
-        loadCompleteSignupSuccess: true,
-        loadCompleteSignupErrored: false
+        loadSignupSuccess: true,
+        loadSignupErrored: false
       }
 
-    case LOAD_COMPLETE_SIGNUP_FAILURE:
+    case LOAD_SIGNUP_FAILURE:
       return {
         ...state,
-        loadCompleteSignupErrored: true,
-        loadCompleteSignupSuccess: false
+        loadSignupErrored: true,
+        loadSignupSuccess: false,
+        errorMessage: action.errorMessage
       }
 
-    case CREATE_USER_LOADING:
+    case SIGNUP_SUCCESS:
       return {
         ...state,
-        createUserLoading: action.createUserLoading
+        signupSuccess: true,
+        signupErrored: false
+      }
+
+    case SIGNUP_DUPLICATE_FAILURE:
+      return {
+        ...state,
+        signupSuccess: false,
+        signupErrored: true,
+        isDuplicate: true,
+        errorMessage: action.errorMessage
+      }
+
+    case SIGNUP_FAILURE:
+      return {
+        ...state,
+        signupSuccess: false,
+        signupErrored: true,
+        isDuplicate: false,
+        errorMessage: action.errorMessage
       }
 
     case CREATE_USER_SUCCESS:
