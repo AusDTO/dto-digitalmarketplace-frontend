@@ -151,9 +151,8 @@ export function createUser(values) {
     dispatch(handleDataLoading(true))
     dmapi({
       method: 'post',
-      url: '/signup/createuser',
-      data: JSON.stringify(values),
-      validateStatus: status => status === 200
+      url: '/createuser',
+      data: JSON.stringify(values)
     }).then(response => {
       if (response.error) {
         dispatch(handleCreateUserFailure(response))
