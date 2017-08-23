@@ -6,13 +6,19 @@ import NotFound from './components/shared/NotFound'
 
 export const rootPath = '/2'
 
-export const Routes = ({ match }) =>
-  <Switch>
-    <Route exact path={match.url} component={SignupContainer} />
-    <Route path={`${match.url}/signup`} component={SignupContainer} />
-    <Route path={`${match.url}/createuser/:tokenstring`} component={CreateUser} />
-    <Route component={NotFound} />
-  </Switch>
+class Routes extends Component {
+  render() {
+    const { match } = this.props
+    return (
+      <Switch>
+        <Route exact path={match.url} component={SignupContainer} />
+        <Route path={`${match.url}/signup`} component={SignupContainer} />
+        <Route path={`${match.url}/createuser/:tokenstring`} component={CreateUser} />
+        <Route component={NotFound} />
+      </Switch>
+    )
+  }
+}
 
 class RootContainer extends Component {
   render() {
