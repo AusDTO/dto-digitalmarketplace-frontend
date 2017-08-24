@@ -180,7 +180,7 @@ export class Catalogue extends React.Component {
                           </a> with your buyer account to search seller case studies.
                         </div>
                         <div>
-                          New to the Marketplace? <a href="/signup">Create your account.</a>
+                          New to the Marketplace? <a href="/2/signup">Create your account.</a>
                         </div>
                       </div>
                     ) :
