@@ -5,6 +5,7 @@ import { Form, actions } from 'react-redux-form'
 import { withRouter } from 'react-router-dom'
 import BaseForm from '../../components/shared/form/BaseForm'
 import ErrorBox from '../../components/shared/form/ErrorBox'
+import ErrorMessages from '../../components/shared/form/ErrorMessages'
 import Textfield from '../../components/shared/form/Textfield'
 import CheckboxDetailsField from '../../components/shared/form/CheckboxDetailsField'
 import formProps from '../../components/shared/form/formPropsSelector'
@@ -19,8 +20,6 @@ export class CreateUserForm extends BaseForm {
     this.state = {
       submitClicked: null
     }
-    this.state = { createMessage: null }
-    this.handleAPIResponseError = this.handleAPIResponseError.bind(this)
   }
 
   componentWillMount() {
@@ -30,37 +29,12 @@ export class CreateUserForm extends BaseForm {
   componentWillReceiveProps(nextProps) {
     if (nextProps.createUserErrored) {
       window.scrollTo(0, 0)
-      this.setState({
-        createMessage: this.handleAPIResponseError(nextProps.isDuplicate)
-      })
     }
     if (this.props.createUserSuccess !== nextProps.createUserSuccess) {
       if (nextProps.createUserSuccess) {
         this.props.history.push(`${rootPath}/signup/success/${nextProps.createUserForm.user_type}`)
       }
     }
-  }
-
-  handleAPIResponseError(isDuplicate) {
-    if (isDuplicate) {
-      return (
-        <span>
-          <span>An account with this email address already exists</span>
-          <a href="/login"> login</a>
-        </span>
-      )
-    } else
-      return (
-        <li>
-          <p>
-            The Digital Marketplace encountered an error trying to create your account. Please try again later or{' '}
-            <a href="/contact-us" target="_blank" rel="external">
-              {' '}contact us{' '}
-            </a>{' '}
-            for assistance.
-          </p>
-        </li>
-      )
   }
 
   onSubmitClicked = () => {
@@ -74,8 +48,6 @@ export class CreateUserForm extends BaseForm {
     let valid = form.valid
     let userType = initialState.user_type
 
-    let { createMessage } = this.state
-
     let hasFocused = false
     const setFocus = e => {
       if (!hasFocused) {
@@ -88,15 +60,7 @@ export class CreateUserForm extends BaseForm {
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
-            {createMessage &&
-              !createUserSuccess &&
-              valid &&
-              <PageAlert as="error">
-                <h4>We were unable to create your account</h4>
-                <ul>
-                  {createMessage}
-                </ul>
-              </PageAlert>}
+            <ErrorMessages title="We were unable to create your account" />
             <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
             {userType === 'buyer' /*eslint-disable indent */
               ? <div>
@@ -174,19 +138,15 @@ CreateUserForm.propTypes = {
     user_type: PropTypes.string.isRequired
   }),
   createUserSuccess: PropTypes.bool,
-  createUserErrored: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  isDuplicate: PropTypes.bool
+  isLoading: PropTypes.bool
 }
 
 const mapStateToProps = state => {
-  const { createUserSuccess, createUserErrored, isLoading, isDuplicate } = state.user
+  const { createUserSuccess, isLoading } = state.user
   return {
     ...formProps(state, 'createUserForm'),
     createUserSuccess: createUserSuccess,
-    createUserErrored: createUserErrored,
-    isLoading: isLoading,
-    isDuplicate: isDuplicate
+    isLoading: isLoading
   }
 }
 

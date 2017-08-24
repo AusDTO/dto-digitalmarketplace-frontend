@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CreateUserForm from './CreateUserForm'
 import { loadSignup } from '../../actions/memberActions'
+import ErrorMessages from '../../components/shared/form/ErrorMessages'
 
 export class CreateUser extends Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ export class CreateUser extends Component {
   }
 
   render() {
-    let { loadSignupSuccess, loadSignupErrored, userRegisterDetails } = this.props
+    let { loadSignupSuccess, userRegisterDetails } = this.props
 
     return (
       <div className="row">
@@ -20,7 +21,7 @@ export class CreateUser extends Component {
             <div>
               <CreateUserForm initialState={userRegisterDetails} />
             </div>}
-          {loadSignupErrored && <div>error loading user registration details</div>}
+          <ErrorMessages title="We were unable to load your details" />
         </div>
       </div>
     )

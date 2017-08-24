@@ -1,16 +1,20 @@
 import {
   DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
-  MEMBER_INFO_HAS_ERRORED,
   LOAD_SIGNUP_SUCCESS,
-  LOAD_SIGNUP_FAILURE,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
-  SIGNUP_DUPLICATE_FAILURE,
   CREATE_USER_SUCCESS,
-  CREATE_USER_FAILURE,
-  CREATE_USER_DUPLICATE_FAILURE
+  SET_ERROR_MESSAGE
 } from '../constants/constants'
+
+import {
+  DUPLICATE_USER,
+  USER_NOT_CREATED,
+  REGISTRATION_NOT_FOUND,
+  GENERAL_ERROR,
+  UNABLE_TO_SIGNUP,
+  ACCOUNT_TAKEN
+} from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
 
@@ -28,20 +32,12 @@ export function handleMemberInfoSuccess(response) {
   }
 }
 
-export function handleMemberInfoFailure(response) {
-  return {
-    type: MEMBER_INFO_HAS_ERRORED,
-    // eslint-disable-next-line
-    errorMessage: response.data ? response.data.message : 'unknown server error'
-  }
-}
-
 export function memberInfoFetchData() {
   return dispatch => {
     dispatch(handleDataLoading(true))
     dmapi({ url: '/ping' }).then(response => {
       if (response.error) {
-        dispatch(handleMemberInfoFailure(response))
+        dispatch(setErrorMessage(GENERAL_ERROR))
       } else {
         dispatch(handleMemberInfoSuccess(response))
       }
@@ -56,24 +52,6 @@ export function handleSignupSuccess() {
   }
 }
 
-export function handleSignupFailure(response) {
-  switch (response.status) {
-    case 409:
-      return {
-        type: SIGNUP_DUPLICATE_FAILURE,
-        // eslint-disable-next-line
-        errorMessage: response.data ? response.data.message : 'a user with this email address already exists'
-      }
-
-    default:
-      return {
-        type: SIGNUP_FAILURE,
-        // eslint-disable-next-line
-        errorMessage: response.data ? response.data.message : 'unknown server error'
-      }
-  }
-}
-
 export function handleSignupSubmit(model) {
   return dispatch => {
     dispatch(handleDataLoading(true))
@@ -83,7 +61,11 @@ export function handleSignupSubmit(model) {
       data: JSON.stringify(model)
     }).then(response => {
       if (response.error) {
-        dispatch(handleSignupFailure(response))
+        if (response.status === 409) {
+          dispatch(setErrorMessage(ACCOUNT_TAKEN))
+        } else {
+          dispatch(setErrorMessage(UNABLE_TO_SIGNUP))
+        }
       } else {
         dispatch(handleSignupSuccess(response))
       }
@@ -100,20 +82,12 @@ export function handleLoadSignupSuccess(response) {
   }
 }
 
-export function handleLoadSignupFailure(response) {
-  return {
-    type: LOAD_SIGNUP_FAILURE,
-    // eslint-disable-next-line
-    errorMessage: response.data ? response.data.message : 'unknown server error'
-  }
-}
-
 export function loadSignup(token) {
   return dispatch => {
     dispatch(handleDataLoading(true))
     dmapi({ url: `/signup/validate-invite/${token}` }).then(response => {
       if (response.error) {
-        dispatch(handleLoadSignupFailure(response))
+        dispatch(setErrorMessage(REGISTRATION_NOT_FOUND))
       } else {
         dispatch(handleLoadSignupSuccess(response))
       }
@@ -130,22 +104,6 @@ export function handleCreateUserSuccess(response) {
   }
 }
 
-export function handleCreateUserFailure(response) {
-  switch (response.status) {
-    case 409:
-      return {
-        type: CREATE_USER_DUPLICATE_FAILURE,
-        errorMessage: response.data.message
-      }
-
-    default:
-      return {
-        type: CREATE_USER_FAILURE,
-        errorMessage: response.data.message
-      }
-  }
-}
-
 export function createUser(values) {
   return dispatch => {
     dispatch(handleDataLoading(true))
@@ -155,11 +113,22 @@ export function createUser(values) {
       data: JSON.stringify(values)
     }).then(response => {
       if (response.error) {
-        dispatch(handleCreateUserFailure(response))
+        if (response.status === 409) {
+          dispatch(setErrorMessage(DUPLICATE_USER))
+        } else {
+          dispatch(setErrorMessage(USER_NOT_CREATED))
+        }
       } else {
         dispatch(handleCreateUserSuccess(response))
       }
       dispatch(handleDataLoading(false))
     })
+  }
+}
+
+export function setErrorMessage(message) {
+  return {
+    type: SET_ERROR_MESSAGE,
+    message: message
   }
 }
