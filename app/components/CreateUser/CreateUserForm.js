@@ -27,9 +27,6 @@ export class CreateUserForm extends BaseForm {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.createUserErrored) {
-      window.scrollTo(0, 0)
-    }
     if (this.props.createUserSuccess !== nextProps.createUserSuccess) {
       if (nextProps.createUserSuccess) {
         this.props.history.push(`${rootPath}/signup/success/${nextProps.createUserForm.user_type}`)
@@ -57,75 +54,65 @@ export class CreateUserForm extends BaseForm {
     }
 
     return (
-      <div className="row">
-        <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          <article role="main">
-            <ErrorMessages title="We were unable to create your account" />
-            <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
-            {userType === 'buyer' /*eslint-disable indent */
-              ? <div>
-                  <h1>Add your name and password</h1>
-                  <p>To finish creating your account please provide the following details.</p>
-                </div>
-              : <div>
-                  <h1>Add a password</h1>
-                  <p>To finish creating your account please provide the following details.</p>
-                </div> /*eslint-disable indent */}
-            <Form model={model} id="createuser" onSubmit={model => handleSubmit(model)}>
-              {userType === 'buyer' &&
-                <Textfield
-                  model={`${model}.name`}
-                  name="name"
-                  id="name"
-                  htmlFor="name"
-                  label="Full name"
-                  description="This name will be used throughout the Marketplace"
-                  validators={{ required: val => val && val.length }}
-                  messages={{ required: 'A name is required' }}
-                />}
+      <div>
+        <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
+        {userType === 'buyer' /*eslint-disable indent */
+          ? <div>
+              <h1>Add your name and password</h1>
+              <p>To finish creating your account please provide the following details.</p>
+            </div>
+          : <div>
+              <h1>Add a password</h1>
+              <p>To finish creating your account please provide the following details.</p>
+            </div> /*eslint-disable indent */}
+        <Form model={model} id="createuser" onSubmit={model => handleSubmit(model)}>
+          {userType === 'buyer' &&
+            <Textfield
+              model={`${model}.name`}
+              name="name"
+              id="name"
+              htmlFor="name"
+              label="Full name"
+              description="This name will be used throughout the Marketplace"
+              validators={{ required: val => val && val.length }}
+              messages={{ required: 'A name is required' }}
+            />}
 
-              <Textfield
-                model={`${model}.password`}
-                name="password"
-                id="password"
-                htmlFor="password"
-                label="Password"
-                type="password"
-                description="At least 10 characters"
-                validators={{ length: val => val && val.length >= 10 }}
-                messages={{
-                  length: 'Your password must be at least 10 characters'
-                }}
-              />
-              <CheckboxDetailsField
-                model={`${model}.agree`}
-                id="agree"
-                name="agree"
-                value="agree"
-                label={
-                  <span>
-                    <span>I accept the </span>
-                    <a href="/terms-of-use" target="_blank" rel="external">
-                      Terms of Use
-                    </a>
-                  </span>
-                }
-                description="blah"
-                detailsModel={model}
-                validators={{ required: val => val }}
-                messages={{ required: 'Accept Terms of Use' }}
-              />
-              <p className={styles.formSubmitBtnWrapper}>
-                <input
-                  className="uikit-btn"
-                  type="submit"
-                  value="Join the Marketplace"
-                  onClick={this.onSubmitClicked}
-                />
-              </p>
-            </Form>
-          </article>
-        </div>
+          <Textfield
+            model={`${model}.password`}
+            name="password"
+            id="password"
+            htmlFor="password"
+            label="Password"
+            type="password"
+            description="At least 10 characters"
+            validators={{ length: val => val && val.length >= 10 }}
+            messages={{
+              length: 'Your password must be at least 10 characters'
+            }}
+          />
+          <CheckboxDetailsField
+            model={`${model}.agree`}
+            id="agree"
+            name="agree"
+            value="agree"
+            label={
+              <span>
+                <span>I accept the </span>
+                <a href="/terms-of-use" target="_blank" rel="external">
+                  Terms of Use
+                </a>
+              </span>
+            }
+            description="blah"
+            detailsModel={model}
+            validators={{ required: val => val }}
+            messages={{ required: 'Accept Terms of Use' }}
+          />
+          <p className={styles.formSubmitBtnWrapper}>
+            <input className="uikit-btn" type="submit" value="Join the Marketplace" onClick={this.onSubmitClicked} />
+          </p>
+        </Form>
       </div>
     )
   }

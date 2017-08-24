@@ -17,11 +17,10 @@ export class CreateUser extends Component {
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          {loadSignupSuccess &&
-            <div>
-              <CreateUserForm initialState={userRegisterDetails} />
-            </div>}
-          <ErrorMessages title="We were unable to load your details" />
+          <article role="main">
+            <ErrorMessages title="We were unable to create your account" />
+            {loadSignupSuccess && <CreateUserForm initialState={userRegisterDetails} />}
+          </article>
         </div>
       </div>
     )
@@ -44,9 +43,7 @@ const mapStateToProps = ({ user }) => {
     userRegisterDetails: user.userRegisterDetails,
     isLoading: user.isLoading,
     loadSignupSuccess: user.loadSignupSuccess,
-    loadSignupErrored: user.loadSignupErrored,
     createUserSuccess: user.createUserSuccess,
-    createUserErrored: user.createUserErrored,
     user: user.user
   }
 }
