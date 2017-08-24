@@ -107,8 +107,7 @@ class SignupForm extends BaseForm {
   }
 
   render() {
-    const { csrf_token, model, form, children, signupForm, buyer_url, seller_url } = this.props
-    let valid = form.valid
+    const { csrf_token, model, children, signupForm, buyer_url, seller_url } = this.props
     let employmentStatus = signupForm.employment_status
     let action = isBuyer ? buyer_url : seller_url
     let { signupSuccess, isBuyer, emailValidators, emailErrorMessages } = this.state

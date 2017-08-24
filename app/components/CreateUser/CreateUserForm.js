@@ -5,11 +5,9 @@ import { Form, actions } from 'react-redux-form'
 import { withRouter } from 'react-router-dom'
 import BaseForm from '../../components/shared/form/BaseForm'
 import ErrorBox from '../../components/shared/form/ErrorBox'
-import ErrorMessages from '../../components/shared/form/ErrorMessages'
 import Textfield from '../../components/shared/form/Textfield'
 import CheckboxDetailsField from '../../components/shared/form/CheckboxDetailsField'
 import formProps from '../../components/shared/form/formPropsSelector'
-import PageAlert from '@gov.au/page-alerts'
 import { createUser } from '../../actions/memberActions'
 import styles from './CreateUserForm.scss'
 import { rootPath } from '../../routes'
@@ -41,8 +39,7 @@ export class CreateUserForm extends BaseForm {
   }
 
   render() {
-    const { model, form, initialState, handleSubmit, createUserSuccess } = this.props
-    let valid = form.valid
+    const { model, initialState, handleSubmit } = this.props
     let userType = initialState.user_type
 
     let hasFocused = false
