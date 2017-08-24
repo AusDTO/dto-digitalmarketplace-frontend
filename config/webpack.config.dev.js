@@ -262,6 +262,7 @@ module.exports = [{
 }, {
   name: 'client-side render',
   entry: ['core-js/fn/object/assign', 'core-js/fn/promise', './app/App.js'],
+  devtool: 'eval',
   output: {
     path: './build',
     filename: 'build.js',
