@@ -26,7 +26,6 @@ class SignupForm extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
-      signupSuccess: null,
       emailValidators: {
         required,
         validEmail
@@ -43,14 +42,6 @@ class SignupForm extends BaseForm {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.form.valid) {
-      if (!nextProps.form.valid) {
-        this.setState({
-          signupSuccess: null
-        })
-      }
-    }
-
     if (this.props.signupForm.user_type !== nextProps.signupForm.user_type) {
       if (nextProps.signupForm.user_type === 'seller') {
         this.setState({
@@ -82,16 +73,9 @@ class SignupForm extends BaseForm {
         })
       }
     }
-
-    if (this.props.signupSuccess !== nextProps.signupSuccess) {
-      this.setState({
-        signupSuccess: nextProps.signupSuccess
-      })
-    }
   }
 
   handleSubmit(model) {
-    this.setState({ signupSuccess: null })
     this.props.handleSignupSubmit(model)
   }
 
@@ -106,10 +90,10 @@ class SignupForm extends BaseForm {
   }
 
   render() {
-    const { csrf_token, model, children, signupForm, buyer_url, seller_url } = this.props
+    const { csrf_token, model, children, signupForm, buyer_url, seller_url, signupSuccess } = this.props
     let employmentStatus = signupForm.employment_status
     let action = isBuyer ? buyer_url : seller_url
-    let { signupSuccess, isBuyer, emailValidators, emailErrorMessages } = this.state
+    let { isBuyer, emailValidators, emailErrorMessages } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -368,7 +352,6 @@ const mapStateToProps = state => {
   return {
     ...formProps(state, 'signupForm'),
     signupSuccess: state.user.signupSuccess,
-    isDuplicate: state.user.isDuplicate
   }
 }
 
