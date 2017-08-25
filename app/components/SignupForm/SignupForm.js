@@ -351,7 +351,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     ...formProps(state, 'signupForm'),
-    signupSuccess: state.user.signupSuccess,
+    signupSuccess: state.user.signupSuccess
   }
 }
 
