@@ -99,8 +99,8 @@ var loaders = [
 // The production configuration is different and lives in a separate file.
 module.exports = [{
   // This makes the bundle appear split into separate modules in the devtools.
-  // We don't use source maps here because they can be confusing:
-  // https://github.com/facebookincubator/create-react-app/issues/343#issuecomment-237241875
+  // We don't use source maps here because they can be confusing:https://github.com/facebookincubator/create-react-app/issues/343#issuecomment-237241875
+  //
   // You may want 'cheap-module-source-map' instead if you prefer source maps.
   devtool: 'eval',
   // These are the "entry points" to our application.
@@ -261,7 +261,9 @@ module.exports = [{
   ]
 }, {
   name: 'client-side render',
-  entry: ['core-js/fn/object/assign', 'core-js/fn/promise', './app/App.js'],
+  entry: [
+    require.resolve('./polyfills'),
+    './app/App.js'],
   devtool: 'eval',
   output: {
     path: './build',

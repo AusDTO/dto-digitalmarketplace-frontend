@@ -11,7 +11,7 @@ const SellerOnboarding = () =>
           <h2 className="uikit-display-2">List my digital offering on the Marketplace</h2>
         </span>
         <span>
-          <a href="/become-a-seller">Set up my shopfront</a>
+          <a href="/sellers/application">Set up my shopfront</a>
         </span>
       </div>
       <div className={styles.onBoardingItemWrapper}>
