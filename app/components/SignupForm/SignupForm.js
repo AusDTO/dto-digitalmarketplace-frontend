@@ -12,6 +12,7 @@ import Textfield from '../../components/shared/form/Textfield'
 import formProps from '../../components/shared/form/formPropsSelector'
 import RadioList from '../../components/shared/form/RadioList'
 import RadioListBox from '../../components/shared/form/RadioListBox/RadioListBox'
+import LoadingButton from '../../components/LoadingButton/LoadingButton'
 import PageAlert from '@gov.au/page-alerts'
 
 import { handleSignupSubmit } from '../../actions/memberActions'
@@ -366,12 +367,16 @@ class SignupForm extends BaseForm {
                         </a>
                       </small>
                     </p>
-                    <input
-                      className="uikit-btn"
-                      type="submit"
-                      value="Create your account"
-                      onClick={this.onSubmitClicked}
-                    />
+                    {this.props.currentlySending ? (
+                      <LoadingButton />
+                    ) : (
+                      <input
+                        className="uikit-btn"
+                        type="submit"
+                        value="Create your account"
+                        onClick={this.onSubmitClicked}
+                      />
+                    )}
                   </Form>
                 </article>
               </Layout>}

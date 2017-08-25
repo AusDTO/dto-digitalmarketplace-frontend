@@ -7,6 +7,9 @@
  * export const YOUR_ACTION_CONSTANT = 'YOUR_ACTION_CONSTANT';
  */
 
+/* App Constants */
+export const SENDING_REQUEST = 'SENDING_REQUEST'
+
 /* Member Constants*/
 export const MEMBER_INFO_HAS_ERRORED = 'MEMBER_INFO_HAS_ERRORED'
 export const MEMBER_INFO_FETCH_DATA_SUCCESS = 'MEMBER_INFO_FETCH_DATA_SUCCESS'
