@@ -6,5 +6,15 @@ PAYLOAD='{"channel": "#marketplace", "icon_emoji": ":lightning:","username": "re
  "pretext": "A new frontend went live! '"$CIRCLE_REPOSITORY_URL"'/releases/tag/'"$CIRCLE_TAG"'",
  "text": "'"$GITLOG"'" }] }'
 
-#echo $PAYLOAD
+echo $PAYLOAD
 curl -g -X POST --data-urlencode "payload=$PAYLOAD" "$SLACK_WEBHOOK_URL"
+
+ENVIRONMENT=production
+LOCAL_USERNAME=`whoami`
+REVISION=`git log -n 1 --pretty=format:"%H"`
+
+curl https://api.rollbar.com/api/1/deploy/ \
+  -F access_token=$ROLLBAR_TOKEN \
+  -F environment=$ENVIRONMENT \
+  -F revision=$REVISION \
+  -F local_username=$LOCAL_USERNAME
