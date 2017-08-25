@@ -21,15 +21,12 @@ class SignupForm extends BaseForm {
   static propTypes = {
     action: PropTypes.string,
     csrf_token: PropTypes.string,
-    form: PropTypes.object.isRequired,
-    errors: PropTypes.object
+    form: PropTypes.object.isRequired
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      signupSuccess: null,
-      signupMessage: null,
       emailValidators: {
         required,
         validEmail
@@ -46,15 +43,6 @@ class SignupForm extends BaseForm {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.form.valid) {
-      if (!nextProps.form.valid) {
-        this.setState({
-          signupSuccess: null,
-          signupMessage: null
-        })
-      }
-    }
-
     if (this.props.signupForm.user_type !== nextProps.signupForm.user_type) {
       if (nextProps.signupForm.user_type === 'seller') {
         this.setState({
@@ -86,32 +74,9 @@ class SignupForm extends BaseForm {
         })
       }
     }
-
-    if (this.props.signupSuccess !== nextProps.signupSuccess) {
-      this.setState({
-        signupSuccess: nextProps.signupSuccess,
-        signupMessage: nextProps.isDuplicate
-          ? <li>
-              <p>
-                An account with this email domain already exists. Someone in your team may have already created an
-                account with the Marketplace
-              </p>
-            </li>
-          : <li>
-              <p>
-                The Digital Marketplace encountered an error trying to send your signup email. Please try again later or{' '}
-                <a href="/contact-us" target="_blank" rel="external">
-                  {' '}contact us{' '}
-                </a>{' '}
-                for assistance.
-              </p>
-            </li>
-      })
-    }
   }
 
   handleSubmit(model) {
-    this.setState({ signupSuccess: null, signupMessage: null })
     this.props.handleSignupSubmit(model)
   }
 
@@ -126,11 +91,10 @@ class SignupForm extends BaseForm {
   }
 
   render() {
-    const { csrf_token, model, form, children, signupForm, buyer_url, seller_url } = this.props
-    let valid = form.valid
+    const { csrf_token, model, children, signupForm, buyer_url, seller_url, signupSuccess } = this.props
     let employmentStatus = signupForm.employment_status
     let action = isBuyer ? buyer_url : seller_url
-    let { signupSuccess, signupMessage, isBuyer, emailValidators, emailErrorMessages } = this.state
+    let { isBuyer, emailValidators, emailErrorMessages } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -146,10 +110,9 @@ class SignupForm extends BaseForm {
           <div>
             {signupSuccess &&
               <div>
-                {signupMessage &&
-                  <PageAlert as="success">
-                    <h4>Signup email sent</h4>
-                  </PageAlert>}
+                <PageAlert as="success">
+                  <h4>Signup email sent</h4>
+                </PageAlert>
                 <article role="main">
                   <header className="page-heading page-heading-without-breadcrumb">
                     <h1>Thanks for requesting access to the Digital Marketplace.</h1>
@@ -186,19 +149,16 @@ class SignupForm extends BaseForm {
               </div>}
             {!signupSuccess &&
               <Layout>
-                {signupMessage &&
-                  valid &&
-                  <PageAlert as="error">
-                    <h4>Signup invite email was not sent</h4>
-                    <ul>
-                      {signupMessage}
-                    </ul>
-                  </PageAlert>}
                 <header>
                   <h1>Let’s get started</h1>
                 </header>
                 <article role="main">
-                  <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
+                  <ErrorBox
+                    title="There was a problem with signup"
+                    model={model}
+                    submitClicked={this.state.submitClicked}
+                    setFocus={setFocus}
+                  />
                   <Form
                     model={model}
                     action={action}
@@ -396,9 +356,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     ...formProps(state, 'signupForm'),
-    signupSuccess: state.user.signupSuccess,
-    signupErrored: state.user.signupErrored,
-    isDuplicate: state.user.isDuplicate
+    signupSuccess: state.user.signupSuccess
   }
 }
 

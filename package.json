@@ -66,6 +66,7 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.2.3",
     "rimraf": "^2.6.1",
+    "rollbar-sourcemap-webpack-plugin": "^2.2.0",
     "sinon": "^3.2.0",
     "strip-ansi": "^4.0.0",
     "webdriverio": "^4.4.0",

@@ -8,7 +8,6 @@ import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
 import CheckboxDetailsField from '../../components/shared/form/CheckboxDetailsField'
 import formProps from '../../components/shared/form/formPropsSelector'
-import PageAlert from '@gov.au/page-alerts'
 import { createUser } from '../../actions/memberActions'
 import styles from './CreateUserForm.scss'
 import { rootPath } from '../../routes'
@@ -19,8 +18,6 @@ export class CreateUserForm extends BaseForm {
     this.state = {
       submitClicked: null
     }
-    this.state = { createMessage: null }
-    this.handleAPIResponseError = this.handleAPIResponseError.bind(this)
   }
 
   componentWillMount() {
@@ -28,39 +25,11 @@ export class CreateUserForm extends BaseForm {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.createUserErrored) {
-      window.scrollTo(0, 0)
-      this.setState({
-        createMessage: this.handleAPIResponseError(nextProps.isDuplicate)
-      })
-    }
     if (this.props.createUserSuccess !== nextProps.createUserSuccess) {
       if (nextProps.createUserSuccess) {
         this.props.history.push(`${rootPath}/signup/success/${nextProps.createUserForm.user_type}`)
       }
     }
-  }
-
-  handleAPIResponseError(isDuplicate) {
-    if (isDuplicate) {
-      return (
-        <span>
-          <span>An account with this email address already exists</span>
-          <a href="/login"> login</a>
-        </span>
-      )
-    } else
-      return (
-        <li>
-          <p>
-            The Digital Marketplace encountered an error trying to create your account. Please try again later or{' '}
-            <a href="/contact-us" target="_blank" rel="external">
-              {' '}contact us{' '}
-            </a>{' '}
-            for assistance.
-          </p>
-        </li>
-      )
   }
 
   onSubmitClicked = () => {
@@ -70,11 +39,8 @@ export class CreateUserForm extends BaseForm {
   }
 
   render() {
-    const { model, form, initialState, handleSubmit, createUserSuccess } = this.props
-    let valid = form.valid
+    const { model, initialState, handleSubmit } = this.props
     let userType = initialState.user_type
-
-    let { createMessage } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -85,83 +51,70 @@ export class CreateUserForm extends BaseForm {
     }
 
     return (
-      <div className="row">
-        <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          <article role="main">
-            {createMessage &&
-              !createUserSuccess &&
-              valid &&
-              <PageAlert as="error">
-                <h4>We were unable to create your account</h4>
-                <ul>
-                  {createMessage}
-                </ul>
-              </PageAlert>}
-            <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
-            {userType === 'buyer' /*eslint-disable indent */
-              ? <div>
-                  <h1>Add your name and password</h1>
-                  <p>To finish creating your account please provide the following details.</p>
-                </div>
-              : <div>
-                  <h1>Add a password</h1>
-                  <p>To finish creating your account please provide the following details.</p>
-                </div> /*eslint-disable indent */}
-            <Form model={model} id="createuser" onSubmit={model => handleSubmit(model)}>
-              {userType === 'buyer' &&
-                <Textfield
-                  model={`${model}.name`}
-                  name="name"
-                  id="name"
-                  htmlFor="name"
-                  label="Full name"
-                  description="This name will be used throughout the Marketplace"
-                  validators={{ required: val => val && val.length }}
-                  messages={{ required: 'A name is required' }}
-                />}
+      <div>
+        <ErrorBox
+          title="There was a problem creating your account"
+          model={model}
+          submitClicked={this.state.submitClicked}
+          setFocus={setFocus}
+        />
+        {userType === 'buyer' /*eslint-disable indent */
+          ? <div>
+              <h1>Add your name and password</h1>
+              <p>To finish creating your account please provide the following details.</p>
+            </div>
+          : <div>
+              <h1>Add a password</h1>
+              <p>To finish creating your account please provide the following details.</p>
+            </div> /*eslint-disable indent */}
+        <Form model={model} id="createuser" onSubmit={model => handleSubmit(model)}>
+          {userType === 'buyer' &&
+            <Textfield
+              model={`${model}.name`}
+              name="name"
+              id="name"
+              htmlFor="name"
+              label="Full name"
+              description="This name will be used throughout the Marketplace"
+              validators={{ required: val => val && val.length }}
+              messages={{ required: 'A name is required' }}
+            />}
 
-              <Textfield
-                model={`${model}.password`}
-                name="password"
-                id="password"
-                htmlFor="password"
-                label="Password"
-                type="password"
-                description="At least 10 characters"
-                validators={{ length: val => val && val.length >= 10 }}
-                messages={{
-                  length: 'Your password must be at least 10 characters'
-                }}
-              />
-              <CheckboxDetailsField
-                model={`${model}.agree`}
-                id="agree"
-                name="agree"
-                value="agree"
-                label={
-                  <span>
-                    <span>I accept the </span>
-                    <a href="/terms-of-use" target="_blank" rel="external">
-                      Terms of Use
-                    </a>
-                  </span>
-                }
-                description="blah"
-                detailsModel={model}
-                validators={{ required: val => val }}
-                messages={{ required: 'Accept Terms of Use' }}
-              />
-              <p className={styles.formSubmitBtnWrapper}>
-                <input
-                  className="uikit-btn"
-                  type="submit"
-                  value="Join the Marketplace"
-                  onClick={this.onSubmitClicked}
-                />
-              </p>
-            </Form>
-          </article>
-        </div>
+          <Textfield
+            model={`${model}.password`}
+            name="password"
+            id="password"
+            htmlFor="password"
+            label="Password"
+            type="password"
+            description="At least 10 characters"
+            validators={{ length: val => val && val.length >= 10 }}
+            messages={{
+              length: 'Your password must be at least 10 characters'
+            }}
+          />
+          <CheckboxDetailsField
+            model={`${model}.agree`}
+            id="agree"
+            name="agree"
+            value="agree"
+            label={
+              <span>
+                <span>I accept the </span>
+                <a href="/terms-of-use" target="_blank" rel="external">
+                  Terms of Use
+                </a>
+              </span>
+            }
+            description="blah"
+            detailsModel={model}
+            validators={{ required: val => val }}
+            messages={{ required: 'Accept Terms of Use' }}
+          />
+          <p className={styles.formSubmitBtnWrapper}>
+            <input className="uikit-btn" type="submit" value="Join the Marketplace" onClick={this.onSubmitClicked} />
+          </p>
+        </Form>
       </div>
     )
   }
@@ -174,19 +127,15 @@ CreateUserForm.propTypes = {
     user_type: PropTypes.string.isRequired
   }),
   createUserSuccess: PropTypes.bool,
-  createUserErrored: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  isDuplicate: PropTypes.bool
+  isLoading: PropTypes.bool
 }
 
 const mapStateToProps = state => {
-  const { createUserSuccess, createUserErrored, isLoading, isDuplicate } = state.user
+  const { createUserSuccess, isLoading } = state.user
   return {
     ...formProps(state, 'createUserForm'),
     createUserSuccess: createUserSuccess,
-    createUserErrored: createUserErrored,
-    isLoading: isLoading,
-    isDuplicate: isDuplicate
+    isLoading: isLoading
   }
 }
 

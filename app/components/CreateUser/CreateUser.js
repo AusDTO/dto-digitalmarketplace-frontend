@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CreateUserForm from './CreateUserForm'
 import { loadSignup } from '../../actions/memberActions'
+import ErrorBox from '../../components/shared/form/ErrorBox'
 
 export class CreateUser extends Component {
   componentDidMount() {
@@ -11,16 +12,24 @@ export class CreateUser extends Component {
   }
 
   render() {
-    let { loadSignupSuccess, loadSignupErrored, userRegisterDetails } = this.props
+    let { loadSignupSuccess, userRegisterDetails } = this.props
+
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
 
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          {loadSignupSuccess &&
-            <div>
-              <CreateUserForm initialState={userRegisterDetails} />
-            </div>}
-          {loadSignupErrored && <div>error loading user registration details</div>}
+          <article role="main">
+            {loadSignupSuccess
+              ? <CreateUserForm initialState={userRegisterDetails} />
+              : <ErrorBox title="There was a problem loading your details" setFocus={setFocus} />}
+          </article>
         </div>
       </div>
     )
@@ -43,9 +52,7 @@ const mapStateToProps = ({ user }) => {
     userRegisterDetails: user.userRegisterDetails,
     isLoading: user.isLoading,
     loadSignupSuccess: user.loadSignupSuccess,
-    loadSignupErrored: user.loadSignupErrored,
     createUserSuccess: user.createUserSuccess,
-    createUserErrored: user.createUserErrored,
     user: user.user
   }
 }

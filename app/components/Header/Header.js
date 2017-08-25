@@ -38,7 +38,7 @@ class Header extends Component {
                     ? <span>
                         {this.dashBoardLink()}
                       </span>
-                    : <a href="/signup">Join the Marketplace</a>}
+                    : <a href="/2/signup">Join the Marketplace</a>}
                 </li>
                 <li>
                   {this.props.memberInfo.isAuthenticated
