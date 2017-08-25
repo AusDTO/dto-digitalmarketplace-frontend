@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+var RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
@@ -226,6 +227,11 @@ module.exports = [{
         screw_ie8: true
       }
     }),
+    new RollbarSourceMapPlugin({
+      accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
+      version: process.env.CIRCLE_SHA1 || 'noversion',
+      publicPath: publicPath
+    }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin('[name].css'),
     function() {
@@ -283,7 +289,8 @@ module.exports = [{
   ]
 }, {
   name: 'client-side render',
-  entry: ['core-js/fn/object/assign', 'core-js/fn/promise', './app/App.js'],
+  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './app/App.js'],
+  devtool: 'source-map',
   output: {
     path: './build',
     filename: 'build.js',
@@ -342,6 +349,11 @@ module.exports = [{
         comments: false,
         screw_ie8: true
       }
+    }),
+    new RollbarSourceMapPlugin({
+      accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
+      version: process.env.CIRCLE_SHA1 || 'noversion',
+      publicPath: publicPath
     })
   ]
 }];
