@@ -34,8 +34,8 @@ export class ErrorBox extends React.Component {
   }
 
   render() {
-    const { invalidFields, form } = this.props
-    if (form.submitFailed === false || !invalidFields.length) {
+    const { invalidFields, form, errorMessage, title } = this.props
+    if ((form.submitFailed === false && !errorMessage) || (!invalidFields.length && !errorMessage)) {
       this._container = null
       return null
     }
@@ -43,11 +43,11 @@ export class ErrorBox extends React.Component {
     return (
       <PageAlert as="error">
         <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex="-1">
-          There was a problem with the details you gave
+          {title || 'There was a problem with the details you gave'}
         </h4>
-        {invalidFields &&
-          <ul>
-            {invalidFields.map(({ messages, id }, i) => {
+        <ul>
+          {invalidFields &&
+            invalidFields.map(({ messages, id }, i) => {
               return messages.map((message, j) =>
                 <li key={`${i}${j}`}>
                   <a href={`#${id}`}>
@@ -56,7 +56,11 @@ export class ErrorBox extends React.Component {
                 </li>
               )
             })}
-          </ul>}
+          {errorMessage &&
+            <li key="errorMessage">
+              {errorMessage}
+            </li>}
+        </ul>
       </PageAlert>
     )
   }
@@ -69,13 +73,15 @@ ErrorBox.propTypes = {
       message: PropTypes.arrayOf(PropTypes.string)
     })
   ).isRequired,
-  form: PropTypes.object
+  form: PropTypes.object,
+  title: PropTypes.string
 }
 
 export const mapStateToProps = (state, { model }) => {
   return {
     invalidFields: getInvalidFields(state, model),
-    form: get(state, `forms.${model}.$form`, {})
+    form: get(state, `forms.${model}.$form`, {}),
+    errorMessage: state.user.message
   }
 }
 

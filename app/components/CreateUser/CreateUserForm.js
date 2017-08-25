@@ -52,7 +52,12 @@ export class CreateUserForm extends BaseForm {
 
     return (
       <div>
-        <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
+        <ErrorBox
+          title="There was a problem creating your account"
+          model={model}
+          submitClicked={this.state.submitClicked}
+          setFocus={setFocus}
+        />
         {userType === 'buyer' /*eslint-disable indent */
           ? <div>
               <h1>Add your name and password</h1>

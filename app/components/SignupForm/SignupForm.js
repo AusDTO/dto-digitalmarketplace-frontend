@@ -7,7 +7,6 @@ import { required, validEmail, governmentEmail } from '../../components/validato
 
 import Layout from '../../components/shared/Layout'
 import BaseForm from '../../components/shared/form/BaseForm'
-import ErrorMessages from '../../components/shared/form/ErrorMessages'
 import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
 import formProps from '../../components/shared/form/formPropsSelector'
@@ -169,8 +168,12 @@ class SignupForm extends BaseForm {
                   <h1>Let’s get started</h1>
                 </header>
                 <article role="main">
-                  <ErrorMessages title="Signup invite email was not sent" />
-                  <ErrorBox model={model} submitClicked={this.state.submitClicked} setFocus={setFocus} />
+                  <ErrorBox
+                    title="There was a problem with signup"
+                    model={model}
+                    submitClicked={this.state.submitClicked}
+                    setFocus={setFocus}
+                  />
                   <Form
                     model={model}
                     action={action}

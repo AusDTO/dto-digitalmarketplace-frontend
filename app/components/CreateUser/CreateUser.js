@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CreateUserForm from './CreateUserForm'
 import { loadSignup } from '../../actions/memberActions'
-import ErrorMessages from '../../components/shared/form/ErrorMessages'
+import ErrorBox from '../../components/shared/form/ErrorBox'
 
 export class CreateUser extends Component {
   componentDidMount() {
@@ -14,12 +14,21 @@ export class CreateUser extends Component {
   render() {
     let { loadSignupSuccess, userRegisterDetails } = this.props
 
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
-            <ErrorMessages title="We were unable to create your account" />
-            {loadSignupSuccess && <CreateUserForm initialState={userRegisterDetails} />}
+            {loadSignupSuccess
+              ? <CreateUserForm initialState={userRegisterDetails} />
+              : <ErrorBox title="There was a problem loading your details" setFocus={setFocus} />}
           </article>
         </div>
       </div>
