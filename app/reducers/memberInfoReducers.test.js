@@ -3,15 +3,9 @@ import reducer from './memberInfoReducers'
 import {
   DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
-  MEMBER_INFO_HAS_ERRORED,
   LOAD_SIGNUP_SUCCESS,
-  LOAD_SIGNUP_FAILURE,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
-  SIGNUP_DUPLICATE_FAILURE,
-  CREATE_USER_SUCCESS,
-  CREATE_USER_FAILURE,
-  CREATE_USER_DUPLICATE_FAILURE
+  CREATE_USER_SUCCESS
 } from '../constants/constants'
 
 describe('user reducer', () => {
@@ -19,42 +13,14 @@ describe('user reducer', () => {
     expect(reducer(undefined, {})).toEqual({
       isLoading: null,
       memberInfoHasSuccess: null,
-      memberInfoHasErrored: null,
       memberInfo: { isAutheticated: false },
       loadSignupSuccess: null,
-      loadSignupErrored: null,
       signupSuccess: null,
-      signupErrored: null,
       userRegisterDetails: null,
       createUserSuccess: null,
-      createUserErrored: null,
       errorMessage: null,
-      isDuplicate: null,
       user: {}
     })
-  })
-
-  it('should handle CREATE_USER_DUPLICATE_FAILURE', () => {
-    let action = { type: CREATE_USER_DUPLICATE_FAILURE, errorMessage: 'bad things' }
-    let expectedState = {
-      createUserErrored: true,
-      createUserSuccess: false,
-      isDuplicate: true,
-      errorMessage: action.errorMessage
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
-  })
-
-  it('should handle CREATE_USER_FAILURE', () => {
-    let action = { type: CREATE_USER_FAILURE, errorMessage: 'bad things' }
-    let expectedState = {
-      createUserErrored: true,
-      createUserSuccess: false,
-      errorMessage: action.errorMessage
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
   })
 
   it('should handle CREATE_USER_SUCCESS', () => {
@@ -72,30 +38,6 @@ describe('user reducer', () => {
     let action = { type: DATA_IS_LOADING, isLoading: false }
     let expectedState = {
       isLoading: action.isLoading
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
-  })
-
-  it('should handle SIGNUP_FAILURE', () => {
-    let action = { type: SIGNUP_FAILURE, errorMessage: 'Nope' }
-    let expectedState = {
-      signupSuccess: false,
-      signupErrored: true,
-      isDuplicate: false,
-      errorMessage: action.errorMessage
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
-  })
-
-  it('should handle SIGNUP_DUPLICATE_FAILURE', () => {
-    let action = { type: SIGNUP_DUPLICATE_FAILURE, errorMessage: 'Duplicate email address' }
-    let expectedState = {
-      signupSuccess: false,
-      signupErrored: true,
-      isDuplicate: true,
-      errorMessage: action.errorMessage
     }
 
     expect(reducer({}, action)).toEqual(expectedState)
@@ -125,17 +67,6 @@ describe('user reducer', () => {
     expect(reducer({}, action)).toEqual(expectedState)
   })
 
-  it('should handle LOAD_SIGNUP_FAILURE', () => {
-    let action = { type: LOAD_SIGNUP_FAILURE, errorMessage: 'Nope' }
-    let expectedState = {
-      loadSignupErrored: true,
-      loadSignupSuccess: false,
-      errorMessage: action.errorMessage
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
-  })
-
   it('should handle LOAD_SIGNUP_SUCCESS', () => {
     let action = {
       type: LOAD_SIGNUP_SUCCESS,
@@ -159,20 +90,6 @@ describe('user reducer', () => {
       memberInfo: action.memberInfo,
       memberInfoHasSuccess: true,
       memberInfoHasErrored: false
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
-  })
-
-  it('should handle MEMBER_INFO_HAS_ERRORED', () => {
-    let action = {
-      type: MEMBER_INFO_HAS_ERRORED,
-      errorMessage: 'You should feel bad about this error'
-    }
-    let expectedState = {
-      memberInfoHasErrored: true,
-      memberInfoHasSuccess: false,
-      errorMessage: action.errorMessage
     }
 
     expect(reducer({}, action)).toEqual(expectedState)
