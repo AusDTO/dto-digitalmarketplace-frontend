@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import SignupContainer from './components/SignupForm/SignupContainer'
 import CreateUser from './components/CreateUser/CreateUser'
+import BriefResponse from './components/BriefResponse/BriefResponse'
 import NotFound from './components/shared/NotFound'
 
 const RootContainer = () =>
@@ -18,6 +19,7 @@ export const Routes = ({ match }) =>
     <Route exact path={match.url} component={SignupContainer} />
     <Route path={`${rootPath}/signup`} component={SignupContainer} />
     <Route path={`${rootPath}/createuser/:tokenstring`} component={CreateUser} />
+    <Route path={`${rootPath}/brief/:brief_id/respond`} component={BriefResponse} />
     <Route component={NotFound} />
   </Switch>
 

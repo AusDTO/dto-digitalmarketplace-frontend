@@ -22,7 +22,9 @@ function getClientEnvironment(publicUrl) {
       // images into the `src` and `import` them in code to get their paths.
       'process.env.PUBLIC_URL': JSON.stringify(publicUrl),
       // include rollbar clientside token
-      'process.env.ROLLBAR_CLIENT_TOKEN': JSON.stringify(process.env.ROLLBAR_CLIENT_TOKEN)
+      'process.env.ROLLBAR_CLIENT_TOKEN': JSON.stringify(process.env.ROLLBAR_CLIENT_TOKEN),
+      // include build SHA
+      'process.env.CIRCLE_SHA1': JSON.stringify(process.env.CIRCLE_SHA1)
     });
 }
 
