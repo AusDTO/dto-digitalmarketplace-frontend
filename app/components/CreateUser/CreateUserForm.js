@@ -72,7 +72,7 @@ export const CreateUserForm = ({ model, initialState, handleSubmit, onSubmitClic
               </a>
             </span>
           }
-          description="blah"
+          description="The terms of use"
           detailsModel={model}
           validators={{ required: val => val }}
           messages={{ required: 'Accept Terms of Use' }}
