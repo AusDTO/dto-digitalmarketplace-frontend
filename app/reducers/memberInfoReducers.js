@@ -4,7 +4,8 @@ import {
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
   CREATE_USER_SUCCESS,
-  SET_ERROR_MESSAGE
+  SET_ERROR_MESSAGE,
+  SENDING_REQUEST
 } from '../constants/constants'
 
 let defaultUserState = {

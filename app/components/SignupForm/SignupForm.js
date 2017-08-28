@@ -91,7 +91,7 @@ class SignupForm extends BaseForm {
   }
 
   render() {
-    const { csrf_token, model, children, signupForm, buyer_url, seller_url, signupSuccess } = this.props
+    const { csrf_token, model, children, signupForm, buyer_url, seller_url, signupSuccess, currentlySending } = this.props
     let employmentStatus = signupForm.employment_status
     let action = isBuyer ? buyer_url : seller_url
     let { isBuyer, emailValidators, emailErrorMessages } = this.state
@@ -327,16 +327,16 @@ class SignupForm extends BaseForm {
                         </a>
                       </small>
                     </p>
-                    {this.props.currentlySending ? (
+                    {currentlySending ?
                       <LoadingButton />
-                    ) : (
+                    :
                       <input
                         className="uikit-btn"
                         type="submit"
                         value="Create your account"
                         onClick={this.onSubmitClicked}
                       />
-                    )}
+                    }
                   </Form>
                 </article>
               </Layout>}
@@ -356,7 +356,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     ...formProps(state, 'signupForm'),
-    signupSuccess: state.user.signupSuccess
+    signupSuccess: state.user.signupSuccess,
+    currentlySending: state.app.currentlySending
   }
 }
 

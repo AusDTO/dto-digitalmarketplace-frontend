@@ -17,13 +17,7 @@ import {
 } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
-
-export function handleDataLoading(bool) {
-  return {
-    type: DATA_IS_LOADING,
-    isLoading: bool
-  }
-}
+import {sendingRequest} from './appActions'
 
 export function handleMemberInfoSuccess(response) {
   return {
@@ -34,14 +28,14 @@ export function handleMemberInfoSuccess(response) {
 
 export function memberInfoFetchData() {
   return dispatch => {
-    dispatch(handleDataLoading(true))
+    dispatch(sendingRequest(true))
     dmapi({ url: '/ping' }).then(response => {
       if (response.error) {
         dispatch(setErrorMessage(GENERAL_ERROR))
       } else {
         dispatch(handleMemberInfoSuccess(response))
       }
-      dispatch(handleDataLoading(false))
+      dispatch(sendingRequest(false))
     })
   }
 }
@@ -54,7 +48,7 @@ export function handleSignupSuccess() {
 
 export function handleSignupSubmit(model) {
   return dispatch => {
-    dispatch(handleDataLoading(true))
+    dispatch(sendingRequest(true))
     dmapi({
       url: '/signup',
       method: 'POST',
@@ -69,7 +63,7 @@ export function handleSignupSubmit(model) {
       } else {
         dispatch(handleSignupSuccess(response))
       }
-      dispatch(handleDataLoading(false))
+      dispatch(sendingRequest(false))
     })
   }
 }
@@ -84,14 +78,14 @@ export function handleLoadSignupSuccess(response) {
 
 export function loadSignup(token) {
   return dispatch => {
-    dispatch(handleDataLoading(true))
+    dispatch(sendingRequest(true))
     dmapi({ url: `/signup/validate-invite/${token}` }).then(response => {
       if (response.error) {
         dispatch(setErrorMessage(REGISTRATION_NOT_FOUND))
       } else {
         dispatch(handleLoadSignupSuccess(response))
       }
-      dispatch(handleDataLoading(false))
+      dispatch(sendingRequest(false))
     })
   }
 }
@@ -106,7 +100,7 @@ export function handleCreateUserSuccess(response) {
 
 export function createUser(values) {
   return dispatch => {
-    dispatch(handleDataLoading(true))
+    dispatch(sendingRequest(true))
     dmapi({
       method: 'post',
       url: '/createuser',
@@ -121,7 +115,7 @@ export function createUser(values) {
       } else {
         dispatch(handleCreateUserSuccess(response))
       }
-      dispatch(handleDataLoading(false))
+      dispatch(sendingRequest(false))
     })
   }
 }
@@ -132,3 +126,4 @@ export function setErrorMessage(message) {
     message
   }
 }
+

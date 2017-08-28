@@ -169,10 +169,12 @@ form .hint {
 }
 
 .sk-circle {
-  margin: 100px auto;
-  width: 40px;
-  height: 40px;
+  margin: 0px 0px 0px 10px;
+  width: 35px;
+  height: 20px;
   position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 .sk-circle .sk-child {
   width: 100%;
@@ -187,7 +189,7 @@ form .hint {
   margin: 0 auto;
   width: 15%;
   height: 15%;
-  background-color: #333;
+  background-color: #ffffff;
   border-radius: 100%;
   -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
           animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
@@ -288,5 +290,10 @@ form .hint {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+}
+
+.loading-indicator {
+  padding: 0.6em 1.1em;
+  pointer-events: none;
 }
 

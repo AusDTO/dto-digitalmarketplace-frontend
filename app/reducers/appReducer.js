@@ -12,24 +12,22 @@
 
 import { SENDING_REQUEST } from '../constants/constants';
 
-// Object.assign is not yet fully supported in all browsers, so we fallback to
-// a polyfill
-const assign = Object.assign || require('object.assign');
-
 // The initial application state
-const initialState = {
+let initialState = {
   currentlySending: false
 };
 
-// Takes care of changing the application state
-export function homeReducer(state = initialState, action) {
+const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case SENDING_REQUEST:
-      return assign({}, state, {
+      return {
+        ...state,
         currentlySending: action.sending
-      });
-      break;
+      }
+
     default:
-      return state;
+      return state
   }
 }
+
+export default appReducer

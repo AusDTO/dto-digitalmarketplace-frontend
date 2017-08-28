@@ -9,9 +9,10 @@ import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator
 
 function LoadingButton(props) {
   return(
-    <a href="#" className={props.className + " uikit-btn"} disabled="true">
+    <div className={props.className + " uikit-btn loading-indicator"} disabled="true">
+      Loading
       <LoadingIndicator />
-    </a>
+    </div>
   )
 }
 
