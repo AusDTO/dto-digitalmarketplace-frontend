@@ -24,7 +24,7 @@ export const CreateUserForm = ({ model, initialState, handleSubmit, onSubmitClic
         submitClicked={submitClicked}
         setFocus={setFocus}
       />
-      {userType === 'buyer' /*eslint-disable indent */
+      {userType === 'buyer'
         ? <div>
             <h1>Add your name and password</h1>
             <p>To finish creating your account please provide the following details.</p>
@@ -32,7 +32,7 @@ export const CreateUserForm = ({ model, initialState, handleSubmit, onSubmitClic
         : <div>
             <h1>Add a password</h1>
             <p>To finish creating your account please provide the following details.</p>
-          </div> /*eslint-disable indent */}
+          </div>}
       <Form model={model} id="createuser" onSubmit={model => handleSubmit(model)}>
         {userType === 'buyer' &&
           <Textfield
