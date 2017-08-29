@@ -1,22 +1,22 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom'
 import Banner from './components/Banner/Banner'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/PageFooter'
 import { Provider } from 'react-redux'
 import configureStore from './store'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 
 import RootContainer from './routes'
+
 import './App.scss'
 
 const store = configureStore()
-const history = createHistory()
 
-render(
+const App = props => (
   <Provider store={store}>
-    <Router history={history}>
+    <BrowserRouter>
       <div id="Application">
         <header role="banner">
           <Banner />
@@ -27,7 +27,10 @@ render(
         </main>
         <Footer />
       </div>
-    </Router>
-  </Provider>,
-  document.getElementById('appReact')
+    </BrowserRouter>
+  </Provider>
 )
+
+ReactDOM.render(<App />, document.getElementById('appReact'))
+
+

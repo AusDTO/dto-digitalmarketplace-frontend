@@ -11,6 +11,7 @@ import formProps from '../../components/shared/form/formPropsSelector'
 import { createUser } from '../../actions/memberActions'
 import styles from './CreateUserForm.scss'
 import { rootPath } from '../../routes'
+import LoadingButton from '../../components/LoadingButton/LoadingButton'
 
 export class CreateUserForm extends BaseForm {
   constructor(props) {
@@ -39,7 +40,7 @@ export class CreateUserForm extends BaseForm {
   }
 
   render() {
-    const { model, initialState, handleSubmit } = this.props
+    const { model, initialState, handleSubmit, currentlySending } = this.props
     let userType = initialState.user_type
 
     let hasFocused = false
@@ -111,9 +112,12 @@ export class CreateUserForm extends BaseForm {
             validators={{ required: val => val }}
             messages={{ required: 'Accept Terms of Use' }}
           />
-          <p className={styles.formSubmitBtnWrapper}>
-            <input className="uikit-btn" type="submit" value="Join the Marketplace" onClick={this.onSubmitClicked} />
-          </p>
+          <div className={styles.formSubmitBtnWrapper}>
+            {currentlySending
+              ? <LoadingButton />
+              : <input className="uikit-btn" type="submit" value="Join the Marketplace" onClick={this.onSubmitClicked} />
+            }
+          </div>
         </Form>
       </div>
     )
@@ -135,7 +139,8 @@ const mapStateToProps = state => {
   return {
     ...formProps(state, 'createUserForm'),
     createUserSuccess: createUserSuccess,
-    isLoading: isLoading
+    isLoading: isLoading,
+    currentlySending: state.app.currentlySending
   }
 }
 
