@@ -23,7 +23,7 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE } from '../constants/constants'
 
 /**
  * Sets the requestSending state, which displays a loading indicator during requests
@@ -32,4 +32,11 @@ import { SENDING_REQUEST } from '../constants/constants'
  */
 export function sendingRequest(sending) {
   return { type: SENDING_REQUEST, sending }
+}
+
+export function setErrorMessage(errorMessage) {
+  return {
+    type: SET_ERROR_MESSAGE,
+    errorMessage
+  }
 }

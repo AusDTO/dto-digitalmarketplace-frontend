@@ -74,14 +74,15 @@ ErrorBox.propTypes = {
     })
   ).isRequired,
   form: PropTypes.object,
-  title: PropTypes.string
+  title: PropTypes.string,
+  errorMessage: PropTypes.string
 }
 
 export const mapStateToProps = (state, { model }) => {
   return {
     invalidFields: getInvalidFields(state, model),
     form: get(state, `forms.${model}.$form`, {}),
-    errorMessage: state.user.message
+    errorMessage: state.app.errorMessage
   }
 }
 
