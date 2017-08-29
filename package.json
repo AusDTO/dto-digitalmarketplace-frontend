@@ -5,6 +5,7 @@
   "devDependencies": {
     "@gov.au/body": "^0.1.1",
     "@gov.au/buttons": "^0.5.0",
+    "@gov.au/callout": "^0.3.0",
     "@gov.au/control-input": "^0.3.0",
     "@gov.au/cta-link": "^0.3.0",
     "@gov.au/direction-links": "^0.3.0",
@@ -116,11 +117,11 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "build:development": "node scripts/build.js --dev",
+    "build:development": "node $NODE_DEBUG_OPTION scripts/build.js --dev",
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
     "server": "node scripts/server.js",
-    "server:development": "nodemon scripts/server.js --watch build/render-server.js",
+    "server:development": "nodemon $NODE_DEBUG_OPTION scripts/server.js --watch build/render-server.js",
     "bdd-test": "node ./node_modules/.bin/wdio wdio.conf.js",
     "eslint": "./node_modules/.bin/eslint .",
     "prettier": "./node_modules/.bin/prettier --print-width 120 --single-quote --no-semi --write \"app/**/*.js\""
