@@ -3,8 +3,7 @@ import {
   MEMBER_INFO_FETCH_DATA_SUCCESS,
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
-  CREATE_USER_SUCCESS,
-  SENDING_REQUEST
+  CREATE_USER_SUCCESS
 } from '../constants/constants'
 
 let defaultUserState = {

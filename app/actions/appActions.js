@@ -23,7 +23,7 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST } from '../constants/constants';
+import { SENDING_REQUEST } from '../constants/constants'
 
 /**
  * Sets the requestSending state, which displays a loading indicator during requests
@@ -31,7 +31,5 @@ import { SENDING_REQUEST } from '../constants/constants';
  * @return {object}          Formatted action for the reducer to handle
  */
 export function sendingRequest(sending) {
-  return { type: SENDING_REQUEST, sending };
+  return { type: SENDING_REQUEST, sending }
 }
-
-

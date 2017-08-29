@@ -1,5 +1,4 @@
 import {
-  DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
@@ -17,7 +16,7 @@ import {
 } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
-import {sendingRequest} from './appActions'
+import { sendingRequest } from './appActions'
 
 export function handleMemberInfoSuccess(response) {
   return {
@@ -126,4 +125,3 @@ export function setErrorMessage(message) {
     message
   }
 }
-
