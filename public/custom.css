@@ -146,6 +146,10 @@ form .hint {
   -webkit-box-shadow: 0 0 0 3px #e05200;
   -moz-box-shadow: 0 0 0 3px #e05200;
   box-shadow: 0 0 0 3px #e05200;
+  
+}
+
+input[type="radio"].uikit-control-input__input:focus + .uikit-control-input__text:before {
   border-radius: 15px;
 }
 

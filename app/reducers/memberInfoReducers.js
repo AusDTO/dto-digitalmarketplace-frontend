@@ -4,7 +4,6 @@ import {
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
   CREATE_USER_SUCCESS,
-  SET_ERROR_MESSAGE,
   SENDING_REQUEST
 } from '../constants/constants'
 
@@ -16,7 +15,6 @@ let defaultUserState = {
   signupSuccess: null,
   userRegisterDetails: null,
   createUserSuccess: null,
-  errorMessage: null,
   user: {}
 }
 
@@ -57,12 +55,6 @@ const userReducer = (state = defaultUserState, action) => {
         user: action.data,
         createUserSuccess: true,
         createUserErrored: false
-      }
-
-    case SET_ERROR_MESSAGE:
-      return {
-        ...state,
-        message: action.message
       }
 
     default:

@@ -10,11 +10,14 @@
  *   });
  */
 
-import { SENDING_REQUEST } from '../constants/constants';
+import { 
+  SENDING_REQUEST,
+  SET_ERROR_MESSAGE } from '../constants/constants';
 
 // The initial application state
 let initialState = {
-  currentlySending: false
+  currentlySending: false,
+  message: null
 };
 
 const appReducer = (state = initialState, action) => {
@@ -23,6 +26,12 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         currentlySending: action.sending
+      }
+
+    case SET_ERROR_MESSAGE:
+      return {
+        ...state,
+        message: action.message
       }
 
     default:
