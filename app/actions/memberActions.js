@@ -1,10 +1,8 @@
 import {
-  DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
-  CREATE_USER_SUCCESS,
-  SET_ERROR_MESSAGE
+  CREATE_USER_SUCCESS
 } from '../constants/constants'
 
 import {
@@ -17,7 +15,7 @@ import {
 } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
-import {sendingRequest} from './appActions'
+import { sendingRequest, setErrorMessage } from './appActions'
 
 export function handleMemberInfoSuccess(response) {
   return {
@@ -119,11 +117,3 @@ export function createUser(values) {
     })
   }
 }
-
-export function setErrorMessage(message) {
-  return {
-    type: SET_ERROR_MESSAGE,
-    message
-  }
-}
-

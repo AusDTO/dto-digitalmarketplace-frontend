@@ -91,7 +91,16 @@ class SignupForm extends BaseForm {
   }
 
   render() {
-    const { csrf_token, model, children, signupForm, buyer_url, seller_url, signupSuccess, currentlySending } = this.props
+    const {
+      csrf_token,
+      model,
+      children,
+      signupForm,
+      buyer_url,
+      seller_url,
+      signupSuccess,
+      currentlySending
+    } = this.props
     let employmentStatus = signupForm.employment_status
     let action = isBuyer ? buyer_url : seller_url
     let { isBuyer, emailValidators, emailErrorMessages } = this.state
@@ -327,16 +336,14 @@ class SignupForm extends BaseForm {
                         </a>
                       </small>
                     </p>
-                    {currentlySending ?
-                      <LoadingButton />
-                    :
-                      <input
-                        className="uikit-btn"
-                        type="submit"
-                        value="Create your account"
-                        onClick={this.onSubmitClicked}
-                      />
-                    }
+                    {currentlySending
+                      ? <LoadingButton />
+                      : <input
+                          className="uikit-btn"
+                          type="submit"
+                          value="Create your account"
+                          onClick={this.onSubmitClicked}
+                        />}
                   </Form>
                 </article>
               </Layout>}

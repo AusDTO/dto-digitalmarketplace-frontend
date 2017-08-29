@@ -15,7 +15,6 @@ const RootContainer = () =>
 export default withRouter(RootContainer)
 
 export const Routes = ({ match }) =>
-  
   <Switch>
     <Route exact path={match.url} component={SignupContainer} />
     <Route path={`${rootPath}/signup`} component={SignupContainer} />
