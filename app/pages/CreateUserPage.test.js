@@ -2,9 +2,9 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import expect from 'expect'
 import { shallow } from 'enzyme'
-import { CreateUserContainer } from './CreateUserContainer'
+import { CreateUserPage } from './CreateUserPage'
 
-test('Test suite for CreateUserContainer container component', () => {
+test('Test suite for CreateUserPage page', () => {
   let state = {
     userRegistrationDetails: {
       name: 'Jeff Labowski',
@@ -14,13 +14,13 @@ test('Test suite for CreateUserContainer container component', () => {
     loadRegistrationData: () => true
   }
 
-  it('CreateUserContainer renders without errors', () => {
-    let wrapper = shallow(<CreateUserContainer {...state} />)
+  it('CreateUserPage renders without errors', () => {
+    let wrapper = shallow(<CreateUserPage {...state} />)
     expect(wrapper).toExist()
   })
 
   it('Because snaphots', () => {
-    let component = renderer.create(<CreateUserContainer {...state} />)
+    let component = renderer.create(<CreateUserPage {...state} />)
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })

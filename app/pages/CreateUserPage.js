@@ -9,7 +9,7 @@ import formProps from '../components/shared/form/formPropsSelector'
 import { withRouter } from 'react-router-dom'
 import { rootPath } from '../routes'
 
-export class CreateUserContainer extends BaseForm {
+export class CreateUserPage extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
@@ -68,7 +68,7 @@ export class CreateUserContainer extends BaseForm {
   }
 }
 
-CreateUserContainer.propTypes = {
+CreateUserPage.propTypes = {
   userRegisterDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email_address: PropTypes.string.isRequired,
@@ -97,4 +97,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPage))
