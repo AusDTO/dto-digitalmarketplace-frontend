@@ -38,7 +38,14 @@ export class CreateUserPage extends BaseForm {
   }
 
   render() {
-    let { model, loadSignupSuccess, userRegisterDetails, handleSubmit, createUserSuccess, currentlySending } = this.props
+    let {
+      model,
+      loadSignupSuccess,
+      userRegisterDetails,
+      handleSubmit,
+      createUserSuccess,
+      currentlySending
+    } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -61,7 +68,6 @@ export class CreateUserPage extends BaseForm {
                   createUserSuccess={createUserSuccess}
                   model={model}
                   currentlySending={currentlySending}
-
                 />
               : <ErrorBox title="There was a problem loading your details" setFocus={setFocus} />}
           </article>

@@ -5,8 +5,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/PageFooter'
 import { Provider } from 'react-redux'
 import configureStore from './store'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import createHistory from 'history/createBrowserHistory'
+import { BrowserRouter } from 'react-router-dom'
 
 import RootContainer from './routes'
 
@@ -14,7 +13,7 @@ import './App.scss'
 
 const store = configureStore()
 
-const App = props => (
+const App = () =>
   <Provider store={store}>
     <BrowserRouter>
       <div id="Application">
@@ -29,8 +28,5 @@ const App = props => (
       </div>
     </BrowserRouter>
   </Provider>
-)
 
 ReactDOM.render(<App />, document.getElementById('appReact'))
-
-

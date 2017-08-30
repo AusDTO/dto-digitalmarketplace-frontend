@@ -18,13 +18,6 @@ import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 import { actions } from 'react-redux-form'
 
-export function handleDataLoading(bool) {
-  return {
-    type: DATA_IS_LOADING,
-    isLoading: bool
-  }
-}
-
 export function handleMemberInfoSuccess(response) {
   return {
     type: MEMBER_INFO_FETCH_DATA_SUCCESS,

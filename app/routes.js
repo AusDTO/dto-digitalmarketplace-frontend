@@ -24,24 +24,3 @@ export const Routes = ({ match }) =>
   </Switch>
 
 export const rootPath = '/2'
-
-// import React from 'react'
-// import { withRouter, Switch, Route } from 'react-router-dom'
-// import SignupContainer from './components/SignupForm/SignupContainer'
-// import CreateUser from './components/CreateUser/CreateUser'
-// import BriefResponse from './components/BriefResponse/BriefResponse'
-// import NotFound from './components/shared/NotFound'
-
-// const PrimaryLayout = ({ match }) => (
-//   <div className="primary-layout">
-//     <Switch>
-//       <Route exact path={match.url} component={SignupContainer} />
-//       <Route path={`${match.path}/signup`} component={SignupContainer} />
-//       <Route path={`${match.path}/createuser/:tokenstring`} component={CreateUser} />
-//       <Route path={`${match.path}/brief/:brief_id/respond`} component={BriefResponse} />
-//       <Route component={NotFound} />
-//     </Switch>
-//   </div>
-// )
-
-// export default PrimaryLayout
