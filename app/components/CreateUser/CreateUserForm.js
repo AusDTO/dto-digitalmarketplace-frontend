@@ -4,8 +4,16 @@ import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
 import CheckboxDetailsField from '../../components/shared/form/CheckboxDetailsField'
 import styles from './CreateUserForm.scss'
+import LoadingButton from '../../components/LoadingButton/LoadingButton'
 
-export const CreateUserForm = ({ model, initialState, handleSubmit, onSubmitClicked, submitClicked }) => {
+export const CreateUserForm = ({
+  model,
+  initialState,
+  handleSubmit,
+  onSubmitClicked,
+  submitClicked,
+  currentlySending
+}) => {
   let userType = initialState.user_type
 
   let hasFocused = false
@@ -77,9 +85,11 @@ export const CreateUserForm = ({ model, initialState, handleSubmit, onSubmitClic
           validators={{ required: val => val }}
           messages={{ required: 'Accept Terms of Use' }}
         />
-        <p className={styles.formSubmitBtnWrapper}>
-          <input className="uikit-btn" type="submit" value="Join the Marketplace" onClick={onSubmitClicked} />
-        </p>
+        <div className={styles.formSubmitBtnWrapper}>
+          {currentlySending
+            ? <LoadingButton />
+            : <input className="uikit-btn" type="submit" value="Join the Marketplace" onClick={onSubmitClicked} />}
+        </div>
       </Form>
     </div>
   )

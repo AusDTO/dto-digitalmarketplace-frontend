@@ -13,7 +13,8 @@ export class CreateUserPage extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
-      submitClicked: null
+      submitClicked: null,
+      currentlySending: null
     }
   }
 
@@ -37,7 +38,14 @@ export class CreateUserPage extends BaseForm {
   }
 
   render() {
-    let { model, loadSignupSuccess, userRegisterDetails, handleSubmit, createUserSuccess } = this.props
+    let {
+      model,
+      loadSignupSuccess,
+      userRegisterDetails,
+      handleSubmit,
+      createUserSuccess,
+      currentlySending
+    } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -59,6 +67,7 @@ export class CreateUserPage extends BaseForm {
                   handleSubmit={handleSubmit}
                   createUserSuccess={createUserSuccess}
                   model={model}
+                  currentlySending={currentlySending}
                 />
               : <ErrorBox title="There was a problem loading your details" setFocus={setFocus} />}
           </article>
@@ -84,7 +93,8 @@ const mapStateToProps = state => {
     ...formProps(state, 'createUserForm'),
     userRegisterDetails: state.user.userRegisterDetails,
     loadSignupSuccess: state.user.loadSignupSuccess,
-    createUserSuccess: state.user.createUserSuccess
+    createUserSuccess: state.user.createUserSuccess,
+    currentlySending: state.app.currentlySending
   }
 }
 

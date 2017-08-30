@@ -75,6 +75,7 @@
   },
   "dependencies": {
     "abnacn-validator": "0.0.5",
+    "async": "^2.5.0",
     "axios": "^0.16.2",
     "body-parser": "1.17.2",
     "classnames": "2.2.5",
@@ -102,6 +103,7 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "request-ip": "^2.0.2",
     "reselect": "^3.0.1",
     "rollbar": "^2.2.3",
     "sass-loader": "^4.0.0",
