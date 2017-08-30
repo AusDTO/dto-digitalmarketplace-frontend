@@ -3,7 +3,7 @@ import { withRouter, Switch, Route } from 'react-router-dom'
 import SignupContainer from './components/SignupForm/SignupContainer'
 import CreateUserPage from './pages/CreateUserPage'
 import BriefResponse from './components/BriefResponse/BriefResponse'
-import ResetPasswordRouter from './components/ResetPassword/ResetPasswordRoutes'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 import NotFound from './components/shared/NotFound'
 
 const RootContainer = () =>
@@ -21,7 +21,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/signup`} component={SignupContainer} />
     <Route path={`${rootPath}/createuser/:tokenstring`} component={CreateUserPage} />
     <Route path={`${rootPath}/brief/:brief_id/respond`} component={BriefResponse} />
-    <Route path={`${rootPath}/reset-password`} component={ResetPasswordRouter} />
+    <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route component={NotFound} />
   </Switch>
 
