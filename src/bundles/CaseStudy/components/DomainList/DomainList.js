@@ -85,7 +85,8 @@ class DomainList extends BaseForm {
       onAddCaseStudy,
       onDeleteCaseStudy,
       nextRoute,
-      assessedDomains
+      assessedDomains,
+      csrf_token
     } = this.props;
 
     const studies         = caseStudyForm.case_studies;
@@ -201,6 +202,10 @@ class DomainList extends BaseForm {
                   }
                 }}
                 onSubmit={onSubmit}>
+
+                {csrf_token && (
+                  <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
+                )}
 
                 {children}
 

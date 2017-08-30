@@ -16,6 +16,14 @@ import {
 
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
+import { actions } from 'react-redux-form'
+
+export function handleDataLoading(bool) {
+  return {
+    type: DATA_IS_LOADING,
+    isLoading: bool
+  }
+}
 
 export function handleMemberInfoSuccess(response) {
   return {
@@ -81,6 +89,7 @@ export function loadSignup(token) {
       if (response.error) {
         dispatch(setErrorMessage(REGISTRATION_NOT_FOUND))
       } else {
+        dispatch(actions.load('createUserForm', response.data))
         dispatch(handleLoadSignupSuccess(response))
       }
       dispatch(sendingRequest(false))
