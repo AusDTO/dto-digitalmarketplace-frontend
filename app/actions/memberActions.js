@@ -61,7 +61,7 @@ export function handleSignupSubmit(model) {
           dispatch(setErrorMessage(UNABLE_TO_SIGNUP))
         }
       } else {
-        dispatch(handleSignupSuccess(response))
+        dispatch(handleSignupSuccess())
       }
       dispatch(handleDataLoading(false))
     })
