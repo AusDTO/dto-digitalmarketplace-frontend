@@ -45,17 +45,7 @@ export const ResetPasswordForm = ({ model, user, submitClicked, handleSubmit }) 
           <header className="page-heading page-heading-without-breadcrumb">
             <h1 className="uikit-display-5">Reset password</h1>
           </header>
-          <Form
-            model={model}
-            id="resetPassword"
-            validators={{
-              '': {
-                // Form-level validator
-                passwordsMatch: val => passwordsMatch(val)
-              }
-            }}
-            onSubmit={model => handleSubmit(model)}
-          >
+          <Form model={model} id="resetPassword" onSubmit={model => handleSubmit(model)}>
             <Textfield
               model={`${model}.password`}
               name="password"

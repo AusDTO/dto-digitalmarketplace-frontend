@@ -6,7 +6,7 @@ import BaseForm from '../../components/shared/form/BaseForm'
 import { ResetPasswordForm } from './ResetPasswordForm'
 import formProps from '../../components/shared/form/formPropsSelector'
 import { submitResetPassword, getUserDataFromToken } from '../../actions/resetPasswordActions'
-import { passwordsMatch } from '../validators'
+import { setErrorMessage } from '../../actions/memberActions'
 
 export class ResetPasswordContainer extends BaseForm {
   static propTypes = {
@@ -27,6 +27,14 @@ export class ResetPasswordContainer extends BaseForm {
   componentWillMount() {
     let tokenString = this.props.match.params.tokenString
     this.props.loadInitialData(tokenString)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.form.validity.passwordsMatch !== nextProps.form.validity.passwordsMatch) {
+      if (!nextProps.form.validity.passwordsMatch) {
+        this.props.passwordsMatchMessage('Passwords do not match.')
+      }
+    }
   }
 
   handleSubmit(values) {
@@ -64,7 +72,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleSubmit: payload => dispatch(submitResetPassword(payload)),
-    loadInitialData: token => dispatch(getUserDataFromToken(token))
+    loadInitialData: token => dispatch(getUserDataFromToken(token)),
+    passwordsMatchMessage: message => dispatch(setErrorMessage(message))
   }
 }
 
