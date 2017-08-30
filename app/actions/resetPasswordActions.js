@@ -1,15 +1,14 @@
 import {
   GET_RESET_DATA_SUCCESS,
-  GET_RESET_DATA_FAILURE,
-  RESET_PASSWORD_EMAIL_FAILURE,
   RESET_PASSWORD_EMAIL_SUCCESS,
-  RESET_PASSWORD_FAILURE,
-  RESET_PASSWORD_SUCCESS
+  RESET_PASSWORD_SUCCESS,
+  GET_RESET_DATA_FAILURE
 } from '../constants/constants'
 
-import { handleDataLoading } from './commonActions'
+import { GENERAL_ERROR, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
+import { sendingRequest, setErrorMessage } from './appActions'
 
 export function handleResetPasswordSuccess() {
   return {
@@ -17,16 +16,9 @@ export function handleResetPasswordSuccess() {
   }
 }
 
-export function handleResetPasswordFailure(response) {
-  return {
-    type: RESET_PASSWORD_EMAIL_FAILURE,
-    errorMessage: response.data.message
-  }
-}
-
 export function sendResetPasswordEmail(values) {
   return dispatch => {
-    dispatch(handleDataLoading(true))
+    dispatch(sendingRequest(true))
     dmapi({
       method: 'post',
       url: '/reset-password/',
@@ -37,11 +29,11 @@ export function sendResetPasswordEmail(values) {
       })
       .then(response => {
         if (response.error) {
-          dispatch(handleResetPasswordFailure(response))
+          dispatch(setErrorMessage(UNABLE_TO_SEND))
         } else {
           dispatch(handleResetPasswordSuccess())
         }
-        dispatch(handleDataLoading(false))
+        dispatch(sendingRequest(false))
       })
   }
 }
@@ -53,23 +45,16 @@ export function handleGetResetDataSuccess(response) {
   }
 }
 
-export function handleGetResetDataFailure(response) {
-  return {
-    type: GET_RESET_DATA_FAILURE,
-    errorMessage: response.data.message
-  }
-}
-
 export function getUserDataFromToken(token) {
   return dispatch => {
-    dispatch(handleDataLoading(true))
+    dispatch(sendingRequest(true))
     dmapi({ url: `/reset-password/${token}` }).then(response => {
       if (response.error) {
-        dispatch(handleGetResetDataFailure(response))
+        dispatch(setErrorMessage(GENERAL_ERROR))
       } else {
         dispatch(handleGetResetDataSuccess(response))
       }
-      dispatch(handleDataLoading(false))
+      dispatch(sendingRequest(false))
     })
   }
 }
@@ -81,27 +66,20 @@ export function handleSubmitResetPasswordSuccess(response) {
   }
 }
 
-export function handleSubmitResetPasswordFailure(response) {
-  return {
-    type: RESET_PASSWORD_FAILURE,
-    errorMessage: response.data.message
-  }
-}
-
 export function submitResetPassword(values) {
   return dispatch => {
-    dispatch(handleDataLoading(true))
+    dispatch(sendingRequest(true))
     dmapi({
       method: 'post',
       url: `/reset-password/${values.token}`,
       data: JSON.stringify(values)
     }).then(response => {
       if (response.error) {
-        dispatch(handleSubmitResetPasswordFailure(response))
+        dispatch(setErrorMessage(UNABLE_TO_RESET))
       } else {
         dispatch(handleSubmitResetPasswordSuccess(response))
       }
-      dispatch(handleDataLoading(false))
+      dispatch(sendingRequest(false))
     })
   }
 }

@@ -6,7 +6,7 @@ import PageAlert from '@gov.au/page-alerts'
 import { required, validEmail } from '../validators'
 
 export const RequestResetEmailForm = ({ model, form, user, submitClicked, handleSubmit }) => {
-  let { resetPasswordEmailFailure, resetPasswordEmailSuccess } = user
+  let { resetPasswordEmailSuccess } = user
   let { valid } = form
 
   let hasFocused = false
@@ -21,7 +21,7 @@ export const RequestResetEmailForm = ({ model, form, user, submitClicked, handle
     <div className="row">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {resetPasswordEmailFailure &&
+          {resetPasswordEmailSuccess &&
             valid &&
             <PageAlert as="error">
               <h4>We were unable to send your password reset email</h4>

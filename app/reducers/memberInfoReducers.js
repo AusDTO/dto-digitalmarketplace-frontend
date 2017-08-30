@@ -7,10 +7,8 @@ import {
   SET_ERROR_MESSAGE,
   GET_RESET_DATA_SUCCESS,
   GET_RESET_DATA_FAILURE,
-  RESET_PASSWORD_EMAIL_FAILURE,
   RESET_PASSWORD_EMAIL_SUCCESS,
-  RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILURE
+  RESET_PASSWORD_SUCCESS
 } from '../constants/constants'
 
 let defaultUserState = {
@@ -22,9 +20,7 @@ let defaultUserState = {
   userRegisterDetails: null,
   createUserSuccess: null,
   resetPasswordEmailSuccess: null,
-  resetPasswordEmailFailure: null,
   resetPasswordSuccess: null,
-  resetPasswordFailure: null,
   errorMessage: null,
   user: {}
 }
@@ -93,16 +89,7 @@ const userReducer = (state = defaultUserState, action) => {
       return {
         ...state,
         resetPasswordEmailSuccess: true,
-        resetPasswordEmailFailure: false,
         errorMessage: false
-      }
-
-    case RESET_PASSWORD_EMAIL_FAILURE:
-      return {
-        ...state,
-        resetPasswordEmailSuccess: false,
-        resetPasswordEmailFailure: true,
-        errorMessage: action.errorMessage
       }
 
     case RESET_PASSWORD_SUCCESS:
@@ -111,13 +98,6 @@ const userReducer = (state = defaultUserState, action) => {
         user: Object.assign({}, state.user, action.user),
         resetPasswordSuccess: true,
         errorMessage: false
-      }
-
-    case RESET_PASSWORD_FAILURE:
-      return {
-        ...state,
-        resetPasswordSuccess: false,
-        errorMessage: action.errorMessage
       }
 
     default:
