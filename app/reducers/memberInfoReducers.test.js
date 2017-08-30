@@ -18,6 +18,10 @@ describe('user reducer', () => {
       signupSuccess: null,
       userRegisterDetails: null,
       createUserSuccess: null,
+      resetPasswordEmailSuccess: null,
+      resetPasswordEmailFailure: null,
+      resetPasswordSuccess: null,
+      resetPasswordFailure: null,
       errorMessage: null,
       user: {}
     })

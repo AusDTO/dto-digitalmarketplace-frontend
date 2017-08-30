@@ -67,7 +67,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const RequestResetEmailContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(RequestResetEmail))
+export const RequestResetEmailContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(RequestResetEmail))
 
 class ResetPassword extends BaseForm {
   static propTypes = {
@@ -148,7 +148,7 @@ const mapResetDispatchToProps = dispatch => {
   }
 }
 
-const ResetPasswordContainer = withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPassword))
+export const ResetPasswordContainer = withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPassword))
 
 const ResetPasswordRouter = ({ match }) =>
   <Switch>
