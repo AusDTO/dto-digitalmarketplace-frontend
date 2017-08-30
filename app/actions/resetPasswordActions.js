@@ -45,12 +45,21 @@ export function handleGetResetDataSuccess(response) {
   }
 }
 
+export function handleGetResetFailure() {
+  return { type: GET_RESET_DATA_FAILURE }
+}
+
 export function getUserDataFromToken(token) {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({ url: `/reset-password/${token}` }).then(response => {
       if (response.error) {
-        dispatch(setErrorMessage(GENERAL_ERROR))
+        if (response.data.message) {
+          dispatch(setErrorMessage(`${response.data.message}. Try resending reset password email.`))
+        } else {
+          dispatch(setErrorMessage(GENERAL_ERROR))
+        }
+        dispatch(handleGetResetFailure())
       } else {
         dispatch(handleGetResetDataSuccess(response))
       }

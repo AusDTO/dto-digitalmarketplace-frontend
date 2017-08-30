@@ -8,7 +8,7 @@ import formProps from '../components/shared/form/formPropsSelector'
 import { RequestResetEmailForm } from '../components/ResetPassword/RequestResetEmailForm'
 import { ResetPasswordForm } from '../components/ResetPassword/ResetPasswordForm'
 import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/resetPasswordActions'
-import { setErrorMessage } from '../actions/memberActions'
+import { setErrorMessage } from '../actions/appActions'
 
 class RequestResetEmail extends BaseForm {
   static propTypes = {
@@ -111,10 +111,11 @@ class ResetPassword extends BaseForm {
   }
 
   render() {
-    const { user, model } = this.props
+    const { user, model, form } = this.props
     return (
       <ResetPasswordForm
         model={model}
+        form={form}
         user={user}
         submitClicked={this.onSubmitClicked}
         handleSubmit={this.handleSubmit}
@@ -125,9 +126,7 @@ class ResetPassword extends BaseForm {
 
 ResetPassword.propTypes = {
   user: PropTypes.shape({
-    resetPasswordSuccess: PropTypes.bool,
-    getResetDataSuccess: PropTypes.bool,
-    errorMessage: PropTypes.string
+    resetPasswordSuccess: PropTypes.bool
   }).isRequired,
   form: PropTypes.object.isRequired,
   model: PropTypes.string.isRequired
