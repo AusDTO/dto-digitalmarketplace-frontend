@@ -1,5 +1,4 @@
 import {
-  DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
@@ -18,13 +17,7 @@ import {
 
 import dmapi from '../services/apiClient'
 import { actions } from 'react-redux-form'
-
-export function handleDataLoading(bool) {
-  return {
-    type: DATA_IS_LOADING,
-    isLoading: bool
-  }
-}
+import { handleDataLoading } from './commonActions'
 
 export function handleMemberInfoSuccess(response) {
   return {

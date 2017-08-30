@@ -13,6 +13,8 @@ export default combineReducers({
   ...createForms({
     signupForm: {},
     createUserForm: {},
-    briefResponseForm: {}
+    briefResponseForm: {},
+    resetPasswordEmailForm: {},
+    resetPasswordForm: {}
   })
 })
