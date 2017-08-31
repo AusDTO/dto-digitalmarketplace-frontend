@@ -19,7 +19,10 @@ export class CreateUserPage extends BaseForm {
   }
 
   componentWillMount() {
-    let tokenString = this.props.match.params.tokenstring
+    const tokenString = this.props.location.pathname.substring(
+      this.props.match.url.length + 1,
+      this.props.location.pathname.length
+    )
     this.props.loadRegistrationData(tokenString)
   }
 

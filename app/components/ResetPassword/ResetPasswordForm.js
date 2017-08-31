@@ -1,11 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
 import PageAlert from '@gov.au/page-alerts'
 import { passwordLength } from '../validators'
 
-export const ResetPasswordForm = ({ model, form, user, submitClicked, handleSubmit }) => {
+const ResetPasswordForm = props => {
+  let { model, form, user, submitClicked, handleSubmit } = props
   let { resetPasswordSuccess } = user
   let { valid, submitFailed } = form
 
@@ -90,3 +92,18 @@ export const ResetPasswordForm = ({ model, form, user, submitClicked, handleSubm
     </div>
   )
 }
+
+ResetPasswordForm.propTypes = {
+  form: PropTypes.shape({
+    valid: PropTypes.bool,
+    submitFailed: PropTypes.bool
+  }),
+  user: PropTypes.shape({
+    resetPasswordSuccess: PropTypes.bool
+  }).isRequired,
+  model: PropTypes.string.isRequired,
+  submitClicked: PropTypes.func,
+  handleSubmit: PropTypes.func
+}
+
+export default ResetPasswordForm

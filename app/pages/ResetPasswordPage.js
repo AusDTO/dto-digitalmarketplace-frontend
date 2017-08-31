@@ -1,93 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import NotFound from '../components/shared/NotFound'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import BaseForm from '../components/shared/form/BaseForm'
 import formProps from '../components/shared/form/formPropsSelector'
-import { RequestResetEmailForm } from '../components/ResetPassword/RequestResetEmailForm'
-import { ResetPasswordForm } from '../components/ResetPassword/ResetPasswordForm'
+import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
+import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
 import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/resetPasswordActions'
 import { setErrorMessage } from '../actions/appActions'
 
-class RequestResetEmail extends BaseForm {
-  static propTypes = {
-    action: PropTypes.string,
-    csrf_token: PropTypes.string,
-    form: PropTypes.object.isRequired,
-    errors: PropTypes.object
-  }
-
+class ResetPasswordPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
       submitClicked: null
     }
-  }
-
-  onSubmitClicked = () => {
-    this.setState({
-      submitClicked: new Date().valueOf()
-    })
-  }
-
-  render() {
-    const { user, model, form, handleSubmit } = this.props
-    return (
-      <RequestResetEmailForm
-        model={model}
-        form={form}
-        user={user}
-        submitClicked={this.onSubmitClicked}
-        handleSubmit={handleSubmit}
-      />
-    )
-  }
-}
-
-RequestResetEmail.propTypes = {
-  user: PropTypes.shape({
-    resetPasswordEmailFailure: PropTypes.bool,
-    resetPasswordEmailSuccess: PropTypes.bool
-  }).isRequired,
-  form: PropTypes.object.isRequired,
-  model: PropTypes.string.isRequired
-}
-
-const mapStateToProps = state => {
-  return {
-    ...formProps(state, 'resetPasswordEmailForm'),
-    user: state.user
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    handleSubmit: model => dispatch(sendResetPasswordEmail(model))
-  }
-}
-
-export const RequestResetEmailContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(RequestResetEmail))
-
-class ResetPassword extends BaseForm {
-  static propTypes = {
-    action: PropTypes.string,
-    csrf_token: PropTypes.string,
-    form: PropTypes.object.isRequired,
-    errors: PropTypes.object
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      submitClicked: null
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount() {
-    let tokenString = this.props.match.params.tokenString
-    this.props.loadInitialData(tokenString)
+    const tokenString = this.props.location.pathname.substring(
+      this.props.match.url.length + 1,
+      this.props.location.pathname.length
+    )
+    if (tokenString.length > 0) {
+      this.props.loadInitialData(tokenString)
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -98,62 +35,85 @@ class ResetPassword extends BaseForm {
     }
   }
 
-  handleSubmit(values) {
-    const { user } = this.props
-    const payload = Object.assign({}, values, user.user)
-    this.props.handleSubmit(payload)
-  }
-
   onSubmitClicked = () => {
     this.setState({
       submitClicked: new Date().valueOf()
     })
   }
 
+  handleResetPasswordSubmit(values) {
+    const { user } = this.props
+    const payload = Object.assign({}, values, user.user)
+    this.props.handleResetPasswordSubmit(payload)
+  }
+
   render() {
-    const { user, model, form } = this.props
+    const { match, user, model, form, handleSendEmailSubmit } = this.props
     return (
-      <ResetPasswordForm
-        model={model}
-        form={form}
-        user={user}
-        submitClicked={this.onSubmitClicked}
-        handleSubmit={this.handleSubmit}
-      />
+      <div className="reset-password-page">
+        <Switch>
+          <Route
+            exact
+            path={match.url}
+            render={() =>
+              <RequestResetEmailForm
+                model={model}
+                form={form}
+                user={user}
+                submitClicked={this.onSubmitClicked}
+                handleSubmit={handleSendEmailSubmit}
+              />}
+          />
+
+          <Route
+            path={`${match.url}/:tokenString`}
+            render={() =>
+              <ResetPasswordForm
+                model={model}
+                form={form}
+                user={user}
+                submitClicked={this.onSubmitClicked}
+                handleSubmit={values => this.handleResetPasswordSubmit(values)}
+              />}
+          />
+
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     )
   }
 }
 
-ResetPassword.propTypes = {
+ResetPasswordPage.propTypes = {
+  form: PropTypes.shape({
+    valid: PropTypes.bool,
+    submitFailed: PropTypes.bool
+  }),
   user: PropTypes.shape({
     resetPasswordSuccess: PropTypes.bool
   }).isRequired,
-  form: PropTypes.object.isRequired,
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  passwordsMatchMessage: PropTypes.func,
+  loadInitialData: PropTypes.func,
+  handleResetPasswordSubmit: PropTypes.func,
+  handleSendEmailSubmit: PropTypes.func
 }
 
 const mapResetStateToProps = state => {
   return {
     ...formProps(state, 'resetPasswordForm'),
+    ...formProps(state, 'resetPasswordEmailForm'),
     user: state.user
   }
 }
 
 const mapResetDispatchToProps = dispatch => {
   return {
-    handleSubmit: payload => dispatch(submitResetPassword(payload)),
+    handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
+    handleResetPasswordSubmit: payload => dispatch(submitResetPassword(payload)),
     loadInitialData: token => dispatch(getUserDataFromToken(token)),
     passwordsMatchMessage: message => dispatch(setErrorMessage(message))
   }
 }
 
-export const ResetPasswordContainer = withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPassword))
-
-const ResetPasswordRouter = ({ match }) =>
-  <Switch>
-    <Route exact path={match.url} component={RequestResetEmailContainer} />
-    <Route path={`${match.url}/:tokenString`} component={ResetPasswordContainer} />
-    <Route component={NotFound} />
-  </Switch>
-
-export default withRouter(ResetPasswordRouter)
+export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPasswordPage))

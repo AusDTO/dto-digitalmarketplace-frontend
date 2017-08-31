@@ -6,23 +6,16 @@ import BriefResponse from './components/BriefResponse/BriefResponse'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import NotFound from './components/shared/NotFound'
 
-const RootContainer = () =>
-  <Switch>
-    <Route path={rootPath} component={Routes} />
-    <Route exact path="/signup/createuser/:tokenstring" component={CreateUserPage} />
-    <Route component={NotFound} />
-  </Switch>
+export const rootPath = '/2'
 
-export default withRouter(RootContainer)
-
-export const Routes = () =>
+export const RootContainer = () =>
   <Switch>
     <Route exact path={rootPath} component={SignupContainer} />
     <Route path={`${rootPath}/signup`} component={SignupContainer} />
-    <Route path={`${rootPath}/createuser/:tokenstring`} component={CreateUserPage} />
+    <Route path={`${rootPath}/createuser`} component={CreateUserPage} />
     <Route path={`${rootPath}/brief/:brief_id/respond`} component={BriefResponse} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route component={NotFound} />
   </Switch>
 
-export const rootPath = '/2'
+export default withRouter(RootContainer)
