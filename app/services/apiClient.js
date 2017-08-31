@@ -10,13 +10,13 @@ import axios from 'axios'
    * @param {function|null}     validateStatus, what http response status should be treated as successful
    * @param {number|null}       timeout
    * @return {object:Promise}   response
- **/
+ * */
 
 const dmapi = apiParams => {
   const defaultHeaders = { 'Content-Type': 'application/json' }
   const defaultValidateStatus = status => status >= 200 && status <= 300
 
-  let {
+  const {
     url,
     method = 'get',
     baseURL = '/api',
@@ -43,6 +43,7 @@ const dmapi = apiParams => {
       if (response) {
         return response
       }
+      return true
     })
     .catch(error => {
       if (error.response) {
@@ -51,6 +52,7 @@ const dmapi = apiParams => {
           error: true
         }
       }
+      return true
     })
 }
 

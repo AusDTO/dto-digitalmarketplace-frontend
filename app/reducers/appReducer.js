@@ -13,7 +13,7 @@
 import { SENDING_REQUEST, SET_ERROR_MESSAGE } from '../constants/constants'
 
 // The initial application state
-let initialState = {
+const initialState = {
   currentlySending: false,
   errorMessage: null
 }

@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: 0 */
 export const MESSAGE = 'error/message'
 export const REMOVE = 'error/remove'
 

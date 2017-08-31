@@ -7,7 +7,7 @@ import {
   BRIEF_RESPONSE_DUPLICATE_FAILURE
 } from '../constants/constants'
 
-let defaultBriefState = {
+const defaultBriefState = {
   isLoading: null,
   loadBriefSuccess: null,
   loadBriefErrored: null,

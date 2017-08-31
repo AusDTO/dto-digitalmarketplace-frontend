@@ -1,18 +1,11 @@
 import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import SignupContainer from './components/SignupForm/SignupContainer'
-import CreateUserPage from './pages/CreateUserPage'
-import BriefResponse from './components/BriefResponse/BriefResponse'
+import CreateUserPage from './pages/CreateUserPage' // eslint-disable-line import/no-named-as-default
+import BriefResponse from './components/BriefResponse/BriefResponse' // eslint-disable-line import/no-named-as-default
 import NotFound from './components/shared/NotFound'
 
-const RootContainer = () =>
-  <Switch>
-    <Route path={rootPath} component={Routes} />
-    <Route exact path="/signup/createuser/:tokenstring" component={CreateUserPage} />
-    <Route component={NotFound} />
-  </Switch>
-
-export default withRouter(RootContainer)
+export const rootPath = '/2'
 
 export const Routes = ({ match }) =>
   <Switch>
@@ -23,4 +16,11 @@ export const Routes = ({ match }) =>
     <Route component={NotFound} />
   </Switch>
 
-export const rootPath = '/2'
+const RootContainer = () =>
+  <Switch>
+    <Route path={rootPath} component={Routes} />
+    <Route exact path="/signup/createuser/:tokenstring" component={CreateUserPage} />
+    <Route component={NotFound} />
+  </Switch>
+
+export default withRouter(RootContainer)

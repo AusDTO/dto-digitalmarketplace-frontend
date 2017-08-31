@@ -31,10 +31,10 @@ export function handleBriefInfoFailure(response) {
   }
 }
 
-export function loadBrief(brief_id) {
+export function loadBrief(briefId) {
   return dispatch => {
     dispatch(handleDataLoading(true))
-    dmapi({ url: `/brief/${brief_id}` }).then(response => {
+    dmapi({ url: `/brief/${briefId}` }).then(response => {
       if (!response || response.error) {
         dispatch(handleBriefInfoFailure(response))
       } else {
@@ -69,11 +69,11 @@ export function handleBriefResponseFailure(response) {
   }
 }
 
-export function handleBriefResponseSubmit(brief_id, model) {
+export function handleBriefResponseSubmit(briefId, model) {
   return dispatch => {
     dispatch(handleDataLoading(true))
     dmapi({
-      url: `/brief/${brief_id}/respond`,
+      url: `/brief/${briefId}/respond`,
       method: 'POST',
       data: JSON.stringify(model)
     }).then(response => {

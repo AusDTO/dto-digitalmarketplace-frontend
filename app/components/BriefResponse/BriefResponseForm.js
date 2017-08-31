@@ -1,17 +1,17 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
-
-import { required, validEmail } from '../../components/validators'
-
-import Layout from '../../components/shared/Layout'
-import BaseForm from '../../components/shared/form/BaseForm'
-import ErrorBox from '../../components/shared/form/ErrorBox'
-import Textfield from '../../components/shared/form/Textfield'
-import formProps from '../../components/shared/form/formPropsSelector'
 import PageAlert from '@gov.au/page-alerts'
 
+import { required, validEmail } from '../../components/validators'
+import Layout from '../../components/shared/Layout'
+import BaseForm from '../../components/shared/form/BaseForm'
+import ErrorBox from '../../components/shared/form/ErrorBox' // eslint-disable-line import/no-named-as-default
+import Textfield from '../../components/shared/form/Textfield'
+import formProps from '../../components/shared/form/formPropsSelector' // eslint-disable-line import/no-named-as-default
 import { handleBriefResponseSubmit } from '../../actions/briefActions'
 import Textarea from '../shared/form/Textarea'
 
@@ -68,9 +68,9 @@ class BriefResponse extends BaseForm {
     }
   }
 
-  handleSubmit(brief_id, model) {
+  handleSubmit(briefId, model) {
     this.setState({ briefResponseSuccess: null, briefResponseMessage: null })
-    this.props.handleBriefResponseSubmit(brief_id, model)
+    this.props.handleBriefResponseSubmit(briefId, model)
   }
 
   onSubmitFailed() {
@@ -85,8 +85,8 @@ class BriefResponse extends BaseForm {
 
   render() {
     const { brief, csrf_token, model, form, children, briefResponseForm } = this.props
-    let valid = form.valid
-    let { briefResponseSuccess, briefResponseMessage } = this.state
+    const valid = form.valid
+    const { briefResponseSuccess, briefResponseMessage } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -155,44 +155,40 @@ class BriefResponse extends BaseForm {
               model={model}
               method="post"
               id="briefResponse"
-              onSubmit={model => this.handleSubmit(brief.id, model)}
+              onSubmit={data => this.handleSubmit(brief.id, data)}
               onSubmitFailed={this.onSubmitFailed}
             >
               {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
               <h2>Do you have the essential skills and experience?</h2>
               <p>You must have all essential skills and experience to apply for this opportunity.</p>
-              {brief.essentialRequirements.map((requirement, i) => {
-                return (
-                  <Textarea
-                    key={`essentialRequirement.${i}`}
-                    model={`${model}.essentialRequirements[${i}]`}
-                    name={`essentialRequirement.${i}`}
-                    id={`essentialRequirement.${i}`}
-                    controlProps={{ limit: 150 }}
-                    label={requirement}
-                    validators={{ required }}
-                    showMessagesDuringFocus={true}
-                    messages={{
-                      required: `Essential skills and experience are required`
-                    }}
-                  />
-                )
-              })}
+              {brief.essentialRequirements.map((requirement, i) =>
+                <Textarea
+                  key={`essentialRequirement.${i}`}
+                  model={`${model}.essentialRequirements[${i}]`}
+                  name={`essentialRequirement.${i}`}
+                  id={`essentialRequirement.${i}`}
+                  controlProps={{ limit: 150 }}
+                  label={requirement}
+                  validators={{ required }}
+                  showMessagesDuringFocus
+                  messages={{
+                    required: `Essential skills and experience are required`
+                  }}
+                />
+              )}
 
               <h2>Do you have any of the nice-to-have skills and experience?</h2>
               <p>This section is optional but may help your application stand out.</p>
-              {brief.niceToHaveRequirements.map((requirement, i) => {
-                return (
-                  <Textarea
-                    key={`niceToHaveRequirement.${i}`}
-                    model={`${model}.niceToHaveRequirements[${i}]`}
-                    name={`niceToHaveRequirement.${i}`}
-                    id={`niceToHaveRequirement.${i}`}
-                    controlProps={{ limit: 150 }}
-                    label={requirement}
-                  />
-                )
-              })}
+              {brief.niceToHaveRequirements.map((requirement, i) =>
+                <Textarea
+                  key={`niceToHaveRequirement.${i}`}
+                  model={`${model}.niceToHaveRequirements[${i}]`}
+                  name={`niceToHaveRequirement.${i}`}
+                  id={`niceToHaveRequirement.${i}`}
+                  controlProps={{ limit: 150 }}
+                  label={requirement}
+                />
+              )}
               <Textfield
                 model={`${model}.availability`}
                 name="availability"
@@ -240,21 +236,17 @@ class BriefResponse extends BaseForm {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleBriefResponseSubmit: (brief_id, model) => dispatch(handleBriefResponseSubmit(brief_id, model))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model))
+})
 
-const mapStateToProps = state => {
-  return {
-    ...formProps(state, 'briefResponseForm'),
-    brief: state.brief.brief,
-    briefResponseSuccess: state.brief.briefResponseSuccess,
-    briefResponseErrored: state.brief.briefResponseErrored,
-    isDuplicate: state.brief.isDuplicate
-  }
-}
+const mapStateToProps = state => ({
+  ...formProps(state, 'briefResponseForm'),
+  brief: state.brief.brief,
+  briefResponseSuccess: state.brief.briefResponseSuccess,
+  briefResponseErrored: state.brief.briefResponseErrored,
+  isDuplicate: state.brief.isDuplicate
+})
 
 export { Textfield, mapStateToProps, BriefResponse as Form }
 

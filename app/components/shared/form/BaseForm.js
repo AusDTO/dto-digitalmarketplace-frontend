@@ -1,18 +1,11 @@
+/* eslint-disable react/no-did-mount-set-state */
+/* eslint-disable no-underscore-dangle */
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import { actions } from 'react-redux-form'
 
 class BaseForm extends React.Component {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    model: PropTypes.string.isRequired,
-    serverRender: PropTypes.bool.isRequired,
-    form: PropTypes.object.isRequired,
-
-    formErrors: PropTypes.object
-  }
-
   state = {
     mounted: false
   }
@@ -29,7 +22,7 @@ class BaseForm extends React.Component {
       return
     }
 
-    let errors = {}
+    const errors = {}
     Object.keys(formErrors).forEach(key => {
       errors[key] = {
         valid: false,
@@ -60,6 +53,17 @@ class BaseForm extends React.Component {
   attachNode(node) {
     this._form = ReactDOM.findDOMNode(node) // eslint-disable-line react/no-find-dom-node
   }
+}
+
+BaseForm.defaultProps = {
+  formErrors: null
+}
+
+BaseForm.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  model: PropTypes.string.isRequired,
+  serverRender: PropTypes.bool.isRequired,
+  formErrors: PropTypes.object
 }
 
 export default BaseForm

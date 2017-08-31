@@ -17,7 +17,7 @@ export const mapErrorMessages = (forms, messages) => {
         return false
       }
 
-      let field = get(forms, key, {})
+      const field = get(forms, key, {})
 
       // Array fields have their validity nested
       if ('$form' in field) {
@@ -27,9 +27,9 @@ export const mapErrorMessages = (forms, messages) => {
       return !field.valid
     })
     .map(key => {
-      let parts = key.split('.').reverse()
-      let messageObject = get(messages, key, {})
-      let result = { id: get(messageObject, 'id', parts[0]) }
+      const parts = key.split('.').reverse()
+      const messageObject = get(messages, key, {})
+      const result = { id: get(messageObject, 'id', parts[0]) }
 
       // If field has nested '$form' use that instead
       // $form contains the correct meta if found.
@@ -39,7 +39,7 @@ export const mapErrorMessages = (forms, messages) => {
       }
 
       if (typeof field.errors === 'boolean') {
-        let keypath = key.split('.').slice(1)
+        const keypath = key.split('.').slice(1)
         result.messages = [get(messageObject, keypath)]
         return result
       }
@@ -57,9 +57,9 @@ export const mapErrorMessages = (forms, messages) => {
       // Will result in the array ['Title is required']
       result.messages = Object.keys(fieldErrors)
         // Filter out any error keys that havent been triggered
-        .filter(key => get(fieldErrors, key))
+        .filter(k => get(fieldErrors, k))
         .reduce((errors, errorKey) => {
-          let error = get(messageObject, errorKey)
+          const error = get(messageObject, errorKey)
           return errors.concat(error)
         }, [])
       result.messages = result.messages.filter(message => message)

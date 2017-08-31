@@ -30,10 +30,10 @@ describe('Member Actions', () => {
         memberInfo: memberInfoResponse.data
       }
 
-      //act
+      // act
       const action = handleMemberInfoSuccess(memberInfoResponse)
 
-      //assert
+      // assert
       expect(action).toEqual(expectedAction)
       expect(action.memberInfo.userType).toEqual('buyer')
     })
@@ -53,10 +53,10 @@ describe('Member Actions', () => {
         type: SIGNUP_SUCCESS
       }
 
-      //act
+      // act
       const action = handleSignupSuccess(submitSignupResponse)
 
-      //assert
+      // assert
       expect(action).toEqual(expectedAction)
     })
   })
@@ -76,10 +76,10 @@ describe('Member Actions', () => {
         data: loadSignupResponse.data
       }
 
-      //act
+      // act
       const action = handleLoadSignupSuccess(loadSignupResponse)
 
-      //assert
+      // assert
       expect(action).toEqual(expectedAction)
     })
   })
@@ -100,10 +100,10 @@ describe('Member Actions', () => {
         data: createUserResponse.data
       }
 
-      //act
+      // act
       const action = handleCreateUserSuccess(createUserResponse)
 
-      //assert
+      // assert
       expect(action).toEqual(expectedAction)
     })
   })

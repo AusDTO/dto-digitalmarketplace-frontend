@@ -1,29 +1,22 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
+import PageAlert from '@gov.au/page-alerts'
 
 import { required, validEmail, governmentEmail } from '../../components/validators'
-
 import Layout from '../../components/shared/Layout'
 import BaseForm from '../../components/shared/form/BaseForm'
-import ErrorBox from '../../components/shared/form/ErrorBox'
+import ErrorBox from '../../components/shared/form/ErrorBox' // eslint-disable-line import/no-named-as-default
 import Textfield from '../../components/shared/form/Textfield'
-import formProps from '../../components/shared/form/formPropsSelector'
+import formProps from '../../components/shared/form/formPropsSelector' // eslint-disable-line import/no-named-as-default
 import RadioList from '../../components/shared/form/RadioList'
 import RadioListBox from '../../components/shared/form/RadioListBox/RadioListBox'
 import LoadingButton from '../../components/LoadingButton/LoadingButton'
-import PageAlert from '@gov.au/page-alerts'
-
 import { handleSignupSubmit } from '../../actions/memberActions'
 
 class SignupForm extends BaseForm {
-  static propTypes = {
-    action: PropTypes.string,
-    csrf_token: PropTypes.string,
-    form: PropTypes.object.isRequired
-  }
-
   constructor(props) {
     super(props)
     this.state = {
@@ -101,9 +94,9 @@ class SignupForm extends BaseForm {
       signupSuccess,
       currentlySending
     } = this.props
-    let employmentStatus = signupForm.employment_status
-    let action = isBuyer ? buyer_url : seller_url
-    let { isBuyer, emailValidators, emailErrorMessages } = this.state
+    const employmentStatus = signupForm.employment_status
+    const { isBuyer, emailValidators, emailErrorMessages } = this.state
+    const action = isBuyer ? buyer_url : seller_url
 
     let hasFocused = false
     const setFocus = e => {
@@ -173,7 +166,7 @@ class SignupForm extends BaseForm {
                     action={action}
                     method="post"
                     id="signup"
-                    onSubmit={model => this.handleSubmit(model)}
+                    onSubmit={data => this.handleSubmit(data)}
                     onSubmitFailed={this.onSubmitFailed}
                   >
                     {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
@@ -354,20 +347,25 @@ class SignupForm extends BaseForm {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleSignupSubmit: model => dispatch(handleSignupSubmit(model))
-  }
+SignupForm.propTypes = {
+  model: PropTypes.string.isRequired,
+  signupForm: PropTypes.object,
+  buyer_url: PropTypes.string,
+  seller_url: PropTypes.string,
+  signupSuccess: PropTypes.bool,
+  action: PropTypes.string,
+  csrf_token: PropTypes.string,
+  form: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => {
-  return {
-    ...formProps(state, 'signupForm'),
-    signupSuccess: state.user.signupSuccess,
-    currentlySending: state.app.currentlySending
-  }
-}
+const mapStateToProps = state => ({
+  ...formProps(state, 'signupForm'),
+  signupSuccess: state.user.signupSuccess,
+  currentlySending: state.app.currentlySending
+})
 
-export { Textfield, mapStateToProps, SignupForm as Form }
+const mapDispatchToProps = dispatch => ({
+  handleSignupSubmit: model => dispatch(handleSignupSubmit(model))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -10,15 +11,15 @@ import Textarea from './Textarea'
 import StatefulError from './StatefulError'
 
 class YesNoDetailsField extends React.Component {
-  state = {
-    showField: false
-  }
-
   constructor(props) {
     super(props)
     this.state = {
       showField: props.value === 'yes'
     }
+  }
+
+  state = {
+    showField: false
   }
 
   onToggle(e) {
@@ -68,7 +69,7 @@ class YesNoDetailsField extends React.Component {
             label="Please provide details"
             validators={{ required }}
             messages={{
-              required: 'Please provide details for ' + upperFirst(id).replace('_', ' ')
+              required: `Please provide details for ${upperFirst(id).replace('_', ' ')}`
             }}
           />}
       </fieldset>
@@ -77,7 +78,8 @@ class YesNoDetailsField extends React.Component {
 }
 
 YesNoDetailsField.defaultProps = {
-  mapProps: {}
+  validators: null,
+  messages: null
 }
 
 YesNoDetailsField.propTypes = {
@@ -87,25 +89,18 @@ YesNoDetailsField.propTypes = {
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
 
   validators: PropTypes.object,
-  messages: PropTypes.object,
-  description: PropTypes.string,
-  controlProps: PropTypes.object,
-  mapProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+  messages: PropTypes.object
 }
 
-export const mapStateToProps = (state, ownProps) => {
-  return {
-    ...ownProps,
-    value: get(state, ownProps.model)
-  }
-}
+export const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
+  value: get(state, ownProps.model)
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    revalidateDetails: detailsModel => {
-      dispatch(actions.setValidity(detailsModel, true))
-    }
+const mapDispatchToProps = dispatch => ({
+  revalidateDetails: detailsModel => {
+    dispatch(actions.setValidity(detailsModel, true))
   }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(YesNoDetailsField)

@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import { CreateUserPage } from './CreateUserPage'
 
 test('Test suite for CreateUserPage page', () => {
-  let state = {
+  const state = {
     userRegistrationDetails: {
       name: 'Jeff Labowski',
       email_address: 'e@mail.com'
@@ -15,13 +15,13 @@ test('Test suite for CreateUserPage page', () => {
   }
 
   it('CreateUserPage renders without errors', () => {
-    let wrapper = shallow(<CreateUserPage {...state} />)
+    const wrapper = shallow(<CreateUserPage {...state} />)
     expect(wrapper).toExist()
   })
 
   it('Because snaphots', () => {
-    let component = renderer.create(<CreateUserPage {...state} />)
-    let tree = component.toJSON()
+    const component = renderer.create(<CreateUserPage {...state} />)
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

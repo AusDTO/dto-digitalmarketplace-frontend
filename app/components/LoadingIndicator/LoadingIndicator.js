@@ -4,8 +4,8 @@
  */
 
 import React from 'react'
-import styles from './LoadingIndicator.scss'
 import classNames from 'classnames'
+import styles from './LoadingIndicator.scss'
 
 function LoadingIndicator(props) {
   const wrapper = classNames(props.isLoadingButton ? styles.buttonLoadingIndicator : '', styles.loadingIndicator)

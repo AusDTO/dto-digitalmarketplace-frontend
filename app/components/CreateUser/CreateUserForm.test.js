@@ -1,11 +1,12 @@
-jest.mock('react-dom')
 import React from 'react'
 import expect from 'expect'
 import { shallow } from 'enzyme'
-import { CreateUserForm } from './CreateUserForm'
+import CreateUserForm from './CreateUserForm'
+
+jest.mock('react-dom')
 
 describe('Test suite for CreateUserForm component', () => {
-  let state = {
+  const state = {
     initialState: {
       name: 'Jeff Labowski',
       email_address: 'e@mail.com',
@@ -16,7 +17,7 @@ describe('Test suite for CreateUserForm component', () => {
   }
 
   it('UserComponent should exist', () => {
-    let wrapper = shallow(<CreateUserForm {...state} />)
+    const wrapper = shallow(<CreateUserForm {...state} />)
     expect(wrapper).toExist()
   })
 })
