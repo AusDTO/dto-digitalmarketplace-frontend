@@ -7,7 +7,7 @@ import { required, validEmail } from '../validators'
 
 export const RequestResetEmailForm = ({ model, form, user, submitClicked, handleSubmit }) => {
   let { resetPasswordEmailSuccess } = user
-  let { valid } = form
+  let { valid, submitFailed } = form
 
   let hasFocused = false
   const setFocus = e => {
@@ -21,28 +21,20 @@ export const RequestResetEmailForm = ({ model, form, user, submitClicked, handle
     <div className="row">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {resetPasswordEmailSuccess &&
-            valid &&
-            <PageAlert as="error">
-              <h4>We were unable to send your password reset email</h4>
-              <span>
-                <p>
-                  Please try again later or{' '}
-                  <a href="/contact-us" target="_blank" rel="external">
-                    {' '}contact us{' '}
-                  </a>{' '}
-                  for assistance.
-                </p>
-              </span>
-            </PageAlert>}
-          {resetPasswordEmailSuccess &&
-            <PageAlert as="success">
-              <span>
-                If the email address you&#39;ve entered belongs to a Marketplace account, we&#39;ll send a link to reset
-                the password.
-              </span>
-            </PageAlert>}
-          <ErrorBox model={model} submitClicked={submitClicked} setFocus={setFocus} />
+          {resetPasswordEmailSuccess
+            ? <PageAlert as="success">
+                <span>
+                  If the email address you&#39;ve entered belongs to a Marketplace account, we&#39;ll send a link to
+                  reset the password.
+                </span>
+              </PageAlert>
+            : ((!valid && submitFailed) || resetPasswordEmailSuccess === false) &&
+              <ErrorBox
+                title="There was a problem sending your reset email"
+                model={model}
+                submitClicked={submitClicked}
+                setFocus={setFocus}
+              />}
           <header className="page-heading page-heading-without-breadcrumb">
             <h1 className="uikit-display-5">Reset password</h1>
             <span>

@@ -34,8 +34,7 @@ export class ErrorBox extends React.Component {
   }
 
   render() {
-    const { invalidFields, form, errorMessage, title, multi = true } = this.props
-    const showValidationAndErrors = multi && errorMessage
+    const { invalidFields, form, errorMessage, title } = this.props
     if ((form.submitFailed === false && !errorMessage) || (!invalidFields.length && !errorMessage)) {
       this._container = null
       return null
@@ -48,7 +47,7 @@ export class ErrorBox extends React.Component {
         </h4>
         <ul>
           {invalidFields &&
-            showValidationAndErrors &&
+            !errorMessage &&
             invalidFields.map(({ messages, id }, i) => {
               return messages.map((message, j) =>
                 <li key={`${i}${j}`}>

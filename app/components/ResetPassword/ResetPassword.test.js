@@ -11,8 +11,8 @@ test('Test suite for ResetPasswordForm component', () => {
       resetPasswordEmailFailure: false,
       resetPasswordEmailSuccess: true
     },
-    submitClicked: () => console.log('clicked'),
-    handleSubmit: () => console.log('submitted')
+    submitClicked: () => true,
+    handleSubmit: () => true
   }
 
   it('CreateUserPage renders without errors', () => {
@@ -34,8 +34,8 @@ test('Test suite for RequestResetEmailForm component', () => {
       getResetDataSuccess: true,
       errorMessage: null
     },
-    submitClicked: () => console.log('clicked'),
-    handleSubmit: () => console.log('submitted')
+    submitClicked: () => true,
+    handleSubmit: () => true
   }
 
   it('CreateUserPage renders without errors', () => {

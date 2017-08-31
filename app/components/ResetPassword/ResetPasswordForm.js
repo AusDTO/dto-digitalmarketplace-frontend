@@ -36,7 +36,6 @@ export const ResetPasswordForm = ({ model, form, user, submitClicked, handleSubm
                 model={model}
                 submitClicked={submitClicked}
                 setFocus={setFocus}
-                multi={false}
               />}
           <header className="page-heading page-heading-without-breadcrumb">
             <h1 className="uikit-display-5">Reset password</h1>
