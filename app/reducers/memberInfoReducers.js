@@ -81,13 +81,6 @@ const userReducer = (state = defaultUserState, action) => {
     case GET_RESET_DATA_FAILURE:
       return {
         ...state,
-        getResetDataSuccess: false,
-        errorMessage: action.errorMessage
-      }
-
-    case GET_RESET_DATA_FAILURE:
-      return {
-        ...state,
         resetPasswordSuccess: false
       }
 
