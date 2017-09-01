@@ -25,9 +25,9 @@ const SubmitForm = props => {
 
 SubmitForm.defaultProps = {
   onCustomSubmit: () => {},
-  method: '',
-  id: '',
-  action: ''
+  method: null,
+  id: null,
+  action: null
 }
 
 SubmitForm.propTypes = {

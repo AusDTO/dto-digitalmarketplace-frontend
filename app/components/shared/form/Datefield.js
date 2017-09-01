@@ -25,9 +25,9 @@ class Datefield extends React.Component {
   }
 
   state = {
-    day: undefined,
-    month: undefined,
-    year: undefined
+    day: null,
+    month: null,
+    year: null
   }
 
   onChange(e) {
@@ -112,7 +112,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 Datefield.defaultProps = {
-  description: ''
+  description: null
 }
 
 Datefield.propTypes = {

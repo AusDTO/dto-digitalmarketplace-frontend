@@ -87,7 +87,6 @@ YesNoDetailsField.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-
   validators: PropTypes.object,
   messages: PropTypes.object
 }
