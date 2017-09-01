@@ -30,11 +30,11 @@ import { SENDING_REQUEST, SET_ERROR_MESSAGE } from '../constants/constants'
  * @param  {boolean} sending The new state the app should have
  * @return {object}          Formatted action for the reducer to handle
  */
-export function sendingRequest(sending) {
+export const sendingRequest = sending => {
   return { type: SENDING_REQUEST, sending }
 }
 
-export function setErrorMessage(errorMessage) {
+export const setErrorMessage = errorMessage => {
   return {
     type: SET_ERROR_MESSAGE,
     errorMessage

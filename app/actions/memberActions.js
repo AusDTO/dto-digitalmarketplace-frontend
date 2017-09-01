@@ -18,14 +18,14 @@ import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 import { actions } from 'react-redux-form'
 
-export function handleMemberInfoSuccess(response) {
+export const handleMemberInfoSuccess = response => {
   return {
     type: MEMBER_INFO_FETCH_DATA_SUCCESS,
     memberInfo: response.data
   }
 }
 
-export function memberInfoFetchData() {
+export const memberInfoFetchData = () => {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({ url: '/ping' }).then(response => {
@@ -39,13 +39,13 @@ export function memberInfoFetchData() {
   }
 }
 
-export function handleSignupSuccess() {
+export const handleSignupSuccess = () => {
   return {
     type: SIGNUP_SUCCESS
   }
 }
 
-export function handleSignupSubmit(model) {
+export const handleSignupSubmit = model => {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({
@@ -68,14 +68,14 @@ export function handleSignupSubmit(model) {
 }
 
 // LOAD USER REGISTRATION DETAILS FOR SIGNUP COMPLETION FORM
-export function handleLoadSignupSuccess(response) {
+export const handleLoadSignupSuccess = response => {
   return {
     type: LOAD_SIGNUP_SUCCESS,
     data: response.data
   }
 }
 
-export function loadSignup(token) {
+export const loadSignup = token => {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({ url: `/signup/validate-invite/${token}` }).then(response => {
@@ -91,14 +91,14 @@ export function loadSignup(token) {
 }
 
 // PROVIDE PASSWORD AND/OR NAME TO COMPLETE ACCOUNT CREATION
-export function handleCreateUserSuccess(response) {
+export const handleCreateUserSuccess = response => {
   return {
     type: CREATE_USER_SUCCESS,
     data: response.data
   }
 }
 
-export function createUser(values) {
+export const createUser = values => {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({

@@ -10,13 +10,13 @@ import { GENERAL_ERROR, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/mes
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
-export function handleResetPasswordSuccess() {
+export const handleResetPasswordSuccess = () => {
   return {
     type: RESET_PASSWORD_EMAIL_SUCCESS
   }
 }
 
-export function sendResetPasswordEmail(values) {
+export const sendResetPasswordEmail = values => {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({
@@ -38,18 +38,18 @@ export function sendResetPasswordEmail(values) {
   }
 }
 
-export function handleGetResetDataSuccess(response) {
+export const handleGetResetDataSuccess = response => {
   return {
     type: GET_RESET_DATA_SUCCESS,
     user: response.data
   }
 }
 
-export function handleGetResetFailure() {
+export const handleGetResetFailure = () => {
   return { type: GET_RESET_DATA_FAILURE }
 }
 
-export function getUserDataFromToken(token) {
+export const getUserDataFromToken = token => {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({ url: `/reset-password/${token}` }).then(response => {
@@ -68,14 +68,14 @@ export function getUserDataFromToken(token) {
   }
 }
 
-export function handleSubmitResetPasswordSuccess(response) {
+export const handleSubmitResetPasswordSuccess = response => {
   return {
     type: RESET_PASSWORD_SUCCESS,
     user: response.data
   }
 }
 
-export function submitResetPassword(values) {
+export const submitResetPassword = values => {
   return dispatch => {
     dispatch(sendingRequest(true))
     dmapi({

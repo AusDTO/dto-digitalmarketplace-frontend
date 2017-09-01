@@ -9,21 +9,21 @@ import {
 
 import dmapi from '../services/apiClient'
 
-export function handleDataLoading(bool) {
+export const handleDataLoading = bool => {
   return {
     type: DATA_IS_LOADING,
     isLoading: bool
   }
 }
 
-export function handleBriefInfoSuccess(response) {
+export const handleBriefInfoSuccess = response => {
   return {
     type: BRIEF_INFO_FETCH_DATA_SUCCESS,
     brief: response.data
   }
 }
 
-export function handleBriefInfoFailure(response) {
+export const handleBriefInfoFailure = response => {
   return {
     type: BRIEF_INFO_HAS_ERRORED,
     // eslint-disable-next-line
@@ -31,7 +31,7 @@ export function handleBriefInfoFailure(response) {
   }
 }
 
-export function loadBrief(brief_id) {
+export const loadBrief = brief_id => {
   return dispatch => {
     dispatch(handleDataLoading(true))
     dmapi({ url: `/brief/${brief_id}` }).then(response => {
@@ -45,13 +45,13 @@ export function loadBrief(brief_id) {
   }
 }
 
-export function handleBriefResponseSuccess() {
+export const handleBriefResponseSuccess = () => {
   return {
     type: BRIEF_RESPONSE_SUCCESS
   }
 }
 
-export function handleBriefResponseFailure(response) {
+export const handleBriefResponseFailure = response => {
   switch (response.status) {
     case 409:
       return {
@@ -69,7 +69,7 @@ export function handleBriefResponseFailure(response) {
   }
 }
 
-export function handleBriefResponseSubmit(brief_id, model) {
+export const handleBriefResponseSubmit = (brief_id, model) => {
   return dispatch => {
     dispatch(handleDataLoading(true))
     dmapi({
