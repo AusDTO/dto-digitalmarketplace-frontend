@@ -103,7 +103,7 @@ export const createUser = values => {
     dispatch(sendingRequest(true))
     dmapi({
       method: 'post',
-      url: '/createuser',
+      url: '/create-user',
       data: JSON.stringify(values)
     }).then(response => {
       if (response.error) {

@@ -12,7 +12,7 @@ export const RootContainer = () =>
   <Switch>
     <Route exact path={rootPath} component={SignupContainer} />
     <Route path={`${rootPath}/signup`} component={SignupContainer} />
-    <Route path={`${rootPath}/createuser`} component={CreateUserPage} />
+    <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
     <Route path={`${rootPath}/brief/:brief_id/respond`} component={BriefResponse} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route component={NotFound} />

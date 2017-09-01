@@ -8,7 +8,7 @@ import NotFound from '../shared/NotFound'
 const Routes = ({ match }) =>
   <Switch>
     <Route exact path={match.url} component={SignupForm} />
-    <Route path={`${match.url}/createuser/:token`} component={CreateUserPage} />
+    <Route path={`${match.url}/create-user/:token`} component={CreateUserPage} />
     <Route path={`${match.url}/success`} component={UserOnboardingContainer} />
     <Route component={NotFound} />
   </Switch>
