@@ -6,12 +6,13 @@
 
 import React from 'react'
 import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator'
+import styles from './LoadingButton.scss'
 
 function LoadingButton(props) {
   return (
-    <div className={props.className + ' uikit-btn loading-button'} disabled="true">
+    <div className={props.className + ' uikit-btn' + ' ' + styles.loadingButton} disabled="true">
       Loading
-      <LoadingIndicator />
+      <LoadingIndicator isLoadingButton />
     </div>
   )
 }
