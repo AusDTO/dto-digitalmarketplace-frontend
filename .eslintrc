@@ -15,7 +15,6 @@
   ],
   "rules": {
     "react/prop-types": "off",
-    "react/display-name": "off",
     "jsx-a11y/label-has-for": [ 2, {"required": {"some": [ "nesting", "id" ]},}],
     "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}],
     "react/jsx-filename-extension": "off",
