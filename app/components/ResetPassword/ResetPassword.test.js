@@ -6,7 +6,7 @@ import { ResetPasswordForm } from './ResetPasswordForm'
 import { RequestResetEmailForm } from './RequestResetEmailForm'
 
 test('Test suite for ResetPasswordForm component', () => {
-  let state = {
+  const state = {
     user: {
       resetPasswordEmailFailure: false,
       resetPasswordEmailSuccess: true
@@ -16,19 +16,19 @@ test('Test suite for ResetPasswordForm component', () => {
   }
 
   it('CreateUserPage renders without errors', () => {
-    let wrapper = shallow(<ResetPasswordForm {...state} />)
+    const wrapper = shallow(<ResetPasswordForm {...state} />)
     expect(wrapper).toExist()
   })
 
   it('Because snapshots', () => {
-    let component = renderer.create(<ResetPasswordForm {...state} />)
-    let tree = component.toJSON()
+    const component = renderer.create(<ResetPasswordForm {...state} />)
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
 
 test('Test suite for RequestResetEmailForm component', () => {
-  let state = {
+  const state = {
     user: {
       resetPasswordSuccess: false,
       getResetDataSuccess: true,
@@ -39,13 +39,13 @@ test('Test suite for RequestResetEmailForm component', () => {
   }
 
   it('CreateUserPage renders without errors', () => {
-    let wrapper = shallow(<RequestResetEmailForm {...state} />)
+    const wrapper = shallow(<RequestResetEmailForm {...state} />)
     expect(wrapper).toExist()
   })
 
   it('Because snapshots', () => {
-    let component = renderer.create(<RequestResetEmailForm {...state} />)
-    let tree = component.toJSON()
+    const component = renderer.create(<RequestResetEmailForm {...state} />)
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

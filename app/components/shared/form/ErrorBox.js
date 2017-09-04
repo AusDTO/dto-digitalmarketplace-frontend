@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/no-array-index-key */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -7,7 +10,7 @@ import PageAlert from '@gov.au/page-alerts'
 
 import { getInvalidFields } from './errorMessageSelector'
 
-export class ErrorBox extends React.Component {
+export class ErrorBoxComponent extends React.Component {
   state = {
     lastFocus: null
   }
@@ -48,15 +51,15 @@ export class ErrorBox extends React.Component {
         <ul>
           {invalidFields &&
             !errorMessage &&
-            invalidFields.map(({ messages, id }, i) => {
-              return messages.map((message, j) =>
+            invalidFields.map(({ messages, id }, i) =>
+              messages.map((message, j) =>
                 <li key={`${i}${j}`}>
                   <a href={`#${id}`}>
                     {message}
                   </a>
                 </li>
               )
-            })}
+            )}
           {errorMessage &&
             <li key="errorMessage">
               {errorMessage}
@@ -67,7 +70,13 @@ export class ErrorBox extends React.Component {
   }
 }
 
-ErrorBox.propTypes = {
+ErrorBoxComponent.defaultProps = {
+  form: null,
+  title: null,
+  errorMessage: null
+}
+
+ErrorBoxComponent.propTypes = {
   invalidFields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -79,12 +88,12 @@ ErrorBox.propTypes = {
   errorMessage: PropTypes.string
 }
 
-export const mapStateToProps = (state, { model }) => {
-  return {
-    invalidFields: getInvalidFields(state, model),
-    form: get(state, `forms.${model}.$form`, {}),
-    errorMessage: state.app.errorMessage
-  }
-}
+export const mapStateToProps = (state, { model }) => ({
+  invalidFields: getInvalidFields(state, model),
+  form: get(state, `forms.${model}.$form`, {}),
+  errorMessage: state.app.errorMessage
+})
 
-export default connect(mapStateToProps)(ErrorBox)
+const ErrorBox = connect(mapStateToProps)(ErrorBoxComponent)
+
+export default ErrorBox

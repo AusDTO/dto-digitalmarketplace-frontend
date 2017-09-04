@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
+import PageAlert from '@gov.au/page-alerts'
 import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
-import PageAlert from '@gov.au/page-alerts'
 import { passwordLength } from '../validators'
 
 const ResetPasswordForm = props => {
-  let { model, form, user, submitClicked, handleSubmit } = props
-  let { resetPasswordSuccess } = user
-  let { valid, submitFailed } = form
+  const { model, form, user, submitClicked, handleSubmit } = props
+  const { resetPasswordSuccess } = user
+  const { valid, submitFailed } = form
 
   let hasFocused = false
   const setFocus = e => {
@@ -51,7 +51,7 @@ const ResetPasswordForm = props => {
                 passwordsMatch: vals => vals.password === vals.confirmPassword
               }
             }}
-            onSubmit={model => handleSubmit(model)}
+            onSubmit={data => handleSubmit(data)}
           >
             <Textfield
               model={`${model}.password`}
@@ -93,11 +93,16 @@ const ResetPasswordForm = props => {
   )
 }
 
+ResetPasswordForm.defaultProps = {
+  submitClicked: null,
+  handleSubmit: null
+}
+
 ResetPasswordForm.propTypes = {
   form: PropTypes.shape({
     valid: PropTypes.bool,
     submitFailed: PropTypes.bool
-  }),
+  }).isRequired,
   user: PropTypes.shape({
     resetPasswordSuccess: PropTypes.bool
   }).isRequired,

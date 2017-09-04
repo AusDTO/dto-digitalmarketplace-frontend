@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import ResetPasswordPage from './ResetPasswordPage'
 
 test('Test suite for ResetPasswordPage RequestResetEmailContainer component', () => {
-  let state = {
+  const state = {
     user: {
       resetPasswordSuccess: true,
       resetPasswordEmailSuccess: true
@@ -13,13 +13,13 @@ test('Test suite for ResetPasswordPage RequestResetEmailContainer component', ()
   }
 
   it('CreateUserPage renders without errors', () => {
-    let wrapper = shallow(<ResetPasswordPage {...state} />)
+    const wrapper = shallow(<ResetPasswordPage {...state} />)
     expect(wrapper).toExist()
   })
 
   it('Because snapshots', () => {
-    let component = renderer.create(<ResetPasswordPage {...state} />)
-    let tree = component.toJSON()
+    const component = renderer.create(<ResetPasswordPage {...state} />)
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

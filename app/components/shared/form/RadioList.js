@@ -13,10 +13,10 @@ const RadioList = props => {
           {label}
         </legend>
         <div>
-          {options.map((option, i) => {
-            let fieldId = `${id}-${option.value}`
+          {options.map(option => {
+            const fieldId = `${id}-${option.value}`
             return (
-              <span key={i} className="radio-list-container">
+              <span key={fieldId} className="radio-list-container">
                 <span className="uikit-control-input uikit-control-input--full">
                   <Control.radio
                     model={model}
@@ -40,6 +40,11 @@ const RadioList = props => {
       </fieldset>
     </div>
   )
+}
+
+RadioList.defaultProps = {
+  validators: null,
+  messages: null
 }
 
 RadioList.propTypes = {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
-import NotFound from '../components/shared/NotFound'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import NotFound from '../components/shared/NotFound'
 import formProps from '../components/shared/form/formPropsSelector'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
@@ -84,11 +84,18 @@ class ResetPasswordPage extends Component {
   }
 }
 
+ResetPasswordPage.defaultProps = {
+  passwordsMatchMessage: null,
+  loadInitialData: null,
+  handleResetPasswordSubmit: null,
+  handleSendEmailSubmit: null
+}
+
 ResetPasswordPage.propTypes = {
   form: PropTypes.shape({
     valid: PropTypes.bool,
     submitFailed: PropTypes.bool
-  }),
+  }).isRequired,
   user: PropTypes.shape({
     resetPasswordSuccess: PropTypes.bool
   }).isRequired,
@@ -99,21 +106,17 @@ ResetPasswordPage.propTypes = {
   handleSendEmailSubmit: PropTypes.func
 }
 
-const mapResetStateToProps = state => {
-  return {
-    ...formProps(state, 'resetPasswordForm'),
-    ...formProps(state, 'resetPasswordEmailForm'),
-    user: state.user
-  }
-}
+const mapResetStateToProps = state => ({
+  ...formProps(state, 'resetPasswordForm'),
+  ...formProps(state, 'resetPasswordEmailForm'),
+  user: state.user
+})
 
-const mapResetDispatchToProps = dispatch => {
-  return {
-    handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
-    handleResetPasswordSubmit: payload => dispatch(submitResetPassword(payload)),
-    loadInitialData: token => dispatch(getUserDataFromToken(token)),
-    passwordsMatchMessage: message => dispatch(setErrorMessage(message))
-  }
-}
+const mapResetDispatchToProps = dispatch => ({
+  handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
+  handleResetPasswordSubmit: payload => dispatch(submitResetPassword(payload)),
+  loadInitialData: token => dispatch(getUserDataFromToken(token)),
+  passwordsMatchMessage: message => dispatch(setErrorMessage(message))
+})
 
 export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPasswordPage))

@@ -10,85 +10,65 @@ import { GENERAL_ERROR, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/mes
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
-export const handleResetPasswordSuccess = () => {
-  return {
-    type: RESET_PASSWORD_EMAIL_SUCCESS
-  }
+export const handleResetPasswordSuccess = () => ({ type: RESET_PASSWORD_EMAIL_SUCCESS })
+
+export const sendResetPasswordEmail = values => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: '/reset-password/',
+    data: JSON.stringify(values)
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(UNABLE_TO_SEND))
+    } else {
+      dispatch(handleResetPasswordSuccess())
+    }
+    dispatch(sendingRequest(false))
+  })
 }
 
-export const sendResetPasswordEmail = values => {
-  return dispatch => {
-    dispatch(sendingRequest(true))
-    dmapi({
-      method: 'post',
-      url: '/reset-password/',
-      data: JSON.stringify(values)
-    })
-      .then(response => {
-        return response
-      })
-      .then(response => {
-        if (response.error) {
-          dispatch(setErrorMessage(UNABLE_TO_SEND))
-        } else {
-          dispatch(handleResetPasswordSuccess())
-        }
-        dispatch(sendingRequest(false))
-      })
-  }
-}
+export const handleGetResetDataSuccess = response => ({
+  type: GET_RESET_DATA_SUCCESS,
+  user: response.data
+})
 
-export const handleGetResetDataSuccess = response => {
-  return {
-    type: GET_RESET_DATA_SUCCESS,
-    user: response.data
-  }
-}
+export const handleGetResetFailure = () => ({ type: GET_RESET_DATA_FAILURE })
 
-export const handleGetResetFailure = () => {
-  return { type: GET_RESET_DATA_FAILURE }
-}
-
-export const getUserDataFromToken = token => {
-  return dispatch => {
-    dispatch(sendingRequest(true))
-    dmapi({ url: `/reset-password/${token}` }).then(response => {
-      if (response.error) {
-        if (response.data.message) {
-          dispatch(setErrorMessage(`${response.data.message}. Try resending reset password email.`))
-        } else {
-          dispatch(setErrorMessage(GENERAL_ERROR))
-        }
-        dispatch(handleGetResetFailure())
+export const getUserDataFromToken = token => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/reset-password/${token}` }).then(response => {
+    if (response.error) {
+      if (response.data.message) {
+        dispatch(setErrorMessage(`${response.data.message}. Try resending reset password email.`))
       } else {
-        dispatch(handleGetResetDataSuccess(response))
+        dispatch(setErrorMessage(GENERAL_ERROR))
       }
-      dispatch(sendingRequest(false))
-    })
-  }
+      dispatch(handleGetResetFailure())
+    } else {
+      dispatch(handleGetResetDataSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
 }
 
-export const handleSubmitResetPasswordSuccess = response => {
-  return {
-    type: RESET_PASSWORD_SUCCESS,
-    user: response.data
-  }
-}
+export const handleSubmitResetPasswordSuccess = response => ({
+  type: RESET_PASSWORD_SUCCESS,
+  user: response.data
+})
 
-export const submitResetPassword = values => {
-  return dispatch => {
-    dispatch(sendingRequest(true))
-    dmapi({
-      method: 'post',
-      url: `/reset-password/${values.token}`,
-      data: JSON.stringify(values)
-    }).then(response => {
-      if (response.error) {
-        dispatch(setErrorMessage(UNABLE_TO_RESET))
-      } else {
-        dispatch(handleSubmitResetPasswordSuccess(response))
-      }
-      dispatch(sendingRequest(false))
-    })
-  }
+export const submitResetPassword = values => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: `/reset-password/${values.token}`,
+    data: JSON.stringify(values)
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(UNABLE_TO_RESET))
+    } else {
+      dispatch(handleSubmitResetPasswordSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
 }

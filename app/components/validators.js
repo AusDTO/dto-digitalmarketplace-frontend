@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable camelcase */
 import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid'
@@ -15,9 +17,7 @@ export const required = val => {
   }
 
   if (val !== null && typeof val === 'object') {
-    return values(val).filter(function(v) {
-      return v
-    }).length
+    return values(val).filter(v => v).length
   }
 
   return val && val.trim().length
@@ -29,9 +29,8 @@ export const validDate = val => {
   }
   if (isFuture(val)) {
     return true
-  } else {
-    return false
   }
+  return false
 }
 
 export const validEmail = val => {
@@ -40,9 +39,8 @@ export const validEmail = val => {
   }
   if (val.includes('@') && val.includes('.') && !val.includes(' ')) {
     return true
-  } else {
-    return false
   }
+  return false
 }
 
 export const governmentEmail = val => {
@@ -51,18 +49,13 @@ export const governmentEmail = val => {
   }
   if (val.includes('gov.au')) {
     return true
-  } else {
-    return false
   }
+  return false
 }
 
-export const minArrayLength = len => (arr = []) => {
-  return Array.isArray(arr) && arr.filter(v => v.trim()).length >= len
-}
+export const minArrayLength = len => (arr = []) => Array.isArray(arr) && arr.filter(v => v.trim()).length >= len
 
-export const min = len => (val = '') => {
-  return val.length >= len
-}
+export const min = len => (val = '') => val.length >= len
 
 export const validABN = val => {
   if (!val) {
@@ -92,7 +85,7 @@ export const validLinks = val => {
     return true
   }
 
-  if (typeof val[0] == 'object') {
+  if (typeof val[0] === 'object') {
     val = val.map(v => v.url)
   }
 
@@ -106,10 +99,8 @@ export const validLinks = val => {
  * @param  {Array}  keys   Keys of form fields that require content for this to validate
  * @return {Boolean}       Whether the field is required or not.
  */
-export const dependantRequired = (values = {}, keys = []) => val => {
-  let dependantFields = keys.filter(key => {
-    return !isEmpty(values[key])
-  })
+export const dependantRequired = (vals = {}, keys = []) => val => {
+  const dependantFields = keys.filter(key => !isEmpty(vals[key]))
 
   if (dependantFields.length) {
     if (typeof val === 'boolean') {
@@ -122,7 +113,7 @@ export const dependantRequired = (values = {}, keys = []) => val => {
 }
 
 export const minObjectLength = (object = {}, minLength = -1) => {
-  let keys = Object.keys(object)
+  const keys = Object.keys(object)
 
   if (keys.length !== minLength) {
     return false
@@ -131,9 +122,7 @@ export const minObjectLength = (object = {}, minLength = -1) => {
   return !keys.filter(key => isEmpty(object[key])).length
 }
 
-export const limitWords = limit => (val = '') => {
-  return (val.match(/\S+/g) || []).length <= limit
-}
+export const limitWords = limit => (val = '') => (val.match(/\S+/g) || []).length <= limit
 
 export const limitNumbers = limit => (val = '') => {
   const length = (val.match(/[0-9]/g) || []).length

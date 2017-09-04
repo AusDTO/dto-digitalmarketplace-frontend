@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
+import PageAlert from '@gov.au/page-alerts'
 import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
-import PageAlert from '@gov.au/page-alerts'
 import { required, validEmail } from '../validators'
 
 const RequestResetEmailForm = props => {
-  let { model, form, user, submitClicked, handleSubmit } = props
-  let { resetPasswordEmailSuccess } = user
-  let { valid, submitFailed } = form
+  const { model, form, user, submitClicked, handleSubmit } = props
+  const { resetPasswordEmailSuccess } = user
+  const { valid, submitFailed } = form
 
   let hasFocused = false
   const setFocus = e => {
@@ -44,7 +44,7 @@ const RequestResetEmailForm = props => {
               valid for 24 hours.
             </span>
           </header>
-          <Form model={model} id="sendResetEmail" onSubmit={model => handleSubmit(model)}>
+          <Form model={model} id="sendResetEmail" onSubmit={data => handleSubmit(data)}>
             <Textfield
               model={`${model}.email_address`}
               name="email_address"

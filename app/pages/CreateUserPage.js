@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { CreateUserForm } from '../components/CreateUser/CreateUserForm'
+import { withRouter } from 'react-router-dom'
+import CreateUserForm from '../components/CreateUser/CreateUserForm'
 import { loadSignup, createUser } from '../actions/memberActions'
 import ErrorBox from '../components/shared/form/ErrorBox'
 import BaseForm from '../components/shared/form/BaseForm'
 import formProps from '../components/shared/form/formPropsSelector'
-import { withRouter } from 'react-router-dom'
 import { rootPath } from '../routes'
 
-export class CreateUserPage extends BaseForm {
+export class CreateUserPageComponent extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
@@ -41,7 +41,7 @@ export class CreateUserPage extends BaseForm {
   }
 
   render() {
-    let {
+    const {
       model,
       loadSignupSuccess,
       userRegisterDetails,
@@ -80,7 +80,8 @@ export class CreateUserPage extends BaseForm {
   }
 }
 
-CreateUserPage.propTypes = {
+CreateUserPageComponent.propTypes = {
+  model: PropTypes.string.isRequired,
   userRegisterDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email_address: PropTypes.string.isRequired,
@@ -88,26 +89,26 @@ CreateUserPage.propTypes = {
     manager_email: PropTypes.string
   }),
   loadSignupSuccess: PropTypes.bool,
-  loadRegistrationData: PropTypes.func.isRequired
+  loadRegistrationData: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  createUserSuccess: PropTypes.bool
 }
 
-const mapStateToProps = state => {
-  return {
-    ...formProps(state, 'createUserForm'),
-    userRegisterDetails: state.user.userRegisterDetails,
-    loadSignupSuccess: state.user.loadSignupSuccess,
-    createUserSuccess: state.user.createUserSuccess,
-    currentlySending: state.app.currentlySending
-  }
-}
+const mapStateToProps = state => ({
+  ...formProps(state, 'createUserForm'),
+  userRegisterDetails: state.user.userRegisterDetails,
+  loadSignupSuccess: state.user.loadSignupSuccess,
+  createUserSuccess: state.user.createUserSuccess,
+  currentlySending: state.app.currentlySending
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadRegistrationData: tokenString => {
-      dispatch(loadSignup(tokenString))
-    },
-    handleSubmit: values => dispatch(createUser(values))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  loadRegistrationData: tokenString => {
+    dispatch(loadSignup(tokenString))
+  },
+  handleSubmit: values => dispatch(createUser(values))
+})
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPage))
+const CreateUserPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPageComponent))
+
+export default CreateUserPage

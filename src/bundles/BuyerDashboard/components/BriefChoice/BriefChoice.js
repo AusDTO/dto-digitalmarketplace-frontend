@@ -67,7 +67,7 @@ class BriefChoiceForm extends Component {
               role="presentation" tabIndex="0"> 
               <span>Digital Outcome</span>
               <p>
-                Get seller responses to your criteria, in spreadsheet format, for shortlisting. You will not receive proposals at this stage.  
+                Get a summary of seller responses to your criteria, in spreadsheet format, for shortlisting. Once your shortlist is complete you can request sellers to provide full proposals for you to evaluate.
               </p>
             </label>
           </form>  

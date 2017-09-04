@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import BriefResponseForm from './BriefResponseForm'
 import { loadBrief } from '../../actions/briefActions'
 
-export class BriefResponse extends Component {
+export class BriefResponseComponent extends Component {
   componentDidMount() {
-    let brief_id = this.props.match.params.brief_id
-    this.props.loadBriefData(brief_id)
+    const briefId = this.props.match.params.brief_id
+    this.props.loadBriefData(briefId)
   }
 
   render() {
-    let { loadBriefSuccess, loadBriefErrored } = this.props
+    const { loadBriefSuccess, loadBriefErrored } = this.props
 
     return (
       <div className="row">
@@ -27,27 +27,30 @@ export class BriefResponse extends Component {
   }
 }
 
-BriefResponse.propTypes = {
+BriefResponseComponent.defaultProps = {
+  loadBriefSuccess: false,
+  loadBriefErrored: false
+}
+
+BriefResponseComponent.propTypes = {
   loadBriefSuccess: PropTypes.bool,
   loadBriefErrored: PropTypes.bool,
   loadBriefData: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ brief }) => {
-  return {
-    isLoading: brief.isLoading,
-    loadBriefSuccess: brief.loadBriefSuccess,
-    loadBriefErrored: brief.loadBriefErrored,
-    brief: brief.brief
-  }
-}
+const mapStateToProps = ({ brief }) => ({
+  isLoading: brief.isLoading,
+  loadBriefSuccess: brief.loadBriefSuccess,
+  loadBriefErrored: brief.loadBriefErrored,
+  brief: brief.brief
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadBriefData: brief_id => {
-      dispatch(loadBrief(brief_id))
-    }
+const mapDispatchToProps = dispatch => ({
+  loadBriefData: briefId => {
+    dispatch(loadBrief(briefId))
   }
-}
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(BriefResponse)
+const BriefResponse = connect(mapStateToProps, mapDispatchToProps)(BriefResponseComponent)
+
+export default BriefResponse
