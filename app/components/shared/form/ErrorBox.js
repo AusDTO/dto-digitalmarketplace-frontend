@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/no-array-index-key */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -47,15 +50,15 @@ export class ErrorBox extends React.Component {
         </h4>
         <ul>
           {invalidFields &&
-            invalidFields.map(({ messages, id }, i) => {
-              return messages.map((message, j) =>
+            invalidFields.map(({ messages, id }, i) =>
+              messages.map((message, j) =>
                 <li key={`${i}${j}`}>
                   <a href={`#${id}`}>
                     {message}
                   </a>
                 </li>
               )
-            })}
+            )}
           {errorMessage &&
             <li key="errorMessage">
               {errorMessage}
@@ -64,6 +67,12 @@ export class ErrorBox extends React.Component {
       </PageAlert>
     )
   }
+}
+
+ErrorBox.defaultProps = {
+  form: null,
+  title: null,
+  errorMessage: null
 }
 
 ErrorBox.propTypes = {
@@ -78,12 +87,10 @@ ErrorBox.propTypes = {
   errorMessage: PropTypes.string
 }
 
-export const mapStateToProps = (state, { model }) => {
-  return {
-    invalidFields: getInvalidFields(state, model),
-    form: get(state, `forms.${model}.$form`, {}),
-    errorMessage: state.app.errorMessage
-  }
-}
+export const mapStateToProps = (state, { model }) => ({
+  invalidFields: getInvalidFields(state, model),
+  form: get(state, `forms.${model}.$form`, {}),
+  errorMessage: state.app.errorMessage
+})
 
 export default connect(mapStateToProps)(ErrorBox)

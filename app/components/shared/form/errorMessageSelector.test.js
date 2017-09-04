@@ -125,7 +125,7 @@ test('mapErrorMessages returns an empty array if the corresponding message doesn
 })
 
 test('mapErrorMessages returns an empty array if the form doesnt exist', () => {
-  expect(mapErrorMessages(void 0)).toEqual([])
+  expect(mapErrorMessages(undefined)).toEqual([])
 })
 
 test('mapErrorMessages gets errors for an array set', () => {
@@ -205,6 +205,6 @@ test('getErrorMessages return values', () => {
 })
 
 test('getModelPath return values', () => {
-  expect(getModelPath(void 0, 'modelName')).toEqual('modelName')
+  expect(getModelPath(undefined, 'modelName')).toEqual('modelName')
   expect(getModelPath()).toBeUndefined()
 })

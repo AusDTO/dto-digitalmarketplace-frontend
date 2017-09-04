@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
+import classNames from 'classnames'
 
 import StatefulError from '../StatefulError'
 import styles from './RadioListBox.scss'
-import classNames from 'classnames'
 
 const RadioListBox = props => {
   const { id, label, name, options, model, messages, validators } = props
@@ -22,10 +22,10 @@ const RadioListBox = props => {
           {label}
         </legend>
         <div>
-          {options.map((option, i) => {
-            let fieldId = `${id}-${option.value}`
+          {options.map(option => {
+            const fieldId = `${id}-${option.value}`
             return (
-              <span key={i} className={styles.radioListContainer}>
+              <span key={fieldId} className={styles.radioListContainer}>
                 <span className={uiKitControl}>
                   <Control.radio
                     model={model}
@@ -48,12 +48,17 @@ const RadioListBox = props => {
         <StatefulError
           model={model}
           messages={messages}
-          id={id + '-' + options[0].value}
+          id={`${id}-${options[0].value}`}
           showMessagesDuringFocus="false"
         />
       </fieldset>
     </div>
   )
+}
+
+RadioListBox.defaultProps = {
+  validators: null,
+  messages: null
 }
 
 RadioListBox.propTypes = {

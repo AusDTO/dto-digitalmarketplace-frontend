@@ -9,6 +9,7 @@
     "eslint:recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
+    "airbnb",
     "prettier",
     "prettier/react",
   ],
@@ -16,7 +17,10 @@
     "react/prop-types": "off",
     "react/display-name": "off",
     "jsx-a11y/label-has-for": [ 2, {"required": {"some": [ "nesting", "id" ]},}],
-    "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}]
+    "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}],
+    "react/jsx-filename-extension": "off",
+    "react/forbid-prop-types": "off",
+    "class-methods-use-this": ["error", { "exceptMethods": ["onSubmitFailed"] }]
   },
   "globals": {
     "document": false,

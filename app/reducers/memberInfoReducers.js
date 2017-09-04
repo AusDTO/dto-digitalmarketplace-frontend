@@ -6,7 +6,7 @@ import {
   CREATE_USER_SUCCESS
 } from '../constants/constants'
 
-let defaultUserState = {
+const defaultUserState = {
   isLoading: null,
   memberInfoHasSuccess: null,
   memberInfo: { isAutheticated: false },

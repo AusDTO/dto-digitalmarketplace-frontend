@@ -1,10 +1,11 @@
+import { actions } from 'react-redux-form'
+
 import {
   MEMBER_INFO_FETCH_DATA_SUCCESS,
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
   CREATE_USER_SUCCESS
 } from '../constants/constants'
-
 import {
   DUPLICATE_USER,
   USER_NOT_CREATED,
@@ -13,10 +14,8 @@ import {
   UNABLE_TO_SIGNUP,
   ACCOUNT_TAKEN
 } from '../constants/messageConstants'
-
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
-import { actions } from 'react-redux-form'
 
 export function handleMemberInfoSuccess(response) {
   return {

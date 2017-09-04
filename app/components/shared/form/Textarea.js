@@ -8,18 +8,9 @@ import TextareaComponent from './Textarea/Textarea'
 import { limitWords } from '../../validators'
 
 const Textarea = props => {
-  let {
-    name,
-    id,
-    label,
-    model,
-    validators,
-    messages,
-    description,
-    showMessagesDuringFocus = false,
-    controlProps = {},
-    mapProps
-  } = props
+  const { name, id, label, model, description, showMessagesDuringFocus = false, controlProps = {}, mapProps } = props
+
+  let { validators, messages } = props
 
   if (controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
@@ -56,7 +47,7 @@ const Textarea = props => {
             !fieldValue.valid && fieldValue.touched
               ? 'uikit-text-input--invalid uikit-text-input uikit-text-input--block uikit-text-input--textarea'
               : 'uikit-text-input uikit-text-input--block uikit-text-input--textarea',
-          value: props => props.viewValue,
+          value: prps => prps.viewValue,
           ...mapProps,
           ...controls.default
         }}
@@ -66,7 +57,11 @@ const Textarea = props => {
 }
 
 Textarea.defaultProps = {
-  mapProps: {}
+  mapProps: null,
+  validators: null,
+  messages: null,
+  description: '',
+  controlProps: null
 }
 
 Textarea.propTypes = {

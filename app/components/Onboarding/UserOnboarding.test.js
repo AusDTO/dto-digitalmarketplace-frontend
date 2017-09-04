@@ -6,14 +6,14 @@ import BuyerOnboarding from './BuyerOnboarding'
 
 test('Test suite for UserOnboarding container component', () => {
   it('Because snaphots', () => {
-    let component = renderer.create(<SellerOnboarding />)
-    let tree = component.toJSON()
+    const component = renderer.create(<SellerOnboarding />)
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   it('Because snaphots', () => {
-    let component = renderer.create(<BuyerOnboarding />)
-    let tree = component.toJSON()
+    const component = renderer.create(<BuyerOnboarding />)
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

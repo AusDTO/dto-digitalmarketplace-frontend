@@ -50,10 +50,8 @@ StatefulError.propTypes = {
   model: PropTypes.string.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    ...ownProps
-  }
-}
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps
+})
 
 export default connect(mapStateToProps)(StatefulError)

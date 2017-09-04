@@ -10,13 +10,12 @@ class Header extends Component {
   }
 
   dashBoardLink = () => {
-    if (this.props.memberInfo.userType == 'buyer') {
+    if (this.props.memberInfo.userType === 'buyer') {
       return <a href="/buyers">Dashboard</a>
-    } else if (this.props.memberInfo.userType == 'applicant') {
+    } else if (this.props.memberInfo.userType === 'applicant') {
       return <a href="/sellers/application">Continue application</a>
-    } else {
-      return <a href="/sellers">Dashboard</a>
     }
+    return <a href="/sellers">Dashboard</a>
   }
 
   render() {
@@ -55,23 +54,15 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  fetchData: PropTypes.func.isRequired,
-  hasErrored: PropTypes.bool,
-  isLoading: PropTypes.bool
+  fetchData: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ user }) => {
-  return {
-    memberInfo: user.memberInfo,
-    hasErrored: user.memberInfoHasErrored,
-    isLoading: user.memberInfoIsLoading
-  }
-}
+const mapStateToProps = ({ user }) => ({
+  memberInfo: user.memberInfo
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchData: () => dispatch(memberInfoFetchData())
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  fetchData: () => dispatch(memberInfoFetchData())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

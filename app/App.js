@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+
 import Banner from './components/Banner/Banner'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/PageFooter'
-import { Provider } from 'react-redux'
 import configureStore from './store'
-import { BrowserRouter } from 'react-router-dom'
 
 import RootContainer from './routes'
 
