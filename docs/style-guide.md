@@ -1,4 +1,8 @@
 # Style Guide
+## Eslint
+Try to follow the [Airbnb Javascript Guide](https://github.com/airbnb/javascript).
+
+The [Airbnb eslint config](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) has been enabled minus [jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md) and [react/forbid-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md).
 ## Imports
 Follow the pattern:
 ```javascript
@@ -114,7 +118,7 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyPage))
 ```
 
 ### Content
-Content componenets are stateless and presentational
+Content components are stateless
 ```jsx
 const MyForm = props => {
   const { propA, propB } = props
