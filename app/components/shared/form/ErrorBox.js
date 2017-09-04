@@ -1,5 +1,6 @@
-/* eslint no-underscore-dangle: 0 */
-/* eslint react/no-array-index-key: 0 */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/no-array-index-key */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -14,16 +15,16 @@ export class ErrorBox extends React.Component {
     lastFocus: null
   }
 
+  setRef = c => {
+    this._container = c
+  }
+
   componentDidMount() {
     this.focusIfNeeded()
   }
 
   componentDidUpdate() {
     this.focusIfNeeded()
-  }
-
-  setRef = c => {
-    this._container = c
   }
 
   focusIfNeeded() {
@@ -70,8 +71,7 @@ export class ErrorBox extends React.Component {
 
 ErrorBox.defaultProps = {
   form: null,
-  title: '',
-  invalidFields: [],
+  title: null,
   errorMessage: null
 }
 
@@ -90,7 +90,7 @@ ErrorBox.propTypes = {
 export const mapStateToProps = (state, { model }) => ({
   invalidFields: getInvalidFields(state, model),
   form: get(state, `forms.${model}.$form`, {}),
-  errorMessage: state.user.message
+  errorMessage: state.app.errorMessage
 })
 
 export default connect(mapStateToProps)(ErrorBox)
