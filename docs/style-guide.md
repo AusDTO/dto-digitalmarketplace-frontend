@@ -44,7 +44,7 @@ MyForm.propTypes = {
 ```
 ### Classes that extend Component
 ```jsx
-export class PrivacyConsentPage extends Component {
+export class MyClass extends Component {
   // use static proptypes
   static propTypes = {
     isLoading: PropTypes.bool,
