@@ -1,5 +1,4 @@
 # Style Guide
-
 ## Imports
 Follow the pattern:
 ```javascript
@@ -63,7 +62,7 @@ export class PrivacyConsentPage extends Component {
     )
   }
   ```
-## Pages and Forms
+## Pages and Content
 ### Routes
 Define the base page route in `routes.js`
 ```jsx
@@ -72,7 +71,7 @@ Define the base page route in `routes.js`
 ```
 
 ### Pages
-Pages `extends Component`, do sub-routing, redux, and pass props to Forms
+Pages `extends Component`, do sub-routing, redux, and pass props to content components
 ```jsx
 class MyPage extends Component {
   static propTypes = {
@@ -114,8 +113,8 @@ const mapDispatchToProps = dispatch => {
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyPage))
 ```
 
-### Forms
-Forms are stateless and presentational
+### Content
+Content componenets are stateless and presentational
 ```jsx
 const MyForm = props => {
   const { propA, propB } = props
