@@ -63,3 +63,70 @@ export class PrivacyConsentPage extends Component {
     )
   }
   ```
+## Pages and Forms
+### Routes
+Define the base page route in `routes.js`
+```jsx
+<Switch>
+  <Route path={`${rootPath}/myPage`} component={MyPage} />
+```
+
+### Pages
+Pages `extends Component`, do sub-routing, redux, and pass props to Forms
+```jsx
+class MyPage extends Component {
+  static propTypes = {
+    propA: PropTypes.string.isRequired,
+    propB: PropTypes.bool.isRequired
+  }
+  
+  componentWillMount() {
+    this.props.loadData()
+  }
+  
+  render() {
+    const { propA, propB } = this.props
+    <Switch>
+      <Route
+        exact path={match.url}
+        render={() =>
+          <MyForm
+            propA={propA}
+            propB={propB}
+          />}
+      />
+    </Switch>
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    propA: state.myValue
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadData: () => dispatch(myAction)
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyPage))
+```
+
+### Forms
+Forms are stateless and presentational
+```jsx
+const MyForm = props => {
+  const { propA, propB } = props
+  return (
+    <div>
+    </div>
+  )
+}
+
+MyForm.propTypes = {
+  propA: PropTypes.string.isRequired,
+  propB: PropTypes.bool.isRequired
+}
+```
