@@ -140,9 +140,44 @@ MyForm.propTypes = {
   propB: PropTypes.bool.isRequired
 }
 ```
+## Redux
+Use a traditional redux structure.
+
+### Define Action Types in `constants.js` 
+`export const ADD_TODO = 'ADD_TODO'`
+
+### Use ES6 Action Creators
+```jsx
+import { ADD_TODO } from '../../constants'
+
+export const addTodo = text => ({
+  type: ADD_TODO,
+  text: 'hello world'
+})
+```
+
+### Use Spread Operator in Reducers
+```jsx
+case ADD_TODO:
+  return { 
+    ...state,
+    todos: [
+      ...state.todos,
+      {
+        text: action.text,
+        completed: false
+      }
+    ]
+  })
+```
 ## CSS
 The base styles come from [uikit 2](https://github.com/govau/uikit).
 
 Modifications to base styles can be found in [custom.css](https://github.com/AusDTO/dto-digitalmarketplace-frontend/blob/master/public/custom.css).
 
 Use css modules for component-specific styles.
+
+## Tests
+Where possible, provide at least a shallow snapshot test or render sanity check for a component.
+
+Place tests alongside components.
