@@ -7,7 +7,7 @@ import Textfield from '../../components/shared/form/Textfield'
 import { required, validEmail } from '../validators'
 
 const RequestResetEmailForm = props => {
-  const { model, form, user, submitClicked, handleSubmit } = props
+  const { model, form, user, submitClicked, handleSubmit, errored } = props
   const { resetPasswordEmailSuccess } = user
   const { valid, submitFailed } = form
 
@@ -30,7 +30,7 @@ const RequestResetEmailForm = props => {
                   reset the password.
                 </span>
               </PageAlert>
-            : ((!valid && submitFailed) || resetPasswordEmailSuccess === false) &&
+            : ((!valid && submitFailed) || resetPasswordEmailSuccess === false || errored) &&
               <ErrorBox
                 title="There was a problem sending your reset email"
                 model={model}

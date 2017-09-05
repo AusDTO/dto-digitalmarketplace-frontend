@@ -48,7 +48,7 @@ class ResetPasswordPage extends Component {
   }
 
   render() {
-    const { match, user, model, form, handleSendEmailSubmit } = this.props
+    const { match, user, model, form, handleSendEmailSubmit, errored } = this.props
     return (
       <div className="reset-password-page">
         <Switch>
@@ -60,6 +60,7 @@ class ResetPasswordPage extends Component {
                 model={model}
                 form={form}
                 user={user}
+                errored={errored}
                 submitClicked={this.onSubmitClicked}
                 handleSubmit={handleSendEmailSubmit}
               />}
@@ -72,6 +73,7 @@ class ResetPasswordPage extends Component {
                 model={model}
                 form={form}
                 user={user}
+                errored={errored}
                 submitClicked={this.onSubmitClicked}
                 handleSubmit={values => this.handleResetPasswordSubmit(values)}
               />}
@@ -88,7 +90,8 @@ ResetPasswordPage.defaultProps = {
   passwordsMatchMessage: null,
   loadInitialData: null,
   handleResetPasswordSubmit: null,
-  handleSendEmailSubmit: null
+  handleSendEmailSubmit: null,
+  errored: null
 }
 
 ResetPasswordPage.propTypes = {
@@ -103,13 +106,15 @@ ResetPasswordPage.propTypes = {
   passwordsMatchMessage: PropTypes.func,
   loadInitialData: PropTypes.func,
   handleResetPasswordSubmit: PropTypes.func,
-  handleSendEmailSubmit: PropTypes.func
+  handleSendEmailSubmit: PropTypes.func,
+  errored: PropTypes.bool
 }
 
 const mapResetStateToProps = state => ({
   ...formProps(state, 'resetPasswordForm'),
   ...formProps(state, 'resetPasswordEmailForm'),
-  user: state.user
+  user: state.user,
+  errored: state.app.errorMessage !== null
 })
 
 const mapResetDispatchToProps = dispatch => ({
