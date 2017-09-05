@@ -1,10 +1,11 @@
 # Style Guide
+This guide applies to new client code in `/app`.
 ## Eslint
 Try to follow the [Airbnb Javascript Guide](https://github.com/airbnb/javascript).
 
 The [Airbnb eslint config](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) has been enabled minus [jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md) and [react/forbid-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md).
 
-We also use [Prettier](https://prettier.io)
+We also use [Prettier](https://prettier.io).
 ## Imports
 Follow the pattern:
 ```javascript
@@ -138,3 +139,9 @@ MyForm.propTypes = {
   propB: PropTypes.bool.isRequired
 }
 ```
+## CSS
+The base styles come from [uikit 2](https://github.com/govau/uikit).
+
+Modifications to base styles can be found in [custom.css](https://github.com/AusDTO/dto-digitalmarketplace-frontend/blob/master/public/custom.css).
+
+Use css modules for component-specific styles.
