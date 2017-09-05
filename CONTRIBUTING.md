@@ -1,5 +1,6 @@
 # Style Guide
-This guide applies to new client code in `/app`.
+This guide applies to client-rendered code in `/app`.
+
 ## Eslint
 Try to follow the [Airbnb Javascript Guide](https://github.com/airbnb/javascript).
 
@@ -78,7 +79,7 @@ Define the base page route in `routes.js`
 ```
 
 ### Pages
-Pages `extends Component`, do sub-routing, redux, and pass props to content components.
+Pages are classes, do sub-routing, redux, and pass props to content components.
 
 Ensure you handle sub route default.
 ```jsx
@@ -124,7 +125,7 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyPage))
 ```
 
 ### Content
-Content components are stateless
+Content components are stateless:
 ```jsx
 const MyForm = props => {
   const { propA, propB } = props
