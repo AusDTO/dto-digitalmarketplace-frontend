@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import CreateUserForm from '../components/CreateUser/CreateUserForm'
 import { loadSignup, createUser } from '../actions/memberActions'
-import ErrorBox from '../components/shared/form/ErrorBox' // eslint-disable-line import/no-named-as-default
+import ErrorBox from '../components/shared/form/ErrorBox'
 import BaseForm from '../components/shared/form/BaseForm'
-import formProps from '../components/shared/form/formPropsSelector' // eslint-disable-line import/no-named-as-default
+import formProps from '../components/shared/form/formPropsSelector'
 import { rootPath } from '../routes'
 
-export class CreateUserPage extends BaseForm {
+export class CreateUserPageComponent extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,7 +19,10 @@ export class CreateUserPage extends BaseForm {
   }
 
   componentWillMount() {
-    const tokenString = this.props.match.params.tokenstring
+    const tokenString = this.props.location.pathname.substring(
+      this.props.match.url.length + 1,
+      this.props.location.pathname.length
+    )
     this.props.loadRegistrationData(tokenString)
   }
 
@@ -77,7 +80,7 @@ export class CreateUserPage extends BaseForm {
   }
 }
 
-CreateUserPage.propTypes = {
+CreateUserPageComponent.propTypes = {
   model: PropTypes.string.isRequired,
   userRegisterDetails: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -106,4 +109,6 @@ const mapDispatchToProps = dispatch => ({
   handleSubmit: values => dispatch(createUser(values))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPage))
+const CreateUserPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPageComponent))
+
+export default CreateUserPage

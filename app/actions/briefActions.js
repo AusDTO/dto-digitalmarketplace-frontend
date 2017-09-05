@@ -1,5 +1,4 @@
 import {
-  DATA_IS_LOADING,
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_INFO_HAS_ERRORED,
   BRIEF_RESPONSE_SUCCESS,
@@ -8,50 +7,34 @@ import {
 } from '../constants/constants'
 
 import dmapi from '../services/apiClient'
+import { sendingRequest } from './appActions'
 
-export function handleDataLoading(bool) {
-  return {
-    type: DATA_IS_LOADING,
-    isLoading: bool
-  }
+export const handleBriefInfoSuccess = response => ({
+  type: BRIEF_INFO_FETCH_DATA_SUCCESS,
+  brief: response.data
+})
+
+export const handleBriefInfoFailure = response => ({
+  type: BRIEF_INFO_HAS_ERRORED,
+  // eslint-disable-next-line
+  errorMessage: response && response.data ? response.data.message : 'unknown server error'
+})
+
+export const loadBrief = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/brief/${briefId}` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleBriefInfoFailure(response))
+    } else {
+      dispatch(handleBriefInfoSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
 }
 
-export function handleBriefInfoSuccess(response) {
-  return {
-    type: BRIEF_INFO_FETCH_DATA_SUCCESS,
-    brief: response.data
-  }
-}
+export const handleBriefResponseSuccess = () => ({ type: BRIEF_RESPONSE_SUCCESS })
 
-export function handleBriefInfoFailure(response) {
-  return {
-    type: BRIEF_INFO_HAS_ERRORED,
-    // eslint-disable-next-line
-    errorMessage: response && response.data ? response.data.message : 'unknown server error'
-  }
-}
-
-export function loadBrief(briefId) {
-  return dispatch => {
-    dispatch(handleDataLoading(true))
-    dmapi({ url: `/brief/${briefId}` }).then(response => {
-      if (!response || response.error) {
-        dispatch(handleBriefInfoFailure(response))
-      } else {
-        dispatch(handleBriefInfoSuccess(response))
-      }
-      dispatch(handleDataLoading(false))
-    })
-  }
-}
-
-export function handleBriefResponseSuccess() {
-  return {
-    type: BRIEF_RESPONSE_SUCCESS
-  }
-}
-
-export function handleBriefResponseFailure(response) {
+export const handleBriefResponseFailure = response => {
   switch (response.status) {
     case 409:
       return {
@@ -69,20 +52,18 @@ export function handleBriefResponseFailure(response) {
   }
 }
 
-export function handleBriefResponseSubmit(briefId, model) {
-  return dispatch => {
-    dispatch(handleDataLoading(true))
-    dmapi({
-      url: `/brief/${briefId}/respond`,
-      method: 'POST',
-      data: JSON.stringify(model)
-    }).then(response => {
-      if (response.error) {
-        dispatch(handleBriefResponseFailure(response))
-      } else {
-        dispatch(handleBriefResponseSuccess(response))
-      }
-      dispatch(handleDataLoading(false))
-    })
-  }
+export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    url: `/brief/${briefId}/respond`,
+    method: 'POST',
+    data: JSON.stringify(model)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleBriefResponseFailure(response))
+    } else {
+      dispatch(handleBriefResponseSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
 }

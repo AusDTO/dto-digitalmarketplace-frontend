@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import BriefResponseForm from './BriefResponseForm'
 import { loadBrief } from '../../actions/briefActions'
 
-export class BriefResponse extends Component {
+export class BriefResponseComponent extends Component {
   componentDidMount() {
     const briefId = this.props.match.params.brief_id
     this.props.loadBriefData(briefId)
@@ -27,12 +27,12 @@ export class BriefResponse extends Component {
   }
 }
 
-BriefResponse.defaultProps = {
+BriefResponseComponent.defaultProps = {
   loadBriefSuccess: false,
   loadBriefErrored: false
 }
 
-BriefResponse.propTypes = {
+BriefResponseComponent.propTypes = {
   loadBriefSuccess: PropTypes.bool,
   loadBriefErrored: PropTypes.bool,
   loadBriefData: PropTypes.func.isRequired
@@ -51,4 +51,6 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BriefResponse)
+const BriefResponse = connect(mapStateToProps, mapDispatchToProps)(BriefResponseComponent)
+
+export default BriefResponse

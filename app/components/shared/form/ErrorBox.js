@@ -10,7 +10,7 @@ import PageAlert from '@gov.au/page-alerts'
 
 import { getInvalidFields } from './errorMessageSelector'
 
-export class ErrorBox extends React.Component {
+export class ErrorBoxComponent extends React.Component {
   state = {
     lastFocus: null
   }
@@ -50,6 +50,7 @@ export class ErrorBox extends React.Component {
         </h4>
         <ul>
           {invalidFields &&
+            !errorMessage &&
             invalidFields.map(({ messages, id }, i) =>
               messages.map((message, j) =>
                 <li key={`${i}${j}`}>
@@ -69,13 +70,13 @@ export class ErrorBox extends React.Component {
   }
 }
 
-ErrorBox.defaultProps = {
+ErrorBoxComponent.defaultProps = {
   form: null,
   title: null,
   errorMessage: null
 }
 
-ErrorBox.propTypes = {
+ErrorBoxComponent.propTypes = {
   invalidFields: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -93,4 +94,6 @@ export const mapStateToProps = (state, { model }) => ({
   errorMessage: state.app.errorMessage
 })
 
-export default connect(mapStateToProps)(ErrorBox)
+const ErrorBox = connect(mapStateToProps)(ErrorBoxComponent)
+
+export default ErrorBox
