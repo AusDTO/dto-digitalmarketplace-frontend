@@ -143,7 +143,7 @@ MyForm.propTypes = {
 ## Redux
 Use a traditional redux structure.
 
-Seperate files for actions, actions creators and reducers.
+Seperate files for actions, actions creators and reducers.  Ensure the file names match.
 
 ### Define Action Types in `constants.js` 
 `export const ADD_TODO = 'ADD_TODO'`
@@ -192,4 +192,4 @@ Ensure `camelCase` style names.
 ## Tests
 Where possible, provide at least a shallow snapshot test or render sanity check for a component.
 
-Place tests alongside components.
+Place tests alongside components.  Ensure test file name matches component and ends with `.test.js`
