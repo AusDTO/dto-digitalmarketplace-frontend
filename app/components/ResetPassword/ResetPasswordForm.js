@@ -7,9 +7,8 @@ import Textfield from '../../components/shared/form/Textfield'
 import { passwordLength } from '../validators'
 
 const ResetPasswordForm = props => {
-  const { model, form, user, submitClicked, handleSubmit } = props
+  const { model, user, submitClicked, handleSubmit } = props
   const { resetPasswordSuccess } = user
-  const { valid, submitFailed } = form
 
   let hasFocused = false
   const setFocus = e => {
@@ -32,8 +31,7 @@ const ResetPasswordForm = props => {
                   </p>
                 </span>
               </PageAlert>
-            : ((!valid && submitFailed) || resetPasswordSuccess === false) &&
-              <ErrorBox
+            : <ErrorBox
                 title="There was a problem resetting your password"
                 model={model}
                 submitClicked={submitClicked}
@@ -51,6 +49,7 @@ const ResetPasswordForm = props => {
                 passwordsMatch: vals => vals.password === vals.confirmPassword
               }
             }}
+            validateOn="submit"
             onSubmit={data => handleSubmit(data)}
           >
             <Textfield
@@ -99,10 +98,6 @@ ResetPasswordForm.defaultProps = {
 }
 
 ResetPasswordForm.propTypes = {
-  form: PropTypes.shape({
-    valid: PropTypes.bool,
-    submitFailed: PropTypes.bool
-  }).isRequired,
   user: PropTypes.shape({
     resetPasswordSuccess: PropTypes.bool
   }).isRequired,

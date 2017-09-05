@@ -48,7 +48,7 @@ class ResetPasswordPage extends Component {
   }
 
   render() {
-    const { match, user, model, form, handleSendEmailSubmit, errored } = this.props
+    const { match, user, model, handleSendEmailSubmit } = this.props
     return (
       <div className="reset-password-page">
         <Switch>
@@ -58,9 +58,7 @@ class ResetPasswordPage extends Component {
             render={() =>
               <RequestResetEmailForm
                 model={model}
-                form={form}
                 user={user}
-                errored={errored}
                 submitClicked={this.onSubmitClicked}
                 handleSubmit={handleSendEmailSubmit}
               />}
@@ -71,9 +69,7 @@ class ResetPasswordPage extends Component {
             render={() =>
               <ResetPasswordForm
                 model={model}
-                form={form}
                 user={user}
-                errored={errored}
                 submitClicked={this.onSubmitClicked}
                 handleSubmit={values => this.handleResetPasswordSubmit(values)}
               />}
@@ -90,15 +86,10 @@ ResetPasswordPage.defaultProps = {
   passwordsMatchMessage: null,
   loadInitialData: null,
   handleResetPasswordSubmit: null,
-  handleSendEmailSubmit: null,
-  errored: null
+  handleSendEmailSubmit: null
 }
 
 ResetPasswordPage.propTypes = {
-  form: PropTypes.shape({
-    valid: PropTypes.bool,
-    submitFailed: PropTypes.bool
-  }).isRequired,
   user: PropTypes.shape({
     resetPasswordSuccess: PropTypes.bool
   }).isRequired,
@@ -106,15 +97,13 @@ ResetPasswordPage.propTypes = {
   passwordsMatchMessage: PropTypes.func,
   loadInitialData: PropTypes.func,
   handleResetPasswordSubmit: PropTypes.func,
-  handleSendEmailSubmit: PropTypes.func,
-  errored: PropTypes.bool
+  handleSendEmailSubmit: PropTypes.func
 }
 
 const mapResetStateToProps = state => ({
   ...formProps(state, 'resetPasswordForm'),
   ...formProps(state, 'resetPasswordEmailForm'),
-  user: state.user,
-  errored: state.app.errorMessage !== null
+  user: state.user
 })
 
 const mapResetDispatchToProps = dispatch => ({
