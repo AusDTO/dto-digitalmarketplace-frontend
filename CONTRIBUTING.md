@@ -143,6 +143,8 @@ MyForm.propTypes = {
 ## Redux
 Use a traditional redux structure.
 
+Seperate files for actions, actions creators and reducers.
+
 ### Define Action Types in `constants.js` 
 `export const ADD_TODO = 'ADD_TODO'`
 
