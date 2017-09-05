@@ -179,6 +179,16 @@ Modifications to base styles can be found in [custom.css](https://github.com/Aus
 
 Use css modules for component-specific styles.
 
+Ensure `camelCase` style names.
+
+```css
+.loadingIndicator {
+  position: relative;
+  width: 60px; 
+  height: 60px;
+}
+```
+
 ## Tests
 Where possible, provide at least a shallow snapshot test or render sanity check for a component.
 
