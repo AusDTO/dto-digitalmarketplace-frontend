@@ -3,6 +3,8 @@
 Try to follow the [Airbnb Javascript Guide](https://github.com/airbnb/javascript).
 
 The [Airbnb eslint config](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) has been enabled minus [jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md) and [react/forbid-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md).
+
+We also use [Prettier](https://prettier.io)
 ## Imports
 Follow the pattern:
 ```javascript
@@ -75,7 +77,9 @@ Define the base page route in `routes.js`
 ```
 
 ### Pages
-Pages `extends Component`, do sub-routing, redux, and pass props to content components
+Pages `extends Component`, do sub-routing, redux, and pass props to content components.
+
+Ensure you handle sub route default.
 ```jsx
 class MyPage extends Component {
   static propTypes = {
@@ -98,6 +102,7 @@ class MyPage extends Component {
             propB={propB}
           />}
       />
+      <Route component={NotFound} /> 
     </Switch>
   }
 }
