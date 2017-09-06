@@ -83,3 +83,9 @@ export const sortByDate = (dateArray, briefType, sortDirection) => {
   else return false
 };
 
+export const getNextKey = obj => {
+  const max = Object.keys(obj).map(Number).reduce((a, b) => {
+    return a > b ? a : b 
+  }, -1)
+  return max + 1
+}   
