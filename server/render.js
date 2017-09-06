@@ -54,6 +54,11 @@ app.get('/', function (req, res) {
 app.post('/render', render);
 
 app.set('view engine', 'ejs');
+
+app.get('/orams', function(req, res) {
+  res.render('orams');
+})
+
 app.get('/*', function(req, res) {
   res.render('index');
 })

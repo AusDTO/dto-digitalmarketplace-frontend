@@ -142,7 +142,7 @@ module.exports = [{
       {
         test: /\.(js|jsx)$/,
         loader: 'eslint',
-        include: paths.clientSrc
+        include: paths.marketplaceSrc
       }
     ],
     loaders: loaders.concat({
@@ -293,12 +293,11 @@ module.exports = [{
     })
   ]
 }, {
-  name: 'client-side render',
-  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './app/App.js'],
-  devtool: 'source-map',
+  name: 'marketplace app',
+  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './apps/marketplace/index.js'],
   output: {
     path: './build',
-    filename: 'build.js',
+    filename: 'marketplace.js',
     publicPath: publicPath
   },
   module: {
@@ -306,7 +305,7 @@ module.exports = [{
       {
         test: /\.(js|jsx)$/,
         include: [
-          paths.clientSrc,
+          paths.marketplaceSrc,
           paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts',
         ],
@@ -314,10 +313,74 @@ module.exports = [{
       },
       {
         test: /\.(scss|css)$/,
-        include: paths.clientSrc,
+        include: paths.marketplaceSrc,
         loader: [
           'style-loader?singleton', 
-          'css-loader?modules&importLoaders=1&context=' + paths.clientSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'css-loader?modules&importLoaders=1&context=' + paths.marketplaceSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'postcss-loader',
+          'sass-loader'
+        ].join('!')
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      }
+    ],
+  },
+  plugins: [
+    new webpack.DefinePlugin(env),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    // Try to dedupe duplicated modules, if any:
+    new webpack.optimize.DedupePlugin(),
+    // Minify the code.
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true, // React doesn't support IE8
+        warnings: false
+      },
+      mangle: {
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+        screw_ie8: true
+      }
+    }),
+    new RollbarSourceMapPlugin({
+      accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
+      version: process.env.CIRCLE_SHA1 || 'noversion',
+      publicPath: publicPath
+    })
+  ]
+}, {
+  name: 'orams app',
+  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './apps/orams/index.js'],
+  output: {
+    path: './build',
+    filename: 'orams.js',
+    publicPath: publicPath
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        include: [
+          paths.oramsSrc,
+          paths.appNodeModules + '/@gov.au/footer',
+          paths.appNodeModules + '/@gov.au/page-alerts',
+        ],
+        loader: 'babel'
+      },
+      {
+        test: /\.(scss|css)$/,
+        include: paths.oramsSrc,
+        loader: [
+          'style-loader?singleton', 
+          'css-loader?modules&importLoaders=1&context=' + paths.oramsSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
         ].join('!')
