@@ -166,7 +166,7 @@ module.exports = [{
       {
         test: /\.(js|jsx)$/,
         loader: 'eslint',
-        include: paths.clientSrc,
+        include: paths.marketplaceSrc,
       }
     ],
     loaders: loaders.concat({
@@ -260,14 +260,14 @@ module.exports = [{
     new webpack.optimize.DedupePlugin()
   ]
 }, {
-  name: 'client-side render',
+  name: 'marketplace app',
   entry: [
     require.resolve('./polyfills'),
-    './app/App.js'],
+    './apps/marketplace/index.js'],
   devtool: 'eval',
   output: {
     path: './build',
-    filename: 'build.js',
+    filename: 'marketplace.js',
     publicPath: publicPath
   },
   module: {
@@ -275,7 +275,7 @@ module.exports = [{
       {
         test: /\.(js|jsx)$/,
         include: [
-          paths.clientSrc,
+          paths.marketplaceSrc,
           paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts',
         ],
@@ -283,10 +283,59 @@ module.exports = [{
       },
       {
         test: /\.(scss|css)$/,
-        include: paths.clientSrc,
+        include: paths.marketplaceSrc,
         loader: [
           'style-loader?singleton', 
-          'css-loader?modules&importLoaders=1&context=' + paths.clientSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'css-loader?modules&importLoaders=1&context=' + paths.marketplaceSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'postcss-loader',
+          'sass-loader'
+        ].join('!')
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      }
+    ],
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      }
+    })
+  ]
+}, {
+  name: 'orams app',
+  entry: [
+    require.resolve('./polyfills'),
+    './apps/orams/index.js'],
+  devtool: 'eval',
+  output: {
+    path: './build',
+    filename: 'orams.js',
+    publicPath: publicPath
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        include: [
+          paths.oramsSrc,
+          paths.appNodeModules + '/@gov.au/footer',
+          paths.appNodeModules + '/@gov.au/page-alerts',
+        ],
+        loader: 'babel'
+      },
+      {
+        test: /\.(scss|css)$/,
+        include: paths.oramsSrc,
+        loader: [
+          'style-loader?singleton', 
+          'css-loader?modules&importLoaders=1&context=' + paths.oramsSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
         ].join('!')

@@ -10,7 +10,7 @@ import configureStore from './store'
 
 import RootContainer from './routes'
 
-import './App.scss'
+import './main.scss'
 
 const store = configureStore()
 
@@ -30,4 +30,4 @@ const App = () =>
     </BrowserRouter>
   </Provider>
 
-ReactDOM.render(<App />, document.getElementById('appReact'))
+ReactDOM.render(<App />, document.getElementById('root'))
