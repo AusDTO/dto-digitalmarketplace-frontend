@@ -1,6 +1,6 @@
 # Marketplace React Frontend
 
-**This documentation is now outdated and applies to legacy server-rendered react.  Current documentation can be found [here](/contributing.md)**.
+**This documentation is now outdated and applies to legacy server-rendered react.  Current documentation can be found [here](/CONTRIBUTING.md)**.
 
 Read the documentation
 * [Docs](/docs)
