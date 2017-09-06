@@ -147,6 +147,10 @@ export const validPhoneNumber = val => {
   return length >= 10
 }
 
+export const passwordsMatch = vals => vals.password === vals.confirmPassword
+
+export const passwordLength = val => val && val.length >= 10
+
 export default {
   required,
   minArrayLength,
@@ -160,5 +164,7 @@ export default {
   dependantRequired,
   minObjectLength,
   limitWords,
-  limitNumbers
+  limitNumbers,
+  passwordsMatch,
+  passwordLength
 }

@@ -5,4 +5,5 @@ export const REGISTRATION_NOT_FOUND =
 export const GENERAL_ERROR = 'The Digital Marketplace encountered an error.'
 export const ACCOUNT_TAKEN =
   'An account with this email domain already exists. Someone in your team may have already created an account with the Marketplace.'
-export const UNABLE_TO_SIGNUP = 'The Digital Marketplace encountered an error trying to send your signup email.'
+export const UNABLE_TO_RESET = 'The Digital Marketplace encountered an error trying to reset your password.'
+export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error trying to the reset password email.'

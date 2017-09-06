@@ -1,7 +1,6 @@
 import expect from 'expect'
 import reducer from './memberInfoReducers'
 import {
-  DATA_IS_LOADING,
   MEMBER_INFO_FETCH_DATA_SUCCESS,
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
@@ -11,13 +10,15 @@ import {
 describe('user reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({
-      isLoading: null,
       memberInfoHasSuccess: null,
-      memberInfo: { isAutheticated: false },
+      memberInfo: { isAuthenticated: false },
       loadSignupSuccess: null,
       signupSuccess: null,
       userRegisterDetails: null,
       createUserSuccess: null,
+      resetPasswordEmailSuccess: null,
+      resetPasswordSuccess: null,
+      errorMessage: null,
       user: {}
     })
   })
@@ -28,15 +29,6 @@ describe('user reducer', () => {
       user: action.data,
       createUserSuccess: true,
       createUserErrored: false
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
-  })
-
-  it('should handle DATA_IS_LOADING', () => {
-    const action = { type: DATA_IS_LOADING, isLoading: false }
-    const expectedState = {
-      isLoading: action.isLoading
     }
 
     expect(reducer({}, action)).toEqual(expectedState)

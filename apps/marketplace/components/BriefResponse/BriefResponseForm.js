@@ -9,9 +9,9 @@ import PageAlert from '@gov.au/page-alerts'
 import { required, validEmail } from '../../components/validators'
 import Layout from '../../components/shared/Layout'
 import BaseForm from '../../components/shared/form/BaseForm'
-import ErrorBox from '../../components/shared/form/ErrorBox' // eslint-disable-line import/no-named-as-default
+import ErrorBox from '../../components/shared/form/ErrorBox'
 import Textfield from '../../components/shared/form/Textfield'
-import formProps from '../../components/shared/form/formPropsSelector' // eslint-disable-line import/no-named-as-default
+import formProps from '../../components/shared/form/formPropsSelector'
 import { handleBriefResponseSubmit } from '../../actions/briefActions'
 import Textarea from '../shared/form/Textarea'
 

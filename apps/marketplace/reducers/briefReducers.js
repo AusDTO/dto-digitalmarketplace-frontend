@@ -1,5 +1,4 @@
 import {
-  DATA_IS_LOADING,
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_INFO_HAS_ERRORED,
   BRIEF_RESPONSE_SUCCESS,
@@ -8,7 +7,6 @@ import {
 } from '../constants/constants'
 
 const defaultBriefState = {
-  isLoading: null,
   loadBriefSuccess: null,
   loadBriefErrored: null,
   briefSuccess: null,
@@ -23,12 +21,6 @@ const defaultBriefState = {
 
 const briefReducer = (state = defaultBriefState, action) => {
   switch (action.type) {
-    case DATA_IS_LOADING:
-      return {
-        ...state,
-        isLoading: action.isLoading
-      }
-
     case BRIEF_INFO_FETCH_DATA_SUCCESS:
       return {
         ...state,
