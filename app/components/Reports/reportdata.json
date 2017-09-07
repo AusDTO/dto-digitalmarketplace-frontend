@@ -50,14 +50,14 @@
           "imageAlt": "600 sellers have registered to offer digital and ICT services"
         },
         {
-          "image": "./images/svg/768-69-of-briefs-are-open-to-all.svg",
-          "mobileImage": "./images/svg/767-69-of-briefs-are-open-to-all.svg",
-          "imageAlt": "69% of briefs are open to all"
-        },
-        {
           "image": "./images/svg/81-of-the-contracted-value-has-been-awarded-to-sm-es.svg",
           "mobileImage": "./images/svg/81-of-the-contracted-value-has-been-awarded-to-sm-es.svg",
           "imageAlt": "81% of the contracted value has been awarded to SMEs"
+        },
+        {
+          "image": "./images/svg/69-of-briefs-are-open-to-all.svg",
+          "mobileImage": "./images/svg/69-of-briefs-are-open-to-all.svg",
+          "imageAlt": "69% of briefs are open to all"
         },
         {
           "image": "./images/svg/57-of-briefs-are-for-digital-specialists.svg",

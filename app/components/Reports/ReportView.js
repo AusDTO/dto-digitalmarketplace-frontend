@@ -1,5 +1,5 @@
 import React from 'react'
-import shortid from 'shortid'
+import { uniqueID } from '../shared/utils/helpers'
 import ReportItem from './ReportItem'
 import * as styles from './ReportView.scss'
 
@@ -25,7 +25,7 @@ const ReportView = props => {
           {items &&
             <div className="row">
               <div className="hidden">
-                {items.map((item, id = shortid.generate()) =>
+                {items.map((item, id = uniqueID()) =>
                   <div key={id}>
                     <ReportItem {...item} {...media} />
                   </div>

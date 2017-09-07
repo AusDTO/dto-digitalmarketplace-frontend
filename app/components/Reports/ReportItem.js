@@ -1,7 +1,7 @@
 import React from 'react'
-import shortid from 'shortid'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
+import { uniqueID } from '../shared/utils/helpers'
 import * as styles from './ReportItem.scss'
 
 const computeClassname = (base, alt, formatted) =>
@@ -20,7 +20,7 @@ const ReportItem = props => {
           <h2 className={`${styles.reportItemHeading} uikit-display-2`}>
             {heading}
           </h2>}
-        {subitems.map((subitem, id = shortid.generate()) =>
+        {subitems.map((subitem, id = uniqueID()) =>
           <p className={`${styles.reportSubitemContainer} ${subitem.fullWidth ? 'col-sm-12' : 'col-sm-6'}`} key={id}>
             {subitem.text &&
               <span className={styles.reportItemText}>
