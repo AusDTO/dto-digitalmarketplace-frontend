@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="330" height="160" viewBox="0 0 330 160">
     <g fill="none" fill-rule="evenodd">
-        <text fill="#333" font-family="OpenSans-Bold, Open Sans" font-size="14" font-weight="bold" transform="translate(1 -7)">
-            <tspan x="0" y="55">16% </tspan>  <tspan x=".971" y="71.294" font-family="OpenSans, Open Sans" font-weight="normal">Pre-discovery</tspan>
+        <text fill="#333" font-size="14" font-weight="bold" transform="translate(1 -7)">
+            <tspan x="0" y="55">16% </tspan>  <tspan x=".971" y="71.294" font-weight="normal">Pre-discovery</tspan>
         </text>
-        <text fill="#333" font-family="OpenSans-Bold, Open Sans" font-size="14" font-weight="bold" transform="translate(1 -7)">
-            <tspan x="91.324" y="149">34%</tspan> <tspan x="120.89" y="149.294" font-family="OpenSans, Open Sans" font-weight="normal"> </tspan> <tspan x="75" y="165.294" font-family="OpenSans, Open Sans" font-weight="normal">Discovery</tspan>
+        <text fill="#333" font-size="14" font-weight="bold" transform="translate(1 -7)">
+            <tspan x="91.324" y="149">34%</tspan> <tspan x="120.89" y="149.294" font-weight="normal"> </tspan> <tspan x="75" y="165.294" font-weight="normal">Discovery</tspan>
         </text>
-        <text fill="#333" font-family="OpenSans-Bold, Open Sans" font-size="14" font-weight="bold" transform="translate(1 -7)">
-            <tspan x="177.411" y="55">18%</tspan> <tspan x="206.977" y="55.294" font-family="OpenSans, Open Sans" font-weight="normal"> </tspan> <tspan x="174" y="71.294" font-family="OpenSans, Open Sans" font-weight="normal">Alpha</tspan>
+        <text fill="#333" font-size="14" font-weight="bold" transform="translate(1 -7)">
+            <tspan x="177.411" y="55">18%</tspan> <tspan x="206.977" y="55.294" font-weight="normal"> </tspan> <tspan x="174" y="71.294" font-weight="normal">Alpha</tspan>
         </text>
-        <text fill="#333" font-family="OpenSans-Bold, Open Sans" font-size="14" font-weight="bold" transform="translate(1 -7)">
-            <tspan x="233" y="149">17%</tspan> <tspan x="262.565" y="149.294" font-family="OpenSans, Open Sans" font-weight="normal"> </tspan> <tspan x="233.441" y="165.294" font-family="OpenSans, Open Sans" font-weight="normal">Beta</tspan>
+        <text fill="#333" font-size="14" font-weight="bold" transform="translate(1 -7)">
+            <tspan x="233" y="149">17%</tspan> <tspan x="262.565" y="149.294" font-weight="normal"> </tspan> <tspan x="233.441" y="165.294" font-weight="normal">Beta</tspan>
         </text>
-        <text fill="#333" font-family="OpenSans-Bold, Open Sans" font-size="14" font-weight="bold" transform="translate(1 -7)">
-            <tspan x="274.565" y="55">5%</tspan> <tspan x="296.14" y="55.294" font-family="OpenSans, Open Sans" font-weight="normal"> </tspan> <tspan x="273" y="71.294" font-family="OpenSans, Open Sans" font-weight="normal">Live</tspan>
+        <text fill="#333" font-size="14" font-weight="bold" transform="translate(1 -7)">
+            <tspan x="274.565" y="55">5%</tspan> <tspan x="296.14" y="55.294" font-weight="normal"> </tspan> <tspan x="273" y="71.294" font-weight="normal">Live</tspan>
         </text>
-        <text fill="#333" font-family="OpenSans-Bold, Open Sans" font-size="14" font-weight="bold" transform="translate(1 -7)">
-            <tspan x="290.736" y="149">10% </tspan>  <tspan x="287" y="165.294" font-family="OpenSans, Open Sans" font-weight="normal">Other</tspan>
+        <text fill="#333" font-size="14" font-weight="bold" transform="translate(1 -7)">
+            <tspan x="290.736" y="149">10% </tspan>  <tspan x="287" y="165.294" font-weight="normal">Other</tspan>
         </text>
         <g stroke="#224A61" transform="translate(25 69)">
             <path stroke-linecap="square" d="M1.5 17.5V1.475"/>
@@ -47,7 +47,7 @@
         <path fill="#C52A72" stroke="#FFF" stroke-width="2" d="M163 78h60.105v35.326H163z"/>
         <path fill="#912B87" stroke="#FFF" stroke-width="2" d="M52 78h111.195v35.326H52z"/>
         <path fill="#D8D8D8" stroke="#FFF" stroke-width="2" d="M295 78h33.058v35.326H295zM1 78h51.09v35.326H1z"/>
-        <text fill="#313131" font-family="OpenSans, Open Sans" font-size="17" transform="translate(1 -7)">
+        <text fill="#313131" font-size="17" transform="translate(1 -7)">
             <tspan x="99" y="18">Briefs by phase</tspan>
         </text>
     </g>
