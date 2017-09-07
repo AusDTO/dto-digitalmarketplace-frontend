@@ -2,9 +2,16 @@ const breakpoints = {
   mobile: 767
 }
 
+const initialMedia = () => {
+  if (typeof window !== 'object') {
+    return null
+  }
+  return window.innerWidth <= breakpoints.mobile ? 'mobile' : 'desktop'
+}
+
 const initialState = {
   screenWidth: typeof window === 'object' ? window.innerWidth : null,
-  media: typeof window === 'object' ? (window.innerWidth <= breakpoints.mobile ? 'mobile' : 'desktop') : null
+  media: initialMedia()
 }
 
 const mediaReducer = (state = initialState, action) => {

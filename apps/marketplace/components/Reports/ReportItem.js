@@ -1,3 +1,7 @@
+// will swap this with <img>
+/* eslint-disable react/no-danger  */
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
@@ -10,8 +14,8 @@ const computeClassname = (base, alt, formatted) =>
   })
 
 const ReportItem = props => {
-  let { heading, subitems, media } = props
-  let mobile = media === 'mobile'
+  const { heading, subitems, media } = props
+  const mobile = media === 'mobile'
 
   return (
     <div className="col-sm-12" id="report-item">
@@ -46,10 +50,15 @@ const ReportItem = props => {
 }
 
 ReportItem.propTypes = {
-  text: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-  image: PropTypes.string,
-  imageAlt: PropTypes.string,
-  heading: PropTypes.string
+  heading: PropTypes.string,
+  media: PropTypes.string,
+  subitems: PropTypes.array
+}
+
+ReportItem.defaultProps = {
+  heading: '',
+  media: '',
+  subitems: []
 }
 
 export default ReportItem

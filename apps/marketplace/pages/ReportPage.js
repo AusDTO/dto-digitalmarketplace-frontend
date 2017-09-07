@@ -4,6 +4,7 @@ import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReportView from '../components/Reports/ReportView'
 import { rootPath } from '../routes'
+
 const itemData = require('../components/Reports/reportdata.json')
 
 export class ReportPageContainer extends Component {
