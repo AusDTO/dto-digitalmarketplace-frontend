@@ -5,9 +5,18 @@
   src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
 }
 
+.reportView {
+    width: 100%;
+    margin: 0 auto
+}
+
 @media (max-width: 767px) {
   .reportView {
     max-width: 320px
+  }
+  .reportViewHeading {
+    text-align: center;
+    margin: 0 auto
   }
 }
 
@@ -17,14 +26,6 @@
     margin: 0 auto
   }
 }
-
-// .reportView svg text {
-//   font-family: system
-// }
-
-// .reportView svg tspan {
-//   // font-family: system
-// }
 
 .reportViewTitle {
   font-weight: bold
@@ -36,5 +37,6 @@
 
 .reportViewHeading {
   padding: 20px 0px;
-  font-weight: bold
+  color: #224a61;
+  font-weight: bold;
 }

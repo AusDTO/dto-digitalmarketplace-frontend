@@ -1,1 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="322" height="513" viewBox="0 0 322 513"><defs><path id="a" d="M153 187h68.127v20H153z"/><path id="b" d="M153 267h51.095v20H153z"/><path id="c" d="M236 503h16v16h-16z"/></defs><g fill="none" fill-rule="evenodd"><text fill="#313131" font-size="17" transform="translate(-5 -6)"><tspan x="32.909" y="18">Top 10 sellers awarded contracts </tspan> <tspan x="89.546" y="44">June - August 2017</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="314.421" y="465">10</tspan></text><text fill="#224A61" font-size="11" font-weight="bold" transform="translate(-5 -6)"><tspan x="179" y="476">Number of briefs won</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="151.71" y="464">0</tspan></text><path fill="#17788D" d="M148 63h136.254v20H148z"/><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="5.403" y="81">Adelphi Digital Consulting </tspan> <tspan x="104.365" y="96">Group</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="106.498" y="121">Paxus</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="14.84" y="161">2XM Technology Pty Ltd</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="33.096" y="200">SMS Management &amp; </tspan> <tspan x="78.364" y="215">Technology</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="56.514" y="240">Zen Ex Machina</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="99.263" y="280">Oakton</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="56.02" y="360">Tobias &amp; Tobias</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="76.457" y="320">Paper Giant</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="66.682" y="399">AUREC Group</tspan></text><text fill="#224A61" font-size="11" transform="translate(-5 -6)"><tspan x="81.925" y="438">ThinkPlace</tspan></text><path fill="#17788D" d="M148 103h85.159v20H148zm0 39h68.127v20H148z"/><g transform="translate(-5 -6)"><use fill="#B9D6DC" xlink:href="#ads"/><path stroke="#17788D" stroke-width="2" d="M154 188h66.127v18H154z"/></g><path fill="#17788D" d="M148 421h34.063v20H148zm0-40h34.063v20H148zm0-40h34.063v20H148zm0-40h51.095v20H148z"/><g transform="translate(-5 -6)"><use fill="#B9D6DC" xlink:href="#b"/><path stroke="#17788D" stroke-width="2" d="M154 268h49.095v18H154z"/></g><path fill="#17788D" d="M148 221h68.127v20H148z"/><path stroke="#BBB" stroke-linecap="square" d="M148.46 445.5h172.181"/><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="295" y="84">8</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="244" y="123">5</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="226" y="163">4</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="226" y="202">4</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="226" y="242">4</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="209" y="282">3</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="209" y="322">3</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="192" y="362">2</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="192" y="402">2</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-5 -6)"><tspan x="192" y="442">2</tspan></text><text fill="#808184" font-size="14" transform="translate(-5 -6)"><tspan x="175" y="515">SME</tspan></text><text fill="#808184" font-size="14" transform="translate(-5 -6)"><tspan x="258" y="515">Other</tspan></text><path fill="#17788D" d="M148 497h16v16h-16z"/><g transform="translate(-5 -6)"><use fill="#B9D6DC" xlink:href="#c"/><path stroke="#17788D" stroke-width="2" d="M237 504h14v14h-14z"/></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="322px" height="530px" viewBox="0 0 322 530" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>&lt;767 top 10 sellers awarded contractes over 3 months</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="153" y="198" width="68.1269841" height="20"></rect>
+        <rect id="path-2" x="153" y="278" width="51.0952381" height="20"></rect>
+        <rect id="path-3" x="236" y="514" width="16" height="16"></rect>
+    </defs>
+    <g id="DLO-data-report" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="August-monthly-report-less-than-767px-Copy" transform="translate(-82.000000, -5144.000000)">
+            <g id="&lt;767-top-10-sellers-awarded-contractes-over-3-months" transform="translate(77.000000, 5144.000000)">
+                <text id="10" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="314.420898" y="476">10</tspan>
+                </text>
+                <text id="Number-of-briefs-won" font-size="11" font-weight="bold" fill="#224A61">
+                    <tspan x="179" y="487">Number of briefs won</tspan>
+                </text>
+                <text id="0" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="151.710449" y="475">0</tspan>
+                </text>
+                <rect id="Rectangle-10-Copy-9" fill="#17788D" x="153" y="80" width="136.253968" height="20"></rect>
+                <text id="Adelphi-Digital-Cons" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="5.40283203" y="92">Adelphi Digital Consulting </tspan>
+                    <tspan x="104.365234" y="107">Group</tspan>
+                </text>
+                <text id="Paxus" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="106.497559" y="132">Paxus</tspan>
+                </text>
+                <text id="2XM-Technology-Pty-L" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="14.8398438" y="172">2XM Technology Pty Ltd</tspan>
+                </text>
+                <text id="SMS-Management-&amp;-Tec" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="33.0961914" y="211">SMS Management &amp; </tspan>
+                    <tspan x="78.3637695" y="226">Technology</tspan>
+                </text>
+                <text id="Zen-Ex-Machina" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="56.5141602" y="251">Zen Ex Machina</tspan>
+                </text>
+                <text id="Oakton" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="99.2626953" y="291">Oakton</tspan>
+                </text>
+                <text id="Tobias-&amp;-Tobias" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="56.0200195" y="371">Tobias &amp; Tobias</tspan>
+                </text>
+                <text id="Paper-Giant" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="76.4570312" y="331">Paper Giant</tspan>
+                </text>
+                <text id="AUREC-Group" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="66.6816406" y="410">AUREC Group</tspan>
+                </text>
+                <text id="ThinkPlace" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="81.9248047" y="449">ThinkPlace</tspan>
+                </text>
+                <rect id="Rectangle-10-Copy-8" fill="#17788D" x="153" y="120" width="85.1587302" height="20"></rect>
+                <rect id="Rectangle-10-Copy-7" fill="#17788D" x="153" y="159" width="68.1269841" height="20"></rect>
+                <g id="Rectangle-10-Copy-6">
+                    <use fill="#B9D6DC" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#17788D" stroke-width="2" x="154" y="199" width="66.1269841" height="18"></rect>
+                </g>
+                <rect id="Rectangle-10" fill="#17788D" x="153" y="438" width="34.0634921" height="20"></rect>
+                <rect id="Rectangle-10-Copy" fill="#17788D" x="153" y="398" width="34.0634921" height="20"></rect>
+                <rect id="Rectangle-10-Copy-2" fill="#17788D" x="153" y="358" width="34.0634921" height="20"></rect>
+                <rect id="Rectangle-10-Copy-3" fill="#17788D" x="153" y="318" width="51.0952381" height="20"></rect>
+                <g id="Rectangle-10-Copy-4">
+                    <use fill="#B9D6DC" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#17788D" stroke-width="2" x="154" y="279" width="49.0952381" height="18"></rect>
+                </g>
+                <rect id="Rectangle-10-Copy-5" fill="#17788D" x="153" y="238" width="68.1269841" height="20"></rect>
+                <path d="M153.460317,462.5 L325.641201,462.5" id="Line" stroke="#BBBBBB" stroke-linecap="square"></path>
+                <text id="8" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="295" y="95">8</tspan>
+                </text>
+                <text id="5" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="244" y="134">5</tspan>
+                </text>
+                <text id="4" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="226" y="174">4</tspan>
+                </text>
+                <text id="4-copy" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="226" y="213">4</tspan>
+                </text>
+                <text id="4-copy-2" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="226" y="253">4</tspan>
+                </text>
+                <text id="3" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="209" y="293">3</tspan>
+                </text>
+                <text id="3" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="209" y="333">3</tspan>
+                </text>
+                <text id="2" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="192" y="373">2</tspan>
+                </text>
+                <text id="2-copy" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="192" y="413">2</tspan>
+                </text>
+                <text id="2-copy-2" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="192" y="453">2</tspan>
+                </text>
+                <text id="SME" font-size="14" font-weight="normal" fill="#808184">
+                    <tspan x="175" y="526">SME</tspan>
+                </text>
+                <text id="Other" font-size="14" font-weight="normal" fill="#808184">
+                    <tspan x="258" y="526">Other</tspan>
+                </text>
+                <rect id="Rectangle-3-Copy-6" fill="#17788D" x="153" y="514" width="16" height="16"></rect>
+                <g id="Rectangle-3-Copy-8">
+                    <use fill="#B9D6DC" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <rect stroke="#17788D" stroke-width="2" x="237" y="515" width="14" height="14"></rect>
+                </g>
+                <rect id="Rectangle-2" fill="#FFFFFF" x="87" y="0" width="169" height="54"></rect>
+                <text id="Top-10-sellers-award" font-size="17" font-weight="normal" line-spacing="27" fill="#313131">
+                    <tspan x="32.9094238" y="29">Top 10 sellers awarded contracts </tspan>
+                    <tspan x="89.5456543" y="56">June - August 2017</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

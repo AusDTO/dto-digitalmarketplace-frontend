@@ -11,11 +11,10 @@ const ReportView = props => {
       <div className="row">
         <div className="col-sm-12 col-xs-12">
           <div>
-            <h1 className={`${styles.reportViewTitle} uikit-display-3`}>
+            <h1 className={`${styles.reportViewTitle} uikit-display-4`}>
               {title} <span className={styles.reportViewDate}>{date}</span>
             </h1>
-            <p><a href={require("./MarketplaceAug2017.pdf")} download>Download this report as a PDF</a></p>
-          </div>  
+          </div>
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
           <span>
             The Digital Marketplace is a simple, clear and fast way to buy and sell with government. It aims to{' '}

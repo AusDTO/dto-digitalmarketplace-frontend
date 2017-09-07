@@ -1,1 +1,122 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="335" height="523" viewBox="0 0 335 523"><defs><path id="a" d="M138 267.213h63.471v20H138z"/><path id="b" d="M221 513.213h16v16h-16z"/></defs><g fill="none" fill-rule="evenodd"><text fill="#313131" font-size="17" transform="translate(-18 -7)"><tspan x="45.909" y="18.213">Top 10 sellers awarded contracts </tspan> <tspan x="102.546" y="44.213">June - August 2017</tspan></text><path fill="#17788D" d="M120 62.213h169.255v20H120z"/><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="47.82" y="81.213">Adelphi Digital </tspan> <tspan x="31.948" y="96.213">Consulting Group</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="91.498" y="121.213">Paxus</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="19.031" y="161.213">2XM Technology Pty </tspan> <tspan x="105.667" y="176.213">Ltd</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="18.096" y="200.213">SMS Management &amp; </tspan> <tspan x="63.364" y="215.213">Technology</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="41.514" y="240.213">Zen Ex Machina</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="84.263" y="280.213">Oakton</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="41.02" y="360.213">Tobias &amp; Tobias</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="61.457" y="320.213">Paper Giant</tspan></text><path fill="#17788D" d="M120 102.213h105.785v20H120zm0 39h84.628v20H120z"/><g transform="translate(-18 -7)"><use fill="#B9D6DC" xlink:href="#aa"/><path stroke="#17788D" stroke-width="2" d="M139 188.213h82.628v18H139z"/></g><path fill="#17788D" d="M120 340.213h42.314v20H120zm0-40h63.471v20H120z"/><g transform="translate(-18 -7)"><use fill="#B9D6DC" xlink:href="#aaa"/><path stroke="#17788D" stroke-width="2" d="M139 268.213h61.471v18H139z"/></g><path fill="#17788D" d="M120 220.213h84.628v20H120z"/><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="314" y="84.213">8</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="249" y="123.213">5</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="228" y="163.213">4</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="228" y="202.213">4</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="228" y="242.213">4</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="207" y="282.213">3</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="207" y="322.213">3</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="187" y="362.213">2</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="340.421" y="466.213">10</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="169" y="486.213">Number of briefs won</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="136.71" y="465.213">0</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="51.682" y="399.213">AUREC Group</tspan></text><text fill="#224A61" font-size="11" transform="translate(-18 -7)"><tspan x="66.925" y="438.213">ThinkPlace</tspan></text><path fill="#17788D" d="M120 420.213h42.314v20H120zm0-40h42.314v20H120z"/><path stroke="#BBB" stroke-linecap="square" d="M120.572 443.713h213.884"/><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="187" y="402.213">2</tspan></text><text fill="#224A61" font-size="14" font-weight="bold" transform="translate(-18 -7)"><tspan x="187" y="442.213">2</tspan></text><text fill="#808184" font-size="14" transform="translate(-18 -7)"><tspan x="160" y="525.213">SME</tspan></text><text fill="#808184" font-size="14" transform="translate(-18 -7)"><tspan x="243" y="525.213">Other</tspan></text><path fill="#17788D" d="M120 506.213h16v16h-16z"/><g transform="translate(-18 -7)"><use fill="#B9D6DC" xlink:href="#b"/><path stroke="#17788D" stroke-width="2" d="M222 514.213h14v14h-14z"/></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="335px" height="541px" viewBox="0 0 335 541" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>&gt;768 Top 10 sellers awarded contracts over 3 months</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="138" y="198.212589" width="84.6276596" height="20"></rect>
+        <rect id="path-2" x="138" y="278.212589" width="63.4707447" height="20"></rect>
+        <rect id="path-3" x="221" y="524.212589" width="16" height="16"></rect>
+    </defs>
+    <g id="DLO-data-report" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="August-monthly-report-greater-than-768px" transform="translate(-722.000000, -2957.000000)">
+            <g id="&gt;768-Top-10-sellers-awarded-contracts-over-3-months" transform="translate(704.000000, 2957.000000)">
+                <rect id="Rectangle-10-Copy-16" fill="#17788D" x="138" y="80.2125889" width="169.255319" height="20"></rect>
+                <text id="Adelphi-Digital-Cons-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="47.8198242" y="92.2125889">Adelphi Digital </tspan>
+                    <tspan x="31.9482422" y="107.212589">Consulting Group</tspan>
+                </text>
+                <text id="Paxus-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="91.4975586" y="132.212589">Paxus</tspan>
+                </text>
+                <text id="2XM-Technology-Pty-L-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="19.0307617" y="172.212589">2XM Technology Pty </tspan>
+                    <tspan x="105.666504" y="187.212589">Ltd</tspan>
+                </text>
+                <text id="SMS-Management-&amp;-Tec-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="18.0961914" y="211.212589">SMS Management &amp; </tspan>
+                    <tspan x="63.3637695" y="226.212589">Technology</tspan>
+                </text>
+                <text id="Zen-Ex-Machina-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="41.5141602" y="251.212589">Zen Ex Machina</tspan>
+                </text>
+                <text id="Oakton-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="84.2626953" y="291.212589">Oakton</tspan>
+                </text>
+                <text id="Tobias-&amp;-Tobias-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="41.0200195" y="371.212589">Tobias &amp; Tobias</tspan>
+                </text>
+                <text id="Paper-Giant-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="61.4570312" y="331.212589">Paper Giant</tspan>
+                </text>
+                <rect id="Rectangle-10-Copy-17" fill="#17788D" x="138" y="120.212589" width="105.784574" height="20"></rect>
+                <rect id="Rectangle-10-Copy-18" fill="#17788D" x="138" y="159.212589" width="84.6276596" height="20"></rect>
+                <g id="Rectangle-10-Copy-19">
+                    <use fill="#B9D6DC" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#17788D" stroke-width="2" x="139" y="199.212589" width="82.6276596" height="18"></rect>
+                </g>
+                <rect id="Rectangle-10-Copy-22" fill="#17788D" x="138" y="358.212589" width="42.3138298" height="20"></rect>
+                <rect id="Rectangle-10-Copy-23" fill="#17788D" x="138" y="318.212589" width="63.4707447" height="20"></rect>
+                <g id="Rectangle-10-Copy-24">
+                    <use fill="#B9D6DC" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#17788D" stroke-width="2" x="139" y="279.212589" width="61.4707447" height="18"></rect>
+                </g>
+                <rect id="Rectangle-10-Copy-25" fill="#17788D" x="138" y="238.212589" width="84.6276596" height="20"></rect>
+                <text id="8-copy" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="314" y="95.2125889">8</tspan>
+                </text>
+                <text id="5-copy" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="249" y="134.212589">5</tspan>
+                </text>
+                <text id="4-copy-3" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="228" y="174.212589">4</tspan>
+                </text>
+                <text id="4-copy-4" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="228" y="213.212589">4</tspan>
+                </text>
+                <text id="4-copy-5" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="228" y="253.212589">4</tspan>
+                </text>
+                <text id="3-copy" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="207" y="293.212589">3</tspan>
+                </text>
+                <text id="3-copy-2" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="207" y="333.212589">3</tspan>
+                </text>
+                <text id="2-copy-3" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="187" y="373.212589">2</tspan>
+                </text>
+                <text id="10-copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="340.420898" y="477.212589">10</tspan>
+                </text>
+                <text id="Number-of-briefs-won-Copy" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="169" y="497.212589">Number of briefs won</tspan>
+                </text>
+                <text id="0-copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="136.710449" y="476.212589">0</tspan>
+                </text>
+                <text id="AUREC-Group-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="51.6816406" y="410.212589">AUREC Group</tspan>
+                </text>
+                <text id="ThinkPlace-Copy" font-size="11" font-weight="normal" fill="#224A61">
+                    <tspan x="66.9248047" y="449.212589">ThinkPlace</tspan>
+                </text>
+                <rect id="Rectangle-10-Copy-20" fill="#17788D" x="138" y="438.212589" width="42.3138298" height="20"></rect>
+                <rect id="Rectangle-10-Copy-21" fill="#17788D" x="138" y="398.212589" width="42.3138298" height="20"></rect>
+                <path d="M138.571809,461.712589 L352.45571,461.712589" id="Line-Copy" stroke="#BBBBBB" stroke-linecap="square"></path>
+                <text id="2-copy-4" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="187" y="413.212589">2</tspan>
+                </text>
+                <text id="2-copy-5" font-size="14" font-weight="bold" fill="#224A61">
+                    <tspan x="187" y="453.212589">2</tspan>
+                </text>
+                <text id="SME-Copy" font-size="14" font-weight="normal" fill="#808184">
+                    <tspan x="160" y="536.212589">SME</tspan>
+                </text>
+                <text id="Other-Copy-2" font-size="14" font-weight="normal" fill="#808184">
+                    <tspan x="243" y="536.212589">Other</tspan>
+                </text>
+                <rect id="Rectangle-3-Copy-11" fill="#17788D" x="138" y="524.212589" width="16" height="16"></rect>
+                <g id="Rectangle-3-Copy-12">
+                    <use fill="#B9D6DC" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <rect stroke="#17788D" stroke-width="2" x="222" y="525.212589" width="14" height="14"></rect>
+                </g>
+                <rect id="Rectangle-14" fill="#FFFFFF" x="135" y="0" width="126" height="36"></rect>
+                <text id="Top-10-sellers-award-Copy" font-size="17" font-weight="normal" line-spacing="26" fill="#313131">
+                    <tspan x="45.9094238" y="29.2125889">Top 10 sellers awarded contracts </tspan>
+                    <tspan x="102.545654" y="55.2125889">June - August 2017</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
