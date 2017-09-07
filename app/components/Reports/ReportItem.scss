@@ -1,0 +1,42 @@
+.reportSubitemContainer {
+  padding: 0px !important
+}
+
+.reportItem {
+  padding: 0px
+}
+
+.reportItemHeading {
+  padding: 20px 0px;
+  color: #224a61;
+  font-weight: bold
+}
+
+.reportItemText {
+  font-size: 1em
+}
+
+.reportImageContainer {
+  height: 100%
+}
+
+.reportItemImage {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .reportItemImage {
+    height: 91%;
+    width: 91%
+  }
+}
+
+.reportFormattedQuoteImage {
+  background-color: #17788d;
+  padding: 12px 24px 
+}
+
+.subitemImg {
+  width: 300px;
+  height: 300px
+}
