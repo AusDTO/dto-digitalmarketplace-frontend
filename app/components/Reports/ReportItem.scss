@@ -1,27 +1,49 @@
 .reportSubitemContainer {
-  padding: 0px !important
+  padding: 0px !important;
+  margin-bottom: 2em !important
+}
+
+.reportImageContainer {
+  height: 100%;
+  width:  100%
 }
 
 .reportItem {
-  padding: 0px
+  padding: 0px;
+  min-width: 290px
+}
+
+@media (max-width: 767px) {
+  .reportItem {
+    text-align: center
+  }
+  .reportItemHeading {
+    text-align: center;
+    margin: 0 auto
+  }
 }
 
 .reportItemHeading {
   padding: 20px 0px;
   color: #224a61;
-  font-weight: bold
+  font-weight: bold;
 }
 
 .reportItemText {
   font-size: 1em
 }
 
-.reportImageContainer {
-  height: 100%
-}
-
 .reportItemImage {
   display: block;
+  margin-right: 0px !important
+}
+
+@media(max-width: 767px) {
+  .reportItemImage {
+    max-width: 328px;
+    text-align: center;
+    margin: 0 auto
+  }
 }
 
 @media (min-width: 768px) {

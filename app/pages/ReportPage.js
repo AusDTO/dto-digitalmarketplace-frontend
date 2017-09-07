@@ -18,7 +18,7 @@ class ReportPage extends Component {
     const { match } = this.props
 
     return (
-      <div className="report-page">
+      <div id="report-page">
         <Switch>
           <Route
             exact
