@@ -33,7 +33,9 @@ const ReportItem = props => {
                   subitem.formattedImage
                 )}
               >
-                <span dangerouslySetInnerHTML={{ __html: require(`${mobile ? subitem.mobileImage : subitem.image}`) }} />
+                <span
+                  dangerouslySetInnerHTML={{ __html: require(`${mobile ? subitem.mobileImage : subitem.image}`) }}
+                />
               </span>}
           </p>
         )}
@@ -50,4 +52,3 @@ ReportItem.propTypes = {
 }
 
 export default ReportItem
-
