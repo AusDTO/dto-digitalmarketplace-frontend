@@ -1,11 +1,6 @@
 import expect from 'expect'
 import reducer from './memberInfoReducers'
-import {
-  MEMBER_INFO_FETCH_DATA_SUCCESS,
-  LOAD_SIGNUP_SUCCESS,
-  SIGNUP_SUCCESS,
-  CREATE_USER_SUCCESS
-} from '../constants/constants'
+import { LOAD_SIGNUP_SUCCESS, SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
 
 describe('user reducer', () => {
   it('should return the initial state', () => {
