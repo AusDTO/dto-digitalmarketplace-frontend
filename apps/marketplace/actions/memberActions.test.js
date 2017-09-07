@@ -14,31 +14,6 @@ import {
 
 // Test a sync action
 describe('Member Actions', () => {
-  describe('first api call for csrf token, authentication, and user type info', () => {
-    it('should create a MEMBER_INFO_FETCH_DATA_SUCCESS action', () => {
-      // arrange
-      const memberInfoResponse = {
-        status: 200,
-        data: {
-          csrfToken: '153d1b83ad20d5c4e681e0109c35d2fee7eaa5bdc4725140115587c245094cfd',
-          isAuthenticated: true,
-          userType: 'buyer'
-        }
-      }
-      const expectedAction = {
-        type: MEMBER_INFO_FETCH_DATA_SUCCESS,
-        memberInfo: memberInfoResponse.data
-      }
-
-      // act
-      const action = handleMemberInfoSuccess(memberInfoResponse)
-
-      // assert
-      expect(action).toEqual(expectedAction)
-      expect(action.memberInfo.userType).toEqual('buyer')
-    })
-  })
-
   describe('Signup new user form submit', () => {
     it('should create a MEMBER_INFO_FETCH_DATA_SUCCESS action', () => {
       // arrange
