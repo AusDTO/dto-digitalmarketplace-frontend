@@ -1,0 +1,40 @@
+@font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
+
+@media (max-width: 767px) {
+  .reportView {
+    max-width: 320px
+  }
+}
+
+@media (min-width: 768px) {
+  .reportView {
+    max-width: 737px;
+    margin: 0 auto
+  }
+}
+
+// .reportView svg text {
+//   font-family: system
+// }
+
+// .reportView svg tspan {
+//   // font-family: system
+// }
+
+.reportViewTitle {
+  font-weight: bold
+}
+
+.reportViewDate {
+  font-weight: lighter
+}
+
+.reportViewHeading {
+  padding: 20px 0px;
+  font-weight: bold
+}

@@ -38,6 +38,10 @@ for (var key in entryPoints) {
 var loaders = [
       // Process JS with Babel.
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.(js|jsx)$/,
         include: [
           paths.appSrc, 
@@ -64,10 +68,6 @@ var loaders = [
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
       // "file" loader makes sure those assets get served by WebpackDevServer.
       // When you `import` an asset, you get its (virtual) filename.
       // In production, they would get copied to the `build` folder.
@@ -273,6 +273,10 @@ module.exports = [{
   module: {
     loaders: [
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.(js|jsx)$/,
         include: [
           paths.clientSrc,
@@ -298,6 +302,10 @@ module.exports = [{
       {
         test: /\.svg$/,
         loader: 'svg-inline-loader'
+      },
+      {
+        test: /\.pdf$/,
+        loader: 'file?name=[name].[ext]'
       }
     ],
   },
