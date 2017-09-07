@@ -45,6 +45,7 @@ var config = {
 
   marketplaceSrc: resolveApp('apps/marketplace'),
   oramsSrc: resolveApp('apps/orams'),
+  sharedComponents: resolveApp('apps/shared'),
 
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),

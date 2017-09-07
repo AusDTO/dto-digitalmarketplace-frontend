@@ -306,6 +306,7 @@ module.exports = [{
         test: /\.(js|jsx)$/,
         include: [
           paths.marketplaceSrc,
+          paths.sharedComponents,
           paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts',
         ],
@@ -313,7 +314,10 @@ module.exports = [{
       },
       {
         test: /\.(scss|css)$/,
-        include: paths.marketplaceSrc,
+        include: [
+          paths.marketplaceSrc,
+          paths.sharedComponents
+        ],
         loader: [
           'style-loader?singleton', 
           'css-loader?modules&importLoaders=1&context=' + paths.marketplaceSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
@@ -370,6 +374,7 @@ module.exports = [{
         test: /\.(js|jsx)$/,
         include: [
           paths.oramsSrc,
+          paths.sharedComponents,
           paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts',
         ],
@@ -377,7 +382,10 @@ module.exports = [{
       },
       {
         test: /\.(scss|css)$/,
-        include: paths.oramsSrc,
+        include: [
+          paths.oramsSrc,
+          paths.sharedComponents
+        ],
         loader: [
           'style-loader?singleton', 
           'css-loader?modules&importLoaders=1&context=' + paths.oramsSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',

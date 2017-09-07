@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
-import Banner from './components/Banner/Banner'
+import Banner from '../shared/Banner/Banner'
 import Header from './components/Header/Header'
-import Footer from './components/Footer/PageFooter'
+import Footer from '../shared/Footer/PageFooter'
 import configureStore from './store'
 
 import RootContainer from './routes'
