@@ -21,6 +21,7 @@ import Textarea      from '../../../../shared/form/Textarea';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav       from '../StepNav';
 import SaveError     from '../../../../shared/SaveError';
+import { getNextKey } from '../../../../helpers';
 
 import './ProductsForm.css';
 
@@ -198,7 +199,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createProduct: (model, products) => {
-            dispatch(actions.change(`${model}.products.${Object.keys(products).length}`, {}));
+            dispatch(actions.change(`${model}.products.${getNextKey(products)}`, {}));
         },
         removeProduct: (model, id) => {
             dispatch(actions.omit(`${model}.products`, id));

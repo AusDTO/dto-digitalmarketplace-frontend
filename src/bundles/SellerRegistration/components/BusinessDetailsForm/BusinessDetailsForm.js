@@ -16,6 +16,7 @@ import Textarea     from '../../../../shared/form/Textarea';
 import Textfield    from '../../../../shared/form/Textfield';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
+import { getNextKey } from '../../../../helpers';
 
 import './BusinessDetailsForm.css'
 
@@ -290,7 +291,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addAddress: (model, addresses) => {
-            dispatch(actions.change(`${model}.addresses.${Object.keys(addresses).length || 1}`, {}));
+            dispatch(actions.change(`${model}.addresses.${getNextKey(addresses) || 1}`, {}));
         },
         removeAddress: (model, id) => {
             dispatch(actions.omit(`${model}.addresses`, id));
