@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReportView from '../components/Reports/ReportView'
-const itemData = require('../components/Reports/reportdata.json')
 import { rootPath } from '../routes'
+const itemData = require('../components/Reports/reportdata.json')
 
-class ReportPage extends Component {
+export class ReportPageContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -32,9 +32,10 @@ class ReportPage extends Component {
   }
 }
 
-ReportPage.propTypes = {
+ReportPageContainer.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
+    date: PropTypes.string,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
@@ -45,13 +46,15 @@ ReportPage.propTypes = {
   match: PropTypes.object
 }
 
-ReportPage.defaultProps = {
+ReportPageContainer.defaultProps = {
   data: {
     title: 'Marketplace Reports',
+    date: null,
     items: [
       {
-        text: '',
-        image: ''
+        heading: '',
+        media: '',
+        subitems: []
       }
     ]
   },
@@ -62,4 +65,4 @@ const matchStateToProps = state => ({
   media: state.media
 })
 
-export default withRouter(connect(matchStateToProps)(ReportPage))
+export default withRouter(connect(matchStateToProps)(ReportPageContainer))

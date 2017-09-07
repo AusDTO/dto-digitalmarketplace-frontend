@@ -1,1 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="295" height="152" viewBox="0 0 295 152"><g fill="none" fill-rule="evenodd"><path stroke="#224A61" stroke-linecap="round" stroke-width="2" d="M131 76h10"/><text fill="#333" font-size="16" font-weight="bold" transform="translate(0 -4)"><tspan x="153" y="64">57% of briefs </tspan> <tspan x="260.125" y="64" font-weight="normal">have </tspan> <tspan x="153" y="86" font-weight="normal">been for</tspan> <tspan x="216.352" y="86"> </tspan> <tspan x="220.508" y="86" font-weight="normal">digital</tspan> <tspan x="265.766" y="86"> </tspan> <tspan x="153" y="108">specialists</tspan></text><path stroke="#224A61" stroke-linecap="round" stroke-width="2" d="M46.35 137.649c33.88 11.008 70.267-7.533 81.275-41.412 11.008-33.879-7.532-70.267-41.411-81.275a64.475 64.475 0 0 0-19.258-3.17"/><text fill="#808184" font-size="11" font-weight="bold" transform="translate(0 -4)"><tspan x="0" y="12">Outcome</tspan></text><text fill="#808184" font-size="11" font-weight="bold" transform="translate(0 -4)"><tspan x="104" y="153">Specialist</tspan></text><path fill="#152D3B" fill-rule="nonzero" stroke="#FFF" stroke-width="2" d="M66.5 52.841V16c23.77 0 45.313 14.027 54.982 35.799 9.668 21.771 5.65 47.209-10.256 64.92-15.905 17.71-40.717 24.376-63.324 17.012l10.815-33.374a24.496 24.496 0 0 0 8.66 1.57c13.559 0 24.55-10.991 24.55-24.55 0-13.56-10.991-24.55-24.55-24.55-.294 0-.586.004-.877.014z"/><path fill="#00BFE9" fill-rule="nonzero" stroke="#FFF" stroke-width="2" d="M58.717 100.357L47.902 133.73C19.746 124.559 2.425 96.219 7.056 66.902 11.687 37.586 36.896 16 66.5 16v36.841c-13.153.462-23.674 11.27-23.674 24.536 0 10.51 6.605 19.479 15.891 22.98z"/></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="301px" height="173px" viewBox="0 0 301 173" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>57% of briefs are for digital specialists copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="DLO-data-report" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="August-monthly-report-greater-than-768px" transform="translate(-704.000000, -1471.000000)">
+            <g id="57%-of-briefs-are-for-digital-specialists-copy" transform="translate(704.000000, 1467.000000)">
+                <text id="57%-of-briefs-have-b-copy" font-size="16" font-weight="bold" line-spacing="22" fill="#333333">
+                    <tspan x="159" y="74">57% of briefs </tspan>
+                    <tspan x="266.125" y="74" font-weight="normal">have </tspan>
+                    <tspan x="159" y="96" font-weight="normal">been for</tspan>
+                    <tspan x="222.351562" y="96"> </tspan>
+                    <tspan x="226.507812" y="96" font-weight="normal">digital</tspan>
+                    <tspan x="271.765625" y="96"> </tspan>
+                    <tspan x="159" y="118">specialists</tspan>
+                </text>
+                <text id="Outcome-Copy-3" font-size="11" font-weight="bold" fill="#808184">
+                    <tspan x="0" y="12">Outcome</tspan>
+                </text>
+                <text id="Specialist-Copy-2" font-size="11" font-weight="bold" fill="#808184">
+                    <tspan x="110" y="174">Specialist</tspan>
+                </text>
+                <path d="M137,90 L147,90" id="Line-Copy-15" stroke="#224A61" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M71.1757855,161.790153 C106.798152,161.790153 135.675785,132.912519 135.675785,97.290153 C135.675785,61.6677866 106.798152,32.790153 71.1757855,32.790153 C64.4545142,32.790153 57.9733595,33.8182141 51.8809916,35.7256659" id="Oval-21-Copy-2" stroke="#224A61" stroke-width="2" stroke-linecap="round" transform="translate(93.778389, 97.290153) rotate(18.000000) translate(-93.778389, -97.290153) "></path>
+                <path d="M72.5,66.8414524 L72.5,30 C96.2701045,30 117.813466,44.0269509 127.481638,65.7987192 C137.149811,87.5704874 133.131398,113.007988 117.226094,130.71874 C101.32079,148.429492 76.5085571,155.095268 53.9018444,147.730724 L64.7174495,114.356803 C67.410359,115.372056 70.3287156,115.927536 73.3768116,115.927536 C86.9358024,115.927536 97.9275362,104.935802 97.9275362,91.3768116 C97.9275362,77.8178208 86.9358024,66.826087 73.3768116,66.826087 C73.0833079,66.826087 72.7910071,66.8312373 72.4999947,66.8414526 Z" id="Combined-Shape" stroke="#FFFFFF" stroke-width="2" fill="#152D3B" fill-rule="nonzero"></path>
+                <path d="M64.7174495,114.356803 L53.9018444,147.730724 C25.746285,138.558542 8.42491488,110.218834 13.0560801,80.9024623 C17.6872453,51.5860912 42.8954929,30 72.5,30 L72.5,66.8414524 C59.3471076,67.3031534 48.826087,78.1113245 48.826087,91.3768116 C48.826087,101.887706 55.4313611,110.855857 64.7174495,114.356803 Z" id="Combined-Shape" stroke="#FFFFFF" stroke-width="2" fill="#00BFE9" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
