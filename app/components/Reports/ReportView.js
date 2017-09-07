@@ -1,4 +1,5 @@
 import React from 'react'
+import shortid from 'shortid'
 import ReportItem from './ReportItem'
 import * as styles from './ReportView.scss'
 
@@ -14,8 +15,12 @@ const ReportView = props => {
             <h1 className={`${styles.reportViewTitle} uikit-display-3`}>
               {title} <span className={styles.reportViewDate}>{date}</span>
             </h1>
-            <p><a href={require("./MarketplaceAug2017.pdf")} download>Download this report as a PDF</a></p>
-          </div>  
+            <p>
+              <a href={require('./MarketplaceAug2017.pdf')} download>
+                Download this report as a PDF
+              </a>
+            </p>
+          </div>
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
           <span>
             The Digital Marketplace is a simple, clear and fast way to buy and sell with government. It aims to{' '}
@@ -25,8 +30,8 @@ const ReportView = props => {
           {items &&
             <div className="row">
               <div className="hidden">
-                {items.map((item, i) =>
-                  <div key={i}>
+                {items.map((item, id = shortid.generate()) =>
+                  <div key={id}>
                     <ReportItem {...item} {...media} />
                   </div>
                 )}
