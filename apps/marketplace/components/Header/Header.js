@@ -47,4 +47,4 @@ const mapStateToProps = ({ app }) => ({
   userType: app.userType
 })
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps)(Header)
