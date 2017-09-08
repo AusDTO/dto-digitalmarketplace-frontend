@@ -23,7 +23,9 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH } from '../constants/constants'
+import { GENERAL_ERROR } from '../constants/messageConstants'
+import dmapi from '../services/apiClient'
 
 /**
  * Sets the requestSending state, which displays a loading indicator during requests
@@ -36,3 +38,19 @@ export const setErrorMessage = errorMessage => ({
   type: SET_ERROR_MESSAGE,
   errorMessage
 })
+
+export function setAuthState(newState) {
+  return { type: SET_AUTH, newState }
+}
+
+export const fetchAuth = () => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: '/ping' }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(setAuthState(response.data))
+    }
+    dispatch(sendingRequest(false))
+  })
+}

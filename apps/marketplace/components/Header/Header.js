@@ -1,68 +1,50 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { memberInfoFetchData } from '../../actions/memberActions'
+import { Link } from 'react-router-dom'
+
+import DashBoardLink from './DashBoardLink'
+
 import styles from './Header.scss'
 
-class Header extends Component {
-  componentDidMount() {
-    this.props.fetchData()
-  }
+const Header = props => {
+  const { userType, loggedIn } = props
 
-  dashBoardLink = () => {
-    if (this.props.memberInfo.userType === 'buyer') {
-      return <a href="/buyers">Dashboard</a>
-    } else if (this.props.memberInfo.userType === 'applicant') {
-      return <a href="/sellers/application">Continue application</a>
-    }
-    return <a href="/sellers">Dashboard</a>
-  }
-
-  render() {
-    return (
-      <section className={styles.marketplaceHeader}>
-        <div className={styles.wrapper}>
-          <div className={styles.marketplaceLogo}>
-            <a href="/" title="Go to the Marketplace homepage" className={styles.logo}>
-              <span>Digital Marketplace</span>
-              <span className={styles.badgeBeta}>BETA</span>
-            </a>
-          </div>
-          <div className={styles.userNav}>
-            <div id="react-bundle-auth-header-state" />
-            <div id="react-bundle-auth-header">
-              <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
-                <li>
-                  {this.props.memberInfo.isAuthenticated
-                    ? <span>
-                        {this.dashBoardLink()}
-                      </span>
-                    : <a href="/2/signup">Join the Marketplace</a>}
-                </li>
-                <li>
-                  {this.props.memberInfo.isAuthenticated
-                    ? <a href="/logout">Sign out</a>
-                    : <a href="/login">Sign in</a>}
-                </li>
-              </ul>
-            </div>
+  return (
+    <section className={styles.marketplaceHeader}>
+      <div className={styles.wrapper}>
+        <div className={styles.marketplaceLogo}>
+          <a href="/" title="Go to the Marketplace homepage" className={styles.logo}>
+            <span>Digital Marketplace</span>
+            <span className={styles.badgeBeta}>BETA</span>
+          </a>
+        </div>
+        <div className={styles.userNav}>
+          <div id="react-bundle-auth-header-state" />
+          <div id="react-bundle-auth-header">
+            <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
+              <li>
+                {loggedIn ? <DashBoardLink userType={userType} /> : <Link to="/2/signup">Join the Marketplace</Link>}
+              </li>
+              <li>
+                {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
+              </li>
+            </ul>
           </div>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )
 }
 
 Header.propTypes = {
-  fetchData: PropTypes.func.isRequired
+  userType: PropTypes.string.isRequired,
+  loggedIn: PropTypes.bool.isRequired
 }
 
-const mapStateToProps = ({ user }) => ({
-  memberInfo: user.memberInfo
+const mapStateToProps = ({ app }) => ({
+  loggedIn: app.loggedIn,
+  userType: app.userType
 })
 
-const mapDispatchToProps = dispatch => ({
-  fetchData: () => dispatch(memberInfoFetchData())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps)(Header)

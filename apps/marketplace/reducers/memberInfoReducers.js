@@ -1,5 +1,4 @@
 import {
-  MEMBER_INFO_FETCH_DATA_SUCCESS,
   LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
   CREATE_USER_SUCCESS,
@@ -11,28 +10,17 @@ import {
 } from '../constants/constants'
 
 const defaultUserState = {
-  memberInfoHasSuccess: null,
-  memberInfo: { isAuthenticated: false },
   loadSignupSuccess: null,
   signupSuccess: null,
   userRegisterDetails: null,
   createUserSuccess: null,
   resetPasswordEmailSuccess: null,
   resetPasswordSuccess: null,
-  errorMessage: null,
   user: {}
 }
 
 const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
-    case MEMBER_INFO_FETCH_DATA_SUCCESS:
-      return {
-        ...state,
-        memberInfo: action.memberInfo,
-        memberInfoHasSuccess: true,
-        memberInfoHasErrored: false
-      }
-
     case LOAD_SIGNUP_SUCCESS:
       return {
         ...state,
