@@ -22,8 +22,8 @@ const ReportView = props => {
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
           <span>
             The Digital Marketplace is a simple, clear and fast way to buy and sell with government. It aims to{' '}
-            <strong>break down barriers to entry</strong> and make it easier for small operators to{' '}
-            <strong>compete for the $6.5 billion government spend</strong> on ICT each year.
+            <strong>break down barriers to entry</strong> and make it easier for <strong>SMEs to{' '}
+            compete for the $6.5 billion government spend</strong> on ICT each year.
           </span>
           {items &&
             <div className="row">
