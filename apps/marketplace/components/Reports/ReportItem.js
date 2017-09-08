@@ -1,7 +1,3 @@
-// will swap this with <img>
-/* eslint-disable react/no-danger  */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
@@ -12,6 +8,8 @@ const computeClassname = (base, alt, formatted) =>
   cx(base, {
     [alt]: formatted
   })
+
+const imageRoot = '/static/images/reports/'
 
 const ReportItem = props => {
   const { heading, subitems, media } = props
@@ -38,9 +36,7 @@ const ReportItem = props => {
                   subitem.formattedImage
                 )}
               >
-                <span
-                  dangerouslySetInnerHTML={{ __html: require(`${mobile ? subitem.mobileImage : subitem.image}`) }}
-                />
+                <img src={`${imageRoot}${mobile ? subitem.mobileImage : subitem.image}`} alt={subitem.imageAlt} />
               </span>}
           </p>
         )}
@@ -62,3 +58,10 @@ ReportItem.defaultProps = {
 }
 
 export default ReportItem
+
+/*
+<span
+dangerouslySetInnerHTML={{ __html: require(`${mobile ? subitem.mobileImage : subitem.image}`) }}
+/>
+</span>
+*/
