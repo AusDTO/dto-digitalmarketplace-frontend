@@ -38,7 +38,7 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: action.newState.isAuthenticated,
-        userType: action.newState.userType,
+        userType: action.newState.userType
       }
     default:
       return state
