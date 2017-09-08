@@ -36,7 +36,11 @@ const ReportItem = props => {
                   subitem.formattedImage
                 )}
               >
-                <img src={`${imageRoot}${mobile ? subitem.mobileImage : subitem.image}`} alt={subitem.imageAlt} />
+                <img
+                  className={styles.reportImage}
+                  src={`${imageRoot}${mobile ? subitem.mobileImage : subitem.image}`}
+                  alt={subitem.imageAlt}
+                />
               </span>}
           </p>
         )}
@@ -58,10 +62,3 @@ ReportItem.defaultProps = {
 }
 
 export default ReportItem
-
-/*
-<span
-dangerouslySetInnerHTML={{ __html: require(`${mobile ? subitem.mobileImage : subitem.image}`) }}
-/>
-</span>
-*/
