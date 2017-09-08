@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import DashBoardLink from './DashBoardLink'
 
 import styles from './Header.scss'
 
 const Header = props => {
-  const { userType, isLoggedIn } = props
+  const { userType, loggedIn } = props
 
   return (
     <section className={styles.marketplaceHeader}>
@@ -22,10 +24,10 @@ const Header = props => {
           <div id="react-bundle-auth-header">
             <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
               <li>
-                {isLoggedIn ? <DashBoardLink userType={userType} /> : <a href="/2/signup">Join the Marketplace</a>}
+                {loggedIn ? <DashBoardLink userType={userType} /> : <Link to="/2/signup">Join the Marketplace</Link>}
               </li>
               <li>
-                {isLoggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
+                {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
               </li>
             </ul>
           </div>
@@ -37,7 +39,12 @@ const Header = props => {
 
 Header.propTypes = {
   userType: PropTypes.string.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  loggedIn: PropTypes.bool.isRequired
 }
 
-export default Header
+const mapStateToProps = ({ app }) => ({
+  loggedIn: app.loggedIn,
+  userType: app.userType
+})
+
+export default connect(mapStateToProps, null)(Header)

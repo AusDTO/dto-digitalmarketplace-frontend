@@ -43,7 +43,7 @@ export function setAuthState(newState) {
   return { type: SET_AUTH, newState }
 }
 
-export const checkAuth = () => dispatch => {
+export const fetchAuth = () => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: '/ping' }).then(response => {
     if (response.error) {

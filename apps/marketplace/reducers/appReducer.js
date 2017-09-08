@@ -16,7 +16,7 @@ import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH } from '../constants/const
 const initialState = {
   currentlySending: false,
   errorMessage: null,
-  isLoggedIn: false,
+  loggedIn: false,
   userType: ''
 }
 
@@ -37,8 +37,8 @@ const appReducer = (state = initialState, action) => {
     case SET_AUTH:
       return {
         ...state,
-        isLoggedIn: action.newState.isAuthenticated,
-        userType: action.newState.userType
+        loggedIn: action.newState.isAuthenticated,
+        userType: action.newState.userType,
       }
     default:
       return state
