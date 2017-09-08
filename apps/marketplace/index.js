@@ -9,10 +9,12 @@ import Footer from './components/Footer/PageFooter'
 import configureStore from './store'
 import screenResize from './actions/mediaActions'
 import RootContainer from './routes'
+import { fetchAuth } from './actions/appActions'
 
 import './main.scss'
 
 const store = configureStore()
+store.dispatch(fetchAuth())
 
 window.addEventListener(
   'resize',
