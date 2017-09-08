@@ -65,7 +65,7 @@ const loaders = [
   // allow it implicitly so we also enable it.
   {
     test: /\.json$/,
-    loader: 'json'
+    loader: 'json-loader'
   },
   // "file" loader makes sure those assets end up in the `build` folder.
   // When you `import` an asset, you get its filename.
@@ -302,6 +302,10 @@ module.exports = [{
   },
   module: {
     loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
       {
         test: /\.(js|jsx)$/,
         include: [
