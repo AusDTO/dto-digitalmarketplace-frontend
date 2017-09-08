@@ -15,6 +15,9 @@ const ReportView = props => {
             <h1 className={`${styles.reportViewTitle} uikit-display-4`}>
               {title} <span className={styles.reportViewDate}>{date}</span>
             </h1>
+            <a rel="external" target="_blank" href="/static/media/documents/Marketplace_2017Aug.pdf">
+              Download this report as a PDF
+            </a>
           </div>
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
           <span>
