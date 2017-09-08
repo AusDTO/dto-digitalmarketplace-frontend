@@ -9,7 +9,7 @@ const computeClassname = (base, alt, formatted) =>
     [alt]: formatted
   })
 
-const imageRoot = '/static/images/reports/'
+const imageRoot = '/static/media/'
 
 const ReportItem = props => {
   const { heading, subitems, media } = props
