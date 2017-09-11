@@ -1,24 +1,16 @@
 import expect from 'expect'
 import reducer from './memberInfoReducers'
-import {
-  MEMBER_INFO_FETCH_DATA_SUCCESS,
-  LOAD_SIGNUP_SUCCESS,
-  SIGNUP_SUCCESS,
-  CREATE_USER_SUCCESS
-} from '../constants/constants'
+import { LOAD_SIGNUP_SUCCESS, SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
 
 describe('user reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({
-      memberInfoHasSuccess: null,
-      memberInfo: { isAuthenticated: false },
       loadSignupSuccess: null,
       signupSuccess: null,
       userRegisterDetails: null,
       createUserSuccess: null,
       resetPasswordEmailSuccess: null,
       resetPasswordSuccess: null,
-      errorMessage: null,
       user: {}
     })
   })
@@ -67,20 +59,6 @@ describe('user reducer', () => {
       userRegisterDetails: action.data,
       loadSignupSuccess: true,
       loadSignupErrored: false
-    }
-
-    expect(reducer({}, action)).toEqual(expectedState)
-  })
-
-  it('should handle MEMBER_INFO_FETCH_DATA_SUCCESS', () => {
-    const action = {
-      type: MEMBER_INFO_FETCH_DATA_SUCCESS,
-      memberInfo: { name: 'Jeff Labowski', email_address: 'e@mail.com' }
-    }
-    const expectedState = {
-      memberInfo: action.memberInfo,
-      memberInfoHasSuccess: true,
-      memberInfoHasErrored: false
     }
 
     expect(reducer({}, action)).toEqual(expectedState)

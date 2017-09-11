@@ -1,38 +1,15 @@
 import { actions } from 'react-redux-form'
 
-import {
-  MEMBER_INFO_FETCH_DATA_SUCCESS,
-  LOAD_SIGNUP_SUCCESS,
-  SIGNUP_SUCCESS,
-  CREATE_USER_SUCCESS
-} from '../constants/constants'
+import { LOAD_SIGNUP_SUCCESS, SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
 import {
   DUPLICATE_USER,
   USER_NOT_CREATED,
   REGISTRATION_NOT_FOUND,
-  GENERAL_ERROR,
   UNABLE_TO_SIGNUP,
   ACCOUNT_TAKEN
 } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
-
-export const handleMemberInfoSuccess = response => ({
-  type: MEMBER_INFO_FETCH_DATA_SUCCESS,
-  memberInfo: response.data
-})
-
-export const memberInfoFetchData = () => dispatch => {
-  dispatch(sendingRequest(true))
-  dmapi({ url: '/ping' }).then(response => {
-    if (response.error) {
-      dispatch(setErrorMessage(GENERAL_ERROR))
-    } else {
-      dispatch(handleMemberInfoSuccess(response))
-    }
-    dispatch(sendingRequest(false))
-  })
-}
 
 export const handleSignupSuccess = () => ({ type: SIGNUP_SUCCESS })
 
