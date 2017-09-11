@@ -7,8 +7,7 @@ import configureStore from '../store'
 import LoginPage from './LoginPage'
 
 describe('Test suite for LoginPage component', () => {
-  const state = {
-  }
+  const state = {}
 
   const store = configureStore()
   test('LoginPage renders without errors', () => {

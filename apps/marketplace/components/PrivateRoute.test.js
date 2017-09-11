@@ -1,8 +1,8 @@
 import React from 'react'
 import expect from 'expect'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
-import { MemoryRouter, StaticRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 
 import configureStore from '../store'
 import PrivateRoute from './PrivateRoute'
