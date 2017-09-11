@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
+import includes from 'lodash/includes'
 import { uniqueID } from '../shared/utils/helpers'
 import * as styles from './ReportItem.scss'
 
@@ -37,7 +38,14 @@ const ReportItem = props => {
                 )}
               >
                 <img
-                  className={styles.reportImage}
+                  className={
+                    includes(
+                      ['briefs-by-phase', 'number-of-sellers-per-area-of-expertise', 'seller-applications-per-brief'],
+                      subitem.image.replace('768-', '').replace('.svg', '')
+                    )
+                      ? styles.bigReportImage
+                      : styles.reportImage
+                  }
                   src={`${imageRoot}${mobile ? subitem.mobileImage : subitem.image}`}
                   alt={subitem.imageAlt}
                 />

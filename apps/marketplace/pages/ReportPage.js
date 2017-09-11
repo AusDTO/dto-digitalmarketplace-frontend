@@ -44,6 +44,11 @@ const itemData = {
           imageAlt: null
         },
         {
+          image: '81-of-the-contracted-value-has-been-awarded-to-sm-es.svg',
+          mobileImage: '81-of-the-contracted-value-has-been-awarded-to-sm-es.svg',
+          imageAlt: '81% of the contracted value has been awarded to SMEs'
+        },
+        {
           image: '39-9-m-has-been-contracted-through-the-marketplace.svg',
           mobileImage: '39-9-m-has-been-contracted-through-the-marketplace.svg',
           imageAlt: '$39.9m has been contracted through the Marketplace'
@@ -57,11 +62,6 @@ const itemData = {
           image: '600-sellers-have-registered-to-offer-digital-and-ict-services.svg',
           mobileImage: '600-sellers-have-registered-to-offer-digital-and-ict-services.svg',
           imageAlt: '600 sellers have registered to offer digital and ICT services'
-        },
-        {
-          image: '81-of-the-contracted-value-has-been-awarded-to-sm-es.svg',
-          mobileImage: '81-of-the-contracted-value-has-been-awarded-to-sm-es.svg',
-          imageAlt: '81% of the contracted value has been awarded to SMEs'
         },
         {
           image: '69-of-briefs-are-open-to-all.svg',
