@@ -29,6 +29,9 @@ var homepagePathname = homepagePath ? url.parse(homepagePath).pathname : '/';
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
 var publicPath = ensureSlash(homepagePathname, true);
+var frontendURL = process.env.CIRCLE_BRANCH && process.env.CIRCLE_BRANCH !== 'master'
+  ? 'https://dm-frontend.apps.platform.digital.gov.au'
+  : 'https://dm-dev.apps.z.cld.gov.au';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing shlash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
@@ -47,10 +50,10 @@ const loaders = [
   {
     test: /\.(js|jsx)$/,
     include: [
-      paths.appSrc, 
+      paths.appSrc,
       paths.appServer,
       paths.appNodeModules + '/@gov.au/page-alerts'
-    ],    
+    ],
     loader: 'babel',
     query: {
       plugins: [
@@ -160,7 +163,7 @@ module.exports = [{
       // in the main CSS file.
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
-        'style', 
+        'style',
         'css?-autoprefixer&modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss-loader'
       )
     })
@@ -215,6 +218,7 @@ module.exports = [{
     new webpack.optimize.DedupePlugin(),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         screw_ie8: true, // React doesn't support IE8
         warnings: false
@@ -230,7 +234,7 @@ module.exports = [{
     new RollbarSourceMapPlugin({
       accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
       version: process.env.CIRCLE_SHA1 || 'noversion',
-      publicPath: publicPath
+      publicPath: frontendURL  + "/bundle"
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin('[name].css'),
@@ -252,6 +256,7 @@ module.exports = [{
 }, {
   name: 'server-side render',
   entry: './server/render',
+  devtool: 'source-map',
   target: 'node',
   output: {
     path: './build',
@@ -274,6 +279,7 @@ module.exports = [{
     new webpack.optimize.DedupePlugin(),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         screw_ie8: true, // React doesn't support IE8
         warnings: false
@@ -289,12 +295,13 @@ module.exports = [{
     new RollbarSourceMapPlugin({
       accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
       version: process.env.CIRCLE_SHA1 || 'noversion',
-      publicPath: publicPath
+      publicPath: frontendURL + "/bundle"
     })
   ]
 }, {
   name: 'marketplace app',
   entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './apps/marketplace/index.js'],
+  devtool: 'source-map',
   output: {
     path: './build',
     filename: 'marketplace.js',
@@ -323,7 +330,7 @@ module.exports = [{
           paths.sharedComponents
         ],
         loader: [
-          'style-loader?singleton', 
+          'style-loader?singleton',
           'css-loader?modules&importLoaders=1&context=' + paths.marketplaceSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
@@ -361,12 +368,13 @@ module.exports = [{
     new RollbarSourceMapPlugin({
       accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
       version: process.env.CIRCLE_SHA1 || 'noversion',
-      publicPath: publicPath
+      publicPath: frontendURL  + "/bundle"
     })
   ]
 }, {
   name: 'orams app',
   entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './apps/orams/index.js'],
+  devtool: 'source-map',
   output: {
     path: './build',
     filename: 'orams.js',
@@ -391,7 +399,7 @@ module.exports = [{
           paths.sharedComponents
         ],
         loader: [
-          'style-loader?singleton', 
+          'style-loader?singleton',
           'css-loader?modules&importLoaders=1&context=' + paths.oramsSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
@@ -414,6 +422,7 @@ module.exports = [{
     new webpack.optimize.DedupePlugin(),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         screw_ie8: true, // React doesn't support IE8
         warnings: false
@@ -429,7 +438,7 @@ module.exports = [{
     new RollbarSourceMapPlugin({
       accessToken: process.env.ROLLBAR_TOKEN || 'notoken',
       version: process.env.CIRCLE_SHA1 || 'noversion',
-      publicPath: publicPath
+      publicPath: frontendURL + "/bundle"
     })
   ]
 }];
