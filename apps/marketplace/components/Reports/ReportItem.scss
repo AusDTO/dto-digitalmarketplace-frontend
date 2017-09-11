@@ -24,7 +24,7 @@
 }
 
 .reportItemHeading {
-  padding: 20px 0px;
+  padding: 48px 0px 20px 0px;
   color: #224a61;
   font-weight: bold;
 }
@@ -65,4 +65,9 @@
 
 .reportImage {
   width: 100%
+}
+@media (min-width: 768px) {
+  .bigReportImage {
+    width: 111%;
+  }
 }
