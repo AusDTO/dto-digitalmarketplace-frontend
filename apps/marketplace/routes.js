@@ -17,7 +17,6 @@ export const Routes = () =>
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
     <Route path={`${rootPath}/brief/:brief_id/respond`} component={BriefResponse} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
-    <Route path={`${rootPath}/reports`} component={ReportPage} />
     <Route component={NotFound} />
   </Switch>
 
