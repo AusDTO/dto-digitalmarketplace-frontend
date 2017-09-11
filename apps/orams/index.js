@@ -19,6 +19,7 @@ const App = () =>
       <div id="Application">
         <header role="banner">
           <Banner />
+          <Header />
           <HomepageHeader />
         </header>
         <main id="content">
