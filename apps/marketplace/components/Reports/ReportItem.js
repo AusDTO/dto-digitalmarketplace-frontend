@@ -38,8 +38,14 @@ const ReportItem = props => {
                 )}
               >
                 <img
-                  className={includes(['briefs-by-phase', 'number-of-sellers-per-area-of-expertise','seller-applications-per-brief'],
-                    subitem.image.replace('768-','').replace('.svg',''))? styles.bigReportImage : styles.reportImage }
+                  className={
+                    includes(
+                      ['briefs-by-phase', 'number-of-sellers-per-area-of-expertise', 'seller-applications-per-brief'],
+                      subitem.image.replace('768-', '').replace('.svg', '')
+                    )
+                      ? styles.bigReportImage
+                      : styles.reportImage
+                  }
                   src={`${imageRoot}${mobile ? subitem.mobileImage : subitem.image}`}
                   alt={subitem.imageAlt}
                 />
