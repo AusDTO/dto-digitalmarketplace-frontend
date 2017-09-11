@@ -5,7 +5,6 @@ import SignupContainer from './components/SignupForm/SignupContainer'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import CreateUserPage from './pages/CreateUserPage'
 import BriefResponse from './components/BriefResponse/BriefResponse'
-import ReportPage from './pages/ReportPage'
 import NotFound from './components/shared/NotFound'
 
 export const rootPath = '/2'
