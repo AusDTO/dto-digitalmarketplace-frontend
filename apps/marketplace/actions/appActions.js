@@ -24,7 +24,7 @@
  */
 
 import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH } from '../constants/constants'
-import { GENERAL_ERROR } from '../constants/messageConstants'
+import { GENERAL_ERROR, LOGIN_FAILED } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 
 /**
@@ -48,6 +48,22 @@ export const fetchAuth = () => dispatch => {
   dmapi({ url: '/ping' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(setAuthState(response.data))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const login = data => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: '/login',
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
       dispatch(setAuthState(response.data))
     }

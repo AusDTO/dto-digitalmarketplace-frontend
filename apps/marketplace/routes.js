@@ -5,6 +5,7 @@ import SignupContainer from './components/SignupForm/SignupContainer'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import CreateUserPage from './pages/CreateUserPage'
 import BriefResponse from './components/BriefResponse/BriefResponse'
+import LoginPage from './pages/LoginPage'
 import NotFound from './components/shared/NotFound'
 
 export const rootPath = '/2'
@@ -16,6 +17,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
     <Route path={`${rootPath}/brief/:brief_id/respond`} component={BriefResponse} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
+    <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route component={NotFound} />
   </Switch>
 
