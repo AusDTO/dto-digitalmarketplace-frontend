@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
+import includes from 'lodash/includes'
 import { uniqueID } from '../shared/utils/helpers'
 import * as styles from './ReportItem.scss'
 
@@ -9,7 +10,7 @@ const computeClassname = (base, alt, formatted) =>
     [alt]: formatted
   })
 
-const imageRoot = '/static/images/reports/'
+const imageRoot = '/static/media/'
 
 const ReportItem = props => {
   const { heading, subitems, media } = props
@@ -36,7 +37,18 @@ const ReportItem = props => {
                   subitem.formattedImage
                 )}
               >
-                <img src={`${imageRoot}${mobile ? subitem.mobileImage : subitem.image}`} alt={subitem.imageAlt} />
+                <img
+                  className={
+                    includes(
+                      ['briefs-by-phase', 'number-of-sellers-per-area-of-expertise', 'seller-applications-per-brief'],
+                      subitem.image.replace('768-', '').replace('.svg', '')
+                    )
+                      ? styles.bigReportImage
+                      : styles.reportImage
+                  }
+                  src={`${imageRoot}${mobile ? subitem.mobileImage : subitem.image}`}
+                  alt={subitem.imageAlt}
+                />
               </span>}
           </p>
         )}
@@ -58,10 +70,3 @@ ReportItem.defaultProps = {
 }
 
 export default ReportItem
-
-/*
-<span
-dangerouslySetInnerHTML={{ __html: require(`${mobile ? subitem.mobileImage : subitem.image}`) }}
-/>
-</span>
-*/
