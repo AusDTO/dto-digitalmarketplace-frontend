@@ -7,6 +7,7 @@ var RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
+var path = require('path');
 
 function ensureSlash(path, needsSlash) {
   var hasSlash = path.endsWith('/');
@@ -346,6 +347,12 @@ module.exports = [{
       }
     ],
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    root: [
+      path.resolve(paths.appsRootSrc)
+    ]
+  },
   plugins: [
     new webpack.DefinePlugin(env),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -414,6 +421,12 @@ module.exports = [{
         loader: 'svg-inline-loader'
       }
     ],
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    root: [
+      path.resolve(paths.appsRootSrc)
+    ]
   },
   plugins: [
     new webpack.DefinePlugin(env),

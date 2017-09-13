@@ -8,6 +8,7 @@ var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeMod
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -309,6 +310,12 @@ module.exports = [{
       }
     ],
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    root: [
+      path.resolve(paths.appsRootSrc)
+    ]
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -365,6 +372,12 @@ module.exports = [{
         loader: 'file?name=[name].[ext]'
       }
     ],
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    root: [
+      path.resolve(paths.appsRootSrc)
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({

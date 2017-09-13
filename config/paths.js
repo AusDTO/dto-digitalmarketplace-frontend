@@ -43,6 +43,7 @@ var config = {
   appSrc: resolveApp('src'),
   appServer: resolveApp('server'),
 
+  appsRootSrc: resolveApp('apps'),
   marketplaceSrc: resolveApp('apps/marketplace'),
   oramsSrc: resolveApp('apps/orams'),
   sharedComponents: resolveApp('apps/shared'),

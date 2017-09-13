@@ -1,0 +1,115 @@
+.badgeBeta {
+    vertical-align: text-top;
+    background-color: #fff;
+    color: #18788d;
+    padding: .3em .6em;
+    display: inline-block;
+    border-radius: 12px;
+    line-height: 1;
+    letter-spacing: 1px;
+    font-size: 0.875rem;
+    margin-left: 5px;
+}
+
+@media screen and (min-width: 75em) {
+  .badgeBeta {
+    margin-top: 0.8em;
+  }
+}
+
+.calloutHero {
+  float: right;
+  padding: 1.2em 1.2em 1.2em 1.6em;
+  position: relative;
+  background: #115361;
+  box-shadow: 0 0 0 transparent;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 75em) {
+  .calloutHero {
+    background: #115361;
+    position: absolute;
+    right: 1.2em;
+    bottom: -7em;
+    float: left;
+    display: block;
+    margin-right: 2.04556%;
+    width: 29.84368%;
+    margin-left: 12.75569%;
+    margin: 0;
+    padding: 1.2em 1.2em 1.2em 1.6em;
+    margin-top: 0px;
+  }
+}
+
+.heroMain {
+    position: relative;
+    padding: 0 0 3.2em;
+    margin-bottom: 0;
+    background-color: #18788d;
+    color: #fff;
+}
+
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 75em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 1.6em;
+}
+
+@media screen and (min-width: 75em) {
+.wrapper {
+    width: 100%;
+    min-width: 75em;
+  }
+}
+
+.wrapper::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.contentHero {
+  float: left;
+  display: block;
+  width: 100%;
+}
+
+@media screen and (min-width: 75em) {
+  .contentHero {
+    width: 74.48861%;
+    margin-right: 2.04556%;
+  }
+}
+@media screen and (min-width: 75em) {
+  .siteTitle {
+    margin: 0 0 0.2em;
+    font-size: 3rem;
+  }
+}
+
+.heroMain p {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.heroMain h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8em;
+  margin-top: 0;
+}
+
+.heroMain a {
+  color: #ffffff;
+  border-bottom: solid 2px #ffffff;
+}
+
+.contentMain {
+  background: #f0f3f5;
+  height: 150px;
+}
