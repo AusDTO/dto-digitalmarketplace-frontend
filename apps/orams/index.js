@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
-import HomepageHeader from './components/HomepageHeader/HomepageHeader'
-import Banner from '../shared/Banner/Banner'
-import Footer from '../shared/Footer/PageFooter'
+import Banner from 'shared/Banner/Banner'
+import Footer from 'shared/Footer/PageFooter'
+
 import Header from './components/Header/Header'
 import configureStore from './store'
 
@@ -20,11 +20,10 @@ const App = () =>
         <header role="banner">
           <Banner />
           <Header />
-          <HomepageHeader />
         </header>
-        <main id="content">
+        <div id="content">
           <RootContainer />
-        </main>
+        </div>
         <Footer />
       </div>
     </BrowserRouter>

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter, Switch, Route } from 'react-router-dom'
-import Homepage from '../components/HomePage/HomePage'
+import Homepage from 'orams/components/HomePage/HomePage'
 
-const Routes = props => {
+const HomePageContainer = props => {
   const { match } = props
   return (
     <Switch>
@@ -12,8 +12,8 @@ const Routes = props => {
   )
 }
 
-Routes.propTypes = {
+HomePageContainer.propTypes = {
   match: PropTypes.object.isRequired
 }
 
-export default withRouter(Routes)
+export default withRouter(HomePageContainer)
