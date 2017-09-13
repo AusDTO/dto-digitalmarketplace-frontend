@@ -22,8 +22,4 @@ const HomePage = () =>
     <section className={styles.contentMain} />
   </div>
 
-HomePage.defaultProps = {}
-
-HomePage.propTypes = {}
-
 export default HomePage
