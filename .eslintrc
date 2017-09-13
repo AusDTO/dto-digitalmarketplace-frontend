@@ -20,7 +20,10 @@
     "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}],
     "react/jsx-filename-extension": "off",
     "react/forbid-prop-types": "off",
-    "class-methods-use-this": ["error", { "exceptMethods": ["onSubmitFailed"] }]
+    "class-methods-use-this": ["error", { "exceptMethods": ["onSubmitFailed"] }],
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off"
   },
   "globals": {
     "document": false,

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './HomePage.scss'
 
-const HomePage = () => 
+const HomePage = () =>
   <div>
     <section className={styles.heroMain}>
       <div className={styles.wrapper}>
@@ -19,8 +19,7 @@ const HomePage = () =>
         </div>
       </div>
     </section>
-    <section className={styles.contentMain}>
-    </section>
+    <section className={styles.contentMain} />
   </div>
 
 HomePage.defaultProps = {}
