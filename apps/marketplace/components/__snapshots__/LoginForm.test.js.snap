@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for LoginForm component LoginForm renders without errors 1`] = `
+<LoginForm
+  currentlySending={false}
+  handleSubmit={[Function]}
+  model="loginForm"
+  submitClicked={[Function]}
+/>
+`;
