@@ -59,13 +59,11 @@ const ReportItem = props => {
 
 ReportItem.propTypes = {
   heading: PropTypes.string,
-  media: PropTypes.string,
   subitems: PropTypes.array
 }
 
 ReportItem.defaultProps = {
   heading: '',
-  media: '',
   subitems: []
 }
 
