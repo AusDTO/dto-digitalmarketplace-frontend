@@ -7,7 +7,6 @@ import Banner from '../shared/Banner/Banner'
 import Header from './components/Header/Header'
 import Footer from '../shared/Footer/PageFooter'
 import configureStore from './store'
-import screenResize from './actions/mediaActions'
 import RootContainer from './routes'
 import { fetchAuth } from './actions/appActions'
 
@@ -15,13 +14,6 @@ import './main.scss'
 
 const store = configureStore()
 store.dispatch(fetchAuth())
-
-window.addEventListener(
-  'resize',
-  debounce(() => {
-    store.dispatch(screenResize(window.innerWidth))
-  }, 300)
-)
 
 const App = () =>
   <Provider store={store}>
