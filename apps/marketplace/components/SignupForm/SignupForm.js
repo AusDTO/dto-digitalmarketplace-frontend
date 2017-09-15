@@ -286,6 +286,7 @@ SignupForm.propTypes = {
   isBuyer: PropTypes.bool.isRequired,
   emailValidators: PropTypes.object.isRequired,
   emailErrorMessages: PropTypes.object.isRequired,
+  submitClicked: PropTypes.bool.isRequired,
   onSubmitClicked: PropTypes.func.isRequired,
   onSubmitFailed: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
