@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import BaseForm      from '../../../shared/form/BaseForm';
-import SubmitForm    from '../../../shared/form/SubmitForm';
-import ErrorBox      from '../../../shared/form/ErrorBox';
-import StatefulError from '../../../shared/form/StatefulError';
+import BaseForm      from 'shared/form/BaseForm';
+import SubmitForm    from 'shared/form/SubmitForm';
+import ErrorBox      from 'shared/form/ErrorBox';
+import StatefulError from 'shared/form/StatefulError';
 import {Form, Control} from 'react-redux-form';
 
-import {required} from '../../../validators';
-import formProps     from '../../../shared/reduxModules/formPropsSelector';
+import {required} from 'shared/validators';
+import formProps     from 'shared/formPropsSelector';
 
 const agreementStyle = {
     width: '100%',

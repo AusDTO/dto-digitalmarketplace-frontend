@@ -12,9 +12,9 @@ import Icon     from 'shared/Icon';
 import NotFound from 'shared/NotFound';
 import LocalNav from 'shared/LocalNav';
 
-import { actions as stepActions, STATUS } from '../../redux/modules/steps';
-import { getStateForms, dispatchFormState } from '../../redux/helpers';
-import { actions } from '../../redux/modules/application';
+import { actions as stepActions, STATUS } from 'orams/actions/stepsActions';
+import { getStateForms, dispatchFormState } from 'orams/actions/helpers';
+import { actions } from 'orams/actions/sellerRegistrationActions';
 
 // Step Components
 import BusinessDetailsForm  from '../BusinessDetailsForm';
@@ -123,7 +123,7 @@ class Signup extends React.Component {
   render() {
     const { forms, location, steps = {}, actions } = this.props;
     
-    let { recruiter = 'no'} = forms.recruiterForm;
+    let { recruiter = 'no'} = 'no';
     let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
     this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
@@ -136,17 +136,9 @@ class Signup extends React.Component {
 
     const applicationValid = stepsRemainingSet.size === 0;
 
-    let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
 
-    services = Object
-      .keys(services)
-      .filter(s => services[s])
-      .reduce((newServices, key) => {
-        newServices[key] = services[key];
-        return newServices;
-      }, {});
 
     return (
       <div className="row">
@@ -200,7 +192,6 @@ class Signup extends React.Component {
                 routerProps, {
                   applicationValid,
                   stepsRemaining,
-                  services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
                   title: label,
                   buttonText: 'Save and continue',
@@ -211,7 +202,6 @@ class Signup extends React.Component {
                   abn,
                   email,
                   representative,
-                  recruiter
                 },
                 this.elementProps
               );

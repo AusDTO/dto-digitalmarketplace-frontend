@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { Form } from 'react-redux-form';
 import isNumber from 'lodash/isNumber';
 
-import { required, validEmail, validPhoneNumber } from '../../../../validators';
+import { required, validEmail, validPhoneNumber } from 'shared/validators';
 
-import Layout        from '../../../../shared/Layout';
-import BaseForm      from '../../../../shared/form/BaseForm';
-import SubmitForm    from '../../../../shared/form/SubmitForm';
-import ErrorBox      from '../../../../shared/form/ErrorBox';
-import Textfield     from '../../../../shared/form/Textfield';
-import formProps     from '../../../../shared/reduxModules/formPropsSelector';
+import Layout        from 'shared/Layout';
+import BaseForm      from 'shared/form/BaseForm';
+import SubmitForm    from 'shared/form/SubmitForm';
+import ErrorBox      from 'shared/form/ErrorBox';
+import Textfield     from 'shared/form/Textfield';
+import formProps     from 'shared/formPropsSelector';
 import StepNav       from '../StepNav';
 
 class YourInfoForm extends BaseForm {

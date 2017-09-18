@@ -5,20 +5,20 @@ import { Form, actions } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import isNumber from 'lodash/isNumber';
 
-import {required, limitNumbers, validLinks, validABN} from '../../../../validators';
+import {required, limitNumbers, validLinks, validABN} from 'shared/validators';
 
-import Layout from '../../../../shared/Layout';
+import Layout from 'shared/Layout';
 
-import BaseForm     from '../../../../shared/form/BaseForm';
-import SubmitForm   from '../../../../shared/form/SubmitForm';
-import ErrorBox     from '../../../../shared/form/ErrorBox';
-import Textarea     from '../../../../shared/form/Textarea';
-import Textfield    from '../../../../shared/form/Textfield';
-import formProps    from '../../../../shared/reduxModules/formPropsSelector';
-import StepNav      from '../StepNav';
-import { getNextKey } from '../../../../helpers';
+import BaseForm     from 'shared/form/BaseForm';
+import SubmitForm   from 'shared/form/SubmitForm';
+import ErrorBox     from 'shared/form/ErrorBox';
+import Textarea     from 'shared/form/Textarea';
+import Textfield    from 'shared/form/Textfield';
+import formProps    from 'shared/formPropsSelector';
+import StepNav      from 'orams/components/StepNav';
+import { getNextKey } from 'shared/utils/helpers';
 
-import './BusinessDetailsForm.css'
+import './BusinessDetailsForm.scss'
 
 class BusinessDetailsForm extends BaseForm {
 

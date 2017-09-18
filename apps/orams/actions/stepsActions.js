@@ -1,3 +1,7 @@
+const STEP_COMPLETE = 'step/complete';
+const STEP_PARTIAL = 'step/partial';
+const STEP_INITIAL = 'step/initial';
+const STEP_CLEAR = 'step/clear';
 
 export const constants = {
     STEP_COMPLETE,

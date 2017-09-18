@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {Form, Control} from 'react-redux-form';
 
-import Layout from '../../../../shared/Layout';
+import Layout from 'shared/Layout';
 
-import BaseForm     from '../../../../shared/form/BaseForm';
-import SubmitForm   from '../../../../shared/form/SubmitForm';
-import ErrorBox     from '../../../../shared/form/ErrorBox';
-import StatefulError from '../../../../shared/form/StatefulError';
-import {required} from '../../../../validators';
+import BaseForm     from 'shared/form/BaseForm';
+import SubmitForm   from 'shared/form/SubmitForm';
+import ErrorBox     from 'shared/form/ErrorBox';
+import StatefulError from 'shared/form/StatefulError';
+import {required} from 'shared/validators';
 
-import formProps    from '../../../../shared/reduxModules/formPropsSelector';
-import StepNav      from '../StepNav';
+import formProps    from 'shared/formPropsSelector';
+import StepNav      from 'orams/components/StepNav';
 
 
 class BusinessInfoForm extends BaseForm {
