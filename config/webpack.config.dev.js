@@ -120,7 +120,7 @@ module.exports = [{
     // require.resolve('webpack/hot/dev-server'),
     // We ship a few polyfills by default:
     'vendor': [
-      require.resolve('react-dev-utils/webpackHotDevClient'),
+      //require.resolve('react-dev-utils/webpackHotDevClient'),
       require.resolve('./polyfills')
     ],
     // We include the app code last so that if there is a runtime error during
