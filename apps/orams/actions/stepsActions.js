@@ -10,6 +10,11 @@ export const constants = {
     STEP_INITIAL
 };
 
+export const STATUS = {
+  complete: 'complete',
+  partial: 'partial'
+};
+
 export const stepComplete = (step) => ({ type: STEP_COMPLETE, step });
 export const stepPartial = (step) => ({ type: STEP_PARTIAL, step });
 export const stepClear = (step) => ({ type: STEP_CLEAR, step });

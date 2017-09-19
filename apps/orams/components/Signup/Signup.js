@@ -51,12 +51,12 @@ class Signup extends React.Component {
   }
 
   steps = [
-    { id: 'profile', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { id: 'business', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
-    { id: 'info', label: 'Contacts', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
-    { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
-    { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-    { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' }
+    { id: 'profile', label: 'Business basics', component: BusinessDetailsForm, pattern: '/orams/business-details', formKey: 'businessDetailsForm' },
+    { id: 'business', label: 'Business details', component: BusinessInfoForm, pattern: '/orams/business-info', formKey: 'businessInfoForm' },
+    { id: 'info', label: 'Contacts', component: YourInfoForm, pattern: '/orams/your-info', formKey: 'yourInfoForm' },
+    { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/orams/tools', formKey: 'toolsForm' },
+    { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/orams/awards', formKey: 'awardsForm' },
+    { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/orams/profile-finish' }
   ]
 
   filteredSteps = [];
@@ -144,9 +144,9 @@ class Signup extends React.Component {
       <div className="row">
         <Route path="/:route/:subroute?" render={({ match }) => {
           const { params = {} } = match;
-          if (params.subroute) {
+          {/*if (params.subroute) {
             return null;
-          }
+          }*/}
 
           return (
             <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
@@ -177,7 +177,7 @@ class Signup extends React.Component {
 
 
         <Switch>
-          {this.filteredSteps.map(({pattern, exact, component, label}, i) => (
+          {/*{this.filteredSteps.map(({pattern, exact, component, label}, i) => (
             <Route key={i} path={pattern} render={(routerProps) => {
               let isCaseStudyEditFlow = location.pathname.match(/case-study\/(edit|add)/);
               let isCaseStudyFlow = location.pathname.match(/case-study\/(edit|view|add)/);
@@ -213,8 +213,11 @@ class Signup extends React.Component {
                 </article>
               )
             }} />
-          ))}
-          <Route component={NotFound} />
+          ))}*/}
+          <article className='col-xs-12 col-sm-8 col-sm-push-1'>
+            <Route component={BusinessDetailsForm} />
+          </article>
+          {/*<Route component={NotFound} />*/}
         </Switch>
       </div>
     )

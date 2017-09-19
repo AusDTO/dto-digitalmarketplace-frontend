@@ -8,9 +8,9 @@ export const SellerApplication = (props, history) => {
     return step.pattern.match(/\/business-details|\/business-info|\/your-info|\/tools|\/awards|\/finish-profile/);
   };
   return (
-    <div>
+    <main>
       <Signup filterSteps={filterSteps}/>
-    </div>
+    </main>
   )
 }
 

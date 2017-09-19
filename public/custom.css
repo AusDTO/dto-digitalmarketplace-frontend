@@ -172,3 +172,440 @@ input[type="radio"].uikit-control-input__input:focus + .uikit-control-input__tex
   outline: none;
 }
 
+
+/* line 133, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.step-navigation {
+  padding-top: 0;
+}
+
+/* line 136, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.step-navigation a span {
+  padding-left: 1em;
+  vertical-align: middle;
+}
+
+/* line 140, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.step-navigation a .icon {
+  vertical-align: middle;
+}
+
+/* line 147, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav[aria-expanded='false'] {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 154, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+  .local-nav[aria-expanded='false'] {
+    height: auto;
+    padding: 0 0 1.6em;
+  }
+  /* line 158, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+  .local-nav-toggle {
+    display: none;
+  }
+}
+
+/* line 164, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  font-weight: 400;
+  border: 0;
+  background-color: #f0f3f5;
+  color: #115361;
+  padding: 0.8em 1.2em;
+}
+
+/* line 175, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle:hover, .local-nav-toggle:active, .local-nav-toggle:focus {
+  background-color: #f0f3f5;
+  color: #115361;
+}
+
+/* line 180, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle::before {
+  content: ' ';
+  position: absolute;
+  top: .5em;
+  bottom: .5em;
+  right: 0.8em;
+  width: 1.2em;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+/* line 193, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle[aria-expanded='true']::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+/* line 198, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav[aria-expanded='false'] {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 205, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+  .local-nav[aria-expanded='false'] {
+    height: auto;
+    padding: 0 0 1.6em;
+  }
+  /* line 209, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+  .local-nav-toggle {
+    display: none;
+  }
+}
+
+/* line 215, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  font-weight: 400;
+  border: 0;
+  background-color: #f0f3f5;
+  color: #115361;
+  padding: 0.8em 1.2em;
+}
+
+/* line 226, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle:hover {
+  background-color: #f0f3f5;
+  color: #115361;
+}
+
+/* line 231, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle::before {
+  content: ' ';
+  position: absolute;
+  top: .5em;
+  bottom: .5em;
+  right: 0.8em;
+  width: 1.2em;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+/* line 244, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/_navigation.scss */
+.local-nav-toggle[aria-expanded='true']::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+
+@media screen and (min-width: 768px) {
+  /* line 195, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+  .local-nav-toggle {
+    display: none;
+  }
+}
+
+/* line 233, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.local-nav {
+  padding-top: 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 233, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+  .local-nav {
+    padding: 1.6em 0;
+  }
+}
+
+/* line 240, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav,
+.local-nav {
+  margin: 0 0 1.6em;
+  overflow: hidden;
+  transition: padding 0.4s ease;
+}
+
+/* line 246, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav[aria-expanded='false'],
+.local-nav[aria-expanded='false'] {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 246, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+  .primary-nav[aria-expanded='false'],
+  .local-nav[aria-expanded='false'] {
+    height: auto;
+    padding: 1.6em 0;
+  }
+}
+
+/* line 257, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav h1, .primary-nav .hero .site-title, .hero .primary-nav .site-title,
+.local-nav h1,
+.local-nav .hero .site-title, .hero
+.local-nav .site-title {
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* line 266, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul,
+.local-nav ul {
+  color: #313131;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 43, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a,
+.local-nav ul a {
+  color: #313131;
+  text-decoration: none;
+  outline: none;
+  border-bottom: solid 1px #def4f9;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.1s;
+  transition-property: background-color, border-color, color;
+  /*
+    See more link
+
+    Use see more links at the end of [lists](section-list-styles.html),
+    to take the user to a index page of all items.
+
+    Markup: <a class="see-more" href="#">See more</a>
+
+    Style guide: Link styles.2 See more link
+    */
+}
+
+/* line 52, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a:hover, .primary-nav ul a:focus,
+.local-nav ul a:hover,
+.local-nav ul a:focus {
+  background-color: #def4f9;
+  color: #313131;
+}
+
+/* line 58, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a[rel~='external'],
+.local-nav ul a[rel~='external'] {
+  display: inline-block;
+  position: relative;
+  margin-right: 1.6em;
+}
+
+/* line 63, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a[rel~='external']:hover,
+.local-nav ul a[rel~='external']:hover {
+  border-color: transparent;
+}
+
+/* line 67, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a[rel~='external']::after,
+.local-nav ul a[rel~='external']::after {
+  background-size: 0.9em auto;
+}
+
+/* line 86, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a.see-more,
+.local-nav ul a.see-more {
+  display: inline-block;
+  position: relative;
+  margin-right: 1.6em;
+  font-weight: 700;
+  color: #18788d;
+}
+
+/* line 93, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a.see-more::after,
+.local-nav ul a.see-more::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -1.2em;
+  display: block;
+  width: 1.2em;
+  height: 1.2em;
+  background-repeat: no-repeat;
+  background-position: right 0.4em;
+  background-size: 0.64em auto;
+}
+
+/* line 108, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul a.see-more:hover, .primary-nav ul a.see-more:focus,
+.local-nav ul a.see-more:hover,
+.local-nav ul a.see-more:focus {
+  color: #313131;
+}
+
+/* line 115, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_links.scss */
+.primary-nav ul.disabled,
+.local-nav ul.disabled {
+  outline: none;
+  color: rgba(49, 49, 49, 0.5);
+  text-decoration: none;
+  border-bottom: solid 1px;
+  outline-color: transparent;
+}
+
+/* line 272, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul ul,
+.local-nav ul ul {
+  margin: 0;
+}
+
+/* line 276, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul ul li:last-child,
+.local-nav ul ul li:last-child {
+  border-bottom: none;
+}
+
+/* line 281, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul ul a,
+.local-nav ul ul a {
+  padding-left: 1.6em;
+  border-bottom: 0;
+}
+
+/* line 287, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul ul ul a,
+.local-nav ul ul ul a {
+  padding-left: 2.4em;
+  background-repeat: no-repeat;
+  background-position: 1.6em 1.16em;
+  background-size: 0.4em auto;
+}
+
+/* line 297, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul li,
+.local-nav ul li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #bebebe;
+}
+
+/* line 302, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul li:first-child,
+.local-nav ul li:first-child {
+  border-top: 1px solid #bebebe;
+}
+
+/* line 307, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul a,
+.local-nav ul a {
+  display: block;
+  border: none;
+  border-left: 4px solid transparent;
+  border-bottom: none;
+  padding: 0.6em 0.8em;
+  text-decoration: none;
+  transition: border-color 0.1s ease-in-out;
+}
+
+/* line 316, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul a:hover,
+.local-nav ul a:hover {
+  border-color: #224a61;
+}
+
+/* line 320, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul a.active, .primary-nav ul a.is-active,
+.local-nav ul a.active,
+.local-nav ul a.is-active {
+  font-weight: 700;
+}
+
+/* line 325, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav ul a.current,
+.local-nav ul a.current {
+  background-color: #def4f9;
+}
+
+/* line 337, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav {
+  padding: 1.6em 0;
+}
+
+/* line 340, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav .nav-heading {
+  color: #115361;
+  background: #f0f3f5;
+  margin: 1.6em 0;
+}
+
+/* line 345, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.primary-nav .nav-heading .chevron {
+  float: right;
+}
+
+/* line 355, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.js .primary-nav ul {
+  margin: 0;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 355, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+  .js .primary-nav ul {
+    margin: inherit;
+    display: block;
+  }
+}
+
+/* line 365, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.js .nav-heading {
+  display: block;
+  background-color: #146577;
+  color: #fff;
+  padding: 0.6em 0.8em;
+}
+
+/* line 371, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+.js .nav-heading:hover {
+  border-color: #146577;
+  background-color: #146577;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 365, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_navigation.scss */
+  .js .nav-heading {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  /* line 226, /Users/marcolavielle/Documents/Development/dto/dto-digitalmarketplace-supplier-frontend/app/assets/scss/gov-au-ui-kit/_typography.scss */
+  h1, .hero .site-title {
+    font-size: 2rem;
+  }
+}
+
+.sidebar .button-secondary, main article:first-of-type .button-secondary, main section:first-of-type .button-secondary {
+    color: #313131;
+    display: inline;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #5bcbe3;
+    font-weight: 400;
+    width: auto;
+    padding: 0;
+}
