@@ -5,6 +5,7 @@ import NotFound from 'shared/NotFound'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import LogoutPage from './pages/LogoutPage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 
 export const rootPath = '/orams'
 
@@ -13,6 +14,7 @@ export const Routes = () =>
     <Route exact path={rootPath} component={HomePage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/logout`} component={LogoutPage} />
+    <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route component={NotFound} />
   </Switch>
 
