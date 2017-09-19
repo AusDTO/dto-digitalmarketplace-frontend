@@ -259,9 +259,11 @@ class BusinessDetailsForm extends BaseForm {
                               )
                             })}
                             {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
-                                <p styleName="footer">More offices?</p>
+                                <div styleName="footer">More offices?</div>
                             }
-                            <button type="submit" className="button-secondary" onClick={this.onAdd.bind(this)}>Add another address</button>
+                            <p>
+                              <a href="#" onClick={this.onAdd.bind(this)}>Add another address</a>
+                            </p>
                         </div>
 
                         {children}

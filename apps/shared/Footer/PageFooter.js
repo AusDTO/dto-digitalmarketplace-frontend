@@ -7,7 +7,7 @@ import logoNisa from './logo_nisa.svg'
 
 const PageFooter = () =>
   <Footer>
-    <div className={styles.wrapper}>
+    <div className={styles.footerWrapper}>
       <FooterNav>
         <div className="row">
           <div className="col-md-3 col-sm-6">

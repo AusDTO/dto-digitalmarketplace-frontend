@@ -26,9 +26,9 @@ const Textfield = props => {
         {label}
       </label>
       {description &&
-        <p className="hint" id={`${id}-hint`}>
+        <div className="uikit-text-input__hint" id={`${id}-hint`}>
           {description}
-        </p>}
+        </div>}
       <Control.input
         model={model}
         name={name}
