@@ -13,8 +13,8 @@ const computeClassname = (base, alt, formatted) =>
 const imageRoot = '/static/media/'
 
 const ReportItem = props => {
-  const { heading, subitems, media } = props
-  const mobile = media === 'mobile'
+  const { heading, subitems } = props
+  const mobile = true
 
   return (
     <div className="col-sm-12" id="report-item">
@@ -59,13 +59,11 @@ const ReportItem = props => {
 
 ReportItem.propTypes = {
   heading: PropTypes.string,
-  media: PropTypes.string,
   subitems: PropTypes.array
 }
 
 ReportItem.defaultProps = {
   heading: '',
-  media: '',
   subitems: []
 }
 

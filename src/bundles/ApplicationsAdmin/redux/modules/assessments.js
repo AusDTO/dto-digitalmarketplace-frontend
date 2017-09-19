@@ -43,14 +43,14 @@ export const approveAssessment = (id) => {
   }
 };
 
-export const rejectedAssessment = (id) => ({ type: REJECTED_ASSESSMENT, id });
+export const rejectedAssessment = (id, message) => ({ type: REJECTED_ASSESSMENT, id, message });
 
-export const rejectAssessment = (id) => {
+export const rejectAssessment = (id, message) => {
     return (dispatch, getState, api) => {
         const state = getState();
         return api(state.meta.url_reject, {
             method: 'POST',
-            body: JSON.stringify({id}),
+            body: JSON.stringify({application_id: id, message: message}),
             headers: {
                 // Flask expects the token as a header.
                 'X-CSRFToken': state.form_options.csrf_token

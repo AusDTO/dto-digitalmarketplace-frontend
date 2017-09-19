@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ReportView from '../components/Reports/ReportView'
@@ -191,7 +190,6 @@ ReportPageContainer.defaultProps = {
     items: [
       {
         heading: '',
-        media: '',
         subitems: []
       }
     ]
@@ -199,8 +197,4 @@ ReportPageContainer.defaultProps = {
   match: () => ({ url: `${rootPath}/reports` })
 }
 
-const matchStateToProps = state => ({
-  media: state.media
-})
-
-export default withRouter(connect(matchStateToProps)(ReportPageContainer))
+export default withRouter(ReportPageContainer)

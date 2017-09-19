@@ -4,7 +4,7 @@ import ReportItem from './ReportItem'
 import * as styles from './ReportView.scss'
 
 const ReportView = props => {
-  const { data, media } = props
+  const { data } = props
   const { title, items, date } = data
 
   return (
@@ -31,7 +31,7 @@ const ReportView = props => {
               <div className="hidden">
                 {items.map((item, id = uniqueID()) =>
                   <div key={id}>
-                    <ReportItem {...item} {...media} />
+                    <ReportItem {...item} />
                   </div>
                 )}
               </div>
