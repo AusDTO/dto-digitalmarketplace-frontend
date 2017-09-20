@@ -8,8 +8,6 @@ import LoadingIndicator from '../../shared/LoadingIndicator/LoadingIndicator'
 import { logout } from '../actions/appActions'
 import { rootPath } from '../routes'
 
-import styles from './LogoutPage.scss'
-
 export class LogoutPageComponent extends BaseForm {
   static propTypes = {
     loggedIn: PropTypes.bool.isRequired,
@@ -27,9 +25,7 @@ export class LogoutPageComponent extends BaseForm {
 
     return (
       <div id="logout-page">
-        <div className={styles.main}>
-          {loggedIn ? <LoadingIndicator /> : <Redirect to={{ pathname: `${rootPath}/login` }} />}
-        </div>
+        {loggedIn ? <LoadingIndicator /> : <Redirect to={{ pathname: `${rootPath}/login` }} />}
       </div>
     )
   }

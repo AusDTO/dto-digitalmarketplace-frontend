@@ -45,6 +45,7 @@ export class LoginPageComponent extends BaseForm {
               model={model}
               currentlySending={currentlySending}
               rootPath={rootPath}
+              framework="ORAMS"
             />}
       </div>
     )
