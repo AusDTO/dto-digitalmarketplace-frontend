@@ -1,9 +1,10 @@
 import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
+import NotFound from 'shared/NotFound'
+
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import LogoutPage from './pages/LogoutPage'
-import NotFound from 'shared/NotFound'
 
 export const rootPath = '/orams'
 
