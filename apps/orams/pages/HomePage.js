@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter, Switch, Route } from 'react-router-dom'
-import Homepage from './HomePage'
+import Homepage from '../components/HomePage/HomePage'
 
 const HomePageContainer = props => {
   const { match } = props

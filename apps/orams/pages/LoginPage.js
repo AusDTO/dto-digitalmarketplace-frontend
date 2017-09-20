@@ -44,6 +44,7 @@ export class LoginPageComponent extends BaseForm {
               handleSubmit={handleSubmit}
               model={model}
               currentlySending={currentlySending}
+              rootPath={rootPath}
             />}
       </div>
     )
