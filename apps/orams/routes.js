@@ -1,13 +1,18 @@
 import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
+import NotFound from 'shared/NotFound'
+
 import HomePage from './pages/HomePage'
-import NotFound from '../shared/NotFound'
+import LoginPage from './pages/LoginPage'
+import LogoutPage from './pages/LogoutPage'
 
 export const rootPath = '/orams'
 
 export const Routes = () =>
   <Switch>
     <Route exact path={rootPath} component={HomePage} />
+    <Route path={`${rootPath}/login`} component={LoginPage} />
+    <Route path={`${rootPath}/logout`} component={LogoutPage} />
     <Route component={NotFound} />
   </Switch>
 
