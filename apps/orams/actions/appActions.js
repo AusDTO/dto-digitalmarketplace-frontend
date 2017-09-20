@@ -23,9 +23,9 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, CLEAR_ERROR_MESSAGES } from '../constants/constants'
-import { LOGIN_FAILED, GENERAL_ERROR } from '../constants/messageConstants'
-import dmapi from '../services/apiClient'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, CLEAR_ERROR_MESSAGES } from 'orams/constants/constants'
+import { LOGIN_FAILED, GENERAL_ERROR } from 'orams/constants/messageConstants'
+import dmapi from 'orams/services/apiClient'
 
 /**
  * Sets the requestSending state, which displays a loading indicator during requests

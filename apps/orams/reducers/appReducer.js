@@ -10,7 +10,7 @@
  *   });
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, CLEAR_ERROR_MESSAGES, SET_AUTH } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, CLEAR_ERROR_MESSAGES, SET_AUTH } from 'orams/constants/constants'
 
 // The initial application state
 const initialState = {

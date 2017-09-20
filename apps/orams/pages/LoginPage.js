@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
 
-import LoginForm from '../../shared/Login/LoginForm'
-import BaseForm from '../../shared/form/BaseForm'
-import formProps from '../../shared/form/formPropsSelector'
-import { login } from '../actions/appActions'
-import { rootPath } from '../routes'
+import LoginForm from 'shared/Login/LoginForm'
+import BaseForm from 'shared/form/BaseForm'
+import formProps from 'shared/form/formPropsSelector'
+import { login } from 'orams/actions/appActions'
+import { rootPath } from 'orams/routes'
 
 export class LoginPageComponent extends BaseForm {
   static propTypes = {

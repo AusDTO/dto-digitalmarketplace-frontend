@@ -3,7 +3,7 @@ import expect from 'expect'
 import ReactShallowRenderer from 'react-test-renderer/shallow'
 import { Provider } from 'react-redux'
 
-import configureStore from '../store'
+import configureStore from 'orams/store'
 import LoginPage from './LoginPage'
 
 describe('Test suite for LoginPage component', () => {

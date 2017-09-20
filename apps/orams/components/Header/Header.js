@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { rootPath } from '../../routes'
+import { rootPath } from 'orams/routes'
 
-import styles from './Header.scss'
+import styles from 'orams/components/Header/Header.scss'
 
 const Header = props =>
   <div>
