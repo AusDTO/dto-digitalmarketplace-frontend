@@ -365,15 +365,15 @@ class SubmitStepForm extends BaseForm {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        submitUrl: state.form_options.submit_url,
-        authoriseUrl: state.form_options.authorise_url,
+        submitUrl: state.form_options ? state.form_options.submit_url : '',
+        authoriseUrl: state.form_options ? state.form_options.authorise_url : '',
         applicationValid: ownProps.applicationValid,
         name: ownProps.name,
         abn: ownProps.abn,
         email: ownProps.email,
         representative: ownProps.representative,
-        userEmail: state.form_options.user_email,
-        csrfToken: state.form_options.csrf_token,
+        userEmail: state.form_options ? state.form_options.user_email : '',
+        csrfToken: state.form_options ? state.form_options.csrf_token : '',
         ...formProps(state, ownProps.formName || 'submitStepForm'),
     }
 }

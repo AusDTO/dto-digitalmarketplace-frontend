@@ -29,7 +29,7 @@ class BusinessInfoForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">More about your business</h1>
+                    <h1 className="uikit-display-5" tabIndex="-1">More about your business</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -50,23 +50,27 @@ class BusinessInfoForm extends BaseForm {
                             <legend>Diversity and inclusion (optional)</legend>
                             <p>The Marketplace is committed to providing a diverse and inclusive environment.<br/>
                                 Responses are optional and for demographic purposes only.</p>
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.indigenous`}
-                                id="indigenous"
-                                name="indigenous"
-                                value="Indigenous"
-                            />
-                            <label htmlFor="indigenous">Indigenous
-                                <p>Your business is at least 50% Indigenous owned and listed on <a
-                                href="http://www.supplynation.org.au/search" rel="external" target="_blank">Supply Nation.</a></p>
-                            </label>
+                            <span className="uikit-control-input uikit-control-input--full">
+                              <Control.checkbox
+                                  model={`${model}.seller_type.indigenous`}
+                                  id="indigenous"
+                                  name="indigenous"
+                                  value="Indigenous"
+                                  mapProps={{
+                                    className: 'uikit-control-input__input'
+                                  }}
+                              />
+                              <label className="uikit-control-input__text" htmlFor="indigenous">Indigenous
+                                  <p>Your business is at least 50% Indigenous owned and listed on <a
+                                  href="http://www.supplynation.org.au/search" rel="external" target="_blank">Supply Nation.</a></p>
+                              </label>
+                            </span>
 
                         </fieldset>
 
                         {children}
 
-                        <StepNav buttonText="Save and continue" to={nextRoute}/>
+                        <StepNav buttonText="Update Profile" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

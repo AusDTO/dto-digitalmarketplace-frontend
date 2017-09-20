@@ -26,14 +26,11 @@ class YourInfoForm extends BaseForm {
   render() {
     const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed, nextRoute } = this.props;
     let title = 'Contact details';
-    if (isNumber(supplierCode)) {
-        title = 'Check your contact details'
-    }
 
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1">{title}</h1>
+          <h1 className="uikit-display-5" tabIndex="-1">{title}</h1>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>
@@ -56,7 +53,7 @@ class YourInfoForm extends BaseForm {
                   id="contact_name"
                   htmlFor="contact_name"
                   label="Business contact name"
-                  description="The contact listed on your seller profile page and the person who receives new opportunities by email."
+                  description="The contact listed on your seller profile page."
                   validators={{ required }}
                   messages={{
                       required: 'Business contact is required',
@@ -149,7 +146,7 @@ class YourInfoForm extends BaseForm {
 }
 
 YourInfoForm.defaultProps = {
-  buttonText: 'Save and continue',
+  buttonText: 'Update profile',
   title: 'Add your contact details'
 }
 

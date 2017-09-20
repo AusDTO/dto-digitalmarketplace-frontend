@@ -28,7 +28,7 @@ class ToolsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Tools and methodologies</h1>
+                    <h1 className="uikit-display-5" tabIndex="-1">Tools and methodologies</h1>
                     <p>Enhance your profile and give buyers more ways to find you through keyword search</p>
                 </header>
                 <article role="main">
@@ -86,7 +86,7 @@ class ToolsForm extends BaseForm {
                         />
                         {children}
 
-                        <StepNav buttonText="Save and continue" to={nextRoute}/>
+                        <StepNav buttonText="Update profile" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

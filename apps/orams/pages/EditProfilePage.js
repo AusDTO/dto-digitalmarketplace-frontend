@@ -44,7 +44,7 @@ class EditProfilePage extends Component {
     { id: 'info', label: 'Contacts', component: YourInfoForm, pattern: '/orams/sellers/your-info', formKey: 'yourInfoForm' },
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/orams/sellers/tools', formKey: 'toolsForm' },
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/orams/sellers/awards', formKey: 'awardsForm' },
-    { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/orams/sellers/profile-finish' }
+    // { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/orams/sellers/profile-finish' }
   ]
 
   render() {

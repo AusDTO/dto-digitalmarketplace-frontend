@@ -111,19 +111,20 @@ class MultiInput extends React.Component {
                   onFocus={onFocus}
                   className={`text-box ${className}`}
                   aria-describedby={hint && describedby}
-                  defaultValue={value} />
+                  defaultValue={value}
+                  className='uikit-text-input uikit-text-input--block multiInput' />
               </div>
               {i > 0 && (
-                <button type="button" className="button-secondary col-xs-12 col-sm-3" onClick={this.removeRow.bind(this, id)}>
+                <a href="#" onClick={this.removeRow.bind(this, id)}>
                   remove <span className="visuallyhidden">number {i + 1}</span>
-                </button>
+                </a>
               )}
             </div>
           )
         })}
-        <button type="button" className="button-secondary" onClick={this.addRow.bind(this)}>
+        <a href="#" onClick={this.addRow.bind(this)}>
           Add another row
-        </button>
+        </a>
       </div>
     )
   }

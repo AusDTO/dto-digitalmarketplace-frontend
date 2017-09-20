@@ -8,7 +8,7 @@ import Layout from 'shared/Layout';
 import BaseForm     from 'shared/form/BaseForm';
 import SubmitForm   from 'shared/form/SubmitForm';
 import ErrorBox     from 'shared/form/ErrorBox';
-import MultiInput   from 'shared/form/MultiInput';
+import MultiInput   from 'shared/form/MultiInput.js';
 import formProps    from 'shared/formPropsSelector';
 import StepNav      from '../StepNav';
 
@@ -27,7 +27,7 @@ class AwardsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Awards and accreditations</h1>
+                    <h1 className="uikit-display-5" tabIndex="-1">Awards and accreditations</h1>
                     <p>This is your opportunity to share some of the things you are proud of.
                         All questions are optional but can help your business attract potential buyers. </p>
 
@@ -80,7 +80,7 @@ class AwardsForm extends BaseForm {
 
                         {children}
 
-                        <StepNav buttonText="Save and continue" to={nextRoute}/>
+                        <StepNav buttonText="Update profile" to={nextRoute}/>
                     </Form>
                 </article>
             </Layout>

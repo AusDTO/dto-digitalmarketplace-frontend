@@ -44,15 +44,12 @@ class BusinessDetailsForm extends BaseForm {
 
     render() {
         const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm, nextRoute } = this.props;
-        let title = 'Tell us about your business'
-        if (isNumber(supplierCode)) {
-            title = 'Check your business details'
-        }
+        let title = 'Check your business details'
 
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
+                    <h1 className="uikit-display-5" tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -195,14 +192,14 @@ class BusinessDetailsForm extends BaseForm {
                                     .filter((value) => {return value > 0 && businessDetailsForm.addresses[value] !== null;})
                                     .map((key, i) => {
                               return (
-                                <div styleName="address-wrapper" key={key}>
-                                    <hr styleName="hr"/>
+                                <div className="address-wrapper" key={key}>
+                                    <hr className="hr"/>
                                     <div className="row">
                                         <div className="col-xs-8 col-sm-10">
-                                          <h3 styleName="heading">Additional address</h3>
+                                          <h3 className="uikit-display-3">Additional address</h3>
                                         </div>
                                         <div className="col-xs-4 col-sm-2">
-                                            <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
+                                            <a href='#' onClick={this.onRemove.bind(this, key)}>Remove</a>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -259,7 +256,7 @@ class BusinessDetailsForm extends BaseForm {
                               )
                             })}
                             {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
-                                <div styleName="footer">More offices?</div>
+                                <div className="footer">More offices?</div>
                             }
                             <p>
                               <a href="#" onClick={this.onAdd.bind(this)}>Add another address</a>
