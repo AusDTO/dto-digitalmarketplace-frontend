@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import PrivateRoute from 'marketplace/components/PrivateRoute'
 import ErrorBox from 'marketplace/components/shared/form/ErrorBox'
 import NotFound from 'marketplace/components/shared/NotFound'
 import formProps from 'marketplace/components/shared/form/formPropsSelector'
@@ -50,7 +49,7 @@ class BriefPage extends Component {
     return (
       <div className="brief-page">
         <Switch>
-          <PrivateRoute
+          <Route
             path={`${match.url}/respond/submitted`}
             component={BriefResponseSubmitted}
             setFocus={setFocus}

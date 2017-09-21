@@ -1,26 +1,23 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 import expect from 'expect'
-import { shallow } from 'enzyme'
-import { BriefPage } from './BriefPage'
+import ReactShallowRenderer from 'react-test-renderer/shallow'
+import { Provider } from 'react-redux'
 
-test('Test suite for BriefPage page', () => {
-  const state = {
-    userRegistrationDetails: {
-      name: 'Jeff Labowski',
-      email_address: 'e@mail.com'
-    },
-    loadBriefSuccess: true
-  }
+import configureStore from '../store'
+import BriefPage from './BriefPage'
 
+describe('Test suite for BriefPage component', () => {
+  const state = {}
+
+  const store = configureStore()
   test('BriefPage renders without errors', () => {
-    const wrapper = shallow(<BriefPage {...state} />)
-    expect(wrapper).toExist()
-  })
+    const renderer = new ReactShallowRenderer()
+    const tree = renderer.render(
+      <Provider store={store}>
+        <BriefPage {...state} />
+      </Provider>
+    )
 
-  test('Because snaphots', () => {
-    const component = renderer.create(<BriefPage {...state} />)
-    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
