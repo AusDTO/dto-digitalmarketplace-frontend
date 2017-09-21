@@ -1,0 +1,41 @@
+.bordered_list {
+  padding: 0 !important;
+}
+.bordered_list__item {
+  list-style: none;
+  margin: 0;
+  border-bottom: solid 1px #bebebe;
+  padding: 1.5em 0 2em;
+}
+
+.bordered_list__item p {
+  margin: 0;
+}
+
+.custom_input {
+  margin-top: 1.5em;
+  display: block;
+}
+.custom_input div {
+  font-size: 14px;
+  padding: 0.4em 0.8em;
+}
+
+.filler {
+  padding-top: 1.2em;
+  height: 0px;
+  margin-bottom: 0px;
+}
+
+.hidden_input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.briefResponse .field {
+ margin: 3em 0;
+}

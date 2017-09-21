@@ -107,7 +107,7 @@ module.exports = [{
   devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
   entry: Object.assign({}, {
-    'vendor': [ require.resolve('./polyfills'),require.resolve('./rollbar') ]
+    'vendor': [ require.resolve('./polyfills'), require.resolve('./rollbar') ]
   }, paths.entryPoints),
   output: {
     // The build folder.
@@ -301,7 +301,8 @@ module.exports = [{
   ]
 }, {
   name: 'marketplace app',
-  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './apps/marketplace/index.js'],
+  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'),
+    require.resolve('./zendesk'), './apps/marketplace/index.js'],
   devtool: 'source-map',
   output: {
     path: './build',
