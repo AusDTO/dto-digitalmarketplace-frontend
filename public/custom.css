@@ -298,3 +298,7 @@ label.text-box-number-label {
   margin-bottom: 20px;
   padding-left: 25px;
 }
+
+.primary-nav ul a.active, .primary-nav ul a.is-active, .local-nav ul a.active, .local-nav ul a.is-active {
+  font-weight: 700;
+}

@@ -36,18 +36,20 @@ export class LoginPageComponent extends BaseForm {
     const { from } = this.props.location.state || { from: { pathname: rootPath } }
 
     return (
-      <div id="login-page">
-        {loggedIn
-          ? <Redirect to={from.pathname} />
-          : <LoginForm
-              submitClicked={this.onSubmitClicked}
-              handleSubmit={handleSubmit}
-              model={model}
-              currentlySending={currentlySending}
-              rootPath={rootPath}
-              framework="ORAMS"
-            />}
-      </div>
+      <main>
+        <div id="login-page">
+          {loggedIn
+            ? <Redirect to={from.pathname} />
+            : <LoginForm
+                submitClicked={this.onSubmitClicked}
+                handleSubmit={handleSubmit}
+                model={model}
+                currentlySending={currentlySending}
+                rootPath={rootPath}
+                framework="ORAMS"
+              />}
+        </div>
+      </main>
     )
   }
 }

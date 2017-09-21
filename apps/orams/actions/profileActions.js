@@ -21,3 +21,19 @@ export const loadProfile = form => dispatch => {
     dispatch(sendingRequest(false))
   })
 }
+
+export const updateProfile = values => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: '/profile',
+    data: JSON.stringify(values)
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      console.log("PROFILE UPDATED")
+    }
+    dispatch(sendingRequest(false))
+  })
+}

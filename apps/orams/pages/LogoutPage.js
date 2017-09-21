@@ -24,9 +24,11 @@ export class LogoutPageComponent extends BaseForm {
     const { loggedIn } = this.props
 
     return (
-      <div id="logout-page">
-        {loggedIn ? <LoadingIndicator /> : <Redirect to={{ pathname: `${rootPath}/login` }} />}
-      </div>
+      <main>
+        <div id="logout-page">
+          {loggedIn ? <LoadingIndicator /> : <Redirect to={{ pathname: `${rootPath}/login` }} />}
+        </div>
+      </main>
     )
   }
 }

@@ -19,14 +19,11 @@ class EditProfilePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      submitClicked: null
     }
   }
 
-  onSubmitClicked = () => {
-    this.setState({
-      submitClicked: new Date().valueOf()
-    })
+  handleSubmit = model => {
+    this.props.updateProfile(model)
   }
 
   steps = [
@@ -86,7 +83,7 @@ class EditProfilePage extends Component {
           </LocalNav>
           <article className="col-xs-12 col-sm-8 col-sm-push-1">
             <Switch>
-              <Route exact path={match.url} render={() => <BusinessDetailsForm onSubmit={this.onSubmitClicked} />} />
+              <Route exact path={match.url} render={() => <BusinessDetailsForm onSubmit={this.handleSubmit}/>} />
 
               <Route
                 path={`${match.url}/business-info`}
@@ -112,8 +109,10 @@ class EditProfilePage extends Component {
 
 EditProfilePage.propTypes = {}
 
-const mapResetStateToProps = state => ({})
+const mapStateToProps = state => ({})
 
-const mapResetDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  updateProfile: model => dispatch(updateProfile(model))
+})
 
-export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(EditProfilePage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditProfilePage))
