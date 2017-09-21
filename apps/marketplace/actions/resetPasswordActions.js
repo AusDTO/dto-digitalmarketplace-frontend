@@ -16,7 +16,7 @@ export const sendResetPasswordEmail = values => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
-    url: '/reset-password/',
+    url: `/reset-password/framework/${values.framework}`,
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {
