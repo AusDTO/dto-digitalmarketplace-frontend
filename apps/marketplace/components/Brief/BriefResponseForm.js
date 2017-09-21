@@ -162,7 +162,9 @@ export class BriefResponseForm extends React.Component {
                     The buyer will contact you after <b>
                       {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}
                     </b>{' '}
-                    if you&rapos;re shortlisted for the next stage
+                    {brief.lotSlug && brief.lotSlug === 'digital-professionals'
+                      ? <span> if you&apos;re shortlisted for the next stage </span>
+                      : <span>to submit your proposal if you&apos;re shortlisted</span>}
                   </li>
                 </ul>
 
