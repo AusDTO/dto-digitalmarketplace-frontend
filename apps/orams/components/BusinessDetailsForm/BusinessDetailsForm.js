@@ -17,6 +17,7 @@ import Textfield    from 'shared/form/Textfield';
 import formProps    from 'shared/formPropsSelector';
 import StepNav      from 'orams/components/StepNav';
 import { getNextKey } from 'shared/utils/helpers';
+import { loadProfile } from 'orams/actions/profileActions'
 
 import './BusinessDetailsForm.scss'
 
@@ -25,9 +26,12 @@ class BusinessDetailsForm extends BaseForm {
     static propTypes = {
         action: PropTypes.string,
         csrf_token: PropTypes.string,
-        form: PropTypes.object.isRequired,
-        returnLink: PropTypes.string,
-        supplierCode: PropTypes.number
+        form: PropTypes.object.isRequired
+    }
+
+    componentDidMount() {
+        console.log(this.props.form.model)
+        this.props.loadProfileData(this.props.form.model)
     }
 
     onAdd(e) {
@@ -43,7 +47,7 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm, nextRoute } = this.props;
+        const {action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm } = this.props;
         let title = 'Check your business details'
 
         return (
@@ -85,12 +89,9 @@ class BusinessDetailsForm extends BaseForm {
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
-                          description={isNumber(supplierCode) ? "You need an Australian Business Number to do business in Australia." :
-                              (<span>You need an Australian Business Number to do business in Australia.&nbsp;
+                          description={(<span>You need an Australian Business Number to do business in Australia.&nbsp;
                               <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
                           </span>)}
-                          readOnly={isNumber(supplierCode)}
-                          disabled={isNumber(supplierCode)}
                           messages={{
                               validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
                           }}
@@ -104,7 +105,6 @@ class BusinessDetailsForm extends BaseForm {
                             controlProps={{limit: 50}}
                             label="Summary"
                             description="3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in."
-                            showMessagesDuringFocus={true}
                             messages={{
                                 required: 'You must provide a seller summary'
                             }}
@@ -265,9 +265,8 @@ class BusinessDetailsForm extends BaseForm {
 
                         {children}
 
-                        <StepNav buttonText={buttonText} to={nextRoute}/>
+                        <StepNav buttonText={buttonText}/>
                     </Form>
-                    {returnLink && <a href={returnLink}>Return without saving</a>}
                 </article>
             </Layout>
         )
@@ -281,8 +280,6 @@ BusinessDetailsForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        supplierCode: (state.application && state.application.supplier_code),
-        returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
         ...formProps(state, 'businessDetailsForm')
     }
 }
@@ -296,7 +293,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actions.omit(`${model}.addresses`, id));
             // added due to bug in adding empty address then removing without submit
             dispatch(actions.setValidity(`${model}.addresses.${id}`, true));
-        }
+        },
+        loadProfileData: (form) => dispatch(loadProfile(form))
     }
 }
 

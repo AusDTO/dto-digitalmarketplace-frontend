@@ -10,12 +10,13 @@
  *   });
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_PROFILE_STATE } from '../constants/constants'
 
 // The initial application state
 const initialState = {
   currentlySending: false,
-  errorMessage: null
+  errorMessage: null,
+  name: ''
 }
 
 const appReducer = (state = initialState, action) => {
@@ -30,6 +31,12 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         errorMessage: action.errorMessage
+      }
+
+    case SET_PROFILE_STATE:
+      return {
+        ...state,
+        name: action.name
       }
 
     default:

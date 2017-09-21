@@ -6,10 +6,6 @@
   box-sizing: inherit;
 }
 
-h1:first-of-type, .hero .site-title:first-of-type {
-  margin-top: 0.4em;
-}
-
 h1, .hero .site-title {
   font-weight: 700;
 }
@@ -17,6 +13,7 @@ h1, .hero .site-title {
 h1, .hero .site-title {
   font-size: 1.5rem;
 }
+
 @media screen and (min-width: 768px) {
     h1, .hero .site-title {
     font-size: 1.625rem;
