@@ -9,8 +9,13 @@ import styles from 'orams/components/Header/Header.scss'
 
 const Header = props =>
   <div>
-    <section className={styles.marketplaceHeader}>
+    <section className={styles.oramsHeader}>
       <div className={styles.wrapper}>
+        <div className={styles.oramsLogo}>
+          <Link to={rootPath} title="Go to the ORAMS homepage" className={styles.logo}>
+            <span>ORAMS</span>
+          </Link>
+        </div>
         <div className={styles.userNav}>
           <div id="react-bundle-auth-header-state" />
           <div id="react-bundle-auth-header">
