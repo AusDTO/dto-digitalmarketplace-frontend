@@ -23,11 +23,15 @@ class FileInput extends React.Component {
 
     removeDocument(model, name, id)
     createDocument(model, name, id)
-    onUpload(id, url, file).then(filename => {
+    onUpload(id, url, file).then(result => {
       this.setState({
         uploading: false
       })
-      updateDocumentName(model, name, id, filename)
+      if (result.filename) {
+        updateDocumentName(model, name, id, result.filename)
+      } else {
+        this.setState({ errors: result.errorMessage })
+      }
     })
   }
 
@@ -51,13 +55,16 @@ class FileInput extends React.Component {
   render() {
     const filename = (this.state.file && this.state.file.name) || {}
     const doc = get(this.props.form, `${this.props.name}.${this.props.id}`, {})
-    const errors = this.state.errors
     const fileField = `file_${this.props.id}`
     return (
       <div key={fileField} className="callout-no-margin">
+        {this.state.errors &&
+          <div className="validation-message">
+            <span>
+              There was an error uploading the file: {this.state.errors}
+            </span>
+          </div>}
         <div>
-          {errors && <span className="validation-message">There was an error uploading the file</span>}
-
           {isEmpty(doc) &&
             !this.state.uploading &&
             !this.state.file &&

@@ -1,5 +1,7 @@
 import React from 'react'
+
 import PageAlert from '@gov.au/page-alerts'
+import Icon from 'shared/Icon'
 
 import format from 'date-fns/format'
 
@@ -32,6 +34,25 @@ const BriefResponseSubmitted = props =>
       not unusual for this to happen after a contract has been awarded to the successful seller.
     </p>
     <p>Best of luck!</p>
+
+    <span style={{ display: 'none' }}>
+      <hr />
+      <h4>How did this compare to the last time you responded to a brief?</h4>
+      <button className="uikit-btn">
+        <Icon value="smile-o" color="#000000" size={32} />
+        <span style={{ marginTop: '-18px', display: 'inline-block', verticalAlign: 'middle' }}>&nbsp;Easy</span>
+      </button>
+      &nbsp;&nbsp;
+      <button className="uikit-btn">
+        <Icon value="meh-o" color="#000000" size={32} />
+        <span style={{ marginTop: '-18px', display: 'inline-block', verticalAlign: 'middle' }}>&nbsp;OK</span>
+      </button>
+      &nbsp;&nbsp;
+      <button className="uikit-btn">
+        <Icon value="frown-o" color="#000000" size={32} />
+        <span style={{ marginTop: '-18px', display: 'inline-block', verticalAlign: 'middle' }}>&nbsp;Hard</span>
+      </button>
+    </span>
   </span>
 
 export default BriefResponseSubmitted

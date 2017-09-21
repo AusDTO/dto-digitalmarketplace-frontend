@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
 import range from 'lodash/range'
-import dmapi from '../../../services/apiClient'
+import dmapi from 'marketplace/services/apiClient'
 
 import FileInput from './FileInput'
 
@@ -49,15 +49,12 @@ const uploadDocument = (id, url, file) => () => {
     url: `${url}/${id}`,
     method: 'POST',
     data
-  }).then(response => {
-    if (response.error) {
-      const error = new Error(response.statusText)
-      error.response = response
-      throw error
-    } else {
-      return response.data.filename
-    }
-  })
+  }).then(
+    response =>
+      response.error
+        ? { errorMessage: response.data.errorMessage || response.statusText }
+        : { filename: response.data.filename }
+  )
 }
 
 const mapStateToProps = (state, ownProps) => ({

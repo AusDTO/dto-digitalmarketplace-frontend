@@ -10,16 +10,15 @@ test('Test suite for BriefPage page', () => {
       name: 'Jeff Labowski',
       email_address: 'e@mail.com'
     },
-    loadCompleteSuccess: true,
-    loadRegistrationData: () => true
+    loadBriefSuccess: true
   }
 
-  it('BriefPage renders without errors', () => {
+  test('BriefPage renders without errors', () => {
     const wrapper = shallow(<BriefPage {...state} />)
     expect(wrapper).toExist()
   })
 
-  it('Because snaphots', () => {
+  test('Because snaphots', () => {
     const component = renderer.create(<BriefPage {...state} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()

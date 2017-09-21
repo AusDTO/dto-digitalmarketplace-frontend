@@ -1,6 +1,8 @@
 import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 
+import PrivateRoute from 'marketplace/components/PrivateRoute'
+
 import SignupPage from './pages/SignupPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import CreateUserPage from './pages/CreateUserPage'
@@ -16,7 +18,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/signup`} component={SignupPage} />
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
     <Route path={`${rootPath}/brief/:briefId`} component={BriefPage} />
-    <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
+    <PrivateRoute path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route component={NotFound} />
   </Switch>
