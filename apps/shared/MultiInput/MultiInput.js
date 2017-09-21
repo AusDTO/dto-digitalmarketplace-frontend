@@ -12,22 +12,20 @@ class MultiInput extends React.Component {
   static defaultProps = {
     onChange: () => {},
     onBlur: () => {},
-    onFocus: () => {},
+    onFocus: () => {}
   }
 
   constructor(props) {
-    super(props);
+    super(props)
 
-    let inputs;
+    let inputs
     if (props.rows && props.rows.length) {
       inputs = props.rows.map((row, i) => this.createRow(i, row))
     }
 
     this.state = {
-      inputs: inputs || Array
-        .from({ length: props.defaultRows || 1 })
-        .map((_, i) => this.createRow(i))
-    };
+      inputs: inputs || Array.from({ length: props.defaultRows || 1 }).map((_, i) => this.createRow(i))
+    }
   }
 
   /**
@@ -46,62 +44,68 @@ class MultiInput extends React.Component {
    * @return {array}
    */
   getValues() {
-    return this.state.inputs.map(input => input.value).filter(i => i);
+    return this.state.inputs.map(input => input.value).filter(i => i)
   }
 
   onChange(id: number, e: ReactEvent) {
-    const { onChange } = this.props;
+    const { onChange } = this.props
 
     // @see https://fb.me/react-event-pooling
-    e.persist();
+    e.persist()
 
-    this.setState((previousState) => {
-      let newInputs = previousState.inputs.map(input => {
-        if (input.id === id) {
-          input.value = e.target.value;
-        }
+    this.setState(
+      previousState => {
+        let newInputs = previousState.inputs.map(input => {
+          if (input.id === id) {
+            input.value = e.target.value
+          }
 
-        return input;
-      });
+          return input
+        })
 
-      return { inputs: newInputs };
-    }, () => onChange(this.getValues()));
-
+        return { inputs: newInputs }
+      },
+      () => onChange(this.getValues())
+    )
   }
 
   addRow(e: ReactEvent) {
-    e.preventDefault();
-    const { inputs } = this.state;
-    const lastRow = inputs[inputs.length - 1];
+    e.preventDefault()
+    const { inputs } = this.state
+    const lastRow = inputs[inputs.length - 1]
 
     this.setState({
       inputs: inputs.concat(this.createRow(lastRow.id + 1))
-    });
-
+    })
   }
 
   removeRow(id: number, e: ReactEvent) {
     e.preventDefault()
-    const { inputs } = this.state;
-    const { onChange } = this.props;
+    const { inputs } = this.state
+    const { onChange } = this.props
 
-    this.setState({
-      inputs: inputs.filter(r => r.id !== id)
-    }, () => onChange(this.getValues()));
+    this.setState(
+      {
+        inputs: inputs.filter(r => r.id !== id)
+      },
+      () => onChange(this.getValues())
+    )
   }
 
   render() {
-    const { inputs } = this.state;
-    const { name, onBlur, onFocus, className = '', describedby, hint } = this.props;
+    const { inputs } = this.state
+    const { name, onBlur, onFocus, className = '', describedby, hint } = this.props
     return (
       <div>
         {inputs.map(({ id, value }, i) => {
-          let fieldName = `${name}[]`;
+          let fieldName = `${name}[]`
           let fieldId = `${name}-${i}`
           return (
             <div key={id} className="list-entry row">
               <div className="col-xs-12 col-sm-9">
-                <label htmlFor={fieldId} className="text-box-number-label">{i + 1}.</label>
+                <label htmlFor={fieldId} className="text-box-number-label">
+                  {i + 1}.
+                </label>
                 <input
                   type="text"
                   name={fieldName}
@@ -112,13 +116,13 @@ class MultiInput extends React.Component {
                   className={`text-box ${className}`}
                   aria-describedby={hint && describedby}
                   defaultValue={value}
-                  className='uikit-text-input uikit-text-input--block multiInput' />
+                  className="uikit-text-input uikit-text-input--block multiInput"
+                />
               </div>
-              {i > 0 && (
+              {i > 0 &&
                 <a href="#" onClick={this.removeRow.bind(this, id)}>
                   remove <span className="visuallyhidden">number {i + 1}</span>
-                </a>
-              )}
+                </a>}
             </div>
           )
         })}
@@ -130,4 +134,4 @@ class MultiInput extends React.Component {
   }
 }
 
-export default MultiInput;
+export default MultiInput

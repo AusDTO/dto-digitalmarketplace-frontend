@@ -1,2 +1,2 @@
-import StepNav from './StepNav';
-export default StepNav;
+import StepNav from './StepNav'
+export default StepNav

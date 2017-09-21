@@ -14,7 +14,7 @@ export const Routes = () =>
     <Route exact path={rootPath} component={HomePage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/logout`} component={LogoutPage} />
-    <Route path={`${rootPath}/sellers`} component={EditProfilePage} />
+    <Route path={`${rootPath}/edit-profile`} component={EditProfilePage} />
     <Route component={NotFound} />
   </Switch>
 

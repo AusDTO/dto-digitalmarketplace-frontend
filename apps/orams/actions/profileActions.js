@@ -10,7 +10,7 @@ export const setErrorMessage = errorMessage => ({
   errorMessage
 })
 
-export const loadProfile = (form) => dispatch => {
+export const loadProfile = form => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: '/profile' }).then(response => {
     if (response.error) {

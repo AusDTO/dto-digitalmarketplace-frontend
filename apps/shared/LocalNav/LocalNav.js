@@ -1,11 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 class LocalNav extends React.Component {
-
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.state = {
       open: false
     }
@@ -17,24 +16,24 @@ class LocalNav extends React.Component {
   }
 
   render() {
-    const { children, className, navClassName, id, text } = this.props;
-    const { open } = this.state;
+    const { children, className, navClassName, id, text } = this.props
+    const { open } = this.state
     return (
       <aside className={className} id={id}>
-      <button aria-controls="local-nav" className="local-nav-toggle" aria-expanded={open} onClick={this.toggle}>
+        <button aria-controls="local-nav" className="local-nav-toggle" aria-expanded={open} onClick={this.toggle}>
           {text}
-      </button>
+        </button>
         <nav className={`local-nav ${navClassName}`} aria-label="main navigation" aria-expanded={open} open={open}>
           <ul>
             {children}
           </ul>
         </nav>
       </aside>
-    );
+    )
   }
 }
 
 LocalNav.defaultProps = {
-  text: 'Menu' 
+  text: 'Menu'
 }
-export default LocalNav;
+export default LocalNav

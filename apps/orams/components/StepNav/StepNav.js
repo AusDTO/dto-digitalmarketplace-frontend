@@ -1,28 +1,29 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import './StepNav.scss';
+import './StepNav.scss'
 
 class StepNav extends React.Component {
-
   render() {
-    const { buttonText } = this.props;
+    const { buttonText } = this.props
 
     return (
       <div className="row">
         <div className="col-xs-12 col-sm-12 col-md-9">
-            <button type="submit" className="uikit-btn">{buttonText || 'Update profile'}</button>
+          <button type="submit" className="uikit-btn">
+            {buttonText || 'Update profile'}
+          </button>
         </div>
-    </div>
+      </div>
     )
   }
 }
 
 StepNav.propTypes = {
-  buttonText: PropTypes.string,
-};
+  buttonText: PropTypes.string
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -30,4 +31,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(StepNav);
+export default connect(mapStateToProps)(StepNav)

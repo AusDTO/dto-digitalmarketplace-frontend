@@ -1,2 +1,2 @@
-import LocalNav from './LocalNav';
-export default LocalNav;
+import LocalNav from './LocalNav'
+export default LocalNav
