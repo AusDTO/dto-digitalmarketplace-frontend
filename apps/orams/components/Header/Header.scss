@@ -1,6 +1,6 @@
 @import "../../main.scss";
 
-.marketplaceHeader {
+.oramsHeader {
   position: relative;
   margin-bottom: 0px;
   background-color: #18788d;
@@ -8,11 +8,11 @@
   padding: 1.2em 0px;
 }
 
-.marketplaceHeader .marketplaceLogo {
+.oramsHeader .oramsLogo {
   float: left;
 }
 
-.marketplaceHeader .logo {
+.oramsHeader .logo {
   padding-bottom: 0px;
   color: rgb(255, 255, 255);
   font-size: 1.625rem;
@@ -24,7 +24,7 @@
   margin-top: 1.6em;
 }
 
-.marketplaceHeader a:focus {
+.oramsHeader a:focus {
   background-color: white;
   color: #000000;
   -webkit-box-shadow: 0 0 0 3px #ff8629;
@@ -33,13 +33,13 @@
   outline: none;
 }
 
-.marketplaceHeader a:hover {
+.oramsHeader a:hover {
   background-color: white;
   color: #000000;
   outline: none;
 }
 
-.marketplaceHeader a {
+.oramsHeader a {
   color: rgb(255, 255, 255);
   transition-timing-function: ease-in-out;
   transition-duration: 0.1s;
@@ -63,27 +63,27 @@
   margin-left: 10px;
 }
 
-.marketplaceHeader .userNav {
+.oramsHeader .userNav {
   display: block;
   float: right;
   margin-left: 1.6em;
 }
 
-.marketplaceHeader .inlineLinks {
+.oramsHeader .inlineLinks {
   margin-bottom: 0px;
   padding: 0.1em 0px;
 }
 
-.marketplaceHeader .inlineLinks li:not(:last-child) {
+.oramsHeader .inlineLinks li:not(:last-child) {
   margin-right: 1.3em;
 }
 
-.marketplaceHeader .inlineLinks li {
+.oramsHeader .inlineLinks li {
   display: inline-block;
   margin: 0px;
 }
 
-.marketplaceHeader .inlineLinks li a {
+.oramsHeader .inlineLinks li a {
   padding-bottom: 0.06em;
 }
 
@@ -92,7 +92,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .marketplaceHeader {
+  .oramsHeader {
       padding-bottom: 1.2em;
   }
 }

@@ -10,6 +10,8 @@ import configureStore from './store'
 import RootContainer from './routes'
 import { fetchAuth } from './actions/appActions'
 
+import './main.scss'
+
 const store = configureStore()
 store.dispatch(fetchAuth())
 
@@ -21,9 +23,9 @@ const App = () =>
           <Banner />
           <Header />
         </header>
-        <div id="content">
+        <main id="content">
           <RootContainer />
-        </div>
+        </main>
         <Footer />
       </div>
     </BrowserRouter>
