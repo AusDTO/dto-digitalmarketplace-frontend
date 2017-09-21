@@ -10,13 +10,13 @@
  *   });
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_PROFILE_STATE } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, CLEAR_ERROR_MESSAGES, SET_AUTH } from 'orams/constants/constants'
 
 // The initial application state
 const initialState = {
   currentlySending: false,
   errorMessage: null,
-  name: ''
+  loggedIn: false
 }
 
 const appReducer = (state = initialState, action) => {
@@ -33,10 +33,17 @@ const appReducer = (state = initialState, action) => {
         errorMessage: action.errorMessage
       }
 
-    case SET_PROFILE_STATE:
+    case CLEAR_ERROR_MESSAGES:
       return {
         ...state,
-        name: action.name
+        errorMessage: null
+      }
+
+    case SET_AUTH:
+      return {
+        ...state,
+        loggedIn: action.newState.isAuthenticated,
+        userType: action.newState.userType
       }
 
     default:

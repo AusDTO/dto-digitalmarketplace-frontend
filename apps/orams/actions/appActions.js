@@ -23,7 +23,9 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, CLEAR_ERROR_MESSAGES } from 'orams/constants/constants'
+import { LOGIN_FAILED, GENERAL_ERROR } from 'orams/constants/messageConstants'
+import dmapi from 'orams/services/apiClient'
 
 /**
  * Sets the requestSending state, which displays a loading indicator during requests
@@ -36,3 +38,47 @@ export const setErrorMessage = errorMessage => ({
   type: SET_ERROR_MESSAGE,
   errorMessage
 })
+
+export const clearErrorMessages = () => ({ type: CLEAR_ERROR_MESSAGES })
+
+export function setAuthState(newState) {
+  return { type: SET_AUTH, newState }
+}
+
+export const fetchAuth = () => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: '/ping' }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(setAuthState(response.data))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const login = data => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: '/login',
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(LOGIN_FAILED))
+    } else {
+      dispatch(clearErrorMessages())
+      dispatch(setAuthState(response.data))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const logout = () => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: '/logout' }).then(() => {
+    dispatch(clearErrorMessages())
+    dispatch(setAuthState({ isAuthenticated: false, userType: '' }))
+    dispatch(sendingRequest(false))
+  })
+}
