@@ -10,7 +10,6 @@ import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import MultiInput from 'shared/form/MultiInput.js'
 import formProps from 'shared/formPropsSelector'
-import StepNav from '../StepNav'
 import { loadProfile } from 'orams/actions/profileActions'
 
 class AwardsForm extends BaseForm {
@@ -26,7 +25,14 @@ class AwardsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute } = this.props
+    const { action, csrf_token, model, form, children, handleSubmit, nextRoute, submitClicked } = this.props
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
     return (
       <Layout>
         <header>
@@ -39,7 +45,7 @@ class AwardsForm extends BaseForm {
           </p>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model} />
+          <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
             action={action}
@@ -47,8 +53,7 @@ class AwardsForm extends BaseForm {
             id="Awards__create"
             valid={form.valid}
             component={SubmitForm}
-            onCustomSubmit={onSubmit}
-            onSubmitFailed={onSubmitFailed}
+            onSubmit={data => handleSubmit(data)}
           >
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
 
@@ -84,7 +89,9 @@ class AwardsForm extends BaseForm {
 
             {children}
 
-            <StepNav buttonText="Update profile" to={nextRoute} />
+            <button type="submit" className="uikit-btn">
+              Update profile
+            </button>
           </Form>
         </article>
       </Layout>

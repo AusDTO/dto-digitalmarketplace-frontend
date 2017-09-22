@@ -4,15 +4,12 @@ import { connect } from 'react-redux'
 import { Form, Control } from 'react-redux-form'
 
 import Layout from 'shared/Layout'
-
 import BaseForm from 'shared/form/BaseForm'
 import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import StatefulError from 'shared/form/StatefulError'
 import { required } from 'shared/validators'
-
 import formProps from 'shared/formPropsSelector'
-import StepNav from 'orams/components/StepNav'
 import { loadProfile } from 'orams/actions/profileActions'
 
 class BusinessInfoForm extends BaseForm {
@@ -28,7 +25,15 @@ class BusinessInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute } = this.props
+    const { action, csrf_token, model, form, children, handleSubmit, nextRoute, submitClicked } = this.props
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
     return (
       <Layout>
         <header>
@@ -37,7 +42,7 @@ class BusinessInfoForm extends BaseForm {
           </h1>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model} />
+          <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
             action={action}
@@ -45,8 +50,7 @@ class BusinessInfoForm extends BaseForm {
             id="BusinessDetails__create"
             valid={form.valid}
             component={SubmitForm}
-            onCustomSubmit={onSubmit}
-            onSubmitFailed={onSubmitFailed}
+            onSubmit={data => handleSubmit(data)}
           >
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
 
@@ -80,7 +84,9 @@ class BusinessInfoForm extends BaseForm {
 
             {children}
 
-            <StepNav buttonText="Update Profile" to={nextRoute} />
+            <button type="submit" className="uikit-btn">
+              Update profile
+            </button>
           </Form>
         </article>
       </Layout>

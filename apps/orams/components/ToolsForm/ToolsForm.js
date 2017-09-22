@@ -11,7 +11,6 @@ import ErrorBox from 'shared/form/ErrorBox'
 import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/formPropsSelector'
 import { required } from 'shared/validators'
-import StepNav from '../StepNav'
 import { loadProfile } from 'orams/actions/profileActions'
 
 class ToolsForm extends BaseForm {
@@ -27,7 +26,14 @@ class ToolsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute } = this.props
+    const { action, csrf_token, model, form, children, handleSubmit, nextRoute, submitClicked } = this.props
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
     return (
       <Layout>
         <header>
@@ -37,7 +43,7 @@ class ToolsForm extends BaseForm {
           <p>Enhance your profile and give buyers more ways to find you through keyword search</p>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model} />
+          <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
             action={action}
@@ -45,8 +51,7 @@ class ToolsForm extends BaseForm {
             id="Tools__create"
             valid={form.valid}
             component={SubmitForm}
-            onCustomSubmit={onSubmit}
-            onSubmitFailed={onSubmitFailed}
+            onSubmit={data => handleSubmit(data)}
           >
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
 
@@ -89,7 +94,9 @@ class ToolsForm extends BaseForm {
             />
             {children}
 
-            <StepNav buttonText="Update profile" to={nextRoute} />
+            <button type="submit" className="uikit-btn">
+              Update profile
+            </button>
           </Form>
         </article>
       </Layout>

@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { connect } from 'react-redux'
 import NotFound from 'shared/NotFound'
 import formProps from 'shared/formPropsSelector'
-import { loadProfile } from 'orams/actions/profileActions'
+import { loadProfile, updateProfile } from 'orams/actions/profileActions'
 import BusinessDetailsForm from 'orams/components/BusinessDetailsForm'
 import BusinessInfoForm from 'orams/components/BusinessInfoForm'
 import YourInfoForm from 'orams/components/YourInfoForm'
@@ -19,7 +19,14 @@ class EditProfilePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      submitClicked: null
     }
+  }
+
+  onSubmitClicked = () => {
+    this.setState({
+      submitClicked: new Date().valueOf()
+    })
   }
 
   handleSubmit = model => {
@@ -83,21 +90,17 @@ class EditProfilePage extends Component {
           </LocalNav>
           <article className="col-xs-12 col-sm-8 col-sm-push-1">
             <Switch>
-              <Route exact path={match.url} render={() => <BusinessDetailsForm onSubmit={this.handleSubmit}/>} />
-
+              <Route exact path={match.url} render={() => <BusinessDetailsForm handleSubmit={this.handleSubmit} />} />
               <Route
                 path={`${match.url}/business-info`}
-                render={() => <BusinessInfoForm onSubmit={this.onSubmitClicked} />}
-              />
-
-              <Route path={`${match.url}/your-info`} render={() => <YourInfoForm onSubmit={this.onSubmitClicked} />} />
-
-              <Route path={`${match.url}/tools`} render={() => <ToolsForm onSubmit={this.onSubmitClicked} />} />
-
-              <Route path={`${match.url}/awards`} render={() => <AwardsForm onSubmit={this.onSubmitClicked} />} />
-
-              <Route path={`${match.url}/profile-finish`} render={() => <SubmitStepForm />} />
-
+                render={() => <BusinessInfoForm handleSubmit={this.handleSubmit} />}
+              />} />
+              <Route
+                path={`${match.url}/your-info`}
+                render={() => <YourInfoForm handleSubmit={this.handleSubmit} />}
+              />} />
+              <Route path={`${match.url}/tools`} render={() => <ToolsForm handleSubmit={this.handleSubmit} />} />} />
+              <Route path={`${match.url}/awards`} render={() => <AwardsForm handleSubmit={this.handleSubmit} />} />} />
               <Route component={NotFound} />
             </Switch>
           </article>

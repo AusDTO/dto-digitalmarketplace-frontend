@@ -12,8 +12,8 @@ import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/formPropsSelector'
-import StepNav from '../StepNav'
 import { loadProfile } from 'orams/actions/profileActions'
+
 class YourInfoForm extends BaseForm {
   static propTypes = {
     action: PropTypes.string,
@@ -35,11 +35,18 @@ class YourInfoForm extends BaseForm {
       form,
       buttonText,
       children,
-      onSubmit,
-      onSubmitFailed,
-      nextRoute
+      handleSubmit,
+      nextRoute,
+      submitClicked
     } = this.props
     let title = 'Contact details'
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
 
     return (
       <Layout>
@@ -49,16 +56,15 @@ class YourInfoForm extends BaseForm {
           </h1>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model} />
+          <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
             action={action}
             method="post"
             id="yourinfo"
-            component={SubmitForm}
             valid={form.valid}
-            onCustomSubmit={onSubmit}
-            onSubmitFailed={onSubmitFailed}
+            component={SubmitForm}
+            onSubmit={data => handleSubmit(data)}
           >
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
 
@@ -142,7 +148,9 @@ class YourInfoForm extends BaseForm {
 
             {children}
 
-            <StepNav buttonText={buttonText} to={nextRoute} />
+            <button type="submit" className="uikit-btn">
+              Update profile
+            </button>
           </Form>
         </article>
       </Layout>
