@@ -22,6 +22,7 @@ export const loadBrief = briefId => dispatch => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
+      response.data.loadedAt = new Date().valueOf()
       dispatch(handleBriefInfoSuccess(response))
     }
     dispatch(sendingRequest(false))
