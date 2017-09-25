@@ -1,24 +1,25 @@
+/* eslint-disable react/no-danger */
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import icons from './_getIcons'
 
 const Icon = props => {
-  let { color, size, value, ...more } = props
+  const { color, size, value, ...more } = props
   delete more.className
   delete more.style
 
-  let divStyle = {
+  const divStyle = {
     display: 'inline-block',
     height: size,
     width: size
   }
 
-  let svgStyle = {}
+  const svgStyle = {}
   if (value.includes('filled')) {
     svgStyle.fill = color
   } else if (value.includes('nostroke')) {
-    //do nothing
+    // do nothing
   } else {
     svgStyle.stroke = color
   }

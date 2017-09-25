@@ -17,6 +17,7 @@ const initialState = {
   currentlySending: false,
   errorMessage: null,
   loggedIn: false,
+  supplierCode: null,
   userType: ''
 }
 
@@ -38,7 +39,8 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: action.newState.isAuthenticated,
-        userType: action.newState.userType
+        userType: action.newState.userType,
+        supplierCode: action.newState.supplierCode
       }
     default:
       return state
