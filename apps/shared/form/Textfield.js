@@ -18,6 +18,7 @@ const Textfield = props => {
     maxLength,
     disabled,
     readOnly,
+    defaultValue,
     type
   } = props
   return (
@@ -46,6 +47,7 @@ const Textfield = props => {
         maxLength={maxLength}
         disabled={disabled}
         readOnly={readOnly}
+        defaultValue={defaultValue}
       />
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
     </div>
