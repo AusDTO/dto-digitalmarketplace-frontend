@@ -143,12 +143,13 @@ class CaseStudyForm extends BaseForm {
               }}
             />
 
-            <Textfield
+            <Textarea
                 model={`${model}.roles`}
                 name="roles"
                 id="roles"
                 htmlFor="roles"
                 label="What role did your business play?"
+                controlProps={{ limit: 70 }}
                 description="For example, ran whole project, engaged in discovery activities or responsible for delivery."
                 validators={{ required }}
                 messages={{
