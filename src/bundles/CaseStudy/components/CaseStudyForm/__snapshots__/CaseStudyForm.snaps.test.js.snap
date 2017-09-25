@@ -148,22 +148,24 @@ exports[`CaseStudyForm renders 1`] = `
         >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
+        <div>
+          <textarea
+            aria-describedby="roles-hint"
+            className="under-100"
+            defaultValue={undefined}
+            id="roles"
+            name="roles"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            aria-live="polite"
+            className="word-count-counter"
+          >
+            70 words remaining
+          </span>
+        </div>
       </div>
       <div
         className="field"
@@ -684,22 +686,24 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
+        <div>
+          <textarea
+            aria-describedby="roles-hint"
+            className="under-100"
+            defaultValue={undefined}
+            id="roles"
+            name="roles"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            aria-live="polite"
+            className="word-count-counter"
+          >
+            70 words remaining
+          </span>
+        </div>
       </div>
       <div
         className="field"
@@ -1372,22 +1376,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
             You must specify the your business' role
           </span>
         </a>
-        <input
-          aria-describedby="roles-hint"
-          className="invalid"
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
+        <div>
+          <textarea
+            aria-describedby="roles-hint"
+            className="invalid under-100"
+            defaultValue={undefined}
+            id="roles"
+            name="roles"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            aria-live="polite"
+            className="word-count-counter"
+          >
+            70 words remaining
+          </span>
+        </div>
       </div>
       <div
         className="field"
@@ -2005,22 +2011,24 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
+        <div>
+          <textarea
+            aria-describedby="roles-hint"
+            className="under-100"
+            defaultValue={undefined}
+            id="roles"
+            name="roles"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            aria-live="polite"
+            className="word-count-counter"
+          >
+            70 words remaining
+          </span>
+        </div>
       </div>
       <div
         className="field"
@@ -2541,22 +2549,24 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
-        <input
-          aria-describedby="roles-hint"
-          className=""
-          disabled={false}
-          id="roles"
-          maxLength={undefined}
-          name="roles"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
+        <div>
+          <textarea
+            aria-describedby="roles-hint"
+            className="under-100"
+            defaultValue={undefined}
+            id="roles"
+            name="roles"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+          />
+          <span
+            aria-live="polite"
+            className="word-count-counter"
+          >
+            70 words remaining
+          </span>
+        </div>
       </div>
       <div
         className="field"
