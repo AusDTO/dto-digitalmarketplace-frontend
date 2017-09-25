@@ -9,7 +9,7 @@ import BaseForm from 'shared/form/BaseForm'
 import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textarea from 'shared/form/Textarea'
-import formProps from 'shared/formPropsSelector'
+import formProps from 'shared/form/formPropsSelector'
 import { required } from 'shared/validators'
 import { loadProfile } from 'orams/actions/profileActions'
 

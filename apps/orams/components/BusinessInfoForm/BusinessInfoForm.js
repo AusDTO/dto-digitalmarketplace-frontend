@@ -9,7 +9,7 @@ import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import StatefulError from 'shared/form/StatefulError'
 import { required } from 'shared/validators'
-import formProps from 'shared/formPropsSelector'
+import formProps from 'shared/form/formPropsSelector'
 import { loadProfile } from 'orams/actions/profileActions'
 
 class BusinessInfoForm extends BaseForm {
@@ -46,7 +46,6 @@ class BusinessInfoForm extends BaseForm {
           <Form
             model={model}
             action={action}
-            method="post"
             id="BusinessDetails__create"
             valid={form.valid}
             component={SubmitForm}

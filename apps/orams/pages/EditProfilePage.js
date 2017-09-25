@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import NotFound from 'shared/NotFound'
-import formProps from 'shared/formPropsSelector'
+import formProps from 'shared/form/formPropsSelector'
 import { loadProfile, updateProfile } from 'orams/actions/profileActions'
 import BusinessDetailsForm from 'orams/components/BusinessDetailsForm'
 import BusinessInfoForm from 'orams/components/BusinessInfoForm'
@@ -41,13 +41,13 @@ class EditProfilePage extends Component {
       pattern: '/orams/edit-profile',
       formKey: 'businessDetailsForm'
     },
-    {
-      id: 'business',
-      label: 'Business details',
-      component: BusinessInfoForm,
-      pattern: '/orams/edit-profile/business-info',
-      formKey: 'businessInfoForm'
-    },
+    // {
+    //   id: 'business',
+    //   label: 'Business details',
+    //   component: BusinessInfoForm,
+    //   pattern: '/orams/edit-profile/business-info',
+    //   formKey: 'businessInfoForm'
+    // },
     {
       id: 'info',
       label: 'Contacts',
@@ -55,14 +55,14 @@ class EditProfilePage extends Component {
       pattern: '/orams/edit-profile/your-info',
       formKey: 'yourInfoForm'
     },
-    { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/orams/edit-profile/tools', formKey: 'toolsForm' },
-    {
-      id: 'awards',
-      label: 'Recognition',
-      component: AwardsForm,
-      pattern: '/orams/edit-profile/awards',
-      formKey: 'awardsForm'
-    }
+    // { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/orams/edit-profile/tools', formKey: 'toolsForm' },
+    // {
+    //   id: 'awards',
+    //   label: 'Recognition',
+    //   component: AwardsForm,
+    //   pattern: '/orams/edit-profile/awards',
+    //   formKey: 'awardsForm'
+    // }
   ]
 
   render() {

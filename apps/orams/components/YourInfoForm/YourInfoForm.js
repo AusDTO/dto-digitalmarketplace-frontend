@@ -11,7 +11,7 @@ import BaseForm from 'shared/form/BaseForm'
 import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
-import formProps from 'shared/formPropsSelector'
+import formProps from 'shared/form/formPropsSelector'
 import { loadProfile } from 'orams/actions/profileActions'
 
 class YourInfoForm extends BaseForm {
@@ -33,11 +33,12 @@ class YourInfoForm extends BaseForm {
       model,
       supplierCode,
       form,
-      buttonText,
       children,
       handleSubmit,
       nextRoute,
-      submitClicked
+      submitClicked,
+      userName, 
+      userEmail
     } = this.props
     let title = 'Contact details'
     let hasFocused = false
@@ -47,7 +48,6 @@ class YourInfoForm extends BaseForm {
         e.focus()
       }
     }
-
     return (
       <Layout>
         <header>
@@ -60,7 +60,6 @@ class YourInfoForm extends BaseForm {
           <Form
             model={model}
             action={action}
-            method="post"
             id="yourinfo"
             valid={form.valid}
             component={SubmitForm}
@@ -69,7 +68,7 @@ class YourInfoForm extends BaseForm {
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
 
             <Textfield
-              model={`${model}.contact_name`}
+              model={`${model}.contacts.0.name`}
               name="contact_name"
               id="contact_name"
               htmlFor="contact_name"
@@ -79,10 +78,11 @@ class YourInfoForm extends BaseForm {
               messages={{
                 required: 'Business contact is required'
               }}
+              default={userName}
             />
 
             <Textfield
-              model={`${model}.contact_email`}
+              model={`${model}.contacts.0.email`}
               name="contact_email"
               id="contact_email"
               htmlFor="contact_email"
@@ -92,10 +92,11 @@ class YourInfoForm extends BaseForm {
                 required: 'Business contact email is required',
                 validEmail: 'Business contact email must be a valid email address'
               }}
+              default={userEmail}
             />
 
             <Textfield
-              model={`${model}.contact_phone`}
+              model={`${model}.contacts.0.phone`}
               name="contact_phone"
               id="contact_phone"
               htmlFor="contact_phone"
@@ -159,13 +160,12 @@ class YourInfoForm extends BaseForm {
 }
 
 YourInfoForm.defaultProps = {
-  buttonText: 'Update profile',
   title: 'Add your contact details'
 }
 
 const mapStateToProps = state => {
   return {
-    ...formProps(state, 'yourInfoForm')
+    ...formProps(state, 'yourInfoForm'),
   }
 }
 

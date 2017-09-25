@@ -9,7 +9,7 @@ import BaseForm from 'shared/form/BaseForm'
 import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import MultiInput from 'shared/form/MultiInput.js'
-import formProps from 'shared/formPropsSelector'
+import formProps from 'shared/form/formPropsSelector'
 import { loadProfile } from 'orams/actions/profileActions'
 
 class AwardsForm extends BaseForm {

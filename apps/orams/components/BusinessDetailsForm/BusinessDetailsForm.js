@@ -14,7 +14,7 @@ import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
-import formProps from 'shared/formPropsSelector'
+import formProps from 'shared/form/formPropsSelector'
 import { getNextKey } from 'shared/utils/helpers'
 import { loadProfile } from 'orams/actions/profileActions'
 
@@ -76,7 +76,6 @@ class BusinessDetailsForm extends BaseForm {
           <Form
             model={model}
             action={action}
-            method="post"
             id="BusinessDetails__create"
             valid={form.valid}
             component={SubmitForm}
@@ -282,13 +281,13 @@ class BusinessDetailsForm extends BaseForm {
                       </div>
                     )
                   })}
-              {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
+              {/*{(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
                 <div className="footer">More offices?</div>}
               <p>
                 <a href="#" onClick={this.onAdd.bind(this)}>
                   Add another address
                 </a>
-              </p>
+              </p>*/}
             </div>
 
             {children}

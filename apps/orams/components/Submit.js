@@ -8,7 +8,7 @@ import StatefulError from 'shared/form/StatefulError'
 import { Form, Control } from 'react-redux-form'
 
 import { required } from 'shared/validators'
-import formProps from 'shared/formPropsSelector'
+import formProps from 'shared/form/formPropsSelector'
 
 const agreementStyle = {
   width: '100%',
