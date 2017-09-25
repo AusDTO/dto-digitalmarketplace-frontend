@@ -97,7 +97,7 @@ BriefPage.propTypes = {
 const mapResetStateToProps = state => ({
   ...formProps(state, 'briefResponseForm'),
   brief: state.brief.brief,
-  supplierCode: state.app.supplierCode,
+  app: state.app,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefResponseSuccess: state.brief.briefResponseSuccess,
   currentlySending: state.app.currentlySending

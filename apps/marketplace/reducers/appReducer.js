@@ -18,6 +18,7 @@ const initialState = {
   errorMessage: null,
   loggedIn: false,
   supplierCode: null,
+  emailAddress: null,
   userType: ''
 }
 
@@ -40,7 +41,8 @@ const appReducer = (state = initialState, action) => {
         ...state,
         loggedIn: action.newState.isAuthenticated,
         userType: action.newState.userType,
-        supplierCode: action.newState.supplierCode
+        supplierCode: action.newState.supplierCode,
+        emailAddress: action.newState.emailAddress
       }
     default:
       return state
