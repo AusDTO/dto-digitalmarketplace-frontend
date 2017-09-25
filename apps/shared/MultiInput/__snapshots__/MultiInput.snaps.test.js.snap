@@ -17,7 +17,7 @@ exports[`MultiInput with 4 default rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue=""
         id="test-0"
         name="test[]"
@@ -43,7 +43,7 @@ exports[`MultiInput with 4 default rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue=""
         id="test-1"
         name="test[]"
@@ -53,10 +53,9 @@ exports[`MultiInput with 4 default rows 1`] = `
         type="text"
       />
     </div>
-    <button
-      className="button-secondary col-xs-12 col-sm-3"
+    <a
+      href="#"
       onClick={[Function]}
-      type="button"
     >
       remove 
       <span
@@ -65,7 +64,7 @@ exports[`MultiInput with 4 default rows 1`] = `
         number 
         2
       </span>
-    </button>
+    </a>
   </div>
   <div
     className="list-entry row"
@@ -82,7 +81,7 @@ exports[`MultiInput with 4 default rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue=""
         id="test-2"
         name="test[]"
@@ -92,10 +91,9 @@ exports[`MultiInput with 4 default rows 1`] = `
         type="text"
       />
     </div>
-    <button
-      className="button-secondary col-xs-12 col-sm-3"
+    <a
+      href="#"
       onClick={[Function]}
-      type="button"
     >
       remove 
       <span
@@ -104,7 +102,7 @@ exports[`MultiInput with 4 default rows 1`] = `
         number 
         3
       </span>
-    </button>
+    </a>
   </div>
   <div
     className="list-entry row"
@@ -121,7 +119,7 @@ exports[`MultiInput with 4 default rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue=""
         id="test-3"
         name="test[]"
@@ -131,10 +129,9 @@ exports[`MultiInput with 4 default rows 1`] = `
         type="text"
       />
     </div>
-    <button
-      className="button-secondary col-xs-12 col-sm-3"
+    <a
+      href="#"
       onClick={[Function]}
-      type="button"
     >
       remove 
       <span
@@ -143,15 +140,14 @@ exports[`MultiInput with 4 default rows 1`] = `
         number 
         4
       </span>
-    </button>
+    </a>
   </div>
-  <button
-    className="button-secondary"
+  <a
+    href="#"
     onClick={[Function]}
-    type="button"
   >
     Add another row
-  </button>
+  </a>
 </div>
 `;
 
@@ -172,7 +168,7 @@ exports[`MultiInput with 4 rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue="One"
         id="test-0"
         name="test[]"
@@ -198,7 +194,7 @@ exports[`MultiInput with 4 rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue="Two"
         id="test-1"
         name="test[]"
@@ -208,10 +204,9 @@ exports[`MultiInput with 4 rows 1`] = `
         type="text"
       />
     </div>
-    <button
-      className="button-secondary col-xs-12 col-sm-3"
+    <a
+      href="#"
       onClick={[Function]}
-      type="button"
     >
       remove 
       <span
@@ -220,7 +215,7 @@ exports[`MultiInput with 4 rows 1`] = `
         number 
         2
       </span>
-    </button>
+    </a>
   </div>
   <div
     className="list-entry row"
@@ -237,7 +232,7 @@ exports[`MultiInput with 4 rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue="Three"
         id="test-2"
         name="test[]"
@@ -247,10 +242,9 @@ exports[`MultiInput with 4 rows 1`] = `
         type="text"
       />
     </div>
-    <button
-      className="button-secondary col-xs-12 col-sm-3"
+    <a
+      href="#"
       onClick={[Function]}
-      type="button"
     >
       remove 
       <span
@@ -259,7 +253,7 @@ exports[`MultiInput with 4 rows 1`] = `
         number 
         3
       </span>
-    </button>
+    </a>
   </div>
   <div
     className="list-entry row"
@@ -276,7 +270,7 @@ exports[`MultiInput with 4 rows 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue="Four"
         id="test-3"
         name="test[]"
@@ -286,10 +280,9 @@ exports[`MultiInput with 4 rows 1`] = `
         type="text"
       />
     </div>
-    <button
-      className="button-secondary col-xs-12 col-sm-3"
+    <a
+      href="#"
       onClick={[Function]}
-      type="button"
     >
       remove 
       <span
@@ -298,15 +291,14 @@ exports[`MultiInput with 4 rows 1`] = `
         number 
         4
       </span>
-    </button>
+    </a>
   </div>
-  <button
-    className="button-secondary"
+  <a
+    href="#"
     onClick={[Function]}
-    type="button"
   >
     Add another row
-  </button>
+  </a>
 </div>
 `;
 
@@ -327,7 +319,7 @@ exports[`MultiInput with no props 1`] = `
       </label>
       <input
         aria-describedby={undefined}
-        className="text-box "
+        className="uikit-text-input uikit-text-input--block multiInput"
         defaultValue=""
         id="test-0"
         name="test[]"
@@ -338,12 +330,11 @@ exports[`MultiInput with no props 1`] = `
       />
     </div>
   </div>
-  <button
-    className="button-secondary"
+  <a
+    href="#"
     onClick={[Function]}
-    type="button"
   >
     Add another row
-  </button>
+  </a>
 </div>
 `;
