@@ -12,8 +12,9 @@ const BriefResponseSubmitted = props =>
     </PageAlert>
     <h1>What happens next?</h1>
     <p>
-      After the opportunity closes <b>{format(new Date(props.brief.applicationsClosedAt), '[on] MMMM Do, YYYY')}</b> the
-      buyer will shortlist a number of sellers and get in touch with next steps to evaluate further.
+      After the opportunity closes{' '}
+      <b>{props.brief && format(new Date(props.brief.applicationsClosedAt), '[on] MMMM Do, YYYY')}</b> the buyer will
+      shortlist a number of sellers and get in touch with next steps to evaluate further.
     </p>
 
     {props.brief &&
