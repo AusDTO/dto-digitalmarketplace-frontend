@@ -10,11 +10,12 @@
  *   });
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, FEEDBACK_SUCCESS } from '../constants/constants'
 
 // The initial application state
 const initialState = {
   currentlySending: false,
+  feedbackSuccess: null,
   errorMessage: null,
   loggedIn: false,
   supplierCode: null,
@@ -24,6 +25,12 @@ const initialState = {
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FEEDBACK_SUCCESS:
+      return {
+        ...state,
+        feedbackSuccess: true
+      }
+
     case SENDING_REQUEST:
       return {
         ...state,

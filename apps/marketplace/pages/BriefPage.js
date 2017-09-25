@@ -7,6 +7,7 @@ import NotFound from 'marketplace/components/shared/NotFound'
 import formProps from 'marketplace/components/shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import { loadBrief, handleBriefResponseSubmit } from 'marketplace/actions/briefActions'
+import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
 
 class BriefPage extends Component {
@@ -27,6 +28,15 @@ class BriefPage extends Component {
   onSubmitClicked = () => {
     this.setState({
       submitClicked: new Date().valueOf()
+    })
+  }
+
+  handleFeedbackSubmit(values) {
+    this.props.handleFeedbackSubmit({
+      timeToComplete: this.state.submitClicked ? this.state.submitClicked - this.props.loadedAt : null,
+      object_id: this.props.brief.id,
+      object_type: 'Brief',
+      ...values
     })
   }
 
@@ -51,9 +61,13 @@ class BriefPage extends Component {
         <Switch>
           <Route
             path={`${match.url}/respond/submitted`}
-            component={BriefResponseSubmitted}
-            setFocus={setFocus}
-            {...this.props}
+            render={() =>
+              <BriefResponseSubmitted
+                setFocus={setFocus}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />}
           />
           <Route
             path={`${match.url}/respond`}
@@ -97,13 +111,16 @@ BriefPage.propTypes = {
 const mapResetStateToProps = state => ({
   ...formProps(state, 'briefResponseForm'),
   brief: state.brief.brief,
+  loadedAt: state.brief.loadedAt,
   app: state.app,
+  supplierCode: state.app.supplierCode,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefResponseSuccess: state.brief.briefResponseSuccess,
   currentlySending: state.app.currentlySending
 })
 
 const mapResetDispatchToProps = dispatch => ({
+  handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
   loadInitialData: briefId => dispatch(loadBrief(briefId))
 })
