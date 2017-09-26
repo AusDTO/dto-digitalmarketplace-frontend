@@ -69,7 +69,7 @@ class YourInfoForm extends BaseForm {
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
 
             <Textfield
-              model={`${model}.contacts.0.name`}
+              model={`${model}.contact_name`}
               name="contact_name"
               id="contact_name"
               htmlFor="contact_name"
@@ -82,7 +82,7 @@ class YourInfoForm extends BaseForm {
             />
 
             <Textfield
-              model={`${model}.contacts.0.email`}
+              model={`${model}.contact_email`}
               name="contact_email"
               id="contact_email"
               htmlFor="contact_email"
@@ -95,7 +95,7 @@ class YourInfoForm extends BaseForm {
             />
 
             <Textfield
-              model={`${model}.contacts.0.phone`}
+              model={`${model}.contact_phone`}
               name="contact_phone"
               id="contact_phone"
               htmlFor="contact_phone"

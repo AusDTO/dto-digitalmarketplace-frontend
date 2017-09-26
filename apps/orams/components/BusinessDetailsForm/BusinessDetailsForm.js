@@ -162,7 +162,7 @@ class BusinessDetailsForm extends BaseForm {
             />
 
             <Textfield
-              model={`${model}.addresses.0.address_line`}
+              model={`${model}.address_address_line`}
               name="address.address_line"
               id="address_line"
               htmlFor="address_line"
@@ -175,7 +175,7 @@ class BusinessDetailsForm extends BaseForm {
             />
 
             <Textfield
-              model={`${model}.addresses.0.suburb`}
+              model={`${model}.address_suburb`}
               name="address.suburb"
               id="suburb"
               htmlFor="suburb"
@@ -186,7 +186,7 @@ class BusinessDetailsForm extends BaseForm {
               validators={{ required }}
             />
             <Textfield
-              model={`${model}.addresses.0.state`}
+              model={`${model}.address_state`}
               name="address.state"
               id="state"
               htmlFor="state"
@@ -197,7 +197,7 @@ class BusinessDetailsForm extends BaseForm {
               validators={{ required }}
             />
             <Textfield
-              model={`${model}.addresses.0.postal_code`}
+              model={`${model}.address_postal_code`}
               name="address.postal_code"
               id="postal_code"
               htmlFor="postal_code"
