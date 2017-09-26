@@ -26,7 +26,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         ...state,
         brief: action.brief,
         loadBriefSuccess: true,
-        loadBriefErrored: false
+        loadBriefErrored: false,
+        loadedAt: new Date().valueOf()
       }
 
     case BRIEF_INFO_HAS_ERRORED:

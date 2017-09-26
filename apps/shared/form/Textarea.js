@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form'
 
+import { limitWords } from 'shared/validators'
 import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
-
-import { limitWords } from '../../validators'
 
 const Textarea = props => {
   const { name, id, label, model, description, showMessagesDuringFocus = false, controlProps = {}, mapProps } = props

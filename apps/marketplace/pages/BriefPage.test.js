@@ -6,6 +6,8 @@ import { Provider } from 'react-redux'
 import configureStore from '../store'
 import BriefPage from './BriefPage'
 
+jest.mock('shared/Icon/_getIcons')
+
 describe('Test suite for BriefPage component', () => {
   const state = {}
 

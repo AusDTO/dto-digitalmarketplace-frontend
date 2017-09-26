@@ -4,6 +4,8 @@ import expect from 'expect'
 import { shallow } from 'enzyme'
 import { CreateUserPage } from './CreateUserPage'
 
+jest.mock('shared/Icon/_getIcons')
+
 test('Test suite for CreateUserPage page', () => {
   const state = {
     userRegistrationDetails: {
