@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -25,7 +26,7 @@ class AwardsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, children, handleSubmit, nextRoute, submitClicked } = this.props
+    const { action, csrf_token, model, form, children, handleSubmit, submitClicked } = this.props
     let hasFocused = false
     const setFocus = e => {
       if (!hasFocused) {

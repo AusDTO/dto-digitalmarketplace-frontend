@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { createElement } from 'react'
 // will add fns to this file over time
 /* eslint-disable import/prefer-default-export */

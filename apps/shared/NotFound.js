@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './main.scss'
+
 const NotFound = () =>
   <div className={styles.wrapper}>
     <div className="error-page">

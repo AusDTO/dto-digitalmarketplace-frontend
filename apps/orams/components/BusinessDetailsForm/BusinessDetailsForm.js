@@ -1,9 +1,9 @@
+/* eslint-disable */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Form, actions } from 'react-redux-form'
-import isEmpty from 'lodash/isEmpty'
-import isNumber from 'lodash/isNumber'
+import { Form } from 'react-redux-form'
 import PageAlert from '@gov.au/page-alerts'
 
 import { loadProfile } from 'orams/actions/profileActions'
@@ -11,12 +11,10 @@ import { loadProfile } from 'orams/actions/profileActions'
 import { required, limitNumbers, validLinks, validABN } from 'shared/validators'
 import Layout from 'shared/Layout'
 import BaseForm from 'shared/form/BaseForm'
-import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { getNextKey } from 'shared/utils/helpers'
 import LoadingButton from 'shared/LoadingButton/LoadingButton'
 
 import './BusinessDetailsForm.scss'
@@ -24,8 +22,7 @@ import './BusinessDetailsForm.scss'
 class BusinessDetailsForm extends BaseForm {
   static propTypes = {
     action: PropTypes.string,
-    csrf_token: PropTypes.string,
-    form: PropTypes.object.isRequired
+    csrf_token: PropTypes.string
   }
 
   componentDidMount() {
@@ -50,15 +47,12 @@ class BusinessDetailsForm extends BaseForm {
       action,
       csrf_token,
       model,
-      form,
-      buttonText,
       children,
       handleSubmit,
       businessDetailsForm,
       profileUpdated,
       currentlySending
     } = this.props
-    let title = 'Check your business details'
     let hasFocused = false
     const setFocus = e => {
       if (!hasFocused) {
@@ -71,7 +65,7 @@ class BusinessDetailsForm extends BaseForm {
       <Layout>
         <header>
           <h1 className="uikit-display-5" tabIndex="-1">
-            {title}
+            Check your business details
           </h1>
         </header>
         <article role="main">
@@ -302,11 +296,6 @@ class BusinessDetailsForm extends BaseForm {
       </Layout>
     )
   }
-}
-
-BusinessDetailsForm.defaultProps = {
-  buttonText: 'Update profile',
-  title: 'Tell us about your business'
 }
 
 const mapStateToProps = state => {
