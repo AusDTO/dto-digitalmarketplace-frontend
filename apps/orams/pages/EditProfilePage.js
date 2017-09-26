@@ -19,7 +19,8 @@ class EditProfilePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      submitClicked: null
+      submitClicked: null,
+      profileUpdated: null
     }
   }
 
@@ -31,6 +32,7 @@ class EditProfilePage extends Component {
 
   handleSubmit = model => {
     this.props.updateProfile(model)
+    window.scrollTo(0, 0)
   }
 
   steps = [
@@ -54,7 +56,7 @@ class EditProfilePage extends Component {
       component: YourInfoForm,
       pattern: '/orams/edit-profile/your-info',
       formKey: 'yourInfoForm'
-    },
+    }
     // { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/orams/edit-profile/tools', formKey: 'toolsForm' },
     // {
     //   id: 'awards',
@@ -90,17 +92,27 @@ class EditProfilePage extends Component {
           </LocalNav>
           <article className="col-xs-12 col-sm-8 col-sm-push-1">
             <Switch>
-              <Route exact path={match.url} render={() => <BusinessDetailsForm handleSubmit={this.handleSubmit} />} />
+              <Route
+                exact
+                path={match.url}
+                render={() => <BusinessDetailsForm handleSubmit={this.handleSubmit} profileUpdated />}
+              />
               <Route
                 path={`${match.url}/business-info`}
-                render={() => <BusinessInfoForm handleSubmit={this.handleSubmit} />}
+                render={() => <BusinessInfoForm handleSubmit={this.handleSubmit} profileUpdated />}
               />} />
               <Route
                 path={`${match.url}/your-info`}
                 render={() => <YourInfoForm handleSubmit={this.handleSubmit} />}
               />} />
-              <Route path={`${match.url}/tools`} render={() => <ToolsForm handleSubmit={this.handleSubmit} />} />} />
-              <Route path={`${match.url}/awards`} render={() => <AwardsForm handleSubmit={this.handleSubmit} />} />} />
+              <Route
+                path={`${match.url}/tools`}
+                render={() => <ToolsForm handleSubmit={this.handleSubmit} profileUpdated />}
+              />} />
+              <Route
+                path={`${match.url}/awards`}
+                render={() => <AwardsForm handleSubmit={this.handleSubmit} profileUpdated />}
+              />} />
               <Route component={NotFound} />
             </Switch>
           </article>
@@ -112,7 +124,9 @@ class EditProfilePage extends Component {
 
 EditProfilePage.propTypes = {}
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => {
+  return {}
+}
 
 const mapDispatchToProps = dispatch => ({
   updateProfile: model => dispatch(updateProfile(model))

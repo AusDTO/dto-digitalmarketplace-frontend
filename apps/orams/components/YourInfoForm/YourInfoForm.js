@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import isNumber from 'lodash/isNumber'
 
-import { required, validEmail, validPhoneNumber } from 'shared/validators'
-
+import { required, validEmail, validPhoneNumber, minObjectLength } from 'shared/validators'
+import PageAlert from '@gov.au/page-alerts'
 import Layout from 'shared/Layout'
 import BaseForm from 'shared/form/BaseForm'
 import SubmitForm from 'shared/form/SubmitForm'
@@ -13,6 +13,7 @@ import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import { loadProfile } from 'orams/actions/profileActions'
+import LoadingButton from 'shared/LoadingButton/LoadingButton'
 
 class YourInfoForm extends BaseForm {
   static propTypes = {
@@ -37,8 +38,8 @@ class YourInfoForm extends BaseForm {
       handleSubmit,
       nextRoute,
       submitClicked,
-      userName, 
-      userEmail
+      profileUpdated,
+      currentlySending
     } = this.props
     let title = 'Contact details'
     let hasFocused = false
@@ -56,15 +57,13 @@ class YourInfoForm extends BaseForm {
           </h1>
         </header>
         <article role="main">
+          {profileUpdated
+            ? <PageAlert as="success">
+                <h4>Profile updated</h4>
+              </PageAlert>
+            : ''}
           <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
-          <Form
-            model={model}
-            action={action}
-            id="yourinfo"
-            valid={form.valid}
-            component={SubmitForm}
-            onSubmit={data => handleSubmit(data)}
-          >
+          <Form model={model} action={action} id="yourinfo" validateOn="submit" onSubmit={data => handleSubmit(data)}>
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
 
             <Textfield
@@ -78,7 +77,6 @@ class YourInfoForm extends BaseForm {
               messages={{
                 required: 'Business contact is required'
               }}
-              default={userName}
             />
 
             <Textfield
@@ -92,7 +90,6 @@ class YourInfoForm extends BaseForm {
                 required: 'Business contact email is required',
                 validEmail: 'Business contact email must be a valid email address'
               }}
-              default={userEmail}
             />
 
             <Textfield
@@ -149,9 +146,11 @@ class YourInfoForm extends BaseForm {
 
             {children}
 
-            <button type="submit" className="uikit-btn">
-              Update profile
-            </button>
+            {currentlySending
+              ? <LoadingButton />
+              : <button type="submit" className="uikit-btn">
+                  Update profile
+                </button>}
           </Form>
         </article>
       </Layout>
@@ -166,6 +165,8 @@ YourInfoForm.defaultProps = {
 const mapStateToProps = state => {
   return {
     ...formProps(state, 'yourInfoForm'),
+    profileUpdated: state.app.profileUpdated,
+    currentlySending: state.app.currentlySending
   }
 }
 

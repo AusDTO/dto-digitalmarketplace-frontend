@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { Form, actions } from 'react-redux-form'
 import isEmpty from 'lodash/isEmpty'
 import isNumber from 'lodash/isNumber'
+import PageAlert from '@gov.au/page-alerts'
+
+import { loadProfile } from 'orams/actions/profileActions'
 
 import { required, limitNumbers, validLinks, validABN } from 'shared/validators'
-
 import Layout from 'shared/Layout'
-
 import BaseForm from 'shared/form/BaseForm'
 import SubmitForm from 'shared/form/SubmitForm'
 import ErrorBox from 'shared/form/ErrorBox'
@@ -16,7 +17,7 @@ import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import { getNextKey } from 'shared/utils/helpers'
-import { loadProfile } from 'orams/actions/profileActions'
+import LoadingButton from 'shared/LoadingButton/LoadingButton'
 
 import './BusinessDetailsForm.scss'
 
@@ -53,7 +54,9 @@ class BusinessDetailsForm extends BaseForm {
       buttonText,
       children,
       handleSubmit,
-      businessDetailsForm
+      businessDetailsForm,
+      profileUpdated,
+      currentlySending
     } = this.props
     let title = 'Check your business details'
     let hasFocused = false
@@ -72,13 +75,17 @@ class BusinessDetailsForm extends BaseForm {
           </h1>
         </header>
         <article role="main">
+          {profileUpdated
+            ? <PageAlert as="success">
+                <h4>Profile updated</h4>
+              </PageAlert>
+            : ''}
           <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
             action={action}
             id="BusinessDetails__create"
-            valid={form.valid}
-            component={SubmitForm}
+            validateOn="submit"
             onSubmit={data => handleSubmit(data)}
           >
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
@@ -281,20 +288,15 @@ class BusinessDetailsForm extends BaseForm {
                       </div>
                     )
                   })}
-              {/*{(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
-                <div className="footer">More offices?</div>}
-              <p>
-                <a href="#" onClick={this.onAdd.bind(this)}>
-                  Add another address
-                </a>
-              </p>*/}
             </div>
 
             {children}
 
-            <button type="submit" className="uikit-btn">
-              Update profile
-            </button>
+            {currentlySending
+              ? <LoadingButton />
+              : <button type="submit" className="uikit-btn">
+                  Update profile
+                </button>}
           </Form>
         </article>
       </Layout>
@@ -309,20 +311,14 @@ BusinessDetailsForm.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    ...formProps(state, 'businessDetailsForm')
+    ...formProps(state, 'businessDetailsForm'),
+    profileUpdated: state.app.profileUpdated,
+    currentlySending: state.app.currentlySending
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addAddress: (model, addresses) => {
-      dispatch(actions.change(`${model}.addresses.${getNextKey(addresses) || 1}`, {}))
-    },
-    removeAddress: (model, id) => {
-      dispatch(actions.omit(`${model}.addresses`, id))
-      // added due to bug in adding empty address then removing without submit
-      dispatch(actions.setValidity(`${model}.addresses.${id}`, true))
-    },
     loadProfileData: form => dispatch(loadProfile(form))
   }
 }
