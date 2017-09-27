@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 
 const PrivateRouteComponent = props => {
-  const { component: Component, loggedIn, ...rest } = props
+  const { component: Component, loggedIn, customRedirectPath, ...rest } = props
+  const redirectPath = customRedirectPath ? customRedirectPath : '/2/login'
   return (
     <Route
       {...rest}
@@ -13,7 +14,7 @@ const PrivateRouteComponent = props => {
           ? <Component {...values} />
           : <Redirect
               to={{
-                pathname: '/2/login',
+                pathname: redirectPath,
                 state: { from: values.location }
               }}
             />}
