@@ -5,14 +5,14 @@ import PropTypes from 'prop-types'
 import icons from './_getIcons'
 
 const Icon = props => {
-  const { color, size, value, ...more } = props
+  const { color, size, value, style, ...more } = props
   delete more.className
-  delete more.style
 
   const divStyle = {
     display: 'inline-block',
     height: size,
-    width: size
+    width: size,
+    ...style
   }
 
   const svgStyle = {}

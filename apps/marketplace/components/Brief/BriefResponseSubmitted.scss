@@ -1,0 +1,23 @@
+.difficulty input[type="radio"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  clip: rect(0 0 0 0);
+}
+
+.difficulty label {
+  width: 133px;
+  height: 50px;
+  margin-right: 36px;
+  color: #224a61;
+  padding: 1em 1.6em 1em 1.6em;
+  border: 2px solid;
+}
+.difficulty label div {
+  width: 5em;
+  margin-top: -5px;
+}
+
+.difficulty input[type="radio"]:checked + label {
+  background-color: #c3ebf4;
+}
+

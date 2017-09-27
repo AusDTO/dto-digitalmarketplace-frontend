@@ -23,7 +23,7 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, FEEDBACK_SUCCESS } from '../constants/constants'
 import { GENERAL_ERROR, LOGIN_FAILED } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 
@@ -66,6 +66,32 @@ export const login = data => dispatch => {
       dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
       dispatch(setAuthState(response.data))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleErrorFailure = response => dispatch => {
+  dispatch(
+    setErrorMessage(
+      response && response.data && response.data.errorMessage ? response.data.errorMessage : GENERAL_ERROR
+    )
+  )
+}
+
+export const handleFeedbackSuccess = () => ({ type: FEEDBACK_SUCCESS })
+
+export const handleFeedbackSubmit = feedback => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    url: `/feedback`,
+    method: 'POST',
+    data: JSON.stringify(feedback)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else if (feedback.comment) {
+      dispatch(handleFeedbackSuccess(response))
     }
     dispatch(sendingRequest(false))
   })
