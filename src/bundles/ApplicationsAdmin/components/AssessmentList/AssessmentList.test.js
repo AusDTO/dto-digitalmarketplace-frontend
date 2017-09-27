@@ -1,7 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router'
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 import AssessmentList from './AssessmentList';
 import createStore from '../../redux/create'
 import assessments from '../../AssessmentsAdmin.json';

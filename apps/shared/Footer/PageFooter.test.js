@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Footer } from './PageFooter'
+import Footer from './PageFooter'
 
 jest.mock('react-dom')
 

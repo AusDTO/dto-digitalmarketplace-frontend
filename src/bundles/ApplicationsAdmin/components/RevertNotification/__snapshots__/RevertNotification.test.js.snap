@@ -14,18 +14,18 @@ exports[`RevertedNotificationForm with required attributes 1`] = `
     <textarea
       onChange={[Function]}
       value="Thank you for submitting a seller application to the Digital Marketplace.
-    
-    We have just reviewed your application and it is looking good but there are a few small items to be attended to.
-    
-    - 
-    
-    We have reverted your application so you can sign in, amend, then resubmit your application. Please contact us if you require further clarification, or would like to discuss with our team.
-    
-    https://marketplace.service.gov.au/sellers/application
-    
-    Regards
-    
-    The Marketplace team"
+
+We have just reviewed your application and it is looking good but there are a few small items to be attended to.
+
+- 
+
+We have reverted your application so you can sign in, amend, then resubmit your application. Please contact us if you require further clarification, or would like to discuss with our team.
+
+https://marketplace.service.gov.au/sellers/application
+
+Regards
+
+The Marketplace team"
     />
   </label>
   <div

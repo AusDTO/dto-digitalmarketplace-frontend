@@ -50,7 +50,7 @@ class BuyerDashboard extends Component {
         <section>
           <article styleName="team-view">
             <section styleName="team-view-heading">
-              <div styleName="team-view-teamname">
+              <div id="team-view-teamname" styleName="team-view-teamname">
                 {team.teamName}
               </div>
               <div styleName="team-view-username">

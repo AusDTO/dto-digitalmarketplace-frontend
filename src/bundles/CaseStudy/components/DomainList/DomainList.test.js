@@ -1,9 +1,12 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router'
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
 import DomainList from './DomainList';
 import createStore from '../../redux/create'
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('<DomainList />', () => {
   it('should render link to add case studies', () => {

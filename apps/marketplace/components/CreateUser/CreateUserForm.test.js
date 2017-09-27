@@ -1,9 +1,11 @@
 import React from 'react'
 import expect from 'expect'
-import { shallow } from 'enzyme'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import CreateUserForm from './CreateUserForm'
 
 jest.mock('react-dom')
+Enzyme.configure({ adapter: new Adapter() })
 
 describe.skip('Test suite for CreateUserForm component', () => {
   const state = {
@@ -18,6 +20,6 @@ describe.skip('Test suite for CreateUserForm component', () => {
 
   it('UserComponent should exist', () => {
     const wrapper = shallow(<CreateUserForm {...state} />)
-    expect(wrapper).toExist()
+    expect(wrapper).toBeDefined()
   })
 })

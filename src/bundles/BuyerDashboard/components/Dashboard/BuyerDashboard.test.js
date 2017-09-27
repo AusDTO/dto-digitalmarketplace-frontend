@@ -3,10 +3,12 @@
 jest.mock('react-dom');
 
 import React from 'react';
-import { mount } from 'enzyme';
+import Enzyme, { mount, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 import { Provider } from 'react-redux';
 import { Router as MemoryRouter } from 'react-router-dom';
-import { shallow } from 'enzyme';
 import createMemoryHistory from 'history/createMemoryHistory';
 import renderer from 'react-test-renderer';
 import createStore from '../../redux/create';
@@ -27,18 +29,4 @@ test('BuyerDashboard renders without errors', () => {
 
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
-})
-
-test('BuyerDashboard renders view filters', () => {
-  const store = createStore(Object.assign({}, { _serverContext: {} },  sampleState));
-  const history = createMemoryHistory();
-  const component = mount(
-    <MemoryRouter history={history}>
-      <Provider store={store}>
-        <BuyerDashboard />
-      </Provider>
-    </MemoryRouter>
-  )
-
-  expect(component.containsMatchingElement(<div>{sampleState.team.teamName}</div>)).toBeTruthy();
 })
