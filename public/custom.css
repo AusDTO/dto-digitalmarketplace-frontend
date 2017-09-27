@@ -301,4 +301,12 @@ label.text-box-number-label {
 
 .primary-nav ul a.active, .primary-nav ul a.is-active, .local-nav ul a.active, .local-nav ul a.is-active {
   font-weight: 700;
+  
+.uikit-display-1,
+.uikit-display-2,
+.uikit-display-3,
+.uikit-display-4,
+.uikit-display-5,
+.uikit-display-6 {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
 }
