@@ -6,10 +6,6 @@
   box-sizing: inherit;
 }
 
-h1:first-of-type, .hero .site-title:first-of-type {
-  margin-top: 0.4em;
-}
-
 h1, .hero .site-title {
   font-weight: 700;
 }
@@ -17,6 +13,7 @@ h1, .hero .site-title {
 h1, .hero .site-title {
   font-size: 1.5rem;
 }
+
 @media screen and (min-width: 768px) {
     h1, .hero .site-title {
     font-size: 1.625rem;
@@ -172,6 +169,139 @@ input[type="radio"].uikit-control-input__input:focus + .uikit-control-input__tex
   outline: none;
 }
 
+.primary-nav ul a, .local-nav ul a {
+  display: block;
+  border: none;
+  border-left: 4px solid transparent;
+  border-bottom: none;
+  padding: 0.6em 0.8em;
+  text-decoration: none;
+  transition: border-color 0.1s ease-in-out;
+  color: #313131;
+}
+
+.primary-nav ul a:hover, .local-nav ul a:hover {
+  border-color: #224a61;
+}
+
+.primary-nav ul a:hover, .primary-nav ul a:focus, .local-nav ul a:hover, .local-nav ul a:focus {
+  background-color: #def4f9;
+  color: #313131;
+  box-shadow: none;
+}
+
+.primary-nav ul li:first-child, .local-nav ul li:first-child {
+    border-top: 1px solid #bebebe;
+}
+
+.primary-nav ul li, .local-nav ul li {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #bebebe;
+}
+
+.primary-nav ul, .local-nav ul {
+    color: #313131;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.local-nav[aria-expanded='false'] {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .local-nav[aria-expanded='false'] {
+    height: auto;
+    padding: 0 0 1.6em;
+  }
+  .local-nav-toggle {
+    display: none;
+  }
+}
+
+.local-nav-toggle {
+  font-size: 16px;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  font-weight: 400;
+  border: 0;
+  background-color: #f0f3f5;
+  color: #115361;
+  padding: 0.8em 1.2em;
+}
+
+.local-nav-toggle:hover, .local-nav-toggle:active, .local-nav-toggle:focus {
+  background-color: #f0f3f5;
+  color: #115361;
+}
+
+.local-nav-toggle::before {
+  content: ' ';
+  position: absolute;
+  top: .5em;
+  bottom: .5em;
+  right: 0.8em;
+  width: 1.2em;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+.local-nav-toggle[aria-expanded='true']::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.step-navigation {
+  padding-top: 0;
+}
+
+.step-navigation a span {
+  padding-left: 1em;
+  vertical-align: middle;
+}
+
+.primary-nav, .local-nav {
+  margin: 0 0 1.6em;
+  overflow: hidden;
+  transition: padding 0.4s ease;
+}
+
+.local-nav-toggle::before, .accordion-button::before, summary::before {
+  background-image: url(/static/images/icons/chevron-down--navy.png);
+  background-image: none, url(/static/images/icons/chevron-down--navy.svg), linear-gradient(transparent, transparent);
+}
+
+.local-nav-toggle[aria-expanded='true']::before {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+label.text-box-number-label {
+  color: #717171;
+  left: 20px;
+  margin: 0;
+  position: absolute;
+  top: 5px;
+}
+
+.multiInput {
+  margin-bottom: 20px;
+  padding-left: 25px;
+}
+
+.primary-nav ul a.active, .primary-nav ul a.is-active, .local-nav ul a.active, .local-nav ul a.is-active {
+  font-weight: 700;
+  
 .uikit-display-1,
 .uikit-display-2,
 .uikit-display-3,

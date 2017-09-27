@@ -148,7 +148,9 @@
       "^.+\\.css$": "<rootDir>/config/jest/CSSStub.js",
       "^.+\\.scss$": "<rootDir>/config/jest/CSSStub.js"
     },
-    "modulePaths": ["<rootDir>/apps/"],
+    "modulePaths": [
+      "<rootDir>/apps/"
+    ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],

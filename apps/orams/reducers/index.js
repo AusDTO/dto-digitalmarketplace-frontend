@@ -10,7 +10,14 @@ export default combineReducers({
   app: appReducer,
   form_options,
   errorMessage,
+  options: (state = {}) => state,
   ...createForms({
+    businessDetailsForm: {},
+    businessInfoForm: {},
+    yourInfoForm: {},
+    toolsForm: {},
+    awardsForm: {},
+    submitStepForm: {},
     loginForm: {}
   })
 })
