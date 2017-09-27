@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form'
 import { limitWords } from 'shared/validators'
 
-import { limitWords } from 'shared/validators'
 import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
 
