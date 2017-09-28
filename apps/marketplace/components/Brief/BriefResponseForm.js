@@ -5,6 +5,7 @@ import { Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 
+import PageAlert from '@gov.au/page-alerts'
 import { required, validEmail, validPercentage } from 'marketplace/components/validators'
 import ErrorBox from 'marketplace/components/shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -42,18 +43,22 @@ const BriefResponseForm = ({
           </h1>
         </header>
         <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-          {app.supplierCode &&
-            brief.lotSlug &&
-            brief.lotSlug === 'digital-professionals' &&
-            <FilesInput
-              label="Attach up to 3 resumes"
-              hint="Attachments must be PDF or ODT format and a maximum of 5MB"
-              name="attachedDocumentURL"
-              model={model}
-              formFields={3}
-              fieldLabel="Upload resume"
-              url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-            />}
+          {app.supplierCode
+            ? brief.lotSlug &&
+              brief.lotSlug === 'digital-professionals' &&
+              <FilesInput
+                label="Attach up to 3 resumes"
+                hint="Attachments must be PDF or ODT format and a maximum of 5MB"
+                name="attachedDocumentURL"
+                model={model}
+                formFields={3}
+                fieldLabel="Upload resume"
+                url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+              />
+            : <PageAlert as="warning" setFocus={setFocus}>
+                <h4>There was a problem loading your details</h4>
+                <p>Only logged in sellers can respond to briefs</p>
+              </PageAlert>}
           <Textfield
             model={`${model}.availability`}
             name="availability"
@@ -73,7 +78,7 @@ const BriefResponseForm = ({
               required
             }}
             messages={{
-              required: 'Availability is required'
+              required: 'Enter a date for when you can start the project'
             }}
           />
           {brief.lotSlug &&
@@ -84,7 +89,7 @@ const BriefResponseForm = ({
               id="dayRate"
               htmlFor="dayRate"
               label="Day rate"
-              description="What is your daily rate, including GST?"
+              description="What is your day rate, including GST?"
               validators={{
                 required,
                 validPercentage
@@ -111,7 +116,7 @@ const BriefResponseForm = ({
                   validators={{ required }}
                   showMessagesDuringFocus
                   messages={{
-                    required: `Essential skills and experience are required`
+                    required: `This is an essential requirement, let the buyer know how the skills and experience criteria is met`
                   }}
                 />
               )}
