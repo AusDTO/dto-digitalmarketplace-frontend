@@ -6,11 +6,7 @@ import LogoutPage from 'orams/pages/LogoutPage'
 import EditProfilePage from 'orams/pages/EditProfilePage'
 import NotFound from 'shared/NotFound'
 import PrivateRoute from 'shared/PrivateRoute'
-
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import LogoutPage from './pages/LogoutPage'
-import ResetPasswordPage from './pages/ResetPasswordPage'
+import ResetPasswordPage from 'orams/pages/ResetPasswordPage'
 
 export const rootPath = '/orams'
 
