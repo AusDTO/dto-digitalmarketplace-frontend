@@ -12,9 +12,16 @@ export default combineReducers({
   user: userReducer,
   form_options,
   errorMessage,
+  options: (state = {}) => state,
   ...createForms({
-    loginForm: {},
     resetPasswordEmailForm: {},
-    resetPasswordForm: {}
+    resetPasswordForm: {},
+    businessDetailsForm: {},
+    businessInfoForm: {},
+    yourInfoForm: {},
+    toolsForm: {},
+    awardsForm: {},
+    submitStepForm: {},
+    loginForm: {}
   })
 })

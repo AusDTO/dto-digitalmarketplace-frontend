@@ -74,7 +74,7 @@ class Textarea extends Component {
           className={className}
           name={name}
           id={id}
-          defaultValue={value}
+          value={value}
           onBlur={onBlur}
           onFocus={onFocus}
           aria-describedby={hint && describedby}

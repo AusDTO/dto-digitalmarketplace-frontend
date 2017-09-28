@@ -10,18 +10,27 @@
  *   });
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH } from '../constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, FEEDBACK_SUCCESS } from '../constants/constants'
 
 // The initial application state
 const initialState = {
   currentlySending: false,
+  feedbackSuccess: null,
   errorMessage: null,
   loggedIn: false,
+  supplierCode: null,
+  emailAddress: null,
   userType: ''
 }
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FEEDBACK_SUCCESS:
+      return {
+        ...state,
+        feedbackSuccess: true
+      }
+
     case SENDING_REQUEST:
       return {
         ...state,
@@ -38,7 +47,9 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: action.newState.isAuthenticated,
-        userType: action.newState.userType
+        userType: action.newState.userType,
+        supplierCode: action.newState.supplierCode,
+        emailAddress: action.newState.emailAddress
       }
     default:
       return state

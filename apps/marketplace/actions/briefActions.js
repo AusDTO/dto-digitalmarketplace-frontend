@@ -1,31 +1,28 @@
-import {
-  BRIEF_INFO_FETCH_DATA_SUCCESS,
-  BRIEF_INFO_HAS_ERRORED,
-  BRIEF_RESPONSE_SUCCESS,
-  BRIEF_RESPONSE_FAILURE,
-  BRIEF_RESPONSE_DUPLICATE_FAILURE
-} from '../constants/constants'
+import { BRIEF_INFO_FETCH_DATA_SUCCESS, BRIEF_RESPONSE_SUCCESS } from '../constants/constants'
+import { GENERAL_ERROR } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
-import { sendingRequest } from './appActions'
+import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data
 })
 
-export const handleBriefInfoFailure = response => ({
-  type: BRIEF_INFO_HAS_ERRORED,
-  // eslint-disable-next-line
-  errorMessage: response && response.data ? response.data.message : 'unknown server error'
-})
-
+export const handleErrorFailure = response => dispatch => {
+  dispatch(
+    setErrorMessage(
+      response && response.data && response.data.errorMessage ? response.data.errorMessage : GENERAL_ERROR
+    )
+  )
+}
 export const loadBrief = briefId => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: `/brief/${briefId}` }).then(response => {
     if (!response || response.error) {
-      dispatch(handleBriefInfoFailure(response))
+      dispatch(handleErrorFailure(response))
     } else {
+      response.data.loadedAt = new Date().valueOf()
       dispatch(handleBriefInfoSuccess(response))
     }
     dispatch(sendingRequest(false))
@@ -33,24 +30,6 @@ export const loadBrief = briefId => dispatch => {
 }
 
 export const handleBriefResponseSuccess = () => ({ type: BRIEF_RESPONSE_SUCCESS })
-
-export const handleBriefResponseFailure = response => {
-  switch (response.status) {
-    case 409:
-      return {
-        type: BRIEF_RESPONSE_DUPLICATE_FAILURE,
-        // eslint-disable-next-line
-        errorMessage: response.data ? response.data.message : 'a user with this email address already exists'
-      }
-
-    default:
-      return {
-        type: BRIEF_RESPONSE_FAILURE,
-        // eslint-disable-next-line
-        errorMessage: response.data ? response.data.message : 'unknown server error'
-      }
-  }
-}
 
 export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
   dispatch(sendingRequest(true))
@@ -60,7 +39,7 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
     data: JSON.stringify(model)
   }).then(response => {
     if (response.error) {
-      dispatch(handleBriefResponseFailure(response))
+      dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleBriefResponseSuccess(response))
     }

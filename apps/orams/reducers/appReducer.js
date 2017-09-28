@@ -10,7 +10,13 @@
  *   });
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, CLEAR_ERROR_MESSAGES, SET_AUTH } from 'orams/constants/constants'
+import {
+  SENDING_REQUEST,
+  SET_ERROR_MESSAGE,
+  CLEAR_ERROR_MESSAGES,
+  SET_AUTH,
+  PROFILE_UPDATED
+} from 'orams/constants/constants'
 
 // The initial application state
 const initialState = {
@@ -44,6 +50,12 @@ const appReducer = (state = initialState, action) => {
         ...state,
         loggedIn: action.newState.isAuthenticated,
         userType: action.newState.userType
+      }
+
+    case PROFILE_UPDATED:
+      return {
+        ...state,
+        profileUpdated: true
       }
 
     default:

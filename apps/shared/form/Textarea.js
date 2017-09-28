@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form'
+import { limitWords } from 'shared/validators'
 
 import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
-
-import { limitWords } from '../../validators'
 
 const Textarea = props => {
   const { name, id, label, model, description, showMessagesDuringFocus = false, controlProps = {}, mapProps } = props
@@ -21,13 +20,13 @@ const Textarea = props => {
   }
   return (
     <div className="field">
-      <label className="question-heading" htmlFor={id}>
+      <label className="question-heading uikit-text-input__label" htmlFor={id}>
         {label}
       </label>
       {description &&
-        <p className="hint" id={`${id}-hint`}>
+        <div className="uikit-text-input__hint" id={`${id}-hint`}>
           {description}
-        </p>}
+        </div>}
       {messages &&
         <StatefulError model={model} messages={messages} id={id} showMessagesDuringFocus={showMessagesDuringFocus} />}
       <Control

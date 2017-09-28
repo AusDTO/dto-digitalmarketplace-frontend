@@ -1,6 +1,11 @@
 import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
+import HomePage from 'orams/pages/HomePage'
+import LoginPage from 'orams/pages/LoginPage'
+import LogoutPage from 'orams/pages/LogoutPage'
+import EditProfilePage from 'orams/pages/EditProfilePage'
 import NotFound from 'shared/NotFound'
+import PrivateRoute from 'shared/PrivateRoute'
 
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
@@ -15,6 +20,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/logout`} component={LogoutPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
+    <PrivateRoute path={`${rootPath}/edit-profile`} component={EditProfilePage} customRedirectPath="/orams/login" />
     <Route component={NotFound} />
   </Switch>
 
