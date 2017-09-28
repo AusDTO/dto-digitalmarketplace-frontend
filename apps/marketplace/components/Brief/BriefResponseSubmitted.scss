@@ -21,3 +21,24 @@
   background-color: #c3ebf4;
 }
 
+@media screen and (max-width: 480px) {
+  .difficulty label {
+    width: 100% !important;
+    margin-top: 36px;
+    text-align: center;
+  }
+  .difficulty label div {
+    width: 6em;
+    margin-top: -7px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+  .difficulty label:nth-of-type(2) div {
+    right: 9px !important;
+  }
+  .difficulty label:first-of-type {
+    margin-top: 0;
+  }
+}
+
