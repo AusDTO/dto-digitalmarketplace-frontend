@@ -7,6 +7,7 @@ import formProps from '../components/shared/form/formPropsSelector'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
 import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/resetPasswordActions'
+import { logout } from '../actions/appActions'
 import { setErrorMessage } from '../actions/appActions'
 
 export class ResetPasswordPageComponent extends Component {
@@ -25,6 +26,7 @@ export class ResetPasswordPageComponent extends Component {
     if (tokenString.length > 0) {
       this.props.loadInitialData(tokenString)
     }
+    this.props.logoutForPasswordReset()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -113,7 +115,8 @@ const mapResetDispatchToProps = dispatch => ({
   handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
   handleResetPasswordSubmit: payload => dispatch(submitResetPassword(payload)),
   loadInitialData: token => dispatch(getUserDataFromToken(token)),
-  passwordsMatchMessage: message => dispatch(setErrorMessage(message))
+  passwordsMatchMessage: message => dispatch(setErrorMessage(message)),
+  logoutForPasswordReset: () => dispatch(logout())
 })
 
 const ResetPasswordPage = withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPasswordPageComponent))

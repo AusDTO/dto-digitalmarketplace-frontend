@@ -7,6 +7,7 @@ import formProps from '../../shared/form/formPropsSelector'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
 import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/userActions'
+import { logout } from '../actions/appActions'
 import { setErrorMessage } from '../actions/appActions'
 
 export class ResetPasswordPageComponent extends Component {
@@ -25,6 +26,7 @@ export class ResetPasswordPageComponent extends Component {
     if (tokenString.length > 0) {
       this.props.loadInitialData(tokenString)
     }
+    this.props.logoutForPasswordReset()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,12 +45,12 @@ export class ResetPasswordPageComponent extends Component {
 
   handleResetPasswordSubmit(values) {
     const { user } = this.props
-    const payload = Object.assign({}, values, user.user, { framework: 'ORAMS' })
+    const payload = Object.assign({}, values, user.user, { framework: 'orams' })
     this.props.handleResetPasswordSubmit(payload)
   }
 
   handleSendEmailSubmit(values) {
-    const payload = Object.assign({}, values, { framework: 'ORAMS' })
+    const payload = Object.assign({}, values, { framework: 'orams' })
     this.props.handleSendEmailSubmit(payload)
   }
 
@@ -113,7 +115,8 @@ const mapResetDispatchToProps = dispatch => ({
   handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
   handleResetPasswordSubmit: payload => dispatch(submitResetPassword(payload)),
   loadInitialData: token => dispatch(getUserDataFromToken(token)),
-  passwordsMatchMessage: message => dispatch(setErrorMessage(message))
+  passwordsMatchMessage: message => dispatch(setErrorMessage(message)),
+  logoutForPasswordReset: () => dispatch(logout())
 })
 
 const ResetPasswordPage = withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPasswordPageComponent))
