@@ -10,7 +10,13 @@
  *   });
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, FEEDBACK_SUCCESS } from '../constants/constants'
+import {
+  SENDING_REQUEST,
+  SET_ERROR_MESSAGE,
+  CLEAR_ERROR_MESSAGES,
+  SET_AUTH,
+  FEEDBACK_SUCCESS
+} from '../constants/constants'
 
 // The initial application state
 const initialState = {
@@ -41,6 +47,12 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         errorMessage: action.errorMessage
+      }
+
+    case CLEAR_ERROR_MESSAGES:
+      return {
+        ...state,
+        errorMessage: null
       }
 
     case SET_AUTH:

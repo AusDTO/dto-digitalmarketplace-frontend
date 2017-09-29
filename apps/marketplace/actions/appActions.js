@@ -23,7 +23,13 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, FEEDBACK_SUCCESS } from '../constants/constants'
+import {
+  SENDING_REQUEST,
+  SET_ERROR_MESSAGE,
+  CLEAR_ERROR_MESSAGES,
+  SET_AUTH,
+  FEEDBACK_SUCCESS
+} from '../constants/constants'
 import { GENERAL_ERROR, LOGIN_FAILED } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 
@@ -38,6 +44,8 @@ export const setErrorMessage = errorMessage => ({
   type: SET_ERROR_MESSAGE,
   errorMessage
 })
+
+export const clearErrorMessages = () => ({ type: CLEAR_ERROR_MESSAGES })
 
 export function setAuthState(newState) {
   return { type: SET_AUTH, newState }
@@ -65,8 +73,18 @@ export const login = data => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
+      dispatch(clearErrorMessages())
       dispatch(setAuthState(response.data))
     }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const logout = () => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: '/logout' }).then(() => {
+    dispatch(clearErrorMessages())
+    dispatch(setAuthState({ isAuthenticated: false, userType: '' }))
     dispatch(sendingRequest(false))
   })
 }
