@@ -28,9 +28,16 @@ const PrivateRouteComponent = props => {
   )
 }
 
+PrivateRouteComponent.defaultProps = {
+  customRedirectPath: null,
+  currentlySending: false
+}
+
 PrivateRouteComponent.propTypes = {
   component: PropTypes.func.isRequired,
-  loggedIn: PropTypes.bool.isRequired
+  loggedIn: PropTypes.bool.isRequired,
+  customRedirectPath: PropTypes.string,
+  currentlySending: PropTypes.bool
 }
 
 const mapStateToProps = state => ({
