@@ -60,11 +60,7 @@ class EditProfilePage extends Component {
               const isActive = location.pathname === pattern
               return (
                 <li key={i}>
-                  <Link
-                    to={pattern}
-                    onClick={() => actions.navigateToStep(pattern)}
-                    className={classNames({ 'is-active is-current': isActive })}
-                  >
+                  <Link to={pattern} className={classNames({ 'is-active is-current': isActive })}>
                     <span>
                       {label}
                     </span>
