@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import NotFound from '../components/shared/NotFound'
-import formProps from '../components/shared/form/formPropsSelector'
+import NotFound from '../../shared/NotFound'
+import formProps from '../../shared/form/formPropsSelector'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
-import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/resetPasswordActions'
+import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/userActions'
 import { setErrorMessage, logout } from '../actions/appActions'
 
 export class ResetPasswordPageComponent extends Component {
@@ -44,12 +44,12 @@ export class ResetPasswordPageComponent extends Component {
 
   handleResetPasswordSubmit(values) {
     const { user } = this.props
-    const payload = Object.assign({}, values, user.user, { framework: 'digital-marketplace' })
+    const payload = Object.assign({}, values, user.user, { framework: 'orams' })
     this.props.handleResetPasswordSubmit(payload)
   }
 
   handleSendEmailSubmit(values) {
-    const payload = Object.assign({}, values, { framework: 'digital-marketplace' })
+    const payload = Object.assign({}, values, { framework: 'orams' })
     this.props.handleSendEmailSubmit(payload)
   }
 
