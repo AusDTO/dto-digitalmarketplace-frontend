@@ -7,8 +7,7 @@ import formProps from '../components/shared/form/formPropsSelector'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
 import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/resetPasswordActions'
-import { logout } from '../actions/appActions'
-import { setErrorMessage } from '../actions/appActions'
+import { setErrorMessage, logout } from '../actions/appActions'
 
 export class ResetPasswordPageComponent extends Component {
   constructor(props) {
