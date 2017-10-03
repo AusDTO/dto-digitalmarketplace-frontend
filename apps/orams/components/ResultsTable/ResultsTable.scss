@@ -1,0 +1,46 @@
+.tableContainer {
+  margin-top: 34px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #202751;
+  float: left;
+}
+
+.priceElelments {
+  float: right;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+  color: #0f979b;
+}
+
+.incGst {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  color: #777777;
+}
+
+.phone {
+  font-size: 17px;
+  color: #313131;
+}
+
+.email {
+  font-size: 18px;
+  font-weight: bold;
+  color: #202751;
+  margin-left: 40px;
+}
+
+.tableRow {
+  border-bottom: solid 1px #777777;
+  padding-bottom: 16px;
+  padding-top: 14px;
+}
