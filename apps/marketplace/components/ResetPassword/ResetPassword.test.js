@@ -1,12 +1,19 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import expect from 'expect'
-import { shallow } from 'enzyme'
-import { ResetPasswordForm } from './ResetPasswordForm'
-import { RequestResetEmailForm } from './RequestResetEmailForm'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import configureStore from 'marketplace/store'
+import { Provider } from 'react-redux'
 
-test('Test suite for ResetPasswordForm component', () => {
+import ResetPasswordForm from './ResetPasswordForm'
+import RequestResetEmailForm from './RequestResetEmailForm'
+
+Enzyme.configure({ adapter: new Adapter() })
+
+describe('Test suite for ResetPasswordForm component', () => {
   const state = {
+    model: 'resetPasswordForm',
     user: {
       resetPasswordEmailFailure: false,
       resetPasswordEmailSuccess: true
@@ -16,19 +23,30 @@ test('Test suite for ResetPasswordForm component', () => {
   }
 
   it('CreateUserPage renders without errors', () => {
-    const wrapper = shallow(<ResetPasswordForm {...state} />)
-    expect(wrapper).toExist()
+    const store = configureStore(state)
+    const wrapper = shallow(
+      <Provider store={store}>
+        <ResetPasswordForm {...state} />
+      </Provider>
+    )
+    expect(wrapper).toBeDefined()
   })
 
   it('Because snapshots', () => {
-    const component = renderer.create(<ResetPasswordForm {...state} />)
+    const store = configureStore(state)
+    const component = renderer.create(
+      <Provider store={store}>
+        <ResetPasswordForm {...state} />
+      </Provider>
+    )
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
 
-test('Test suite for RequestResetEmailForm component', () => {
+describe('Test suite for RequestResetEmailForm component', () => {
   const state = {
+    model: 'resetPasswordForm',
     user: {
       resetPasswordSuccess: false,
       getResetDataSuccess: true,
@@ -38,13 +56,23 @@ test('Test suite for RequestResetEmailForm component', () => {
     handleSubmit: () => true
   }
 
-  it('CreateUserPage renders without errors', () => {
-    const wrapper = shallow(<RequestResetEmailForm {...state} />)
-    expect(wrapper).toExist()
+  it('RequestResetEmailForm renders without errors', () => {
+    const store = configureStore(state)
+    const wrapper = shallow(
+      <Provider store={store}>
+        <RequestResetEmailForm {...state} />
+      </Provider>
+    )
+    expect(wrapper).toBeDefined()
   })
 
   it('Because snapshots', () => {
-    const component = renderer.create(<RequestResetEmailForm {...state} />)
+    const store = configureStore(state)
+    const component = renderer.create(
+      <Provider store={store}>
+        <RequestResetEmailForm {...state} />
+      </Provider>
+    )
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })

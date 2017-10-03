@@ -2,8 +2,10 @@ jest.mock('../Icon/_getIcons');
 
 import React from 'react';
 import { MemoryRouter } from 'react-router'
-import { Provider } from 'react-redux';
-import { shallow } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 import Body from './Body';
 
 describe('<Body />', () => {

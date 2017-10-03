@@ -61,7 +61,7 @@ class RegisterComponent {
 
         let result = this.instance(initialState, history);
 
-        ReactDOM.render(
+        ReactDOM.hydrate(
           <Router history={history}>
             {result}
           </Router>,

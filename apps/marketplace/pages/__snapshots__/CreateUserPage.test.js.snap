@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-sm-push-2 col-sm-8 col-xs-12"
+  >
+    <article
+      role="main"
+    />
+  </div>
+</div>
+`;

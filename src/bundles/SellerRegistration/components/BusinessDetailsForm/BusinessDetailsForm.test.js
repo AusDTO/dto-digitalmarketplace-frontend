@@ -1,7 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
-import { actions } from 'react-redux-form';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 import BusinessDetailsForm, { mapStateToProps } from './BusinessDetailsForm';
 
@@ -54,6 +56,6 @@ test('render existing supplier copy', () => {
   )
 
   expect(wrapper.find('h1').text()).toBe('Check your business details');
-  expect(wrapper.find('#abn').prop('readOnly')).toBeTruthy();
-  expect(wrapper.find('#abn').prop('disabled')).toBeTruthy();
+  expect(wrapper.find('#abn').first().prop('readOnly')).toBeTruthy();
+  expect(wrapper.find('#abn').first().prop('disabled')).toBeTruthy();
 });

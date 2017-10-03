@@ -2,9 +2,12 @@ jest.mock('../../../../shared/Icon/_getIcons');
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
 import SubmitConfirmation from './SubmitConfirmation';
 import createStore from '../../redux/create'
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('<SubmitConfirmation />', () => {
   it('should render confirmation screen', () => {

@@ -1,7 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 import { Provider } from 'react-redux';
-import { actions } from 'react-redux-form';
 import { Router as MemoryRouter } from 'react-router-dom';
 import createMemoryHistory from 'history/createMemoryHistory';
 
@@ -66,7 +68,7 @@ test('form renders server side with errors', () => {
   )
 
   let errors = wrapper.find('.validation-message');
-  expect(errors.length).toBe(9);
+  expect(errors.length).toBe(6);
 })
 
 test('handleClick with formValid=false', () => {

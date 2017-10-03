@@ -3,7 +3,10 @@ jest.mock('../../../../shared/Icon/_getIcons');
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 import ApplicationPreview from './ApplicationPreview';
 import createStore from '../../redux/create';
 
