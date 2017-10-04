@@ -1,10 +1,11 @@
 jest.mock('../../../../shared/Icon/_getIcons');
 
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 import { compose } from 'redux';
-import { actions } from 'react-redux-form';
 import { StaticRouter } from 'react-router-dom';
 
 import SignupClass, { mapStateToProps } from './Signup';

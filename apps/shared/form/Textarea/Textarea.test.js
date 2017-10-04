@@ -1,7 +1,9 @@
 import React from 'react'
-import { mount } from 'enzyme'
-
+import Enzyme, { mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import Textarea from './Textarea'
+
+Enzyme.configure({ adapter: new Adapter() })
 
 test('onChange', () => {
   const wrapper = mount(<Textarea name="test" limit={10} />)

@@ -1,11 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { actions } from 'react-redux-form';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 import AwardsForm, { mapStateToProps } from './AwardsForm';
-
-import createStore from '../../redux/create'
 
 
 const generateFormValidilityState = (valid) => {

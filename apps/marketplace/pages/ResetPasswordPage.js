@@ -7,9 +7,9 @@ import formProps from '../components/shared/form/formPropsSelector'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
 import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/resetPasswordActions'
-import { setErrorMessage } from '../actions/appActions'
+import { setErrorMessage, logout } from '../actions/appActions'
 
-class ResetPasswordPage extends Component {
+export class ResetPasswordPageComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,6 +25,7 @@ class ResetPasswordPage extends Component {
     if (tokenString.length > 0) {
       this.props.loadInitialData(tokenString)
     }
+    this.props.logoutForPasswordReset()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,12 +44,17 @@ class ResetPasswordPage extends Component {
 
   handleResetPasswordSubmit(values) {
     const { user } = this.props
-    const payload = Object.assign({}, values, user.user)
+    const payload = Object.assign({}, values, user.user, { framework: 'digital-marketplace' })
     this.props.handleResetPasswordSubmit(payload)
   }
 
+  handleSendEmailSubmit(values) {
+    const payload = Object.assign({}, values, { framework: 'digital-marketplace' })
+    this.props.handleSendEmailSubmit(payload)
+  }
+
   render() {
-    const { match, user, model, handleSendEmailSubmit } = this.props
+    const { match, user, model } = this.props
     return (
       <div className="reset-password-page">
         <Switch>
@@ -60,7 +66,7 @@ class ResetPasswordPage extends Component {
                 model={model}
                 user={user}
                 submitClicked={this.onSubmitClicked}
-                handleSubmit={handleSendEmailSubmit}
+                handleSubmit={values => this.handleSendEmailSubmit(values)}
               />}
           />
 
@@ -82,22 +88,20 @@ class ResetPasswordPage extends Component {
   }
 }
 
-ResetPasswordPage.defaultProps = {
+ResetPasswordPageComponent.defaultProps = {
   passwordsMatchMessage: null,
   loadInitialData: null,
-  handleResetPasswordSubmit: null,
-  handleSendEmailSubmit: null
+  handleResetPasswordSubmit: null
 }
 
-ResetPasswordPage.propTypes = {
+ResetPasswordPageComponent.propTypes = {
   user: PropTypes.shape({
     resetPasswordSuccess: PropTypes.bool
   }).isRequired,
   model: PropTypes.string.isRequired,
   passwordsMatchMessage: PropTypes.func,
   loadInitialData: PropTypes.func,
-  handleResetPasswordSubmit: PropTypes.func,
-  handleSendEmailSubmit: PropTypes.func
+  handleResetPasswordSubmit: PropTypes.func
 }
 
 const mapResetStateToProps = state => ({
@@ -110,7 +114,10 @@ const mapResetDispatchToProps = dispatch => ({
   handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
   handleResetPasswordSubmit: payload => dispatch(submitResetPassword(payload)),
   loadInitialData: token => dispatch(getUserDataFromToken(token)),
-  passwordsMatchMessage: message => dispatch(setErrorMessage(message))
+  passwordsMatchMessage: message => dispatch(setErrorMessage(message)),
+  logoutForPasswordReset: () => dispatch(logout())
 })
 
-export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPasswordPage))
+const ResetPasswordPage = withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPasswordPageComponent))
+
+export default ResetPasswordPage

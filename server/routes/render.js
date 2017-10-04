@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOMServer from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router'
 import path from 'path'
 import fs from 'fs'

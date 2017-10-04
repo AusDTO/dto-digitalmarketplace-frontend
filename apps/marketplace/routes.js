@@ -1,8 +1,6 @@
 import React from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
-
-import PrivateRoute from 'shared/PrivateRoute'
-
+import PrivateRoute from 'marketplace/MarketplaceAuthenticatedRoute'
 import SignupPage from './pages/SignupPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import CreateUserPage from './pages/CreateUserPage'

@@ -32,30 +32,26 @@ export const replaceMarkup = (text, tagToReplace, replaceWithTag) => {
     let composeTextArr = [];
     let {markedUpText, plainText} = "";
 
-    while (text.indexOf(openingTag) != -1) {
+    while (text.indexOf(openingTag) !== -1) {
       plainText = text.slice(0, text.indexOf(openingTag)) //text before tags
       composeTextArr.push({[plainText]: false})
-      markedUpText = text.slice(text.indexOf(openingTag) + 3, text.indexOf(closingTag)) // text within tags
+      markedUpText = text.slice(text.indexOf(openingTag) + openingTag.length, text.indexOf(closingTag)) // text within tags
       composeTextArr.push({[markedUpText]: true})
-      text = text.slice(text.indexOf(closingTag) + 4)
+      text = text.slice(text.indexOf(closingTag) + closingTag.length)
       if ((text.indexOf(openingTag) === -1)) { // trailing text with no subsequent tags
         composeTextArr.push({[text]: false})
       }
     }
-
-    return composeTextArr.map((element, i) => {
+    let elements = composeTextArr.map((element, i) => {
       if (Object.values(element)[0]) {
-        return (
-          <span key={i}>
-              {createElement(replaceWithTag, {className: 'uikit-body'}, Object.keys(element)[0])}
-          </span>
-        )
+        return createElement(replaceWithTag, {className: 'uikit-body'}, Object.keys(element)[0])
       } else {
         return (
           Object.keys(element)[0]
         )
       }
     })
+    return elements
   }
 };
 

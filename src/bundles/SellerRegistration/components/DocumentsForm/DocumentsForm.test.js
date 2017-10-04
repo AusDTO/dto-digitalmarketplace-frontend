@@ -1,7 +1,10 @@
 // FIXME This is a workaround.
 // @see https://github.com/facebook/react/issues/7386
 import React from 'react'
-import { mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 import { Provider } from 'react-redux'
 
 import DocumentsForm from './DocumentsForm'

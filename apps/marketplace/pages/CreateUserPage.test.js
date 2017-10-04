@@ -1,12 +1,19 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import expect from 'expect'
-import { shallow } from 'enzyme'
-import { CreateUserPage } from './CreateUserPage'
+import { MemoryRouter } from 'react-router-dom'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import configureStore from 'marketplace/store'
+import { Provider } from 'react-redux'
+
+import CreateUserPage from './CreateUserPage'
+
+Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock('shared/Icon/_getIcons')
 
-test('Test suite for CreateUserPage page', () => {
+describe('Test suite for CreateUserPage page', () => {
   const state = {
     userRegistrationDetails: {
       name: 'Jeff Labowski',
@@ -17,12 +24,27 @@ test('Test suite for CreateUserPage page', () => {
   }
 
   it('CreateUserPage renders without errors', () => {
-    const wrapper = shallow(<CreateUserPage {...state} />)
-    expect(wrapper).toExist()
+    const store = configureStore(state)
+
+    const wrapper = shallow(
+      <Provider store={store}>
+        <MemoryRouter>
+          <CreateUserPage {...state} />
+        </MemoryRouter>
+      </Provider>
+    )
+    expect(wrapper).toBeDefined()
   })
 
   it('Because snaphots', () => {
-    const component = renderer.create(<CreateUserPage {...state} />)
+    const store = configureStore(state)
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <CreateUserPage {...state} />
+        </MemoryRouter>
+      </Provider>
+    )
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })

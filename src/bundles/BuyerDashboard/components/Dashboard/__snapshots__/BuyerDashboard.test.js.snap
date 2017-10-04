@@ -10,6 +10,7 @@ exports[`BuyerDashboard renders without errors 1`] = `
         styleName="team-view-heading"
       >
         <div
+          id="team-view-teamname"
           styleName="team-view-teamname"
         >
           Digital Transformation Agency

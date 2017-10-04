@@ -4,7 +4,7 @@ import expect from 'expect'
 import SellerOnboarding from './SellerOnboarding'
 import BuyerOnboarding from './BuyerOnboarding'
 
-test('Test suite for UserOnboarding container component', () => {
+describe('Test suite for UserOnboarding container component', () => {
   it('Because snaphots', () => {
     const component = renderer.create(<SellerOnboarding />)
     const tree = component.toJSON()

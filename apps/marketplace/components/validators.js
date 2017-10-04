@@ -147,7 +147,7 @@ export const validPhoneNumber = val => {
   return length >= 10
 }
 
-export const passwordsMatch = vals => vals.password === vals.confirmPassword
+export const passwordsMatch = vals => vals && vals.password === vals.confirmPassword
 
 export const passwordLength = val => val && val.length >= 10
 
