@@ -1,25 +1,21 @@
+/* eslint-disable */
 import React, { Component } from 'react'
-import { withRouter, Switch, Route, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import styles from './SellerCatalogue.scss'
 import AccordionRadioList from 'orams/components/AccordionRadioList/AccordionRadioList'
 import ResultsTable from 'orams/components/ResultsTable/ResultsTable'
+
+import styles from './SellerCatalogue.scss'
 
 const regions = {
   items: [
     {
       mainRegion: 'NSW',
-      subRegions: [
-        { name: 'Metro'},
-        { name: 'Mid North'}
-      ]
+      subRegions: [{ name: 'Metro' }, { name: 'Mid North' }]
     },
     {
       mainRegion: 'ACT',
-      subRegions: [
-        { name: 'Metro'},
-        { name: 'West'}
-      ]
+      subRegions: [{ name: 'Metro' }, { name: 'West' }]
     }
   ]
 }
@@ -28,17 +24,11 @@ const categories = {
   items: [
     {
       mainRegion: 'Rehabilitation services',
-      subRegions: [
-        { name: 'Ergonomic review'},
-        { name: 'Early intervention rehabilitation program'}
-      ]
+      subRegions: [{ name: 'Ergonomic review' }, { name: 'Early intervention rehabilitation program' }]
     },
     {
       mainRegion: 'Medical services',
-      subRegions: [
-        { name: 'Example service'},
-        { name: 'Second example service'}
-      ]
+      subRegions: [{ name: 'Example service' }, { name: 'Second example service' }]
     }
   ]
 }
@@ -78,15 +68,14 @@ const tableData = {
       price: '$192.50',
       phone: '1300 762 989',
       email: 'referrals@rehabmanagement.com.au'
-    },
+    }
   ]
 }
 
 class SellerCatalogue extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-    }
+    this.state = {}
   }
 
   render() {
@@ -100,8 +89,8 @@ class SellerCatalogue extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12 col-sm-3">
-            <AccordionRadioList title="1. Select region" data={regions}/>
-            <AccordionRadioList title="2. Select a category" data={categories}/>
+            <AccordionRadioList title="1. Select region" data={regions} />
+            <AccordionRadioList title="2. Select a category" data={categories} />
           </div>
           <div className="col-xs-12 col-sm-8 col-sm-push-1">
             <ResultsTable data={tableData} />
@@ -115,12 +104,9 @@ class SellerCatalogue extends Component {
 SellerCatalogue.propTypes = {}
 
 const mapStateToProps = state => {
-  return {
-
-  }
+  return {}
 }
 
-const mapDispatchToProps = dispatch => ({
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerCatalogue))

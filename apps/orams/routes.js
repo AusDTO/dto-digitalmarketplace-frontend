@@ -18,7 +18,11 @@ export const Routes = () =>
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/logout`} component={LogoutPage} />
     <PrivateRoute path={`${rootPath}/edit-profile`} component={EditProfilePage} customRedirectPath="/orams/login" />
-    <PrivateRoute path={`${rootPath}/seller-catalogue`} component={SellerCataloguePage} customRedirectPath="/orams/login" />
+    <PrivateRoute
+      path={`${rootPath}/seller-catalogue`}
+      component={SellerCataloguePage}
+      customRedirectPath="/orams/login"
+    />
     <Route component={NotFound} />
   </Switch>
 
