@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
 import range from 'lodash/range'
-import dmapi from 'marketplace/services/apiClient'
+import compact from 'lodash/compact'
+import { GENERAL_ERROR } from 'shared/messageConstants'
 
 import FileInput from './FileInput'
 
@@ -15,6 +16,7 @@ class FilesInput extends React.Component {
     hint: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
+    api: PropTypes.object.isRequired,
     model: PropTypes.string.isRequired,
     formFields: PropTypes.number.isRequired
   }
@@ -41,20 +43,31 @@ class FilesInput extends React.Component {
   }
 }
 
-const uploadDocument = (id, url, file) => () => {
+const uploadDocument = (url, api, id, file) => () => {
   const data = new FormData()
   data.append(id, file)
 
-  return dmapi({
+  return api({
     url: `${url}/${id}`,
     method: 'POST',
     data
-  }).then(
-    response =>
-      response.error
-        ? { errorMessage: response.data.errorMessage || response.statusText }
-        : { filename: response.data.filename }
-  )
+  }).then(response => {
+    if (response.error) {
+      if (response.statusCode === 413) {
+        return { errorMessage: 'File too large, please check file size limit' }
+      }
+      return {
+        errorMessage: compact([
+          response.data && response.data.errorMessage,
+          response.errorMessage,
+          response.statusText,
+          GENERAL_ERROR
+        ])[0]
+      }
+    }
+
+    return { filename: response.data.filename }
+  })
 }
 
 const mapStateToProps = (state, ownProps) => ({
@@ -63,7 +76,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onUpload: (id, url, data) => dispatch(uploadDocument(id.toString(), url, data)),
+  onUpload: (url, api, id, data) => dispatch(uploadDocument(url, api, id.toString(), data)),
   removeDocument: (model, name, id) => dispatch(actions.omit(`${model}.${name}`, id.toString())),
   createDocument: (model, name, id) => dispatch(actions.change(`${model}.${name}.${id}`, '')),
   updateDocumentName: (model, name, id, filename) => dispatch(actions.change(`${model}.${name}.${id}`, filename))

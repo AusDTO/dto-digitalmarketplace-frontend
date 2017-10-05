@@ -7,11 +7,12 @@ import format from 'date-fns/format'
 
 import PageAlert from '@gov.au/page-alerts'
 import { required, validEmail, validPercentage } from 'marketplace/components/validators'
-import ErrorBox from 'marketplace/components/shared/form/ErrorBox'
+import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
-import FilesInput from 'marketplace/components/shared/form/FilesInput'
-import Textarea from 'marketplace/components/shared/form/Textarea'
+import FilesInput from 'shared/form/FilesInput'
+import Textarea from 'shared/form/Textarea'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
+import dmapi from 'marketplace/services/apiClient'
 
 import styles from './BriefResponseForm.scss'
 
@@ -54,6 +55,7 @@ const BriefResponseForm = ({
                 formFields={3}
                 fieldLabel="Upload resume"
                 url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                api={dmapi}
               />
             : <PageAlert as="warning" setFocus={setFocus}>
                 <h4>There was a problem loading your details</h4>

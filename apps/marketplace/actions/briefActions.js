@@ -10,12 +10,24 @@ export const handleBriefInfoSuccess = response => ({
 })
 
 export const handleErrorFailure = response => dispatch => {
-  dispatch(
-    setErrorMessage(
-      response && response.data && response.data.errorMessage ? response.data.errorMessage : GENERAL_ERROR
-    )
-  )
+  if (!response) {
+    dispatch(setErrorMessage(GENERAL_ERROR))
+  } else {
+    if (response.data && response.data.errorMessage) {
+      dispatch(setErrorMessage(response.data.errorMessage))
+    }
+    if (response.errorMessage) {
+      if (response.code) {
+        dispatch(setErrorMessage(`${GENERAL_ERROR} (${response.code}: ${response.errorMessage})`))
+      } else {
+        dispatch(setErrorMessage(`${GENERAL_ERROR} (${response.errorMessage})`))
+      }
+    } else {
+      setErrorMessage(GENERAL_ERROR)
+    }
+  }
 }
+
 export const loadBrief = briefId => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: `/brief/${briefId}` }).then(response => {
