@@ -2,13 +2,14 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import AccordionRadioList from 'orams/components/AccordionRadioList/AccordionRadioList'
+import RegionsAccordionRadioList from 'orams/components/AccordionRadioList/RegionsAccordionRadioList'
+import CategoriesAccordionRadioList from 'orams/components/AccordionRadioList/CategoriesAccordionRadioList'
 import ResultsTable from 'orams/components/ResultsTable/ResultsTable'
 
 import styles from './SellerCatalogue.scss'
 
-const regions = {
-  items: [
+const regionsData = {
+  regions: [
     {
       mainRegion: 'NSW',
       subRegions: [{ name: 'Metro' }, { name: 'Mid North' }]
@@ -20,15 +21,15 @@ const regions = {
   ]
 }
 
-const categories = {
-  items: [
+const categoriesData = {
+  categories: [
     {
-      mainRegion: 'Rehabilitation services',
-      subRegions: [{ name: 'Ergonomic review' }, { name: 'Early intervention rehabilitation program' }]
+      mainCategory: 'Rehabilitation services',
+      subCategories: [{ name: 'Ergonomic review' }, { name: 'Early intervention rehabilitation program' }]
     },
     {
-      mainRegion: 'Medical services',
-      subRegions: [{ name: 'Example service' }, { name: 'Second example service' }]
+      mainCategory: 'Medical services',
+      subCategories: [{ name: 'Example service' }, { name: 'Second example service' }]
     }
   ]
 }
@@ -89,8 +90,8 @@ class SellerCatalogue extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12 col-sm-3">
-            <AccordionRadioList title="1. Select region" data={regions} />
-            <AccordionRadioList title="2. Select a category" data={categories} />
+            <RegionsAccordionRadioList title="1. Select region" data={regionsData} />
+            <CategoriesAccordionRadioList title="2. Select a category" data={categoriesData} />
           </div>
           <div className="col-xs-12 col-sm-8 col-sm-push-1">
             <ResultsTable data={tableData} />
