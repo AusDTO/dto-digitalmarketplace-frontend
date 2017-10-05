@@ -19,7 +19,7 @@ const dmapi = apiParams => {
   const {
     url,
     method = 'get',
-    baseURL = '/api',
+    baseURL = '/api/2',
     headers = defaultHeaders,
     params = {},
     data = {},
