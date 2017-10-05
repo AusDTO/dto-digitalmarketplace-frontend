@@ -43,16 +43,18 @@ const dmapi = apiParams => {
       if (response) {
         return response
       }
-      return true
+      return { error: true }
     })
     .catch(error => {
       if (error.response) {
         return {
           ...error.response,
+          code: error.code,
+          errorMessage: error.message,
           error: true
         }
       }
-      return true
+      return { errorMessage: error.message, code: error.code, error: true }
     })
 }
 

@@ -60,6 +60,10 @@ form fieldset legend {
   padding: 0;
 }
 
+main form textarea {
+  height: 14.375em;
+}
+
 main form .validation-message span {
   color: #c00;
   font-size: 0.875rem;

@@ -18,7 +18,8 @@ const Textfield = props => {
     maxLength,
     disabled,
     readOnly,
-    type
+    type,
+    defaultValue
   } = props
   return (
     <div className="field">
@@ -46,6 +47,7 @@ const Textfield = props => {
         maxLength={maxLength}
         disabled={disabled}
         readOnly={readOnly}
+        defaultValue={defaultValue}
       />
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
     </div>
@@ -55,6 +57,7 @@ const Textfield = props => {
 Textfield.defaultProps = {
   type: 'text',
   label: '',
+  defaultValue: '',
   validators: null,
   messages: null,
   description: '',
@@ -76,7 +79,8 @@ Textfield.propTypes = {
   pattern: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
-  type: PropTypes.string
+  type: PropTypes.string,
+  defaultValue: PropTypes.string
 }
 
 export default Textfield
