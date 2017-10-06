@@ -19,7 +19,7 @@ const dmapi = apiParams => {
   const {
     url,
     method = 'get',
-    baseURL = '/api',
+    baseURL = '/api/2',
     headers = defaultHeaders,
     params = {},
     data = {},
@@ -43,16 +43,18 @@ const dmapi = apiParams => {
       if (response) {
         return response
       }
-      return true
+      return { error: true }
     })
     .catch(error => {
       if (error.response) {
         return {
           ...error.response,
+          code: error.code,
+          errorMessage: error.message,
           error: true
         }
       }
-      return true
+      return { errorMessage: error.message, code: error.code, error: true }
     })
 }
 

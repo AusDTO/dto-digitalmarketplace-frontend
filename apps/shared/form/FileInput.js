@@ -29,12 +29,12 @@ class FileInput extends React.Component {
       errors: undefined
     })
 
-    const { id, model, name, url, onUpload, removeDocument, updateDocumentName, createDocument } = this.props
+    const { url, api, id, model, name, onUpload, removeDocument, updateDocumentName, createDocument } = this.props
     const file = e.target.files[0]
 
     removeDocument(model, name, id)
     createDocument(model, name, id)
-    onUpload(id, url, file).then(result => {
+    onUpload(url, api, id, file).then(result => {
       this.setState({
         uploading: false
       })
