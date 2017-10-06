@@ -16,13 +16,16 @@ const CategoriesAccordionRadioList = props => {
         </strong>
       </div>
       {categories.map((category, id = uniqueID()) =>
-        <div key={ categories.mainCategory + '-' + id}>
+        <div key={id}>
           <Accordion header={category.mainCategory}>
             {category.subCategories.map((subCategory, subId = uniqueID()) =>
-              <div key={category.mainCategory + '-' + subCategory.name + '-' + subId} className={styles.radioSection}>
-                <label className="uikit-control-input uikit-control-input--full" htmlFor={category.mainCategory + '-' + subCategory.name + '-' + subId}>
+              <div key={subId} className={styles.radioSection}>
+                <label
+                  className="uikit-control-input uikit-control-input--full"
+                  htmlFor={category.mainCategory + subCategory.name + subId}
+                >
                   <input
-                    id={category.mainCategory + '-' + subCategory.name + '-' + subId}
+                    id={category.mainCategory + subCategory.name + subId}
                     className="uikit-control-input__input"
                     type="radio"
                     name="categories"

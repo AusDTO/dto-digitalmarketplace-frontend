@@ -20,7 +20,10 @@ const RegionAccordionRadioList = props => {
           <Accordion header={region.mainRegion}>
             {region.subRegions.map((subRegion, subId = uniqueID()) =>
               <div key={subId} className={styles.radioSection}>
-                <label className="uikit-control-input uikit-control-input--full" htmlFor={region.mainRegion + subRegion.name + subId}>
+                <label
+                  className="uikit-control-input uikit-control-input--full"
+                  htmlFor={region.mainRegion + subRegion.name + subId}
+                >
                   <input
                     id={region.mainRegion + subRegion.name + subId}
                     className="uikit-control-input__input"
