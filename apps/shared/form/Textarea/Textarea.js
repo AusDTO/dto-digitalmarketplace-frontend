@@ -37,7 +37,7 @@ class Textarea extends Component {
 
   limitText(counter: number, wordsLeft: number) {
     let words = 'words'
-    let affix = 'remaining'
+    let affix = 'left'
 
     if (counter === 1 || counter === -1) {
       words = 'word'
@@ -81,7 +81,7 @@ class Textarea extends Component {
           onChange={this.onChange.bind(this)}
         />
         {limit
-          ? <span className="word-count-counter" aria-live="polite">
+          ? <span className="word-count-counter" aria-live="polite" style={{fontSize: "14px"}}>
               {this.limitText(counter, wordsLeft)}
             </span>
           : ''}
