@@ -4,9 +4,9 @@ import Accordion from '@gov.au/accordion'
 
 import styles from './AccordionRadioList.scss'
 
-const AccordionRadioList = props => {
+const CategoriesAccordionRadioList = props => {
   const { data } = props
-  const { items } = data
+  const { categories } = data
 
   return (
     <div className={styles.container}>
@@ -15,22 +15,25 @@ const AccordionRadioList = props => {
           {props.title}
         </strong>
       </div>
-      {items.map((item, id = uniqueID()) =>
+      {categories.map((category, id = uniqueID()) =>
         <div key={id}>
-          <Accordion header={item.mainRegion}>
-            {item.subRegions.map((subRegion, subId = uniqueID()) =>
+          <Accordion header={category.mainCategory}>
+            {category.subCategories.map((subCategory, subId = uniqueID()) =>
               <div key={subId} className={styles.radioSection}>
-                <label className="uikit-control-input uikit-control-input--full" htmlFor={subId}>
+                <label
+                  className="uikit-control-input uikit-control-input--full"
+                  htmlFor={category.mainCategory + subCategory.name + subId}
+                >
                   <input
-                    id={subId}
+                    id={category.mainCategory + subCategory.name + subId}
                     className="uikit-control-input__input"
                     type="radio"
-                    name="radio-ex"
+                    name="categories"
                     tabIndex="0"
-                    value={subRegion.name}
+                    value={subCategory.name}
                   />
                   <span className="uikit-control-input__text">
-                    {subRegion.name}
+                    {subCategory.name}
                   </span>
                 </label>
               </div>
@@ -42,4 +45,4 @@ const AccordionRadioList = props => {
   )
 }
 
-export default AccordionRadioList
+export default CategoriesAccordionRadioList
