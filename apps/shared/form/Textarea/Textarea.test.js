@@ -36,13 +36,13 @@ test('limitText', () => {
   let text
 
   text = txtarea.limitText(5, 500)
-  expect(text).toEqual('5 words remaining')
+  expect(text).toEqual('5 words left')
 
   text = txtarea.limitText(5, -5)
   expect(text).toEqual('5 words too many')
 
   text = txtarea.limitText(1, 1)
-  expect(text).toEqual('1 word remaining')
+  expect(text).toEqual('1 word left')
 
   text = txtarea.limitText(1, -1)
   expect(text).toEqual('1 word too many')

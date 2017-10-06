@@ -9,6 +9,7 @@ import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import { loadBrief, handleBriefResponseSubmit } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
+import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 
 class BriefPage extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class BriefPage extends Component {
       timeToComplete: this.state.submitClicked ? this.state.submitClicked - this.props.loadedAt : null,
       object_id: this.props.brief.id,
       object_type: 'Brief',
+      userType: this.props.app.userType,
       ...values
     })
   }
@@ -59,6 +61,16 @@ class BriefPage extends Component {
     return (
       <div className="brief-page">
         <Switch>
+          <Route
+            path={`${match.url}/published`}
+            render={() =>
+              <BriefSubmitted
+                setFocus={setFocus}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />}
+          />
           <Route
             path={`${match.url}/respond/submitted`}
             render={() =>
