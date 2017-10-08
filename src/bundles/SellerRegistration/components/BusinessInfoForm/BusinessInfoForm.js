@@ -64,7 +64,7 @@ class BusinessInfoForm extends BaseForm {
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="sole">1
+                            <label htmlFor="sole">1 employee
 
                             </label>
 
@@ -76,7 +76,7 @@ class BusinessInfoForm extends BaseForm {
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="2to19">2-19
+                            <label htmlFor="2to19">2 to 19 employees
 
                             </label>
 
@@ -88,7 +88,7 @@ class BusinessInfoForm extends BaseForm {
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="20to49">20-49
+                            <label htmlFor="20to49">20 to 49 employees
 
                             </label>
 
@@ -100,7 +100,7 @@ class BusinessInfoForm extends BaseForm {
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="50to99">50-99
+                            <label htmlFor="50to99">50 to 99 employees
 
                             </label>
 
@@ -112,7 +112,7 @@ class BusinessInfoForm extends BaseForm {
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="100to199">100-199
+                            <label htmlFor="100to199">100 to 199 employees
 
                             </label>
 
@@ -124,7 +124,7 @@ class BusinessInfoForm extends BaseForm {
                                 validators={{
                                     required
                                 }}/>
-                            <label htmlFor="200plus">200+
+                            <label htmlFor="200plus">More than 200 employees
 
                             </label>
                         </fieldset>
@@ -157,7 +157,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="nfp-social-enterprise"
                                 value="Not-for-profit / social enterprise"
                             />
-                            <label htmlFor="nfp-social-enterprise">Not-for-profit / social enterprise
+                            <label htmlFor="nfp-social-enterprise">Not for profit / social enterprise
                                 <p>An organisation that applies commercial strategies to maximize improvements in human
                                     or environmental wellbeing and reinvests profit to fulfil its mission.</p>
                             </label>
