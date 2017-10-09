@@ -17,7 +17,7 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
     {onClick && <div className="row">
       {header.type === 'edit' ?
         <div className="callout--calendar-event col-sm-8 col-xs-12">
-          <h3>Preview your updated profile</h3>
+          <b styleName={"styles.uikit-display-4"}>Preview your updated profile</b>
           <Form model={model}
                     action={`/sellers/application/submit/${header.id}`}
                     method="post"
@@ -30,11 +30,11 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
             <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
             <button type="submit">Submit updates</button>
             <Link to="/update">Go back and edit</Link>
-          </Form>  
+          </Form>
         </div>
       :
         <div className="callout--calendar-event col-sm-8 col-xs-12">
-          <h3>Preview your profile</h3>
+          <b>Preview your profile</b>
           <p>Buyers will see the information below when they visit your seller profile. If correct, continue to the
             legal
             disclosures and agreement.</p>

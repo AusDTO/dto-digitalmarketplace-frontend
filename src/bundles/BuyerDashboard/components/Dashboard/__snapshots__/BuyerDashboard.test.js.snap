@@ -68,6 +68,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
         <div
           styleName="dashboard-main"
         >
+          <h1>
+            Briefs
+          </h1>
           <section>
             <h2>
               Drafts

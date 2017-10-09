@@ -43,7 +43,7 @@ const ReviewHeader = (props) => {
 
           <div className="row" styleName="styles.meta-row">
             <div className="col-xs-12 col-sm-3">
-              <h4>Website</h4>
+              <h2 styleName={"styles.uikit-display-4"}>Website</h2>
             </div>
             <div className="col-xs-12 col-sm-8 col-sm-push-1">
               <p><a href={website} target="_blank" rel="external" styleName="external-link">{website}</a></p>
@@ -53,7 +53,7 @@ const ReviewHeader = (props) => {
           {twitter && (
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
-                <h4>Twitter</h4>
+                <h2 styleName={"styles.uikit-display-4"}>Twitter</h2>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
                 <p><a href={twitter} target="_blank" rel="external" styleName="external-link">{twitter}</a></p>
@@ -64,7 +64,7 @@ const ReviewHeader = (props) => {
           {linkedin && (
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
-                <h4>LinkedIn</h4>
+                <h2 styleName={"styles.uikit-display-4"}>LinkedIn</h2>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
                 <p><a href={linkedin} target="_blank" rel="external" styleName="external-link">{linkedin}</a></p>
@@ -82,7 +82,7 @@ const ReviewHeader = (props) => {
           {typeof public_profile === 'undefined' && hasContactDetails && (
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
-                <h4>Business contact</h4>
+                <h2 styleName={"styles.uikit-display-4"}>Business contact</h2>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
                 <p>

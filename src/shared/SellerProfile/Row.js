@@ -11,7 +11,7 @@ const Row = ({ title, children, marginBot, show }) => {
         <div className="row"  styleName={marginBot ? "styles.row rowNoMargin" : "styles.row"}>
             <hr />
             <div className="col-sm-3 col-xs-12">
-                <h4 className="seller-profile__section-title">{title}</h4>
+                <h2 styleName={"styles.uikit-display-4"} className="seller-profile__section-title">{title}</h2>
             </div>
             <div className="col-sm-8 col-sm-push-1 col-xs-12">
                 {children}
