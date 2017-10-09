@@ -43,9 +43,11 @@ exports[`ApplicationPreview renders with props 1`] = `
           <div
             className="col-xs-12 col-sm-3"
           >
-            <h4>
+            <h2
+              styleName="styles.uikit-display-4"
+            >
               Website
-            </h4>
+            </h2>
           </div>
           <div
             className="col-xs-12 col-sm-8 col-sm-push-1"
@@ -82,11 +84,12 @@ exports[`ApplicationPreview renders with props 1`] = `
           <div
             className="col-sm-3 col-xs-12"
           >
-            <h4
+            <h2
               className="seller-profile__section-title"
+              styleName="styles.uikit-display-4"
             >
               Areas of expertise
-            </h4>
+            </h2>
           </div>
           <div
             className="col-sm-8 col-sm-push-1 col-xs-12"
@@ -138,11 +141,12 @@ exports[`ApplicationPreview renders with props 1`] = `
           <div
             className="col-sm-3 col-xs-12"
           >
-            <h4
+            <h2
               className="seller-profile__section-title"
+              styleName="styles.uikit-display-4"
             >
               Company Details
-            </h4>
+            </h2>
           </div>
           <div
             className="col-sm-8 col-sm-push-1 col-xs-12"
@@ -166,11 +170,12 @@ exports[`ApplicationPreview renders with props 1`] = `
           <div
             className="col-sm-3 col-xs-12"
           >
-            <h4
+            <h2
               className="seller-profile__section-title"
+              styleName="styles.uikit-display-4"
             >
               Signed agreement
-            </h4>
+            </h2>
           </div>
           <div
             className="col-sm-8 col-sm-push-1 col-xs-12"

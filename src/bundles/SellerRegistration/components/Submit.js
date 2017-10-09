@@ -346,7 +346,8 @@ class SubmitStepForm extends BaseForm {
                     <ErrorBox focusOnMount={true} model={model}/>
                     {!applicationValid &&
                     (<div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
-                        <h4 id="validation-masthead-heading">All steps must be completed before submitting. You are yet to complete the following sections: {stepsRemaining}</h4></div>)
+                      <h4 id="validation-masthead-heading">All steps must be completed before submitting.</h4>
+                      You are yet to complete the following sections: {stepsRemaining}</div>)
                     }
 
                     <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
