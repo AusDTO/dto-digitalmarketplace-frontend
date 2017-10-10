@@ -39,6 +39,13 @@
   margin-left: 40px;
 }
 
+@media screen and (max-width: 767px) {
+  .email {
+    display: block;
+    margin-left: 0px;
+  }
+}
+
 .tableRow {
   border-bottom: solid 1px #777777;
   padding-bottom: 16px;

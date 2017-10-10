@@ -1,0 +1,70 @@
+@import "../../main.scss";
+
+.footerSmallText { 
+	display: block;
+  font-size: 14px;
+  line-height: 21px;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+.logoGovcrest {
+	display: inline-block;
+  max-height: 6.4em;
+  max-width: 100%;
+  height: 80px;
+  width: 315px;
+  background-image: url("/bundle/ato-logo-1.png")
+}
+
+.footerWrapper {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 75em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  color: #ffffff;
+  display: block;
+  line-height: 1.4;
+  margin: 0 0 .5em 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #ffffff;
+  display: block;
+  line-height: 0.5;
+  margin: 0 0 24px 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.logoSection {
+  text-align: right;
+}
+
+@media screen and (max-width: 767px) {
+  .logoSection {
+    margin-top: 34px;
+    text-align: left;
+  }
+}
+
+.footerWrapper a:focus {
+  background-color: white;
+  color: #000000;
+  -webkit-box-shadow: 0 0 0 3px #ff8629;
+  -moz-box-shadow: 0 0 0 3px #ff8629;
+  box-shadow: 0 0 0 3px #ff8629;
+  outline: none;
+}
+
+.footerWrapper a:hover {
+  background-color: white;
+  color: #000000;
+  outline: none;
+}
