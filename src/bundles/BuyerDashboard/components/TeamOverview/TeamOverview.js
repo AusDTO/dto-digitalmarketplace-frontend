@@ -6,7 +6,7 @@ import './TeamOverview.css'
 
 const TeamOverview = ({members}) => (
   <div styleName="teamoverview-main">
-    <h1>Active team members</h1>
+    <h2>Active team members</h2>
     <p>
       If this list contains members who have left your organisation, please <span styleName="contact-us-exlink">
         <a href='/contact-us' target="_blank" rel="external">contact us</a>
