@@ -20,7 +20,7 @@ const Textarea = props => {
   }
   return (
     <div className="field">
-      <label className="question-heading uikit-text-input__label" htmlFor={id}>
+      <label id={`${id}-label`} className="question-heading uikit-text-input__label" htmlFor={id}>
         {label}
       </label>
       {description &&
@@ -35,7 +35,7 @@ const Textarea = props => {
         controlProps={{
           name,
           id,
-          describedby: `${id}-hint`,
+          describedby: description ? `${id}-hint` : `${id}-label`,
           hint: description,
           ...controlProps
         }}

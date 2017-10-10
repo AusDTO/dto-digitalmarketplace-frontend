@@ -50,12 +50,11 @@ class BuyerDashboard extends Component {
         <section>
           <article styleName="team-view">
             <section styleName="team-view-heading">
-              <div id="team-view-teamname" styleName="team-view-teamname">
-                {team.teamName}
-              </div>
+
+              <h1> Dashboard</h1>
               <div styleName="team-view-username">
               <span>
-                {team.currentUserName}
+
                 <button type="button" onClick={() => this.toggleBriefChoice()}>Start a new brief</button>
               </span>
               </div>

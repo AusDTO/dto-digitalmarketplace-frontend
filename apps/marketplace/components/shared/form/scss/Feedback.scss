@@ -3,7 +3,14 @@
   clip: rect(0, 0, 0, 0);
   clip: rect(0 0 0 0);
 }
-
+.difficulty span:focus-within {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px #e05200;
+  -moz-box-shadow: 0 0 0 3px #e05200;
+  box-shadow: 0 0 0 3px #e05200;
+  border-radius: 0px;
+  display: inline-block;
+}
 .difficulty label {
   width: 133px;
   height: 50px;
@@ -19,6 +26,9 @@
 
 .difficulty input[type="radio"]:checked + label {
   background-color: #c3ebf4;
+}
+.difficulty label:nth-of-type(3){
+  margin-right: 0;
 }
 
 @media screen and (max-width: 480px) {
@@ -37,6 +47,7 @@
   .difficulty label:nth-of-type(2) div {
     right: 9px !important;
   }
+
   .difficulty label:first-of-type {
     margin-top: 0;
   }

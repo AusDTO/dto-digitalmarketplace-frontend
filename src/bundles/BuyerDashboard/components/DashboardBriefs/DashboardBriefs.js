@@ -22,7 +22,7 @@ export const DashboardBriefs = props => {
 
   return (
     <div styleName="dashboard-main">
-      <h1>Briefs</h1>
+
       <DraftBriefs draft={draft} teamBriefView={teamBriefView}/>
 
       <LiveBriefs live={live} teamBriefView={teamBriefView}/>
