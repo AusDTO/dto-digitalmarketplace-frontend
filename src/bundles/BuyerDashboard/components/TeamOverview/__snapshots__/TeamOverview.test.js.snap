@@ -4,9 +4,9 @@ exports[`TeamOverview renders with no props 1`] = `
 <div
   styleName="teamoverview-main"
 >
-  <h1>
+  <h2>
     Active team members
-  </h1>
+  </h2>
   <p>
     If this list contains members who have left your organisation, please 
     <span
@@ -30,9 +30,9 @@ exports[`TeamOverview renders with props 1`] = `
 <div
   styleName="teamoverview-main"
 >
-  <h1>
+  <h2>
     Active team members
-  </h1>
+  </h2>
   <p>
     If this list contains members who have left your organisation, please 
     <span

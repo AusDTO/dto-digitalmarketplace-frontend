@@ -9,17 +9,13 @@ exports[`BuyerDashboard renders without errors 1`] = `
       <section
         styleName="team-view-heading"
       >
-        <div
-          id="team-view-teamname"
-          styleName="team-view-teamname"
-        >
-          Digital Transformation Agency
-        </div>
+        <h1>
+           Dashboard
+        </h1>
         <div
           styleName="team-view-username"
         >
           <span>
-            Matt Smith
             <button
               onClick={[Function]}
               type="button"
@@ -68,9 +64,6 @@ exports[`BuyerDashboard renders without errors 1`] = `
         <div
           styleName="dashboard-main"
         >
-          <h1>
-            Briefs
-          </h1>
           <section>
             <h2>
               Drafts
