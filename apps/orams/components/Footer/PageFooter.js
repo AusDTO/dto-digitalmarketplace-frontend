@@ -1,6 +1,6 @@
 /* eslint-disable  react/no-danger */
 import React from 'react'
-import Footer, { FooterNav, FooterEnd } from '@gov.au/footer'
+import Footer, { FooterNav } from '@gov.au/footer'
 import styles from './PageFooter.scss'
 
 const PageFooter = () =>
@@ -25,7 +25,7 @@ const PageFooter = () =>
                 <li>
                   <a href="/disclaimer">Disclaimer</a>
                 </li>
-                 <li>
+                <li>
                   <a href="/disclaimer">Copyright</a>
                 </li>
               </ul>
@@ -36,7 +36,6 @@ const PageFooter = () =>
                 <div className={styles.footerSmallText}>© Copyright Australian Taxation Office</div>
               </div>
             </div>
-            
           </div>
         </FooterNav>
       </div>

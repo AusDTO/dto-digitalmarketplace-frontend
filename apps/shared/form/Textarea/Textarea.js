@@ -81,7 +81,7 @@ class Textarea extends Component {
           onChange={this.onChange.bind(this)}
         />
         {limit
-          ? <span className="word-count-counter" aria-live="polite" style={{fontSize: "14px"}}>
+          ? <span className="word-count-counter" aria-live="polite" style={{ fontSize: '14px' }}>
               {this.limitText(counter, wordsLeft)}
             </span>
           : ''}
