@@ -36,7 +36,6 @@ export class Feedback extends React.Component {
                     {this.props.difficultyQuestion}
                   </b>
                 </legend>
-                <span>
                   <Control.radio
                     model=".difficulty"
                     type="radio"
@@ -113,14 +112,14 @@ export class Feedback extends React.Component {
                       />Difficult
                     </div>
                   </label>
-                </span>
               </fieldset>
               <Textarea
                 id="comment"
                 name="comment"
                 label={this.props.commentQuestion}
                 model=".comment"
-                controlProps={{ limit: 150 }}
+                messages={{ limitWords: "Your feedback has exceeded the 150 word limit" }}
+                controlProps={{ limit: 150}}
               />
               <button className="uikit-btn">Send feedback</button>
             </LocalForm>}
