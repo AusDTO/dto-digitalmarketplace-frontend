@@ -1,9 +1,10 @@
+/* eslint-disable */
 import React from 'react'
 import styles from './HomePage.scss'
 
 const HomePage = () =>
   <div>
-    <section className={styles.heroMain}>
+    {/*<section className={styles.heroMain}>
       <div className={styles.wrapper}>
         <div className={styles.contentHero}>
           <h1 className={styles.siteTitle}>
@@ -18,7 +19,7 @@ const HomePage = () =>
           <p>Access more digital opportunities across government.</p>
         </div>
       </div>
-    </section>
+    </section>*/}
     <section className={styles.contentMain} />
   </div>
 

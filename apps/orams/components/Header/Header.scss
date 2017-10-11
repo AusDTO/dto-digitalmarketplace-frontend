@@ -1,14 +1,27 @@
-@import "../../main.scss";
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 75em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 1.6em;
+}
+
+.wrapper::after {
+  clear: both;
+  content: "";
+  display: table;
+}
 
 .marketplaceHeader {
   position: relative;
   margin-bottom: 0px;
-  background-color: #18788d;
+  background-color: #202751;
   color: rgb(255, 255, 255);
   padding: 1.2em 0px;
 }
 
-.marketplaceHeader .marketplaceLogo {
+.oramsLogo {
   float: left;
 }
 
@@ -46,14 +59,14 @@
   transition-property: background-color, border-color, color;
   text-decoration: none;
   outline: none;
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid #f5d815;
 }
 
 .badgeBeta {
   font-weight: 700;
   vertical-align: super;
   background-color: rgb(255, 255, 255);
-  color: rgb(24, 120, 141);
+  color: #202751;
   padding: 0.3em 0.6em;
   display: inline-block;
   line-height: 1;
@@ -95,4 +108,8 @@
   .marketplaceHeader {
       padding-bottom: 1.2em;
   }
+}
+
+.subtitle {
+  font-size: 18px;
 }
