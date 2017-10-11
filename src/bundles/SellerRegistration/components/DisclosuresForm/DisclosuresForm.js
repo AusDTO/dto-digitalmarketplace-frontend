@@ -49,7 +49,7 @@ class DisclosuresForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-                        <fieldset>
+
                             <YesNoDetails
                               name="structual_changes"
                               id="structual_changes"
@@ -110,7 +110,6 @@ class DisclosuresForm extends BaseForm {
                                   required: 'Please provide an answer to the Other circumstances question',
                               }}
                             />
-                        </fieldset>
 
                         {children}
 

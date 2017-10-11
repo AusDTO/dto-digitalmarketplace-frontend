@@ -99,8 +99,8 @@ class LinkInput extends React.Component {
                                          <Textfield
                                              model={`${model}.${i}.title`}
                                              name="title"
-                                             id="title"
-                                             htmlFor="title"
+                                             id={`${model}.${i}.title`}
+                                             htmlFor={`${model}.${i}.title`}
                                              label="Link Title"
                                              description="As you would like it shown on the Digital Marketplace."
                                          />

@@ -250,80 +250,84 @@ exports[`CaseStudyForm renders 1`] = `
         >
           List the key achievements of this project.
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="outcome"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <div
         className="field"
@@ -340,80 +344,84 @@ exports[`CaseStudyForm renders 1`] = `
         >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="project_links"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-0"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-1"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <h3>
         Referee
@@ -788,80 +796,84 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         >
           List the key achievements of this project.
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="outcome"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <div
         className="field"
@@ -878,80 +890,84 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="project_links"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-0"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-1"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <h3>
         Referee
@@ -1517,80 +1533,84 @@ exports[`CaseStudyForm renders with errors 1`] = `
             You must provide at least one outcome.
           </span>
         </a>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="outcome"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box invalid"
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box invalid"
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box invalid"
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box invalid"
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <div
         className="field"
@@ -1607,80 +1627,84 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="project_links"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-0"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-1"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <h3>
         Referee
@@ -2113,80 +2137,84 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         >
           List the key achievements of this project.
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="outcome"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue=""
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <div
         className="field"
@@ -2203,80 +2231,84 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="project_links"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-0"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-1"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <h3>
         Referee
@@ -2651,80 +2683,84 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         >
           List the key achievements of this project.
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="outcome"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue="Outcome 1"
-                id="outcome-0"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue="Outcome 1"
+                  id="outcome-0"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="outcome-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="outcome-hint"
-                className="text-box "
-                defaultValue="Outcome 2"
-                id="outcome-1"
-                name="outcome[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="outcome-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="outcome-hint"
+                  className="text-box "
+                  defaultValue="Outcome 2"
+                  id="outcome-1"
+                  name="outcome[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <div
         className="field"
@@ -2741,80 +2777,84 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         >
           Link to any supporting material for your case study. This can include a case study on your website, case study video or the live project. Links must begin with http
         </p>
-        <div>
-          <div
-            className="list-entry row"
-          >
+        <fieldset
+          id="project_links"
+        >
+          <div>
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-0"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                1
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-0"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-0"
+                >
+                  1
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-0"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="list-entry row"
-          >
             <div
-              className="col-xs-12 col-sm-9"
+              className="list-entry row"
             >
-              <label
-                className="text-box-number-label"
-                htmlFor="project_links-1"
+              <div
+                className="col-xs-12 col-sm-9"
               >
-                2
-                .
-              </label>
-              <input
-                aria-describedby="project_links-hint"
-                className="text-box "
-                defaultValue=""
-                id="project_links-1"
-                name="project_links[]"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="text"
-              />
+                <label
+                  className="text-box-number-label"
+                  htmlFor="project_links-1"
+                >
+                  2
+                  .
+                </label>
+                <input
+                  aria-describedby="project_links-hint"
+                  className="text-box "
+                  defaultValue=""
+                  id="project_links-1"
+                  name="project_links[]"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                />
+              </div>
+              <button
+                className="button-secondary col-xs-12 col-sm-3"
+                onClick={[Function]}
+                type="button"
+              >
+                remove 
+                <span
+                  className="visuallyhidden"
+                >
+                  number 
+                  2
+                </span>
+              </button>
             </div>
             <button
-              className="button-secondary col-xs-12 col-sm-3"
+              className="button-secondary"
               onClick={[Function]}
               type="button"
             >
-              remove 
-              <span
-                className="visuallyhidden"
-              >
-                number 
-                2
-              </span>
+              Add another row
             </button>
           </div>
-          <button
-            className="button-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            Add another row
-          </button>
-        </div>
+        </fieldset>
       </div>
       <h3>
         Referee

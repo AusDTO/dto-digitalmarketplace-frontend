@@ -36,90 +36,90 @@ export class Feedback extends React.Component {
                     {this.props.difficultyQuestion}
                   </b>
                 </legend>
-                  <Control.radio
-                    model=".difficulty"
-                    type="radio"
-                    name="difficulty"
-                    id="easy"
-                    value="easy"
-                    controlProps={{
-                      onChange: this.onDifficultyChange
-                    }}
-                  />
+                <Control.radio
+                  model=".difficulty"
+                  type="radio"
+                  name="difficulty"
+                  id="easy"
+                  value="easy"
+                  controlProps={{
+                    onChange: this.onDifficultyChange
+                  }}
+                />
 
-                  <label htmlFor="easy" className="uikit-btn uikit-btn--tertiary">
-                    <div>
-                      <Icon
-                        value="smile-o"
-                        color="#000000"
-                        size={24}
-                        style={{
-                          position: 'relative',
-                          right: '10px',
-                          top: '6px',
-                          float: 'right'
-                        }}
-                      />Easy
-                    </div>
-                  </label>
-                  <Control.radio
-                    model=".difficulty"
-                    type="radio"
-                    name="difficulty"
-                    id="ok"
-                    value="ok"
-                    controlProps={{
-                      onChange: this.onDifficultyChange
-                    }}
-                  />
-                  <label htmlFor="ok" className="uikit-btn uikit-btn--tertiary" style={{ width: '115px' }}>
-                    <div>
-                      <Icon
-                        value="meh-o"
-                        color="#000000"
-                        size={24}
-                        style={{
-                          position: 'relative',
-                          right: '25px',
-                          top: '6px',
-                          float: 'right'
-                        }}
-                      />OK
-                    </div>
-                  </label>
-                  <Control.radio
-                    model=".difficulty"
-                    type="radio"
-                    name="difficulty"
-                    id="difficult"
-                    value="difficult"
-                    controlProps={{
-                      onChange: this.onDifficultyChange
-                    }}
-                  />
-                  <label htmlFor="difficult" className="uikit-btn uikit-btn--tertiary" style={{ width: '155px' }}>
-                    <div style={{ width: '6.5em' }}>
-                      <Icon
-                        value="frown-o"
-                        color="#000000"
-                        size={24}
-                        style={{
-                          position: 'relative',
-                          right: '10px',
-                          top: '6px',
-                          float: 'right'
-                        }}
-                      />Difficult
-                    </div>
-                  </label>
+                <label htmlFor="easy" className="uikit-btn uikit-btn--tertiary">
+                  <div>
+                    <Icon
+                      value="smile-o"
+                      color="#000000"
+                      size={24}
+                      style={{
+                        position: 'relative',
+                        right: '10px',
+                        top: '6px',
+                        float: 'right'
+                      }}
+                    />Easy
+                  </div>
+                </label>
+                <Control.radio
+                  model=".difficulty"
+                  type="radio"
+                  name="difficulty"
+                  id="ok"
+                  value="ok"
+                  controlProps={{
+                    onChange: this.onDifficultyChange
+                  }}
+                />
+                <label htmlFor="ok" className="uikit-btn uikit-btn--tertiary" style={{ width: '115px' }}>
+                  <div>
+                    <Icon
+                      value="meh-o"
+                      color="#000000"
+                      size={24}
+                      style={{
+                        position: 'relative',
+                        right: '25px',
+                        top: '6px',
+                        float: 'right'
+                      }}
+                    />OK
+                  </div>
+                </label>
+                <Control.radio
+                  model=".difficulty"
+                  type="radio"
+                  name="difficulty"
+                  id="difficult"
+                  value="difficult"
+                  controlProps={{
+                    onChange: this.onDifficultyChange
+                  }}
+                />
+                <label htmlFor="difficult" className="uikit-btn uikit-btn--tertiary" style={{ width: '155px' }}>
+                  <div style={{ width: '6.5em' }}>
+                    <Icon
+                      value="frown-o"
+                      color="#000000"
+                      size={24}
+                      style={{
+                        position: 'relative',
+                        right: '10px',
+                        top: '6px',
+                        float: 'right'
+                      }}
+                    />Difficult
+                  </div>
+                </label>
               </fieldset>
               <Textarea
                 id="comment"
                 name="comment"
                 label={this.props.commentQuestion}
                 model=".comment"
-                messages={{ limitWords: "Your feedback has exceeded the 150 word limit" }}
-                controlProps={{ limit: 150}}
+                messages={{ limitWords: 'Your feedback has exceeded the 150 word limit' }}
+                controlProps={{ limit: 150 }}
               />
               <button className="uikit-btn">Send feedback</button>
             </LocalForm>}
