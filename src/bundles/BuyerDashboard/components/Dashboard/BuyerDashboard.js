@@ -50,11 +50,12 @@ class BuyerDashboard extends Component {
         <section>
           <article styleName="team-view">
             <section styleName="team-view-heading">
-
-              <h1> Dashboard</h1>
+              <div id="team-view-teamname" styleName="team-view-teamname">
+                {team.teamName}
+              </div>
               <div styleName="team-view-username">
               <span>
-
+              <h1> Dashboard</h1>
                 <button type="button" onClick={() => this.toggleBriefChoice()}>Start a new brief</button>
               </span>
               </div>
@@ -78,8 +79,9 @@ class BuyerDashboard extends Component {
                     Team overview
                   </Link>
                 </div>
+
+                <hr/>
               </div>
-              <hr/>
             </article>
             <article>
               {(briefView === 'mybriefs') && (

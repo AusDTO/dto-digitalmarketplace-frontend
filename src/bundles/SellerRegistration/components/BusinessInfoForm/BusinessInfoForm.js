@@ -128,8 +128,9 @@ class BusinessInfoForm extends BaseForm {
 
                             </label>
                         </fieldset>
-                        <fieldset>
+                        <div>
                             <legend>Business identifiers (optional)</legend>
+                          <br/>
                             <Control.checkbox
                                 model={`${model}.seller_type.start_up`}
                                 id="start-up"
@@ -161,10 +162,10 @@ class BusinessInfoForm extends BaseForm {
                                 <p>An organisation that applies commercial strategies to maximize improvements in human
                                     or environmental wellbeing and reinvests profit to fulfil its mission.</p>
                             </label>
-                        </fieldset>
-                        <fieldset>
+                        </div>
+                        <div>
                             <legend>Location (optional)</legend>
-
+                          <br/>
 
                             <Control.checkbox
                                 model={`${model}.seller_type.regional`}
@@ -183,9 +184,12 @@ class BusinessInfoForm extends BaseForm {
                             <label htmlFor="travel">
                                 Happy to travel for regional or interstate opportunities
                             </label>
-                        </fieldset>
-                        <fieldset>
+                          <br/>
+                        </div>
+                        <div>
+                          <br/>
                             <legend>Diversity and inclusion (optional)</legend>
+                          <br/>
                             <p>The Marketplace is committed to providing a diverse and inclusive environment.<br/>
                                 Responses are optional and for demographic purposes only.</p>
                             <Control.checkbox
@@ -233,11 +237,11 @@ class BusinessInfoForm extends BaseForm {
                                 href="http://www.supplynation.org.au/search" rel="external" target="_blank">Supply Nation.</a></p>
                             </label>
 
-                        </fieldset>
+                        </div>
 
-                        <fieldset>
+                        <div>
                             <legend>Has your business worked with government before?</legend>
-
+                          <br/>
                             <Control.checkbox
                                 model={`${model}.government_experience.no_experience`}
                                 name="no_experience"
@@ -274,7 +278,7 @@ class BusinessInfoForm extends BaseForm {
                                 value="international"/>
                             <label htmlFor="international">Yes, with government outside Australia</label>
 
-                        </fieldset>
+                        </div>
 
 
                         {children}

@@ -26,9 +26,8 @@ class RecruiterForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Are you a recruiter?</h1>
-                    <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables. 
-                       Examples include temporary and contract recruitment.</p>
+
+
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
@@ -44,7 +43,11 @@ class RecruiterForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-                        <fieldset className="field">
+                        <fieldset>
+                          <legend><h1 tabIndex="-1">Are you a recruiter?</h1>
+                            </legend>
+                          <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
+                            Examples include temporary and contract recruitment.</p>
                           <Control.radio
                             model={`${model}.recruiter`}
                             name="recruiter"

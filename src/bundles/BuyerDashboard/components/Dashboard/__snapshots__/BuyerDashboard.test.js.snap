@@ -9,13 +9,19 @@ exports[`BuyerDashboard renders without errors 1`] = `
       <section
         styleName="team-view-heading"
       >
-        <h1>
-           Dashboard
-        </h1>
+        <div
+          id="team-view-teamname"
+          styleName="team-view-teamname"
+        >
+          Digital Transformation Agency
+        </div>
         <div
           styleName="team-view-username"
         >
           <span>
+            <h1>
+               Dashboard
+            </h1>
             <button
               onClick={[Function]}
               type="button"
@@ -57,8 +63,8 @@ exports[`BuyerDashboard renders without errors 1`] = `
               Team overview
             </a>
           </div>
+          <hr />
         </div>
-        <hr />
       </article>
       <article>
         <div

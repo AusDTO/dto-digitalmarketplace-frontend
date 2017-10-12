@@ -108,7 +108,7 @@ class DomainSelector extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-                        <fieldset className="field">
+                        <div className="field">
                             {domains.map(({key, label, description}, i) => {
                                 return (
                                     <div key={key}>
@@ -122,7 +122,7 @@ class DomainSelector extends BaseForm {
                                     </div>
                                 )
                             })}
-                        </fieldset>
+                        </div>
 
                         {children}
 

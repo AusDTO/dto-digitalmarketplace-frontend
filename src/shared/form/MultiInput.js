@@ -32,6 +32,7 @@ const MultiInput = (props) => {
           id={id}
         />
       }
+      <fieldset id={htmlFor}>
       <Control
         model={model}
         controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
@@ -44,6 +45,7 @@ const MultiInput = (props) => {
         validators={validators}
         component={MultiInputComponent}
       />
+      </fieldset>
     </div>
   );
 };
