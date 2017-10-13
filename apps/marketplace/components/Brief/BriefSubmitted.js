@@ -45,7 +45,7 @@ const BriefSubmitted = props =>
         <Feedback
           app={props.app}
           handleSubmit={props.handleSubmit}
-          difficultyQuestion="How easy or difficult was it for you to provide a response to this brief?"
+          difficultyQuestion="How easy or difficult was it for you to publish this brief?"
           commentQuestion="How would you improve publishing a brief?"
           objectAction="published"
         />
