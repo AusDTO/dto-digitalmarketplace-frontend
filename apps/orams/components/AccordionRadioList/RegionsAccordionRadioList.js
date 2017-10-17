@@ -1,11 +1,12 @@
+/* eslint-disable */
 import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
 import Accordion from '@gov.au/accordion'
 
 import styles from './AccordionRadioList.scss'
 
-const RegionAccordionRadioList = props => {
-  const { data } = props
+const RegionsAccordionRadioList = props => {
+  const { data, onRadioListClick, regionAccordionOpen } = props
   const { regions } = data
 
   return (
@@ -15,34 +16,38 @@ const RegionAccordionRadioList = props => {
           {props.title}
         </strong>
       </div>
-      {regions.map((region, id = uniqueID()) =>
-        <div key={id}>
-          <Accordion header={region.mainRegion}>
-            {region.subRegions.map((subRegion, subId = uniqueID()) =>
-              <div key={subId} className={styles.radioSection}>
-                <label
-                  className="uikit-control-input uikit-control-input--full"
-                  htmlFor={region.mainRegion + subRegion.name + subId}
-                >
-                  <input
-                    id={region.mainRegion + subRegion.name + subId}
-                    className="uikit-control-input__input"
-                    type="radio"
-                    name="regions"
-                    tabIndex="0"
-                    value={subRegion.name}
-                  />
-                  <span className="uikit-control-input__text">
-                    {subRegion.name}
-                  </span>
-                </label>
+      {regions &&
+        regions.map((region, id = uniqueID()) =>
+          <div key={id}>
+            <Accordion header={region.mainRegion} open={regionAccordionOpen === region.mainRegion + id}>
+              <div>
+                {region.subRegions.map((subRegion, subId = uniqueID()) =>
+                  <div key={subId} className={styles.radioSection}>
+                    <label
+                      className="uikit-control-input uikit-control-input--full"
+                      htmlFor={region.mainRegion + subRegion.name + subId}
+                    >
+                      <input
+                        id={region.mainRegion + subRegion.name + subId}
+                        className="uikit-control-input__input"
+                        type="radio"
+                        name="region"
+                        tabIndex="0"
+                        value={subRegion.id}
+                        onClick={(e) => onRadioListClick(e, region.mainRegion + id)}
+                      />
+                      <span className="uikit-control-input__text">
+                        {subRegion.name}
+                      </span>
+                    </label>
+                  </div>
+                )}
               </div>
-            )}
-          </Accordion>
-        </div>
-      )}
+            </Accordion>
+          </div>
+        )}
     </div>
   )
 }
 
-export default RegionAccordionRadioList
+export default RegionsAccordionRadioList

@@ -13,47 +13,56 @@ class ResultsTable extends Component {
   }
 
   render(props) {
-    const { suppliers, alert } = this.props.data
+    const { categories, alert } = this.props.data
     return (
       <div>
-        {alert &&
-          <PageAlert as={alert.type}>
-            <h4>
-              {alert.message}
-            </h4>
-          </PageAlert>}
+        {alert
+          ? <PageAlert as={alert.type}>
+              <h4>
+                {alert.message}
+              </h4>
+            </PageAlert>
+          : ''}
         <div className={styles.tableContainer}>
-          {suppliers.map((supplier, id = uniqueID()) =>
-            <div key={id} className={styles.tableRow}>
-              <div className="row">
-                <div className="col-xs-12 col-sm-12">
-                  <span className={styles.name}>
-                    <a href="#">
-                      {supplier.name}
-                    </a>
-                  </span>
-                  <span className={styles.priceElements}>
-                    <div className={styles.price}>
-                      {supplier.price}
+          {categories &&
+            categories.map((category, id = uniqueID()) =>
+              <div key={id + category.category}>
+                <div className={styles.categoryTitle}>
+                  {category.category}
+                </div>
+                {category.suppliers.map((supplier, id = uniqueID()) =>
+                  <div key={id} className={styles.tableRow}>
+                    <div className="row">
+                      <div className="col-xs-12 col-sm-12">
+                        <span className={styles.name}>
+                          <a href="#">
+                            {supplier.name}
+                          </a>
+                        </span>
+                        <span className={styles.priceElements}>
+                          <div className={styles.price}>
+                            {'$' + supplier.price}
+                          </div>
+                          <div className={styles.incGst}>inc GST</div>
+                        </span>
+                      </div>
                     </div>
-                    <div className={styles.incGst}>inc GST</div>
-                  </span>
-                </div>
+                    <div className="row">
+                      <div className="col-xs-12 col-sm-12">
+                        <span className={styles.phone}>
+                          {supplier.phone}
+                        </span>
+                        <span className={styles.email}>
+                          <a href={'mailto:' + supplier.email}>
+                            {supplier.email}
+                          </a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="row">
-                <div className="col-xs-12 col-sm-12">
-                  <span className={styles.phone}>
-                    {supplier.phone}
-                  </span>
-                  <span className={styles.email}>
-                    <a href={'mailto:' + supplier.email}>
-                      {supplier.email}
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
+            )}
         </div>
       </div>
     )

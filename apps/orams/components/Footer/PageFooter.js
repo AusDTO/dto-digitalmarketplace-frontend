@@ -2,6 +2,7 @@
 import React from 'react'
 import Footer, { FooterNav } from '@gov.au/footer'
 import styles from './PageFooter.scss'
+import logoGovCrest from './ato-logo-02.svg'
 
 const PageFooter = () =>
   <div className="orams-footer">
@@ -32,7 +33,9 @@ const PageFooter = () =>
             </div>
             <div className="col-md-6 col-sm-6">
               <div className={styles.logoSection}>
-                <div className={styles.logoGovcrest} />
+                <div className={styles.logoGovcrest}>
+                  <div dangerouslySetInnerHTML={{ __html: logoGovCrest }} />
+                </div>
                 <div className={styles.footerSmallText}>© Copyright Australian Taxation Office</div>
               </div>
             </div>
