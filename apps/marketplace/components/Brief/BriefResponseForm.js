@@ -67,6 +67,7 @@ const BriefResponseForm = ({
             id="availability"
             htmlFor="availability"
             label="When can you start?"
+            maxLength={100}
             description={
               brief.lotSlug && brief.lotSlug === 'digital-professionals'
                 ? <span>

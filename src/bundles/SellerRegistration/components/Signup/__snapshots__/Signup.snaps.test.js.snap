@@ -204,6 +204,7 @@ exports[`Signup renders 1`] = `
   </aside>
   <article
     className="col-xs-12 col-sm-8 col-sm-push-1"
+    id="content"
   >
     <div>
       <div>
@@ -494,6 +495,7 @@ exports[`Signup renders empty Your Info form 1`] = `
   </aside>
   <article
     className="col-xs-12 col-sm-8 col-sm-push-1"
+    id="content"
   >
     <div
       className="layout"
@@ -929,6 +931,7 @@ exports[`Signup renders populated Your Info form 1`] = `
   </aside>
   <article
     className="col-xs-12 col-sm-8 col-sm-push-1"
+    id="content"
   >
     <div
       className="layout"
