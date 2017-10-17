@@ -19,11 +19,11 @@ class Datefield extends React.Component {
     const { date, model, setDate } = this.props;
     if (date && typeof date === 'string') {
       let propDate = new Date(date);
-      this.state = {
+      this.setState({
         day: format(propDate, 'DD'),
         month: format(propDate, 'MM'),
         year: format(propDate, 'YYYY')
-      }
+      })
     }
     else {
       setDate(model, '2017-01-01');
@@ -42,7 +42,7 @@ class Datefield extends React.Component {
   }
 
   render() {
-    const { id, htmlFor, label, description } = this.props;
+    const { id, label, description } = this.props;
     const {
       day,
       month,
@@ -51,17 +51,17 @@ class Datefield extends React.Component {
 
     return (
       <div styleName="date-input">
-        <label htmlFor={htmlFor} className="question-heading">{label}</label>
+        <div className="question-heading">{label}</div>
         {description && (
           <p className="hint" id={`${id}-hint`}>{description}</p>
         )}
 
         <div styleName="fields flush">
-          <label htmlFor={htmlFor} styleName="date-heading">Day</label>
+          <label htmlFor={`${id}-day`} styleName="date-heading">Day</label>
           <input
             type="text"
             name="day"
-            id="day"
+            id={`${id}-day`}
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={day}
@@ -71,11 +71,11 @@ class Datefield extends React.Component {
           <div styleName="slashSpacer">/</div>
 
         <div styleName="fields flush">
-          <label htmlFor={htmlFor} styleName="date-heading">Month</label>
+          <label htmlFor={`${id}-month`} styleName="date-heading">Month</label>
           <input
             type="text"
             name="month"
-            id='month'
+            id={`${id}-month`}
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={month}
@@ -85,11 +85,11 @@ class Datefield extends React.Component {
           <div styleName="slashSpacer">/</div>
 
         <div styleName="fields">
-          <label htmlFor={htmlFor} styleName="date-heading">Year</label>
+          <label htmlFor={`${id}-year`} styleName="date-heading">Year</label>
           <input
             type="text"
             name="year"
-            id="year"
+            id={`${id}-year`}
             maxLength="4"
             onChange={this.onChange.bind(this)}
             defaultValue={year}
@@ -118,7 +118,6 @@ const mapDispatchToProps = (dispatch) => {
 Datefield.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  htmlFor: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   model: PropTypes.oneOfType([
     PropTypes.func,

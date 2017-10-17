@@ -531,7 +531,6 @@ exports[`Signup renders empty Your Info form 1`] = `
               The contact listed on your seller profile page and the person who receives new opportunities by email.
             </p>
             <input
-              aria-describedby="contact_name-hint"
               className=""
               disabled={false}
               id="contact_name"
@@ -557,7 +556,6 @@ exports[`Signup renders empty Your Info form 1`] = `
               Email
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="contact_email"
@@ -583,7 +581,6 @@ exports[`Signup renders empty Your Info form 1`] = `
               Phone
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="contact_phone"
@@ -615,7 +612,6 @@ exports[`Signup renders empty Your Info form 1`] = `
               This is the person authorised to enter into contracts on behalf of the business. 
             </p>
             <input
-              aria-describedby="representative-hint"
               className=""
               disabled={false}
               id="representative"
@@ -641,7 +637,6 @@ exports[`Signup renders empty Your Info form 1`] = `
               Email
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="email"
@@ -667,7 +662,6 @@ exports[`Signup renders empty Your Info form 1`] = `
               Phone
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="phone"
@@ -978,7 +972,6 @@ exports[`Signup renders populated Your Info form 1`] = `
               The contact listed on your seller profile page and the person who receives new opportunities by email.
             </p>
             <input
-              aria-describedby="contact_name-hint"
               className=""
               disabled={false}
               id="contact_name"
@@ -1004,7 +997,6 @@ exports[`Signup renders populated Your Info form 1`] = `
               Email
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="contact_email"
@@ -1030,7 +1022,6 @@ exports[`Signup renders populated Your Info form 1`] = `
               Phone
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="contact_phone"
@@ -1062,7 +1053,6 @@ exports[`Signup renders populated Your Info form 1`] = `
               This is the person authorised to enter into contracts on behalf of the business. 
             </p>
             <input
-              aria-describedby="representative-hint"
               className=""
               disabled={false}
               id="representative"
@@ -1088,7 +1078,6 @@ exports[`Signup renders populated Your Info form 1`] = `
               Email
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="email"
@@ -1114,7 +1103,6 @@ exports[`Signup renders populated Your Info form 1`] = `
               Phone
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="phone"

@@ -90,10 +90,10 @@ class ProjectForm extends BaseForm {
 
         return (
             <Layout>
-                <header>
+                <header id="content">
 
                     <h1 tabIndex="-1" ref="header"
-                        aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add a'} project</h1>
+                        >{mode === 'edit' ? 'Edit' : 'Add a'} project</h1>
                     <p>Share ideas for collaboration, or lessons learned building smarter communities and digital
                         services. Projects will be added to the new collaboration area on the Marketplace in the coming
                         weeks.</p>
@@ -360,7 +360,7 @@ class ProjectForm extends BaseForm {
                             description="Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http"
                         />
 
-                        <h3>Project Contact</h3>
+                        <h2>Project Contact</h2>
 
                         <Textfield
                             model={`${model}.contact_name`}

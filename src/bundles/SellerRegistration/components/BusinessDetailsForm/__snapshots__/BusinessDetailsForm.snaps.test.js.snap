@@ -37,7 +37,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           As you would like it shown on the Digital Marketplace.
         </p>
         <input
-          aria-describedby="name-hint"
           className=""
           disabled={false}
           id="name"
@@ -78,7 +77,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           </span>
         </p>
         <input
-          aria-describedby="abn-hint"
           className=""
           disabled={false}
           id="abn"
@@ -100,6 +98,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="summary"
+          id="summary-label"
         >
           Summary
         </label>
@@ -144,7 +143,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           Provide a link to your website beginning with http
         </p>
         <input
-          aria-describedby="website-hint"
           className=""
           disabled={false}
           id="website"
@@ -176,7 +174,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           Provide a LinkedIn URL beginning with http
         </p>
         <input
-          aria-describedby="linkedin-hint"
           className=""
           disabled={false}
           id="linkedin"
@@ -208,7 +205,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           Principal place of business.
         </p>
         <input
-          aria-describedby="address_line-hint"
           className=""
           disabled={false}
           id="address_line"
@@ -234,7 +230,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           Suburb
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="suburb"
@@ -260,7 +255,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           State
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="state"
@@ -286,7 +280,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           Postcode
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="postal_code"
@@ -400,7 +393,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           As you would like it shown on the Digital Marketplace.
         </p>
         <input
-          aria-describedby="name-hint"
           className=""
           disabled={false}
           id="name"
@@ -441,7 +433,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           </span>
         </p>
         <input
-          aria-describedby="abn-hint"
           className=""
           disabled={false}
           id="abn"
@@ -463,6 +454,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="summary"
+          id="summary-label"
         >
           Summary
         </label>
@@ -507,7 +499,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           Provide a link to your website beginning with http
         </p>
         <input
-          aria-describedby="website-hint"
           className=""
           disabled={false}
           id="website"
@@ -539,7 +530,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           Provide a LinkedIn URL beginning with http
         </p>
         <input
-          aria-describedby="linkedin-hint"
           className=""
           disabled={false}
           id="linkedin"
@@ -571,7 +561,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           Principal place of business.
         </p>
         <input
-          aria-describedby="address_line-hint"
           className=""
           disabled={false}
           id="address_line"
@@ -597,7 +586,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           Suburb
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="suburb"
@@ -623,7 +611,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           State
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="state"
@@ -649,7 +636,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           Postcode
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="postal_code"

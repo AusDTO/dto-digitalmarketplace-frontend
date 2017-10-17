@@ -43,7 +43,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               As you would like it shown on the Digital Marketplace.
             </p>
             <input
-              aria-describedby="name-hint"
               className=""
               disabled={false}
               id="name"
@@ -84,7 +83,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               </span>
             </p>
             <input
-              aria-describedby="abn-hint"
               className=""
               disabled={false}
               id="abn"
@@ -106,6 +104,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
             <label
               className="question-heading"
               htmlFor="summary"
+              id="summary-label"
             >
               Summary
             </label>
@@ -150,7 +149,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               Provide a link to your website beginning with http
             </p>
             <input
-              aria-describedby="website-hint"
               className=""
               disabled={false}
               id="website"
@@ -182,7 +180,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               Provide a LinkedIn URL beginning with http
             </p>
             <input
-              aria-describedby="linkedin-hint"
               className=""
               disabled={false}
               id="linkedin"
@@ -214,7 +211,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               Principal place of business.
             </p>
             <input
-              aria-describedby="address_line-hint"
               className=""
               disabled={false}
               id="address_line"
@@ -240,7 +236,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               Suburb
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="suburb"
@@ -266,7 +261,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               State
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="state"
@@ -292,7 +286,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               Postcode
             </label>
             <input
-              aria-describedby={undefined}
               className=""
               disabled={false}
               id="postal_code"

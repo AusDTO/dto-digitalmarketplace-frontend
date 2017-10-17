@@ -21,7 +21,7 @@ const MultiInput = (props) => {
 
   return (
     <div className="field">
-      <label htmlFor={htmlFor} className="question-heading">{label}</label>
+      <b className="question-heading">{label}</b>
       {description && (
         <p className="hint" id={`${id}-hint`}>{description}</p>
       )}
@@ -32,7 +32,7 @@ const MultiInput = (props) => {
           id={id}
         />
       }
-      <fieldset id={htmlFor}>
+      <div className="field">
       <Control
         model={model}
         controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
@@ -45,7 +45,7 @@ const MultiInput = (props) => {
         validators={validators}
         component={MultiInputComponent}
       />
-      </fieldset>
+      </div>
     </div>
   );
 };
