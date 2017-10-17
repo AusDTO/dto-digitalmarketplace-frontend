@@ -18,6 +18,9 @@ const BriefSubmitted = props =>
                 until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY [at] ha [in Canberra]')}
               </span>}
           </p>
+          <a className="uikit-btn" href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>
+            View live brief
+          </a>
         </PageAlert>
         <br />
         <h1 className="uikit-display-4" style={{ fontWeight: 'bold' }}>
