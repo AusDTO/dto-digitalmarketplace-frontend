@@ -238,7 +238,7 @@ class Signup extends React.Component {
 
               const element = React.createElement(component, props, children);
               return (
-                <article className={articleClassNames}>
+                <article id="content" className={articleClassNames}>
                   {element}
                 </article>
               )

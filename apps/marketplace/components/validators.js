@@ -134,7 +134,7 @@ export const validPercentage = val => {
     return true
   }
 
-  const length = (val.match(/[0-9.% ]/g) || []).length
+  const length = (val.match(/[0-9.%]/g) || []).length
   return length === val.length
 }
 
