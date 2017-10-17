@@ -99,7 +99,6 @@ exports[`SignupForm renders 1`] = `
             Full name
           </label>
           <input
-            aria-describedby={undefined}
             className=""
             disabled={false}
             id="name"
@@ -131,7 +130,6 @@ exports[`SignupForm renders 1`] = `
             <br />
           </p>
           <input
-            aria-describedby="email_address-hint"
             className=""
             disabled={false}
             id="email_address"
@@ -275,7 +273,6 @@ exports[`SignupForm renders with form_options 1`] = `
             Full name
           </label>
           <input
-            aria-describedby={undefined}
             className=""
             disabled={false}
             id="name"
@@ -307,7 +304,6 @@ exports[`SignupForm renders with form_options 1`] = `
             <br />
           </p>
           <input
-            aria-describedby="email_address-hint"
             className=""
             disabled={false}
             id="email_address"

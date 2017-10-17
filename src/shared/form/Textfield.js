@@ -19,7 +19,6 @@ class Textfield extends React.Component {
                     name={name}
                     id={id}
                     type={type}
-                    aria-describedby={description && `${id}-hint`}
                     mapProps={{
                         className: ({fieldValue}) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
                     }}

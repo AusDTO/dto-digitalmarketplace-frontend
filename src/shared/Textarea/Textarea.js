@@ -77,7 +77,7 @@ class Textarea extends Component {
           defaultValue={value}
           onBlur={onBlur}
           onFocus={onFocus}
-          aria-describedby={hint && describedby}
+          aria-describedby={describedby}
           onChange={this.onChange.bind(this)}
         ></textarea>
         {limit ? (
