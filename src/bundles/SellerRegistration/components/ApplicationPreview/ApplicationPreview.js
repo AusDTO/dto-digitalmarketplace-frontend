@@ -35,9 +35,7 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
       :
         <div className="callout--calendar-event col-sm-8 col-xs-12">
           <b>Preview your profile</b>
-          <p>Buyers will see the information below when they visit your seller profile. If correct, continue to the
-            legal
-            disclosures and agreement.</p>
+          <p>Please review your profile, If correct, continue to the legal disclosures and agreement.</p>
           <Link
             to="/submit"
             role="button"

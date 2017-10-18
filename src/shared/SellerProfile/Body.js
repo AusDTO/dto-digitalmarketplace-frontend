@@ -120,7 +120,7 @@ const Body = (props) => {
 
         <SimpleAccordion title="Learn more" show={isEmpty(public_profile) || public_profile !== false}>
               <span styleName="accordionPaddTopp">
-                The products below are not assessed or endorsed by the Digital Marketplace.
+                  These products are not assessed or endorsed by the Digital Marketplace.
             </span>
         </SimpleAccordion>
 
@@ -305,8 +305,7 @@ const Body = (props) => {
           </tbody>
         </table>
 
-        <p className="callout">The above documents have been provided by the seller. They are available upon request,
-          contact <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a></p>
+        <p className="callout">Please <a href="mailto:marketplace@digital.gov.au">contact us</a> to view seller documents</p>
 
       </Row>
 
