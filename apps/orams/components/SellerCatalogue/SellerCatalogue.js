@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import RegionsAccordionRadioList from 'orams/components/AccordionRadioList/RegionsAccordionRadioList'
 import CategoriesAccordionRadioList from 'orams/components/AccordionRadioList/CategoriesAccordionRadioList'
 import ResultsTable from 'orams/components/ResultsTable/ResultsTable'
+import LoadingIndicatorFullPage  from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadRegions, loadServices } from 'orams/actions/sellerCatalogueActions'
 import styles from './SellerCatalogue.scss'
 
@@ -14,31 +15,21 @@ class SellerCatalogue extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadRegionsData()
     this.props.loadServicesData()
   }
 
-  radioListClick = (event, uniqueID) => {
-
-
-    if (event.target.name === 'region') {
-      this.props.onRegionAccordionOpen(uniqueID)
-      this.props.setRegion(event.target.value)
+  tableSection() {
+    if (this.props.currentlySending) {
+      return <LoadingIndicatorFullPage />
     }
 
-    if (event.target.name === 'category') {
-      this.props.onCategoryAccordionOpen(uniqueID)
-      this.props.setCategory(event.target.value)
+    if (this.props.errorMessage) {
+      
     }
 
-    console.log('REGION', this.props.region)
-    console.log('CATEGORY', this.props.category)
-
-    if (this.props.region && this.props.category) {
-      this.props.loadTableData(this.props.region, this.props.category)
-      window.scrollTo(0, 0)
-    }
+    return <ResultsTable {...this.props} data={this.props.tableData} />
   }
 
   render() {
@@ -54,21 +45,23 @@ class SellerCatalogue extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12 col-sm-3">
-            <RegionsAccordionRadioList
-              title="1. Select region"
-              data={regionsData}
-              onRadioListClick={this.radioListClick}
-              regionAccordionOpen={regionAccordionOpen}
-            />
-            <CategoriesAccordionRadioList
-              title="2. Select a category"
-              data={servicesData}
-              onRadioListClick={this.radioListClick}
-              categoryAccordionOpen={categoryAccordionOpen}
-            />
+            <div>
+              <RegionsAccordionRadioList
+                {...this.props}
+                title="1. Select region"
+                data={regionsData}
+                regionAccordionOpen={regionAccordionOpen}
+              />
+              <CategoriesAccordionRadioList
+                {...this.props}
+                title="2. Select a category"
+                data={servicesData}
+                categoryAccordionOpen={categoryAccordionOpen}
+              />
+            </div>
           </div>
           <div className="col-xs-12 col-sm-8 col-sm-push-1">
-            <ResultsTable data={tableData} />
+            {this.tableSection()}
           </div>
         </div>
       </main>
@@ -80,8 +73,6 @@ SellerCatalogue.propTypes = {}
 
 const mapStateToProps = state => {
   return {
-    region: state.sellersCatalogue.region,
-    category: state.sellersCatalogue.category,
     regionAccordionOpen: state.sellersCatalogue.regionAccordionOpen,
     categoryAccordionOpen: state.sellersCatalogue.categoryAccordionOpen
   }

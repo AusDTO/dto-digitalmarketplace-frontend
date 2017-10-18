@@ -21,7 +21,7 @@ class SellerCataloguePage extends Component {
   }
 
   render() {
-    const { match, regionsData, servicesData, tableData } = this.props
+    const { match, regionsData, servicesData, tableData, region} = this.props
 
     return (
       <Switch>
@@ -33,6 +33,7 @@ class SellerCataloguePage extends Component {
               regionsData={regionsData}
               servicesData={servicesData}
               tableData={tableData}
+              region={region}
               {...this.props}
             />}
         />
@@ -47,9 +48,13 @@ SellerCataloguePage.propTypes = {
 
 const mapStateToProps = state => {
   return {
+    region: state.sellersCatalogue.region,
+    category: state.sellersCatalogue.category,
     regionsData: state.sellersCatalogue.regionsData,
     servicesData: state.sellersCatalogue.servicesData,
-    tableData: state.sellersCatalogue.tableData
+    tableData: state.sellersCatalogue.tableData,
+    currentlySending: state.app.currentlySending,
+    tableFocus: state.sellersCatalogue.tableFocus
   }
 }
 
@@ -59,9 +64,9 @@ const mapDispatchToProps = dispatch => {
     loadServicesData: () => dispatch(loadServices()),
     setRegion: region => dispatch(setRegionData(region)),
     setCategory: category => dispatch(setCategoryData(category)),
-    loadTableData: (region, category) => dispatch(loadSuppliers(region, category)),
     onRegionAccordionOpen: (id) => dispatch(setRegionAccordionOpen(id)),
-    onCategoryAccordionOpen: (id) => dispatch(setCategoryAccordionOpen(id))
+    onCategoryAccordionOpen: (id) => dispatch(setCategoryAccordionOpen(id)),
+    loadTableData: (region, category) => dispatch(loadSuppliers(region, category))
   }
 }
 

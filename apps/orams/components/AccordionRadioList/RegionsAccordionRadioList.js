@@ -2,11 +2,12 @@
 import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
 import Accordion from '@gov.au/accordion'
-
+import {bindActionCreators} from 'redux'
 import styles from './AccordionRadioList.scss'
+import {actionCreators as actions} from 'orams/actions/sellerCatalogueActions'
 
 const RegionsAccordionRadioList = props => {
-  const { data, onRadioListClick, regionAccordionOpen } = props
+  const { data, regionAccordionOpen } = props
   const { regions } = data
 
   return (
@@ -34,7 +35,12 @@ const RegionsAccordionRadioList = props => {
                         name="region"
                         tabIndex="0"
                         value={subRegion.id}
-                        onClick={(e) => onRadioListClick(e, region.mainRegion + id)}
+                        defaultChecked={props.region === subRegion.id}
+                        onChange={(e) => {
+                          props.setRegion(e.target.value);
+                          props.onRegionAccordionOpen(region.mainRegion + id);
+                          props.loadTableData()
+                        }}
                       />
                       <span className="uikit-control-input__text">
                         {subRegion.name}

@@ -12,10 +12,31 @@ class ResultsTable extends Component {
     this.state = {}
   }
 
+  componentDidMount () {
+    this.focusIfNeeded()
+  }
+
+  componentDidUpdate () {
+    this.focusIfNeeded()
+  }
+
+  setRef = (c) => {
+    this._container = c
+  }
+
+  focusIfNeeded () {
+    if (
+      this._container &&
+      this.props.tableFocus
+    ) {
+      this._container.focus()
+    }
+  }
+
   render(props) {
     const { categories, alert } = this.props.data
     return (
-      <div>
+      <div tabIndex='0' ref={this.setRef} className={styles.table}>
         {alert
           ? <PageAlert as={alert.type}>
               <h4>

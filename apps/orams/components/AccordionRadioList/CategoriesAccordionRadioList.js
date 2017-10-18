@@ -6,7 +6,7 @@ import Accordion from '@gov.au/accordion'
 import styles from './AccordionRadioList.scss'
 
 const CategoriesAccordionRadioList = props => {
-  const { data, onRadioListClick, categoryAccordionOpen } = props
+  const { data, categoryAccordionOpen } = props
   const { categories } = data
 
   return (
@@ -20,7 +20,7 @@ const CategoriesAccordionRadioList = props => {
         categories.map((category, id = uniqueID()) =>
           <div key={id}>
             <Accordion header={category.mainCategory} open={categoryAccordionOpen === category.mainCategory + id}>
-              <div >
+              <div>
                 {category.subCategories.map((subCategory, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
@@ -34,7 +34,11 @@ const CategoriesAccordionRadioList = props => {
                         name="category"
                         tabIndex="0"
                         value={subCategory.serviceTypeId}
-                        onClick={(e) => onRadioListClick(e, category.mainCategory + id)}
+                        onChange={(e) => {
+                          props.setCategory(e.target.value)
+                          props.onCategoryAccordionOpen(category.mainCategory + id)
+                          props.loadTableData()
+                        }}
                       />
                       <span className="uikit-control-input__text">
                         {subCategory.serviceTypeName}
