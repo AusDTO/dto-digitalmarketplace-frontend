@@ -30,11 +30,11 @@ export function setServices(servicesData) {
 }
 
 export function setRegionAccordionOpen(id) {
-  return { type: SET_REGION_ACCORDION_OPEN, id}
+  return { type: SET_REGION_ACCORDION_OPEN, id }
 }
 
 export function setCategoryAccordionOpen(id) {
-  return { type: SET_CATEGORY_ACCORDION_OPEN, id}
+  return { type: SET_CATEGORY_ACCORDION_OPEN, id }
 }
 
 export function setRegionData(region) {
@@ -86,7 +86,7 @@ export function loadSuppliers() {
       dmapi({
         method: 'post',
         url: '/seller-catalogue',
-        data: { regionId: state.sellersCatalogue.region , serviceTypeId: state.sellersCatalogue.category }
+        data: { regionId: state.sellersCatalogue.region, serviceTypeId: state.sellersCatalogue.category }
       }).then(response => {
         if (response.error) {
           dispatch(setErrorMessage(GENERAL_ERROR))

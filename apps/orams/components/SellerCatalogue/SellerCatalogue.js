@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import RegionsAccordionRadioList from 'orams/components/AccordionRadioList/RegionsAccordionRadioList'
 import CategoriesAccordionRadioList from 'orams/components/AccordionRadioList/CategoriesAccordionRadioList'
 import ResultsTable from 'orams/components/ResultsTable/ResultsTable'
-import LoadingIndicatorFullPage  from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadRegions, loadServices } from 'orams/actions/sellerCatalogueActions'
 import PageAlert from '@gov.au/page-alerts'
 import styles from './SellerCatalogue.scss'
@@ -12,8 +12,7 @@ import styles from './SellerCatalogue.scss'
 class SellerCatalogue extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-    }
+    this.state = {}
   }
 
   componentDidMount() {
@@ -27,7 +26,7 @@ class SellerCatalogue extends Component {
     }
 
     if (this.props.errorMessage) {
-      <PageAlert as="error">
+      ;<PageAlert as="error">
         <h4>There was a problem loading your results</h4>
       </PageAlert>
     }

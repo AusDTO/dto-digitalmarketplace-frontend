@@ -21,7 +21,7 @@ class SellerCataloguePage extends Component {
   }
 
   render() {
-    const { match, regionsData, servicesData, tableData, region} = this.props
+    const { match, regionsData, servicesData, tableData, region } = this.props
 
     return (
       <Switch>
@@ -65,8 +65,8 @@ const mapDispatchToProps = dispatch => {
     loadServicesData: () => dispatch(loadServices()),
     setRegion: region => dispatch(setRegionData(region)),
     setCategory: category => dispatch(setCategoryData(category)),
-    onRegionAccordionOpen: (id) => dispatch(setRegionAccordionOpen(id)),
-    onCategoryAccordionOpen: (id) => dispatch(setCategoryAccordionOpen(id)),
+    onRegionAccordionOpen: id => dispatch(setRegionAccordionOpen(id)),
+    onCategoryAccordionOpen: id => dispatch(setCategoryAccordionOpen(id)),
     loadTableData: (region, category) => dispatch(loadSuppliers(region, category))
   }
 }

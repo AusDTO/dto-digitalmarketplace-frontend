@@ -34,7 +34,7 @@ const CategoriesAccordionRadioList = props => {
                         name="category"
                         tabIndex="0"
                         value={subCategory.serviceTypeId}
-                        onChange={(e) => {
+                        onChange={e => {
                           props.setCategory(e.target.value)
                           props.onCategoryAccordionOpen(category.mainCategory + id)
                           props.loadTableData()

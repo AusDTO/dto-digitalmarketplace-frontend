@@ -2,9 +2,9 @@
 import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
 import Accordion from '@gov.au/accordion'
-import {bindActionCreators} from 'redux'
+import { bindActionCreators } from 'redux'
 import styles from './AccordionRadioList.scss'
-import {actionCreators as actions} from 'orams/actions/sellerCatalogueActions'
+import { actionCreators as actions } from 'orams/actions/sellerCatalogueActions'
 
 const RegionsAccordionRadioList = props => {
   const { data, regionAccordionOpen } = props
@@ -36,9 +36,9 @@ const RegionsAccordionRadioList = props => {
                         tabIndex="0"
                         value={subRegion.id}
                         defaultChecked={props.region === subRegion.id}
-                        onChange={(e) => {
-                          props.setRegion(e.target.value);
-                          props.onRegionAccordionOpen(region.mainRegion + id);
+                        onChange={e => {
+                          props.setRegion(e.target.value)
+                          props.onRegionAccordionOpen(region.mainRegion + id)
                           props.loadTableData()
                         }}
                       />
