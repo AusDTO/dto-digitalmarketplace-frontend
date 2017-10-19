@@ -4,12 +4,14 @@ import { createForms } from 'react-redux-form'
 
 import appReducer from './appReducer'
 import userReducer from './userReducer'
+import sellersCatalogueReducer from './sellersCatalogueReducer'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 
 export default combineReducers({
   app: appReducer,
   user: userReducer,
+  sellersCatalogue: sellersCatalogueReducer,
   form_options,
   errorMessage,
   options: (state = {}) => state,

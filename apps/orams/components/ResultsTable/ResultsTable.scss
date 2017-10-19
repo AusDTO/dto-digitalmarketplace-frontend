@@ -1,3 +1,7 @@
+.table {
+  outline: none !important;
+}
+
 .tableContainer {
   margin-top: 34px;
 }
@@ -50,4 +54,12 @@
   border-bottom: solid 1px #777777;
   padding-bottom: 16px;
   padding-top: 14px;
+}
+
+.categoryTitle {
+  font-size: 28px;
+  font-weight: bold;
+  color: #313131;
+  margin-bottom: 10px;
+  margin-top: 48px;
 }
