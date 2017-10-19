@@ -5,9 +5,7 @@ exports[`CaseStudyForm renders 1`] = `
   className="layout"
 >
   <header>
-    <div
-      className="callout--calendar-event"
-    >
+    <div>
       <h1
         aria-describedby="header-description"
         tabIndex="-1"
@@ -37,6 +35,30 @@ exports[`CaseStudyForm renders 1`] = `
         </a>
         .
       </p>
+    </div>
+    <div
+      className={undefined}
+    >
+      <b>
+         Avoid common mistakes 
+      </b>
+      <ul>
+        <li>
+          If using acronyms, their meaning must be written out clearly.
+        </li>
+        <li>
+          Don’t write in capitals
+        </li>
+        <li>
+          Check for punctuation, spelling mistakes and grammatical errors.
+        </li>
+        <li>
+          Use plain english to explain what you did, with reference to the tools and methodologies you used.
+        </li>
+        <li>
+          Case studies should be for one project, not multiple.              
+        </li>
+      </ul>
     </div>
   </header>
   <article
@@ -199,6 +221,16 @@ exports[`CaseStudyForm renders 1`] = `
             200 words remaining
           </span>
         </div>
+      </div>
+      <br />
+      <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <br />
+        <span />
       </div>
       <div
         className="field"
@@ -428,6 +460,21 @@ exports[`CaseStudyForm renders 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <ul>
+          <li>
+            A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
+          </li>
+          <li>
+            A referee must be from the client in the case study.
+          </li>
+        </ul>
+      </div>
+      <div
         className="field"
       >
         <label
@@ -465,7 +512,7 @@ exports[`CaseStudyForm renders 1`] = `
           className="question-heading"
           htmlFor="refereePosition"
         >
-          Referee's position
+          Referee's position and employer
         </label>
         <p
           className="hint"
@@ -533,6 +580,7 @@ exports[`CaseStudyForm renders 1`] = `
         </label>
       </div>
       <input
+        role="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -546,9 +594,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
   className="layout"
 >
   <header>
-    <div
-      className="callout--calendar-event"
-    >
+    <div>
       <h1
         aria-describedby="header-description"
         tabIndex="-1"
@@ -579,6 +625,30 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         .
       </p>
     </div>
+    <div
+      className={undefined}
+    >
+      <b>
+         Avoid common mistakes 
+      </b>
+      <ul>
+        <li>
+          If using acronyms, their meaning must be written out clearly.
+        </li>
+        <li>
+          Don’t write in capitals
+        </li>
+        <li>
+          Check for punctuation, spelling mistakes and grammatical errors.
+        </li>
+        <li>
+          Use plain english to explain what you did, with reference to the tools and methodologies you used.
+        </li>
+        <li>
+          Case studies should be for one project, not multiple.              
+        </li>
+      </ul>
+    </div>
   </header>
   <article
     role="main"
@@ -740,6 +810,16 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
             200 words remaining
           </span>
         </div>
+      </div>
+      <br />
+      <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <br />
+        <span />
       </div>
       <div
         className="field"
@@ -969,6 +1049,21 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <ul>
+          <li>
+            A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
+          </li>
+          <li>
+            A referee must be from the client in the case study.
+          </li>
+        </ul>
+      </div>
+      <div
         className="field"
       >
         <label
@@ -1006,7 +1101,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           className="question-heading"
           htmlFor="refereePosition"
         >
-          Referee's position
+          Referee's position and employer
         </label>
         <p
           className="hint"
@@ -1074,6 +1169,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         </label>
       </div>
       <input
+        role="button"
         type="submit"
         value="Save Changes"
       />
@@ -1092,9 +1188,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
   className="layout"
 >
   <header>
-    <div
-      className="callout--calendar-event"
-    >
+    <div>
       <h1
         aria-describedby="header-description"
         tabIndex="-1"
@@ -1124,6 +1218,30 @@ exports[`CaseStudyForm renders with errors 1`] = `
         </a>
         .
       </p>
+    </div>
+    <div
+      className={undefined}
+    >
+      <b>
+         Avoid common mistakes 
+      </b>
+      <ul>
+        <li>
+          If using acronyms, their meaning must be written out clearly.
+        </li>
+        <li>
+          Don’t write in capitals
+        </li>
+        <li>
+          Check for punctuation, spelling mistakes and grammatical errors.
+        </li>
+        <li>
+          Use plain english to explain what you did, with reference to the tools and methodologies you used.
+        </li>
+        <li>
+          Case studies should be for one project, not multiple.              
+        </li>
+      </ul>
     </div>
   </header>
   <article
@@ -1447,6 +1565,16 @@ exports[`CaseStudyForm renders with errors 1`] = `
           </span>
         </div>
       </div>
+      <br />
+      <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <br />
+        <span />
+      </div>
       <div
         className="field"
       >
@@ -1701,6 +1829,21 @@ exports[`CaseStudyForm renders with errors 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <ul>
+          <li>
+            A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
+          </li>
+          <li>
+            A referee must be from the client in the case study.
+          </li>
+        </ul>
+      </div>
+      <div
         className="field"
       >
         <label
@@ -1751,7 +1894,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
           className="question-heading"
           htmlFor="refereePosition"
         >
-          Referee's position
+          Referee's position and employer
         </label>
         <p
           className="hint"
@@ -1858,6 +2001,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
         </label>
       </div>
       <input
+        role="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -1871,9 +2015,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
   className="layout"
 >
   <header>
-    <div
-      className="callout--calendar-event"
-    >
+    <div>
       <h1
         aria-describedby="header-description"
         tabIndex="-1"
@@ -1903,6 +2045,30 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         </a>
         .
       </p>
+    </div>
+    <div
+      className={undefined}
+    >
+      <b>
+         Avoid common mistakes 
+      </b>
+      <ul>
+        <li>
+          If using acronyms, their meaning must be written out clearly.
+        </li>
+        <li>
+          Don’t write in capitals
+        </li>
+        <li>
+          Check for punctuation, spelling mistakes and grammatical errors.
+        </li>
+        <li>
+          Use plain english to explain what you did, with reference to the tools and methodologies you used.
+        </li>
+        <li>
+          Case studies should be for one project, not multiple.              
+        </li>
+      </ul>
     </div>
   </header>
   <article
@@ -2071,6 +2237,16 @@ exports[`CaseStudyForm renders with form_options 1`] = `
             200 words remaining
           </span>
         </div>
+      </div>
+      <br />
+      <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <br />
+        <span />
       </div>
       <div
         className="field"
@@ -2300,6 +2476,21 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <ul>
+          <li>
+            A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
+          </li>
+          <li>
+            A referee must be from the client in the case study.
+          </li>
+        </ul>
+      </div>
+      <div
         className="field"
       >
         <label
@@ -2337,7 +2528,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           className="question-heading"
           htmlFor="refereePosition"
         >
-          Referee's position
+          Referee's position and employer
         </label>
         <p
           className="hint"
@@ -2405,6 +2596,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         </label>
       </div>
       <input
+        role="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -2418,9 +2610,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
   className="layout"
 >
   <header>
-    <div
-      className="callout--calendar-event"
-    >
+    <div>
       <h1
         aria-describedby="header-description"
         tabIndex="-1"
@@ -2450,6 +2640,30 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         </a>
         .
       </p>
+    </div>
+    <div
+      className={undefined}
+    >
+      <b>
+         Avoid common mistakes 
+      </b>
+      <ul>
+        <li>
+          If using acronyms, their meaning must be written out clearly.
+        </li>
+        <li>
+          Don’t write in capitals
+        </li>
+        <li>
+          Check for punctuation, spelling mistakes and grammatical errors.
+        </li>
+        <li>
+          Use plain english to explain what you did, with reference to the tools and methodologies you used.
+        </li>
+        <li>
+          Case studies should be for one project, not multiple.              
+        </li>
+      </ul>
     </div>
   </header>
   <article
@@ -2612,6 +2826,16 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             198 words remaining
           </span>
         </div>
+      </div>
+      <br />
+      <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <br />
+        <span />
       </div>
       <div
         className="field"
@@ -2841,6 +3065,21 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
+        className={undefined}
+      >
+        <b>
+           Avoid common mistakes 
+        </b>
+        <ul>
+          <li>
+            A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
+          </li>
+          <li>
+            A referee must be from the client in the case study.
+          </li>
+        </ul>
+      </div>
+      <div
         className="field"
       >
         <label
@@ -2878,7 +3117,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           className="question-heading"
           htmlFor="refereePosition"
         >
-          Referee's position
+          Referee's position and employer
         </label>
         <p
           className="hint"
@@ -2946,6 +3185,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         </label>
       </div>
       <input
+        role="button"
         type="submit"
         value="Publish Case Study"
       />

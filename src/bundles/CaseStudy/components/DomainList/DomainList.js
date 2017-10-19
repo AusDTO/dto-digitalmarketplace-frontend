@@ -120,9 +120,11 @@ class DomainList extends BaseForm {
 
       let header = (<header>
         <h1 tabIndex="-1">{title}</h1>
-        <p>Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
+        <p>
+          Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
           They become part of your seller profile, so think of them as the beginning of your conversation
           with hundreds of buyers and a tool to help them find you through keyword search.
+          For tips on writing a great case study refer to our support <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies" target="_blank" rel="external">article</a>
         </p>
       </header>)
       if (isNumber(supplierCode)) {
@@ -151,17 +153,19 @@ class DomainList extends BaseForm {
 
               {!isEmpty(essential) &&
                 <div>
-                  <h2>Essential</h2>
-                  <strong>{leftToAddCount === 0 ?
-                    'All services have a case study':
-                      (leftToAddCount === 1 ?
-                          `${leftToAddCount} service to add` :
-                          `${leftToAddCount} services to add`
-                      )
-                  }</strong>
+                  {!isEmpty(recommended) && <h2>Essential</h2>}
 
-                  <ProgressBar value={addedServices.length} max={serviceCount} />
+<br/>
+                  <div style={{  boxShadow: "0px 0 1px rgba(49,49,49,0.7)",
+                    borderLeft: "6px solid #1B7991",
+                    padding: "1em",
+                    borderRadius: "3px"}}>
+                    <b> Avoid common mistakes </b>
+                 <ul style={{ paddingTop: "0.8em"}}>
 
+                   <li>Check the <a href="/assessment-criteria">assessment criteria</a> to ensure the service chosen is a good match for the case study.</li>
+                   <li>Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.</li>
+                 </ul></div>
                   {essential.map((domain, index) => 
                     <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, pathname, ...this.props}}/>
                   )}
