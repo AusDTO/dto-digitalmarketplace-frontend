@@ -46,7 +46,7 @@ class ResultsTable extends Component {
             categories.map((category, id = uniqueID()) =>
               <div key={id + category.category}>
                 <div className={styles.categoryTitle}>
-                  {category.category}
+                  {category.name}
                 </div>
                 {category.suppliers.map((supplier, id = uniqueID()) =>
                   <div key={id} className={styles.tableRow}>

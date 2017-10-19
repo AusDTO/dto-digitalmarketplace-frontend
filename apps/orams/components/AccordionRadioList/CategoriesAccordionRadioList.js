@@ -19,29 +19,29 @@ const CategoriesAccordionRadioList = props => {
       {categories &&
         categories.map((category, id = uniqueID()) =>
           <div key={id}>
-            <Accordion header={category.mainCategory} open={categoryAccordionOpen === category.mainCategory + id}>
+            <Accordion header={category.name} open={categoryAccordionOpen === category.name + id}>
               <div>
                 {category.subCategories.map((subCategory, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
                       className="uikit-control-input uikit-control-input--full"
-                      htmlFor={category.mainCategory + subCategory.serviceTypeName + subId}
+                      htmlFor={category.name + subCategory.name + subId}
                     >
                       <input
-                        id={category.mainCategory + subCategory.serviceTypeName + subId}
+                        id={category.name + subCategory.name + subId}
                         className="uikit-control-input__input"
                         type="radio"
                         name="category"
                         tabIndex="0"
-                        value={subCategory.serviceTypeId}
+                        value={subCategory.id}
                         onChange={e => {
                           props.setCategory(e.target.value)
-                          props.onCategoryAccordionOpen(category.mainCategory + id)
+                          props.onCategoryAccordionOpen(category.name + id)
                           props.loadTableData()
                         }}
                       />
                       <span className="uikit-control-input__text">
-                        {subCategory.serviceTypeName}
+                        {subCategory.name}
                       </span>
                     </label>
                   </div>

@@ -80,13 +80,11 @@ export const loadServices = () => dispatch => {
 export function loadSuppliers() {
   return (dispatch, getState) => {
     const state = getState()
-
     if (state.sellersCatalogue.region && state.sellersCatalogue.category) {
       dispatch(sendingRequest(true))
       dmapi({
-        method: 'post',
-        url: '/seller-catalogue',
-        data: { regionId: state.sellersCatalogue.region, serviceTypeId: state.sellersCatalogue.category }
+        method: 'get',
+        url: `/services/${state.sellersCatalogue.category}/regions/${state.sellersCatalogue.region}/prices`
       }).then(response => {
         if (response.error) {
           dispatch(setErrorMessage(GENERAL_ERROR))

@@ -20,16 +20,16 @@ const RegionsAccordionRadioList = props => {
       {regions &&
         regions.map((region, id = uniqueID()) =>
           <div key={id}>
-            <Accordion header={region.mainRegion} open={regionAccordionOpen === region.mainRegion + id}>
+            <Accordion header={region.name} open={regionAccordionOpen === region.name + id}>
               <div>
                 {region.subRegions.map((subRegion, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
                       className="uikit-control-input uikit-control-input--full"
-                      htmlFor={region.mainRegion + subRegion.name + subId}
+                      htmlFor={region.name + subRegion.name + subId}
                     >
                       <input
-                        id={region.mainRegion + subRegion.name + subId}
+                        id={region.name + subRegion.name + subId}
                         className="uikit-control-input__input"
                         type="radio"
                         name="region"
@@ -38,7 +38,7 @@ const RegionsAccordionRadioList = props => {
                         defaultChecked={props.region === subRegion.id}
                         onChange={e => {
                           props.setRegion(e.target.value)
-                          props.onRegionAccordionOpen(region.mainRegion + id)
+                          props.onRegionAccordionOpen(region.name + id)
                           props.loadTableData()
                         }}
                       />
