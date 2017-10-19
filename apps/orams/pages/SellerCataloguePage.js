@@ -54,6 +54,7 @@ const mapStateToProps = state => {
     servicesData: state.sellersCatalogue.servicesData,
     tableData: state.sellersCatalogue.tableData,
     currentlySending: state.app.currentlySending,
+    errorMessage: state.app.errorMessage,
     tableFocus: state.sellersCatalogue.tableFocus
   }
 }

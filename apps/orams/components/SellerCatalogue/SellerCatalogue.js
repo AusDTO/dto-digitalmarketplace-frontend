@@ -6,6 +6,7 @@ import CategoriesAccordionRadioList from 'orams/components/AccordionRadioList/Ca
 import ResultsTable from 'orams/components/ResultsTable/ResultsTable'
 import LoadingIndicatorFullPage  from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadRegions, loadServices } from 'orams/actions/sellerCatalogueActions'
+import PageAlert from '@gov.au/page-alerts'
 import styles from './SellerCatalogue.scss'
 
 class SellerCatalogue extends Component {
@@ -26,7 +27,9 @@ class SellerCatalogue extends Component {
     }
 
     if (this.props.errorMessage) {
-      
+      <PageAlert as="error">
+        <h4>There was a problem loading your results</h4>
+      </PageAlert>
     }
 
     return <ResultsTable {...this.props} data={this.props.tableData} />
