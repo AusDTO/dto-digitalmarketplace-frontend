@@ -26,7 +26,7 @@ class SellerCatalogue extends Component {
     }
 
     if (this.props.errorMessage) {
-      ;<PageAlert as="error">
+      <PageAlert as="error">
         <h4>There was a problem loading your results</h4>
       </PageAlert>
     }
