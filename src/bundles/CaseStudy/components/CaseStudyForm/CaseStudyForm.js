@@ -16,9 +16,12 @@ import MultiInput    from '../../../../shared/form/MultiInput';
 import Textarea      from '../../../../shared/form/Textarea';
 import Textfield     from '../../../../shared/form/Textfield';
 import StatefulError from '../../../../shared/form/StatefulError';
+import AssessmentCriteria from './AssessmentCriteria';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 import domains from '../../../SellerRegistration/components/DomainSelector/domains';
+
+import styles from './CaseStudyForm.css'
 
 class CaseStudyForm extends BaseForm {
 
@@ -74,22 +77,33 @@ class CaseStudyForm extends BaseForm {
       <Layout>
         <header>
             {isAssessment ? (
-              <div className="callout--calendar-event">
+              <div >
                 <h1 tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
                 <p>Before you can apply for this opportunity you need to provide a case study and reference that meets our <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.</p>
                 <p><b>If we can confirm your expertise before the opportunity closes we will invite you to apply.</b></p>
                 <p>If successful you can apply for {startCase(service)} opportunities in future without the need for further assessment.</p>
               </div>
             ) : (
-              <div className="callout--calendar-event">
+              <div >
                 <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
                 <p id="header-description">
+
                   Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
                   You can update your case studies before an assessment begins.
                   For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
                 </p>
               </div>    
             )}
+          <div className={styles.calloutMistake}>
+            <b> Avoid common mistakes </b>
+            <ul>
+              <li>If using acronyms, their meaning must be written out clearly.</li>
+          <li>Don’t write in capitals</li>
+          <li>Check for punctuation, spelling mistakes and grammatical errors.</li>
+          <li>Use plain english to explain what you did, with reference to the tools and methodologies you used.</li>
+          <li>Case studies should be for one project, not multiple.              </li>
+            </ul>
+          </div>
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model} />
@@ -168,7 +182,13 @@ class CaseStudyForm extends BaseForm {
               }}
               validators={{ required }}
             />
+            <br/>
+            <div className={styles.calloutMistake}>
 
+                <b> Avoid common mistakes </b><br/>
+              <AssessmentCriteria service_slug={service_slug}/>
+
+            </div>
             <Textarea
               model={`${model}.approach`}
               name="approach"
@@ -208,7 +228,14 @@ class CaseStudyForm extends BaseForm {
 
             <h3>Referee</h3>
             <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
+            <div className={styles.calloutMistake}>
 
+              <b> Avoid common mistakes </b>
+              <ul>
+                <li>A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.</li>
+                <li>A referee must be from the client in the case study.</li>
+              </ul>
+            </div>
             <Textfield
               model={`${model}.referee_name`}
               name="refereeName"
@@ -225,7 +252,7 @@ class CaseStudyForm extends BaseForm {
                 name="refereePosition"
                 id="refereePosition"
                 htmlFor="refereePosition"
-                label="Referee's position"
+                label="Referee's position and employer"
                 description="At the time of the project."
                 validators={{ required }}
                 messages={{ required: 'Please provide a referee position.'}}
@@ -266,7 +293,7 @@ class CaseStudyForm extends BaseForm {
 
             {children}
 
-            <input type="submit" value={buttonText} />
+            <input role="button" type="submit" value={buttonText} />
           </Form>
           {returnLink}
         </article>
