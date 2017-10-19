@@ -85,7 +85,7 @@ class FileInput extends React.Component {
               >
                 <div className={styles.bordered_list__item}>
                   <div className="col-xs-9" style={{ display: 'inline-block' }}>
-                    <a href={`/api${this.props.url}/${doc}`} target="_blank" rel="external">
+                    <a href={`/api/2${this.props.url}/${doc}`} target="_blank" rel="external">
                       {doc}
                     </a>
                   </div>

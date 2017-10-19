@@ -28,7 +28,7 @@ const Textarea = (props) => {
 
   return (
     <div className="field">
-      <label className="question-heading" htmlFor={id}>{label}</label>
+      <label id={`${id}-label`} className="question-heading" htmlFor={id}>{label}</label>
       {description && (
         <p className="hint" id={`${id}-hint`}>{description}</p>
       )}
@@ -36,7 +36,7 @@ const Textarea = (props) => {
       <Control
         id={id}
         model={model}
-        controlProps={{ name, id, describedby: `${id}-hint`, hint: description, ...controlProps}}
+        controlProps={{ name, id, describedby: description ? `${id}-hint` : `${id}-label`, hint: description, ...controlProps}}
         validators={validators}
         component={TextareaComponent}
         mapProps={{

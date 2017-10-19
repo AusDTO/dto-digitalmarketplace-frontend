@@ -7,15 +7,17 @@ import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
 
 const Textarea = props => {
-  const { name, id, label, model, description, showMessagesDuringFocus = false, controlProps = {}, mapProps } = props
+  const { name, id, label, model, description, showMessagesDuringFocus = true, controlProps = {}, mapProps } = props
 
   let { validators, messages } = props
 
   if (controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
-    messages = {
-      limitWords: `${label} has exceeded the word limit.`,
-      ...messages
+    if (!messages || !messages.limitWords) {
+      messages = {
+        limitWords: `${label} has exceeded the word limit.`,
+        ...messages
+      }
     }
   }
   return (

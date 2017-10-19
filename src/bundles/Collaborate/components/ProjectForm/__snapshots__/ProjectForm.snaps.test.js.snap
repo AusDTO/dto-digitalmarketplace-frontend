@@ -4,9 +4,10 @@ exports[`ProjectForm renders 1`] = `
 <div
   className="layout"
 >
-  <header>
+  <header
+    id="content"
+  >
     <h1
-      aria-describedby="header-description"
       tabIndex="-1"
     >
       Add a
@@ -36,7 +37,6 @@ exports[`ProjectForm renders 1`] = `
           Give your project a title
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="title"
@@ -58,6 +58,7 @@ exports[`ProjectForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="summary"
+          id="summary-label"
         >
           Summary
         </label>
@@ -96,7 +97,6 @@ exports[`ProjectForm renders 1`] = `
           Which local, state or federal government body is involved? 
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="client"
@@ -238,7 +238,6 @@ exports[`ProjectForm renders 1`] = `
           eg. Planning, Roads and Parking, Community Services, Waste Management
         </p>
         <input
-          aria-describedby="service-hint"
           className=""
           disabled={false}
           id="service"
@@ -260,6 +259,7 @@ exports[`ProjectForm renders 1`] = `
         <label
           className="question-heading"
           htmlFor="aim"
+          id="aim-label"
         >
           Why is the work being done?
         </label>
@@ -295,13 +295,14 @@ exports[`ProjectForm renders 1`] = `
           <label
             className="question-heading"
             htmlFor="about"
+            id="about-label"
           >
             What project activities are you doing / did you do?
           </label>
           
           <div>
             <textarea
-              aria-describedby=""
+              aria-describedby="about-label"
               className="under-200"
               defaultValue={undefined}
               id="about"
@@ -321,181 +322,187 @@ exports[`ProjectForm renders 1`] = `
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="lessons"
           >
             Lessons learned
-          </label>
+          </b>
           <p
             className="hint"
             id="lessons-hint"
           >
             What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-0"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-0"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-1"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-1"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="outcome"
           >
             What was the outcome?
-          </label>
+          </b>
           <p
             className="hint"
             id="outcome-hint"
           >
             List the key achievements of this project.
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-0"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-0"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
       </div>
@@ -503,19 +510,15 @@ exports[`ProjectForm renders 1`] = `
         className="field"
         id="partner_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="partner_links"
-          >
-            Partner links (optional)
-          </label>
-        </h3>
+          Partner links (optional)
+        </h2>
         <p
           className="hint"
           id="partner_links-hint"
@@ -535,21 +538,20 @@ exports[`ProjectForm renders 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="partner_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="partner_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="partner_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -567,15 +569,14 @@ exports[`ProjectForm renders 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="partner_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="partner_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -605,19 +606,15 @@ exports[`ProjectForm renders 1`] = `
         className="field"
         id="project_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </h2>
         <p
           className="hint"
           id="project_links-hint"
@@ -637,21 +634,20 @@ exports[`ProjectForm renders 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="project_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="project_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="project_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -669,15 +665,14 @@ exports[`ProjectForm renders 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="project_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="project_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -703,9 +698,9 @@ exports[`ProjectForm renders 1`] = `
           </button>
         </div>
       </div>
-      <h3>
+      <h2>
         Project Contact
-      </h3>
+      </h2>
       <div
         className="field"
       >
@@ -722,7 +717,6 @@ exports[`ProjectForm renders 1`] = `
           The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="contactName-hint"
           className=""
           disabled={false}
           id="contactName"
@@ -748,7 +742,6 @@ exports[`ProjectForm renders 1`] = `
           Project contact email
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="contactEmail"
@@ -795,9 +788,10 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
 <div
   className="layout"
 >
-  <header>
+  <header
+    id="content"
+  >
     <h1
-      aria-describedby="header-description"
       tabIndex="-1"
     >
       Edit
@@ -827,7 +821,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           Give your project a title
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="title"
@@ -849,6 +842,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="summary"
+          id="summary-label"
         >
           Summary
         </label>
@@ -887,7 +881,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           Which local, state or federal government body is involved? 
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="client"
@@ -1029,7 +1022,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           eg. Planning, Roads and Parking, Community Services, Waste Management
         </p>
         <input
-          aria-describedby="service-hint"
           className=""
           disabled={false}
           id="service"
@@ -1051,6 +1043,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         <label
           className="question-heading"
           htmlFor="aim"
+          id="aim-label"
         >
           Why is the work being done?
         </label>
@@ -1086,13 +1079,14 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           <label
             className="question-heading"
             htmlFor="about"
+            id="about-label"
           >
             What project activities are you doing / did you do?
           </label>
           
           <div>
             <textarea
-              aria-describedby=""
+              aria-describedby="about-label"
               className="under-200"
               defaultValue={undefined}
               id="about"
@@ -1112,181 +1106,187 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="lessons"
           >
             Lessons learned
-          </label>
+          </b>
           <p
             className="hint"
             id="lessons-hint"
           >
             What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-0"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-0"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-1"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-1"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="outcome"
           >
             What was the outcome?
-          </label>
+          </b>
           <p
             className="hint"
             id="outcome-hint"
           >
             List the key achievements of this project.
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-0"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-0"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
       </div>
@@ -1294,19 +1294,15 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         className="field"
         id="partner_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="partner_links"
-          >
-            Partner links (optional)
-          </label>
-        </h3>
+          Partner links (optional)
+        </h2>
         <p
           className="hint"
           id="partner_links-hint"
@@ -1326,21 +1322,20 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="partner_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="partner_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="partner_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -1358,15 +1353,14 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="partner_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="partner_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -1396,19 +1390,15 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         className="field"
         id="project_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </h2>
         <p
           className="hint"
           id="project_links-hint"
@@ -1428,21 +1418,20 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="project_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="project_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="project_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -1460,15 +1449,14 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="project_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="project_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -1494,9 +1482,9 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           </button>
         </div>
       </div>
-      <h3>
+      <h2>
         Project Contact
-      </h3>
+      </h2>
       <div
         className="field"
       >
@@ -1513,7 +1501,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="contactName-hint"
           className=""
           disabled={false}
           id="contactName"
@@ -1539,7 +1526,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           Project contact email
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="contactEmail"
@@ -1586,9 +1572,10 @@ exports[`ProjectForm renders with errors 1`] = `
 <div
   className="layout"
 >
-  <header>
+  <header
+    id="content"
+  >
     <h1
-      aria-describedby="header-description"
       tabIndex="-1"
     >
       Add a
@@ -1726,7 +1713,6 @@ exports[`ProjectForm renders with errors 1`] = `
           </span>
         </a>
         <input
-          aria-describedby={undefined}
           className="invalid"
           disabled={false}
           id="title"
@@ -1748,6 +1734,7 @@ exports[`ProjectForm renders with errors 1`] = `
         <label
           className="question-heading"
           htmlFor="summary"
+          id="summary-label"
         >
           Summary
         </label>
@@ -1812,7 +1799,6 @@ exports[`ProjectForm renders with errors 1`] = `
           </span>
         </a>
         <input
-          aria-describedby={undefined}
           className="invalid"
           disabled={false}
           id="client"
@@ -1980,7 +1966,6 @@ exports[`ProjectForm renders with errors 1`] = `
           </span>
         </a>
         <input
-          aria-describedby="service-hint"
           className="invalid"
           disabled={false}
           id="service"
@@ -2002,6 +1987,7 @@ exports[`ProjectForm renders with errors 1`] = `
         <label
           className="question-heading"
           htmlFor="aim"
+          id="aim-label"
         >
           Why is the work being done?
         </label>
@@ -2050,6 +2036,7 @@ exports[`ProjectForm renders with errors 1`] = `
           <label
             className="question-heading"
             htmlFor="about"
+            id="about-label"
           >
             What project activities are you doing / did you do?
           </label>
@@ -2069,7 +2056,7 @@ exports[`ProjectForm renders with errors 1`] = `
           </a>
           <div>
             <textarea
-              aria-describedby=""
+              aria-describedby="about-label"
               className="invalid under-200"
               defaultValue={undefined}
               id="about"
@@ -2089,102 +2076,104 @@ exports[`ProjectForm renders with errors 1`] = `
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="lessons"
           >
             Lessons learned
-          </label>
+          </b>
           <p
             className="hint"
             id="lessons-hint"
           >
             What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-0"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-0"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-1"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-1"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="outcome"
           >
             What was the outcome?
-          </label>
+          </b>
           <p
             className="hint"
             id="outcome-hint"
@@ -2204,79 +2193,83 @@ exports[`ProjectForm renders with errors 1`] = `
               You must provide at least one outcome.
             </span>
           </a>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box invalid"
-                  defaultValue=""
-                  id="outcome-0"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box invalid"
+                    defaultValue=""
+                    id="outcome-0"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box invalid"
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box invalid"
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
       </div>
@@ -2284,19 +2277,15 @@ exports[`ProjectForm renders with errors 1`] = `
         className="field"
         id="partner_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="partner_links"
-          >
-            Partner links (optional)
-          </label>
-        </h3>
+          Partner links (optional)
+        </h2>
         <p
           className="hint"
           id="partner_links-hint"
@@ -2316,21 +2305,20 @@ exports[`ProjectForm renders with errors 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="partner_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="partner_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="partner_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -2348,15 +2336,14 @@ exports[`ProjectForm renders with errors 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="partner_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="partner_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -2386,19 +2373,15 @@ exports[`ProjectForm renders with errors 1`] = `
         className="field"
         id="project_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </h2>
         <p
           className="hint"
           id="project_links-hint"
@@ -2418,21 +2401,20 @@ exports[`ProjectForm renders with errors 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="project_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="project_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="project_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -2450,15 +2432,14 @@ exports[`ProjectForm renders with errors 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="project_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="project_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -2484,9 +2465,9 @@ exports[`ProjectForm renders with errors 1`] = `
           </button>
         </div>
       </div>
-      <h3>
+      <h2>
         Project Contact
-      </h3>
+      </h2>
       <div
         className="field"
       >
@@ -2516,7 +2497,6 @@ exports[`ProjectForm renders with errors 1`] = `
           </span>
         </a>
         <input
-          aria-describedby="contactName-hint"
           className="invalid"
           disabled={false}
           id="contactName"
@@ -2555,7 +2535,6 @@ exports[`ProjectForm renders with errors 1`] = `
           </span>
         </a>
         <input
-          aria-describedby={undefined}
           className="invalid"
           disabled={false}
           id="contactEmail"
@@ -2615,9 +2594,10 @@ exports[`ProjectForm renders with form_options 1`] = `
 <div
   className="layout"
 >
-  <header>
+  <header
+    id="content"
+  >
     <h1
-      aria-describedby="header-description"
       tabIndex="-1"
     >
       Add a
@@ -2653,7 +2633,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           Give your project a title
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="title"
@@ -2675,6 +2654,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="summary"
+          id="summary-label"
         >
           Summary
         </label>
@@ -2713,7 +2693,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           Which local, state or federal government body is involved? 
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="client"
@@ -2855,7 +2834,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           eg. Planning, Roads and Parking, Community Services, Waste Management
         </p>
         <input
-          aria-describedby="service-hint"
           className=""
           disabled={false}
           id="service"
@@ -2877,6 +2855,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         <label
           className="question-heading"
           htmlFor="aim"
+          id="aim-label"
         >
           Why is the work being done?
         </label>
@@ -2912,13 +2891,14 @@ exports[`ProjectForm renders with form_options 1`] = `
           <label
             className="question-heading"
             htmlFor="about"
+            id="about-label"
           >
             What project activities are you doing / did you do?
           </label>
           
           <div>
             <textarea
-              aria-describedby=""
+              aria-describedby="about-label"
               className="under-200"
               defaultValue={undefined}
               id="about"
@@ -2938,181 +2918,187 @@ exports[`ProjectForm renders with form_options 1`] = `
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="lessons"
           >
             Lessons learned
-          </label>
+          </b>
           <p
             className="hint"
             id="lessons-hint"
           >
             What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-0"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-0"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-1"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-1"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="outcome"
           >
             What was the outcome?
-          </label>
+          </b>
           <p
             className="hint"
             id="outcome-hint"
           >
             List the key achievements of this project.
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-0"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-0"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
       </div>
@@ -3120,19 +3106,15 @@ exports[`ProjectForm renders with form_options 1`] = `
         className="field"
         id="partner_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="partner_links"
-          >
-            Partner links (optional)
-          </label>
-        </h3>
+          Partner links (optional)
+        </h2>
         <p
           className="hint"
           id="partner_links-hint"
@@ -3152,21 +3134,20 @@ exports[`ProjectForm renders with form_options 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="partner_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="partner_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="partner_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -3184,15 +3165,14 @@ exports[`ProjectForm renders with form_options 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="partner_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="partner_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -3222,19 +3202,15 @@ exports[`ProjectForm renders with form_options 1`] = `
         className="field"
         id="project_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </h2>
         <p
           className="hint"
           id="project_links-hint"
@@ -3254,21 +3230,20 @@ exports[`ProjectForm renders with form_options 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="project_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="project_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="project_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -3286,15 +3261,14 @@ exports[`ProjectForm renders with form_options 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="project_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="project_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -3320,9 +3294,9 @@ exports[`ProjectForm renders with form_options 1`] = `
           </button>
         </div>
       </div>
-      <h3>
+      <h2>
         Project Contact
-      </h3>
+      </h2>
       <div
         className="field"
       >
@@ -3339,7 +3313,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="contactName-hint"
           className=""
           disabled={false}
           id="contactName"
@@ -3365,7 +3338,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           Project contact email
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="contactEmail"
@@ -3412,9 +3384,10 @@ exports[`ProjectForm renders with populated fields 1`] = `
 <div
   className="layout"
 >
-  <header>
+  <header
+    id="content"
+  >
     <h1
-      aria-describedby="header-description"
       tabIndex="-1"
     >
       Add a
@@ -3444,7 +3417,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           Give your project a title
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="title"
@@ -3466,6 +3438,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         <label
           className="question-heading"
           htmlFor="summary"
+          id="summary-label"
         >
           Summary
         </label>
@@ -3504,7 +3477,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           Which local, state or federal government body is involved? 
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="client"
@@ -3646,7 +3618,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           eg. Planning, Roads and Parking, Community Services, Waste Management
         </p>
         <input
-          aria-describedby="service-hint"
           className=""
           disabled={false}
           id="service"
@@ -3668,6 +3639,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         <label
           className="question-heading"
           htmlFor="aim"
+          id="aim-label"
         >
           Why is the work being done?
         </label>
@@ -3703,13 +3675,14 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <label
             className="question-heading"
             htmlFor="about"
+            id="about-label"
           >
             What project activities are you doing / did you do?
           </label>
           
           <div>
             <textarea
-              aria-describedby=""
+              aria-describedby="about-label"
               className="under-200"
               defaultValue={undefined}
               id="about"
@@ -3729,181 +3702,187 @@ exports[`ProjectForm renders with populated fields 1`] = `
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="lessons"
           >
             Lessons learned
-          </label>
+          </b>
           <p
             className="hint"
             id="lessons-hint"
           >
             What advice would you give others considering this type of project? Did anything made you pivot or adjust course?
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-0"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-0"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="lessons-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="lessons-hint"
-                  className="text-box "
-                  defaultValue=""
-                  id="lessons-1"
-                  name="lessons[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="lessons-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="lessons-hint"
+                    className="text-box "
+                    defaultValue=""
+                    id="lessons-1"
+                    name="lessons[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
         <div
           className="field"
         >
-          <label
+          <b
             className="question-heading"
-            htmlFor="outcome"
           >
             What was the outcome?
-          </label>
+          </b>
           <p
             className="hint"
             id="outcome-hint"
           >
             List the key achievements of this project.
           </p>
-          <div>
-            <div
-              className="list-entry row"
-            >
+          <div
+            className="field"
+          >
+            <div>
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-0"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  1
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue="Outcome 1"
-                  id="outcome-0"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-0"
+                  >
+                    1
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue="Outcome 1"
+                    id="outcome-0"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="list-entry row"
-            >
               <div
-                className="col-xs-12 col-sm-9"
+                className="list-entry row"
               >
-                <label
-                  className="text-box-number-label"
-                  htmlFor="outcome-1"
+                <div
+                  className="col-xs-12 col-sm-9"
                 >
-                  2
-                  .
-                </label>
-                <input
-                  aria-describedby="outcome-hint"
-                  className="text-box "
-                  defaultValue="Outcome 2"
-                  id="outcome-1"
-                  name="outcome[]"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  type="text"
-                />
+                  <label
+                    className="text-box-number-label"
+                    htmlFor="outcome-1"
+                  >
+                    2
+                    .
+                  </label>
+                  <input
+                    aria-describedby="outcome-hint"
+                    className="text-box "
+                    defaultValue="Outcome 2"
+                    id="outcome-1"
+                    name="outcome[]"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                  />
+                </div>
+                <button
+                  className="button-secondary col-xs-12 col-sm-3"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  remove 
+                  <span
+                    className="visuallyhidden"
+                  >
+                    number 
+                    2
+                  </span>
+                </button>
               </div>
               <button
-                className="button-secondary col-xs-12 col-sm-3"
+                className="button-secondary"
                 onClick={[Function]}
                 type="button"
               >
-                remove 
-                <span
-                  className="visuallyhidden"
-                >
-                  number 
-                  2
-                </span>
+                Add another row
               </button>
             </div>
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              type="button"
-            >
-              Add another row
-            </button>
           </div>
         </div>
       </div>
@@ -3911,19 +3890,15 @@ exports[`ProjectForm renders with populated fields 1`] = `
         className="field"
         id="partner_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="partner_links"
-          >
-            Partner links (optional)
-          </label>
-        </h3>
+          Partner links (optional)
+        </h2>
         <p
           className="hint"
           id="partner_links-hint"
@@ -3943,21 +3918,20 @@ exports[`ProjectForm renders with populated fields 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="partner_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="partner_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="partner_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -3975,15 +3949,14 @@ exports[`ProjectForm renders with populated fields 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="partner_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="partner_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -4013,19 +3986,15 @@ exports[`ProjectForm renders with populated fields 1`] = `
         className="field"
         id="project_links"
       >
-        <h3
+        <h2
           style={
             Object {
               "marginTop": 0,
             }
           }
         >
-          <label
-            htmlFor="project_links"
-          >
-            Project links (optional)
-          </label>
-        </h3>
+          Project links (optional)
+        </h2>
         <p
           className="hint"
           id="project_links-hint"
@@ -4045,21 +4014,20 @@ exports[`ProjectForm renders with populated fields 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="title"
+                    htmlFor="project_links-0-title"
                   >
                     Link Title
                   </label>
                   <p
                     className="hint"
-                    id="title-hint"
+                    id="project_links-0-title-hint"
                   >
                     As you would like it shown on the Digital Marketplace.
                   </p>
                   <input
-                    aria-describedby="title-hint"
                     className=""
                     disabled={false}
-                    id="title"
+                    id="project_links-0-title"
                     maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
@@ -4077,15 +4045,14 @@ exports[`ProjectForm renders with populated fields 1`] = `
                 >
                   <label
                     className="question-heading"
-                    htmlFor="url"
+                    htmlFor="project_links-0-url"
                   >
                     Link URL
                   </label>
                   <input
-                    aria-describedby={undefined}
                     className=""
                     disabled={false}
-                    id="url"
+                    id="project_links-0-url"
                     maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
@@ -4111,9 +4078,9 @@ exports[`ProjectForm renders with populated fields 1`] = `
           </button>
         </div>
       </div>
-      <h3>
+      <h2>
         Project Contact
-      </h3>
+      </h2>
       <div
         className="field"
       >
@@ -4130,7 +4097,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           The full name of the best person to contact.
         </p>
         <input
-          aria-describedby="contactName-hint"
           className=""
           disabled={false}
           id="contactName"
@@ -4156,7 +4122,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           Project contact email
         </label>
         <input
-          aria-describedby={undefined}
           className=""
           disabled={false}
           id="contactEmail"

@@ -151,7 +151,7 @@ class DocumentsForm extends BaseForm {
                             const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents` : match.url.slice(1);
                             return (
                                 <div key={key} className="callout-no-margin">
-                                    <label styleName="question-heading" htmlFor={key}>{field.label}</label>
+                                    <p styleName="question-heading">{field.label}</p>
                                     <span>{field.description}</span>
 
                                     <div>
@@ -161,7 +161,7 @@ class DocumentsForm extends BaseForm {
                                             <div id={expiry_date_field}>
                                                 <p>
                                                     <input type="file" id={key} name={key} styleName="hidden-input" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
-                                                    <label htmlFor={key} id={`label_${key}`}  styleName="custom-input"> {isEmpty(name) && "Choose file" } </label>
+                                                    <label id={`label_${key}`} htmlFor={key} styleName="custom-input"> {isEmpty(name) && "Choose file" } </label>
                                                 </p>
                                             </div>
                                         }
@@ -194,8 +194,7 @@ class DocumentsForm extends BaseForm {
                                                     model={`${model}.documents.${key}.expiry`}
                                                     component={Datefield}
                                                     name={expiry_date_field}
-                                                    id={expiry_date_field}
-                                                    htmlFor={expiry_date_field}
+                                                    id={`${key}_expiry`}
                                                     label="Expiry date:"
                                                     validators={{validDate}}
                                                     controlProps={{
@@ -216,7 +215,7 @@ class DocumentsForm extends BaseForm {
                                             <p styleName="filler">&nbsp;</p>
                                             <p id={`span_${key}`} ref={`span_${key}`}>{!isEmpty(name) && name }</p>
                                             <button type="submit" styleName="sumbit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
-                                            <label htmlFor={key} styleName="custom-input">Choose file</label>
+                                            <p styleName="custom-input">Choose file</p>
                                         </div>
                                     }
                                 </div>
