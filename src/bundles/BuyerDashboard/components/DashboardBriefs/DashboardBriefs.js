@@ -255,8 +255,7 @@ export const LiveBriefs = props => {
                 {(teamBriefView && <tr className="summary-item-row">
                   <td styleName="item-field-first">
                     <h5>Brief preview</h5>
-                    <a
-                      href={"/buyers/frameworks/".concat(item.frameworkSlug, "/requirements/", item.lotSlug, "/", item.id)}>
+                    <a href={"/2/brief/" + item.id + "/published" }>
                       {item.title}
                     </a>
                   </td>
@@ -279,8 +278,7 @@ export const LiveBriefs = props => {
                 {(!teamBriefView && <tr className="summary-item-row" key={i}>
                   <td styleName="item-field-first-full">
                     <h5>Brief preview</h5>
-                    <a
-                      href={"/buyers/frameworks/".concat(item.frameworkSlug, "/requirements/", item.lotSlug, "/", item.id)}>
+                    <a href={"/2/brief/" + item.id + "/published" }>
                       {item.title}
                     </a>
                   </td>

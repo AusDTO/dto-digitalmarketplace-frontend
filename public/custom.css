@@ -86,15 +86,6 @@ main form .validation-message {
   border: 0;
 }
 
-.sidebar a, main article:first-of-type a, main section:first-of-type a, main header:first-of-type a {
-  color: #313131;
-  text-decoration: none;
-  outline: none;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.1s;
-  transition-property: background-color, border-color, color;
-}
-
 main form .question-heading, main form legend {
   font-weight: 700;
 }
@@ -152,6 +143,18 @@ form .hint {
 
 input[type="radio"].uikit-control-input__input:focus + .uikit-control-input__text:before {
   border-radius: 15px;
+}
+.uikit-body a.uikit-btn {
+  color: #fff;
+}
+.uikit-body a.uikit-btn--tertiary {
+  color: #313131;
+}
+.uikit-body a.uikit-btn:focus,.uikit-body a.uikit-btn:hover {
+  background-color: #135566;
+}
+.uikit-body a.uikit-btn--tertiary:focus, .uikit-body a.uikit-btn--tertiary:hover {
+  background-color: #e8f2f4;
 }
 
 .uikit-btn:focus {
