@@ -245,60 +245,107 @@ class SubmitStepForm extends BaseForm {
                         <h3>27. Jurisdiction</h3>
                         <p>This agreement and any work order is governed by the laws of the Australian Capital Territory. Any court proceedings are subject to the non-exclusive jurisdiction of the courts of the Australian Capital Territory.</p>
                         <h2 id="definitions">Definitions</h2>
-                        <p>active sellers are members of the Digital Marketplace Panel.</p>
-                        <p>agreement means this Master Agreement.</p>
-                        <p>area of expertise means a defined set of skills, knowledge and experience which are the categories of the services you provide through the Digital Marketplace.</p>
-                        <p>buyer means an entity, registered as a buyer on the Digital Marketplace. </p>
-                        <p>commencement date means the date you become an active seller.</p>
-                        <p>confidential information means information that is by its nature regarded in law as confidential, and which is either:</p>
-                        <ul>
-                        <li>Designated by a party as confidential</li>
-                        <li>Described in the work order as confidential</li>
-                        <li>Agreed in writing by the parties as confidential</li>
-                        <li>Known to be, or ought to be known to be, confidential by a party</li>
-                        </ul>
-                        <p>It does not include information that is, or becomes, public knowledge other than by breach of this agreement or a Work Order or any other confidentiality obligation.</p>
-                        <p>conflict of interest means financial or non-financial interests, or relationships, that could affect or be perceived to affect any aspect of your participation in the Digital Marketplace</p>
-                        <p>consequential loss means any loss recoverable at law (other than arising in the usual course of things) including:</p>
+                      <ul>
+                        <li>"active sellers" are members of the Digital Marketplace Panel.</li>
+                        <li>"agreement" means this Master Agreement.</li>
+                        <li>"area of expertise" means a defined set of skills, knowledge and experience which are the categories
+                          of the services you provide through the Digital Marketplace.</li>
+                        <li>"buyer" means an entity, registered as a buyer on the Digital
+                          Marketplace. </li>
+                        <li>"commencement date" means the date you become an active seller.</li>
+                        <li>"confidential information" means information that is by its nature regarded in law as confidential,
+                          and which is either:
+                          <ul>
+                            <li>Designated by a party as confidential</li>
+                            <li>Described in the work order as confidential</li>
+                            <li>Agreed in writing by the parties as confidential</li>
+                            <li>Known to be, or ought to be known to be, confidential by a party</li>
+                          </ul>
+                          It does not include information that is, or becomes, public knowledge other than by breach of this
+                          agreement or a Work Order or any other confidentiality obligation.</li>
+                        <li>"conflict of interest" means financial or non-financial interests, or relationships, that could affect
+                          or be perceived to affect any aspect of your participation in the Digital
+                          Marketplace</li>
+                        <li>"consequential loss" means any loss recoverable at law (other than arising in the usual course of
+                          things) including:</li>
                         <ol>
-                        <li>a loss of income or revenue</li>
-                        <li>a loss of opportunity or goodwill</li>
-                        <li>a loss of profits</li>
-                        <li>a loss of anticipated savings or business</li>
-                        <li>a loss of value of any equipment</li>
+                          <li>a loss of income or revenue</li>
+                          <li>a loss of opportunity or goodwill</li>
+                          <li>a loss of profits</li>
+                          <li>a loss of anticipated savings or business</li>
+                          <li>a loss of value of any equipment</li>
                         </ol>
-                        <p>deliverable means the provision of the services, products and order material specified in the work order.</p>
-                        <p>DTA means the Commonwealth of Australia represented by the Digital Transformation Agency.</p>
-                        <p>Digital Marketplace means processes or resources made available by the DTA to facilitate buyers procuring digital products and services.</p>
-                        <p>entity means a person, partnership, organisation, or business that has a legal and separately identifiable existence.</p>
-                        <p>infringe includes an act or omission that would, apart from the operation of section 163 of the <em>Patents Act 1990</em>, section 100 of the <em>Designs Act 2003</em>, section 183 of the <em>Copyright Act 1968</em>, or section 25 of the <em>Circuit Layouts Act 1989</em>, constitute an infringement of the right.</p>
-                        <p>insolvency event &nbsp;means the happening of any one or more of the following:</p>
+                        <li>"deliverable" means the provision of the services,
+                          products and order material specified in the work order.</li>
+                        <li>"DTA" means the Commonwealth of Australia represented by the Digital Transformation Agency.</li>
+                        <li>"Digital Marketplace" means processes or resources made available by the DTA to
+                          facilitate buyers procuring digital products and services.</li>
+                        <li>"entity" means a person, partnership, organisation, or business that has a legal and separately
+                          identifiable existence.</li>
+                        <li>"infringe" includes an act or omission that would, apart from the operation of section 163 of the <em>Patents
+                          Act 1990</em>, section 100 of the <em>Designs Act 2003</em>, section 183 of the <em>Copyright Act 1968</em>, or
+                          section 25 of the <em>Circuit Layouts Act 1989</em>, constitute an infringement of the right.</li>
+                        <li>"insolvency event" &nbsp;means the happening of any one or more of the following:</li>
                         <ul>
-                        <li>you cease, or take steps to cease, to conduct your business in the normal manner.</li>
-                        <li>you enter into or resolve to enter into any arrangement, composition or compromise with or assignment for the benefit of your creditors or any class of them.</li>
-                        <li>you are unable to pay your debts when they are due or you are deemed under the <em>Corporations Act 2001</em> (Cth) to be insolvent.</li>
-                        <li>a liquidator or provisional liquidator is appointed to you or a receiver, receiver and manager, official manager, trustee or similar official is appointed over any of your assets or undertakings.</li>
-                        <li>an application or order is made or a resolution is passed for your winding up.</li>
-                        <li>if you are an individual you are declared bankrupt, seek a composition of creditors, suspend payments or in any other way are deemed to be insolvent.</li>
-                        <li>any act or event having a substantially similar effect to any of these events</li>
+                          <li>you cease, or take steps to cease, to conduct your business in the normal manner.
+                          </li>
+                          <li>you enter into or resolve to enter into any arrangement, composition or compromise with or
+                            assignment for the benefit of your creditors or any class of them.
+                          </li>
+                          <li>you are unable to pay your debts when they are due or you are
+                            deemed under the <em>Corporations Act 2001</em> (Cth) to be insolvent.
+                          </li>
+                          <li>a liquidator or provisional liquidator is appointed to you or a receiver, receiver and manager,
+                            official manager, trustee or similar official is appointed over any of your assets or undertakings.
+                          </li>
+                          <li>an application or order is made or a resolution is passed for your winding up</li>
+                          <li>if you are an individual you are declared bankrupt, seek a composition of
+                            creditors, suspend payments or in any other way are deemed to be insolvent.
+                          </li>
+                          <li>any act or event having a substantially similar effect to any of these events
+                          </li>
                         </ul>
-                        <p>intellectual property rights means the rights of a creator or an owner relating to copyrights, trademarks, patents, know-how, models, drawings, designs, specifications, inventions, prototypes and software, whether or not in material form, and any application or right to apply for registration of any of these rights.</p>
-                        <p>loss means loss, damage, cost or expense (to any person or property) including consequential loss or indirect loss or any loss of profits, data or revenue.</p>
-                        <p>material means any software, firmware, documented methodology or process, documentation or other material in whatever form, including without limitation any reports, specifications, business rules or requirements, user manuals, user guides, operations manuals, training materials and instructions, and the subject matter of any category of intellectual property rights.</p>
-                        <p>moral rights consents means written consent or waiver to another party that would otherwise breach some or all of a creator&rsquo;s moral rights.</p>
-                        <p>opportunity means a buyer requirement that has been posted on the Digital Marketplace and may lead to the creation of a work order.</p>
-                        <p>order material means any material created by you as a result of performing its obligations under a work order, including any modifications.</p>
-                        <p>our, us and we means the Commonwealth of Australia represented by the Digital Transformation Agency.</p>
-                        <p>personnel means, in relation to a party, any natural persons who are employees, officers, agents, contractors, subcontractors or professional advisers of that party.</p>
-                        <p>product or products means any item or items to be delivered or provided under a work order by you to a buyer, and may include, but is not limited to, software and digital products. </p>
-                        <p>proprietary software means pre-existing software owned by an entity other than the buyer.</p>
-                        <p>registered sellers are not Digital Marketplace Panel members but have a profile, visible to buyers on the Digital Marketplace and can view opportunities. They cannot apply for opportunities but can apply to become an active seller. </p>
-                        <p>seller means a business who offers their products or services on the Digital Marketplace.</p>
-                        <p>services means the work to be performed in specific areas of expertise as described in the work order.</p>
-                        <p>software means the programs, programming languages, and data that direct the operations of a computer system and includes any standard form documentation that is usually provided to customers with the software.</p>
-                        <p>work order means a contract formed between a buyer and a seller under this agreement for the provision of services, or products, or both. </p>
-                        <p>you or your means the party specified as the seller and includes your personnel.</p>
-                        <p>Last updated: 14 June 2017</p>
+                        <li>"intellectual property rights" means the rights of a creator or an owner relating to copyrights,
+                          trademarks, patents, know-how, models, drawings, designs, specifications, inventions, prototypes and software, whether
+                          or not in material form, and any application or right to apply for registration of any of these rights.</li>
+                        <li>"loss" means loss, damage, cost or expense (to any person or property) including consequential
+                          loss or indirect loss or any loss of profits, data or revenue.</li>
+                        <li>"material" means any software, firmware, documented methodology or process, documentation or other
+                          material in whatever form, including without limitation any reports, specifications, business rules or requirements,
+                          user manuals, user guides, operations manuals, training materials and instructions, and the subject matter of any
+                          category of intellectual property rights.</li>
+                        <li>"moral rights consents" means written consent or waiver to another party that would otherwise breach
+                          some or all of a creator&rsquo;s moral rights.</li>
+                        <li>"opportunity" means a buyer requirement that has been posted on the Digital
+                          Marketplace and may lead to the creation of a work order.</li>
+                        <li>"order material" means any material created by you as a result of
+                          performing its obligations under a work order, including any modifications.</li>
+                        <li>"our", "us" and "we" means the Commonwealth of Australia represented by
+                          the Digital Transformation Agency.</li>
+                        <li>"personnel" means, in relation to a party, any natural persons who are employees, officers, agents,
+                          contractors, subcontractors or professional advisers of that party.</li>
+                        <li>"product" or "products" means any item or items to be delivered or provided under a
+                          work order by you to a buyer, and may include, but is not limited
+                          to, software and digital products. </li>
+                        <li>"proprietary software" means pre-existing software owned by an entity other than the
+                          buyer.</li>
+                        <li>"registered sellers" are not Digital Marketplace Panel members but have a profile, visible to buyers
+                          on the Digital Marketplace and can view opportunities. They cannot apply for opportunities but can
+                          apply to become an active seller. </li>
+                        <li>"seller" means a business who offers their products or services on
+                          the Digital Marketplace.</li>
+                        <li>"services" means the work to be performed in specific areas of expertise as described
+                          in the work order.</li>
+                        <li>"software" means the programs, programming languages, and data that direct the operations of a
+                          computer system and includes any standard form documentation that is usually provided to customers with the software.
+                        </li>
+                        <li>"work order" means a contract formed between a buyer and a seller
+                          under this agreement for the provision of services, or products, or
+                          both. </li>
+                        <li>"you" or "your" means the party specified as the seller and includes your
+                          personnel.</li>
+                      </ul>
+                        <p>Last updated: 20 October 2017</p>
                     </div>
                     <br/>
                     <StatefulError
