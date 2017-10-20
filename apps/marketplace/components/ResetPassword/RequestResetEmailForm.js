@@ -25,8 +25,8 @@ const RequestResetEmailForm = props => {
           {resetPasswordEmailSuccess
             ? <PageAlert as="success">
                 <span>
-                We have sent a link to reset the password.<br/>
-                Check your spam folder if it does not arrive.
+                  We have sent a link to reset the password.<br />
+                  Check your spam folder if it does not arrive.
                 </span>
               </PageAlert>
             : <ErrorBox
