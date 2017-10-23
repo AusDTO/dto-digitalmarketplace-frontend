@@ -53,25 +53,25 @@ exports[`View with required attributes 1`] = `
     <aside
       className="col-sm-3 col-xs-12"
     >
-      <h4>
+      <h2>
         Client
-      </h4>
+      </h2>
       <p>
         Transport for NSW
       </p>
-      <h4>
+      <h2>
         Timeframe
-      </h4>
+      </h2>
       <p>
         January 2016 — June 2016
       </p>
-      <h4>
+      <h2>
         Area of expertise
-      </h4>
+      </h2>
       <p />
-      <h4>
+      <h2>
         Responsible for
-      </h4>
+      </h2>
       <p />
     </aside>
     <article
@@ -181,25 +181,25 @@ exports[`View with required attributes and meta links 1`] = `
     <aside
       className="col-sm-3 col-xs-12"
     >
-      <h4>
+      <h2>
         Client
-      </h4>
+      </h2>
       <p>
         Transport for NSW
       </p>
-      <h4>
+      <h2>
         Timeframe
-      </h4>
+      </h2>
       <p>
         January 2016 — June 2016
       </p>
-      <h4>
+      <h2>
         Area of expertise
-      </h4>
+      </h2>
       <p />
-      <h4>
+      <h2>
         Responsible for
-      </h4>
+      </h2>
       <p />
     </aside>
     <article

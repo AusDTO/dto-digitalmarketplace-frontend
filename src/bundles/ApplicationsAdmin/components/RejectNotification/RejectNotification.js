@@ -96,7 +96,7 @@ export default class RejectedNotificationForm extends Component {
           onKeyUp={() => {
             onClose(application_id, this.state.message);
           }}
-          role="button">close
+          className="button">close
         </a>
       </form>
     )

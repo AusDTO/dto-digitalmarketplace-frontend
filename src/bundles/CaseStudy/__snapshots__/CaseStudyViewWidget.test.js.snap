@@ -38,25 +38,25 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
     <aside
       className="col-sm-3 col-xs-12"
     >
-      <h4>
+      <h2>
         Client
-      </h4>
+      </h2>
       <p>
         A Case study client
       </p>
-      <h4>
+      <h2>
         Timeframe
-      </h4>
+      </h2>
       <p>
         2016
       </p>
-      <h4>
+      <h2>
         Area of expertise
-      </h4>
+      </h2>
       <p />
-      <h4>
+      <h2>
         Responsible for
-      </h4>
+      </h2>
       <p />
     </aside>
     <article

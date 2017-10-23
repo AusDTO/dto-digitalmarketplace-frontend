@@ -71,7 +71,7 @@ class SubmitConfirmation extends React.Component {
                             closed, you won't need to be reassessed for {domain} opportunties in future.</p>
                         )}
                         <p styleName="footer-link">
-                            <a href={profileUrl} role="button">
+                            <a href={profileUrl} className="button">
                                 Edit your profile</a>
                         </p>
                     </span>
