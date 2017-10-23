@@ -8,6 +8,7 @@ import NotFound from 'shared/NotFound'
 import { updateProfile } from 'orams/actions/profileActions'
 import BusinessDetailsForm from 'orams/components/BusinessDetailsForm'
 import BusinessInfoForm from 'orams/components/BusinessInfoForm'
+import PricingDetailsForm from 'orams/components/PricingDetailsForm'
 import YourInfoForm from 'orams/components/YourInfoForm'
 import ToolsForm from 'orams/components/ToolsForm'
 import AwardsForm from 'orams/components/AwardsForm'
@@ -47,6 +48,13 @@ class EditProfilePage extends Component {
       component: YourInfoForm,
       pattern: '/orams/edit-profile/your-info',
       formKey: 'yourInfoForm'
+    },
+    {
+      id: 'pricing',
+      label: 'Pricing',
+      component: PricingDetailsForm,
+      pattern: '/orams/edit-profile/edit-pricing',
+      formKey: 'pricingDetailsForm'
     }
   ]
 
@@ -91,6 +99,10 @@ class EditProfilePage extends Component {
               <Route
                 path={`${match.url}/awards`}
                 render={() => <AwardsForm handleSubmit={this.handleSubmit} profileUpdated />}
+              />} />
+              <Route
+                path={`${match.url}/edit-pricing`}
+                render={() => <PricingDetailsForm handleSubmit={this.handleSubmit} profileUpdated />}
               />} />
               <Route component={NotFound} />
             </Switch>
