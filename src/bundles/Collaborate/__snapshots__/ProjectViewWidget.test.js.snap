@@ -52,8 +52,8 @@ exports[`ProjectViewWidget renders without errrors 1`] = `
             A Case study client
           </b>
           <a
+            className="button"
             href="mailto:undefined"
-            role="button"
           >
             Email contact
           </a>

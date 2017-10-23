@@ -14,13 +14,13 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
   return (
       <section className="card" styleName="card">
         <article>
-          <h4>
+          <h2 classname="display-4">
             <span>
               {view === "products" ?
                 <a href={link} target="_blank" rel="external">{title}</a> :
                 <a href={link}>{title}</a> }
             </span>
-          </h4>
+          </h2>
 
           {view !== 'sellers' && <div styleName="author">
             by <a href={supplier.profile_url}>{supplier.name}</a>

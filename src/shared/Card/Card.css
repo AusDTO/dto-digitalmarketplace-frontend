@@ -11,11 +11,17 @@
   padding: 1rem 1.4rem 1rem 1.4rem;
 }
 
-.card h4 {
+.card h2 {
   margin: 0 0 0.75rem;
+  font-size:
+    18px
+;
+  font-weight:
+    700
+;
 }
 
-.card h4 span {
+.card h2 span {
   border-bottom: solid 1px #5bcbe3;
 }
 

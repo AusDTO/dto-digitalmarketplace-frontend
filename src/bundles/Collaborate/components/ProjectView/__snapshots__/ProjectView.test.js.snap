@@ -53,8 +53,8 @@ exports[`ProjectView with required attributes 1`] = `
             City of Casey
           </b>
           <a
+            className="button"
             href="mailto:casey@casey.vic.gov.au"
-            role="button"
           >
             Email contact
           </a>
@@ -217,8 +217,8 @@ exports[`ProjectView with required attributes and meta links 1`] = `
             City of Casey
           </b>
           <a
+            className="button"
             href="mailto:casey@casey.vic.gov.au"
-            role="button"
           >
             Email contact
           </a>

@@ -6,6 +6,8 @@ import isEmpty from 'lodash/isEmpty';
 
 import { newline } from '../../../../helpers';
 
+import './View.css'
+
 class View extends React.Component {
   state = { showConfirm: false }
 
@@ -40,7 +42,7 @@ class View extends React.Component {
         {showConfirm && (
           <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" tabIndex="-1" role="alert">
               <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
-              <a href={meta.deleteLink} role="button">Delete this case study</a>
+              <a href={meta.deleteLink} className="button">Delete this case study</a>
               <button className="button-secondary" onClick={this.toggleConfirm.bind(this, false)}>No, keep this case study</button>
           </div>
         )}
@@ -65,16 +67,16 @@ class View extends React.Component {
         </header>
         <div className="row">
           <aside className="col-sm-3 col-xs-12">
-            <h4>Client</h4>
+            <h2>Client</h2>
             <p>{client}</p>
 
-            <h4>Timeframe</h4>
+            <h2>Timeframe</h2>
             <p>{timeframe}</p>
 
-            <h4>Area of expertise</h4>
+            <h2>Area of expertise</h2>
             <p>{service}</p>
 
-            <h4>Responsible for</h4>
+            <h2>Responsible for</h2>
             <p>{roles}</p>
           </aside>
           <article role="main" className="col-sm-7 col-xs-12">

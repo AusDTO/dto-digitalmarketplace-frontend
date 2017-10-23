@@ -47,7 +47,7 @@ const Start = ({supplierCode, signup, onClick, saved, type}) => {
                     <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement (PDF 229kb)</a><br/><br/>
                     <SaveError/>
                     <p>
-                        <a role="button" href={signup} onClick={onClick}>Start now </a>
+                        <a className="button" href={signup} onClick={onClick}>Start now </a>
                     </p>
                 </div>
             ) : (type === 'edit' ? (
@@ -64,7 +64,7 @@ const Start = ({supplierCode, signup, onClick, saved, type}) => {
                            Please note you cannot edit your profile while it is being reviewed.</p>
                         <SaveError/>
                         <p>
-                            <a role="button" href={signup} onClick={onClick}>Start Now </a>
+                            <a className="button" href={signup} onClick={onClick}>Start Now </a>
                         </p>
                     </div>
 
@@ -95,7 +95,7 @@ const Start = ({supplierCode, signup, onClick, saved, type}) => {
                         <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
                         <SaveError/>
                         <p>
-                            <a role="button" href={signup} onClick={onClick}>Start Now </a>
+                            <a className="button" href={signup} onClick={onClick}>Start Now </a>
                         </p>
                     </div>
                 )    
