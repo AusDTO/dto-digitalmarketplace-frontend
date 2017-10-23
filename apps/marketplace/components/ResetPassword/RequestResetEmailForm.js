@@ -25,8 +25,8 @@ const RequestResetEmailForm = props => {
           {resetPasswordEmailSuccess
             ? <PageAlert as="success">
                 <span>
-                  If the email address you&#39;ve entered belongs to a Marketplace account, we&#39;ll send a link to
-                  reset the password.
+                  We have sent a link to reset the password.<br />
+                  Check your spam folder if it does not arrive.
                 </span>
               </PageAlert>
             : <ErrorBox
