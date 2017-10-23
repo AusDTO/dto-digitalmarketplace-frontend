@@ -7,6 +7,7 @@ import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 import keys from 'lodash/keys';
 import difference from 'lodash/difference';
+import DocumentTitle from 'react-document-title';
 
 import Icon     from '../../../../shared/Icon';
 import NotFound from '../../../../shared/NotFound';
@@ -214,7 +215,6 @@ class Signup extends React.Component {
                 'col-sm-8 col-sm-push-2': isCaseStudyEditFlow,
                 'col-sm-8 col-sm-push-1': !isCaseStudyFlow && !isReviewFlow
               });
-
               const children = this.nextStep && <input type="hidden" name="next_step_slug" value={this.nextStep.pattern.slice(1)} />
               const props = Object.assign({},
                 routerProps, {
@@ -238,9 +238,11 @@ class Signup extends React.Component {
 
               const element = React.createElement(component, props, children);
               return (
-                <article id="content" className={articleClassNames}>
-                  {element}
-                </article>
+                <DocumentTitle title={`${label || 'Application'} - Digital Marketplace`}>
+                  <article id="content" className={articleClassNames}>
+                    {element}
+                  </article>
+                </DocumentTitle>
               )
             }} />
           ))}
