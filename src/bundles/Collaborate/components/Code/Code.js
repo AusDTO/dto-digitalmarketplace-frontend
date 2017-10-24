@@ -43,7 +43,7 @@ class Code extends React.Component {
                             and grow your project</a> or contact us if you would like some help.<br/>
 
                             <a href="mailto:marketplace@digital.gov.au?subject=Open source projects"
-                               role="button">Get in touch</a>
+                               className="button">Get in touch</a>
                         </article>
                     </div>
                     <div className="row" styleName="explore">
@@ -96,7 +96,7 @@ class Code extends React.Component {
                             <p>
                                 Let us know what you would like to see in the library<br/>
                                 <a href="mailto:marketplace@digital.gov.au?subject=Feedback"
-                                   role="button">Get in touch</a></p>
+                                   className="button">Get in touch</a></p>
                         </article>
                     </div>
 

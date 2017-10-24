@@ -278,9 +278,9 @@ exports[`Signup renders 1`] = `
         <div />
         <p>
           <a
+            className="button"
             href="#"
             onClick={[Function]}
-            role="button"
           >
             Start now 
           </a>

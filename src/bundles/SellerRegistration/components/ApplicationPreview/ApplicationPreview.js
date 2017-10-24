@@ -38,7 +38,7 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
           <p>Please review your profile, If correct, continue to the legal disclosures and agreement.</p>
           <Link
             to="/submit"
-            role="button"
+            className="button"
             onClick={(e) => onClick(e)}>
             Continue to next step
           </Link>

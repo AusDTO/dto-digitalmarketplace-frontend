@@ -55,8 +55,8 @@ describe('Case Study', () => {
       browser.click('.actions button');
       assert.equal(browser.getText('#callout--success__heading'), 'Are you sure you want to delete this case study?');
 
-      // Confirm delete
-      browser.click('.callout--warn a[role="button"]');
+      // Confirm deleteclass
+      browser.click('.callout--warn a.button');
 
       // Application has confirmed the delete. Test successful.
       assert.equal(browser.getText('#callout--success__heading'), 'The case study Edited Integration Test Case Study has been deleted');

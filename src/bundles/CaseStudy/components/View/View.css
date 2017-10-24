@@ -23,6 +23,27 @@ header h2 {
   margin-bottom: 0;
 }
 
+aside h2 {
+  font-size:
+    18px
+;
+  font-weight:
+    700
+;
+  height:
+    25px
+;
+  line-height:
+    25.2px
+;
+  margin-bottom:
+    7.2px
+;
+  margin-top:
+    28.8px
+;
+}
+
 .project ul {
   list-style: none;
   margin: 0;

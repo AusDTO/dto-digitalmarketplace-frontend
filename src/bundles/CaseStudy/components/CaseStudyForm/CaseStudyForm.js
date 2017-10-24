@@ -226,7 +226,7 @@ class CaseStudyForm extends BaseForm {
               validators={{ validLinks }}
            />
 
-            <h3>Referee</h3>
+            <h2>Referee</h2>
             <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
             <div className={styles.calloutMistake}>
 
@@ -293,7 +293,7 @@ class CaseStudyForm extends BaseForm {
 
             {children}
 
-            <input role="button" type="submit" value={buttonText} />
+            <input className="button" type="submit" value={buttonText} />
           </Form>
           {returnLink}
         </article>

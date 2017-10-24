@@ -153,7 +153,7 @@ class DomainList extends BaseForm {
 
               {!isEmpty(essential) &&
                 <div>
-                  {!isEmpty(recommended) && <h2>Essential</h2>}
+                  <h2 className="visuallyhidden">Essential</h2>
 
 <br/>
                   <div style={{  boxShadow: "0px 0 1px rgba(49,49,49,0.7)",
@@ -255,7 +255,7 @@ class DomainList extends BaseForm {
                     {...currentStudy}
                     supplier_name={supplierName}
                     onSubmit={onCaseStudySubmit.bind(this, subMatch.params)}
-                    confirmButton={<ConnectedLink role="button" to={pathname}>Finish case study</ConnectedLink>}
+                    confirmButton={<ConnectedLink className="button" to={pathname}>Finish case study</ConnectedLink>}
                     returnLink={<p><Link to={`${pathname}/edit/${subMatch.params.id}`}>Continue Editing</Link></p>}
                   />
                 : <Redirect to="/case-study" />

@@ -453,9 +453,9 @@ exports[`CaseStudyForm renders 1`] = `
           </div>
         </div>
       </div>
-      <h3>
+      <h2>
         Referee
-      </h3>
+      </h2>
       <p>
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
@@ -580,7 +580,7 @@ exports[`CaseStudyForm renders 1`] = `
         </label>
       </div>
       <input
-        role="button"
+        className="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -1042,9 +1042,9 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           </div>
         </div>
       </div>
-      <h3>
+      <h2>
         Referee
-      </h3>
+      </h2>
       <p>
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
@@ -1169,7 +1169,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         </label>
       </div>
       <input
-        role="button"
+        className="button"
         type="submit"
         value="Save Changes"
       />
@@ -1822,9 +1822,9 @@ exports[`CaseStudyForm renders with errors 1`] = `
           </div>
         </div>
       </div>
-      <h3>
+      <h2>
         Referee
-      </h3>
+      </h2>
       <p>
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
@@ -2001,7 +2001,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
         </label>
       </div>
       <input
-        role="button"
+        className="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -2469,9 +2469,9 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           </div>
         </div>
       </div>
-      <h3>
+      <h2>
         Referee
-      </h3>
+      </h2>
       <p>
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
@@ -2596,7 +2596,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         </label>
       </div>
       <input
-        role="button"
+        className="button"
         type="submit"
         value="Publish Case Study"
       />
@@ -3058,9 +3058,9 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           </div>
         </div>
       </div>
-      <h3>
+      <h2>
         Referee
-      </h3>
+      </h2>
       <p>
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
@@ -3185,7 +3185,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         </label>
       </div>
       <input
-        role="button"
+        className="button"
         type="submit"
         value="Publish Case Study"
       />

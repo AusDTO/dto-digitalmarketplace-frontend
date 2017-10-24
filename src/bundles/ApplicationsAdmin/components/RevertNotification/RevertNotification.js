@@ -95,7 +95,7 @@ export default class RevertedNotificationForm extends Component {
           onKeyUp={() => {
             onClose(appID, this.state.message);
           }}
-          role="button">close
+          className="button">close
         </a>
       </form>
     )

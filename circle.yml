@@ -1,7 +1,7 @@
 general:
   artifacts:
     - "build"
-    
+
 machine:
   node:
     version: 8.2.1
@@ -16,6 +16,7 @@ dependencies:
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
   override:
+    - find . -name "node_modules" -exec rm -rf '{}' + # removing all node_modules/ folder cause circle can’t be trusted with it.
     - npm install
     - npm run build
 

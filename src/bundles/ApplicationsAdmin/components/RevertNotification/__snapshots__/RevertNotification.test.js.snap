@@ -63,9 +63,9 @@ The Marketplace team"
     </div>
   </div>
   <a
+    className="button"
     onClick={[Function]}
     onKeyUp={[Function]}
-    role="button"
     styleName="close-modal-prompt"
     tabIndex="0"
   >

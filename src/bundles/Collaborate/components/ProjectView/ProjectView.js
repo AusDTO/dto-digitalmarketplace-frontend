@@ -80,7 +80,7 @@ class ProjectView extends React.Component {
                         <span>Council</span>
                         <b>{client}</b>
 
-                        <a href={`mailto:${contact_email}`} role="button">Email contact</a>
+                        <a href={`mailto:${contact_email}`} className="button">Email contact</a>
                     </div>
                     {meta && false && (
                         <span className="actions">
@@ -98,7 +98,7 @@ class ProjectView extends React.Component {
                     <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading"
                          tabIndex="-1" role="alert">
                         <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
-                        <a href={meta.deleteLink} role="button">Delete this case study</a>
+                        <a href={meta.deleteLink} className="button">Delete this case study</a>
                         <button className="button-secondary" onClick={this.toggleConfirm.bind(this, false)}>No, keep
                             this case study
                         </button>

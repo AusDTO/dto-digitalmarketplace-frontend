@@ -21,7 +21,7 @@ const CaseStudy = ({pathname, domain, index, caseStudyForm, onEditCaseStudy, onD
 
   return (
     <section>
-      <h4>{domain}</h4>
+      <h3>{domain}</h3>
       {!isEmpty(list) && (
         <ul className="bordered-list">
           {Object.keys(list).map((guid, i) => {

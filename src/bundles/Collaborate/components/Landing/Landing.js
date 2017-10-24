@@ -50,7 +50,7 @@ class Landing extends React.Component {
                         <br/><br/>
                         <div>
                             <p style={{marginBottom: "0px"}}>Got an idea, pilot or<br/> live project to share?</p>
-                            <a href="/collaborate/project/new" role="button">Add your project</a><br/>
+                            <a href="/collaborate/project/new" className="button">Add your project</a><br/>
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@ class Landing extends React.Component {
                             </article>
                         </li>
                     </ul>
-                    <p style={{textAlign: "center"}}><a href="/collaborate/project/new" role="button">Add a project</a>
+                    <p style={{textAlign: "center"}}><a href="/collaborate/project/new" className="button">Add a project</a>
                     </p>
                 </div>
                 <div style={{paddingTop: "12px"}}>
@@ -281,14 +281,14 @@ class Landing extends React.Component {
                         <div style={{textAlign: "center"}} className="col-xs-12 col-md-4 col-md-push-2">
                             <h3>Need digital products or services for government?</h3>
                             <p>Our buyers are from across local, state, territory and federal government.</p>
-                            <p><a href="/2/signup" role="button" style={{color: "white"}}>Join as a buyer</a></p>
+                            <p><a href="/2/signup" className="button" style={{color: "white"}}>Join as a buyer</a></p>
                         </div>
                         <div style={{textAlign: "center"}} styleName="styles.becomeASeller"
                              className="col-xs-12 col-md-4 col-md-push-2">
                             <div>
                                 <h3>Offer digital products <br/>or services to government</h3>
                                 <p>Access more digital opportunities across all levels of government.</p>
-                                <p><a href="/become-a-seller" role="button" style={{color: "white"}}>Become a seller</a>
+                                <p><a href="/become-a-seller" className="button" style={{color: "white"}}>Become a seller</a>
                                 </p>
                             </div>
                         </div>
