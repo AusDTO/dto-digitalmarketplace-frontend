@@ -30,9 +30,11 @@ class PricingDetailsForm extends BaseForm {
     }
 
     if (this.props.errorMessage) {
-      ;<PageAlert as="error">
-        <h4>There was a problem loading the page</h4>
-      </PageAlert>
+      return (
+        <PageAlert as="error">
+          <h4>There was a problem loading the page</h4>
+        </PageAlert>
+      )
     }
 
     return <ServiceEditList editServiceData={this.props.editServiceData} linkClick={this.loadStepTwo} {...this.props} />
