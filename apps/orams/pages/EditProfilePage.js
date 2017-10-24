@@ -102,7 +102,7 @@ class EditProfilePage extends Component {
               />} />
               <Route
                 path={`${match.url}/edit-pricing`}
-                render={() => <PricingDetailsForm handleSubmit={this.handleSubmit} profileUpdated />}
+                render={() => <PricingDetailsForm handleSubmit={this.handleSubmit} profileUpdated {...this.props}/>}
               />} />
               <Route component={NotFound} />
             </Switch>
