@@ -1,9 +1,5 @@
 /* eslint-disable */
-import {
-  SENDING_REQUEST,
-  SET_ERROR_MESSAGE,
-  SET_EDIT_SERVICE_DATA
-} from 'orams/constants/constants'
+import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_EDIT_SERVICE_DATA } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
 
@@ -35,11 +31,11 @@ export const loadPricesData = (serviceTypeId, categoryId) => dispatch => {
 
   const baseUrl = () => {
     if (serviceTypeId && categoryId) {
-      return "/services/" + serviceTypeId + "/categories/" + categoryId + "/prices/"
+      return '/services/' + serviceTypeId + '/categories/' + categoryId + '/prices/'
     }
 
     if (serviceTypeId) {
-      return "/services/" + serviceTypeId + "/prices/"
+      return '/services/' + serviceTypeId + '/prices/'
     }
   }
 
@@ -47,7 +43,7 @@ export const loadPricesData = (serviceTypeId, categoryId) => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      console.log("RESPONSE", response.data)
+      console.log('RESPONSE', response.data)
     }
     dispatch(sendingRequest(false))
   })

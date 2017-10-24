@@ -14,9 +14,7 @@ import { loadServiceEditData, loadPricesData } from 'orams/actions/editPriceActi
 import styles from './PricingDetailsForm.scss'
 
 class PricingDetailsForm extends BaseForm {
-  static propTypes = {
-
-  }
+  static propTypes = {}
 
   componentDidMount() {
     this.props.loadServiceEdit()
@@ -32,12 +30,12 @@ class PricingDetailsForm extends BaseForm {
     }
 
     if (this.props.errorMessage) {
-      <PageAlert as="error">
+      ;<PageAlert as="error">
         <h4>There was a problem loading the page</h4>
       </PageAlert>
     }
 
-    return <ServiceEditList editServiceData={this.props.editServiceData} linkClick={this.loadStepTwo} {...this.props}/>
+    return <ServiceEditList editServiceData={this.props.editServiceData} linkClick={this.loadStepTwo} {...this.props} />
   }
 
   render(props) {
