@@ -15,55 +15,46 @@ const BriefResponseSubmitted = props =>
         <h1 className="uikit-display-4" style={{ fontWeight: 'bold' }}>
           What happens next?
         </h1>
-        {!props.brief || props.brief.sellerSelector !== 'oneSeller'
-          ? <span>
-              <p>
-                After the brief closes{' '}
-                {props.brief &&
-                  <span>
-                    {' '}on <b>{format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')}</b>
-                  </span>}{' '}
-                the buyer will shortlist a number of sellers and get in touch with next steps to evaluate further.
-              </p>
-
+        {!props.brief ||
+          (props.brief.sellerSelector !== 'oneSeller' && [
+            <p>
+              After the brief closes{' '}
               {props.brief &&
-                props.brief.evaluationType &&
                 <span>
-                  <h2 className="uikit-display-2" style={{ fontWeight: 'bold' }}>
-                    <Icon
-                      value="successful"
-                      color="#000000"
-                      size={24}
-                      style={{
-                        position: 'relative',
-                        top: '4px',
-                        marginRight: '10px'
-                      }}
-                    />
-                    If you&apos;re successful
-                  </h2>
-                  The buyer will get in contact and evaluate you based on:
-                  <ul>
-                    {props.brief.evaluationType.map(evaluationType =>
-                      <li key={evaluationType}>
-                        {evaluationType}
-                      </li>
-                    )}
-                  </ul>
-                </span>}
-            </span>
-          : <span>
-              The buyer will get in contact after{' '}
-              <b>{format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')} </b>
-              to evaluate you based on:
-              <ul>
-                {props.brief.evaluationType.map(evaluationType =>
-                  <li key={evaluationType}>
-                    {evaluationType}
-                  </li>
-                )}
-              </ul>
-            </span>}
+                  {' '}on <b>{format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')}</b>
+                </span>}{' '}
+              the buyer will shortlist a number of sellers and get in touch with next steps to evaluate further.
+            </p>,
+            <h2 className="uikit-display-2" style={{ fontWeight: 'bold' }}>
+              <Icon
+                value="successful"
+                color="#000000"
+                size={24}
+                style={{
+                  position: 'relative',
+                  top: '4px',
+                  marginRight: '10px'
+                }}
+              />
+              If you&apos;re successful
+            </h2>
+          ])}
+        <span>
+          The buyer will get in contact after{' '}
+          <b>{format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')} </b>
+          {props.brief && props.brief.evaluationType
+            ? <span>
+                to evaluate you based on:
+                <ul>
+                  {props.brief.evaluationType.map(evaluationType =>
+                    <li key={evaluationType}>
+                      {evaluationType}
+                    </li>
+                  )}
+                </ul>
+              </span>
+            : [<br />, <br />]}
+        </span>
 
         {!props.brief ||
           (props.brief.sellerSelector !== 'oneSeller' &&
