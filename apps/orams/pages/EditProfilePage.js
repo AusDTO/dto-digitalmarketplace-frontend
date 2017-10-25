@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import React, { Component } from 'react'
 import { withRouter, Switch, Route, Link } from 'react-router-dom'
 import classNames from 'classnames'
@@ -13,6 +12,7 @@ import YourInfoForm from 'orams/components/YourInfoForm'
 import ToolsForm from 'orams/components/ToolsForm'
 import AwardsForm from 'orams/components/AwardsForm'
 import LocalNav from 'shared/LocalNav'
+import { uniqueID } from 'shared/utils/helpers'
 
 class EditProfilePage extends Component {
   constructor(props) {
@@ -64,10 +64,10 @@ class EditProfilePage extends Component {
       <main>
         <div className="row">
           <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
-            {this.steps.map(({ pattern, label, formKey, id }, i) => {
+            {this.steps.map(({ pattern, label }, id = uniqueID()) => {
               const isActive = location.pathname === pattern
               return (
-                <li key={i}>
+                <li key={id}>
                   <Link to={pattern} className={classNames({ 'is-active is-current': isActive })}>
                     <span>
                       {label}

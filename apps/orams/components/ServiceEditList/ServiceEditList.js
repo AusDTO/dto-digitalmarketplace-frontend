@@ -28,14 +28,12 @@ const ServiceEditList = props => {
                     linkClick(service.id, subCategory.id)
                   }}
                 >
-                  <a href="#">
-                    <div className={styles.link}>
-                      {service.name}
-                      <span>
-                        {subCategory.name ? ' ' + '(' + subCategory.name + ')' : ''}
-                      </span>
-                    </div>
-                  </a>
+                  <div className={styles.link}>
+                    {service.name}
+                    <span>
+                      {subCategory.name ? ' ' + '(' + subCategory.name + ')' : ''}
+                    </span>
+                  </div>
                 </div>
               )}
             </div>

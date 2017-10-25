@@ -10,11 +10,12 @@
  *   });
  */
 
-import { SET_EDIT_SERVICE_DATA } from 'orams/constants/constants'
+import { SET_EDIT_SERVICE_DATA, SET_PRICES_DATA, SET_STEP } from 'orams/constants/constants'
 
 // The initial application state
 const initialState = {
-  editServiceData: ''
+  editServiceData: '',
+  pricesData: ''
 }
 
 const editPricingReducer = (state = initialState, action) => {
@@ -23,6 +24,18 @@ const editPricingReducer = (state = initialState, action) => {
       return {
         ...state,
         editServiceData: action.editServiceData
+      }
+
+    case SET_PRICES_DATA:
+      return {
+        ...state,
+        pricesData: action.pricesData
+      }
+
+    case SET_STEP:
+      return {
+        ...state,
+        step: action.step
       }
 
     default:
