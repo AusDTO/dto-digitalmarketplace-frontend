@@ -39,7 +39,7 @@ export const getUserDataFromToken = token => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: `/reset-password/${token}` }).then(response => {
     if (response.error) {
-      if (response.data.message) {
+      if (response.data && response.data.message) {
         dispatch(setErrorMessage(`${response.data.message}. Try resending reset password email.`))
       } else {
         dispatch(setErrorMessage(GENERAL_ERROR))
