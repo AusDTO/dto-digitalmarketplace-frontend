@@ -510,6 +510,27 @@ exports[`Signup renders empty Your Info form 1`] = `
       <article
         role="main"
       >
+        <div
+          className="calloutMistake"
+        >
+          <b>
+             Avoid common mistakes 
+          </b>
+          <ul>
+            <li>
+              <b>
+                Contact names
+              </b>
+               - use full names.
+            </li>
+            <li>
+              <b>
+                Email and phone numbers
+              </b>
+               - Check the format and details are correct.
+            </li>
+          </ul>
+        </div>
         <form
           action={undefined}
           id="yourinfo"
@@ -946,6 +967,27 @@ exports[`Signup renders populated Your Info form 1`] = `
       <article
         role="main"
       >
+        <div
+          className="calloutMistake"
+        >
+          <b>
+             Avoid common mistakes 
+          </b>
+          <ul>
+            <li>
+              <b>
+                Contact names
+              </b>
+               - use full names.
+            </li>
+            <li>
+              <b>
+                Email and phone numbers
+              </b>
+               - Check the format and details are correct.
+            </li>
+          </ul>
+        </div>
         <form
           action="https://httpbin.org/post"
           id="yourinfo"

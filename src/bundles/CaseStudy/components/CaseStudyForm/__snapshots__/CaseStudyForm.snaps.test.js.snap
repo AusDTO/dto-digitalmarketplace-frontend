@@ -37,7 +37,7 @@ exports[`CaseStudyForm renders 1`] = `
       </p>
     </div>
     <div
-      className={undefined}
+      className="calloutMistake"
     >
       <b>
          Avoid common mistakes 
@@ -224,7 +224,7 @@ exports[`CaseStudyForm renders 1`] = `
       </div>
       <br />
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -460,7 +460,7 @@ exports[`CaseStudyForm renders 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -626,7 +626,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       </p>
     </div>
     <div
-      className={undefined}
+      className="calloutMistake"
     >
       <b>
          Avoid common mistakes 
@@ -813,7 +813,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       </div>
       <br />
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -1049,7 +1049,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -1220,7 +1220,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
       </p>
     </div>
     <div
-      className={undefined}
+      className="calloutMistake"
     >
       <b>
          Avoid common mistakes 
@@ -1567,7 +1567,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
       </div>
       <br />
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -1829,7 +1829,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -2047,7 +2047,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       </p>
     </div>
     <div
-      className={undefined}
+      className="calloutMistake"
     >
       <b>
          Avoid common mistakes 
@@ -2240,7 +2240,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       </div>
       <br />
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -2476,7 +2476,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -2642,7 +2642,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       </p>
     </div>
     <div
-      className={undefined}
+      className="calloutMistake"
     >
       <b>
          Avoid common mistakes 
@@ -2829,7 +2829,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       </div>
       <br />
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
@@ -3065,7 +3065,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
       </p>
       <div
-        className={undefined}
+        className="calloutMistake"
       >
         <b>
            Avoid common mistakes 

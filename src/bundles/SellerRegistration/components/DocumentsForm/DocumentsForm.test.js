@@ -32,9 +32,6 @@ test('DocumentsForm renders inputs when no documents are present', () => {
 
 test('DocumentsForm renders links when documents are present', () => {
   const documents = {
-      deed: {
-        filename: 'workers.png',
-      },
       financial: {
         filename: 'ezidox_Architecture_Diagram_-_Oct_2016.pdf'
       },
@@ -60,6 +57,6 @@ test('DocumentsForm renders links when documents are present', () => {
     </Provider>
   )
 
-  let links = wrapper.find('ul');
+  let links = wrapper.find('ul.bordered-list');
   expect(links.length).toBe(3);
 });
