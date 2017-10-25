@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for ReportPageContainer component ReportPageContainer renders without errors 1`] = `
+<ReportPageContainer
+  data={
+    Object {
+      "date": null,
+      "items": Array [
+        Object {
+          "heading": "",
+          "subitems": Array [],
+        },
+      ],
+      "title": "Marketplace Reports",
+    }
+  }
+  match={[Function]}
+/>
+`;

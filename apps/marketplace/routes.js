@@ -6,6 +6,7 @@ import ResetPasswordPage from './pages/ResetPasswordPage'
 import CreateUserPage from './pages/CreateUserPage'
 import BriefPage from './pages/BriefPage'
 import LoginPage from './pages/LoginPage'
+import ReportPage from './pages/ReportPage'
 import NotFound from './components/shared/NotFound'
 
 export const rootPath = '/2'
@@ -18,6 +19,7 @@ export const Routes = () =>
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
+    <Route path={`${rootPath}/reports`} component={ReportPage} />
     <Route component={NotFound} />
   </Switch>
 
