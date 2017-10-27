@@ -21,8 +21,6 @@ import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 
-import styles from './CaseStudyForm.css'
-
 class CaseStudyForm extends BaseForm {
 
   static propTypes = {
@@ -94,7 +92,7 @@ class CaseStudyForm extends BaseForm {
                 </p>
               </div>    
             )}
-          <div className={styles.calloutMistake}>
+          <div className="calloutMistake">
             <b> Avoid common mistakes </b>
             <ul>
               <li>If using acronyms, their meaning must be written out clearly.</li>
@@ -183,7 +181,7 @@ class CaseStudyForm extends BaseForm {
               validators={{ required }}
             />
             <br/>
-            <div className={styles.calloutMistake}>
+            <div className="calloutMistake">
 
                 <b> Avoid common mistakes </b><br/>
               <AssessmentCriteria service_slug={service_slug}/>
@@ -228,7 +226,7 @@ class CaseStudyForm extends BaseForm {
 
             <h2>Referee</h2>
             <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
-            <div className={styles.calloutMistake}>
+            <div className="calloutMistake">
 
               <b> Avoid common mistakes </b>
               <ul>

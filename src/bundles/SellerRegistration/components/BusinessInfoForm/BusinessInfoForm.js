@@ -129,7 +129,22 @@ class BusinessInfoForm extends BaseForm {
                             </label>
                         </fieldset>
                         <div>
-                            <legend>Business identifiers (optional)</legend>
+                          <legend>Business identifiers (optional)</legend>
+
+
+                          <br/>
+                          <div className="calloutMistake">
+                            <b> Avoid common mistakes </b>
+                            <ul>
+                              <li><b>start up</b> - your business must have been
+                                registered in the last five years only.
+                              </li>
+                              <li><b>SME</b> - your business cannot have more
+                                than 200 employees worldwide.
+                              </li>
+                            </ul>
+                          </div>
+
                           <br/>
                             <Control.checkbox
                                 model={`${model}.seller_type.start_up`}
@@ -188,7 +203,18 @@ class BusinessInfoForm extends BaseForm {
                         </div>
                         <div>
                           <br/>
-                            <legend>Diversity and inclusion (optional)</legend>
+                          <legend>Diversity and inclusion (optional)</legend>
+
+                          <br/>
+                          <div className="calloutMistake">
+                            <b> Avoid common mistakes </b>
+                            <ul>
+
+                              <li><b>Australian disability enterprise</b> - your business must be listed on <a href="http://ade.org.au">ade.org.au</a></li>
+                              <li><b>Indigenous business</b> - your business must be listed on <a href="http://supplynation.org.au">supplynation.org.au</a></li>
+                            </ul>
+                          </div>
+
                           <br/>
                             <p>The Marketplace is committed to providing a diverse and inclusive environment.<br/>
                                 Responses are optional and for demographic purposes only.</p>

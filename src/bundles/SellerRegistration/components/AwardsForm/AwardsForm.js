@@ -28,9 +28,16 @@ class AwardsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Awards and accreditations</h1>
+
                     <p>This is your opportunity to share some of the things you are proud of.
                         All questions are optional but can help your business attract potential buyers. </p>
-
+                  <div className="calloutMistake">
+                    <b> Avoid common mistakes </b>
+                    <ul>
+                      <li>If using acronyms, their meaning must be written out clearly.</li>
+                      <li>If a section does not apply to your business, leave it blank. The section will not appear on your profile.</li>
+                    </ul>
+                  </div>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>

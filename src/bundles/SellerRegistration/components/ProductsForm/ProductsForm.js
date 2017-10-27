@@ -65,6 +65,18 @@ class ProductsForm extends BaseForm {
           <h1 tabIndex="-1">Products</h1>
             <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you are reselling.</p>
             <p>This feature is an MVP, meaning we want to learn more about the types of products sellers are offering so we can create a solution for selling them through the Digital Marketplace.</p>
+
+          {hasProducts && [<div className="calloutMistake">
+            <b> Avoid common mistakes </b>
+            <ul>
+              <li>Make sure the product is your own</li>
+              <li>Only provide details for proprietary products being sold, not services offered by the company.</li>
+              <li>The Digital Marketplace does not currently support hardware products.</li>
+              <li>If using acronyms, their meaning must be written out clearly.</li>
+              <li><b>Product links</b> - consider targeting URLs to pricing and support pages for the product rather than a generic landing page.</li>
+              <li>Check that all URLs provided are working.</li>
+            </ul>
+          </div>,<br/>]}
         </header>
         <article role="main">
           <ErrorBox focusOnMount={true} model={model}/>

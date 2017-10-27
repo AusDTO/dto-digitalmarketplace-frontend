@@ -111,9 +111,20 @@ class DocumentsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Upload your documents</h1>
-                    <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
-                      <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
-                    </p>
+
+                  <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
+                  <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
+                  </p>
+                  <div className="calloutMistake">
+                    <b> Avoid common mistakes </b>
+                    <ul>
+
+                      <li><b>Financial statement</b> - ensure it is up to date. A letter from your accountant confirming financial viability is acceptable. We will not accept an internal letter as proof of financial viability.</li>
+                      <li><b>Professional Indemnity and Public Liability Insurance</b> - check expiration dates match the uploaded documentation.</li>
+                      <li><b>Workers Compensation</b> - check expiration dates match the uploaded documentation.</li>
+                    </ul>
+                  </div><br/>
+
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>

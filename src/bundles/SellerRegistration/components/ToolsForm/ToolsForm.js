@@ -30,6 +30,15 @@ class ToolsForm extends BaseForm {
                 <header>
                     <h1 tabIndex="-1">Tools and methodologies</h1>
                     <p>Enhance your profile and give buyers more ways to find you through keyword search</p>
+
+                  <div className="calloutMistake">
+                    <b> Avoid common mistakes </b>
+                    <ul>
+                      <li>If using acronyms, their meaning must be written out clearly.</li>
+                      <li>If a section does not apply to your business, leave it blank. The section will not appear on your profile.</li>
+                      <li>Use plain english to explain the tools, methodologies and technologies used.</li>
+                    </ul>
+                  </div>
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>

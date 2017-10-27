@@ -53,21 +53,21 @@ class RecruiterForm extends BaseForm {
                             name="recruiter"
                             id="yes"
                             value="yes"/>
-                          <label htmlFor="yes">Yes</label>
+                          <label htmlFor="yes">Yes, my business solely places candidates in temporary and contract recruitment</label>
 
                           <Control.radio
                             model={`${model}.recruiter`}
                             name="recruiter"
                             id="no"
                             value="no"/>
-                          <label htmlFor="no">No</label>
+                          <label htmlFor="no">No, my business provides staff on a consultancy basis</label>
 
                           <Control.radio
                             model={`${model}.recruiter`}
                             name="recruiter"
                             id="both"
                             value="both"/>
-                          <label htmlFor="both">We do both recruitment and services</label>
+                          <label htmlFor="both">My business does both recruitment and consultancy</label>
                         </fieldset>
 
                         {children}
