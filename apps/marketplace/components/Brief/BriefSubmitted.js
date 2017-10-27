@@ -1,6 +1,6 @@
 import React from 'react'
 import format from 'date-fns/format'
-import Feedback from 'marketplace/components/shared/form/Feedback'
+import Feedback from 'marketplace/components/Feedback/Feedback'
 
 import PageAlert from '@gov.au/page-alerts'
 import DocumentTitle from 'react-document-title'
@@ -25,8 +25,8 @@ const BriefSubmitted = props =>
             </a>
           </PageAlert>
           <br />
-          <h1 className="uikit-display-4" style={{ fontWeight: 'bold' }}>
-            What happens next?
+          <h1 className="uikit-display-4">
+            <b>What happens next?</b>
           </h1>
           <ul>
             <li>

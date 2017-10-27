@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import DocumentTitle from 'react-document-title'
 
-import ErrorBox from '../components/shared/form/ErrorBox'
-import Textfield from '../components/shared/form/Textfield'
+import ErrorBox from 'shared/form/ErrorBox'
+import Textfield from 'shared/form/Textfield'
 import { required, validEmail, passwordLength } from '../components/validators'
 import LoadingButton from './LoadingButton/LoadingButton'
 

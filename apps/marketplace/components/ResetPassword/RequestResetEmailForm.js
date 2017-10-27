@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import PageAlert from '@gov.au/page-alerts'
-import ErrorBox from '../../components/shared/form/ErrorBox'
-import Textfield from '../../components/shared/form/Textfield'
+import ErrorBox from 'shared/form/ErrorBox'
+import Textfield from 'shared/form/Textfield'
 import { required, validEmail } from '../validators'
 
 const RequestResetEmailForm = props => {

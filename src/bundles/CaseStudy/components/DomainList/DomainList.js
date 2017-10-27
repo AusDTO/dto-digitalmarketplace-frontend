@@ -158,7 +158,7 @@ class DomainList extends BaseForm {
 <br/>
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
-                 <ul style={{ paddingTop: "0.8em"}}>
+                 <ul>
 
                    <li>Check the <a href="/assessment-criteria">assessment criteria</a> to ensure the service chosen is a good match for the case study.</li>
                    <li>Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.</li>

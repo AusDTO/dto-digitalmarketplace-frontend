@@ -38,11 +38,6 @@ exports[`ProjectViewWidget renders without errrors 1`] = `
         className="col-xs-12 col-sm-8 col-sm-push-1 col-md-3 col-md-push-1"
       >
         <div
-          style={
-            Object {
-              "backgroundColor": "white",
-            }
-          }
           styleName="tile"
         >
           <span>

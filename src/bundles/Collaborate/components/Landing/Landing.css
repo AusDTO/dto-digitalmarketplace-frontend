@@ -91,7 +91,12 @@
     float: left;
     margin-top: auto;
 }
-
+.calendarList > li {
+  border: 0;
+}
+.calendarList > table {
+  margin-top: 0;
+}
 @media only screen and (max-device-width: 768px) {
     .title {
         font-size: 28px;
@@ -137,7 +142,9 @@
         margin-top: -22px !important;
     }
 }
-
+.mapOverlay div, .mapOverlay article {
+  display: inline;
+}
 @media only screen and (min-device-width: 768px) {
     .chart {
         background: #e0e3e5;

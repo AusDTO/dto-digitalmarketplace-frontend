@@ -4,16 +4,10 @@ import PropTypes from 'prop-types'
 
 import icons from './_getIcons'
 
-const Icon = props => {
-  const { color, size, value, style, ...more } = props
-  delete more.className
+import styles from './Icon.scss'
 
-  const divStyle = {
-    display: 'inline-block',
-    height: size,
-    width: size,
-    ...style
-  }
+const Icon = props => {
+  const { color, size, value, className = '', ...more } = props
 
   const svgStyle = {}
   if (value.includes('filled')) {
@@ -29,8 +23,15 @@ const Icon = props => {
   }
 
   return (
-    <div style={divStyle} className="icon">
-      <svg {...more} viewBox="0 0 24 24" style={svgStyle} dangerouslySetInnerHTML={{ __html: icons[value] }} />
+    <div className={`${styles.icon} ${className}`}>
+      <svg
+        height={size}
+        width={size}
+        {...more}
+        viewBox="0 0 24 24"
+        style={svgStyle}
+        dangerouslySetInnerHTML={{ __html: icons[value] }}
+      />
     </div>
   )
 }

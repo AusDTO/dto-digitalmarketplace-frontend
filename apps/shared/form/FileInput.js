@@ -79,17 +79,14 @@ class FileInput extends React.Component {
 
           {!isEmpty(doc) &&
             <div>
-              <div
-                className={styles.bordered_list}
-                style={this.props.id === 0 ? { borderTop: 'solid 1px #bebebe' } : {}}
-              >
+              <div className={styles.bordered_list}>
                 <div className={styles.bordered_list__item}>
-                  <div className="col-xs-9" style={{ display: 'inline-block' }}>
+                  <div className="col-xs-9">
                     <a href={`/api/2${this.props.url}/${doc}`} target="_blank" rel="external">
                       {doc}
                     </a>
                   </div>
-                  <div className="col-xs-3" style={{ display: 'inline-block' }}>
+                  <div className="col-xs-3">
                     <a href="#delete" onClick={this.onReset}>
                       Delete
                     </a>

@@ -96,7 +96,6 @@ class CaseStudyForm extends BaseForm {
             <b> Avoid common mistakes </b>
             <ul>
               <li>If using acronyms, their meaning must be written out clearly.</li>
-          <li>Don’t write in capitals</li>
           <li>Check for punctuation, spelling mistakes and grammatical errors.</li>
           <li>Use plain english to explain what you did, with reference to the tools and methodologies you used.</li>
           <li>Case studies should be for one project, not multiple.              </li>

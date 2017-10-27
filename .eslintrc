@@ -3,6 +3,7 @@
   "plugins": [
     "jsx-a11y",
     "react",
+    "react-native",
     "prettier"
   ],
   "extends": [
@@ -19,10 +20,10 @@
     "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}],
     "react/jsx-filename-extension": "off",
     "react/forbid-prop-types": "off",
-    "class-methods-use-this": ["error", { "exceptMethods": ["onSubmitFailed"] }],
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react-native/no-inline-styles": 2
   },
   "globals": {
     "document": false,

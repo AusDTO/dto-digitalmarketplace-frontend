@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter, Switch, Route } from 'react-router-dom'
-import NotFound from '../shared/NotFound'
+import NotFound from 'marketplace/components/NotFound'
 import BuyerOnboarding from './BuyerOnboarding'
 import SellerOnboarding from './SellerOnboarding'
 

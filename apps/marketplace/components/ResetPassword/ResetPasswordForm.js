@@ -4,8 +4,8 @@ import { Form } from 'react-redux-form'
 import PageAlert from '@gov.au/page-alerts'
 import DocumentTitle from 'react-document-title'
 
-import ErrorBox from '../../components/shared/form/ErrorBox'
-import Textfield from '../../components/shared/form/Textfield'
+import ErrorBox from 'shared/form/ErrorBox'
+import Textfield from 'shared/form/Textfield'
 import { passwordLength } from '../validators'
 
 const ResetPasswordForm = props => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
-import { uniqueID } from '../shared/utils/helpers'
+import { uniqueID } from '../helpers'
 import ReportItem from './ReportItem'
 import * as styles from './ReportView.scss'
 
@@ -21,7 +21,7 @@ const ReportView = props => {
               rel="external"
               target="_blank"
               href="/static/media/documents/Marketplace_2017Aug.pdf"
-              style={{ display: 'none' }}
+              className={styles.hide}
             >
               View this report as a PDF (468KB)
             </a>
