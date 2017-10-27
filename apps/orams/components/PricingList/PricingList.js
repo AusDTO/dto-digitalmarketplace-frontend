@@ -54,9 +54,15 @@ const PricingList = props => {
                   {price.endDate}
                 </div>
                 <div className="col-md-1 col-sm-1">
-                  <a href="#">
+                  <div
+                    className={styles.link}
+                    onClick={() => {
+                      props.editPrice(price)
+                      window.scrollTo(0, 0)
+                    }}
+                  >
                     <strong>Edit</strong>
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,0 +1,35 @@
+.container {
+  margin-bottom: 100px;
+}
+
+.stepTitle {
+  font-size: 20px;
+  color: #777777;
+}
+
+.backLink {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 49px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.button {
+  font-size: 20px;
+  line-height: 0.8;
+  background-color: #f5d815;
+  color: #000000;
+  padding: 12px 17px;
+  width: 100%;
+  text-align: center;
+  margin-right: 21px;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+      width: 44%;
+  }
+}

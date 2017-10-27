@@ -25,7 +25,8 @@ const ServiceEditList = props => {
                 <div
                   key={subId}
                   onClick={() => {
-                    linkClick(service.id, subCategory.id)
+                    linkClick(service.id, subCategory.id, service.name, subCategory.name ? subCategory.name : '')
+                    window.scrollTo(0, 0)
                   }}
                 >
                   <div className={styles.link}>

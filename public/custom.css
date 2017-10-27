@@ -138,7 +138,7 @@ form .hint {
   -webkit-box-shadow: 0 0 0 3px #e05200;
   -moz-box-shadow: 0 0 0 3px #e05200;
   box-shadow: 0 0 0 3px #e05200;
-  
+
 }
 
 input[type="radio"].uikit-control-input__input:focus + .uikit-control-input__text:before {
@@ -347,4 +347,20 @@ label.text-box-number-label {
 .orams-footer .uikit-footer a {
   color: #ffffff;
   border-bottom: solid 1px #f5d815;
+}
+
+.custom-radio .uikit-control-input {
+  display: block;
+  padding-bottom: 20px;
+}
+
+.fields.flush {
+    display: inline-block;
+    width: 4rem;
+}
+
+.slashSpacer {
+  width: 2rem;
+  display: inline-block;
+  text-align: center;
 }
