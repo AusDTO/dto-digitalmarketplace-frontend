@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import DocumentTitle from 'react-document-title'
 
 import styles from './Landing.css'
 
@@ -30,8 +31,9 @@ class Landing extends React.Component {
         let maxDomain = 152;
         return (
             <div className="landing">
-
+              <DocumentTitle title="Smart cities - Digital Marketplace">
                 <h1 styleName="styles.title" style={{textAlign: "center"}}>Smart cities</h1>
+              </DocumentTitle>
                 <p styleName="styles.uikit-display-3">Connect and collaborate to improve the liveability,
                     productivity and sustainability of Australian communities.</p>
 
