@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {Form, Control} from 'react-redux-form';
-import isEmpty from 'lodash/isEmpty'
+import DocumentTitle from 'react-document-title'
 
 import {required, validEmail} from '../../../../validators';
 
@@ -91,12 +91,14 @@ class ProjectForm extends BaseForm {
         return (
             <Layout>
                 <header id="content">
-
+                  <DocumentTitle title="Add a project - Digital Marketplace">
                     <h1 tabIndex="-1" ref="header"
                         >{mode === 'edit' ? 'Edit' : 'Add a'} project</h1>
+                  </DocumentTitle>
                     <p>Share ideas for collaboration, or lessons learned building smarter communities and digital
                         services. Projects will be added to the new collaboration area on the Marketplace in the coming
                         weeks.</p>
+
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
