@@ -9,13 +9,18 @@ import formProps from 'shared/form/formPropsSelector'
 import { required, limitNumbers, validDate } from 'shared/validators'
 import Datefield from 'shared/form/Datefield'
 import RadioList from 'shared/form/RadioList'
+import SubmitForm from 'shared/form/SubmitForm'
 import styles from './EditPriceForm.scss'
 
 class EditPriceForm extends Component {
   render() {
-    console.log('editPriceForm', editPriceForm)
-    const { priceData, serviceToEdit, model, action, form, editPriceForm } = this.props
+    const { priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit } = this.props
     const date = editPriceForm.date
+    const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+    const tomorrowDay = currentDate.getDate()
+    const tomorrowMonth = currentDate.getMonth() + 1
+    const tomorrowYear = currentDate.getFullYear()
+    const tomorrowDate = tomorrowYear + '-' + tomorrowMonth + '-' + tomorrowDay
     return (
       <div className={styles.container}>
         <header>
@@ -52,9 +57,9 @@ class EditPriceForm extends Component {
           <Form
             model={model}
             action={action}
-            valid={form.valid}
+            id="BusinessDetails__create"
             validateOn="submit"
-            onSubmit={data => handleSubmit(data)}
+            onSubmit={data => handlePriceSubmit(data)}
           >
             <Textfield
               model={`${model}.price`}
@@ -76,7 +81,7 @@ class EditPriceForm extends Component {
                 label="How long is this price valid for?"
                 options={[
                   {
-                    value: 'date',
+                    value: `${tomorrowDate}`,
                     label: 'From tomorrow onwards'
                   },
                   {
@@ -99,25 +104,37 @@ class EditPriceForm extends Component {
                   model={`${model}.start_date`}
                   component={Datefield}
                   name="start_date"
-                  id="start-date"
+                  id="start_date"
                   label="Start date"
-                  validators={{ validDate }}
+                  controlProps={{
+                    id: 'start_date',
+                    model: `${model}.start_date`,
+                    htmlFor: 'start_date',
+                    label: 'Start date'
+                  }}
                 />
                 <br />
                 <Control
                   model={`${model}.end_date`}
                   component={Datefield}
                   name="end_date"
-                  id="end-date"
+                  id="end_date"
                   label="End date"
-                  validators={{ validDate }}
+                  controlProps={{
+                    id: 'end_date',
+                    model: `${model}.end_date`,
+                    htmlFor: 'end_date',
+                    label: 'End date'
+                  }}
                 />
                 <br />
               </div>}
             <div className="row">
               <div className="col-xs-12 col-sm-12 col-md-11">
-                <button className={styles.button}>Save and edit another</button>
-                <button className={styles.button}>Continue to contract variation</button>
+                {/*<button className="uikit-btn uikit-btn--tertiary">Save and edit another</button>*/}
+                <button type="submit" className="uikit-btn">
+                  Continue to contract variation
+                </button>
               </div>
             </div>
           </Form>

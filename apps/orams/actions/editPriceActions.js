@@ -6,7 +6,9 @@ import {
   SET_PRICES_DATA,
   SET_STEP,
   SET_PRICE_TO_EDIT_DATA,
-  SET_SERVICE_TO_EDIT_IN_STATE
+  SET_SERVICE_TO_EDIT_IN_STATE,
+  SET_PRICE_TO_EDIT_ID,
+  SET_ONE_PRICE
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -38,7 +40,16 @@ export function setServiceToEditInState(serviceToEdit) {
   return { type: SET_SERVICE_TO_EDIT_IN_STATE, serviceToEdit }
 }
 
+export function setPriceToEditId(priceId) {
+  return { type: SET_PRICE_TO_EDIT_ID, priceId }
+}
+
+export function setOnePrice(priceObj) {
+  return { type: SET_ONE_PRICE, priceObj }
+}
+
 export const setPrice = priceToEditData => dispatch => {
+  dispatch(setPriceToEditId(priceToEditData.id))
   dispatch(setPriceToEdit(priceToEditData))
   dispatch(setStep(3))
 }
@@ -80,4 +91,20 @@ export const loadPricesData = (serviceTypeId, categoryId, serviceName, subCatego
     }
     dispatch(sendingRequest(false))
   })
+}
+
+export function setUserPrice(price) {
+  return (dispatch, getState) => {
+    const state = getState()
+
+    const priceObj = {
+      id: state.editPricing.priceId,
+      price: price.price,
+      start_date: price.date === 'custom' ? price.start_date : price.date,
+      end_date: price.end_date ? price.end_date : ''
+    }
+
+    dispatch(setOnePrice(priceObj))
+    dispatch(setStep(4))
+  }
 }

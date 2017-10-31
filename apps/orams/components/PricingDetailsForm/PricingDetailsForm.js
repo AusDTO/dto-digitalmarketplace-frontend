@@ -9,7 +9,8 @@ import Layout from 'shared/Layout'
 import ServiceEditList from 'orams/components/ServiceEditList/ServiceEditList'
 import PricingList from 'orams/components/PricingList/PricingList'
 import EditPriceForm from 'orams/components/EditPriceForm/EditPriceForm'
-import { loadServiceEditData, loadPricesData, setStep, setPrice } from 'orams/actions/editPriceActions'
+import ContractVariation from 'orams/components/ContractVariation/ContractVariation'
+import { loadServiceEditData, loadPricesData, setStep, setPrice, setUserPrice } from 'orams/actions/editPriceActions'
 
 import styles from './PricingDetailsForm.scss'
 
@@ -22,6 +23,11 @@ class PricingDetailsForm extends BaseForm {
 
   loadStepTwo = (serviceTypeId, categoryId, serviceName, subCategoryName) => {
     this.props.loadPrices(serviceTypeId, categoryId, serviceName, subCategoryName)
+  }
+
+  handlePriceSubmit = model => {
+    window.scrollTo(0, 0)
+    this.props.setUserPriceData(model)
   }
 
   mainSection() {
@@ -45,7 +51,11 @@ class PricingDetailsForm extends BaseForm {
       case 2:
         return <PricingList pricesData={this.props.pricesData} {...this.props} />
       case 3:
-        return <EditPriceForm priceData={this.props.priceData} {...this.props} />
+        return (
+          <EditPriceForm priceData={this.props.priceData} {...this.props} handlePriceSubmit={this.handlePriceSubmit} />
+        )
+      case 4:
+        return <ContractVariation {...this.props} />
 
       default:
         return ''
@@ -69,7 +79,8 @@ const mapStateToProps = state => {
     pricesData: state.editPricing.pricesData,
     step: state.editPricing.step,
     priceData: state.editPricing.priceData,
-    serviceToEdit: state.editPricing.serviceToEdit
+    serviceToEdit: state.editPricing.serviceToEdit,
+    priceObj: state.editPricing.priceObj
   }
 }
 
@@ -78,8 +89,9 @@ const mapDispatchToProps = dispatch => {
     loadServiceEdit: () => dispatch(loadServiceEditData()),
     loadPrices: (serviceTypeId, categoryId, serviceName, subCategoryName) =>
       dispatch(loadPricesData(serviceTypeId, categoryId, serviceName, subCategoryName)),
-    goToStepOne: step => dispatch(setStep(step)),
-    editPrice: priceToEditData => dispatch(setPrice(priceToEditData))
+    goToStep: step => dispatch(setStep(step)),
+    editPrice: priceToEditData => dispatch(setPrice(priceToEditData)),
+    setUserPriceData: price => dispatch(setUserPrice(price))
   }
 }
 

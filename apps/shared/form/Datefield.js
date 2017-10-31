@@ -48,11 +48,11 @@ class Datefield extends React.Component {
   }
 
   render() {
-    const { id, htmlFor, label, description } = this.props
+    const { id, label, description } = this.props
     const { day, month, year } = this.state
     return (
-      <div styleName="date-input">
-        <label htmlFor={htmlFor} className="question-heading uikit-text-input__label">
+      <div className="date-input">
+        <label htmlFor="day" className="question-heading uikit-text-input__label">
           {label}
         </label>
         {description &&
@@ -61,7 +61,7 @@ class Datefield extends React.Component {
           </p>}
 
         <div className={styles.field}>
-          <label htmlFor={htmlFor} className="uikit-text-input__label">
+          <label htmlFor="day" className="uikit-text-input__label">
             Day
           </label>
           <input
@@ -78,7 +78,7 @@ class Datefield extends React.Component {
         <div className={styles.spacer}>/</div>
 
         <div className={styles.field}>
-          <label htmlFor={htmlFor} className="uikit-text-input__label">
+          <label htmlFor="month" className="uikit-text-input__label">
             Month
           </label>
           <input
@@ -95,7 +95,7 @@ class Datefield extends React.Component {
         <div className={styles.spacer}>/</div>
 
         <div className={styles.field}>
-          <label htmlFor={htmlFor} className="uikit-text-input__label">
+          <label htmlFor="year" className="uikit-text-input__label">
             Year
           </label>
           <input
@@ -127,7 +127,6 @@ Datefield.defaultProps = {
 
 Datefield.propTypes = {
   id: PropTypes.string.isRequired,
-  htmlFor: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   description: PropTypes.string

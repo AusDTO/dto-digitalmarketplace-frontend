@@ -15,7 +15,7 @@ const PricingList = props => {
           Pricing
         </h1>
         <div className={styles.stepTitle}>Step 2 of 4</div>
-        <div className={styles.backLink} onClick={() => props.goToStepOne(1)}>
+        <div className={styles.backLink} onClick={() => props.goToStep(1)}>
           Back to services list
         </div>
       </header>
