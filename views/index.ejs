@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-    <title>Digital Marketplace — where government buys digital and ICT</title>
-		<meta charSet="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="shortcut icon" href="/static/media/favicon.png" type="image/x-icon" />
+<head>
+  <title>Digital Marketplace — where government buys digital and ICT</title>
+  <meta charSet="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="shortcut icon" href="/static/media/favicon.png" type="image/x-icon"/>
 
-		<link rel="stylesheet" type="text/css" href="/bundle/pancake.css"/>
-		<link rel="stylesheet" type="text/css" href="/bundle/custom.css"/>
+  <link rel="stylesheet" type="text/css" href="/bundle/pancake.css"/>
+  <link rel="stylesheet" type="text/css" href="/bundle/custom.css"/>
 
-    <script async src="//www.google-analytics.com/analytics.js"></script>
-    <script async src="/bundle/autotrack.custom.js"></script>
-    <script>
-        window.ga = window.ga || function () {
-            (ga.q = ga.q || []).push(arguments)
-          };
-          ga.l = +new Date;
-    		<% if (settings.env === 'development') { %>
-  		   ga('create', 'UA-72722909-6', 'auto');
-        <% } else{ %>
-	        ga('create', 'UA-72722909-5', 'auto');
-    		<% } %>
-          ga('send', 'pageview');
+  <script async src="//www.google-analytics.com/analytics.js"></script>
+  <script async src="/bundle/autotrack.custom.js"></script>
+  <script>
+    window.ga = window.ga || function () {
+      (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date;
+    <% if (settings.env === 'development') { %>
+    ga('create', 'UA-72722909-6', 'auto');
+    <% } else{ %>
+    ga('create', 'UA-72722909-5', 'auto');
+    <% } %>
+    ga('send', 'pageview');
 
-          ga('require', 'outboundLinkTracker', {
-              shouldTrackOutboundLink: function (link, parseUrl) {
-                  var href = link.getAttribute('href') || link.getAttribute('xlink:href');
-                  var url = parseUrl(href);
-                  var isExternal = (url.hostname != location.hostname && url.protocol.slice(0, 4) == 'http');
+    ga('require', 'outboundLinkTracker', {
+      shouldTrackOutboundLink: function (link, parseUrl) {
+        var href = link.getAttribute('href') || link.getAttribute('xlink:href');
+        var url = parseUrl(href);
+        var isExternal = (url.hostname != location.hostname && url.protocol.slice(0, 4) == 'http');
 
-                  // treat downloads as external links
-                  var exts = 'doc*|xls*|ppt*|pdf|zip|rar|exe|mp3';
-                  var regExt = new RegExp(".*\\.(" + exts + ")(\\?.*)?$");
-                  var isDownload = url.pathname.match(regExt);
+        // treat downloads as external links
+        var exts = 'doc*|xls*|ppt*|pdf|zip|rar|exe|mp3';
+        var regExt = new RegExp(".*\\.(" + exts + ")(\\?.*)?$");
+        var isDownload = url.pathname.match(regExt);
 
-                  return isDownload || isExternal;
-              }
-            });
-          ga('require', 'urlChangeTracker');
-    </script>
-    <noscript>
-     Javascript is disabled. Please enable javascript and refresh the page.
-    </noscript>
-  </head>
-	<body class="uikit-grid uikit-body">
-		<div id="root"></div>
-		<script crossorigin src="/bundle/marketplace.js"></script>
-	</body>
+        return isDownload || isExternal;
+      }
+    });
+    ga('require', 'urlChangeTracker');
+  </script>
+
+</head>
+<body class="uikit-grid uikit-body">
+<noscript class="col-sm-push-2 col-sm-8 col-xs-12">
+  <div class="uikit-page-alerts uikit-page-alerts--error" role="alert">
+    <h4 id="validation-masthead-heading" tabindex="-1"> Digital Marketplace requires Javascript and Cookies running in your browser.</h4>
+    To continue you can:
+    <ul>
+      <li>Enable Javascript (<a href="https://www.enable-javascript.com/" target="_blank">how do I enable Javascript?</a>) and Cookies (<a href="http://www.whatarecookies.com/enable.asp">how do I enable Cookies?</a>)</li>
+      <li>Contact our Help Desk on 0442 024 113</li>
+    </ul>
+  </div>
+</noscript>
+<div id="root"></div>
+<script crossorigin src="/bundle/marketplace.js"></script>
+</body>
 </html>
