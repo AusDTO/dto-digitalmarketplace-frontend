@@ -11,7 +11,18 @@ import styles from './ContractVariation.scss'
 
 class ContractVariation extends Component {
   render() {
-    const { form, serviceToEdit, priceData, priceObj, model, action, contractVariationForm, pricesArray, submitUpdatePrice, supplier } = this.props
+    const {
+      form,
+      serviceToEdit,
+      priceData,
+      priceObj,
+      model,
+      action,
+      contractVariationForm,
+      pricesArray,
+      submitUpdatePrice,
+      supplier
+    } = this.props
 
     return (
       <div className={styles.container}>
@@ -32,8 +43,8 @@ class ContractVariation extends Component {
             </div>
             <div>
               Check the pricing changes listed in this section before agreeing to the terms and conditions. After your
-              changes are submitted a verification document will be emailed to <strong>{supplier.email}</strong>{' '}
-              and your profile updated.
+              changes are submitted a verification document will be emailed to <strong>{supplier.email}</strong> and
+              your profile updated.
             </div>
           </div>
           <div className={styles.headingRow}>
@@ -50,42 +61,42 @@ class ContractVariation extends Component {
           </div>
           {pricesArray &&
             pricesArray.map((priceObj, id = uniqueID()) =>
-            <div key={id}>
-              <div className={styles.priceRow}>
-                <div className="row">
-                  <div className="col-md-3 col-sm-3">
-                    {priceObj.regionState + ' ' + priceObj.regionName}
-                  </div>
-                  <div className="col-md-2 col-sm-2">
-                    <span className={styles.price}>
-                      {'$' + priceObj.price}
-                    </span>
-                  </div>
-                  <div className="col-md-2 col-sm-2">
-                    {priceObj.startDate}
-                  </div>
-                  <div className="col-md-2 col-sm-2">
-                    {priceObj.endDate ? priceObj.endDate : 'Ongoing'}
-                  </div>
-                  <div className="col-md-2 col-sm-2">
-                    {priceObj.capPrice}
-                  </div>
-                  <div className="col-md-1 col-sm-1">
-                    <div
-                      tabIndex="0"
-                      className={styles.link}
-                      onClick={() => {
-                        this.props.goToStep(3)
-                        window.scrollTo(0, 0)
-                      }}
-                    >
-                      <strong>Edit</strong>
+              <div key={id}>
+                <div className={styles.priceRow}>
+                  <div className="row">
+                    <div className="col-md-3 col-sm-3">
+                      {priceObj.regionState + ' ' + priceObj.regionName}
+                    </div>
+                    <div className="col-md-2 col-sm-2">
+                      <span className={styles.price}>
+                        {'$' + priceObj.price}
+                      </span>
+                    </div>
+                    <div className="col-md-2 col-sm-2">
+                      {priceObj.startDate}
+                    </div>
+                    <div className="col-md-2 col-sm-2">
+                      {priceObj.endDate ? priceObj.endDate : 'Ongoing'}
+                    </div>
+                    <div className="col-md-2 col-sm-2">
+                      {priceObj.capPrice}
+                    </div>
+                    <div className="col-md-1 col-sm-1">
+                      <div
+                        tabIndex="0"
+                        className={styles.link}
+                        onClick={() => {
+                          this.props.goToStep(3)
+                          window.scrollTo(0, 0)
+                        }}
+                      >
+                        <strong>Edit</strong>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
           <br />
           <Form model={model} id="submitprice" onSubmit={data => submitUpdatePrice(data)}>
             <CheckboxDetailsField
@@ -95,7 +106,8 @@ class ContractVariation extends Component {
               value="agree"
               label={
                 <span>
-                  I am <strong>{supplier.contact}</strong> of <strong>{supplier.name}</strong> ({supplier.abn}) and I agree to the terms set out in the ORAMS agreement
+                  I am <strong>{supplier.contact}</strong> of <strong>{supplier.name}</strong> ({supplier.abn}) and I
+                  agree to the terms set out in the ORAMS agreement
                 </span>
               }
               description="The terms of use"

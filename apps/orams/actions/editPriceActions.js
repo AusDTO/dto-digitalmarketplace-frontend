@@ -53,19 +53,19 @@ export function setOnePrice(priceObj) {
 }
 
 export function setButtonClick(value) {
-  return { type: SET_BUTTON_CLICK, value}
+  return { type: SET_BUTTON_CLICK, value }
 }
 
 export function setSupplierData(supplier) {
-  return {type: SET_SUPPLIER, supplier}
+  return { type: SET_SUPPLIER, supplier }
 }
 
 export function setSuccessMessage(successMessage) {
-  return {type: SET_SUCCESS_MESSAGE, successMessage}
+  return { type: SET_SUCCESS_MESSAGE, successMessage }
 }
 
 export function restartEditPricing() {
-  return {type: RESTART_EDIT_PRICING}
+  return { type: RESTART_EDIT_PRICING }
 }
 
 export const setPrice = priceToEditData => dispatch => {
@@ -130,11 +130,14 @@ export function setUserPrice(price, capPrice) {
     dispatch(setOnePrice(priceObj))
 
     if (state.editPricing.buttonClickValue === 'saveAnother') {
-      dispatch(loadPricesData(
-        state.editPricing.serviceToEdit.serviceTypeId,
-        state.editPricing.serviceToEdit.categoryId,
-        state.editPricing.serviceToEdit.serviceName,
-        state.editPricing.serviceToEdit.subCategoryName ? state.editPricing.serviceToEdit.subCategoryName : ''))
+      dispatch(
+        loadPricesData(
+          state.editPricing.serviceToEdit.serviceTypeId,
+          state.editPricing.serviceToEdit.categoryId,
+          state.editPricing.serviceToEdit.serviceName,
+          state.editPricing.serviceToEdit.subCategoryName ? state.editPricing.serviceToEdit.subCategoryName : ''
+        )
+      )
     }
 
     if (state.editPricing.buttonClickValue === 'continueToFinalStep') {
@@ -168,6 +171,5 @@ export function updatePrice() {
       }
       dispatch(sendingRequest(false))
     })
-
   }
 }

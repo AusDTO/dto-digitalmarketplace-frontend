@@ -10,7 +10,15 @@ import ServiceEditList from 'orams/components/ServiceEditList/ServiceEditList'
 import PricingList from 'orams/components/PricingList/PricingList'
 import EditPriceForm from 'orams/components/EditPriceForm/EditPriceForm'
 import ContractVariation from 'orams/components/ContractVariation/ContractVariation'
-import { loadServiceEditData, loadPricesData, setStep, setPrice, setUserPrice, setButtonClick, updatePrice } from 'orams/actions/editPriceActions'
+import {
+  loadServiceEditData,
+  loadPricesData,
+  setStep,
+  setPrice,
+  setUserPrice,
+  setButtonClick,
+  updatePrice
+} from 'orams/actions/editPriceActions'
 
 import styles from './PricingDetailsForm.scss'
 
@@ -25,7 +33,7 @@ class PricingDetailsForm extends BaseForm {
     this.props.loadPrices(serviceTypeId, categoryId, serviceName, subCategoryName)
   }
 
-  buttonClick = (value) => {
+  buttonClick = value => {
     this.props.setButtonClickValue(value)
   }
 
@@ -34,7 +42,7 @@ class PricingDetailsForm extends BaseForm {
     this.props.setUserPriceData(model, capPrice)
   }
 
-  submitUpdatePrice = (data) => {
+  submitUpdatePrice = data => {
     this.props.submitUpdatePrice(data)
   }
 
@@ -60,10 +68,15 @@ class PricingDetailsForm extends BaseForm {
         return <PricingList pricesData={this.props.pricesData} {...this.props} />
       case 3:
         return (
-          <EditPriceForm priceData={this.props.priceData} {...this.props} handlePriceSubmit={this.handlePriceSubmit} buttonClick={this.buttonClick}/>
+          <EditPriceForm
+            priceData={this.props.priceData}
+            {...this.props}
+            handlePriceSubmit={this.handlePriceSubmit}
+            buttonClick={this.buttonClick}
+          />
         )
       case 4:
-        return <ContractVariation {...this.props} submitUpdatePrice={this.submitUpdatePrice}/>
+        return <ContractVariation {...this.props} submitUpdatePrice={this.submitUpdatePrice} />
 
       default:
         return ''
@@ -103,8 +116,8 @@ const mapDispatchToProps = dispatch => {
     goToStep: step => dispatch(setStep(step)),
     editPrice: priceToEditData => dispatch(setPrice(priceToEditData)),
     setUserPriceData: (price, capPrice) => dispatch(setUserPrice(price, capPrice)),
-    setButtonClickValue: (value) => dispatch(setButtonClick(value)),
-    submitUpdatePrice: (data) => dispatch(updatePrice(data))
+    setButtonClickValue: value => dispatch(setButtonClick(value)),
+    submitUpdatePrice: data => dispatch(updatePrice(data))
   }
 }
 

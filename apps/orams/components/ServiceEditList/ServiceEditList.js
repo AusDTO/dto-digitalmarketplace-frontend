@@ -14,8 +14,7 @@ const ServiceEditList = props => {
       {successMessage &&
         <PageAlert as="success">
           <h4>Pricing updated</h4>
-        </PageAlert>
-      }
+        </PageAlert>}
       <header>
         <h1 className="uikit-display-5" tabIndex="-1">
           Pricing
