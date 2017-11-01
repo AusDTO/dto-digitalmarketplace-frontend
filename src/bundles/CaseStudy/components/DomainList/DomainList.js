@@ -156,10 +156,7 @@ class DomainList extends BaseForm {
                   <h2 className="visuallyhidden">Essential</h2>
 
 <br/>
-                  <div style={{  boxShadow: "0px 0 1px rgba(49,49,49,0.7)",
-                    borderLeft: "6px solid #1B7991",
-                    padding: "1em",
-                    borderRadius: "3px"}}>
+                  <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
                  <ul style={{ paddingTop: "0.8em"}}>
 

@@ -56,6 +56,18 @@ class BusinessDetailsForm extends BaseForm {
                 </header>
                 <article role="main">
                     <ErrorBox focusOnMount={true} model={model}/>
+                  <div className="calloutMistake">
+                    <b> Avoid common mistakes </b>
+                    <ul>
+
+                      <li>Don’t write in capitals</li>
+                      <li><b>Business name</b> - The business name you use on the Marketplace must be listed under your ABN. Don’t include a tagline.</li>
+                      <li><b>Summary</b>  - describe what your company does.</li>
+                      <li><b>Website URL</b>  - start with http, check the link works.</li>
+                      <li><b>LinkedIn URL</b>  - Provide a public (ie non logged in) url. You can find the public URL <a href="https://www.linkedin.com/help/linkedin/answer/49315/finding-your-linkedin-public-profile-url?lang=en">following these instructions</a>. Direct buyers to a business profile rather than your personal profile.</li>
+                      <li><b>Address</b>  - check the spelling and postcode are correct.</li>
+                    </ul>
+                  </div>
                     <Form model={model}
                           action={action}
                           method="post"
@@ -75,7 +87,7 @@ class BusinessDetailsForm extends BaseForm {
                           id="name"
                           htmlFor="name"
                           label="Business name"
-                          description="As you would like it shown on the Digital Marketplace."
+                          description="The business name you use on the Marketplace must be listed under your ABN. You can omit suffixes such as PTY or LTD"
                           validators={{required}}
                           messages={{
                               required: 'Business name is required',

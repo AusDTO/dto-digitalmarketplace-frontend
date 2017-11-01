@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
-import {LocalForm} from 'react-redux-form';
+import DocumentTitle from 'react-document-title'
 
 import styles from './Code.css'
 import data from './Code.json'
@@ -18,9 +17,12 @@ class Code extends React.Component {
                 <section styleName="full-header">
                     <div className="row">
                         <div className="col-sm-5 col-sm-push-1">
+                          <DocumentTitle title="Shared model library - Digital Marketplace">
                             <h1 tabIndex="-1">Shared model library</h1>
+                          </DocumentTitle>
                             <p styleName="summary">A library of open source code from across government ready to use in
                                 your project.</p>
+
                         </div>
                         <div className="col-sm-5 col-sm-push-1">
                             <img styleName="illustration" src="/static/media/open_source_illustration.png" alt="Phone and tablet showing data visualisation with desktop browser showing online form"/>

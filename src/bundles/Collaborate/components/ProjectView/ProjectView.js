@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import DocumentTitle from 'react-document-title'
 
 import isEmpty from 'lodash/isEmpty';
 
@@ -56,7 +57,9 @@ class ProjectView extends React.Component {
         <section styleName="full-header">
             <div className="row">
                 <div className="col-xs-12">
+                  <DocumentTitle title={`${title} - Digital Marketplace`}>
                     <h1 tabIndex="-1">{title}</h1>
+                  </DocumentTitle>
                 </div>
             </div>
             <div className="row">

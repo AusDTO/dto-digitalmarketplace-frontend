@@ -35,7 +35,9 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
       :
         <div className="callout--calendar-event col-sm-8 col-xs-12">
           <b>Preview your profile</b>
-          <p>Please review your profile, If correct, continue to the legal disclosures and agreement.</p>
+          <p>Please review your profile, if correct, continue to the legal disclosures and agreement.
+            Check for punctuation, spelling mistakes and grammatical errors.
+          </p>
           <Link
             to="/submit"
             className="button"
