@@ -24,7 +24,7 @@
 }
 .reportSubitemContainer {
   padding: 0px !important;
-  margin-bottom: 2em !important
+  margin-bottom: 2em !important;
 }
 
 .reportImageContainer {
@@ -88,4 +88,8 @@
   .bigReportImage {
     width: 111%;
   }
+  .reportSubitemContainer {
+    min-height: 162px !important;
+  }
+
 }
