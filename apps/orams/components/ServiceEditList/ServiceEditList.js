@@ -3,13 +3,19 @@ import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
 import { bindActionCreators } from 'redux'
 import styles from './ServiceEditList.scss'
+import PageAlert from '@gov.au/page-alerts'
 
 const ServiceEditList = props => {
-  const { editServiceData, linkClick } = props
+  const { editServiceData, linkClick, successMessage } = props
   const { services } = editServiceData
 
   return (
     <div className={styles.container}>
+      {successMessage &&
+        <PageAlert as="success">
+          <h4>Pricing updated</h4>
+        </PageAlert>
+      }
       <header>
         <h1 className="uikit-display-5" tabIndex="-1">
           Pricing

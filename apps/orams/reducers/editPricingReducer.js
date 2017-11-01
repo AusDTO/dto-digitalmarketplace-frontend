@@ -17,7 +17,11 @@ import {
   SET_PRICE_TO_EDIT_DATA,
   SET_SERVICE_TO_EDIT_IN_STATE,
   SET_PRICE_TO_EDIT_ID,
-  SET_ONE_PRICE
+  SET_ONE_PRICE,
+  SET_BUTTON_CLICK,
+  SET_SUPPLIER,
+  SET_SUCCESS_MESSAGE,
+  RESTART_EDIT_PRICING
 } from 'orams/constants/constants'
 
 // The initial application state
@@ -28,7 +32,9 @@ const initialState = {
   priceData: '',
   serviceToEdit: '',
   priceId: '',
-  priceObj: []
+  pricesArray: [],
+  saveAnother: false,
+  successMessage: false
 }
 
 const editPricingReducer = (state = initialState, action) => {
@@ -72,7 +78,31 @@ const editPricingReducer = (state = initialState, action) => {
     case SET_ONE_PRICE:
       return {
         ...state,
-        priceObj: action.priceObj
+        pricesArray: [...state.pricesArray, action.priceObj]
+      }
+
+    case SET_BUTTON_CLICK:
+      return {
+        ...state,
+        buttonClickValue: action.value
+      }
+
+    case SET_SUPPLIER:
+      return {
+        ...state,
+        supplier: action.supplier
+      }
+
+    case SET_SUCCESS_MESSAGE:
+      return {
+        ...state,
+        successMessage: action.successMessage
+      }
+
+    case RESTART_EDIT_PRICING:
+      return {
+        ...state,
+        pricesArray: []
       }
 
     default:

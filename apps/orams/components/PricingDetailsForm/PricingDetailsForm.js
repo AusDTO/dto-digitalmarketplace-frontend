@@ -10,7 +10,7 @@ import ServiceEditList from 'orams/components/ServiceEditList/ServiceEditList'
 import PricingList from 'orams/components/PricingList/PricingList'
 import EditPriceForm from 'orams/components/EditPriceForm/EditPriceForm'
 import ContractVariation from 'orams/components/ContractVariation/ContractVariation'
-import { loadServiceEditData, loadPricesData, setStep, setPrice, setUserPrice } from 'orams/actions/editPriceActions'
+import { loadServiceEditData, loadPricesData, setStep, setPrice, setUserPrice, setButtonClick, updatePrice } from 'orams/actions/editPriceActions'
 
 import styles from './PricingDetailsForm.scss'
 
@@ -25,9 +25,17 @@ class PricingDetailsForm extends BaseForm {
     this.props.loadPrices(serviceTypeId, categoryId, serviceName, subCategoryName)
   }
 
-  handlePriceSubmit = model => {
+  buttonClick = (value) => {
+    this.props.setButtonClickValue(value)
+  }
+
+  handlePriceSubmit = (model, capPrice) => {
     window.scrollTo(0, 0)
-    this.props.setUserPriceData(model)
+    this.props.setUserPriceData(model, capPrice)
+  }
+
+  submitUpdatePrice = (data) => {
+    this.props.submitUpdatePrice(data)
   }
 
   mainSection() {
@@ -52,10 +60,10 @@ class PricingDetailsForm extends BaseForm {
         return <PricingList pricesData={this.props.pricesData} {...this.props} />
       case 3:
         return (
-          <EditPriceForm priceData={this.props.priceData} {...this.props} handlePriceSubmit={this.handlePriceSubmit} />
+          <EditPriceForm priceData={this.props.priceData} {...this.props} handlePriceSubmit={this.handlePriceSubmit} buttonClick={this.buttonClick}/>
         )
       case 4:
-        return <ContractVariation {...this.props} />
+        return <ContractVariation {...this.props} submitUpdatePrice={this.submitUpdatePrice}/>
 
       default:
         return ''
@@ -80,7 +88,10 @@ const mapStateToProps = state => {
     step: state.editPricing.step,
     priceData: state.editPricing.priceData,
     serviceToEdit: state.editPricing.serviceToEdit,
-    priceObj: state.editPricing.priceObj
+    pricesArray: state.editPricing.pricesArray,
+    capPrice: state.editPricing.capPrice,
+    supplier: state.editPricing.supplier,
+    successMessage: state.editPricing.successMessage
   }
 }
 
@@ -91,7 +102,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(loadPricesData(serviceTypeId, categoryId, serviceName, subCategoryName)),
     goToStep: step => dispatch(setStep(step)),
     editPrice: priceToEditData => dispatch(setPrice(priceToEditData)),
-    setUserPriceData: price => dispatch(setUserPrice(price))
+    setUserPriceData: (price, capPrice) => dispatch(setUserPrice(price, capPrice)),
+    setButtonClickValue: (value) => dispatch(setButtonClick(value)),
+    submitUpdatePrice: (data) => dispatch(updatePrice(data))
   }
 }
 

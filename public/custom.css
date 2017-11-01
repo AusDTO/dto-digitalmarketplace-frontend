@@ -364,3 +364,7 @@ label.text-box-number-label {
   display: inline-block;
   text-align: center;
 }
+
+.right-button-margin {
+  margin-right: 21px;
+}

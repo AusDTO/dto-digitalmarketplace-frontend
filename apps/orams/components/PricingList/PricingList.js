@@ -15,7 +15,7 @@ const PricingList = props => {
           Pricing
         </h1>
         <div className={styles.stepTitle}>Step 2 of 4</div>
-        <div className={styles.backLink} onClick={() => props.goToStep(1)}>
+        <div tabIndex="0" className={styles.backLink} onClick={() => props.goToStep(1)}>
           Back to services list
         </div>
       </header>
@@ -55,6 +55,7 @@ const PricingList = props => {
                 </div>
                 <div className="col-md-1 col-sm-1">
                   <div
+                    tabIndex="0"
                     className={styles.link}
                     onClick={() => {
                       props.editPrice(price)

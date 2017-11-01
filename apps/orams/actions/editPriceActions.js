@@ -8,7 +8,11 @@ import {
   SET_PRICE_TO_EDIT_DATA,
   SET_SERVICE_TO_EDIT_IN_STATE,
   SET_PRICE_TO_EDIT_ID,
-  SET_ONE_PRICE
+  SET_ONE_PRICE,
+  SET_BUTTON_CLICK,
+  SET_SUPPLIER,
+  SET_SUCCESS_MESSAGE,
+  RESTART_EDIT_PRICING
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -48,6 +52,22 @@ export function setOnePrice(priceObj) {
   return { type: SET_ONE_PRICE, priceObj }
 }
 
+export function setButtonClick(value) {
+  return { type: SET_BUTTON_CLICK, value}
+}
+
+export function setSupplierData(supplier) {
+  return {type: SET_SUPPLIER, supplier}
+}
+
+export function setSuccessMessage(successMessage) {
+  return {type: SET_SUCCESS_MESSAGE, successMessage}
+}
+
+export function restartEditPricing() {
+  return {type: RESTART_EDIT_PRICING}
+}
+
 export const setPrice = priceToEditData => dispatch => {
   dispatch(setPriceToEditId(priceToEditData.id))
   dispatch(setPriceToEdit(priceToEditData))
@@ -56,11 +76,13 @@ export const setPrice = priceToEditData => dispatch => {
 
 export const loadServiceEditData = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setSuccessMessage(false))
   dmapi({ url: '/supplier/services' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
       dispatch(setServiceEditData(response.data))
+      dispatch(setSupplierData(response.data.supplier))
       dispatch(setStep(1))
     }
     dispatch(sendingRequest(false))
@@ -79,8 +101,7 @@ export const loadPricesData = (serviceTypeId, categoryId, serviceName, subCatego
 
   dispatch(setServiceToEditInState(serviceToEdit))
 
-  const hasCategory = categoryId ? '/categories/' + categoryId : ''
-  const baseUrl = '/supplier/services/' + serviceTypeId + hasCategory + '/prices'
+  const baseUrl = '/supplier/services/' + serviceTypeId + '/categories/' + categoryId + '/prices'
 
   dmapi({ url: baseUrl }).then(response => {
     if (response.error) {
@@ -93,18 +114,60 @@ export const loadPricesData = (serviceTypeId, categoryId, serviceName, subCatego
   })
 }
 
-export function setUserPrice(price) {
+export function setUserPrice(price, capPrice) {
   return (dispatch, getState) => {
     const state = getState()
-
     const priceObj = {
+      capPrice: capPrice,
+      regionState: state.editPricing.priceData.region.state,
+      regionName: state.editPricing.priceData.region.name,
       id: state.editPricing.priceId,
-      price: price.price,
-      start_date: price.date === 'custom' ? price.start_date : price.date,
-      end_date: price.end_date ? price.end_date : ''
+      price: parseInt(price.price),
+      startDate: price.date === 'custom' ? price.start_date : price.date,
+      endDate: price.end_date ? price.end_date : ''
     }
 
     dispatch(setOnePrice(priceObj))
-    dispatch(setStep(4))
+
+    if (state.editPricing.buttonClickValue === 'saveAnother') {
+      dispatch(loadPricesData(
+        state.editPricing.serviceToEdit.serviceTypeId,
+        state.editPricing.serviceToEdit.categoryId,
+        state.editPricing.serviceToEdit.serviceName,
+        state.editPricing.serviceToEdit.subCategoryName ? state.editPricing.serviceToEdit.subCategoryName : ''))
+    }
+
+    if (state.editPricing.buttonClickValue === 'continueToFinalStep') {
+      dispatch(setStep(4))
+    }
+  }
+}
+
+export function updatePrice() {
+  return (dispatch, getState) => {
+    const state = getState()
+
+    const price = {
+      prices: state.editPricing.pricesArray
+    }
+
+    dispatch(sendingRequest(true))
+
+    dmapi({
+      method: 'post',
+      url: '/supplier/prices',
+      data: JSON.stringify(price)
+    }).then(response => {
+      if (response.error) {
+        dispatch(setErrorMessage(GENERAL_ERROR))
+      } else {
+        dispatch(setSuccessMessage(true))
+        dispatch(restartEditPricing())
+        dispatch(setStep(1))
+        window.scrollTo(0, 0)
+      }
+      dispatch(sendingRequest(false))
+    })
+
   }
 }

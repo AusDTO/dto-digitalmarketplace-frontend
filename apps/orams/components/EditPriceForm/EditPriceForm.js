@@ -14,7 +14,7 @@ import styles from './EditPriceForm.scss'
 
 class EditPriceForm extends Component {
   render() {
-    const { priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit } = this.props
+    const { priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit, buttonClick } = this.props
     const date = editPriceForm.date
     const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
     const tomorrowDay = currentDate.getDate()
@@ -59,7 +59,7 @@ class EditPriceForm extends Component {
             action={action}
             id="BusinessDetails__create"
             validateOn="submit"
-            onSubmit={data => handlePriceSubmit(data)}
+            onSubmit={data => handlePriceSubmit(data, priceData.capPrice)}
           >
             <Textfield
               model={`${model}.price`}
@@ -131,8 +131,12 @@ class EditPriceForm extends Component {
               </div>}
             <div className="row">
               <div className="col-xs-12 col-sm-12 col-md-11">
-                {/*<button className="uikit-btn uikit-btn--tertiary">Save and edit another</button>*/}
-                <button type="submit" className="uikit-btn">
+                <button type="submit"
+                  onClick={() => {
+                    buttonClick('saveAnother')
+                  }}
+                  className="uikit-btn uikit-btn--tertiary right-button-margin">Save and edit another</button>
+                <button type="submit" onClick={() => buttonClick('continueToFinalStep')} className="uikit-btn">
                   Continue to contract variation
                 </button>
               </div>
