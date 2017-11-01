@@ -54,8 +54,7 @@ RadioList.propTypes = {
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     })
   ).isRequired,
 

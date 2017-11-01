@@ -21,7 +21,7 @@ class Textarea extends Component {
   }
 
   countWords(s: string) {
-    const count = s.match(/\S+/g) || []
+    const count = (s && s.match(/\S+/g)) || []
     return count.length
   }
 

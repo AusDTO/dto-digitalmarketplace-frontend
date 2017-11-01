@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import React, { Component } from 'react'
 import { withRouter, Switch, Route, Link } from 'react-router-dom'
 import classNames from 'classnames'
@@ -8,10 +7,12 @@ import NotFound from 'shared/NotFound'
 import { updateProfile } from 'orams/actions/profileActions'
 import BusinessDetailsForm from 'orams/components/BusinessDetailsForm'
 import BusinessInfoForm from 'orams/components/BusinessInfoForm'
+import PricingDetailsForm from 'orams/components/PricingDetailsForm'
 import YourInfoForm from 'orams/components/YourInfoForm'
 import ToolsForm from 'orams/components/ToolsForm'
 import AwardsForm from 'orams/components/AwardsForm'
 import LocalNav from 'shared/LocalNav'
+import { uniqueID } from 'shared/utils/helpers'
 
 class EditProfilePage extends Component {
   constructor(props) {
@@ -47,6 +48,13 @@ class EditProfilePage extends Component {
       component: YourInfoForm,
       pattern: '/orams/edit-profile/your-info',
       formKey: 'yourInfoForm'
+    },
+    {
+      id: 'pricing',
+      label: 'Pricing',
+      component: PricingDetailsForm,
+      pattern: '/orams/edit-profile/edit-pricing',
+      formKey: 'pricingDetailsForm'
     }
   ]
 
@@ -56,10 +64,10 @@ class EditProfilePage extends Component {
       <main>
         <div className="row">
           <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
-            {this.steps.map(({ pattern, label, formKey, id }, i) => {
+            {this.steps.map(({ pattern, label }, id = uniqueID()) => {
               const isActive = location.pathname === pattern
               return (
-                <li key={i}>
+                <li key={id}>
                   <Link to={pattern} className={classNames({ 'is-active is-current': isActive })}>
                     <span>
                       {label}
@@ -91,6 +99,10 @@ class EditProfilePage extends Component {
               <Route
                 path={`${match.url}/awards`}
                 render={() => <AwardsForm handleSubmit={this.handleSubmit} profileUpdated />}
+              />} />
+              <Route
+                path={`${match.url}/edit-pricing`}
+                render={() => <PricingDetailsForm handleSubmit={this.handleSubmit} profileUpdated {...this.props} />}
               />} />
               <Route component={NotFound} />
             </Switch>

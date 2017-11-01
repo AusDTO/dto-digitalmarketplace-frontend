@@ -6,7 +6,7 @@ import { actions } from 'react-redux-form'
 import format from 'date-fns/format'
 import get from 'lodash/get'
 
-import './scss/Datefield.scss'
+import styles from './Datefield.scss'
 
 class Datefield extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Datefield extends React.Component {
         year: format(propDate, 'YYYY')
       }
     } else {
-      setDate(model, '2017-01-01')
+      setDate(model, '')
     }
   }
 
@@ -48,11 +48,11 @@ class Datefield extends React.Component {
   }
 
   render() {
-    const { id, htmlFor, label, description } = this.props
+    const { id, label, description } = this.props
     const { day, month, year } = this.state
     return (
-      <div styleName="date-input">
-        <label htmlFor={htmlFor} className="question-heading">
+      <div className="date-input">
+        <label htmlFor="day" className="question-heading uikit-text-input__label">
           {label}
         </label>
         {description &&
@@ -60,17 +60,25 @@ class Datefield extends React.Component {
             {description}
           </p>}
 
-        <div styleName="fields flush">
-          <label htmlFor={htmlFor} styleName="date-heading">
+        <div className={styles.field}>
+          <label htmlFor="day" className="uikit-text-input__label">
             Day
           </label>
-          <input type="text" name="day" id="day" maxLength="2" onChange={this.onChange.bind(this)} defaultValue={day} />
+          <input
+            className="uikit-text-input uikit-text-input--block"
+            type="text"
+            name="day"
+            id="day"
+            maxLength="2"
+            onChange={this.onChange.bind(this)}
+            defaultValue={day}
+          />
         </div>
 
-        <div styleName="slashSpacer">/</div>
+        <div className={styles.spacer}>/</div>
 
-        <div styleName="fields flush">
-          <label htmlFor={htmlFor} styleName="date-heading">
+        <div className={styles.field}>
+          <label htmlFor="month" className="uikit-text-input__label">
             Month
           </label>
           <input
@@ -80,13 +88,14 @@ class Datefield extends React.Component {
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={month}
+            className="uikit-text-input uikit-text-input--block"
           />
         </div>
 
-        <div styleName="slashSpacer">/</div>
+        <div className={styles.spacer}>/</div>
 
-        <div styleName="fields">
-          <label htmlFor={htmlFor} styleName="date-heading">
+        <div className={styles.field}>
+          <label htmlFor="year" className="uikit-text-input__label">
             Year
           </label>
           <input
@@ -96,6 +105,7 @@ class Datefield extends React.Component {
             maxLength="4"
             onChange={this.onChange.bind(this)}
             defaultValue={year}
+            className="uikit-text-input uikit-text-input--block"
           />
         </div>
       </div>
@@ -117,7 +127,6 @@ Datefield.defaultProps = {
 
 Datefield.propTypes = {
   id: PropTypes.string.isRequired,
-  htmlFor: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   description: PropTypes.string
