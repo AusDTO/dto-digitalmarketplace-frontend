@@ -11,14 +11,21 @@ const computeClassname = (base, alt, formatted) =>
     [alt]: formatted
   })
 
-const imageRoot = '/static/media/'
+const imageRoot = '/static/media/insights/'
 
 const ReportItem = props => {
   const { heading, subitems } = props
   const renderImage = subitem => {
     const imgClass = includes(
-      ['briefs-by-phase', 'number-of-sellers-per-area-of-expertise', 'seller-applications-per-brief'],
-      subitem.image.replace('768-', '').replace('.svg', '')
+      [
+        '>768 Briefs by phase',
+        '767 briefs by phase',
+        '768 average seller response',
+        '767 average of responses per brief',
+        '>768 number of sellers per area of expertise',
+        '767 sellers per area of expertise'
+      ],
+      subitem.image.replace('.svg', '')
     )
       ? styles.bigReportImage
       : styles.reportImage
