@@ -32,7 +32,7 @@ class Landing extends React.Component {
         return (
             <div className="landing">
               <DocumentTitle title="Smart cities - Digital Marketplace">
-                <h1 styleName="styles.title" style={{textAlign: "center"}}>Smart cities</h1>
+              <h1 styleName="styles.title"><center>Smart cities</center></h1>
               </DocumentTitle>
                 <p styleName="styles.uikit-display-3">Connect and collaborate to improve the liveability,
                     productivity and sustainability of Australian communities.</p>
@@ -43,31 +43,31 @@ class Landing extends React.Component {
 
                     <div styleName="styles.mapOverlay">
                         <span>
-                           <strong styleName="styles.pop" >106</strong> <div style={{display: "inline-block"}}> Future Ready
+                           <strong styleName="styles.pop" >106</strong> <div>  Future Ready
                                 councils</div>
                             <br/>
-                            <strong styleName="styles.pop" style={{color: '#870f48'}}>{seller_count}</strong> <article style={{display: "inline"}}>
+                          <strong styleName="styles.pop"><font color='#870f48'>{seller_count}</font></strong> <article >
                             <a href="/search/sellers">Marketplace sellers</a></article>
                         </span>
                         <br/><br/>
                         <div>
-                            <p style={{marginBottom: "0px"}}>Got an idea, pilot or<br/> live project to share?</p>
+                            <p>Got an idea, pilot or<br/> live project to share?</p>
                             <a href="/collaborate/project/new" className="button">Add your project</a><br/>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <h2 style={{textAlign: "center"}}>Council collaboration</h2>
-                    <p style={{textAlign: "center"}}>Connect and learn from councils building smart communities<br/>
-                        and digital services in user-centred, data informed ways.</p>
+                  <h2><center>Council collaboration</center></h2>
+                    <p><center>Connect and learn from councils building smart communities<br/>
+                      and digital services in user-centred, data informed ways.</center></p>
                     <ul styleName="styles.cardList">
                         <li>
                             <figure>
                                 <img src="/static/media/5d_data_modelling.jpg"
                                      alt="Computer model of suburban street" width="260"/>
                             </figure>
-                            <article style={{padding: "10px"}}>
+                            <article>
                                 <h3>
                                     <a href="/collaborate/project/6">5D Data Modelling</a>
                                 </h3>
@@ -80,7 +80,7 @@ class Landing extends React.Component {
                                 <img src="/static/media/asset_management_casey.jpg"
                                      alt="Map of asset locations" width="260"/>
                             </figure>
-                            <article style={{padding: "10px"}}>
+                            <article>
                                 <h3>
                                     <a href="/collaborate/project/2">Finding value in data</a>
                                 </h3>
@@ -94,7 +94,7 @@ class Landing extends React.Component {
                                 <img src="/static/media/smart_lighting_adelaide.jpg"
                                      alt="Street lamp with attached sensor" width="260"/>
                             </figure>
-                            <article style={{padding: "10px"}}>
+                            <article>
                                 <h3>
                                     <a href="/collaborate/project/3">Smart City Lighting Pilot</a>
                                 </h3>
@@ -108,7 +108,7 @@ class Landing extends React.Component {
                                 <img src="/static/media/sunshine_coast_automated_waste.jpg"
                                      alt="Diagram of underground tubes transporting waste" width="260"/>
                             </figure>
-                            <article style={{padding: "10px"}}>
+                            <article>
                                 <h3>
                                     <a href="/collaborate/project/1">Underground waste collection</a>
                                 </h3>
@@ -122,7 +122,7 @@ class Landing extends React.Component {
                                 <img src="/static/media/smart_hub.jpg"
                                      alt="Illustration of the location of the smart hub building" width="260"/>
                             </figure>
-                            <article style={{padding: "10px"}}>
+                            <article>
                                 <h3>
                                     <a href="/collaborate/project/7">The Smart Hub</a>
                                 </h3>
@@ -135,7 +135,7 @@ class Landing extends React.Component {
                                 <img src="/static/media/rpv_trial.png"
                                      alt="Remotely piloted aircraft" width="260"/>
                             </figure>
-                            <article style={{padding: "10px"}}>
+                            <article>
                                 <h3>
                                     <a href="/collaborate/project/8">UAV shark surveillance</a>
                                 </h3>
@@ -144,18 +144,18 @@ class Landing extends React.Component {
                             </article>
                         </li>
                     </ul>
-                    <p style={{textAlign: "center"}}><a href="/collaborate/project/new" className="button">Add a project</a>
+                    <p width="100%"><center><a href="/collaborate/project/new" className="button">Add a project</a></center>
                     </p>
                 </div>
-                <div style={{paddingTop: "12px"}}>
-                    <h2 style={{textAlign: "center"}}> Build smart city know how</h2>
-                    <p style={{textAlign: "center"}}> The Future Ready series brings people together to work through
+                <div >
+                  <h2><center> Build smart city know how</center></h2>
+                    <p> <center>The Future Ready series brings people together to work through
                         <br/>urban
-                        challenges, take ideas forward and learn from each other.</p>
-                    <ul className="list-vertical">
-                        <li style={{borderTop: "0"}} styleName="styles.calendarColOne" >
+                      challenges, take ideas forward and learn from each other.</center></p>
+                    <ul className="list-vertical" styleName="styles.calendarList">
+                        <li styleName="styles.calendarColOne" >
                             <article>
-                                <table className="calendar-table" style={{marginTop: 0}}>
+                                <table className="calendar-table" >
                                     <tbody>
 
                                     <tr>
@@ -198,9 +198,9 @@ class Landing extends React.Component {
                                 </table>
                             </article>
                         </li>
-                        <li styleName="styles.calendarColTwo" style={{borderTop: "0"}}>
+                        <li styleName="styles.calendarColTwo" >
                             <article>
-                                <table className="calendar-table" style={{marginTop: 0}}>
+                                <table className="calendar-table" >
                                     <tbody>
                                     <tr>
                                         <th scope="row" styleName="styles.day">
@@ -259,11 +259,11 @@ class Landing extends React.Component {
                     </a> for round one are open until 30 June 2017. <br/>
                         For program support call <a href="tel:132846" rel="external" target="blank">13 28 46</a></p>
                 </section>
-                <div  style={{paddingTop:"12px"}}>
-                <h2 style={{textAlign: "center"}}> Find partners on the Digital Marketplace</h2>
-                <p styleName="styles.partners" style={{textAlign: "center"}}>The Digital Marketplace has been created so local council buyers can
+                <div >
+                  <h2 > <center>Find partners on the Digital Marketplace</center></h2>
+                <p styleName="styles.partners"><center>The Digital Marketplace has been created so local council buyers can
                     access digital expertise quickly and easily. Find expertise to create smarter communities and
-                    deliver better digital services.</p>
+                  deliver better digital services.</center></p>
 
                 <p styleName="styles.chartContainer">
                     {Object.keys(domains).map((domain, i) => {
@@ -275,25 +275,29 @@ class Landing extends React.Component {
                             ><strong>{count}</strong> in {domain}</span></a>)
                     })}
                 </p>
-                </div>
-                <div className="row" style={{padding: "0 10px"}}>
 
-                    <div style={{textAlign: "center"}}>
+                </div>
+                <div className="row">
+
+                    <div><center>
                         <h2>Join the Digital Marketplace</h2>
-                        <div style={{textAlign: "center"}} className="col-xs-12 col-md-4 col-md-push-2">
+                        <div className="col-xs-12 col-md-4 col-md-push-2"><center>
                             <h3>Need digital products or services for government?</h3>
                             <p>Our buyers are from across local, state, territory and federal government.</p>
-                            <p><a href="/2/signup" className="button" style={{color: "white"}}>Join as a buyer</a></p>
+                            <p><a href="/2/signup" className="button" >Join as a buyer</a></p>
+                        </center>
                         </div>
-                        <div style={{textAlign: "center"}} styleName="styles.becomeASeller"
-                             className="col-xs-12 col-md-4 col-md-push-2">
+                        <div styleName="styles.becomeASeller"
+                             className="col-xs-12 col-md-4 col-md-push-2"> <center>
                             <div>
                                 <h3>Offer digital products <br/>or services to government</h3>
                                 <p>Access more digital opportunities across all levels of government.</p>
-                                <p><a href="/become-a-seller" className="button" style={{color: "white"}}>Become a seller</a>
+                                <p><a href="/become-a-seller" className="button" >Become a seller</a>
                                 </p>
                             </div>
+                        </center>
                         </div>
+                    </center>
                     </div>
                 </div>
             </div>

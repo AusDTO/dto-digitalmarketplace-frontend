@@ -14,7 +14,7 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
   return (
       <section className="card" styleName="card">
         <article>
-          <h2 classname="display-4">
+          <h2 className="display-4">
             <span>
               {view === "products" ?
                 <a href={link} target="_blank" rel="external">{title}</a> :

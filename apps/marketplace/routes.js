@@ -7,7 +7,7 @@ import CreateUserPage from './pages/CreateUserPage'
 import BriefPage from './pages/BriefPage'
 import LoginPage from './pages/LoginPage'
 import ReportPage from './pages/ReportPage'
-import NotFound from './components/shared/NotFound'
+import NotFound from './components/NotFound'
 
 export const rootPath = '/2'
 

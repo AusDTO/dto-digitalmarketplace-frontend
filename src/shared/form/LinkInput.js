@@ -67,7 +67,7 @@ class LinkInput extends React.Component {
 
     return (
       <div className="field" id={id}>
-        <h2 style={{marginTop: 0}}>{label}</h2>
+        <h2 >{label}</h2>
         {description && (
           <p className="hint" id={`${id}-hint`}>{description}</p>
         )}
@@ -79,10 +79,7 @@ class LinkInput extends React.Component {
 
                                 <div className="row">
                                         <div className="col-xs-8 col-sm-10">
-                                          <h3 style={{
-                                            marginTop: 0,
-                                            marginBottom: 0,
-                                          }}>Additional link (optional)</h3>
+                                          <h3 >Additional link (optional)</h3>
                                         </div>
                                         <div className="col-xs-4 col-sm-2">
                                              <button type="button"

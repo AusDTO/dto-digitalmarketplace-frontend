@@ -30,7 +30,7 @@ class Code extends React.Component {
                     </div>
                 </section>
                 <section >
-                    <div className="row" style={{maxWidth: "80em", margin: "0 auto"}}>
+                    <div className="row" styleName="newTo">
                         <article className="col-md-7 col-sm-12 col-md-push-1" styleName="code-text">
 
 
@@ -49,7 +49,7 @@ class Code extends React.Component {
                         </article>
                     </div>
                     <div className="row" styleName="explore">
-                        <h2 style={{textAlign: "center"}}>Browse library</h2>
+                      <h2><center>Browse library</center></h2>
 
                         <article role="main" styleName="center">
 

@@ -1,3 +1,7 @@
+.newTo {
+  max-width: 80em;
+  margin: 0 auto;
+}
 .uikit-display-3 {
     margin-top: 1.6em;
     font-weight: normal;

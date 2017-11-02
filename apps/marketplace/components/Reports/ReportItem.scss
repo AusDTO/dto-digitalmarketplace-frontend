@@ -14,6 +14,9 @@
 .mobile_only {
   display: none;
 }
+.imageCaptionContainer {
+  margin: 0
+}
 @media (max-width: 767px) {
   .desktop_only {
     display: none;

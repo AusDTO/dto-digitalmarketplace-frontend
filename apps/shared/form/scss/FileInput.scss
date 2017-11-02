@@ -11,6 +11,9 @@
 .bordered_list__item p {
   margin: 0;
 }
+.bordered_list__item div {
+  display: inline-block;
+}
 
 .custom_input {
   margin-top: 1.5em;

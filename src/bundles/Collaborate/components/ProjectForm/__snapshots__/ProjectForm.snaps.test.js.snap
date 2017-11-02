@@ -510,13 +510,7 @@ exports[`ProjectForm renders 1`] = `
         className="field"
         id="partner_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Partner links (optional)
         </h2>
         <p
@@ -606,13 +600,7 @@ exports[`ProjectForm renders 1`] = `
         className="field"
         id="project_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Project links (optional)
         </h2>
         <p
@@ -1294,13 +1282,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         className="field"
         id="partner_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Partner links (optional)
         </h2>
         <p
@@ -1390,13 +1372,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         className="field"
         id="project_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Project links (optional)
         </h2>
         <p
@@ -2277,13 +2253,7 @@ exports[`ProjectForm renders with errors 1`] = `
         className="field"
         id="partner_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Partner links (optional)
         </h2>
         <p
@@ -2373,13 +2343,7 @@ exports[`ProjectForm renders with errors 1`] = `
         className="field"
         id="project_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Project links (optional)
         </h2>
         <p
@@ -3106,13 +3070,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         className="field"
         id="partner_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Partner links (optional)
         </h2>
         <p
@@ -3202,13 +3160,7 @@ exports[`ProjectForm renders with form_options 1`] = `
         className="field"
         id="project_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Project links (optional)
         </h2>
         <p
@@ -3890,13 +3842,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         className="field"
         id="partner_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Partner links (optional)
         </h2>
         <p
@@ -3986,13 +3932,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
         className="field"
         id="project_links"
       >
-        <h2
-          style={
-            Object {
-              "marginTop": 0,
-            }
-          }
-        >
+        <h2>
           Project links (optional)
         </h2>
         <p

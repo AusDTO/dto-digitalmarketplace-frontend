@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 
+import BaseForm from 'shared/form/BaseForm'
+import formProps from 'shared/form/formPropsSelector'
+
 import { required, validEmail, governmentEmail } from '../components/validators'
 import SignupForm from '../components/SignupForm/SignupForm'
 import UserOnboardingContainer from '../components/Onboarding/OnboardingContainer'
-import BaseForm from '../components/shared/form/BaseForm'
-import formProps from '../components/shared/form/formPropsSelector'
 import { handleSignupSubmit } from '../actions/memberActions'
 import { rootPath } from '../routes'
 

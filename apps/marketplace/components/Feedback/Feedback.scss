@@ -1,3 +1,27 @@
+.smile {
+  position: relative;
+  right: -6px;
+  top: 6px;
+  float: right;
+}
+.meh {
+  position: relative;
+  right: -5px;
+  top: 6px;
+  float: right;
+}
+.frown {
+  position: relative;
+  right: 0;
+  top: 6px;
+  float: right;
+}
+label.okButton {
+  width: 115px;
+}
+label.difficultButton {
+  width: 162px;
+}
 .difficulty input[type="radio"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
@@ -11,7 +35,6 @@
   border-radius: 0px;
 }
 .difficulty label {
-  width: 133px;
   height: 50px;
   margin-right: 36px;
   color: #224a61;
@@ -19,8 +42,7 @@
   border: 2px solid;
 }
 .difficulty label div {
-  width: 5em;
-  margin-top: -5px;
+   margin-top: -5px;
 }
 
 .difficulty input[type="radio"]:checked + label {
@@ -37,14 +59,17 @@
     text-align: center;
   }
   .difficulty label div {
-    width: 6em;
+    width: 34%;
     margin-top: -7px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
   }
   .difficulty label:nth-of-type(2) div {
-    right: 9px !important;
+    right: -3px;
+  }
+  .difficulty label:nth-of-type(3) div {
+    right: -3px;
   }
 
   .difficulty label:first-of-type {

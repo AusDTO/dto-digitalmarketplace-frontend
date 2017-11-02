@@ -154,7 +154,9 @@ const BriefResponseForm = ({
                 validEmail: 'A valid contact email is required'
               }}
             />
-            <div className="uikit-page-alerts uikit-page-alerts--warning" style={{ marginTop: '3em' }}>
+            <br />
+            <br />
+            <div className="uikit-page-alerts uikit-page-alerts--warning">
               <h3>Once you submit this application:</h3>
               <ul>
                 {brief.lotSlug &&

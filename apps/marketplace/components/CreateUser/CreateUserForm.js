@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import ErrorBox from '../../components/shared/form/ErrorBox'
-import Textfield from '../../components/shared/form/Textfield'
-import CheckboxDetailsField from '../../components/shared/form/CheckboxDetailsField'
+import ErrorBox from 'shared/form/ErrorBox'
+import Textfield from 'shared/form/Textfield'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './CreateUserForm.scss'
 import LoadingButton from '../../components/LoadingButton/LoadingButton'
 

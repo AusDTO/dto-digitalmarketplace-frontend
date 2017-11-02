@@ -5,13 +5,13 @@ import { Form } from 'react-redux-form'
 import PageAlert from '@gov.au/page-alerts'
 import DocumentTitle from 'react-document-title'
 
-import { required, validEmail, governmentEmail } from '../../components/validators'
-import Layout from '../../components/shared/Layout'
-import ErrorBox from '../../components/shared/form/ErrorBox'
-import Textfield from '../../components/shared/form/Textfield'
-import RadioList from '../../components/shared/form/RadioList'
-import RadioListBox from '../../components/shared/form/RadioListBox/RadioListBox'
-import LoadingButton from '../../components/LoadingButton/LoadingButton'
+import { required, validEmail, governmentEmail } from 'shared/validators'
+import Layout from 'shared/Layout'
+import ErrorBox from 'shared/form/ErrorBox'
+import Textfield from 'shared/form/Textfield'
+import RadioList from 'shared/form/RadioList'
+import RadioListBox from 'shared/form/RadioListBox/RadioListBox'
+import LoadingButton from 'shared/LoadingButton/LoadingButton'
 
 const SignupForm = props => {
   const {

@@ -60,7 +60,7 @@ class RecruiterForm extends BaseForm {
                             name="recruiter"
                             id="no"
                             value="no"/>
-                          <label htmlFor="no">No, my business provides staff on a consultancy basis</label>
+                          <label htmlFor="no">No, my business provides services on a consultancy basis</label>
 
                           <Control.radio
                             model={`${model}.recruiter`}

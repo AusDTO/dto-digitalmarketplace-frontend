@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import includes from 'lodash/includes'
-import { uniqueID } from '../shared/utils/helpers'
+import { uniqueID } from '../helpers'
 import * as styles from './ReportItem.scss'
 
 const computeClassname = (base, alt, formatted) =>
@@ -70,7 +70,7 @@ const ReportItem = props => {
                 )}
               >
                 {subitem.imageCaption
-                  ? <span tabIndex="0" style={{ margin: 0 }} aria-describedby={`${id}-caption`}>
+                  ? <span tabIndex="0" className={styles.imageCaptionContainer} aria-describedby={`${id}-caption`}>
                       {renderImage(subitem)}
                       <span className={styles.sr_only} id={`${id}-caption`}>
                         {subitem.imageCaption}

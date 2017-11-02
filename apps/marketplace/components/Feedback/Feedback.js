@@ -6,7 +6,7 @@ import Textarea from 'shared/form/Textarea'
 import Icon from 'shared/Icon'
 import PageAlert from '@gov.au/page-alerts'
 
-import styles from './scss/Feedback.scss'
+import styles from './Feedback.scss'
 
 export class Feedback extends React.Component {
   onDifficultyChange = val => {
@@ -49,17 +49,7 @@ export class Feedback extends React.Component {
 
                 <label htmlFor="easy" className="uikit-btn uikit-btn--tertiary">
                   <div>
-                    <Icon
-                      value="smile-o"
-                      color="#000000"
-                      size={24}
-                      style={{
-                        position: 'relative',
-                        right: '10px',
-                        top: '6px',
-                        float: 'right'
-                      }}
-                    />Easy
+                    <Icon value="smile-o" color="#000000" size={24} className={styles.smile} />Easy
                   </div>
                 </label>
                 <Control.radio
@@ -72,19 +62,9 @@ export class Feedback extends React.Component {
                     onChange: this.onDifficultyChange
                   }}
                 />
-                <label htmlFor="ok" className="uikit-btn uikit-btn--tertiary" style={{ width: '115px' }}>
+                <label htmlFor="ok" className={`uikit-btn uikit-btn--tertiary ${styles.okButton}`}>
                   <div>
-                    <Icon
-                      value="meh-o"
-                      color="#000000"
-                      size={24}
-                      style={{
-                        position: 'relative',
-                        right: '25px',
-                        top: '6px',
-                        float: 'right'
-                      }}
-                    />OK
+                    <Icon value="meh-o" color="#000000" size={24} className={styles.meh} />OK
                   </div>
                 </label>
                 <Control.radio
@@ -97,19 +77,9 @@ export class Feedback extends React.Component {
                     onChange: this.onDifficultyChange
                   }}
                 />
-                <label htmlFor="difficult" className="uikit-btn uikit-btn--tertiary" style={{ width: '155px' }}>
-                  <div style={{ width: '6.5em' }}>
-                    <Icon
-                      value="frown-o"
-                      color="#000000"
-                      size={24}
-                      style={{
-                        position: 'relative',
-                        right: '10px',
-                        top: '6px',
-                        float: 'right'
-                      }}
-                    />Difficult
+                <label htmlFor="difficult" className={`uikit-btn uikit-btn--tertiary ${styles.difficultButton}`}>
+                  <div>
+                    <Icon value="frown-o" color="#000000" size={24} className={styles.frown} />Difficult
                   </div>
                 </label>
               </fieldset>

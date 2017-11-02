@@ -47,9 +47,6 @@ exports[`CaseStudyForm renders 1`] = `
           If using acronyms, their meaning must be written out clearly.
         </li>
         <li>
-          Don’t write in capitals
-        </li>
-        <li>
           Check for punctuation, spelling mistakes and grammatical errors.
         </li>
         <li>
@@ -634,9 +631,6 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       <ul>
         <li>
           If using acronyms, their meaning must be written out clearly.
-        </li>
-        <li>
-          Don’t write in capitals
         </li>
         <li>
           Check for punctuation, spelling mistakes and grammatical errors.
@@ -1228,9 +1222,6 @@ exports[`CaseStudyForm renders with errors 1`] = `
       <ul>
         <li>
           If using acronyms, their meaning must be written out clearly.
-        </li>
-        <li>
-          Don’t write in capitals
         </li>
         <li>
           Check for punctuation, spelling mistakes and grammatical errors.
@@ -2057,9 +2048,6 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           If using acronyms, their meaning must be written out clearly.
         </li>
         <li>
-          Don’t write in capitals
-        </li>
-        <li>
           Check for punctuation, spelling mistakes and grammatical errors.
         </li>
         <li>
@@ -2650,9 +2638,6 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       <ul>
         <li>
           If using acronyms, their meaning must be written out clearly.
-        </li>
-        <li>
-          Don’t write in capitals
         </li>
         <li>
           Check for punctuation, spelling mistakes and grammatical errors.

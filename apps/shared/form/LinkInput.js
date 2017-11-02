@@ -34,7 +34,7 @@ class LinkInput extends React.Component {
     const { id, htmlFor, label, description, model } = this.props
     return (
       <div className="field" id={id}>
-        <h3 style={{ marginTop: 0 }}>
+        <h3>
           <label htmlFor={htmlFor}>
             {label}
           </label>
@@ -52,7 +52,7 @@ class LinkInput extends React.Component {
 
                   <div className="row">
                     <div className="col-xs-8 col-sm-10">
-                      <h3 style={{ marginTop: 0, marginBottom: 0 }}>Additional link (optional)</h3>
+                      <h3>Additional link (optional)</h3>
                     </div>
                     <div className="col-xs-4 col-sm-2">
                       <button

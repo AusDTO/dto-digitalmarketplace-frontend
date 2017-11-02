@@ -29,7 +29,7 @@ class ToolsForm extends BaseForm {
             <Layout>
                 <header>
                     <h1 tabIndex="-1">Tools and methodologies</h1>
-                    <p>Enhance your profile and give buyers more ways to find you through keyword search</p>
+                    <p>Enhance your profile and give buyers more ways to find you when searching</p>
 
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
