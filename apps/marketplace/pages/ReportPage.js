@@ -90,7 +90,7 @@ const itemData = {
         },
         {
           text: null,
-          image: '767 types of briefs on marketplace.svg',
+          image: '>768 Types of briefs on the Marketplace.svg',
           mobileImage: '767 types of briefs on marketplace.svg',
           imageAlt: '',
           imageCaption:
