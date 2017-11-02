@@ -48,7 +48,11 @@ const ReportItem = props => {
     <div className="col-sm-12 report-item">
       <div className={styles.reportItem}>
         {heading &&
-          <h2 className={`${styles.reportItemHeading} uikit-display-2`}>
+          <h2
+            className={`${styles.reportItemHeading} ${heading !== 'Who is buying?'
+              ? styles.pageBreak
+              : ''} uikit-display-2`}
+          >
             {heading}
           </h2>}
         {subitems.map((subitem, id = uniqueID()) =>

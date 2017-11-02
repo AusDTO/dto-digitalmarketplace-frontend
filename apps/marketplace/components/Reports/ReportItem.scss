@@ -20,11 +20,13 @@
   }
   .mobile_only {
     display: block;
+    width: 100%;
   }
 }
 .reportSubitemContainer {
   padding: 0px !important;
   margin-bottom: 2em !important;
+  page-break-inside: avoid;
 }
 
 .reportImageContainer {
@@ -34,7 +36,8 @@
 
 .reportItem {
   padding: 0px;
-  min-width: 290px
+  min-width: 290px;
+
 }
 
 .reportItemImage {
@@ -61,8 +64,12 @@
   padding: 48px 0px 20px 0px;
   color: #224a61;
   font-weight: bold;
+  float: unset;
+  clear: both;
 }
-
+.pageBreak {
+  page-break-before: always;
+}
 .reportItemText {
   font-size: 1em
 }
@@ -88,7 +95,7 @@
   .bigReportImage {
     width: 111%;
   }
-  .reportSubitemContainer {
+  .reportSubitemContainer > .reportImage{
     min-height: 162px !important;
   }
 

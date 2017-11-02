@@ -81,7 +81,7 @@ const itemData = {
         {
           text: null,
           image: '768 seller rates per role.svg',
-          mobileImage: '767-trends-for-day-rates-offered-per-area-of-expertise.svg',
+          mobileImage: '767 seller bids per role.svg',
           imageAlt: '',
           imageCaption:
             'Trends for day rates offered per area of expertise, User research and design, ' +
