@@ -13,16 +13,11 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav        from '../../../SellerRegistration/components/StepNav';
-
-import ProgressBar    from '../../../../shared/ProgressBar';
-
 import ConnectedLink from '../../../SellerRegistration/components/ConnectedLink';
 import { push } from '../../../SellerRegistration/redux/modules/application';
 
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
-
-import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 import CaseStudy from './CaseStudy';
 
 const calcRemaining = (studies, services) => {
@@ -80,6 +75,7 @@ class DomainList extends BaseForm {
       actions: dispatchActions,
       calcRemaining,
       onSubmit,
+      onSubmitFailed,
       onCaseStudySubmit,
       onEditCaseStudy,
       onAddCaseStudy,
@@ -189,7 +185,6 @@ class DomainList extends BaseForm {
               <br/>
               <Form 
                 model={model}
-                action={action}
                 method="post"
                 validators={{
                   case_studies: (studies) => {
@@ -202,7 +197,8 @@ class DomainList extends BaseForm {
                     return serviceCount === unique.length
                   }
                 }}
-                onSubmit={onSubmit}>
+                onSubmit={onSubmit}
+                onSubmitFailed={onSubmitFailed}>
 
                 {csrf_token && (
                   <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
