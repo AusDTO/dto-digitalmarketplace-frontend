@@ -153,7 +153,7 @@ export const passwordLength = val => val && val.length >= 10
 
 export const validPrice = val => val.match(/^\d+(?:[.,]\d+)*$/g)
 
-export const validPriceRange = max => val => required(val) && validPrice(val) && (0 < val && max >= val)
+export const validPriceRange = max => val => required(val) && validPrice(val) && (val > 0 && max >= val)
 
 export default {
   required,
