@@ -20,7 +20,7 @@ const itemData = {
         {
           text: null,
           image: '>768 Top 5 agencies listing briefs on the Marketplace.svg',
-          mobileImage: '787 Top 5 buyers: October ‘17.svg',
+          mobileImage: '787 Top 5 buyers October ‘17.svg',
           imageAlt: '',
           imageCaption:
             'Top 5 agencies listing briefs on the Marketplace for October 2017 were the DTA (9 briefs), ' +
