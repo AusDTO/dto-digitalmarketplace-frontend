@@ -151,6 +151,10 @@ export const passwordsMatch = vals => vals.password === vals.confirmPassword
 
 export const passwordLength = val => val && val.length >= 10
 
+export const validPrice = val => val.match(/^\d+(?:[.,]\d+)*$/g)
+
+export const validPriceRange = max => val => required(val) && validPrice(val) && (val > 0 && max >= val)
+
 export default {
   required,
   minArrayLength,
@@ -166,5 +170,7 @@ export default {
   limitWords,
   limitNumbers,
   passwordsMatch,
-  passwordLength
+  passwordLength,
+  validPrice,
+  validPriceRange
 }

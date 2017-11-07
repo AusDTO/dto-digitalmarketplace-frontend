@@ -6,21 +6,31 @@ import { bindActionCreators } from 'redux'
 import { Form, Control } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required, limitNumbers, validDate } from 'shared/validators'
+import { required, validDate, validPriceRange } from 'shared/validators'
 import Datefield from 'shared/form/Datefield'
 import RadioList from 'shared/form/RadioList'
 import SubmitForm from 'shared/form/SubmitForm'
 import styles from './EditPriceForm.scss'
+import StatefulError from 'shared/form/StatefulError';
+import ErrorBox from 'shared/form/ErrorBox'
 
 class EditPriceForm extends Component {
   render() {
-    const { priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit, buttonClick } = this.props
+    const { submitClicked, priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit, buttonClick } = this.props
     const date = editPriceForm.date
     const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
     const tomorrowDay = currentDate.getDate()
     const tomorrowMonth = currentDate.getMonth() + 1
     const tomorrowYear = currentDate.getFullYear()
     const tomorrowDate = tomorrowYear + '-' + tomorrowMonth + '-' + tomorrowDay
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
     return (
       <div className={styles.container}>
         <header>
@@ -54,6 +64,7 @@ class EditPriceForm extends Component {
               for each region is specified inline, you are not able to exceed.
             </div>
           </div>
+          <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
             action={action}
@@ -68,9 +79,9 @@ class EditPriceForm extends Component {
               htmlFor="price"
               label="Enter a new price including GST"
               description={'The new price must not exceed $' + priceData.capPrice}
-              validators={{ required, limitNumbers }}
+              validators={{ validPriceRange: validPriceRange(priceData.capPrice) }}
               messages={{
-                required: 'Price is required'
+                validPriceRange: 'Price must be valid and less than $' + priceData.capPrice
               }}
             />
             <div className="custom-radio">
@@ -100,6 +111,13 @@ class EditPriceForm extends Component {
             {date &&
               date === 'custom' &&
               <div>
+                <StatefulError
+                  model={`${model}.start_date`}
+                  id="start_date_error"
+                  messages={{
+                      validDate: 'Start date is required and must be in the future.',
+                  }}
+                />
                 <Control
                   model={`${model}.start_date`}
                   component={Datefield}
@@ -112,8 +130,18 @@ class EditPriceForm extends Component {
                     htmlFor: 'start_date',
                     label: 'Start date'
                   }}
+                  validators={{
+                    validDate
+                  }}
                 />
                 <br />
+                <StatefulError
+                  model={`${model}.end_date`}
+                  id="end_date_error"
+                  messages={{
+                      validDate: 'End date is required and must be in the future.',
+                  }}
+                />
                 <Control
                   model={`${model}.end_date`}
                   component={Datefield}
@@ -125,6 +153,9 @@ class EditPriceForm extends Component {
                     model: `${model}.end_date`,
                     htmlFor: 'end_date',
                     label: 'End date'
+                  }}
+                  validators={{
+                    validDate
                   }}
                 />
                 <br />
