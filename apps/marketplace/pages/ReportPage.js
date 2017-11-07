@@ -15,12 +15,12 @@ const itemData = {
           text: null,
           image: '189 entities have registered.svg',
           mobileImage: '189 entities have registered.svg',
-          imageAlt: 'Of the 189 entities registered on the Marketplace, 50% are Australian Government entities'
+          imageAlt: 'Of the 186 entities registered on the Marketplace, 50% are Australian Government entities'
         },
         {
           text: null,
           image: '>768 Top 5 agencies listing briefs on the Marketplace.svg',
-          mobileImage: '787 Top 5 buyers October ‘17.svg',
+          mobileImage: '787 Top 5 buyers: October ‘17.svg',
           imageAlt: '',
           imageCaption:
             'Top 5 agencies listing briefs on the Marketplace for October 2017 were the DTA (9 briefs), ' +
@@ -94,10 +94,10 @@ const itemData = {
           mobileImage: '767 types of briefs on marketplace.svg',
           imageAlt: '',
           imageCaption:
-            'Types of briefs on the Marketplace, 148 Outcomes briefs, ' +
+            'Top 5 areas of expertise since 29 August 2016, , ' +
             '61 Software engineering and development, 48 User research and design, ' +
-            '37 Agile delivery and governance, 13 Change training and transformation' +
-            ' and 33 Other specialist briefs'
+            '37 Agile delivery and governance, 12 Change training and transformation,' +
+            '10 Cyber security, 23 Other areas of experience and 148 Outcomes briefs (area not specified)'
         }
       ]
     },
@@ -108,7 +108,7 @@ const itemData = {
           text: null,
           fullWidth: true,
           image: '>768 number of sellers per area of expertise.svg',
-          mobileImage: '767 sellers per area of expertise.svg',
+          mobileImage: '767 num sellers per area of expertise.svg',
           imageAlt: '',
           imageCaption:
             'number of sellers per area of expertise, ' +
@@ -122,7 +122,7 @@ const itemData = {
           text: null,
           fullWidth: true,
           image: '768 average seller response.svg',
-          mobileImage: '767 average of responses per brief.svg',
+          mobileImage: '767 average num of responses per brief.svg',
           imageAlt: 'Buyers receive on average 12 responses per brief as of October 2017'
         }
       ]
