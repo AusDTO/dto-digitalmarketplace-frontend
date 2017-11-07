@@ -12,16 +12,25 @@ import RadioList from 'shared/form/RadioList'
 import SubmitForm from 'shared/form/SubmitForm'
 import styles from './EditPriceForm.scss'
 import StatefulError from 'shared/form/StatefulError';
+import ErrorBox from 'shared/form/ErrorBox'
 
 class EditPriceForm extends Component {
   render() {
-    const { priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit, buttonClick } = this.props
+    const { submitClicked, priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit, buttonClick } = this.props
     const date = editPriceForm.date
     const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
     const tomorrowDay = currentDate.getDate()
     const tomorrowMonth = currentDate.getMonth() + 1
     const tomorrowYear = currentDate.getFullYear()
     const tomorrowDate = tomorrowYear + '-' + tomorrowMonth + '-' + tomorrowDay
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
     return (
       <div className={styles.container}>
         <header>
@@ -55,6 +64,7 @@ class EditPriceForm extends Component {
               for each region is specified inline, you are not able to exceed.
             </div>
           </div>
+          <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
             action={action}
@@ -71,7 +81,7 @@ class EditPriceForm extends Component {
               description={'The new price must not exceed $' + priceData.capPrice}
               validators={{ validPriceRange: validPriceRange(priceData.capPrice) }}
               messages={{
-                validPriceRange: 'Price must be less than ' + priceData.capPrice
+                validPriceRange: 'Price must be valid and less than $' + priceData.capPrice
               }}
             />
             <div className="custom-radio">
