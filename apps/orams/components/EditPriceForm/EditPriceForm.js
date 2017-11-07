@@ -6,11 +6,12 @@ import { bindActionCreators } from 'redux'
 import { Form, Control } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required, limitNumbers, validDate } from 'shared/validators'
+import { required, validDate, validPrice, validPriceRange } from 'shared/validators'
 import Datefield from 'shared/form/Datefield'
 import RadioList from 'shared/form/RadioList'
 import SubmitForm from 'shared/form/SubmitForm'
 import styles from './EditPriceForm.scss'
+import StatefulError from 'shared/form/StatefulError';
 
 class EditPriceForm extends Component {
   render() {
@@ -68,9 +69,9 @@ class EditPriceForm extends Component {
               htmlFor="price"
               label="Enter a new price including GST"
               description={'The new price must not exceed $' + priceData.capPrice}
-              validators={{ required, limitNumbers }}
+              validators={{ validPriceRange: validPriceRange(priceData.capPrice) }}
               messages={{
-                required: 'Price is required'
+                validPriceRange: 'Price must be less than ' + priceData.capPrice
               }}
             />
             <div className="custom-radio">
@@ -100,6 +101,13 @@ class EditPriceForm extends Component {
             {date &&
               date === 'custom' &&
               <div>
+                <StatefulError
+                  model={`${model}.start_date`}
+                  id="start_date_error"
+                  messages={{
+                      validDate: 'Start date is required and must be in the future.',
+                  }}
+                />
                 <Control
                   model={`${model}.start_date`}
                   component={Datefield}
@@ -112,8 +120,18 @@ class EditPriceForm extends Component {
                     htmlFor: 'start_date',
                     label: 'Start date'
                   }}
+                  validators={{
+                    validDate
+                  }}
                 />
                 <br />
+                <StatefulError
+                  model={`${model}.end_date`}
+                  id="end_date_error"
+                  messages={{
+                      validDate: 'End date is required and must be in the future.',
+                  }}
+                />
                 <Control
                   model={`${model}.end_date`}
                   component={Datefield}
@@ -125,6 +143,9 @@ class EditPriceForm extends Component {
                     model: `${model}.end_date`,
                     htmlFor: 'end_date',
                     label: 'End date'
+                  }}
+                  validators={{
+                    validDate
                   }}
                 />
                 <br />
