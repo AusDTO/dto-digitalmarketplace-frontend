@@ -16,6 +16,8 @@ import {
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
+import { actions } from 'react-redux-form';
+
 
 export const sendingRequest = sending => ({ type: SENDING_REQUEST, sending })
 
@@ -128,6 +130,7 @@ export function setUserPrice(price, capPrice) {
     }
 
     dispatch(setOnePrice(priceObj))
+    dispatch(actions.setInitial('editPriceForm'))
 
     if (state.editPricing.buttonClickValue === 'saveAnother') {
       dispatch(
