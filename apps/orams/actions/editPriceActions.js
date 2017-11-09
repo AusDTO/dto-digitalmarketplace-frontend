@@ -130,7 +130,7 @@ export function setUserPrice(price, capPrice) {
     }
 
     dispatch(setOnePrice(priceObj))
-    dispatch(actions.setInitial('editPriceForm'))
+    dispatch(actions.reset('editPriceForm'))
 
     if (state.editPricing.buttonClickValue === 'saveAnother') {
       dispatch(
@@ -169,6 +169,7 @@ export function updatePrice() {
       } else {
         dispatch(setSuccessMessage(true))
         dispatch(restartEditPricing())
+        dispatch(actions.reset('contractVariationForm'))
         dispatch(setStep(1))
         window.scrollTo(0, 0)
       }
