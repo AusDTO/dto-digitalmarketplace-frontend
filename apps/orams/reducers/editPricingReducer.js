@@ -76,6 +76,14 @@ const editPricingReducer = (state = initialState, action) => {
       }
 
     case SET_ONE_PRICE:
+      if (state.pricesArray.find(price => price.id === action.priceObj.id)) {
+        return {
+          ...state,
+          pricesArray: state.pricesArray.map(
+            price => (price.id === action.priceObj.id ? { ...price, ...action.priceObj } : price)
+          )
+        }
+      }
       return {
         ...state,
         pricesArray: [...state.pricesArray, action.priceObj]
