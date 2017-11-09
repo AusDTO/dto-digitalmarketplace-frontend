@@ -37,6 +37,14 @@ const initialState = {
   successMessage: false
 }
 
+const updateOrReplace = (array, obj) => {
+  if (array.find(item => item.id === obj.id)) {
+    return array.map(item => (item.id === obj.id ? { ...item, ...obj } : item))
+  }
+
+  return [...array, obj]
+}
+
 const editPricingReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_EDIT_SERVICE_DATA:
@@ -76,17 +84,9 @@ const editPricingReducer = (state = initialState, action) => {
       }
 
     case SET_ONE_PRICE:
-      if (state.pricesArray.find(price => price.id === action.priceObj.id)) {
-        return {
-          ...state,
-          pricesArray: state.pricesArray.map(
-            price => (price.id === action.priceObj.id ? { ...price, ...action.priceObj } : price)
-          )
-        }
-      }
       return {
         ...state,
-        pricesArray: [...state.pricesArray, action.priceObj]
+        pricesArray: updateOrReplace(state.pricesArray, action.priceObj)
       }
 
     case SET_BUTTON_CLICK:
