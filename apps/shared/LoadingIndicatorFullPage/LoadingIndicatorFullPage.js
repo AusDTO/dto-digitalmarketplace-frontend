@@ -12,7 +12,7 @@ function LoadingIndicatorFullPage() {
       <div className={styles.loadingIndicator}>
         <div className={styles.loadingInner} />
       </div>
-      <div className={styles.loadingText}>Filtering results...</div>
+      <div className={styles.loadingText}>Loading...</div>
     </div>
   )
 }
