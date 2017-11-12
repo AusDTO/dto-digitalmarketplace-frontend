@@ -124,7 +124,7 @@ export function setUserPrice(price, capPrice) {
       regionState: state.editPricing.priceData.region.state,
       regionName: state.editPricing.priceData.region.name,
       id: state.editPricing.priceId,
-      price: parseInt(price.price),
+      price: parseFloat(price.price),
       startDate: price.date === 'custom' ? price.start_date : price.date,
       endDate: price.end_date ? price.end_date : ''
     }
