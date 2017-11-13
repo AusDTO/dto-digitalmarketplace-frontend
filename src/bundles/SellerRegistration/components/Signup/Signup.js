@@ -112,9 +112,6 @@ class Signup extends React.Component {
       actions.stepNextPersist(this.nextStep.pattern, this.step);
     },
     onSubmitFailed: (e) => {
-      if (e && 'preventDefault' in e) {
-        e.preventDefault();
-      }
       const { actions } = this.props;
       actions.stepPartial(this.step.id);
     }
