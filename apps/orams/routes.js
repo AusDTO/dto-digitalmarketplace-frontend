@@ -6,6 +6,7 @@ import LoginPage from 'orams/pages/LoginPage'
 import LogoutPage from 'orams/pages/LogoutPage'
 import EditProfilePage from 'orams/pages/EditProfilePage'
 import SellerCataloguePage from 'orams/pages/SellerCataloguePage'
+import SellerProfilePage from 'orams/pages/SellerProfilePage'
 import NotFound from 'shared/NotFound'
 import ResetPasswordPage from 'orams/pages/ResetPasswordPage'
 
@@ -18,6 +19,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/logout`} component={LogoutPage} />
     <PrivateRoute path={`${rootPath}/edit-profile`} component={EditProfilePage} />
     <PrivateRoute path={`${rootPath}/seller-catalogue`} component={SellerCataloguePage} />
+    <PrivateRoute path={`${rootPath}/seller-profile`} component={SellerProfilePage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route component={NotFound} />
   </Switch>
