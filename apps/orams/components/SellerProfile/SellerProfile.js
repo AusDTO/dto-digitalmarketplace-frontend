@@ -79,7 +79,7 @@ class SellerProfile extends Component {
                           <div>Occupational rehabilitation and associated medical services panel</div>
                         </div>
                       </div>
-                      <hr />
+                      <div className={styles.separator} />
                       <div className="row">
                         <div className="col-sm-3 col-xs-12">
                           <div className={styles.title}>Operates in</div>
@@ -94,7 +94,7 @@ class SellerProfile extends Component {
                           )}
                         </div>
                       </div>
-                      <hr />
+                      <div className={styles.separator} />
                       <div className="row">
                         <div className="col-sm-3 col-xs-12">
                           <div className={styles.title}>Company details</div>
