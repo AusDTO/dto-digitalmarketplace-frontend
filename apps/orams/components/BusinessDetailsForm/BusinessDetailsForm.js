@@ -102,11 +102,7 @@ class BusinessDetailsForm extends BaseForm {
               id="abn"
               htmlFor="abn"
               label="ABN"
-              description={
-                <span>
-                  You need an Australian Business Number to do business in Australia.
-                </span>
-              }
+              description={<span>You need an Australian Business Number to do business in Australia.</span>}
               messages={{
                 validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
               }}

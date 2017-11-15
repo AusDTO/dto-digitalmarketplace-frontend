@@ -11,12 +11,22 @@ import Datefield from 'shared/form/Datefield'
 import RadioList from 'shared/form/RadioList'
 import SubmitForm from 'shared/form/SubmitForm'
 import styles from './EditPriceForm.scss'
-import StatefulError from 'shared/form/StatefulError';
+import StatefulError from 'shared/form/StatefulError'
 import ErrorBox from 'shared/form/ErrorBox'
 
 class EditPriceForm extends Component {
   render() {
-    const { submitClicked, priceData, serviceToEdit, model, action, form, editPriceForm, handlePriceSubmit, buttonClick } = this.props
+    const {
+      submitClicked,
+      priceData,
+      serviceToEdit,
+      model,
+      action,
+      form,
+      editPriceForm,
+      handlePriceSubmit,
+      buttonClick
+    } = this.props
     const date = editPriceForm.date
     const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
     const tomorrowDay = currentDate.getDate()
@@ -115,7 +125,7 @@ class EditPriceForm extends Component {
                   model={`${model}.start_date`}
                   id="start_date_error"
                   messages={{
-                      validDate: 'Start date is required and must be in the future.',
+                    validDate: 'Start date is required and must be in the future.'
                   }}
                 />
                 <Control
@@ -139,7 +149,7 @@ class EditPriceForm extends Component {
                   model={`${model}.end_date`}
                   id="end_date_error"
                   messages={{
-                      validDate: 'End date is required and must be in the future.',
+                    validDate: 'End date is required and must be in the future.'
                   }}
                 />
                 <Control

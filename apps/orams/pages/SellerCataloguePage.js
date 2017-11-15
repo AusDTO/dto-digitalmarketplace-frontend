@@ -69,7 +69,7 @@ const mapDispatchToProps = dispatch => {
     onRegionAccordionOpen: id => dispatch(setRegionAccordionOpen(id)),
     onCategoryAccordionOpen: id => dispatch(setCategoryAccordionOpen(id)),
     loadTableData: (region, category) => dispatch(loadSuppliers(region, category)),
-    setSupplierCode: (supplierCode) => dispatch(setSupplierCodeData(supplierCode))
+    setSupplierCode: supplierCode => dispatch(setSupplierCodeData(supplierCode))
   }
 }
 

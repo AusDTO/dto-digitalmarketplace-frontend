@@ -54,10 +54,12 @@ class ResultsTable extends Component {
                     <div className="row">
                       <div className="col-xs-12 col-sm-12">
                         <span className={styles.name}>
-                          <a onClick={() => {
+                          <a
+                            onClick={() => {
                               this.props.setSupplierCode(supplier.code)
-                              this.props.history.push("/orams/seller-profile/")
-                            }}>
+                              this.props.history.push('/orams/seller-profile/')
+                            }}
+                          >
                             {supplier.name}
                           </a>
                         </span>

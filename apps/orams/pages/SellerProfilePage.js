@@ -17,14 +17,7 @@ class SellerProfilePage extends Component {
 
     return (
       <Switch>
-        <Route
-          exact
-          path={match.url}
-          render={() =>
-            <SellerProfile
-              {...this.props}
-            />}
-        />
+        <Route exact path={match.url} render={() => <SellerProfile {...this.props} />} />
       </Switch>
     )
   }
