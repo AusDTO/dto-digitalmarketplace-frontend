@@ -150,16 +150,7 @@ class DomainList extends BaseForm {
               {!isEmpty(essential) &&
                 <div>
                   <h2 className="visuallyhidden">Essential</h2>
-
-<br/>
-                  <div className="calloutMistake">
-                    <b> Avoid common mistakes </b>
-                 <ul>
-
-                   <li>Check the <a href="/assessment-criteria">assessment criteria</a> to ensure the service chosen is a good match for the case study.</li>
-                   <li>Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.</li>
-                 </ul></div>
-                  {essential.map((domain, index) => 
+                  {essential.map((domain, index) =>
                     <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, pathname, ...this.props}}/>
                   )}
                 </div>
