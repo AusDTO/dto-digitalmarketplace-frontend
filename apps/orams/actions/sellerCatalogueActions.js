@@ -9,7 +9,9 @@ import {
   SET_TABLE_DATA,
   SET_REGION_ACCORDION_OPEN,
   SET_CATEGORY_ACCORDION_OPEN,
-  SET_TABLE_FOCUS
+  SET_TABLE_FOCUS,
+  SET_SUPPLIER_DATA,
+  SET_SUPPLIER_CODE
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -51,6 +53,14 @@ export function setTableData(tableData) {
 
 export function setTableFocus(tableFocus) {
   return { type: SET_TABLE_FOCUS, tableFocus }
+}
+
+export function setSupplierProfileData(supplierData) {
+  return { type: SET_SUPPLIER_DATA, supplierData }
+}
+
+export function setSupplierCodeData(supplierCode) {
+  return { type: SET_SUPPLIER_CODE, supplierCode }
 }
 
 export const loadRegions = () => dispatch => {
@@ -96,5 +106,24 @@ export function loadSuppliers() {
         dispatch(sendingRequest(false))
       })
     }
+  }
+}
+
+export function loadSupplierProfile() {
+  return (dispatch, getState) => {
+    const state = getState()
+    dispatch(sendingRequest(true))
+    dmapi({
+      method: 'get',
+      url: `/supplier/${state.sellersCatalogue.supplierCode}`
+    }).then(response => {
+      if (response.error) {
+        dispatch(setErrorMessage(GENERAL_ERROR))
+      } else {
+        dispatch(setSupplierProfileData(response.data))
+        window.scrollTo(0, 0)
+      }
+      dispatch(sendingRequest(false))
+    })
   }
 }

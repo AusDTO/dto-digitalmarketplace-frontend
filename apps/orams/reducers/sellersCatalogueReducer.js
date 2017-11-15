@@ -6,7 +6,9 @@ import {
   SET_TABLE_DATA,
   SET_REGION_ACCORDION_OPEN,
   SET_CATEGORY_ACCORDION_OPEN,
-  SET_TABLE_FOCUS
+  SET_TABLE_FOCUS,
+  SET_SUPPLIER_DATA,
+  SET_SUPPLIER_CODE
 } from 'orams/constants/constants'
 
 const defaultSellersCatalogueState = {
@@ -16,7 +18,8 @@ const defaultSellersCatalogueState = {
   servicesData: [],
   tableData: [],
   accordionOpen: '',
-  tableFocus: false
+  tableFocus: false,
+  supplierCode: ''
 }
 
 const sellersCatalogueReducer = (state = defaultSellersCatalogueState, action) => {
@@ -67,6 +70,18 @@ const sellersCatalogueReducer = (state = defaultSellersCatalogueState, action) =
       return {
         ...state,
         tableFocus: action.tableFocus
+      }
+
+    case SET_SUPPLIER_DATA:
+      return {
+        ...state,
+        supplierData: action.supplierData
+      }
+
+    case SET_SUPPLIER_CODE:
+      return {
+        ...state,
+        supplierCode: action.supplierCode
       }
 
     default:

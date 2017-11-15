@@ -30,6 +30,7 @@
 
 .informationSection {
   padding-bottom: 40px;
+  line-height: 1.5;
 }
 
 .headerSection main {
@@ -70,4 +71,22 @@ hr {
   border-top: solid 1px #bbbbbb !important;
   margin-top: 48px !important;
   margin-bottom: 48px !important;
+}
+
+.badge {
+  border-radius: 2px;
+  border: solid 1px #0f979b;
+  margin-bottom: 25px;
+  padding: 2px 5px;
+  width: fit-content;
+}
+
+.infoBlock {
+  padding-bottom: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .contactSection {
+    margin-top: 25px;
+  }
 }

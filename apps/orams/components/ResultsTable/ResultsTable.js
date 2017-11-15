@@ -32,6 +32,7 @@ class ResultsTable extends Component {
 
   render(props) {
     const { categories, alert } = this.props.data
+
     return (
       <div tabIndex="0" ref={this.setRef} className={styles.table}>
         {alert
@@ -53,7 +54,10 @@ class ResultsTable extends Component {
                     <div className="row">
                       <div className="col-xs-12 col-sm-12">
                         <span className={styles.name}>
-                          <a onClick={() => {this.props.history.push("/orams/seller-profile")}}>
+                          <a onClick={() => {
+                              this.props.setSupplierCode(supplier.code)
+                              this.props.history.push("/orams/seller-profile/")
+                            }}>
                             {supplier.name}
                           </a>
                         </span>
