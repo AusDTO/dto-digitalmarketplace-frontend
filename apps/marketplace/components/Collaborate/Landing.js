@@ -7,17 +7,17 @@ import funded from './funded.json'
 
 const Landing = () =>
   <div className="landing">
-    <DocumentTitle title="Smart cities - Digital Marketplace">
+    <DocumentTitle title="Smart Cities Collaboration Platform - Digital Marketplace">
       <h1 className={styles.title}>
-        <center>Smart cities</center>
+        <center>Smart Cities Collaboration Platform</center>
       </h1>
     </DocumentTitle>
     <article className={styles.uikitDisplay3}>
-      In 2016 the Australian Government announced the{' '}
+      The Australian Government’s $50 million {' '}
       <a href="https://cities.dpmc.gov.au/smart-cities-program" rel="external noopener noreferrer" target="_blank">
         Smart Cities and Suburbs Program
       </a>{' '}
-      to apply innovative technology-based solutions to urban challenges.
+      provides direct investment for innovative technology-based solutions to urban challenges.
     </article>
 
     <div className={styles.map}>
@@ -25,11 +25,11 @@ const Landing = () =>
 
       <div className={styles.mapOverlay}>
         <div>
-          <strong className={styles.pop}>$50m</strong>
-          <article>in competitive grants</article>
+          <strong className={styles.pop}>$28.5m</strong>
+          <article>allocated for Round One</article>
         </div>
         <div>
-          <strong className={styles.pop}>170</strong>
+          <strong className={styles.pop}>176</strong>
           <article> applications received</article>
         </div>
         <div>
@@ -118,7 +118,9 @@ const Landing = () =>
                       </div>
                       <br />
                       <p>
-                        {val.description}
+                        <b>Grant Amount:</b> {val.grant}<br/>
+                        <b>Co-contribution:</b> {val.contribution}<br/>
+                        <b>Total project value:</b> {val.total}<br/>
                       </p>
                       <hr />
                     </div>
