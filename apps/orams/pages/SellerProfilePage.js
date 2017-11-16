@@ -14,7 +14,7 @@ class SellerProfilePage extends Component {
 
   render() {
     const { match } = this.props
-    console.log("match",match)
+    console.log('match', match)
     return (
       <Switch>
         <Route exact path={match.url} render={() => <SellerProfile id={match.params.id} {...this.props} />} />
@@ -35,7 +35,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadSupplierData: (id) => dispatch(loadSupplierProfile(id))
+    loadSupplierData: id => dispatch(loadSupplierProfile(id))
   }
 }
 
