@@ -8,6 +8,7 @@ import BriefPage from './pages/BriefPage'
 import LoginPage from './pages/LoginPage'
 import ReportPage from './pages/ReportPage'
 import NotFound from './components/NotFound'
+import CollaboratePage from './pages/CollaboratePage'
 
 export const rootPath = '/2'
 
@@ -20,6 +21,9 @@ export const Routes = () =>
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/insights`} component={ReportPage} />
+    <Route path={`${rootPath}/collaborate/funded/:state`} component={CollaboratePage} />
+    <Route path={`${rootPath}/collaborate/:stage`} component={CollaboratePage} />
+    <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />
     <Route component={NotFound} />
   </Switch>
 

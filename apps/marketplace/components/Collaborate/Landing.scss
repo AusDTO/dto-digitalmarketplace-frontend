@@ -1,0 +1,329 @@
+.filters {
+  margin: 1.5rem 0;
+}
+
+.filters hr {
+  margin: 0;
+}
+
+.filters a {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .filters {
+    margin-top: 1.5rem;
+  }
+
+  .filters a {
+    font-size: 1.23rem;
+    width: 44%;
+  }
+
+}
+a.filter {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0px 8px 0px 8px;
+  border-bottom: none;
+}
+
+@media (max-width: 767px) {
+  .filter {
+    padding: 0px
+  }
+}
+
+.funded, .project,.filters {
+  hr {
+    border-color: #bebebe;
+  }
+}
+
+a.filter:hover {
+  background-color: transparent;
+  border-bottom: solid 6px #17788d;
+}
+
+.filter span {
+  font-size: 1.65rem;
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+a.activeFilter {
+  border-bottom: solid 6px #17788d;
+  font-weight: 700;
+}
+a.activeLink {
+  font-weight: bold;
+  border: none;
+}
+
+.projectCount {
+ font-size: 2rem;
+  font-weight: 700;
+}
+
+.project {
+  h3 {
+    margin-bottom: 0;
+  }
+  div {
+    color: darkgrey;
+    font-size: 0.9em;
+  }
+  p {
+    max-width: 100%;
+    padding-bottom: 1em;
+  }
+}
+
+.uikitDisplay3 {
+    margin-top: 1.6em;
+    font-weight: normal;
+    color: #313131;
+    display: block;
+    line-height: 1.4;
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 82%
+}
+
+.push {
+    text-align: center;
+    background: #f0f3f5;
+    padding: 16px 16px 24px 16px;
+    float: none;
+    max-width: 75em;
+    margin: 0 auto;
+    padding: 0 1.6em;
+}
+
+.pop {
+    font-size: 24px;
+    color: #18788d;
+    padding-right: 6px;
+}
+
+.tile {
+    border: 1px solid #bebebe;
+}
+
+.fund {
+    text-align: center;
+}
+
+.map {
+    width: 100%;
+    min-height: 350px;
+    left: 0;
+    text-align: center;
+}
+.map img {
+    width: 40%;
+    display: inline-block;
+}
+.push {
+    text-align: center;
+    background: #f0f3f5;
+    padding: 16px 16px 24px 16px;
+    float: none;
+}
+
+ul.cardList {
+    padding: 0;
+  display: flex;
+  max-width: 63em;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.cardList li {
+    border: 1px solid #bebebe;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+.cardList li figure {
+  margin: 0;
+}
+.cardList li article {
+    padding: 10px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardList li article p {
+    color: #717171;
+    font-size: 87.5%;
+    margin-bottom: auto;
+}
+
+.stage {
+    margin-right: 14px;
+    margin-bottom: 10px;
+    padding: 3px 6px 3px 6px;
+    font-size: 14px;
+    border-radius: 2px;
+    border: solid 1px #17788d;
+    float: left;
+    margin-top: auto;
+}
+@media only screen and (max-device-width: 768px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .uikit-display-3 {
+        font-size: 18px;
+    }
+
+    .cardList {
+        margin-bottom: 0;
+        display: block;
+    }
+
+    .cardList img {
+        height: auto;
+    }
+
+    .cardList > li {
+        width: 262px;
+        margin: auto;
+        flex: none;
+        margin-bottom: 1.5em;
+    }
+
+
+}
+.mapOverlay article {
+  display: inline;
+}
+.sidebar {
+  display: block;
+  a {
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+  }
+}
+@media only screen and (min-device-width: 768px) {
+  .sidebar {
+    float: right;
+    padding-top: 0.75em;
+  }
+
+    ul.cardList {
+
+        margin: 0 auto;
+    }
+
+    .cardList h3 {
+        margin-top: 5px;
+    }
+
+    .cardList img {
+        height: auto;
+    }
+
+    .cardList li {
+        width: 262px;
+        display: inline-block;
+        height: 320px;
+        float: left;
+        margin-top: 20px;
+    }
+
+    .becomeASeller {
+        border-left: 2px solid #bebebe;
+    }
+
+    .becomeASeller div {
+        margin-left: 30px;
+    }
+
+    .mapOverlay {
+        float: left;
+        margin-top: 80px;
+        margin-left: 10%;
+    }
+
+    .fund {
+        width: 100%;
+        margin: auto;
+        float: none;
+    }
+
+    .fund p {
+        max-width: 82%;
+        margin: auto;
+        margin-bottom: 24px;
+    }
+
+    .partners {
+        max-width: 68%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .cardList {
+        width: 108%
+    }
+    .map {
+        height: 250px;
+    }
+    .mapOverlay {
+        width: 250px;
+        margin-top: 0;
+        margin-right: 0;
+    }
+    .mapOverlay span {
+        display: block;
+    }
+
+    .mapOverlay div {
+        padding-top: 0;
+    }
+
+    .mapOverlay span div {
+        display: inline-block;
+        width: 178px;
+        text-align: left;
+    }
+
+    .pop {
+        height: 50px;
+        vertical-align: middle;
+    }
+
+    .becomeASeller {
+        border-left: none;
+    }
+
+    .becomeASeller div {
+        margin-left: 0px;
+    }
+
+    .mapSpacer {
+        height: 350px;
+    }
+
+}
+@media only screen and (max-device-width: 767px) {
+  .sidebar {
+    padding-top: 1.25em;
+  }
+    .map img {
+        width: 100%;
+    }
+
+    .mapOverlay {
+        width: 100%;
+    }
+}

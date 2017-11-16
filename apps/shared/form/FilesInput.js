@@ -9,39 +9,33 @@ import { GENERAL_ERROR } from 'shared/messageConstants'
 
 import FileInput from './FileInput'
 
-class FilesInput extends React.Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    hint: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    api: PropTypes.object.isRequired,
-    model: PropTypes.string.isRequired,
-    formFields: PropTypes.number.isRequired
-  }
+const FilesInput = props => {
+  const { label, description, hint, formFields } = props
 
-  static defaultProps = {}
-
-  render() {
-    const { label, description, hint, formFields } = this.props
-
-    return (
-      <div>
-        <label className="question-heading uikit-text-input__label" htmlFor="file_0">
-          {label}
-        </label>
-        <span>
-          {description}
-        </span>
-        <p className="hint">
-          {hint}
-        </p>
-        {range(formFields).map((field, id) => <FileInput key={field} id={id} {...this.props} />)}
-      </div>
-    )
-  }
+  return (
+    <div>
+      <label className="question-heading uikit-text-input__label" htmlFor="file_0">
+        {label}
+      </label>
+      <span>
+        {description}
+      </span>
+      <p className="hint">
+        {hint}
+      </p>
+      {range(formFields).map((field, id) => <FileInput key={field} id={id} {...props} />)}
+    </div>
+  )
 }
+
+FilesInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  hint: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  formFields: PropTypes.number.isRequired
+}
+
+FilesInput.defaultProps = {}
 
 const uploadDocument = (url, api, id, file) => () => {
   const data = new FormData()
