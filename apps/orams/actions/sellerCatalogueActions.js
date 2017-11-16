@@ -70,6 +70,7 @@ export function setProfileData(profileData) {
 
 export const loadRegions = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setErrorMessage(null))
   dmapi({ url: '/regions' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
@@ -82,6 +83,7 @@ export const loadRegions = () => dispatch => {
 
 export const loadServices = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setErrorMessage(null))
   dmapi({ url: '/services' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
