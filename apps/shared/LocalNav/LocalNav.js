@@ -4,13 +4,12 @@ class LocalNav extends React.Component {
   constructor(props) {
     super(props)
 
-    this.toggle = this.toggle.bind(this)
     this.state = {
       open: false
     }
   }
 
-  toggle(e) {
+  toggle = e => {
     e.preventDefault()
     this.setState({ open: !this.state.open })
   }
