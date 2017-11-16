@@ -18,7 +18,7 @@ class Profile extends Component {
 
   render() {
     const { profileData } = this.props
-    console.log('profileData', profileData)
+
     return (
       <div>
         {profileData
