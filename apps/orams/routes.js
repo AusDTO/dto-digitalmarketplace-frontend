@@ -20,7 +20,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/logout`} component={LogoutPage} />
     <PrivateRoute path={`${rootPath}/edit-profile`} component={EditProfilePage} />
     <PrivateRoute path={`${rootPath}/seller-catalogue`} component={SellerCataloguePage} />
-    <PrivateRoute path={`${rootPath}/seller-profile`} component={SellerProfilePage} />
+    <PrivateRoute path={`${rootPath}/seller-profile/:id`} component={SellerProfilePage} />
     <PrivateRoute path={`${rootPath}/profile`} component={ProfilePage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route component={NotFound} />

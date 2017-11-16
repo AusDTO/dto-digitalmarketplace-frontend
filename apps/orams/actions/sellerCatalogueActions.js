@@ -11,7 +11,6 @@ import {
   SET_CATEGORY_ACCORDION_OPEN,
   SET_TABLE_FOCUS,
   SET_SUPPLIER_DATA,
-  SET_SUPPLIER_CODE,
   SET_PROFILE_DATA
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
@@ -58,10 +57,6 @@ export function setTableFocus(tableFocus) {
 
 export function setSupplierProfileData(supplierData) {
   return { type: SET_SUPPLIER_DATA, supplierData }
-}
-
-export function setSupplierCodeData(supplierCode) {
-  return { type: SET_SUPPLIER_CODE, supplierCode }
 }
 
 export function setProfileData(profileData) {
@@ -116,13 +111,13 @@ export function loadSuppliers() {
   }
 }
 
-export function loadSupplierProfile() {
+export function loadSupplierProfile(id) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch(sendingRequest(true))
     dmapi({
       method: 'get',
-      url: `/supplier/${state.sellersCatalogue.supplierCode}`
+      url: `/supplier/${id}`
     }).then(response => {
       if (response.error) {
         dispatch(setErrorMessage(GENERAL_ERROR))

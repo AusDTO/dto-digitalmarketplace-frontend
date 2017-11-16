@@ -11,8 +11,7 @@ import {
   setCategoryData,
   setRegionData,
   setRegionAccordionOpen,
-  setCategoryAccordionOpen,
-  setSupplierCodeData
+  setCategoryAccordionOpen
 } from 'orams/actions/sellerCatalogueActions'
 
 class SellerCataloguePage extends Component {
@@ -69,7 +68,6 @@ const mapDispatchToProps = dispatch => {
     onRegionAccordionOpen: id => dispatch(setRegionAccordionOpen(id)),
     onCategoryAccordionOpen: id => dispatch(setCategoryAccordionOpen(id)),
     loadTableData: (region, category) => dispatch(loadSuppliers(region, category)),
-    setSupplierCode: supplierCode => dispatch(setSupplierCodeData(supplierCode))
   }
 }
 

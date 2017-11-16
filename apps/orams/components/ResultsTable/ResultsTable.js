@@ -56,8 +56,7 @@ class ResultsTable extends Component {
                         <span className={styles.name}>
                           <a
                             onClick={() => {
-                              this.props.setSupplierCode(supplier.code)
-                              this.props.history.push('/orams/seller-profile/')
+                              this.props.history.push(`/orams/seller-profile/${supplier.code}`)
                             }}
                           >
                             {supplier.name}

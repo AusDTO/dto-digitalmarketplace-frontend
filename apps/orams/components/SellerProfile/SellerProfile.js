@@ -13,7 +13,7 @@ class SellerProfile extends Component {
   }
 
   componentDidMount() {
-    this.props.loadSupplierData()
+    this.props.loadSupplierData(this.props.id)
   }
 
   render() {
