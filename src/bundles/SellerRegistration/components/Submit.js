@@ -10,16 +10,7 @@ import {Form, Control} from 'react-redux-form';
 import {required} from '../../../validators';
 import formProps     from '../../../shared/reduxModules/formPropsSelector';
 
-const agreementStyle = {
-    width: '100%',
-    outlineOffset: 0,
-    border: '2px solid #bebebe',
-    borderRadius: 0,
-    backgroundColor: '#fff',
-    padding: '.4rem',
-    height: '24rem',
-    overflowY: 'scroll'
-}
+import './Submit.css'
 
 class SubmitStepForm extends BaseForm {
     static defaultProps = {
@@ -71,7 +62,7 @@ class SubmitStepForm extends BaseForm {
                     <a href="/static/media/documents/digital-marketplace-master-agreement.html" target="_blank" rel="external">View Master Agreement in HTML</a><br/><br/>
 
 
-                    <div style={agreementStyle}>
+                    <div styleName="agreement">
                         <h1>Master Agreement</h1>
                         <h2>Introduction and scope</h2>
                         <p>This agreement covers all your interactions in the Digital Marketplace, including selling to buyers. This agreement also forms part of the terms incorporated into every work order contract agreed to by you and a buyer. </p>

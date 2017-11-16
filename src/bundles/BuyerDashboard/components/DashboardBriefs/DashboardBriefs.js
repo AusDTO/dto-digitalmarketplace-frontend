@@ -191,7 +191,7 @@ export const ClosedBriefs = props => {
                   </td>
                   <td styleName="item-field-third-right">
                     <h5>Work order</h5>
-                    <span style={{ marginRight: '5px'}}>
+                    <span>
                       <a href={`/buyers/frameworks/${item.frameworkSlug}/requirements/${item.lotSlug}/${item.id}/responses`}> 
                         View responses </a>
                     </span>

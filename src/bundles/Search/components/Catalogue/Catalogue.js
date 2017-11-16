@@ -65,8 +65,7 @@ export class Catalogue extends React.Component {
                       }
 
                       return (
-                        <div styleName="autocompleteMenu"
-                             style={{...style, position: 'absolute', display: 'none', left: 0, top: '53px'}}>
+                        <div styleName="autocompleteMenu">
                           {items}
                         </div>
                       )
@@ -74,7 +73,7 @@ export class Catalogue extends React.Component {
                   />
                 </article>
                 <article className="col-xs-2">
-                  <button type="submit" value="" style={{border: 'none', backgroundColor: '#18788d', color: '#fff'}}>
+                  <button type="submit" value="" styleName="searchButton">
                     <Icon value="search" size={22}/>
                     <span>&nbsp;Search</span>
                   </button>

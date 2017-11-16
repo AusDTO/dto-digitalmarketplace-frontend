@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 import kebabCase from 'lodash/kebabCase';
@@ -10,13 +8,13 @@ const getStudiesByService = (studies, service) => {
   return Object
     .keys(studies)
     .filter(studyId => studies[studyId].service === service)
-    .reduce((list, guid, i, a) => {
+    .reduce((list, guid) => {
       list[guid] = studies[guid];
       return list;
     }, {})
 };
 
-const CaseStudy = ({pathname, domain, index, caseStudyForm, onEditCaseStudy, onDeleteCaseStudy, onAddCaseStudy, actions}) => {
+const CaseStudy = ({pathname, domain, caseStudyForm, onEditCaseStudy, onDeleteCaseStudy, onAddCaseStudy, actions}) => {
   let list = getStudiesByService(caseStudyForm.case_studies, domain);
 
   return (
@@ -33,7 +31,10 @@ const CaseStudy = ({pathname, domain, index, caseStudyForm, onEditCaseStudy, onD
                 </div>
                 <div className="col-xs-7">
                   <div className="row">
-                    <div className="col-xs-9" style={{textAlign: 'right'}}>
+                    <div className="col-xs-9">
+
+                    </div>
+                    <div className="col-xs-3">
                       <Link
                         to={`${pathname}/edit/${guid}`}
                         id={`edit-${kebabCase(domain)}-${i}`}
@@ -41,8 +42,7 @@ const CaseStudy = ({pathname, domain, index, caseStudyForm, onEditCaseStudy, onD
                       >
                         Edit
                       </Link>
-                    </div>
-                    <div className="col-xs-3">
+                      {' '}
                       <Link
                         to={`${pathname}/delete/${guid}`}
                         id={`delete-${kebabCase(domain)}-${i}`}
