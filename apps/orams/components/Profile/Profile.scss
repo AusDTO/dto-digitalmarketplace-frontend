@@ -1,0 +1,100 @@
+.contactSection {
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(187, 187, 187, 0.5);
+  border: solid 1px #777777;
+  text-align: center;
+  padding: 24px 28px;
+  margin-bottom: 61px;
+}
+
+.contactTitle {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.25;
+  text-align: center;
+  color: #202751;
+}
+
+.contactName {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.35;
+  color: #152d3b;
+}
+
+.contactNumber {
+  font-size: 16px;
+  color: #142d3c;
+}
+
+.headerSection {
+  background-color: #f5f5f5;
+  padding-bottom: 50px;
+}
+
+.informationSection {
+  padding-bottom: 40px;
+  line-height: 1.5;
+}
+
+.headerSection main {
+  margin-bottom: 0px;
+}
+
+.yellowButton {
+  height: auto;
+  background-color: #f5d815;
+  color: #000000;
+  text-decoration: none;
+  padding-top: 16px;
+  padding-bottom: 14px;
+  margin-top: 21px;
+}
+
+.yellowButton:hover {
+  background-color: #5bcbe3;
+}
+
+.yellowButton a {
+  border: none;
+}
+
+.website {
+  font-size: 17px;
+  font-weight: bold;
+  color: #202751;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #202751;
+}
+
+.separator {
+  border-top: solid 1px #bbbbbb;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.badge {
+  border-radius: 2px;
+  border: solid 1px #0f979b;
+  margin-bottom: 25px;
+  padding: 2px 5px;
+  width: fit-content;
+}
+
+.infoBlock {
+  padding-bottom: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .contactSection {
+    margin-top: 25px;
+  }
+}
+
+.businessContact {
+  margin-top: 21px;
+}

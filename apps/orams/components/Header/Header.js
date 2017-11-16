@@ -11,6 +11,16 @@ class Header extends Component {
   render() {
     const { userType, loggedIn } = this.props
 
+    const home = () => {
+      if (loggedIn && userType === 'buyer') {
+        return '/orams/seller-catalogue'
+      } else if (loggedIn && userType === 'supplier') {
+        return '/orams/profile'
+      } else {
+        return '/orams'
+      }
+    }
+
     const secondaryLink = () => {
       if (loggedIn && userType === 'buyer') {
         return <Link to={`${rootPath}/seller-catalogue`}>Service Matrix</Link>
@@ -20,12 +30,13 @@ class Header extends Component {
         return <Link to={`${rootPath}/signup`}>Sign up</Link>
       }
     }
+
     return (
       <div>
         <section className={styles.marketplaceHeader}>
           <div className={styles.wrapper}>
             <div className={styles.oramsLogo}>
-              <a href="/orams" title="Go to the ORAMS homepage" className={styles.logo}>
+              <a href={home()} title="Go to the ORAMS homepage" className={styles.logo}>
                 <span>ORAMS</span>
               </a>
               {location.pathname === '/orams' &&
