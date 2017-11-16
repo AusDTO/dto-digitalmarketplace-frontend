@@ -11,7 +11,8 @@ import {
   SET_CATEGORY_ACCORDION_OPEN,
   SET_TABLE_FOCUS,
   SET_SUPPLIER_DATA,
-  SET_SUPPLIER_CODE
+  SET_SUPPLIER_CODE,
+  SET_PROFILE_DATA
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -61,6 +62,10 @@ export function setSupplierProfileData(supplierData) {
 
 export function setSupplierCodeData(supplierCode) {
   return { type: SET_SUPPLIER_CODE, supplierCode }
+}
+
+export function setProfileData(profileData) {
+  return { type: SET_PROFILE_DATA, profileData }
 }
 
 export const loadRegions = () => dispatch => {
@@ -121,6 +126,25 @@ export function loadSupplierProfile() {
         dispatch(setErrorMessage(GENERAL_ERROR))
       } else {
         dispatch(setSupplierProfileData(response.data))
+        window.scrollTo(0, 0)
+      }
+      dispatch(sendingRequest(false))
+    })
+  }
+}
+
+export function loadProfile() {
+  return (dispatch, getState) => {
+    const state = getState()
+    dispatch(sendingRequest(true))
+    dmapi({
+      method: 'get',
+      url: `/supplier`
+    }).then(response => {
+      if (response.error) {
+        dispatch(setErrorMessage(GENERAL_ERROR))
+      } else {
+        dispatch(setProfileData(response.data))
         window.scrollTo(0, 0)
       }
       dispatch(sendingRequest(false))
