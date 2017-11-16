@@ -118,9 +118,12 @@ const Landing = () =>
                       </div>
                       <br />
                       <p>
-                        <b>Grant Amount:</b> {val.grant}<br/>
-                        <b>Co-contribution:</b> {val.contribution}<br/>
-                        <b>Total project value:</b> {val.total}<br/>
+                        <b>Grant Amount:</b> {val.grant}
+                        <br />
+                        <b>Co-contribution:</b> {val.contribution}
+                        <br />
+                        <b>Total project value:</b> {val.total}
+                        <br />
                       </p>
                       <hr />
                     </div>
