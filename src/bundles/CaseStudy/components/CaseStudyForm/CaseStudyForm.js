@@ -95,6 +95,8 @@ class CaseStudyForm extends BaseForm {
           <div className="calloutMistake">
             <b> Avoid common mistakes </b>
             <ul>
+              <li>Check the <a href="/assessment-criteria">assessment criteria</a> to ensure the service chosen is a good match for the case study.</li>
+              <li>Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.</li>
               <li>If using acronyms, their meaning must be written out clearly.</li>
           <li>Check for punctuation, spelling mistakes and grammatical errors.</li>
           <li>Use plain english to explain what you did, with reference to the tools and methodologies you used.</li>
