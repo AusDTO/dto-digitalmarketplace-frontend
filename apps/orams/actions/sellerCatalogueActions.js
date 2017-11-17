@@ -11,7 +11,7 @@ import {
   SET_CATEGORY_ACCORDION_OPEN,
   SET_TABLE_FOCUS,
   SET_SUPPLIER_DATA,
-  SET_SUPPLIER_CODE
+  SET_PROFILE_DATA
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -59,12 +59,13 @@ export function setSupplierProfileData(supplierData) {
   return { type: SET_SUPPLIER_DATA, supplierData }
 }
 
-export function setSupplierCodeData(supplierCode) {
-  return { type: SET_SUPPLIER_CODE, supplierCode }
+export function setProfileData(profileData) {
+  return { type: SET_PROFILE_DATA, profileData }
 }
 
 export const loadRegions = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setErrorMessage(null))
   dmapi({ url: '/regions' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
@@ -77,6 +78,7 @@ export const loadRegions = () => dispatch => {
 
 export const loadServices = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setErrorMessage(null))
   dmapi({ url: '/services' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
@@ -109,18 +111,37 @@ export function loadSuppliers() {
   }
 }
 
-export function loadSupplierProfile() {
+export function loadSupplierProfile(id) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch(sendingRequest(true))
     dmapi({
       method: 'get',
-      url: `/supplier/${state.sellersCatalogue.supplierCode}`
+      url: `/supplier/${id}`
     }).then(response => {
       if (response.error) {
         dispatch(setErrorMessage(GENERAL_ERROR))
       } else {
         dispatch(setSupplierProfileData(response.data))
+        window.scrollTo(0, 0)
+      }
+      dispatch(sendingRequest(false))
+    })
+  }
+}
+
+export function loadProfile() {
+  return (dispatch, getState) => {
+    const state = getState()
+    dispatch(sendingRequest(true))
+    dmapi({
+      method: 'get',
+      url: `/supplier`
+    }).then(response => {
+      if (response.error) {
+        dispatch(setErrorMessage(GENERAL_ERROR))
+      } else {
+        dispatch(setProfileData(response.data))
         window.scrollTo(0, 0)
       }
       dispatch(sendingRequest(false))

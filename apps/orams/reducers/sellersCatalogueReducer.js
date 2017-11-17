@@ -8,7 +8,7 @@ import {
   SET_CATEGORY_ACCORDION_OPEN,
   SET_TABLE_FOCUS,
   SET_SUPPLIER_DATA,
-  SET_SUPPLIER_CODE
+  SET_PROFILE_DATA
 } from 'orams/constants/constants'
 
 const defaultSellersCatalogueState = {
@@ -78,10 +78,10 @@ const sellersCatalogueReducer = (state = defaultSellersCatalogueState, action) =
         supplierData: action.supplierData
       }
 
-    case SET_SUPPLIER_CODE:
+    case SET_PROFILE_DATA:
       return {
         ...state,
-        supplierCode: action.supplierCode
+        profileData: action.profileData
       }
 
     default:

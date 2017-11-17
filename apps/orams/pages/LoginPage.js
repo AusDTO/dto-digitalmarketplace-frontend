@@ -32,14 +32,14 @@ export class LoginPageComponent extends BaseForm {
   }
 
   render() {
-    const { model, loggedIn, handleSubmit, currentlySending } = this.props
-    const { from } = this.props.location.state || { from: { pathname: rootPath } }
+    const { model, loggedIn, handleSubmit, currentlySending, userType } = this.props
+    const initialPage = userType === 'buyer' ? '/orams/seller-catalogue' : '/orams/profile'
 
     return (
       <main>
         <div id="login-page">
           {loggedIn
-            ? <Redirect to={from.pathname} />
+            ? <Redirect to={initialPage} />
             : <LoginForm
                 submitClicked={this.onSubmitClicked}
                 handleSubmit={handleSubmit}
@@ -57,7 +57,8 @@ export class LoginPageComponent extends BaseForm {
 const mapStateToProps = state => ({
   ...formProps(state, 'loginForm'),
   loggedIn: state.app.loggedIn,
-  currentlySending: state.app.currentlySending
+  currentlySending: state.app.currentlySending,
+  userType: state.app.userType
 })
 
 const mapDispatchToProps = dispatch => ({
