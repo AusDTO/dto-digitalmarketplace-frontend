@@ -17,7 +17,8 @@ import {
   setPrice,
   setUserPrice,
   setButtonClick,
-  updatePrice
+  updatePrice,
+  hideNav
 } from 'orams/actions/editPriceActions'
 
 import styles from './PricingDetailsForm.scss'
@@ -117,7 +118,8 @@ const mapDispatchToProps = dispatch => {
     editPrice: priceToEditData => dispatch(setPrice(priceToEditData)),
     setUserPriceData: (price, capPrice) => dispatch(setUserPrice(price, capPrice)),
     setButtonClickValue: value => dispatch(setButtonClick(value)),
-    submitUpdatePrice: data => dispatch(updatePrice(data))
+    submitUpdatePrice: data => dispatch(updatePrice(data)),
+    hideNav: (bool) => dispatch(hideNav(bool))
   }
 }
 

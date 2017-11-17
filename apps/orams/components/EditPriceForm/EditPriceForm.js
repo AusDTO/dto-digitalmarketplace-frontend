@@ -177,11 +177,11 @@ class EditPriceForm extends Component {
                   onClick={() => {
                     buttonClick('saveAnother')
                   }}
-                  className="uikit-btn uikit-btn--tertiary right-button-margin"
+                  className={`${styles.yellowButton} uikit-btn right-button-margin`}
                 >
                   Save and edit another
                 </button>
-                <button type="submit" onClick={() => buttonClick('continueToFinalStep')} className="uikit-btn">
+                <button type="submit" onClick={() => buttonClick('continueToFinalStep')} className={`${styles.yellowButton} uikit-btn`}>
                   Continue to contract variation
                 </button>
               </div>

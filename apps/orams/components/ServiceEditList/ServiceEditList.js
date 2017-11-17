@@ -6,7 +6,7 @@ import styles from './ServiceEditList.scss'
 import PageAlert from '@gov.au/page-alerts'
 
 const ServiceEditList = props => {
-  const { editServiceData, linkClick, successMessage } = props
+  const { editServiceData, linkClick, successMessage, hideNav } = props
   const { services } = editServiceData
 
   return (
@@ -30,6 +30,7 @@ const ServiceEditList = props => {
                 <div
                   key={subId}
                   onClick={() => {
+                    hideNav(true)
                     linkClick(service.id, subCategory.id, service.name, subCategory.name ? subCategory.name : '')
                     window.scrollTo(0, 0)
                   }}

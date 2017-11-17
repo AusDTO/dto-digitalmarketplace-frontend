@@ -21,7 +21,8 @@ class ContractVariation extends Component {
       contractVariationForm,
       pricesArray,
       submitUpdatePrice,
-      supplier
+      supplier,
+      hideNav
     } = this.props
 
     return (
@@ -98,7 +99,10 @@ class ContractVariation extends Component {
               </div>
             )}
           <br />
-          <Form model={model} id="submitprice" onSubmit={data => submitUpdatePrice(data)}>
+          <Form model={model} id="submitprice" onSubmit={(data) => {
+              hideNav(null)
+              submitUpdatePrice(data)
+            }}>
             <CheckboxDetailsField
               model={`${model}.agree`}
               id="agree"
@@ -117,7 +121,7 @@ class ContractVariation extends Component {
             />
             <br />
             <br />
-            <button type="submit" className="uikit-btn">
+            <button type="submit" className={`${styles.yellowButton} uikit-btn`}>
               Update profile
             </button>
           </Form>

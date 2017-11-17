@@ -7,6 +7,7 @@ import { Form } from 'react-redux-form'
 import PageAlert from '@gov.au/page-alerts'
 
 import { loadProfile } from 'orams/actions/profileActions'
+import { hideNav } from 'orams/actions/editPriceActions'
 
 import { required, limitNumbers, validLinks, validABN } from 'shared/validators'
 import Layout from 'shared/Layout'
@@ -27,6 +28,7 @@ class BusinessDetailsForm extends BaseForm {
 
   componentDidMount() {
     this.props.loadProfileData(this.props.form.model)
+    this.props.hideNav(null)
   }
 
   onAdd(e) {
@@ -296,7 +298,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadProfileData: form => dispatch(loadProfile(form))
+    loadProfileData: form => dispatch(loadProfile(form)),
+    hideNav: (bool) => dispatch(hideNav(bool))
   }
 }
 

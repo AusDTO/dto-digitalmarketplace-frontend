@@ -49,3 +49,17 @@
   color: #0f979b;
   font-size: 17px;
 }
+
+.yellowButton {
+  height: auto;
+  background-color: #f5d815;
+  color: #000000;
+  text-decoration: none;
+  padding-top: 16px;
+  padding-bottom: 14px;
+  font-weight: normal;
+}
+
+.yellowButton:hover {
+  background-color: #5bcbe3;
+}
