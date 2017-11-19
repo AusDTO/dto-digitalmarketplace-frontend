@@ -34,7 +34,7 @@ const PrivateInfo = (props) => {
         recruiter_info = {}
     } = props;
     return (
-        <article className="private-info" style={{border: 'red 5px solid'}}>
+        <article styleName="privateInfo">
             <h3> PRIVATE INFORMATION FOR DIGITAL MARKETPLACE ASSESSMENT PURPOSES ONLY </h3>
             <Row title="Case Study Referees" show={true}>
                 {case_studies && Object.keys(case_studies).map((study, i) => {

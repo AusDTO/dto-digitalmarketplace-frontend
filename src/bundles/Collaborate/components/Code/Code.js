@@ -55,7 +55,7 @@ class Code extends React.Component {
 
                             <ul styleName="tiles">
                                 {data.map((item, i) =>
-                                    <li key={i} style={{backgroundImage: 'url(' + item.icon + ')'}}
+                                    <li key={i}
                                         role="link"
                                         onClick={(e) => this.handleClick(event, item.url)}
                                         onKeyDown={(e) => {
@@ -75,7 +75,7 @@ class Code extends React.Component {
                                                 <a rel="external" target="_blank" href={item.demo_url}
                                                    onClick={(e) => e.stopPropagation()}>View
                                                     demo</a></p>
-
+<img src={item.icon}/>
                                         </article>
                                     </li>
                                 )}

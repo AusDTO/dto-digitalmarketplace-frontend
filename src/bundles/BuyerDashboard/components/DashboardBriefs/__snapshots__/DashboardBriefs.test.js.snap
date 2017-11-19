@@ -68,13 +68,7 @@ exports[`ClosedBriefs renders with props 1`] = `
           <h5>
             Work order
           </h5>
-          <span
-            style={
-              Object {
-                "marginRight": "5px",
-              }
-            }
-          >
+          <span>
             <a
               href="/buyers/frameworks/digital-service-professionals/requirements/digital-outcome/119/responses"
             >
