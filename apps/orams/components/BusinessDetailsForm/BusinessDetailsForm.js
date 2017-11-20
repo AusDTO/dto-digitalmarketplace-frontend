@@ -115,13 +115,9 @@ class BusinessDetailsForm extends BaseForm {
               model={`${model}.summary`}
               name="summary"
               id="summary"
-              controlProps={{ limit: 50 }}
+              controlProps
               label="Summary"
               description="3-4 sentences that describe your business. This can be seen by all government buyers."
-              messages={{
-                required: 'You must provide a seller summary'
-              }}
-              validators={{ required }}
             />
 
             <Textfield

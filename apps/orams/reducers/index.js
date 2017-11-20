@@ -6,6 +6,7 @@ import appReducer from './appReducer'
 import userReducer from './userReducer'
 import sellersCatalogueReducer from './sellersCatalogueReducer'
 import editPricingReducer from './editPricingReducer'
+import priceHistoryReducer from './priceHistoryReducer'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 
@@ -14,6 +15,7 @@ export default combineReducers({
   user: userReducer,
   sellersCatalogue: sellersCatalogueReducer,
   editPricing: editPricingReducer,
+  priceHistory: priceHistoryReducer,
   form_options,
   errorMessage,
   options: (state = {}) => state,
