@@ -122,7 +122,7 @@ export const minObjectLength = (object = {}, minLength = -1) => {
   return !keys.filter(key => isEmpty(object[key])).length
 }
 
-export const limitWords = limit => (val = '') => val && val.match(/\S+/g || []).length <= limit
+export const limitWords = limit => (val = '') => val === undefined || ((val && val.match(/\S+/g)) || []).length <= limit
 
 export const limitNumbers = limit => (val = '') => {
   const length = (val.match(/[0-9]/g) || []).length
