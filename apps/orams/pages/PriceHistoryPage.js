@@ -4,9 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PriceHistory from 'orams/components/PriceHistory/PriceHistory'
-import {
-  loadBuyerSuppliers
-} from 'orams/actions/priceHistoryActions'
 
 class PriceHistoryPage extends Component {
   constructor(props) {
@@ -14,23 +11,12 @@ class PriceHistoryPage extends Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    this.props.loadBuyerSuppliers()
-  }
-
   render() {
     const { match } = this.props
 
     return (
       <Switch>
-        <Route
-          exact
-          path={match.url}
-          render={() =>
-            <PriceHistory
-              {...this.props}
-            />}
-        />
+        <Route exact path={match.url} render={() => <PriceHistory {...this.props} />} />
       </Switch>
     )
   }
@@ -41,15 +27,11 @@ PriceHistoryPage.propTypes = {
 }
 
 const mapStateToProps = state => {
-  return {
-    buyerSuppliers: state.priceHistory.buyerSuppliers
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    loadBuyerSuppliers: () => dispatch(loadBuyerSuppliers())
-  }
+  return {}
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PriceHistoryPage))

@@ -119,7 +119,7 @@ const mapDispatchToProps = dispatch => {
     setUserPriceData: (price, capPrice) => dispatch(setUserPrice(price, capPrice)),
     setButtonClickValue: value => dispatch(setButtonClick(value)),
     submitUpdatePrice: data => dispatch(updatePrice(data)),
-    hideNav: (bool) => dispatch(hideNav(bool))
+    hideNav: bool => dispatch(hideNav(bool))
   }
 }
 

@@ -295,7 +295,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     loadProfileData: form => dispatch(loadProfile(form)),
-    hideNav: (bool) => dispatch(hideNav(bool))
+    hideNav: bool => dispatch(hideNav(bool))
   }
 }
 

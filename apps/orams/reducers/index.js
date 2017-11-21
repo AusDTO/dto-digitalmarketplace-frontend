@@ -30,6 +30,7 @@ export default combineReducers({
     submitStepForm: {},
     loginForm: {},
     editPriceForm: {},
-    contractVariationForm: {}
+    contractVariationForm: {},
+    providerHistoryForm: {}
   })
 })

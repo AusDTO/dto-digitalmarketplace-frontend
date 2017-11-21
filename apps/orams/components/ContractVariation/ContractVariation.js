@@ -99,10 +99,14 @@ class ContractVariation extends Component {
               </div>
             )}
           <br />
-          <Form model={model} id="submitprice" onSubmit={(data) => {
+          <Form
+            model={model}
+            id="submitprice"
+            onSubmit={data => {
               hideNav(null)
               submitUpdatePrice(data)
-            }}>
+            }}
+          >
             <CheckboxDetailsField
               model={`${model}.agree`}
               id="agree"

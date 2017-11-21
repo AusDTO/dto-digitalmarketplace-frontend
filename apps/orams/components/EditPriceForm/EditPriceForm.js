@@ -181,7 +181,11 @@ class EditPriceForm extends Component {
                 >
                   Save and edit another
                 </button>
-                <button type="submit" onClick={() => buttonClick('continueToFinalStep')} className={`${styles.yellowButton} uikit-btn`}>
+                <button
+                  type="submit"
+                  onClick={() => buttonClick('continueToFinalStep')}
+                  className={`${styles.yellowButton} uikit-btn`}
+                >
                   Continue to contract variation
                 </button>
               </div>

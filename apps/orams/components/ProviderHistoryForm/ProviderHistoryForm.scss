@@ -2,36 +2,45 @@
   margin-bottom: 100px;
 }
 
+.link {
+  font-size: 17px;
+  font-weight: bold;
+  color: #202751;
+  margin-top: 17px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .stepTitle {
   font-size: 20px;
   color: #777777;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #313131;
+  margin-top: 39px;
 }
 
 .backLink {
   font-size: 17px;
   font-weight: bold;
   margin-top: 15px;
-  margin-bottom: 49px;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.button {
-  font-size: 20px;
-  line-height: 0.8;
-  background-color: #f5d815;
-  color: #000000;
-  padding: 12px 17px;
-  width: 100%;
-  text-align: center;
-  margin-right: 21px;
-  border: none;
+.subTitle {
+  margin-top: 48px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #313131;
+  margin-bottom: 13px;
 }
 
-@media screen and (min-width: 768px) {
-  .button {
-      width: 44%;
-  }
+.radioSection {
+  margin-bottom: 18px;
 }
 
 .yellowButton {
