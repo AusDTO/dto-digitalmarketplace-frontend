@@ -1,0 +1,48 @@
+.question-heading {
+  font-weight: bold;
+}
+
+.custom-input {
+  font-weight: normal;
+  display: inline-block;
+  cursor: pointer;
+  border-bottom: solid 1px #5bcbe3;
+}
+
+.custom-input:hover{
+  background-color: #5bcbe3;
+}
+
+.filler {
+  padding-top: 1.2em;
+  height: 0px;
+  margin-bottom: 0px;
+}
+
+.hidden-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+
+.upload-container{
+    margin: 1.6em 0;
+    padding: 0 1.2em 0 1.6em;
+    box-shadow: none;
+    background-color: #e8f5fa;
+}
+
+.sumbit-container{
+  margin-top: 0px;
+}

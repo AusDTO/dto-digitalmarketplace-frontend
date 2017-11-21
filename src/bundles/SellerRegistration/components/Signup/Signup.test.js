@@ -230,6 +230,7 @@ test.skip('without filterSteps', () => {
   const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const DomainList = require('../../../CaseStudy/components/DomainList').default;
   const DocumentsForm = require('../../../SellerRegistration/components/DocumentsForm').default;
+  const ResumesForm = require('../../../SellerRegistration/components/ResumesForm').default;
   const AwardsForm = require('../../../SellerRegistration/components/AwardsForm').default;
   const ToolsForm = require('../../../SellerRegistration/components/ToolsForm').default;
   const DisclosuresForm = require('../../../SellerRegistration/components/DisclosuresForm').default;
@@ -251,6 +252,7 @@ test.skip('without filterSteps', () => {
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
       { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+      { id: 'resumes', label: 'Resumes', component: ResumesForm, pattern: '/resumes', formKey: 'resumesForm' },
       { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
       { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
       { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },

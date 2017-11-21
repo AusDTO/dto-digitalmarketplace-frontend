@@ -28,6 +28,7 @@ import AwardsForm           from '../AwardsForm';
 import ToolsForm            from '../ToolsForm';
 import DocumentsForm        from '../DocumentsForm';
 import DomainList           from '../../../CaseStudy/components/DomainList';
+import ResumesForm          from '../ResumesForm';
 import Review               from '../Review';
 import SubmitStepForm       from '../Submit';
 import Finish               from '../Finish';
@@ -72,6 +73,7 @@ class Signup extends React.Component {
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'resumes', label: 'Specialist details', component: ResumesForm, pattern: '/resumes', formKey: 'resumesForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },

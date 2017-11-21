@@ -136,6 +136,17 @@ exports[`Signup renders 1`] = `
         <li>
           <a
             className=""
+            href="/resumes"
+            onClick={[Function]}
+          >
+            <span>
+              Specialist details
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
             href="/case-study"
             onClick={[Function]}
           >
@@ -421,6 +432,17 @@ exports[`Signup renders empty Your Info form 1`] = `
           >
             <span>
               Services
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/resumes"
+            onClick={[Function]}
+          >
+            <span>
+              Specialist details
             </span>
           </a>
         </li>
@@ -878,6 +900,17 @@ exports[`Signup renders populated Your Info form 1`] = `
           >
             <span>
               Services
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            className=""
+            href="/resumes"
+            onClick={[Function]}
+          >
+            <span>
+              Specialist details
             </span>
           </a>
         </li>
