@@ -69,6 +69,9 @@ export default combineReducers({
     documentsForm: {
       documents: {}
     },
+    resumesForm: {
+      resumes: {}
+    },
     toolsForm: {
       tools: '',
       methodologies: '',

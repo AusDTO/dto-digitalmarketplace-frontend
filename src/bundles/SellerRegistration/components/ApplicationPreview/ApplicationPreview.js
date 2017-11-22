@@ -84,6 +84,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
     government_experience,
     other_panels,
     disclosures,
+    resumes,
     documents,
     documents_url = '../documents/',
     case_study_url,
@@ -176,6 +177,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
     },
     privateInfo: (disclosures ? {
         documents,
+      resumes,
         documentsUrl: documents_url,
         case_studies,
         number_of_employees,

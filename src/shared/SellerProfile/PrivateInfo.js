@@ -24,7 +24,8 @@ const govExperienceTitle = {
 
 const PrivateInfo = (props) => {
     const {
-        documents = {},
+      documents = {},
+      resumes = {},
         documentsUrl,
         case_studies = {},
         number_of_employees,
@@ -101,6 +102,34 @@ const PrivateInfo = (props) => {
                     </tbody>
                 </table>
             </Row>
+          <Row title="Specialist details" show={!isEmpty(resumes)}>
+            <table className="content-table" styleName="content-table">
+              <thead>
+              <tr>
+                <th>Resume/Domain </th>
+                <th>Daily rate</th>
+              </tr>
+              </thead>
+              <tbody>
+              {Object.keys(resumes).map((key, val) => {
+                const {filename, rate, application_id} = resumes[key];
+                const url = application_id ? `/admin/application/${application_id}/documents/` : documentsUrl
+                return (
+                  <tr key={val}>
+                    <td>
+                      <a href={`${url}${filename}`}>
+                        {key}
+                      </a>
+                    </td>
+                    <td>
+                      ${rate}
+                    </td>
+                  </tr>
+                )
+              })}
+              </tbody>
+            </table>
+          </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
               {Object.keys(recruiter_info).map((key, i) => {
                 return (

@@ -141,6 +141,15 @@ export const limitNumbers = (limit) => (val = '') => {
     return length === limit && length === val.length;
 }
 
+export const validCurrency = (val) => {
+  if (!val) {
+    return true;
+  }
+
+  const length = (val.match(/[0-9.,$ ]/g) || []).length
+  return length === val.length;
+}
+
 export const validPercentage = (val) => {
     if (!val) {
         return true;
@@ -170,6 +179,7 @@ export default {
   validEmail,
   validPhoneNumber,
   validPercentage,
+  validCurrency,
   dependantRequired,
   minObjectLength,
   limitWords,
