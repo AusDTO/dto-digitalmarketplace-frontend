@@ -26,11 +26,11 @@ class PricingDetailsForm extends BaseForm {
   static propTypes = {}
 
   componentDidMount() {
-    this.props.loadServiceEdit()
+    this.props.loadServiceEdit(this.props.supplierCode)
   }
 
-  loadStepTwo = (serviceTypeId, categoryId, serviceName, subCategoryName) => {
-    this.props.loadPrices(serviceTypeId, categoryId, serviceName, subCategoryName)
+  loadStepTwo = (supplierCode, serviceTypeId, categoryId, serviceName, subCategoryName) => {
+    this.props.loadPrices(supplierCode, serviceTypeId, categoryId, serviceName, subCategoryName)
   }
 
   buttonClick = value => {
@@ -104,15 +104,16 @@ const mapStateToProps = state => {
     pricesArray: state.editPricing.pricesArray,
     capPrice: state.editPricing.capPrice,
     supplier: state.editPricing.supplier,
-    successMessage: state.editPricing.successMessage
+    successMessage: state.editPricing.successMessage,
+    supplierCode: state.app.supplierCode
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadServiceEdit: () => dispatch(loadServiceEditData()),
-    loadPrices: (serviceTypeId, categoryId, serviceName, subCategoryName) =>
-      dispatch(loadPricesData(serviceTypeId, categoryId, serviceName, subCategoryName)),
+    loadServiceEdit: (supplierCode) => dispatch(loadServiceEditData(supplierCode)),
+    loadPrices: (supplierCode, serviceTypeId, categoryId, serviceName, subCategoryName) =>
+      dispatch(loadPricesData(supplierCode, serviceTypeId, categoryId, serviceName, subCategoryName)),
     goToStep: step => dispatch(setStep(step)),
     editPrice: priceToEditData => dispatch(setPrice(priceToEditData)),
     setUserPriceData: (price, capPrice) => dispatch(setUserPrice(price, capPrice)),

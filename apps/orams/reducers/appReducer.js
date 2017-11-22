@@ -49,7 +49,8 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: action.newState.isAuthenticated,
-        userType: action.newState.userType
+        userType: action.newState.userType,
+        supplierCode: action.newState.supplierCode
       }
 
     case PROFILE_UPDATED:

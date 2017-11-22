@@ -12,23 +12,23 @@ export const setErrorMessage = errorMessage => ({
 
 export const handleProfileUpdated = () => ({ type: PROFILE_UPDATED })
 
-export const loadProfile = form => dispatch => {
+export const loadProfile = (supplierCode, form) => dispatch => {
   dispatch(sendingRequest(true))
-  dmapi({ url: '/supplier' }).then(response => {
+  dmapi({ url: `/suppliers/${supplierCode}` }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      dispatch(actions.load(form, response.data.user))
+      dispatch(actions.load(form, response.data))
     }
     dispatch(sendingRequest(false))
   })
 }
 
-export const updateProfile = values => dispatch => {
+export const updateProfile = (supplierCode, values) => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
-    url: '/supplier',
+    url: `/suppliers/${supplierCode}`,
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {
