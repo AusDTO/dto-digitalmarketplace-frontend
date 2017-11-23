@@ -40,7 +40,7 @@ class ProviderHistoryForm extends Component {
   }
   render() {
     const { serviceData, model, action, form, buttonClick, submitProviderHistoryForm } = this.props
-    console.log('serviceData', serviceData)
+
     return (
       <main>
         <div className={styles.container}>

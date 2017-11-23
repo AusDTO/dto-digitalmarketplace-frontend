@@ -53,6 +53,7 @@ export const loadBuyerSuppliers = () => dispatch => {
 export const loadStepTwo = supplierCode => dispatch => {
   dispatch(sendingRequest(true))
   dispatch(setSupplierCode(supplierCode))
+  dispatch(setPriceHistoryData(''))
   dmapi({ url: `/suppliers/${supplierCode}` }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))

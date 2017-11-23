@@ -24,28 +24,27 @@ const PricingList = props => {
             </div>
           </div>
           {prices.map((price, id = uniqueID()) =>
-              <div key={id} className={styles.priceRow}>
-                <div className="row">
-                  <div className="col-md-4 col-sm-4">
-                    {price.region.state + ' ' + price.region.name}
-                  </div>
-                  <div className="col-md-2 col-sm-2">
-                    <span className={styles.price}>
-                      {'$' + price.capPrice}
-                    </span>
-                  </div>
-                  <div className="col-md-2 col-sm-2">Hourly</div>
-                  <div className="col-md-2 col-sm-2">
-                    {price.startDate}
-                  </div>
-                  <div className="col-md-2 col-sm-2">
-                    {price.endDate}
-                  </div>
+            <div key={id} className={styles.priceRow}>
+              <div className="row">
+                <div className="col-md-4 col-sm-4">
+                  {price.region.state + ' ' + price.region.name}
+                </div>
+                <div className="col-md-2 col-sm-2">
+                  <span className={styles.price}>
+                    {'$' + price.capPrice}
+                  </span>
+                </div>
+                <div className="col-md-2 col-sm-2">Hourly</div>
+                <div className="col-md-2 col-sm-2">
+                  {price.startDate}
+                </div>
+                <div className="col-md-2 col-sm-2">
+                  {price.endDate}
                 </div>
               </div>
-            )}
-        </article>
-      }
+            </div>
+          )}
+        </article>}
     </div>
   )
 }
