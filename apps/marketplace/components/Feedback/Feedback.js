@@ -14,7 +14,8 @@ export class Feedback extends React.Component {
       this.props.handleSubmit({
         difficulty: val.target.value,
         difficultyQuestion: this.props.difficultyQuestion,
-        objectAction: this.props.objectAction
+        objectAction: this.props.objectAction,
+        allowFurtherFeedback: true
       })
     }
   }
