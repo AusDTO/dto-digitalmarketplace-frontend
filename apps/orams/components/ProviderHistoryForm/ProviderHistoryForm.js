@@ -39,9 +39,8 @@ class ProviderHistoryForm extends Component {
     return <PricingResultsTable {...this.props} />
   }
   render() {
-    const { serviceData, model, action, form, buttonClick } = this.props
+    const { serviceData, model, action, form, buttonClick, submitProviderHistoryForm } = this.props
     console.log('serviceData', serviceData)
-
     return (
       <main>
         <div className={styles.container}>
@@ -51,7 +50,7 @@ class ProviderHistoryForm extends Component {
             </h1>
             <div className={styles.stepTitle}>Step 2 of 2</div>
             <div className={styles.heading}>
-              Check pricing for {serviceData.supplier.name}
+              Check pricing for {serviceData.name}
             </div>
             <div
               tabIndex="0"
@@ -71,50 +70,54 @@ class ProviderHistoryForm extends Component {
                   action={action}
                   id="BusinessDetails__create"
                   validateOn="submit"
-                  onSubmit={data => handlePriceSubmit(data, priceData.capPrice)}
+                  onSubmit={data => submitProviderHistoryForm(data)}
                 >
                   <div className={styles.subTitle}>1. Select the service</div>
                   {serviceData.services.map((service, id = uniqueID()) =>
                     <div key={id}>
-                      <RadioList
-                        model={`${model}.service`}
-                        name="service"
-                        id="service"
-                        label=""
-                        options={[
-                          {
-                            value: `${service.id}`,
-                            label: `${service.name}`
-                          }
-                        ]}
-                        validators={{
-                          required
-                        }}
-                        messages={{
-                          required: 'You must select a service type.'
-                        }}
-                      />
+                      {service.subCategories.map((subCategory, subId = uniqueID()) =>
+                        <div key={subId}>
+                          <RadioList
+                            model={`${model}.service`}
+                            name="service"
+                            id="service"
+                            label=""
+                            options={[
+                              {
+                                value: `${service.id + '-' + subCategory.id}`,
+                                label: `${service.name} ${subCategory.name ? '- ' + subCategory.name : ''}`
+                              }
+                            ]}
+                            validators={{
+                              required
+                            }}
+                            messages={{
+                              required: 'You must select a service type.'
+                            }}
+                          />
+                        </div>
+                      )}
                     </div>
                   )}
                   <div>
                     <div className={styles.subTitle}>2. Enter the date of service</div>
                     <StatefulError
-                      model={`${model}.start_date`}
-                      id="start_date_error"
+                      model={`${model}.date`}
+                      id="date_error"
                       messages={{
-                        validDate: 'Start date is required and must be in the future.'
+                        validDate: 'Date is required and must be in the future.'
                       }}
                     />
                     <Control
-                      model={`${model}.start_date`}
+                      model={`${model}.date`}
                       component={Datefield}
-                      name="start_date"
-                      id="start_date"
+                      name="date"
+                      id="date"
                       label=""
                       controlProps={{
-                        id: 'start_date',
-                        model: `${model}.start_date`,
-                        htmlFor: 'start_date',
+                        id: 'date',
+                        model: `${model}.date`,
+                        htmlFor: 'date',
                         label: ''
                       }}
                       validators={{
@@ -125,11 +128,7 @@ class ProviderHistoryForm extends Component {
                   </div>
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-11">
-                      <button
-                        type="submit"
-                        onClick={() => buttonClick('continueToFinalStep')}
-                        className={`${styles.yellowButton} uikit-btn`}
-                      >
+                      <button type="submit" className={`${styles.yellowButton} uikit-btn`}>
                         Filter date
                       </button>
                     </div>

@@ -11,7 +11,7 @@ import ProviderHistoryForm from 'orams/components/ProviderHistoryForm/ProviderHi
 
 import styles from './PriceHistory.scss'
 
-import { loadBuyerSuppliers, loadStepTwo, setStep } from 'orams/actions/priceHistoryActions'
+import { loadBuyerSuppliers, loadStepTwo, setStep, loadPriceData } from 'orams/actions/priceHistoryActions'
 
 class PriceHistory extends Component {
   static propTypes = {}
@@ -22,6 +22,10 @@ class PriceHistory extends Component {
 
   loadStepTwo = supplierCode => {
     this.props.loadServices(supplierCode)
+  }
+
+  submitProviderHistoryForm = data => {
+    this.props.loadPriceData(data)
   }
 
   mainSection() {
@@ -41,7 +45,7 @@ class PriceHistory extends Component {
       case 1:
         return <ProviderList {...this.props} />
       case 2:
-        return <ProviderHistoryForm {...this.props} />
+        return <ProviderHistoryForm submitProviderHistoryForm={this.submitProviderHistoryForm} {...this.props} />
 
       default:
         return ''
@@ -61,7 +65,8 @@ const mapStateToProps = state => {
   return {
     buyerSuppliers: state.priceHistory.buyerSuppliers,
     step: state.priceHistory.step,
-    serviceData: state.priceHistory.serviceData
+    serviceData: state.priceHistory.serviceData,
+    priceHistoryData: state.priceHistory.priceHistoryData
   }
 }
 
@@ -69,7 +74,8 @@ const mapDispatchToProps = dispatch => {
   return {
     loadBuyerSuppliers: () => dispatch(loadBuyerSuppliers()),
     loadStepTwo: supplierCode => dispatch(loadStepTwo(supplierCode)),
-    goToStep: step => dispatch(setStep(step))
+    goToStep: step => dispatch(setStep(step)),
+    loadPriceData: data => dispatch(loadPriceData(data))
   }
 }
 

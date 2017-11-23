@@ -10,13 +10,21 @@
  *   });
  */
 
-import { BUYER_SUPPLIERS, SET_STEP, SET_SERVICE_DATA } from 'orams/constants/constants'
+import {
+  BUYER_SUPPLIERS,
+  SET_STEP,
+  SET_SERVICE_DATA,
+  SET_SUPPLIER_CODE,
+  SET_PRICE_HISTORY_DATA
+} from 'orams/constants/constants'
 
 // The initial application state
 const initialState = {
   buyerSuppliers: '',
   step: 1,
-  serviceData: ''
+  serviceData: '',
+  supplierCode: '',
+  priceHistoryData: ''
 }
 
 const priceHistoryReducer = (state = initialState, action) => {
@@ -37,6 +45,18 @@ const priceHistoryReducer = (state = initialState, action) => {
       return {
         ...state,
         serviceData: action.serviceData
+      }
+
+    case SET_SUPPLIER_CODE:
+      return {
+        ...state,
+        supplierCode: action.supplierCode
+      }
+
+    case SET_PRICE_HISTORY_DATA:
+      return {
+        ...state,
+        priceHistoryData: action.priceHistoryData
       }
 
     default:

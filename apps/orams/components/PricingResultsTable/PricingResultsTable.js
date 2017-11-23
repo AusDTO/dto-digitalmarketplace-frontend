@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux'
 import styles from './PricingResultsTable.scss'
 
 const PricingList = props => {
-  const { pricesData } = props
+  const { priceHistoryData } = props
+  const { prices } = priceHistoryData
 
   return (
     <div className={styles.container}>
@@ -21,7 +22,7 @@ const PricingList = props => {
             <div className="col-md-2 col-sm-2">End date</div>
           </div>
         </div>
-        {/*{prices &&
+        {prices &&
           prices.map((price, id = uniqueID()) =>
             <div key={id} className={styles.priceRow}>
               <div className="row">
@@ -33,9 +34,7 @@ const PricingList = props => {
                     {'$' + price.capPrice}
                   </span>
                 </div>
-                <div className="col-md-2 col-sm-2">
-                    {'$' + price.price}
-                </div>
+                <div className="col-md-2 col-sm-2">Hourly</div>
                 <div className="col-md-2 col-sm-2">
                   {price.startDate}
                 </div>
@@ -44,19 +43,7 @@ const PricingList = props => {
                 </div>
               </div>
             </div>
-          )}*/}
-
-        <div className={styles.priceRow}>
-          <div className="row">
-            <div className="col-md-4 col-sm-4">ACT</div>
-            <div className="col-md-2 col-sm-2">
-              <span className={styles.price}>$192.50</span>
-            </div>
-            <div className="col-md-2 col-sm-2">Hourly</div>
-            <div className="col-md-2 col-sm-2">01/07/2017</div>
-            <div className="col-md-2 col-sm-2">31/08/2017</div>
-          </div>
-        </div>
+          )}
       </article>
     </div>
   )
