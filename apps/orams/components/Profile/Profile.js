@@ -13,7 +13,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    this.props.loadProfileData()
+    this.props.loadProfileData(this.props.supplierCode)
   }
 
   render() {
@@ -28,18 +28,18 @@ class Profile extends Component {
                   <div className="row">
                     <div className="col-xs-12 col-sm-9">
                       <div className="uikit-display-5">
-                        {profileData.user.name}
+                        {profileData.name}
                       </div>
                       <p>
-                        {profileData.user.summary}
+                        {profileData.summary}
                       </p>
                       <div className="row">
                         <div className="col-xs-12 col-sm-3">
                           <div className={styles.website}>Website</div>
                         </div>
                         <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                          <a className={styles.website} href={profileData.user.website} target="_blank" rel="external">
-                            {profileData.user.website}
+                          <a className={styles.website} href={profileData.website} target="_blank" rel="external">
+                            {profileData.website}
                           </a>
                         </div>
                       </div>
@@ -49,15 +49,15 @@ class Profile extends Component {
                         </div>
                         <div className="col-xs-12 col-sm-8 col-sm-push-1">
                           <div>
-                            {profileData.user.contact_name}
+                            {profileData.contact_name}
                           </div>
                           <div>
-                            {profileData.user.contact_phone}
+                            {profileData.contact_phone}
                           </div>
                           <div>
-                            <a href={'mailto:' + profileData.user.contact_email}>
+                            <a href={'mailto:' + profileData.contact_email}>
                               <strong>
-                                {profileData.user.contact_email}
+                                {profileData.contact_email}
                               </strong>
                             </a>
                           </div>
@@ -85,7 +85,7 @@ class Profile extends Component {
                         </div>
                         <div className="col-sm-8 col-sm-push-1 col-xs-12">
                           <div className={styles.badge}>
-                            {profileData.user.category_name}
+                            {profileData.category_name}
                           </div>
                           <div>
                             <strong>Transacts on</strong>
@@ -99,7 +99,7 @@ class Profile extends Component {
                           <div className={styles.title}>Operates in</div>
                         </div>
                         <div className="col-sm-8 col-sm-push-1 col-xs-12">
-                          {profileData.user.regions.map((region, id = uniqueID()) =>
+                          {profileData.regions.map((region, id = uniqueID()) =>
                             <div key={id}>
                               <div>
                                 {region.state + ' ' + region.name}
@@ -119,15 +119,15 @@ class Profile extends Component {
                               <strong>Authorised representative</strong>
                             </div>
                             <div>
-                              {profileData.user.representative}
+                              {profileData.representative}
                             </div>
                             <div>
-                              {profileData.user.phone}
+                              {profileData.phone}
                             </div>
                             <div>
                               <strong>
-                                <a href={'mailto:' + profileData.user.email}>
-                                  {profileData.user.email}
+                                <a href={'mailto:' + profileData.email}>
+                                  {profileData.email}
                                 </a>
                               </strong>
                             </div>
@@ -137,14 +137,14 @@ class Profile extends Component {
                               <strong>Headquarter address</strong>
                             </div>
                             <div>
-                              {profileData.user.address_address_line}
+                              {profileData.address_address_line}
                             </div>
                             <div>
-                              {profileData.user.address_suburb +
+                              {profileData.address_suburb +
                                 ' ' +
-                                profileData.user.address_state +
+                                profileData.address_state +
                                 ' ' +
-                                profileData.user.address_postal_code}
+                                profileData.address_postal_code}
                             </div>
                           </div>
                           <div className={styles.infoBlock}>
@@ -152,12 +152,12 @@ class Profile extends Component {
                               <strong>ABN</strong>
                             </div>
                             <a
-                              href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${profileData.user.abn}`}
+                              href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${profileData.abn}`}
                               target="_blank"
                               rel="external"
                             >
                               <strong>
-                                {profileData.user.abn}
+                                {profileData.abn}
                               </strong>
                             </a>
                           </div>

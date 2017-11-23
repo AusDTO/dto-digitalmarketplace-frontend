@@ -26,7 +26,7 @@ class YourInfoForm extends BaseForm {
   }
 
   componentDidMount() {
-    this.props.loadProfileData(this.props.form.model)
+    this.props.loadProfileData(this.props.supplierCode, this.props.form.model)
   }
 
   render() {
@@ -168,13 +168,14 @@ const mapStateToProps = state => {
   return {
     ...formProps(state, 'yourInfoForm'),
     profileUpdated: state.app.profileUpdated,
-    currentlySending: state.app.currentlySending
+    currentlySending: state.app.currentlySending,
+    supplierCode: state.app.supplierCode
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadProfileData: form => dispatch(loadProfile(form))
+    loadProfileData: (supplierCode, form) => dispatch(loadProfile(supplierCode, form))
   }
 }
 

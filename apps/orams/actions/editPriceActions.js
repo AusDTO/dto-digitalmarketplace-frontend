@@ -75,22 +75,22 @@ export const setPrice = priceToEditData => dispatch => {
   dispatch(setStep(3))
 }
 
-export const loadServiceEditData = () => dispatch => {
+export const loadServiceEditData = supplierCode => dispatch => {
   dispatch(sendingRequest(true))
   dispatch(setSuccessMessage(false))
-  dmapi({ url: '/supplier/services' }).then(response => {
+  dmapi({ url: '/suppliers/' + supplierCode }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      dispatch(setServiceEditData(response.data))
-      dispatch(setSupplierData(response.data.supplier))
+      dispatch(setServiceEditData({services: response.data.services}))
+      dispatch(setSupplierData(response.data))
       dispatch(setStep(1))
     }
     dispatch(sendingRequest(false))
   })
 }
 
-export const loadPricesData = (serviceTypeId, categoryId, serviceName, subCategoryName) => dispatch => {
+export const loadPricesData = (supplierCode, serviceTypeId, categoryId, serviceName, subCategoryName) => dispatch => {
   dispatch(sendingRequest(true))
 
   const serviceToEdit = {
@@ -102,7 +102,7 @@ export const loadPricesData = (serviceTypeId, categoryId, serviceName, subCatego
 
   dispatch(setServiceToEditInState(serviceToEdit))
 
-  const baseUrl = '/supplier/services/' + serviceTypeId + '/categories/' + categoryId + '/prices'
+  const baseUrl = '/prices/suppliers/' + supplierCode + '/services/' + serviceTypeId + '/categories/' + categoryId
 
   dmapi({ url: baseUrl }).then(response => {
     if (response.error) {
@@ -134,6 +134,7 @@ export function setUserPrice(price, capPrice) {
     if (state.editPricing.buttonClickValue === 'saveAnother') {
       dispatch(
         loadPricesData(
+          state.app.supplierCode,
           state.editPricing.serviceToEdit.serviceTypeId,
           state.editPricing.serviceToEdit.categoryId,
           state.editPricing.serviceToEdit.serviceName,
@@ -160,7 +161,7 @@ export function updatePrice() {
 
     dmapi({
       method: 'post',
-      url: '/supplier/prices',
+      url: '/prices',
       data: JSON.stringify(price)
     }).then(response => {
       if (response.error) {
