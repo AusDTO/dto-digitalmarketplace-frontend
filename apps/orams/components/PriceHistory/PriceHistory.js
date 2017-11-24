@@ -66,7 +66,8 @@ const mapStateToProps = state => {
     buyerSuppliers: state.priceHistory.buyerSuppliers,
     step: state.priceHistory.step,
     serviceData: state.priceHistory.serviceData,
-    priceHistoryData: state.priceHistory.priceHistoryData
+    priceHistoryData: state.priceHistory.priceHistoryData,
+    currentlySending: state.app.currentlySending
   }
 }
 
