@@ -14,6 +14,7 @@ dependencies:
   pre:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
+    - cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
     - cf -v
   override:
     - find . -name "node_modules" -exec rm -rf '{}' + # removing all node_modules/ folder cause circle can’t be trusted with it.
@@ -31,7 +32,7 @@ deployment:
     commands:
       - cf login -a https://api.system.z.cld.gov.au -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
       - cf target -o dta -s marketplace
-      - cf push -f manifest.yml
+      - cf zero-downtime-push dm-dev-frontend -f manifest.yml --show-app-log
   production:
     tag: /[0-9]+(\.[0-9]+)*/
     commands:

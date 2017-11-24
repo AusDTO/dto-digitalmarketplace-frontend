@@ -1,9 +1,15 @@
-host: dm-dev-frontend
-command: npm run server
+command:  ./scripts/cf_run_app.sh
 buildpack: nodejs_buildpack
 memory: 256M
 disk_quota: 1G
 instances: 1
+services:
+- ups-dm-dev-common
+- ups-dm-dev-frontend
+routes:
+- route: dm-dev-frontend.apps.z.cld.gov.au
+- route: dm-dev.apps.z.cld.gov.au/bundle
+- route: dm-dev.apps.z.cld.gov.au/2
+- route: dm-dev.apps.z.cld.gov.au/orams
 applications:
-- name: dm-dev-frontend-blue
-- name: dm-dev-frontend-green
+- name: dm-dev-frontend
