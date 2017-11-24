@@ -6,7 +6,7 @@ import styles from './ProviderList.scss'
 import PageAlert from '@gov.au/page-alerts'
 
 const ProviderList = props => {
-  const { successMessage, buyerSuppliers, loadStepTwo } = props
+  const { successMessage, buyerSuppliers, clickLoadStepTwo } = props
   const { categories } = buyerSuppliers
 
   return (
@@ -35,7 +35,7 @@ const ProviderList = props => {
                     <div
                       key={subId}
                       onClick={() => {
-                        loadStepTwo(supplier.code)
+                        clickLoadStepTwo(supplier.code)
                         window.scrollTo(0, 0)
                       }}
                     >

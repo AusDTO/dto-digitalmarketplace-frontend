@@ -20,7 +20,7 @@ class PriceHistory extends Component {
     this.props.loadBuyerSuppliers()
   }
 
-  loadStepTwo = supplierCode => {
+  clickLoadStepTwo = supplierCode => {
     this.props.loadServices(supplierCode)
   }
 
@@ -74,7 +74,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     loadBuyerSuppliers: () => dispatch(loadBuyerSuppliers()),
-    loadStepTwo: supplierCode => dispatch(loadStepTwo(supplierCode)),
+    clickLoadStepTwo: supplierCode => dispatch(loadStepTwo(supplierCode)),
     goToStep: step => dispatch(setStep(step)),
     loadPriceData: data => dispatch(loadPriceData(data))
   }
