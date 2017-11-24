@@ -18,11 +18,6 @@ import ErrorBox from 'shared/form/ErrorBox'
 import styles from './ProviderHistoryForm.scss'
 
 class ProviderHistoryForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   tableSection() {
     if (this.props.currentlySending) {
       return <LoadingIndicatorFullPage />
