@@ -117,7 +117,7 @@ export function loadSupplierProfile(id) {
     dispatch(sendingRequest(true))
     dmapi({
       method: 'get',
-      url: `/supplier/${id}`
+      url: `/suppliers/${id}`
     }).then(response => {
       if (response.error) {
         dispatch(setErrorMessage(GENERAL_ERROR))
@@ -130,13 +130,13 @@ export function loadSupplierProfile(id) {
   }
 }
 
-export function loadProfile() {
+export function loadProfile(id) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch(sendingRequest(true))
     dmapi({
       method: 'get',
-      url: `/supplier`
+      url: `/suppliers/${id}`
     }).then(response => {
       if (response.error) {
         dispatch(setErrorMessage(GENERAL_ERROR))

@@ -25,7 +25,8 @@ class EditPriceForm extends Component {
       form,
       editPriceForm,
       handlePriceSubmit,
-      buttonClick
+      buttonClick,
+      supplierCode
     } = this.props
     const date = editPriceForm.date
     const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
@@ -53,6 +54,7 @@ class EditPriceForm extends Component {
             className={styles.backLink}
             onClick={() =>
               this.props.loadPrices(
+                supplierCode,
                 serviceToEdit.serviceTypeId,
                 serviceToEdit.categoryId,
                 serviceToEdit.serviceName,

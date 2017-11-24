@@ -1,0 +1,10 @@
+.agreement {
+  width: 100%;
+  outline-offset: 0;
+  border: 2px solid #bebebe;
+  border-radius: 0;
+  background-color: #fff;
+  padding: .4rem;
+  height: 24rem;
+  overflow-y: scroll;
+}

@@ -44,6 +44,18 @@ exports[`CaseStudyForm renders 1`] = `
       </b>
       <ul>
         <li>
+          Check the 
+          <a
+            href="/assessment-criteria"
+          >
+            assessment criteria
+          </a>
+           to ensure the service chosen is a good match for the case study.
+        </li>
+        <li>
+          Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.
+        </li>
+        <li>
           If using acronyms, their meaning must be written out clearly.
         </li>
         <li>
@@ -629,6 +641,18 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
          Avoid common mistakes 
       </b>
       <ul>
+        <li>
+          Check the 
+          <a
+            href="/assessment-criteria"
+          >
+            assessment criteria
+          </a>
+           to ensure the service chosen is a good match for the case study.
+        </li>
+        <li>
+          Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.
+        </li>
         <li>
           If using acronyms, their meaning must be written out clearly.
         </li>
@@ -1220,6 +1244,18 @@ exports[`CaseStudyForm renders with errors 1`] = `
          Avoid common mistakes 
       </b>
       <ul>
+        <li>
+          Check the 
+          <a
+            href="/assessment-criteria"
+          >
+            assessment criteria
+          </a>
+           to ensure the service chosen is a good match for the case study.
+        </li>
+        <li>
+          Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.
+        </li>
         <li>
           If using acronyms, their meaning must be written out clearly.
         </li>
@@ -2045,6 +2081,18 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       </b>
       <ul>
         <li>
+          Check the 
+          <a
+            href="/assessment-criteria"
+          >
+            assessment criteria
+          </a>
+           to ensure the service chosen is a good match for the case study.
+        </li>
+        <li>
+          Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.
+        </li>
+        <li>
           If using acronyms, their meaning must be written out clearly.
         </li>
         <li>
@@ -2636,6 +2684,18 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
          Avoid common mistakes 
       </b>
       <ul>
+        <li>
+          Check the 
+          <a
+            href="/assessment-criteria"
+          >
+            assessment criteria
+          </a>
+           to ensure the service chosen is a good match for the case study.
+        </li>
+        <li>
+          Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.
+        </li>
         <li>
           If using acronyms, their meaning must be written out clearly.
         </li>

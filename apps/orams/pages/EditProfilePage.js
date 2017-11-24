@@ -30,7 +30,7 @@ class EditProfilePage extends Component {
   }
 
   handleSubmit = model => {
-    this.props.updateProfile(model)
+    this.props.updateProfile(this.props.supplierCode, model)
     window.scrollTo(0, 0)
   }
 
@@ -118,12 +118,13 @@ EditProfilePage.propTypes = {}
 
 const mapStateToProps = state => {
   return {
-    hideNav: state.editPricing.hideNav
+    hideNav: state.editPricing.hideNav,
+    supplierCode: state.app.supplierCode
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateProfile: model => dispatch(updateProfile(model))
+  updateProfile: (supplierCode, model) => dispatch(updateProfile(supplierCode, model))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditProfilePage))

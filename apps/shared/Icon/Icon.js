@@ -7,16 +7,7 @@ import icons from './_getIcons'
 import styles from './Icon.scss'
 
 const Icon = props => {
-  const { color, size, value, className = '', ...more } = props
-
-  const svgStyle = {}
-  if (value.includes('filled')) {
-    svgStyle.fill = color
-  } else if (value.includes('nostroke')) {
-    // do nothing
-  } else {
-    svgStyle.stroke = color
-  }
+  const { size, value, className = '', ...more } = props
 
   if (!icons[value]) {
     return null
@@ -29,7 +20,6 @@ const Icon = props => {
         width={size}
         {...more}
         viewBox="0 0 24 24"
-        style={svgStyle}
         dangerouslySetInnerHTML={{ __html: icons[value] }}
       />
     </div>

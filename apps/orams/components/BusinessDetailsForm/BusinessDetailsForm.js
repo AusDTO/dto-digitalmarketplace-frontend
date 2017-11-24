@@ -27,8 +27,8 @@ class BusinessDetailsForm extends BaseForm {
   }
 
   componentDidMount() {
-    this.props.loadProfileData(this.props.form.model)
     this.props.hideNav(null)
+    this.props.loadProfileData(this.props.supplierCode, this.props.form.model)
   }
 
   onAdd(e) {
@@ -288,14 +288,15 @@ const mapStateToProps = state => {
   return {
     ...formProps(state, 'businessDetailsForm'),
     profileUpdated: state.app.profileUpdated,
-    currentlySending: state.app.currentlySending
+    currentlySending: state.app.currentlySending,
+    supplierCode: state.app.supplierCode
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadProfileData: form => dispatch(loadProfile(form)),
-    hideNav: bool => dispatch(hideNav(bool))
+    hideNav: bool => dispatch(hideNav(bool)),
+    loadProfileData: (supplierCode, form) => dispatch(loadProfile(supplierCode, form))
   }
 }
 

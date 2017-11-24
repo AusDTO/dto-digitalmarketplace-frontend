@@ -108,7 +108,7 @@ export const handleFeedbackSubmit = feedback => dispatch => {
   }).then(response => {
     if (response.error) {
       dispatch(handleErrorFailure(response))
-    } else if (feedback.comment) {
+    } else if (feedback.allowFurtherFeedback === undefined) {
       dispatch(handleFeedbackSuccess(response))
     }
     dispatch(sendingRequest(false))

@@ -29,13 +29,14 @@ ProfilePage.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    profileData: state.sellersCatalogue.profileData
+    profileData: state.sellersCatalogue.profileData,
+    supplierCode: state.app.supplierCode
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadProfileData: () => dispatch(loadProfile())
+    loadProfileData: supplierCode => dispatch(loadProfile(supplierCode))
   }
 }
 

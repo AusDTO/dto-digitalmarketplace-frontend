@@ -130,21 +130,21 @@ const Body = (props) => {
           const product = products[key];
           if (!isEmpty(product)) {
             return (
-              <div key={`product.${i}`}>
+              <div key={`product.${i}`} styleName="product">
                 <div className="col-xs-12">
                   <h3 styleName="product-heading">
-                    <a style={{display: 'inline'}} href={product.website} target="_blank"
+                    <a  href={product.website} target="_blank"
                        rel="external">{product.name}</a>
                   </h3>
                   <p className="freetext">
                     {newline(product.summary)}
                   </p>
                   <p>
-                    <a style={{display: 'inline'}} href={product.pricing} target="_blank"
+                    <a  href={product.pricing} target="_blank"
                        rel="external">Product pricing</a>
                   </p>
                   <p>
-                    <a style={{display: 'inline'}} href={product.support} target="_blank"
+                    <a  href={product.support} target="_blank"
                        rel="external">Product support</a>
                   </p>
                 </div>
