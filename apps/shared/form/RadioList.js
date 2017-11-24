@@ -9,9 +9,10 @@ const RadioList = props => {
   return (
     <div className="field">
       <fieldset>
-        <legend>
-          {label}
-        </legend>
+        {label !== '' &&
+          <legend>
+            {label}
+          </legend>}
         <div>
           {options.map(option => {
             const fieldId = `${id}-${option.value}`

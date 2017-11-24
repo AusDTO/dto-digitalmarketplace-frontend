@@ -59,25 +59,26 @@ class EditProfilePage extends Component {
   ]
 
   render() {
-    const { match } = this.props
+    const { match, hideNav } = this.props
     return (
       <main>
         <div className="row">
-          <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
-            {this.steps.map(({ pattern, label }, id = uniqueID()) => {
-              const isActive = location.pathname === pattern
-              return (
-                <li key={id}>
-                  <Link to={pattern} className={classNames({ 'is-active is-current': isActive })}>
-                    <span>
-                      {label}
-                    </span>
-                  </Link>
-                </li>
-              )
-            })}
-          </LocalNav>
-          <article className="col-xs-12 col-sm-8 col-sm-push-1">
+          {!hideNav &&
+            <LocalNav className="col-xs-12 col-sm-3" navClassName="step-navigation" id="main-navigation">
+              {this.steps.map(({ pattern, label }, id = uniqueID()) => {
+                const isActive = location.pathname === pattern
+                return (
+                  <li key={id}>
+                    <Link to={pattern} className={classNames({ 'is-active is-current': isActive })}>
+                      <span>
+                        {label}
+                      </span>
+                    </Link>
+                  </li>
+                )
+              })}
+            </LocalNav>}
+          <article className={hideNav ? 'col-xs-12 col-sm-8 col-sm-push-2' : 'col-xs-12 col-sm-8 col-sm-push-1'}>
             <Switch>
               <Route
                 exact
@@ -117,6 +118,7 @@ EditProfilePage.propTypes = {}
 
 const mapStateToProps = state => {
   return {
+    hideNav: state.editPricing.hideNav,
     supplierCode: state.app.supplierCode
   }
 }

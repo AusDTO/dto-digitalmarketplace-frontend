@@ -21,7 +21,8 @@ import {
   SET_BUTTON_CLICK,
   SET_SUPPLIER,
   SET_SUCCESS_MESSAGE,
-  RESTART_EDIT_PRICING
+  RESTART_EDIT_PRICING,
+  HIDE_NAV
 } from 'orams/constants/constants'
 
 // The initial application state
@@ -34,7 +35,8 @@ const initialState = {
   priceId: '',
   pricesArray: [],
   saveAnother: false,
-  successMessage: false
+  successMessage: false,
+  hideNav: false
 }
 
 const updateOrReplace = (array, obj) => {
@@ -111,6 +113,12 @@ const editPricingReducer = (state = initialState, action) => {
       return {
         ...state,
         pricesArray: []
+      }
+
+    case HIDE_NAV:
+      return {
+        ...state,
+        hideNav: action.hideNav
       }
 
     default:

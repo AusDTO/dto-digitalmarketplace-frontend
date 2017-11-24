@@ -7,6 +7,7 @@ import { Form } from 'react-redux-form'
 import PageAlert from '@gov.au/page-alerts'
 
 import { loadProfile } from 'orams/actions/profileActions'
+import { hideNav } from 'orams/actions/editPriceActions'
 
 import { required, limitNumbers, validLinks, validABN } from 'shared/validators'
 import Layout from 'shared/Layout'
@@ -26,6 +27,7 @@ class BusinessDetailsForm extends BaseForm {
   }
 
   componentDidMount() {
+    this.props.hideNav(null)
     this.props.loadProfileData(this.props.supplierCode, this.props.form.model)
   }
 
@@ -113,13 +115,9 @@ class BusinessDetailsForm extends BaseForm {
               model={`${model}.summary`}
               name="summary"
               id="summary"
-              controlProps={{ limit: 50 }}
+              controlProps
               label="Summary"
               description="3-4 sentences that describe your business. This can be seen by all government buyers."
-              messages={{
-                required: 'You must provide a seller summary'
-              }}
-              validators={{ required }}
             />
 
             <Textfield
@@ -297,6 +295,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    hideNav: bool => dispatch(hideNav(bool)),
     loadProfileData: (supplierCode, form) => dispatch(loadProfile(supplierCode, form))
   }
 }

@@ -12,7 +12,8 @@ import {
   SET_BUTTON_CLICK,
   SET_SUPPLIER,
   SET_SUCCESS_MESSAGE,
-  RESTART_EDIT_PRICING
+  RESTART_EDIT_PRICING,
+  HIDE_NAV
 } from 'orams/constants/constants'
 import { GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -67,6 +68,10 @@ export function setSuccessMessage(successMessage) {
 
 export function restartEditPricing() {
   return { type: RESTART_EDIT_PRICING }
+}
+
+export function hideNav(hideNav) {
+  return { type: HIDE_NAV, hideNav }
 }
 
 export const setPrice = priceToEditData => dispatch => {

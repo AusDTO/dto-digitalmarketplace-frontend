@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import styles from './PricingList.scss'
 
 const PricingList = props => {
-  const { pricesData } = props
+  const { pricesData, hideNav } = props
   const { prices } = pricesData
 
   return (
@@ -15,7 +15,14 @@ const PricingList = props => {
           Pricing
         </h1>
         <div className={styles.stepTitle}>Step 2 of 4</div>
-        <div tabIndex="0" className={styles.backLink} onClick={() => props.goToStep(1)}>
+        <div
+          tabIndex="0"
+          className={styles.backLink}
+          onClick={() => {
+            hideNav(false)
+            props.goToStep(1)
+          }}
+        >
           Back to services list
         </div>
       </header>
