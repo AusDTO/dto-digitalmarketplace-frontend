@@ -1,5 +1,6 @@
 command:  ./scripts/cf_run_app.sh
-buildpack: nodejs_buildpack
+# TODO: once prod is on new envs, switch back to supported buildpack
+buildpack: legacy_marketplace_nodejs_buildpack
 memory: 256M
 disk_quota: 1G
 instances: 1
