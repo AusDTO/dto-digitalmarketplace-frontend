@@ -15,7 +15,7 @@ const PageFooter = () =>
               <h2 className={styles.subtitle}>brought to you by the Digital Marketplace</h2>
               <ul className="uikit-link-list">
                 <li>
-                  <a href="/terms-of-use">Terms of Use</a>
+                  <a href="/orams/terms-of-use">Terms of Use</a>
                 </li>
                 <li>
                   <a href="/privacy-policy">Privacy</a>
