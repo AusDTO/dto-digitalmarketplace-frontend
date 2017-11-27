@@ -30,7 +30,7 @@ deployment:
   development:
     branch: master
     commands:
-      - cf login -a https://api.system.z.cld.gov.au -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
+      - cf login -a https://api.system.y.cld.gov.au -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
       - cf target -o dta -s marketplace
       - cf zero-downtime-push dm-dev-frontend -f manifest.yml --show-app-log
   production:
