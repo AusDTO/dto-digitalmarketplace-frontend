@@ -31,7 +31,7 @@ var homepagePathname = homepagePath ? url.parse(homepagePath).pathname : '/';
 // It requires a trailing slash, or the file assets will get an incorrect path.
 var publicPath = ensureSlash(homepagePathname, true);
 var frontendURL = process.env.CIRCLE_BRANCH && process.env.CIRCLE_BRANCH !== 'master'
-  ? 'https://dm-frontend.apps.platform.digital.gov.au'
+  ? 'https://dm-frontend.apps.b.cld.gov.au'
   : 'https://dm-dev.apps.y.cld.gov.au';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.

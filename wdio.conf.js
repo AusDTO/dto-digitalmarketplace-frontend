@@ -69,7 +69,7 @@ var config = {
     //
     // Set a base URL in order to shorten url command calls. If your url parameter starts
     // with "/", then the base url gets prepended.
-    baseUrl: process.env.BASE_URL || 'https://dm-dev.apps.staging.digital.gov.au',
+    baseUrl: process.env.BASE_URL || 'https://dm-dev.apps.y.cld.gov.au',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
