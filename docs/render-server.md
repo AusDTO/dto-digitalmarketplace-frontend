@@ -13,7 +13,7 @@ curl \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{"path":"bundles/HelloWorld/HelloWorldWidget.js", "serializedProps": "{\"_serverContext\":{\"location\":\"/\"}}"}' \
-  https://dm-dev-frontend.apps.staging.digital.gov.au/render
+  https://dm-dev-frontend.apps.y.cld.gov.au/render
 ```
 
 Available `POST` options:
