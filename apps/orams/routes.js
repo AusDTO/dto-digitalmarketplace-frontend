@@ -13,6 +13,7 @@ import ResetPasswordPage from 'orams/pages/ResetPasswordPage'
 import PriceHistoryPage from 'orams/pages/PriceHistoryPage'
 import TermsPage from 'orams/pages/TermsPage'
 import PrivacyPolicyPage from 'orams/pages/PrivacyPolicyPage'
+import SecurityPage from 'orams/pages/SecurityPage'
 
 export const rootPath = '/orams'
 
@@ -29,6 +30,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/terms-of-use`} component={TermsPage} />
     <Route path={`${rootPath}/privacy-policy`} component={PrivacyPolicyPage} />
+    <Route path={`${rootPath}/security`} component={SecurityPage} />
     <Route component={NotFound} />
   </Switch>
 

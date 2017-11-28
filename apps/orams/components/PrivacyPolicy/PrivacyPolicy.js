@@ -5,7 +5,7 @@ import styles from './PrivacyPolicy.scss'
 
 const PrivacyPolicy = props => {
   return (
-    <main classNameNameName={styles.container}>
+    <main className={styles.container}>
       <h1>Privacy Statement</h1>
 
       <p>Words the same meaning as defined in the <a href="/terms-of-use">Terms of Use</a>.</p>
