@@ -1,12 +1,10 @@
 /* eslint-disable */
 import React from 'react'
 
-import styles from './Disclaimer.scss'
-
 const Disclaimer = props => {
   return (
-    <main className={styles.container}>
-      <h1>Disclaimer</h1>
+    <main>
+      <h1 className="uikit-display-6">Disclaimer</h1>
       <p>We provide this website to inform the public, government agencies and sellers about the Digital Marketplace.</p>
 
       <h2>Website Content</h2>

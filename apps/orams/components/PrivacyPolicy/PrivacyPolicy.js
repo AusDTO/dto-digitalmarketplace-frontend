@@ -1,12 +1,10 @@
 /* eslint-disable */
 import React from 'react'
 
-import styles from './PrivacyPolicy.scss'
-
 const PrivacyPolicy = props => {
   return (
-    <main className={styles.container}>
-      <h1>Privacy Statement</h1>
+    <main>
+      <h1 className="uikit-display-6">Privacy Statement</h1>
 
       <p>Words the same meaning as defined in the <a href="/terms-of-use">Terms of Use</a>.</p>
 

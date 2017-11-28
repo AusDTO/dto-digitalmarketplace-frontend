@@ -1,12 +1,10 @@
 /* eslint-disable */
 import React from 'react'
 
-import styles from './SecurityStatement.scss'
-
 const SecurityStatement = props => {
   return (
-    <main className={styles.container}>
-      <h1>Security statement</h1>
+    <main>
+      <h1 className="uikit-display-6">Security statement</h1>
       <p>
        The Digital Marketplace is being delivered to make it easier for government and digital businesses to work together. We value transparency while also taking security seriously. This document describes the practices we employ to help ensure the security of our users’ data.
       </p>

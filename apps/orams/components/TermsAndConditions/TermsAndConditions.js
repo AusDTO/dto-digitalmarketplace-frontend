@@ -1,14 +1,12 @@
 /* eslint-disable */
 import React from 'react'
 
-import styles from './TermsAndConditions.scss'
-
 const TermsAndConditions = props => {
   return (
-    <main classNameName={styles.container}>
-      <h1>ORAMS Terms of Use</h1>
+    <main>
+      <h1 className="uikit-display-6">ORAMS Terms of Use</h1>
 
-      <nav classNameName="index-links">
+      <nav className="index-links">
         <h2>On this page</h2>
         <ul>
             <li><a href="#security">Security</a></li>
