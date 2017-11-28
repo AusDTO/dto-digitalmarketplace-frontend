@@ -24,7 +24,7 @@ const PageFooter = () =>
                   <a href="/orams/security">Security</a>
                 </li>
                 <li>
-                  <a href="/disclaimer">Disclaimer</a>
+                  <a href="/orams/disclaimer">Disclaimer</a>
                 </li>
                 <li>
                   <a href="/disclaimer">Copyright</a>
