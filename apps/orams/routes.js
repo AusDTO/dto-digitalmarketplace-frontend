@@ -12,6 +12,7 @@ import NotFound from 'shared/NotFound'
 import ResetPasswordPage from 'orams/pages/ResetPasswordPage'
 import PriceHistoryPage from 'orams/pages/PriceHistoryPage'
 import TermsPage from 'orams/pages/TermsPage'
+import PrivacyPolicyPage from 'orams/pages/PrivacyPolicyPage'
 
 export const rootPath = '/orams'
 
@@ -27,6 +28,7 @@ export const Routes = () =>
     <PrivateRoute path={`${rootPath}/profile`} component={ProfilePage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/terms-of-use`} component={TermsPage} />
+    <Route path={`${rootPath}/privacy-policy`} component={PrivacyPolicyPage} />
     <Route component={NotFound} />
   </Switch>
 

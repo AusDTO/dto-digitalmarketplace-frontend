@@ -30,11 +30,11 @@ const TermsAndConditions = props => {
       <section className="tou-section" id="introduction">
         <h2>Introduction</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>These Terms of Use govern all access to and use of the <a href="https://orams.service.gov.au/">ORAMS site</a> and constitute a binding legal agreement between you,
-            your entity and the Digital Transformation Agency (DTA). By accessing the ORAMS site, you agree to be
+        <p>These Terms of Use govern all access to and use of the <a href="https://marketplace.service.gov.au/orams">ORAMS portal</a> and constitute a binding legal agreement between you,
+            your entity and the Digital Transformation Agency (DTA). By accessing the Digital Marketplace, you agree to be
             bound by these Terms of Use and comply with the included Code of Conduct, whether or not you become a registered
             buyer or seller.
-            If you do not agree to be bound by all these Terms of Use, do not access or use the ORAMS site. </p>
+            If you do not agree to be bound by all these Terms of Use, do not access or use the Digital Marketplace. </p>
         <p>The DTA may change these Terms of Use from time to time and will advise registered buyers and sellers of any
             changes by email or other means.</p>
         <p>If you have any questions or feedback about these Terms of Use, please email us at <a
@@ -45,7 +45,7 @@ const TermsAndConditions = props => {
         <h2>Security</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
         <p>
-            We apply a range of security controls to protect the ORAMS site from unauthorised access, as described
+            We apply a range of security controls to protect the Digital Marketplace from unauthorised access, as described
             in our <a href="/orams/security">security statement</a>. However, you agree that:</p>
         <ul>
             <li>The World Wide Web is an unsecure public network.</li>
@@ -69,10 +69,10 @@ const TermsAndConditions = props => {
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
         <p>
         <h3>Buyers</h3>At the current time, only government entities,
-        or other entities expressly authorised by the DTA, can be a buyer in the ORAMS site. To create a buyer
+        or other entities expressly authorised by the DTA, can be a buyer in the Digital Marketplace. To create a buyer
         account you must be a government employee, or a contractor engaged to act on behalf of a local, state, territory or
-        federal government entity, and require access to the ORAMS site to perform your role. </p>
-        <p>By accessing the ORAMS site you are representing to the DTA that you are authorised to act on the behalf
+        federal government entity, and require access to the Digital Marketplace to perform your role. </p>
+        <p>By accessing the Digital Marketplace you are representing to the DTA that you are authorised to act on the behalf
             of your entity.
         </p>
 
@@ -84,33 +84,33 @@ const TermsAndConditions = props => {
       <section className="tou-section" id="termination">
         <h2>Termination</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>The DTA may terminate your access to the ORAMS site at any time for any reason. The DTA will not be
+        <p>The DTA may terminate your access to the Digital Marketplace at any time for any reason. The DTA will not be
             liable for any loss you have.</p>
         <p>Upon termination, all licenses and other rights granted to you in these Terms of Use will immediately cease.</p>
       </section>
       <section className="tou-section" id="notifications">
         <h2>Notifications</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>If you register as a buyer or seller on the ORAMS site you may receive contact from the ORAMS site by email,
+        <p>If you register as a buyer or seller on the Digital Marketplace you may receive contact from the Digital Marketplace by email,
             or other means.</p>
 
-        <p>Email notifications are the primary form of contact between the ORAMS site and registered buyers and
+        <p>Email notifications are the primary form of contact between the Digital Marketplace and registered buyers and
             sellers. The email address you have provide when registering will be used for this correspondence.</p>
 
         <p>The DTA does not accept any responsibility or liability for any loss to you caused by the delay or failure of
-            delivery of emails from the ORAMS site for any reason.</p>
+            delivery of emails from the Digital Marketplace for any reason.</p>
       </section>
       <section className="tou-section" id="code-of-conduct">
         <h2>Code of Conduct</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>ORAMS site buyers and sellers must act ethically,
+        <p>Digital Marketplace buyers and sellers must act ethically,
             reasonably, with integrity, and in accordance with applicable laws at all times they use the Digital
             Marketplace. Any violation of this code of conduct may result the suspension or deletion of your account at the
             absolute discretion of the DTA. The DTA will not be liable for any loss you have.</p>
 
         <h3>Buyers</h3>
 
-        <p>The ORAMS site is designed to make it easier to comply with the Commonwealth Procurement Rules but
+        <p>The Digital Marketplace is designed to make it easier to comply with the Commonwealth Procurement Rules but
             ultimately, as a buyer, you are still responsible for compliance with these rules and all other applicable laws,
             regulations, policy or instructions that apply in your entity in your situation. <br/><br/>You must take
             reasonable steps to ensure your compliance with relevant requirements, including consulting the relevant finance
@@ -120,46 +120,46 @@ const TermsAndConditions = props => {
         <p>You agree to comply with the <a
                 href="http://www.apsc.gov.au/publications-and-media/current-publications/aps-values-and-code-of-conduct-in-practice">APS
             Values and Code of Conduct</a> (or the relevant code of conduct for your local, state or territory workplace) in
-            all your activities relating to the ORAMS site.
+            all your activities relating to the Digital Marketplace.
         </p>
         <h3>Sellers</h3>
-        <p>All information you provide as a seller, whether in the ORAMS site registration process, or to
+        <p>All information you provide as a seller, whether in the Digital Marketplace registration process, or to
             prospective buyers in response to opportunities, must be complete,
             accurate and not misleading, nor contain any material omissions. The DTA reserves the right to verify any
             information you have provided, at any time.</p>
 
-        <p>As the ORAMS site is all about creating beneficial connections, your interactions must be businesslike
+        <p>As the Digital Marketplace is all about creating beneficial connections, your interactions must be businesslike
             and of a professional standard. Any content or links you upload to the Marketplace, as well as any
             correspondence with us or with any buyer, must be free from threats, harassment or obscenity. </p>
       </section>
       <section className="tou-section" id="licence">
         <h2>Licence and usage</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>By using the ORAMS site you agree from acceptance of these Terms of Use to provide a non-exclusive,
+        <p>By using the Digital Marketplace you agree from acceptance of these Terms of Use to provide a non-exclusive,
             fully paid-up, irrevocable, perpetual, worldwide, licence to the DTA to reproduce and use all information
-            provided, including any third-party material, for the purposes of the ORAMS site, which may include
+            provided, including any third-party material, for the purposes of the Digital Marketplace, which may include
             analysis and promotion. </p>
 
         <p>You must make sure any information you provide is true, to the best of your knowledge and belief. If you provide
             third-party information,
             you must make sure it does not breach the third-party&rsquo;s intellectual property rights.</p>
 
-        <p>Any personal information you provide when using the ORAMS site will be handled in accordance with our <a
+        <p>Any personal information you provide when using the Digital Marketplace will be handled in accordance with our <a
                 href="/orams/privacy-policy">Privacy Statement</a>.</p>
       </section>
       <section className="tou-section" id="disclaimer">
         <h2>Disclaimer</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>The ORAMS site is made up of content &mdash;&nbsp;information, data,
+        <p>The Digital Marketplace is made up of content &mdash;&nbsp;information, data,
             documents, pages, video and images &mdash; published by the DTA as well as by buyers and sellers. The DTA does
-            not guarantee any material on the ORAMS site is true and correct at the date of publication or
+            not guarantee any material on the Digital Marketplace is true and correct at the date of publication or
             afterwards. </p>
         <p>The DTA does not necessarily endorse published material or any views expressed in the material.
         </p>
         <p>To the maximum extent permitted by law, the DTA disclaims all and any guarantees, undertakings and warranties,
             express or implied, and will not be liable for any loss or damage whatsoever arising out of or in connection
-            with, any use of or reliance on the material on the ORAMS site.</p>
-        <p>Inquiries regarding the licence or any use of ORAMS site materials should be directed to:
+            with, any use of or reliance on the material on the Digital Marketplace.</p>
+        <p>Inquiries regarding the licence or any use of Digital Marketplace materials should be directed to:
             <a href="mailto:orams@ato.gov.au">orams@ato.gov.au</a>.</p>
       </section>
       <section className="tou-section" id="indeminity">
@@ -179,7 +179,7 @@ const TermsAndConditions = props => {
       <section className="tou-section" id="external-links">
         <h2>External links</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>A link to another website from the ORAMS site does not mean that the DTA is endorsing or recommending
+        <p>A link to another website from the Digital Marketplace does not mean that the DTA is endorsing or recommending
             any information, products or services offered on or through the other website, or that the material on any
             linked website does not infringe the intellectual property rights of any person.
             DTA does not authorise the reproduction of material on linked websites. </p>
@@ -188,14 +188,14 @@ const TermsAndConditions = props => {
       </section>
       <section className="tou-section" id="linking">
         <h2>Linking and syndication</h2>
-        <p>You may insert a link to the ORAMS site from another website. If you do so, it is at your own risk and
+        <p>You may insert a link to the Digital Marketplace from another website. If you do so, it is at your own risk and
             the DTA will not be held liable for any expense incurred by you or any other person or entity as a result of the
             link. </p>
         <p>You must not:</p>
         <ol>
             <ol>
-                <li>Alter any of the ORAMS site content.</li>
-                <li>Frame or reformat the files, pages, images, information and content from the ORAMS site on any
+                <li>Alter any of the Digital Marketplace content.</li>
+                <li>Frame or reformat the files, pages, images, information and content from the Digital Marketplace on any
                     other website.
                 </li>
                 <li>State or imply that the DTA endorses your website, products or services.
@@ -214,7 +214,7 @@ const TermsAndConditions = props => {
       <section className="tou-section" id="definitions">
         <h2>Definitions</h2>
         <a href="#" className="scroll-to-top">Back to top of page <b>&uarr;</b></a>
-        <p>buyer means an entity registered as a buyer on the ORAMS site.</p>
+        <p>buyer means an entity registered as a buyer on the Digital Marketplace.</p>
         <p>confidential information means information that is by its nature regarded in law as confidential,
             and which:</p>
         <ul>
@@ -237,7 +237,7 @@ const TermsAndConditions = props => {
             <li>a loss of value of any equipment</li>
         </ol>
         <p>content includes information, data, documents, pages and images.</p>
-        <p>ORAMS site is the online procurement platform located at <a href="https://marketplace.service.gov.au/">https://marketplace.service.gov.au/</a>
+        <p>Digital Marketplace is the online procurement platform located at <a href="https://marketplace.service.gov.au/">https://marketplace.service.gov.au/</a>
             managed by the Digital Transformation Agency.</p>
         <p>DTA means the Commonwealth represented by the Digital Transformation Agency.
         </p>
@@ -251,12 +251,12 @@ const TermsAndConditions = props => {
         <p>personnel means, in relation to a party, any natural persons who are employees, officers,
             agents,
             contractors, subcontractors or professional advisers of that party.</p>
-        <p>seller means a business who offers their products or services on the ORAMS site.</p>
-        <p>user means any ORAMS site visitor or person (including an individual or a body corporate)
+        <p>seller means a business who offers their products or services on the Digital Marketplace.</p>
+        <p>user means any Digital Marketplace visitor or person (including an individual or a body corporate)
             that represents a buyer or seller.</p>
         <p>work order means a contract formed between a buyer and a seller under this agreement for the provision of
             services, or products, or both.</p>
-        <p>you and your means the user and the entity which the user represents on the ORAMS site.</p>
+        <p>you and your means the user and the entity which the user represents on the Digital Marketplace.</p>
         <p><br/><br/></p>
       </section>
 
