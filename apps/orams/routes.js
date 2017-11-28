@@ -15,6 +15,7 @@ import TermsPage from 'orams/pages/TermsPage'
 import PrivacyPolicyPage from 'orams/pages/PrivacyPolicyPage'
 import SecurityPage from 'orams/pages/SecurityPage'
 import DisclaimerPage from 'orams/pages/DisclaimerPage'
+import CopyrightPage from 'orams/pages/CopyrightPage'
 
 export const rootPath = '/orams'
 
@@ -33,6 +34,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/privacy-policy`} component={PrivacyPolicyPage} />
     <Route path={`${rootPath}/security`} component={SecurityPage} />
     <Route path={`${rootPath}/disclaimer`} component={DisclaimerPage} />
+    <Route path={`${rootPath}/copyright`} component={CopyrightPage} />
     <Route component={NotFound} />
   </Switch>
 

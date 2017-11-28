@@ -112,7 +112,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadServiceEdit: (supplierCode) => dispatch(loadServiceEditData(supplierCode)),
+    loadServiceEdit: supplierCode => dispatch(loadServiceEditData(supplierCode)),
     loadPrices: (supplierCode, serviceTypeId, categoryId, serviceName, subCategoryName) =>
       dispatch(loadPricesData(supplierCode, serviceTypeId, categoryId, serviceName, subCategoryName)),
     goToStep: step => dispatch(setStep(step)),

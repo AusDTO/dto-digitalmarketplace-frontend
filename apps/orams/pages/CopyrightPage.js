@@ -3,21 +3,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom'
-import Disclaimer from 'orams/components/Disclaimer/Disclaimer'
+import Copyright from 'orams/components/Copyright/Copyright'
 
-class DisclaimerPage extends Component {
+class CopyrightPage extends Component {
   render() {
     const { match } = this.props
 
     return (
       <Switch>
-        <Route exact path={match.url} render={() => <Disclaimer {...this.props} />} />
+        <Route exact path={match.url} render={() => <Copyright {...this.props} />} />
       </Switch>
     )
   }
 }
 
-DisclaimerPage.propTypes = {
+CopyrightPage.propTypes = {
   match: PropTypes.object.isRequired
 }
 
@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => {
   return {}
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DisclaimerPage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CopyrightPage))

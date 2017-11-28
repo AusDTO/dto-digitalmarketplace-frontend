@@ -22,13 +22,11 @@ TermsPage.propTypes = {
 }
 
 const mapStateToProps = state => {
-  return {
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-  }
+  return {}
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TermsPage))
