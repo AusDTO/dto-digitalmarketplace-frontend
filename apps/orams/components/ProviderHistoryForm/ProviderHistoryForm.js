@@ -8,7 +8,7 @@ import PricingResultsTable from 'orams/components/PricingResultsTable/PricingRes
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import PageAlert from '@gov.au/page-alerts'
 import formProps from 'shared/form/formPropsSelector'
-import { required, validDate, validPriceRange } from 'shared/validators'
+import { required, validDateNotInFuture, validPriceRange } from 'shared/validators'
 import Datefield from 'shared/form/Datefield'
 import RadioList from 'shared/form/RadioList'
 import SubmitForm from 'shared/form/SubmitForm'
@@ -100,7 +100,7 @@ class ProviderHistoryForm extends Component {
                       model={`${model}.date`}
                       id="date_error"
                       messages={{
-                        validDate: 'Date is required and must be in the future.'
+                        validDate: 'Date is required.'
                       }}
                     />
                     <Control
@@ -116,7 +116,7 @@ class ProviderHistoryForm extends Component {
                         label: ''
                       }}
                       validators={{
-                        validDate
+                        validDateNotInFuture
                       }}
                     />
                     <br />

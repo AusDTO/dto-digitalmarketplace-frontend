@@ -33,6 +33,14 @@ export const validDate = val => {
   return false
 }
 
+export const validDateNotInFuture = val => {
+  if (!val || !isValid(parse_date(val))) {
+    return false
+  }
+
+  return true
+}
+
 export const validEmail = val => {
   if (!val) {
     return true
