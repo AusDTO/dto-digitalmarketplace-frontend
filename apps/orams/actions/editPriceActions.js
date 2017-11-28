@@ -87,7 +87,7 @@ export const loadServiceEditData = supplierCode => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      dispatch(setServiceEditData({services: response.data.services}))
+      dispatch(setServiceEditData({ services: response.data.services }))
       dispatch(setSupplierData(response.data))
       dispatch(setStep(1))
     }
