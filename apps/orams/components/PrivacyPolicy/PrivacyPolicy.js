@@ -15,7 +15,7 @@ const PrivacyPolicy = props => {
       <p>
         This statement applies to the <b>Digital Marketplace</b>{' '}
         <a href="https://marketplace.service.gov.au/orams">https://marketplace.service.gov.au/orams</a>
-        managed by the <b>DTA</b>.
+        {' '}managed by the <b>DTA</b>.
       </p>
       <p>
         The <b>DTA</b> is an Australian Government entity. Please refer to{' '}
@@ -57,9 +57,9 @@ const PrivacyPolicy = props => {
       </a>
       <p>
         If <b>you</b> contact <b>us</b> to ask questions, raise problems, or give feedback, or 'contact us' from any of
-        <b>our</b> pages, <b>we</b> will collect the email address <b>you</b> provide and any other identifying
+        {' '}<b>our</b> pages, <b>we</b> will collect the email address <b>you</b> provide and any other identifying
         information
-        <b>you</b> include, such as a name or phone number for the purposes of responding to <b>your</b> feedback or
+        {' '}<b>you</b> include, such as a name or phone number for the purposes of responding to <b>your</b> feedback or
         request.
       </p>
       <h2>Application logs</h2>
@@ -102,7 +102,7 @@ const PrivacyPolicy = props => {
       </ul>
       This information is recorded for the purposes of performance improvement, aggregated (non personalised) reporting,
       auditability and security. This information is securely stored and available only to <b>Digital Marketplace</b>
-      support personnel for the purposes of maintaining the service.
+      {' '}support personnel for the purposes of maintaining the service.
       <h2>Collection of user information</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
@@ -213,7 +213,7 @@ const PrivacyPolicy = props => {
       </ul>
       To protect <b>your</b> privacy and the privacy of others, <b>we</b> will need evidence of <b>your</b> identity
       before
-      <b>we</b> can grant <b>you</b> access to information about <b>you</b> or change it.
+      {' '}<b>we</b> can grant <b>you</b> access to information about <b>you</b> or change it.
       <p>
         <b>You</b> can contact us by email to <a href="mailto:marketplace@digital.gov.au">
           marketplace@digital.gov.au
@@ -245,7 +245,7 @@ const PrivacyPolicy = props => {
         To improve <b>your</b> experience on our site, <b>we</b> use 'cookies'. Cookies are an industry standard and
         most major websites use them. A cookie is a small text file that our site may place on <b>your</b> computer as a
         tool to remember <b>your</b> preferences. <b>You</b> may refuse the use of cookies by selecting the appropriate
-        settings on
+        settings on{' '}
         <b>your</b> browser, however if <b>you</b> do this, <b>you</b> may not be able to use the full functionality of
         this website.
       </p>
@@ -261,7 +261,7 @@ const PrivacyPolicy = props => {
       </p>
       <p>
         By using this website, <b>you</b> consent to the processing of data about <b>you</b> for the purposes stated in
-        this policy.
+        this policy.{' '}
         <b>You</b> can opt out of analytics if <b>you</b> disable or refuse the cookie or disable JavaScript.
       </p>
       <p>Last updated: 27-11-2017</p>
