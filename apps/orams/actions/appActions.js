@@ -110,7 +110,6 @@ export const signup = data => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      console.log(response.data)
       dispatch(clearErrorMessages())
       dispatch(displaySignupStepTwo())
     }
