@@ -33,7 +33,11 @@ class Header extends Component {
 
     return (
       <div>
-        <section className={`${!loggedIn && location.pathname === '/orams' ? styles.homepageMarketplaceHeader : ''} ${styles.marketplaceHeader} `}>
+        <section
+          className={`${!loggedIn && location.pathname === '/orams'
+            ? styles.homepageMarketplaceHeader
+            : ''} ${styles.marketplaceHeader} `}
+        >
           <div className={styles.wrapper}>
             <div className={styles.oramsLogo}>
               <a href={home()} title="Go to the ORAMS homepage" className={styles.logo}>

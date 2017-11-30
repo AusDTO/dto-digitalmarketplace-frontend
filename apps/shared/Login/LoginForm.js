@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import { Link } from 'react-router-dom'
-import styles from 'shared/main.scss'
 
 import ErrorBox from '../../shared/form/ErrorBox'
 import Textfield from '../../shared/form/Textfield'

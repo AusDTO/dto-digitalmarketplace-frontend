@@ -36,7 +36,7 @@ export class SignupPageComponent extends BaseForm {
     return (
       <main>
         <Switch>
-          <Route path={match.url} render={() => <Signup {...this.props} />} />} />
+          <Route path={match.url} render={() => <Signup {...this.props} />} />
         </Switch>
       </main>
     )
