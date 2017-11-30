@@ -18,10 +18,10 @@ const PricingList = props => {
                 <div className={styles.headingRow}>
                   <div className="row">
                     <div className="col-md-4 col-sm-4">Region</div>
-                    <div className="col-md-2 col-sm-2">Unit</div>
                     <div className="col-md-2 col-sm-2">
                       Price <span className={styles.gstTitle}>inc GST</span>
                     </div>
+                    <div className="col-md-2 col-sm-2">Unit</div>
                     <div className="col-md-2 col-sm-2">Start date</div>
                     <div className="col-md-2 col-sm-2">End date</div>
                   </div>

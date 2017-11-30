@@ -54,7 +54,7 @@ class SellerProfile extends Component {
                           {supplierData.contact_phone}
                         </div>
                         <a href={'mailto:' + supplierData.contact_email}>
-                          <div className={styles.yellowButton}>Email Seller</div>
+                          <div className="uikit-btn">Email Seller</div>
                         </a>
                       </div>
                     </div>

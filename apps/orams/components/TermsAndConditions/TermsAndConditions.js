@@ -123,7 +123,7 @@ const TermsAndConditions = props => {
         <h3>Sellers</h3>
         <p>
           All sellers must be part of Occupational rehabilitation and associated medical services panel. In order to
-          join this panel, please contact panel management at<a href="mailto: orams@ato.gov.au"> orams@ato.gov.au</a>.
+          join this panel, please contact panel management at <a href="mailto:orams@ato.gov.au">orams@ato.gov.au</a>.
         </p>
       </section>
       <section className="tou-section" id="termination">
@@ -183,8 +183,7 @@ const TermsAndConditions = props => {
 
         <p>
           As a buyer, after signing in, you will have access to a variety of confidential information relating to
-          sellers and opportunity briefs." to "As a buyer, after signing in, you will have access to a variety of
-          confidential information relating to sellers.
+          sellers.
         </p>
         <p>
           You agree to comply with the{' '}
@@ -247,7 +246,7 @@ const TermsAndConditions = props => {
           with, any use of or reliance on the material on the Digital Marketplace.
         </p>
         <p>
-          Inquiries regarding the licence or any use of Digital Marketplace materials should be directed to:
+          Inquiries regarding the licence or any use of Digital Marketplace materials should be directed to:{' '}
           <a href="mailto:orams@ato.gov.au">orams@ato.gov.au</a>.
         </p>
       </section>
@@ -351,8 +350,8 @@ const TermsAndConditions = props => {
         <p>content includes information, data, documents, pages and images.</p>
         <p>
           Digital Marketplace is the online procurement platform located at{' '}
-          <a href="https://marketplace.service.gov.au/">https://marketplace.service.gov.au/</a>
-          managed by the Digital Transformation Agency.
+          <a href="https://marketplace.service.gov.au/">https://marketplace.service.gov.au/</a> managed by the Digital
+          Transformation Agency.
         </p>
         <p>DTA means the Commonwealth represented by the Digital Transformation Agency.</p>
         <p>

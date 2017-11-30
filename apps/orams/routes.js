@@ -16,12 +16,14 @@ import PrivacyPolicyPage from 'orams/pages/PrivacyPolicyPage'
 import SecurityPage from 'orams/pages/SecurityPage'
 import DisclaimerPage from 'orams/pages/DisclaimerPage'
 import CopyrightPage from 'orams/pages/CopyrightPage'
+import SignupPage from 'orams/pages/SignupPage'
 
 export const rootPath = '/orams'
 
 export const Routes = () =>
   <Switch>
     <Route exact path={rootPath} component={HomePage} />
+    <Route path={`${rootPath}/signup`} component={SignupPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/logout`} component={LogoutPage} />
     <PrivateRoute path={`${rootPath}/edit-profile`} component={EditProfilePage} />

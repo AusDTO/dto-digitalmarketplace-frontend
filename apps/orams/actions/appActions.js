@@ -23,7 +23,13 @@
  *    created in the second step
  */
 
-import { SENDING_REQUEST, SET_ERROR_MESSAGE, SET_AUTH, CLEAR_ERROR_MESSAGES } from 'orams/constants/constants'
+import {
+  SENDING_REQUEST,
+  SET_ERROR_MESSAGE,
+  SET_AUTH,
+  CLEAR_ERROR_MESSAGES,
+  DISPLAY_STEP_2
+} from 'orams/constants/constants'
 import { LOGIN_FAILED, GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
 
@@ -43,6 +49,10 @@ export const clearErrorMessages = () => ({ type: CLEAR_ERROR_MESSAGES })
 
 export function setAuthState(newState) {
   return { type: SET_AUTH, newState }
+}
+
+export function displaySignupStepTwo() {
+  return { type: DISPLAY_STEP_2 }
 }
 
 export const fetchAuth = () => dispatch => {
@@ -79,6 +89,30 @@ export const logout = () => dispatch => {
   dmapi({ url: '/logout' }).then(() => {
     dispatch(clearErrorMessages())
     dispatch(setAuthState({ isAuthenticated: false, userType: '' }))
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const signup = data => dispatch => {
+  const body = {
+    email_address: data.emailAddress,
+    framework: 'orams',
+    user_type: 'buyer',
+    name: data.name
+  }
+
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: '/signup',
+    data: JSON.stringify(body)
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(clearErrorMessages())
+      dispatch(displaySignupStepTwo())
+    }
     dispatch(sendingRequest(false))
   })
 }

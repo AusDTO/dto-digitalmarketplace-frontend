@@ -33,7 +33,11 @@ class Header extends Component {
 
     return (
       <div>
-        <section className={styles.marketplaceHeader}>
+        <section
+          className={`${!loggedIn && location.pathname === '/orams'
+            ? styles.homepageMarketplaceHeader
+            : ''} ${styles.marketplaceHeader} `}
+        >
           <div className={styles.wrapper}>
             <div className={styles.oramsLogo}>
               <a href={home()} title="Go to the ORAMS homepage" className={styles.logo}>
@@ -46,6 +50,9 @@ class Header extends Component {
               <div id="react-bundle-auth-header">
                 <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
                   <li>
+                    <a href="mailto:orams@ato.gov.au">Contact</a>
+                  </li>
+                  <li>
                     {secondaryLink()}
                   </li>
                   {loggedIn && userType == 'buyer'
@@ -53,9 +60,6 @@ class Header extends Component {
                         <Link to={`${rootPath}/price-history`}>Price history</Link>
                       </li>
                     : ''}
-                  <li>
-                    <a href="mailto:orams@ato.gov.au">Contact</a>
-                  </li>
                   <li>
                     {loggedIn
                       ? <Link to={`${rootPath}/logout`}>Sign out</Link>

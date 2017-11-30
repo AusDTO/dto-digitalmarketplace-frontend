@@ -21,7 +21,7 @@ const LoginForm = props => {
 
   return (
     <div className="row">
-      <div className="col-sm-push-2 col-sm-8 col-xs-12">
+      <div className="col-sm-8 col-xs-12">
         <article role="main">
           <ErrorBox
             title="There was a problem signing in"
@@ -30,12 +30,15 @@ const LoginForm = props => {
             setFocus={setFocus}
           />
           <header className="page-heading page-heading-without-breadcrumb">
-            <h1>
+            <h1 className="uikit-display-6">
               Sign in to {framework}
             </h1>
           </header>
           <p>
-            New to {framework}? <Link to={`${rootPath}/signup`}>Create your account.</Link>
+            New to {framework}?{' '}
+            <Link to={`${rootPath}/signup`}>
+              <strong>Create your account</strong>.
+            </Link>
           </p>
           <Form model={model} id="login" onSubmit={data => handleSubmit(data)}>
             <Textfield
@@ -65,7 +68,9 @@ const LoginForm = props => {
               }}
             />
             <p>
-              <Link to={`${rootPath}/reset-password`}>Forgot your password?</Link>
+              <Link to={`${rootPath}/reset-password`}>
+                <strong>Forgot your password?</strong>
+              </Link>
             </p>
             {currentlySending
               ? <LoadingButton />

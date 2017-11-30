@@ -123,7 +123,7 @@ class ProviderHistoryForm extends Component {
                   </div>
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-11">
-                      <button type="submit" className={`${styles.yellowButton} uikit-btn`}>
+                      <button type="submit" className="uikit-btn">
                         Filter date
                       </button>
                     </div>
