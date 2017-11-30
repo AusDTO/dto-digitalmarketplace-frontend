@@ -1,12 +1,16 @@
-host: dm-frontend
-command: npm run server
-buildpack: nodejs_buildpack
+command:  ./scripts/cf_run_app.sh
+# TODO: once prod is on new envs, switch back to supported buildpack
+buildpack: legacy_marketplace_nodejs_buildpack
 memory: 256M
 disk_quota: 1G
-instances: 1
-env:
-    NODE_ENV: production
-    NODE_MODULES_CACHE: false
+instances: 2
+services:
+- ups-dm-common
+- ups-dm-frontend
+routes:
+- route: dm-frontend.apps.b.cld.gov.au
+- route: marketplace.service.gov.au/bundle
+- route: marketplace.service.gov.au/2
+- route: marketplace.service.gov.au/orams
 applications:
-- name: dm-frontend-blue
-- name: dm-frontend-green
+- name: dm-frontend

@@ -30,12 +30,11 @@ deployment:
   development:
     branch: master
     commands:
-      - cf login -a https://api.system.y.cld.gov.au -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
-      - cf target -o dta -s marketplace
+      - cf login -a https://api.system.y.cld.gov.au -o dta -s marketplace -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
       - cf zero-downtime-push dm-dev-frontend -f manifest.yml --show-app-log
   production:
     tag: /[0-9]+(\.[0-9]+)*/
     commands:
-      - cf login -a https://api.system.platform.digital.gov.au -o dto -u $CF_USER_PROD -p $CF_PASSWORD_PROD
-      - cf push -f manifest-prod.yml
+      - cf login -a https://api.system.b.cld.gov.au -o dta -s marketplace -u $CF_USER_PROD -p $CF_PASSWORD_PROD
+      - cf zero-downtime-push dm-frontend -f manifest-prod.yml --show-app-log
       - ./scripts/ci-notify.sh
