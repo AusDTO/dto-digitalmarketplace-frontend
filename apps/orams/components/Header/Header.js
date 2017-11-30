@@ -46,6 +46,9 @@ class Header extends Component {
               <div id="react-bundle-auth-header">
                 <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
                   <li>
+                    <a href="mailto:orams@ato.gov.au">Contact</a>
+                  </li>
+                  <li>
                     {secondaryLink()}
                   </li>
                   {loggedIn && userType == 'buyer'
@@ -53,9 +56,6 @@ class Header extends Component {
                         <Link to={`${rootPath}/price-history`}>Price history</Link>
                       </li>
                     : ''}
-                  <li>
-                    <a href="mailto:orams@ato.gov.au">Contact</a>
-                  </li>
                   <li>
                     {loggedIn
                       ? <Link to={`${rootPath}/logout`}>Sign out</Link>

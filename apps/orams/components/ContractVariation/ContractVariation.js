@@ -125,7 +125,7 @@ class ContractVariation extends Component {
             />
             <br />
             <br />
-            <button type="submit" className={`${styles.yellowButton} uikit-btn`}>
+            <button type="submit" className="uikit-btn">
               Update profile
             </button>
           </Form>

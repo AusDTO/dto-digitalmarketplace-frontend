@@ -31,6 +31,7 @@ export default combineReducers({
     loginForm: {},
     editPriceForm: {},
     contractVariationForm: {},
-    providerHistoryForm: {}
+    providerHistoryForm: {},
+    signupForm: {}
   })
 })

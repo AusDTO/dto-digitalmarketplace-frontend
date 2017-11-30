@@ -75,12 +75,7 @@ const LoginForm = props => {
             </p>
             {currentlySending
               ? <LoadingButton />
-              : <input
-                  className={`${styles.yellowButton} uikit-btn`}
-                  type="submit"
-                  value="Sign in"
-                  onClick={submitClicked}
-                />}
+              : <input className="uikit-btn" type="submit" value="Sign in" onClick={submitClicked} />}
           </Form>
         </article>
       </div>

@@ -67,8 +67,9 @@ class Profile extends Component {
                     <div className="col-xs-12 col-sm-3">
                       <div className={styles.contactSection}>
                         <div className={styles.contactTitle}>Update your profile and service pricing</div>
+                        <br />
                         <a href="/orams/edit-profile">
-                          <div className={styles.yellowButton}>Edit Profile</div>
+                          <div className="uikit-btn">Edit Profile</div>
                         </a>
                       </div>
                     </div>

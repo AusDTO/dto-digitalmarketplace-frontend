@@ -161,7 +161,7 @@ export function updatePrice() {
     const price = {
       prices: state.editPricing.pricesArray
     }
-
+    window.scrollTo(0, 0)
     dispatch(sendingRequest(true))
 
     dmapi({
@@ -176,7 +176,6 @@ export function updatePrice() {
         dispatch(restartEditPricing())
         dispatch(actions.reset('contractVariationForm'))
         dispatch(setStep(1))
-        window.scrollTo(0, 0)
       }
       dispatch(sendingRequest(false))
     })
