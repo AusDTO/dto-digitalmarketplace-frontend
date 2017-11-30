@@ -92,6 +92,23 @@ export class Feedback extends React.Component {
                 messages={{ limitWords: 'Your feedback has exceeded the 150 word limit' }}
                 controlProps={{ limit: 150 }}
               />
+
+              <span className="uikit-control-input uikit-control-input--full">
+                <Control.checkbox
+                  model=".contact_for_user_research"
+                  id="contact_for_user_research"
+                  name="contact_for_user_research"
+                  value="yes"
+                  mapProps={{
+                    className: 'uikit-control-input__input'
+                  }}
+                />
+                <label className="uikit-control-input__text" htmlFor="contact_for_user_research">
+                  You are happy to be contacted to test new designs.
+                </label>
+              </span>
+              <br />
+              <br />
               <button className="uikit-btn">Send feedback</button>
             </LocalForm>}
       </span>

@@ -63,7 +63,7 @@ const BriefResponseSubmitted = props =>
               </p>)}
           <p>Best of luck!</p>
           <h2 className="uikit-display-4">
-            <b>The Marketplace is working to make procurement simpler, clearer, faster.</b>
+            <b>Help make this service simpler, clearer, faster.</b>
           </h2>
           <Feedback
             app={props.app}
