@@ -6,7 +6,7 @@ import { rootPath } from '../routes'
 
 const itemData = {
   title: 'Digital Marketplace insights:',
-  date: 'October 2017',
+  date: 'November 2017',
   items: [
     {
       heading: 'Who is buying?',
@@ -15,17 +15,17 @@ const itemData = {
           text: null,
           image: '189 entities have registered.svg',
           mobileImage: '189 entities have registered.svg',
-          imageAlt: 'Of the 186 entities registered on the Marketplace, 50% are Australian Government entities'
+          imageAlt: 'Of the 196 entities registered on the Marketplace, 50% are Australian Government entities'
         },
         {
           text: null,
           image: '>768 Top 5 agencies listing briefs on the Marketplace.svg',
-          mobileImage: '787 Top 5 buyers October ‘17.svg',
+          mobileImage: '787 Top 5 buyers October 17.svg',
           imageAlt: '',
           imageCaption:
-            'Top 5 agencies listing briefs on the Marketplace for October 2017 were the DTA (9 briefs), ' +
-            'IP Australia (5 briefs), Department of Industry and Innovation (4 briefs), ' +
-            'Tax Practitioners Board (4 briefs) and Australian Tax Office (3 briefs)'
+            'Top 5 agencies listing briefs on the Marketplace for November 2017 were the DTA (11 briefs), ' +
+            'Australian Tax Office (3 briefs), Department of Industry and Innovation (4 briefs), ' +
+            'Department of Human Services (3 briefs) and Administrative Appeals Tribunal (1 brief)'
         }
       ]
     },
@@ -36,34 +36,34 @@ const itemData = {
           text: null,
           image: '67%25 of all briefs have been open to all.svg',
           mobileImage: '67%25 of all briefs have been open to all.svg',
-          imageAlt: '67% of all briefs have been open to all'
+          imageAlt: '68% of all briefs have been open to all'
         },
         {
           text: null,
           image: '56%25 of briefs have been for digital specialists.svg',
           mobileImage: '56%25 of briefs have been for digital specialists.svg',
-          imageAlt: '56% of briefs have been for digital specialists'
+          imageAlt: '57% of briefs have been for digital specialists'
         },
         {
-          image: '768 81%25 of the value contracted has been awarded to SMEs.svg',
+          image: '768 81 of the value contracted has been awarded to SMEs.svg',
           mobileImage: '767 value contracted since launch awarded to SMEs.svg',
           imageAlt:
-            '77% Of the dollar value contracted through the Marketplace since 29 August 2016 has been awarded to SMEs'
+            '72% Of the dollar value contracted through the Marketplace since 29 August 2016 has been awarded to SMEs'
         },
         {
           image: '768 $ contracted since launch.svg',
           mobileImage: '767 $ contracted since launch.svg',
-          imageAlt: '$47.19 Contracted through the Marketplace since 29 August 2016. $2.95M this month'
+          imageAlt: '$55.13 Contracted through the Marketplace since 29 August 2016. $7.46M this month'
         },
         {
           image: '768 num of sellers.svg',
           mobileImage: '768 num of sellers.svg',
-          imageAlt: '702 sellers have registered to offer digital and ICT services, 57 new sellers this month'
+          imageAlt: '730 sellers have registered to offer digital and ICT services, 28 new sellers this month'
         },
         {
           image: '768 total opportunities.svg',
           mobileImage: '767 total opportunities.svg',
-          imageAlt: '339 Total opportunities since 29 August 2016. 47 new briefs this month'
+          imageAlt: '374 Total opportunities since 29 August 2016. 35 new briefs this month'
         }
       ]
     },
@@ -76,7 +76,7 @@ const itemData = {
           image: '>768 Briefs by phase.svg',
           mobileImage: '767 briefs by phase.svg',
           imageAlt: '',
-          imageCaption: 'Briefs by phase, 16% Pre-discovery, 34% Discovery, 18% Alpha, 17% Beta, 5% Live and 10% Other'
+          imageCaption: 'Briefs by phase, 16% Pre-discovery, 34% Discovery, 14% Alpha, 14% Beta, 8% Live and 15% Other'
         },
         {
           text: null,
@@ -95,9 +95,9 @@ const itemData = {
           imageAlt: '',
           imageCaption:
             'Top 5 areas of expertise since 29 August 2016, , ' +
-            '61 Software engineering and development, 48 User research and design, ' +
-            '37 Agile delivery and governance, 12 Change training and transformation,' +
-            '10 Cyber security, 23 Other areas of experience and 148 Outcomes briefs (area not specified)'
+            '66 Software engineering and development, 52 User research and design, ' +
+            '41 Agile delivery and governance, 12 Change training and transformation,' +
+            '12 Cyber security, 30 Other areas of experience and 161 Outcomes briefs (area not specified)'
         }
       ]
     },
@@ -112,18 +112,18 @@ const itemData = {
           imageAlt: '',
           imageCaption:
             'number of sellers per area of expertise, ' +
-            '223 Strategy and policy, 322 User research and design, ' +
-            '382 Agile delivery and governance, 390 Software engineering and development,' +
-            '175 Support and oporations, 144 Content and publishing, ' +
-            '305 Change, training and transformation, 128 Marketing, communications and engagement, ' +
-            '193 Cyber security, 160 data science and 144 Emerging technologies'
+            '233 Strategy and policy, 332 User research and design, ' +
+            '397 Agile delivery and governance, 408 Software engineering and development,' +
+            '185 Support and operations, 150 Content and publishing, ' +
+            '312 Change, training and transformation, 137 Marketing, communications and engagement, ' +
+            '204 Cyber security, 168 data science and 148 Emerging technologies'
         },
         {
           text: null,
           fullWidth: true,
           image: '768 average seller response.svg',
           mobileImage: '767 average num of responses per brief.svg',
-          imageAlt: 'Buyers receive on average 12 responses per brief as of October 2017'
+          imageAlt: 'Buyers receive on average 12 responses per brief as of November 2017'
         }
       ]
     },
@@ -137,24 +137,24 @@ const itemData = {
           imageAlt: '',
           imageCaption:
             'Top 10 sellers awarded contracts over 3 months, ' +
-            'HiTech group (SME) 7 contracts, Oakton (Large Enterprise) 6 contracts,' +
-            'Paxus (SME) 6 contracts, 2XM Technology Pty Ltd (SME) 5 contracts,' +
-            'Paper Giant (SME) 4 contracts, Adelphi Digital Consulting Group (SME) 4 contracts,' +
-            'Senuamedia (SME) 3 contracts, Tobias & Tobias (SME) 2 contracts, ' +
-            'Thoughtworks (Large Enterprise) 2 contracts,' +
-            'Pragmateam (SME) 2 contracts, Other SME 39 contracts, Other Large Enterprise 11 contracts '
+            'Oakton (Large Enterprise) 9 contracts, HiTech group (SME) 7 contracts, ' +
+            'Paxus (SME) 6 contracts, Paper Giant (SME) 6 contracts, 2XM Technology Pty Ltd (SME) 5 contracts,' +
+            'Adelphi Digital Consulting Group (SME) 4 contracts,' +
+            'Thoughtworks (Large Enterprise) 3 contracts, Talentpool Recruitment (SME) 3 contracts' +
+            'Zen Ex Machina (SME) 3 contracts, Senuamedia (SME) 3 contracts, ' +
+            'Other SME 55 contracts, Other Large Enterprise 15 contracts '
         },
         {
           text: null,
           image: 'contracts awarded by volume.svg',
           mobileImage: 'contracts awarded by volume.svg',
-          imageAlt: '75% Contracts have been awarded by volume to SME sellers this month.'
+          imageAlt: '70% Contracts have been awarded by volume to SME sellers this month.'
         },
         {
           text: null,
-          image: 'contracts awarded this month.svg',
-          mobileImage: 'contracts awarded this month.svg',
-          imageAlt: '24 Briefs have been contracted this month.'
+          image: 'num contracts awarded this month.svg',
+          mobileImage: 'num contracts awarded this month.svg',
+          imageAlt: '27 Briefs have been contracted this month.'
         }
       ]
     }
