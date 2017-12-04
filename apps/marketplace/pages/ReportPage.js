@@ -15,12 +15,12 @@ const itemData = {
           text: null,
           image: '189 entities have registered.svg',
           mobileImage: '189 entities have registered.svg',
-          imageAlt: 'Of the 186 entities registered on the Marketplace, 50% are Australian Government entities'
+          imageAlt: 'Of the 196 entities registered on the Marketplace, 50% are Australian Government entities'
         },
         {
           text: null,
           image: '>768 Top 5 agencies listing briefs on the Marketplace.svg',
-          mobileImage: '787 Top 5 buyers October ‘17.svg',
+          mobileImage: '787 Top 5 buyers October 17.svg',
           imageAlt: '',
           imageCaption:
             'Top 5 agencies listing briefs on the Marketplace for November 2017 were the DTA (11 briefs), ' +
@@ -45,7 +45,7 @@ const itemData = {
           imageAlt: '57% of briefs have been for digital specialists'
         },
         {
-          image: '768 81%25 of the value contracted has been awarded to SMEs.svg',
+          image: '768 81 of the value contracted has been awarded to SMEs.svg',
           mobileImage: '767 value contracted since launch awarded to SMEs.svg',
           imageAlt:
             '72% Of the dollar value contracted through the Marketplace since 29 August 2016 has been awarded to SMEs'
@@ -152,8 +152,8 @@ const itemData = {
         },
         {
           text: null,
-          image: 'contracts awarded this month.svg',
-          mobileImage: 'contracts awarded this month.svg',
+          image: 'num contracts awarded this month.svg',
+          mobileImage: 'num contracts awarded this month.svg',
           imageAlt: '27 Briefs have been contracted this month.'
         }
       ]
