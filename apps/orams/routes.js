@@ -18,6 +18,7 @@ import DisclaimerPage from 'orams/pages/DisclaimerPage'
 import CopyrightPage from 'orams/pages/CopyrightPage'
 import SignupPage from 'orams/pages/SignupPage'
 import InvitationPage from 'orams/pages/InvitationPage'
+import CreatePasswordPage from 'orams/pages/CreatePasswordPage'
 
 export const rootPath = '/orams'
 
@@ -39,6 +40,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/disclaimer`} component={DisclaimerPage} />
     <Route path={`${rootPath}/copyright`} component={CopyrightPage} />
     <Route path={`${rootPath}/send-invite/:token`} component={InvitationPage} />
+    <Route path={`${rootPath}/create-user/:token`} component={CreatePasswordPage} />
     <Route component={NotFound} />
   </Switch>
 
