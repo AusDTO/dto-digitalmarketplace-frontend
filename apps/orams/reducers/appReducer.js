@@ -16,7 +16,8 @@ import {
   CLEAR_ERROR_MESSAGES,
   SET_AUTH,
   PROFILE_UPDATED,
-  DISPLAY_STEP_2
+  DISPLAY_STEP_2,
+  SET_INVITATION_DATA
 } from 'orams/constants/constants'
 
 // The initial application state
@@ -64,6 +65,12 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         displayStepTwo: true
+      }
+
+    case SET_INVITATION_DATA:
+      return {
+        ...state,
+        invitationData: action.invitationData
       }
 
     default:

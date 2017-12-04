@@ -28,7 +28,8 @@ import {
   SET_ERROR_MESSAGE,
   SET_AUTH,
   CLEAR_ERROR_MESSAGES,
-  DISPLAY_STEP_2
+  DISPLAY_STEP_2,
+  SET_INVITATION_DATA
 } from 'orams/constants/constants'
 import { LOGIN_FAILED, GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -53,6 +54,10 @@ export function setAuthState(newState) {
 
 export function displaySignupStepTwo() {
   return { type: DISPLAY_STEP_2 }
+}
+
+export function setInvitationData(invitationData) {
+  return { type: SET_INVITATION_DATA, invitationData }
 }
 
 export const fetchAuth = () => dispatch => {
@@ -112,6 +117,22 @@ export const signup = data => dispatch => {
     } else {
       dispatch(clearErrorMessages())
       dispatch(displaySignupStepTwo())
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const loadInvitation = token => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: `/send-invite/${token}`
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(clearErrorMessages())
+      dispatch(setInvitationData(response.data))
     }
     dispatch(sendingRequest(false))
   })
