@@ -17,14 +17,17 @@ import {
   SET_AUTH,
   PROFILE_UPDATED,
   DISPLAY_STEP_2,
-  SET_INVITATION_DATA
+  SET_INVITATION_DATA,
+  SET_USER_TO_CREATE_DATA,
+  CREATE_USER_SUCCESS
 } from 'orams/constants/constants'
 
 // The initial application state
 const initialState = {
   currentlySending: false,
   errorMessage: null,
-  loggedIn: false
+  loggedIn: false,
+  createUserSuccess: false
 }
 
 const appReducer = (state = initialState, action) => {
@@ -71,6 +74,18 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         invitationData: action.invitationData
+      }
+
+    case SET_USER_TO_CREATE_DATA:
+      return {
+        ...state,
+        userToCreateData: action.userToCreateData
+      }
+
+    case CREATE_USER_SUCCESS:
+      return {
+        ...state,
+        createUserSuccess: true
       }
 
     default:

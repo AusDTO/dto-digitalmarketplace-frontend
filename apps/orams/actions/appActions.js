@@ -29,7 +29,9 @@ import {
   SET_AUTH,
   CLEAR_ERROR_MESSAGES,
   DISPLAY_STEP_2,
-  SET_INVITATION_DATA
+  SET_INVITATION_DATA,
+  SET_USER_TO_CREATE_DATA,
+  CREATE_USER_SUCCESS
 } from 'orams/constants/constants'
 import { LOGIN_FAILED, GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -59,6 +61,12 @@ export function displaySignupStepTwo() {
 export function setInvitationData(invitationData) {
   return { type: SET_INVITATION_DATA, invitationData }
 }
+
+export function setUserToCreateData(userToCreateData) {
+  return { type: SET_USER_TO_CREATE_DATA, userToCreateData }
+}
+
+export const createUserSuccess = () => ({ type: CREATE_USER_SUCCESS })
 
 export const fetchAuth = () => dispatch => {
   dispatch(sendingRequest(true))
@@ -133,6 +141,49 @@ export const loadInvitation = token => dispatch => {
     } else {
       dispatch(clearErrorMessages())
       dispatch(setInvitationData(response.data))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const loadUserToCreate = token => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'get',
+    url: `/tokens/${token}`
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(clearErrorMessages())
+      dispatch(setUserToCreateData(response.data))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const createUser = data => (dispatch, getState) => {
+  const state = getState()
+
+  const body = {
+    email_address: state.app.userToCreateData.email_address,
+    name: state.app.userToCreateData.name,
+    framework: 'orams',
+    user_type: 'buyer',
+    password: data.password
+  }
+
+  dispatch(sendingRequest(true))
+  dmapi({
+    method: 'post',
+    url: '/users',
+    data: JSON.stringify(body)
+  }).then(response => {
+    if (response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(clearErrorMessages())
+      dispatch(createUserSuccess())
     }
     dispatch(sendingRequest(false))
   })
