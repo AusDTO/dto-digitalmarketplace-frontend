@@ -155,7 +155,6 @@ export const loadUserToCreate = token => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      console.log("RESPONSE", response.data)
       dispatch(clearErrorMessages())
       dispatch(setUserToCreateData(response.data))
     }

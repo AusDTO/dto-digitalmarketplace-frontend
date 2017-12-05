@@ -29,7 +29,7 @@ const RequestResetEmailForm = props => {
               ? <PageAlert as="success">
                   <span>
                     If the email address you&#39;ve entered belongs to an ORAMS account, we&#39;ll send a link to reset
-                    the password.
+                    the password. Check your spam folder if it does not arrive.
                   </span>
                 </PageAlert>
               : <ErrorBox
@@ -51,7 +51,7 @@ const RequestResetEmailForm = props => {
                 name="email_address"
                 id="email_address"
                 htmlFor="email_address"
-                description="Email address"
+                label="Enter your email address registered to the ORAMS Portal"
                 validators={{ required, validEmail }}
                 messages={{
                   required: 'Your email is required',
