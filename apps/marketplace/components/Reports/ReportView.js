@@ -17,6 +17,13 @@ const ReportView = props => {
             <h1 className={`${styles.reportViewTitle} uikit-display-4`}>
               {title} <span className={styles.reportViewDate}>{date}</span>
             </h1>
+            <a
+              rel="external"
+              target="_blank"
+              href="/static/media/documents/Digital Marketplace - November 2017 Insights.pdf"
+            >
+              View this report as a PDF (468KB)
+            </a>
           </div>
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
           <span>
