@@ -49,7 +49,7 @@ const PricingList = props => {
                 )}
               </article>
             : <PageAlert as="info">
-                <h4>There where no results for your search</h4>
+                <h4>There were no results for your search</h4>
               </PageAlert>}
         </div>}
     </div>
