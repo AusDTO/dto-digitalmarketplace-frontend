@@ -114,7 +114,7 @@ class ContractVariation extends Component {
               value="agree"
               label={
                 <span>
-                  I am <strong>{supplier.contact}</strong> of <strong>{supplier.name}</strong> ({supplier.abn}) and I
+                  I am <strong>{supplier.representative}</strong> of <strong>{supplier.name}</strong> ({supplier.abn}) and I
                   agree to the terms set out in the ORAMS agreement
                 </span>
               }
