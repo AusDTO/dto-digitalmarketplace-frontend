@@ -67,20 +67,21 @@ export function setUserToCreateData(userToCreateData) {
   return { type: SET_USER_TO_CREATE_DATA, userToCreateData }
 }
 
-export function setAuthFrameworkError() {
-  return { type: SET_AUTH_FRAMEWORK_ERROR }
+export function setAuthFrameworkError(frameworkError) {
+  return { type: SET_AUTH_FRAMEWORK_ERROR, frameworkError }
 }
 
 export const createUserSuccess = () => ({ type: CREATE_USER_SUCCESS })
 
 export const fetchAuth = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setAuthFrameworkError(false))
   dmapi({ url: '/ping' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
       if (response.data.framework === 'digital-marketplace') {
-        dispatch(setAuthFrameworkError())
+        dispatch(setAuthFrameworkError(true))
       }
       dispatch(setAuthState(response.data))
     }
@@ -90,6 +91,7 @@ export const fetchAuth = () => dispatch => {
 
 export const login = data => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setAuthFrameworkError(false))
   dmapi({
     method: 'post',
     url: '/login',
@@ -98,7 +100,10 @@ export const login = data => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
-      dispatch(clearErrorMessages())
+      dispatch(clearErrorMessages(true))
+      if (response.data.framework === 'digital-marketplace') {
+        dispatch(setAuthFrameworkError(true))
+      }
       dispatch(setAuthState(response.data))
     }
     dispatch(sendingRequest(false))

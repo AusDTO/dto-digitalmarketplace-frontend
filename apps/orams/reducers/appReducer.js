@@ -37,7 +37,7 @@ const appReducer = (state = initialState, action) => {
     case SET_AUTH_FRAMEWORK_ERROR:
       return {
         ...state,
-        frameworkError: true
+        frameworkError: action.frameworkError
       }
 
     case SENDING_REQUEST:
