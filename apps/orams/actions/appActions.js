@@ -31,7 +31,8 @@ import {
   DISPLAY_STEP_2,
   SET_INVITATION_DATA,
   SET_USER_TO_CREATE_DATA,
-  CREATE_USER_SUCCESS
+  CREATE_USER_SUCCESS,
+  SET_AUTH_FRAMEWORK_ERROR
 } from 'orams/constants/constants'
 import { LOGIN_FAILED, GENERAL_ERROR } from 'orams/constants/messageConstants'
 import dmapi from 'orams/services/apiClient'
@@ -66,6 +67,10 @@ export function setUserToCreateData(userToCreateData) {
   return { type: SET_USER_TO_CREATE_DATA, userToCreateData }
 }
 
+export function setAuthFrameworkError() {
+  return { type: SET_AUTH_FRAMEWORK_ERROR }
+}
+
 export const createUserSuccess = () => ({ type: CREATE_USER_SUCCESS })
 
 export const fetchAuth = () => dispatch => {
@@ -74,6 +79,9 @@ export const fetchAuth = () => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
+      if (response.data.framework === 'digital-marketplace') {
+        dispatch(setAuthFrameworkError())
+      }
       dispatch(setAuthState(response.data))
     }
     dispatch(sendingRequest(false))

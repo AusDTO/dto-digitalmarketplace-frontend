@@ -19,7 +19,8 @@ import {
   DISPLAY_STEP_2,
   SET_INVITATION_DATA,
   SET_USER_TO_CREATE_DATA,
-  CREATE_USER_SUCCESS
+  CREATE_USER_SUCCESS,
+  SET_AUTH_FRAMEWORK_ERROR
 } from 'orams/constants/constants'
 
 // The initial application state
@@ -27,11 +28,18 @@ const initialState = {
   currentlySending: false,
   errorMessage: null,
   loggedIn: false,
-  createUserSuccess: false
+  createUserSuccess: false,
+  frameworkError: false
 }
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_AUTH_FRAMEWORK_ERROR:
+      return {
+        ...state,
+        frameworkError: true
+      }
+
     case SENDING_REQUEST:
       return {
         ...state,
