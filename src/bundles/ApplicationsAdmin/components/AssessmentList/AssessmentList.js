@@ -96,7 +96,7 @@ class AssessmentList extends React.Component {
           </Modal>
         </div>
         {sorted_brief_assessments.map((brief, i) => {
-          let closingTime = new Date(brief.closing_at + ' UTC').setHours(18)
+          let closingTime = new Date(brief.closing_at).setHours(18)
           let date = isBefore(closingTime, new Date())
             ? 'closed on ' + brief.closing_at
             : `${distanceInWords(new Date(), closingTime, { addSuffix: true })} (${format(
