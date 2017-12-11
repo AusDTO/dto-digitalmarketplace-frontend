@@ -15,7 +15,8 @@ import {
   SET_ERROR_MESSAGE,
   CLEAR_ERROR_MESSAGES,
   SET_AUTH,
-  FEEDBACK_SUCCESS
+  FEEDBACK_SUCCESS,
+  SET_AUTH_FRAMEWORK_ERROR
 } from '../constants/constants'
 
 // The initial application state
@@ -26,11 +27,18 @@ const initialState = {
   loggedIn: false,
   supplierCode: null,
   emailAddress: null,
-  userType: ''
+  userType: '',
+  frameworkError: false
 }
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_AUTH_FRAMEWORK_ERROR:
+      return {
+        ...state,
+        frameworkError: action.frameworkError
+      }
+
     case FEEDBACK_SUCCESS:
       return {
         ...state,

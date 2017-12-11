@@ -9,7 +9,7 @@ const FrameworkError = props => {
       <div className={styles.container}>
         <PageAlert as="error">
           <h4>
-            Only ORAMS accounts can access this page.
+            Only {props.framework} accounts can access this page.
           </h4>
         </PageAlert>
       </div>

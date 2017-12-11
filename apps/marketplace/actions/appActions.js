@@ -28,7 +28,8 @@ import {
   SET_ERROR_MESSAGE,
   CLEAR_ERROR_MESSAGES,
   SET_AUTH,
-  FEEDBACK_SUCCESS
+  FEEDBACK_SUCCESS,
+  SET_AUTH_FRAMEWORK_ERROR
 } from '../constants/constants'
 import { GENERAL_ERROR, LOGIN_FAILED } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
@@ -51,12 +52,20 @@ export function setAuthState(newState) {
   return { type: SET_AUTH, newState }
 }
 
+export function setAuthFrameworkError(frameworkError) {
+  return { type: SET_AUTH_FRAMEWORK_ERROR, frameworkError }
+}
+
 export const fetchAuth = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setAuthFrameworkError(false))
   dmapi({ url: '/ping' }).then(response => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
+      if (response.data.framework === 'orams') {
+        dispatch(setAuthFrameworkError(true))
+      }
       dispatch(setAuthState(response.data))
     }
     dispatch(sendingRequest(false))
@@ -65,6 +74,7 @@ export const fetchAuth = () => dispatch => {
 
 export const login = data => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(setAuthFrameworkError(false))
   dmapi({
     method: 'post',
     url: '/login',
@@ -74,6 +84,9 @@ export const login = data => dispatch => {
       dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
       dispatch(clearErrorMessages())
+      if (response.data.framework === 'orams') {
+        dispatch(setAuthFrameworkError(true))
+      }
       dispatch(setAuthState(response.data))
     }
     dispatch(sendingRequest(false))

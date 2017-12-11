@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 import LoadingIndicator from 'shared/LoadingIndicator/LoadingIndicator'
 import { rootPath } from 'orams/routes'
-import FrameworkError from 'orams/components/FrameworkError/FrameworkError'
+import FrameworkError from 'shared/FrameworkError/FrameworkError'
 
 const PrivateRouteComponent = props => {
   const { component: Component, loggedIn, frameworkError, customRedirectPath, currentlySending, ...rest } = props
@@ -13,7 +13,7 @@ const PrivateRouteComponent = props => {
       {...rest}
       render={values => {
         if (frameworkError) {
-          return <FrameworkError {...values} />
+          return <FrameworkError framework="ORAMS" {...values} />
         }
 
         if (loggedIn) {
