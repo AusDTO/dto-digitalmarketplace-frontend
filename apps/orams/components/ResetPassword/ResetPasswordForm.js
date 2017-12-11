@@ -69,7 +69,6 @@ const ResetPasswordForm = props => {
                   passwordLength: 'Your password should be at least 10 characters'
                 }}
               />
-              <br />
               <Textfield
                 model={`${model}.confirmPassword`}
                 name="confirmPassword"
