@@ -4,13 +4,18 @@ import { connect } from 'react-redux'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 import LoadingIndicator from 'shared/LoadingIndicator/LoadingIndicator'
 import { rootPath } from 'orams/routes'
+import FrameworkError from 'shared/FrameworkError/FrameworkError'
 
 const PrivateRouteComponent = props => {
-  const { component: Component, loggedIn, customRedirectPath, currentlySending, ...rest } = props
+  const { component: Component, loggedIn, frameworkError, customRedirectPath, currentlySending, ...rest } = props
   return (
     <Route
       {...rest}
       render={values => {
+        if (frameworkError) {
+          return <FrameworkError framework="ORAMS" {...values} />
+        }
+
         if (loggedIn) {
           return <Component {...values} />
         }
@@ -42,7 +47,8 @@ PrivateRouteComponent.propTypes = {
 
 const mapStateToProps = state => ({
   loggedIn: state.app.loggedIn,
-  currentlySending: state.app.currentlySending
+  currentlySending: state.app.currentlySending,
+  frameworkError: state.app.frameworkError
 })
 
 const PrivateRoute = withRouter(connect(mapStateToProps)(PrivateRouteComponent))

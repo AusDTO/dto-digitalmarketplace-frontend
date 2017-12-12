@@ -250,12 +250,12 @@ const TermsAndConditions = props => {
           <a href="mailto:orams@ato.gov.au">orams@ato.gov.au</a>.
         </p>
       </section>
-      <section className="tou-section" id="indeminity">
+      <section className="tou-section" id="indemnity">
+        <h2>Indemnity</h2>
+        <a href="#" className="scroll-to-top">
+          Back to top of page <b>&uarr;</b>
+        </a>
         <p>
-          <h2>Indemnity</h2>
-          <a href="#" className="scroll-to-top">
-            Back to top of page <b>&uarr;</b>
-          </a>
           You must at all times indemnify and hold harmless the DTA and our personnel and keep them indemnified from and
           against all loss (including reasonable legal costs and expenses) or liability incurred by those indemnified
           arising from any claim, demand, suit, action or proceeding by any person against any of those indemnified
