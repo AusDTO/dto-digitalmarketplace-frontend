@@ -63,7 +63,7 @@ export const fetchAuth = () => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      if (response.data.framework === 'orams') {
+      if (response.data.framework !== 'digital-marketplace') {
         dispatch(setAuthFrameworkError(true))
       }
       dispatch(setAuthState(response.data))
