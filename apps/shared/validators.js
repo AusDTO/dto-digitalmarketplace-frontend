@@ -4,6 +4,7 @@ import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid'
 import isFuture from 'date-fns/is_future'
+import isBefore from 'date-fns/is_before'
 import { isValidABN } from 'abnacn-validator'
 import values from 'lodash/values'
 
@@ -31,6 +32,23 @@ export const validDate = val => {
     return true
   }
   return false
+}
+
+export const validMonth = val => {
+  const month = val ? val.split('-')[1] : ''
+  if (month > 12) {
+    return false
+  }
+
+  return true
+}
+
+export const validSequenceOfDates = (start_date, end_date) => {
+  if (isBefore(start_date, end_date) === false) {
+    return false
+  }
+
+  return true
 }
 
 export const validDateNotInFuture = val => {

@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { Form, Control } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required, validDate, validPriceRange } from 'shared/validators'
+import { required, validDate, validPriceRange, validMonth, validSequenceOfDates } from 'shared/validators'
 import Datefield from 'shared/form/Datefield'
 import RadioList from 'shared/form/RadioList'
 import SubmitForm from 'shared/form/SubmitForm'
@@ -127,7 +127,8 @@ class EditPriceForm extends Component {
                   model={`${model}.start_date`}
                   id="start_date_error"
                   messages={{
-                    validDate: 'Start date is required and must be in the future.'
+                    validDate: 'Start date is required and must be in the future.',
+                    validMonth: 'Month can only be from 1 to 12.'
                   }}
                 />
                 <Control
@@ -143,7 +144,8 @@ class EditPriceForm extends Component {
                     label: 'Start date'
                   }}
                   validators={{
-                    validDate
+                    validDate,
+                    validMonth
                   }}
                 />
                 <br />
@@ -151,7 +153,8 @@ class EditPriceForm extends Component {
                   model={`${model}.end_date`}
                   id="end_date_error"
                   messages={{
-                    validDate: 'End date is required and must be in the future.'
+                    validDate: 'End date is required and must be in the future.',
+                    validMonth: 'Month can only be from 1 to 12.'
                   }}
                 />
                 <Control
