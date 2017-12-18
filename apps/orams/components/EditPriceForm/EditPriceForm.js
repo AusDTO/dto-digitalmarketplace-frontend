@@ -90,7 +90,7 @@ class EditPriceForm extends Component {
             validators={{
               '': {
                 // Form-level validator
-                validSequenceOfDates: vals => isBefore(vals.start_date, vals.end_date)
+                validSequenceOfDates: vals => vals.date === 'custom' ? isBefore(vals.start_date, vals.end_date) : true
               }
             }}
             onSubmitFailed={onSubmitFailed}
