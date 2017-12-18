@@ -100,13 +100,17 @@ class Profile extends Component {
                           <div className={styles.title}>Operates in</div>
                         </div>
                         <div className="col-sm-8 col-sm-push-1 col-xs-12">
-                          {profileData.regions.map((region, id = uniqueID()) =>
-                            <div key={id}>
-                              <div>
-                                {region.state + ' ' + region.name}
+                          <input type="checkbox" className="read-more-state" id="post-2" />
+                          <div className="read-more-wrap">
+                            {profileData.regions.map((region, id = uniqueID()) =>
+                              <div key={id}>
+                                <div className={id > 3 ? 'read-more-target' : ''}>
+                                  {region.state + ' ' + region.name}
+                                </div>
                               </div>
-                            </div>
-                          )}
+                            )}
+                          </div>
+                          <label for="post-2" className="read-more-trigger"></label>
                         </div>
                       </div>
                       <div className={styles.separator} />

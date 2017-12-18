@@ -368,3 +368,41 @@ label.text-box-number-label {
 .right-button-margin {
   margin-right: 21px;
 }
+
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  line-height: 2;
+  margin-top: 20px;
+  border-bottom: solid 1px #5bcbe3;
+}
+
+.read-more-trigger:hover {
+  background-color: #5bcbe3;
+  color: #313131;
+}

@@ -5,14 +5,15 @@ import { bindActionCreators } from 'redux'
 import styles from './PricingList.scss'
 
 const PricingList = props => {
-  const { pricesData, hideNav } = props
+  const { pricesData, hideNav, serviceToEdit } = props
   const { prices } = pricesData
 
   return (
     <div className={styles.container}>
       <header>
         <h1 className="uikit-display-5" tabIndex="-1">
-          Pricing
+          Pricing for {serviceToEdit.serviceName}
+          <span>{serviceToEdit.subCategoryName ? ' ' + '(' + serviceToEdit.subCategoryName + ')' : ''}</span>
         </h1>
         <div className={styles.stepTitle}>Step 2 of 4</div>
         <div

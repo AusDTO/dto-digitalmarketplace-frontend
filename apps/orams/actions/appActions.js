@@ -101,7 +101,7 @@ export const login = data => dispatch => {
       dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
       dispatch(clearErrorMessages(true))
-      if (response.data.framework === 'digital-marketplace') {
+      if (response.data.framework !== 'orams') {
         dispatch(setAuthFrameworkError(true))
       }
       dispatch(setAuthState(response.data))
