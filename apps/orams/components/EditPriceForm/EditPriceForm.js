@@ -6,13 +6,14 @@ import { bindActionCreators } from 'redux'
 import { Form, Control } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required, validDate, validPriceRange, validMonth, validSequenceOfDates } from 'shared/validators'
+import { required, validDate, validPriceRange, validMonth } from 'shared/validators'
 import Datefield from 'shared/form/Datefield'
 import RadioList from 'shared/form/RadioList'
 import SubmitForm from 'shared/form/SubmitForm'
 import styles from './EditPriceForm.scss'
 import StatefulError from 'shared/form/StatefulError'
 import ErrorBox from 'shared/form/ErrorBox'
+import isBefore from 'date-fns/is_before'
 
 class EditPriceForm extends Component {
   render() {
@@ -40,6 +41,9 @@ class EditPriceForm extends Component {
         hasFocused = true
         e.focus()
       }
+    }
+    const onSubmitFailed = () => {
+      window.scrollTo(0, 0)
     }
 
     return (
@@ -83,6 +87,13 @@ class EditPriceForm extends Component {
             id="BusinessDetails__create"
             validateOn="submit"
             onSubmit={data => handlePriceSubmit(data, priceData.capPrice)}
+            validators={{
+              '': {
+                // Form-level validator
+                validSequenceOfDates: vals => (vals.date === 'custom' ? isBefore(vals.start_date, vals.end_date) : true)
+              }
+            }}
+            onSubmitFailed={onSubmitFailed}
           >
             <Textfield
               model={`${model}.price`}
@@ -129,6 +140,13 @@ class EditPriceForm extends Component {
                   messages={{
                     validDate: 'Start date is required and must be in the future.',
                     validMonth: 'Month can only be from 1 to 12.'
+                  }}
+                />
+                <StatefulError
+                  model={`${model}`}
+                  id="validSequenceOfDates"
+                  messages={{
+                    validSequenceOfDates: 'The start date must be prior to the end date.'
                   }}
                 />
                 <Control
