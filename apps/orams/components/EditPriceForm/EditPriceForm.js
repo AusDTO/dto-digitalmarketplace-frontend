@@ -90,7 +90,7 @@ class EditPriceForm extends Component {
             validators={{
               '': {
                 // Form-level validator
-                validSequenceOfDates: vals => vals.date === 'custom' ? isBefore(vals.start_date, vals.end_date) : true
+                validSequenceOfDates: vals => (vals.date === 'custom' ? isBefore(vals.start_date, vals.end_date) : true)
               }
             }}
             onSubmitFailed={onSubmitFailed}
@@ -143,11 +143,11 @@ class EditPriceForm extends Component {
                   }}
                 />
                 <StatefulError
-                    model={`${model}`}
-                    id="validSequenceOfDates"
-                    messages={{
-                        validSequenceOfDates: 'The start date must be prior to the end date.'
-                    }}
+                  model={`${model}`}
+                  id="validSequenceOfDates"
+                  messages={{
+                    validSequenceOfDates: 'The start date must be prior to the end date.'
+                  }}
                 />
                 <Control
                   model={`${model}.start_date`}

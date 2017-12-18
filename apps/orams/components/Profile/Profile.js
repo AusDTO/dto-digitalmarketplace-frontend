@@ -110,7 +110,7 @@ class Profile extends Component {
                               </div>
                             )}
                           </div>
-                          <label for="post-2" className="read-more-trigger"></label>
+                          <label for="post-2" className="read-more-trigger" />
                         </div>
                       </div>
                       <div className={styles.separator} />
