@@ -32,15 +32,15 @@ export class LoginPageComponent extends BaseForm {
   }
 
   render() {
-    const { model, loggedIn, handleSubmit, currentlySending } = this.props
-    const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { model, loggedIn, handleSubmit, currentlySending, userType } = this.props
+    const initialPage = userType === 'buyer' ? '/2/buyer-dashboard' : '/2/seller-dashboard'
 
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
             {loggedIn
-              ? <Redirect to={from} />
+              ? <Redirect to={initialPage} />
               : <LoginForm
                   submitClicked={this.onSubmitClicked}
                   handleSubmit={handleSubmit}
