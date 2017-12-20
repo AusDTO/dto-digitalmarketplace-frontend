@@ -85,13 +85,17 @@ class SellerProfile extends Component {
                           <div className={styles.title}>Operates in</div>
                         </div>
                         <div className="col-sm-8 col-sm-push-1 col-xs-12">
+                          <input type="checkbox" className="read-more-state" id="post-2" />
+                          <div className="read-more-wrap">
                           {supplierData.regions.map((region, id = uniqueID()) =>
                             <div key={id}>
-                              <div>
+                              <div className={id > 3 ? 'read-more-target' : ''}>
                                 {region.state + ' ' + region.name}
                               </div>
                             </div>
                           )}
+                          </div>
+                          <label for="post-2" className="read-more-trigger" />
                         </div>
                       </div>
                       <div className={styles.separator} />
