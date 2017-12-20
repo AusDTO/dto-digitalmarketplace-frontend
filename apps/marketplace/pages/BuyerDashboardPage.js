@@ -3,21 +3,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom'
-import SellerDashboard from 'marketplace/components/SellerDashboard/SellerDashboard'
+import BuyerDashboard from 'marketplace/components/BuyerDashboard/BuyerDashboard'
 
-class SellerDashboardPage extends Component {
+class BuyerDashboardPage extends Component {
   render() {
     const { match } = this.props
 
     return (
       <Switch>
-        <Route exact path={match.url} render={() => <SellerDashboard {...this.props} />} />
+        <Route exact path={match.url} render={() => <BuyerDashboard {...this.props} />} />
       </Switch>
     )
   }
 }
 
-SellerDashboardPage.propTypes = {
+BuyerDashboardPage.propTypes = {
   match: PropTypes.object.isRequired
 }
 
@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => {
   return {}
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerDashboardPage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardPage))

@@ -10,6 +10,7 @@ import ReportPage from './pages/ReportPage'
 import NotFound from './components/NotFound'
 import CollaboratePage from './pages/CollaboratePage'
 import SellerDashboardPage from './pages/SellerDashboardPage'
+import BuyerDashboardPage from './pages/BuyerDashboardPage'
 
 export const rootPath = '/2'
 
@@ -26,6 +27,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/collaborate/:stage`} component={CollaboratePage} />
     <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
+    <Route path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <Route component={NotFound} />
   </Switch>
 
