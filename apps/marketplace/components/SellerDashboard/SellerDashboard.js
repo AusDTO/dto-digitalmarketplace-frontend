@@ -2,6 +2,7 @@
 import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
 import { bindActionCreators } from 'redux'
+import Pagination from 'shared/Pagination/Pagination';
 import styles from './SellerDashboard.scss'
 
 const SellerDashboard = props => {
@@ -70,6 +71,13 @@ const SellerDashboard = props => {
           </div>
         </div>
       </article>
+      <div className={styles.pagination}>
+        <Pagination
+          onClick=""
+          onBack=""
+          onNext=""
+        />
+      </div>
     </div>
   )
 }
