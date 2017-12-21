@@ -9,8 +9,12 @@ const BuyerDashboard = props => {
         <div className="col-md-12 col-sm-12">
           <span className="uikit-display-5">Opportunities</span>
           <span className={styles.buttonsContainer}>
-            <a class={`${styles.firstButton} uikit-btn`} href="#url">Create new brief</a>
-            <a class="uikit-btn uikit-btn--tertiary" href="#url">Share access</a>
+            <a class={`${styles.firstButton} uikit-btn`} href="#url">
+              Create new brief
+            </a>
+            <a class="uikit-btn uikit-btn--tertiary" href="#url">
+              Share access
+            </a>
           </span>
         </div>
       </div>
@@ -22,14 +26,12 @@ const BuyerDashboard = props => {
             <div className="col-md-2 col-sm-2">Stage of brief</div>
             <div className="col-md-2 col-sm-2">Info</div>
             <div className="col-md-2 col-sm-2">Action</div>
-            <div className="col-md-2 col-sm-2"></div>
+            <div className="col-md-2 col-sm-2" />
           </div>
         </div>
         <div className={styles.priceRow}>
           <div className="row">
-            <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>
-              492
-            </div>
+            <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>492</div>
             <div className="col-md-3 col-sm-3">
               <a href="#">Third party reporting solution</a>
             </div>
@@ -37,22 +39,18 @@ const BuyerDashboard = props => {
             <div className="col-md-2 col-sm-2">
               <div className={styles.badge}>Draft</div>
             </div>
-            <div className="col-md-2 col-sm-2">
-            </div>
+            <div className="col-md-2 col-sm-2" />
             <div className="col-md-2 col-sm-2">
               <a href="#" rel="external">
                 <strong>Edit draft</strong>
               </a>
             </div>
           </div>
-          <div className="col-md-2 col-sm-2">
-          </div>
+          <div className="col-md-2 col-sm-2" />
         </div>
         <div className={styles.priceRow + ' ' + styles.greyRow}>
           <div className="row">
-            <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>
-              489
-            </div>
+            <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>489</div>
             <div className="col-md-3 col-sm-3">
               <a href="#">Project management services</a>
             </div>
