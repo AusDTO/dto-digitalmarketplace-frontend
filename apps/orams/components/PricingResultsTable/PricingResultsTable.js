@@ -34,7 +34,7 @@ const PricingList = props => {
                       </div>
                       <div className="col-md-2 col-sm-2">
                         <span className={styles.price}>
-                          {'$' + price.capPrice}
+                          {'$' + price.price}
                         </span>
                       </div>
                       <div className="col-md-2 col-sm-2">Hourly</div>
