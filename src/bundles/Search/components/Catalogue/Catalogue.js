@@ -134,34 +134,6 @@ export class Catalogue extends React.Component {
                           styleName={`${search.view === 'sellers' ? 'active-filter' : ''} filter`}>
                           <span>{pagination['sellers'].total}</span>Sellers
                         </Link>
-                        <Link
-                          to={{search: 'view=products'}}
-                          onClick={(e) => {
-                            e.preventDefault();
-
-                            if (pagination.page !== 1) {
-                              actions.updatePage(1);
-                            }
-
-                            actions.updateView('products');
-                          }}
-                          styleName={`${search.view === 'products' ? 'active-filter' : ''} filter`}>
-                          <span>{pagination['products'].total}</span>Products
-                        </Link>
-                        <Link
-                          to={{search: 'view=casestudies'}}
-                          onClick={(e) => {
-                            e.preventDefault();
-
-                            if (pagination.page !== 1) {
-                              actions.updatePage(1);
-                            }
-
-                            actions.updateView('casestudies');
-                          }}
-                          styleName={`${search.view === 'casestudies' ? 'active-filter' : ''} filter`}>
-                          <span>{pagination['casestudies'].total}</span>Case Studies
-                        </Link>
                       </div>
                     </div>
                     <hr/>
