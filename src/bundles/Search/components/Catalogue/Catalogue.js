@@ -27,7 +27,10 @@ export class Catalogue extends React.Component {
 
     return (
       <section>
-        <form onSubmit={e => e.preventDefault()}>
+        <form onSubmit={e => {
+            e.preventDefault();
+            actions.submitSearch(search.keyword);
+        }}>
           <article className="row">
             <div className="col-xs-12 col-sm-4">
               <h1 styleName="heading">Seller catalogue</h1>
