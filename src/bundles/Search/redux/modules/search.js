@@ -13,6 +13,7 @@ const SYNC_RESULTS    = 'search/results';
 const PRE_SEARCH      = 'search/pre';
 const ERROR_SEARCH    = 'search/error';
 const RESET_QUERY     = 'search/reset';
+const SUBMIT_SEARCH   = 'search/search';
 
 const initialState = {
   role: {},
@@ -208,9 +209,10 @@ export const search = (type, value, options = {}) => {
 
 export const updateRole    = (e)       => search(UPDATE_ROLE, e.target.value);
 export const updateType    = (e)       => search(UPDATE_TYPE, e.target.value);
-export const updateKeyword = (value)   => search(UPDATE_KEYWORD, value);
+export const updateKeyword = (value)   => search(UPDATE_KEYWORD, value, {doSearch: false});
 export const updateSort    = (e)       => search(UPDATE_SORT, e.target.value);
 export const resetQuery    = (options) => search(RESET_QUERY, options);
+export const submitSearch  = (value)   => search(SUBMIT_SEARCH, value);
 
 export const updateView = (value) => {
   return (dispatch, getState, { router }) => {
@@ -233,6 +235,7 @@ export const actionCreators = {
  updateSort,
  updateView,
  resetQuery,
+ submitSearch,
  search
 };
 
@@ -244,5 +247,6 @@ export const actionTypes = {
   UPDATE_VIEW,
   SYNC_RESULTS,
   PRE_SEARCH,
-  RESET_QUERY
+  RESET_QUERY,
+  SUBMIT_SEARCH
 };
