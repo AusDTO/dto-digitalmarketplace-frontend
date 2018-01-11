@@ -20,7 +20,7 @@ const ReportView = props => {
             <a
               rel="external"
               target="_blank"
-              href="/static/media/documents/Digital Marketplace - December 2017 Insights.pdf"
+              href="/static/media/documents/Digital Marketplace - November 2017 Insights.pdf"
             >
               View this report as a PDF (468KB)
             </a>
