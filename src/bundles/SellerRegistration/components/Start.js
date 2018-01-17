@@ -57,7 +57,7 @@ const Start = ({supplierCode, signup, onClick, saved, type}) => {
                            You can do this by adding more services with supporting case studies.</p>
                         <p>Your case study must include a referee and examples of how you meet the <a
                                 href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>. Use the <a
-                                href="https://docs.google.com/spreadsheets/d/1sSesxeaHy5s5Kp7IIRPB4Q2WifXSdAPZOot_P5s8J6k/edit?usp=sharing" target="_blank" rel="external">Google spreadsheet template</a> if 
+                                href="https://marketplace.service.gov.au/static/media/documents/Digital%20Marketplace%20case%20study%20template.xlsx" target="_blank" rel="external">spreadsheet template</a> if 
                             you need to collaborate on your case studies with colleagues.</p>
                         <h2>What happens next</h2>
                         <p>Once you submit the updates, we will review your updated profile and let you know once it is live. 
