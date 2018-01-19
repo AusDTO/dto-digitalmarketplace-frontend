@@ -273,8 +273,13 @@ input[type="radio"].uikit-control-input__input:focus + .uikit-control-input__tex
 }
 
 .step-navigation a span {
+  display: inline-block;
   padding-left: 1em;
   vertical-align: middle;
+}
+
+.step-navigation a .icon {
+  display: inline-block;
 }
 
 .primary-nav, .local-nav {
@@ -405,4 +410,12 @@ label.text-box-number-label {
 .read-more-trigger:hover {
   background-color: #5bcbe3;
   color: #313131;
+}
+
+.marketplace--header {
+  background-color: #18788d !important;
+}
+
+main article:first-of-type a.button {
+  color: #ffffff !important;
 }

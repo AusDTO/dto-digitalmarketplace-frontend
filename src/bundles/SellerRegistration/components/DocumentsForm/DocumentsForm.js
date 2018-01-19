@@ -17,7 +17,7 @@ import StatefulError from '../../../../shared/form/StatefulError';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import {uploadDocument, submitApplication} from '../../redux/modules/application'
 
-import { minObjectLength, validDate } from '../../../../validators';
+import { minObjectLength, validDate, dateNotInThePast } from '../../../../validators';
 
 import './DocumentsForm.css';
 
@@ -199,6 +199,7 @@ class DocumentsForm extends BaseForm {
                                                     id={expiry_date_field}
                                                     messages={{
                                                         validDate: 'Expiry date is required for this document and must be in the future.',
+                                                        dateNotInThePast: 'This document has expired. Please provide a new document and update the expiry date.'
                                                     }}
                                                 />
                                                 <Control
@@ -207,7 +208,7 @@ class DocumentsForm extends BaseForm {
                                                     name={expiry_date_field}
                                                     id={`${key}_expiry`}
                                                     label="Expiry date:"
-                                                    validators={{validDate}}
+                                                    validators={{validDate, dateNotInThePast}}
                                                     controlProps={{
                                                         id: expiry_date_field,
                                                         model: `${model}.documents.${key}.expiry`,
