@@ -15,9 +15,12 @@ import StepNav       from '../StepNav';
 import StatefulError from '../../../../shared/form/StatefulError';
 
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
-import {uploadDocument, submitApplication} from '../../redux/modules/application'
+import {uploadDocument, submitApplication, expiredLiabilityInsurance, expiredWorkersCompensation} from '../../redux/modules/application'
 
-import { minObjectLength, validDate, dateNotInThePast } from '../../../../validators';
+import { minObjectLength, validDate } from '../../../../validators';
+
+import PageAlert from '@gov.au/page-alerts'
+import isPast from 'date-fns/is_past';
 
 import './DocumentsForm.css';
 
@@ -104,13 +107,28 @@ class DocumentsForm extends BaseForm {
         });
     }
 
+    componentDidMount() {
+      if (this.props.documentsForm && isPast(this.props.documentsForm.documents.liability.expiry)) {
+        this.props.hasLiabilityDocExpired(true)
+      } else {
+        this.props.hasLiabilityDocExpired(false)
+      }
+
+      if (this.props.documentsForm && isPast(this.props.documentsForm.documents.workers.expiry)) {
+        this.props.hasWorkersDocExpired(true)
+      } else {
+        this.props.hasWorkersDocExpired(false)
+      }
+    }
+
     render() {
         const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute} = this.props;
 
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Upload your documents</h1>
+                  { this.props.expiredLiabilityInsurance && <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert> }
+                  <h1 tabIndex="-1">Upload your documents</h1>
 
                   <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
                   <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
@@ -160,9 +178,22 @@ class DocumentsForm extends BaseForm {
                             const expiry_date_field = `expiry_date_${key}`;
                             const errors = this.state.errors[key];
                             const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents` : match.url.slice(1);
+
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <p styleName="question-heading">{field.label}</p>
+                                    { this.props.expiredLiabilityInsurance && key == 'liability' &&
+                                      <div styleName="expiry-message">
+                                        <span className="visuallyhidden">Validation Error: </span>
+                                        <span>This document has expired. Please provide a new document and update the expiry date.</span>
+                                      </div>
+                                    }
+                                    { this.props.expiredWorkersCompensation && key == 'workers' &&
+                                      <div styleName="expiry-message">
+                                        <span className="visuallyhidden">Validation Error: </span>
+                                        <span>This document has expired. Please provide a new document and update the expiry date.</span>
+                                      </div>
+                                    }
                                     <span>{field.description}</span>
 
                                     <div>
@@ -198,17 +229,18 @@ class DocumentsForm extends BaseForm {
                                                     model={`${model}.documents.${key}.expiry`}
                                                     id={expiry_date_field}
                                                     messages={{
-                                                        validDate: 'Expiry date is required for this document and must be in the future.',
-                                                        dateNotInThePast: 'This document has expired. Please provide a new document and update the expiry date.'
+                                                        validDate: 'Expiry date is required for this document and must be in the future.'
                                                     }}
                                                 />
+
                                                 <Control
                                                     model={`${model}.documents.${key}.expiry`}
                                                     component={Datefield}
                                                     name={expiry_date_field}
                                                     id={`${key}_expiry`}
                                                     label="Expiry date:"
-                                                    validators={{validDate, dateNotInThePast}}
+                                                    updateOn="change"
+                                                    validators={{validDate}}
                                                     controlProps={{
                                                         id: expiry_date_field,
                                                         model: `${model}.documents.${key}.expiry`,
@@ -246,6 +278,8 @@ const mapStateToProps = (state) => {
     return {
         ...formProps(state, 'documentsForm'),
         applicationId: state.application.id,
+        expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
+        expiredWorkersCompensation: state.application.expiredWorkersCompensation
     }
 }
 
@@ -267,6 +301,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         submitApplication: () => {
             return dispatch(submitApplication());
+        },
+        hasLiabilityDocExpired: (bool) => {
+            return dispatch(expiredLiabilityInsurance(bool));
+        },
+        hasWorkersDocExpired: (bool) => {
+            return dispatch(expiredWorkersCompensation(bool));
         }
     }
 }

@@ -35,8 +35,8 @@ export const validDate = (val) => {
     }
 }
 
-export const dateNotInThePast = (val) => {
-    if(isPast(val)) {
+export const dateInThePast = (val) => {
+    if (isFuture(val)) {
       return true;
     } else {
       return false;
