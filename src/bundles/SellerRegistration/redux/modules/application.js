@@ -39,9 +39,15 @@ export default function reducer(state = {}, action = {}) {
     case APP_PRE_SUBMIT:
       return Object.assign({}, state, {error: void 0});
     case EXPIRED_LIABILITY_INSURANCE:
-      return Object.assign({}, state, {expiredLiabilityInsurance: true});
+      return {
+        ...state,
+        expiredLiabilityInsurance: action.expiredLiabilityInsurance
+      }
     case EXPIRED_WORKERS_COMPENSATION:
-      return Object.assign({}, state, {expiredWorkersCompensation: true});
+      return {
+        ...state,
+        expiredWorkersCompensation: action.expiredWorkersCompensation
+      }
     default:
       return state;
   }
@@ -119,7 +125,6 @@ export const navigateToStep = (to) => {
 
 export const stepNextPersist = (to, step) => {
   return (dispatch, getState, {router}) => {
-    //dispatch(expiredDocuments(false))
     return dispatch(submitApplication())
       .then(() => dispatch(preStep()))
       .then(() => dispatch(nextStep(to)))

@@ -127,7 +127,9 @@ class DocumentsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                  { this.props.expiredLiabilityInsurance && <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert> }
+                  { this.props.expiredLiabilityInsurance || this.props.expiredWorkersCompensation ?
+                    <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
+                  : '' }
                   <h1 tabIndex="-1">Upload your documents</h1>
 
                   <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
@@ -182,18 +184,12 @@ class DocumentsForm extends BaseForm {
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <p styleName="question-heading">{field.label}</p>
-                                    { this.props.expiredLiabilityInsurance && key == 'liability' &&
+                                    { this.props.expiredLiabilityInsurance && key == 'liability' || this.props.expiredWorkersCompensation && key == 'workers' ?
                                       <div styleName="expiry-message">
                                         <span className="visuallyhidden">Validation Error: </span>
                                         <span>This document has expired. Please provide a new document and update the expiry date.</span>
                                       </div>
-                                    }
-                                    { this.props.expiredWorkersCompensation && key == 'workers' &&
-                                      <div styleName="expiry-message">
-                                        <span className="visuallyhidden">Validation Error: </span>
-                                        <span>This document has expired. Please provide a new document and update the expiry date.</span>
-                                      </div>
-                                    }
+                                    : '' }
                                     <span>{field.description}</span>
 
                                     <div>
