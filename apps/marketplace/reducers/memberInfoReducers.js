@@ -6,7 +6,8 @@ import {
   GET_RESET_DATA_SUCCESS,
   GET_RESET_DATA_FAILURE,
   RESET_PASSWORD_EMAIL_SUCCESS,
-  RESET_PASSWORD_SUCCESS
+  RESET_PASSWORD_SUCCESS,
+  SELLER_DASHBOARD_SUCCESS
 } from '../constants/constants'
 
 const defaultUserState = {
@@ -16,7 +17,8 @@ const defaultUserState = {
   createUserSuccess: null,
   resetPasswordEmailSuccess: null,
   resetPasswordSuccess: null,
-  user: {}
+  user: {},
+  sellerDashboard: {items: []}
 }
 
 const userReducer = (state = defaultUserState, action) => {
@@ -77,6 +79,14 @@ const userReducer = (state = defaultUserState, action) => {
         user: Object.assign({}, state.user, action.user),
         resetPasswordSuccess: true,
         errorMessage: false
+      }
+
+    case SELLER_DASHBOARD_SUCCESS:
+      return {
+        ...state,
+        sellerDashboard: action.data,
+        loadSellerDashboardSuccess: true,
+        loadSellerDashboardErrored: false
       }
 
     default:
