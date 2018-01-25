@@ -10,6 +10,7 @@ import BaseForm      from '../../../../shared/form/BaseForm';
 import SubmitForm    from '../../../../shared/form/SubmitForm';
 import Datefield     from '../../../../shared/form/Datefield';
 import ErrorBox      from '../../../../shared/form/ErrorBox';
+import CheckboxDetailsField  from '../../../../shared/form/CheckboxDetailsField';
 import StepNav       from '../StepNav';
 
 import StatefulError from '../../../../shared/form/StatefulError';
@@ -122,8 +123,14 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute} = this.props;
-
+        const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute, submitClicked} = this.props;
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         return (
             <Layout>
                 <header>
@@ -147,15 +154,15 @@ class DocumentsForm extends BaseForm {
 
                 </header>
                 <article role="main">
-                    <ErrorBox focusOnMount={true} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
 
-                    <StatefulError
+                    {/*<StatefulError
                         model={`${model}.documents`}
                         id="documents"
                         messages={{
                             documents: 'Please upload all documents.',
                         }}
-                    />
+                    />*/}
                     <Form model={model}
                           action={action}
                           method="post"
@@ -184,12 +191,6 @@ class DocumentsForm extends BaseForm {
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <p styleName="question-heading">{field.label}</p>
-                                    { this.props.expiredLiabilityInsurance && key == 'liability' || this.props.expiredWorkersCompensation && key == 'workers' ?
-                                      <div styleName="expiry-message">
-                                        <span className="visuallyhidden">Validation Error: </span>
-                                        <span>This document has expired. Please provide a new document and update the expiry date.</span>
-                                      </div>
-                                    : '' }
                                     <span>{field.description}</span>
 
                                     <div>
@@ -261,7 +262,14 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-
+                        <CheckboxDetailsField
+                          id="compensation"
+                          name="compensation"
+                          value="compensation"
+                          label="I am not required to hold Workers Compensation Insurance"
+                          model={`${model}.compensation`}
+                          detailsModel={model}
+                        />
                         <StepNav buttonText={buttonText} to={nextRoute}/>
                     </Form>
                 </article>

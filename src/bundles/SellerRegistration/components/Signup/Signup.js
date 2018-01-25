@@ -15,7 +15,7 @@ import LocalNav from '../../../../shared/LocalNav';
 
 import { actions as stepActions, STATUS } from '../../redux/modules/steps';
 import { getStateForms, dispatchFormState } from '../../redux/helpers';
-import { actions } from '../../redux/modules/application';
+import { actions, expiredLiabilityInsurance, expiredWorkersCompensation } from '../../redux/modules/application';
 
 // Step Components
 import Start                from '../Start';
@@ -115,6 +115,8 @@ class Signup extends React.Component {
       if (e && 'preventDefault' in e) {
         e.preventDefault();
       }
+      this.props.hasLiabilityDocExpired(false)
+      this.props.hasWorkersDocExpired(false)
       const { actions } = this.props;
       actions.stepPartial(this.step.id);
     }
@@ -146,7 +148,7 @@ class Signup extends React.Component {
 
   render() {
     const { forms, location, steps = {}, actions } = this.props;
-    
+
     let { recruiter = 'no'} = forms.recruiterForm;
     let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
     this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
@@ -172,6 +174,8 @@ class Signup extends React.Component {
         return newServices;
       }, {});
 
+    const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation
+
     return (
       <div className="row">
         <Route path="/:route/:subroute?" render={({ match }) => {
@@ -191,12 +195,16 @@ class Signup extends React.Component {
                       onClick={() => actions.navigateToStep(pattern)}
                       className={classNames({'is-active is-current': isActive})}
                     >
-                      <Icon value={classNames({
-                          'to-do'       : (!steps[id] || steps[id] === STATUS.partial) && !isActive,
-                          'completed'   : steps[id] === STATUS.complete && !isActive,
-                          'in-progress' : isActive,
-                        })} size={34} aria-hidden="true"
-                      />
+                      { hasDocumentsWarning && pattern == '/documents' ?
+                        <Icon value="alert" size={34} aria-hidden="true"/>
+                        :
+                        <Icon value={classNames({
+                            'to-do'       : (!steps[id] || steps[id] === STATUS.partial) && !isActive,
+                            'completed'   : steps[id] === STATUS.complete && !isActive,
+                            'in-progress' : isActive
+                          })} size={34} aria-hidden="true"
+                        />
+                      }
                       <span>{label}</span>
                     </Link>
                   </li>
@@ -277,7 +285,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ ...actions, ...stepActions }, dispatch),
-  dispatch
+  dispatch,
+  hasLiabilityDocExpired: (bool) => {
+      return dispatch(expiredLiabilityInsurance(bool));
+  },
+  hasWorkersDocExpired: (bool) => {
+      return dispatch(expiredWorkersCompensation(bool));
+  }
 });
 
 export {
