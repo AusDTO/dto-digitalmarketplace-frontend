@@ -18,7 +18,7 @@ const defaultUserState = {
   resetPasswordEmailSuccess: null,
   resetPasswordSuccess: null,
   user: {},
-  sellerDashboard: {items: []}
+  sellerDashboard: { items: [] }
 }
 
 const userReducer = (state = defaultUserState, action) => {

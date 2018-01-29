@@ -29,25 +29,34 @@ const SellerDashboard = props => {
             <div className="col-md-3 col-sm-3">Action</div>
           </div>
         </div>
-        {props.items && props.items.map((item, i) =>
-          <div key={`item.${i}`} className={i % 2 ?  styles.priceRow + ' ' + styles.greyRow : styles.priceRow}>
-            <div className="row">
-              <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>{item.id}</div>
-              <div className="col-md-3 col-sm-3">
-                <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
-              </div>
-              <ClosedDate date={item.closed_at} />
-              <div className="col-md-3 col-sm-3">
-                <div className={getAction(item).style}>{item.status}</div>
-              </div>
-              <div className="col-md-3 col-sm-3">
-                 <a href={getAction(item).link} rel="external">
-                    <strong>{getAction(item).text}</strong>
-                </a>
+        {props.items &&
+          props.items.map((item, i) =>
+            <div key={`item.${i}`} className={i % 2 ? styles.priceRow + ' ' + styles.greyRow : styles.priceRow}>
+              <div className="row">
+                <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>
+                  {item.id}
+                </div>
+                <div className="col-md-3 col-sm-3">
+                  <a href={`/digital-marketplace/opportunities/${item.id}`}>
+                    {item.name}
+                  </a>
+                </div>
+                <ClosedDate date={item.closed_at} />
+                <div className="col-md-3 col-sm-3">
+                  <div className={getAction(item).style}>
+                    {item.status}
+                  </div>
+                </div>
+                <div className="col-md-3 col-sm-3">
+                  <a href={getAction(item).link} rel="external">
+                    <strong>
+                      {getAction(item).text}
+                    </strong>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
       </article>
     </div>
   )
@@ -65,14 +74,17 @@ const ClosedDate = props => {
     }
   }
 
-  return <div className="col-md-2 col-sm-2">{text}</div>
-
+  return (
+    <div className="col-md-2 col-sm-2">
+      {text}
+    </div>
+  )
 }
 
-const getAction = item => { 
+const getAction = item => {
   const actions = {
     'Approved to apply': {
-      text: 'Apply now', 
+      text: 'Apply now',
       link: `/digital-marketplace/opportunities/${item.id}`,
       style: styles.badge
     },
@@ -86,7 +98,7 @@ const getAction = item => {
       link: '/sellers/edit',
       style: styles.badgeRed
     },
-    'default': {
+    default: {
       text: 'View next steps',
       link: `/2/brief/${item.id}/respond/submitted`,
       style: styles.badge

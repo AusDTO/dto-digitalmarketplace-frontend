@@ -1,6 +1,11 @@
 import { actions } from 'react-redux-form'
 
-import { LOAD_SIGNUP_SUCCESS, SIGNUP_SUCCESS, CREATE_USER_SUCCESS, SELLER_DASHBOARD_SUCCESS } from '../constants/constants'
+import {
+  LOAD_SIGNUP_SUCCESS,
+  SIGNUP_SUCCESS,
+  CREATE_USER_SUCCESS,
+  SELLER_DASHBOARD_SUCCESS
+} from '../constants/constants'
 import {
   DUPLICATE_USER,
   USER_NOT_CREATED,
@@ -95,4 +100,3 @@ export const loadSellerDashboard = () => dispatch => {
     dispatch(sendingRequest(false))
   })
 }
-
