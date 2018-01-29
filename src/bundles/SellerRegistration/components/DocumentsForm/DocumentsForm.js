@@ -156,13 +156,13 @@ class DocumentsForm extends BaseForm {
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
 
-                    {/*<StatefulError
+                    <StatefulError
                         model={`${model}.documents`}
                         id="documents"
                         messages={{
                             documents: 'Please upload all documents.',
                         }}
-                    />*/}
+                    />
                     <Form model={model}
                           action={action}
                           method="post"
@@ -262,14 +262,17 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
+                        {!this.props.documentsForm.documents.workers.expiry &&
                         <CheckboxDetailsField
                           id="compensation"
                           name="compensation"
                           value="compensation"
                           label="I am not required to hold Workers Compensation Insurance"
-                          model={`${model}.compensation`}
+                          model={`${model}.documents.workers.noWorkersCompensation`}
                           detailsModel={model}
+
                         />
+                        }
                         <StepNav buttonText={buttonText} to={nextRoute}/>
                     </Form>
                 </article>

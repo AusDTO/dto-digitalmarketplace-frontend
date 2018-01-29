@@ -28,7 +28,7 @@ class CheckboxDetailsField extends React.Component {
   }
 
   render() {
-    const { name, id, label, model, validators, messages } = this.props
+    const { name, id, label, model, validators, messages, disabled } = this.props
     /* eslint-disable jsx-a11y/label-has-for */
 
     return (
@@ -41,6 +41,7 @@ class CheckboxDetailsField extends React.Component {
           value="yes"
           model={model}
           validators={validators}
+          disabled={disabled}
         />
         <span className="uikit-control-input__text">
           {label}

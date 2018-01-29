@@ -16,6 +16,7 @@ import LocalNav from '../../../../shared/LocalNav';
 import { actions as stepActions, STATUS } from '../../redux/modules/steps';
 import { getStateForms, dispatchFormState } from '../../redux/helpers';
 import { actions, expiredLiabilityInsurance, expiredWorkersCompensation } from '../../redux/modules/application';
+import isPast from 'date-fns/is_past';
 
 // Step Components
 import Start                from '../Start';
@@ -136,6 +137,20 @@ class Signup extends React.Component {
 
   get nextStep() {
     return this.filteredSteps[this.currentStepIndex + 1];
+  }
+
+  componentDidMount() {
+    if (this.props.application && isPast(this.props.application.documents.liability.expiry)) {
+      this.props.hasLiabilityDocExpired(true)
+    } else {
+      this.props.hasLiabilityDocExpired(false)
+    }
+
+    if (this.props.application && isPast(this.props.application.documents.workers.expiry)) {
+      this.props.hasWorkersDocExpired(true)
+    } else {
+      this.props.hasWorkersDocExpired(false)
+    }
   }
 
   componentWillMount() {
@@ -279,7 +294,9 @@ const mapStateToProps = (state, ownProps) => {
     application,
     steps,
     options,
-    ...ownProps
+    ...ownProps,
+    expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
+    expiredWorkersCompensation: state.application.expiredWorkersCompensation
   };
 };
 
