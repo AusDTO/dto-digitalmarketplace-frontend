@@ -26,23 +26,21 @@ const ResetPasswordForm = props => {
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
-            {resetPasswordSuccess ? (
-              <PageAlert as="success">
-                <h4>You have successfully changed your password</h4>
-                <span>
-                  <p>
-                    Please <a href={`${rootPath}/login`}> login </a> to continue.
-                  </p>
-                </span>
-              </PageAlert>
-            ) : (
-              <ErrorBox
-                title="There was a problem resetting your password"
-                model={model}
-                submitClicked={submitClicked}
-                setFocus={setFocus}
-              />
-            )}
+            {resetPasswordSuccess
+              ? <PageAlert as="success">
+                  <h4>You have successfully changed your password</h4>
+                  <span>
+                    <p>
+                      Please <a href={`${rootPath}/login`}> login </a> to continue.
+                    </p>
+                  </span>
+                </PageAlert>
+              : <ErrorBox
+                  title="There was a problem resetting your password"
+                  model={model}
+                  submitClicked={submitClicked}
+                  setFocus={setFocus}
+                />}
             <header className="page-heading page-heading-without-breadcrumb">
               <h1 className="uikit-display-5">Reset password</h1>
             </header>

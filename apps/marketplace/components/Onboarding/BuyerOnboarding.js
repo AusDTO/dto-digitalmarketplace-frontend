@@ -1,7 +1,7 @@
 import React from 'react'
 import * as styles from './Onboarding.scss'
 
-const BuyerOnboarding = () => (
+const BuyerOnboarding = () =>
   <div className="row">
     <div className="col-sm-push-2 col-sm-8 col-xs-12">
       <h1 title="Welcome to the Marketplace">Welcome to the Marketplace</h1>
@@ -34,6 +34,5 @@ const BuyerOnboarding = () => (
       </div>
     </div>
   </div>
-)
 
 export default BuyerOnboarding

@@ -15,11 +15,10 @@ const MultiInput = props => {
       <label htmlFor={htmlFor} className="question-heading uikit-text-input__label">
         {label}
       </label>
-      {description && (
+      {description &&
         <div className="uikit-text-input__hint" id={`${id}-hint`}>
           {description}
-        </div>
-      )}
+        </div>}
       {messages && <StatefulError model={model} messages={messages} id={id} />}
       <Control
         model={model}

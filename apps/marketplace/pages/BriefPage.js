@@ -63,42 +63,37 @@ class BriefPage extends Component {
         <Switch>
           <Route
             path={`${match.url}/published`}
-            render={() => (
+            render={() =>
               <BriefSubmitted
                 setFocus={setFocus}
                 submitClicked={this.state.submitClicked}
                 handleSubmit={values => this.handleFeedbackSubmit(values)}
                 {...this.props}
-              />
-            )}
+              />}
           />
           <Route
             path={`${match.url}/respond/submitted`}
-            render={() => (
+            render={() =>
               <BriefResponseSubmitted
                 setFocus={setFocus}
                 submitClicked={this.state.submitClicked}
                 handleSubmit={values => this.handleFeedbackSubmit(values)}
                 {...this.props}
-              />
-            )}
+              />}
           />
           <Route
             path={`${match.url}/respond`}
-            render={() => (
+            render={() =>
               <span>
-                {loadBriefSuccess ? (
-                  <BriefResponseForm
-                    submitClicked={this.onSubmitClicked}
-                    handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                    setFocus={setFocus}
-                    {...this.props}
-                  />
-                ) : (
-                  <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
-                )}{' '}
-              </span>
-            )}
+                {loadBriefSuccess
+                  ? <BriefResponseForm
+                      submitClicked={this.onSubmitClicked}
+                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                      setFocus={setFocus}
+                      {...this.props}
+                    />
+                  : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
+              </span>}
           />
           <Route component={NotFound} />
         </Switch>

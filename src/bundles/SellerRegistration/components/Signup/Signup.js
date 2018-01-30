@@ -140,13 +140,13 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.application.documents && isPast(this.props.application.documents.liability.expiry)) {
+    if (this.props.application && isPast(this.props.application.documents.liability.expiry)) {
       this.props.hasLiabilityDocExpired(true)
     } else {
       this.props.hasLiabilityDocExpired(false)
     }
 
-    if (this.props.application.documents && this.props.application.documents.workers && isPast(this.props.application.documents.workers.expiry)) {
+    if (this.props.application && isPast(this.props.application.documents.workers.expiry)) {
       this.props.hasWorkersDocExpired(true)
     } else {
       this.props.hasWorkersDocExpired(false)
@@ -294,7 +294,9 @@ const mapStateToProps = (state, ownProps) => {
     application,
     steps,
     options,
-    ...ownProps
+    ...ownProps,
+    expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
+    expiredWorkersCompensation: state.application.expiredWorkersCompensation
   };
 };
 

@@ -27,27 +27,28 @@ const BriefResponseForm = ({
   handleSubmit,
   setFocus,
   match
-}) => (
+}) =>
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
           {briefResponseSuccess && <Redirect to={`${match.url}/respond/submitted`} />}
-          {!briefResponseSuccess && (
+          {!briefResponseSuccess &&
             <ErrorBox
               title="There was a problem submitting your response"
               model={model}
               submitClicked={submitClicked}
               setFocus={setFocus}
-            />
-          )}
+            />}
           <header className="page-heading page-heading-without-breadcrumb">
-            <h1>Apply for &lsquo;{brief.title}&rsquo;</h1>
+            <h1>
+              Apply for &lsquo;{brief.title}&rsquo;
+            </h1>
           </header>
           <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-            {app.supplierCode ? (
-              brief.lotSlug &&
-              brief.lotSlug === 'digital-professionals' && (
+            {app.supplierCode
+              ? brief.lotSlug &&
+                brief.lotSlug === 'digital-professionals' &&
                 <FilesInput
                   label="Attach up to 3 resumes"
                   hint="Attachments must be PDF or ODT format and a maximum of 5MB"
@@ -58,13 +59,10 @@ const BriefResponseForm = ({
                   url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                   api={dmapi}
                 />
-              )
-            ) : (
-              <PageAlert as="warning" setFocus={setFocus}>
-                <h4>There was a problem loading your details</h4>
-                <p>Only logged in sellers can respond to briefs</p>
-              </PageAlert>
-            )}
+              : <PageAlert as="warning" setFocus={setFocus}>
+                  <h4>There was a problem loading your details</h4>
+                  <p>Only logged in sellers can respond to briefs</p>
+                </PageAlert>}
             <Textfield
               model={`${model}.availability`}
               name="availability"
@@ -73,15 +71,13 @@ const BriefResponseForm = ({
               label="When can you start?"
               maxLength={100}
               description={
-                brief.lotSlug && brief.lotSlug === 'digital-professionals' ? (
-                  <span>
-                    The buyer needs this role filled no later than <b>{brief.startDate}</b>
-                  </span>
-                ) : (
-                  <span>
-                    The buyer needs this project to start no later than <b>{brief.startDate}</b>
-                  </span>
-                )
+                brief.lotSlug && brief.lotSlug === 'digital-professionals'
+                  ? <span>
+                      The buyer needs this role filled no later than <b>{brief.startDate}</b>
+                    </span>
+                  : <span>
+                      The buyer needs this project to start no later than <b>{brief.startDate}</b>
+                    </span>
               }
               validators={{
                 required
@@ -91,30 +87,30 @@ const BriefResponseForm = ({
               }}
             />
             {brief.lotSlug &&
-              brief.lotSlug === 'digital-professionals' && (
-                <Textfield
-                  model={`${model}.dayRate`}
-                  name="dayRate"
-                  id="dayRate"
-                  htmlFor="dayRate"
-                  label="Day rate"
-                  description="What is your day rate, including GST?"
-                  validators={{
-                    required,
-                    validPercentage
-                  }}
-                  messages={{
-                    required: 'A day rate is required',
-                    validPercentage: 'Enter only numbers eg. 600.00'
-                  }}
-                />
-              )}
+              brief.lotSlug === 'digital-professionals' &&
+              <Textfield
+                model={`${model}.dayRate`}
+                name="dayRate"
+                id="dayRate"
+                htmlFor="dayRate"
+                label="Day rate"
+                description="What is your day rate, including GST?"
+                validators={{
+                  required,
+                  validPercentage
+                }}
+                messages={{
+                  required: 'A day rate is required',
+                  validPercentage: 'Enter only numbers eg. 600.00'
+                }}
+              />}
             <fieldset className={styles.x_uikit_fieldset}>
               <h2>Skills and experience?</h2>
               {brief.lotSlug &&
-                brief.lotSlug === 'digital-professionals' && <p>Answer the following criteria for all candidates</p>}
+                brief.lotSlug === 'digital-professionals' &&
+                <p>Answer the following criteria for all candidates</p>}
               {brief.essentialRequirements &&
-                brief.essentialRequirements.map((requirement, i) => (
+                brief.essentialRequirements.map((requirement, i) =>
                   <Textarea
                     key={`essentialRequirement.${i}`}
                     model={`${model}.essentialRequirements[${i}]`}
@@ -128,9 +124,9 @@ const BriefResponseForm = ({
                       required: `This is an essential requirement, let the buyer know how the skills and experience criteria is met`
                     }}
                   />
-                ))}
+                )}
               {brief.niceToHaveRequirements &&
-                brief.niceToHaveRequirements.map((requirement, i) => (
+                brief.niceToHaveRequirements.map((requirement, i) =>
                   <Textarea
                     key={`niceToHaveRequirement.${i}`}
                     model={`${model}.niceToHaveRequirements[${i}]`}
@@ -139,7 +135,7 @@ const BriefResponseForm = ({
                     controlProps={{ limit: 150 }}
                     label={`${requirement} (optional)`}
                   />
-                ))}
+                )}
             </fieldset>
             <Textfield
               model={`${model}.respondToEmailAddress`}
@@ -164,36 +160,32 @@ const BriefResponseForm = ({
               <h3>Once you submit this application:</h3>
               <ul>
                 {brief.lotSlug &&
-                  brief.lotSlug === 'digital-professionals' && (
-                    <li>
-                      You <b>cannot</b> submit another candidate
-                    </li>
-                  )}
+                  brief.lotSlug === 'digital-professionals' &&
+                  <li>
+                    You <b>cannot</b> submit another candidate
+                  </li>}
                 <li>
                   You <b>cannot</b> edit your application after submitting
                 </li>
                 <li>
-                  The buyer will contact you after <b>{format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}</b>{' '}
-                  {brief.lotSlug && brief.lotSlug === 'digital-professionals' ? (
-                    <span> if you&apos;re shortlisted for the next stage </span>
-                  ) : (
-                    <span>to submit your proposal if you&apos;re shortlisted</span>
-                  )}
+                  The buyer will contact you after <b>
+                    {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}
+                  </b>{' '}
+                  {brief.lotSlug && brief.lotSlug === 'digital-professionals'
+                    ? <span> if you&apos;re shortlisted for the next stage </span>
+                    : <span>to submit your proposal if you&apos;re shortlisted</span>}
                 </li>
               </ul>
 
-              {currentlySending ? (
-                <LoadingButton />
-              ) : (
-                <input className="uikit-btn" type="submit" value="Submit application" onClick={submitClicked} />
-              )}
+              {currentlySending
+                ? <LoadingButton />
+                : <input className="uikit-btn" type="submit" value="Submit application" onClick={submitClicked} />}
             </div>
           </Form>
         </article>
       </div>
     </DocumentTitle>
   </div>
-)
 
 BriefResponseForm.defaultProps = {
   submitClicked: null,

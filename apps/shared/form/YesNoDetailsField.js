@@ -36,7 +36,9 @@ class YesNoDetailsField extends React.Component {
     return (
       <fieldset className="field">
         <legend>
-          <strong>{label}</strong>
+          <strong>
+            {label}
+          </strong>
         </legend>
         <StatefulError model={model} messages={messages} id={id} />
         <Control.radio
@@ -59,7 +61,7 @@ class YesNoDetailsField extends React.Component {
         />
         <label htmlFor={`${id}-no`}>No</label>
 
-        {this.state.showField && (
+        {this.state.showField &&
           <Textarea
             name={`${name}_details`}
             id={`${id}-details`}
@@ -69,8 +71,7 @@ class YesNoDetailsField extends React.Component {
             messages={{
               required: `Please provide details for ${upperFirst(id).replace('_', ' ')}`
             }}
-          />
-        )}
+          />}
       </fieldset>
     )
   }

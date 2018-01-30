@@ -22,21 +22,19 @@ const RequestResetEmailForm = props => {
     <div className="row">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {resetPasswordEmailSuccess ? (
-            <PageAlert as="success">
-              <span>
-                We have sent a link to reset the password.<br />
-                Check your spam folder if it does not arrive.
-              </span>
-            </PageAlert>
-          ) : (
-            <ErrorBox
-              title="There was a problem sending your reset email"
-              model={model}
-              submitClicked={submitClicked}
-              setFocus={setFocus}
-            />
-          )}
+          {resetPasswordEmailSuccess
+            ? <PageAlert as="success">
+                <span>
+                  We have sent a link to reset the password.<br />
+                  Check your spam folder if it does not arrive.
+                </span>
+              </PageAlert>
+            : <ErrorBox
+                title="There was a problem sending your reset email"
+                model={model}
+                submitClicked={submitClicked}
+                setFocus={setFocus}
+              />}
           <header className="page-heading page-heading-without-breadcrumb">
             <h1 className="uikit-display-5">Reset password</h1>
             <span>

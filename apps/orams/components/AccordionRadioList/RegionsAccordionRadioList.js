@@ -13,14 +13,16 @@ const RegionsAccordionRadioList = props => {
   return (
     <div className={styles.container}>
       <div className="uikit-display-2">
-        <strong>{props.title}</strong>
+        <strong>
+          {props.title}
+        </strong>
       </div>
       {regions &&
-        regions.map((region, id = uniqueID()) => (
+        regions.map((region, id = uniqueID()) =>
           <div key={id}>
             <Accordion header={region.name} open={regionAccordionOpen === region.name + id}>
               <div>
-                {region.subRegions.map((subRegion, subId = uniqueID()) => (
+                {region.subRegions.map((subRegion, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
                       className="uikit-control-input uikit-control-input--full"
@@ -40,14 +42,16 @@ const RegionsAccordionRadioList = props => {
                           props.loadTableData()
                         }}
                       />
-                      <span className="uikit-control-input__text">{subRegion.name}</span>
+                      <span className="uikit-control-input__text">
+                        {subRegion.name}
+                      </span>
                     </label>
                   </div>
-                ))}
+                )}
               </div>
             </Accordion>
           </div>
-        ))}
+        )}
     </div>
   )
 }

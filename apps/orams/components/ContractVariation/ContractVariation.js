@@ -61,17 +61,27 @@ class ContractVariation extends Component {
             </div>
           </div>
           {pricesArray &&
-            pricesArray.map((priceObj, id = uniqueID()) => (
+            pricesArray.map((priceObj, id = uniqueID()) =>
               <div key={id}>
                 <div className={styles.priceRow}>
                   <div className="row">
-                    <div className="col-md-3 col-sm-3">{priceObj.regionState + ' ' + priceObj.regionName}</div>
-                    <div className="col-md-2 col-sm-2">
-                      <span className={styles.price}>{'$' + priceObj.price}</span>
+                    <div className="col-md-3 col-sm-3">
+                      {priceObj.regionState + ' ' + priceObj.regionName}
                     </div>
-                    <div className="col-md-2 col-sm-2">{priceObj.startDate}</div>
-                    <div className="col-md-2 col-sm-2">{priceObj.endDate ? priceObj.endDate : 'Ongoing'}</div>
-                    <div className="col-md-2 col-sm-2">{priceObj.capPrice}</div>
+                    <div className="col-md-2 col-sm-2">
+                      <span className={styles.price}>
+                        {'$' + priceObj.price}
+                      </span>
+                    </div>
+                    <div className="col-md-2 col-sm-2">
+                      {priceObj.startDate}
+                    </div>
+                    <div className="col-md-2 col-sm-2">
+                      {priceObj.endDate ? priceObj.endDate : 'Ongoing'}
+                    </div>
+                    <div className="col-md-2 col-sm-2">
+                      {priceObj.capPrice}
+                    </div>
                     <div className="col-md-1 col-sm-1">
                       <div
                         tabIndex="0"
@@ -87,7 +97,7 @@ class ContractVariation extends Component {
                   </div>
                 </div>
               </div>
-            ))}
+            )}
           <br />
           <Form
             model={model}

@@ -154,8 +154,8 @@ const PrivacyPolicy = props => {
         <li> Business name</li>
         <li> Business summary</li>
         <li>
-          {' '}
-          Name, email address and phone number from your authorised representative and additional business contacts.
+          {' '}Name, email address and phone number from your authorised representative and additional business
+          contacts.
         </li>
         <li> Business addresses</li>
         <li> ABN</li>
@@ -213,7 +213,9 @@ const PrivacyPolicy = props => {
       To protect <b>your</b> privacy and the privacy of others, <b>we</b> will need evidence of <b>your</b> identity
       before <b>we</b> can grant <b>you</b> access to information about <b>you</b> or change it.
       <p>
-        <b>You</b> can contact us by email to <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.
+        <b>You</b> can contact us by email to <a href="mailto:marketplace@digital.gov.au">
+          marketplace@digital.gov.au
+        </a>.
       </p>
       <p>
         We undertake to respond within 30 days. If the request or complaint will take longer to resolve, <b>we</b> will

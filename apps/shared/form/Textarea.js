@@ -25,14 +25,12 @@ const Textarea = props => {
       <label id={`${id}-label`} className="question-heading uikit-text-input__label" htmlFor={id}>
         {label}
       </label>
-      {description && (
+      {description &&
         <div className="uikit-text-input__hint" id={`${id}-hint`}>
           {description}
-        </div>
-      )}
-      {messages && (
-        <StatefulError model={model} messages={messages} id={id} showMessagesDuringFocus={showMessagesDuringFocus} />
-      )}
+        </div>}
+      {messages &&
+        <StatefulError model={model} messages={messages} id={id} showMessagesDuringFocus={showMessagesDuringFocus} />}
       <Control
         id={id}
         model={model}

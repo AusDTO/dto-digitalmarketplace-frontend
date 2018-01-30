@@ -86,13 +86,7 @@ class ProjectForm extends BaseForm {
                 stage_name = this.state.stage.toLowerCase();
             }
         }
-        let hasFocused = false
-        const setFocus = e => {
-          if (!hasFocused) {
-            hasFocused = true
-            e.focus()
-          }
-        }
+
 
         return (
             <Layout>
@@ -107,7 +101,7 @@ class ProjectForm extends BaseForm {
 
                 </header>
                 <article role="main">
-                    <ErrorBox  setFocus={setFocus} model={model}/>
+                    <ErrorBox focusOnMount={true} model={model}/>
                     <Form model={model}
                           action={action}
                           method="post"

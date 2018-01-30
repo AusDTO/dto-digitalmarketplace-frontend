@@ -52,11 +52,10 @@ class Datefield extends React.Component {
         <label htmlFor="day" className="question-heading uikit-text-input__label">
           {label}
         </label>
-        {description && (
+        {description &&
           <p className="hint" id={`${id}-hint`}>
             {description}
-          </p>
-        )}
+          </p>}
 
         <div className={styles.field}>
           <label htmlFor="day" className="uikit-text-input__label">

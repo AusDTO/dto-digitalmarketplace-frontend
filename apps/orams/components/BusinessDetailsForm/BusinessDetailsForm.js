@@ -71,13 +71,11 @@ class BusinessDetailsForm extends BaseForm {
           </h1>
         </header>
         <article role="main">
-          {profileUpdated ? (
-            <PageAlert as="success">
-              <h4>Profile updated</h4>
-            </PageAlert>
-          ) : (
-            ''
-          )}
+          {profileUpdated
+            ? <PageAlert as="success">
+                <h4>Profile updated</h4>
+              </PageAlert>
+            : ''}
           <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
@@ -274,13 +272,11 @@ class BusinessDetailsForm extends BaseForm {
 
             {children}
 
-            {currentlySending ? (
-              <LoadingButton />
-            ) : (
-              <button type="submit" className="uikit-btn">
-                Update profile
-              </button>
-            )}
+            {currentlySending
+              ? <LoadingButton />
+              : <button type="submit" className="uikit-btn">
+                  Update profile
+                </button>}
           </Form>
         </article>
       </Layout>

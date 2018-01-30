@@ -109,13 +109,13 @@ class DocumentsForm extends BaseForm {
     }
 
     componentDidMount() {
-      if (this.props.documentsForm.documents.liability && isPast(this.props.documentsForm.documents.liability.expiry)) {
+      if (this.props.documentsForm && isPast(this.props.documentsForm.documents.liability.expiry)) {
         this.props.hasLiabilityDocExpired(true)
       } else {
         this.props.hasLiabilityDocExpired(false)
       }
 
-      if (this.props.documentsForm.documents.workers && isPast(this.props.documentsForm.documents.workers.expiry)) {
+      if (this.props.documentsForm && isPast(this.props.documentsForm.documents.workers.expiry)) {
         this.props.hasWorkersDocExpired(true)
       } else {
         this.props.hasWorkersDocExpired(false)
@@ -262,7 +262,7 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-                        { this.props.documentsForm.documents.workers && !this.props.documentsForm.documents.workers.expiry &&
+                        { this.props.documentsForm && !this.props.documentsForm.documents.workers.expiry &&
                           <CheckboxDetailsField
                             id="compensation"
                             name="compensation"

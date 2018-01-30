@@ -85,7 +85,11 @@ class PricingDetailsForm extends BaseForm {
   }
 
   render() {
-    return <Layout>{this.mainSection()}</Layout>
+    return (
+      <Layout>
+        {this.mainSection()}
+      </Layout>
+    )
   }
 }
 
