@@ -5,7 +5,7 @@ import styles from './PageFooter.scss'
 import logoGovCrest from './logo_govcrest.svg'
 import logoNisa from './logo_nisa.svg'
 
-const PageFooter = () =>
+const PageFooter = () => (
   <Footer>
     <div className={styles.footerWrapper}>
       <FooterNav>
@@ -124,5 +124,6 @@ const PageFooter = () =>
       </FooterEnd>
     </div>
   </Footer>
+)
 
 export default PageFooter

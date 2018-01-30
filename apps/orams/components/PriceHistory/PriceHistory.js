@@ -53,11 +53,7 @@ class PriceHistory extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.mainSection()}
-      </div>
-    )
+    return <div>{this.mainSection()}</div>
   }
 }
 

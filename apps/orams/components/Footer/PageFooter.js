@@ -4,7 +4,7 @@ import Footer, { FooterNav } from '@gov.au/footer'
 import styles from './PageFooter.scss'
 import logoGovCrest from './ato-logo-02.svg'
 
-const PageFooter = () =>
+const PageFooter = () => (
   <div className="orams-footer">
     <Footer>
       <div className={styles.footerWrapper}>
@@ -44,5 +44,6 @@ const PageFooter = () =>
       </div>
     </Footer>
   </div>
+)
 
 export default PageFooter

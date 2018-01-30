@@ -59,11 +59,13 @@ class YourInfoForm extends BaseForm {
           </h1>
         </header>
         <article role="main">
-          {profileUpdated
-            ? <PageAlert as="success">
-                <h4>Profile updated</h4>
-              </PageAlert>
-            : ''}
+          {profileUpdated ? (
+            <PageAlert as="success">
+              <h4>Profile updated</h4>
+            </PageAlert>
+          ) : (
+            ''
+          )}
           <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form model={model} action={action} id="yourinfo" validateOn="submit" onSubmit={data => handleSubmit(data)}>
             {csrf_token && <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />}
@@ -148,11 +150,13 @@ class YourInfoForm extends BaseForm {
 
             {children}
 
-            {currentlySending
-              ? <LoadingButton />
-              : <button type="submit" className="uikit-btn">
-                  Update profile
-                </button>}
+            {currentlySending ? (
+              <LoadingButton />
+            ) : (
+              <button type="submit" className="uikit-btn">
+                Update profile
+              </button>
+            )}
           </Form>
         </article>
       </Layout>

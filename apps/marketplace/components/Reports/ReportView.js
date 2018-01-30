@@ -27,22 +27,23 @@ const ReportView = props => {
           </div>
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
           <span>
-            The Digital Marketplace is a simple and fast way to buy and sell with government. It {' '}
+            The Digital Marketplace is a simple and fast way to buy and sell with government. It{' '}
             <strong>breaks down the barriers of entry for SMEs</strong> (a small to medium enterprise with less than 200
             employees) and makes it{' '}
             <strong>easier to compete for the Australian Government&apos;s annual ICT spend</strong> ($6.2 billion in
             financial year 2015-16)
           </span>
-          {items &&
+          {items && (
             <div className="row">
               <div className="hidden">
-                {items.map((item, id = uniqueID()) =>
+                {items.map((item, id = uniqueID()) => (
                   <div key={id}>
                     <ReportItem {...item} />
                   </div>
-                )}
+                ))}
               </div>
-            </div>}
+            </div>
+          )}
           <span className={styles.caveat}>
             * Contract information is sourced from{' '}
             <a href="http://tenders.gov.au" rel="noopener noreferrer external" target="_blank">

@@ -18,9 +18,7 @@ const RadioListBox = props => {
   return (
     <div className="field">
       <fieldset>
-        <legend>
-          {label}
-        </legend>
+        <legend>{label}</legend>
         <div>
           {options.map(option => {
             const fieldId = `${id}-${option.value}`

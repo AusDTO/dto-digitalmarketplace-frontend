@@ -22,7 +22,7 @@ import CreatePasswordPage from 'orams/pages/CreatePasswordPage'
 
 export const rootPath = '/orams'
 
-export const Routes = () =>
+export const Routes = () => (
   <Switch>
     <Route exact path={rootPath} component={HomePage} />
     <Route path={`${rootPath}/signup`} component={SignupPage} />
@@ -43,6 +43,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/create-user/:token`} component={CreatePasswordPage} />
     <Route component={NotFound} />
   </Switch>
+)
 
 const RootContainer = withRouter(Routes)
 

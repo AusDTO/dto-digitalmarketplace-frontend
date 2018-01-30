@@ -26,10 +26,11 @@ const Textfield = props => {
       <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading uikit-text-input__label">
         {label}
       </label>
-      {description &&
+      {description && (
         <div className="uikit-text-input__hint" id={`${id}-hint`}>
           {description}
-        </div>}
+        </div>
+      )}
       <Control.input
         model={model}
         name={name}

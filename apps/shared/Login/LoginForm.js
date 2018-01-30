@@ -30,9 +30,7 @@ const LoginForm = props => {
             setFocus={setFocus}
           />
           <header className="page-heading page-heading-without-breadcrumb">
-            <h1 className="uikit-display-6">
-              Sign in to {framework}
-            </h1>
+            <h1 className="uikit-display-6">Sign in to {framework}</h1>
           </header>
           <p>
             New to {framework}?{' '}
@@ -72,9 +70,11 @@ const LoginForm = props => {
                 <strong>Forgot your password?</strong>
               </Link>
             </p>
-            {currentlySending
-              ? <LoadingButton />
-              : <input className="uikit-btn" type="submit" value="Sign in" onClick={submitClicked} />}
+            {currentlySending ? (
+              <LoadingButton />
+            ) : (
+              <input className="uikit-btn" type="submit" value="Sign in" onClick={submitClicked} />
+            )}
           </Form>
         </article>
       </div>

@@ -60,9 +60,11 @@ const LoginForm = props => {
                   passwordLength: 'Your password should be at least 10 characters'
                 }}
               />
-              {currentlySending
-                ? <LoadingButton />
-                : <input className="uikit-btn" type="submit" value="Sign in" onClick={submitClicked} />}
+              {currentlySending ? (
+                <LoadingButton />
+              ) : (
+                <input className="uikit-btn" type="submit" value="Sign in" onClick={submitClicked} />
+              )}
             </Form>
           </article>
         </div>

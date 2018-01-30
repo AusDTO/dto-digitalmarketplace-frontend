@@ -42,9 +42,7 @@ class CheckboxDetailsField extends React.Component {
           model={model}
           validators={validators}
         />
-        <span className="uikit-control-input__text">
-          {label}
-        </span>
+        <span className="uikit-control-input__text">{label}</span>
         <StatefulError model={model} messages={messages} id={id} />
       </label>
     )

@@ -26,9 +26,7 @@ const Header = props => {
               <li>
                 {loggedIn ? <DashBoardLink userType={userType} /> : <Link to="/2/signup">Join the Marketplace</Link>}
               </li>
-              <li>
-                {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
-              </li>
+              <li>{loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}</li>
             </ul>
           </div>
         </div>

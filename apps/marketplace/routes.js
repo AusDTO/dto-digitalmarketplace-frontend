@@ -12,7 +12,7 @@ import CollaboratePage from './pages/CollaboratePage'
 
 export const rootPath = '/2'
 
-export const Routes = () =>
+export const Routes = () => (
   <Switch>
     <Route exact path={rootPath} component={SignupPage} />
     <Route path={`${rootPath}/signup`} component={SignupPage} />
@@ -26,6 +26,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />
     <Route component={NotFound} />
   </Switch>
+)
 
 const RootContainer = withRouter(Routes)
 

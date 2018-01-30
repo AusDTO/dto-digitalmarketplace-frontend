@@ -5,7 +5,7 @@ import Feedback from 'marketplace/components/Feedback/Feedback'
 import PageAlert from '@gov.au/page-alerts'
 import DocumentTitle from 'react-document-title'
 
-const BriefSubmitted = props =>
+const BriefSubmitted = props => (
   <div className="row">
     <DocumentTitle title="Brief Published - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
@@ -14,11 +14,12 @@ const BriefSubmitted = props =>
             <h4>Your brief has been published</h4>
 
             <p>
-              It will be open {' '}
-              {props.brief &&
+              It will be open{' '}
+              {props.brief && (
                 <span>
                   until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY [at] ha [in Canberra]')}
-                </span>}
+                </span>
+              )}
             </p>
             <a className="uikit-btn" href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>
               View live brief
@@ -58,5 +59,6 @@ const BriefSubmitted = props =>
       </div>
     </DocumentTitle>
   </div>
+)
 
 export default BriefSubmitted

@@ -3,19 +3,25 @@
 import React, { createElement } from 'react'
 // will add fns to this file over time
 /* eslint-disable import/prefer-default-export */
-export const uniqueID = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+export const uniqueID = () =>
+  Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1)
 
 export const newline = val => {
   if (!val) return val
   // https://medium.com/@kevinsimper/react-newline-to-break-nl2br-a1c240ba746
-  return val.replace(/(\r\n|\n|\r)/gm, '\n').split('\n').map(function(item, key) {
-    return (
-      <span key={key}>
-        {item}
-        <br />
-      </span>
-    )
-  })
+  return val
+    .replace(/(\r\n|\n|\r)/gm, '\n')
+    .split('\n')
+    .map(function(item, key) {
+      return (
+        <span key={key}>
+          {item}
+          <br />
+        </span>
+      )
+    })
 }
 export default {
   newline
@@ -54,9 +60,7 @@ export const replaceMarkup = (text, tagToReplace, replaceWithTag) => {
     return composeTextArr.map((element, i) => {
       if (Object.values(element)[0]) {
         return (
-          <span key={i}>
-            {createElement(replaceWithTag, { className: 'uikit-body' }, Object.keys(element)[0])}
-          </span>
+          <span key={i}>{createElement(replaceWithTag, { className: 'uikit-body' }, Object.keys(element)[0])}</span>
         )
       } else {
         return Object.keys(element)[0]
@@ -96,8 +100,10 @@ export const sortByDate = (dateArray, briefType, sortDirection) => {
 }
 
 export const getNextKey = obj => {
-  const max = Object.keys(obj).map(Number).reduce((a, b) => {
-    return a > b ? a : b
-  }, -1)
+  const max = Object.keys(obj)
+    .map(Number)
+    .reduce((a, b) => {
+      return a > b ? a : b
+    }, -1)
   return max + 1
 }

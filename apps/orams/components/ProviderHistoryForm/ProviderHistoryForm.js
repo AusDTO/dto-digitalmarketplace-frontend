@@ -44,9 +44,7 @@ class ProviderHistoryForm extends Component {
               Invoice price check
             </h1>
             <div className={styles.stepTitle}>Step 2 of 2</div>
-            <div className={styles.heading}>
-              Check pricing for {serviceData.name}
-            </div>
+            <div className={styles.heading}>Check pricing for {serviceData.name}</div>
             <div
               tabIndex="0"
               className={styles.backLink}
@@ -68,9 +66,9 @@ class ProviderHistoryForm extends Component {
                   onSubmit={data => submitProviderHistoryForm(data)}
                 >
                   <div className={styles.subTitle}>1. Select the service</div>
-                  {serviceData.services.map((service, id = uniqueID()) =>
+                  {serviceData.services.map((service, id = uniqueID()) => (
                     <div key={id}>
-                      {service.subCategories.map((subCategory, subId = uniqueID()) =>
+                      {service.subCategories.map((subCategory, subId = uniqueID()) => (
                         <div key={subId}>
                           <RadioList
                             model={`${model}.service`}
@@ -91,9 +89,9 @@ class ProviderHistoryForm extends Component {
                             }}
                           />
                         </div>
-                      )}
+                      ))}
                     </div>
-                  )}
+                  ))}
                   <div>
                     <div className={styles.subTitle}>2. Enter the date of service</div>
                     <StatefulError
@@ -130,9 +128,7 @@ class ProviderHistoryForm extends Component {
                   </div>
                 </Form>
               </div>
-              <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                {this.tableSection()}
-              </div>
+              <div className="col-xs-12 col-sm-8 col-sm-push-1">{this.tableSection()}</div>
             </div>
           </article>
         </div>

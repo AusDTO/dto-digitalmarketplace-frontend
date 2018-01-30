@@ -17,12 +17,8 @@ const FilesInput = props => {
       <label className="question-heading uikit-text-input__label" htmlFor="file_0">
         {label}
       </label>
-      <span>
-        {description}
-      </span>
-      <p className="hint">
-        {hint}
-      </p>
+      <span>{description}</span>
+      <p className="hint">{hint}</p>
       {range(formFields).map((field, id) => <FileInput key={field} id={id} {...props} />)}
     </div>
   )
