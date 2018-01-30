@@ -42,7 +42,7 @@ class CaseStudyForm extends BaseForm {
   }
 
   render() {
-    let { 
+    let {
       action,
       csrf_token,
       model,
@@ -71,6 +71,13 @@ class CaseStudyForm extends BaseForm {
           });
           return valid;
       };
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
     return (
       <Layout>
         <header>
@@ -90,7 +97,7 @@ class CaseStudyForm extends BaseForm {
                   You can update your case studies before an assessment begins.
                   For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
                 </p>
-              </div>    
+              </div>
             )}
           <div className="calloutMistake">
             <b> Avoid common mistakes </b>
@@ -105,7 +112,7 @@ class CaseStudyForm extends BaseForm {
           </div>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model} />
+          <ErrorBox setFocus={setFocus} model={model} />
           <Form model={model}
             action={action}
             method="post"
@@ -245,7 +252,7 @@ class CaseStudyForm extends BaseForm {
               validators={{ required }}
               messages={{ required: 'Please provide a referee name.'}}
           />
-            
+
             <Textfield
                 model={`${model}.referee_position`}
                 name="refereePosition"
@@ -280,7 +287,7 @@ class CaseStudyForm extends BaseForm {
               />
               <Control.checkbox
                 model={`${model}.referee_contact`}
-                id="refereeContact" 
+                id="refereeContact"
                 name="refereeContact"
                 validators={{ required }}
               />
