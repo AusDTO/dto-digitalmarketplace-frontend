@@ -1,5 +1,6 @@
 .question-heading {
   font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .custom-input {
@@ -45,4 +46,11 @@
 
 .sumbit-container{
   margin-top: 0px;
+}
+
+.expiry-message {
+  color: #c00;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-bottom: 15px;
 }
