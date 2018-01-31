@@ -41,6 +41,10 @@
     border: none;
 }
 
+.action {
+    margin: 0.5em;
+}
+
 .reject {
     background: red;
 }
