@@ -20,9 +20,7 @@ const BriefSubmitted = props =>
                   until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY [at] ha [in Canberra]')}
                 </span>}
             </p>
-            <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>
-              View live opportunity
-            </a>
+            <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>View live opportunity</a>
           </PageAlert>
           <br />
           <h1 className="uikit-display-4">
@@ -41,7 +39,8 @@ const BriefSubmitted = props =>
                 shortlist seller responses
               </a>.
             </li>
-            <li>If you need help at any time, <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new">contact us</a>.
+            <li>If you need help at any time, 
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new">contact us</a>.
             </li>
           </ul>
           <br />
