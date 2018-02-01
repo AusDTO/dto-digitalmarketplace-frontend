@@ -33,7 +33,7 @@
     overflow: hidden;
 }
 
-.appList button, .edit, .users, .delete {
+.appList button {
     display: inline-block;
     font-size: 1.1rem;
     margin: 0 0.1rem;
@@ -45,30 +45,8 @@
     margin: 0.5em;
 }
 
-.reject {
-    background: red;
-}
-
 .revert {
     background: orange;
-}
-
-.delete {
-    background: black;
-}
-
-.edit {
-    background: #3e83c5;
-    color: white;
-    font-weight: bold;
-    padding: 5px 7px;
-}
-
-.users {
-    background: purple;
-    color: white;
-    font-weight: bold;
-    padding: 5px 7px;
 }
 
 .to-do, .in-progress, .done {
