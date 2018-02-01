@@ -39,7 +39,8 @@ const BriefSubmitted = props =>
                 shortlist seller responses
               </a>.
             </li>
-            <li>If you need help at any time, 
+            <li>
+              If you need help at any time, 
               <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new">contact us</a>.
             </li>
           </ul>
