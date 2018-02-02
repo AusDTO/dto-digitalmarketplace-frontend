@@ -115,7 +115,6 @@ class YourInfoForm extends BaseForm {
                   messages={{
                       required: 'Authorised representative is required',
                   }}
-                  disabled={isNumber(supplierCode)}
               />
 
 
@@ -130,7 +129,6 @@ class YourInfoForm extends BaseForm {
                       required: 'Authorised representative\'s email is required',
                       validEmail: 'Authorised representative\'s email must be a valid email address',
                   }}
-                  disabled={isNumber(supplierCode)}
               />
 
               <Textfield
@@ -144,7 +142,6 @@ class YourInfoForm extends BaseForm {
                       required: 'Authorised representative\'s phone number is required',
                       validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
                   }}
-                  disabled={isNumber(supplierCode)}
               />
 
             {children}
