@@ -24,6 +24,7 @@ import YourInfoForm         from '../YourInfoForm';
 import BusinessDetailsForm  from '../BusinessDetailsForm';
 import BusinessInfoForm     from '../BusinessInfoForm';
 import DomainSelector       from '../DomainSelector';
+import PricingForm          from '../PricingForm';
 import DisclosuresForm      from '../DisclosuresForm';
 import AwardsForm           from '../AwardsForm';
 import ToolsForm            from '../ToolsForm';
@@ -73,6 +74,7 @@ class Signup extends React.Component {
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
@@ -140,6 +142,7 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0)
     if (this.props.application.documents && isPast(this.props.application.documents.liability.expiry)) {
       this.props.hasLiabilityDocExpired(true)
     } else {
