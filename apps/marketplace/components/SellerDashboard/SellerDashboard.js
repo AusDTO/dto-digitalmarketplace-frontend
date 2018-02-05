@@ -13,15 +13,16 @@ const SellerDashboard = props => {
     <div className={styles.container}>
       <div className={`${styles.header} row`}>
         <div className="col-md-12 col-sm-12">
-          <span className="uikit-display-5">Your responses</span>
           <span className={styles.briefsFilter}>
-            <a href="/sellers">team access</a> | <a href="/sellers/edit">view profile</a>
+            <a href="/sellers">team access</a> | <a href={`/supplier/${props.supplier.code}`}>view profile</a>
           </span>
+          <span className="uikit-display-2">{props.supplier.name}</span>
+          <span className="uikit-display-5">Your responses</span>
         </div>
       </div>
       <article role="main">
         <div className={styles.headingRow}>
-          <div className="row">
+          <div className={`${styles.headingTitles} row`}>
             <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>ID</div>
             <div className="col-md-3 col-sm-3">Name</div>
             <div className="col-md-2 col-sm-2">Closes in</div>
@@ -48,7 +49,7 @@ const SellerDashboard = props => {
                   </div>
                 </div>
                 <div className="col-md-3 col-sm-3">
-                  <a href={getAction(item).link} rel="external">
+                  <a href={getAction(item).link}>
                     <strong>
                       {getAction(item).text}
                     </strong>
@@ -86,26 +87,26 @@ const getAction = item => {
     'Approved to apply': {
       text: 'Apply now',
       link: `/digital-marketplace/opportunities/${item.id}`,
-      style: styles.badge
+      style: styles.badgeYellow
     },
     'Assessment requested': {
       text: 'Prepare response',
       link: `/digital-marketplace/opportunities/${item.id}`,
-      style: styles.badge
+      style: styles.badgeBlue
     },
     'Assessment rejected': {
       text: 'Update case study',
       link: '/sellers/edit',
       style: styles.badgeRed
     },
-    default: {
+    'Response submitted': {
       text: 'View next steps',
       link: `/2/brief/${item.id}/respond/submitted`,
       style: styles.badge
     }
   }
 
-  return actions[item.status] || actions['default']
+  return actions[item.status]
 }
 
 export default SellerDashboard

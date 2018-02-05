@@ -29,7 +29,8 @@ SellerDashboardPage.propTypes = {
 const mapStateToProps = state => ({
   items: state.user.sellerDashboard.items,
   loadSuccess: state.brief.loadSellerDashboardSuccess,
-  currentlySending: state.app.currentlySending
+  currentlySending: state.app.currentlySending,
+  supplier: state.user.sellerDashboard.supplier
 })
 
 const mapDispatchToProps = dispatch => ({
