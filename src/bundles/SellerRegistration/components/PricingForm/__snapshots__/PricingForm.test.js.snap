@@ -40,7 +40,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       Pricing
     </h1>
     <p>
-      This will only be visible to government buyers, not to other sellers on the Marketplace.
+      Indicate the maximum daily rate you would normally charge for each service.
     </p>
   </header>
   <article
@@ -50,7 +50,6 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       action={undefined}
       id="DomainSelector__create"
       method="post"
-      noValidate={undefined}
       onReset={[Function]}
       onSubmit={[Function]}
     >
@@ -66,37 +65,15 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           User research
         </legend>
-        <div
-          className="row"
-        >
-          <div
-            className="col-sm-5 col-xs-12"
+        <div>
+          <span>
+            <strong>
+              $
+            </strong>
+          </span>
+          <span
+            styleName="inline-input"
           >
-            <label
-              htmlFor="user-research-minprice"
-            >
-              Min. Daily Price
-            </label>
-            <input
-              disabled={false}
-              id="user-research-minprice"
-              name="services.User research.minPrice"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              type="number"
-              value=""
-            />
-          </div>
-          <div
-            className="col-sm-push-1 col-sm-5 col-xs-12"
-          >
-            <label
-              htmlFor="user-research-maxprice"
-            >
-              Max. Daily Price
-            </label>
             <input
               disabled={false}
               id="user-research-maxprice"
@@ -108,7 +85,10 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               type="number"
               value=""
             />
-          </div>
+          </span>
+          <span>
+            (including GST)
+          </span>
         </div>
       </fieldset>
       <fieldset
@@ -117,37 +97,15 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           Content development
         </legend>
-        <div
-          className="row"
-        >
-          <div
-            className="col-sm-5 col-xs-12"
+        <div>
+          <span>
+            <strong>
+              $
+            </strong>
+          </span>
+          <span
+            styleName="inline-input"
           >
-            <label
-              htmlFor="content-development-minprice"
-            >
-              Min. Daily Price
-            </label>
-            <input
-              disabled={false}
-              id="content-development-minprice"
-              name="services.Content development.minPrice"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              type="number"
-              value=""
-            />
-          </div>
-          <div
-            className="col-sm-push-1 col-sm-5 col-xs-12"
-          >
-            <label
-              htmlFor="content-development-maxprice"
-            >
-              Max. Daily Price
-            </label>
             <input
               disabled={false}
               id="content-development-maxprice"
@@ -159,7 +117,10 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               type="number"
               value=""
             />
-          </div>
+          </span>
+          <span>
+            (including GST)
+          </span>
         </div>
       </fieldset>
       <fieldset
@@ -168,37 +129,15 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           Content management
         </legend>
-        <div
-          className="row"
-        >
-          <div
-            className="col-sm-5 col-xs-12"
+        <div>
+          <span>
+            <strong>
+              $
+            </strong>
+          </span>
+          <span
+            styleName="inline-input"
           >
-            <label
-              htmlFor="content-management-minprice"
-            >
-              Min. Daily Price
-            </label>
-            <input
-              disabled={false}
-              id="content-management-minprice"
-              name="services.Content management.minPrice"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              type="number"
-              value=""
-            />
-          </div>
-          <div
-            className="col-sm-push-1 col-sm-5 col-xs-12"
-          >
-            <label
-              htmlFor="content-management-maxprice"
-            >
-              Max. Daily Price
-            </label>
             <input
               disabled={false}
               id="content-management-maxprice"
@@ -210,13 +149,48 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               type="number"
               value=""
             />
-          </div>
+          </span>
+          <span>
+            (including GST)
+          </span>
         </div>
       </fieldset>
-      <input
-        type="submit"
-        value="Save &amp; Continue"
-      />
+      <div
+        className="row"
+      >
+        <div />
+        <div
+          className="col-xs-12 col-sm-12 col-md-9"
+        >
+          <button
+            className="button-width button-width-left"
+            type="submit"
+          >
+            Save &amp; Continue
+          </button>
+          <button
+            className="save-button button-width button-width-right"
+            onClick={[Function]}
+          >
+            Save and finish later
+          </button>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-3"
+        >
+          <div
+            styleName="skip"
+          >
+            <button
+              className="button-secondary"
+              onClick={[Function]}
+              styleName="skip-link"
+            >
+              Skip for now
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   </article>
 </div>
