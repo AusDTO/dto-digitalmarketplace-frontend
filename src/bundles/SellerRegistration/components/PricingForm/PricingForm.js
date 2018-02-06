@@ -10,6 +10,7 @@ import BaseForm             from '../../../../shared/form/BaseForm';
 import ErrorBox             from '../../../../shared/form/ErrorBox';
 import StatefulError        from '../../../../shared/form/StatefulError';
 import formProps            from '../../../../shared/reduxModules/formPropsSelector';
+import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
 import { findValidServices } from '../../redux/helpers'
@@ -20,7 +21,7 @@ import './PricingForm.css';
 class PricingForm extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked } = this.props;
+    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {
@@ -58,8 +59,10 @@ class PricingForm extends BaseForm {
             action={action}
             method="post"
             id="DomainSelector__create"
-            onSubmit={onSubmit}>
-
+            component={SubmitForm}
+            onCustomSubmit={onSubmit}
+            valid={form.valid}
+            >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
             )}
@@ -84,7 +87,6 @@ class PricingForm extends BaseForm {
 
             {children}
 
-            {/*<input type="submit" value={buttonText} />*/}
             <StepNav buttonText={buttonText} to={nextRoute}/>
           </Form>
         </article>
