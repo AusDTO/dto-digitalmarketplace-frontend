@@ -140,7 +140,7 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.application.documents && isPast(this.props.application.documents.liability.expiry)) {
+    if (this.props.application.documents && this.props.application.documents.liability && isPast(this.props.application.documents.liability.expiry)) {
       this.props.hasLiabilityDocExpired(true)
     } else {
       this.props.hasLiabilityDocExpired(false)
