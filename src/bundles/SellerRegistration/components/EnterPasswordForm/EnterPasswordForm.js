@@ -21,7 +21,14 @@ class EnterPasswordForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, onSubmit, onSubmitFailed, enterPasswordForm } = this.props;
+    const { action, csrf_token, model, form, onSubmit, onSubmitFailed, enterPasswordForm, submitClicked } = this.props;
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
     return (
       <Layout>
         <header>
@@ -29,7 +36,7 @@ class EnterPasswordForm extends BaseForm {
           <p>To finish creating your account you need to create a password.</p>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model}/>
+          <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
           <Form model={model}
             action={action}
             method="post"

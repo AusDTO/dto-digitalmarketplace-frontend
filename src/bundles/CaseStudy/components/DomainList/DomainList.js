@@ -58,7 +58,7 @@ class DomainList extends BaseForm {
   }
 
   render() {
-    let { 
+    let {
       services,
       title,
       domainRoute,
@@ -82,7 +82,8 @@ class DomainList extends BaseForm {
       onDeleteCaseStudy,
       nextRoute,
       assessedDomains,
-      csrf_token
+      csrf_token,
+      submitClicked
     } = this.props;
 
     const studies         = caseStudyForm.case_studies;
@@ -93,7 +94,13 @@ class DomainList extends BaseForm {
     const leftToAdd       = essential.filter(service => addedServices.indexOf(service) === -1);
     const leftToAddCount  = serviceCount - addedServices.length;
     const pathname        = match.url;
-
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
     onCaseStudySubmit = onCaseStudySubmit.bind(this, {
       router,
       pathname,
@@ -144,8 +151,8 @@ class DomainList extends BaseForm {
           <Layout>
               {header}
             <article role="main">
-             
-              <ErrorBox focusOnMount={true} model={model}/>
+
+              <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
 
               {!isEmpty(essential) &&
                 <div>
@@ -163,7 +170,7 @@ class DomainList extends BaseForm {
                     <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, pathname, ...this.props}}/>
                   )}
                 </div>
-              }  
+              }
 
               {/* This error will never actually render */}
               <StatefulError
@@ -174,7 +181,7 @@ class DomainList extends BaseForm {
                 }}
               />
               <br/>
-              <Form 
+              <Form
                 model={model}
                 method="post"
                 validators={{
@@ -199,7 +206,7 @@ class DomainList extends BaseForm {
 
                 <StepNav buttonText={buttonText} to={nextRoute}/>
               </Form>
-              
+
             </article>
           </Layout>
         )} />

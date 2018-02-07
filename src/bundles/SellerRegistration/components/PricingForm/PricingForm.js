@@ -17,7 +17,7 @@ import { required }         from '../../../../validators';
 class PricingForm extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, title, buttonText, services, children,  onSubmit } = this.props;
+    const { model, action, csrf_token, title, buttonText, services, children,  onSubmit, submitClicked } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {
@@ -34,6 +34,14 @@ class PricingForm extends BaseForm {
       )
     }
 
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
     return (
       <Layout>
         <header>
@@ -41,8 +49,8 @@ class PricingForm extends BaseForm {
             <p>This will only be visible to government buyers, not to other sellers on the Marketplace.</p>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model}/>
-          <Form 
+          <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
+          <Form
             model={model}
             action={action}
             method="post"
@@ -52,7 +60,7 @@ class PricingForm extends BaseForm {
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
             )}
-            
+
             {Object.keys(validServices).map((service, i) => (
               <fieldset key={`pricing.${service}.${i}`} className="field">
                 <legend>{service}</legend>
@@ -68,7 +76,7 @@ class PricingForm extends BaseForm {
                       id={`${kebabCase(service)}-minprice`}
                     />
 
-                    <Control.text 
+                    <Control.text
                       type="number"
                       id={`${kebabCase(service)}-minprice`}
                       name={`services.${service}.minPrice`}
@@ -87,7 +95,7 @@ class PricingForm extends BaseForm {
                       id={`${kebabCase(service)}-maxprice`}
                     />
 
-                    <Control.text 
+                    <Control.text
                       type="number"
                       id={`${kebabCase(service)}-maxprice`}
                       name={`services.${service}.maxPrice`}
