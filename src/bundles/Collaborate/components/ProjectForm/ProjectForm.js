@@ -68,7 +68,8 @@ class ProjectForm extends BaseForm {
             buttonText,
             children,
             onSubmit,
-            onSubmitFailed
+            onSubmitFailed,
+            submitClicked
         } = this.props;
 
         if (!buttonText) {
@@ -107,7 +108,7 @@ class ProjectForm extends BaseForm {
 
                 </header>
                 <article role="main">
-                    <ErrorBox  setFocus={setFocus} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     <Form model={model}
                           action={action}
                           method="post"

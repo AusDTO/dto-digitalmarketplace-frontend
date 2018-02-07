@@ -22,7 +22,14 @@ class RecruiterForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, nextRoute} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked} = this.props;
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         return (
             <Layout>
                 <header>
@@ -30,7 +37,7 @@ class RecruiterForm extends BaseForm {
 
                 </header>
                 <article role="main">
-                    <ErrorBox focusOnMount={true} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     <Form model={model}
                           action={action}
                           method="post"

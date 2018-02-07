@@ -25,7 +25,14 @@ class DisclosuresForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed, nextRoute } = this.props;
+        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed, nextRoute, submitClicked } = this.props;
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         return (
             <Layout>
                 <header>
@@ -35,7 +42,7 @@ class DisclosuresForm extends BaseForm {
                         <p>Please note, answering ‘yes’ to any question will not automatically disqualify you from the Digital Marketplace, however our assessors may contact you to request more information.</p>
                 </header>
                 <article role="main">
-                    <ErrorBox focusOnMount={true} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     <Form model={model}
                           action={action}
                           method="post"
