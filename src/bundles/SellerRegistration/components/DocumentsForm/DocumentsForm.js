@@ -172,7 +172,7 @@ class DocumentsForm extends BaseForm {
                           onCustomSubmit={onSubmit}
                           onSubmitFailed={onSubmitFailed}
                           validators={{
-                            documents: (documents = {}) => minObjectLength(documents, 3)
+                            documents: (documents = {}) => minObjectLength(documents, 3) && documents.workers.noWorkersCompensation !== false
                           }}
                     >
                         {csrf_token && (
