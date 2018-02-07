@@ -262,7 +262,8 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-                        { this.props.documentsForm.documents.workers && !this.props.documentsForm.documents.workers.expiry &&
+                        { this.props.documentsForm.documents.workers && this.props.documentsForm.documents.workers.expiry ?
+                          '' :
                           <CheckboxDetailsField
                             id="compensation"
                             name="compensation"
@@ -270,7 +271,6 @@ class DocumentsForm extends BaseForm {
                             label="I am not required to hold Workers Compensation Insurance"
                             model={`${model}.documents.workers.noWorkersCompensation`}
                             detailsModel={model}
-
                           />
                         }
                         <StepNav buttonText={buttonText} to={nextRoute}/>
