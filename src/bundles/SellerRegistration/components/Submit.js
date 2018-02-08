@@ -44,13 +44,19 @@ class SubmitStepForm extends BaseForm {
     }
 
     render() {
-        let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit, stepsRemaining} = this.props;
+        let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit, stepsRemaining, submitClicked} = this.props;
         let message;
         const userIsAuthorised = userEmail && email && userEmail.toLowerCase() === email.toLowerCase();
         const title = userIsAuthorised ? 'Your declaration': 'Share with authorised representative';
         const buttonText = userIsAuthorised ? 'Submit application' : 'Send email to representative';
         const action = userIsAuthorised ? submitUrl : authoriseUrl;
-
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         if (userIsAuthorised) {
             message = (
                 <div>
@@ -385,7 +391,7 @@ class SubmitStepForm extends BaseForm {
                       valid={form.valid}
                       onSubmit={onSubmit}
                 >
-                    <ErrorBox focusOnMount={true} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     {!applicationValid &&
                     (<div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
                       <h4 id="validation-masthead-heading">All steps must be completed before submitting.</h4>

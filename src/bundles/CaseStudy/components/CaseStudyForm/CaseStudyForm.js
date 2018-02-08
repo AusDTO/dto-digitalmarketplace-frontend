@@ -55,7 +55,8 @@ class CaseStudyForm extends BaseForm {
       children,
       onSubmit,
       onSubmitFailed,
-      isAssessment
+      isAssessment,
+      submitClicked
     } = this.props;
 
     if (!buttonText) {
@@ -112,7 +113,7 @@ class CaseStudyForm extends BaseForm {
           </div>
         </header>
         <article role="main">
-          <ErrorBox setFocus={setFocus} model={model} />
+          <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
           <Form model={model}
             action={action}
             method="post"

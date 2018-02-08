@@ -26,7 +26,14 @@ class CandidatesForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, services, nextRoute} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, services, nextRoute, submitClicked} = this.props;
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         return (
             <Layout>
                 <header>
@@ -34,7 +41,7 @@ class CandidatesForm extends BaseForm {
                     <p>Share database and candidate details for each service you selected.</p>
                 </header>
                 <article role="main">
-                    <ErrorBox focusOnMount={true} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     <Form model={model}
                           action={action}
                           method="post"

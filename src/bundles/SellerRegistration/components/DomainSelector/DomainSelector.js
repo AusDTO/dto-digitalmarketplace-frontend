@@ -26,7 +26,14 @@ class DomainSelector extends BaseForm {
   }
 
     render() {
-        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter, nextRoute} = this.props;
+        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter, nextRoute, submitClicked} = this.props;
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         let header = (
             <header>
                 <h1 tabIndex="-1">What services will you offer?</h1>
@@ -78,7 +85,7 @@ class DomainSelector extends BaseForm {
                 {header}
                 <article role="main">
 
-                    <ErrorBox focusOnMount={true} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
 
                     {/* This error will never actually render */}
                     <StatefulError

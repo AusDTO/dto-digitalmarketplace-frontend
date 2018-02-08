@@ -57,14 +57,21 @@ class ReferencesForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, buttonText, onSubmit, onSubmitFailed } = this.props;
+        const {action, csrf_token, model, form, title, buttonText, onSubmit, onSubmitFailed, submitClicked } = this.props;
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         return (
             <Layout>
                 <header>
                     <h1 tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
-                    <ErrorBox focusOnMount={true} model={`${model}.references`}/>
+                    <ErrorBox  submitClicked={submitClicked} setFocus={setFocus} model={`${model}.references`}/>
                     <Form model={model}
                           action={action}
                           method="post"
@@ -79,8 +86,8 @@ class ReferencesForm extends BaseForm {
                         )}
 
                         <p>
-                            Provide contact details for at least 2 recent clients of the business who are prepared 
-                            to act as referees. You will need to provide their contact details and a description of 
+                            Provide contact details for at least 2 recent clients of the business who are prepared
+                            to act as referees. You will need to provide their contact details and a description of
                             the services supplied by the business to each referee.
                         </p>
                         <Referee id="1" model={`${model}.references[0]`}/>
