@@ -1,18 +1,12 @@
 import { actions } from 'react-redux-form'
 
-import {
-  LOAD_SIGNUP_SUCCESS,
-  SIGNUP_SUCCESS,
-  CREATE_USER_SUCCESS,
-  SELLER_DASHBOARD_SUCCESS
-} from '../constants/constants'
+import { LOAD_SIGNUP_SUCCESS, SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
 import {
   DUPLICATE_USER,
   USER_NOT_CREATED,
   REGISTRATION_NOT_FOUND,
   UNABLE_TO_SIGNUP,
-  ACCOUNT_TAKEN,
-  GENERAL_ERROR
+  ACCOUNT_TAKEN
 } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -79,24 +73,6 @@ export const createUser = values => dispatch => {
       }
     } else {
       dispatch(handleCreateUserSuccess(response))
-    }
-    dispatch(sendingRequest(false))
-  })
-}
-
-export const handleSellerDashboardSuccess = response => ({
-  type: SELLER_DASHBOARD_SUCCESS,
-  data: response.data
-})
-
-export const loadSellerDashboard = () => dispatch => {
-  dispatch(sendingRequest(true))
-  dmapi({ url: `/seller-dashboard` }).then(response => {
-    if (!response || response.error) {
-      dispatch(setErrorMessage(GENERAL_ERROR))
-    } else {
-      response.data.loadedAt = new Date().valueOf()
-      dispatch(handleSellerDashboardSuccess(response))
     }
     dispatch(sendingRequest(false))
   })

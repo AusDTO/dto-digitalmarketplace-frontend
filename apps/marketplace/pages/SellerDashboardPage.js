@@ -1,10 +1,9 @@
-/* eslint-disable */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import SellerDashboard from 'marketplace/components/SellerDashboard/SellerDashboard'
-import { loadSellerDashboard } from 'marketplace/actions/memberActions'
+import { loadSellerDashboard } from 'marketplace/actions/dashboardActions'
 
 class SellerDashboardPage extends Component {
   componentWillMount() {
@@ -27,10 +26,10 @@ SellerDashboardPage.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  items: state.user.sellerDashboard.items,
+  items: state.dashboard.sellerDashboard.items,
   loadSuccess: state.brief.loadSellerDashboardSuccess,
   currentlySending: state.app.currentlySending,
-  supplier: state.user.sellerDashboard.supplier
+  supplier: state.dashboard.sellerDashboard.supplier
 })
 
 const mapDispatchToProps = dispatch => ({

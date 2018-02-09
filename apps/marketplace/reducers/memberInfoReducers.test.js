@@ -11,8 +11,7 @@ describe('user reducer', () => {
       createUserSuccess: null,
       resetPasswordEmailSuccess: null,
       resetPasswordSuccess: null,
-      user: {},
-      sellerDashboard: { items: [], supplier: {} }
+      user: {}
     })
   })
 
