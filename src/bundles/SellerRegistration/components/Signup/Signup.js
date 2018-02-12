@@ -111,7 +111,8 @@ class Signup extends React.Component {
         actions.submitApplication();
         return;
       }
-
+      this.props.hasLiabilityDocExpired(false)
+      this.props.hasWorkersDocExpired(false)
       actions.stepNextPersist(this.nextStep.pattern, this.step);
     },
     onSubmitFailed: (e) => {
