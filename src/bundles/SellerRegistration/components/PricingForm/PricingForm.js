@@ -14,7 +14,7 @@ import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
 import { findValidServices } from '../../redux/helpers'
-import { required }         from '../../../../validators';
+import { required, notNegativeNumber, onlyNumbers }         from '../../../../validators';
 
 import './PricingForm.css';
 
@@ -70,14 +70,24 @@ class PricingForm extends BaseForm {
             {Object.keys(validServices).map((service, i) => (
               <fieldset key={`pricing.${service}.${i}`} className="field">
                 <legend>{service}</legend>
+                <StatefulError
+                  model={`${model}.pricing.${service}.maxPrice`}
+                  messages={{
+                    required: `You must provide a max price for ${service}. `,
+                    notNegativeNumber: `Price can't have negative numbers. `,
+                    onlyNumbers: `Price can only be numbers. `
+                  }}
+                  id={`${kebabCase(service)}-maxprice`}
+                />
                 <div>
                   <span><strong>$</strong></span>
                   <span styleName="inline-input">
                     <Control.text
-                      type="number"
+                      type="text"
                       id={`${kebabCase(service)}-maxprice`}
                       name={`services.${service}.maxPrice`}
                       model={`${model}.pricing.${service}.maxPrice`}
+                      validators={{ required, notNegativeNumber, onlyNumbers }}
                     />
                   </span>
                   <span>(including GST)</span>

@@ -169,6 +169,21 @@ export const validPhoneNumber = (val) => {
     return length >= 10;
 }
 
+export const notNegativeNumber = (val) => {
+  if (val < 0) {
+    return false;
+  }
+  return true;
+}
+
+export const onlyNumbers = (val) => {
+  const regex = /^[0-9\b]+$/;
+  if (regex.test(val)) {
+    return true;
+  }
+  return false;
+}
+
 export default {
   required,
   minArrayLength,
