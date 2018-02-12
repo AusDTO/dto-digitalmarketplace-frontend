@@ -14,7 +14,10 @@ export default combineReducers({
   form_options,
   errorMessage,
   ...createForms({
-    signupForm: {},
+    signupForm: {
+      name: '',
+      email_address: ''
+    },
     createUserForm: {},
     briefResponseForm: {},
     resetPasswordEmailForm: {},
