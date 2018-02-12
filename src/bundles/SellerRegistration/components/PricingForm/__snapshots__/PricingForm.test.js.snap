@@ -82,7 +82,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </span>
@@ -114,7 +114,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </span>
@@ -146,7 +146,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              type="number"
+              type="text"
               value=""
             />
           </span>
