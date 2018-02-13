@@ -28,9 +28,9 @@ export class Feedback extends React.Component {
               <h4>Your feedback has been sent, thank you for helping us improve the Marketplace.</h4>
             </PageAlert>
           : <LocalForm onSubmit={val => this.props.handleSubmit(val)}>
-              <Control.input type="hidden" model=".commentQuestion" defaultValue={this.props.commentQuestion} value=''/>
-              <Control.input type="hidden" model=".difficultyQuestion" defaultValue={this.props.difficultyQuestion} value=''/>
-              <Control.input type="hidden" model=".objectAction" defaultValue={this.props.objectAction} value=''/>
+              <Control.input type="hidden" model=".commentQuestion" defaultValue={this.props.commentQuestion} value="" />
+              <Control.input type="hidden" model=".difficultyQuestion" defaultValue={this.props.difficultyQuestion} value="" />
+              <Control.input type="hidden" model=".objectAction" defaultValue={this.props.objectAction} value="" />
               <fieldset className={styles.difficulty}>
                 <legend>
                   <b>
