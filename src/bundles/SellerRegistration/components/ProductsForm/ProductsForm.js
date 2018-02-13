@@ -55,10 +55,17 @@ class ProductsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm, nextRoute } = this.props;
+    const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm, nextRoute, submitClicked } = this.props;
     const hasProducts = !isEmpty(filterProducts(productsForm.products));
     const submitClass = classNames({'button-secondary': !hasProducts});
     const addClass = classNames({'button-secondary': hasProducts});
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
     return (
       <Layout>
         <header>
@@ -79,7 +86,7 @@ class ProductsForm extends BaseForm {
           </div>,<br/>]}
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model}/>
+          <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
           <Form model={model}
             action={action}
             method="post"
@@ -238,5 +245,3 @@ export {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsForm);
-
-

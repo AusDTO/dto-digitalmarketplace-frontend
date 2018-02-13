@@ -11,7 +11,7 @@ const BriefSubmitted = props =>
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
           <PageAlert as="success" setFocus={props.setFocus}>
-            <h4>Your brief has been published</h4>
+            <h4>Your opportunity has been published</h4>
 
             <p>
               It will be open {' '}
@@ -20,9 +20,7 @@ const BriefSubmitted = props =>
                   until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY [at] ha [in Canberra]')}
                 </span>}
             </p>
-            <a className="uikit-btn" href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>
-              View live brief
-            </a>
+            <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>View live opportunity</a>
           </PageAlert>
           <br />
           <h1 className="uikit-display-4">
@@ -30,21 +28,22 @@ const BriefSubmitted = props =>
           </h1>
           <ul>
             <li>
-              While you’re brief is live you’ll need to{' '}
+              While your opportunity is live you’ll need to{' '}
               <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011257447-Answer-questions">
                 answer sellers questions
               </a>.
             </li>
             <li>
-              Once your brief closes, you can{' '}
+              Once your opportunity closes, you can{' '}
               <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011257487-Shortlist-responses">
                 shortlist seller responses
               </a>.
             </li>
+            <li>
+              If you need help at any time,
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new">contact us</a>.
+            </li>
           </ul>
-          If you need help at any time, <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new">contact us</a>.
-          <br />
-          <br />
           <br />
           <br />
           <Feedback

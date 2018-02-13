@@ -44,7 +44,7 @@ export default combineReducers({
           state: '',
           postal_code: ''
         }
-      }    
+      }
     },
     domainSelectorForm: {
       services: {}
@@ -68,6 +68,9 @@ export default combineReducers({
     },
     documentsForm: {
       documents: {}
+    },
+    pricingForm: {
+      pricing: {}
     },
     toolsForm: {
       tools: '',

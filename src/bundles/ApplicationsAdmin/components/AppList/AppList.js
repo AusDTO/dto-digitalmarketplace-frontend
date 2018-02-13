@@ -137,15 +137,6 @@ class AppList extends Component {
                 <td>
                   {
                     (a.status === 'submitted' && !a.revertStatus) && <span>
-                  <button onClick={e => {
-                    e.preventDefault();
-                    onRejectClick(a.id);
-                  }} name="Reject" styleName="reject">Reject</button>
-
-                  <button onClick={e => {
-                    e.preventDefault();
-                    onAcceptClick(a.id);
-                  }} name="Accept">Accept</button>
 
                   <button onClick={e => {
                     e.preventDefault();
@@ -153,18 +144,29 @@ class AppList extends Component {
                     this.toggleResponseModal()
                   }} name="Revert" styleName="revert">Revert</button>
 
-                       <a href={meta.url_edit_application.concat(a.id,'/start')} styleName="edit">Edit</a>
+                  <button onClick={e => {
+                    e.preventDefault();
+                    onAcceptClick(a.id);
+                  }} name="Accept">Accept</button>
+
+                  <a href="#" onClick={e => {
+                    e.preventDefault();
+                    onRejectClick(a.id);
+                  }} name="Reject" styleName="action">Reject</a>
+                  
+                  <a href={meta.url_edit_application.concat(a.id,'/start')} styleName="action">Edit</a>
+
                     </span>
                   }
                   {(a.status !== 'deleted' &&
                     <span>
-                      <a href={`/admin/applications/${a.id}/users`} styleName="users">Users</a>
-                      <button onClick={e => {
+                      <a href={`/admin/applications/${a.id}/users`} styleName="action">Users</a>
+                      <a href="#" onClick={e => {
                         e.preventDefault(); 
                         if (window.confirm('Are you sure ?')) {
                           onDeleteClick(a.id);
                         }
-                      }} name="Delete" styleName="delete">Delete</button>
+                      }} name="Delete" styleName="action">Delete</a>
                     </span>
                   )}
                 </td>

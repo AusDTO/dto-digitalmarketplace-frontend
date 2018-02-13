@@ -4,13 +4,14 @@ import {connect} from 'react-redux';
 import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
 import isNumber from 'lodash/isNumber';
+import PageAlert from '@gov.au/page-alerts'
 
 import './Start.css';
 
-const Start = ({supplierCode, signup, onClick, saved, type}) => {
+const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsurance, expiredWorkersCompensation}) => {
     return (
         <div>
-            {saved && 
+            {saved &&
                 <div className="callout--info">
                     <Icon value="complete-tick" size={20}/><span styleName="callout-heading">Your progress has been saved</span>
                     <p>Click 'continue application' in the header above when you're ready to go on.</p>
@@ -52,15 +53,18 @@ const Start = ({supplierCode, signup, onClick, saved, type}) => {
                 </div>
             ) : (type === 'edit' ? (
                     <div>
+                        { expiredLiabilityInsurance || expiredWorkersCompensation ?
+                          <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
+                        : '' }
                         <h1>Update your profile</h1>
-                        <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise. 
+                        <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.
                            You can do this by adding more services with supporting case studies.</p>
                         <p>Your case study must include a referee and examples of how you meet the <a
                                 href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>. Use the <a
-                                href="https://marketplace.service.gov.au/static/media/documents/Digital%20Marketplace%20case%20study%20template.xlsx" target="_blank" rel="external">spreadsheet template</a> if 
+                                href="https://marketplace.service.gov.au/static/media/documents/Digital%20Marketplace%20case%20study%20template.xlsx" target="_blank" rel="external">spreadsheet template</a> if
                             you need to collaborate on your case studies with colleagues.</p>
                         <h2>What happens next</h2>
-                        <p>Once you submit the updates, we will review your updated profile and let you know once it is live. 
+                        <p>Once you submit the updates, we will review your updated profile and let you know once it is live.
                            Please note you cannot edit your profile while it is being reviewed.</p>
                         <SaveError/>
                         <p>
@@ -98,7 +102,7 @@ const Start = ({supplierCode, signup, onClick, saved, type}) => {
                             <a className="button" href={signup} onClick={onClick}>Start Now </a>
                         </p>
                     </div>
-                )    
+                )
             )}
         </div>
     )
@@ -123,7 +127,9 @@ const mapStateToProps = (state, ownProps) => {
         signup: ownProps.signup,
         supplierCode: state.application.supplier_code,
         saved: state.application.saved,
-        type: state.application.type
+        type: state.application.type,
+        expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
+        expiredWorkersCompensation: state.application.expiredWorkersCompensation
     }
 }
 

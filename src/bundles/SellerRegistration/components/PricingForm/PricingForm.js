@@ -10,14 +10,18 @@ import BaseForm             from '../../../../shared/form/BaseForm';
 import ErrorBox             from '../../../../shared/form/ErrorBox';
 import StatefulError        from '../../../../shared/form/StatefulError';
 import formProps            from '../../../../shared/reduxModules/formPropsSelector';
+import SubmitForm           from '../../../../shared/form/SubmitForm';
 
+import StepNav              from '../StepNav';
 import { findValidServices } from '../../redux/helpers'
-import { required }         from '../../../../validators';
+import { required, notNegativeNumber, onlyNumbers }         from '../../../../validators';
+
+import './PricingForm.css';
 
 class PricingForm extends BaseForm {
 
   render() {
-    const { model, action, csrf_token, title, buttonText, services, children,  onSubmit } = this.props;
+    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {
@@ -34,74 +38,66 @@ class PricingForm extends BaseForm {
       )
     }
 
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
     return (
       <Layout>
         <header>
             <h1 tabIndex="-1">{title}</h1>
-            <p>This will only be visible to government buyers, not to other sellers on the Marketplace.</p>
+            <p>Indicate the maximum daily rate you would normally charge for each service.</p>
         </header>
         <article role="main">
-          <ErrorBox focusOnMount={true} model={model}/>
-          <Form 
+          <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
+          <Form
             model={model}
             action={action}
             method="post"
             id="DomainSelector__create"
-            onSubmit={onSubmit}>
-
+            component={SubmitForm}
+            onCustomSubmit={onSubmit}
+            valid={form.valid}
+            >
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
             )}
-            
+
             {Object.keys(validServices).map((service, i) => (
               <fieldset key={`pricing.${service}.${i}`} className="field">
                 <legend>{service}</legend>
-                <div className="row">
-                  <div className="col-sm-5 col-xs-12">
-                    <label htmlFor={`${kebabCase(service)}-minprice`}>Min. Daily Price</label>
-
-                    <StatefulError
-                      model={`${model}.pricing.${service}.minPrice`}
-                      messages={{
-                        required: `You must provide a min price for ${service}`
-                      }}
-                      id={`${kebabCase(service)}-minprice`}
-                    />
-
-                    <Control.text 
-                      type="number"
-                      id={`${kebabCase(service)}-minprice`}
-                      name={`services.${service}.minPrice`}
-                      model={`${model}.pricing.${service}.minPrice`}
-                      validators={{ required }}
-                    />
-                  </div>
-                  <div className="col-sm-push-1 col-sm-5 col-xs-12">
-                    <label htmlFor={`${kebabCase(service)}-maxprice`}>Max. Daily Price</label>
-
-                    <StatefulError
-                      model={`${model}.pricing.${service}.maxPrice`}
-                      messages={{
-                        required: `You must provide a max price for ${service}`
-                      }}
-                      id={`${kebabCase(service)}-maxprice`}
-                    />
-
-                    <Control.text 
-                      type="number"
+                <StatefulError
+                  model={`${model}.pricing.${service}.maxPrice`}
+                  messages={{
+                    required: `You must provide a max price for ${service}. `,
+                    notNegativeNumber: `Price can't have negative numbers. `,
+                    onlyNumbers: `Price can only be numbers. `
+                  }}
+                  id={`${kebabCase(service)}-maxprice`}
+                />
+                <div>
+                  <span><strong>$</strong></span>
+                  <span styleName="inline-input">
+                    <Control.text
+                      type="text"
                       id={`${kebabCase(service)}-maxprice`}
                       name={`services.${service}.maxPrice`}
                       model={`${model}.pricing.${service}.maxPrice`}
-                      validators={{ required }}
+                      validators={{ required, notNegativeNumber, onlyNumbers }}
                     />
-                  </div>
+                  </span>
+                  <span>(including GST)</span>
                 </div>
               </fieldset>
             ))}
 
             {children}
 
-            <input type="submit" value={buttonText} />
+            <StepNav buttonText={buttonText} to={nextRoute}/>
           </Form>
         </article>
       </Layout>

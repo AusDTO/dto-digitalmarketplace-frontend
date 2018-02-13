@@ -23,7 +23,14 @@ class AwardsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked} = this.props;
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
+        }
         return (
             <Layout>
                 <header>
@@ -40,7 +47,7 @@ class AwardsForm extends BaseForm {
                   </div>
                 </header>
                 <article role="main">
-                    <ErrorBox focusOnMount={true} model={model}/>
+                    <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     <Form model={model}
                           action={action}
                           method="post"

@@ -8,18 +8,28 @@ import PageAlert from '@gov.au/page-alerts';
 import { getInvalidFields } from '../reduxModules/errorMessageSelector';
 
 class ErrorBox extends React.Component {
-
   state = {
-    focusedOnce: false
+    lastFocus: null
+  }
+
+  setRef = c => {
+    this._container = c
+  }
+
+  componentDidMount() {
+    this.focusIfNeeded()
   }
 
   componentDidUpdate() {
-    const { focusOnMount } = this.props;
-    const { focusedOnce } = this.state;
+    this.focusIfNeeded()
+  }
 
-    if (this.refs['box'] && !focusedOnce && focusOnMount) {
-      this.setState({ focusedOnce: true });
-      this.refs.box.focus();
+  focusIfNeeded() {
+    if (this._container && this.state.lastFocus !== this.props.submitClicked) {
+      this.setState({
+        lastFocus: this.props.submitClicked
+      })
+      this.props.setFocus(this._container)
     }
   }
 
@@ -31,7 +41,7 @@ class ErrorBox extends React.Component {
 
     return (
       <PageAlert as='error'>
-        <h4 id="validation-masthead-heading">There was a problem with the details you gave</h4>
+        <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex="-1">There was a problem with the details you gave</h4>
         {invalidFields && (
           <ul>
             {invalidFields.map(({ messages, id }, i) => {

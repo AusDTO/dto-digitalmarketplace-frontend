@@ -43,10 +43,17 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm, nextRoute } = this.props;
+        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm, nextRoute, submitClicked } = this.props;
         let title = 'Tell us about your business'
         if (isNumber(supplierCode)) {
             title = 'Check your business details'
+        }
+        let hasFocused = false
+        const setFocus = e => {
+          if (!hasFocused) {
+            hasFocused = true
+            e.focus()
+          }
         }
 
         return (
@@ -55,7 +62,7 @@ class BusinessDetailsForm extends BaseForm {
                     <h1 tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
-                    <ErrorBox focusOnMount={true} model={model}/>
+                  <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
                     <ul>
