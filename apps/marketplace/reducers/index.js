@@ -4,6 +4,7 @@ import { createForms } from 'react-redux-form'
 import appReducer from './appReducer'
 import brief from './briefReducers'
 import user from './memberInfoReducers'
+import dashboard from './dashboardReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 
@@ -11,6 +12,7 @@ export default combineReducers({
   app: appReducer,
   user,
   brief,
+  dashboard,
   form_options,
   errorMessage,
   ...createForms({
