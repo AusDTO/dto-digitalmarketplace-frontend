@@ -18,10 +18,25 @@ export default combineReducers({
       name: '',
       email_address: ''
     },
-    createUserForm: {},
-    briefResponseForm: {},
-    resetPasswordEmailForm: {},
-    resetPasswordForm: {},
-    loginForm: {}
+    createUserForm: {
+      name: '',
+      password: ''
+    },
+    briefResponseForm: {
+      availability: '',
+      dayRate: '',
+      respondToEmailAddress: ''
+    },
+    resetPasswordEmailForm: {
+      email_address: ''
+    },
+    resetPasswordForm: {
+      password: '',
+      confirmPassword: ''
+    },
+    loginForm: {
+      emailAddress: '',
+      password: ''
+    }
   })
 })
