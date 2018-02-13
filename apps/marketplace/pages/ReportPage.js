@@ -6,7 +6,7 @@ import { rootPath } from '../routes'
 
 const itemData = {
   title: 'Digital Marketplace insights:',
-  date: 'December 2017',
+  date: 'January 2018',
   items: [
     {
       heading: 'Who is buying?',
