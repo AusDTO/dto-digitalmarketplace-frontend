@@ -1,0 +1,58 @@
+.container {
+  margin-bottom: 100px;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.headingRow {
+  font-size: 17px;
+  font-weight: bold;
+  color: #202751;
+  border-bottom: solid 3px #202751;
+  padding-bottom: 7px;
+}
+
+.priceRow {
+  padding-top: 20px;
+  padding-bottom: 21px;
+  border-bottom: solid 1px #777777;
+  color: #313131;
+}
+
+.buttonsContainer {
+  float: right;
+  text-align: right;
+  margin-top: -4.5em;
+}
+
+.badge {
+  border-radius: 2px;
+  border: solid 1px #0f979b;
+  color: #0f979b;
+  margin-bottom: 5px;
+  padding: 2px 5px;
+  width: fit-content;
+}
+
+.badgeRed {
+  border-radius: 2px;
+  border: solid 1px #ff0000;
+  color: #ff0000;
+  margin-bottom: 5px;
+  padding: 2px 5px;
+  width: fit-content;
+}
+
+.greyRow {
+  background-color: #f5f5f5;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.firstButton {
+  margin-right: 10px;
+}
