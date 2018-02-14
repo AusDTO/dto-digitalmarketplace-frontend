@@ -18,12 +18,12 @@ const ReportItem = props => {
   const renderImage = subitem => {
     const imgClass = includes(
       [
-        '>768 Briefs by phase',
-        '767 briefs by phase',
-        '768 average seller response',
-        '767 average of responses per brief',
-        '>768 number of sellers per area of expertise',
-        '767 sellers per area of expertise'
+        '768 Briefs by phase',
+        '767 Briefs by phase',
+        '768 Average responses per brief',
+        '767 Average responses per brief',
+        '768 Number of sellers per area of expertise',
+        '767 Number of sellers per area of expertise'
       ],
       subitem.image.replace('.svg', '')
     )
