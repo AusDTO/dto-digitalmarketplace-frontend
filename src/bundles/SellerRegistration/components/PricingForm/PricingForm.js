@@ -51,6 +51,9 @@ class PricingForm extends BaseForm {
         <header>
             <h1 tabIndex="-1">{title}</h1>
             <p>Indicate the maximum daily rate you would normally charge for each service.</p>
+            <p>Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
+            <p>We use this information to confirm your business offers value for money to government buyers.</p>
+            <p>Refer to our <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">Seller Pricing FAQs</a> for further information.</p>
         </header>
         <article role="main">
           <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
