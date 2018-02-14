@@ -23,7 +23,7 @@ const itemData = {
           mobileImage: '787 Top 5 buyers.svg',
           imageAlt: '',
           imageCaption:
-            'Top 5 agencies listing briefs on the Marketplace for January 2018 were the ' + 
+            'Top 5 agencies listing briefs on the Marketplace for January 2018 were the ' +
             'Department of Human Services (10 briefs), DTA (10 briefs), ' +
             'Department of Health (4 briefs), Australian Maritime Safety Authority (3 Briefs) ' +
             'and Department of Industry Innovation and Science (3 briefs)'
@@ -100,9 +100,9 @@ const itemData = {
             '85 briefs published for Software engineering and development, ' +
             '65 briefs published for User research and design, ' +
             '52 briefs published for Agile delivery and governance, ' +
-            '17 briefs published for Content and Publishing, ' + 
+            '17 briefs published for Content and Publishing, ' +
             '16 briefs published for Cyber security,' +
-            '49 briefs published for Other areas of expertise and ' + 
+            '49 briefs published for Other areas of expertise and ' +
             '190 briefs published for Outcomes (area not specified)'
         }
       ]
