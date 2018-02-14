@@ -22,7 +22,7 @@ const ReportView = props => {
               target="_blank"
               href="/static/media/documents/Digital Marketplace - January 2018 Insights.pdf"
             >
-              View this report as a PDF (81KB)
+              View this report as a PDF (98KB)
             </a>
           </div>
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
