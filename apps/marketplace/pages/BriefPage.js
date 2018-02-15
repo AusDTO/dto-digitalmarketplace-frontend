@@ -6,7 +6,7 @@ import ErrorBox from 'shared/form/ErrorBox'
 import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
-import { loadBrief, handleBriefResponseSubmit } from 'marketplace/actions/briefActions'
+import { loadBrief, handleBriefResponseSubmit, handleBriefNameSubmit } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
@@ -88,6 +88,7 @@ class BriefPage extends Component {
                 {loadBriefSuccess
                   ? <BriefResponseForm
                       submitClicked={this.onSubmitClicked}
+                      handleNameSubmit={name => this.handleBriefNameSubmit(name)}
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
                       {...this.props}
@@ -128,13 +129,15 @@ const mapResetStateToProps = state => ({
   supplierCode: state.app.supplierCode,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefResponseSuccess: state.brief.briefResponseSuccess,
-  currentlySending: state.app.currentlySending
+  currentlySending: state.app.currentlySending,
+  specialistName: state.brief.specialistName
 })
 
 const mapResetDispatchToProps = dispatch => ({
   handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
-  loadInitialData: briefId => dispatch(loadBrief(briefId))
+  loadInitialData: briefId => dispatch(loadBrief(briefId)),
+  handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name))
 })
 
 export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(BriefPage))
