@@ -67,6 +67,8 @@ const BriefResponseForm = ({
             </div>
           :
             <div>
+              <div className={styles.stepTitle}>Specialist 1 of 3</div>
+              
               <header className="page-heading page-heading-without-breadcrumb">
                 <h1>
                   Apply for &lsquo;{brief.title}&rsquo;
