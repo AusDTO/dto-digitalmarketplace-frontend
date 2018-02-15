@@ -20,18 +20,18 @@ const ReportView = props => {
             <a
               rel="external"
               target="_blank"
-              href="/static/media/documents/Digital Marketplace - December 2017 Insights.pdf"
+              href="/static/media/documents/Digital Marketplace - January 2018 Insights.pdf"
             >
-              View this report as a PDF (468KB)
+              View this report as a PDF (98KB)
             </a>
           </div>
           <h2 className={`${styles.reportViewHeading} uikit-display-2`}>Who are we?</h2>
           <span>
-            The Digital Marketplace is a simple and fast way to buy and sell with government. It {' '}
-            <strong>breaks down the barriers of entry for SMEs</strong> (a small to medium enterprise with less than 200
-            employees) and makes it{' '}
+            The Digital Marketplace is a simple and fast way to buy and sell with government. {' '}
+            <strong>It breaks down the barriers of entry for SMEs</strong> (a small to medium enterprise with less than
+            200 employees) and makes it{' '}
             <strong>easier to compete for the Australian Government&apos;s annual ICT spend</strong> ($6.2 billion in
-            financial year 2015-16)
+            financial year 2015-16).
           </span>
           {items &&
             <div className="row">
