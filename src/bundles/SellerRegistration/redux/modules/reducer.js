@@ -28,6 +28,7 @@ export default combineReducers({
     toolsForm: {},
     disclosuresForm: {},
     submitStepForm: {},
-    caseStudyForm: {}
+    caseStudyForm: {},
+    pricingForm: {}
   })
 })

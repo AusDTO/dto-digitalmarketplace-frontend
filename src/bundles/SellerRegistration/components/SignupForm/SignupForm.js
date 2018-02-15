@@ -44,9 +44,9 @@ class SignupForm extends BaseForm {
       isBuyer: this.props.signupForm.user_type === 'buyer'
     }
     this.statusCheck = this.statusCheck.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);  
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitFailed = this.handleSubmitFailed.bind(this);
-  }  
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.form.valid) {
@@ -69,9 +69,9 @@ class SignupForm extends BaseForm {
             validEmail: 'A validly formatted email is required'
           },
           isBuyer: false
-        }) 
+        })
       }
-      
+
       if (nextProps.signupForm.user_type === 'buyer') {
         this.setState({
           emailValidators: {
@@ -83,7 +83,7 @@ class SignupForm extends BaseForm {
             governmentEmail: 'Email should have a government domain'
           },
           isBuyer: true
-        })  
+        })
       }
     }
   }
@@ -111,7 +111,7 @@ class SignupForm extends BaseForm {
               <p>
                 The Digital Marketplace encountered an error trying to send your signup email.
                 Please try again later
-                or <a href='/contact-us' target="_blank" rel="external"> contact 
+                or <a href='/contact-us' target="_blank" rel="external"> contact
                 us </a> for assistance.
               </p>
             </li>
@@ -139,7 +139,7 @@ class SignupForm extends BaseForm {
         this.setState({signupSuccess: false, signupMessage: error})
       })
   }
-  
+
   handleSubmitFailed() {
     this.setState({
       signupSuccess: null,
@@ -158,7 +158,8 @@ class SignupForm extends BaseForm {
       buyer_url,
       seller_url,
       onSubmit,
-      onSubmitFailed
+      onSubmitFailed,
+      submitClicked
     } = this.props;
     let valid = form.valid;
     let action = isBuyer
@@ -171,7 +172,13 @@ class SignupForm extends BaseForm {
       emailValidators,
       emailErrorMessages
     } = this.state;
-    
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
     return (
       <div>
         {signupSuccess && <div>
@@ -186,7 +193,7 @@ class SignupForm extends BaseForm {
               </h1>
             </header>
             <p>
-              An email has been sent 
+              An email has been sent
               to <strong>{signupForm.email_address}</strong> with next steps.
             </p>
             <p>
@@ -212,7 +219,7 @@ class SignupForm extends BaseForm {
                 </ul>
               </PageAlert>
             )}
-            <ErrorBox focusOnMount={true} model={model}/>
+            <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
             <Form
               model={model}
               action={action}
@@ -283,7 +290,7 @@ class SignupForm extends BaseForm {
                 : "Email address"}
                 description={isBuyer
                 ? (
-                    <span>If your email is different, request your account 
+                    <span>If your email is different, request your account
                   from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
                 )
                 : (<br/>)}

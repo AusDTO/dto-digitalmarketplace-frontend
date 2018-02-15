@@ -58,6 +58,7 @@ const BriefResponseForm = ({
                   fieldLabel="Upload resume"
                   url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                   api={dmapi}
+                  description=""
                 />
               : <PageAlert as="warning" setFocus={setFocus}>
                   <h4>There was a problem loading your details</h4>

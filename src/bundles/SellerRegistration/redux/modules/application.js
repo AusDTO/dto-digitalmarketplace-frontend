@@ -12,6 +12,8 @@ const APP_POST_SUBMIT = 'application/post-submit';
 const APP_SAVED = 'application/saved';
 const APP_ERROR = 'application/error';
 const LINK_CLICK = 'link/click';
+const EXPIRED_LIABILITY_INSURANCE = 'application/expired-liability-insurance';
+const EXPIRED_WORKERS_COMPENSATION = 'application/expired-workers-compensation';
 
 const statusCheck = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -36,6 +38,16 @@ export default function reducer(state = {}, action = {}) {
       return Object.assign({}, state, {saved: void 0});
     case APP_PRE_SUBMIT:
       return Object.assign({}, state, {error: void 0});
+    case EXPIRED_LIABILITY_INSURANCE:
+      return {
+        ...state,
+        expiredLiabilityInsurance: action.expiredLiabilityInsurance
+      }
+    case EXPIRED_WORKERS_COMPENSATION:
+      return {
+        ...state,
+        expiredWorkersCompensation: action.expiredWorkersCompensation
+      }
     default:
       return state;
   }
@@ -160,13 +172,18 @@ export const uploadDocument = (id, file) => {
   }
 };
 
+export const expiredLiabilityInsurance = (expiredLiabilityInsurance) => ({type: EXPIRED_LIABILITY_INSURANCE, expiredLiabilityInsurance});
+
+export const expiredWorkersCompensation = (expiredWorkersCompensation) => ({type: EXPIRED_WORKERS_COMPENSATION, expiredWorkersCompensation});
 
 const constants = {
   STEP_NEXT,
   STEP_PRE,
   APP_SUBMIT,
   APP_POST_SUBMIT,
-  APP_PRE_SUBMIT
+  APP_PRE_SUBMIT,
+  EXPIRED_LIABILITY_INSURANCE,
+  EXPIRED_WORKERS_COMPENSATION
 };
 
 const actionCreators = {
@@ -182,7 +199,9 @@ const actionCreators = {
   navigateToStep,
   uploadDocument,
   linkClick,
-  push
+  push,
+  expiredLiabilityInsurance,
+  expiredWorkersCompensation
 };
 
 export {

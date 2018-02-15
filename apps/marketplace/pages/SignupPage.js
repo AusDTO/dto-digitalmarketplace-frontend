@@ -96,6 +96,7 @@ export class SignupPageComponent extends BaseForm {
                 onSubmitClicked={this.onSubmitClicked}
                 onSubmitFailed={this.onSubmitFailed}
                 handleSubmit={this.handleSubmit}
+                submitClicked={false}
               />}
           />
           <Route path={`${match.url}/success`} component={UserOnboardingContainer} />
