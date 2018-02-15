@@ -1,4 +1,4 @@
-import { BRIEF_INFO_FETCH_DATA_SUCCESS, BRIEF_RESPONSE_SUCCESS } from '../constants/constants'
+import { BRIEF_INFO_FETCH_DATA_SUCCESS, BRIEF_RESPONSE_SUCCESS, SPECIALIST_NAME } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
@@ -58,3 +58,5 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
     dispatch(sendingRequest(false))
   })
 }
+
+export const handleBriefNameSubmit = name => ({ type: SPECIALIST_NAME, name })
