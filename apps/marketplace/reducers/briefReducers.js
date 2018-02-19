@@ -4,7 +4,8 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_RESPONSE_FAILURE,
   BRIEF_RESPONSE_DUPLICATE_FAILURE,
-  SPECIALIST_NAME
+  SPECIALIST_NAME,
+  SPECIALIST_NUMBER
 } from '../constants/constants'
 
 const defaultBriefState = {
@@ -18,7 +19,8 @@ const defaultBriefState = {
   isDuplicate: null,
   brief: {},
   briefResponse: {},
-  specialistName: null
+  specialistName: '',
+  specialistNumber: 1
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -67,7 +69,13 @@ const briefReducer = (state = defaultBriefState, action) => {
     case SPECIALIST_NAME:
       return {
         ...state,
-        specialistName: action.name
+        specialistName: action.specialistName
+      }
+
+    case SPECIALIST_NUMBER:
+      return {
+        ...state,
+        specialistNumber: action.specialistNumber
       }
 
     default:

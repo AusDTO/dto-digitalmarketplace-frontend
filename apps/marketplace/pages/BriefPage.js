@@ -135,7 +135,8 @@ const mapResetStateToProps = state => ({
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefResponseSuccess: state.brief.briefResponseSuccess,
   currentlySending: state.app.currentlySending,
-  specialistName: state.brief.specialistName
+  specialistName: state.brief.specialistName,
+  specialistNumber: state.brief.specialistNumber
 })
 
 const mapResetDispatchToProps = dispatch => ({

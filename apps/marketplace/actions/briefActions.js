@@ -59,4 +59,6 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
   })
 }
 
-export const handleBriefNameSubmit = name => ({ type: SPECIALIST_NAME, name })
+export function handleBriefNameSubmit(specialistName) {
+  return { type: SPECIALIST_NAME, specialistName }
+}

@@ -28,7 +28,8 @@ const BriefResponseForm = ({
   setFocus,
   match,
   handleNameSubmit,
-  specialistName
+  specialistName,
+  specialistNumber
 }) =>
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -47,8 +48,8 @@ const BriefResponseForm = ({
               <h1 className="uikit-display-5">Add up to 3 specialists</h1>
               <div>You can withdraw or replace specialists any time before the opportunity closes on {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.</div>
               <br/>
-              <div className="uikit-display-4"><strong>Specialist 1</strong></div>
-              <Form model={model} id="briefName" onSubmit={data => handleNameSubmit(data)}>
+              <div className="uikit-display-4"><strong>Specialist {specialistNumber}</strong></div>
+              <Form model={model} id="briefName" onSubmit={data => handleNameSubmit(data.specialistName)}>
                 <Textfield
                   model={`${model}.specialistName`}
                   name="specialistName"
@@ -67,47 +68,23 @@ const BriefResponseForm = ({
             </div>
           :
             <div>
-              <div className={styles.stepTitle}>Specialist 1 of 3</div>
-              
-              <header className="page-heading page-heading-without-breadcrumb">
-                <h1>
-                  Apply for &lsquo;{brief.title}&rsquo;
-                </h1>
-              </header>
+              <div className={styles.stepTitle}>Specialist {specialistNumber} of 3</div>
+              <h1 className="uikit-display-6">{specialistName}</h1>
+              <div className="uikit-display-5">
+                About
+              </div>
               <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-                {app.supplierCode
-                  ? brief.lotSlug &&
-                    brief.lotSlug === 'digital-professionals' &&
-                    <FilesInput
-                      label="Attach up to 3 resumes"
-                      hint="Attachments must be PDF or ODT format and a maximum of 5MB"
-                      name="attachedDocumentURL"
-                      model={model}
-                      formFields={3}
-                      fieldLabel="Upload resume"
-                      url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                      api={dmapi}
-                      description=""
-                    />
-                  : <PageAlert as="warning" setFocus={setFocus}>
-                      <h4>There was a problem loading your details</h4>
-                      <p>Only logged in sellers can respond to briefs</p>
-                    </PageAlert>}
                 <Textfield
                   model={`${model}.availability`}
                   name="availability"
                   id="availability"
                   htmlFor="availability"
-                  label="When can you start?"
+                  label="Earliest start date"
                   maxLength={100}
                   description={
-                    brief.lotSlug && brief.lotSlug === 'digital-professionals'
-                      ? <span>
-                          The buyer needs this role filled no later than <b>{brief.startDate}</b>
-                        </span>
-                      : <span>
-                          The buyer needs this project to start no later than <b>{brief.startDate}</b>
-                        </span>
+                    <span>
+                      Preferred start date is <b>{brief.startDate}</b>
+                    </span>
                   }
                   validators={{
                     required
@@ -123,8 +100,7 @@ const BriefResponseForm = ({
                     name="dayRate"
                     id="dayRate"
                     htmlFor="dayRate"
-                    label="Day rate"
-                    description="What is your day rate, including GST?"
+                    label="Day rate (including GST)"
                     validators={{
                       required,
                       validPercentage
@@ -134,6 +110,24 @@ const BriefResponseForm = ({
                       validPercentage: 'Enter only numbers eg. 600.00'
                     }}
                   />}
+                {app.supplierCode
+                  ? brief.lotSlug &&
+                    brief.lotSlug === 'digital-professionals' &&
+                    <FilesInput
+                      label="Resume"
+                      hint="Attachments must be PDF or ODT format and a maximum of 5MB"
+                      name="attachedDocumentURL"
+                      model={model}
+                      formFields={1}
+                      fieldLabel="Upload resume"
+                      url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                      api={dmapi}
+                      description=""
+                    />
+                  : <PageAlert as="warning" setFocus={setFocus}>
+                      <h4>There was a problem loading your details</h4>
+                      <p>Only logged in sellers can respond to briefs</p>
+                    </PageAlert>}
                 <fieldset className={styles.x_uikit_fieldset}>
                   <h2>Skills and experience?</h2>
                   {brief.lotSlug &&
@@ -167,7 +161,13 @@ const BriefResponseForm = ({
                       />
                     )}
                 </fieldset>
-                <Textfield
+                {currentlySending
+                  ? <LoadingButton />
+                : <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" onClick={submitClicked} />}
+                {currentlySending
+                  ? <LoadingButton />
+                : <input className="uikit-btn uikit-btn--tertiary" type="submit" value="Submit and add another" onClick={submitClicked} />}
+                {/*<Textfield
                   model={`${model}.respondToEmailAddress`}
                   name="respondToEmailAddress"
                   id="respondToEmailAddress"
@@ -210,7 +210,7 @@ const BriefResponseForm = ({
                   {currentlySending
                     ? <LoadingButton />
                     : <input className="uikit-btn" type="submit" value="Submit application" onClick={submitClicked} />}
-                </div>
+                </div>*/}
               </Form>
             </div>
           }
@@ -222,7 +222,8 @@ const BriefResponseForm = ({
 BriefResponseForm.defaultProps = {
   submitClicked: null,
   handleSubmit: null,
-  handleNameSubmit: null
+  handleNameSubmit: null,
+  specialistName: null
 }
 
 BriefResponseForm.propTypes = {
