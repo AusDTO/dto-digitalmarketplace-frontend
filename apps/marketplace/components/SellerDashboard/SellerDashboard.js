@@ -9,20 +9,24 @@ const SellerDashboard = props =>
     <div className={`${styles.header} row`}>
       <div className="col-md-12 col-sm-12">
         <div className={styles.briefsFilter}>
-        <ul className="uikit-link-list uikit-link-list--inline">
-          <li>
-            <a href="/sellers">Manage team</a>
-          </li>
-          <li>
-            <a href={`/supplier/${props.supplier.code}`}>View profile</a>
-          </li>
-        </ul>
+          <ul className="uikit-link-list uikit-link-list--inline">
+            <li>
+              <a href="/sellers">Manage team</a>
+            </li>
+            <li>
+              <a href={`/supplier/${props.supplier.code}`}>View profile</a>
+            </li>
+          </ul>
         </div>
         <span className={`uikit-display-2 ${styles.lightText}`}>
           {props.supplier.name}
         </span>
         <h1 className="uikit-display-5">Dashboard</h1>
-        {!props.items && <div>You have not applied for any <a href='/digital-marketplace/opportunities?status=live'>opportunities</a> since January 1st 2018.</div>}
+        {!props.items &&
+          <div>
+            You have not applied for any <a href="/digital-marketplace/opportunities?status=live">opportunities</a>{' '}
+            since January 1st 2018.
+          </div>}
       </div>
     </div>
     {props.items &&
@@ -56,7 +60,13 @@ const SellerDashboard = props =>
                 </div>
               </div>
               <div className={`${styles.grids} col-md-2 col-sm-2`}>
-                <a href={item.framework == 'Digital professionals' ? 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011261887#afterapplying' : 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011258727-Invitation-for-proposals'}>
+                <a
+                  href={
+                    item.framework === 'Digital professionals'
+                      ? 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011261887#afterapplying'
+                      : 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011258727-Invitation-for-proposals'
+                  }
+                >
                   <strong>View next steps</strong>
                 </a>
               </div>
@@ -64,9 +74,9 @@ const SellerDashboard = props =>
           </div>
         )}
         <div className={styles.disclaimer}>
-        <small>
-          Showing opportunities posted from January 1st 2018.  These will update as buyers provide information.
-        </small>
+          <small>
+            Showing opportunities posted from January 1st 2018. These will update as buyers provide information.
+          </small>
         </div>
       </article>}
   </div>
