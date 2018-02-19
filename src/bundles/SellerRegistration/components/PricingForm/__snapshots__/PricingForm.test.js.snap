@@ -15,14 +15,14 @@ exports[`PricingForm renders a notice that domains are required 1`] = `
     role="main"
   >
     <p>
-      You must select some domains before specifying pricing!
+      You must select the services you offer before specifying pricing!
     </p>
     <p>
       <a
         href="/domains"
         onClick={[Function]}
       >
-        Select domains
+        Select services
       </a>
     </p>
   </article>

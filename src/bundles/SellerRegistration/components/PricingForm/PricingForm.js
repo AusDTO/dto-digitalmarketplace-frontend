@@ -31,8 +31,8 @@ class PricingForm extends BaseForm {
             <h1 tabIndex="-1">{title}</h1>
           </header>
           <article role="main">
-            <p>You must select some domains before specifying pricing!</p>
-            <p><Link to="/domains">Select domains</Link></p>
+            <p>You must select the services you offer before specifying pricing!</p>
+            <p><Link to="/domains">Select services</Link></p>
           </article>
         </Layout>
       )
@@ -78,7 +78,7 @@ class PricingForm extends BaseForm {
                   messages={{
                     required: `You must provide a max price for ${service}. `,
                     notNegativeNumber: `Price can't have negative numbers. `,
-                    onlyNumbers: `Price can only be numbers. `
+                    onlyNumbers: `Prices must be numeric. `
                   }}
                   id={`${kebabCase(service)}-maxprice`}
                 />
