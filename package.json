@@ -57,6 +57,7 @@
     "gzip-size": "^4.0.0",
     "html-webpack-plugin": "^2.30.1",
     "http-proxy-middleware": "^0.17.4",
+    "identity-obj-proxy": "^3.0.0",
     "ignore-loader": "0.1.2",
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
@@ -151,8 +152,7 @@
     ],
     "moduleNameMapper": {
       "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/FileStub.js",
-      "^.+\\.css$": "<rootDir>/config/jest/CSSStub.js",
-      "^.+\\.scss$": "<rootDir>/config/jest/CSSStub.js"
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
     },
     "modulePaths": [
       "<rootDir>/apps/"

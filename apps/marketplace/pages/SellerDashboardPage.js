@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import SellerDashboard from 'marketplace/components/SellerDashboard/SellerDashboard'
 import { loadSellerDashboard } from 'marketplace/actions/dashboardActions'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class SellerDashboardPage extends Component {
   componentWillMount() {
@@ -11,7 +12,11 @@ class SellerDashboardPage extends Component {
   }
 
   render() {
-    const { match } = this.props
+    const { match, currentlySending } = this.props
+
+    if (currentlySending) {
+      return <LoadingIndicatorFullPage />
+    }
 
     return (
       <Switch>
