@@ -46,8 +46,7 @@ test('Displays list of responses on dashboard', () => {
 
 test('Displays empty message when no responses', () => {
   const props = {
-    items: [
-    ],
+    items: [],
     supplier: {
       code: 426,
       name: 'test supplier'
@@ -55,6 +54,5 @@ test('Displays empty message when no responses', () => {
   }
 
   const component = mount(<SellerDashboard {...props} />)
-  console.log(component.debug())
   expect(component).toMatchSnapshot()
 })
