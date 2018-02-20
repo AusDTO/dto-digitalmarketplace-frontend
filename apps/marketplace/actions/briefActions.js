@@ -53,6 +53,7 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
     if (response.error) {
       dispatch(handleErrorFailure(response))
     } else {
+      window.scrollTo(0, 0)
       dispatch(handleBriefResponseSuccess(response))
     }
     dispatch(sendingRequest(false))

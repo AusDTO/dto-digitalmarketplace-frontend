@@ -167,50 +167,6 @@ const BriefResponseForm = ({
                 {currentlySending
                   ? <LoadingButton />
                 : <input className="uikit-btn uikit-btn--tertiary" type="submit" value="Submit and add another" onClick={submitClicked} />}
-                {/*<Textfield
-                  model={`${model}.respondToEmailAddress`}
-                  name="respondToEmailAddress"
-                  id="respondToEmailAddress"
-                  htmlFor="respondToEmailAddress"
-                  label="Contact email"
-                  description="All communication about your application will be sent to this address."
-                  defaultValue={app.emailAddress}
-                  validators={{
-                    required,
-                    validEmail
-                  }}
-                  messages={{
-                    required: 'A contact email is required',
-                    validEmail: 'A valid contact email is required'
-                  }}
-                />
-                <br />
-                <br />
-                <div className="uikit-page-alerts uikit-page-alerts--warning">
-                  <h3>Once you submit this application:</h3>
-                  <ul>
-                    {brief.lotSlug &&
-                      brief.lotSlug === 'digital-professionals' &&
-                      <li>
-                        You <b>cannot</b> submit another candidate
-                      </li>}
-                    <li>
-                      You <b>cannot</b> edit your application after submitting
-                    </li>
-                    <li>
-                      The buyer will contact you after <b>
-                        {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}
-                      </b>{' '}
-                      {brief.lotSlug && brief.lotSlug === 'digital-professionals'
-                        ? <span> if you&apos;re shortlisted for the next stage </span>
-                        : <span>to submit your proposal if you&apos;re shortlisted</span>}
-                    </li>
-                  </ul>
-
-                  {currentlySending
-                    ? <LoadingButton />
-                    : <input className="uikit-btn" type="submit" value="Submit application" onClick={submitClicked} />}
-                </div>*/}
               </Form>
             </div>
           }
