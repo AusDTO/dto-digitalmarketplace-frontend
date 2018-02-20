@@ -33,11 +33,21 @@ const SellerDashboard = props =>
       <article role="main">
         <div className={styles.headingRow}>
           <div className={`${styles.headingTitles} row`}>
-            <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>ID</div>
-            <div className="col-md-4 col-sm-4">Name</div>
-            <div className="col-md-3 col-sm-3">Canberra closing time</div>
-            <div className="col-md-2 col-sm-2">Status</div>
-            <div className="col-md-2 col-sm-2">Action</div>
+            <div className={`${styles.alignCenter} col-md-1 col-sm-1`} role="columnheader">
+              ID
+            </div>
+            <div className="col-md-4 col-sm-4" role="columnheader">
+              Name
+            </div>
+            <div className="col-md-3 col-sm-3" role="columnheader">
+              Canberra closing time
+            </div>
+            <div className="col-md-2 col-sm-2" role="columnheader">
+              Status
+            </div>
+            <div className="col-md-2 col-sm-2" role="columnheader">
+              Action
+            </div>
           </div>
         </div>
         {props.items.map((item, i) =>
