@@ -22,14 +22,14 @@ const SellerDashboard = props =>
           {props.supplier.name}
         </span>
         <h1 className="uikit-display-5">Dashboard</h1>
-        {!props.items &&
+        {props.items.length === 0 &&
           <div>
             You have not applied for any <a href="/digital-marketplace/opportunities?status=live">opportunities</a>{' '}
             since January 1st 2018.
           </div>}
       </div>
     </div>
-    {props.items &&
+    {props.items.length > 0 &&
       <article role="main">
         <div className={styles.headingRow}>
           <div className={`${styles.headingTitles} row`}>
