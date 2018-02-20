@@ -1377,26 +1377,31 @@ ReactWrapper {
             >
               <div
                 class="alignCenter col-md-1 col-sm-1"
+                role="columnheader"
               >
                 ID
               </div>
               <div
                 class="col-md-4 col-sm-4"
+                role="columnheader"
               >
                 Name
               </div>
               <div
                 class="col-md-3 col-sm-3"
+                role="columnheader"
               >
                 Canberra closing time
               </div>
               <div
                 class="col-md-2 col-sm-2"
+                role="columnheader"
               >
                 Status
               </div>
               <div
                 class="col-md-2 col-sm-2"
+                role="columnheader"
               >
                 Action
               </div>
@@ -1472,7 +1477,7 @@ ReactWrapper {
               <div
                 class="grids col-md-3 col-sm-3"
               >
-                6pm, 21 February 2018
+                Closed
               </div>
               <div
                 class="grids col-md-2 col-sm-2"
@@ -1607,26 +1612,31 @@ ReactWrapper {
               >
                 <div
                   className="alignCenter col-md-1 col-sm-1"
+                  role="columnheader"
                 >
                   ID
                 </div>
                 <div
                   className="col-md-4 col-sm-4"
+                  role="columnheader"
                 >
                   Name
                 </div>
                 <div
                   className="col-md-3 col-sm-3"
+                  role="columnheader"
                 >
                   Canberra closing time
                 </div>
                 <div
                   className="col-md-2 col-sm-2"
+                  role="columnheader"
                 >
                   Status
                 </div>
                 <div
                   className="col-md-2 col-sm-2"
+                  role="columnheader"
                 >
                   Action
                 </div>
@@ -2185,26 +2195,31 @@ ReactWrapper {
               >
                 <div
                   class="alignCenter col-md-1 col-sm-1"
+                  role="columnheader"
                 >
                   ID
                 </div>
                 <div
                   class="col-md-4 col-sm-4"
+                  role="columnheader"
                 >
                   Name
                 </div>
                 <div
                   class="col-md-3 col-sm-3"
+                  role="columnheader"
                 >
                   Canberra closing time
                 </div>
                 <div
                   class="col-md-2 col-sm-2"
+                  role="columnheader"
                 >
                   Status
                 </div>
                 <div
                   class="col-md-2 col-sm-2"
+                  role="columnheader"
                 >
                   Action
                 </div>
@@ -2280,7 +2295,7 @@ ReactWrapper {
                 <div
                   class="grids col-md-3 col-sm-3"
                 >
-                  6pm, 21 February 2018
+                  Closed
                 </div>
                 <div
                   class="grids col-md-2 col-sm-2"
@@ -2371,26 +2386,31 @@ ReactWrapper {
                 >
                   <div
                     className="alignCenter col-md-1 col-sm-1"
+                    role="columnheader"
                   >
                     ID
                   </div>
                   <div
                     className="col-md-4 col-sm-4"
+                    role="columnheader"
                   >
                     Name
                   </div>
                   <div
                     className="col-md-3 col-sm-3"
+                    role="columnheader"
                   >
                     Canberra closing time
                   </div>
                   <div
                     className="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Status
                   </div>
                   <div
                     className="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Action
                   </div>
@@ -2566,26 +2586,31 @@ ReactWrapper {
                 >
                   <div
                     class="alignCenter col-md-1 col-sm-1"
+                    role="columnheader"
                   >
                     ID
                   </div>
                   <div
                     class="col-md-4 col-sm-4"
+                    role="columnheader"
                   >
                     Name
                   </div>
                   <div
                     class="col-md-3 col-sm-3"
+                    role="columnheader"
                   >
                     Canberra closing time
                   </div>
                   <div
                     class="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Status
                   </div>
                   <div
                     class="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Action
                   </div>
@@ -2599,26 +2624,31 @@ ReactWrapper {
                 >
                   <div
                     className="alignCenter col-md-1 col-sm-1"
+                    role="columnheader"
                   >
                     ID
                   </div>
                   <div
                     className="col-md-4 col-sm-4"
+                    role="columnheader"
                   >
                     Name
                   </div>
                   <div
                     className="col-md-3 col-sm-3"
+                    role="columnheader"
                   >
                     Canberra closing time
                   </div>
                   <div
                     className="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Status
                   </div>
                   <div
                     className="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Action
                   </div>
@@ -2633,26 +2663,31 @@ ReactWrapper {
                   >
                     <div
                       class="alignCenter col-md-1 col-sm-1"
+                      role="columnheader"
                     >
                       ID
                     </div>
                     <div
                       class="col-md-4 col-sm-4"
+                      role="columnheader"
                     >
                       Name
                     </div>
                     <div
                       class="col-md-3 col-sm-3"
+                      role="columnheader"
                     >
                       Canberra closing time
                     </div>
                     <div
                       class="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Status
                     </div>
                     <div
                       class="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Action
                     </div>
@@ -2663,26 +2698,31 @@ ReactWrapper {
                     "children": Array [
                       <div
                         className="alignCenter col-md-1 col-sm-1"
+                        role="columnheader"
                       >
                         ID
                       </div>,
                       <div
                         className="col-md-4 col-sm-4"
+                        role="columnheader"
                       >
                         Name
                       </div>,
                       <div
                         className="col-md-3 col-sm-3"
+                        role="columnheader"
                       >
                         Canberra closing time
                       </div>,
                       <div
                         className="col-md-2 col-sm-2"
+                        role="columnheader"
                       >
                         Status
                       </div>,
                       <div
                         className="col-md-2 col-sm-2"
+                        role="columnheader"
                       >
                         Action
                       </div>,
@@ -2694,6 +2734,7 @@ ReactWrapper {
                     Object {
                       "instance": <div
                         class="alignCenter col-md-1 col-sm-1"
+                        role="columnheader"
                       >
                         ID
                       </div>,
@@ -2702,6 +2743,7 @@ ReactWrapper {
                       "props": Object {
                         "children": "ID",
                         "className": "alignCenter col-md-1 col-sm-1",
+                        "role": "columnheader",
                       },
                       "ref": null,
                       "rendered": Array [
@@ -2712,6 +2754,7 @@ ReactWrapper {
                     Object {
                       "instance": <div
                         class="col-md-4 col-sm-4"
+                        role="columnheader"
                       >
                         Name
                       </div>,
@@ -2720,6 +2763,7 @@ ReactWrapper {
                       "props": Object {
                         "children": "Name",
                         "className": "col-md-4 col-sm-4",
+                        "role": "columnheader",
                       },
                       "ref": null,
                       "rendered": Array [
@@ -2730,6 +2774,7 @@ ReactWrapper {
                     Object {
                       "instance": <div
                         class="col-md-3 col-sm-3"
+                        role="columnheader"
                       >
                         Canberra closing time
                       </div>,
@@ -2738,6 +2783,7 @@ ReactWrapper {
                       "props": Object {
                         "children": "Canberra closing time",
                         "className": "col-md-3 col-sm-3",
+                        "role": "columnheader",
                       },
                       "ref": null,
                       "rendered": Array [
@@ -2748,6 +2794,7 @@ ReactWrapper {
                     Object {
                       "instance": <div
                         class="col-md-2 col-sm-2"
+                        role="columnheader"
                       >
                         Status
                       </div>,
@@ -2756,6 +2803,7 @@ ReactWrapper {
                       "props": Object {
                         "children": "Status",
                         "className": "col-md-2 col-sm-2",
+                        "role": "columnheader",
                       },
                       "ref": null,
                       "rendered": Array [
@@ -2766,6 +2814,7 @@ ReactWrapper {
                     Object {
                       "instance": <div
                         class="col-md-2 col-sm-2"
+                        role="columnheader"
                       >
                         Action
                       </div>,
@@ -2774,6 +2823,7 @@ ReactWrapper {
                       "props": Object {
                         "children": "Action",
                         "className": "col-md-2 col-sm-2",
+                        "role": "columnheader",
                       },
                       "ref": null,
                       "rendered": Array [
@@ -3210,7 +3260,7 @@ ReactWrapper {
                   <div
                     class="grids col-md-3 col-sm-3"
                   >
-                    6pm, 21 February 2018
+                    Closed
                   </div>
                   <div
                     class="grids col-md-2 col-sm-2"
@@ -3307,7 +3357,7 @@ ReactWrapper {
                     <div
                       class="grids col-md-3 col-sm-3"
                     >
-                      6pm, 21 February 2018
+                      Closed
                     </div>
                     <div
                       class="grids col-md-2 col-sm-2"
@@ -3445,7 +3495,7 @@ ReactWrapper {
                       "instance": <div
                         class="grids col-md-3 col-sm-3"
                       >
-                        6pm, 21 February 2018
+                        Closed
                       </div>,
                       "key": undefined,
                       "nodeType": "host",
@@ -3465,7 +3515,7 @@ ReactWrapper {
                             "date": "2018-02-20T16:19:19.268849+00:00",
                           },
                           "ref": null,
-                          "rendered": "6pm, 21 February 2018",
+                          "rendered": "Closed",
                           "type": [Function],
                         },
                       ],
@@ -4121,26 +4171,31 @@ ReactWrapper {
               >
                 <div
                   class="alignCenter col-md-1 col-sm-1"
+                  role="columnheader"
                 >
                   ID
                 </div>
                 <div
                   class="col-md-4 col-sm-4"
+                  role="columnheader"
                 >
                   Name
                 </div>
                 <div
                   class="col-md-3 col-sm-3"
+                  role="columnheader"
                 >
                   Canberra closing time
                 </div>
                 <div
                   class="col-md-2 col-sm-2"
+                  role="columnheader"
                 >
                   Status
                 </div>
                 <div
                   class="col-md-2 col-sm-2"
+                  role="columnheader"
                 >
                   Action
                 </div>
@@ -4216,7 +4271,7 @@ ReactWrapper {
                 <div
                   class="grids col-md-3 col-sm-3"
                 >
-                  6pm, 21 February 2018
+                  Closed
                 </div>
                 <div
                   class="grids col-md-2 col-sm-2"
@@ -4351,26 +4406,31 @@ ReactWrapper {
                 >
                   <div
                     className="alignCenter col-md-1 col-sm-1"
+                    role="columnheader"
                   >
                     ID
                   </div>
                   <div
                     className="col-md-4 col-sm-4"
+                    role="columnheader"
                   >
                     Name
                   </div>
                   <div
                     className="col-md-3 col-sm-3"
+                    role="columnheader"
                   >
                     Canberra closing time
                   </div>
                   <div
                     className="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Status
                   </div>
                   <div
                     className="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Action
                   </div>
@@ -4929,26 +4989,31 @@ ReactWrapper {
                 >
                   <div
                     class="alignCenter col-md-1 col-sm-1"
+                    role="columnheader"
                   >
                     ID
                   </div>
                   <div
                     class="col-md-4 col-sm-4"
+                    role="columnheader"
                   >
                     Name
                   </div>
                   <div
                     class="col-md-3 col-sm-3"
+                    role="columnheader"
                   >
                     Canberra closing time
                   </div>
                   <div
                     class="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Status
                   </div>
                   <div
                     class="col-md-2 col-sm-2"
+                    role="columnheader"
                   >
                     Action
                   </div>
@@ -5024,7 +5089,7 @@ ReactWrapper {
                   <div
                     class="grids col-md-3 col-sm-3"
                   >
-                    6pm, 21 February 2018
+                    Closed
                   </div>
                   <div
                     class="grids col-md-2 col-sm-2"
@@ -5115,26 +5180,31 @@ ReactWrapper {
                   >
                     <div
                       className="alignCenter col-md-1 col-sm-1"
+                      role="columnheader"
                     >
                       ID
                     </div>
                     <div
                       className="col-md-4 col-sm-4"
+                      role="columnheader"
                     >
                       Name
                     </div>
                     <div
                       className="col-md-3 col-sm-3"
+                      role="columnheader"
                     >
                       Canberra closing time
                     </div>
                     <div
                       className="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Status
                     </div>
                     <div
                       className="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Action
                     </div>
@@ -5310,26 +5380,31 @@ ReactWrapper {
                   >
                     <div
                       class="alignCenter col-md-1 col-sm-1"
+                      role="columnheader"
                     >
                       ID
                     </div>
                     <div
                       class="col-md-4 col-sm-4"
+                      role="columnheader"
                     >
                       Name
                     </div>
                     <div
                       class="col-md-3 col-sm-3"
+                      role="columnheader"
                     >
                       Canberra closing time
                     </div>
                     <div
                       class="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Status
                     </div>
                     <div
                       class="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Action
                     </div>
@@ -5343,26 +5418,31 @@ ReactWrapper {
                   >
                     <div
                       className="alignCenter col-md-1 col-sm-1"
+                      role="columnheader"
                     >
                       ID
                     </div>
                     <div
                       className="col-md-4 col-sm-4"
+                      role="columnheader"
                     >
                       Name
                     </div>
                     <div
                       className="col-md-3 col-sm-3"
+                      role="columnheader"
                     >
                       Canberra closing time
                     </div>
                     <div
                       className="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Status
                     </div>
                     <div
                       className="col-md-2 col-sm-2"
+                      role="columnheader"
                     >
                       Action
                     </div>
@@ -5377,26 +5457,31 @@ ReactWrapper {
                     >
                       <div
                         class="alignCenter col-md-1 col-sm-1"
+                        role="columnheader"
                       >
                         ID
                       </div>
                       <div
                         class="col-md-4 col-sm-4"
+                        role="columnheader"
                       >
                         Name
                       </div>
                       <div
                         class="col-md-3 col-sm-3"
+                        role="columnheader"
                       >
                         Canberra closing time
                       </div>
                       <div
                         class="col-md-2 col-sm-2"
+                        role="columnheader"
                       >
                         Status
                       </div>
                       <div
                         class="col-md-2 col-sm-2"
+                        role="columnheader"
                       >
                         Action
                       </div>
@@ -5407,26 +5492,31 @@ ReactWrapper {
                       "children": Array [
                         <div
                           className="alignCenter col-md-1 col-sm-1"
+                          role="columnheader"
                         >
                           ID
                         </div>,
                         <div
                           className="col-md-4 col-sm-4"
+                          role="columnheader"
                         >
                           Name
                         </div>,
                         <div
                           className="col-md-3 col-sm-3"
+                          role="columnheader"
                         >
                           Canberra closing time
                         </div>,
                         <div
                           className="col-md-2 col-sm-2"
+                          role="columnheader"
                         >
                           Status
                         </div>,
                         <div
                           className="col-md-2 col-sm-2"
+                          role="columnheader"
                         >
                           Action
                         </div>,
@@ -5438,6 +5528,7 @@ ReactWrapper {
                       Object {
                         "instance": <div
                           class="alignCenter col-md-1 col-sm-1"
+                          role="columnheader"
                         >
                           ID
                         </div>,
@@ -5446,6 +5537,7 @@ ReactWrapper {
                         "props": Object {
                           "children": "ID",
                           "className": "alignCenter col-md-1 col-sm-1",
+                          "role": "columnheader",
                         },
                         "ref": null,
                         "rendered": Array [
@@ -5456,6 +5548,7 @@ ReactWrapper {
                       Object {
                         "instance": <div
                           class="col-md-4 col-sm-4"
+                          role="columnheader"
                         >
                           Name
                         </div>,
@@ -5464,6 +5557,7 @@ ReactWrapper {
                         "props": Object {
                           "children": "Name",
                           "className": "col-md-4 col-sm-4",
+                          "role": "columnheader",
                         },
                         "ref": null,
                         "rendered": Array [
@@ -5474,6 +5568,7 @@ ReactWrapper {
                       Object {
                         "instance": <div
                           class="col-md-3 col-sm-3"
+                          role="columnheader"
                         >
                           Canberra closing time
                         </div>,
@@ -5482,6 +5577,7 @@ ReactWrapper {
                         "props": Object {
                           "children": "Canberra closing time",
                           "className": "col-md-3 col-sm-3",
+                          "role": "columnheader",
                         },
                         "ref": null,
                         "rendered": Array [
@@ -5492,6 +5588,7 @@ ReactWrapper {
                       Object {
                         "instance": <div
                           class="col-md-2 col-sm-2"
+                          role="columnheader"
                         >
                           Status
                         </div>,
@@ -5500,6 +5597,7 @@ ReactWrapper {
                         "props": Object {
                           "children": "Status",
                           "className": "col-md-2 col-sm-2",
+                          "role": "columnheader",
                         },
                         "ref": null,
                         "rendered": Array [
@@ -5510,6 +5608,7 @@ ReactWrapper {
                       Object {
                         "instance": <div
                           class="col-md-2 col-sm-2"
+                          role="columnheader"
                         >
                           Action
                         </div>,
@@ -5518,6 +5617,7 @@ ReactWrapper {
                         "props": Object {
                           "children": "Action",
                           "className": "col-md-2 col-sm-2",
+                          "role": "columnheader",
                         },
                         "ref": null,
                         "rendered": Array [
@@ -5954,7 +6054,7 @@ ReactWrapper {
                     <div
                       class="grids col-md-3 col-sm-3"
                     >
-                      6pm, 21 February 2018
+                      Closed
                     </div>
                     <div
                       class="grids col-md-2 col-sm-2"
@@ -6051,7 +6151,7 @@ ReactWrapper {
                       <div
                         class="grids col-md-3 col-sm-3"
                       >
-                        6pm, 21 February 2018
+                        Closed
                       </div>
                       <div
                         class="grids col-md-2 col-sm-2"
@@ -6189,7 +6289,7 @@ ReactWrapper {
                         "instance": <div
                           class="grids col-md-3 col-sm-3"
                         >
-                          6pm, 21 February 2018
+                          Closed
                         </div>,
                         "key": undefined,
                         "nodeType": "host",
@@ -6209,7 +6309,7 @@ ReactWrapper {
                               "date": "2018-02-20T16:19:19.268849+00:00",
                             },
                             "ref": null,
-                            "rendered": "6pm, 21 February 2018",
+                            "rendered": "Closed",
                             "type": [Function],
                           },
                         ],
