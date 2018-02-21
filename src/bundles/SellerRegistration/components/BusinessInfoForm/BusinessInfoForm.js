@@ -248,17 +248,6 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business has at least 50% female ownership. </p>
                             </label>
 
-
-                            <Control.checkbox
-                                model={`${model}.seller_type.lgbtqi_owned`}
-                                id="lgbtqi-owned"
-                                name="lgbtqi-owned"
-                                value="LGBTQI owned"
-                            />
-                            <label htmlFor="lgbtqi-owned">LGBTQI owned
-                                <p>Your business identifies as a LGBTQI enterprise. </p>
-                            </label>
-
                             <Control.checkbox
                                 model={`${model}.seller_type.indigenous`}
                                 id="indigenous"
