@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -6,7 +7,12 @@ import ErrorBox from 'shared/form/ErrorBox'
 import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
-import { loadBrief, handleBriefResponseSubmit, handleBriefNameSubmit } from 'marketplace/actions/briefActions'
+import { loadBrief,
+  handleBriefResponseSubmit,
+  handleBriefNameSubmit,
+  addAnotherSpecialistSubmit,
+  handleSpecialistNumberSubmit
+} from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
@@ -52,6 +58,12 @@ class BriefPage extends Component {
     window.scrollTo(0, 0)
   }
 
+  addAnotherSpecialistSubmit = bool => {
+    // this.props.handleBriefNameSubmit('')
+    // this.props.handleSpecialistNumberSubmit(1)
+    this.props.addAnotherSpecialistSubmit(bool)
+  }
+
   render() {
     const { loadBriefSuccess, match } = this.props
 
@@ -95,6 +107,7 @@ class BriefPage extends Component {
                       submitClicked={this.onSubmitClicked}
                       handleNameSubmit={name => this.handleBriefNameSubmit(name)}
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                      addAnotherClicked={bool => this.addAnotherSpecialistSubmit(bool)}
                       setFocus={setFocus}
                       {...this.props}
                     />
@@ -136,14 +149,17 @@ const mapResetStateToProps = state => ({
   briefResponseSuccess: state.brief.briefResponseSuccess,
   currentlySending: state.app.currentlySending,
   specialistName: state.brief.specialistName,
-  specialistNumber: state.brief.specialistNumber
+  specialistNumber: state.brief.specialistNumber,
+  addAnotherSpecialist: state.brief.addAnotherSpecialist
 })
 
 const mapResetDispatchToProps = dispatch => ({
   handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
-  handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name))
+  handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
+  handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
+  addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool))
 })
 
 export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(BriefPage))

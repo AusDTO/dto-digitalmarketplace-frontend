@@ -29,13 +29,15 @@ const BriefResponseForm = ({
   match,
   handleNameSubmit,
   specialistName,
-  specialistNumber
+  specialistNumber,
+  addAnotherClicked,
+  addAnotherSpecialist
 }) =>
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {briefResponseSuccess && <Redirect to={`${match.url}/respond/submitted`} />}
+          {briefResponseSuccess && !addAnotherSpecialist ? <Redirect to={`${match.url}/respond/submitted`} /> : ''}
           {!briefResponseSuccess &&
             <ErrorBox
               title="There was a problem submitting your response"
@@ -166,7 +168,7 @@ const BriefResponseForm = ({
                 : <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" onClick={submitClicked} />}
                 {currentlySending
                   ? <LoadingButton />
-                : <input className="uikit-btn uikit-btn--tertiary" type="submit" value="Submit and add another" onClick={submitClicked} />}
+                : <input className="uikit-btn uikit-btn--tertiary" type="submit" value="Submit and add another" onClick={addAnotherClicked(true)} />}
               </Form>
             </div>
           }
