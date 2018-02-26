@@ -26,7 +26,6 @@ export default combineReducers({
     },
     briefResponseForm: {
       availability: '',
-      dayRate: '',
       respondToEmailAddress: ''
     },
     resetPasswordEmailForm: {
