@@ -59,8 +59,8 @@ class BriefPage extends Component {
   }
 
   addAnotherSpecialistSubmit = bool => {
-    // this.props.handleBriefNameSubmit('')
-    // this.props.handleSpecialistNumberSubmit(1)
+    this.props.handleBriefNameSubmit('')
+    this.props.handleSpecialistNumberSubmit(1)
     this.props.addAnotherSpecialistSubmit(bool)
   }
 
@@ -89,7 +89,7 @@ class BriefPage extends Component {
               />}
           />
           <Route
-            path={`${match.url}/respond/submitted`}
+            path={`${match.url}/specialist/submitted`}
             render={() =>
               <BriefResponseSubmitted
                 setFocus={setFocus}
@@ -99,22 +99,21 @@ class BriefPage extends Component {
               />}
           />
           <Route
-            path={`${match.url}/respond`}
+            path={`${match.url}/specialist`}
             render={() =>
               <span>
-                {loadBriefSuccess
-                  ? <BriefResponseForm
-                      submitClicked={this.onSubmitClicked}
-                      handleNameSubmit={name => this.handleBriefNameSubmit(name)}
-                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                      addAnotherClicked={bool => this.addAnotherSpecialistSubmit(bool)}
-                      setFocus={setFocus}
-                      {...this.props}
-                    />
-                  : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
+                <BriefResponseForm
+                    submitClicked={this.onSubmitClicked}
+                    handleNameSubmit={name => this.handleBriefNameSubmit(name)}
+                    handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                    addAnotherClicked={bool => this.addAnotherSpecialistSubmit(bool)}
+                    setFocus={setFocus}
+                    {...this.props}
+                  />
+
               </span>}
           />
-          <Route component={NotFound} />
+
         </Switch>
       </div>
     )

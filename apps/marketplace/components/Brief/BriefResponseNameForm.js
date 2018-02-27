@@ -18,17 +18,13 @@ const BriefResponseNameForm = ({
   model,
   brief,
   briefResponseSuccess,
-  app,
   currentlySending,
   submitClicked,
-  handleSubmit,
   setFocus,
   match,
   handleNameSubmit,
   specialistName,
-  specialistNumber,
-  addAnotherClicked,
-  addAnotherSpecialist
+  specialistNumber
 }) =>
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -71,7 +67,6 @@ const BriefResponseNameForm = ({
 
 BriefResponseNameForm.defaultProps = {
   submitClicked: null,
-  handleSubmit: null,
   handleNameSubmit: null,
   specialistName: null
 }
@@ -82,7 +77,6 @@ BriefResponseNameForm.propTypes = {
   }).isRequired,
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
-  handleSubmit: PropTypes.func,
   handleNameSubmit: PropTypes.func
 }
 
