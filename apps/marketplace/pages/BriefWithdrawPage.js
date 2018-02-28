@@ -19,6 +19,7 @@ class BriefWithdrawPage extends Component {
             path={match.url}
             render={() =>
               <BriefWithdrawForm
+                match={match}
                 {...this.props}
                 {...this.state}
               />}

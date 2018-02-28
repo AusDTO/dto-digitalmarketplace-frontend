@@ -9,7 +9,7 @@ import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import styles from './BriefWithdrawForm.scss'
 
 const BriefWithdrawForm = ({
-
+  match
 }) =>
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -20,7 +20,7 @@ const BriefWithdrawForm = ({
             <br/>
             <div className="uikit-display-3"><strong>Point of contact</strong></div>
             <div>matt.brown@cxco.com.au</div>
-            <a href='#'>Change email</a>
+            <a href={`/2/brief/${match.params.briefId}/contact`}>Change email</a>
             <div className={`${styles.tableTitle} uikit-display-3`}><strong>Submitted specialists</strong></div>
             <div className={styles.specialist}>
               <span className={styles.name}>Jeff Goldburn</span>

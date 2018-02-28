@@ -89,7 +89,7 @@ class BriefPage extends Component {
               />}
           />
           <Route
-            path={`${match.url}/specialist/submitted`}
+            path={`${match.url}/respond/submitted`}
             render={() =>
               <BriefResponseSubmitted
                 setFocus={setFocus}
@@ -99,21 +99,22 @@ class BriefPage extends Component {
               />}
           />
           <Route
-            path={`${match.url}/specialist`}
+            path={`${match.url}/respond`}
             render={() =>
               <span>
-                <BriefResponseForm
-                    submitClicked={this.onSubmitClicked}
-                    handleNameSubmit={name => this.handleBriefNameSubmit(name)}
-                    handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                    addAnotherClicked={bool => this.addAnotherSpecialistSubmit(bool)}
-                    setFocus={setFocus}
-                    {...this.props}
-                  />
-
+                {loadBriefSuccess
+                  ? <BriefResponseForm
+                      submitClicked={this.onSubmitClicked}
+                      handleNameSubmit={name => this.handleBriefNameSubmit(name)}
+                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                      addAnotherClicked={bool => this.addAnotherSpecialistSubmit(bool)}
+                      setFocus={setFocus}
+                      {...this.props}
+                    />
+                  : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
               </span>}
           />
-
+          <Route component={NotFound} />
         </Switch>
       </div>
     )

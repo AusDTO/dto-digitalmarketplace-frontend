@@ -77,7 +77,7 @@ const briefReducer = (state = defaultBriefState, action) => {
     case SPECIALIST_NUMBER:
       return {
         ...state,
-        specialistNumber: action.specialistNumber + 1
+        specialistNumber: action.specialistNumber + state.specialistNumber
       }
 
     case ADD_ANOTHER_SPECIALIST:
