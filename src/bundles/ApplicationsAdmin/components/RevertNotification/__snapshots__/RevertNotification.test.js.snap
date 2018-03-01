@@ -20,9 +20,7 @@ exports[`RevertedNotificationForm with required attributes 1`] = `
 To update your profile:
 
 - access [Digital Marketplace](https://marketplace.service.gov.au) and sign in
-
 - update your profile as advised
-
 - resubmit your application for review
 
 We recommend you read our support guides on seller profiles and case studies:
@@ -38,9 +36,8 @@ Thanks,
 
 The Digital Marketplace team
 
-Digital Marketplace <https://marketplace.service.gov.au>
-
-Digital Transformation Agency (DTA) <https://www.dta.gov.au>
+Digital Marketplace [https://marketplace.service.gov.au](https://marketplace.service.gov.au)  
+Digital Transformation Agency (DTA) [https://www.dta.gov.au](https://www.dta.gov.au)
 
 [Terms of Use](https://marketplace.service.gov.au/terms-of-use) | [Privacy](https://marketplace.service.gov.au/privacy-policy) | [Copyright](https://marketplace.service.gov.au/copyright)"
     />
