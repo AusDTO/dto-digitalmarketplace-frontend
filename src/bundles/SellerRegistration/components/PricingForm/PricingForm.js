@@ -76,9 +76,9 @@ class PricingForm extends BaseForm {
                 <StatefulError
                   model={`${model}.pricing.${service}.maxPrice`}
                   messages={{
-                    required: `You must provide a max price for ${service}. `,
-                    notNegativeNumber: `Price can't have negative numbers. `,
-                    onlyNumbers: `Prices must be numeric. `
+                    required: `You must provide a max price for ${service}.`,
+                    notNegativeNumber: `Price can't have negative number for ${service}.`,
+                    onlyNumbers: `Price must be numeric for ${service}.`
                   }}
                   id={`${kebabCase(service)}-maxprice`}
                 />
