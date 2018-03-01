@@ -6,8 +6,8 @@ export const templateString  = (
 
     "To update your profile:"+"\n"+"\n"+
 
-    "- access [Digital Marketplace](https://marketplace.service.gov.au) and sign in"+"\n"+"\n"+
-    "- update your profile as advised"+"\n"+"\n"+
+    "- access [Digital Marketplace](https://marketplace.service.gov.au) and sign in"+"\n"+
+    "- update your profile as advised"+"\n"+
     "- resubmit your application for review"+"\n"+"\n"+
 
     "We recommend you read our support guides on seller profiles and case studies:"+"\n"+"\n"+
@@ -23,8 +23,8 @@ export const templateString  = (
 
     "The Digital Marketplace team"+"\n"+"\n"+
 
-    "Digital Marketplace <https://marketplace.service.gov.au>"+"\n"+"\n"+
-    "Digital Transformation Agency (DTA) <https://www.dta.gov.au>"+"\n"+"\n"+
+    "Digital Marketplace [https://marketplace.service.gov.au](https://marketplace.service.gov.au)  "+"\n"+
+    "Digital Transformation Agency (DTA) [https://www.dta.gov.au](https://www.dta.gov.au)"+"\n"+"\n"+
 
     "[Terms of Use](https://marketplace.service.gov.au/terms-of-use) | [Privacy](https://marketplace.service.gov.au/privacy-policy) | [Copyright](https://marketplace.service.gov.au/copyright)"
 
