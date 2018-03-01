@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react'
+import { actions } from 'react-redux-form'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -33,9 +34,13 @@ class BriefPage extends Component {
   }
 
   onSubmitClicked = () => {
-    this.setState({
+    return this.setState({
       submitClicked: new Date().valueOf()
     })
+  }
+
+  onAddAnotherClicked = () => {
+    return this.props.addAnotherSpecialistSubmit(true)
   }
 
   handleFeedbackSubmit(values) {
@@ -49,19 +54,25 @@ class BriefPage extends Component {
   }
 
   handleBriefResponseSubmit(values) {
+    let submitData = {
+      specialistName: values.specialistName ? values.specialistName : null,
+      dayRate: values.dayRate,
+      availability: values.availability,
+      essentialRequirements: values.essentialRequirements,
+      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
+    }
+    if (this.props.addAnotherSpecialist) {
+      this.props.handleBriefNameSubmit('')
+      this.props.handleSpecialistNumberSubmit(1)
+      window.scrollTo(0, 0)
+    }
     const { brief } = this.props
-    this.props.handleBriefResponseSubmit(brief.id, values)
+    this.props.handleBriefResponseSubmit(brief.id, submitData)
   }
 
   handleBriefNameSubmit = name => {
     this.props.handleBriefNameSubmit(name)
     window.scrollTo(0, 0)
-  }
-
-  addAnotherSpecialistSubmit = bool => {
-    this.props.handleBriefNameSubmit('')
-    this.props.handleSpecialistNumberSubmit(1)
-    this.props.addAnotherSpecialistSubmit(bool)
   }
 
   render() {
@@ -105,9 +116,9 @@ class BriefPage extends Component {
                 {loadBriefSuccess
                   ? <BriefResponseForm
                       submitClicked={this.onSubmitClicked}
+                      addAnotherClicked={this.onAddAnotherClicked}
                       handleNameSubmit={name => this.handleBriefNameSubmit(name)}
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                      addAnotherClicked={bool => this.addAnotherSpecialistSubmit(bool)}
                       setFocus={setFocus}
                       {...this.props}
                     />

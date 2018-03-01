@@ -55,7 +55,7 @@ const BriefResponseForm = ({
                 </div>
               }
               <div className="uikit-display-4"><strong>Specialist {specialistNumber}</strong></div>
-              <Form model={model} id="briefName" onSubmit={data => handleNameSubmit(data.specialistName)}>
+              <Form model={model} id="briefName" onSubmit={data => {return handleNameSubmit(data.specialistName)}}>
                 <Textfield
                   model={`${model}.specialistName`}
                   name="specialistName"
@@ -167,12 +167,8 @@ const BriefResponseForm = ({
                       />
                     )}
                 </fieldset>
-                {currentlySending
-                  ? <LoadingButton />
-                : <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" onClick={() => {submitClicked}} />}
-                {currentlySending
-                  ? <LoadingButton />
-                : <input className="uikit-btn uikit-btn--tertiary" type="button" value="Submit and add another" onClick={() => { addAnotherClicked(true) }} />}
+                <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" onClick={() => {submitClicked}} />
+                <input className="uikit-btn uikit-btn--tertiary" type="submit" value="Submit and add another" onClick={(e) => {addAnotherClicked(e)}} />
               </Form>
             </div>
           }

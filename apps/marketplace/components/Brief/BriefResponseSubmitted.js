@@ -20,7 +20,7 @@ const BriefResponseSubmitted = props =>
           <a href="/2/seller-dashboard" className="uikit-btn right-button-margin">
             Track your submission
           </a>
-          <a href="#">
+          <a href={`/2/brief/${props.match.params.briefId}/respond`}>
             Add another specialist
           </a>
           <h2 className="uikit-display-2">
