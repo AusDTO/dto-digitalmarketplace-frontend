@@ -13,19 +13,36 @@ exports[`RevertedNotificationForm with required attributes 1`] = `
     </b>
     <textarea
       onChange={[Function]}
-      value="Thank you for submitting a seller application to the Digital Marketplace.
-
-We have just reviewed your application and it is looking good but there are a few small items to be attended to.
+      value="Thanks for applying to join the Digital Marketplace. We’ve reviewed your application and require more detail or changes to your profile:
 
 - 
 
-We have reverted your application so you can sign in, amend, then resubmit your application. Please contact us if you require further clarification, or would like to discuss with our team.
+To update your profile:
 
-https://marketplace.service.gov.au/sellers/application
+- access [Digital Marketplace](https://marketplace.service.gov.au) and sign in
 
-Regards
+- update your profile as advised
 
-The Marketplace team"
+- resubmit your application for review
+
+We recommend you read our support guides on seller profiles and case studies:
+
+- read the useful [Seller guide and FAQs](https://marketplace1.zendesk.com/hc/en-gb/categories/115001540368-Seller-guide-and-FAQs)
+- see the digital [areas of expertise](https://marketplace1.zendesk.com/hc/en-gb/articles/115011258607) in the marketplace
+- understand the relevant [assessment criteria](https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria) for each area of expertise you nominate
+- create a compelling [case study](https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies) to showcase your digital expertise
+
+Once you’ve resubmitted your profile updates, we’ll review it again and advise you via email. 
+
+Thanks,
+
+The Digital Marketplace team
+
+Digital Marketplace <https://marketplace.service.gov.au>
+
+Digital Transformation Agency (DTA) <https://www.dta.gov.au>
+
+[Terms of Use](https://marketplace.service.gov.au/terms-of-use) | [Privacy](https://marketplace.service.gov.au/privacy-policy) | [Copyright](https://marketplace.service.gov.au/copyright)"
     />
   </label>
   <div

@@ -9,20 +9,40 @@ exports[`RejectedNotificationForm with required attributes 1`] = `
       Reject domain assessment with optional email to seller
     </h3>
     <p>
-      The email will begin with  "Unfortunately your assessment for 'areaOfExpertise' in the Digital Marketplace was unsuccessful." 
+      The email will begin with:
+    </p>
+    <p>
+      <pre>
+        Thanks for your interest in 
+        <em>
+          opportunity name
+        </em>
+         which was posted on the Digital Marketplace, and for requesting assessment. We've now reviewed your case study against our assessment criteria for 
+        <em>
+          domain name
+        </em>
+        .
+      </pre>
     </p>
     <b>
-      Then provide a short clear reason, starting with a hyphen. Eg "- ABN missing a digit"
+      Then the following text will be used:
     </b>
     <textarea
       onChange={[Function]}
-      value="We've assessed your case study and found that it didn't meet the [**assessment criteria**](https://marketplace.service.gov.au/assessment-criteria) . 
-To offer this service through the Marketplace in future, you’ll need to update your seller profile, placing particular focus on the case study you provide and ensuring it meets the [**assessment criteria**](https://marketplace.service.gov.au/assessment-criteria) we have provided. You can edit your case studies by navigating to your seller [**Dashboard**](https://marketplace.service.gov.au/sellers) and updating your profile. 
-
-You may also find this [**guide to writing case studies**](https://marketplace.service.gov.au/static/media/documents/Digital%20Marketplace%20case%20study%20template.xlsx) useful. 
-
-The Marketplace team"
+      value="Unfortunately your case study does not meet our requirements as XXXX."
     />
+    <b>
+      Followed by:
+    </b>
+    <p>
+      <pre>
+        This means that you will not be able to respond to this opportunity or others in the 
+        <em>
+          domain name
+        </em>
+         area. If you want to provide this service through the marketplace in the future, you will need to be assessed again. Therefore, please update your current case study, or remove it and replace it with a more comprehensive case study. You can then request assessment again for a future opportunity. Please note that we will not reassess a case study for this particular opportunity. We strongly recommend you read our support guides before updating your case study, to understand the process and what is required: - create a compelling case study to showcase your digital expertise - understand the assessment criteria for each digital service - see the range of digital areas of expertise in the marketplace - read the useful Seller guide and FAQs to find out more Thanks, The Digital Marketplace team
+      </pre>
+    </p>
   </label>
   <div
     styleName="form-button-group"
