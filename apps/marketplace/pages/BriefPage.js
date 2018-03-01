@@ -55,9 +55,10 @@ class BriefPage extends Component {
 
   handleBriefResponseSubmit(values) {
     let submitData = {
+      attachedDocumentURL: values.attachedDocumentURL ? valus.attachedDocumentURL : null,
+      availability: values.availability,
       specialistName: values.specialistName ? values.specialistName : null,
       dayRate: values.dayRate,
-      availability: values.availability,
       essentialRequirements: values.essentialRequirements,
       niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
     }
