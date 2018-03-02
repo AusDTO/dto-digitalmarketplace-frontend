@@ -42,7 +42,7 @@ const Signup = props => {
               <a href="mailto:orams@ato.gov.au">
                 <strong>orams@ato.gov.au</strong>
               </a>{' '}
-              for assisstance.
+              for assistance.
             </div>
           </div>
         : <div className="row">
