@@ -34,9 +34,8 @@ class BriefPage extends Component {
   }
 
   onSubmitClicked = () => {
-    return this.setState({
-      submitClicked: new Date().valueOf()
-    })
+    return this.props.addAnotherSpecialistSubmit(false)
+
   }
 
   onAddAnotherClicked = () => {
@@ -54,6 +53,7 @@ class BriefPage extends Component {
   }
 
   handleBriefResponseSubmit(values) {
+    const { model } = this.props
     let submitData = {
       attachedDocumentURL: values.attachedDocumentURL ? valus.attachedDocumentURL : null,
       availability: values.availability,
@@ -65,10 +65,11 @@ class BriefPage extends Component {
     if (this.props.addAnotherSpecialist) {
       this.props.handleBriefNameSubmit('')
       this.props.handleSpecialistNumberSubmit(1)
-      window.scrollTo(0, 0)
     }
     const { brief } = this.props
     this.props.handleBriefResponseSubmit(brief.id, submitData)
+    this.props.clearModel(model)
+    window.scrollTo(0, 0)
   }
 
   handleBriefNameSubmit = name => {
@@ -171,7 +172,8 @@ const mapResetDispatchToProps = dispatch => ({
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
-  addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool))
+  addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
+  clearModel: (model) => dispatch(actions.reset(model))
 })
 
 export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(BriefPage))

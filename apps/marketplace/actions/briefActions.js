@@ -7,7 +7,6 @@ import {
 } from '../constants/constants'
 
 import { GENERAL_ERROR } from '../constants/messageConstants'
-
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
@@ -60,7 +59,6 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
     if (response.error) {
       dispatch(handleErrorFailure(response))
     } else {
-      window.scrollTo(0, 0)
       dispatch(handleBriefResponseSuccess(response))
     }
     dispatch(sendingRequest(false))

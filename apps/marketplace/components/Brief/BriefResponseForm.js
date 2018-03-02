@@ -69,7 +69,7 @@ const BriefResponseForm = ({
                     required: 'A name is required'
                   }}
                 />
-                <input className="uikit-btn" type="submit" value="Start application" />
+              <input className="uikit-btn" type="submit" value={addAnotherSpecialist ? "Continue" : "Start application"} />
               </Form>
             </div>
           :
@@ -167,7 +167,7 @@ const BriefResponseForm = ({
                       />
                     )}
                 </fieldset>
-                <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" onClick={() => {submitClicked}} />
+                <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" onClick={(e) => {submitClicked(e)}} />
                 <input className="uikit-btn uikit-btn--tertiary" type="submit" value="Submit and add another" onClick={(e) => {addAnotherClicked(e)}} />
               </Form>
             </div>
