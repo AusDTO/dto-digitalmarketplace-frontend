@@ -8,9 +8,9 @@ exports[`RejectedNotificationForm with required attributes 1`] = `
     <h3>
       Reject domain assessment with optional email to seller
     </h3>
-    <p>
+    <b>
       The email will begin with:
-    </p>
+    </b>
     <p>
       <pre>
         Thanks for your interest in 

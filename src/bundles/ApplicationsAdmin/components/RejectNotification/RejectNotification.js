@@ -61,7 +61,9 @@ export default class RejectedNotificationForm extends Component {
           <h3>
             Reject domain assessment with optional email to seller
           </h3>
-          <p>The email will begin with:</p>
+          <b>
+            The email will begin with:
+          </b>
           <p>
             <pre>
             Thanks for your interest in <em>opportunity name</em> which was posted on the Digital Marketplace, and for requesting assessment.
