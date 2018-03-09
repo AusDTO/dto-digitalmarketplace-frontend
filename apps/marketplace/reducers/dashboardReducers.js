@@ -28,14 +28,6 @@ const dashboardReducer = (state = defaultUserState, action) => {
         loadBuyerDashboardErrored: false
       }
 
-    case BUYER_DASHBOARD_MYBRIEFS_SUCCESS:
-      return {
-        ...state,
-        buyerDashboardMyBriefs: action.data,
-        loadBuyerDashboardMyBriefsSuccess: true,
-        loadBuyerDashboardMyBriefsErrored: false
-      }
-
     default:
       return state
   }
