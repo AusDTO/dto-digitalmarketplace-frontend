@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClosedDate } from 'shared/ClosedDate'
+import ClosedDate from 'shared/ClosedDate'
 import styles from './SellerDashboard.scss'
 
 const SellerDashboard = props =>
