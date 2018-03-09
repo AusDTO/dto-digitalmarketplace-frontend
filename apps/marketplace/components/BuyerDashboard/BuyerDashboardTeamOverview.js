@@ -1,8 +1,5 @@
 import React from 'react'
-import styles from './BuyerDashboard.scss'
 
-const BuyerDashboardTeamOverview = props =>
-    <div className="row">
-    </div>
+const BuyerDashboardTeamOverview = () => <div className="row" />
 
 export default BuyerDashboardTeamOverview

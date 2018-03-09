@@ -2,7 +2,7 @@ import format from 'date-fns/format'
 import isBefore from 'date-fns/is_before'
 import parse from 'date-fns/parse'
 
-export const ClosedDate = props => {
+const ClosedDate = props => {
   let text = 'Closed'
 
   if (props.date) {
@@ -16,3 +16,5 @@ export const ClosedDate = props => {
 
   return text
 }
+
+export default ClosedDate

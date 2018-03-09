@@ -8,7 +8,6 @@ import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class BuyerDashboardPage extends Component {
-  
   render() {
     const { match } = this.props
 
