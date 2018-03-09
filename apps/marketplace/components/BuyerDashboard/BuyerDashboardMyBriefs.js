@@ -6,9 +6,9 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
 import styles from './BuyerDashboard.scss'
 
-class BuyerDashboardBriefs extends Component {
+class BuyerDashboardMyBriefs extends Component {
   componentDidMount() {
-    this.props.loadData('/buyers/my-briefs')
+    this.props.loadData('/buyers/dashboard/my/briefs')
   }
 
   render() {
@@ -86,4 +86,4 @@ const mapDispatchToProps = dispatch => ({
   loadData: endpoint => dispatch(loadBuyerDashboard(endpoint))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardBriefs))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardMyBriefs))
