@@ -21,12 +21,6 @@
   color: #313131;
 }
 
-.buttonsContainer {
-  float: right;
-  text-align: right;
-  margin-top: -4.5em;
-}
-
 .badge {
   border-radius: 2px;
   border: solid 1px #0f979b;
@@ -51,6 +45,10 @@
 
 .alignCenter {
   text-align: center;
+}
+
+.alignRight {
+  text-align: right;
 }
 
 .firstButton {

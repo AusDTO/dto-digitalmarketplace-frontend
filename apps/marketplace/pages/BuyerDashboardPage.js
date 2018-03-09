@@ -8,20 +8,13 @@ import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class BuyerDashboardPage extends Component {
-  componentWillMount() {
-    this.props.loadInitialData()
-  }
-
+  
   render() {
-    const { match, currentlySending } = this.props
-
-    if (currentlySending) {
-      return <LoadingIndicatorFullPage />
-    }
+    const { match } = this.props
 
     return (
       <Switch>
-        <Route exact path={match.url} render={() => <BuyerDashboard {...this.props} />} />
+        <Route path={match.url} render={() => <BuyerDashboard {...this.props} />} />
       </Switch>
     )
   }
@@ -32,13 +25,7 @@ BuyerDashboardPage.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  items: state.dashboard.buyerDashboard.items,
-  loadSuccess: state.brief.loadBuyerDashboardSuccess,
-  currentlySending: state.app.currentlySending
+  loadSuccess: state.brief.loadBuyerDashboardSuccess
 })
 
-const mapDispatchToProps = dispatch => ({
-  loadInitialData: () => dispatch(loadBuyerDashboard())
-})
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardPage))
+export default withRouter(connect(mapStateToProps)(BuyerDashboardPage))

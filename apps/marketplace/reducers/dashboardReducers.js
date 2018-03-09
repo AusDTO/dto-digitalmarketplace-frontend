@@ -1,8 +1,9 @@
-import { SET_ERROR_MESSAGE, SELLER_DASHBOARD_SUCCESS, BUYER_DASHBOARD_SUCCESS } from '../constants/constants'
+import { SET_ERROR_MESSAGE, SELLER_DASHBOARD_SUCCESS, BUYER_DASHBOARD_SUCCESS, BUYER_DASHBOARD_MYBRIEFS_SUCCESS } from '../constants/constants'
 
 const defaultUserState = {
   sellerDashboard: { items: [], supplier: {} },
-  buyerDashboard: { items: [] }
+  buyerDashboard: { items: [] },
+  buyerDashboardMyBriefs: { items: [] },
 }
 
 const dashboardReducer = (state = defaultUserState, action) => {
@@ -25,6 +26,14 @@ const dashboardReducer = (state = defaultUserState, action) => {
         buyerDashboard: action.data,
         loadBuyerDashboardSuccess: true,
         loadBuyerDashboardErrored: false
+      }
+
+    case BUYER_DASHBOARD_MYBRIEFS_SUCCESS:
+      return {
+        ...state,
+        buyerDashboardMyBriefs: action.data,
+        loadBuyerDashboardMyBriefsSuccess: true,
+        loadBuyerDashboardMyBriefsErrored: false
       }
 
     default:
