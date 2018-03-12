@@ -31,12 +31,18 @@
 }
 
 .badgeRed {
-  border-radius: 2px;
   border: solid 1px #ff0000;
   color: #ff0000;
-  margin-bottom: 5px;
-  padding: 2px 5px;
-  width: fit-content;
+}
+
+.badgeBlue {
+  border: solid 1px #0f979b;
+  color: #0f979b;
+}
+
+.badgeGreen {
+  border: solid 1px #40ac78;
+  color: #40ac78;
 }
 
 .greyRow {

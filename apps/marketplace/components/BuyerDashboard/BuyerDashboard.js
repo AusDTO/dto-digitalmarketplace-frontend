@@ -19,7 +19,7 @@ const BuyerDashboard = props =>
               items={[
                 {
                   link: `${rootPath}/buyer-dashboard`,
-                  text: 'My Briefs',
+                  text: 'My briefs',
                   onClick: e => {
                     e.preventDefault()
                     props.history.push(`${rootPath}/buyer-dashboard`)
@@ -27,7 +27,7 @@ const BuyerDashboard = props =>
                 },
                 {
                   link: `${rootPath}/buyer-dashboard/team-briefs`,
-                  text: 'Team Briefs',
+                  text: 'Team briefs',
                   onClick: e => {
                     e.preventDefault()
                     props.history.push(`${rootPath}/buyer-dashboard/team-briefs`)

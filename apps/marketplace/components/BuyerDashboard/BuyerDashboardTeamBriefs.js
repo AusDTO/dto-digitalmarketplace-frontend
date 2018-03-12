@@ -35,7 +35,7 @@ class BuyerDashboardTeamBriefs extends Component {
                 {item.id}
               </div>
               <div className="col-md-3 col-sm-3">
-                <a href="/#">
+                <a href={`/digital-marketplace/opportunities/${item.id}`}>
                   {item.name}
                 </a>
               </div>
@@ -44,7 +44,13 @@ class BuyerDashboardTeamBriefs extends Component {
                 {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
               </div>
               <div className="col-md-1 col-sm-1">
-                <div className={styles.badge}>
+                <div
+                  className={`${styles.badge} 
+                    ${(item.status === 'withdrawn' && styles.badgeRed) ||
+                      (item.status === 'live' && styles.badgeGreen) ||
+                      (item.status === 'closed' && styles.badgeRed) ||
+                      styles.badgeBlue}`}
+                >
                   {item.status}
                 </div>
               </div>
