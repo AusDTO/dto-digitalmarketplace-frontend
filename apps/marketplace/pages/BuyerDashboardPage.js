@@ -3,18 +3,30 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route } from 'react-router-dom'
-import BuyerDashboard from 'marketplace/components/BuyerDashboard/BuyerDashboard'
-import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
-import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import BuyerDashboardHeader from 'marketplace/components/BuyerDashboard/BuyerDashboardHeader'
+import BuyerDashboardMyBriefs from 'marketplace/components/BuyerDashboard/BuyerDashboardMyBriefs'
+import BuyerDashboardTeamBriefs from 'marketplace/components/BuyerDashboard/BuyerDashboardTeamBriefs'
+import BuyerDashboardTeamOverview from 'marketplace/components/BuyerDashboard/BuyerDashboardTeamOverview'
 
 class BuyerDashboardPage extends Component {
   render() {
     const { match } = this.props
 
     return (
-      <Switch>
-        <Route path={match.url} render={() => <BuyerDashboard {...this.props} />} />
-      </Switch>
+      <div>
+        <BuyerDashboardHeader {...this.props} />
+        <article role="main">
+          <Switch>
+            <Route exact path={match.url} render={() => <BuyerDashboardMyBriefs {...this.props} />} />
+            <Route exact path={`${match.url}/team-briefs`} render={() => <BuyerDashboardTeamBriefs {...this.props} />} />
+            <Route
+              exact
+              path={`${match.url}/team-overview`}
+              render={() => <BuyerDashboardTeamOverview {...this.props} />}
+            />
+          </Switch>
+        </article>
+      </div>
     )
   }
 }
@@ -23,8 +35,4 @@ BuyerDashboardPage.propTypes = {
   match: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
-  loadSuccess: state.brief.loadBuyerDashboardSuccess
-})
-
-export default withRouter(connect(mapStateToProps)(BuyerDashboardPage))
+export default withRouter(connect()(BuyerDashboardPage))

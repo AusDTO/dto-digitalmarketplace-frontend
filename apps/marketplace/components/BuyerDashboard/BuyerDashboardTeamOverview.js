@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
+import { BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS } from 'marketplace/constants/constants'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardTeamOverview extends Component {
   componentDidMount() {
-    this.props.loadData('/buyers/dashboard/team/overview')
+    this.props.loadData(BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS, '/buyers/dashboard/team/overview')
   }
 
   render() {
@@ -24,7 +25,7 @@ class BuyerDashboardTeamOverview extends Component {
           </div>
         </div>
         {this.props.items.map((item, i) =>
-          <div key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
+          <div key={`item.${item.email}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
             <div className="row">
               <div className="col-sm-6">
                 {item.name}
@@ -43,13 +44,13 @@ class BuyerDashboardTeamOverview extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.dashboard.buyerDashboard.items,
-  loadSuccess: state.brief.loadBuyerDashboardSuccess,
+  items: state.dashboard.buyerDashboardTeamOverview.items,
+  loadSuccess: state.dashboard.loadBuyerDashboardTeamOverviewSuccess,
   currentlySending: state.app.currentlySending
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: endpoint => dispatch(loadBuyerDashboard(endpoint))
+    loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamOverview))

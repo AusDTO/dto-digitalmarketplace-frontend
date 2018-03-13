@@ -1,9 +1,17 @@
-import { SET_ERROR_MESSAGE, SELLER_DASHBOARD_SUCCESS, BUYER_DASHBOARD_SUCCESS } from '../constants/constants'
+import {
+  SET_ERROR_MESSAGE,
+  SELLER_DASHBOARD_SUCCESS,
+  BUYER_DASHBOARD_MYBRIEFS_SUCCESS,
+  BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS,
+  BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS
+} from '../constants/constants'
 
 const defaultUserState = {
   sellerDashboard: { items: [], supplier: {} },
   buyerDashboard: { items: [] },
-  buyerDashboardMyBriefs: { items: [] }
+  buyerDashboardMyBriefs: { items: [] },
+  buyerDashboardTeamBriefs: { items: [] },
+  buyerDashboardTeamOverview: { items: [] }
 }
 
 const dashboardReducer = (state = defaultUserState, action) => {
@@ -20,12 +28,26 @@ const dashboardReducer = (state = defaultUserState, action) => {
         loadSellerDashboardSuccess: true,
         loadSellerDashboardErrored: false
       }
-    case BUYER_DASHBOARD_SUCCESS:
+    case BUYER_DASHBOARD_MYBRIEFS_SUCCESS:
       return {
         ...state,
-        buyerDashboard: action.data,
-        loadBuyerDashboardSuccess: true,
-        loadBuyerDashboardErrored: false
+        buyerDashboardMyBriefs: action.data,
+        loadBuyerDashboardMyBriefsSuccess: true,
+        loadBuyerDashboardMyBriefsErrored: false
+      }
+    case BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS:
+      return {
+        ...state,
+        buyerDashboardTeamBriefs: action.data,
+        loadBuyerDashboardTeamBriefsSuccess: true,
+        loadBuyerDashboardTeamBriefsErrored: false
+      }
+    case BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS:
+      return {
+        ...state,
+        buyerDashboardTeamOverview: action.data,
+        loadBuyerDashboardTeamOverviewSuccess: true,
+        loadBuyerDashboardTeamOverviewErrored: false
       }
 
     default:

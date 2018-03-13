@@ -4,11 +4,12 @@ import { withRouter } from 'react-router-dom'
 import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
+import { BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS } from 'marketplace/constants/constants'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardTeamBriefs extends Component {
   componentDidMount() {
-    this.props.loadData('/buyers/dashboard/team/briefs')
+    this.props.loadData(BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS, '/buyers/dashboard/team/briefs')
   }
 
   render() {
@@ -83,13 +84,13 @@ class BuyerDashboardTeamBriefs extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.dashboard.buyerDashboard.items,
-  loadSuccess: state.brief.loadBuyerDashboardSuccess,
+  items: state.dashboard.buyerDashboardTeamBriefs.items,
+  loadSuccess: state.dashboard.loadBuyerDashboardTeamBriefsSuccess,
   currentlySending: state.app.currentlySending
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: endpoint => dispatch(loadBuyerDashboard(endpoint))
+  loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamBriefs))

@@ -1,4 +1,9 @@
-import { SELLER_DASHBOARD_SUCCESS, BUYER_DASHBOARD_SUCCESS } from '../constants/constants'
+import {
+  SELLER_DASHBOARD_SUCCESS,
+  BUYER_DASHBOARD_MYBRIEFS_SUCCESS,
+  BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS,
+  BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS
+} from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -21,19 +26,19 @@ export const loadSellerDashboard = () => dispatch => {
   })
 }
 
-export const handleBuyerDashboardSuccess = response => ({
-  type: BUYER_DASHBOARD_SUCCESS,
+export const handleBuyerDashboardSuccess = (type, response) => ({
+  type: type,
   data: response.data
 })
 
-export const loadBuyerDashboard = (endpoint = '/buyers/my-briefs') => dispatch => {
+export const loadBuyerDashboard = (type, endpoint = '/buyers/dashboard/my/briefs') => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: endpoint }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
       response.data.loadedAt = new Date().valueOf()
-      dispatch(handleBuyerDashboardSuccess(response))
+      dispatch(handleBuyerDashboardSuccess(type, response))
     }
     dispatch(sendingRequest(false))
   })
