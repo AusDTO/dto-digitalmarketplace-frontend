@@ -178,7 +178,7 @@ export const notNegativeNumber = (val) => {
 
 export const onlyNumbers = (val) => {
   const regex = /^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/;
-  if (regex.test(val)) {
+  if (!val || regex.test(val)) {
     return true;
   }
   return false;
