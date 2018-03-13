@@ -50,7 +50,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
+  loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamOverview))

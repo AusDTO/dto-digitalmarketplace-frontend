@@ -1,9 +1,4 @@
-import {
-  SELLER_DASHBOARD_SUCCESS,
-  BUYER_DASHBOARD_MYBRIEFS_SUCCESS,
-  BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS,
-  BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS
-} from '../constants/constants'
+import { SELLER_DASHBOARD_SUCCESS } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -27,7 +22,7 @@ export const loadSellerDashboard = () => dispatch => {
 }
 
 export const handleBuyerDashboardSuccess = (type, response) => ({
-  type: type,
+  type,
   data: response.data
 })
 
