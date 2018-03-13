@@ -1,4 +1,4 @@
-/* eslint-disable react/no-array-index-key */
+/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
@@ -26,13 +26,18 @@ const BriefResponseForm = ({
   submitClicked,
   handleSubmit,
   setFocus,
-  match
+  match,
+  handleNameSubmit,
+  specialistName,
+  specialistNumber,
+  addAnotherClicked,
+  addAnotherSpecialist
 }) =>
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {briefResponseSuccess && <Redirect to={`${match.url}/respond/submitted`} />}
+          {briefResponseSuccess && !addAnotherSpecialist ? <Redirect to={`${match.url}/respond/submitted`} /> : ''}
           {!briefResponseSuccess &&
             <ErrorBox
               title="There was a problem submitting your response"
@@ -40,149 +45,133 @@ const BriefResponseForm = ({
               submitClicked={submitClicked}
               setFocus={setFocus}
             />}
-          <header className="page-heading page-heading-without-breadcrumb">
-            <h1>
-              Apply for &lsquo;{brief.title}&rsquo;
-            </h1>
-          </header>
-          <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-            {app.supplierCode
-              ? brief.lotSlug &&
-                brief.lotSlug === 'digital-professionals' &&
-                <FilesInput
-                  label="Attach up to 3 resumes"
-                  hint="Attachments must be PDF or ODT format and a maximum of 5MB"
-                  name="attachedDocumentURL"
-                  model={model}
-                  formFields={3}
-                  fieldLabel="Upload resume"
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
-                  description=""
-                />
-              : <PageAlert as="warning" setFocus={setFocus}>
-                  <h4>There was a problem loading your details</h4>
-                  <p>Only logged in sellers can respond to briefs</p>
-                </PageAlert>}
-            <Textfield
-              model={`${model}.availability`}
-              name="availability"
-              id="availability"
-              htmlFor="availability"
-              label="When can you start?"
-              maxLength={100}
-              description={
-                brief.lotSlug && brief.lotSlug === 'digital-professionals'
-                  ? <span>
-                      The buyer needs this role filled no later than <b>{brief.startDate}</b>
-                    </span>
-                  : <span>
-                      The buyer needs this project to start no later than <b>{brief.startDate}</b>
-                    </span>
+          {!specialistName ?
+            <div>
+              {!addAnotherSpecialist &&
+                <div>
+                  <h1 className="uikit-display-5">Add up to 3 specialists</h1>
+                  <div>You can withdraw or replace specialists any time before the opportunity closes on {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.</div>
+                  <br/>
+                </div>
               }
-              validators={{
-                required
-              }}
-              messages={{
-                required: 'Enter a date for when you can start the project'
-              }}
-            />
-            {brief.lotSlug &&
-              brief.lotSlug === 'digital-professionals' &&
-              <Textfield
-                model={`${model}.dayRate`}
-                name="dayRate"
-                id="dayRate"
-                htmlFor="dayRate"
-                label="Day rate"
-                description="What is your day rate, including GST?"
-                validators={{
-                  required,
-                  validPercentage
-                }}
-                messages={{
-                  required: 'A day rate is required',
-                  validPercentage: 'Enter only numbers eg. 600.00'
-                }}
-              />}
-            <fieldset className={styles.x_uikit_fieldset}>
-              <h2>Skills and experience?</h2>
-              {brief.lotSlug &&
-                brief.lotSlug === 'digital-professionals' &&
-                <p>Answer the following criteria for all candidates</p>}
-              {brief.essentialRequirements &&
-                brief.essentialRequirements.map((requirement, i) =>
-                  <Textarea
-                    key={`essentialRequirement.${i}`}
-                    model={`${model}.essentialRequirements[${i}]`}
-                    name={`essentialRequirement.${i}`}
-                    id={`essentialRequirement.${i}`}
-                    controlProps={{ limit: 150 }}
-                    label={requirement}
-                    validators={{ required }}
-                    showMessagesDuringFocus
-                    messages={{
-                      required: `This is an essential requirement, let the buyer know how the skills and experience criteria is met`
-                    }}
-                  />
-                )}
-              {brief.niceToHaveRequirements &&
-                brief.niceToHaveRequirements.map((requirement, i) =>
-                  <Textarea
-                    key={`niceToHaveRequirement.${i}`}
-                    model={`${model}.niceToHaveRequirements[${i}]`}
-                    name={`niceToHaveRequirement.${i}`}
-                    id={`niceToHaveRequirement.${i}`}
-                    controlProps={{ limit: 150 }}
-                    label={`${requirement} (optional)`}
-                  />
-                )}
-            </fieldset>
-            <Textfield
-              model={`${model}.respondToEmailAddress`}
-              name="respondToEmailAddress"
-              id="respondToEmailAddress"
-              htmlFor="respondToEmailAddress"
-              label="Contact email"
-              description="All communication about your application will be sent to this address."
-              defaultValue={app.emailAddress}
-              validators={{
-                required,
-                validEmail
-              }}
-              messages={{
-                required: 'A contact email is required',
-                validEmail: 'A valid contact email is required'
-              }}
-            />
-            <br />
-            <br />
-            <div className="uikit-page-alerts uikit-page-alerts--warning">
-              <h3>Once you submit this application:</h3>
-              <ul>
+              <div className="uikit-display-4"><strong>Specialist {specialistNumber}</strong></div>
+              <Form model={model} id="briefName" onSubmit={data => {return handleNameSubmit(data.specialistName)}}>
+                <Textfield
+                  model={`${model}.specialistName`}
+                  name="specialistName"
+                  id="specialistName"
+                  htmlFor="specialistName"
+                  label="Full name"
+                  validators={{
+                    required
+                  }}
+                  messages={{
+                    required: 'A name is required'
+                  }}
+                />
+              <input className="uikit-btn" type="submit" value={addAnotherSpecialist ? "Continue" : "Start application"} />
+              </Form>
+            </div>
+          :
+            <div>
+              <div className={styles.stepTitle}>Specialist {specialistNumber} of 3</div>
+              <h1 className="uikit-display-6">{specialistName}</h1>
+              <div className="uikit-display-5">
+                About
+              </div>
+              <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
+                <Textfield
+                  model={`${model}.availability`}
+                  name="availability"
+                  id="availability"
+                  htmlFor="availability"
+                  label="Earliest start date"
+                  maxLength={100}
+                  description={
+                    <span>
+                      Preferred start date is <b>{brief.startDate}</b>
+                    </span>
+                  }
+                  validators={{
+                    required
+                  }}
+                  messages={{
+                    required: 'Enter a date for when you can start the project'
+                  }}
+                />
                 {brief.lotSlug &&
                   brief.lotSlug === 'digital-professionals' &&
-                  <li>
-                    You <b>cannot</b> submit another candidate
-                  </li>}
-                <li>
-                  You <b>cannot</b> edit your application after submitting
-                </li>
-                <li>
-                  The buyer will contact you after <b>
-                    {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}
-                  </b>{' '}
-                  {brief.lotSlug && brief.lotSlug === 'digital-professionals'
-                    ? <span> if you&apos;re shortlisted for the next stage </span>
-                    : <span>to submit your proposal if you&apos;re shortlisted</span>}
-                </li>
-              </ul>
-
-              {currentlySending
-                ? <LoadingButton />
-                : <input className="uikit-btn" type="submit" value="Submit application" onClick={submitClicked} />}
+                  <Textfield
+                    model={`${model}.dayRate`}
+                    name="dayRate"
+                    id="dayRate"
+                    htmlFor="dayRate"
+                    label="Day rate (including GST)"
+                    validators={{
+                      required,
+                      validPercentage
+                    }}
+                    messages={{
+                      required: 'A day rate is required',
+                      validPercentage: 'Enter only numbers eg. 600.00'
+                    }}
+                  />}
+                {app.supplierCode
+                  ? brief.lotSlug &&
+                    brief.lotSlug === 'digital-professionals' &&
+                    <FilesInput
+                      label="Resume"
+                      hint="Attachments must be PDF or ODT format and a maximum of 5MB"
+                      name="attachedDocumentURL"
+                      model={model}
+                      formFields={1}
+                      fieldLabel="Upload resume"
+                      url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                      api={dmapi}
+                      description=""
+                    />
+                  : <PageAlert as="warning" setFocus={setFocus}>
+                      <h4>There was a problem loading your details</h4>
+                      <p>Only logged in sellers can respond to briefs</p>
+                    </PageAlert>}
+                <fieldset className={styles.x_uikit_fieldset}>
+                  <h2>Skills and experience?</h2>
+                  {brief.lotSlug &&
+                    brief.lotSlug === 'digital-professionals' &&
+                    <p>Answer the following criteria for all candidates</p>}
+                  {brief.essentialRequirements &&
+                    brief.essentialRequirements.map((requirement, i) =>
+                      <Textarea
+                        key={`essentialRequirement.${i}`}
+                        model={`${model}.essentialRequirements[${i}]`}
+                        name={`essentialRequirement.${i}`}
+                        id={`essentialRequirement.${i}`}
+                        controlProps={{ limit: 150 }}
+                        label={requirement}
+                        validators={{ required }}
+                        showMessagesDuringFocus
+                        messages={{
+                          required: `This is an essential requirement, let the buyer know how the skills and experience criteria is met`
+                        }}
+                      />
+                    )}
+                  {brief.niceToHaveRequirements &&
+                    brief.niceToHaveRequirements.map((requirement, i) =>
+                      <Textarea
+                        key={`niceToHaveRequirement.${i}`}
+                        model={`${model}.niceToHaveRequirements[${i}]`}
+                        name={`niceToHaveRequirement.${i}`}
+                        id={`niceToHaveRequirement.${i}`}
+                        controlProps={{ limit: 150 }}
+                        label={`${requirement} (optional)`}
+                      />
+                    )}
+                </fieldset>
+                <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" onClick={(e) => {submitClicked(e)}} />
+                <input className="uikit-btn uikit-btn--tertiary" type="submit" value="Submit and add another" onClick={(e) => {addAnotherClicked(e)}} />
+              </Form>
             </div>
-          </Form>
+          }
         </article>
       </div>
     </DocumentTitle>
@@ -190,7 +179,9 @@ const BriefResponseForm = ({
 
 BriefResponseForm.defaultProps = {
   submitClicked: null,
-  handleSubmit: null
+  handleSubmit: null,
+  handleNameSubmit: null,
+  specialistName: null
 }
 
 BriefResponseForm.propTypes = {
@@ -199,7 +190,8 @@ BriefResponseForm.propTypes = {
   }).isRequired,
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  handleNameSubmit: PropTypes.func
 }
 
 export default BriefResponseForm

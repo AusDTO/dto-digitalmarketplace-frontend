@@ -3,7 +3,10 @@ import {
   BRIEF_INFO_HAS_ERRORED,
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_RESPONSE_FAILURE,
-  BRIEF_RESPONSE_DUPLICATE_FAILURE
+  BRIEF_RESPONSE_DUPLICATE_FAILURE,
+  SPECIALIST_NAME,
+  SPECIALIST_NUMBER,
+  ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
 
 const defaultBriefState = {
@@ -16,7 +19,10 @@ const defaultBriefState = {
   errorMessage: null,
   isDuplicate: null,
   brief: {},
-  briefResponse: {}
+  briefResponse: {},
+  specialistName: '',
+  specialistNumber: 1,
+  addAnotherSpecialist: false
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -60,6 +66,24 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponseSuccess: false,
         isDuplicate: true,
         errorMessage: action.errorMessage
+      }
+
+    case SPECIALIST_NAME:
+      return {
+        ...state,
+        specialistName: action.specialistName
+      }
+
+    case SPECIALIST_NUMBER:
+      return {
+        ...state,
+        specialistNumber: action.specialistNumber + state.specialistNumber
+      }
+
+    case ADD_ANOTHER_SPECIALIST:
+      return {
+        ...state,
+        addAnotherSpecialist: action.addAnotherSpecialist
       }
 
     default:

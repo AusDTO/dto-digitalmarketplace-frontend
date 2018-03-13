@@ -1,6 +1,12 @@
-import { BRIEF_INFO_FETCH_DATA_SUCCESS, BRIEF_RESPONSE_SUCCESS } from '../constants/constants'
-import { GENERAL_ERROR } from '../constants/messageConstants'
+import {
+  BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_RESPONSE_SUCCESS,
+  SPECIALIST_NAME,
+  SPECIALIST_NUMBER,
+  ADD_ANOTHER_SPECIALIST
+} from '../constants/constants'
 
+import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
@@ -57,4 +63,16 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
     }
     dispatch(sendingRequest(false))
   })
+}
+
+export function handleBriefNameSubmit(specialistName) {
+  return { type: SPECIALIST_NAME, specialistName }
+}
+
+export function handleSpecialistNumberSubmit(specialistNumber) {
+  return { type: SPECIALIST_NUMBER, specialistNumber }
+}
+
+export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
+  return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
