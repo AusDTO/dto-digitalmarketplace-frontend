@@ -71,7 +71,10 @@ class BuyerDashboardMyBriefs extends Component {
               </div>
               <div className="col-md-2 col-sm-2">
                 {item.status === 'closed' &&
-                  <a href="/#" rel="external">
+                  <a
+                    href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
+                    rel="external"
+                  >
                     <strong>Create work order</strong>
                   </a>}
               </div>
