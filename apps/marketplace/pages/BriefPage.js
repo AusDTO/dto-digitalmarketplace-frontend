@@ -16,6 +16,7 @@ import {
   handleSpecialistNumberSubmit
 } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
+import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
 import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -44,6 +45,15 @@ class BriefPage extends Component {
   onAddAnotherClicked = () => this.props.changeModel(`${this.props.model}.addAnother`, true)
 
   onSpecialistSubmitClicked = () => this.props.changeModel(`${this.props.model}.addAnother`, false)
+
+  onAddAnotherClicked = () => {
+    return this.props.addAnotherSpecialistSubmit(true)
+  }
+
+  onSpecialistSubmitClicked = e => {
+    e.stopPropagation()
+    return this.props.addAnotherSpecialistSubmit(false)
+  }
 
   handleFeedbackSubmit(values) {
     this.props.handleFeedbackSubmit({
@@ -90,6 +100,31 @@ class BriefPage extends Component {
     window.scrollTo(0, 0)
   }
 
+  handleSpecialistBriefResponseSubmit(values) {
+    const { model } = this.props
+    let submitData = {
+      attachedDocumentURL: values.attachedDocumentURL ? valus.attachedDocumentURL : null,
+      availability: values.availability,
+      specialistName: values.specialistName ? values.specialistName : null,
+      dayRate: values.dayRate,
+      essentialRequirements: values.essentialRequirements,
+      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
+    }
+    if (this.props.addAnotherSpecialist) {
+      this.props.handleBriefNameSubmit('')
+      this.props.handleSpecialistNumberSubmit(1)
+    }
+    const { brief } = this.props
+    this.props.handleBriefResponseSubmit(brief.id, submitData)
+    this.props.clearModel(model)
+    window.scrollTo(0, 0)
+  }
+
+  handleBriefNameSubmit = name => {
+    this.props.handleBriefNameSubmit(name)
+    window.scrollTo(0, 0)
+  }
+
   render() {
     const { currentlySending, loadBriefSuccess, match } = this.props
 
@@ -103,71 +138,59 @@ class BriefPage extends Component {
 
     return (
       <div className="brief-page">
-        {currentlySending
-          ? <LoadingIndicatorFullPage />
-          : <Switch>
-              <Route
-                path={`${match.url}/published`}
-                render={() =>
-                  <BriefSubmitted
-                    setFocus={setFocus}
-                    submitClicked={this.state.submitClicked}
-                    handleSubmit={values => this.handleFeedbackSubmit(values)}
-                    {...this.props}
-                  />}
-              />
-              <Route
-                path={`${match.url}/specialist/respond/submitted`}
-                render={() =>
-                  <BriefSpecialistResponseSubmitted
-                    setFocus={setFocus}
-                    submitClicked={this.state.submitClicked}
-                    handleSubmit={values => this.handleFeedbackSubmit(values)}
-                    {...this.props}
-                  />}
-              />
-              <Route
-                path={`${match.url}/respond/submitted`}
-                render={() =>
-                  <BriefResponseSubmitted
-                    setFocus={setFocus}
-                    submitClicked={this.state.submitClicked}
-                    handleSubmit={values => this.handleFeedbackSubmit(values)}
-                    {...this.props}
-                  />}
-              />
-              <Route
-                path={`${match.url}/respond`}
-                render={() =>
-                  <span>
-                    {loadBriefSuccess
-                      ? <BriefResponseForm
-                          submitClicked={this.onSubmitClicked}
-                          handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                          setFocus={setFocus}
-                          {...this.props}
-                        />
-                      : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
-                  </span>}
-              />
-              <Route
-                path={`${match.url}/specialist/respond`}
-                render={() =>
-                  <span>
-                    {loadBriefSuccess
-                      ? <BriefSpecialistResponseForm
-                          submitClicked={this.onSpecialistSubmitClicked}
-                          addAnotherClicked={this.onAddAnotherClicked}
-                          handleNameSubmit={name => this.handleBriefNameSubmit(name)}
-                          handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
-                          setFocus={setFocus}
-                          {...this.props}
-                        />
-                      : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
-                  </span>}
-              />
-              <Route component={NotFound} />
-            </Switch>}
+        <Switch>
+          <Route
+            path={`${match.url}/published`}
+            render={() =>
+              <BriefSubmitted
+                setFocus={setFocus}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />}
+          />
+          <Route
+            path={`${match.url}/specialist/respond/submitted`}
+            render={() =>
+              <BriefSpecialistResponseSubmitted
+                setFocus={setFocus}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />}
+          />
+          <Route
+            path={`${match.url}/respond`}
+            render={() =>
+              <span>
+                {loadBriefSuccess
+                  ? <BriefResponseForm
+                      submitClicked={this.onSubmitClicked}
+                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                      setFocus={setFocus}
+                      {...this.props}
+                    />
+                  : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
+              </span>}
+          />
+          <Route
+            path={`${match.url}/specialist/respond`}
+            render={() =>
+              <span>
+                {loadBriefSuccess
+                  ? <BriefSpecialistResponseForm
+                      submitClicked={this.onSpecialistSubmitClicked}
+                      addAnotherClicked={this.onAddAnotherClicked}
+                      handleNameSubmit={name => this.handleBriefNameSubmit(name)}
+                      handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
+                      setFocus={setFocus}
+                      {...this.props}
+                    />
+                  : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
+              </span>}
+          />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     )
   }
@@ -213,9 +236,7 @@ const mapResetDispatchToProps = dispatch => ({
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
-  clearModel: model => dispatch(actions.reset(model)),
-  changeModel: (model, value) => dispatch(actions.change(model, value)),
-  setInitial: model => dispatch(actions.setInitial(model))
+  clearModel: model => dispatch(actions.reset(model))
 })
 
 export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(BriefPage))

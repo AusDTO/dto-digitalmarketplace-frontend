@@ -15,12 +15,11 @@ import Textarea from 'shared/form/Textarea'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 
-import styles from './BriefSpecialistResponseForm.scss'
+import styles from './BriefResponseForm.scss'
 
 const BriefSpecialistResponseForm = ({
   model,
   brief,
-  briefResponses,
   briefResponseSuccess,
   app,
   currentlySending,
@@ -38,9 +37,7 @@ const BriefSpecialistResponseForm = ({
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length === 3
-            ? <Redirect to={`${match.url}/specialist/respond/submitted`} />
-            : ''}
+          {briefResponseSuccess && !addAnotherSpecialist ? <Redirect to={`${match.url}/respond/submitted`} /> : ''}
           {!briefResponseSuccess &&
             <ErrorBox
               title="There was a problem submitting your response"
@@ -119,23 +116,27 @@ const BriefSpecialistResponseForm = ({
                       required: 'Enter a date for when you can start the project'
                     }}
                   />
-                  <Textfield
-                    model={`${model}.dayRate`}
-                    name="dayRate"
-                    id="dayRate"
-                    htmlFor="dayRate"
-                    label="Day rate (including GST)"
-                    validators={{
-                      required,
-                      validPercentage
-                    }}
-                    messages={{
-                      required: 'A day rate is required',
-                      validPercentage: 'Enter only numbers eg. 600.00'
-                    }}
-                  />
+                  {brief.lotSlug &&
+                    brief.lotSlug === 'digital-professionals' &&
+                    <Textfield
+                      model={`${model}.dayRate`}
+                      name="dayRate"
+                      id="dayRate"
+                      htmlFor="dayRate"
+                      label="Day rate (including GST)"
+                      validators={{
+                        required,
+                        validPercentage
+                      }}
+                      messages={{
+                        required: 'A day rate is required',
+                        validPercentage: 'Enter only numbers eg. 600.00'
+                      }}
+                    />}
                   {app.supplierCode
-                    ? <FilesInput
+                    ? brief.lotSlug &&
+                      brief.lotSlug === 'digital-professionals' &&
+                      <FilesInput
                         label="Resume"
                         hint="Attachments must be PDF or ODT format and a maximum of 5MB"
                         name="attachedDocumentURL"
@@ -152,7 +153,9 @@ const BriefSpecialistResponseForm = ({
                       </PageAlert>}
                   <fieldset className={styles.x_uikit_fieldset}>
                     <h2>Skills and experience?</h2>
-                    <p>Answer the following criteria for all candidates</p>
+                    {brief.lotSlug &&
+                      brief.lotSlug === 'digital-professionals' &&
+                      <p>Answer the following criteria for all candidates</p>}
                     {brief.essentialRequirements &&
                       brief.essentialRequirements.map((requirement, i) =>
                         <Textarea
@@ -181,16 +184,22 @@ const BriefSpecialistResponseForm = ({
                         />
                       )}
                   </fieldset>
-                  <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" />
-                  {specialistNumber < 3 &&
-                    <input
-                      className="uikit-btn uikit-btn--tertiary"
-                      type="submit"
-                      value="Submit and add another"
-                      onClick={e => {
-                        addAnotherClicked(e)
-                      }}
-                    />}
+                  <input
+                    className="uikit-btn right-button-margin"
+                    type="submit"
+                    value="Submit specialist"
+                    onClick={e => {
+                      submitClicked(e)
+                    }}
+                  />
+                  <input
+                    className="uikit-btn uikit-btn--tertiary"
+                    type="submit"
+                    value="Submit and add another"
+                    onClick={e => {
+                      addAnotherClicked(e)
+                    }}
+                  />
                 </Form>
               </div>}
         </article>
