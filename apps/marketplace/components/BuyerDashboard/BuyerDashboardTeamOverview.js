@@ -8,7 +8,7 @@ import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardTeamOverview extends Component {
   componentDidMount() {
-    this.props.loadData(BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS, '/buyers/dashboard/team/overview')
+    this.props.loadData(BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS, '/dashboard/team/overview')
   }
 
   render() {

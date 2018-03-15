@@ -9,7 +9,7 @@ import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardTeamBriefs extends Component {
   componentDidMount() {
-    this.props.loadData(BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS, '/buyers/dashboard/team/briefs')
+    this.props.loadData(BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS, '/dashboard/team/briefs')
   }
 
   render() {
