@@ -16,18 +16,20 @@ const BriefResponseSubmitted = props =>
           <PageAlert as="success" setFocus={props.setFocus}>
             <h1 className="uikit-display-3">
               <strong>
-                You have submitted {props.briefResponses.length} specialist{props.briefResponses.length > 1 ? 's' : ''}{' '}
+                You have submitted {props.briefResponses.length} specialist{props.briefResponses.length === 1 ? '' : 's'}{' '}
                 for this opportunity.
               </strong>
             </h1>
             <p>
-              You can submit {3 - props.briefResponses.length} more before the closing date ({format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')})
-            </p>
+            {props.briefResponses.length < 3 ?
+              `You can submit ${3 - props.briefResponses.length} more before the closing date (${format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')})`
+            : `This opportunity closes on ${format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')}`
+            }
+            </p> 
           </PageAlert>
-          <a href="/2/seller-dashboard" className="uikit-btn right-button-margin">
-            Track your submission
-          </a>
-          <a href={`/2/brief/${props.match.params.briefId}/specialist/respond`}>Add another specialist</a>
+          {props.briefResponses.length < 3 &&
+          <a className="uikit-btn right-button-margin" href={`/2/brief/${props.match.params.briefId}/specialist/respond`}>Add another specialist</a>
+        }
           <h2 className="uikit-display-2">
             <br />
             <br />

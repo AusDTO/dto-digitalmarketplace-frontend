@@ -20,7 +20,6 @@ import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSu
 import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
 
 class BriefPage extends Component {
   constructor(props) {
@@ -134,6 +133,10 @@ class BriefPage extends Component {
         hasFocused = true
         e.focus()
       }
+    }
+
+    if (currentlySending) {
+      return <LoadingIndicatorFullPage />
     }
 
     return (
