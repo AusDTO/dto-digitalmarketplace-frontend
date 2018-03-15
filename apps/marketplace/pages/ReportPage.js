@@ -6,27 +6,28 @@ import { rootPath } from '../routes'
 
 const itemData = {
   title: 'Digital Marketplace insights:',
-  date: 'January 2018',
+  date: 'February 2018',
   items: [
     {
       heading: 'Who is buying?',
       subitems: [
         {
           text: null,
-          image: '787 Entities registered.svg',
-          mobileImage: '787 Entities registered.svg',
-          imageAlt: 'Of the 210 entities registered on the Marketplace, 47%% are Australian Government entities'
+          image: 'Entities registered.svg',
+          mobileImage: 'Entities registered.svg',
+          imageAlt: 'Of the 217 entities registered on the Marketplace, 48%% are Australian Government entities'
         },
         {
           text: null,
           image: '768 Top 5 buyers.svg',
-          mobileImage: '787 Top 5 buyers.svg',
+          mobileImage: '767 Top 5 buyers.svg',
           imageAlt: '',
           imageCaption:
-            'Top 5 agencies listing briefs on the Marketplace for January 2018 were the ' +
-            'Department of Human Services (10 briefs), DTA (10 briefs), ' +
-            'Department of Health (4 briefs), Australian Maritime Safety Authority (3 Briefs) ' +
-            'and Department of Industry Innovation and Science (3 briefs)'
+            'Top 5 agencies listing briefs on the Marketplace for February 2018 were the ' +
+            'DTA (18 briefs), Department of Human Services (14 briefs), ' +
+            'Australian Transaction Reports & Analysis Centre (5 briefs), ' +
+            'Australian Digital Health Agency (3 briefs) ' +
+            'and National Health and Medical Research Council (2 briefs)'
         }
       ]
     },
@@ -37,13 +38,13 @@ const itemData = {
           text: null,
           image: 'Percentage of briefs open to all.svg',
           mobileImage: 'Percentage of briefs open to all.svg',
-          imageAlt: '67% of all briefs have been open to all'
+          imageAlt: '68% of all briefs have been open to all'
         },
         {
           text: null,
           image: 'Percentage of briefs for digital specialists.svg',
           mobileImage: 'Percentage of briefs for digital specialists.svg',
-          imageAlt: '60% of briefs have been for digital specialists'
+          imageAlt: '63% of briefs have been for digital specialists'
         },
         {
           image: '768 Percentage of dollar value contracted awarded to SMEs.svg',
@@ -54,17 +55,17 @@ const itemData = {
         {
           image: '768 Total contracted since launch.svg',
           mobileImage: '767 Total contracted since launch.svg',
-          imageAlt: '$76.31M contracted through the Marketplace since 29 August 2016, $8.83M this month'
+          imageAlt: '$84.82M contracted through the Marketplace since 29 August 2016, $8.51M this month'
         },
         {
           image: '768 Number of sellers.svg',
           mobileImage: '767 Number of sellers.svg',
-          imageAlt: '787 sellers have registered to offer digital and ICT services, 30 new sellers this month'
+          imageAlt: '819 sellers have registered to offer digital and ICT services, 33 new sellers this month'
         },
         {
           image: '768 total opportunities.svg',
           mobileImage: '767 total opportunities.svg',
-          imageAlt: '474 total opportunities since 29 August 2016, 53 new briefs this month'
+          imageAlt: '541 total opportunities since 29 August 2016, 67 new briefs this month'
         }
       ]
     },
@@ -77,7 +78,7 @@ const itemData = {
           image: '768 Briefs by phase.svg',
           mobileImage: '767 Briefs by phase.svg',
           imageAlt: '',
-          imageCaption: 'Briefs by phase, 15% Pre-discovery, 34% Discovery, 13% Alpha, 14% Beta, 9% Live and 15% Other'
+          imageCaption: 'Briefs by phase, 16% Pre-discovery, 34% Discovery, 13% Alpha, 13% Beta, 8% Live and 16% Other'
         },
         {
           text: null,
@@ -97,13 +98,13 @@ const itemData = {
           imageAlt: '',
           imageCaption:
             'Top 5 areas of expertise since 29 August 2016: ' +
-            '85 briefs published for Software engineering and development, ' +
-            '65 briefs published for User research and design, ' +
-            '52 briefs published for Agile delivery and governance, ' +
-            '17 briefs published for Content and Publishing, ' +
-            '16 briefs published for Cyber security,' +
-            '49 briefs published for Other areas of expertise and ' +
-            '190 briefs published for Outcomes (area not specified)'
+            '96 briefs published for Software engineering and development, ' +
+            '73 briefs published for User research and design, ' +
+            '68 briefs published for Agile delivery and governance, ' +
+            '20 briefs published for Content and Publishing, ' +
+            '20 briefs published for Cyber security,' +
+            '60 briefs published for Other areas of expertise and ' +
+            '204 briefs published for Outcomes (area not specified)'
         }
       ]
     },
@@ -118,17 +119,17 @@ const itemData = {
           imageAlt: '',
           imageCaption:
             'Number of sellers per area of expertise: ' +
-            '251 selling Strategy and policy, ' +
-            '347 selling User research and design, ' +
-            '419 selling Agile delivery and governance, ' +
-            '443 selling Software engineering and development, ' +
-            '201 selling Support and operations, ' +
-            '168 selling Content and publishing, ' +
-            '330 selling Change, training and transformation, ' +
-            '146 selling Marketing, communications and engagement, ' +
-            '216 selling Cyber security, ' +
-            '186 selling Data science and ' +
-            '157 selling Emerging technologies'
+            '262 selling Strategy and policy, ' +
+            '353 selling User research and design, ' +
+            '436 selling Agile delivery and governance, ' +
+            '460 selling Software engineering and development, ' +
+            '212 selling Support and operations, ' +
+            '173 selling Content and publishing, ' +
+            '342 selling Change, training and transformation, ' +
+            '155 selling Marketing, communications and engagement, ' +
+            '222 selling Cyber security, ' +
+            '189 selling Data science and ' +
+            '162 selling Emerging technologies'
         },
         {
           text: null,
@@ -150,29 +151,29 @@ const itemData = {
           imageCaption:
             'Top 10 sellers awarded contracts this financial year: ' +
             'HiTech Group (SME) 11 contracts, ' +
-            'Oakton (Large Enterprise) 10 contracts, ' +
-            'Paxus (SME) 6 contracts, ' +
-            'Paper Giant (SME) 6 contracts, ' +
+            'Oakton (Large Enterprise) 11 contracts, ' +
+            'Paxus (SME) 8 contracts, ' +
+            'Paper Giant (SME) 7 contracts, ' +
             '2XM Technology Pty Ltd (SME) 5 contracts, ' +
-            'ThoughtWorks (SME) 4 contracts, ' +
-            'Deloitte Touche Tohmatsu (Large Enterprise) 4 contracts, ' +
-            'Thinkplace (SME) 4 contracts, ' +
-            'FinXL IT Professional Services (SME) 4 contracts, ' +
-            'Senuamedia (Large Enterprise) 4 contracts and ' +
-            'Other SME 96 contracts, ' +
-            'Other Large Enterprise 25 contracts'
+            'Deloitte Touche Tohmatsu (Large Enterprise) 5 contracts, ' +
+            'Thinkplace (SME) 5 contracts, ' +
+            'FinXL IT Professional Services (Large Enterprise) 5 contracts, ' +
+            'Senuamedia (SME) 5 contracts and ' +
+            'ThoughtWorks (Large Enterprise) 4 contracts, ' +
+            'Other SME 132 contracts, ' +
+            'Other Large Enterprise 32 contracts'
         },
         {
           text: null,
           image: 'Percentage of contracts awarded by volume to SMEs.svg',
           mobileImage: 'Percentage of contracts awarded by volume to SMEs.svg',
-          imageAlt: '75% of contracts have been awarded by volume to SME sellers this month'
+          imageAlt: '80% of contracts have been awarded by volume to SME sellers this month'
         },
         {
           text: null,
           image: 'Number of contracts awarded this month.svg',
           mobileImage: 'Number of contracts awarded this month.svg',
-          imageAlt: '20 briefs have been contracted this month'
+          imageAlt: '50 briefs have been contracted this month'
         }
       ]
     }
