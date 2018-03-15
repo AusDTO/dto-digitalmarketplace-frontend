@@ -43,12 +43,11 @@ class BriefPage extends Component {
   }
 
   onAddAnotherClicked = () => {
-    return this.props.addAnotherSpecialistSubmit(true)
+    return this.props.changeModel(`${this.props.model}.addAnother`, true)
   }
 
   onSpecialistSubmitClicked = e => {
-    e.stopPropagation()
-    return this.props.addAnotherSpecialistSubmit(false)
+    return this.props.changeModel(`${this.props.model}.addAnother`, false)
   }
 
   handleFeedbackSubmit(values) {
@@ -69,18 +68,20 @@ class BriefPage extends Component {
   handleSpecialistBriefResponseSubmit(values) {
     const { model } = this.props
     let submitData = {
-      attachedDocumentURL: values.attachedDocumentURL ? valus.attachedDocumentURL : null,
+      attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
       availability: values.availability,
       specialistName: values.specialistName ? values.specialistName : null,
       dayRate: values.dayRate,
       essentialRequirements: values.essentialRequirements,
       niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
     }
-    if (this.props.addAnotherSpecialist) {
+    if (values.addAnother) {
       this.props.handleBriefNameSubmit('')
       this.props.handleSpecialistNumberSubmit(1)
     }
+
     const { brief } = this.props
+    this.props.addAnotherSpecialistSubmit(values.addAnother)
     this.props.handleBriefResponseSubmit(brief.id, submitData)
     this.props.clearModel(model)
     window.scrollTo(0, 0)
@@ -206,7 +207,8 @@ const mapResetDispatchToProps = dispatch => ({
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
-  clearModel: model => dispatch(actions.reset(model))
+  clearModel: model => dispatch(actions.reset(model)),
+  changeModel: (model, value) => dispatch(actions.change(model, value))
 })
 
 export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(BriefPage))

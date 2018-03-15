@@ -181,7 +181,14 @@ const BriefSpecialistResponseForm = ({
                         />
                       )}
                   </fieldset>
-                  <input className="uikit-btn right-button-margin" type="submit" value="Submit specialist" />
+                  <input
+                    className="uikit-btn right-button-margin"
+                    type="submit"
+                    value="Submit specialist"
+                    onClick={e => {
+                      submitClicked(e)
+                    }}
+                  />
                   {specialistNumber < 3 &&
                     <input
                       className="uikit-btn uikit-btn--tertiary"

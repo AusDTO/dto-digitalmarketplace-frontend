@@ -21,15 +21,21 @@ const BriefResponseSubmitted = props =>
               </strong>
             </h1>
             <p>
-            {props.briefResponses.length < 3 ?
-              `You can submit ${3 - props.briefResponses.length} more before the closing date (${format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')})`
-            : `This opportunity closes on ${format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')}`
-            }
-            </p> 
+              {props.briefResponses.length < 3
+                ? `You can submit ${3 - props.briefResponses.length} more before the closing date (${format(
+                    new Date(props.brief.applicationsClosedAt),
+                    'MMMM Do, YYYY'
+                  )})`
+                : `This opportunity closes on ${format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')}`}
+            </p>
           </PageAlert>
           {props.briefResponses.length < 3 &&
-          <a className="uikit-btn right-button-margin" href={`/2/brief/${props.match.params.briefId}/specialist/respond`}>Add another specialist</a>
-        }
+            <a
+              className="uikit-btn right-button-margin"
+              href={`/2/brief/${props.match.params.briefId}/specialist/respond`}
+            >
+              Add another specialist
+            </a>}
           <h2 className="uikit-display-2">
             <br />
             <br />
