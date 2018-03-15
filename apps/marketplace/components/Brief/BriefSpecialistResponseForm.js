@@ -50,7 +50,7 @@ const BriefSpecialistResponseForm = ({
             />}
           {!specialistName
             ? <div>
-                {!addAnotherSpecialist &&
+                {briefResponses.length === 0 &&
                   <div>
                     <h1 className="uikit-display-5">Add up to 3 specialists</h1>
                     <div>
@@ -87,7 +87,7 @@ const BriefSpecialistResponseForm = ({
                   <input
                     className="uikit-btn"
                     type="submit"
-                    value={addAnotherSpecialist ? 'Continue' : 'Start application'}
+                    value={briefResponses.length > 0 ? 'Continue' : 'Start application'}
                   />
                 </Form>
               </div>
