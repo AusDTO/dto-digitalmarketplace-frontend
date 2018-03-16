@@ -35,19 +35,14 @@ class BriefPage extends Component {
     }
   }
 
-  onSubmitClicked() {
+  onSubmitClicked = () =>
     this.setState({
       submitClicked: new Date().valueOf()
     })
-  }
 
-  onAddAnotherClicked() {
-    return this.props.changeModel(`${this.props.model}.addAnother`, true)
-  }
+  onAddAnotherClicked = () => this.props.changeModel(`${this.props.model}.addAnother`, true)
 
-  onSpecialistSubmitClicked() {
-    return this.props.changeModel(`${this.props.model}.addAnother`, false)
-  }
+  onSpecialistSubmitClicked = () => this.props.changeModel(`${this.props.model}.addAnother`, false)
 
   handleFeedbackSubmit(values) {
     this.props.handleFeedbackSubmit({
