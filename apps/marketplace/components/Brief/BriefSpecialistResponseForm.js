@@ -52,9 +52,11 @@ const BriefSpecialistResponseForm = ({
             ? <div>
                 {briefResponses.length === 0 &&
                   <div>
-                    <h1 className="uikit-display-5">Add up to 3 specialists</h1>
+                    <h1 className="uikit-display-5">
+                      Apply for &lsquo;{brief.title}&rsquo;
+                    </h1>
                     <div>
-                      You can withdraw or replace specialists any time before the opportunity closes on{' '}
+                      You can add 3 specialists. This opportunity closes on{' '}
                       {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.
                     </div>
                     <br />
@@ -98,26 +100,22 @@ const BriefSpecialistResponseForm = ({
                 <h1 className="uikit-display-6">
                   {specialistName}
                 </h1>
-                <div className="uikit-display-5">About</div>
+                <h2>About</h2>
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
                   <Textfield
                     model={`${model}.availability`}
                     name="availability"
                     id="availability"
                     htmlFor="availability"
-                    label="Earliest start date"
+                    label={`Earliest date ${specialistName} can start`}
                     maxLength={100}
-                    description={
-                      <span>
-                        Preferred start date is <b>{brief.startDate}</b>
-                      </span>
-                    }
                     validators={{
                       required
                     }}
                     messages={{
                       required: 'Enter a date for when you can start the project'
                     }}
+                    description={`Buyer has requested ${brief.startDate}`}
                   />
                   <Textfield
                     model={`${model}.dayRate`}
@@ -151,8 +149,7 @@ const BriefSpecialistResponseForm = ({
                         <p>Only logged in sellers can respond to briefs</p>
                       </PageAlert>}
                   <fieldset className={styles.x_uikit_fieldset}>
-                    <h2>Skills and experience?</h2>
-                    <p>Answer the following criteria for all candidates</p>
+                    <h2>Skills and experience</h2>
                     {brief.essentialRequirements &&
                       brief.essentialRequirements.map((requirement, i) =>
                         <Textarea
