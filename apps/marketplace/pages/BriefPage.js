@@ -16,7 +16,6 @@ import {
   handleSpecialistNumberSubmit
 } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
-import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
 import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -36,17 +35,17 @@ class BriefPage extends Component {
     }
   }
 
-  onSubmitClicked = () => {
+  onSubmitClicked() {
     this.setState({
       submitClicked: new Date().valueOf()
     })
   }
 
-  onAddAnotherClicked = () => {
+  onAddAnotherClicked() {
     return this.props.changeModel(`${this.props.model}.addAnother`, true)
   }
 
-  onSpecialistSubmitClicked = e => {
+  onSpecialistSubmitClicked() {
     return this.props.changeModel(`${this.props.model}.addAnother`, false)
   }
 
@@ -67,7 +66,7 @@ class BriefPage extends Component {
 
   handleSpecialistBriefResponseSubmit(values) {
     const { model } = this.props
-    let submitData = {
+    const submitData = {
       attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
       availability: values.availability,
       specialistName: values.specialistName ? values.specialistName : null,
