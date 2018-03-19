@@ -5,6 +5,7 @@ import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
 import { BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS } from 'marketplace/constants/constants'
+import { statusConvert } from 'marketplace/components/helpers'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardTeamBriefs extends Component {
@@ -51,7 +52,7 @@ class BuyerDashboardTeamBriefs extends Component {
                       (item.status === 'closed' && styles.badgeYellow) ||
                       styles.badgeGrey}`}
                 >
-                  {`${item.status.charAt(0).toUpperCase()}${item.status.slice(1)}`}
+                  {statusConvert(item.status)}
                 </div>
               </div>
               <div className="col-md-2 col-sm-2">

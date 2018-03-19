@@ -5,6 +5,7 @@ import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
 import { BUYER_DASHBOARD_MYBRIEFS_SUCCESS } from 'marketplace/constants/constants'
+import { statusConvert } from 'marketplace/components/helpers'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardMyBriefs extends Component {
@@ -42,8 +43,7 @@ class BuyerDashboardMyBriefs extends Component {
               </div>
               <div className="col-md-3 col-sm-3">
                 {item.status === 'live' && <ClosedDate date={item.closed_at} />}
-                {item.status !== 'draft' &&
-                  <div>{`${item.applications} Sellers applied`}</div>}
+                {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
               </div>
               <div className="col-md-1 col-sm-1">
                 <div
@@ -53,7 +53,7 @@ class BuyerDashboardMyBriefs extends Component {
                       (item.status === 'closed' && styles.badgeYellow) ||
                       styles.badgeGrey}`}
                 >
-                  {`${item.status.charAt(0).toUpperCase()}${item.status.slice(1)}`}
+                  {statusConvert(item.status)}
                 </div>
               </div>
               <div className="col-md-2 col-sm-2">
