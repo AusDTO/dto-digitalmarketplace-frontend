@@ -22,8 +22,8 @@
 }
 
 .badge {
-  border-radius: 2px;
-  border: solid 1px #0f979b;
+  border-radius: 3px;
+  border: solid 2px #0f979b;
   color: #0f979b;
   margin-bottom: 5px;
   padding: 2px 5px;
@@ -31,22 +31,32 @@
 }
 
 .badgeRed {
-  border: solid 1px #ff0000;
+  border-color: #ff0000;
   color: #ff0000;
 }
 
 .badgeBlue {
-  border: solid 1px #0f979b;
-  color: #0f979b;
+  border-color: #224a60;
+  color: #224a60;
 }
 
 .badgeGreen {
-  border: solid 1px #40ac78;
+  border-color: #40ac78;
   color: #40ac78;
 }
 
+.badgeYellow {
+  border-color: #f5bf47;
+  color: #313131;
+}
+
+.badgeGrey {
+  border-color: #d6d6d6;
+  color: #313131;
+}
+
 .greyRow {
-  background-color: #f5f5f5;
+  background-color: #fafafa;
 }
 
 .alignCenter {

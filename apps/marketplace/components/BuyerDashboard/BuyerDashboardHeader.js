@@ -40,7 +40,7 @@ const BuyerDashboardHeader = props =>
               ]}
             />
             <a className={`${styles.firstButton} uikit-btn`} href="#url">
-              Create new brief
+              Start a new brief
             </a>
           </div>
         </div>

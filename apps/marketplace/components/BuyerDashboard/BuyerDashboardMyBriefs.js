@@ -42,30 +42,34 @@ class BuyerDashboardMyBriefs extends Component {
               </div>
               <div className="col-md-3 col-sm-3">
                 {item.status === 'live' && <ClosedDate date={item.closed_at} />}
-                {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
+                {item.status !== 'draft' && item.applications && parseInt(item.applications) > 0 && <div>{`${item.applications} Sellers applied`}</div>}
               </div>
               <div className="col-md-1 col-sm-1">
                 <div
                   className={`${styles.badge} 
                     ${(item.status === 'withdrawn' && styles.badgeRed) ||
-                      (item.status === 'live' && styles.badgeGreen) ||
-                      (item.status === 'closed' && styles.badgeRed) ||
-                      styles.badgeBlue}`}
+                      (item.status === 'live' && styles.badgeBlue) ||
+                      (item.status === 'closed' && styles.badgeYellow) ||
+                      styles.badgeGrey}`}
                 >
-                  {item.status}
+                  {`${item.status.charAt(0).toUpperCase()}${item.status.slice(1)}`}
                 </div>
               </div>
               <div className="col-md-2 col-sm-2">
                 {item.status === 'draft' &&
-                  <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`} rel="external">
+                  <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
                     <strong>Edit draft</strong>
                   </a>}
                 {item.status === 'live' &&
-                  <a href="/#" rel="external">
+                  <a
+                    href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
+                  >
                     <strong>Answer a question</strong>
                   </a>}
                 {item.status === 'closed' &&
-                  <a href="/#" rel="external">
+                  <a
+                    href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}
+                  >
                     <strong>View Responses</strong>
                   </a>}
               </div>
@@ -73,7 +77,6 @@ class BuyerDashboardMyBriefs extends Component {
                 {item.status === 'closed' &&
                   <a
                     href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
-                    rel="external"
                   >
                     <strong>Create work order</strong>
                   </a>}
