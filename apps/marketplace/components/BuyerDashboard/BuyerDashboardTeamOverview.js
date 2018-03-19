@@ -17,7 +17,7 @@ class BuyerDashboardTeamOverview extends Component {
     }
 
     return (
-      <div>
+      <div className={styles.resultListing}>
         <div className={styles.headingRow}>
           <div className="row">
             <div className="col-sm-6">Name</div>

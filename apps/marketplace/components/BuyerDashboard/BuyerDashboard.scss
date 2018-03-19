@@ -10,12 +10,20 @@
   opacity: 0.6;
 }
 
+.resultListing {
+  font-size: 15px;
+  font-size: 0.9rem;
+}
+
 .headingRow {
-  font-size: 17px;
   font-weight: bold;
   color: #202751;
   border-bottom: solid 3px #202751;
   padding-bottom: 7px;
+}
+
+.actions a {
+  margin-right: 15px;
 }
 
 .priceRow {
