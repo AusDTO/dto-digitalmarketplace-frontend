@@ -26,7 +26,7 @@ export const handleBuyerDashboardSuccess = (type, response) => ({
   data: response.data
 })
 
-export const loadBuyerDashboard = (type, endpoint = '/buyers/dashboard/my/briefs') => dispatch => {
+export const loadBuyerDashboard = (type, endpoint = '/dashboard/my/briefs') => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: endpoint }).then(response => {
     if (!response || response.error) {
