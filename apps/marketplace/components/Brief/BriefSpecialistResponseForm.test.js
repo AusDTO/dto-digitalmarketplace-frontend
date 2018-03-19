@@ -8,10 +8,10 @@ import BriefSpecialistResponseForm from './BriefSpecialistResponseForm'
 Enzyme.configure({ adapter: new Adapter() })
 
 const store = configureStore()
-test('BriefSpecialistResponseForm rendersu', () => {
+test('BriefSpecialistResponseForm renders', () => {
   const tree = shallow(
     <Provider store={store}>
-      <BriefSpecialistResponseForm/>
+      <BriefSpecialistResponseForm />
     </Provider>
   )
 
