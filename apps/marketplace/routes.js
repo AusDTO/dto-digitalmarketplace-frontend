@@ -27,7 +27,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/collaborate/:stage`} component={CollaboratePage} />
     <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
-    <Route path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
+    <PrivateRoute path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <Route component={NotFound} />
   </Switch>
 
