@@ -42,7 +42,10 @@ class BuyerDashboardMyBriefs extends Component {
               </div>
               <div className="col-md-3 col-sm-3">
                 {item.status === 'live' && <ClosedDate date={item.closed_at} />}
-                {item.status !== 'draft' && item.applications && parseInt(item.applications) > 0 && <div>{`${item.applications} Sellers applied`}</div>}
+                {item.status !== 'draft' &&
+                  item.applications &&
+                  parseInt(item.applications, 10) > 0 &&
+                  <div>{`${item.applications} Sellers applied`}</div>}
               </div>
               <div className="col-md-1 col-sm-1">
                 <div
@@ -67,9 +70,7 @@ class BuyerDashboardMyBriefs extends Component {
                     <strong>Answer a question</strong>
                   </a>}
                 {item.status === 'closed' &&
-                  <a
-                    href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}
-                  >
+                  <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
                     <strong>View Responses</strong>
                   </a>}
               </div>
