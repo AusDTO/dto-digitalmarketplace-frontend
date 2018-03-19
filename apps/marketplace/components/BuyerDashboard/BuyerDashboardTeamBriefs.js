@@ -60,7 +60,7 @@ class BuyerDashboardTeamBriefs extends Component {
               </div>
               <div className="col-md-2 col-sm-2">
                 {item.status === 'draft' &&
-                  <a href="/#">
+                  <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
                     <strong>Edit draft</strong>
                   </a>}
                 {item.status === 'live' &&
