@@ -206,7 +206,10 @@ BriefSpecialistResponseForm.defaultProps = {
   submitClicked: null,
   handleSubmit: null,
   handleNameSubmit: null,
-  specialistName: null
+  specialistName: null,
+  briefResponses: [],
+  model: '',
+  brief: {}
 }
 
 BriefSpecialistResponseForm.propTypes = {
@@ -214,6 +217,7 @@ BriefSpecialistResponseForm.propTypes = {
     briefResponseSuccess: PropTypes.bool
   }).isRequired,
   model: PropTypes.string.isRequired,
+  briefResponses: PropTypes.array.isRequired,
   submitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
   handleNameSubmit: PropTypes.func

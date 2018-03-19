@@ -19,6 +19,7 @@ import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
 
 class BriefPage extends Component {
   constructor(props) {
@@ -148,6 +149,16 @@ class BriefPage extends Component {
             path={`${match.url}/specialist/respond/submitted`}
             render={() =>
               <BriefSpecialistResponseSubmitted
+                setFocus={setFocus}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />}
+          />
+          <Route
+            path={`${match.url}/respond/submitted`}
+            render={() =>
+              <BriefResponseSubmitted
                 setFocus={setFocus}
                 submitClicked={this.state.submitClicked}
                 handleSubmit={values => this.handleFeedbackSubmit(values)}
