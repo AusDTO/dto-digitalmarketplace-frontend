@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import LinkList from '@gov.au/link-list/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import styles from './BuyerDashboard.scss'
@@ -7,7 +8,10 @@ const BuyerDashboardHeader = props =>
   <div className={styles.container}>
     <div className={`${styles.header} row`}>
       <div className="col-md-12 col-sm-12">
-        <h1 className="uikit-display-5">Opportunities</h1>
+        <small className={styles.organisation}>
+          {props.organisation}
+        </small>
+        <h1 className="uikit-display-5">Dashboard</h1>
         <div className="row">
           <div className={`${styles.alignRight} col-xs-12`}>
             <LinkList
@@ -48,4 +52,8 @@ const BuyerDashboardHeader = props =>
     </div>
   </div>
 
-export default BuyerDashboardHeader
+const mapStateToProps = state => ({
+  organisation: state.dashboard.buyerDashboardOrganisation
+})
+
+export default connect(mapStateToProps)(BuyerDashboardHeader)

@@ -3,7 +3,8 @@ import {
   SELLER_DASHBOARD_SUCCESS,
   BUYER_DASHBOARD_MYBRIEFS_SUCCESS,
   BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS,
-  BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS
+  BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS,
+  BUYER_DASHBOARD_ORGANISATION
 } from '../constants/constants'
 
 const defaultUserState = {
@@ -11,7 +12,8 @@ const defaultUserState = {
   buyerDashboard: { items: [] },
   buyerDashboardMyBriefs: { items: [] },
   buyerDashboardTeamBriefs: { items: [] },
-  buyerDashboardTeamOverview: { items: [] }
+  buyerDashboardTeamOverview: { items: [] },
+  buyerDashboardOrganisation: ''
 }
 
 const dashboardReducer = (state = defaultUserState, action) => {
@@ -48,6 +50,11 @@ const dashboardReducer = (state = defaultUserState, action) => {
         buyerDashboardTeamOverview: action.data,
         loadBuyerDashboardTeamOverviewSuccess: true,
         loadBuyerDashboardTeamOverviewErrored: false
+      }
+    case BUYER_DASHBOARD_ORGANISATION:
+      return {
+        ...state,
+        buyerDashboardOrganisation: action.data
       }
 
     default:
