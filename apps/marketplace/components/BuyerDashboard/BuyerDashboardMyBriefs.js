@@ -43,8 +43,6 @@ class BuyerDashboardMyBriefs extends Component {
               <div className="col-md-3 col-sm-3">
                 {item.status === 'live' && <ClosedDate date={item.closed_at} />}
                 {item.status !== 'draft' &&
-                  item.applications &&
-                  parseInt(item.applications, 10) > 0 &&
                   <div>{`${item.applications} Sellers applied`}</div>}
               </div>
               <div className="col-md-1 col-sm-1">
