@@ -59,7 +59,7 @@ table.resultListing td, table.resultListing th {
 }
 
 @media (max-width: 891px) {
-  table.resultListing th, table.resultListing .empty, .hideSmall {
+  table.resultListing thead, table.resultListing .empty, .hideSmall {
     display: none !important;
   }
 

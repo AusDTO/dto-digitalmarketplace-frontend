@@ -20,7 +20,7 @@ class BuyerDashboardTeamOverview extends Component {
       return (
         <div className="row">
           <div className="col-xs-12">
-            <p>You don't have any team members to show.</p>
+            <p>You don&apos;t have any team members to show.</p>
           </div>
         </div>
       )
@@ -29,11 +29,13 @@ class BuyerDashboardTeamOverview extends Component {
     return (
       <div className="row">
         <table className={`${styles.resultListing} col-xs-12`}>
-          <tbody>
+          <thead>
             <tr className={styles.headingRow}>
               <th>Name</th>
               <th>Email</th>
             </tr>
+          </thead>
+          <tbody>
             {this.props.items.map((item, i) =>
               <tr
                 key={`item.${item.email}`}

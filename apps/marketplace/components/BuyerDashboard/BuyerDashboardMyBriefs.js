@@ -22,7 +22,7 @@ class BuyerDashboardMyBriefs extends Component {
       return (
         <div className="row">
           <div className="col-xs-12">
-            <p>You don't have any briefs to show.</p>
+            <p>You don&apos;t have any briefs to show.</p>
           </div>
         </div>
       )
@@ -31,7 +31,7 @@ class BuyerDashboardMyBriefs extends Component {
     return (
       <div className="row">
         <table className={`${styles.resultListing} col-xs-12`}>
-          <tbody>
+          <thead>
             <tr className={styles.headingRow}>
               <th>ID</th>
               <th>Name</th>
@@ -39,6 +39,8 @@ class BuyerDashboardMyBriefs extends Component {
               <th>Status</th>
               <th>Action</th>
             </tr>
+          </thead>
+          <tbody>
             {this.props.items.map((item, i) =>
               <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
                 <td className={styles.hideSmall}>
@@ -50,7 +52,10 @@ class BuyerDashboardMyBriefs extends Component {
                   </a>
                 </td>
                 <td className={item.status === 'live' || item.status !== 'draft' ? '' : styles.empty}>
-                  {item.status === 'live' && <span className={styles.hideSmall}><ClosedDate date={item.closed_at} /></span>}
+                  {item.status === 'live' &&
+                    <span className={styles.hideSmall}>
+                      <ClosedDate date={item.closed_at} />
+                    </span>}
                   {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
                 </td>
                 <td>

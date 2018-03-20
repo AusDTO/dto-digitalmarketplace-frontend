@@ -31,7 +31,7 @@ class BuyerDashboardTeamBriefs extends Component {
     return (
       <div className="row">
         <table className={`${styles.resultListing} col-xs-12`}>
-          <tbody>
+          <thead>
             <tr className={styles.headingRow}>
               <th>ID</th>
               <th>Name</th>
@@ -39,6 +39,8 @@ class BuyerDashboardTeamBriefs extends Component {
               <th>Status</th>
               <th>Action</th>
             </tr>
+          </thead>
+          <tbody>
             {this.props.items.map((item, i) =>
               <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
                 <td className={styles.hideSmall}>
