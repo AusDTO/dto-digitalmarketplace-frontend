@@ -26,6 +26,7 @@ class BuyerDashboardTeamBriefs extends Component {
             <div className="col-md-3 col-sm-3">Name</div>
             <div className="col-md-3 col-sm-3">Canberra closing time</div>
             <div className="col-md-2 col-sm-2">Status</div>
+            <div className="col-md-3 col-sm-3">Action</div>
           </div>
         </div>
         {this.props.items.map((item, i) =>
@@ -52,6 +53,14 @@ class BuyerDashboardTeamBriefs extends Component {
                 >
                   {statusConvert(item.status)}
                 </div>
+              </div>
+              <div className={`${styles.actions} col-md-3 col-sm-3`}>
+                {item.status === 'live' &&
+                  <a
+                    href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
+                  >
+                    <strong>Answer a question</strong>
+                  </a>}
               </div>
             </div>
           </div>
