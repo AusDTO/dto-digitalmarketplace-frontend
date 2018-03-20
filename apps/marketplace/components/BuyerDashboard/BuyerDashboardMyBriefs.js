@@ -19,68 +19,68 @@ class BuyerDashboardMyBriefs extends Component {
     }
 
     return (
-      <div className={styles.resultListing}>
-        <div className={styles.headingRow}>
-          <div className="row">
-            <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>ID</div>
-            <div className="col-md-3 col-sm-3">Name</div>
-            <div className="col-md-3 col-sm-3">Canberra closing time</div>
-            <div className="col-md-2 col-sm-2">Status</div>
-            <div className="col-md-3 col-sm-3">Action</div>
-          </div>
-        </div>
-        {this.props.items.map((item, i) =>
-          <div key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
-            <div className="row">
-              <div className={`${styles.alignCenter} col-md-1 col-sm-1`}>
-                {item.id}
-              </div>
-              <div className="col-md-3 col-sm-3">
-                <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                  {item.name}
-                </a>
-              </div>
-              <div className="col-md-3 col-sm-3">
-                {item.status === 'live' && <ClosedDate date={item.closed_at} />}
-                {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
-              </div>
-              <div className="col-md-2 col-sm-2">
-                <div
-                  className={`${styles.badge} 
-                    ${(item.status === 'withdrawn' && styles.badgeRed) ||
-                      (item.status === 'live' && styles.badgeBlue) ||
-                      (item.status === 'closed' && styles.badgeYellow) ||
-                      styles.badgeGrey}`}
-                >
-                  {statusConvert(item.status)}
-                </div>
-              </div>
-              <div className={`${styles.actions} col-md-3 col-sm-3`}>
-                {item.status === 'draft' &&
-                  <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
-                    <strong>Edit draft</strong>
-                  </a>}
-                {item.status === 'live' &&
-                  <a
-                    href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
+      <div className="row">
+        <table className={`${styles.resultListing} col-xs-12`}>
+          <tbody>
+            <tr className={styles.headingRow}>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Canberra closing time</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            {this.props.items.map((item, i) =>
+              <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
+                <td>
+                  {item.id}
+                </td>
+                <td>
+                  <a href={`/digital-marketplace/opportunities/${item.id}`}>
+                    {item.name}
+                  </a>
+                </td>
+                <td>
+                  {item.status === 'live' && <ClosedDate date={item.closed_at} />}
+                  {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
+                </td>
+                <td>
+                  <div
+                    className={`${styles.badge}
+                      ${(item.status === 'withdrawn' && styles.badgeRed) ||
+                        (item.status === 'live' && styles.badgeBlue) ||
+                        (item.status === 'closed' && styles.badgeYellow) ||
+                        styles.badgeGrey}`}
                   >
-                    <strong>Answer a question</strong>
-                  </a>}
-                {item.status === 'closed' &&
-                  <span>
-                    <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
-                      <strong>View Responses</strong>
-                    </a>
+                    {statusConvert(item.status)}
+                  </div>
+                </td>
+                <td className={styles.actions}>
+                  {item.status === 'draft' &&
+                    <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
+                      <strong>Edit draft</strong>
+                    </a>}
+                  {item.status === 'live' &&
                     <a
-                      href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
+                      href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
                     >
-                      <strong>Create work order</strong>
-                    </a>
-                  </span>}
-              </div>
-            </div>
-          </div>
-        )}
+                      <strong>Answer a question</strong>
+                    </a>}
+                  {item.status === 'closed' &&
+                    <span>
+                      <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
+                        <strong>View Responses</strong>
+                      </a>
+                      <a
+                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
+                      >
+                        <strong>Create work order</strong>
+                      </a>
+                    </span>}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     )
   }

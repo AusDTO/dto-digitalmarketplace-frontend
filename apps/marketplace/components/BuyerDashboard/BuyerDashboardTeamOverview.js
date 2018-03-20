@@ -17,27 +17,30 @@ class BuyerDashboardTeamOverview extends Component {
     }
 
     return (
-      <div className={styles.resultListing}>
-        <div className={styles.headingRow}>
-          <div className="row">
-            <div className="col-sm-6">Name</div>
-            <div className="col-sm-6">Email</div>
-          </div>
-        </div>
-        {this.props.items.map((item, i) =>
-          <div key={`item.${item.email}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
-            <div className="row">
-              <div className="col-sm-6">
-                {item.name}
-              </div>
-              <div className="col-sm-6">
-                <a href={`mailto:${item.email}`}>
-                  {item.email}
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
+      <div className="row">
+        <table className={`${styles.resultListing} col-xs-12`}>
+          <tbody>
+            <tr className={styles.headingRow}>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+            {this.props.items.map((item, i) =>
+              <tr
+                key={`item.${item.email}`}
+                className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
+              >
+                <td>
+                  {item.name}
+                </td>
+                <td>
+                  <a href={`mailto:${item.email}`}>
+                    {item.email}
+                  </a>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     )
   }
