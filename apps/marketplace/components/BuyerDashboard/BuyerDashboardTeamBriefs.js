@@ -57,7 +57,7 @@ class BuyerDashboardTeamBriefs extends Component {
                 <td>
                   <div
                     className={`${styles.badge}
-                      ${(item.status === 'withdrawn' && styles.badgeRed) ||
+                      ${(item.status === 'withdrawn' && styles.badgeGrey) ||
                         (item.status === 'live' && styles.badgeBlue) ||
                         (item.status === 'closed' && styles.badgeYellow) ||
                         styles.badgeGrey}`}
