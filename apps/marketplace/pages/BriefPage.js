@@ -58,6 +58,7 @@ class BriefPage extends Component {
   handleBriefResponseSubmit(values) {
     const { brief } = this.props
     this.props.handleBriefResponseSubmit(brief.id, values)
+    window.scrollTo(0, 0)
   }
 
   handleSpecialistBriefResponseSubmit(values) {
