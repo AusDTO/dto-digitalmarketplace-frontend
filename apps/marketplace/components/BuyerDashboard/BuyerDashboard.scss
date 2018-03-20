@@ -10,6 +10,38 @@
   opacity: 0.6;
 }
 
+ul.menu {
+  box-sizing: content-box;
+  list-style-type: none;
+  margin-left: 0;
+  margin-top: 1.5rem;
+  padding-left: 0;
+  border-bottom: 1px solid #777;
+}
+
+ul.menu li {
+  display: inline-block;
+  margin: 0;
+}
+
+ul.menu li a {
+  display: block;
+  font-size: 1.25rem;
+  padding: 10px;
+  margin-right: 7px;
+  border-bottom: 0;
+}
+
+ul.menu li a:hover {
+  background: transparent;
+}
+
+ul.menu li a.active {
+  font-weight: 700;
+  background-color: #def4f9;
+  border-bottom: solid 6px #17788d;
+}
+
 .resultListing {
   font-size: 15px;
   font-size: 0.9rem;
@@ -80,5 +112,6 @@
 }
 
 .firstButton {
-  margin-right: 10px;
+  width: 100%;
+  text-align: center;
 }

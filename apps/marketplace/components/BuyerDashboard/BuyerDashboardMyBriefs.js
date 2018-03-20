@@ -6,7 +6,6 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
 import { BUYER_DASHBOARD_MYBRIEFS_SUCCESS } from 'marketplace/constants/constants'
 import { statusConvert } from 'marketplace/components/helpers'
-import LinkList from '@gov.au/link-list/lib/js/react.js'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardMyBriefs extends Component {
