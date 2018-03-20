@@ -31,7 +31,7 @@ class BuyerDashboardTeamOverview extends Component {
         <div className="col-xs-12">
           <h2>Active team members</h2>
           <p>
-            If this list contains members who have left your organisation, please <a href="/contact-us">contact us</a>
+            If this list contains members who have left your organisation, please <a href="/contact-us">contact us</a>{' '}
             to have them removed
           </p>
         </div>
