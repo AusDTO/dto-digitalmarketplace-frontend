@@ -18,6 +18,16 @@ class BuyerDashboardTeamBriefs extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    if (this.props.items.length === 0) {
+      return (
+        <div className="row">
+          <div className="col-xs-12">
+            <p>There are no team briefs to show.</p>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className="row">
         <table className={`${styles.resultListing} col-xs-12`}>

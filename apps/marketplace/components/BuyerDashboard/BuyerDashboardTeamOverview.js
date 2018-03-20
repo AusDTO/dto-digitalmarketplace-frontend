@@ -16,6 +16,16 @@ class BuyerDashboardTeamOverview extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    if (this.props.items.length === 0) {
+      return (
+        <div className="row">
+          <div className="col-xs-12">
+            <p>You don't have any team members to show.</p>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className="row">
         <table className={`${styles.resultListing} col-xs-12`}>
