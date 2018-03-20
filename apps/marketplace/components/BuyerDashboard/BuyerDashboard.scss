@@ -58,8 +58,23 @@ table.resultListing td, table.resultListing th {
   padding: 20px;
 }
 
+@media (max-width: 891px) {
+  table.resultListing th, table.resultListing .empty, .hideSmall {
+    display: none !important;
+  }
+
+  table.resultListing td {
+    display: block;
+    padding: 10px;
+  }
+
+  ul.menu li a {
+    font-size: 0.83rem;
+  }
+}
+
 .priceRow {
-  border-bottom: solid 1px #777777;
+  border-bottom: solid 1px #bebebe;
   color: #313131;
 }
 

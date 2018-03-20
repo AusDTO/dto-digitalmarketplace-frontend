@@ -31,7 +31,7 @@ class BuyerDashboardTeamBriefs extends Component {
             </tr>
             {this.props.items.map((item, i) =>
               <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
-                <td>
+                <td className={styles.hideSmall}>
                   {item.id}
                 </td>
                 <td>
@@ -39,7 +39,7 @@ class BuyerDashboardTeamBriefs extends Component {
                     {item.name}
                   </a>
                 </td>
-                <td>
+                <td className={item.status === 'live' ? '' : styles.empty}>
                   {item.status === 'live' && <ClosedDate date={item.closed_at} />}
                 </td>
                 <td>
@@ -53,7 +53,7 @@ class BuyerDashboardTeamBriefs extends Component {
                     {statusConvert(item.status)}
                   </div>
                 </td>
-                <td className={styles.actions}>
+                <td className={`${styles.actions} ${item.status === 'live' ? '' : styles.empty}`}>
                   {item.status === 'live' &&
                     <a
                       href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}

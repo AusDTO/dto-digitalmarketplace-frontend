@@ -24,7 +24,7 @@ class BuyerDashboardHeader extends Component {
           </small>
           <h1 className="uikit-display-5">Dashboard</h1>
           <div className="row">
-            <div className="col-xs-9">
+            <div className="col-xs-12 col-sm-8 col-md-9">
               <ul className={styles.menu}>
                 <li>
                   <a
@@ -62,7 +62,7 @@ class BuyerDashboardHeader extends Component {
                 </li>
               </ul>
             </div>
-            <div className={`${styles.alignRight} col-xs-3`}>
+            <div className={`${styles.alignRight} col-xs-12 col-sm-4 col-md-3`}>
               <a className={`${styles.firstButton} uikit-btn`} href="#url">
                 Start a new brief
               </a>
