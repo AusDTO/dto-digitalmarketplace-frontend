@@ -69,35 +69,6 @@ class BriefPage extends Component {
       specialistName: values.specialistName ? values.specialistName : null,
       dayRate: values.dayRate,
       essentialRequirements: values.essentialRequirements,
-      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null,
-      respondToEmailAddress: values.respondToEmailAddress ? values.respondToEmailAddress : null
-    }
-    if (values.addAnother) {
-      this.props.handleBriefNameSubmit('')
-      this.props.handleSpecialistNumberSubmit(1)
-    }
-
-    const { brief } = this.props
-    this.props.addAnotherSpecialistSubmit(values.addAnother)
-    this.props.handleBriefResponseSubmit(brief.id, submitData)
-    this.props.clearModel(model)
-    window.scrollTo(0, 0)
-  }
-
-  handleBriefNameSubmit = name => {
-    this.props.handleBriefNameSubmit(name)
-    this.props.setInitial(this.props.model)
-    window.scrollTo(0, 0)
-  }
-
-  handleSpecialistBriefResponseSubmit(values) {
-    const { model } = this.props
-    const submitData = {
-      attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
-      availability: values.availability,
-      specialistName: values.specialistName ? values.specialistName : null,
-      dayRate: values.dayRate,
-      essentialRequirements: values.essentialRequirements,
       niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
     }
     if (values.addAnother) {

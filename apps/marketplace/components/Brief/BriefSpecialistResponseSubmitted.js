@@ -6,6 +6,7 @@ import Feedback from 'marketplace/components/Feedback/Feedback'
 import DocumentTitle from 'react-document-title'
 
 import PageAlert from '@gov.au/page-alerts'
+import BriefResponseSubmittedSummary from './BriefResponseSubmittedSummary'
 import styles from './BriefResponseSubmitted.scss'
 
 const BriefResponseSubmitted = props =>
@@ -36,9 +37,9 @@ const BriefResponseSubmitted = props =>
             >
               Add another specialist
             </a>}
+          <h2>What happens next?</h2>
+          <BriefResponseSubmittedSummary {...props} />
           <h2 className="uikit-display-2">
-            <br />
-            <br />
             <b>How did you find submitting this application?</b>
           </h2>
           <Feedback
