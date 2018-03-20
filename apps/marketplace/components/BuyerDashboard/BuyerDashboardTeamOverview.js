@@ -38,8 +38,8 @@ class BuyerDashboardTeamOverview extends Component {
         <table className={`${styles.resultListing} col-xs-12`}>
           <thead>
             <tr className={styles.headingRow}>
-              <th>Name</th>
-              <th>Email</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
             </tr>
           </thead>
           <tbody>

@@ -33,11 +33,11 @@ class BuyerDashboardTeamBriefs extends Component {
         <table className={`${styles.resultListing} col-xs-12`}>
           <thead>
             <tr className={styles.headingRow}>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Canberra closing time</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Canberra closing time</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
