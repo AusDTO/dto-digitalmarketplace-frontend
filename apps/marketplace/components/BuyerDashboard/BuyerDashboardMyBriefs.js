@@ -30,77 +30,79 @@ class BuyerDashboardMyBriefs extends Component {
 
     return (
       <div className="row">
-        <table className={`${styles.resultListing} col-xs-12`}>
-          <thead>
-            <tr className={styles.headingRow}>
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Canberra closing time</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.items.map((item, i) =>
-              <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
-                <td className={styles.hideSmall}>
-                  {item.id}
-                </td>
-                <td>
-                  <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                    {item.name}
-                  </a>
-                </td>
-                <td className={item.status === 'live' || item.status !== 'draft' ? '' : styles.empty}>
-                  {item.status === 'live' &&
-                    <span className={styles.hideSmall}>
-                      <ClosedDate date={item.closed_at} />
-                    </span>}
-                  {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
-                </td>
-                <td>
-                  <div
-                    className={`${styles.badge}
-                      ${(item.status === 'withdrawn' && styles.badgeGrey) ||
-                        (item.status === 'live' && styles.badgeBlue) ||
-                        (item.status === 'closed' && styles.badgeYellow) ||
-                        styles.badgeGrey}`}
-                  >
-                    {statusConvert(item.status)}
-                  </div>
-                </td>
-                <td className={styles.actions}>
-                  {item.status === 'draft' &&
-                    <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
-                      <strong>Edit draft</strong>
-                    </a>}
-                  {item.status === 'live' &&
-                    <a
-                      href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
-                    >
-                      <strong>Answer a question</strong>
-                    </a>}
-                  {item.status === 'closed' &&
-                    <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
-                      <strong>View Responses</strong>
-                    </a>}
-                  {item.status === 'closed' &&
-                    item.work_order === null &&
-                    <a
-                      href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
-                    >
-                      <strong>Create work order</strong>
-                    </a>}
-                  {item.status === 'closed' &&
-                    item.work_order !== null &&
-                    <a href={`/work-orders/${item.work_order}`}>
-                      <strong>Edit work order</strong>
-                    </a>}
-                </td>
+        <div class="col-xs-12">
+          <table className={`${styles.resultListing} col-xs-12`}>
+            <thead>
+              <tr className={styles.headingRow}>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Canberra closing time</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {this.props.items.map((item, i) =>
+                <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
+                  <td className={styles.hideSmall}>
+                    {item.id}
+                  </td>
+                  <td>
+                    <a href={`/digital-marketplace/opportunities/${item.id}`}>
+                      {item.name}
+                    </a>
+                  </td>
+                  <td className={item.status === 'live' || item.status !== 'draft' ? '' : styles.empty}>
+                    {item.status === 'live' &&
+                      <span className={styles.hideSmall}>
+                        <ClosedDate date={item.closed_at} />
+                      </span>}
+                    {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
+                  </td>
+                  <td>
+                    <div
+                      className={`${styles.badge}
+                        ${(item.status === 'withdrawn' && styles.badgeGrey) ||
+                          (item.status === 'live' && styles.badgeBlue) ||
+                          (item.status === 'closed' && styles.badgeYellow) ||
+                          styles.badgeGrey}`}
+                    >
+                      {statusConvert(item.status)}
+                    </div>
+                  </td>
+                  <td className={styles.actions}>
+                    {item.status === 'draft' &&
+                      <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
+                        <strong>Edit draft</strong>
+                      </a>}
+                    {item.status === 'live' &&
+                      <a
+                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
+                      >
+                        <strong>Answer a question</strong>
+                      </a>}
+                    {item.status === 'closed' &&
+                      <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
+                        <strong>View Responses</strong>
+                      </a>}
+                    {item.status === 'closed' &&
+                      item.work_order === null &&
+                      <a
+                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
+                      >
+                        <strong>Create work order</strong>
+                      </a>}
+                    {item.status === 'closed' &&
+                      item.work_order !== null &&
+                      <a href={`/work-orders/${item.work_order}`}>
+                        <strong>Edit work order</strong>
+                      </a>}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }

@@ -30,53 +30,55 @@ class BuyerDashboardTeamBriefs extends Component {
 
     return (
       <div className="row">
-        <table className={`${styles.resultListing} col-xs-12`}>
-          <thead>
-            <tr className={styles.headingRow}>
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Canberra closing time</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.items.map((item, i) =>
-              <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
-                <td className={styles.hideSmall}>
-                  {item.id}
-                </td>
-                <td>
-                  <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                    {item.name}
-                  </a>
-                </td>
-                <td className={item.status === 'live' ? '' : styles.empty}>
-                  {item.status === 'live' && <ClosedDate date={item.closed_at} />}
-                </td>
-                <td>
-                  <div
-                    className={`${styles.badge}
-                      ${(item.status === 'withdrawn' && styles.badgeGrey) ||
-                        (item.status === 'live' && styles.badgeBlue) ||
-                        (item.status === 'closed' && styles.badgeYellow) ||
-                        styles.badgeGrey}`}
-                  >
-                    {statusConvert(item.status)}
-                  </div>
-                </td>
-                <td className={`${styles.actions} ${item.status === 'live' ? '' : styles.empty}`}>
-                  {item.status === 'live' &&
-                    <a
-                      href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
-                    >
-                      <strong>Answer a question</strong>
-                    </a>}
-                </td>
+        <div class="col-xs-12">
+          <table className={`${styles.resultListing} col-xs-12`}>
+            <thead>
+              <tr className={styles.headingRow}>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Canberra closing time</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {this.props.items.map((item, i) =>
+                <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
+                  <td className={styles.hideSmall}>
+                    {item.id}
+                  </td>
+                  <td>
+                    <a href={`/digital-marketplace/opportunities/${item.id}`}>
+                      {item.name}
+                    </a>
+                  </td>
+                  <td className={item.status === 'live' ? '' : styles.empty}>
+                    {item.status === 'live' && <ClosedDate date={item.closed_at} />}
+                  </td>
+                  <td>
+                    <div
+                      className={`${styles.badge}
+                        ${(item.status === 'withdrawn' && styles.badgeGrey) ||
+                          (item.status === 'live' && styles.badgeBlue) ||
+                          (item.status === 'closed' && styles.badgeYellow) ||
+                          styles.badgeGrey}`}
+                    >
+                      {statusConvert(item.status)}
+                    </div>
+                  </td>
+                  <td className={`${styles.actions} ${item.status === 'live' ? '' : styles.empty}`}>
+                    {item.status === 'live' &&
+                      <a
+                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
+                      >
+                        <strong>Answer a question</strong>
+                      </a>}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }

@@ -34,32 +34,32 @@ class BuyerDashboardTeamOverview extends Component {
             If this list contains members who have left your organisation, please <a href="/contact-us">contact us</a>{' '}
             to have them removed
           </p>
-        </div>
-        <table className={`${styles.resultListing} col-xs-12`}>
-          <thead>
-            <tr className={styles.headingRow}>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.items.map((item, i) =>
-              <tr
-                key={`item.${item.email}`}
-                className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
-              >
-                <td>
-                  {item.name}
-                </td>
-                <td>
-                  <a href={`mailto:${item.email}`}>
-                    {item.email}
-                  </a>
-                </td>
+          <table className={`${styles.resultListing} col-xs-12`}>
+            <thead>
+              <tr className={styles.headingRow}>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {this.props.items.map((item, i) =>
+                <tr
+                  key={`item.${item.email}`}
+                  className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
+                >
+                  <td>
+                    {item.name}
+                  </td>
+                  <td>
+                    <a href={`mailto:${item.email}`}>
+                      {item.email}
+                    </a>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }
