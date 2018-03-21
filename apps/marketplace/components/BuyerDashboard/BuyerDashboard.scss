@@ -59,13 +59,22 @@ table.resultListing td, table.resultListing th {
 }
 
 @media (max-width: 891px) {
+  .header {
+    margin-bottom: 20px;
+  }
+
   table.resultListing thead, table.resultListing .empty, .hideSmall {
     display: none !important;
   }
 
+  table.resultListing tr {
+    display: block;
+    padding: 15px 0px;
+  }
+
   table.resultListing td {
     display: block;
-    padding: 10px;
+    padding: 5px;
   }
 
   ul.menu li a {
@@ -82,7 +91,6 @@ table.resultListing td, table.resultListing th {
   border-radius: 3px;
   border: solid 2px #0f979b;
   color: #0f979b;
-  margin-bottom: 5px;
   padding: 2px 5px;
   display: inline-block;
 }
