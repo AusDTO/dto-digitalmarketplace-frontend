@@ -81,16 +81,21 @@ class BuyerDashboardMyBriefs extends Component {
                       <strong>Answer a question</strong>
                     </a>}
                   {item.status === 'closed' &&
-                    <span>
-                      <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
-                        <strong>View Responses</strong>
-                      </a>
-                      <a
-                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
-                      >
-                        <strong>Create work order</strong>
-                      </a>
-                    </span>}
+                    <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
+                      <strong>View Responses</strong>
+                    </a>}
+                  {item.status === 'closed' &&
+                    item.work_order === null &&
+                    <a
+                      href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
+                    >
+                      <strong>Create work order</strong>
+                    </a>}
+                  {item.status === 'closed' &&
+                    item.work_order !== null &&
+                    <a href={`/work-orders/${item.work_order}`}>
+                      <strong>Edit work order</strong>
+                    </a>}
                 </td>
               </tr>
             )}
