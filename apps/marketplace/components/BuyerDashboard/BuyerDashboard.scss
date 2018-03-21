@@ -51,6 +51,7 @@ ul.menu li a.active {
 
 table.resultListing {
   border-collapse: collapse;
+  margin-bottom: 40px;
 }
 
 table.resultListing td, table.resultListing th {
@@ -59,7 +60,7 @@ table.resultListing td, table.resultListing th {
 }
 
 @media (max-width: 891px) {
-  .header {
+  .header, table.resultListing {
     margin-bottom: 20px;
   }
 
