@@ -81,6 +81,11 @@ class BuyerDashboardTeamBriefs extends Component {
               )}
             </tbody>
           </table>
+          <h3>Need a hand?</h3>
+          <p>
+            <a href="/buyers-guide">Read the buyers guide</a> or <a href="/contact-us">contact us</a> - we can help you
+            write your brief.
+          </p>
         </div>
       </div>
     )
