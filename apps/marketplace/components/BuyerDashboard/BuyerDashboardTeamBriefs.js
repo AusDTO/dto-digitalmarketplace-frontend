@@ -30,7 +30,7 @@ class BuyerDashboardTeamBriefs extends Component {
 
     return (
       <div className="row">
-        <div class="col-xs-12">
+        <div className="col-xs-12">
           <table className={`${styles.resultListing} col-xs-12`}>
             <thead>
               <tr className={styles.headingRow}>
@@ -43,7 +43,10 @@ class BuyerDashboardTeamBriefs extends Component {
             </thead>
             <tbody>
               {this.props.items.map((item, i) =>
-                <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
+                <tr
+                  key={`item.${item.id}`}
+                  className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
+                >
                   <td className={styles.hideSmall}>
                     {item.id}
                   </td>

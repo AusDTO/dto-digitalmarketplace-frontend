@@ -30,7 +30,7 @@ class BuyerDashboardMyBriefs extends Component {
 
     return (
       <div className="row">
-        <div class="col-xs-12">
+        <div className="col-xs-12">
           <table className={`${styles.resultListing} col-xs-12`}>
             <thead>
               <tr className={styles.headingRow}>
@@ -43,7 +43,10 @@ class BuyerDashboardMyBriefs extends Component {
             </thead>
             <tbody>
               {this.props.items.map((item, i) =>
-                <tr key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
+                <tr
+                  key={`item.${item.id}`}
+                  className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
+                >
                   <td className={styles.hideSmall}>
                     {item.id}
                   </td>
@@ -57,7 +60,8 @@ class BuyerDashboardMyBriefs extends Component {
                       <span className={styles.hideSmall}>
                         <ClosedDate date={item.closed_at} />
                       </span>}
-                    {item.status !== 'draft' && <div>{`${item.applications} Sellers applied`}</div>}
+                    {item.status !== 'draft' &&
+                      <div>{`${item.applications} ${item.applications === 1 ? 'response' : 'responses'}`}</div>}
                   </td>
                   <td>
                     <div
