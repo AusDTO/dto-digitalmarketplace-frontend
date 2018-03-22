@@ -7,7 +7,7 @@ import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import BaseForm from 'shared/form/BaseForm'
 import formProps from 'shared/form/formPropsSelector'
 
-import { required, validEmail, governmentEmail } from '../components/validators'
+import { required, validEmail } from '../components/validators'
 import SignupForm from '../components/SignupForm/SignupForm'
 import UserOnboardingContainer from '../components/Onboarding/OnboardingContainer'
 import { handleSignupSubmit } from '../actions/memberActions'
@@ -23,8 +23,7 @@ export class SignupPageComponent extends BaseForm {
       },
       emailErrorMessages: {
         required: 'Your email is required',
-        validEmail: 'A validly formatted email is required.',
-        governmentEmail: ' Email should have a government domain.'
+        validEmail: 'A validly formatted email is required.'
       },
       isBuyer: this.props.signupForm.user_type === 'buyer',
       submitClicked: null
@@ -51,13 +50,11 @@ export class SignupPageComponent extends BaseForm {
         this.setState({
           emailValidators: {
             required,
-            validEmail,
-            governmentEmail
+            validEmail
           },
           emailErrorMessages: {
             required: 'Your email is required',
-            validEmail: 'A validly formatted email is required.',
-            governmentEmail: ' Email should have a government domain.'
+            validEmail: 'A validly formatted email is required.'
           },
           isBuyer: true
         })
