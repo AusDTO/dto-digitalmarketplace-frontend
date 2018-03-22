@@ -178,6 +178,23 @@ const BriefSpecialistResponseForm = ({
                         />
                       )}
                   </fieldset>
+                  <Textfield
+                    model={`${model}.respondToEmailAddress`}
+                    name="respondToEmailAddress"
+                    id="respondToEmailAddress"
+                    htmlFor="respondToEmailAddress"
+                    label="Contact email"
+                    description="All communication about your application will be sent to this address."
+                    defaultValue={app.emailAddress}
+                    validators={{
+                      required,
+                      validEmail
+                    }}
+                    messages={{
+                      required: 'A contact email is required',
+                      validEmail: 'A valid contact email is required'
+                    }}
+                  />
                   <input
                     className="uikit-btn right-button-margin"
                     type="submit"
