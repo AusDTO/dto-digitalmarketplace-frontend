@@ -159,14 +159,7 @@ const SignupForm = props => {
                       id="email_address"
                       type="email"
                       htmlFor="email_address"
-                      label={
-                        isBuyer
-                          ? <span>
-                              Email address ending in
-                              <b>.gov.au.</b>
-                            </span>
-                          : 'Email address'
-                      }
+                      label="Email address"
                       description={
                         isBuyer
                           ? <span>
