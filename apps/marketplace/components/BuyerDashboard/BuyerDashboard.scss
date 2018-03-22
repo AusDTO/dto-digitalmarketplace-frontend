@@ -50,6 +50,15 @@ table.resultListing {
   margin-bottom: 40px;
 }
 
+table.resultListing tr {
+  border-bottom: solid 1px #bebebe;
+  color: #313131;
+}
+
+table.resultListing tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
 table.resultListing .colId {
   width: 30px;
   padding-left: 20px;
@@ -146,11 +155,6 @@ table.resultListing td, table.resultListing th {
   }
 }
 
-.priceRow {
-  border-bottom: solid 1px #bebebe;
-  color: #313131;
-}
-
 .badge {
   border-radius: 3px;
   border: solid 2px #0f979b;
@@ -182,10 +186,6 @@ table.resultListing td, table.resultListing th {
 .badgeGrey {
   border-color: #d6d6d6;
   color: #313131;
-}
-
-.greyRow {
-  background-color: #fafafa;
 }
 
 .alignCenter {

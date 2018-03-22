@@ -63,11 +63,8 @@ class BuyerDashboardTeamBriefs extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.items.map((item, i) =>
-                <tr
-                  key={`item.${item.id}`}
-                  className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
-                >
+              {this.props.items.map(item =>
+                <tr key={`item.${item.id}`}>
                   <td className={styles.colId}>
                     {item.id}
                   </td>

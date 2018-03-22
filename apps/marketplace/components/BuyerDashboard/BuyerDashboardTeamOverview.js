@@ -42,11 +42,8 @@ class BuyerDashboardTeamOverview extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.items.map((item, i) =>
-                <tr
-                  key={`item.${item.email}`}
-                  className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
-                >
+              {this.props.items.map(item =>
+                <tr key={`item.${item.email}`}>
                   <td>
                     {item.name}
                   </td>
