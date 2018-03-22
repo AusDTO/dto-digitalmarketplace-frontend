@@ -69,7 +69,8 @@ class BriefPage extends Component {
       specialistName: values.specialistName ? values.specialistName : null,
       dayRate: values.dayRate,
       essentialRequirements: values.essentialRequirements,
-      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
+      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null,
+      respondToEmailAddress: values.respondToEmailAddress ? values.respondToEmailAddress : null
     }
     if (values.addAnother) {
       this.props.handleBriefNameSubmit('')
