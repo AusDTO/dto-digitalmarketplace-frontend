@@ -48,6 +48,9 @@ class BuyerDashboardTeamBriefs extends Component {
                 <th scope="col" className={styles.colName}>
                   Name
                 </th>
+                <th scope="col" className={styles.colAuthor}>
+                  Author
+                </th>
                 <th scope="col" className={styles.colClosing}>
                   Canberra closing time
                 </th>
