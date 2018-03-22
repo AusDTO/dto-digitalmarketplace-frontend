@@ -46,11 +46,21 @@ class BuyerDashboardMyBriefs extends Component {
           <table className={`${styles.resultListing} col-xs-12`}>
             <thead>
               <tr className={styles.headingRow}>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Canberra closing time</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
+                <th scope="col" className={styles.colId}>
+                  ID
+                </th>
+                <th scope="col" className={styles.colName}>
+                  Name
+                </th>
+                <th scope="col" className={styles.colClosing}>
+                  Canberra closing time
+                </th>
+                <th scope="col" className={styles.colStatus}>
+                  Status
+                </th>
+                <th scope="col" className={styles.colAction}>
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -59,15 +69,19 @@ class BuyerDashboardMyBriefs extends Component {
                   key={`item.${item.id}`}
                   className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}
                 >
-                  <td className={styles.hideSmall}>
+                  <td className={styles.colId}>
                     {item.id}
                   </td>
-                  <td>
+                  <td className={styles.colName}>
                     <a href={`/digital-marketplace/opportunities/${item.id}`}>
                       {item.name}
                     </a>
                   </td>
-                  <td className={item.status === 'live' || item.status !== 'draft' ? '' : styles.empty}>
+                  <td
+                    className={`${item.status === 'live' || item.status !== 'draft'
+                      ? ''
+                      : styles.empty} ${styles.colClosing}`}
+                  >
                     {item.status === 'live' &&
                       <span className={styles.hideSmall}>
                         <ClosedDate date={item.closed_at} />
@@ -75,7 +89,7 @@ class BuyerDashboardMyBriefs extends Component {
                     {item.status !== 'draft' &&
                       <div>{`${item.applications} ${item.applications === 1 ? 'response' : 'responses'}`}</div>}
                   </td>
-                  <td>
+                  <td className={styles.colStatus}>
                     <div
                       className={`${styles.badge}
                         ${(item.status === 'withdrawn' && styles.badgeGrey) ||
@@ -86,7 +100,7 @@ class BuyerDashboardMyBriefs extends Component {
                       {statusConvert(item.status)}
                     </div>
                   </td>
-                  <td className={styles.actions}>
+                  <td className={styles.colAction}>
                     {item.status === 'draft' &&
                       <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
                         <strong>Edit draft</strong>
