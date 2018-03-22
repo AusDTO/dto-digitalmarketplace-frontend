@@ -63,7 +63,7 @@ class BuyerDashboardHeader extends Component {
               </ul>
             </div>
             <div className={`${styles.alignRight} col-xs-12 col-sm-4 col-md-3`}>
-              <a className={`${styles.firstButton} uikit-btn`} href="#url">
+              <a className={`${styles.firstButton} uikit-btn`} href={`${rootPath}/create-brief`}>
                 Start a new brief
               </a>
             </div>

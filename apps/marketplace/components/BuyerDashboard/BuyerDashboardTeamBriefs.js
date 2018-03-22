@@ -6,6 +6,7 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
 import { BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS } from 'marketplace/constants/constants'
 import { statusConvert } from 'marketplace/components/helpers'
+import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardTeamBriefs extends Component {
@@ -20,9 +21,16 @@ class BuyerDashboardTeamBriefs extends Component {
 
     if (this.props.items.length === 0) {
       return (
-        <div className="row">
-          <div className="col-xs-12">
-            <p>There are no team briefs to show.</p>
+        <div>
+          <div className="row">
+            <div className="col-xs-12">
+              <p>There are no team briefs to show.</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-12">
+              <BuyerDashboardHelp />
+            </div>
           </div>
         </div>
       )
@@ -81,11 +89,7 @@ class BuyerDashboardTeamBriefs extends Component {
               )}
             </tbody>
           </table>
-          <h3>Need a hand?</h3>
-          <p>
-            <a href="/buyers-guide">Read the buyers guide</a> or <a href="/contact-us">contact us</a> - we can help you
-            write your brief.
-          </p>
+          <BuyerDashboardHelp />
         </div>
       </div>
     )
