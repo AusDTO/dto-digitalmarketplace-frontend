@@ -2,7 +2,7 @@ import React from 'react'
 
 const BuyerDashboardHelp = () =>
   <div>
-    <h3>Need a hand?</h3>
+    <h2>Need a hand?</h2>
     <p>
       <a href="/buyers-guide" rel="external">
         Read the buyers guide

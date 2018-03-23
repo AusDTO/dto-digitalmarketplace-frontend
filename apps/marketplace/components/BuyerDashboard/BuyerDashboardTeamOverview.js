@@ -34,17 +34,19 @@ class BuyerDashboardTeamOverview extends Component {
             If this list contains members who have left your organisation, please <a href="/contact-us">contact us</a>{' '}
             to have them removed
           </p>
-          <table className={`${styles.resultListing} col-xs-12`}>
+          <table className={`${styles.resultListing} ${styles.resultListingTeamOverview} col-xs-12`}>
             <thead>
               <tr className={styles.headingRow}>
-                <th scope="col">Name</th>
+                <th scope="col" className={styles.colName}>
+                  Name
+                </th>
                 <th scope="col">Email</th>
               </tr>
             </thead>
             <tbody>
               {this.props.items.map(item =>
                 <tr key={`item.${item.email}`}>
-                  <td>
+                  <td className={styles.colName}>
                     {item.name}
                   </td>
                   <td>
