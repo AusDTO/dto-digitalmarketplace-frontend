@@ -6,8 +6,8 @@ import {
   EMAIL_NOT_WHITELISTED,
   USER_NOT_CREATED,
   REGISTRATION_NOT_FOUND,
-  UNABLE_TO_SIGNUP,
-  ACCOUNT_TAKEN
+  ACCOUNT_TAKEN,
+  GENERAL_ERROR
 } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -19,7 +19,7 @@ export const handleSignupSubmit = model => dispatch => {
     ({
       403: EMAIL_NOT_WHITELISTED,
       409: ACCOUNT_TAKEN,
-      default: UNABLE_TO_SIGNUP
+      default: GENERAL_ERROR
     }[status])
 
   dispatch(sendingRequest(true))
@@ -29,7 +29,7 @@ export const handleSignupSubmit = model => dispatch => {
     data: JSON.stringify(model)
   }).then(response => {
     if (response.error) {
-      const errorMessage = getErrorMessage(response.status)
+      const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
       dispatch(setErrorMessage(errorMessage))
     } else {
       dispatch(handleSignupSuccess(response))
