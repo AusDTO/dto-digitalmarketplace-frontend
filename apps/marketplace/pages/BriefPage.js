@@ -86,6 +86,7 @@ class BriefPage extends Component {
 
   handleBriefNameSubmit = name => {
     this.props.handleBriefNameSubmit(name)
+    this.props.setInitial(this.props.model)
     window.scrollTo(0, 0)
   }
 
@@ -215,7 +216,8 @@ const mapResetDispatchToProps = dispatch => ({
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
   clearModel: model => dispatch(actions.reset(model)),
-  changeModel: (model, value) => dispatch(actions.change(model, value))
+  changeModel: (model, value) => dispatch(actions.change(model, value)),
+  setInitial: model => dispatch(actions.setInitial(model))
 })
 
 export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(BriefPage))
