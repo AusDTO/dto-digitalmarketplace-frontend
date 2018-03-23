@@ -284,7 +284,7 @@ module.exports = [{
           paths.sharedComponents,
           paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts',
-          paths.appNodeModules + '/@gov.au/link-list',
+          paths.appNodeModules + '/@gov.au/control-input',
         ],
         loader: 'babel'
       },
