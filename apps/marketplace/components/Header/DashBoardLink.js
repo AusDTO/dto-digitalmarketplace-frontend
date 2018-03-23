@@ -7,7 +7,7 @@ const DashBoardLink = props => {
   return (
     <span>
       {userType === 'buyer'
-        ? <a href="/buyers">Dashboard</a>
+        ? <a href="/2/buyer-dashboard">Dashboard</a>
         : userType === 'applicant'
           ? <a href="/sellers/application">Continue application</a>
           : <a href="/sellers">Dashboard</a>}
