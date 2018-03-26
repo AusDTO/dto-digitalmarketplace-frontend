@@ -127,7 +127,7 @@ table.resultListing td, table.resultListing th {
   }
 
   table.resultListing thead, table.resultListing .empty, table.resultListing .colId, table.resultListing .colAuthor, .hideSmall {
-    display: none !important;
+    display: none;
   }
 
   table.resultListing .colName {
