@@ -8,7 +8,7 @@ const BriefResponseSubmittedSummary = props =>
   <div>
     <h2 className="uikit-display-2">
       <Icon value="successful" color="#000000" size={24} className={styles.icon} />
-      <b>If you&apos;re successful</b>
+      <b>If you are shortlisted for evaluation</b>
     </h2>
     <p>
       The buyer will get in contact after <b>{format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')} </b>
@@ -25,13 +25,12 @@ const BriefResponseSubmittedSummary = props =>
 
     <h2 className="uikit-display-2">
       <Icon value="unsuccessful" color="#000000" size={24} className={styles.icon} />
-      <b>If not</b>
+      <b>If you are not shortlisted</b>
     </h2>
     <p>
-      If you’re unsuccessful the buyer has been asked to let you know. This may happen after the shortlisting but it’s
-      not unusual for this to happen after a contract has been awarded to the successful seller.
+      If you are not shortlisted, the buyer has been asked to let you know that you were unsuccessful. This may happen
+      after the contract has been awarded.{' '}
     </p>
-    <p>Best of luck!</p>
   </div>
 
 export default BriefResponseSubmittedSummary
