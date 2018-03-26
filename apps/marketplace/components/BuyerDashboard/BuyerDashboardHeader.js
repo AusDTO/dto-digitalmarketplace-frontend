@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { rootPath } from 'marketplace/routes'
 import styles from './BuyerDashboard.scss'
 
-class BuyerDashboardHeader extends Component {
+export class BuyerDashboardHeader extends Component {
   constructor(props) {
     super(props)
     this.handleMenuClick = this.handleMenuClick.bind(this)

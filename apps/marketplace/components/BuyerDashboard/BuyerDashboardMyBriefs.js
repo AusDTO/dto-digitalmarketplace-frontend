@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
@@ -10,7 +9,7 @@ import { rootPath } from 'marketplace/routes'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
 
-class BuyerDashboardMyBriefs extends Component {
+export class BuyerDashboardMyBriefs extends Component {
   componentDidMount() {
     this.props.loadData(BUYER_DASHBOARD_MYBRIEFS_SUCCESS, '/dashboard/my/briefs')
   }
@@ -110,7 +109,7 @@ class BuyerDashboardMyBriefs extends Component {
                       </a>}
                     {item.status === 'closed' &&
                       <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
-                        <strong>View Responses</strong>
+                        <strong>View responses</strong>
                       </a>}
                     {item.status === 'closed' &&
                       item.work_order === null &&
@@ -146,4 +145,4 @@ const mapDispatchToProps = dispatch => ({
   loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardMyBriefs))
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardMyBriefs)

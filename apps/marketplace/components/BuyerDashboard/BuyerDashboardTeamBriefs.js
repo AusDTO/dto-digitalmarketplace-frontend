@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
@@ -9,7 +8,7 @@ import { statusConvert } from 'marketplace/components/helpers'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
 
-class BuyerDashboardTeamBriefs extends Component {
+export class BuyerDashboardTeamBriefs extends Component {
   componentDidMount() {
     this.props.loadData(BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS, '/dashboard/team/briefs')
   }
@@ -119,4 +118,4 @@ const mapDispatchToProps = dispatch => ({
   loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamBriefs))
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamBriefs)

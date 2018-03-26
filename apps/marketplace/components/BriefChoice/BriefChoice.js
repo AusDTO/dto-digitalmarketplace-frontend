@@ -3,7 +3,7 @@ import { Radio } from '@gov.au/control-input/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import styles from './BriefChoice.scss'
 
-class BriefChoice extends Component {
+export class BriefChoice extends Component {
   constructor(props) {
     super(props)
     this.state = {
