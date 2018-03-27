@@ -15,12 +15,7 @@ export const BuyerDashboardHeader = props =>
         <div className="col-xs-12 col-sm-8 col-md-9">
           <ul className={styles.menu}>
             <li>
-              <NavLink
-                id="my-briefs-link"
-                to="/"
-                activeClassName={styles.active}
-                isActive={(match, location) => location.pathname === '/' || location.pathname === '/my-briefs'}
-              >
+              <NavLink id="my-briefs-link" to="/" activeClassName={styles.active} exact>
                 My briefs
               </NavLink>
             </li>

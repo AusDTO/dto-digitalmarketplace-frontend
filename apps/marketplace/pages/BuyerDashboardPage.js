@@ -13,8 +13,8 @@ const BuyerDashboardPage = props =>
       <article role="main">
         <Switch>
           <Route exact path="/" render={() => <BuyerDashboardMyBriefs {...props} />} />
-          <Route exact path="/team-briefs" render={() => <BuyerDashboardTeamBriefs {...props} />} />
-          <Route exact path="/team-overview" render={() => <BuyerDashboardTeamOverview {...props} />} />
+          <Route path="/team-briefs" render={() => <BuyerDashboardTeamBriefs {...props} />} />
+          <Route path="/team-overview" render={() => <BuyerDashboardTeamOverview {...props} />} />
         </Switch>
       </article>
     </div>
