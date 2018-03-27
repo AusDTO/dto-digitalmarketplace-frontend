@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
 import BuyerDashboardHeader from 'marketplace/components/BuyerDashboard/BuyerDashboardHeader'
 import BuyerDashboardMyBriefs from 'marketplace/components/BuyerDashboard/BuyerDashboardMyBriefs'
@@ -20,4 +21,8 @@ const BuyerDashboardPage = props =>
     </div>
   </BrowserRouter>
 
-export default withRouter(BuyerDashboardPage)
+const mapStateToProps = state => ({
+  organisation: state.dashboard.buyerDashboardOrganisation
+})
+
+export default withRouter(connect(mapStateToProps)(BuyerDashboardPage))

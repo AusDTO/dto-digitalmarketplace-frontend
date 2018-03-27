@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { withRouter, NavLink } from 'react-router-dom'
 import { rootPath } from 'marketplace/routes'
 import styles from './BuyerDashboard.scss'
@@ -40,8 +39,4 @@ export const BuyerDashboardHeader = props =>
     </div>
   </div>
 
-const mapStateToProps = state => ({
-  organisation: state.dashboard.buyerDashboardOrganisation
-})
-
-export default withRouter(connect(mapStateToProps)(BuyerDashboardHeader))
+export default withRouter(BuyerDashboardHeader)
