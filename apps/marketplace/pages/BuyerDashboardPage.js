@@ -1,30 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { withRouter, Switch, Route } from 'react-router-dom'
+import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
 import BuyerDashboardHeader from 'marketplace/components/BuyerDashboard/BuyerDashboardHeader'
 import BuyerDashboardMyBriefs from 'marketplace/components/BuyerDashboard/BuyerDashboardMyBriefs'
 import BuyerDashboardTeamBriefs from 'marketplace/components/BuyerDashboard/BuyerDashboardTeamBriefs'
 import BuyerDashboardTeamOverview from 'marketplace/components/BuyerDashboard/BuyerDashboardTeamOverview'
+import { rootPath } from 'marketplace/routes'
 
-const BuyerDashboardPage = props => {
-  const { match } = props
-
-  return (
+const BuyerDashboardPage = props =>
+  <BrowserRouter basename={`${rootPath}/buyer-dashboard`}>
     <div>
       <BuyerDashboardHeader {...props} />
       <article role="main">
         <Switch>
-          <Route exact path={match.url} render={() => <BuyerDashboardMyBriefs {...props} />} />
-          <Route exact path={`${match.url}/team-briefs`} render={() => <BuyerDashboardTeamBriefs {...props} />} />
-          <Route exact path={`${match.url}/team-overview`} render={() => <BuyerDashboardTeamOverview {...props} />} />
+          <Route exact path="/" render={() => <BuyerDashboardMyBriefs {...props} />} />
+          <Route exact path="/team-briefs" render={() => <BuyerDashboardTeamBriefs {...props} />} />
+          <Route exact path="/team-overview" render={() => <BuyerDashboardTeamOverview {...props} />} />
         </Switch>
       </article>
     </div>
-  )
-}
-
-BuyerDashboardPage.propTypes = {
-  match: PropTypes.object.isRequired
-}
+  </BrowserRouter>
 
 export default withRouter(BuyerDashboardPage)

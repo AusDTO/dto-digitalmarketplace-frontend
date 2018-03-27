@@ -1,81 +1,52 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter, NavLink } from 'react-router-dom'
 import { rootPath } from 'marketplace/routes'
 import styles from './BuyerDashboard.scss'
 
-export class BuyerDashboardHeader extends Component {
-  constructor(props) {
-    super(props)
-    this.handleMenuClick = this.handleMenuClick.bind(this)
-  }
-
-  handleMenuClick(e) {
-    e.preventDefault()
-    const targetEl = e.currentTarget
-    this.props.history.push(targetEl.getAttribute('href'))
-  }
-
-  render() {
-    return (
-      <div className={`${styles.header} row`}>
-        <div className="col-md-12 col-sm-12">
-          <small className={styles.organisation}>
-            {this.props.organisation}
-          </small>
-          <h1 className="uikit-display-5">Dashboard</h1>
-          <div className="row">
-            <div className="col-xs-12 col-sm-8 col-md-9">
-              <ul className={styles.menu}>
-                <li>
-                  <a
-                    id="my-briefs-link"
-                    href={`${rootPath}/buyer-dashboard`}
-                    className={this.props.location.pathname === `${rootPath}/buyer-dashboard` ? styles.active : ''}
-                    onClick={this.handleMenuClick}
-                  >
-                    My briefs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    id="team-briefs-link"
-                    href={`${rootPath}/buyer-dashboard/team-briefs`}
-                    className={
-                      this.props.location.pathname === `${rootPath}/buyer-dashboard/team-briefs` ? styles.active : ''
-                    }
-                    onClick={this.handleMenuClick}
-                  >
-                    Team briefs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    id="team-overview-link"
-                    href={`${rootPath}/buyer-dashboard/team-overview`}
-                    className={
-                      this.props.location.pathname === `${rootPath}/buyer-dashboard/team-overview` ? styles.active : ''
-                    }
-                    onClick={this.handleMenuClick}
-                  >
-                    Team overview
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className={`${styles.alignRight} col-xs-12 col-sm-4 col-md-3`}>
-              <a className={`${styles.firstButton} uikit-btn`} href={`${rootPath}/create-brief`}>
-                Start a new brief
-              </a>
-            </div>
-          </div>
+export const BuyerDashboardHeader = props =>
+  <div className={`${styles.header} row`}>
+    <div className="col-md-12 col-sm-12">
+      <small className={styles.organisation}>
+        {props.organisation}
+      </small>
+      <h1 className="uikit-display-5">Dashboard</h1>
+      <div className="row">
+        <div className="col-xs-12 col-sm-8 col-md-9">
+          <ul className={styles.menu}>
+            <li>
+              <NavLink
+                id="my-briefs-link"
+                to="/"
+                activeClassName={styles.active}
+                isActive={(match, location) => location.pathname === '/' || location.pathname === '/my-briefs'}
+              >
+                My briefs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink id="team-briefs-link" to="/team-briefs" activeClassName={styles.active}>
+                Team briefs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink id="team-overview-link" to="/team-overview" activeClassName={styles.active}>
+                Team overview
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <div className={`${styles.alignRight} col-xs-12 col-sm-4 col-md-3`}>
+          <a className={`${styles.firstButton} uikit-btn`} href={`${rootPath}/create-brief`}>
+            Start a new brief
+          </a>
         </div>
       </div>
-    )
-  }
-}
+    </div>
+  </div>
 
 const mapStateToProps = state => ({
   organisation: state.dashboard.buyerDashboardOrganisation
 })
 
-export default connect(mapStateToProps)(BuyerDashboardHeader)
+export default withRouter(connect(mapStateToProps)(BuyerDashboardHeader))
