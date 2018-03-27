@@ -1,32 +1,28 @@
-/* eslint-disable */
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter, Switch, Route } from 'react-router-dom'
-import BuyerDashboard from 'marketplace/components/BuyerDashboard/BuyerDashboard'
+import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
+import BuyerDashboardHeader from 'marketplace/components/BuyerDashboard/BuyerDashboardHeader'
+import BuyerDashboardMyBriefs from 'marketplace/components/BuyerDashboard/BuyerDashboardMyBriefs'
+import BuyerDashboardTeamBriefs from 'marketplace/components/BuyerDashboard/BuyerDashboardTeamBriefs'
+import BuyerDashboardTeamOverview from 'marketplace/components/BuyerDashboard/BuyerDashboardTeamOverview'
+import { rootPath } from 'marketplace/routes'
 
-class BuyerDashboardPage extends Component {
-  render() {
-    const { match } = this.props
+const BuyerDashboardPage = props =>
+  <BrowserRouter basename={`${rootPath}/buyer-dashboard`}>
+    <div>
+      <BuyerDashboardHeader {...props} />
+      <article role="main">
+        <Switch>
+          <Route exact path="/" render={() => <BuyerDashboardMyBriefs {...props} />} />
+          <Route path="/team-briefs" render={() => <BuyerDashboardTeamBriefs {...props} />} />
+          <Route path="/team-overview" render={() => <BuyerDashboardTeamOverview {...props} />} />
+        </Switch>
+      </article>
+    </div>
+  </BrowserRouter>
 
-    return (
-      <Switch>
-        <Route exact path={match.url} render={() => <BuyerDashboard {...this.props} />} />
-      </Switch>
-    )
-  }
-}
+const mapStateToProps = state => ({
+  organisation: state.dashboard.buyerDashboardOrganisation
+})
 
-BuyerDashboardPage.propTypes = {
-  match: PropTypes.object.isRequired
-}
-
-const mapStateToProps = state => {
-  return {}
-}
-
-const mapDispatchToProps = dispatch => {
-  return {}
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardPage))
+export default withRouter(connect(mapStateToProps)(BuyerDashboardPage))
