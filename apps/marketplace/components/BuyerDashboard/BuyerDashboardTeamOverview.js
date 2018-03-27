@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
-import { BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS } from 'marketplace/constants/constants'
+import { loadBuyerDashboardTeamOverview } from 'marketplace/actions/dashboardActions'
 import styles from './BuyerDashboard.scss'
 
 export class BuyerDashboardTeamOverview extends Component {
   componentDidMount() {
-    this.props.loadData(BUYER_DASHBOARD_TEAMOVERVIEW_SUCCESS, '/dashboard/team/overview')
+    this.props.loadData()
   }
 
   render() {
@@ -70,7 +69,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
+  loadData: () => dispatch(loadBuyerDashboardTeamOverview())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamOverview)

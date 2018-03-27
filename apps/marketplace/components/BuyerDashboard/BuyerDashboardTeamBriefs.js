@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBuyerDashboard } from 'marketplace/actions/dashboardActions'
-import { BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS } from 'marketplace/constants/constants'
+import { loadBuyerDashboardTeamBriefs } from 'marketplace/actions/dashboardActions'
 import { statusConvert } from 'marketplace/components/helpers'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
 
 export class BuyerDashboardTeamBriefs extends Component {
   componentDidMount() {
-    this.props.loadData(BUYER_DASHBOARD_TEAMBRIEFS_SUCCESS, '/dashboard/team/briefs')
+    this.props.loadData()
   }
 
   render() {
@@ -115,7 +114,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: (type, endpoint) => dispatch(loadBuyerDashboard(type, endpoint))
+  loadData: () => dispatch(loadBuyerDashboardTeamBriefs())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamBriefs)
