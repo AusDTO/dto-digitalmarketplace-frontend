@@ -45,6 +45,11 @@ class SellerCatalogue extends Component {
           <div className="col-xs-12 col-sm-12">
             <div className="uikit-display-6">Service Matrix</div>
             <div className="uikit-display-2">Select a location and service category to view pricing</div>
+            Click{' '}
+            <a rel="external" target="_blank" href="/static/media/documents/orams-locations.csv">
+              here
+            </a>{' '}
+            to download ORAMS location listing
           </div>
         </div>
         <div className="row">

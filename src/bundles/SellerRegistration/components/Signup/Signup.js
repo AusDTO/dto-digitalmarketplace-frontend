@@ -74,7 +74,7 @@ class Signup extends React.Component {
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    // { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
+    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
@@ -170,7 +170,7 @@ class Signup extends React.Component {
     const { forms, location, steps = {}, actions } = this.props;
 
     let { recruiter = 'no'} = forms.recruiterForm;
-    let filter = recruiter === 'yes' ? /\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
+    let filter = recruiter === 'yes' ? /\/pricing|\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
     this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
     let stepKeys = this.filteredSteps.map(s => s['id']);

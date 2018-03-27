@@ -50,10 +50,10 @@ class PricingForm extends BaseForm {
       <Layout>
         <header>
             <h1 tabIndex="-1">{title}</h1>
-            <p>Indicate the maximum daily rate you would normally charge for each service.</p>
+            <p>Indicate the maximum daily rate you normally charge for services.</p>
             <p>Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
             <p>We use this information to confirm your business offers value for money to government buyers.</p>
-            <p>Refer to our <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">Seller Pricing FAQs</a> for further information.</p>
+            <p>For more information, you can read our <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">Seller Pricing FAQs</a> and view the <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000080555-Daily-rates-trend-charts" rel="external">daily rates trend charts</a>.</p>
         </header>
         <article role="main">
           <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -76,9 +76,9 @@ class PricingForm extends BaseForm {
                 <StatefulError
                   model={`${model}.pricing.${service}.maxPrice`}
                   messages={{
-                    required: `You must provide a max price for ${service}. `,
-                    notNegativeNumber: `Price can't have negative numbers. `,
-                    onlyNumbers: `Prices must be numeric. `
+                    required: `You must provide a max price for ${service}.`,
+                    notNegativeNumber: `Price can't have negative number for ${service}.`,
+                    onlyNumbers: `Price must be numeric for ${service}.`
                   }}
                   id={`${kebabCase(service)}-maxprice`}
                 />

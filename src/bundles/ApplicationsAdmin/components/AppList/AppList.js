@@ -193,6 +193,7 @@ const mapStateToProps = ({applications, meta, onRejectClick, onAcceptClick, onKe
 };
 
 const mapDispatchToProps = (dispatch) => {
+  var searchTimeout;
   return {
     onAcceptClick: (id) => {
       dispatch(convertApplicationToSeller(id))
@@ -201,7 +202,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(rejectApplication(id))
     },
     onKeywordChange: (event) => {
-      dispatch(searchApplications(event.target.value))
+      if (searchTimeout) {
+        clearTimeout(searchTimeout);
+        searchTimeout = 0;
+      }
+      let callback = (value) => {
+        dispatch(searchApplications(value));
+      }
+      searchTimeout = setTimeout(callback.bind(null, event.target.value), 1000);
     },
     onDeleteClick: (id) => {
       dispatch(deleteApplication(id))
