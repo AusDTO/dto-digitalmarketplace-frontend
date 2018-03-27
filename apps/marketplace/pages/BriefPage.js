@@ -102,7 +102,7 @@ class BriefPage extends Component {
     }
 
     return (
-      <div className="brief-page" role="region" aria-live="polite">
+      <div className="brief-page">
         {currentlySending
           ? <LoadingIndicatorFullPage />
           : <Switch>
