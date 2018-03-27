@@ -12,7 +12,7 @@ import styles from './BriefResponseSubmitted.scss'
 const BriefResponseSubmitted = props =>
   <div className="row">
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
-      <div className="col-sm-push-2 col-sm-8 col-xs-12">
+      <div className="col-sm-push-2 col-sm-8 col-xs-12" role="region" aria-live="polite">
         <article role="main">
           <PageAlert as="success" setFocus={props.setFocus}>
             <h1 className="uikit-display-3">
