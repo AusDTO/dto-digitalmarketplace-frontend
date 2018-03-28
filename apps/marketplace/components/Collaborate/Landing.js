@@ -116,6 +116,17 @@ const Landing = () =>
                       <div>
                         {val.applicant}, {val.location}
                       </div>
+                      <div>
+                        <br />
+                        {val.description.split('\n').map(function (item, key) {
+                          return (
+                            <span key={key}>
+                              {item}
+                              <br />
+                            </span>
+                          )
+                        })}
+                      </div>
                       <br />
                       <p>
                         <b>Grant Amount:</b> {val.grant}
