@@ -79,7 +79,7 @@ page.open('https://cities.infrastructure.gov.au/smart-cities-program', function 
                     record = null;
                 }
             }
-            records = records.sort(function(a, b) {
+            return records.sort(function(a, b) {
                 if (a.title < b.title) {
                     return -1;
                 }
@@ -88,7 +88,6 @@ page.open('https://cities.infrastructure.gov.au/smart-cities-program', function 
                 }
                 return 0;
             })
-            return records;
         });
         console.log(JSON.stringify(ua, undefined, 2));
     }
