@@ -41,7 +41,8 @@ test('Displays list of responses on dashboard', () => {
 
   const component = mount(<SellerDashboard {...props} />)
 
-  expect(component.find('div.priceRow').length).toEqual(3)
+  // 4 because 1 is a header row
+  expect(component.find('table tr').length).toEqual(4)
 })
 
 test('Displays empty message when no responses', () => {

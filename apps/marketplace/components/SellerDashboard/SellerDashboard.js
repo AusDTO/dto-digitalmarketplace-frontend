@@ -28,65 +28,69 @@ const SellerDashboard = props =>
       </div>
     </div>
     {props.items.length > 0 &&
-      <article role="main">
-        <div className={styles.headingRow}>
-          <div className={`${styles.headingTitles} row`}>
-            <div className={`${styles.alignCenter} col-md-1 col-sm-1`} role="columnheader">
-              ID
-            </div>
-            <div className="col-md-4 col-sm-4" role="columnheader">
-              Name
-            </div>
-            <div className="col-md-3 col-sm-3" role="columnheader">
-              Canberra closing time
-            </div>
-            <div className="col-md-2 col-sm-2" role="columnheader">
-              Status
-            </div>
-            <div className="col-md-2 col-sm-2" role="columnheader">
-              Action
-            </div>
+      <div className="row">
+        <div className="col-xs-12">
+          <table className={`${styles.resultListing} col-xs-12`}>
+            <thead>
+              <tr className={styles.headingRow}>
+                <th scope="col" className={styles.colId}>
+                  ID
+                </th>
+                <th scope="col" className={styles.colName}>
+                  Name
+                </th>
+                <th scope="col" className={styles.colClosing}>
+                  Canberra closing time
+                </th>
+                <th scope="col" className={styles.colStatus}>
+                  Status
+                </th>
+                <th scope="col" className={styles.colAction}>
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.items.map(item =>
+                <tr key={`item.${item.id}`}>
+                  <td className={styles.colId}>
+                    {item.id}
+                  </td>
+                  <td className={styles.colName}>
+                    <a href={`/digital-marketplace/opportunities/${item.id}`}>
+                      {item.name}
+                    </a>
+                  </td>
+                  <td>
+                    <ClosedDate date={item.closed_at} />
+                  </td>
+                  <td className={styles.colStatus}>
+                    <div className={`${styles.badge}`}>
+                      {item.is_downloaded ? 'Buyer Reviewing' : 'Submitted'}
+                    </div>
+                  </td>
+                  <td className={styles.colAction}>
+                    <a
+                      href={
+                        item.framework === 'Digital professionals'
+                          ? 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011261887#afterapplying'
+                          : 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011258727-Invitation-for-proposals'
+                      }
+                    >
+                      <strong>View next steps</strong>
+                    </a>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+          <div className={styles.disclaimer}>
+            <small>
+              Showing opportunities posted from January 1st 2018. These will update as buyers provide information.
+            </small>
           </div>
         </div>
-        {props.items.map((item, i) =>
-          <div key={`item.${item.id}`} className={i % 2 ? `${styles.priceRow} ${styles.greyRow}` : styles.priceRow}>
-            <div className="row">
-              <div className={`${styles.alignCenter} ${styles.grids} col-md-1 col-sm-1`}>
-                {item.id}
-              </div>
-              <div className={`${styles.grids} col-md-4 col-sm-4`}>
-                <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                  {item.name}
-                </a>
-              </div>
-              <div className={`${styles.grids} col-md-3 col-sm-3`}>
-                <ClosedDate date={item.closed_at} />
-              </div>
-              <div className={`${styles.grids} col-md-2 col-sm-2`}>
-                <div className={styles.badge}>
-                  {item.is_downloaded ? 'Buyer Reviewing' : 'Submitted'}
-                </div>
-              </div>
-              <div className={`${styles.grids} col-md-2 col-sm-2`}>
-                <a
-                  href={
-                    item.framework === 'Digital professionals'
-                      ? 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011261887#afterapplying'
-                      : 'https://marketplace1.zendesk.com/hc/en-gb/articles/115011258727-Invitation-for-proposals'
-                  }
-                >
-                  <strong>View next steps</strong>
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
-        <div className={styles.disclaimer}>
-          <small>
-            Showing opportunities posted from January 1st 2018. These will update as buyers provide information.
-          </small>
-        </div>
-      </article>}
+      </div>}
   </div>
 
 export default SellerDashboard
