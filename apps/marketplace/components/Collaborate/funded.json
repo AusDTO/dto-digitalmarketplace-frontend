@@ -5,7 +5,7 @@
     "description": "The project will use smart data capture technologies to generate a 3D model of the Moreland City Council area. Tools like virtual reality and augmented reality will be used to create visualisations of major council infrastructure projects, benefiting the community and council by increasing the opportunity for community consultation in investment decisions.",
     "grant": "$396,900",
     "location": "Moreland City Council area, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "3D City Planning of Moreland Council",
     "total": "$836,812"
   },
@@ -45,7 +45,7 @@
     "description": "The project will engage local manufacturing companies to deliver LED lighting, environmental sensing, digital signage, public address system, smart parking and free Wi-Fi. This will benefit the community by encouraging local industry growth in digital services. Data analytics associated with technology will provide evidence based decisions for planning.",
     "grant": "$415,000",
     "location": "Geelong, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Clever and Creative Geelong",
     "total": "$996,000"
   },
@@ -85,7 +85,7 @@
     "description": "This project will invest in a new visual interactive cloud system to improve the user experience of the Census of Land Use & Employment survey data. By making data analysis easy for non-technical users it will encourage the use of the data for evidence-based decisions for local government.",
     "grant": "$350,000",
     "location": "Melbourne, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Delivering accessible and improved processes and platforms for CLUE",
     "total": "$700,000"
   },
@@ -155,7 +155,7 @@
     "description": "This project will install a sensor network collecting data on use of public spaces and will build an interactive platform to allow for live community feedback on facilities. This will enable improved management of services by providing evidence to target allocation of scarce resources.",
     "grant": "$400,000",
     "location": "Brimbank City, Kingston City, Port Phillip City, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Interactive city management in Melbourne",
     "total": "$871,045"
   },
@@ -165,7 +165,7 @@
     "description": "This project will install a sensor network in the Latrobe Valley to collect real time data on environmental conditions. This will benefit the emergency response sector by allowing the early detection of variables that pose an emergency risk. In addition it will benefit the agriculture and forestry sectors by facilitating the efficient allocation of resources such as water based on real time environmental data.",
     "grant": "$731,170",
     "location": "Morwell - Latrobe Valley, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Latrobe Valley Sensor Network",
     "total": "$1,462,340"
   },
@@ -235,7 +235,7 @@
     "description": "A platform will be developed that uses satellite surface temperature data to enable pedestrians and cyclists to map low temperature routes on hot days. This will benefit the community by facilitating active travel despite temperature variables and will benefit the council by providing information on frequently used routes to invest urban greening efforts.",
     "grant": "$118,235",
     "location": "Bendigo, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Smart Active Transport - Urban Heat Maps for Bendigo",
     "total": "$248,235"
   },
@@ -275,7 +275,7 @@
     "description": "This project will deliver enabling technologies (network, platform, Wi-Fi) that allow smart city solutions (smart lighting, security, sensors) to be implemented. This technology will benefit the community by building local digital capacity, increasing city connectivity and providing data to support decision making and management.",
     "grant": "$150,000",
     "location": "Southern Grampians Shire, Hamilton, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Smart Community Services for the Southern Grampians",
     "total": "$300,000"
   },
@@ -335,7 +335,7 @@
     "description": "This project will develop a mixed reality platform using 3D modelling, holographic images and virtual reality, enabling citizens and urban planners to view urban structures overlaid over existing physical environments. This will benefit the community by making government data and information more easily understood and will benefit local governments by increasing stakeholder engagement in urban planning.",
     "grant": "$294,820",
     "location": "Werribee, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Smart Planning, Werribee",
     "total": "$594,820"
   },
@@ -355,7 +355,7 @@
     "description": "This project will use new online data and spatial analytics planning tools to identify residential precincts with high redevelopment potential. This will benefit local communities by facilitating partnerships between local communities and the development sector to improve housing supply, affordability and diversity.",
     "grant": "$225,000",
     "location": "City of Maroondah, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Smart Redevelopment, Victoria",
     "total": "$450,000"
   },
@@ -395,7 +395,7 @@
     "description": "This project plans to use mobile phone location data to understand the use of Atherstone community facilities. This information will benefit the community by identifying the need for future infrastructure investments for recreational areas and transport facilities.",
     "grant": "$100,000",
     "location": "Melton, VIC",
-    "state": "tas",
+    "state": "vic",
     "title": "Smart Transport and Precinct Planning, Atherstone",
     "total": "$200,000"
   },

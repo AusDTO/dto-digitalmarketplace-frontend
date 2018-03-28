@@ -55,36 +55,24 @@ page.open('https://cities.infrastructure.gov.au/smart-cities-program', function 
                         case 'Western Australia':
                             state = "wa";
                             break;
+                        case 'Victoria':
+                            state = "vic";
+                            break;
+                        default:
+                            state = 'State not found';
+                            break;
                     }
                     states.push(stateHeader.innerText);
                 } else if (projectData && projectData.length == 6) {
                     record = {
-                        state: state
+                        state: state,
+                        title: projectData[0].innerText.trim(),
+                        applicant: projectData[1].innerText.trim(),
+                        location: projectData[2].innerText.trim(),
+                        grant: projectData[3].innerText.trim(),
+                        contribution: projectData[4].innerText.trim(),
+                        total: projectData[5].innerText.trim(),
                     };
-                    for (var j = 0, column; j < projectData.length; j++) {
-                        column = projectData[j];
-                        text = column.innerText.trim()
-                        switch (j) {
-                            case 0:
-                                record.title = text;
-                                break;
-                            case 1:
-                                record.applicant = text;
-                                break;
-                            case 2:
-                                record.location = text;
-                                break;
-                            case 3:
-                                record.grant = text;
-                                break;
-                            case 4:
-                                record.contribution = text;
-                                break;
-                            case 5:
-                                record.total = text;
-                                break;
-                        }
-                    }
                 } else if (projectDescription && record) {
                     record.description = projectDescription.innerText.trim();
                     records.push(record);
