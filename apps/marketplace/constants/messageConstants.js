@@ -10,5 +10,5 @@ export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error tryi
 export const LOGIN_FAILED =
   "Make sure you've entered the right email address and password. Accounts are locked after 5 failed attempts."
 export const EMAIL_NOT_WHITELISTED =
-  'Your email domain has not been approved for use with the Digital Marketplace. ' +
-  'Please request your account from marketplace@digital.gov.au.'
+  'Your email domain is not registered for use on Digital Marketplace. ' +
+  'Please request approval from marketplace@digital.gov.au'
