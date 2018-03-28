@@ -160,14 +160,6 @@ const SignupForm = props => {
                       type="email"
                       htmlFor="email_address"
                       label="Email address"
-                      description={
-                        isBuyer
-                          ? <span>
-                              If your email is different, request your account from{' '}
-                              <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.
-                            </span>
-                          : ''
-                      }
                       validators={emailValidators}
                       messages={emailErrorMessages}
                     />
