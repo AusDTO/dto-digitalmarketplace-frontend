@@ -118,14 +118,12 @@ const Landing = () =>
                       </div>
                       <div>
                         <br />
-                        {val.description.split('\n').map(function (item, key) {
-                          return (
-                            <span key={key}>
-                              {item}
-                              <br />
-                            </span>
-                          )
-                        })}
+                        {val.description.split('\n').map(item =>
+                          <span>
+                            {item}
+                            <br />
+                          </span>
+                        )}
                       </div>
                       <br />
                       <p>
