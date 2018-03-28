@@ -8,7 +8,7 @@ import BriefSpecialistResponseForm from './BriefSpecialistResponseForm'
 Enzyme.configure({ adapter: new Adapter() })
 
 const store = configureStore()
-  
+
 describe('BriefSpecialistResponseForm', () => {
   test('has initial state when no responses', () => {
     const tree = mount(
@@ -37,11 +37,7 @@ describe('BriefSpecialistResponseForm', () => {
   test('displays questions when specialist name entered', () => {
     const tree = mount(
       <Provider store={store}>
-        <BriefSpecialistResponseForm
-          specialistName="John Doe"
-          specialistNumber="1"
-          app={{supplierCode: 1}}
-        />
+        <BriefSpecialistResponseForm specialistName="John Doe" specialistNumber="1" app={{ supplierCode: 1 }} />
       </Provider>
     )
 
@@ -54,11 +50,7 @@ describe('BriefSpecialistResponseForm', () => {
   test('does not display add another button on last specialist', () => {
     const tree = mount(
       <Provider store={store}>
-        <BriefSpecialistResponseForm
-          specialistName="John Doe"
-          specialistNumber="3"
-          app={{supplierCode: 1}}
-        />
+        <BriefSpecialistResponseForm specialistName="John Doe" specialistNumber="3" app={{ supplierCode: 1 }} />
       </Provider>
     )
 
