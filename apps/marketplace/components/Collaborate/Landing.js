@@ -25,7 +25,7 @@ const Landing = () =>
 
       <div className={styles.mapOverlay}>
         <div>
-          <strong className={styles.pop}>$28.5m</strong>
+          <strong className={styles.pop}>$27.7m</strong>
           <article>allocated for Round One</article>
         </div>
         <div>
@@ -35,7 +35,7 @@ const Landing = () =>
         <div>
           <strong className={styles.pop}>
             <font color="#870f48">
-              {52}
+              {49}
             </font>
           </strong>{' '}
           <article>funded projects</article>
