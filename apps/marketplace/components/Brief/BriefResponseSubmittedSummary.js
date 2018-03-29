@@ -1,22 +1,23 @@
 import React from 'react'
 import format from 'date-fns/format'
 import Icon from 'shared/Icon'
+import PropTypes from 'prop-types'
 
 import styles from './BriefResponseSubmitted.scss'
 
-const BriefResponseSubmittedSummary = props =>
+const BriefResponseSubmittedSummary = ({ brief }) =>
   <div>
     <h2 className="uikit-display-2">
       <Icon value="successful" color="#000000" size={24} className={styles.icon} />
       <b>If you are shortlisted for evaluation</b>
     </h2>
     <p>
-      The buyer will get in contact after <b>{format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')} </b>
-      {props.brief && props.brief.evaluationType && <span> to evaluate you based on:</span>}
+      The buyer will get in contact after <b>{format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')} </b>
+      {brief && brief.evaluationType && <span> to evaluate you based on:</span>}
     </p>
-    {props.brief.evaluationType &&
+    {brief.evaluationType &&
       <ul>
-        {props.brief.evaluationType.map(evaluationType =>
+        {brief.evaluationType.map(evaluationType =>
           <li key={evaluationType}>
             {evaluationType}
           </li>
@@ -32,5 +33,13 @@ const BriefResponseSubmittedSummary = props =>
       after the contract has been awarded.{' '}
     </p>
   </div>
+
+BriefResponseSubmittedSummary.defaultProps = {
+  brief: {}
+}
+
+BriefResponseSubmittedSummary.propTypes = {
+  brief: PropTypes.object.isRequired
+}
 
 export default BriefResponseSubmittedSummary

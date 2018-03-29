@@ -15,7 +15,7 @@ describe('BriefSpecialistResponseForm', () => {
       <Provider store={store}>
         <BriefSpecialistResponseForm
           brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018' }}
-          specialistNumber="1"
+          specialistNumber={1}
         />
       </Provider>
     )
@@ -37,7 +37,7 @@ describe('BriefSpecialistResponseForm', () => {
   test('displays questions when specialist name entered', () => {
     const tree = mount(
       <Provider store={store}>
-        <BriefSpecialistResponseForm specialistName="John Doe" specialistNumber="1" app={{ supplierCode: 1 }} />
+        <BriefSpecialistResponseForm specialistName="John Doe" specialistNumber={1} app={{ supplierCode: 1 }} />
       </Provider>
     )
 
@@ -50,7 +50,7 @@ describe('BriefSpecialistResponseForm', () => {
   test('does not display add another button on last specialist', () => {
     const tree = mount(
       <Provider store={store}>
-        <BriefSpecialistResponseForm specialistName="John Doe" specialistNumber="3" app={{ supplierCode: 1 }} />
+        <BriefSpecialistResponseForm specialistName="John Doe" specialistNumber={3} app={{ supplierCode: 1 }} />
       </Provider>
     )
 
