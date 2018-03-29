@@ -260,16 +260,6 @@
     "total": "$2,628,988"
   },
   {
-    "applicant": "The University of New South Wales",
-    "contribution": "$360,799",
-    "description": "This project will install sensors on street furniture and use behaviour and social media mapping to record real time use of urban furnishings in public spaces. This will benefit local government by allowing evidence based management of public space and infrastructure.",
-    "grant": "$296,943",
-    "location": "Georges City Council, NSW",
-    "state": "nsw",
-    "title": "Smart Community Infrastructure, Sydney",
-    "total": "$657,742"
-  },
-  {
     "applicant": "Southern Grampians Shire Council",
     "contribution": "$150,000",
     "description": "This project will deliver enabling technologies (network, platform, Wi-Fi) that allow smart city solutions (smart lighting, security, sensors) to be implemented. This technology will benefit the community by building local digital capacity, increasing city connectivity and providing data to support decision making and management.",
@@ -368,6 +358,16 @@
     "state": "nsw",
     "title": "Smart Regional City, Queanbeyan",
     "total": "$904,336"
+  },
+  {
+    "applicant": "The University of New South Wales",
+    "contribution": "$360,799",
+    "description": "This project will install sensors on street furniture and use behaviour and social media mapping to record real time use of urban furnishings in public spaces. This will benefit local government by allowing evidence based management of public space and infrastructure.",
+    "grant": "$296,943",
+    "location": "Georges River Council, NSW",
+    "state": "nsw",
+    "title": "Smart Social Spaces, Georges River Council",
+    "total": "$657,742"
   },
   {
     "applicant": "Byron Shire Council",
