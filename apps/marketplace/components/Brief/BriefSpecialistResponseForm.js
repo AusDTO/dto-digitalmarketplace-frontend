@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
@@ -12,7 +11,6 @@ import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
 import Textarea from 'shared/form/Textarea'
-import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 
 import styles from './BriefSpecialistResponseForm.scss'
@@ -23,7 +21,6 @@ const BriefSpecialistResponseForm = ({
   briefResponses,
   briefResponseSuccess,
   app,
-  currentlySending,
   submitClicked,
   handleSubmit,
   setFocus,
@@ -66,13 +63,7 @@ const BriefSpecialistResponseForm = ({
                     Specialist {specialistNumber}
                   </strong>
                 </div>
-                <Form
-                  model={model}
-                  id="briefName"
-                  onSubmit={data => {
-                    return handleNameSubmit(data.specialistName)
-                  }}
-                >
+                <Form model={model} id="briefName" onSubmit={data => handleNameSubmit(data.specialistName)}>
                   <Textfield
                     model={`${model}.specialistName`}
                     name="specialistName"
@@ -153,7 +144,7 @@ const BriefSpecialistResponseForm = ({
                     {brief.essentialRequirements &&
                       brief.essentialRequirements.map((requirement, i) =>
                         <Textarea
-                          key={`essentialRequirement.${i}`}
+                          key={requirement}
                           model={`${model}.essentialRequirements[${i}]`}
                           name={`essentialRequirement.${i}`}
                           id={`essentialRequirement.${i}`}
@@ -169,7 +160,7 @@ const BriefSpecialistResponseForm = ({
                     {brief.niceToHaveRequirements &&
                       brief.niceToHaveRequirements.map((requirement, i) =>
                         <Textarea
-                          key={`niceToHaveRequirement.${i}`}
+                          key={requirement}
                           model={`${model}.niceToHaveRequirements[${i}]`}
                           name={`niceToHaveRequirement.${i}`}
                           id={`niceToHaveRequirement.${i}`}
@@ -220,24 +211,37 @@ const BriefSpecialistResponseForm = ({
   </div>
 
 BriefSpecialistResponseForm.defaultProps = {
+  model: '',
+  brief: {},
+  briefResponses: [],
+  briefResponseSuccess: false,
+  app: {},
+  addAnotherSpecialist: false,
+  specialistName: null,
+  setFocus: null,
+  match: null,
   submitClicked: null,
   handleSubmit: null,
   handleNameSubmit: null,
-  specialistName: null,
-  briefResponses: [],
-  model: '',
-  brief: {}
+  specialistNumber: null,
+  addAnotherClicked: null
 }
 
 BriefSpecialistResponseForm.propTypes = {
-  brief: PropTypes.shape({
-    briefResponseSuccess: PropTypes.bool
-  }).isRequired,
   model: PropTypes.string.isRequired,
+  brief: PropTypes.object.isRequired,
   briefResponses: PropTypes.array.isRequired,
+  briefResponseSuccess: PropTypes.bool,
+  app: PropTypes.object.isRequired,
+  setFocus: PropTypes.func,
+  match: PropTypes.object,
   submitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  handleNameSubmit: PropTypes.func
+  handleNameSubmit: PropTypes.func,
+  specialistName: PropTypes.string,
+  specialistNumber: PropTypes.number,
+  addAnotherClicked: PropTypes.func,
+  addAnotherSpecialist: PropTypes.bool.isRequired
 }
 
 export default BriefSpecialistResponseForm
