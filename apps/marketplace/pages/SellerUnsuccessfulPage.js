@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
+import { withRouter, Switch, Route } from 'react-router-dom'
 import SellerUnsuccessfulNav from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulNav'
 import SellerUnsuccessfulIntroduction from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulIntroduction'
 import SellerUnsuccessfulSelect from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulSelect'
 import SellerUnsuccessfulReview from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulReview'
 import { rootPath } from 'marketplace/routes'
 
-export class SellerUnsuccessfulPage extends Component {
+class SellerUnsuccessfulPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
       stages: {
         introduction: 'todo',
         select: 'todo',
-        review: 'todo', 
+        review: 'todo'
       },
       sellers: [
         {
@@ -32,7 +31,7 @@ export class SellerUnsuccessfulPage extends Component {
         {
           id: 4,
           name: 'Test seller 4'
-        },
+        }
       ],
       selectedSellers: []
     }
@@ -40,23 +39,24 @@ export class SellerUnsuccessfulPage extends Component {
     this.moveToNextStage = this.moveToNextStage.bind(this)
     this.selectSeller = this.selectSeller.bind(this)
     this.deselectSeller = this.deselectSeller.bind(this)
-    this.hasSelectedSeller = this.hasSelectedSeller.bind(this)
+    this.hasSelectedASeller = this.hasSelectedASeller.bind(this)
   }
 
   setStageStatus(stage, status) {
-    let newStagesState = this.state.stages
+    const newStagesState = { ...this.state.stages }
 
-    // there can only be one "doing" stage
+    // there can only be one "doing" stage, so change any existing "doing" to "todo"
     if (status === 'doing') {
-      for (let status in this.state.stages) {
-        if (this.state.stages[status] === 'doing') {
-          newStagesState[status] = 'todo'
+      Object.keys(this.state.stages).map(stateStage => {
+        if (this.state.stages[stateStage] === 'doing') {
+          newStagesState[stateStage] = 'todo'
         }
-      }
+        return true
+      })
     }
 
     newStagesState[stage] = status
-    this.setState({stages: newStagesState})
+    this.setState({ stages: newStagesState })
   }
 
   moveToNextStage(currentStage) {
@@ -69,12 +69,13 @@ export class SellerUnsuccessfulPage extends Component {
   }
 
   selectSeller(id) {
-    let newSelectedSellers = this.state.selectedSellers.slice()
+    const newSelectedSellers = this.state.selectedSellers.slice()
     let newSeller = {}
-    this.state.sellers.map((seller) => {
-      if (seller.id === parseInt(id)) {
+    this.state.sellers.map(seller => {
+      if (seller.id === parseInt(id, 10)) {
         newSeller = seller
       }
+      return true
     })
     newSelectedSellers.push(newSeller)
     this.setState({
@@ -84,26 +85,22 @@ export class SellerUnsuccessfulPage extends Component {
 
   deselectSeller(id) {
     let newSelectedSellers = this.state.selectedSellers.slice()
-    newSelectedSellers = newSelectedSellers.filter(seller => seller.id !== parseInt(id))
+    newSelectedSellers = newSelectedSellers.filter(seller => seller.id !== parseInt(id, 10))
     this.setState({
       selectedSellers: newSelectedSellers
     })
   }
 
-  hasSelectedSeller() {
+  hasSelectedASeller() {
     return this.state.selectedSellers.length > 0
   }
-  
+
   render() {
     return (
       <div className="row">
         <article role="main">
           <div className="col-sm-4">
-            <SellerUnsuccessfulNav
-              {...this.props}
-              {...this.state.stages}
-              setStageStatus={this.setStageStatus}
-            />
+            <SellerUnsuccessfulNav {...this.props} {...this.state} setStageStatus={this.setStageStatus} />
           </div>
           <div className="col-sm-8">
             <Switch>
@@ -114,8 +111,7 @@ export class SellerUnsuccessfulPage extends Component {
                   <SellerUnsuccessfulIntroduction
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
-                  />
-                }
+                  />}
               />
               <Route
                 path={`${rootPath}/seller/unsuccessful/select`}
@@ -126,21 +122,19 @@ export class SellerUnsuccessfulPage extends Component {
                     setStageStatus={this.setStageStatus}
                     selectSeller={this.selectSeller}
                     deselectSeller={this.deselectSeller}
-                    hasSelectedSeller={this.hasSelectedSeller}
+                    hasSelectedASeller={this.hasSelectedASeller}
                     moveToNextStage={this.moveToNextStage}
-                  />
-                }
+                  />}
               />
               <Route
                 path={`${rootPath}/seller/unsuccessful/review`}
                 render={() =>
                   <SellerUnsuccessfulReview
                     selectedSellers={this.state.selectedSellers}
-                    hasSelectedSeller={this.hasSelectedSeller}
+                    hasSelectedASeller={this.hasSelectedASeller}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
-                  />
-                }
+                  />}
               />
             </Switch>
           </div>

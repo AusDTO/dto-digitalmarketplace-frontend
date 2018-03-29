@@ -10,7 +10,7 @@ export class SellerUnsuccessfulNav extends Component {
   }
 
   handleStatusChange(stage, status) {
-    if (this.props[stage] !== 'done') {
+    if (this.props.stages[stage] !== 'done') {
       this.props.setStageStatus(stage, status)
     }
   }
@@ -20,8 +20,8 @@ export class SellerUnsuccessfulNav extends Component {
       {
         link: `${rootPath}/seller/unsuccessful`,
         text: 'Introduction',
-        status: this.props.introduction,
-        onClick: (e) => {
+        status: this.props.stages.introduction,
+        onClick: e => {
           this.handleClick(e)
           this.handleStatusChange('introduction', 'doing')
         }
@@ -29,8 +29,8 @@ export class SellerUnsuccessfulNav extends Component {
       {
         link: `${rootPath}/seller/unsuccessful/select`,
         text: 'Select sellers',
-        status: this.props.select,
-        onClick: (e) => {
+        status: this.props.stages.select,
+        onClick: e => {
           this.handleClick(e)
           this.handleStatusChange('select', 'doing')
         }
@@ -38,8 +38,8 @@ export class SellerUnsuccessfulNav extends Component {
       {
         link: `${rootPath}/seller/unsuccessful/review`,
         text: 'Review email',
-        status: this.props.review,
-        onClick: (e) => {
+        status: this.props.stages.review,
+        onClick: e => {
           this.handleClick(e)
           this.handleStatusChange('review', 'doing')
         }
@@ -49,7 +49,7 @@ export class SellerUnsuccessfulNav extends Component {
     return (
       <div className="row">
         <div className="col-xs-12">
-          <ProgressIndicator items={items}/>
+          <ProgressIndicator items={items} />
         </div>
       </div>
     )

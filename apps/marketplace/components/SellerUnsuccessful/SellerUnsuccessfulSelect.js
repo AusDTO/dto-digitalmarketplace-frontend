@@ -15,11 +15,9 @@ export class SellerUnsuccessfulSelect extends Component {
 
   handleContinueClick(e) {
     e.preventDefault()
-    if (this.props.hasSelectedSeller()) {
+    if (this.props.hasSelectedASeller()) {
       this.props.setStageStatus('select', 'done')
       this.props.moveToNextStage('select')
-    } else {
-
     }
   }
 
@@ -36,9 +34,10 @@ export class SellerUnsuccessfulSelect extends Component {
   isSelected(id) {
     let selected = false
     this.props.selectedSellers.map(seller => {
-      if (seller.id === parseInt(id)) {
+      if (seller.id === parseInt(id, 10)) {
         selected = true
       }
+      return true
     })
     return selected
   }

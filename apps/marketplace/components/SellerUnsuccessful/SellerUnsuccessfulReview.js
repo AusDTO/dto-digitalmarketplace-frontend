@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from '@gov.au/buttons/lib/js/react.js'
 
-export class SellerUnsuccessfulIntroduction extends Component {
+export class SellerUnsuccessfulReview extends Component {
   constructor(props) {
     super(props)
     this.handleContinueClick = this.handleContinueClick.bind(this)
@@ -18,7 +18,7 @@ export class SellerUnsuccessfulIntroduction extends Component {
   }
 
   render() {
-    if (!this.props.hasSelectedSeller()) {
+    if (!this.props.hasSelectedASeller()) {
       return (
         <div className="row">
           <div className="col-xs-12">
@@ -38,7 +38,9 @@ export class SellerUnsuccessfulIntroduction extends Component {
           </p>
           <ul>
             {this.props.selectedSellers.map(seller =>
-              <li key={seller.id}>{seller.name}</li>
+              <li key={seller.id}>
+                {seller.name}
+              </li>
             )}
           </ul>
           <p>
@@ -50,4 +52,4 @@ export class SellerUnsuccessfulIntroduction extends Component {
   }
 }
 
-export default SellerUnsuccessfulIntroduction
+export default SellerUnsuccessfulReview
