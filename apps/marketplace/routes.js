@@ -11,7 +11,7 @@ import CollaboratePage from './pages/CollaboratePage'
 import SellerDashboardPage from './pages/SellerDashboardPage'
 import BuyerDashboardPage from './pages/BuyerDashboardPage'
 import BriefChoicePage from './pages/BriefChoicePage'
-import SellerUnsuccessful from './pages/SellerUnsuccessful'
+import SellerUnsuccessfulPage from './pages/SellerUnsuccessfulPage'
 
 export const rootPath = '/2'
 
@@ -28,7 +28,7 @@ export const Routes = () =>
     <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
     <Route path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
-    <Route path={`${rootPath}/seller/unsuccessful`} component={SellerUnsuccessful} />
+    <Route path={`${rootPath}/seller/unsuccessful`} component={SellerUnsuccessfulPage} />
     <Route component={NotFound} />
   </Switch>
 
