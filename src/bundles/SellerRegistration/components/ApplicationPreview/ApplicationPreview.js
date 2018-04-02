@@ -93,6 +93,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
     recruiter_info,
     digital_marketplace_panel,
     dsp_panel,
+    pricing,
     ...body
   } = state.application;
 
@@ -183,7 +184,8 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
         other_panels,
         disclosures,
         signed_agreements,
-        recruiter_info
+        recruiter_info,
+        pricing
     } : {}),
     onClick,
     csrfToken: state.form_options.csrf_token,

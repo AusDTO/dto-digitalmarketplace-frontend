@@ -31,7 +31,8 @@ const PrivateInfo = (props) => {
         government_experience,
         other_panels,
         signed_agreements = [],
-        recruiter_info = {}
+        recruiter_info = {},
+        pricing = {}
     } = props;
     return (
         <article styleName="privateInfo">
@@ -117,6 +118,13 @@ const PrivateInfo = (props) => {
                 )
               })}
             </Row>
+            <Row title="Pricing" show={!isEmpty(pricing)}>
+              {Object.keys(pricing).map((key, i) => {
+                return (
+                  <div key={key}>{`${key}: $${pricing[key]['maxPrice']}`}</div>
+                )
+              })}
+            </Row>
         </article>
     )
 };
@@ -131,6 +139,7 @@ PrivateInfo.propTypes = {
     disclosures: PropTypes.object,
     signed_agreements: PropTypes.array,
     recruiter_info: PropTypes.object,
+    pricing: PropTypes.object
 };
 
 export default PrivateInfo;
