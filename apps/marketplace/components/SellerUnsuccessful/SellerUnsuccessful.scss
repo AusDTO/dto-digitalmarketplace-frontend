@@ -1,0 +1,16 @@
+.reviewForm label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.reviewForm input, .reviewForm div[contenteditable=true] {
+  border: 2px solid #bebebe;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+ul.sellerList {
+  list-style-type: none;
+}

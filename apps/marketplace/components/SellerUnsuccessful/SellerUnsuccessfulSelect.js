@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Checkbox } from '@gov.au/control-input/lib/js/react.js'
 import Button from '@gov.au/buttons/lib/js/react.js'
+import styles from './SellerUnsuccessful.scss'
 
 export class SellerUnsuccessfulSelect extends Component {
   constructor(props) {
@@ -47,15 +48,15 @@ export class SellerUnsuccessfulSelect extends Component {
       <div className="row">
         <div className="col-xs-12">
           <h2>Select sellers</h2>
-          <ul>
-            {this.props.sellers.map(seller =>
-              <li key={seller.id}>
+          <ul className={styles.sellerList}>
+            {this.props.briefResponses.map(response =>
+              <li key={response.supplierCode}>
                 <Checkbox
-                  name={`${seller.id}`}
-                  label={seller.name}
+                  name={`${response.supplierCode}`}
+                  label={response.supplierName}
                   value=""
                   onChange={this.handleChange}
-                  checked={this.isSelected(seller.id)}
+                  checked={this.isSelected(response.supplierCode)}
                 />
               </li>
             )}

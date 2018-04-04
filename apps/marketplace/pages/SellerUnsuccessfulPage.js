@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import SellerUnsuccessfulNav from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulNav'
 import SellerUnsuccessfulIntroduction from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulIntroduction'
 import SellerUnsuccessfulSelect from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulSelect'
 import SellerUnsuccessfulReview from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulReview'
 import { rootPath } from 'marketplace/routes'
+import { loadBriefResponses } from 'marketplace/actions/briefActions'
 
 class SellerUnsuccessfulPage extends Component {
   constructor(props) {
@@ -33,13 +36,18 @@ class SellerUnsuccessfulPage extends Component {
           name: 'Test seller 4'
         }
       ],
-      selectedSellers: []
+      selectedSellers: [],
+      csrfToken: ''
     }
     this.setStageStatus = this.setStageStatus.bind(this)
     this.moveToNextStage = this.moveToNextStage.bind(this)
     this.selectSeller = this.selectSeller.bind(this)
     this.deselectSeller = this.deselectSeller.bind(this)
     this.hasSelectedASeller = this.hasSelectedASeller.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.loadInitialData(this.props.match.params.briefId)
   }
 
   setStageStatus(stage, status) {
@@ -64,16 +72,21 @@ class SellerUnsuccessfulPage extends Component {
     const index = stages.indexOf(currentStage)
 
     if (index !== -1 && typeof stages[index + 1] !== 'undefined') {
-      this.props.history.push(`${rootPath}/seller/unsuccessful/${stages[index + 1]}`)
+      this.props.history.push(
+        `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/${stages[index + 1]}`
+      )
     }
   }
 
   selectSeller(id) {
     const newSelectedSellers = this.state.selectedSellers.slice()
     let newSeller = {}
-    this.state.sellers.map(seller => {
-      if (seller.id === parseInt(id, 10)) {
-        newSeller = seller
+    this.props.briefResponses.map(response => {
+      if (response.supplierCode === parseInt(id, 10)) {
+        newSeller = {
+          id: response.supplierCode,
+          name: response.supplierName
+        }
       }
       return true
     })
@@ -106,7 +119,7 @@ class SellerUnsuccessfulPage extends Component {
             <Switch>
               <Route
                 exact
-                path={`${rootPath}/seller/unsuccessful`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful`}
                 render={() =>
                   <SellerUnsuccessfulIntroduction
                     setStageStatus={this.setStageStatus}
@@ -114,10 +127,10 @@ class SellerUnsuccessfulPage extends Component {
                   />}
               />
               <Route
-                path={`${rootPath}/seller/unsuccessful/select`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/select`}
                 render={() =>
                   <SellerUnsuccessfulSelect
-                    sellers={this.state.sellers}
+                    briefResponses={this.props.briefResponses}
                     selectedSellers={this.state.selectedSellers}
                     setStageStatus={this.setStageStatus}
                     selectSeller={this.selectSeller}
@@ -127,7 +140,7 @@ class SellerUnsuccessfulPage extends Component {
                   />}
               />
               <Route
-                path={`${rootPath}/seller/unsuccessful/review`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/review`}
                 render={() =>
                   <SellerUnsuccessfulReview
                     selectedSellers={this.state.selectedSellers}
@@ -144,4 +157,16 @@ class SellerUnsuccessfulPage extends Component {
   }
 }
 
-export default withRouter(SellerUnsuccessfulPage)
+SellerUnsuccessfulPage.propTypes = {
+  match: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+  briefResponses: state.brief.briefResponses
+})
+
+const mapDispatchToProps = dispatch => ({
+  loadInitialData: briefId => dispatch(loadBriefResponses(briefId))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerUnsuccessfulPage))

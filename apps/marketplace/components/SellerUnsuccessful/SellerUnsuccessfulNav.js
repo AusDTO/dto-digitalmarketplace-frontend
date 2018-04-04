@@ -18,7 +18,7 @@ export class SellerUnsuccessfulNav extends Component {
   render() {
     const items = [
       {
-        link: `${rootPath}/seller/unsuccessful`,
+        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful`,
         text: 'Introduction',
         status: this.props.stages.introduction,
         onClick: e => {
@@ -27,7 +27,7 @@ export class SellerUnsuccessfulNav extends Component {
         }
       },
       {
-        link: `${rootPath}/seller/unsuccessful/select`,
+        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/select`,
         text: 'Select sellers',
         status: this.props.stages.select,
         onClick: e => {
@@ -36,7 +36,7 @@ export class SellerUnsuccessfulNav extends Component {
         }
       },
       {
-        link: `${rootPath}/seller/unsuccessful/review`,
+        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/review`,
         text: 'Review email',
         status: this.props.stages.review,
         onClick: e => {

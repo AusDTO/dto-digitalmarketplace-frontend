@@ -1,10 +1,9 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
-  BRIEF_RESPONSE_SUCCESS,
-  SPECIALIST_NAME,
-  SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST
+  BRIEF_RESPONSES_FETCH_DATA_SUCCESS,
+  BRIEF_RESPONSE_SUCCESS
 } from '../constants/constants'
+import { GENERAL_ERROR } from '../constants/messageConstants'
 
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
@@ -14,6 +13,11 @@ export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
   briefResponses: response.data.briefResponses
+})
+
+export const handleBriefResponsesSuccess = response => ({
+  type: BRIEF_RESPONSES_FETCH_DATA_SUCCESS,
+  data: response.data
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -48,10 +52,19 @@ export const loadBrief = briefId => dispatch => {
   })
 }
 
-export const handleBriefResponseSuccess = response => ({
-  type: BRIEF_RESPONSE_SUCCESS,
-  briefResponse: response.data.briefResponses
-})
+export const loadBriefResponses = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/brief/${briefId}/responses` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefResponsesSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleBriefResponseSuccess = () => ({ type: BRIEF_RESPONSE_SUCCESS })
 
 export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
   dispatch(sendingRequest(true))
