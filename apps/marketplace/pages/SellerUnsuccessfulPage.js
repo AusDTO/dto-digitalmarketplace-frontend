@@ -8,6 +8,7 @@ import SellerUnsuccessfulSelect from 'marketplace/components/SellerUnsuccessful/
 import SellerUnsuccessfulReview from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulReview'
 import { rootPath } from 'marketplace/routes'
 import { loadBriefResponses } from 'marketplace/actions/briefActions'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class SellerUnsuccessfulPage extends Component {
   constructor(props) {
@@ -18,24 +19,6 @@ class SellerUnsuccessfulPage extends Component {
         select: 'todo',
         review: 'todo'
       },
-      sellers: [
-        {
-          id: 1,
-          name: 'Test seller 1'
-        },
-        {
-          id: 2,
-          name: 'Test seller 2'
-        },
-        {
-          id: 3,
-          name: 'Test seller 3'
-        },
-        {
-          id: 4,
-          name: 'Test seller 4'
-        }
-      ],
       selectedSellers: [],
       csrfToken: ''
     }
@@ -109,6 +92,10 @@ class SellerUnsuccessfulPage extends Component {
   }
 
   render() {
+    if (this.props.currentlySending) {
+      return <LoadingIndicatorFullPage />
+    }
+
     return (
       <div className="row">
         <article role="main">
@@ -162,7 +149,8 @@ SellerUnsuccessfulPage.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  briefResponses: state.brief.briefResponses
+  briefResponses: state.brief.briefResponses,
+  currentlySending: state.app.currentlySending
 })
 
 const mapDispatchToProps = dispatch => ({
