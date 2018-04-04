@@ -15,11 +15,6 @@ export const handleBriefInfoSuccess = response => ({
   briefResponses: response.data.briefResponses
 })
 
-export const handleBriefResponsesSuccess = response => ({
-  type: BRIEF_RESPONSES_FETCH_DATA_SUCCESS,
-  data: response.data
-})
-
 export const handleErrorFailure = response => dispatch => {
   if (!response) {
     dispatch(setErrorMessage(GENERAL_ERROR))

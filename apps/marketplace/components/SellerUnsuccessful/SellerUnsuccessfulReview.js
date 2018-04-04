@@ -54,7 +54,9 @@ export class SellerUnsuccessfulReview extends Component {
             />
             <label htmlFor="email_body">Email</label>
             <div contentEditable="true" suppressContentEditableWarning>
-              <p>Thank you for your application for &lt;brief&gt;.</p>
+              <p>Thank you for your application for{' '}
+                <a href={`/digital-marketplace-opportunities/${this.props.brief.id}`}>{this.props.brief.title}</a>.
+              </p>
               <p>
                 <strong>The buyer has requested you supply:</strong>
               </p>

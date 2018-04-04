@@ -50,13 +50,13 @@ export class SellerUnsuccessfulSelect extends Component {
           <h2>Select sellers</h2>
           <ul className={styles.sellerList}>
             {this.props.briefResponses.map(response =>
-              <li key={response.supplierCode}>
+              <li key={response.supplier_code}>
                 <Checkbox
-                  name={`${response.supplierCode}`}
-                  label={response.supplierName}
+                  name={`${response.supplier_code}`}
+                  label={response.supplier_name}
                   value=""
                   onChange={this.handleChange}
-                  checked={this.isSelected(response.supplierCode)}
+                  checked={this.isSelected(response.supplier_code)}
                 />
               </li>
             )}

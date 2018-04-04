@@ -7,7 +7,7 @@ import SellerUnsuccessfulIntroduction from 'marketplace/components/SellerUnsucce
 import SellerUnsuccessfulSelect from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulSelect'
 import SellerUnsuccessfulReview from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulReview'
 import { rootPath } from 'marketplace/routes'
-import { loadBriefResponses } from 'marketplace/actions/briefActions'
+import { loadBrief } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class SellerUnsuccessfulPage extends Component {
@@ -65,10 +65,10 @@ class SellerUnsuccessfulPage extends Component {
     const newSelectedSellers = this.state.selectedSellers.slice()
     let newSeller = {}
     this.props.briefResponses.map(response => {
-      if (response.supplierCode === parseInt(id, 10)) {
+      if (response.supplier_code === parseInt(id, 10)) {
         newSeller = {
-          id: response.supplierCode,
-          name: response.supplierName
+          id: response.supplier_code,
+          name: response.supplier_name
         }
       }
       return true
@@ -130,6 +130,7 @@ class SellerUnsuccessfulPage extends Component {
                 path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/review`}
                 render={() =>
                   <SellerUnsuccessfulReview
+                    brief={this.props.brief}
                     selectedSellers={this.state.selectedSellers}
                     hasSelectedASeller={this.hasSelectedASeller}
                     setStageStatus={this.setStageStatus}
@@ -149,12 +150,13 @@ SellerUnsuccessfulPage.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
   currentlySending: state.app.currentlySending
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadInitialData: briefId => dispatch(loadBriefResponses(briefId))
+  loadInitialData: briefId => dispatch(loadBrief(briefId))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerUnsuccessfulPage))
