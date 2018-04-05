@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Checkbox } from '@gov.au/control-input/lib/js/react.js'
 import Button from '@gov.au/buttons/lib/js/react.js'
-import styles from './SellerUnsuccessful.scss'
+import styles from './SellerNotify.scss'
 
-export class SellerUnsuccessfulSelect extends Component {
+export class SellerNotifySelect extends Component {
   constructor(props) {
     super(props)
     this.handleContinueClick = this.handleContinueClick.bind(this)
@@ -32,10 +32,10 @@ export class SellerUnsuccessfulSelect extends Component {
     }
   }
 
-  isSelected(id) {
+  isSelected(supplierCode) {
     let selected = false
     this.props.selectedSellers.map(seller => {
-      if (seller.id === parseInt(id, 10)) {
+      if (seller.supplier_code === parseInt(supplierCode, 10)) {
         selected = true
       }
       return true
@@ -70,4 +70,4 @@ export class SellerUnsuccessfulSelect extends Component {
   }
 }
 
-export default SellerUnsuccessfulSelect
+export default SellerNotifySelect

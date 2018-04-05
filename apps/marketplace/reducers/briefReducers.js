@@ -5,6 +5,7 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_RESPONSE_FAILURE,
   BRIEF_RESPONSE_DUPLICATE_FAILURE,
+  BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
@@ -17,6 +18,7 @@ const defaultBriefState = {
   briefErrored: null,
   briefResponseSuccess: null,
   briefResponseErrored: null,
+  briefSellerUnsuccessfulSubmitSuccess: null,
   errorMessage: null,
   isDuplicate: null,
   brief: {},
@@ -64,6 +66,12 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponseErrored: true,
         briefResponseSuccess: false,
         errorMessage: action.errorMessage
+      }
+
+    case BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        briefSellerNotifySubmitSuccess: true
       }
 
     case BRIEF_RESPONSE_DUPLICATE_FAILURE:

@@ -1,7 +1,10 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
-  BRIEF_RESPONSES_FETCH_DATA_SUCCESS,
-  BRIEF_RESPONSE_SUCCESS
+  BRIEF_RESPONSE_SUCCESS,
+  BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
+  SPECIALIST_NAME,
+  SPECIALIST_NUMBER,
+  ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 
@@ -61,6 +64,11 @@ export const loadBriefResponses = briefId => dispatch => {
 
 export const handleBriefResponseSuccess = () => ({ type: BRIEF_RESPONSE_SUCCESS })
 
+export const handleBriefSellerNotifySubmitSuccess = response => ({
+  type: BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
+  response
+})
+
 export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({
@@ -72,6 +80,22 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleBriefResponseSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleBriefSellerNotifySubmit = (briefId, model) => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    url: `/brief/${briefId}/notify/sellers`,
+    method: 'POST',
+    data: JSON.stringify(model)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefSellerNotifySubmitSuccess(response))
     }
     dispatch(sendingRequest(false))
   })

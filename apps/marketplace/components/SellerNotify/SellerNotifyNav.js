@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ProgressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 
-export class SellerUnsuccessfulNav extends Component {
+export class SellerNotifyNav extends Component {
   handleClick(e) {
     e.preventDefault()
     const el = e.currentTarget
@@ -16,9 +17,11 @@ export class SellerUnsuccessfulNav extends Component {
   }
 
   render() {
+    const navPart = this.props.flow
+
     const items = [
       {
-        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful`,
+        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-${navPart}`,
         text: 'Introduction',
         status: this.props.stages.introduction,
         onClick: e => {
@@ -27,7 +30,7 @@ export class SellerUnsuccessfulNav extends Component {
         }
       },
       {
-        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/select`,
+        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-${navPart}/select`,
         text: 'Select sellers',
         status: this.props.stages.select,
         onClick: e => {
@@ -36,7 +39,7 @@ export class SellerUnsuccessfulNav extends Component {
         }
       },
       {
-        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/review`,
+        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-${navPart}/review`,
         text: 'Review email',
         status: this.props.stages.review,
         onClick: e => {
@@ -56,4 +59,8 @@ export class SellerUnsuccessfulNav extends Component {
   }
 }
 
-export default SellerUnsuccessfulNav
+SellerNotifyNav.propTypes = {
+  flow: PropTypes.string.isRequired
+}
+
+export default SellerNotifyNav

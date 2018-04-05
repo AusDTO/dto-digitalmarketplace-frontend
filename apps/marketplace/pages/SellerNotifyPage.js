@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import SellerUnsuccessfulNav from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulNav'
-import SellerUnsuccessfulIntroduction from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulIntroduction'
-import SellerUnsuccessfulSelect from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulSelect'
-import SellerUnsuccessfulReview from 'marketplace/components/SellerUnsuccessful/SellerUnsuccessfulReview'
+import SellerNotifyNav from 'marketplace/components/SellerNotify/SellerNotifyNav'
+import SellerNotifyIntroduction from 'marketplace/components/SellerNotify/SellerNotifyIntroduction'
+import SellerNotifySelect from 'marketplace/components/SellerNotify/SellerNotifySelect'
+import SellerNotifyReview from 'marketplace/components/SellerNotify/SellerNotifyReview'
+import ErrorBox from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
-import { loadBrief } from 'marketplace/actions/briefActions'
+import { loadBrief, handleBriefSellerNotifySubmit } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
-class SellerUnsuccessfulPage extends Component {
+class SellerNotifyPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -61,14 +62,15 @@ class SellerUnsuccessfulPage extends Component {
     }
   }
 
-  selectSeller(id) {
+  selectSeller(supplierCode) {
     const newSelectedSellers = this.state.selectedSellers.slice()
     let newSeller = {}
     this.props.briefResponses.map(response => {
-      if (response.supplier_code === parseInt(id, 10)) {
+      if (response.supplier_code === parseInt(supplierCode, 10)) {
         newSeller = {
-          id: response.supplier_code,
-          name: response.supplier_name
+          supplier_code: response.supplier_code,
+          supplier_name: response.supplier_name,
+          contact_name: response.supplier_contact_name
         }
       }
       return true
@@ -79,9 +81,9 @@ class SellerUnsuccessfulPage extends Component {
     })
   }
 
-  deselectSeller(id) {
+  deselectSeller(supplierCode) {
     let newSelectedSellers = this.state.selectedSellers.slice()
-    newSelectedSellers = newSelectedSellers.filter(seller => seller.id !== parseInt(id, 10))
+    newSelectedSellers = newSelectedSellers.filter(seller => seller.supplier_code !== parseInt(supplierCode, 10))
     this.setState({
       selectedSellers: newSelectedSellers
     })
@@ -92,15 +94,38 @@ class SellerUnsuccessfulPage extends Component {
   }
 
   render() {
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
+    if (!this.props.loadBriefSuccess) {
+      return <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+    }
+
     if (this.props.currentlySending) {
       return <LoadingIndicatorFullPage />
+    }
+
+    if (this.props.briefSellerNotifySubmitSuccess) {
+      return (
+        <div className="row">
+          <div className="col-xs-12">
+            <h2>Success</h2>
+            <p>Your email has been sent.</p>
+          </div>
+        </div>
+      )
     }
 
     return (
       <div className="row">
         <article role="main">
           <div className="col-sm-4">
-            <SellerUnsuccessfulNav {...this.props} {...this.state} setStageStatus={this.setStageStatus} />
+            <SellerNotifyNav {...this.props} {...this.state} setStageStatus={this.setStageStatus} />
           </div>
           <div className="col-sm-8">
             <Switch>
@@ -108,7 +133,8 @@ class SellerUnsuccessfulPage extends Component {
                 exact
                 path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful`}
                 render={() =>
-                  <SellerUnsuccessfulIntroduction
+                  <SellerNotifyIntroduction
+                    flow={this.props.flow}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
                   />}
@@ -116,7 +142,7 @@ class SellerUnsuccessfulPage extends Component {
               <Route
                 path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/select`}
                 render={() =>
-                  <SellerUnsuccessfulSelect
+                  <SellerNotifySelect
                     briefResponses={this.props.briefResponses}
                     selectedSellers={this.state.selectedSellers}
                     setStageStatus={this.setStageStatus}
@@ -129,12 +155,14 @@ class SellerUnsuccessfulPage extends Component {
               <Route
                 path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/review`}
                 render={() =>
-                  <SellerUnsuccessfulReview
+                  <SellerNotifyReview
+                    flow={this.props.flow}
                     brief={this.props.brief}
                     selectedSellers={this.state.selectedSellers}
                     hasSelectedASeller={this.hasSelectedASeller}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
+                    handleSubmit={this.props.handleSubmit}
                   />}
               />
             </Switch>
@@ -145,18 +173,22 @@ class SellerUnsuccessfulPage extends Component {
   }
 }
 
-SellerUnsuccessfulPage.propTypes = {
-  match: PropTypes.object.isRequired
+SellerNotifyPage.propTypes = {
+  match: PropTypes.object.isRequired,
+  flow: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
+  loadBriefSuccess: state.brief.loadBriefSuccess,
+  briefSellerNotifySubmitSuccess: state.brief.briefSellerNotifySubmitSuccess,
   currentlySending: state.app.currentlySending
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadInitialData: briefId => dispatch(loadBrief(briefId))
+  loadInitialData: briefId => dispatch(loadBrief(briefId)),
+  handleSubmit: (briefId, model) => dispatch(handleBriefSellerNotifySubmit(briefId, model))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerUnsuccessfulPage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerNotifyPage))
