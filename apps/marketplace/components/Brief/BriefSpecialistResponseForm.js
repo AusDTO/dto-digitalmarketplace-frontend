@@ -15,6 +15,8 @@ import dmapi from 'marketplace/services/apiClient'
 
 import styles from './BriefSpecialistResponseForm.scss'
 
+const MaxSpecialists = 3
+
 const BriefSpecialistResponseForm = ({
   model,
   brief,
@@ -35,7 +37,7 @@ const BriefSpecialistResponseForm = ({
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length === 3
+          {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length >= MaxSpecialists
             ? <Redirect to={`${match.url}/specialist/respond/submitted`} />
             : ''}
           {!briefResponseSuccess &&
@@ -53,7 +55,7 @@ const BriefSpecialistResponseForm = ({
                       Apply for &lsquo;{brief.title}&rsquo;
                     </h1>
                     <div>
-                      You can add 3 specialists. This opportunity closes on{' '}
+                      You can add {MaxSpecialists} specialists. This opportunity closes on{' '}
                       {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.
                     </div>
                     <br />
@@ -86,7 +88,7 @@ const BriefSpecialistResponseForm = ({
               </div>
             : <div>
                 <div className={styles.stepTitle}>
-                  Specialist {specialistNumber} of 3
+                  Specialist {specialistNumber} of {MaxSpecialists}
                 </div>
                 <h1 className="uikit-display-6">
                   {specialistName}
@@ -194,7 +196,7 @@ const BriefSpecialistResponseForm = ({
                       submitClicked(e)
                     }}
                   />
-                  {specialistNumber < 3 &&
+                  {specialistNumber < MaxSpecialists &&
                     <input
                       className="uikit-btn uikit-btn--tertiary"
                       type="submit"
