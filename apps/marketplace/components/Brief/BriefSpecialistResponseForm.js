@@ -141,36 +141,34 @@ const BriefSpecialistResponseForm = ({
                         <h4>There was a problem loading your details</h4>
                         <p>Only logged in sellers can respond to briefs</p>
                       </PageAlert>}
-                  <fieldset className={styles.x_uikit_fieldset}>
-                    <h2>Skills and experience</h2>
-                    {brief.essentialRequirements &&
-                      brief.essentialRequirements.map((requirement, i) =>
-                        <Textarea
-                          key={requirement}
-                          model={`${model}.essentialRequirements[${i}]`}
-                          name={`essentialRequirement.${i}`}
-                          id={`essentialRequirement.${i}`}
-                          controlProps={{ limit: 150 }}
-                          label={requirement}
-                          validators={{ required }}
-                          showMessagesDuringFocus
-                          messages={{
-                            required: `This is an essential requirement, let the buyer know how the skills and experience criteria is met`
-                          }}
-                        />
-                      )}
-                    {brief.niceToHaveRequirements &&
-                      brief.niceToHaveRequirements.map((requirement, i) =>
-                        <Textarea
-                          key={requirement}
-                          model={`${model}.niceToHaveRequirements[${i}]`}
-                          name={`niceToHaveRequirement.${i}`}
-                          id={`niceToHaveRequirement.${i}`}
-                          controlProps={{ limit: 150 }}
-                          label={`${requirement} (optional)`}
-                        />
-                      )}
-                  </fieldset>
+                  <h2>Skills and experience</h2>
+                  {brief.essentialRequirements &&
+                    brief.essentialRequirements.map((requirement, i) =>
+                      <Textarea
+                        key={requirement}
+                        model={`${model}.essentialRequirements[${i}]`}
+                        name={`essentialRequirement.${i}`}
+                        id={`essentialRequirement.${i}`}
+                        controlProps={{ limit: 150 }}
+                        label={requirement}
+                        validators={{ required }}
+                        showMessagesDuringFocus
+                        messages={{
+                          required: `This is an essential requirement, let the buyer know how the skills and experience criteria is met`
+                        }}
+                      />
+                    )}
+                  {brief.niceToHaveRequirements &&
+                    brief.niceToHaveRequirements.map((requirement, i) =>
+                      <Textarea
+                        key={requirement}
+                        model={`${model}.niceToHaveRequirements[${i}]`}
+                        name={`niceToHaveRequirement.${i}`}
+                        id={`niceToHaveRequirement.${i}`}
+                        controlProps={{ limit: 150 }}
+                        label={`${requirement} (optional)`}
+                      />
+                    )}
                   <Textfield
                     model={`${model}.respondToEmailAddress`}
                     name="respondToEmailAddress"

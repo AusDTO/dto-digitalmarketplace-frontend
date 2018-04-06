@@ -81,12 +81,12 @@ class FileInput extends React.Component {
             <div>
               <div className={styles.bordered_list}>
                 <div className={styles.bordered_list__item}>
-                  <div className="col-xs-9">
+                  <div className="col-xs-10">
                     <a href={`/api/2${this.props.url}/${doc}`} target="_blank" rel="external">
                       {doc}
                     </a>
                   </div>
-                  <div className="col-xs-3">
+                  <div className="col-xs-2">
                     <a href="#delete" onClick={this.onReset}>
                       Delete
                     </a>
