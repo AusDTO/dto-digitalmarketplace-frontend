@@ -23,7 +23,7 @@ const App = () =>
           <Banner />
           <Header />
         </header>
-        <main id="content">
+        <main id="content" role="region" aria-live="polite">
           <RootContainer />
         </main>
         <Footer />
