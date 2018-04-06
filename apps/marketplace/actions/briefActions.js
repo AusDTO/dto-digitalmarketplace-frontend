@@ -6,7 +6,6 @@ import {
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
-import { GENERAL_ERROR } from '../constants/messageConstants'
 
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
@@ -50,19 +49,10 @@ export const loadBrief = briefId => dispatch => {
   })
 }
 
-export const loadBriefResponses = briefId => dispatch => {
-  dispatch(sendingRequest(true))
-  dmapi({ url: `/brief/${briefId}/responses` }).then(response => {
-    if (!response || response.error) {
-      dispatch(handleErrorFailure(response))
-    } else {
-      dispatch(handleBriefResponsesSuccess(response))
-    }
-    dispatch(sendingRequest(false))
-  })
-}
-
-export const handleBriefResponseSuccess = () => ({ type: BRIEF_RESPONSE_SUCCESS })
+export const handleBriefResponseSuccess = response => ({
+  type: BRIEF_RESPONSE_SUCCESS,
+  briefResponse: response.data.briefResponses
+})
 
 export const handleBriefSellerNotifySubmitSuccess = response => ({
   type: BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
