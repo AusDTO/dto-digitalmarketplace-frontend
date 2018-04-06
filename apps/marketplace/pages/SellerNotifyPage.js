@@ -35,20 +35,20 @@ class SellerNotifyPage extends Component {
   }
 
   setStageStatus(stage, status) {
-    const newStagesState = { ...this.state.stages }
-
-    // there can only be one "doing" stage, so change any existing "doing" to "todo"
-    if (status === 'doing') {
-      Object.keys(this.state.stages).map(stateStage => {
-        if (this.state.stages[stateStage] === 'doing') {
-          newStagesState[stateStage] = 'todo'
-        }
-        return true
-      })
-    }
-
-    newStagesState[stage] = status
-    this.setState({ stages: newStagesState })
+    this.setState(currentState => {
+      const newState = { ...currentState }
+      // there can only be one "doing" stage, so change any existing "doing" to "todo"
+      if (status === 'doing') {
+        Object.keys(newState.stages).map(stateStage => {
+          if (newState.stages[stateStage] === 'doing') {
+            newState.stages[stateStage] = 'todo'
+          }
+          return true
+        })
+      }
+      newState.stages[stage] = status
+      return newState
+    })
   }
 
   moveToNextStage(currentStage) {
@@ -63,29 +63,31 @@ class SellerNotifyPage extends Component {
   }
 
   selectSeller(supplierCode) {
-    const newSelectedSellers = this.state.selectedSellers.slice()
-    let newSeller = {}
-    this.props.briefResponses.map(response => {
-      if (response.supplier_code === parseInt(supplierCode, 10)) {
-        newSeller = {
-          supplier_code: response.supplier_code,
-          supplier_name: response.supplier_name,
-          contact_name: response.supplier_contact_name
+    this.setState(currentState => {
+      const newState = { ...currentState }
+      let newSeller = {}
+      this.props.briefResponses.map(response => {
+        if (response.supplier_code === parseInt(supplierCode, 10)) {
+          newSeller = {
+            supplier_code: response.supplier_code,
+            supplier_name: response.supplier_name,
+            contact_name: response.supplier_contact_name
+          }
         }
-      }
-      return true
-    })
-    newSelectedSellers.push(newSeller)
-    this.setState({
-      selectedSellers: newSelectedSellers
+        return true
+      })
+      newState.selectedSellers.push(newSeller)
+      return newState
     })
   }
 
   deselectSeller(supplierCode) {
-    let newSelectedSellers = this.state.selectedSellers.slice()
-    newSelectedSellers = newSelectedSellers.filter(seller => seller.supplier_code !== parseInt(supplierCode, 10))
-    this.setState({
-      selectedSellers: newSelectedSellers
+    this.setState(currentState => {
+      const newState = { ...currentState }
+      newState.selectedSellers = newState.selectedSellers.filter(
+        seller => seller.supplier_code !== parseInt(supplierCode, 10)
+      )
+      return newState
     })
   }
 
