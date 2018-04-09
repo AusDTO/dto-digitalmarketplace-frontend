@@ -98,7 +98,7 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
 export const handleBriefSellerNotifySubmit = (briefId, model) => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({
-    url: `/brief/${briefId}/notify/sellers`,
+    url: `/brief/${briefId}/sellers/notify`,
     method: 'POST',
     data: JSON.stringify(model)
   }).then(response => {
