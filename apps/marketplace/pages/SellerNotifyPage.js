@@ -126,7 +126,9 @@ class SellerNotifyPage extends Component {
         <div className="row">
           <div className="col-xs-12">
             <PageAlert as="error">
-              <p>{this.props.errorMessage}</p>
+              <p>
+                {this.props.errorMessage}
+              </p>
             </PageAlert>
           </div>
         </div>
