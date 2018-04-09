@@ -113,12 +113,24 @@ class SellerNotifyPage extends Component {
       }
     }
 
+    if (this.props.currentlySending) {
+      return <LoadingIndicatorFullPage />
+    }
+
     if (!this.props.loadBriefSuccess) {
       return <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
     }
 
-    if (this.props.currentlySending) {
-      return <LoadingIndicatorFullPage />
+    if (this.props.errorMessage) {
+      return (
+        <div className="row">
+          <div className="col-xs-12">
+            <PageAlert as="error">
+              <p>{this.props.errorMessage}</p>
+            </PageAlert>
+          </div>
+        </div>
+      )
     }
 
     if (this.props.sellers.length < 1) {
@@ -209,6 +221,7 @@ const mapStateToProps = state => ({
   sellers: state.brief.sellers,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefSellerNotifySubmitSuccess: state.brief.briefSellerNotifySubmitSuccess,
+  errorMessage: state.app.errorMessage,
   currentlySending: state.app.currentlySending
 })
 
