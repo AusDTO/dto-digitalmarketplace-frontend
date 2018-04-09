@@ -1,5 +1,6 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_SELLERS_FETCH_DATA_SUCCESS,
   BRIEF_RESPONSES_FETCH_DATA_SUCCESS,
   BRIEF_INFO_HAS_ERRORED,
   BRIEF_RESPONSE_SUCCESS,
@@ -23,7 +24,8 @@ const defaultBriefState = {
   isDuplicate: null,
   brief: {},
   briefResponse: {},
-  briefResponses: []
+  briefResponses: [],
+  sellers: []
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -36,6 +38,16 @@ const briefReducer = (state = defaultBriefState, action) => {
         loadBriefErrored: false,
         briefResponses: action.briefResponses,
         specialistNumber: action.briefResponses.length + 1,
+        loadedAt: new Date().valueOf()
+      }
+
+    case BRIEF_SELLERS_FETCH_DATA_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief,
+        loadBriefSuccess: true,
+        loadBriefErrored: false,
+        sellers: action.sellers,
         loadedAt: new Date().valueOf()
       }
 

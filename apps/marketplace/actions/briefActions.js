@@ -1,5 +1,6 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_SELLERS_FETCH_DATA_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
   SPECIALIST_NAME,
@@ -15,6 +16,12 @@ export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
   briefResponses: response.data.briefResponses
+})
+
+export const handleBriefSellersSuccess = response => ({
+  type: BRIEF_SELLERS_FETCH_DATA_SUCCESS,
+  brief: response.data.brief,
+  sellers: response.data.sellers
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -44,6 +51,19 @@ export const loadBrief = briefId => dispatch => {
     } else {
       response.data.loadedAt = new Date().valueOf()
       dispatch(handleBriefInfoSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const loadBriefSellers = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/brief/${briefId}/sellers` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      response.data.loadedAt = new Date().valueOf()
+      dispatch(handleBriefSellersSuccess(response))
     }
     dispatch(sendingRequest(false))
   })

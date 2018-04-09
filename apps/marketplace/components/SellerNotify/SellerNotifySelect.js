@@ -57,7 +57,7 @@ export class SellerNotifySelect extends Component {
         <div className="col-xs-12">
           <h2>Select sellers</h2>
           <ul className={styles.sellerList}>
-            {this.props.briefResponses.map(response =>
+            {this.props.sellers.map(response =>
               <li key={response.supplier_code}>
                 <Checkbox
                   name={`${response.supplier_code}`}
