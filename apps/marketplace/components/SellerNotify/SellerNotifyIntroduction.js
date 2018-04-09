@@ -23,12 +23,8 @@ export class SellerNotifyIntroduction extends Component {
       return (
         <div className="row">
           <div className="col-xs-12">
-            <h2>What you are requesting</h2>
-            <p>Bla bla bla bla</p>
-            <ul>
-              <li>bla bla</li>
-              <li>bla</li>
-            </ul>
+            <h2>This is the introduction stage</h2>
+            <p>Here, we describe which notification a buyer is about to send out.</p>
             <p>
               <Button onClick={this.handleContinueClick} text="Continue" />
             </p>
