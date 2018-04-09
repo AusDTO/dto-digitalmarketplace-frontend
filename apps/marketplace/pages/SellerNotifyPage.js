@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import PageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import SellerNotifyNav from 'marketplace/components/SellerNotify/SellerNotifyNav'
 import SellerNotifyIntroduction from 'marketplace/components/SellerNotify/SellerNotifyIntroduction'
 import SellerNotifySelect from 'marketplace/components/SellerNotify/SellerNotifySelect'
 import SellerNotifyReview from 'marketplace/components/SellerNotify/SellerNotifyReview'
+import SellerNotifySellerList from 'marketplace/components/SellerNotify/SellerNotifySellerList'
 import ErrorBox from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
 import { loadBrief, handleBriefSellerNotifySubmit } from 'marketplace/actions/briefActions'
@@ -25,6 +27,7 @@ class SellerNotifyPage extends Component {
     }
     this.setStageStatus = this.setStageStatus.bind(this)
     this.moveToNextStage = this.moveToNextStage.bind(this)
+    this.moveToStage = this.moveToStage.bind(this)
     this.selectSeller = this.selectSeller.bind(this)
     this.deselectSeller = this.deselectSeller.bind(this)
     this.hasSelectedASeller = this.hasSelectedASeller.bind(this)
@@ -57,8 +60,14 @@ class SellerNotifyPage extends Component {
 
     if (index !== -1 && typeof stages[index + 1] !== 'undefined') {
       this.props.history.push(
-        `${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/${stages[index + 1]}`
+        `${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/${stages[index + 1]}`
       )
+    }
+  }
+
+  moveToStage(stage) {
+    if (this.state.stages[stage]) {
+      this.props.history.push(`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/${stage}`)
     }
   }
 
@@ -116,8 +125,10 @@ class SellerNotifyPage extends Component {
       return (
         <div className="row">
           <div className="col-xs-12">
-            <h2>Success</h2>
-            <p>Your email has been sent.</p>
+            <PageAlert as="success">
+              <h2>Emails have been sent to:</h2>
+              <SellerNotifySellerList sellers={this.state.selectedSellers} />
+            </PageAlert>
           </div>
         </div>
       )
@@ -133,7 +144,7 @@ class SellerNotifyPage extends Component {
             <Switch>
               <Route
                 exact
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}`}
                 render={() =>
                   <SellerNotifyIntroduction
                     flow={this.props.flow}
@@ -142,7 +153,7 @@ class SellerNotifyPage extends Component {
                   />}
               />
               <Route
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/select`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/select`}
                 render={() =>
                   <SellerNotifySelect
                     briefResponses={this.props.briefResponses}
@@ -155,7 +166,7 @@ class SellerNotifyPage extends Component {
                   />}
               />
               <Route
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-unsuccessful/review`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/review`}
                 render={() =>
                   <SellerNotifyReview
                     flow={this.props.flow}
@@ -164,6 +175,7 @@ class SellerNotifyPage extends Component {
                     hasSelectedASeller={this.hasSelectedASeller}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
+                    moveToStage={this.moveToStage}
                     handleSubmit={this.props.handleSubmit}
                   />}
               />
