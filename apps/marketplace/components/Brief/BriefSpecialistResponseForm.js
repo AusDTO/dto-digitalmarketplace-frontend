@@ -154,7 +154,7 @@ const BriefSpecialistResponseForm = ({
                         validators={{ required }}
                         showMessagesDuringFocus
                         messages={{
-                          required: `This is an essential requirement.`
+                          required: `${requirement} is required`
                         }}
                       />
                     )}
