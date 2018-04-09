@@ -113,7 +113,6 @@ export const handleErrorFailure = response => dispatch => {
 export const handleFeedbackSuccess = () => ({ type: FEEDBACK_SUCCESS })
 
 export const handleFeedbackSubmit = feedback => dispatch => {
-  dispatch(sendingRequest(true))
   dmapi({
     url: `/feedback`,
     method: 'POST',
@@ -124,6 +123,5 @@ export const handleFeedbackSubmit = feedback => dispatch => {
     } else if (feedback.allowFurtherFeedback === undefined) {
       dispatch(handleFeedbackSuccess(response))
     }
-    dispatch(sendingRequest(false))
   })
 }
