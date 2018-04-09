@@ -154,7 +154,7 @@ const BriefSpecialistResponseForm = ({
                         validators={{ required }}
                         showMessagesDuringFocus
                         messages={{
-                          required: `This is an essential requirement, let the buyer know how the skills and experience criteria is met`
+                          required: `This is an essential requirement.`
                         }}
                       />
                     )}
