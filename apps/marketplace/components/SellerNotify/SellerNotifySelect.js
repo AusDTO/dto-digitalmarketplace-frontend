@@ -6,6 +6,9 @@ import styles from './SellerNotify.scss'
 export class SellerNotifySelect extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      disabled: !props.hasSelectedASeller()
+    }
     this.handleContinueClick = this.handleContinueClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -25,10 +28,15 @@ export class SellerNotifySelect extends Component {
   handleChange(e) {
     const el = e.currentTarget
     const checked = el.checked
+    const setDisabledState = () => {
+      this.setState({
+        disabled: !this.props.hasSelectedASeller()
+      })
+    }
     if (checked) {
-      this.props.selectSeller(el.name)
+      this.props.selectSeller(el.name, setDisabledState)
     } else {
-      this.props.deselectSeller(el.name)
+      this.props.deselectSeller(el.name, setDisabledState)
     }
   }
 
@@ -62,7 +70,7 @@ export class SellerNotifySelect extends Component {
             )}
           </ul>
           <p>
-            <Button onClick={this.handleContinueClick} text="Continue" />
+            <Button onClick={this.handleContinueClick} disabled={this.state.disabled} text="Continue" />
           </p>
         </div>
       </div>

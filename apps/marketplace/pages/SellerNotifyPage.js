@@ -62,7 +62,7 @@ class SellerNotifyPage extends Component {
     }
   }
 
-  selectSeller(supplierCode) {
+  selectSeller(supplierCode, callback) {
     this.setState(currentState => {
       const newState = { ...currentState }
       let newSeller = {}
@@ -78,17 +78,17 @@ class SellerNotifyPage extends Component {
       })
       newState.selectedSellers.push(newSeller)
       return newState
-    })
+    }, callback)
   }
 
-  deselectSeller(supplierCode) {
+  deselectSeller(supplierCode, callback) {
     this.setState(currentState => {
       const newState = { ...currentState }
       newState.selectedSellers = newState.selectedSellers.filter(
         seller => seller.supplier_code !== parseInt(supplierCode, 10)
       )
       return newState
-    })
+    }, callback)
   }
 
   hasSelectedASeller() {
