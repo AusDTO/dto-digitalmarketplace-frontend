@@ -25,6 +25,9 @@ const defaultBriefState = {
   brief: {},
   briefResponse: {},
   briefResponses: [],
+  specialistName: '',
+  specialistNumber: 1,
+  addAnotherSpecialist: false,
   sellers: []
 }
 
