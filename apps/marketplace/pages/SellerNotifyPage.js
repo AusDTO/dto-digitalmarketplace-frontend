@@ -22,8 +22,7 @@ class SellerNotifyPage extends Component {
         select: 'todo',
         review: 'todo'
       },
-      selectedSellers: [],
-      csrfToken: ''
+      selectedSellers: []
     }
     this.setStageStatus = this.setStageStatus.bind(this)
     this.moveToNextStage = this.moveToNextStage.bind(this)

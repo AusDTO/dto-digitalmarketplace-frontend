@@ -26,7 +26,7 @@ export class SellerNotifySelect extends Component {
   }
 
   handleChange(e) {
-    const el = e.currentTarget
+    const el = e.target
     const checked = el.checked
     const setDisabledState = () => {
       this.setState({

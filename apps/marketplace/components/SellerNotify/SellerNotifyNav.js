@@ -11,9 +11,7 @@ export class SellerNotifyNav extends Component {
   }
 
   handleStatusChange(stage, status) {
-    if (this.props.stages[stage] !== 'done') {
-      this.props.setStageStatus(stage, status)
-    }
+    this.props.setStageStatus(stage, status)
   }
 
   render() {
@@ -60,7 +58,8 @@ export class SellerNotifyNav extends Component {
 }
 
 SellerNotifyNav.propTypes = {
-  flow: PropTypes.string.isRequired
+  flow: PropTypes.string.isRequired,
+  match: PropTypes.object.isRequired
 }
 
 export default SellerNotifyNav
