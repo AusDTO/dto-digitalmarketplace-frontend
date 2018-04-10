@@ -43,16 +43,6 @@ export const validEmail = val => {
   return false
 }
 
-export const governmentEmail = val => {
-  if (!val) {
-    return true
-  }
-  if (val.includes('gov.au')) {
-    return true
-  }
-  return false
-}
-
 export const minArrayLength = len => (arr = []) => Array.isArray(arr) && arr.filter(v => v.trim()).length >= len
 
 export const min = len => (val = '') => val.length >= len
