@@ -56,7 +56,6 @@ class FileInput extends React.Component {
               There was an error uploading the file: {this.state.errors}
             </span>
           </div>}
-        <div>
           {isEmpty(doc) &&
             !this.state.uploading &&
             <div>
@@ -78,8 +77,6 @@ class FileInput extends React.Component {
             </div>}
 
           {!isEmpty(doc) &&
-            <div>
-              <div className={styles.bordered_list}>
                 <div className={styles.bordered_list__item}>
                   <div className="col-xs-9">
                     <a href={`/api/2${this.props.url}/${doc}`} target="_blank" rel="external">
@@ -90,11 +87,8 @@ class FileInput extends React.Component {
                     <a href="#delete" onClick={this.onReset}>
                       Delete
                     </a>
-                  </div>
-                </div>
               </div>
             </div>}
-        </div>
 
         {this.state.uploading && <p>Uploading...</p>}
       </div>
