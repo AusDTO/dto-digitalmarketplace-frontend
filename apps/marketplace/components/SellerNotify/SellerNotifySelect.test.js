@@ -52,6 +52,7 @@ test('The continue button is disabled by default with no selected sellers', () =
 
 test('Clicking the continue button changes the status to "done" and moves to the next stage', () => {
   const mockSetStatusChange = jest.fn()
+  const mockSetStageDoneStatus = jest.fn()
   const moveToNextStage = jest.fn()
   const mockHasSelectedASeller = jest.fn()
   mockHasSelectedASeller.mockReturnValue(true)
@@ -62,6 +63,7 @@ test('Clicking the continue button changes the status to "done" and moves to the
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={sellers}
       sellers={sellers}
+      setStageDoneStatus={mockSetStageDoneStatus}
     />
   )
 
@@ -69,6 +71,9 @@ test('Clicking the continue button changes the status to "done" and moves to the
 
   expect(mockSetStatusChange.mock.calls[1][0]).toBe('select')
   expect(mockSetStatusChange.mock.calls[1][1]).toBe('done')
+
+  expect(mockSetStageDoneStatus.mock.calls[0][0]).toBe('select')
+  expect(mockSetStageDoneStatus.mock.calls[0][1]).toBe(true)
 
   expect(moveToNextStage.mock.calls.length).toBe(1)
   expect(moveToNextStage.mock.calls[0][0]).toBe('select')
@@ -142,4 +147,32 @@ test('Clicking a checked checkbox executes the deselectSeller property', () => {
   component.find('input').at(0).simulate('change', { target: { checked: false } })
   expect(mockSelectSeller.mock.calls.length).toBe(0)
   expect(mockDeselectSeller.mock.calls.length).toBe(1)
+})
+
+test('Deselecting all sellers sets the done status to false', () => {
+  const mockSetStatusChange = jest.fn()
+  const mockSetStageDoneStatus = jest.fn()
+  const moveToNextStage = jest.fn()
+  const mockHasSelectedASeller = jest.fn()
+  const mockDeselectSeller = (name, callback) => {
+    callback()
+  }
+  const mockSelectSeller = jest.fn()
+  mockHasSelectedASeller.mockReturnValue(false)
+  const component = mount(
+    <SellerNotifySelect
+      setStageStatus={mockSetStatusChange}
+      moveToNextStage={moveToNextStage}
+      hasSelectedASeller={mockHasSelectedASeller}
+      selectedSellers={[{ supplier_code: 1, supplier_name: 'Supplier 1' }]}
+      sellers={sellers}
+      selectSeller={mockSelectSeller}
+      deselectSeller={mockDeselectSeller}
+      setStageDoneStatus={mockSetStageDoneStatus}
+    />
+  )
+
+  component.find('input').at(0).simulate('change', { target: { checked: false } })
+  expect(mockSetStageDoneStatus.mock.calls[0][0]).toBe('select')
+  expect(mockSetStageDoneStatus.mock.calls[0][1]).toBe(false)
 })

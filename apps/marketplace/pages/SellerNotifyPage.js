@@ -17,10 +17,17 @@ class SellerNotifyPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      // this is the current state of the nav items in the progress indictor
       stages: {
         introduction: 'todo',
         select: 'todo',
         review: 'todo'
+      },
+      // this is the state of whether the nav items are done
+      stagesDone: {
+        introduction: false,
+        select: false,
+        review: false
       },
       selectedSellers: []
     }
@@ -30,6 +37,7 @@ class SellerNotifyPage extends Component {
     this.selectSeller = this.selectSeller.bind(this)
     this.deselectSeller = this.deselectSeller.bind(this)
     this.hasSelectedASeller = this.hasSelectedASeller.bind(this)
+    this.setStageDoneStatus = this.setStageDoneStatus.bind(this)
   }
 
   componentDidMount() {
@@ -39,16 +47,24 @@ class SellerNotifyPage extends Component {
   setStageStatus(stage, status) {
     this.setState(currentState => {
       const newState = { ...currentState }
-      // there can only be one "doing" stage, so change any existing "doing" to "todo"
       if (status === 'doing') {
+        // there can only be one "doing" stage
         Object.keys(newState.stages).map(stateStage => {
           if (newState.stages[stateStage] === 'doing') {
-            newState.stages[stateStage] = 'todo'
+            newState.stages[stateStage] = currentState.stagesDone[stateStage] ? 'done' : 'todo'
           }
           return true
         })
       }
       newState.stages[stage] = status
+      return newState
+    })
+  }
+
+  setStageDoneStatus(stage, isDone) {
+    this.setState(currentState => {
+      const newState = { ...currentState }
+      newState.stagesDone[stage] = isDone
       return newState
     })
   }
@@ -175,6 +191,7 @@ class SellerNotifyPage extends Component {
                     flow={this.props.flow}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
+                    setStageDoneStatus={this.setStageDoneStatus}
                   />}
               />
               <Route
@@ -188,6 +205,7 @@ class SellerNotifyPage extends Component {
                     deselectSeller={this.deselectSeller}
                     hasSelectedASeller={this.hasSelectedASeller}
                     moveToNextStage={this.moveToNextStage}
+                    setStageDoneStatus={this.setStageDoneStatus}
                   />}
               />
               <Route
@@ -202,6 +220,7 @@ class SellerNotifyPage extends Component {
                     moveToNextStage={this.moveToNextStage}
                     moveToStage={this.moveToStage}
                     handleSubmit={this.props.handleSubmit}
+                    setStageDoneStatus={this.setStageDoneStatus}
                   />}
               />
             </Switch>

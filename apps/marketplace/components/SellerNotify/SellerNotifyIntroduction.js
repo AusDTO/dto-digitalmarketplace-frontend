@@ -10,11 +10,13 @@ export class SellerNotifyIntroduction extends Component {
 
   componentDidMount() {
     this.props.setStageStatus('introduction', 'doing')
+    this.props.setStageDoneStatus('introduction', true)
   }
 
   handleContinueClick(e) {
     e.preventDefault()
     this.props.setStageStatus('introduction', 'done')
+    this.props.setStageDoneStatus('introduction', true)
     this.props.moveToNextStage('introduction')
   }
 

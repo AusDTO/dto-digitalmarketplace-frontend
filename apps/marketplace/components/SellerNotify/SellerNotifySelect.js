@@ -21,6 +21,7 @@ export class SellerNotifySelect extends Component {
     e.preventDefault()
     if (this.props.hasSelectedASeller()) {
       this.props.setStageStatus('select', 'done')
+      this.props.setStageDoneStatus('select', true)
       this.props.moveToNextStage('select')
     }
   }
@@ -28,15 +29,20 @@ export class SellerNotifySelect extends Component {
   handleChange(e) {
     const el = e.target
     const checked = el.checked
-    const setDisabledState = () => {
+    const callback = () => {
       this.setState({
         disabled: !this.props.hasSelectedASeller()
       })
+      if (!this.props.hasSelectedASeller()) {
+        this.props.setStageDoneStatus('select', false)
+      } else {
+        this.props.setStageDoneStatus('select', true)
+      }
     }
     if (checked) {
-      this.props.selectSeller(el.name, setDisabledState)
+      this.props.selectSeller(el.name, callback)
     } else {
-      this.props.deselectSeller(el.name, setDisabledState)
+      this.props.deselectSeller(el.name, callback)
     }
   }
 

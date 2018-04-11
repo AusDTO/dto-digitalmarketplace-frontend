@@ -58,6 +58,7 @@ test('Having no selected sellers shows an error alert', () => {
 
 test('Form submit sends subject, email content, and the selected sellers list to the API', () => {
   const mockSetStatusChange = jest.fn()
+  const mockSetStageDoneStatus = jest.fn()
   const mockHasSelectedASeller = jest.fn()
   const mockHandleSubmit = jest.fn()
   mockHasSelectedASeller.mockReturnValue(true)
@@ -69,6 +70,7 @@ test('Form submit sends subject, email content, and the selected sellers list to
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={[{ supplier_code: 2, supplier_name: 'Supplier 2' }]}
       handleSubmit={mockHandleSubmit}
+      setStageDoneStatus={mockSetStageDoneStatus}
     />
   )
 

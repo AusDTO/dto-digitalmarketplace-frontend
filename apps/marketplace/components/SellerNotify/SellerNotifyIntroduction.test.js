@@ -7,23 +7,36 @@ Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock('shared/Icon/_getIcons')
 
-test('Component mounts and sets its stage to "doing"', () => {
+test('Component mounts and sets its stage to "doing" and the "done" status as true', () => {
   const mockSetStatusChange = jest.fn()
-  mount(<SellerNotifyIntroduction flow="unsuccessful" setStageStatus={mockSetStatusChange} />)
+  const mockSetStageDoneStatus = jest.fn()
+  mount(
+    <SellerNotifyIntroduction
+      flow="unsuccessful"
+      setStageStatus={mockSetStatusChange}
+      setStageDoneStatus={mockSetStageDoneStatus}
+    />
+  )
 
   expect(mockSetStatusChange.mock.calls.length).toBe(1)
   expect(mockSetStatusChange.mock.calls[0][0]).toBe('introduction')
   expect(mockSetStatusChange.mock.calls[0][1]).toBe('doing')
+
+  expect(mockSetStageDoneStatus.mock.calls.length).toBe(1)
+  expect(mockSetStageDoneStatus.mock.calls[0][0]).toBe('introduction')
+  expect(mockSetStageDoneStatus.mock.calls[0][1]).toBe(true)
 })
 
 test('Clicking the continue button changes the status to "done" and moves to the next stage', () => {
   const mockSetStatusChange = jest.fn()
+  const mockSetStageDoneStatus = jest.fn()
   const moveToNextStage = jest.fn()
   const component = mount(
     <SellerNotifyIntroduction
       flow="unsuccessful"
       setStageStatus={mockSetStatusChange}
       moveToNextStage={moveToNextStage}
+      setStageDoneStatus={mockSetStageDoneStatus}
     />
   )
 
@@ -31,6 +44,9 @@ test('Clicking the continue button changes the status to "done" and moves to the
 
   expect(mockSetStatusChange.mock.calls[1][0]).toBe('introduction')
   expect(mockSetStatusChange.mock.calls[1][1]).toBe('done')
+
+  expect(mockSetStageDoneStatus.mock.calls[1][0]).toBe('introduction')
+  expect(mockSetStageDoneStatus.mock.calls[1][1]).toBe(true)
 
   expect(moveToNextStage.mock.calls.length).toBe(1)
   expect(moveToNextStage.mock.calls[0][0]).toBe('introduction')

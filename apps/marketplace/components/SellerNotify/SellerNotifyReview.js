@@ -63,6 +63,7 @@ export class SellerNotifyReview extends Component {
       selectedSellers: this.props.selectedSellers
     }
     this.props.setStageStatus('review', 'done')
+    this.props.setStageDoneStatus('review', true)
     this.props.handleSubmit(this.props.brief.id, model)
   }
 
@@ -106,6 +107,7 @@ export class SellerNotifyReview extends Component {
               name="subject_line"
               onChange={this.handleSubjectChange}
               value={this.state.subject}
+              required
             />
             <label htmlFor="email_body">Email</label>
             <div
@@ -119,7 +121,7 @@ export class SellerNotifyReview extends Component {
             >
               {this.getEmailContent()}
             </div>
-            <Button onClick={this.handleSubmit} text="Send email" />
+            <Button type="submit" text="Send email" />
           </form>
         </div>
       </div>
