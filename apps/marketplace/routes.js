@@ -23,7 +23,6 @@ export const Routes = () =>
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
-    <Route path={`${rootPath}/insights`} component={ReportPage} />
     <Route path={`${rootPath}/collaborate/funded/:state`} component={CollaboratePage} />
     <Route path={`${rootPath}/collaborate/:stage`} component={CollaboratePage} />
     <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />

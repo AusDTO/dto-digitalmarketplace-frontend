@@ -59,6 +59,10 @@ app.get('/orams*', function(req, res) {
   res.render('orams');
 })
 
+app.get('/2/insights*', function(req, res) {
+  res.redirect('https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616');
+})
+
 app.get('/*', function(req, res) {
   res.render('index');
 })
