@@ -36,8 +36,8 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
             </a>}
           <h2 className={styles.summaryHeading}>What happens next?</h2>
           <BriefResponseSubmittedSummary brief={brief} />
-          <h2 className="uikit-display-2">
-            <b>How did you find submitting this application?</b>
+          <h2>
+            How did you find submitting this application?
           </h2>
           <Feedback
             app={app}
