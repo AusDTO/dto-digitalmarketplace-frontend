@@ -36,9 +36,7 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
             </a>}
           <h2 className={styles.summaryHeading}>What happens next?</h2>
           <BriefResponseSubmittedSummary brief={brief} />
-          <h2>
-            How did you find submitting this application?
-          </h2>
+          <h2>How did you find submitting this application?</h2>
           <Feedback
             app={app}
             handleSubmit={handleSubmit}
