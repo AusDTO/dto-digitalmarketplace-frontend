@@ -20,10 +20,7 @@ export const Routes = () =>
     <Route exact path={rootPath} component={SignupPage} />
     <Route path={`${rootPath}/signup`} component={SignupPage} />
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
-    <Route
-      path={`${rootPath}/brief/:briefId/seller-unsuccessful`}
-      render={() => <SellerNotifyPage flow="unsuccessful" />}
-    />
+    <Route path={`${rootPath}/brief/:briefId/seller-:flow`} component={SellerNotifyPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />

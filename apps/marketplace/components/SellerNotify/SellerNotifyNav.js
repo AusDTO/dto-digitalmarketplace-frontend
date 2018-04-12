@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ProgressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
@@ -19,7 +20,7 @@ export class SellerNotifyNav extends Component {
 
     const items = [
       {
-        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-${navPart}`,
+        link: `${rootPath}/brief/${this.props.briefId}/seller-${navPart}`,
         text: 'Introduction',
         status: this.props.stages.introduction,
         onClick: e => {
@@ -28,7 +29,7 @@ export class SellerNotifyNav extends Component {
         }
       },
       {
-        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-${navPart}/select`,
+        link: `${rootPath}/brief/${this.props.briefId}/seller-${navPart}/select`,
         text: 'Select sellers',
         status: this.props.stages.select,
         onClick: e => {
@@ -37,7 +38,7 @@ export class SellerNotifyNav extends Component {
         }
       },
       {
-        link: `${rootPath}/brief/${this.props.match.params.briefId}/seller-${navPart}/review`,
+        link: `${rootPath}/brief/${this.props.briefId}/seller-${navPart}/review`,
         text: 'Review email',
         status: this.props.stages.review,
         onClick: e => {
@@ -59,7 +60,7 @@ export class SellerNotifyNav extends Component {
 
 SellerNotifyNav.propTypes = {
   flow: PropTypes.string.isRequired,
-  match: PropTypes.object.isRequired
+  briefId: PropTypes.string.isRequired
 }
 
-export default SellerNotifyNav
+export default withRouter(SellerNotifyNav)

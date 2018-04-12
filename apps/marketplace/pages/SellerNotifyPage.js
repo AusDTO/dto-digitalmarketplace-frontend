@@ -75,14 +75,18 @@ class SellerNotifyPage extends Component {
 
     if (index !== -1 && typeof stages[index + 1] !== 'undefined') {
       this.props.history.push(
-        `${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/${stages[index + 1]}`
+        `${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params.flow}/${stages[
+          index + 1
+        ]}`
       )
     }
   }
 
   moveToStage(stage) {
     if (this.state.stages[stage]) {
-      this.props.history.push(`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/${stage}`)
+      this.props.history.push(
+        `${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params.flow}/${stage}`
+      )
     }
   }
 
@@ -179,23 +183,29 @@ class SellerNotifyPage extends Component {
       <div className="row">
         <article role="main">
           <div className="col-sm-4">
-            <SellerNotifyNav {...this.props} {...this.state} setStageStatus={this.setStageStatus} />
+            <SellerNotifyNav
+              {...this.state}
+              flow={this.props.match.params.flow}
+              briefId={this.props.match.params.briefId}
+              setStageStatus={this.setStageStatus}
+            />
           </div>
           <div className="col-sm-8">
             <Switch>
               <Route
                 exact
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params.flow}`}
                 render={() =>
                   <SellerNotifyIntroduction
-                    flow={this.props.flow}
+                    flow={this.props.match.params.flow}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
                     setStageDoneStatus={this.setStageDoneStatus}
                   />}
               />
               <Route
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/select`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params
+                  .flow}/select`}
                 render={() =>
                   <SellerNotifySelect
                     sellers={this.props.sellers}
@@ -209,10 +219,11 @@ class SellerNotifyPage extends Component {
                   />}
               />
               <Route
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.flow}/review`}
+                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params
+                  .flow}/review`}
                 render={() =>
                   <SellerNotifyReview
-                    flow={this.props.flow}
+                    flow={this.props.match.params.flow}
                     brief={this.props.brief}
                     selectedSellers={this.state.selectedSellers}
                     hasSelectedASeller={this.hasSelectedASeller}
@@ -232,8 +243,7 @@ class SellerNotifyPage extends Component {
 }
 
 SellerNotifyPage.propTypes = {
-  match: PropTypes.object.isRequired,
-  flow: PropTypes.string.isRequired
+  match: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

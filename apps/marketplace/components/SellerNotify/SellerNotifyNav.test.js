@@ -15,7 +15,7 @@ const stages = {
 }
 
 test('Nav links are based on the flow property', () => {
-  const component = mount(<SellerNotifyNav flow="testflow" stages={stages} match={{ params: { briefId: 1 } }} />)
+  const component = mount(<SellerNotifyNav flow="testflow" briefId="1" stages={stages} />)
   const links = component.find('a')
   expect(links.length).toEqual(3)
   expect(links.get(0).props.href).toEqual(`${rootPath}/brief/1/seller-testflow`)
