@@ -127,12 +127,12 @@ const BriefSpecialistResponseForm = ({
                   />
                   {app.supplierCode
                     ? <FilesInput
-                        label="Resume"
+                        label="Résumé"
                         hint="Attachments must be PDF or ODT format and a maximum of 5MB"
                         name="attachedDocumentURL"
                         model={model}
                         formFields={1}
-                        fieldLabel="Upload resume"
+                        fieldLabel="Upload résumé"
                         url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                         api={dmapi}
                         description=""
