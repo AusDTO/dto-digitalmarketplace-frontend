@@ -4,8 +4,8 @@
 .bordered_list__item {
   list-style: none;
   margin: 0;
-  border-bottom: solid 1px #bebebe;
-  padding: 1.5em 0 2em;
+  padding: 1.5em 0 0;
+  overflow: hidden;
 }
 
 .bordered_list__item p {
@@ -13,6 +13,10 @@
 }
 .bordered_list__item div {
   display: inline-block;
+}
+
+.bordered_list__item a {
+  word-wrap: break-word;
 }
 
 .custom_input {
