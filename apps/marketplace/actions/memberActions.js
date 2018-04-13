@@ -3,10 +3,11 @@ import { actions } from 'react-redux-form'
 import { LOAD_SIGNUP_SUCCESS, SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
 import {
   DUPLICATE_USER,
+  EMAIL_NOT_WHITELISTED,
   USER_NOT_CREATED,
   REGISTRATION_NOT_FOUND,
-  UNABLE_TO_SIGNUP,
-  ACCOUNT_TAKEN
+  ACCOUNT_TAKEN,
+  GENERAL_ERROR
 } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -14,6 +15,13 @@ import { sendingRequest, setErrorMessage } from './appActions'
 export const handleSignupSuccess = () => ({ type: SIGNUP_SUCCESS })
 
 export const handleSignupSubmit = model => dispatch => {
+  const getErrorMessage = status =>
+    ({
+      403: EMAIL_NOT_WHITELISTED,
+      409: ACCOUNT_TAKEN,
+      default: GENERAL_ERROR
+    }[status])
+
   dispatch(sendingRequest(true))
   dmapi({
     url: '/signup',
@@ -21,11 +29,8 @@ export const handleSignupSubmit = model => dispatch => {
     data: JSON.stringify(model)
   }).then(response => {
     if (response.error) {
-      if (response.status === 409) {
-        dispatch(setErrorMessage(ACCOUNT_TAKEN))
-      } else {
-        dispatch(setErrorMessage(UNABLE_TO_SIGNUP))
-      }
+      const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
+      dispatch(setErrorMessage(errorMessage))
     } else {
       dispatch(handleSignupSuccess(response))
     }
