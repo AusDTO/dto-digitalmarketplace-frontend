@@ -3,7 +3,8 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST
+  ADD_ANOTHER_SPECIALIST,
+  BRIEF_OVERVIEW_SUCCESS
 } from '../constants/constants'
 
 const defaultBriefState = {
@@ -20,6 +21,13 @@ const defaultBriefState = {
 
 const briefReducer = (state = defaultBriefState, action) => {
   switch (action.type) {
+    case BRIEF_OVERVIEW_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief,
+        loadBriefOverviewSuccess: true,
+        loadBriefOverviewErrored: false
+      }
     case BRIEF_INFO_FETCH_DATA_SUCCESS:
       return {
         ...state,

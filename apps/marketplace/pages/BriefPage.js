@@ -20,6 +20,7 @@ import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/Brief
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
+import BriefOverview from 'marketplace/components/Brief/BriefOverview'
 
 class BriefPage extends Component {
   constructor(props) {
@@ -106,6 +107,10 @@ class BriefPage extends Component {
         {currentlySending
           ? <LoadingIndicatorFullPage />
           : <Switch>
+              <Route
+                path={`${match.url}/overview`}
+                render={() => <BriefOverview setFocus={setFocus} {...this.props} />}
+              />
               <Route
                 path={`${match.url}/published`}
                 render={() =>

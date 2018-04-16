@@ -1,5 +1,6 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
@@ -9,6 +10,17 @@ import {
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
+
+export const handleBriefOverviewSuccess = response => ({
+  type: BRIEF_OVERVIEW_SUCCESS,
+  brief: response
+})
+
+export const loadBriefOverview = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  dispatch(handleBriefOverviewSuccess(BRIEF_OVERVIEW_SUCCESS, JSON.stringify({ brief: 123 })))
+  dispatch(sendingRequest(false))
+}
 
 export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
