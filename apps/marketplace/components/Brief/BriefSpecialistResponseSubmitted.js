@@ -7,6 +7,8 @@ import PropTypes from 'prop-types'
 import PageAlert from '@gov.au/page-alerts'
 import BriefResponseSubmittedSummary from './BriefResponseSubmittedSummary'
 
+import styles from './BriefSpecialistResponseSubmitted.scss'
+
 const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, match, app, handleSubmit }) =>
   <div className="row">
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
@@ -32,11 +34,9 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
             <a className="uikit-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist/respond`}>
               Add another specialist
             </a>}
-          <h2>What happens next?</h2>
+          <h2 className={styles.summaryHeading}>What happens next?</h2>
           <BriefResponseSubmittedSummary brief={brief} />
-          <h2 className="uikit-display-2">
-            <b>How did you find submitting this application?</b>
-          </h2>
+          <h2>How did you find submitting this application?</h2>
           <Feedback
             app={app}
             handleSubmit={handleSubmit}
