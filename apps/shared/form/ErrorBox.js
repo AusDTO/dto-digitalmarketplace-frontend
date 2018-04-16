@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import get from 'lodash/get'
 
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import { getInvalidFields } from './errorMessageSelector'
 
@@ -44,7 +44,7 @@ export class ErrorBoxComponent extends React.Component {
     }
 
     return (
-      <PageAlert as="error">
+      <AUpageAlert as="error">
         <h4 id="validation-masthead-heading" ref={this.setRef} tabIndex="-1">
           {title || 'There was a problem with the details you gave'}
         </h4>
@@ -65,7 +65,7 @@ export class ErrorBoxComponent extends React.Component {
               {errorMessage}
             </li>}
         </ul>
-      </PageAlert>
+      </AUpageAlert>
     )
   }
 }

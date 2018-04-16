@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
 import { required, validEmail } from 'shared/validators'
@@ -46,12 +46,12 @@ const SignupForm = props => {
           <div>
             {signupSuccess &&
               <div>
-                <PageAlert as="success">
+                <AUpageAlert as="success">
                   <h4>Signup email sent</h4>
-                </PageAlert>
+                </AUpageAlert>
                 <article role="main">
                   <header className="page-heading page-heading-without-breadcrumb">
-                    <h1>Thanks for requesting access to the Digital Marketplace.</h1>
+                    <h1 className="au-display-xl">Thanks for requesting access to the Digital Marketplace.</h1>
                   </header>
                   {isBuyer && signupForm.employment_status === 'contractor'
                     ? <div>
@@ -86,7 +86,7 @@ const SignupForm = props => {
             {!signupSuccess &&
               <Layout>
                 <header>
-                  <h1>Let’s get started</h1>
+                  <h1 className="au-display-xl">Let’s get started</h1>
                 </header>
                 <article role="main">
                   <ErrorBox
@@ -229,12 +229,12 @@ const SignupForm = props => {
                             validEmail: 'A validly formatted email is required.'
                           }}
                         />
-                        <PageAlert as="info">
+                        <AUpageAlert as="info">
                           <p>
                             Remember to let this person know we’ll be sending them an email requesting their
                             authorisation.
                           </p>
-                        </PageAlert>
+                        </AUpageAlert>
                       </div>}
                     {children}
                     <p>
@@ -248,7 +248,7 @@ const SignupForm = props => {
                     {currentlySending
                       ? <LoadingButton />
                       : <input
-                          className="uikit-btn"
+                          className="au-btn"
                           type="submit"
                           value="Create your account"
                           onClick={onSubmitClicked}

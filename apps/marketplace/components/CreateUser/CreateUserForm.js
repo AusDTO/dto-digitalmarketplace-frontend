@@ -83,7 +83,7 @@ const CreateUserForm = props => {
         <div className={styles.formSubmitBtnWrapper}>
           {currentlySending
             ? <LoadingButton />
-            : <input className="uikit-btn" type="submit" value="Join the Marketplace" onClick={onSubmitClicked} />}
+            : <input className="au-btn" type="submit" value="Join the Marketplace" onClick={onSubmitClicked} />}
         </div>
       </Form>
     </div>

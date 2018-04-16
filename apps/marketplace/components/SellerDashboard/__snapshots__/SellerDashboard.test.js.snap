@@ -49,7 +49,7 @@ ReactWrapper {
                 class="briefsFilter"
               >
                 <ul
-                  class="uikit-link-list uikit-link-list--inline"
+                  class="au-link-list au-link-list--inline"
                 >
                   <li>
                     <a
@@ -68,12 +68,12 @@ ReactWrapper {
                 </ul>
               </div>
               <span
-                class="uikit-display-2 lightText"
+                class="au-display-2 lightText"
               >
                 test supplier
               </span>
               <h1
-                class="uikit-display-5"
+                class="au-display-xl"
               >
                 Dashboard
               </h1>
@@ -107,7 +107,7 @@ ReactWrapper {
                 className="briefsFilter"
               >
                 <ul
-                  className="uikit-link-list uikit-link-list--inline"
+                  className="au-link-list au-link-list--inline"
                 >
                   <li>
                     <a
@@ -126,12 +126,12 @@ ReactWrapper {
                 </ul>
               </div>
               <span
-                className="uikit-display-2 lightText"
+                className="au-display-2 lightText"
               >
                 test supplier
               </span>
               <h1
-                className="uikit-display-5"
+                className="au-display-xl"
               >
                 Dashboard
               </h1>
@@ -166,7 +166,7 @@ ReactWrapper {
                   class="briefsFilter"
                 >
                   <ul
-                    class="uikit-link-list uikit-link-list--inline"
+                    class="au-link-list au-link-list--inline"
                   >
                     <li>
                       <a
@@ -185,12 +185,12 @@ ReactWrapper {
                   </ul>
                 </div>
                 <span
-                  class="uikit-display-2 lightText"
+                  class="au-display-2 lightText"
                 >
                   test supplier
                 </span>
                 <h1
-                  class="uikit-display-5"
+                  class="au-display-xl"
                 >
                   Dashboard
                 </h1>
@@ -221,7 +221,7 @@ ReactWrapper {
                     className="briefsFilter"
                   >
                     <ul
-                      className="uikit-link-list uikit-link-list--inline"
+                      className="au-link-list au-link-list--inline"
                     >
                       <li>
                         <a
@@ -240,12 +240,12 @@ ReactWrapper {
                     </ul>
                   </div>
                   <span
-                    className="uikit-display-2 lightText"
+                    className="au-display-2 lightText"
                   >
                     test supplier
                   </span>
                   <h1
-                    className="uikit-display-5"
+                    className="au-display-xl"
                   >
                     Dashboard
                   </h1>
@@ -278,7 +278,7 @@ ReactWrapper {
                     class="briefsFilter"
                   >
                     <ul
-                      class="uikit-link-list uikit-link-list--inline"
+                      class="au-link-list au-link-list--inline"
                     >
                       <li>
                         <a
@@ -297,12 +297,12 @@ ReactWrapper {
                     </ul>
                   </div>
                   <span
-                    class="uikit-display-2 lightText"
+                    class="au-display-2 lightText"
                   >
                     test supplier
                   </span>
                   <h1
-                    class="uikit-display-5"
+                    class="au-display-xl"
                   >
                     Dashboard
                   </h1>
@@ -328,7 +328,7 @@ ReactWrapper {
                     className="briefsFilter"
                   >
                     <ul
-                      className="uikit-link-list uikit-link-list--inline"
+                      className="au-link-list au-link-list--inline"
                     >
                       <li>
                         <a
@@ -347,12 +347,12 @@ ReactWrapper {
                     </ul>
                   </div>
                   <span
-                    className="uikit-display-2 lightText"
+                    className="au-display-2 lightText"
                   >
                     test supplier
                   </span>
                   <h1
-                    className="uikit-display-5"
+                    className="au-display-xl"
                   >
                     Dashboard
                   </h1>
@@ -379,7 +379,7 @@ ReactWrapper {
                       class="briefsFilter"
                     >
                       <ul
-                        class="uikit-link-list uikit-link-list--inline"
+                        class="au-link-list au-link-list--inline"
                       >
                         <li>
                           <a
@@ -398,12 +398,12 @@ ReactWrapper {
                       </ul>
                     </div>
                     <span
-                      class="uikit-display-2 lightText"
+                      class="au-display-2 lightText"
                     >
                       test supplier
                     </span>
                     <h1
-                      class="uikit-display-5"
+                      class="au-display-xl"
                     >
                       Dashboard
                     </h1>
@@ -426,7 +426,7 @@ ReactWrapper {
                         className="briefsFilter"
                       >
                         <ul
-                          className="uikit-link-list uikit-link-list--inline"
+                          className="au-link-list au-link-list--inline"
                         >
                           <li>
                             <a
@@ -445,12 +445,12 @@ ReactWrapper {
                         </ul>
                       </div>,
                       <span
-                        className="uikit-display-2 lightText"
+                        className="au-display-2 lightText"
                       >
                         test supplier
                       </span>,
                       <h1
-                        className="uikit-display-5"
+                        className="au-display-xl"
                       >
                         Dashboard
                       </h1>,
@@ -474,7 +474,7 @@ ReactWrapper {
                         class="briefsFilter"
                       >
                         <ul
-                          class="uikit-link-list uikit-link-list--inline"
+                          class="au-link-list au-link-list--inline"
                         >
                           <li>
                             <a
@@ -496,7 +496,7 @@ ReactWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": <ul
-                          className="uikit-link-list uikit-link-list--inline"
+                          className="au-link-list au-link-list--inline"
                         >
                           <li>
                             <a
@@ -519,7 +519,7 @@ ReactWrapper {
                       "rendered": Array [
                         Object {
                           "instance": <ul
-                            class="uikit-link-list uikit-link-list--inline"
+                            class="au-link-list au-link-list--inline"
                           >
                             <li>
                               <a
@@ -555,7 +555,7 @@ ReactWrapper {
                                 </a>
                               </li>,
                             ],
-                            "className": "uikit-link-list uikit-link-list--inline",
+                            "className": "au-link-list au-link-list--inline",
                           },
                           "ref": null,
                           "rendered": Array [
@@ -647,7 +647,7 @@ ReactWrapper {
                     },
                     Object {
                       "instance": <span
-                        class="uikit-display-2 lightText"
+                        class="au-display-2 lightText"
                       >
                         test supplier
                       </span>,
@@ -655,7 +655,7 @@ ReactWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": "test supplier",
-                        "className": "uikit-display-2 lightText",
+                        "className": "au-display-2 lightText",
                       },
                       "ref": null,
                       "rendered": Array [
@@ -665,7 +665,7 @@ ReactWrapper {
                     },
                     Object {
                       "instance": <h1
-                        class="uikit-display-5"
+                        class="au-display-xl"
                       >
                         Dashboard
                       </h1>,
@@ -673,7 +673,7 @@ ReactWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": "Dashboard",
-                        "className": "uikit-display-5",
+                        "className": "au-display-xl",
                       },
                       "ref": null,
                       "rendered": Array [
@@ -776,7 +776,7 @@ ReactWrapper {
                   class="briefsFilter"
                 >
                   <ul
-                    class="uikit-link-list uikit-link-list--inline"
+                    class="au-link-list au-link-list--inline"
                   >
                     <li>
                       <a
@@ -795,12 +795,12 @@ ReactWrapper {
                   </ul>
                 </div>
                 <span
-                  class="uikit-display-2 lightText"
+                  class="au-display-2 lightText"
                 >
                   test supplier
                 </span>
                 <h1
-                  class="uikit-display-5"
+                  class="au-display-xl"
                 >
                   Dashboard
                 </h1>
@@ -834,7 +834,7 @@ ReactWrapper {
                   className="briefsFilter"
                 >
                   <ul
-                    className="uikit-link-list uikit-link-list--inline"
+                    className="au-link-list au-link-list--inline"
                   >
                     <li>
                       <a
@@ -853,12 +853,12 @@ ReactWrapper {
                   </ul>
                 </div>
                 <span
-                  className="uikit-display-2 lightText"
+                  className="au-display-2 lightText"
                 >
                   test supplier
                 </span>
                 <h1
-                  className="uikit-display-5"
+                  className="au-display-xl"
                 >
                   Dashboard
                 </h1>
@@ -893,7 +893,7 @@ ReactWrapper {
                     class="briefsFilter"
                   >
                     <ul
-                      class="uikit-link-list uikit-link-list--inline"
+                      class="au-link-list au-link-list--inline"
                     >
                       <li>
                         <a
@@ -912,12 +912,12 @@ ReactWrapper {
                     </ul>
                   </div>
                   <span
-                    class="uikit-display-2 lightText"
+                    class="au-display-2 lightText"
                   >
                     test supplier
                   </span>
                   <h1
-                    class="uikit-display-5"
+                    class="au-display-xl"
                   >
                     Dashboard
                   </h1>
@@ -948,7 +948,7 @@ ReactWrapper {
                       className="briefsFilter"
                     >
                       <ul
-                        className="uikit-link-list uikit-link-list--inline"
+                        className="au-link-list au-link-list--inline"
                       >
                         <li>
                           <a
@@ -967,12 +967,12 @@ ReactWrapper {
                       </ul>
                     </div>
                     <span
-                      className="uikit-display-2 lightText"
+                      className="au-display-2 lightText"
                     >
                       test supplier
                     </span>
                     <h1
-                      className="uikit-display-5"
+                      className="au-display-xl"
                     >
                       Dashboard
                     </h1>
@@ -1005,7 +1005,7 @@ ReactWrapper {
                       class="briefsFilter"
                     >
                       <ul
-                        class="uikit-link-list uikit-link-list--inline"
+                        class="au-link-list au-link-list--inline"
                       >
                         <li>
                           <a
@@ -1024,12 +1024,12 @@ ReactWrapper {
                       </ul>
                     </div>
                     <span
-                      class="uikit-display-2 lightText"
+                      class="au-display-2 lightText"
                     >
                       test supplier
                     </span>
                     <h1
-                      class="uikit-display-5"
+                      class="au-display-xl"
                     >
                       Dashboard
                     </h1>
@@ -1055,7 +1055,7 @@ ReactWrapper {
                       className="briefsFilter"
                     >
                       <ul
-                        className="uikit-link-list uikit-link-list--inline"
+                        className="au-link-list au-link-list--inline"
                       >
                         <li>
                           <a
@@ -1074,12 +1074,12 @@ ReactWrapper {
                       </ul>
                     </div>
                     <span
-                      className="uikit-display-2 lightText"
+                      className="au-display-2 lightText"
                     >
                       test supplier
                     </span>
                     <h1
-                      className="uikit-display-5"
+                      className="au-display-xl"
                     >
                       Dashboard
                     </h1>
@@ -1106,7 +1106,7 @@ ReactWrapper {
                         class="briefsFilter"
                       >
                         <ul
-                          class="uikit-link-list uikit-link-list--inline"
+                          class="au-link-list au-link-list--inline"
                         >
                           <li>
                             <a
@@ -1125,12 +1125,12 @@ ReactWrapper {
                         </ul>
                       </div>
                       <span
-                        class="uikit-display-2 lightText"
+                        class="au-display-2 lightText"
                       >
                         test supplier
                       </span>
                       <h1
-                        class="uikit-display-5"
+                        class="au-display-xl"
                       >
                         Dashboard
                       </h1>
@@ -1153,7 +1153,7 @@ ReactWrapper {
                           className="briefsFilter"
                         >
                           <ul
-                            className="uikit-link-list uikit-link-list--inline"
+                            className="au-link-list au-link-list--inline"
                           >
                             <li>
                               <a
@@ -1172,12 +1172,12 @@ ReactWrapper {
                           </ul>
                         </div>,
                         <span
-                          className="uikit-display-2 lightText"
+                          className="au-display-2 lightText"
                         >
                           test supplier
                         </span>,
                         <h1
-                          className="uikit-display-5"
+                          className="au-display-xl"
                         >
                           Dashboard
                         </h1>,
@@ -1201,7 +1201,7 @@ ReactWrapper {
                           class="briefsFilter"
                         >
                           <ul
-                            class="uikit-link-list uikit-link-list--inline"
+                            class="au-link-list au-link-list--inline"
                           >
                             <li>
                               <a
@@ -1223,7 +1223,7 @@ ReactWrapper {
                         "nodeType": "host",
                         "props": Object {
                           "children": <ul
-                            className="uikit-link-list uikit-link-list--inline"
+                            className="au-link-list au-link-list--inline"
                           >
                             <li>
                               <a
@@ -1246,7 +1246,7 @@ ReactWrapper {
                         "rendered": Array [
                           Object {
                             "instance": <ul
-                              class="uikit-link-list uikit-link-list--inline"
+                              class="au-link-list au-link-list--inline"
                             >
                               <li>
                                 <a
@@ -1282,7 +1282,7 @@ ReactWrapper {
                                   </a>
                                 </li>,
                               ],
-                              "className": "uikit-link-list uikit-link-list--inline",
+                              "className": "au-link-list au-link-list--inline",
                             },
                             "ref": null,
                             "rendered": Array [
@@ -1374,7 +1374,7 @@ ReactWrapper {
                       },
                       Object {
                         "instance": <span
-                          class="uikit-display-2 lightText"
+                          class="au-display-2 lightText"
                         >
                           test supplier
                         </span>,
@@ -1382,7 +1382,7 @@ ReactWrapper {
                         "nodeType": "host",
                         "props": Object {
                           "children": "test supplier",
-                          "className": "uikit-display-2 lightText",
+                          "className": "au-display-2 lightText",
                         },
                         "ref": null,
                         "rendered": Array [
@@ -1392,7 +1392,7 @@ ReactWrapper {
                       },
                       Object {
                         "instance": <h1
-                          class="uikit-display-5"
+                          class="au-display-xl"
                         >
                           Dashboard
                         </h1>,
@@ -1400,7 +1400,7 @@ ReactWrapper {
                         "nodeType": "host",
                         "props": Object {
                           "children": "Dashboard",
-                          "className": "uikit-display-5",
+                          "className": "au-display-xl",
                         },
                         "ref": null,
                         "rendered": Array [

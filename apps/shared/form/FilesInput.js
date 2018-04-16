@@ -14,7 +14,7 @@ const FilesInput = props => {
 
   return (
     <div>
-      <label className="question-heading uikit-text-input__label" htmlFor="file_0">
+      <label className="question-heading au-text-input__label" htmlFor="file_0">
         {label}
       </label>
       <span>

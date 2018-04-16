@@ -4,7 +4,7 @@ import Feedback from 'marketplace/components/Feedback/Feedback'
 import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import BriefResponseSubmittedSummary from './BriefResponseSubmittedSummary'
 
 import styles from './BriefSpecialistResponseSubmitted.scss'
@@ -14,8 +14,8 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12" role="region" aria-live="polite">
         <article role="main">
-          <PageAlert as="success" setFocus={setFocus}>
-            <h1 className="uikit-display-3">
+          <AUpageAlert as="success" setFocus={setFocus}>
+            <h1 className="au-display-3">
               <strong>
                 You have submitted {briefResponses.length} specialist{briefResponses.length === 1 ? '' : 's'} for this
                 opportunity.
@@ -29,9 +29,9 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
                   )})`
                 : `This opportunity closes on ${format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')}`}
             </p>
-          </PageAlert>
+          </AUpageAlert>
           {briefResponses.length < 3 &&
-            <a className="uikit-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist/respond`}>
+            <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist/respond`}>
               Add another specialist
             </a>}
           <h2 className={styles.summaryHeading}>What happens next?</h2>

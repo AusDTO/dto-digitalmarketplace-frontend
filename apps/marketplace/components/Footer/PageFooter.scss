@@ -28,17 +28,3 @@
   height: 80px;
   width: 230px;
 }
-
-.footerWrapper {
-  position: relative;
-  box-sizing: border-box;
-  max-width: 75em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media screen and (min-width: 768px) {
-  .footerWrapper {
-    padding: 0px 1.6em;
-  }
-}

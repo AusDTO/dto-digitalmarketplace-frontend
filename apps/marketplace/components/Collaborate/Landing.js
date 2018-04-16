@@ -260,7 +260,7 @@ const Landing = () =>
             <article width="100%">
               <center>
                 <p>Got an idea, pilot or live project to share?</p>
-                <a href="/collaborate/project/new" className="uikit-btn">
+                <a href="/collaborate/project/new" className="au-btn">
                   Add your project
                 </a>
                 <br />
@@ -280,7 +280,7 @@ const Landing = () =>
               <h3>Need digital products or services for government?</h3>
               <p>Our buyers are from across local, state, territory and federal government.</p>
               <p>
-                <a href="/2/signup" className="uikit-btn">
+                <a href="/2/signup" className="au-btn">
                   Join as a buyer
                 </a>
               </p>
@@ -294,7 +294,7 @@ const Landing = () =>
                 </h3>
                 <p>Access more digital opportunities across all levels of government.</p>
                 <p>
-                  <a href="/become-a-seller" className="uikit-btn">
+                  <a href="/become-a-seller" className="au-btn">
                     Become a seller
                   </a>
                 </p>

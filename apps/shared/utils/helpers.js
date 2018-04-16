@@ -55,7 +55,7 @@ export const replaceMarkup = (text, tagToReplace, replaceWithTag) => {
       if (Object.values(element)[0]) {
         return (
           <span key={i}>
-            {createElement(replaceWithTag, { className: 'uikit-body' }, Object.keys(element)[0])}
+            {createElement(replaceWithTag, { className: 'au-body' }, Object.keys(element)[0])}
           </span>
         )
       } else {

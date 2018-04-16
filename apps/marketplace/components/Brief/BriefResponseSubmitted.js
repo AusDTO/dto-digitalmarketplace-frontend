@@ -2,7 +2,7 @@ import React from 'react'
 import Feedback from 'marketplace/components/Feedback/Feedback'
 import DocumentTitle from 'react-document-title'
 
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import BriefResponseSubmittedSummary from './BriefResponseSubmittedSummary'
 
 const BriefResponseSubmitted = props =>
@@ -10,14 +10,14 @@ const BriefResponseSubmitted = props =>
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          <PageAlert as="success" setFocus={props.setFocus}>
+          <AUpageAlert as="success" setFocus={props.setFocus}>
             <h4>Thanks for your application, your brief response has been sent to the buyer</h4>
-          </PageAlert>
-          <h1 className="uikit-display-4">
+          </AUpageAlert>
+          <h1 className="au-display-4">
             <b>What happens next?</b>
           </h1>
           <BriefResponseSubmittedSummary {...props} />
-          <h2 className="uikit-display-4">
+          <h2 className="au-display-4">
             <b>Help make this service simpler, clearer, faster.</b>
           </h2>
           <Feedback

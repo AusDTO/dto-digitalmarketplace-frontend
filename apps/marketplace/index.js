@@ -24,7 +24,13 @@ const App = () =>
           <Header />
         </header>
         <main id="content" role="region" aria-live="polite">
-          <RootContainer />
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12">
+                <RootContainer />
+              </div>
+            </div>
+          </div>
         </main>
         <Footer />
       </div>

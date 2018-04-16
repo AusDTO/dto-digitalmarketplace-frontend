@@ -7,7 +7,7 @@ import styles from './BriefResponseSubmitted.scss'
 
 const BriefResponseSubmittedSummary = ({ brief }) =>
   <div>
-    <h2 className="uikit-display-2">
+    <h2 className="au-display-2">
       <Icon value="successful" color="#000000" size={24} className={styles.icon} />
       <b>If you are shortlisted for evaluation</b>
     </h2>
@@ -24,7 +24,7 @@ const BriefResponseSubmittedSummary = ({ brief }) =>
         )}
       </ul>}
 
-    <h2 className="uikit-display-2">
+    <h2 className="au-display-2">
       <Icon value="unsuccessful" color="#000000" size={24} className={styles.icon} />
       <b>If you are not shortlisted</b>
     </h2>

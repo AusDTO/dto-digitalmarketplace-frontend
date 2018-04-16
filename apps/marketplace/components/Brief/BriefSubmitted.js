@@ -2,7 +2,7 @@ import React from 'react'
 import format from 'date-fns/format'
 import Feedback from 'marketplace/components/Feedback/Feedback'
 
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
 const BriefSubmitted = props =>
@@ -10,7 +10,7 @@ const BriefSubmitted = props =>
     <DocumentTitle title="Brief Published - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          <PageAlert as="success" setFocus={props.setFocus}>
+          <AUpageAlert as="success" setFocus={props.setFocus}>
             <h4>Your opportunity has been published</h4>
 
             <p>
@@ -21,9 +21,9 @@ const BriefSubmitted = props =>
                 </span>}
             </p>
             <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>View live opportunity</a>
-          </PageAlert>
+          </AUpageAlert>
           <br />
-          <h1 className="uikit-display-4">
+          <h1 className="au-display-4">
             <b>What happens next?</b>
           </h1>
           <ul>

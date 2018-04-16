@@ -1,17 +1,17 @@
 /* eslint-disable */
 import React from 'react'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import styles from './FrameworkError.scss'
 
 const FrameworkError = props => {
   return (
     <main>
       <div className={styles.container}>
-        <PageAlert as="error">
+        <AUpageAlert as="error">
           <h4>
             Only {props.framework} accounts can access this page.
           </h4>
-        </PageAlert>
+        </AUpageAlert>
       </div>
     </main>
   )

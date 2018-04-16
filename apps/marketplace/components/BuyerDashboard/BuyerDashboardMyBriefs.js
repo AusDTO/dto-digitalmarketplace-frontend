@@ -23,7 +23,7 @@ export class BuyerDashboardMyBriefs extends Component {
         <div>
           <div className="row">
             <div className="col-xs-12">
-              <h2>Start your first brief</h2>
+              <h2 className="au-display-lg">Start your first brief</h2>
               <p>
                 <a href={`${rootPath}/create-brief`}>Create a new brief</a> on the Marketplace.
               </p>
