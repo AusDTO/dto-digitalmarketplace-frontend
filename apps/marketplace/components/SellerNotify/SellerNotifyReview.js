@@ -58,6 +58,7 @@ export class SellerNotifyReview extends Component {
   handleSubmit(e) {
     e.preventDefault()
     const model = {
+      flow: this.props.flow,
       subject: this.state.subject,
       content: this.emailContent.innerHTML,
       selectedSellers: this.props.selectedSellers
@@ -100,6 +101,7 @@ export class SellerNotifyReview extends Component {
           </p>
           <SellerNotifySellerList sellers={this.props.selectedSellers} />
           <form onSubmit={this.handleSubmit} className={styles.reviewForm}>
+            <input type="hidden" name="flow" value={this.props.flow} />
             <label htmlFor="input_subject_line">Subject line</label>
             <input
               type="text"

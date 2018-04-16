@@ -56,7 +56,7 @@ test('Having no selected sellers shows an error alert', () => {
   expect(component.find('div[role="alert"]').length).toBe(1)
 })
 
-test('Form submit sends subject, email content, and the selected sellers list to the API', () => {
+test('Form submit sends type, subject, email content, and the selected sellers list to the API', () => {
   const mockSetStatusChange = jest.fn()
   const mockSetStageDoneStatus = jest.fn()
   const mockHasSelectedASeller = jest.fn()
@@ -79,5 +79,5 @@ test('Form submit sends subject, email content, and the selected sellers list to
   expect(mockHandleSubmit.mock.calls.length).toBe(1)
   expect(mockHandleSubmit.mock.calls[0][0]).toEqual(1)
   const model = mockHandleSubmit.mock.calls[0][1]
-  expect(Object.keys(model)).toEqual(['subject', 'content', 'selectedSellers'])
+  expect(Object.keys(model)).toEqual(['flow', 'subject', 'content', 'selectedSellers'])
 })
