@@ -6,7 +6,7 @@ import CategoriesAccordionRadioList from 'orams/components/AccordionRadioList/Ca
 import ResultsTable from 'orams/components/ResultsTable/ResultsTable'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadRegions, loadServices } from 'orams/actions/sellerCatalogueActions'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import styles from './SellerCatalogue.scss'
 
 class SellerCatalogue extends Component {
@@ -27,9 +27,9 @@ class SellerCatalogue extends Component {
 
     if (this.props.errorMessage) {
       return (
-        <PageAlert as="error">
+        <AUpageAlert as="error">
           <h4>There was a problem loading your results</h4>
-        </PageAlert>
+        </AUpageAlert>
       )
     }
 
@@ -43,8 +43,8 @@ class SellerCatalogue extends Component {
       <main className={styles.cataloguePage}>
         <div className="row">
           <div className="col-xs-12 col-sm-12">
-            <div className="uikit-display-6">Service Matrix</div>
-            <div className="uikit-display-2">Select a location and service category to view pricing</div>
+            <div className="au-display-xl">Service Matrix</div>
+            <div className="au-display-lg">Select a location and service category to view pricing</div>
             Click{' '}
             <a rel="external" target="_blank" href="/static/media/documents/orams-locations.csv">
               here

@@ -3,7 +3,7 @@ import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
 import { bindActionCreators } from 'redux'
 import styles from './PricingResultsTable.scss'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 const PricingList = props => {
   const { priceHistoryData } = props
@@ -48,9 +48,9 @@ const PricingList = props => {
                   </div>
                 )}
               </article>
-            : <PageAlert as="info">
+            : <AUpageAlert as="info">
                 <h4>There were no results for your search</h4>
-              </PageAlert>}
+              </AUpageAlert>}
         </div>}
     </div>
   )

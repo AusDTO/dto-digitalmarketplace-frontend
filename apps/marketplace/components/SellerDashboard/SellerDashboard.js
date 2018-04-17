@@ -17,7 +17,7 @@ const SellerDashboard = props =>
               </li>
             </ul>
           </div>
-          <span className={`au-display-2 ${styles.lightText}`}>
+          <span className={`au-display-lg ${styles.lightText}`}>
             {props.supplier.name}
           </span>
           <h1 className="au-display-xl">Dashboard</h1>

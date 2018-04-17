@@ -30,7 +30,7 @@ const LoginForm = props => {
             setFocus={setFocus}
           />
           <header className="page-heading page-heading-without-breadcrumb">
-            <h1 className="au-display-6">
+            <h1 className="au-display-xl">
               Sign in to {framework}
             </h1>
           </header>

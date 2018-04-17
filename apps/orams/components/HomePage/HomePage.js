@@ -57,7 +57,7 @@ export class HomePageComponent extends BaseForm {
           <main>
             <div className="row">
               <div className="col-sm-10 col-xs-12">
-                <div className="uikit-display-4">
+                <div className="au-display-lg">
                   <strong>About ORAMS</strong>
                 </div>
                 <div>

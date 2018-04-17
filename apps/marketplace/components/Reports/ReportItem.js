@@ -51,7 +51,7 @@ const ReportItem = props => {
           <h2
             className={`${styles.reportItemHeading} ${heading !== 'Who is buying?'
               ? styles.pageBreak
-              : ''} au-display-2`}
+              : ''} au-display-lg`}
           >
             {heading}
           </h2>}

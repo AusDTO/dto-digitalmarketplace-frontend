@@ -51,7 +51,7 @@ const BriefSpecialistResponseForm = ({
             ? <div>
                 {briefResponses.length === 0 &&
                   <div>
-                    <h1 className="au-display-5">
+                    <h1 className="au-display-xl">
                       Apply for &lsquo;{brief.title}&rsquo;
                     </h1>
                     <div>
@@ -60,7 +60,7 @@ const BriefSpecialistResponseForm = ({
                     </div>
                     <br />
                   </div>}
-                <div className="au-display-4">
+                <div className="au-display-lg">
                   <strong>
                     Specialist {specialistNumber}
                   </strong>
@@ -90,7 +90,7 @@ const BriefSpecialistResponseForm = ({
                 <div className={styles.stepTitle}>
                   Specialist {specialistNumber} of {MaxSpecialists}
                 </div>
-                <h1 className="au-display-6">
+                <h1 className="au-display-xl">
                   {specialistName}
                 </h1>
                 <h2>About</h2>

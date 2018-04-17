@@ -23,7 +23,7 @@ const BriefSubmitted = props =>
             <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>View live opportunity</a>
           </AUpageAlert>
           <br />
-          <h1 className="au-display-4">
+          <h1 className="au-display-lg">
             <b>What happens next?</b>
           </h1>
           <ul>

@@ -13,11 +13,11 @@ const BriefResponseSubmitted = props =>
           <AUpageAlert as="success" setFocus={props.setFocus}>
             <h4>Thanks for your application, your brief response has been sent to the buyer</h4>
           </AUpageAlert>
-          <h1 className="au-display-4">
+          <h1 className="au-display-lg">
             <b>What happens next?</b>
           </h1>
           <BriefResponseSubmittedSummary {...props} />
-          <h2 className="au-display-4">
+          <h2 className="au-display-lg">
             <b>Help make this service simpler, clearer, faster.</b>
           </h2>
           <Feedback

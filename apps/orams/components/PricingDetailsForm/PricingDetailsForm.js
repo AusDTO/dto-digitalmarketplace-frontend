@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BaseForm from 'shared/form/BaseForm'
 import Layout from 'shared/Layout'
@@ -54,9 +54,9 @@ class PricingDetailsForm extends BaseForm {
 
     if (this.props.errorMessage) {
       return (
-        <PageAlert as="error">
+        <AUpageAlert as="error">
           <h4>There was a problem loading the page</h4>
-        </PageAlert>
+        </AUpageAlert>
       )
     }
 

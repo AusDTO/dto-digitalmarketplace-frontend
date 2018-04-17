@@ -4,7 +4,7 @@ import React from 'react'
 const TermsAndConditions = props => {
   return (
     <main>
-      <h1 className="uikit-display-6">ORAMS Terms of Use</h1>
+      <h1 className="au-display-xl">ORAMS Terms of Use</h1>
 
       <nav className="index-links">
         <h2>On this page</h2>

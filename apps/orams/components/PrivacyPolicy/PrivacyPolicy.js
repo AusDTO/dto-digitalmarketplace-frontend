@@ -4,7 +4,7 @@ import React from 'react'
 const PrivacyPolicy = props => {
   return (
     <main>
-      <h1 className="uikit-display-6">Privacy Statement</h1>
+      <h1 className="au-display-xl">Privacy Statement</h1>
       <p>
         Words the same meaning as defined in the <a href="/terms-of-use">Terms of Use</a>.
       </p>

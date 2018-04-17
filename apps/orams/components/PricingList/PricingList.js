@@ -11,7 +11,7 @@ const PricingList = props => {
   return (
     <div className={styles.container}>
       <header>
-        <h1 className="uikit-display-5" tabIndex="-1">
+        <h1 className="au-display-xl" tabIndex="-1">
           Pricing for {serviceToEdit.serviceName}
           <span>{serviceToEdit.subCategoryName ? ' ' + '(' + serviceToEdit.subCategoryName + ')' : ''}</span>
         </h1>

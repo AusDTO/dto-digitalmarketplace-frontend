@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
-import Accordion from '@gov.au/accordion'
+import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 
 import styles from './AccordionRadioList.scss'
 
@@ -11,7 +11,7 @@ const CategoriesAccordionRadioList = props => {
 
   return (
     <div className={styles.container}>
-      <div className="uikit-display-2">
+      <div className="au-display-lg">
         <strong>
           {props.title}
         </strong>
@@ -19,17 +19,17 @@ const CategoriesAccordionRadioList = props => {
       {categories &&
         categories.map((category, id = uniqueID()) =>
           <div key={id}>
-            <Accordion header={category.name} open={categoryAccordionOpen === category.name + id}>
+            <AUaccordion header={category.name} open={categoryAccordionOpen === category.name + id}>
               <div>
                 {category.subCategories.map((subCategory, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
-                      className="uikit-control-input uikit-control-input--full"
+                      className="au-control-input au-control-input--full"
                       htmlFor={category.name + subCategory.name + subId}
                     >
                       <input
                         id={category.name + subCategory.name + subId}
-                        className="uikit-control-input__input"
+                        className="au-control-input__input"
                         type="radio"
                         name="category"
                         tabIndex="0"
@@ -40,14 +40,14 @@ const CategoriesAccordionRadioList = props => {
                           props.loadTableData()
                         }}
                       />
-                      <span className="uikit-control-input__text">
+                      <span className="au-control-input__text">
                         {subCategory.name}
                       </span>
                     </label>
                   </div>
                 )}
               </div>
-            </Accordion>
+            </AUaccordion>
           </div>
         )}
     </div>

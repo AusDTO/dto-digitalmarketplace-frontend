@@ -14,7 +14,7 @@ const ReportView = props => {
         <div className="col-sm-12 col-xs-12">
           <div>
             <DocumentTitle title={`${title} ${date} | Digital Marketplace`} />
-            <h1 className={`${styles.reportViewTitle} au-display-4`}>
+            <h1 className={`${styles.reportViewTitle} au-display-lg`}>
               {title} <span className={styles.reportViewDate}>{date}</span>
             </h1>
             <a
@@ -25,7 +25,7 @@ const ReportView = props => {
               View this report as a PDF (97KB)
             </a>
           </div>
-          <h2 className={`${styles.reportViewHeading} au-display-2`}>Who are we?</h2>
+          <h2 className={`${styles.reportViewHeading} au-display-lg`}>Who are we?</h2>
           <span>
             The Digital Marketplace is a simple and fast way to buy and sell with government. {' '}
             <strong>It breaks down the barriers of entry for SMEs</strong> (a small to medium enterprise with less than

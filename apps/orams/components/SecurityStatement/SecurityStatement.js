@@ -4,7 +4,7 @@ import React from 'react'
 const SecurityStatement = props => {
   return (
     <main>
-      <h1 className="uikit-display-6">Security statement</h1>
+      <h1 className="au-display-xl">Security statement</h1>
       <p>
         The Digital Marketplace is being delivered to make it easier for government and digital businesses to work
         together. We value transparency while also taking security seriously. This document describes the practices we

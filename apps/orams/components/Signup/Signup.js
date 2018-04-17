@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -25,16 +25,16 @@ const Signup = props => {
     <div>
       {displayStepTwo
         ? <div>
-            <PageAlert as="success">
+            <AUpageAlert as="success">
               <h4>Thanks, this request has been sent to the ORAMS team</h4>
-            </PageAlert>
-            <div className="uikit-display-6">What happens next?</div>
+            </AUpageAlert>
+            <div className="au-display-xl">What happens next?</div>
             <div className={styles.spacer}>An email has been sent to ORAMS panel manager to approve your access.</div>
-            <div className="uikit-display-2">
+            <div className="au-display-lg">
               <strong>If you are approved</strong>
             </div>
             <div className={styles.spacer}>You will receive an email to activate your account.</div>
-            <div className="uikit-display-2">
+            <div className="au-display-lg">
               <strong>If you don’t receive an email within 5 working days </strong>
             </div>
             <div className={styles.spacer}>
@@ -56,7 +56,7 @@ const Signup = props => {
                 />
                 <div className={styles.stepTitle}>Step 1 of 3</div>
                 <header className="page-heading page-heading-without-breadcrumb">
-                  <h1 className="uikit-display-6">Create an account</h1>
+                  <h1 className="au-display-xl">Create an account</h1>
                 </header>
                 <p>
                   To create an account you must be a Rehabilitation Case Manager in a<br />
@@ -96,7 +96,7 @@ const Signup = props => {
                   </p>
                   {currentlySending
                     ? <LoadingButton />
-                    : <input className="uikit-btn" type="submit" value="Create your account" onClick={submitClicked} />}
+                    : <input className="au-btn" type="submit" value="Create your account" onClick={submitClicked} />}
                 </Form>
               </article>
             </div>

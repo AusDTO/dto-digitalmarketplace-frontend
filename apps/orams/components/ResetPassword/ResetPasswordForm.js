@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ErrorBox from '../../../shared/form/ErrorBox'
 import Textfield from '../../../shared/form/Textfield'
 import { passwordLength } from '../../../shared/validators'
@@ -27,14 +27,14 @@ const ResetPasswordForm = props => {
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
             {resetPasswordSuccess
-              ? <PageAlert as="success">
+              ? <AUpageAlert as="success">
                   <h4>You have successfully changed your password</h4>
                   <span>
                     <p>
                       Please <a href={`${rootPath}/login`}> login </a> to continue.
                     </p>
                   </span>
-                </PageAlert>
+                </AUpageAlert>
               : <ErrorBox
                   title="There was a problem resetting your password"
                   model={model}
@@ -42,7 +42,7 @@ const ResetPasswordForm = props => {
                   setFocus={setFocus}
                 />}
             <header className="page-heading page-heading-without-breadcrumb">
-              <h1 className="uikit-display-5">Reset password</h1>
+              <h1 className="au-display-xl">Reset password</h1>
             </header>
             <Form
               model={model}
@@ -86,7 +86,7 @@ const ResetPasswordForm = props => {
                 }}
               />
               <p className={styles.buttonWrapper}>
-                <input className="uikit-btn" type="submit" value="Reset password" onClick={submitClicked} />
+                <input className="au-btn" type="submit" value="Reset password" onClick={submitClicked} />
               </p>
             </Form>
           </article>

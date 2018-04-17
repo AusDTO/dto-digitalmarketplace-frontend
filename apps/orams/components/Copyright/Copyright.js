@@ -4,7 +4,7 @@ import React from 'react'
 const Copyright = props => {
   return (
     <main>
-      <h1 className="uikit-display-6">Copyright</h1>
+      <h1 className="au-display-xl">Copyright</h1>
       <p />
       <p>
         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">

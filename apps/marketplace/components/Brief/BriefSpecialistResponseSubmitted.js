@@ -15,7 +15,7 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
       <div className="col-sm-push-2 col-sm-8 col-xs-12" role="region" aria-live="polite">
         <article role="main">
           <AUpageAlert as="success" setFocus={setFocus}>
-            <h1 className="au-display-3">
+            <h1 className="au-display-lg">
               <strong>
                 You have submitted {briefResponses.length} specialist{briefResponses.length === 1 ? '' : 's'} for this
                 opportunity.

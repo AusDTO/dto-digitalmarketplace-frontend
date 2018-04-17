@@ -27,7 +27,7 @@ class SellerProfile extends Component {
                 <main>
                   <div className="row">
                     <div className="col-xs-12 col-sm-9">
-                      <div className="uikit-display-5">
+                      <div className="au-display-xl">
                         {supplierData.name}
                       </div>
                       <p>
@@ -54,7 +54,7 @@ class SellerProfile extends Component {
                           {supplierData.contact_phone}
                         </div>
                         <a href={'mailto:' + supplierData.contact_email}>
-                          <div className="uikit-btn">Email Seller</div>
+                          <div className="au-btn">Email Seller</div>
                         </a>
                       </div>
                     </div>
