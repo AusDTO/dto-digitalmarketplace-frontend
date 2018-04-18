@@ -13,13 +13,21 @@ import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleBriefOverviewSuccess = response => ({
   type: BRIEF_OVERVIEW_SUCCESS,
-  brief: response
+  framework: response.data.framework,
+  lot: response.data.lot,
+  title: response.data.title
 })
 
 export const loadBriefOverview = briefId => dispatch => {
   dispatch(sendingRequest(true))
-  dispatch(handleBriefOverviewSuccess(BRIEF_OVERVIEW_SUCCESS, JSON.stringify({ brief: 123 })))
-  dispatch(sendingRequest(false))
+  dmapi({ url: `/brief/${briefId}/overview` }).then(response => {
+    if (!response || response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(handleBriefOverviewSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
 }
 
 export const handleBriefInfoSuccess = response => ({

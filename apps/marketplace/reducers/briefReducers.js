@@ -24,7 +24,9 @@ const briefReducer = (state = defaultBriefState, action) => {
     case BRIEF_OVERVIEW_SUCCESS:
       return {
         ...state,
-        brief: action.brief,
+        framework: action.framework,
+        lot: action.lot,
+        title: action.title,
         loadBriefOverviewSuccess: true,
         loadBriefOverviewErrored: false
       }

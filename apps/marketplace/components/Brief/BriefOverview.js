@@ -1,36 +1,20 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
-import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBriefOverview } from 'marketplace/actions/briefActions'
-import { rootPath } from 'marketplace/routes'
+import styles from './BriefOverview.scss'
 
-export class BriefOverview extends Component {
-  componentDidMount() {
-    this.props.loadData()
-  }
-
-  render() {
-    if (this.props.currentlySending) {
-      return <LoadingIndicatorFullPage />
-    }
-
-    return (
+const BriefOverview = props =>
+  <div className={`${styles.header} row`}>
+    <div className="col-md-12 col-sm-12">
+      <small className={styles.organisation}>Overview</small>
+      <h1 className="uikit-display-5">
+        {props.title}
+      </h1>
       <div className="row">
-        <h2>New overview</h2>
+        <div className="col-xs-12 col-sm-8 col-md-9">
+          {/* <BriefOverviewSection number="1" title="Publish your brief" /> */}
+        </div>
       </div>
-    )
-  }
-}
+    </div>
+  </div>
 
-const mapStateToProps = state => ({
-//   items: state.brief.buyerDashboardMyBriefs.items,
-  loadSuccess: state.brief.loadBriefOverviewSuccess,
-  currentlySending: state.app.currentlySending
-})
-
-const mapDispatchToProps = dispatch => ({
-  loadData: () => dispatch(loadBriefOverview())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(BriefOverview)
+export default BriefOverview
