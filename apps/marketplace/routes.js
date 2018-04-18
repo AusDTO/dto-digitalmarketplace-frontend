@@ -11,7 +11,7 @@ import CollaboratePage from './pages/CollaboratePage'
 import SellerDashboardPage from './pages/SellerDashboardPage'
 import BuyerDashboardPage from './pages/BuyerDashboardPage'
 import BriefChoicePage from './pages/BriefChoicePage'
-import BriefOverviewPage from './pages/BriefOverviewPage';
+import BriefOverviewPage from './pages/BriefOverviewPage'
 
 export const rootPath = '/2'
 

@@ -5,7 +5,7 @@ import { loadBriefOverview } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefOverview from 'marketplace/components/Brief/BriefOverview'
 
-export class BriefOverviewPage extends Component {
+export class BriefOverviewPageComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -52,4 +52,6 @@ const mapDispatchToProps = dispatch => ({
   loadData: briefId => dispatch(loadBriefOverview(briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BriefOverviewPage)
+const BriefOverviewPage = connect(mapStateToProps, mapDispatchToProps)(BriefOverviewPageComponent)
+
+export default BriefOverviewPage
