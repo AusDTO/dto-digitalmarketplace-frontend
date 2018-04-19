@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const SellerNotifyEmailUnsuccessful = props =>
   <div>
@@ -26,5 +27,9 @@ const SellerNotifyEmailUnsuccessful = props =>
     </ul>
     <p>To assist you with your future applications, the Marketplace team have put together a debrief for you.</p>
   </div>
+
+SellerNotifyEmailUnsuccessful.propTypes = {
+  brief: PropTypes.object.isRequired
+}
 
 export default SellerNotifyEmailUnsuccessful
