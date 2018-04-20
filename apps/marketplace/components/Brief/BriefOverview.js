@@ -78,6 +78,13 @@ export class BriefOverview extends Component {
       }
     ]
 
+    const evaluationLinks = [
+      {
+        link: `/static/media/documents/Scoring_Template.xlsx`,
+        text: 'Evaluation template (XLSX 13KB)'
+      }
+    ]
+
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12">
@@ -103,6 +110,7 @@ export class BriefOverview extends Component {
                 status="To do"
                 links={shortlistResponsesLinks}
               />
+              <BriefOverviewSection number="4" title="Evaluate specialists" status="To do" links={evaluationLinks} />
             </div>
           </div>
         </div>
