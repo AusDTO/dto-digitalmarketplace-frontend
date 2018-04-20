@@ -64,6 +64,13 @@ export class BriefOverview extends Component {
       }
     ]
 
+    const liveOpportunityLinks = [
+      {
+        link: `${publishYourBriefPath}/supplier-questions/answer-question`,
+        text: 'Answer a question'
+      }
+    ]
+
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12">
@@ -76,6 +83,12 @@ export class BriefOverview extends Component {
                 title="Publish your brief"
                 status="In progress"
                 links={publishYourBriefLinks}
+              />
+              <BriefOverviewSection
+                number="2"
+                title="While the opportunity is live"
+                status="To do"
+                links={liveOpportunityLinks}
               />
             </div>
           </div>
