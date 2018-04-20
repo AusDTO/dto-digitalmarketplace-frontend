@@ -46,7 +46,7 @@ export class BriefOverview extends Component {
         text: 'Shortlist and evaluation process'
       },
       {
-        link: `${publishYourBriefPath}/how-long-your-brief-will-be-open/requirementsLength`,
+        link: `${publishYourBriefPath}/edit/how-long-your-brief-will-be-open/requirementsLength`,
         text: 'How long your brief will be open'
       },
       {
