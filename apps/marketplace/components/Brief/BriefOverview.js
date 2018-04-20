@@ -65,7 +65,7 @@ export class BriefOverview extends Component {
     ]
 
     return (
-      <div className={`${styles.header} row`}>
+      <div className="row">
         <div className="col-md-12 col-sm-12">
           <span className={styles.overview}>Overview</span>
           <AUheading size="5" level="1" text={this.props.title} />
