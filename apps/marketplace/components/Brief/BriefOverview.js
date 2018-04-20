@@ -71,7 +71,7 @@ export class BriefOverview extends Component {
       }
     ]
 
-    const shortlistResponsesLinks = [
+    const shortlistLinks = [
       {
         link: `${publishYourBriefPath}/responses`,
         text: 'View responses'
@@ -115,12 +115,7 @@ export class BriefOverview extends Component {
                 status="To do"
                 links={liveOpportunityLinks}
               />
-              <BriefOverviewSection
-                number="3"
-                title="Shortlist responses"
-                status="To do"
-                links={shortlistResponsesLinks}
-              />
+              <BriefOverviewSection number="3" title="Shortlist responses" status="To do" links={shortlistLinks} />
               <BriefOverviewSection number="4" title="Evaluate specialists" status="To do" links={evaluationLinks} />
               <BriefOverviewSection number="5" title="Create a work order" status="To do" links={workOrderLinks} />
             </div>
