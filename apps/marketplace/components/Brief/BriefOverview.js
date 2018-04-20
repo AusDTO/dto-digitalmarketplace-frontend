@@ -85,6 +85,17 @@ export class BriefOverview extends Component {
       }
     ]
 
+    const workOrderLinks = [
+      {
+        link: `${publishYourBriefPath}/work-orders/create`,
+        text: 'Select seller'
+      },
+      {
+        link: `/work-orders/work_order_id`,
+        text: 'Edit work order'
+      }
+    ]
+
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12">
@@ -111,6 +122,7 @@ export class BriefOverview extends Component {
                 links={shortlistResponsesLinks}
               />
               <BriefOverviewSection number="4" title="Evaluate specialists" status="To do" links={evaluationLinks} />
+              <BriefOverviewSection number="5" title="Create a work order" status="To do" links={workOrderLinks} />
             </div>
           </div>
         </div>
