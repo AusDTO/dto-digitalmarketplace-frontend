@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { loadBriefOverview } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefOverview from 'marketplace/components/Brief/BriefOverview'
+import { isOutcome, isSpecialist } from 'marketplace/components/helpers.js'
 
 export class BriefOverviewPageComponent extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export class BriefOverviewPageComponent extends Component {
               setFocus={setFocus}
               {...this.props}
               briefId={match.params.briefId}
-              title={this.props.title}
+              // title={this.props.title}
             />}
       </div>
     )
@@ -44,6 +45,9 @@ export class BriefOverviewPageComponent extends Component {
 const mapStateToProps = state => ({
   loadSuccess: state.brief.loadBriefOverviewSuccess,
   framework: state.brief.framework,
+  isOutcome: isOutcome(state.brief.lot),
+  isSpecialist: isSpecialist(state.brief.lot),
+  lot: state.brief.lot,
   title: state.brief.title,
   currentlySending: state.app.currentlySending
 })
