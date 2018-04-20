@@ -7,6 +7,10 @@ h2 {
   padding-bottom: 1.6rem;
 }
 
+.briefOverviewSection ~ .briefOverviewSection {
+  padding-top: 1.6rem;
+}
+
 .briefOverviewSectionNumber {
   margin-right: 2rem;
 }
