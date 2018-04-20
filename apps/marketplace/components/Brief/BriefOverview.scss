@@ -1,0 +1,26 @@
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.organisation {
+  opacity: 0.6;
+}
+
+.item-number {
+  margin: 0 0 0 -1.5rem;
+  padding-right: 2.5rem;
+  // position: absolute;
+}
+
+ol.overview {
+  padding-left: 0;
+
+  li {
+    list-style-type: none;
+  }
+
+  li.divider {
+    border-bottom: 0.0625rem solid #BEBEBE;
+    padding-bottom: 1.6rem;
+  }
+}
