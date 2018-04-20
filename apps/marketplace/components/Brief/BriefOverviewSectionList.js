@@ -7,7 +7,19 @@ import styles from './BriefOverviewSectionList.scss'
 export class BriefOverviewSectionListComponent extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      showLinks: false
+    }
+  }
+
+  preventDefault = e => {
+    e.preventDefault()
+  }
+
+  toggle = () => {
+    this.setState({
+      showLinks: !this.state.showLinks
+    })
   }
 
   render() {
@@ -15,7 +27,17 @@ export class BriefOverviewSectionListComponent extends Component {
 
     return (
       <div className={styles.briefOverviewSectionLinks}>
-        <AULinkList items={links} />
+        <button
+          className={styles.linkListToggle}
+          onClick={this.toggle}
+          onMouseDown={this.preventDefault}
+          title={this.state.showLinksText}
+        >
+          {this.state.showLinks ? 'Hide' : 'Show'}
+        </button>
+        <div className={`${!this.state.showLinks && styles.hidden}`}>
+          <AULinkList items={links} />
+        </div>
       </div>
     )
   }
