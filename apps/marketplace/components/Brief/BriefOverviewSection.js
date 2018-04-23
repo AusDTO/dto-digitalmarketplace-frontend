@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import AUheading from '@gov.au/headings'
+import Header from '@gov.au/headings/lib/js/react.js'
 import BriefOverviewSectionList from './BriefOverviewSectionList'
 
 import styles from './BriefOverviewSection.scss'
@@ -17,8 +17,8 @@ export class BriefOverviewSectionComponent extends Component {
     return (
       <div className={styles.briefOverviewSection}>
         <div className={styles.briefOverviewSectionHeading}>
-          <AUheading size="3" level="2" text={`${number}.`} />
-          <AUheading size="3" level="2" text={title} />
+          <Header size="3" level="2" text={`${number}.`} />
+          <Header size="3" level="2" text={title} />
           <span className={styles.briefOverviewSectionStatus}>
             {status}
           </span>
