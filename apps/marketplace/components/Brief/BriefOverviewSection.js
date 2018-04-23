@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import AUheading from '@gov.au/headings'
 import BriefOverviewSectionList from './BriefOverviewSectionList'
 
 import styles from './BriefOverviewSection.scss'
@@ -15,12 +16,10 @@ export class BriefOverviewSectionComponent extends Component {
 
     return (
       <div className={styles.briefOverviewSection}>
-        <h2 className={styles.briefOverviewSectionNumber}>
-          {number}.
-        </h2>
-        <h2>
-          {title}
-        </h2>
+        <div className={styles.briefOverviewSectionHeading}>
+          <AUheading size="3" level="2" text={`${number}.`} />
+          <AUheading size="3" level="2" text={title} />
+        </div>
         <span className={styles.briefOverviewSectionStatus}>
           {status}
         </span>
