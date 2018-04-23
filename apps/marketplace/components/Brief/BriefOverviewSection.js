@@ -19,10 +19,10 @@ export class BriefOverviewSectionComponent extends Component {
         <div className={styles.briefOverviewSectionHeading}>
           <AUheading size="3" level="2" text={`${number}.`} />
           <AUheading size="3" level="2" text={title} />
+          <span className={styles.briefOverviewSectionStatus}>
+            {status}
+          </span>
         </div>
-        <span className={styles.briefOverviewSectionStatus}>
-          {status}
-        </span>
         <BriefOverviewSectionList links={links} />
       </div>
     )
