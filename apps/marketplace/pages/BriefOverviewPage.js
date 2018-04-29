@@ -38,13 +38,12 @@ export class BriefOverviewPageComponent extends Component {
 }
 
 const mapStateToProps = state => ({
-  loadSuccess: state.brief.loadBriefOverviewSuccess,
+  currentlySending: state.app.currentlySending,
   framework: state.brief.framework,
-  isOutcome: isOutcome(state.brief.lot),
-  isSpecialist: isSpecialist(state.brief.lot),
+  loadSuccess: state.brief.loadBriefOverviewSuccess,
   lot: state.brief.lot,
-  title: state.brief.title,
-  currentlySending: state.app.currentlySending
+  sections: state.brief.sections,
+  title: state.brief.title
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -12,57 +12,15 @@ export class BriefOverview extends Component {
   }
 
   render() {
-    const { isOutcome, isSpecialist } = this.props
+    const { sections } = this.props
 
     const publishYourBriefPath = `/buyers/frameworks/${this.props.framework}/requirements/${this.props.lot}/${this.props
       .briefId}`
 
-    const publishYourBriefLinks = [
-      ...(isOutcome
-        ? [
-            {
-              link: `${publishYourBriefPath}/edit/title/title`,
-              text: 'Title'
-            }
-          ]
-        : []),
-      ...(isSpecialist
-        ? [
-            {
-              link: `${publishYourBriefPath}/edit/role/title`,
-              text: 'Role'
-            }
-          ]
-        : []),
-      {
-        link: `${publishYourBriefPath}/edit/location/location`,
-        text: 'Location'
-      },
-      {
-        link: `${publishYourBriefPath}/description-of-work`,
-        text: 'Description of work'
-      },
-      {
-        link: `${publishYourBriefPath}/shortlist-and-evaluation-process`,
-        text: 'Shortlist and evaluation process'
-      },
-      {
-        link: `${publishYourBriefPath}/edit/how-long-your-brief-will-be-open/requirementsLength`,
-        text: 'How long your brief will be open'
-      },
-      {
-        link: `${publishYourBriefPath}/question-and-answer-session-details`,
-        text: 'Question and answer session details'
-      },
-      {
-        link: `${publishYourBriefPath}/edit/who-can-respond/specifySeller`,
-        text: 'Who can respond'
-      },
-      {
-        link: `${publishYourBriefPath}/publish`,
-        text: 'Review and publish your requirements'
-      }
-    ]
+    const publishYourBriefLinks = sections.map(section => ({
+      link: section.path,
+      text: section.name
+    }))
 
     const liveOpportunityLinks = [
       {
