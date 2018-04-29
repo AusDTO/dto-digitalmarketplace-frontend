@@ -313,12 +313,13 @@ label.text-box-number-label {
   font-weight: 700;
 }
 
-.au-display-1,
-.au-display-2,
-.au-display-3,
-.au-display-4,
-.au-display-5,
-.au-display-6 {
+.au-display-xs,
+.au-display-sm,
+.au-display-md,
+.au-display-lg,
+.au-display-xl,
+.au-display-xxl,
+.au-display-xxxl {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
 }
 
