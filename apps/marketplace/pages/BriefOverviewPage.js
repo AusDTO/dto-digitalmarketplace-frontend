@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { loadBriefOverview } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefOverview from 'marketplace/components/Brief/BriefOverview'
-import { isOutcome, isSpecialist } from 'marketplace/components/helpers.js'
 
 export class BriefOverviewPageComponent extends Component {
   constructor(props) {
