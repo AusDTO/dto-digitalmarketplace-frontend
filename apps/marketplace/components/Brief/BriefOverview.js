@@ -62,21 +62,17 @@ export class BriefOverview extends Component {
           <Header size="5" level="1" text={this.props.title} />
           <div className="row">
             <div className="col-xs-12 col-sm-8 col-md-12">
-              <BriefOverviewSection
-                number="1"
-                title="Publish your brief"
-                status="In progress"
-                links={publishYourBriefLinks}
-              />
-              <BriefOverviewSection
-                number="2"
-                title="While the opportunity is live"
-                status="To do"
-                links={liveOpportunityLinks}
-              />
-              <BriefOverviewSection number="3" title="Shortlist responses" status="To do" links={shortlistLinks} />
-              <BriefOverviewSection number="4" title="Evaluate specialists" status="To do" links={evaluationLinks} />
-              <BriefOverviewSection number="5" title="Create a work order" status="To do" links={workOrderLinks} />
+              <ol className={`${styles.briefOverviewSections}`}>
+                <BriefOverviewSection title="Publish your brief" status="In progress" links={publishYourBriefLinks} />
+                <BriefOverviewSection
+                  title="While the opportunity is live"
+                  status="To do"
+                  links={liveOpportunityLinks}
+                />
+                <BriefOverviewSection title="Shortlist responses" status="To do" links={shortlistLinks} />
+                <BriefOverviewSection title="Evaluate specialists" status="To do" links={evaluationLinks} />
+                <BriefOverviewSection title="Create a work order" status="To do" links={workOrderLinks} />
+              </ol>
             </div>
           </div>
         </div>

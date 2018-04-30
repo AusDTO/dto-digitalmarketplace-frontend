@@ -1,20 +1,14 @@
 .briefOverviewSectionLinks {
-  margin-left: 2.95rem;
-}
-
-.briefOverviewSectionListToggle {
-  margin-left: 0.4rem;
+  margin-left: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 
 .hidden {
   display: none;
 }
 
-// use button selector? will this change global styles? check styles imported in head
 .linkListToggle {
-  background-color: transparent;
   border-bottom: solid 0.0625rem #1B7991;
-  // border-color: transparent;
   border-left: transparent;
   border-right: transparent;
   border-top: transparent;
@@ -22,8 +16,6 @@
   font-size: 1rem;
   margin-left: 0.4rem;
   padding: 0;
-  // text-decoration: underline;
-  transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
 }
 
 button:hover {

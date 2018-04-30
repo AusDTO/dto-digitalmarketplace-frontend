@@ -12,19 +12,16 @@ export class BriefOverviewSectionComponent extends Component {
   }
 
   render() {
-    const { links, number, status, title } = this.props
+    const { links, status, title } = this.props
 
     return (
-      <div className={styles.briefOverviewSection}>
-        <div className={styles.briefOverviewSectionHeading}>
-          <Header size="3" level="2" text={`${number}.`} />
-          <Header size="3" level="2" text={title} />
-          <span className={styles.briefOverviewSectionStatus}>
-            {status}
-          </span>
-        </div>
+      <li>
+        <Header size="3" level="2" text={title} />
+        <span className={styles.briefOverviewSectionStatus}>
+          {status}
+        </span>
         <BriefOverviewSectionList links={links} />
-      </div>
+      </li>
     )
   }
 }

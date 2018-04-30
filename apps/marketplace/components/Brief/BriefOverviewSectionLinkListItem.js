@@ -11,10 +11,6 @@ export class BriefOverviewSectionLinkListItemComponent extends Component {
   render() {
     const { complete, link, text } = this.props
 
-    // const listItemStyle = (complete) => ({
-    //   margin-left: complete ? '-2.1rem' : ''
-    // })
-
     return (
       <li>
         {complete === true &&

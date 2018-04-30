@@ -27,7 +27,7 @@ export class BriefOverviewPageComponent extends Component {
     }
 
     return (
-      <div className="brief-page">
+      <div>
         {currentlySending
           ? <LoadingIndicatorFullPage />
           : <BriefOverview setFocus={setFocus} {...this.props} briefId={match.params.briefId} />}
