@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import LinkList from '@gov.au/link-list/lib/js/react.js'
+import BriefOverviewSectionLinkList from './BriefOverviewSectionLinkList'
 
 import styles from './BriefOverviewSectionList.scss'
 
@@ -36,7 +36,7 @@ export class BriefOverviewSectionListComponent extends Component {
           {this.state.showLinks ? 'Hide' : 'Show'}
         </button>
         <div className={`${!this.state.showLinks && styles.hidden}`}>
-          <LinkList items={links} />
+          <BriefOverviewSectionLinkList items={links} />
         </div>
       </div>
     )

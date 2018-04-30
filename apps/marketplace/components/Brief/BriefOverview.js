@@ -18,6 +18,7 @@ export class BriefOverview extends Component {
       .briefId}`
 
     const publishYourBriefLinks = sections.map(section => ({
+      complete: section.complete,
       link: section.path,
       text: section.name
     }))
