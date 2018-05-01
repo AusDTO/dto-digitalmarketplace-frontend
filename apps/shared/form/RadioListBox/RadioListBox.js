@@ -27,18 +27,20 @@ const RadioListBox = props => {
             return (
               <span key={fieldId} className={styles.radioListContainer}>
                 <span className={uiKitControl}>
-                  <Control.radio
-                    model={model}
-                    name={name}
-                    id={fieldId}
-                    mapProps={{
-                      className: 'au-control-input__input'
-                    }}
-                    value={option.value}
-                    validators={validators}
-                  />
-                  <label className="au-control-input__text" htmlFor={fieldId}>
-                    {option.label}
+                  <label className="au-control-input" htmlFor={fieldId}>
+                    <Control.radio
+                      model={model}
+                      name={name}
+                      id={fieldId}
+                      mapProps={{
+                        className: 'au-control-input__input'
+                      }}
+                      value={option.value}
+                      validators={validators}
+                    />
+                    <span className="au-control-input__text">
+                      {option.label}
+                    </span>
                   </label>
                 </span>
               </span>

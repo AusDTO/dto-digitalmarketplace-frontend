@@ -115,8 +115,9 @@ const SignupForm = props => {
                             label: (
                               <span>
                                 <span>Buyer</span>
-                                <p>I want to buy on behalf of</p>
-                                <p>government.</p>
+                                <br />
+                                <br />
+                                I want to buy on behalf of<br />government.
                               </span>
                             )
                           },
@@ -125,8 +126,9 @@ const SignupForm = props => {
                             label: (
                               <span>
                                 <span>Seller</span>
-                                <p>I want to sell digital products or</p>
-                                <p>services.</p>
+                                <br />
+                                <br />
+                                I want to sell digital products or<br />services.
                               </span>
                             )
                           }
@@ -247,12 +249,14 @@ const SignupForm = props => {
                     </p>
                     {currentlySending
                       ? <LoadingButton />
-                      : <input
-                          className="au-btn"
-                          type="submit"
-                          value="Create your account"
-                          onClick={onSubmitClicked}
-                        />}
+                      : <p>
+                          <input
+                            className="au-btn"
+                            type="submit"
+                            value="Create your account"
+                            onClick={onSubmitClicked}
+                          />
+                        </p>}
                   </Form>
                 </article>
               </Layout>}
