@@ -14,47 +14,6 @@ export class BriefOverview extends Component {
   render() {
     const { sections } = this.props
 
-    const publishYourBriefPath = `/buyers/frameworks/${this.props.framework}/requirements/${this.props.lot}/${this.props
-      .briefId}`
-
-    const publishYourBriefLinks = sections.map(section => ({
-      complete: section.complete,
-      link: section.path,
-      text: section.name
-    }))
-
-    const liveOpportunityLinks = [
-      {
-        link: `${publishYourBriefPath}/supplier-questions/answer-question`,
-        text: 'Answer a question'
-      }
-    ]
-
-    const shortlistLinks = [
-      {
-        link: `${publishYourBriefPath}/responses`,
-        text: 'View responses'
-      }
-    ]
-
-    const evaluationLinks = [
-      {
-        link: `/static/media/documents/Scoring_Template.xlsx`,
-        text: 'Evaluation template (XLSX 13KB)'
-      }
-    ]
-
-    const workOrderLinks = [
-      {
-        link: `${publishYourBriefPath}/work-orders/create`,
-        text: 'Select seller'
-      },
-      {
-        link: `/work-orders/work_order_id`,
-        text: 'Edit work order'
-      }
-    ]
-
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12">
@@ -63,15 +22,14 @@ export class BriefOverview extends Component {
           <div className="row">
             <div className="col-xs-12 col-sm-8 col-md-12">
               <ol className={`${styles.briefOverviewSections}`}>
-                <BriefOverviewSection title="Publish your brief" status="In progress" links={publishYourBriefLinks} />
-                <BriefOverviewSection
-                  title="While the opportunity is live"
-                  status="To do"
-                  links={liveOpportunityLinks}
-                />
-                <BriefOverviewSection title="Shortlist responses" status="To do" links={shortlistLinks} />
-                <BriefOverviewSection title="Evaluate specialists" status="To do" links={evaluationLinks} />
-                <BriefOverviewSection title="Create a work order" status="To do" links={workOrderLinks} />
+                {sections.map(section =>
+                  <BriefOverviewSection
+                    key={`section.${section.title}`}
+                    links={section.links}
+                    status=""
+                    title={section.title}
+                  />
+                )}
               </ol>
             </div>
           </div>

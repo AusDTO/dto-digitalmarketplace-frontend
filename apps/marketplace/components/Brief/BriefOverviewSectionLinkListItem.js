@@ -9,7 +9,7 @@ export class BriefOverviewSectionLinkListItemComponent extends Component {
   }
 
   render() {
-    const { complete, link, text } = this.props
+    const { complete, path, text } = this.props
 
     return (
       <li>
@@ -17,9 +17,9 @@ export class BriefOverviewSectionLinkListItemComponent extends Component {
           <span className={styles.tick}>
             <img src="/static/svg/green-tick.svg" alt="Completed" />
           </span>}
-        {link === undefined
+        {path === undefined
           ? text
-          : <a href={link}>
+          : <a href={path}>
               {text}
             </a>}
       </li>
