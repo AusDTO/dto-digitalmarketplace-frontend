@@ -1,16 +1,15 @@
-.header {
-  margin-bottom: 40px;
-}
-
 .organisation {
   opacity: 0.6;
+}
+
+.menuRow {
+  margin-top: 2.5rem;
 }
 
 ul.menu {
   box-sizing: content-box;
   list-style-type: none;
   margin-left: 0;
-  margin-top: 1.5rem;
   padding-left: 0;
   border-bottom: 1px solid #bebebe;
 }
@@ -38,16 +37,9 @@ ul.menu li a.active {
   border-bottom: solid 6px #17788d;
 }
 
-.headingRow {
-  font-weight: bold;
-  color: #202751;
-  border-bottom: solid 3px #202751;
-  padding-bottom: 7px;
-}
-
 table.resultListing {
   border-collapse: collapse;
-  margin-bottom: 40px;
+  margin-top: 2.5rem;
 }
 
 table.resultListing tr {

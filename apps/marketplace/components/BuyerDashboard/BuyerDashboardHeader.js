@@ -14,7 +14,7 @@ export const BuyerDashboardHeader = props =>
           <h1 className="au-display-xl">Dashboard</h1>
         </div>
       </div>
-      <div className="row">
+      <div className={`${styles.menuRow} row`}>
         <div className="col-xs-12 col-sm-8 col-md-9">
           <ul className={styles.menu}>
             <li>
