@@ -184,6 +184,14 @@ export const onlyNumbers = (val) => {
   return false;
 }
 
+export const onlyWholeNumbers = (val) => {
+  const regex = /^\d+$/;
+  if (!val || regex.test(val)) {
+    return true;
+  }
+  return false;
+}
+
 export default {
   required,
   minArrayLength,
