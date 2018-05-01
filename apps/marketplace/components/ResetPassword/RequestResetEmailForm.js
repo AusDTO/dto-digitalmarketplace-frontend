@@ -37,10 +37,10 @@ const RequestResetEmailForm = props => {
               />}
           <header className="page-heading page-heading-without-breadcrumb">
             <h1 className="au-display-xl">Reset password</h1>
-            <span>
+            <p>
               Enter your email address and we&#39;ll send you a link to reset your password. Password reset links are
               valid for 24 hours.
-            </span>
+            </p>
           </header>
           <Form model={model} id="sendResetEmail" onSubmit={data => handleSubmit(data)}>
             <Textfield
