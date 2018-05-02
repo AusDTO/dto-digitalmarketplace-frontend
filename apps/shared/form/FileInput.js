@@ -69,7 +69,7 @@ class FileInput extends React.Component {
                 className={styles.hidden_input}
               />
               <label htmlFor={fileField} id={`label_${this.props.id}`} className={styles.custom_input}>
-                <div className="au-btn au-btn--tertiary">
+                <div className="au-btn au-btn--secondary">
                   {this.props.fieldLabel}
                 </div>
               </label>

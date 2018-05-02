@@ -20,7 +20,7 @@ describe('BriefSpecialistResponseForm', () => {
       </Provider>
     )
     expect(tree.find('h1').first().text()).toEqual('Apply for ‘test brief’')
-    expect(tree.contains(<div>You can add 3 specialists. This opportunity closes on 15/01/2018.</div>)).toBeTruthy()
+    expect(tree.contains(<p>You can add 3 specialists. This opportunity closes on 15/01/2018.</p>)).toBeTruthy()
     expect(tree.contains(<strong>Specialist 1</strong>)).toBeTruthy()
     expect(tree.find('input.au-btn').first().props().value).toEqual('Start application')
   })

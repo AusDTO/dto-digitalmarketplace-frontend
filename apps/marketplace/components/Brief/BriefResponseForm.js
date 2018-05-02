@@ -106,6 +106,7 @@ const BriefResponseForm = ({
                 }}
               />}
             <fieldset className={styles.x_uikit_fieldset}>
+              <span />
               <h2>Skills and experience?</h2>
               {brief.lotSlug &&
                 brief.lotSlug === 'digital-professionals' &&
@@ -180,7 +181,9 @@ const BriefResponseForm = ({
 
               {currentlySending
                 ? <LoadingButton />
-                : <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />}
+                : <p>
+                    <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                  </p>}
             </div>
           </Form>
         </article>

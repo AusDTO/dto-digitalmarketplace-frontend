@@ -7,8 +7,6 @@ import PropTypes from 'prop-types'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import BriefResponseSubmittedSummary from './BriefResponseSubmittedSummary'
 
-import styles from './BriefSpecialistResponseSubmitted.scss'
-
 const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, match, app, handleSubmit }) =>
   <div className="row">
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
@@ -31,12 +29,16 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
             </p>
           </AUpageAlert>
           {briefResponses.length < 3 &&
-            <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist/respond`}>
-              Add another specialist
-            </a>}
-          <h2 className={styles.summaryHeading}>What happens next?</h2>
+            <p>
+              <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist/respond`}>
+                Add another specialist
+              </a>
+            </p>}
+          <h2>What happens next?</h2>
+          <br />
           <BriefResponseSubmittedSummary brief={brief} />
-          <h2>How did you find submitting this application?</h2>
+          <h2 className="au-display-lg">How did you find submitting this application?</h2>
+          <br />
           <Feedback
             app={app}
             handleSubmit={handleSubmit}

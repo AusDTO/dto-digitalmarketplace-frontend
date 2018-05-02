@@ -54,10 +54,10 @@ const BriefSpecialistResponseForm = ({
                     <h1 className="au-display-xl">
                       Apply for &lsquo;{brief.title}&rsquo;
                     </h1>
-                    <div>
+                    <p>
                       You can add {MaxSpecialists} specialists. This opportunity closes on{' '}
                       {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.
-                    </div>
+                    </p>
                     <br />
                   </div>}
                 <div className="au-display-lg">
@@ -93,7 +93,7 @@ const BriefSpecialistResponseForm = ({
                 <h1 className="au-display-xl">
                   {specialistName}
                 </h1>
-                <h2>About</h2>
+                <h2 className="au-display-lg">About</h2>
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
                   <Textfield
                     model={`${model}.availability`}
@@ -141,7 +141,7 @@ const BriefSpecialistResponseForm = ({
                         <h4>There was a problem loading your details</h4>
                         <p>Only logged in sellers can respond to briefs</p>
                       </AUpageAlert>}
-                  <h2>Skills and experience</h2>
+                  <h2 className="au-display-lg">Skills and experience</h2>
                   {brief.essentialRequirements &&
                     brief.essentialRequirements.map((requirement, i) =>
                       <Textarea
@@ -196,7 +196,7 @@ const BriefSpecialistResponseForm = ({
                   />
                   {specialistNumber < MaxSpecialists &&
                     <input
-                      className="au-btn au-btn--tertiary"
+                      className="au-btn au-btn--secondary"
                       type="submit"
                       value="Submit and add another"
                       onClick={e => {
