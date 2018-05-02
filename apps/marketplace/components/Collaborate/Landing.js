@@ -125,7 +125,6 @@ const Landing = () =>
                           </span>
                         )}
                       </div>
-                      <br />
                       <p>
                         <b>Grant Amount:</b> {val.grant}
                         <br />
@@ -272,34 +271,38 @@ const Landing = () =>
       />
     </Switch>
     <div className="row">
-      <div>
+      <div className="col-xs-12">
         <center>
           <h2>Join the Digital Marketplace</h2>
-          <div className="col-xs-12 col-md-4 col-md-push-2">
-            <center>
-              <h3>Need digital products or services for government?</h3>
-              <p>Our buyers are from across local, state, territory and federal government.</p>
-              <p>
-                <a href="/2/signup" className="au-btn">
-                  Join as a buyer
-                </a>
-              </p>
-            </center>
-          </div>
-          <div className={`${styles.becomeASeller} col-xs-12 col-md-4 col-md-push-2`}>
-            {' '}<center>
-              <div>
-                <h3>
-                  Offer digital products <br />or services to government
-                </h3>
-                <p>Access more digital opportunities across all levels of government.</p>
-                <p>
-                  <a href="/become-a-seller" className="au-btn">
-                    Become a seller
-                  </a>
-                </p>
-              </div>
-            </center>
+        </center>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col-xs-12 col-md-4 col-md-push-2">
+        <center>
+          <span />
+          <h3>Need digital products or services for government?</h3>
+          <p>Our buyers are from across local, state, territory and federal government.</p>
+          <p>
+            <a href="/2/signup" className="au-btn">
+              Join as a buyer
+            </a>
+          </p>
+        </center>
+      </div>
+      <div className={`${styles.becomeASeller} col-xs-12 col-md-4 col-md-push-2`}>
+        {' '}<center>
+          <div>
+            <span />
+            <h3>
+              Offer digital products <br />or services to government
+            </h3>
+            <p>Access more digital opportunities across all levels of government.</p>
+            <p>
+              <a href="/become-a-seller" className="au-btn">
+                Become a seller
+              </a>
+            </p>
           </div>
         </center>
       </div>
