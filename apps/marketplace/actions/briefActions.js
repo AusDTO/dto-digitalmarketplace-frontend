@@ -55,7 +55,7 @@ export const loadBrief = briefId => dispatch => {
 }
 
 export const downloadBriefDocuments = briefId => dispatch => {
-  dmapi({ url: `/brief/${briefId}/respond/documents` }).then(response => {
+  dmapi({ url: `/brief/${briefId}/respond/documents`, responseType: 'blob' }).then(response => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
