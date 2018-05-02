@@ -8,8 +8,10 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
+import BriefDownloadDocuments from 'marketplace/components/Brief/BriefDownloadDocuments'
 import {
   loadBrief,
+  downloadBriefDocuments,
   handleBriefResponseSubmit,
   handleBriefNameSubmit,
   addAnotherSpecialistSubmit,
@@ -91,7 +93,7 @@ class BriefPage extends Component {
   }
 
   render() {
-    const { currentlySending, loadBriefSuccess, match } = this.props
+    const { currentlySending, loadBriefSuccess, match, app } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -166,6 +168,19 @@ class BriefPage extends Component {
                       : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
                   </span>}
               />
+              <Route
+                path={`${match.url}/download-documents`}
+                render={() =>
+                  <span>
+                    {!app.errorMessage && loadBriefSuccess
+                      ? <BriefDownloadDocuments
+                          brief={this.props.brief}
+                          downloadBriefDocuments={this.props.downloadBriefDocuments}
+                          briefDocumentsData={this.props.briefDocumentsData}
+                        />
+                      : <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />}{' '}
+                  </span>}
+              />
               <Route component={NotFound} />
             </Switch>}
       </div>
@@ -200,6 +215,7 @@ const mapResetStateToProps = state => ({
   supplierCode: state.app.supplierCode,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefResponseSuccess: state.brief.briefResponseSuccess,
+  briefDocumentsData: state.brief.documentsData,
   currentlySending: state.app.currentlySending,
   specialistName: state.brief.specialistName,
   specialistNumber: state.brief.specialistNumber,
@@ -210,6 +226,7 @@ const mapResetDispatchToProps = dispatch => ({
   handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
+  downloadBriefDocuments: briefId => dispatch(downloadBriefDocuments(briefId)),
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
