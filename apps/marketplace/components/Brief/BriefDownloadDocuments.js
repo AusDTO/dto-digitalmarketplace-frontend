@@ -4,9 +4,8 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 
 const canDownload = () => {
   const hasDownload = typeof document.createElement('a').download !== 'undefined'
-  const hasBlob = typeof window.Blob !== 'undefined'
   const hasObjectURL = typeof window.URL !== 'undefined' && window.URL.createObjectURL !== 'undefined'
-  return hasDownload && hasBlob && hasObjectURL
+  return hasDownload && hasObjectURL
 }
 
 export class BriefDownloadDocuments extends Component {
@@ -16,9 +15,11 @@ export class BriefDownloadDocuments extends Component {
 
   createDownloadElement() {
     if (canDownload()) {
-      const blob = new window.Blob([this.props.briefDocumentsData], { type: 'application/zip' })
       return (
-        <a href={window.URL.createObjectURL(blob)} download={`brief-${this.props.brief.id}-resumes.zip`}>
+        <a
+          href={window.URL.createObjectURL(this.props.briefDocumentsData)}
+          download={`brief-${this.props.brief.id}-resumes.zip`}
+        >
           Download
         </a>
       )
