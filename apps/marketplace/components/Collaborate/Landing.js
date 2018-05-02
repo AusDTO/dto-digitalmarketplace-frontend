@@ -163,13 +163,13 @@ const Landing = () =>
                   <img src="/static/media/5d_data_modelling.jpg" alt="Computer model of suburban street" width="260" />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/6">5D Data Modelling</a>
                   </h3>
                   <p>Ipswich City Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Discovery</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -177,13 +177,13 @@ const Landing = () =>
                   <img src="/static/media/asset_management_casey.jpg" alt="Map of asset locations" width="260" />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/2">Finding value in data</a>
                   </h3>
                   <p>City of Casey Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Discovery</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -195,13 +195,13 @@ const Landing = () =>
                   />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/3">Smart City Lighting Pilot</a>
                   </h3>
                   <p>Adelaide City Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Pilot</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -213,13 +213,13 @@ const Landing = () =>
                   />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/1">Underground waste collection</a>
                   </h3>
                   <p>Sunshine Coast Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>In build</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -231,13 +231,13 @@ const Landing = () =>
                   />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/7">The Smart Hub</a>
                   </h3>
                   <p>Rockhampton Regional Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Live</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -245,13 +245,13 @@ const Landing = () =>
                   <img src="/static/media/rpv_trial.png" alt="Remotely piloted aircraft" width="260" />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/8">UAV shark surveillance</a>
                   </h3>
                   <p>Lake Macquarie City Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Pilot</span>
-                  </div>
+                  </p>
                 </article>
               </li>
             </ul>
@@ -259,9 +259,11 @@ const Landing = () =>
             <article width="100%">
               <center>
                 <p>Got an idea, pilot or live project to share?</p>
-                <a href="/collaborate/project/new" className="au-btn">
-                  Add your project
-                </a>
+                <p>
+                  <a href="/collaborate/project/new" className="au-btn">
+                    Add your project
+                  </a>
+                </p>
                 <br />
               </center>
             </article>
