@@ -32,6 +32,7 @@ export class BriefDownloadDocuments extends Component {
 
     return (
       <iframe
+        className={styles.hidden}
         src={`/api/2/brief/${this.props.brief.id}/respond/documents`}
         width="0"
         height="0"
