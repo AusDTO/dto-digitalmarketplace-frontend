@@ -17,7 +17,7 @@ export class BriefOverviewSectionLinkListItemComponent extends Component {
           <span className={styles.tick}>
             <img src="/static/svg/green-tick.svg" alt="Completed" />
           </span>}
-        {path === undefined
+        {path === null
           ? text
           : <a href={path}>
               {text}
