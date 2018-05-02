@@ -22,10 +22,7 @@ const BriefSubmitted = props =>
             </p>
             <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>View live opportunity</a>
           </AUpageAlert>
-          <br />
-          <h1 className="au-display-lg">
-            <b>What happens next?</b>
-          </h1>
+          <h1 className="au-display-lg">What happens next?</h1>
           <ul>
             <li>
               While your opportunity is live you’ll need to{' '}
@@ -40,7 +37,7 @@ const BriefSubmitted = props =>
               </a>.
             </li>
             <li>
-              If you need help at any time,
+              If you need help at any time,{' '}
               <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new">contact us</a>.
             </li>
           </ul>
