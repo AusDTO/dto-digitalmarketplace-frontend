@@ -15,60 +15,42 @@ exports[`Test suite for UserOnboarding container component Because snaphots 1`] 
     <p>
       What do you want to do next?
     </p>
-    <div
-      className={undefined}
+    <h2
+      className="au-display-lg"
     >
-      <span>
-        <h2
-          className="au-display-lg"
-        >
-          List my digital offering on the Marketplace
-        </h2>
-      </span>
-      <span>
-        <a
-          href="/sellers/application"
-        >
-          Set up my shopfront
-        </a>
-      </span>
-    </div>
-    <div
-      className={undefined}
+      List my digital offering on the Marketplace
+    </h2>
+    <span>
+      <a
+        href="/sellers/application"
+      >
+        Set up my shopfront
+      </a>
+    </span>
+    <h2
+      className="au-display-lg"
     >
-      <span>
-        <h2
-          className="au-display-lg"
-        >
-          Apply for an opportunity listed on the Marketplace
-        </h2>
-      </span>
-      <span>
-        <a
-          href="/digital-marketplace/opportunities"
-        >
-          Browse opportunities
-        </a>
-      </span>
-    </div>
-    <div
-      className={undefined}
+      Apply for an opportunity listed on the Marketplace
+    </h2>
+    <span>
+      <a
+        href="/digital-marketplace/opportunities"
+      >
+        Browse opportunities
+      </a>
+    </span>
+    <h2
+      className="au-display-lg"
     >
-      <span>
-        <h2
-          className="au-display-lg"
-        >
-          Learn about adding case studies to your shopfront
-        </h2>
-      </span>
-      <span>
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies"
-        >
-          Adding a case study
-        </a>
-      </span>
-    </div>
+      Learn about adding case studies to your shopfront
+    </h2>
+    <span>
+      <a
+        href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies"
+      >
+        Adding a case study
+      </a>
+    </span>
   </div>
 </div>
 `;
@@ -88,61 +70,43 @@ exports[`Test suite for UserOnboarding container component Because snaphots 2`] 
     <p>
       How can we help you?
     </p>
-    <div
-      className={undefined}
+    <h2
+      className="au-display-lg"
     >
-      <span>
-        <h2
-          className="au-display-lg"
-        >
-          Read the Marketplace guides, contracts and compliance information
-        </h2>
-      </span>
-      <span>
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/categories/115001542047-Buyer-guide-and-FAQs"
-        >
-          Learn more
-        </a>
-      </span>
-    </div>
-    <div
-      className={undefined}
+      Read the Marketplace guides, contracts and compliance information
+    </h2>
+    <span>
+      <a
+        href="https://marketplace1.zendesk.com/hc/en-gb/categories/115001542047-Buyer-guide-and-FAQs"
+      >
+        Learn more
+      </a>
+    </span>
+    <h2
+      className="au-display-lg"
     >
-      <span>
-        <h2
-          className="au-display-lg"
-        >
-          Create a new opportunity for a digital specialist or outcome
-        </h2>
-      </span>
-      <span>
-        <a
-          href="/buyers"
-        >
-          Start a new brief
-        </a>
-      </span>
-    </div>
-    <div
-      className={undefined}
+      Create a new opportunity for a digital specialist or outcome
+    </h2>
+    <span>
+      <a
+        href="/buyers"
+      >
+        Start a new brief
+      </a>
+    </span>
+    <h2
+      className="au-display-lg"
     >
-      <span>
-        <h2
-          className="au-display-lg"
-        >
-          Need help writing a brief?
-        </h2>
-      </span>
-      <span>
-        All you need to do is 
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
-        >
-          contact us
-        </a>
-      </span>
-    </div>
+      Need help writing a brief?
+    </h2>
+    <span>
+      All you need to do is 
+      <a
+        href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
+      >
+        contact us
+      </a>
+    </span>
   </div>
 </div>
 `;

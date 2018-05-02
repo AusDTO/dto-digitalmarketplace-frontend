@@ -51,10 +51,12 @@ const SignupForm = props => {
                 </AUpageAlert>
                 <article role="main">
                   <header className="page-heading page-heading-without-breadcrumb">
+                    <span />
                     <h1 className="au-display-xl">Thanks for requesting access to the Digital Marketplace.</h1>
                   </header>
                   {isBuyer && signupForm.employment_status === 'contractor'
                     ? <div>
+                        <span />
                         <p>
                           An email has been sent to your manager at <strong>{signupForm.line_manager_email}</strong>{' '}
                           with next steps.
@@ -69,6 +71,7 @@ const SignupForm = props => {
                         </p>
                       </div>
                     : <div>
+                        <span />
                         <p>
                           An email has been sent to <strong>{signupForm.email_address}</strong> with next steps.
                         </p>
