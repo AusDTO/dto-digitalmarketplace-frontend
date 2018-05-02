@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import styles from './BriefDownloadDocuments.scss'
 
 const canDownload = () => {
   const hasDownload = typeof document.createElement('a').download !== 'undefined'
@@ -17,8 +18,12 @@ export class BriefDownloadDocuments extends Component {
     if (canDownload()) {
       return (
         <a
+          className={styles.hidden}
           href={window.URL.createObjectURL(this.props.briefDocumentsData)}
           download={`brief-${this.props.brief.id}-resumes.zip`}
+          ref={e => {
+            e.click()
+          }}
         >
           Download
         </a>
