@@ -14,7 +14,7 @@ import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
 import { findValidServices } from '../../redux/helpers'
-import { required, notNegativeNumber, onlyNumbers }         from '../../../../validators';
+import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
 
 import './PricingForm.css';
 
@@ -78,7 +78,7 @@ class PricingForm extends BaseForm {
                   messages={{
                     required: `You must provide a max price for ${service}.`,
                     notNegativeNumber: `Price can't have negative number for ${service}.`,
-                    onlyNumbers: `Price must be numeric for ${service}.`
+                    onlyWholeNumbers: `Price must be whole dollars for ${service}.`
                   }}
                   id={`${kebabCase(service)}-maxprice`}
                 />
@@ -90,7 +90,7 @@ class PricingForm extends BaseForm {
                       id={`${kebabCase(service)}-maxprice`}
                       name={`services.${service}.maxPrice`}
                       model={`${model}.pricing.${service}.maxPrice`}
-                      validators={{ required, notNegativeNumber, onlyNumbers }}
+                      validators={{ required, notNegativeNumber, onlyWholeNumbers }}
                     />
                   </span>
                   <span>(including GST)</span>
