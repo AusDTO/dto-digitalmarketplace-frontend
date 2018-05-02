@@ -24,7 +24,14 @@ export class BriefDownloadDocuments extends Component {
       )
     }
 
-    return <iframe src={`/api/2/brief/${this.props.brief.id}/respond/documents`} title="document download" />
+    return (
+      <iframe
+        src={`/api/2/brief/${this.props.brief.id}/respond/documents`}
+        width="0"
+        height="0"
+        title="document download"
+      />
+    )
   }
 
   render() {
