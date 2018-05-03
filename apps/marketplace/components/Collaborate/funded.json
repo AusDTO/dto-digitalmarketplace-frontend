@@ -240,16 +240,6 @@
     "total": "$248,235"
   },
   {
-    "applicant": "Liverpool City Council",
-    "contribution": "$120,000",
-    "description": "This project will use smart phone detection technology for real-time measurement of pedestrian and car movements. This real time data will benefit the community by enabling the council to make informed decisions about transport and urban planning, accommodating population growth impacts on mobility.",
-    "grant": "$120,000",
-    "location": "Liverpool, NSW",
-    "state": "nsw",
-    "title": "Smart Active Transport, Liverpool",
-    "total": "$240,000"
-  },
-  {
     "applicant": "City of Perth",
     "contribution": "$1,314,494",
     "description": "This project will provide a Smart Cities Collaboration Market Place platform enabling the city and its partners to collaborate and exchange ideas and data to evolve and scale technologies. Pilots including a smart irrigation trial in public parks and a smart precinct project around the new Perth Stadium, will kick start use of the platform to demonstrate the benefits of collaboration in city planning.",
@@ -258,6 +248,16 @@
     "state": "wa",
     "title": "Smart Cities Collaboration, Perth",
     "total": "$2,628,988"
+  },
+  {
+    "applicant": "Liverpool City Council",
+    "contribution": "$120,000",
+    "description": "This project will use smart phone detection technology for real-time measurement of pedestrian and car movements. This real time data will benefit the community by enabling the council to make informed decisions about transport and urban planning, accommodating population growth impacts on mobility.",
+    "grant": "$120,000",
+    "location": "Liverpool, NSW",
+    "state": "nsw",
+    "title": "Smart Cities, Smart Liverpool, Smart Pedestrians",
+    "total": "$240,000"
   },
   {
     "applicant": "Southern Grampians Shire Council",
