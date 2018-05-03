@@ -6,7 +6,7 @@ import logoGovCrest from './logo_govcrest.svg'
 import logoNisa from './logo_nisa.svg'
 
 const PageFooter = () =>
-  <AUfooter>
+  <AUfooter className={styles.footer}>
     <div className="container">
       <AUfooterNav>
         <div className="row">
