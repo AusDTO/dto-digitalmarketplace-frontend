@@ -12,11 +12,7 @@ const RegionsAccordionRadioList = props => {
 
   return (
     <div className={styles.container}>
-      <div className="au-display-lg">
-        <strong>
-          {props.title}
-        </strong>
-      </div>
+      <h2 className="au-display-lg">{props.title}</h2>
       {regions &&
         regions.map((region, id = uniqueID()) =>
           <div key={id}>

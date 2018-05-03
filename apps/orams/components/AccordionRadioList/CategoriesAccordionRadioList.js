@@ -11,11 +11,7 @@ const CategoriesAccordionRadioList = props => {
 
   return (
     <div className={styles.container}>
-      <div className="au-display-lg">
-        <strong>
-          {props.title}
-        </strong>
-      </div>
+      <h2 className="au-display-lg">{props.title}</h2>
       {categories &&
         categories.map((category, id = uniqueID()) =>
           <div key={id}>

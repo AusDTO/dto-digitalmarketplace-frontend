@@ -17,7 +17,7 @@ const Copyright = props => {
         </a>
       </p>
 
-      <h2>Use of the Coat of Arms</h2>
+      <h2 className="au-display-lg">Use of the Coat of Arms</h2>
       <p>
         <a
           href="http://www.dpmc.gov.au/resource-centre/government/commonwealth-coat-arms-information-and-guidelines"
@@ -28,7 +28,7 @@ const Copyright = props => {
         </a>{' '}
         are published by the Department of the Prime Minister and Cabinet.
       </p>
-      <h2>Attribution</h2>
+      <h2 className="au-display-lg">Attribution</h2>
       <p>
         The DTA acknowledges the UK Government Digital Service for the materials that have been adapted from the{' '}
         <a href="https://www.gov.uk/service-manual" target="_blank" rel="external">

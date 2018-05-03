@@ -11,8 +11,10 @@ const PageFooter = () =>
         <AUfooterNav>
           <div className="row">
             <div className="col-md-6 col-sm-6">
-              <h2 className={styles.title}>ORAMS</h2>
-              <h2 className={styles.subtitle}>brought to you by the Digital Marketplace</h2>
+              <h2 className="au-display-md">
+                ORAMS<br />
+                <small>brought to you by the Digital Marketplace</small>
+              </h2>
               <ul className="au-link-list">
                 <li>
                   <a href="/orams/terms-of-use">Terms of Use</a>

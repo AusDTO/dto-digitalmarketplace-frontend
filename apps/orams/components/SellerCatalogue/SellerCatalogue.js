@@ -43,8 +43,8 @@ class SellerCatalogue extends Component {
       <main className={styles.cataloguePage}>
         <div className="row">
           <div className="col-xs-12 col-sm-12">
-            <div className="au-display-xl">Service Matrix</div>
-            <div className="au-display-lg">Select a location and service category to view pricing</div>
+            <h1 className="au-display-xl">Service Matrix</h1>
+            <h2 className="au-display-lg">Select a location and service category to view pricing</h2>
             Click{' '}
             <a rel="external" target="_blank" href="/static/media/documents/orams-locations.csv">
               here

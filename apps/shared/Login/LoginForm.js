@@ -72,9 +72,11 @@ const LoginForm = props => {
                 <strong>Forgot your password?</strong>
               </Link>
             </p>
-            {currentlySending
-              ? <LoadingButton />
-              : <input className="au-btn" type="submit" value="Sign in" onClick={submitClicked} />}
+            <p>
+              {currentlySending
+                ? <LoadingButton />
+                : <input className="au-btn" type="submit" value="Sign in" onClick={submitClicked} />}
+            </p>
           </Form>
         </article>
       </div>

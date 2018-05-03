@@ -94,9 +94,11 @@ const Signup = props => {
                       <strong>Terms of Use</strong>
                     </a>
                   </p>
-                  {currentlySending
-                    ? <LoadingButton />
-                    : <input className="au-btn" type="submit" value="Create your account" onClick={submitClicked} />}
+                  <p>
+                    {currentlySending
+                      ? <LoadingButton />
+                      : <input className="au-btn" type="submit" value="Create your account" onClick={submitClicked} />}
+                  </p>
                 </Form>
               </article>
             </div>
