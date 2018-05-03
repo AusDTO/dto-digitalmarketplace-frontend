@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { loadBriefOverview } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import BriefOverview from 'marketplace/components/Brief/BriefOverview'
+import BriefOverview from 'marketplace/components/Brief/Overview/BriefOverview'
 
 export class BriefOverviewPageComponent extends Component {
   constructor(props) {
