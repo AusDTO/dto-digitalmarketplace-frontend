@@ -1,0 +1,24 @@
+.briefOverviewSectionLinks {
+  margin-left: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.linkListToggle {
+  border-bottom: solid 0.0625rem #1B7991;
+  border-left: transparent;
+  border-right: transparent;
+  border-top: transparent;
+  color: #313131;
+  font-size: 1rem;
+  margin-left: 0.4rem;
+  padding: 0;
+}
+
+button:hover {
+  background-color: #5BCBE3;
+  border-color: transparent;
+}
