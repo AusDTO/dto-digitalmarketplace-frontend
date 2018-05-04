@@ -23,7 +23,7 @@ class SellerProfile extends Component {
       <div>
         {supplierData
           ? <div>
-              <div className={styles.headerSection}>
+              <div>
                 <main>
                   <div className="row">
                     <div className="col-xs-12 col-sm-9">
