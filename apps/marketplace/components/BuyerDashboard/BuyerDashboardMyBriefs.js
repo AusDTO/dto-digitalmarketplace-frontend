@@ -97,7 +97,6 @@ export class BuyerDashboardMyBriefs extends Component {
                   </td>
                   <td className={styles.colAction}>
                     {item.status === 'draft' &&
-                      // <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
                       <a href={`${rootPath}/brief/${item.id}/overview`}>
                         <strong>Edit draft</strong>
                       </a>}
