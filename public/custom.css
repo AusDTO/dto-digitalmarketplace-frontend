@@ -112,20 +112,12 @@ main form .question-heading, main form legend {
 }
 
 .au-text-input:focus {
-  outline: 3px solid #e05200;
   outline-offset: 0px;
   background-color: transparent;
 }
 
 .au-text-input.au-text-input--invalid:focus {
   background-color: transparent;
-}
-
-.au-control-input__input:focus + .au-control-input__text:before {
-  -webkit-box-shadow: 0 0 0 3px #e05200;
-  -moz-box-shadow: 0 0 0 3px #e05200;
-  box-shadow: 0 0 0 3px #e05200;
-
 }
 
 input[type="radio"].au-control-input__input:focus + .au-control-input__text:before {
@@ -146,9 +138,6 @@ input[type="radio"].au-control-input__input:focus + .au-control-input__text:befo
 
 .au-btn:focus {
   outline: none;
-  -webkit-box-shadow: 0 0 0 3px #e05200;
-  -moz-box-shadow: 0 0 0 3px #e05200;
-  box-shadow: 0 0 0 3px #e05200;
   border-radius: 0px;
 }
 
