@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import Header from '@gov.au/headings/lib/js/react.js'
 import BriefOverviewSectionList from './BriefOverviewSectionList'
@@ -24,6 +25,16 @@ export class BriefOverviewSectionComponent extends Component {
       </li>
     )
   }
+}
+
+BriefOverviewSectionComponent.defaultProps = {
+  status: ''
+}
+
+BriefOverviewSectionComponent.propTypes = {
+  links: PropTypes.array.isRequired,
+  status: PropTypes.string,
+  title: PropTypes.string.isRequired
 }
 
 const BriefOverviewSection = BriefOverviewSectionComponent

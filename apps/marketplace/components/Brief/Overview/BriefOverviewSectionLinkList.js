@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './BriefOverviewSectionLinkList.scss'
 
@@ -28,6 +29,20 @@ const BriefOverviewSectionLinkList = props => {
       {items.map(item => <BriefOverviewSectionLinkListItem key={`item.${item.text}`} {...item} />)}
     </ul>
   )
+}
+
+BriefOverviewSectionLinkListItem.defaultProps = {
+  path: null
+}
+
+BriefOverviewSectionLinkListItem.propTypes = {
+  complete: PropTypes.bool.isRequired,
+  path: PropTypes.string,
+  text: PropTypes.string.isRequired
+}
+
+BriefOverviewSectionLinkList.propTypes = {
+  items: PropTypes.array.isRequired
 }
 
 export default BriefOverviewSectionLinkList

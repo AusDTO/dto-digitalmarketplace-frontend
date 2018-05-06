@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import Header from '@gov.au/headings/lib/js/react.js'
 import BriefOverviewSection from './BriefOverviewSection'
@@ -12,23 +13,18 @@ export class BriefOverview extends Component {
   }
 
   render() {
-    const { sections } = this.props
+    const { sections, title } = this.props
 
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12">
           <span className={styles.overview}>Overview</span>
-          <Header size="5" level="1" text={this.props.title} />
+          <Header size="5" level="1" text={title} />
           <div className="row">
             <div className="col-xs-12 col-sm-8 col-md-12">
               <ol className={`${styles.briefOverviewSections}`}>
                 {sections.map(section =>
-                  <BriefOverviewSection
-                    key={`section.${section.title}`}
-                    links={section.links}
-                    status=""
-                    title={section.title}
-                  />
+                  <BriefOverviewSection key={`section.${section.title}`} links={section.links} title={section.title} />
                 )}
               </ol>
             </div>
@@ -37,6 +33,10 @@ export class BriefOverview extends Component {
       </div>
     )
   }
+}
+
+BriefOverview.propTypes = {
+  sections: PropTypes.array.isRequired
 }
 
 export default BriefOverview

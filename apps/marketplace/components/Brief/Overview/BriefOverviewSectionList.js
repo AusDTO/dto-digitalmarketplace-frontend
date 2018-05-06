@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import BriefOverviewSectionLinkList from './BriefOverviewSectionLinkList'
 
@@ -41,6 +42,10 @@ export class BriefOverviewSectionListComponent extends Component {
       </div>
     )
   }
+}
+
+BriefOverviewSectionListComponent.propTypes = {
+  links: PropTypes.array.isRequired
 }
 
 const BriefOverviewSectionList = BriefOverviewSectionListComponent
