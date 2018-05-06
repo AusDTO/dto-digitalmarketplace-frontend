@@ -1,26 +1,33 @@
-import React, { Component } from 'react'
-
-import BriefOverviewSectionLinkListItem from './BriefOverviewSectionLinkListItem'
+import React from 'react'
 
 import styles from './BriefOverviewSectionLinkList.scss'
 
-export class BriefOverviewSectionLinkListComponent extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+const BriefOverviewSectionLinkListItem = props => {
+  const { complete, path, text } = props
 
-  render() {
-    const { items } = this.props
-
-    return (
-      <ul className={styles.briefOverviewSectionLinkList}>
-        {items.map(item => <BriefOverviewSectionLinkListItem key={`item.${item.text}`} {...item} />)}
-      </ul>
-    )
-  }
+  return (
+    <li>
+      {complete === true &&
+        <span className={styles.tick}>
+          <img src="/static/svg/green-tick.svg" alt="Completed" />
+        </span>}
+      {path === null
+        ? text
+        : <a href={path}>
+            {text}
+          </a>}
+    </li>
+  )
 }
 
-const BriefOverviewSectionLinkList = BriefOverviewSectionLinkListComponent
+const BriefOverviewSectionLinkList = props => {
+  const { items } = props
+
+  return (
+    <ul className={styles.briefOverviewSectionLinkList}>
+      {items.map(item => <BriefOverviewSectionLinkListItem key={`item.${item.text}`} {...item} />)}
+    </ul>
+  )
+}
 
 export default BriefOverviewSectionLinkList
