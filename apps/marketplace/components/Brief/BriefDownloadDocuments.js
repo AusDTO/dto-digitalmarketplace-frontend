@@ -10,6 +10,10 @@ const canDownload = () => {
 }
 
 export class BriefDownloadDocuments extends Component {
+  static defaultProps = {
+    briefDocumentsData: null
+  }
+
   componentDidMount() {
     this.props.downloadBriefDocuments(this.props.brief.id)
   }
@@ -55,7 +59,8 @@ export class BriefDownloadDocuments extends Component {
 
 BriefDownloadDocuments.propTypes = {
   brief: PropTypes.object.isRequired,
-  downloadBriefDocuments: PropTypes.func.isRequired
+  downloadBriefDocuments: PropTypes.func.isRequired,
+  briefDocumentsData: PropTypes.object
 }
 
 export default BriefDownloadDocuments
