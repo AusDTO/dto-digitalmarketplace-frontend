@@ -143,6 +143,7 @@ input[type="radio"].au-control-input__input:focus + .au-control-input__text:befo
 
 .au-control-input__text {
   display: block;
+  line-height: 1.5;
 }
 
 .au-control-input__input:checked+.au-control-input__text {
