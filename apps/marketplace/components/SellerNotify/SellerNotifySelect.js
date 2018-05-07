@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Checkbox } from '@gov.au/control-input/lib/js/react.js'
-import Button from '@gov.au/buttons/lib/js/react.js'
+import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import styles from './SellerNotify.scss'
 
 export class SellerNotifySelect extends Component {
@@ -65,7 +65,7 @@ export class SellerNotifySelect extends Component {
           <ul className={styles.sellerList}>
             {this.props.sellers.map(response =>
               <li key={response.supplier_code}>
-                <Checkbox
+                <AUcheckbox
                   name={`${response.supplier_code}`}
                   label={response.supplier_name}
                   value=""
@@ -76,7 +76,7 @@ export class SellerNotifySelect extends Component {
             )}
           </ul>
           <p>
-            <Button onClick={this.handleContinueClick} disabled={this.state.disabled} text="Continue" />
+            <AUbutton onClick={this.handleContinueClick} disabled={this.state.disabled}>Continue</AUbutton>
           </p>
         </div>
       </div>

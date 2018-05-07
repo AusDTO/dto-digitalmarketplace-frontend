@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Button from '@gov.au/buttons/lib/js/react.js'
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 
 export class SellerNotifyIntroduction extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export class SellerNotifyIntroduction extends Component {
             <h2>This is the introduction stage</h2>
             <p>Here, we describe which notification a buyer is about to send out.</p>
             <p>
-              <Button onClick={this.handleContinueClick} text="Continue" />
+              <AUbutton onClick={this.handleContinueClick}>Continue</AUbutton>
             </p>
           </div>
         </div>

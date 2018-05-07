@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import ProgressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
+import AUprogressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 
 export class SellerNotifyNav extends Component {
@@ -51,7 +51,7 @@ export class SellerNotifyNav extends Component {
     return (
       <div className="row">
         <div className="col-xs-12">
-          <ProgressIndicator items={items} />
+          <AUprogressIndicator items={items} />
         </div>
       </div>
     )

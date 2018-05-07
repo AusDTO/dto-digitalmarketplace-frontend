@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Button from '@gov.au/buttons/lib/js/react.js'
-import PageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import SellerNotifyEmailUnsuccessful from './SellerNotifyEmailUnsuccessful'
 import SellerNotifySellerList from './SellerNotifySellerList'
 import styles from './SellerNotify.scss'
@@ -78,7 +78,7 @@ export class SellerNotifyReview extends Component {
       return (
         <div className="row">
           <div className="col-xs-12">
-            <PageAlert as="error">
+            <AUpageAlert as="error">
               <p>
                 You must first select at least one seller from the{' '}
                 <a href="#select" onClick={this.handleSelectSellersClick}>
@@ -86,7 +86,7 @@ export class SellerNotifyReview extends Component {
                 </a>{' '}
                 stage.
               </p>
-            </PageAlert>
+            </AUpageAlert>
           </div>
         </div>
       )
@@ -123,7 +123,7 @@ export class SellerNotifyReview extends Component {
             >
               {this.getEmailContent()}
             </div>
-            <Button type="submit" text="Send email" />
+            <AUbutton type="submit">Send email</AUbutton>
           </form>
         </div>
       </div>
