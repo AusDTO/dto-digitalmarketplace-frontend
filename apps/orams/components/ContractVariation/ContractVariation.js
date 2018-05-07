@@ -28,7 +28,7 @@ class ContractVariation extends Component {
     return (
       <div className={styles.container}>
         <header>
-          <h1 className="uikit-display-5" tabIndex="-1">
+          <h1 className="au-display-xl" tabIndex="-1">
             Pricing for {serviceToEdit.serviceName}
             <span>{serviceToEdit.subCategoryName ? ' ' + '(' + serviceToEdit.subCategoryName + ')' : ''}</span>
           </h1>
@@ -38,8 +38,8 @@ class ContractVariation extends Component {
           </div>
         </header>
         <article role="main">
-          <div className="uikit-callout uikit-callout--calendar-event">
-            <div className="uikit-display-3">
+          <div className="au-callout au-callout--calendar-event">
+            <div className="au-display-lg">
               <strong>Contract variation</strong>
             </div>
             <div>
@@ -125,7 +125,7 @@ class ContractVariation extends Component {
             />
             <br />
             <br />
-            <button type="submit" className="uikit-btn">
+            <button type="submit" className="au-btn">
               Update profile
             </button>
           </Form>

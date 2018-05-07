@@ -49,7 +49,7 @@ class EditPriceForm extends Component {
     return (
       <div className={styles.container}>
         <header>
-          <h1 className="uikit-display-5" tabIndex="-1">
+          <h1 className="au-display-xl" tabIndex="-1">
             Pricing for {serviceToEdit.serviceName}
             <span>{serviceToEdit.subCategoryName ? ' ' + '(' + serviceToEdit.subCategoryName + ')' : ''}</span>
           </h1>
@@ -69,7 +69,7 @@ class EditPriceForm extends Component {
           </div>
         </header>
         <article role="main">
-          <div className="uikit-callout uikit-callout--calendar-event">
+          <div className="au-callout au-callout--calendar-event">
             <div>
               <strong>
                 Region: {priceData.region.state + ' ' + priceData.region.name}
@@ -200,11 +200,11 @@ class EditPriceForm extends Component {
                   onClick={() => {
                     buttonClick('saveAnother')
                   }}
-                  className="uikit-btn right-button-margin"
+                  className="au-btn right-button-margin"
                 >
                   Save and edit another
                 </button>
-                <button type="submit" onClick={() => buttonClick('continueToFinalStep')} className="uikit-btn">
+                <button type="submit" onClick={() => buttonClick('continueToFinalStep')} className="au-btn">
                   Continue to contract variation
                 </button>
               </div>

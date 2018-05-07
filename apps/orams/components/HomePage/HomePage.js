@@ -9,8 +9,6 @@ import formProps from 'shared/form/formPropsSelector'
 import { login } from 'orams/actions/appActions'
 import { rootPath } from 'orams/routes'
 
-import styles from 'orams/components/HomePage/HomePage.scss'
-
 export class HomePageComponent extends BaseForm {
   static propTypes = {
     model: PropTypes.string.isRequired,
@@ -52,29 +50,24 @@ export class HomePageComponent extends BaseForm {
                   framework="ORAMS"
                 />}
           </div>
-        </main>
-        <div className={styles.greySection}>
-          <main>
-            <div className="row">
-              <div className="col-sm-10 col-xs-12">
-                <div className="uikit-display-4">
-                  <strong>About ORAMS</strong>
-                </div>
-                <div>
-                  ORAMS is a collective rehabilitation and medical service panel. Its aim is to streamline
-                  rehabilitation and medical service procurement between agencies, with the purpose of cost-saving,
-                  reduced duplication, join-solutions, and increased performance and efficiency.
-                </div>
-                <div className={styles.spacer}>
-                  For ORAMS panel information, templates and updates please visit{' '}
-                  <a href="http://govdex.gov.au">
-                    <strong>govdex.gov.au</strong>
-                  </a>
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-xs-12">
+              <span />
+              <h2 className="au-display-lg">About ORAMS</h2>
+              <p>
+                ORAMS is a collective rehabilitation and medical service panel. Its aim is to streamline rehabilitation
+                and medical service procurement between agencies, with the purpose of cost-saving, reduced duplication,
+                join-solutions, and increased performance and efficiency.
+              </p>
+              <p>
+                For ORAMS panel information, templates and updates please visit{' '}
+                <a href="http://govdex.gov.au">
+                  <strong>govdex.gov.au</strong>
+                </a>
+              </p>
             </div>
-          </main>
-        </div>
+          </div>
+        </main>
       </div>
     )
   }

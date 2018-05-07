@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { required, validEmail, validPercentage } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -51,16 +51,16 @@ const BriefSpecialistResponseForm = ({
             ? <div>
                 {briefResponses.length === 0 &&
                   <div>
-                    <h1 className="uikit-display-5">
+                    <h1 className="au-display-xl">
                       Apply for &lsquo;{brief.title}&rsquo;
                     </h1>
-                    <div>
+                    <p>
                       You can add {MaxSpecialists} specialists. This opportunity closes on{' '}
                       {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.
-                    </div>
+                    </p>
                     <br />
                   </div>}
-                <div className="uikit-display-4">
+                <div className="au-display-lg">
                   <strong>
                     Specialist {specialistNumber}
                   </strong>
@@ -80,7 +80,7 @@ const BriefSpecialistResponseForm = ({
                     }}
                   />
                   <input
-                    className="uikit-btn"
+                    className="au-btn"
                     type="submit"
                     value={briefResponses.length > 0 ? 'Continue' : 'Start application'}
                   />
@@ -90,10 +90,10 @@ const BriefSpecialistResponseForm = ({
                 <div className={styles.stepTitle}>
                   Specialist {specialistNumber} of {MaxSpecialists}
                 </div>
-                <h1 className="uikit-display-6">
+                <h1 className="au-display-xl">
                   {specialistName}
                 </h1>
-                <h2>About</h2>
+                <h2 className="au-display-lg">About</h2>
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
                   <Textfield
                     model={`${model}.availability`}
@@ -127,21 +127,21 @@ const BriefSpecialistResponseForm = ({
                   />
                   {app.supplierCode
                     ? <FilesInput
-                        label="Resume"
+                        label="Résumé"
                         hint="Attachments must be PDF or ODT format and a maximum of 5MB"
                         name="attachedDocumentURL"
                         model={model}
                         formFields={1}
-                        fieldLabel="Upload resume"
+                        fieldLabel="Upload résumé"
                         url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                         api={dmapi}
                         description=""
                       />
-                    : <PageAlert as="warning" setFocus={setFocus}>
+                    : <AUpageAlert as="warning" setFocus={setFocus}>
                         <h4>There was a problem loading your details</h4>
                         <p>Only logged in sellers can respond to briefs</p>
-                      </PageAlert>}
-                  <h2>Skills and experience</h2>
+                      </AUpageAlert>}
+                  <h2 className="au-display-lg">Skills and experience</h2>
                   {brief.essentialRequirements &&
                     brief.essentialRequirements.map((requirement, i) =>
                       <Textarea
@@ -187,7 +187,7 @@ const BriefSpecialistResponseForm = ({
                     }}
                   />
                   <input
-                    className="uikit-btn right-button-margin"
+                    className="au-btn right-button-margin"
                     type="submit"
                     value="Submit specialist"
                     onClick={e => {
@@ -196,7 +196,7 @@ const BriefSpecialistResponseForm = ({
                   />
                   {specialistNumber < MaxSpecialists &&
                     <input
-                      className="uikit-btn uikit-btn--tertiary"
+                      className="au-btn au-btn--secondary"
                       type="submit"
                       value="Submit and add another"
                       onClick={e => {

@@ -125,7 +125,6 @@ const Landing = () =>
                           </span>
                         )}
                       </div>
-                      <br />
                       <p>
                         <b>Grant Amount:</b> {val.grant}
                         <br />
@@ -164,13 +163,13 @@ const Landing = () =>
                   <img src="/static/media/5d_data_modelling.jpg" alt="Computer model of suburban street" width="260" />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/6">5D Data Modelling</a>
                   </h3>
                   <p>Ipswich City Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Discovery</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -178,13 +177,13 @@ const Landing = () =>
                   <img src="/static/media/asset_management_casey.jpg" alt="Map of asset locations" width="260" />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/2">Finding value in data</a>
                   </h3>
                   <p>City of Casey Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Discovery</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -196,13 +195,13 @@ const Landing = () =>
                   />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/3">Smart City Lighting Pilot</a>
                   </h3>
                   <p>Adelaide City Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Pilot</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -214,13 +213,13 @@ const Landing = () =>
                   />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/1">Underground waste collection</a>
                   </h3>
                   <p>Sunshine Coast Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>In build</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -232,13 +231,13 @@ const Landing = () =>
                   />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/7">The Smart Hub</a>
                   </h3>
                   <p>Rockhampton Regional Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Live</span>
-                  </div>
+                  </p>
                 </article>
               </li>
               <li>
@@ -246,13 +245,13 @@ const Landing = () =>
                   <img src="/static/media/rpv_trial.png" alt="Remotely piloted aircraft" width="260" />
                 </figure>
                 <article>
-                  <h3>
+                  <h3 className="au-display-sm">
                     <a href="/collaborate/project/8">UAV shark surveillance</a>
                   </h3>
                   <p>Lake Macquarie City Council</p>
-                  <div>
+                  <p>
                     <span className={styles.stage}>Pilot</span>
-                  </div>
+                  </p>
                 </article>
               </li>
             </ul>
@@ -260,9 +259,11 @@ const Landing = () =>
             <article width="100%">
               <center>
                 <p>Got an idea, pilot or live project to share?</p>
-                <a href="/collaborate/project/new" className="uikit-btn">
-                  Add your project
-                </a>
+                <p>
+                  <a href="/collaborate/project/new" className="au-btn">
+                    Add your project
+                  </a>
+                </p>
                 <br />
               </center>
             </article>
@@ -272,34 +273,38 @@ const Landing = () =>
       />
     </Switch>
     <div className="row">
-      <div>
+      <div className="col-xs-12">
         <center>
           <h2>Join the Digital Marketplace</h2>
-          <div className="col-xs-12 col-md-4 col-md-push-2">
-            <center>
-              <h3>Need digital products or services for government?</h3>
-              <p>Our buyers are from across local, state, territory and federal government.</p>
-              <p>
-                <a href="/2/signup" className="uikit-btn">
-                  Join as a buyer
-                </a>
-              </p>
-            </center>
-          </div>
-          <div className={`${styles.becomeASeller} col-xs-12 col-md-4 col-md-push-2`}>
-            {' '}<center>
-              <div>
-                <h3>
-                  Offer digital products <br />or services to government
-                </h3>
-                <p>Access more digital opportunities across all levels of government.</p>
-                <p>
-                  <a href="/become-a-seller" className="uikit-btn">
-                    Become a seller
-                  </a>
-                </p>
-              </div>
-            </center>
+        </center>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col-xs-12 col-md-4 col-md-push-2">
+        <center>
+          <span />
+          <h3>Need digital products or services for government?</h3>
+          <p>Our buyers are from across local, state, territory and federal government.</p>
+          <p>
+            <a href="/2/signup" className="au-btn">
+              Join as a buyer
+            </a>
+          </p>
+        </center>
+      </div>
+      <div className={`${styles.becomeASeller} col-xs-12 col-md-4 col-md-push-2`}>
+        {' '}<center>
+          <div>
+            <span />
+            <h3>
+              Offer digital products <br />or services to government
+            </h3>
+            <p>Access more digital opportunities across all levels of government.</p>
+            <p>
+              <a href="/become-a-seller" className="au-btn">
+                Become a seller
+              </a>
+            </p>
           </div>
         </center>
       </div>

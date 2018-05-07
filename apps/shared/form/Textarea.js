@@ -22,11 +22,11 @@ const Textarea = props => {
   }
   return (
     <div className="field">
-      <label id={`${id}-label`} className="question-heading uikit-text-input__label" htmlFor={id}>
+      <label id={`${id}-label`} className="question-heading au-text-input__label" htmlFor={id}>
         {label}
       </label>
       {description &&
-        <div className="uikit-text-input__hint" id={`${id}-hint`}>
+        <div className="au-text-input__hint" id={`${id}-hint`}>
           {description}
         </div>}
       {messages &&
@@ -46,8 +46,8 @@ const Textarea = props => {
         mapProps={{
           className: ({ fieldValue }) =>
             !fieldValue.valid && fieldValue.touched
-              ? 'uikit-text-input--invalid uikit-text-input uikit-text-input--block uikit-text-input--textarea'
-              : 'uikit-text-input uikit-text-input--block uikit-text-input--textarea',
+              ? 'au-text-input--invalid au-text-input au-text-input--block au-text-input--textarea'
+              : 'au-text-input au-text-input--block au-text-input--textarea',
           value: prps => prps.viewValue,
           ...mapProps,
           ...controls.default

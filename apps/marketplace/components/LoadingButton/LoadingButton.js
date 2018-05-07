@@ -10,7 +10,7 @@ import styles from './LoadingButton.scss'
 
 function LoadingButton(props) {
   return (
-    <div className={`${props.className} uikit-btn ${styles.loadingButton}`} disabled="true">
+    <div className={`${props.className} au-btn ${styles.loadingButton}`} disabled="true">
       Loading
       <LoadingIndicator isLoadingButton />
     </div>

@@ -49,7 +49,7 @@ class Datefield extends React.Component {
     const { day, month, year } = this.state
     return (
       <div className="date-input">
-        <label htmlFor="day" className="question-heading uikit-text-input__label">
+        <label htmlFor="day" className="question-heading au-text-input__label">
           {label}
         </label>
         {description &&
@@ -58,11 +58,11 @@ class Datefield extends React.Component {
           </p>}
 
         <div className={styles.field}>
-          <label htmlFor="day" className="uikit-text-input__label">
+          <label htmlFor="day" className="au-text-input__label">
             Day
           </label>
           <input
-            className="uikit-text-input uikit-text-input--block"
+            className="au-text-input au-text-input--block"
             type="text"
             name="day"
             id="day"
@@ -75,7 +75,7 @@ class Datefield extends React.Component {
         <div className={styles.spacer}>/</div>
 
         <div className={styles.field}>
-          <label htmlFor="month" className="uikit-text-input__label">
+          <label htmlFor="month" className="au-text-input__label">
             Month
           </label>
           <input
@@ -85,14 +85,14 @@ class Datefield extends React.Component {
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={month}
-            className="uikit-text-input uikit-text-input--block"
+            className="au-text-input au-text-input--block"
           />
         </div>
 
         <div className={styles.spacer}>/</div>
 
         <div className={styles.field}>
-          <label htmlFor="year" className="uikit-text-input__label">
+          <label htmlFor="year" className="au-text-input__label">
             Year
           </label>
           <input
@@ -102,7 +102,7 @@ class Datefield extends React.Component {
             maxLength="4"
             onChange={this.onChange.bind(this)}
             defaultValue={year}
-            className="uikit-text-input uikit-text-input--block"
+            className="au-text-input au-text-input--block"
           />
         </div>
       </div>

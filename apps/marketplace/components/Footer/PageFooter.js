@@ -1,18 +1,18 @@
 /* eslint-disable  react/no-danger */
 import React from 'react'
-import Footer, { FooterNav, FooterEnd } from '@gov.au/footer'
+import AUfooter, { AUfooterNav, AUfooterEnd } from '@gov.au/footer/lib/js/react.js'
 import styles from './PageFooter.scss'
 import logoGovCrest from './logo_govcrest.svg'
 import logoNisa from './logo_nisa.svg'
 
 const PageFooter = () =>
-  <Footer>
-    <div className={styles.footerWrapper}>
-      <FooterNav>
+  <AUfooter className={styles.footer}>
+    <div className="container">
+      <AUfooterNav>
         <div className="row">
           <div className="col-md-3 col-sm-6">
-            <h2 className="uikit-display-1">About</h2>
-            <ul className="uikit-link-list">
+            <h2 className="au-display-sm">About</h2>
+            <ul className="au-link-list">
               <li>
                 <a href="/about-us">About us</a>
               </li>
@@ -35,8 +35,8 @@ const PageFooter = () =>
           </div>
 
           <div className="col-md-3 col-sm-6">
-            <h2 className="uikit-display-1">Using the Digital Marketplace</h2>
-            <ul className="uikit-link-list">
+            <h2 className="au-display-sm">Using the Digital Marketplace</h2>
+            <ul className="au-link-list">
               <li>
                 <a href="/">Home</a>
               </li>
@@ -60,13 +60,13 @@ const PageFooter = () =>
           </div>
 
           <div className="col-md-3 col-sm-6">
-            <h2 className="uikit-display-1">
+            <h2 className="au-display-sm">
               Digital Marketplace brought to you by the{' '}
               <a rel="external" href="https://www.dta.gov.au/">
                 DTA
               </a>
             </h2>
-            <ul className="uikit-link-list">
+            <ul className="au-link-list">
               <li>
                 <a rel="external" href="https://www.dta.gov.au/tags/digital-marketplace/">
                   DTA blog
@@ -86,8 +86,8 @@ const PageFooter = () =>
           </div>
 
           <div className="col-md-3 col-sm-6">
-            <h2 className="uikit-display-1">DTA resources</h2>
-            <ul className="uikit-link-list">
+            <h2 className="au-display-sm">DTA resources</h2>
+            <ul className="au-link-list">
               <li>
                 <a rel="external" href="https://www.dta.gov.au/our-work/">
                   Our work
@@ -101,9 +101,9 @@ const PageFooter = () =>
             </ul>
           </div>
         </div>
-      </FooterNav>
+      </AUfooterNav>
 
-      <FooterEnd>
+      <AUfooterEnd>
         <div className="row">
           <div className="col-sm-12">
             <div className={styles.logoGovcrest}>
@@ -121,8 +121,8 @@ const PageFooter = () =>
             </div>
           </div>
         </div>
-      </FooterEnd>
+      </AUfooterEnd>
     </div>
-  </Footer>
+  </AUfooter>
 
 export default PageFooter

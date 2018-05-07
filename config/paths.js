@@ -48,6 +48,9 @@ var config = {
   oramsSrc: resolveApp('apps/orams'),
   sharedComponents: resolveApp('apps/shared'),
 
+  appScss: resolveApp('scss'),
+  pancakeSass: resolveApp('pancake/sass'),
+
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),

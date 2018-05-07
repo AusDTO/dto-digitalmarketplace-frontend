@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Radio } from '@gov.au/control-input/lib/js/react.js'
+import { AUradio } from '@gov.au/control-input/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import styles from './BriefChoice.scss'
 
@@ -22,13 +22,13 @@ export class BriefChoice extends Component {
       <div className={styles.container}>
         <div className="row">
           <div className="col-xs-12">
-            <h1>Start a New Brief</h1>
+            <h1 className="au-display-xl">Start a New Brief</h1>
             <p>Create a new opportunity for a:</p>
           </div>
         </div>
         <div className="row">
           <div className={`${styles.choice} col-xs-12`}>
-            <Radio
+            <AUradio
               id="choice-digital-specialist"
               label="Digital Specialist"
               name="brief_choice"
@@ -42,7 +42,7 @@ export class BriefChoice extends Component {
         </div>
         <div className="row">
           <div className={`${styles.choice} col-xs-12`}>
-            <Radio
+            <AUradio
               id="choice-digital-outcome"
               label="Digital Outcome"
               name="brief_choice"
@@ -60,7 +60,7 @@ export class BriefChoice extends Component {
         <div className="row">
           <div className="col-xs-12">
             <a href={`/buyers/frameworks/digital-marketplace/requirements/${this.state.briefType}`}>
-              <button className="uikit-btn" disabled={!this.state.briefType && 'disabled'}>
+              <button className="au-btn" disabled={!this.state.briefType && 'disabled'}>
                 Continue
               </button>
             </a>

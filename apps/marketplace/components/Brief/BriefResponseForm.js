@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { required, validEmail, validPercentage } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -60,10 +60,10 @@ const BriefResponseForm = ({
                   api={dmapi}
                   description=""
                 />
-              : <PageAlert as="warning" setFocus={setFocus}>
+              : <AUpageAlert as="warning" setFocus={setFocus}>
                   <h4>There was a problem loading your details</h4>
                   <p>Only logged in sellers can respond to briefs</p>
-                </PageAlert>}
+                </AUpageAlert>}
             <Textfield
               model={`${model}.availability`}
               name="availability"
@@ -106,6 +106,7 @@ const BriefResponseForm = ({
                 }}
               />}
             <fieldset className={styles.x_uikit_fieldset}>
+              <span />
               <h2>Skills and experience?</h2>
               {brief.lotSlug &&
                 brief.lotSlug === 'digital-professionals' &&
@@ -157,7 +158,7 @@ const BriefResponseForm = ({
             />
             <br />
             <br />
-            <div className="uikit-page-alerts uikit-page-alerts--warning">
+            <div className="au-page-alerts au-page-alerts--warning">
               <h3>Once you submit this application:</h3>
               <ul>
                 {brief.lotSlug &&
@@ -180,7 +181,9 @@ const BriefResponseForm = ({
 
               {currentlySending
                 ? <LoadingButton />
-                : <input className="uikit-btn" type="submit" value="Submit application" onClick={submitClicked} />}
+                : <p>
+                    <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                  </p>}
             </div>
           </Form>
         </article>

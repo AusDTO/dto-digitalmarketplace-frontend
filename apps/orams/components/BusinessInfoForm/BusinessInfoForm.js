@@ -39,7 +39,7 @@ class BusinessInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 className="uikit-display-5" tabIndex="-1">
+          <h1 className="au-display-xl" tabIndex="-1">
             More about your business
           </h1>
         </header>
@@ -61,17 +61,17 @@ class BusinessInfoForm extends BaseForm {
                 The Marketplace is committed to providing a diverse and inclusive environment.<br />
                 Responses are optional and for demographic purposes only.
               </p>
-              <span className="uikit-control-input uikit-control-input--full">
+              <span className="au-control-input au-control-input--full">
                 <Control.checkbox
                   model={`${model}.seller_type.indigenous`}
                   id="indigenous"
                   name="indigenous"
                   value="Indigenous"
                   mapProps={{
-                    className: 'uikit-control-input__input'
+                    className: 'au-control-input__input'
                   }}
                 />
-                <label className="uikit-control-input__text" htmlFor="indigenous">
+                <label className="au-control-input__text" htmlFor="indigenous">
                   Indigenous
                   <p>
                     Your business is at least 50% Indigenous owned and listed on{' '}
@@ -85,7 +85,7 @@ class BusinessInfoForm extends BaseForm {
 
             {children}
 
-            <button type="submit" className="uikit-btn">
+            <button type="submit" className="au-btn">
               Update profile
             </button>
           </Form>
