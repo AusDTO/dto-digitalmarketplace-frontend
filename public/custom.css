@@ -143,14 +143,10 @@ input[type="radio"].au-control-input__input:focus + .au-control-input__text:befo
 
 .au-control-input__text {
   display: block;
-  line-height: 1.5;
 }
 
-.au-body a:focus {
-  -webkit-box-shadow: 0 0 0 3px #ff8629;
-  -moz-box-shadow: 0 0 0 3px #ff8629;
-  box-shadow: 0 0 0 3px #ff8629;
-  outline: none;
+.au-control-input__input:checked+.au-control-input__text {
+  font-weight: bold;
 }
 
 .primary-nav ul a, .local-nav ul a {

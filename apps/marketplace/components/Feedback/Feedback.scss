@@ -27,13 +27,6 @@ label.difficultButton {
   clip: rect(0, 0, 0, 0);
   clip: rect(0 0 0 0);
 }
-.difficulty input[type="radio"]:focus + label {
-  outline: none;
-  -webkit-box-shadow: 0 0 0 3px #e05200;
-  -moz-box-shadow: 0 0 0 3px #e05200;
-  box-shadow: 0 0 0 3px #e05200;
-  border-radius: 0px;
-}
 .difficulty label {
   height: 50px;
   margin-right: 36px;
