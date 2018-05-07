@@ -8,7 +8,7 @@ const SellerDashboard = props =>
       <div className={`${styles.header} row`}>
         <div className="col-md-12 col-sm-12">
           <div className={styles.briefsFilter}>
-            <ul className="uikit-link-list uikit-link-list--inline">
+            <ul className="au-link-list au-link-list--inline">
               <li>
                 <a href="/sellers">Manage team</a>
               </li>
@@ -17,10 +17,10 @@ const SellerDashboard = props =>
               </li>
             </ul>
           </div>
-          <span className={`uikit-display-2 ${styles.lightText}`}>
+          <span className={`au-display-lg ${styles.lightText}`}>
             {props.supplier.name}
           </span>
-          <h1 className="uikit-display-5">Dashboard</h1>
+          <h1 className="au-display-xl">Dashboard</h1>
           {props.items.length === 0 &&
             <div>
               You have not applied for any <a href="/digital-marketplace/opportunities?status=live">

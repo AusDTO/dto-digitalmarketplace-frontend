@@ -4,14 +4,14 @@ import React from 'react'
 const SecurityStatement = props => {
   return (
     <main>
-      <h1 className="uikit-display-6">Security statement</h1>
+      <h1 className="au-display-xl">Security statement</h1>
       <p>
         The Digital Marketplace is being delivered to make it easier for government and digital businesses to work
         together. We value transparency while also taking security seriously. This document describes the practices we
         employ to help ensure the security of our users’ data.
       </p>
 
-      <h2>Open source</h2>
+      <h2 className="au-display-lg">Open source</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -24,7 +24,7 @@ const SecurityStatement = props => {
         available on our GitHub repository.
       </p>
 
-      <h2>Raising issues</h2>
+      <h2 className="au-display-lg">Raising issues</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -34,7 +34,7 @@ const SecurityStatement = props => {
         Alternatively, you can email us at <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.
       </p>
 
-      <h2>Security audits</h2>
+      <h2 className="au-display-lg">Security audits</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -45,7 +45,7 @@ const SecurityStatement = props => {
         manner.
       </p>
 
-      <h2>Secure cloud</h2>
+      <h2 className="au-display-lg">Secure cloud</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -55,7 +55,7 @@ const SecurityStatement = props => {
         all user data has restricted access and is periodically backed up.
       </p>
 
-      <h2>Status and incident updates</h2>
+      <h2 className="au-display-lg">Status and incident updates</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -67,7 +67,7 @@ const SecurityStatement = props => {
         raised on this site with regular updates until the service is restored.
       </p>
 
-      <h2>Monitoring</h2>
+      <h2 className="au-display-lg">Monitoring</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -76,7 +76,7 @@ const SecurityStatement = props => {
         errors or changes to performance that could affect the Digital Marketplace service.
       </p>
 
-      <h2>Zero downtime</h2>
+      <h2 className="au-display-lg">Zero downtime</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -86,7 +86,7 @@ const SecurityStatement = props => {
         can quickly respond to any issues.
       </p>
 
-      <h2>Feedback</h2>
+      <h2 className="au-display-lg">Feedback</h2>
       <a href="#" className="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>

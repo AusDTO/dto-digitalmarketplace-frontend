@@ -21,7 +21,13 @@ const App = () =>
           <Header />
         </header>
         <div id="content">
-          <RootContainer />
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12">
+                <RootContainer />
+              </div>
+            </div>
+          </div>
         </div>
         <Footer />
       </div>

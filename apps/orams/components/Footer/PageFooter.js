@@ -1,19 +1,21 @@
 /* eslint-disable  react/no-danger */
 import React from 'react'
-import Footer, { FooterNav } from '@gov.au/footer'
+import AUfooter, { AUfooterNav } from '@gov.au/footer/lib/js/react.js'
 import styles from './PageFooter.scss'
 import logoGovCrest from './ato-logo-02.svg'
 
 const PageFooter = () =>
   <div className="orams-footer">
-    <Footer>
+    <AUfooter>
       <div className={styles.footerWrapper}>
-        <FooterNav>
+        <AUfooterNav>
           <div className="row">
             <div className="col-md-6 col-sm-6">
-              <h2 className={styles.title}>ORAMS</h2>
-              <h2 className={styles.subtitle}>brought to you by the Digital Marketplace</h2>
-              <ul className="uikit-link-list">
+              <h2 className="au-display-md">
+                ORAMS
+                <small className={styles.footerSmallText}>brought to you by the Digital Marketplace</small>
+              </h2>
+              <ul className="au-link-list">
                 <li>
                   <a href="/orams/terms-of-use">Terms of Use</a>
                 </li>
@@ -40,9 +42,9 @@ const PageFooter = () =>
               </div>
             </div>
           </div>
-        </FooterNav>
+        </AUfooterNav>
       </div>
-    </Footer>
+    </AUfooter>
   </div>
 
 export default PageFooter

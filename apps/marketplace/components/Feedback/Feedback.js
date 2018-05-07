@@ -4,7 +4,7 @@ import { Control, LocalForm } from 'react-redux-form'
 
 import Textarea from 'shared/form/Textarea'
 import Icon from 'shared/Icon'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import styles from './Feedback.scss'
 
@@ -24,9 +24,9 @@ export class Feedback extends React.Component {
     return (
       <span>
         {this.props.app && this.props.app.feedbackSuccess
-          ? <PageAlert as="success">
+          ? <AUpageAlert as="success">
               <h4>Your feedback has been sent, thank you for helping us improve the Marketplace.</h4>
-            </PageAlert>
+            </AUpageAlert>
           : <LocalForm onSubmit={val => this.props.handleSubmit(val)}>
               <Control.input
                 type="hidden"
@@ -58,7 +58,7 @@ export class Feedback extends React.Component {
                   }}
                 />
 
-                <label htmlFor="easy" className="uikit-btn uikit-btn--tertiary">
+                <label htmlFor="easy" className="au-btn au-btn--secondary">
                   <div>
                     <Icon value="smile-o" color="#000000" size={24} className={styles.smile} />Easy
                   </div>
@@ -73,7 +73,7 @@ export class Feedback extends React.Component {
                     onChange: this.onDifficultyChange
                   }}
                 />
-                <label htmlFor="ok" className={`uikit-btn uikit-btn--tertiary ${styles.okButton}`}>
+                <label htmlFor="ok" className={`au-btn au-btn--secondary ${styles.okButton}`}>
                   <div>
                     <Icon value="meh-o" color="#000000" size={24} className={styles.meh} />OK
                   </div>
@@ -88,7 +88,7 @@ export class Feedback extends React.Component {
                     onChange: this.onDifficultyChange
                   }}
                 />
-                <label htmlFor="difficult" className={`uikit-btn uikit-btn--tertiary ${styles.difficultButton}`}>
+                <label htmlFor="difficult" className={`au-btn au-btn--secondary ${styles.difficultButton}`}>
                   <div>
                     <Icon value="frown-o" color="#000000" size={24} className={styles.frown} />Difficult
                   </div>
@@ -103,23 +103,23 @@ export class Feedback extends React.Component {
                 controlProps={{ limit: 150 }}
               />
 
-              <span className="uikit-control-input uikit-control-input--full">
+              <span className="au-control-input au-control-input--full">
                 <Control.checkbox
                   model=".contact_for_user_research"
                   id="contact_for_user_research"
                   name="contact_for_user_research"
                   value="yes"
                   mapProps={{
-                    className: 'uikit-control-input__input'
+                    className: 'au-control-input__input'
                   }}
                 />
-                <label className="uikit-control-input__text" htmlFor="contact_for_user_research">
+                <label className="au-control-input__text" htmlFor="contact_for_user_research">
                   You are happy to be contacted to test new designs.
                 </label>
               </span>
               <br />
               <br />
-              <button className="uikit-btn">Send feedback</button>
+              <button className="au-btn">Send feedback</button>
             </LocalForm>}
       </span>
     )

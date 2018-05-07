@@ -4,11 +4,11 @@ import React from 'react'
 const PrivacyPolicy = props => {
   return (
     <main>
-      <h1 className="uikit-display-6">Privacy Statement</h1>
+      <h1 className="au-display-xl">Privacy Statement</h1>
       <p>
         Words the same meaning as defined in the <a href="/terms-of-use">Terms of Use</a>.
       </p>
-      <h2>Scope</h2>
+      <h2 className="au-display-lg">Scope</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -33,7 +33,7 @@ const PrivacyPolicy = props => {
         Digital Marketplace. Responsibility for the privacy policies or practices of third party sites, linked to the{' '}
         <b>Digital Marketplace</b>, is beyond the control of the Commonwealth.
       </p>
-      <h2>Personal information</h2>
+      <h2 className="au-display-lg">Personal information</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -51,7 +51,7 @@ const PrivacyPolicy = props => {
         </li>
         <li>is required or authorised by law or permitted under Australian Privacy Principle 6</li>
       </ul>
-      <h2>Feedback</h2>
+      <h2 className="au-display-lg">Feedback</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -61,7 +61,7 @@ const PrivacyPolicy = props => {
         information <b>you</b> include, such as a name or phone number for the purposes of responding to <b>your</b>{' '}
         feedback or request.
       </p>
-      <h2>Application logs</h2>
+      <h2 className="au-display-lg">Application logs</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -102,7 +102,7 @@ const PrivacyPolicy = props => {
       This information is recorded for the purposes of performance improvement, aggregated (non personalised) reporting,
       auditability and security. This information is securely stored and available only to <b>Digital Marketplace</b>{' '}
       support personnel for the purposes of maintaining the service.
-      <h2>Collection of user information</h2>
+      <h2 className="au-display-lg">Collection of user information</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -183,7 +183,7 @@ const PrivacyPolicy = props => {
       </ul>
       <b>We</b> may share submitted financial statements and legal disclosures with registered <b>buyers</b> on request,
       if they are considering awarding a contract.
-      <h2>Survey questions</h2>
+      <h2 className="au-display-lg">Survey questions</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -192,7 +192,7 @@ const PrivacyPolicy = props => {
         use of this information will be communicated in that survey correspondence. Unless otherwise noted, all personal
         information collected during a survey will be stored securely and will not be disclosed publicly.
       </p>
-      <h2>
+      <h2 className="au-display-lg">
         How <b>we</b> deal with complaints and requests
       </h2>
       <p>
@@ -221,7 +221,7 @@ const PrivacyPolicy = props => {
         We undertake to respond within 30 days. If the request or complaint will take longer to resolve, <b>we</b> will
         provide <b>you</b> with a date by which <b>we</b> expect to respond.
       </p>
-      <h2>How we protect your personal information</h2>
+      <h2 className="au-display-lg">How we protect your personal information</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>
@@ -235,7 +235,7 @@ const PrivacyPolicy = props => {
         Agency who need it to provide services to you. We will not disclose <b>your</b> personal information to overseas
         recipients.
       </p>
-      <h2>Website analytics</h2>
+      <h2 className="au-display-lg">Website analytics</h2>
       <a href="#" class="scroll-to-top">
         Back to top of page <b>&uarr;</b>
       </a>

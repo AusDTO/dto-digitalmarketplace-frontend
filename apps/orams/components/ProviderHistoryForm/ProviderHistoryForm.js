@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Form, Control } from 'react-redux-form'
 import PricingResultsTable from 'orams/components/PricingResultsTable/PricingResultsTable'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import formProps from 'shared/form/formPropsSelector'
 import { required, validDateNotInFuture, validPriceRange } from 'shared/validators'
 import Datefield from 'shared/form/Datefield'
@@ -25,9 +25,9 @@ class ProviderHistoryForm extends Component {
 
     if (this.props.errorMessage) {
       return (
-        <PageAlert as="error">
+        <AUpageAlert as="error">
           <h4>There was a problem loading your results</h4>
-        </PageAlert>
+        </AUpageAlert>
       )
     }
 
@@ -40,7 +40,7 @@ class ProviderHistoryForm extends Component {
       <main>
         <div className={styles.container}>
           <header>
-            <h1 className="uikit-display-5" tabIndex="-1">
+            <h1 className="au-display-xl" tabIndex="-1">
               Invoice price check
             </h1>
             <div className={styles.stepTitle}>Step 2 of 2</div>
@@ -123,7 +123,7 @@ class ProviderHistoryForm extends Component {
                   </div>
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-11">
-                      <button type="submit" className="uikit-btn">
+                      <button type="submit" className="au-btn">
                         Filter date
                       </button>
                     </div>

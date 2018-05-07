@@ -7,7 +7,7 @@ import { Form } from 'react-redux-form'
 import isNumber from 'lodash/isNumber'
 
 import { required, validEmail, validPhoneNumber, minObjectLength } from 'shared/validators'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import Layout from 'shared/Layout'
 import BaseForm from 'shared/form/BaseForm'
 import SubmitForm from 'shared/form/SubmitForm'
@@ -54,15 +54,15 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 className="uikit-display-5" tabIndex="-1">
+          <h1 className="au-display-xl" tabIndex="-1">
             {title}
           </h1>
         </header>
         <article role="main">
           {profileUpdated
-            ? <PageAlert as="success">
+            ? <AUpageAlert as="success">
                 <h4>Profile updated</h4>
-              </PageAlert>
+              </AUpageAlert>
             : ''}
           <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form model={model} action={action} id="yourinfo" validateOn="submit" onSubmit={data => handleSubmit(data)}>
@@ -150,7 +150,7 @@ class YourInfoForm extends BaseForm {
 
             {currentlySending
               ? <LoadingButton />
-              : <button type="submit" className="uikit-btn">
+              : <button type="submit" className="au-btn">
                   Update profile
                 </button>}
           </Form>

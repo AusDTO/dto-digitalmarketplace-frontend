@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import { loadProfile } from 'orams/actions/profileActions'
 import { hideNav } from 'orams/actions/editPriceActions'
@@ -66,15 +66,15 @@ class BusinessDetailsForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 className="uikit-display-5" tabIndex="-1">
+          <h1 className="au-display-xl" tabIndex="-1">
             Check your business details
           </h1>
         </header>
         <article role="main">
           {profileUpdated
-            ? <PageAlert as="success">
+            ? <AUpageAlert as="success">
                 <h4>Profile updated</h4>
-              </PageAlert>
+              </AUpageAlert>
             : ''}
           <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
@@ -207,7 +207,7 @@ class BusinessDetailsForm extends BaseForm {
                         <hr className="hr" />
                         <div className="row">
                           <div className="col-xs-8 col-sm-10">
-                            <h3 className="uikit-display-3">Additional address</h3>
+                            <h3 className="au-display-lg">Additional address</h3>
                           </div>
                           <div className="col-xs-4 col-sm-2">
                             <a href="#" onClick={this.onRemove.bind(this, key)}>
@@ -274,7 +274,7 @@ class BusinessDetailsForm extends BaseForm {
 
             {currentlySending
               ? <LoadingButton />
-              : <button type="submit" className="uikit-btn">
+              : <button type="submit" className="au-btn">
                   Update profile
                 </button>}
           </Form>

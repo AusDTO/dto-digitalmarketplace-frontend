@@ -1565,7 +1565,7 @@ exports[`ProjectForm renders with errors 1`] = `
     role="main"
   >
     <div
-      className="uikit-page-alerts uikit-page-alerts--error"
+      className="au-body au-page-alerts   au-page-alerts--error"
       role="alert"
     >
       <h4

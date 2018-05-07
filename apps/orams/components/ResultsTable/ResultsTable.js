@@ -4,7 +4,7 @@ import { withRouter, Switch, Route, Link } from 'react-router-dom'
 import { uniqueID } from 'shared/utils/helpers'
 import { connect } from 'react-redux'
 import styles from './ResultsTable.scss'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 class ResultsTable extends Component {
   constructor(props) {
@@ -36,11 +36,11 @@ class ResultsTable extends Component {
     return (
       <div tabIndex="0" ref={this.setRef} className={styles.table}>
         {alert
-          ? <PageAlert as={alert.type}>
+          ? <AUpageAlert as={alert.type}>
               <h4>
                 {alert.message}
               </h4>
-            </PageAlert>
+            </AUpageAlert>
           : ''}
         <div className={styles.tableContainer}>
           {categories &&

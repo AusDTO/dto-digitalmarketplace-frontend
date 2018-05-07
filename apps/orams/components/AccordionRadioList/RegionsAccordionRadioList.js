@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import { uniqueID } from 'shared/utils/helpers'
-import Accordion from '@gov.au/accordion'
+import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import { bindActionCreators } from 'redux'
 import styles from './AccordionRadioList.scss'
 import { actionCreators as actions } from 'orams/actions/sellerCatalogueActions'
@@ -12,25 +12,21 @@ const RegionsAccordionRadioList = props => {
 
   return (
     <div className={styles.container}>
-      <div className="uikit-display-2">
-        <strong>
-          {props.title}
-        </strong>
-      </div>
+      <h2 className="au-display-lg">{props.title}</h2>
       {regions &&
         regions.map((region, id = uniqueID()) =>
           <div key={id}>
-            <Accordion header={region.name} open={regionAccordionOpen === region.name + id}>
+            <AUaccordion header={region.name} open={regionAccordionOpen === region.name + id}>
               <div>
                 {region.subRegions.map((subRegion, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
-                      className="uikit-control-input uikit-control-input--full"
+                      className="au-control-input au-control-input--full"
                       htmlFor={region.name + subRegion.name + subId}
                     >
                       <input
                         id={region.name + subRegion.name + subId}
-                        className="uikit-control-input__input"
+                        className="au-control-input__input"
                         type="radio"
                         name="region"
                         tabIndex="0"
@@ -42,14 +38,14 @@ const RegionsAccordionRadioList = props => {
                           props.loadTableData()
                         }}
                       />
-                      <span className="uikit-control-input__text">
+                      <span className="au-control-input__text">
                         {subRegion.name}
                       </span>
                     </label>
                   </div>
                 )}
               </div>
-            </Accordion>
+            </AUaccordion>
           </div>
         )}
     </div>

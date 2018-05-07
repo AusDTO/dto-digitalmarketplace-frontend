@@ -12,7 +12,7 @@ const Header = props => {
 
   return (
     <section className={styles.marketplaceHeader}>
-      <div className={styles.wrapper}>
+      <div className="container">
         <div className={styles.marketplaceLogo}>
           <a href="/" title="Go to the Marketplace homepage" className={styles.logo}>
             <span>Digital Marketplace</span>

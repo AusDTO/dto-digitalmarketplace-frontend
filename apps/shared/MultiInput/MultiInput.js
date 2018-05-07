@@ -118,7 +118,7 @@ class MultiInput extends React.Component {
                   className={`text-box ${className}`}
                   aria-describedby={hint && describedby}
                   defaultValue={value}
-                  className="uikit-text-input uikit-text-input--block multiInput"
+                  className="au-text-input au-text-input--block multiInput"
                 />
               </div>
               {i > 0 &&
