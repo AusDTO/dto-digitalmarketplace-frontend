@@ -18,18 +18,18 @@ const RadioList = props => {
             const fieldId = `${id}-${option.value}`
             return (
               <span key={fieldId} className="radio-list-container">
-                <span className="uikit-control-input uikit-control-input--full">
+                <span className="au-control-input au-control-input--full">
                   <Control.radio
                     model={model}
                     name={name}
                     id={fieldId}
                     mapProps={{
-                      className: 'uikit-control-input__input'
+                      className: 'au-control-input__input'
                     }}
                     value={option.value}
                     validators={validators}
                   />
-                  <label className="uikit-control-input__text" htmlFor={fieldId}>
+                  <label className="au-control-input__text" htmlFor={fieldId}>
                     {option.label}
                   </label>
                 </span>

@@ -23,11 +23,11 @@ const Textfield = props => {
   } = props
   return (
     <div className="field">
-      <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading uikit-text-input__label">
+      <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading au-text-input__label">
         {label}
       </label>
       {description &&
-        <div className="uikit-text-input__hint" id={`${id}-hint`}>
+        <div className="au-text-input__hint" id={`${id}-hint`}>
           {description}
         </div>}
       <Control.input
@@ -39,8 +39,8 @@ const Textfield = props => {
         mapProps={{
           className: ({ fieldValue }) =>
             !fieldValue.valid && fieldValue.touched
-              ? 'uikit-text-input--invalid uikit-text-input uikit-text-input--block'
-              : 'uikit-text-input uikit-text-input--block'
+              ? 'au-text-input--invalid au-text-input au-text-input--block'
+              : 'au-text-input au-text-input--block'
         }}
         validators={validators}
         pattern={pattern}

@@ -39,7 +39,7 @@ class ToolsForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 className="uikit-display-5" tabIndex="-1">
+          <h1 className="au-display-xl" tabIndex="-1">
             Tools and methodologies
           </h1>
           <p>Enhance your profile and give buyers more ways to find you through keyword search</p>
@@ -96,7 +96,7 @@ class ToolsForm extends BaseForm {
             />
             {children}
 
-            <button type="submit" className="uikit-btn">
+            <button type="submit" className="au-btn">
               Update profile
             </button>
           </Form>

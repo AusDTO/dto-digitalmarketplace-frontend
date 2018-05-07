@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
 import { required, validEmail } from 'shared/validators'
@@ -46,15 +46,17 @@ const SignupForm = props => {
           <div>
             {signupSuccess &&
               <div>
-                <PageAlert as="success">
+                <AUpageAlert as="success">
                   <h4>Signup email sent</h4>
-                </PageAlert>
+                </AUpageAlert>
                 <article role="main">
                   <header className="page-heading page-heading-without-breadcrumb">
-                    <h1>Thanks for requesting access to the Digital Marketplace.</h1>
+                    <span />
+                    <h1 className="au-display-xl">Thanks for requesting access to the Digital Marketplace.</h1>
                   </header>
                   {isBuyer && signupForm.employment_status === 'contractor'
                     ? <div>
+                        <span />
                         <p>
                           An email has been sent to your manager at <strong>{signupForm.line_manager_email}</strong>{' '}
                           with next steps.
@@ -69,6 +71,7 @@ const SignupForm = props => {
                         </p>
                       </div>
                     : <div>
+                        <span />
                         <p>
                           An email has been sent to <strong>{signupForm.email_address}</strong> with next steps.
                         </p>
@@ -86,7 +89,7 @@ const SignupForm = props => {
             {!signupSuccess &&
               <Layout>
                 <header>
-                  <h1>Let’s get started</h1>
+                  <h1 className="au-display-xl">Let’s get started</h1>
                 </header>
                 <article role="main">
                   <ErrorBox
@@ -115,8 +118,9 @@ const SignupForm = props => {
                             label: (
                               <span>
                                 <span>Buyer</span>
-                                <p>I want to buy on behalf of</p>
-                                <p>government.</p>
+                                <br />
+                                <br />
+                                I want to buy on behalf of<br />government.
                               </span>
                             )
                           },
@@ -125,8 +129,9 @@ const SignupForm = props => {
                             label: (
                               <span>
                                 <span>Seller</span>
-                                <p>I want to sell digital products or</p>
-                                <p>services.</p>
+                                <br />
+                                <br />
+                                I want to sell digital products or<br />services.
                               </span>
                             )
                           }
@@ -229,12 +234,12 @@ const SignupForm = props => {
                             validEmail: 'A validly formatted email is required.'
                           }}
                         />
-                        <PageAlert as="info">
+                        <AUpageAlert as="info">
                           <p>
                             Remember to let this person know we’ll be sending them an email requesting their
                             authorisation.
                           </p>
-                        </PageAlert>
+                        </AUpageAlert>
                       </div>}
                     {children}
                     <p>
@@ -247,12 +252,14 @@ const SignupForm = props => {
                     </p>
                     {currentlySending
                       ? <LoadingButton />
-                      : <input
-                          className="uikit-btn"
-                          type="submit"
-                          value="Create your account"
-                          onClick={onSubmitClicked}
-                        />}
+                      : <p>
+                          <input
+                            className="au-btn"
+                            type="submit"
+                            value="Create your account"
+                            onClick={onSubmitClicked}
+                          />
+                        </p>}
                   </Form>
                 </article>
               </Layout>}

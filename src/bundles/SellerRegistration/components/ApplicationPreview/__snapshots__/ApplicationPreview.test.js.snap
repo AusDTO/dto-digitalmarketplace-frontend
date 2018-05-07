@@ -44,7 +44,7 @@ exports[`ApplicationPreview renders with props 1`] = `
             className="col-xs-12 col-sm-3"
           >
             <h2
-              styleName="styles.uikit-display-4"
+              styleName="styles.au-display-lg"
             >
               Website
             </h2>
@@ -86,7 +86,7 @@ exports[`ApplicationPreview renders with props 1`] = `
           >
             <h2
               className="seller-profile__section-title"
-              styleName="styles.uikit-display-4"
+              styleName="styles.au-display-lg"
             >
               Areas of expertise
             </h2>
@@ -143,7 +143,7 @@ exports[`ApplicationPreview renders with props 1`] = `
           >
             <h2
               className="seller-profile__section-title"
-              styleName="styles.uikit-display-4"
+              styleName="styles.au-display-lg"
             >
               Company Details
             </h2>
@@ -172,7 +172,7 @@ exports[`ApplicationPreview renders with props 1`] = `
           >
             <h2
               className="seller-profile__section-title"
-              styleName="styles.uikit-display-4"
+              styleName="styles.au-display-lg"
             >
               Signed agreement
             </h2>

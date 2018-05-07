@@ -26,6 +26,7 @@ a.filter {
   margin-right: 1rem;
   padding: 0px 8px 0px 8px;
   border-bottom: none;
+  text-decoration: none;
 }
 
 @media (max-width: 767px) {
@@ -72,10 +73,6 @@ a.activeLink {
   div {
     color: #5c5c5c;
     font-size: 0.9em;
-  }
-  p {
-    max-width: 100%;
-    padding-bottom: 1em;
   }
 }
 
@@ -179,7 +176,7 @@ ul.cardList {
         font-size: 28px;
     }
 
-    .uikit-display-3 {
+    .au-display-lg {
         font-size: 18px;
     }
 

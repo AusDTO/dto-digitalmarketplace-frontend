@@ -21,12 +21,10 @@ h1, .hero .site-title {
 }
 
 main {
-  padding: 0 1.6em;
   box-sizing: content-box;
 }
 
 main {
-  max-width: 75em;
   margin-left: auto;
   margin-right: auto;
   -webkit-box-flex: 1;
@@ -90,86 +88,65 @@ main form .question-heading, main form legend {
   font-weight: 700;
 }
 
-form .hint {
-  display: block;
-  margin-bottom: 0.4em;
-  font-size: 0.875rem;
-  color: #717171;
-}
-
-.user-type .uikit-control-input__input:focus+.uikit-control-input__text {
+.user-type .au-control-input__input:focus+.au-control-input__text {
   outline: none;
 }
 
-.user-type .uikit-control-input__input:focus+.uikit-control-input__text > span span {
+.user-type .au-control-input__input:focus+.au-control-input__text > span span {
   outline: none;
 }
 
-.employment-status .uikit-control-input--full {
+.employment-status .au-control-input--full {
   margin-bottom: 0.4em;
   margin-top: 0.4em;
 }
 
-.radioListBoxElement > .uikit-control-input__input:focus + .uikit-control-input__text:before {
+.radioListBoxElement > .au-control-input__input:focus + .au-control-input__text:before {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
 
-.uikit-control-input__text {
-  margin-left: 40px;
-}
-
-.uikit-text-input__label {
+.au-text-input__label {
   margin-bottom: .4em;
 }
 
-.uikit-text-input:focus {
-  outline: 3px solid #e05200;
+.au-text-input:focus {
   outline-offset: 0px;
   background-color: transparent;
 }
 
-.uikit-text-input.uikit-text-input--invalid:focus {
+.au-text-input.au-text-input--invalid:focus {
   background-color: transparent;
 }
 
-.uikit-control-input__input:focus + .uikit-control-input__text:before {
-  -webkit-box-shadow: 0 0 0 3px #e05200;
-  -moz-box-shadow: 0 0 0 3px #e05200;
-  box-shadow: 0 0 0 3px #e05200;
-
-}
-
-input[type="radio"].uikit-control-input__input:focus + .uikit-control-input__text:before {
+input[type="radio"].au-control-input__input:focus + .au-control-input__text:before {
   border-radius: 15px;
 }
-.uikit-body a.uikit-btn {
+.au-body a.au-btn {
   color: #fff;
 }
-.uikit-body a.uikit-btn--tertiary {
+.au-body a.au-btn--tertiary {
   color: #313131;
 }
-.uikit-body a.uikit-btn:focus,.uikit-body a.uikit-btn:hover {
+.au-body a.au-btn:focus,.au-body a.au-btn:hover {
   background-color: #135566;
 }
-.uikit-body a.uikit-btn--tertiary:focus, .uikit-body a.uikit-btn--tertiary:hover {
+.au-body a.au-btn--tertiary:focus, .au-body a.au-btn--tertiary:hover {
   background-color: #e8f2f4;
 }
 
-.uikit-btn:focus {
+.au-btn:focus {
   outline: none;
-  -webkit-box-shadow: 0 0 0 3px #e05200;
-  -moz-box-shadow: 0 0 0 3px #e05200;
-  box-shadow: 0 0 0 3px #e05200;
   border-radius: 0px;
 }
 
-.uikit-control-input__text {
+.au-control-input__text {
   display: block;
+  line-height: 1.5;
 }
 
-.uikit-body a:focus {
+.au-body a:focus {
   -webkit-box-shadow: 0 0 0 3px #ff8629;
   -moz-box-shadow: 0 0 0 3px #ff8629;
   box-shadow: 0 0 0 3px #ff8629;
@@ -315,20 +292,21 @@ label.text-box-number-label {
   font-weight: 700;
 }
 
-.uikit-display-1,
-.uikit-display-2,
-.uikit-display-3,
-.uikit-display-4,
-.uikit-display-5,
-.uikit-display-6 {
+.au-display-xs,
+.au-display-sm,
+.au-display-md,
+.au-display-lg,
+.au-display-xl,
+.au-display-xxl,
+.au-display-xxxl {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
 }
 
-.uikit-accordion {
+.au-accordion {
   margin-bottom: -1px !important;
 }
 
-.uikit-body .uikit-accordion__title, .uikit-accordion__title {
+.au-body .au-accordion__title, .au-accordion__title {
   font-size: 17px !important;
   padding: 16px 14px !important;
 }
@@ -337,7 +315,7 @@ label.text-box-number-label {
   background: #313131;
 }
 
-.orams-footer .uikit-footer {
+.orams-footer .au-footer {
   position: relative;
   box-sizing: border-box;
   max-width: 75em;
@@ -349,12 +327,12 @@ label.text-box-number-label {
   border-top: none;
 }
 
-.orams-footer .uikit-footer a {
+.orams-footer .au-footer a {
   color: #ffffff;
   border-bottom: solid 1px #f5d815;
 }
 
-.custom-radio .uikit-control-input {
+.custom-radio .au-control-input {
   display: block;
   padding-bottom: 20px;
 }

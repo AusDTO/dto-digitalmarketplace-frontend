@@ -27,7 +27,7 @@ class Profile extends Component {
                 <main>
                   <div className="row">
                     <div className="col-xs-12 col-sm-9">
-                      <div className="uikit-display-5">
+                      <div className="au-display-xl">
                         {profileData.name}
                       </div>
                       <p>
@@ -69,7 +69,7 @@ class Profile extends Component {
                         <div className={styles.contactTitle}>Update your profile and service pricing</div>
                         <br />
                         <a href="/orams/edit-profile">
-                          <div className="uikit-btn">Edit Profile</div>
+                          <div className="au-btn">Edit Profile</div>
                         </a>
                       </div>
                     </div>

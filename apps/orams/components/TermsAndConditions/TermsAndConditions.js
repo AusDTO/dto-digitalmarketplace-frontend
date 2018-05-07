@@ -4,10 +4,9 @@ import React from 'react'
 const TermsAndConditions = props => {
   return (
     <main>
-      <h1 className="uikit-display-6">ORAMS Terms of Use</h1>
-
+      <h1 className="au-display-xl">ORAMS Terms of Use</h1>
+      <h2 className="au-display-lg">On this page</h2>
       <nav className="index-links">
-        <h2>On this page</h2>
         <ul>
           <li>
             <a href="#security">Security</a>
@@ -49,7 +48,8 @@ const TermsAndConditions = props => {
       </nav>
 
       <section className="tou-section" id="introduction">
-        <h2>Introduction</h2>
+        <span />
+        <h2 className="au-display-lg">Introduction</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -74,7 +74,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="security">
-        <h2>Security</h2>
+        <span />
+        <h2 className="au-display-lg">Security</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -105,12 +106,13 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="registration">
-        <h2>Registration</h2>
+        <span />
+        <h2 className="au-display-lg">Registration</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
         <p>
-          <h3>Buyers</h3>At the current time, only government entities, or other entities expressly authorised by the
+          <h3 className="au-display-md">Buyers</h3>At the current time, only government entities, or other entities expressly authorised by the
           DTA, can be a buyer in the Digital Marketplace. To create a buyer account you must be a government employee,
           or a contractor engaged to act on behalf of a local, state, territory or federal government entity, and
           require access to the Digital Marketplace to perform your role.{' '}
@@ -120,14 +122,15 @@ const TermsAndConditions = props => {
           behalf of your entity.
         </p>
 
-        <h3>Sellers</h3>
+        <h3 className="au-display-md">Sellers</h3>
         <p>
           All sellers must be part of Occupational rehabilitation and associated medical services panel. In order to
           join this panel, please contact panel management at <a href="mailto:orams@ato.gov.au">orams@ato.gov.au</a>.
         </p>
       </section>
       <section className="tou-section" id="termination">
-        <h2>Termination</h2>
+        <span />
+        <h2 className="au-display-lg">Termination</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -140,7 +143,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="notifications">
-        <h2>Notifications</h2>
+        <span />
+        <h2 className="au-display-lg">Notifications</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -160,7 +164,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="code-of-conduct">
-        <h2>Code of Conduct</h2>
+        <span />
+        <h2 className="au-display-lg">Code of Conduct</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -171,7 +176,7 @@ const TermsAndConditions = props => {
           liable for any loss you have.
         </p>
 
-        <h3>Buyers</h3>
+        <h3 className="au-display-md">Buyers</h3>
 
         <p>
           The Digital Marketplace is designed to make it easier to comply with the Commonwealth Procurement Rules but
@@ -193,7 +198,7 @@ const TermsAndConditions = props => {
           (or the relevant code of conduct for your local, state or territory workplace) in all your activities relating
           to the Digital Marketplace.
         </p>
-        <h3>Sellers</h3>
+        <h3 className="au-display-md">Sellers</h3>
         <p>
           All information you provide as a seller, whether in the Digital Marketplace registration process, or to
           prospective buyers in response to opportunities, must be complete, accurate and not misleading, nor contain
@@ -207,7 +212,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="licence">
-        <h2>Licence and usage</h2>
+        <span />
+        <h2 className="au-display-lg">Licence and usage</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -230,7 +236,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="disclaimer">
-        <h2>Disclaimer</h2>
+        <span />
+        <h2 className="au-display-lg">Disclaimer</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -251,7 +258,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="indemnity">
-        <h2>Indemnity</h2>
+        <span />
+        <h2 className="au-display-lg">Indemnity</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -267,7 +275,8 @@ const TermsAndConditions = props => {
         </ol>
       </section>
       <section className="tou-section" id="external-links">
-        <h2>External links</h2>
+        <span />
+        <h2 className="au-display-lg">External links</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -283,7 +292,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="linking">
-        <h2>Linking and syndication</h2>
+        <span />
+        <h2 className="au-display-lg">Linking and syndication</h2>
         <p>
           You may insert a link to the Digital Marketplace from another website. If you do so, it is at your own risk
           and the DTA will not be held liable for any expense incurred by you or any other person or entity as a result
@@ -302,7 +312,8 @@ const TermsAndConditions = props => {
         </ol>
       </section>
       <section className="tou-section" id="jurisdiction">
-        <h2>Jurisdiction</h2>
+        <span />
+        <h2 className="au-display-lg">Jurisdiction</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>
@@ -316,7 +327,8 @@ const TermsAndConditions = props => {
         </p>
       </section>
       <section className="tou-section" id="definitions">
-        <h2>Definitions</h2>
+        <span />
+        <h2 className="au-display-lg">Definitions</h2>
         <a href="#" className="scroll-to-top">
           Back to top of page <b>&uarr;</b>
         </a>

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -29,14 +29,14 @@ const Signup = props => {
         ? <div>
             {createUserSuccess
               ? <div className={styles.successSection}>
-                  <PageAlert as="success">
+                  <AUpageAlert as="success">
                     <h4>
                       Success, your account has been activated. Please{' '}
                       <a href="/orams/login">
                         <strong>login</strong>
                       </a>
                     </h4>
-                  </PageAlert>
+                  </AUpageAlert>
                 </div>
               : <div className="row">
                   <div className="col-sm-8 col-xs-12">
@@ -48,7 +48,7 @@ const Signup = props => {
                         setFocus={setFocus}
                       />
                       <div className={styles.stepTitle}>Step 3 of 3</div>
-                      <h1 className="uikit-display-6">Create a password</h1>
+                      <h1 className="au-display-xl">Create a password</h1>
                       <Form model={model} id="createUser" onSubmit={data => handleSubmit(data)}>
                         <Textfield
                           model={`${model}.password`}
@@ -86,7 +86,7 @@ const Signup = props => {
                         {currentlySending
                           ? <LoadingButton />
                           : <input
-                              className="uikit-btn"
+                              className="au-btn"
                               type="submit"
                               value="Activate your account"
                               onClick={submitClicked}

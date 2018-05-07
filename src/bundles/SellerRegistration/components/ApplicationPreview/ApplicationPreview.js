@@ -17,7 +17,7 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
     {onClick && <div className="row">
       {header.type === 'edit' ?
         <div className="callout--calendar-event col-sm-8 col-xs-12">
-          <b styleName={"styles.uikit-display-4"}>Preview your updated profile</b>
+          <b styleName={"styles.au-display-lg"}>Preview your updated profile</b>
           <Form model={model}
                     action={`/sellers/application/submit/${header.id}`}
                     method="post"

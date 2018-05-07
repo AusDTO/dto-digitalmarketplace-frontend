@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import PageAlert from '@gov.au/page-alerts'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ProviderList from 'orams/components/ProviderList/ProviderList'
 import ProviderHistoryForm from 'orams/components/ProviderHistoryForm/ProviderHistoryForm'
 
@@ -35,9 +35,9 @@ class PriceHistory extends Component {
 
     if (this.props.errorMessage) {
       return (
-        <PageAlert as="error">
+        <AUpageAlert as="error">
           <h4>There was a problem loading the page</h4>
-        </PageAlert>
+        </AUpageAlert>
       )
     }
 

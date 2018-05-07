@@ -5,12 +5,16 @@ import styles from './BuyerDashboard.scss'
 
 export const BuyerDashboardHeader = props =>
   <div className={`${styles.header} row`}>
-    <div className="col-md-12 col-sm-12">
+    <div className="col-sm-12">
       <small className={styles.organisation}>
         {props.organisation}
       </small>
-      <h1 className="uikit-display-5">Dashboard</h1>
       <div className="row">
+        <div className="col-xs-12">
+          <h1 className="au-display-xl">Dashboard</h1>
+        </div>
+      </div>
+      <div className={`${styles.menuRow} row`}>
         <div className="col-xs-12 col-sm-8 col-md-9">
           <ul className={styles.menu}>
             <li>
@@ -31,7 +35,7 @@ export const BuyerDashboardHeader = props =>
           </ul>
         </div>
         <div className={`${styles.alignRight} col-xs-12 col-sm-4 col-md-3`}>
-          <a className={`${styles.firstButton} uikit-btn`} href={`${rootPath}/create-brief`}>
+          <a className={`${styles.firstButton} au-btn`} href={`${rootPath}/create-brief`}>
             Start a new brief
           </a>
         </div>
