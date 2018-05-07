@@ -76,7 +76,9 @@ export class SellerNotifySelect extends Component {
             )}
           </ul>
           <p>
-            <AUbutton onClick={this.handleContinueClick} disabled={this.state.disabled}>Continue</AUbutton>
+            <AUbutton onClick={this.handleContinueClick} disabled={this.state.disabled}>
+              Continue
+            </AUbutton>
           </p>
         </div>
       </div>
