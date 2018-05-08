@@ -88,16 +88,16 @@ const SignupForm = props => {
               </div>}
             {!signupSuccess &&
               <Layout>
+                <ErrorBox
+                  title="There was a problem with signup"
+                  model={model}
+                  submitClicked={submitClicked}
+                  setFocus={setFocus}
+                />
                 <header>
                   <h1 className="au-display-xl">Let’s get started</h1>
                 </header>
                 <article role="main">
-                  <ErrorBox
-                    title="There was a problem with signup"
-                    model={model}
-                    submitClicked={submitClicked}
-                    setFocus={setFocus}
-                  />
                   <Form
                     model={model}
                     method="post"
