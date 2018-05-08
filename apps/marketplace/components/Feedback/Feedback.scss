@@ -41,6 +41,10 @@ label.difficultButton {
 .difficulty input[type="radio"]:checked + label {
   background-color: #c3ebf4;
 }
+.difficulty input[type="radio"]:focus + label {
+  outline:3px solid #9263de;
+  outline-offset:2px
+}
 .difficulty label:nth-of-type(3){
   margin-right: 0;
 }
