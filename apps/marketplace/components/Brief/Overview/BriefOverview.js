@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Header from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import BriefOverviewSection from './BriefOverviewSection'
 
 import styles from './BriefOverview.scss'
@@ -18,8 +18,12 @@ export class BriefOverview extends Component {
     return (
       <div className="row">
         <div className="col-md-12 col-sm-12">
-          <span className={styles.overview}>Overview</span>
-          <Header size="5" level="1" text={title} />
+          <div className={styles.overviewHeading}>
+            <span className={styles.overview}>Overview</span>
+            <AUheading className={styles.briefTitle} size="xl" level="1">
+              {title}
+            </AUheading>
+          </div>
           <div className="row">
             <div className="col-xs-12 col-sm-8 col-md-12">
               <ol className={`${styles.briefOverviewSections}`}>

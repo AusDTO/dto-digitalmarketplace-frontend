@@ -1,6 +1,10 @@
 .briefOverviewSectionLinks {
   margin-left: 1.6rem;
   margin-bottom: 1.6rem;
+
+  ul.linkList {
+    margin-left: 0.1rem;
+  }
 }
 
 .hidden {
@@ -21,4 +25,14 @@
 button:hover {
   background-color: #5BCBE3;
   border-color: transparent;
+}
+
+li[data-complete=true]::before {
+  background-image: url('/static/svg/green-tick.svg');
+  content: '';
+  display: block;
+  height: 0.8125rem;
+  margin: 0.35rem 0 0 -1.5rem;
+  position: absolute;
+  width: 0.9375rem;
 }

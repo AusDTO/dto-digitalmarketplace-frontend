@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import BriefOverviewSectionLinkList from './BriefOverviewSectionLinkList'
+import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
 import styles from './BriefOverviewSectionList.scss'
 
@@ -23,6 +23,20 @@ export class BriefOverviewSectionListComponent extends Component {
     })
   }
 
+  buildLinkListItem = link => {
+    const item = {
+      li: {
+        className: 'linkListItem',
+        'data-complete': link.complete
+      },
+      text: link.text
+    }
+
+    if (link.path) item.link = link.path
+
+    return item
+  }
+
   render() {
     const { links } = this.props
 
@@ -36,9 +50,10 @@ export class BriefOverviewSectionListComponent extends Component {
         >
           {this.state.showLinks ? 'Hide' : 'Show'}
         </button>
-        <div className={`${!this.state.showLinks && styles.hidden}`}>
-          <BriefOverviewSectionLinkList items={links} />
-        </div>
+        <AUlinklist
+          className={`${styles.linkList} ${!this.state.showLinks && styles.hidden}`}
+          items={links.map(link => this.buildLinkListItem(link))}
+        />
       </div>
     )
   }

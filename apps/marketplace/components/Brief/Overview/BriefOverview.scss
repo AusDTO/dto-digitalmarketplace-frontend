@@ -1,5 +1,11 @@
-.overview {
-  opacity: 0.6;
+.overviewHeading {
+  span {
+    opacity: 0.6;
+  }
+
+  .briefTitle {
+    margin: 0;
+  }
 }
 
 ol.briefOverviewSections {

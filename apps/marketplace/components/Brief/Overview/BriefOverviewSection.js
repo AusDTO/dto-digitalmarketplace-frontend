@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Header from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import BriefOverviewSectionList from './BriefOverviewSectionList'
 
 import styles from './BriefOverviewSection.scss'
@@ -17,7 +17,9 @@ export class BriefOverviewSectionComponent extends Component {
 
     return (
       <li>
-        <Header size="3" level="2" text={title} />
+        <AUheading size="lg" level="2">
+          {title}
+        </AUheading>
         <span className={styles.briefOverviewSectionStatus}>
           {status}
         </span>
