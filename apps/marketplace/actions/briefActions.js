@@ -20,14 +20,14 @@ export const handleErrorFailure = response => dispatch => {
   if (!response) {
     dispatch(setErrorMessage(GENERAL_ERROR))
   } else {
-    if (response.data && response.data.errorMessage) {
-      dispatch(setErrorMessage(response.data.errorMessage))
+    if (response.data && response.data.message) {
+      dispatch(setErrorMessage(response.data.message))
     }
-    if (response.errorMessage) {
+    if (response.message) {
       if (response.code) {
-        dispatch(setErrorMessage(`${GENERAL_ERROR} (${response.code}: ${response.errorMessage})`))
+        dispatch(setErrorMessage(`${GENERAL_ERROR} (${response.code}: ${response.message})`))
       } else {
-        dispatch(setErrorMessage(`${GENERAL_ERROR} (${response.errorMessage})`))
+        dispatch(setErrorMessage(`${GENERAL_ERROR} (${response.message})`))
       }
     } else {
       setErrorMessage(GENERAL_ERROR)
