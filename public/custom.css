@@ -144,6 +144,10 @@ input[type="radio"].au-control-input__input:focus + .au-control-input__text:befo
   font-weight: bold;
 }
 
+.au-page-alerts--error {
+  margin-bottom: 1rem;
+}
+
 .primary-nav ul a, .local-nav ul a {
   display: block;
   border: none;
