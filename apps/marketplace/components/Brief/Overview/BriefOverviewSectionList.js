@@ -13,7 +13,7 @@ export class BriefOverviewSectionListComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showLinks: false
+      showLinks: true
     }
   }
 
