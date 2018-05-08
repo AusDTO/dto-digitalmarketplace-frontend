@@ -7,6 +7,10 @@ import BriefOverviewSection from './BriefOverviewSection'
 import styles from './BriefOverview.scss'
 
 export class BriefOverview extends Component {
+  static propTypes = {
+    sections: PropTypes.array.isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {}
@@ -37,10 +41,6 @@ export class BriefOverview extends Component {
       </div>
     )
   }
-}
-
-BriefOverview.propTypes = {
-  sections: PropTypes.array.isRequired
 }
 
 export default BriefOverview

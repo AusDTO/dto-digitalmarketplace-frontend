@@ -6,6 +6,10 @@ import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 import styles from './BriefOverviewSectionList.scss'
 
 export class BriefOverviewSectionListComponent extends Component {
+  static propTypes = {
+    links: PropTypes.array.isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -57,10 +61,6 @@ export class BriefOverviewSectionListComponent extends Component {
       </div>
     )
   }
-}
-
-BriefOverviewSectionListComponent.propTypes = {
-  links: PropTypes.array.isRequired
 }
 
 const BriefOverviewSectionList = BriefOverviewSectionListComponent
