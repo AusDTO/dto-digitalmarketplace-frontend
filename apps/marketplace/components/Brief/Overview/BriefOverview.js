@@ -21,7 +21,7 @@ export class BriefOverview extends Component {
 
     return (
       <div className="row">
-        <div className="col-md-12 col-sm-12">
+        <div className="col-xs-12">
           <div className={styles.overviewHeading}>
             <span className={styles.overview}>Overview</span>
             <AUheading className={styles.briefTitle} size="xl" level="1">
