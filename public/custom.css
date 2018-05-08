@@ -136,21 +136,16 @@ input[type="radio"].au-control-input__input:focus + .au-control-input__text:befo
   background-color: #e8f2f4;
 }
 
-.au-btn:focus {
-  outline: none;
-  border-radius: 0px;
-}
-
 .au-control-input__text {
   display: block;
-  line-height: 1.5;
 }
 
-.au-body a:focus {
-  -webkit-box-shadow: 0 0 0 3px #ff8629;
-  -moz-box-shadow: 0 0 0 3px #ff8629;
-  box-shadow: 0 0 0 3px #ff8629;
-  outline: none;
+.au-control-input__input:checked+.au-control-input__text {
+  font-weight: bold;
+}
+
+.au-page-alerts--error {
+  margin-bottom: 1rem;
 }
 
 .primary-nav ul a, .local-nav ul a {
