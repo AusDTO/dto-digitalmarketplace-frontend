@@ -1,10 +1,7 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_DOWNLOAD_DOCUMENTS_SUCCESS,
-  BRIEF_INFO_HAS_ERRORED,
   BRIEF_RESPONSE_SUCCESS,
-  BRIEF_RESPONSE_FAILURE,
-  BRIEF_RESPONSE_DUPLICATE_FAILURE,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
@@ -12,12 +9,8 @@ import {
 
 const defaultBriefState = {
   loadBriefSuccess: null,
-  loadBriefErrored: null,
   briefSuccess: null,
-  briefErrored: null,
   briefResponseSuccess: null,
-  briefResponseErrored: null,
-  errorMessage: null,
   isDuplicate: null,
   brief: {},
   briefResponses: [],
@@ -34,7 +27,6 @@ const briefReducer = (state = defaultBriefState, action) => {
         ...state,
         brief: action.brief,
         loadBriefSuccess: true,
-        loadBriefErrored: false,
         briefResponses: action.briefResponses,
         specialistNumber: action.briefResponses.length + 1,
         loadedAt: new Date().valueOf()
@@ -46,36 +38,11 @@ const briefReducer = (state = defaultBriefState, action) => {
         documentsData: action.data
       }
 
-    case BRIEF_INFO_HAS_ERRORED:
-      return {
-        ...state,
-        loadBriefErrored: true,
-        loadBriefSuccess: false,
-        errorMessage: action.errorMessage
-      }
     case BRIEF_RESPONSE_SUCCESS:
       return {
         ...state,
         briefResponseSuccess: true,
-        briefResponseErrored: false,
         briefResponses: [...state.briefResponses, action.briefResponse]
-      }
-
-    case BRIEF_RESPONSE_FAILURE:
-      return {
-        ...state,
-        briefResponseErrored: true,
-        briefResponseSuccess: false,
-        errorMessage: action.errorMessage
-      }
-
-    case BRIEF_RESPONSE_DUPLICATE_FAILURE:
-      return {
-        ...state,
-        briefResponseErrored: true,
-        briefResponseSuccess: false,
-        isDuplicate: true,
-        errorMessage: action.errorMessage
       }
 
     case SPECIALIST_NAME:
