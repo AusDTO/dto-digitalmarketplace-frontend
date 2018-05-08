@@ -136,11 +136,6 @@ input[type="radio"].au-control-input__input:focus + .au-control-input__text:befo
   background-color: #e8f2f4;
 }
 
-.au-btn:focus {
-  outline: none;
-  border-radius: 0px;
-}
-
 .au-control-input__text {
   display: block;
 }
