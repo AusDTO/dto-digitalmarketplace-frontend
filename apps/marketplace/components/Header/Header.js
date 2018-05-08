@@ -6,33 +6,32 @@ import { Link } from 'react-router-dom'
 
 import DashBoardLink from './DashBoardLink'
 import logoGovCrest from './Government_crest.svg'
-import styles from './Header.scss'
 
 const Header = props => {
   const { userType, loggedIn } = props
 
   return (
-    <section className={styles.marketplaceHeader}>
+    <section className="au-marketplace-header">
       <div className="container">
         <div className="row">
-          <div className={`col-md-8 col-xs-12 ${styles.logoSectionDesktop}`}>
+          <div className="col-md-8 col-xs-12 au-marketplace-header-logo-section">
             <a href="/" title="Go to the Marketplace homepage">
-              <span className={styles.logoGovCrest} dangerouslySetInnerHTML={{ __html: logoGovCrest }} />
-              <span className={styles.marketplaceTitle}>
-                <span className={styles.logo}>
+              <span className="au-marketplace-header-goverment-logo" dangerouslySetInnerHTML={{ __html: logoGovCrest }} />
+              <span className="au-marketplace-header-title">
+                <span className="au-marketplace-header-logo">
                   <span>Digital Marketplace</span>
-                  <span className={styles.badgeBeta}>beta</span>
+                  <span className="au-marketplace-header-badge">beta</span>
                 </span>
               </span>
             </a>
           </div>
           <div className="col-md-4 col-xs-12">
-            <div className={styles.userNav}>
+            <div className="au-marketplace-header-user-nav">
               <div id="react-bundle-auth-header-state" />
               <div id="react-bundle-auth-header">
-                <ul data-reactroot="" id="main-navigation" className={styles.inlineLinks}>
+                <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
                   <li>
-                    {loggedIn ? <DashBoardLink userType={userType} /> : <Link to="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</Link>}
+                    {loggedIn ? <DashBoardLink userType={userType} /> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
                   </li>
                   <li>
                     {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login" class="au-btn au-btn--dark">Sign in</a>}
@@ -44,29 +43,29 @@ const Header = props => {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <nav className={styles.navigation}>
+            <nav className="au-marketplace-header-navigation">
               <ul className="au-link-list au-link-list--inline">
-                <li className={styles.linkList}>
+                <li className="au-marketplace-header-link-list">
                   <a href="/digital-marketplace/opportunities?status=live">
                     Opportunities
                   </a>
                 </li>
-                <li className={styles.linkList}>
+                <li className="au-marketplace-header-link-list">
                   <a href="/search/sellers">
                     Seller Catalogue
                   </a>
                 </li>
-                <li className={styles.linkList}>
+                <li className="au-marketplace-header-link-list">
                   <a href="../templates">
                     How it works
                   </a>
                 </li>
-                <li className={styles.linkList}>
+                <li className="au-marketplace-header-link-list">
                   <a href="/insights">
                     Insights
                   </a>
                 </li>
-                <li className={styles.linkList}>
+                <li className="au-marketplace-header-link-list">
                   <a href="https://marketplace1.zendesk.com/hc/en-gb">
                     Support
                   </a>
