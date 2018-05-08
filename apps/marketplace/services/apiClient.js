@@ -25,8 +25,7 @@ const dmapi = apiParams => {
     data = {},
     withCredentials = true,
     validateStatus = defaultValidateStatus,
-    timeout = 20000,
-    responseType = 'json'
+    timeout = 20000
   } = apiParams
 
   return axios({
@@ -38,8 +37,7 @@ const dmapi = apiParams => {
     data,
     withCredentials,
     validateStatus,
-    timeout,
-    responseType
+    timeout
   })
     .then(response => {
       if (response) {
