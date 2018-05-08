@@ -1,6 +1,5 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
-  BRIEF_DOWNLOAD_DOCUMENTS_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
@@ -15,11 +14,6 @@ export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
   briefResponses: response.data.briefResponses
-})
-
-export const handleBriefDownloadDocumentsSuccess = response => ({
-  type: BRIEF_DOWNLOAD_DOCUMENTS_SUCCESS,
-  data: response.data
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -51,16 +45,6 @@ export const loadBrief = briefId => dispatch => {
       dispatch(handleBriefInfoSuccess(response))
     }
     dispatch(sendingRequest(false))
-  })
-}
-
-export const downloadBriefDocuments = briefId => dispatch => {
-  dmapi({ url: `/brief/${briefId}/respond/documents`, responseType: 'blob' }).then(response => {
-    if (!response || response.error) {
-      dispatch(handleErrorFailure(response))
-    } else {
-      dispatch(handleBriefDownloadDocumentsSuccess(response))
-    }
   })
 }
 

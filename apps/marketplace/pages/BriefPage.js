@@ -11,7 +11,6 @@ import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpeci
 import BriefDownloadDocuments from 'marketplace/components/Brief/BriefDownloadDocuments'
 import {
   loadBrief,
-  downloadBriefDocuments,
   handleBriefResponseSubmit,
   handleBriefNameSubmit,
   addAnotherSpecialistSubmit,
@@ -173,11 +172,7 @@ class BriefPage extends Component {
                 render={() =>
                   <span>
                     {!app.errorMessage && loadBriefSuccess
-                      ? <BriefDownloadDocuments
-                          brief={this.props.brief}
-                          downloadBriefDocuments={this.props.downloadBriefDocuments}
-                          briefDocumentsData={this.props.briefDocumentsData}
-                        />
+                      ? <BriefDownloadDocuments brief={this.props.brief} />
                       : <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />}{' '}
                   </span>}
               />
@@ -215,7 +210,6 @@ const mapResetStateToProps = state => ({
   supplierCode: state.app.supplierCode,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefResponseSuccess: state.brief.briefResponseSuccess,
-  briefDocumentsData: state.brief.documentsData,
   currentlySending: state.app.currentlySending,
   specialistName: state.brief.specialistName,
   specialistNumber: state.brief.specialistNumber,
@@ -226,7 +220,6 @@ const mapResetDispatchToProps = dispatch => ({
   handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
-  downloadBriefDocuments: briefId => dispatch(downloadBriefDocuments(briefId)),
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
