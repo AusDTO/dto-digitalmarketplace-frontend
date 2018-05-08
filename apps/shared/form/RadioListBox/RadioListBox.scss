@@ -6,10 +6,6 @@
   padding: 17px 12px 22px 20px;
 }
 
-.radioListContainer:focus-within {
-  box-shadow: inset 0 0 0 3px #e05200;
-}
-
 @media all and (max-width: 1024px) {
   .radioListContainer:first-child {
     margin-bottom: 20px;
