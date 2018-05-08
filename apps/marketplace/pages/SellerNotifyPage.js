@@ -124,6 +124,17 @@ class SellerNotifyPage extends Component {
   }
 
   render() {
+    const {
+      currentlySending,
+      loadBriefSuccess,
+      errorMessage,
+      match,
+      sellers,
+      briefSellerNotifySubmitSuccess,
+      handleSubmit,
+      brief
+    } = this.props
+
     let hasFocused = false
     const setFocus = e => {
       if (!hasFocused) {
@@ -132,21 +143,21 @@ class SellerNotifyPage extends Component {
       }
     }
 
-    if (this.props.currentlySending) {
+    if (currentlySending) {
       return <LoadingIndicatorFullPage />
     }
 
-    if (!this.props.loadBriefSuccess) {
+    if (!loadBriefSuccess) {
       return <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
     }
 
-    if (this.props.errorMessage) {
+    if (errorMessage) {
       return (
         <div className="row">
           <div className="col-xs-12">
             <PageAlert as="error">
               <p>
-                {this.props.errorMessage}
+                {errorMessage}
               </p>
             </PageAlert>
           </div>
@@ -154,7 +165,7 @@ class SellerNotifyPage extends Component {
       )
     }
 
-    if (this.props.sellers.length < 1) {
+    if (sellers.length < 1) {
       return (
         <div className="row">
           <div className="col-xs-12">
@@ -166,7 +177,7 @@ class SellerNotifyPage extends Component {
       )
     }
 
-    if (this.props.briefSellerNotifySubmitSuccess) {
+    if (briefSellerNotifySubmitSuccess) {
       return (
         <div className="row">
           <div className="col-xs-12">
@@ -185,8 +196,8 @@ class SellerNotifyPage extends Component {
           <div className="col-sm-4">
             <SellerNotifyNav
               {...this.state}
-              flow={this.props.match.params.flow}
-              briefId={this.props.match.params.briefId}
+              flow={match.params.flow}
+              briefId={match.params.briefId}
               setStageStatus={this.setStageStatus}
             />
           </div>
@@ -194,21 +205,20 @@ class SellerNotifyPage extends Component {
             <Switch>
               <Route
                 exact
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params.flow}`}
+                path={`${rootPath}/brief/${match.params.briefId}/seller-${match.params.flow}`}
                 render={() =>
                   <SellerNotifyIntroduction
-                    flow={this.props.match.params.flow}
+                    flow={match.params.flow}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
                     setStageDoneStatus={this.setStageDoneStatus}
                   />}
               />
               <Route
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params
-                  .flow}/select`}
+                path={`${rootPath}/brief/${match.params.briefId}/seller-${match.params.flow}/select`}
                 render={() =>
                   <SellerNotifySelect
-                    sellers={this.props.sellers}
+                    sellers={sellers}
                     selectedSellers={this.state.selectedSellers}
                     setStageStatus={this.setStageStatus}
                     selectSeller={this.selectSeller}
@@ -219,18 +229,17 @@ class SellerNotifyPage extends Component {
                   />}
               />
               <Route
-                path={`${rootPath}/brief/${this.props.match.params.briefId}/seller-${this.props.match.params
-                  .flow}/review`}
+                path={`${rootPath}/brief/${match.params.briefId}/seller-${match.params.flow}/review`}
                 render={() =>
                   <SellerNotifyReview
-                    flow={this.props.match.params.flow}
-                    brief={this.props.brief}
+                    flow={match.params.flow}
+                    brief={brief}
                     selectedSellers={this.state.selectedSellers}
                     hasSelectedASeller={this.hasSelectedASeller}
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
                     moveToStage={this.moveToStage}
-                    handleSubmit={this.props.handleSubmit}
+                    handleSubmit={handleSubmit}
                     setStageDoneStatus={this.setStageDoneStatus}
                   />}
               />

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import SellerNotifyEmailUnsuccessful from './SellerNotifyEmailUnsuccessful'
+import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
+import SellerNotifyEmailTextArea from './SellerNotifyEmailTextArea'
 import SellerNotifySellerList from './SellerNotifySellerList'
 import styles from './SellerNotify.scss'
 
@@ -10,7 +11,8 @@ export class SellerNotifyReview extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      subject: ''
+      subject: '',
+      content: ''
     }
 
     switch (this.props.flow) {
@@ -22,29 +24,13 @@ export class SellerNotifyReview extends Component {
         break
     }
 
-    this.emailContent = null
-    this.setEmailContentRef = element => {
-      this.emailContent = element
-    }
-
     this.handleSubjectChange = this.handleSubjectChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.getEmailContent = this.getEmailContent.bind(this)
     this.handleSelectSellersClick = this.handleSelectSellersClick.bind(this)
   }
 
   componentDidMount() {
     this.props.setStageStatus('review', 'doing')
-  }
-
-  getEmailContent() {
-    switch (this.props.flow) {
-      case 'unsuccessful':
-        return <SellerNotifyEmailUnsuccessful brief={this.props.brief} />
-
-      default:
-        return <p />
-    }
   }
 
   handleSubjectChange(e) {
@@ -60,7 +46,7 @@ export class SellerNotifyReview extends Component {
     const model = {
       flow: this.props.flow,
       subject: this.state.subject,
-      content: this.emailContent.innerHTML,
+      content: this.state.content,
       selectedSellers: this.props.selectedSellers
     }
     this.props.setStageStatus('review', 'done')
@@ -102,28 +88,23 @@ export class SellerNotifyReview extends Component {
           <SellerNotifySellerList sellers={this.props.selectedSellers} />
           <form onSubmit={this.handleSubmit} className={styles.reviewForm}>
             <input type="hidden" name="flow" value={this.props.flow} />
-            <label htmlFor="input_subject_line">Subject line</label>
-            <input
-              type="text"
-              id="input_subject_line"
-              name="subject_line"
-              onChange={this.handleSubjectChange}
-              value={this.state.subject}
-              required
-            />
-            <label htmlFor="email_body">Email</label>
-            <div
-              id="input_email_content"
-              contentEditable="true"
-              role="textbox"
-              aria-multiline="true"
-              tabIndex={0}
-              suppressContentEditableWarning
-              ref={this.setEmailContentRef}
-            >
-              {this.getEmailContent()}
-            </div>
-            <AUbutton type="submit">Send email</AUbutton>
+            <p>
+              <label htmlFor="input_subject_line">Subject line</label>
+              <AUtextInput
+                id="input_subject_line"
+                name="subject_line"
+                onChange={this.handleSubjectChange}
+                value={this.state.subject}
+                block
+                required
+              />
+            </p>
+            <p>
+              <SellerNotifyEmailTextArea brief={this.props.brief} flow={this.props.flow} />
+            </p>
+            <p>
+              <AUbutton type="submit">Send email</AUbutton>
+            </p>
           </form>
         </div>
       </div>

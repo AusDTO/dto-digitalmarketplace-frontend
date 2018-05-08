@@ -324,8 +324,8 @@ module.exports = [{
           paths.appNodeModules + '/@gov.au/page-alerts',
           paths.appNodeModules + '/@gov.au/control-input',
           paths.appNodeModules + '/@gov.au/progress-indicator',
-          paths.appNodeModules + '/@gov.au/control-input',
           paths.appNodeModules + '/@gov.au/buttons',
+          paths.appNodeModules + '/@gov.au/text-inputs',
         ],
         loader: 'babel'
       },

@@ -1,19 +1,9 @@
-.reviewForm label {
-  font-weight: 700;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.reviewForm input, .reviewForm div[contenteditable=true] {
-  border: 2px solid #bebebe;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 1em;
-}
-
 ul.sellerList {
   list-style-type: none;
   margin-left: 0px;
   padding: 0px;
+}
+
+textarea.emailContent {
+  height: 400px;
 }
