@@ -22,9 +22,9 @@ export class BriefOverviewSectionListComponent extends Component {
   }
 
   toggle = () => {
-    this.setState({
-      showLinks: !this.state.showLinks
-    })
+    this.setState(prevState => ({
+      showLinks: !prevState.showLinks
+    }))
   }
 
   buildLinkListItem = link => {
