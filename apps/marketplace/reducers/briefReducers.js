@@ -14,11 +14,13 @@ const defaultBriefState = {
   isDuplicate: null,
   brief: {},
   briefResponses: [],
-  sections: [],
   specialistName: '',
   specialistNumber: 1,
-  title: '',
-  addAnotherSpecialist: false
+  addAnotherSpecialist: false,
+  overview: {
+    sections: [],
+    title: ''
+  }
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -26,12 +28,9 @@ const briefReducer = (state = defaultBriefState, action) => {
     case BRIEF_OVERVIEW_SUCCESS:
       return {
         ...state,
-        framework: action.framework,
         loadBriefOverviewSuccess: true,
         loadBriefOverviewErrored: false,
-        lot: action.lot,
-        sections: action.sections,
-        title: action.title
+        overview: action.data
       }
     case BRIEF_INFO_FETCH_DATA_SUCCESS:
       return {

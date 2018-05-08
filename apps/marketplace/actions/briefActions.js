@@ -13,10 +13,7 @@ import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleBriefOverviewSuccess = response => ({
   type: BRIEF_OVERVIEW_SUCCESS,
-  framework: response.data.framework,
-  lot: response.data.lot,
-  sections: response.data.sections,
-  title: response.data.title
+  data: response.data
 })
 
 export const loadBriefOverview = briefId => dispatch => {
