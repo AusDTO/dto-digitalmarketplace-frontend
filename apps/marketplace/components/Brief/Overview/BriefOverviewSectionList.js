@@ -30,7 +30,6 @@ export class BriefOverviewSectionListComponent extends Component {
   buildLinkListItem = link => {
     const item = {
       li: {
-        className: 'linkListItem',
         'data-complete': link.complete
       },
       text: link.text
