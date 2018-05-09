@@ -30,6 +30,7 @@ test('Component mounts and sets its stage to "doing"', () => {
   mount(
     <SellerNotifyReview
       flow="unsuccessful"
+      brief={brief}
       setStageStatus={mockSetStatusChange}
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={sellers}
@@ -47,6 +48,7 @@ test('Having no selected sellers shows an error alert', () => {
   const component = mount(
     <SellerNotifyReview
       flow="unsuccessful"
+      brief={brief}
       setStageStatus={mockSetStatusChange}
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={[]}

@@ -3,29 +3,53 @@ import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
-import SellerNotifyEmailTextArea from './SellerNotifyEmailTextArea'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerNotifySellerList from './SellerNotifySellerList'
 import styles from './SellerNotify.scss'
+
+const emailContent = (brief, flow) => {
+  let content = ''
+
+  switch (flow) {
+    case 'unsuccessful':
+      content = `Unfortunately your application for ${brief.title} was not successful. However please keep in mind this may change and ${brief.organisation} may contact you at a later date for an interview.
+
+The ${brief.organisation} has forwarded us some feedback which we thought you would find helpful:`
+      break
+
+    default:
+      break
+  }
+
+  return content
+}
+
+const subjectContent = flow => {
+  let subject = ''
+
+  switch (flow) {
+    case 'unsuccessful':
+      subject = 'Your submission was unsuccessful'
+      break
+
+    default:
+      break
+  }
+
+  return subject
+}
 
 export class SellerNotifyReview extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      subject: '',
-      content: ''
-    }
-
-    switch (props.flow) {
-      case 'unsuccessful':
-        this.state.subject = 'Your submission was unsuccessful'
-        break
-
-      default:
-        break
+      subject: subjectContent(props.flow),
+      content: emailContent(props.brief, props.flow)
     }
 
     this.handleSubjectChange = this.handleSubjectChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleEmailContentChange = this.handleEmailContentChange.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleSelectSellersClick = this.handleSelectSellersClick.bind(this)
   }
 
@@ -34,14 +58,14 @@ export class SellerNotifyReview extends Component {
   }
 
   handleSubjectChange(e) {
-    const subjectEl = e.currentTarget
-    const subject = subjectEl.value
-    this.setState({
-      subject
-    })
+    this.setState({ subject: e.target.value })
   }
 
-  handleSubmit(e) {
+  handleEmailContentChange(e) {
+    this.setState({ content: e.target.value })
+  }
+
+  handleFormSubmit(e) {
     e.preventDefault()
     const model = {
       flow: this.props.flow,
@@ -81,12 +105,14 @@ export class SellerNotifyReview extends Component {
     return (
       <div className="row">
         <div className="col-xs-12">
-          <h2>Review email</h2>
+          <AUheading size="lg" level="2">
+            Review email
+          </AUheading>
           <p>
             <strong>This email will be sent seperately to:</strong>
           </p>
           <SellerNotifySellerList sellers={this.props.selectedSellers} />
-          <form onSubmit={this.handleSubmit} className={styles.reviewForm}>
+          <form onSubmit={this.handleFormSubmit} className={styles.reviewForm}>
             <input type="hidden" name="flow" value={this.props.flow} />
             <p>
               <label htmlFor="input_subject_line">Subject line</label>
@@ -100,7 +126,17 @@ export class SellerNotifyReview extends Component {
               />
             </p>
             <p>
-              <SellerNotifyEmailTextArea brief={this.props.brief} flow={this.props.flow} />
+              <label htmlFor="input_email_content">Email</label>
+              <AUtextInput
+                as="textarea"
+                id="input_email_content"
+                name="email_content"
+                value={this.state.content}
+                onChange={this.handleEmailContentChange}
+                className={styles.emailContent}
+                block
+                required
+              />
             </p>
             <p>
               <AUbutton type="submit">Send email</AUbutton>
@@ -114,7 +150,13 @@ export class SellerNotifyReview extends Component {
 
 SellerNotifyReview.propTypes = {
   flow: PropTypes.string.isRequired,
-  selectedSellers: PropTypes.array.isRequired
+  brief: PropTypes.object.isRequired,
+  selectedSellers: PropTypes.array.isRequired,
+  hasSelectedASeller: PropTypes.func.isRequired,
+  setStageStatus: PropTypes.func.isRequired,
+  moveToStage: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  setStageDoneStatus: PropTypes.func.isRequired
 }
 
 export default SellerNotifyReview

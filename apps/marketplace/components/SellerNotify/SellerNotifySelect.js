@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './SellerNotify.scss'
 
 export class SellerNotifySelect extends Component {
@@ -61,7 +63,9 @@ export class SellerNotifySelect extends Component {
     return (
       <div className="row">
         <div className="col-xs-12">
-          <h2>Select sellers</h2>
+          <AUheading size="lg" level="2">
+            Select sellers
+          </AUheading>
           <ul className={styles.sellerList}>
             {this.props.sellers.map(response =>
               <li key={response.supplier_code}>
@@ -84,6 +88,17 @@ export class SellerNotifySelect extends Component {
       </div>
     )
   }
+}
+
+SellerNotifySelect.propTypes = {
+  sellers: PropTypes.array.isRequired,
+  selectedSellers: PropTypes.array.isRequired,
+  hasSelectedASeller: PropTypes.func.isRequired,
+  setStageStatus: PropTypes.func.isRequired,
+  setStageDoneStatus: PropTypes.func.isRequired,
+  selectSeller: PropTypes.func.isRequired,
+  deselectSeller: PropTypes.func.isRequired,
+  moveToNextStage: PropTypes.func.isRequired
 }
 
 export default SellerNotifySelect

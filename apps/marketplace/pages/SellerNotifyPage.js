@@ -3,6 +3,7 @@ import { withRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import PageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerNotifyNav from 'marketplace/components/SellerNotify/SellerNotifyNav'
 import SellerNotifyIntroduction from 'marketplace/components/SellerNotify/SellerNotifyIntroduction'
 import SellerNotifySelect from 'marketplace/components/SellerNotify/SellerNotifySelect'
@@ -182,7 +183,9 @@ class SellerNotifyPage extends Component {
         <div className="row">
           <div className="col-xs-12">
             <PageAlert as="success">
-              <h2>Emails have been sent to:</h2>
+              <AUheading size="lg" level="2">
+                Emails have been sent to:
+              </AUheading>
               <SellerNotifySellerList sellers={this.state.selectedSellers} />
             </PageAlert>
           </div>
@@ -237,7 +240,6 @@ class SellerNotifyPage extends Component {
                     selectedSellers={this.state.selectedSellers}
                     hasSelectedASeller={this.hasSelectedASeller}
                     setStageStatus={this.setStageStatus}
-                    moveToNextStage={this.moveToNextStage}
                     moveToStage={this.moveToStage}
                     handleSubmit={handleSubmit}
                     setStageDoneStatus={this.setStageDoneStatus}

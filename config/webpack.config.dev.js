@@ -289,6 +289,7 @@ module.exports = [{
           paths.appNodeModules + '/@gov.au/progress-indicator',
           paths.appNodeModules + '/@gov.au/buttons',
           paths.appNodeModules + '/@gov.au/text-inputs',
+          paths.appNodeModules + '/@gov.au/headings',
         ],
         loader: 'babel'
       },

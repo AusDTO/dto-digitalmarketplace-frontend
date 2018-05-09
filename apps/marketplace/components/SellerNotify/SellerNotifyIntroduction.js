@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 
 export class SellerNotifyIntroduction extends Component {
   constructor(props) {
@@ -25,7 +26,9 @@ export class SellerNotifyIntroduction extends Component {
       return (
         <div className="row">
           <div className="col-xs-12">
-            <h2>This is the introduction stage</h2>
+            <AUheading size="lg" level="2">
+              This is the introduction stage
+            </AUheading>
             <p>Here, we describe which notification a buyer is about to send out.</p>
             <p>
               <AUbutton onClick={this.handleContinueClick}>Continue</AUbutton>
@@ -40,7 +43,10 @@ export class SellerNotifyIntroduction extends Component {
 }
 
 SellerNotifyIntroduction.propTypes = {
-  flow: PropTypes.string.isRequired
+  flow: PropTypes.string.isRequired,
+  setStageStatus: PropTypes.func.isRequired,
+  moveToNextStage: PropTypes.func.isRequired,
+  setStageDoneStatus: PropTypes.func.isRequired
 }
 
 export default SellerNotifyIntroduction
