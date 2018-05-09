@@ -15,7 +15,7 @@ export class SellerNotifyReview extends Component {
       content: ''
     }
 
-    switch (this.props.flow) {
+    switch (props.flow) {
       case 'unsuccessful':
         this.state.subject = 'Your submission was unsuccessful'
         break

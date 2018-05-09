@@ -50,7 +50,7 @@ export class SellerNotifyNav extends Component {
 
     return (
       <div className="row">
-        <div className="col-xs-12">
+        <div className="col-xs-12" aria-live="polite" aria-relevant="additions removals">
           <AUprogressIndicator items={items} />
         </div>
       </div>
