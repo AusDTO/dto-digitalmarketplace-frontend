@@ -8,7 +8,7 @@ import {
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
 
-import { BRIEF_ID_NOT_FOUND, GENERAL_ERROR } from '../constants/messageConstants'
+import { BRIEF_ID_NOT_FOUND, BRIEF_MUST_BE_DRAFT, GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
@@ -42,10 +42,18 @@ export const handleDeleteBriefSuccess = response => ({
 })
 
 export const deleteBrief = briefId => dispatch => {
+  const getErrorMessage = status =>
+    ({
+      400: BRIEF_MUST_BE_DRAFT,
+      404: BRIEF_ID_NOT_FOUND,
+      default: GENERAL_ERROR
+    }[status])
+
   dispatch(sendingRequest(true))
   dmapi({ method: 'delete', url: `/brief/${briefId}` }).then(response => {
     if (!response || response.error) {
-      dispatch(setErrorMessage(GENERAL_ERROR))
+      const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
+      dispatch(setErrorMessage(errorMessage))
     } else {
       dispatch(handleDeleteBriefSuccess(response))
     }

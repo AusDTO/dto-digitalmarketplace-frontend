@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import { rootPath } from 'marketplace/routes'
+import ErrorBox from 'shared/form/ErrorBox'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
@@ -46,11 +47,12 @@ export class BriefOverview extends Component {
   }
 
   render() {
-    const { briefId, deleteBrief, deleteBriefSuccess, sections, title } = this.props
+    const { briefId, deleteBrief, deleteBriefSuccess, sections, setFocus, title } = this.props
 
     return (
       <div className="row">
         <div className="col-xs-12">
+          {!deleteBriefSuccess && <ErrorBox title="There was a problem deleting the brief" setFocus={setFocus} />}
           <div className={styles.overviewHeading}>
             <span className={styles.overview}>Overview</span>
             <AUheading className={styles.briefTitle} size="xl" level="1">
