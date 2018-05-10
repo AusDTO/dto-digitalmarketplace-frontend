@@ -58,6 +58,23 @@ export class BriefChoice extends Component {
           </div>
         </div>
         <div className="row">
+          <div className={`${styles.choice} col-xs-12`}>
+            <AUradio
+              id="choice-training"
+              label="Training"
+              name="brief_choice"
+              value="training"
+              onChange={() => {
+                this.handleChange('training')
+              }}
+            />
+            <p>
+              Get a summary of seller responses to your criteria, in spreadsheet format, for shortlisting. Once your
+              shortlist is complete you can request sellers to provide full proposals for you to evaluate.
+            </p>
+          </div>
+        </div>
+        <div className="row">
           <div className="col-xs-12">
             <a href={`/buyers/frameworks/digital-marketplace/requirements/${this.state.briefType}`}>
               <button className="au-btn" disabled={!this.state.briefType && 'disabled'}>
