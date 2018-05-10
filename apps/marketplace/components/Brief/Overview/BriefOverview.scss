@@ -39,3 +39,23 @@ ol.briefOverviewSections {
     }
   }
 }
+
+.confirmDelete {
+  margin-top: 2rem;
+
+  button {
+    margin-top: 1rem;
+  }
+
+  .cancelDeleteButton {
+    margin-left: 1rem;
+  }
+}
+
+.delete {
+  margin-top: 2rem;
+}
+
+.hidden {
+  display: none;
+}
