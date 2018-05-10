@@ -8,6 +8,7 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
+import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import {
   loadBrief,
   handleBriefResponseSubmit,
@@ -81,6 +82,19 @@ class BriefPage extends Component {
     this.props.addAnotherSpecialistSubmit(values.addAnother)
     this.props.handleBriefResponseSubmit(brief.id, submitData)
     this.props.clearModel(model)
+    window.scrollTo(0, 0)
+  }
+
+  handleTrainingBriefResponseSubmit(values) {
+    const { model, brief } = this.props
+    const submitData = {
+      attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
+      availability: values.availability,
+      trainingCost: values.trainingCost,
+      essentialRequirements: values.essentialRequirements,
+      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
+    }
+    this.props.handleBriefResponseSubmit(brief.id, submitData)
     window.scrollTo(0, 0)
   }
 
@@ -160,6 +174,20 @@ class BriefPage extends Component {
                           addAnotherClicked={this.onAddAnotherClicked}
                           handleNameSubmit={name => this.handleBriefNameSubmit(name)}
                           handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
+                          setFocus={setFocus}
+                          {...this.props}
+                        />
+                      : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
+                  </span>}
+              />
+              <Route
+                path={`${match.url}/training/respond`}
+                render={() =>
+                  <span>
+                    {loadBriefSuccess
+                      ? <BriefTrainingResponseForm
+                          submitClicked={this.onSubmitClicked}
+                          handleSubmit={values => this.handleTrainingBriefResponseSubmit(values)}
                           setFocus={setFocus}
                           {...this.props}
                         />
