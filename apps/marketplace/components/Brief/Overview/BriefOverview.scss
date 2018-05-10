@@ -45,10 +45,6 @@ ol.briefOverviewSections {
 
   button {
     margin-top: 1rem;
-
-    &:focus {
-      box-shadow: 0 0 0 0.1875rem #ff8629; 
-    }
   }
 
   .cancelDeleteButton {
@@ -58,10 +54,6 @@ ol.briefOverviewSections {
 
 .deleteButtonContainer {
   margin-top: 2rem;
-
-  .deleteButton:focus {
-    box-shadow: 0 0 0 0.1875rem #ff8629; 
-  }
 }
 
 .hidden {
