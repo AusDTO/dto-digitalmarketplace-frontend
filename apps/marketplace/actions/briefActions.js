@@ -8,7 +8,7 @@ import {
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
 
-import { GENERAL_ERROR } from '../constants/messageConstants'
+import { BRIEF_ID_NOT_FOUND, GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
@@ -18,10 +18,17 @@ export const handleBriefOverviewSuccess = response => ({
 })
 
 export const loadBriefOverview = briefId => dispatch => {
+  const getErrorMessage = status =>
+    ({
+      404: BRIEF_ID_NOT_FOUND,
+      default: GENERAL_ERROR
+    }[status])
+
   dispatch(sendingRequest(true))
   dmapi({ url: `/brief/${briefId}/overview` }).then(response => {
     if (!response || response.error) {
-      dispatch(setErrorMessage(GENERAL_ERROR))
+      const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
+      dispatch(setErrorMessage(errorMessage))
     } else {
       dispatch(handleBriefOverviewSuccess(response))
     }

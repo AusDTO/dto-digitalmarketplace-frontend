@@ -24,14 +24,11 @@ export class BriefOverview extends Component {
     }
   }
 
-  // Should be replaced with getDerivedStateFromProps() after upgrading to v16.3
-  componentWillReceiveProps = nextProps => {
-    if (nextProps.status !== this.props.status) {
-      if (nextProps.status === 'draft') {
-        this.setState(prevState => ({
-          showDeleteButton: !prevState.showDeleteButton
-        }))
-      }
+  componentWillMount = () => {
+    if (this.props.status === 'draft') {
+      this.setState(prevState => ({
+        showDeleteButton: !prevState.showDeleteButton
+      }))
     }
   }
 
