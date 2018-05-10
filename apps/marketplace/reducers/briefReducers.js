@@ -4,7 +4,8 @@ import {
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
-  BRIEF_OVERVIEW_SUCCESS
+  BRIEF_OVERVIEW_SUCCESS,
+  DELETE_BRIEF_SUCCESS
 } from '../constants/constants'
 
 const defaultBriefState = {
@@ -48,7 +49,12 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponseSuccess: true,
         briefResponses: [...state.briefResponses, action.briefResponse]
       }
-
+    case DELETE_BRIEF_SUCCESS:
+      return {
+        ...state,
+        deleteBriefSuccess: true,
+        deleteBriefErrored: false
+      }
     case SPECIALIST_NAME:
       return {
         ...state,

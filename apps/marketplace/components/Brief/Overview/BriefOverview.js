@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import { rootPath } from 'marketplace/routes'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
@@ -35,7 +37,7 @@ export class BriefOverview extends Component {
   }
 
   render() {
-    const { sections, title } = this.props
+    const { briefId, deleteBrief, deleteBriefSuccess, sections, title } = this.props
 
     return (
       <div className="row">
@@ -53,9 +55,10 @@ export class BriefOverview extends Component {
                 this.deleteAlert = alert
               }}
             >
+              {deleteBriefSuccess && <Redirect to={`${rootPath}/buyer-dashboard`} />}
               <AUpageAlert as="warning">
                 <p>Are you sure you want to delete this brief?</p>
-                <AUbutton>Yes, delete brief</AUbutton>
+                <AUbutton onClick={() => deleteBrief(briefId)}>Yes, delete brief</AUbutton>
                 <AUbutton as="secondary" className={styles.cancelDeleteButton} onClick={this.toggleDeleteAlert}>
                   Do not delete
                 </AUbutton>

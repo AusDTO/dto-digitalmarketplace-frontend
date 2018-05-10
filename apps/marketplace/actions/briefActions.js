@@ -2,6 +2,7 @@ import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
@@ -23,6 +24,23 @@ export const loadBriefOverview = briefId => dispatch => {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
       dispatch(handleBriefOverviewSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleDeleteBriefSuccess = response => ({
+  type: DELETE_BRIEF_SUCCESS,
+  data: response.data
+})
+
+export const deleteBrief = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ method: 'delete', url: `/brief/${briefId}` }).then(response => {
+    if (!response || response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      dispatch(handleDeleteBriefSuccess(response))
     }
     dispatch(sendingRequest(false))
   })
