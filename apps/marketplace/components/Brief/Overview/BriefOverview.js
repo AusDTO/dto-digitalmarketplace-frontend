@@ -12,14 +12,26 @@ import styles from './BriefOverview.scss'
 
 export class BriefOverview extends Component {
   static propTypes = {
-    sections: PropTypes.array.isRequired
+    sections: PropTypes.array.isRequired,
+    status: PropTypes.string.isRequired
   }
 
   constructor(props) {
     super(props)
     this.state = {
       showDeleteAlert: false,
-      showDeleteButton: true
+      showDeleteButton: false
+    }
+  }
+
+  // Should be replaced with getDerivedStateFromProps() after upgrading to v16.3
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.status !== this.props.status) {
+      if (nextProps.status === 'draft') {
+        this.setState(prevState => ({
+          showDeleteButton: !prevState.showDeleteButton
+        }))
+      }
     }
   }
 

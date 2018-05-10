@@ -20,6 +20,7 @@ const defaultBriefState = {
   addAnotherSpecialist: false,
   overview: {
     sections: [],
+    status: '',
     title: ''
   }
 }

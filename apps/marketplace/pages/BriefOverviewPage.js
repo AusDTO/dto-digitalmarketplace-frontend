@@ -41,6 +41,7 @@ const mapStateToProps = state => ({
   deleteBriefSuccess: state.brief.deleteBriefSuccess,
   loadSuccess: state.brief.loadBriefOverviewSuccess,
   sections: state.brief.overview.sections,
+  status: state.brief.overview.status,
   title: state.brief.overview.title
 })
 
