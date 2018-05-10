@@ -53,7 +53,8 @@ const loaders = [
     include: [
       paths.appSrc,
       paths.appServer,
-      paths.appNodeModules + '/@gov.au/page-alerts'
+      paths.appNodeModules + '/@gov.au/page-alerts',
+      paths.appNodeModules + '/@gov.au/accordion'
     ],
     loader: 'babel',
     query: {
@@ -323,6 +324,7 @@ module.exports = [{
           paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts',
           paths.appNodeModules + '/@gov.au/control-input',
+          paths.appNodeModules + '/@gov.au/accordion'
         ],
         loader: 'babel'
       },

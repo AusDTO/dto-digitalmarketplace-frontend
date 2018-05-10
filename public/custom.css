@@ -401,6 +401,13 @@ main article:first-of-type a.button {
   border-bottom: .5rem solid #45c2f0;
 }
 
+@media screen and (max-width: 768px) {
+  .au-marketplace-header {
+    padding-top: 15px;
+    padding-top: 1rem;
+  }
+}
+
 .au-marketplace-header a:focus {
   outline: 3px solid #C390F9;
   outline-offset: 2px;
@@ -478,12 +485,22 @@ main article:first-of-type a.button {
   text-decoration: none;
 }
 
+.au-marketplace-header-inline-links {
+  padding-left: 0;
+}
+
 @media screen and (max-width: 768px) {
   .au-marketplace-header-inline-links {
     -webkit-padding-start: 0px;
     margin-top: 40px;
     margin-bottom: 0px;
     text-align: left;
+  }
+}
+
+@media screen and (max-width: 992px){
+  .no-padding-tablet {
+    padding: 0 !important;
   }
 }
 
@@ -553,4 +570,40 @@ main article:first-of-type a.button {
 .phase-banner a:hover {
   text-decoration: none;
   color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
+.au-marketplace-header-mobile-menu {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.au-marketplace-header_mobile-link {
+  padding-bottom: 10px;
+}
+
+.au-marketplace-header_mobile-link a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.au-marketplace-header_mobile-link a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.au-marketplace-header .au-accordion__body {
+  overflow: visible;
 }

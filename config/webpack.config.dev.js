@@ -45,9 +45,10 @@ var loaders = [
       {
         test: /\.(js|jsx)$/,
         include: [
-          paths.appSrc, 
+          paths.appSrc,
           paths.appServer,
-          paths.appNodeModules + '/@gov.au/page-alerts'
+          paths.appNodeModules + '/@gov.au/page-alerts',
+          paths.appNodeModules + '/@gov.au/accordion'
         ],
         loader: 'babel',
         query: {
@@ -173,7 +174,7 @@ module.exports = [{
     loaders: loaders.concat({
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
-        'style', 
+        'style',
         'css?modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss'
       )
     })
@@ -286,6 +287,7 @@ module.exports = [{
           paths.appNodeModules + '/@gov.au/footer',
           paths.appNodeModules + '/@gov.au/page-alerts',
           paths.appNodeModules + '/@gov.au/control-input',
+          paths.appNodeModules + '/@gov.au/accordion'
         ],
         loader: 'babel'
       },
@@ -296,7 +298,7 @@ module.exports = [{
           paths.sharedComponents
         ],
         loader: [
-          'style-loader?singleton', 
+          'style-loader?singleton',
           'css-loader?modules&importLoaders=1&context=' + paths.marketplaceSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
@@ -372,7 +374,7 @@ module.exports = [{
           paths.sharedComponents
         ],
         loader: [
-          'style-loader?singleton', 
+          'style-loader?singleton',
           'css-loader?modules&importLoaders=1&context=' + paths.oramsSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
