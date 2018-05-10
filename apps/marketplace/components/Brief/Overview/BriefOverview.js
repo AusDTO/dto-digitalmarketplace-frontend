@@ -48,7 +48,7 @@ export class BriefOverview extends Component {
           </div>
           <div className="row">
             <div
-              className={`${styles.confirmDelete} ${!this.state.showDeleteAlert && styles.hidden}`}
+              className={`${styles.confirmDeleteAlert} ${!this.state.showDeleteAlert && styles.hidden}`}
               ref={alert => {
                 this.deleteAlert = alert
               }}
@@ -72,8 +72,10 @@ export class BriefOverview extends Component {
             </div>
           </div>
           <div className="row">
-            <div className={`${styles.delete} ${!this.state.showDeleteButton && styles.hidden}`}>
-              <AUbutton onClick={this.toggleDeleteAlert}>Delete</AUbutton>
+            <div className={`${styles.deleteButtonContainer} ${!this.state.showDeleteButton && styles.hidden}`}>
+              <AUbutton className={styles.deleteButton} onClick={this.toggleDeleteAlert}>
+                Delete
+              </AUbutton>
             </div>
           </div>
         </div>
