@@ -8,8 +8,16 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
+<<<<<<< HEAD
 import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
+=======
+<<<<<<< HEAD
+import BriefDownloadDocuments from 'marketplace/components/Brief/BriefDownloadDocuments'
+=======
+import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
+>>>>>>> init commit
+>>>>>>> init commit
 import {
   loadBrief,
   handleBriefResponseSubmit,
@@ -209,13 +217,24 @@ class BriefPage extends Component {
                 path={`${match.url}/download-responses`}
                 render={() => (
                   <span>
-                    {!app.errorMessage && loadBriefSuccess ? (
-                      <BriefDownloadResponses brief={this.props.brief} briefResponses={this.props.briefResponses} />
-                    ) : (
-                        <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />
-                      )}{' '}
-                  </span>
-                )}
+                    {!app.errorMessage && loadBriefSuccess
+                      ? <BriefDownloadDocuments brief={this.props.brief} />
+                      : <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />}{' '}
+                  </span>)}
+              />
+              <Route
+                path={`${match.url}/training/respond`}
+                render={() =>
+                  <span>
+                    {loadBriefSuccess
+                      ? <BriefTrainingResponseForm
+                        submitClicked={this.onSubmitClicked}
+                        handleSubmit={values => this.handleTrainingBriefResponseSubmit(values)}
+                        setFocus={setFocus}
+                        {...this.props}
+                      />
+                      : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
+                  </span>}
               />
               <Route component={NotFound} />
             </Switch>
