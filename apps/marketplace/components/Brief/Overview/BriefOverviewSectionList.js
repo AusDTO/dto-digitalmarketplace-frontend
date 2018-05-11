@@ -53,10 +53,8 @@ export class BriefOverviewSectionListComponent extends Component {
         >
           {this.state.showLinks ? 'Hide' : 'Show'}
         </button>
-        <AUlinklist
-          className={`${styles.linkList} ${!this.state.showLinks && styles.hidden}`}
-          items={links.map(link => this.buildLinkListItem(link))}
-        />
+        {this.state.showLinks &&
+          <AUlinklist className={styles.linkList} items={links.map(link => this.buildLinkListItem(link))} />}
       </div>
     )
   }

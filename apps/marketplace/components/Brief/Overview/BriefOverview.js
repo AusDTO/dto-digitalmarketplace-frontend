@@ -59,23 +59,24 @@ export class BriefOverview extends Component {
               {title}
             </AUheading>
           </div>
-          <div className="row">
-            <div
-              className={`${styles.confirmDeleteAlert} ${!this.state.showDeleteAlert && styles.hidden}`}
-              ref={alert => {
-                this.deleteAlert = alert
-              }}
-            >
-              {deleteBriefSuccess && <Redirect to={`${rootPath}/buyer-dashboard`} />}
-              <AUpageAlert as="warning">
-                <p>Are you sure you want to delete this brief?</p>
-                <AUbutton onClick={() => deleteBrief(briefId)}>Yes, delete brief</AUbutton>
-                <AUbutton as="secondary" className={styles.cancelDeleteButton} onClick={this.toggleDeleteAlert}>
-                  Do not delete
-                </AUbutton>
-              </AUpageAlert>
-            </div>
-          </div>
+          {this.state.showDeleteAlert &&
+            <div className="row">
+              <div
+                className={styles.confirmDeleteAlert}
+                ref={alert => {
+                  this.deleteAlert = alert
+                }}
+              >
+                {deleteBriefSuccess && <Redirect to={`${rootPath}/buyer-dashboard`} />}
+                <AUpageAlert as="warning">
+                  <p>Are you sure you want to delete this brief?</p>
+                  <AUbutton onClick={() => deleteBrief(briefId)}>Yes, delete brief</AUbutton>
+                  <AUbutton as="secondary" className={styles.cancelDeleteButton} onClick={this.toggleDeleteAlert}>
+                    Do not delete
+                  </AUbutton>
+                </AUpageAlert>
+              </div>
+            </div>}
           <div className="row">
             <div className="col-xs-12 col-sm-8 col-md-12">
               <ol className={`${styles.briefOverviewSections}`}>
@@ -85,13 +86,14 @@ export class BriefOverview extends Component {
               </ol>
             </div>
           </div>
-          <div className="row">
-            <div className={`${styles.deleteButtonContainer} ${!this.state.showDeleteButton && styles.hidden}`}>
-              <AUbutton className={styles.deleteButton} onClick={this.toggleDeleteAlert}>
-                Delete
-              </AUbutton>
-            </div>
-          </div>
+          {this.state.showDeleteButton &&
+            <div className="row">
+              <div className={styles.deleteButtonContainer}>
+                <AUbutton className={styles.deleteButton} onClick={this.toggleDeleteAlert}>
+                  Delete
+                </AUbutton>
+              </div>
+            </div>}
         </div>
       </div>
     )
