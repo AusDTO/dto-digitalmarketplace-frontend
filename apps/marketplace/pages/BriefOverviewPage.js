@@ -30,12 +30,9 @@ export class BriefOverviewPageComponent extends Component {
     return (
       <div>
         {currentlySending && <LoadingIndicatorFullPage />}
-        {!currentlySending &&
-          !loadBriefOverviewSuccess &&
-          <ErrorBox title="There was a problem loading the brief" setFocus={setFocus} />}
-        {!currentlySending &&
-          loadBriefOverviewSuccess &&
-          <BriefOverview setFocus={setFocus} {...this.props} briefId={match.params.briefId} />}
+        {!currentlySending && loadBriefOverviewSuccess
+          ? <BriefOverview setFocus={setFocus} briefId={match.params.briefId} {...this.props} />
+          : <ErrorBox title="There was a problem loading the brief" setFocus={setFocus} />}
       </div>
     )
   }
