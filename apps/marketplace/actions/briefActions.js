@@ -8,7 +8,12 @@ import {
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
 
-import { BRIEF_ID_NOT_FOUND, BRIEF_MUST_BE_DRAFT, GENERAL_ERROR } from '../constants/messageConstants'
+import {
+  BRIEF_ID_NOT_FOUND,
+  BRIEF_LOT_NOT_SUPPORTED,
+  BRIEF_MUST_BE_DRAFT,
+  GENERAL_ERROR
+} from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
@@ -20,6 +25,7 @@ export const handleBriefOverviewSuccess = response => ({
 export const loadBriefOverview = briefId => dispatch => {
   const getErrorMessage = status =>
     ({
+      400: BRIEF_LOT_NOT_SUPPORTED,
       404: BRIEF_ID_NOT_FOUND,
       default: GENERAL_ERROR
     }[status])
