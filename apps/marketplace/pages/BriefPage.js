@@ -8,6 +8,7 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
+import BriefDownloadDocuments from 'marketplace/components/Brief/BriefDownloadDocuments'
 import {
   loadBrief,
   handleBriefResponseSubmit,
@@ -91,7 +92,7 @@ class BriefPage extends Component {
   }
 
   render() {
-    const { currentlySending, loadBriefSuccess, match } = this.props
+    const { currentlySending, loadBriefSuccess, match, app } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -164,6 +165,15 @@ class BriefPage extends Component {
                           {...this.props}
                         />
                       : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
+                  </span>}
+              />
+              <Route
+                path={`${match.url}/download-documents`}
+                render={() =>
+                  <span>
+                    {!app.errorMessage && loadBriefSuccess
+                      ? <BriefDownloadDocuments brief={this.props.brief} />
+                      : <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />}{' '}
                   </span>}
               />
               <Route component={NotFound} />
