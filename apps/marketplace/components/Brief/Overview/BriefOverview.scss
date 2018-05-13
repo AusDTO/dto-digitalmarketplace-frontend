@@ -55,3 +55,9 @@ ol.briefOverviewSections {
 .deleteButtonContainer {
   margin-top: 2rem;
 }
+
+@media (max-width: 767px) {
+  .deleteButtonContainer {
+    margin-left: 1rem;
+  }
+}
