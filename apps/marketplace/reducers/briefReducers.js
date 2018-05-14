@@ -5,7 +5,9 @@ import {
   BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST
+  ADD_ANOTHER_SPECIALIST,
+  BRIEF_OVERVIEW_SUCCESS,
+  DELETE_BRIEF_SUCCESS
 } from '../constants/constants'
 
 const defaultBriefState = {
@@ -20,11 +22,23 @@ const defaultBriefState = {
   specialistName: '',
   specialistNumber: 1,
   addAnotherSpecialist: false,
+  overview: {
+    sections: [],
+    status: '',
+    title: ''
+  },
   sellers: []
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
   switch (action.type) {
+    case BRIEF_OVERVIEW_SUCCESS:
+      return {
+        ...state,
+        loadBriefOverviewSuccess: true,
+        loadBriefOverviewErrored: false,
+        overview: action.data
+      }
     case BRIEF_INFO_FETCH_DATA_SUCCESS:
       return {
         ...state,
@@ -51,13 +65,17 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponseSuccess: true,
         briefResponses: [...state.briefResponses, action.briefResponse]
       }
-
     case BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS:
       return {
         ...state,
         briefSellerNotifySubmitSuccess: true
       }
-
+    case DELETE_BRIEF_SUCCESS:
+      return {
+        ...state,
+        deleteBriefSuccess: true,
+        deleteBriefErrored: false
+      }
     case SPECIALIST_NAME:
       return {
         ...state,
