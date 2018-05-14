@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { deleteBrief, loadBriefOverview } from 'marketplace/actions/briefActions'
 import ErrorBox from 'shared/form/ErrorBox'
@@ -52,6 +53,6 @@ const mapDispatchToProps = dispatch => ({
   deleteBrief: briefId => dispatch(deleteBrief(briefId))
 })
 
-const BriefOverviewPage = connect(mapStateToProps, mapDispatchToProps)(BriefOverviewPageComponent)
+const BriefOverviewPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(BriefOverviewPageComponent))
 
 export default BriefOverviewPage
