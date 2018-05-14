@@ -1,0 +1,34 @@
+.briefOverviewSectionLinks {
+  margin-left: 1.6rem;
+  margin-bottom: 1.6rem;
+
+  ul.linkList {
+    margin-left: 0.1rem;
+  }
+}
+
+.linkListToggle {
+  border-bottom: solid 0.0625rem #1B7991;
+  border-left: transparent;
+  border-right: transparent;
+  border-top: transparent;
+  color: #313131;
+  font-size: 1rem;
+  margin-left: 0.4rem;
+  padding: 0;
+}
+
+button:hover {
+  background-color: #5BCBE3;
+  border-color: transparent;
+}
+
+li[data-complete=true]::before {
+  background-image: url('/static/svg/green-tick.svg');
+  content: '';
+  display: block;
+  height: 0.8125rem;
+  margin: 0.35rem 0 0 -1.5rem;
+  position: absolute;
+  width: 0.9375rem;
+}

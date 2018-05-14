@@ -1,14 +1,71 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
 
-import { GENERAL_ERROR } from '../constants/messageConstants'
+import {
+  BRIEF_ID_NOT_FOUND,
+  BRIEF_LOT_NOT_SUPPORTED,
+  BRIEF_MUST_BE_DRAFT,
+  GENERAL_ERROR
+} from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
+
+export const handleBriefOverviewSuccess = response => ({
+  type: BRIEF_OVERVIEW_SUCCESS,
+  data: response.data
+})
+
+export const loadBriefOverview = briefId => dispatch => {
+  const getErrorMessage = status =>
+    ({
+      400: BRIEF_LOT_NOT_SUPPORTED,
+      404: BRIEF_ID_NOT_FOUND,
+      default: GENERAL_ERROR
+    }[status])
+
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/brief/${briefId}/overview` }).then(response => {
+    if (!response || response.error) {
+      const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
+      dispatch(setErrorMessage(errorMessage))
+    } else {
+      dispatch(handleBriefOverviewSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleDeleteBriefSuccess = response => ({
+  type: DELETE_BRIEF_SUCCESS,
+  data: response.data
+})
+
+export const deleteBrief = briefId => dispatch => {
+  const getErrorMessage = status =>
+    ({
+      400: BRIEF_MUST_BE_DRAFT,
+      404: BRIEF_ID_NOT_FOUND,
+      default: GENERAL_ERROR
+    }[status])
+
+  dispatch(sendingRequest(true))
+  dmapi({ method: 'delete', url: `/brief/${briefId}` }).then(response => {
+    if (!response || response.error) {
+      const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
+      dispatch(setErrorMessage(errorMessage))
+    } else {
+      dispatch(handleDeleteBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
 
 export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,

@@ -106,7 +106,8 @@ test('My briefs page shows appropriate actions for each brief in the table', () 
         id: 3,
         name: 'Brief 3',
         status: 'draft',
-        closed_at: ''
+        closed_at: '',
+        lot: 'digital-professionals'
       },
       {
         id: 4,

@@ -283,9 +283,7 @@ module.exports = [{
         include: [
           paths.marketplaceSrc,
           paths.sharedComponents,
-          paths.appNodeModules + '/@gov.au/footer',
-          paths.appNodeModules + '/@gov.au/page-alerts',
-          paths.appNodeModules + '/@gov.au/control-input',
+          paths.appNodeModules + '/@gov.au'
         ],
         loader: 'babel'
       },

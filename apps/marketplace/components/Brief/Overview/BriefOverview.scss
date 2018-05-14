@@ -1,0 +1,63 @@
+.overviewHeading {
+  span {
+    opacity: 0.6;
+  }
+
+  .briefTitle {
+    margin: 0;
+  }
+}
+
+ol.briefOverviewSections {
+  border-collapse: collapse;
+  counter-reset: index;
+  display: table;
+  list-style: decimal inside;
+  padding: 0;
+  width: 100%;
+
+  > li::before {
+    content: counter(index)'.';
+    display: table-cell;
+    line-height: 5.2rem;
+    font-size: 1.5rem;
+    text-align: right;
+    width: 1rem;
+  }
+
+  > li {
+    border-bottom: 0.0625rem solid #BEBEBE;
+    counter-increment: index;
+    display: table-row;
+
+    h2 {
+      display: inline;
+    }
+  
+    h2:first-child {
+      margin-left: 2rem;
+    }
+  }
+}
+
+.confirmDeleteAlert {
+  margin-top: 2rem;
+
+  button {
+    margin-top: 1rem;
+  }
+
+  .cancelDeleteButton {
+    margin-left: 1rem;
+  }
+}
+
+.deleteButtonContainer {
+  margin-top: 2rem;
+}
+
+@media (max-width: 767px) {
+  .deleteButtonContainer {
+    margin-left: 1rem;
+  }
+}
