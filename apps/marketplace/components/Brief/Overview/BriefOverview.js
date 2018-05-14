@@ -52,6 +52,7 @@ export class BriefOverview extends Component {
     return (
       <div className="row">
         <div className="col-xs-12">
+          {deleteBriefSuccess && <Redirect to={`${rootPath}/buyer-dashboard`} />}
           {!deleteBriefSuccess && <ErrorBox title="There was a problem deleting the brief" setFocus={setFocus} />}
           <div className={styles.overviewHeading}>
             <span className={styles.overview}>Overview</span>
@@ -67,7 +68,6 @@ export class BriefOverview extends Component {
                   this.deleteAlert = alert
                 }}
               >
-                {deleteBriefSuccess && <Redirect to={`${rootPath}/buyer-dashboard`} />}
                 <AUpageAlert as="warning">
                   <p>Are you sure you want to delete this brief?</p>
                   <AUbutton onClick={() => deleteBrief(briefId)}>Yes, delete brief</AUbutton>
