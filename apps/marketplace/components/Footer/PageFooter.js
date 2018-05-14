@@ -100,7 +100,7 @@ const PageFooter = () =>
               </li>
               <li>
                 <a rel="external" href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000189856-Digital-Sourcing">
-                  DTA digital sourcing panels
+                  DTA digital sourcing
                 </a>
               </li>
             </ul>
