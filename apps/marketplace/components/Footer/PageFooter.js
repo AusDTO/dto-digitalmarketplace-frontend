@@ -7,7 +7,7 @@ import logoNisa from './logo_nisa.svg'
 
 const PageFooter = () =>
   <AUfooter className={styles.footer}>
-    <div className="container">
+    <div className="wrapper">
       <AUfooterNav>
         <div className="row">
           <div className="col-md-3 col-sm-6">
