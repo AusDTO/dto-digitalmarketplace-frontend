@@ -1,6 +1,5 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
-  BRIEF_SELLERS_FETCH_DATA_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
   SPECIALIST_NAME,
@@ -48,17 +47,6 @@ const briefReducer = (state = defaultBriefState, action) => {
         specialistNumber: action.briefResponses.length + 1,
         loadedAt: new Date().valueOf()
       }
-
-    case BRIEF_SELLERS_FETCH_DATA_SUCCESS:
-      return {
-        ...state,
-        brief: action.brief,
-        loadBriefSuccess: true,
-        loadBriefErrored: false,
-        sellers: action.sellers,
-        loadedAt: new Date().valueOf()
-      }
-
     case BRIEF_RESPONSE_SUCCESS:
       return {
         ...state,

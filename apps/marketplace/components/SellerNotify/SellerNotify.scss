@@ -4,6 +4,10 @@ ul.sellerList {
   padding: 0px;
 }
 
+ul.sellerList li label {
+  margin-top: 1rem;
+}
+
 textarea.emailContent {
   height: 400px;
 }

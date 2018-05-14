@@ -11,7 +11,7 @@ import SellerNotifyReview from 'marketplace/components/SellerNotify/SellerNotify
 import SellerNotifySellerList from 'marketplace/components/SellerNotify/SellerNotifySellerList'
 import ErrorBox from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
-import { loadBriefSellers, handleBriefSellerNotifySubmit } from 'marketplace/actions/briefActions'
+import { loadBrief, handleBriefSellerNotifySubmit } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class SellerNotifyPage extends Component {
@@ -95,7 +95,7 @@ class SellerNotifyPage extends Component {
     this.setState(currentState => {
       const newState = { ...currentState }
       let newSeller = {}
-      this.props.sellers.map(response => {
+      this.props.briefResponses.map(response => {
         if (response.supplier_code === parseInt(supplierCode, 10)) {
           newSeller = {
             supplier_code: response.supplier_code,
@@ -130,7 +130,7 @@ class SellerNotifyPage extends Component {
       loadBriefSuccess,
       errorMessage,
       match,
-      sellers,
+      briefResponses,
       briefSellerNotifySubmitSuccess,
       handleSubmit,
       brief
@@ -166,7 +166,7 @@ class SellerNotifyPage extends Component {
       )
     }
 
-    if (sellers.length < 1) {
+    if (briefResponses.length < 1) {
       return (
         <div className="row">
           <div className="col-xs-12">
@@ -221,7 +221,7 @@ class SellerNotifyPage extends Component {
                 path={`${rootPath}/brief/${match.params.briefId}/seller-${match.params.flow}/select`}
                 render={() =>
                   <SellerNotifySelect
-                    sellers={sellers}
+                    sellers={briefResponses}
                     selectedSellers={this.state.selectedSellers}
                     setStageStatus={this.setStageStatus}
                     selectSeller={this.selectSeller}
@@ -259,7 +259,7 @@ SellerNotifyPage.propTypes = {
 
 const mapStateToProps = state => ({
   brief: state.brief.brief,
-  sellers: state.brief.sellers,
+  briefResponses: state.brief.briefResponses,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefSellerNotifySubmitSuccess: state.brief.briefSellerNotifySubmitSuccess,
   errorMessage: state.app.errorMessage,
@@ -267,7 +267,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadInitialData: briefId => dispatch(loadBriefSellers(briefId)),
+  loadInitialData: briefId => dispatch(loadBrief(briefId)),
   handleSubmit: (briefId, model) => dispatch(handleBriefSellerNotifySubmit(briefId, model))
 })
 
