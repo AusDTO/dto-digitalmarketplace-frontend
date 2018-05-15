@@ -10,11 +10,13 @@ jest.mock('shared/Icon/_getIcons')
 const sellers = [
   {
     supplier_code: 1,
-    supplier_name: 'Supplier 1'
+    supplier_name: 'Supplier 1',
+    successful: null
   },
   {
     supplier_code: 2,
-    supplier_name: 'Supplier 2'
+    supplier_name: 'Supplier 2',
+    successful: null
   }
 ]
 

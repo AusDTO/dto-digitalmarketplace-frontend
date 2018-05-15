@@ -60,6 +60,21 @@ export class SellerNotifySelect extends Component {
   }
 
   render() {
+    const sellers = this.props.sellers.filter(response => response.successful === null)
+
+    if (sellers.length === 0) {
+      return (
+        <div className="row">
+          <div className="col-xs-12">
+            <AUheading size="lg" level="2">
+              Select sellers
+            </AUheading>
+            <p>There a no sellers to select.</p>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className="row">
         <div className="col-xs-12">
@@ -67,7 +82,7 @@ export class SellerNotifySelect extends Component {
             Select sellers
           </AUheading>
           <ul className={styles.sellerList}>
-            {this.props.sellers.map(response =>
+            {sellers.map(response =>
               <li key={response.supplier_code}>
                 <AUcheckbox
                   name={`${response.supplier_code}`}
