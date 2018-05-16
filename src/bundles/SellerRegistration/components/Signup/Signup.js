@@ -167,8 +167,6 @@ class Signup extends React.Component {
   }
 
   render() {
-    console.log('Signup')
-    console.log(this.props)
     const { forms, location, steps = {}, actions } = this.props;
 
     let { recruiter = 'no'} = forms.recruiterForm;
