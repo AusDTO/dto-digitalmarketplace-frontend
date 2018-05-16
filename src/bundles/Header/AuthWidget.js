@@ -7,9 +7,7 @@ import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import logoGovCrest from './Government_crest.svg'
 
 export const AuthWidget = (props, history) => {
-
     const _path = returnPath(history);
-
     return (
       <section className="au-marketplace-header">
         <div className="wrapper">
@@ -56,18 +54,18 @@ export const AuthWidget = (props, history) => {
                     </a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="../templates">
-                      How it works
-                    </a>
-                  </li>
-                  <li className="au-marketplace-header-link-list">
-                    <a href="/insights">
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
                       Insights
                     </a>
                   </li>
                   <li className="au-marketplace-header-link-list">
                     <a href="https://marketplace1.zendesk.com/hc/en-gb">
                       Support
+                    </a>
+                  </li>
+                  <li className="au-marketplace-header-link-list">
+                    <a href="/contact-us">
+                      Contact
                     </a>
                   </li>
                 </ul>
@@ -96,18 +94,18 @@ export const AuthWidget = (props, history) => {
                       </a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="../templates">
-                        How it works
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/insights">
+                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
                         Insights
                       </a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
                       <a href="https://marketplace1.zendesk.com/hc/en-gb">
                         Support
+                      </a>
+                    </div>
+                    <div className="au-marketplace-header_mobile-link">
+                      <a href="/contact-us">
+                        Contact
                       </a>
                     </div>
                   </div>

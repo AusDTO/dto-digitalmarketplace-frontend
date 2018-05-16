@@ -72,18 +72,18 @@ export class Header extends Component {
                     </a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="../templates">
-                      How it works
-                    </a>
-                  </li>
-                  <li className="au-marketplace-header-link-list">
-                    <a href="/insights">
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
                       Insights
                     </a>
                   </li>
                   <li className="au-marketplace-header-link-list">
                     <a href="https://marketplace1.zendesk.com/hc/en-gb">
                       Support
+                    </a>
+                  </li>
+                  <li className="au-marketplace-header-link-list">
+                    <a href="/contact-us">
+                      Contact
                     </a>
                   </li>
                 </ul>
@@ -118,18 +118,18 @@ export class Header extends Component {
                       </a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="../templates">
-                        How it works
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/insights">
+                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
                         Insights
                       </a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
                       <a href="https://marketplace1.zendesk.com/hc/en-gb">
                         Support
+                      </a>
+                    </div>
+                    <div className="au-marketplace-header_mobile-link">
+                      <a href="/contact-us">
+                        Contact
                       </a>
                     </div>
                   </div>
