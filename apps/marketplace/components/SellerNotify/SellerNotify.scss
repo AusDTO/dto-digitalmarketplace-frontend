@@ -11,3 +11,9 @@ ul.sellerList li label {
 textarea.emailContent {
   height: 400px;
 }
+
+@media (max-width: 767px) {
+  .progressIndicator {
+    margin-bottom: 1.5rem;
+  }
+}

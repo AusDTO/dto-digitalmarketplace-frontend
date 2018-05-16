@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import AUprogressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
+import styles from './SellerNotify.scss'
 
 export class SellerNotifyNav extends Component {
   handleClick(e) {
@@ -50,7 +51,7 @@ export class SellerNotifyNav extends Component {
 
     return (
       <div className="row">
-        <div className="col-xs-12" aria-live="polite" aria-relevant="additions removals">
+        <div className={`${styles.progressIndicator} col-xs-12`} aria-live="polite" aria-relevant="additions removals">
           <AUprogressIndicator items={items} />
         </div>
       </div>
