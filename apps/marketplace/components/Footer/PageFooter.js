@@ -98,6 +98,14 @@ const PageFooter = () =>
                   Our standard
                 </a>
               </li>
+              <li>
+                <a
+                  rel="external"
+                  href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000189856-Digital-Sourcing"
+                >
+                  DTA digital sourcing
+                </a>
+              </li>
             </ul>
           </div>
         </div>

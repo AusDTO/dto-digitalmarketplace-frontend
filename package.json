@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "@gov.au/accordion": "^2.0.1",
+    "@gov.au/accordion": "^2.0.3",
     "@gov.au/animate": "^1.0.0",
     "@gov.au/body": "^2.0.2",
     "@gov.au/buttons": "^2.0.1",
