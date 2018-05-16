@@ -167,6 +167,8 @@ class Signup extends React.Component {
   }
 
   render() {
+    console.log('Signup')
+    console.log(this.props)
     const { forms, location, steps = {}, actions } = this.props;
 
     let { recruiter = 'no'} = forms.recruiterForm;
@@ -250,6 +252,7 @@ class Signup extends React.Component {
               const props = Object.assign({},
                 routerProps, {
                   applicationValid,
+                  domains: this.props.application.domains,
                   stepsRemaining,
                   services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
