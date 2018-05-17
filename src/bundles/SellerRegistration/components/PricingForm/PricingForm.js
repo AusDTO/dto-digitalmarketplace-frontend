@@ -73,7 +73,12 @@ class PricingForm extends BaseForm {
             {Object.keys(validServices).map((service, i) => (
               <fieldset key={`pricing.${service}.${i}`} className="field">
                 <legend>{service}</legend>
-                <label>Note: 95% of sellers submit bids below ${new Intl.NumberFormat('en-AU').format(domains[service])}. If your daily rate exceeds this, we will apply greater scrutiny when determining eligibility for this area of expertise.</label>
+                <label>
+                  Note: 95% of sellers submit bids below 
+                  ${new Intl.NumberFormat('en-AU').format(domains[service] ? domains[service] : 0)}. 
+                  If your daily rate exceeds this, we will apply greater scrutiny when determining eligibility 
+                  for this area of expertise.
+                </label>
                 <StatefulError
                   model={`${model}.pricing.${service}.maxPrice`}
                   messages={{
