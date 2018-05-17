@@ -465,6 +465,8 @@ li:first-child.au-marketplace-header-link-list a {
   color: #fff;
   border-top: solid 1px #a2a2a2;
   display: block;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 @media screen and (min-width: 768px) {
