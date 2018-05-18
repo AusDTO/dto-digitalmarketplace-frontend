@@ -15,12 +15,12 @@ export class Header extends Component {
     }
   }
 
-  openAccordion = ( ) => {
-    this.setState({ accordionOpen: true });
+  openAccordion = () => {
+    this.setState({ accordionOpen: true })
   }
 
-  closeAccordion = ( ) => {
-    this.setState({ accordionOpen: false });
+  closeAccordion = () => {
+    this.setState({ accordionOpen: false })
   }
 
   render() {
@@ -32,7 +32,10 @@ export class Header extends Component {
           <div className="row">
             <div className="col-md-8 col-sm-8 col-xs-12 au-marketplace-header-logo-section">
               <a href="/" title="Go to the Marketplace homepage">
-                <span className="au-marketplace-header-goverment-logo" dangerouslySetInnerHTML={{ __html: logoGovCrest }} />
+                <span
+                  className="au-marketplace-header-goverment-logo"
+                  dangerouslySetInnerHTML={{ __html: logoGovCrest }}
+                />
                 <span className="au-marketplace-header-title">
                   <span className="au-marketplace-header-logo">
                     <span>Digital Marketplace</span>
@@ -47,10 +50,22 @@ export class Header extends Component {
                 <div id="react-bundle-auth-header">
                   <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
                     <li>
-                      {loggedIn ? <DashBoardLink userType={userType} /> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
+                      {loggedIn ? (
+                        <DashBoardLink userType={userType} />
+                      ) : (
+                        <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
+                          Sign up
+                        </a>
+                      )}
                     </li>
                     <li>
-                      {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login" className="au-btn au-btn--dark">Sign in</a>}
+                      {loggedIn ? (
+                        <a href="/logout">Sign out</a>
+                      ) : (
+                        <a href="/login" className="au-btn au-btn--dark">
+                          Sign in
+                        </a>
+                      )}
                     </li>
                   </ul>
                 </div>
@@ -62,29 +77,19 @@ export class Header extends Component {
               <nav className="au-marketplace-header-navigation">
                 <ul className="au-link-list au-link-list--inline">
                   <li className="au-marketplace-header-link-list">
-                    <a href="/digital-marketplace/opportunities?status=live">
-                      Opportunities
-                    </a>
+                    <a href="/digital-marketplace/opportunities?status=live">Opportunities</a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="/search/sellers">
-                      Seller Catalogue
-                    </a>
+                    <a href="/search/sellers">Seller Catalogue</a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
-                      Insights
-                    </a>
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">Insights</a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="https://marketplace1.zendesk.com/hc/en-gb">
-                      Support
-                    </a>
+                    <a href="https://marketplace1.zendesk.com/hc/en-gb">Support</a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="/contact-us">
-                      Contact
-                    </a>
+                    <a href="/contact-us">Contact</a>
                   </li>
                 </ul>
               </nav>
@@ -94,10 +99,14 @@ export class Header extends Component {
             <div className="col-md-12">
               <div className="au-marketplace-header-mobile-menu">
                 <AUaccordion
-                  header={ this.state.accordionOpen ? "Close menu" : "Open menu" }
-                  open={ this.state.accordionOpen }
-                  onOpen={ () => { this.openAccordion() } }
-                  onClose={ () => { this.closeAccordion() } }
+                  header={this.state.accordionOpen ? 'Close menu' : 'Open menu'}
+                  open={this.state.accordionOpen}
+                  onOpen={() => {
+                    this.openAccordion()
+                  }}
+                  onClose={() => {
+                    this.closeAccordion()
+                  }}
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     <div className="au-marketplace-header_mobile-link">
@@ -107,29 +116,19 @@ export class Header extends Component {
                       {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="/digital-marketplace/opportunities?status=live">
-                        Opportunities
-                      </a>
+                      <a href="/digital-marketplace/opportunities?status=live">Opportunities</a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="/search/sellers">
-                        Seller Catalogue
-                      </a>
+                      <a href="/search/sellers">Seller Catalogue</a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
-                        Insights
-                      </a>
+                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">Insights</a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb">
-                        Support
-                      </a>
+                      <a href="https://marketplace1.zendesk.com/hc/en-gb">Support</a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="/contact-us">
-                        Contact
-                      </a>
+                      <a href="/contact-us">Contact</a>
                     </div>
                   </div>
                 </AUaccordion>

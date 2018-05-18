@@ -7,7 +7,7 @@ import BuyerDashboardTeamBriefs from 'marketplace/components/BuyerDashboard/Buye
 import BuyerDashboardTeamOverview from 'marketplace/components/BuyerDashboard/BuyerDashboardTeamOverview'
 import { rootPath } from 'marketplace/routes'
 
-const BuyerDashboardPage = props =>
+const BuyerDashboardPage = props => (
   <BrowserRouter basename={`${rootPath}/buyer-dashboard`}>
     <div>
       <BuyerDashboardHeader {...props} />
@@ -20,6 +20,7 @@ const BuyerDashboardPage = props =>
       </article>
     </div>
   </BrowserRouter>
+)
 
 const mapStateToProps = state => ({
   organisation: state.dashboard.buyerDashboardOrganisation

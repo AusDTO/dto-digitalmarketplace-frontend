@@ -3,7 +3,7 @@ import React from 'react'
 import logoDTA from './DTA_logo_white.svg'
 import logoNISA from './NISA_Logo_white.svg'
 
-const AUFooter = () =>
+const AUFooter = () => (
   <footer className="au-footer footer au-body au-body--dark au-footer--dark " role="contentinfo">
     <div className="wrapper">
       <div className="row">
@@ -33,9 +33,12 @@ const AUFooter = () =>
           </ul>
           <div className="au-footer__end">
             <div className="footer__content footer__legal">
-              <p>© Commonwealth of Australia.
-              With the exception of the Commonwealth Coat of Arms and where otherwise noted,
-              this work is licensed under the <a href="https://github.com/govau/uikit/blob/master/LICENSE" rel="external">MIT license</a>
+              <p>
+                © Commonwealth of Australia. With the exception of the Commonwealth Coat of Arms and where otherwise
+                noted, this work is licensed under the{' '}
+                <a href="https://github.com/govau/uikit/blob/master/LICENSE" rel="external">
+                  MIT license
+                </a>
               </p>
             </div>
           </div>
@@ -51,5 +54,6 @@ const AUFooter = () =>
       </div>
     </div>
   </footer>
+)
 
 export default AUFooter

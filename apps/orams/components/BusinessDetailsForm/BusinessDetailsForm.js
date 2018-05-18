@@ -71,11 +71,13 @@ class BusinessDetailsForm extends BaseForm {
           </h1>
         </header>
         <article role="main">
-          {profileUpdated
-            ? <AUpageAlert as="success">
-                <h4>Profile updated</h4>
-              </AUpageAlert>
-            : ''}
+          {profileUpdated ? (
+            <AUpageAlert as="success">
+              <h4>Profile updated</h4>
+            </AUpageAlert>
+          ) : (
+            ''
+          )}
           <ErrorBox model={model} setFocus={setFocus} submitClicked={submitClicked} />
           <Form
             model={model}
@@ -272,11 +274,13 @@ class BusinessDetailsForm extends BaseForm {
 
             {children}
 
-            {currentlySending
-              ? <LoadingButton />
-              : <button type="submit" className="au-btn">
-                  Update profile
-                </button>}
+            {currentlySending ? (
+              <LoadingButton />
+            ) : (
+              <button type="submit" className="au-btn">
+                Update profile
+              </button>
+            )}
           </Form>
         </article>
       </Layout>

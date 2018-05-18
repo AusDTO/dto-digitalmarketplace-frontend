@@ -35,23 +35,21 @@ class ResultsTable extends Component {
 
     return (
       <div tabIndex="0" ref={this.setRef} className={styles.table}>
-        {alert
-          ? <div className={styles.alert}>
-              <AUpageAlert as={alert.type}>
-                <h4>
-                  {alert.message}
-                </h4>
-              </AUpageAlert>
-            </div>
-          : ''}
+        {alert ? (
+          <div className={styles.alert}>
+            <AUpageAlert as={alert.type}>
+              <h4>{alert.message}</h4>
+            </AUpageAlert>
+          </div>
+        ) : (
+          ''
+        )}
         <div className={styles.tableContainer}>
           {categories &&
-            categories.map((category, id = uniqueID()) =>
+            categories.map((category, id = uniqueID()) => (
               <div key={id + category.name}>
-                <div className={styles.categoryTitle}>
-                  {category.name}
-                </div>
-                {category.suppliers.map((supplier, id = uniqueID()) =>
+                <div className={styles.categoryTitle}>{category.name}</div>
+                {category.suppliers.map((supplier, id = uniqueID()) => (
                   <div key={id} className={styles.tableRow}>
                     <div className="row">
                       <div className="col-xs-12 col-sm-12">
@@ -65,29 +63,23 @@ class ResultsTable extends Component {
                           </a>
                         </span>
                         <span className={styles.priceElements}>
-                          <div className={styles.price}>
-                            {'$' + supplier.price}
-                          </div>
+                          <div className={styles.price}>{'$' + supplier.price}</div>
                           <div className={styles.incGst}>inc GST</div>
                         </span>
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-xs-12 col-sm-12">
-                        <span className={styles.phone}>
-                          {supplier.phone}
-                        </span>
+                        <span className={styles.phone}>{supplier.phone}</span>
                         <span className={styles.email}>
-                          <a href={'mailto:' + supplier.email}>
-                            {supplier.email}
-                          </a>
+                          <a href={'mailto:' + supplier.email}>{supplier.email}</a>
                         </span>
                       </div>
                     </div>
                   </div>
-                )}
+                ))}
               </div>
-            )}
+            ))}
         </div>
       </div>
     )

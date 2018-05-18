@@ -10,10 +10,12 @@ export default function reducer(state = {}, action = {}) {
         [key]: Object.assign({}, value, { id })
       })
     case REMOVE:
-      return Object.keys(state).filter(k => k !== key).reduce((result, current) => {
-        result[current] = state[current]
-        return result
-      }, {})
+      return Object.keys(state)
+        .filter(k => k !== key)
+        .reduce((result, current) => {
+          result[current] = state[current]
+          return result
+        }, {})
     default:
       return state
   }

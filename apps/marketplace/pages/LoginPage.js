@@ -39,14 +39,16 @@ export class LoginPageComponent extends BaseForm {
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
-            {loggedIn
-              ? <Redirect to={from} />
-              : <LoginForm
-                  submitClicked={this.onSubmitClicked}
-                  handleSubmit={handleSubmit}
-                  model={model}
-                  currentlySending={currentlySending}
-                />}
+            {loggedIn ? (
+              <Redirect to={from} />
+            ) : (
+              <LoginForm
+                submitClicked={this.onSubmitClicked}
+                handleSubmit={handleSubmit}
+                model={model}
+                currentlySending={currentlySending}
+              />
+            )}
           </article>
         </div>
       </div>

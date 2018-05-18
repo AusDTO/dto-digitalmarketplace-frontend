@@ -5,7 +5,7 @@ import { uniqueID } from 'shared/utils/helpers'
 import styles from './Landing.scss'
 import funded from './funded.json'
 
-const Landing = () =>
+const Landing = () => (
   <div className="landing">
     <DocumentTitle title="Smart Cities Collaboration Platform - Digital Marketplace">
       <h1 className={styles.title}>
@@ -13,7 +13,7 @@ const Landing = () =>
       </h1>
     </DocumentTitle>
     <article className={styles.uikitDisplay3}>
-      The Australian Government’s $50 million {' '}
+      The Australian Government’s $50 million{' '}
       <a href="https://cities.dpmc.gov.au/smart-cities-program" rel="external noopener noreferrer" target="_blank">
         Smart Cities and Suburbs Program
       </a>{' '}
@@ -34,9 +34,7 @@ const Landing = () =>
         </div>
         <div>
           <strong className={styles.pop}>
-            <font color="#870f48">
-              {49}
-            </font>
+            <font color="#870f48">{49}</font>
           </strong>{' '}
           <article>funded projects</article>
         </div>
@@ -110,20 +108,18 @@ const Landing = () =>
                 if (val.state.includes(childProps.match.params.state) || childProps.match.params.state === 'all') {
                   return (
                     <div className={styles.project} key={`${uniqueID()}${val.title}`}>
-                      <h3>
-                        {val.title}
-                      </h3>
+                      <h3>{val.title}</h3>
                       <div>
                         {val.applicant}, {val.location}
                       </div>
                       <div>
                         <br />
-                        {val.description.split('\n').map(item =>
+                        {val.description.split('\n').map(item => (
                           <span>
                             {item}
                             <br />
                           </span>
-                        )}
+                        ))}
                       </div>
                       <p>
                         <b>Grant Amount:</b> {val.grant}
@@ -146,7 +142,7 @@ const Landing = () =>
       <Redirect from="/2/collaborate" to="/2/collaborate/funded/all" exact />
       <Redirect from="/2/collaborate/funded" to="/2/collaborate/funded/all" exact />
       <Route
-        render={() =>
+        render={() => (
           <div>
             <h2>
               <center>Council collaboration</center>
@@ -269,7 +265,8 @@ const Landing = () =>
             </article>
             <br />
             <hr />
-          </div>}
+          </div>
+        )}
       />
     </Switch>
     <div className="row">
@@ -293,7 +290,8 @@ const Landing = () =>
         </center>
       </div>
       <div className={`${styles.becomeASeller} col-xs-12 col-md-4 col-md-push-2`}>
-        {' '}<center>
+        {' '}
+        <center>
           <div>
             <span />
             <h3>
@@ -310,5 +308,6 @@ const Landing = () =>
       </div>
     </div>
   </div>
+)
 
 export default withRouter(Landing)

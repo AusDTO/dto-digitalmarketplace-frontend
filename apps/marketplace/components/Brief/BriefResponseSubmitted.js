@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import BriefResponseSubmittedSummary from './BriefResponseSubmittedSummary'
 
-const BriefResponseSubmitted = props =>
+const BriefResponseSubmitted = props => (
   <div className="row">
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
@@ -31,5 +31,6 @@ const BriefResponseSubmitted = props =>
       </div>
     </DocumentTitle>
   </div>
+)
 
 export default BriefResponseSubmitted
