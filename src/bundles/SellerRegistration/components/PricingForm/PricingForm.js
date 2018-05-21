@@ -23,7 +23,7 @@ class PricingForm extends BaseForm {
   render() {
     const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains } = this.props;
     let validServices = findValidServices(services);
-
+    console.log(domains)
     if (isEmpty(validServices)) {
       return (
         <Layout>
@@ -75,7 +75,7 @@ class PricingForm extends BaseForm {
                 <legend>{service}</legend>
                 <label>
                   Note: 95% of sellers submit bids below 
-                  ${Number(domains.prices.maximum[service] ? domains.prices.maximum[service] : 0).toFixed(2)}. 
+                  ${parseFloat(domains.prices.maximum[service] || 0).toFixed(2)}. 
                   If your daily rate exceeds this, we will apply greater scrutiny when determining eligibility 
                   for this area of expertise.
                 </label>
