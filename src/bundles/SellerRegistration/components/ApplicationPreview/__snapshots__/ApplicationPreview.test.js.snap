@@ -94,28 +94,6 @@ exports[`ApplicationPreview renders with props 1`] = `
           <div
             className="col-sm-8 col-sm-push-1 col-xs-12"
           >
-            <span>
-              <div
-                className="seller-profile__evaluated-badges"
-                styleName="badges evaluated-badges"
-              >
-                <p
-                  styleName="bold"
-                >
-                  Assessed for
-                </p>
-                <span>
-                  service2
-                   
-                </span>
-              </div>
-              <p>
-                <b>
-                  Transacts on
-                </b>
-                <br />
-              </p>
-            </span>
             <div
               className="seller-profile__provides-badges"
               styleName="badges provides-badges"
