@@ -8,7 +8,7 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
-import BriefDownloadDocuments from 'marketplace/components/Brief/BriefDownloadDocuments'
+import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
 import {
   loadBrief,
   handleBriefResponseSubmit,
@@ -168,11 +168,11 @@ class BriefPage extends Component {
                   </span>}
               />
               <Route
-                path={`${match.url}/download-documents`}
+                path={`${match.url}/download-responses`}
                 render={() =>
                   <span>
                     {!app.errorMessage && loadBriefSuccess
-                      ? <BriefDownloadDocuments brief={this.props.brief} />
+                      ? <BriefDownloadResponses brief={this.props.brief} briefResponses={this.props.briefResponses} />
                       : <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />}{' '}
                   </span>}
               />
