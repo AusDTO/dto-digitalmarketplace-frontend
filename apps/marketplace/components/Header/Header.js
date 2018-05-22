@@ -63,7 +63,7 @@ export class Header extends Component {
                         <a href="/logout">Sign out</a>
                       ) : (
                         <a href="/login" className="au-btn au-btn--dark">
-                          Sign in
+                          Log in
                         </a>
                       )}
                     </li>

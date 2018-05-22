@@ -1,7 +1,7 @@
 /* eslint-disable*/
 import React from 'react'
-import logoDTA from './DTA_logo_white.svg'
-import logoNISA from './NISA_Logo_white.svg'
+import logoDTA from './DTA_logo.svg'
+import logoNISA from './NISA_logo.svg'
 
 const AUFooter = () => (
   <footer className="au-footer footer au-body au-body--dark au-footer--dark " role="contentinfo">
