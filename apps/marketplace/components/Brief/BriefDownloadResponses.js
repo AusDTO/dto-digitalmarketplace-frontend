@@ -11,18 +11,26 @@ export class BriefDownloadResponses extends Component {
     super(props)
 
     this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.getFilesize = this.getFilesize.bind(this)
+    this.getFileSizeAndType = this.getFileSizeAndType.bind(this)
   }
 
-  getFilesize() {
+  getFileSizeAndType() {
     const bytes = this.props.brief.responsesZipFilesize
     let size = ''
-    if (bytes < 1048576) {
-      size = `${parseFloat(bytes / 1024).toFixed(2)}KB`
-    } else {
-      size = `${parseFloat(bytes / 1024 / 1024).toFixed(2)}MB`
+    let type = ''
+    let result = ''
+    if (this.props.brief.lot === 'digital-professionals') {
+      type = 'zip'
+      if (bytes < 1048576) {
+        size = `${parseFloat(bytes / 1024).toFixed(2)}KB`
+      } else {
+        size = `${parseFloat(bytes / 1024 / 1024).toFixed(2)}MB`
+      }
+      result = `${size} ${type}`
+    } else if (this.props.brief.lot === 'digital-outcome') {
+      result = 'csv'
     }
-    return size
+    return result
   }
 
   handleButtonClick(e) {
@@ -44,7 +52,7 @@ export class BriefDownloadResponses extends Component {
       )
     }
 
-    if (!this.props.brief.responsesZipFilesize) {
+    if (!this.props.brief.responsesZipFilesize && this.props.brief.lot === 'digital-professionals') {
       return (
         <AUpageAlert as="error">
           <AUheading size="md" level="1">
@@ -59,21 +67,19 @@ export class BriefDownloadResponses extends Component {
 
     return (
       <span>
-        <form>
-          <AUheading size="xl" level="1">
-            {this.props.briefResponses.length === 1 && `You've had 1 response to your brief.`}
-            {this.props.briefResponses.length > 1 &&
-              `You've had ${this.props.briefResponses.length} responses to your brief.`}
-            <small className={styles.headingSub}>
-              {this.props.brief.title}
-            </small>
-          </AUheading>
-          <p>
-            <AUbutton onClick={this.handleButtonClick}>
-              Download responses {this.getFilesize()} zip
-            </AUbutton>
-          </p>
-        </form>
+        <AUheading size="xl" level="1">
+          {this.props.briefResponses.length === 1 && `You've had 1 response to your brief.`}
+          {this.props.briefResponses.length > 1 &&
+            `You've had ${this.props.briefResponses.length} responses to your brief.`}
+          <small className={styles.headingSub}>
+            {this.props.brief.title}
+          </small>
+        </AUheading>
+        <p>
+          <AUbutton onClick={this.handleButtonClick}>
+            Download responses {this.getFileSizeAndType()}
+          </AUbutton>
+        </p>
         <p>
           <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
         </p>
