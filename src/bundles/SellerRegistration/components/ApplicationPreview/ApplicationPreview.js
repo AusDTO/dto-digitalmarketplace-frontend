@@ -112,6 +112,9 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
     }
   }
 
+  // filter out services that have been de-selected
+  assessed = assessed.filter(key => Object.keys(services).includes(key))
+
   // calculate badges
   seller_type = Object.assign({}, {
     product: !isEmpty(state.application.products),
