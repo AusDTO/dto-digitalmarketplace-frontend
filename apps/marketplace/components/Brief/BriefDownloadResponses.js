@@ -16,17 +16,15 @@ export class BriefDownloadResponses extends Component {
 
   getFileSizeAndType() {
     const bytes = this.props.brief.responsesZipFilesize
-    let size = ''
-    let type = ''
     let result = ''
     if (this.props.brief.lot === 'digital-professionals') {
-      type = 'zip'
+      let size = ''
       if (bytes < 1048576) {
         size = `${parseFloat(bytes / 1024).toFixed(2)}KB`
       } else {
         size = `${parseFloat(bytes / 1024 / 1024).toFixed(2)}MB`
       }
-      result = `${size} ${type}`
+      result = `${size} zip`
     } else if (this.props.brief.lot === 'digital-outcome') {
       result = 'csv'
     }
