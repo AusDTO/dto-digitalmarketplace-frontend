@@ -4,6 +4,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
+import { getFileSizeAndType } from 'marketplace/components/helpers'
 import styles from './BriefDownloadResponses.scss'
 
 export class BriefDownloadResponses extends Component {
@@ -11,24 +12,6 @@ export class BriefDownloadResponses extends Component {
     super(props)
 
     this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.getFileSizeAndType = this.getFileSizeAndType.bind(this)
-  }
-
-  getFileSizeAndType() {
-    const bytes = this.props.brief.responsesZipFilesize
-    let result = ''
-    if (this.props.brief.lot === 'digital-professionals') {
-      let size = ''
-      if (bytes < 1048576) {
-        size = `${parseFloat(bytes / 1024).toFixed(2)}KB`
-      } else {
-        size = `${parseFloat(bytes / 1024 / 1024).toFixed(2)}MB`
-      }
-      result = `${size} zip`
-    } else if (this.props.brief.lot === 'digital-outcome') {
-      result = 'csv'
-    }
-    return result
   }
 
   handleButtonClick(e) {
@@ -75,7 +58,7 @@ export class BriefDownloadResponses extends Component {
         </AUheading>
         <p>
           <AUbutton onClick={this.handleButtonClick}>
-            Download responses {this.getFileSizeAndType()}
+            Download responses {getFileSizeAndType(this.props.brief.responsesZipFilesize, this.props.brief.lot)}
           </AUbutton>
         </p>
         <p>
