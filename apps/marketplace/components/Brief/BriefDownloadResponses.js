@@ -4,7 +4,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
-import { getFileSizeAndType } from 'marketplace/components/helpers'
+import { getResponsesFileSizeAndType } from 'marketplace/components/helpers'
 import styles from './BriefDownloadResponses.scss'
 
 export class BriefDownloadResponses extends Component {
@@ -58,7 +58,8 @@ export class BriefDownloadResponses extends Component {
         </AUheading>
         <p>
           <AUbutton onClick={this.handleButtonClick}>
-            Download responses {getFileSizeAndType(this.props.brief.responsesZipFilesize, this.props.brief.lot)}
+            Download responses{' '}
+            {getResponsesFileSizeAndType(this.props.brief.responsesZipFilesize, this.props.brief.lot)}
           </AUbutton>
         </p>
         <p>

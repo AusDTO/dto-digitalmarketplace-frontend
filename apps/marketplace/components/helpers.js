@@ -7,7 +7,7 @@ export const statusConvert = (status = '') => {
   return `${newStatus.charAt(0).toUpperCase()}${newStatus.slice(1)}`
 }
 
-export const getFileSizeAndType = (bytes, lot) => {
+export const getResponsesFileSizeAndType = (bytes, lot) => {
   let result = ''
   if (lot === 'digital-professionals') {
     let size = ''
