@@ -8,15 +8,8 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import BriefDownloadDocuments from 'marketplace/components/Brief/BriefDownloadDocuments'
-=======
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
->>>>>>> init commit
-=======
-import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
->>>>>>> 4e2a480cede0f8a54062c04a90a9c2e5d26973c3
 import {
   loadBrief,
   handleBriefResponseSubmit,
