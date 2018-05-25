@@ -21,7 +21,7 @@ import './PricingForm.css';
 class PricingForm extends BaseForm {
 
   render() {
-    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked } = this.props;
+    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {

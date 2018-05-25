@@ -46,6 +46,9 @@ export default combineReducers({
         }
       }
     },
+    domains: {
+      pricing: {maximum: {}}
+    },
     domainSelectorForm: {
       services: {}
     },

@@ -37,6 +37,16 @@ test('PricingForm renders a notice that domains are required', () => {
 });
 
 test('PricingForm renders price fields when domains are present', () => {
+  const domains = {
+    prices: {
+      maximum: {
+      'User research': 123,
+      'Content development': 456,
+      'Content management': 789
+      }
+    }
+  }
+
   const services = {
     'User research': true,
     'Content development': true,
@@ -53,7 +63,7 @@ test('PricingForm renders price fields when domains are present', () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <PricingForm services={services} />
+      <PricingForm domains={domains} services={services} />
     </Provider>
   );
 

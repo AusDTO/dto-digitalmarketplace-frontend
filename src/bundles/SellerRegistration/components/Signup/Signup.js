@@ -250,6 +250,7 @@ class Signup extends React.Component {
               const props = Object.assign({},
                 routerProps, {
                   applicationValid,
+                  domains: this.props.application.domains,
                   stepsRemaining,
                   services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
