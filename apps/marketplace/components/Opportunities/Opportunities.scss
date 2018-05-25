@@ -1,0 +1,141 @@
+// .container {
+//   margin-bottom: 100px;
+// }
+
+.header {
+  margin-bottom: 40px;
+}
+
+.headingRow {
+  font-weight: bold;
+  color: #202751;
+  border-bottom: solid 3px #142d3c !important;
+  padding-bottom: 7px;
+}
+
+.headingRow th {
+  padding-bottom: 10px !important;
+}
+
+table.resultListing {
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+table.resultListing tr {
+  border-bottom: solid 1px #bebebe;
+  color: #313131;
+}
+
+table.resultListing tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+table.resultListing .colOpenTo {
+  width: 80px;
+  padding-left: 20px;
+}
+
+table.resultListing .colId {
+  width: 30px;
+  padding-left: 20px;
+}
+
+table.resultListing .colName {
+  width: 400px;
+}
+
+table.resultListing .colClosing {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing .colAuthor {
+  width: 130px;
+}
+
+table.resultListing .colStatus {
+  width: 190px;
+}
+
+table.resultListingTeamBriefs .colAction {
+  width: 180px;
+  padding-right: 20px;
+}
+
+table.resultListing .colAction a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+table.resultListing td, table.resultListing th {
+  text-align: left;
+  padding: 33px 40px 32px 0px;
+  box-sizing: content-box;
+}
+
+@media (max-width: 1195px) and (min-width: 900px) {
+  table.resultListing .colAction {
+    width: 140px;
+  }
+
+  table.resultListing td, table.resultListing th {
+    padding: 20px 30px 20px 0px;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "\a";
+    white-space: pre;
+  }
+}
+
+@media (max-width: 899px) {
+  .header, table.resultListing {
+    margin-bottom: 20px;
+  }
+
+  table.resultListing thead, table.resultListing .empty, table.resultListing .colId, table.resultListing .colAuthor, .hideSmall {
+    display: none !important;
+  }
+
+  table.resultListing .colName {
+    padding-left: 5px;
+    max-width: 400px;
+  }
+
+  table.resultListing tr {
+    display: block;
+    padding: 15px 0px;
+  }
+
+  table.resultListing td {
+    display: block;
+    padding: 5px;
+  }
+
+  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colStatus, table.resultListing .colAction {
+    width: auto;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "";
+  }
+}
+
+.briefsFilter {
+  float: right;
+  text-align: right;
+  margin-top: -2.5em;
+}
+
+.badge {
+  border-radius: 100px;
+  background-color: #e6efc2;
+  color: #313131;
+  padding: 2px 15px;
+  width: fit-content;
+}
+
+.lightText {
+  color: #6f6f6f;
+}
