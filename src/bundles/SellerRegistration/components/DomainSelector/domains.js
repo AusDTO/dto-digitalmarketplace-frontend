@@ -40,7 +40,7 @@ export default [
         description: 'Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice and change management.'
     },
     {
-        key: 'change',
+        key: 'training',
         label: 'Training, Learning and Capability',
         description: 'Training, Learning and Capability Description'
     },
