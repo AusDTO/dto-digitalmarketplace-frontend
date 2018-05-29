@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerNotifySellerList from './SellerNotifySellerList'
+import SellerNotifyButtons from './SellerNotifyButtons'
 import styles from './SellerNotify.scss'
 
 const emailContent = (brief, flow) => {
@@ -139,7 +139,11 @@ export class SellerNotifyReview extends Component {
               />
             </p>
             <p>
-              <AUbutton type="submit">Send email</AUbutton>
+              <SellerNotifyButtons
+                handleContinueClick={this.handleFormSubmit}
+                continueText="Send email"
+                handleReturnToOverviewClick={this.props.handleReturnToOverviewClick}
+              />
             </p>
           </form>
         </div>
@@ -156,7 +160,8 @@ SellerNotifyReview.propTypes = {
   setStageStatus: PropTypes.func.isRequired,
   moveToStage: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  setStageDoneStatus: PropTypes.func.isRequired
+  setStageDoneStatus: PropTypes.func.isRequired,
+  handleReturnToOverviewClick: PropTypes.func.isRequired
 }
 
 export default SellerNotifyReview

@@ -23,12 +23,22 @@ const sellers = [
 test('Component mounts and sets its stage to "doing"', () => {
   const mockSetStatusChange = jest.fn()
   const mockHasSelectedASeller = jest.fn()
+  const setStageDoneStatus = jest.fn()
+  const selectSeller = jest.fn()
+  const deselectSeller = jest.fn()
+  const moveToNextStage = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   mount(
     <SellerNotifySelect
       setStageStatus={mockSetStatusChange}
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={[]}
       sellers={sellers}
+      setStageDoneStatus={setStageDoneStatus}
+      selectSeller={selectSeller}
+      deselectSeller={deselectSeller}
+      moveToNextStage={moveToNextStage}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 
@@ -40,12 +50,22 @@ test('Component mounts and sets its stage to "doing"', () => {
 test('The continue button is disabled by default with no selected sellers', () => {
   const mockSetStatusChange = jest.fn()
   const mockHasSelectedASeller = jest.fn()
+  const setStageDoneStatus = jest.fn()
+  const selectSeller = jest.fn()
+  const deselectSeller = jest.fn()
+  const moveToNextStage = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifySelect
       setStageStatus={mockSetStatusChange}
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={[]}
       sellers={sellers}
+      setStageDoneStatus={setStageDoneStatus}
+      selectSeller={selectSeller}
+      deselectSeller={deselectSeller}
+      moveToNextStage={moveToNextStage}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 
@@ -58,6 +78,9 @@ test('Clicking the continue button changes the status to "done" and moves to the
   const moveToNextStage = jest.fn()
   const mockHasSelectedASeller = jest.fn()
   mockHasSelectedASeller.mockReturnValue(true)
+  const selectSeller = jest.fn()
+  const deselectSeller = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifySelect
       setStageStatus={mockSetStatusChange}
@@ -66,10 +89,13 @@ test('Clicking the continue button changes the status to "done" and moves to the
       selectedSellers={sellers}
       sellers={sellers}
       setStageDoneStatus={mockSetStageDoneStatus}
+      selectSeller={selectSeller}
+      deselectSeller={deselectSeller}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 
-  component.find('button').simulate('click')
+  component.find('button').at(0).simulate('click')
 
   expect(mockSetStatusChange.mock.calls[1][0]).toBe('select')
   expect(mockSetStatusChange.mock.calls[1][1]).toBe('done')
@@ -86,6 +112,10 @@ test('The checkbox for a selected seller is checked', () => {
   const moveToNextStage = jest.fn()
   const mockHasSelectedASeller = jest.fn()
   mockHasSelectedASeller.mockReturnValue(true)
+  const setStageDoneStatus = jest.fn()
+  const selectSeller = jest.fn()
+  const deselectSeller = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifySelect
       setStageStatus={mockSetStatusChange}
@@ -93,6 +123,10 @@ test('The checkbox for a selected seller is checked', () => {
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={[{ supplier_code: 1, supplier_name: 'Supplier 1' }]}
       sellers={sellers}
+      setStageDoneStatus={setStageDoneStatus}
+      selectSeller={selectSeller}
+      deselectSeller={deselectSeller}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 
@@ -110,6 +144,8 @@ test('Clicking an unchecked checkbox executes the selectSeller property', () => 
   const mockSelectSeller = jest.fn()
   const mockDeselectSeller = jest.fn()
   mockHasSelectedASeller.mockReturnValue(true)
+  const setStageDoneStatus = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifySelect
       setStageStatus={mockSetStatusChange}
@@ -119,6 +155,8 @@ test('Clicking an unchecked checkbox executes the selectSeller property', () => 
       sellers={sellers}
       selectSeller={mockSelectSeller}
       deselectSeller={mockDeselectSeller}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
+      setStageDoneStatus={setStageDoneStatus}
     />
   )
 
@@ -134,6 +172,8 @@ test('Clicking a checked checkbox executes the deselectSeller property', () => {
   const mockSelectSeller = jest.fn()
   const mockDeselectSeller = jest.fn()
   mockHasSelectedASeller.mockReturnValue(true)
+  const setStageDoneStatus = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifySelect
       setStageStatus={mockSetStatusChange}
@@ -143,6 +183,8 @@ test('Clicking a checked checkbox executes the deselectSeller property', () => {
       sellers={sellers}
       selectSeller={mockSelectSeller}
       deselectSeller={mockDeselectSeller}
+      setStageDoneStatus={setStageDoneStatus}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 
@@ -161,6 +203,7 @@ test('Deselecting all sellers sets the done status to false', () => {
   }
   const mockSelectSeller = jest.fn()
   mockHasSelectedASeller.mockReturnValue(false)
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifySelect
       setStageStatus={mockSetStatusChange}
@@ -171,6 +214,7 @@ test('Deselecting all sellers sets the done status to false', () => {
       selectSeller={mockSelectSeller}
       deselectSeller={mockDeselectSeller}
       setStageDoneStatus={mockSetStageDoneStatus}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 

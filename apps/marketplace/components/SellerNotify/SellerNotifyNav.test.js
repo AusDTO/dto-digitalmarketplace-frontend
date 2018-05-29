@@ -29,6 +29,7 @@ test('Nav link clicks changes the status of the stage to "doing"', () => {
   const component = mount(
     <SellerNotifyNav
       flow="testflow"
+      briefId="1"
       stages={stages}
       match={{ params: { briefId: 1 } }}
       history={{ push: mockHistoryAPI }}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import SellerNotifyButtons from './SellerNotifyButtons'
 import styles from './SellerNotify.scss'
 
 export class SellerNotifySelect extends Component {
@@ -95,9 +95,11 @@ export class SellerNotifySelect extends Component {
             )}
           </ul>
           <p>
-            <AUbutton onClick={this.handleContinueClick} disabled={this.state.disabled}>
-              Continue
-            </AUbutton>
+            <SellerNotifyButtons
+              handleContinueClick={this.handleContinueClick}
+              handleReturnToOverviewClick={this.props.handleReturnToOverviewClick}
+              disabled={this.state.disabled}
+            />
           </p>
         </div>
       </div>
@@ -113,7 +115,8 @@ SellerNotifySelect.propTypes = {
   setStageDoneStatus: PropTypes.func.isRequired,
   selectSeller: PropTypes.func.isRequired,
   deselectSeller: PropTypes.func.isRequired,
-  moveToNextStage: PropTypes.func.isRequired
+  moveToNextStage: PropTypes.func.isRequired,
+  handleReturnToOverviewClick: PropTypes.func.isRequired
 }
 
 export default SellerNotifySelect

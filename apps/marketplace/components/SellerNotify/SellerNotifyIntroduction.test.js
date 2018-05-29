@@ -10,11 +10,15 @@ jest.mock('shared/Icon/_getIcons')
 test('Component mounts and sets its stage to "doing" and the "done" status as true', () => {
   const mockSetStatusChange = jest.fn()
   const mockSetStageDoneStatus = jest.fn()
+  const moveToNextStage = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   mount(
     <SellerNotifyIntroduction
       flow="unsuccessful"
       setStageStatus={mockSetStatusChange}
       setStageDoneStatus={mockSetStageDoneStatus}
+      moveToNextStage={moveToNextStage}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 
@@ -31,17 +35,18 @@ test('Clicking the continue button changes the status to "done" and moves to the
   const mockSetStatusChange = jest.fn()
   const mockSetStageDoneStatus = jest.fn()
   const moveToNextStage = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifyIntroduction
       flow="unsuccessful"
       setStageStatus={mockSetStatusChange}
       moveToNextStage={moveToNextStage}
       setStageDoneStatus={mockSetStageDoneStatus}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
     />
   )
 
-  component.find('button').simulate('click')
-
+  component.find('button').at(0).simulate('click')
   expect(mockSetStatusChange.mock.calls[1][0]).toBe('introduction')
   expect(mockSetStatusChange.mock.calls[1][1]).toBe('done')
 

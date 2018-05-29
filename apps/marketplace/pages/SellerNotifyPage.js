@@ -39,6 +39,7 @@ class SellerNotifyPage extends Component {
     this.deselectSeller = this.deselectSeller.bind(this)
     this.hasSelectedASeller = this.hasSelectedASeller.bind(this)
     this.setStageDoneStatus = this.setStageDoneStatus.bind(this)
+    this.handleReturnToOverviewClick = this.handleReturnToOverviewClick.bind(this)
   }
 
   componentDidMount() {
@@ -122,6 +123,11 @@ class SellerNotifyPage extends Component {
 
   hasSelectedASeller() {
     return this.state.selectedSellers.length > 0
+  }
+
+  handleReturnToOverviewClick(e) {
+    e.preventDefault()
+    this.props.history.push(`${rootPath}/brief/${this.props.match.params.briefId}/overview`)
   }
 
   render() {
@@ -215,6 +221,7 @@ class SellerNotifyPage extends Component {
                     setStageStatus={this.setStageStatus}
                     moveToNextStage={this.moveToNextStage}
                     setStageDoneStatus={this.setStageDoneStatus}
+                    handleReturnToOverviewClick={this.handleReturnToOverviewClick}
                   />}
               />
               <Route
@@ -229,6 +236,7 @@ class SellerNotifyPage extends Component {
                     hasSelectedASeller={this.hasSelectedASeller}
                     moveToNextStage={this.moveToNextStage}
                     setStageDoneStatus={this.setStageDoneStatus}
+                    handleReturnToOverviewClick={this.handleReturnToOverviewClick}
                   />}
               />
               <Route
@@ -243,6 +251,7 @@ class SellerNotifyPage extends Component {
                     moveToStage={this.moveToStage}
                     handleSubmit={handleSubmit}
                     setStageDoneStatus={this.setStageDoneStatus}
+                    handleReturnToOverviewClick={this.handleReturnToOverviewClick}
                   />}
               />
             </Switch>

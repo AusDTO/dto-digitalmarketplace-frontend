@@ -27,6 +27,10 @@ const brief = {
 test('Component mounts and sets its stage to "doing"', () => {
   const mockSetStatusChange = jest.fn()
   const mockHasSelectedASeller = jest.fn()
+  const moveToStage = jest.fn()
+  const handleSubmit = jest.fn()
+  const setStageDoneStatus = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   mount(
     <SellerNotifyReview
       flow="unsuccessful"
@@ -34,6 +38,10 @@ test('Component mounts and sets its stage to "doing"', () => {
       setStageStatus={mockSetStatusChange}
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={sellers}
+      handleSubmit={handleSubmit}
+      setStageDoneStatus={setStageDoneStatus}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
+      moveToStage={moveToStage}
     />
   )
 
@@ -45,6 +53,10 @@ test('Component mounts and sets its stage to "doing"', () => {
 test('Having no selected sellers shows an error alert', () => {
   const mockSetStatusChange = jest.fn()
   const mockHasSelectedASeller = jest.fn()
+  const moveToStage = jest.fn()
+  const handleSubmit = jest.fn()
+  const setStageDoneStatus = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifyReview
       flow="unsuccessful"
@@ -52,6 +64,10 @@ test('Having no selected sellers shows an error alert', () => {
       setStageStatus={mockSetStatusChange}
       hasSelectedASeller={mockHasSelectedASeller}
       selectedSellers={[]}
+      handleSubmit={handleSubmit}
+      setStageDoneStatus={setStageDoneStatus}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
+      moveToStage={moveToStage}
     />
   )
 
@@ -64,6 +80,8 @@ test('Form submit sends type, subject, email content, and the selected sellers l
   const mockHasSelectedASeller = jest.fn()
   const mockHandleSubmit = jest.fn()
   mockHasSelectedASeller.mockReturnValue(true)
+  const moveToStage = jest.fn()
+  const handleReturnToOverviewClick = jest.fn()
   const component = mount(
     <SellerNotifyReview
       flow="unsuccessful"
@@ -73,6 +91,8 @@ test('Form submit sends type, subject, email content, and the selected sellers l
       selectedSellers={[{ supplier_code: 2, supplier_name: 'Supplier 2' }]}
       handleSubmit={mockHandleSubmit}
       setStageDoneStatus={mockSetStageDoneStatus}
+      handleReturnToOverviewClick={handleReturnToOverviewClick}
+      moveToStage={moveToStage}
     />
   )
 
