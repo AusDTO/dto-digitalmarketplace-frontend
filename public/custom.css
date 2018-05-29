@@ -306,6 +306,11 @@ label.text-box-number-label {
   padding: 16px 14px !important;
 } */
 
+.opportunities-page .au-accordion {
+  margin-top: -4px;
+  border: none;
+}
+
 .opportunities-page .au-accordion__title {
   background: white;
   padding: 6px 16px 9px 16px !important;
@@ -318,9 +323,46 @@ label.text-box-number-label {
   font-size: 17px;
 }
 
-.opportunities-page .au-accordion {
-  margin-top: -4px;
-  border: none;
+@media screen and (min-width: 992px) {
+  .opportunities-page .au-accordion {
+    position: absolute;
+  }
+
+  .opportunities-page .au-accordion__title {
+      width: 172px;
+  }
+
+  .opportunities-page .au-accordion__body.au-accordion--open {
+    position: relative;
+    width: 310px;
+    margin-top: 7px;
+    margin-left: -138px;
+    z-index: 1;
+  }
+}
+
+.opportunities-page .au-accordion__body-wrapper {
+  box-shadow: 2px 2px 30px 0 rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  border: solid 3px #e0e0e0;
+}
+
+.opportunities-page .au-accordion__body {
+  overflow: visible;
+}
+
+.opportunities-page .au-accordion__title:focus, .opportunities-page .au-accordion__title:hover {
+  outline: solid 3px #45c2f0;
+  outline-offset: -3px;
+  color: #00698f !important;
+}
+
+.opportunities-page .au-accordion--open.au-accordion__title:after {
+  margin-top: -0.5rem;
+}
+
+.opportunities-page .au-accordion__title:after {
+  margin-top: -0.7rem;
 }
 
 .orams-footer {

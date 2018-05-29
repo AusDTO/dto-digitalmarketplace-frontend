@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styles from './Opportunities.scss'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
+import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 
 export class Opportunities extends Component {
   constructor(props) {
@@ -67,7 +68,7 @@ export class Opportunities extends Component {
             <div className="col-md-4 col-sm-12">
               <h1 className="au-display-xl">Opportunities</h1>
             </div>
-            <div className={`col-md-6 col-sm-12 ${styles.filtersSection}`}>
+            <div className={`col-md-6 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
               <ul className="au-link-list au-link-list--inline">
                 <li className={styles.filterContainer}><a href="#" className={`${styles.filter} ${styles.firstFilter}`}>Innovation</a></li>
                 <li className={styles.filterContainer}><a href="#" className={`${styles.filter}`}>Outcomes</a></li>
@@ -75,7 +76,7 @@ export class Opportunities extends Component {
                 <li className={styles.filterContainer}><a href="#" className={`${styles.filter} ${styles.lastFilter}`}>Specialists</a></li>
               </ul>
             </div>
-            <div className="col-md-2 col-sm-12">
+            <div className={`col-md-2 col-sm-12 ${styles.hideMobile}`}>
               <AUaccordion
                   header='Filters'
                   open={this.state.accordionOpen}
@@ -87,8 +88,20 @@ export class Opportunities extends Component {
                   }}
                 >
                 <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
+                  <div className={styles.inputGroup}>
+                    <h3 className="au-display-sm">Status of opportunity</h3>
+                    <div className={styles.checkbox}><AUcheckbox label="Open" name="open-opportunities" /></div>
+                    <div className={styles.checkbox}><AUcheckbox label="Closed" name="closed-opportunities" /></div>
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <h3 className="au-display-sm">Open to</h3>
+                    <div className={styles.checkbox}><AUcheckbox label="All" name="all-opportunities" /></div>
+                    <div className={styles.checkbox}><AUcheckbox label="Selected" name="selected-opportunities" /></div>
+                    <div className={styles.checkbox}><AUcheckbox label="One" name="one-opportunity" /></div>
+                  </div>
+                    <span className={styles.cancelLink}><a href="#">Cancel</a></span>
+                    <span className={styles.applyFilters}><a href="#">Apply filters</a></span>
                   <div>
-                    Test
                   </div>
                 </div>
               </AUaccordion>
