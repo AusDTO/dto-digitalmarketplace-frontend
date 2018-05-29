@@ -35,6 +35,16 @@ export default [
         description: 'Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.'
     },
     {
+        key: 'changetransformation',
+        label: 'Change and Transformation',
+        description: 'Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice and change management.'
+    },
+    {
+        key: 'change',
+        label: 'Training, Learning and Capability',
+        description: 'Training, Learning and Capability Description'
+    },
+    {
         key: 'marketingcomms',
         label: 'Marketing, Communications and Engagement',
         description: 'Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.',
