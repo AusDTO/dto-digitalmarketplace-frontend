@@ -113,7 +113,7 @@ export class BuyerDashboardMyBriefs extends Component {
                         <strong>Answer a question</strong>
                       </a>}
                     {item.status === 'closed' &&
-                      <a href={`${rootPath}/brief/${item.id}/download-responses`}>
+                      <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
                         <strong>View responses</strong>
                       </a>}
                     {item.status === 'closed' &&
