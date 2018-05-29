@@ -9,7 +9,8 @@ export class Opportunities extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      accordionOpen: false
+      accordionOpen: false,
+      accordionOpenMobile: false
     }
   }
 
@@ -19,6 +20,14 @@ export class Opportunities extends Component {
 
   closeAccordion = () => {
     this.setState({ accordionOpen: false })
+  }
+
+  openAccordionMobile = () => {
+    this.setState({ accordionOpenMobile: true })
+  }
+
+  closeAccordionMobile = () => {
+    this.setState({ accordionOpenMobile: false })
   }
 
   render() {
@@ -65,7 +74,7 @@ export class Opportunities extends Component {
       <div className={styles.container}>
         <article className="opportunities-page" role="main">
           <div className={`${styles.header} row`}>
-            <div className="col-md-4 col-sm-12">
+            <div className={`${styles.headerTitle} col-md-4 col-sm-4 col-xs-4`}>
               <h1 className="au-display-xl">Opportunities</h1>
             </div>
             <div className={`col-md-6 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
@@ -104,6 +113,19 @@ export class Opportunities extends Component {
                   <div>
                   </div>
                 </div>
+              </AUaccordion>
+            </div>
+            <div className={`col-md-push-3 col-md-5 col-sm-push-3 col-sm-5 col-xs-12 ${styles.filtersSectionMobile} ${styles.hideDesktop}`}>
+              <AUaccordion
+                  header='Filter opportunities'
+                  open={this.state.accordionOpenMobile}
+                  onOpen={() => {
+                    this.openAccordionMobile()
+                  }}
+                  onClose={() => {
+                    this.closeAccordionMobile()
+                  }}
+                >
               </AUaccordion>
             </div>
           </div>

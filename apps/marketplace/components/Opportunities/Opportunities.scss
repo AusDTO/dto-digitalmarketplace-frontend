@@ -6,6 +6,10 @@
   font-size: 17px;
 }
 
+.headerTitle {
+  margin-top: -5px;
+}
+
 @media screen and (min-width: 992px) {
   .header {
     margin-top: 30px;
@@ -77,6 +81,16 @@
 
 .filtersSection {
   text-align: right;
+}
+
+.filtersSectionMobile {
+  float: right;
+}
+
+@media screen and (max-width: 767px) {
+  .filtersSectionMobile {
+    margin-top: 32px;
+  }
 }
 
 .filterContainer {
