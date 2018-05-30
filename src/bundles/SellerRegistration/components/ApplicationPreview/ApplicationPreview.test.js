@@ -14,7 +14,7 @@ describe('<ApplicationPreview />', () => {
   it('should render new applicant text', () => {
     const store = createStore({
       application: {
-        services: ['service1'],
+        services: {'service1': true, 'service2': true},
         assessed_domains: ['service2'],
         case_studies: {},
         supplier: {}
@@ -27,7 +27,7 @@ describe('<ApplicationPreview />', () => {
     );
 
     const body = wrapper.find('ApplicationPreview').prop('body');
-    expect(body['unassessed']).toContain('0');
+    expect(body['unassessed']).toContain('service1');
     expect(body['assessed']).toContain('service2');
   });
 });
