@@ -322,6 +322,9 @@ label.text-box-number-label {
   font-weight: bold;
   font-size: 17px;
 }
+.opportunities-page .au-accordion__body.au-accordion--open {
+  margin-top: 7px;
+}
 
 @media screen and (min-width: 992px) {
   .opportunities-page .au-accordion {
@@ -335,8 +338,16 @@ label.text-box-number-label {
   .opportunities-page .au-accordion__body.au-accordion--open {
     position: relative;
     width: 310px;
-    margin-top: 7px;
     margin-left: -137px;
+    z-index: 1;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .opportunities-page .au-accordion__body.au-accordion--open {
+    position: absolute;
+    width: 310px;
+    margin-left: -24px;
     z-index: 1;
   }
 }

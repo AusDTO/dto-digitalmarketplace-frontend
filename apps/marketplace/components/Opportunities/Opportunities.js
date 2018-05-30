@@ -126,6 +126,30 @@ export class Opportunities extends Component {
                     this.closeAccordionMobile()
                   }}
                 >
+                  <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
+                    <div className={styles.inputGroup}>
+                      <h3 className="au-display-sm">Type of opportunity</h3>
+                        <div className={styles.checkbox}><AUcheckbox label="Innovation" name="innovation-opportunities" /></div>
+                        <div className={styles.checkbox}><AUcheckbox label="Outcomes" name="outcomes-opportunities" /></div>
+                      <div className={styles.checkbox}><AUcheckbox label="Training" name="training-opportunities" /></div>
+                      <div className={styles.checkbox}><AUcheckbox label="Specialists" name="specialists-opportunities" /></div>
+                    </div>
+                    <div className={styles.inputGroup}>
+                      <h3 className="au-display-sm">Status of opportunity</h3>
+                      <div className={styles.checkbox}><AUcheckbox label="Open" name="open-opportunities" /></div>
+                      <div className={styles.checkbox}><AUcheckbox label="Closed" name="closed-opportunities" /></div>
+                    </div>
+                    <div className={styles.inputGroup}>
+                      <h3 className="au-display-sm">Open to</h3>
+                      <div className={styles.checkbox}><AUcheckbox label="All" name="all-opportunities" /></div>
+                      <div className={styles.checkbox}><AUcheckbox label="Selected" name="selected-opportunities" /></div>
+                      <div className={styles.checkbox}><AUcheckbox label="One" name="one-opportunity" /></div>
+                    </div>
+                      <span className={styles.cancelLink}><a href="#">Cancel</a></span>
+                      <span className={styles.applyFilters}><a href="#">Apply filters</a></span>
+                    <div>
+                    </div>
+                  </div>
               </AUaccordion>
             </div>
           </div>
