@@ -215,6 +215,52 @@ exports[`DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
+            id="change-and-transformation"
+            name="change-and-transformation"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Change and Transformation"
+          />
+          <label
+            htmlFor="change-and-transformation"
+          >
+            Change and Transformation
+             
+            <p>
+              Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice and change management.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="training-learning-and-capability"
+            name="training-learning-and-capability"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Training, Learning and Capability"
+          />
+          <label
+            htmlFor="training-learning-and-capability"
+          >
+            Training, Learning and Capability
+             
+            <p>
+              Training, Learning and Capability Description
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
             id="marketing-communications-and-engagement"
             name="marketing-communications-and-engagement"
             onBlur={[Function]}
@@ -553,6 +599,52 @@ exports[`DomainSelector renders with populated fields 1`] = `
              
             <p>
               Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="change-and-transformation"
+            name="change-and-transformation"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Change and Transformation"
+          />
+          <label
+            htmlFor="change-and-transformation"
+          >
+            Change and Transformation
+             
+            <p>
+              Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice and change management.
+            </p>
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="training-learning-and-capability"
+            name="training-learning-and-capability"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Training, Learning and Capability"
+          />
+          <label
+            htmlFor="training-learning-and-capability"
+          >
+            Training, Learning and Capability
+             
+            <p>
+              Training, Learning and Capability Description
             </p>
           </label>
         </div>
