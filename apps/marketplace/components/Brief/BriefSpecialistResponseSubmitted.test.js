@@ -21,7 +21,12 @@ describe('BriefSpecialistResponseSubmitted', () => {
 
     expect(tree.contains(<strong>You have submitted 1 specialist for this opportunity.</strong>)).toBeTruthy()
     expect(tree.contains(<p>You can submit 2 more before the closing date (March 15th, 2018)</p>)).toBeTruthy()
-    expect(tree.find('a.au-btn').first().text()).toEqual('Add another specialist')
+    expect(
+      tree
+        .find('a.au-btn')
+        .first()
+        .text()
+    ).toEqual('Add another specialist')
   })
 
   test('does not shows button when 3 submitted responses', () => {

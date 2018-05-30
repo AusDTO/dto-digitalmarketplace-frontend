@@ -1,15 +1,15 @@
 import axios from 'axios'
 
 /**
-   * Provide default params to axios.
-   * @param {string} url        the only required param for both methods.
-   * @param {string|null}       method, defaults to 'get'
-   * @param {object|null}       headers, local default is not auth and json content type
-   * @param {object|null}       data, required for 'post' method
-   * @param {boolean|null}      withCredentials, overides axios default false
-   * @param {function|null}     validateStatus, what http response status should be treated as successful
-   * @param {number|null}       timeout
-   * @return {object:Promise}   response
+ * Provide default params to axios.
+ * @param {string} url        the only required param for both methods.
+ * @param {string|null}       method, defaults to 'get'
+ * @param {object|null}       headers, local default is not auth and json content type
+ * @param {object|null}       data, required for 'post' method
+ * @param {boolean|null}      withCredentials, overides axios default false
+ * @param {function|null}     validateStatus, what http response status should be treated as successful
+ * @param {number|null}       timeout
+ * @return {object:Promise}   response
  * */
 
 const dmapi = apiParams => {
