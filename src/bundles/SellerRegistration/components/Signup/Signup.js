@@ -308,10 +308,13 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ ...actions, ...stepActions }, dispatch),
   dispatch,
   hasLiabilityDocExpired: (bool) => {
-      return dispatch(expiredLiabilityInsurance(bool));
+    return dispatch(expiredLiabilityInsurance(bool));
   },
   hasWorkersDocExpired: (bool) => {
-      return dispatch(expiredWorkersCompensation(bool));
+    return dispatch(expiredWorkersCompensation(bool));
+  },
+  hasMissingDailyRates: (bool) => {
+    return dispatch(missingDailyRates(bool));
   }
 });
 

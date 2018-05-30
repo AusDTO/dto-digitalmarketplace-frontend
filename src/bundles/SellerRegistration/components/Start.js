@@ -129,7 +129,8 @@ const mapStateToProps = (state, ownProps) => {
         saved: state.application.saved,
         type: state.application.type,
         expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
-        expiredWorkersCompensation: state.application.expiredWorkersCompensation
+        expiredWorkersCompensation: state.application.expiredWorkersCompensation,
+        hasMissingDailyRates: state.application.hasMissingDailyRates
     }
 }
 

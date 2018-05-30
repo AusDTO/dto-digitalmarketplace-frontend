@@ -14,11 +14,26 @@ import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
 import { findValidServices } from '../../redux/helpers'
+import { missingDailyRates } from '../../redux/modules/application'
 import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
+
+import PageAlert from '@gov.au/page-alerts'
 
 import './PricingForm.css';
 
 class PricingForm extends BaseForm {
+
+  isDailyRateMissing(domains) {
+    return false
+  }
+
+  componentDidMount() {
+    if (this.props.pricingForm.pricing && this.isDailyRateMissing(this.props.pricingForm.pricing)) {
+      this.props.hasMissingDailyRates(true)
+    } else {
+      this.props.hasMissingDailyRates(false)
+    }
+  }
 
   render() {
     const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains } = this.props;
@@ -49,6 +64,9 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header>
+            {/* { this.props.missingDailyRates ?
+              <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add these rates to continue.</strong></p></PageAlert>
+            : '' } */}
             <h1 tabIndex="-1">{title}</h1>
             <p>Indicate the maximum daily rate you normally charge for services.</p>
             <p>Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
@@ -117,8 +135,17 @@ PricingForm.defaultProps = {
 const mapStateToProps = (state) => {
   return {
     ...formProps(state, 'pricingForm'),
-    domainSelectorForm: state.domainSelectorForm
+    domainSelectorForm: state.domainSelectorForm,
+    missingDailyRates: state.application.missingDailyRates
   }
 }
 
-export default connect(mapStateToProps)(PricingForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hasMissingDailyRates: (bool) => {
+      return dispatch(missingDailyRates(bool))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PricingForm)
