@@ -52,9 +52,7 @@ export class BriefDownloadResponses extends Component {
           {this.props.briefResponses.length === 1 && `You've had 1 response to your brief.`}
           {this.props.briefResponses.length > 1 &&
             `You've had ${this.props.briefResponses.length} responses to your brief.`}
-          <small className={styles.headingSub}>
-            {this.props.brief.title}
-          </small>
+          <small className={styles.headingSub}>{this.props.brief.title}</small>
         </AUheading>
         <p>
           <AUbutton onClick={this.handleButtonClick}>

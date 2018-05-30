@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NotFound = () =>
+const NotFound = () => (
   <div className="error-page">
     <div className="index-page grid-row">
       <div className="column-two-thirds">
@@ -23,5 +23,6 @@ const NotFound = () =>
       </div>
     </div>
   </div>
+)
 
 export default NotFound

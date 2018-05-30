@@ -3,12 +3,10 @@ import { withRouter, NavLink } from 'react-router-dom'
 import { rootPath } from 'marketplace/routes'
 import styles from './BuyerDashboard.scss'
 
-export const BuyerDashboardHeader = props =>
+export const BuyerDashboardHeader = props => (
   <div className={`${styles.header} row`}>
     <div className="col-sm-12">
-      <small className={styles.organisation}>
-        {props.organisation}
-      </small>
+      <small className={styles.organisation}>{props.organisation}</small>
       <div className="row">
         <div className="col-xs-12">
           <h1 className="au-display-xl">Dashboard</h1>
@@ -42,5 +40,6 @@ export const BuyerDashboardHeader = props =>
       </div>
     </div>
   </div>
+)
 
 export default withRouter(BuyerDashboardHeader)
