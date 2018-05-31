@@ -10,7 +10,9 @@ export class Opportunities extends Component {
     super(props)
     this.state = {
       accordionOpen: false,
-      accordionOpenMobile: false
+      accordionOpenMobile: false,
+      filterCount: 0,
+      filterCountMobile: 0
     }
   }
 
@@ -28,6 +30,16 @@ export class Opportunities extends Component {
 
   closeAccordionMobile = () => {
     this.setState({ accordionOpenMobile: false })
+  }
+
+  filterClick = e => {
+    this.setState({ filterCount: e.target.checked === true ? this.state.filterCount + 1 : this.state.filterCount - 1 })
+  }
+
+  filterClickMobile = e => {
+    this.setState({
+      filterCountMobile: e.target.checked === true ? this.state.filterCountMobile + 1 : this.state.filterCountMobile - 1
+    })
   }
 
   render() {
@@ -103,7 +115,7 @@ export class Opportunities extends Component {
             </div>
             <div className={`col-md-2 col-sm-12 ${styles.hideMobile}`}>
               <AUaccordion
-                header={'Filters'}
+                header={`Filters ${this.state.filterCount > 0 ? '• ' + this.state.filterCount : ''}`}
                 open={this.state.accordionOpen}
                 onOpen={() => {
                   this.openAccordion()
@@ -116,22 +128,22 @@ export class Opportunities extends Component {
                   <div className={styles.inputGroup}>
                     <h3 className="au-display-sm">Status of opportunity</h3>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Open" name="open-opportunities" />
+                      <AUcheckbox label="Open" name="open-opportunities" onClick={this.filterClick} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Closed" name="closed-opportunities" />
+                      <AUcheckbox label="Closed" name="closed-opportunities" onClick={this.filterClick} />
                     </div>
                   </div>
                   <div className={styles.inputGroup}>
                     <h3 className="au-display-sm">Open to</h3>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="All" name="all-opportunities" />
+                      <AUcheckbox label="All" name="all-opportunities" onClick={this.filterClick} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Selected" name="selected-opportunities" />
+                      <AUcheckbox label="Selected" name="selected-opportunities" onClick={this.filterClick} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="One" name="one-opportunity" />
+                      <AUcheckbox label="One" name="one-opportunity" onClick={this.filterClick} />
                     </div>
                   </div>
                   <span className={styles.cancelLink}>
@@ -150,7 +162,9 @@ export class Opportunities extends Component {
               }`}
             >
               <AUaccordion
-                header="Filter opportunities"
+                header={`Filter opportunities ${
+                  this.state.filterCountMobile > 0 ? '• ' + this.state.filterCountMobile : ''
+                }`}
                 open={this.state.accordionOpenMobile}
                 onOpen={() => {
                   this.openAccordionMobile()
@@ -163,37 +177,41 @@ export class Opportunities extends Component {
                   <div className={styles.inputGroup}>
                     <h3 className="au-display-sm">Type of opportunity</h3>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Innovation" name="innovation-opportunities" />
+                      <AUcheckbox label="Innovation" name="innovation-opportunities" onClick={this.filterClickMobile} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Outcomes" name="outcomes-opportunities" />
+                      <AUcheckbox label="Outcomes" name="outcomes-opportunities" onClick={this.filterClickMobile} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Training" name="training-opportunities" />
+                      <AUcheckbox label="Training" name="training-opportunities" onClick={this.filterClickMobile} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Specialists" name="specialists-opportunities" />
+                      <AUcheckbox
+                        label="Specialists"
+                        name="specialists-opportunities"
+                        onClick={this.filterClickMobile}
+                      />
                     </div>
                   </div>
                   <div className={styles.inputGroup}>
                     <h3 className="au-display-sm">Status of opportunity</h3>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Open" name="open-opportunities" />
+                      <AUcheckbox label="Open" name="open-opportunities" onClick={this.filterClickMobile} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Closed" name="closed-opportunities" />
+                      <AUcheckbox label="Closed" name="closed-opportunities" onClick={this.filterClickMobile} />
                     </div>
                   </div>
                   <div className={styles.inputGroup}>
                     <h3 className="au-display-sm">Open to</h3>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="All" name="all-opportunities" />
+                      <AUcheckbox label="All" name="all-opportunities" onClick={this.filterClickMobile} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="Selected" name="selected-opportunities" />
+                      <AUcheckbox label="Selected" name="selected-opportunities" onClick={this.filterClickMobile} />
                     </div>
                     <div className={styles.checkbox}>
-                      <AUcheckbox label="One" name="one-opportunity" />
+                      <AUcheckbox label="One" name="one-opportunity" onClick={this.filterClickMobile} />
                     </div>
                   </div>
                   <span className={styles.cancelLink}>
@@ -249,7 +267,7 @@ export class Opportunities extends Component {
                   <div className="row">
                     <div className={`col-md-10 col-sm-10 col-xs-11 ${styles.mobileColumn}`}>
                       <div className={`${styles.badgeMobile} ${item.openTo === 'all' ? styles.green : styles.blue}`}>
-                        open to {item.openTo}
+                        open to {item.openTo.toLowerCase()}
                       </div>
                       <div className={styles.mobileName}>
                         <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
