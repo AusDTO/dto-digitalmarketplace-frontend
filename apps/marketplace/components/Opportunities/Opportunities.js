@@ -79,105 +79,149 @@ export class Opportunities extends Component {
             </div>
             <div className={`col-md-6 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
               <ul className="au-link-list au-link-list--inline">
-                <li className={styles.filterContainer}><a href="#" className={`${styles.filter} ${styles.firstFilter}`}>Innovation</a></li>
-                <li className={styles.filterContainer}><a href="#" className={`${styles.filter}`}>Outcomes</a></li>
-                <li className={styles.filterContainer}><a href="#" className={styles.filter}>Training</a></li>
-                <li className={styles.filterContainer}><a href="#" className={`${styles.filter} ${styles.lastFilter}`}>Specialists</a></li>
+                <li className={styles.filterContainer}>
+                  <a href="#" className={`${styles.filter} ${styles.firstFilter}`}>
+                    Innovation
+                  </a>
+                </li>
+                <li className={styles.filterContainer}>
+                  <a href="#" className={`${styles.filter}`}>
+                    Outcomes
+                  </a>
+                </li>
+                <li className={styles.filterContainer}>
+                  <a href="#" className={styles.filter}>
+                    Training
+                  </a>
+                </li>
+                <li className={styles.filterContainer}>
+                  <a href="#" className={`${styles.filter} ${styles.lastFilter}`}>
+                    Specialists
+                  </a>
+                </li>
               </ul>
             </div>
             <div className={`col-md-2 col-sm-12 ${styles.hideMobile}`}>
               <AUaccordion
-                  header={'Filters'}
-                  open={this.state.accordionOpen}
-                  onOpen={() => {
-                    this.openAccordion()
-                  }}
-                  onClose={() => {
-                    this.closeAccordion()
-                  }}
-                >
+                header={'Filters'}
+                open={this.state.accordionOpen}
+                onOpen={() => {
+                  this.openAccordion()
+                }}
+                onClose={() => {
+                  this.closeAccordion()
+                }}
+              >
                 <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                   <div className={styles.inputGroup}>
                     <h3 className="au-display-sm">Status of opportunity</h3>
-                    <div className={styles.checkbox}><AUcheckbox label="Open" name="open-opportunities" /></div>
-                    <div className={styles.checkbox}><AUcheckbox label="Closed" name="closed-opportunities" /></div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Open" name="open-opportunities" />
+                    </div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Closed" name="closed-opportunities" />
+                    </div>
                   </div>
                   <div className={styles.inputGroup}>
                     <h3 className="au-display-sm">Open to</h3>
-                    <div className={styles.checkbox}><AUcheckbox label="All" name="all-opportunities" /></div>
-                    <div className={styles.checkbox}><AUcheckbox label="Selected" name="selected-opportunities" /></div>
-                    <div className={styles.checkbox}><AUcheckbox label="One" name="one-opportunity" /></div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="All" name="all-opportunities" />
+                    </div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Selected" name="selected-opportunities" />
+                    </div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="One" name="one-opportunity" />
+                    </div>
                   </div>
-                    <span className={styles.cancelLink}><a href="#">Cancel</a></span>
-                    <span className={styles.applyFilters}><a href="#">Apply filters</a></span>
-                  <div>
-                  </div>
+                  <span className={styles.cancelLink}>
+                    <a href="#">Cancel</a>
+                  </span>
+                  <span className={styles.applyFilters}>
+                    <a href="#">Apply filters</a>
+                  </span>
+                  <div />
                 </div>
               </AUaccordion>
             </div>
-            <div className={`col-md-push-3 col-md-5 col-sm-push-3 col-sm-5 col-xs-12 ${styles.filtersSectionMobile} ${styles.hideDesktop}`}>
+            <div
+              className={`col-md-push-3 col-md-5 col-sm-push-3 col-sm-5 col-xs-12 ${styles.filtersSectionMobile} ${
+                styles.hideDesktop
+              }`}
+            >
               <AUaccordion
-                  header='Filter opportunities'
-                  open={this.state.accordionOpenMobile}
-                  onOpen={() => {
-                    this.openAccordionMobile()
-                  }}
-                  onClose={() => {
-                    this.closeAccordionMobile()
-                  }}
-                >
-                  <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                    <div className={styles.inputGroup}>
-                      <h3 className="au-display-sm">Type of opportunity</h3>
-                        <div className={styles.checkbox}><AUcheckbox label="Innovation" name="innovation-opportunities" /></div>
-                        <div className={styles.checkbox}><AUcheckbox label="Outcomes" name="outcomes-opportunities" /></div>
-                      <div className={styles.checkbox}><AUcheckbox label="Training" name="training-opportunities" /></div>
-                      <div className={styles.checkbox}><AUcheckbox label="Specialists" name="specialists-opportunities" /></div>
+                header="Filter opportunities"
+                open={this.state.accordionOpenMobile}
+                onOpen={() => {
+                  this.openAccordionMobile()
+                }}
+                onClose={() => {
+                  this.closeAccordionMobile()
+                }}
+              >
+                <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
+                  <div className={styles.inputGroup}>
+                    <h3 className="au-display-sm">Type of opportunity</h3>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Innovation" name="innovation-opportunities" />
                     </div>
-                    <div className={styles.inputGroup}>
-                      <h3 className="au-display-sm">Status of opportunity</h3>
-                      <div className={styles.checkbox}><AUcheckbox label="Open" name="open-opportunities" /></div>
-                      <div className={styles.checkbox}><AUcheckbox label="Closed" name="closed-opportunities" /></div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Outcomes" name="outcomes-opportunities" />
                     </div>
-                    <div className={styles.inputGroup}>
-                      <h3 className="au-display-sm">Open to</h3>
-                      <div className={styles.checkbox}><AUcheckbox label="All" name="all-opportunities" /></div>
-                      <div className={styles.checkbox}><AUcheckbox label="Selected" name="selected-opportunities" /></div>
-                      <div className={styles.checkbox}><AUcheckbox label="One" name="one-opportunity" /></div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Training" name="training-opportunities" />
                     </div>
-                      <span className={styles.cancelLink}><a href="#">Cancel</a></span>
-                      <span className={styles.applyFilters}><a href="#">Apply filters</a></span>
-                    <div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Specialists" name="specialists-opportunities" />
                     </div>
                   </div>
+                  <div className={styles.inputGroup}>
+                    <h3 className="au-display-sm">Status of opportunity</h3>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Open" name="open-opportunities" />
+                    </div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Closed" name="closed-opportunities" />
+                    </div>
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <h3 className="au-display-sm">Open to</h3>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="All" name="all-opportunities" />
+                    </div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="Selected" name="selected-opportunities" />
+                    </div>
+                    <div className={styles.checkbox}>
+                      <AUcheckbox label="One" name="one-opportunity" />
+                    </div>
+                  </div>
+                  <span className={styles.cancelLink}>
+                    <a href="#">Cancel</a>
+                  </span>
+                  <span className={styles.applyFilters}>
+                    <a href="#">Apply filters</a>
+                  </span>
+                  <div />
+                </div>
               </AUaccordion>
             </div>
           </div>
-          {items.length > 0 &&
+          {items.length > 0 && (
             <div className={`${styles.tableDesktop} ${styles.hideMobile}`}>
               <div className={styles.headingRow}>
                 <div className="row">
                   <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter} ${styles.firstColumn}`}>
                     Open to
                   </div>
-                  <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}>
-                    ID
-                  </div>
-                  <div className={`col-md-4 col-sm-4 ${styles.cell}`}>
-                    Name
-                  </div>
-                  <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                    Location
-                  </div>
-                  <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                    Closing
-                  </div>
-                  <div className={`col-md-1 col-sm-1 ${styles.cell}`}>
-                    Submissions
-                  </div>
+                  <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}>ID</div>
+                  <div className={`col-md-4 col-sm-4 ${styles.cell}`}>Name</div>
+                  <div className={`col-md-2 col-sm-2 ${styles.cell}`}>Location</div>
+                  <div className={`col-md-2 col-sm-2 ${styles.cell}`}>Closing</div>
+                  <div className={`col-md-1 col-sm-1 ${styles.cell}`}>Submissions</div>
                 </div>
               </div>
-              {items.map(item =>
+              {items.map(item => (
                 <div className={styles.tableRow} key={`item.${item.id}`}>
                   <div className="row">
                     <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter} ${styles.firstColumn}`}>
@@ -185,32 +229,22 @@ export class Opportunities extends Component {
                         {item.openTo}
                       </div>
                     </div>
-                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}>
-                      {item.id}
-                    </div>
+                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}>{item.id}</div>
                     <div className={`col-md-4 col-sm-4 ${styles.cell}`}>
-                      <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                        {item.name}
-                      </a>
+                      <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                       <div>At: {item.company}</div>
                     </div>
-                    <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                      {item.location}
-                    </div>
-                    <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                      {item.closing}
-                    </div>
-                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.lastColumn}`}>
-                      {item.submissions}
-                    </div>
+                    <div className={`col-md-2 col-sm-2 ${styles.cell}`}>{item.location}</div>
+                    <div className={`col-md-2 col-sm-2 ${styles.cell}`}>{item.closing}</div>
+                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.lastColumn}`}>{item.submissions}</div>
                   </div>
                 </div>
-              )}
+              ))}
             </div>
-          }
-          {items.length > 0 &&
+          )}
+          {items.length > 0 && (
             <div className={`${styles.tableMobile} ${styles.hideDesktop}`}>
-              {items.map(item =>
+              {items.map(item => (
                 <div className={styles.tableRowMobile} key={`item.${item.id}`}>
                   <div className="row">
                     <div className={`col-md-10 col-sm-10 col-xs-11 ${styles.mobileColumn}`}>
@@ -218,16 +252,20 @@ export class Opportunities extends Component {
                         open to {item.openTo}
                       </div>
                       <div className={styles.mobileName}>
-                        <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                          {item.name}
-                        </a>
+                        <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                         <div className={styles.companyMobile}>At: {item.company}</div>
                       </div>
                       <div className={`${styles.mobileDetails} row`}>
                         <div className="col-md-3 col-sm-3 col-xs-4">
-                          <div><strong>Location:</strong></div>
-                          <div><strong>Closing:</strong></div>
-                          <div><strong>Submissions:</strong></div>
+                          <div>
+                            <strong>Location:</strong>
+                          </div>
+                          <div>
+                            <strong>Closing:</strong>
+                          </div>
+                          <div>
+                            <strong>Submissions:</strong>
+                          </div>
                         </div>
                         <div className="col-md-9 col-sm-9 col-xs-8">
                           <div>{item.location}</div>
@@ -238,20 +276,17 @@ export class Opportunities extends Component {
                     </div>
                   </div>
                 </div>
-              )}
+              ))}
             </div>
-          }
+          )}
         </article>
       </div>
     )
   }
 }
 
-Opportunities.propTypes = {
-}
+Opportunities.propTypes = {}
 
-const mapStateToProps = ({ }) => ({
-
-})
+const mapStateToProps = ({}) => ({})
 
 export default connect(mapStateToProps)(Opportunities)
