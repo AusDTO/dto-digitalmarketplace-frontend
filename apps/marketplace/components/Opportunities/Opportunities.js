@@ -87,7 +87,7 @@ export class Opportunities extends Component {
             </div>
             <div className={`col-md-2 col-sm-12 ${styles.hideMobile}`}>
               <AUaccordion
-                  header='Filters'
+                  header={'Filters'}
                   open={this.state.accordionOpen}
                   onOpen={() => {
                     this.openAccordion()
@@ -181,7 +181,7 @@ export class Opportunities extends Component {
                 <div className={styles.tableRow} key={`item.${item.id}`}>
                   <div className="row">
                     <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter} ${styles.firstColumn}`}>
-                      <div className={`${styles.badge}`}>
+                      <div className={`${styles.badge} ${item.openTo === 'all' ? styles.green : styles.blue}`}>
                         {item.openTo}
                       </div>
                     </div>
@@ -200,7 +200,7 @@ export class Opportunities extends Component {
                     <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
                       {item.closing}
                     </div>
-                    <div className={`col-md-1 col-sm-1 ${styles.cell}`}>
+                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.lastColumn}`}>
                       {item.submissions}
                     </div>
                   </div>
@@ -214,8 +214,8 @@ export class Opportunities extends Component {
                 <div className={styles.tableRowMobile} key={`item.${item.id}`}>
                   <div className="row">
                     <div className={`col-md-10 col-sm-10 col-xs-11 ${styles.mobileColumn}`}>
-                      <div className={`${styles.badgeMobile}`}>
-                        {item.openTo}
+                      <div className={`${styles.badgeMobile} ${item.openTo === 'all' ? styles.green : styles.blue}`}>
+                        open to {item.openTo}
                       </div>
                       <div className={styles.mobileName}>
                         <a href={`/digital-marketplace/opportunities/${item.id}`}>

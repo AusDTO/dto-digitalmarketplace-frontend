@@ -46,6 +46,10 @@
   margin-left: 16px;
 }
 
+.lastColumn {
+  padding-right: 0px !important;
+}
+
 .tableRow:nth-child(odd) {
   background-color: #fafafa;
 }
@@ -60,7 +64,6 @@
 
 .badge {
   border-radius: 100px;
-  background-color: #e6efc2;
   color: #313131;
   padding: 2px 12px;
   width: fit-content;
@@ -69,10 +72,17 @@
 
 .badgeMobile {
   border-radius: 100px;
-  background-color: #e6efc2;
   color: #313131;
   padding: 2px 12px;
   width: fit-content;
+}
+
+.green {
+  background-color: #e6efc2;
+}
+
+.blue {
+  background-color: #e8f5fa;
 }
 
 .alignCenter {
