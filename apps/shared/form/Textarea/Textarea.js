@@ -80,11 +80,13 @@ class Textarea extends Component {
           aria-describedby={describedby}
           onChange={this.onChange.bind(this)}
         />
-        {limit
-          ? <span className="word-count-counter" aria-live="polite">
-              {this.limitText(counter, wordsLeft)}
-            </span>
-          : ''}
+        {limit ? (
+          <span className="word-count-counter" aria-live="polite">
+            {this.limitText(counter, wordsLeft)}
+          </span>
+        ) : (
+          ''
+        )}
       </div>
     )
   }

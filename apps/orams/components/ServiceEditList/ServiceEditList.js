@@ -11,10 +11,11 @@ const ServiceEditList = props => {
 
   return (
     <div className={styles.container}>
-      {successMessage &&
+      {successMessage && (
         <AUpageAlert as="success">
           <h4>Pricing updated</h4>
-        </AUpageAlert>}
+        </AUpageAlert>
+      )}
       <header>
         <h1 className="au-display-xl" tabIndex="-1">
           Pricing
@@ -24,9 +25,9 @@ const ServiceEditList = props => {
       </header>
       <article role="main">
         {services &&
-          services.map((service, id = uniqueID()) =>
+          services.map((service, id = uniqueID()) => (
             <div key={id}>
-              {service.subCategories.map((subCategory, subId = uniqueID()) =>
+              {service.subCategories.map((subCategory, subId = uniqueID()) => (
                 <div
                   key={subId}
                   onClick={() => {
@@ -43,14 +44,12 @@ const ServiceEditList = props => {
                 >
                   <div className={styles.link}>
                     {service.name}
-                    <span>
-                      {subCategory.name ? ' ' + '(' + subCategory.name + ')' : ''}
-                    </span>
+                    <span>{subCategory.name ? ' ' + '(' + subCategory.name + ')' : ''}</span>
                   </div>
                 </div>
-              )}
+              ))}
             </div>
-          )}
+          ))}
       </article>
     </div>
   )

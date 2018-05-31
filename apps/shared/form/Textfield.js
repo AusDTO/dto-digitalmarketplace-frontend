@@ -26,10 +26,11 @@ const Textfield = props => {
       <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading au-text-input__label">
         {label}
       </label>
-      {description &&
+      {description && (
         <div className="au-text-input__hint" id={`${id}-hint`}>
           {description}
-        </div>}
+        </div>
+      )}
       <Control.input
         model={model}
         name={name}

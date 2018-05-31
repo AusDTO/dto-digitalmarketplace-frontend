@@ -5,9 +5,9 @@ import styles from './PageFooter.scss'
 import logoGovCrest from './logo_govcrest.svg'
 import logoNisa from './logo_nisa.svg'
 
-const PageFooter = () =>
+const PageFooter = () => (
   <AUfooter className={styles.footer}>
-    <div className="container">
+    <div className="wrapper">
       <AUfooterNav>
         <div className="row">
           <div className="col-md-3 col-sm-6">
@@ -132,5 +132,6 @@ const PageFooter = () =>
       </AUfooterEnd>
     </div>
   </AUfooter>
+)
 
 export default PageFooter

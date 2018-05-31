@@ -20,14 +20,16 @@ const PrivateRouteComponent = props => {
           return <Component {...values} />
         }
 
-        return currentlySending
-          ? <LoadingIndicator />
-          : <Redirect
-              to={{
-                pathname: customRedirectPath || `${rootPath}/login`,
-                state: { from: values.location }
-              }}
-            />
+        return currentlySending ? (
+          <LoadingIndicator />
+        ) : (
+          <Redirect
+            to={{
+              pathname: customRedirectPath || `${rootPath}/login`,
+              state: { from: values.location }
+            }}
+          />
+        )
       }}
     />
   )
