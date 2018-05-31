@@ -109,3 +109,18 @@ export const focusHeading = () => {
       return heading && heading.focus();
   }
 }
+
+export const isDailyRateMissing = (pricing, services) => {
+  let hasDailyRates = true
+  if (!pricing || !services) {
+    hasDailyRates = false
+  } else {
+    for(let domain of Object.keys(services)) {
+      if (typeof pricing[domain] === 'undefined') {
+        hasDailyRates = false
+        break
+      }
+    }
+  }
+  return !hasDailyRates
+}

@@ -1,4 +1,5 @@
 import React                from 'react';
+import PropTypes            from 'prop-types'
 import { connect }          from 'react-redux';
 import { Link }             from 'react-router-dom';
 import { Form, Control }    from 'react-redux-form';
@@ -13,7 +14,7 @@ import formProps            from '../../../../shared/reduxModules/formPropsSelec
 import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
-import { findValidServices } from '../../redux/helpers'
+import { findValidServices, isDailyRateMissing } from '../../redux/helpers'
 import { missingDailyRates } from '../../redux/modules/application'
 import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
 
@@ -23,13 +24,23 @@ import './PricingForm.css';
 
 class PricingForm extends BaseForm {
 
-  isDailyRateMissing(domains) {
-    return false
+  static propTypes = {
+    model: PropTypes.string.isRequired,
+    form: PropTypes.object.isRequired,
+    action: PropTypes.string.isRequired,
+    csrf_token: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired,
+    services: PropTypes.object.isRequired,
+    children: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    nextRoute: PropTypes.string.isRequired,
+    submitClicked: PropTypes.bool,
   }
 
   componentDidMount() {
-    if (this.props.pricingForm.pricing && this.isDailyRateMissing(this.props.pricingForm.pricing)) {
-      this.props.hasMissingDailyRates(true)
+    if (this.props.pricingForm.pricing && isDailyRateMissing(this.props.pricingForm.pricing, this.props.services)) {
+      this.props.hasMissingDailyRates(isDailyRateMissing(this.props.pricingForm.pricing, this.props.services))
     } else {
       this.props.hasMissingDailyRates(false)
     }
@@ -64,9 +75,9 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header>
-            {/* { this.props.missingDailyRates ?
+            { this.props.missingDailyRates ?
               <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add these rates to continue.</strong></p></PageAlert>
-            : '' } */}
+            : '' }
             <h1 tabIndex="-1">{title}</h1>
             <p>Indicate the maximum daily rate you normally charge for services.</p>
             <p>Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
