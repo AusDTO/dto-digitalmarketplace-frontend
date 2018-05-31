@@ -61,19 +61,13 @@ export class BuyerDashboardTeamBriefs extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.items.map(item =>
+              {this.props.items.map(item => (
                 <tr key={`item.${item.id}`}>
-                  <td className={styles.colId}>
-                    {item.id}
-                  </td>
+                  <td className={styles.colId}>{item.id}</td>
                   <td className={styles.colName}>
-                    <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                      {item.name}
-                    </a>
+                    <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                   </td>
-                  <td className={styles.colAuthor}>
-                    {item.author}
-                  </td>
+                  <td className={styles.colAuthor}>{item.author}</td>
                   <td className={`${item.status === 'live' ? '' : styles.empty} ${styles.colClosing}`}>
                     {item.status === 'live' && <ClosedDate date={item.closed_at} />}
                   </td>
@@ -89,15 +83,18 @@ export class BuyerDashboardTeamBriefs extends Component {
                     </div>
                   </td>
                   <td className={`${styles.actions} ${item.status === 'live' ? '' : styles.empty} ${styles.colAction}`}>
-                    {item.status === 'live' &&
+                    {item.status === 'live' && (
                       <a
-                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
+                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${
+                          item.id
+                        }/supplier-questions/answer-question`}
                       >
                         <strong>Answer a question</strong>
-                      </a>}
+                      </a>
+                    )}
                   </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
           <BuyerDashboardHelp />

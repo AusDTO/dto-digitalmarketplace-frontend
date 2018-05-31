@@ -17,13 +17,9 @@ const FilesInput = props => {
       <label className="question-heading au-text-input__label" htmlFor="file_0">
         {label}
       </label>
-      <span>
-        {description}
-      </span>
+      <span>{description}</span>
       <p>
-        <small>
-          {hint}
-        </small>
+        <small>{hint}</small>
       </p>
       {range(formFields).map((field, id) => <FileInput key={field} id={id} {...props} />)}
     </div>

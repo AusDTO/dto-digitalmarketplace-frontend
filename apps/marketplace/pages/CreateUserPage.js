@@ -62,17 +62,19 @@ export class CreateUserPageComponent extends BaseForm {
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
-            {loadSignupSuccess
-              ? <CreateUserForm
-                  initialState={userRegisterDetails}
-                  onSubmitClicked={this.onSubmitClicked}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={handleSubmit}
-                  createUserSuccess={createUserSuccess}
-                  model={model}
-                  currentlySending={currentlySending}
-                />
-              : <ErrorBox title="There was a problem loading your details" setFocus={setFocus} />}
+            {loadSignupSuccess ? (
+              <CreateUserForm
+                initialState={userRegisterDetails}
+                onSubmitClicked={this.onSubmitClicked}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={handleSubmit}
+                createUserSuccess={createUserSuccess}
+                model={model}
+                currentlySending={currentlySending}
+              />
+            ) : (
+              <ErrorBox title="There was a problem loading your details" setFocus={setFocus} />
+            )}
           </article>
         </div>
       </div>
