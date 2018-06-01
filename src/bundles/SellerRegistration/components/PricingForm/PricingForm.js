@@ -40,7 +40,7 @@ class PricingForm extends BaseForm {
 
   componentDidMount() {
     if (this.props.pricingForm.pricing && isDailyRateMissing(this.props.pricingForm.pricing, this.props.services)) {
-      this.props.hasMissingDailyRates(isDailyRateMissing(this.props.pricingForm.pricing, this.props.services))
+      this.props.hasMissingDailyRates(true)
     } else {
       this.props.hasMissingDailyRates(false)
     }
