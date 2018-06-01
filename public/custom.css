@@ -839,3 +839,69 @@ li:first-child.au-marketplace-header-link-list a {
 .au-footer-logo-nisa {
   width: 140px;
 }
+
+.pagination {
+    margin-top: 2em;
+}
+
+.pagination div:first-of-type {
+    margin-bottom: 1em;
+}
+
+.pagination div:first-of-type, .pagination div:last-of-type {
+  float: none;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination div:first-of-type {
+      float: left;
+  }
+}
+
+.pagination-controls {
+    list-style: none;
+    padding-left: 0;
+}
+
+.pagination-controls li {
+    display: inline-block;
+}
+
+.pagination-controls a {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-align: center;
+    color: #313131;
+    text-decoration: none;
+    outline: none;
+    border-bottom: solid 1px #5bcbe3;
+    transition-timing-function: ease-in-out;
+    transition-duration: .1s;
+    transition-property: background-color, border-color, color;
+}
+
+.pagination-controls a:hover {
+    background-color: #18788d !important;
+    color: #fff;
+}
+
+.pagination-controls a:focus {
+    background-color: #5bcbe3;
+}
+
+.pagination-controls li.current a {
+    background-color: #f0f3f5;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination-controls {
+      margin-top: -0.75em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pagination div:last-of-type {
+      float: right;
+  }
+}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import styles from './Opportunities.scss'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
+import Pagination from 'shared/Pagination/Pagination'
 
 export class Opportunities extends Component {
   constructor(props) {
@@ -258,6 +259,7 @@ export class Opportunities extends Component {
                   </div>
                 </div>
               ))}
+              <Pagination pageCount={5} pages={[1,2,3,4,5]}/>
             </div>
           )}
           {items.length > 0 && (
