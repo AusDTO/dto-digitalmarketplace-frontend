@@ -33,18 +33,15 @@
     ga('create', 'UA-72722909-5', 'auto');
     <% } %>
     ga('send', 'pageview');
-
     ga('require', 'outboundLinkTracker', {
       shouldTrackOutboundLink: function (link, parseUrl) {
         var href = link.getAttribute('href') || link.getAttribute('xlink:href');
         var url = parseUrl(href);
         var isExternal = (url.hostname != location.hostname && url.protocol.slice(0, 4) == 'http');
-
         // treat downloads as external links
         var exts = 'doc*|xls*|ppt*|pdf|zip|rar|exe|mp3';
         var regExt = new RegExp(".*\\.(" + exts + ")(\\?.*)?$");
         var isDownload = url.pathname.match(regExt);
-
         return isDownload || isExternal;
       }
     });

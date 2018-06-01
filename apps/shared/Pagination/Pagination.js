@@ -23,7 +23,7 @@ const Pagination = ({ page, pages, pageCount, onClick, onNext, onBack }) => (
               onBack(page - 1)
             }}
           >
-            &lt; Previous Page
+            &lt; Previous
           </a>
         )}
 
@@ -60,7 +60,7 @@ const Pagination = ({ page, pages, pageCount, onClick, onNext, onBack }) => (
               onNext(page + 1)
             }}
           >
-            Next Page &gt;
+            Next &gt;
           </a>
         )}
       </ul>

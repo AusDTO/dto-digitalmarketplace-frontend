@@ -312,13 +312,83 @@ label.text-box-number-label {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
 }
 
-.au-accordion {
+/* .au-accordion {
   margin-bottom: -1px !important;
 }
 
 .au-body .au-accordion__title, .au-accordion__title {
   font-size: 17px !important;
   padding: 16px 14px !important;
+} */
+
+.opportunities-page .au-accordion {
+  margin-top: -4px;
+  border: none;
+}
+
+.opportunities-page .au-accordion__title {
+  background: white;
+  padding: 6px 16px 9px 16px !important;
+  border: solid 3px #e0e0e0;
+  border-radius: 4px;
+  color: #313131;
+  margin: 0 !important;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 17px;
+}
+.opportunities-page .au-accordion__body.au-accordion--open {
+  margin-top: 7px;
+}
+
+@media screen and (min-width: 992px) {
+  .opportunities-page .au-accordion {
+    position: absolute;
+  }
+
+  .opportunities-page .au-accordion__title {
+      width: 172px;
+  }
+
+  .opportunities-page .au-accordion__body.au-accordion--open {
+    position: relative;
+    width: 310px;
+    margin-left: -137px;
+    z-index: 1;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .opportunities-page .au-accordion__body.au-accordion--open {
+    position: absolute;
+    width: 310px;
+    margin-left: -24px;
+    z-index: 1;
+  }
+}
+
+.opportunities-page .au-accordion__body-wrapper {
+  box-shadow: 2px 2px 30px 0 rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  border: solid 3px #e0e0e0;
+}
+
+.opportunities-page .au-accordion__body {
+  overflow: visible;
+}
+
+.opportunities-page .au-accordion__title:focus, .opportunities-page .au-accordion__title:hover {
+  outline: solid 3px #45c2f0;
+  outline-offset: -3px;
+  color: #00698f !important;
+}
+
+.opportunities-page .au-accordion--open.au-accordion__title:after {
+  margin-top: -0.5rem;
+}
+
+.opportunities-page .au-accordion__title:after {
+  margin-top: -0.7rem;
 }
 
 .orams-footer {
@@ -768,4 +838,70 @@ li:first-child.au-marketplace-header-link-list a {
 
 .au-footer-logo-nisa {
   width: 140px;
+}
+
+.pagination {
+    margin-top: 2em;
+}
+
+.pagination div:first-of-type {
+    margin-bottom: 1em;
+}
+
+.pagination div:first-of-type, .pagination div:last-of-type {
+  float: none;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination div:first-of-type {
+      float: left;
+  }
+}
+
+.pagination-controls {
+    list-style: none;
+    padding-left: 0;
+}
+
+.pagination-controls li {
+    display: inline-block;
+}
+
+.pagination-controls a {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-align: center;
+    color: #313131;
+    text-decoration: none;
+    outline: none;
+    border-bottom: solid 1px #5bcbe3;
+    transition-timing-function: ease-in-out;
+    transition-duration: .1s;
+    transition-property: background-color, border-color, color;
+}
+
+.pagination-controls a:hover {
+    background-color: #18788d !important;
+    color: #fff;
+}
+
+.pagination-controls a:focus {
+    background-color: #5bcbe3;
+}
+
+.pagination-controls li.current a {
+    background-color: #f0f3f5;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination-controls {
+      margin-top: -0.75em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pagination div:last-of-type {
+      float: right;
+  }
 }
