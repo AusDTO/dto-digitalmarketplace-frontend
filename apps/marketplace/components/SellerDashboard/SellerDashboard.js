@@ -2,7 +2,7 @@ import React from 'react'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './SellerDashboard.scss'
 
-const SellerDashboard = props =>
+const SellerDashboard = props => (
   <div className={styles.container}>
     <article role="main">
       <div className={`${styles.header} row`}>
@@ -17,20 +17,17 @@ const SellerDashboard = props =>
               </li>
             </ul>
           </div>
-          <span className={`au-display-lg ${styles.lightText}`}>
-            {props.supplier.name}
-          </span>
+          <span className={`au-display-lg ${styles.lightText}`}>{props.supplier.name}</span>
           <h1 className="au-display-xl">Dashboard</h1>
-          {props.items.length === 0 &&
+          {props.items.length === 0 && (
             <div>
-              You have not applied for any <a href="/digital-marketplace/opportunities?status=live">
-                opportunities
-              </a>{' '}
+              You have not applied for any <a href="/digital-marketplace/opportunities?status=live">opportunities</a>{' '}
               since January 1st 2018.
-            </div>}
+            </div>
+          )}
         </div>
       </div>
-      {props.items.length > 0 &&
+      {props.items.length > 0 && (
         <div className="row">
           <div className="col-xs-12">
             <table className={`${styles.resultListing} col-xs-12`}>
@@ -54,23 +51,17 @@ const SellerDashboard = props =>
                 </tr>
               </thead>
               <tbody>
-                {props.items.map(item =>
+                {props.items.map(item => (
                   <tr key={`item.${item.id}`}>
-                    <td className={styles.colId}>
-                      {item.id}
-                    </td>
+                    <td className={styles.colId}>{item.id}</td>
                     <td className={styles.colName}>
-                      <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                        {item.name}
-                      </a>
+                      <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                     </td>
                     <td>
                       <ClosedDate date={item.closed_at} />
                     </td>
                     <td className={styles.colStatus}>
-                      <div className={`${styles.badge}`}>
-                        {item.is_downloaded ? 'Buyer Reviewing' : 'Submitted'}
-                      </div>
+                      <div className={`${styles.badge}`}>{item.is_downloaded ? 'Buyer Reviewing' : 'Submitted'}</div>
                     </td>
                     <td className={styles.colAction}>
                       <a
@@ -84,7 +75,7 @@ const SellerDashboard = props =>
                       </a>
                     </td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
             <div className={styles.disclaimer}>
@@ -93,8 +84,10 @@ const SellerDashboard = props =>
               </small>
             </div>
           </div>
-        </div>}
+        </div>
+      )}
     </article>
   </div>
+)
 
 export default SellerDashboard

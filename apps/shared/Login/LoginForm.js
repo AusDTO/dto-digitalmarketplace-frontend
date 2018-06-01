@@ -30,9 +30,7 @@ const LoginForm = props => {
             setFocus={setFocus}
           />
           <header className="page-heading page-heading-without-breadcrumb">
-            <h1 className="au-display-xl">
-              Sign in to {framework}
-            </h1>
+            <h1 className="au-display-xl">Sign in to {framework}</h1>
           </header>
           <p>
             New to {framework}?{' '}
@@ -73,9 +71,11 @@ const LoginForm = props => {
               </Link>
             </p>
             <p>
-              {currentlySending
-                ? <LoadingButton />
-                : <input className="au-btn" type="submit" value="Sign in" onClick={submitClicked} />}
+              {currentlySending ? (
+                <LoadingButton />
+              ) : (
+                <input className="au-btn" type="submit" value="Sign in" onClick={submitClicked} />
+              )}
             </p>
           </Form>
         </article>

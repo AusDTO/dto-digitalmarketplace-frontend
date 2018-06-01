@@ -9,9 +9,7 @@ export class BriefDownloadDocuments extends Component {
   render() {
     return (
       <span>
-        <strong>
-          Downloading documents for brief &quot;{this.props.brief.title}&quot;...{' '}
-        </strong>
+        <strong>Downloading documents for brief &quot;{this.props.brief.title}&quot;... </strong>
       </span>
     )
   }

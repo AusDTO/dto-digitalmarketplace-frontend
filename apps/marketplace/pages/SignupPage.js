@@ -86,7 +86,7 @@ export class SignupPageComponent extends BaseForm {
           <Route
             exact
             path={match.url}
-            render={() =>
+            render={() => (
               <SignupForm
                 {...this.props}
                 {...this.state}
@@ -94,7 +94,8 @@ export class SignupPageComponent extends BaseForm {
                 onSubmitFailed={this.onSubmitFailed}
                 handleSubmit={this.handleSubmit}
                 submitClicked={false}
-              />}
+              />
+            )}
           />
           <Route path={`${match.url}/success`} component={UserOnboardingContainer} />
           <Redirect to={{ pathname: `${rootPath}/signup` }} />

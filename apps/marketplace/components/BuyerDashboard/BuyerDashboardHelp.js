@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BuyerDashboardHelp = () =>
+const BuyerDashboardHelp = () => (
   <div className="row">
     <div className="col-xs-12">
       <span />
@@ -13,5 +13,6 @@ const BuyerDashboardHelp = () =>
       </p>
     </div>
   </div>
+)
 
 export default BuyerDashboardHelp

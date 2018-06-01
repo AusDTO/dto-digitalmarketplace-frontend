@@ -95,11 +95,6 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           User research
         </legend>
-        <label>
-          Note: 95% of sellers submit bids below $
-          123.00
-          . If your daily rate exceeds this, we will apply greater scrutiny when determining eligibility for this area of expertise.
-        </label>
         <div>
           <span>
             <strong>
@@ -132,11 +127,6 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           Content development
         </legend>
-        <label>
-          Note: 95% of sellers submit bids below $
-          456.00
-          . If your daily rate exceeds this, we will apply greater scrutiny when determining eligibility for this area of expertise.
-        </label>
         <div>
           <span>
             <strong>
@@ -169,11 +159,6 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           Content management
         </legend>
-        <label>
-          Note: 95% of sellers submit bids below $
-          789.00
-          . If your daily rate exceeds this, we will apply greater scrutiny when determining eligibility for this area of expertise.
-        </label>
         <div>
           <span>
             <strong>
