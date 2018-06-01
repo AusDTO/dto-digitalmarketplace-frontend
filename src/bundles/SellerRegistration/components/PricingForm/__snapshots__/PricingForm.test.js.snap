@@ -40,7 +40,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
     >
       <p>
         <strong>
-          Maximum daily rates are missing. Please add these rates to continue.
+          Maximum daily rates are missing. Please add the daily rates to continue.
         </strong>
       </p>
     </div>

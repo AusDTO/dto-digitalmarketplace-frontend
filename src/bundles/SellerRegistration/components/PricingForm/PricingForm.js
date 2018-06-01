@@ -76,7 +76,7 @@ class PricingForm extends BaseForm {
       <Layout>
         <header>
             { this.props.missingDailyRates ?
-              <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add these rates to continue.</strong></p></PageAlert>
+              <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
             : '' }
             <h1 tabIndex="-1">{title}</h1>
             <p>Indicate the maximum daily rate you normally charge for services.</p>

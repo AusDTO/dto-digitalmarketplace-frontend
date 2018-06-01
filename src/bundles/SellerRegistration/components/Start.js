@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
 import isNumber from 'lodash/isNumber';
@@ -54,10 +55,10 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
             ) : (type === 'edit' ? (
                     <div>
                         { expiredLiabilityInsurance || expiredWorkersCompensation ?
-                          <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
+                          <PageAlert as="error"><p><strong>Not all your documents are up to date. <Link to="/documents">Please upload the necessary documents to continue</Link>.</strong></p></PageAlert>
                         : '' }
                         { missingDailyRates ?
-                          <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add these rates to continue.</strong></p></PageAlert>
+                          <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please <Link to="/pricing">add the daily rates to continue</Link>.</strong></p></PageAlert>
                         : '' }
                         <h1>Update your profile</h1>
                         <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.
