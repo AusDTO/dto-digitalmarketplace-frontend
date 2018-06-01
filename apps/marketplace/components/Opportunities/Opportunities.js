@@ -43,6 +43,14 @@ export class Opportunities extends Component {
     })
   }
 
+  applyFilters = e => {
+    this.setState({ accordionOpen: false })
+  }
+
+  cancelFilters = e => {
+    this.setState({ accordionOpen: false })
+  }
+
   render() {
     const items = [
       {
@@ -148,10 +156,10 @@ export class Opportunities extends Component {
                     </div>
                   </div>
                   <span className={styles.cancelLink}>
-                    <a href="#">Cancel</a>
+                    <a href="#" onClick={this.cancelFilters}>Cancel</a>
                   </span>
                   <span className={styles.applyFilters}>
-                    <a href="#">Apply filters</a>
+                    <a href="#" onClick={this.applyFilters}>Apply filters</a>
                   </span>
                   <div />
                 </div>
