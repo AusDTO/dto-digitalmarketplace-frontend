@@ -1,3 +1,5 @@
+var randomWords = require('random-words');
+
 exports.getElementHandle = async function (page, xpath) {
     let elements = await this.getElementHandles(page, xpath);
     if (elements.length > 1) {
@@ -37,4 +39,13 @@ exports.type = async function (page, id, value) {
 exports.clickButton = async function (page, value) {
     let button = await this.getElementHandle(page, `//input[@value="${value}"]`);
     await button.click();
+}
+
+exports.words = function (numberOfWords, numberOfCharacters) {
+    let text = randomWords({exactly:numberOfWords}).join(' ');
+
+    if (numberOfCharacters) {
+        text = text.substring(0, numberOfCharacters);
+    }
+    return text;
 }

@@ -1,8 +1,6 @@
-exports.startBrief = async function(page) {
-    await page.waitForSelector('a[href="/2/buyer-dashboard"]');
-    await page.click('a[href="/2/buyer-dashboard"]');
-  
-    await page.waitForSelector('a[href="/2/create-brief"]');  
-    await page.click('a[href="/2/create-brief"]');
-  }
-  
+let utils = require('../../utils');
+
+exports.startBrief = async function (page) {
+  utils.clickLink(page, 'Dashboard');
+  utils.clickLink(page, 'Start a new brief');
+}

@@ -1,14 +1,20 @@
 const puppeteer = require('puppeteer');
 const loginBuyer = require('../testCases/login/buyer');
 const buyerDashboard = require('../testCases/dashboard/buyer');
-const specialistBrief = require('../testCases/brief/specialistBrief');
+const specialist = require('../testCases/brief/specialist');
+const outcome = require('../testCases/brief/outcome');
 
 (async () => {
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
   await page._client.send('Emulation.clearDeviceMetricsOverride');
   await page.goto(process.env.FRONTEND_ADDRESS);
+  
   await loginBuyer.login(page);
+
+  await buyerDashboard.startBrief(page);
+  await outcome.create(page);
+
   let areaOfExpertises = [
       'Strategy and Policy',
       'User research and Design',
