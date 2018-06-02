@@ -9,7 +9,7 @@ const outcome = require('../testCases/brief/outcome');
   const page = await browser.newPage();
   await page._client.send('Emulation.clearDeviceMetricsOverride');
   await page.goto(process.env.FRONTEND_ADDRESS);
-  
+
   await loginBuyer.login(page);
 
   await buyerDashboard.startBrief(page);
@@ -32,7 +32,8 @@ const outcome = require('../testCases/brief/outcome');
   ];
   for (let i in areaOfExpertises) {
     await buyerDashboard.startBrief(page);
-    await specialistBrief.create(page, areaOfExpertises[i]);
+    await specialist.create(page, areaOfExpertises[i]);
   }
+
   await browser.close();
 })();

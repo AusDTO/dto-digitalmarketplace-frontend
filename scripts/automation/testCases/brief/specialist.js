@@ -1,8 +1,9 @@
 const utils = require('../../utils');
 
 exports.create = async function (page, areaOfExpertise) {
+  console.log(`Starting to create ${areaOfExpertise} brief`);
   let now = Date.now();
-  await selectLot(page, 'Digital Specialist');
+  await selectLot(page, 'digital-professionals');
   await createBrief(page);
   await fillRole(page, `${areaOfExpertise} Role ${now.valueOf()}`);
   await selectLocation(page, ['Australian Capital Territory', 'Tasmania']);
@@ -15,7 +16,7 @@ exports.create = async function (page, areaOfExpertise) {
 }
 
 async function selectLot(page, lot) {
-  await utils.selectRadio(page, 'digital-professionals');
+  await utils.selectRadio(page, lot);
   await utils.clickLink(page, 'Continue');
 }
 

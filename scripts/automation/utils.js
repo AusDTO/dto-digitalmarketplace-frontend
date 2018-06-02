@@ -11,14 +11,14 @@ exports.getElementHandles = async function (page, xpath) {
     if (!page) {
         console.error('page is required', xpath);
     }
-    await page.waitForXPath(xpath);
+    await page.waitForXPath(xpath, { visible: true });
     let elements = await page.$x(xpath);
     return elements;
 }
 
 exports.clickLink = async function (page, linkText) {
-    let link = await this.getElementHandle(page, `//a[.="${linkText}"]`);
-    await link.click();
+    let links = await this.getElementHandles(page, `//a[.="${linkText}"]`);
+    await links[0].click();
 }
 
 exports.selectCheck = async function (page, value) {
@@ -42,7 +42,11 @@ exports.clickButton = async function (page, value) {
 }
 
 exports.words = function (numberOfWords, numberOfCharacters) {
-    let text = randomWords({exactly:numberOfWords}).join(' ');
+    let numberOfWordsDivideBy = process.env.NUMBER_OF_WORDS_DIVIDE_BY;
+    if (numberOfWordsDivideBy) {
+        numberOfWords = Math.ceil(numberOfWords / numberOfWordsDivideBy);
+    }
+    let text = randomWords({ exactly: numberOfWords }).join(' ');
 
     if (numberOfCharacters) {
         text = text.substring(0, numberOfCharacters);

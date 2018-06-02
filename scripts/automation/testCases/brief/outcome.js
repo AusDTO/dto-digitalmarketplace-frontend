@@ -1,8 +1,9 @@
 const utils = require('../../utils');
 
 exports.create = async function (page) {
+  console.log('Starting to create outcome brief');
   let now = Date.now();
-  await selectLot(page, 'Digital Specialist');
+  await selectLot(page, 'digital-outcome');
   await createBrief(page);
   await fillTitle(page, `Digital Outcome ${now.valueOf()}`);
   await fillLocation(page, ['Australian Capital Territory', 'Tasmania']);
@@ -15,7 +16,7 @@ exports.create = async function (page) {
 }
 
 async function selectLot(page, lot) {
-  await utils.selectRadio(page, 'digital-outcome');
+  await utils.selectRadio(page, lot);
   await utils.clickLink(page, 'Continue');
 }
 
@@ -60,6 +61,36 @@ async function fillDescriptinoOfWork(page) {
   await utils.selectRadio(page, 'live');
   await clickSaveContinue(page);
 
+  await utils.type(page, 'input-existingTeam', utils.words(500));
+  await clickSaveContinue(page);
+
+  await utils.type(page, 'input-additionalRelevantInformation', utils.words(500));
+  await clickSaveContinue(page);
+
+  await utils.type(page, 'input-workplaceAddress', utils.words(100));
+  await clickSaveContinue(page);
+
+  await utils.type(page, 'input-workingArrangements', utils.words(500));
+  await clickSaveContinue(page);
+
+  await utils.type(page, 'input-securityClearance', utils.words(50));
+  await clickSaveContinue(page);
+
+  await utils.type(page, 'input-startDate', utils.words(10));
+  await clickSaveContinue(page);
+
+  await utils.type(page, 'input-contractLength', utils.words(100));
+  await clickSaveContinue(page);
+  
+  await utils.type(page, 'input-additionalTerms', utils.words(500));
+  await clickSaveContinue(page);
+  
+  await utils.type(page, 'input-budgetRange', utils.words(200));
+  await clickSaveContinue(page);
+
+  await utils.type(page, 'input-summary', utils.words(500));
+  await clickSaveContinue(page);  
+
   await clickReturnToOverview(page);
 }
 
@@ -75,11 +106,15 @@ async function fillEvaluationProcess(page) {
   await utils.type(page, 'input-priceWeighting', '50');
   await clickSaveContinue(page);
 
-  await utils.type(page, 'input-essentialRequirements-1', 'Essential skills and experience 1');
-  await utils.type(page, 'input-niceToHaveRequirements-1', 'Nice to have skills and experience 1');
+  await utils.type(page, 'input-essentialRequirements-1', utils.words(10));
+  await utils.type(page, 'input-niceToHaveRequirements-1', utils.words(10));
+  await utils.type(page, 'input-successCriteria-1', utils.words(10));
   await clickSaveContinue(page);
 
-  await utils.type(page, 'input-culturalFitCriteria-1', 'Work as a team with our organisation and other suppliers');
+  await utils.type(page, 'input-culturalFitCriteria-1', utils.words(10));
+  await clickSaveContinue(page);
+
+  await utils.selectRadio(page, 'Fixed price');
   await clickSaveContinue(page);
 
   let chkEvaluations = await utils.getElementHandles(page, `//input[@type="checkbox"]`);
