@@ -4,6 +4,8 @@ exports.getElementHandle = async function (page, xpath) {
     let elements = await this.getElementHandles(page, xpath);
     if (elements.length > 1) {
         throw `"${xpath}" returned more than one element`;
+    } else if (elements.length === 0) {
+        throw `"${xpath}" didn't return any elements`;
     }
     return elements[0];
 }
@@ -43,6 +45,7 @@ exports.clickButton = async function (page, value) {
 exports.clickLink = async function (page, linkText) {
     console.log(`Clicking link "${linkText}"`);
     let links = await this.getElementHandles(page, `//a[.="${linkText}"]`);
+    console.log(`Number of links found for "${linkText}": ${links.length}`);
     await links[0].click();
 }
 
@@ -57,4 +60,9 @@ exports.words = function (numberOfWords, numberOfCharacters) {
         text = text.substring(0, numberOfCharacters);
     }
     return text;
+}
+
+exports.sleep = async function (ms) {
+    console.log(`Sleeping for ${ms} milliseconds`);
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
