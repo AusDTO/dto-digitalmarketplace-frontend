@@ -1,6 +1,6 @@
 let utils = require('../../utils');
 
 exports.startBrief = async function (page) {
-  utils.clickLink(page, 'Dashboard');
-  utils.clickLink(page, 'Start a new brief');
+  await utils.clickLink(page, 'Dashboard');
+  await utils.clickLink(page, 'Start a new brief');
 }

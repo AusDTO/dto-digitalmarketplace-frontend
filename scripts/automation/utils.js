@@ -16,29 +16,34 @@ exports.getElementHandles = async function (page, xpath) {
     return elements;
 }
 
-exports.clickLink = async function (page, linkText) {
-    let links = await this.getElementHandles(page, `//a[.="${linkText}"]`);
-    await links[0].click();
-}
-
 exports.selectCheck = async function (page, value) {
+    console.log(`Selecting check box "${value}"`);
     let radio = await this.getElementHandle(page, `//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
 exports.selectRadio = async function (page, value) {
+    console.log(`Selecting radio "${value}"`);
     let radio = await this.getElementHandle(page, `//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
 exports.type = async function (page, id, value) {
+    console.log(`Typing in ${id}`);
     let input = await this.getElementHandle(page, `//*[@id="${id}"]`);
     await input.type(value, { delay: 0 });
 }
 
 exports.clickButton = async function (page, value) {
+    console.log(`Clicking button ${value}`);
     let button = await this.getElementHandle(page, `//input[@value="${value}"]`);
     await button.click();
+}
+
+exports.clickLink = async function (page, linkText) {
+    console.log(`Clicking link "${linkText}"`);
+    let links = await this.getElementHandles(page, `//a[.="${linkText}"]`);
+    await links[0].click();
 }
 
 exports.words = function (numberOfWords, numberOfCharacters) {
