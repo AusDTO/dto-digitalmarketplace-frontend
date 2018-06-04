@@ -1,0 +1,19 @@
+ul.sellerList {
+  list-style-type: none;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+ul.sellerList li label {
+  margin-top: 1rem;
+}
+
+textarea.emailContent {
+  height: 400px;
+}
+
+@media (max-width: 767px) {
+  .progressIndicator {
+    margin-bottom: 1.5rem;
+  }
+}

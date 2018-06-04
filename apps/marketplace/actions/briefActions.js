@@ -3,6 +3,7 @@ import {
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
+  BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
@@ -110,6 +111,11 @@ export const handleBriefResponseSuccess = response => ({
   briefResponse: response.data.briefResponses
 })
 
+export const handleBriefSellerNotifySubmitSuccess = response => ({
+  type: BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
+  response
+})
+
 export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({
@@ -121,6 +127,22 @@ export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleBriefResponseSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleBriefSellerNotifySubmit = (briefId, model) => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    url: `/brief/${briefId}/sellers/notify`,
+    method: 'POST',
+    data: JSON.stringify(model)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefSellerNotifySubmitSuccess(response))
     }
     dispatch(sendingRequest(false))
   })

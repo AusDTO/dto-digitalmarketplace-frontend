@@ -1,6 +1,7 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
@@ -12,8 +13,10 @@ const defaultBriefState = {
   loadBriefSuccess: null,
   briefSuccess: null,
   briefResponseSuccess: null,
+  briefSellerUnsuccessfulSubmitSuccess: null,
   isDuplicate: null,
   brief: {},
+  briefResponse: {},
   briefResponses: [],
   specialistName: '',
   specialistNumber: 1,
@@ -22,7 +25,8 @@ const defaultBriefState = {
     sections: [],
     status: '',
     title: ''
-  }
+  },
+  sellers: []
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -43,12 +47,16 @@ const briefReducer = (state = defaultBriefState, action) => {
         specialistNumber: action.briefResponses.length + 1,
         loadedAt: new Date().valueOf()
       }
-
     case BRIEF_RESPONSE_SUCCESS:
       return {
         ...state,
         briefResponseSuccess: true,
         briefResponses: [...state.briefResponses, action.briefResponse]
+      }
+    case BRIEF_SELLER_NOTIFY_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        briefSellerNotifySubmitSuccess: true
       }
     case DELETE_BRIEF_SUCCESS:
       return {

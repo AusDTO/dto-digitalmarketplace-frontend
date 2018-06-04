@@ -12,6 +12,7 @@ import SellerDashboardPage from './pages/SellerDashboardPage'
 import BuyerDashboardPage from './pages/BuyerDashboardPage'
 import BriefChoicePage from './pages/BriefChoicePage'
 import BriefOverviewPage from './pages/BriefOverviewPage'
+import SellerNotifyPage from './pages/SellerNotifyPage'
 
 export const rootPath = '/2'
 
@@ -20,6 +21,7 @@ export const Routes = () => (
     <Route exact path={rootPath} component={SignupPage} />
     <Route path={`${rootPath}/signup`} component={SignupPage} />
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
+    <PrivateRoute path={`${rootPath}/brief/:briefId/seller-:flow`} component={SellerNotifyPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
