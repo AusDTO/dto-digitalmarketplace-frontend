@@ -121,7 +121,7 @@ export const isDailyRateMissing = (pricing, services) => {
 
   if (servicesDomains.length > 0 && servicesDomains.length === pricingDomains.length) {
     const filtered = servicesDomains.filter(d => {
-      return (pricingDomains.includes(d) && typeof pricing[d]['maxPrice'] !== 'undefined' && parseInt(pricing[d]['maxPrice']) > 0)
+      return (pricingDomains.includes(d) && 'maxPrice' in pricing[d] && parseInt(pricing[d]['maxPrice']) > 0)
     })
     if (filtered.length === servicesDomains.length) {
       isMissingRates = false
