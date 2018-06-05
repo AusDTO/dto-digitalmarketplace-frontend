@@ -94,6 +94,7 @@ export class Header extends Component {
             <div className="col-md-12">
               <div className="au-marketplace-header-mobile-menu">
                 <AUaccordion
+                  dark
                   header={ this.state.accordionOpen ? "Close menu" : "Open menu" }
                   open={ this.state.accordionOpen }
                   onOpen={ () => { this.openAccordion() } }

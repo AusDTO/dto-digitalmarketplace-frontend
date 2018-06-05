@@ -75,7 +75,7 @@ export const AuthWidget = (props, history) => {
           <div className="row hide-desktop">
             <div className="col-md-12">
               <div className="au-marketplace-header-mobile-menu">
-                <AUaccordion header="Open menu">
+                <AUaccordion dark header="Open menu">
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     <div className="au-marketplace-header_mobile-link">
                       {props.isAuthenticated ? <a href={props.dashboardUrl}>{props.dashboardText}</a> : <a href="/2/signup">Sign up</a>}
