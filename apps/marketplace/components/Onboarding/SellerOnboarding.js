@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SellerOnboarding = () => (
+const SellerOnboarding = () =>
   <div className="row">
     <div className="col-sm-push-2 col-sm-8 col-xs-12">
       <h1 title="Welcome to the Marketplace">Welcome to the Marketplace</h1>
@@ -21,6 +21,5 @@ const SellerOnboarding = () => (
       </span>
     </div>
   </div>
-)
 
 export default SellerOnboarding

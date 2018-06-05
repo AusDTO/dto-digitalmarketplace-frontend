@@ -52,13 +52,18 @@ export class ErrorBoxComponent extends React.Component {
           {invalidFields &&
             !errorMessage &&
             invalidFields.map(({ messages, id }, i) =>
-              messages.map((message, j) => (
+              messages.map((message, j) =>
                 <li key={`${i}${j}`}>
-                  <a href={`#${id}`}>{message}</a>
+                  <a href={`#${id}`}>
+                    {message}
+                  </a>
                 </li>
-              ))
+              )
             )}
-          {errorMessage && <li key="errorMessage">{errorMessage}</li>}
+          {errorMessage &&
+            <li key="errorMessage">
+              {errorMessage}
+            </li>}
         </ul>
       </AUpageAlert>
     )

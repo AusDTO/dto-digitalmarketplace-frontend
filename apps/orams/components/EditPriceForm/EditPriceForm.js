@@ -63,8 +63,7 @@ class EditPriceForm extends Component {
                 serviceToEdit.categoryId,
                 serviceToEdit.serviceName,
                 serviceToEdit.subCategoryName ? serviceToEdit.subCategoryName : ''
-              )
-            }
+              )}
           >
             Back to pricing information
           </div>
@@ -72,7 +71,9 @@ class EditPriceForm extends Component {
         <article role="main">
           <div className="au-callout au-callout--calendar-event">
             <div>
-              <strong>Region: {priceData.region.state + ' ' + priceData.region.name}</strong>
+              <strong>
+                Region: {priceData.region.state + ' ' + priceData.region.name}
+              </strong>
             </div>
             <div>
               Pricing must be a fixed fee and all inclusive of GST, travel, assessment and report. The negotiated cap
@@ -131,68 +132,67 @@ class EditPriceForm extends Component {
               />
             </div>
             {date &&
-              date === 'custom' && (
-                <div>
-                  <StatefulError
-                    model={`${model}.start_date`}
-                    id="start_date_error"
-                    messages={{
-                      validDate: 'Start date is required and must be in the future.',
-                      validMonth: 'Month can only be from 1 to 12.'
-                    }}
-                  />
-                  <StatefulError
-                    model={`${model}`}
-                    id="validSequenceOfDates"
-                    messages={{
-                      validSequenceOfDates: 'The start date must be prior to the end date.'
-                    }}
-                  />
-                  <Control
-                    model={`${model}.start_date`}
-                    component={Datefield}
-                    name="start_date"
-                    id="start_date"
-                    label="Start date"
-                    controlProps={{
-                      id: 'start_date',
-                      model: `${model}.start_date`,
-                      htmlFor: 'start_date',
-                      label: 'Start date'
-                    }}
-                    validators={{
-                      validDate,
-                      validMonth
-                    }}
-                  />
-                  <br />
-                  <StatefulError
-                    model={`${model}.end_date`}
-                    id="end_date_error"
-                    messages={{
-                      validDate: 'End date is required and must be in the future.',
-                      validMonth: 'Month can only be from 1 to 12.'
-                    }}
-                  />
-                  <Control
-                    model={`${model}.end_date`}
-                    component={Datefield}
-                    name="end_date"
-                    id="end_date"
-                    label="End date"
-                    controlProps={{
-                      id: 'end_date',
-                      model: `${model}.end_date`,
-                      htmlFor: 'end_date',
-                      label: 'End date'
-                    }}
-                    validators={{
-                      validDate
-                    }}
-                  />
-                  <br />
-                </div>
-              )}
+              date === 'custom' &&
+              <div>
+                <StatefulError
+                  model={`${model}.start_date`}
+                  id="start_date_error"
+                  messages={{
+                    validDate: 'Start date is required and must be in the future.',
+                    validMonth: 'Month can only be from 1 to 12.'
+                  }}
+                />
+                <StatefulError
+                  model={`${model}`}
+                  id="validSequenceOfDates"
+                  messages={{
+                    validSequenceOfDates: 'The start date must be prior to the end date.'
+                  }}
+                />
+                <Control
+                  model={`${model}.start_date`}
+                  component={Datefield}
+                  name="start_date"
+                  id="start_date"
+                  label="Start date"
+                  controlProps={{
+                    id: 'start_date',
+                    model: `${model}.start_date`,
+                    htmlFor: 'start_date',
+                    label: 'Start date'
+                  }}
+                  validators={{
+                    validDate,
+                    validMonth
+                  }}
+                />
+                <br />
+                <StatefulError
+                  model={`${model}.end_date`}
+                  id="end_date_error"
+                  messages={{
+                    validDate: 'End date is required and must be in the future.',
+                    validMonth: 'Month can only be from 1 to 12.'
+                  }}
+                />
+                <Control
+                  model={`${model}.end_date`}
+                  component={Datefield}
+                  name="end_date"
+                  id="end_date"
+                  label="End date"
+                  controlProps={{
+                    id: 'end_date',
+                    model: `${model}.end_date`,
+                    htmlFor: 'end_date',
+                    label: 'End date'
+                  }}
+                  validators={{
+                    validDate
+                  }}
+                />
+                <br />
+              </div>}
             <div className="row">
               <div className="col-xs-12 col-sm-12 col-md-11">
                 <button

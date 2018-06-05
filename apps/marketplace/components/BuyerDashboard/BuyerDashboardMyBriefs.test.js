@@ -41,12 +41,7 @@ test('My briefs shows a message and not a table when there is no briefs to show'
   const component = mount(<BuyerDashboardMyBriefs {...props} />)
 
   expect(component.find('table tr').length).toEqual(0)
-  expect(
-    component
-      .find('h2')
-      .first()
-      .text()
-  ).toEqual('Start your first brief')
+  expect(component.find('h2').first().text()).toEqual('Start your first brief')
 })
 
 test('My briefs shows correctly formatted Canberra closing time for a future date', () => {
@@ -69,13 +64,7 @@ test('My briefs shows correctly formatted Canberra closing time for a future dat
   const component = mount(<BuyerDashboardMyBriefs {...props} />)
   const expectedDate = `6pm, ${date.getDate()} January ${date.getFullYear()}`
 
-  expect(
-    component
-      .find('table td')
-      .at(2)
-      .find('span')
-      .text()
-  ).toEqual(expectedDate)
+  expect(component.find('table td').at(2).find('span').text()).toEqual(expectedDate)
 })
 
 test('My briefs shows "Closed" for past date', () => {
@@ -95,13 +84,7 @@ test('My briefs shows "Closed" for past date', () => {
 
   const component = mount(<BuyerDashboardMyBriefs {...props} />)
 
-  expect(
-    component
-      .find('table td')
-      .at(2)
-      .find('span')
-      .text()
-  ).toEqual('Closed')
+  expect(component.find('table td').at(2).find('span').text()).toEqual('Closed')
 })
 
 test('My briefs page shows appropriate actions for each brief in the table', () => {
@@ -139,42 +122,14 @@ test('My briefs page shows appropriate actions for each brief in the table', () 
   const component = mount(<BuyerDashboardMyBriefs {...props} />)
 
   // the live brief
-  expect(
-    component
-      .find('table tr')
-      .at(1)
-      .find('td')
-      .at(4)
-      .text()
-  ).toEqual('Answer a question')
+  expect(component.find('table tr').at(1).find('td').at(4).text()).toEqual('Answer a question')
 
   // the closed brief
-  expect(
-    component
-      .find('table tr')
-      .at(2)
-      .find('td')
-      .at(4)
-      .text()
-  ).toEqual('View responsesEdit work order')
+  expect(component.find('table tr').at(2).find('td').at(4).text()).toEqual('View responsesEdit work order')
 
   // the draft brief
-  expect(
-    component
-      .find('table tr')
-      .at(3)
-      .find('td')
-      .at(4)
-      .text()
-  ).toEqual('Edit draft')
+  expect(component.find('table tr').at(3).find('td').at(4).text()).toEqual('Edit draft')
 
   // the withdrawn brief
-  expect(
-    component
-      .find('table tr')
-      .at(4)
-      .find('td')
-      .at(4)
-      .text()
-  ).toEqual('')
+  expect(component.find('table tr').at(4).find('td').at(4).text()).toEqual('')
 })

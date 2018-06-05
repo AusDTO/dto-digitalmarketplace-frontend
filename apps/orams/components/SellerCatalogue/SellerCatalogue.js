@@ -69,7 +69,9 @@ class SellerCatalogue extends Component {
               />
             </div>
           </div>
-          <div className="col-xs-12 col-sm-8 col-sm-push-1">{this.tableSection()}</div>
+          <div className="col-xs-12 col-sm-8 col-sm-push-1">
+            {this.tableSection()}
+          </div>
         </div>
       </main>
     )

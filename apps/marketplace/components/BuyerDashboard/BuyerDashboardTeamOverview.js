@@ -43,14 +43,18 @@ export class BuyerDashboardTeamOverview extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.items.map(item => (
+              {this.props.items.map(item =>
                 <tr key={`item.${item.email}`}>
-                  <td className={styles.colName}>{item.name}</td>
+                  <td className={styles.colName}>
+                    {item.name}
+                  </td>
                   <td>
-                    <a href={`mailto:${item.email}`}>{item.email}</a>
+                    <a href={`mailto:${item.email}`}>
+                      {item.email}
+                    </a>
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

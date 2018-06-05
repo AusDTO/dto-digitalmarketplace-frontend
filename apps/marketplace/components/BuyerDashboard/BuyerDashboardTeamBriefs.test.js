@@ -52,12 +52,7 @@ test('My briefs shows correctly formatted Canberra closing time for a future dat
   const component = mount(<BuyerDashboardTeamBriefs {...props} />)
   const expectedDate = `6pm, ${date.getDate()} January ${date.getFullYear()}`
 
-  expect(
-    component
-      .find('table td')
-      .at(3)
-      .text()
-  ).toEqual(expectedDate)
+  expect(component.find('table td').at(3).text()).toEqual(expectedDate)
 })
 
 test('My briefs shows "Closed" for past date', () => {
@@ -77,12 +72,7 @@ test('My briefs shows "Closed" for past date', () => {
 
   const component = mount(<BuyerDashboardTeamBriefs {...props} />)
 
-  expect(
-    component
-      .find('table td')
-      .at(3)
-      .text()
-  ).toEqual('Closed')
+  expect(component.find('table td').at(3).text()).toEqual('Closed')
 })
 
 test('My briefs page shows appropriate actions for each brief in the table', () => {
@@ -113,32 +103,11 @@ test('My briefs page shows appropriate actions for each brief in the table', () 
   const component = mount(<BuyerDashboardTeamBriefs {...props} />)
 
   // the live brief
-  expect(
-    component
-      .find('table tr')
-      .at(1)
-      .find('td')
-      .at(5)
-      .text()
-  ).toEqual('Answer a question')
+  expect(component.find('table tr').at(1).find('td').at(5).text()).toEqual('Answer a question')
 
   // the closed brief
-  expect(
-    component
-      .find('table tr')
-      .at(2)
-      .find('td')
-      .at(5)
-      .text()
-  ).toEqual('')
+  expect(component.find('table tr').at(2).find('td').at(5).text()).toEqual('')
 
   // the withdrawn brief
-  expect(
-    component
-      .find('table tr')
-      .at(3)
-      .find('td')
-      .at(5)
-      .text()
-  ).toEqual('')
+  expect(component.find('table tr').at(3).find('td').at(5).text()).toEqual('')
 })

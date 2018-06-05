@@ -15,7 +15,7 @@ import BriefOverviewPage from './pages/BriefOverviewPage'
 
 export const rootPath = '/2'
 
-export const Routes = () => (
+export const Routes = () =>
   <Switch>
     <Route exact path={rootPath} component={SignupPage} />
     <Route path={`${rootPath}/signup`} component={SignupPage} />
@@ -32,7 +32,6 @@ export const Routes = () => (
     <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
     <Route component={NotFound} />
   </Switch>
-)
 
 const RootContainer = withRouter(Routes)
 

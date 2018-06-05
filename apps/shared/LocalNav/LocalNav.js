@@ -23,7 +23,9 @@ class LocalNav extends React.Component {
           {text}
         </button>
         <nav className={`local-nav ${navClassName}`} aria-label="main navigation" aria-expanded={open} open={open}>
-          <ul>{children}</ul>
+          <ul>
+            {children}
+          </ul>
         </nav>
       </aside>
     )

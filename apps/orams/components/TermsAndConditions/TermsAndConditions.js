@@ -112,10 +112,10 @@ const TermsAndConditions = props => {
           Back to top of page <b>&uarr;</b>
         </a>
         <p>
-          <h3 className="au-display-md">Buyers</h3>At the current time, only government entities, or other entities
-          expressly authorised by the DTA, can be a buyer in the Digital Marketplace. To create a buyer account you must
-          be a government employee, or a contractor engaged to act on behalf of a local, state, territory or federal
-          government entity, and require access to the Digital Marketplace to perform your role.{' '}
+          <h3 className="au-display-md">Buyers</h3>At the current time, only government entities, or other entities expressly authorised by the
+          DTA, can be a buyer in the Digital Marketplace. To create a buyer account you must be a government employee,
+          or a contractor engaged to act on behalf of a local, state, territory or federal government entity, and
+          require access to the Digital Marketplace to perform your role.{' '}
         </p>
         <p>
           By accessing the Digital Marketplace you are representing to the DTA that you are authorised to act on the

@@ -27,19 +27,17 @@ const CreateUserForm = props => {
         submitClicked={submitClicked}
         setFocus={setFocus}
       />
-      {userType === 'buyer' ? (
-        <div>
-          <h1>Add your name and password</h1>
-          <p>To finish creating your account please provide the following details.</p>
-        </div>
-      ) : (
-        <div>
-          <h1>Add a password</h1>
-          <p>To finish creating your account please provide the following details.</p>
-        </div>
-      )}
+      {userType === 'buyer'
+        ? <div>
+            <h1>Add your name and password</h1>
+            <p>To finish creating your account please provide the following details.</p>
+          </div>
+        : <div>
+            <h1>Add a password</h1>
+            <p>To finish creating your account please provide the following details.</p>
+          </div>}
       <Form model={model} id="createuser" onSubmit={data => handleSubmit(data)}>
-        {userType === 'buyer' && (
+        {userType === 'buyer' &&
           <Textfield
             model={`${model}.name`}
             name="name"
@@ -49,8 +47,7 @@ const CreateUserForm = props => {
             description="This name will be used throughout the Marketplace"
             validators={{ required: val => val && val.length }}
             messages={{ required: 'A name is required' }}
-          />
-        )}
+          />}
 
         <Textfield
           model={`${model}.password`}
@@ -84,11 +81,9 @@ const CreateUserForm = props => {
           messages={{ required: 'Accept Terms of Use' }}
         />
         <div className={styles.formSubmitBtnWrapper}>
-          {currentlySending ? (
-            <LoadingButton />
-          ) : (
-            <input className="au-btn" type="submit" value="Join the Marketplace" onClick={onSubmitClicked} />
-          )}
+          {currentlySending
+            ? <LoadingButton />
+            : <input className="au-btn" type="submit" value="Join the Marketplace" onClick={onSubmitClicked} />}
         </div>
       </Form>
     </div>

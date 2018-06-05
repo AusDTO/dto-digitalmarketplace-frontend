@@ -4,7 +4,7 @@ import AUfooter, { AUfooterNav } from '@gov.au/footer/lib/js/react.js'
 import styles from './PageFooter.scss'
 import logoGovCrest from './ato-logo-02.svg'
 
-const PageFooter = () => (
+const PageFooter = () =>
   <div className="orams-footer">
     <AUfooter>
       <div className={styles.footerWrapper}>
@@ -46,6 +46,5 @@ const PageFooter = () => (
       </div>
     </AUfooter>
   </div>
-)
 
 export default PageFooter

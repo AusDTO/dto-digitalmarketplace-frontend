@@ -13,11 +13,11 @@ const CategoriesAccordionRadioList = props => {
     <div className={styles.container}>
       <h2 className="au-display-lg">{props.title}</h2>
       {categories &&
-        categories.map((category, id = uniqueID()) => (
+        categories.map((category, id = uniqueID()) =>
           <div key={id}>
             <AUaccordion header={category.name} open={categoryAccordionOpen === category.name + id}>
               <div>
-                {category.subCategories.map((subCategory, subId = uniqueID()) => (
+                {category.subCategories.map((subCategory, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
                       className="au-control-input au-control-input--full"
@@ -36,14 +36,16 @@ const CategoriesAccordionRadioList = props => {
                           props.loadTableData()
                         }}
                       />
-                      <span className="au-control-input__text">{subCategory.name}</span>
+                      <span className="au-control-input__text">
+                        {subCategory.name}
+                      </span>
                     </label>
                   </div>
-                ))}
+                )}
               </div>
             </AUaccordion>
           </div>
-        ))}
+        )}
     </div>
   )
 }

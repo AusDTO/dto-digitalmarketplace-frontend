@@ -34,18 +34,17 @@ class Header extends Component {
     return (
       <div>
         <section
-          className={`${!loggedIn && location.pathname === '/orams' ? styles.homepageMarketplaceHeader : ''} ${
-            styles.marketplaceHeader
-          } `}
+          className={`${!loggedIn && location.pathname === '/orams'
+            ? styles.homepageMarketplaceHeader
+            : ''} ${styles.marketplaceHeader} `}
         >
           <div className={styles.wrapper}>
             <div className={styles.oramsLogo}>
               <a href={home()} title="Go to the ORAMS homepage" className={styles.logo}>
                 <span>ORAMS</span>
               </a>
-              {location.pathname === '/orams' && (
-                <div className={styles.subtitle}>Occupational Rehabilitation and Associated Medical Services</div>
-              )}
+              {location.pathname === '/orams' &&
+                <div className={styles.subtitle}>Occupational Rehabilitation and Associated Medical Services</div>}
             </div>
             <div className={styles.userNav}>
               <div id="react-bundle-auth-header">
@@ -53,20 +52,18 @@ class Header extends Component {
                   <li>
                     <a href="mailto:orams@ato.gov.au">Contact</a>
                   </li>
-                  <li>{secondaryLink()}</li>
-                  {loggedIn && userType == 'buyer' ? (
-                    <li>
-                      <Link to={`${rootPath}/price-history`}>Price history</Link>
-                    </li>
-                  ) : (
-                    ''
-                  )}
                   <li>
-                    {loggedIn ? (
-                      <Link to={`${rootPath}/logout`}>Sign out</Link>
-                    ) : (
-                      <Link to={`${rootPath}/login`}>Sign in</Link>
-                    )}
+                    {secondaryLink()}
+                  </li>
+                  {loggedIn && userType == 'buyer'
+                    ? <li>
+                        <Link to={`${rootPath}/price-history`}>Price history</Link>
+                      </li>
+                    : ''}
+                  <li>
+                    {loggedIn
+                      ? <Link to={`${rootPath}/logout`}>Sign out</Link>
+                      : <Link to={`${rootPath}/login`}>Sign in</Link>}
                   </li>
                 </ul>
               </div>

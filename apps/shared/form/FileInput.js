@@ -50,31 +50,33 @@ class FileInput extends React.Component {
     const fileField = `file_${this.props.id}`
     return (
       <div key={fileField} className="callout-no-margin">
-        {this.state.errors && (
+        {this.state.errors &&
           <div className="validation-message">
-            <span>There was an error uploading the file: {this.state.errors}</span>
-          </div>
-        )}
+            <span>
+              There was an error uploading the file: {this.state.errors}
+            </span>
+          </div>}
         {isEmpty(doc) &&
-          !this.state.uploading && (
-            <div>
-              <p>
-                <input
-                  type="file"
-                  id={fileField}
-                  name={fileField}
-                  accept=".pdf,.odt"
-                  onChange={this.onChange}
-                  className={styles.hidden_input}
-                />
-                <label htmlFor={fileField} id={`label_${this.props.id}`} className={styles.custom_input}>
-                  <div className="au-btn au-btn--secondary">{this.props.fieldLabel}</div>
-                </label>
-              </p>
-            </div>
-          )}
+          !this.state.uploading &&
+          <div>
+            <p>
+              <input
+                type="file"
+                id={fileField}
+                name={fileField}
+                accept=".pdf,.odt"
+                onChange={this.onChange}
+                className={styles.hidden_input}
+              />
+              <label htmlFor={fileField} id={`label_${this.props.id}`} className={styles.custom_input}>
+                <div className="au-btn au-btn--secondary">
+                  {this.props.fieldLabel}
+                </div>
+              </label>
+            </p>
+          </div>}
 
-        {!isEmpty(doc) && (
+        {!isEmpty(doc) &&
           <div className={styles.bordered_list__item}>
             <div className="col-xs-9">
               <a href={`/api/2${this.props.url}/${doc}`} target="_blank" rel="external">
@@ -86,8 +88,7 @@ class FileInput extends React.Component {
                 Delete
               </a>
             </div>
-          </div>
-        )}
+          </div>}
 
         {this.state.uploading && <p>Uploading...</p>}
       </div>

@@ -14,11 +14,11 @@ const RegionsAccordionRadioList = props => {
     <div className={styles.container}>
       <h2 className="au-display-lg">{props.title}</h2>
       {regions &&
-        regions.map((region, id = uniqueID()) => (
+        regions.map((region, id = uniqueID()) =>
           <div key={id}>
             <AUaccordion header={region.name} open={regionAccordionOpen === region.name + id}>
               <div>
-                {region.subRegions.map((subRegion, subId = uniqueID()) => (
+                {region.subRegions.map((subRegion, subId = uniqueID()) =>
                   <div key={subId} className={styles.radioSection}>
                     <label
                       className="au-control-input au-control-input--full"
@@ -38,14 +38,16 @@ const RegionsAccordionRadioList = props => {
                           props.loadTableData()
                         }}
                       />
-                      <span className="au-control-input__text">{subRegion.name}</span>
+                      <span className="au-control-input__text">
+                        {subRegion.name}
+                      </span>
                     </label>
                   </div>
-                ))}
+                )}
               </div>
             </AUaccordion>
           </div>
-        ))}
+        )}
     </div>
   )
 }

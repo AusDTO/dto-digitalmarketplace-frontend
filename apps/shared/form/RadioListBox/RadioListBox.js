@@ -18,7 +18,9 @@ const RadioListBox = props => {
   return (
     <div className="field">
       <fieldset>
-        <legend>{label}</legend>
+        <legend>
+          {label}
+        </legend>
         <div>
           {options.map(option => {
             const fieldId = `${id}-${option.value}`
@@ -36,7 +38,9 @@ const RadioListBox = props => {
                       value={option.value}
                       validators={validators}
                     />
-                    <span className="au-control-input__text">{option.label}</span>
+                    <span className="au-control-input__text">
+                      {option.label}
+                    </span>
                   </label>
                 </span>
               </span>

@@ -28,15 +28,14 @@ class SellerCataloguePage extends Component {
         <Route
           exact
           path={match.url}
-          render={() => (
+          render={() =>
             <SellerCatalogue
               regionsData={regionsData}
               servicesData={servicesData}
               tableData={tableData}
               region={region}
               {...this.props}
-            />
-          )}
+            />}
         />
       </Switch>
     )

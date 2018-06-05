@@ -44,7 +44,7 @@ const SignupForm = props => {
       <DocumentTitle title="Signup - Digital Marketplace">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <div>
-            {signupSuccess && (
+            {signupSuccess &&
               <div>
                 <AUpageAlert as="success">
                   <h4>Signup email sent</h4>
@@ -54,44 +54,39 @@ const SignupForm = props => {
                     <span />
                     <h1 className="au-display-xl">Thanks for requesting access to the Digital Marketplace.</h1>
                   </header>
-                  {isBuyer && signupForm.employment_status === 'contractor' ? (
-                    <div>
-                      <span />
-                      <p>
-                        An email has been sent to your manager at <strong>{signupForm.line_manager_email}</strong> with
-                        next steps.
-                      </p>
-                      <p>
-                        If they don’t receive the email within the next 5 minutes or so, check to see if it’s been
-                        classified as spam or
-                        <a href="/contact-us" target="_blank" rel="external">
-                          {' '}
-                          contact us{' '}
-                        </a>{' '}
-                        for assistance.
-                      </p>
-                    </div>
-                  ) : (
-                    <div>
-                      <span />
-                      <p>
-                        An email has been sent to <strong>{signupForm.email_address}</strong> with next steps.
-                      </p>
-                      <p>
-                        If you don’t receive the email within the next 5 minutes or so, check to see if it’s been
-                        classified as spam or
-                        <a href="/contact-us" target="_blank" rel="external">
-                          {' '}
-                          contact us{' '}
-                        </a>{' '}
-                        for assistance.
-                      </p>
-                    </div>
-                  )}
+                  {isBuyer && signupForm.employment_status === 'contractor'
+                    ? <div>
+                        <span />
+                        <p>
+                          An email has been sent to your manager at <strong>{signupForm.line_manager_email}</strong>{' '}
+                          with next steps.
+                        </p>
+                        <p>
+                          If they don’t receive the email within the next 5 minutes or so, check to see if it’s been
+                          classified as spam or
+                          <a href="/contact-us" target="_blank" rel="external">
+                            {' '}contact us{' '}
+                          </a>{' '}
+                          for assistance.
+                        </p>
+                      </div>
+                    : <div>
+                        <span />
+                        <p>
+                          An email has been sent to <strong>{signupForm.email_address}</strong> with next steps.
+                        </p>
+                        <p>
+                          If you don’t receive the email within the next 5 minutes or so, check to see if it’s been
+                          classified as spam or
+                          <a href="/contact-us" target="_blank" rel="external">
+                            {' '}contact us{' '}
+                          </a>{' '}
+                          for assistance.
+                        </p>
+                      </div>}
                 </article>
-              </div>
-            )}
-            {!signupSuccess && (
+              </div>}
+            {!signupSuccess &&
               <Layout>
                 <ErrorBox
                   title="There was a problem with signup"
@@ -173,7 +168,7 @@ const SignupForm = props => {
                       validators={emailValidators}
                       messages={emailErrorMessages}
                     />
-                    {isBuyer && (
+                    {isBuyer &&
                       <div className="employment-status">
                         <RadioList
                           model={`${model}.employment_status`}
@@ -198,56 +193,54 @@ const SignupForm = props => {
                             required: 'You must specify your employment status.'
                           }}
                         />
-                      </div>
-                    )}
+                      </div>}
                     {employmentStatus &&
                       employmentStatus === 'contractor' &&
-                      isBuyer && (
-                        <div>
-                          <p>To create your account we will also need approval from a line manager who:</p>
-                          <ul>
-                            <li>
-                              Is an employee under the Commonwealth Public Service Act (1999) or under equivalent State
-                              or Territory legislation, and
-                            </li>
-                            <li>is satisfied you need to access the Digital Marketplace.</li>
-                          </ul>
-                          <Textfield
-                            model={`${model}.line_manager_name`}
-                            name="line_manager_name"
-                            id="line_manager_name"
-                            htmlFor="line_manager_name"
-                            label="Your manager's full name"
-                            validators={{
-                              required
-                            }}
-                            messages={{
-                              required: 'You must provide the name of your manager'
-                            }}
-                          />
-                          <Textfield
-                            model={`${model}.line_manager_email`}
-                            name="line_manager_email"
-                            id="line_manager_email"
-                            htmlFor="line_manager_email"
-                            label="Your manager's email address"
-                            validators={{
-                              required,
-                              validEmail
-                            }}
-                            messages={{
-                              required: "You must provide your manager's email address",
-                              validEmail: 'A validly formatted email is required.'
-                            }}
-                          />
-                          <AUpageAlert as="info">
-                            <p>
-                              Remember to let this person know we’ll be sending them an email requesting their
-                              authorisation.
-                            </p>
-                          </AUpageAlert>
-                        </div>
-                      )}
+                      isBuyer &&
+                      <div>
+                        <p>To create your account we will also need approval from a line manager who:</p>
+                        <ul>
+                          <li>
+                            Is an employee under the Commonwealth Public Service Act (1999) or under equivalent State or
+                            Territory legislation, and
+                          </li>
+                          <li>is satisfied you need to access the Digital Marketplace.</li>
+                        </ul>
+                        <Textfield
+                          model={`${model}.line_manager_name`}
+                          name="line_manager_name"
+                          id="line_manager_name"
+                          htmlFor="line_manager_name"
+                          label="Your manager's full name"
+                          validators={{
+                            required
+                          }}
+                          messages={{
+                            required: 'You must provide the name of your manager'
+                          }}
+                        />
+                        <Textfield
+                          model={`${model}.line_manager_email`}
+                          name="line_manager_email"
+                          id="line_manager_email"
+                          htmlFor="line_manager_email"
+                          label="Your manager's email address"
+                          validators={{
+                            required,
+                            validEmail
+                          }}
+                          messages={{
+                            required: "You must provide your manager's email address",
+                            validEmail: 'A validly formatted email is required.'
+                          }}
+                        />
+                        <AUpageAlert as="info">
+                          <p>
+                            Remember to let this person know we’ll be sending them an email requesting their
+                            authorisation.
+                          </p>
+                        </AUpageAlert>
+                      </div>}
                     {children}
                     <p>
                       <small>
@@ -257,17 +250,19 @@ const SignupForm = props => {
                         </a>
                       </small>
                     </p>
-                    {currentlySending ? (
-                      <LoadingButton />
-                    ) : (
-                      <p>
-                        <input className="au-btn" type="submit" value="Create your account" onClick={onSubmitClicked} />
-                      </p>
-                    )}
+                    {currentlySending
+                      ? <LoadingButton />
+                      : <p>
+                          <input
+                            className="au-btn"
+                            type="submit"
+                            value="Create your account"
+                            onClick={onSubmitClicked}
+                          />
+                        </p>}
                   </Form>
                 </article>
-              </Layout>
-            )}
+              </Layout>}
           </div>
         </div>
       </DocumentTitle>

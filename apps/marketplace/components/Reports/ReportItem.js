@@ -47,19 +47,21 @@ const ReportItem = props => {
   return (
     <div className="col-sm-12 report-item">
       <div className={styles.reportItem}>
-        {heading && (
+        {heading &&
           <h2
-            className={`${styles.reportItemHeading} ${
-              heading !== 'Who is buying?' ? styles.pageBreak : ''
-            } au-display-lg`}
+            className={`${styles.reportItemHeading} ${heading !== 'Who is buying?'
+              ? styles.pageBreak
+              : ''} au-display-lg`}
           >
             {heading}
-          </h2>
-        )}
-        {subitems.map((subitem, id = uniqueID()) => (
+          </h2>}
+        {subitems.map((subitem, id = uniqueID()) =>
           <p className={`${styles.reportSubitemContainer} ${subitem.fullWidth ? 'col-sm-12' : 'col-sm-6'}`} key={id}>
-            {subitem.text && <span className={styles.reportItemText}>{subitem.text}</span>}
-            {subitem.image && (
+            {subitem.text &&
+              <span className={styles.reportItemText}>
+                {subitem.text}
+              </span>}
+            {subitem.image &&
               <span
                 className={computeClassname(
                   styles.reportItemImage,
@@ -67,20 +69,17 @@ const ReportItem = props => {
                   subitem.formattedImage
                 )}
               >
-                {subitem.imageCaption ? (
-                  <span tabIndex="0" className={styles.imageCaptionContainer} aria-describedby={`${id}-caption`}>
-                    {renderImage(subitem)}
-                    <span className={styles.sr_only} id={`${id}-caption`}>
-                      {subitem.imageCaption}
+                {subitem.imageCaption
+                  ? <span tabIndex="0" className={styles.imageCaptionContainer} aria-describedby={`${id}-caption`}>
+                      {renderImage(subitem)}
+                      <span className={styles.sr_only} id={`${id}-caption`}>
+                        {subitem.imageCaption}
+                      </span>
                     </span>
-                  </span>
-                ) : (
-                  renderImage(subitem)
-                )}
-              </span>
-            )}
+                  : renderImage(subitem)}
+              </span>}
           </p>
-        ))}
+        )}
       </div>
     </div>
   )

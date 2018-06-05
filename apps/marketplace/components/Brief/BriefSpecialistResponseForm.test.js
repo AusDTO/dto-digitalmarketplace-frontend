@@ -19,20 +19,10 @@ describe('BriefSpecialistResponseForm', () => {
         />
       </Provider>
     )
-    expect(
-      tree
-        .find('h1')
-        .first()
-        .text()
-    ).toEqual('Apply for ‘test brief’')
+    expect(tree.find('h1').first().text()).toEqual('Apply for ‘test brief’')
     expect(tree.contains(<p>You can add 3 specialists. This opportunity closes on 15/01/2018.</p>)).toBeTruthy()
     expect(tree.contains(<strong>Specialist 1</strong>)).toBeTruthy()
-    expect(
-      tree
-        .find('input.au-btn')
-        .first()
-        .props().value
-    ).toEqual('Start application')
+    expect(tree.find('input.au-btn').first().props().value).toEqual('Start application')
   })
 
   test('displays progress when responses added', () => {
@@ -41,12 +31,7 @@ describe('BriefSpecialistResponseForm', () => {
         <BriefSpecialistResponseForm briefResponses={[{}]} />
       </Provider>
     )
-    expect(
-      tree
-        .find('input.au-btn')
-        .first()
-        .props().value
-    ).toEqual('Continue')
+    expect(tree.find('input.au-btn').first().props().value).toEqual('Continue')
   })
 
   test('displays questions when specialist name entered', () => {
@@ -56,30 +41,10 @@ describe('BriefSpecialistResponseForm', () => {
       </Provider>
     )
 
-    expect(
-      tree
-        .find('h1')
-        .first()
-        .text()
-    ).toEqual('John Doe')
-    expect(
-      tree
-        .find('div.stepTitle')
-        .first()
-        .text()
-    ).toEqual('Specialist 1 of 3')
-    expect(
-      tree
-        .find('input.au-btn')
-        .first()
-        .props().value
-    ).toEqual('Submit specialist')
-    expect(
-      tree
-        .find('input.au-btn')
-        .at(1)
-        .props().value
-    ).toEqual('Submit and add another')
+    expect(tree.find('h1').first().text()).toEqual('John Doe')
+    expect(tree.find('div.stepTitle').first().text()).toEqual('Specialist 1 of 3')
+    expect(tree.find('input.au-btn').first().props().value).toEqual('Submit specialist')
+    expect(tree.find('input.au-btn').at(1).props().value).toEqual('Submit and add another')
   })
 
   test('does not display add another button on last specialist', () => {
@@ -89,18 +54,8 @@ describe('BriefSpecialistResponseForm', () => {
       </Provider>
     )
 
-    expect(
-      tree
-        .find('div.stepTitle')
-        .first()
-        .text()
-    ).toEqual('Specialist 3 of 3')
+    expect(tree.find('div.stepTitle').first().text()).toEqual('Specialist 3 of 3')
     expect(tree.find('input.au-btn').length).toEqual(1)
-    expect(
-      tree
-        .find('input.au-btn')
-        .first()
-        .props().value
-    ).toEqual('Submit specialist')
+    expect(tree.find('input.au-btn').first().props().value).toEqual('Submit specialist')
   })
 })

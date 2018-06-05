@@ -121,11 +121,10 @@ class MultiInput extends React.Component {
                   className="au-text-input au-text-input--block multiInput"
                 />
               </div>
-              {i > 0 && (
+              {i > 0 &&
                 <a href="#" onClick={this.removeRow.bind(this, id)}>
                   remove <span className="visuallyhidden">number {i + 1}</span>
-                </a>
-              )}
+                </a>}
             </div>
           )
         })}

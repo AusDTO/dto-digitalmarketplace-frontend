@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './main.scss'
 
-const NotFound = () => (
+const NotFound = () =>
   <div className={styles.wrapper}>
     <div className="error-page">
       <div className="index-page grid-row">
@@ -26,6 +26,5 @@ const NotFound = () => (
       </div>
     </div>
   </div>
-)
 
 export default NotFound

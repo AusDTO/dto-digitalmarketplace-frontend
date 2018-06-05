@@ -30,7 +30,9 @@ export class BriefOverviewSectionComponent extends Component {
         <AUheading size="lg" level="2">
           {title}
         </AUheading>
-        <span className={styles.briefOverviewSectionStatus}>{status}</span>
+        <span className={styles.briefOverviewSectionStatus}>
+          {status}
+        </span>
         <BriefOverviewSectionList links={links} />
       </li>
     )

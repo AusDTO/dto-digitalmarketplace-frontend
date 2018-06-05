@@ -15,7 +15,7 @@ import './main.scss'
 const store = configureStore()
 store.dispatch(fetchAuth())
 
-const App = () => (
+const App = () =>
   <Provider store={store}>
     <BrowserRouter>
       <div id="Application">
@@ -36,6 +36,5 @@ const App = () => (
       </div>
     </BrowserRouter>
   </Provider>
-)
 
 ReactDOM.render(<App />, document.getElementById('root'))
