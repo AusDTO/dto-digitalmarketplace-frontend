@@ -3,93 +3,75 @@
 .marketplaceHeader {
   position: relative;
   margin-bottom: 0px;
-  background-color: #313131;
+  background-color: #18788d;
   color: rgb(255, 255, 255);
-  padding-top: 48px;
-  padding-top: 3rem;
-  padding-bottom: 0.3em;
-  border-bottom: .5rem solid #45c2f0;
+  padding: 1.2em 0px;
+}
+
+.marketplaceHeader .marketplaceLogo {
+  float: left;
+}
+
+.marketplaceHeader .logo {
+  padding-bottom: 0px;
+  color: rgb(255, 255, 255);
+  font-size: 1.625rem;
+  letter-spacing: 1px;
+  border-bottom: none;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.4em;
+  margin-top: 1.6em;
 }
 
 .marketplaceHeader a:focus {
-  outline: 3px solid #C390F9;
-  outline-offset: 2px;
-  box-shadow: none;
+  background-color: white;
+  color: #000000;
+  -webkit-box-shadow: 0 0 0 3px #ff8629;
+  -moz-box-shadow: 0 0 0 3px #ff8629;
+  box-shadow: 0 0 0 3px #ff8629;
+  outline: none;
 }
 
-.linkList {
-  margin-bottom: 8px;
-  line-height: 1.5;
+.marketplaceHeader a:hover {
+  background-color: white;
+  color: #000000;
+  outline: none;
 }
 
-.linkList a {
-  padding: 1rem;
-  color: #45c2f0;
+.marketplaceHeader a {
+  color: rgb(255, 255, 255);
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.1s;
+  transition-property: background-color, border-color, color;
   text-decoration: none;
-}
-
-.linkList a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.logo {
-  margin-top: 24px;
-  margin-top: 1.5rem;
-  padding-top: 24px;
-  padding-top: 1.5rem;
-  font-size: 32px;
-  font-size: 2rem;
-  line-height: 1;
-  color: #fff;
-  border-top: solid 1px #a2a2a2;
-  display: block;
-}
-
-@media screen and (min-width: 768px) {
-  .logo {
-    padding: 1.8rem 1rem;
-    margin-left: 16px;
-    margin-left: 1rem;
-    font-size: 24px;
-    font-size: 1.5rem;
-    line-height: 1;
-    margin-top: 0;
-    margin-bottom: 0;
-    border-top: none;
-    border-left: solid 1px #a2a2a2;
-    vertical-align: middle;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    display: inline-block;
-  }
-}
-
-.logoSectionDesktop a {
-  text-decoration: none;
-}
-
-.logo:hover {
-  text-decoration: underline;
-  color: #ffffff;
+  outline: none;
+  border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 .badgeBeta {
-  padding: 2px 8px;
-  padding: 2px .5rem;
-  margin-left: 8px;
-  margin-left: .5rem;
-  border: solid 2px #fff;
-  border-radius: 2em;
-  font-size: 12px;
-  font-size: 0.75rem;
-  font-weight: normal;
+  font-weight: 700;
   vertical-align: super;
-  text-decoration: none;
+  background-color: rgb(255, 255, 255);
+  color: rgb(24, 120, 141);
+  padding: 0.3em 0.6em;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+  border-radius: 12px;
+  margin-left: 10px;
 }
 
-.inlineLinks a {
-  color: rgb(255, 255, 255);
+.marketplaceHeader .userNav {
+  display: block;
+  float: right;
+  margin-left: 1.6em;
+}
+
+.marketplaceHeader .inlineLinks {
+  margin-bottom: 0px;
+  padding: 0.1em 0px;
 }
 
 .marketplaceHeader .inlineLinks li:not(:last-child) {
@@ -101,25 +83,16 @@
   margin: 0px;
 }
 
-.logoGovCrest {
-  vertical-align: middle;
-  max-width: 14rem;
+.marketplaceHeader .inlineLinks li a {
+  padding-bottom: 0.06em;
 }
 
-.logoGovCrest svg {
-  max-width: 165px;
-  vertical-align: middle;
-  display: inline-block;
+.inlineLinks a {
+  color: rgb(255, 255, 255);
 }
 
-.navigation {
-  padding-top: 2rem;
-}
-
-.marketplaceTitle {
-  vertical-align: middle;
-}
-
-.userNav {
-  text-align: right;
+@media screen and (min-width: 768px) {
+  .marketplaceHeader {
+      padding-bottom: 1.2em;
+  }
 }
