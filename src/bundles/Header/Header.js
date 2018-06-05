@@ -26,6 +26,7 @@ class Header extends React.Component {
   }
 
   render() {
+    console.log("PROPS", this.props)
     return (
       <section className="au-marketplace-header">
         <div className="wrapper">
