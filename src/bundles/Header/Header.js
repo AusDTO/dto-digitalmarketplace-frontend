@@ -50,7 +50,7 @@ class Header extends React.Component {
                       {this.props.isAuthenticated ? <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
                     </li>
                     <li>
-                      {this.props.isAuthenticated ? <a href={this.props.logoutUrl}>Sign out</a> : <a href="/login" className="au-btn au-btn--dark">Log in</a>}
+                      {this.props.isAuthenticated ? <a href={this.props.logoutUrl}>Sign out</a> : <a href="/login" className="au-btn au-btn--dark">Sign in</a>}
                     </li>
                   </ul>
                 </div>
