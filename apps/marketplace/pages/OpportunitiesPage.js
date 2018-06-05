@@ -12,6 +12,10 @@ class OpportunitiesPage extends Component {
     // this.props.loadInitialData()
   }
 
+  getOpportunities(statusFilters, openToFilters, typeFilters) {
+    console.log(statusFilters, openToFilters, typeFilters)
+  }
+
   render() {
     const { match, currentlySending } = this.props
 
@@ -21,7 +25,11 @@ class OpportunitiesPage extends Component {
 
     return (
       <Switch>
-        <Route exact path={match.url} render={() => <Opportunities {...this.props} />} />
+        <Route
+          exact
+          path={match.url}
+          render={() => <Opportunities {...this.props} getOpportunities={this.getOpportunities} />}
+        />
       </Switch>
     )
   }

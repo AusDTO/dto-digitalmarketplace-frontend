@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import Pagination from 'shared/Pagination/Pagination'
-import OpportunitiesFilters from './OpportunitiesFilters'
+import { OpportunitiesFilters } from './OpportunitiesFilters'
 import styles from './Opportunities.scss'
 
 export class Opportunities extends Component {
@@ -9,10 +10,47 @@ export class Opportunities extends Component {
     super(props)
     this.state = {
       accordionOpen: false,
-      accordionOpenMobile: false,
-      filterCount: 0,
-      filterCountMobile: 0
+      activeStatusFilters: {
+        open: false,
+        closed: false
+      },
+      activeOpenToFilters: {
+        selected: false,
+        one: false,
+        all: false
+      },
+      activeTypeFilters: {
+        innovation: false,
+        outcomes: false,
+        training: false,
+        specialists: false
+      }
     }
+  }
+
+  getActiveFilterCount = (includeTypeFilter = false) => {
+    let count = 0
+    Object.keys(this.state.activeStatusFilters).map(filter => {
+      if (this.state.activeStatusFilters[filter]) {
+        count += 1
+      }
+      return true
+    })
+    Object.keys(this.state.activeOpenToFilters).map(filter => {
+      if (this.state.activeOpenToFilters[filter]) {
+        count += 1
+      }
+      return true
+    })
+    if (includeTypeFilter) {
+      Object.keys(this.state.activeTypeFilters).map(filter => {
+        if (this.state.activeTypeFilters[filter]) {
+          count += 1
+        }
+        return true
+      })
+    }
+    return count
   }
 
   openAccordion = () => {
@@ -23,26 +61,65 @@ export class Opportunities extends Component {
     this.setState({ accordionOpen: false })
   }
 
-  openAccordionMobile = () => {
-    this.setState({ accordionOpenMobile: true })
+  toggleStatusFilter = filter => {
+    this.setState(curState => {
+      const newState = { ...curState }
+      if (filter in curState.activeStatusFilters) {
+        newState.activeStatusFilters[filter] = !curState.activeStatusFilters[filter]
+      }
+      return newState
+    })
   }
 
-  closeAccordionMobile = () => {
-    this.setState({ accordionOpenMobile: false })
+  toggleOpenToFilter = filter => {
+    this.setState(curState => {
+      const newState = { ...curState }
+      if (filter in curState.activeOpenToFilters) {
+        newState.activeOpenToFilters[filter] = !curState.activeOpenToFilters[filter]
+      }
+      return newState
+    })
   }
 
-  filterClick = e => {
-    this.setState({ filterCount: e.target.checked === true ? this.state.filterCount + 1 : this.state.filterCount - 1 })
+  toggleTypeFilter = filter => {
+    this.setState(curState => {
+      const newState = { ...curState }
+      if (filter in curState.activeTypeFilters) {
+        newState.activeTypeFilters[filter] = !curState.activeTypeFilters[filter]
+      }
+      return newState
+    })
   }
 
-  filterClickMobile = e => {
-    this.setState({
-      filterCountMobile: e.target.checked === true ? this.state.filterCountMobile + 1 : this.state.filterCountMobile - 1
+  clearAllFilters = () => {
+    this.setState(curState => {
+      const newState = { ...curState }
+      newState.activeStatusFilters = {
+        open: false,
+        closed: false
+      }
+      newState.activeOpenToFilters = {
+        selected: false,
+        one: false,
+        all: false
+      }
+      newState.activeTypeFilters = {
+        innovation: false,
+        outcomes: false,
+        training: false,
+        specialists: false
+      }
+      return newState
     })
   }
 
   applyFilters = () => {
     this.setState({ accordionOpen: false })
+    this.props.getOpportunities(
+      this.state.activeStatusFilters,
+      this.state.activeOpenToFilters,
+      this.state.activeTypeFilters
+    )
   }
 
   cancelFilters = () => {
@@ -99,16 +176,18 @@ export class Opportunities extends Component {
               </AUheading>
             </div>
             <OpportunitiesFilters
-              filterCount={this.state.filterCount}
               accordionOpen={this.state.accordionOpen}
               openAccordion={this.openAccordion}
               closeAccordion={this.closeAccordion}
               applyFilters={this.applyFilters}
               cancelFilters={this.cancelFilters}
-              filterCountMobile={this.state.filterCountMobile}
-              accordionOpenMobile={this.state.accordionOpenMobile}
-              openAccordionMobile={this.openAccordionMobile}
-              closeAccordionMobile={this.closeAccordionMobile}
+              activeStatusFilters={this.state.activeStatusFilters}
+              activeOpenToFilters={this.state.activeOpenToFilters}
+              activeTypeFilters={this.state.activeTypeFilters}
+              toggleStatusFilter={this.toggleStatusFilter}
+              toggleOpenToFilter={this.toggleOpenToFilter}
+              toggleTypeFilter={this.toggleTypeFilter}
+              getActiveFilterCount={this.getActiveFilterCount}
             />
           </div>
           {items.length > 0 && (
@@ -190,6 +269,8 @@ export class Opportunities extends Component {
   }
 }
 
-Opportunities.propTypes = {}
+Opportunities.propTypes = {
+  getOpportunities: PropTypes.func.isRequired
+}
 
 export default Opportunities

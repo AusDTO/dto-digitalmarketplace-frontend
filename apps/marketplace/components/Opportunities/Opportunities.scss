@@ -118,7 +118,7 @@
   padding: 8px 16px 10px 16px;
 }
 
-a:hover.filter, a:focus.filter {
+a:hover.filter, a.filter.active {
   outline: solid 3px #45c2f0;
   outline-offset: -3px;
   color: #00698f !important;
