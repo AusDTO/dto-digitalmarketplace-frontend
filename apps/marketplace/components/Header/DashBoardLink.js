@@ -7,11 +7,13 @@ const DashBoardLink = props => {
   const { userType } = props
   return (
     <span>
-      {userType === 'buyer'
-        ? <a href={`${rootPath}/buyer-dashboard`}>Dashboard</a>
-        : userType === 'applicant'
-          ? <a href="/sellers/application">Continue application</a>
-          : <a href="/sellers">Dashboard</a>}
+      {userType === 'buyer' ? (
+        <a href={`${rootPath}/buyer-dashboard`}>Dashboard</a>
+      ) : userType === 'applicant' ? (
+        <a href="/sellers/application">Continue application</a>
+      ) : (
+        <a href="/sellers">Dashboard</a>
+      )}
     </span>
   )
 }

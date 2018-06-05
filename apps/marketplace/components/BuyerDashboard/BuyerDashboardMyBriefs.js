@@ -62,27 +62,25 @@ export class BuyerDashboardMyBriefs extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.items.map(item =>
+              {this.props.items.map(item => (
                 <tr key={`item.${item.id}`}>
-                  <td className={styles.colId}>
-                    {item.id}
-                  </td>
+                  <td className={styles.colId}>{item.id}</td>
                   <td className={styles.colName}>
-                    <a href={`/digital-marketplace/opportunities/${item.id}`}>
-                      {item.name}
-                    </a>
+                    <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                   </td>
                   <td
-                    className={`${item.status === 'live' || item.status !== 'draft'
-                      ? ''
-                      : styles.empty} ${styles.colClosing}`}
+                    className={`${item.status === 'live' || item.status !== 'draft' ? '' : styles.empty} ${
+                      styles.colClosing
+                    }`}
                   >
-                    {item.status === 'live' &&
+                    {item.status === 'live' && (
                       <span className={styles.hideSmall}>
                         <ClosedDate date={item.closed_at} />
-                      </span>}
-                    {item.status !== 'draft' &&
-                      <div>{`${item.applications} ${item.applications === 1 ? 'response' : 'responses'}`}</div>}
+                      </span>
+                    )}
+                    {item.status !== 'draft' && (
+                      <div>{`${item.applications} ${item.applications === 1 ? 'response' : 'responses'}`}</div>
+                    )}
                   </td>
                   <td className={styles.colStatus}>
                     <div
@@ -97,40 +95,50 @@ export class BuyerDashboardMyBriefs extends Component {
                   </td>
                   <td className={styles.colAction}>
                     {item.status === 'draft' &&
-                      item.lot === 'digital-professionals' &&
-                      <a href={`${rootPath}/brief/${item.id}/overview`}>
-                        <strong>Edit draft</strong>
-                      </a>}
+                      item.lot === 'digital-professionals' && (
+                        <a href={`${rootPath}/brief/${item.id}/overview`}>
+                          <strong>Edit draft</strong>
+                        </a>
+                      )}
                     {item.status === 'draft' &&
-                      item.lot === 'digital-outcome' &&
-                      <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
-                        <strong>Edit draft</strong>
-                      </a>}
-                    {item.status === 'live' &&
+                      item.lot === 'digital-outcome' && (
+                        <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`}>
+                          <strong>Edit draft</strong>
+                        </a>
+                      )}
+                    {item.status === 'live' && (
                       <a
-                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
+                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${
+                          item.id
+                        }/supplier-questions/answer-question`}
                       >
                         <strong>Answer a question</strong>
-                      </a>}
-                    {item.status === 'closed' &&
+                      </a>
+                    )}
+                    {item.status === 'closed' && (
                       <a href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/responses`}>
                         <strong>View responses</strong>
-                      </a>}
+                      </a>
+                    )}
                     {item.status === 'closed' &&
-                      item.work_order === null &&
-                      <a
-                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/work-orders/create`}
-                      >
-                        <strong>Create work order</strong>
-                      </a>}
+                      item.work_order === null && (
+                        <a
+                          href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${
+                            item.id
+                          }/work-orders/create`}
+                        >
+                          <strong>Create work order</strong>
+                        </a>
+                      )}
                     {item.status === 'closed' &&
-                      item.work_order !== null &&
-                      <a href={`/work-orders/${item.work_order}`}>
-                        <strong>Edit work order</strong>
-                      </a>}
+                      item.work_order !== null && (
+                        <a href={`/work-orders/${item.work_order}`}>
+                          <strong>Edit work order</strong>
+                        </a>
+                      )}
                   </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
           <BuyerDashboardHelp />

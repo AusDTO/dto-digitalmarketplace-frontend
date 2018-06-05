@@ -35,18 +35,17 @@ class LinkInput extends React.Component {
     return (
       <div className="field" id={id}>
         <h3>
-          <label htmlFor={htmlFor}>
-            {label}
-          </label>
+          <label htmlFor={htmlFor}>{label}</label>
         </h3>
-        {description &&
+        {description && (
           <p className="hint" id={`${id}-hint`}>
             {description}
-          </p>}
+          </p>
+        )}
         <div>
-          {times(this.state.length, i =>
+          {times(this.state.length, i => (
             <span key={id + i}>
-              {i > 0 &&
+              {i > 0 && (
                 <span>
                   <hr styleName="hr" />
 
@@ -65,7 +64,8 @@ class LinkInput extends React.Component {
                       </button>
                     </div>
                   </div>
-                </span>}
+                </span>
+              )}
               <div className="row">
                 <div className="col-xs-12 col-sm-10">
                   <Textfield
@@ -91,7 +91,7 @@ class LinkInput extends React.Component {
                 </div>
               </div>
             </span>
-          )}
+          ))}
           <button
             type="button"
             className="button-secondary"

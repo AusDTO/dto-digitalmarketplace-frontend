@@ -39,16 +39,18 @@ export class HomePageComponent extends BaseForm {
       <div>
         <main>
           <div id="login-page">
-            {loggedIn
-              ? <Redirect to={initialPage} />
-              : <LoginForm
-                  submitClicked={this.onSubmitClicked}
-                  handleSubmit={handleSubmit}
-                  model={model}
-                  currentlySending={currentlySending}
-                  rootPath={rootPath}
-                  framework="ORAMS"
-                />}
+            {loggedIn ? (
+              <Redirect to={initialPage} />
+            ) : (
+              <LoginForm
+                submitClicked={this.onSubmitClicked}
+                handleSubmit={handleSubmit}
+                model={model}
+                currentlySending={currentlySending}
+                rootPath={rootPath}
+                framework="ORAMS"
+              />
+            )}
           </div>
           <div className="row">
             <div className="col-xs-12">
