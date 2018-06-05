@@ -1,7 +1,5 @@
 /* eslint-disable*/
 import React from 'react'
-import logoDTA from './DTA_logo_white.svg'
-import logoNISA from './NISA_Logo_white.svg'
 
 const AUFooter = () =>
   <footer className="au-footer footer au-body au-body--dark au-footer--dark " role="contentinfo">
@@ -27,9 +25,6 @@ const AUFooter = () =>
             <li>
               <a href="/disclaimer">Disclaimer</a>
             </li>
-            <li>
-              <a href="/copyright">Copyright</a>
-            </li>
           </ul>
           <div className="au-footer__end">
             <div className="footer__content footer__legal">
@@ -41,12 +36,12 @@ const AUFooter = () =>
           </div>
         </div>
         <div className="col-md-3 col-md-pull-9 footer__logo">
-          <div className="au-footer-logo-dta">
-            <div dangerouslySetInnerHTML={{ __html: logoDTA }} />
-          </div>
-          <div className="au-footer-logo-nisa">
-            <div dangerouslySetInnerHTML={{ __html: logoNISA }} />
-          </div>
+          <p className="footer__affiliate">
+            <span>An initiative of the </span>
+            <span>Digital Transformation Agency </span><span className="footer__affiliate-link">
+              <a className="au-cta-link  au-cta-link--dark" href="http://dta.gov.au/">More projects</a>
+            </span>
+          </p>
         </div>
       </div>
     </div>

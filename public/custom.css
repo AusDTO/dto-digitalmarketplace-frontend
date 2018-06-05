@@ -435,13 +435,9 @@ main article:first-of-type a.button {
 }
 
 .au-marketplace-header-link-list a {
-  padding: 15px;
+  padding: 1rem;
   color: #45c2f0;
   text-decoration: none;
-}
-
-.au-marketplace-header-active {
-  border-bottom: 8px solid #ffffff;
 }
 
 .au-marketplace-header-link-list a:hover {
@@ -642,8 +638,8 @@ li:first-child.au-marketplace-header-link-list a {
 }
 
 .footer__logo {
-  margin-top: 32px;
-  margin-top: 2rem;
+    margin-top: 32px;
+    margin-top: 2rem;
 }
 
 .au-footer.au-footer--dark {
@@ -653,10 +649,6 @@ li:first-child.au-marketplace-header-link-list a {
 }
 
 @media (min-width: 992px) {
-  .footer__logo {
-    margin-top: 0px;
-  }
-
   .footer__affiliate {
     padding: 8px 0 8px 16px;
     padding: .5rem 0 .5rem 1rem;
@@ -712,10 +704,6 @@ li:first-child.au-marketplace-header-link-list a {
   padding-top: 2rem;
 }
 
-.footer__legal a {
-  color: white !important;
-}
-
 .footer__legal p, .footer__legal-links {
   font-size: 14px;
   font-size: .875rem;
@@ -745,13 +733,4 @@ li:first-child.au-marketplace-header-link-list a {
 
 .footer .au-link-list--inline a {
   color: #fff;
-}
-
-.au-footer-logo-dta {
-  width: 100px;
-  margin-bottom: 20px;
-}
-
-.au-footer-logo-nisa {
-  width: 140px;
 }
