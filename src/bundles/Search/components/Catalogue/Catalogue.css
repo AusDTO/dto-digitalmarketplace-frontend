@@ -70,11 +70,6 @@ border: none;
   .filters span {
     font-size: 1.0rem !important;
   }
-
-  .autocomplete {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
 }
 
 /**
@@ -118,6 +113,7 @@ border: none;
 
 .keyword-search > article:first-of-type {
   margin-right: 0;
+  width: 85.62178%;
 }
 
 .keyword-search button {
@@ -191,6 +187,6 @@ border: none;
     margin-bottom: 2.0rem;
 }
 
-.no-padding {
-  padding: 0 !important;
+.checkboxList fieldset legend {
+
 }

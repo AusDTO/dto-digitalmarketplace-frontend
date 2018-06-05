@@ -45,10 +45,9 @@ var loaders = [
       {
         test: /\.(js|jsx)$/,
         include: [
-          paths.appSrc,
+          paths.appSrc, 
           paths.appServer,
-          paths.appNodeModules + '/@gov.au/page-alerts',
-          paths.appNodeModules + '/@gov.au/accordion'
+          paths.appNodeModules + '/@gov.au/page-alerts'
         ],
         loader: 'babel',
         query: {
@@ -174,7 +173,7 @@ module.exports = [{
     loaders: loaders.concat({
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
-        'style',
+        'style', 
         'css?modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss'
       )
     })
@@ -265,7 +264,8 @@ module.exports = [{
   name: 'marketplace app',
   entry: [
     require.resolve('./polyfills'),
-    './apps/marketplace/index.js'],
+    './apps/marketplace/index.js',
+    './scss/uikit-custom-marketplace.scss'],
   devtool: 'eval',
   output: {
     path: './build',
@@ -294,11 +294,24 @@ module.exports = [{
           paths.sharedComponents
         ],
         loader: [
-          'style-loader?singleton',
+          'style-loader?singleton', 
           'css-loader?modules&importLoaders=1&context=' + paths.marketplaceSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
         ].join('!')
+      },
+      // uikit css
+      {
+        test: /\.scss$/,
+        include: [
+          paths.appNodeModules + '/@gov.au',
+          paths.pancakeSass,
+          paths.appScss
+        ],
+        loader: ExtractTextPlugin.extract([
+          'css-loader?minimize=true',
+          'sass-loader'
+        ].join('!'))
       },
       {
         test: /\.css$/,
@@ -321,13 +334,15 @@ module.exports = [{
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       }
-    })
+    }),
+    new ExtractTextPlugin('uikit-marketplace.css')
   ]
 }, {
   name: 'orams app',
   entry: [
     require.resolve('./polyfills'),
-    './apps/orams/index.js'],
+    './apps/orams/index.js',
+    './scss/uikit-custom-orams.scss'],
   devtool: 'eval',
   output: {
     path: './build',
@@ -355,11 +370,24 @@ module.exports = [{
           paths.sharedComponents
         ],
         loader: [
-          'style-loader?singleton',
+          'style-loader?singleton', 
           'css-loader?modules&importLoaders=1&context=' + paths.oramsSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader'
         ].join('!')
+      },
+      // uikit css
+      {
+        test: /\.scss$/,
+        include: [
+          paths.appNodeModules + '/@gov.au',
+          paths.pancakeSass,
+          paths.appScss
+        ],
+        loader: ExtractTextPlugin.extract([
+          'css-loader?minimize=true',
+          'sass-loader'
+        ].join('!'))
       },
       {
         test: /\.css$/,
@@ -386,6 +414,7 @@ module.exports = [{
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       }
-    })
+    }),
+    new ExtractTextPlugin('uikit-orams.css')
   ]
 }];
