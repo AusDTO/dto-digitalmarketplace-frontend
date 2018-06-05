@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import Banner from 'shared/Banner/Banner'
 
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import AUFooter from './components/Footer/AUFooter'
 import configureStore from './store'
 import RootContainer from './routes'
