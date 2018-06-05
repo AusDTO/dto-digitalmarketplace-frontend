@@ -1,10 +1,8 @@
-/* eslint-disable */
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import styles from './Opportunities.scss'
-import AUaccordion from '@gov.au/accordion/lib/js/react.js'
-import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import Pagination from 'shared/Pagination/Pagination'
+import OpportunitiesFilters from './OpportunitiesFilters'
+import styles from './Opportunities.scss'
 
 export class Opportunities extends Component {
   constructor(props) {
@@ -43,11 +41,11 @@ export class Opportunities extends Component {
     })
   }
 
-  applyFilters = e => {
+  applyFilters = () => {
     this.setState({ accordionOpen: false })
   }
 
-  cancelFilters = e => {
+  cancelFilters = () => {
     this.setState({ accordionOpen: false })
   }
 
@@ -96,143 +94,22 @@ export class Opportunities extends Component {
         <article className="opportunities-page" role="main">
           <div className={`${styles.header} row`}>
             <div className={`${styles.headerTitle} col-md-4 col-sm-4 col-xs-4`}>
-              <h1 className="au-display-xl">Opportunities</h1>
+              <AUheading size="xl" level="1">
+                Opportunities
+              </AUheading>
             </div>
-            <div className={`col-md-6 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
-              <ul className="au-link-list au-link-list--inline">
-                <li className={styles.filterContainer}>
-                  <a href="#" className={`${styles.filter} ${styles.firstFilter}`}>
-                    Innovation
-                  </a>
-                </li>
-                <li className={styles.filterContainer}>
-                  <a href="#" className={`${styles.filter}`}>
-                    Outcomes
-                  </a>
-                </li>
-                <li className={styles.filterContainer}>
-                  <a href="#" className={styles.filter}>
-                    Training
-                  </a>
-                </li>
-                <li className={styles.filterContainer}>
-                  <a href="#" className={`${styles.filter} ${styles.lastFilter}`}>
-                    Specialists
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className={`col-md-2 col-sm-12 ${styles.hideMobile}`}>
-              <AUaccordion
-                header={`Filters ${this.state.filterCount > 0 ? '• ' + this.state.filterCount : ''}`}
-                open={this.state.accordionOpen}
-                onOpen={() => {
-                  this.openAccordion()
-                }}
-                onClose={() => {
-                  this.closeAccordion()
-                }}
-              >
-                <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                  <div className={styles.inputGroup}>
-                    <h3 className="au-display-sm">Status of opportunity</h3>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Open" name="open-opportunities" onClick={this.filterClick} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Closed" name="closed-opportunities" onClick={this.filterClick} />
-                    </div>
-                  </div>
-                  <div className={styles.inputGroup}>
-                    <h3 className="au-display-sm">Open to</h3>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="All" name="all-opportunities" onClick={this.filterClick} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Selected" name="selected-opportunities" onClick={this.filterClick} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="One" name="one-opportunity" onClick={this.filterClick} />
-                    </div>
-                  </div>
-                  <span className={styles.cancelLink}>
-                    <a href="#" onClick={this.cancelFilters}>Cancel</a>
-                  </span>
-                  <span className={styles.applyFilters}>
-                    <a href="#" onClick={this.applyFilters}>Apply filters</a>
-                  </span>
-                  <div />
-                </div>
-              </AUaccordion>
-            </div>
-            <div
-              className={`col-md-push-3 col-md-5 col-sm-push-3 col-sm-5 col-xs-12 ${styles.filtersSectionMobile} ${
-                styles.hideDesktop
-              }`}
-            >
-              <AUaccordion
-                header={`Filter opportunities ${
-                  this.state.filterCountMobile > 0 ? '• ' + this.state.filterCountMobile : ''
-                }`}
-                open={this.state.accordionOpenMobile}
-                onOpen={() => {
-                  this.openAccordionMobile()
-                }}
-                onClose={() => {
-                  this.closeAccordionMobile()
-                }}
-              >
-                <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                  <div className={styles.inputGroup}>
-                    <h3 className="au-display-sm">Type of opportunity</h3>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Innovation" name="innovation-opportunities" onClick={this.filterClickMobile} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Outcomes" name="outcomes-opportunities" onClick={this.filterClickMobile} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Training" name="training-opportunities" onClick={this.filterClickMobile} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox
-                        label="Specialists"
-                        name="specialists-opportunities"
-                        onClick={this.filterClickMobile}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.inputGroup}>
-                    <h3 className="au-display-sm">Status of opportunity</h3>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Open" name="open-opportunities" onClick={this.filterClickMobile} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Closed" name="closed-opportunities" onClick={this.filterClickMobile} />
-                    </div>
-                  </div>
-                  <div className={styles.inputGroup}>
-                    <h3 className="au-display-sm">Open to</h3>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="All" name="all-opportunities" onClick={this.filterClickMobile} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="Selected" name="selected-opportunities" onClick={this.filterClickMobile} />
-                    </div>
-                    <div className={styles.checkbox}>
-                      <AUcheckbox label="One" name="one-opportunity" onClick={this.filterClickMobile} />
-                    </div>
-                  </div>
-                  <span className={styles.cancelLink}>
-                    <a href="#">Cancel</a>
-                  </span>
-                  <span className={styles.applyFilters}>
-                    <a href="#">Apply filters</a>
-                  </span>
-                  <div />
-                </div>
-              </AUaccordion>
-            </div>
+            <OpportunitiesFilters
+              filterCount={this.state.filterCount}
+              accordionOpen={this.state.accordionOpen}
+              openAccordion={this.openAccordion}
+              closeAccordion={this.closeAccordion}
+              applyFilters={this.applyFilters}
+              cancelFilters={this.cancelFilters}
+              filterCountMobile={this.state.filterCountMobile}
+              accordionOpenMobile={this.state.accordionOpenMobile}
+              openAccordionMobile={this.openAccordionMobile}
+              closeAccordionMobile={this.closeAccordionMobile}
+            />
           </div>
           {items.length > 0 && (
             <div className={`${styles.tableDesktop} ${styles.hideMobile}`}>
@@ -267,7 +144,7 @@ export class Opportunities extends Component {
                   </div>
                 </div>
               ))}
-              <Pagination pageCount={5} pages={[1,2,3,4,5]}/>
+              <Pagination pageCount={5} pages={[1, 2, 3, 4, 5]} />
             </div>
           )}
           {items.length > 0 && (
@@ -315,6 +192,4 @@ export class Opportunities extends Component {
 
 Opportunities.propTypes = {}
 
-const mapStateToProps = ({}) => ({})
-
-export default connect(mapStateToProps)(Opportunities)
+export default Opportunities
