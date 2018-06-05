@@ -1,7 +1,7 @@
 @import "../main.scss";
 
 .phaseBanner {
-  background: black;
+  background: #313131;
   color: #f0f3f5;
   padding: 0.4em 0;
 }
@@ -24,9 +24,4 @@
   -moz-box-shadow: 0 0 0 3px #ff8629;
   box-shadow: 0 0 0 3px #ff8629;
   outline: none;
-}
-
-.phaseBanner a:hover {
-  text-decoration: none;
-  color: white;
 }
