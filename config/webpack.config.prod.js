@@ -53,8 +53,7 @@ const loaders = [
     include: [
       paths.appSrc,
       paths.appServer,
-      paths.appNodeModules + '/@gov.au/page-alerts',
-      paths.appNodeModules + '/@gov.au/accordion'
+      paths.appNodeModules + '/@gov.au/page-alerts'
     ],
     loader: 'babel',
     query: {
@@ -303,7 +302,7 @@ module.exports = [{
 }, {
   name: 'marketplace app',
   entry: [require.resolve('./polyfills'),require.resolve('./rollbar'),
-    require.resolve('./zendesk'), './apps/marketplace/index.js'],
+    require.resolve('./zendesk'), './apps/marketplace/index.js', './scss/uikit-custom-marketplace.scss'],
   devtool: 'source-map',
   output: {
     path: './build',
@@ -338,6 +337,19 @@ module.exports = [{
           'sass-loader'
         ].join('!')
       },
+      // uikit css
+      {
+        test: /\.scss$/,
+        include: [
+          paths.appNodeModules + '/@gov.au',
+          paths.pancakeSass,
+          paths.appScss
+        ],
+        loader: ExtractTextPlugin.extract([
+          'css-loader?minimize=true',
+          'sass-loader'
+        ].join('!'))
+      },
       {
         test: /\.css$/,
         loaders: ['style', 'css'],
@@ -355,6 +367,7 @@ module.exports = [{
     ]
   },
   plugins: [
+    new ExtractTextPlugin('uikit-marketplace.css'),
     new webpack.DefinePlugin(env),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Try to dedupe duplicated modules, if any:
@@ -381,7 +394,8 @@ module.exports = [{
   ]
 }, {
   name: 'orams app',
-  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './apps/orams/index.js'],
+  entry: [require.resolve('./polyfills'),require.resolve('./rollbar'), './apps/orams/index.js',
+    './scss/uikit-custom-orams.scss'],
   devtool: 'source-map',
   output: {
     path: './build',
@@ -415,6 +429,19 @@ module.exports = [{
           'sass-loader'
         ].join('!')
       },
+      // uikit css
+      {
+        test: /\.scss$/,
+        include: [
+          paths.appNodeModules + '/@gov.au',
+          paths.pancakeSass,
+          paths.appScss
+        ],
+        loader: ExtractTextPlugin.extract([
+          'css-loader?minimize=true',
+          'sass-loader'
+        ].join('!'))
+      },
       {
         test: /\.css$/,
         loaders: ['style', 'css'],
@@ -432,6 +459,7 @@ module.exports = [{
     ]
   },
   plugins: [
+    new ExtractTextPlugin('uikit-orams.css'),
     new webpack.DefinePlugin(env),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Try to dedupe duplicated modules, if any:
