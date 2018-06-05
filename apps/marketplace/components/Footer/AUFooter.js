@@ -1,6 +1,6 @@
 /* eslint-disable*/
 import React from 'react'
-import logoDTA from './dta_logo.svg'
+import logoDTA from './DTA_logo.svg'
 import logoNISA from './NISA_logo.svg'
 
 const AUFooter = () => (
