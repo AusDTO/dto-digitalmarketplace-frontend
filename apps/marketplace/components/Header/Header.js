@@ -28,7 +28,7 @@ export class Header extends Component {
 
     return (
       <section className="au-marketplace-header">
-        <div className="wrapper">
+        <div className="container">
           <div className="row">
             <div className="col-md-8 col-sm-8 col-xs-12 au-marketplace-header-logo-section">
               <a href="/" title="Go to the Marketplace homepage">
