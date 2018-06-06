@@ -5,6 +5,7 @@ import appReducer from './appReducer'
 import brief from './briefReducers'
 import user from './memberInfoReducers'
 import dashboard from './dashboardReducers'
+import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 
@@ -13,6 +14,7 @@ export default combineReducers({
   user,
   brief,
   dashboard,
+  opportunities,
   form_options,
   errorMessage,
   ...createForms({
