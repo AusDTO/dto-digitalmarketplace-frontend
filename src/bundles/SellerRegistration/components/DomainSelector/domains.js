@@ -41,8 +41,8 @@ export default [
     },
     {
         key: 'training',
-        label: 'Training, Learning and Capability',
-        description: 'Training, learning and capability builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.'
+        label: 'Training, Learning and Development',
+        description: 'Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.'
     },
     {
         key: 'marketingcomms',
