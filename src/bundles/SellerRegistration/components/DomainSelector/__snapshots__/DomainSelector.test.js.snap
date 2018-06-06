@@ -207,7 +207,7 @@ exports[`DomainSelector renders 1`] = `
             Change, Training and Transformation
              
             <p>
-              Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Capability.
+              Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Development.
             </p>
           </label>
         </div>
@@ -598,7 +598,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
             Change, Training and Transformation
              
             <p>
-              Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Capability.
+              Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Development.
             </p>
           </label>
         </div>
