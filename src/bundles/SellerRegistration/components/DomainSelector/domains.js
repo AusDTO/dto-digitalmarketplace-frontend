@@ -32,7 +32,7 @@ export default [
     {
         key: 'change',
         label: 'Change, Training and Transformation',
-        description: 'Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Capability.'
+        description: 'Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Development.'
     },
     {
         key: 'changetransformation',
