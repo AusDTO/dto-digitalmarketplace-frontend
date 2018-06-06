@@ -1,17 +1,41 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import PropTypes from 'prop-types'
 import RegisterComponent from '../../RegisterComponent'
+import { returnPath } from './helper'
 
-import createStore from './redux/create'
-import Header from './Header'
+export const AuthWidget = (props, history) => {
 
-export const AuthWidget = (props) => {
-  const store = createStore(props);
-  return (
-    <Provider store={store}>
-        <Header />
-    </Provider>
-  )
+    const _path = returnPath(history);
+
+    if (props.isAuthenticated) {
+        return (
+            <ul id="main-navigation" className="inline-links--inverted">
+                <li><a href={props.dashboardUrl}>{props.dashboardText}</a></li>
+                <li><a href={props.logoutUrl}>Sign out</a></li>
+            </ul>
+        )
+    }
+
+    return (
+    <ul id="main-navigation" className="inline-links--inverted">
+        <li><a href={props.registerUrl}>{props.registerText}</a></li>
+        <li><a href={props.loginUrl.concat(_path)}>Sign in</a></li>
+    </ul>
+    )
 }
 
-export default new RegisterComponent({ 'auth-header': AuthWidget })
+AuthWidget.propTypes = {
+    registerUrl: PropTypes.string,
+    registerText: PropTypes.string,
+    loginUrl: PropTypes.string,
+    dashboardUrl: PropTypes.string,
+    logoutUrl: PropTypes.string,
+    isAuthenticated: PropTypes.bool
+}
+
+AuthWidget.defaultProps = {
+    registerText: 'Register',
+    dashboardText: 'Dashboard'
+}
+
+export default new RegisterComponent({'auth-header': AuthWidget})

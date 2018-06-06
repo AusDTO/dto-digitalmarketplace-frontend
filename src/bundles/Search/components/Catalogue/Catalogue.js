@@ -35,9 +35,9 @@ export class Catalogue extends React.Component {
             <div className="col-xs-12 col-sm-4">
               <h1 styleName="heading">Seller catalogue</h1>
             </div>
-            <div className="col-xs-12 col-sm-8" styleName="autocomplete no-padding">
+            <div className="col-xs-12 col-sm-8" styleName="autocomplete">
               <article styleName="keyword-search">
-                <article className="col-xs-10" styleName="no-padding">
+                <article className="col-xs-10">
                   <label htmlFor="keyword" className="visually-hidden">
                     Search by company name, role you need or the outcome you are after
                   </label>
@@ -75,7 +75,7 @@ export class Catalogue extends React.Component {
                     }}
                   />
                 </article>
-                <article className="col-xs-2" styleName="no-padding">
+                <article className="col-xs-2">
                   <button type="submit" value="" styleName="searchButton">
                     <Icon value="search" size={22}/>
                     <span>&nbsp;Search</span>
