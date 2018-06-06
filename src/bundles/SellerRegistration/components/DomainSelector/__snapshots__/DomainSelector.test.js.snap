@@ -238,22 +238,22 @@ exports[`DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="training-learning-and-capability"
-            name="training-learning-and-capability"
+            id="training-learning-and-development"
+            name="training-learning-and-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Training, Learning and Capability"
+            value="Training, Learning and Development"
           />
           <label
-            htmlFor="training-learning-and-capability"
+            htmlFor="training-learning-and-development"
           >
-            Training, Learning and Capability
+            Training, Learning and Development
              
             <p>
-              Training, learning and capability builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.
+              Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.
             </p>
           </label>
         </div>
@@ -629,22 +629,22 @@ exports[`DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="training-learning-and-capability"
-            name="training-learning-and-capability"
+            id="training-learning-and-development"
+            name="training-learning-and-development"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Training, Learning and Capability"
+            value="Training, Learning and Development"
           />
           <label
-            htmlFor="training-learning-and-capability"
+            htmlFor="training-learning-and-development"
           >
-            Training, Learning and Capability
+            Training, Learning and Development
              
             <p>
-              Training, learning and capability builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.
+              Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.
             </p>
           </label>
         </div>
