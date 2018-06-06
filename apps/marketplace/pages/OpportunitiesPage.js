@@ -14,21 +14,8 @@ class OpportunitiesPage extends Component {
     super(props)
     this.state = {
       accordionOpen: false,
-      activeStatusFilters: {
-        open: false,
-        closed: false
-      },
-      activeOpenToFilters: {
-        selected: false,
-        one: false,
-        all: false
-      },
-      activeTypeFilters: {
-        innovation: false,
-        outcomes: false,
-        training: false,
-        specialists: false
-      }
+      activeFilterCount: 0,
+      activeFilterCountMobile: 0
     }
     this.getOpportunities = this.getOpportunities.bind(this)
   }
@@ -37,38 +24,12 @@ class OpportunitiesPage extends Component {
     this.props.loadOpportunitiesData()
   }
 
-  getOpportunities(statusFilters, openToFilters, typeFilters) {
-    this.props.loadOpportunitiesData({
-      statusFilters,
-      openToFilters,
-      typeFilters
-    })
+  getOpportunities(filters) {
+    this.props.loadOpportunitiesData({ ...filters })
   }
 
-  getActiveFilterCount = (includeTypeFilter = false) => {
-    let count = 0
-    Object.keys(this.state.activeStatusFilters).map(filter => {
-      if (this.state.activeStatusFilters[filter]) {
-        count += 1
-      }
-      return true
-    })
-    Object.keys(this.state.activeOpenToFilters).map(filter => {
-      if (this.state.activeOpenToFilters[filter]) {
-        count += 1
-      }
-      return true
-    })
-    if (includeTypeFilter) {
-      Object.keys(this.state.activeTypeFilters).map(filter => {
-        if (this.state.activeTypeFilters[filter]) {
-          count += 1
-        }
-        return true
-      })
-    }
-    return count
-  }
+  getActiveFilterCount = (includeTypeFilter = false) =>
+    includeTypeFilter ? this.state.activeFilterCountMobile : this.state.activeFilterCount
 
   openAccordion = () => {
     this.setState({ accordionOpen: true })
@@ -78,60 +39,31 @@ class OpportunitiesPage extends Component {
     this.setState({ accordionOpen: false })
   }
 
-  toggleStatusFilter = filter => {
-    this.setState(curState => {
-      const newState = { ...curState }
-      if (filter in curState.activeStatusFilters) {
-        newState.activeStatusFilters[filter] = !curState.activeStatusFilters[filter]
-      }
-      return newState
-    })
-  }
+  applyFilters = filters => {
+    this.getOpportunities(filters)
 
-  toggleOpenToFilter = filter => {
-    this.setState(curState => {
-      const newState = { ...curState }
-      if (filter in curState.activeOpenToFilters) {
-        newState.activeOpenToFilters[filter] = !curState.activeOpenToFilters[filter]
+    let count = 0
+    Object.keys(filters.selectedStatusFilters).map(filter => {
+      if (filters.selectedStatusFilters[filter]) {
+        count += 1
       }
-      return newState
+      return true
     })
-  }
-
-  toggleTypeFilter = filter => {
-    this.setState(curState => {
-      const newState = { ...curState }
-      if (filter in curState.activeTypeFilters) {
-        newState.activeTypeFilters[filter] = !curState.activeTypeFilters[filter]
+    Object.keys(filters.selectedOpenToFilters).map(filter => {
+      if (filters.selectedOpenToFilters[filter]) {
+        count += 1
       }
-      return newState
+      return true
     })
-  }
+    this.setState({ activeFilterCount: count })
 
-  clearAllFilters = () => {
-    this.setState(curState => {
-      const newState = { ...curState }
-      newState.activeStatusFilters = {
-        open: false,
-        closed: false
+    Object.keys(filters.selectedTypeFilters).map(filter => {
+      if (filters.selectedTypeFilters[filter]) {
+        count += 1
       }
-      newState.activeOpenToFilters = {
-        selected: false,
-        one: false,
-        all: false
-      }
-      newState.activeTypeFilters = {
-        innovation: false,
-        outcomes: false,
-        training: false,
-        specialists: false
-      }
-      return newState
+      return true
     })
-  }
-
-  applyFilters = () => {
-    this.getOpportunities(this.state.activeStatusFilters, this.state.activeOpenToFilters, this.state.activeTypeFilters)
+    this.setState({ activeFilterCountMobile: count })
   }
 
   render() {
@@ -150,12 +82,6 @@ class OpportunitiesPage extends Component {
             openAccordion={this.openAccordion}
             closeAccordion={this.closeAccordion}
             applyFilters={this.applyFilters}
-            activeStatusFilters={this.state.activeStatusFilters}
-            activeOpenToFilters={this.state.activeOpenToFilters}
-            activeTypeFilters={this.state.activeTypeFilters}
-            toggleStatusFilter={this.toggleStatusFilter}
-            toggleOpenToFilter={this.toggleOpenToFilter}
-            toggleTypeFilter={this.toggleTypeFilter}
             getActiveFilterCount={this.getActiveFilterCount}
           />
         </div>

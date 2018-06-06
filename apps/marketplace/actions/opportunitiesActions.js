@@ -62,7 +62,7 @@ export const loadOpportunities = (filters = {}) => dispatch => {
       company: 'Australian Taxation Office (ATO)'
     },
     {
-      openTo: 'Selected',
+      openTo: 'selected',
       id: 1263,
       name: 'Data Analytics for Heavy Vehicle Road Reform',
       location: 'Australian Capital Territory',
