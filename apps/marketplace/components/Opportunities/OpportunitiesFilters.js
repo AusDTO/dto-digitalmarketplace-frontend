@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -456,6 +457,8 @@ export class OpportunitiesFilters extends Component {
   }
 }
 
-OpportunitiesFilters.propTypes = {}
+OpportunitiesFilters.propTypes = {
+  getOpportunities: PropTypes.func.isRequired
+}
 
 export default OpportunitiesFilters

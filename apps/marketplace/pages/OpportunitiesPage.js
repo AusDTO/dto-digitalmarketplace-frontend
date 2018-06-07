@@ -24,8 +24,12 @@ class OpportunitiesPage extends Component {
   }
 }
 
+OpportunitiesPage.defaultProps = {
+  currentlySending: false
+}
+
 OpportunitiesPage.propTypes = {
-  match: PropTypes.object.isRequired
+  currentlySending: PropTypes.bool
 }
 
 const mapStateToProps = state => ({
