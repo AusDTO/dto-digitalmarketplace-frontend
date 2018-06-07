@@ -21,8 +21,7 @@ OpportunitiesHeader.propTypes = {
   accordionOpen: PropTypes.bool.isRequired,
   openAccordion: PropTypes.func.isRequired,
   closeAccordion: PropTypes.func.isRequired,
-  applyFilters: PropTypes.func.isRequired,
-  getActiveFilterCount: PropTypes.func.isRequired
+  applyFilters: PropTypes.func.isRequired
 }
 
 export default OpportunitiesHeader
