@@ -59,10 +59,6 @@ exports.clickLink = async function (page, linkText) {
 }
 
 exports.words = function (numberOfWords, numberOfCharacters) {
-    // let numberOfWordsDivideBy = process.env.NUMBER_OF_WORDS_DIVIDE_BY;
-    // if (numberOfWordsDivideBy) {
-    //     numberOfWords = Math.ceil(numberOfWords / numberOfWordsDivideBy);
-    // }
     let text = randomWords({ exactly: numberOfWords }).join(' ');
 
     if (numberOfCharacters) {
