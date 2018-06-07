@@ -33,7 +33,16 @@ exports.selectRadio = async function (page, value) {
 exports.type = async function (page, id, value) {
     console.log(`Typing in ${id}`);
     let input = await this.getElementHandle(page, `//*[@id="${id}"]`);
-    await input.type(value, { delay: 0 });
+    if (process.env.TYPE_INPUT) {
+        await input.type(value, { delay: 0 });
+    } else {
+        await page.evaluate((el, v) => {
+            el.value = v;
+            let event = new Event('change', { bubbles: true });
+            event.simulated = true;
+            el.dispatchEvent(event);
+        }, input, value);
+    }
 }
 
 exports.clickButton = async function (page, value) {
@@ -50,10 +59,10 @@ exports.clickLink = async function (page, linkText) {
 }
 
 exports.words = function (numberOfWords, numberOfCharacters) {
-    let numberOfWordsDivideBy = process.env.NUMBER_OF_WORDS_DIVIDE_BY;
-    if (numberOfWordsDivideBy) {
-        numberOfWords = Math.ceil(numberOfWords / numberOfWordsDivideBy);
-    }
+    // let numberOfWordsDivideBy = process.env.NUMBER_OF_WORDS_DIVIDE_BY;
+    // if (numberOfWordsDivideBy) {
+    //     numberOfWords = Math.ceil(numberOfWords / numberOfWordsDivideBy);
+    // }
     let text = randomWords({ exactly: numberOfWords }).join(' ');
 
     if (numberOfCharacters) {

@@ -88,7 +88,7 @@ async function fillDescriptinoOfWork(page) {
     await utils.type(page, 'input-budgetRange', utils.words(200));
     await clickSaveContinue(page);
 
-    await utils.type(page, 'input-summary', utils.words(500));
+    await utils.type(page, 'input-summary', utils.words(50));
     await clickSaveContinue(page);
 
     await clickReturnToOverview(page);
