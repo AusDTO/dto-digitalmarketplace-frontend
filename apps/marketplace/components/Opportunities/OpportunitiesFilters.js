@@ -121,14 +121,14 @@ export class OpportunitiesFilters extends Component {
   matchFilterStateToActiveState() {
     this.setState(curState => {
       const newState = { ...curState }
-      if (this.state.activeStatusFilters) {
-        newState.statusFilters = { ...this.state.activeStatusFilters }
+      if (curState.activeStatusFilters) {
+        newState.statusFilters = { ...curState.activeStatusFilters }
       }
-      if (this.state.activeOpenToFilters) {
-        newState.openToFilters = { ...this.state.activeOpenToFilters }
+      if (curState.activeOpenToFilters) {
+        newState.openToFilters = { ...curState.activeOpenToFilters }
       }
-      if (this.state.activeTypeFilters) {
-        newState.typeFilters = { ...this.state.activeTypeFilters }
+      if (curState.activeTypeFilters) {
+        newState.typeFilters = { ...curState.activeTypeFilters }
       }
       return newState
     })
