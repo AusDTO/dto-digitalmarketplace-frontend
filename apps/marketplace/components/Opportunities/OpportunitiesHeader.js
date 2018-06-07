@@ -18,10 +18,7 @@ export const OpportunitiesHeader = props => (
 )
 
 OpportunitiesHeader.propTypes = {
-  accordionOpen: PropTypes.bool.isRequired,
-  openAccordion: PropTypes.func.isRequired,
-  closeAccordion: PropTypes.func.isRequired,
-  applyFilters: PropTypes.func.isRequired
+  getOpportunities: PropTypes.func.isRequired
 }
 
 export default OpportunitiesHeader

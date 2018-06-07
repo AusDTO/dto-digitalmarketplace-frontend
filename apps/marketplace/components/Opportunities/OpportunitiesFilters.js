@@ -8,6 +8,7 @@ export class OpportunitiesFilters extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      accordionOpen: false,
       statusFilters: {
         open: false,
         closed: false
@@ -88,6 +89,14 @@ export class OpportunitiesFilters extends Component {
     return count
   }
 
+  openAccordion = () => {
+    this.setState({ accordionOpen: true })
+  }
+
+  closeAccordion = () => {
+    this.setState({ accordionOpen: false })
+  }
+
   toggleStatusFilter = filter => {
     this.setState(curState => {
       const newState = { ...curState }
@@ -163,7 +172,7 @@ export class OpportunitiesFilters extends Component {
     if (filter) {
       const self = this
       this.toggleTypeFilter(filter, () => {
-        self.props.applyFilters(self.getFilterValues())
+        self.props.getOpportunities(self.getFilterValues())
         self.setActiveFilterState()
       })
     }
@@ -172,14 +181,14 @@ export class OpportunitiesFilters extends Component {
   handleFilterCancelClick(e) {
     e.preventDefault()
     this.matchFilterStateToActiveState()
-    this.props.closeAccordion()
+    this.closeAccordion()
   }
 
   handleFilterApplyClick(e) {
     e.preventDefault()
-    this.props.applyFilters(this.getFilterValues())
+    this.props.getOpportunities(this.getFilterValues())
     this.setActiveFilterState()
-    this.props.closeAccordion()
+    this.closeAccordion()
   }
 
   render() {
@@ -236,12 +245,12 @@ export class OpportunitiesFilters extends Component {
         <div className={`col-md-2 col-sm-12 ${styles.hideMobile}`}>
           <AUaccordion
             header={`Filters ${this.getActiveFilterCount() > 0 ? `• ${this.getActiveFilterCount()}` : ''}`}
-            open={this.props.accordionOpen}
+            open={this.state.accordionOpen}
             onOpen={() => {
-              this.props.openAccordion()
+              this.openAccordion()
             }}
             onClose={() => {
-              this.props.closeAccordion()
+              this.closeAccordion()
             }}
           >
             <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
@@ -323,12 +332,12 @@ export class OpportunitiesFilters extends Component {
             header={`Filter opportunities ${
               this.getActiveFilterCount(true) > 0 ? `• ${this.getActiveFilterCount(true)}` : ''
             }`}
-            open={this.props.accordionOpen}
+            open={this.state.accordionOpen}
             onOpen={() => {
-              this.props.openAccordion()
+              this.openAccordion()
             }}
             onClose={() => {
-              this.props.closeAccordion()
+              this.closeAccordion()
             }}
           >
             <div className="au-accordion__body" id="accordion-default" aria-hidden="false">

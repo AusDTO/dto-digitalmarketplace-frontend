@@ -8,31 +8,8 @@ import Opportunities from 'marketplace/components/Opportunities/Opportunities'
 import { OpportunitiesHeader } from 'marketplace/components/Opportunities/OpportunitiesHeader'
 
 class OpportunitiesPage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      accordionOpen: false
-    }
-  }
-
   componentDidMount() {
-    this.props.loadOpportunitiesData()
-  }
-
-  getOpportunities(filters) {
-    this.props.loadOpportunitiesData({ ...filters })
-  }
-
-  openAccordion = () => {
-    this.setState({ accordionOpen: true })
-  }
-
-  closeAccordion = () => {
-    this.setState({ accordionOpen: false })
-  }
-
-  applyFilters = filters => {
-    this.getOpportunities(filters)
+    this.props.getOpportunities()
   }
 
   render() {
@@ -40,12 +17,7 @@ class OpportunitiesPage extends Component {
 
     return (
       <div>
-        <OpportunitiesHeader
-          accordionOpen={this.state.accordionOpen}
-          openAccordion={this.openAccordion}
-          closeAccordion={this.closeAccordion}
-          applyFilters={this.applyFilters}
-        />
+        <OpportunitiesHeader getOpportunities={this.props.getOpportunities} />
         {currentlySending ? <LoadingIndicatorFullPage /> : <Opportunities {...this.props} />}
       </div>
     )
@@ -62,7 +34,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadOpportunitiesData: (filters = {}) => dispatch(loadOpportunities(filters))
+  getOpportunities: (filters = {}) => dispatch(loadOpportunities(filters))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OpportunitiesPage))
