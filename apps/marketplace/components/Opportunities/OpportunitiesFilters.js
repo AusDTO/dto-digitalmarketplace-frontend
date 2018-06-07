@@ -8,16 +8,16 @@ export class OpportunitiesFilters extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedStatusFilters: {
+      statusFilters: {
         open: false,
         closed: false
       },
-      selectedOpenToFilters: {
+      openToFilters: {
         selected: false,
         one: false,
         all: false
       },
-      selectedTypeFilters: {
+      typeFilters: {
         innovation: false,
         outcomes: false,
         training: false,
@@ -33,8 +33,8 @@ export class OpportunitiesFilters extends Component {
   toggleStatusFilter = filter => {
     this.setState(curState => {
       const newState = { ...curState }
-      if (filter in curState.selectedStatusFilters) {
-        newState.selectedStatusFilters[filter] = !curState.selectedStatusFilters[filter]
+      if (filter in curState.statusFilters) {
+        newState.statusFilters[filter] = !curState.statusFilters[filter]
       }
       return newState
     })
@@ -43,18 +43,34 @@ export class OpportunitiesFilters extends Component {
   toggleOpenToFilter = filter => {
     this.setState(curState => {
       const newState = { ...curState }
-      if (filter in curState.selectedOpenToFilters) {
-        newState.selectedOpenToFilters[filter] = !curState.selectedOpenToFilters[filter]
+      if (filter in curState.openToFilters) {
+        newState.openToFilters[filter] = !curState.openToFilters[filter]
       }
       return newState
     })
   }
 
-  toggleTypeFilter = filter => {
+  toggleTypeFilter = (filter, callback = () => {}) => {
     this.setState(curState => {
       const newState = { ...curState }
-      if (filter in curState.selectedTypeFilters) {
-        newState.selectedTypeFilters[filter] = !curState.selectedTypeFilters[filter]
+      if (filter in curState.typeFilters) {
+        newState.typeFilters[filter] = !curState.typeFilters[filter]
+      }
+      return newState
+    }, callback)
+  }
+
+  matchFilterStateToActiveState() {
+    this.setState(curState => {
+      const newState = { ...curState }
+      if (this.props.activeStatusFilters) {
+        newState.statusFilters = { ...this.props.activeStatusFilters }
+      }
+      if (this.props.activeOpenToFilters) {
+        newState.openToFilters = { ...this.props.activeOpenToFilters }
+      }
+      if (this.props.activeTypeFilters) {
+        newState.typeFilters = { ...this.props.activeTypeFilters }
       }
       return newState
     })
@@ -87,13 +103,16 @@ export class OpportunitiesFilters extends Component {
     e.preventDefault()
     const filter = e.target.getAttribute('data-filter')
     if (filter) {
-      this.toggleTypeFilter(filter)
-      this.props.applyFilters({ ...this.state })
+      const self = this
+      this.toggleTypeFilter(filter, () => {
+        self.props.applyFilters({ ...self.state })
+      })
     }
   }
 
   handleFilterCancelClick(e) {
     e.preventDefault()
+    this.matchFilterStateToActiveState()
     this.props.closeAccordion()
   }
 
@@ -112,7 +131,7 @@ export class OpportunitiesFilters extends Component {
               <a
                 href="#dummy"
                 className={`${styles.filter} ${styles.firstFilter} ${
-                  this.state.selectedTypeFilters.innovation ? styles.active : ''
+                  this.state.typeFilters.innovation ? styles.active : ''
                 }`}
                 onClick={this.handleTypeFilterClick}
                 data-filter="innovation"
@@ -123,7 +142,7 @@ export class OpportunitiesFilters extends Component {
             <li className={styles.filterContainer}>
               <a
                 href="#dummy"
-                className={`${styles.filter} ${this.state.selectedTypeFilters.outcomes ? styles.active : ''}`}
+                className={`${styles.filter} ${this.state.typeFilters.outcomes ? styles.active : ''}`}
                 onClick={this.handleTypeFilterClick}
                 data-filter="outcomes"
               >
@@ -133,7 +152,7 @@ export class OpportunitiesFilters extends Component {
             <li className={styles.filterContainer}>
               <a
                 href="#dummy"
-                className={`${styles.filter} ${this.state.selectedTypeFilters.training ? styles.active : ''}`}
+                className={`${styles.filter} ${this.state.typeFilters.training ? styles.active : ''}`}
                 onClick={this.handleTypeFilterClick}
                 data-filter="training"
               >
@@ -144,7 +163,7 @@ export class OpportunitiesFilters extends Component {
               <a
                 href="#dummy"
                 className={`${styles.filter} ${styles.lastFilter} ${
-                  this.state.selectedTypeFilters.specialists ? styles.active : ''
+                  this.state.typeFilters.specialists ? styles.active : ''
                 }`}
                 onClick={this.handleTypeFilterClick}
                 data-filter="specialists"
@@ -176,7 +195,7 @@ export class OpportunitiesFilters extends Component {
                     data-filter-type="status"
                     name="open"
                     onChange={this.handleCheckboxClick}
-                    checked={this.state.selectedStatusFilters.open}
+                    checked={this.state.statusFilters.open}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -185,7 +204,7 @@ export class OpportunitiesFilters extends Component {
                     data-filter-type="status"
                     name="closed"
                     onChange={this.handleCheckboxClick}
-                    checked={this.state.selectedStatusFilters.closed}
+                    checked={this.state.statusFilters.closed}
                   />
                 </div>
               </div>
@@ -199,7 +218,7 @@ export class OpportunitiesFilters extends Component {
                     data-filter-type="openTo"
                     name="all"
                     onChange={this.handleCheckboxClick}
-                    checked={this.state.selectedOpenToFilters.all}
+                    checked={this.state.openToFilters.all}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -208,7 +227,7 @@ export class OpportunitiesFilters extends Component {
                     data-filter-type="openTo"
                     name="selected"
                     onChange={this.handleCheckboxClick}
-                    checked={this.state.selectedOpenToFilters.selected}
+                    checked={this.state.openToFilters.selected}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -217,7 +236,7 @@ export class OpportunitiesFilters extends Component {
                     data-filter-type="openTo"
                     name="one"
                     onChange={this.handleCheckboxClick}
-                    checked={this.state.selectedOpenToFilters.one}
+                    checked={this.state.openToFilters.one}
                   />
                 </div>
               </div>
@@ -263,7 +282,7 @@ export class OpportunitiesFilters extends Component {
                     name="innovation"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="type"
-                    checked={this.state.selectedTypeFilters.innovation}
+                    checked={this.state.typeFilters.innovation}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -272,7 +291,7 @@ export class OpportunitiesFilters extends Component {
                     name="outcomes"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="type"
-                    checked={this.state.selectedTypeFilters.outcomes}
+                    checked={this.state.typeFilters.outcomes}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -281,7 +300,7 @@ export class OpportunitiesFilters extends Component {
                     name="training"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="type"
-                    checked={this.state.selectedTypeFilters.training}
+                    checked={this.state.typeFilters.training}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -290,7 +309,7 @@ export class OpportunitiesFilters extends Component {
                     name="specialists"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="type"
-                    checked={this.state.selectedTypeFilters.specialists}
+                    checked={this.state.typeFilters.specialists}
                   />
                 </div>
               </div>
@@ -304,7 +323,7 @@ export class OpportunitiesFilters extends Component {
                     name="open"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="status"
-                    checked={this.state.selectedStatusFilters.open}
+                    checked={this.state.statusFilters.open}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -313,7 +332,7 @@ export class OpportunitiesFilters extends Component {
                     name="closed"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="status"
-                    checked={this.state.selectedStatusFilters.closed}
+                    checked={this.state.statusFilters.closed}
                   />
                 </div>
               </div>
@@ -327,7 +346,7 @@ export class OpportunitiesFilters extends Component {
                     name="all"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="openTo"
-                    checked={this.state.selectedOpenToFilters.all}
+                    checked={this.state.openToFilters.all}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -336,7 +355,7 @@ export class OpportunitiesFilters extends Component {
                     name="selected"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="openTo"
-                    checked={this.state.selectedOpenToFilters.selected}
+                    checked={this.state.openToFilters.selected}
                   />
                 </div>
                 <div className={styles.checkbox}>
@@ -345,7 +364,7 @@ export class OpportunitiesFilters extends Component {
                     name="one"
                     onChange={this.handleCheckboxClick}
                     data-filter-type="openTo"
-                    checked={this.state.selectedOpenToFilters.one}
+                    checked={this.state.openToFilters.one}
                   />
                 </div>
               </div>

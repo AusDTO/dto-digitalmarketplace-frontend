@@ -12,10 +12,22 @@ class OpportunitiesPage extends Component {
     super(props)
     this.state = {
       accordionOpen: false,
-      activeFilterCount: 0,
-      activeFilterCountMobile: 0
+      activeStatusFilters: {
+        open: false,
+        closed: false
+      },
+      activeOpenToFilters: {
+        selected: false,
+        one: false,
+        all: false
+      },
+      activeTypeFilters: {
+        innovation: false,
+        outcomes: false,
+        training: false,
+        specialists: false
+      }
     }
-    this.getOpportunities = this.getOpportunities.bind(this)
   }
 
   componentDidMount() {
@@ -26,8 +38,30 @@ class OpportunitiesPage extends Component {
     this.props.loadOpportunitiesData({ ...filters })
   }
 
-  getActiveFilterCount = (includeTypeFilter = false) =>
-    includeTypeFilter ? this.state.activeFilterCountMobile : this.state.activeFilterCount
+  getActiveFilterCount = (isMobile = false) => {
+    let count = 0
+    Object.keys(this.state.activeStatusFilters).map(filter => {
+      if (this.state.activeStatusFilters[filter]) {
+        count += 1
+      }
+      return true
+    })
+    Object.keys(this.state.activeOpenToFilters).map(filter => {
+      if (this.state.activeOpenToFilters[filter]) {
+        count += 1
+      }
+      return true
+    })
+    if (isMobile) {
+      Object.keys(this.state.activeTypeFilters).map(filter => {
+        if (this.state.activeTypeFilters[filter]) {
+          count += 1
+        }
+        return true
+      })
+    }
+    return count
+  }
 
   openAccordion = () => {
     this.setState({ accordionOpen: true })
@@ -39,29 +73,11 @@ class OpportunitiesPage extends Component {
 
   applyFilters = filters => {
     this.getOpportunities(filters)
-
-    let count = 0
-    Object.keys(filters.selectedStatusFilters).map(filter => {
-      if (filters.selectedStatusFilters[filter]) {
-        count += 1
-      }
-      return true
+    this.setState({
+      activeStatusFilters: { ...filters.statusFilters },
+      activeOpenToFilters: { ...filters.openToFilters },
+      activeTypeFilters: { ...filters.typeFilters }
     })
-    Object.keys(filters.selectedOpenToFilters).map(filter => {
-      if (filters.selectedOpenToFilters[filter]) {
-        count += 1
-      }
-      return true
-    })
-    this.setState({ activeFilterCount: count })
-
-    Object.keys(filters.selectedTypeFilters).map(filter => {
-      if (filters.selectedTypeFilters[filter]) {
-        count += 1
-      }
-      return true
-    })
-    this.setState({ activeFilterCountMobile: count })
   }
 
   render() {
@@ -74,6 +90,9 @@ class OpportunitiesPage extends Component {
           openAccordion={this.openAccordion}
           closeAccordion={this.closeAccordion}
           applyFilters={this.applyFilters}
+          activeStatusFilters={this.state.activeStatusFilters}
+          activeOpenToFilters={this.state.activeOpenToFilters}
+          activeTypeFilters={this.state.activeTypeFilters}
           getActiveFilterCount={this.getActiveFilterCount}
         />
         {currentlySending ? <LoadingIndicatorFullPage /> : <Opportunities {...this.props} />}
