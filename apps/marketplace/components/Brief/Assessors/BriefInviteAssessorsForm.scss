@@ -1,0 +1,27 @@
+.container {
+  margin-top: 2rem;
+}
+
+.badge {
+  border-radius: 3px;
+  border: solid 2px #224a61;
+  color: #224a61;
+  padding: 2px 5px;
+  display: inline-block;
+  font-size: 0.87rem;
+  line-height: 1.4;
+}
+
+@media screen and (min-width: 992px) {
+  .badge {
+    margin-bottom: 0.5rem;
+  }
+}
+.remainingCount {
+  margin-top: 0 !important;  
+}
+
+.submitButton {
+  margin-top: 3.5rem;
+  display: block;
+}
