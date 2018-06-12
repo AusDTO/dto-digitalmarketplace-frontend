@@ -27,8 +27,15 @@ exports.selectRadio = async function (value) {
     await radio.press('Space');
 }
 
-exports.type = async function (id, value) {
+exports.type = async function (id, options) {
     console.log(`Typing in ${id}`);
+    let { value, numberOfWords, numberOfCharacters } = options;
+    if (value !== '' && !value) {
+        if (numberOfCharacters) {
+            numberOfWords = numberOfCharacters;
+        }
+        value = utils.words(numberOfWords, numberOfCharacters);
+    }
     let input = await utils.getElementHandle(`//*[@id="${id}"]`);
     if (process.env.TYPE_INPUT) {
         await input.type(value, { delay: 0 });
@@ -64,7 +71,7 @@ exports.words = function (numberOfWords, numberOfCharacters) {
     return text;
 }
 
-exports.matchText = async function(tag, text) {
+exports.matchText = async function (tag, text) {
     console.log(`matching text: '//${tag}["${text}"]'`);
     let elementHandles = await utils.getElementHandles(`//${tag}[contains(text(), "${text}")]`);
     expect(elementHandles.length).to.equal(1, `No text found using '//${tag}["${text}"]'`);

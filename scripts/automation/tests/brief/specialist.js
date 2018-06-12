@@ -19,12 +19,12 @@ describe('should be able to create specialist brief', function () {
         { args: ['Emerging technologies'] }
     ];
 
-    await buyerLogin.login();
     areaOfExpertises.forEach(function (areaOfExpertise) {
         it('should create specialist brief of ' + areaOfExpertise.args, async () => {
+            await buyerLogin.login();
             await buyerDashboard.startBrief();
             await specialistBrief.create.apply(null, areaOfExpertise.args);
+            await buyerLogin.signOut();
         });
     });
-    await buyerLogin.signOut();
 })

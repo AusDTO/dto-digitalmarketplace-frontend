@@ -23,7 +23,7 @@ async function createBrief() {
 }
 
 async function fillRole(role) {
-    await utils.type('input-title', role);
+    await utils.type('input-title', { value: role });
     await clickSaveContinue();
 }
 
@@ -42,41 +42,25 @@ async function fillDescriptinoOfWork() {
     await utils.clickLink('Description of work');
     await utils.clickLink('Add organisation');
 
-    await utils.type('input-organisation', utils.words(20, 100));
-    await clickSaveContinue();
-
-    await utils.type('input-specialistWork', utils.words(100));
-    await clickSaveContinue();
-
-    await utils.type('input-existingTeam', utils.words(100));
-    await clickSaveContinue();
-
-    await utils.type('input-additionalRelevantInformation', utils.words(500));
-    await clickSaveContinue();
-
-    await utils.type('input-workplaceAddress', utils.words(100));
-    await clickSaveContinue();
-
-    await utils.type('input-workingArrangements', utils.words(500));
-    await clickSaveContinue();
-
-    await utils.type('input-securityClearance', utils.words(50));
-    await clickSaveContinue();
-
-    await utils.type('input-startDate', utils.words(20, 100));
-    await clickSaveContinue();
-
-    await utils.type('input-contractLength', utils.words(100));
-    await clickSaveContinue();
-
-    await utils.type('input-additionalTerms', utils.words(500));
-    await clickSaveContinue();
-
-    await utils.type('input-budgetRange', utils.words(100));
-    await clickSaveContinue();
-
-    await utils.type('input-summary', utils.words(50));
-    await clickSaveContinue();
+    let fields = [
+        { id: 'input-organisation', options: { numberOfCharacters: 100 } },
+        { id: 'input-specialistWork', options: { numberOfWords: 100 } },
+        { id: 'input-existingTeam', options: { numberOfWords: 100 } },
+        { id: 'input-additionalRelevantInformation', options: { numberOfWords: 500 } },
+        { id: 'input-workplaceAddress', options: { numberOfWords: 100 } },
+        { id: 'input-workingArrangements', options: { numberOfWords: 500 } },
+        { id: 'input-securityClearance', options: { numberOfWords: 50 } },
+        { id: 'input-startDate', options: { numberOfCharacters: 100 } },
+        { id: 'input-contractLength', options: { numberOfWords: 100 } },
+        { id: 'input-additionalTerms', options: { numberOfWords: 500 } },
+        { id: 'input-budgetRange', options: { numberOfWords: 100 } },
+        { id: 'input-summary', options: { numberOfWords: 50 } }
+    ]
+    for (var i in fields) {
+        let field = fields[i];
+        await utils.type(field.id, field.options);
+        await clickSaveContinue();
+    }
 
     await clickReturnToOverview();
 }
@@ -88,19 +72,19 @@ async function fillEvaluationProcess(areaOfExpertise) {
     await utils.selectRadio(areaOfExpertise);
     await clickSaveContinue();
 
-    await utils.type('input-numberOfSuppliers', '3');
+    await utils.type('input-numberOfSuppliers', { value: '3' });
     await clickSaveContinue();
 
-    await utils.type('input-technicalWeighting', '25');
-    await utils.type('input-culturalWeighting', '25');
-    await utils.type('input-priceWeighting', '50');
+    await utils.type('input-technicalWeighting', { value: '25' });
+    await utils.type('input-culturalWeighting', { value: '25' });
+    await utils.type('input-priceWeighting', { value: '50' });
     await clickSaveContinue();
 
-    await utils.type('input-essentialRequirements-1', utils.words(100, 300));
-    await utils.type('input-niceToHaveRequirements-1', utils.words(100, 300));
+    await utils.type('input-essentialRequirements-1', { numberOfCharacters: 300 });
+    await utils.type('input-niceToHaveRequirements-1', { numberOfCharacters: 300 });
     await clickSaveContinue();
 
-    await utils.type('input-culturalFitCriteria-1', utils.words(100, 300));
+    await utils.type('input-culturalFitCriteria-1', { numberOfCharacters: 300 });
     await clickSaveContinue();
 
     let chkEvaluations = await utils.getElementHandles(`//input[@type="checkbox"]`);
@@ -121,7 +105,7 @@ async function fillHowLong() {
 async function fillQuestionAnswer() {
     await utils.clickLink('Question and answer session details');
     await utils.clickLink('Add details');
-    await utils.type('input-questionAndAnswerSessionDetails', utils.words(100));
+    await utils.type('input-questionAndAnswerSessionDetails', { numberOfWords: 100 });
     await clickSaveContinue();
     await clickReturnToOverview();
 }
@@ -135,7 +119,7 @@ async function fillWhoCanRespond() {
 async function publishBrief() {
     await utils.clickLink('Review and publish your requirements');
     await utils.clickButton('Publish brief');
-    let confirmations = await utils.getElementHandles('//h4[text()="Your opportunity has been published"]');
+    await utils.matchText('h4', 'Your opportunity has been published');
 }
 
 async function clickSaveContinue() {

@@ -23,7 +23,7 @@ async function createBrief() {
 }
 
 async function fillTitle(role) {
-    await utils.type('input-title', role);
+    await utils.type('input-title', { value: role });
     await clickSaveContinue();
 }
 
@@ -41,52 +41,52 @@ async function fillLocation(locations) {
 async function fillDescriptinoOfWork() {
     await utils.clickLink('Description of work');
     await utils.clickLink('Add organisation');
-    await utils.type('input-organisation', utils.words(5, 100));
+    await utils.type('input-organisation', { numberOfCharacters: 100 });
     await clickSaveContinue();
 
-    await utils.type('input-backgroundInformation', utils.words(500));
+    await utils.type('input-backgroundInformation', { numberOfWords: 500 });
     await clickSaveContinue();
 
-    await utils.type('input-outcome', utils.words(500));
+    await utils.type('input-outcome', { numberOfWords: 500 });
     await clickSaveContinue();
 
-    await utils.type('input-endUsers', utils.words(500));
+    await utils.type('input-endUsers', { numberOfWords: 500 });
     await clickSaveContinue();
 
-    await utils.type('input-workAlreadyDone', utils.words(500));
+    await utils.type('input-workAlreadyDone', { numberOfWords: 500 });
     await clickSaveContinue();
 
     await utils.selectRadio('live');
     await clickSaveContinue();
 
-    await utils.type('input-existingTeam', utils.words(500));
+    await utils.type('input-existingTeam', { numberOfWords: 500 });
     await clickSaveContinue();
 
-    await utils.type('input-additionalRelevantInformation', utils.words(500));
+    await utils.type('input-additionalRelevantInformation', { numberOfWords: 500 });
     await clickSaveContinue();
 
-    await utils.type('input-workplaceAddress', utils.words(100));
+    await utils.type('input-workplaceAddress', { numberOfWords: 100 });
     await clickSaveContinue();
 
-    await utils.type('input-workingArrangements', utils.words(500));
+    await utils.type('input-workingArrangements', { numberOfWords: 500 });
     await clickSaveContinue();
 
-    await utils.type('input-securityClearance', utils.words(50));
+    await utils.type('input-securityClearance', { numberOfWords: 50 });
     await clickSaveContinue();
 
-    await utils.type('input-startDate', utils.words(10));
+    await utils.type('input-startDate', { numberOfWords: 10 });
     await clickSaveContinue();
 
-    await utils.type('input-contractLength', utils.words(100));
+    await utils.type('input-contractLength', { numberOfWords: 100 });
     await clickSaveContinue();
 
-    await utils.type('input-additionalTerms', utils.words(500));
+    await utils.type('input-additionalTerms', { numberOfWords: 500 });
     await clickSaveContinue();
 
-    await utils.type('input-budgetRange', utils.words(200));
+    await utils.type('input-budgetRange', { numberOfWords: 200 });
     await clickSaveContinue();
 
-    await utils.type('input-summary', utils.words(50));
+    await utils.type('input-summary', { numberOfWords: 50 });
     await clickSaveContinue();
 
     await clickReturnToOverview();
@@ -96,20 +96,20 @@ async function fillEvaluationProcess() {
     await utils.clickLink('Shortlist and evaluation process');
 
     await utils.clickLink('Set maximum number of suppliers you’ll evaluate');
-    await utils.type('input-numberOfSuppliers', '3');
+    await utils.type('input-numberOfSuppliers', { value: '3' });
     await clickSaveContinue();
 
-    await utils.type('input-technicalWeighting', '25');
-    await utils.type('input-culturalWeighting', '25');
-    await utils.type('input-priceWeighting', '50');
+    await utils.type('input-technicalWeighting', { value: '25' });
+    await utils.type('input-culturalWeighting', { value: '25' });
+    await utils.type('input-priceWeighting', { value: '50' });
     await clickSaveContinue();
 
-    await utils.type('input-essentialRequirements-1', utils.words(10));
-    await utils.type('input-niceToHaveRequirements-1', utils.words(10));
-    await utils.type('input-successCriteria-1', utils.words(10));
+    await utils.type('input-essentialRequirements-1', { numberOfWords: 10 });
+    await utils.type('input-niceToHaveRequirements-1', { numberOfWords: 10 });
+    await utils.type('input-successCriteria-1', { numberOfWords: 10 });
     await clickSaveContinue();
 
-    await utils.type('input-culturalFitCriteria-1', utils.words(10));
+    await utils.type('input-culturalFitCriteria-1', { numberOfWords: 10 });
     await clickSaveContinue();
 
     await utils.selectRadio('Fixed price');
@@ -133,7 +133,7 @@ async function fillHowLong() {
 async function fillQuestionAnswer() {
     await utils.clickLink('Question and answer session details');
     await utils.clickLink('Add details');
-    await utils.type('input-questionAndAnswerSessionDetails', utils.words(100));
+    await utils.type('input-questionAndAnswerSessionDetails', { numberOfWords: 100 });
     await clickSaveContinue();
     await clickReturnToOverview();
 }

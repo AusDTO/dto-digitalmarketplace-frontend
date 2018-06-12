@@ -7,8 +7,8 @@ module.exports.login = async function (email, password) {
     if (password == undefined) {
         password = process.env.BUYER_PASSWORD
     }
-    await utils.type('input_email_address', email);
-    await utils.type('input_password', password);
+    await utils.type('input_email_address', { value: email });
+    await utils.type('input_password', { value: password });
     await utils.clickButton('Sign in');
 };
 
