@@ -1,6 +1,6 @@
 import { OPPORTUNITIES_SUCCESS, OPPORTUNITIES_SENDING } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
-// import dmapi from '../services/apiClient'
+import dmapi from '../services/apiClient'
 import { setErrorMessage } from './appActions'
 
 export const handleErrorFailure = response => dispatch => {
@@ -29,11 +29,11 @@ export const sendingRequest = currentlySending => ({
 
 export const handleOpportunitiesSuccess = response => ({
   type: OPPORTUNITIES_SUCCESS,
-  opportunities: response.opportunities
+  opportunities: response.data.opportunities
 })
 
 export const loadOpportunities = (filters = {}) => dispatch => {
-  const opportunities = [
+  /* const opportunities = [
     {
       openTo: 'all',
       id: 1239,
@@ -80,14 +80,26 @@ export const loadOpportunities = (filters = {}) => dispatch => {
   setTimeout(() => {
     dispatch(handleOpportunitiesSuccess(response))
     dispatch(sendingRequest(false))
-  }, 1500)
-  /* dispatch(sendingRequest(true))
-  dmapi({ url: `/opportunities` }).then(response => {
+  }, 1500) */
+
+  const getSelectedFilters = f =>
+    Object.keys(f)
+      .filter(k => f[k])
+      .join(',')
+
+  const params = {
+    statusFilters: filters.statusFilters ? getSelectedFilters(filters.statusFilters) : '',
+    openToFilters: filters.openToFilters ? getSelectedFilters(filters.openToFilters) : '',
+    typeFilters: filters.typeFilters ? getSelectedFilters(filters.typeFilters) : ''
+  }
+
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/opportunities`, params }).then(response => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleOpportunitiesSuccess(response))
     }
     dispatch(sendingRequest(false))
-  }) */
+  })
 }

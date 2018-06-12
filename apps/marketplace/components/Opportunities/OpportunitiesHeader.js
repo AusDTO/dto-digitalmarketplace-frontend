@@ -12,7 +12,7 @@ export const OpportunitiesHeader = props => (
           Opportunities
         </AUheading>
       </div>
-      <OpportunitiesFilters getOpportunities={props.getOpportunities} />
+      <OpportunitiesFilters accordionOpen={false} getOpportunities={props.getOpportunities} />
     </div>
   </div>
 )
