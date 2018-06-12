@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "mocha tests/bootstrap.js --recursive tests --no-timeouts"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "puppeteer": "^1.5.0",
+    "chai": "^4.1.2"
+  }
+}
