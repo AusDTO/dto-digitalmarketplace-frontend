@@ -11,6 +11,5 @@ routes:
 - route: dm-frontend.apps.b.cld.gov.au
 - route: marketplace.service.gov.au/bundle
 - route: marketplace.service.gov.au/2
-- route: marketplace.service.gov.au/orams
 applications:
 - name: dm-frontend
