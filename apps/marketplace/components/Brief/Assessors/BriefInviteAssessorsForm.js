@@ -37,7 +37,7 @@ const BriefInviteAssessorsForm = ({
           <div className="row" key={email}>
             <div className="col-md-4 col-sm-4">{email}</div>
             <div className="col-md-2 col-sm-2">
-              <div className={styles.badge}>Invite sent</div>
+              <div className={`${styles.badge} au-display-xs`}>Invite sent</div>
             </div>
             <div className="col-md-6 col-sm-6">
               <AUbutton as="tertiary" onClick={e => handleRemoveClick(email, e)}>
@@ -88,13 +88,19 @@ const BriefInviteAssessorsForm = ({
   </div>
 )
 
-BriefInviteAssessorsForm.defaultProps = {}
+BriefInviteAssessorsForm.defaultProps = {
+  model: '',
+  assessors: []
+}
 
 BriefInviteAssessorsForm.propTypes = {
   model: PropTypes.string.isRequired,
-  setFocus: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  assessors: PropTypes.array.isRequired
+  assessors: PropTypes.array.isRequired,
+  setFocus: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  remainingCount: PropTypes.number,
+  handleRemoveClick: PropTypes.func,
+  submitClicked: PropTypes.func
 }
 
 export default BriefInviteAssessorsForm

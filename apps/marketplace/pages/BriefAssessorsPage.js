@@ -9,6 +9,8 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import BriefInviteAssessorsForm from 'marketplace/components/Brief/Assessors/BriefInviteAssessorsForm'
 import { setErrorMessage, clearErrorMessages } from 'marketplace/actions/appActions'
 
+const AssessorsMax = 5
+
 export class BriefAssessorsPage extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +27,7 @@ export class BriefAssessorsPage extends Component {
     this.props.clearErrorMessages()
     this.setState(curState => {
       const newState = { ...curState }
-      if (newState.assessors.length === 5) {
+      if (newState.assessors.length === AssessorsMax) {
         this.props.setErrorMessage('You cannot add any more evaluators')
       } else if (newState.assessors.includes(data.email_address)) {
         this.props.setErrorMessage(`${data.email_address} has already been invited`)
@@ -67,7 +69,7 @@ export class BriefAssessorsPage extends Component {
             handleSubmit={this.handleSubmit}
             handleRemoveClick={this.handleRemoveClick}
             assessors={this.state.assessors}
-            remainingCount={5 - this.state.assessors.length}
+            remainingCount={AssessorsMax - this.state.assessors.length}
             submitClicked={this.onSubmitClicked}
             {...this.props}
           />
