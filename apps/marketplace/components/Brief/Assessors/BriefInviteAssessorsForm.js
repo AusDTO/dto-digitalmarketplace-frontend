@@ -90,7 +90,12 @@ const BriefInviteAssessorsForm = ({
 
 BriefInviteAssessorsForm.defaultProps = {
   model: '',
-  assessors: []
+  assessors: [],
+  setFocus: null,
+  handleSubmit: null,
+  remainingCount: 0,
+  handleRemoveClick: null,
+  submitClicked: null
 }
 
 BriefInviteAssessorsForm.propTypes = {
