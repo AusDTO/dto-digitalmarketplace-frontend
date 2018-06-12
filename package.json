@@ -163,7 +163,6 @@
       "<rootDir>/config/polyfills.js",
       "raf/polyfill"
     ],
-    "setupTestFrameworkScriptFile": "expect-puppeteer",
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules)/"
     ],
