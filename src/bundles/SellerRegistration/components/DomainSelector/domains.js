@@ -32,7 +32,17 @@ export default [
     {
         key: 'change',
         label: 'Change, Training and Transformation',
-        description: 'Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.'
+        description: 'Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Development.'
+    },
+    {
+        key: 'changetransformation',
+        label: 'Change and Transformation',
+        description: 'Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.'
+    },
+    {
+        key: 'training',
+        label: 'Training, Learning and Development',
+        description: 'Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.'
     },
     {
         key: 'marketingcomms',
