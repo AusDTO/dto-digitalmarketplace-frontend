@@ -8,8 +8,6 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
-import BriefDownloadDocuments from 'marketplace/components/Brief/BriefDownloadDocuments'
-import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import {
