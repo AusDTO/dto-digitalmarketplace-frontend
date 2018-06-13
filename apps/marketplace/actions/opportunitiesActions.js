@@ -33,55 +33,6 @@ export const handleOpportunitiesSuccess = response => ({
 })
 
 export const loadOpportunities = (filters = {}) => dispatch => {
-  /* const opportunities = [
-    {
-      openTo: 'all',
-      id: 1239,
-      name: 'Automation proof of concept',
-      location: 'Sydney',
-      closing: '1w : 3d : 5h',
-      submissions: '2 SME',
-      company: 'Australian Taxation Office (ATO)'
-    },
-    {
-      openTo: 'all',
-      id: 1238,
-      name: 'Exploration of commercial datasets to answer questions about household and SME energy use and costs',
-      location: 'Offsite',
-      closing: '5d : 6h : 36m',
-      submissions: '16 (9 SME)',
-      company: 'Department of the Environment and Energy'
-    },
-    {
-      openTo: 'one',
-      id: 1260,
-      name: 'CA GEN Conversion consultancy for Proof of Concept (POC)',
-      location: 'Australian Capital Territory',
-      closing: '3d : 37h : 8m',
-      submissions: '2',
-      company: 'Australian Taxation Office (ATO)'
-    },
-    {
-      openTo: 'selected',
-      id: 1263,
-      name: 'Data Analytics for Heavy Vehicle Road Reform',
-      location: 'Australian Capital Territory',
-      closing: 'Closed',
-      submissions: '8 (5 SME)',
-      company: 'Land Transport Market Reform Branch, Department of Infrastructure, Regional Development and Cities.'
-    }
-  ]
-  const response = {
-    opportunities,
-    filters
-  }
-
-  dispatch(sendingRequest(true))
-  setTimeout(() => {
-    dispatch(handleOpportunitiesSuccess(response))
-    dispatch(sendingRequest(false))
-  }, 1500) */
-
   const getSelectedFilters = f =>
     Object.keys(f)
       .filter(k => f[k])
