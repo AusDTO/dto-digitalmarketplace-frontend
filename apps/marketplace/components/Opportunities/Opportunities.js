@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Pagination from 'shared/Pagination/Pagination'
+import Pagination, { generatePages } from 'shared/Pagination/Pagination'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './Opportunities.scss'
 
@@ -30,39 +30,6 @@ export class Opportunities extends Component {
 
   getPageCount() {
     return Math.ceil(this.props.opportunities.length / this.props.limit)
-  }
-
-  generatePages(curPage) {
-    let pages = []
-    const pageCount = this.getPageCount()
-    if (pageCount <= 5) {
-      pages = [...Array(pageCount + 1).keys()].filter(v => v > 0)
-    } else {
-      const lastPage = pageCount
-      pages = [1, 2, lastPage - 1, lastPage]
-      if (pages.includes(curPage)) {
-        pages.splice(2, 0, '...')
-      } else {
-        pages.splice(2, 0, ...[curPage - 1, curPage, curPage + 1])
-        pages = [...new Set(pages)]
-        const lower = pages.indexOf(curPage - 1)
-        if (pages[lower - 1] + 1 !== pages[lower]) {
-          pages.splice(lower, 0, '...')
-        }
-        const upper = pages.indexOf(curPage + 1)
-        if (pages[upper + 1] - 1 !== pages[upper]) {
-          pages.splice(upper + 1, 0, '...')
-        }
-      }
-      if (!pages.includes(curPage + 1)) {
-        pages.splice(pages.indexOf(curPage) + 1, 0, curPage + 1)
-      }
-      if (!pages.includes(curPage - 1)) {
-        pages.splice(pages.indexOf(curPage), 0, curPage - 1)
-      }
-      pages = pages.filter(v => v === '...' || (v > 0 && v <= pageCount))
-    }
-    return pages
   }
 
   render() {
@@ -119,7 +86,7 @@ export class Opportunities extends Component {
                   onNext={this.setCurrentPage}
                   onBack={this.setCurrentPage}
                   onClick={this.setCurrentPage}
-                  pages={this.generatePages(this.state.curPage)}
+                  pages={generatePages(this.state.curPage, this.getPageCount())}
                   page={this.state.curPage}
                   pageCount={this.getPageCount()}
                 />
