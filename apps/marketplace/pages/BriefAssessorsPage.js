@@ -42,9 +42,9 @@ export class BriefAssessorsPage extends Component {
   handleRemoveClick = (email, e) => {
     e.preventDefault()
     this.props.clearErrorMessages()
-    this.setState(curState => {
-      return {assessors: curState.assessors.filter(item => item !== email)}
-    })
+    this.setState(curState => ({
+      assessors: curState.assessors.filter(item => item !== email)
+    }))
   }
 
   render() {
