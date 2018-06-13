@@ -43,9 +43,7 @@ export class BriefAssessorsPage extends Component {
     e.preventDefault()
     this.props.clearErrorMessages()
     this.setState(curState => {
-      const newState = { ...curState }
-      newState.assessors = newState.assessors.filter(item => item !== email)
-      return newState
+      return {assessors: curState.assessors.filter(item => item !== email)}
     })
   }
 
