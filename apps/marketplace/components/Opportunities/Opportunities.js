@@ -16,6 +16,11 @@ const mapOpenTo = val => {
 export const Opportunities = props => (
   <div className={styles.container}>
     <article className="opportunities-page" role="main">
+      {props.opportunities.length === 0 && (
+        <div className="row">
+          <div className="col-xs-12">There are no opportunities to show that match your filter.</div>
+        </div>
+      )}
       {props.opportunities.length > 0 && (
         <div className={`${styles.tableDesktop} ${styles.hideMobile}`}>
           <div className={styles.headingRow}>
@@ -47,7 +52,7 @@ export const Opportunities = props => (
                   {item.location ? item.location.join(', ') : ''}
                 </div>
                 <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                  <ClosedDate data={item.closed_at} />
+                  <ClosedDate countdown date={item.closed_at} />
                 </div>
                 <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.lastColumn}`}>{item.submissions}</div>
               </div>
@@ -84,7 +89,7 @@ export const Opportunities = props => (
                     <div className="col-md-9 col-sm-9 col-xs-8">
                       <div>{item.location ? item.location.join(', ') : ''}</div>
                       <div>
-                        <ClosedDate data={item.closed_at} />
+                        <ClosedDate countdown date={item.closed_at} />
                       </div>
                       <div>{item.submissions}</div>
                     </div>
