@@ -86,7 +86,7 @@ export class Opportunities extends Component {
                   onNext={this.setCurrentPage}
                   onBack={this.setCurrentPage}
                   onClick={this.setCurrentPage}
-                  pages={generatePages(this.state.curPage, this.getPageCount())}
+                  pages={generatePages(this.props.limit, this.props.opportunities.length, this.state.curPage)}
                   page={this.state.curPage}
                   pageCount={this.getPageCount()}
                 />

@@ -8,46 +8,37 @@ const handlePageScroll = () => {
 }
 
 /* 
-This helper will generate an array designed to be passed to the Pagination 'pages' prop. If the pageCount
-is 5 or less, it will return a simple array for each page, otherwise it will generate an array that:
+This helper will generate an array designed to be passed to the Pagination 'pages' prop that
+creates elements like the following (where * indicates the current page):
 
-- always contains the first 2 and last 2 page numbers
-- always contains the curPage number.
-- always includes the numbers immeditately before and after the curPage number, with a '...' before and 
-  after these respectively if their inclusion creates a jump of more than 1, e.g. (* is curPage): 
-    - 1, 2, ..., 5, 6*, 7, ..., 15, 16
-    - 1, 2, 3, 4*, 5, ..., 22, 23
-    - 1, 2, ..., 15, 16*, 17, 18, 19
+  - 1, ..., 5, 6*, 7, ..., 16
+  - 1, 2, 3*, 4, ..., 16
+  - 1, ..., 13, 14*, 15, 16
 */
-export const generatePages = (curPage, pageCount) => {
+export const generatePages = (pageSize, resultSize, curPage) => {
   let pages = []
-  if (pageCount <= 5) {
-    pages = [...Array(pageCount + 1).keys()].filter(v => v > 0)
-  } else {
-    const lastPage = pageCount
-    pages = [1, 2, lastPage - 1, lastPage]
-    if (pages.includes(curPage)) {
-      pages.splice(2, 0, '...')
-    } else {
-      pages.splice(2, 0, ...[curPage - 1, curPage, curPage + 1])
-      pages = [...new Set(pages)]
-      const lower = pages.indexOf(curPage - 1)
-      if (pages[lower - 1] + 1 !== pages[lower]) {
-        pages.splice(lower, 0, '...')
-      }
-      const upper = pages.indexOf(curPage + 1)
-      if (pages[upper + 1] - 1 !== pages[upper]) {
-        pages.splice(upper + 1, 0, '...')
-      }
-    }
-    if (!pages.includes(curPage + 1)) {
-      pages.splice(pages.indexOf(curPage) + 1, 0, curPage + 1)
-    }
-    if (!pages.includes(curPage - 1)) {
-      pages.splice(pages.indexOf(curPage), 0, curPage - 1)
-    }
-    pages = pages.filter(v => v === '...' || (v > 0 && v <= pageCount))
+  const lastPage = parseInt(Math.ceil(parseFloat(resultSize) / parseFloat(pageSize)))
+  
+  pages.push(1)
+  if (curPage - 2 > 1) {
+    pages.push('...')
   }
+  if (curPage - 1 > 1) {
+    pages.push(curPage - 1)
+  }
+  if (curPage != 1 && curPage <= lastPage) {
+    pages.push(curPage)
+  }
+  if (resultSize > curPage * pageSize) {
+    pages.push(curPage + 1)
+  }
+  if (resultSize > (curPage + 2) * pageSize) {
+    pages.push('...')
+  }
+  if (resultSize > (curPage + 1) * pageSize) {
+    pages.push(lastPage)
+  }
+
   return pages
 }
 
