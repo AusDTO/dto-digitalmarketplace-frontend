@@ -192,9 +192,17 @@ a:hover.filter, a.filter.active {
   margin-top: 30px;
 }
 
+.pageLeft .pageSummary {
+  margin-left: 1.2rem;
+}
+
 .pageRight {
   text-align: right;
   margin-top: 30px;
+}
+
+.pageRight .pageSummary {
+  margin-right: 1.1rem;
 }
 
 .pageSummary {
