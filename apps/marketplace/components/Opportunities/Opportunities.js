@@ -13,6 +13,20 @@ const mapOpenTo = val => {
   return val in vals ? vals[val] : val
 }
 
+const mapStates = val => {
+  const vals = {
+    'Australian Capital Territory': 'ACT',
+    'New South Wales': 'NSW',
+    Victoria: 'VIC',
+    Queensland: 'QLD',
+    'South Australia': 'SA',
+    'Western Australia': 'WA',
+    'Northern Territory': 'NT',
+    Tasmania: 'TAS'
+  }
+  return val in vals ? vals[val] : val
+}
+
 export class Opportunities extends Component {
   constructor(props) {
     super(props)
@@ -72,7 +86,7 @@ export class Opportunities extends Component {
                       <div>At: {item.company}</div>
                     </div>
                     <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                      {item.location ? item.location.join(', ') : ''}
+                      {item.location ? item.location.map(v => mapStates(v)).join(', ') : ''}
                     </div>
                     <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
                       <ClosedDate countdown date={item.closed_at} />
@@ -81,13 +95,6 @@ export class Opportunities extends Component {
                   </div>
                 </div>
               ))}
-              {this.getPageCount() > 1 && (
-                <OpportunitiesPagination
-                  lastPage={this.getPageCount()}
-                  currentPage={this.state.curPage}
-                  onPageClick={this.setCurrentPage}
-                />
-              )}
             </div>
           )}
           {opportunities.length > 0 && (
@@ -118,7 +125,7 @@ export class Opportunities extends Component {
                           </div>
                         </div>
                         <div className="col-md-9 col-sm-9 col-xs-8">
-                          <div>{item.location ? item.location.join(', ') : ''}</div>
+                          <div>{item.location ? item.location.map(v => mapStates(v)).join(', ') : ''}</div>
                           <div>
                             <ClosedDate countdown date={item.closed_at} />
                           </div>
@@ -130,6 +137,13 @@ export class Opportunities extends Component {
                 </div>
               ))}
             </div>
+          )}
+          {this.getPageCount() > 1 && (
+            <OpportunitiesPagination
+              lastPage={this.getPageCount()}
+              currentPage={this.state.curPage}
+              onPageClick={this.setCurrentPage}
+            />
           )}
         </article>
       </div>

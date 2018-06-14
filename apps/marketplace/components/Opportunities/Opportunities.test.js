@@ -39,7 +39,7 @@ test('component mounts with opportunities and displays the appropriate informati
       openTo: 'one',
       id: 1260,
       name: 'CA GEN Conversion consultancy for Proof of Concept (POC)',
-      location: ['Australian Capital Territory'],
+      location: ['Queensland'],
       closed_at: addHours(new Date(), 3).toISOString(),
       submissions: '2',
       company: 'Australian Taxation Office (ATO)'
@@ -70,4 +70,6 @@ test('component mounts with opportunities and displays the appropriate informati
   expect(component.contains('0d : 2h : 59m')).toBeTruthy()
   expect(component.contains('Closed')).toBeTruthy()
   expect(component.contains('Sydney, Offsite')).toBeTruthy()
+  expect(component.contains('QLD')).toBeTruthy()
+  expect(component.contains('ACT')).toBeTruthy()
 })
