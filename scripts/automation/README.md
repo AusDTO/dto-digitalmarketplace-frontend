@@ -6,6 +6,7 @@ export SELLER_EMAIL=[BLANKS]
 export SELLER_PASSWORD=[BLANKS]  
 export BUYER_EMAIL=[BLANKS]  
 export BUYER_PASSWORD=[BLANKS]  
+export TYPE_INPUT=[true|false]
 ```
 
 next run `npm install`  

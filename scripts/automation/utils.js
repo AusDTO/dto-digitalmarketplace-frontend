@@ -37,7 +37,7 @@ exports.type = async function (id, options) {
         value = utils.words(numberOfWords, numberOfCharacters);
     }
     let input = await utils.getElementHandle(`//*[@id="${id}"]`);
-    if (process.env.TYPE_INPUT) {
+    if (process.env.TYPE_INPUT === 'true') {
         await input.type(value, { delay: 0 });
     } else {
         await page.evaluate((el, v) => {
