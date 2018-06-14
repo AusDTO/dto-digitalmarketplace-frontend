@@ -59,42 +59,78 @@ export class Opportunities extends Component {
             </div>
           )}
           {opportunities.length > 0 && (
-            <div className={`${styles.tableDesktop} ${styles.hideMobile}`}>
-              <div className={styles.headingRow}>
-                <div className="row">
-                  <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter} ${styles.firstColumn}`}>
+            <div className={`${styles.tableDesktop} ${styles.hideMobile}`} role="table" aria-label="Opportunities">
+              <div className={styles.headingRow} role="rowgroup">
+                <div className="row" role="row">
+                  <div
+                    className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter} ${styles.firstColumn}`}
+                    role="columnheader"
+                    id="header_opento"
+                  >
                     Open to
                   </div>
-                  <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}>ID</div>
-                  <div className={`col-md-4 col-sm-4 ${styles.cell}`}>Name</div>
-                  <div className={`col-md-2 col-sm-2 ${styles.cell}`}>Location</div>
-                  <div className={`col-md-2 col-sm-2 ${styles.cell}`}>Closing</div>
-                  <div className={`col-md-1 col-sm-1 ${styles.cell}`}>Submissions</div>
-                </div>
-              </div>
-              {opportunities.map(item => (
-                <div className={styles.tableRow} key={`item.${item.id}`}>
-                  <div className="row">
-                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter} ${styles.firstColumn}`}>
-                      <div className={`${styles.badge} ${item.openTo === 'allSellers' ? styles.green : styles.blue}`}>
-                        {mapOpenTo(item.openTo)}
-                      </div>
-                    </div>
-                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}>{item.id}</div>
-                    <div className={`col-md-4 col-sm-4 ${styles.cell}`}>
-                      <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
-                      <div>At: {item.company}</div>
-                    </div>
-                    <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                      {item.location ? item.location.map(v => mapStates(v)).join(', ') : ''}
-                    </div>
-                    <div className={`col-md-2 col-sm-2 ${styles.cell}`}>
-                      <ClosedDate countdown date={item.closed_at} />
-                    </div>
-                    <div className={`col-md-1 col-sm-1 ${styles.cell} ${styles.lastColumn}`}>{item.submissions}</div>
+                  <div
+                    role="columnheader"
+                    className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}
+                    id="header_id"
+                  >
+                    ID
+                  </div>
+                  <div role="columnheader" className={`col-md-4 col-sm-4 ${styles.cell}`} id="header_name">
+                    Name
+                  </div>
+                  <div role="columnheader" className={`col-md-2 col-sm-2 ${styles.cell}`} id="header_location">
+                    Location
+                  </div>
+                  <div role="columnheader" className={`col-md-2 col-sm-2 ${styles.cell}`} id="header_closing">
+                    Closing
+                  </div>
+                  <div role="columnheader" className={`col-md-1 col-sm-1 ${styles.cell}`} id="header_submissions">
+                    Submissions
                   </div>
                 </div>
-              ))}
+              </div>
+              <div role="rowgroup">
+                {opportunities.map(item => (
+                  <div className={styles.tableRow} key={`item.${item.id}`} role="row">
+                    <div className="row">
+                      <div
+                        className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter} ${styles.firstColumn}`}
+                        role="cell"
+                        aria-labelledby="header_opento"
+                      >
+                        <div className={`${styles.badge} ${item.openTo === 'allSellers' ? styles.green : styles.blue}`}>
+                          {mapOpenTo(item.openTo)}
+                        </div>
+                      </div>
+                      <div
+                        className={`col-md-1 col-sm-1 ${styles.cell} ${styles.alignCenter}`}
+                        role="cell"
+                        aria-labelledby="header_id"
+                      >
+                        {item.id}
+                      </div>
+                      <div className={`col-md-4 col-sm-4 ${styles.cell}`} role="cell" aria-labelledby="header_name">
+                        <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                        <div>At: {item.company}</div>
+                      </div>
+                      <div className={`col-md-2 col-sm-2 ${styles.cell}`} role="cell" aria-labelledby="header_location">
+                        {item.location ? item.location.map(v => mapStates(v)).join(', ') : ''}
+                      </div>
+                      <div className={`col-md-2 col-sm-2 ${styles.cell}`} role="cell" aria-labelledby="header_closing">
+                        <ClosedDate countdown date={item.closed_at} />
+                      </div>
+                      <div
+                        className={`col-md-1 col-sm-1 ${styles.cell} ${styles.lastColumn}`}
+                        role="cell"
+                        aria-labelledby="header_submissions"
+                      >
+                        {item.submissions}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           {opportunities.length > 0 && (
