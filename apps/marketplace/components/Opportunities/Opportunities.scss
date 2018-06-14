@@ -1,7 +1,3 @@
-.tableDesktop {
-  font-size: 17px;
-}
-
 .headerTitle {
   margin-top: -5px;
 }
@@ -67,7 +63,6 @@
 }
 
 .badgeMobile {
-  font-size: 14px;
   border-radius: 100px;
   color: #313131;
   padding: 2px 12px;
@@ -180,7 +175,6 @@ a:hover.filter, a.filter.active {
 
 .mobileName a {
   color: #00698f;
-  font-size: 17px;
   font-weight: bold;
 }
 
@@ -193,6 +187,17 @@ a:hover.filter, a.filter.active {
   padding-bottom: 12px;
 }
 
-.mobileDetails, .companyMobile {
-  font-size: 14px;
+.pageLeft {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.pageRight {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.pageSummary {
+  font-size: 0.85rem;
+  opacity: 0.6;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Pagination, { generatePages } from 'shared/Pagination/Pagination'
 import ClosedDate from 'shared/ClosedDate'
+import { OpportunitiesPagination } from './OpportunitiesPagination'
 import styles from './Opportunities.scss'
 
 const mapOpenTo = val => {
@@ -82,13 +82,10 @@ export class Opportunities extends Component {
                 </div>
               ))}
               {this.getPageCount() > 1 && (
-                <Pagination
-                  onNext={this.setCurrentPage}
-                  onBack={this.setCurrentPage}
-                  onClick={this.setCurrentPage}
-                  pages={generatePages(this.props.limit, this.props.opportunities.length, this.state.curPage)}
-                  page={this.state.curPage}
-                  pageCount={this.getPageCount()}
+                <OpportunitiesPagination
+                  lastPage={this.getPageCount()}
+                  currentPage={this.state.curPage}
+                  onPageClick={this.setCurrentPage}
                 />
               )}
             </div>
