@@ -21,144 +21,124 @@ class SellerProfile extends Component {
 
     return (
       <div>
-        {supplierData
-          ? <div>
-              <div>
-                <main>
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-9">
-                      <div className="au-display-xl">
-                        {supplierData.name}
+        {supplierData ? (
+          <div>
+            <div>
+              <main>
+                <div className="row">
+                  <div className="col-xs-12 col-sm-9">
+                    <div className="au-display-xl">{supplierData.name}</div>
+                    <p>{supplierData.summary}</p>
+                    <div className="row">
+                      <div className="col-xs-12 col-sm-3">
+                        <div className={styles.website}>Website</div>
                       </div>
-                      <p>
-                        {supplierData.summary}
-                      </p>
-                      <div className="row">
-                        <div className="col-xs-12 col-sm-3">
-                          <div className={styles.website}>Website</div>
-                        </div>
-                        <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                          <a className={styles.website} href={supplierData.website} target="_blank" rel="external">
-                            {supplierData.website}
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-xs-12 col-sm-3">
-                      <div className={styles.contactSection}>
-                        <div className={styles.contactTitle}>Business Contact</div>
-                        <div className={styles.contactName}>
-                          {supplierData.contact_name}
-                        </div>
-                        <div className={styles.contactNumber}>
-                          {supplierData.contact_phone}
-                        </div>
-                        <a href={'mailto:' + supplierData.contact_email}>
-                          <div className="au-btn">Email Seller</div>
+                      <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                        <a className={styles.website} href={supplierData.website} target="_blank" rel="external">
+                          {supplierData.website}
                         </a>
                       </div>
                     </div>
                   </div>
-                </main>
-              </div>
-              <div className={styles.informationSection}>
-                <main>
-                  <div className="row">
-                    <div className="col-sm-8 col-xs-12">
-                      <div className="row">
-                        <div className="col-sm-3 col-xs-12">
-                          <div className={styles.title}>Services</div>
+                  <div className="col-xs-12 col-sm-3">
+                    <div className={styles.contactSection}>
+                      <div className={styles.contactTitle}>Business Contact</div>
+                      <div className={styles.contactName}>{supplierData.contact_name}</div>
+                      <div className={styles.contactNumber}>{supplierData.contact_phone}</div>
+                      <a href={'mailto:' + supplierData.contact_email}>
+                        <div className="au-btn">Email Seller</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+            <div className={styles.informationSection}>
+              <main>
+                <div className="row">
+                  <div className="col-sm-8 col-xs-12">
+                    <div className="row">
+                      <div className="col-sm-3 col-xs-12">
+                        <div className={styles.title}>Services</div>
+                      </div>
+                      <div className="col-sm-8 col-sm-push-1 col-xs-12">
+                        <div className={styles.badge}>{supplierData.category_name}</div>
+                        <div>
+                          <strong>Transacts on</strong>
                         </div>
-                        <div className="col-sm-8 col-sm-push-1 col-xs-12">
-                          <div className={styles.badge}>
-                            {supplierData.category_name}
-                          </div>
+                        <div>Occupational rehabilitation and associated medical services panel</div>
+                      </div>
+                    </div>
+                    <div className={styles.separator} />
+                    <div className="row">
+                      <div className="col-sm-3 col-xs-12">
+                        <div className={styles.title}>Operates in</div>
+                      </div>
+                      <div className="col-sm-8 col-sm-push-1 col-xs-12">
+                        <input type="checkbox" className="read-more-state" id="post-2" />
+                        <div className="read-more-wrap">
+                          {supplierData.regions.map((region, id = uniqueID()) => (
+                            <div key={id}>
+                              <div className={id > 3 ? 'read-more-target' : ''}>{region.state + ' ' + region.name}</div>
+                            </div>
+                          ))}
+                        </div>
+                        <label for="post-2" className="read-more-trigger" />
+                      </div>
+                    </div>
+                    <div className={styles.separator} />
+                    <div className="row">
+                      <div className="col-sm-3 col-xs-12">
+                        <div className={styles.title}>Company details</div>
+                      </div>
+                      <div className="col-sm-8 col-sm-push-1 col-xs-12">
+                        <div className={styles.infoBlock}>
                           <div>
-                            <strong>Transacts on</strong>
+                            <strong>Authorised representative</strong>
                           </div>
-                          <div>Occupational rehabilitation and associated medical services panel</div>
+                          <div>{supplierData.representative}</div>
+                          <div>{supplierData.phone}</div>
+                          <div>
+                            <strong>
+                              <a href={'mailto:' + supplierData.email}>{supplierData.email}</a>
+                            </strong>
+                          </div>
                         </div>
-                      </div>
-                      <div className={styles.separator} />
-                      <div className="row">
-                        <div className="col-sm-3 col-xs-12">
-                          <div className={styles.title}>Operates in</div>
+                        <div className={styles.infoBlock}>
+                          <div>
+                            <strong>Headquarter address</strong>
+                          </div>
+                          <div>{supplierData.address_address_line}</div>
+                          <div>
+                            {supplierData.address_suburb +
+                              ' ' +
+                              supplierData.address_state +
+                              ' ' +
+                              supplierData.address_postal_code}
+                          </div>
                         </div>
-                        <div className="col-sm-8 col-sm-push-1 col-xs-12">
-                          <input type="checkbox" className="read-more-state" id="post-2" />
-                          <div className="read-more-wrap">
-                            {supplierData.regions.map((region, id = uniqueID()) =>
-                              <div key={id}>
-                                <div className={id > 3 ? 'read-more-target' : ''}>
-                                  {region.state + ' ' + region.name}
-                                </div>
-                              </div>
-                            )}
+                        <div className={styles.infoBlock}>
+                          <div>
+                            <strong>ABN</strong>
                           </div>
-                          <label for="post-2" className="read-more-trigger" />
-                        </div>
-                      </div>
-                      <div className={styles.separator} />
-                      <div className="row">
-                        <div className="col-sm-3 col-xs-12">
-                          <div className={styles.title}>Company details</div>
-                        </div>
-                        <div className="col-sm-8 col-sm-push-1 col-xs-12">
-                          <div className={styles.infoBlock}>
-                            <div>
-                              <strong>Authorised representative</strong>
-                            </div>
-                            <div>
-                              {supplierData.representative}
-                            </div>
-                            <div>
-                              {supplierData.phone}
-                            </div>
-                            <div>
-                              <strong>
-                                <a href={'mailto:' + supplierData.email}>
-                                  {supplierData.email}
-                                </a>
-                              </strong>
-                            </div>
-                          </div>
-                          <div className={styles.infoBlock}>
-                            <div>
-                              <strong>Headquarter address</strong>
-                            </div>
-                            <div>
-                              {supplierData.address_address_line}
-                            </div>
-                            <div>
-                              {supplierData.address_suburb +
-                                ' ' +
-                                supplierData.address_state +
-                                ' ' +
-                                supplierData.address_postal_code}
-                            </div>
-                          </div>
-                          <div className={styles.infoBlock}>
-                            <div>
-                              <strong>ABN</strong>
-                            </div>
-                            <a
-                              href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${supplierData.abn}`}
-                              target="_blank"
-                              rel="external"
-                            >
-                              <strong>
-                                {supplierData.abn}
-                              </strong>
-                            </a>
-                          </div>
+                          <a
+                            href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${supplierData.abn}`}
+                            target="_blank"
+                            rel="external"
+                          >
+                            <strong>{supplierData.abn}</strong>
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
-                </main>
-              </div>
+                </div>
+              </main>
             </div>
-          : <LoadingIndicatorFullPage />}
+          </div>
+        ) : (
+          <LoadingIndicatorFullPage />
+        )}
       </div>
     )
   }

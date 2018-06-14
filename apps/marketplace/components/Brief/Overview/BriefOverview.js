@@ -60,7 +60,7 @@ export class BriefOverview extends Component {
               {title}
             </AUheading>
           </div>
-          {this.state.showDeleteAlert &&
+          {this.state.showDeleteAlert && (
             <div className="row">
               <div
                 className={styles.confirmDeleteAlert}
@@ -76,24 +76,26 @@ export class BriefOverview extends Component {
                   </AUbutton>
                 </AUpageAlert>
               </div>
-            </div>}
+            </div>
+          )}
           <div className="row">
             <div className="col-xs-12 col-sm-8 col-md-12">
               <ol className={`${styles.briefOverviewSections}`}>
-                {sections.map(section =>
+                {sections.map(section => (
                   <BriefOverviewSection key={`section.${section.title}`} links={section.links} title={section.title} />
-                )}
+                ))}
               </ol>
             </div>
           </div>
-          {this.state.showDeleteButton &&
+          {this.state.showDeleteButton && (
             <div className="row">
               <div className={styles.deleteButtonContainer}>
                 <AUbutton className={styles.deleteButton} onClick={this.toggleDeleteAlert}>
                   Delete
                 </AUbutton>
               </div>
-            </div>}
+            </div>
+          )}
         </div>
       </div>
     )

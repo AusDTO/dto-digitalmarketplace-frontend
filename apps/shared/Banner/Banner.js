@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Banner.scss'
 
-const Banner = () =>
+const Banner = () => (
   <div className={styles.phaseBanner}>
     <div className="container">
       <p>
@@ -9,5 +9,6 @@ const Banner = () =>
       </p>
     </div>
   </div>
+)
 
 export default Banner

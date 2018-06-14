@@ -125,7 +125,7 @@ class DomainSelector extends BaseForm {
                                             name={kebabCase(label)}
                                             value={label}
                                         />
-                                        <label htmlFor={kebabCase(label)}>{label} <p>{description}</p></label>
+                                        <label htmlFor={kebabCase(label)}>{label} <p dangerouslySetInnerHTML={{__html: description}} /></label>
                                     </div>
                                 )
                             })}

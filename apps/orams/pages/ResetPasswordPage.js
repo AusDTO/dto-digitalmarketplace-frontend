@@ -61,24 +61,26 @@ export class ResetPasswordPageComponent extends Component {
           <Route
             exact
             path={match.url}
-            render={() =>
+            render={() => (
               <RequestResetEmailForm
                 model={model}
                 user={user}
                 submitClicked={this.onSubmitClicked}
                 handleSubmit={values => this.handleSendEmailSubmit(values)}
-              />}
+              />
+            )}
           />
 
           <Route
             path={`${match.url}/:tokenString`}
-            render={() =>
+            render={() => (
               <ResetPasswordForm
                 model={model}
                 user={user}
                 submitClicked={this.onSubmitClicked}
                 handleSubmit={values => this.handleResetPasswordSubmit(values)}
-              />}
+              />
+            )}
           />
 
           <Route component={NotFound} />
