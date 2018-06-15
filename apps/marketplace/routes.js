@@ -11,6 +11,7 @@ import CollaboratePage from './pages/CollaboratePage'
 import SellerDashboardPage from './pages/SellerDashboardPage'
 import BuyerDashboardPage from './pages/BuyerDashboardPage'
 import BriefChoicePage from './pages/BriefChoicePage'
+import BriefAssessorsPage from './pages/BriefAssessorsPage'
 import BriefOverviewPage from './pages/BriefOverviewPage'
 
 export const rootPath = '/2'
@@ -21,6 +22,7 @@ export const Routes = () => (
     <Route path={`${rootPath}/signup`} component={SignupPage} />
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
+    <PrivateRoute path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />

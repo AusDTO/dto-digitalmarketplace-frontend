@@ -23,7 +23,8 @@
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
-    "react-native/no-inline-styles": 2
+    "react-native/no-inline-styles": 2,
+    "import/no-named-as-default": "off",
   },
   "globals": {
     "document": false,

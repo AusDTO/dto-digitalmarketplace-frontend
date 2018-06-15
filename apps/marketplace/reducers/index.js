@@ -39,6 +39,9 @@ export default combineReducers({
     loginForm: {
       emailAddress: '',
       password: ''
+    },
+    briefInviteAssessorsForm: {
+      email_address: ''
     }
   })
 })
