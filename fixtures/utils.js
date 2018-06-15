@@ -1,6 +1,6 @@
-var randomWords = require('random-words');
+const randomWords = require('random-words');
 
-exports.getElementHandle = async function (xpath) {
+exports.getElementHandle = async (xpath) => {
     let elements = await utils.getElementHandles(xpath);
     if (elements.length > 1) {
         throw `"${xpath}" returned more than one element`;
@@ -9,25 +9,25 @@ exports.getElementHandle = async function (xpath) {
     }
     return elements[0];
 }
-exports.getElementHandles = async function (xpath) {
+exports.getElementHandles = async (xpath) => {
     await page.waitForXPath(xpath, { visible: true });
     let elements = await page.$x(xpath);
     return elements;
 }
 
-exports.selectCheck = async function (value) {
+exports.selectCheck = async (value) => {
     console.log(`Selecting check box "${value}"`);
     let radio = await this.getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
-exports.selectRadio = async function (value) {
+exports.selectRadio = async (value) => {
     console.log(`Selecting radio "${value}"`);
     let radio = await this.getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
-exports.type = async function (id, options) {
+exports.type = async (id, options) => {
     console.log(`Typing in ${id}`);
     let { value, numberOfWords, numberOfCharacters } = options;
     if (value !== '' && !value) {
@@ -49,13 +49,13 @@ exports.type = async function (id, options) {
     }
 }
 
-exports.clickButton = async function (value) {
+exports.clickButton = async (value) => {
     console.log(`Clicking button ${value}`);
     let button = await utils.getElementHandle(`//input[@value="${value}"]`);
     await button.click();
 }
 
-exports.clickLink = async function (linkText) {
+exports.clickLink = async (linkText) => {
     console.log(`Clicking link "${linkText}"`);
     let links = await utils.getElementHandles(`//a[.="${linkText}"]`);
     expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
@@ -71,13 +71,13 @@ exports.words = function (numberOfWords, numberOfCharacters) {
     return text;
 }
 
-exports.matchText = async function (tag, text) {
+exports.matchText = async (tag, text) => {
     console.log(`matching text: '//${tag}["${text}"]'`);
     let elementHandles = await utils.getElementHandles(`//${tag}[contains(text(), "${text}")]`);
     expect(elementHandles.length).to.equal(1, `No text found using '//${tag}["${text}"]'`);
 }
 
-exports.sleep = async function (ms) {
+exports.sleep = async (ms) => {
     console.log(`Sleeping for ${ms} milliseconds`);
     return new Promise(resolve => setTimeout(resolve, ms));
 }

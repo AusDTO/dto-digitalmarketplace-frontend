@@ -1,4 +1,4 @@
-module.exports.login = async function (email, password) {
+exports.login = async (email, password) => {
     await utils.clickLink('Sign in');
     await utils.matchText('h1', 'Sign in to the Marketplace');
     if (email == undefined) {
@@ -12,7 +12,7 @@ module.exports.login = async function (email, password) {
     await utils.clickButton('Sign in');
 };
 
-module.exports.signOut = async function () {
+exports.signOut = async () => {
     await utils.clickLink('Sign out');
     await utils.matchText('h1', 'Sign in to the Marketplace');
 }

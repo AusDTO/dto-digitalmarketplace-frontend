@@ -1,4 +1,4 @@
-exports.create = async function () {
+exports.create = async () => {
     console.log('Starting to create outcome brief');
     let now = Date.now();
     await selectLot('digital-outcome');
@@ -13,21 +13,21 @@ exports.create = async function () {
     await publishBrief();
 }
 
-async function selectLot(lot) {
+const selectLot = async (lot) => {
     await utils.selectRadio(lot);
     await utils.clickLink('Continue');
 }
 
-async function createBrief() {
+const createBrief = async () => {
     await utils.clickButton('Create brief');
 }
 
-async function fillTitle(role) {
+const fillTitle = async (role) => {
     await utils.type('input-title', { value: role });
     await clickSaveContinue();
 }
 
-async function fillLocation(locations) {
+const fillLocation = async (locations) => {
     await utils.clickLink('Location');
 
     for (let i in locations) {
@@ -38,7 +38,7 @@ async function fillLocation(locations) {
     await clickSaveContinue();
 }
 
-async function fillDescriptinoOfWork() {
+const fillDescriptinoOfWork = async () => {
     await utils.clickLink('Description of work');
     await utils.clickLink('Add organisation');
     await utils.type('input-organisation', { numberOfCharacters: 100 });
@@ -92,7 +92,7 @@ async function fillDescriptinoOfWork() {
     await clickReturnToOverview();
 }
 
-async function fillEvaluationProcess() {
+const fillEvaluationProcess = async () => {
     await utils.clickLink('Shortlist and evaluation process');
 
     await utils.clickLink('Set maximum number of suppliers you’ll evaluate');
@@ -124,13 +124,13 @@ async function fillEvaluationProcess() {
     await clickReturnToOverview();
 }
 
-async function fillHowLong() {
+const fillHowLong = async () => {
     await utils.clickLink('How long your brief will be open');
     await utils.selectRadio('1 week');
     await clickSaveContinue();
 }
 
-async function fillQuestionAnswer() {
+const fillQuestionAnswer = async () => {
     await utils.clickLink('Question and answer session details');
     await utils.clickLink('Add details');
     await utils.type('input-questionAndAnswerSessionDetails', { numberOfWords: 100 });
@@ -138,22 +138,22 @@ async function fillQuestionAnswer() {
     await clickReturnToOverview();
 }
 
-async function fillWhoCanRespond() {
+const fillWhoCanRespond = async () => {
     await utils.clickLink('Who can respond');
     await utils.selectRadio('allSellers');
     await clickSaveContinue();
 }
 
-async function publishBrief() {
+const publishBrief = async () => {
     await utils.clickLink('Review and publish your requirements');
     await utils.clickButton('Publish brief');
     await utils.matchText('h4', 'Your opportunity has been published');
 }
 
-async function clickSaveContinue() {
+const clickSaveContinue = async () => {
     await utils.clickButton('Save and continue');
 }
 
-async function clickReturnToOverview() {
+const clickReturnToOverview = async () => {
     await utils.clickLink('Return to overview');
 }

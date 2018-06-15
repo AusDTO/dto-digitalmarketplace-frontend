@@ -2,7 +2,7 @@ const buyerLogin = require('../../useCases/login/buyer');
 const specialistBrief = require('../../useCases/brief/specialist');
 const buyerDashboard = require('../../useCases/dashboard/buyer');
 
-describe('should be able to create specialist brief', function () {
+describe('should be able to create specialist brief', () => {
     let areaOfExpertises = [
         { args: ['Strategy and Policy'] },
         { args: ['User research and Design'] },
@@ -19,7 +19,7 @@ describe('should be able to create specialist brief', function () {
         { args: ['Emerging technologies'] }
     ];
 
-    areaOfExpertises.forEach(function (areaOfExpertise) {
+    areaOfExpertises.forEach((areaOfExpertise) => {
         it('should create specialist brief of ' + areaOfExpertise.args, async () => {
             await buyerLogin.login();
             await buyerDashboard.startBrief();

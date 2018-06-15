@@ -1,4 +1,3 @@
-
 const puppeteer = require('puppeteer');
 const { expect } = require('chai');
 const utils = require('../utils');
@@ -11,18 +10,18 @@ const opts = {
 };
 
 // expose variables
-before(async function () {
+before(async () => {
     global.expect = expect;
     global.utils = utils;
     global.browser = await puppeteer.launch(opts);
     global.page = await browser.newPage();
 });
 
-beforeEach(async function () {
+beforeEach(async () => {
     await page.goto(process.env.FRONTEND_ADDRESS);
     await page._client.send('Emulation.clearDeviceMetricsOverride');
 });
 
-after(async function () {
+after(async () => {
     await browser.close();
 });
