@@ -56,7 +56,7 @@ app.post('/render', render);
 app.set('view engine', 'ejs');
 
 app.get('/orams*', function(req, res) {
-  res.render('orams');
+  res.redirect('https://orams.service.gov.au');
 })
 
 app.get('/2/insights*', function(req, res) {
