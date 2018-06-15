@@ -16,27 +16,30 @@ const ClosedDate = props => {
         let text = ''
         let duration = ''
         const seconds = differenceInSeconds(parsed, today)
+        const hour = 3600
+        const day = 86400
+        const week = 604800
         // depending on how many seconds are left to reach the closed date, produce a string that represents the time
-        // left to go from weeks to minutes
-        if (seconds < 3600) {
+        // left to go, using units weeks, days, hours, and minutes
+        if (seconds < hour) {
           const minutes = Math.ceil(seconds / 60)
           text = `0d : 0h : ${minutes}m`
           duration = `P0DT${minutes}M`
-        } else if (seconds >= 3600 && seconds < 86400) {
-          const hours = Math.floor(seconds / 3600)
-          const minutes = Math.floor((seconds - hours * 3600) / 60)
+        } else if (seconds >= hour && seconds < day) {
+          const hours = Math.floor(seconds / hour)
+          const minutes = Math.floor((seconds - hours * hour) / 60)
           text = `0d : ${hours}h : ${minutes}m`
           duration = `P0DT${hours}H${minutes}M`
-        } else if (seconds >= 86400 && seconds < 604800) {
-          const days = Math.floor(seconds / 86400)
-          const hours = Math.floor((seconds - days * 86400) / 60 / 60)
-          const minutes = Math.floor((seconds - days * 86400 - hours * 3600) / 60)
+        } else if (seconds >= day && seconds < week) {
+          const days = Math.floor(seconds / day)
+          const hours = Math.floor((seconds - days * day) / 60 / 60)
+          const minutes = Math.floor((seconds - days * day - hours * hour) / 60)
           text = `${days}d : ${hours}h : ${minutes}m`
           duration = `P${days}DT${hours}H${minutes}M`
-        } else if (seconds >= 604800) {
-          const weeks = Math.floor(seconds / 604800)
-          const days = Math.floor((seconds - weeks * 604800) / 86400)
-          const hours = Math.floor((seconds - weeks * 604800 - days * 86400) / 60 / 60)
+        } else if (seconds >= week) {
+          const weeks = Math.floor(seconds / week)
+          const days = Math.floor((seconds - weeks * week) / day)
+          const hours = Math.floor((seconds - weeks * week - days * day) / 60 / 60)
           text = `${weeks}w : ${days}d : ${hours}h`
           const durationDays = weeks * 7 + days
           duration = `P${durationDays}DT${hours}H`
