@@ -11,6 +11,5 @@ routes:
 - route: dm-dev-frontend.apps.y.cld.gov.au
 - route: dm-dev.apps.y.cld.gov.au/bundle
 - route: dm-dev.apps.y.cld.gov.au/2
-- route: dm-dev.apps.y.cld.gov.au/orams
 applications:
 - name: dm-dev-frontend
