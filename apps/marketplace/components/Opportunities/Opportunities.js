@@ -161,7 +161,9 @@ export class Opportunities extends Component {
                           </div>
                         </div>
                         <div className="col-md-9 col-sm-9 col-xs-8">
-                          <div>{item.location ? item.location.map(v => mapStates(v)).join(', ') : ''}</div>
+                          <div>
+                            {item.location ? item.location.map(v => mapStates(v)).join(', ') : <span>&nbsp;</span>}
+                          </div>
                           <div>
                             <ClosedDate countdown date={item.closed_at} />
                           </div>
