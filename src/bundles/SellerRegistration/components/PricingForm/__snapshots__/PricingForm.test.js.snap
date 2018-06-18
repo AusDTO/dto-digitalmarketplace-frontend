@@ -105,6 +105,11 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           User research
         </legend>
+        <label>
+          We have set a price threshold for this area of expertise: 
+          $123
+           (GST inclusive). If you nominate a price above this threshold we will assess your case studies at a higher standard to verify that your service offers value for money.
+        </label>
         <div>
           <span>
             <strong>
@@ -137,6 +142,11 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           Content development
         </legend>
+        <label>
+          We have set a price threshold for this area of expertise: 
+          $456
+           (GST inclusive). If you nominate a price above this threshold we will assess your case studies at a higher standard to verify that your service offers value for money.
+        </label>
         <div>
           <span>
             <strong>
@@ -169,6 +179,11 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
         <legend>
           Content management
         </legend>
+        <label>
+          We have set a price threshold for this area of expertise: 
+          $789
+           (GST inclusive). If you nominate a price above this threshold we will assess your case studies at a higher standard to verify that your service offers value for money.
+        </label>
         <div>
           <span>
             <strong>
