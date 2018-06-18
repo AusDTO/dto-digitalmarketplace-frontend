@@ -102,6 +102,9 @@ class PricingForm extends BaseForm {
             {Object.keys(validServices).map((service, i) => (
               <fieldset key={`pricing.${service}.${i}`} className="field">
                 <legend>{service}</legend>
+                <label>
+                  We have set a price threshold for this area of expertise: {`$${parseFloat(domains.prices.maximum[service] || 0)}`} (GST inclusive). If you nominate a price above this threshold we will assess your case studies at a higher standard to verify that your service offers value for money. 
+                </label>
                 <StatefulError
                   model={`${model}.pricing.${service}.maxPrice`}
                   messages={{
