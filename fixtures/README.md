@@ -1,11 +1,11 @@
-To run this, first create an environment file with the following and fill in the [BLANKS]:
+To run this, first create an environment file with the following:
 
 ```
-export FRONTEND_ADDRESS=[BLANKS]   
-export SELLER_EMAIL=[BLANKS]  
-export SELLER_PASSWORD=[BLANKS]  
-export BUYER_EMAIL=[BLANKS]  
-export BUYER_PASSWORD=[BLANKS]  
+export FRONTEND_ADDRESS=[http://localhost:8000]
+export SELLER_EMAIL=[some.seller@company.com]
+export SELLER_PASSWORD=[password]
+export BUYER_EMAIL=[some.buyer@government.gov.au]
+export BUYER_PASSWORD=[password]
 export TYPE_INPUT=[true|false]
 ```
 
