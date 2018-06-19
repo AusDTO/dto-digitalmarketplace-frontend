@@ -1,6 +1,6 @@
-const buyerLogin = require('../../useCases/login/buyer');
-const specialistBrief = require('../../useCases/brief/specialist');
-const buyerDashboard = require('../../useCases/dashboard/buyer');
+import { login, signOut } from '../../useCases/login/buyer';
+import { create } from '../../useCases/brief/specialist';
+import { startBrief } from '../../useCases/dashboard/buyer';
 
 describe('should be able to create specialist brief', () => {
     let areaOfExpertises = [
@@ -21,10 +21,10 @@ describe('should be able to create specialist brief', () => {
 
     areaOfExpertises.forEach((areaOfExpertise) => {
         it('should create specialist brief of ' + areaOfExpertise.args, async () => {
-            await buyerLogin.login();
-            await buyerDashboard.startBrief();
-            await specialistBrief.create.apply(null, areaOfExpertise.args);
-            await buyerLogin.signOut();
+            await login();
+            await startBrief();
+            await create.apply(null, areaOfExpertise.args);
+            await signOut();
         });
     });
 })

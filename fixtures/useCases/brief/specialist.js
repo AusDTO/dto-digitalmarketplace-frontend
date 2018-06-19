@@ -1,4 +1,4 @@
-exports.create = async (areaOfExpertise) => {
+export const create = async (areaOfExpertise) => {
     console.log(`Starting to create ${areaOfExpertise} brief`);
     let now = Date.now();
     await selectLot('digital-professionals');

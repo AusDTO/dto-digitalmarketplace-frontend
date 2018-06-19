@@ -1,4 +1,4 @@
-exports.create = async () => {
+export const create = async () => {
     console.log('Starting to create outcome brief');
     let now = Date.now();
     await selectLot('digital-outcome');

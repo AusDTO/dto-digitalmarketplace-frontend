@@ -1,6 +1,6 @@
-const randomWords = require('random-words');
+import randomWords from 'random-words';
 
-exports.getElementHandle = async (xpath) => {
+export const getElementHandle = async (xpath) => {
     let elements = await utils.getElementHandles(xpath);
     if (elements.length > 1) {
         throw `"${xpath}" returned more than one element`;
@@ -9,25 +9,25 @@ exports.getElementHandle = async (xpath) => {
     }
     return elements[0];
 }
-exports.getElementHandles = async (xpath) => {
+export const getElementHandles = async (xpath) => {
     await page.waitForXPath(xpath, { visible: true });
     let elements = await page.$x(xpath);
     return elements;
 }
 
-exports.selectCheck = async (value) => {
+export const selectCheck = async (value) => {
     console.log(`Selecting check box "${value}"`);
-    let radio = await this.getElementHandle(`//input[@value="${value}"]`);
+    let radio = await utils.getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
-exports.selectRadio = async (value) => {
+export const selectRadio = async (value) => {
     console.log(`Selecting radio "${value}"`);
-    let radio = await this.getElementHandle(`//input[@value="${value}"]`);
+    let radio = await utils.getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
-exports.type = async (id, options) => {
+export const type = async (id, options) => {
     console.log(`Typing in ${id}`);
     let { value, numberOfWords, numberOfCharacters } = options;
     if (value !== '' && !value) {
@@ -49,20 +49,20 @@ exports.type = async (id, options) => {
     }
 }
 
-exports.clickButton = async (value) => {
+export const clickButton = async (value) => {
     console.log(`Clicking button ${value}`);
     let button = await utils.getElementHandle(`//input[@value="${value}"]`);
     await button.click();
 }
 
-exports.clickLink = async (linkText) => {
+export const clickLink = async (linkText) => {
     console.log(`Clicking link "${linkText}"`);
     let links = await utils.getElementHandles(`//a[.="${linkText}"]`);
     expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
     await links[0].click();
 }
 
-exports.words = function (numberOfWords, numberOfCharacters) {
+export const words = function (numberOfWords, numberOfCharacters) {
     let text = randomWords({ exactly: numberOfWords }).join(' ');
 
     if (numberOfCharacters) {
@@ -71,13 +71,13 @@ exports.words = function (numberOfWords, numberOfCharacters) {
     return text;
 }
 
-exports.matchText = async (tag, text) => {
+export const matchText = async (tag, text) => {
     console.log(`matching text: '//${tag}["${text}"]'`);
     let elementHandles = await utils.getElementHandles(`//${tag}[contains(text(), "${text}")]`);
     expect(elementHandles.length).to.equal(1, `No text found using '//${tag}["${text}"]'`);
 }
 
-exports.sleep = async (ms) => {
+export const sleep = async (ms) => {
     console.log(`Sleeping for ${ms} milliseconds`);
     return new Promise(resolve => setTimeout(resolve, ms));
 }

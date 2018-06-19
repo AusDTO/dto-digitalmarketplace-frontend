@@ -1,4 +1,4 @@
-const buyerLogin = require('../../useCases/login/buyer');
+import { login, signOut } from '../../useCases/login/buyer';
 
 describe('should fail sign in', () => {
     let testCases = [
@@ -8,14 +8,14 @@ describe('should fail sign in', () => {
     ]
     testCases.forEach((test) => {
         it('sign in fails ' + test.args.length + ' args', async () => {
-            await buyerLogin.login.apply(null, test.args);
+            await login.apply(null, test.args);
             await utils.matchText.apply(null, test.expected);
         });
     });
 })
 
 it('should be able to login', async () => {
-    await buyerLogin.login();
+    await login();
     await utils.matchText('h1', 'Dashboard');
-    await buyerLogin.signOut();
+    await signOut();
 });

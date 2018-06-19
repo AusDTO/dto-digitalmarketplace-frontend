@@ -1,6 +1,7 @@
-const puppeteer = require('puppeteer');
-const { expect } = require('chai');
-const utils = require('../utils');
+import puppeteer from 'puppeteer';
+import { expect } from 'chai';
+import * as utils from '../utils';
+
 
 // puppeteer options
 const opts = {
