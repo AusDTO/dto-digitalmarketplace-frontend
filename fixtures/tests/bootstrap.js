@@ -13,7 +13,10 @@ const opts = {
 // expose variables
 before(async () => {
     global.expect = expect;
-    global.utils = utils;
+    
+    for (let f in utils) {
+        global[f] = utils[f];
+    }
     global.browser = await puppeteer.launch(opts);
     global.page = await browser.newPage();
 });

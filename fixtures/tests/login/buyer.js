@@ -9,13 +9,13 @@ describe('should fail sign in', () => {
     testCases.forEach((test) => {
         it('sign in fails ' + test.args.length + ' args', async () => {
             await login.apply(null, test.args);
-            await utils.matchText.apply(null, test.expected);
+            await matchText.apply(null, test.expected);
         });
     });
 })
 
 it('should be able to login', async () => {
     await login();
-    await utils.matchText('h1', 'Dashboard');
+    await matchText('h1', 'Dashboard');
     await signOut();
 });

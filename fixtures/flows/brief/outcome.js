@@ -14,108 +14,95 @@ export const create = async () => {
 }
 
 const selectLot = async (lot) => {
-    await utils.selectRadio(lot);
-    await utils.clickLink('Continue');
+    await selectRadio(lot);
+    await clickLink('Continue');
 }
 
 const createBrief = async () => {
-    await utils.clickButton('Create brief');
+    await clickButton('Create brief');
 }
 
 const fillTitle = async (role) => {
-    await utils.type('input-title', { value: role });
+    await type('input-title', { value: role });
     await clickSaveContinue();
 }
 
 const fillLocation = async (locations) => {
-    await utils.clickLink('Location');
+    await clickLink('Location');
 
     for (let i in locations) {
         let location = locations[i];
-        await utils.selectCheck(location);
+        await selectCheck(location);
     }
 
     await clickSaveContinue();
 }
 
 const fillDescriptinoOfWork = async () => {
-    await utils.clickLink('Description of work');
-    await utils.clickLink('Add organisation');
-    await utils.type('input-organisation', { numberOfCharacters: 100 });
+    await clickLink('Description of work');
+    await clickLink('Add organisation');
+
+    let fields = [
+        { id: 'input-organisation', options: { numberOfCharacters: 100 } },
+        { id: 'input-backgroundInformation', options: { numberOfWords: 500 } },
+        { id: 'input-outcome', options: { numberOfWords: 500 } },
+        { id: 'input-endUsers', options: { numberOfWords: 500 } },
+        { id: 'input-workAlreadyDone', options: { numberOfWords: 500 } }
+    ]
+    for (var i in fields) {
+        let field = fields[i];
+        await type(field.id, field.options);
+        await clickSaveContinue();
+    }
+
+    await selectRadio('live');
     await clickSaveContinue();
 
-    await utils.type('input-backgroundInformation', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.type('input-outcome', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.type('input-endUsers', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.type('input-workAlreadyDone', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.selectRadio('live');
-    await clickSaveContinue();
-
-    await utils.type('input-existingTeam', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.type('input-additionalRelevantInformation', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.type('input-workplaceAddress', { numberOfWords: 100 });
-    await clickSaveContinue();
-
-    await utils.type('input-workingArrangements', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.type('input-securityClearance', { numberOfWords: 50 });
-    await clickSaveContinue();
-
-    await utils.type('input-startDate', { numberOfWords: 10 });
-    await clickSaveContinue();
-
-    await utils.type('input-contractLength', { numberOfWords: 100 });
-    await clickSaveContinue();
-
-    await utils.type('input-additionalTerms', { numberOfWords: 500 });
-    await clickSaveContinue();
-
-    await utils.type('input-budgetRange', { numberOfWords: 200 });
-    await clickSaveContinue();
-
-    await utils.type('input-summary', { numberOfWords: 50 });
-    await clickSaveContinue();
+    fields = [
+        { id: 'input-existingTeam', options: { numberOfCharacters: 500 } },
+        { id: 'input-additionalRelevantInformation', options: { numberOfWords: 500 } },
+        { id: 'input-workplaceAddress', options: { numberOfWords: 100 } },
+        { id: 'input-workingArrangements', options: { numberOfWords: 500 } },
+        { id: 'input-securityClearance', options: { numberOfWords: 50 } },
+        { id: 'input-startDate', options: { numberOfWords: 10 } },
+        { id: 'input-contractLength', options: { numberOfWords: 100 } },
+        { id: 'input-additionalTerms', options: { numberOfWords: 500 } },
+        { id: 'input-budgetRange', options: { numberOfWords: 200 } },
+        { id: 'input-summary', options: { numberOfWords: 50 } }
+    ]
+    for (var i in fields) {
+        let field = fields[i];
+        await type(field.id, field.options);
+        await clickSaveContinue();
+    }
 
     await clickReturnToOverview();
 }
 
 const fillEvaluationProcess = async () => {
-    await utils.clickLink('Shortlist and evaluation process');
+    await clickLink('Shortlist and evaluation process');
 
-    await utils.clickLink('Set maximum number of suppliers you’ll evaluate');
-    await utils.type('input-numberOfSuppliers', { value: '3' });
+    await clickLink('Set maximum number of suppliers you’ll evaluate');
+    await type('input-numberOfSuppliers', { value: '3' });
     await clickSaveContinue();
 
-    await utils.type('input-technicalWeighting', { value: '25' });
-    await utils.type('input-culturalWeighting', { value: '25' });
-    await utils.type('input-priceWeighting', { value: '50' });
+    await type('input-technicalWeighting', { value: '25' });
+    await type('input-culturalWeighting', { value: '25' });
+    await type('input-priceWeighting', { value: '50' });
     await clickSaveContinue();
 
-    await utils.type('input-essentialRequirements-1', { numberOfWords: 10 });
-    await utils.type('input-niceToHaveRequirements-1', { numberOfWords: 10 });
-    await utils.type('input-successCriteria-1', { numberOfWords: 10 });
+    await type('input-essentialRequirements-1', { numberOfWords: 10 });
+    await type('input-niceToHaveRequirements-1', { numberOfWords: 10 });
+    await type('input-successCriteria-1', { numberOfWords: 10 });
     await clickSaveContinue();
 
-    await utils.type('input-culturalFitCriteria-1', { numberOfWords: 10 });
+    await type('input-culturalFitCriteria-1', { numberOfWords: 10 });
     await clickSaveContinue();
 
-    await utils.selectRadio('Fixed price');
+    await selectRadio('Fixed price');
     await clickSaveContinue();
 
-    let chkEvaluations = await utils.getElementHandles(`//input[@type="checkbox"]`);
+    let chkEvaluations = await getElementHandles(`//input[@type="checkbox"]`);
     for (let i in chkEvaluations) {
         let chkEvaluation = chkEvaluations[i];
         await chkEvaluation.press('Space');
@@ -125,35 +112,35 @@ const fillEvaluationProcess = async () => {
 }
 
 const fillHowLong = async () => {
-    await utils.clickLink('How long your brief will be open');
-    await utils.selectRadio('1 week');
+    await clickLink('How long your brief will be open');
+    await selectRadio('1 week');
     await clickSaveContinue();
 }
 
 const fillQuestionAnswer = async () => {
-    await utils.clickLink('Question and answer session details');
-    await utils.clickLink('Add details');
-    await utils.type('input-questionAndAnswerSessionDetails', { numberOfWords: 100 });
+    await clickLink('Question and answer session details');
+    await clickLink('Add details');
+    await type('input-questionAndAnswerSessionDetails', { numberOfWords: 100 });
     await clickSaveContinue();
     await clickReturnToOverview();
 }
 
 const fillWhoCanRespond = async () => {
-    await utils.clickLink('Who can respond');
-    await utils.selectRadio('allSellers');
+    await clickLink('Who can respond');
+    await selectRadio('allSellers');
     await clickSaveContinue();
 }
 
 const publishBrief = async () => {
-    await utils.clickLink('Review and publish your requirements');
-    await utils.clickButton('Publish brief');
-    await utils.matchText('h4', 'Your opportunity has been published');
+    await clickLink('Review and publish your requirements');
+    await clickButton('Publish brief');
+    await matchText('h4', 'Your opportunity has been published');
 }
 
 const clickSaveContinue = async () => {
-    await utils.clickButton('Save and continue');
+    await clickButton('Save and continue');
 }
 
 const clickReturnToOverview = async () => {
-    await utils.clickLink('Return to overview');
+    await clickLink('Return to overview');
 }

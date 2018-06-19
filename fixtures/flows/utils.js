@@ -1,7 +1,7 @@
 import randomWords from 'random-words';
 
 export const getElementHandle = async (xpath) => {
-    let elements = await utils.getElementHandles(xpath);
+    let elements = await getElementHandles(xpath);
     if (elements.length > 1) {
         throw `"${xpath}" returned more than one element`;
     } else if (elements.length === 0) {
@@ -17,13 +17,13 @@ export const getElementHandles = async (xpath) => {
 
 export const selectCheck = async (value) => {
     console.log(`Selecting check box "${value}"`);
-    let radio = await utils.getElementHandle(`//input[@value="${value}"]`);
+    let radio = await getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
 export const selectRadio = async (value) => {
     console.log(`Selecting radio "${value}"`);
-    let radio = await utils.getElementHandle(`//input[@value="${value}"]`);
+    let radio = await getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
@@ -34,9 +34,9 @@ export const type = async (id, options) => {
         if (numberOfCharacters) {
             numberOfWords = numberOfCharacters;
         }
-        value = utils.words(numberOfWords, numberOfCharacters);
+        value = words(numberOfWords, numberOfCharacters);
     }
-    let input = await utils.getElementHandle(`//*[@id="${id}"]`);
+    let input = await getElementHandle(`//*[@id="${id}"]`);
     if (process.env.TYPE_INPUT === 'true') {
         await input.type(value, { delay: 0 });
     } else {
@@ -51,13 +51,13 @@ export const type = async (id, options) => {
 
 export const clickButton = async (value) => {
     console.log(`Clicking button ${value}`);
-    let button = await utils.getElementHandle(`//input[@value="${value}"]`);
+    let button = await getElementHandle(`//input[@value="${value}"]`);
     await button.click();
 }
 
 export const clickLink = async (linkText) => {
     console.log(`Clicking link "${linkText}"`);
-    let links = await utils.getElementHandles(`//a[.="${linkText}"]`);
+    let links = await getElementHandles(`//a[.="${linkText}"]`);
     expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
     await links[0].click();
 }
@@ -73,7 +73,7 @@ export const words = function (numberOfWords, numberOfCharacters) {
 
 export const matchText = async (tag, text) => {
     console.log(`matching text: '//${tag}["${text}"]'`);
-    let elementHandles = await utils.getElementHandles(`//${tag}[contains(text(), "${text}")]`);
+    let elementHandles = await getElementHandles(`//${tag}[contains(text(), "${text}")]`);
     expect(elementHandles.length).to.equal(1, `No text found using '//${tag}["${text}"]'`);
 }
 
