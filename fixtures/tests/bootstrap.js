@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 import { expect } from 'chai';
-import * as utils from '../utils';
+import * as utils from '../flows/utils';
 
 
 // puppeteer options
