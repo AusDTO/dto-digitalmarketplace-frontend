@@ -1,6 +1,6 @@
-import { login, signOut } from '../../useCases/login/buyer';
-import { create } from '../../useCases/brief/outcome';
-import { startBrief } from '../../useCases/dashboard/buyer';
+import { login, signOut } from '../../flows/login/buyer';
+import { create } from '../../flows/brief/outcome';
+import { startBrief } from '../../flows/dashboard/buyer';
 
 it('should be able to create outcome brief', async () => {
     await login();

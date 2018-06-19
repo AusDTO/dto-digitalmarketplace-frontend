@@ -1,4 +1,4 @@
-import { login, signOut } from '../../useCases/login/buyer';
+import { login, signOut } from '../../flows/login/buyer';
 
 describe('should fail sign in', () => {
     let testCases = [

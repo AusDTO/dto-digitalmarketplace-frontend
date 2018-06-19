@@ -1,6 +1,6 @@
-import { login, signOut } from '../../useCases/login/buyer';
-import { create } from '../../useCases/brief/specialist';
-import { startBrief } from '../../useCases/dashboard/buyer';
+import { login, signOut } from '../../flows/login/buyer';
+import { create } from '../../flows/brief/specialist';
+import { startBrief } from '../../flows/dashboard/buyer';
 
 describe('should be able to create specialist brief', () => {
     let areaOfExpertises = [
