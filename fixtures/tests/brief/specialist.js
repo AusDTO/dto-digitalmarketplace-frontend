@@ -4,27 +4,41 @@ import { startBrief } from '../../flows/dashboard/buyer';
 
 describe('should be able to create specialist brief', () => {
     let areaOfExpertises = [
-        { args: ['Strategy and Policy'] },
-        { args: ['User research and Design'] },
-        { args: ['Agile delivery and Governance'] },
-        { args: ['Software engineering and Development'] },
-        { args: ['Support and Operations'] },
-        { args: ['Content and Publishing'] },
-        { args: ['Change, Training and Transformation'] },
-        // { args: ['Change and Transformation'] },
-        // { args: ['Training, Learning and Development'] },
-        { args: ['Marketing, Communications and Engagement'] },
-        { args: ['Cyber security'] },
-        { args: ['Data science'] },
-        { args: ['Emerging technologies'] }
+        'Strategy and Policy',
+        'User research and Design',
+        'Agile delivery and Governance',
+        'Software engineering and Development',
+        'Support and Operations',
+        'Content and Publishing',
+        'Change, Training and Transformation',
+        // 'Change and Transformation',
+        // 'Training, Learning and Development',
+        'Marketing, Communications and Engagement',
+        'Cyber security',
+        'Data science',
+        'Emerging technologies'
     ];
-
+    beforeEach(async () => {
+        await login();
+    });
+    afterEach(async () => {
+        await signOut();
+    });
     areaOfExpertises.forEach((areaOfExpertise) => {
-        it('should create specialist brief of ' + areaOfExpertise.args, async () => {
-            await login();
+        it('should create specialist brief of ' + areaOfExpertise, async () => {
+            let now = Date.now();
             await startBrief();
-            await create.apply(null, areaOfExpertise.args);
-            await signOut();
+            await create({
+                title: `${areaOfExpertise} Role ${now.valueOf()}`,
+                areaOfExpertise: areaOfExpertise,
+                locations: ['Australian Capital Territory', 'Tasmania'],
+                evaluations: [
+                    'References',
+                    'Interview',
+                    'Scenario or test',
+                    'Presentation'
+                ]
+            });
         });
     });
 })

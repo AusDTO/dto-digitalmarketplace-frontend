@@ -1,12 +1,11 @@
-export const create = async (areaOfExpertise) => {
-    console.log(`Starting to create ${areaOfExpertise} brief`);
-    let now = Date.now();
+export const create = async (params) => {
+    console.log(`Starting to create ${params.areaOfExpertise} brief`);
     await selectLot('digital-professionals');
     await createBrief();
-    await fillRole(`${areaOfExpertise} Role ${now.valueOf()}`);
-    await selectLocation(['Australian Capital Territory', 'Tasmania']);
+    await fillRole(params.title);
+    await selectLocation(params.locations);
     await fillDescriptinoOfWork();
-    await fillEvaluationProcess(areaOfExpertise);
+    await fillEvaluationProcess(params.areaOfExpertise, params.evaluations);
     await fillHowLong();
     await fillQuestionAnswer();
     await fillWhoCanRespond();
@@ -65,7 +64,7 @@ const fillDescriptinoOfWork = async () => {
     await clickReturnToOverview();
 }
 
-const fillEvaluationProcess = async (areaOfExpertise) => {
+const fillEvaluationProcess = async (areaOfExpertise, evaluations) => {
     await clickLink('Shortlist and evaluation process');
     await clickLink('Please choose an area of expertise');
 
@@ -87,10 +86,9 @@ const fillEvaluationProcess = async (areaOfExpertise) => {
     await type('input-culturalFitCriteria-1', { numberOfCharacters: 300 });
     await clickSaveContinue();
 
-    let chkEvaluations = await getElementHandles(`//input[@type="checkbox"]`);
-    for (let i in chkEvaluations) {
-        let chkEvaluation = chkEvaluations[i];
-        await chkEvaluation.press('Space');
+    for (let i in evaluations) {
+        let evaluation = evaluations[i];
+        await selectCheck(evaluation);
     }
     await clickSaveContinue();
     await clickReturnToOverview();

@@ -12,10 +12,18 @@ describe('should fail sign in', () => {
             await matchText.apply(null, test.expected);
         });
     });
-})
+});
 
-it('should be able to login', async () => {
-    await login();
-    await matchText('h1', 'Dashboard');
-    await signOut();
+
+describe('should sign in', () => {
+    it('buyer should be able to login', async () => {
+        await login(process.env.BUYER_EMAIL, process.env.BUYER_PASSWORD);
+        await matchText('h1', 'Dashboard');
+        await signOut();
+    });
+    it('seller should be able to login', async () => {
+        await login(process.env.SELLER_EMAIL, process.env.SELLER_PASSWORD);
+        await matchText('h1', 'Opportunities');
+        await signOut();
+    });
 });

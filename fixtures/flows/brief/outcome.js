@@ -1,12 +1,11 @@
-export const create = async () => {
+export const create = async (params) => {
     console.log('Starting to create outcome brief');
-    let now = Date.now();
     await selectLot('digital-outcome');
     await createBrief();
-    await fillTitle(`Digital Outcome ${now.valueOf()}`);
-    await fillLocation(['Australian Capital Territory', 'Tasmania']);
+    await fillTitle(params.title);
+    await fillLocation(params.locations);
     await fillDescriptinoOfWork();
-    await fillEvaluationProcess();
+    await fillEvaluationProcess(params.evaluations);
     await fillHowLong();
     await fillQuestionAnswer();
     await fillWhoCanRespond();
@@ -79,7 +78,7 @@ const fillDescriptinoOfWork = async () => {
     await clickReturnToOverview();
 }
 
-const fillEvaluationProcess = async () => {
+const fillEvaluationProcess = async (evaluations) => {
     await clickLink('Shortlist and evaluation process');
 
     await clickLink('Set maximum number of suppliers you’ll evaluate');
@@ -102,10 +101,9 @@ const fillEvaluationProcess = async () => {
     await selectRadio('Fixed price');
     await clickSaveContinue();
 
-    let chkEvaluations = await getElementHandles(`//input[@type="checkbox"]`);
-    for (let i in chkEvaluations) {
-        let chkEvaluation = chkEvaluations[i];
-        await chkEvaluation.press('Space');
+    for (let i in evaluations) {
+        let evaluation = evaluations[i];
+        await selectCheck(evaluation);
     }
     await clickSaveContinue();
     await clickReturnToOverview();
