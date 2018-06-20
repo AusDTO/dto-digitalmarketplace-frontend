@@ -44,6 +44,23 @@ export default combineReducers({
     },
     briefInviteAssessorsForm: {
       email_address: ''
+    },
+    opportunitiesFilterForm: {
+      status: {
+        live: false,
+        closed: false
+      },
+      openTo: {
+        all: false,
+        selected: false,
+        one: false
+      },
+      type: {
+        outcomes: false,
+        specialists: false,
+        innovation: false,
+        training: false
+      }
     }
   })
 })

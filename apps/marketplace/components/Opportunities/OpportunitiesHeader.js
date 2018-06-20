@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { OpportunitiesFilters } from 'marketplace/components/Opportunities/OpportunitiesFilters'
+import OpportunitiesFilters from 'marketplace/components/Opportunities/OpportunitiesFilters'
 import styles from './Opportunities.scss'
 
 export const OpportunitiesHeader = props => (

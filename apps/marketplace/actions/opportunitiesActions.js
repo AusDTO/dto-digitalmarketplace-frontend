@@ -1,3 +1,4 @@
+import { actions } from 'react-redux-form'
 import { OPPORTUNITIES_SUCCESS, OPPORTUNITIES_SENDING } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
@@ -33,15 +34,14 @@ export const handleOpportunitiesSuccess = response => ({
 })
 
 export const loadOpportunities = (filters = {}) => dispatch => {
-  const getSelectedFilters = f =>
-    Object.keys(f)
-      .filter(k => f[k])
-      .join(',')
+  const statusFilters = filters.status ? Object.keys(filters.status).filter(k => filters.status[k]) : []
+  const openToFilters = filters.openTo ? Object.keys(filters.openTo).filter(k => filters.openTo[k]) : []
+  const typeFilters = filters.type ? Object.keys(filters.type).filter(k => filters.type[k]) : []
 
   const params = {
-    statusFilters: filters.statusFilters ? getSelectedFilters(filters.statusFilters) : '',
-    openToFilters: filters.openToFilters ? getSelectedFilters(filters.openToFilters) : '',
-    typeFilters: filters.typeFilters ? getSelectedFilters(filters.typeFilters) : ''
+    statusFilters: statusFilters.join(','),
+    openToFilters: openToFilters.join(','),
+    typeFilters: typeFilters.join(',')
   }
 
   dispatch(sendingRequest(true))
@@ -53,4 +53,8 @@ export const loadOpportunities = (filters = {}) => dispatch => {
     }
     dispatch(sendingRequest(false))
   })
+}
+
+export const submitForm = () => dispatch => {
+  dispatch(actions.submit('opportunitiesFilterForm'))
 }

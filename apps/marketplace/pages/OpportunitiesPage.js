@@ -38,7 +38,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getOpportunities: (filters = {}) => dispatch(loadOpportunities(filters))
+  getOpportunities: filters => dispatch(loadOpportunities(filters))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OpportunitiesPage))
