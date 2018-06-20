@@ -5,9 +5,8 @@ import * as utils from '../flows/utils';
 
 // puppeteer options
 const opts = {
-    headless: false,
-    //slowMo: 100,
-    //timeout: 10000
+    headless: process.env.HEADLESS ? process.env.HEADLESS : false,
+    slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
 };
 
 // expose variables

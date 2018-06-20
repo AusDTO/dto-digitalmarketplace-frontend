@@ -4,7 +4,7 @@ export const create = async (params) => {
     await createBrief();
     await fillTitle(params.title);
     await fillLocation(params.locations);
-    await fillDescriptinoOfWork();
+    await fillDescriptionOfWork();
     await fillEvaluationProcess(params.evaluations);
     await fillHowLong();
     await fillQuestionAnswer();
@@ -37,7 +37,7 @@ const fillLocation = async (locations) => {
     await clickSaveContinue();
 }
 
-const fillDescriptinoOfWork = async () => {
+const fillDescriptionOfWork = async () => {
     await clickLink('Description of work');
     await clickLink('Add organisation');
 
