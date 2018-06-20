@@ -112,7 +112,7 @@ export class Opportunities extends Component {
                       </div>
                       <div className={`col-md-4 col-sm-4 ${styles.cell}`} role="cell" aria-labelledby="header_name">
                         <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
-                        <div>At: {item.company}</div>
+                        {item.company && <div>At: {item.company}</div>}
                       </div>
                       <div className={`col-md-2 col-sm-2 ${styles.cell}`} role="cell" aria-labelledby="header_location">
                         {item.location ? item.location.map(v => mapStates(v)).join(', ') : ''}

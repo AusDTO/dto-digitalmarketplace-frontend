@@ -95,14 +95,6 @@ export class OpportunitiesFiltersComponent extends BaseForm {
             <ul className="au-link-list au-link-list--inline">
               <li className={styles.filterContainer}>
                 <TypeFilterControl
-                  name="Innovation"
-                  filter="innovation"
-                  model={`${model}.type.innovation`}
-                  submitForm={this.handleTypeFilterSubmit}
-                />
-              </li>
-              <li className={styles.filterContainer}>
-                <TypeFilterControl
                   name="Outcomes"
                   filter="outcomes"
                   model={`${model}.type.outcomes`}
@@ -235,16 +227,6 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   <AUheading size="sm" level="3">
                     Type of opportunity
                   </AUheading>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.type.innovation`}
-                      id="innovation"
-                      name="innovation"
-                      label="Innovation"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
                   <div className={styles.checkbox}>
                     <CheckboxDetailsField
                       model={`${model}.type.outcomes`}
