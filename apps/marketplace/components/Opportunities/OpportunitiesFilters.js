@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
+import { actions, LocalForm } from 'react-redux-form'
 import BaseForm from 'shared/form/BaseForm'
 import formProps from 'shared/form/formPropsSelector'
-import { submitForm } from 'marketplace/actions/opportunitiesActions'
+import { changeForm } from 'marketplace/actions/opportunitiesActions'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -20,6 +20,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     this.handleFilterCancelClick = this.handleFilterCancelClick.bind(this)
     this.handleFilterApplyClick = this.handleFilterApplyClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleTypeFilterSubmit = this.handleTypeFilterSubmit.bind(this)
   }
 
   getActiveFilterCount = (isMobile = false) => {
@@ -62,20 +63,34 @@ export class OpportunitiesFiltersComponent extends BaseForm {
 
   handleFilterApplyClick(e) {
     e.preventDefault()
-    this.props.submitForm()
+    this.formDispatch(actions.submit('opportunitiesFilterForm'))
     this.closeAccordion()
+  }
+
+  handleTypeFilterSubmit() {
+    this.formDispatch(actions.submit('opportunitiesFilterForm'))
   }
 
   handleSubmit(values) {
     this.closeAccordion()
+    this.props.changeForm(values)
     this.props.getOpportunities(values)
+  }
+
+  attachDispatch(dispatch) {
+    this.formDispatch = dispatch
   }
 
   render() {
     const { model } = this.props
     return (
-      <div>
-        <Form model={model} ref={this.attachNode.bind(this)} onSubmit={this.handleSubmit}>
+      <LocalForm
+        model={model}
+        onSubmit={this.handleSubmit}
+        getDispatch={dispatch => this.attachDispatch(dispatch)}
+        initialState={this.props.opportunitiesFilterForm}
+      >
+        <div>
           <div className={`col-md-6 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
             <ul className="au-link-list au-link-list--inline">
               <li className={styles.filterContainer}>
@@ -83,7 +98,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   name="Innovation"
                   filter="innovation"
                   model={`${model}.type.innovation`}
-                  submitForm={this.props.submitForm}
+                  submitForm={this.handleTypeFilterSubmit}
                 />
               </li>
               <li className={styles.filterContainer}>
@@ -91,7 +106,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   name="Outcomes"
                   filter="outcomes"
                   model={`${model}.type.outcomes`}
-                  submitForm={this.props.submitForm}
+                  submitForm={this.handleTypeFilterSubmit}
                 />
               </li>
               <li className={styles.filterContainer}>
@@ -99,7 +114,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   name="Training"
                   filter="training"
                   model={`${model}.type.training`}
-                  submitForm={this.props.submitForm}
+                  submitForm={this.handleTypeFilterSubmit}
                 />
               </li>
               <li className={styles.filterContainer}>
@@ -107,7 +122,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   name="Specialists"
                   filter="specialists"
                   model={`${model}.type.specialists`}
-                  submitForm={this.props.submitForm}
+                  submitForm={this.handleTypeFilterSubmit}
                 />
               </li>
             </ul>
@@ -198,25 +213,23 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               </div>
             </AUaccordion>
           </div>
-        </Form>
-        <div
-          className={`col-md-push-3 col-md-5 col-sm-push-3 col-sm-5 col-xs-12 ${styles.filtersSectionMobile} ${
-            styles.hideDesktop
-          }`}
-        >
-          <AUaccordion
-            header={`Filter opportunities ${
-              this.getActiveFilterCount(true) > 0 ? `• ${this.getActiveFilterCount(true)}` : ''
+          <div
+            className={`col-md-push-3 col-md-5 col-sm-push-3 col-sm-5 col-xs-12 ${styles.filtersSectionMobile} ${
+              styles.hideDesktop
             }`}
-            open={this.state.accordionOpen}
-            onOpen={() => {
-              this.openAccordion()
-            }}
-            onClose={() => {
-              this.closeAccordion()
-            }}
           >
-            <Form model={model} onSubmit={this.handleSubmit}>
+            <AUaccordion
+              header={`Filter opportunities ${
+                this.getActiveFilterCount(true) > 0 ? `• ${this.getActiveFilterCount(true)}` : ''
+              }`}
+              open={this.state.accordionOpen}
+              onOpen={() => {
+                this.openAccordion()
+              }}
+              onClose={() => {
+                this.closeAccordion()
+              }}
+            >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                 <div className={styles.inputGroup}>
                   <AUheading size="sm" level="3">
@@ -335,10 +348,10 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                 </span>
                 <div />
               </div>
-            </Form>
-          </AUaccordion>
+            </AUaccordion>
+          </div>
         </div>
-      </div>
+      </LocalForm>
     )
   }
 }
@@ -354,7 +367,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  submitForm: () => dispatch(submitForm())
+  changeForm: values => dispatch(changeForm(values))
 })
 
 const OpportunitiesFilters = connect(mapStateToProps, mapDispatchToProps)(OpportunitiesFiltersComponent)

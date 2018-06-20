@@ -55,6 +55,6 @@ export const loadOpportunities = (filters = {}) => dispatch => {
   })
 }
 
-export const submitForm = () => dispatch => {
-  dispatch(actions.submit('opportunitiesFilterForm'))
+export const changeForm = values => dispatch => {
+  dispatch(actions.change('opportunitiesFilterForm', values))
 }
