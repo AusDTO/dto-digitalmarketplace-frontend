@@ -14,8 +14,8 @@ import NotFound from '../../../../shared/NotFound';
 import LocalNav from '../../../../shared/LocalNav';
 
 import { actions as stepActions, STATUS } from '../../redux/modules/steps';
-import { getStateForms, dispatchFormState } from '../../redux/helpers';
-import { actions, expiredLiabilityInsurance, expiredWorkersCompensation } from '../../redux/modules/application';
+import { getStateForms, dispatchFormState, isDailyRateMissing } from '../../redux/helpers';
+import { actions, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates } from '../../redux/modules/application';
 import isPast from 'date-fns/is_past';
 
 // Step Components
@@ -113,6 +113,7 @@ class Signup extends React.Component {
       }
       this.props.hasLiabilityDocExpired(false)
       this.props.hasWorkersDocExpired(false)
+      this.props.hasMissingDailyRates(false)
       actions.stepNextPersist(this.nextStep.pattern, this.step);
     },
     onSubmitFailed: (e) => {
@@ -121,6 +122,7 @@ class Signup extends React.Component {
       }
       this.props.hasLiabilityDocExpired(false)
       this.props.hasWorkersDocExpired(false)
+      this.props.hasMissingDailyRates(false)
       const { actions } = this.props;
       actions.stepPartial(this.step.id);
     }
@@ -156,6 +158,8 @@ class Signup extends React.Component {
     } else {
       this.props.hasWorkersDocExpired(false)
     }
+
+    this.props.hasMissingDailyRates(isDailyRateMissing(this.props.application.pricing, this.props.application.services))
   }
 
   componentWillMount() {
@@ -195,6 +199,7 @@ class Signup extends React.Component {
       }, {});
 
     const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation
+    const hasPricingWarning = this.props.application.missingDailyRates
 
     return (
       <div className="row">
@@ -215,7 +220,7 @@ class Signup extends React.Component {
                       onClick={() => actions.navigateToStep(pattern)}
                       className={classNames({'is-active is-current': isActive})}
                     >
-                      { hasDocumentsWarning && pattern == '/documents' ?
+                      { (hasDocumentsWarning && pattern == '/documents') || (hasPricingWarning && pattern == '/pricing') ?
                         <Icon value="alert" size={34} aria-hidden="true"/>
                         :
                         <Icon value={classNames({
@@ -308,10 +313,13 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ ...actions, ...stepActions }, dispatch),
   dispatch,
   hasLiabilityDocExpired: (bool) => {
-      return dispatch(expiredLiabilityInsurance(bool));
+    return dispatch(expiredLiabilityInsurance(bool));
   },
   hasWorkersDocExpired: (bool) => {
-      return dispatch(expiredWorkersCompensation(bool));
+    return dispatch(expiredWorkersCompensation(bool));
+  },
+  hasMissingDailyRates: (bool) => {
+    return dispatch(missingDailyRates(bool));
   }
 });
 

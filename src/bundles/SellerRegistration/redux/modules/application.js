@@ -14,6 +14,7 @@ const APP_ERROR = 'application/error';
 const LINK_CLICK = 'link/click';
 const EXPIRED_LIABILITY_INSURANCE = 'application/expired-liability-insurance';
 const EXPIRED_WORKERS_COMPENSATION = 'application/expired-workers-compensation';
+const MISSING_DAILY_RATES = 'application/missing-daily-rates'
 
 const statusCheck = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -47,6 +48,11 @@ export default function reducer(state = {}, action = {}) {
       return {
         ...state,
         expiredWorkersCompensation: action.expiredWorkersCompensation
+      }
+    case MISSING_DAILY_RATES:
+      return {
+        ...state,
+        missingDailyRates: action.missingDailyRates
       }
     default:
       return state;
@@ -176,6 +182,8 @@ export const expiredLiabilityInsurance = (expiredLiabilityInsurance) => ({type: 
 
 export const expiredWorkersCompensation = (expiredWorkersCompensation) => ({type: EXPIRED_WORKERS_COMPENSATION, expiredWorkersCompensation});
 
+export const missingDailyRates = (missingDailyRates) => ({type: MISSING_DAILY_RATES, missingDailyRates});
+
 const constants = {
   STEP_NEXT,
   STEP_PRE,
@@ -183,7 +191,8 @@ const constants = {
   APP_POST_SUBMIT,
   APP_PRE_SUBMIT,
   EXPIRED_LIABILITY_INSURANCE,
-  EXPIRED_WORKERS_COMPENSATION
+  EXPIRED_WORKERS_COMPENSATION,
+  MISSING_DAILY_RATES
 };
 
 const actionCreators = {
@@ -201,7 +210,8 @@ const actionCreators = {
   linkClick,
   push,
   expiredLiabilityInsurance,
-  expiredWorkersCompensation
+  expiredWorkersCompensation,
+  missingDailyRates
 };
 
 export {
