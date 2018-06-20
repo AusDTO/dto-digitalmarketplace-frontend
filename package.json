@@ -19,6 +19,7 @@
     "@gov.au/pancake-react": "^1.1.0",
     "@gov.au/pancake-sass": "^1.2.0",
     "@gov.au/responsive-media": "^2.0.2",
+    "@gov.au/select": "^2.0.1",
     "@gov.au/text-inputs": "^2.0.2",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",

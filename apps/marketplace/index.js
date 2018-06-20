@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
@@ -5,7 +6,7 @@ import { Provider } from 'react-redux'
 import Banner from 'shared/Banner/Banner'
 
 import Header from './components/Header/Header'
-import Footer from './components/Footer/PageFooter'
+import AUFooter from './components/Footer/AUFooter'
 import configureStore from './store'
 import RootContainer from './routes'
 import { fetchAuth } from './actions/appActions'
@@ -32,7 +33,7 @@ const App = () => (
             </div>
           </div>
         </main>
-        <Footer />
+        <AUFooter />
       </div>
     </BrowserRouter>
   </Provider>
