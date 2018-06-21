@@ -1,7 +1,8 @@
-import { OPPORTUNITIES_SUCCESS, OPPORTUNITIES_SENDING } from '../constants/constants'
+import { OPPORTUNITIES_SUCCESS, OPPORTUNITIES_SENDING, OPPORTUNITIES_SET_PAGE } from '../constants/constants'
 
 const defaultState = {
   opportunities: [],
+  currentPage: 1,
   currentlySending: false
 }
 
@@ -11,6 +12,12 @@ const opportunitiesReducers = (state = defaultState, action) => {
       return {
         ...state,
         opportunities: action.opportunities
+      }
+
+    case OPPORTUNITIES_SET_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage
       }
 
     case OPPORTUNITIES_SENDING:

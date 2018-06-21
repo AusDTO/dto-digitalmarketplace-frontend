@@ -2,39 +2,25 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { loadOpportunities } from 'marketplace/actions/opportunitiesActions'
+import { loadOpportunities, setCurrentPage } from 'marketplace/actions/opportunitiesActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import Opportunities from 'marketplace/components/Opportunities/Opportunities'
 import { OpportunitiesPagination } from 'marketplace/components/Opportunities/OpportunitiesPagination'
 import { OpportunitiesHeader } from 'marketplace/components/Opportunities/OpportunitiesHeader'
 
 class OpportunitiesPage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      curPage: props.page
-    }
-    this.setCurrentPage = this.setCurrentPage.bind(this)
-  }
-
   componentDidMount() {
     this.props.getOpportunities()
   }
 
-  setCurrentPage(page) {
-    this.setState({
-      curPage: page
-    })
-  }
-
   getPageCount() {
-    return Math.ceil(this.props.opportunities.length / this.props.limit)
+    return Math.ceil(this.props.opportunities.length / this.props.pageLimit)
   }
 
   render() {
     const { currentlySending } = this.props
-    const offset = (this.state.curPage - 1) * this.props.limit
-    const opportunities = this.props.opportunities.slice(offset, offset + this.props.limit)
+    const offset = (this.props.currentPage - 1) * this.props.pageLimit
+    const opportunities = this.props.opportunities.slice(offset, offset + this.props.pageLimit)
 
     return (
       <div>
@@ -44,8 +30,8 @@ class OpportunitiesPage extends Component {
           !currentlySending && (
             <OpportunitiesPagination
               lastPage={this.getPageCount()}
-              currentPage={this.state.curPage}
-              onPageClick={this.setCurrentPage}
+              currentPage={this.props.currentPage}
+              onPageClick={this.props.setCurrentPage}
             />
           )}
       </div>
@@ -55,23 +41,25 @@ class OpportunitiesPage extends Component {
 
 OpportunitiesPage.defaultProps = {
   currentlySending: false,
-  page: 1,
-  limit: 25
+  pageLimit: 25,
+  currentPage: 1
 }
 
 OpportunitiesPage.propTypes = {
   currentlySending: PropTypes.bool,
-  page: PropTypes.number,
-  limit: PropTypes.number
+  pageLimit: PropTypes.number,
+  currentPage: PropTypes.number
 }
 
 const mapStateToProps = state => ({
   currentlySending: state.opportunities.currentlySending,
-  opportunities: state.opportunities.opportunities
+  opportunities: state.opportunities.opportunities,
+  currentPage: state.opportunities.currentPage
 })
 
 const mapDispatchToProps = dispatch => ({
-  getOpportunities: filters => dispatch(loadOpportunities(filters))
+  getOpportunities: filters => dispatch(loadOpportunities(filters)),
+  setCurrentPage: page => dispatch(setCurrentPage(page))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OpportunitiesPage))

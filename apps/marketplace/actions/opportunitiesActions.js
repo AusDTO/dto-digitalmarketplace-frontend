@@ -1,5 +1,5 @@
 import { actions } from 'react-redux-form'
-import { OPPORTUNITIES_SUCCESS, OPPORTUNITIES_SENDING } from '../constants/constants'
+import { OPPORTUNITIES_SUCCESS, OPPORTUNITIES_SENDING, OPPORTUNITIES_SET_PAGE } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { setErrorMessage } from './appActions'
@@ -33,6 +33,13 @@ export const handleOpportunitiesSuccess = response => ({
   opportunities: response.data.opportunities
 })
 
+export const setCurrentPage = page => dispatch => {
+  dispatch({
+    type: OPPORTUNITIES_SET_PAGE,
+    currentPage: page
+  })
+}
+
 export const loadOpportunities = (filters = {}) => dispatch => {
   const statusFilters = filters.status ? Object.keys(filters.status).filter(k => filters.status[k]) : []
   const openToFilters = filters.openTo ? Object.keys(filters.openTo).filter(k => filters.openTo[k]) : []
@@ -50,6 +57,7 @@ export const loadOpportunities = (filters = {}) => dispatch => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleOpportunitiesSuccess(response))
+      dispatch(setCurrentPage(1))
     }
     dispatch(sendingRequest(false))
   })
