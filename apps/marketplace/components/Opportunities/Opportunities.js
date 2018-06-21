@@ -35,7 +35,7 @@ const Opportunities = props => (
         </div>
       )}
       {props.opportunities.length > 0 && (
-        <div className={`${styles.tableDesktop} ${styles.hideMobile}`} role="table" aria-label="Opportunities">
+        <div className={styles.hideMobile} role="table" aria-label="Opportunities">
           <div className={styles.headingRow} role="rowgroup">
             <div className="row" role="row">
               <div
@@ -110,7 +110,7 @@ const Opportunities = props => (
         </div>
       )}
       {props.opportunities.length > 0 && (
-        <div className={`${styles.tableMobile} ${styles.hideDesktop}`}>
+        <div className={styles.hideDesktop}>
           {props.opportunities.map(item => (
             <div className={styles.tableRowMobile} key={`item.${item.id}`}>
               <div className="row">
