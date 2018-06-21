@@ -5,7 +5,7 @@ import addHours from 'date-fns/add_hours'
 import addDays from 'date-fns/add_days'
 import addWeeks from 'date-fns/add_weeks'
 import subDays from 'date-fns/sub_days'
-import { Opportunities } from './Opportunities'
+import Opportunities from './Opportunities'
 
 Enzyme.configure({ adapter: new Adapter() })
 
