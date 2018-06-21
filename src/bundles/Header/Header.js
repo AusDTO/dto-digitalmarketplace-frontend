@@ -88,7 +88,10 @@ class Header extends React.Component {
                     </a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="/contact-us">
+                    <a
+                      styleName={this.props.location.pathname === '/contact-us' ? 'au-marketplace-header-active' : ''} 
+                      href="/contact-us"
+                    >
                       Contact
                     </a>
                   </li>
