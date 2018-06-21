@@ -744,10 +744,6 @@ li:first-child.au-marketplace-header-link-list a {
 }
 
 @media (min-width: 992px) {
-  .footer__logo {
-    margin-top: 0px;
-  }
-
   .footer__affiliate {
     padding: 8px 0 8px 16px;
     padding: .5rem 0 .5rem 1rem;
