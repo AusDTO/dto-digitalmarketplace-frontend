@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { actions, LocalForm } from 'react-redux-form'
 import BaseForm from 'shared/form/BaseForm'
 import formProps from 'shared/form/formPropsSelector'
-import { changeForm } from 'marketplace/actions/opportunitiesActions'
+import { changeForm, loadOpportunities } from 'marketplace/actions/opportunitiesActions'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -349,7 +349,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  changeForm: values => dispatch(changeForm(values))
+  changeForm: values => dispatch(changeForm(values)),
+  getOpportunities: filters => dispatch(loadOpportunities(filters))
 })
 
 const OpportunitiesFilters = connect(mapStateToProps, mapDispatchToProps)(OpportunitiesFiltersComponent)

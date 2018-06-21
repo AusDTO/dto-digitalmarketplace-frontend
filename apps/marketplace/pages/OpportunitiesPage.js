@@ -17,7 +17,7 @@ class OpportunitiesPage extends Component {
 
     return (
       <div>
-        <OpportunitiesHeader getOpportunities={this.props.getOpportunities} />
+        <OpportunitiesHeader />
         {currentlySending ? <LoadingIndicatorFullPage /> : <Opportunities opportunities={this.props.opportunities} />}
       </div>
     )
