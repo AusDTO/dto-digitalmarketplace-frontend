@@ -58,7 +58,7 @@ class FileInput extends React.Component {
         {isEmpty(doc) &&
           !this.state.uploading && (
             <div>
-              <p>
+              <div>
                 <input
                   type="file"
                   id={fileField}
@@ -70,7 +70,7 @@ class FileInput extends React.Component {
                 <label htmlFor={fileField} id={`label_${this.props.id}`} className={styles.custom_input}>
                   <div className="au-btn au-btn--secondary">{this.props.fieldLabel}</div>
                 </label>
-              </p>
+              </div>
             </div>
           )}
 

@@ -18,9 +18,8 @@ const FilesInput = props => {
         {label}
       </label>
       <span>{description}</span>
-      <p>
-        <small>{hint}</small>
-      </p>
+      <br />
+      <small>{hint}</small>
       {range(formFields).map((field, id) => <FileInput key={field} id={id} {...props} />)}
     </div>
   )
