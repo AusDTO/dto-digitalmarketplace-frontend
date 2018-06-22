@@ -6,7 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { required, validEmail } from 'marketplace/components/validators'
+import { required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
@@ -64,44 +64,35 @@ const BriefTrainingResponseForm = ({
                   required: 'Enter a date for when you can start the project'
                 }}
               />
-              <FilesInput
-                label="Written proposal"
-                hint="Attachments must be PDF or ODT format and a maximum of 20MB"
-                name="attachedDocumentURL"
-                model={model}
-                formFields={1}
-                fieldLabel="Upload proposal"
-                url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                api={dmapi}
-                description=""
-              />
-              <br />
-              <FilesInput
-                label="Project costs"
-                hint="Attachments must be PDF or ODT format and a maximum of 20MB"
-                name="attachedDocumentURL"
-                model={model}
-                formFields={1}
-                fieldLabel="Upload project costs"
-                url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                api={dmapi}
-                description=""
-              />
-              {showTrainerResumes && (
-                <span>
-                  <br />
-                  <FilesInput
-                    label="Trainer résumés"
-                    hint="Attachments must be PDF or ODT format and a maximum of 20MB"
-                    name="attachedDocumentURL"
-                    model={model}
-                    formFields={1}
-                    fieldLabel="Upload résumé"
-                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                    api={dmapi}
-                    description=""
-                  />
-                </span>
+              {showTrainerResumes ? (
+                <FilesInput
+                  labels={['Written proposal', 'Project costs', 'Trainer résumés']}
+                  hints={[
+                    'Attachments must be PDF or ODT format and a maximum of 20MB',
+                    'Attachments must be PDF or ODT format and a maximum of 20MB',
+                    'Attachments must be PDF or ODT format and a maximum of 20MB'
+                  ]}
+                  fieldLabels={['Upload proposal', 'Upload project costs', 'Upload résumé']}
+                  name="attachedDocumentURL"
+                  model={model}
+                  formFields={3}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                />
+              ) : (
+                <FilesInput
+                  labels={['Written proposal', 'Project costs']}
+                  hints={[
+                    'Attachments must be PDF or ODT format and a maximum of 20MB',
+                    'Attachments must be PDF or ODT format and a maximum of 20MB'
+                  ]}
+                  fieldLabels={['Upload proposal', 'Upload project costs']}
+                  name="attachedDocumentURL"
+                  model={model}
+                  formFields={2}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                />
               )}
               <Textfield
                 model={`${model}.respondToEmailAddress`}
@@ -127,6 +118,10 @@ const BriefTrainingResponseForm = ({
                 htmlFor="respondToPhone"
                 label="Contact phone number"
                 maxLength={100}
+                validators={{ validPhoneNumber }}
+                messages={{
+                  validPhoneNumber: 'Your contact number must be a valid phone number'
+                }}
               />
               <AUheading level="2" size="xl">
                 Once you submit this application
