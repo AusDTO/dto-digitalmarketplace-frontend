@@ -10,6 +10,7 @@ import { required, validEmail, validPhoneNumber } from 'marketplace/components/v
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 
@@ -40,7 +41,7 @@ const BriefTrainingResponseForm = ({
           )}
           <header className="page-heading page-heading-without-breadcrumb">
             <AUheading level="1" size="xxl">
-              Apply for &lsquo;{brief.title}&rsquo;
+              Apply for {brief.title}
             </AUheading>
           </header>
           {app.supplierCode ? (
@@ -94,6 +95,14 @@ const BriefTrainingResponseForm = ({
                   api={dmapi}
                 />
               )}
+              <CheckboxDetailsField
+                model={`${model}.hasCitizenship`}
+                id="citizenship"
+                name="citizenship"
+                label="These specialists have Australian Citizenship"
+                detailsModel={model}
+                messages={{}}
+              />
               <Textfield
                 model={`${model}.respondToEmailAddress`}
                 name="respondToEmailAddress"

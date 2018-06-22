@@ -30,7 +30,8 @@ export default combineReducers({
       availability: '',
       dayRate: '',
       respondToEmailAddress: '',
-      respondToPhone: ''
+      respondToPhone: '',
+      hasCitizenship: false
     },
     resetPasswordEmailForm: {
       email_address: ''
