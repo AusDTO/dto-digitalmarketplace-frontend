@@ -5,6 +5,7 @@ import appReducer from './appReducer'
 import brief from './briefReducers'
 import user from './memberInfoReducers'
 import dashboard from './dashboardReducers'
+import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 
@@ -13,6 +14,7 @@ export default combineReducers({
   user,
   brief,
   dashboard,
+  opportunities,
   form_options,
   errorMessage,
   ...createForms({
@@ -43,6 +45,23 @@ export default combineReducers({
     },
     briefInviteAssessorsForm: {
       email_address: ''
+    },
+    opportunitiesFilterForm: {
+      status: {
+        live: false,
+        closed: false
+      },
+      openTo: {
+        all: false,
+        selected: false,
+        one: false
+      },
+      type: {
+        outcomes: false,
+        specialists: false,
+        innovation: false,
+        training: false
+      }
     }
   })
 })
