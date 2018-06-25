@@ -9,7 +9,7 @@ const BriefTrainingResponseSubmitted = props => (
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          <AUpageAlert as="success" setFocus={props.setFocus}>
+          <AUpageAlert as="success">
             <AUheading level="4" size="md">
               Thanks, your response has been successfully submitted. The buyer will receive it when the opportunity
               closes.
@@ -24,10 +24,14 @@ const BriefTrainingResponseSubmitted = props => (
           </AUheading>
           <p>
             The buyer will get in contact with {props.app.emailAddress}
-            {props.brief && props.brief.evaluationType && <span> to request:</span>}
+            {props.brief && props.brief.evaluationTypeSellerRequests && <span> to request:</span>}
           </p>
-          {props.brief.evaluationType && (
-            <ul>{props.brief.evaluationType.map(evaluationType => <li key={evaluationType}>{evaluationType}</li>)}</ul>
+          {props.brief.evaluationTypeSellerRequests && (
+            <ul>
+              {props.brief.evaluationTypeSellerRequests.map(evaluationType => (
+                <li key={evaluationType}>{evaluationType}</li>
+              ))}
+            </ul>
           )}
           <AUheading level="2" size="lg">
             If you are not successful

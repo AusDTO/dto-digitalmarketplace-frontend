@@ -95,7 +95,10 @@ class BriefPage extends Component {
 
   showTrainingResumesFileUpload = () => {
     let showTraining = false
-    if (this.props.brief.evaluationType && this.props.brief.evaluationType.includes('Resumes')) {
+    if (
+      this.props.brief.evaluationTypeSellerSubmissions &&
+      this.props.brief.evaluationTypeSellerSubmissions.includes('Trainer résumés')
+    ) {
       showTraining = true
     }
     return showTraining
