@@ -163,7 +163,9 @@ const BriefTrainingResponseForm = ({
             </Form>
           ) : (
             <AUpageAlert as="error">
-              <h4>There was a problem loading your details</h4>
+              <AUheading level="2" size="md">
+                There was a problem loading your details
+              </AUheading>
               <p>Only logged in sellers can respond to briefs</p>
             </AUpageAlert>
           )}
