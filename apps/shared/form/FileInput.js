@@ -11,6 +11,10 @@ class FileInput extends React.Component {
     errors: undefined
   }
 
+  onInvalid = e => {
+    this.setState({ errors: 'This field is required.' })
+  }
+
   onReset = e => {
     e.preventDefault()
     const { id, model, name, removeDocument, createDocument } = this.props
@@ -65,7 +69,9 @@ class FileInput extends React.Component {
                   name={fileField}
                   accept=".pdf,.odt"
                   onChange={this.onChange}
+                  onInvalid={this.onInvalid}
                   className={styles.hidden_input}
+                  required={this.props.required}
                 />
                 <label htmlFor={fileField} id={`label_${this.props.id}`} className={styles.custom_input}>
                   <div className="au-btn au-btn--secondary">{this.props.fieldLabel}</div>

@@ -76,6 +76,7 @@ const BriefTrainingResponseForm = ({
                 url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                 api={dmapi}
                 fileId={0}
+                required
               />
               <FilesInput
                 label="Project costs"
@@ -87,6 +88,7 @@ const BriefTrainingResponseForm = ({
                 url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                 api={dmapi}
                 fileId={1}
+                required
               />
               {showTrainerResumes && (
                 <FilesInput
@@ -99,6 +101,7 @@ const BriefTrainingResponseForm = ({
                   url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                   api={dmapi}
                   fileId={2}
+                  required
                 />
               )}
               <CheckboxDetailsField
