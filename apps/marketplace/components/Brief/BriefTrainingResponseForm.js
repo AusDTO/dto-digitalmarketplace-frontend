@@ -55,7 +55,7 @@ const BriefTrainingResponseForm = ({
                 maxLength={100}
                 description={
                   <span>
-                    The buyer has requested no later than <b>{brief.startDate}</b>
+                    The buyer has requested no later than {brief.startDate}
                   </span>
                 }
                 validators={{
