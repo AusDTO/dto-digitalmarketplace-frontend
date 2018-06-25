@@ -33,7 +33,7 @@ const BriefTrainingResponseSubmitted = props => (
             If you are not successful
           </AUheading>
           <p>
-            The buyer has been asked to let you know that you were unsuccessful. This may happen after the contact has
+            The buyer has been asked to let you know that you were unsuccessful. This may happen after the contract has
             been awarded.
           </p>
           <br />
