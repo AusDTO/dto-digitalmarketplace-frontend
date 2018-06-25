@@ -11,7 +11,7 @@ class FileInput extends React.Component {
     errors: undefined
   }
 
-  onInvalid = e => {
+  onInvalid = () => {
     this.setState({ errors: 'This field is required.' })
   }
 

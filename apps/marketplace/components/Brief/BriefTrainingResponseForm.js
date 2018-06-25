@@ -30,7 +30,7 @@ const BriefTrainingResponseForm = ({
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {briefResponseSuccess && <Redirect to={`${match.url}/respond/submitted`} />}
+          {briefResponseSuccess && <Redirect to={`${match.url}/training/respond/submitted`} />}
           {!briefResponseSuccess && (
             <ErrorBox
               title="There was a problem submitting your response"
