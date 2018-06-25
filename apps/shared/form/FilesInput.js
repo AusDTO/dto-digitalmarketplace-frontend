@@ -6,63 +6,39 @@ import { actions } from 'react-redux-form'
 import range from 'lodash/range'
 import compact from 'lodash/compact'
 import { GENERAL_ERROR } from 'shared/messageConstants'
-
+import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { label, description, hint, formFields, labels, descriptions, hints, fieldLabels } = props
+  const { fileId, label, description, hint, formFields } = props
 
   return (
-    <div>
-      {formFields > 1 &&
-        labels.length > 0 &&
-        hints.length > 0 &&
-        range(formFields).map((field, id) => (
-          <div key={field}>
-            <label className="question-heading au-text-input__label" htmlFor={`file_${id}`}>
-              {labels[id]}
-            </label>
-            <span>{descriptions[id]}</span>
-            <br />
-            <small>{hints[id]}</small>
-            <FileInput id={id} fieldLabel={fieldLabels[id]} {...props} />
-            <br />
-          </div>
-        ))}
-      {(formFields === 1 || (labels.length === 0 && hints.length === 0)) && (
-        <div>
-          <label className="question-heading au-text-input__label" htmlFor="file_0">
-            {label}
-          </label>
-          <span>{description}</span>
-          <br />
-          <small>{hint}</small>
-          {range(formFields).map((field, id) => <FileInput key={field} id={id} {...props} />)}
-        </div>
-      )}
+    <div className="field">
+      <div>
+        <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
+          {label}
+        </label>
+        <small>{hint}</small>
+        <p>{description}</p>
+        {range(formFields).map(field => <FileInput key={field} id={fileId} {...props} />)}
+      </div>
     </div>
   )
 }
 
 FilesInput.propTypes = {
+  fileId: PropTypes.number,
   label: PropTypes.string,
-  labels: PropTypes.array,
-  descriptions: PropTypes.array,
-  hints: PropTypes.array,
-  fieldLabels: PropTypes.array,
   hint: PropTypes.string,
   description: PropTypes.string,
   formFields: PropTypes.number.isRequired
 }
 
 FilesInput.defaultProps = {
+  fileId: 0,
   label: '',
   hint: '',
-  description: '',
-  labels: [],
-  descriptions: [],
-  hints: [],
-  fieldLabels: []
+  description: ''
 }
 
 const uploadDocument = (url, api, id, file) => () => {

@@ -92,6 +92,14 @@ class BriefPage extends Component {
     window.scrollTo(0, 0)
   }
 
+  showTrainingResumesFileUpload = () => {
+    let showTraining = false
+    if (this.props.brief.evaluationType && this.props.brief.evaluationType.includes('Resumes')) {
+      showTraining = true
+    }
+    return showTraining
+  }
+
   render() {
     const { currentlySending, loadBriefSuccess, match, app } = this.props
 
@@ -187,7 +195,7 @@ class BriefPage extends Component {
                       submitClicked={this.onSubmitClicked}
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
-                      showTrainerResumes
+                      showTrainerResumes={this.showTrainingResumesFileUpload()}
                       {...this.props}
                     />
                   ) : (

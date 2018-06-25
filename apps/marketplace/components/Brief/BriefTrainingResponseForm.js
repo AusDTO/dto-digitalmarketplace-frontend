@@ -65,34 +65,40 @@ const BriefTrainingResponseForm = ({
                   required: 'Enter a date for when you can start the project'
                 }}
               />
-              {showTrainerResumes ? (
+              <FilesInput
+                label="Written proposal"
+                hint="Attachment must be PDF or ODT format and a maximum of 20MB"
+                fieldLabel="Upload proposal"
+                description="<Info on what to add in proposal>"
+                name="attachedDocumentURL"
+                model={model}
+                formFields={1}
+                url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                api={dmapi}
+                fileId={0}
+              />
+              <FilesInput
+                label="Project costs"
+                hint="Attachment must be PDF or ODT format and a maximum of 20MB"
+                fieldLabel="Upload project costs"
+                name="attachedDocumentURL"
+                model={model}
+                formFields={1}
+                url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                api={dmapi}
+                fileId={1}
+              />
+              {showTrainerResumes && (
                 <FilesInput
-                  labels={['Written proposal', 'Project costs', 'Trainer résumés']}
-                  hints={[
-                    'Attachments must be PDF or ODT format and a maximum of 20MB',
-                    'Attachments must be PDF or ODT format and a maximum of 20MB',
-                    'Attachments must be PDF or ODT format and a maximum of 20MB'
-                  ]}
-                  fieldLabels={['Upload proposal', 'Upload project costs', 'Upload résumé']}
+                  label="Trainer résumés"
+                  hint="Résumés must be in the one document, must be PDF or ODT format, and a maximum of 20MB"
+                  fieldLabel="Upload résumé"
                   name="attachedDocumentURL"
                   model={model}
-                  formFields={3}
+                  formFields={1}
                   url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                   api={dmapi}
-                />
-              ) : (
-                <FilesInput
-                  labels={['Written proposal', 'Project costs']}
-                  hints={[
-                    'Attachments must be PDF or ODT format and a maximum of 20MB',
-                    'Attachments must be PDF or ODT format and a maximum of 20MB'
-                  ]}
-                  fieldLabels={['Upload proposal', 'Upload project costs']}
-                  name="attachedDocumentURL"
-                  model={model}
-                  formFields={2}
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
+                  fileId={2}
                 />
               )}
               <CheckboxDetailsField
