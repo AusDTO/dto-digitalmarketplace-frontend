@@ -11,7 +11,7 @@ const BriefTrainingResponseSubmitted = props => (
         <article role="main">
           <AUpageAlert as="success" setFocus={props.setFocus}>
             <AUheading level="4" size="md">
-              Thanks, your response has been successfully submitted. The buyer will received it when the opportunity
+              Thanks, your response has been successfully submitted. The buyer will receive it when the opportunity
               closes.
             </AUheading>
           </AUpageAlert>
