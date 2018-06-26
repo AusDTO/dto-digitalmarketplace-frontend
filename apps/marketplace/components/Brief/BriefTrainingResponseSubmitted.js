@@ -23,7 +23,11 @@ const BriefTrainingResponseSubmitted = props => (
             If you are shortlisted for evaluation
           </AUheading>
           <p>
-            The buyer will get in contact with {props.app.emailAddress}
+            The buyer will get in contact
+            {props.briefResponses.length > 0 &&
+              props.briefResponses[0].respondToEmailAddress && (
+                <span> with {props.briefResponses[0].respondToEmailAddress}</span>
+              )}
             {props.brief && props.brief.evaluationTypeSellerRequests && <span> to request:</span>}
           </p>
           {props.brief.evaluationTypeSellerRequests && (
