@@ -53,11 +53,7 @@ const BriefTrainingResponseForm = ({
                 htmlFor="availability"
                 label="When can you commence work on the training?"
                 maxLength={100}
-                description={
-                  <span>
-                    The buyer has requested no later than {brief.startDate}
-                  </span>
-                }
+                description={<span>The buyer has requested no later than {brief.startDate}</span>}
                 validators={{
                   required
                 }}
