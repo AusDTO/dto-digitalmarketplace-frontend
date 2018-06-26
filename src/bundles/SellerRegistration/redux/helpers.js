@@ -41,7 +41,19 @@ export const pruneModel = (model) => {
     products,
     recruiter_info,
   } = model;
+
   let newModel = model;
+
+  const pruneObject = (obj) => {
+    return Object.keys(obj)
+      .filter((key) => {
+        return obj[key].hasOwnProperty('service') ? obj[key].service in newModel.services : key in newModel.services;
+      })
+      .reduce((o, key) => {
+        o[key] = obj[key];
+        return o;
+      }, {});
+  }
 
   if (services) {
     newModel = Object.assign({}, newModel, {
@@ -50,31 +62,17 @@ export const pruneModel = (model) => {
   }
 
   if (case_studies) {
-    const casestudies = Object.keys(case_studies)
-      .filter((key) => {
-        let study = case_studies[key];
-        return study.service in newModel.services;
-      })
-      .reduce((studies, key) => {
-        studies[key] = case_studies[key];
-        return studies;
-      }, {});
     delete newModel['case_studies'];
-    newModel = Object.assign({}, newModel, { case_studies: casestudies });
+    newModel = Object.assign({}, newModel, {
+      case_studies: pruneObject(case_studies)
+    });
   }
 
   if (pricing) {
-    const domain_pricing = Object.keys(pricing)
-      .filter((key) => {
-        return key in newModel.services;
-      })
-      .reduce((prices, key) => {
-        prices[key] = pricing[key];
-        return prices;
-      }, {});
-
     delete newModel['pricing'];
-    newModel = Object.assign({}, newModel, { pricing: domain_pricing });
+    newModel = Object.assign({}, newModel, {
+      pricing: pruneObject(pricing)
+    });
   }
 
   if (products) {
@@ -84,17 +82,10 @@ export const pruneModel = (model) => {
   }
 
   if (recruiter_info) {
-    const info = Object.keys(recruiter_info)
-      .filter((key) => {
-        return key in newModel.services;
-      })
-      .reduce((recruiterInfo, key) => {
-        recruiterInfo[key] = recruiter_info[key];
-        return recruiterInfo;
-      }, {});
-
     delete newModel['recruiter_info'];
-    newModel = Object.assign({}, newModel, { recruiter_info: info });
+    newModel = Object.assign({}, newModel, {
+      recruiter_info: pruneObject(recruiter_info)
+    });
   }
 
   return newModel;
