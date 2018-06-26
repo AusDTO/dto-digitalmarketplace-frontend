@@ -95,6 +95,7 @@ test('pruneModel', () => {
     const model = {
         case_studies: case_studies,
         services: {'ServiceA': true },
+        pricing: { 'ServiceA': { maxPrice: 1000 }, 'ServiceB': { maxPrice: 2000 } },
         products: [
             false,
             undefined,
@@ -107,6 +108,7 @@ test('pruneModel', () => {
             'abc-def': {'title': 'keep this case study', service: 'ServiceA'}
         },
         services: {'ServiceA': true},
+        pricing: { 'ServiceA': { maxPrice: 1000 } },
         products: {}
     };
 
