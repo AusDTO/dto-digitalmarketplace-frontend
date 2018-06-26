@@ -100,7 +100,8 @@ test('pruneModel', () => {
             false,
             undefined,
             null
-        ]
+        ],
+        recruiter_info: { 'ServiceA': { margin: 10 }, 'ServiceB': { margin: 20 } }
     };
 
     const expectedResult = {
@@ -109,7 +110,8 @@ test('pruneModel', () => {
         },
         services: {'ServiceA': true},
         pricing: { 'ServiceA': { maxPrice: 1000 } },
-        products: {}
+        products: {},
+        recruiter_info: { 'ServiceA': { margin: 10 } }
     };
 
     expect(pruneModel(model)).toEqual(expectedResult);

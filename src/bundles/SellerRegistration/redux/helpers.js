@@ -38,7 +38,8 @@ export const pruneModel = (model) => {
     case_studies,
     services = {},
     pricing,
-    products
+    products,
+    recruiter_info,
   } = model;
   let newModel = model;
 
@@ -80,6 +81,20 @@ export const pruneModel = (model) => {
     newModel = Object.assign({}, newModel, {
       products: omitBy(products, product => !product)
     });      
+  }
+
+  if (recruiter_info) {
+    const info = Object.keys(recruiter_info)
+      .filter((key) => {
+        return key in newModel.services;
+      })
+      .reduce((recruiterInfo, key) => {
+        recruiterInfo[key] = recruiter_info[key];
+        return recruiterInfo;
+      }, {});
+
+    delete newModel['recruiter_info'];
+    newModel = Object.assign({}, newModel, { recruiter_info: info });
   }
 
   return newModel;
