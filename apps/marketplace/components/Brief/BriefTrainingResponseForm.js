@@ -53,6 +53,7 @@ const BriefTrainingResponseForm = ({
                 htmlFor="availability"
                 label="When can you commence work on the training?"
                 maxLength={100}
+                showMaxLength
                 description={<span>The buyer has requested no later than {brief.startDate}</span>}
                 validators={{
                   required
@@ -115,6 +116,7 @@ const BriefTrainingResponseForm = ({
                 htmlFor="respondToEmailAddress"
                 label="Contact email"
                 maxLength={100}
+                showMaxLength
                 defaultValue={app.emailAddress}
                 validators={{
                   required,
@@ -132,6 +134,7 @@ const BriefTrainingResponseForm = ({
                 htmlFor="respondToPhone"
                 label="Contact phone number"
                 maxLength={100}
+                showMaxLength
                 validators={{ validPhoneNumber }}
                 messages={{
                   validPhoneNumber: 'Your contact number must be a valid phone number'
