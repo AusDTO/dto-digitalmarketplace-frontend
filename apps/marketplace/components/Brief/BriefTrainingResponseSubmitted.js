@@ -1,4 +1,5 @@
 import React from 'react'
+import format from 'date-fns/format'
 import Feedback from 'marketplace/components/Feedback/Feedback'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
@@ -11,9 +12,13 @@ const BriefTrainingResponseSubmitted = props => (
         <article role="main">
           <AUpageAlert as="success">
             <AUheading level="4" size="md">
-              Thanks, your response has been successfully submitted. The buyer will receive it when the opportunity
-              closes.
+              Thanks, your response has been successfully submitted.
             </AUheading>
+            <p>
+              The buyer receives all submitted responses once the brief closes{props.brief.applicationsClosedAt && (
+                <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
+              )}.
+            </p>
           </AUpageAlert>
           <span />
           <AUheading level="1" size="xl">
