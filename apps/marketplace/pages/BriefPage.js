@@ -93,16 +93,9 @@ class BriefPage extends Component {
     window.scrollTo(0, 0)
   }
 
-  showTrainingResumesFileUpload = () => {
-    let showTraining = false
-    if (
-      this.props.brief.evaluationTypeSellerSubmissions &&
-      this.props.brief.evaluationTypeSellerSubmissions.includes('Trainer résumés')
-    ) {
-      showTraining = true
-    }
-    return showTraining
-  }
+  showTrainingResumesFileUpload = () =>
+    typeof this.props.brief.evaluationTypeSellerSubmissions !== 'undefined' &&
+    this.props.brief.evaluationTypeSellerSubmissions.includes('Trainer résumés')
 
   render() {
     const { currentlySending, loadBriefSuccess, match, app } = this.props
