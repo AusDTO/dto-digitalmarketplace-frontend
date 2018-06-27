@@ -11,8 +11,10 @@ class FileInput extends React.Component {
     errors: undefined
   }
 
-  onInvalid = () => {
-    this.setState({ errors: 'This field is required.' })
+  onInvalid = e => {
+    if (this.props.required && !e.target.value) {
+      this.setState({ errors: 'This field is required.' })
+    }
   }
 
   onReset = e => {
