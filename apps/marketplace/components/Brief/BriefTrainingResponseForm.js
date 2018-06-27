@@ -39,11 +39,9 @@ const BriefTrainingResponseForm = ({
               setFocus={setFocus}
             />
           )}
-          <header className="page-heading page-heading-without-breadcrumb">
-            <AUheading level="1" size="xxl">
-              Apply for {brief.title}
-            </AUheading>
-          </header>
+          <AUheading level="1" size="xxl">
+            Apply for {brief.title}
+          </AUheading>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
               <Textfield
