@@ -27,7 +27,7 @@ export const requiredFile = val => {
   if (Array.isArray(val)) {
     return val.filter(v => v.name.trim().length && v.size > 0)
   }
-  return true
+  return false
 }
 
 export const validDate = val => {
