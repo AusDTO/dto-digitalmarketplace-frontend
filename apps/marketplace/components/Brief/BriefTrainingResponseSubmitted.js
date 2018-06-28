@@ -20,7 +20,6 @@ const BriefTrainingResponseSubmitted = props => (
               )}.
             </p>
           </AUpageAlert>
-          <span />
           <AUheading level="1" size="xl">
             What happens next?
           </AUheading>
