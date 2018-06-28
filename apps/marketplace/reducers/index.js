@@ -31,7 +31,8 @@ export default combineReducers({
       dayRate: '',
       respondToEmailAddress: '',
       respondToPhone: '',
-      hasCitizenship: false
+      hasCitizenship: false,
+      attachedDocumentURL: []
     },
     resetPasswordEmailForm: {
       email_address: ''

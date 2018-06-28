@@ -6,7 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
+import { required, requiredFile, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
@@ -66,24 +66,34 @@ const BriefTrainingResponseForm = ({
                 fieldLabel="Upload proposal"
                 description="<Info on what to add in proposal>"
                 name="attachedDocumentURL"
-                model={model}
+                model={`${model}.attachedDocumentURL.0`}
                 formFields={1}
                 url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                 api={dmapi}
                 fileId={0}
-                required
+                validators={{
+                  requiredFile
+                }}
+                messages={{
+                  requiredFile: 'Choose a file for your written proposal'
+                }}
               />
               <FilesInput
                 label="Project costs"
                 hint="Attachment must be PDF or ODT format and a maximum of 20MB"
                 fieldLabel="Upload project costs"
                 name="attachedDocumentURL"
-                model={model}
+                model={`${model}.attachedDocumentURL.1`}
                 formFields={1}
                 url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                 api={dmapi}
                 fileId={1}
-                required
+                validators={{
+                  requiredFile
+                }}
+                messages={{
+                  requiredFile: 'Choose a file for your project costs'
+                }}
               />
               {showTrainerResumes && (
                 <FilesInput
@@ -91,12 +101,17 @@ const BriefTrainingResponseForm = ({
                   hint="Résumés must be in the one document, must be PDF or ODT format, and a maximum of 20MB"
                   fieldLabel="Upload résumé"
                   name="attachedDocumentURL"
-                  model={model}
+                  model={`${model}.attachedDocumentURL.2`}
                   formFields={1}
                   url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                   api={dmapi}
                   fileId={2}
-                  required
+                  validators={{
+                    requiredFile
+                  }}
+                  messages={{
+                    requiredFile: 'Choose a file for your trainer résumés'
+                  }}
                 />
               )}
               <CheckboxDetailsField

@@ -23,6 +23,13 @@ export const required = val => {
   return val && val.trim().length
 }
 
+export const requiredFile = val => {
+  if (Array.isArray(val)) {
+    return val.filter(v => v.name.trim().length && v.size > 0)
+  }
+  return true
+}
+
 export const validDate = val => {
   if (!val || !isValid(parse_date(val))) {
     return false

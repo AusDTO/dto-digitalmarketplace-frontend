@@ -10,7 +10,7 @@ import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { fileId, label, description, hint, formFields, required } = props
+  const { fileId, label, description, hint, formFields } = props
 
   return (
     <div className="field">
@@ -20,7 +20,7 @@ const FilesInput = props => {
         </label>
         <small>{hint}</small>
         <p>{description}</p>
-        {range(formFields).map(field => <FileInput key={field} id={fileId} required={required} {...props} />)}
+        {range(formFields).map(field => <FileInput key={field} id={fileId} {...props} />)}
       </div>
     </div>
   )
@@ -31,16 +31,14 @@ FilesInput.propTypes = {
   label: PropTypes.string,
   hint: PropTypes.string,
   description: PropTypes.string,
-  formFields: PropTypes.number.isRequired,
-  required: PropTypes.bool
+  formFields: PropTypes.number.isRequired
 }
 
 FilesInput.defaultProps = {
   fileId: 0,
   label: '',
   hint: '',
-  description: '',
-  required: false
+  description: ''
 }
 
 const uploadDocument = (url, api, id, file) => () => {
@@ -71,15 +69,14 @@ const uploadDocument = (url, api, id, file) => () => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  form: state[ownProps.model],
+  form: state[ownProps.model.split('.')[0]],
   ...ownProps
 })
 
 const mapDispatchToProps = dispatch => ({
   onUpload: (url, api, id, data) => dispatch(uploadDocument(url, api, id.toString(), data)),
-  removeDocument: (model, name, id) => dispatch(actions.omit(`${model}.${name}`, id.toString())),
-  createDocument: (model, name, id) => dispatch(actions.change(`${model}.${name}.${id}`, '')),
-  updateDocumentName: (model, name, id, filename) => dispatch(actions.change(`${model}.${name}.${id}`, filename))
+  createDocument: model => dispatch(actions.change(model, '')),
+  updateDocumentName: (model, filename) => dispatch(actions.change(model, filename))
 })
 
 export { mapStateToProps }
