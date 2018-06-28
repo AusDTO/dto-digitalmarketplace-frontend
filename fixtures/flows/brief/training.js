@@ -61,6 +61,9 @@ const fillWhatTraining = async () => {
 }
 
 const fillLds = async () => {
+    await clickSaveContinue();
+    await matchText('a', 'What does the training need to cover?');
+
     await selectRadio('ldsUnits');
     await clickSaveContinue();
     await matchText('a', 'Select unit(s)');
@@ -110,6 +113,8 @@ const fillTrainingLength = async () => {
 
 const fillTrainingMethod = async () => {
     await selectRadio('ownPreference');
+    await clickSaveContinue();
+    await matchText('a', 'Define preference');
     await type('input-trainingApproachOwn', { numberOfWords: 100 });
     await clickSaveContinue();
 }

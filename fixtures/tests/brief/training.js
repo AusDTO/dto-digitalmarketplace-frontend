@@ -2,7 +2,7 @@ import { login, signOut } from '../../flows/login/buyer';
 import { create } from '../../flows/brief/training';
 import { startBrief } from '../../flows/dashboard/buyer';
 
-describe('should be able to create training brief', () => {
+describe.only('should be able to create training brief', () => {
     beforeEach(async () => {
         await login();
     });
