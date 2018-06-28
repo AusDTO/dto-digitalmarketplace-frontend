@@ -51,7 +51,7 @@ const uploadDocument = (url, api, id, file) => () => {
     data
   }).then(response => {
     if (response.error) {
-      if (response.statusCode === 413) {
+      if (response.status === 413) {
         return { errorMessage: 'File too large, please check file size limit' }
       }
       return {
