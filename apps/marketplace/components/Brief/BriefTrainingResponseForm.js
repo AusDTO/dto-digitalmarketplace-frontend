@@ -139,8 +139,12 @@ const BriefTrainingResponseForm = ({
                 label="Contact phone number"
                 maxLength={100}
                 showMaxLength
-                validators={{ validPhoneNumber }}
+                validators={{
+                  required,
+                  validPhoneNumber
+                }}
                 messages={{
+                  required: 'A contact number is required',
                   validPhoneNumber: 'Your contact number must be a valid phone number'
                 }}
               />
