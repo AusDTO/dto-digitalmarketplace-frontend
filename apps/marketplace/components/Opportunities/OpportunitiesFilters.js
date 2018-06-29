@@ -170,26 +170,6 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       messages={{}}
                     />
                   </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.selected`}
-                      id="selected"
-                      name="selected"
-                      label="Selected"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.one`}
-                      id="one"
-                      name="one"
-                      label="One"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
                 </div>
                 <span className={styles.cancelLink}>
                   <a href="#cancel" onClick={this.handleFilterCancelClick}>
@@ -293,26 +273,6 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       id="all"
                       name="all"
                       label="All"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.selected`}
-                      id="selected"
-                      name="selected"
-                      label="Selected"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.one`}
-                      id="one"
-                      name="one"
-                      label="One"
                       detailsModel={model}
                       messages={{}}
                     />

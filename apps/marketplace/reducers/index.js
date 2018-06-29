@@ -51,9 +51,7 @@ export default combineReducers({
         closed: false
       },
       openTo: {
-        all: false,
-        selected: false,
-        one: false
+        all: false
       },
       type: {
         outcomes: false,
