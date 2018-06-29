@@ -13,7 +13,7 @@ const FilesInput = props => {
   const { fileId, label, description, hint, formFields } = props
 
   return (
-    <div className="field">
+    <div className={`${props.className} field`}>
       <div>
         <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
           {label}

@@ -10,7 +10,6 @@ import { required, requiredFile, validEmail, validPhoneNumber } from 'marketplac
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
-import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 
@@ -40,7 +39,7 @@ const BriefTrainingResponseForm = ({
             />
           )}
           <AUheading level="1" size="xxl">
-            Apply for {brief.title}
+            Submit a response
           </AUheading>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
@@ -49,7 +48,7 @@ const BriefTrainingResponseForm = ({
                 name="availability"
                 id="availability"
                 htmlFor="availability"
-                label="When can you commence work on the training?"
+                label="When can you commence work?"
                 maxLength={100}
                 showMaxLength
                 description={<span>The buyer has requested no later than {brief.startDate}</span>}
@@ -114,14 +113,6 @@ const BriefTrainingResponseForm = ({
                   }}
                 />
               )}
-              <CheckboxDetailsField
-                model={`${model}.hasCitizenship`}
-                id="citizenship"
-                name="citizenship"
-                label="These specialists have Australian Citizenship"
-                detailsModel={model}
-                messages={{}}
-              />
               <Textfield
                 model={`${model}.respondToEmailAddress`}
                 name="respondToEmailAddress"
@@ -154,11 +145,11 @@ const BriefTrainingResponseForm = ({
                 }}
               />
               <AUheading level="2" size="xl">
-                Once you submit this application
+                Once you submit
               </AUheading>
               <ul>
                 <li>
-                  You <strong>cannot</strong> edit your application after submitting.
+                  You <strong>cannot</strong> edit your response once you have submitted.
                 </li>
                 <li>
                   The buyer will receive your response once the brief has closed on{' '}
@@ -169,7 +160,7 @@ const BriefTrainingResponseForm = ({
                 <LoadingButton />
               ) : (
                 <p>
-                  <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                  <input className="au-btn" type="submit" value="Submit response" onClick={submitClicked} />
                 </p>
               )}
             </Form>
