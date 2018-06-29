@@ -63,8 +63,8 @@ class Header extends React.Component {
                 <ul className="au-link-list au-link-list--inline">
                   <li className="au-marketplace-header-link-list">
                     <a
-                      styleName={this.props.location.pathname === '/digital-marketplace/opportunities' ? 'au-marketplace-header-active' : ''}
-                      href="/digital-marketplace/opportunities?status=live"
+                      styleName={this.props.location.pathname === '/2/opportunities' ? 'au-marketplace-header-active' : ''}
+                      href="/2/opportunities"
                     >
                       Opportunities
                     </a>
@@ -116,7 +116,7 @@ class Header extends React.Component {
                       {this.props.isAuthenticated ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="/digital-marketplace/opportunities?status=live">
+                      <a href="/2/opportunities">
                         Opportunities
                       </a>
                     </div>

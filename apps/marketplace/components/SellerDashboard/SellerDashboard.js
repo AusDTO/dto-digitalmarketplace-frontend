@@ -21,8 +21,7 @@ const SellerDashboard = props => (
           <h1 className="au-display-xl">Dashboard</h1>
           {props.items.length === 0 && (
             <div>
-              You have not applied for any <a href="/digital-marketplace/opportunities?status=live">opportunities</a>{' '}
-              since January 1st 2018.
+              You have not applied for any <a href="/2/opportunities">opportunities</a> since January 1st 2018.
             </div>
           )}
         </div>

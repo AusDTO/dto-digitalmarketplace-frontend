@@ -11,7 +11,7 @@ const SellerOnboarding = () => (
       </span>
       <h2 className="au-display-lg">Apply for an opportunity listed on the Marketplace</h2>
       <span>
-        <a href="/digital-marketplace/opportunities">Browse opportunities</a>
+        <a href="/2/opportunities">Browse opportunities</a>
       </span>
       <h2 className="au-display-lg">Learn about adding case studies to your shopfront</h2>
       <span>

@@ -80,12 +80,11 @@ ReactWrapper {
               <div>
                 You have not applied for any 
                 <a
-                  href="/digital-marketplace/opportunities?status=live"
+                  href="/2/opportunities"
                 >
                   opportunities
                 </a>
-                 
-                since January 1st 2018.
+                 since January 1st 2018.
               </div>
             </div>
           </div>
@@ -138,12 +137,11 @@ ReactWrapper {
               <div>
                 You have not applied for any 
                 <a
-                  href="/digital-marketplace/opportunities?status=live"
+                  href="/2/opportunities"
                 >
                   opportunities
                 </a>
-                 
-                since January 1st 2018.
+                 since January 1st 2018.
               </div>
             </div>
           </div>
@@ -197,12 +195,11 @@ ReactWrapper {
                 <div>
                   You have not applied for any 
                   <a
-                    href="/digital-marketplace/opportunities?status=live"
+                    href="/2/opportunities"
                   >
                     opportunities
                   </a>
-                   
-                  since January 1st 2018.
+                   since January 1st 2018.
                 </div>
               </div>
             </div>
@@ -252,12 +249,11 @@ ReactWrapper {
                   <div>
                     You have not applied for any 
                     <a
-                      href="/digital-marketplace/opportunities?status=live"
+                      href="/2/opportunities"
                     >
                       opportunities
                     </a>
-                     
-                    since January 1st 2018.
+                     since January 1st 2018.
                   </div>
                 </div>
               </div>,
@@ -309,12 +305,11 @@ ReactWrapper {
                   <div>
                     You have not applied for any 
                     <a
-                      href="/digital-marketplace/opportunities?status=live"
+                      href="/2/opportunities"
                     >
                       opportunities
                     </a>
-                     
-                    since January 1st 2018.
+                     since January 1st 2018.
                   </div>
                 </div>
               </div>,
@@ -359,12 +354,11 @@ ReactWrapper {
                   <div>
                     You have not applied for any 
                     <a
-                      href="/digital-marketplace/opportunities?status=live"
+                      href="/2/opportunities"
                     >
                       opportunities
                     </a>
-                     
-                    since January 1st 2018.
+                     since January 1st 2018.
                   </div>
                 </div>,
                 "className": "header row",
@@ -410,12 +404,11 @@ ReactWrapper {
                     <div>
                       You have not applied for any 
                       <a
-                        href="/digital-marketplace/opportunities?status=live"
+                        href="/2/opportunities"
                       >
                         opportunities
                       </a>
-                       
-                      since January 1st 2018.
+                       since January 1st 2018.
                     </div>
                   </div>,
                   "key": undefined,
@@ -457,12 +450,11 @@ ReactWrapper {
                       <div>
                         You have not applied for any 
                         <a
-                          href="/digital-marketplace/opportunities?status=live"
+                          href="/2/opportunities"
                         >
                           opportunities
                         </a>
-                         
-                        since January 1st 2018.
+                         since January 1st 2018.
                       </div>,
                     ],
                     "className": "col-md-12 col-sm-12",
@@ -685,12 +677,11 @@ ReactWrapper {
                       "instance": <div>
                         You have not applied for any 
                         <a
-                          href="/digital-marketplace/opportunities?status=live"
+                          href="/2/opportunities"
                         >
                           opportunities
                         </a>
-                         
-                        since January 1st 2018.
+                         since January 1st 2018.
                       </div>,
                       "key": undefined,
                       "nodeType": "host",
@@ -698,12 +689,11 @@ ReactWrapper {
                         "children": Array [
                           "You have not applied for any ",
                           <a
-                            href="/digital-marketplace/opportunities?status=live"
+                            href="/2/opportunities"
                           >
                             opportunities
                           </a>,
-                          " ",
-                          "since January 1st 2018.",
+                          " since January 1st 2018.",
                         ],
                       },
                       "ref": null,
@@ -711,7 +701,7 @@ ReactWrapper {
                         "You have not applied for any ",
                         Object {
                           "instance": <a
-                            href="/digital-marketplace/opportunities?status=live"
+                            href="/2/opportunities"
                           >
                             opportunities
                           </a>,
@@ -719,7 +709,7 @@ ReactWrapper {
                           "nodeType": "host",
                           "props": Object {
                             "children": "opportunities",
-                            "href": "/digital-marketplace/opportunities?status=live",
+                            "href": "/2/opportunities",
                           },
                           "ref": null,
                           "rendered": Array [
@@ -727,8 +717,7 @@ ReactWrapper {
                           ],
                           "type": "a",
                         },
-                        " ",
-                        "since January 1st 2018.",
+                        " since January 1st 2018.",
                       ],
                       "type": "div",
                     },
@@ -807,12 +796,11 @@ ReactWrapper {
                 <div>
                   You have not applied for any 
                   <a
-                    href="/digital-marketplace/opportunities?status=live"
+                    href="/2/opportunities"
                   >
                     opportunities
                   </a>
-                   
-                  since January 1st 2018.
+                   since January 1st 2018.
                 </div>
               </div>
             </div>
@@ -865,12 +853,11 @@ ReactWrapper {
                 <div>
                   You have not applied for any 
                   <a
-                    href="/digital-marketplace/opportunities?status=live"
+                    href="/2/opportunities"
                   >
                     opportunities
                   </a>
-                   
-                  since January 1st 2018.
+                   since January 1st 2018.
                 </div>
               </div>
             </div>
@@ -924,12 +911,11 @@ ReactWrapper {
                   <div>
                     You have not applied for any 
                     <a
-                      href="/digital-marketplace/opportunities?status=live"
+                      href="/2/opportunities"
                     >
                       opportunities
                     </a>
-                     
-                    since January 1st 2018.
+                     since January 1st 2018.
                   </div>
                 </div>
               </div>
@@ -979,12 +965,11 @@ ReactWrapper {
                     <div>
                       You have not applied for any 
                       <a
-                        href="/digital-marketplace/opportunities?status=live"
+                        href="/2/opportunities"
                       >
                         opportunities
                       </a>
-                       
-                      since January 1st 2018.
+                       since January 1st 2018.
                     </div>
                   </div>
                 </div>,
@@ -1036,12 +1021,11 @@ ReactWrapper {
                     <div>
                       You have not applied for any 
                       <a
-                        href="/digital-marketplace/opportunities?status=live"
+                        href="/2/opportunities"
                       >
                         opportunities
                       </a>
-                       
-                      since January 1st 2018.
+                       since January 1st 2018.
                     </div>
                   </div>
                 </div>,
@@ -1086,12 +1070,11 @@ ReactWrapper {
                     <div>
                       You have not applied for any 
                       <a
-                        href="/digital-marketplace/opportunities?status=live"
+                        href="/2/opportunities"
                       >
                         opportunities
                       </a>
-                       
-                      since January 1st 2018.
+                       since January 1st 2018.
                     </div>
                   </div>,
                   "className": "header row",
@@ -1137,12 +1120,11 @@ ReactWrapper {
                       <div>
                         You have not applied for any 
                         <a
-                          href="/digital-marketplace/opportunities?status=live"
+                          href="/2/opportunities"
                         >
                           opportunities
                         </a>
-                         
-                        since January 1st 2018.
+                         since January 1st 2018.
                       </div>
                     </div>,
                     "key": undefined,
@@ -1184,12 +1166,11 @@ ReactWrapper {
                         <div>
                           You have not applied for any 
                           <a
-                            href="/digital-marketplace/opportunities?status=live"
+                            href="/2/opportunities"
                           >
                             opportunities
                           </a>
-                           
-                          since January 1st 2018.
+                           since January 1st 2018.
                         </div>,
                       ],
                       "className": "col-md-12 col-sm-12",
@@ -1412,12 +1393,11 @@ ReactWrapper {
                         "instance": <div>
                           You have not applied for any 
                           <a
-                            href="/digital-marketplace/opportunities?status=live"
+                            href="/2/opportunities"
                           >
                             opportunities
                           </a>
-                           
-                          since January 1st 2018.
+                           since January 1st 2018.
                         </div>,
                         "key": undefined,
                         "nodeType": "host",
@@ -1425,12 +1405,11 @@ ReactWrapper {
                           "children": Array [
                             "You have not applied for any ",
                             <a
-                              href="/digital-marketplace/opportunities?status=live"
+                              href="/2/opportunities"
                             >
                               opportunities
                             </a>,
-                            " ",
-                            "since January 1st 2018.",
+                            " since January 1st 2018.",
                           ],
                         },
                         "ref": null,
@@ -1438,7 +1417,7 @@ ReactWrapper {
                           "You have not applied for any ",
                           Object {
                             "instance": <a
-                              href="/digital-marketplace/opportunities?status=live"
+                              href="/2/opportunities"
                             >
                               opportunities
                             </a>,
@@ -1446,7 +1425,7 @@ ReactWrapper {
                             "nodeType": "host",
                             "props": Object {
                               "children": "opportunities",
-                              "href": "/digital-marketplace/opportunities?status=live",
+                              "href": "/2/opportunities",
                             },
                             "ref": null,
                             "rendered": Array [
@@ -1454,8 +1433,7 @@ ReactWrapper {
                             ],
                             "type": "a",
                           },
-                          " ",
-                          "since January 1st 2018.",
+                          " since January 1st 2018.",
                         ],
                         "type": "div",
                       },

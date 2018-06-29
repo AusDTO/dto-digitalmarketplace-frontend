@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import DashBoardLink from './DashBoardLink'
 import logoGovCrest from './Government_crest.svg'
@@ -77,7 +77,7 @@ export class Header extends Component {
               <nav className="au-marketplace-header-navigation">
                 <ul className="au-link-list au-link-list--inline">
                   <li className="au-marketplace-header-link-list">
-                    <a href="/digital-marketplace/opportunities?status=live">Opportunities</a>
+                    <a href="/2/opportunities">Opportunities</a>
                   </li>
                   <li className="au-marketplace-header-link-list">
                     <a href="/search/sellers">Seller Catalogue</a>
@@ -116,7 +116,7 @@ export class Header extends Component {
                       {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
                     </div>
                     <div className="au-marketplace-header_mobile-link">
-                      <a href="/digital-marketplace/opportunities?status=live">Opportunities</a>
+                      <a href="/2/opportunities">Opportunities</a>
                     </div>
                     <div className="au-marketplace-header_mobile-link">
                       <a href="/search/sellers">Seller Catalogue</a>
