@@ -24,7 +24,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { userType, loggedIn } = this.props
+    const { userType, location, loggedIn } = this.props
 
     return (
       <section className="au-marketplace-header">
@@ -77,7 +77,12 @@ export class Header extends Component {
               <nav className="au-marketplace-header-navigation">
                 <ul className="au-link-list au-link-list--inline">
                   <li className="au-marketplace-header-link-list">
-                    <a href="/2/opportunities">Opportunities</a>
+                    <a
+                      className={location.pathname === '/2/opportunities' ? 'au-marketplace-header-active' : ''}
+                      href="/2/opportunities"
+                    >
+                      Opportunities
+                    </a>
                   </li>
                   <li className="au-marketplace-header-link-list">
                     <a href="/search/sellers">Seller Catalogue</a>
@@ -151,4 +156,4 @@ const mapStateToProps = ({ app }) => ({
   userType: app.userType
 })
 
-export default connect(mapStateToProps)(Header)
+export default withRouter(connect(mapStateToProps)(Header))
