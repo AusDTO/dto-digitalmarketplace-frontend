@@ -22,7 +22,7 @@ export class BriefChoice extends Component {
       <div className={styles.container}>
         <div className="row">
           <div className="col-xs-12">
-            <h1 className="au-display-xl">Start a New Brief</h1>
+            <h1 className="au-display-xl">Start a new brief</h1>
             <p>Create a new opportunity for a:</p>
           </div>
         </div>
