@@ -1,4 +1,5 @@
 import React                from 'react';
+import PropTypes            from 'prop-types'
 import { connect }          from 'react-redux';
 import { Link }             from 'react-router-dom';
 import { Form, Control }    from 'react-redux-form';
@@ -13,12 +14,37 @@ import formProps            from '../../../../shared/reduxModules/formPropsSelec
 import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
-import { findValidServices } from '../../redux/helpers'
+import { findValidServices, isDailyRateMissing } from '../../redux/helpers'
+import { missingDailyRates } from '../../redux/modules/application'
 import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
+
+import PageAlert from '@gov.au/page-alerts'
 
 import './PricingForm.css';
 
 class PricingForm extends BaseForm {
+
+  static propTypes = {
+    model: PropTypes.string.isRequired,
+    form: PropTypes.object.isRequired,
+    action: PropTypes.string.isRequired,
+    csrf_token: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired,
+    services: PropTypes.object.isRequired,
+    children: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    nextRoute: PropTypes.string.isRequired,
+    submitClicked: PropTypes.bool,
+  }
+
+  componentDidMount() {
+    if (this.props.pricingForm.pricing && isDailyRateMissing(this.props.pricingForm.pricing, this.props.services)) {
+      this.props.hasMissingDailyRates(true)
+    } else {
+      this.props.hasMissingDailyRates(false)
+    }
+  }
 
   render() {
     const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains } = this.props;
@@ -49,6 +75,9 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header>
+            { this.props.missingDailyRates ?
+              <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
+            : '' }
             <h1 tabIndex="-1">{title}</h1>
             <p>Indicate the maximum daily rate you normally charge for services.</p>
             <p>Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
@@ -73,6 +102,9 @@ class PricingForm extends BaseForm {
             {Object.keys(validServices).map((service, i) => (
               <fieldset key={`pricing.${service}.${i}`} className="field">
                 <legend>{service}</legend>
+                <label>
+                  We have set a price threshold for this area of expertise: {`$${parseFloat(domains.prices.maximum[service] || 0)}`} (GST inclusive). If you nominate a price above this threshold we will assess your case studies at a higher standard to verify that your service offers value for money. 
+                </label>
                 <StatefulError
                   model={`${model}.pricing.${service}.maxPrice`}
                   messages={{
@@ -117,8 +149,17 @@ PricingForm.defaultProps = {
 const mapStateToProps = (state) => {
   return {
     ...formProps(state, 'pricingForm'),
-    domainSelectorForm: state.domainSelectorForm
+    domainSelectorForm: state.domainSelectorForm,
+    missingDailyRates: state.application.missingDailyRates
   }
 }
 
-export default connect(mapStateToProps)(PricingForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hasMissingDailyRates: (bool) => {
+      return dispatch(missingDailyRates(bool))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PricingForm)

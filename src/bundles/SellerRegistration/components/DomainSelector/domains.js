@@ -32,7 +32,7 @@ export default [
     {
         key: 'change',
         label: 'Change, Training and Transformation',
-        description: 'Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Development.'
+        description: 'Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Development.<br /><br />Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.'
     },
     {
         key: 'changetransformation',
