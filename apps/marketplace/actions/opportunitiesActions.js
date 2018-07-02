@@ -66,3 +66,7 @@ export const loadOpportunities = (filters = {}) => dispatch => {
 export const changeForm = values => dispatch => {
   dispatch(actions.change('opportunitiesFilterForm', values))
 }
+
+export const changeFilter = (filter, value) => dispatch => {
+  dispatch(actions.change(`opportunitiesFilterForm.${filter}`, value))
+}

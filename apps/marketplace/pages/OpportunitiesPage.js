@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { parse } from 'query-string'
 import { withRouter } from 'react-router-dom'
 import { loadOpportunities, setCurrentPage } from 'marketplace/actions/opportunitiesActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -8,9 +9,37 @@ import Opportunities from 'marketplace/components/Opportunities/Opportunities'
 import { OpportunitiesPagination } from 'marketplace/components/Opportunities/OpportunitiesPagination'
 import { OpportunitiesHeader } from 'marketplace/components/Opportunities/OpportunitiesHeader'
 
+const getFilterValuesFromQueryString = qs => {
+  const values = {
+    status: {},
+    openTo: {},
+    type: {}
+  }
+  if (qs.status) {
+    qs.status.split(',').map(filter => {
+      values.status[filter] = true
+      return true
+    })
+  }
+  if (qs.openTo) {
+    qs.openTo.split(',').map(filter => {
+      values.openTo[filter] = true
+      return true
+    })
+  }
+  if (qs.type) {
+    qs.type.split(',').map(filter => {
+      values.type[filter] = true
+      return true
+    })
+  }
+  return values
+}
+
 class OpportunitiesPage extends Component {
   componentDidMount() {
-    this.props.getOpportunities()
+    const queryStringValues = getFilterValuesFromQueryString(parse(this.props.location.search))
+    this.props.getOpportunities(queryStringValues)
   }
 
   getPageCount() {

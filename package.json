@@ -102,6 +102,7 @@
     "object-assign": "^4.1.1",
     "promise": "^8.0.1",
     "prop-types": "^15.6.0",
+    "query-string": "^6.1.0",
     "react": "^16.1.1",
     "react-autocomplete": "^1.7.2",
     "react-document-title": "^2.0.3",
