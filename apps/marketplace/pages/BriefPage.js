@@ -9,7 +9,6 @@ import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
 import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
-import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import {
   loadBrief,
   handleBriefResponseSubmit,
@@ -190,20 +189,6 @@ class BriefPage extends Component {
                       )}{' '}
                   </span>
                 )}
-              />
-              <Route
-                path={`${match.url}/training/respond`}
-                render={() =>
-                  <span>
-                    {loadBriefSuccess
-                      ? <BriefTrainingResponseForm
-                        submitClicked={this.onSubmitClicked}
-                        handleSubmit={values => this.handleTrainingBriefResponseSubmit(values)}
-                        setFocus={setFocus}
-                        {...this.props}
-                      />
-                      : <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />}{' '}
-                  </span>}
               />
               <Route
                 path={`${match.url}/download-responses`}
