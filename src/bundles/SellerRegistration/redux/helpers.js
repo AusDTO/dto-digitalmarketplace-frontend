@@ -56,36 +56,26 @@ export const pruneModel = (model) => {
   }
 
   if (services) {
-    newModel = Object.assign({}, newModel, {
-      services: omitBy(services, (service) => !service)
-    });  
+    newModel = { ...newModel, services: omitBy(services, (service) => !service) }
   }
 
   if (case_studies) {
     delete newModel['case_studies'];
-    newModel = Object.assign({}, newModel, {
-      case_studies: pruneObject(case_studies)
-    });
+    newModel = { ...newModel, case_studies: pruneObject(case_studies) }
   }
 
   if (pricing) {
     delete newModel['pricing'];
-    newModel = Object.assign({}, newModel, {
-      pricing: pruneObject(pricing)
-    });
+    newModel = { ...newModel, pricing: pruneObject(pricing) }
   }
 
   if (products) {
-    newModel = Object.assign({}, newModel, {
-      products: omitBy(products, product => !product)
-    });      
+    newModel = { ...newModel, products: omitBy(products, product => !product) }
   }
 
   if (recruiter_info) {
     delete newModel['recruiter_info'];
-    newModel = Object.assign({}, newModel, {
-      recruiter_info: pruneObject(recruiter_info)
-    });
+    newModel = { ...newModel, recruiter_info: pruneObject(recruiter_info) }
   }
 
   return newModel;
