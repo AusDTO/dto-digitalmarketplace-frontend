@@ -32,7 +32,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     this.props.changeForm(this.formValues, { '.silent': true })
   }
 
-  getActiveFilterCount = (isMobile = false) => {
+  getActiveFilterCount(isMobile = false) {
     let count = 0
     Object.keys(this.props.opportunitiesFilterForm.status).map(filter => {
       if (this.props.opportunitiesFilterForm.status[filter]) {
@@ -57,11 +57,11 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     return count
   }
 
-  openAccordion = () => {
+  openAccordion() {
     this.setState({ accordionOpen: true })
   }
 
-  closeAccordion = () => {
+  closeAccordion() {
     this.setState({ accordionOpen: false })
   }
 
@@ -84,6 +84,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     this.closeAccordion()
     this.props.changeForm(values)
     this.props.getOpportunities(values)
+    this.props.updateQueryString(values)
   }
 
   attachDispatch(dispatch) {
@@ -308,13 +309,15 @@ export class OpportunitiesFiltersComponent extends BaseForm {
 }
 
 OpportunitiesFiltersComponent.defaultProps = {
-  initialFilterValues: {}
+  initialFilterValues: {},
+  updateQueryString: () => {}
 }
 
 OpportunitiesFiltersComponent.propTypes = {
   getOpportunities: PropTypes.func.isRequired,
   accordionOpen: PropTypes.bool.isRequired,
   model: PropTypes.string.isRequired,
+  updateQueryString: PropTypes.func,
   initialFilterValues: PropTypes.object
 }
 

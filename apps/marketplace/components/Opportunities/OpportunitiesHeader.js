@@ -12,17 +12,23 @@ export const OpportunitiesHeader = props => (
           Opportunities
         </AUheading>
       </div>
-      <OpportunitiesFilters initialFilterValues={props.initialFilterValues} accordionOpen={false} />
+      <OpportunitiesFilters
+        updateQueryString={props.updateQueryString}
+        initialFilterValues={props.initialFilterValues}
+        accordionOpen={false}
+      />
     </div>
   </div>
 )
 
 OpportunitiesHeader.defaultProps = {
-  initialFilterValues: {}
+  initialFilterValues: {},
+  updateQueryString: () => {}
 }
 
 OpportunitiesHeader.propTypes = {
-  initialFilterValues: PropTypes.object
+  initialFilterValues: PropTypes.object,
+  updateQueryString: PropTypes.func
 }
 
 export default OpportunitiesHeader

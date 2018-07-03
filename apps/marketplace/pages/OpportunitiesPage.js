@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { parse } from 'query-string'
+import { parse, stringify } from 'query-string'
 import { withRouter } from 'react-router-dom'
 import { loadOpportunities, setCurrentPage } from 'marketplace/actions/opportunitiesActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -40,9 +40,23 @@ const getFilterValuesFromQueryString = qs => {
   return values
 }
 
+const getQueryStringFromFilterValues = values => {
+  const qs = {
+    status: [],
+    openTo: [],
+    type: []
+  }
+  Object.keys(values).map(filter => {
+    Object.keys(values[filter]).map(k => values[filter][k] && qs[filter].push(k))
+    return true
+  })
+  return stringify(qs)
+}
+
 class OpportunitiesPage extends Component {
   constructor(props) {
     super(props)
+    this.updateQueryString = this.updateQueryString.bind(this)
     this.queryStringValues = getFilterValuesFromQueryString(props.location.search)
   }
 
@@ -54,6 +68,11 @@ class OpportunitiesPage extends Component {
     return Math.ceil(this.props.opportunities.length / this.props.pageLimit)
   }
 
+  updateQueryString(values) {
+    const qs = getQueryStringFromFilterValues(values)
+    this.props.history.push(`${this.props.location.pathname}?${qs}`)
+  }
+
   render() {
     const { currentlySending } = this.props
     const offset = (this.props.currentPage - 1) * this.props.pageLimit
@@ -61,7 +80,7 @@ class OpportunitiesPage extends Component {
 
     return (
       <div>
-        <OpportunitiesHeader initialFilterValues={this.queryStringValues} />
+        <OpportunitiesHeader initialFilterValues={this.queryStringValues} updateQueryString={this.updateQueryString} />
         {currentlySending ? <LoadingIndicatorFullPage /> : <Opportunities opportunities={opportunities} />}
         {this.getPageCount() > 1 &&
           !currentlySending && (
