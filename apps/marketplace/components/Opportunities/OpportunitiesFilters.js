@@ -21,6 +21,15 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     this.handleFilterApplyClick = this.handleFilterApplyClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTypeFilterSubmit = this.handleTypeFilterSubmit.bind(this)
+    this.formValues = {
+      status: { ...this.props.opportunitiesFilterForm.status, ...props.initialFilterValues.status },
+      openTo: { ...this.props.opportunitiesFilterForm.openTo, ...props.initialFilterValues.openTo },
+      type: { ...this.props.opportunitiesFilterForm.type, ...props.initialFilterValues.type }
+    }
+  }
+
+  componentDidMount() {
+    this.props.changeForm(this.formValues, { '.silent': true })
   }
 
   getActiveFilterCount = (isMobile = false) => {
@@ -88,7 +97,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
         model={model}
         onSubmit={this.handleSubmit}
         getDispatch={dispatch => this.attachDispatch(dispatch)}
-        initialState={this.props.opportunitiesFilterForm}
+        initialState={this.formValues}
       >
         <div>
           <div className={`col-md-6 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
@@ -298,10 +307,15 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   }
 }
 
+OpportunitiesFiltersComponent.defaultProps = {
+  initialFilterValues: {}
+}
+
 OpportunitiesFiltersComponent.propTypes = {
   getOpportunities: PropTypes.func.isRequired,
   accordionOpen: PropTypes.bool.isRequired,
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  initialFilterValues: PropTypes.object
 }
 
 const mapStateToProps = state => ({

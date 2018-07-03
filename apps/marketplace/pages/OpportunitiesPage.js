@@ -10,25 +10,29 @@ import { OpportunitiesPagination } from 'marketplace/components/Opportunities/Op
 import { OpportunitiesHeader } from 'marketplace/components/Opportunities/OpportunitiesHeader'
 
 const getFilterValuesFromQueryString = qs => {
+  const parsed = parse(qs)
   const values = {
     status: {},
     openTo: {},
     type: {}
   }
-  if (qs.status) {
-    qs.status.split(',').map(filter => {
+  if (parsed.status) {
+    const status = typeof parsed.status === 'string' ? [parsed.status] : parsed.status
+    status.map(filter => {
       values.status[filter] = true
       return true
     })
   }
-  if (qs.openTo) {
-    qs.openTo.split(',').map(filter => {
+  if (parsed.openTo) {
+    const openTo = typeof parsed.openTo === 'string' ? [parsed.openTo] : parsed.openTo
+    openTo.map(filter => {
       values.openTo[filter] = true
       return true
     })
   }
-  if (qs.type) {
-    qs.type.split(',').map(filter => {
+  if (parsed.type) {
+    const type = typeof parsed.type === 'string' ? [parsed.type] : parsed.type
+    type.map(filter => {
       values.type[filter] = true
       return true
     })
@@ -37,9 +41,13 @@ const getFilterValuesFromQueryString = qs => {
 }
 
 class OpportunitiesPage extends Component {
+  constructor(props) {
+    super(props)
+    this.queryStringValues = getFilterValuesFromQueryString(props.location.search)
+  }
+
   componentDidMount() {
-    const queryStringValues = getFilterValuesFromQueryString(parse(this.props.location.search))
-    this.props.getOpportunities(queryStringValues)
+    this.props.getOpportunities(this.queryStringValues)
   }
 
   getPageCount() {
@@ -53,7 +61,7 @@ class OpportunitiesPage extends Component {
 
     return (
       <div>
-        <OpportunitiesHeader />
+        <OpportunitiesHeader initialFilterValues={this.queryStringValues} />
         {currentlySending ? <LoadingIndicatorFullPage /> : <Opportunities opportunities={opportunities} />}
         {this.getPageCount() > 1 &&
           !currentlySending && (
