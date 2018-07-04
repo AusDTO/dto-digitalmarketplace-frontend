@@ -58,6 +58,17 @@ export default combineReducers({
         specialists: false,
         innovation: false,
         training: false
+      },
+      location: {
+        ACT: false,
+        NSW: false,
+        NT: false,
+        QLD: false,
+        SA: false,
+        TAS: false,
+        VIC: false,
+        WA: false,
+        Remote: false
       }
     }
   })

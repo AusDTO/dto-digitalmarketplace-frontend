@@ -7,16 +7,20 @@ import styles from './Opportunities.scss'
 export const OpportunitiesHeader = props => (
   <div className={`opportunities-page ${styles.container}`}>
     <div className={`${styles.header} row`}>
-      <div className={`${styles.headerTitle} col-md-4 col-sm-4 col-xs-4`}>
+      <div className={`${styles.headerTitle} col-md-3 col-sm-3 col-xs-3`}>
         <AUheading size="xl" level="1">
           Opportunities
         </AUheading>
       </div>
-      <OpportunitiesFilters
-        updateQueryString={props.updateQueryString}
-        initialFilterValues={props.initialFilterValues}
-        accordionOpen={false}
-      />
+      <div className="col-sm-9">
+        <OpportunitiesFilters
+          updateQueryString={props.updateQueryString}
+          initialFilterValues={props.initialFilterValues}
+          statusAccordionOpen={false}
+          locationAccordionOpen={false}
+          mobileAccordionOpen={false}
+        />
+      </div>
     </div>
   </div>
 )
