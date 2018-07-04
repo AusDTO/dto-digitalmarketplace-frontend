@@ -86,7 +86,6 @@ export class Catalogue extends React.Component {
           </article>
           <article className="row">
             <section className="col-xs-12 col-sm-4">
-              <h2 className="local-nav-heading">Filter your results</h2>
               <LocalNav navClassName="filter-navigation" text="Filter your results">
                 { search.view !== "products" &&
                 <div>
