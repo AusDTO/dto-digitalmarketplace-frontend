@@ -857,12 +857,9 @@ li:first-child.au-marketplace-header-link-list a {
 
 article.content-main header h1 {
   font-size: 2rem;
+  margin: 0 0 1.2rem 0;
 }
 
 article.content-main h2 {
   font-size: 1.5rem;
-}
-
-article.content-main p {
-  margin: 1.2rem 0 1.2rem 0;
 }
