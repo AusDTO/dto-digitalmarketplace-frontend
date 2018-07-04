@@ -150,14 +150,6 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               </li>
               <li className={styles.filterContainer}>
                 <TypeFilterControl
-                  name="Training"
-                  filter="training"
-                  model={`${model}.type.training`}
-                  submitForm={this.handleTypeFilterSubmit}
-                />
-              </li>
-              <li className={styles.filterContainer}>
-                <TypeFilterControl
                   name="Specialists"
                   filter="specialists"
                   model={`${model}.type.specialists`}
@@ -300,16 +292,6 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       id="outcomes"
                       name="outcomes"
                       label="Outcomes"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.type.training`}
-                      id="training"
-                      name="training"
-                      label="Training"
                       detailsModel={model}
                       messages={{}}
                     />
