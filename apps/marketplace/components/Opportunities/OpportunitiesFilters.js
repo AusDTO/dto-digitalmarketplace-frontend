@@ -82,13 +82,35 @@ export class OpportunitiesFiltersComponent extends BaseForm {
 
   handleFilterCancelClick(e) {
     e.preventDefault()
-    this.changeAccordion('all', false)
+    const type = e.target.getAttribute('data-type')
+    switch (type) {
+      case 'location':
+        this.changeAccordion('location', false)
+        break
+      case 'status':
+        this.changeAccordion('status', false)
+        break
+      default:
+        this.changeAccordion('all', false)
+        break
+    }
   }
 
   handleFilterApplyClick(e) {
     e.preventDefault()
     this.formDispatch(actions.submit('opportunitiesFilterForm'))
-    this.changeAccordion('all', false)
+    const type = e.target.getAttribute('data-type')
+    switch (type) {
+      case 'location':
+        this.changeAccordion('location', false)
+        break
+      case 'status':
+        this.changeAccordion('status', false)
+        break
+      default:
+        this.changeAccordion('all', false)
+        break
+    }
   }
 
   handleTypeFilterSubmit() {
@@ -176,12 +198,12 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   ))}
                 </div>
                 <span className={styles.cancelLink}>
-                  <a href="#cancel" onClick={this.handleFilterCancelClick}>
+                  <a href="#cancel" data-type="location" onClick={this.handleFilterCancelClick}>
                     Cancel
                   </a>
                 </span>
                 <span className={styles.applyFilters}>
-                  <a href="#apply" onClick={this.handleFilterApplyClick}>
+                  <a href="#apply" data-type="location" onClick={this.handleFilterApplyClick}>
                     Apply filters
                   </a>
                 </span>
@@ -239,12 +261,12 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   </div>
                 </div>
                 <span className={styles.cancelLink}>
-                  <a href="#cancel" onClick={this.handleFilterCancelClick}>
+                  <a href="#cancel" data-type="status" onClick={this.handleFilterCancelClick}>
                     Cancel
                   </a>
                 </span>
                 <span className={styles.applyFilters}>
-                  <a href="#apply" onClick={this.handleFilterApplyClick}>
+                  <a href="#apply" data-type="status" onClick={this.handleFilterApplyClick}>
                     Apply filters
                   </a>
                 </span>
