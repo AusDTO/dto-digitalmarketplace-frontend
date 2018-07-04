@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { parse, stringify } from 'query-string'
+import { parse, stringify } from 'qs'
 import { withRouter } from 'react-router-dom'
 import { loadOpportunities, setCurrentPage } from 'marketplace/actions/opportunitiesActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -50,14 +50,14 @@ const getQueryStringFromFilterValues = values => {
     Object.keys(values[filter]).map(k => values[filter][k] && qs[filter].push(k))
     return true
   })
-  return stringify(qs)
+  return stringify(qs, { arrayFormat: 'repeat' })
 }
 
 class OpportunitiesPage extends Component {
   constructor(props) {
     super(props)
     this.updateQueryString = this.updateQueryString.bind(this)
-    this.queryStringValues = getFilterValuesFromQueryString(props.location.search)
+    this.queryStringValues = getFilterValuesFromQueryString(props.location.search.substr(1))
   }
 
   componentDidMount() {
