@@ -9,6 +9,7 @@ export BUYER_PASSWORD=[password]
 export TYPE_INPUT=[true|false]
 export SLOW_MO=[number in milliseconds|undefined]
 export HEADLESS=[true|false]
+export IGNORE_MULTIPLE_LINKS=true
 ```
 
 next run `npm install`  

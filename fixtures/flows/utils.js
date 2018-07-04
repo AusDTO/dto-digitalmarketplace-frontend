@@ -58,7 +58,9 @@ export const clickButton = async (value) => {
 export const clickLink = async (linkText) => {
     console.log(`Clicking link "${linkText}"`);
     let links = await getElementHandles(`//a[.="${linkText}"]`);
-    expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
+    if (process.env.IGNORE_MULTIPLE_LINKS == false) {
+        expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
+    }
     await links[0].click();
 }
 

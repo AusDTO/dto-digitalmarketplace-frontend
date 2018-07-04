@@ -1,5 +1,5 @@
 export const login = async (email, password) => {
-    await clickLink('Sign in');
+    await clickLink('Log in');
     await matchText('h1', 'Sign in to the Marketplace');
     if (email == undefined) {
         email = process.env.BUYER_EMAIL;

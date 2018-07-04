@@ -33,8 +33,9 @@ export const create = async (params) => {
 }
 
 const selectLot = async (lot) => {
-    await selectRadio(lot);
-    await clickLink('Continue');
+    // await selectRadio(lot);
+    // await clickLink('Continue');
+    await page.goto(`${process.env.FRONTEND_ADDRESS}buyers/frameworks/digital-marketplace/requirements/training`);
 }
 
 const createBrief = async () => {
@@ -62,7 +63,7 @@ const fillWhatTraining = async () => {
 
 const fillLds = async () => {
     await clickSaveContinue();
-    await matchText('a', 'What does the training need to cover?');
+    await matchText('a', 'What do you want sellers to cover?');
 
     await selectRadio('ldsUnits');
     await clickSaveContinue();
@@ -107,7 +108,6 @@ const fillAudience = async () => {
 
 const fillTrainingLength = async () => {
     await type('input-trainingLength', { numberOfCharacters: 100 });
-    await selectCheck('Yes');
     await clickSaveContinue();
 }
 
