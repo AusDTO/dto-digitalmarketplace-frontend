@@ -111,7 +111,7 @@ export class Catalogue extends React.Component {
             <div className="col-xs-12 col-sm-8">
               {search.error ? (
                 <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
-                  <h2>Something went wrong!</h2>
+                  <h2 styleName="catalogue-heading">Something went wrong!</h2>
                   <p><Link to="/" onClick={(e) => {
                     e.preventDefault();
                     actions.resetQuery();
@@ -159,7 +159,7 @@ export class Catalogue extends React.Component {
                     ) :
                     (isEmpty(cards) && pagination.casestudies.total === 0) ? (
                     <article styleName={search.querying ? 'fadeOut' : 'fadeIn'}>
-                      <h2>No exact matches</h2>
+                      <h2 styleName="catalogue-heading">No exact matches</h2>
                       <p>Try tweaking your search criteria for more results or <Link to="/" onClick={(e) => {
                         e.preventDefault();
                         actions.resetQuery();

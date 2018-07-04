@@ -1,7 +1,16 @@
+h1.heading {
+  font-size: 2rem;
+}
+
+h2.catalogue-heading {
+  font-size: 1.5rem;
+}
+
 .heading {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
 .searchButton {
 border: none;
   background-color: #18788d;
