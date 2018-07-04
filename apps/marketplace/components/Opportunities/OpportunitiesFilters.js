@@ -316,7 +316,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       model={`${model}.status.live`}
                       id="live"
                       name="live"
-                      label="Open"
+                      label="Live"
                       detailsModel={model}
                       messages={{}}
                     />
