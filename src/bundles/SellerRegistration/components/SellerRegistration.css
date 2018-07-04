@@ -1,0 +1,27 @@
+/* Headings */
+
+h1.content-heading {
+    font-size: 2rem;
+  }
+  
+h2.content-heading {
+    font-size: 1.5rem;
+}
+
+h3.content-heading {
+    font-size: 1.25rem;
+}
+
+h4.content-heading {
+    font-size: 1rem;
+}
+
+header h1.content-heading {
+    margin-bottom: 1.2rem;
+}
+
+/* Lists */
+
+.content-list {
+    margin: 1.2rem 0;
+}
