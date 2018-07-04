@@ -17,34 +17,16 @@ const getFilterValuesFromQueryString = qs => {
     type: {},
     location: {}
   }
-  if (parsed.status) {
-    const status = typeof parsed.status === 'string' ? [parsed.status] : parsed.status
-    status.map(filter => {
-      values.status[filter] = true
-      return true
-    })
-  }
-  if (parsed.openTo) {
-    const openTo = typeof parsed.openTo === 'string' ? [parsed.openTo] : parsed.openTo
-    openTo.map(filter => {
-      values.openTo[filter] = true
-      return true
-    })
-  }
-  if (parsed.type) {
-    const type = typeof parsed.type === 'string' ? [parsed.type] : parsed.type
-    type.map(filter => {
-      values.type[filter] = true
-      return true
-    })
-  }
-  if (parsed.location) {
-    const location = typeof parsed.location === 'string' ? [parsed.location] : parsed.location
-    location.map(filter => {
-      values.location[filter] = true
-      return true
-    })
-  }
+  Object.keys(values).map(k => {
+    if (parsed[k]) {
+      const value = typeof parsed[k] === 'string' ? [parsed[k]] : parsed[k]
+      value.map(filter => {
+        values[k][filter] = true
+        return true
+      })
+    }
+    return true
+  })
   return values
 }
 
