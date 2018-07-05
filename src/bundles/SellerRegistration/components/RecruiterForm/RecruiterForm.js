@@ -11,6 +11,8 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 
+import styles from '../SellerRegistration.css';
+import recruiter from './RecruiterForm.css';
 
 class RecruiterForm extends BaseForm {
 
@@ -51,9 +53,9 @@ class RecruiterForm extends BaseForm {
                         )}
 
                         <fieldset>
-                          <legend><h1 tabIndex="-1">Are you a recruiter?</h1>
+                          <legend><h1 styleName="styles.content-heading" tabIndex="-1">Are you a recruiter?</h1>
                             </legend>
-                          <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
+                          <p styleName="recruiter.form-summary">Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
                             Examples include temporary and contract recruitment.</p>
                           <Control.radio
                             model={`${model}.recruiter`}
