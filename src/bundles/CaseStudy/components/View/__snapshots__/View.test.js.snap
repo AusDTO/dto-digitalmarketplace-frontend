@@ -3,6 +3,7 @@
 exports[`View with required attributes 1`] = `
 <section
   id="casestudy__view"
+  styleName="view.case-study-summary"
 >
   <header
     className="row"
@@ -11,6 +12,7 @@ exports[`View with required attributes 1`] = `
       className="col-xs-12"
     >
       <h1
+        styleName="styles.content-heading"
         tabIndex="-1"
       >
         My Sydney
@@ -50,80 +52,102 @@ exports[`View with required attributes 1`] = `
   <div
     className="row"
   >
-    <aside
-      className="col-sm-3 col-xs-12"
+    <div
+      styleName="view.case-study-content"
     >
-      <h2>
-        Client
-      </h2>
-      <p>
-        Transport for NSW
-      </p>
-      <h2>
-        Timeframe
-      </h2>
-      <p>
-        January 2016 — June 2016
-      </p>
-      <h2>
-        Area of expertise
-      </h2>
-      <p />
-      <h2>
-        Responsible for
-      </h2>
-      <p />
-    </aside>
-    <article
-      className="col-sm-7 col-xs-12"
-      role="main"
-    >
-      <section>
-        <h2>
-          Challenge
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          Approach
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          Outcomes and benefits
-        </h2>
-        <ul>
-          <li>
-            We gathered all requirements for maps including what was to be shown, what data was available.
-          </li>
-          <li>
-            We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
-          </li>
-          <li>
-            We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
-          </li>
-        </ul>
-      </section>
       <div
-        className="casestudy__actions"
-      />
-    </article>
+        styleName="view.case-study-sidebar"
+      >
+        <aside
+          className="col-sm-3 col-xs-12"
+        >
+          <h3
+            styleName="styles.content-heading"
+          >
+            Client
+          </h3>
+          <p>
+            Transport for NSW
+          </p>
+          <h3
+            styleName="styles.content-heading"
+          >
+            Timeframe
+          </h3>
+          <p>
+            January 2016 — June 2016
+          </p>
+          <h3
+            styleName="styles.content-heading"
+          >
+            Area of expertise
+          </h3>
+          <p />
+          <h3
+            styleName="styles.content-heading"
+          >
+            Responsible for
+          </h3>
+          <p />
+        </aside>
+      </div>
+      <article
+        className="col-sm-7 col-xs-12"
+        role="main"
+      >
+        <section>
+          <h2
+            styleName="styles.content-heading"
+          >
+            Challenge
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2
+            styleName="styles.content-heading"
+          >
+            Approach
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2
+            styleName="styles.content-heading"
+          >
+            Outcomes and benefits
+          </h2>
+          <ul>
+            <li>
+              We gathered all requirements for maps including what was to be shown, what data was available.
+            </li>
+            <li>
+              We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
+            </li>
+            <li>
+              We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
+            </li>
+          </ul>
+        </section>
+        <div
+          className="casestudy__actions"
+        />
+      </article>
+    </div>
   </div>
 </section>
 `;
@@ -131,6 +155,7 @@ exports[`View with required attributes 1`] = `
 exports[`View with required attributes and meta links 1`] = `
 <section
   id="casestudy__view"
+  styleName="view.case-study-summary"
 >
   <header
     className="row"
@@ -139,6 +164,7 @@ exports[`View with required attributes and meta links 1`] = `
       className="col-xs-12"
     >
       <h1
+        styleName="styles.content-heading"
         tabIndex="-1"
       >
         My Sydney
@@ -178,80 +204,102 @@ exports[`View with required attributes and meta links 1`] = `
   <div
     className="row"
   >
-    <aside
-      className="col-sm-3 col-xs-12"
+    <div
+      styleName="view.case-study-content"
     >
-      <h2>
-        Client
-      </h2>
-      <p>
-        Transport for NSW
-      </p>
-      <h2>
-        Timeframe
-      </h2>
-      <p>
-        January 2016 — June 2016
-      </p>
-      <h2>
-        Area of expertise
-      </h2>
-      <p />
-      <h2>
-        Responsible for
-      </h2>
-      <p />
-    </aside>
-    <article
-      className="col-sm-7 col-xs-12"
-      role="main"
-    >
-      <section>
-        <h2>
-          Challenge
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          Approach
-        </h2>
-        <p
-          className="freetext"
-        >
-          <span>
-            We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
-            <br />
-          </span>
-        </p>
-      </section>
-      <section>
-        <h2>
-          Outcomes and benefits
-        </h2>
-        <ul>
-          <li>
-            We gathered all requirements for maps including what was to be shown, what data was available.
-          </li>
-          <li>
-            We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
-          </li>
-          <li>
-            We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
-          </li>
-        </ul>
-      </section>
       <div
-        className="casestudy__actions"
-      />
-    </article>
+        styleName="view.case-study-sidebar"
+      >
+        <aside
+          className="col-sm-3 col-xs-12"
+        >
+          <h3
+            styleName="styles.content-heading"
+          >
+            Client
+          </h3>
+          <p>
+            Transport for NSW
+          </p>
+          <h3
+            styleName="styles.content-heading"
+          >
+            Timeframe
+          </h3>
+          <p>
+            January 2016 — June 2016
+          </p>
+          <h3
+            styleName="styles.content-heading"
+          >
+            Area of expertise
+          </h3>
+          <p />
+          <h3
+            styleName="styles.content-heading"
+          >
+            Responsible for
+          </h3>
+          <p />
+        </aside>
+      </div>
+      <article
+        className="col-sm-7 col-xs-12"
+        role="main"
+      >
+        <section>
+          <h2
+            styleName="styles.content-heading"
+          >
+            Challenge
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              The My Sydney site and campaign provides a way for Sydney siders and visitors to find out what’s happening in the CBD in terms of transport changes. Gather requirements and provide a solution to allow people to interact with the maps on the My Sydney site. We had to acheive this while working with a separate digital agency who delivered the main website, campaign material and design direction.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2
+            styleName="styles.content-heading"
+          >
+            Approach
+          </h2>
+          <p
+            className="freetext"
+          >
+            <span>
+              We were not sure exactly what the requirements were at the beginning of the project. Ascension worked with the client as well as other vendors to come to an agreement on scope together. As a result of the requirements, we realised that a bespoke CMS-based map editing tool had to be built. Even with changing requirements Ascension was able to deliver all products. We did this by staying light and agile in our approach to design and development. Due to Ascensions' multi-disciplinary background and approach, we were able to recommend solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge site. We were required to understand and analyse the first two in order to decide what was most appropriate to fit into the new maps. The final solution required us to develop a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes. Although challenging, we were able to deliver holistic solutions by having front-end developers, back-end developers and the CMS users to all work together to reach a model together.
+              <br />
+            </span>
+          </p>
+        </section>
+        <section>
+          <h2
+            styleName="styles.content-heading"
+          >
+            Outcomes and benefits
+          </h2>
+          <ul>
+            <li>
+              We gathered all requirements for maps including what was to be shown, what data was available.
+            </li>
+            <li>
+              We recommended solutions encompassing UX guidance and development constraints with efficiency of work and confidence in knowledge.
+            </li>
+            <li>
+              We developed a CMS that included a map editing tool, an API for both us and the other vendor to interface with the data, and a workflow for publishing CMS changes.
+            </li>
+          </ul>
+        </section>
+        <div
+          className="casestudy__actions"
+        />
+      </article>
+    </div>
   </div>
 </section>
 `;

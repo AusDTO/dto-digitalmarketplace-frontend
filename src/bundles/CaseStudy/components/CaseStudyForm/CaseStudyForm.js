@@ -21,6 +21,9 @@ import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 
+import styles from '../../../SellerRegistration/components/SellerRegistration.css';
+import caseStudy from './CaseStudyForm.css'
+
 class CaseStudyForm extends BaseForm {
 
   static propTypes = {
@@ -84,16 +87,15 @@ class CaseStudyForm extends BaseForm {
         <header>
             {isAssessment ? (
               <div >
-                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
-                <p>Before you can apply for this opportunity you need to provide a case study and reference that meets our <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.</p>
-                <p><b>If we can confirm your expertise before the opportunity closes we will invite you to apply.</b></p>
-                <p>If successful you can apply for {startCase(service)} opportunities in future without the need for further assessment.</p>
+                <h1 styleName="styles.content-heading" tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
+                <p styleName="styles.form-summary">Before you can apply for this opportunity you need to provide a case study and reference that meets our <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.</p>
+                <p styleName="styles.form-summary"><b>If we can confirm your expertise before the opportunity closes we will invite you to apply.</b></p>
+                <p styleName="styles.form-summary">If successful you can apply for {startCase(service)} opportunities in future without the need for further assessment.</p>
               </div>
             ) : (
               <div >
-                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
-                <p id="header-description">
-
+                <h1 styleName="styles.content-heading" tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
+                <p id="header-description" styleName="styles.form-summary">
                   Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
                   You can update your case studies before an assessment begins.
                   For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
@@ -102,7 +104,7 @@ class CaseStudyForm extends BaseForm {
             )}
           <div className="calloutMistake">
             <b> Avoid common mistakes </b>
-            <ul>
+            <ul className="mistake-list">
               <li>Check the <a href="/assessment-criteria">assessment criteria</a> to ensure the service chosen is a good match for the case study.</li>
               <li>Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.</li>
               <li>If using acronyms, their meaning must be written out clearly.</li>
@@ -233,12 +235,13 @@ class CaseStudyForm extends BaseForm {
               validators={{ validLinks }}
            />
 
-            <h2>Referee</h2>
-            <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
+            <div>
+              <h2 styleName="styles.content-heading">Referee</h2>
+              <p styleName="caseStudy.referee-summary">Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
+            </div>
             <div className="calloutMistake">
-
               <b> Avoid common mistakes </b>
-              <ul>
+              <ul className="mistake-list">
                 <li>A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.</li>
                 <li>A referee must be from the client in the case study.</li>
               </ul>

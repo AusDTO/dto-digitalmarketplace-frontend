@@ -8,6 +8,7 @@ exports[`CaseStudyForm renders 1`] = `
     <div>
       <h1
         aria-describedby="header-description"
+        styleName="styles.content-heading"
         tabIndex="-1"
       >
         Add
@@ -15,6 +16,7 @@ exports[`CaseStudyForm renders 1`] = `
       </h1>
       <p
         id="header-description"
+        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -42,7 +44,9 @@ exports[`CaseStudyForm renders 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           Check the 
           <a
@@ -462,19 +466,27 @@ exports[`CaseStudyForm renders 1`] = `
           </div>
         </div>
       </div>
-      <h2>
-        Referee
-      </h2>
-      <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
-      </p>
+      <div>
+        <h2
+          styleName="styles.content-heading"
+        >
+          Referee
+        </h2>
+        <p
+          styleName="caseStudy.referee-summary"
+        >
+          Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
+        </p>
+      </div>
       <div
         className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
         </b>
-        <ul>
+        <ul
+          className="mistake-list"
+        >
           <li>
             A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
           </li>
@@ -606,6 +618,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
     <div>
       <h1
         aria-describedby="header-description"
+        styleName="styles.content-heading"
         tabIndex="-1"
       >
         Edit
@@ -613,6 +626,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       </h1>
       <p
         id="header-description"
+        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -640,7 +654,9 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           Check the 
           <a
@@ -1060,19 +1076,27 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           </div>
         </div>
       </div>
-      <h2>
-        Referee
-      </h2>
-      <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
-      </p>
+      <div>
+        <h2
+          styleName="styles.content-heading"
+        >
+          Referee
+        </h2>
+        <p
+          styleName="caseStudy.referee-summary"
+        >
+          Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
+        </p>
+      </div>
       <div
         className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
         </b>
-        <ul>
+        <ul
+          className="mistake-list"
+        >
           <li>
             A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
           </li>
@@ -1209,6 +1233,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
     <div>
       <h1
         aria-describedby="header-description"
+        styleName="styles.content-heading"
         tabIndex="-1"
       >
         Add
@@ -1216,6 +1241,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
       </h1>
       <p
         id="header-description"
+        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -1243,7 +1269,9 @@ exports[`CaseStudyForm renders with errors 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           Check the 
           <a
@@ -1850,19 +1878,27 @@ exports[`CaseStudyForm renders with errors 1`] = `
           </div>
         </div>
       </div>
-      <h2>
-        Referee
-      </h2>
-      <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
-      </p>
+      <div>
+        <h2
+          styleName="styles.content-heading"
+        >
+          Referee
+        </h2>
+        <p
+          styleName="caseStudy.referee-summary"
+        >
+          Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
+        </p>
+      </div>
       <div
         className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
         </b>
-        <ul>
+        <ul
+          className="mistake-list"
+        >
           <li>
             A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
           </li>
@@ -2046,6 +2082,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
     <div>
       <h1
         aria-describedby="header-description"
+        styleName="styles.content-heading"
         tabIndex="-1"
       >
         Add
@@ -2053,6 +2090,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       </h1>
       <p
         id="header-description"
+        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -2080,7 +2118,9 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           Check the 
           <a
@@ -2506,19 +2546,27 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           </div>
         </div>
       </div>
-      <h2>
-        Referee
-      </h2>
-      <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
-      </p>
+      <div>
+        <h2
+          styleName="styles.content-heading"
+        >
+          Referee
+        </h2>
+        <p
+          styleName="caseStudy.referee-summary"
+        >
+          Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
+        </p>
+      </div>
       <div
         className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
         </b>
-        <ul>
+        <ul
+          className="mistake-list"
+        >
           <li>
             A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
           </li>
@@ -2650,6 +2698,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
     <div>
       <h1
         aria-describedby="header-description"
+        styleName="styles.content-heading"
         tabIndex="-1"
       >
         Add
@@ -2657,6 +2706,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       </h1>
       <p
         id="header-description"
+        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -2684,7 +2734,9 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           Check the 
           <a
@@ -3104,19 +3156,27 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           </div>
         </div>
       </div>
-      <h2>
-        Referee
-      </h2>
-      <p>
-        Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
-      </p>
+      <div>
+        <h2
+          styleName="styles.content-heading"
+        >
+          Referee
+        </h2>
+        <p
+          styleName="caseStudy.referee-summary"
+        >
+          Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.
+        </p>
+      </div>
       <div
         className="calloutMistake"
       >
         <b>
            Avoid common mistakes 
         </b>
-        <ul>
+        <ul
+          className="mistake-list"
+        >
           <li>
             A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.
           </li>

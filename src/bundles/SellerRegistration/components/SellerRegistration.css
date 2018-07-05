@@ -24,6 +24,7 @@ header h1.content-heading {
 
 header p.form-summary {
     margin-bottom: 1.2rem;
+    margin-top: 0;
 }
 
 /* Lists */
