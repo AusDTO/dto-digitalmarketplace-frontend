@@ -6,34 +6,40 @@ import { actions } from 'react-redux-form'
 import range from 'lodash/range'
 import compact from 'lodash/compact'
 import { GENERAL_ERROR } from 'shared/messageConstants'
-
+import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { label, description, hint, formFields } = props
+  const { fileId, label, description, hint, formFields } = props
 
   return (
-    <div>
-      <label className="question-heading au-text-input__label" htmlFor="file_0">
-        {label}
-      </label>
-      <span>{description}</span>
-      <p>
+    <div className="field">
+      <div className={styles.fileInput}>
+        <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
+          {label}
+        </label>
         <small>{hint}</small>
-      </p>
-      {range(formFields).map((field, id) => <FileInput key={field} id={id} {...props} />)}
+        <p>{description}</p>
+        {range(formFields).map(field => <FileInput key={field} id={fileId} {...props} />)}
+      </div>
     </div>
   )
 }
 
 FilesInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  hint: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  fileId: PropTypes.number,
+  label: PropTypes.string,
+  hint: PropTypes.string,
+  description: PropTypes.string,
   formFields: PropTypes.number.isRequired
 }
 
-FilesInput.defaultProps = {}
+FilesInput.defaultProps = {
+  fileId: 0,
+  label: '',
+  hint: '',
+  description: ''
+}
 
 const uploadDocument = (url, api, id, file) => () => {
   const data = new FormData()
@@ -45,7 +51,7 @@ const uploadDocument = (url, api, id, file) => () => {
     data
   }).then(response => {
     if (response.error) {
-      if (response.statusCode === 413) {
+      if (response.status === 413) {
         return { errorMessage: 'File too large, please check file size limit' }
       }
       return {
@@ -63,15 +69,14 @@ const uploadDocument = (url, api, id, file) => () => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  form: state[ownProps.model],
+  form: state[ownProps.model.split('.')[0]],
   ...ownProps
 })
 
 const mapDispatchToProps = dispatch => ({
   onUpload: (url, api, id, data) => dispatch(uploadDocument(url, api, id.toString(), data)),
-  removeDocument: (model, name, id) => dispatch(actions.omit(`${model}.${name}`, id.toString())),
-  createDocument: (model, name, id) => dispatch(actions.change(`${model}.${name}.${id}`, '')),
-  updateDocumentName: (model, name, id, filename) => dispatch(actions.change(`${model}.${name}.${id}`, filename))
+  createDocument: model => dispatch(actions.change(model, '')),
+  updateDocumentName: (model, filename) => dispatch(actions.change(model, filename))
 })
 
 export { mapStateToProps }
