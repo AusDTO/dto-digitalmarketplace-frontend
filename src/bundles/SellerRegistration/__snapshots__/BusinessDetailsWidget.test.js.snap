@@ -12,6 +12,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
     >
       <header>
         <h1
+          styleName="styles.content-heading"
           tabIndex="-1"
         >
           Tell us about your business
@@ -26,7 +27,9 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
           <b>
              Avoid common mistakes 
           </b>
-          <ul>
+          <ul
+            className="mistake-list"
+          >
             <li>
               Don’t write in capitals
             </li>
@@ -351,7 +354,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
           </div>
           <div>
             <p
-              styleName="footer"
+              styleName="businessDetails.footer"
             >
               More offices?
             </p>

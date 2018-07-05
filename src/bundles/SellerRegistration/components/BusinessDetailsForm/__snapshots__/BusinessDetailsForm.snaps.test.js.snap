@@ -6,6 +6,7 @@ exports[`BusinessDetailsForm renders 1`] = `
 >
   <header>
     <h1
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Tell us about your business
@@ -20,7 +21,9 @@ exports[`BusinessDetailsForm renders 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           Don’t write in capitals
         </li>
@@ -345,7 +348,7 @@ exports[`BusinessDetailsForm renders 1`] = `
       </div>
       <div>
         <p
-          styleName="footer"
+          styleName="businessDetails.footer"
         >
           More offices?
         </p>
@@ -404,6 +407,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
 >
   <header>
     <h1
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Tell us about your business
@@ -418,7 +422,9 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           Don’t write in capitals
         </li>
@@ -749,7 +755,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
       </div>
       <div>
         <p
-          styleName="footer"
+          styleName="businessDetails.footer"
         >
           More offices?
         </p>
