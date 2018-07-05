@@ -6,6 +6,7 @@ exports[`PricingForm renders a notice that domains are required 1`] = `
 >
   <header>
     <h1
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Pricing
@@ -45,14 +46,19 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       </p>
     </div>
     <h1
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Pricing
     </h1>
-    <p>
+    <p
+      styleName="styles.form-summary"
+    >
       Indicate the maximum daily rate you normally charge for services.
     </p>
-    <p>
+    <p
+      styleName="styles.form-summary"
+    >
       Please use the 
       <a
         href="https://www.sfia-online.org/en/sfia-6/busskills/lr5"
@@ -62,10 +68,14 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       </a>
        as the skill level you are quoting for.
     </p>
-    <p>
+    <p
+      styleName="styles.form-summary"
+    >
       We use this information to confirm your business offers value for money to government buyers.
     </p>
-    <p>
+    <p
+      styleName="styles.form-summary"
+    >
       For more information, you can read our 
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing"
@@ -117,7 +127,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
             </strong>
           </span>
           <span
-            styleName="inline-input"
+            styleName="pricing.inline-input"
           >
             <input
               disabled={false}
@@ -154,7 +164,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
             </strong>
           </span>
           <span
-            styleName="inline-input"
+            styleName="pricing.inline-input"
           >
             <input
               disabled={false}
@@ -191,7 +201,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
             </strong>
           </span>
           <span
-            styleName="inline-input"
+            styleName="pricing.inline-input"
           >
             <input
               disabled={false}

@@ -20,7 +20,8 @@ import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../
 
 import PageAlert from '@gov.au/page-alerts'
 
-import './PricingForm.css';
+import styles from '../SellerRegistration.css';
+import pricing from './PricingForm.css';
 
 class PricingForm extends BaseForm {
 
@@ -54,7 +55,7 @@ class PricingForm extends BaseForm {
       return (
         <Layout>
           <header>
-            <h1 tabIndex="-1">{title}</h1>
+            <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
           </header>
           <article role="main">
             <p>You must select the services you offer before specifying pricing!</p>
@@ -78,11 +79,11 @@ class PricingForm extends BaseForm {
             { this.props.missingDailyRates ?
               <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
             : '' }
-            <h1 tabIndex="-1">{title}</h1>
-            <p>Indicate the maximum daily rate you normally charge for services.</p>
-            <p>Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
-            <p>We use this information to confirm your business offers value for money to government buyers.</p>
-            <p>For more information, you can read our <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">Seller Pricing FAQs</a> and view the <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000080555-Daily-rates-trend-charts" rel="external">daily rates trend charts</a>.</p>
+            <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
+            <p styleName="styles.form-summary">Indicate the maximum daily rate you normally charge for services.</p>
+            <p styleName="styles.form-summary">Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
+            <p styleName="styles.form-summary">We use this information to confirm your business offers value for money to government buyers.</p>
+            <p styleName="styles.form-summary">For more information, you can read our <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">Seller Pricing FAQs</a> and view the <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000080555-Daily-rates-trend-charts" rel="external">daily rates trend charts</a>.</p>
         </header>
         <article role="main">
           <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -116,7 +117,7 @@ class PricingForm extends BaseForm {
                 />
                 <div>
                   <span><strong>$</strong></span>
-                  <span styleName="inline-input">
+                  <span styleName="pricing.inline-input">
                     <Control.text
                       type="text"
                       id={`${kebabCase(service)}-maxprice`}
