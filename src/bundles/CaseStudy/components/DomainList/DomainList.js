@@ -124,9 +124,9 @@ class DomainList extends BaseForm {
       )
     };
 
-      let header = (<header>
+      let header = (<header styleName="styles.content">
         <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
-        <p styleName="styles.form-summary">
+        <p>
           Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
           They become part of your seller profile, so think of them as the beginning of your conversation
           with hundreds of buyers and a tool to help them find you through keyword search.
@@ -134,7 +134,7 @@ class DomainList extends BaseForm {
         </p>
       </header>)
       if (isNumber(supplierCode)) {
-        header = (<header>
+        header = (<header styleName="styles.content">
           <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
           <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
             services you wish to offer.</p>

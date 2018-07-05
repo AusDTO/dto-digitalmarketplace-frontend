@@ -34,7 +34,9 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
 <div
   className="layout"
 >
-  <header>
+  <header
+    styleName="styles.content"
+  >
     <div
       className="au-body au-page-alerts   au-page-alerts--error"
       role="alert"
@@ -51,14 +53,10 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
     >
       Pricing
     </h1>
-    <p
-      styleName="styles.form-summary"
-    >
+    <p>
       Indicate the maximum daily rate you normally charge for services.
     </p>
-    <p
-      styleName="styles.form-summary"
-    >
+    <p>
       Please use the 
       <a
         href="https://www.sfia-online.org/en/sfia-6/busskills/lr5"
@@ -68,14 +66,10 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       </a>
        as the skill level you are quoting for.
     </p>
-    <p
-      styleName="styles.form-summary"
-    >
+    <p>
       We use this information to confirm your business offers value for money to government buyers.
     </p>
-    <p
-      styleName="styles.form-summary"
-    >
+    <p>
       For more information, you can read our 
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing"

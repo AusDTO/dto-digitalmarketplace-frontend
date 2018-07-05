@@ -35,9 +35,9 @@ class ToolsForm extends BaseForm {
         }
         return (
             <Layout>
-                <header>
+                <header styleName="content">
                     <h1 styleName="content-heading" tabIndex="-1">Tools and methodologies</h1>
-                    <p styleName="form-summary">Enhance your profile and give buyers more ways to find you when searching</p>
+                    <p>Enhance your profile and give buyers more ways to find you when searching</p>
 
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>

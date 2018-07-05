@@ -5,7 +5,9 @@ exports[`CaseStudyForm renders 1`] = `
   className="layout"
 >
   <header>
-    <div>
+    <div
+      styleName="styles.content"
+    >
       <h1
         aria-describedby="header-description"
         styleName="styles.content-heading"
@@ -16,7 +18,6 @@ exports[`CaseStudyForm renders 1`] = `
       </h1>
       <p
         id="header-description"
-        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -615,7 +616,9 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
   className="layout"
 >
   <header>
-    <div>
+    <div
+      styleName="styles.content"
+    >
       <h1
         aria-describedby="header-description"
         styleName="styles.content-heading"
@@ -626,7 +629,6 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       </h1>
       <p
         id="header-description"
-        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -1230,7 +1232,9 @@ exports[`CaseStudyForm renders with errors 1`] = `
   className="layout"
 >
   <header>
-    <div>
+    <div
+      styleName="styles.content"
+    >
       <h1
         aria-describedby="header-description"
         styleName="styles.content-heading"
@@ -1241,7 +1245,6 @@ exports[`CaseStudyForm renders with errors 1`] = `
       </h1>
       <p
         id="header-description"
-        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -2079,7 +2082,9 @@ exports[`CaseStudyForm renders with form_options 1`] = `
   className="layout"
 >
   <header>
-    <div>
+    <div
+      styleName="styles.content"
+    >
       <h1
         aria-describedby="header-description"
         styleName="styles.content-heading"
@@ -2090,7 +2095,6 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       </h1>
       <p
         id="header-description"
-        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          
@@ -2695,7 +2699,9 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
   className="layout"
 >
   <header>
-    <div>
+    <div
+      styleName="styles.content"
+    >
       <h1
         aria-describedby="header-description"
         styleName="styles.content-heading"
@@ -2706,7 +2712,6 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       </h1>
       <p
         id="header-description"
-        styleName="styles.form-summary"
       >
         Remember, your case study must meet the 
          

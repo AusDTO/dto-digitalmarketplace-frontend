@@ -37,9 +37,9 @@ class CandidatesForm extends BaseForm {
         }
         return (
             <Layout>
-                <header>
+                <header styleName="content">
                     <h1 styleName="content-heading" tabIndex="-1">Tell us more about your candidates</h1>
-                    <p styleName="form-summary">Share database and candidate details for each service you selected.</p>
+                    <p>Share database and candidate details for each service you selected.</p>
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>

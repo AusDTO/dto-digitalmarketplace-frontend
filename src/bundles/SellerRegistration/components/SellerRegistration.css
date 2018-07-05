@@ -22,13 +22,20 @@ header h1.content-heading {
     margin-bottom: 1.2rem;
 }
 
-header p.form-summary {
-    margin-bottom: 1.2rem;
-    margin-top: 0;
-}
-
 /* Lists */
 
 .content-list {
     margin: 1.2rem 0;
+}
+
+/* Content */
+
+header.content p {
+    margin-bottom: 1.2rem;
+    margin-top: 0;
+}
+
+div.content p {
+    margin-bottom: 1.2rem;
+    margin-top: 0;
 }
