@@ -14,6 +14,8 @@ import Textfield     from '../../../../shared/form/Textfield';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav       from '../StepNav';
 
+import '../SellerRegistration.css'
+
 class YourInfoForm extends BaseForm {
 
   static propTypes = {
@@ -40,13 +42,13 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1">{title}</h1>
+          <h1 styleName="content-heading" tabIndex="-1">{title}</h1>
         </header>
         <article role="main">
           <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
           <div className="calloutMistake">
             <b> Avoid common mistakes </b>
-            <ul>
+            <ul className="mistake-list">
               <li><b>Contact names</b> - use full names.</li>
               <li><b>Email and phone numbers</b> - Check the format and details are correct.</li>
             </ul>
