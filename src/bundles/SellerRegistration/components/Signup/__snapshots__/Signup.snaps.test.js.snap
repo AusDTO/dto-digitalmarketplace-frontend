@@ -219,7 +219,9 @@ exports[`Signup renders 1`] = `
   >
     <div>
       <div>
-        <h1>
+        <h1
+          styleName="styles.content-heading"
+        >
           Joining the Digital Marketplace
         </h1>
         <p>
@@ -249,7 +251,9 @@ exports[`Signup renders 1`] = `
         <p>
            It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
         </p>
-        <h2>
+        <h2
+          styleName="styles.content-heading"
+        >
           You will need
         </h2>
         <ul>
@@ -263,7 +267,9 @@ exports[`Signup renders 1`] = `
             Proof of relevant insurance cover
           </li>
         </ul>
-        <h2>
+        <h2
+          styleName="styles.content-heading"
+        >
           You will be asked to
         </h2>
         <ul>
@@ -277,15 +283,17 @@ exports[`Signup renders 1`] = `
             Accept the Digital Marketplace Master Agreement
           </li>
         </ul>
-        <a
-          href="/static/media/documents/digital-marketplace-master-agreement.pdf"
-          rel="external"
-          target="_blank"
-        >
-          Download Digital Marketplace Master Agreement (PDF 229kb)
-        </a>
-        <br />
-        <br />
+        <p>
+          <a
+            href="/static/media/documents/digital-marketplace-master-agreement.pdf"
+            rel="external"
+            target="_blank"
+          >
+            Download Digital Marketplace Master Agreement (PDF 229kb)
+          </a>
+          <br />
+          <br />
+        </p>
         <div />
         <p>
           <a
@@ -524,6 +532,7 @@ exports[`Signup renders empty Your Info form 1`] = `
     >
       <header>
         <h1
+          styleName="content-heading"
           tabIndex="-1"
         >
           Contact details
@@ -538,7 +547,9 @@ exports[`Signup renders empty Your Info form 1`] = `
           <b>
              Avoid common mistakes 
           </b>
-          <ul>
+          <ul
+            className="mistake-list"
+          >
             <li>
               <b>
                 Contact names
@@ -998,6 +1009,7 @@ exports[`Signup renders populated Your Info form 1`] = `
     >
       <header>
         <h1
+          styleName="content-heading"
           tabIndex="-1"
         >
           Contact details
@@ -1012,7 +1024,9 @@ exports[`Signup renders populated Your Info form 1`] = `
           <b>
              Avoid common mistakes 
           </b>
-          <ul>
+          <ul
+            className="mistake-list"
+          >
             <li>
               <b>
                 Contact names
