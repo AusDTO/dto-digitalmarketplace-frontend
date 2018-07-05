@@ -19,6 +19,8 @@ import { actions as stepActions }    from '../../redux/modules/steps';
 
 import domains from './domains';
 
+import '../SellerRegistration.css'
+
 class DomainSelector extends BaseForm {
 
   static propTypes = {
@@ -36,7 +38,7 @@ class DomainSelector extends BaseForm {
         }
         let header = (
             <header>
-                <h1 tabIndex="-1">What services will you offer?</h1>
+                <h1 styleName="content-heading" tabIndex="-1">What services will you offer?</h1>
                 <p> If you only have software products to offer, <Link
                     to="/products"
                     onClick={() => {
@@ -55,7 +57,7 @@ class DomainSelector extends BaseForm {
         if (isNumber(supplierCode)) {
             header = (
                 <header>
-                    <h1 tabIndex="-1">What services will you offer?</h1>
+                    <h1 styleName="content-heading" tabIndex="-1">What services will you offer?</h1>
                     <p>The services you are currently approved for are already ticked. Select any others you have the skills and experience to provide.
                         You will need to provide a case study and referee for each to meet the <a href="/assessment-criteria"
                                                                                           target="_blank" rel="external">assessment criteria</a>
@@ -67,7 +69,7 @@ class DomainSelector extends BaseForm {
         if (recruiter === 'yes') {
             header = (
                 <header>
-                    <h1 tabIndex="-1">What services do your candidates offer?</h1>
+                    <h1 styleName="content-heading" tabIndex="-1">What services do your candidates offer?</h1>
                 </header>
             )
         }
@@ -75,7 +77,7 @@ class DomainSelector extends BaseForm {
         if (recruiter === 'both') {
             header = (
                 <header>
-                    <h1 tabIndex="-1">What services do you or your candidates offer?</h1>
+                    <h1 styleName="content-heading" tabIndex="-1">What services do you or your candidates offer?</h1>
                 </header>
             )
         }
