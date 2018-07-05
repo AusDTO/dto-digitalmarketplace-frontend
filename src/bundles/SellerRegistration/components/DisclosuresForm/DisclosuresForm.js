@@ -14,6 +14,7 @@ import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import questions    from './questions';
 import StepNav      from '../StepNav';
 
+import '../SellerRegistration.css';
 
 class DisclosuresForm extends BaseForm {
 
@@ -36,7 +37,7 @@ class DisclosuresForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
+                    <h1 styleName="content-heading" tabIndex="-1">{title}</h1>
                     <p>These responses are not visible on your profile but may be provided to buyers who are considering awarding you a contract. </p>
 
                         <p>Please note, answering ‘yes’ to any question will not automatically disqualify you from the Digital Marketplace, however our assessors may contact you to request more information.</p>
