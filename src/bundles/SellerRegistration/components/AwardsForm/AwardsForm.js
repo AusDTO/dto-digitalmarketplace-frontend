@@ -12,6 +12,7 @@ import MultiInput   from '../../../../shared/form/MultiInput';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 
+import '../SellerRegistration.css';
 
 class AwardsForm extends BaseForm {
 
@@ -34,13 +35,13 @@ class AwardsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">Awards and accreditations</h1>
+                    <h1 styleName="content-heading" tabIndex="-1">Awards and accreditations</h1>
 
-                    <p>This is your opportunity to share some of the things you are proud of.
+                    <p styleName="form-summary">This is your opportunity to share some of the things you are proud of.
                         All questions are optional but can help your business attract potential buyers. </p>
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
-                    <ul>
+                    <ul className="mistake-list">
                       <li>If using acronyms, their meaning must be written out clearly.</li>
                       <li>If a section does not apply to your business, leave it blank. The section will not appear on your profile.</li>
                     </ul>
