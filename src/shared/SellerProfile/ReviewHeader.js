@@ -44,7 +44,7 @@ const ReviewHeader = (props) => {
 
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
-                <p styleName="styles.bold">Website</p>
+                <h2 styleName="content-heading">Website</h2>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
                 <p><a href={website} target="_blank" rel="external" styleName="external-link">{website}</a></p>
@@ -54,7 +54,7 @@ const ReviewHeader = (props) => {
             {twitter && (
               <div className="row" styleName="styles.meta-row">
                 <div className="col-xs-12 col-sm-3">
-                  <p styleName={"styles.bold"}>Twitter</p>
+                  <h2 styleName={"styles.content-heading"}>Twitter</h2>
                 </div>
                 <div className="col-xs-12 col-sm-8 col-sm-push-1">
                   <p><a href={twitter} target="_blank" rel="external" styleName="external-link">{twitter}</a></p>
@@ -65,7 +65,7 @@ const ReviewHeader = (props) => {
             {linkedin && (
               <div className="row" styleName="styles.meta-row">
                 <div className="col-xs-12 col-sm-3">
-                  <p styleName={"styles.bold"}>LinkedIn</p>
+                  <h2 styleName={"styles.content-heading"}>LinkedIn</h2>
                 </div>
                 <div className="col-xs-12 col-sm-8 col-sm-push-1">
                   <p><a href={linkedin} target="_blank" rel="external" styleName="external-link">{linkedin}</a></p>
@@ -83,7 +83,7 @@ const ReviewHeader = (props) => {
             {typeof public_profile === 'undefined' && hasContactDetails && (
               <div className="row" styleName="styles.meta-row">
                 <div className="col-xs-12 col-sm-3">
-                  <p styleName={"styles.bold"}>Business contact</p>
+                  <h2 styleName={"styles.content-heading"}>Business contact</h2>
                 </div>
                 <div className="col-xs-12 col-sm-8 col-sm-push-1">
                   <p>

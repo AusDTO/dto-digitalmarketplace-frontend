@@ -45,11 +45,11 @@ exports[`ApplicationPreview renders with props 1`] = `
             <div
               className="col-xs-12 col-sm-3"
             >
-              <p
-                styleName="styles.bold"
+              <h2
+                styleName="content-heading"
               >
                 Website
-              </p>
+              </h2>
             </div>
             <div
               className="col-xs-12 col-sm-8 col-sm-push-1"
