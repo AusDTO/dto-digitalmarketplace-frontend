@@ -99,7 +99,7 @@ const Body = (props) => {
                                     CaseStudyLink is a configurable prop.
                                     Since it will point to different areas in different flows.
                                     */}
-                  <h3><CaseStudyLink id={study}>{title}</CaseStudyLink></h3>
+                  <h3 styleName="content-heading"><CaseStudyLink id={study}>{title}</CaseStudyLink></h3>
                   <p>{client}</p>
                   <div styleName={`badges ${badgeStyleName}`}>
                     {isEvaluated ? (
@@ -131,7 +131,7 @@ const Body = (props) => {
             return (
               <div key={`product.${i}`} styleName="product">
                 <div className="col-xs-12">
-                  <h3 styleName="product-heading">
+                  <h3 styleName="product-heading content-heading">
                     <a  href={product.website} target="_blank"
                       rel="external">{product.name}</a>
                   </h3>

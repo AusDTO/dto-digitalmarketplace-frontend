@@ -256,3 +256,25 @@ h3, h3 a {
 .badges-row {
   padding-left: 0.75rem;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+/* Headings */
+
+h1.content-heading {
+  font-size: 2rem;
+}
+
+h2.content-heading {
+  font-size: 1.5rem;
+}
+
+h3.content-heading {
+  font-size: 1.25rem;
+}
+
+h4.content-heading {
+  font-size: 1rem;
+}

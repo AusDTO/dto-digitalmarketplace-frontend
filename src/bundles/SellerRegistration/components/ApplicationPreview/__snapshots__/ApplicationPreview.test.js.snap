@@ -14,7 +14,7 @@ exports[`ApplicationPreview renders with props 1`] = `
           className="col-sm-8"
         >
           <h1
-            styleName="styles.heading"
+            styleName="styles.heading styles.content-heading"
             tabIndex="-1"
           />
         </div>
@@ -45,11 +45,11 @@ exports[`ApplicationPreview renders with props 1`] = `
             <div
               className="col-xs-12 col-sm-3"
             >
-              <h2
-                styleName="styles.au-display-lg"
+              <p
+                styleName="styles.bold"
               >
                 Website
-              </h2>
+              </p>
             </div>
             <div
               className="col-xs-12 col-sm-8 col-sm-push-1"
@@ -92,7 +92,7 @@ exports[`ApplicationPreview renders with props 1`] = `
             >
               <h2
                 className="seller-profile__section-title"
-                styleName="styles.au-display-lg"
+                styleName="styles.content-heading"
               >
                 Areas of expertise
               </h2>
@@ -127,7 +127,7 @@ exports[`ApplicationPreview renders with props 1`] = `
             >
               <h2
                 className="seller-profile__section-title"
-                styleName="styles.au-display-lg"
+                styleName="styles.content-heading"
               >
                 Company Details
               </h2>
@@ -156,7 +156,7 @@ exports[`ApplicationPreview renders with props 1`] = `
             >
               <h2
                 className="seller-profile__section-title"
-                styleName="styles.au-display-lg"
+                styleName="styles.content-heading"
               >
                 Signed agreement
               </h2>
