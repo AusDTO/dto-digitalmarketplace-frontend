@@ -34,7 +34,7 @@ exports[`ApplicationPreview renders with props 1`] = `
             />
           </div>
           <div
-            className="seller-profile__summary"
+            styleName="styles.seller-profile-summary"
           >
             <p />
           </div>

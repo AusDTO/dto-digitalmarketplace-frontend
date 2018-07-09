@@ -27,7 +27,7 @@ const LiteHeader = (props) => {
         ))}
         </div>
 
-        <div className="seller-profile__summary">
+        <div className="seller-profile-summary">
           <p>{summary}</p>
         </div>
 

@@ -38,7 +38,7 @@ const ReviewHeader = (props) => {
               <Badges badges={seller_type} />
             </div>
 
-            <div className="seller-profile__summary">
+            <div styleName="styles.seller-profile-summary">
               <p>{summary}</p>
             </div>
 

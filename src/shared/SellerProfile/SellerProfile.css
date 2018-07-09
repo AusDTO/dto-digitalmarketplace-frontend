@@ -249,6 +249,12 @@ h3, h3 a {
   margin-top: 0px;
 }
 
+/* Summary */
+
+.seller-profile-summary {
+  margin-bottom: 1.2rem;
+}
+
 .badges-row {
   padding-left: 0.75rem;
 }
