@@ -25,96 +25,98 @@ const ReviewHeader = (props) => {
 
   return (
     <section styleName={public_profile ? 'styles.full-header' : 'styles.review-header'}>
-      <div className="row ">
-        <div className="col-sm-8">
-          <h1 tabIndex="-1" styleName="styles.heading">{name}</h1>
+      <div>
+        <div className="row ">
+          <div className="col-sm-8">
+            <h1 tabIndex="-1" styleName="styles.heading">{name}</h1>
+          </div>
         </div>
-      </div>
 
-      <div className="row">
-        <article className="col-xs-12 col-md-8 col-sm-7">
-          <div className="row">
-            <Badges badges={seller_type} />
-          </div>
-
-          <div className="seller-profile__summary">
-            <p>{summary}</p>
-          </div>
-
-          <div className="row" styleName="styles.meta-row">
-            <div className="col-xs-12 col-sm-3">
-              <h2 styleName={"styles.au-display-lg"}>Website</h2>
+        <div className="row">
+          <article className="col-xs-12 col-md-8 col-sm-7">
+            <div className="row">
+              <Badges badges={seller_type} />
             </div>
-            <div className="col-xs-12 col-sm-8 col-sm-push-1">
-              <p><a href={website} target="_blank" rel="external" styleName="external-link">{website}</a></p>
-            </div>
-          </div>
 
-          {twitter && (
+            <div className="seller-profile__summary">
+              <p>{summary}</p>
+            </div>
+
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
-                <h2 styleName={"styles.au-display-lg"}>Twitter</h2>
+                <h2 styleName={"styles.au-display-lg"}>Website</h2>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p><a href={twitter} target="_blank" rel="external" styleName="external-link">{twitter}</a></p>
+                <p><a href={website} target="_blank" rel="external" styleName="external-link">{website}</a></p>
               </div>
             </div>
-          )}
 
-          {linkedin && (
-            <div className="row" styleName="styles.meta-row">
-              <div className="col-xs-12 col-sm-3">
-                <h2 styleName={"styles.au-display-lg"}>LinkedIn</h2>
+            {twitter && (
+              <div className="row" styleName="styles.meta-row">
+                <div className="col-xs-12 col-sm-3">
+                  <h2 styleName={"styles.au-display-lg"}>Twitter</h2>
+                </div>
+                <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                  <p><a href={twitter} target="_blank" rel="external" styleName="external-link">{twitter}</a></p>
+                </div>
               </div>
-              <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p><a href={linkedin} target="_blank" rel="external" styleName="external-link">{linkedin}</a></p>
-              </div>
-            </div>
-          )}
+            )}
 
-          {/*
-            public_profile has three possible values
-            1. Seller previewing/reviewing their profile in signup phase (public_profile=undefined)
-            2. Buyer/Seller viewing seller profile (public_profile=true)
-            3. Admin viewing the own profile (public_profile=false)
-          */}
-
-          {typeof public_profile === 'undefined' && hasContactDetails && (
-            <div className="row" styleName="styles.meta-row">
-              <div className="col-xs-12 col-sm-3">
-                <h2 styleName={"styles.au-display-lg"}>Business contact</h2>
+            {linkedin && (
+              <div className="row" styleName="styles.meta-row">
+                <div className="col-xs-12 col-sm-3">
+                  <h2 styleName={"styles.au-display-lg"}>LinkedIn</h2>
+                </div>
+                <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                  <p><a href={linkedin} target="_blank" rel="external" styleName="external-link">{linkedin}</a></p>
+                </div>
               </div>
-              <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p>
-                  {contact_name}<br/>
-                  {contact_phone}<br/>
-                  <a href={`mailto:${contact_email}`} styleName="external-link">{contact_email}</a>
-                </p>
-              </div>
-            </div>
-          )}
-        </article>
+            )}
 
-        {public_profile && (
-          <article className="col-xs-12 col-sm-4 col-sm-push-1 col-md-3 col-md-push-1">
-            <div className="seller-profile__tile" styleName="tile">
-              <span className="seller-profile__tile-title" styleName="tile-title">Business contact</span>
-              <b>{contact_name}</b>
-              <p>{contact_phone}</p>
-              <a href={`mailto:${contact_email}`} className="button" styleName="external-link white external-link-hover">Email seller</a>
-            </div>
+            {/*
+              public_profile has three possible values
+              1. Seller previewing/reviewing their profile in signup phase (public_profile=undefined)
+              2. Buyer/Seller viewing seller profile (public_profile=true)
+              3. Admin viewing the own profile (public_profile=false)
+            */}
+
+            {typeof public_profile === 'undefined' && hasContactDetails && (
+              <div className="row" styleName="styles.meta-row">
+                <div className="col-xs-12 col-sm-3">
+                  <h2 styleName={"styles.au-display-lg"}>Business contact</h2>
+                </div>
+                <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                  <p>
+                    {contact_name}<br/>
+                    {contact_phone}<br/>
+                    <a href={`mailto:${contact_email}`} styleName="external-link">{contact_email}</a>
+                  </p>
+                </div>
+              </div>
+            )}
           </article>
-        )}
 
-        {public_profile === false && (
-          <article className="col-xs-12 col-sm-3 col-sm-push-1">
-            <div className="seller-profile__tile" styleName="tile">
-              <p><b>Update the services you offer</b></p>
-              <a href="/sellers/edit" className="button" styleName="external-link white external-link-hover">Update profile</a>
-            </div>  
-          </article>
-        )}
+          {public_profile && (
+            <article className="col-xs-12 col-sm-4 col-sm-push-1 col-md-3 col-md-push-1">
+              <div className="seller-profile__tile" styleName="tile">
+                <span className="seller-profile__tile-title" styleName="tile-title">Business contact</span>
+                <b>{contact_name}</b>
+                <p>{contact_phone}</p>
+                <a href={`mailto:${contact_email}`} className="button" styleName="external-link white external-link-hover">Email seller</a>
+              </div>
+            </article>
+          )}
 
+          {public_profile === false && (
+            <article className="col-xs-12 col-sm-3 col-sm-push-1">
+              <div className="seller-profile__tile" styleName="tile">
+                <p><b>Update the services you offer</b></p>
+                <a href="/sellers/edit" className="button" styleName="external-link white external-link-hover">Update profile</a>
+              </div>  
+            </article>
+          )}
+
+        </div>
       </div>
     </section>
   )
