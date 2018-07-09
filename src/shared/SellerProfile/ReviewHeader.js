@@ -34,7 +34,7 @@ const ReviewHeader = (props) => {
 
         <div className="row">
           <article className="col-xs-12 col-md-8 col-sm-7">
-            <div className="row">
+            <div className="row" styleName="styles.badges-row">
               <Badges badges={seller_type} />
             </div>
 

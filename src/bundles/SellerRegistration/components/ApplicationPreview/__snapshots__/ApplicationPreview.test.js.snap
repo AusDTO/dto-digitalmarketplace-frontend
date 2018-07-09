@@ -27,6 +27,7 @@ exports[`ApplicationPreview renders with props 1`] = `
         >
           <div
             className="row"
+            styleName="styles.badges-row"
           >
             <div
               styleName="styles.badges"

@@ -252,3 +252,7 @@ h3, h3 a {
   margin-bottom: 7.2px;
   margin-top: 0px;
 }
+
+.badges-row {
+  padding-left: 0.75rem;
+}
