@@ -107,7 +107,7 @@
   padding-top: 3rem;
 }
 
-.full-profile > div:first-of-type hr {
+.seller-profile-content > div:first-of-type hr {
   display: none;
 }
 
