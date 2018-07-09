@@ -6,160 +6,166 @@ exports[`ApplicationPreview renders with props 1`] = `
   <section
     styleName="styles.review-header"
   >
-    <div
-      className="row "
-    >
+    <div>
       <div
-        className="col-sm-8"
-      >
-        <h1
-          styleName="styles.heading"
-          tabIndex="-1"
-        />
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <article
-        className="col-xs-12 col-md-8 col-sm-7"
+        className="row "
       >
         <div
-          className="row"
+          className="col-sm-8"
         >
-          <div
-            styleName="styles.badges"
+          <h1
+            styleName="styles.heading"
+            tabIndex="-1"
           />
         </div>
-        <div
-          className="seller-profile__summary"
-        >
-          <p />
-        </div>
-        <div
-          className="row"
-          styleName="styles.meta-row"
+      </div>
+      <div
+        className="row"
+      >
+        <article
+          className="col-xs-12 col-md-8 col-sm-7"
         >
           <div
-            className="col-xs-12 col-sm-3"
+            className="row"
           >
-            <h2
-              styleName="styles.au-display-lg"
+            <div
+              styleName="styles.badges"
+            />
+          </div>
+          <div
+            className="seller-profile__summary"
+          >
+            <p />
+          </div>
+          <div
+            className="row"
+            styleName="styles.meta-row"
+          >
+            <div
+              className="col-xs-12 col-sm-3"
             >
-              Website
-            </h2>
+              <h2
+                styleName="styles.au-display-lg"
+              >
+                Website
+              </h2>
+            </div>
+            <div
+              className="col-xs-12 col-sm-8 col-sm-push-1"
+            >
+              <p>
+                <a
+                  href={undefined}
+                  rel="external"
+                  styleName="external-link"
+                  target="_blank"
+                />
+              </p>
+            </div>
           </div>
-          <div
-            className="col-xs-12 col-sm-8 col-sm-push-1"
-          >
-            <p>
-              <a
-                href={undefined}
-                rel="external"
-                styleName="external-link"
-                target="_blank"
-              />
-            </p>
-          </div>
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
   </section>
   <div
-    className="row"
-    styleName=""
+    styleName="styles.seller-profile-container"
   >
     <div
-      className="col-sm-8 col-xs-12"
+      className="row"
+      styleName=""
     >
-      <article
-        className="seller-profile"
-        styleName=""
+      <div
+        className="col-sm-8 col-xs-12"
       >
-        <div
-          className="row"
-          styleName="styles.row"
+        <article
+          className="seller-profile"
+          styleName=""
         >
-          <hr />
           <div
-            className="col-sm-3 col-xs-12"
+            className="row"
+            styleName="styles.row"
           >
-            <h2
-              className="seller-profile__section-title"
-              styleName="styles.au-display-lg"
-            >
-              Areas of expertise
-            </h2>
-          </div>
-          <div
-            className="col-sm-8 col-sm-push-1 col-xs-12"
-          >
+            <hr />
             <div
-              className="seller-profile__provides-badges"
-              styleName="badges provides-badges"
+              className="col-sm-3 col-xs-12"
             >
-              <p>
-                <b>
-                  Experience in
-                </b>
-                <br />
-                These areas of expertise have not yet been formally assessed by the DTA. They will be assessed once the seller expresses interest in a matching opportunity.
-              </p>
-              <span>
-                0
-              </span>
+              <h2
+                className="seller-profile__section-title"
+                styleName="styles.au-display-lg"
+              >
+                Areas of expertise
+              </h2>
+            </div>
+            <div
+              className="col-sm-8 col-sm-push-1 col-xs-12"
+            >
+              <div
+                className="seller-profile__provides-badges"
+                styleName="badges provides-badges"
+              >
+                <p>
+                  <b>
+                    Experience in
+                  </b>
+                  <br />
+                  These areas of expertise have not yet been formally assessed by the DTA. They will be assessed once the seller expresses interest in a matching opportunity.
+                </p>
+                <span>
+                  0
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className="row"
-          styleName="styles.row"
-        >
-          <hr />
           <div
-            className="col-sm-3 col-xs-12"
+            className="row"
+            styleName="styles.row"
           >
-            <h2
-              className="seller-profile__section-title"
-              styleName="styles.au-display-lg"
+            <hr />
+            <div
+              className="col-sm-3 col-xs-12"
             >
-              Company Details
-            </h2>
+              <h2
+                className="seller-profile__section-title"
+                styleName="styles.au-display-lg"
+              >
+                Company Details
+              </h2>
+            </div>
+            <div
+              className="col-sm-8 col-sm-push-1 col-xs-12"
+            >
+              <p
+                styleName="bold-noMargin"
+              >
+                Authorised representative
+              </p>
+              <p>
+                <span />
+                <br />
+              </p>
+            </div>
           </div>
           <div
-            className="col-sm-8 col-sm-push-1 col-xs-12"
+            className="row"
+            styleName="styles.row"
           >
-            <p
-              styleName="bold-noMargin"
+            <hr />
+            <div
+              className="col-sm-3 col-xs-12"
             >
-              Authorised representative
-            </p>
-            <p>
-              <span />
-              <br />
-            </p>
+              <h2
+                className="seller-profile__section-title"
+                styleName="styles.au-display-lg"
+              >
+                Signed agreement
+              </h2>
+            </div>
+            <div
+              className="col-sm-8 col-sm-push-1 col-xs-12"
+            />
           </div>
-        </div>
-        <div
-          className="row"
-          styleName="styles.row"
-        >
-          <hr />
-          <div
-            className="col-sm-3 col-xs-12"
-          >
-            <h2
-              className="seller-profile__section-title"
-              styleName="styles.au-display-lg"
-            >
-              Signed agreement
-            </h2>
-          </div>
-          <div
-            className="col-sm-8 col-sm-push-1 col-xs-12"
-          />
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
   </div>
 </div>
