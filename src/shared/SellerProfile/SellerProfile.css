@@ -278,3 +278,12 @@ h3.content-heading {
 h4.content-heading {
   font-size: 1rem;
 }
+
+/* Content */
+.seller-profile-content p {
+  margin: 0 0 1.2rem 0;
+}
+
+.seller-profile-content p.bold-noMargin + ul {
+  margin: 0 0 1.2rem 0;
+}
