@@ -86,15 +86,15 @@ class CaseStudyForm extends BaseForm {
       <Layout>
         <header>
             {isAssessment ? (
-              <div styleName="styles.content">
-                <h1 className="au-display-xl" tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
+              <div className={styles.content}>
+                <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
                 <p>Before you can apply for this opportunity you need to provide a case study and reference that meets our <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.</p>
                 <p><b>If we can confirm your expertise before the opportunity closes we will invite you to apply.</b></p>
                 <p>If successful you can apply for {startCase(service)} opportunities in future without the need for further assessment.</p>
               </div>
             ) : (
-              <div styleName="styles.content">
-                <h1 className="au-display-xl" tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
+              <div className={styles.content}>
+                <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
                 <p id="header-description">
                   Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
                   You can update your case studies before an assessment begins.
