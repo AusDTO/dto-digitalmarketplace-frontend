@@ -7,6 +7,7 @@ exports[`BusinessDetailsForm renders 1`] = `
   <header>
     <h1
       className="au-display-xl"
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Tell us about your business
@@ -348,7 +349,7 @@ exports[`BusinessDetailsForm renders 1`] = `
       </div>
       <div>
         <p
-          styleName="businessDetails.footer"
+          className="footer"
         >
           More offices?
         </p>
@@ -408,6 +409,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
   <header>
     <h1
       className="au-display-xl"
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Tell us about your business
@@ -755,7 +757,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
       </div>
       <div>
         <p
-          styleName="businessDetails.footer"
+          className="footer"
         >
           More offices?
         </p>

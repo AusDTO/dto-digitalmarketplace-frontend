@@ -49,6 +49,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
     </div>
     <h1
       className="au-display-xl"
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Pricing

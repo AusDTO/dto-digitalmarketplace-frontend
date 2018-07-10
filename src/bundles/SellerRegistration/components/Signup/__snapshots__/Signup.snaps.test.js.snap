@@ -533,6 +533,7 @@ exports[`Signup renders empty Your Info form 1`] = `
       <header>
         <h1
           className="au-display-xl"
+          styleName="content-heading"
           tabIndex="-1"
         >
           Contact details
@@ -1010,6 +1011,7 @@ exports[`Signup renders populated Your Info form 1`] = `
       <header>
         <h1
           className="au-display-xl"
+          styleName="content-heading"
           tabIndex="-1"
         >
           Contact details
