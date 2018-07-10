@@ -60,7 +60,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
+                    <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
                   <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -214,14 +214,14 @@ class BusinessDetailsForm extends BaseForm {
                                     .filter((value) => {return value > 0 && businessDetailsForm.addresses[value] !== null;})
                                     .map((key, i) => {
                               return (
-                                <div styleName="businessDetails.address-wrapper" key={key}>
-                                    <hr styleName="businessDetails.hr"/>
+                                <div className={businessDetails['address-wrapper']} key={key}>
+                                    <hr className={businessDetails.hr}/>
                                     <div className="row">
                                         <div className="col-xs-8 col-sm-10">
                                           <h3 className="au-display-md">Additional address</h3>
                                         </div>
                                         <div className="col-xs-4 col-sm-2">
-                                            <button type="submit" styleName="businessDetails.remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
+                                            <button type="submit" className={`button-secondary ${businessDetails['remove-button']}`} onClick={this.onRemove.bind(this, key)}>Remove</button>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -278,7 +278,7 @@ class BusinessDetailsForm extends BaseForm {
                               )
                             })}
                             {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
-                                <p styleName="businessDetails.footer">More offices?</p>
+                                <p className={businessDetails.footer}>More offices?</p>
                             }
                             <button type="submit" className="button-secondary" onClick={this.onAdd.bind(this)}>Add another address</button>
                         </div>
