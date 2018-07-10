@@ -23,8 +23,7 @@ import { minObjectLength, validDate } from '../../../../validators';
 import PageAlert from '@gov.au/page-alerts'
 import isPast from 'date-fns/is_past';
 
-import styles from '../SellerRegistration.css';
-import documents from './DocumentsForm.css';
+import './DocumentsForm.css';
 
 
 class DocumentsForm extends BaseForm {
@@ -191,17 +190,17 @@ class DocumentsForm extends BaseForm {
 
                             return (
                                 <div key={key} className="callout-no-margin">
-                                    <p styleName="documents.question-heading">{field.label}</p>
+                                    <p styleName="question-heading">{field.label}</p>
                                     <span>{field.description}</span>
 
                                     <div>
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
 
                                         {isEmpty(doc.filename) && !fieldState.uploading && !fieldState.file &&
-                                            <div id={expiry_date_field} styleName="documents.file-upload">
+                                            <div id={expiry_date_field} styleName="file-upload">
                                                 <p>
-                                                    <input type="file" id={key} name={key} styleName="documents.hidden-input" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
-                                                    <label id={`label_${key}`} htmlFor={key} styleName="documents.custom-input"> {isEmpty(name) && "Choose file" } </label>
+                                                    <input type="file" id={key} name={key} styleName="hidden-input" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
+                                                    <label id={`label_${key}`} htmlFor={key} styleName="custom-input"> {isEmpty(name) && "Choose file" } </label>
                                                 </p>
                                             </div>
                                         }
@@ -210,10 +209,10 @@ class DocumentsForm extends BaseForm {
                                             <div>
                                                 <ul className="bordered-list">
                                                     <li className="bordered-list__item row">
-                                                        <div className="col-xs-9" styleName="documents.overflow-hidden">
+                                                        <div className="col-xs-9" styleName="overflow-hidden">
                                                             <a href={url} target="_blank" rel="external">{doc.filename}</a>
                                                         </div>
-                                                        <div className="col-xs-3" styleName="documents.text-right">
+                                                        <div className="col-xs-3" styleName="text-right">
                                                             <a href="3" onClick={this.onReset.bind(this, key)}>Delete</a>
                                                         </div>
                                                     </li>
@@ -253,11 +252,11 @@ class DocumentsForm extends BaseForm {
                                     {fieldState.uploading && <p>Uploading...</p>}
 
                                     {fieldState.file &&
-                                        <div styleName="documents.upload-container">
-                                            <p styleName="documents.filler">&nbsp;</p>
-                                            <p id={`span_${key}`} ref={`span_${key}`} styleName="documents.file-name">{!isEmpty(name) && name }</p>
-                                            <button type="submit" styleName="documents.submit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
-                                            <p styleName="documents.custom-input">Choose file</p>
+                                        <div styleName="upload-container">
+                                            <p styleName="filler">&nbsp;</p>
+                                            <p id={`span_${key}`} ref={`span_${key}`} styleName="file-name">{!isEmpty(name) && name }</p>
+                                            <button type="submit" styleName="submit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
+                                            <p styleName="custom-input">Choose file</p>
                                         </div>
                                     }
                                 </div>
