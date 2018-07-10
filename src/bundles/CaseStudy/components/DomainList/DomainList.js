@@ -114,7 +114,7 @@ class DomainList extends BaseForm {
       return (
         <Layout>
           <header>
-            <h1 styleName="styles.content-heading" tabIndex="-1">Add case studies</h1>
+            <h1 className="au-display-xl" tabIndex="-1">Add case studies</h1>
           </header>
           <article role="main">
             <p>Before you can add any case studies you need to select the services you will offer.</p>
@@ -125,7 +125,7 @@ class DomainList extends BaseForm {
     };
 
       let header = (<header styleName="styles.content">
-        <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
+        <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
         <p>
           Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
           They become part of your seller profile, so think of them as the beginning of your conversation
@@ -135,7 +135,7 @@ class DomainList extends BaseForm {
       </header>)
       if (isNumber(supplierCode)) {
         header = (<header styleName="styles.content">
-          <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
+          <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
           <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
             services you wish to offer.</p>
           <p> But they are also much more. Think of them as the beginning of a
@@ -159,7 +159,7 @@ class DomainList extends BaseForm {
 
               {!isEmpty(essential) &&
                 <div>
-                  <h2 className="visuallyhidden" styleName="styles.content-heading">Essential</h2>
+                  <h2 className="visuallyhidden au-display-lg">Essential</h2>
                   {essential.map((domain, index) =>
                     <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, pathname, ...this.props}}/>
                   )}
@@ -168,7 +168,7 @@ class DomainList extends BaseForm {
 
               {!isEmpty(recommended) &&
                 <div styleName="domainList.recommended-container">
-                  <h2 styleName="styles.content-heading">Recommended</h2>
+                  <h2 className="au-display-lg">Recommended</h2>
                   {recommended.map((domain, index) =>
                     <CaseStudy key={`casestudy.domain.${index}`} {...{domain, index, pathname, ...this.props}}/>
                   )}

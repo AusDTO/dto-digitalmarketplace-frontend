@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import kebabCase from 'lodash/kebabCase';
 import isEmpty   from 'lodash/isEmpty';
 
-import styles from '../../../SellerRegistration/components/SellerRegistration.css';
-import caseStudy from './CaseStudy.css';
+import styles from './CaseStudy.css';
 
 const getStudiesByService = (studies, service) => {
   return Object
@@ -21,8 +20,8 @@ const CaseStudy = ({pathname, domain, caseStudyForm, onEditCaseStudy, onDeleteCa
   let list = getStudiesByService(caseStudyForm.case_studies, domain);
 
   return (
-    <section styleName="caseStudy.case-study-section">
-      <h3 styleName="styles.content-heading">{domain}</h3>
+    <section className={styles.caseStudySection}>
+      <h3 className="au-display-md">{domain}</h3>
       {!isEmpty(list) && (
         <ul className="bordered-list">
           {Object.keys(list).map((guid, i) => {

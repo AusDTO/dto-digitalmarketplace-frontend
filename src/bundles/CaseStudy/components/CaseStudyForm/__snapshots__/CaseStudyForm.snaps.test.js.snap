@@ -10,7 +10,7 @@ exports[`CaseStudyForm renders 1`] = `
     >
       <h1
         aria-describedby="header-description"
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         Add
@@ -469,7 +469,7 @@ exports[`CaseStudyForm renders 1`] = `
       </div>
       <div>
         <h2
-          styleName="styles.content-heading"
+          className="au-display-lg"
         >
           Referee
         </h2>
@@ -621,7 +621,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
     >
       <h1
         aria-describedby="header-description"
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         Edit
@@ -1080,7 +1080,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
       </div>
       <div>
         <h2
-          styleName="styles.content-heading"
+          className="au-display-lg"
         >
           Referee
         </h2>
@@ -1237,7 +1237,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
     >
       <h1
         aria-describedby="header-description"
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         Add
@@ -1883,7 +1883,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
       </div>
       <div>
         <h2
-          styleName="styles.content-heading"
+          className="au-display-lg"
         >
           Referee
         </h2>
@@ -2087,7 +2087,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
     >
       <h1
         aria-describedby="header-description"
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         Add
@@ -2552,7 +2552,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
       </div>
       <div>
         <h2
-          styleName="styles.content-heading"
+          className="au-display-lg"
         >
           Referee
         </h2>
@@ -2704,7 +2704,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
     >
       <h1
         aria-describedby="header-description"
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         Add
@@ -3163,7 +3163,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
       </div>
       <div>
         <h2
-          styleName="styles.content-heading"
+          className="au-display-lg"
         >
           Referee
         </h2>

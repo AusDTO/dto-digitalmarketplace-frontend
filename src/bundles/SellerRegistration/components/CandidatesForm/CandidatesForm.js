@@ -38,7 +38,7 @@ class CandidatesForm extends BaseForm {
         return (
             <Layout>
                 <header styleName="content">
-                    <h1 styleName="content-heading" tabIndex="-1">Tell us more about your candidates</h1>
+                    <h1 className="au-display-xl" tabIndex="-1">Tell us more about your candidates</h1>
                     <p>Share database and candidate details for each service you selected.</p>
                 </header>
                 <article role="main">
@@ -58,7 +58,7 @@ class CandidatesForm extends BaseForm {
                         {domains.filter(d => services[d.label]).map((domain, i) => {
                             return (
                                 <div key={domain.label}>
-                                    <h2 styleName="content-heading">{domain.label}</h2>
+                                    <h2 className="au-display-lg">{domain.label}</h2>
                                     <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.database_size`}
                                         name={`${domain.label}-database_size`}

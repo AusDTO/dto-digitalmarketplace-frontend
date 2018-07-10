@@ -220,7 +220,7 @@ exports[`Signup renders 1`] = `
     <div>
       <div>
         <h1
-          styleName="styles.content-heading"
+          className="au-display-xl"
         >
           Joining the Digital Marketplace
         </h1>
@@ -252,7 +252,7 @@ exports[`Signup renders 1`] = `
            It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
         </p>
         <h2
-          styleName="styles.content-heading"
+          className="au-display-lg"
         >
           You will need
         </h2>
@@ -268,7 +268,7 @@ exports[`Signup renders 1`] = `
           </li>
         </ul>
         <h2
-          styleName="styles.content-heading"
+          className="au-display-lg"
         >
           You will be asked to
         </h2>
@@ -532,7 +532,7 @@ exports[`Signup renders empty Your Info form 1`] = `
     >
       <header>
         <h1
-          styleName="content-heading"
+          className="au-display-xl"
           tabIndex="-1"
         >
           Contact details
@@ -1009,7 +1009,7 @@ exports[`Signup renders populated Your Info form 1`] = `
     >
       <header>
         <h1
-          styleName="content-heading"
+          className="au-display-xl"
           tabIndex="-1"
         >
           Contact details

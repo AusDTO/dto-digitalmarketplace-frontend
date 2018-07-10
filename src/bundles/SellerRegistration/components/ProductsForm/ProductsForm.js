@@ -70,7 +70,7 @@ class ProductsForm extends BaseForm {
     return (
       <Layout>
         <header styleName="styles.content">
-          <h1 styleName="styles.content-heading" tabIndex="-1">Products</h1>
+          <h1 className="au-display-xl" tabIndex="-1">Products</h1>
             <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you are reselling.</p>
             <p>This feature is an MVP, meaning we want to learn more about the types of products sellers are offering so we can create a solution for selling them through the Digital Marketplace.</p>
 
@@ -108,7 +108,7 @@ class ProductsForm extends BaseForm {
                   {i !== 0 && <hr styleName="products.hr"/>}
                   <div className="row">
                     <div className="col-xs-12 col-sm-10">
-                      <h2 styleName="styles.content-heading">{`Product ${index}`}</h2>
+                      <h2 className="au-display-lg">{`Product ${index}`}</h2>
                     </div>
                     <div className="col-xs-12 col-sm-2">
                       <button type="submit" styleName="products.remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>

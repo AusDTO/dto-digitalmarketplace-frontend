@@ -12,7 +12,7 @@ exports[`View with required attributes 1`] = `
       className="col-xs-12"
     >
       <h1
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         My Sydney
@@ -62,7 +62,7 @@ exports[`View with required attributes 1`] = `
           className="col-sm-3 col-xs-12"
         >
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Client
           </h3>
@@ -70,7 +70,7 @@ exports[`View with required attributes 1`] = `
             Transport for NSW
           </p>
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Timeframe
           </h3>
@@ -78,13 +78,13 @@ exports[`View with required attributes 1`] = `
             January 2016 — June 2016
           </p>
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Area of expertise
           </h3>
           <p />
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Responsible for
           </h3>
@@ -97,7 +97,7 @@ exports[`View with required attributes 1`] = `
       >
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Challenge
           </h2>
@@ -112,7 +112,7 @@ exports[`View with required attributes 1`] = `
         </section>
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Approach
           </h2>
@@ -127,7 +127,7 @@ exports[`View with required attributes 1`] = `
         </section>
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Outcomes and benefits
           </h2>
@@ -164,7 +164,7 @@ exports[`View with required attributes and meta links 1`] = `
       className="col-xs-12"
     >
       <h1
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         My Sydney
@@ -214,7 +214,7 @@ exports[`View with required attributes and meta links 1`] = `
           className="col-sm-3 col-xs-12"
         >
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Client
           </h3>
@@ -222,7 +222,7 @@ exports[`View with required attributes and meta links 1`] = `
             Transport for NSW
           </p>
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Timeframe
           </h3>
@@ -230,13 +230,13 @@ exports[`View with required attributes and meta links 1`] = `
             January 2016 — June 2016
           </p>
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Area of expertise
           </h3>
           <p />
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Responsible for
           </h3>
@@ -249,7 +249,7 @@ exports[`View with required attributes and meta links 1`] = `
       >
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Challenge
           </h2>
@@ -264,7 +264,7 @@ exports[`View with required attributes and meta links 1`] = `
         </section>
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Approach
           </h2>
@@ -279,7 +279,7 @@ exports[`View with required attributes and meta links 1`] = `
         </section>
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Outcomes and benefits
           </h2>

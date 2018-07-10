@@ -6,7 +6,6 @@ import isEmpty from 'lodash/isEmpty';
 
 import { newline } from '../../../../helpers';
 
-import styles from '../../../SellerRegistration/components/SellerRegistration.css';
 import view from './View.css'
 
 class View extends React.Component {
@@ -49,7 +48,7 @@ class View extends React.Component {
         )}
         <header className="row">
           <div className="col-xs-12">
-            <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
+            <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
           </div>
 
           <div className="meta col-xs-12">
@@ -70,37 +69,37 @@ class View extends React.Component {
           <div styleName="view.case-study-content">
             <div styleName="view.case-study-sidebar">
               <aside className="col-sm-3 col-xs-12">
-                <h3 styleName="styles.content-heading">Client</h3>
+                <h3 className="au-display-md">Client</h3>
                 <p>{client}</p>
 
-                <h3 styleName="styles.content-heading">Timeframe</h3>
+                <h3 className="au-display-md">Timeframe</h3>
                 <p>{timeframe}</p>
 
-                <h3 styleName="styles.content-heading">Area of expertise</h3>
+                <h3 className="au-display-md">Area of expertise</h3>
                 <p>{service}</p>
 
-                <h3 styleName="styles.content-heading">Responsible for</h3>
+                <h3 className="au-display-md">Responsible for</h3>
                 <p>{roles}</p>
               </aside>
             </div>
             <article role="main" className="col-sm-7 col-xs-12">
               <section>
-                <h2 styleName="styles.content-heading">Challenge</h2>
+                <h2 className="au-display-md">Challenge</h2>
                 <p className="freetext">{newline(opportunity)}</p>
               </section>
               <section>
-                <h2 styleName="styles.content-heading">Approach</h2>
+                <h2 className="au-display-md">Approach</h2>
                 <p className="freetext">{newline(approach)}</p>
               </section>
               <section>
-                <h2 styleName="styles.content-heading">Outcomes and benefits</h2>
+                <h2 className="au-display-md">Outcomes and benefits</h2>
                 <ul>
                   {outcome && outcome.map((content, i) => <li key={i}>{content}</li>)}
                 </ul>
               </section>
               {project_links && project_links.length > 0 && (
                 <section styleName="view.project">
-                  <h2 styleName="styles.content-heading">Project Links</h2>
+                  <h2 className="au-display-md">Project Links</h2>
                   <ul>
                     {project_links.map((item, i) => <li key={i}>
                         {typeof item == 'object' ?

@@ -138,7 +138,7 @@ class DocumentsForm extends BaseForm {
                   { this.props.expiredLiabilityInsurance || this.props.expiredWorkersCompensation ?
                     <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
                   : '' }
-                  <h1 styleName="styles.content-heading" tabIndex="-1">Upload your documents</h1>
+                  <h1 className="au-display-xl" tabIndex="-1">Upload your documents</h1>
 
                   <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
                   <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.

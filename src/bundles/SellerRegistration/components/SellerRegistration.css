@@ -1,24 +1,6 @@
-/* Headings */
-
-h1.content-heading {
-    font-size: 2rem;
-  }
-  
-h2.content-heading {
-    font-size: 1.5rem;
-}
-
-h3.content-heading {
-    font-size: 1.25rem;
-}
-
-h4.content-heading {
-    font-size: 1rem;
-}
-
 /* Header */
 
-header h1.content-heading {
+header h1.contentHeading {
     margin-bottom: 1.2rem;
 }
 

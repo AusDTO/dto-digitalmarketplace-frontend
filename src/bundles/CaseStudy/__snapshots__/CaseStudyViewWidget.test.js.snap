@@ -12,7 +12,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
       className="col-xs-12"
     >
       <h1
-        styleName="styles.content-heading"
+        className="au-display-xl"
         tabIndex="-1"
       >
         A Case Study
@@ -47,7 +47,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
           className="col-sm-3 col-xs-12"
         >
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Client
           </h3>
@@ -55,7 +55,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
             A Case study client
           </p>
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Timeframe
           </h3>
@@ -63,13 +63,13 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
             2016
           </p>
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Area of expertise
           </h3>
           <p />
           <h3
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Responsible for
           </h3>
@@ -82,7 +82,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
       >
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Challenge
           </h2>
@@ -97,7 +97,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
         </section>
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Approach
           </h2>
@@ -112,7 +112,7 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
         </section>
         <section>
           <h2
-            styleName="styles.content-heading"
+            className="au-display-md"
           >
             Outcomes and benefits
           </h2>

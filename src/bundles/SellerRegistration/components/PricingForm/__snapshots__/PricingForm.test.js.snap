@@ -6,7 +6,7 @@ exports[`PricingForm renders a notice that domains are required 1`] = `
 >
   <header>
     <h1
-      styleName="styles.content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       Pricing
@@ -48,7 +48,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       </p>
     </div>
     <h1
-      styleName="styles.content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       Pricing

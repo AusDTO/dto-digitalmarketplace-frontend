@@ -6,7 +6,7 @@ exports[`DomainSelector renders 1`] = `
 >
   <header>
     <h1
-      styleName="content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       What services will you offer?
@@ -450,7 +450,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
 >
   <header>
     <h1
-      styleName="content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       What services will you offer?

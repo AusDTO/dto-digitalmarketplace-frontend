@@ -53,7 +53,7 @@ class RecruiterForm extends BaseForm {
                         <div styleName="content">
                             <fieldset>
                                 <legend>
-                                    <h1 styleName="content-heading" tabIndex="-1">Are you a recruiter?</h1>
+                                    <h1 className="au-display-xl" tabIndex="-1">Are you a recruiter?</h1>
                                 </legend>
                                 <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
                                     Examples include temporary and contract recruitment.</p>

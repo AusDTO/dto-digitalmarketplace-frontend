@@ -12,7 +12,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
     >
       <header>
         <h1
-          styleName="styles.content-heading"
+          className="au-display-xl"
           tabIndex="-1"
         >
           Tell us about your business

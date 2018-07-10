@@ -6,7 +6,7 @@ exports[`YourInfoForm renders 1`] = `
 >
   <header>
     <h1
-      styleName="content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       Contact details
@@ -260,7 +260,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
 >
   <header>
     <h1
-      styleName="content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       Contact details
@@ -520,7 +520,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
 >
   <header>
     <h1
-      styleName="content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       Contact details

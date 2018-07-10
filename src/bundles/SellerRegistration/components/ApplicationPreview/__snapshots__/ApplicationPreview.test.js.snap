@@ -14,7 +14,8 @@ exports[`ApplicationPreview renders with props 1`] = `
           className="col-sm-8"
         >
           <h1
-            styleName="styles.heading styles.content-heading"
+            className="au-display-xl"
+            styleName="styles.heading"
             tabIndex="-1"
           />
         </div>
@@ -46,7 +47,7 @@ exports[`ApplicationPreview renders with props 1`] = `
               className="col-xs-12 col-sm-3"
             >
               <h2
-                styleName="content-heading"
+                className="au-display-lg"
               >
                 Website
               </h2>
@@ -94,8 +95,7 @@ exports[`ApplicationPreview renders with props 1`] = `
                 className="col-sm-3 col-xs-12"
               >
                 <h2
-                  className="seller-profile__section-title"
-                  styleName="styles.content-heading"
+                  className="seller-profile__section-title au-display-lg"
                 >
                   Areas of expertise
                 </h2>
@@ -129,8 +129,7 @@ exports[`ApplicationPreview renders with props 1`] = `
                 className="col-sm-3 col-xs-12"
               >
                 <h2
-                  className="seller-profile__section-title"
-                  styleName="styles.content-heading"
+                  className="seller-profile__section-title au-display-lg"
                 >
                   Company Details
                 </h2>
@@ -158,8 +157,7 @@ exports[`ApplicationPreview renders with props 1`] = `
                 className="col-sm-3 col-xs-12"
               >
                 <h2
-                  className="seller-profile__section-title"
-                  styleName="styles.content-heading"
+                  className="seller-profile__section-title au-display-lg"
                 >
                   Signed agreement
                 </h2>

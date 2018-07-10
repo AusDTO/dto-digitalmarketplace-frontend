@@ -6,7 +6,7 @@ exports[`BusinessDetailsForm renders 1`] = `
 >
   <header>
     <h1
-      styleName="styles.content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       Tell us about your business
@@ -407,7 +407,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
 >
   <header>
     <h1
-      styleName="styles.content-heading"
+      className="au-display-xl"
       tabIndex="-1"
     >
       Tell us about your business

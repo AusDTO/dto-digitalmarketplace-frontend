@@ -60,7 +60,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 styleName="styles.content-heading" tabIndex="-1">{title}</h1>
+                    <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
                   <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -218,7 +218,7 @@ class BusinessDetailsForm extends BaseForm {
                                     <hr styleName="businessDetails.hr"/>
                                     <div className="row">
                                         <div className="col-xs-8 col-sm-10">
-                                          <h3 styleName="styles.content-heading">Additional address</h3>
+                                          <h3 className="au-display-md">Additional address</h3>
                                         </div>
                                         <div className="col-xs-4 col-sm-2">
                                             <button type="submit" styleName="businessDetails.remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
