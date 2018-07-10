@@ -15,56 +15,102 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
-      accordionOpen: props.accordionOpen
+      statusAccordionOpen: props.statusAccordionOpen,
+      locationAccordionOpen: props.locationAccordionOpen,
+      mobileAccordionOpen: props.mobileAccordionOpen
     }
     this.handleFilterCancelClick = this.handleFilterCancelClick.bind(this)
     this.handleFilterApplyClick = this.handleFilterApplyClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTypeFilterSubmit = this.handleTypeFilterSubmit.bind(this)
+    this.formValues = {
+      status: { ...this.props.opportunitiesFilterForm.status, ...props.initialFilterValues.status },
+      openTo: { ...this.props.opportunitiesFilterForm.openTo, ...props.initialFilterValues.openTo },
+      type: { ...this.props.opportunitiesFilterForm.type, ...props.initialFilterValues.type },
+      location: { ...this.props.opportunitiesFilterForm.location, ...props.initialFilterValues.location }
+    }
   }
 
-  getActiveFilterCount = (isMobile = false) => {
+  componentDidMount() {
+    this.props.changeForm(this.formValues, { '.silent': true })
+  }
+
+  getActiveFilterCount(type) {
     let count = 0
-    Object.keys(this.props.opportunitiesFilterForm.status).map(filter => {
-      if (this.props.opportunitiesFilterForm.status[filter]) {
-        count += 1
-      }
-      return true
-    })
-    Object.keys(this.props.opportunitiesFilterForm.openTo).map(filter => {
-      if (this.props.opportunitiesFilterForm.openTo[filter]) {
-        count += 1
-      }
-      return true
-    })
-    if (isMobile) {
-      Object.keys(this.props.opportunitiesFilterForm.type).map(filter => {
-        if (this.props.opportunitiesFilterForm.type[filter]) {
-          count += 1
-        }
+
+    const typeFilterMap = {
+      all: ['status', 'openTo', 'location', 'type'],
+      status: ['status', 'openTo'],
+      location: ['location']
+    }
+
+    if (typeFilterMap[type]) {
+      typeFilterMap[type].map(filter => {
+        Object.keys(this.props.opportunitiesFilterForm[filter]).map(k => {
+          if (this.props.opportunitiesFilterForm[filter][k]) {
+            count += 1
+          }
+          return true
+        })
         return true
       })
     }
+
     return count
   }
 
-  openAccordion = () => {
-    this.setState({ accordionOpen: true })
-  }
-
-  closeAccordion = () => {
-    this.setState({ accordionOpen: false })
+  changeAccordion(type, isOpen) {
+    switch (type) {
+      case 'status':
+        this.setState({ statusAccordionOpen: isOpen })
+        break
+      case 'location':
+        this.setState({ locationAccordionOpen: isOpen })
+        break
+      case 'mobile':
+        this.setState({ mobileAccordionOpen: isOpen })
+        break
+      case 'all':
+        this.setState({ statusAccordionOpen: isOpen })
+        this.setState({ locationAccordionOpen: isOpen })
+        this.setState({ mobileAccordionOpen: isOpen })
+        break
+      default:
+        break
+    }
   }
 
   handleFilterCancelClick(e) {
     e.preventDefault()
-    this.closeAccordion()
+    const type = e.target.getAttribute('data-type')
+    switch (type) {
+      case 'location':
+        this.changeAccordion('location', false)
+        break
+      case 'status':
+        this.changeAccordion('status', false)
+        break
+      default:
+        this.changeAccordion('all', false)
+        break
+    }
   }
 
   handleFilterApplyClick(e) {
     e.preventDefault()
     this.formDispatch(actions.submit('opportunitiesFilterForm'))
-    this.closeAccordion()
+    const type = e.target.getAttribute('data-type')
+    switch (type) {
+      case 'location':
+        this.changeAccordion('location', false)
+        break
+      case 'status':
+        this.changeAccordion('status', false)
+        break
+      default:
+        this.changeAccordion('all', false)
+        break
+    }
   }
 
   handleTypeFilterSubmit() {
@@ -72,9 +118,10 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   }
 
   handleSubmit(values) {
-    this.closeAccordion()
+    this.changeAccordion('all', false)
     this.props.changeForm(values)
     this.props.getOpportunities(values)
+    this.props.updateQueryString(values)
   }
 
   attachDispatch(dispatch) {
@@ -88,24 +135,16 @@ export class OpportunitiesFiltersComponent extends BaseForm {
         model={model}
         onSubmit={this.handleSubmit}
         getDispatch={dispatch => this.attachDispatch(dispatch)}
-        initialState={this.props.opportunitiesFilterForm}
+        initialState={this.formValues}
       >
-        <div>
-          <div className={`col-md-6 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
+        <div className="row">
+          <div className={`col-md-6 col-lg-offset-1 col-lg-5 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
             <ul className="au-link-list au-link-list--inline">
               <li className={styles.filterContainer}>
                 <TypeFilterControl
                   name="Outcomes"
                   filter="outcomes"
                   model={`${model}.type.outcomes`}
-                  submitForm={this.handleTypeFilterSubmit}
-                />
-              </li>
-              <li className={styles.filterContainer}>
-                <TypeFilterControl
-                  name="Training"
-                  filter="training"
-                  model={`${model}.type.training`}
                   submitForm={this.handleTypeFilterSubmit}
                 />
               </li>
@@ -119,15 +158,62 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               </li>
             </ul>
           </div>
-          <div className={`col-md-2 col-sm-12 ${styles.hideMobile}`}>
+          <div className={`col-md-3 col-sm-12 ${styles.hideMobile}`}>
             <AUaccordion
-              header={`Filters ${this.getActiveFilterCount() > 0 ? `• ${this.getActiveFilterCount()}` : ''}`}
-              open={this.state.accordionOpen}
+              header={`Location ${
+                this.getActiveFilterCount('location') > 0 ? `• ${this.getActiveFilterCount('location')}` : ''
+              }`}
+              open={this.state.locationAccordionOpen}
               onOpen={() => {
-                this.openAccordion()
+                this.changeAccordion('location', true)
               }}
               onClose={() => {
-                this.closeAccordion()
+                this.changeAccordion('location', false)
+              }}
+            >
+              <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
+                <div className={styles.inputGroup}>
+                  <AUheading size="sm" level="3">
+                    Location
+                  </AUheading>
+                  {Object.keys(this.props.opportunitiesFilterForm.location).map(location => (
+                    <div className={styles.checkbox} key={location}>
+                      <CheckboxDetailsField
+                        model={`${model}.location.${location}`}
+                        id={location}
+                        name={location}
+                        label={location}
+                        detailsModel={model}
+                        messages={{}}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <span className={styles.cancelLink}>
+                  <a href="#cancel" data-type="location" onClick={this.handleFilterCancelClick}>
+                    Cancel
+                  </a>
+                </span>
+                <span className={styles.applyFilters}>
+                  <a href="#apply" data-type="location" onClick={this.handleFilterApplyClick}>
+                    Apply filters
+                  </a>
+                </span>
+                <div />
+              </div>
+            </AUaccordion>
+          </div>
+          <div className={`col-md-3 col-sm-12 ${styles.hideMobile}`}>
+            <AUaccordion
+              header={`Status ${
+                this.getActiveFilterCount('status') > 0 ? `• ${this.getActiveFilterCount('status')}` : ''
+              }`}
+              open={this.state.statusAccordionOpen}
+              onOpen={() => {
+                this.changeAccordion('status', true)
+              }}
+              onClose={() => {
+                this.changeAccordion('status', false)
               }}
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
@@ -140,7 +226,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       model={`${model}.status.live`}
                       id="live"
                       name="live"
-                      label="Open"
+                      label="Live"
                       detailsModel={model}
                       messages={{}}
                     />
@@ -155,49 +241,24 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       messages={{}}
                     />
                   </div>
-                </div>
-                <div className={styles.inputGroup}>
-                  <AUheading size="sm" level="3">
-                    Open to
-                  </AUheading>
                   <div className={styles.checkbox}>
                     <CheckboxDetailsField
                       model={`${model}.openTo.all`}
                       id="all"
                       name="all"
-                      label="All"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.selected`}
-                      id="selected"
-                      name="selected"
-                      label="Selected"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.one`}
-                      id="one"
-                      name="one"
-                      label="One"
+                      label="Open to all sellers"
                       detailsModel={model}
                       messages={{}}
                     />
                   </div>
                 </div>
                 <span className={styles.cancelLink}>
-                  <a href="#cancel" onClick={this.handleFilterCancelClick}>
+                  <a href="#cancel" data-type="status" onClick={this.handleFilterCancelClick}>
                     Cancel
                   </a>
                 </span>
                 <span className={styles.applyFilters}>
-                  <a href="#apply" onClick={this.handleFilterApplyClick}>
+                  <a href="#apply" data-type="status" onClick={this.handleFilterApplyClick}>
                     Apply filters
                   </a>
                 </span>
@@ -205,21 +266,19 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               </div>
             </AUaccordion>
           </div>
-          <div
-            className={`col-md-push-3 col-md-5 col-sm-push-3 col-sm-5 col-xs-12 ${styles.filtersSectionMobile} ${
-              styles.hideDesktop
-            }`}
-          >
+        </div>
+        <div className="row">
+          <div className={`col-sm-push-5 col-sm-7 col-xs-12 ${styles.filtersSectionMobile} ${styles.hideDesktop}`}>
             <AUaccordion
               header={`Filter opportunities ${
-                this.getActiveFilterCount(true) > 0 ? `• ${this.getActiveFilterCount(true)}` : ''
+                this.getActiveFilterCount('all') > 0 ? `• ${this.getActiveFilterCount('all')}` : ''
               }`}
-              open={this.state.accordionOpen}
+              open={this.state.mobileAccordionOpen}
               onOpen={() => {
-                this.openAccordion()
+                this.changeAccordion('mobile', true)
               }}
               onClose={() => {
-                this.closeAccordion()
+                this.changeAccordion('mobile', false)
               }}
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
@@ -233,16 +292,6 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       id="outcomes"
                       name="outcomes"
                       label="Outcomes"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.type.training`}
-                      id="training"
-                      name="training"
-                      label="Training"
                       detailsModel={model}
                       messages={{}}
                     />
@@ -267,7 +316,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       model={`${model}.status.live`}
                       id="live"
                       name="live"
-                      label="Open"
+                      label="Live"
                       detailsModel={model}
                       messages={{}}
                     />
@@ -282,41 +331,33 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       messages={{}}
                     />
                   </div>
-                </div>
-                <div className={styles.inputGroup}>
-                  <AUheading size="sm" level="3">
-                    Open to
-                  </AUheading>
                   <div className={styles.checkbox}>
                     <CheckboxDetailsField
                       model={`${model}.openTo.all`}
                       id="all"
                       name="all"
-                      label="All"
+                      label="Open to all sellers"
                       detailsModel={model}
                       messages={{}}
                     />
                   </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.selected`}
-                      id="selected"
-                      name="selected"
-                      label="Selected"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.openTo.one`}
-                      id="one"
-                      name="one"
-                      label="One"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
+                </div>
+                <div className={styles.inputGroup}>
+                  <AUheading size="sm" level="3">
+                    Location
+                  </AUheading>
+                  {Object.keys(this.props.opportunitiesFilterForm.location).map(location => (
+                    <div className={styles.checkbox} key={location}>
+                      <CheckboxDetailsField
+                        model={`${model}.location.${location}`}
+                        id={location}
+                        name={location}
+                        label={location}
+                        detailsModel={model}
+                        messages={{}}
+                      />
+                    </div>
+                  ))}
                 </div>
                 <span className={styles.cancelLink}>
                   <a href="#cancel" onClick={this.handleFilterCancelClick}>
@@ -338,10 +379,19 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   }
 }
 
+OpportunitiesFiltersComponent.defaultProps = {
+  initialFilterValues: {},
+  updateQueryString: () => {}
+}
+
 OpportunitiesFiltersComponent.propTypes = {
   getOpportunities: PropTypes.func.isRequired,
-  accordionOpen: PropTypes.bool.isRequired,
-  model: PropTypes.string.isRequired
+  statusAccordionOpen: PropTypes.bool.isRequired,
+  locationAccordionOpen: PropTypes.bool.isRequired,
+  mobileAccordionOpen: PropTypes.bool.isRequired,
+  model: PropTypes.string.isRequired,
+  updateQueryString: PropTypes.func,
+  initialFilterValues: PropTypes.object
 }
 
 const mapStateToProps = state => ({
