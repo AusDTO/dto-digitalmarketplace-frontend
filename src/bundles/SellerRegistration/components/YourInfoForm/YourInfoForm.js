@@ -42,7 +42,7 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
+          <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">{title}</h1>
         </header>
         <article role="main">
           <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
