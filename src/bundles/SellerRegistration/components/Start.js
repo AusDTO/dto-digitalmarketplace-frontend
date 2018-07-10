@@ -7,15 +7,14 @@ import SaveError from '../../../shared/SaveError';
 import isNumber from 'lodash/isNumber';
 import PageAlert from '@gov.au/page-alerts'
 
-import styles from './SellerRegistration.css'
-import start from './Start.css';
+import './Start.css';
 
 const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates}) => {
     return (
         <div>
             {saved &&
                 <div className="callout--info">
-                    <Icon value="complete-tick" size={20}/><span styleName="start.callout-heading">Your progress has been saved</span>
+                    <Icon value="complete-tick" size={20}/><span styleName="callout-heading">Your progress has been saved</span>
                     <p>Click 'continue application' in the header above when you're ready to go on.</p>
                 </div>
             }
