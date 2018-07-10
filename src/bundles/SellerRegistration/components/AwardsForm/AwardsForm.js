@@ -35,7 +35,7 @@ class AwardsForm extends BaseForm {
         return (
             <Layout>
                 <header styleName="content">
-                    <h1 className="au-display-xl" tabIndex="-1">Awards and accreditations</h1>
+                    <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">Awards and accreditations</h1>
 
                     <p>This is your opportunity to share some of the things you are proud of.
                         All questions are optional but can help your business attract potential buyers. </p>
