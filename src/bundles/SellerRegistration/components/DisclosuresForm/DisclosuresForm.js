@@ -14,7 +14,6 @@ import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import questions    from './questions';
 import StepNav      from '../StepNav';
 
-import '../SellerRegistration.css';
 
 class DisclosuresForm extends BaseForm {
 
