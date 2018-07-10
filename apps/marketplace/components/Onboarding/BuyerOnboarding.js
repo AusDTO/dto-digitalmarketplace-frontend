@@ -11,7 +11,7 @@ const BuyerOnboarding = () => (
       </span>
       <h2 className="au-display-lg">Create a new opportunity for a digital specialist or outcome</h2>
       <span>
-        <a href="/buyers">Start a new brief</a>
+        <a href="/2/buyer-dashboard">Start a new brief</a>
       </span>
       <h2 className="au-display-lg">Need help writing a brief?</h2>
       <span>
