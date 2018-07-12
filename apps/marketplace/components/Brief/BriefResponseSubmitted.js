@@ -11,7 +11,7 @@ const BriefResponseSubmitted = props => (
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
           <AUpageAlert as="success" setFocus={props.setFocus}>
-            <h4>Thanks for your application, your brief response has been sent to the buyer</h4>
+            <h4 className="au-display-sm">Thanks for your application, your brief response has been sent to the buyer</h4>
           </AUpageAlert>
           <h1 className="au-display-lg">
             <b>What happens next?</b>

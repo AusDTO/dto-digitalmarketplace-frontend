@@ -12,7 +12,7 @@ export const AppChangesTable = props => {
 
   return (isEmpty(data) ? null :
     <section>
-      <h3>
+      <h3 className="au-display-md">
         Differences
       </h3>
       <table styleName="changes-table summary-item-body">

@@ -26,7 +26,7 @@ const Signup = props => {
       {displayStepTwo ? (
         <div>
           <AUpageAlert as="success">
-            <h4>Thanks, this request has been sent to the ORAMS team</h4>
+            <h4 className="au-display-sm">Thanks, this request has been sent to the ORAMS team</h4>
           </AUpageAlert>
           <div className="au-display-xl">What happens next?</div>
           <div className={styles.spacer}>An email has been sent to ORAMS panel manager to approve your access.</div>

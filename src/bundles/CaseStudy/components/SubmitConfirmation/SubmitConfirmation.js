@@ -23,7 +23,7 @@ class SubmitConfirmation extends React.Component {
             <section>
                 {((inReview || !initial) &&
                     <span>
-                        <h1>
+                        <h1 className="au-display-xl">
                             <span styleName="callout-heading">You have been prioritised for assessment</span>
                         </h1>
                         <p>
@@ -48,7 +48,7 @@ class SubmitConfirmation extends React.Component {
                 )}
                 {(initial &&
                     <span>
-                        <h1>
+                        <h1 className="au-display-xl">
                             <span styleName="callout-heading">Have you got experience in {domain}?</span>
                         </h1>
 

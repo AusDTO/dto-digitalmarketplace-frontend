@@ -19,7 +19,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
           styleName="team-view-username"
         >
           <span>
-            <h1>
+            <h1
+              className="au-display-xl"
+            >
                Dashboard
             </h1>
             <button
@@ -71,7 +73,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
           styleName="dashboard-main"
         >
           <section>
-            <h2>
+            <h2
+              className="au-display-lg"
+            >
               Drafts
             </h2>
             <table
@@ -105,7 +109,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   <td
                     styleName="item-field-first-full"
                   >
-                    <h5>
+                    <h5
+                      className="au-display-xs"
+                    >
                       Brief overview
                     </h5>
                     <a
@@ -117,7 +123,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   <td
                     styleName="item-field-second-left"
                   >
-                    <h5>
+                    <h5
+                      className="au-display-xs"
+                    >
                       Created
                     </h5>
                     Thursday 6 April 2017
@@ -125,7 +133,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   <td
                     styleName="item-field-third-right"
                   >
-                    <h5>
+                    <h5
+                      className="au-display-xs"
+                    >
                       Questions left
                     </h5>
                     <div>
@@ -146,7 +156,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   <td
                     styleName="item-field-first-full"
                   >
-                    <h5>
+                    <h5
+                      className="au-display-xs"
+                    >
                       Brief overview
                     </h5>
                     <a
@@ -158,7 +170,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   <td
                     styleName="item-field-second-left"
                   >
-                    <h5>
+                    <h5
+                      className="au-display-xs"
+                    >
                       Created
                     </h5>
                     Thursday 6 October 2016
@@ -166,7 +180,9 @@ exports[`BuyerDashboard renders without errors 1`] = `
                   <td
                     styleName="item-field-third-right"
                   >
-                    <h5>
+                    <h5
+                      className="au-display-xs"
+                    >
                       Questions left
                     </h5>
                     <div>
@@ -185,19 +201,25 @@ exports[`BuyerDashboard renders without errors 1`] = `
           <section
             styleName="live-brief-container"
           >
-            <h2>
+            <h2
+              className="au-display-lg"
+            >
               Live briefs
             </h2>
             You don't have any live briefs.
           </section>
           <section>
-            <h2>
+            <h2
+              className="au-display-lg"
+            >
               Closed briefs
             </h2>
             You don't have any closed briefs.
           </section>
           <div>
-            <h3>
+            <h3
+              className="au-display-md"
+            >
               Need a hand?
             </h3>
             <span>

@@ -183,12 +183,12 @@ class SignupForm extends BaseForm {
       <div>
         {signupSuccess && <div>
           {signupMessage && <PageAlert as='success'>
-            <h4>Signup email sent</h4>
+            <h4 className="au-display-sm">Signup email sent</h4>
           </PageAlert>
         }
           <article role="main">
             <header className="page-heading page-heading-without-breadcrumb">
-              <h1>
+              <h1 className="au-display-xl">
                 Thanks for requesting access to the Digital Marketplace.
               </h1>
             </header>
@@ -207,13 +207,13 @@ class SignupForm extends BaseForm {
         {!signupSuccess &&
           <Layout>
             <header>
-              <h1>Let’s get started</h1>
+              <h1 className="au-display-xl">Let’s get started</h1>
             </header>
           <article role="main">
 
             {(signupMessage && valid &&
               <PageAlert as='error'>
-                <h4>Signup invite email was not sent</h4>
+                <h4 className="au-display-sm">Signup invite email was not sent</h4>
                 <ul>
                   {signupMessage}
                 </ul>

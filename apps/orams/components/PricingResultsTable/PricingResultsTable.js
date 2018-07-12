@@ -42,7 +42,7 @@ const PricingList = props => {
             </article>
           ) : (
             <AUpageAlert as="info">
-              <h4>There were no results for your search</h4>
+              <h4 className="au-display-sm">There were no results for your search</h4>
             </AUpageAlert>
           )}
         </div>

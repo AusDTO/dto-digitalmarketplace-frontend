@@ -369,7 +369,7 @@ class ProjectForm extends BaseForm {
                             description="Link to support material, such as research, project documents, open data sets, video or website urls. Links must begin with http"
                         />
 
-                        <h2>Project Contact</h2>
+                        <h2 className="au-display-lg">Project Contact</h2>
 
                         <Textfield
                             model={`${model}.contact_name`}

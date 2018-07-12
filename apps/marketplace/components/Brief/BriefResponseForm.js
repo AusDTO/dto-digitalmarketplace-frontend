@@ -42,7 +42,7 @@ const BriefResponseForm = ({
             />
           )}
           <header className="page-heading page-heading-without-breadcrumb">
-            <h1>Apply for &lsquo;{brief.title}&rsquo;</h1>
+            <h1 className="au-display-xl">Apply for &lsquo;{brief.title}&rsquo;</h1>
           </header>
           <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
             {app.supplierCode ? (
@@ -62,7 +62,7 @@ const BriefResponseForm = ({
               )
             ) : (
               <AUpageAlert as="warning" setFocus={setFocus}>
-                <h4>There was a problem loading your details</h4>
+                <h4 className="au-display-sm">There was a problem loading your details</h4>
                 <p>Only logged in sellers can respond to briefs</p>
               </AUpageAlert>
             )}
@@ -112,7 +112,7 @@ const BriefResponseForm = ({
               )}
             <fieldset className={styles.x_uikit_fieldset}>
               <span />
-              <h2>Skills and experience?</h2>
+              <h2 className="au-display-lg">Skills and experience?</h2>
               {brief.lotSlug &&
                 brief.lotSlug === 'digital-professionals' && <p>Answer the following criteria for all candidates</p>}
               {brief.essentialRequirements &&
@@ -163,7 +163,7 @@ const BriefResponseForm = ({
             <br />
             <br />
             <div className="au-page-alerts au-page-alerts--warning">
-              <h3>Once you submit this application:</h3>
+              <h3 className="au-display-md">Once you submit this application:</h3>
               <ul>
                 {brief.lotSlug &&
                   brief.lotSlug === 'digital-professionals' && (

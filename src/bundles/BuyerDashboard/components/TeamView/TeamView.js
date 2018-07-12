@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 const TeamView = ({teammembers, meta = {}}) => (
   <div className="content-main">
     <a href="/buyers">Back to briefs</a>
-    <h1>{meta.teamname}</h1>
+    <h1 className="au-display-xl">{meta.teamname}</h1>
 
-    <h2>Active team members</h2>
+    <h2 className="au-display-lg">Active team members</h2>
     <table className="content-table summary-item-body">
       <thead className="summary-item-field-headings-visible">
       <tr>

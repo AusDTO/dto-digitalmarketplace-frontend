@@ -38,7 +38,7 @@ class ResultsTable extends Component {
         {alert ? (
           <div className={styles.alert}>
             <AUpageAlert as={alert.type}>
-              <h4>{alert.message}</h4>
+              <h4 className="au-display-sm">{alert.message}</h4>
             </AUpageAlert>
           </div>
         ) : (
