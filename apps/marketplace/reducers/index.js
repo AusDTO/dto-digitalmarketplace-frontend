@@ -30,8 +30,8 @@ export default combineReducers({
       availability: '',
       dayRate: '',
       respondToEmailAddress: '',
-      startDate: '',
-      trainingCost: ''
+      respondToPhone: '',
+      attachedDocumentURL: []
     },
     resetPasswordEmailForm: {
       email_address: ''
