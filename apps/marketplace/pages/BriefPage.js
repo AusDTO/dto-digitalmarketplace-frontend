@@ -87,19 +87,6 @@ class BriefPage extends Component {
     window.scrollTo(0, 0)
   }
 
-  handleTrainingBriefResponseSubmit(values) {
-    const { model, brief } = this.props
-    const submitData = {
-      attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
-      availability: values.availability,
-      trainingCost: values.trainingCost,
-      essentialRequirements: values.essentialRequirements,
-      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null
-    }
-    this.props.handleBriefResponseSubmit(brief.id, submitData)
-    window.scrollTo(0, 0)
-  }
-
   handleBriefNameSubmit = name => {
     this.props.handleBriefNameSubmit(name)
     this.props.setInitial(this.props.model)
