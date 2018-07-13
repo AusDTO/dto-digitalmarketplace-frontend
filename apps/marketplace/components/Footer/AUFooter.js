@@ -52,7 +52,7 @@ const AUFooter = () => (
             </a>
           </div>
           <div className="au-footer-logo-nisa">
-            <a href="https://innovation.gov.au/page/agenda">
+            <a href="https://www.industry.gov.au/strategies-for-the-future/boosting-innovation-and-science">
               <div dangerouslySetInnerHTML={{ __html: logoNISA }} />
             </a>
           </div>
