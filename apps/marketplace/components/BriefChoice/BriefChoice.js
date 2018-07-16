@@ -11,8 +11,8 @@ const BriefChoice = () => (
         </AUheading>
       </div>
     </div>
-    <div className="row">
-      <div className="col-xs-12 col-md-3">
+    <div className={`row ${styles.flex}`}>
+      <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
         <span />
         <AUheading level="2" size="md">
           Digital Outcome
@@ -22,11 +22,11 @@ const BriefChoice = () => (
           <li>Receive written proposals from sellers.</li>
           <li>Request case studies, work history, references and/or presentations.</li>
         </ul>
-        <p>
+        <p className={styles.flexGrow}>
           <strong>Receive responses within:</strong>
           <br />1 - 2 weeks
         </p>
-        <p className={styles.hideDesktop}>
+        <p>
           <a href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome">
             <button className="au-btn">Get started</button>
           </a>
@@ -35,7 +35,7 @@ const BriefChoice = () => (
       <div className="col-xs-12 col-md-1">
         <div className={styles.separator} />
       </div>
-      <div className="col-xs-12 col-md-3">
+      <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
         <span />
         <AUheading level="2" size="md">
           Training
@@ -45,11 +45,11 @@ const BriefChoice = () => (
           <li>Receive written proposals from sellers.</li>
           <li>Request trainer résumés, case studies, references and/or presentations.</li>
         </ul>
-        <p>
+        <p className={styles.flexGrow}>
           <strong>Receive responses within:</strong>
           <br />1 - 2 weeks
         </p>
-        <p className={styles.hideDesktop}>
+        <p>
           <a href="/buyers/frameworks/digital-marketplace/requirements/training">
             <button className="au-btn">Get started</button>
           </a>
@@ -58,7 +58,7 @@ const BriefChoice = () => (
       <div className="col-xs-12 col-md-1">
         <div className={styles.separator} />
       </div>
-      <div className="col-xs-12 col-md-3">
+      <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
         <span />
         <AUheading level="2" size="md">
           Digital Specialist
@@ -68,34 +68,15 @@ const BriefChoice = () => (
           <li>Receive seller résumés.</li>
           <li>Request references, interviews, scenarios and/or presentations.</li>
         </ul>
-        <p>
+        <p className={styles.flexGrow}>
           <strong>Receive responses within:</strong>
           <br />1 - 2 weeks
         </p>
-        <p className={styles.hideDesktop}>
+        <p>
           <a href="/buyers/frameworks/digital-marketplace/requirements/digital-professionals">
             <button className="au-btn">Get started</button>
           </a>
         </p>
-      </div>
-    </div>
-    <div className={`row ${styles.hideMobile}`}>
-      <div className="col-md-3">
-        <a href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome">
-          <button className="au-btn">Get started</button>
-        </a>
-      </div>
-      <div className="col-md-1" />
-      <div className="col-md-3">
-        <a href="/buyers/frameworks/digital-marketplace/requirements/training">
-          <button className="au-btn">Get started</button>
-        </a>
-      </div>
-      <div className="col-md-1" />
-      <div className="col-md-3">
-        <a href="/buyers/frameworks/digital-marketplace/requirements/digital-professionals">
-          <button className="au-btn">Get started</button>
-        </a>
       </div>
     </div>
   </div>

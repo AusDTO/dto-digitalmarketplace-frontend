@@ -1,4 +1,4 @@
-.container, .container > div {
+.container {
   margin-bottom: 2.5rem;
 }
 
@@ -6,13 +6,26 @@ div.headingRow {
   margin-bottom: 2.5rem;
 }
 
+div.flex {
+  display: flex;
+}
+
+div.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexGrow {
+  flex-grow: 1;
+}
+
 ul.tickList li {
   list-style-image: url('/static/svg/green-tick.svg');
 }
 
 @media screen and (max-width: 991px) {
-  .hideMobile {
-    display: none;
+  div.flex {
+    display: block;
   }
 
   div.separator {
@@ -22,13 +35,9 @@ ul.tickList li {
 }
 
 @media screen and (min-width: 992px) {
-  .hideDesktop {
-    display: none;
-  }
-
   div.separator {
     border-left: 2px solid #dfdfdf;
-    height: 450px;
+    height: 100%;
     position: absolute;
     left: 50%;
     margin-left: -1px;
