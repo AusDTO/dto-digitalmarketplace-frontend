@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
-
+import styles from './scss/Textfield.scss'
 import StatefulError from './StatefulError'
 
 const Textfield = props => {
@@ -16,6 +16,7 @@ const Textfield = props => {
     description,
     pattern,
     maxLength,
+    showMaxLength,
     disabled,
     readOnly,
     type,
@@ -51,6 +52,7 @@ const Textfield = props => {
         defaultValue={defaultValue}
       />
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
+      {showMaxLength && maxLength && <span className={styles.maxLength}>{maxLength} characters maximum</span>}
     </div>
   )
 }
@@ -64,7 +66,8 @@ Textfield.defaultProps = {
   description: '',
   pattern: null,
   disabled: false,
-  readOnly: false
+  readOnly: false,
+  showMaxLength: false
 }
 
 Textfield.propTypes = {
@@ -73,7 +76,7 @@ Textfield.propTypes = {
   htmlFor: PropTypes.string.isRequired,
   label: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-
+  showMaxLength: PropTypes.bool,
   validators: PropTypes.object,
   messages: PropTypes.object,
   description: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

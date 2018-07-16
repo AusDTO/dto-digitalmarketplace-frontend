@@ -44,11 +44,13 @@ export const loadOpportunities = (filters = {}) => dispatch => {
   const statusFilters = filters.status ? Object.keys(filters.status).filter(k => filters.status[k]) : []
   const openToFilters = filters.openTo ? Object.keys(filters.openTo).filter(k => filters.openTo[k]) : []
   const typeFilters = filters.type ? Object.keys(filters.type).filter(k => filters.type[k]) : []
+  const locationFilters = filters.location ? Object.keys(filters.location).filter(k => filters.location[k]) : []
 
   const params = {
     statusFilters: statusFilters.join(','),
     openToFilters: openToFilters.join(','),
-    typeFilters: typeFilters.join(',')
+    typeFilters: typeFilters.join(','),
+    locationFilters: locationFilters.join(',')
   }
 
   dispatch(sendingRequest(true))
@@ -63,6 +65,6 @@ export const loadOpportunities = (filters = {}) => dispatch => {
   })
 }
 
-export const changeForm = values => dispatch => {
-  dispatch(actions.change('opportunitiesFilterForm', values))
+export const changeForm = (values, options = {}) => dispatch => {
+  dispatch(actions.change('opportunitiesFilterForm', values, options))
 }
