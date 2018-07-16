@@ -47,7 +47,8 @@ export const pruneModel = (model) => {
   const pruneObject = (obj) => {
     return Object.keys(obj)
       .filter((key) => {
-        return obj[key].hasOwnProperty('service') ? obj[key].service in newModel.services : key in newModel.services;
+        const service = 'service' in obj[key] ? obj[key].service : key
+        return service in newModel.services;
       })
       .reduce((o, key) => {
         o[key] = obj[key];
