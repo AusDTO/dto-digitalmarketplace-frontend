@@ -81,7 +81,6 @@ class YourInfoForm extends BaseForm {
                   }}
               />
 
-
               <Textfield
                   model={`${model}.email`}
                   name="email"
@@ -137,7 +136,6 @@ class YourInfoForm extends BaseForm {
                   }}
                   default={userEmail}
               />
-
 
               <Textfield
                   model={`${model}.contact_phone`}
