@@ -1,12 +1,37 @@
-.container > div {
-  margin-bottom: 20px;
+.container, .container > div {
+  margin-bottom: 2.5rem;
 }
 
-div.choice {
-  margin: 0.75rem 0;
+div.headingRow {
+  margin-bottom: 2.5rem;
 }
 
-div.choice p {
-  margin-top: 10px;
-  margin-left: 40px;
+ul.tickList li {
+  list-style-image: url('/static/svg/green-tick.svg');
+}
+
+@media screen and (max-width: 991px) {
+  .hideMobile {
+    display: none;
+  }
+
+  div.separator {
+    border-top: 2px solid #dfdfdf;
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .hideDesktop {
+    display: none;
+  }
+
+  div.separator {
+    border-left: 2px solid #dfdfdf;
+    height: 450px;
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    top: 0;
+  }
 }
