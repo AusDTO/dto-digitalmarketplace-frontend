@@ -47,7 +47,6 @@ class YourInfoForm extends BaseForm {
           <div className="calloutMistake">
             <b> Avoid common mistakes </b>
             <ul>
-
               <li><b>Contact names</b> - use full names.</li>
               <li><b>Email and phone numbers</b> - Check the format and details are correct.</li>
             </ul>
