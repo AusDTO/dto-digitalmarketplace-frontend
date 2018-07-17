@@ -15,9 +15,9 @@ const BriefChoice = () => (
       <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
         <span />
         <AUheading level="2" size="md">
-          Digital Outcome
+          Digital outcome
         </AUheading>
-        <p>Acquire a team to help you work towards a digital project or goal. For example, a website.</p>
+        <p>Find a team to help you work towards a digital project or goal, for example, a website.</p>
         <ul className={styles.tickList}>
           <li>Receive written proposals from sellers.</li>
           <li>Request case studies, work history, references and/or presentations.</li>
@@ -40,10 +40,10 @@ const BriefChoice = () => (
         <AUheading level="2" size="md">
           Training
         </AUheading>
-        <p>Build and embed skills to support digital services. For example, coaching in agile practices.</p>
+        <p>Build and embed skills to support digital services, for example, coaching in agile practices.</p>
         <ul className={styles.tickList}>
-          <li>Receive written proposals from sellers.</li>
-          <li>Request trainer résumés, case studies, references and/or presentations.</li>
+          <li>Receive written proposals, costs and résumés from sellers.</li>
+          <li>Request case studies, references, interview and/or presentations.</li>
         </ul>
         <p className={styles.flexGrow}>
           <strong>Receive responses within:</strong>
@@ -61,9 +61,9 @@ const BriefChoice = () => (
       <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
         <span />
         <AUheading level="2" size="md">
-          Digital Specialist
+          Digital specialist
         </AUheading>
-        <p>Find a person with specialised digital skills. For example, a developer.</p>
+        <p>Find a person with specialised digital skills, for example, a developer.</p>
         <ul className={styles.tickList}>
           <li>Receive seller résumés.</li>
           <li>Request references, interviews, scenarios and/or presentations.</li>
