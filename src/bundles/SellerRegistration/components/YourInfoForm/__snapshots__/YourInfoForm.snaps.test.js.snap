@@ -42,6 +42,93 @@ exports[`YourInfoForm renders 1`] = `
       onReset={[Function]}
       onSubmit={[Function]}
     >
+      <h2>
+        Authorised representative
+      </h2>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="representative"
+        >
+          Name
+        </label>
+        <p
+          className="hint"
+          id="representative-hint"
+        >
+          This is the person authorised to enter into contracts on behalf of the business.
+        </p>
+        <input
+          className=""
+          disabled={false}
+          id="representative"
+          maxLength={undefined}
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          className=""
+          disabled={false}
+          id="email"
+          maxLength={undefined}
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="phone"
+        >
+          Phone
+        </label>
+        <input
+          className=""
+          disabled={false}
+          id="phone"
+          maxLength={undefined}
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <h2>
+        Business contact
+      </h2>
       <div
         className="field"
       >
@@ -49,7 +136,7 @@ exports[`YourInfoForm renders 1`] = `
           className="question-heading"
           htmlFor="contact_name"
         >
-          Business contact name
+          Name
         </label>
         <p
           className="hint"
@@ -113,87 +200,6 @@ exports[`YourInfoForm renders 1`] = `
           id="contact_phone"
           maxLength={undefined}
           name="contact_phone"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="representative"
-        >
-          Authorised representative name
-        </label>
-        <p
-          className="hint"
-          id="representative-hint"
-        >
-          This is the person authorised to enter into contracts on behalf of the business. 
-        </p>
-        <input
-          className=""
-          disabled={false}
-          id="representative"
-          maxLength={undefined}
-          name="representative"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="email"
-        >
-          Email
-        </label>
-        <input
-          className=""
-          disabled={false}
-          id="email"
-          maxLength={undefined}
-          name="email"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="phone"
-        >
-          Phone
-        </label>
-        <input
-          className=""
-          disabled={false}
-          id="phone"
-          maxLength={undefined}
-          name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -293,6 +299,93 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         type="hidden"
         value="sometoken"
       />
+      <h2>
+        Authorised representative
+      </h2>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="representative"
+        >
+          Name
+        </label>
+        <p
+          className="hint"
+          id="representative-hint"
+        >
+          This is the person authorised to enter into contracts on behalf of the business.
+        </p>
+        <input
+          className=""
+          disabled={false}
+          id="representative"
+          maxLength={undefined}
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          className=""
+          disabled={false}
+          id="email"
+          maxLength={undefined}
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="phone"
+        >
+          Phone
+        </label>
+        <input
+          className=""
+          disabled={false}
+          id="phone"
+          maxLength={undefined}
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <h2>
+        Business contact
+      </h2>
       <div
         className="field"
       >
@@ -300,7 +393,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           className="question-heading"
           htmlFor="contact_name"
         >
-          Business contact name
+          Name
         </label>
         <p
           className="hint"
@@ -364,87 +457,6 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           id="contact_phone"
           maxLength={undefined}
           name="contact_phone"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="representative"
-        >
-          Authorised representative name
-        </label>
-        <p
-          className="hint"
-          id="representative-hint"
-        >
-          This is the person authorised to enter into contracts on behalf of the business. 
-        </p>
-        <input
-          className=""
-          disabled={false}
-          id="representative"
-          maxLength={undefined}
-          name="representative"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="email"
-        >
-          Email
-        </label>
-        <input
-          className=""
-          disabled={false}
-          id="email"
-          maxLength={undefined}
-          name="email"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="phone"
-        >
-          Phone
-        </label>
-        <input
-          className=""
-          disabled={false}
-          id="phone"
-          maxLength={undefined}
-          name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -544,6 +556,93 @@ exports[`YourInfoForm renders with form_options 1`] = `
         type="hidden"
         value="sometoken"
       />
+      <h2>
+        Authorised representative
+      </h2>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="representative"
+        >
+          Name
+        </label>
+        <p
+          className="hint"
+          id="representative-hint"
+        >
+          This is the person authorised to enter into contracts on behalf of the business.
+        </p>
+        <input
+          className=""
+          disabled={false}
+          id="representative"
+          maxLength={undefined}
+          name="representative"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          className=""
+          disabled={false}
+          id="email"
+          maxLength={undefined}
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          className="question-heading"
+          htmlFor="phone"
+        >
+          Phone
+        </label>
+        <input
+          className=""
+          disabled={false}
+          id="phone"
+          maxLength={undefined}
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+      <h2>
+        Business contact
+      </h2>
       <div
         className="field"
       >
@@ -551,7 +650,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
           className="question-heading"
           htmlFor="contact_name"
         >
-          Business contact name
+          Name
         </label>
         <p
           className="hint"
@@ -615,87 +714,6 @@ exports[`YourInfoForm renders with form_options 1`] = `
           id="contact_phone"
           maxLength={undefined}
           name="contact_phone"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="representative"
-        >
-          Authorised representative name
-        </label>
-        <p
-          className="hint"
-          id="representative-hint"
-        >
-          This is the person authorised to enter into contracts on behalf of the business. 
-        </p>
-        <input
-          className=""
-          disabled={false}
-          id="representative"
-          maxLength={undefined}
-          name="representative"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="email"
-        >
-          Email
-        </label>
-        <input
-          className=""
-          disabled={false}
-          id="email"
-          maxLength={undefined}
-          name="email"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
-          type="text"
-          value={undefined}
-        />
-      </div>
-      <div
-        className="field"
-      >
-        <label
-          className="question-heading"
-          htmlFor="phone"
-        >
-          Phone
-        </label>
-        <input
-          className=""
-          disabled={false}
-          id="phone"
-          maxLength={undefined}
-          name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
