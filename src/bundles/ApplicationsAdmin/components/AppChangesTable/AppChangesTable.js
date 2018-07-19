@@ -39,6 +39,9 @@ export const AppChangesTable = props => {
                       (typeof change.value === 'boolean' ? displayBoolean(change.value) :
                         null)
                   )}
+                  {typeof change.value === 'object' && (
+                    <div>{JSON.stringify(change.value)}</div>
+                  )}
                 </td>
               </tr>
             )
