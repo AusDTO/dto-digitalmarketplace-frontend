@@ -129,7 +129,7 @@ export const isDailyRateMissing = (pricing, services) => {
 
   let isMissingRates = true
   const servicesDomains = Object.keys(services)
-  const pricingDomains = Object.keys(pricing)
+  const pricingDomains = Object.keys(pricing).filter(d => servicesDomains.includes(d))
 
   if (servicesDomains.length > 0 && servicesDomains.length === pricingDomains.length) {
     const filtered = servicesDomains.filter(d => {
