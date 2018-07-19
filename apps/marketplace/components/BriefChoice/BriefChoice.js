@@ -13,7 +13,6 @@ const BriefChoice = () => (
     </div>
     <div className={`row ${styles.flex}`}>
       <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
-        <span />
         <AUheading level="2" size="md">
           Digital outcome
         </AUheading>
@@ -22,10 +21,10 @@ const BriefChoice = () => (
           <li>Receive written proposals from sellers.</li>
           <li>Request case studies, work history, references and/or presentations.</li>
         </ul>
-        <p className={styles.flexGrow}>
-          <strong>Receive responses within:</strong>
-          <br />1 - 2 weeks
-        </p>
+        <AUheading level="3" size="sm">
+          Receive responses within:
+        </AUheading>
+        <span className={styles.flexGrow}>1 to 2 weeks</span>
         <p>
           <a href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome">
             <button className="au-btn">Get started</button>
@@ -36,7 +35,6 @@ const BriefChoice = () => (
         <div className={styles.separator} />
       </div>
       <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
-        <span />
         <AUheading level="2" size="md">
           Training
         </AUheading>
@@ -45,10 +43,10 @@ const BriefChoice = () => (
           <li>Receive written proposals, costs and résumés from sellers.</li>
           <li>Request case studies, references, interview and/or presentations.</li>
         </ul>
-        <p className={styles.flexGrow}>
-          <strong>Receive responses within:</strong>
-          <br />1 - 2 weeks
-        </p>
+        <AUheading level="3" size="sm">
+          Receive responses within:
+        </AUheading>
+        <span className={styles.flexGrow}>1 to 2 weeks</span>
         <p>
           <a href="/buyers/frameworks/digital-marketplace/requirements/training">
             <button className="au-btn">Get started</button>
@@ -59,7 +57,6 @@ const BriefChoice = () => (
         <div className={styles.separator} />
       </div>
       <div className={`col-xs-12 col-md-3 ${styles.flexColumn}`}>
-        <span />
         <AUheading level="2" size="md">
           Digital specialist
         </AUheading>
@@ -68,10 +65,10 @@ const BriefChoice = () => (
           <li>Receive seller résumés.</li>
           <li>Request references, interviews, scenarios and/or presentations.</li>
         </ul>
-        <p className={styles.flexGrow}>
-          <strong>Receive responses within:</strong>
-          <br />1 - 2 weeks
-        </p>
+        <AUheading level="3" size="sm">
+          Receive responses within:
+        </AUheading>
+        <span className={styles.flexGrow}>1 to 2 weeks</span>
         <p>
           <a href="/buyers/frameworks/digital-marketplace/requirements/digital-professionals">
             <button className="au-btn">Get started</button>
