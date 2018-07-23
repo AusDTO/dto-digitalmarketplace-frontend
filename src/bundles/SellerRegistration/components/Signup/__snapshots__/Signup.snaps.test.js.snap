@@ -628,6 +628,12 @@ exports[`Signup renders empty Your Info form 1`] = `
             >
               Phone
             </label>
+            <p
+              className="hint"
+              id="phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
             <input
               className=""
               disabled={false}
@@ -712,6 +718,12 @@ exports[`Signup renders empty Your Info form 1`] = `
             >
               Phone
             </label>
+            <p
+              className="hint"
+              id="contact_phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
             <input
               className=""
               disabled={false}
@@ -1108,6 +1120,12 @@ exports[`Signup renders populated Your Info form 1`] = `
             >
               Phone
             </label>
+            <p
+              className="hint"
+              id="phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
             <input
               className=""
               disabled={false}
@@ -1192,6 +1210,12 @@ exports[`Signup renders populated Your Info form 1`] = `
             >
               Phone
             </label>
+            <p
+              className="hint"
+              id="contact_phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
             <input
               className=""
               disabled={false}
