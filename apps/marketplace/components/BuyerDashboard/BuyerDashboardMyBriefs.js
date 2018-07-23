@@ -95,7 +95,7 @@ export class BuyerDashboardMyBriefs extends Component {
                   </td>
                   <td className={styles.colAction}>
                     {item.status === 'draft' &&
-                      item.lot === 'digital-professionals' && (
+                      (item.lot === 'digital-professionals' || item.lot === 'training') && (
                         <a href={`${rootPath}/brief/${item.id}/overview`}>
                           <strong>Edit draft</strong>
                         </a>
