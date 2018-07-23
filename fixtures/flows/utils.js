@@ -55,9 +55,15 @@ export const clickButton = async (value) => {
     await button.click();
 }
 
-export const clickLink = async (linkText) => {
+export const clickLink = async (linkText, isUrl) => {
     console.log(`Clicking link "${linkText}"`);
-    let links = await getElementHandles(`//a[.="${linkText}"]`);
+    var links;
+    if (isUrl){
+        links = await getElementHandles(`//a[contains(@href, "${linkText}")]`);
+    } else {
+        links = await getElementHandles(`//a[.="${linkText}"]`);
+    }
+
     expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
     await links[0].click();
 }

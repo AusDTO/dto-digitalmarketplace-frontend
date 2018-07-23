@@ -33,8 +33,7 @@ export const create = async (params) => {
 }
 
 const selectLot = async (lot) => {
-    await selectRadio(lot);
-    await clickLink('Continue');
+    await clickLink(lot, true);
 }
 
 const createBrief = async () => {
@@ -62,7 +61,7 @@ const fillWhatTraining = async () => {
 
 const fillLds = async () => {
     await clickSaveContinue();
-    await matchText('a', 'What does the training need to cover?');
+    await matchText('a', 'What the training needs to cover:');
 
     await selectRadio('ldsUnits');
     await clickSaveContinue();
@@ -107,7 +106,6 @@ const fillAudience = async () => {
 
 const fillTrainingLength = async () => {
     await type('input-trainingLength', { numberOfCharacters: 100 });
-    await selectCheck('Yes');
     await clickSaveContinue();
 }
 
@@ -143,6 +141,8 @@ const fillCommencementDate = async () => {
 const fillLocation = async (locations) => {
     await type('input-locationCityOrRegion', { numberOfCharacters: 100 });
 
+    await clickSaveContinue();
+
     for (let i in locations) {
         let location = locations[i];
         await selectCheck(location);
@@ -153,7 +153,6 @@ const fillLocation = async (locations) => {
 
 const fillBudgetRange = async () => {
     await type('input-budgetRange', { numberOfWords: 200 });
-    await selectRadio('Yes');
     await clickSaveContinue();
 }
 
