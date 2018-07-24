@@ -99,6 +99,7 @@ class YourInfoForm extends BaseForm {
                   id="phone"
                   htmlFor="phone"
                   label="Phone"
+                  description="Please include the area code for landlines."
                   validators={{ required, validPhoneNumber }}
                   messages={{
                       required: 'Authorised representative\'s phone number is required',
@@ -142,6 +143,7 @@ class YourInfoForm extends BaseForm {
                   id="contact_phone"
                   htmlFor="contact_phone"
                   label="Phone"
+                  description="Please include the area code for landlines."
                   validators={{ required, validPhoneNumber }}
                   messages={{
                       required: 'Business contact phone is required',
