@@ -63,8 +63,9 @@ export const clickLink = async (linkText, isUrl) => {
     } else {
         links = await getElementHandles(`//a[.="${linkText}"]`);
     }
-
-    expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
+    if (process.env.IGNORE_MULTIPLE_LINKS != 'true') {
+        expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
+    }
     await links[0].click();
 }
 
