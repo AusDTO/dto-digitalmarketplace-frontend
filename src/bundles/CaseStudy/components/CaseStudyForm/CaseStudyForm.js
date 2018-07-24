@@ -274,6 +274,7 @@ class CaseStudyForm extends BaseForm {
                 id="refereeEmail"
                 htmlFor="refereeEmail"
                 label="Referee's phone number"
+                description="Please include the area code for landlines."
                 validators={{ required, validPhoneNumber }}
                 messages={{
                   required: 'Please provide a referee phone number.',

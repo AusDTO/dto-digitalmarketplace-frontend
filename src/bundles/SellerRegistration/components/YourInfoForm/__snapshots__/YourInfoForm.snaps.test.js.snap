@@ -114,6 +114,12 @@ exports[`YourInfoForm renders 1`] = `
         >
           Phone
         </label>
+        <p
+          className="hint"
+          id="phone-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -198,6 +204,12 @@ exports[`YourInfoForm renders 1`] = `
         >
           Phone
         </label>
+        <p
+          className="hint"
+          id="contact_phone-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -375,6 +387,12 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         >
           Phone
         </label>
+        <p
+          className="hint"
+          id="phone-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -459,6 +477,12 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         >
           Phone
         </label>
+        <p
+          className="hint"
+          id="contact_phone-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -636,6 +660,12 @@ exports[`YourInfoForm renders with form_options 1`] = `
         >
           Phone
         </label>
+        <p
+          className="hint"
+          id="phone-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -720,6 +750,12 @@ exports[`YourInfoForm renders with form_options 1`] = `
         >
           Phone
         </label>
+        <p
+          className="hint"
+          id="contact_phone-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}

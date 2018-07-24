@@ -568,6 +568,12 @@ exports[`CaseStudyForm renders 1`] = `
         >
           Referee's phone number
         </label>
+        <p
+          className="hint"
+          id="refereeEmail-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -1180,6 +1186,12 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         >
           Referee's phone number
         </label>
+        <p
+          className="hint"
+          id="refereeEmail-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -2010,6 +2022,12 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           Referee's phone number
         </label>
+        <p
+          className="hint"
+          id="refereeEmail-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <a
           className="validation-message"
           href="#refereeEmail"
@@ -2654,6 +2672,12 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         >
           Referee's phone number
         </label>
+        <p
+          className="hint"
+          id="refereeEmail-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
@@ -3266,6 +3290,12 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         >
           Referee's phone number
         </label>
+        <p
+          className="hint"
+          id="refereeEmail-hint"
+        >
+          Please include the area code for landlines.
+        </p>
         <input
           className=""
           disabled={false}
