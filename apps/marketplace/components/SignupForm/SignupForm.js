@@ -47,7 +47,7 @@ const SignupForm = props => {
             {signupSuccess && (
               <div>
                 <AUpageAlert as="success">
-                  <h4>Signup email sent</h4>
+                  <h4 className="au-display-sm">Signup email sent</h4>
                 </AUpageAlert>
                 <article role="main">
                   <header className="page-heading page-heading-without-breadcrumb">

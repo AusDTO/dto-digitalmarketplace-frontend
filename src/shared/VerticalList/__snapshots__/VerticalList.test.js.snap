@@ -6,7 +6,9 @@ exports[`VerticalList with all attributes 1`] = `
 >
   <li>
     <article>
-      <h3>
+      <h3
+        className="au-display-md"
+      >
         <a
           href="http://hello.world"
         >
@@ -43,7 +45,9 @@ exports[`VerticalList with required attributes 1`] = `
 >
   <li>
     <article>
-      <h3>
+      <h3
+        className="au-display-md"
+      >
         <a
           href="http://hello.world"
         >

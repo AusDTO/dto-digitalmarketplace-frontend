@@ -12,7 +12,7 @@ export const AppChangesTable = props => {
 
   return (isEmpty(data) ? null :
     <section>
-      <h3>
+      <h3 className="au-display-md">
         Differences
       </h3>
       <table styleName="changes-table summary-item-body">
@@ -38,6 +38,9 @@ export const AppChangesTable = props => {
                   {(typeof change.value === 'string' ? (<div>{change.value}</div>) :
                       (typeof change.value === 'boolean' ? displayBoolean(change.value) :
                         null)
+                  )}
+                  {typeof change.value === 'object' && (
+                    <div>{JSON.stringify(change.value)}</div>
                   )}
                 </td>
               </tr>

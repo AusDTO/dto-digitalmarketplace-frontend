@@ -69,7 +69,7 @@ class AppList extends Component {
       <div styleName="appList">
         <div className="row">
             <div className="col-sm-8 col-xs-12">
-              <h2>{meta.heading}</h2>
+              <h2 className="au-display-lg">{meta.heading}</h2>
             </div>
             <div className="col-sm-4 col-xs-12">
               <label htmlFor="keyword">Search:</label>
@@ -79,9 +79,9 @@ class AppList extends Component {
         <Modal show={this.state.responseModalOpen}>
           <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
             {(revertStatus ? (this.state.msg !== '' ?
-                <h4>{`Reversion email sent successfully to ${revertName}`}</h4> :
-                <h4>{`Application from ${revertName} successfully reverted without email notification`}</h4>) :
-                <h4>{`Reversion email was not sent to ${revertName}`}</h4>
+                <h4 className="au-display-sm">{`Reversion email sent successfully to ${revertName}`}</h4> :
+                <h4 className="au-display-sm">{`Application from ${revertName} successfully reverted without email notification`}</h4>) :
+                <h4 className="au-display-sm">{`Reversion email was not sent to ${revertName}`}</h4>
             )}
           </div>
           <button

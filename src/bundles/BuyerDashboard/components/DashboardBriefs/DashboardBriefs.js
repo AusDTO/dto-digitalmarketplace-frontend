@@ -30,7 +30,7 @@ export const DashboardBriefs = props => {
       <ClosedBriefs closed={closed} teamBriefView={teamBriefView}/>
 
       <div>
-        <h3>Need a hand?</h3>
+        <h3 className="au-display-md">Need a hand?</h3>
         <span>
           <a href="/buyers-guide">Read the buyers guide </a>
           or <a href='/contact-us' target="_blank" rel="external">
@@ -55,8 +55,8 @@ export const DraftBriefs = props => {
   return (
       !teamBriefView && <section>
       {(teamBriefView
-        ? <h2>Team drafts</h2>
-        : <h2>Drafts</h2>)}
+        ? <h2 className="au-display-lg">Team drafts</h2>
+        : <h2 className="au-display-lg">Drafts</h2>)}
       {(isEmpty(draft)
         ? "You haven't started any opportunities."
         : <table styleName="brief-table summary-item-body">
@@ -83,35 +83,35 @@ export const DraftBriefs = props => {
               <tbody key={i}>
                 {(teamBriefView && <tr className="summary-item-row">
                   <td styleName="item-field-first-full">
-                    <h5>Brief overview</h5>
+                    <h5 className="au-display-xs">Brief overview</h5>
                     <a href={"/" + item.frameworkSlug + "/opportunities/" + item.id}>
                       {item.title}
                     </a>
                   </td>
                   <td styleName="item-field-second-left">
-                    <h5>Author</h5>
+                    <h5 className="au-display-xs">Author</h5>
                     {item.author}
                   </td>
                   <td styleName="item-field-third-right teamview">
-                    <h5>Created</h5>
+                    <h5 className="au-display-xs">Created</h5>
                     {formatDate(item.createdAt)}
                   </td>
                   <td styleName="item-field-fourth-empty"></td>
                 </tr>)}
                 {(!teamBriefView && <tr className="summary-item-row">
                   <td styleName="item-field-first-full">
-                    <h5>Brief overview</h5>
+                    <h5 className="au-display-xs">Brief overview</h5>
                     <a
                       href={"/buyers/frameworks/".concat(item.frameworkSlug, "/requirements/", item.lotSlug, "/", item.id)}>
                       {item.title}
                     </a>
                   </td>
                   <td styleName="item-field-second-left">
-                    <h5>Created</h5>
+                    <h5 className="au-display-xs">Created</h5>
                     {formatDate(item.createdAt)}
                   </td>
                   <td styleName="item-field-third-right">
-                    <h5>Questions left</h5>
+                    <h5 className="au-display-xs">Questions left</h5>
                     <div>{item.unanswered_required} required</div>
                     <div>{item.unanswered_optional} optional</div>
                   </td>
@@ -134,8 +134,8 @@ export const ClosedBriefs = props => {
   return (
     <section>
       {(teamBriefView
-        ? <h2>Closed team briefs</h2>
-        : <h2>Closed briefs</h2>)}
+        ? <h2 className="au-display-lg">Closed team briefs</h2>
+        : <h2 className="au-display-lg">Closed briefs</h2>)}
       {(isEmpty(closed)
         ? "You don't have any closed briefs."
         : <table styleName="brief-table summary-item-body">
@@ -159,18 +159,18 @@ export const ClosedBriefs = props => {
               <tbody key={i}>
                 {(teamBriefView && <tr className="summary-item-row">
                   <td styleName="item-field-first-full">
-                    <h5>Brief preview</h5>
+                    <h5 className="au-display-xs">Brief preview</h5>
                     <a href={"/" + item.frameworkSlug + "/opportunities/" + item.id}>
                       {item.title}
                     </a>
                   </td>
 
                   <td styleName="item-field-second-left">
-                    <h5>Author</h5>
+                    <h5 className="au-display-xs">Author</h5>
                     {item.author}
                   </td>
                   <td styleName="item-field-third-right teamview">
-                    <h5>Closed</h5>
+                    <h5 className="au-display-xs">Closed</h5>
                     {formatDate(item.dates.closing_date)}
                   </td>
                   <td styleName="item-field-fourth-empty"></td>
@@ -178,7 +178,7 @@ export const ClosedBriefs = props => {
 
                 {(!teamBriefView && <tr className="summary-item-row">
                   <td styleName="item-field-first-full">
-                    <h5>Brief preview</h5>
+                    <h5 className="au-display-xs">Brief preview</h5>
                     <a
                       href={"/buyers/frameworks/".concat(item.frameworkSlug, "/requirements/", item.lotSlug, "/", item.id)}>
                       {item.title}
@@ -186,11 +186,11 @@ export const ClosedBriefs = props => {
                   </td>
 
                   <td styleName="item-field-second-left">
-                    <h5>Closed</h5>
+                    <h5 className="au-display-xs">Closed</h5>
                     {formatDate(item.dates.closing_date)}
                   </td>
                   <td styleName="item-field-third-right">
-                    <h5>Work order</h5>
+                    <h5 className="au-display-xs">Work order</h5>
                     <span>
                       <a href={`/buyers/frameworks/${item.frameworkSlug}/requirements/${item.lotSlug}/${item.id}/responses`}> 
                         View responses </a>
@@ -226,8 +226,8 @@ export const LiveBriefs = props => {
   return (
     <section styleName="live-brief-container">
       {(teamBriefView
-        ? <h2>Live team briefs</h2>
-        : <h2>Live briefs</h2>)}
+        ? <h2 className="au-display-lg">Live team briefs</h2>
+        : <h2 className="au-display-lg">Live briefs</h2>)}
       {(isEmpty(live)
         ? "You don't have any live briefs."
         : <table styleName="brief-table summary-item-body">
@@ -254,21 +254,21 @@ export const LiveBriefs = props => {
               <tbody key={i}>
                 {(teamBriefView && <tr className="summary-item-row">
                   <td styleName="item-field-first">
-                    <h5>Brief preview</h5>
+                    <h5 className="au-display-xs">Brief preview</h5>
                     <a href={"/2/brief/" + item.id + "/published" }>
                       {item.title}
                     </a>
                   </td>
                   <td styleName="item-field-second-right">
-                    <h5>Author</h5>
+                    <h5 className="au-display-xs">Author</h5>
                     {item.author}
                   </td>
                   <td styleName="item-field-third-left">
-                    <h5>Closing</h5>
+                    <h5 className="au-display-xs">Closing</h5>
                     {formatDate(item.dates.closing_date)}
                   </td>
                   <td styleName="item-field-fourth">
-                    <h5>Q&A</h5>
+                    <h5 className="au-display-xs">Q&A</h5>
                     <a
                       href={"/buyers/frameworks/digital-marketplace/requirements/".concat(item.lotSlug, "/", item.id, "/supplier-questions")}>
                       Answer a question
@@ -277,17 +277,17 @@ export const LiveBriefs = props => {
                 </tr>)}
                 {(!teamBriefView && <tr className="summary-item-row" key={i}>
                   <td styleName="item-field-first-full">
-                    <h5>Brief preview</h5>
+                    <h5 className="au-display-xs">Brief preview</h5>
                     <a href={"/2/brief/" + item.id + "/published" }>
                       {item.title}
                     </a>
                   </td>
                   <td styleName="item-field-second-left">
-                    <h5>Closing</h5>
+                    <h5 className="au-display-xs">Closing</h5>
                     {formatDate(item.dates.closing_date)}
                   </td>
                   <td styleName="item-field-third-right">
-                    <h5>Q&A</h5>
+                    <h5 className="au-display-xs">Q&A</h5>
                     <a
                       href={"/buyers/frameworks/digital-marketplace/requirements/".concat(item.lotSlug, "/", item.id, "/supplier-questions")}>
                       Answer a question

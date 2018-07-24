@@ -11,7 +11,7 @@ const BriefSubmitted = props => (
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
           <AUpageAlert as="success" setFocus={props.setFocus}>
-            <h4>Your opportunity has been published</h4>
+            <h4 className="au-display-sm">Your opportunity has been published</h4>
 
             <p>
               It will be open{' '}

@@ -6,7 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import { newline } from '../../../../helpers';
 
-import './View.css'
+import view from './View.css'
 
 class View extends React.Component {
   state = { showConfirm: false }
@@ -38,7 +38,7 @@ class View extends React.Component {
     const { showConfirm } = this.state;
 
     return (
-      <section id="casestudy__view">
+      <section id="casestudy__view" styleName="view.case-study-summary">
         {showConfirm && (
           <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" tabIndex="-1" role="alert">
               <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
@@ -48,7 +48,7 @@ class View extends React.Component {
         )}
         <header className="row">
           <div className="col-xs-12">
-            <h1 tabIndex="-1">{title}</h1>
+            <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
           </div>
 
           <div className="meta col-xs-12">
@@ -66,53 +66,57 @@ class View extends React.Component {
           </div>
         </header>
         <div className="row">
-          <aside className="col-sm-3 col-xs-12">
-            <h2>Client</h2>
-            <p>{client}</p>
+          <div styleName="view.case-study-content">
+            <div styleName="view.case-study-sidebar">
+              <aside className="col-sm-3 col-xs-12">
+                <h3 className="au-display-md">Client</h3>
+                <p>{client}</p>
 
-            <h2>Timeframe</h2>
-            <p>{timeframe}</p>
+                <h3 className="au-display-md">Timeframe</h3>
+                <p>{timeframe}</p>
 
-            <h2>Area of expertise</h2>
-            <p>{service}</p>
+                <h3 className="au-display-md">Area of expertise</h3>
+                <p>{service}</p>
 
-            <h2>Responsible for</h2>
-            <p>{roles}</p>
-          </aside>
-          <article role="main" className="col-sm-7 col-xs-12">
-            <section>
-              <h2>Challenge</h2>
-              <p className="freetext">{newline(opportunity)}</p>
-            </section>
-            <section>
-              <h2>Approach</h2>
-              <p className="freetext">{newline(approach)}</p>
-            </section>
-            <section>
-              <h2>Outcomes and benefits</h2>
-              <ul>
-                {outcome && outcome.map((content, i) => <li key={i}>{content}</li>)}
-              </ul>
-            </section>
-            {project_links && project_links.length > 0 && (
-              <section className="project">
-                <h2>Project Links</h2>
+                <h3 className="au-display-md">Responsible for</h3>
+                <p>{roles}</p>
+              </aside>
+            </div>
+            <article role="main" className="col-sm-7 col-xs-12">
+              <section>
+                <h2 className="au-display-md">Challenge</h2>
+                <p className="freetext">{newline(opportunity)}</p>
+              </section>
+              <section>
+                <h2 className="au-display-md">Approach</h2>
+                <p className="freetext">{newline(approach)}</p>
+              </section>
+              <section>
+                <h2 className="au-display-md">Outcomes and benefits</h2>
                 <ul>
-                  {project_links.map((item, i) => <li key={i}>
-                      {typeof item == 'object' ?
-                          <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
-                          :
-                          <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
-                      }
-                  </li>)}
+                  {outcome && outcome.map((content, i) => <li key={i}>{content}</li>)}
                 </ul>
               </section>
-            )}
-            <div className="casestudy__actions">
-              {confirmButton}
-              {returnLink}
-            </div>
-          </article>
+              {project_links && project_links.length > 0 && (
+                <section styleName="view.project">
+                  <h2 className="au-display-md">Project Links</h2>
+                  <ul>
+                    {project_links.map((item, i) => <li key={i}>
+                        {typeof item == 'object' ?
+                            <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
+                            :
+                            <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                        }
+                    </li>)}
+                  </ul>
+                </section>
+              )}
+              <div className="casestudy__actions">
+                {confirmButton}
+                {returnLink}
+              </div>
+            </article>
+          </div>
         </div>
       </section>
     )

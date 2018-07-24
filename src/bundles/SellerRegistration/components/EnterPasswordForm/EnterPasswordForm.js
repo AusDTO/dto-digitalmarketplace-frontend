@@ -32,7 +32,7 @@ class EnterPasswordForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1>Create a password</h1>
+          <h1 className="au-display-xl">Create a password</h1>
           <p>To finish creating your account you need to create a password.</p>
         </header>
         <article role="main">

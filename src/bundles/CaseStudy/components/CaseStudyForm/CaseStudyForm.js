@@ -21,6 +21,9 @@ import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 
 import domains from '../../../SellerRegistration/components/DomainSelector/domains';
 
+import styles from '../../../SellerRegistration/components/SellerRegistration.css';
+import caseStudy from './CaseStudyForm.css'
+
 class CaseStudyForm extends BaseForm {
 
   static propTypes = {
@@ -83,17 +86,16 @@ class CaseStudyForm extends BaseForm {
       <Layout>
         <header>
             {isAssessment ? (
-              <div >
-                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
+              <div className={styles.content}>
+                <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1" ref="header" aria-describedby="header-description">Have you got expertise in {startCase(service)}?</h1>
                 <p>Before you can apply for this opportunity you need to provide a case study and reference that meets our <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.</p>
                 <p><b>If we can confirm your expertise before the opportunity closes we will invite you to apply.</b></p>
                 <p>If successful you can apply for {startCase(service)} opportunities in future without the need for further assessment.</p>
               </div>
             ) : (
-              <div >
-                <h1 tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
+              <div className={styles.content}>
+                <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1" ref="header" aria-describedby="header-description">{mode === 'edit' ? 'Edit' : 'Add'} case study</h1>
                 <p id="header-description">
-
                   Remember, your case study must meet the {service} <a href={`/assessment-criteria#${service_slug}`} target="_blank" rel="external">assessment criteria</a>.
                   You can update your case studies before an assessment begins.
                   For more about assessments see the <a href="/sellers-guide" target="_blank" rel="external">seller guide</a>.
@@ -102,7 +104,7 @@ class CaseStudyForm extends BaseForm {
             )}
           <div className="calloutMistake">
             <b> Avoid common mistakes </b>
-            <ul>
+            <ul className="mistake-list">
               <li>Check the <a href="/assessment-criteria">assessment criteria</a> to ensure the service chosen is a good match for the case study.</li>
               <li>Case studies need to be for the company within the time period the ABN has been registered. Otherwise, state clearly that it was completed by an employee when they worked for another company.</li>
               <li>If using acronyms, their meaning must be written out clearly.</li>
@@ -233,12 +235,13 @@ class CaseStudyForm extends BaseForm {
               validators={{ validLinks }}
            />
 
-            <h2>Referee</h2>
-            <p>Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
+            <div>
+              <h2 className="au-display-lg">Referee</h2>
+              <p styleName="caseStudy.referee-summary">Client referee information will only be viewed by evaluators. It will not be published anywhere on the Digital Marketplace.</p>
+            </div>
             <div className="calloutMistake">
-
               <b> Avoid common mistakes </b>
-              <ul>
+              <ul className="mistake-list">
                 <li>A referee's contact details must be supplied for all case studies. If this is not possible, you may need to supply a different case study.</li>
                 <li>A referee must be from the client in the case study.</li>
               </ul>
@@ -271,6 +274,7 @@ class CaseStudyForm extends BaseForm {
                 id="refereeEmail"
                 htmlFor="refereeEmail"
                 label="Referee's phone number"
+                description="Please include the area code for landlines."
                 validators={{ required, validPhoneNumber }}
                 messages={{
                   required: 'Please provide a referee phone number.',

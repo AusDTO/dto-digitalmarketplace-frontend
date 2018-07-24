@@ -8,7 +8,7 @@ const FrameworkError = props => {
     <main>
       <div className={styles.container}>
         <AUpageAlert as="error">
-          <h4>Only {props.framework} accounts can access this page.</h4>
+          <h4 className="au-display-sm">Only {props.framework} accounts can access this page.</h4>
         </AUpageAlert>
       </div>
     </main>

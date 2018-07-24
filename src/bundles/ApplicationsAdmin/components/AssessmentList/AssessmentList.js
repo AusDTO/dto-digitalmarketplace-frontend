@@ -76,9 +76,9 @@ class AssessmentList extends React.Component {
           <div >
             {!active
               ? this.state.msg !== ''
-                ? <h4>{`Domain rejection email sent successfully `}</h4>
-                : <h4>{`Domain assessment successfully rejected without email notification`}</h4>
-              : <h4>{`Domain rejection email was not sent due to error, domain not yet rejected`}</h4>}
+                ? <h4 className="au-display-sm">{`Domain rejection email sent successfully `}</h4>
+                : <h4 className="au-display-sm">{`Domain assessment successfully rejected without email notification`}</h4>
+              : <h4 className="au-display-sm">{`Domain rejection email was not sent due to error, domain not yet rejected`}</h4>}
           </div>
           <button type="button" style={{ width: '90px', height: '30px' }} onClick={() => this.toggleResponseModal()}>
             close

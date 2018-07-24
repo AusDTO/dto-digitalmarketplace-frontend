@@ -137,15 +137,15 @@ class DocumentsForm extends BaseForm {
                   { this.props.expiredLiabilityInsurance || this.props.expiredWorkersCompensation ?
                     <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
                   : '' }
-                  <h1 tabIndex="-1">Upload your documents</h1>
+                  <h1 className="au-display-xl" tabIndex="-1">Upload your documents</h1>
 
                   <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
                   <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
                   </p>
+                  <br/>
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
-                    <ul>
-
+                    <ul className="mistake-list">
                       <li><b>Financial statement</b> - ensure it is up to date. A letter from your accountant confirming financial viability is acceptable. We will not accept an internal letter as proof of financial viability.</li>
                       <li><b>Professional Indemnity and Public Liability Insurance</b> - check expiration dates match the uploaded documentation.</li>
                       <li><b>Workers Compensation</b> - check expiration dates match the uploaded documentation.</li>
@@ -197,7 +197,7 @@ class DocumentsForm extends BaseForm {
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
 
                                         {isEmpty(doc.filename) && !fieldState.uploading && !fieldState.file &&
-                                            <div id={expiry_date_field}>
+                                            <div id={expiry_date_field} styleName="file-upload">
                                                 <p>
                                                     <input type="file" id={key} name={key} styleName="hidden-input" accept=".pdf,.jpg,.png"  onChange={this.onChange.bind(this, key)} />
                                                     <label id={`label_${key}`} htmlFor={key} styleName="custom-input"> {isEmpty(name) && "Choose file" } </label>
@@ -254,8 +254,8 @@ class DocumentsForm extends BaseForm {
                                     {fieldState.file &&
                                         <div styleName="upload-container">
                                             <p styleName="filler">&nbsp;</p>
-                                            <p id={`span_${key}`} ref={`span_${key}`}>{!isEmpty(name) && name }</p>
-                                            <button type="submit" styleName="sumbit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
+                                            <p id={`span_${key}`} ref={`span_${key}`} styleName="file-name">{!isEmpty(name) && name }</p>
+                                            <button type="submit" styleName="submit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
                                             <p styleName="custom-input">Choose file</p>
                                         </div>
                                     }

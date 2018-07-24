@@ -73,7 +73,7 @@ class BusinessDetailsForm extends BaseForm {
         <article role="main">
           {profileUpdated ? (
             <AUpageAlert as="success">
-              <h4>Profile updated</h4>
+              <h4 className="au-display-sm">Profile updated</h4>
             </AUpageAlert>
           ) : (
             ''

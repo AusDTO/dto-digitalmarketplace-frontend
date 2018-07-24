@@ -18,7 +18,8 @@ import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 import { getNextKey } from '../../../../helpers';
 
-import './BusinessDetailsForm.css'
+import styles from '../SellerRegistration.css';
+import businessDetails from './BusinessDetailsForm.css';
 
 class BusinessDetailsForm extends BaseForm {
 
@@ -59,14 +60,13 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
+                    <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
                   <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
-                    <ul>
-
+                    <ul className="mistake-list">
                       <li>Don’t write in capitals</li>
                       <li><b>Business name</b> - The business name you use on the Marketplace must be listed under your ABN. Don’t include a tagline.</li>
                       <li><b>Summary</b>  - describe what your company does.</li>
@@ -214,14 +214,14 @@ class BusinessDetailsForm extends BaseForm {
                                     .filter((value) => {return value > 0 && businessDetailsForm.addresses[value] !== null;})
                                     .map((key, i) => {
                               return (
-                                <div styleName="address-wrapper" key={key}>
-                                    <hr styleName="hr"/>
+                                <div className={businessDetails['address-wrapper']} key={key}>
+                                    <hr className={businessDetails.hr}/>
                                     <div className="row">
                                         <div className="col-xs-8 col-sm-10">
-                                          <h3 styleName="heading">Additional address</h3>
+                                          <h3 className="au-display-md">Additional address</h3>
                                         </div>
                                         <div className="col-xs-4 col-sm-2">
-                                            <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
+                                            <button type="submit" className={`button-secondary ${businessDetails['remove-button']}`} onClick={this.onRemove.bind(this, key)}>Remove</button>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -278,7 +278,7 @@ class BusinessDetailsForm extends BaseForm {
                               )
                             })}
                             {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
-                                <p styleName="footer">More offices?</p>
+                                <p className={businessDetails.footer}>More offices?</p>
                             }
                             <button type="submit" className="button-secondary" onClick={this.onAdd.bind(this)}>Add another address</button>
                         </div>

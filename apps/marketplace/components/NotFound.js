@@ -5,7 +5,7 @@ const NotFound = () => (
     <div className="index-page grid-row">
       <div className="column-two-thirds">
         <header className="page-heading-smaller">
-          <h1>Page not found</h1>
+          <h1 className="au-display-xl">Page not found</h1>
         </header>
         <p>
           Check you&#39;ve entered the correct web address or start again on the{' '}

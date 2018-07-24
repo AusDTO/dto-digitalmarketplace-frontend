@@ -95,11 +95,13 @@ test('pruneModel', () => {
     const model = {
         case_studies: case_studies,
         services: {'ServiceA': true },
+        pricing: { 'ServiceA': { maxPrice: 1000 }, 'ServiceB': { maxPrice: 2000 } },
         products: [
             false,
             undefined,
             null
-        ]
+        ],
+        recruiter_info: { 'ServiceA': { margin: 10 }, 'ServiceB': { margin: 20 } }
     };
 
     const expectedResult = {
@@ -107,7 +109,9 @@ test('pruneModel', () => {
             'abc-def': {'title': 'keep this case study', service: 'ServiceA'}
         },
         services: {'ServiceA': true},
-        products: {}
+        pricing: { 'ServiceA': { maxPrice: 1000 } },
+        products: {},
+        recruiter_info: { 'ServiceA': { margin: 10 } }
     };
 
     expect(pruneModel(model)).toEqual(expectedResult);

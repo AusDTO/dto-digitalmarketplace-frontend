@@ -5,7 +5,9 @@ exports[`RevertedNotificationForm with required attributes 1`] = `
   <label
     htmlFor="formHeading"
   >
-    <h3>
+    <h3
+      className="au-display-md"
+    >
       Revert application with optional email to seller
     </h3>
     <b>

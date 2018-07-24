@@ -34,7 +34,7 @@ class LinkInput extends React.Component {
     const { id, htmlFor, label, description, model } = this.props
     return (
       <div className="field" id={id}>
-        <h3>
+        <h3 className="au-display-md">
           <label htmlFor={htmlFor}>{label}</label>
         </h3>
         {description && (
@@ -51,7 +51,7 @@ class LinkInput extends React.Component {
 
                   <div className="row">
                     <div className="col-xs-8 col-sm-10">
-                      <h3>Additional link (optional)</h3>
+                      <h3 className="au-display-md">Additional link (optional)</h3>
                     </div>
                     <div className="col-xs-4 col-sm-2">
                       <button

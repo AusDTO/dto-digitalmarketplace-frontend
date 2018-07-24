@@ -5,7 +5,9 @@ exports[`DomainAssessmentChoice renders 1`] = `
   className="layout"
 >
   <header>
-    <h1>
+    <h1
+      className="au-display-xl"
+    >
       Choose an area of expertise for assessment
     </h1>
   </header>

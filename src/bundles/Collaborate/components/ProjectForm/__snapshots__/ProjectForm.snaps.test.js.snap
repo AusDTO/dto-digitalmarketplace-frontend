@@ -686,7 +686,9 @@ exports[`ProjectForm renders 1`] = `
           </button>
         </div>
       </div>
-      <h2>
+      <h2
+        className="au-display-lg"
+      >
         Project Contact
       </h2>
       <div
@@ -1458,7 +1460,9 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           </button>
         </div>
       </div>
-      <h2>
+      <h2
+        className="au-display-lg"
+      >
         Project Contact
       </h2>
       <div
@@ -2430,7 +2434,9 @@ exports[`ProjectForm renders with errors 1`] = `
           </button>
         </div>
       </div>
-      <h2>
+      <h2
+        className="au-display-lg"
+      >
         Project Contact
       </h2>
       <div
@@ -3247,7 +3253,9 @@ exports[`ProjectForm renders with form_options 1`] = `
           </button>
         </div>
       </div>
-      <h2>
+      <h2
+        className="au-display-lg"
+      >
         Project Contact
       </h2>
       <div
@@ -4019,7 +4027,9 @@ exports[`ProjectForm renders with populated fields 1`] = `
           </button>
         </div>
       </div>
-      <h2>
+      <h2
+        className="au-display-lg"
+      >
         Project Contact
       </h2>
       <div

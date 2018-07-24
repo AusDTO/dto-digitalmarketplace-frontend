@@ -18,7 +18,7 @@ class AppUser extends Component {
     return (
       <article id="content" className="content-main">
         <header className="page-heading page-heading-without-breadcrumb">
-          <h1>
+          <h1 className="au-display-xl">
             {meta.application.name}
           </h1>
         </header>

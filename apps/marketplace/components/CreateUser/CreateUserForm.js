@@ -29,12 +29,12 @@ const CreateUserForm = props => {
       />
       {userType === 'buyer' ? (
         <div>
-          <h1>Add your name and password</h1>
+          <h1 className="au-display-xl">Add your name and password</h1>
           <p>To finish creating your account please provide the following details.</p>
         </div>
       ) : (
         <div>
-          <h1>Add a password</h1>
+          <h1 className="au-display-xl">Add a password</h1>
           <p>To finish creating your account please provide the following details.</p>
         </div>
       )}

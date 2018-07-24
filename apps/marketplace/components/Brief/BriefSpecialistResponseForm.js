@@ -129,7 +129,7 @@ const BriefSpecialistResponseForm = ({
                     label="Résumé"
                     hint="Attachments must be PDF or ODT format and a maximum of 5MB"
                     name="attachedDocumentURL"
-                    model={model}
+                    model={`${model}.attachedDocumentURL.0`}
                     formFields={1}
                     fieldLabel="Upload résumé"
                     url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
@@ -138,7 +138,7 @@ const BriefSpecialistResponseForm = ({
                   />
                 ) : (
                   <AUpageAlert as="warning" setFocus={setFocus}>
-                    <h4>There was a problem loading your details</h4>
+                    <h4 className="au-display-sm">There was a problem loading your details</h4>
                     <p>Only logged in sellers can respond to briefs</p>
                   </AUpageAlert>
                 )}

@@ -37,34 +37,46 @@ export const pruneModel = (model) => {
   const {
     case_studies,
     services = {},
-    products
+    pricing,
+    products,
+    recruiter_info,
   } = model;
+
   let newModel = model;
 
+  const pruneObject = (obj) => {
+    return Object.keys(obj)
+      .filter((key) => {
+        const service = 'service' in obj[key] ? obj[key].service : key
+        return service in newModel.services;
+      })
+      .reduce((o, key) => {
+        o[key] = obj[key];
+        return o;
+      }, {});
+  }
+
   if (services) {
-    newModel = Object.assign({}, newModel, {
-      services: omitBy(services, (service) => !service)
-    });  
+    newModel = { ...newModel, services: omitBy(services, (service) => !service) }
   }
 
   if (case_studies) {
-    const casestudies = Object.keys(case_studies)
-      .filter((key) => {
-        let study = case_studies[key];
-        return study.service in newModel.services;
-      })
-      .reduce((studies, key) => {
-        studies[key] = case_studies[key];
-        return studies;
-      }, {});
     delete newModel['case_studies'];
-    newModel = Object.assign({}, newModel, { case_studies: casestudies });
+    newModel = { ...newModel, case_studies: pruneObject(case_studies) }
+  }
+
+  if (pricing) {
+    delete newModel['pricing'];
+    newModel = { ...newModel, pricing: pruneObject(pricing) }
   }
 
   if (products) {
-    newModel = Object.assign({}, newModel, {
-      products: omitBy(products, product => !product)
-    });      
+    newModel = { ...newModel, products: omitBy(products, product => !product) }
+  }
+
+  if (recruiter_info) {
+    delete newModel['recruiter_info'];
+    newModel = { ...newModel, recruiter_info: pruneObject(recruiter_info) }
   }
 
   return newModel;
@@ -117,7 +129,7 @@ export const isDailyRateMissing = (pricing, services) => {
 
   let isMissingRates = true
   const servicesDomains = Object.keys(services)
-  const pricingDomains = Object.keys(pricing)
+  const pricingDomains = Object.keys(pricing).filter(d => servicesDomains.includes(d))
 
   if (servicesDomains.length > 0 && servicesDomains.length === pricingDomains.length) {
     const filtered = servicesDomains.filter(d => {

@@ -7,7 +7,7 @@ import './BriefChoice.css';
 const BriefChoice = props => {
   return (
     <div styleName="brief-choice-container">
-      <h1>Start a New Brief</h1>
+      <h1 className="au-display-xl">Start a new brief</h1>
       <p>
         Create a new opportunity for a:
       </p>

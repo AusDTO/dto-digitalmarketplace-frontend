@@ -34,7 +34,7 @@ export class DomainAssessmentChoice extends React.Component {
         return (
             <Layout>
                 <header>
-                    <h1>Choose an area of expertise for assessment</h1>
+                    <h1 className="au-display-xl">Choose an area of expertise for assessment</h1>
                 </header>
                 <article role="main">
                     <p>To respond to an outcome opportunity, you need an assessed area of expertise. To add a different area of expertise, <a href="/sellers/edit">update your seller

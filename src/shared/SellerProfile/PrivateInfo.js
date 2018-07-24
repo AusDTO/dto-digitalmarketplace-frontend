@@ -36,7 +36,7 @@ const PrivateInfo = (props) => {
     } = props;
     return (
         <article styleName="privateInfo">
-            <h3> PRIVATE INFORMATION FOR DIGITAL MARKETPLACE ASSESSMENT PURPOSES ONLY </h3>
+            <h3 className="au-display-md"> PRIVATE INFORMATION FOR DIGITAL MARKETPLACE ASSESSMENT PURPOSES ONLY </h3>
             <Row title="Case Study Referees" show={true}>
                 {case_studies && Object.keys(case_studies).map((study, i) => {
                     const {title, referee_name, refereeName, referee_email, refereeEmail, referee_position, refereePosition} = case_studies[study];
@@ -106,7 +106,7 @@ const PrivateInfo = (props) => {
               {Object.keys(recruiter_info).map((key, i) => {
                 return (
                   <div key={i}>
-                    <h4>{key}</h4>
+                    <h4 className="au-display-sm">{key}</h4>
                     {Object.keys(recruiter_info[key]).map((subKey, j) => {
                       return (
                         <div key={`${key}-${subKey}`}>

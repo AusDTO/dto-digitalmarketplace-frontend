@@ -219,7 +219,9 @@ exports[`Signup renders 1`] = `
   >
     <div>
       <div>
-        <h1>
+        <h1
+          className="au-display-xl"
+        >
           Joining the Digital Marketplace
         </h1>
         <p>
@@ -249,7 +251,9 @@ exports[`Signup renders 1`] = `
         <p>
            It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
         </p>
-        <h2>
+        <h2
+          className="au-display-lg"
+        >
           You will need
         </h2>
         <ul>
@@ -263,7 +267,9 @@ exports[`Signup renders 1`] = `
             Proof of relevant insurance cover
           </li>
         </ul>
-        <h2>
+        <h2
+          className="au-display-lg"
+        >
           You will be asked to
         </h2>
         <ul>
@@ -277,15 +283,17 @@ exports[`Signup renders 1`] = `
             Accept the Digital Marketplace Master Agreement
           </li>
         </ul>
-        <a
-          href="/static/media/documents/digital-marketplace-master-agreement.pdf"
-          rel="external"
-          target="_blank"
-        >
-          Download Digital Marketplace Master Agreement (PDF 229kb)
-        </a>
-        <br />
-        <br />
+        <p>
+          <a
+            href="/static/media/documents/digital-marketplace-master-agreement.pdf"
+            rel="external"
+            target="_blank"
+          >
+            Download Digital Marketplace Master Agreement (PDF 229kb)
+          </a>
+          <br />
+          <br />
+        </p>
         <div />
         <p>
           <a
@@ -524,6 +532,8 @@ exports[`Signup renders empty Your Info form 1`] = `
     >
       <header>
         <h1
+          className="au-display-xl"
+          styleName="content-heading"
           tabIndex="-1"
         >
           Contact details
@@ -538,7 +548,9 @@ exports[`Signup renders empty Your Info form 1`] = `
           <b>
              Avoid common mistakes 
           </b>
-          <ul>
+          <ul
+            className="mistake-list"
+          >
             <li>
               <b>
                 Contact names
@@ -560,6 +572,99 @@ exports[`Signup renders empty Your Info form 1`] = `
           onReset={[Function]}
           onSubmit={[Function]}
         >
+          <h2>
+            Authorised representative
+          </h2>
+          <div
+            className="field"
+          >
+            <label
+              className="question-heading"
+              htmlFor="representative"
+            >
+              Name
+            </label>
+            <p
+              className="hint"
+              id="representative-hint"
+            >
+              This is the person authorised to enter into contracts on behalf of the business.
+            </p>
+            <input
+              className=""
+              disabled={false}
+              id="representative"
+              maxLength={undefined}
+              name="representative"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              readOnly={undefined}
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="field"
+          >
+            <label
+              className="question-heading"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              className=""
+              disabled={false}
+              id="email"
+              maxLength={undefined}
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              readOnly={undefined}
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="field"
+          >
+            <label
+              className="question-heading"
+              htmlFor="phone"
+            >
+              Phone
+            </label>
+            <p
+              className="hint"
+              id="phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
+            <input
+              className=""
+              disabled={false}
+              id="phone"
+              maxLength={undefined}
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              readOnly={undefined}
+              type="text"
+              value=""
+            />
+          </div>
+          <h2>
+            Business contact
+          </h2>
           <div
             className="field"
           >
@@ -567,7 +672,7 @@ exports[`Signup renders empty Your Info form 1`] = `
               className="question-heading"
               htmlFor="contact_name"
             >
-              Business contact name
+              Name
             </label>
             <p
               className="hint"
@@ -625,93 +730,18 @@ exports[`Signup renders empty Your Info form 1`] = `
             >
               Phone
             </label>
+            <p
+              className="hint"
+              id="contact_phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
             <input
               className=""
               disabled={false}
               id="contact_phone"
               maxLength={undefined}
               name="contact_phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            className="field"
-          >
-            <label
-              className="question-heading"
-              htmlFor="representative"
-            >
-              Authorised representative name
-            </label>
-            <p
-              className="hint"
-              id="representative-hint"
-            >
-              This is the person authorised to enter into contracts on behalf of the business. 
-            </p>
-            <input
-              className=""
-              disabled={false}
-              id="representative"
-              maxLength={undefined}
-              name="representative"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            className="field"
-          >
-            <label
-              className="question-heading"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className=""
-              disabled={false}
-              id="email"
-              maxLength={undefined}
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
-              type="text"
-              value=""
-            />
-          </div>
-          <div
-            className="field"
-          >
-            <label
-              className="question-heading"
-              htmlFor="phone"
-            >
-              Phone
-            </label>
-            <input
-              className=""
-              disabled={false}
-              id="phone"
-              maxLength={undefined}
-              name="phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -992,6 +1022,8 @@ exports[`Signup renders populated Your Info form 1`] = `
     >
       <header>
         <h1
+          className="au-display-xl"
+          styleName="content-heading"
           tabIndex="-1"
         >
           Contact details
@@ -1006,7 +1038,9 @@ exports[`Signup renders populated Your Info form 1`] = `
           <b>
              Avoid common mistakes 
           </b>
-          <ul>
+          <ul
+            className="mistake-list"
+          >
             <li>
               <b>
                 Contact names
@@ -1034,6 +1068,99 @@ exports[`Signup renders populated Your Info form 1`] = `
             type="hidden"
             value="abc"
           />
+          <h2>
+            Authorised representative
+          </h2>
+          <div
+            className="field"
+          >
+            <label
+              className="question-heading"
+              htmlFor="representative"
+            >
+              Name
+            </label>
+            <p
+              className="hint"
+              id="representative-hint"
+            >
+              This is the person authorised to enter into contracts on behalf of the business.
+            </p>
+            <input
+              className=""
+              disabled={false}
+              id="representative"
+              maxLength={undefined}
+              name="representative"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              readOnly={undefined}
+              type="text"
+              value="Paul Acron"
+            />
+          </div>
+          <div
+            className="field"
+          >
+            <label
+              className="question-heading"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              className=""
+              disabled={false}
+              id="email"
+              maxLength={undefined}
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              readOnly={undefined}
+              type="text"
+              value="email@domain.com"
+            />
+          </div>
+          <div
+            className="field"
+          >
+            <label
+              className="question-heading"
+              htmlFor="phone"
+            >
+              Phone
+            </label>
+            <p
+              className="hint"
+              id="phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
+            <input
+              className=""
+              disabled={false}
+              id="phone"
+              maxLength={undefined}
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={undefined}
+              readOnly={undefined}
+              type="text"
+              value="0292000000"
+            />
+          </div>
+          <h2>
+            Business contact
+          </h2>
           <div
             className="field"
           >
@@ -1041,7 +1168,7 @@ exports[`Signup renders populated Your Info form 1`] = `
               className="question-heading"
               htmlFor="contact_name"
             >
-              Business contact name
+              Name
             </label>
             <p
               className="hint"
@@ -1099,6 +1226,12 @@ exports[`Signup renders populated Your Info form 1`] = `
             >
               Phone
             </label>
+            <p
+              className="hint"
+              id="contact_phone-hint"
+            >
+              Please include the area code for landlines.
+            </p>
             <input
               className=""
               disabled={false}
@@ -1113,87 +1246,6 @@ exports[`Signup renders populated Your Info form 1`] = `
               readOnly={undefined}
               type="text"
               value={undefined}
-            />
-          </div>
-          <div
-            className="field"
-          >
-            <label
-              className="question-heading"
-              htmlFor="representative"
-            >
-              Authorised representative name
-            </label>
-            <p
-              className="hint"
-              id="representative-hint"
-            >
-              This is the person authorised to enter into contracts on behalf of the business. 
-            </p>
-            <input
-              className=""
-              disabled={false}
-              id="representative"
-              maxLength={undefined}
-              name="representative"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
-              type="text"
-              value="Paul Acron"
-            />
-          </div>
-          <div
-            className="field"
-          >
-            <label
-              className="question-heading"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className=""
-              disabled={false}
-              id="email"
-              maxLength={undefined}
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
-              type="text"
-              value="email@domain.com"
-            />
-          </div>
-          <div
-            className="field"
-          >
-            <label
-              className="question-heading"
-              htmlFor="phone"
-            >
-              Phone
-            </label>
-            <input
-              className=""
-              disabled={false}
-              id="phone"
-              maxLength={undefined}
-              name="phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
-              type="text"
-              value="0292000000"
             />
           </div>
           <input

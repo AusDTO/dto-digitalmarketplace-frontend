@@ -14,6 +14,8 @@ import Textfield     from '../../../../shared/form/Textfield';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav       from '../StepNav';
 
+import '../SellerRegistration.css'
+
 class YourInfoForm extends BaseForm {
 
   static propTypes = {
@@ -40,14 +42,13 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <h1 tabIndex="-1">{title}</h1>
+          <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">{title}</h1>
         </header>
         <article role="main">
           <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
           <div className="calloutMistake">
             <b> Avoid common mistakes </b>
-            <ul>
-
+            <ul className="mistake-list">
               <li><b>Contact names</b> - use full names.</li>
               <li><b>Email and phone numbers</b> - Check the format and details are correct.</li>
             </ul>
@@ -66,12 +67,56 @@ class YourInfoForm extends BaseForm {
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
 
+              <h2>Authorised representative</h2>
+
+              <Textfield
+                  model={`${model}.representative`}
+                  name="representative"
+                  id="representative"
+                  htmlFor="representative"
+                  label="Name"
+                  description="This is the person authorised to enter into contracts on behalf of the business."
+                  validators={{ required }}
+                  messages={{
+                      required: 'Authorised representative is required',
+                  }}
+              />
+
+              <Textfield
+                  model={`${model}.email`}
+                  name="email"
+                  id="email"
+                  htmlFor="email"
+                  label="Email"
+                  validators={{ required, validEmail }}
+                  messages={{
+                      required: 'Authorised representative\'s email is required',
+                      validEmail: 'Authorised representative\'s email must be a valid email address',
+                  }}
+              />
+
+              <Textfield
+                  model={`${model}.phone`}
+                  name="phone"
+                  id="phone"
+                  htmlFor="phone"
+                  label="Phone"
+                  description="Please include the area code for landlines."
+                  validators={{ required, validPhoneNumber }}
+                  messages={{
+                      required: 'Authorised representative\'s phone number is required',
+                      validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
+                  }}
+              />
+
+              <h2>Business contact</h2>
+
               <Textfield
                   model={`${model}.contact_name`}
                   name="contact_name"
                   id="contact_name"
                   htmlFor="contact_name"
-                  label="Business contact name"
+                  label="Name"
                   description="The contact listed on your seller profile page and the person who receives new opportunities by email."
                   validators={{ required }}
                   messages={{
@@ -94,60 +139,17 @@ class YourInfoForm extends BaseForm {
                   default={userEmail}
               />
 
-
               <Textfield
                   model={`${model}.contact_phone`}
                   name="contact_phone"
                   id="contact_phone"
                   htmlFor="contact_phone"
                   label="Phone"
+                  description="Please include the area code for landlines."
                   validators={{ required, validPhoneNumber }}
                   messages={{
                       required: 'Business contact phone is required',
                       validPhoneNumber: 'Business contact phone number must be a valid phone number',
-                  }}
-              />
-
-              <Textfield
-                  model={`${model}.representative`}
-                  name="representative"
-                  id="representative"
-                  htmlFor="representative"
-                  label="Authorised representative name"
-                  description={ isNumber(supplierCode)
-                    ? ["This is the person authorised to enter into contracts on behalf of the business. To update this please " ,<a href="/contact-us">contact us</a>, "."]
-                    : "This is the person authorised to enter into contracts on behalf of the business. "
-                  }
-                  validators={{ required }}
-                  messages={{
-                      required: 'Authorised representative is required',
-                  }}
-              />
-
-
-              <Textfield
-                  model={`${model}.email`}
-                  name="email"
-                  id="email"
-                  htmlFor="email"
-                  label="Email"
-                  validators={{ required, validEmail }}
-                  messages={{
-                      required: 'Authorised representative\'s email is required',
-                      validEmail: 'Authorised representative\'s email must be a valid email address',
-                  }}
-              />
-
-              <Textfield
-                  model={`${model}.phone`}
-                  name="phone"
-                  id="phone"
-                  htmlFor="phone"
-                  label="Phone"
-                  validators={{ required, validPhoneNumber }}
-                  messages={{
-                      required: 'Authorised representative\'s phone number is required',
-                      validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
                   }}
               />
 

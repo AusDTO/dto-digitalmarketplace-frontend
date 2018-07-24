@@ -16,7 +16,7 @@ import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 
 const Referee = ({id, model}) => (
     <div>
-        <h2>Referee {id}</h2>
+        <h2 className="au-display-lg">Referee {id}</h2>
         <Textfield
             model={`${model}.name`}
             name={`name-${id}`}

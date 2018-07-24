@@ -6,7 +6,9 @@ exports[`SignupForm renders 1`] = `
     className="layout"
   >
     <header>
-      <h1>
+      <h1
+        className="au-display-xl"
+      >
         Let’s get started
       </h1>
     </header>
@@ -174,7 +176,9 @@ exports[`SignupForm renders with form_options 1`] = `
     className="layout"
   >
     <header>
-      <h1>
+      <h1
+        className="au-display-xl"
+      >
         Let’s get started
       </h1>
     </header>

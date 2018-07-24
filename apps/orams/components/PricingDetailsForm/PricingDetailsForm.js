@@ -55,7 +55,7 @@ class PricingDetailsForm extends BaseForm {
     if (this.props.errorMessage) {
       return (
         <AUpageAlert as="error">
-          <h4>There was a problem loading the page</h4>
+          <h4 className="au-display-sm">There was a problem loading the page</h4>
         </AUpageAlert>
       )
     }

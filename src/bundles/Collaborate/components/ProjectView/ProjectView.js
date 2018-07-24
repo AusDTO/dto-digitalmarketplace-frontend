@@ -116,40 +116,40 @@ class ProjectView extends React.Component {
                     </aside>
                     <article role="main" className="col-sm-7 col-xs-12">
                         {aim && <section>
-                            <h2>Aim</h2>
+                            <h2 className="au-display-lg">Aim</h2>
                             <p className="freetext">{newline(aim)}</p>
                         </section>}
                         {problem && <section>
-                            <h2>What's the key problem to solve?</h2>
+                            <h2 className="au-display-lg">What's the key problem to solve?</h2>
                             <p className="freetext">{newline(problem)}</p>
                         </section>}
                         { users && <section>
-                            <h2>Who are the users and their needs?</h2>
+                            <h2 className="au-display-lg">Who are the users and their needs?</h2>
                             <p className="freetext">{newline(users)}</p>
                         </section>}
                         { progress && <section>
-                            <h2>What do you need to progress the idea further?</h2>
+                            <h2 className="au-display-lg">What do you need to progress the idea further?</h2>
                             <p className="freetext">{newline(progress)}</p>
                         </section>}
                         {about && <section>
-                            <h2>About the {stage_name}</h2>
+                            <h2 className="au-display-lg">About the {stage_name}</h2>
                             <p className="freetext">{newline(about)}</p>
                         </section>}
                         {lessons && (<section>
-                            <h2>Lessons learned</h2>
+                            <h2 className="au-display-lg">Lessons learned</h2>
                             <ul>
                                 {lessons && lessons.map((content, i) => <li key={i}>{content}</li>)}
                             </ul>
                         </section>)}
                         {outcome && (<section>
-                            <h2>Outcomes</h2>
+                            <h2 className="au-display-lg">Outcomes</h2>
                             <ul>
                                 {outcome && outcome.map((content, i) => <li key={i}>{content}</li>)}
                             </ul>
                         </section>)}
                         {project_links && Object.keys(project_links).length > 0 && (
                             <section className="project">
-                                <h2>Project Links</h2>
+                                <h2 className="au-display-lg">Project Links</h2>
                                 <ul>
                                     {project_links.map((item, i) => <li key={i}>
                                         {typeof item == 'object' ?

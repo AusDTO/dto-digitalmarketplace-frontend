@@ -36,7 +36,7 @@ class DisclosuresForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">{title}</h1>
+                    <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
                     <p>These responses are not visible on your profile but may be provided to buyers who are considering awarding you a contract. </p>
 
                         <p>Please note, answering ‘yes’ to any question will not automatically disqualify you from the Digital Marketplace, however our assessors may contact you to request more information.</p>

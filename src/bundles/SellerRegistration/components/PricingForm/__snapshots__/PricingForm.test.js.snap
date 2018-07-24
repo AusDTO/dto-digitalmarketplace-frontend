@@ -6,6 +6,7 @@ exports[`PricingForm renders a notice that domains are required 1`] = `
 >
   <header>
     <h1
+      className="au-display-xl"
       tabIndex="-1"
     >
       Pricing
@@ -33,7 +34,9 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
 <div
   className="layout"
 >
-  <header>
+  <header
+    styleName="styles.content"
+  >
     <div
       className="au-body au-page-alerts   au-page-alerts--error"
       role="alert"
@@ -45,6 +48,8 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       </p>
     </div>
     <h1
+      className="au-display-xl"
+      styleName="styles.content-heading"
       tabIndex="-1"
     >
       Pricing
@@ -117,7 +122,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
             </strong>
           </span>
           <span
-            styleName="inline-input"
+            styleName="pricing.inline-input"
           >
             <input
               disabled={false}
@@ -154,7 +159,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
             </strong>
           </span>
           <span
-            styleName="inline-input"
+            styleName="pricing.inline-input"
           >
             <input
               disabled={false}
@@ -191,7 +196,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
             </strong>
           </span>
           <span
-            styleName="inline-input"
+            styleName="pricing.inline-input"
           >
             <input
               disabled={false}
