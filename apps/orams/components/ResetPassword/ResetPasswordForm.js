@@ -28,7 +28,7 @@ const ResetPasswordForm = props => {
           <article role="main">
             {resetPasswordSuccess ? (
               <AUpageAlert as="success">
-                <h4>You have successfully changed your password</h4>
+                <h4 className="au-display-sm">You have successfully changed your password</h4>
                 <span>
                   <p>
                     Please <a href={`${rootPath}/login`}> login </a> to continue.

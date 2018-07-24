@@ -58,7 +58,7 @@ export default class RevertedNotificationForm extends Component {
     return (
       <form>
         <label htmlFor="formHeading">
-          <h3>
+          <h3 className="au-display-md">
             Revert application with optional email to seller
           </h3>
           <b>

@@ -14,6 +14,8 @@ import {required} from '../../../../validators';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 
+import '../SellerRegistration.css';
+
 
 class BusinessInfoForm extends BaseForm {
 
@@ -36,7 +38,7 @@ class BusinessInfoForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <h1 tabIndex="-1">More about your business</h1>
+                    <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">More about your business</h1>
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -225,6 +227,7 @@ class BusinessInfoForm extends BaseForm {
                           <br/>
                             <p>The Marketplace is committed to providing a diverse and inclusive environment.<br/>
                                 Responses are optional and for demographic purposes only.</p>
+                            <br/>
                             <Control.checkbox
                                 model={`${model}.seller_type.disability`}
                                 id="disability"

@@ -23,7 +23,8 @@ import StepNav       from '../StepNav';
 import SaveError     from '../../../../shared/SaveError';
 import { getNextKey } from '../../../../helpers';
 
-import './ProductsForm.css';
+import styles from '../SellerRegistration.css'
+import products from './ProductsForm.css';
 
 const filterProducts = products => {
   return omitBy(products, product => !product);
@@ -68,14 +69,14 @@ class ProductsForm extends BaseForm {
     }
     return (
       <Layout>
-        <header>
-          <h1 tabIndex="-1">Products</h1>
+        <header styleName="styles.content">
+          <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">Products</h1>
             <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you are reselling.</p>
             <p>This feature is an MVP, meaning we want to learn more about the types of products sellers are offering so we can create a solution for selling them through the Digital Marketplace.</p>
 
           {hasProducts && [<div className="calloutMistake">
             <b> Avoid common mistakes </b>
-            <ul>
+            <ul className="mistake-list">
               <li>Make sure the product is your own</li>
               <li>Only provide details for proprietary products being sold, not services offered by the company.</li>
               <li>The Digital Marketplace does not currently support hardware products.</li>
@@ -103,14 +104,14 @@ class ProductsForm extends BaseForm {
             {Object.keys(productsForm.products).map((key, i) => {
               const index = i +1;
               return (
-                <div styleName="product-wrapper" key={key}>
-                  {i !== 0 && <hr styleName="hr"/>}
+                <div styleName="products.product-wrapper" key={key}>
+                  {i !== 0 && <hr styleName="products.hr"/>}
                   <div className="row">
                     <div className="col-xs-12 col-sm-10">
-                      <h2 styleName="heading">{`Product ${index}`}</h2>
+                      <h2 className="au-display-lg">{`Product ${index}`}</h2>
                     </div>
                     <div className="col-xs-12 col-sm-2">
-                      <button type="submit" styleName="remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
+                      <button type="submit" styleName="products.remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
                     </div>
                   </div>
                   <div className="row">

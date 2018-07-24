@@ -58,7 +58,7 @@ export default class RejectedNotificationForm extends Component {
     return (
       <form>
         <label htmlFor="formHeading">
-          <h3>
+          <h3 className="au-display-md">
             Reject domain assessment with optional email to seller
           </h3>
           <b>

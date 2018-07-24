@@ -71,7 +71,9 @@ exports[`ProjectViewWidget renders without errrors 1`] = `
         role="main"
       >
         <section>
-          <h2>
+          <h2
+            className="au-display-lg"
+          >
             What's the key problem to solve?
           </h2>
           <p
@@ -84,7 +86,9 @@ exports[`ProjectViewWidget renders without errrors 1`] = `
           </p>
         </section>
         <section>
-          <h2>
+          <h2
+            className="au-display-lg"
+          >
             Outcomes
           </h2>
           <ul>

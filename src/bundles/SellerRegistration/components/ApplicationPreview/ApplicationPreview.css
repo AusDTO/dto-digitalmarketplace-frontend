@@ -13,3 +13,8 @@
   margin-bottom: 7.2px;
   margin-top: 0px;
 }
+
+.seller-profile-container {
+  margin: auto;
+  max-width: 75em;
+}

@@ -10,7 +10,7 @@ const Invitation = props => {
       {props.invitationData ? (
         <div>
           <AUpageAlert as="success">
-            <h4>ORAMS access has been given to {props.invitationData.email_address}</h4>
+            <h4 className="au-display-sm">ORAMS access has been given to {props.invitationData.email_address}</h4>
           </AUpageAlert>
           <div className="au-display-xl">What happens next?</div>
           <div className={styles.spacer}>

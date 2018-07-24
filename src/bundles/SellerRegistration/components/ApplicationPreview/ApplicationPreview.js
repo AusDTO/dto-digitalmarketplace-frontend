@@ -54,10 +54,12 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
     <ReviewHeader
       {...header}
     />
-    <div className="row" styleName={body.public_profile ? 'styles.center' : ''}>
-      <div className="col-sm-8 col-xs-12">
-        <Body {...body} />
-        {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
+    <div styleName="styles.seller-profile-container">
+      <div className="row" styleName={body.public_profile ? 'styles.center' : ''}>
+        <div className="col-sm-8 col-xs-12">
+          <Body {...body} />
+          {!onClick && privateInfo.disclosures && <PrivateInfo {...privateInfo} />}
+        </div>
       </div>
     </div>
   </div>

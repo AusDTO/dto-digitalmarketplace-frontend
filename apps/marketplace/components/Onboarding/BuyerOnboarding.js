@@ -3,7 +3,9 @@ import React from 'react'
 const BuyerOnboarding = () => (
   <div className="row">
     <div className="col-sm-push-2 col-sm-8 col-xs-12">
-      <h1 title="Welcome to the Marketplace">Welcome to the Marketplace</h1>
+      <h1 className="au-display-xl" title="Welcome to the Marketplace">
+        Welcome to the Marketplace
+      </h1>
       <p>How can we help you?</p>
       <h2 className="au-display-lg">Read the Marketplace guides, contracts and compliance information</h2>
       <span>
@@ -11,7 +13,7 @@ const BuyerOnboarding = () => (
       </span>
       <h2 className="au-display-lg">Create a new opportunity for a digital specialist or outcome</h2>
       <span>
-        <a href="/buyers">Start a new brief</a>
+        <a href="/2/buyer-dashboard">Start a new brief</a>
       </span>
       <h2 className="au-display-lg">Need help writing a brief?</h2>
       <span>

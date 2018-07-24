@@ -36,9 +36,11 @@ class ResultsTable extends Component {
     return (
       <div tabIndex="0" ref={this.setRef} className={styles.table}>
         {alert ? (
-          <AUpageAlert as={alert.type}>
-            <h4>{alert.message}</h4>
-          </AUpageAlert>
+          <div className={styles.alert}>
+            <AUpageAlert as={alert.type}>
+              <h4 className="au-display-sm">{alert.message}</h4>
+            </AUpageAlert>
+          </div>
         ) : (
           ''
         )}

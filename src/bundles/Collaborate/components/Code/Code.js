@@ -34,7 +34,7 @@ class Code extends React.Component {
                         <article className="col-md-7 col-sm-12 col-md-push-1" styleName="code-text">
 
 
-                            <h2> New to open source?</h2>
+                            <h2 className="au-display-lg"> New to open source?</h2>
                             You can reduce cost, effort and risk by re-using tried and tested open source projects to
                             build digital services.<br/>
                             <br/>
@@ -49,7 +49,7 @@ class Code extends React.Component {
                         </article>
                     </div>
                     <div className="row" styleName="explore">
-                      <h2><center>Browse library</center></h2>
+                      <h2 className="au-display-lg"><center>Browse library</center></h2>
 
                         <article role="main" styleName="center">
 
@@ -66,7 +66,7 @@ class Code extends React.Component {
                                         }}
                                         tabIndex="0">
                                         <article>
-                                            <h3>
+                                            <h3 className="au-display-md">
                                                 <a rel="external" target="_blank" href={item.url}
                                                    onClick={(e) => e.stopPropagation()}>{item.name}</a>
                                             </h3>

@@ -4,7 +4,9 @@ exports[`TeamOverview renders with no props 1`] = `
 <div
   styleName="teamoverview-main"
 >
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Active team members
   </h2>
   <p>
@@ -30,7 +32,9 @@ exports[`TeamOverview renders with props 1`] = `
 <div
   styleName="teamoverview-main"
 >
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Active team members
   </h2>
   <p>

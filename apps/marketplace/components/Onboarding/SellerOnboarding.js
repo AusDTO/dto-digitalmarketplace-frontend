@@ -3,7 +3,9 @@ import React from 'react'
 const SellerOnboarding = () => (
   <div className="row">
     <div className="col-sm-push-2 col-sm-8 col-xs-12">
-      <h1 title="Welcome to the Marketplace">Welcome to the Marketplace</h1>
+      <h1 className="au-display-xl" title="Welcome to the Marketplace">
+        Welcome to the Marketplace
+      </h1>
       <p>What do you want to do next?</p>
       <h2 className="au-display-lg">List my digital offering on the Marketplace</h2>
       <span>
@@ -11,7 +13,7 @@ const SellerOnboarding = () => (
       </span>
       <h2 className="au-display-lg">Apply for an opportunity listed on the Marketplace</h2>
       <span>
-        <a href="/digital-marketplace/opportunities">Browse opportunities</a>
+        <a href="/2/opportunities">Browse opportunities</a>
       </span>
       <h2 className="au-display-lg">Learn about adding case studies to your shopfront</h2>
       <span>

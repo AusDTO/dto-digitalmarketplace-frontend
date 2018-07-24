@@ -10,7 +10,8 @@ import {Form, Control} from 'react-redux-form';
 import {required} from '../../../validators';
 import formProps     from '../../../shared/reduxModules/formPropsSelector';
 
-import './Submit.css'
+import styles from './SellerRegistration.css'
+import submit from './Submit.css'
 
 class SubmitStepForm extends BaseForm {
     static defaultProps = {
@@ -61,16 +62,16 @@ class SubmitStepForm extends BaseForm {
             message = (
                 <div>
                     <p>All you need to do now is:</p>
-                    <ol><li>Review your application and the Master Agreement</li>
+                    <ol styleName="styles.content-list"><li>Review your application and the Master Agreement</li>
                         <li>Complete the declaration</li>
                     </ol>
                     <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" rel="external" target="_blank">Download Master Agreement (PDF 229KB)</a><br/>
                     <a href="/static/media/documents/digital-marketplace-master-agreement.html" target="_blank" rel="external">View Master Agreement in HTML</a><br/><br/>
 
 
-                    <div styleName="agreement">
-                      <h1>Master Agreement</h1>
-                      <h2>Introduction and scope</h2>
+                    <div styleName="submit.agreement">
+                      <h1 className="au-display-xl">Master Agreement</h1>
+                      <h2 className="au-display-lg">Introduction and scope</h2>
                       <p>
                         This agreement covers all your interactions in the Digital Marketplace, including selling to buyers. This agreement also
                         forms part of the terms incorporated into every work order contract agreed to by you and a buyer.
@@ -104,8 +105,8 @@ class SubmitStepForm extends BaseForm {
                           Where possible, we explain terms as we go rather than relying on definitions.
                         </li>
                       </ul>
-                      <h2>Terms</h2>
-                      <h3>1. General</h3>
+                      <h2 className="au-display-lg">Terms</h2>
+                      <h3 className="au-display-md">1. General</h3>
                       <p>
                         This agreement is between you and the DTA.
                       </p>
@@ -128,7 +129,7 @@ class SubmitStepForm extends BaseForm {
                       <p>
                         You must not represent that you are an employee, partner, officer or agent of the DTA or a buyer.
                       </p>
-                      <h3>2. Priority of documents</h3>
+                      <h3 className="au-display-md">2. Priority of documents</h3>
                       <p>
                         There will be times when the nature of an opportunity means that you or the buyer need to add to this agreement. A buyer
                         may highlight additional terms in their posted opportunity or subsequently. You and the buyer must agree on any additional
@@ -139,7 +140,7 @@ class SubmitStepForm extends BaseForm {
                         If there is any inconsistency in the documents forming a work order, those documents will be interpreted in the following
                         order of priority:
                       </p>
-                      <ol>
+                      <ol styleName="styles.content-list">
                         <li>
                           Additional terms to this agreement included in the work order.
                         </li>
@@ -156,7 +157,7 @@ class SubmitStepForm extends BaseForm {
                           Any other document referred to in the work order.
                         </li>
                       </ol>
-                      <h3>3. Work orders</h3>
+                      <h3 className="au-display-md">3. Work orders</h3>
                       <p>
                         A work order is not effective until accepted by both the buyer and the seller.
                       </p>
@@ -164,17 +165,17 @@ class SubmitStepForm extends BaseForm {
                         Once effective, work orders create a separate contract on the terms of this agreement and any terms specified in the work
                         order.
                       </p>
-                      <h3>4. Adding services and products</h3>
+                      <h3 className="au-display-md">4. Adding services and products</h3>
                       <p>
                         You may offer additional services or products for possible inclusion in the Digital Marketplace at any time by following
                         the process in the Digital Marketplace.
                       </p>
-                      <h3>5. Non-exclusive arrangement</h3>
+                      <h3 className="au-display-md">5. Non-exclusive arrangement</h3>
                       <p>
                         This agreement is not exclusive and does not guarantee that you will receive opportunities or work orders and does not prevent
                         buyers from buying services or products elsewhere.
                       </p>
-                      <h3>6. Seller obligations</h3>
+                      <h3 className="au-display-md">6. Seller obligations</h3>
                       <p>
                         You must supply the services or products specified in a work order:
                       </p>
@@ -225,13 +226,13 @@ class SubmitStepForm extends BaseForm {
                         If you do not do these things DTA may terminate this agreement and a buyer may terminate any affected work order without
                         liability to us or the buyer.
                       </p>
-                      <h3>7. Licences, warranties and documentation</h3>
+                      <h3 className="au-display-md">7. Licences, warranties and documentation</h3>
                       <p>
                         You must transfer to the buyer all licences and warranties for any services or products and any documentation needed by the
                         buyer to fully use the services or products.
                       </p>
-                      <h3>8. Intellectual property rights</h3>
-                      <h4>General</h4>
+                      <h3 className="au-display-md">8. Intellectual property rights</h3>
+                      <h4 className="au-display-sm">General</h4>
                       <p>
                         You must ensure that the buyer’s use of the order material will not infringe the intellectual property rights of any person.
                       </p>
@@ -250,7 +251,7 @@ class SubmitStepForm extends BaseForm {
                           degrading the performance or quality of the material.
                         </li>
                       </ul>
-                      <h4>Software intellectual property and licensing</h4>
+                      <h4 className="au-display-sm">Software intellectual property and licensing</h4>
                       <p>
                         Unless otherwise agreed in a work order, for order material that is software but not proprietary software:
                       </p>
@@ -271,7 +272,7 @@ class SubmitStepForm extends BaseForm {
                           No other software terms (including your standard software licensing terms) apply to the work order.
                         </li>
                       </ul>
-                      <h4>Order material other than software</h4>
+                      <h4 className="au-display-sm">Order material other than software</h4>
                       <p>
                         Intellectual property rights in any order material other than software and standard form documentation relating to the software
                         supplied to the seller’s customers hereby vest in the buyer from the date they come into existence. In this context,
@@ -282,7 +283,7 @@ class SubmitStepForm extends BaseForm {
                         You must ensure the buyer is provided with any intellectual property rights licence or usage rights it needs to use any material
                         provided with (or needed for the use of) the order material.
                       </p>
-                      <h3>9. Delivery</h3>
+                      <h3 className="au-display-md">9. Delivery</h3>
                       <p>
                         If you are unable to provide all or part of the services or products specified in a work order in a reasonable timeframe,
                         you must notify the buyer immediately.
@@ -294,7 +295,7 @@ class SubmitStepForm extends BaseForm {
                         Deliverables and products become the property of the buyer on delivery subject only to them being paid for. Risk in deliverables
                         and products transfers on acceptance of the order material.
                       </p>
-                      <h3>10. Specified personnel, security and safety</h3>
+                      <h3 className="au-display-md">10. Specified personnel, security and safety</h3>
                       <p>
                         Where a work order specifies named personnel, you must only use the named personnel and not replace, reduce or supplement
                         them without prior written approval from the buyer.
@@ -311,12 +312,12 @@ class SubmitStepForm extends BaseForm {
                       <p>
                         You must not copy, transmit or remove any data without prior written approval from the buyer.
                       </p>
-                      <h3>11. Subcontracting</h3>
+                      <h3 className="au-display-md">11. Subcontracting</h3>
                       <p>
                         Except as set out in the work order, you must not subcontract any aspect of the services without obtaining the buyer’s prior
                         written consent.
                       </p>
-                      <h3>12. Payment and expenses</h3>
+                      <h3 className="au-display-md">12. Payment and expenses</h3>
                       <p>
                         If the products or services meet the requirements of the work order, the buyer will pay you.
                       </p>
@@ -327,12 +328,12 @@ class SubmitStepForm extends BaseForm {
                       <p>
                         You must not charge the buyer for any supply or expense not specified in the work order (for example, travel).
                       </p>
-                      <h3>13. Interest for late payment</h3>
+                      <h3 className="au-display-md">13. Interest for late payment</h3>
                       <p>
                         Buyers will pay interest for late payments in accordance with the relevant government policy. At the Commonwealth level,
                         the Supplier Pay On-Time or Pay Interest Policy applies.
                       </p>
-                      <h3>14. Taxes</h3>
+                      <h3 className="au-display-md">14. Taxes</h3>
                       <p>
                         You must pay all taxes, duties and government charges that are due in Australia or overseas in connection with a work order.
                       </p>
@@ -340,12 +341,12 @@ class SubmitStepForm extends BaseForm {
                         Prices in a work order are exclusive of GST. On receipt of a correctly rendered tax invoice, the buyer will pay you the GST
                         exclusive amount plus any GST that applies.
                       </p>
-                      <h3>15. Buyer material</h3>
+                      <h3 className="au-display-md">15. Buyer material</h3>
                       <p>
                         The buyer will provide to you all assistance and material as specified in the work order. You must ensure these materials
                         are used only as the buyer specifies and in the performance of your obligations under the work order.
                       </p>
-                      <h3>16. Confidentiality</h3>
+                      <h3 className="au-display-md">16. Confidentiality</h3>
                       <p>
                         Confidential information can only be disclosed if:
                       </p>
@@ -369,7 +370,7 @@ class SubmitStepForm extends BaseForm {
                       <p>
                         You must, if requested, sign a non-disclosure agreement.
                       </p>
-                      <h3>17. Privacy obligations</h3>
+                      <h3 className="au-display-md">17. Privacy obligations</h3>
                       <p>
                         You agree, in providing the services or products:
                       </p>
@@ -388,7 +389,7 @@ class SubmitStepForm extends BaseForm {
                           To notify the buyer immediately if you become aware of a breach or possible breach of any of your privacy obligations.
                         </li>
                       </ul>
-                      <h3>18. Conflict of interest</h3>
+                      <h3 className="au-display-md">18. Conflict of interest</h3>
                       <p>
                         You confirm that, to the best of your knowledge and belief after making reasonable inquiries, you have no conflict of interest.
                       </p>
@@ -396,14 +397,14 @@ class SubmitStepForm extends BaseForm {
                         If an actual or potential conflict of interest arises, you must notify us, and the buyer if relevant by email, and take all
                         steps required to manage the conflict of interest as directed by us or the buyer.
                       </p>
-                      <h3>19. Audit and access</h3>
+                      <h3 className="au-display-md">19. Audit and access</h3>
                       <p>
                         To support buyers in meeting their governance requirements, on request you must allow authorised representatives of the DTA
                         or a buyer (including the Auditor-General or the Australian Information Commissioner or their delegates) access to,
                         and permit copies to be made of, all material relating to the supply of the services or products and assist with any
                         audits.
                       </p>
-                      <h3>20. Alternative dispute resolution</h3>
+                      <h3 className="au-display-md">20. Alternative dispute resolution</h3>
                       <p>
                         If a dispute arises between you and a buyer, the following process must be followed before you can commence court proceedings:
                       </p>
@@ -430,7 +431,7 @@ class SubmitStepForm extends BaseForm {
                         If the dispute is not resolved after mediation, you or the buyer may seek remedy through the Australian Capital Territory
                         courts.
                       </p>
-                      <h3>21. Termination and suspension</h3>
+                      <h3 className="au-display-md">21. Termination and suspension</h3>
                       <p>
                         We may, at any time, by prior written notice and without any liability to us:
                       </p>
@@ -507,7 +508,7 @@ class SubmitStepForm extends BaseForm {
                         You may terminate this agreement (but not any work orders) by email at any time by 20 business days’ prior written notice
                         to us.
                       </p>
-                      <h3>22. Variation</h3>
+                      <h3 className="au-display-md">22. Variation</h3>
                       <p>
                         We may vary this agreement by giving you at least 20 business days’ notice by email. You may terminate this agreement by
                         written notice to us before the date when the variation is to come into effect if you do not wish to accept the variation.
@@ -523,17 +524,17 @@ class SubmitStepForm extends BaseForm {
                       <p>
                         Work orders can only be varied by written agreement between you and the buyer.
                       </p>
-                      <h3>23. Waiver</h3>
+                      <h3 className="au-display-md">23. Waiver</h3>
                       <p>
                         Any waiver by a party under this agreement or work order must be given by email and is effective only for the particular
                         circumstance for which it is granted.
                       </p>
-                      <h3>24. Assignment and novation</h3>
+                      <h3 className="au-display-md">24. Assignment and novation</h3>
                       <p>
                         You may not assign or novate your rights and obligations under this agreement without our prior email consent and in the
                         case of any work order, the prior email consent of the buyer.
                       </p>
-                      <h3>25. Survival</h3>
+                      <h3 className="au-display-md">25. Survival</h3>
                       <p>
                         The termination or expiry of this agreement for any reason will not affect or extinguish the terms which are intended to
                         survive termination or expiry.
@@ -561,18 +562,18 @@ class SubmitStepForm extends BaseForm {
                           Clause 20 – Alternative dispute resolution
                         </li>
                       </ul>
-                      <h3>26. Notices</h3>
+                      <h3 className="au-display-md">26. Notices</h3>
                       <p>
                         A notice must be submitted by email and addressed to the recipient’s contact person. You can change your contact person at
                         any time by updating your seller profile on the Digital Marketplace, or for a work order, by giving email notice to
                         the buyer.
                       </p>
-                      <h3>27. Jurisdiction</h3>
+                      <h3 className="au-display-md">27. Jurisdiction</h3>
                       <p>
                         This agreement and any work order is governed by the laws of the Australian Capital Territory. Any court proceedings are
                         subject to the non-exclusive jurisdiction of the courts of the Australian Capital Territory.
                       </p>
-                      <h2 id="definitions">Definitions</h2>
+                      <h2 id="definitions" className="au-display-lg">Definitions</h2>
                       <ul>
                         <li>
                           "approved sellers" are members of the Digital Marketplace Panel.
@@ -753,7 +754,7 @@ class SubmitStepForm extends BaseForm {
         }
         return (
             <div>
-                <h1 tabIndex="-1">{title}</h1>
+                <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
                 <Form model={model}
                       action={action}
                       method="post"
@@ -765,7 +766,7 @@ class SubmitStepForm extends BaseForm {
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     {!applicationValid &&
                     (<div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
-                      <h4 id="validation-masthead-heading">All steps must be completed before submitting.</h4>
+                      <h4 id="validation-masthead-heading" className="au-display-sm">All steps must be completed before submitting.</h4>
                       You are yet to complete the following sections: {stepsRemaining}</div>)
                     }
 

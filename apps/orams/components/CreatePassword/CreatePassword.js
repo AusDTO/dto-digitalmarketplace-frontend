@@ -30,7 +30,7 @@ const Signup = props => {
           {createUserSuccess ? (
             <div className={styles.successSection}>
               <AUpageAlert as="success">
-                <h4>
+                <h4 className="au-display-sm">
                   Success, your account has been activated. Please{' '}
                   <a href="/orams/login">
                     <strong>login</strong>

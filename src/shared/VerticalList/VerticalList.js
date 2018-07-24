@@ -10,7 +10,7 @@ const VerticalList = ({ items = [] }) => {
       {items.map((item, i) => (
         <li key={i}>
           <article>
-            <h3><a href={item.link}>{item.title}</a></h3>
+            <h3 className="au-display-md"><a href={item.link}>{item.title}</a></h3>
             {item.meta ? <div className="meta" dangerouslySetInnerHTML={{ __html: item.meta }} /> : ''}
             {item.description ? <p>{item.description}</p> : ''}
           </article>

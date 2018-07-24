@@ -20,7 +20,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
             }
             {!isNumber(supplierCode) ? (
                 <div>
-                    <h1>Joining the Digital Marketplace</h1>
+                    <h1 className="au-display-xl">Joining the Digital Marketplace</h1>
                     <p>
                         To become a registered seller and offer your services or software products to government you need to
                         tell us about your business. </p>
@@ -34,19 +34,21 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
                         be saved automatically if
                         you need to come back later.
                     </p>
-                    <h2>You will need</h2>
+                    <h2 className="au-display-lg">You will need</h2>
                     <ul>
                         <li>Your basic business information</li>
                         <li>Recent financial records or a viability statement from your accountant</li>
                         <li>Proof of relevant insurance cover</li>
                     </ul>
-                    <h2>You will be asked to</h2>
+                    <h2 className="au-display-lg">You will be asked to</h2>
                     <ul>
                         <li>Share details about services or products you wish to provide</li>
                         <li> Provide case studies and referees to support your application</li>
                         <li>Accept the Digital Marketplace Master Agreement</li>
                     </ul>
-                    <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement (PDF 229kb)</a><br/><br/>
+                    <p>
+                        <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement (PDF 229kb)</a><br/><br/>
+                    </p>
                     <SaveError/>
                     <p>
                         <a className="button" href={signup} onClick={onClick}>Start now </a>
@@ -60,14 +62,14 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
                         { missingDailyRates ?
                           <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please <Link to="/pricing">add the daily rates to continue</Link>.</strong></p></PageAlert>
                         : '' }
-                        <h1>Update your profile</h1>
+                        <h1 className="au-display-xl">Update your profile</h1>
                         <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.
                            You can do this by adding more services with supporting case studies.</p>
                         <p>Your case study must include a referee and examples of how you meet the <a
                                 href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>. Use the <a
                                 href="https://marketplace.service.gov.au/static/media/documents/Digital%20Marketplace%20case%20study%20template.xlsx" target="_blank" rel="external">spreadsheet template</a> if
                             you need to collaborate on your case studies with colleagues.</p>
-                        <h2>What happens next</h2>
+                        <h2 className="au-display-lg">What happens next</h2>
                         <p>Once you submit the updates, we will review your updated profile and let you know once it is live.
                            Please note you cannot edit your profile while it is being reviewed.</p>
                         <SaveError/>
@@ -78,7 +80,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
 
                 ) : (
                     <div>
-                        <h1>Do more in the Digital Marketplace</h1>
+                        <h1 className="au-display-xl">Do more in the Digital Marketplace</h1>
                         <p>With our latest release you can now offer more services, add more content and products to showcase
                             your expertise to buyers. To make the most of these new features you will need to update your seller
                             profile. </p>
@@ -89,12 +91,12 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
                                 href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.</p>
                         <p>It may take more than one visit to complete your profile update. But do not worry, your information
                             will be saved as you go.</p>
-                        <h2>You will need</h2>
+                        <h2 className="au-display-lg">You will need</h2>
                         <ul>
                             <li> Recent financial records or a viability statement from your accountant</li>
                             <li> Proof of current insurance cover</li>
                         </ul>
-                        <h2>You will be asked to</h2>
+                        <h2 className="au-display-lg">You will be asked to</h2>
                         <ul>
                             <li>Share details about services or products you wish to provide</li>
                             <li> Provide case studies and referees to support your application</li>

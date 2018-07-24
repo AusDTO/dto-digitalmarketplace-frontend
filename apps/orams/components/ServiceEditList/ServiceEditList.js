@@ -13,7 +13,7 @@ const ServiceEditList = props => {
     <div className={styles.container}>
       {successMessage && (
         <AUpageAlert as="success">
-          <h4>Pricing updated</h4>
+          <h4 className="au-display-sm">Pricing updated</h4>
         </AUpageAlert>
       )}
       <header>

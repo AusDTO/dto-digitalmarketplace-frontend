@@ -6,6 +6,8 @@ exports[`YourInfoForm renders 1`] = `
 >
   <header>
     <h1
+      className="au-display-xl"
+      styleName="content-heading"
       tabIndex="-1"
     >
       Contact details
@@ -20,7 +22,9 @@ exports[`YourInfoForm renders 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           <b>
             Contact names
@@ -269,6 +273,8 @@ exports[`YourInfoForm renders with edit mode 1`] = `
 >
   <header>
     <h1
+      className="au-display-xl"
+      styleName="content-heading"
       tabIndex="-1"
     >
       Contact details
@@ -283,7 +289,9 @@ exports[`YourInfoForm renders with edit mode 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           <b>
             Contact names
@@ -538,6 +546,8 @@ exports[`YourInfoForm renders with form_options 1`] = `
 >
   <header>
     <h1
+      className="au-display-xl"
+      styleName="content-heading"
       tabIndex="-1"
     >
       Contact details
@@ -552,7 +562,9 @@ exports[`YourInfoForm renders with form_options 1`] = `
       <b>
          Avoid common mistakes 
       </b>
-      <ul>
+      <ul
+        className="mistake-list"
+      >
         <li>
           <b>
             Contact names

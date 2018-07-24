@@ -108,7 +108,7 @@ const Landing = () => (
                 if (val.state.includes(childProps.match.params.state) || childProps.match.params.state === 'all') {
                   return (
                     <div className={styles.project} key={`${uniqueID()}${val.title}`}>
-                      <h3>{val.title}</h3>
+                      <h3 className="au-display-md">{val.title}</h3>
                       <div>
                         {val.applicant}, {val.location}
                       </div>
@@ -144,7 +144,7 @@ const Landing = () => (
       <Route
         render={() => (
           <div>
-            <h2>
+            <h2 className="au-display-lg">
               <center>Council collaboration</center>
             </h2>
             <article>
@@ -272,7 +272,7 @@ const Landing = () => (
     <div className="row">
       <div className="col-xs-12">
         <center>
-          <h2>Join the Digital Marketplace</h2>
+          <h2 className="au-display-lg">Join the Digital Marketplace</h2>
         </center>
       </div>
     </div>
@@ -280,7 +280,7 @@ const Landing = () => (
       <div className="col-xs-12 col-md-4 col-md-push-2">
         <center>
           <span />
-          <h3>Need digital products or services for government?</h3>
+          <h3 className="au-display-md">Need digital products or services for government?</h3>
           <p>Our buyers are from across local, state, territory and federal government.</p>
           <p>
             <a href="/2/signup" className="au-btn">
@@ -294,7 +294,7 @@ const Landing = () => (
         <center>
           <div>
             <span />
-            <h3>
+            <h3 className="au-display-md">
               Offer digital products <br />or services to government
             </h3>
             <p>Access more digital opportunities across all levels of government.</p>

@@ -2,7 +2,9 @@
 
 exports[`ClosedBriefs renders with no props 1`] = `
 <section>
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Closed briefs
   </h2>
   You don't have any closed briefs.
@@ -11,7 +13,9 @@ exports[`ClosedBriefs renders with no props 1`] = `
 
 exports[`ClosedBriefs renders with props 1`] = `
 <section>
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Closed briefs
   </h2>
   <table
@@ -45,7 +49,9 @@ exports[`ClosedBriefs renders with props 1`] = `
         <td
           styleName="item-field-first-full"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Brief preview
           </h5>
           <a
@@ -57,7 +63,9 @@ exports[`ClosedBriefs renders with props 1`] = `
         <td
           styleName="item-field-second-left"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Closed
           </h5>
           Invalid Date
@@ -65,7 +73,9 @@ exports[`ClosedBriefs renders with props 1`] = `
         <td
           styleName="item-field-third-right"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Work order
           </h5>
           <span>
@@ -91,7 +101,9 @@ exports[`ClosedBriefs renders with props 1`] = `
 
 exports[`DraftBriefs renders with no props 1`] = `
 <section>
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Drafts
   </h2>
   You haven't started any opportunities.
@@ -100,7 +112,9 @@ exports[`DraftBriefs renders with no props 1`] = `
 
 exports[`DraftBriefs renders with props 1`] = `
 <section>
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Drafts
   </h2>
   <table
@@ -134,7 +148,9 @@ exports[`DraftBriefs renders with props 1`] = `
         <td
           styleName="item-field-first-full"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Brief overview
           </h5>
           <a
@@ -146,7 +162,9 @@ exports[`DraftBriefs renders with props 1`] = `
         <td
           styleName="item-field-second-left"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Created
           </h5>
           Thursday 6 October 2016
@@ -154,7 +172,9 @@ exports[`DraftBriefs renders with props 1`] = `
         <td
           styleName="item-field-third-right"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Questions left
           </h5>
           <div>
@@ -176,7 +196,9 @@ exports[`LiveBriefs renders with no props 1`] = `
 <section
   styleName="live-brief-container"
 >
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Live briefs
   </h2>
   You don't have any live briefs.
@@ -187,7 +209,9 @@ exports[`LiveBriefs renders with props 1`] = `
 <section
   styleName="live-brief-container"
 >
-  <h2>
+  <h2
+    className="au-display-lg"
+  >
     Live briefs
   </h2>
   <table
@@ -221,7 +245,9 @@ exports[`LiveBriefs renders with props 1`] = `
         <td
           styleName="item-field-first-full"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Brief preview
           </h5>
           <a
@@ -233,7 +259,9 @@ exports[`LiveBriefs renders with props 1`] = `
         <td
           styleName="item-field-second-left"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Closing
           </h5>
           Invalid Date
@@ -241,7 +269,9 @@ exports[`LiveBriefs renders with props 1`] = `
         <td
           styleName="item-field-third-right"
         >
-          <h5>
+          <h5
+            className="au-display-xs"
+          >
             Q&A
           </h5>
           <a

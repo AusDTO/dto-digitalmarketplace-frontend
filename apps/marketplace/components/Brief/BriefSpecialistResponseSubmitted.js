@@ -35,7 +35,7 @@ const BriefSpecialistResponseSubmitted = ({ setFocus, briefResponses, brief, mat
               </a>
             </p>
           )}
-          <h2>What happens next?</h2>
+          <h2 className="au-display-lg">What happens next?</h2>
           <br />
           <BriefResponseSubmittedSummary brief={brief} />
           <h2 className="au-display-lg">How did you find submitting this application?</h2>

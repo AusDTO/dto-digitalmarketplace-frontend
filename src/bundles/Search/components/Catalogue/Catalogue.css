@@ -1,7 +1,16 @@
+h1.heading {
+  font-size: 2rem;
+}
+
+h2.catalogue-heading {
+  font-size: 1.5rem;
+}
+
 .heading {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
 .searchButton {
 border: none;
   background-color: #18788d;
@@ -70,6 +79,11 @@ border: none;
   .filters span {
     font-size: 1.0rem !important;
   }
+
+  .autocomplete {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 /**
@@ -113,7 +127,6 @@ border: none;
 
 .keyword-search > article:first-of-type {
   margin-right: 0;
-  width: 85.62178%;
 }
 
 .keyword-search button {
@@ -187,6 +200,6 @@ border: none;
     margin-bottom: 2.0rem;
 }
 
-.checkboxList fieldset legend {
-
+.no-padding {
+  padding: 0 !important;
 }

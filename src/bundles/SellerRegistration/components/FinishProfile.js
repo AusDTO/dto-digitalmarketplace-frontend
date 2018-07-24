@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const FinishProfile = ({onClick}) => (
     <div>
-        <h1>Profile changes saved!</h1>
+        <h1 className="au-display-xl">Profile changes saved!</h1>
 
         <a href="/sellers">Back to dashboard</a>
     </div>
