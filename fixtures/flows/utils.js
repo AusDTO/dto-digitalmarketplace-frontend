@@ -65,6 +65,8 @@ export const clickLink = async (linkText, isUrl) => {
     }
     if (process.env.IGNORE_MULTIPLE_LINKS != 'true') {
         expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
+    } else if(links.length > 1) {
+        console.warn(`Number of links found for "${linkText}"=${links.length}`);
     }
     await links[0].click();
 }
