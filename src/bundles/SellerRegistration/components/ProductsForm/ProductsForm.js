@@ -51,8 +51,8 @@ class ProductsForm extends BaseForm {
   }
 
   onClearProducts() {
-    const {clearProducts, services} = this.props;
-    clearProducts(services)
+    const {clearProducts, services, nextRoute} = this.props;
+    clearProducts(services, nextRoute)
   }
 
   render() {
@@ -228,12 +228,12 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(applicationActions.submitApplication());
         },
         // if services are empty, go back to services step, otherwise continue as normal
-        clearProducts: (services) => {
+        clearProducts: (services, nextRoute) => {
           if(!some(Object.values(services))) {
             dispatch(applicationActions.navigateToStep('/domains'));
           } else {
-            dispatch(stepActions.stepComplete('products'))
-            dispatch(applicationActions.navigateToStep('/review'));
+            dispatch(stepActions.stepComplete('products'));
+            dispatch(applicationActions.navigateToStep(nextRoute));
           }
         }
     }
