@@ -5,7 +5,7 @@ const AssessmentCriteria = (props) => {
   switch (service_slug) {
     case 'strategy':
       return (
-        <span>Strategy and policy case studies must demonstrate <strong>3 or more</strong> of the following criteria: <ul>
+        <span>Strategy and policy case studies must demonstrate <strong>2 or more</strong> of the following criteria: <ul>
         <li>
         Analysis of new technologies with respect to existing products, practices or processes.
         </li>
