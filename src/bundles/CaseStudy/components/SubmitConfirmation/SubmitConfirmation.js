@@ -9,6 +9,7 @@ class SubmitConfirmation extends React.Component {
 
     render() {
         const {
+            briefLot,
             domain,
             closingDate,
             previewUrl,
@@ -35,14 +36,18 @@ class SubmitConfirmation extends React.Component {
                             <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>.
                         </p>
 
-                        <p>
-                            While you wait you can prepare your response
-                            using our Google sheets template.
-                        </p>
+                        <p>While you wait, you can prepare your response by downloading the template.</p>
 
                         <p styleName="footer-link">
-                            <a href={previewUrl} download>
-                                Download brief response template</a>
+                            {briefLot == 'training' ? (
+                                <a class="au-btn" href="/static/media/documents/Training_opportunities_questions_for_sellers.docx" download>
+                                    Download response template (DOCX)
+                                </a>
+                            ) : (
+                                <a class="au-btn" href={previewUrl} download>
+                                    Download response template (XLSX)
+                                </a>
+                            )}
                         </p>
                     </span>
                 )}
