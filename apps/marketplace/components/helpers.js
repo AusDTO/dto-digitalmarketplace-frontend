@@ -12,7 +12,7 @@ export const statusConvert = (status = '') => {
 
 export const getResponsesFileSizeAndType = (bytes, lot) => {
   let result = ''
-  if (lot === 'digital-professionals') {
+  if (lot === 'digital-professionals' || lot === 'training') {
     let size = ''
     if (bytes < 1048576) {
       size = `${parseFloat(bytes / 1024).toFixed(2)}KB`
