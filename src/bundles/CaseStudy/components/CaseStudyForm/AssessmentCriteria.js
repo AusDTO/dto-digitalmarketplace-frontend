@@ -215,7 +215,7 @@ const AssessmentCriteria = (props) => {
 
     case 'cyber':
       return (
-        <span>Cyber security case studies must demonstrate <b>1 or more</b>of the following abilities and experience:
+        <span>Cyber security case studies must demonstrate <b>1 or more</b> of the following abilities and experience:
           <ul>
             <li>Research and development to better detect, deter and respond to emerging cyber security issues.</li>
             <li>
@@ -246,7 +246,7 @@ const AssessmentCriteria = (props) => {
 
     case 'datasci':
       return (
-        <span>Data science and management case studies must demonstrate <b>1 or more</b>of the following abilities and experience:
+        <span>Data science and management case studies must demonstrate <b>1 or more</b> of the following abilities and experience:
           <ul>
             <li>Solving difficult, non-routine analysis problems, working with large, complex data sets.</li>
             <li>Experience with statistical methods such as parametric and nonparametric significance testing.</li>
