@@ -16,7 +16,10 @@ const BriefChoice = () => (
         <AUheading level="2" size="md">
           Digital outcome
         </AUheading>
-        <p>Find a team to help you work towards a digital project or goal, for example, a booking system or an accessibility audit.</p>
+        <p>
+          Find a team to help you work towards a digital project or goal, for example, a booking system or an
+          accessibility audit.
+        </p>
         <ul className={styles.tickList}>
           <li>Sellers submit 150 word responses to your criteria for shortlisting.</li>
           <li>Request proposals from shortlisted sellers.</li>
