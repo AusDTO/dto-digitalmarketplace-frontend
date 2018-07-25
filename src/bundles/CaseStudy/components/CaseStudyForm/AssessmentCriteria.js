@@ -283,7 +283,7 @@ const AssessmentCriteria = (props) => {
       Research and development to better detect, deter and respond to emerging cyber security issues.
     </li>
     <li>
-      Discovering, communicating and explaining security vulnerabilities to development teams to ensure secure coding in
+      Discovering, communicating and explaining security vulnerabilities to teams to ensure secure coding in
       a multi-product, continuous delivery environment.
     </li>
     <li>
@@ -307,10 +307,10 @@ const AssessmentCriteria = (props) => {
       Security incident or emergency response.
     </li>
     <li>
-      Monitoring of IT equipment, facility access or infrastructure access.
+      Provision and monitoring of access to data, IT systems, facilities or infrastructure.
     </li>
     <li>
-      Recovery of information from computers and storage devices.
+      Recovery or secure deletion of information from computers and storage devices.
     </li>
   </ul></span>)
       break
