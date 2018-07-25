@@ -16,10 +16,10 @@ const BriefChoice = () => (
         <AUheading level="2" size="md">
           Digital outcome
         </AUheading>
-        <p>Find a team to help you work towards a digital project or goal, for example, a website.</p>
+        <p>Find a team to help you work towards a digital project or goal, for example, a booking system or an accessibility audit.</p>
         <ul className={styles.tickList}>
-          <li>Receive written proposals from sellers.</li>
-          <li>Request case studies, work history, references and/or presentations.</li>
+          <li>Sellers submit 150 word responses to your criteria for shortlisting.</li>
+          <li>Request proposals from shortlisted sellers.</li>
         </ul>
         <AUheading level="3" size="sm">
           Receive responses within:
@@ -40,7 +40,7 @@ const BriefChoice = () => (
         </AUheading>
         <p>Build and embed skills to support digital services, for example, coaching in agile practices.</p>
         <ul className={styles.tickList}>
-          <li>Receive written proposals, costs and résumés from sellers.</li>
+          <li>Sellers submit written proposals, costs and résumés through the Marketplace.</li>
           <li>Request case studies, references, interview and/or presentations.</li>
         </ul>
         <AUheading level="3" size="sm">
@@ -62,7 +62,7 @@ const BriefChoice = () => (
         </AUheading>
         <p>Find a person with specialised digital skills, for example, a developer.</p>
         <ul className={styles.tickList}>
-          <li>Receive seller résumés.</li>
+          <li>Sellers can submit up to 3 résumés.</li>
           <li>Request references, interviews, scenarios and/or presentations.</li>
         </ul>
         <AUheading level="3" size="sm">
