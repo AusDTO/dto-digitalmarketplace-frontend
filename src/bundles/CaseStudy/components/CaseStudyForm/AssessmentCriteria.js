@@ -347,16 +347,22 @@ const AssessmentCriteria = (props) => {
       Artificial intelligence
     </li>
     <li>
-      Robotics
+      Blockchain
+    </li>
+    <li>
+      Internet of Things
+    </li>
+    <li>
+      Virtual, Augmented and Mixed Reality
+    </li>
+    <li>
+      Robotic devices
     </li>
     <li>
       Wearables
     </li>
     <li>
-      Beacons, BLE, accessory port, ADK
-    </li>
-    <li>
-      VR, AR, Kinect, NUI, or machine vision technologies.
+      Machine vision technologies
     </li>
   </ul></span>)
       break
