@@ -360,6 +360,19 @@ const AssessmentCriteria = (props) => {
     </li>
   </ul></span>)
       break
+
+    case 'changetransformation':
+      return (
+        <span>Change and transformation case studies must demonstrate <b>2 or more</b> of the following criteria:
+          <ul>
+            <li>Work at the team, portfolio or program level, to help organisations establish processes for managing a portfolio of work in an agile way.</li>
+            <li>Experience delivering change activities and leading stakeholder engagement.</li>
+            <li>Identifying drivers for change.</li>
+            <li>Designing change programs and embedding change.</li>
+            <li>Assess business readiness, design and implement target operating models.</li>
+          </ul>
+        </span>
+      )
     
     case 'training':
       return (
