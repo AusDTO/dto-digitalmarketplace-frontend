@@ -10,7 +10,6 @@ class SubmitConfirmation extends React.Component {
     render() {
         const {
             briefLot,
-            domain,
             closingDate,
             previewUrl,
             profileUrl,
@@ -19,6 +18,9 @@ class SubmitConfirmation extends React.Component {
             isRecruiter,
             created         // if an assessment has been created
         } = this.props;
+
+        // domain will be undefined for training briefs because they don't have an area of expertise
+        const domain = briefLot == 'training' ? 'Training, Learning and Development' : this.props.domain
 
         return (
             <section>
