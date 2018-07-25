@@ -136,8 +136,8 @@ const AssessmentCriteria = (props) => {
     Use and implementation of modern front end web programming techniques, such as HTML5, CSS3, AJAX, REST and JSON.
   </li>
   <li>
-    Good development skills in one or more of Ruby, Python, JavaScript, with familiarity with one or more open source
-    web frameworks such as Rails, Django or similar.
+    Good development skills in one or more of .Net, Java, Ruby, Python, JavaScript, PHP or similar with familiarity 
+    with one or more open source web frameworks such as Rails, Django, SharePoint, Drupal or similar.
   </li>
   <li>
     Proven capability in managing technology implementation projects.
