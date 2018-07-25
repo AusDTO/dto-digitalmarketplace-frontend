@@ -13,8 +13,7 @@ export const create = async (params) => {
 }
 
 const selectLot = async (lot) => {
-    await selectRadio(lot);
-    await clickLink('Continue');
+    await clickLink(lot, true);
 }
 
 const createBrief = async () => {
