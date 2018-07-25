@@ -360,6 +360,20 @@ const AssessmentCriteria = (props) => {
     </li>
   </ul></span>)
       break
+    
+    case 'training':
+      return (
+        <span>Training, Learning and Development case studies must demonstrate <b>3 or more</b> of the following criteria:
+          <ul>
+            <li>Conduct analysis to determine user capability needs.</li>
+            <li>Design learning solutions to build digital capabilities for individuals, teams, executives and organisations.</li>
+            <li>Develop learning solutions in conjunction with subject-matter experts, learning design standards and other sources.</li>
+            <li>Deliver learning solutions that meet user needs across appropriate modalities.</li>
+            <li>Evaluation and iterate learning solutions to improve agreed outcomes.</li>
+            <li>Support the ongoing development and implementation of digital expertise in individuals, teams, executives and organisations.</li>
+          </ul>
+        </span>
+      )
     default:
       return (<span></span>)
   }
