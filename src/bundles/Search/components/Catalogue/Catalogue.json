@@ -18,7 +18,6 @@
     "search": {
         "role": {
             "Agile delivery and Governance": false,
-            "Change, Training and Transformation": false,
             "Content and Publishing": false,
             "Cyber security": false,
             "Digital products": false,
@@ -47,7 +46,6 @@
                 "link": "/supplier/1",
                 "services": {
                     "Agile delivery and Governance": true,
-                    "Change, Training and Transformation": true,
                     "Software engineering and Development": true,
                     "User research and Design": true
                 },
@@ -70,7 +68,6 @@
                 "link": "/supplier/2",
                 "services": {
                     "Agile delivery and Governance": true,
-                    "Change, Training and Transformation": true,
                     "User research and Design": true
                 },
                 "title": "BetaContext"
@@ -98,7 +95,6 @@
                 "link": "/supplier/125634",
                 "services": {
                     "Agile delivery and Governance": true,
-                    "Change, Training and Transformation": true,
                     "Software engineering and Development": true,
                     "User research and Design": true
                 },
@@ -145,7 +141,6 @@
                 "link": "/supplier/119",
                 "services": {
                     "Agile delivery and Governance": true,
-                    "Change, Training and Transformation": true,
                     "Software engineering and Development": true,
                     "User research and Design": true
                 },

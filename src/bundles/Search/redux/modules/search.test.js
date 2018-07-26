@@ -181,7 +181,6 @@ test('scrubState', () => {
   const state = {
     role: {
       'Agile delivery and Governance': false,
-      'Change, Training and Transformation': false,
       'Content and Publishing': false,
       'Cyber security': true,
       'Digital products': false,
