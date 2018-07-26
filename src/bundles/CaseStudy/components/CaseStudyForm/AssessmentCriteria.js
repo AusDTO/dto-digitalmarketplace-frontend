@@ -175,24 +175,6 @@ const AssessmentCriteria = (props) => {
         </span>
       )
 
-    case 'change':
-      return (
-        <span>Change, training and transformation case studies must demonstrate <b>2 or more</b> of the following criteria:
-          <ul>
-            <li>
-              Work at the team, portfolio or program level, to help organisations establish processes for managing a portfolio
-              of work in an agile way.
-            </li>
-            <li>Experience delivering change activities and leading stakeholder engagement.</li>
-            <li>Identifying drivers for change.</li>
-            <li>Designing change programs and embedding change.</li>
-            <li>Identifying learning and development opportunities.</li>
-            <li>Assess business readiness, design and implement target operating models.</li>
-            <li>Design and delivery of training programs.</li>
-          </ul>
-        </span>
-      )
-
     case 'marketingcomms':
       return (
         <span>Marketing, communications and engagement case studies must demonstrate <b>1 or more</b> of the following abilities and experience:

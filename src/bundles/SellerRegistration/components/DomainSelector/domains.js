@@ -30,11 +30,6 @@ export default [
         description: 'Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.',
     },
     {
-        key: 'change',
-        label: 'Change, Training and Transformation',
-        description: 'Change, training and transformation will soon be removed. New sellers should consider offering Change and Transformation and/or Training, Learning and Development.<br /><br />Change, training and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, agile coaching, change management and training in new ways of working.'
-    },
-    {
         key: 'changetransformation',
         label: 'Change and Transformation',
         description: 'Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.'
