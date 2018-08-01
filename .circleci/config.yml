@@ -39,7 +39,7 @@ jobs:
       - run: 
           name: Check Styles
           command: |
-            eslint .
+            npm run eslint
 
       - run: 
           name: Npm Build
