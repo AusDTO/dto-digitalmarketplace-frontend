@@ -40,7 +40,6 @@ jobs:
           name: Check Styles
           command: |
             npm run eslint
-            echo lint
 
       - run: 
           name: Npm Build
