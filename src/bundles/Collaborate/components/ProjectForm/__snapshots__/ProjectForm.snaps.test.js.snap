@@ -748,21 +748,27 @@ exports[`ProjectForm renders 1`] = `
         />
       </div>
       <div>
-        <input
-          checked={false}
-          disabled={false}
-          id="contactAgreed"
-          name="contact_agreed"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-        />
         <label
+          className="au-control-input"
           htmlFor="contactAgreed"
         >
-          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          <input
+            checked={false}
+            className="au-control-input__input"
+            disabled={false}
+            id="contactAgreed"
+            name="contact_agreed"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="au-control-input__text"
+          >
+            I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          </span>
         </label>
       </div>
       <input
@@ -1522,21 +1528,27 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
         />
       </div>
       <div>
-        <input
-          checked={false}
-          disabled={false}
-          id="contactAgreed"
-          name="contact_agreed"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-        />
         <label
+          className="au-control-input"
           htmlFor="contactAgreed"
         >
-          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          <input
+            checked={false}
+            className="au-control-input__input"
+            disabled={false}
+            id="contactAgreed"
+            name="contact_agreed"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="au-control-input__text"
+          >
+            I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          </span>
         </label>
       </div>
       <input
@@ -2535,21 +2547,27 @@ exports[`ProjectForm renders with errors 1`] = `
             Please acknowledge the contact point.
           </span>
         </a>
-        <input
-          checked={false}
-          disabled={false}
-          id="contactAgreed"
-          name="contact_agreed"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-        />
         <label
+          className="au-control-input"
           htmlFor="contactAgreed"
         >
-          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          <input
+            checked={false}
+            className="au-control-input__input"
+            disabled={false}
+            id="contactAgreed"
+            name="contact_agreed"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="au-control-input__text"
+          >
+            I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          </span>
         </label>
       </div>
       <input
@@ -3315,21 +3333,27 @@ exports[`ProjectForm renders with form_options 1`] = `
         />
       </div>
       <div>
-        <input
-          checked={false}
-          disabled={false}
-          id="contactAgreed"
-          name="contact_agreed"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-        />
         <label
+          className="au-control-input"
           htmlFor="contactAgreed"
         >
-          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          <input
+            checked={false}
+            className="au-control-input__input"
+            disabled={false}
+            id="contactAgreed"
+            name="contact_agreed"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="au-control-input__text"
+          >
+            I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          </span>
         </label>
       </div>
       <input
@@ -4089,21 +4113,27 @@ exports[`ProjectForm renders with populated fields 1`] = `
         />
       </div>
       <div>
-        <input
-          checked={false}
-          disabled={false}
-          id="contactAgreed"
-          name="contact_agreed"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          type="checkbox"
-        />
         <label
+          className="au-control-input"
           htmlFor="contactAgreed"
         >
-          I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          <input
+            checked={false}
+            className="au-control-input__input"
+            disabled={false}
+            id="contactAgreed"
+            name="contact_agreed"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="au-control-input__text"
+          >
+            I confirm this person gives permission to be contacted and approve the use of this information being made public on the Digital Marketplace.
+          </span>
         </label>
       </div>
       <input

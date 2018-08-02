@@ -32,9 +32,9 @@ class CheckboxDetailsField extends React.Component {
     /* eslint-disable jsx-a11y/label-has-for */
 
     return (
-      <label className="uikit-control-input" htmlFor={id}>
+      <label className="au-control-input" htmlFor={id}>
         <Control.checkbox
-          className="uikit-control-input__input"
+          className="au-control-input__input"
           onClick={this.onToggle.bind(this)}
           id={id}
           name={name}
@@ -43,7 +43,7 @@ class CheckboxDetailsField extends React.Component {
           validators={validators}
           disabled={disabled}
         />
-        <span className="uikit-control-input__text">
+        <span className="au-control-input__text">
           {label}
         </span>
         {/*<StatefulError model={model} messages={messages} id={id} />*/}

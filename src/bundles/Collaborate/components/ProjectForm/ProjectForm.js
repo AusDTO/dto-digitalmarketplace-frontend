@@ -403,14 +403,18 @@ class ProjectForm extends BaseForm {
                                     required: 'Please acknowledge the contact point.'
                                 }}
                             />
-                            <Control.checkbox
-                                model={`${model}.contact_agreed`}
-                                id="contactAgreed"
-                                name="contact_agreed"
-                                validators={{required}}
-                            />
-                            <label htmlFor="contactAgreed">I confirm this person gives permission to be contacted and
-                                approve the use of this information being made public on the Digital Marketplace.
+                            <label className="au-control-input" htmlFor="contactAgreed">
+                                <Control.checkbox
+                                    className="au-control-input__input"
+                                    model={`${model}.contact_agreed`}
+                                    id="contactAgreed"
+                                    name="contact_agreed"
+                                    validators={{required}}
+                                />
+                                <span className="au-control-input__text">
+                                    I confirm this person gives permission to be contacted and
+                                    approve the use of this information being made public on the Digital Marketplace.
+                                </span>
                             </label>
                         </div>
 
