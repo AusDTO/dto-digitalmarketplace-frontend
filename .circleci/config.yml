@@ -1,8 +1,8 @@
 version: 2
 references:
-  npm-cache-key: &npm-cache-key
+  npm_cache_key: &npm_cache_key
     key: npm-cache-{{ checksum "package.json" }}
-  cf-install: &cf-install
+  cf_install: &cf_install
     run:
       name: Install Cloud Foundry CLI
       command: |
@@ -11,7 +11,7 @@ references:
         cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
         cf install-plugin https://github.com/govau/cf-run-and-wait/releases/download/0.1/run-and-wait.linux64 -f
         cf -v
-  deploy-docker: &deploy-docker
+  deploy_docker: &deploy_docker
     docker:
       - image: circleci/node:8-stretch
         environment:
@@ -19,20 +19,20 @@ references:
 
 jobs:
   build:
-    <<: *deploy-docker
+    <<: *deploy_docker
     steps:
-      - checkout
       - attach_workspace:
           at: .
+      - checkout
 
       - restore_cache:
-          <<: *npm-cache-key
+          <<: *npm_cache_key
       - run: 
           name: Npm Install
           command: |
             npm install
       - save_cache:
-          <<: *npm-cache-key
+          <<: *npm_cache_key
           paths:
             - node_modules
 
@@ -57,11 +57,11 @@ jobs:
             - ~
 
   deploy_to_rc:
-    <<: *deploy-docker
+    <<: *deploy_docker
     steps:
       - attach_workspace:
           at: .
-      - *cf-install
+      - *cf_install
       - run:
           name: Deploy to RC
           command: |
@@ -70,11 +70,11 @@ jobs:
             # cf zero-downtime-push dm-rc-admin -f manifest.rc.yml --show-app-log
 
   deploy_to_production_clone:
-    <<: *deploy-docker
+    <<: *deploy_docker
     steps:
       - attach_workspace:
           at: .
-      - *cf-install
+      - *cf_install
       - run:
           name: Deploy to Production Clone
           command: |
@@ -83,11 +83,11 @@ jobs:
             # cf zero-downtime-push dm-dev-admin -f manifest.production.clone.yml --show-app-log
 
   deploy_to_staging:
-    <<: *deploy-docker
+    <<: *deploy_docker
     steps:
       - attach_workspace:
           at: .
-      - *cf-install
+      - *cf_install
       - run:
           name: Deploy to Staging
           command: |
@@ -95,11 +95,11 @@ jobs:
             cf zero-downtime-push dm-dev-frontend -f manifest.yml --show-app-log
 
   deploy_to_production:
-    <<: *deploy-docker
+    <<: *deploy_docker
     steps:
       - attach_workspace:
           at: .
-      - *cf-install
+      - *cf_install
       - run:
           name: Deploy to Production
           command: |
