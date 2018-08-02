@@ -102,6 +102,11 @@ const PrivateInfo = (props) => {
                     })}
                     </tbody>
                 </table>
+                {documents.workers.noWorkersCompensation && 
+                    <p>
+                        <b>Workers compensation insurance not held by this seller</b>
+                    </p>
+                }
             </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
               {Object.keys(recruiter_info).map((key, i) => {
