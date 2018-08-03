@@ -1,4 +1,5 @@
 var jsonpatch = require('fast-json-patch');
+import isEmpty from 'lodash/isEmpty';
 
 // filter out application changes to keys we don't care about
 let ignoreKeys = ["/supplier_code", "/supplier", "/submitted_at", "/status", "/seller_types/recruitment",
@@ -14,6 +15,7 @@ let ignoreKeys = ["/supplier_code", "/supplier", "/submitted_at", "/status", "/s
 export const ignoreCriteria = (supplier, application, key) => {
   return application[key] === supplier[key] ||                 // values are unchanged from live supplier obj
     supplier[key] === '' ||
+    isEmpty(supplier[key]) ||
     supplier[key].length === 0 ||
     typeof application[key] === 'object' ||
     typeof supplier[key] === 'object';
