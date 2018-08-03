@@ -84,14 +84,15 @@ const PrivateInfo = (props) => {
                     </thead>
                     <tbody>
                     {Object.keys(documents).map((key, val) => {
-                        const {filename, expiry, application_id} = documents[key];
+                        const {filename, expiry, application_id, noWorkersCompensation} = documents[key];
                         const url = application_id ? `/admin/application/${application_id}/documents/` : documentsUrl
                         return (
                             <tr key={val}>
                                 <td>
-                                    <a href={`${url}${filename}`}>
-                                        {documentTitle[key]}
-                                    </a>
+                                    {key == 'workers' && noWorkersCompensation
+                                        ? documentTitle[key]
+                                        : <a href={`${url}${filename}`}>{documentTitle[key]}</a>
+                                    }
                                 </td>
                                 <td>
                                     {expiry && format(new Date(expiry), 'DD/MM/YYYY')}
@@ -101,6 +102,11 @@ const PrivateInfo = (props) => {
                     })}
                     </tbody>
                 </table>
+                {documents.workers.noWorkersCompensation && 
+                    <p>
+                        <b>Workers compensation insurance not held by this seller</b>
+                    </p>
+                }
             </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
               {Object.keys(recruiter_info).map((key, i) => {
