@@ -16,7 +16,7 @@ references:
       - image: circleci/node:8-stretch
         environment:
           TZ: "/usr/share/zoneinfo/Australia/Sydney"
-  required_test_jobs: &required_test_jobs
+  required_for_deploy: &required_for_deploy
     requires:
       - check_styles
       - run_tests
@@ -143,28 +143,28 @@ workflows:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
       - deploy_to_rc:
-          <<: *required_test_jobs
+          <<: *required_for_deploy
           filters:
             tags:
               ignore: /.*/
             branches:
               only: rc
       - deploy_to_staging:
-          <<: *required_test_jobs
+          <<: *required_for_deploy
           filters:
             tags:
               ignore: /.*/
             branches:
               only: master
       - deploy_to_production:
-          <<: *required_test_jobs
+          <<: *required_for_deploy
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
       - deploy_to_production_clone:
-          <<: *required_test_jobs
+          <<: *required_for_deploy
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
