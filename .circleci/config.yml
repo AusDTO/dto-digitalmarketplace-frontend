@@ -16,6 +16,10 @@ references:
       - image: circleci/node:8-stretch
         environment:
           TZ: "/usr/share/zoneinfo/Australia/Sydney"
+  required_test_jobs: &required_test_jobs
+    requires:
+      - check_styles
+      - run_tests
 
 jobs:
   build:
@@ -37,24 +41,34 @@ jobs:
             - node_modules
 
       - run: 
-          name: Check Styles
-          command: |
-            npm run eslint
-
-      - run: 
           name: Npm Build
           command: |
             npm run build
-
-      - run: 
-          name: Run Tests
-          command: |
-            npm test
-
+      
       - persist_to_workspace:
           root: .
           paths:
             - ~
+
+  run_tests:
+    <<: *deploy_docker
+    steps:
+      - attach_workspace:
+          at: .
+      - run: 
+          name: Run Tests
+          command: |
+            npm test
+    
+  check_styles:
+    <<: *deploy_docker
+    steps:
+      - attach_workspace:
+          at: .
+      - run: 
+          name: Check Styles
+          command: |
+            npm run eslint
 
   deploy_to_rc:
     <<: *deploy_docker
@@ -116,33 +130,41 @@ workflows:
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
-      - deploy_to_rc:
+      - check_styles:
           requires:
             - build
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+      - run_tests:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+      - deploy_to_rc:
+          <<: *required_test_jobs
           filters:
             tags:
               ignore: /.*/
             branches:
               only: rc
       - deploy_to_staging:
-          requires:
-            - build
+          <<: *required_test_jobs
           filters:
             tags:
               ignore: /.*/
             branches:
               only: master
       - deploy_to_production:
-          requires:
-            - build
+          <<: *required_test_jobs
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
       - deploy_to_production_clone:
-          requires:
-            - build
+          <<: *required_test_jobs
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
