@@ -14,6 +14,7 @@ let ignoreKeys = ["/supplier_code", "/supplier", "/submitted_at", "/status", "/s
 export const ignoreCriteria = (supplier, application, key) => {
   return application[key] === supplier[key] ||                 // values are unchanged from live supplier obj
     supplier[key] === '' ||
+    !supplier[key] ||
     supplier[key].length === 0 ||
     typeof application[key] === 'object' ||
     typeof supplier[key] === 'object';
