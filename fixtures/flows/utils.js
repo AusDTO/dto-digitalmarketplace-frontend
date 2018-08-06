@@ -58,14 +58,14 @@ export const clickButton = async (value) => {
 export const clickLink = async (linkText, isUrl) => {
     console.log(`Clicking link "${linkText}"`);
     var links;
-    if (isUrl){
+    if (isUrl) {
         links = await getElementHandles(`//a[contains(@href, "${linkText}")]`);
     } else {
         links = await getElementHandles(`//a[.="${linkText}"]`);
     }
     if (process.env.IGNORE_MULTIPLE_LINKS != 'true') {
         expect(links.length).to.equal(1, `Number of links found for "${linkText}"=${links.length}`);
-    } else if(links.length > 1) {
+    } else if (links.length > 1) {
         console.warn(`Number of links found for "${linkText}"=${links.length}`);
     }
     await links[0].click();
@@ -75,7 +75,7 @@ export const words = function (numberOfWords, numberOfCharacters) {
     let text = randomWords({ exactly: numberOfWords }).join(' ');
 
     if (numberOfCharacters) {
-        text = text.substring(0, numberOfCharacters);
+        text = text.substring(0, numberOfCharacters - 1);
     }
     return text;
 }
