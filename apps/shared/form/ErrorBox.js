@@ -58,10 +58,8 @@ export class ErrorBoxComponent extends React.Component {
                 </li>
               ))
             )}
-          {errorMessage && typeof errorMessage == 'string' && <li key="errorMessage">{errorMessage}</li>}
-          {Array.isArray(errorMessage) && errorMessage.map((err, i) => (
-                <li key={`errorMessage${i}`}>{err.message}</li>
-              ))}
+          {errorMessage && typeof errorMessage === 'string' && <li key="errorMessage">{errorMessage}</li>}
+          {Array.isArray(errorMessage) && errorMessage.map((err, i) => <li key={`errorMessage${i}`}>{err.message}</li>)}
         </ul>
       </AUpageAlert>
     )
