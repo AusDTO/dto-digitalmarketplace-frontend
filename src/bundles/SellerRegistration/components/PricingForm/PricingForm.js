@@ -80,10 +80,23 @@ class PricingForm extends BaseForm {
               <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
             : '' }
             <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
-            <p>Indicate the maximum daily rate you normally charge for services.</p>
-            <p>Please use the <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">SFIA Foundation framework level 5</a> as the skill level you are quoting for.</p>
-            <p>We use this information to confirm your business offers value for money to government buyers.</p>
-            <p>For more information, you can read our <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">Seller Pricing FAQs</a> and view the <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000080555-Daily-rates-trend-charts" rel="external">daily rates trend charts</a>.</p>
+            <p>
+              The Marketplace asks for a comparable level of pricing across all sellers. This helps ensure that your 
+              business offers value for money. We ask sellers to list their maximum daily rate (including GST) for 
+              each service, using {' '}
+              <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">
+                 Skills Framework for the Information Age (SFIA) level 5
+              </a> as a guide.
+            </p>
+            <p>For more information, you can read our {' '}
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">
+                 Seller Pricing FAQs
+              </a>
+              and view the 
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000080555-Daily-rates-trend-charts" rel="external">
+                daily rates trend charts
+              </a>.
+            </p>
         </header>
         <article role="main">
           <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
