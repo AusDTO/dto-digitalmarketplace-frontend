@@ -82,13 +82,16 @@ class PricingForm extends BaseForm {
             <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
             <p>
               The Marketplace asks for a comparable level of pricing across all sellers. This helps ensure that your 
-              business offers value for money. We ask sellers to list their maximum daily rate (including GST) for 
-              each service, using {' '}
+              business offers value for money.
+            </p>
+            <p>
+              To do this, we ask sellers to list their maximum daily rate (including GST) for each service, using {' '}
               <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">
                  Skills Framework for the Information Age (SFIA) level 5
               </a> as a guide.
             </p>
-            <p>For more information, you can read our {' '}
+            <p>
+              For more information, you can also read our {' '}
               <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">
                  Seller Pricing FAQs
               </a>
