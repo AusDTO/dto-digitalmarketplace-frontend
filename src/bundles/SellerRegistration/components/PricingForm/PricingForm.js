@@ -88,7 +88,7 @@ class PricingForm extends BaseForm {
               To do this, we ask sellers to list their maximum daily rate (including GST) for each service, using {' '}
               <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">
                  Skills Framework for the Information Age (SFIA) level 5
-              </a> as a guide.
+              </a>as a guide.
             </p>
             <p>
               For more information, you can also read our {' '}
