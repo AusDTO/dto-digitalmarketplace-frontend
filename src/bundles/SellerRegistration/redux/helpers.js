@@ -71,7 +71,7 @@ export const pruneModel = (model) => {
   }
 
   if (products) {
-    newModel = { ...newModel, products: omitBy(products, product => !product) }
+    newModel = { ...newModel, products: omitBy(products, product => isEmpty(product)) }
   }
 
   if (recruiter_info) {
