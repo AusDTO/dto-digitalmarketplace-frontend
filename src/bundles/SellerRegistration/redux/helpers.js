@@ -76,7 +76,8 @@ export const pruneModel = (model) => {
 
   if (recruiter_info) {
     delete newModel['recruiter_info'];
-    newModel = { ...newModel, recruiter_info: pruneObject(recruiter_info) }
+    let recruiter_information = model['recruiter'] == 'no' ? {} : pruneObject(recruiter_info)
+    newModel = { ...newModel, recruiter_info: recruiter_information }
   }
 
   return newModel;
