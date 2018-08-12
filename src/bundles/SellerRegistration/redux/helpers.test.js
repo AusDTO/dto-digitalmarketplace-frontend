@@ -87,34 +87,145 @@ test('dispatchFormState with empty schema', () => {
   expect(dispatch).toHaveBeenCalledTimes(0);
 });
 
+test('Prune services from model', () => {
+  const model = {
+    services: {
+      'Training': false,
+      'Cyber security': true,
+      'Strategy': false
+    }
+  };
 
-test('pruneModel', () => {
-    var case_studies = new Array();
-    case_studies['abc-def'] = {'title': 'keep this case study', service: 'ServiceA'};
-    case_studies['xyz-ijk'] = {'title': 'remove this case study', service: 'ServiceB'};
-    const model = {
-        case_studies: case_studies,
-        services: {'ServiceA': true },
-        pricing: { 'ServiceA': { maxPrice: 1000 }, 'ServiceB': { maxPrice: 2000 } },
-        products: [
-            false,
-            undefined,
-            null
-        ],
-        recruiter_info: { 'ServiceA': { margin: 10 }, 'ServiceB': { margin: 20 } }
-    };
+  const expected = {
+    services: {
+      'Cyber security': true
+    }
+  };
 
-    const expectedResult = {
-        case_studies: {
-            'abc-def': {'title': 'keep this case study', service: 'ServiceA'}
-        },
-        services: {'ServiceA': true},
-        pricing: { 'ServiceA': { maxPrice: 1000 } },
-        products: {},
-        recruiter_info: { 'ServiceA': { margin: 10 } }
-    };
+  expect(pruneModel(model)).toEqual(expected);
+});
 
-    expect(pruneModel(model)).toEqual(expectedResult);
+test('Prune case studies from model', () => { 
+  const model = {
+    case_studies: {
+      '1': {'title': 'remove this case study', service: 'Strategy'},
+      '2': {'title': 'keep this case study', service: 'Cyber security'},
+      '3': {'title': 'remove this case study too', service: 'User research'}
+    },
+    services: {'Cyber security': true}
+  };
+
+  const expected = {
+    case_studies: {
+        '2': {'title': 'keep this case study', service: 'Cyber security'}
+    },
+    services: {'Cyber security': true}
+  };
+
+  expect(pruneModel(model)).toEqual(expected);
+});
+
+test('Prune pricing from model', () => {
+  const model = {
+    pricing: {
+      'Strategy': {maxPrice: 3000},
+      'Cyber security': {maxPrice: 1000},
+      'Training': {maxPrice: 2000}
+    },
+    services: {'Cyber security': true}
+  };
+
+  const expected = {
+    pricing: {
+        'Cyber security': {maxPrice: 1000}
+    },
+    services: {'Cyber security': true}
+  };
+
+  expect(pruneModel(model)).toEqual(expected);
+});
+
+test('Prune products from model', () => {
+  const model = {
+    products: {
+      '0': {},
+      '1': {id: 123, name: 'My product'},
+      '2': {}
+    },
+    services: {'Cyber security': true}
+  };
+
+  const expected = {
+    products: {
+      '1': {id: 123, name: 'My product'}
+    },
+    services: {'Cyber security': true}
+  };
+
+  expect(pruneModel(model)).toEqual(expected);
+});
+
+test('Prune recruiter info from model when seller is a recruiter', () => {
+  const model = {
+    recruiter: 'yes',
+    recruiter_info: {
+      'Strategy': {
+        margin: '10',
+        markup: '10'
+      },
+      'Cyber security': {
+        margin: '10',
+        markup: '10'
+      },
+      'Training': {
+        margin: '10',
+        markup: '10'
+      }
+    },
+    services: {'Cyber security': true}
+  };
+
+  const expected = {
+    recruiter: 'yes',
+    recruiter_info: {
+      'Cyber security': {
+        margin: '10',
+        markup: '10'
+      }
+    },
+    services: {'Cyber security': true}
+  };
+
+  expect(pruneModel(model)).toEqual(expected);
+});
+
+test('Prune recruiter info from model when seller is not a recruiter', () => {
+  const model = {
+    recruiter: 'no',
+    recruiter_info: {
+      'Strategy': {
+        margin: '10',
+        markup: '10'
+      },
+      'Cyber security': {
+        margin: '10',
+        markup: '10'
+      },
+      'Training': {
+        margin: '10',
+        markup: '10'
+      }
+    },
+    services: {'Cyber security': true}
+  };
+
+  const expected = {
+    recruiter: 'no',
+    recruiter_info: {},
+    services: {'Cyber security': true}
+  };
+
+  expect(pruneModel(model)).toEqual(expected);
 });
 
 test('flattenStateForms', () => {
