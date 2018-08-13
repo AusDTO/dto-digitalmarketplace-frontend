@@ -590,20 +590,6 @@ li:first-child.au-marketplace-header-link-list a {
   color: #ffffff;
 }
 
-.au-marketplace-header-badge {
-  padding: 2px 8px;
-  padding: 2px .5rem;
-  margin-left: 8px;
-  margin-left: .5rem;
-  border: solid 2px #fff;
-  border-radius: 2em;
-  font-size: 12px;
-  font-size: 0.75rem;
-  font-weight: normal;
-  vertical-align: super;
-  text-decoration: none;
-}
-
 .au-marketplace-header-inline-links {
   padding-left: 0;
   margin-top: 16px;
