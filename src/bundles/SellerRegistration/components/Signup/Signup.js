@@ -200,7 +200,7 @@ class Signup extends React.Component {
 
     const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation
     const hasPricingWarning = this.props.application.missingDailyRates
-
+    
     return (
       <div className="row">
         <Route path="/:route/:subroute?" render={({ match }) => {
@@ -294,15 +294,23 @@ Signup.propTypes = {
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   applicant: PropTypes.object,
+  applicantErrors: PropTypes.array,
   forms: PropTypes.object,
   filterSteps: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { application = {}, steps, options } = state;
+  const { 
+    application = {},
+    application_errors = [],
+    steps,
+    options
+  } = state;
+
   return {
     forms: getStateForms(state),
     application,
+    applicantErrors: application_errors,
     steps,
     options,
     ...ownProps
