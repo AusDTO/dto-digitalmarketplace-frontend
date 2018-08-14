@@ -102,7 +102,7 @@ const PrivateInfo = (props) => {
                     })}
                     </tbody>
                 </table>
-                {documents.workers.noWorkersCompensation && 
+                {documents && documents.workers && documents.workers.noWorkersCompensation && 
                     <p>
                         <b>Workers compensation insurance not held by this seller</b>
                     </p>
