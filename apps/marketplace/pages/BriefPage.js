@@ -23,6 +23,7 @@ import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/Brief
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
+import BriefResponseSupplierError from 'marketplace/components/Brief/BriefResponseSupplierError'
 
 class BriefPage extends Component {
   constructor(props) {
@@ -98,7 +99,12 @@ class BriefPage extends Component {
     this.props.brief.evaluationTypeSellerSubmissions.includes('Trainer résumés')
 
   render() {
-    const { currentlySending, loadBriefSuccess, match, app } = this.props
+    const {
+      currentlySending,
+      loadBriefSuccess,
+      match,
+      app
+    } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -159,7 +165,12 @@ class BriefPage extends Component {
                       {...this.props}
                     />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    Array.isArray(app.errorMessage) ? (
+                      <BriefResponseSupplierError setFocus={setFocus}
+                                                  {...this.props} />
+                    ) : (
+                      <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    )
                   )}{' '}
                 </span>
               )}
@@ -178,7 +189,12 @@ class BriefPage extends Component {
                       {...this.props}
                     />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    Array.isArray(app.errorMessage) ? (
+                      <BriefResponseSupplierError setFocus={setFocus}
+                                                  {...this.props} />
+                    ) : (
+                      <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    )
                   )}{' '}
                 </span>
               )}
@@ -207,7 +223,12 @@ class BriefPage extends Component {
                       {...this.props}
                     />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    Array.isArray(app.errorMessage) ? (
+                      <BriefResponseSupplierError setFocus={setFocus}
+                                                  {...this.props} />
+                    ) : (
+                      <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    )
                   )}{' '}
                 </span>
               )}
