@@ -36,8 +36,10 @@ const AUFooter = () => (
               <p>
                 An initiative of the <a href="https://www.dta.gov.au/">Digital Transformation Agency</a>. This program
                 forms part of the National Innovation and Science{' '}
-                <a href="https://innovation.gov.au/page/agenda">Agenda</a>. With the exception of the Commonwealth Coat
-                of Arms and where otherwise noted, this work is licensed under the{' '}
+                <a href="https://www.industry.gov.au/strategies-for-the-future/boosting-innovation-and-science">
+                  Agenda
+                </a>. With the exception of the Commonwealth Coat of Arms and where otherwise noted, this work is
+                licensed under the{' '}
                 <a href="https://github.com/govau/uikit/blob/master/LICENSE" rel="external">
                   MIT license
                 </a>
