@@ -108,6 +108,12 @@ class BriefPage extends Component {
         e.focus()
       }
     }
+    const errorScreen =
+      ~loadBriefSuccess && Array.isArray(app.errorMessage) ? (
+        <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
+      ) : (
+        <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+      )
 
     return (
       <div className="brief-page">
@@ -159,10 +165,8 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       {...this.props}
                     />
-                  ) : Array.isArray(app.errorMessage) ? (
-                    <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    errorScreen
                   )}{' '}
                 </span>
               )}
@@ -180,10 +184,8 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       {...this.props}
                     />
-                  ) : Array.isArray(app.errorMessage) ? (
-                    <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    errorScreen
                   )}{' '}
                 </span>
               )}
@@ -211,10 +213,8 @@ class BriefPage extends Component {
                       showTrainerResumes={this.showTrainingResumesFileUpload()}
                       {...this.props}
                     />
-                  ) : Array.isArray(app.errorMessage) ? (
-                    <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    errorScreen
                   )}{' '}
                 </span>
               )}
