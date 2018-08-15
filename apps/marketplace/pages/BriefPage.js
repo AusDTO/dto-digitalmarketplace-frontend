@@ -109,7 +109,7 @@ class BriefPage extends Component {
       }
     }
     const errorScreen =
-      ~loadBriefSuccess && Array.isArray(app.errorMessage) ? (
+      !loadBriefSuccess && Array.isArray(app.errorMessage) ? (
         <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
       ) : (
         <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
