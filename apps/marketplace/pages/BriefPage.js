@@ -99,12 +99,7 @@ class BriefPage extends Component {
     this.props.brief.evaluationTypeSellerSubmissions.includes('Trainer résumés')
 
   render() {
-    const {
-      currentlySending,
-      loadBriefSuccess,
-      match,
-      app
-    } = this.props
+    const { currentlySending, loadBriefSuccess, match, app } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -164,13 +159,10 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       {...this.props}
                     />
+                  ) : Array.isArray(app.errorMessage) ? (
+                    <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
                   ) : (
-                    Array.isArray(app.errorMessage) ? (
-                      <BriefResponseSupplierError setFocus={setFocus}
-                                                  {...this.props} />
-                    ) : (
-                      <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
-                    )
+                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
                   )}{' '}
                 </span>
               )}
@@ -188,13 +180,10 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       {...this.props}
                     />
+                  ) : Array.isArray(app.errorMessage) ? (
+                    <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
                   ) : (
-                    Array.isArray(app.errorMessage) ? (
-                      <BriefResponseSupplierError setFocus={setFocus}
-                                                  {...this.props} />
-                    ) : (
-                      <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
-                    )
+                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
                   )}{' '}
                 </span>
               )}
@@ -222,13 +211,10 @@ class BriefPage extends Component {
                       showTrainerResumes={this.showTrainingResumesFileUpload()}
                       {...this.props}
                     />
+                  ) : Array.isArray(app.errorMessage) ? (
+                    <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
                   ) : (
-                    Array.isArray(app.errorMessage) ? (
-                      <BriefResponseSupplierError setFocus={setFocus}
-                                                  {...this.props} />
-                    ) : (
-                      <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
-                    )
+                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
                   )}{' '}
                 </span>
               )}
