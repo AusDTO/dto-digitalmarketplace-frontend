@@ -14,7 +14,7 @@ const BriefResponseSupplierError = props => (
             <h4 className="au-display-sm">Please update your profile with:</h4>
             <ul>
               {Array.isArray(props.app.errorMessage) &&
-                props.app.errorMessage.map((err, i) => <li key={`${err.message}${i}`}>{err.message}</li>)}
+                props.app.errorMessage.map(err => <li key={`${err.message}`}>{err.message}</li>)}
             </ul>
           </AUpageAlert>
           <br />
