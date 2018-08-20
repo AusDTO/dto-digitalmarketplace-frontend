@@ -15,6 +15,7 @@ class AppUser extends Component {
 
   render() {
     const {users, meta, onMoveUser, onInviteUser} = this.props;
+    debugger;
     return (
       <article id="content" className="content-main">
         <header className="page-heading page-heading-without-breadcrumb">

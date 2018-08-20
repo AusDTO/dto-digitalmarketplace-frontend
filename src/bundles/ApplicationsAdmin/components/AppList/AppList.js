@@ -160,6 +160,7 @@ class AppList extends Component {
                   }
                   {(a.status !== 'deleted' &&
                     <span>
+                      <a href={`/admin/applications/${a.id}/edit`} styleName="action">Edit</a>
                       <a href={`/admin/applications/${a.id}/users`} styleName="action">Users</a>
                       <a href="#" onClick={e => {
                         e.preventDefault(); 
