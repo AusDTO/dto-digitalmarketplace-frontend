@@ -1,18 +1,19 @@
-export const APP_LOADED = 'APP_LOADED';
-export const APP_SAVED = 'APP_SAVED';
-export const APP_FAILED = 'APP_FAILED';
+export const BRIEF_LOADED = 'BRIEF_LOADED';
+export const BRIEF_SAVED = 'BRIEF_SAVED';
+export const BRIEF_FAILED = 'BRIEF_FAILED';
 
 export default function reducer(state = {}, action = {}) {
   const { type, data } = action;
+
   switch (type) {
-    case APP_FAILED:
-      return Object.assign({}, data.application, {
+    case BRIEF_FAILED:
+      return Object.assign({}, data.brief, {
         error: data.error
       });
-    case APP_SAVED:
+    case BRIEF_SAVED:
       return Object.assign({}, {
-        data: data.application,
-        jsonData: JSON.stringify(data.application, null, ' ')
+        data: data.brief,
+        jsonData: JSON.stringify(data.brief, null, ' ')
       });
     default:
       return Object.assign({}, {
@@ -24,24 +25,24 @@ export default function reducer(state = {}, action = {}) {
 }
 
 
-export const appSaved = (data) => ({ type: APP_SAVED, data });
-export const appSaveFailed = (data) => ({ type: APP_FAILED, data });
+export const briefSaved = (data) => ({ type: BRIEF_SAVED, data });
+export const briefSaveFailed = (data) => ({ type: BRIEF_FAILED, data });
 
-export const appSave = (application) => {
+export const briefSave = (brief) => {
   return (dispatch, getState, api) => {
     const state = getState();
 
     try {
-      JSON.parse(application.jsonData);
+      JSON.parse(brief.jsonData);
     } catch (e) {
-      return dispatch(appSaveFailed({
+      return dispatch(briefSaveFailed({
         error: e.message,
-        application: application
+        brief: brief
       }));
     }
-    return api(state.meta.url_app_update, {
+    return api(state.meta.url_brief_update, {
       method: 'POST',
-      body: application.jsonData,
+      body: brief.jsonData,
       headers: {
         // Flask expects the token as a header.
         'X-CSRFToken': state.form_options.csrf_token
@@ -52,9 +53,9 @@ export const appSave = (application) => {
           return response
             .text()
             .then((text) => {
-              return dispatch(appSaveFailed({
+              return dispatch(briefSaveFailed({
                 error: text,
-                application: application
+                brief: brief
               }));
             });
         }
@@ -62,12 +63,12 @@ export const appSave = (application) => {
           .json()
           .then((json) => {
             if (json.errors) {
-              return dispatch(appSaveFailed({
+              return dispatch(briefSaveFailed({
                 error: json.errors.map(i=>i.message).join('<br/>'),
-                application: application
+                brief: brief
               }));
             } else {
-              return dispatch(appSaved(json));
+              return dispatch(briefSaved(json));
             }
           })
       })
