@@ -33,7 +33,7 @@ export const appSave = (application) => {
 
     try {
       JSON.parse(application.jsonData);
-    } catch(e) {
+    } catch (e) {
       return dispatch(appSaveFailed({
         error: e.message,
         application: application
@@ -49,12 +49,27 @@ export const appSave = (application) => {
     })
       .then((response) => {
         if (response.status != 200) {
-          return dispatch(appSaveFailed(response.statusText));
+          return response
+            .text()
+            .then((text) => {
+              return dispatch(appSaveFailed({
+                error: text,
+                application: application
+              }));
+            });
         }
-        return response.json()
-      })
-      .then((json) => {
-        return dispatch(appSaved(json));
+        return response
+          .json()
+          .then((json) => {
+            if (json.errors) {
+              return dispatch(appSaveFailed({
+                error: json.errors.map(i=>i.message).join('<br/>'),
+                application: application
+              }));
+            } else {
+              return dispatch(appSaved(json));
+            }
+          })
       })
   }
 };
