@@ -158,9 +158,14 @@ class AppList extends Component {
 
                     </span>
                   }
+                  {
+                    (a.status === 'submitted' || a.status === 'saved') && <span>
+                      <a href={`/admin/applications/${a.id}/edit`} styleName="action">JSON Edit</a>
+                    </span>
+                  }
                   {(a.status !== 'deleted' &&
                     <span>
-                      <a href={`/admin/applications/${a.id}/edit`} styleName="action">JSON Edit</a>
+                      
                       <a href={`/admin/applications/${a.id}/users`} styleName="action">Users</a>
                       <a href="#" onClick={e => {
                         e.preventDefault(); 
