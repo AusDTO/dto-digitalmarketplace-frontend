@@ -29,6 +29,7 @@ test('mapStateToProps with application', () => {
         foo: 'bar'
       }
     },
+    applicantErrors: [],
     application: {
       bar: 'baz'
     },
@@ -53,6 +54,7 @@ test('mapStateToProps without application', () => {
       }
     },
     application: {},
+    applicantErrors: [],
     steps: void 0
   };
 

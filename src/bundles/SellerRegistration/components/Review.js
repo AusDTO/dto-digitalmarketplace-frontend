@@ -18,7 +18,7 @@ const Review = ({supplierCode, match, caseStudyForm, applicationErrors, ...rest}
                 <h1 className="au-display-xl" styleName="review.preview-heading" tabIndex="-1">Preview your new profile</h1>
                 {supplierCode ? (<p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Digital Marketplace.</p>)
                 :(<span><p>Take a moment to preview your new seller profile. This is what government buyers (and assessors, if you are offering new services) will see in the Digital Marketplace.</p></span>) }
-                {applicationErrors.length > 0 ? (
+                {applicationErrors && applicationErrors.length > 0 ? (
                 <PageAlert as='error'>
                     <h3> Application Errors</h3>
                     <ul>

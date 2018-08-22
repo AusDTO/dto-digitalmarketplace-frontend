@@ -27,6 +27,7 @@ describe('<Review />', () => {
   it('should render a case study', () => {
 	const store = createStore({
     application: {supplier_code: 999}, 
+    applicationErrors: [],
     caseStudyForm: {
       case_studies:[{
         title: 'title 1',
