@@ -9,7 +9,7 @@ import PageAlert from '@gov.au/page-alerts'
 
 import './Start.css';
 
-const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates}) => {
+const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates}) => {
     return (
         <div>
             {saved &&
@@ -62,6 +62,11 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
                         { missingDailyRates ?
                           <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please <Link to="/pricing">add the daily rates to continue</Link>.</strong></p></PageAlert>
                         : '' }
+                        { applicationErrors && applicationErrors.length > 0 ?
+                            <PageAlert as="error">{applicationErrors.map(ae => {
+                                return <p><strong>{ae.message} <Link to={'/' + ae.step}>Please fix here</Link>.</strong></p>
+                            })}</PageAlert> : ''
+                        }
                         <h1 className="au-display-xl">Update your profile</h1>
                         <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.
                            You can do this by adding more services with supporting case studies.</p>
@@ -136,7 +141,8 @@ const mapStateToProps = (state, ownProps) => {
         type: state.application.type,
         expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
         expiredWorkersCompensation: state.application.expiredWorkersCompensation,
-        missingDailyRates: state.application.missingDailyRates
+        missingDailyRates: state.application.missingDailyRates,
+        applicationErrors: state.application_errors
     }
 }
 

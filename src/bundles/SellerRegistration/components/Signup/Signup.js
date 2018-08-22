@@ -159,7 +159,7 @@ class Signup extends React.Component {
       this.props.hasWorkersDocExpired(false)
     }
 
-    this.props.hasMissingDailyRates(isDailyRateMissing(this.props.application.pricing, this.props.application.services))
+    this.props.hasMissingDailyRates(isDailyRateMissing(this.props.application.pricing, this.props.application.services));
   }
 
   componentWillMount() {
@@ -198,8 +198,9 @@ class Signup extends React.Component {
         return newServices;
       }, {});
 
-    const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation
-    const hasPricingWarning = this.props.application.missingDailyRates
+    const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation;
+    const hasPricingWarning = this.props.application.missingDailyRates;
+    const applicationErrors = this.props.applicationErrors ? this.props.applicationErrors : [];
 
     return (
       <div className="row">
@@ -220,7 +221,7 @@ class Signup extends React.Component {
                       onClick={() => actions.navigateToStep(pattern)}
                       className={classNames({'is-active is-current': isActive})}
                     >
-                      { (hasDocumentsWarning && pattern == '/documents') || (hasPricingWarning && pattern == '/pricing') ?
+                      { (applicationErrors.map(ae => ae.step).indexOf(id) >= 0) ?
                         <Icon value="alert" size={34} aria-hidden="true"/>
                         :
                         <Icon value={classNames({
@@ -294,7 +295,7 @@ Signup.propTypes = {
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   applicant: PropTypes.object,
-  applicantErrors: PropTypes.array,
+  applicationErrors: PropTypes.array,
   forms: PropTypes.object,
   filterSteps: PropTypes.func
 };
@@ -310,7 +311,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     forms: getStateForms(state),
     application,
-    applicantErrors: application_errors,
+    applicationErrors: application_errors,
     steps,
     options,
     ...ownProps
