@@ -200,7 +200,7 @@ class Signup extends React.Component {
 
     const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation
     const hasPricingWarning = this.props.application.missingDailyRates
-    
+
     return (
       <div className="row">
         <Route path="/:route/:subroute?" render={({ match }) => {
