@@ -17,7 +17,7 @@ const updateApplicationRowStatus = (state, id, status, revertStatus) => {
 };
 
 export default function reducer(state = {}, action = {}) {
-  const {type, id, revertStatus, applications} = action;
+  const { type, id, revertStatus, applications } = action;
   switch (type) {
     case CONVERTED_SELLER:
       return updateApplicationRowStatus(state, id, 'approved');
@@ -34,7 +34,7 @@ export default function reducer(state = {}, action = {}) {
   }
 }
 
-export const convertedSeller = (id) => ({type: CONVERTED_SELLER, id});
+export const convertedSeller = (id) => ({ type: CONVERTED_SELLER, id });
 
 export const convertApplicationToSeller = (id) => {
   return (dispatch, getState, api) => {
@@ -42,7 +42,7 @@ export const convertApplicationToSeller = (id) => {
 
     return api(state.meta.url_convert_to_seller, {
       method: 'POST',
-      body: JSON.stringify({id}),
+      body: JSON.stringify({ id }),
       headers: {
         // Flask expects the token as a header.
         'X-CSRFToken': state.form_options.csrf_token
@@ -56,7 +56,7 @@ export const convertApplicationToSeller = (id) => {
 };
 
 
-export const rejectedApplication = (id) => ({type: REJECTED_APPLICATION, id});
+export const rejectedApplication = (id) => ({ type: REJECTED_APPLICATION, id });
 
 export const rejectApplication = (id) => {
   return (dispatch, getState, api) => {
@@ -64,7 +64,7 @@ export const rejectApplication = (id) => {
 
     return api(state.meta.url_reject_application, {
       method: 'POST',
-      body: JSON.stringify({id}),
+      body: JSON.stringify({ id }),
       headers: {
         // Flask expects the token as a header.
         'X-CSRFToken': state.form_options.csrf_token
@@ -77,14 +77,14 @@ export const rejectApplication = (id) => {
   }
 };
 
-export const revertedApplication = (id, revertStatus) => ({type: REVERTED_APPLICATION, id, revertStatus});
+export const revertedApplication = (id, revertStatus) => ({ type: REVERTED_APPLICATION, id, revertStatus });
 
 export const revertApplication = (id, msg) => {
   return (dispatch, getState, api) => {
     const state = getState();
     return api(state.meta.url_revert_application, {
       method: 'POST',
-      body: JSON.stringify({id, msg}),
+      body: JSON.stringify({ id, msg }),
       headers: {
         'X-CSRFToken': state.form_options.csrf_token,
         'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ export const revertApplication = (id, msg) => {
   }
 };
 
-export const resetApplications = (applications) => ({type: RESET_APPLICATIONS, applications});
+export const resetApplications = (applications) => ({ type: RESET_APPLICATIONS, applications });
 
 export const searchApplications = (keyword) => {
   return (dispatch, getState, api) => {
@@ -118,12 +118,12 @@ export const searchApplications = (keyword) => {
     })
       .then((response) => response.json())
       .then((json) => {
-          dispatch(resetApplications(json.applications))
+        dispatch(resetApplications(json.applications))
       })
   }
 };
 
-export const deletedApplication = (id) => ({type: DELETED_APPLICATION, id});
+export const deletedApplication = (id) => ({ type: DELETED_APPLICATION, id });
 
 export const deleteApplication = (id) => {
   return (dispatch, getState, api) => {

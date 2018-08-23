@@ -1,0 +1,7 @@
+briefEdit.error-message {
+	color: red;
+}
+
+form textarea {
+    min-height: 440px !important;
+}
