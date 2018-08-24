@@ -136,7 +136,7 @@ class DocumentsForm extends BaseForm {
                 <header>
                   { this.props.expiredLiabilityInsurance || this.props.expiredWorkersCompensation ?
                     <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
-                  : '' }                        
+                  : '' }
                   { (form.submitFailed === false) && applicationErrors.length > 0 ? (
                     <PageAlert as="error">{applicationErrors.map(ae => {
                         return <p key={ae.message}><strong>{ae.message}.</strong></p>

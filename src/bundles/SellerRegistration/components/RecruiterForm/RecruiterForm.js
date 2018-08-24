@@ -11,6 +11,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 
+import PageAlert from '@gov.au/page-alerts'
 import '../SellerRegistration.css';
 
 class RecruiterForm extends BaseForm {
@@ -23,7 +24,7 @@ class RecruiterForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -34,8 +35,11 @@ class RecruiterForm extends BaseForm {
         return (
             <Layout>
                 <header>
-
-
+                    { (form.submitFailed === false) && applicationErrors.length > 0 ? (
+                        <PageAlert as="error">{applicationErrors.map(ae => {
+                            return <p key={ae.message}><strong>{ae.message}.</strong></p>
+                    })}</PageAlert> ) : ''
+                    }
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -94,7 +98,8 @@ RecruiterForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        ...formProps(state, 'recruiterForm')
+        ...formProps(state, 'recruiterForm'),
+        applicationErrors: state.application_errors.filter(ae => ae.step === 'recruiter')
     }
 }
 

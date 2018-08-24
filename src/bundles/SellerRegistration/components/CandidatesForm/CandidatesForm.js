@@ -14,6 +14,7 @@ import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import domains      from '../DomainSelector/domains';
 import StepNav      from '../StepNav';
 
+import PageAlert from '@gov.au/page-alerts'
 import '../SellerRegistration.css';
 
 class CandidatesForm extends BaseForm {
@@ -27,7 +28,7 @@ class CandidatesForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, services, nextRoute, submitClicked} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, services, nextRoute, submitClicked, applicationErrors} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -38,6 +39,11 @@ class CandidatesForm extends BaseForm {
         return (
             <Layout>
                 <header styleName="content">
+                    { (form.submitFailed === false) && applicationErrors.length > 0 ? (
+                        <PageAlert as="error">{applicationErrors.map(ae => {
+                            return <p key={ae.message}><strong>{ae.message}.</strong></p>
+                    })}</PageAlert> ) : ''
+                    }
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">Tell us more about your candidates</h1>
                     <p>Share database and candidate details for each service you selected.</p>
                 </header>
@@ -140,7 +146,8 @@ CandidatesForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        ...formProps(state, 'candidatesForm')
+        ...formProps(state, 'candidatesForm'),
+        applicationErrors: state.application_errors.filter(ae => ae.step === 'candidates')
     }
 }
 

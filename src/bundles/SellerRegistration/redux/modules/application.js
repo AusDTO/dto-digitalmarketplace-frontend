@@ -73,7 +73,6 @@ export const submitApplication = () => {
     dispatch(preSubmit());
 
     const state = getState();
-    state.application_errors = [];
     const {form_options = {}, steps} = state;
     let application = flattenStateForms(state);
 
@@ -98,6 +97,7 @@ export const submitApplication = () => {
       .then((response) => response.json())
       // Update application in the state to match the server.
       .then((persistedModel) => {
+        state.application_errors = [];
         dispatch(submit(persistedModel))
         return persistedModel;
       })

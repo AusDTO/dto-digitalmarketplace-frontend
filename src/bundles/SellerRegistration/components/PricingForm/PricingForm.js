@@ -48,7 +48,7 @@ class PricingForm extends BaseForm {
   }
 
   render() {
-    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains } = this.props;
+    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains, applicationErrors } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {
@@ -79,6 +79,11 @@ class PricingForm extends BaseForm {
             { this.props.missingDailyRates ?
               <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
             : '' }
+            { (form.submitFailed === false) && applicationErrors.length > 0 ? (
+                <PageAlert as="error">{applicationErrors.map(ae => {
+                    return <p key={ae.message}><strong>{ae.message}.</strong></p>
+            })}</PageAlert> ) : ''
+            }
             <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
             <p>
               The Marketplace asks for a comparable level of pricing across all sellers. This helps ensure that your 
@@ -167,7 +172,8 @@ const mapStateToProps = (state) => {
   return {
     ...formProps(state, 'pricingForm'),
     domainSelectorForm: state.domainSelectorForm,
-    missingDailyRates: state.application.missingDailyRates
+    missingDailyRates: state.application.missingDailyRates,
+    applicationErrors: state.application_errors.filter(ae => ae.step === 'pricing')
   }
 }
 
