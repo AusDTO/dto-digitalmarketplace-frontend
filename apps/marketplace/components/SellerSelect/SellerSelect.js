@@ -76,6 +76,11 @@ export class SellerSelect extends Component {
                 <a href={`#${seller.code}`} onClick={e => this.handleSellerSelectClick(seller, e)}>
                   {seller.name}
                 </a>
+                {seller.sme && (
+                  <span className={styles.smeBadge}>
+                    <abbr title="Small medium enterprise">SME</abbr>
+                  </span>
+                )}
               </li>
             ))}
           </ul>
