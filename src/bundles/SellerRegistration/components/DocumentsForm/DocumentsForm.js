@@ -123,7 +123,7 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute, submitClicked} = this.props;
+        const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute, submitClicked, applicationErrors} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -136,7 +136,12 @@ class DocumentsForm extends BaseForm {
                 <header>
                   { this.props.expiredLiabilityInsurance || this.props.expiredWorkersCompensation ?
                     <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
-                  : '' }
+                  : '' }                        
+                  { (form.submitFailed === false) && applicationErrors.length > 0 ? (
+                    <PageAlert as="error">{applicationErrors.map(ae => {
+                        return <p key={ae.message}><strong>{ae.message}.</strong></p>
+                  })}</PageAlert> ) : ''
+                  }
                   <h1 className="au-display-xl" tabIndex="-1">Upload your documents</h1>
 
                   <p>Your insurance documents will appear on your seller profile and your financial statement may be shared with buyers on request. So make sure they are up to date.</p>
@@ -286,8 +291,9 @@ const mapStateToProps = (state) => {
         ...formProps(state, 'documentsForm'),
         applicationId: state.application.id,
         expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
-        expiredWorkersCompensation: state.application.expiredWorkersCompensation
-    }
+        expiredWorkersCompensation: state.application.expiredWorkersCompensation,
+        applicationErrors: state.application_errors.filter(ae => ae.step === 'documents')
+    };
 }
 
 

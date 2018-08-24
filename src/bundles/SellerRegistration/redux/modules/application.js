@@ -73,6 +73,7 @@ export const submitApplication = () => {
     dispatch(preSubmit());
 
     const state = getState();
+    state.application_errors = [];
     const {form_options = {}, steps} = state;
     let application = flattenStateForms(state);
 
