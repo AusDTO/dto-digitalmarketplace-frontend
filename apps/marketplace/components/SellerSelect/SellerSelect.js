@@ -56,9 +56,9 @@ export class SellerSelect extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <label htmlFor="seller-search">Select sellers</label>
+        <label htmlFor={this.props.id}>Select sellers</label>
         <AUtextInput
-          id="seller-search"
+          id={this.props.id}
           placeholder={this.props.placeholder}
           onChange={this.handleOnChange}
           value={this.state.inputValue}
@@ -84,6 +84,7 @@ export class SellerSelect extends Component {
 }
 
 SellerSelect.defaultProps = {
+  id: 'seller-search',
   placeholder: '',
   showSelected: true,
   showSearchButton: true,
@@ -92,6 +93,7 @@ SellerSelect.defaultProps = {
 }
 
 SellerSelect.propTypes = {
+  id: PropTypes.string,
   placeholder: PropTypes.string,
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,
