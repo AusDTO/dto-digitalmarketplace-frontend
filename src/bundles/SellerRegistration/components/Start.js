@@ -64,7 +64,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors, e
                         : '' }
                         { applicationErrors && applicationErrors.length > 0 ?
                             <PageAlert as="error">{applicationErrors.map(ae => {
-                                return <p key={ae.message}><strong>{ae.message} <Link to={'/' + ae.step}>Please fix here</Link>.</strong></p>
+                                return <p><Link to={'/' + ae.step} key={ae.message}><strong>{ae.message}</strong></Link></p>
                             })}</PageAlert> : ''
                         }
                         <h1 className="au-display-xl">Update your profile</h1>
