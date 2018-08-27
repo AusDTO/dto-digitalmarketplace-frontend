@@ -43,11 +43,7 @@ export class SellerSelect extends Component {
     this.setState(curState => {
       const newState = { ...curState }
       newState.sellers = []
-      if (this.props.showSelected) {
-        newState.inputValue = seller.name
-      } else {
-        newState.inputValue = ''
-      }
+      newState.inputValue = this.props.showSelected ? seller.name : ''
       this.props.onSellerSelect(seller)
       return newState
     })
@@ -66,7 +62,7 @@ export class SellerSelect extends Component {
           placeholder={this.props.placeholder}
           onChange={this.handleOnChange}
           value={this.state.inputValue}
-          className={this.props.showSearchButton ? styles.noRightCorners : ''}
+          className={this.props.showSearchButton ? styles.noRightRadius : ''}
         />
         {this.props.showSearchButton && <AUbutton onClick={this.handleSearchClick}>Search</AUbutton>}
         {this.state.sellers && (
@@ -76,11 +72,8 @@ export class SellerSelect extends Component {
                 <a href={`#${seller.code}`} onClick={e => this.handleSellerSelectClick(seller, e)}>
                   {seller.name}
                 </a>
-                {seller.sme && (
-                  <span className={styles.smeBadge}>
-                    <abbr title="Small medium enterprise">SME</abbr>
-                  </span>
-                )}
+                {seller.panel && <span className={`${styles.badge} ${styles.panelBadge}`}>✓ Panel</span>}
+                {seller.sme && <span className={`${styles.badge} ${styles.smeBadge}`}>SME</span>}
               </li>
             ))}
           </ul>

@@ -11,7 +11,7 @@
     flex-grow: 1;
   }
 
-  .noRightCorners {
+  .noRightRadius {
     border-radius: 4px 0px 0px 4px;
     border-right: 0;
   }
@@ -40,14 +40,22 @@
     visibility: hidden;
   }
 
-  .smeBadge {
+  .badge {
     padding: 0.5rem;
-    display: inline-block;
-    background-color: #199cbe;
-    color: white;
     border-radius: 4px;
     font-size: 0.75rem;
     padding: 0.25rem 0.5rem;
     float: right;
+    margin-left: 0.5rem;
+  }
+
+  .smeBadge {
+    background-color: #199cbe;
+    color: white;
+  }
+
+  .panelBadge {
+    background-color: #6aa84f;
+    color: white;
   }
 }
