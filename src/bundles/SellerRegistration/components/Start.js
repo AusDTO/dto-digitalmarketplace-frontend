@@ -63,9 +63,14 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors, e
                           <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please <Link to="/pricing">add the daily rates to continue</Link>.</strong></p></PageAlert>
                         : '' }
                         { applicationErrors && applicationErrors.length > 0 ?
-                            <PageAlert as="error">{applicationErrors.map(ae => {
-                                return <p><Link to={'/' + ae.step} key={ae.message}><strong>{ae.message}</strong></Link></p>
-                            })}</PageAlert> : ''
+                            <PageAlert as="error">
+                            <h3> Application Errors</h3>
+                            <ul>
+                                {applicationErrors.map(ae => (
+                                    <li key="{ae.message}"><Link to={'/' + ae.step} key={ae.message}>{ae.message}</Link></li>
+                                ))}
+                            </ul>
+                            </PageAlert> : ''
                         }
                         <h1 className="au-display-xl">Update your profile</h1>
                         <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.

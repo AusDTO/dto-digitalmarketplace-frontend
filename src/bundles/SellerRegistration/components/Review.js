@@ -23,14 +23,16 @@ const Review = ({supplierCode, match, caseStudyForm, applicationErrors, ...rest}
                     <h3> Application Errors</h3>
                     <ul>
                         {applicationErrors.map(ae => (
-                            <li>{ae.message}</li>
+                            <li key="{ae.message}"><Link to={'/' + ae.step} key={ae.message}>{ae.message}</Link></li>
                         ))}
                     </ul>
-                </PageAlert>) : (
+                </PageAlert>) : ''}
                 <p>
-                    <Link className="button" to={`${match.url}/profile`}>Preview your profile</Link>
-                </p>)}
-                
+                {applicationErrors && applicationErrors.length > 0 ?
+                    <button disabled>Preview your profile</button> : 
+                    <Link to={`${match.url}/profile`} className="button">Preview your profile</Link>
+                }
+                </p>
             </div>
         )}/>
         <Route 
