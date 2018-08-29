@@ -138,9 +138,14 @@ class DocumentsForm extends BaseForm {
                     <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
                   : '' }
                   { (form.submitFailed === false) && applicationErrors.length > 0 ? (
-                    <PageAlert as="error">{applicationErrors.map(ae => {
-                        return <p key={ae.message}><strong>{ae.message}.</strong></p>
-                  })}</PageAlert> ) : ''
+                    <PageAlert as="error">
+                        <h3>Errors</h3>
+                        <ul>
+                        {applicationErrors.map(ae => {
+                            return <li key="{ae.message}">{ae.message}</li>
+                        })}
+                        </ul>
+                    </PageAlert> ) : ''
                   }
                   <h1 className="au-display-xl" tabIndex="-1">Upload your documents</h1>
 

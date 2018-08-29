@@ -80,9 +80,14 @@ class PricingForm extends BaseForm {
               <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
             : '' }
             { (form.submitFailed === false) && applicationErrors.length > 0 ? (
-                <PageAlert as="error">{applicationErrors.map(ae => {
-                    return <p key={ae.message}><strong>{ae.message}.</strong></p>
-            })}</PageAlert> ) : ''
+              <PageAlert as="error">
+                  <h3>Errors</h3>
+                  <ul>
+                  {applicationErrors.map(ae => {
+                      return <li key="{ae.message}">{ae.message}</li>
+                  })}
+                  </ul>
+              </PageAlert> ) : ''
             }
             <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
             <p>
