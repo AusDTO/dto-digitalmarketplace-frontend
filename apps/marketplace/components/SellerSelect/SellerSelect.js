@@ -5,6 +5,34 @@ import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import findSuppliers from 'marketplace/actions/supplierActions'
 import styles from './SellerSelect.scss'
 
+const SellerSelectView = props => (
+  <div>
+    <label htmlFor={props.id}>Select sellers</label>
+    <AUtextInput
+      id={props.id}
+      placeholder={props.placeholder}
+      onChange={props.handleOnChange}
+      value={props.inputValue}
+      className={props.className}
+    />
+    {props.showSearchButton && <AUbutton onClick={props.handleSearchClick}>Search</AUbutton>}
+  </div>
+)
+
+const SellerSelectResultsView = props => (
+  <ul className={props.className}>
+    {props.sellers.map(seller => (
+      <li key={seller.code}>
+        <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
+          {seller.name}
+        </a>
+        {seller.panel && <span className={props.panelBadgeClassName}>✓ Panel</span>}
+        {seller.sme && <span className={props.smeBadgeClassName}>SME</span>}
+      </li>
+    ))}
+  </ul>
+)
+
 export class SellerSelect extends Component {
   constructor(props) {
     super(props)
@@ -56,28 +84,22 @@ export class SellerSelect extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <label htmlFor={this.props.id}>Select sellers</label>
-        <AUtextInput
+        <SellerSelectView
           id={this.props.id}
           placeholder={this.props.placeholder}
-          onChange={this.handleOnChange}
-          value={this.state.inputValue}
+          handleOnChange={this.handleOnChange}
+          inputValue={this.state.inputValue}
           className={this.props.showSearchButton ? styles.noRightRadius : ''}
+          showSearchButton={this.props.showSearchButton}
+          handleSearchClick={this.handleSearchClick}
         />
-        {this.props.showSearchButton && <AUbutton onClick={this.handleSearchClick}>Search</AUbutton>}
-        {this.state.sellers && (
-          <ul className={`${styles.selectList} ${this.state.sellers.length > 0 ? '' : styles.hide}`}>
-            {this.state.sellers.map(seller => (
-              <li key={seller.code}>
-                <a href={`#${seller.code}`} onClick={e => this.handleSellerSelectClick(seller, e)}>
-                  {seller.name}
-                </a>
-                {seller.panel && <span className={`${styles.badge} ${styles.panelBadge}`}>✓ Panel</span>}
-                {seller.sme && <span className={`${styles.badge} ${styles.smeBadge}`}>SME</span>}
-              </li>
-            ))}
-          </ul>
-        )}
+        <SellerSelectResultsView
+          className={`${styles.selectList} ${this.state.sellers.length > 0 ? '' : styles.hide}`}
+          sellers={this.state.sellers}
+          handleSellerSelectClick={this.handleSellerSelectClick}
+          panelBadgeClassName={`${styles.badge} ${styles.panelBadge}`}
+          smeBadgeClassName={`${styles.badge} ${styles.smeBadge}`}
+        />
       </div>
     )
   }

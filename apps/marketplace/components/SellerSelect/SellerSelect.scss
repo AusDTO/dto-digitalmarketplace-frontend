@@ -2,6 +2,12 @@
   display: flex;
   flex-wrap: wrap;
 
+  & > div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
   label {
     width: 100%;
     padding: 0.5rem 0;
