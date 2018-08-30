@@ -15,12 +15,12 @@ const Review = ({supplierCode, match, caseStudyForm, applicationErrors, ...rest}
     <Switch>
         <Route path={match.url} exact render={() => (
             <div id="preview-link" styleName="styles.content">
-                <h1 className="au-display-xl" styleName="review.preview-heading" tabIndex="-1">Preview your new profile</h1>
-                {supplierCode ? (<p>Take a moment to preview your profile — this is what assessors and government buyers will see in the Digital Marketplace.</p>)
+                <h1 className="au-display-xl" styleName="review.preview-heading" tabIndex="-1">Preview and submit</h1>
+                {supplierCode ? (<p>Preview your profile before submitting your updates.</p>)
                 :(<span><p>Take a moment to preview your new seller profile. This is what government buyers (and assessors, if you are offering new services) will see in the Digital Marketplace.</p></span>) }
                 {applicationErrors && applicationErrors.length > 0 ? (
                 <PageAlert as='error'>
-                    <h3> Application Errors</h3>
+                    <h3>There is a problem to fix before you can submit</h3>
                     <ul>
                         {applicationErrors.map(ae => (
                             <li key="{ae.message}"><Link to={'/' + ae.step} key={ae.message}>{ae.message}</Link></li>
@@ -29,7 +29,7 @@ const Review = ({supplierCode, match, caseStudyForm, applicationErrors, ...rest}
                 </PageAlert>) : ''}
                 <p>
                 {applicationErrors && applicationErrors.length > 0 ?
-                    <button disabled>Preview your profile</button> : 
+                    '' : 
                     <Link to={`${match.url}/profile`} className="button">Preview your profile</Link>
                 }
                 </p>

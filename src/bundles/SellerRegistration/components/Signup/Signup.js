@@ -14,9 +14,8 @@ import NotFound from '../../../../shared/NotFound';
 import LocalNav from '../../../../shared/LocalNav';
 
 import { actions as stepActions, STATUS } from '../../redux/modules/steps';
-import { getStateForms, dispatchFormState, isDailyRateMissing } from '../../redux/helpers';
-import { actions, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates } from '../../redux/modules/application';
-import isPast from 'date-fns/is_past';
+import { getStateForms, dispatchFormState } from '../../redux/helpers';
+import { actions } from '../../redux/modules/application';
 
 // Step Components
 import Start                from '../Start';
@@ -111,18 +110,12 @@ class Signup extends React.Component {
         actions.submitApplication();
         return;
       }
-      this.props.hasLiabilityDocExpired(false)
-      this.props.hasWorkersDocExpired(false)
-      this.props.hasMissingDailyRates(false)
       actions.stepNextPersist(this.nextStep.pattern, this.step);
     },
     onSubmitFailed: (e) => {
       if (e && 'preventDefault' in e) {
         e.preventDefault();
       }
-      this.props.hasLiabilityDocExpired(false)
-      this.props.hasWorkersDocExpired(false)
-      this.props.hasMissingDailyRates(false)
       const { actions } = this.props;
       actions.stepPartial(this.step.id);
     }
@@ -145,21 +138,7 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0)
-
-    if (this.props.application.documents && this.props.application.documents.liability && isPast(this.props.application.documents.liability.expiry)) {
-      this.props.hasLiabilityDocExpired(true)
-    } else {
-      this.props.hasLiabilityDocExpired(false)
-    }
-
-    if (this.props.application.documents && this.props.application.documents.workers && isPast(this.props.application.documents.workers.expiry)) {
-      this.props.hasWorkersDocExpired(true)
-    } else {
-      this.props.hasWorkersDocExpired(false)
-    }
-
-    this.props.hasMissingDailyRates(isDailyRateMissing(this.props.application.pricing, this.props.application.services));
+    window.scrollTo(0, 0);
   }
 
   componentWillMount() {
@@ -198,8 +177,6 @@ class Signup extends React.Component {
         return newServices;
       }, {});
 
-    const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation;
-    const hasPricingWarning = this.props.application.missingDailyRates;
     const applicationErrors = this.props.applicationErrors ? this.props.applicationErrors : [];
 
     return (
@@ -320,16 +297,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ ...actions, ...stepActions }, dispatch),
-  dispatch,
-  hasLiabilityDocExpired: (bool) => {
-    return dispatch(expiredLiabilityInsurance(bool));
-  },
-  hasWorkersDocExpired: (bool) => {
-    return dispatch(expiredWorkersCompensation(bool));
-  },
-  hasMissingDailyRates: (bool) => {
-    return dispatch(missingDailyRates(bool));
-  }
+  dispatch
 });
 
 export {

@@ -14,8 +14,7 @@ import formProps            from '../../../../shared/reduxModules/formPropsSelec
 import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
-import { findValidServices, isDailyRateMissing } from '../../redux/helpers'
-import { missingDailyRates } from '../../redux/modules/application'
+import { findValidServices } from '../../redux/helpers';
 import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
 
 import PageAlert from '@gov.au/page-alerts'
@@ -37,14 +36,6 @@ class PricingForm extends BaseForm {
     onSubmit: PropTypes.func.isRequired,
     nextRoute: PropTypes.string.isRequired,
     submitClicked: PropTypes.bool,
-  }
-
-  componentDidMount() {
-    if (this.props.pricingForm.pricing && isDailyRateMissing(this.props.pricingForm.pricing, this.props.services)) {
-      this.props.hasMissingDailyRates(true)
-    } else {
-      this.props.hasMissingDailyRates(false)
-    }
   }
 
   render() {
@@ -76,9 +67,6 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header styleName="styles.content">
-            { this.props.missingDailyRates ?
-              <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
-            : '' }
             { (form.submitFailed === false) && applicationErrors.length > 0 ? (
               <PageAlert as="error">
                   <h3>Errors</h3>
@@ -177,17 +165,8 @@ const mapStateToProps = (state) => {
   return {
     ...formProps(state, 'pricingForm'),
     domainSelectorForm: state.domainSelectorForm,
-    missingDailyRates: state.application.missingDailyRates,
     applicationErrors: state.application_errors.filter(ae => ae.step === 'pricing')
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    hasMissingDailyRates: (bool) => {
-      return dispatch(missingDailyRates(bool))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PricingForm)
+export default connect(mapStateToProps)(PricingForm)

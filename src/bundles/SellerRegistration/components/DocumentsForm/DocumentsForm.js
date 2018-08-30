@@ -16,12 +16,11 @@ import StepNav       from '../StepNav';
 import StatefulError from '../../../../shared/form/StatefulError';
 
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
-import {uploadDocument, submitApplication, expiredLiabilityInsurance, expiredWorkersCompensation} from '../../redux/modules/application'
+import { uploadDocument, submitApplication } from '../../redux/modules/application'
 
 import { minObjectLength, validDate } from '../../../../validators';
 
 import PageAlert from '@gov.au/page-alerts'
-import isPast from 'date-fns/is_past';
 
 import './DocumentsForm.css';
 
@@ -108,20 +107,6 @@ class DocumentsForm extends BaseForm {
         });
     }
 
-    componentDidMount() {
-      if (this.props.documentsForm.documents.liability && isPast(this.props.documentsForm.documents.liability.expiry)) {
-        this.props.hasLiabilityDocExpired(true)
-      } else {
-        this.props.hasLiabilityDocExpired(false)
-      }
-
-      if (this.props.documentsForm.documents.workers && isPast(this.props.documentsForm.documents.workers.expiry)) {
-        this.props.hasWorkersDocExpired(true)
-      } else {
-        this.props.hasWorkersDocExpired(false)
-      }
-    }
-
     render() {
         const {action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute, submitClicked, applicationErrors} = this.props;
         let hasFocused = false
@@ -134,9 +119,6 @@ class DocumentsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                  { this.props.expiredLiabilityInsurance || this.props.expiredWorkersCompensation ?
-                    <PageAlert as="error"><p><strong>Not all your documents are up to date. Please upload the necessary documents to continue.</strong></p></PageAlert>
-                  : '' }
                   { (form.submitFailed === false) && applicationErrors.length > 0 ? (
                     <PageAlert as="error">
                         <h3>Errors</h3>
@@ -295,8 +277,6 @@ const mapStateToProps = (state) => {
     return {
         ...formProps(state, 'documentsForm'),
         applicationId: state.application.id,
-        expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
-        expiredWorkersCompensation: state.application.expiredWorkersCompensation,
         applicationErrors: state.application_errors.filter(ae => ae.step === 'documents')
     };
 }
@@ -319,12 +299,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         submitApplication: () => {
             return dispatch(submitApplication());
-        },
-        hasLiabilityDocExpired: (bool) => {
-            return dispatch(expiredLiabilityInsurance(bool));
-        },
-        hasWorkersDocExpired: (bool) => {
-            return dispatch(expiredWorkersCompensation(bool));
         }
     }
 }

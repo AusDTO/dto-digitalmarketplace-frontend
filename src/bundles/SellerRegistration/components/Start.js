@@ -9,7 +9,7 @@ import PageAlert from '@gov.au/page-alerts'
 
 import './Start.css';
 
-const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates}) => {
+const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors }) => {
     return (
         <div>
             {saved &&
@@ -56,12 +56,6 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors, e
                 </div>
             ) : (type === 'edit' ? (
                     <div>
-                        { expiredLiabilityInsurance || expiredWorkersCompensation ?
-                          <PageAlert as="error"><p><strong>Not all your documents are up to date. <Link to="/documents">Please upload the necessary documents to continue</Link>.</strong></p></PageAlert>
-                        : '' }
-                        { missingDailyRates ?
-                          <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please <Link to="/pricing">add the daily rates to continue</Link>.</strong></p></PageAlert>
-                        : '' }
                         { applicationErrors && applicationErrors.length > 0 ?
                             <PageAlert as="error">
                             <h3> Application Errors</h3>
@@ -144,9 +138,6 @@ const mapStateToProps = (state, ownProps) => {
         supplierCode: state.application.supplier_code,
         saved: state.application.saved,
         type: state.application.type,
-        expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
-        expiredWorkersCompensation: state.application.expiredWorkersCompensation,
-        missingDailyRates: state.application.missingDailyRates,
         applicationErrors: state.application_errors
     }
 }

@@ -12,9 +12,6 @@ const APP_POST_SUBMIT = 'application/post-submit';
 const APP_SAVED = 'application/saved';
 const APP_ERROR = 'application/error';
 const LINK_CLICK = 'link/click';
-const EXPIRED_LIABILITY_INSURANCE = 'application/expired-liability-insurance';
-const EXPIRED_WORKERS_COMPENSATION = 'application/expired-workers-compensation';
-const MISSING_DAILY_RATES = 'application/missing-daily-rates'
 
 const statusCheck = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -39,21 +36,6 @@ export default function reducer(state = {}, action = {}) {
       return Object.assign({}, state, {saved: void 0});
     case APP_PRE_SUBMIT:
       return Object.assign({}, state, {error: void 0});
-    case EXPIRED_LIABILITY_INSURANCE:
-      return {
-        ...state,
-        expiredLiabilityInsurance: action.expiredLiabilityInsurance
-      }
-    case EXPIRED_WORKERS_COMPENSATION:
-      return {
-        ...state,
-        expiredWorkersCompensation: action.expiredWorkersCompensation
-      }
-    case MISSING_DAILY_RATES:
-      return {
-        ...state,
-        missingDailyRates: action.missingDailyRates
-      }
     default:
       return state;
   }
@@ -179,21 +161,12 @@ export const uploadDocument = (id, file) => {
   }
 };
 
-export const expiredLiabilityInsurance = (expiredLiabilityInsurance) => ({type: EXPIRED_LIABILITY_INSURANCE, expiredLiabilityInsurance});
-
-export const expiredWorkersCompensation = (expiredWorkersCompensation) => ({type: EXPIRED_WORKERS_COMPENSATION, expiredWorkersCompensation});
-
-export const missingDailyRates = (missingDailyRates) => ({type: MISSING_DAILY_RATES, missingDailyRates});
-
 const constants = {
   STEP_NEXT,
   STEP_PRE,
   APP_SUBMIT,
   APP_POST_SUBMIT,
-  APP_PRE_SUBMIT,
-  EXPIRED_LIABILITY_INSURANCE,
-  EXPIRED_WORKERS_COMPENSATION,
-  MISSING_DAILY_RATES
+  APP_PRE_SUBMIT
 };
 
 const actionCreators = {
@@ -209,10 +182,7 @@ const actionCreators = {
   navigateToStep,
   uploadDocument,
   linkClick,
-  push,
-  expiredLiabilityInsurance,
-  expiredWorkersCompensation,
-  missingDailyRates
+  push
 };
 
 export {
