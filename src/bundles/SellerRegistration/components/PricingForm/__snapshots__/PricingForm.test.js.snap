@@ -37,16 +37,7 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
   <header
     styleName="styles.content"
   >
-    <div
-      className="au-body au-page-alerts   au-page-alerts--error"
-      role="alert"
-    >
-      <p>
-        <strong>
-          Maximum daily rates are missing. Please add the daily rates to continue.
-        </strong>
-      </p>
-    </div>
+    
     <h1
       className="au-display-xl"
       styleName="styles.content-heading"

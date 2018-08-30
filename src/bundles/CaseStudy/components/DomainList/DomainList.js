@@ -289,7 +289,7 @@ const mapStateToProps = (state, ownProps) => {
     currentStudy: state.casestudy,
     assessedDomains: state.application.assessed_domains,
     calcRemaining,
-    applicationErrors: state.application_errors.filter(ae => ae.step === 'case-study')
+    applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'case-study') : []
   };
 };
 

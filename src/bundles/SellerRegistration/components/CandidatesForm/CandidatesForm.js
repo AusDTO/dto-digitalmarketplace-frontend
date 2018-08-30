@@ -152,7 +152,7 @@ CandidatesForm.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         ...formProps(state, 'candidatesForm'),
-        applicationErrors: state.application_errors.filter(ae => ae.step === 'candidates')
+        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'candidates') : []
     }
 }
 

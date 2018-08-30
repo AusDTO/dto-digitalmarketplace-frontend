@@ -104,7 +104,7 @@ RecruiterForm.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         ...formProps(state, 'recruiterForm'),
-        applicationErrors: state.application_errors.filter(ae => ae.step === 'recruiter')
+        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'recruiter') : []
     }
 }
 

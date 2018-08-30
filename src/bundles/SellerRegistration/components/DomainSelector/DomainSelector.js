@@ -163,7 +163,7 @@ const mapStateToProps = (state) => {
     return {
         supplierCode: state.application.supplier_code,
         ...formProps(state, 'domainSelectorForm'),
-        applicationErrors: state.application_errors.filter(ae => ae.step === 'services')
+        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'services') : []
     }
 }
 

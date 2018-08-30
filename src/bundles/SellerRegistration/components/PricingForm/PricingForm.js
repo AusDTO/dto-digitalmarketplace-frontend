@@ -165,7 +165,7 @@ const mapStateToProps = (state) => {
   return {
     ...formProps(state, 'pricingForm'),
     domainSelectorForm: state.domainSelectorForm,
-    applicationErrors: state.application_errors.filter(ae => ae.step === 'pricing')
+    applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'pricing') : []
   }
 }
 

@@ -45,7 +45,7 @@ describe('<DomainList />', () => {
     </MemoryRouter>
     );
     expect(wrapper.find('h1').text()).toBe('Case Study Domain List');
-    expect(wrapper.find('h2').text()).toBe('Recommended');
+    expect(wrapper.find('h2').text()).toBe('Recommended');    
     expect(wrapper.find('h3').text()).toBe('Agile delivery and Governance');
   });
 
@@ -54,7 +54,7 @@ describe('<DomainList />', () => {
     const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-          <DomainList services={{'Agile delivery and Governance': true}}/>
+          <DomainList services={{'Agile delivery and Governance': true}} />
       </Provider>
     </MemoryRouter>
     );

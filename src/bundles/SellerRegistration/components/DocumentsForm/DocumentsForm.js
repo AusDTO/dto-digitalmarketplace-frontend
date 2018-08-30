@@ -277,7 +277,7 @@ const mapStateToProps = (state) => {
     return {
         ...formProps(state, 'documentsForm'),
         applicationId: state.application.id,
-        applicationErrors: state.application_errors.filter(ae => ae.step === 'documents')
+        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'documents') : []
     };
 }
 
