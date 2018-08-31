@@ -19,7 +19,7 @@ import { push } from '../../../SellerRegistration/redux/modules/application';
 import CaseStudyForm from '../CaseStudyForm';
 import View from '../View';
 import CaseStudy from './CaseStudy';
-import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from '../../../SellerRegistration/components/ValidationSummary';
 
 import styles from '../../../SellerRegistration/components/SellerRegistration.css';
 import domainList from './DomainList.css'
@@ -128,11 +128,7 @@ class DomainList extends BaseForm {
     };
 
       let header = (<header styleName="styles.content">
-        { (form.submitFailed === false) && applicationErrors.length > 0 ? (
-          <PageAlert as="error">{applicationErrors.map(ae => {
-              return <p key={ae.message}><strong>{ae.message}.</strong></p>
-        })}</PageAlert> ) : ''
-        }
+        <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'case-study'} />
         <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
         <p>
           Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
@@ -143,16 +139,7 @@ class DomainList extends BaseForm {
       </header>)
       if (isNumber(supplierCode)) {
         header = (<header styleName="styles.content">
-          { (form.submitFailed === false) && applicationErrors.length > 0 ? (
-            <PageAlert as="error">
-                <h3>Errors</h3>
-                <ul>
-                {applicationErrors.map(ae => {
-                    return <li key="{ae.message}">{ae.message}</li>
-                })}
-                </ul>
-            </PageAlert> ) : ''
-          }
+          <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'case-study'} />
           <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
           <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
             services you wish to offer.</p>
@@ -289,7 +276,7 @@ const mapStateToProps = (state, ownProps) => {
     currentStudy: state.casestudy,
     assessedDomains: state.application.assessed_domains,
     calcRemaining,
-    applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'case-study') : []
+    applicationErrors: state.application_errors
   };
 };
 

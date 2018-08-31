@@ -17,6 +17,7 @@ import Textfield    from '../../../../shared/form/Textfield';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 import { getNextKey } from '../../../../helpers';
+import ValidationSummary from '../ValidationSummary';
 
 import styles from '../SellerRegistration.css';
 import businessDetails from './BusinessDetailsForm.css';
@@ -44,7 +45,23 @@ class BusinessDetailsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, returnLink, supplierCode, form, buttonText, children, onSubmit, onSubmitFailed, businessDetailsForm, nextRoute, submitClicked } = this.props;
+        const {
+            action,
+            csrf_token,
+            model,
+            returnLink,
+            supplierCode,
+            form,
+            buttonText,
+            children,
+            onSubmit,
+            onSubmitFailed,
+            businessDetailsForm,
+            nextRoute,
+            submitClicked,
+            applicationErrors
+        } = this.props;
+
         let title = 'Tell us about your business'
         if (isNumber(supplierCode)) {
             title = 'Check your business details'
@@ -60,6 +77,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} />
                     <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
@@ -303,7 +321,8 @@ const mapStateToProps = (state) => {
     return {
         supplierCode: (state.application && state.application.supplier_code),
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
-        ...formProps(state, 'businessDetailsForm')
+        ...formProps(state, 'businessDetailsForm'),
+        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'business-details') : []
     }
 }
 

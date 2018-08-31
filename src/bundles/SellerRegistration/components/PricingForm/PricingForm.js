@@ -18,6 +18,7 @@ import { findValidServices } from '../../redux/helpers';
 import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
 
 import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from '../ValidationSummary';
 
 import styles from '../SellerRegistration.css';
 import pricing from './PricingForm.css';
@@ -67,16 +68,7 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header styleName="styles.content">
-            { (form.submitFailed === false) && applicationErrors.length > 0 ? (
-              <PageAlert as="error">
-                  <h3>Errors</h3>
-                  <ul>
-                  {applicationErrors.map(ae => {
-                      return <li key="{ae.message}">{ae.message}</li>
-                  })}
-                  </ul>
-              </PageAlert> ) : ''
-            }
+            <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'pricing'} />
             <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
             <p>
               The Marketplace asks for a comparable level of pricing across all sellers. This helps ensure that your 
@@ -165,7 +157,7 @@ const mapStateToProps = (state) => {
   return {
     ...formProps(state, 'pricingForm'),
     domainSelectorForm: state.domainSelectorForm,
-    applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'pricing') : []
+    applicationErrors: state.application_errors
   }
 }
 

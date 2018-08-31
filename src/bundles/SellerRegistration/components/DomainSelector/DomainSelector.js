@@ -13,7 +13,7 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav        from '../StepNav';
-import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from '../ValidationSummary';
 
 import { actions }    from '../../redux/modules/application';
 import { actions as stepActions }    from '../../redux/modules/steps';
@@ -85,16 +85,7 @@ class DomainSelector extends BaseForm {
 
         return (
             <Layout>
-                { (form.submitFailed === false) && applicationErrors.length > 0 ? (
-                    <PageAlert as="error">
-                        <h3>Errors</h3>
-                        <ul>
-                        {applicationErrors.map(ae => {
-                            return <li key="{ae.message}">{ae.message}</li>
-                        })}
-                        </ul>
-                    </PageAlert> ) : ''
-                }
+                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'services'} />
                 {header}
                 <article role="main">
 
@@ -163,7 +154,7 @@ const mapStateToProps = (state) => {
     return {
         supplierCode: state.application.supplier_code,
         ...formProps(state, 'domainSelectorForm'),
-        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'services') : []
+        applicationErrors: state.application_errors
     }
 }
 

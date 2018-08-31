@@ -11,7 +11,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 
-import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from '../ValidationSummary';
 import '../SellerRegistration.css';
 
 class RecruiterForm extends BaseForm {
@@ -35,16 +35,7 @@ class RecruiterForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                { (form.submitFailed === false) && applicationErrors.length > 0 ? (
-                    <PageAlert as="error">
-                        <h3>Errors</h3>
-                        <ul>
-                        {applicationErrors.map(ae => {
-                            return <li key="{ae.message}">{ae.message}</li>
-                        })}
-                        </ul>
-                    </PageAlert> ) : ''
-                  }
+                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'recruiter'} />
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -104,7 +95,7 @@ RecruiterForm.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         ...formProps(state, 'recruiterForm'),
-        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'recruiter') : []
+        applicationErrors: state.application_errors
     }
 }
 

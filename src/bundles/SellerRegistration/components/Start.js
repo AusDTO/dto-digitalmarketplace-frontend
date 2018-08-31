@@ -6,6 +6,7 @@ import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
 import isNumber from 'lodash/isNumber';
 import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from './ValidationSummary';
 
 import './Start.css';
 
@@ -56,16 +57,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors })
                 </div>
             ) : (type === 'edit' ? (
                     <div>
-                        { applicationErrors && applicationErrors.length > 0 ?
-                            <PageAlert as="error">
-                            <h3> Application Errors</h3>
-                            <ul>
-                                {applicationErrors.map(ae => (
-                                    <li key="{ae.message}"><Link to={'/' + ae.step} key={ae.message}>{ae.message}</Link></li>
-                                ))}
-                            </ul>
-                            </PageAlert> : ''
-                        }
+                        <ValidationSummary form={form} applicationErrors={applicationErrors} renderLink={true} title={'Application Errors'} />
                         <h1 className="au-display-xl">Update your profile</h1>
                         <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.
                            You can do this by adding more services with supporting case studies.</p>
@@ -138,7 +130,7 @@ const mapStateToProps = (state, ownProps) => {
         supplierCode: state.application.supplier_code,
         saved: state.application.saved,
         type: state.application.type,
-        applicationErrors: state.application_errors
+        applicationErrors: state.application_errors ? state.application_errors : []
     }
 }
 
