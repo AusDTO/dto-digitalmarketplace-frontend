@@ -33,6 +33,8 @@ const SellerSelectResultsView = props => (
   </ul>
 )
 
+let timeoutHandle = null
+
 export class SellerSelect extends Component {
   constructor(props) {
     super(props)
@@ -51,19 +53,25 @@ export class SellerSelect extends Component {
       inputValue: keyword
     })
 
-    if (keyword && keyword.length > 2) {
-      findSuppliers(keyword)
-        .then(data => {
-          this.setState({
-            sellers: data.sellers
-          })
-        })
-        .catch(() => {})
-    } else {
-      this.setState({
-        sellers: []
-      })
+    if (timeoutHandle) {
+      clearTimeout(timeoutHandle)
     }
+
+    timeoutHandle = setTimeout(() => {
+      if (keyword && keyword.length > 2) {
+        findSuppliers(keyword)
+          .then(data => {
+            this.setState({
+              sellers: data.sellers
+            })
+          })
+          .catch(() => {})
+      } else {
+        this.setState({
+          sellers: []
+        })
+      }
+    }, 500)
   }
 
   handleSellerSelectClick(seller, e) {

@@ -42,7 +42,7 @@ test('component mounts without a search button when showSearchButton is false', 
 })
 
 describe('tests that generate network requests', () => {
-  let server = ''
+  let server = null
 
   beforeEach(() => {
     server = sinon.fakeServer.create()
@@ -52,6 +52,8 @@ describe('tests that generate network requests', () => {
     server.restore()
   })
 
+  jest.useFakeTimers()
+
   test('component sends a network request on input text change when the value is 3 or more chars in length', async () => {
     const component = mount(<SellerSelect />)
 
@@ -59,12 +61,14 @@ describe('tests that generate network requests', () => {
       .find('input[type="text"]')
       .at(0)
       .simulate('change', { target: { value: 'ab' } })
+    await jest.runAllTimers()
     expect(server.requests.length).toBe(0)
 
     await component
       .find('input[type="text"]')
       .at(0)
       .simulate('change', { target: { value: 'abc' } })
+    await jest.runAllTimers()
     expect(server.requests.length).toBe(1)
     expect(server.requests[0].url).toEqual('/api/2/suppliers/search?keyword=abc')
   })
