@@ -57,7 +57,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors })
                 </div>
             ) : (type === 'edit' ? (
                     <div>
-                        <ValidationSummary form={form} applicationErrors={applicationErrors} renderLink={true} title={'Application Errors'} />
+                        <ValidationSummary applicationErrors={applicationErrors} renderLink={true} title={'Application Errors'} />
                         <h1 className="au-display-xl">Update your profile</h1>
                         <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.
                            You can do this by adding more services with supporting case studies.</p>
