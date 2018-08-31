@@ -13,6 +13,7 @@ import {required} from '../../../../validators';
 
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
+import ValidationSummary from '../ValidationSummary';
 
 import '../SellerRegistration.css';
 
@@ -27,7 +28,7 @@ class BusinessInfoForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -38,6 +39,7 @@ class BusinessInfoForm extends BaseForm {
         return (
             <Layout>
                 <header>
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'business-info'} />
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">More about your business</h1>
                 </header>
                 <article role="main">
@@ -322,7 +324,8 @@ BusinessInfoForm.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        ...formProps(state, 'businessInfoForm')
+        ...formProps(state, 'businessInfoForm'),
+        applicationErrors: state.application_errors
     }
 }
 

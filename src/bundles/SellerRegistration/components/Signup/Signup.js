@@ -66,7 +66,7 @@ class Signup extends React.Component {
     { id: 'start', label: 'Introduction', component: Start, pattern: '/start' },
     { id: 'business-details', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'business-info', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
-    { id: 'info', label: 'Contacts', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'contacts', label: 'Contacts', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },

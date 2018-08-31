@@ -11,6 +11,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import MultiInput   from '../../../../shared/form/MultiInput';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
+import ValidationSummary from '../ValidationSummary';
 
 import '../SellerRegistration.css';
 
@@ -24,7 +25,7 @@ class AwardsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -35,6 +36,7 @@ class AwardsForm extends BaseForm {
         return (
             <Layout>
                 <header styleName="content">
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'awards'} />
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">Awards and accreditations</h1>
 
                     <p>This is your opportunity to share some of the things you are proud of.
@@ -109,7 +111,8 @@ AwardsForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        ...formProps(state, 'awardsForm')
+        ...formProps(state, 'awardsForm'),
+        applicationErrors: state.application_errors
     }
 }
 

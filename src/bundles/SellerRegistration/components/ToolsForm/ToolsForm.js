@@ -12,6 +12,7 @@ import Textarea     from '../../../../shared/form/Textarea';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import { required } from '../../../../validators';
 import StepNav      from '../StepNav';
+import ValidationSummary from '../ValidationSummary';
 
 import '../SellerRegistration.css'
 
@@ -25,7 +26,7 @@ class ToolsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -36,6 +37,7 @@ class ToolsForm extends BaseForm {
         return (
             <Layout>
                 <header styleName="content">
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'tools'} />
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">Tools and methodologies</h1>
                     <p>Enhance your profile and give buyers more ways to find you when searching</p>
 
@@ -118,7 +120,8 @@ ToolsForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        ...formProps(state, 'toolsForm')
+        ...formProps(state, 'toolsForm'),
+        applicationErrors: state.application_errors
     }
 }
 

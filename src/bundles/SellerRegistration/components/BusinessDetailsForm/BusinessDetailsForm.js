@@ -77,7 +77,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <ValidationSummary form={form} applicationErrors={applicationErrors} />
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'business-details'} />
                     <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">
@@ -322,7 +322,7 @@ const mapStateToProps = (state) => {
         supplierCode: (state.application && state.application.supplier_code),
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
         ...formProps(state, 'businessDetailsForm'),
-        applicationErrors: state.application_errors ? state.application_errors.filter(ae => ae.step === 'business-details') : []
+        applicationErrors: state.application_errors
     }
 }
 

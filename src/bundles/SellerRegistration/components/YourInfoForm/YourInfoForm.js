@@ -13,6 +13,7 @@ import ErrorBox      from '../../../../shared/form/ErrorBox';
 import Textfield     from '../../../../shared/form/Textfield';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav       from '../StepNav';
+import ValidationSummary from '../ValidationSummary';
 
 import '../SellerRegistration.css'
 
@@ -26,7 +27,7 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed, nextRoute, submitClicked } = this.props;
+    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors } = this.props;
     let title = 'Contact details';
     if (isNumber(supplierCode)) {
         title = 'Check your contact details'
@@ -42,6 +43,7 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
+          <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'contacts'} />
           <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">{title}</h1>
         </header>
         <article role="main">
@@ -173,7 +175,8 @@ const mapStateToProps = (state) => {
       userName: state.form_options.user_name,
       userEmail: state.form_options.user_email,
       supplierCode: state.application && state.application.supplier_code,
-    ...formProps(state, 'yourInfoForm')
+    ...formProps(state, 'yourInfoForm'),
+    applicationErrors: state.application_errors
   }
 }
 

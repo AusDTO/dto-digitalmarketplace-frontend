@@ -22,6 +22,7 @@ import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav       from '../StepNav';
 import SaveError     from '../../../../shared/SaveError';
 import { getNextKey } from '../../../../helpers';
+import ValidationSummary from '../ValidationSummary';
 
 import styles from '../SellerRegistration.css'
 import products from './ProductsForm.css';
@@ -56,7 +57,7 @@ class ProductsForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm, nextRoute, submitClicked } = this.props;
+    const { action, csrf_token, model, form, buttonText, children, onSubmit, onSubmitFailed, productsForm, nextRoute, submitClicked, applicationErrors } = this.props;
     const hasProducts = !isEmpty(filterProducts(productsForm.products));
     const submitClass = classNames({'button-secondary': !hasProducts});
     const addClass = classNames({'button-secondary': hasProducts});
@@ -70,6 +71,7 @@ class ProductsForm extends BaseForm {
     return (
       <Layout>
         <header styleName="styles.content">
+          <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'products'} />
           <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">Products</h1>
             <p>If your business has developed any digital products, you can now offer them through the Digital Marketplace. Just remember they have to be your own, not a product you are reselling.</p>
             <p>This feature is an MVP, meaning we want to learn more about the types of products sellers are offering so we can create a solution for selling them through the Digital Marketplace.</p>
@@ -212,7 +214,8 @@ ProductsForm.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    ...formProps(state, 'productsForm')
+    ...formProps(state, 'productsForm'),
+    applicationErrors: state.application_errors
   }
 }
 
