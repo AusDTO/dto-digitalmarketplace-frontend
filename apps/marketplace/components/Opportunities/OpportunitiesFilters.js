@@ -15,9 +15,9 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
-      statusAccordionOpen: props.statusAccordionOpen,
-      locationAccordionOpen: props.locationAccordionOpen,
-      mobileAccordionOpen: props.mobileAccordionOpen
+      statusAccordionClosed: props.statusAccordionClosed,
+      locationAccordionClosed: props.locationAccordionClosed,
+      mobileAccordionClosed: props.mobileAccordionClosed
     }
     this.handleFilterCancelClick = this.handleFilterCancelClick.bind(this)
     this.handleFilterApplyClick = this.handleFilterApplyClick.bind(this)
@@ -59,21 +59,21 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     return count
   }
 
-  changeAccordion(type, isOpen) {
+  changeAccordion(type, isClosed) {
     switch (type) {
       case 'status':
-        this.setState({ statusAccordionOpen: isOpen })
+        this.setState({ statusAccordionClosed: isClosed })
         break
       case 'location':
-        this.setState({ locationAccordionOpen: isOpen })
+        this.setState({ locationAccordionClosed: isClosed })
         break
       case 'mobile':
-        this.setState({ mobileAccordionOpen: isOpen })
+        this.setState({ mobileAccordionClosed: isClosed })
         break
       case 'all':
-        this.setState({ statusAccordionOpen: isOpen })
-        this.setState({ locationAccordionOpen: isOpen })
-        this.setState({ mobileAccordionOpen: isOpen })
+        this.setState({ statusAccordionClosed: isClosed })
+        this.setState({ locationAccordionClosed: isClosed })
+        this.setState({ mobileAccordionClosed: isClosed })
         break
       default:
         break
@@ -85,13 +85,13 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     const type = e.target.getAttribute('data-type')
     switch (type) {
       case 'location':
-        this.changeAccordion('location', false)
+        this.changeAccordion('location', true)
         break
       case 'status':
-        this.changeAccordion('status', false)
+        this.changeAccordion('status', true)
         break
       default:
-        this.changeAccordion('all', false)
+        this.changeAccordion('all', true)
         break
     }
   }
@@ -102,13 +102,13 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     const type = e.target.getAttribute('data-type')
     switch (type) {
       case 'location':
-        this.changeAccordion('location', false)
+        this.changeAccordion('location', true)
         break
       case 'status':
-        this.changeAccordion('status', false)
+        this.changeAccordion('status', true)
         break
       default:
-        this.changeAccordion('all', false)
+        this.changeAccordion('all', true)
         break
     }
   }
@@ -118,7 +118,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   }
 
   handleSubmit(values) {
-    this.changeAccordion('all', false)
+    this.changeAccordion('all', true)
     this.props.changeForm(values)
     this.props.getOpportunities(values)
     this.props.updateQueryString(values)
@@ -171,12 +171,12 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               header={`Location ${
                 this.getActiveFilterCount('location') > 0 ? `• ${this.getActiveFilterCount('location')}` : ''
               }`}
-              open={this.state.locationAccordionOpen}
+              closed={this.state.locationAccordionClosed}
               onOpen={() => {
-                this.changeAccordion('location', true)
+                this.changeAccordion('location', false)
               }}
               onClose={() => {
-                this.changeAccordion('location', false)
+                this.changeAccordion('location', true)
               }}
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
@@ -216,12 +216,12 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               header={`Status ${
                 this.getActiveFilterCount('status') > 0 ? `• ${this.getActiveFilterCount('status')}` : ''
               }`}
-              open={this.state.statusAccordionOpen}
+              closed={this.state.statusAccordionClosed}
               onOpen={() => {
-                this.changeAccordion('status', true)
+                this.changeAccordion('status', false)
               }}
               onClose={() => {
-                this.changeAccordion('status', false)
+                this.changeAccordion('status', true)
               }}
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
@@ -281,12 +281,12 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               header={`Filter opportunities ${
                 this.getActiveFilterCount('all') > 0 ? `• ${this.getActiveFilterCount('all')}` : ''
               }`}
-              open={this.state.mobileAccordionOpen}
+              closed={this.state.mobileAccordionClosed}
               onOpen={() => {
-                this.changeAccordion('mobile', true)
+                this.changeAccordion('mobile', false)
               }}
               onClose={() => {
-                this.changeAccordion('mobile', false)
+                this.changeAccordion('mobile', true)
               }}
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
@@ -404,9 +404,9 @@ OpportunitiesFiltersComponent.defaultProps = {
 
 OpportunitiesFiltersComponent.propTypes = {
   getOpportunities: PropTypes.func.isRequired,
-  statusAccordionOpen: PropTypes.bool.isRequired,
-  locationAccordionOpen: PropTypes.bool.isRequired,
-  mobileAccordionOpen: PropTypes.bool.isRequired,
+  statusAccordionClosed: PropTypes.bool.isRequired,
+  locationAccordionClosed: PropTypes.bool.isRequired,
+  mobileAccordionClosed: PropTypes.bool.isRequired,
   model: PropTypes.string.isRequired,
   updateQueryString: PropTypes.func,
   initialFilterValues: PropTypes.object
