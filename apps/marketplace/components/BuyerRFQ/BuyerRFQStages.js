@@ -1,20 +1,22 @@
-import BuyerRFQIntroduction from './BuyerRFQIntroduction'
+import BuyerRFQIntroductionStage from './BuyerRFQIntroductionStage'
+import BuyerRFQSelectStage from './BuyerRFQSelectStage'
+import BuyerRFQReviewStage from './BuyerRFQReviewStage'
 
 const BuyerRFQStages = [
   {
     slug: 'introduction',
     title: 'Introduction',
-    component: BuyerRFQIntroduction
+    component: BuyerRFQIntroductionStage
   },
   {
     slug: 'select',
     title: 'Select',
-    component: BuyerRFQIntroduction
+    component: BuyerRFQSelectStage
   },
   {
     slug: 'review',
     title: 'Review',
-    component: BuyerRFQIntroduction
+    component: BuyerRFQReviewStage
   }
 ]
 

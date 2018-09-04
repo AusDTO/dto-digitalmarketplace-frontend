@@ -4,10 +4,13 @@ import AUprogressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
 
 const ProgressFlow = props => {
   const items = props.items.slice(0)
+  const { onNavChange } = props
   items.map(item => {
-    return item.onClick = e => {
-      props.onNavChange(item)
+    const newItem = item
+    newItem.onClick = () => {
+      onNavChange(item)
     }
+    return newItem
   })
 
   return <AUprogressIndicator items={items} />
