@@ -25,7 +25,7 @@ const BriefTrainingResponseForm = ({
   match,
   showTrainerResumes,
   uploading,
-  submitDisabled
+  loadingText
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -167,8 +167,8 @@ const BriefTrainingResponseForm = ({
                   {format(new Date(brief.applicationsClosedAt), 'DD MMMM')}.
                 </li>
               </ul>
-              {currentlySending || submitDisabled ? (
-                <LoadingButton />
+              {currentlySending || loadingText ? (
+                  <LoadingButton text={loadingText ? loadingText : 'Loading'} />
               ) : (
                 <p>
                   <input
@@ -176,7 +176,7 @@ const BriefTrainingResponseForm = ({
                     type="submit"
                     value="Submit response"
                     onClick={submitClicked}
-                    disabled={submitDisabled}
+                    disabled={loadingText ? true : false}
                   />
                 </p>
               )}
@@ -207,7 +207,8 @@ BriefTrainingResponseForm.propTypes = {
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  showTrainerResumes: PropTypes.bool.isRequired
+  showTrainerResumes: PropTypes.bool.isRequired,
+  loadingText: PropTypes.string
 }
 
 export default BriefTrainingResponseForm

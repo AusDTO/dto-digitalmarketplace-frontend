@@ -35,7 +35,7 @@ const BriefSpecialistResponseForm = ({
   addAnotherClicked,
   addAnotherSpecialist,
   uploading,
-  submitDisabled
+  loadingText
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -198,15 +198,15 @@ const BriefSpecialistResponseForm = ({
                     validEmail: 'A valid contact email is required'
                   }}
                 />
-                {currentlySending || submitDisabled ? (
-                  <LoadingButton />
+                {currentlySending || loadingText ? (
+                  <LoadingButton text={loadingText ? loadingText : 'Loading'} />
                 ) : (
                   <span>
                     <input
                       className="au-btn right-button-margin"
                       type="submit"
                       value="Submit specialist"
-                      disabled={submitDisabled}
+                      disabled={loadingText ? true : false}
                       onClick={e => {
                         submitClicked(e)
                       }}
@@ -216,7 +216,7 @@ const BriefSpecialistResponseForm = ({
                         className="au-btn au-btn--secondary"
                         type="submit"
                         value="Submit and add another"
-                        disabled={submitDisabled}
+                        disabled={loadingText ? true : false}
                         onClick={e => {
                           addAnotherClicked(e)
                         }}
@@ -248,8 +248,7 @@ BriefSpecialistResponseForm.defaultProps = {
   handleNameSubmit: null,
   specialistNumber: null,
   addAnotherClicked: null,
-  uploading: () => null,
-  submitDisabled: false
+  uploading: () => null
 }
 
 BriefSpecialistResponseForm.propTypes = {
@@ -268,7 +267,7 @@ BriefSpecialistResponseForm.propTypes = {
   addAnotherClicked: PropTypes.func,
   addAnotherSpecialist: PropTypes.bool.isRequired,
   uploading: PropTypes.func,
-  submitDisabled: PropTypes.bool
+  loadingText: PropTypes.string
 }
 
 export default BriefSpecialistResponseForm

@@ -28,7 +28,7 @@ const BriefResponseForm = ({
   setFocus,
   match,
   uploading,
-  submitDisabled
+  loadingText
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -187,8 +187,8 @@ const BriefResponseForm = ({
                 </li>
               </ul>
 
-              {currentlySending || submitDisabled ? (
-                <LoadingButton />
+              {currentlySending || loadingText ? (
+                <LoadingButton text={loadingText ? loadingText : 'Loading'} />
               ) : (
                 <p>
                   <input
@@ -196,7 +196,7 @@ const BriefResponseForm = ({
                     type="submit"
                     value="Submit application"
                     onClick={submitClicked}
-                    disabled={submitDisabled}
+                    disabled={loadingText ? true : false}
                   />
                 </p>
               )}
@@ -219,7 +219,8 @@ BriefResponseForm.propTypes = {
   }).isRequired,
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  loadingText: PropTypes.string
 }
 
 export default BriefResponseForm

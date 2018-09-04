@@ -30,7 +30,7 @@ class BriefPage extends Component {
     super(props)
     this.state = {
       submitClicked: null,
-      submitDisabled: false
+      loadingText: null
     }
   }
 
@@ -165,8 +165,8 @@ class BriefPage extends Component {
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
                       {...this.props}
-                      submitDisabled={this.state.submitDisabled}
-                      uploading={uploading => this.setState({ submitDisabled: uploading })}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                     />
                   ) : (
                     errorScreen
@@ -185,8 +185,8 @@ class BriefPage extends Component {
                       handleNameSubmit={name => this.handleBriefNameSubmit(name)}
                       handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
                       setFocus={setFocus}
-                      submitDisabled={this.state.submitDisabled}
-                      uploading={uploading => this.setState({ submitDisabled: uploading })}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                       {...this.props}
                     />
                   ) : (
@@ -217,8 +217,8 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       showTrainerResumes={this.showTrainingResumesFileUpload()}
                       {...this.props}
-                      submitDisabled={this.state.submitDisabled}
-                      uploading={uploading => this.setState({ submitDisabled: uploading })}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                     />
                   ) : (
                     errorScreen
