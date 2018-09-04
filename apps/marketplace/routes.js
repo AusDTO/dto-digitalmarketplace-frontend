@@ -14,6 +14,7 @@ import BriefChoicePage from './pages/BriefChoicePage'
 import BriefAssessorsPage from './pages/BriefAssessorsPage'
 import BriefOverviewPage from './pages/BriefOverviewPage'
 import OpportunitiesPage from './pages/OpportunitiesPage'
+import BuyerRFQPage from './pages/BuyerRFQPage'
 
 export const rootPath = '/2'
 
@@ -34,6 +35,7 @@ export const Routes = () => (
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
+    <PrivateRoute path={`${rootPath}/buyer-rfq`} component={BuyerRFQPage} />
     <Route component={NotFound} />
   </Switch>
 )
