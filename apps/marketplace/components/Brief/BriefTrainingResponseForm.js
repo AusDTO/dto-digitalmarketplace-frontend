@@ -23,7 +23,9 @@ const BriefTrainingResponseForm = ({
   handleSubmit,
   setFocus,
   match,
-  showTrainerResumes
+  showTrainerResumes,
+  uploading,
+  submitDisabled
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -76,6 +78,7 @@ const BriefTrainingResponseForm = ({
                 messages={{
                   requiredFile: 'Choose a file for your written proposal'
                 }}
+                uploading={uploading}
               />
               <FilesInput
                 label="Project costs"
@@ -94,6 +97,7 @@ const BriefTrainingResponseForm = ({
                 messages={{
                   requiredFile: 'Choose a file for your project costs'
                 }}
+                uploading={uploading}
               />
               {showTrainerResumes && (
                 <FilesInput
@@ -113,6 +117,7 @@ const BriefTrainingResponseForm = ({
                   messages={{
                     requiredFile: 'Choose a file for your trainer résumés'
                   }}
+                  uploading={uploading}
                 />
               )}
               <Textfield
@@ -162,11 +167,17 @@ const BriefTrainingResponseForm = ({
                   {format(new Date(brief.applicationsClosedAt), 'DD MMMM')}.
                 </li>
               </ul>
-              {currentlySending ? (
+              {currentlySending || submitDisabled ? (
                 <LoadingButton />
               ) : (
                 <p>
-                  <input className="au-btn" type="submit" value="Submit response" onClick={submitClicked} />
+                  <input
+                    className="au-btn"
+                    type="submit"
+                    value="Submit response"
+                    onClick={submitClicked}
+                    disabled={submitDisabled}
+                  />
                 </p>
               )}
             </Form>

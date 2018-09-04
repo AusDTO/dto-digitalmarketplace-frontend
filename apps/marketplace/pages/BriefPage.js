@@ -29,7 +29,8 @@ class BriefPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      submitClicked: null
+      submitClicked: null,
+      submitDisabled: false
     }
   }
 
@@ -112,128 +113,134 @@ class BriefPage extends Component {
       !loadBriefSuccess && Array.isArray(app.errorMessage) ? (
         <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
       ) : (
-        <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
-      )
+          <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+        )
 
     return (
       <div className="brief-page">
         {currentlySending ? (
           <LoadingIndicatorFullPage />
         ) : (
-          <Switch>
-            <Route
-              path={`${match.url}/published`}
-              render={() => (
-                <BriefSubmitted
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
-              path={`${match.url}/specialist/respond/submitted`}
-              render={() => (
-                <BriefSpecialistResponseSubmitted
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
-              path={`${match.url}/respond/submitted`}
-              render={() => (
-                <BriefResponseSubmitted
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
-              path={`${match.url}/respond`}
-              render={() => (
-                <span>
-                  {loadBriefSuccess ? (
-                    <BriefResponseForm
-                      submitClicked={this.onSubmitClicked}
-                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                      setFocus={setFocus}
-                      {...this.props}
-                    />
-                  ) : (
-                    errorScreen
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route
-              path={`${match.url}/specialist/respond`}
-              render={() => (
-                <span>
-                  {loadBriefSuccess ? (
-                    <BriefSpecialistResponseForm
-                      submitClicked={this.onSpecialistSubmitClicked}
-                      addAnotherClicked={this.onAddAnotherClicked}
-                      handleNameSubmit={name => this.handleBriefNameSubmit(name)}
-                      handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
-                      setFocus={setFocus}
-                      {...this.props}
-                    />
-                  ) : (
-                    errorScreen
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route
-              path={`${match.url}/training/respond/submitted`}
-              render={() => (
-                <BriefTrainingResponseSubmitted
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
-              path={`${match.url}/training/respond`}
-              render={() => (
-                <span>
-                  {loadBriefSuccess ? (
-                    <BriefTrainingResponseForm
-                      submitClicked={this.onSubmitClicked}
-                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                      setFocus={setFocus}
-                      showTrainerResumes={this.showTrainingResumesFileUpload()}
-                      {...this.props}
-                    />
-                  ) : (
-                    errorScreen
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route
-              path={`${match.url}/download-responses`}
-              render={() => (
-                <span>
-                  {!app.errorMessage && loadBriefSuccess ? (
-                    <BriefDownloadResponses brief={this.props.brief} briefResponses={this.props.briefResponses} />
-                  ) : (
-                    <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route component={NotFound} />
-          </Switch>
-        )}
+            <Switch>
+              <Route
+                path={`${match.url}/published`}
+                render={() => (
+                  <BriefSubmitted
+                    setFocus={setFocus}
+                    submitClicked={this.state.submitClicked}
+                    handleSubmit={values => this.handleFeedbackSubmit(values)}
+                    {...this.props}
+                  />
+                )}
+              />
+              <Route
+                path={`${match.url}/specialist/respond/submitted`}
+                render={() => (
+                  <BriefSpecialistResponseSubmitted
+                    setFocus={setFocus}
+                    submitClicked={this.state.submitClicked}
+                    handleSubmit={values => this.handleFeedbackSubmit(values)}
+                    {...this.props}
+                  />
+                )}
+              />
+              <Route
+                path={`${match.url}/respond/submitted`}
+                render={() => (
+                  <BriefResponseSubmitted
+                    setFocus={setFocus}
+                    submitClicked={this.state.submitClicked}
+                    handleSubmit={values => this.handleFeedbackSubmit(values)}
+                    {...this.props}
+                  />
+                )}
+              />
+              <Route
+                path={`${match.url}/respond`}
+                render={() => (
+                  <span>
+                    {loadBriefSuccess ? (
+                      <BriefResponseForm
+                        submitClicked={this.onSubmitClicked}
+                        handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                        setFocus={setFocus}
+                        {...this.props}
+                        submitDisabled={this.state.submitDisabled}
+                        uploading={uploading => this.setState({ submitDisabled: uploading })}
+                      />
+                    ) : (
+                        errorScreen
+                      )}{' '}
+                  </span>
+                )}
+              />
+              <Route
+                path={`${match.url}/specialist/respond`}
+                render={() => (
+                  <span>
+                    {loadBriefSuccess ? (
+                      <BriefSpecialistResponseForm
+                        submitClicked={this.onSpecialistSubmitClicked}
+                        addAnotherClicked={this.onAddAnotherClicked}
+                        handleNameSubmit={name => this.handleBriefNameSubmit(name)}
+                        handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
+                        setFocus={setFocus}
+                        submitDisabled={this.state.submitDisabled}
+                        uploading={uploading => this.setState({ submitDisabled: uploading })}
+                        {...this.props}
+                      />
+                    ) : (
+                        errorScreen
+                      )}{' '}
+                  </span>
+                )}
+              />
+              <Route
+                path={`${match.url}/training/respond/submitted`}
+                render={() => (
+                  <BriefTrainingResponseSubmitted
+                    setFocus={setFocus}
+                    submitClicked={this.state.submitClicked}
+                    handleSubmit={values => this.handleFeedbackSubmit(values)}
+                    {...this.props}
+                  />
+                )}
+              />
+              <Route
+                path={`${match.url}/training/respond`}
+                render={() => (
+                  <span>
+                    {loadBriefSuccess ? (
+                      <BriefTrainingResponseForm
+                        submitClicked={this.onSubmitClicked}
+                        handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                        setFocus={setFocus}
+                        showTrainerResumes={this.showTrainingResumesFileUpload()}
+                        {...this.props}
+                        submitDisabled={this.state.submitDisabled}
+                        uploading={uploading => this.setState({ submitDisabled: uploading })}
+                      />
+                    ) : (
+                        errorScreen
+                      )}{' '}
+                  </span>
+                )}
+              />
+              <Route
+                path={`${match.url}/download-responses`}
+                render={() => (
+                  <span>
+                    {!app.errorMessage && loadBriefSuccess ? (
+                      <BriefDownloadResponses brief={this.props.brief} briefResponses={this.props.briefResponses} />
+                    ) : (
+                        <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />
+                      )}{' '}
+                  </span>
+                )}
+              />
+              <Route component={NotFound} />
+            </Switch>
+          )}
       </div>
     )
   }

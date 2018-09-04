@@ -26,7 +26,9 @@ const BriefResponseForm = ({
   submitClicked,
   handleSubmit,
   setFocus,
-  match
+  match,
+  uploading,
+  submitDisabled
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -58,6 +60,7 @@ const BriefResponseForm = ({
                   url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                   api={dmapi}
                   description=""
+                  uploading={uploading}
                 />
               )
             ) : (
@@ -184,11 +187,17 @@ const BriefResponseForm = ({
                 </li>
               </ul>
 
-              {currentlySending ? (
+              {currentlySending || submitDisabled ? (
                 <LoadingButton />
               ) : (
                 <p>
-                  <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                  <input
+                    className="au-btn"
+                    type="submit"
+                    value="Submit application"
+                    onClick={submitClicked}
+                    disabled={submitDisabled}
+                  />
                 </p>
               )}
             </div>

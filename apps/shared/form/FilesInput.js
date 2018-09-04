@@ -31,14 +31,16 @@ FilesInput.propTypes = {
   label: PropTypes.string,
   hint: PropTypes.string,
   description: PropTypes.string,
-  formFields: PropTypes.number.isRequired
+  formFields: PropTypes.number.isRequired,
+  uploading: PropTypes.func
 }
 
 FilesInput.defaultProps = {
   fileId: 0,
   label: '',
   hint: '',
-  description: ''
+  description: '',
+  uploading: () => null
 }
 
 const uploadDocument = (url, api, id, file) => () => {

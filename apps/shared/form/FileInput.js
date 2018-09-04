@@ -29,8 +29,9 @@ class FileInput extends React.Component {
       errors: undefined
     })
 
-    const { url, api, id, onUpload, createDocument, model, updateDocumentName } = this.props
+    const { url, api, id, onUpload, createDocument, model, updateDocumentName, uploading } = this.props
     const file = e.target.files[0]
+    uploading(true)
 
     onUpload(url, api, id, file).then(result => {
       this.setState({
@@ -42,6 +43,7 @@ class FileInput extends React.Component {
         this.setState({ errors: result.errorMessage })
         createDocument(model)
       }
+      uploading(false)
     })
   }
   render() {
