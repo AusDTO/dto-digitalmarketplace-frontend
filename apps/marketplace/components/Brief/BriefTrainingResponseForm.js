@@ -168,7 +168,7 @@ const BriefTrainingResponseForm = ({
                 </li>
               </ul>
               {currentlySending || loadingText ? (
-                  <LoadingButton text={loadingText ? loadingText : 'Loading'} />
+                <LoadingButton text={loadingText ? loadingText : 'Loading'} />
               ) : (
                 <p>
                   <input
