@@ -6,7 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import { required, validEmail, validPercentage } from 'marketplace/components/validators'
+import { required, requiredFile, validEmail, validPercentage } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
@@ -135,6 +135,12 @@ const BriefSpecialistResponseForm = ({
                     url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                     api={dmapi}
                     description=""
+                    validators={{
+                      requiredFile
+                    }}
+                    messages={{
+                      requiredFile: 'Choose a file for your résumés'
+                    }}
                   />
                 ) : (
                   <AUpageAlert as="warning" setFocus={setFocus}>
