@@ -5,9 +5,9 @@
  */
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator'
 import styles from './LoadingButton.scss'
-import PropTypes from 'prop-types'
 
 function LoadingButton(props) {
   return (

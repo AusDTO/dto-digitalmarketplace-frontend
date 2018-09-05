@@ -199,14 +199,13 @@ const BriefSpecialistResponseForm = ({
                   }}
                 />
                 {currentlySending || loadingText ? (
-                  <LoadingButton text={loadingText ? loadingText : 'Loading'} />
+                  <LoadingButton text={loadingText || 'Loading'} />
                 ) : (
                   <span>
                     <input
                       className="au-btn right-button-margin"
                       type="submit"
                       value="Submit specialist"
-                      disabled={loadingText ? true : false}
                       onClick={e => {
                         submitClicked(e)
                       }}
@@ -216,7 +215,6 @@ const BriefSpecialistResponseForm = ({
                         className="au-btn au-btn--secondary"
                         type="submit"
                         value="Submit and add another"
-                        disabled={loadingText ? true : false}
                         onClick={e => {
                           addAnotherClicked(e)
                         }}
@@ -248,7 +246,8 @@ BriefSpecialistResponseForm.defaultProps = {
   handleNameSubmit: null,
   specialistNumber: null,
   addAnotherClicked: null,
-  uploading: () => null
+  uploading: () => null,
+  loadingText: null
 }
 
 BriefSpecialistResponseForm.propTypes = {

@@ -188,16 +188,10 @@ const BriefResponseForm = ({
               </ul>
 
               {currentlySending || loadingText ? (
-                <LoadingButton text={loadingText ? loadingText : 'Loading'} />
+                <LoadingButton text={loadingText || 'Loading'} />
               ) : (
                 <p>
-                  <input
-                    className="au-btn"
-                    type="submit"
-                    value="Submit application"
-                    onClick={submitClicked}
-                    disabled={loadingText ? true : false}
-                  />
+                  <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
                 </p>
               )}
             </div>
@@ -210,7 +204,8 @@ const BriefResponseForm = ({
 
 BriefResponseForm.defaultProps = {
   submitClicked: null,
-  handleSubmit: null
+  handleSubmit: null,
+  loadingText: null
 }
 
 BriefResponseForm.propTypes = {
