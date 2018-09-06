@@ -48,7 +48,7 @@ class SubmitStepForm extends BaseForm {
     }
 
     render() {
-        let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit, stepsRemaining, submitClicked, applicationErrors} = this.props;
+        let {model, submitUrl, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit, stepsRemaining, submitClicked, applicationErrors} = this.props;
         let message;
         const userIsAuthorised = userEmail && email && userEmail.toLowerCase() === email.toLowerCase();
         const title = userIsAuthorised ? 'Your declaration': 'Share with authorised representative';
@@ -770,15 +770,9 @@ class SubmitStepForm extends BaseForm {
                       onSubmit={onSubmit}
                 >
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
-                    {!applicationValid &&
-                    (<div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
-                      <h4 id="validation-masthead-heading" className="au-display-sm">All steps must be completed before submitting.</h4>
-                      You are yet to complete the following sections: {stepsRemaining}</div>)
-                    }
-
                     <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
                     { message }
-                    {applicationValid
+                    {applicationErrors.length == 0
                         ? <button type="submit">{buttonText}</button>
                         : <button disabled="disabled">{buttonText}</button>
                     }
