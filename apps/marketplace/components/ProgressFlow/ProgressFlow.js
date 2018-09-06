@@ -94,6 +94,8 @@ export class ProgressFlow extends Component {
                     <div>
                       <ProgressContent
                         stage={stage.slug}
+                        model={this.props.model}
+                        updateModel={this.props.updateModel}
                         setStageStatus={this.setStageStatus}
                         setStageDoneStatus={this.setStageDoneStatus}
                         component={stage.component}
@@ -112,12 +114,15 @@ export class ProgressFlow extends Component {
 }
 
 ProgressFlow.defaultProps = {
-  basename: ''
+  basename: '',
+  updateModel: () => {}
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
-  flowStages: PropTypes.array.isRequired
+  flowStages: PropTypes.array.isRequired,
+  model: PropTypes.object.isRequired,
+  updateModel: PropTypes.func
 }
 
 export default ProgressFlow

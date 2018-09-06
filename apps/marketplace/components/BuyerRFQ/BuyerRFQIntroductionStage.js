@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 
 export class BuyerRFQIntroductionStage extends Component {
@@ -24,6 +25,11 @@ export class BuyerRFQIntroductionStage extends Component {
       </div>
     )
   }
+}
+
+BuyerRFQIntroductionStage.propTypes = {
+  stage: PropTypes.string.isRequired,
+  setStageDoneStatus: PropTypes.func.isRequired
 }
 
 export default BuyerRFQIntroductionStage

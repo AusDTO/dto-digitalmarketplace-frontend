@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import styles from './BuyerRFQSelectStage.scss'
@@ -7,7 +8,7 @@ export class BuyerRFQSelectStage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sellers: {}
+      sellers: { ...props.model.sellers }
     }
 
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
@@ -17,6 +18,7 @@ export class BuyerRFQSelectStage extends Component {
     this.setState(curState => {
       const newState = { ...curState }
       newState.sellers[seller.code] = seller
+      this.props.updateModel(newState)
       return newState
     })
   }
@@ -25,6 +27,7 @@ export class BuyerRFQSelectStage extends Component {
     this.setState(curState => {
       const newState = { ...curState }
       delete newState.sellers[sellerCode]
+      this.props.updateModel(newState)
       return newState
     })
   }
@@ -57,6 +60,11 @@ export class BuyerRFQSelectStage extends Component {
       </div>
     )
   }
+}
+
+BuyerRFQSelectStage.propTypes = {
+  model: PropTypes.object.isRequired,
+  updateModel: PropTypes.func.isRequired
 }
 
 export default BuyerRFQSelectStage

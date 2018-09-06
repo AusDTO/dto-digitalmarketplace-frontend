@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUprogressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
+import styles from './ProgressNav.scss'
 
 const ProgressFlow = props => {
   const items = props.items.slice(0)
@@ -13,7 +14,11 @@ const ProgressFlow = props => {
     return newItem
   })
 
-  return <AUprogressIndicator items={items} />
+  return (
+    <div className={styles.progressIndicator}>
+      <AUprogressIndicator items={items} />
+    </div>
+  )
 }
 
 ProgressFlow.defaultProps = {
