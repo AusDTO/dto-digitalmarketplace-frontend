@@ -757,7 +757,7 @@ class SubmitStepForm extends BaseForm {
         }
         return (
             <div>
-                <ValidationSummary form={form} applicationErrors={applicationErrors} renderLink={true} title={'There is a problem to fix before you can submit'} />
+                <ValidationSummary form={form} applicationErrors={applicationErrors} title={'There is a problem to fix before you can submit'} />
                 <h1 className="au-display-xl" tabIndex="-1">  
                   {title}
                 </h1>

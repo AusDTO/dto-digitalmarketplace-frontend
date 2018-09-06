@@ -34,7 +34,7 @@ export default class ValidationSummary extends React.Component {
 
 ValidationSummary.defaultProps = {
     applicationErrors: [],
-    renderLink: false,
+    renderLink: true,
     form: null,
     title: 'Errors',
     filterFunc: (() => true)
