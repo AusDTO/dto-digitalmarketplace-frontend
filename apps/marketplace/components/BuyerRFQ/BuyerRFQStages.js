@@ -10,12 +10,12 @@ const BuyerRFQStages = [
   },
   {
     slug: 'select',
-    title: 'Select',
+    title: 'Select sellers',
     component: BuyerRFQSelectStage
   },
   {
     slug: 'review',
-    title: 'Review',
+    title: 'Review email',
     component: BuyerRFQReviewStage
   }
 ]

@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ProgressNav from 'marketplace/components/ProgressFlow/ProgressNav'
 import ProgressContent from 'marketplace/components/ProgressFlow/ProgressContent'
+import ProgressButtons from 'marketplace/components/ProgressFlow/ProgressButtons'
 
 export class ProgressFlow extends Component {
   constructor(props) {
@@ -50,6 +51,16 @@ export class ProgressFlow extends Component {
     })
   }
 
+  getNextStage(curStage) {
+    let nextStage = ''
+    const stages = Object.keys(this.state.stages)
+    const curIndex = stages.indexOf(curStage)
+    if (curIndex !== -1 && typeof stages[curIndex + 1] !== 'undefined') {
+      nextStage = stages[curIndex + 1]
+    }
+    return nextStage
+  }
+
   render() {
     const items = []
     this.props.flowStages.map(stage =>
@@ -80,12 +91,15 @@ export class ProgressFlow extends Component {
                   key={stage.slug}
                   path={`/${stage.slug}`}
                   render={() => (
-                    <ProgressContent
-                      stage={stage.slug}
-                      setStageStatus={this.setStageStatus}
-                      setStageDoneStatus={this.setStageDoneStatus}
-                      component={stage.component}
-                    />
+                    <div>
+                      <ProgressContent
+                        stage={stage.slug}
+                        setStageStatus={this.setStageStatus}
+                        setStageDoneStatus={this.setStageDoneStatus}
+                        component={stage.component}
+                      />
+                      <ProgressButtons nextStage={this.getNextStage(stage.slug)} />
+                    </div>
                   )}
                 />
               ))}
