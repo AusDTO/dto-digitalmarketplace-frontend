@@ -12,7 +12,9 @@ export class ProgressFlow extends Component {
       // this is the current state of the nav items in the progress indictor
       stages: {},
       // this is the state of whether the nav items are done
-      stagesDone: {}
+      stagesDone: {},
+      // this is the entire flow's data model
+      model: this.props.model
     }
 
     // populate the stage states
@@ -24,6 +26,7 @@ export class ProgressFlow extends Component {
 
     this.setStageStatus = this.setStageStatus.bind(this)
     this.setStageDoneStatus = this.setStageDoneStatus.bind(this)
+    this.updateModel = this.updateModel.bind(this)
   }
 
   setStageStatus(stage, status) {
@@ -61,6 +64,14 @@ export class ProgressFlow extends Component {
     return nextStage
   }
 
+  updateModel(model) {
+    this.setState(curState => {
+      const newState = { ...curState }
+      newState.model = { ...curState.model, ...model }
+      return newState
+    })
+  }
+
   render() {
     const items = []
     this.props.flowStages.map(stage =>
@@ -94,8 +105,8 @@ export class ProgressFlow extends Component {
                     <div>
                       <ProgressContent
                         stage={stage.slug}
-                        model={this.props.model}
-                        updateModel={this.props.updateModel}
+                        model={this.state.model}
+                        updateModel={this.updateModel}
                         setStageStatus={this.setStageStatus}
                         setStageDoneStatus={this.setStageDoneStatus}
                         component={stage.component}
@@ -114,15 +125,13 @@ export class ProgressFlow extends Component {
 }
 
 ProgressFlow.defaultProps = {
-  basename: '',
-  updateModel: () => {}
+  basename: ''
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
   flowStages: PropTypes.array.isRequired,
-  model: PropTypes.object.isRequired,
-  updateModel: PropTypes.func
+  model: PropTypes.object.isRequired
 }
 
 export default ProgressFlow
