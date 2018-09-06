@@ -29,7 +29,7 @@ class DomainSelector extends BaseForm {
   }
 
     render() {
-        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter, nextRoute, submitClicked, form, applicationErrors} = this.props;
+        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter, nextRoute, submitClicked, form, applicationErrors, type} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -85,7 +85,7 @@ class DomainSelector extends BaseForm {
 
         return (
             <Layout>
-                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'services'} />
+                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'services' && type === 'edit'} />
                 {header}
                 <article role="main">
 

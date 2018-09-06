@@ -17,7 +17,6 @@ import StepNav              from '../StepNav';
 import { findValidServices } from '../../redux/helpers';
 import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
 
-import PageAlert from '@gov.au/page-alerts'
 import ValidationSummary from '../ValidationSummary';
 
 import styles from '../SellerRegistration.css';
@@ -40,7 +39,7 @@ class PricingForm extends BaseForm {
   }
 
   render() {
-    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains, applicationErrors } = this.props;
+    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains, applicationErrors, type } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {
@@ -68,7 +67,7 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header styleName="styles.content">
-            <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'pricing'} />
+            <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'pricing' && type === 'edit'} />
             <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
             <p>
               The Marketplace asks for a comparable level of pricing across all sellers. This helps ensure that your 

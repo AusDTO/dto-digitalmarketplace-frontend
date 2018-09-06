@@ -25,7 +25,7 @@ class AwardsForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors, type} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -36,7 +36,7 @@ class AwardsForm extends BaseForm {
         return (
             <Layout>
                 <header styleName="content">
-                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'awards'} />
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'awards' && type === 'edit'} />
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">Awards and accreditations</h1>
 
                     <p>This is your opportunity to share some of the things you are proud of.

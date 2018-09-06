@@ -23,8 +23,8 @@ export default class ValidationSummary extends React.Component {
                     <ul>
                         {errors.map(ae => {
                             return (renderLink) ?
-                                <li key="{ae.message}"><Link to={`/${ae.step}`} key={ae.message}>{ae.message}</Link></li> :
-                                <li key="{ae.message}">{ae.message}</li>
+                                <li key={ae.message}><Link to={ae.field ? `/${ae.step}#${ae.field}`: `/${ae.step}`} key={ae.message}>{ae.message}</Link></li> :
+                                <li key={ae.message}>{ae.message}</li>
                         })}
                     </ul>
                 </PageAlert>) : ''

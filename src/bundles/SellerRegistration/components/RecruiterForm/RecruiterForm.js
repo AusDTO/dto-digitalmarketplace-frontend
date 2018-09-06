@@ -24,7 +24,7 @@ class RecruiterForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -35,7 +35,7 @@ class RecruiterForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'recruiter'} />
+                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'recruiter' && type === 'edit'} />
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>

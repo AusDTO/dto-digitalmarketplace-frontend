@@ -27,7 +27,23 @@ class YourInfoForm extends BaseForm {
   }
 
   render() {
-    const { action, csrf_token, model, supplierCode, userName, userEmail, form, buttonText, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors } = this.props;
+    const {
+      action,
+      csrf_token,
+      model,
+      supplierCode,
+      userName,
+      userEmail,
+      form,
+      buttonText,
+      children,
+      onSubmit,
+      onSubmitFailed,
+      nextRoute,
+      submitClicked,
+      applicationErrors,
+      type
+    } = this.props;
     let title = 'Contact details';
     if (isNumber(supplierCode)) {
         title = 'Check your contact details'
@@ -43,7 +59,7 @@ class YourInfoForm extends BaseForm {
     return (
       <Layout>
         <header>
-          <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'contacts'} />
+          <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'contacts' && type === 'edit'} />
           <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">{title}</h1>
         </header>
         <article role="main">

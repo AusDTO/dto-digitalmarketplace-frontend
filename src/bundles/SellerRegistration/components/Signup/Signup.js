@@ -66,13 +66,13 @@ class Signup extends React.Component {
     { id: 'start', label: 'Introduction', component: Start, pattern: '/start' },
     { id: 'business-details', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
     { id: 'business-info', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
-    { id: 'contacts', label: 'Contacts', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'your-info', label: 'Contacts', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
-    { id: 'services', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'domains', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
     { id: 'case-study', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
@@ -150,7 +150,7 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { forms, location, steps = {}, actions } = this.props;
+    const { forms, location, steps = {}, actions, application } = this.props;
 
     let { recruiter = 'no'} = forms.recruiterForm;
     let filter = recruiter === 'yes' ? /\/pricing|\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
@@ -198,7 +198,7 @@ class Signup extends React.Component {
                       onClick={() => actions.navigateToStep(pattern)}
                       className={classNames({'is-active is-current': isActive})}
                     >
-                      { (applicationErrors.map(ae => ae.step).indexOf(id) >= 0) ?
+                      { (application.type == 'edit' && applicationErrors.map(ae => ae.step).indexOf(id) >= 0) ?
                         <Icon value="alert" size={34} aria-hidden="true"/>
                         :
                         <Icon value={classNames({
@@ -234,6 +234,7 @@ class Signup extends React.Component {
                 routerProps, {
                   applicationValid,
                   domains: this.props.application.domains,
+                  type: this.props.application.type,
                   stepsRemaining,
                   services,
                   nextRoute: this.nextStep && this.nextStep.pattern,

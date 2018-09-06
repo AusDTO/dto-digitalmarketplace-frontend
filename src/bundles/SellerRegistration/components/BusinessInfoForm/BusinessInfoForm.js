@@ -28,7 +28,7 @@ class BusinessInfoForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors, type} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -39,7 +39,7 @@ class BusinessInfoForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'business-info'} />
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'business-info' && type === 'edit'} />
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">More about your business</h1>
                 </header>
                 <article role="main">

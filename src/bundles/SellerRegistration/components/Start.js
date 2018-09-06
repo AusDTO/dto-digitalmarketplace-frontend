@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
 import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
 import isNumber from 'lodash/isNumber';
-import PageAlert from '@gov.au/page-alerts'
 import ValidationSummary from './ValidationSummary';
 
 import './Start.css';

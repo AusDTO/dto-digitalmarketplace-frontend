@@ -59,7 +59,8 @@ class BusinessDetailsForm extends BaseForm {
             businessDetailsForm,
             nextRoute,
             submitClicked,
-            applicationErrors
+            applicationErrors,
+            type
         } = this.props;
 
         let title = 'Tell us about your business'
@@ -77,7 +78,7 @@ class BusinessDetailsForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'business-details'} />
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'business-details' && type === 'edit'} />
                     <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
                 </header>
                 <article role="main">

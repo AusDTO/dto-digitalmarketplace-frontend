@@ -26,7 +26,7 @@ class DisclosuresForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors } = this.props;
+        const {action, csrf_token, model, form, title, children, onSubmit, onSubmitFailed, nextRoute, submitClicked, applicationErrors, type } = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -37,7 +37,7 @@ class DisclosuresForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'disclosures'} />
+                    <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'disclosures' && type === 'edit'} />
                     <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
                     <p>These responses are not visible on your profile but may be provided to buyers who are considering awarding you a contract. </p>
 
