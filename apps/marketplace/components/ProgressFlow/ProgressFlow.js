@@ -33,7 +33,7 @@ export class ProgressFlow extends Component {
     this.setState(currentState => {
       const newState = { ...currentState }
       if (status === 'doing') {
-        // there can only be one "doing" stage
+        // there can only be one "doing" stage, so revert any existing 'doing' stage
         Object.keys(newState.stages).map(stateStage => {
           if (newState.stages[stateStage] === 'doing') {
             newState.stages[stateStage] = currentState.stagesDone[stateStage] ? 'done' : 'todo'
@@ -65,7 +65,7 @@ export class ProgressFlow extends Component {
   }
 
   updateModel(model) {
-    this.setState(curState => {
+    return this.setState(curState => {
       const newState = { ...curState }
       newState.model = { ...curState.model, ...model }
       return newState
@@ -106,6 +106,7 @@ export class ProgressFlow extends Component {
                       <ProgressContent
                         stage={stage.slug}
                         model={this.state.model}
+                        isDone={this.state.stagesDone[stage.slug]}
                         updateModel={this.updateModel}
                         setStageStatus={this.setStageStatus}
                         setStageDoneStatus={this.setStageDoneStatus}

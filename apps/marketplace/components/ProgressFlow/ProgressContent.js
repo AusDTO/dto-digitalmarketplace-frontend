@@ -13,6 +13,7 @@ export class ProgressContent extends Component {
         setStageDoneStatus={this.props.setStageDoneStatus}
         stage={this.props.stage}
         model={this.props.model}
+        isDone={this.props.isDone}
         updateModel={this.props.updateModel}
       />
     )
@@ -26,6 +27,7 @@ ProgressContent.defaultProps = {
 
 ProgressContent.propTypes = {
   model: PropTypes.object.isRequired,
+  isDone: PropTypes.bool.isRequired,
   updateModel: PropTypes.func.isRequired,
   setStageStatus: PropTypes.func,
   setStageDoneStatus: PropTypes.func,
