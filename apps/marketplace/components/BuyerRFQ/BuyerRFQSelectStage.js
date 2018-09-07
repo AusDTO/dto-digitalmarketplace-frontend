@@ -66,7 +66,8 @@ BuyerRFQSelectStage.propTypes = {
   model: PropTypes.object.isRequired,
   stage: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
-  updateModel: PropTypes.func.isRequired
+  updateModel: PropTypes.func.isRequired,
+  setStageDoneStatus: PropTypes.func.isRequired
 }
 
 export default BuyerRFQSelectStage

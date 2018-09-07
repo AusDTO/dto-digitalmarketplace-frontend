@@ -1,5 +1,7 @@
 const BuyerRFQModel = {
+  id: 0,
   title: '',
+  organisation: '',
   sellers: {}
 }
 
