@@ -7,29 +7,19 @@ import styles from './BuyerRFQSelectStage.scss'
 export class BuyerRFQSelectStage extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      sellers: { ...props.model.sellers }
-    }
-
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
   }
 
   handleSellerSelect(seller) {
-    this.setState(curState => {
-      const newState = { ...curState }
-      newState.sellers[seller.code] = seller
-      this.props.updateModel(newState)
-      return newState
-    })
+    const newState = { ...this.props.model }
+    newState.sellers[seller.code] = seller
+    this.props.updateModel(newState)
   }
 
   removeSeller(sellerCode) {
-    this.setState(curState => {
-      const newState = { ...curState }
-      delete newState.sellers[sellerCode]
-      this.props.updateModel(newState)
-      return newState
-    })
+    const newState = { ...this.props.model }
+    delete newState.sellers[sellerCode]
+    this.props.updateModel(newState)
   }
 
   render() {
@@ -38,11 +28,11 @@ export class BuyerRFQSelectStage extends Component {
         <AUheading level="1" size="xl">
           Select sellers
         </AUheading>
-        {Object.keys(this.state.sellers).length > 0 && (
+        {Object.keys(this.props.model.sellers).length > 0 && (
           <ol className={styles.selectedSellers}>
-            {Object.keys(this.state.sellers).map(sellerCode => (
+            {Object.keys(this.props.model.sellers).map(sellerCode => (
               <li key={sellerCode}>
-                {this.state.sellers[sellerCode].name}
+                {this.props.model.sellers[sellerCode].name}
                 <a
                   href="#remove"
                   onClick={e => {
