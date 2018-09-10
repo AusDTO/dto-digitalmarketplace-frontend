@@ -72,6 +72,12 @@ export default combineReducers({
         WA: false,
         Remote: false
       }
+    },
+    BuyerRFQForm: {
+      id: 0,
+      title: '',
+      organisation: '',
+      sellers: {}
     }
   })
 })

@@ -1,48 +1,54 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { actions } from 'react-redux-form'
+import BaseForm from 'shared/form/BaseForm'
+import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import styles from './BuyerRFQSelectStage.scss'
 
-export class BuyerRFQSelectStage extends Component {
+export class BuyerRFQSelectStage extends BaseForm {
   constructor(props) {
     super(props)
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
   }
 
   componentDidUpdate() {
+    const { model } = this.props
     // set this stage to done when props update and there is atleast one selected seller
     // and set it back to not-done when there is no seller selected
-    if (Object.keys(this.props.model.sellers).length > 0 && !this.props.isDone) {
+    if (Object.keys(this.props[model].sellers).length > 0 && !this.props.isDone) {
       this.props.setStageDoneStatus(this.props.stage, true)
-    } else if (Object.keys(this.props.model.sellers).length === 0 && this.props.isDone) {
+    } else if (Object.keys(this.props[model].sellers).length === 0 && this.props.isDone) {
       this.props.setStageDoneStatus(this.props.stage, false)
     }
   }
 
   handleSellerSelect(seller) {
-    const newState = { ...this.props.model }
-    newState.sellers[seller.code] = seller
-    this.props.updateModel(newState)
+    const newState = { ...this.props[this.props.model].sellers }
+    newState[seller.code] = seller
+    this.props.updateSelectedSellers(newState)
   }
 
   removeSeller(sellerCode) {
-    const newState = { ...this.props.model }
-    delete newState.sellers[sellerCode]
-    this.props.updateModel(newState)
+    const newState = { ...this.props[this.props.model].sellers }
+    delete newState[sellerCode]
+    this.props.updateSelectedSellers(newState)
   }
 
   render() {
+    const { model } = this.props
     return (
       <div>
         <AUheading level="1" size="xl">
           Select sellers
         </AUheading>
-        {Object.keys(this.props.model.sellers).length > 0 && (
+        {Object.keys(this.props[model].sellers).length > 0 && (
           <ol className={styles.selectedSellers}>
-            {Object.keys(this.props.model.sellers).map(sellerCode => (
+            {Object.keys(this.props[model].sellers).map(sellerCode => (
               <li key={sellerCode}>
-                {this.props.model.sellers[sellerCode].name}
+                {this.props[model].sellers[sellerCode].name}
                 <a
                   href="#remove"
                   onClick={e => {
@@ -63,11 +69,18 @@ export class BuyerRFQSelectStage extends Component {
 }
 
 BuyerRFQSelectStage.propTypes = {
-  model: PropTypes.object.isRequired,
+  model: PropTypes.string.isRequired,
   stage: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
-  updateModel: PropTypes.func.isRequired,
   setStageDoneStatus: PropTypes.func.isRequired
 }
 
-export default BuyerRFQSelectStage
+const mapStateToProps = (state, props) => ({
+  ...formProps(state, props.model)
+})
+
+const mapDispatchToProps = (dispatch, props) => ({
+  updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQSelectStage)

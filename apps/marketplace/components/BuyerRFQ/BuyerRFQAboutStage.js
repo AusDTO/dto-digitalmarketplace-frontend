@@ -1,73 +1,76 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Form } from 'react-redux-form'
+import BaseForm from 'shared/form/BaseForm'
+import Textfield from 'shared/form/Textfield'
+import formProps from 'shared/form/formPropsSelector'
+import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 
-export class BuyerRFQAboutStage extends Component {
-  constructor(props) {
-    super(props)
-
-    this.handleTitleChange = this.handleTitleChange.bind(this)
-    this.handleOrganisationChange = this.handleOrganisationChange.bind(this)
-  }
-
+export class BuyerRFQAboutStage extends BaseForm {
   componentDidUpdate() {
-    if (this.props.model.title && this.props.model.organisation && !this.props.isDone) {
+    const { model } = this.props
+    if (this.props[model].title && this.props[model].organisation && !this.props.isDone) {
       this.props.setStageDoneStatus(this.props.stage, true)
-    } else if ((!this.props.model.title || !this.props.model.organisation) && this.props.isDone) {
+    } else if ((!this.props[model].title || !this.props[model].organisation) && this.props.isDone) {
       this.props.setStageDoneStatus(this.props.stage, false)
     }
   }
 
-  handleTitleChange(e) {
-    const newState = { ...this.props.model }
-    newState.title = e.target.value
-    this.props.updateModel(newState)
-  }
-
-  handleOrganisationChange(e) {
-    const newState = { ...this.props.model }
-    newState.organisation = e.target.value
-    this.props.updateModel(newState)
-  }
-
   render() {
+    const { model } = this.props
     return (
       <div>
         <AUheadings level="1" size="xl">
           About
         </AUheadings>
-        <p>
-          <label htmlFor="brief-title">Title</label>
-          <AUtextInput
-            id="brief-title"
-            required
-            block
-            value={this.props.model.title}
-            onChange={this.handleTitleChange}
+        <Form model={model} id="aboutForm">
+          <Textfield
+            model={`${model}.title`}
+            label="Title"
+            name="title"
+            id="title"
+            htmlFor="title"
+            defaultValue={this.props[model].title}
+            maxLength={100}
+            validators={{
+              required
+            }}
+            messages={{
+              required: 'Enter a title for this brief'
+            }}
           />
-        </p>
-        <p>
-          <label htmlFor="brief-organisation">Organisation</label>
-          <AUtextInput
-            id="brief-organisation"
-            required
-            block
-            value={this.props.model.organisation}
-            onChange={this.handleOrganisationChange}
+          <Textfield
+            model={`${model}.organisation`}
+            label="Organisation"
+            name="organisation"
+            id="organisation"
+            htmlFor="organisation"
+            defaultValue={this.props[model].organisation}
+            maxLength={100}
+            validators={{
+              required
+            }}
+            messages={{
+              required: 'Enter the name of your organisation'
+            }}
           />
-        </p>
+        </Form>
       </div>
     )
   }
 }
 
 BuyerRFQAboutStage.propTypes = {
-  model: PropTypes.object.isRequired,
+  model: PropTypes.string.isRequired,
   stage: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
-  updateModel: PropTypes.func.isRequired,
   setStageDoneStatus: PropTypes.func.isRequired
 }
 
-export default BuyerRFQAboutStage
+const mapStateToProps = (state, props) => ({
+  ...formProps(state, props.model)
+})
+
+export default connect(mapStateToProps)(BuyerRFQAboutStage)
