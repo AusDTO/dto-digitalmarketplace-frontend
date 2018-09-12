@@ -26,7 +26,7 @@ class Datefield extends React.Component {
       })
     }
     else {
-      setDate(model, '2017-01-01');
+      setDate(model, '');
     }
   }
 

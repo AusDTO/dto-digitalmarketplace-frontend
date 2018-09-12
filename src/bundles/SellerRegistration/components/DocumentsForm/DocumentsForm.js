@@ -262,7 +262,8 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-                        { this.props.documentsForm.documents.workers && this.props.documentsForm.documents.workers.expiry ?
+
+                        {documentsForm.documents.workers && documentsForm.documents.workers.filename ?
                           '' :
                           <CheckboxDetailsField
                             id="compensation"
