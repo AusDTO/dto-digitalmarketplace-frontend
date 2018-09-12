@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
-import BaseForm from 'shared/form/BaseForm'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import styles from './BuyerRFQSelectStage.scss'
 
-export class BuyerRFQSelectStage extends BaseForm {
+export class BuyerRFQSelectStage extends Component {
   constructor(props) {
     super(props)
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
   }
 
+  componentDidMount() {
+    this.updateDoneStatus()
+  }
+
   componentDidUpdate() {
+    this.updateDoneStatus()
+  }
+
+  updateDoneStatus() {
     const { model } = this.props
     // set this stage to done when props update and there is atleast one selected seller
     // and set it back to not-done when there is no seller selected

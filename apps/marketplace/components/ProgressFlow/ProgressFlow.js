@@ -100,7 +100,10 @@ export class ProgressFlow extends Component {
                         setStageDoneStatus={this.setStageDoneStatus}
                         component={stage.component}
                       />
-                      <ProgressButtons nextStage={this.getNextStage(stage.slug)} />
+                      <ProgressButtons
+                        onStageContinueClick={this.props.onStageContinueClick}
+                        nextStage={this.getNextStage(stage.slug)}
+                      />
                     </div>
                   )}
                 />
@@ -114,13 +117,15 @@ export class ProgressFlow extends Component {
 }
 
 ProgressFlow.defaultProps = {
-  basename: ''
+  basename: '',
+  onStageContinueClick: () => {}
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
   flowStages: PropTypes.array.isRequired,
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  onStageContinueClick: PropTypes.func
 }
 
 export default ProgressFlow

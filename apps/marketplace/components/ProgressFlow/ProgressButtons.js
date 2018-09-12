@@ -19,6 +19,7 @@ export class ProgressButtons extends Component {
         {this.props.nextStage ? (
           <AUbutton
             onClick={() => {
+              this.props.onStageContinueClick()
               if (this.props.nextStage) {
                 this.setState({
                   redirect: this.props.nextStage
@@ -29,7 +30,7 @@ export class ProgressButtons extends Component {
             {this.props.continueText}
           </AUbutton>
         ) : (
-          <AUbutton onClick={() => {}}>{this.props.submitText}</AUbutton>
+          <AUbutton>{this.props.submitText}</AUbutton>
         )}
         <AUbutton as="tertiary">{this.props.returnText}</AUbutton>
       </p>
@@ -40,14 +41,16 @@ export class ProgressButtons extends Component {
 ProgressButtons.defaultProps = {
   continueText: 'Continue',
   submitText: 'Submit',
-  returnText: 'Return to overview'
+  returnText: 'Return to overview',
+  onStageContinueClick: () => {}
 }
 
 ProgressButtons.propTypes = {
   continueText: PropTypes.string,
   submitText: PropTypes.string,
   returnText: PropTypes.string,
-  nextStage: PropTypes.string.isRequired
+  nextStage: PropTypes.string.isRequired,
+  onStageContinueClick: PropTypes.func
 }
 
 export default ProgressButtons

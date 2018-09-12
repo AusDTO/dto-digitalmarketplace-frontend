@@ -77,7 +77,8 @@ export default combineReducers({
       id: 0,
       title: '',
       organisation: '',
-      sellers: {}
+      sellers: {},
+      attachedDocumentURL: []
     }
   })
 })
