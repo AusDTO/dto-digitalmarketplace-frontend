@@ -3,12 +3,12 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-
-Enzyme.configure({ adapter: new Adapter() });
 import { Provider } from 'react-redux'
 
 import DocumentsForm from './DocumentsForm'
 import createStore from '../../redux/create-signup'
+
+Enzyme.configure({ adapter: new Adapter() });
 
 test('DocumentsForm renders inputs when no documents are present', () => {
   const documents = {}
