@@ -17,8 +17,13 @@ export class BuyerRFQSelectStage extends Component {
     this.updateDoneStatus()
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     this.updateDoneStatus()
+
+    const { model } = this.props
+    if (JSON.stringify(prevProps[model].sellers) !== JSON.stringify(this.props[model].sellers)) {
+      this.props.saveBrief()
+    }
   }
 
   updateDoneStatus() {
@@ -34,7 +39,7 @@ export class BuyerRFQSelectStage extends Component {
 
   handleSellerSelect(seller) {
     const newState = { ...this.props[this.props.model].sellers }
-    newState[seller.code] = seller
+    newState[seller.code] = { name: seller.name }
     this.props.updateSelectedSellers(newState)
   }
 
@@ -79,7 +84,8 @@ BuyerRFQSelectStage.propTypes = {
   model: PropTypes.string.isRequired,
   stage: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
-  setStageDoneStatus: PropTypes.func.isRequired
+  setStageDoneStatus: PropTypes.func.isRequired,
+  saveBrief: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, props) => ({
