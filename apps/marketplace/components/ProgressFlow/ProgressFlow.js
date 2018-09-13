@@ -98,10 +98,11 @@ export class ProgressFlow extends Component {
                         isDone={this.state.stagesDone[stage.slug]}
                         setStageStatus={this.setStageStatus}
                         setStageDoneStatus={this.setStageDoneStatus}
+                        saveBrief={this.props.saveBrief}
                         component={stage.component}
                       />
                       <ProgressButtons
-                        onStageContinueClick={this.props.onStageContinueClick}
+                        onStageContinueClick={this.props.saveBrief}
                         nextStage={this.getNextStage(stage.slug)}
                       />
                     </div>
@@ -118,14 +119,14 @@ export class ProgressFlow extends Component {
 
 ProgressFlow.defaultProps = {
   basename: '',
-  onStageContinueClick: () => {}
+  saveBrief: () => {}
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
   flowStages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
-  onStageContinueClick: PropTypes.func
+  saveBrief: PropTypes.func
 }
 
 export default ProgressFlow

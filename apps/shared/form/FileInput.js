@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import { Control } from 'react-redux-form'
@@ -16,9 +17,7 @@ class FileInput extends React.Component {
     e.preventDefault()
     const { model, createDocument } = this.props
     createDocument(model)
-    this.setState({
-      file: undefined
-    })
+    this.setState({ file: undefined }, this.props.onReset)
   }
 
   onChange = e => {
@@ -42,6 +41,7 @@ class FileInput extends React.Component {
         this.setState({ errors: result.errorMessage })
         createDocument(model)
       }
+      this.props.onUploadSuccess()
     })
   }
   render() {
@@ -102,6 +102,16 @@ class FileInput extends React.Component {
       </div>
     )
   }
+}
+
+FileInput.defaultProps = {
+  onReset: () => {},
+  onUploadSuccess: () => {}
+}
+
+FileInput.propTypes = {
+  onReset: PropTypes.func,
+  onUploadSuccess: PropTypes.func
 }
 
 export default FileInput

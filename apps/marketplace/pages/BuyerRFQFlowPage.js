@@ -33,6 +33,7 @@ export class BuyerRFQFlowPage extends Component {
       data.title = response.data.title || ''
       data.organisation = response.data.organisation || ''
       data.sellers = response.data.sellers || {}
+      data.attachedDocumentURL = response.data.attachedDocumentURL || []
       this.props.changeFormModel(data)
     })
   }
@@ -52,7 +53,7 @@ export class BuyerRFQFlowPage extends Component {
           model={model}
           basename={`${rootPath}/buyer-rfq/${this.props.match.params.briefId}`}
           flowStages={BuyerRFQStages}
-          onStageContinueClick={this.saveBrief}
+          saveBrief={this.saveBrief}
         />
       </Form>
     )

@@ -1,7 +1,7 @@
 import BuyerRFQIntroductionStage from './BuyerRFQIntroductionStage'
 import BuyerRFQAboutStage from './BuyerRFQAboutStage'
 import BuyerRFQSelectStage from './BuyerRFQSelectStage'
-import BuyerRFQRequirementsStage from './BuyerRFQRequirementsStage'
+import BuyerRFQAttachmentsStage from './BuyerRFQAttachmentsStage'
 import BuyerRFQReviewStage from './BuyerRFQReviewStage'
 
 const BuyerRFQStages = [
@@ -21,9 +21,9 @@ const BuyerRFQStages = [
     component: BuyerRFQSelectStage
   },
   {
-    slug: 'requirements',
-    title: 'Requirements',
-    component: BuyerRFQRequirementsStage
+    slug: 'attachments',
+    title: 'Attachments',
+    component: BuyerRFQAttachmentsStage
   },
   {
     slug: 'review',
