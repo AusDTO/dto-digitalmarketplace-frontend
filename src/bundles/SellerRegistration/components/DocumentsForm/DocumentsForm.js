@@ -38,8 +38,15 @@ class DocumentsForm extends BaseForm {
     static defaultProps = {
         match: {url: ''}
     }
+    
     state = {
-        errors: {}
+        errors: {},
+        liability: {
+            newDocumentUploaded: false
+        },
+        workers: {
+            newDocumentUploaded: false
+        }
     }
 
     formFields = [
@@ -76,9 +83,9 @@ class DocumentsForm extends BaseForm {
         createDocument(model, id);
         onUpload(id, file)
             .then((filename) => {
-                this.setState({
-                    [id]: Object.assign({}, this.state[id], {'uploading': false})
-                });
+                this.setState(prevState => ({
+                    [id]: Object.assign({}, this.state[id], { 'uploading': false, newDocumentUploaded: true })
+                }));
                 updateDocumentName(model, id, filename, applicationId);
             })
             .then(submitApplication)
@@ -188,6 +195,13 @@ class DocumentsForm extends BaseForm {
                             const errors = this.state.errors[key];
                             const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents` : match.url.slice(1);
 
+                            let disabled = true
+                            if (field.expires && !doc.expiry) {
+                                disabled = false
+                            } else if (key in this.state) {
+                                disabled = !this.state[key].newDocumentUploaded
+                            }
+
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <p styleName="question-heading">{field.label}</p>
@@ -238,6 +252,7 @@ class DocumentsForm extends BaseForm {
                                                     label="Expiry date:"
                                                     updateOn="change"
                                                     validators={{validDate}}
+                                                    disabled={disabled}
                                                     controlProps={{
                                                         id: expiry_date_field,
                                                         model: `${model}.documents.${key}.expiry`,
