@@ -90,19 +90,19 @@ class CandidatesForm extends BaseForm {
                                         }}
                                     />
                                     <Textfield
-                                       model={`${model}.recruiter_info.${domain.label}.placed_candidates`}
-                                       name={`${domain.label}-placed_candidates`}
-                                       id={`${domain.label}-placed_candidates`}
-                                       htmlFor={`${domain.label}-placed_candidates`}
-                                       label="How many candidates have you successfully placed in the last 12 months?"
-                                       messages={{
-                                           required: 'You must supply the number of candidates successfully placed',
-                                           onlyWholeNumbers: 'Candidates successfully placed must be a whole number'
-                                       }}
-                                       validators={{
-                                        required,
-                                        onlyWholeNumbers
-                                    }}
+                                        model={`${model}.recruiter_info.${domain.label}.placed_candidates`}
+                                        name={`${domain.label}-placed_candidates`}
+                                        id={`${domain.label}-placed_candidates`}
+                                        htmlFor={`${domain.label}-placed_candidates`}
+                                        label="How many candidates have you successfully placed in the last 12 months?"
+                                        messages={{
+                                            required: 'You must supply the number of candidates successfully placed',
+                                            onlyWholeNumbers: 'Candidates successfully placed must be a whole number'
+                                        }}
+                                        validators={{
+                                            required,
+                                            onlyWholeNumbers
+                                        }}
                                     />
                                     <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.markup`}
