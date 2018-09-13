@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Form} from 'react-redux-form';
 
 import Layout     from '../../../../shared/Layout';
-import {required, validPercentage} from '../../../../validators';
+import {required, validPercentage, onlyWholeNumbers} from '../../../../validators';
 
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
@@ -66,9 +66,13 @@ class CandidatesForm extends BaseForm {
                                         htmlFor={`${domain.label}-database_size`}
                                         label="What is the size of your candidate database?"
                                         messages={{
-                                            required: 'You must supply the candidate database size'
+                                            required: 'You must supply the candidate database size',
+                                            onlyWholeNumbers: 'Candidate database size must be a whole number'
                                         }}
-                                        validators={{required}}
+                                        validators={{
+                                            required,
+                                            onlyWholeNumbers
+                                        }}
                                     />
                                     <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.active_candidates`}
@@ -77,9 +81,13 @@ class CandidatesForm extends BaseForm {
                                         htmlFor={`${domain.label}-active_candidates`}
                                         label="How many candidates are actively looking now?"
                                         messages={{
-                                            required: 'You must supply the number of candidates looking'
+                                            required: 'You must supply the number of candidates looking',
+                                            onlyWholeNumbers: 'Candidates looking must be a whole number'
                                         }}
-                                        validators={{required}}
+                                        validators={{
+                                            required,
+                                            onlyWholeNumbers
+                                        }}
                                     />
                                     <Textfield
                                        model={`${model}.recruiter_info.${domain.label}.placed_candidates`}
@@ -88,9 +96,13 @@ class CandidatesForm extends BaseForm {
                                        htmlFor={`${domain.label}-placed_candidates`}
                                        label="How many candidates have you successfully placed in the last 12 months?"
                                        messages={{
-                                           required: 'You must supply the number of candidates successfully placed'
+                                           required: 'You must supply the number of candidates successfully placed',
+                                           onlyWholeNumbers: 'Candidates successfully placed must be a whole number'
                                        }}
-                                       validators={{required}}
+                                       validators={{
+                                        required,
+                                        onlyWholeNumbers
+                                    }}
                                     />
                                     <Textfield
                                         model={`${model}.recruiter_info.${domain.label}.markup`}
