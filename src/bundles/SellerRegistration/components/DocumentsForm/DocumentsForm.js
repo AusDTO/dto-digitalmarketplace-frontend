@@ -85,9 +85,9 @@ class DocumentsForm extends BaseForm {
         createDocument(model, id);
         onUpload(id, file)
             .then((filename) => {
-                this.setState(prevState => ({
+                this.setState({
                     [id]: Object.assign({}, this.state[id], { 'uploading': false, newDocumentUploaded: true })
-                }));
+                });
                 updateDocumentName(model, id, filename, applicationId);
             })
             .then(submitApplication)
