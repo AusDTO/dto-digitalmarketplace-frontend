@@ -42,10 +42,12 @@ class DocumentsForm extends BaseForm {
     state = {
         errors: {},
         liability: {
-            newDocumentUploaded: false
+            newDocumentUploaded: this.props.documentsForm.documents.liability && 
+                this.props.documentsForm.documents.liability.expiry ? false : true
         },
         workers: {
-            newDocumentUploaded: false
+            newDocumentUploaded: this.props.documentsForm.documents.workers &&
+                this.props.documentsForm.documents.workers.expiry ? false : true
         }
     }
 
@@ -195,13 +197,6 @@ class DocumentsForm extends BaseForm {
                             const errors = this.state.errors[key];
                             const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents` : match.url.slice(1);
 
-                            let disabled = true
-                            if (field.expires && !doc.expiry) {
-                                disabled = false
-                            } else if (key in this.state) {
-                                disabled = !this.state[key].newDocumentUploaded
-                            }
-
                             return (
                                 <div key={key} className="callout-no-margin">
                                     <p styleName="question-heading">{field.label}</p>
@@ -252,7 +247,7 @@ class DocumentsForm extends BaseForm {
                                                     label="Expiry date:"
                                                     updateOn="change"
                                                     validators={{validDate}}
-                                                    disabled={disabled}
+                                                    disabled={!this.state[key].newDocumentUploaded}
                                                     controlProps={{
                                                         id: expiry_date_field,
                                                         model: `${model}.documents.${key}.expiry`,
