@@ -3,6 +3,7 @@ import BuyerRFQAboutStage from './BuyerRFQAboutStage'
 import BuyerRFQSelectStage from './BuyerRFQSelectStage'
 import BuyerRFQAttachmentsStage from './BuyerRFQAttachmentsStage'
 import BuyerRFQReviewStage from './BuyerRFQReviewStage'
+import BuyerRFQClosingDateStage from './BuyerRFQClosingDateStage'
 
 const BuyerRFQStages = [
   {
@@ -24,6 +25,11 @@ const BuyerRFQStages = [
     slug: 'attachments',
     title: 'Attachments',
     component: BuyerRFQAttachmentsStage
+  },
+  {
+    slug: 'closing',
+    title: 'Closing date',
+    component: BuyerRFQClosingDateStage
   },
   {
     slug: 'review',
