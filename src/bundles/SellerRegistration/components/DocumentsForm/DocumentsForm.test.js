@@ -60,3 +60,59 @@ test('DocumentsForm renders links when documents are present', () => {
   let links = wrapper.find('ul.bordered-list');
   expect(links.length).toBe(3);
 });
+
+describe('DocumentsForm expiry dates', () => {
+  it('should be disabled when an expiry date has been provided', () => {
+    let store = createStore({
+      documentsForm: {
+        documents: {
+          liability: {
+            expiry: '2020-02-01',
+            filename: 'liability.pdf'
+          }
+        }
+      }
+    })
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <DocumentsForm/>
+      </Provider>
+    )
+
+    const liabilityDay = wrapper.find('#liability_expiry-day')
+    const liabilityMonth = wrapper.find('#liability_expiry-month')
+    const liabilityYear = wrapper.find('#liability_expiry-year')
+
+    expect(liabilityDay.props().disabled).toBe(true)
+    expect(liabilityMonth.props().disabled).toBe(true)
+    expect(liabilityYear.props().disabled).toBe(true)
+  })
+
+  it('should not be disabled when an expiry date has not been provided', () => {
+    let store = createStore({
+      documentsForm: {
+        documents: {
+          workers: {
+            expiry: '',
+            filename: 'workers.pdf'
+          }
+        }
+      }
+    })
+    
+    const wrapper = mount(
+      <Provider store={store}>
+        <DocumentsForm/>
+      </Provider>
+    )
+
+    const workersDay = wrapper.find('#workers_expiry-day')
+    const workersMonth = wrapper.find('#workers_expiry-month')
+    const workersYear = wrapper.find('#workers_expiry-year')
+
+    expect(workersDay.props().disabled).toBe(false)
+    expect(workersMonth.props().disabled).toBe(false)
+    expect(workersYear.props().disabled).toBe(false)
+  })
+})
