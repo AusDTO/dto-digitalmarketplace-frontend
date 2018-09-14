@@ -1,56 +1,33 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React from 'react'
 import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 
-export class ProgressButtons extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      redirect: ''
-    }
-  }
-
-  render() {
-    return this.state.redirect ? (
-      <Redirect to={`/${this.state.redirect}`} />
+const ProgressButtons = props => (
+  <p>
+    {props.isLastStage ? (
+      <AUbutton type="submit" disabled={!props.submitEnabled}>
+        {props.submitText}
+      </AUbutton>
     ) : (
-      <p>
-        {this.props.nextStage ? (
-          <AUbutton
-            onClick={() => {
-              this.props.onStageContinueClick()
-              if (this.props.nextStage) {
-                this.setState({
-                  redirect: this.props.nextStage
-                })
-              }
-            }}
-          >
-            {this.props.continueText}
-          </AUbutton>
-        ) : (
-          <AUbutton>{this.props.submitText}</AUbutton>
-        )}
-        <AUbutton as="tertiary">{this.props.returnText}</AUbutton>
-      </p>
-    )
-  }
-}
+      <AUbutton type="submit">{props.continueText}</AUbutton>
+    )}
+    <AUbutton as="tertiary">{props.returnText}</AUbutton>
+  </p>
+)
 
 ProgressButtons.defaultProps = {
   continueText: 'Continue',
   submitText: 'Submit',
   returnText: 'Return to overview',
-  onStageContinueClick: () => {}
+  submitEnabled: false
 }
 
 ProgressButtons.propTypes = {
   continueText: PropTypes.string,
   submitText: PropTypes.string,
   returnText: PropTypes.string,
-  nextStage: PropTypes.string.isRequired,
-  onStageContinueClick: PropTypes.func
+  isLastStage: PropTypes.bool.isRequired,
+  submitEnabled: PropTypes.bool
 }
 
 export default ProgressButtons

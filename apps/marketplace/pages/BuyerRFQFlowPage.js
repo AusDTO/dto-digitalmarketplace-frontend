@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, actions } from 'react-redux-form'
+import { actions } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
@@ -48,14 +48,12 @@ export class BuyerRFQFlowPage extends Component {
 
   render() {
     return (
-      <Form model={model}>
-        <ProgressFlow
-          model={model}
-          basename={`${rootPath}/buyer-rfq/${this.props.match.params.briefId}`}
-          flowStages={BuyerRFQStages}
-          saveBrief={this.saveBrief}
-        />
-      </Form>
+      <ProgressFlow
+        model={model}
+        basename={`${rootPath}/buyer-rfq/${this.props.match.params.briefId}`}
+        flowStages={BuyerRFQStages}
+        saveBrief={this.saveBrief}
+      />
     )
   }
 }
