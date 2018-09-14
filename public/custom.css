@@ -328,7 +328,7 @@ label.text-box-number-label {
   font-weight: bold;
   font-size: 17px;
 }
-.opportunities-page .au-accordion__body.au-accordion--open {
+.opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
   margin-top: 7px;
 }
 
@@ -341,7 +341,7 @@ label.text-box-number-label {
     width: 162px;
   }
 
-  .opportunities-page .au-accordion__body.au-accordion--open {
+  .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: relative;
     width: 310px;
     margin-left: -147px;
@@ -358,7 +358,7 @@ label.text-box-number-label {
     width: 200px;
   }
 
-  .opportunities-page .au-accordion__body.au-accordion--open {
+  .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: relative;
     width: 310px;
     margin-left: -109px;
@@ -367,7 +367,7 @@ label.text-box-number-label {
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .opportunities-page .au-accordion__body.au-accordion--open {
+  .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: absolute;
     width: 310px;
     margin-left: -10px;
@@ -379,10 +379,6 @@ label.text-box-number-label {
   box-shadow: 2px 2px 30px 0 rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
   border: solid 3px #e0e0e0;
-}
-
-.opportunities-page .au-accordion__body {
-  overflow: visible;
 }
 
 .opportunities-page .au-accordion__title:focus, .opportunities-page .au-accordion__title:hover {
