@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AUprogressIndicator from '@gov.au/progress-indicator/lib/js/react.js'
 import styles from './ProgressNav.scss'
 
-const ProgressFlow = props => {
+const ProgressNav = props => {
   const items = props.items.slice(0)
   const { onNavChange } = props
   items.map(item => {
@@ -21,13 +21,13 @@ const ProgressFlow = props => {
   )
 }
 
-ProgressFlow.defaultProps = {
+ProgressNav.defaultProps = {
   onNavChange: () => {}
 }
 
-ProgressFlow.propTypes = {
+ProgressNav.propTypes = {
   items: PropTypes.array.isRequired,
   onNavChange: PropTypes.func
 }
 
-export default ProgressFlow
+export default ProgressNav
