@@ -6,11 +6,12 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import { required, validEmail, validPercentage } from 'marketplace/components/validators'
+import { required, requiredFile, validEmail, validPercentage } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
 import Textarea from 'shared/form/Textarea'
+import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 
 import styles from './BriefSpecialistResponseForm.scss'
@@ -24,6 +25,7 @@ const BriefSpecialistResponseForm = ({
   briefResponseSuccess,
   app,
   submitClicked,
+  currentlySending,
   handleSubmit,
   setFocus,
   match,
@@ -31,7 +33,9 @@ const BriefSpecialistResponseForm = ({
   specialistName,
   specialistNumber,
   addAnotherClicked,
-  addAnotherSpecialist
+  addAnotherSpecialist,
+  uploading,
+  loadingText
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -135,6 +139,13 @@ const BriefSpecialistResponseForm = ({
                     url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                     api={dmapi}
                     description=""
+                    validators={{
+                      requiredFile
+                    }}
+                    messages={{
+                      requiredFile: 'Choose a file for your résumés'
+                    }}
+                    uploading={uploading}
                   />
                 ) : (
                   <AUpageAlert as="warning" setFocus={setFocus}>
@@ -187,23 +198,29 @@ const BriefSpecialistResponseForm = ({
                     validEmail: 'A valid contact email is required'
                   }}
                 />
-                <input
-                  className="au-btn right-button-margin"
-                  type="submit"
-                  value="Submit specialist"
-                  onClick={e => {
-                    submitClicked(e)
-                  }}
-                />
-                {specialistNumber < MaxSpecialists && (
-                  <input
-                    className="au-btn au-btn--secondary"
-                    type="submit"
-                    value="Submit and add another"
-                    onClick={e => {
-                      addAnotherClicked(e)
-                    }}
-                  />
+                {currentlySending || loadingText ? (
+                  <LoadingButton text={loadingText || 'Loading'} />
+                ) : (
+                  <span>
+                    <input
+                      className="au-btn right-button-margin"
+                      type="submit"
+                      value="Submit specialist"
+                      onClick={e => {
+                        submitClicked(e)
+                      }}
+                    />
+                    {specialistNumber < MaxSpecialists && (
+                      <input
+                        className="au-btn au-btn--secondary"
+                        type="submit"
+                        value="Submit and add another"
+                        onClick={e => {
+                          addAnotherClicked(e)
+                        }}
+                      />
+                    )}
+                  </span>
                 )}
               </Form>
             </div>
@@ -228,7 +245,9 @@ BriefSpecialistResponseForm.defaultProps = {
   handleSubmit: null,
   handleNameSubmit: null,
   specialistNumber: null,
-  addAnotherClicked: null
+  addAnotherClicked: null,
+  uploading: () => null,
+  loadingText: null
 }
 
 BriefSpecialistResponseForm.propTypes = {
@@ -245,7 +264,9 @@ BriefSpecialistResponseForm.propTypes = {
   specialistName: PropTypes.string,
   specialistNumber: PropTypes.number,
   addAnotherClicked: PropTypes.func,
-  addAnotherSpecialist: PropTypes.bool.isRequired
+  addAnotherSpecialist: PropTypes.bool.isRequired,
+  uploading: PropTypes.func,
+  loadingText: PropTypes.string
 }
 
 export default BriefSpecialistResponseForm
