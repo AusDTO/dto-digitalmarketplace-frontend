@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Switch, Route, BrowserRouter, Link } from 'react-router-dom'
+import { Route, Router, Link } from 'react-router-dom'
+import createHistory from 'history/createBrowserHistory'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
@@ -12,7 +13,7 @@ export class ProgressFlow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // this is the current state of the nav items in the progress indictor
+      // this is the current state of the nav items in the progress indicator
       stages: {},
       // this is the state of whether the nav items are done
       stagesDone: {},
@@ -27,6 +28,10 @@ export class ProgressFlow extends Component {
       return true
     })
 
+    this.history = createHistory({
+      basename: this.props.basename
+    })
+
     this.setCurrentStage = this.setCurrentStage.bind(this)
     this.setStageStatus = this.setStageStatus.bind(this)
     this.setStageDoneStatus = this.setStageDoneStatus.bind(this)
@@ -34,13 +39,13 @@ export class ProgressFlow extends Component {
   }
 
   setStageStatus(stage, status) {
-    this.setState(currentState => {
-      const newState = { ...currentState }
+    this.setState(curState => {
+      const newState = { ...curState }
       if (status === 'doing') {
-        // there can only be one "doing" stage, so revert any existing 'doing' stage
+        // there can only be one "doing" stage, so revert any existing "doing" stage
         Object.keys(newState.stages).map(stateStage => {
           if (newState.stages[stateStage] === 'doing') {
-            newState.stages[stateStage] = currentState.stagesDone[stateStage] ? 'done' : 'todo'
+            newState.stages[stateStage] = curState.stagesDone[stateStage] ? 'done' : 'todo'
           }
           return true
         })
@@ -51,8 +56,8 @@ export class ProgressFlow extends Component {
   }
 
   setStageDoneStatus(stage, isDone) {
-    this.setState(currentState => {
-      const newState = { ...currentState }
+    this.setState(curState => {
+      const newState = { ...curState }
       newState.stagesDone[stage] = isDone
       return newState
     })
@@ -72,11 +77,14 @@ export class ProgressFlow extends Component {
     this.setState({
       currentStage: stage
     })
+    this.setStageStatus(stage, 'doing')
   }
 
   handleFormSubmit() {
     this.props.saveBrief()
-    // const nextStage = this.getNextStage(this.state.currentStage)
+    const nextStage = this.getNextStage(this.state.currentStage)
+    this.history.push(`/${nextStage}`)
+    this.setCurrentStage(nextStage)
   }
 
   allStagesDone() {
@@ -101,48 +109,45 @@ export class ProgressFlow extends Component {
     )
 
     return (
-      <Form model={this.props.model} onSubmit={this.handleFormSubmit}>
-        <BrowserRouter basename={this.props.basename}>
+      <Router history={this.history}>
+        <Form model={this.props.model} onSubmit={this.handleFormSubmit}>
           <div className="row">
             <div className="col-sm-4" aria-live="polite" aria-relevant="additions removals">
               <ProgressNav
                 items={items}
                 onNavChange={item => {
-                  this.setStageStatus(item.slug, 'doing')
+                  this.setCurrentStage(item.slug)
                 }}
               />
             </div>
             <div className="col-sm-8">
-              <Switch>
-                {this.props.flowStages.map(stage => (
-                  <Route
-                    key={stage.slug}
-                    path={`/${stage.slug}`}
-                    render={() => (
-                      <div>
-                        <ProgressContent
-                          stage={stage.slug}
-                          model={this.props.model}
-                          isDone={this.state.stagesDone[stage.slug]}
-                          setCurrentStage={this.setCurrentStage}
-                          setStageStatus={this.setStageStatus}
-                          setStageDoneStatus={this.setStageDoneStatus}
-                          saveBrief={this.props.saveBrief}
-                          component={stage.component}
-                        />
-                        <ProgressButtons
-                          isLastStage={this.isLastStage(stage.slug)}
-                          submitEnabled={this.allStagesDone()}
-                        />
-                      </div>
-                    )}
-                  />
-                ))}
-              </Switch>
+              {this.props.flowStages.map(stage => (
+                <Route
+                  key={stage.slug}
+                  path={`/${stage.slug}`}
+                  render={() => (
+                    <div>
+                      <ProgressContent
+                        stage={stage.slug}
+                        model={this.props.model}
+                        isDone={this.state.stagesDone[stage.slug]}
+                        setCurrentStage={this.setCurrentStage}
+                        setStageDoneStatus={this.setStageDoneStatus}
+                        saveBrief={this.props.saveBrief}
+                        component={stage.component}
+                      />
+                      <ProgressButtons
+                        isLastStage={this.isLastStage(stage.slug)}
+                        submitEnabled={this.allStagesDone()}
+                      />
+                    </div>
+                  )}
+                />
+              ))}
             </div>
           </div>
-        </BrowserRouter>
-      </Form>
+        </Form>
+      </Router>
     )
   }
 }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 export class ProgressContent extends Component {
   componentDidMount() {
-    this.props.setStageStatus(this.props.stage, 'doing')
     this.props.setCurrentStage(this.props.stage)
   }
 
@@ -23,7 +22,6 @@ export class ProgressContent extends Component {
 
 ProgressContent.defaultProps = {
   setCurrentStage: () => {},
-  setStageStatus: () => {},
   setStageDoneStatus: () => {},
   saveBrief: () => {}
 }
@@ -32,7 +30,6 @@ ProgressContent.propTypes = {
   model: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
   setCurrentStage: PropTypes.func,
-  setStageStatus: PropTypes.func,
   setStageDoneStatus: PropTypes.func,
   saveBrief: PropTypes.func,
   stage: PropTypes.string.isRequired,
