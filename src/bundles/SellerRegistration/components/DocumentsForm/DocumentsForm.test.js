@@ -116,3 +116,27 @@ describe('DocumentsForm expiry dates', () => {
     expect(workersYear.props().disabled).toBe(false)
   })
 })
+
+describe('Expired documents', () => {
+  it('should not be visible', () => {
+    let store = createStore({
+      documentsForm: {
+        documents: {
+          workers: {
+            expiry: '2015-07-31',
+            filename: 'workers.pdf'
+          }
+        }
+      }
+    })
+    
+    const wrapper = mount(
+      <Provider store={store}>
+        <DocumentsForm/>
+      </Provider>
+    )
+
+    const workersLabel = wrapper.find('#label_workers')
+    expect(workersLabel.text()).toEqual(' Choose file ')
+  })
+})

@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import {Form, Control, actions} from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
+import isPast from 'date-fns/is_past';
+import isToday from 'date-fns/is_today';
+import parse from 'date-fns/parse';
 
 import Layout        from '../../../../shared/Layout';
 import BaseForm      from '../../../../shared/form/BaseForm';
@@ -21,7 +24,6 @@ import {uploadDocument, submitApplication, expiredLiabilityInsurance, expiredWor
 import { minObjectLength, validDate } from '../../../../validators';
 
 import PageAlert from '@gov.au/page-alerts'
-import isPast from 'date-fns/is_past';
 
 import './DocumentsForm.css';
 
@@ -72,6 +74,20 @@ class DocumentsForm extends BaseForm {
         }
     ]
 
+    componentDidMount() {
+        const documents = this.props.documentsForm.documents
+        Object.keys(documents).map(key => {
+            const document = documents[key]
+
+            if (document.expiry) {
+                const documentExpiry = parse(document.expiry)
+                if (isPast(documentExpiry) || isToday(documentExpiry)) {
+                    this.resetDocument(key)
+                }
+            }
+        })
+    }
+
     onUpload(id, e) {
         e.preventDefault();
         const {model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication, applicationId} = this.props;
@@ -101,12 +117,7 @@ class DocumentsForm extends BaseForm {
 
     onReset(id, e) {
         e.preventDefault();
-        const {model, removeDocument, createDocument} = this.props;
-        removeDocument(model, id);
-        createDocument(model, id);
-        this.setState({
-            [id]: Object.assign({}, this.state[id], {'file': void 0})
-        })
+        this.resetDocument(id);
     }
 
     onChange(id, e) {
@@ -117,18 +128,14 @@ class DocumentsForm extends BaseForm {
         });
     }
 
-    componentDidMount() {
-      if (this.props.documentsForm.documents.liability && isPast(this.props.documentsForm.documents.liability.expiry)) {
-        this.props.hasLiabilityDocExpired(true)
-      } else {
-        this.props.hasLiabilityDocExpired(false)
-      }
+    resetDocument(key) {
+        const { model, removeDocument, createDocument } = this.props
 
-      if (this.props.documentsForm.documents.workers && isPast(this.props.documentsForm.documents.workers.expiry)) {
-        this.props.hasWorkersDocExpired(true)
-      } else {
-        this.props.hasWorkersDocExpired(false)
-      }
+        removeDocument(model, key);
+        createDocument(model, key);
+        this.setState({
+            [key]: Object.assign({}, this.state[key], { 'file': void 0 })
+        })
     }
 
     render() {
