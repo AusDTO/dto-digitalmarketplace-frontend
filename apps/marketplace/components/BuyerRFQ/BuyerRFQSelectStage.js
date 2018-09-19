@@ -5,7 +5,7 @@ import { actions } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
-import styles from './BuyerRFQSelectStage.scss'
+import SelectedSellersControl from './SelectedSellersControl'
 
 export class BuyerRFQSelectStage extends Component {
   constructor(props) {
@@ -50,30 +50,22 @@ export class BuyerRFQSelectStage extends Component {
   }
 
   render() {
-    const { model } = this.props
     return (
       <div>
         <AUheading level="1" size="xl">
           Select sellers
         </AUheading>
-        {Object.keys(this.props[model].sellers).length > 0 && (
-          <ol className={styles.selectedSellers}>
-            {Object.keys(this.props[model].sellers).map(sellerCode => (
-              <li key={sellerCode}>
-                {this.props[model].sellers[sellerCode].name}
-                <a
-                  href="#remove"
-                  onClick={e => {
-                    e.preventDefault()
-                    this.removeSeller(sellerCode)
-                  }}
-                >
-                  Remove
-                </a>
-              </li>
-            ))}
-          </ol>
-        )}
+        <SelectedSellersControl
+          id="selected-sellers"
+          model={`${this.props.model}.sellers`}
+          onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
+          validators={{
+            required: val => val && Object.keys(val).length > 0
+          }}
+          messages={{
+            required: 'You must select at least one seller'
+          }}
+        />
         <SellerSelect showSelected={false} showSearchButton={false} onSellerSelect={this.handleSellerSelect} />
       </div>
     )
