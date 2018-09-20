@@ -5,6 +5,7 @@ import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import { requiredFile } from 'marketplace/components/validators'
 import range from 'lodash/range'
 
 export class BuyerRFQAttachmentsStage extends Component {
@@ -58,22 +59,32 @@ export class BuyerRFQAttachmentsStage extends Component {
           Attachments
         </AUheadings>
         <p>The files you upload here will be attached to the email sent to your selected sellers.</p>
-        {range(this.state.fileCount).map(i => (
-          <FilesInput
-            key={i}
-            label="Attachment upload"
-            hint="Attachment must be PDF or ODT format and a maximum of 20MB"
-            fieldLabel="Choose attachment"
-            name="attachedDocumentURL"
-            model={`${model}.attachedDocumentURL.${i}`}
-            formFields={1}
-            url={`/brief/${this.props[model].id}/attachments`}
-            api={dmapi}
-            fileId={i}
-            onReset={this.props.saveBrief}
-            onUploadSuccess={this.props.saveBrief}
-          />
-        ))}
+        {range(this.state.fileCount).map(i => {
+          const validators = {}
+          const messages = {}
+          if (i === 0) {
+            validators[requiredFile] = requiredFile
+            messages[requiredFile] = 'You must upload at least one attachment'
+          }
+          return (
+            <FilesInput
+              key={i}
+              label="Attachment upload"
+              hint="Attachment must be PDF or ODT format and a maximum of 20MB"
+              fieldLabel="Choose attachment"
+              name="attachedDocumentURL"
+              model={`${model}.attachedDocumentURL.${i}`}
+              formFields={1}
+              url={`/brief/${this.props[model].id}/attachments`}
+              api={dmapi}
+              fileId={i}
+              onReset={this.props.saveBrief}
+              onUploadSuccess={this.props.saveBrief}
+              validators={validators}
+              messages={messages}
+            />
+          )
+        })}
         <p>
           <a href="#add" onClick={() => this.addFileField()}>
             Add another
