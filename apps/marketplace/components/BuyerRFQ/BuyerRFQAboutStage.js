@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Textfield from 'shared/form/Textfield'
+import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
@@ -51,6 +52,22 @@ export class BuyerRFQAboutStage extends Component {
           }}
           messages={{
             required: 'Enter the name of your organisation'
+          }}
+        />
+        <Textarea
+          model={`${model}.summary`}
+          label="Summary"
+          name="summary"
+          id="summary"
+          htmlFor="summary"
+          defaultValue={this.props[model].summary}
+          controlProps={{ limit: 150 }}
+          validators={{
+            required
+          }}
+          messages={{
+            required: 'Enter a summary of your brief',
+            limitWords: 'Your feedback has exceeded the 150 word limit'
           }}
         />
       </div>
