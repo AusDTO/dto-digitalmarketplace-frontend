@@ -35,6 +35,7 @@ export class BuyerRFQFlowPage extends Component {
       data.summary = response.data.summary || ''
       data.sellers = response.data.sellers || {}
       data.attachedDocumentURL = response.data.attachedDocumentURL || []
+      data.closedAt = response.data.closedAt || ''
       this.props.changeFormModel(data)
     })
   }

@@ -79,7 +79,8 @@ export default combineReducers({
       organisation: '',
       summary: '',
       sellers: {},
-      attachedDocumentURL: []
+      attachedDocumentURL: [],
+      closedAt: ''
     }
   })
 })
