@@ -6,9 +6,7 @@ tr.row {
 
 td.column {
 	width: 25%;
-	padding-right: 1rem;
-	padding-top: 1rem;
-	padding-bottom: 2rem;
+	padding: 1rem 1rem 2rem;
 	vertical-align: top;
 	text-align: left;
 }

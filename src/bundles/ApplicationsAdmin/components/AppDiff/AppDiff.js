@@ -7,7 +7,6 @@ import styles from './AppDiff.css';
 import traverse from 'traverse';
 
 
-
 class AppDiff extends Component {
   cleanup(supplier, application) {
     if (supplier) {
