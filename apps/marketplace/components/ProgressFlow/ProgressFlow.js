@@ -88,7 +88,12 @@ export class ProgressFlow extends Component {
   }
 
   allStagesDone() {
-    return !Object.values(this.state.stagesDone).some(val => val === false)
+    // remove the final review stage if it exists
+    const stages = { ...this.state.stagesDone }
+    if (stages.review !== undefined) {
+      delete stages.review
+    }
+    return !Object.values(stages).some(val => val === false)
   }
 
   isLastStage(stage) {
