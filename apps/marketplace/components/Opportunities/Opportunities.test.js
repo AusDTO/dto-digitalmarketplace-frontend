@@ -63,7 +63,6 @@ test('component mounts with opportunities and displays the appropriate informati
       'Exploration of commercial datasets to answer questions about household and SME energy use and costs'
     )
   ).toBeTruthy()
-
   expect(component.contains(1260)).toBeTruthy()
   expect(component.contains('8 (5 SME)')).toBeTruthy()
   expect(component.contains('0d : 2h : 59m')).toBeTruthy()
