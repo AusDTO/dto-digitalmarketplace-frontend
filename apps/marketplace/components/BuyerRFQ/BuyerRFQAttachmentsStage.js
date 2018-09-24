@@ -36,9 +36,17 @@ export class BuyerRFQAttachmentsStage extends Component {
 
   updateDoneStatus() {
     const { model } = this.props
-    if (this.props[model].attachedDocumentURL.length > 0 && !this.props.isDone) {
+    if (
+      this.props[model].attachedDocumentURL.length > 0 &&
+      this.props[model].attachedDocumentURL.every(val => val) &&
+      !this.props.isDone
+    ) {
       this.props.setStageDoneStatus(this.props.stage, true)
-    } else if (this.props[model].attachedDocumentURL.length === 0 && this.props.isDone) {
+    } else if (
+      (this.props[model].attachedDocumentURL.length === 0 ||
+        !this.props[model].attachedDocumentURL.every(val => val)) &&
+      this.props.isDone
+    ) {
       this.props.setStageDoneStatus(this.props.stage, false)
     }
   }
@@ -86,7 +94,13 @@ export class BuyerRFQAttachmentsStage extends Component {
           )
         })}
         <p>
-          <a href="#add" onClick={() => this.addFileField()}>
+          <a
+            href="#add"
+            onClick={e => {
+              e.preventDefault()
+              this.addFileField()
+            }}
+          >
             Add another
           </a>
         </p>

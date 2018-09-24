@@ -13,11 +13,11 @@ class BuyerRFQClosingDateStage extends Component {
     this.handleDateChange = this.handleDateChange.bind(this)
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     this.updateDoneStatus()
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     this.updateDoneStatus()
   }
 
