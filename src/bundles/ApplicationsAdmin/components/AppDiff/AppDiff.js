@@ -29,12 +29,7 @@ class AppDiff extends Component {
       delete supplier.status;
       delete supplier.id;
       delete supplier.application_id;
-      supplier.products && supplier.products.forEach(e => {
-        delete e.links;
-      });
-      supplier.contacts && supplier.contacts.forEach(e => {
-        delete e.links;
-      });
+      delete supplier.signed_agreements;
     }
     if (application) {
       delete application.links;
@@ -62,7 +57,7 @@ class AppDiff extends Component {
 
     var differences = [];
     traverse(meta.supplier).forEach(function (v) {
-      if (this.isLeaf) {
+      if (this.isLeaf && this.path.indexOf('links') < 0) {
         differences.push({
           property: this.path.join('.'),
           original: v ? v : '',
@@ -73,7 +68,7 @@ class AppDiff extends Component {
     });
 
     traverse(application.data).forEach(function (v) {
-      if (this.isLeaf) {
+      if (this.isLeaf && this.path.indexOf('links') < 0) {
         const property = this.path.join('.');
         const existing = differences.find(e => e.property == property);
 
@@ -108,21 +103,23 @@ class AppDiff extends Component {
     })
     return (
       <article id="content">
-        <table>
-          <tr>
-            <th className={styles.column}>{'Property'}</th>
-            <th className={styles.column}>{'Original'}</th>
-            <th className={styles.column}>{'Updated'}</th>
-            <th className={styles.column}>{'Difference'}</th>
-          </tr>
-          {differences.map(d => {
-            return d.html && <tr key={d.property} className={styles.row}>
-              <td className={styles.column}>{d.property}</td>
-              <td className={styles.column}>{`${d.original}`}</td>
-              <td className={styles.column}>{`${d.updated}`}</td>
-              <td className={styles.column}><span dangerouslySetInnerHTML={{ __html: d.html }} /></td>
+        <table styleName="diff-table">
+          <tbody>
+            <tr>
+              <th>{'Property'}</th>
+              <th>{'Original'}</th>
+              <th>{'Updated'}</th>
+              <th>{'Difference'}</th>
             </tr>
-          })}
+            {differences.map(d => {
+              return d.html && <tr key={d.property}>
+                <td>{d.property}</td>
+                <td>{`${d.original}`}</td>
+                <td>{`${d.updated}`}</td>
+                <td><span dangerouslySetInnerHTML={{ __html: d.html }} /></td>
+              </tr>
+            })}
+          </tbody>
         </table>
       </article>
     )
