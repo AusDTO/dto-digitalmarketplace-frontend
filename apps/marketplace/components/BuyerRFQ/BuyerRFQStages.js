@@ -33,7 +33,7 @@ const BuyerRFQStages = [
   },
   {
     slug: 'review',
-    title: 'Review email',
+    title: 'Review and publish',
     component: BuyerRFQReviewStage
   }
 ]
