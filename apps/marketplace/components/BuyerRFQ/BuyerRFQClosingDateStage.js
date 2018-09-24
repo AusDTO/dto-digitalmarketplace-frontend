@@ -14,6 +14,14 @@ class BuyerRFQClosingDateStage extends Component {
   }
 
   componentDidUpdate() {
+    this.updateDoneStatus()
+  }
+
+  componentDidMount() {
+    this.updateDoneStatus()
+  }
+
+  updateDoneStatus() {
     const { model } = this.props
     if (this.props[model].closedAt && !this.props.isDone) {
       this.props.setStageDoneStatus(this.props.stage, true)
