@@ -17,12 +17,10 @@ export class BuyerRFQAttachmentsStage extends Component {
   }
 
   componentDidMount() {
-    this.updateDoneStatus()
     this.updateFileCountFromProps()
   }
 
   componentDidUpdate() {
-    this.updateDoneStatus()
     this.updateFileCountFromProps()
   }
 
@@ -31,23 +29,6 @@ export class BuyerRFQAttachmentsStage extends Component {
       this.setState({
         fileCount: this.props[this.props.model].attachedDocumentURL.length
       })
-    }
-  }
-
-  updateDoneStatus() {
-    const { model } = this.props
-    if (
-      this.props[model].attachedDocumentURL.length > 0 &&
-      this.props[model].attachedDocumentURL.every(val => val) &&
-      !this.props.isDone
-    ) {
-      this.props.setStageDoneStatus(this.props.stage, true)
-    } else if (
-      (this.props[model].attachedDocumentURL.length === 0 ||
-        !this.props[model].attachedDocumentURL.every(val => val)) &&
-      this.props.isDone
-    ) {
-      this.props.setStageDoneStatus(this.props.stage, false)
     }
   }
 
@@ -111,9 +92,6 @@ export class BuyerRFQAttachmentsStage extends Component {
 
 BuyerRFQAttachmentsStage.propTypes = {
   model: PropTypes.string.isRequired,
-  stage: PropTypes.string.isRequired,
-  isDone: PropTypes.bool.isRequired,
-  setStageDoneStatus: PropTypes.func.isRequired,
   saveBrief: PropTypes.func.isRequired
 }
 

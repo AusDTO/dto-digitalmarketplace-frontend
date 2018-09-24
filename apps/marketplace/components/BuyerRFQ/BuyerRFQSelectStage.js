@@ -13,27 +13,10 @@ export class BuyerRFQSelectStage extends Component {
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
   }
 
-  componentDidMount() {
-    this.updateDoneStatus()
-  }
-
   componentDidUpdate(prevProps) {
-    this.updateDoneStatus()
-
     const { model } = this.props
     if (JSON.stringify(prevProps[model].sellers) !== JSON.stringify(this.props[model].sellers)) {
       this.props.saveBrief()
-    }
-  }
-
-  updateDoneStatus() {
-    const { model } = this.props
-    // set this stage to done when props update and there is atleast one selected seller
-    // and set it back to not-done when there is no seller selected
-    if (Object.keys(this.props[model].sellers).length > 0 && !this.props.isDone) {
-      this.props.setStageDoneStatus(this.props.stage, true)
-    } else if (Object.keys(this.props[model].sellers).length === 0 && this.props.isDone) {
-      this.props.setStageDoneStatus(this.props.stage, false)
     }
   }
 
@@ -74,9 +57,6 @@ export class BuyerRFQSelectStage extends Component {
 
 BuyerRFQSelectStage.propTypes = {
   model: PropTypes.string.isRequired,
-  stage: PropTypes.string.isRequired,
-  isDone: PropTypes.bool.isRequired,
-  setStageDoneStatus: PropTypes.func.isRequired,
   saveBrief: PropTypes.func.isRequired
 }
 

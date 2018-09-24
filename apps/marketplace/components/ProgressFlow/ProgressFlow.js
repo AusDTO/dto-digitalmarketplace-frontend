@@ -1,6 +1,7 @@
+/* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route, Router, Link } from 'react-router-dom'
+import { Route, Router, Link, withRouter } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
@@ -22,7 +23,7 @@ export class ProgressFlow extends Component {
     }
 
     // populate the stage states
-    this.props.flowStages.map(stage => {
+    this.props.stages.map(stage => {
       this.state.stages[stage.slug] = 'todo'
       this.state.stagesDone[stage.slug] = false
       return true
@@ -36,6 +37,29 @@ export class ProgressFlow extends Component {
     this.setStageStatus = this.setStageStatus.bind(this)
     this.setStageDoneStatus = this.setStageDoneStatus.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+  }
+
+  componentDidUpdate(prevProps) {
+    // if the form model has changed, redetermine each stage's done status
+    if (JSON.stringify(prevProps[this.props.model]) !== JSON.stringify(this.props[this.props.model])) {
+      const stagesDone = { ...this.state.stagesDone }
+      const stages = { ...this.state.stages }
+      this.props.stages.map(stage => {
+        if (typeof stage.isDone === 'function') {
+          stagesDone[stage.slug] = stage.isDone(this.props[this.props.model])
+          if (stagesDone[stage.slug] && stages[stage.slug] !== 'doing') {
+            stages[stage.slug] = 'done'
+          }
+        }
+        return true
+      })
+      this.setState(curState => {
+        const newState = { ...curState }
+        newState.stagesDone = { ...curState.stagesDone, ...stagesDone }
+        newState.stages = { ...curState.stages, ...stages }
+        return newState
+      })
+    }
   }
 
   setStageStatus(stage, status) {
@@ -103,7 +127,7 @@ export class ProgressFlow extends Component {
 
   render() {
     const items = []
-    this.props.flowStages.map(stage =>
+    this.props.stages.map(stage =>
       items.push({
         link: `/${stage.slug}`,
         linkComponent: Link,
@@ -126,7 +150,7 @@ export class ProgressFlow extends Component {
               />
             </div>
             <div className="col-sm-8">
-              {this.props.flowStages.map(stage => (
+              {this.props.stages.map(stage => (
                 <Route
                   key={stage.slug}
                   path={`/${stage.slug}`}
@@ -164,7 +188,7 @@ ProgressFlow.defaultProps = {
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
-  flowStages: PropTypes.array.isRequired,
+  stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
   saveBrief: PropTypes.func
 }
@@ -173,4 +197,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(ProgressFlow)
+export default withRouter(connect(mapStateToProps)(ProgressFlow))

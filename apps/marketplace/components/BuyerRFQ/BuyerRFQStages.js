@@ -1,3 +1,4 @@
+import { validDate } from 'marketplace/components/validators'
 import BuyerRFQIntroductionStage from './BuyerRFQIntroductionStage'
 import BuyerRFQAboutStage from './BuyerRFQAboutStage'
 import BuyerRFQSelectStage from './BuyerRFQSelectStage'
@@ -9,27 +10,32 @@ const BuyerRFQStages = [
   {
     slug: 'introduction',
     title: 'Introduction',
-    component: BuyerRFQIntroductionStage
+    component: BuyerRFQIntroductionStage,
+    isDone: () => true
   },
   {
     slug: 'about',
     title: 'About',
-    component: BuyerRFQAboutStage
+    component: BuyerRFQAboutStage,
+    isDone: formValues => formValues.title.length > 0 && formValues.organisation.length > 0
   },
   {
     slug: 'select',
     title: 'Select sellers',
-    component: BuyerRFQSelectStage
+    component: BuyerRFQSelectStage,
+    isDone: formValues => Object.keys(formValues.sellers).length > 0
   },
   {
     slug: 'attachments',
     title: 'Attachments',
-    component: BuyerRFQAttachmentsStage
+    component: BuyerRFQAttachmentsStage,
+    isDone: formValues => formValues.attachedDocumentURL.length > 0 && formValues.attachedDocumentURL.every(val => val)
   },
   {
     slug: 'closing',
     title: 'Closing date',
-    component: BuyerRFQClosingDateStage
+    component: BuyerRFQClosingDateStage,
+    isDone: formValues => validDate(formValues.closedAt)
   },
   {
     slug: 'review',

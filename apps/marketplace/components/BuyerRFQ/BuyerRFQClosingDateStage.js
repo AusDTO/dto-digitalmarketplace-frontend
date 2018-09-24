@@ -13,23 +13,6 @@ class BuyerRFQClosingDateStage extends Component {
     this.handleDateChange = this.handleDateChange.bind(this)
   }
 
-  componentDidMount() {
-    this.updateDoneStatus()
-  }
-
-  componentDidUpdate() {
-    this.updateDoneStatus()
-  }
-
-  updateDoneStatus() {
-    const { model } = this.props
-    if (this.props[model].closedAt && !this.props.isDone) {
-      this.props.setStageDoneStatus(this.props.stage, true)
-    } else if (!this.props[model].closedAt && this.props.isDone) {
-      this.props.setStageDoneStatus(this.props.stage, false)
-    }
-  }
-
   handleDateChange(name, value) {
     let date = this.props[this.props.model].closedAt
     switch (name) {
@@ -73,10 +56,7 @@ class BuyerRFQClosingDateStage extends Component {
 }
 
 BuyerRFQClosingDateStage.propTypes = {
-  model: PropTypes.string.isRequired,
-  stage: PropTypes.string.isRequired,
-  isDone: PropTypes.bool.isRequired,
-  setStageDoneStatus: PropTypes.func.isRequired
+  model: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, props) => ({

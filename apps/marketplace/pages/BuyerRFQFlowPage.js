@@ -53,7 +53,7 @@ export class BuyerRFQFlowPage extends Component {
       <ProgressFlow
         model={model}
         basename={`${rootPath}/buyer-rfq/${this.props.match.params.briefId}`}
-        flowStages={BuyerRFQStages}
+        stages={BuyerRFQStages}
         saveBrief={this.saveBrief}
       />
     )
