@@ -5,7 +5,7 @@ import AUbutton from '@gov.au/buttons/lib/js/react.js'
 const ProgressButtons = props => (
   <p>
     {props.isLastStage ? (
-      <AUbutton type="submit" disabled={!props.submitEnabled}>
+      <AUbutton type="submit" disabled={!props.publishEnabled}>
         {props.publishText}
       </AUbutton>
     ) : (
@@ -19,7 +19,7 @@ ProgressButtons.defaultProps = {
   continueText: 'Continue',
   publishText: 'Publish',
   returnText: 'Return to overview',
-  submitEnabled: false
+  publishEnabled: false
 }
 
 ProgressButtons.propTypes = {
@@ -27,7 +27,7 @@ ProgressButtons.propTypes = {
   publishText: PropTypes.string,
   returnText: PropTypes.string,
   isLastStage: PropTypes.bool.isRequired,
-  submitEnabled: PropTypes.bool
+  publishEnabled: PropTypes.bool
 }
 
 export default ProgressButtons
