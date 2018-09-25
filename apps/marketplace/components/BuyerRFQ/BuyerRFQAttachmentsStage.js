@@ -67,8 +67,8 @@ export class BuyerRFQAttachmentsStage extends Component {
               url={`/brief/${this.props[model].id}/attachments`}
               api={dmapi}
               fileId={i}
-              onReset={this.props.saveBrief}
-              onUploadSuccess={this.props.saveBrief}
+              onReset={this.props.saveModel}
+              onUploadSuccess={this.props.saveModel}
               validators={validators}
               messages={messages}
             />
@@ -92,7 +92,7 @@ export class BuyerRFQAttachmentsStage extends Component {
 
 BuyerRFQAttachmentsStage.propTypes = {
   model: PropTypes.string.isRequired,
-  saveBrief: PropTypes.func.isRequired
+  saveModel: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, props) => ({

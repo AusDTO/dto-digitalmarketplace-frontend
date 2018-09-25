@@ -16,7 +16,7 @@ export class BuyerRFQSelectStage extends Component {
   componentDidUpdate(prevProps) {
     const { model } = this.props
     if (JSON.stringify(prevProps[model].sellers) !== JSON.stringify(this.props[model].sellers)) {
-      this.props.saveBrief()
+      this.props.saveModel()
     }
   }
 
@@ -57,7 +57,7 @@ export class BuyerRFQSelectStage extends Component {
 
 BuyerRFQSelectStage.propTypes = {
   model: PropTypes.string.isRequired,
-  saveBrief: PropTypes.func.isRequired
+  saveModel: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, props) => ({

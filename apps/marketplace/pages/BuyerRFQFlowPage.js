@@ -40,11 +40,15 @@ export class BuyerRFQFlowPage extends Component {
     })
   }
 
-  saveBrief() {
+  saveBrief(publish = false) {
+    const data = { ...this.props[model] }
+    if (publish) {
+      data.publish = true
+    }
     dmapi({
       url: `/brief/${this.props.match.params.briefId}`,
       method: 'PATCH',
-      data: JSON.stringify(this.props[model])
+      data: JSON.stringify(data)
     })
   }
 
@@ -54,7 +58,7 @@ export class BuyerRFQFlowPage extends Component {
         model={model}
         basename={`${rootPath}/buyer-rfq/${this.props.match.params.briefId}`}
         stages={BuyerRFQStages}
-        saveBrief={this.saveBrief}
+        saveModel={this.saveBrief}
       />
     )
   }

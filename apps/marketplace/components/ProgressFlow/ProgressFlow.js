@@ -37,6 +37,7 @@ export class ProgressFlow extends Component {
     this.setStageStatus = this.setStageStatus.bind(this)
     this.setStageDoneStatus = this.setStageDoneStatus.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handlePublish = this.handlePublish.bind(this)
   }
 
   componentDidUpdate(prevProps) {
@@ -105,10 +106,16 @@ export class ProgressFlow extends Component {
   }
 
   handleFormSubmit() {
-    this.props.saveBrief()
+    this.props.saveModel()
     const nextStage = this.getNextStage(this.state.currentStage)
-    this.props.history.push(`${this.props.basename}/${nextStage}`)
-    this.setCurrentStage(nextStage)
+    if (nextStage) {
+      this.props.history.push(`${this.props.basename}/${nextStage}`)
+      this.setCurrentStage(nextStage)
+    }
+  }
+
+  handlePublish() {
+    this.props.saveModel(true)
   }
 
   allStagesDone() {
@@ -160,12 +167,13 @@ export class ProgressFlow extends Component {
                         stage={stage.slug}
                         model={this.props.model}
                         setCurrentStage={this.setCurrentStage}
-                        saveBrief={this.props.saveBrief}
+                        saveModel={this.props.saveModel}
                         component={stage.component}
                       />
                       <ProgressButtons
                         isLastStage={this.isLastStage(stage.slug)}
                         publishEnabled={this.allStagesDone()}
+                        onPublish={this.handlePublish}
                       />
                     </div>
                   )}
@@ -181,14 +189,14 @@ export class ProgressFlow extends Component {
 
 ProgressFlow.defaultProps = {
   basename: '',
-  saveBrief: () => {}
+  saveModel: () => {}
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
   stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
-  saveBrief: PropTypes.func
+  saveModel: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
