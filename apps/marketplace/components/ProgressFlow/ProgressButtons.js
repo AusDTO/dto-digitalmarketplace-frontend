@@ -6,7 +6,7 @@ const ProgressButtons = props => (
   <p>
     {props.isLastStage ? (
       <AUbutton type="submit" disabled={!props.submitEnabled}>
-        {props.submitText}
+        {props.publishText}
       </AUbutton>
     ) : (
       <AUbutton type="submit">{props.continueText}</AUbutton>
@@ -17,14 +17,14 @@ const ProgressButtons = props => (
 
 ProgressButtons.defaultProps = {
   continueText: 'Continue',
-  submitText: 'Submit',
+  publishText: 'Publish',
   returnText: 'Return to overview',
   submitEnabled: false
 }
 
 ProgressButtons.propTypes = {
   continueText: PropTypes.string,
-  submitText: PropTypes.string,
+  publishText: PropTypes.string,
   returnText: PropTypes.string,
   isLastStage: PropTypes.bool.isRequired,
   submitEnabled: PropTypes.bool
