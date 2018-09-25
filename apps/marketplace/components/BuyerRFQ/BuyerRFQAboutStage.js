@@ -55,7 +55,7 @@ const BuyerRFQAboutStage = props => (
       }}
       messages={{
         required: 'Enter a summary of your brief',
-        limitWords: 'Your feedback has exceeded the 150 word limit'
+        limitWords: 'Your summary has exceeded the 150 word limit'
       }}
     />
   </div>
