@@ -159,15 +159,13 @@ export class ProgressFlow extends Component {
                       <ProgressContent
                         stage={stage.slug}
                         model={this.props.model}
-                        isDone={this.state.stagesDone[stage.slug]}
                         setCurrentStage={this.setCurrentStage}
-                        setStageDoneStatus={this.setStageDoneStatus}
                         saveBrief={this.props.saveBrief}
                         component={stage.component}
                       />
                       <ProgressButtons
                         isLastStage={this.isLastStage(stage.slug)}
-                        submitEnabled={this.allStagesDone()}
+                        publishEnabled={this.allStagesDone()}
                       />
                     </div>
                   )}

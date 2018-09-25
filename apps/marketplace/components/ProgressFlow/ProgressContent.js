@@ -8,29 +8,18 @@ export class ProgressContent extends Component {
 
   render() {
     const StageComponent = this.props.component
-    return (
-      <StageComponent
-        setStageDoneStatus={this.props.setStageDoneStatus}
-        stage={this.props.stage}
-        model={this.props.model}
-        isDone={this.props.isDone}
-        saveBrief={this.props.saveBrief}
-      />
-    )
+    return <StageComponent model={this.props.model} saveBrief={this.props.saveBrief} />
   }
 }
 
 ProgressContent.defaultProps = {
   setCurrentStage: () => {},
-  setStageDoneStatus: () => {},
   saveBrief: () => {}
 }
 
 ProgressContent.propTypes = {
   model: PropTypes.string.isRequired,
-  isDone: PropTypes.bool.isRequired,
   setCurrentStage: PropTypes.func,
-  setStageDoneStatus: PropTypes.func,
   saveBrief: PropTypes.func,
   stage: PropTypes.string.isRequired,
   component: PropTypes.func.isRequired
