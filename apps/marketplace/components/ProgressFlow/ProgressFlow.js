@@ -107,7 +107,7 @@ export class ProgressFlow extends Component {
   handleFormSubmit() {
     this.props.saveBrief()
     const nextStage = this.getNextStage(this.state.currentStage)
-    this.history.push(`/${nextStage}`)
+    this.props.history.push(`${this.props.basename}/${nextStage}`)
     this.setCurrentStage(nextStage)
   }
 
@@ -129,7 +129,7 @@ export class ProgressFlow extends Component {
     const items = []
     this.props.stages.map(stage =>
       items.push({
-        link: `/${stage.slug}`,
+        link: `${this.props.basename}/${stage.slug}`,
         linkComponent: Link,
         text: stage.title,
         slug: stage.slug,
@@ -138,7 +138,7 @@ export class ProgressFlow extends Component {
     )
 
     return (
-      <Router history={this.history}>
+      <Router history={this.props.history}>
         <Form model={this.props.model} onSubmit={this.handleFormSubmit}>
           <div className="row">
             <div className="col-sm-4" aria-live="polite" aria-relevant="additions removals">
@@ -153,7 +153,7 @@ export class ProgressFlow extends Component {
               {this.props.stages.map(stage => (
                 <Route
                   key={stage.slug}
-                  path={`/${stage.slug}`}
+                  path={`${this.props.basename}/${stage.slug}`}
                   render={() => (
                     <div>
                       <ProgressContent
