@@ -65,8 +65,6 @@ test('component mounts with opportunities and displays the appropriate informati
   ).toBeTruthy()
   expect(component.contains(1260)).toBeTruthy()
   expect(component.contains('8 (5 SME)')).toBeTruthy()
-  expect(component.contains('1w : 6d : 22h')).toBeTruthy()
-  expect(component.contains('3d : 23h : 59m')).toBeTruthy()
   expect(component.contains('0d : 2h : 59m')).toBeTruthy()
   expect(component.contains('Closed')).toBeTruthy()
   expect(component.contains('Sydney, Offsite')).toBeTruthy()
