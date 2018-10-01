@@ -147,6 +147,15 @@ input[type="radio"].au-control-input__input:focus + .au-control-input__text:befo
 .au-body a.au-btn:focus,.au-body a.au-btn:hover {
   background-color: #135566;
 }
+header ul#main-navigation a.au-btn:focus,header ul#main-navigation a.au-btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+header ul#main-navigation a.au-btn--secondary:focus,header ul#main-navigation a.au-btn--secondary:hover {
+  background-color: inherit;
+  border-color: #fff;
+  color: #fff;
+}
 .au-body a.au-btn--tertiary:focus, .au-body a.au-btn--tertiary:hover {
   background-color: #e8f2f4;
 }

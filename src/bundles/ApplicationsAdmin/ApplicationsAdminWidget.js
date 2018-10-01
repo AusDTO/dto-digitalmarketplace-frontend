@@ -7,6 +7,8 @@ import createStore from './redux/create'
 
 import AppList from './components/AppList'
 import AppUsers from './components/AppUsers'
+import AppEdit from './components/AppEdit'
+import AppDiff from './components/AppDiff'
 
 
 const ApplicationsAdminWidget = (props) => {
@@ -16,6 +18,8 @@ const ApplicationsAdminWidget = (props) => {
     <Provider store={store} >
       <Switch>
         <Route exact path="/admin/applications/:id/users" component={AppUsers} />
+        <Route path="/admin/applications/:id/edit" component={AppEdit} />
+        <Route path="/admin/applications/:id/diff" component={AppDiff} />
         <Route path="/admin/applications" component={AppList} />
       </Switch>
     </Provider>

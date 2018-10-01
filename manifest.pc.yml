@@ -1,0 +1,16 @@
+applications:
+- name: dm-pc-frontend
+  command:  ./scripts/cf_run_app.sh
+  # TODO: once prod is on new envs, switch back to supported buildpack
+  buildpack: legacy_marketplace_nodejs_buildpack
+  memory: 256M
+  disk_quota: 512M
+  instances: 1
+  services:
+  - ups-secret-service
+  - ups-dm-pc-common
+  - ups-dm-pc-frontend
+  routes:
+  - route: dm-pc-frontend.apps.y.cld.gov.au
+  - route: dm-pc.apps.y.cld.gov.au/bundle
+  - route: dm-pc.apps.y.cld.gov.au/2

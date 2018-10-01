@@ -23,7 +23,9 @@ const BriefTrainingResponseForm = ({
   handleSubmit,
   setFocus,
   match,
-  showTrainerResumes
+  showTrainerResumes,
+  uploading,
+  loadingText
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -76,6 +78,7 @@ const BriefTrainingResponseForm = ({
                 messages={{
                   requiredFile: 'Choose a file for your written proposal'
                 }}
+                uploading={uploading}
               />
               <FilesInput
                 label="Project costs"
@@ -94,6 +97,7 @@ const BriefTrainingResponseForm = ({
                 messages={{
                   requiredFile: 'Choose a file for your project costs'
                 }}
+                uploading={uploading}
               />
               {showTrainerResumes && (
                 <FilesInput
@@ -113,6 +117,7 @@ const BriefTrainingResponseForm = ({
                   messages={{
                     requiredFile: 'Choose a file for your trainer résumés'
                   }}
+                  uploading={uploading}
                 />
               )}
               <Textfield
@@ -162,8 +167,8 @@ const BriefTrainingResponseForm = ({
                   {format(new Date(brief.applicationsClosedAt), 'DD MMMM')}.
                 </li>
               </ul>
-              {currentlySending ? (
-                <LoadingButton />
+              {currentlySending || loadingText ? (
+                <LoadingButton text={loadingText || 'Loading'} />
               ) : (
                 <p>
                   <input className="au-btn" type="submit" value="Submit response" onClick={submitClicked} />
@@ -186,7 +191,8 @@ const BriefTrainingResponseForm = ({
 
 BriefTrainingResponseForm.defaultProps = {
   submitClicked: null,
-  handleSubmit: null
+  handleSubmit: null,
+  loadingText: null
 }
 
 BriefTrainingResponseForm.propTypes = {
@@ -196,7 +202,8 @@ BriefTrainingResponseForm.propTypes = {
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  showTrainerResumes: PropTypes.bool.isRequired
+  showTrainerResumes: PropTypes.bool.isRequired,
+  loadingText: PropTypes.string
 }
 
 export default BriefTrainingResponseForm

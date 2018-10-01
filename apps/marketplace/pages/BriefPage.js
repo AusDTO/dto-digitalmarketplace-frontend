@@ -23,12 +23,14 @@ import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/Brief
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
+import BriefResponseSupplierError from 'marketplace/components/Brief/BriefResponseSupplierError'
 
 class BriefPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      submitClicked: null
+      submitClicked: null,
+      loadingText: null
     }
   }
 
@@ -107,6 +109,12 @@ class BriefPage extends Component {
         e.focus()
       }
     }
+    const errorScreen =
+      !loadBriefSuccess && Array.isArray(app.errorMessage) ? (
+        <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
+      ) : (
+        <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+      )
 
     return (
       <div className="brief-page">
@@ -157,9 +165,11 @@ class BriefPage extends Component {
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
                       {...this.props}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                     />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    errorScreen
                   )}{' '}
                 </span>
               )}
@@ -175,10 +185,12 @@ class BriefPage extends Component {
                       handleNameSubmit={name => this.handleBriefNameSubmit(name)}
                       handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
                       setFocus={setFocus}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                       {...this.props}
                     />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    errorScreen
                   )}{' '}
                 </span>
               )}
@@ -205,9 +217,11 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       showTrainerResumes={this.showTrainingResumesFileUpload()}
                       {...this.props}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                     />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+                    errorScreen
                   )}{' '}
                 </span>
               )}
