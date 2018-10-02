@@ -599,20 +599,6 @@ li:first-child.au-marketplace-header-link-list a {
   color: #ffffff;
 }
 
-.au-marketplace-header-badge {
-  padding: 2px 8px;
-  padding: 2px .5rem;
-  margin-left: 8px;
-  margin-left: .5rem;
-  border: solid 2px #fff;
-  border-radius: 2em;
-  font-size: 12px;
-  font-size: 0.75rem;
-  font-weight: normal;
-  vertical-align: super;
-  text-decoration: none;
-}
-
 .au-marketplace-header-inline-links {
   padding-left: 0;
   margin-top: 16px;
@@ -673,33 +659,6 @@ li:first-child.au-marketplace-header-link-list a {
 
 .au-marketplace-header-user-nav {
   text-align: right;
-}
-
-.phase-banner {
-  background: black;
-  color: #f0f3f5;
-  padding: 0.4em 0;
-}
-
-.phase-banner a {
-  color: #f0f3f5;
-}
-
-.phase-banner p {
-  font-size: 0.875rem;
-  margin: 0;
-}
-
-.phase-banner a:focus {
-  -webkit-box-shadow: 0 0 0 3px #ff8629;
-  -moz-box-shadow: 0 0 0 3px #ff8629;
-  box-shadow: 0 0 0 3px #ff8629;
-  outline: none;
-}
-
-.phase-banner a:hover {
-  text-decoration: none;
-  color: white;
 }
 
 @media screen and (max-width: 767px) {
