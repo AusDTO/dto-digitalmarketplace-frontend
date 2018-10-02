@@ -10,7 +10,7 @@ import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { fileId, label, description, hint, formFields, uploading } = props
+  const { fileId, label, description, hint, formFields, uploading, csrfToken } = props
 
   return (
     <div className="field">
@@ -43,13 +43,17 @@ FilesInput.defaultProps = {
   uploading: () => null
 }
 
-const uploadDocument = (url, api, id, file) => () => {
+const uploadDocument = (url, api, id, file, csrfToken) => () => {
   const data = new FormData()
   data.append(id, file)
 
   return api({
     url: `${url}/${id}`,
     method: 'POST',
+    headers: {
+      'X-CSRFToken': csrfToken,
+      'Content-Type': 'application/json'
+    },
     data
   }).then(response => {
     if (response.error) {
@@ -72,11 +76,12 @@ const uploadDocument = (url, api, id, file) => () => {
 
 const mapStateToProps = (state, ownProps) => ({
   form: state[ownProps.model.split('.')[0]],
+  csrfToken: state.app.csrfToken,
   ...ownProps
 })
 
 const mapDispatchToProps = dispatch => ({
-  onUpload: (url, api, id, data) => dispatch(uploadDocument(url, api, id.toString(), data)),
+  onUpload: (url, api, id, data, csrfToken) => dispatch(uploadDocument(url, api, id.toString(), data, csrfToken)),
   createDocument: model => dispatch(actions.change(model, '')),
   updateDocumentName: (model, filename) => dispatch(actions.change(model, filename))
 })
