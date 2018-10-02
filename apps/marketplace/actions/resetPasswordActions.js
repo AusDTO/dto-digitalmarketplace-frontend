@@ -14,7 +14,6 @@ export const handleResetPasswordSuccess = () => ({ type: RESET_PASSWORD_EMAIL_SU
 
 export const sendResetPasswordEmail = values => (dispatch, getState) => {
   dispatch(sendingRequest(true))
-  console.log(getState())
   dmapi({
     method: 'post',
     url: `/reset-password/framework/${values.framework}`,

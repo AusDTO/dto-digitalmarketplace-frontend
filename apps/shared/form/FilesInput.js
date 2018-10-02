@@ -10,7 +10,7 @@ import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { fileId, label, description, hint, formFields, uploading, csrfToken } = props
+  const { fileId, label, description, hint, formFields, uploading } = props
 
   return (
     <div className="field">
