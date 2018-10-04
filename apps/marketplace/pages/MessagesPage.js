@@ -5,7 +5,6 @@ import { parse } from 'qs'
 import { withRouter } from 'react-router-dom'
 import { getSupplierMessages } from 'marketplace/actions/messagesActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import PageAlert from '@gov.au/page-alerts'
 
 class MessagesPage extends Component {
   constructor(props) {
@@ -32,20 +31,18 @@ class MessagesPage extends Component {
             <h3 className="au-display-lg">The following requires your attention</h3>
             <br />
             {errors.length > 0 && (
-              <div>
-                <PageAlert as="error">
-                  <h3 className="au-display-md">Profile errors</h3>
-                  <ul>{errors.map(i => <li key={i.message}>{i.message}</li>)}</ul>
-                </PageAlert>
+              <div role="alert" class="au-body au-page-alerts au-page-alerts--error">
+                <h3 className="au-display-md">Profile errors</h3>
+                <ul>{errors.map(i => <li key={i.message}>{i.message}</li>)}</ul>
                 <br />
               </div>
             )}
             {warnings.length > 0 && (
               <div>
-                <PageAlert as="warning">
+                <div role="alert" class="au-body au-page-alerts au-page-alerts--warning">
                   <h3 className="au-display-md">Warnings</h3>
                   <ul>{warnings.map(i => <li key={i.message}>{i.message}</li>)}</ul>
-                </PageAlert>
+                </div>
                 <br />
               </div>
             )}
