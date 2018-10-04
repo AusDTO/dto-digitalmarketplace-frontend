@@ -31,10 +31,11 @@ class MessagesPage extends Component {
             <h3 className="au-display-lg">The following requires your attention</h3>
             <br />
             {errors.length > 0 && (
-              <div role="alert" className="au-body au-page-alerts au-page-alerts--error">
-                <h3 className="au-display-md">Profile errors</h3>
-                <ul>{errors.map(i => <li key={i.message}>{i.message}</li>)}</ul>
-                <br />
+              <div>
+                <div role="alert" className="au-body au-page-alerts au-page-alerts--error">
+                  <h3 className="au-display-md">Profile errors</h3>
+                  <ul>{errors.map(i => <li key={i.message}>{i.message}</li>)}</ul>
+                </div>
               </div>
             )}
             {warnings.length > 0 && (
@@ -43,10 +44,10 @@ class MessagesPage extends Component {
                   <h3 className="au-display-md">Warnings</h3>
                   <ul>{warnings.map(i => <li key={i.message}>{i.message}</li>)}</ul>
                 </div>
-                <br />
               </div>
             )}
             <div>
+              <br />
               <a href="/sellers/edit" className="au-btn right-button-margin">
                 Update your profile
               </a>
