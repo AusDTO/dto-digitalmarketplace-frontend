@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { parse, stringify } from 'qs'
+import { parse } from 'qs'
 import { withRouter } from 'react-router-dom'
 import { getSupplierMessages } from 'marketplace/actions/messagesActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -10,8 +10,7 @@ import PageAlert from '@gov.au/page-alerts'
 class MessagesPage extends Component {
   constructor(props) {
     super(props)
-    console.log(props.location)
-    let qs = parse(props.location.search.substr(1))
+    const qs = parse(props.location.search.substr(1))
     this.supplierCode = qs.supplierCode
     this.next = qs.next
   }
@@ -30,17 +29,13 @@ class MessagesPage extends Component {
           <LoadingIndicatorFullPage />
         ) : (
           <div>
-            <h3 class="au-display-lg">The following requires your attention</h3>
+            <h3 className="au-display-lg">The following requires your attention</h3>
             <br />
             {errors.length > 0 && (
               <div>
                 <PageAlert as="error">
-                  <h3 class="au-display-md">Profile errors</h3>
-                  <ul>
-                    {errors.map(i => {
-                      return <li key={i.message}>{i.message}</li>
-                    })}
-                  </ul>
+                  <h3 className="au-display-md">Profile errors</h3>
+                  <ul>{errors.map(i => <li key={i.message}>{i.message}</li>)}</ul>
                 </PageAlert>
                 <br />
               </div>
@@ -48,12 +43,8 @@ class MessagesPage extends Component {
             {warnings.length > 0 && (
               <div>
                 <PageAlert as="warning">
-                  <h3 class="au-display-md">Warnings</h3>
-                  <ul>
-                    {warnings.map(i => {
-                      return <li key={i.message}>{i.message}</li>
-                    })}
-                  </ul>
+                  <h3 className="au-display-md">Warnings</h3>
+                  <ul>{warnings.map(i => <li key={i.message}>{i.message}</li>)}</ul>
                 </PageAlert>
                 <br />
               </div>

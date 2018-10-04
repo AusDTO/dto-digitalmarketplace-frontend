@@ -16,6 +16,7 @@ export const getSupplierMessages = supplierCode => dispatch => {
   dispatch(sendingRequest(true))
   return dmapi({ url: `/supplier/${supplierCode}/messages`, params }).then(response => {
     if (!response || response.error) {
+      console.log('TODO')
     } else {
       dispatch(handleSupplierMessageSuccess(response))
     }
