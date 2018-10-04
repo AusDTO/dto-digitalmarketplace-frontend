@@ -82,18 +82,6 @@ jobs:
             cf login -a https://api.system.y.cld.gov.au -o dta -s marketplace -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
             cf zero-downtime-push dm-rc-frontend -f manifest.rc.yml --show-app-log
 
-  deploy_nodejs_buildpack_test:
-    <<: *deploy_docker
-    steps:
-      - attach_workspace:
-          at: .
-      - *cf_install
-      - run:
-          name: Deploy to nodejs buildpack test
-          command: |
-            cf login -a https://api.system.y.cld.gov.au -o dta -s marketplace -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
-            cf zero-downtime-push dm-nodejs-frontend -f manifest.nodejs.yml --show-app-log
-
   deploy_to_production_clone:
     <<: *deploy_docker
     steps:
@@ -159,13 +147,6 @@ workflows:
               ignore: /.*/
             branches:
               only: rc
-      - deploy_nodejs_buildpack_test:
-          <<: *required_for_deploy
-          filters:
-            tags:
-              ignore: /.*/
-            branches:
-              only: mar-2226-update-nodejs-buildpack
       - deploy_to_staging:
           <<: *required_for_deploy
           filters:
