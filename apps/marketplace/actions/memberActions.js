@@ -14,7 +14,7 @@ import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleSignupSuccess = () => ({ type: SIGNUP_SUCCESS })
 
-export const handleSignupSubmit = model => dispatch => {
+export const handleSignupSubmit = model => (dispatch, getState) => {
   const getErrorMessage = status =>
     ({
       403: EMAIL_NOT_WHITELISTED,
@@ -26,6 +26,10 @@ export const handleSignupSubmit = model => dispatch => {
   dmapi({
     url: '/signup',
     method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
     data: JSON.stringify(model)
   }).then(response => {
     if (response.error) {
@@ -63,11 +67,15 @@ export const handleCreateUserSuccess = response => ({
   data: response.data
 })
 
-export const createUser = values => dispatch => {
+export const createUser = values => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
     url: '/create-user',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {
