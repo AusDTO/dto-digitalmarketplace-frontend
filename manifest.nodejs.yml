@@ -7,8 +7,8 @@ applications:
   instances: 1
   services:
   - ups-secret-service
-  - ups-dm-nodejs-common
-  - ups-dm-nodejs-frontend
+  - ups-dm-rc-common
+  - ups-dm-rc-frontend
   routes:
   - route: dm-nodejs-frontend.apps.y.cld.gov.au
   - route: dm-nodejs.apps.y.cld.gov.au/bundle
