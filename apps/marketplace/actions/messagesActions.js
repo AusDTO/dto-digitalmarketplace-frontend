@@ -11,14 +11,11 @@ export const handleSupplierMessageSuccess = response => ({
   data: response.data
 })
 
-export const getSupplierMessages = (supplierCode) => dispatch => {
-  const params = {
-    
-  }
+export const getSupplierMessages = supplierCode => dispatch => {
+  const params = {}
   dispatch(sendingRequest(true))
   return dmapi({ url: `/supplier/${supplierCode}/messages`, params }).then(response => {
     if (!response || response.error) {
-      
     } else {
       dispatch(handleSupplierMessageSuccess(response))
     }
