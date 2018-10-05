@@ -28,7 +28,8 @@ const initialState = {
   supplierCode: null,
   emailAddress: null,
   userType: '',
-  frameworkError: false
+  frameworkError: false,
+  csrfToken: ''
 }
 
 const appReducer = (state = initialState, action) => {
@@ -69,7 +70,8 @@ const appReducer = (state = initialState, action) => {
         loggedIn: action.newState.isAuthenticated,
         userType: action.newState.userType,
         supplierCode: action.newState.supplierCode,
-        emailAddress: action.newState.emailAddress
+        emailAddress: action.newState.emailAddress,
+        csrfToken: action.newState.csrfToken
       }
     default:
       return state
