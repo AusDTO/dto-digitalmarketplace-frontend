@@ -28,11 +28,11 @@ class FileInput extends React.Component {
       errors: undefined
     })
 
-    const { url, api, id, onUpload, createDocument, model, updateDocumentName, uploading } = this.props
+    const { url, api, id, onUpload, createDocument, model, updateDocumentName, uploading, csrfToken } = this.props
     const file = e.target.files[0]
     uploading(true)
 
-    onUpload(url, api, id, file).then(result => {
+    onUpload(url, api, id, file, csrfToken).then(result => {
       this.setState({
         uploading: false
       })
