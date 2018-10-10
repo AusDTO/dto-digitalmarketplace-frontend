@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { rootPath } from 'marketplace/routes'
 import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
@@ -16,7 +17,11 @@ export class BuyerRFQCreatePage extends Component {
   componentDidMount() {
     dmapi({
       url: '/brief/rfq',
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': this.props.csrfToken,
+        'Content-Type': 'application/json'
+      }
     }).then(response => {
       if (!response || response.error || !response.data || !response.data.id) {
         return
@@ -36,4 +41,8 @@ export class BuyerRFQCreatePage extends Component {
   }
 }
 
-export default BuyerRFQCreatePage
+const mapStateToProps = state => ({
+  csrfToken: state.app.csrfToken
+})
+
+export default connect(mapStateToProps)(BuyerRFQCreatePage)

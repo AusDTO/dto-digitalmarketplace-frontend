@@ -48,6 +48,10 @@ export class BuyerRFQFlowPage extends Component {
     dmapi({
       url: `/brief/${this.props.match.params.briefId}`,
       method: 'PATCH',
+      headers: {
+        'X-CSRFToken': this.props.csrfToken,
+        'Content-Type': 'application/json'
+      },
       data: JSON.stringify(data)
     })
   }
@@ -65,7 +69,8 @@ export class BuyerRFQFlowPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...formProps(state, model)
+  ...formProps(state, model),
+  csrfToken: state.app.csrfToken
 })
 
 const mapDispatchToProps = dispatch => ({
