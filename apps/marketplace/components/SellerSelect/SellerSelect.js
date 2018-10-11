@@ -26,8 +26,6 @@ const SellerSelectResultsView = props => (
         <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
           {seller.name}
         </a>
-        {seller.panel && <span className={props.panelBadgeClassName}>✓ Panel</span>}
-        {seller.sme && <span className={props.smeBadgeClassName}>SME</span>}
       </li>
     ))}
   </ul>
@@ -105,8 +103,6 @@ export class SellerSelect extends Component {
           className={`${styles.selectList} ${this.state.sellers.length > 0 ? '' : styles.hide}`}
           sellers={this.state.sellers}
           handleSellerSelectClick={this.handleSellerSelectClick}
-          panelBadgeClassName={`${styles.badge} ${styles.panelBadge}`}
-          smeBadgeClassName={`${styles.badge} ${styles.smeBadge}`}
         />
       </div>
     )
