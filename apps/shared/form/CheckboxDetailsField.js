@@ -28,7 +28,7 @@ class CheckboxDetailsField extends React.Component {
   }
 
   render() {
-    const { name, id, label, model, validators, messages } = this.props
+    const { name, id, label, model, validators, messages, value } = this.props
     /* eslint-disable jsx-a11y/label-has-for */
 
     return (
@@ -38,7 +38,7 @@ class CheckboxDetailsField extends React.Component {
           onClick={this.onToggle.bind(this)}
           id={id}
           name={name}
-          value="yes"
+          value={value || 'yes'}
           model={model}
           validators={validators}
         />

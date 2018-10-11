@@ -3,9 +3,24 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
+import StatefulError from 'shared/form/StatefulError'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import styles from './BuyerRFQAboutStage.scss'
+
+const locations = {
+  act: 'Australian Capital Territory',
+  nsw: 'New South Wales',
+  nt: 'Northern Territory',
+  qld: 'Queensland',
+  sa: 'South Australia',
+  tas: 'Tasmania',
+  vic: 'Victoria',
+  wa: 'Western Australia',
+  remote: 'Can be delivered remotely'
+}
 
 const BuyerRFQAboutStage = props => (
   <div>
@@ -44,7 +59,7 @@ const BuyerRFQAboutStage = props => (
     />
     <Textarea
       model={`${props.model}.summary`}
-      label="Summary"
+      label="A brief summary of the work required"
       name="summary"
       id="summary"
       htmlFor="summary"
@@ -58,6 +73,33 @@ const BuyerRFQAboutStage = props => (
         limitWords: 'Your summary has exceeded the 150 word limit'
       }}
     />
+    <AUheadings level="2" size="sm">
+      Where can the work be done?
+    </AUheadings>
+    <div className={styles.locations}>
+      <StatefulError
+        model={`${props.model}.location[]`}
+        messages={{
+          required: 'You must select at least one location'
+        }}
+        id="location_errors"
+      />
+      {Object.keys(locations).map(key => (
+        <CheckboxDetailsField
+          key={key}
+          model={`${props.model}.location[]`}
+          id={`location_${key}`}
+          name={`location_${key}`}
+          label={locations[key]}
+          value={locations[key]}
+          detailsModel={props.model}
+          validators={{
+            required
+          }}
+          messages={{}}
+        />
+      ))}
+    </div>
   </div>
 )
 
