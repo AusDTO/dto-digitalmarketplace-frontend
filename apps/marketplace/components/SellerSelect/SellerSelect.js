@@ -7,7 +7,7 @@ import styles from './SellerSelect.scss'
 
 const SellerSelectView = props => (
   <div>
-    <label htmlFor={props.id}>Select sellers</label>
+    <label htmlFor={props.id}>{props.label}</label>
     <AUtextInput
       id={props.id}
       placeholder={props.placeholder}
@@ -93,6 +93,7 @@ export class SellerSelect extends Component {
         <SellerSelectView
           id={this.props.id}
           placeholder={this.props.placeholder}
+          label={this.props.label}
           handleOnChange={this.handleOnChange}
           inputValue={this.state.inputValue}
           className={this.props.showSearchButton ? styles.noRightRadius : ''}
@@ -112,6 +113,7 @@ export class SellerSelect extends Component {
 SellerSelect.defaultProps = {
   id: 'seller-search',
   placeholder: '',
+  label: '',
   showSelected: true,
   showSearchButton: true,
   onSellerSelect: () => {},
@@ -121,6 +123,7 @@ SellerSelect.defaultProps = {
 SellerSelect.propTypes = {
   id: PropTypes.string,
   placeholder: PropTypes.string,
+  label: PropTypes.string,
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,
   onSellerSelect: PropTypes.func,

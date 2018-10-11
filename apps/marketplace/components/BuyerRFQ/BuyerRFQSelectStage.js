@@ -6,6 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import SelectedSellersControl from './SelectedSellersControl'
+import styles from './BuyerRFQSelectStage.scss'
 
 export class BuyerRFQSelectStage extends Component {
   constructor(props) {
@@ -38,6 +39,14 @@ export class BuyerRFQSelectStage extends Component {
         <AUheading level="1" size="xl">
           Select sellers
         </AUheading>
+        <div className={styles.selectSellers}>
+          <SellerSelect
+            label="Select the sellers you wish to invite"
+            showSelected={false}
+            showSearchButton={false}
+            onSellerSelect={this.handleSellerSelect}
+          />
+        </div>
         <SelectedSellersControl
           id="selected-sellers"
           model={`${this.props.model}.sellers`}
@@ -49,7 +58,6 @@ export class BuyerRFQSelectStage extends Component {
             required: 'You must select at least one seller'
           }}
         />
-        <SellerSelect showSelected={false} showSearchButton={false} onSellerSelect={this.handleSellerSelect} />
       </div>
     )
   }
