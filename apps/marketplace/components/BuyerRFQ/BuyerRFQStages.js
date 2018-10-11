@@ -2,7 +2,7 @@ import { validDate } from 'marketplace/components/validators'
 import BuyerRFQIntroductionStage from './BuyerRFQIntroductionStage'
 import BuyerRFQAboutStage from './BuyerRFQAboutStage'
 import BuyerRFQSelectStage from './BuyerRFQSelectStage'
-import BuyerRFQAttachmentsStage from './BuyerRFQAttachmentsStage'
+import BuyerRFQRequirementsStage from './BuyerRFQRequirementsStage'
 import BuyerRFQReviewStage from './BuyerRFQReviewStage'
 import BuyerRFQClosingDateStage from './BuyerRFQClosingDateStage'
 
@@ -21,16 +21,20 @@ const BuyerRFQStages = [
       formValues.title.length > 0 && formValues.organisation.length > 0 && formValues.location.length > 0
   },
   {
+    slug: 'requirements',
+    title: 'Requirements',
+    component: BuyerRFQRequirementsStage,
+    isDone: formValues =>
+      formValues.requirementsDocument.length > 0 &&
+      formValues.requirementsDocument.every(val => val) &&
+      formValues.responseTemplate.length > 0 &&
+      formValues.responseTemplate.every(val => val)
+  },
+  {
     slug: 'select',
     title: 'Select sellers',
     component: BuyerRFQSelectStage,
     isDone: formValues => Object.keys(formValues.sellers).length > 0
-  },
-  {
-    slug: 'attachments',
-    title: 'Attachments',
-    component: BuyerRFQAttachmentsStage,
-    isDone: formValues => formValues.attachedDocumentURL.length > 0 && formValues.attachedDocumentURL.every(val => val)
   },
   {
     slug: 'closing',

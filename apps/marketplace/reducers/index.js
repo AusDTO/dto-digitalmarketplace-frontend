@@ -80,7 +80,9 @@ export default combineReducers({
       location: [],
       summary: '',
       sellers: {},
-      attachedDocumentURL: [],
+      attachments: [],
+      requirementsDocument: [],
+      responseTemplate: [],
       closedAt: ''
     }
   })
