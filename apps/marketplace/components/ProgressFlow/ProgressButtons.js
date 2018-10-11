@@ -23,7 +23,7 @@ const ProgressButtons = props => (
 )
 
 ProgressButtons.defaultProps = {
-  continueText: 'Continue',
+  continueText: 'Save and continue',
   publishText: 'Publish',
   returnText: 'Return to overview',
   publishEnabled: false,
