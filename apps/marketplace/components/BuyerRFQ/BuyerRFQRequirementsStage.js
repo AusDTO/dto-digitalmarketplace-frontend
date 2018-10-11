@@ -101,17 +101,19 @@ export class BuyerRFQRequirementsStage extends Component {
             onUploadSuccess={this.props.saveModel}
           />
         ))}
-        <p>
-          <a
-            href="#add"
-            onClick={e => {
-              e.preventDefault()
-              this.addFileField()
-            }}
-          >
-            Add another
-          </a>
-        </p>
+        {this.state.fileCount < 10 && (
+          <p>
+            <a
+              href="#add"
+              onClick={e => {
+                e.preventDefault()
+                this.addFileField()
+              }}
+            >
+              Add another
+            </a>
+          </p>
+        )}
       </div>
     )
   }
