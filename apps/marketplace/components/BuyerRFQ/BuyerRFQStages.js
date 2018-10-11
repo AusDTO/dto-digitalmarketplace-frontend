@@ -17,7 +17,8 @@ const BuyerRFQStages = [
     slug: 'about',
     title: 'About',
     component: BuyerRFQAboutStage,
-    isDone: formValues => formValues.title.length > 0 && formValues.organisation.length > 0
+    isDone: formValues =>
+      formValues.title.length > 0 && formValues.organisation.length > 0 && formValues.location.length > 0
   },
   {
     slug: 'select',
