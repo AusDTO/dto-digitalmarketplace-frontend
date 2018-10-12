@@ -34,6 +34,7 @@ export class BuyerRFQFlowPage extends Component {
       data.organisation = response.data.organisation || ''
       data.location = response.data.location || []
       data.summary = response.data.summary || ''
+      data.industryBriefing = response.data.industryBriefing || ''
       data.sellers = response.data.sellers || {}
       data.attachments = response.data.attachments || []
       data.requirementsDocument = response.data.requirementsDocument || []

@@ -5,6 +5,8 @@ import format from 'date-fns/format'
 import StatefulError from 'shared/form/StatefulError'
 import { validDate } from 'marketplace/components/validators'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react'
+import AUheading from '@gov.au/headings/lib/js/react.js'
+import styles from './ClosingDateControl.scss'
 
 class ClosingDate extends Component {
   constructor(props) {
@@ -37,45 +39,53 @@ class ClosingDate extends Component {
     const { day, month, year } = parseValue(this.props.value)
 
     return (
-      <div className="row">
-        <div className="col-xs-4">
-          <label htmlFor="day">Day</label>
-          <AUtextInput
-            block
-            id="day"
-            type="number"
-            name="day"
-            value={day}
-            onChange={this.handleChange}
-            min="1"
-            max="31"
-          />
+      <div className={`row ${styles.container}`}>
+        <div className="col-xs-12">
+          <AUheading level="2" size="sm">
+            Closing date
+          </AUheading>
+          <p>Responses will be available after 6pm Canberra time on this date.</p>
         </div>
-        <div className="col-xs-4">
-          <label htmlFor="month">Month</label>
-          <AUtextInput
-            block
-            id="month"
-            type="number"
-            name="month"
-            value={month}
-            onChange={this.handleChange}
-            min="1"
-            max="12"
-          />
-        </div>
-        <div className="col-xs-4">
-          <label htmlFor="year">Year</label>
-          <AUtextInput
-            block
-            id="year"
-            type="number"
-            name="year"
-            value={year}
-            onChange={this.handleChange}
-            min="2018"
-            max="2099"
-          />
+        <div className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>
+          <div>
+            <label htmlFor="day">Day</label>
+            <AUtextInput
+              block
+              id="day"
+              type="number"
+              name="day"
+              value={day}
+              onChange={this.handleChange}
+              min="1"
+              max="31"
+            />
+          </div>
+          <div>
+            <label htmlFor="month">Month</label>
+            <AUtextInput
+              block
+              id="month"
+              type="number"
+              name="month"
+              value={month}
+              onChange={this.handleChange}
+              min="1"
+              max="12"
+            />
+          </div>
+          <div>
+            <label htmlFor="year">Year</label>
+            <AUtextInput
+              block
+              id="year"
+              type="number"
+              name="year"
+              value={year}
+              onChange={this.handleChange}
+              min="2018"
+              max="2099"
+            />
+          </div>
         </div>
         {this.props.messages && (
           <div className="col-xs-12">

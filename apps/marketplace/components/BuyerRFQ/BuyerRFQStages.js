@@ -4,7 +4,7 @@ import BuyerRFQAboutStage from './BuyerRFQAboutStage'
 import BuyerRFQSelectStage from './BuyerRFQSelectStage'
 import BuyerRFQRequirementsStage from './BuyerRFQRequirementsStage'
 import BuyerRFQReviewStage from './BuyerRFQReviewStage'
-import BuyerRFQClosingDateStage from './BuyerRFQClosingDateStage'
+import BuyerRFQMarketApproachStage from './BuyerRFQMarketApproachStage'
 
 const BuyerRFQStages = [
   {
@@ -37,9 +37,9 @@ const BuyerRFQStages = [
     isDone: formValues => Object.keys(formValues.sellers).length > 0
   },
   {
-    slug: 'closing',
-    title: 'Closing date',
-    component: BuyerRFQClosingDateStage,
+    slug: 'approach',
+    title: 'Market approach',
+    component: BuyerRFQMarketApproachStage,
     isDone: formValues => validDate(formValues.closedAt)
   },
   {

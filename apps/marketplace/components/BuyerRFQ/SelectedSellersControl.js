@@ -9,7 +9,7 @@ const SelectedSellers = props => (
   <div>
     {Object.keys(props.value).length > 0 && (
       <div>
-        <AUheading level="2" size="md">
+        <AUheading level="2" size="sm">
           Sellers to be invited
         </AUheading>
         <ul id={props.id} className={styles.selectedSellers}>

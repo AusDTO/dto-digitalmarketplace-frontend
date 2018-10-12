@@ -79,6 +79,7 @@ export default combineReducers({
       organisation: '',
       location: [],
       summary: '',
+      industryBriefing: '',
       sellers: {},
       attachments: [],
       requirementsDocument: [],
