@@ -1,7 +1,18 @@
-ol.selectedSellers {
+ul.selectedSellers {
   margin-bottom: 1.5rem;
+  padding-left: 0;
+  list-style-type: none;
 }
 
-ol.selectedSellers li a {
+ul.selectedSellers li {
+  padding: 0.75rem 0;
+  border-top: 1px solid gray;
+}
+
+ul.selectedSellers li:last-child {
+  border-bottom: 1px solid gray;
+}
+
+ul.selectedSellers li a {
   float: right;
 }

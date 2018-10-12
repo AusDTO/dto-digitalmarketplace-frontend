@@ -12,7 +12,7 @@ const SelectedSellers = props => (
         <AUheading level="2" size="md">
           Sellers to be invited
         </AUheading>
-        <ol id={props.id} className={styles.selectedSellers}>
+        <ul id={props.id} className={styles.selectedSellers}>
           {Object.keys(props.value).map(sellerCode => (
             <li key={sellerCode}>
               {props.value[sellerCode].name}
@@ -27,7 +27,7 @@ const SelectedSellers = props => (
               </a>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     )}
     {props.messages && (
