@@ -35,7 +35,6 @@ export class ProgressFlow extends Component {
 
     this.setCurrentStage = this.setCurrentStage.bind(this)
     this.setStageStatus = this.setStageStatus.bind(this)
-    this.setStageDoneStatus = this.setStageDoneStatus.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handlePublish = this.handlePublish.bind(this)
   }
@@ -76,14 +75,6 @@ export class ProgressFlow extends Component {
         })
       }
       newState.stages[stage] = status
-      return newState
-    })
-  }
-
-  setStageDoneStatus(stage, isDone) {
-    this.setState(curState => {
-      const newState = { ...curState }
-      newState.stagesDone[stage] = isDone
       return newState
     })
   }
