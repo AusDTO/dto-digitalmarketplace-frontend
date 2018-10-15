@@ -66,25 +66,27 @@ export class BuyerRFQRequirementsStage extends Component {
             requiredFile: 'You must upload a requirements document'
           }}
         />
-        <FilesInput
-          label="Response template"
-          hint="This document will be displayed publicly. Do not include internal or private information."
-          fieldLabel="Upload template"
-          name="responseTemplate"
-          model={`${model}.responseTemplate.0`}
-          formFields={1}
-          url={`/brief/${this.props[model].id}/attachments`}
-          api={dmapi}
-          fileId={0}
-          onReset={this.props.saveModel}
-          onUploadSuccess={this.props.saveModel}
-          validators={{
-            requiredFile
-          }}
-          messages={{
-            requiredFile: 'You must upload a response template'
-          }}
-        />
+        {this.props[model].evaluationType.includes('Response template') && (
+          <FilesInput
+            label="Response template"
+            hint="This document will be displayed publicly. Do not include internal or private information."
+            fieldLabel="Upload template"
+            name="responseTemplate"
+            model={`${model}.responseTemplate.0`}
+            formFields={1}
+            url={`/brief/${this.props[model].id}/attachments`}
+            api={dmapi}
+            fileId={0}
+            onReset={this.props.saveModel}
+            onUploadSuccess={this.props.saveModel}
+            validators={{
+              requiredFile
+            }}
+            messages={{
+              requiredFile: 'You must upload a response template'
+            }}
+          />
+        )}
         {range(this.state.fileCount).map(i => (
           <FilesInput
             key={i}

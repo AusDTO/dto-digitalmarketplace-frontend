@@ -5,6 +5,7 @@ import BuyerRFQSelectStage from './BuyerRFQSelectStage'
 import BuyerRFQRequirementsStage from './BuyerRFQRequirementsStage'
 import BuyerRFQReviewStage from './BuyerRFQReviewStage'
 import BuyerRFQMarketApproachStage from './BuyerRFQMarketApproachStage'
+import BuyerRFQResponseFormatsStage from './BuyerRFQResponseFormatsStage'
 
 const BuyerRFQStages = [
   {
@@ -21,14 +22,22 @@ const BuyerRFQStages = [
       formValues.title.length > 0 && formValues.organisation.length > 0 && formValues.location.length > 0
   },
   {
+    slug: 'formats',
+    title: 'Response formats',
+    component: BuyerRFQResponseFormatsStage,
+    isDone: formValues =>
+      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
+      formValues.proposalType.length > 0
+  },
+  {
     slug: 'requirements',
     title: 'Requirements',
     component: BuyerRFQRequirementsStage,
     isDone: formValues =>
       formValues.requirementsDocument.length > 0 &&
       formValues.requirementsDocument.every(val => val) &&
-      formValues.responseTemplate.length > 0 &&
-      formValues.responseTemplate.every(val => val)
+      (!formValues.evaluationType.includes('Response template') ||
+        (formValues.responseTemplate.length > 0 && formValues.responseTemplate.every(val => val)))
   },
   {
     slug: 'select',

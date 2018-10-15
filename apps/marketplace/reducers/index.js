@@ -84,6 +84,8 @@ export default combineReducers({
       attachments: [],
       requirementsDocument: [],
       responseTemplate: [],
+      evaluationType: [],
+      proposalType: [],
       closedAt: ''
     }
   })

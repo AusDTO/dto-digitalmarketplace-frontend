@@ -39,6 +39,8 @@ export class BuyerRFQFlowPage extends Component {
       data.attachments = response.data.attachments || []
       data.requirementsDocument = response.data.requirementsDocument || []
       data.responseTemplate = response.data.responseTemplate || []
+      data.evaluationType = response.data.evaluationType || []
+      data.proposalType = response.data.proposalType || []
       data.closedAt = response.data.closedAt || ''
       this.props.changeFormModel(data)
     })
