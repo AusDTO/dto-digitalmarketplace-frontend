@@ -37,7 +37,7 @@ export const Routes = () => (
     <PrivateRoute path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
     <PrivateRoute path={`${rootPath}/buyer-rfq/create`} component={BuyerRFQCreatePage} />
-    <PrivateRoute path={`${rootPath}/buyer-rfq/:briefId`} component={BuyerRFQFlowPage} />
+    <PrivateRoute path={`${rootPath}/buyer-rfq/:briefId/:stage?`} component={BuyerRFQFlowPage} />
     <Route component={NotFound} />
   </Switch>
 )

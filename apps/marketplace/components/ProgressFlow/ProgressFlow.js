@@ -29,6 +29,14 @@ export class ProgressFlow extends Component {
       return true
     })
 
+    // determine the initial "doing" stage from the route
+    if (
+      Object.keys(this.props.match.params).includes('stage') &&
+      Object.keys(this.state.stages).includes(this.props.match.params.stage)
+    ) {
+      this.state.stages[this.props.match.params.stage] = 'doing'
+    }
+
     this.history = createHistory({
       basename: this.props.basename
     })
@@ -39,26 +47,14 @@ export class ProgressFlow extends Component {
     this.handlePublish = this.handlePublish.bind(this)
   }
 
+  componentDidMount() {
+    this.updateAllStagesDoneStatus()
+  }
+
   componentDidUpdate(prevProps) {
     // if the form model has changed, redetermine each stage's done status
     if (JSON.stringify(prevProps[this.props.model]) !== JSON.stringify(this.props[this.props.model])) {
-      const stagesDone = { ...this.state.stagesDone }
-      const stages = { ...this.state.stages }
-      this.props.stages.map(stage => {
-        if (typeof stage.isDone === 'function') {
-          stagesDone[stage.slug] = stage.isDone(this.props[this.props.model])
-          if (stagesDone[stage.slug] && stages[stage.slug] !== 'doing') {
-            stages[stage.slug] = 'done'
-          }
-        }
-        return true
-      })
-      this.setState(curState => {
-        const newState = { ...curState }
-        newState.stagesDone = { ...curState.stagesDone, ...stagesDone }
-        newState.stages = { ...curState.stages, ...stages }
-        return newState
-      })
+      this.updateAllStagesDoneStatus()
     }
   }
 
@@ -94,6 +90,26 @@ export class ProgressFlow extends Component {
       currentStage: stage
     })
     this.setStageStatus(stage, 'doing')
+  }
+
+  updateAllStagesDoneStatus() {
+    const stagesDone = { ...this.state.stagesDone }
+    const stages = { ...this.state.stages }
+    this.props.stages.map(stage => {
+      if (typeof stage.isDone === 'function') {
+        stagesDone[stage.slug] = stage.isDone(this.props[this.props.model])
+        if (stagesDone[stage.slug] && stages[stage.slug] !== 'doing') {
+          stages[stage.slug] = 'done'
+        }
+      }
+      return true
+    })
+    this.setState(curState => {
+      const newState = { ...curState }
+      newState.stagesDone = { ...curState.stagesDone, ...stagesDone }
+      newState.stages = { ...curState.stages, ...stages }
+      return newState
+    })
   }
 
   handleFormSubmit() {

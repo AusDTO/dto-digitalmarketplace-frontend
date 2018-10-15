@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
 import { rootPath } from 'marketplace/routes'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import dmapi from '../services/apiClient'
 
 const model = 'BuyerRFQForm'
@@ -12,6 +14,12 @@ const model = 'BuyerRFQForm'
 export class BuyerRFQFlowPage extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      loading: false,
+      errorMessage: ''
+    }
+
     this.saveBrief = this.saveBrief.bind(this)
   }
 
@@ -22,10 +30,17 @@ export class BuyerRFQFlowPage extends Component {
   }
 
   getBriefData() {
+    this.setState({
+      loading: true
+    })
     dmapi({
       url: `/brief/${this.props.match.params.briefId}`
     }).then(response => {
       if (!response || response.error || !response.data || !response.data.id) {
+        this.setState({
+          errorMessage: response.errorMessage,
+          loading: false
+        })
         return
       }
       const data = {}
@@ -43,6 +58,11 @@ export class BuyerRFQFlowPage extends Component {
       data.proposalType = response.data.proposalType || []
       data.closedAt = response.data.closedAt || ''
       this.props.changeFormModel(data)
+
+      this.setState({
+        errorMessage: '',
+        loading: false
+      })
     })
   }
 
@@ -63,6 +83,29 @@ export class BuyerRFQFlowPage extends Component {
   }
 
   render() {
+    if (this.state.errorMessage) {
+      let hasFocused = false
+      const setFocus = e => {
+        if (!hasFocused) {
+          hasFocused = true
+          e.focus()
+        }
+      }
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the brief details"
+          errorMessage={this.state.errorMessage}
+          setFocus={setFocus}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
+    }
+
+    if (this.state.loading) {
+      return <LoadingIndicatorFullPage />
+    }
+
     return (
       <ProgressFlow
         model={model}
