@@ -6,6 +6,7 @@ import BuyerRFQRequirementsStage from './BuyerRFQRequirementsStage'
 import BuyerRFQReviewStage from './BuyerRFQReviewStage'
 import BuyerRFQMarketApproachStage from './BuyerRFQMarketApproachStage'
 import BuyerRFQResponseFormatsStage from './BuyerRFQResponseFormatsStage'
+import BuyerRFQTimeframesAndBudgetStage from './BuyerRFQTimeframesAndBudgetStage'
 
 const BuyerRFQStages = [
   {
@@ -38,6 +39,12 @@ const BuyerRFQStages = [
       formValues.requirementsDocument.every(val => val) &&
       (!formValues.evaluationType.includes('Response template') ||
         (formValues.responseTemplate.length > 0 && formValues.responseTemplate.every(val => val)))
+  },
+  {
+    slug: 'timeframes',
+    title: 'Timeframes and budget',
+    component: BuyerRFQTimeframesAndBudgetStage,
+    isDone: formValues => formValues.startDate.length > 0
   },
   {
     slug: 'select',

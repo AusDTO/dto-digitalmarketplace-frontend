@@ -57,6 +57,10 @@ export class BuyerRFQFlowPage extends Component {
       data.evaluationType = response.data.evaluationType || []
       data.proposalType = response.data.proposalType || []
       data.closedAt = response.data.closedAt || ''
+      data.startDate = response.data.startDate || ''
+      data.contractLength = response.data.contractLength || ''
+      data.budgetRange = response.data.budgetRange || ''
+
       this.props.changeFormModel(data)
 
       this.setState({

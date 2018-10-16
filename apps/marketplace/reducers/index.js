@@ -86,7 +86,10 @@ export default combineReducers({
       responseTemplate: [],
       evaluationType: [],
       proposalType: [],
-      closedAt: ''
+      closedAt: '',
+      startDate: '',
+      contractLength: '',
+      budgetRange: ''
     }
   })
 })
