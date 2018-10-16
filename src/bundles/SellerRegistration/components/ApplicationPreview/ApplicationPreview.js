@@ -101,6 +101,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
 
   let assessed = state.application.assessed_domains || domains.assessed || [];
   let unassessed = domains.unassessed;
+  let all_domains = domains.all || [];
   // If unassessed is falsy, assume we are on preview
   // Where we just want to show the current selected
   // services. Filter out falsy services and convert
@@ -194,7 +195,8 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
         disclosures,
         signed_agreements,
         recruiter_info,
-        pricing
+        pricing,
+        all_domains
     } : {}),
     onClick,
     csrfToken: state.form_options.csrf_token,
