@@ -86,6 +86,7 @@ export default combineReducers({
       responseTemplate: [],
       evaluationType: [],
       proposalType: [],
+      evaluationCriteria: [{ criteria: '', weighting: '' }],
       closedAt: '',
       startDate: '',
       contractLength: '',

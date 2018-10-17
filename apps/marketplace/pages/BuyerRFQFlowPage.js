@@ -56,6 +56,7 @@ export class BuyerRFQFlowPage extends Component {
       data.responseTemplate = response.data.responseTemplate || []
       data.evaluationType = response.data.evaluationType || []
       data.proposalType = response.data.proposalType || []
+      data.evaluationCriteria = response.data.evaluationCriteria || [{ criteria: '', weighting: '' }]
       data.closedAt = response.data.closedAt || ''
       data.startDate = response.data.startDate || ''
       data.contractLength = response.data.contractLength || ''
