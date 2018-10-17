@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -84,7 +85,7 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
             typeof evaluationCriteria.weighting !== 'undefined'
           ) {
             return (
-              <div className="row" key={`criteria_key_${evaluationCriteria.criteria}`}>
+              <div className="row" key={`criteria_key_${i}`}>
                 <div className={`col-lg-8 ${styles.criteriaActions}`}>
                   <Textfield
                     model={`${this.props.model}.evaluationCriteria[${i}].criteria`}
