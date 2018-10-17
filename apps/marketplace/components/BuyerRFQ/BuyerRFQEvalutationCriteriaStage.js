@@ -99,7 +99,7 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
           ) {
             return (
               <div className="row" key={i}>
-                <div className={`col-xs-8 ${styles.criteriaActions}`}>
+                <div className={`col-lg-8 ${styles.criteriaActions}`}>
                   <Textfield
                     model={`${this.props.model}.evaluationCriteria[${i}].criteria`}
                     label="Criteria"
@@ -133,7 +133,7 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
                   )}
                 </div>
                 {this.state.showWeightings && (
-                  <div className="col-xs-4">
+                  <div className="col-lg-4">
                     <div className={styles.weightingContainer}>
                       <Textfield
                         model={`${this.props.model}.evaluationCriteria[${i}].weighting`}
