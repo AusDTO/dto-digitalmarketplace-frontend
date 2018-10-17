@@ -7,18 +7,15 @@ import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import { required } from 'marketplace/components/validators'
-import range from 'lodash/range'
 import styles from './BuyerRFQEvalutationCriteriaStage.scss'
 
 class BuyerRFQEvalutationCriteriaStage extends Component {
   constructor(props) {
     super(props)
 
-    const criteriaCount = props[props.model].evaluationCriteria.length
     const hasWeightings = props[props.model].evaluationCriteria.some(val => val.weighting)
 
     this.state = {
-      criteriaCount: criteriaCount > 0 ? criteriaCount : 1,
       showWeightings: hasWeightings
     }
 
@@ -46,12 +43,6 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
 
   removeCriteria(index) {
     this.props.removeCriteriaByIndex(this.props[this.props.model].evaluationCriteria, index)
-    this.setState(curState => {
-      const newState = { ...curState }
-      const newCount = newState.criteriaCount - 1
-      newState.criteriaCount = newCount > 0 ? newCount : 1
-      return newState
-    })
   }
 
   handleIncludeWeightingsChange(e) {
@@ -70,11 +61,6 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
   handleAddCriteriaClick(e) {
     e.preventDefault()
     this.props.addEmptyEvalutationCriteria(this.props[this.props.model].evaluationCriteria)
-    this.setState(curState => {
-      const newState = { ...curState }
-      newState.criteriaCount += 1
-      return newState
-    })
   }
 
   render() {
@@ -91,14 +77,14 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
             onChange={this.handleIncludeWeightingsChange}
           />
         </p>
-        {range(this.state.criteriaCount).map(i => {
+        {this.props[this.props.model].evaluationCriteria.map((evaluationCriteria, i) => {
           if (
-            this.props[this.props.model].evaluationCriteria[i] &&
-            typeof this.props[this.props.model].evaluationCriteria[i].criteria !== 'undefined' &&
-            typeof this.props[this.props.model].evaluationCriteria[i].weighting !== 'undefined'
+            evaluationCriteria &&
+            typeof evaluationCriteria.criteria !== 'undefined' &&
+            typeof evaluationCriteria.weighting !== 'undefined'
           ) {
             return (
-              <div className="row" key={i}>
+              <div className="row" key={`criteria_key_${evaluationCriteria.criteria}`}>
                 <div className={`col-lg-8 ${styles.criteriaActions}`}>
                   <Textfield
                     model={`${this.props.model}.evaluationCriteria[${i}].criteria`}
@@ -106,7 +92,7 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
                     name={`criteria_${i}`}
                     id={`criteria_${i}`}
                     htmlFor={`criteria_${i}`}
-                    defaultValue={this.props[this.props.model].evaluationCriteria[i].criteria}
+                    defaultValue={evaluationCriteria.criteria}
                     maxLength={100}
                     validators={{
                       required
@@ -115,12 +101,12 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
                       required: `Criteria can't be empty`
                     }}
                   />
-                  {i === this.state.criteriaCount - 1 && (
+                  {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
                     <a href="#add" onClick={this.handleAddCriteriaClick}>
                       Add another criteria
                     </a>
                   )}
-                  {i > 0 && (
+                  {this.props[this.props.model].evaluationCriteria.length > 1 && (
                     <a
                       href="#remove"
                       onClick={e => {
@@ -141,7 +127,7 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
                         name={`weighting_${i}`}
                         id={`weighting_${i}`}
                         htmlFor={`weighting_${i}`}
-                        defaultValue={this.props[this.props.model].evaluationCriteria[i].weighting}
+                        defaultValue={evaluationCriteria.weighting}
                         maxLength={3}
                         validators={{
                           withinRange: val => parseInt(val, 10) > 0 && parseInt(val, 10) <= 100
