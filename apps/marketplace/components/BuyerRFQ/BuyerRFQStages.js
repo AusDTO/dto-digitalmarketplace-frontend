@@ -7,7 +7,7 @@ import BuyerRFQReviewStage from './BuyerRFQReviewStage'
 import BuyerRFQMarketApproachStage from './BuyerRFQMarketApproachStage'
 import BuyerRFQResponseFormatsStage from './BuyerRFQResponseFormatsStage'
 import BuyerRFQTimeframesAndBudgetStage from './BuyerRFQTimeframesAndBudgetStage'
-import BuyerRFQEvalutationCriteriaStage from './BuyerRFQEvalutationCriteriaStage'
+import BuyerRFQEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerRFQEvaluationCriteriaStage'
 
 const BuyerRFQStages = [
   {
@@ -50,15 +50,11 @@ const BuyerRFQStages = [
   {
     slug: 'criteria',
     title: 'Evaluation criteria',
-    component: BuyerRFQEvalutationCriteriaStage,
+    component: BuyerRFQEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
       formValues.evaluationCriteria.every(val => val.criteria) &&
-      (!formValues.evaluationCriteria.some(val => val.weighting) ||
-        formValues.evaluationCriteria.reduce(
-          (accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10),
-          0
-        ) === 100)
+      weightingsAddUpTo100(formValues.evaluationCriteria)
   },
   {
     slug: 'select',
