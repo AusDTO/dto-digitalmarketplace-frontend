@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
-import format from 'date-fns/format'
 import StatefulError from 'shared/form/StatefulError'
 import { validDate } from 'marketplace/components/validators'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react'
@@ -27,11 +26,10 @@ class ClosingDate extends Component {
         year: ''
       }
       if (value) {
-        const propDate = new Date(value)
         date = {
-          day: format(propDate, 'DD'),
-          month: format(propDate, 'MM'),
-          year: format(propDate, 'YYYY')
+          day: value.split('-')[2] ? value.split('-')[2] : '',
+          month: value.split('-')[1] ? value.split('-')[1] : '',
+          year: value.split('-')[0] ? value.split('-')[0] : ''
         }
       }
       return date
