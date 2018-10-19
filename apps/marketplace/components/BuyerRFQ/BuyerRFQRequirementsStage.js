@@ -47,9 +47,12 @@ export class BuyerRFQRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Requirements
         </AUheadings>
+        <AUheadings level="2" size="sm">
+          Requirements document
+        </AUheadings>
+        <p>This document will be displayed publicly. Do not include internal or private information.</p>
         <FilesInput
-          label="Requirements document"
-          hint="This document will be displayed publicly. Do not include internal or private information."
+          title="Requirements document"
           fieldLabel="Upload document"
           name="requirementsDocument"
           model={`${model}.requirementsDocument.0`}
@@ -67,31 +70,39 @@ export class BuyerRFQRequirementsStage extends Component {
           }}
         />
         {this.props[model].evaluationType.includes('Response template') && (
-          <FilesInput
-            label="Response template"
-            hint="This document will be displayed publicly. Do not include internal or private information."
-            fieldLabel="Upload template"
-            name="responseTemplate"
-            model={`${model}.responseTemplate.0`}
-            formFields={1}
-            url={`/brief/${this.props[model].id}/attachments`}
-            api={dmapi}
-            fileId={0}
-            onReset={this.props.saveModel}
-            onUploadSuccess={this.props.saveModel}
-            validators={{
-              requiredFile
-            }}
-            messages={{
-              requiredFile: 'You must upload a response template'
-            }}
-          />
+          <div>
+            <AUheadings level="2" size="sm">
+              Response template
+            </AUheadings>
+            <p>This document will be displayed publicly. Do not include internal or private information.</p>
+            <FilesInput
+              title="Response template"
+              fieldLabel="Upload template"
+              name="responseTemplate"
+              model={`${model}.responseTemplate.0`}
+              formFields={1}
+              url={`/brief/${this.props[model].id}/attachments`}
+              api={dmapi}
+              fileId={0}
+              onReset={this.props.saveModel}
+              onUploadSuccess={this.props.saveModel}
+              validators={{
+                requiredFile
+              }}
+              messages={{
+                requiredFile: 'You must upload a response template'
+              }}
+            />
+          </div>
         )}
+        <AUheadings level="2" size="sm">
+          Additional documents (optional)
+        </AUheadings>
+        <p>This document will be displayed publicly. Do not include internal or private information.</p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
             key={i}
-            label="Additional documents (optional)"
-            hint="This document will be displayed publicly. Do not include internal or private information."
+            title="Additional documents (optional)"
             fieldLabel="Upload document"
             name="attachments"
             model={`${model}.attachments.${i}`}

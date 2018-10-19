@@ -47,7 +47,7 @@ class FileInput extends React.Component {
     })
   }
   render() {
-    const { url, form, name, id, model, validators, messages, fieldLabel } = this.props
+    const { url, form, name, id, model, validators, messages, fieldLabel, title } = this.props
     const fileField = `${id}`
     const doc = get(form, `${name}.${fileField}`, {})
     return (
@@ -70,6 +70,7 @@ class FileInput extends React.Component {
                   onChange={this.onChange}
                   className={styles.hidden_input}
                   validators={validators}
+                  title={title || ''}
                 />
                 <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
                   <div className="au-btn au-btn--secondary">{fieldLabel}</div>
