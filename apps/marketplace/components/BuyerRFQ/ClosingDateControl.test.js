@@ -47,18 +47,22 @@ test('closing date control calls the onDateChange property on value changes', ()
 
   const component = mount(
     <Provider store={store}>
-      <ClosingDate
-        id="test"
-        value={format(date, 'YYYY-MM-DD')}
-        formModel="test"
-        onDateChange={onDateChange}
-      />
+      <ClosingDate id="test" value={format(date, 'YYYY-MM-DD')} formModel="test" onDateChange={onDateChange} />
     </Provider>
   )
 
-  component.find('input#day').at(0).simulate('change', { target: { checked: false } })
-  component.find('input#month').at(0).simulate('change', { target: { checked: false } })
-  component.find('input#year').at(0).simulate('change', { target: { checked: false } })
+  component
+    .find('input#day')
+    .at(0)
+    .simulate('change', { target: { checked: false } })
+  component
+    .find('input#month')
+    .at(0)
+    .simulate('change', { target: { checked: false } })
+  component
+    .find('input#year')
+    .at(0)
+    .simulate('change', { target: { checked: false } })
 
   expect(onDateChange).toHaveBeenCalledTimes(3)
 })
