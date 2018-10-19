@@ -16,7 +16,7 @@ export const weightingsAddUpTo100 = evaluationCriteria =>
   evaluationCriteria.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10), 0) ===
     100
 
-class BuyerRFQEvalutationCriteriaStage extends Component {
+class BuyerRFQEvaluationCriteriaStage extends Component {
   constructor(props) {
     super(props)
 
@@ -78,6 +78,7 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
         </AUheadings>
         <p>
           <AUcheckbox
+            id="include_weightings"
             label="Include weightings"
             name="weightings"
             checked={this.state.showWeightings}
@@ -172,8 +173,17 @@ class BuyerRFQEvalutationCriteriaStage extends Component {
   }
 }
 
-BuyerRFQEvalutationCriteriaStage.propTypes = {
-  model: PropTypes.string.isRequired
+BuyerRFQEvaluationCriteriaStage.defaultProps = {
+  clearWeightingsFromCriteria: () => {},
+  addEmptyEvalutationCriteria: () => {},
+  removeCriteriaByIndex: () => {}
+}
+
+BuyerRFQEvaluationCriteriaStage.propTypes = {
+  model: PropTypes.string.isRequired,
+  clearWeightingsFromCriteria: PropTypes.func,
+  addEmptyEvalutationCriteria: PropTypes.func,
+  removeCriteriaByIndex: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
@@ -204,4 +214,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQEvalutationCriteriaStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQEvaluationCriteriaStage)
