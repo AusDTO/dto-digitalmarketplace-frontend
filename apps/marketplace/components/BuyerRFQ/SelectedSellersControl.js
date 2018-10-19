@@ -5,36 +5,51 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import StatefulError from 'shared/form/StatefulError'
 import styles from './SelectedSellersControl.scss'
 
-const SelectedSellers = props => (
-  <div>
-    {Object.keys(props.value).length > 0 && (
-      <div>
-        <AUheading level="2" size="sm">
-          Sellers to be invited
-        </AUheading>
-        <ul id={props.id} className={styles.selectedSellers}>
-          {Object.keys(props.value).map(sellerCode => (
-            <li key={sellerCode}>
-              {props.value[sellerCode].name}
-              <a
-                href="#remove"
-                onClick={e => {
-                  e.preventDefault()
-                  props.onRemoveClick(sellerCode)
-                }}
-              >
-                Remove
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-    {props.messages && (
-      <StatefulError model={props.formModel} messages={props.messages} showMessagesDuringFocus="false" id={props.id} />
-    )}
-  </div>
-)
+export const SelectedSellers = props => {
+  const { value, onRemoveClick, id, formModel, messages } = props
+  return (
+    <div>
+      {Object.keys(value).length > 0 && (
+        <div>
+          <AUheading level="2" size="sm">
+            Sellers to be invited
+          </AUheading>
+          <ul id={id} className={styles.selectedSellers}>
+            {Object.keys(value).map(sellerCode => (
+              <li key={sellerCode}>
+                {value[sellerCode].name}
+                <a
+                  href="#remove"
+                  onClick={e => {
+                    e.preventDefault()
+                    onRemoveClick(sellerCode)
+                  }}
+                >
+                  Remove
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {messages && <StatefulError model={formModel} messages={messages} showMessagesDuringFocus="false" id={id} />}
+    </div>
+  )
+}
+
+SelectedSellers.defaultProps = {
+  messages: {},
+  onRemoveClick: () => {},
+  value: {}
+}
+
+SelectedSellers.propTypes = {
+  id: PropTypes.string.isRequired,
+  formModel: PropTypes.string.isRequired,
+  messages: PropTypes.object,
+  onRemoveClick: PropTypes.func,
+  value: PropTypes.object
+}
 
 const SelectedSellersControl = props => (
   <Control.custom
