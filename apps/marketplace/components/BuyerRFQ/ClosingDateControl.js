@@ -7,7 +7,7 @@ import AUtextInput from '@gov.au/text-inputs/lib/js/react'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './ClosingDateControl.scss'
 
-class ClosingDate extends Component {
+export class ClosingDate extends Component {
   constructor(props) {
     super(props)
 
@@ -25,7 +25,7 @@ class ClosingDate extends Component {
         month: '',
         year: ''
       }
-      if (value) {
+      if (value && value.match(/\d{4}-\d{2}-\d{2}/)) {
         date = {
           day: value.split('-')[2] ? value.split('-')[2] : '',
           month: value.split('-')[1] ? value.split('-')[1] : '',
@@ -98,6 +98,20 @@ class ClosingDate extends Component {
       </div>
     )
   }
+}
+
+ClosingDate.defaultProps = {
+  messages: {},
+  onDateChange: () => {},
+  value: ''
+}
+
+ClosingDate.propTypes = {
+  id: PropTypes.string.isRequired,
+  formModel: PropTypes.string.isRequired,
+  messages: PropTypes.object,
+  onDateChange: PropTypes.func,
+  value: PropTypes.string
 }
 
 const ClosingDateControl = props => (
