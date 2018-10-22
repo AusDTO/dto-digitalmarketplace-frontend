@@ -7,35 +7,48 @@ import AUtextInput from '@gov.au/text-inputs/lib/js/react'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './ClosingDateControl.scss'
 
+const parseValue = value => {
+  let date = {
+    day: '',
+    month: '',
+    year: ''
+  }
+  if (value && value.match(/\d{4}-\d{1,2}-\d{1,2}/)) {
+    date = {
+      day: value.split('-')[2] ? value.split('-')[2] : '',
+      month: value.split('-')[1] ? value.split('-')[1] : '',
+      year: value.split('-')[0] ? value.split('-')[0] : ''
+    }
+  }
+  return date
+}
+
 export class ClosingDate extends Component {
   constructor(props) {
     super(props)
+
+    const { day, month, year } = parseValue(props.value)
+    this.state = {
+      day,
+      month,
+      year
+    }
 
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(e) {
-    this.props.onDateChange(e.target.name, e.target.value)
+    const name = e.target.name
+    const value = e.target.value
+    this.setState(curState => {
+      const newState = { ...curState }
+      newState[name] = value
+      this.props.onDateChange(newState)
+      return newState
+    })
   }
 
   render() {
-    const parseValue = value => {
-      let date = {
-        day: '',
-        month: '',
-        year: ''
-      }
-      if (value && value.match(/\d{4}-\d{2}-\d{2}/)) {
-        date = {
-          day: value.split('-')[2] ? value.split('-')[2] : '',
-          month: value.split('-')[1] ? value.split('-')[1] : '',
-          year: value.split('-')[0] ? value.split('-')[0] : ''
-        }
-      }
-      return date
-    }
-    const { day, month, year } = parseValue(this.props.value)
-
     return (
       <div className={`row ${styles.container}`}>
         <div className="col-xs-12">
@@ -52,7 +65,7 @@ export class ClosingDate extends Component {
               id="day"
               type="number"
               name="day"
-              value={day}
+              value={this.state.day}
               onChange={this.handleChange}
               min="1"
               max="31"
@@ -65,7 +78,7 @@ export class ClosingDate extends Component {
               id="month"
               type="number"
               name="month"
-              value={month}
+              value={this.state.month}
               onChange={this.handleChange}
               min="1"
               max="12"
@@ -78,7 +91,7 @@ export class ClosingDate extends Component {
               id="year"
               type="number"
               name="year"
-              value={year}
+              value={this.state.year}
               onChange={this.handleChange}
               min="2018"
               max="2099"

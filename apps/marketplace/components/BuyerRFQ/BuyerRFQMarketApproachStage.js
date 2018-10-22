@@ -14,28 +14,8 @@ class BuyerRFQMarketApproachStage extends Component {
     this.handleDateChange = this.handleDateChange.bind(this)
   }
 
-  handleDateChange(name, value) {
-    let date = this.props[this.props.model].closedAt
-    switch (name) {
-      case 'day':
-        date = `${date
-          .split('-')
-          .slice(0, 2)
-          .join('-')}-${value}`
-        break
-      case 'month':
-        date = `${date.split('-').slice(0, 1)}-${value}-${date.split('-').slice(-1)}`
-        break
-      case 'year':
-        date = `${value}-${date
-          .split('-')
-          .slice(1)
-          .join('-')}`
-        break
-      default:
-        break
-    }
-    this.props.setDate(date)
+  handleDateChange(date) {
+    this.props.setDate(`${date.year}-${date.month}-${date.day}`)
   }
 
   render() {
