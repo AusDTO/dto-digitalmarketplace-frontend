@@ -106,6 +106,12 @@ export class BuyerDashboardMyBriefs extends Component {
                           <strong>Edit draft</strong>
                         </a>
                       )}
+                    {item.status === 'draft' &&
+                      item.lot === 'rfx' && (
+                        <a href={`${rootPath}/brief/${item.id}/overview/rfq`}>
+                          <strong>Edit draft</strong>
+                        </a>
+                      )}
                     {item.status === 'live' && (
                       <a
                         href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${
