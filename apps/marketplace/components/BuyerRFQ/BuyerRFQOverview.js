@@ -19,12 +19,13 @@ const answerSellerQuestionsRender = (brief, isPublished, isPastQuestionsDeadline
   } else if (isPublished && !isPastQuestionsDeadline) {
     return (
       <span>
+        2.{' '}
         <a
           href={`/buyers/frameworks/digital-marketplace/requirements/rfx/${
             brief.id
           }/supplier-questions/answer-question`}
         >
-          2. Answer seller questions
+          Answer seller questions
         </a>
         <Badge status="To do" />
       </span>
@@ -44,7 +45,7 @@ const downloadResponsesRender = (brief, isPublished, isClosed) => {
   if (isPublished && isClosed) {
     return (
       <span>
-        <a href={`${rootPath}/brief/${brief.id}/download-responses`}>3. Download responses</a>
+        3. <a href={`${rootPath}/brief/${brief.id}/download-responses`}>Download responses</a>
         <Badge status="Ready for download" />
       </span>
     )
