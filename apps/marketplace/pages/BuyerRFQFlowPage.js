@@ -5,6 +5,7 @@ import formProps from 'shared/form/formPropsSelector'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
+import BuyerRFQCompleted from 'marketplace/components/BuyerRFQ/BuyerRFQCompleted'
 import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import dmapi from '../services/apiClient'
@@ -17,7 +18,8 @@ export class BuyerRFQFlowPage extends Component {
 
     this.state = {
       loading: false,
-      errorMessage: ''
+      errorMessage: '',
+      flowIsDone: false
     }
 
     this.saveBrief = this.saveBrief.bind(this)
@@ -84,6 +86,18 @@ export class BuyerRFQFlowPage extends Component {
         'Content-Type': 'application/json'
       },
       data: JSON.stringify(data)
+    }).then(response => {
+      if (!response || response.error || !response.data || !response.data.id) {
+        this.setState({
+          errorMessage: response.errorMessage
+        })
+        return
+      }
+      if (publish) {
+        this.setState({
+          flowIsDone: true
+        })
+      }
     })
   }
 
@@ -109,6 +123,10 @@ export class BuyerRFQFlowPage extends Component {
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    if (this.state.flowIsDone) {
+      return <BuyerRFQCompleted briefId={this.props.match.params.briefId} closingDate={this.props[model].closedAt} />
     }
 
     return (
