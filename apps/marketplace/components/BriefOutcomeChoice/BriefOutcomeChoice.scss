@@ -6,6 +6,16 @@ div.container > div {
   display: flex;
 }
 
+@media screen and (max-width: 991px) {
+  div.container {
+    display: block;
+  }
+
+  div.container > div {
+    display: block;
+  }
+}
+
 .flexGrow {
   flex-grow: 1;
 }
