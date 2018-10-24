@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
+import { rootPath } from 'marketplace/routes'
+import styles from './BuyerRFQCompleted.scss'
 
 const BuyerRFQCompleted = props => (
   <div>
@@ -24,10 +26,20 @@ const BuyerRFQCompleted = props => (
           answer seller questions
         </a>.
       </li>
-      <li>When your brief has closed, we will send you an email so you can evaluate responses.</li>
+      <li>
+        When your brief has closed, we will send you an email so you can <a href="#evaluate">evaluate responses</a>.
+      </li>
     </ul>
     <p>
       If you need help at any time, <a href="/contact-us">contact us</a>.
+    </p>
+    <p className={styles.buttons}>
+      <a href={`${rootPath}/buyer-dashboard`} className="au-btn au-btn--secondary">
+        Return to dashboard
+      </a>
+      <a href={`/digital-marketplace/opportunities/${props.briefId}`} className="au-btn">
+        View live brief
+      </a>
     </p>
   </div>
 )
