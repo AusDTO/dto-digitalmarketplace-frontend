@@ -1,0 +1,44 @@
+div.container {
+  display: flex;
+}
+
+div.container > div {
+  display: flex;
+}
+
+.flexGrow {
+  flex-grow: 1;
+}
+
+.badge {
+  float: right;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.badgeAll {
+  background-color: #e6efc2;
+}
+
+.badgeSelected {
+  background-color: #e8f5fa;
+}
+
+div.card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1.5rem;
+  background-color: white;
+  border: 1px solid grey;
+  margin-top: 1.5rem;
+}
+
+p.buttons {
+  display: flex;
+}
+
+p.buttons a {
+  margin-right: 0.75rem;
+}
