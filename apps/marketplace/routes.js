@@ -18,6 +18,7 @@ import BuyerRFQCreatePage from './pages/BuyerRFQCreatePage'
 import BuyerRFQFlowPage from './pages/BuyerRFQFlowPage'
 import BuyerRFQOverviewPage from './pages/BuyerRFQOverviewPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
+import OpportunityPage from './pages/OpportunityPage'
 
 export const rootPath = '/2'
 
@@ -36,6 +37,7 @@ export const Routes = () => (
     <Route path={`${rootPath}/collaborate/:stage`} component={CollaboratePage} />
     <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
+    <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
