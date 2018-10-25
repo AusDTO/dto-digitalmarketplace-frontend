@@ -10,6 +10,8 @@ import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import BriefTrainingResponseSubmitted from 'marketplace/components/Brief/BriefTrainingResponseSubmitted'
+import BriefRFXResponseForm from 'marketplace/components/Brief/BriefRFXResponseForm'
+import BriefRFXResponseSubmitted from 'marketplace/components/Brief/BriefRFXResponseSubmitted'
 import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
 import {
   loadBrief,
@@ -216,6 +218,36 @@ class BriefPage extends Component {
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
                       showTrainerResumes={this.showTrainingResumesFileUpload()}
+                      {...this.props}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
+                    />
+                  ) : (
+                    errorScreen
+                  )}{' '}
+                </span>
+              )}
+            />
+            <Route
+              path={`${match.url}/rfx/respond/submitted`}
+              render={() => (
+                <BriefRFXResponseSubmitted
+                  setFocus={setFocus}
+                  submitClicked={this.state.submitClicked}
+                  handleSubmit={values => this.handleFeedbackSubmit(values)}
+                  {...this.props}
+                />
+              )}
+            />
+            <Route
+              path={`${match.url}/rfx/respond`}
+              render={() => (
+                <span>
+                  {loadBriefSuccess ? (
+                    <BriefRFXResponseForm
+                      submitClicked={this.onSubmitClicked}
+                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                      setFocus={setFocus}
                       {...this.props}
                       loadingText={this.state.loadingText}
                       uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
