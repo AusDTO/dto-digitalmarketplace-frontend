@@ -5,7 +5,41 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import subDays from 'date-fns/sub_days'
+import addDays from 'date-fns/add_days'
+import isWeekend from 'date-fns/is_weekend'
 import styles from './BuyerRFQReviewStage.scss'
+
+const nextWeekDay = date => {
+  let newDate = date
+  while (isWeekend(newDate)) {
+    newDate = addDays(newDate, 1)
+  }
+  return newDate
+}
+
+const getLastQuestionDate = closingDate => {
+  const today = new Date()
+  let lastQuestionDate = new Date()
+  if (closingDate < addDays(today, 2)) {
+    lastQuestionDate = closingDate
+  } else if (closingDate < addDays(today, 7)) {
+    lastQuestionDate = nextWeekDay(addDays(today, 2))
+  } else {
+    lastQuestionDate = nextWeekDay(addDays(today, 5))
+  }
+  if (lastQuestionDate > closingDate) {
+    lastQuestionDate = closingDate
+  }
+  return lastQuestionDate
+}
+
+const getLastAnswerDate = closingDate => {
+  let lastAnswerDate = subDays(closingDate, 1)
+  if (lastAnswerDate < getLastQuestionDate(closingDate)) {
+    lastAnswerDate = closingDate
+  }
+  return lastAnswerDate
+}
 
 const BuyerRFQReviewStage = props => (
   <div>
@@ -23,15 +57,15 @@ const BuyerRFQReviewStage = props => (
       <div className="row">
         <div className="col-xs-12 col-sm-4">
           {props[props.model].closedAt
-            ? format(subDays(props[props.model].closedAt, 5), 'D MMMM')
-            : `Five days before your closing date`}
+            ? format(getLastQuestionDate(new Date(props[props.model].closedAt)), 'D MMMM')
+            : `Up to five days after today`}
         </div>
         <div className="col-xs-12 col-sm-8">The last day suppliers can ask questions.</div>
       </div>
       <div className="row">
         <div className="col-xs-12 col-sm-4">
           {props[props.model].closedAt
-            ? format(subDays(props[props.model].closedAt, 1), 'D MMMM')
+            ? format(getLastAnswerDate(new Date(props[props.model].closedAt)), 'D MMMM')
             : `One day before your closing date`}
         </div>
         <div className="col-xs-12 col-sm-8">The last day you can publish answers to all sellers&apos; questions.</div>
