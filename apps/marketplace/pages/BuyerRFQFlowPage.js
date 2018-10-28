@@ -135,6 +135,7 @@ export class BuyerRFQFlowPage extends Component {
         basename={`${rootPath}/buyer-rfq/${this.props.match.params.briefId}`}
         stages={BuyerRFQStages}
         saveModel={this.saveBrief}
+        returnPath={`${rootPath}/brief/${this.props.match.params.briefId}/overview/rfq`}
       />
     )
   }

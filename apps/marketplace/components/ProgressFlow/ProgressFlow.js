@@ -1,7 +1,7 @@
 /* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route, Router, Link, withRouter } from 'react-router-dom'
+import { Route, Router, Link, withRouter, Redirect } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
@@ -19,7 +19,9 @@ export class ProgressFlow extends Component {
       // this is the state of whether the nav items are done
       stagesDone: {},
       // this is the current stage
-      currentStage: ''
+      currentStage: '',
+      // whether to redirect to the returnPath prop
+      activateReturn: false
     }
 
     // populate the stage states
@@ -45,6 +47,7 @@ export class ProgressFlow extends Component {
     this.setStageStatus = this.setStageStatus.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handlePublish = this.handlePublish.bind(this)
+    this.handleReturn = this.handleReturn.bind(this)
   }
 
   componentDidMount() {
@@ -125,6 +128,12 @@ export class ProgressFlow extends Component {
     this.props.saveModel(true)
   }
 
+  handleReturn() {
+    this.setState({
+      activateReturn: true
+    })
+  }
+
   allStagesDone() {
     // remove the final review stage if it exists
     const stages = { ...this.state.stagesDone }
@@ -140,6 +149,10 @@ export class ProgressFlow extends Component {
   }
 
   render() {
+    if (this.state.activateReturn) {
+      return <Redirect to={this.props.returnPath} />
+    }
+
     const items = []
     this.props.stages.map(stage =>
       items.push({
@@ -181,6 +194,7 @@ export class ProgressFlow extends Component {
                         isLastStage={this.isLastStage(stage.slug)}
                         publishEnabled={this.allStagesDone()}
                         onPublish={this.handlePublish}
+                        onReturn={this.handleReturn}
                       />
                     </div>
                   )}
@@ -203,6 +217,7 @@ ProgressFlow.propTypes = {
   basename: PropTypes.string,
   stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
+  returnPath: PropTypes.string.isRequired,
   saveModel: PropTypes.func
 }
 

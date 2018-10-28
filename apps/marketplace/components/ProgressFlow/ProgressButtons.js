@@ -18,7 +18,15 @@ const ProgressButtons = props => (
     ) : (
       <AUbutton type="submit">{props.continueText}</AUbutton>
     )}
-    <AUbutton as="tertiary">{props.returnText}</AUbutton>
+    <AUbutton
+      as="tertiary"
+      onClick={e => {
+        e.preventDefault()
+        props.onReturn()
+      }}
+    >
+      {props.returnText}
+    </AUbutton>
   </p>
 )
 
@@ -27,7 +35,8 @@ ProgressButtons.defaultProps = {
   publishText: 'Publish',
   returnText: 'Return to overview',
   publishEnabled: false,
-  onPublish: () => {}
+  onPublish: () => {},
+  onReturn: () => {}
 }
 
 ProgressButtons.propTypes = {
@@ -36,7 +45,8 @@ ProgressButtons.propTypes = {
   returnText: PropTypes.string,
   isLastStage: PropTypes.bool.isRequired,
   publishEnabled: PropTypes.bool,
-  onPublish: PropTypes.func
+  onPublish: PropTypes.func,
+  onReturn: PropTypes.func
 }
 
 export default ProgressButtons
