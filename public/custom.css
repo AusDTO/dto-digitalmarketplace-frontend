@@ -408,27 +408,6 @@ label.text-box-number-label {
   margin-top: -0.7rem;
 }
 
-.orams-footer {
-  background: #313131;
-}
-
-.orams-footer .au-footer {
-  position: relative;
-  box-sizing: border-box;
-  max-width: 75em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2.6em 1.6em;
-  background: #313131;
-  color: #ffffff;
-  border-top: none;
-}
-
-.orams-footer .au-footer a {
-  color: #ffffff;
-  border-bottom: solid 1px #f5d815;
-}
-
 .custom-radio .au-control-input {
   display: block;
   padding-bottom: 20px;
