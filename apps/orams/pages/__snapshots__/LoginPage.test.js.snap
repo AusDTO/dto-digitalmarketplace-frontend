@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Test suite for LoginPage component LoginPage renders without errors 1`] = `<withRouter(Connect(LoginPageComponent)) />`;
