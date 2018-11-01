@@ -72,12 +72,16 @@ export const fetchAuth = () => dispatch => {
   })
 }
 
-export const login = data => dispatch => {
+export const login = data => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dispatch(setAuthFrameworkError(false))
   dmapi({
     method: 'post',
     url: '/login',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
     data: JSON.stringify(data)
   }).then(response => {
     if (response.error) {
@@ -93,11 +97,11 @@ export const login = data => dispatch => {
   })
 }
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({ url: '/logout' }).then(() => {
     dispatch(clearErrorMessages())
-    dispatch(setAuthState({ isAuthenticated: false, userType: '' }))
+    dispatch(setAuthState({ isAuthenticated: false, userType: '', csrfToken: getState().app.csrfToken }))
     dispatch(sendingRequest(false))
   })
 }
@@ -112,10 +116,14 @@ export const handleErrorFailure = response => dispatch => {
 
 export const handleFeedbackSuccess = () => ({ type: FEEDBACK_SUCCESS })
 
-export const handleFeedbackSubmit = feedback => dispatch => {
+export const handleFeedbackSubmit = feedback => (dispatch, getState) => {
   dmapi({
     url: `/feedback`,
     method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
     data: JSON.stringify(feedback)
   }).then(response => {
     if (response.error) {

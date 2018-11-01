@@ -39,7 +39,6 @@ export class Header extends Component {
                 <span className="au-marketplace-header-title">
                   <span className="au-marketplace-header-logo">
                     <span>Digital Marketplace</span>
-                    <span className="au-marketplace-header-badge">beta</span>
                   </span>
                 </span>
               </a>

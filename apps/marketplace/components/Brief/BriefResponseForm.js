@@ -26,7 +26,9 @@ const BriefResponseForm = ({
   submitClicked,
   handleSubmit,
   setFocus,
-  match
+  match,
+  uploading,
+  loadingText
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -58,6 +60,7 @@ const BriefResponseForm = ({
                   url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                   api={dmapi}
                   description=""
+                  uploading={uploading}
                 />
               )
             ) : (
@@ -184,8 +187,8 @@ const BriefResponseForm = ({
                 </li>
               </ul>
 
-              {currentlySending ? (
-                <LoadingButton />
+              {currentlySending || loadingText ? (
+                <LoadingButton text={loadingText || 'Loading'} />
               ) : (
                 <p>
                   <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
@@ -201,7 +204,8 @@ const BriefResponseForm = ({
 
 BriefResponseForm.defaultProps = {
   submitClicked: null,
-  handleSubmit: null
+  handleSubmit: null,
+  loadingText: null
 }
 
 BriefResponseForm.propTypes = {
@@ -210,7 +214,8 @@ BriefResponseForm.propTypes = {
   }).isRequired,
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  loadingText: PropTypes.string
 }
 
 export default BriefResponseForm

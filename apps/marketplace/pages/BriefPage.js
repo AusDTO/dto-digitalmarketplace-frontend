@@ -29,7 +29,8 @@ class BriefPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      submitClicked: null
+      submitClicked: null,
+      loadingText: null
     }
   }
 
@@ -164,6 +165,8 @@ class BriefPage extends Component {
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
                       {...this.props}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                     />
                   ) : (
                     errorScreen
@@ -182,6 +185,8 @@ class BriefPage extends Component {
                       handleNameSubmit={name => this.handleBriefNameSubmit(name)}
                       handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
                       setFocus={setFocus}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                       {...this.props}
                     />
                   ) : (
@@ -212,6 +217,8 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       showTrainerResumes={this.showTrainingResumesFileUpload()}
                       {...this.props}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
                     />
                   ) : (
                     errorScreen

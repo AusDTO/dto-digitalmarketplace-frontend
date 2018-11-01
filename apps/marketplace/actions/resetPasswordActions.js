@@ -12,11 +12,15 @@ import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleResetPasswordSuccess = () => ({ type: RESET_PASSWORD_EMAIL_SUCCESS })
 
-export const sendResetPasswordEmail = values => dispatch => {
+export const sendResetPasswordEmail = values => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
     url: `/reset-password/framework/${values.framework}`,
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {
@@ -57,11 +61,15 @@ export const handleSubmitResetPasswordSuccess = response => ({
   user: response.data
 })
 
-export const submitResetPassword = values => dispatch => {
+export const submitResetPassword = values => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
     url: `/reset-password/${values.token}`,
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {

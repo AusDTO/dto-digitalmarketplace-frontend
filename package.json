@@ -90,6 +90,7 @@
     "compression": "^1.7.1",
     "css-loader": "^0.28.7",
     "date-fns": "^1.29.0",
+    "diff-match-patch": "^1.0.4",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
@@ -121,6 +122,7 @@
     "sass-loader": "^4.0.0",
     "style-loader": "^0.19.0",
     "svg-inline-loader": "^0.8.0",
+    "traverse": "^0.6.6",
     "url-loader": "^0.6.2",
     "webpack": "1.13.2",
     "whatwg-fetch": "^2.0.3",
@@ -186,7 +188,7 @@
     ]
   },
   "engines": {
-    "node": "8.2.1"
+    "node": "8.x"
   },
   "pancake": {
     "auto-save": true,

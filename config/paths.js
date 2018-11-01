@@ -45,7 +45,6 @@ var config = {
 
   appsRootSrc: resolveApp('apps'),
   marketplaceSrc: resolveApp('apps/marketplace'),
-  oramsSrc: resolveApp('apps/orams'),
   sharedComponents: resolveApp('apps/shared'),
 
   appScss: resolveApp('scss'),
