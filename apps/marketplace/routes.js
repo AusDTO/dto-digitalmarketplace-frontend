@@ -26,13 +26,6 @@ export const Routes = () => (
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
-    <Route
-      path={`${rootPath}/collaborate`}
-      component={() => {
-        window.location = 'https://infrastructure.gov.au/cities/smart-cities/collaboration-platform/'
-        return null
-      }}
-    />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
