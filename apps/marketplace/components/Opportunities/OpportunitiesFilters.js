@@ -19,9 +19,8 @@ export class OpportunitiesFiltersComponent extends BaseForm {
       locationAccordionClosed: props.locationAccordionClosed,
       mobileAccordionClosed: props.mobileAccordionClosed
     }
-    this.handleFilterCancelClick = this.handleFilterCancelClick.bind(this)
-    this.handleFilterApplyClick = this.handleFilterApplyClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleTypeFilterSubmit = this.handleTypeFilterSubmit.bind(this)
     this.formValues = {
       status: { ...this.props.opportunitiesFilterForm.status, ...props.initialFilterValues.status },
@@ -80,40 +79,11 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     }
   }
 
-  handleFilterCancelClick(e) {
-    e.preventDefault()
-    const type = e.target.getAttribute('data-type')
-    switch (type) {
-      case 'location':
-        this.changeAccordion('location', true)
-        break
-      case 'status':
-        this.changeAccordion('status', true)
-        break
-      default:
-        this.changeAccordion('all', true)
-        break
-    }
-  }
-
-  handleFilterApplyClick(e) {
-    e.preventDefault()
-    this.formDispatch(actions.submit('opportunitiesFilterForm'))
-    const type = e.target.getAttribute('data-type')
-    switch (type) {
-      case 'location':
-        this.changeAccordion('location', true)
-        break
-      case 'status':
-        this.changeAccordion('status', true)
-        break
-      default:
-        this.changeAccordion('all', true)
-        break
-    }
-  }
-
   handleTypeFilterSubmit() {
+    this.formDispatch(actions.submit('opportunitiesFilterForm'))
+  }
+
+  handleCheckboxChange() {
     this.formDispatch(actions.submit('opportunitiesFilterForm'))
   }
 
@@ -193,21 +163,11 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                         label={location}
                         detailsModel={model}
                         messages={{}}
+                        onChange={this.handleCheckboxChange}
                       />
                     </div>
                   ))}
                 </div>
-                <span className={styles.cancelLink}>
-                  <a href="#cancel" data-type="location" onClick={this.handleFilterCancelClick}>
-                    Cancel
-                  </a>
-                </span>
-                <span className={styles.applyFilters}>
-                  <a href="#apply" data-type="location" onClick={this.handleFilterApplyClick}>
-                    Apply filters
-                  </a>
-                </span>
-                <div />
               </div>
             </AUaccordion>
           </div>
@@ -237,6 +197,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Live"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                   <div className={styles.checkbox}>
@@ -247,6 +208,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Closed"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                   <div className={styles.checkbox}>
@@ -257,20 +219,10 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Open to all sellers"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                 </div>
-                <span className={styles.cancelLink}>
-                  <a href="#cancel" data-type="status" onClick={this.handleFilterCancelClick}>
-                    Cancel
-                  </a>
-                </span>
-                <span className={styles.applyFilters}>
-                  <a href="#apply" data-type="status" onClick={this.handleFilterApplyClick}>
-                    Apply filters
-                  </a>
-                </span>
-                <div />
               </div>
             </AUaccordion>
           </div>
@@ -302,6 +254,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Outcomes"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                   <div className={styles.checkbox}>
@@ -312,6 +265,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Training"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                   <div className={styles.checkbox}>
@@ -322,6 +276,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Specialists"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                 </div>
@@ -337,6 +292,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Live"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                   <div className={styles.checkbox}>
@@ -347,6 +303,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Closed"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                   <div className={styles.checkbox}>
@@ -357,6 +314,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       label="Open to all sellers"
                       detailsModel={model}
                       messages={{}}
+                      onChange={this.handleCheckboxChange}
                     />
                   </div>
                 </div>
@@ -373,21 +331,11 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                         label={location}
                         detailsModel={model}
                         messages={{}}
+                        onChange={this.handleCheckboxChange}
                       />
                     </div>
                   ))}
                 </div>
-                <span className={styles.cancelLink}>
-                  <a href="#cancel" onClick={this.handleFilterCancelClick}>
-                    Cancel
-                  </a>
-                </span>
-                <span className={styles.applyFilters}>
-                  <a href="#apply" onClick={this.handleFilterApplyClick}>
-                    Apply filters
-                  </a>
-                </span>
-                <div />
               </div>
             </AUaccordion>
           </div>
