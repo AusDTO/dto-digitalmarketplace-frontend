@@ -7,7 +7,6 @@ import CreateUserPage from './pages/CreateUserPage'
 import BriefPage from './pages/BriefPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './components/NotFound'
-import CollaboratePage from './pages/CollaboratePage'
 import SellerDashboardPage from './pages/SellerDashboardPage'
 import BuyerDashboardPage from './pages/BuyerDashboardPage'
 import BriefChoicePage from './pages/BriefChoicePage'
@@ -33,9 +32,6 @@ export const Routes = () => (
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
-    <Route path={`${rootPath}/collaborate/funded/:state`} component={CollaboratePage} />
-    <Route path={`${rootPath}/collaborate/:stage`} component={CollaboratePage} />
-    <Route path={`${rootPath}/collaborate`} component={CollaboratePage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
     <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
