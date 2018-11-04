@@ -13,36 +13,24 @@ const BriefOutcomeChoice = () => (
         <div className={styles.card}>
           <AUheading level="2" size="md">
             Ask the market
-            <span className={`${styles.badge} ${styles.badgeAll}`}>Open to all</span>
           </AUheading>
           <p>
             EOI/RFI style suited to exploratory procurements. Uncover new expertise or trial products and emerging
             technologies.
           </p>
           <AUheading level="3" size="sm">
-            What you provide
+            What you get
           </AUheading>
           <ul>
-            <li>A summary of the problem to explore</li>
-            <li>Assessment criteria</li>
-            <li>Closing date for responses</li>
+            <li>150 word text responses from each seller in a spreadsheet for shortlisting.</li>
           </ul>
-          <AUheading level="3" size="sm">
-            Who can respond
-          </AUheading>
-          <p>Any assessed seller in the selected panel category</p>
-          <AUheading level="3" size="sm">
-            What you get after closing
-          </AUheading>
-          <p>150 word responses in a spreadsheet for shortlisting</p>
           <AUheading level="3" size="sm">
             Get responses within
           </AUheading>
-          <p className={styles.flexGrow}>5 to 10 business days</p>
+          <ul className={styles.flexGrow}>
+            <li>Choose 5 to 10 business days</li>
+          </ul>
           <p className={styles.buttons}>
-            <a href="#template" className="au-btn au-btn--secondary">
-              Download Template
-            </a>
             <a href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome" className="au-btn">
               Start
             </a>
@@ -52,43 +40,23 @@ const BriefOutcomeChoice = () => (
       <div className="col-xs-12 col-md-5 col-md-offset-1">
         <div className={styles.card}>
           <AUheading level="2" size="md">
-            RFX
-            <span className={`${styles.badge} ${styles.badgeSelected}`}>Open to selected</span>
+            Get proposals/quotes
           </AUheading>
-          <p>
-            Get solution based submissions based on well understood technical requirements and researched user needs.
-          </p>
+          <p>Quickly seek quotes based on researched user needs and prioritised technical requirements.</p>
           <AUheading level="3" size="sm">
-            What you provide
+            What you get
           </AUheading>
           <ul>
-            <li>Requirements document</li>
-            <li>Submission format</li>
-            <li>Assessment criteria</li>
-            <li>Closing date for submissions</li>
-          </ul>
-          <AUheading level="3" size="sm">
-            Who can respond
-          </AUheading>
-          <p>Only assessed sellers you select</p>
-          <AUheading level="3" size="sm">
-            What you get after closing
-          </AUheading>
-          <ul>
-            <li>Submissions in your requested format</li>
-            <li>Evaluation spreadsheet</li>
+            <li>Proposals in your requested format.</li>
+            <li>Pre-populated evaluation spreadsheet.</li>
           </ul>
           <AUheading level="3" size="sm">
             Get responses within
           </AUheading>
           <ul className={styles.flexGrow}>
-            <li>5 business days minimum</li>
-            <li>Set longer timeframes for more complex requests</li>
+            <li>Set your own timeframes (2 days minimum)</li>
           </ul>
           <p className={styles.buttons}>
-            <a href="#template" className="au-btn au-btn--secondary">
-              Download Template
-            </a>
             <a href={`${rootPath}/buyer-rfq/create`} className="au-btn">
               Start
             </a>
