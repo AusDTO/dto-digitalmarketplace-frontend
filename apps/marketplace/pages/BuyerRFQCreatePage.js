@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { rootPath } from 'marketplace/routes'
-import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import dmapi from '../services/apiClient'
 
@@ -34,7 +33,7 @@ export class BuyerRFQCreatePage extends Component {
 
   render() {
     if (this.state.briefId) {
-      return <Redirect to={`${rootPath}/buyer-rfq/${this.state.briefId}/${BuyerRFQStages[0].slug}`} />
+      return <Redirect to={`${rootPath}/brief/${this.state.briefId}/overview/rfq`} />
     }
 
     return <LoadingIndicatorFullPage />
