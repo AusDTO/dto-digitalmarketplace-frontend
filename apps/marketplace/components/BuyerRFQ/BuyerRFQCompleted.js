@@ -37,7 +37,7 @@ const BuyerRFQCompleted = props => (
       <a href={`${rootPath}/buyer-dashboard`} className="au-btn au-btn--secondary">
         Return to dashboard
       </a>
-      <a href={`/digital-marketplace/opportunities/${props.briefId}`} className="au-btn">
+      <a href={`${rootPath}/digital-marketplace/opportunities/${props.briefId}`} className="au-btn">
         View live brief
       </a>
     </p>

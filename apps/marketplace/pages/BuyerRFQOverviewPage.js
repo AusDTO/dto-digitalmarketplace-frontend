@@ -15,13 +15,14 @@ class BuyerRFQOverviewPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    return <BuyerRFQOverview brief={this.props.brief} />
+    return <BuyerRFQOverview brief={this.props.brief} briefResponses={this.props.briefResponses} />
   }
 }
 
 const mapStateToProps = state => ({
   currentlySending: state.app.currentlySending,
-  brief: state.brief.brief
+  brief: state.brief.brief,
+  briefResponses: state.brief.briefResponses
 })
 
 const mapDispatchToProps = dispatch => ({

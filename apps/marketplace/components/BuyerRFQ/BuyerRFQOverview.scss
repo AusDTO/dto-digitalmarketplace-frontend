@@ -1,3 +1,7 @@
+img.greenTick {
+  margin-right: 0.75rem;
+}
+
 small.briefTitle {
   opacity: 0.6;
   font-weight: 400;
@@ -14,8 +18,16 @@ div.headerMenu {
   right: 0;
 }
 
+div.headerMenuClosingTime {
+  display: inline-block;
+  margin-right: 0.75rem;
+}
+
 div.headerMenu ul {
+  display: inline-block;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 div.headerMenu ul li {
@@ -50,4 +62,9 @@ ul.overviewList li {
   border-bottom: 1px solid gray;
   padding: 1.5rem 0;
   font-size: 1.25rem;
+}
+
+div.stageStatus {
+  float: right;
+  font-size: 1rem;
 }
