@@ -1,3 +1,46 @@
+small.briefTitle {
+  opacity: 0.6;
+  font-weight: 400;
+  display: block;
+}
+
+div.header {
+  position: relative;
+}
+
+div.headerMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+div.headerMenu ul {
+  list-style-type: none;
+}
+
+div.headerMenu ul li {
+  display: inline-block;
+  color: #999999;
+}
+
+div.headerMenu ul li + li:before {
+  content: "|";
+  padding: 0 5px;
+}
+
+a.headerMenuDelete, a.headerMenuDelete:hover {
+  color: #FF0000;
+}
+
+div.deleteAlert {
+  margin-top: 1.5rem;
+}
+
+div.deleteAlert button {
+  margin-right: 1.5rem;
+  margin-top: 0.75rem;
+}
+
 ul.overviewList {
   padding-left: 0;
   list-style-type: none;
@@ -7,12 +50,4 @@ ul.overviewList li {
   border-bottom: 1px solid gray;
   padding: 1.5rem 0;
   font-size: 1.25rem;
-}
-
-.badge {
-  float: right;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid grey;
-  border-radius: 3px;
-  font-size: 0.8rem;
 }
