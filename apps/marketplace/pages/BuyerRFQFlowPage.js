@@ -38,7 +38,7 @@ export class BuyerRFQFlowPage extends Component {
     dmapi({
       url: `/brief/${this.props.match.params.briefId}`
     }).then(response => {
-      if (!response || response.error || !response.data || !response.data.id) {
+      if (!response || response.error || !response.data || !response.data.brief.id) {
         this.setState({
           errorMessage: response.errorMessage,
           loading: false
@@ -46,24 +46,24 @@ export class BuyerRFQFlowPage extends Component {
         return
       }
       const data = {}
-      data.id = response.data.id || 0
-      data.title = response.data.title || ''
-      data.organisation = response.data.organisation || ''
-      data.location = response.data.location || []
-      data.summary = response.data.summary || ''
-      data.industryBriefing = response.data.industryBriefing || ''
-      data.sellers = response.data.sellers || {}
-      data.attachments = response.data.attachments || []
-      data.requirementsDocument = response.data.requirementsDocument || []
-      data.responseTemplate = response.data.responseTemplate || []
-      data.evaluationType = response.data.evaluationType || []
-      data.proposalType = response.data.proposalType || []
-      data.evaluationCriteria = response.data.evaluationCriteria || [{ criteria: '', weighting: '' }]
-      data.includeWeightings = response.data.includeWeightings || false
-      data.closedAt = response.data.closedAt || ''
-      data.startDate = response.data.startDate || ''
-      data.contractLength = response.data.contractLength || ''
-      data.budgetRange = response.data.budgetRange || ''
+      data.id = response.data.brief.id || 0
+      data.title = response.data.brief.title || ''
+      data.organisation = response.data.brief.organisation || ''
+      data.location = response.data.brief.location || []
+      data.summary = response.data.brief.summary || ''
+      data.industryBriefing = response.data.brief.industryBriefing || ''
+      data.sellers = response.data.brief.sellers || {}
+      data.attachments = response.data.brief.attachments || []
+      data.requirementsDocument = response.data.brief.requirementsDocument || []
+      data.responseTemplate = response.data.brief.responseTemplate || []
+      data.evaluationType = response.data.brief.evaluationType || []
+      data.proposalType = response.data.brief.proposalType || []
+      data.evaluationCriteria = response.data.brief.evaluationCriteria || [{ criteria: '', weighting: '' }]
+      data.includeWeightings = response.data.brief.includeWeightings || false
+      data.closedAt = response.data.brief.closedAt || ''
+      data.startDate = response.data.brief.startDate || ''
+      data.contractLength = response.data.brief.contractLength || ''
+      data.budgetRange = response.data.brief.budgetRange || ''
 
       this.props.changeFormModel(data)
 
