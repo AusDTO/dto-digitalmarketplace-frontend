@@ -1,101 +1,107 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import format from 'date-fns/format'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import OpportunityDetail from './OpportunityDetail'
 import EvaluationCriteria from './EvalutationCriteria'
+import QuestionAnswer from './QuestionAnswer'
+import OpportunityInfoCard from './OpportunityInfoCard'
 import styles from './Opportunity.scss'
 
 const Opportunity = props => (
   <div>
     <div className="row">
-      <div className="col-xs-12">
+      <div className="col-xs-12 col-sm-8">
         <small className={styles.organisation}>{props.brief.organisation}</small>
         <span>
-          <AUheading level="1" size="xxl">
+          <AUheading level="1" size="xl">
             {props.brief.title}
           </AUheading>
         </span>
-        <OpportunityDetail label="Opportunity ID">{props.brief.id}</OpportunityDetail>
-        <OpportunityDetail label="Deadline for asking questions">
-          {format(new Date(props.brief.dates.questions_closing_date), 'D MMMM')}
-        </OpportunityDetail>
-        <OpportunityDetail label="Closing date for applications">
-          {format(new Date(props.brief.dates.closing_date), 'D MMMM')}
-        </OpportunityDetail>
-        <OpportunityDetail label="Published">
-          {format(new Date(props.brief.dates.published_date), 'D MMMM')}
-        </OpportunityDetail>
-        <AUheading level="2" size="xl">
-          Overview
-        </AUheading>
-        <OpportunityDetail label="Summary" newLines>
-          {props.brief.summary}
-        </OpportunityDetail>
-        <OpportunityDetail label="Estimated start date">{props.brief.startDate}</OpportunityDetail>
-        <OpportunityDetail label="Location">
-          {props.brief.location.map(location => (
-            <span key={location}>
-              {location}
-              <br />
-            </span>
-          ))}
-        </OpportunityDetail>
-        <OpportunityDetail label="Contact length" newLines>
-          {props.brief.contractLength}
-        </OpportunityDetail>
-        <OpportunityDetail label="Budget range" newLines>
-          {props.brief.budgetRange}
-        </OpportunityDetail>
-        <AUheading level="2" size="xl">
-          How to respond
-        </AUheading>
-        <OpportunityDetail label="Response format">
-          {props.brief.evaluationType.map(evaluationType => (
-            <span key={evaluationType}>
-              {evaluationType}
-              <br />
-            </span>
-          ))}
-        </OpportunityDetail>
-        <EvaluationCriteria evaluationCriteria={props.brief.evaluationCriteria} />
-        <AUheading level="2" size="xl">
-          Detailed information
-        </AUheading>
-        <OpportunityDetail label="RFQ document">
-          {props.brief.requirementsDocument.map(requirementsDocument => (
-            <span key={requirementsDocument}>
-              <a href={`/api/2/brief/${props.brief.id}/attachments/${requirementsDocument}`}>Download document</a>
-              <br />
-            </span>
-          ))}
-        </OpportunityDetail>
-        {props.brief.responseTemplate.length > 0 && (
-          <OpportunityDetail label="Response template">
-            {props.brief.responseTemplate.map(responseTemplate => (
-              <span key={responseTemplate}>
-                <a href={`/api/2/brief/${props.brief.id}/attachments/${responseTemplate}`}>Download template</a>
-                <br />
-              </span>
-            ))}
-          </OpportunityDetail>
-        )}
-        <OpportunityDetail label="Industry briefing" newLines>
-          {props.brief.industryBriefing}
-        </OpportunityDetail>
-        <AUheading level="2" size="xl">
-          Seller questions
-        </AUheading>
-        {props.brief.clarificationQuestions.length > 0 && (
-          <div>
-            {props.brief.clarificationQuestions.map((qa, i) => (
-              <OpportunityDetail key={qa.question} label={`${i + 1}. ${qa.question}`} strongLabels={false} newLines>
-                {qa.answer}
-              </OpportunityDetail>
-            ))}
+        <div className={styles.details}>
+          <div className="row">
+            <div className="col-xs-12 col-sm-3">
+              <strong>Estimated start date</strong>
+            </div>
+            <div className="col-xs-12 col-sm-9">{props.brief.startDate}</div>
           </div>
-        )}
-        {props.brief.clarificationQuestions.length === 0 && <p>No questions have been asked or answered yet.</p>}
+          <div className="row">
+            <div className="col-xs-12 col-sm-3">
+              <strong>Length of contract</strong>
+            </div>
+            <div className="col-xs-12 col-sm-9">{props.brief.contractLength}</div>
+          </div>
+          <div className="row">
+            <div className="col-xs-12 col-sm-3">
+              <strong>Budget range</strong>
+            </div>
+            <div className="col-xs-12 col-sm-9">{props.brief.budgetRange}</div>
+          </div>
+          <div className="row">
+            <div className="col-xs-12 col-sm-3">
+              <strong>Location of work</strong>
+            </div>
+            <div className="col-xs-12 col-sm-9">
+              {props.brief.location.map(location => (
+                <span key={location}>
+                  {location}
+                  <br />
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <AUheading level="2" size="lg">
+          Summary
+        </AUheading>
+        <p className={styles.newLines}>{props.brief.summary}</p>
+        <AUheading level="3" size="sm">
+          Additional information
+        </AUheading>
+        <ul>
+          {props.brief.requirementsDocument.map(requirementsDocument => (
+            <li key={requirementsDocument}>
+              <a href={`/api/2/brief/${props.brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
+            </li>
+          ))}
+          {props.brief.attachments.map(attachment => (
+            <li key={attachment}>
+              <a href={`/api/2/brief/${props.brief.id}/attachments/${attachment}`}>{attachment}</a>
+            </li>
+          ))}
+        </ul>
+        <AUheading level="3" size="sm">
+          What sellers need to submit
+        </AUheading>
+        <ul>
+          {props.brief.responseTemplate.map(responseTemplate => (
+            <li key={responseTemplate}>
+              <a href={`/api/2/brief/${props.brief.id}/attachments/${responseTemplate}`}>Response template</a>
+            </li>
+          ))}
+        </ul>
+        <AUheading level="3" size="sm">
+          Buyers will later request
+        </AUheading>
+        <ul>
+          {props.brief.evaluationType.map(evaluationType => {
+            if (evaluationType === 'Response template') {
+              return null
+            }
+            return <li key={evaluationType}>{evaluationType}</li>
+          })}
+          {props.brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}
+        </ul>
+        <EvaluationCriteria
+          evaluationCriteria={props.brief.evaluationCriteria}
+          showWeightings={props.brief.includeWeightings}
+        />
+        <QuestionAnswer questions={props.brief.clarificationQuestions} />
+      </div>
+      <div className="col-xs-12 col-sm-4">
+        <OpportunityInfoCard
+          sellersInvited={props.invitedSellerCount}
+          sellersApplied={props.briefResponseCount}
+          closingDate={props.brief.dates.closing_time}
+        />
       </div>
     </div>
   </div>
@@ -107,7 +113,7 @@ Opportunity.defaultProps = {
     title: '',
     organisation: '',
     dates: {
-      closing_date: '',
+      closing_time: '',
       questions_closing_date: '',
       published_date: ''
     },
@@ -116,13 +122,18 @@ Opportunity.defaultProps = {
     location: [],
     contractLength: '',
     budgetRange: '',
+    includeWeightings: false,
     evaluationCriteria: [],
     evaluationType: [],
     requirementsDocument: [],
     responseTemplate: [],
+    attachments: [],
+    proposalType: [],
     industryBriefing: '',
     clarificationQuestions: []
-  }
+  },
+  briefResponseCount: 0,
+  invitedSellerCount: 0
 }
 
 Opportunity.propTypes = {
@@ -131,7 +142,7 @@ Opportunity.propTypes = {
     title: PropTypes.string,
     organisation: PropTypes.string,
     dates: PropTypes.shape({
-      closing_date: PropTypes.string,
+      closing_time: PropTypes.string,
       questions_closing_date: PropTypes.string,
       published_date: PropTypes.string
     }),
@@ -140,13 +151,18 @@ Opportunity.propTypes = {
     Location: PropTypes.array,
     contractLength: PropTypes.string,
     budgetRange: PropTypes.string,
+    includeWeightings: PropTypes.bool,
     evaluationCriteria: PropTypes.array,
     evaluationType: PropTypes.array,
     requirementsDocument: PropTypes.array,
     responseTemplate: PropTypes.array,
+    attachments: PropTypes.array,
+    proposalType: PropTypes.array,
     industryBriefing: PropTypes.string,
     clarificationQuestions: PropTypes.array
-  })
+  }),
+  briefResponseCount: PropTypes.number,
+  invitedSellerCount: PropTypes.number
 }
 
 export default Opportunity

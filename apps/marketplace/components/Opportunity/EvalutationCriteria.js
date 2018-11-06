@@ -1,36 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './EvaluationCriteria.scss'
 
 const EvalutationCriteria = props => (
-  <div className={`row ${styles.container}`}>
-    <div className="col-xs-12">
-      <div className={`row ${styles.heading}`}>
-        <div className="col-xs-9">
-          <strong>Evaluation criteria</strong>
-        </div>
-        <div className="col-xs-3">
+  <div className={styles.container}>
+    <div className="row">
+      <div role="columnheader" id="header_criteria" className={props.showWeightings ? `col-xs-10` : `col-xs-12`}>
+        <AUheading level="2" size="lg">
+          Criteria
+        </AUheading>
+      </div>
+      {props.showWeightings && (
+        <div role="columnheader" id="header_weighting" className="col-xs-2">
           <strong>Weighting</strong>
         </div>
-      </div>
-      <ul className={styles.criteria}>
-        {props.evaluationCriteria.map(evaluationCriteria => (
-          <li key={evaluationCriteria.criteria}>
-            <span className="col-xs-9">{evaluationCriteria.criteria}</span>
-            <span className="col-xs-3">{evaluationCriteria.weighting}%</span>
-          </li>
-        ))}
-      </ul>
+      )}
     </div>
+    {props.evaluationCriteria.map(evaluationCriteria => (
+      <div key={evaluationCriteria.criteria} className="row">
+        <div role="cell" aria-labelledby="header_criteria" className={props.showWeightings ? `col-xs-10` : `col-xs-12`}>
+          {evaluationCriteria.criteria}
+        </div>
+        {props.showWeightings && (
+          <div role="cell" aria-labelledby="header_weighting" className="col-xs-2">
+            {evaluationCriteria.weighting}%
+          </div>
+        )}
+      </div>
+    ))}
   </div>
 )
 
 EvalutationCriteria.defaultProps = {
-  evaluationCriteria: []
+  evaluationCriteria: [],
+  showWeightings: true
 }
 
 EvalutationCriteria.propTypes = {
-  evaluationCriteria: PropTypes.array
+  evaluationCriteria: PropTypes.array,
+  showWeightings: PropTypes.bool
 }
 
 export default EvalutationCriteria

@@ -2,13 +2,12 @@
   opacity: 0.6;
 }
 
-.detail {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid #d0d0d0;
+div.details {
+  margin-top: 3rem;
 }
 
-.strongLabels {
-  font-weight: bold;
+div.details > div {
+  margin-bottom: 0.75rem;
 }
 
 .newLines {

@@ -3,6 +3,7 @@ import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import configureStore from 'marketplace/store'
 import { Provider } from 'react-redux'
+import { actions } from 'react-redux-form'
 import BuyerRFQEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerRFQEvaluationCriteriaStage'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -48,6 +49,7 @@ test('disabling weightings clears the current weighting values', () => {
     .find('input#include_weightings')
     .at(0)
     .simulate('change', { target: { checked: true } })
+    .simulate('click')
   expect(component.find('input#weighting_0').instance().value).toEqual('50')
   expect(component.find('input#weighting_1').instance().value).toEqual('50')
 
@@ -55,6 +57,7 @@ test('disabling weightings clears the current weighting values', () => {
     .find('input#include_weightings')
     .at(0)
     .simulate('change', { target: { checked: false } })
+    .simulate('click')
   expect(component.find('input#weighting_0').length).toEqual(0)
   expect(component.find('input#weighting_1').length).toEqual(0)
 
@@ -62,6 +65,7 @@ test('disabling weightings clears the current weighting values', () => {
     .find('input#include_weightings')
     .at(0)
     .simulate('change', { target: { checked: true } })
+    .simulate('click')
   expect(component.find('input#weighting_0').instance().value).toEqual('')
   expect(component.find('input#weighting_1').instance().value).toEqual('')
 })
@@ -70,10 +74,13 @@ test('removing a criteria', () => {
   const evaluationCriteria = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
   const state = {
     BuyerRFQForm: {
-      evaluationCriteria
+      evaluationCriteria,
+      includeWeightings: true
     }
   }
-  const store = configureStore(state)
+  const store = configureStore()
+  store.dispatch(actions.change(`BuyerRFQForm.evaluationCriteria`, state.BuyerRFQForm.evaluationCriteria))
+  store.dispatch(actions.change(`BuyerRFQForm.includeWeightings`, state.BuyerRFQForm.includeWeightings))
 
   const component = mount(
     <Provider store={store}>
@@ -94,10 +101,13 @@ test('adding a criteria', () => {
   const evaluationCriteria = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
   const state = {
     BuyerRFQForm: {
-      evaluationCriteria
+      evaluationCriteria,
+      includeWeightings: true
     }
   }
-  const store = configureStore(state)
+  const store = configureStore()
+  store.dispatch(actions.change(`BuyerRFQForm.evaluationCriteria`, state.BuyerRFQForm.evaluationCriteria))
+  store.dispatch(actions.change(`BuyerRFQForm.includeWeightings`, state.BuyerRFQForm.includeWeightings))
 
   const component = mount(
     <Provider store={store}>

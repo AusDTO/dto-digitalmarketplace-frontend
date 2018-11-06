@@ -22,6 +22,7 @@ class CheckboxDetailsField extends React.Component {
     this.setState({
       showField: e.target.checked === true
     })
+    this.props.onClick(e)
 
     const { detailsModel, revalidateDetails } = this.props
     revalidateDetails(detailsModel)
@@ -53,7 +54,8 @@ class CheckboxDetailsField extends React.Component {
 CheckboxDetailsField.defaultProps = {
   description: '',
   messages: null,
-  validators: null
+  validators: null,
+  onClick: () => {}
 }
 
 CheckboxDetailsField.propTypes = {
@@ -64,7 +66,8 @@ CheckboxDetailsField.propTypes = {
   detailsModel: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   description: PropTypes.string,
   validators: PropTypes.object,
-  messages: PropTypes.object
+  messages: PropTypes.object,
+  onClick: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => ({

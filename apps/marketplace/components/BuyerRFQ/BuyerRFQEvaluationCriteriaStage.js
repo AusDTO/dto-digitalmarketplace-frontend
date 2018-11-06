@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import StatefulError from 'shared/form/StatefulError'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import { required } from 'marketplace/components/validators'
 import styles from './BuyerRFQEvaluationCriteriaStage.scss'
 
@@ -19,13 +19,6 @@ export const weightingsAddUpTo100 = evaluationCriteria =>
 class BuyerRFQEvaluationCriteriaStage extends Component {
   constructor(props) {
     super(props)
-
-    const hasWeightings = props[props.model].evaluationCriteria.some(val => val.weighting)
-
-    this.state = {
-      showWeightings: hasWeightings
-    }
-
     this.handleIncludeWeightingsChange = this.handleIncludeWeightingsChange.bind(this)
     this.handleAddCriteriaClick = this.handleAddCriteriaClick.bind(this)
     this.removeCriteria = this.removeCriteria.bind(this)
@@ -52,22 +45,16 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
     this.props.removeCriteriaByIndex(this.props[this.props.model].evaluationCriteria, index)
   }
 
-  handleIncludeWeightingsChange(e) {
-    const checked = e.target.checked
-    this.setState(curState => {
-      const newState = { ...curState }
-      const showWeightings = checked
-      newState.showWeightings = showWeightings
-      if (!showWeightings) {
-        this.props.clearWeightingsFromCriteria(this.props[this.props.model].evaluationCriteria)
-      }
-      return newState
-    })
-  }
-
   handleAddCriteriaClick(e) {
     e.preventDefault()
     this.props.addEmptyEvalutationCriteria(this.props[this.props.model].evaluationCriteria)
+  }
+
+  handleIncludeWeightingsChange(e) {
+    const checked = e.target.checked
+    if (!checked) {
+      this.props.clearWeightingsFromCriteria(this.props[this.props.model].evaluationCriteria)
+    }
   }
 
   render() {
@@ -77,12 +64,15 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
           Evaluation criteria
         </AUheadings>
         <p>
-          <AUcheckbox
-            id="include_weightings"
+          <CheckboxDetailsField
+            model={`${this.props.model}.includeWeightings`}
+            id={`include_weightings`}
+            name={`include_weightings`}
+            onClick={this.handleIncludeWeightingsChange}
             label="Include weightings"
-            name="weightings"
-            checked={this.state.showWeightings}
-            onChange={this.handleIncludeWeightingsChange}
+            detailsModel={this.props.model}
+            validators={{}}
+            messages={{}}
           />
         </p>
         <Form
@@ -133,7 +123,7 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
                       </a>
                     )}
                   </div>
-                  {this.state.showWeightings && (
+                  {this.props[this.props.model].includeWeightings && (
                     <div className="col-lg-4">
                       <div className={styles.weightingContainer}>
                         <Textfield

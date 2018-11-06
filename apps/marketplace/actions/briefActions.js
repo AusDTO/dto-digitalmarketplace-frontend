@@ -1,5 +1,6 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
@@ -80,6 +81,13 @@ export const handleBriefInfoSuccess = response => ({
   briefResponses: response.data.briefResponses
 })
 
+export const handlePublicBriefInfoSuccess = response => ({
+  type: BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
+  brief: response.data.brief,
+  briefResponseCount: response.data.brief_response_count,
+  invitedSellerCount: response.data.invited_seller_count
+})
+
 export const handleErrorFailure = response => dispatch => {
   if (!response) {
     dispatch(setErrorMessage(GENERAL_ERROR))
@@ -107,6 +115,18 @@ export const loadBrief = briefId => dispatch => {
     } else {
       response.data.loadedAt = new Date().valueOf()
       dispatch(handleBriefInfoSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const loadPublicBrief = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/brief/${briefId}` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handlePublicBriefInfoSuccess(response))
     }
     dispatch(sendingRequest(false))
   })
