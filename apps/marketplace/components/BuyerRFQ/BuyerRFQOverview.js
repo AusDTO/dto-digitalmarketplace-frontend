@@ -128,7 +128,11 @@ class BuyerRFQOverview extends Component {
                     <span>View live</span>
                   )}
                 </li>
-                {!isPublished && <li>Preview</li>}
+                {!isPublished && (
+                  <li>
+                    <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
+                  </li>
+                )}
                 {!isPublished && (
                   <li>
                     <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>

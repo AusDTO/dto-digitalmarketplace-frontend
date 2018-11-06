@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
+import { rootPath } from 'marketplace/routes'
 import EvaluationCriteria from './EvalutationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
@@ -9,7 +11,15 @@ import styles from './Opportunity.scss'
 const Opportunity = props => (
   <div>
     <div className="row">
-      <div className="col-xs-12 col-sm-8">
+      <div className={`col-xs-12 ${props.brief.status === 'draft' ? `col-sm-12` : `col-sm-8`}`}>
+        {props.brief.status === 'draft' && (
+          <AUcallout description="This is a preview of what invited sellers can see.">
+            This is a preview of what invited sellers can see.
+            <a href={`${rootPath}/buyer-rfq/${props.brief.id}/introduction`} className={styles.publishBtn}>
+              Publish brief
+            </a>
+          </AUcallout>
+        )}
         <small className={styles.organisation}>{props.brief.organisation}</small>
         <span>
           <AUheading level="1" size="xl">
@@ -96,13 +106,15 @@ const Opportunity = props => (
         />
         <QuestionAnswer questions={props.brief.clarificationQuestions} />
       </div>
-      <div className="col-xs-12 col-sm-4">
-        <OpportunityInfoCard
-          sellersInvited={props.invitedSellerCount}
-          sellersApplied={props.briefResponseCount}
-          closingDate={props.brief.dates.closing_time}
-        />
-      </div>
+      {props.brief.status !== 'draft' && (
+        <div className="col-xs-12 col-sm-4">
+          <OpportunityInfoCard
+            sellersInvited={props.invitedSellerCount}
+            sellersApplied={props.briefResponseCount}
+            closingDate={props.brief.dates.closing_time}
+          />
+        </div>
+      )}
     </div>
   </div>
 )
