@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadPublicBrief } from 'marketplace/actions/briefActions'
 import Opportunity from 'marketplace/components/Opportunity/Opportunity'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class OpportunityPage extends Component {
@@ -15,6 +16,25 @@ class OpportunityPage extends Component {
   render() {
     if (this.props.currentlySending) {
       return <LoadingIndicatorFullPage />
+    }
+
+    if (!this.props.loadBriefSuccess) {
+      let hasFocused = false
+      const setFocus = e => {
+        if (!hasFocused) {
+          hasFocused = true
+          e.focus()
+        }
+      }
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the brief details"
+          errorMessage={this.props.errorMessage}
+          setFocus={setFocus}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
     }
 
     if (this.props.brief && this.props.brief.title) {
@@ -36,6 +56,7 @@ const mapResetStateToProps = state => ({
   briefResponseCount: state.brief.briefResponseCount,
   invitedSellerCount: state.brief.invitedSellerCount,
   loadBriefSuccess: state.brief.loadBriefSuccess,
+  errorMessage: state.app.errorMessage,
   currentlySending: state.app.currentlySending
 })
 
