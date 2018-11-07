@@ -148,6 +148,11 @@ export class ProgressFlow extends Component {
     return stage === stages[stages.length - 1]
   }
 
+  isFirstStage(stage) {
+    const stages = Object.keys(this.state.stages)
+    return stage === stages[0]
+  }
+
   render() {
     if (this.state.activateReturn) {
       return <Redirect to={this.props.returnPath} />
@@ -192,6 +197,7 @@ export class ProgressFlow extends Component {
                       />
                       <ProgressButtons
                         isLastStage={this.isLastStage(stage.slug)}
+                        isFirstStage={this.isFirstStage(stage.slug)}
                         publishEnabled={this.allStagesDone()}
                         onPublish={this.handlePublish}
                         onReturn={this.handleReturn}
