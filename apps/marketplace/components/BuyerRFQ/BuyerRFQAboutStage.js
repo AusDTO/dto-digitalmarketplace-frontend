@@ -30,6 +30,8 @@ const BuyerRFQAboutStage = props => (
     <Textfield
       model={`${props.model}.title`}
       label="Title"
+      description="Describe the outcome you need in 100 characters or less."
+      placeholder="For example, 'Website redesign and development'."
       name="title"
       id="title"
       htmlFor="title"
@@ -44,7 +46,9 @@ const BuyerRFQAboutStage = props => (
     />
     <Textfield
       model={`${props.model}.organisation`}
-      label="Organisation"
+      label="Department, agency or organisation"
+      description="Who is the work for? Please write in full, including the state if necessary."
+      placeholder="For example, Digital Transformation Agency instead of DTA."
       name="organisation"
       id="organisation"
       htmlFor="organisation"
@@ -59,7 +63,7 @@ const BuyerRFQAboutStage = props => (
     />
     <Textarea
       model={`${props.model}.summary`}
-      label="A brief summary of the work required"
+      label="Summary of work to be done"
       name="summary"
       id="summary"
       htmlFor="summary"
@@ -100,6 +104,23 @@ const BuyerRFQAboutStage = props => (
         />
       ))}
     </div>
+    <Textarea
+      model={`${props.model}.workingArrangements`}
+      label="What are the working arrangements?"
+      description="Describe how you want to work and include any limits on expenses. For example, on site at least 3 days a week for face-to-face team meetings."
+      name="working_arrangements"
+      id="working_arrangements"
+      htmlFor="working_arrangements"
+      defaultValue={props[props.model].workingArrangements}
+      controlProps={{ limit: 150 }}
+      validators={{
+        required
+      }}
+      messages={{
+        required: 'Enter the working arrangements for your brief',
+        limitWords: 'Your working arrangements has exceeded the 150 word limit'
+      }}
+    />
   </div>
 )
 

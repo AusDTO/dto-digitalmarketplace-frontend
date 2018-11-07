@@ -91,7 +91,8 @@ export default combineReducers({
       closedAt: '',
       startDate: '',
       contractLength: '',
-      budgetRange: ''
+      budgetRange: '',
+      workingArrangements: ''
     }
   })
 })

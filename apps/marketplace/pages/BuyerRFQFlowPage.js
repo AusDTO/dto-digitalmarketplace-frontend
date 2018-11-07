@@ -64,6 +64,7 @@ export class BuyerRFQFlowPage extends Component {
       data.startDate = response.data.brief.startDate || ''
       data.contractLength = response.data.brief.contractLength || ''
       data.budgetRange = response.data.brief.budgetRange || ''
+      data.workingArrangements = response.data.brief.workingArrangements || ''
 
       this.props.changeFormModel(data)
 
