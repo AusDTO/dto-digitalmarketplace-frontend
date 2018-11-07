@@ -85,7 +85,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   type: BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
   briefResponseCount: response.data.brief_response_count,
-  invitedSellerCount: response.data.invited_seller_count
+  invitedSellerCount: response.data.invited_seller_count,
+  isInvitedSeller: response.data.is_invited_seller
 })
 
 export const handleErrorFailure = response => dispatch => {

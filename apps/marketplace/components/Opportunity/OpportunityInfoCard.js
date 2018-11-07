@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import isFuture from 'date-fns/is_future'
 import ClosedDate from 'shared/ClosedDate'
+import { rootPath } from 'marketplace/routes'
 import styles from './OpportunityInfoCard.scss'
 
 const OpportunityInfoCard = props => (
@@ -33,7 +34,18 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        <p>Only invited sellers can apply.</p>
+        {props.isInvitedSeller ? (
+          <div>
+            <a href="#download" className={`${styles.button} au-btn au-btn--secondary`}>
+              Download all documents
+            </a>
+            <a href={`${rootPath}/brief/${props.briefId}/rfx/respond`} className={`${styles.button} au-btn`}>
+              Apply for opportunity
+            </a>
+          </div>
+        ) : (
+          <p>Only invited sellers can apply.</p>
+        )}
       </div>
     </div>
   </div>
@@ -41,13 +53,16 @@ const OpportunityInfoCard = props => (
 
 OpportunityInfoCard.defaultProps = {
   sellersInvited: 0,
-  sellersApplied: 0
+  sellersApplied: 0,
+  isInvitedSeller: false
 }
 
 OpportunityInfoCard.propTypes = {
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
-  closingDate: PropTypes.string.isRequired
+  isInvitedSeller: PropTypes.bool,
+  closingDate: PropTypes.string.isRequired,
+  briefId: PropTypes.number.isRequired
 }
 
 export default OpportunityInfoCard

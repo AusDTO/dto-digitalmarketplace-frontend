@@ -112,6 +112,8 @@ const Opportunity = props => (
             sellersInvited={props.invitedSellerCount}
             sellersApplied={props.briefResponseCount}
             closingDate={props.brief.dates.closing_time}
+            isInvitedSeller={props.isInvitedSeller}
+            briefId={props.brief.id}
           />
         </div>
       )}
@@ -145,7 +147,8 @@ Opportunity.defaultProps = {
     clarificationQuestions: []
   },
   briefResponseCount: 0,
-  invitedSellerCount: 0
+  invitedSellerCount: 0,
+  isInvitedSeller: false
 }
 
 Opportunity.propTypes = {
@@ -174,7 +177,8 @@ Opportunity.propTypes = {
     clarificationQuestions: PropTypes.array
   }),
   briefResponseCount: PropTypes.number,
-  invitedSellerCount: PropTypes.number
+  invitedSellerCount: PropTypes.number,
+  isInvitedSeller: PropTypes.bool
 }
 
 export default Opportunity
