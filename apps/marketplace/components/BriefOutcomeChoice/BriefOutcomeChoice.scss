@@ -1,9 +1,24 @@
+div.header {
+  display: flex;
+}
+
 div.container {
   display: flex;
 }
 
 div.container > div {
   display: flex;
+}
+
+.newBadge {
+  align-self: flex-start;
+  border: 2px solid #009900;
+  border-radius: 5px;
+  color: #009900;
+  padding: 2px 5px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-left: 0.75rem;
 }
 
 @media screen and (max-width: 991px) {

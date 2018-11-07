@@ -5,9 +5,12 @@ import styles from './BriefOutcomeChoice.scss'
 
 const BriefOutcomeChoice = () => (
   <div>
-    <AUheading level="1" size="xl">
-      Select your approach
-    </AUheading>
+    <div className={styles.header}>
+      <AUheading level="1" size="xl">
+        Select your approach
+      </AUheading>
+      <span className={styles.newBadge}>NEW</span>
+    </div>
     <div className={`row ${styles.container}`}>
       <div className="col-xs-12 col-md-5">
         <div className={styles.card}>
