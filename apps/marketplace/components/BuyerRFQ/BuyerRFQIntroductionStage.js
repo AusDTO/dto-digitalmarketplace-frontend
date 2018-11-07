@@ -24,12 +24,14 @@ const BuyerRFQIntroductionStage = () => (
     </AUheadings>
     <p>
       <a href="#guide">View step by step guide</a>
-    </p>
-    <p>
+      <br />
       <a href="#chat">Contact us (live chat)</a>
     </p>
-    <p>All fields are mandatory unless marked optional.</p>
-    <p>Completing this form usually takes about 15 minutes.</p>
+    <p>
+      All fields are mandatory unless marked optional.
+      <br />
+      Completing this form usually takes about 15 minutes.
+    </p>
   </div>
 )
 
