@@ -75,7 +75,9 @@ const BuyerRFQReviewStage = props => (
           {props[props.model].closedAt ? format(props[props.model].closedAt, 'D MMMM') : `Closing date`}
         </div>
         <div className="col-xs-12 col-sm-8">
-          The last day sellers can apply and the brief closes at 6pm Canberra time.
+          The last day sellers can apply.
+          <br />
+          The opportunity will close at 6pm Canberra time.
         </div>
       </div>
     </div>
