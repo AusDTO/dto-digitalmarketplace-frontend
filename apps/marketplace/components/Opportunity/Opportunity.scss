@@ -14,6 +14,16 @@ div.details > div {
   white-space: pre-line;
 }
 
+.previewNotice {
+  padding: 1.5rem;
+  border-left: 10px solid #006392;
+  background-color: #daf3fe;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
 .publishBtn {
-  float: right;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
 }

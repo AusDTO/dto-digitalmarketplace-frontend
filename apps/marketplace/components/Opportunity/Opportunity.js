@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import EvaluationCriteria from './EvalutationCriteria'
 import QuestionAnswer from './QuestionAnswer'
@@ -13,12 +12,12 @@ const Opportunity = props => (
     <div className="row">
       <div className={`col-xs-12 ${props.brief.status === 'draft' ? `col-sm-12` : `col-sm-8`}`}>
         {props.brief.status === 'draft' && (
-          <AUcallout description="This is a preview of what invited sellers can see.">
+          <div className={styles.previewNotice}>
             This is a preview of what invited sellers can see.
-            <a href={`${rootPath}/buyer-rfq/${props.brief.id}/introduction`} className={styles.publishBtn}>
+            <a href={`${rootPath}/buyer-rfq/${props.brief.id}/introduction`} className={`${styles.publishBtn} au-btn`}>
               Publish brief
             </a>
-          </AUcallout>
+          </div>
         )}
         <small className={styles.organisation}>{props.brief.organisation}</small>
         <span>
