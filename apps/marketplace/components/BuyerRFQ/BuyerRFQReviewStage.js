@@ -79,10 +79,13 @@ const BuyerRFQReviewStage = props => (
         </div>
       </div>
     </div>
-    <p>
-      Once you press publish, your brief will be sent to the sellers you have invited. It will be visible on the Digital
-      Marketplace.
-    </p>
+    <AUheading level="2" size="lg">
+      Once you press publish
+    </AUheading>
+    <ul>
+      <li>Your request is published on the Digital Marketplace.</li>
+      <li>An email is sent to the sellers&apos; business contacts inviting them to view and respond.</li>
+    </ul>
   </div>
 )
 
