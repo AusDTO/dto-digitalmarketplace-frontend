@@ -1,22 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import styles from './ProgressButtons.scss'
 
 const ProgressButtons = props => (
   <p>
     {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.startText}</AUbutton>}
     {props.isLastStage &&
       !props.isFirstStage && (
-        <AUbutton
-          type="submit"
-          disabled={!props.publishEnabled}
-          onClick={e => {
-            e.preventDefault()
-            props.onPublish()
-          }}
-        >
-          {props.publishText}
-        </AUbutton>
+        <span>
+          <AUbutton
+            onClick={e => {
+              e.preventDefault()
+              props.onPreview()
+            }}
+            as="secondary"
+            className={styles.button}
+          >
+            {props.previewText}
+          </AUbutton>
+          <AUbutton
+            type="submit"
+            disabled={!props.publishEnabled}
+            onClick={e => {
+              e.preventDefault()
+              props.onPublish()
+            }}
+          >
+            {props.publishText}
+          </AUbutton>
+        </span>
       )}
     {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
     <AUbutton
@@ -34,10 +47,12 @@ const ProgressButtons = props => (
 ProgressButtons.defaultProps = {
   startText: 'Start now',
   continueText: 'Save and continue',
+  previewText: 'Preview',
   publishText: 'Publish',
   returnText: 'Return to overview',
   publishEnabled: false,
   onPublish: () => {},
+  onPreview: () => {},
   onReturn: () => {}
 }
 

@@ -20,8 +20,8 @@ export class ProgressFlow extends Component {
       stagesDone: {},
       // this is the current stage
       currentStage: '',
-      // whether to redirect to the returnPath prop
-      activateReturn: false
+      activateReturn: false,
+      activatePreview: false
     }
 
     // populate the stage states
@@ -47,6 +47,7 @@ export class ProgressFlow extends Component {
     this.setStageStatus = this.setStageStatus.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handlePublish = this.handlePublish.bind(this)
+    this.handlePreview = this.handlePreview.bind(this)
     this.handleReturn = this.handleReturn.bind(this)
   }
 
@@ -128,6 +129,12 @@ export class ProgressFlow extends Component {
     this.props.saveModel(true)
   }
 
+  handlePreview() {
+    this.setState({
+      activatePreview: true
+    })
+  }
+
   handleReturn() {
     this.setState({
       activateReturn: true
@@ -156,6 +163,10 @@ export class ProgressFlow extends Component {
   render() {
     if (this.state.activateReturn) {
       return <Redirect to={this.props.returnPath} />
+    }
+
+    if (this.state.activatePreview) {
+      return <Redirect to={this.props.previewPath} />
     }
 
     const items = []
@@ -200,6 +211,7 @@ export class ProgressFlow extends Component {
                         isFirstStage={this.isFirstStage(stage.slug)}
                         publishEnabled={this.allStagesDone()}
                         onPublish={this.handlePublish}
+                        onPreview={this.handlePreview}
                         onReturn={this.handleReturn}
                       />
                     </div>
@@ -224,6 +236,7 @@ ProgressFlow.propTypes = {
   stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
   returnPath: PropTypes.string.isRequired,
+  previewPath: PropTypes.string.isRequired,
   saveModel: PropTypes.func
 }
 

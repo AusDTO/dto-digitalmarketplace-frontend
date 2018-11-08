@@ -124,21 +124,24 @@ export class BuyerRFQFlowPage extends Component {
       )
     }
 
+    const briefId = this.props.match.params.briefId
+
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
 
     if (this.state.flowIsDone) {
-      return <BuyerRFQCompleted briefId={this.props.match.params.briefId} closingDate={this.props[model].closedAt} />
+      return <BuyerRFQCompleted briefId={briefId} closingDate={this.props[model].closedAt} />
     }
 
     return (
       <ProgressFlow
         model={model}
-        basename={`${rootPath}/buyer-rfq/${this.props.match.params.briefId}`}
+        basename={`${rootPath}/buyer-rfq/${briefId}`}
         stages={BuyerRFQStages}
         saveModel={this.saveBrief}
-        returnPath={`${rootPath}/brief/${this.props.match.params.briefId}/overview/rfq`}
+        returnPath={`${rootPath}/brief/${briefId}/overview/rfq`}
+        previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
       />
     )
   }
