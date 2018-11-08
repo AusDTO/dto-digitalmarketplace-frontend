@@ -10,7 +10,7 @@ import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { fileId, label, description, hint, formFields, uploading } = props
+  const { fileId, label, description, hint, formFields, uploading, accept } = props
 
   return (
     <div className="field">
@@ -20,7 +20,9 @@ const FilesInput = props => {
         </label>
         <small>{hint}</small>
         <p>{description}</p>
-        {range(formFields).map(field => <FileInput key={field} id={fileId} uploading={uploading} {...props} />)}
+        {range(formFields).map(field => (
+          <FileInput key={field} id={fileId} uploading={uploading} accept={accept} {...props} />
+        ))}
       </div>
     </div>
   )
@@ -32,7 +34,8 @@ FilesInput.propTypes = {
   hint: PropTypes.string,
   description: PropTypes.string,
   formFields: PropTypes.number.isRequired,
-  uploading: PropTypes.func
+  uploading: PropTypes.func,
+  accept: PropTypes.string
 }
 
 FilesInput.defaultProps = {
@@ -40,7 +43,8 @@ FilesInput.defaultProps = {
   label: '',
   hint: '',
   description: '',
-  uploading: () => null
+  uploading: () => null,
+  accept: '.pdf,.odt'
 }
 
 const uploadDocument = (url, api, id, file, csrfToken) => () => {

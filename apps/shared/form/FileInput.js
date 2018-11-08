@@ -47,7 +47,7 @@ class FileInput extends React.Component {
     })
   }
   render() {
-    const { url, form, name, id, model, validators, messages, fieldLabel, title } = this.props
+    const { url, form, name, id, model, validators, messages, fieldLabel, title, accept } = this.props
     const fileField = `${id}`
     const doc = get(form, `${name}.${fileField}`, {})
     return (
@@ -66,7 +66,7 @@ class FileInput extends React.Component {
                   type="file"
                   id={`file_${fileField}`}
                   name={`file_${fileField}`}
-                  accept=".pdf,.odt"
+                  accept={accept}
                   onChange={this.onChange}
                   className={styles.hidden_input}
                   validators={validators}

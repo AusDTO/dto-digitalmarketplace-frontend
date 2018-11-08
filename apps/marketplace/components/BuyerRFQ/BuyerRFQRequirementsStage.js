@@ -47,10 +47,14 @@ export class BuyerRFQRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Requirements
         </AUheadings>
+        <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
+        <p>
+          Documents can be viewed by anyone with a Digital Marketplace account. Do not include internal or private
+          information.
+        </p>
         <AUheadings level="2" size="sm">
           Requirements document
         </AUheadings>
-        <p>This document will be displayed publicly. Do not include internal or private information.</p>
         <FilesInput
           title="Requirements document"
           fieldLabel="Upload document"
@@ -62,6 +66,7 @@ export class BuyerRFQRequirementsStage extends Component {
           fileId={0}
           onReset={this.props.saveModel}
           onUploadSuccess={this.props.saveModel}
+          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
           validators={{
             requiredFile
           }}
@@ -74,7 +79,6 @@ export class BuyerRFQRequirementsStage extends Component {
             <AUheadings level="2" size="sm">
               Response template
             </AUheadings>
-            <p>This document will be displayed publicly. Do not include internal or private information.</p>
             <FilesInput
               title="Response template"
               fieldLabel="Upload template"
@@ -86,6 +90,7 @@ export class BuyerRFQRequirementsStage extends Component {
               fileId={0}
               onReset={this.props.saveModel}
               onUploadSuccess={this.props.saveModel}
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
               validators={{
                 requiredFile
               }}
@@ -98,7 +103,6 @@ export class BuyerRFQRequirementsStage extends Component {
         <AUheadings level="2" size="sm">
           Additional documents (optional)
         </AUheadings>
-        <p>This document will be displayed publicly. Do not include internal or private information.</p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
             key={i}
@@ -112,6 +116,7 @@ export class BuyerRFQRequirementsStage extends Component {
             fileId={i}
             onReset={this.props.saveModel}
             onUploadSuccess={this.props.saveModel}
+            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
           />
         ))}
         {this.state.fileCount < 10 && (
