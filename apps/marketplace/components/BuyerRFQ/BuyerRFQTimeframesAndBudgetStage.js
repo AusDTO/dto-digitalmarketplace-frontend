@@ -27,18 +27,30 @@ const BuyerRFQTimeframesAndBudgetStage = props => (
         required: 'Enter an estimated start date for the brief'
       }}
     />
-    <Textarea
+    <Textfield
       model={`${props.model}.contractLength`}
-      label="Length of contract &amp; extension options (optional)"
+      label="Length of contract"
       name="contract_length"
       id="contract_length"
       htmlFor="contract_length"
       defaultValue={props[props.model].contractLength}
-      controlProps={{ limit: 150 }}
-      validators={{}}
-      messages={{
-        limitWords: 'Your contract length and extension options has exceeded the 150 word limit'
+      validators={{
+        required
       }}
+      messages={{
+        limitWords: 'Your contract length and extension options has exceeded the 150 word limit',
+        required: 'Enter a contract length for the brief'
+      }}
+    />
+    <Textfield
+      model={`${props.model}.contractExtensions`}
+      label="Contract extensions (optional)"
+      name="contract_extensions"
+      id="contract_extensions"
+      htmlFor="contract_extensions"
+      defaultValue={props[props.model].contractExtensions}
+      validators={{}}
+      messages={{}}
     />
     <Textarea
       model={`${props.model}.budgetRange`}

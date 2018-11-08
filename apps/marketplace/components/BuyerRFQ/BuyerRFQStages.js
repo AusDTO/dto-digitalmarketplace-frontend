@@ -48,7 +48,7 @@ const BuyerRFQStages = [
     slug: 'timeframes',
     title: 'Timeframes and budget',
     component: BuyerRFQTimeframesAndBudgetStage,
-    isDone: formValues => formValues.startDate.length > 0
+    isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
   },
   {
     slug: 'criteria',

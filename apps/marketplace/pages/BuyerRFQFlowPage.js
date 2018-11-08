@@ -63,6 +63,7 @@ export class BuyerRFQFlowPage extends Component {
       data.closedAt = response.data.brief.closedAt || ''
       data.startDate = response.data.brief.startDate || ''
       data.contractLength = response.data.brief.contractLength || ''
+      data.contractExtensions = response.data.brief.contractExtensions || ''
       data.budgetRange = response.data.brief.budgetRange || ''
       data.workingArrangements = response.data.brief.workingArrangements || ''
 
