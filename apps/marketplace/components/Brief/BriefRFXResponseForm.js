@@ -63,25 +63,27 @@ const BriefRFXResponseForm = ({
                   uploading={uploading}
                 />
               )}
-              <FilesInput
-                label="Written proposal"
-                description={`Your proposal must include: ${brief.proposalType.join(', ').toLowerCase()}`}
-                hint="Attachment must be PDF or ODT format and a maximum of 20MB"
-                fieldLabel="Upload written proposal"
-                name="attachedDocumentURL"
-                model={`${model}.attachedDocumentURL.1`}
-                formFields={1}
-                url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                api={dmapi}
-                fileId={1}
-                validators={{
-                  requiredFile
-                }}
-                messages={{
-                  requiredFile: 'Choose a file for your written proposal'
-                }}
-                uploading={uploading}
-              />
+              {brief.evaluationType.includes('Written proposal') && (
+                <FilesInput
+                  label="Written proposal"
+                  description={`Your proposal must include: ${brief.proposalType.join(', ').toLowerCase()}`}
+                  hint="Attachment must be PDF or ODT format and a maximum of 20MB"
+                  fieldLabel="Upload written proposal"
+                  name="attachedDocumentURL"
+                  model={`${model}.attachedDocumentURL.1`}
+                  formFields={1}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                  fileId={1}
+                  validators={{
+                    requiredFile
+                  }}
+                  messages={{
+                    requiredFile: 'Choose a file for your written proposal'
+                  }}
+                  uploading={uploading}
+                />
+              )}
               <AUheading level="2" size="xl">
                 Once you submit this application
               </AUheading>
