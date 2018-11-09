@@ -13,6 +13,7 @@ export default combineReducers({
   errorMessage,
   options: (state = {}) => state,
   ...createForms({
-    caseStudyForm: {}
+    caseStudyForm: {},
+    assessmentForm: {}
   })
 })

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { LocalForm, Control } from 'react-redux-form';
+import { assessmentSave } from '../../redux/modules/casestudy'
 
 import isEmpty from 'lodash/isEmpty';
 
@@ -9,7 +11,14 @@ import { newline } from '../../../../helpers';
 import view from './View.css'
 
 class View extends React.Component {
-  state = { showConfirm: false }
+  state = { 
+    showConfirm: false,
+    assessmentForm: {
+      status: 'unassessed',
+      comment: null,
+      approved_criteria: {}
+    }
+  }
 
   toggleConfirm(show = true) {
     this.setState({
@@ -32,20 +41,53 @@ class View extends React.Component {
       roles,
       meta,
       confirmButton = null,
-      returnLink = null
+      returnLink = null,
+      admin,
+      domain = {},
+      onAssessmentSubmit
     } = this.props;
 
-    const { showConfirm } = this.state;
+    const { showConfirm, assessmentForm } = this.state;
 
     return (
       <section id="casestudy__view" styleName="view.case-study-summary">
         {showConfirm && (
           <div ref="confirm" className="callout--warn" aria-labelledby="callout--success__heading" tabIndex="-1" role="alert">
-              <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
-              <a href={meta.deleteLink} className="button">Delete this case study</a>
-              <button className="button-secondary" onClick={this.toggleConfirm.bind(this, false)}>No, keep this case study</button>
+            <p id="callout--success__heading">Are you sure you want to delete this case study?</p>
+            <a href={meta.deleteLink} className="button">Delete this case study</a>
+            <button className="button-secondary" onClick={this.toggleConfirm.bind(this, false)}>No, keep this case study</button>
           </div>
         )}
+        <div className="row">
+          {admin && (
+            <div className="col-md-12">
+              <LocalForm onSubmit={onAssessmentSubmit} initialState={assessmentForm}>
+                <fieldset>
+                  <legend id="q-devices-owned">Select criterias to approve</legend>
+                  {domain.domain_criterias.map(dc =>
+                    <span key={dc.id}>
+                      <Control.checkbox model={'.approved_criteria.' + dc.id} id={dc.id} value={dc.id} />
+                      <label htmlFor={dc.id}>{dc.name}</label>
+                    </span>
+                  )}
+                  <p>
+                    <label htmlFor="comment">Comment</label>
+                    <Control.textarea model=".comment" id="comment" />
+                  </p>
+                  <p>
+                    <label htmlFor="status">Status</label>
+                    <Control.select model=".status" id="status">
+                      <option value="unassessed">unassessed</option>
+                      <option value="approved">approved</option>
+                      <option value="rejected">rejected</option>
+                    </Control.select>
+                  </p>
+                </fieldset>
+                <button className="button-save">Save</button>
+              </LocalForm>
+            </div>
+          )}
+        </div>
         <header className="row">
           <div className="col-xs-12">
             <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
@@ -102,11 +144,11 @@ class View extends React.Component {
                   <h2 className="au-display-md">Project Links</h2>
                   <ul>
                     {project_links.map((item, i) => <li key={i}>
-                        {typeof item == 'object' ?
-                            <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
-                            :
-                            <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
-                        }
+                      {typeof item == 'object' ?
+                        <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
+                        :
+                        <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                      }
                     </li>)}
                   </ul>
                 </section>
@@ -137,13 +179,23 @@ View.propTypes = {
     PropTypes.string,
     PropTypes.object
   ]),
+  admin: PropTypes.bool
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state.casestudy,
+    ...state.assessmentForm,
     ...ownProps
   }
 }
 
-export default connect(mapStateToProps)(View)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAssessmentSubmit: (values) => {
+      dispatch(assessmentSave(values))
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(View)
