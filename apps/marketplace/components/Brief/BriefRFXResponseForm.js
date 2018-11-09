@@ -43,28 +43,31 @@ const BriefRFXResponseForm = ({
           </AUheading>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
+              {brief.evaluationType.includes('Response template') && (
+                <FilesInput
+                  label="Response template"
+                  hint="Attachment must be PDF or ODT format and a maximum of 20MB"
+                  fieldLabel="Upload response"
+                  name="attachedDocumentURL"
+                  model={`${model}.attachedDocumentURL.0`}
+                  formFields={1}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                  fileId={0}
+                  validators={{
+                    requiredFile
+                  }}
+                  messages={{
+                    requiredFile: 'Choose a file for your response'
+                  }}
+                  uploading={uploading}
+                />
+              )}
               <FilesInput
-                label="Response template"
+                label="Written proposal"
+                description={`Your proposal must include: ${brief.proposalType.join(', ').toLowerCase()}`}
                 hint="Attachment must be PDF or ODT format and a maximum of 20MB"
-                fieldLabel="Upload response"
-                name="attachedDocumentURL"
-                model={`${model}.attachedDocumentURL.0`}
-                formFields={1}
-                url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                api={dmapi}
-                fileId={0}
-                validators={{
-                  requiredFile
-                }}
-                messages={{
-                  requiredFile: 'Choose a file for your response'
-                }}
-                uploading={uploading}
-              />
-              <FilesInput
-                label="Project costs"
-                hint="Attachment must be PDF or ODT format and a maximum of 20MB"
-                fieldLabel="Upload project costs"
+                fieldLabel="Upload written proposal"
                 name="attachedDocumentURL"
                 model={`${model}.attachedDocumentURL.1`}
                 formFields={1}
@@ -75,7 +78,7 @@ const BriefRFXResponseForm = ({
                   requiredFile
                 }}
                 messages={{
-                  requiredFile: 'Choose a file for your project costs'
+                  requiredFile: 'Choose a file for your written proposal'
                 }}
                 uploading={uploading}
               />
