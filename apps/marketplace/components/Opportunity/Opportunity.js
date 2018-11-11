@@ -10,13 +10,22 @@ import styles from './Opportunity.scss'
 const Opportunity = props => (
   <div>
     <div className="row">
-      <div className={`col-xs-12 ${props.brief.status === 'draft' ? `col-sm-12` : `col-sm-8`}`}>
+      <div className={`col-xs-12 ${props.brief.status === 'draft' ? `col-md-9` : `col-md-8`}`}>
         {props.brief.status === 'draft' && (
           <div className={styles.previewNotice}>
-            This is a preview of what invited sellers can see.
-            <a href={`${rootPath}/buyer-rfq/${props.brief.id}/introduction`} className={`${styles.publishBtn} au-btn`}>
-              Publish brief
-            </a>
+            <div className="row">
+              <div className="col-xs-12 col-sm-8">
+                <p>This is a preview of what invited sellers can see.</p>
+              </div>
+              <div className={`${styles.previewButtons} col-xs-12 col-sm-4`}>
+                <a
+                  href={`${rootPath}/buyer-rfq/${props.brief.id}/introduction`}
+                  className={`${styles.publishBtn} au-btn`}
+                >
+                  Continue editing
+                </a>
+              </div>
+            </div>
           </div>
         )}
         <small className={styles.organisation}>{props.brief.organisation}</small>
@@ -106,7 +115,7 @@ const Opportunity = props => (
         <QuestionAnswer questions={props.brief.clarificationQuestions} />
       </div>
       {props.brief.status !== 'draft' && (
-        <div className="col-xs-12 col-sm-4">
+        <div className="col-xs-12 col-md-4">
           <OpportunityInfoCard
             sellersInvited={props.invitedSellerCount}
             sellersApplied={props.briefResponseCount}

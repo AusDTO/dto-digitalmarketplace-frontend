@@ -18,12 +18,13 @@ div.details > div {
   padding: 1.5rem;
   border-left: 10px solid #006392;
   background-color: #daf3fe;
-  margin-bottom: 1.5rem;
-  position: relative;
+  margin-bottom: 3rem;
 }
 
-.publishBtn {
-  position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
+.previewNotice .previewButtons {
+  text-align: right;
+}
+
+.publishBtn:last-child {
+  margin-left: 1.5rem;
 }
