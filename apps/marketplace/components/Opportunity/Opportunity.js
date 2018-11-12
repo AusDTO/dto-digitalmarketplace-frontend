@@ -39,44 +39,44 @@ const Opportunity = props => (
         </span>
         <div className={styles.details}>
           <div className="row">
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-4">
               <strong>Opportunity ID</strong>
             </div>
-            <div className="col-xs-12 col-sm-9">{props.brief.id}</div>
+            <div className="col-xs-12 col-sm-8">{props.brief.id}</div>
           </div>
           <div className="row">
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-4">
               <strong>Estimated start date</strong>
             </div>
-            <div className="col-xs-12 col-sm-9">{props.brief.startDate}</div>
+            <div className="col-xs-12 col-sm-8">{props.brief.startDate}</div>
           </div>
           <div className="row">
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-4">
               <strong>Length of contract</strong>
             </div>
-            <div className="col-xs-12 col-sm-9">{props.brief.contractLength}</div>
+            <div className="col-xs-12 col-sm-8">{props.brief.contractLength}</div>
           </div>
           {props.brief.contractExtensions && (
             <div className="row">
-              <div className="col-xs-12 col-sm-3">
+              <div className="col-xs-12 col-sm-4">
                 <strong>Contract extensions</strong>
               </div>
-              <div className="col-xs-12 col-sm-9">{props.brief.contractExtensions}</div>
+              <div className="col-xs-12 col-sm-8">{props.brief.contractExtensions}</div>
             </div>
           )}
           {props.brief.budgetRange && (
             <div className="row">
-              <div className="col-xs-12 col-sm-3">
+              <div className="col-xs-12 col-sm-4">
                 <strong>Budget range</strong>
               </div>
-              <div className="col-xs-12 col-sm-9">{props.brief.budgetRange}</div>
+              <div className="col-xs-12 col-sm-8">{props.brief.budgetRange}</div>
             </div>
           )}
           <div className="row">
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-4">
               <strong>Location of work</strong>
             </div>
-            <div className="col-xs-12 col-sm-9">
+            <div className="col-xs-12 col-sm-8">
               {props.brief.location.map(location => (
                 <span key={location}>
                   {location}
@@ -86,10 +86,10 @@ const Opportunity = props => (
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-12 col-sm-3">
+            <div className="col-xs-12 col-sm-4">
               <strong>Working arrangements</strong>
             </div>
-            <div className="col-xs-12 col-sm-9">{props.brief.workingArrangements}</div>
+            <div className="col-xs-12 col-sm-8">{props.brief.workingArrangements}</div>
           </div>
         </div>
         <AUheading level="2" size="lg">
