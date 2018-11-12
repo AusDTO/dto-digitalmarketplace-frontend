@@ -76,6 +76,7 @@ export class BuyerRFQSelectStage extends Component {
                 onSellerSelect={this.handleSellerSelect}
                 onSellerCategorySelect={this.handleSellerCategorySelect}
                 selectedCategory={this.props[this.props.model].sellerCategory}
+                showCategorySelect
               />
             </div>
             <SelectedSellersControl

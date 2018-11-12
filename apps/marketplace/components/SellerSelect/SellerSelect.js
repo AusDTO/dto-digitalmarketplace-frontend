@@ -63,6 +63,10 @@ export class SellerSelect extends Component {
     this.handleSearchClick = this.handleSearchClick.bind(this)
   }
 
+  categoryIsValid() {
+    return (this.props.showCategorySelect && this.props.selectedCategory) || !this.props.showCategorySelect
+  }
+
   handleCategoryChange(e) {
     this.props.onSellerCategorySelect(e.target.value)
   }
@@ -78,7 +82,7 @@ export class SellerSelect extends Component {
     }
 
     timeoutHandle = setTimeout(() => {
-      if (keyword && keyword.length > 2 && this.props.selectedCategory) {
+      if (keyword && keyword.length > 2 && this.categoryIsValid()) {
         findSuppliers(keyword, this.props.selectedCategory)
           .then(data => {
             this.setState({
@@ -120,7 +124,7 @@ export class SellerSelect extends Component {
             selectedCategory={this.props.selectedCategory}
           />
         )}
-        {((this.props.showCategorySelect && this.props.selectedCategory) || !this.props.showCategorySelect) && (
+        {this.categoryIsValid() && (
           <div>
             <SellerSelectView
               id={this.props.id}
@@ -151,7 +155,7 @@ SellerSelect.defaultProps = {
   selectedCategory: '',
   showSelected: true,
   showSearchButton: true,
-  showCategorySelect: true,
+  showCategorySelect: false,
   categories: [],
   onSellerSelect: () => {},
   onSellerCategorySelect: () => {},

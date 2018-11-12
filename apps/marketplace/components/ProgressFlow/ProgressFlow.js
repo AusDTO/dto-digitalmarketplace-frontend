@@ -162,11 +162,11 @@ export class ProgressFlow extends Component {
 
   render() {
     if (this.state.activateReturn) {
-      return <Redirect to={this.props.returnPath} />
+      return <Redirect to={this.props.returnPath} push />
     }
 
     if (this.state.activatePreview) {
-      return <Redirect to={this.props.previewPath} />
+      return <Redirect to={this.props.previewPath} push />
     }
 
     const items = []
