@@ -12,6 +12,7 @@ export class BuyerRFQSelectStage extends Component {
   constructor(props) {
     super(props)
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
+    this.handleSellerCategorySelect = this.handleSellerCategorySelect.bind(this)
   }
 
   componentDidUpdate(prevProps) {
@@ -27,6 +28,13 @@ export class BuyerRFQSelectStage extends Component {
     this.props.updateSelectedSellers(newState)
   }
 
+  handleSellerCategorySelect(category) {
+    if (category !== this.props[this.props.model].sellerCategory) {
+      this.props.updateSelectedSellerCategory(category)
+      this.props.resetSelectedSellers()
+    }
+  }
+
   removeSeller(sellerCode) {
     const newState = { ...this.props[this.props.model].sellers }
     delete newState[sellerCode]
@@ -34,30 +42,55 @@ export class BuyerRFQSelectStage extends Component {
   }
 
   render() {
+    const categories = [
+      {
+        value: '',
+        text: 'Select category'
+      }
+    ]
+    this.props.domains.map(domain => {
+      categories.push({
+        value: domain.id,
+        text: domain.name
+      })
+      return true
+    })
+
     return (
       <div>
         <AUheading level="1" size="xl">
-          Select sellers
+          Who can respond?
         </AUheading>
-        <div className={styles.selectSellers}>
-          <SellerSelect
-            label="Select the sellers you wish to invite"
-            showSelected={false}
-            showSearchButton={false}
-            onSellerSelect={this.handleSellerSelect}
-          />
+        <p>
+          Only sellers approved in the category you select can respond. You can see each seller&apos;s categories in the{' '}
+          <a href="/search/sellers">seller catalogue</a>.
+        </p>
+        <div className="row">
+          <div className="col-xs-12 col-sm-9">
+            <div className={styles.selectSellers}>
+              <SellerSelect
+                label="Seller name"
+                showSelected={false}
+                showSearchButton={false}
+                categories={categories}
+                onSellerSelect={this.handleSellerSelect}
+                onSellerCategorySelect={this.handleSellerCategorySelect}
+                selectedCategory={this.props[this.props.model].sellerCategory}
+              />
+            </div>
+            <SelectedSellersControl
+              id="selected-sellers"
+              model={`${this.props.model}.sellers`}
+              onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
+              validators={{
+                required: val => val && Object.keys(val).length > 0
+              }}
+              messages={{
+                required: 'You must select at least one seller'
+              }}
+            />
+          </div>
         </div>
-        <SelectedSellersControl
-          id="selected-sellers"
-          model={`${this.props.model}.sellers`}
-          onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
-          validators={{
-            required: val => val && Object.keys(val).length > 0
-          }}
-          messages={{
-            required: 'You must select at least one seller'
-          }}
-        />
       </div>
     )
   }
@@ -69,11 +102,14 @@ BuyerRFQSelectStage.propTypes = {
 }
 
 const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
+  ...formProps(state, props.model),
+  domains: state.brief.domains
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers))
+  updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers)),
+  resetSelectedSellers: () => dispatch(actions.change(`${props.model}.sellers`, {})),
+  updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQSelectStage)

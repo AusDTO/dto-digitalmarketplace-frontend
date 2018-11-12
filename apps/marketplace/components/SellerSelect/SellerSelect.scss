@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  & > div {
+  & > div, & > div > div {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -11,10 +11,26 @@
   label {
     width: 100%;
     padding: 0.5rem 0;
+    font-weight: 800;
   }
 
   input[type=text] {
     flex-grow: 1;
+  }
+
+  .categorySelect {
+    margin-bottom: 1.5rem;
+  }
+
+  .categorySelect label {
+    display: inline-block;
+    width: auto;
+    margin-right: 1.5rem;
+    font-weight: 800;
+  }
+
+  .categorySelect a {
+    padding: 0.5rem 0;
   }
 
   .noRightRadius {

@@ -17,6 +17,12 @@ const BuyerRFQStages = [
     isDone: () => true
   },
   {
+    slug: 'select',
+    title: 'Select sellers',
+    component: BuyerRFQSelectStage,
+    isDone: formValues => Object.keys(formValues.sellers).length > 0 && formValues.sellerCategory
+  },
+  {
     slug: 'about',
     title: 'About',
     component: BuyerRFQAboutStage,
@@ -60,14 +66,8 @@ const BuyerRFQStages = [
       weightingsAddUpTo100(formValues.evaluationCriteria)
   },
   {
-    slug: 'select',
-    title: 'Select sellers',
-    component: BuyerRFQSelectStage,
-    isDone: formValues => Object.keys(formValues.sellers).length > 0
-  },
-  {
     slug: 'approach',
-    title: 'Market approach',
+    title: 'Briefing and closing date',
     component: BuyerRFQMarketApproachStage,
     isDone: formValues => validDate(formValues.closedAt)
   },

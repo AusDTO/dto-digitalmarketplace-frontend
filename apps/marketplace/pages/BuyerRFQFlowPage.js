@@ -7,6 +7,7 @@ import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
 import BuyerRFQCompleted from 'marketplace/components/BuyerRFQ/BuyerRFQCompleted'
 import { rootPath } from 'marketplace/routes'
+import { loadPublicBrief } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import dmapi from '../services/apiClient'
 
@@ -35,9 +36,7 @@ export class BuyerRFQFlowPage extends Component {
     this.setState({
       loading: true
     })
-    dmapi({
-      url: `/brief/${this.props.match.params.briefId}`
-    }).then(response => {
+    this.props.loadInitialData(this.props.match.params.briefId).then(response => {
       if (!response || response.error || !response.data || !response.data.brief.id) {
         this.setState({
           errorMessage: response.errorMessage,
@@ -45,6 +44,7 @@ export class BuyerRFQFlowPage extends Component {
         })
         return
       }
+
       const data = {}
       data.id = response.data.brief.id || 0
       data.title = response.data.brief.title || ''
@@ -52,6 +52,7 @@ export class BuyerRFQFlowPage extends Component {
       data.location = response.data.brief.location || []
       data.summary = response.data.brief.summary || ''
       data.industryBriefing = response.data.brief.industryBriefing || ''
+      data.sellerCategory = response.data.brief.sellerCategory || ''
       data.sellers = response.data.brief.sellers || {}
       data.attachments = response.data.brief.attachments || []
       data.requirementsDocument = response.data.brief.requirementsDocument || []
@@ -153,7 +154,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  changeFormModel: data => dispatch(actions.merge(model, data))
+  changeFormModel: data => dispatch(actions.merge(model, data)),
+  loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQFlowPage)

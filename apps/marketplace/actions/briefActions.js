@@ -86,7 +86,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   brief: response.data.brief,
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
-  isInvitedSeller: response.data.is_invited_seller
+  isInvitedSeller: response.data.is_invited_seller,
+  domains: response.data.domains
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -123,13 +124,14 @@ export const loadBrief = briefId => dispatch => {
 
 export const loadPublicBrief = briefId => dispatch => {
   dispatch(sendingRequest(true))
-  dmapi({ url: `/brief/${briefId}` }).then(response => {
+  return dmapi({ url: `/brief/${briefId}` }).then(response => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handlePublicBriefInfoSuccess(response))
     }
     dispatch(sendingRequest(false))
+    return response
   })
 }
 

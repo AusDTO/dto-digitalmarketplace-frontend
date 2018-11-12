@@ -80,6 +80,7 @@ export default combineReducers({
       location: [],
       summary: '',
       industryBriefing: '',
+      sellerCategory: '',
       sellers: {},
       attachments: [],
       requirementsDocument: [],

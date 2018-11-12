@@ -23,7 +23,11 @@ const defaultBriefState = {
     sections: [],
     status: '',
     title: ''
-  }
+  },
+  briefResponseCount: 0,
+  invitedSellerCount: 0,
+  isInvitedSeller: false,
+  domains: []
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -52,6 +56,7 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponseCount: action.briefResponseCount,
         invitedSellerCount: action.invitedSellerCount,
         isInvitedSeller: action.isInvitedSeller,
+        domains: action.domains,
         loadBriefSuccess: true,
         loadedAt: new Date().valueOf()
       }
