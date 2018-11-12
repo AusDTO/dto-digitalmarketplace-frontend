@@ -69,6 +69,10 @@ export class SellerSelect extends Component {
 
   handleCategoryChange(e) {
     this.props.onSellerCategorySelect(e.target.value)
+    this.setState({
+      inputValue: '',
+      sellers: []
+    })
   }
 
   handleSearchChange(e) {
