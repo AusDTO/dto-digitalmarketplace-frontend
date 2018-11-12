@@ -7,10 +7,9 @@ import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
 import BuyerRFQCompleted from 'marketplace/components/BuyerRFQ/BuyerRFQCompleted'
 import { rootPath } from 'marketplace/routes'
-import { loadPublicBrief } from 'marketplace/actions/briefActions'
+import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { BuyerRFQFormReducer } from 'marketplace/reducers'
-import dmapi from '../services/apiClient'
 
 const model = 'BuyerRFQForm'
 
@@ -20,7 +19,6 @@ export class BuyerRFQFlowPage extends Component {
 
     this.state = {
       loading: false,
-      errorMessage: '',
       flowIsDone: false
     }
 
@@ -38,14 +36,6 @@ export class BuyerRFQFlowPage extends Component {
       loading: true
     })
     this.props.loadInitialData(this.props.match.params.briefId).then(response => {
-      if (!response || response.error || !response.data || !response.data.brief.id) {
-        this.setState({
-          errorMessage: response.errorMessage,
-          loading: false
-        })
-        return
-      }
-
       // only accept data defined in the form reducer
       const data = { ...BuyerRFQFormReducer }
       if (response.data.brief) {
@@ -61,7 +51,6 @@ export class BuyerRFQFlowPage extends Component {
       this.props.changeFormModel(data)
 
       this.setState({
-        errorMessage: '',
         loading: false
       })
     })
@@ -69,25 +58,9 @@ export class BuyerRFQFlowPage extends Component {
 
   saveBrief(publish = false) {
     const data = { ...this.props[model] }
-    if (publish) {
-      data.publish = true
-    }
-    dmapi({
-      url: `/brief/${this.props.match.params.briefId}`,
-      method: 'PATCH',
-      headers: {
-        'X-CSRFToken': this.props.csrfToken,
-        'Content-Type': 'application/json'
-      },
-      data: JSON.stringify(data)
-    }).then(response => {
-      if (!response || response.error || !response.data || !response.data.id) {
-        this.setState({
-          errorMessage: response.errorMessage
-        })
-        return
-      }
-      if (publish) {
+    data.publish = publish
+    this.props.saveBrief(this.props.match.params.briefId, data).then(response => {
+      if (response.status === 200 && publish) {
         this.setState({
           flowIsDone: true
         })
@@ -96,7 +69,7 @@ export class BuyerRFQFlowPage extends Component {
   }
 
   render() {
-    if (this.state.errorMessage) {
+    if (this.props.errorMessage) {
       let hasFocused = false
       const setFocus = e => {
         if (!hasFocused) {
@@ -107,7 +80,7 @@ export class BuyerRFQFlowPage extends Component {
       return (
         <ErrorBoxComponent
           title="A problem occurred when loading the brief details"
-          errorMessage={this.state.errorMessage}
+          errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}
           invalidFields={[]}
@@ -140,12 +113,14 @@ export class BuyerRFQFlowPage extends Component {
 
 const mapStateToProps = state => ({
   ...formProps(state, model),
-  csrfToken: state.app.csrfToken
+  csrfToken: state.app.csrfToken,
+  errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
-  loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
+  loadInitialData: briefId => dispatch(loadPublicBrief(briefId)),
+  saveBrief: (briefId, data) => dispatch(saveBrief(briefId, data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQFlowPage)

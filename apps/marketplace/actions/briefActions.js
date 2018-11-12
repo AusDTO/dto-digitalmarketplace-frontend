@@ -3,6 +3,7 @@ import {
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  BRIEF_SAVE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
@@ -107,6 +108,32 @@ export const handleErrorFailure = response => dispatch => {
       setErrorMessage(GENERAL_ERROR)
     }
   }
+}
+
+export const handleBriefSaveSuccess = response => ({
+  type: BRIEF_SAVE_SUCCESS,
+  brief: response.data.brief
+})
+
+export const saveBrief = (briefId, data) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}`,
+    method: 'PATCH',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefSaveSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
 }
 
 export const loadBrief = briefId => dispatch => {
