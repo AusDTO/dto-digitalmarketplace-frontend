@@ -67,7 +67,9 @@ export class BuyerDashboardMyBriefs extends Component {
                   <td className={styles.colId}>{item.id}</td>
                   <td className={styles.colName}>
                     {item.lot === 'rfx' ? (
-                      <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                      <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>
+                        {item.name ? item.name : 'Untitled outcome'}
+                      </a>
                     ) : (
                       <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                     )}
