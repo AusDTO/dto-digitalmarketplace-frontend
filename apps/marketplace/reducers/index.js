@@ -9,6 +9,30 @@ import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 
+export const BuyerRFQFormReducer = {
+  id: 0,
+  title: '',
+  organisation: '',
+  location: [],
+  summary: '',
+  industryBriefing: '',
+  sellerCategory: '',
+  sellers: {},
+  attachments: [],
+  requirementsDocument: [],
+  responseTemplate: [],
+  evaluationType: [],
+  proposalType: [],
+  evaluationCriteria: [{ criteria: '', weighting: '' }],
+  includeWeightings: false,
+  closedAt: '',
+  startDate: '',
+  contractLength: '',
+  contractExtensions: '',
+  budgetRange: '',
+  workingArrangements: ''
+}
+
 export default combineReducers({
   app: appReducer,
   user,
@@ -73,28 +97,6 @@ export default combineReducers({
         Remote: false
       }
     },
-    BuyerRFQForm: {
-      id: 0,
-      title: '',
-      organisation: '',
-      location: [],
-      summary: '',
-      industryBriefing: '',
-      sellerCategory: '',
-      sellers: {},
-      attachments: [],
-      requirementsDocument: [],
-      responseTemplate: [],
-      evaluationType: [],
-      proposalType: [],
-      evaluationCriteria: [{ criteria: '', weighting: '' }],
-      includeWeightings: false,
-      closedAt: '',
-      startDate: '',
-      contractLength: '',
-      contractExtensions: '',
-      budgetRange: '',
-      workingArrangements: ''
-    }
+    BuyerRFQForm: BuyerRFQFormReducer
   })
 })

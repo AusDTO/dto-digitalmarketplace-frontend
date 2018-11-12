@@ -9,6 +9,7 @@ import BuyerRFQCompleted from 'marketplace/components/BuyerRFQ/BuyerRFQCompleted
 import { rootPath } from 'marketplace/routes'
 import { loadPublicBrief } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { BuyerRFQFormReducer } from 'marketplace/reducers'
 import dmapi from '../services/apiClient'
 
 const model = 'BuyerRFQForm'
@@ -45,28 +46,17 @@ export class BuyerRFQFlowPage extends Component {
         return
       }
 
-      const data = {}
-      data.id = response.data.brief.id || 0
-      data.title = response.data.brief.title || ''
-      data.organisation = response.data.brief.organisation || ''
-      data.location = response.data.brief.location || []
-      data.summary = response.data.brief.summary || ''
-      data.industryBriefing = response.data.brief.industryBriefing || ''
-      data.sellerCategory = response.data.brief.sellerCategory || ''
-      data.sellers = response.data.brief.sellers || {}
-      data.attachments = response.data.brief.attachments || []
-      data.requirementsDocument = response.data.brief.requirementsDocument || []
-      data.responseTemplate = response.data.brief.responseTemplate || []
-      data.evaluationType = response.data.brief.evaluationType || []
-      data.proposalType = response.data.brief.proposalType || []
-      data.evaluationCriteria = response.data.brief.evaluationCriteria || [{ criteria: '', weighting: '' }]
-      data.includeWeightings = response.data.brief.includeWeightings || false
-      data.closedAt = response.data.brief.closedAt || ''
-      data.startDate = response.data.brief.startDate || ''
-      data.contractLength = response.data.brief.contractLength || ''
-      data.contractExtensions = response.data.brief.contractExtensions || ''
-      data.budgetRange = response.data.brief.budgetRange || ''
-      data.workingArrangements = response.data.brief.workingArrangements || ''
+      // only accept data defined in the form reducer
+      const data = { ...BuyerRFQFormReducer }
+      if (response.data.brief) {
+        Object.keys(response.data.brief).map(property => {
+          if (Object.keys(BuyerRFQFormReducer).includes(property)) {
+            data[property] = response.data.brief[property]
+            return true
+          }
+          return true
+        })
+      }
 
       this.props.changeFormModel(data)
 
