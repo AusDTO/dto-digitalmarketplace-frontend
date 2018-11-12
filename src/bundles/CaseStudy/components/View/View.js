@@ -17,7 +17,8 @@ class View extends React.Component {
       status: 'unassessed',
       comment: null,
       approved_criteria: {}
-    }
+    },
+    assessmentSaved: false
   }
 
   toggleConfirm(show = true) {
@@ -185,7 +186,6 @@ View.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state.casestudy,
-    ...state.assessmentForm,
     ...ownProps
   }
 }

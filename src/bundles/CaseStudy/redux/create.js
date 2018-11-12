@@ -2,8 +2,12 @@ import { createStore as _createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './modules/reducer';
 
+import api from '../../../shared/reduxModules/api';
+
 export default function createStore(data) {
-  const middleware = [ thunk ]
+  const middleware = [
+    thunk.withExtraArgument(api)
+  ];
 
   delete data._serverContext;
 
