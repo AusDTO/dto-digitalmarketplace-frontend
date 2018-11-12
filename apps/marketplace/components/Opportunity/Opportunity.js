@@ -14,15 +14,18 @@ const Opportunity = props => (
         {props.brief.status === 'draft' && (
           <div className={styles.previewNotice}>
             <div className="row">
-              <div className="col-xs-12 col-sm-8">
+              <div className="col-xs-12 col-sm-7">
                 <p>This is a preview of what invited sellers can see.</p>
               </div>
-              <div className={`${styles.previewButtons} col-xs-12 col-sm-4`}>
+              <div className={`${styles.previewButtons} col-xs-12 col-sm-5`}>
                 <a
                   href={`${rootPath}/buyer-rfq/${props.brief.id}/introduction`}
-                  className={`${styles.publishBtn} au-btn`}
+                  className={`${styles.publishBtn} au-btn au-btn--secondary`}
                 >
-                  Continue editing
+                  Edit
+                </a>
+                <a href={`${rootPath}/buyer-rfq/${props.brief.id}/review`} className={`${styles.publishBtn} au-btn`}>
+                  Proceed to publish
                 </a>
               </div>
             </div>
@@ -37,6 +40,12 @@ const Opportunity = props => (
         <div className={styles.details}>
           <div className="row">
             <div className="col-xs-12 col-sm-3">
+              <strong>Opportunity ID</strong>
+            </div>
+            <div className="col-xs-12 col-sm-9">{props.brief.id}</div>
+          </div>
+          <div className="row">
+            <div className="col-xs-12 col-sm-3">
               <strong>Estimated start date</strong>
             </div>
             <div className="col-xs-12 col-sm-9">{props.brief.startDate}</div>
@@ -47,12 +56,22 @@ const Opportunity = props => (
             </div>
             <div className="col-xs-12 col-sm-9">{props.brief.contractLength}</div>
           </div>
-          <div className="row">
-            <div className="col-xs-12 col-sm-3">
-              <strong>Budget range</strong>
+          {props.brief.contractExtensions && (
+            <div className="row">
+              <div className="col-xs-12 col-sm-3">
+                <strong>Contract extensions</strong>
+              </div>
+              <div className="col-xs-12 col-sm-9">{props.brief.contractExtensions}</div>
             </div>
-            <div className="col-xs-12 col-sm-9">{props.brief.budgetRange}</div>
-          </div>
+          )}
+          {props.brief.budgetRange && (
+            <div className="row">
+              <div className="col-xs-12 col-sm-3">
+                <strong>Budget range</strong>
+              </div>
+              <div className="col-xs-12 col-sm-9">{props.brief.budgetRange}</div>
+            </div>
+          )}
           <div className="row">
             <div className="col-xs-12 col-sm-3">
               <strong>Location of work</strong>
@@ -66,11 +85,17 @@ const Opportunity = props => (
               ))}
             </div>
           </div>
+          <div className="row">
+            <div className="col-xs-12 col-sm-3">
+              <strong>Working arrangements</strong>
+            </div>
+            <div className="col-xs-12 col-sm-9">{props.brief.workingArrangements}</div>
+          </div>
         </div>
         <AUheading level="2" size="lg">
           Summary
         </AUheading>
-        <p className={styles.newLines}>{props.brief.summary}</p>
+        <p>{props.brief.summary}</p>
         <AUheading level="3" size="sm">
           Additional information
         </AUheading>
@@ -95,19 +120,28 @@ const Opportunity = props => (
               <a href={`/api/2/brief/${props.brief.id}/attachments/${responseTemplate}`}>Response template</a>
             </li>
           ))}
+          {props.brief.evaluationType.includes('Written proposal') &&
+            props.brief.proposalType.length > 0 && (
+              <li>
+                Written proposal, including:
+                <ul className={styles.subList}>
+                  {props.brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}
+                </ul>
+              </li>
+            )}
         </ul>
-        <AUheading level="3" size="sm">
-          Buyers will later request
-        </AUheading>
-        <ul>
-          {props.brief.evaluationType.map(evaluationType => {
-            if (evaluationType === 'Response template') {
-              return null
-            }
-            return <li key={evaluationType}>{evaluationType}</li>
-          })}
-          {props.brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}
-        </ul>
+        {(props.brief.evaluationType.includes('Demonstration') ||
+          props.brief.evaluationType.includes('Presentation')) && (
+          <div>
+            <AUheading level="3" size="sm">
+              Buyers will later request
+            </AUheading>
+            <ul>
+              {props.brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
+              {props.brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
+            </ul>
+          </div>
+        )}
         <EvaluationCriteria
           evaluationCriteria={props.brief.evaluationCriteria}
           showWeightings={props.brief.includeWeightings}
