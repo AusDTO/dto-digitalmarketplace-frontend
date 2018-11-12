@@ -4,6 +4,7 @@ import {
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
+  BRIEF_RFX_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
@@ -108,6 +109,31 @@ export const handleErrorFailure = response => dispatch => {
       setErrorMessage(GENERAL_ERROR)
     }
   }
+}
+
+export const handleCreateRFXBriefSuccess = response => ({
+  type: BRIEF_RFX_CREATE_SUCCESS,
+  brief: response.data
+})
+
+export const createRFXBrief = () => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/brief/rfq',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateRFXBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
 }
 
 export const handleBriefSaveSuccess = response => ({

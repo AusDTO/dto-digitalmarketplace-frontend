@@ -3,6 +3,7 @@ import {
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
+  BRIEF_RFX_CREATE_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
@@ -63,6 +64,12 @@ const briefReducer = (state = defaultBriefState, action) => {
       }
 
     case BRIEF_SAVE_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief
+      }
+
+    case BRIEF_RFX_CREATE_SUCCESS:
       return {
         ...state,
         brief: action.brief

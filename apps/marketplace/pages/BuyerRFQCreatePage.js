@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { createRFXBrief } from 'marketplace/actions/briefActions'
 import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import dmapi from '../services/apiClient'
 
 export class BuyerRFQCreatePage extends Component {
   constructor(props) {
@@ -14,20 +14,12 @@ export class BuyerRFQCreatePage extends Component {
   }
 
   componentDidMount() {
-    dmapi({
-      url: '/brief/rfq',
-      method: 'POST',
-      headers: {
-        'X-CSRFToken': this.props.csrfToken,
-        'Content-Type': 'application/json'
+    this.props.createRFXBrief().then(response => {
+      if (response.status === 200) {
+        this.setState({
+          briefId: parseInt(response.data.id, 10)
+        })
       }
-    }).then(response => {
-      if (!response || response.error || !response.data || !response.data.id) {
-        return
-      }
-      this.setState({
-        briefId: parseInt(response.data.id, 10)
-      })
     })
   }
 
@@ -44,4 +36,8 @@ const mapStateToProps = state => ({
   csrfToken: state.app.csrfToken
 })
 
-export default connect(mapStateToProps)(BuyerRFQCreatePage)
+const mapDispatchToProps = dispatch => ({
+  createRFXBrief: () => dispatch(createRFXBrief())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQCreatePage)
