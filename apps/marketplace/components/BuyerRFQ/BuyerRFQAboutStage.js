@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Form } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
-import StatefulError from 'shared/form/StatefulError'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFQAboutStage.scss'
 
 const locations = {
@@ -23,10 +24,34 @@ const locations = {
 }
 
 const BuyerRFQAboutStage = props => (
-  <div>
+  <Form
+    model={props.model}
+    validators={{
+      '': {
+        requiredTitle: formValues => required(formValues.title),
+        requiredOrg: formValues => required(formValues.organisation),
+        requiredSummary: formValues => required(formValues.summary),
+        requiredWorkingArrangements: formValues => required(formValues.workingArrangements),
+        atLeastOneLocation: formValues => formValues.location && formValues.location.length > 0
+      }
+    }}
+    onSubmit={props.onSubmit}
+    validateOn="submit"
+  >
     <AUheadings level="1" size="xl">
       About
     </AUheadings>
+    <ErrorAlert
+      title="An error occurred"
+      model={props.model}
+      messages={{
+        requiredTitle: 'Enter the title for your brief',
+        requiredOrg: 'Enter the name of your organisation',
+        requiredSummary: 'Enter a summary of your brief',
+        requiredWorkingArrangements: 'Enter the working arrangements for your brief',
+        atLeastOneLocation: 'You must select at least one location'
+      }}
+    />
     <Textfield
       model={`${props.model}.title`}
       label="Title"
@@ -39,9 +64,6 @@ const BuyerRFQAboutStage = props => (
       maxLength={100}
       validators={{
         required
-      }}
-      messages={{
-        required: 'Enter a title for this brief'
       }}
     />
     <Textfield
@@ -57,9 +79,6 @@ const BuyerRFQAboutStage = props => (
       validators={{
         required
       }}
-      messages={{
-        required: 'Enter the name of your organisation'
-      }}
     />
     <Textarea
       model={`${props.model}.summary`}
@@ -73,7 +92,6 @@ const BuyerRFQAboutStage = props => (
         required
       }}
       messages={{
-        required: 'Enter a summary of your brief',
         limitWords: 'Your summary has exceeded the 150 word limit'
       }}
     />
@@ -81,13 +99,6 @@ const BuyerRFQAboutStage = props => (
       Where can the work be done?
     </AUheadings>
     <div className={styles.locations}>
-      <StatefulError
-        model={`${props.model}.location[]`}
-        messages={{
-          required: 'You must select at least one location'
-        }}
-        id="location_errors"
-      />
       {Object.keys(locations).map(key => (
         <CheckboxDetailsField
           key={key}
@@ -97,9 +108,7 @@ const BuyerRFQAboutStage = props => (
           label={locations[key]}
           value={locations[key]}
           detailsModel={props.model}
-          validators={{
-            required
-          }}
+          validators={{}}
           messages={{}}
         />
       ))}
@@ -117,15 +126,21 @@ const BuyerRFQAboutStage = props => (
         required
       }}
       messages={{
-        required: 'Enter the working arrangements for your brief',
         limitWords: 'Your working arrangements has exceeded the 150 word limit'
       }}
     />
-  </div>
+    {props.formButtons}
+  </Form>
 )
 
+BuyerRFQAboutStage.defaultProps = {
+  onSubmit: () => {}
+}
+
 BuyerRFQAboutStage.propTypes = {
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  formButtons: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

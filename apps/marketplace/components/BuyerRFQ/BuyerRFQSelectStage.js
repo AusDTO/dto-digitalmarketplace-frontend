@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { actions } from 'react-redux-form'
+import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import SelectedSellersControl from './SelectedSellersControl'
+import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFQSelectStage.scss'
 
 export class BuyerRFQSelectStage extends Component {
@@ -57,10 +58,26 @@ export class BuyerRFQSelectStage extends Component {
     })
 
     return (
-      <div>
+      <Form
+        model={`${this.props.model}.sellers`}
+        validators={{
+          '': {
+            required: val => val && Object.keys(val).length > 0
+          }
+        }}
+        onSubmit={this.props.onSubmit}
+        validateOn="submit"
+      >
         <AUheading level="1" size="xl">
           Who can respond?
         </AUheading>
+        <ErrorAlert
+          title="An error occurred"
+          model={`${this.props.model}.sellers`}
+          messages={{
+            required: 'You must select at least one seller'
+          }}
+        />
         <p>
           Only sellers approved in the category you select can respond. You can see each seller&apos;s categories in the{' '}
           <a href="/search/sellers">seller catalogue</a>.
@@ -83,23 +100,24 @@ export class BuyerRFQSelectStage extends Component {
               id="selected-sellers"
               model={`${this.props.model}.sellers`}
               onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
-              validators={{
-                required: val => val && Object.keys(val).length > 0
-              }}
-              messages={{
-                required: 'You must select at least one seller'
-              }}
             />
           </div>
         </div>
-      </div>
+        {this.props.formButtons}
+      </Form>
     )
   }
 }
 
+BuyerRFQSelectStage.defaultProps = {
+  onSubmit: () => {}
+}
+
 BuyerRFQSelectStage.propTypes = {
   model: PropTypes.string.isRequired,
-  saveModel: PropTypes.func.isRequired
+  saveModel: PropTypes.func.isRequired,
+  formButtons: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import { requiredFile } from 'marketplace/components/validators'
 import range from 'lodash/range'
+import ErrorAlert from './ErrorAlert'
 
 export class BuyerRFQRequirementsStage extends Component {
   constructor(props) {
@@ -43,10 +44,33 @@ export class BuyerRFQRequirementsStage extends Component {
   render() {
     const { model } = this.props
     return (
-      <div>
+      <Form
+        model={model}
+        validators={{
+          '': {
+            requiredRequirementsDocument: formValues =>
+              formValues.requirementsDocument && formValues.requirementsDocument.length > 0,
+            requiredResponseTemplate: formValues =>
+              !formValues.evaluationType.includes('Response template') ||
+              (formValues.evaluationType.includes('Response template') &&
+                formValues.responseTemplate &&
+                formValues.responseTemplate.length > 0)
+          }
+        }}
+        onSubmit={this.props.onSubmit}
+        validateOn="submit"
+      >
         <AUheadings level="1" size="xl">
           Requirements
         </AUheadings>
+        <ErrorAlert
+          title="An error occurred"
+          model={model}
+          messages={{
+            requiredRequirementsDocument: 'You must upload a requirements document',
+            requiredResponseTemplate: 'You must upload a response template'
+          }}
+        />
         <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         <p>
           Documents can be viewed by anyone with a Digital Marketplace account. Do not include internal or private
@@ -67,12 +91,6 @@ export class BuyerRFQRequirementsStage extends Component {
           onReset={this.props.saveModel}
           onUploadSuccess={this.props.saveModel}
           accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-          validators={{
-            requiredFile
-          }}
-          messages={{
-            requiredFile: 'You must upload a requirements document'
-          }}
         />
         {this.props[model].evaluationType.includes('Response template') && (
           <div>
@@ -91,12 +109,6 @@ export class BuyerRFQRequirementsStage extends Component {
               onReset={this.props.saveModel}
               onUploadSuccess={this.props.saveModel}
               accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-              validators={{
-                requiredFile
-              }}
-              messages={{
-                requiredFile: 'You must upload a response template'
-              }}
             />
           </div>
         )}
@@ -132,14 +144,21 @@ export class BuyerRFQRequirementsStage extends Component {
             </a>
           </p>
         )}
-      </div>
+        {this.props.formButtons}
+      </Form>
     )
   }
 }
 
+BuyerRFQRequirementsStage.defaultProps = {
+  onSubmit: () => {}
+}
+
 BuyerRFQRequirementsStage.propTypes = {
   model: PropTypes.string.isRequired,
-  saveModel: PropTypes.func.isRequired
+  saveModel: PropTypes.func.isRequired,
+  formButtons: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

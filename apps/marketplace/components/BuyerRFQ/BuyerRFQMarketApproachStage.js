@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { actions } from 'react-redux-form'
+import { actions, Form } from 'react-redux-form'
+import { validDate } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import ErrorAlert from './ErrorAlert'
 import ClosingDateControl from './ClosingDateControl'
 
 class BuyerRFQMarketApproachStage extends Component {
@@ -21,10 +23,26 @@ class BuyerRFQMarketApproachStage extends Component {
   render() {
     const { model } = this.props
     return (
-      <div>
+      <Form
+        model={model}
+        validators={{
+          '': {
+            closingDateIsValid: formValues => formValues.closedAt && validDate(formValues.closedAt)
+          }
+        }}
+        onSubmit={this.props.onSubmit}
+        validateOn="submit"
+      >
         <AUheading level="1" size="xl">
           Market approach
         </AUheading>
+        <ErrorAlert
+          title="An error occurred"
+          model={model}
+          messages={{
+            closingDateIsValid: 'You must input a valid closing date in the future.'
+          }}
+        />
         <ClosingDateControl
           id="closed_at"
           model={`${model}.closedAt`}
@@ -41,13 +59,20 @@ class BuyerRFQMarketApproachStage extends Component {
           defaultValue={this.props[model].industryBriefing}
           controlProps={{ limit: 150 }}
         />
-      </div>
+        {this.props.formButtons}
+      </Form>
     )
   }
 }
 
+BuyerRFQMarketApproachStage.defaultProps = {
+  onSubmit: () => {}
+}
+
 BuyerRFQMarketApproachStage.propTypes = {
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  formButtons: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

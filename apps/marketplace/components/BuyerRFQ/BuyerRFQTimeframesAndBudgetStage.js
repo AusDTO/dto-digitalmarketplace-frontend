@@ -1,17 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Form } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import ErrorAlert from './ErrorAlert'
 
 const BuyerRFQTimeframesAndBudgetStage = props => (
-  <div>
+  <Form
+    model={props.model}
+    onSubmit={props.onSubmit}
+    validateOn="submit"
+    validators={{
+      '': {
+        startDateRequired: formValues => required(formValues.startDate),
+        contractLengthRequired: formValues => required(formValues.contractLength)
+      }
+    }}
+  >
     <AUheadings level="1" size="xl">
       Timeframes and budget
     </AUheadings>
+    <ErrorAlert
+      title="An error occurred"
+      model={props.model}
+      messages={{
+        startDateRequired: 'Enter an estimated start date for the brief',
+        contractLengthRequired: 'Enter a contract length for the brief'
+      }}
+    />
     <Textfield
       model={`${props.model}.startDate`}
       label="Estimated start date"
@@ -23,9 +43,6 @@ const BuyerRFQTimeframesAndBudgetStage = props => (
       validators={{
         required
       }}
-      messages={{
-        required: 'Enter an estimated start date for the brief'
-      }}
     />
     <Textfield
       model={`${props.model}.contractLength`}
@@ -36,10 +53,6 @@ const BuyerRFQTimeframesAndBudgetStage = props => (
       defaultValue={props[props.model].contractLength}
       validators={{
         required
-      }}
-      messages={{
-        limitWords: 'Your contract length and extension options has exceeded the 150 word limit',
-        required: 'Enter a contract length for the brief'
       }}
     />
     <Textfield
@@ -65,11 +78,18 @@ const BuyerRFQTimeframesAndBudgetStage = props => (
         limitWords: 'Your budget range has exceeded the 150 word limit'
       }}
     />
-  </div>
+    {props.formButtons}
+  </Form>
 )
 
+BuyerRFQTimeframesAndBudgetStage.defaultProps = {
+  onSubmit: () => {}
+}
+
 BuyerRFQTimeframesAndBudgetStage.propTypes = {
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  formButtons: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

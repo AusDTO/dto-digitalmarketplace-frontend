@@ -5,16 +5,17 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
-import StatefulError from 'shared/form/StatefulError'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import { required } from 'marketplace/components/validators'
+import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFQEvaluationCriteriaStage.scss'
 
 export const weightingsAddUpTo100 = evaluationCriteria =>
   !evaluationCriteria.some(val => val.weighting) ||
   evaluationCriteria.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10), 0) ===
     100
+
+export const noEmptyCriteria = evaluationCriteria => evaluationCriteria.every(val => val.criteria)
 
 class BuyerRFQEvaluationCriteriaStage extends Component {
   constructor(props) {
@@ -59,10 +60,28 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
 
   render() {
     return (
-      <div>
+      <Form
+        model={`${this.props.model}.evaluationCriteria`}
+        validators={{
+          '': { weightingsAddUpTo100, noEmptyCriteria }
+        }}
+        onSubmit={this.props.onSubmit}
+        validateOn="submit"
+      >
         <AUheadings level="1" size="xl">
           Evaluation criteria
         </AUheadings>
+        <ErrorAlert
+          title="An error occurred"
+          model={`${this.props.model}.evaluationCriteria`}
+          messages={{
+            weightingsAddUpTo100: 'The weightings must all have a value and they must all add up to exactly 100%.',
+            noEmptyCriteria: 'You must not have any empty criteria.'
+          }}
+        />
+        <p>
+          <a href="#examples">View recommended criteria</a>
+        </p>
         <p>
           <CheckboxDetailsField
             model={`${this.props.model}.includeWeightings`}
@@ -75,22 +94,16 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
             messages={{}}
           />
         </p>
-        <Form
-          model={`${this.props.model}.evaluationCriteria`}
-          component="div"
-          validators={{
-            '': { weightingsAddUpTo100 }
-          }}
-        >
-          {this.props[this.props.model].evaluationCriteria.map((evaluationCriteria, i) => {
-            if (
-              evaluationCriteria &&
-              typeof evaluationCriteria.criteria !== 'undefined' &&
-              typeof evaluationCriteria.weighting !== 'undefined'
-            ) {
-              return (
-                <div className="row" key={`criteria_key_${i}`}>
-                  <div className={`col-lg-8 ${styles.criteriaActions}`}>
+        {this.props[this.props.model].evaluationCriteria.map((evaluationCriteria, i) => {
+          if (
+            evaluationCriteria &&
+            typeof evaluationCriteria.criteria !== 'undefined' &&
+            typeof evaluationCriteria.weighting !== 'undefined'
+          ) {
+            return (
+              <div className="row" key={`criteria_key_${i}`}>
+                <div className={styles.criteriaContainer}>
+                  <div className="col-xs-12 col-sm-7">
                     <Textfield
                       model={`${this.props.model}.evaluationCriteria[${i}].criteria`}
                       label="Criteria"
@@ -99,32 +112,10 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
                       htmlFor={`criteria_${i}`}
                       defaultValue={evaluationCriteria.criteria}
                       maxLength={100}
-                      validators={{
-                        required
-                      }}
-                      messages={{
-                        required: `Criteria can't be empty`
-                      }}
                     />
-                    {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
-                      <a href="#add" onClick={this.handleAddCriteriaClick}>
-                        Add another criteria
-                      </a>
-                    )}
-                    {this.props[this.props.model].evaluationCriteria.length > 1 && (
-                      <a
-                        href="#remove"
-                        onClick={e => {
-                          e.preventDefault()
-                          this.removeCriteria(i)
-                        }}
-                      >
-                        Remove this criteria
-                      </a>
-                    )}
                   </div>
                   {this.props[this.props.model].includeWeightings && (
-                    <div className="col-lg-4">
+                    <div className="col-xs-12 col-sm-3">
                       <div className={styles.weightingContainer}>
                         <Textfield
                           model={`${this.props.model}.evaluationCriteria[${i}].weighting`}
@@ -134,31 +125,42 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
                           htmlFor={`weighting_${i}`}
                           defaultValue={evaluationCriteria.weighting}
                           maxLength={3}
-                          validators={{
-                            withinRange: val => parseInt(val, 10) > 0 && parseInt(val, 10) <= 100
-                          }}
-                          messages={{
-                            withinRange: 'A weighting must be more than 0% and not greater than 100%'
-                          }}
                         />
-                        <div className={styles.weightingRemaining}>{this.getRemainingWeighting()}% remaining</div>
+                        {i === this.props[this.props.model].evaluationCriteria.length - 1 &&
+                          this.getRemainingWeighting() > 0 && (
+                            <div className={styles.weightingRemaining}>{this.getRemainingWeighting()}% remaining</div>
+                          )}
                       </div>
                     </div>
                   )}
+                  {this.props[this.props.model].evaluationCriteria.length > 1 && (
+                    <div className={`col-xs-12 col-sm-2 ${styles.removeCriteria}`}>
+                      <a
+                        href="#remove"
+                        onClick={e => {
+                          e.preventDefault()
+                          this.removeCriteria(i)
+                        }}
+                      >
+                        Remove
+                      </a>
+                    </div>
+                  )}
+                  <div className="col-xs-12">
+                    {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
+                      <a href="#add" onClick={this.handleAddCriteriaClick}>
+                        Add another criteria
+                      </a>
+                    )}
+                  </div>
                 </div>
-              )
-            }
-            return null
-          })}
-          <StatefulError
-            model={`${this.props.model}.evaluationCriteria`}
-            messages={{
-              weightingsAddUpTo100: 'The weightings must add up to exactly 100%.'
-            }}
-            id="evaluation_criteria_errors"
-          />
-        </Form>
-      </div>
+              </div>
+            )
+          }
+          return null
+        })}
+        {this.props.formButtons}
+      </Form>
     )
   }
 }
@@ -166,14 +168,17 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
 BuyerRFQEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromCriteria: () => {},
   addEmptyEvalutationCriteria: () => {},
-  removeCriteriaByIndex: () => {}
+  removeCriteriaByIndex: () => {},
+  onSubmit: () => {}
 }
 
 BuyerRFQEvaluationCriteriaStage.propTypes = {
   model: PropTypes.string.isRequired,
   clearWeightingsFromCriteria: PropTypes.func,
   addEmptyEvalutationCriteria: PropTypes.func,
-  removeCriteriaByIndex: PropTypes.func
+  removeCriteriaByIndex: PropTypes.func,
+  onSubmit: PropTypes.func,
+  formButtons: PropTypes.node.isRequired
 }
 
 const mapStateToProps = (state, props) => ({

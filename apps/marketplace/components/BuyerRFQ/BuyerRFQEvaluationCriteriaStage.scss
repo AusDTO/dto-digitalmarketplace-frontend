@@ -1,16 +1,9 @@
-div.weightingContainer {
-  display: flex;
-  align-items: center;
-}
-
-div.weightingContainer > * {
-  flex: 1
+@media (min-width: 768px) {
+  div.removeCriteria {
+    margin-top: 3.5rem;
+  }
 }
 
 div.weightingRemaining {
-  margin-left: 0.75rem;
-}
-
-div.criteriaActions a {
-  margin-right: 0.75rem;
+  margin-top: -1.6em;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
@@ -42,7 +43,7 @@ const getLastAnswerDate = closingDate => {
 }
 
 const BuyerRFQReviewStage = props => (
-  <div>
+  <Form model={props.model} onSubmit={props.onSubmit}>
     <AUheading level="1" size="xl">
       Review and publish
     </AUheading>
@@ -88,11 +89,18 @@ const BuyerRFQReviewStage = props => (
       <li>Your request is published on the Digital Marketplace.</li>
       <li>An email is sent to the sellers&apos; business contacts inviting them to view and respond.</li>
     </ul>
-  </div>
+    {props.formButtons}
+  </Form>
 )
 
+BuyerRFQReviewStage.defaultProps = {
+  onSubmit: () => {}
+}
+
 BuyerRFQReviewStage.propTypes = {
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  formButtons: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

@@ -164,7 +164,7 @@ export const saveBrief = (briefId, data) => (dispatch, getState) => {
 
 export const loadBrief = briefId => dispatch => {
   dispatch(sendingRequest(true))
-  dmapi({ url: `/brief/${briefId}/responses` }).then(response => {
+  return dmapi({ url: `/brief/${briefId}/responses` }).then(response => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
@@ -172,6 +172,7 @@ export const loadBrief = briefId => dispatch => {
       dispatch(handleBriefInfoSuccess(response))
     }
     dispatch(sendingRequest(false))
+    return response
   })
 }
 

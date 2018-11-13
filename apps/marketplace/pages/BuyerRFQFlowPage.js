@@ -23,6 +23,7 @@ export class BuyerRFQFlowPage extends Component {
     }
 
     this.saveBrief = this.saveBrief.bind(this)
+    this.handleStageMount = this.handleStageMount.bind(this)
   }
 
   componentDidMount() {
@@ -68,6 +69,10 @@ export class BuyerRFQFlowPage extends Component {
     })
   }
 
+  handleStageMount() {
+    this.props.resetFormValidity()
+  }
+
   render() {
     if (this.props.errorMessage) {
       let hasFocused = false
@@ -103,6 +108,7 @@ export class BuyerRFQFlowPage extends Component {
         model={model}
         basename={`${rootPath}/buyer-rfq/${briefId}`}
         stages={BuyerRFQStages}
+        onStageMount={this.handleStageMount}
         saveModel={this.saveBrief}
         returnPath={`${rootPath}/brief/${briefId}/overview/rfq`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
@@ -120,7 +126,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId)),
-  saveBrief: (briefId, data) => dispatch(saveBrief(briefId, data))
+  saveBrief: (briefId, data) => dispatch(saveBrief(briefId, data)),
+  resetFormValidity: () => dispatch(actions.resetValidity(model))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQFlowPage)

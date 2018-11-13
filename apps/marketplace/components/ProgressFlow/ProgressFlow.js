@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { Route, Router, Link, withRouter, Redirect } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import ProgressNav from 'marketplace/components/ProgressFlow/ProgressNav'
 import ProgressContent from 'marketplace/components/ProgressFlow/ProgressContent'
@@ -182,45 +181,47 @@ export class ProgressFlow extends Component {
 
     return (
       <Router history={this.props.history}>
-        <Form model={this.props.model} onSubmit={this.handleFormSubmit}>
-          <div className="row">
-            <div className="col-sm-4" aria-live="polite" aria-relevant="additions removals">
-              <ProgressNav
-                items={items}
-                onNavChange={item => {
-                  this.setCurrentStage(item.slug)
-                }}
-              />
-            </div>
-            <div className="col-sm-8">
-              {this.props.stages.map(stage => (
-                <Route
-                  key={stage.slug}
-                  path={`${this.props.basename}/${stage.slug}`}
-                  render={() => (
-                    <div>
-                      <ProgressContent
-                        stage={stage.slug}
-                        model={this.props.model}
-                        setCurrentStage={this.setCurrentStage}
-                        saveModel={this.props.saveModel}
-                        component={stage.component}
-                      />
-                      <ProgressButtons
-                        isLastStage={this.isLastStage(stage.slug)}
-                        isFirstStage={this.isFirstStage(stage.slug)}
-                        publishEnabled={this.allStagesDone()}
-                        onPublish={this.handlePublish}
-                        onPreview={this.handlePreview}
-                        onReturn={this.handleReturn}
-                      />
-                    </div>
-                  )}
-                />
-              ))}
-            </div>
+        <div className="row">
+          <div className="col-sm-4" aria-live="polite" aria-relevant="additions removals">
+            <ProgressNav
+              items={items}
+              onNavChange={item => {
+                this.setCurrentStage(item.slug)
+              }}
+            />
           </div>
-        </Form>
+          <div className="col-sm-8">
+            {this.props.stages.map(stage => (
+              <Route
+                key={stage.slug}
+                path={`${this.props.basename}/${stage.slug}`}
+                render={() => (
+                  <div>
+                    <ProgressContent
+                      stage={stage.slug}
+                      model={this.props.model}
+                      setCurrentStage={this.setCurrentStage}
+                      saveModel={this.props.saveModel}
+                      component={stage.component}
+                      onSubmit={this.handleFormSubmit}
+                      onStageMount={this.props.onStageMount}
+                      formButtons={
+                        <ProgressButtons
+                          isLastStage={this.isLastStage(stage.slug)}
+                          isFirstStage={this.isFirstStage(stage.slug)}
+                          publishEnabled={this.allStagesDone()}
+                          onPublish={this.handlePublish}
+                          onPreview={this.handlePreview}
+                          onReturn={this.handleReturn}
+                        />
+                      }
+                    />
+                  </div>
+                )}
+              />
+            ))}
+          </div>
+        </div>
       </Router>
     )
   }
@@ -228,7 +229,8 @@ export class ProgressFlow extends Component {
 
 ProgressFlow.defaultProps = {
   basename: '',
-  saveModel: () => {}
+  saveModel: () => {},
+  onStageMount: () => {}
 }
 
 ProgressFlow.propTypes = {
@@ -237,7 +239,8 @@ ProgressFlow.propTypes = {
   model: PropTypes.string.isRequired,
   returnPath: PropTypes.string.isRequired,
   previewPath: PropTypes.string.isRequired,
-  saveModel: PropTypes.func
+  saveModel: PropTypes.func,
+  onStageMount: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

@@ -6,21 +6,45 @@ import { loadBrief } from 'marketplace/actions/briefActions'
 import BuyerRFQOverview from 'marketplace/components/BuyerRFQ/BuyerRFQOverview'
 
 class BuyerRFQOverviewPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false
+    }
+  }
   componentDidMount() {
-    this.props.loadData(this.props.match.params.briefId)
+    if (this.props.match.params.briefId) {
+      this.getBriefData()
+    }
+  }
+
+  getBriefData() {
+    this.setState({
+      loading: true
+    })
+    this.props.loadData(this.props.match.params.briefId).then(response => {
+      if (response.status === 200) {
+        this.setState({
+          loading: false
+        })
+      }
+    })
   }
 
   render() {
-    if (this.props.currentlySending) {
+    if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
 
-    return <BuyerRFQOverview brief={this.props.brief} briefResponses={this.props.briefResponses} />
+    if (this.props.brief) {
+      return <BuyerRFQOverview brief={this.props.brief} briefResponses={this.props.briefResponses} />
+    }
+
+    return null
   }
 }
 
 const mapStateToProps = state => ({
-  currentlySending: state.app.currentlySending,
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses
 })

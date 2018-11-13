@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
-import StatefulError from 'shared/form/StatefulError'
-import { validDate } from 'marketplace/components/validators'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './ClosingDateControl.scss'
@@ -98,31 +96,17 @@ export class ClosingDate extends Component {
             />
           </div>
         </div>
-        {this.props.messages && (
-          <div className="col-xs-12">
-            <StatefulError
-              model={this.props.formModel}
-              messages={this.props.messages}
-              showMessagesDuringFocus="false"
-              id={this.props.id}
-            />
-          </div>
-        )}
       </div>
     )
   }
 }
 
 ClosingDate.defaultProps = {
-  messages: {},
   onDateChange: () => {},
   value: ''
 }
 
 ClosingDate.propTypes = {
-  id: PropTypes.string.isRequired,
-  formModel: PropTypes.string.isRequired,
-  messages: PropTypes.object,
   onDateChange: PropTypes.func,
   value: PropTypes.string
 }
@@ -132,12 +116,6 @@ const ClosingDateControl = props => (
     id={props.id}
     model={props.model}
     component={ClosingDate}
-    validators={{
-      validDate
-    }}
-    messages={{
-      validDate: 'You must input a valid date in the future.'
-    }}
     onDateChange={props.onDateChange}
     mapProps={{
       value: ownProps => ownProps.viewValue,

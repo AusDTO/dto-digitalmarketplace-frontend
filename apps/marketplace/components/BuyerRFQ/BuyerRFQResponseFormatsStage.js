@@ -1,27 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
-import StatefulError from 'shared/form/StatefulError'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFQResponseFormatsStage.scss'
 
 const BuyerRFQResponseFormatsStage = props => (
-  <div>
+  <Form
+    model={props.model}
+    validators={{
+      '': {
+        atleastOneFormat: formValues => formValues.evaluationType && formValues.evaluationType.length > 0,
+        atleastOneProposal: formValues =>
+          !formValues.evaluationType.includes('Written proposal') ||
+          (formValues.evaluationType.includes('Written proposal') &&
+            formValues.proposalType &&
+            formValues.proposalType.length > 0)
+      }
+    }}
+    onSubmit={props.onSubmit}
+    validateOn="submit"
+  >
     <AUheadings level="1" size="xl">
       Response formats
     </AUheadings>
+    <ErrorAlert
+      title="An error occurred"
+      model={props.model}
+      messages={{
+        atleastOneFormat: 'You must select at least one response format',
+        atleastOneProposal: 'You must select at least one proposal type if you are requesting a written proposal.'
+      }}
+    />
     <p>You will receive from sellers:</p>
     <div className={styles.formats}>
-      <StatefulError
-        model={`${props.model}.evaluationType[]`}
-        messages={{
-          required: 'You must select at least one response format'
-        }}
-        id="response_format_errors"
-      />
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
         id={`response_format_template`}
@@ -50,13 +66,6 @@ const BuyerRFQResponseFormatsStage = props => (
       {props[props.model].evaluationType.includes('Written proposal') && (
         <div>
           <p>Select what you would like sellers to include:</p>
-          <StatefulError
-            model={`${props.model}.proposalType[]`}
-            messages={{
-              required: 'You must select at least one proposal type if you are requesting a written proposal.'
-            }}
-            id="proposal_errors"
-          />
           <div className={styles.subFormats}>
             <CheckboxDetailsField
               model={`${props.model}.proposalType[]`}
@@ -135,11 +144,18 @@ const BuyerRFQResponseFormatsStage = props => (
         messages={{}}
       />
     </div>
-  </div>
+    {props.formButtons}
+  </Form>
 )
 
+BuyerRFQResponseFormatsStage.defaultProps = {
+  onSubmit: () => {}
+}
+
 BuyerRFQResponseFormatsStage.propTypes = {
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  formButtons: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
