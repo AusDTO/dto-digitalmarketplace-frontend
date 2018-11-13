@@ -6,15 +6,31 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class OpportunityPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false
+    }
+  }
+
   componentWillMount() {
+    this.setState({
+      loading: true
+    })
     const briefId = this.props.match.params.briefId
     if (briefId.length > 0) {
-      this.props.loadInitialData(briefId)
+      this.props.loadInitialData(briefId).then(response => {
+        if (response.status === 200) {
+          this.setState({
+            loading: false
+          })
+        }
+      })
     }
   }
 
   render() {
-    if (this.props.currentlySending) {
+    if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
 
@@ -58,8 +74,7 @@ const mapResetStateToProps = state => ({
   invitedSellerCount: state.brief.invitedSellerCount,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   isInvitedSeller: state.brief.isInvitedSeller,
-  errorMessage: state.app.errorMessage,
-  currentlySending: state.app.currentlySending
+  errorMessage: state.app.errorMessage
 })
 
 const mapResetDispatchToProps = dispatch => ({
