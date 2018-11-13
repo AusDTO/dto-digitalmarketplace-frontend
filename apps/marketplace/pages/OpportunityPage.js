@@ -53,7 +53,7 @@ class OpportunityPage extends Component {
       )
     }
 
-    if (this.props.brief && this.props.brief.title) {
+    if (this.props.brief && this.props.brief.id) {
       return (
         <Opportunity
           brief={this.props.brief}
