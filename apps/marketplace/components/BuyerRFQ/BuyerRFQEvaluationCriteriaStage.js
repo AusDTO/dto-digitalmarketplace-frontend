@@ -33,9 +33,6 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
       }
       return true
     })
-    if (remaining < 0) {
-      remaining = 0
-    }
     if (remaining > 100) {
       remaining = 100
     }
@@ -111,7 +108,7 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
                       id={`criteria_${i}`}
                       htmlFor={`criteria_${i}`}
                       defaultValue={evaluationCriteria.criteria}
-                      maxLength={100}
+                      maxLength={300}
                     />
                   </div>
                   {this.props[this.props.model].includeWeightings && (
@@ -126,10 +123,9 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
                           defaultValue={evaluationCriteria.weighting}
                           maxLength={3}
                         />
-                        {i === this.props[this.props.model].evaluationCriteria.length - 1 &&
-                          this.getRemainingWeighting() > 0 && (
-                            <div className={styles.weightingRemaining}>{this.getRemainingWeighting()}% remaining</div>
-                          )}
+                        {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
+                          <div className={styles.weightingRemaining}>{this.getRemainingWeighting()}% remaining</div>
+                        )}
                       </div>
                     </div>
                   )}
