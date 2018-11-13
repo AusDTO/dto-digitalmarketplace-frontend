@@ -43,30 +43,41 @@ class AssessmentList extends React.Component {
     } = this.props
 
     return (
-      <span>              
-        <table className="content-table">
-          <thead>
-            <tr>
-              <th>supplier</th>
-              <th>title</th>
-              <th>domain</th>
-              <th>assessments</th>
-              <th>status</th>
-            </tr>
-          </thead>
-          <tbody>
-          {casestudies.map((cs, i) => 
-            <tr>
-              <td>{cs.name}(#{cs.supplier_code})</td>
-              <td><a href={`casestudy-assessment/${cs.id}`}>{cs.data.title}(#{cs.id})</a></td>
-              <td>{cs.data.service}</td>
-              <td>{cs.assessment_count}</td>
-              <td>{cs.status}</td>
-            </tr>
-          )}
-          </tbody>
-        </table>
-      </span>
+      <div>
+        <div className="row">
+          <div className="col-md-2"><b>supplier</b></div>
+          <div className="col-md-4"><b>title</b></div>
+          <div className="col-md-2"><b>domain</b></div>
+          <div className="col-md-2"><b>assessments</b></div>
+          <div className="col-md-2"><b>status</b></div>
+        </div>
+        {casestudies.map((cs, i) =>
+          <span>
+            <div className="row">
+              <div className="col-md-2">{cs.name}(#{cs.supplier_code})</div>
+              <div className="col-md-4"><a href={`casestudy-assessment/${cs.id}`}>{cs.data.title}(#{cs.id})</a></div>
+              <div className="col-md-2">{cs.data.service}</div>
+              <div className="col-md-2">{cs.assessment_count}</div>
+              <div className="col-md-2">{cs.status}</div>
+            </div>
+            <div className="row">
+              <div>
+                <div className="col-md-2"><b>assessors</b></div>
+                <div className="col-md-8"><b>comment</b></div>
+                <div className="col-md-2"><b>status</b></div>
+              </div>
+            </div>
+            {cs.assessment_count > 0 ? cs.assessment_results.map(ar =>
+              <div className="row">
+                <div className="col-md-2">{ar.username}</div>
+                <div className="col-md-8">{ar.comment}</div>
+                <div className="col-md-2">{ar.status}</div>
+              </div>
+            ) : <i>no assessments</i>}
+            <hr/>
+          </span>
+        )}
+      </div>
     )
   }
 }
