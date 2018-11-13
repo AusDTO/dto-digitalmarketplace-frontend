@@ -38,6 +38,7 @@ const SellerSelectView = props => (
 
 const SellerSelectResultsView = props => (
   <ul className={props.className}>
+    {props.noResults && props.searchFor && <li>Seller cannot be found in this category.</li>}
     {props.sellers.map(seller => (
       <li key={seller.code}>
         <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
@@ -55,7 +56,8 @@ export class SellerSelect extends Component {
     super(props)
     this.state = {
       sellers: [],
-      inputValue: ''
+      inputValue: '',
+      noResults: false
     }
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -78,7 +80,8 @@ export class SellerSelect extends Component {
   handleSearchChange(e) {
     const keyword = e.target.value
     this.setState({
-      inputValue: keyword
+      inputValue: keyword,
+      noResults: false
     })
 
     if (timeoutHandle) {
@@ -89,8 +92,10 @@ export class SellerSelect extends Component {
       if (keyword && keyword.length > 2 && this.categoryIsValid()) {
         findSuppliers(keyword, this.props.selectedCategory)
           .then(data => {
+            const noResults = !data.sellers.length > 0
             this.setState({
-              sellers: data.sellers
+              sellers: data.sellers,
+              noResults
             })
           })
           .catch(() => {})
@@ -141,8 +146,10 @@ export class SellerSelect extends Component {
               handleSearchClick={this.handleSearchClick}
             />
             <SellerSelectResultsView
-              className={`${styles.selectList} ${this.state.sellers.length > 0 ? '' : styles.hide}`}
+              className={styles.selectList}
               sellers={this.state.sellers}
+              noResults={this.state.noResults}
+              searchFor={this.state.inputValue}
               handleSellerSelectClick={this.handleSellerSelectClick}
             />
           </div>
