@@ -114,7 +114,7 @@ const Opportunity = props => (
         <AUheading level="3" size="sm">
           What sellers need to submit
         </AUheading>
-        <ul>
+        <ul className={styles.submitList}>
           {props.brief.responseTemplate.map(responseTemplate => (
             <li key={responseTemplate}>
               <a href={`/api/2/brief/${props.brief.id}/attachments/${responseTemplate}`}>Response template</a>
@@ -124,9 +124,7 @@ const Opportunity = props => (
             props.brief.proposalType.length > 0 && (
               <li>
                 Written proposal, including:
-                <ul className={styles.subList}>
-                  {props.brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}
-                </ul>
+                <ul>{props.brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
               </li>
             )}
         </ul>
