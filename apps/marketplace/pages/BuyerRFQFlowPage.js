@@ -100,7 +100,13 @@ export class BuyerRFQFlowPage extends Component {
     }
 
     if (this.state.flowIsDone) {
-      return <BuyerRFQCompleted briefId={briefId} closingDate={this.props[model].closedAt} />
+      return (
+        <BuyerRFQCompleted
+          contactEmail={this.props.emailAddress}
+          briefId={briefId}
+          closingDate={this.props[model].closedAt}
+        />
+      )
     }
 
     return (
@@ -120,7 +126,8 @@ export class BuyerRFQFlowPage extends Component {
 const mapStateToProps = state => ({
   ...formProps(state, model),
   csrfToken: state.app.csrfToken,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  emailAddress: state.app.emailAddress
 })
 
 const mapDispatchToProps = dispatch => ({
