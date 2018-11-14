@@ -33,26 +33,28 @@ class BuyerDashboardHeader extends Component {
             </div>
           </div>
           <div className={`${styles.menuRow} row`}>
-            <div className="col-xs-12 col-sm-8 col-md-9">
-              <ul className={styles.menu}>
-                <li>
-                  <NavLink id="my-briefs-link" to="/" activeClassName={styles.active} exact>
-                    My briefs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink id="team-briefs-link" to="/team-briefs" activeClassName={styles.active}>
-                    Team briefs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink id="team-overview-link" to="/team-overview" activeClassName={styles.active}>
-                    Team overview
-                  </NavLink>
-                </li>
-              </ul>
+            <div className="col-xs-12 col-sm-8">
+              <nav className={styles.dashNav}>
+                <ul className={styles.menu}>
+                  <li>
+                    <NavLink id="my-briefs-link" to="/" activeClassName={styles.active} exact>
+                      My briefs
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink id="team-briefs-link" to="/team-briefs" activeClassName={styles.active}>
+                      Team briefs
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink id="team-overview-link" to="/team-overview" activeClassName={styles.active}>
+                      Team overview
+                    </NavLink>
+                  </li>
+                </ul>
+              </nav>
             </div>
-            <div className={`${styles.alignRight} col-xs-12 col-sm-4 col-md-3 buyer-dashboard-actions`}>
+            <div className={`${styles.dashActions} col-xs-12 col-sm-4 buyer-dashboard-actions`}>
               <AUaccordion
                 header="Create new request"
                 open={this.state.createNewIsOpen}
