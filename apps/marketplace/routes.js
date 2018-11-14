@@ -13,7 +13,6 @@ import BriefChoicePage from './pages/BriefChoicePage'
 import BriefAssessorsPage from './pages/BriefAssessorsPage'
 import BriefOverviewPage from './pages/BriefOverviewPage'
 import OpportunitiesPage from './pages/OpportunitiesPage'
-import MessagesPage from './pages/MessagesPage'
 
 export const rootPath = '/2'
 
@@ -31,7 +30,6 @@ export const Routes = () => (
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
-    <Route path={`${rootPath}/messages`} component={MessagesPage} />
     <Route component={NotFound} />
   </Switch>
 )
