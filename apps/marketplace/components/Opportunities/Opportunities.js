@@ -124,7 +124,11 @@ const Opportunities = props => (
                     open to {mapOpenTo(item.openTo)}
                   </div>
                   <div className={styles.mobileName}>
-                    <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    {item.lot === 'rfx' ? (
+                      <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    ) : (
+                      <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    )}
                     <div className={styles.companyMobile}>At: {item.company}</div>
                   </div>
                   <div className={`${styles.mobileDetails} row`}>
