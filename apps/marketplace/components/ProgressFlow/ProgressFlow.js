@@ -95,6 +95,15 @@ export class ProgressFlow extends Component {
     this.setStageStatus(stage, 'doing')
   }
 
+  getTodoStages() {
+    // remove the final review stage if it exists
+    const stages = { ...this.state.stagesDone }
+    if (stages.review !== undefined) {
+      delete stages.review
+    }
+    return Object.keys(stages).filter(stage => !this.state.stagesDone[stage])
+  }
+
   updateAllStagesDoneStatus() {
     const stagesDone = { ...this.state.stagesDone }
     const stages = { ...this.state.stages }
@@ -203,6 +212,7 @@ export class ProgressFlow extends Component {
                       setCurrentStage={this.setCurrentStage}
                       saveModel={this.props.saveModel}
                       component={stage.component}
+                      stagesTodo={this.getTodoStages()}
                       onSubmit={this.handleFormSubmit}
                       onStageMount={this.props.onStageMount}
                       formButtons={
