@@ -2,7 +2,7 @@ import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { MemoryRouter } from 'react-router-dom'
-import { BuyerDashboardHeader } from './BuyerDashboardHeader'
+import BuyerDashboardHeader from './BuyerDashboardHeader'
 
 Enzyme.configure({ adapter: new Adapter() })
 
