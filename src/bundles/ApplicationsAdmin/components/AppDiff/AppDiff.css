@@ -1,0 +1,16 @@
+table.diff-table tr {
+	border-top-color: black;
+	border-top-style: solid;
+	border-top-width: 2px;
+}
+
+table.diff-table td {
+	width: 25%;
+	padding: 1rem 1rem 2rem 0rem;
+	vertical-align: top;
+	text-align: left;
+}
+table.diff-table th {
+	font-weight: bold;
+	text-align: left;
+}

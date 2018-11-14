@@ -62,6 +62,9 @@ export class AppChanges extends Component {
             <a href={`https://marketplace.service.gov.au/supplier/${supplierCode}`} target="_blank" rel="external">
               Live Supplier Profile
             </a>
+            <a href={`/admin/applications/${appID}/diff`} target="_blank" rel="external">
+              Differences
+            </a>
           </div>
         </div>}
       </div>

@@ -55,12 +55,12 @@ app.post('/render', render);
 
 app.set('view engine', 'ejs');
 
-app.get('/orams*', function(req, res) {
-  res.redirect('https://orams.service.gov.au');
-})
-
 app.get('/2/insights*', function(req, res) {
   res.redirect('https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616');
+})
+
+app.get('/2/collaborate*', function(req, res) {
+  res.redirect('https://infrastructure.gov.au/cities/smart-cities/collaboration-platform/');
 })
 
 app.get('/*', function(req, res) {

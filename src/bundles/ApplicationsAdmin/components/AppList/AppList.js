@@ -163,6 +163,11 @@ class AppList extends Component {
                       <a href={`/admin/applications/${a.id}/edit`} styleName="action">JSON Editor</a>
                     </span>
                   }
+                  {
+                    a.type === 'edit' && <span>
+                      <a href={`/admin/applications/${a.id}/diff`} styleName="action">Diff</a>
+                    </span>
+                  }
                   {(a.status !== 'deleted' &&
                     <span>
                       

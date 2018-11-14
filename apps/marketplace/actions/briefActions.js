@@ -47,7 +47,7 @@ export const handleDeleteBriefSuccess = response => ({
   data: response.data
 })
 
-export const deleteBrief = briefId => dispatch => {
+export const deleteBrief = briefId => (dispatch, getState) => {
   const getErrorMessage = status =>
     ({
       400: BRIEF_MUST_BE_DRAFT,
@@ -56,7 +56,14 @@ export const deleteBrief = briefId => dispatch => {
     }[status])
 
   dispatch(sendingRequest(true))
-  dmapi({ method: 'delete', url: `/brief/${briefId}` }).then(response => {
+  dmapi({
+    method: 'delete',
+    url: `/brief/${briefId}`,
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
     if (!response || response.error) {
       const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
       dispatch(setErrorMessage(errorMessage))
@@ -110,11 +117,15 @@ export const handleBriefResponseSuccess = response => ({
   briefResponse: response.data.briefResponses
 })
 
-export const handleBriefResponseSubmit = (briefId, model) => dispatch => {
+export const handleBriefResponseSubmit = (briefId, model) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     url: `/brief/${briefId}/respond`,
     method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
     data: JSON.stringify(model)
   }).then(response => {
     if (response.error) {
