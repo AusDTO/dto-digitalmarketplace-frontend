@@ -2,6 +2,21 @@
   opacity: 0.6;
 }
 
+.createNew ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.createNew ul li {
+  text-align: left;
+  padding-bottom: 1.5rem;
+}
+
+.createNew ul li:last-child {
+  padding-bottom: 0;
+}
+
 .menuRow {
   margin-top: 2.5rem;
 }
