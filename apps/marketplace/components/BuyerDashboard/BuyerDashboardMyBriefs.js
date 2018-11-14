@@ -8,6 +8,18 @@ import { rootPath } from 'marketplace/routes'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
 
+const getBriefTitle = item => {
+  let Title = <span>{item.name}</span>
+  if (item.status !== 'draft') {
+    let url = `/digital-marketplace/opportunities/${item.id}`
+    if (item.lot === 'rfx') {
+      url = `${rootPath}/${url}`
+    }
+    Title = <a href={url}>{item.name}</a>
+  }
+  return Title
+}
+
 export class BuyerDashboardMyBriefs extends Component {
   componentDidMount() {
     this.props.loadData()
@@ -65,15 +77,7 @@ export class BuyerDashboardMyBriefs extends Component {
               {this.props.items.map(item => (
                 <tr key={`item.${item.id}`}>
                   <td className={styles.colId}>{item.id}</td>
-                  <td className={styles.colName}>
-                    {item.lot === 'rfx' ? (
-                      <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>
-                        {item.name ? item.name : 'Untitled outcome'}
-                      </a>
-                    ) : (
-                      <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
-                    )}
-                  </td>
+                  <td className={styles.colName}>{getBriefTitle(item)}</td>
                   <td
                     className={`${item.status === 'live' || item.status !== 'draft' ? '' : styles.empty} ${
                       styles.colClosing
