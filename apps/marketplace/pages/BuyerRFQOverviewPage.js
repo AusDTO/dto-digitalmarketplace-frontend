@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBrief } from 'marketplace/actions/briefActions'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import BuyerRFQOverview from 'marketplace/components/BuyerRFQ/BuyerRFQOverview'
 
 class BuyerRFQOverviewPage extends Component {
@@ -32,6 +33,25 @@ class BuyerRFQOverviewPage extends Component {
   }
 
   render() {
+    if (this.props.errorMessage) {
+      let hasFocused = false
+      const setFocus = e => {
+        if (!hasFocused) {
+          hasFocused = true
+          e.focus()
+        }
+      }
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the brief details"
+          errorMessage={this.props.errorMessage}
+          setFocus={setFocus}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
+    }
+
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
@@ -46,7 +66,8 @@ class BuyerRFQOverviewPage extends Component {
 
 const mapStateToProps = state => ({
   brief: state.brief.brief,
-  briefResponses: state.brief.briefResponses
+  briefResponses: state.brief.briefResponses,
+  errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({

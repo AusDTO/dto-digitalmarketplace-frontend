@@ -30,11 +30,7 @@ class OpportunityPage extends Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <LoadingIndicatorFullPage />
-    }
-
-    if (!this.props.loadBriefSuccess) {
+    if (this.props.errorMessage) {
       let hasFocused = false
       const setFocus = e => {
         if (!hasFocused) {
@@ -51,6 +47,10 @@ class OpportunityPage extends Component {
           invalidFields={[]}
         />
       )
+    }
+
+    if (this.state.loading) {
+      return <LoadingIndicatorFullPage />
     }
 
     if (this.props.brief && this.props.brief.id) {
