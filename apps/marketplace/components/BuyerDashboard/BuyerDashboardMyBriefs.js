@@ -9,13 +9,14 @@ import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
 
 const getBriefTitle = item => {
-  let Title = <span>{item.name}</span>
+  const name = item.name || 'Untitled outcome'
+  let Title = <span>{name}</span>
   if (item.status !== 'draft') {
     let url = `/digital-marketplace/opportunities/${item.id}`
     if (item.lot === 'rfx') {
       url = `${rootPath}${url}`
     }
-    Title = <a href={url}>{item.name}</a>
+    Title = <a href={url}>{name}</a>
   }
   return Title
 }
