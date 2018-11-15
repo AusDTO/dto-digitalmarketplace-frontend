@@ -89,6 +89,7 @@ export const handlePublicBriefInfoSuccess = response => ({
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
   isInvitedSeller: response.data.is_invited_seller,
+  isBriefOwner: response.data.is_brief_owner,
   domains: response.data.domains
 })
 

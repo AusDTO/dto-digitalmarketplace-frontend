@@ -144,7 +144,23 @@ const Opportunity = props => (
           evaluationCriteria={props.brief.evaluationCriteria}
           showWeightings={props.brief.includeWeightings}
         />
-        <QuestionAnswer questions={props.brief.clarificationQuestions} />
+        {props.brief.industryBriefing &&
+          (props.isInvitedSeller || props.isBriefOwner) && (
+            <div>
+              <span />
+              <AUheading level="2" size="lg">
+                Industry briefing
+              </AUheading>
+              <p>{props.brief.industryBriefing}</p>
+            </div>
+          )}
+        <QuestionAnswer
+          questions={props.brief.clarificationQuestions}
+          questionsClosingDate={props.brief.dates.questions_close}
+          clarificationQuestionsAreClosed={props.brief.clarificationQuestionsAreClosed}
+          briefId={props.brief.id}
+          showAskQuestionInfo={props.isInvitedSeller}
+        />
       </div>
       {props.brief.status !== 'draft' && (
         <div className="col-xs-12 col-md-4">
@@ -169,6 +185,7 @@ Opportunity.defaultProps = {
     dates: {
       closing_time: '',
       questions_closing_date: '',
+      questions_close: '',
       published_date: ''
     },
     summary: '',
@@ -184,11 +201,13 @@ Opportunity.defaultProps = {
     attachments: [],
     proposalType: [],
     industryBriefing: '',
-    clarificationQuestions: []
+    clarificationQuestions: [],
+    clarificationQuestionsAreClosed: true
   },
   briefResponseCount: 0,
   invitedSellerCount: 0,
-  isInvitedSeller: false
+  isInvitedSeller: false,
+  isBriefOwner: false
 }
 
 Opportunity.propTypes = {
@@ -199,6 +218,7 @@ Opportunity.propTypes = {
     dates: PropTypes.shape({
       closing_time: PropTypes.string,
       questions_closing_date: PropTypes.string,
+      questions_close: PropTypes.string,
       published_date: PropTypes.string
     }),
     summary: PropTypes.string,
@@ -214,11 +234,13 @@ Opportunity.propTypes = {
     attachments: PropTypes.array,
     proposalType: PropTypes.array,
     industryBriefing: PropTypes.string,
-    clarificationQuestions: PropTypes.array
+    clarificationQuestions: PropTypes.array,
+    clarificationQuestionsAreClosed: PropTypes.bool
   }),
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
-  isInvitedSeller: PropTypes.bool
+  isInvitedSeller: PropTypes.bool,
+  isBriefOwner: PropTypes.bool
 }
 
 export default Opportunity
