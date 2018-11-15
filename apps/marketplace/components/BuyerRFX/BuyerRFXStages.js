@@ -1,31 +1,31 @@
 import { validDate } from 'marketplace/components/validators'
-import BuyerRFQIntroductionStage from './BuyerRFQIntroductionStage'
-import BuyerRFQAboutStage from './BuyerRFQAboutStage'
-import BuyerRFQSelectStage from './BuyerRFQSelectStage'
-import BuyerRFQRequirementsStage from './BuyerRFQRequirementsStage'
-import BuyerRFQReviewStage from './BuyerRFQReviewStage'
-import BuyerRFQMarketApproachStage from './BuyerRFQMarketApproachStage'
-import BuyerRFQResponseFormatsStage from './BuyerRFQResponseFormatsStage'
-import BuyerRFQTimeframesAndBudgetStage from './BuyerRFQTimeframesAndBudgetStage'
-import BuyerRFQEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerRFQEvaluationCriteriaStage'
+import BuyerRFXIntroductionStage from './BuyerRFXIntroductionStage'
+import BuyerRFXAboutStage from './BuyerRFXAboutStage'
+import BuyerRFXSelectStage from './BuyerRFXSelectStage'
+import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
+import BuyerRFXReviewStage from './BuyerRFXReviewStage'
+import BuyerRFXMarketApproachStage from './BuyerRFXMarketApproachStage'
+import BuyerRFXResponseFormatsStage from './BuyerRFXResponseFormatsStage'
+import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
+import BuyerRFXEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerRFXEvaluationCriteriaStage'
 
-const BuyerRFQStages = [
+const BuyerRFXStages = [
   {
     slug: 'introduction',
     title: 'Introduction',
-    component: BuyerRFQIntroductionStage,
+    component: BuyerRFXIntroductionStage,
     isDone: () => true
   },
   {
     slug: 'select',
     title: 'Select sellers',
-    component: BuyerRFQSelectStage,
+    component: BuyerRFXSelectStage,
     isDone: formValues => Object.keys(formValues.sellers).length > 0 && formValues.sellerCategory
   },
   {
     slug: 'about',
     title: 'About',
-    component: BuyerRFQAboutStage,
+    component: BuyerRFXAboutStage,
     isDone: formValues =>
       formValues.title.length > 0 &&
       formValues.organisation.length > 0 &&
@@ -35,7 +35,7 @@ const BuyerRFQStages = [
   {
     slug: 'formats',
     title: 'Response formats',
-    component: BuyerRFQResponseFormatsStage,
+    component: BuyerRFXResponseFormatsStage,
     isDone: formValues =>
       (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
       formValues.proposalType.length > 0
@@ -43,7 +43,7 @@ const BuyerRFQStages = [
   {
     slug: 'requirements',
     title: 'Requirements',
-    component: BuyerRFQRequirementsStage,
+    component: BuyerRFXRequirementsStage,
     isDone: formValues =>
       formValues.requirementsDocument.length > 0 &&
       formValues.requirementsDocument.every(val => val) &&
@@ -53,13 +53,13 @@ const BuyerRFQStages = [
   {
     slug: 'timeframes',
     title: 'Timeframes and budget',
-    component: BuyerRFQTimeframesAndBudgetStage,
+    component: BuyerRFXTimeframesAndBudgetStage,
     isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
   },
   {
     slug: 'criteria',
     title: 'Evaluation criteria',
-    component: BuyerRFQEvaluationCriteriaStage,
+    component: BuyerRFXEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
       formValues.evaluationCriteria.every(val => val.criteria) &&
@@ -68,14 +68,14 @@ const BuyerRFQStages = [
   {
     slug: 'approach',
     title: 'Briefing and closing date',
-    component: BuyerRFQMarketApproachStage,
+    component: BuyerRFXMarketApproachStage,
     isDone: formValues => validDate(formValues.closedAt)
   },
   {
     slug: 'review',
     title: 'Review and publish',
-    component: BuyerRFQReviewStage
+    component: BuyerRFXReviewStage
   }
 ]
 
-export default BuyerRFQStages
+export default BuyerRFXStages

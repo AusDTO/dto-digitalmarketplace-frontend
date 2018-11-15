@@ -120,7 +120,7 @@ export const handleCreateRFXBriefSuccess = response => ({
 export const createRFXBrief = () => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
-    url: '/brief/rfq',
+    url: '/brief/rfx',
     method: 'POST',
     headers: {
       'X-CSRFToken': getState().app.csrfToken,

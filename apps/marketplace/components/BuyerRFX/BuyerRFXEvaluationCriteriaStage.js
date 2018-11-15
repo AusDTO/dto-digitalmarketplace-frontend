@@ -8,7 +8,7 @@ import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import ErrorAlert from './ErrorAlert'
-import styles from './BuyerRFQEvaluationCriteriaStage.scss'
+import styles from './BuyerRFXEvaluationCriteriaStage.scss'
 
 export const weightingsAddUpTo100 = evaluationCriteria =>
   !evaluationCriteria.some(val => val.weighting) ||
@@ -17,7 +17,7 @@ export const weightingsAddUpTo100 = evaluationCriteria =>
 
 export const noEmptyCriteria = evaluationCriteria => evaluationCriteria.every(val => val.criteria)
 
-class BuyerRFQEvaluationCriteriaStage extends Component {
+class BuyerRFXEvaluationCriteriaStage extends Component {
   constructor(props) {
     super(props)
     this.handleIncludeWeightingsChange = this.handleIncludeWeightingsChange.bind(this)
@@ -161,14 +161,14 @@ class BuyerRFQEvaluationCriteriaStage extends Component {
   }
 }
 
-BuyerRFQEvaluationCriteriaStage.defaultProps = {
+BuyerRFXEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromCriteria: () => {},
   addEmptyEvalutationCriteria: () => {},
   removeCriteriaByIndex: () => {},
   onSubmit: () => {}
 }
 
-BuyerRFQEvaluationCriteriaStage.propTypes = {
+BuyerRFXEvaluationCriteriaStage.propTypes = {
   model: PropTypes.string.isRequired,
   clearWeightingsFromCriteria: PropTypes.func,
   addEmptyEvalutationCriteria: PropTypes.func,
@@ -205,4 +205,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQEvaluationCriteriaStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXEvaluationCriteriaStage)

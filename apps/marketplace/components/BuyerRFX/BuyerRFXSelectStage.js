@@ -7,9 +7,9 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import SelectedSellersControl from './SelectedSellersControl'
 import ErrorAlert from './ErrorAlert'
-import styles from './BuyerRFQSelectStage.scss'
+import styles from './BuyerRFXSelectStage.scss'
 
-export class BuyerRFQSelectStage extends Component {
+export class BuyerRFXSelectStage extends Component {
   constructor(props) {
     super(props)
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
@@ -109,11 +109,11 @@ export class BuyerRFQSelectStage extends Component {
   }
 }
 
-BuyerRFQSelectStage.defaultProps = {
+BuyerRFXSelectStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFQSelectStage.propTypes = {
+BuyerRFXSelectStage.propTypes = {
   model: PropTypes.string.isRequired,
   saveModel: PropTypes.func.isRequired,
   formButtons: PropTypes.node.isRequired,
@@ -131,4 +131,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQSelectStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXSelectStage)

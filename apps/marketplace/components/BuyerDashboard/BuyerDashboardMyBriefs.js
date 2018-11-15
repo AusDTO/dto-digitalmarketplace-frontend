@@ -119,7 +119,7 @@ export class BuyerDashboardMyBriefs extends Component {
                       )}
                     {item.status === 'draft' &&
                       item.lot === 'rfx' && (
-                        <a href={`${rootPath}/brief/${item.id}/overview/rfq`}>
+                        <a href={`${rootPath}/brief/${item.id}/overview/rfx`}>
                           <strong>Edit draft</strong>
                         </a>
                       )}

@@ -13,9 +13,9 @@ import BriefChoicePage from './pages/BriefChoicePage'
 import BriefAssessorsPage from './pages/BriefAssessorsPage'
 import BriefOverviewPage from './pages/BriefOverviewPage'
 import OpportunitiesPage from './pages/OpportunitiesPage'
-import BuyerRFQCreatePage from './pages/BuyerRFQCreatePage'
-import BuyerRFQFlowPage from './pages/BuyerRFQFlowPage'
-import BuyerRFQOverviewPage from './pages/BuyerRFQOverviewPage'
+import BuyerRFXCreatePage from './pages/BuyerRFXCreatePage'
+import BuyerRFXFlowPage from './pages/BuyerRFXFlowPage'
+import BuyerRFXOverviewPage from './pages/BuyerRFXOverviewPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
 
@@ -28,8 +28,8 @@ export const Routes = () => (
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
     <PrivateRoute
       restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/overview/rfq`}
-      component={BuyerRFQOverviewPage}
+      path={`${rootPath}/brief/:briefId/overview/rfx`}
+      component={BuyerRFXOverviewPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
@@ -41,8 +41,8 @@ export const Routes = () => (
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/create-brief`} component={BriefChoicePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfq/create`} component={BuyerRFQCreatePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfq/:briefId/:stage?`} component={BuyerRFQFlowPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={BuyerRFXCreatePage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
     <Route component={NotFound} />
   </Switch>

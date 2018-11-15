@@ -4,9 +4,9 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
-import styles from './BuyerRFQCompleted.scss'
+import styles from './BuyerRFXCompleted.scss'
 
-const BuyerRFQCompleted = props => (
+const BuyerRFXCompleted = props => (
   <div>
     <AUpageAlert as="success">
       <AUheading level="1" size="md">
@@ -41,7 +41,7 @@ const BuyerRFQCompleted = props => (
       If you need help at any time, <a href="/contact-us">contact us</a>.
     </p>
     <p className={styles.buttons}>
-      <a href={`${rootPath}/brief/${props.briefId}/overview/rfq`} className="au-btn au-btn--secondary">
+      <a href={`${rootPath}/brief/${props.briefId}/overview/rfx`} className="au-btn au-btn--secondary">
         Return to overview
       </a>
       <a href={`${rootPath}/digital-marketplace/opportunities/${props.briefId}`} className="au-btn">
@@ -51,10 +51,10 @@ const BuyerRFQCompleted = props => (
   </div>
 )
 
-BuyerRFQCompleted.propTypes = {
+BuyerRFXCompleted.propTypes = {
   briefId: PropTypes.string.isRequired,
   closingDate: PropTypes.string.isRequired,
   contactEmail: PropTypes.string.isRequired
 }
 
-export default BuyerRFQCompleted
+export default BuyerRFXCompleted

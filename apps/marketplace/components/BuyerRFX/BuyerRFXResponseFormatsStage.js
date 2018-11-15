@@ -7,9 +7,9 @@ import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
-import styles from './BuyerRFQResponseFormatsStage.scss'
+import styles from './BuyerRFXResponseFormatsStage.scss'
 
-const BuyerRFQResponseFormatsStage = props => (
+const BuyerRFXResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
@@ -148,11 +148,11 @@ const BuyerRFQResponseFormatsStage = props => (
   </Form>
 )
 
-BuyerRFQResponseFormatsStage.defaultProps = {
+BuyerRFXResponseFormatsStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFQResponseFormatsStage.propTypes = {
+BuyerRFXResponseFormatsStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func
@@ -162,4 +162,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFQResponseFormatsStage)
+export default connect(mapStateToProps)(BuyerRFXResponseFormatsStage)

@@ -9,7 +9,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import ClosingDateControl from './ClosingDateControl'
 
-class BuyerRFQMarketApproachStage extends Component {
+class BuyerRFXMarketApproachStage extends Component {
   constructor(props) {
     super(props)
 
@@ -65,11 +65,11 @@ class BuyerRFQMarketApproachStage extends Component {
   }
 }
 
-BuyerRFQMarketApproachStage.defaultProps = {
+BuyerRFXMarketApproachStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFQMarketApproachStage.propTypes = {
+BuyerRFXMarketApproachStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func
@@ -83,4 +83,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQMarketApproachStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXMarketApproachStage)

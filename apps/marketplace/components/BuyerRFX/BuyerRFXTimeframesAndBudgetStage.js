@@ -9,7 +9,7 @@ import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 
-const BuyerRFQTimeframesAndBudgetStage = props => (
+const BuyerRFXTimeframesAndBudgetStage = props => (
   <Form
     model={props.model}
     onSubmit={props.onSubmit}
@@ -82,11 +82,11 @@ const BuyerRFQTimeframesAndBudgetStage = props => (
   </Form>
 )
 
-BuyerRFQTimeframesAndBudgetStage.defaultProps = {
+BuyerRFXTimeframesAndBudgetStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFQTimeframesAndBudgetStage.propTypes = {
+BuyerRFXTimeframesAndBudgetStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func
@@ -96,4 +96,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFQTimeframesAndBudgetStage)
+export default connect(mapStateToProps)(BuyerRFXTimeframesAndBudgetStage)

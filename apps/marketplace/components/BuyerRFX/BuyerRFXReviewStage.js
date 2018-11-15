@@ -9,11 +9,11 @@ import format from 'date-fns/format'
 import subDays from 'date-fns/sub_days'
 import addDays from 'date-fns/add_days'
 import isWeekend from 'date-fns/is_weekend'
-import BuyerRFQStages from './BuyerRFQStages'
-import styles from './BuyerRFQReviewStage.scss'
+import BuyerRFXStages from './BuyerRFXStages'
+import styles from './BuyerRFXReviewStage.scss'
 
 const getStageNameBySlug = stageToFind => {
-  const match = BuyerRFQStages.find(stage => stage.slug === stageToFind)
+  const match = BuyerRFXStages.find(stage => stage.slug === stageToFind)
   return match ? match.title : ''
 }
 
@@ -49,7 +49,7 @@ const getLastAnswerDate = closingDate => {
   return lastAnswerDate
 }
 
-const BuyerRFQReviewStage = props => (
+const BuyerRFXReviewStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     {props.stagesTodo.length > 0 ? (
       <div>
@@ -114,12 +114,12 @@ const BuyerRFQReviewStage = props => (
   </Form>
 )
 
-BuyerRFQReviewStage.defaultProps = {
+BuyerRFXReviewStage.defaultProps = {
   onSubmit: () => {},
   stagesTodo: []
 }
 
-BuyerRFQReviewStage.propTypes = {
+BuyerRFXReviewStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   stagesTodo: PropTypes.array,
@@ -130,4 +130,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFQReviewStage)
+export default connect(mapStateToProps)(BuyerRFXReviewStage)

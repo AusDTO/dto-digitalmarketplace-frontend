@@ -4,16 +4,16 @@ import { actions } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
-import BuyerRFQStages from 'marketplace/components/BuyerRFQ/BuyerRFQStages'
-import BuyerRFQCompleted from 'marketplace/components/BuyerRFQ/BuyerRFQCompleted'
+import BuyerRFXStages from 'marketplace/components/BuyerRFX/BuyerRFXStages'
+import BuyerRFXCompleted from 'marketplace/components/BuyerRFX/BuyerRFXCompleted'
 import { rootPath } from 'marketplace/routes'
 import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { BuyerRFQFormReducer } from 'marketplace/reducers'
+import { BuyerRFXFormReducer } from 'marketplace/reducers'
 
-const model = 'BuyerRFQForm'
+const model = 'BuyerRFXForm'
 
-export class BuyerRFQFlowPage extends Component {
+export class BuyerRFXFlowPage extends Component {
   constructor(props) {
     super(props)
 
@@ -38,10 +38,10 @@ export class BuyerRFQFlowPage extends Component {
     })
     this.props.loadInitialData(this.props.match.params.briefId).then(response => {
       // only accept data defined in the form reducer
-      const data = { ...BuyerRFQFormReducer }
+      const data = { ...BuyerRFXFormReducer }
       if (response.data.brief) {
         Object.keys(response.data.brief).map(property => {
-          if (Object.keys(BuyerRFQFormReducer).includes(property)) {
+          if (Object.keys(BuyerRFXFormReducer).includes(property)) {
             data[property] = response.data.brief[property]
             return true
           }
@@ -101,7 +101,7 @@ export class BuyerRFQFlowPage extends Component {
 
     if (this.state.flowIsDone) {
       return (
-        <BuyerRFQCompleted
+        <BuyerRFXCompleted
           contactEmail={this.props.emailAddress}
           briefId={briefId}
           closingDate={this.props[model].closedAt}
@@ -112,11 +112,11 @@ export class BuyerRFQFlowPage extends Component {
     return (
       <ProgressFlow
         model={model}
-        basename={`${rootPath}/buyer-rfq/${briefId}`}
-        stages={BuyerRFQStages}
+        basename={`${rootPath}/buyer-rfx/${briefId}`}
+        stages={BuyerRFXStages}
         onStageMount={this.handleStageMount}
         saveModel={this.saveBrief}
-        returnPath={`${rootPath}/brief/${briefId}/overview/rfq`}
+        returnPath={`${rootPath}/brief/${briefId}/overview/rfx`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
       />
     )
@@ -137,4 +137,4 @@ const mapDispatchToProps = dispatch => ({
   resetFormValidity: () => dispatch(actions.resetValidity(model))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQFlowPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXFlowPage)

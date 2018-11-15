@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 
-const BuyerRFQIntroductionStage = props => (
+const BuyerRFXIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     <AUheadings level="1" size="xl">
       Seek proposals for digital services or outcomes
@@ -38,14 +38,14 @@ const BuyerRFQIntroductionStage = props => (
   </Form>
 )
 
-BuyerRFQIntroductionStage.defaultProps = {
+BuyerRFXIntroductionStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFQIntroductionStage.propTypes = {
+BuyerRFXIntroductionStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func
 }
 
-export default BuyerRFQIntroductionStage
+export default BuyerRFXIntroductionStage

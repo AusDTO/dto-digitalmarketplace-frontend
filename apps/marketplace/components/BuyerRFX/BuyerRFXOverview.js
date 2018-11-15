@@ -11,7 +11,7 @@ import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
-import styles from './BuyerRFQOverview.scss'
+import styles from './BuyerRFXOverview.scss'
 
 const GreenTick = () => <img className={styles.greenTick} src="/static/svg/green-tick.svg" alt="Success" />
 
@@ -44,7 +44,7 @@ const downloadResponsesRender = (brief, isPublished, isClosed) => {
   return <span>Download responses</span>
 }
 
-class BuyerRFQOverview extends Component {
+class BuyerRFXOverview extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -165,7 +165,7 @@ class BuyerRFQOverview extends Component {
                 </span>
               ) : (
                 <span>
-                  <a href={`${rootPath}/buyer-rfq/${brief.id}/introduction`}>Create and publish request</a>
+                  <a href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}>Create and publish request</a>
                 </span>
               )}
             </li>
@@ -202,7 +202,7 @@ class BuyerRFQOverview extends Component {
   }
 }
 
-BuyerRFQOverview.propTypes = {
+BuyerRFXOverview.propTypes = {
   brief: PropTypes.object.isRequired
 }
 
@@ -214,4 +214,4 @@ const mapDispatchToProps = dispatch => ({
   deleteBrief: briefId => dispatch(deleteBrief(briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQOverview)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXOverview)

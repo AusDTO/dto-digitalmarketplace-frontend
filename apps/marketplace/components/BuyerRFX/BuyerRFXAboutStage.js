@@ -9,7 +9,7 @@ import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
-import styles from './BuyerRFQAboutStage.scss'
+import styles from './BuyerRFXAboutStage.scss'
 
 const locations = {
   act: 'Australian Capital Territory',
@@ -23,7 +23,7 @@ const locations = {
   remote: 'Can be delivered remotely'
 }
 
-const BuyerRFQAboutStage = props => (
+const BuyerRFXAboutStage = props => (
   <Form
     model={props.model}
     validators={{
@@ -133,11 +133,11 @@ const BuyerRFQAboutStage = props => (
   </Form>
 )
 
-BuyerRFQAboutStage.defaultProps = {
+BuyerRFXAboutStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFQAboutStage.propTypes = {
+BuyerRFXAboutStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func
@@ -147,4 +147,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFQAboutStage)
+export default connect(mapStateToProps)(BuyerRFXAboutStage)

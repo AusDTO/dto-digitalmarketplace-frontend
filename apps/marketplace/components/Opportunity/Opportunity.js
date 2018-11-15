@@ -19,12 +19,12 @@ const Opportunity = props => (
               </div>
               <div className={`${styles.previewButtons} col-xs-12 col-sm-5`}>
                 <a
-                  href={`${rootPath}/buyer-rfq/${props.brief.id}/introduction`}
+                  href={`${rootPath}/buyer-rfx/${props.brief.id}/introduction`}
                   className={`${styles.publishBtn} au-btn au-btn--secondary`}
                 >
                   Edit
                 </a>
-                <a href={`${rootPath}/buyer-rfq/${props.brief.id}/review`} className={`${styles.publishBtn} au-btn`}>
+                <a href={`${rootPath}/buyer-rfx/${props.brief.id}/review`} className={`${styles.publishBtn} au-btn`}>
                   Proceed to publish
                 </a>
               </div>

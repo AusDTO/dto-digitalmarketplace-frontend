@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBrief } from 'marketplace/actions/briefActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
-import BuyerRFQOverview from 'marketplace/components/BuyerRFQ/BuyerRFQOverview'
+import BuyerRFXOverview from 'marketplace/components/BuyerRFX/BuyerRFXOverview'
 
-class BuyerRFQOverviewPage extends Component {
+class BuyerRFXOverviewPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -57,7 +57,7 @@ class BuyerRFQOverviewPage extends Component {
     }
 
     if (this.props.brief) {
-      return <BuyerRFQOverview brief={this.props.brief} briefResponses={this.props.briefResponses} />
+      return <BuyerRFXOverview brief={this.props.brief} briefResponses={this.props.briefResponses} />
     }
 
     return null
@@ -74,4 +74,4 @@ const mapDispatchToProps = dispatch => ({
   loadData: briefId => dispatch(loadBrief(briefId))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerRFQOverviewPage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerRFXOverviewPage))

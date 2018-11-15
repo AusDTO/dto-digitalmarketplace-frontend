@@ -9,7 +9,7 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import ErrorAlert from './ErrorAlert'
 
-export class BuyerRFQRequirementsStage extends Component {
+export class BuyerRFXRequirementsStage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -150,11 +150,11 @@ export class BuyerRFQRequirementsStage extends Component {
   }
 }
 
-BuyerRFQRequirementsStage.defaultProps = {
+BuyerRFXRequirementsStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFQRequirementsStage.propTypes = {
+BuyerRFXRequirementsStage.propTypes = {
   model: PropTypes.string.isRequired,
   saveModel: PropTypes.func.isRequired,
   formButtons: PropTypes.node.isRequired,
@@ -165,4 +165,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFQRequirementsStage)
+export default connect(mapStateToProps)(BuyerRFXRequirementsStage)

@@ -62,7 +62,7 @@ const BriefOutcomeChoice = () => (
             <li>Set your own timeframes (2 days minimum)</li>
           </ul>
           <p className={styles.buttons}>
-            <a href={`${rootPath}/buyer-rfq/create`} className="au-btn">
+            <a href={`${rootPath}/buyer-rfx/create`} className="au-btn">
               Get started
             </a>
           </p>

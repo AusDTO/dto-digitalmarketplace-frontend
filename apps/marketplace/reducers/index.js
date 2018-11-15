@@ -9,7 +9,7 @@ import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 
-export const BuyerRFQFormReducer = {
+export const BuyerRFXFormReducer = {
   id: 0,
   title: '',
   organisation: '',
@@ -97,6 +97,6 @@ export default combineReducers({
         Remote: false
       }
     },
-    BuyerRFQForm: BuyerRFQFormReducer
+    BuyerRFXForm: BuyerRFXFormReducer
   })
 })

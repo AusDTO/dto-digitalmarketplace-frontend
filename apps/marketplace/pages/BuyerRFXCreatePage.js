@@ -5,7 +5,7 @@ import { createRFXBrief } from 'marketplace/actions/briefActions'
 import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
-export class BuyerRFQCreatePage extends Component {
+export class BuyerRFXCreatePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,7 +25,7 @@ export class BuyerRFQCreatePage extends Component {
 
   render() {
     if (this.state.briefId) {
-      return <Redirect to={`${rootPath}/brief/${this.state.briefId}/overview/rfq`} />
+      return <Redirect to={`${rootPath}/brief/${this.state.briefId}/overview/rfx`} />
     }
 
     return <LoadingIndicatorFullPage />
@@ -40,4 +40,4 @@ const mapDispatchToProps = dispatch => ({
   createRFXBrief: () => dispatch(createRFXBrief())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFQCreatePage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXCreatePage)
