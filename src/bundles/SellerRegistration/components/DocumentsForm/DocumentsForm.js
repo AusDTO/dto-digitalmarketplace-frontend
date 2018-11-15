@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { Form, Control, actions } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
+import isPast from 'date-fns/is_past';
+import isToday from 'date-fns/is_today';
+import parse from 'date-fns/parse';
 
 import Layout from '../../../../shared/Layout';
 import BaseForm from '../../../../shared/form/BaseForm';
@@ -36,8 +39,17 @@ class DocumentsForm extends BaseForm {
     static defaultProps = {
         match: { url: '' }
     }
+    
     state = {
-        errors: {}
+        errors: {},
+        liability: {
+            newDocumentUploaded: this.props.documentsForm.documents.liability && 
+                this.props.documentsForm.documents.liability.expiry ? false : true
+        },
+        workers: {
+            newDocumentUploaded: this.props.documentsForm.documents.workers &&
+                this.props.documentsForm.documents.workers.expiry ? false : true
+        }
     }
 
     formFields = [
@@ -61,6 +73,20 @@ class DocumentsForm extends BaseForm {
         }
     ]
 
+    componentDidMount() {
+        const documents = this.props.documentsForm.documents
+        Object.keys(documents).map(key => {
+            const document = documents[key]
+
+            if (document.expiry) {
+                const documentExpiry = parse(document.expiry)
+                if (isPast(documentExpiry) || isToday(documentExpiry)) {
+                    this.resetDocument(key)
+                }
+            }
+        })
+    }
+
     onUpload(id, e) {
         e.preventDefault();
         const { model, onUpload, removeDocument, updateDocumentName, createDocument, submitApplication, applicationId } = this.props;
@@ -75,7 +101,7 @@ class DocumentsForm extends BaseForm {
         onUpload(id, file)
             .then((filename) => {
                 this.setState({
-                    [id]: Object.assign({}, this.state[id], { 'uploading': false })
+                    [id]: Object.assign({}, this.state[id], { 'uploading': false, newDocumentUploaded: true })
                 });
                 updateDocumentName(model, id, filename, applicationId);
             })
@@ -90,12 +116,7 @@ class DocumentsForm extends BaseForm {
 
     onReset(id, e) {
         e.preventDefault();
-        const { model, removeDocument, createDocument } = this.props;
-        removeDocument(model, id);
-        createDocument(model, id);
-        this.setState({
-            [id]: Object.assign({}, this.state[id], { 'file': void 0 })
-        })
+        this.resetDocument(id);
     }
 
     onChange(id, e) {
@@ -104,6 +125,16 @@ class DocumentsForm extends BaseForm {
             [id]: Object.assign({}, this.state[id], { 'file': e.target.files[0] }),
             errors: { [id]: void 0 }
         });
+    }
+
+    resetDocument(key) {
+        const { model, removeDocument, createDocument } = this.props
+
+        removeDocument(model, key);
+        createDocument(model, key);
+        this.setState({
+            [key]: Object.assign({}, this.state[key], { 'file': void 0 })
+        })
     }
 
     render() {
@@ -219,7 +250,8 @@ class DocumentsForm extends BaseForm {
                                                     id={`${key}_expiry`}
                                                     label="Expiry date:"
                                                     updateOn="change"
-                                                    validators={{ validDate }}
+                                                    validators={{validDate}}
+                                                    disabled={!this.state[key].newDocumentUploaded}
                                                     controlProps={{
                                                         id: expiry_date_field,
                                                         model: `${model}.documents.${key}.expiry`,
@@ -244,16 +276,16 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-                        {this.props.documentsForm.documents.workers && this.props.documentsForm.documents.workers.expiry ?
-                            '' :
-                            <CheckboxDetailsField
-                                id="compensation"
-                                name="compensation"
-                                value="compensation"
-                                label="I am not required to hold Workers Compensation Insurance"
-                                model={`${model}.documents.workers.noWorkersCompensation`}
-                                detailsModel={model}
-                            />
+                        {documentsForm.documents.workers && documentsForm.documents.workers.filename ?
+                          '' :
+                          <CheckboxDetailsField
+                            id="compensation"
+                            name="compensation"
+                            value="compensation"
+                            label="I am not required to hold Workers Compensation Insurance"
+                            model={`${model}.documents.workers.noWorkersCompensation`}
+                            detailsModel={model}
+                          />
                         }
                         <StepNav buttonText={buttonText} to={nextRoute} />
                     </Form>
