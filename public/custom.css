@@ -438,6 +438,11 @@ label.text-box-number-label {
   color: #00698f;
 }
 
+.buyer-dashboard-actions .au-accordion__title:focus, .buyer-dashboard-actions .au-accordion__title:hover {
+  outline: solid 3px #00698f;
+  outline-offset: -3px;
+}
+
 .opportunities-page .au-accordion--open.au-accordion__title:after, .buyer-dashboard-actions .au-accordion--open.au-accordion__title:after {
   margin-top: -0.5rem;
 }
