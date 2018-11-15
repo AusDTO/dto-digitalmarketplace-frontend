@@ -2,7 +2,6 @@ import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid';
 import isFuture from 'date-fns/is_future';
-import isPast from 'date-fns/is_past';
 import {isValidABN} from 'abnacn-validator';
 import values from 'lodash/values';
 

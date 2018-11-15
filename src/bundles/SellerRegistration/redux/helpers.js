@@ -122,24 +122,3 @@ export const focusHeading = () => {
       return heading && heading.focus();
   }
 }
-
-export const isDailyRateMissing = (pricing, services) => {
-  if (!pricing || !services) {
-    return true
-  }
-
-  let isMissingRates = true
-  const servicesDomains = Object.keys(services)
-  const pricingDomains = Object.keys(pricing).filter(d => servicesDomains.includes(d))
-
-  if (servicesDomains.length > 0 && servicesDomains.length === pricingDomains.length) {
-    const filtered = servicesDomains.filter(d => {
-      return (pricingDomains.includes(d) && 'maxPrice' in pricing[d] && parseInt(pricing[d]['maxPrice']) > 0)
-    })
-    if (filtered.length === servicesDomains.length) {
-      isMissingRates = false
-    }
-  }
-
-  return isMissingRates
-}

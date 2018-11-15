@@ -13,6 +13,7 @@ import ErrorBox       from '../../../../shared/form/ErrorBox';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav        from '../StepNav';
+import ValidationSummary from '../ValidationSummary';
 
 import { actions }    from '../../redux/modules/application';
 import { actions as stepActions }    from '../../redux/modules/steps';
@@ -28,7 +29,7 @@ class DomainSelector extends BaseForm {
   }
 
     render() {
-        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter, nextRoute, submitClicked} = this.props;
+        const {model, supplierCode, action, csrf_token, buttonText, children, actions, onSubmit, recruiter, nextRoute, submitClicked, form, applicationErrors, type} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -84,6 +85,7 @@ class DomainSelector extends BaseForm {
 
         return (
             <Layout>
+                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'services' && type === 'edit'} />
                 {header}
                 <article role="main">
 
@@ -97,7 +99,6 @@ class DomainSelector extends BaseForm {
                             services: 'You must select at least one service from the services below.'
                         }}
                     />
-
                     <Form
                         model={model}
                         action={action}
@@ -152,7 +153,8 @@ DomainSelector.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         supplierCode: state.application.supplier_code,
-        ...formProps(state, 'domainSelectorForm')
+        ...formProps(state, 'domainSelectorForm'),
+        applicationErrors: state.application_errors
     }
 }
 
