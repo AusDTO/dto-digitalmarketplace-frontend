@@ -13,7 +13,7 @@ const getBriefTitle = item => {
   if (item.status !== 'draft') {
     let url = `/digital-marketplace/opportunities/${item.id}`
     if (item.lot === 'rfx') {
-      url = `${rootPath}/${url}`
+      url = `${rootPath}${url}`
     }
     Title = <a href={url}>{item.name}</a>
   }
