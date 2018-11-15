@@ -21,14 +21,11 @@ const PrivateRouteComponent = props => {
     <Route
       {...rest}
       render={values => {
-        if (currentlySending) {
-          return <LoadingIndicator />
-        }
         if (frameworkError) {
           return <FrameworkError framework="Digital Marketplace" {...values} />
         }
 
-        if (restrictedTo && userType !== 'anonymous' && userType !== restrictedTo) {
+        if (restrictedTo && loggedIn && userType !== restrictedTo) {
           return <FrameworkError framework="buyer" {...values} />
         }
 
@@ -36,7 +33,9 @@ const PrivateRouteComponent = props => {
           return <Component {...values} />
         }
 
-        return (
+        return currentlySending ? (
+          <LoadingIndicator />
+        ) : (
           <Redirect
             to={{
               pathname: customRedirectPath || `${rootPath}/login`,
