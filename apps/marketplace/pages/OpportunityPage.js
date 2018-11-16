@@ -50,16 +50,10 @@ class OpportunityPage extends Component {
       )
     }
 
+    // only RFX can be displayed using this opportunity view
     if (this.props.brief.lot && this.props.brief.lot !== 'rfx') {
-      return (
-        <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
-          errorMessage="Only RFX briefs can be displayed using this URL."
-          setFocus={setFocus}
-          form={{}}
-          invalidFields={[]}
-        />
-      )
+      window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
+      return null
     }
 
     if (this.state.loading) {
