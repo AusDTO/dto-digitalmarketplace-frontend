@@ -50,7 +50,7 @@ export class BuyerDashboardTeamBriefs extends Component {
                   Author
                 </th>
                 <th scope="col" className={styles.colClosing}>
-                  Canberra closing time
+                  Closing time
                 </th>
                 <th scope="col" className={styles.colStatus}>
                   Status
@@ -69,7 +69,7 @@ export class BuyerDashboardTeamBriefs extends Component {
                   </td>
                   <td className={styles.colAuthor}>{item.author}</td>
                   <td className={`${item.status === 'live' ? '' : styles.empty} ${styles.colClosing}`}>
-                    {item.status === 'live' && <ClosedDate date={item.closed_at} />}
+                    {item.status === 'live' && <ClosedDate countdown date={item.closed_at} />}
                   </td>
                   <td className={styles.colStatus}>
                     <div

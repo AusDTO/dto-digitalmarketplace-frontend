@@ -427,6 +427,9 @@ label.text-box-number-label {
   background-color: #ffffff;
   border: solid 3px #e0e0e0;
 }
+.buyer-dashboard-actions .au-accordion__body-wrapper {
+  padding: 0;
+}
 
 .opportunities-page .au-accordion__body, .buyer-dashboard-actions .au-accordion__body {
   overflow: visible;

@@ -24,15 +24,21 @@ nav.dashNav {
 
 .createNew ul li {
   text-align: left;
-  padding-bottom: 0.75rem;
+}
+
+.createNew ul:not([class])>li {
+  margin-top: 0;
 }
 
 .createNew ul li a {
+  display: block;
   color: #313131;
+  text-decoration: none;
+  padding: 0.75rem;
 }
 
-.createNew ul li:last-child {
-  padding-bottom: 0;
+.createNew ul li a:hover {
+  background: #f4f4f4;
 }
 
 .menuRow {

@@ -1,6 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import addDays from 'date-fns/add_days'
 import { BuyerDashboardMyBriefs } from './BuyerDashboardMyBriefs'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -49,10 +50,8 @@ test('My briefs shows a message and not a table when there is no briefs to show'
   ).toEqual('Start your first brief')
 })
 
-test('My briefs shows correctly formatted Canberra closing time for a future date', () => {
-  const date = new Date()
-  date.setFullYear(date.getFullYear() + 1)
-  date.setMonth(0)
+test('My briefs shows correctly formatted closing time for a future date', () => {
+  const date = addDays(new Date(), 14)
 
   const props = {
     items: [
@@ -67,7 +66,7 @@ test('My briefs shows correctly formatted Canberra closing time for a future dat
   }
 
   const component = mount(<BuyerDashboardMyBriefs {...props} />)
-  const expectedDate = `6pm, ${date.getDate()} January ${date.getFullYear()}`
+  const expectedDate = '1w : 6d : 23h'
 
   expect(
     component

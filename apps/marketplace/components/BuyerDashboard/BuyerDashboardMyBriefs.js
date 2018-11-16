@@ -64,7 +64,7 @@ export class BuyerDashboardMyBriefs extends Component {
                   Name
                 </th>
                 <th scope="col" className={styles.colClosing}>
-                  Canberra closing time
+                  Closing time
                 </th>
                 <th scope="col" className={styles.colStatus}>
                   Status
@@ -86,7 +86,7 @@ export class BuyerDashboardMyBriefs extends Component {
                   >
                     {item.status === 'live' && (
                       <span className={styles.hideSmall}>
-                        <ClosedDate date={item.closed_at} />
+                        <ClosedDate countdown date={item.closed_at} />
                       </span>
                     )}
                     {item.status !== 'draft' && (
