@@ -41,6 +41,12 @@ nav.dashNav {
   background: #f4f4f4;
 }
 
+@media (max-width: 767px) {
+  .createNew {
+    margin-top: 1.5rem;
+  }
+}
+
 .menuRow {
   margin-top: 2.5rem;
 }

@@ -54,13 +54,12 @@ class BuyerDashboardHeader extends Component {
                 </ul>
               </nav>
             </div>
-            <div className={`${styles.dashActions} col-xs-12 col-sm-4 buyer-dashboard-actions`}>
+            <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-sm-4 buyer-dashboard-actions`}>
               <AUaccordion
                 header="Create new request"
                 open={this.state.createNewIsOpen}
                 onOpen={this.handleCreateNewToggle}
                 onClose={this.handleCreateNewToggle}
-                className={styles.createNew}
               >
                 <ul>
                   <li>
