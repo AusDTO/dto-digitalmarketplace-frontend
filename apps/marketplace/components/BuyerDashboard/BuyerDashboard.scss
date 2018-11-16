@@ -24,7 +24,11 @@ nav.dashNav {
 
 .createNew ul li {
   text-align: left;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.createNew ul li a {
+  color: #313131;
 }
 
 .createNew ul li:last-child {
