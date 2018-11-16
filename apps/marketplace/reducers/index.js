@@ -8,6 +8,7 @@ import dashboard from './dashboardReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
+import messages from './messagesReducers'
 
 export default combineReducers({
   app: appReducer,
@@ -15,6 +16,7 @@ export default combineReducers({
   brief,
   dashboard,
   opportunities,
+  messages,
   form_options,
   errorMessage,
   ...createForms({
