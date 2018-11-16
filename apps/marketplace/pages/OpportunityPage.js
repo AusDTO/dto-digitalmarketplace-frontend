@@ -30,18 +30,31 @@ class OpportunityPage extends Component {
   }
 
   render() {
-    if (this.props.errorMessage) {
-      let hasFocused = false
-      const setFocus = e => {
-        if (!hasFocused) {
-          hasFocused = true
-          e.focus()
-        }
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
       }
+    }
+
+    if (this.props.errorMessage) {
       return (
         <ErrorBoxComponent
           title="A problem occurred when loading the brief details"
           errorMessage={this.props.errorMessage}
+          setFocus={setFocus}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
+    }
+
+    if (this.props.brief.lot && this.props.brief.lot !== 'rfx') {
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the brief details"
+          errorMessage="Only RFX briefs can be displayed using this URL."
           setFocus={setFocus}
           form={{}}
           invalidFields={[]}
