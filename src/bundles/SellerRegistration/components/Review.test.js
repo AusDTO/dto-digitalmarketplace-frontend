@@ -21,12 +21,13 @@ describe('<Review />', () => {
     </MemoryRouter>
     );
 
-    expect(wrapper.find('#preview-link').text()).toMatch(/Take a moment to preview your profile/);
+    expect(wrapper.find('#preview-link').text()).toMatch(/Preview your profile before submitting your updates/);
   });
   
   it('should render a case study', () => {
 	const store = createStore({
     application: {supplier_code: 999}, 
+    applicationErrors: [],
     caseStudyForm: {
       case_studies:[{
         title: 'title 1',

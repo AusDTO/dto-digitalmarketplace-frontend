@@ -11,6 +11,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
       className="layout"
     >
       <header>
+        
         <h1
           className="au-display-xl"
           styleName="styles.content-heading"

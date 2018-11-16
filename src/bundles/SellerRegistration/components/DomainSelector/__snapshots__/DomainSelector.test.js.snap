@@ -4,6 +4,7 @@ exports[`DomainSelector renders 1`] = `
 <div
   className="layout"
 >
+  
   <header>
     <h1
       className="au-display-xl"
@@ -421,6 +422,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
 <div
   className="layout"
 >
+  
   <header>
     <h1
       className="au-display-xl"
