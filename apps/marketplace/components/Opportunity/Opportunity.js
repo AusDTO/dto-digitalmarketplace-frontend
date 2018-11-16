@@ -7,203 +7,206 @@ import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
 import styles from './Opportunity.scss'
 
-const Opportunity = props => (
-  <div>
-    <div className="row">
-      <div className={`col-xs-12 ${props.brief.status === 'draft' ? `col-md-9` : `col-md-8`}`}>
-        {props.brief.status === 'draft' && (
-          <div className={styles.previewNotice}>
-            <div className="row">
-              <div className="col-xs-12 col-sm-7">
-                <p>This is a preview of what invited sellers can see.</p>
+// defining default brief data up here so render() has access to it
+const defaultBriefProps = {
+  id: 0,
+  title: '',
+  organisation: '',
+  dates: {
+    closing_time: '',
+    questions_closing_date: '',
+    questions_close: '',
+    published_date: ''
+  },
+  summary: '',
+  startDate: '',
+  location: [],
+  contractLength: '',
+  budgetRange: '',
+  includeWeightings: false,
+  evaluationCriteria: [],
+  evaluationType: [],
+  requirementsDocument: [],
+  responseTemplate: [],
+  attachments: [],
+  proposalType: [],
+  industryBriefing: '',
+  clarificationQuestions: [],
+  clarificationQuestionsAreClosed: true
+}
+
+const Opportunity = props => {
+  const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner } = props
+  const brief = { ...defaultBriefProps, ...props.brief }
+  return (
+    <div>
+      <div className="row">
+        <div className={`col-xs-12 ${brief.status === 'draft' ? `col-md-9` : `col-md-8`}`}>
+          {brief.status === 'draft' && (
+            <div className={styles.previewNotice}>
+              <div className="row">
+                <div className="col-xs-12 col-sm-7">
+                  <p>This is a preview of what invited sellers can see.</p>
+                </div>
+                <div className={`${styles.previewButtons} col-xs-12 col-sm-5`}>
+                  <a
+                    href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}
+                    className={`${styles.publishBtn} au-btn au-btn--secondary`}
+                  >
+                    Edit
+                  </a>
+                  <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className={`${styles.publishBtn} au-btn`}>
+                    Proceed to publish
+                  </a>
+                </div>
               </div>
-              <div className={`${styles.previewButtons} col-xs-12 col-sm-5`}>
-                <a
-                  href={`${rootPath}/buyer-rfx/${props.brief.id}/introduction`}
-                  className={`${styles.publishBtn} au-btn au-btn--secondary`}
-                >
-                  Edit
-                </a>
-                <a href={`${rootPath}/buyer-rfx/${props.brief.id}/review`} className={`${styles.publishBtn} au-btn`}>
-                  Proceed to publish
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
-        <small className={styles.organisation}>{props.brief.organisation}</small>
-        <span>
-          <AUheading level="1" size="xl">
-            {props.brief.title}
-          </AUheading>
-        </span>
-        <div className={styles.details}>
-          <div className="row">
-            <div className="col-xs-12 col-sm-4">
-              <strong>Opportunity ID</strong>
-            </div>
-            <div className="col-xs-12 col-sm-8">{props.brief.id}</div>
-          </div>
-          <div className="row">
-            <div className="col-xs-12 col-sm-4">
-              <strong>Estimated start date</strong>
-            </div>
-            <div className="col-xs-12 col-sm-8">{props.brief.startDate}</div>
-          </div>
-          <div className="row">
-            <div className="col-xs-12 col-sm-4">
-              <strong>Length of contract</strong>
-            </div>
-            <div className="col-xs-12 col-sm-8">{props.brief.contractLength}</div>
-          </div>
-          {props.brief.contractExtensions && (
-            <div className="row">
-              <div className="col-xs-12 col-sm-4">
-                <strong>Contract extensions</strong>
-              </div>
-              <div className="col-xs-12 col-sm-8">{props.brief.contractExtensions}</div>
             </div>
           )}
-          {props.brief.budgetRange && (
-            <div className="row">
-              <div className="col-xs-12 col-sm-4">
-                <strong>Budget range</strong>
-              </div>
-              <div className="col-xs-12 col-sm-8">{props.brief.budgetRange}</div>
-            </div>
-          )}
-          <div className="row">
-            <div className="col-xs-12 col-sm-4">
-              <strong>Location of work</strong>
-            </div>
-            <div className="col-xs-12 col-sm-8">
-              {props.brief.location.map(location => (
-                <span key={location}>
-                  {location}
-                  <br />
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-xs-12 col-sm-4">
-              <strong>Working arrangements</strong>
-            </div>
-            <div className="col-xs-12 col-sm-8">{props.brief.workingArrangements}</div>
-          </div>
-        </div>
-        <AUheading level="2" size="lg">
-          Summary
-        </AUheading>
-        <p>{props.brief.summary}</p>
-        <AUheading level="3" size="sm">
-          Additional information
-        </AUheading>
-        <ul>
-          {props.brief.requirementsDocument.map(requirementsDocument => (
-            <li key={requirementsDocument}>
-              <a href={`/api/2/brief/${props.brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
-            </li>
-          ))}
-          {props.brief.attachments.map(attachment => (
-            <li key={attachment}>
-              <a href={`/api/2/brief/${props.brief.id}/attachments/${attachment}`}>{attachment}</a>
-            </li>
-          ))}
-        </ul>
-        <AUheading level="3" size="sm">
-          What sellers need to submit
-        </AUheading>
-        <ul className={styles.submitList}>
-          {props.brief.responseTemplate.map(responseTemplate => (
-            <li key={responseTemplate}>
-              <a href={`/api/2/brief/${props.brief.id}/attachments/${responseTemplate}`}>Response template</a>
-            </li>
-          ))}
-          {props.brief.evaluationType.includes('Written proposal') &&
-            props.brief.proposalType.length > 0 && (
-              <li>
-                Written proposal, including:
-                <ul>{props.brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
-              </li>
-            )}
-        </ul>
-        {(props.brief.evaluationType.includes('Demonstration') ||
-          props.brief.evaluationType.includes('Presentation')) && (
-          <div>
-            <AUheading level="3" size="sm">
-              Buyers will later request
+          <small className={styles.organisation}>{brief.organisation}</small>
+          <span>
+            <AUheading level="1" size="xl">
+              {brief.title}
             </AUheading>
-            <ul>
-              {props.brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
-              {props.brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
-            </ul>
+          </span>
+          <div className={styles.details}>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Opportunity ID</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">{brief.id}</div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Estimated start date</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Length of contract</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
+            </div>
+            {brief.contractExtensions && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Contract extensions</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+              </div>
+            )}
+            {brief.budgetRange && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Budget range</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+              </div>
+            )}
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Location of work</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {brief.location.map(location => (
+                  <span key={location}>
+                    {location}
+                    <br />
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Working arrangements</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
+            </div>
           </div>
-        )}
-        <EvaluationCriteria
-          evaluationCriteria={props.brief.evaluationCriteria}
-          showWeightings={props.brief.includeWeightings}
-        />
-        {props.brief.industryBriefing &&
-          (props.isInvitedSeller || props.isBriefOwner) && (
+          <AUheading level="2" size="lg">
+            Summary
+          </AUheading>
+          <p>{brief.summary}</p>
+          <AUheading level="3" size="sm">
+            Additional information
+          </AUheading>
+          <ul>
+            {brief.requirementsDocument.map(requirementsDocument => (
+              <li key={requirementsDocument}>
+                <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
+              </li>
+            ))}
+            {brief.attachments.map(attachment => (
+              <li key={attachment}>
+                <a href={`/api/2/brief/${brief.id}/attachments/${attachment}`}>{attachment}</a>
+              </li>
+            ))}
+          </ul>
+          <AUheading level="3" size="sm">
+            What sellers need to submit
+          </AUheading>
+          <ul className={styles.submitList}>
+            {brief.responseTemplate.map(responseTemplate => (
+              <li key={responseTemplate}>
+                <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>Response template</a>
+              </li>
+            ))}
+            {brief.evaluationType.includes('Written proposal') &&
+              brief.proposalType.length > 0 && (
+                <li>
+                  Written proposal, including:
+                  <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
+                </li>
+              )}
+          </ul>
+          {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
             <div>
-              <span />
-              <AUheading level="2" size="lg">
-                Industry briefing
+              <AUheading level="3" size="sm">
+                Buyers will later request
               </AUheading>
-              <p>{props.brief.industryBriefing}</p>
+              <ul>
+                {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
+                {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
+              </ul>
             </div>
           )}
-        <QuestionAnswer
-          questions={props.brief.clarificationQuestions}
-          questionsClosingDate={props.brief.dates.questions_close}
-          clarificationQuestionsAreClosed={props.brief.clarificationQuestionsAreClosed}
-          briefId={props.brief.id}
-          showAskQuestionInfo={props.isInvitedSeller}
-        />
-      </div>
-      {props.brief.status !== 'draft' && (
-        <div className="col-xs-12 col-md-4">
-          <OpportunityInfoCard
-            sellersInvited={props.invitedSellerCount}
-            sellersApplied={props.briefResponseCount}
-            closingDate={props.brief.dates.closing_time}
-            isInvitedSeller={props.isInvitedSeller}
-            briefId={props.brief.id}
+          <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
+          {brief.industryBriefing &&
+            (isInvitedSeller || isBriefOwner) && (
+              <div>
+                <span />
+                <AUheading level="2" size="lg">
+                  Industry briefing
+                </AUheading>
+                <p>{brief.industryBriefing}</p>
+              </div>
+            )}
+          <QuestionAnswer
+            questions={brief.clarificationQuestions}
+            questionsClosingDate={brief.dates.questions_close}
+            clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
+            briefId={brief.id}
+            showAskQuestionInfo={isInvitedSeller}
           />
         </div>
-      )}
+        {brief.status !== 'draft' && (
+          <div className="col-xs-12 col-md-4">
+            <OpportunityInfoCard
+              sellersInvited={invitedSellerCount}
+              sellersApplied={briefResponseCount}
+              closingDate={brief.dates.closing_time}
+              isInvitedSeller={isInvitedSeller}
+              briefId={brief.id}
+            />
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 Opportunity.defaultProps = {
-  brief: {
-    id: 0,
-    title: '',
-    organisation: '',
-    dates: {
-      closing_time: '',
-      questions_closing_date: '',
-      questions_close: '',
-      published_date: ''
-    },
-    summary: '',
-    startDate: '',
-    location: [],
-    contractLength: '',
-    budgetRange: '',
-    includeWeightings: false,
-    evaluationCriteria: [],
-    evaluationType: [],
-    requirementsDocument: [],
-    responseTemplate: [],
-    attachments: [],
-    proposalType: [],
-    industryBriefing: '',
-    clarificationQuestions: [],
-    clarificationQuestionsAreClosed: true
-  },
+  brief: defaultBriefProps,
   briefResponseCount: 0,
   invitedSellerCount: 0,
   isInvitedSeller: false,
@@ -223,7 +226,7 @@ Opportunity.propTypes = {
     }),
     summary: PropTypes.string,
     startDate: PropTypes.string,
-    Location: PropTypes.array,
+    location: PropTypes.array,
     contractLength: PropTypes.string,
     budgetRange: PropTypes.string,
     includeWeightings: PropTypes.bool,
