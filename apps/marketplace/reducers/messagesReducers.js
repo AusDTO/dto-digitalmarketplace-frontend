@@ -12,7 +12,7 @@ const messagesReducers = (state = defaultState, action) => {
         ...state,
         data: action.data
       }
-     case MESSAGES_SENDING:
+    case MESSAGES_SENDING:
       return {
         ...state,
         currentlySending: action.currentlySending
