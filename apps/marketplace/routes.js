@@ -31,7 +31,7 @@ export const Routes = () => (
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
-    <Route path={`${rootPath}/messages`} component={MessagesPage} />
+    <PrivateRoute path={`${rootPath}/messages`} component={MessagesPage} />
     <Route component={NotFound} />
   </Switch>
 )
