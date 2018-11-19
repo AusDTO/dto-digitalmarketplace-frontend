@@ -7,7 +7,7 @@ import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import BuyerRFXStages from 'marketplace/components/BuyerRFX/BuyerRFXStages'
 import BuyerRFXCompleted from 'marketplace/components/BuyerRFX/BuyerRFXCompleted'
 import { rootPath } from 'marketplace/routes'
-import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
+import { loadPublicBrief, saveBrief, handleErrorFailure } from 'marketplace/actions/briefActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { BuyerRFXFormReducer } from 'marketplace/reducers'
 
@@ -47,9 +47,15 @@ export class BuyerRFXFlowPage extends Component {
           }
           return true
         })
-      }
 
-      this.props.changeFormModel(data)
+        if (response.data.brief.status && response.data.brief.status !== 'draft') {
+          this.props.setError(
+            `You can only edit draft RFX briefs, but this brief's status is "${response.data.brief.status}"`
+          )
+        }
+
+        this.props.changeFormModel(data)
+      }
 
       this.setState({
         loading: false
@@ -134,7 +140,8 @@ const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId)),
   saveBrief: (briefId, data) => dispatch(saveBrief(briefId, data)),
-  resetFormValidity: () => dispatch(actions.resetValidity(model))
+  resetFormValidity: () => dispatch(actions.resetValidity(model)),
+  setError: message => dispatch(handleErrorFailure({ message }))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXFlowPage)
