@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter, Redirect } from 'react-router-dom'
 import { loadPublicBrief } from 'marketplace/actions/briefActions'
 import Opportunity from 'marketplace/components/Opportunity/Opportunity'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
+import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class OpportunityPage extends Component {
@@ -60,6 +62,18 @@ class OpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    // if the auth value is in the query string and the user is not authenticated, redirect to login
+    if (/auth=1/.test(this.props.location.search) && !this.props.loggedIn) {
+      return (
+        <Redirect
+          to={{
+            pathname: `${rootPath}/login`,
+            state: { from: this.props.location.pathname }
+          }}
+        />
+      )
+    }
+
     if (this.props.brief && this.props.brief.id) {
       return (
         <Opportunity
@@ -83,11 +97,12 @@ const mapResetStateToProps = state => ({
   loadBriefSuccess: state.brief.loadBriefSuccess,
   isInvitedSeller: state.brief.isInvitedSeller,
   isBriefOwner: state.brief.isBriefOwner,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  loggedIn: state.app.loggedIn
 })
 
 const mapResetDispatchToProps = dispatch => ({
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
 })
 
-export default connect(mapResetStateToProps, mapResetDispatchToProps)(OpportunityPage)
+export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(OpportunityPage))
