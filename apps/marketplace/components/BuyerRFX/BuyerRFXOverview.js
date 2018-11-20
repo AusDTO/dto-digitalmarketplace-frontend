@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { deleteBrief } from 'marketplace/actions/briefActions'
 import isValid from 'date-fns/is_valid'
-import isFuture from 'date-fns/is_future'
-import subDays from 'date-fns/sub_days'
 import { rootPath } from 'marketplace/routes'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -15,12 +13,12 @@ import styles from './BuyerRFXOverview.scss'
 
 const GreenTick = () => <img className={styles.greenTick} src="/static/svg/green-tick.svg" alt="Success" />
 
-const answerSellerQuestionsRender = (brief, isPublished, isPastQuestionsDeadline) => {
+const answerSellerQuestionsRender = (brief, isPublished, questionsClosed) => {
   if (!isPublished) {
     return <span>Answer seller questions</span>
   }
 
-  if (isPublished && isPastQuestionsDeadline) {
+  if (isPublished && questionsClosed) {
     return (
       <span>
         <GreenTick />
@@ -82,16 +80,7 @@ class BuyerRFXOverview extends Component {
     if (brief && brief.id && brief.dates) {
       const isPublished = brief.dates.published_date && isValid(new Date(brief.dates.published_date))
 
-      const isPastQuestionsDeadline =
-        brief.dates.closing_time &&
-        isValid(new Date(brief.dates.closing_time)) &&
-        new Date().toLocaleString('en-US', { timeZone: 'UTC' }) >
-          subDays(new Date(brief.dates.closing_time), 1).toLocaleString('en-US', { timeZone: 'UTC' })
-
-      const isClosed =
-        brief.dates.closing_time &&
-        isValid(new Date(brief.dates.closing_time)) &&
-        !isFuture(new Date(brief.dates.closing_time))
+      const isClosed = brief.status === 'closed'
 
       const invitedSellers =
         brief.sellers && Object.keys(brief.sellers).length > 0 ? Object.keys(brief.sellers).length : 0
@@ -170,7 +159,7 @@ class BuyerRFXOverview extends Component {
               )}
             </li>
             <li>
-              {answerSellerQuestionsRender(brief, isPublished, isPastQuestionsDeadline)}
+              {answerSellerQuestionsRender(brief, isPublished, brief.clarificationQuestionsAreClosed)}
               {questionsAsked > 0 && (
                 <div className={styles.stageStatus}>
                   {questionsAsked} question{questionsAsked > 1 && `s`} asked
@@ -190,9 +179,6 @@ class BuyerRFXOverview extends Component {
             </li>
             <li>
               <span>Award a contract</span>
-            </li>
-            <li>
-              <span>Debrief sellers</span>
             </li>
           </ul>
         </div>
