@@ -8,8 +8,8 @@ const BriefOutcomeChoice = () => (
     <div className={styles.header}>
       <AUheading level="1" size="xl">
         Select your approach
+        <span className={styles.newBadge}>NEW</span>
       </AUheading>
-      <span className={styles.newBadge}>NEW</span>
     </div>
     <div className={`row ${styles.container}`}>
       <div className="col-xs-12 col-md-5">
@@ -24,11 +24,11 @@ const BriefOutcomeChoice = () => (
           <AUheading level="3" size="sm">
             What you get
           </AUheading>
-          <ul>
+          <ul className={styles.list}>
             <li>150 word text responses from each seller in a spreadsheet for shortlisting.</li>
           </ul>
           <AUheading level="3" size="sm">
-            Get responses within
+            Response timeframe
           </AUheading>
           <ul className={styles.flexList}>
             <li>Choose 5 to 10 business days</li>
@@ -40,7 +40,7 @@ const BriefOutcomeChoice = () => (
           </p>
         </div>
       </div>
-      <div className="col-xs-12 col-md-5 col-md-offset-1">
+      <div className="col-xs-12 col-md-5">
         <div className={styles.card}>
           <AUheading level="2" size="lg">
             Get proposals/quotes
@@ -51,12 +51,12 @@ const BriefOutcomeChoice = () => (
           <AUheading level="3" size="sm">
             What you get
           </AUheading>
-          <ul>
+          <ul className={styles.list}>
             <li>Proposals in your requested format.</li>
             <li>Pre-populated evaluation spreadsheet.</li>
           </ul>
           <AUheading level="3" size="sm">
-            Get response format within
+            Response timeframe
           </AUheading>
           <ul className={styles.flexList}>
             <li>Set your own timeframes (2 days minimum)</li>

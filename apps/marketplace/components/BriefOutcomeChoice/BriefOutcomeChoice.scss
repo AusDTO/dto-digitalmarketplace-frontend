@@ -20,6 +20,7 @@ div.container > div {
   font-size: 0.9rem;
   font-weight: 800;
   margin-left: 0.75rem;
+  vertical-align: middle;
 }
 
 p.largerText {
@@ -36,9 +37,15 @@ p.largerText {
   }
 }
 
+.list {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
 .flexList {
   flex-grow: 1;
-  margin-top: 1.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
 }
 
 div.card {
