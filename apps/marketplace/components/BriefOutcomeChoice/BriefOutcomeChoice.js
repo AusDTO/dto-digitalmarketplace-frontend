@@ -53,7 +53,7 @@ const BriefOutcomeChoice = () => (
           </AUheading>
           <ul className={styles.list}>
             <li>Proposals in your requested format.</li>
-            <li>Pre-populated evaluation spreadsheet.</li>
+            <li>A template to conduct evaluations.</li>
           </ul>
           <AUheading level="3" size="sm">
             Response timeframe
