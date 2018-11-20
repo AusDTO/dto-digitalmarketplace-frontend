@@ -64,12 +64,18 @@ export class BuyerRFXFlowPage extends Component {
   }
 
   saveBrief(publish = false) {
+    if (publish) {
+      this.setState({
+        loading: true
+      })
+    }
     const data = { ...this.props[model] }
     data.publish = publish
     return this.props.saveBrief(this.props.match.params.briefId, data).then(response => {
       if (response.status === 200 && publish) {
         this.setState({
-          flowIsDone: true
+          flowIsDone: true,
+          loading: false
         })
       }
     })
