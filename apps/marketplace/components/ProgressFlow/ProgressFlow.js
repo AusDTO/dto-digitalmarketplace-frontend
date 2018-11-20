@@ -5,6 +5,7 @@ import { Route, Router, Link, withRouter, Redirect } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 import { connect } from 'react-redux'
 import formProps from 'shared/form/formPropsSelector'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import ProgressNav from 'marketplace/components/ProgressFlow/ProgressNav'
 import ProgressContent from 'marketplace/components/ProgressFlow/ProgressContent'
 import ProgressButtons from 'marketplace/components/ProgressFlow/ProgressButtons'
@@ -20,7 +21,8 @@ export class ProgressFlow extends Component {
       // this is the current stage
       currentStage: '',
       activateReturn: false,
-      activatePreview: false
+      activatePreview: false,
+      saving: false
     }
 
     // populate the stage states
@@ -125,12 +127,19 @@ export class ProgressFlow extends Component {
   }
 
   handleFormSubmit() {
-    this.props.saveModel()
-    const nextStage = this.getNextStage(this.state.currentStage)
-    if (nextStage) {
-      this.props.history.push(`${this.props.basename}/${nextStage}`)
-      this.setCurrentStage(nextStage)
-    }
+    this.setState({
+      saving: true
+    })
+    this.props.saveModel().then(() => {
+      this.setState({
+        saving: false
+      })
+      const nextStage = this.getNextStage(this.state.currentStage)
+      if (nextStage) {
+        this.props.history.push(`${this.props.basename}/${nextStage}`)
+        this.setCurrentStage(nextStage)
+      }
+    })
   }
 
   handlePublish() {
@@ -200,36 +209,38 @@ export class ProgressFlow extends Component {
             />
           </div>
           <div className="col-sm-8">
-            {this.props.stages.map(stage => (
-              <Route
-                key={stage.slug}
-                path={`${this.props.basename}/${stage.slug}`}
-                render={() => (
-                  <div>
-                    <ProgressContent
-                      stage={stage.slug}
-                      model={this.props.model}
-                      setCurrentStage={this.setCurrentStage}
-                      saveModel={this.props.saveModel}
-                      component={stage.component}
-                      stagesTodo={this.getTodoStages()}
-                      onSubmit={this.handleFormSubmit}
-                      onStageMount={this.props.onStageMount}
-                      formButtons={
-                        <ProgressButtons
-                          isLastStage={this.isLastStage(stage.slug)}
-                          isFirstStage={this.isFirstStage(stage.slug)}
-                          publishEnabled={this.allStagesDone()}
-                          onPublish={this.handlePublish}
-                          onPreview={this.handlePreview}
-                          onReturn={this.handleReturn}
-                        />
-                      }
-                    />
-                  </div>
-                )}
-              />
-            ))}
+            {this.state.saving && <LoadingIndicatorFullPage />}
+            {!this.state.saving &&
+              this.props.stages.map(stage => (
+                <Route
+                  key={stage.slug}
+                  path={`${this.props.basename}/${stage.slug}`}
+                  render={() => (
+                    <div>
+                      <ProgressContent
+                        stage={stage.slug}
+                        model={this.props.model}
+                        setCurrentStage={this.setCurrentStage}
+                        saveModel={this.props.saveModel}
+                        component={stage.component}
+                        stagesTodo={this.getTodoStages()}
+                        onSubmit={this.handleFormSubmit}
+                        onStageMount={this.props.onStageMount}
+                        formButtons={
+                          <ProgressButtons
+                            isLastStage={this.isLastStage(stage.slug)}
+                            isFirstStage={this.isFirstStage(stage.slug)}
+                            publishEnabled={this.allStagesDone()}
+                            onPublish={this.handlePublish}
+                            onPreview={this.handlePreview}
+                            onReturn={this.handleReturn}
+                          />
+                        }
+                      />
+                    </div>
+                  )}
+                />
+              ))}
           </div>
         </div>
       </Router>
