@@ -12,11 +12,7 @@ const BuyerRFXCompleted = props => (
       <AUheading level="1" size="md">
         Your opportunity is now live, and the invited sellers have been notified.
       </AUheading>
-      <p>
-        It will be open until {format(props.closingDate, 'D MMMM, YYYY')} at 6pm Canberra time.
-        <br />
-        Each seller has been asked to confirm if they intend to respond.
-      </p>
+      <p>It will be open until {format(props.closingDate, 'D MMMM, YYYY')} at 6pm Canberra time.</p>
     </AUpageAlert>
     <AUheading level="2" size="lg">
       What happens next?
