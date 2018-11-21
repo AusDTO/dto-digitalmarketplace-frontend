@@ -141,6 +141,7 @@ export class ProgressFlow extends Component {
         this.props.history.push(`${this.props.basename}/${nextStage}`)
         this.setCurrentStage(nextStage)
       }
+      window.scrollTo(0, 0)
     })
   }
 
