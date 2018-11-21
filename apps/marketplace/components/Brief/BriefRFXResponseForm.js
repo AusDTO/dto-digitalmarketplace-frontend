@@ -11,6 +11,7 @@ import ErrorBox from 'shared/form/ErrorBox'
 import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
+import styles from './BriefRFXResponseForm.scss'
 
 const BriefRFXResponseForm = ({
   model,
@@ -77,7 +78,7 @@ const BriefRFXResponseForm = ({
                     Written proposal
                   </AUheading>
                   <p>Including:</p>
-                  <ul>{brief.proposalType.map(type => <li key={type}>{type}</li>)}</ul>
+                  <ul className={styles.proposalList}>{brief.proposalType.map(type => <li key={type}>{type}</li>)}</ul>
                   <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
                   <FilesInput
                     fieldLabel="Upload written proposal"
