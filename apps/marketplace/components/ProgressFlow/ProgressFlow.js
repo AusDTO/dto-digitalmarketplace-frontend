@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 import { Route, Router, Link, withRouter, Redirect } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 import { connect } from 'react-redux'
+import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import formProps from 'shared/form/formPropsSelector'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import ProgressNav from 'marketplace/components/ProgressFlow/ProgressNav'
 import ProgressContent from 'marketplace/components/ProgressFlow/ProgressContent'
 import ProgressButtons from 'marketplace/components/ProgressFlow/ProgressButtons'
+import styles from './ProgressFlow.scss'
 
 export class ProgressFlow extends Component {
   constructor(props) {
@@ -197,16 +199,27 @@ export class ProgressFlow extends Component {
       })
     )
 
+    const ProgressNavElement = () => (
+      <ProgressNav
+        items={items}
+        onNavChange={item => {
+          this.setCurrentStage(item.slug)
+        }}
+      />
+    )
+
     return (
       <Router history={this.props.history}>
         <div className="row">
           <div className="col-sm-4" aria-live="polite" aria-relevant="additions removals">
-            <ProgressNav
-              items={items}
-              onNavChange={item => {
-                this.setCurrentStage(item.slug)
-              }}
-            />
+            <div className={styles.desktopMenu}>
+              <ProgressNavElement />
+            </div>
+            <div className={styles.mobileMenu}>
+              <AUaccordion header="Menu">
+                <ProgressNavElement />
+              </AUaccordion>
+            </div>
           </div>
           <div className="col-sm-8">
             {this.state.saving && <LoadingIndicatorFullPage />}
