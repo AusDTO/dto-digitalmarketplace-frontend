@@ -36,6 +36,7 @@ const BuyerRFXAboutStage = props => (
       }
     }}
     onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
     <AUheadings level="1" size="xl">
@@ -55,13 +56,14 @@ const BuyerRFXAboutStage = props => (
     <Textfield
       model={`${props.model}.title`}
       label="Title"
-      description="Describe the outcome you need in 100 characters or less."
+      description="Describe the outcome you need."
       placeholder="For example, 'Website redesign and development'."
       name="title"
       id="title"
       htmlFor="title"
       defaultValue={props[props.model].title}
       maxLength={100}
+      showMaxLength
       validators={{
         required
       }}
@@ -76,6 +78,7 @@ const BuyerRFXAboutStage = props => (
       htmlFor="organisation"
       defaultValue={props[props.model].organisation}
       maxLength={100}
+      showMaxLength
       validators={{
         required
       }}
@@ -134,13 +137,15 @@ const BuyerRFXAboutStage = props => (
 )
 
 BuyerRFXAboutStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerRFXAboutStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
