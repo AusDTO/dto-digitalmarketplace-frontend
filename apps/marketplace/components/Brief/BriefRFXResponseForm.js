@@ -38,53 +38,66 @@ const BriefRFXResponseForm = ({
               setFocus={setFocus}
             />
           )}
-          <AUheading level="1" size="xxl">
+          <AUheading level="1" size="xl">
             Apply for &apos;{brief.title}&apos;
+          </AUheading>
+          <AUheading level="2" size="lg">
+            Upload documentation
           </AUheading>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
               {brief.evaluationType.includes('Response template') && (
-                <FilesInput
-                  label="Response template"
-                  hint="Attachment must be PDF or ODT format and a maximum of 20MB"
-                  fieldLabel="Upload response"
-                  name="attachedDocumentURL"
-                  model={`${model}.attachedDocumentURL.0`}
-                  formFields={1}
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
-                  fileId={0}
-                  validators={{
-                    requiredFile
-                  }}
-                  messages={{
-                    requiredFile: 'Choose a file for your response'
-                  }}
-                  uploading={uploading}
-                />
+                <div>
+                  <span />
+                  <AUheading level="3" size="sm">
+                    Response template
+                  </AUheading>
+                  <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
+                  <FilesInput
+                    fieldLabel="Upload response"
+                    name="attachedDocumentURL"
+                    model={`${model}.attachedDocumentURL.0`}
+                    formFields={1}
+                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                    api={dmapi}
+                    fileId={0}
+                    validators={{
+                      requiredFile
+                    }}
+                    messages={{
+                      requiredFile: 'Choose a file for your response'
+                    }}
+                    uploading={uploading}
+                  />
+                </div>
               )}
               {brief.evaluationType.includes('Written proposal') && (
-                <FilesInput
-                  label="Written proposal"
-                  description={`Your proposal must include: ${brief.proposalType.join(', ').toLowerCase()}`}
-                  hint="Attachment must be PDF or ODT format and a maximum of 20MB"
-                  fieldLabel="Upload written proposal"
-                  name="attachedDocumentURL"
-                  model={`${model}.attachedDocumentURL.1`}
-                  formFields={1}
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
-                  fileId={1}
-                  validators={{
-                    requiredFile
-                  }}
-                  messages={{
-                    requiredFile: 'Choose a file for your written proposal'
-                  }}
-                  uploading={uploading}
-                />
+                <div>
+                  <AUheading level="3" size="sm">
+                    Written proposal
+                  </AUheading>
+                  <p>Including:</p>
+                  <ul>{brief.proposalType.map(type => <li key={type}>{type}</li>)}</ul>
+                  <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
+                  <FilesInput
+                    fieldLabel="Upload written proposal"
+                    name="attachedDocumentURL"
+                    model={`${model}.attachedDocumentURL.1`}
+                    formFields={1}
+                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                    api={dmapi}
+                    fileId={1}
+                    validators={{
+                      requiredFile
+                    }}
+                    messages={{
+                      requiredFile: 'Choose a file for your written proposal'
+                    }}
+                    uploading={uploading}
+                  />
+                </div>
               )}
-              <AUheading level="2" size="xl">
+              <AUheading level="2" size="lg">
                 Once you submit this application
               </AUheading>
               <ul>
