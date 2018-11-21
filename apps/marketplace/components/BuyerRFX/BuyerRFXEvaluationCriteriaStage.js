@@ -77,9 +77,6 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
           }}
         />
         <p>
-          <a href="#examples">View recommended criteria</a>
-        </p>
-        <p>
           <CheckboxDetailsField
             model={`${this.props.model}.includeWeightings`}
             id={`include_weightings`}
