@@ -12,6 +12,12 @@ div.container > div {
   margin-top: 1.5rem;
 }
 
+@media (max-width: 991px) {
+  div.container {
+    margin-top: 1.5rem;
+  }
+}
+
 .stat {
   font-size: 1.5rem;
 }
@@ -24,4 +30,8 @@ div.container > div {
 
 .button:last-child {
   margin-bottom: 0;
+}
+
+.invitedStatus p {
+  color: #747474;
 }

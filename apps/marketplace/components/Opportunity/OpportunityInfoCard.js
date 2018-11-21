@@ -11,12 +11,12 @@ const OpportunityInfoCard = props => (
       <div className="col-xs-6">
         <strong className={styles.stat}>{props.sellersInvited}</strong>
         <br />
-        sellers invited
+        seller{props.sellersInvited === 1 ? '' : 's'} invited
       </div>
       <div className="col-xs-6">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
-        sellers applied
+        seller{props.sellersApplied === 1 ? '' : 's'} applied
       </div>
     </div>
     <div className="row">
@@ -36,15 +36,33 @@ const OpportunityInfoCard = props => (
       <div className="col-xs-12">
         {props.isInvitedSeller ? (
           <div>
-            <a href="#download" className={`${styles.button} au-btn au-btn--secondary`}>
-              Download all documents
-            </a>
             <a href={`${rootPath}/brief/${props.briefId}/rfx/respond`} className={`${styles.button} au-btn`}>
               Apply for opportunity
             </a>
           </div>
         ) : (
-          <p>Only invited sellers can apply.</p>
+          <div className={styles.invitedStatus}>
+            {props.loggedIn ? (
+              <p>Only invited sellers can apply.</p>
+            ) : (
+              <span>
+                <p>Only signed in invited sellers can apply.</p>
+                <p>
+                  <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
+                    Create an account
+                  </a>
+                  <a
+                    href={`/login?next=${encodeURIComponent(
+                      `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                    )}`}
+                    className="au-btn au-btn--block"
+                  >
+                    Login
+                  </a>
+                </p>
+              </span>
+            )}
+          </div>
         )}
       </div>
     </div>
@@ -54,13 +72,15 @@ const OpportunityInfoCard = props => (
 OpportunityInfoCard.defaultProps = {
   sellersInvited: 0,
   sellersApplied: 0,
-  isInvitedSeller: false
+  isInvitedSeller: false,
+  loggedIn: false
 }
 
 OpportunityInfoCard.propTypes = {
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
+  loggedIn: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired
 }

@@ -82,6 +82,7 @@ class OpportunityPage extends Component {
           invitedSellerCount={this.props.invitedSellerCount}
           isInvitedSeller={this.props.isInvitedSeller}
           isBriefOwner={this.props.isBriefOwner}
+          loggedIn={this.props.loggedIn}
         />
       )
     }

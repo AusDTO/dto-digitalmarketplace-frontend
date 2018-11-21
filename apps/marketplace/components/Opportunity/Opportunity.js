@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
+import format from 'date-fns/format'
 import EvaluationCriteria from './EvalutationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
@@ -36,7 +37,7 @@ const defaultBriefProps = {
 }
 
 const Opportunity = props => {
-  const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner } = props
+  const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner, loggedIn } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   return (
     <div>
@@ -122,54 +123,71 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
             </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Application closing date</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(brief.dates.closing_time, 'dddd D MMMM YYYY')} at 6PM (in Canberra)
+              </div>
+            </div>
           </div>
           <AUheading level="2" size="lg">
             Summary
           </AUheading>
           <p>{brief.summary}</p>
-          <AUheading level="3" size="sm">
-            Additional information
-          </AUheading>
-          <ul>
-            {brief.requirementsDocument.map(requirementsDocument => (
-              <li key={requirementsDocument}>
-                <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
-              </li>
-            ))}
-            {brief.attachments.map(attachment => (
-              <li key={attachment}>
-                <a href={`/api/2/brief/${brief.id}/attachments/${attachment}`}>{attachment}</a>
-              </li>
-            ))}
-          </ul>
-          <AUheading level="3" size="sm">
-            What sellers need to submit
-          </AUheading>
-          <ul className={styles.submitList}>
-            {brief.responseTemplate.map(responseTemplate => (
-              <li key={responseTemplate}>
-                <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>Response template</a>
-              </li>
-            ))}
-            {brief.evaluationType.includes('Written proposal') &&
-              brief.proposalType.length > 0 && (
-                <li>
-                  Written proposal, including:
-                  <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
-                </li>
-              )}
-          </ul>
-          {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
-            <div>
-              <AUheading level="3" size="sm">
-                Buyers will later request
-              </AUheading>
-              <ul>
-                {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
-                {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
-              </ul>
-            </div>
+          {loggedIn && (
+            <AUheading level="3" size="sm">
+              Additional information
+            </AUheading>
           )}
+          {loggedIn && (
+            <ul>
+              {brief.requirementsDocument.map(requirementsDocument => (
+                <li key={requirementsDocument}>
+                  <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
+                </li>
+              ))}
+              {brief.attachments.map(attachment => (
+                <li key={attachment}>
+                  <a href={`/api/2/brief/${brief.id}/attachments/${attachment}`}>{attachment}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+          {loggedIn && (
+            <AUheading level="3" size="sm">
+              What sellers need to submit
+            </AUheading>
+          )}
+          {loggedIn && (
+            <ul className={styles.submitList}>
+              {brief.responseTemplate.map(responseTemplate => (
+                <li key={responseTemplate}>
+                  <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>Response template</a>
+                </li>
+              ))}
+              {brief.evaluationType.includes('Written proposal') &&
+                brief.proposalType.length > 0 && (
+                  <li>
+                    Written proposal, including:
+                    <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
+                  </li>
+                )}
+            </ul>
+          )}
+          {loggedIn &&
+            (brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
+              <div>
+                <AUheading level="3" size="sm">
+                  Buyers will later request
+                </AUheading>
+                <ul>
+                  {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
+                  {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
+                </ul>
+              </div>
+            )}
           <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
           {brief.industryBriefing &&
             (isInvitedSeller || isBriefOwner) && (
@@ -197,6 +215,7 @@ const Opportunity = props => {
               closingDate={brief.dates.closing_time}
               isInvitedSeller={isInvitedSeller}
               briefId={brief.id}
+              loggedIn={loggedIn}
             />
           </div>
         )}
@@ -210,7 +229,8 @@ Opportunity.defaultProps = {
   briefResponseCount: 0,
   invitedSellerCount: 0,
   isInvitedSeller: false,
-  isBriefOwner: false
+  isBriefOwner: false,
+  loggedIn: false
 }
 
 Opportunity.propTypes = {
@@ -243,7 +263,8 @@ Opportunity.propTypes = {
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
-  isBriefOwner: PropTypes.bool
+  isBriefOwner: PropTypes.bool,
+  loggedIn: PropTypes.bool
 }
 
 export default Opportunity
