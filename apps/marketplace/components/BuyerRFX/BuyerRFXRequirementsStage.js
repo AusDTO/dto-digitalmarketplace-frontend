@@ -8,6 +8,7 @@ import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import ErrorAlert from './ErrorAlert'
+import styles from './BuyerRFXRequirementsStage.scss'
 
 export class BuyerRFXRequirementsStage extends Component {
   constructor(props) {
@@ -49,12 +50,15 @@ export class BuyerRFXRequirementsStage extends Component {
         validators={{
           '': {
             requiredRequirementsDocument: formValues =>
-              formValues.requirementsDocument && formValues.requirementsDocument.length > 0,
+              formValues.requirementsDocument &&
+              formValues.requirementsDocument.length > 0 &&
+              formValues.requirementsDocument.every(val => val),
             requiredResponseTemplate: formValues =>
               !formValues.evaluationType.includes('Response template') ||
               (formValues.evaluationType.includes('Response template') &&
                 formValues.responseTemplate &&
-                formValues.responseTemplate.length > 0)
+                formValues.responseTemplate.length > 0 &&
+                formValues.responseTemplate.every(val => val))
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -73,7 +77,7 @@ export class BuyerRFXRequirementsStage extends Component {
         />
         <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         <p>
-          Documents can be viewed by anyone with a Digital Marketplace account. Do not include internal or private
+          Documents can be viewed by anyone with a Digital Marketplace account. Do not include internal or confidential
           information.
         </p>
         <AUheadings level="2" size="sm">
@@ -132,17 +136,19 @@ export class BuyerRFXRequirementsStage extends Component {
           />
         ))}
         {this.state.fileCount < 10 && (
-          <p>
-            <a
-              href="#add"
-              onClick={e => {
-                e.preventDefault()
-                this.addFileField()
-              }}
-            >
-              Add another
-            </a>
-          </p>
+          <div className={styles.addAnother}>
+            <p>
+              <a
+                href="#add"
+                onClick={e => {
+                  e.preventDefault()
+                  this.addFileField()
+                }}
+              >
+                Add another
+              </a>
+            </p>
+          </div>
         )}
         {this.props.formButtons}
       </Form>
