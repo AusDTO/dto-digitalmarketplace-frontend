@@ -8,8 +8,8 @@ import Textarea from 'shared/form/Textarea'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
-import ErrorAlert from './ErrorAlert'
 import { required } from 'marketplace/components/validators'
+import ErrorAlert from './ErrorAlert'
 
 export class BuyerATMRequirementsStage extends Component {
   constructor(props) {
