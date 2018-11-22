@@ -36,6 +36,15 @@ const defaultBriefProps = {
   clarificationQuestionsAreClosed: true
 }
 
+const getClosingTime = brief => {
+  if (brief.dates.closing_time) {
+    return brief.dates.closing_time
+  } else if (brief.closedAt) {
+    return brief.closedAt
+  }
+  return null
+}
+
 const Opportunity = props => {
   const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner, loggedIn } = props
   const brief = { ...defaultBriefProps, ...props.brief }
@@ -123,14 +132,16 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
             </div>
-            <div className="row">
-              <div className="col-xs-12 col-sm-4">
-                <strong>Application closing date</strong>
+            {getClosingTime(brief) && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Application closing date</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">
+                  {format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)
+                </div>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {format(brief.dates.closing_time, 'dddd D MMMM YYYY')} at 6PM (in Canberra)
-              </div>
-            </div>
+            )}
           </div>
           <AUheading level="2" size="lg">
             Summary

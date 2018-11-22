@@ -52,14 +52,14 @@ class OpportunityPage extends Component {
       )
     }
 
-    // only RFX can be displayed using this opportunity view
-    if (this.props.brief.lot && this.props.brief.lot !== 'rfx') {
-      window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
-      return null
-    }
-
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    // only RFX can be displayed using this opportunity view
+    if (this.props.brief && this.props.brief.lot && this.props.brief.lot !== 'rfx') {
+      window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
+      return null
     }
 
     // if the auth value is in the query string and the user is not authenticated, redirect to login
