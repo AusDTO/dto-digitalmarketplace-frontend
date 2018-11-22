@@ -34,7 +34,7 @@ class BuyerATMMarketApproachStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Market approach
+          Briefing and closing date
         </AUheading>
         <ErrorAlert
           title="An error occurred"
