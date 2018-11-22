@@ -33,14 +33,6 @@ const BuyerATMStages = [
       formValues.workingArrangements.length > 0
   },
   {
-    slug: 'formats',
-    title: 'Response formats',
-    component: BuyerATMResponseFormatsStage,
-    isDone: formValues =>
-      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
-      formValues.proposalType.length > 0
-  },
-  {
     slug: 'objectives',
     title: 'Objectives',
     component: BuyerATMObjectivesStage,
@@ -64,6 +56,14 @@ const BuyerATMStages = [
       formValues.evaluationCriteria.length > 0 &&
       formValues.evaluationCriteria.every(val => val.criteria) &&
       weightingsAddUpTo100(formValues.evaluationCriteria)
+  },
+  {
+    slug: 'formats',
+    title: 'Response formats',
+    component: BuyerATMResponseFormatsStage,
+    isDone: formValues =>
+      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
+      formValues.proposalType.length > 0
   },
   {
     slug: 'approach',
