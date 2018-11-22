@@ -52,8 +52,8 @@ class OpportunityPage extends Component {
       )
     }
 
-    // only RFX can be displayed using this opportunity view
-    if (this.props.brief.lot && this.props.brief.lot !== 'rfx') {
+    // only RFX and ATM can be displayed using this opportunity view
+    if (this.props.brief.lot && (this.props.brief.lot !== 'rfx' || this.props.brief.lot !== 'atm')) {
       window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
       return null
     }

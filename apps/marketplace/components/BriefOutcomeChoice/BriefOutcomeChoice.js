@@ -18,23 +18,23 @@ const BriefOutcomeChoice = () => (
             Ask the market
           </AUheading>
           <p className={styles.largerText}>
-            EOI/RFI style suited to exploratory procurements. Uncover new expertise or trial products and emerging
-            technologies.
+            EOI/RFI style suited to exploratory procurements. Uncover new expertise or run small scale technology
+            experiments.
           </p>
           <AUheading level="3" size="sm">
             What you get
           </AUheading>
           <ul className={styles.list}>
-            <li>150 word text responses from each seller in a spreadsheet for shortlisting.</li>
+            <li>500 word text responses from each seller in a spreadsheet for shortlisting.</li>
           </ul>
           <AUheading level="3" size="sm">
-            Response timeframe
+            Get responses within
           </AUheading>
           <ul className={styles.flexList}>
-            <li>Choose 5 to 10 business days</li>
+            <li>Choose 5 or 10 business days</li>
           </ul>
           <p className={styles.buttons}>
-            <a href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome" className="au-btn">
+            <a href={`${rootPath}/buyer-atm/create`} className="au-btn">
               Get started
             </a>
           </p>

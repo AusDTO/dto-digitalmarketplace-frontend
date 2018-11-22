@@ -5,6 +5,7 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
+  BRIEF_ATM_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
@@ -117,6 +118,11 @@ export const handleCreateRFXBriefSuccess = response => ({
   brief: response.data
 })
 
+export const handleCreateATMBriefSuccess = response => ({
+  type: BRIEF_ATM_CREATE_SUCCESS,
+  brief: response.data
+})
+
 export const createRFXBrief = () => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
@@ -131,6 +137,26 @@ export const createRFXBrief = () => (dispatch, getState) => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleCreateRFXBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const createATMBrief = () => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/brief/atm',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateATMBriefSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response

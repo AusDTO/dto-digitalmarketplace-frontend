@@ -33,6 +33,31 @@ export const BuyerRFXFormReducer = {
   workingArrangements: ''
 }
 
+export const BuyerATMFormReducer = {
+  id: 0,
+  title: '',
+  organisation: '',
+  location: [],
+  summary: '',
+  industryBriefing: '',
+  sellerCategory: '',
+  sellers: {},
+  attachments: [],
+  requirementsDocument: [],
+  responseTemplate: [],
+  evaluationType: [],
+  proposalType: [],
+  evaluationCriteria: [{ criteria: '', weighting: '' }],
+  includeWeightings: true,
+  closedAt: '',
+  startDate: '',
+  contractLength: '',
+  contractExtensions: '',
+  budgetRange: '',
+  workingArrangements: '',
+  sellerSelector: 'allSellers'
+}
+
 export default combineReducers({
   app: appReducer,
   user,
@@ -97,6 +122,7 @@ export default combineReducers({
         Remote: false
       }
     },
-    BuyerRFXForm: BuyerRFXFormReducer
+    BuyerRFXForm: BuyerRFXFormReducer,
+    BuyerATMForm: BuyerATMFormReducer
   })
 })

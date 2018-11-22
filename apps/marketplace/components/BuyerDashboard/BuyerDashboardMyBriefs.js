@@ -13,7 +13,7 @@ const getBriefTitle = item => {
   let Title = <span>{name}</span>
   if (item.status !== 'draft') {
     let url = `/digital-marketplace/opportunities/${item.id}`
-    if (item.lot === 'rfx') {
+    if (item.lot === 'rfx' || item.lot === 'atm') {
       url = `${rootPath}${url}`
     }
     Title = <a href={url}>{name}</a>
@@ -120,6 +120,12 @@ export class BuyerDashboardMyBriefs extends Component {
                     {item.status === 'draft' &&
                       item.lot === 'rfx' && (
                         <a href={`${rootPath}/brief/${item.id}/overview/rfx`}>
+                          <strong>Edit draft</strong>
+                        </a>
+                      )}
+                    {item.status === 'draft' &&
+                      item.lot === 'atm' && (
+                        <a href={`${rootPath}/brief/${item.id}/overview/atm`}>
                           <strong>Edit draft</strong>
                         </a>
                       )}
