@@ -11,12 +11,25 @@ export const handleSupplierMessageSuccess = response => ({
   data: response.data
 })
 
+export const handleSupplierMessageFailure = message => ({
+  type: MESSAGES_FAILURE,
+  data: message
+})
+
 export const getSupplierMessages = supplierCode => dispatch => {
   const params = {}
   dispatch(sendingRequest(true))
   return dmapi({ url: `/supplier/${supplierCode}/messages`, params }).then(response => {
     if (!response || response.error) {
-      console.log('TODO')
+      dispatch(
+        handleSupplierMessageFailure({
+          errors: [
+            {
+              message: `A ${response.status} error has occured`
+            }
+          ]
+        })
+      )
     } else {
       dispatch(handleSupplierMessageSuccess(response))
     }
