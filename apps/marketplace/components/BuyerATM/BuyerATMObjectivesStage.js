@@ -50,8 +50,8 @@ export class BuyerATMRequirementsStage extends Component {
         model={model}
         validators={{
           '': {
-            requiredRequirementsDocument: formValues =>
-              formValues.requirementsDocument && formValues.requirementsDocument.length > 0,
+            // requiredRequirementsDocument: formValues =>
+            //   formValues.requirementsDocument && formValues.requirementsDocument.length > 0,
             requiredResponseTemplate: formValues =>
               !formValues.evaluationType.includes('Response template') ||
               (formValues.evaluationType.includes('Response template') &&

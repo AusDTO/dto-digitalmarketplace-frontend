@@ -40,10 +40,8 @@ export const BuyerATMFormReducer = {
   location: [],
   summary: '',
   industryBriefing: '',
-  sellerCategory: '',
   sellers: {},
   attachments: [],
-  requirementsDocument: [],
   responseTemplate: [],
   evaluationType: [],
   proposalType: [],
@@ -55,7 +53,13 @@ export const BuyerATMFormReducer = {
   contractExtensions: '',
   budgetRange: '',
   workingArrangements: '',
-  sellerSelector: 'allSellers'
+  sellerSelector: 'allSellers',
+  securityClearance: '',
+  workAlreadyDone: '',
+  endUsers: '',
+  backgroundInformation: '',
+  outcome: '',
+  keyDates: ''
 }
 
 export default combineReducers({

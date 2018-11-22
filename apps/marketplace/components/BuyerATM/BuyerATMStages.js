@@ -20,7 +20,11 @@ const BuyerATMStages = [
     slug: 'select',
     title: 'Select sellers',
     component: BuyerATMSelectStage,
-    isDone: formValues => Object.keys(formValues.sellers).length > 0 && formValues.sellerCategory
+    isDone: formValues => 
+      formValues.sellerSelector.length > 0 &&
+      (formValues.sellerSelector == 'allSellers') ||
+      (formValues.sellerSelector == 'someSellers' && 
+        Object.keys(formValues.sellers).length > 0)
   },
   {
     slug: 'about',
@@ -29,16 +33,20 @@ const BuyerATMStages = [
     isDone: formValues =>
       formValues.title.length > 0 &&
       formValues.organisation.length > 0 &&
+      formValues.summary.length > 0 &&
       formValues.location.length > 0 &&
-      formValues.workingArrangements.length > 0
+      formValues.workingArrangements.length > 0 &&
+      formValues.securityClearance.length > 0
   },
   {
     slug: 'objectives',
     title: 'Objectives',
     component: BuyerATMObjectivesStage,
     isDone: formValues =>
-      formValues.requirementsDocument.length > 0 &&
-      formValues.requirementsDocument.every(val => val) &&
+      formValues.backgroundInformation.length > 0 &&
+      formValues.outcome.length > 0 &&
+      formValues.endUsers.length > 0 &&
+      formValues.workAlreadyDone.length > 0 &&
       (!formValues.evaluationType.includes('Response template') ||
         (formValues.responseTemplate.length > 0 && formValues.responseTemplate.every(val => val)))
   },
@@ -46,7 +54,9 @@ const BuyerATMStages = [
     slug: 'timeframes',
     title: 'Timeframes and budget',
     component: BuyerATMTimeframesAndBudgetStage,
-    isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
+    isDone: formValues => 
+      formValues.startDate.length > 0 &&
+      formValues.contractLength.length > 0
   },
   {
     slug: 'criteria',
