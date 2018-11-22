@@ -43,7 +43,7 @@ const BriefOutcomeChoice = () => (
       <div className="col-xs-12 col-md-5">
         <div className={styles.card}>
           <AUheading level="2" size="lg">
-            Get proposals/quotes
+            Seek proposals and quotes
           </AUheading>
           <p className={styles.largerText}>
             Quickly seek quotes based on researched user needs and prioritised technical requirements.
