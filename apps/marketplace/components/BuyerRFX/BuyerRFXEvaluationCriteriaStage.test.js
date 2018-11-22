@@ -93,7 +93,7 @@ test('removing a criteria', () => {
     .at(0)
     .simulate('click')
 
-  expect(component.find('input#criteria_0').instance().value).toEqual('that')
+  expect(component.find('textarea#criteria_0').instance().value).toEqual('that')
   expect(component.find('input#weighting_0').instance().value).toEqual('25')
 })
 
@@ -120,7 +120,7 @@ test('adding a criteria', () => {
     .at(0)
     .simulate('click')
 
-  expect(component.find('input#criteria_2').instance().value).toEqual('')
+  expect(component.find('textarea#criteria_2').instance().value).toEqual('')
   expect(component.find('input#weighting_2').instance().value).toEqual('')
 })
 
