@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Control, actions } from 'react-redux-form'
 import get from 'lodash/get'
 import StatefulError from './StatefulError'
+import styles from './CheckboxDetailsField.scss'
 
 class CheckboxDetailsField extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class CheckboxDetailsField extends React.Component {
           validators={validators}
         />
         <span className="au-control-input__text">{label}</span>
-        <span>{description}</span>
+        {description && <span className={styles.description}>{description}</span>}
         <StatefulError model={model} messages={messages} id={id} />
       </label>
     )

@@ -23,6 +23,7 @@ const BuyerRFXResponseFormatsStage = props => (
       }
     }}
     onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
     <AUheadings level="1" size="xl">
@@ -33,10 +34,12 @@ const BuyerRFXResponseFormatsStage = props => (
       model={props.model}
       messages={{
         atleastOneFormat: 'You must select at least one response format',
-        atleastOneProposal: 'You must select at least one proposal type if you are requesting a written proposal.'
+        atleastOneProposal: 'You must select at least one proposal type.'
       }}
     />
-    <p>You will receive from sellers:</p>
+    <AUheadings level="2" size="md">
+      You will receive from sellers:
+    </AUheadings>
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
@@ -56,6 +59,11 @@ const BuyerRFXResponseFormatsStage = props => (
         id={`response_format_proposal`}
         name={`response_format_proposal`}
         label="Written proposal"
+        description={
+          props[props.model].evaluationType.includes('Written proposal')
+            ? 'Select what you would like sellers to include:'
+            : ''
+        }
         value="Written proposal"
         detailsModel={props.model}
         validators={{
@@ -65,14 +73,13 @@ const BuyerRFXResponseFormatsStage = props => (
       />
       {props[props.model].evaluationType.includes('Written proposal') && (
         <div>
-          <p>Select what you would like sellers to include:</p>
           <div className={styles.subFormats}>
             <CheckboxDetailsField
               model={`${props.model}.proposalType[]`}
               id={`proposal_costings`}
               name={`proposal_costings`}
-              label="Costings"
-              value="Costings"
+              label="Breakdown of costs"
+              value="Breakdown of costs"
               detailsModel={props.model}
               validators={{
                 required
@@ -119,6 +126,11 @@ const BuyerRFXResponseFormatsStage = props => (
           </div>
         </div>
       )}
+    </div>
+    <AUheadings level="2" size="md">
+      You will later request from sellers:
+    </AUheadings>
+    <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
         id={`response_format_demonstration`}
@@ -149,13 +161,15 @@ const BuyerRFXResponseFormatsStage = props => (
 )
 
 BuyerRFXResponseFormatsStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerRFXResponseFormatsStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
