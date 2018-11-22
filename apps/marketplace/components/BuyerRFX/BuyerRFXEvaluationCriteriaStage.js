@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
+import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
@@ -63,6 +64,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
           '': { weightingsAddUpTo100, noEmptyCriteria }
         }}
         onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
@@ -98,14 +100,17 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
               <div className="row" key={`criteria_key_${i}`}>
                 <div className={styles.criteriaContainer}>
                   <div className="col-xs-12 col-sm-7">
-                    <Textfield
+                    <Textarea
                       model={`${this.props.model}.evaluationCriteria[${i}].criteria`}
                       label="Criteria"
                       name={`criteria_${i}`}
                       id={`criteria_${i}`}
                       htmlFor={`criteria_${i}`}
                       defaultValue={evaluationCriteria.criteria}
-                      maxLength={300}
+                      controlProps={{ limit: 50 }}
+                      messages={{
+                        limitWords: 'Your criteria has exceeded the 50 word limit'
+                      }}
                     />
                   </div>
                   {this.props[this.props.model].includeWeightings && (
@@ -119,6 +124,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
                           htmlFor={`weighting_${i}`}
                           defaultValue={evaluationCriteria.weighting}
                           maxLength={3}
+                          type="number"
                         />
                         {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
                           <div className={styles.weightingRemaining}>{this.getRemainingWeighting()}% remaining</div>
@@ -162,7 +168,8 @@ BuyerRFXEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromCriteria: () => {},
   addEmptyEvalutationCriteria: () => {},
   removeCriteriaByIndex: () => {},
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerRFXEvaluationCriteriaStage.propTypes = {
@@ -171,6 +178,7 @@ BuyerRFXEvaluationCriteriaStage.propTypes = {
   addEmptyEvalutationCriteria: PropTypes.func,
   removeCriteriaByIndex: PropTypes.func,
   onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func,
   formButtons: PropTypes.node.isRequired
 }
 
