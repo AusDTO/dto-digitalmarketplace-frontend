@@ -1,5 +1,5 @@
 import dmapi from '../services/apiClient'
-import { MESSAGES_SUCCESS, MESSAGES_SENDING } from '../constants/constants'
+import { MESSAGES_SUCCESS, MESSAGES_FAILURE, MESSAGES_SENDING } from '../constants/constants'
 
 export const sendingRequest = currentlySending => ({
   type: MESSAGES_SENDING,
