@@ -18,7 +18,7 @@ const BuyerRFXStages = [
   },
   {
     slug: 'select',
-    title: 'Select sellers',
+    title: 'Who can respond?',
     component: BuyerRFXSelectStage,
     isDone: formValues => Object.keys(formValues.sellers).length > 0 && formValues.sellerCategory
   },

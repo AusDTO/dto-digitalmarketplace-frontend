@@ -9,7 +9,11 @@ import styles from './SellerSelect.scss'
 const PanelCategorySelectView = props => (
   <div className={styles.categorySelect}>
     <label htmlFor={`${props.id}-category-select`}>Panel category</label>
-    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy" rel="external">
+    <a
+      href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy"
+      rel="external noopener noreferrer"
+      target="_blank"
+    >
       What you can buy in each category
     </a>
     <AUselect
@@ -37,8 +41,20 @@ const SellerSelectView = props => (
 )
 
 const SellerSelectResultsView = props => (
-  <ul className={props.className}>
-    {props.noResults && props.searchFor && <li>Seller cannot be found in this category.</li>}
+  <ul
+    className={`${props.className} ${!props.noResults ? props.hasResultsClassName : ''} ${
+      props.sellers.length > 3 ? props.hasManyResultsClassName : ''
+    }`}
+  >
+    {props.noResults &&
+      props.searchFor && (
+        <li>
+          Seller cannot be found in this category.
+          <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+            Search all sellers
+          </a>
+        </li>
+      )}
     {props.sellers.map(seller => (
       <li key={seller.code}>
         <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
@@ -89,7 +105,7 @@ export class SellerSelect extends Component {
     }
 
     timeoutHandle = setTimeout(() => {
-      if (keyword && keyword.length > 2 && this.categoryIsValid()) {
+      if (keyword && keyword.length >= this.props.minimumSearchChars && this.categoryIsValid()) {
         findSuppliers(keyword, this.props.selectedCategory)
           .then(data => {
             const noResults = !data.sellers.length > 0
@@ -145,13 +161,17 @@ export class SellerSelect extends Component {
               showSearchButton={this.props.showSearchButton}
               handleSearchClick={this.handleSearchClick}
             />
-            <SellerSelectResultsView
-              className={styles.selectList}
-              sellers={this.state.sellers}
-              noResults={this.state.noResults}
-              searchFor={this.state.inputValue}
-              handleSellerSelectClick={this.handleSellerSelectClick}
-            />
+            {this.state.inputValue.length >= this.props.minimumSearchChars && (
+              <SellerSelectResultsView
+                className={styles.selectList}
+                hasResultsClassName={styles.hasResults}
+                hasManyResultsClassName={styles.manyResults}
+                sellers={this.state.sellers}
+                noResults={this.state.noResults}
+                searchFor={this.state.inputValue}
+                handleSellerSelectClick={this.handleSellerSelectClick}
+              />
+            )}
           </div>
         )}
       </div>
@@ -168,6 +188,7 @@ SellerSelect.defaultProps = {
   showSearchButton: true,
   showCategorySelect: false,
   categories: [],
+  minimumSearchChars: 3,
   onSellerSelect: () => {},
   onSellerCategorySelect: () => {},
   onSearch: () => {}
@@ -182,6 +203,7 @@ SellerSelect.propTypes = {
   showSearchButton: PropTypes.bool,
   showCategorySelect: PropTypes.bool,
   categories: PropTypes.array,
+  minimumSearchChars: PropTypes.number,
   onSellerSelect: PropTypes.func,
   onSellerCategorySelect: PropTypes.func,
   onSearch: PropTypes.func

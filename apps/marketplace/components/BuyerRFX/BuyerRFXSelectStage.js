@@ -80,7 +80,9 @@ export class BuyerRFXSelectStage extends Component {
         />
         <p>
           Only sellers approved in the category you select can respond. You can see each seller&apos;s categories in the{' '}
-          <a href="/search/sellers">seller catalogue</a>.
+          <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
+            seller catalogue
+          </a>.
         </p>
         <div className="row">
           <div className="col-xs-12 col-sm-9">

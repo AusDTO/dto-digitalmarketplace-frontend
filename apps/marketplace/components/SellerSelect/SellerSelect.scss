@@ -16,6 +16,7 @@
 
   input[type=text] {
     flex-grow: 1;
+    z-index: 1;
   }
 
   .categorySelect {
@@ -47,15 +48,42 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    margin-top: -3px;
+    margin-top: -2px;
     list-style-type: none;
     border: 3px solid gray;
     border-radius: 0px 0px 4px 4px;
     border-top: 0;
   }
 
+  ul.selectList.hasResults {
+    max-height: 200px;
+  }
+
+  ul.selectList.hasResults.manyResults {
+    overflow-y: scroll;
+  }
+
   ul.selectList li {
     padding: 1rem;
+  }
+
+  ul.selectList.hasResults li {
+    padding: 0;
+  }
+
+  ul.selectList.hasResults li a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #313131;
+  }
+
+  ul.selectList.hasResults li a:hover {
+    background: #f4f4f4;
+  }
+
+  a.searchAllLink {
+    float: right;
   }
 
   .hide {
