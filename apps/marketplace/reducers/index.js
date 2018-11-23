@@ -59,7 +59,8 @@ export const BuyerATMFormReducer = {
   endUsers: '',
   backgroundInformation: '',
   outcome: '',
-  keyDates: ''
+  timeframeConstraints: '',
+  contactNumber: ''
 }
 
 export default combineReducers({

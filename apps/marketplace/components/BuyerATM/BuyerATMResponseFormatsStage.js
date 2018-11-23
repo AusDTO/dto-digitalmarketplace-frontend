@@ -36,21 +36,25 @@ const BuyerATMResponseFormatsStage = props => (
         atleastOneProposal: 'You must select at least one proposal type if you are requesting a written proposal.'
       }}
     />
-
+    <p>This is a multi-stage procurement process.</p>
     <AUheadings level="2" size="lg">
-      Step 1: Sellers submit text responses for shortlisting
+      Stage 1 EOI/RFI
     </AUheadings>
-    <p>Sellers can only submit up to 500 words to each evaluation criteria you provide.</p>
+    <ul>
+      <li>Sellers can only submit up to 500 word responses to each evaluation criteria.</li>
+      <li>Once your opportunity closes, download their responses and create a shortlist.</li>
+    </ul>
     <AUheadings level="2" size="lg">
-      Step 2: Ask shortlisted sellers to provide:
+      Stage 2 RFP/Q
     </AUheadings>
+    <p>Invite shortlisted sellers to provide:</p>
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
         id={`response_format_template`}
         name={`response_format_template`}
-        label="Response template"
-        description="If you select this option, you will need to upload your own template."
+        label="Completed Response template"
+        description="If you select this option, you will need to upload your agency's template."
         value="Response template"
         detailsModel={props.model}
         validators={{

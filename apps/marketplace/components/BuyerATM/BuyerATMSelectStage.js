@@ -6,6 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import RadioList from 'shared/form/RadioList'
+import { required } from 'marketplace/components/validators'
 import SelectedSellersControl from './SelectedSellersControl'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerATMSelectStage.scss'
@@ -60,10 +61,13 @@ export class BuyerATMSelectStage extends Component {
 
     return (
       <Form
-        model={`${this.props.model}.sellers`}
+        model={this.props.model}
         validators={{
           '': {
-            required: val => val && Object.keys(val).length > 0
+            requiredWhoCanRespond: formValues => required(formValues.sellerSelector),
+            requiredSellers: formValues =>
+              formValues.sellerSelector === 'allSellers' ||
+              (formValues.sellerSelector === 'someSellers' && Object.keys(formValues.sellers).length > 0)
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -74,9 +78,10 @@ export class BuyerATMSelectStage extends Component {
         </AUheading>
         <ErrorAlert
           title="An error occurred"
-          model={`${this.props.model}.sellers`}
+          model={this.props.model}
           messages={{
-            required: 'You must select at least one seller'
+            requiredWhoCanRespond: 'Who can respond is required',
+            requiredSellers: 'You must select at least one seller'
           }}
         />
         <div className={styles.sellerSelector}>

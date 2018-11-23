@@ -37,6 +37,14 @@ const BuyerATMStages = [
       formValues.securityClearance.length > 0
   },
   {
+    slug: 'formats',
+    title: 'Response formats',
+    component: BuyerATMResponseFormatsStage,
+    isDone: formValues =>
+      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
+      formValues.proposalType.length > 0
+  },
+  {
     slug: 'objectives',
     title: 'Objectives',
     component: BuyerATMObjectivesStage,
@@ -64,18 +72,10 @@ const BuyerATMStages = [
       weightingsAddUpTo100(formValues.evaluationCriteria)
   },
   {
-    slug: 'formats',
-    title: 'Response formats',
-    component: BuyerATMResponseFormatsStage,
-    isDone: formValues =>
-      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
-      formValues.proposalType.length > 0
-  },
-  {
     slug: 'approach',
     title: 'Briefing and closing date',
     component: BuyerATMMarketApproachStage,
-    isDone: formValues => validDate(formValues.closedAt)
+    isDone: formValues => validDate(formValues.closedAt) && formValues.contactNumber.length > 0
   },
   {
     slug: 'review',

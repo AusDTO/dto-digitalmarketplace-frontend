@@ -45,13 +45,13 @@ const BuyerATMTimeframesAndBudgetStage = props => (
       }}
     />
     <Textfield
-      model={`${props.model}.keyDates`}
-      label="Key dates (optional)"
+      model={`${props.model}.timeframeConstraints`}
+      label="Time constraints or deadlines (optional)"
       description="List any key dates or important milestones"
-      name="key_dates"
-      id="key_dates"
-      htmlFor="key_dates"
-      defaultValue={props[props.model].keyDates}
+      name="timeframeConstraints"
+      id="timeframeConstraints"
+      htmlFor="timeframeConstraints"
+      defaultValue={props[props.model].timeframeConstraints}
       maxLength={100}
       validators={{}}
       messages={{}}

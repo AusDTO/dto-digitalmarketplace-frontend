@@ -154,10 +154,6 @@ export class BuyerATMRequirementsStage extends Component {
             />
           </div>
         )}
-        <p>
-          How will you measure the success? What work has already been done? Do you want to particularly target any
-          technologies or solutions as part of this exploratory exercise IP ownership
-        </p>
         <AUheadings level="2" size="sm">
           Additional documents (optional)
         </AUheadings>

@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
-import { validDate } from 'marketplace/components/validators'
+import { validDate, required } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
+import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import ClosingDateControl from './ClosingDateControl'
@@ -58,6 +59,19 @@ class BuyerATMMarketApproachStage extends Component {
           model={`${model}.closedAt`}
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
+        />
+        <Textfield
+          model={`${this.props.model}.contactNumber`}
+          label="Contact number"
+          description="In case the Marketplace support team need to contact you. This is not visible to sellers."
+          name="contactNumber"
+          id="contactNumber"
+          htmlFor="contactNumber"
+          defaultValue={this.props[this.props.model].contactNumber}
+          maxLength={100}
+          validators={{
+            required
+          }}
         />
         {this.props.formButtons}
       </Form>
