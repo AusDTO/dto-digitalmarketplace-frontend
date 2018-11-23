@@ -221,7 +221,7 @@ export class ProgressFlow extends Component {
               <ProgressNavElement />
             </div>
             <div className={styles.mobileMenu}>
-              <AUaccordion header="Menu">
+              <AUaccordion header="Form sections">
                 <ProgressNavElement />
               </AUaccordion>
             </div>

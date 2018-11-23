@@ -13,10 +13,14 @@ const BuyerRFXIntroductionStage = props => (
     </AUheadings>
     <ul>
       <li>
-        You can use the <a href="#template">questions template</a> to develop your request before publishing.
+        You can use the <a href="#template">list of questions</a> to develop your request offline before publishing.
       </li>
       <li>
-        Identify the <a href="/search/sellers">sellers and panel category</a> that best meets your need.
+        Identify the <a href="/search/sellers">sellers</a> and{' '}
+        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy" rel="external">
+          panel category
+        </a>{' '}
+        that best meets your need.
       </li>
       <li>Have your requirements, response format, evaluation criteria and closing dates ready.</li>
       <li>Any documents you upload must be in DOC, XLS, PPT or PDF format.</li>
@@ -25,9 +29,9 @@ const BuyerRFXIntroductionStage = props => (
       Getting help
     </AUheadings>
     <p>
-      <a href="#guide">View step by step guide</a>
+      <a href="#guide">View help guide</a>
       <br />
-      <a href="#chat">Contact us (live chat)</a>
+      <a href="/contact-us">Contact us</a>
     </p>
     <p>
       All fields are mandatory unless marked optional.
