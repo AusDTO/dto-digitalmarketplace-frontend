@@ -34,7 +34,7 @@ class BuyerRFXMarketApproachStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Market approach
+          Briefing and closing date
         </AUheading>
         <ErrorAlert
           title="An error occurred"
@@ -42,12 +42,6 @@ class BuyerRFXMarketApproachStage extends Component {
           messages={{
             closingDateIsValid: 'You must input a valid closing date in the future.'
           }}
-        />
-        <ClosingDateControl
-          id="closed_at"
-          model={`${model}.closedAt`}
-          onDateChange={this.handleDateChange}
-          defaultValue={this.props[this.props.model].closedAt}
         />
         <Textarea
           model={`${model}.industryBriefing`}
@@ -58,6 +52,12 @@ class BuyerRFXMarketApproachStage extends Component {
           htmlFor="industryBriefing"
           defaultValue={this.props[model].industryBriefing}
           controlProps={{ limit: 150 }}
+        />
+        <ClosingDateControl
+          id="closed_at"
+          model={`${model}.closedAt`}
+          onDateChange={this.handleDateChange}
+          defaultValue={this.props[this.props.model].closedAt}
         />
         {this.props.formButtons}
       </Form>
