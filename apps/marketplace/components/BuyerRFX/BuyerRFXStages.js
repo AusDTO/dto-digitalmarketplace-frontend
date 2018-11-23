@@ -1,4 +1,4 @@
-import { validDate } from 'marketplace/components/validators'
+import { validDate, validPhoneNumber } from 'marketplace/components/validators'
 import BuyerRFXIntroductionStage from './BuyerRFXIntroductionStage'
 import BuyerRFXAboutStage from './BuyerRFXAboutStage'
 import BuyerRFXSelectStage from './BuyerRFXSelectStage'
@@ -69,7 +69,8 @@ const BuyerRFXStages = [
     slug: 'approach',
     title: 'Briefing and closing date',
     component: BuyerRFXMarketApproachStage,
-    isDone: formValues => validDate(formValues.closedAt)
+    isDone: formValues =>
+      validDate(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
   },
   {
     slug: 'review',

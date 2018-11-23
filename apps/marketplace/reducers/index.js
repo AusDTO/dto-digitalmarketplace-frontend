@@ -26,6 +26,7 @@ export const BuyerRFXFormReducer = {
   evaluationCriteria: [{ criteria: '', weighting: '' }],
   includeWeightings: false,
   closedAt: '',
+  contactNumber: '',
   startDate: '',
   contractLength: '',
   contractExtensions: '',

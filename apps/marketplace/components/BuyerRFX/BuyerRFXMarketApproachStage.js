@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
-import { validDate } from 'marketplace/components/validators'
+import { required, validPhoneNumber, validDate } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
+import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import ClosingDateControl from './ClosingDateControl'
@@ -27,10 +28,13 @@ class BuyerRFXMarketApproachStage extends Component {
         model={model}
         validators={{
           '': {
-            closingDateIsValid: formValues => formValues.closedAt && validDate(formValues.closedAt)
+            closingDateIsValid: formValues => formValues.closedAt && validDate(formValues.closedAt),
+            requiredContact: formValues => required(formValues.contactNumber),
+            contactValidPhone: formValues => validPhoneNumber(formValues.contactNumber)
           }
         }}
         onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
@@ -40,7 +44,9 @@ class BuyerRFXMarketApproachStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            closingDateIsValid: 'You must input a valid closing date in the future.'
+            closingDateIsValid: 'You must input a valid closing date in the future.',
+            requiredContact: 'A contact number is required.',
+            contactValidPhone: 'Contact number must be a valid phone number including area code.'
           }}
         />
         <Textarea
@@ -59,6 +65,19 @@ class BuyerRFXMarketApproachStage extends Component {
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
         />
+        <Textfield
+          model={`${this.props.model}.contactNumber`}
+          label="Contact number"
+          description="This number will not be visible to sellers. It will only be used by the Marketplace operations team in case they need to contact you."
+          name="contact"
+          id="contact"
+          htmlFor="contact"
+          defaultValue={this.props[this.props.model].contactNumber}
+          maxLength={100}
+          validators={{
+            required
+          }}
+        />
         {this.props.formButtons}
       </Form>
     )
@@ -66,13 +85,15 @@ class BuyerRFXMarketApproachStage extends Component {
 }
 
 BuyerRFXMarketApproachStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerRFXMarketApproachStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
