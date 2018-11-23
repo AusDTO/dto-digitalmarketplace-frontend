@@ -15,9 +15,11 @@ const FilesInput = props => {
   return (
     <div className={label ? 'field' : styles.noLabel}>
       <div className={styles.fileInput}>
-        <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
-          {label}
-        </label>
+        {label && (
+          <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
+            {label}
+          </label>
+        )}
         <small>{hint}</small>
         {description && <p>{description}</p>}
         {range(formFields).map(field => (
