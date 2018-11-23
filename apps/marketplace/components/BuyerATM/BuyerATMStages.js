@@ -20,11 +20,9 @@ const BuyerATMStages = [
     slug: 'select',
     title: 'Select sellers',
     component: BuyerATMSelectStage,
-    isDone: formValues => 
-      formValues.sellerSelector.length > 0 &&
-      (formValues.sellerSelector == 'allSellers') ||
-      (formValues.sellerSelector == 'someSellers' && 
-        Object.keys(formValues.sellers).length > 0)
+    isDone: formValues =>
+      (formValues.sellerSelector.length > 0 && formValues.sellerSelector == 'allSellers') ||
+      (formValues.sellerSelector == 'someSellers' && Object.keys(formValues.sellers).length > 0)
   },
   {
     slug: 'about',
@@ -54,9 +52,7 @@ const BuyerATMStages = [
     slug: 'timeframes',
     title: 'Timeframes and budget',
     component: BuyerATMTimeframesAndBudgetStage,
-    isDone: formValues => 
-      formValues.startDate.length > 0 &&
-      formValues.contractLength.length > 0
+    isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
   },
   {
     slug: 'criteria',
