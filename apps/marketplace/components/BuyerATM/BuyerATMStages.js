@@ -33,8 +33,7 @@ const BuyerATMStages = [
       formValues.organisation.length > 0 &&
       formValues.summary.length > 0 &&
       formValues.location.length > 0 &&
-      formValues.workingArrangements.length > 0 &&
-      formValues.securityClearance.length > 0
+      formValues.workingArrangements.length > 0
   },
   {
     slug: 'formats',

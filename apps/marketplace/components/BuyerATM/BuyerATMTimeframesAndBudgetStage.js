@@ -47,7 +47,6 @@ const BuyerATMTimeframesAndBudgetStage = props => (
     <Textfield
       model={`${props.model}.timeframeConstraints`}
       label="Time constraints or deadlines (optional)"
-      description="List any key dates or important milestones"
       name="timeframeConstraints"
       id="timeframeConstraints"
       htmlFor="timeframeConstraints"

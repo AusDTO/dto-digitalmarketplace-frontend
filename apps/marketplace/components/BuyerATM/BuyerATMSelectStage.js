@@ -105,10 +105,6 @@ export class BuyerATMSelectStage extends Component {
         </div>
         {this.props[this.props.model].sellerSelector === 'someSellers' && (
           <span>
-            <p>
-              Only sellers approved in the category you select can respond. You can see each seller&apos;s categories in
-              the <a href="/search/sellers">seller catalogue</a>.
-            </p>
             <div className="row">
               <div className="col-xs-12 col-sm-9">
                 <div className={styles.selectSellers}>

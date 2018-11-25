@@ -131,16 +131,14 @@ const BuyerATMAboutStage = props => (
     />
     <Textfield
       model={`${props.model}.securityClearance`}
-      label="Security clearance"
+      label="Security clearance (optional)"
       description="Only request security clearance if access to classified material, environments or assets is required."
       name="securityClearance"
       id="securityClearance"
       htmlFor="securityClearance"
       defaultValue={props[props.model].securityClearance}
       maxLength={100}
-      validators={{
-        required
-      }}
+      validators={{}}
     />
     {props.formButtons}
   </Form>
