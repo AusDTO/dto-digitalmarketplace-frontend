@@ -54,21 +54,16 @@ const Opportunity = props => {
         <div className={`col-xs-12 ${brief.status === 'draft' ? `col-md-9` : `col-md-8`}`}>
           {brief.status === 'draft' && (
             <div className={styles.previewNotice}>
-              <div className="row">
-                <div className="col-xs-12 col-sm-7">
-                  <p>This is a preview of what invited sellers can see.</p>
-                </div>
-                <div className={`${styles.previewButtons} col-xs-12 col-sm-5`}>
-                  <a
-                    href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}
-                    className={`${styles.publishBtn} au-btn au-btn--secondary`}
-                  >
-                    Edit
-                  </a>
-                  <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className={`${styles.publishBtn} au-btn`}>
-                    Proceed to publish
-                  </a>
-                </div>
+              <div>
+                <p>This is a preview of what invited sellers can see.</p>
+              </div>
+              <div className={styles.previewButtons}>
+                <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className="au-btn au-btn--secondary">
+                  Edit
+                </a>
+                <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className="au-btn">
+                  Proceed to publish
+                </a>
               </div>
             </div>
           )}

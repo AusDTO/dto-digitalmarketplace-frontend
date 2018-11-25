@@ -19,16 +19,61 @@ div.details > div {
   border-left: 10px solid #006392;
   background-color: #daf3fe;
   margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previewNotice > div {
+  flex: 1;
 }
 
 .previewNotice .previewButtons {
   text-align: right;
 }
 
-.publishBtn:last-child {
+.previewNotice > div a:last-child {
   margin-left: 1.5rem;
 }
 
 ul.submitList {
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+ul.submitList li {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .previewNotice {
+    flex-direction: column;
+  }
+
+  .previewNotice > div {
+    width: 100%;
+  }
+
+  .previewNotice > div:last-child {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .previewNotice > div a {
+    display: block;
+    width: 100%;
+  }
+
+  .previewNotice > div a {
+    text-align: center;
+  }
+
+  .previewNotice > div a:first-child {
+    margin-block-end: 1.5rem;
+  }
+
+  .previewNotice > div a:last-child {
+    margin-left: 0;
+  }
 }
