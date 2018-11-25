@@ -21,8 +21,8 @@ const BuyerATMStages = [
     title: 'Select sellers',
     component: BuyerATMSelectStage,
     isDone: formValues =>
-      (formValues.sellerSelector.length > 0 && formValues.sellerSelector == 'allSellers') ||
-      (formValues.sellerSelector == 'someSellers' && Object.keys(formValues.sellers).length > 0)
+      (formValues.sellerSelector.length > 0 && formValues.sellerSelector === 'allSellers') ||
+      (formValues.sellerSelector === 'someSellers' && Object.keys(formValues.sellers).length > 0)
   },
   {
     slug: 'about',
