@@ -47,7 +47,7 @@ export class ClosingDate extends Component {
 
   render() {
     return (
-      <div className={`row ${styles.container}`}>
+      <div className="row">
         <div className="col-xs-12">
           <label htmlFor="closing_date" className="question-heading au-text-input__label">
             Closing date
