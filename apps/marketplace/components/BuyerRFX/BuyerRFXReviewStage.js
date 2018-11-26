@@ -82,7 +82,7 @@ const BuyerRFXReviewStage = props => (
             <div className="col-xs-12 col-sm-4">
               {format(getLastQuestionDate(new Date(props[props.model].closedAt)), 'D MMMM')}
             </div>
-            <div className="col-xs-12 col-sm-8">The last day suppliers can ask questions.</div>
+            <div className="col-xs-12 col-sm-8">The last day sellers can ask questions.</div>
           </div>
           <div className="row">
             <div className="col-xs-12 col-sm-4">
@@ -105,7 +105,7 @@ const BuyerRFXReviewStage = props => (
           Once you press publish
         </AUheading>
         <ul>
-          <li>Your request is published on the Digital Marketplace.</li>
+          <li>Your request can be viewed by all sellers on the Digital Marketplace.</li>
           <li>An email is sent to the sellers&apos; business contacts inviting them to view and respond.</li>
         </ul>
         {props.formButtons}
