@@ -11,12 +11,18 @@ import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXEvaluationCriteriaStage.scss'
 
-export const weightingsAddUpTo100 = evaluationCriteria =>
-  !evaluationCriteria.some(val => val.weighting) ||
-  evaluationCriteria.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10), 0) ===
-    100
+export const noEmptyWeightings = formValues =>
+  !formValues.includeWeightings || formValues.evaluationCriteria.every(val => val.weighting)
 
-export const noEmptyCriteria = evaluationCriteria => evaluationCriteria.every(val => val.criteria)
+export const weightingsAddUpTo100 = formValues =>
+  !formValues.includeWeightings ||
+  !noEmptyWeightings(formValues) ||
+  formValues.evaluationCriteria.reduce(
+    (accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10),
+    0
+  ) === 100
+
+export const noEmptyCriteria = formValues => formValues.evaluationCriteria.every(val => val.criteria)
 
 class BuyerRFXEvaluationCriteriaStage extends Component {
   constructor(props) {
@@ -59,9 +65,9 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
   render() {
     return (
       <Form
-        model={`${this.props.model}.evaluationCriteria`}
+        model={this.props.model}
         validators={{
-          '': { weightingsAddUpTo100, noEmptyCriteria }
+          '': { noEmptyWeightings, weightingsAddUpTo100, noEmptyCriteria }
         }}
         onSubmit={this.props.onSubmit}
         onSubmitFailed={this.props.onSubmitFailed}
@@ -72,9 +78,10 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
         </AUheadings>
         <ErrorAlert
           title="An error occurred"
-          model={`${this.props.model}.evaluationCriteria`}
+          model={this.props.model}
           messages={{
-            weightingsAddUpTo100: 'The weightings must all have a value and they must all add up to exactly 100%.',
+            noEmptyWeightings: 'You must not have any empty weighting.',
+            weightingsAddUpTo100: 'Weightings must add up to 100%.',
             noEmptyCriteria: 'You must not have any empty criteria.'
           }}
         />
@@ -114,8 +121,8 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
                     />
                   </div>
                   {this.props[this.props.model].includeWeightings && (
-                    <div className="col-xs-12 col-sm-3">
-                      <div className={styles.weightingContainer}>
+                    <div className={styles.weightingContainer}>
+                      <div className="col-xs-12 col-sm-3">
                         <Textfield
                           model={`${this.props.model}.evaluationCriteria[${i}].weighting`}
                           label="Weighting (%)"
@@ -145,19 +152,17 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
                       </a>
                     </div>
                   )}
-                  <div className="col-xs-12">
-                    {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
-                      <a href="#add" onClick={this.handleAddCriteriaClick}>
-                        Add another criteria
-                      </a>
-                    )}
-                  </div>
                 </div>
               </div>
             )
           }
           return null
         })}
+        <div className={styles.addCriteria}>
+          <a href="#add" onClick={this.handleAddCriteriaClick}>
+            Add another criteria
+          </a>
+        </div>
         {this.props.formButtons}
       </Form>
     )

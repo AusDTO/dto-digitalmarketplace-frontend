@@ -7,7 +7,11 @@ import BuyerRFXReviewStage from './BuyerRFXReviewStage'
 import BuyerRFXMarketApproachStage from './BuyerRFXMarketApproachStage'
 import BuyerRFXResponseFormatsStage from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
-import BuyerRFXEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerRFXEvaluationCriteriaStage'
+import BuyerRFXEvaluationCriteriaStage, {
+  weightingsAddUpTo100,
+  noEmptyWeightings,
+  noEmptyCriteria
+} from './BuyerRFXEvaluationCriteriaStage'
 
 const BuyerRFXStages = [
   {
@@ -62,8 +66,9 @@ const BuyerRFXStages = [
     component: BuyerRFXEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
-      formValues.evaluationCriteria.every(val => val.criteria) &&
-      weightingsAddUpTo100(formValues.evaluationCriteria)
+      noEmptyCriteria(formValues) &&
+      noEmptyWeightings(formValues) &&
+      weightingsAddUpTo100(formValues)
   },
   {
     slug: 'approach',

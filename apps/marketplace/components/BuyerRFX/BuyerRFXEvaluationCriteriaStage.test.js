@@ -125,10 +125,10 @@ test('adding a criteria', () => {
 })
 
 test('weightingsAddUpTo100 correctly determines whether the weightings add up to 100, or are not present', () => {
-  const goodWeightings = [{ weighting: 25 }, { weighting: 75 }]
-  const badWeightings1 = [{ weighting: 90 }]
-  const badWeightings2 = [{ weighting: 50 }, { weighting: 51 }]
-  const noWeightings = [{}]
+  const goodWeightings = { includeWeightings: true, evaluationCriteria: [{ weighting: 25 }, { weighting: 75 }] }
+  const badWeightings1 = { includeWeightings: true, evaluationCriteria: [{ weighting: 90 }] }
+  const badWeightings2 = { includeWeightings: true, evaluationCriteria: [{ weighting: 50 }, { weighting: 51 }] }
+  const noWeightings = { includeWeightings: false, evaluationCriteria: [] }
 
   expect(weightingsAddUpTo100(goodWeightings)).toBeTruthy()
   expect(weightingsAddUpTo100(badWeightings1)).toBeFalsy()
