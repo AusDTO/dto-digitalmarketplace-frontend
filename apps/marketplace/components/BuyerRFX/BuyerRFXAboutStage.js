@@ -132,6 +132,17 @@ const BuyerRFXAboutStage = props => (
         limitWords: 'Your working arrangements has exceeded the 150 word limit'
       }}
     />
+    <Textfield
+      model={`${props.model}.securityClearance`}
+      label="Security clearance (optional)"
+      description="Only request security clearance if access to classified material, environments and assets is required."
+      name="clearance"
+      id="clearance"
+      htmlFor="clearance"
+      defaultValue={props[props.model].securityClearance}
+      maxLength={100}
+      showMaxLength
+    />
     {props.formButtons}
   </Form>
 )
