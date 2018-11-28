@@ -10,27 +10,29 @@ const BriefRFXResponseSubmitted = props => (
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          <AUpageAlert as="success">
-            <AUheading level="4" size="md">
-              Thanks, your response has been successfully submitted.
-            </AUheading>
-            <p>
-              {props.brief.sellerSelector && props.brief.sellerSelector === 'oneSeller' ? (
-                <span>
-                  The buyer will receive your response once the brief closes{props.brief.applicationsClosedAt && (
-                    <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
-                  )}.
-                </span>
-              ) : (
-                <span>
-                  The buyer will receive all responses once the brief closes{props.brief.applicationsClosedAt && (
-                    <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
-                  )}.
-                </span>
-              )}
-            </p>
-          </AUpageAlert>
-          <br />
+          {!props.app.feedbackSuccess && (
+            <AUpageAlert as="success">
+              <AUheading level="4" size="md">
+                Thanks, your response has been successfully submitted.
+              </AUheading>
+              <p>
+                {props.brief.sellerSelector && props.brief.sellerSelector === 'oneSeller' ? (
+                  <span>
+                    The buyer will receive your response once the brief closes{props.brief.applicationsClosedAt && (
+                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
+                    )}.
+                  </span>
+                ) : (
+                  <span>
+                    The buyer will receive all responses once the brief closes{props.brief.applicationsClosedAt && (
+                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
+                    )}.
+                  </span>
+                )}
+              </p>
+              <br />
+            </AUpageAlert>
+          )}
           <Feedback
             app={props.app}
             handleSubmit={props.handleSubmit}
