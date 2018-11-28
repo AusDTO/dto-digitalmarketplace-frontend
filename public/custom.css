@@ -366,7 +366,7 @@ label.text-box-number-label {
     width: 162px;
   }
   .buyer-dashboard-actions .au-accordion__title {
-    width: 250px;
+    width: 225px;
   }
 
   .opportunities-page .au-accordion__body.au-accordion--open {
@@ -377,7 +377,7 @@ label.text-box-number-label {
   }
   .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
     position: relative;
-    width: 250px;
+    width: 225px;
     z-index: 1;
   }
 }
@@ -391,7 +391,7 @@ label.text-box-number-label {
     width: 200px;
   }
   .buyer-dashboard-actions .au-accordion__title {
-    width: 250px;
+    width: 225px;
   }
 
   .opportunities-page .au-accordion__body.au-accordion--open {
@@ -402,7 +402,7 @@ label.text-box-number-label {
   }
   .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
     position: relative;
-    width: 250px;
+    width: 225px;
     z-index: 1;
   }
 }
@@ -416,7 +416,7 @@ label.text-box-number-label {
   }
   .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
     position: absolute;
-    width: 250px;
+    width: 225px;
     margin-left: -10px;
     z-index: 1;
   }
