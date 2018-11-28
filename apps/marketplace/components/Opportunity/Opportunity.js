@@ -55,7 +55,7 @@ const getTrimmedFilename = fileName => {
 }
 
 const Opportunity = props => {
-  const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner, loggedIn } = props
+  const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner, loggedIn, hasResponded } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   return (
     <div>
@@ -235,6 +235,7 @@ const Opportunity = props => {
               sellersApplied={briefResponseCount}
               closingDate={brief.dates.closing_time}
               isInvitedSeller={isInvitedSeller}
+              hasResponded={hasResponded}
               briefId={brief.id}
               loggedIn={loggedIn}
             />
@@ -251,6 +252,7 @@ Opportunity.defaultProps = {
   invitedSellerCount: 0,
   isInvitedSeller: false,
   isBriefOwner: false,
+  hasResponded: false,
   loggedIn: false
 }
 
@@ -285,6 +287,7 @@ Opportunity.propTypes = {
   invitedSellerCount: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
+  hasResponded: PropTypes.bool,
   loggedIn: PropTypes.bool
 }
 

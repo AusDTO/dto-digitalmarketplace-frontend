@@ -36,9 +36,13 @@ const OpportunityInfoCard = props => (
       <div className="col-xs-12">
         {props.isInvitedSeller ? (
           <div>
-            <a href={`${rootPath}/brief/${props.briefId}/rfx/respond`} className={`${styles.button} au-btn`}>
-              Apply for opportunity
-            </a>
+            {props.hasResponded ? (
+              <p className={styles.invitedStatus}>You have already applied for this brief.</p>
+            ) : (
+              <a href={`${rootPath}/brief/${props.briefId}/rfx/respond`} className={`${styles.button} au-btn`}>
+                Apply for opportunity
+              </a>
+            )}
           </div>
         ) : (
           <div className={styles.invitedStatus}>
@@ -73,7 +77,8 @@ OpportunityInfoCard.defaultProps = {
   sellersInvited: 0,
   sellersApplied: 0,
   isInvitedSeller: false,
-  loggedIn: false
+  loggedIn: false,
+  hasResponded: false
 }
 
 OpportunityInfoCard.propTypes = {
@@ -81,6 +86,7 @@ OpportunityInfoCard.propTypes = {
   sellersApplied: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
   loggedIn: PropTypes.bool,
+  hasResponded: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired
 }
