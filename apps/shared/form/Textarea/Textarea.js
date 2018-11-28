@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import styles from '../scss/Textarea.scss'
 
 class Textarea extends Component {
   static defaultProps = {
@@ -81,7 +82,7 @@ class Textarea extends Component {
           onChange={this.onChange.bind(this)}
         />
         {limit ? (
-          <span className="word-count-counter" aria-live="polite">
+          <span className={`word-count-counter ${styles.wordCount}`} aria-live="polite">
             {this.limitText(counter, wordsLeft)}
           </span>
         ) : (
