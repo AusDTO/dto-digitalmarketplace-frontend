@@ -11,7 +11,6 @@ import ErrorBox from 'shared/form/ErrorBox'
 import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
-import styles from './BriefRFXResponseForm.scss'
 
 const BriefRFXResponseForm = ({
   model,
@@ -42,61 +41,47 @@ const BriefRFXResponseForm = ({
           <AUheading level="1" size="xl">
             Apply for &apos;{brief.title}&apos;
           </AUheading>
-          <AUheading level="2" size="lg">
-            Upload documentation
-          </AUheading>
+          <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
               {brief.evaluationType.includes('Response template') && (
-                <div>
-                  <span />
-                  <AUheading level="3" size="sm">
-                    Response template
-                  </AUheading>
-                  <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
-                  <FilesInput
-                    fieldLabel="Upload response"
-                    name="attachedDocumentURL"
-                    model={`${model}.attachedDocumentURL.0`}
-                    formFields={1}
-                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                    api={dmapi}
-                    fileId={0}
-                    validators={{
-                      requiredFile
-                    }}
-                    messages={{
-                      requiredFile: 'Choose a file for your response'
-                    }}
-                    uploading={uploading}
-                  />
-                </div>
+                <FilesInput
+                  label="Response template"
+                  fieldLabel="Upload response"
+                  name="attachedDocumentURL"
+                  model={`${model}.attachedDocumentURL.0`}
+                  formFields={1}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                  fileId={0}
+                  validators={{
+                    requiredFile
+                  }}
+                  messages={{
+                    requiredFile: 'Choose a file for your response'
+                  }}
+                  uploading={uploading}
+                />
               )}
               {brief.evaluationType.includes('Written proposal') && (
-                <div>
-                  <AUheading level="3" size="sm">
-                    Written proposal
-                  </AUheading>
-                  <p>Including:</p>
-                  <ul className={styles.proposalList}>{brief.proposalType.map(type => <li key={type}>{type}</li>)}</ul>
-                  <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
-                  <FilesInput
-                    fieldLabel="Upload written proposal"
-                    name="attachedDocumentURL"
-                    model={`${model}.attachedDocumentURL.1`}
-                    formFields={1}
-                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                    api={dmapi}
-                    fileId={1}
-                    validators={{
-                      requiredFile
-                    }}
-                    messages={{
-                      requiredFile: 'Choose a file for your written proposal'
-                    }}
-                    uploading={uploading}
-                  />
-                </div>
+                <FilesInput
+                  label="Written proposal"
+                  hint={`Your proposal must include: ${brief.proposalType.map(type => type.toLowerCase()).join(', ')}`}
+                  fieldLabel="Upload written proposal"
+                  name="attachedDocumentURL"
+                  model={`${model}.attachedDocumentURL.1`}
+                  formFields={1}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                  fileId={1}
+                  validators={{
+                    requiredFile
+                  }}
+                  messages={{
+                    requiredFile: 'Choose a file for your written proposal'
+                  }}
+                  uploading={uploading}
+                />
               )}
               <AUheading level="2" size="lg">
                 Once you submit this application
