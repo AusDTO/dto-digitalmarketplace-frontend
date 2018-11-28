@@ -45,6 +45,15 @@ const getClosingTime = brief => {
   return null
 }
 
+const getTrimmedFilename = fileName => {
+  let newFileName = fileName
+  if (fileName.length > 32) {
+    // build a limited version of the file name, taking out chars from the middle
+    newFileName = `${fileName.substring(0, 14)}...${fileName.substring(fileName.length - 15)}`
+  }
+  return newFileName
+}
+
 const Opportunity = props => {
   const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner, loggedIn } = props
   const brief = { ...defaultBriefProps, ...props.brief }
@@ -156,7 +165,13 @@ const Opportunity = props => {
               ))}
               {brief.attachments.map(attachment => (
                 <li key={attachment}>
-                  <a href={`/api/2/brief/${brief.id}/attachments/${attachment}`}>{attachment}</a>
+                  <a
+                    href={`/api/2/brief/${brief.id}/attachments/${attachment}`}
+                    aria-label={attachment}
+                    title={attachment}
+                  >
+                    {getTrimmedFilename(attachment)}
+                  </a>
                 </li>
               ))}
             </ul>
