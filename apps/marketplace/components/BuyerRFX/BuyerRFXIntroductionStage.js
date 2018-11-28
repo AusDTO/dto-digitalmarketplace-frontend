@@ -41,7 +41,7 @@ const BuyerRFXIntroductionStage = props => (
       Getting help
     </AUheadings>
     <p>
-      <a href="#guide" target="_blank">
+      <a href="#guide" target="_blank" rel="external noopener noreferrer">
         View help guide
       </a>
       <br />
