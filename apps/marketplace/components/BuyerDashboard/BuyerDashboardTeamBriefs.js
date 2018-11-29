@@ -52,11 +52,11 @@ export class BuyerDashboardTeamBriefs extends Component {
                 <th scope="col" className={styles.colClosing}>
                   Closing time
                 </th>
+                <th scope="col" className={styles.colSubmissions}>
+                  Submissions
+                </th>
                 <th scope="col" className={styles.colStatus}>
                   Status
-                </th>
-                <th scope="col" className={styles.colAction}>
-                  Action
                 </th>
               </tr>
             </thead>
@@ -71,6 +71,14 @@ export class BuyerDashboardTeamBriefs extends Component {
                   <td className={`${item.status === 'live' ? '' : styles.empty} ${styles.colClosing}`}>
                     {item.status === 'live' && <ClosedDate countdown date={item.closed_at} />}
                   </td>
+                  <td className={styles.colSubmissions}>
+                    {item.status !== 'draft' && (
+                      <div>
+                        {item.applications}
+                        <span className={styles.submissionCount}> submission{item.applications !== 1 && 's'}</span>
+                      </div>
+                    )}
+                  </td>
                   <td className={styles.colStatus}>
                     <div
                       className={`${styles.badge}
@@ -81,17 +89,6 @@ export class BuyerDashboardTeamBriefs extends Component {
                     >
                       {statusConvert(item.status)}
                     </div>
-                  </td>
-                  <td className={`${styles.actions} ${item.status === 'live' ? '' : styles.empty} ${styles.colAction}`}>
-                    {item.status === 'live' && (
-                      <a
-                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${
-                          item.id
-                        }/supplier-questions/answer-question`}
-                      >
-                        <strong>Answer a question</strong>
-                      </a>
-                    )}
                   </td>
                 </tr>
               ))}

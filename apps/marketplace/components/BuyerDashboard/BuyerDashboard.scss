@@ -104,7 +104,7 @@ table.resultListing .colId {
 }
 
 table.resultListing .colName {
-  width: 400px;
+  width: 520px;
 }
 
 table.resultListingTeamOverview .colName {
@@ -112,6 +112,11 @@ table.resultListingTeamOverview .colName {
 }
 
 table.resultListing .colClosing {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing .colSubmissions {
   width: 180px;
   white-space: nowrap;
 }
@@ -124,39 +129,20 @@ table.resultListing .colStatus {
   width: 90px;
 }
 
-table.resultListing .colAction {
-  width: 300px;
-  padding-right: 20px;
-}
-
-table.resultListingTeamBriefs .colAction {
-  width: 180px;
-  padding-right: 20px;
-}
-
-table.resultListing .colAction a {
-  margin-right: 15px;
-  white-space: nowrap;
-}
-
 table.resultListing td, table.resultListing th {
   text-align: left;
   padding: 20px 40px 20px 0px;
   box-sizing: content-box;
 }
 
-@media (max-width: 1195px) and (min-width: 900px) {
-  table.resultListing .colAction {
-    width: 140px;
-  }
+span.submissionCount {
+  display: none;
+  visibility: hidden;
+}
 
+@media (max-width: 1195px) and (min-width: 900px) {
   table.resultListing td, table.resultListing th {
     padding: 20px 30px 20px 0px;
-  }
-
-  table.resultListing .colAction a::after {
-    content: "\a";
-    white-space: pre;
   }
 }
 
@@ -171,7 +157,7 @@ table.resultListing td, table.resultListing th {
 
   table.resultListing .colName {
     padding-left: 5px;
-    max-width: 400px;
+    max-width: 520px;
   }
 
   table.resultListing tr {
@@ -184,12 +170,13 @@ table.resultListing td, table.resultListing th {
     padding: 5px;
   }
 
-  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colStatus, table.resultListing .colAction {
+  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colSubmissions, table.resultListing .colStatus {
     width: auto;
   }
 
-  table.resultListing .colAction a::after {
-    content: "";
+  span.submissionCount {
+    display: inline;
+    visibility: visible;
   }
 }
 
