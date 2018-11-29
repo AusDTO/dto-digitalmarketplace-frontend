@@ -42,6 +42,20 @@ const downloadResponsesRender = (brief, isPublished, isClosed) => {
   return <span>Download responses</span>
 }
 
+const awardContractRender = (brief, isPublished, isClosed) => {
+  if (isPublished && isClosed) {
+    let url = ''
+    if (brief.work_order_id) {
+      url = `/work-orders/${brief.work_order_id}`
+    } else {
+      url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/rfx/${brief.id}/work-orders/create`
+    }
+    return <a href={url}>Award a contract</a>
+  }
+
+  return <span>Award a contract</span>
+}
+
 class BuyerRFXOverview extends Component {
   constructor(props) {
     super(props)
@@ -174,12 +188,7 @@ class BuyerRFXOverview extends Component {
                 </div>
               )}
             </li>
-            <li>
-              <span>Evaluate responses</span>
-            </li>
-            <li>
-              <span>Award a contract</span>
-            </li>
+            <li>{awardContractRender(brief, isPublished, isClosed)}</li>
           </ul>
         </div>
       )
