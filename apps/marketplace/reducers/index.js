@@ -24,7 +24,7 @@ export const BuyerRFXFormReducer = {
   evaluationType: [],
   proposalType: [],
   evaluationCriteria: [{ criteria: '', weighting: '' }],
-  includeWeightings: false,
+  includeWeightings: true,
   closedAt: '',
   contactNumber: '',
   startDate: '',
