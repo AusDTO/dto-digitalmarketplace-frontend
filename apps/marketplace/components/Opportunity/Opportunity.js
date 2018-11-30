@@ -217,6 +217,11 @@ const Opportunity = props => {
                 <AUheading level="2" size="lg">
                   Industry briefing
                 </AUheading>
+                {isBriefOwner && (
+                  <p className={styles.industryBriefingNotice}>
+                    Only invited sellers can view details of the industry briefing:
+                  </p>
+                )}
                 <p>{brief.industryBriefing}</p>
               </div>
             )}
