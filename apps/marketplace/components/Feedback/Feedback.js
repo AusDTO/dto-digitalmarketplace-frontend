@@ -25,9 +25,8 @@ export class Feedback extends React.Component {
       <span>
         {this.props.app && this.props.app.feedbackSuccess ? (
           <AUpageAlert as="success">
-            <h4 className="au-display-sm">
-              Your feedback has been sent, thank you for helping us improve the Marketplace.
-            </h4>
+            <h4 className="au-display-sm">Your feedback has been sent.</h4>
+            <p>Thank you for helping us improve the Marketplace.</p>
           </AUpageAlert>
         ) : (
           <LocalForm onSubmit={val => this.props.handleSubmit(val)}>

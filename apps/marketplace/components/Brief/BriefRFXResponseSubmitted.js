@@ -13,7 +13,7 @@ const BriefRFXResponseSubmitted = props => (
           {!props.app.feedbackSuccess && (
             <AUpageAlert as="success">
               <AUheading level="4" size="md">
-                Thanks, your response has been successfully submitted.
+                Your response has been successfully submitted.
               </AUheading>
               <p>
                 {props.brief.sellerSelector && props.brief.sellerSelector === 'oneSeller' ? (
@@ -30,9 +30,9 @@ const BriefRFXResponseSubmitted = props => (
                   </span>
                 )}
               </p>
-              <br />
             </AUpageAlert>
           )}
+          <br />
           <Feedback
             app={props.app}
             handleSubmit={props.handleSubmit}
