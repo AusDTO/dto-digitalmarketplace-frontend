@@ -50,10 +50,10 @@ const awardContractRender = (brief, isPublished, isClosed) => {
     } else {
       url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/rfx/${brief.id}/work-orders/create`
     }
-    return <a href={url}>Award a contract</a>
+    return <a href={url}>Create work order</a>
   }
 
-  return <span>Award a contract</span>
+  return <span>Create work order</span>
 }
 
 class BuyerRFXOverview extends Component {
