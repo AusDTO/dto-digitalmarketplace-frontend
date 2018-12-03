@@ -6,8 +6,9 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { requiredFile } from 'marketplace/components/validators'
+import { requiredFile, required, validEmail } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
+import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
@@ -83,6 +84,23 @@ const BriefRFXResponseForm = ({
                   uploading={uploading}
                 />
               )}
+              <Textfield
+                model={`${model}.respondToEmailAddress`}
+                name="respondToEmailAddress"
+                id="respondToEmailAddress"
+                htmlFor="respondToEmailAddress"
+                label="Contact email"
+                description="All communication about your application will be sent to this address."
+                defaultValue={app.emailAddress}
+                validators={{
+                  required,
+                  validEmail
+                }}
+                messages={{
+                  required: 'A contact email is required',
+                  validEmail: 'A valid contact email is required'
+                }}
+              />
               <AUheading level="2" size="lg">
                 Once you submit this application
               </AUheading>
