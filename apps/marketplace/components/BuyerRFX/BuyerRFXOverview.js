@@ -99,7 +99,7 @@ class BuyerRFXOverview extends Component {
       const invitedSellers =
         brief.sellers && Object.keys(brief.sellers).length > 0 ? Object.keys(brief.sellers).length : 0
 
-      const questionsAsked =
+      const questionsAnswered =
         brief.clarificationQuestions && brief.clarificationQuestions.length > 0
           ? brief.clarificationQuestions.length
           : 0
@@ -139,7 +139,7 @@ class BuyerRFXOverview extends Component {
                 {!isPublished && (
                   <li>
                     <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
-                      Delete
+                      Delete draft
                     </a>
                   </li>
                 )}
@@ -174,9 +174,9 @@ class BuyerRFXOverview extends Component {
             </li>
             <li>
               {answerSellerQuestionsRender(brief, isPublished, brief.clarificationQuestionsAreClosed)}
-              {questionsAsked > 0 && (
+              {questionsAnswered > 0 && (
                 <div className={styles.stageStatus}>
-                  {questionsAsked} question{questionsAsked > 1 && `s`} asked
+                  {questionsAnswered} question{questionsAnswered > 1 && `s`} answered
                 </div>
               )}
             </li>
