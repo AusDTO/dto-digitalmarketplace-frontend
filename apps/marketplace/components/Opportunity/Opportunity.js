@@ -152,13 +152,13 @@ const Opportunity = props => {
           </AUheading>
           <p>{brief.summary}</p>
           {loggedIn &&
-            isInvitedSeller && (
+            (isInvitedSeller || isBriefOwner) && (
               <AUheading level="3" size="sm">
                 Additional information
               </AUheading>
             )}
           {loggedIn &&
-            isInvitedSeller && (
+            (isInvitedSeller || isBriefOwner) && (
               <ul>
                 {brief.requirementsDocument.map(requirementsDocument => (
                   <li key={requirementsDocument}>
@@ -179,13 +179,13 @@ const Opportunity = props => {
               </ul>
             )}
           {loggedIn &&
-            isInvitedSeller && (
+            (isInvitedSeller || isBriefOwner) && (
               <AUheading level="3" size="sm">
                 What sellers need to submit
               </AUheading>
             )}
           {loggedIn &&
-            isInvitedSeller && (
+            (isInvitedSeller || isBriefOwner) && (
               <ul className={styles.submitList}>
                 {brief.responseTemplate.map(responseTemplate => (
                   <li key={responseTemplate}>
@@ -202,7 +202,7 @@ const Opportunity = props => {
               </ul>
             )}
           {loggedIn &&
-            isInvitedSeller &&
+            (isInvitedSeller || isBriefOwner) &&
             (brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
               <div>
                 <AUheading level="3" size="sm">
