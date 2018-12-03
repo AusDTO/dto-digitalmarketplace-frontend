@@ -151,53 +151,58 @@ const Opportunity = props => {
             Summary
           </AUheading>
           <p>{brief.summary}</p>
-          {loggedIn && (
-            <AUheading level="3" size="sm">
-              Additional information
-            </AUheading>
-          )}
-          {loggedIn && (
-            <ul>
-              {brief.requirementsDocument.map(requirementsDocument => (
-                <li key={requirementsDocument}>
-                  <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
-                </li>
-              ))}
-              {brief.attachments.map(attachment => (
-                <li key={attachment}>
-                  <a
-                    href={`/api/2/brief/${brief.id}/attachments/${attachment}`}
-                    aria-label={attachment}
-                    title={attachment}
-                  >
-                    {getTrimmedFilename(attachment)}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-          {loggedIn && (
-            <AUheading level="3" size="sm">
-              What sellers need to submit
-            </AUheading>
-          )}
-          {loggedIn && (
-            <ul className={styles.submitList}>
-              {brief.responseTemplate.map(responseTemplate => (
-                <li key={responseTemplate}>
-                  <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>Response template</a>
-                </li>
-              ))}
-              {brief.evaluationType.includes('Written proposal') &&
-                brief.proposalType.length > 0 && (
-                  <li>
-                    Written proposal, including:
-                    <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
-                  </li>
-                )}
-            </ul>
-          )}
           {loggedIn &&
+            isInvitedSeller && (
+              <AUheading level="3" size="sm">
+                Additional information
+              </AUheading>
+            )}
+          {loggedIn &&
+            isInvitedSeller && (
+              <ul>
+                {brief.requirementsDocument.map(requirementsDocument => (
+                  <li key={requirementsDocument}>
+                    <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
+                  </li>
+                ))}
+                {brief.attachments.map(attachment => (
+                  <li key={attachment}>
+                    <a
+                      href={`/api/2/brief/${brief.id}/attachments/${attachment}`}
+                      aria-label={attachment}
+                      title={attachment}
+                    >
+                      {getTrimmedFilename(attachment)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          {loggedIn &&
+            isInvitedSeller && (
+              <AUheading level="3" size="sm">
+                What sellers need to submit
+              </AUheading>
+            )}
+          {loggedIn &&
+            isInvitedSeller && (
+              <ul className={styles.submitList}>
+                {brief.responseTemplate.map(responseTemplate => (
+                  <li key={responseTemplate}>
+                    <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>Response template</a>
+                  </li>
+                ))}
+                {brief.evaluationType.includes('Written proposal') &&
+                  brief.proposalType.length > 0 && (
+                    <li>
+                      Written proposal, including:
+                      <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
+                    </li>
+                  )}
+              </ul>
+            )}
+          {loggedIn &&
+            isInvitedSeller &&
             (brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
               <div>
                 <AUheading level="3" size="sm">
