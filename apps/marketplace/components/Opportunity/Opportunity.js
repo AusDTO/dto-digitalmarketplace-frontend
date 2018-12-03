@@ -157,6 +157,7 @@ const Opportunity = props => {
                 Additional information
               </AUheading>
             )}
+          {isBriefOwner && <p className={styles.buyerNotice}>Only invited sellers can view documents:</p>}
           {loggedIn &&
             (isInvitedSeller || isBriefOwner) && (
               <ul>
@@ -223,9 +224,7 @@ const Opportunity = props => {
                   Industry briefing
                 </AUheading>
                 {isBriefOwner && (
-                  <p className={styles.industryBriefingNotice}>
-                    Only invited sellers can view details of the industry briefing:
-                  </p>
+                  <p className={styles.buyerNotice}>Only invited sellers can view details of the industry briefing:</p>
                 )}
                 <p>{brief.industryBriefing}</p>
               </div>
