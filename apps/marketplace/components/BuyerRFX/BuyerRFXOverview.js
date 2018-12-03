@@ -5,13 +5,12 @@ import PropTypes from 'prop-types'
 import { deleteBrief } from 'marketplace/actions/briefActions'
 import isValid from 'date-fns/is_valid'
 import { rootPath } from 'marketplace/routes'
+import Tick from 'marketplace/components/Tick/Tick'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './BuyerRFXOverview.scss'
-
-const GreenTick = () => <img className={styles.greenTick} src="/static/svg/green-tick.svg" alt="Success" />
 
 const answerSellerQuestionsRender = (brief, isPublished, questionsClosed) => {
   if (!isPublished) {
@@ -21,7 +20,7 @@ const answerSellerQuestionsRender = (brief, isPublished, questionsClosed) => {
   if (isPublished && questionsClosed) {
     return (
       <span>
-        <GreenTick />
+        <Tick className={styles.tick} colour="#17788D" />
         <span>Answer seller questions</span>
       </span>
     )
@@ -161,7 +160,7 @@ class BuyerRFXOverview extends Component {
             <li>
               {isPublished ? (
                 <span>
-                  <GreenTick />Create and publish request
+                  <Tick className={styles.tick} colour="#17788D" />Create and publish request
                   <div className={styles.stageStatus}>
                     {invitedSellers} seller{invitedSellers > 1 && `s`} invited
                   </div>
