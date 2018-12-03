@@ -37,7 +37,7 @@ const BuyerRFXCompleted = props => (
         Return to overview
       </a>
       <a href={`${rootPath}/digital-marketplace/opportunities/${props.briefId}`} className="au-btn">
-        View live brief
+        View live opportunity
       </a>
     </p>
   </div>
