@@ -129,6 +129,21 @@ table.resultListing .colStatus {
   width: 90px;
 }
 
+table.resultListing .colAction {
+  width: 300px;
+  padding-right: 20px;
+}
+
+table.resultListingTeamBriefs .colAction {
+  width: 180px;
+  padding-right: 20px;
+}
+
+table.resultListing .colAction a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
 table.resultListing td, table.resultListing th {
   text-align: left;
   padding: 20px 40px 20px 0px;
@@ -141,8 +156,17 @@ span.submissionCount {
 }
 
 @media (max-width: 1195px) and (min-width: 900px) {
+  table.resultListing .colAction {
+    width: 140px;
+  }
+
   table.resultListing td, table.resultListing th {
     padding: 20px 30px 20px 0px;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "\a";
+    white-space: pre;
   }
 }
 
@@ -170,8 +194,12 @@ span.submissionCount {
     padding: 5px;
   }
 
-  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colSubmissions, table.resultListing .colStatus {
+  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colSubmissions, table.resultListing .colAction, table.resultListing .colStatus {
     width: auto;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "";
   }
 
   span.submissionCount {
