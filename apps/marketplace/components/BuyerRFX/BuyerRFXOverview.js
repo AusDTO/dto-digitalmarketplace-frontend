@@ -41,15 +41,18 @@ const downloadResponsesRender = (brief, isPublished, isClosed) => {
   return <span>Download responses</span>
 }
 
-const awardContractRender = (brief, isPublished, isClosed) => {
+const createWorkOrderRender = (brief, isPublished, isClosed) => {
   if (isPublished && isClosed) {
     let url = ''
+    let title = ''
     if (brief.work_order_id) {
       url = `/work-orders/${brief.work_order_id}`
+      title = 'Edit work order'
     } else {
       url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/rfx/${brief.id}/work-orders/create`
+      title = 'Create work order'
     }
-    return <a href={url}>Create work order</a>
+    return <a href={url}>{title}</a>
   }
 
   return <span>Create work order</span>
@@ -123,13 +126,11 @@ class BuyerRFXOverview extends Component {
                   </div>
                 )}
               <ul>
-                <li>
-                  {isPublished ? (
-                    <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View live</a>
-                  ) : (
-                    <span>View live</span>
-                  )}
-                </li>
+                {isPublished && (
+                  <li>
+                    <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
+                  </li>
+                )}
                 {!isPublished && (
                   <li>
                     <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
@@ -179,15 +180,20 @@ class BuyerRFXOverview extends Component {
                 </div>
               )}
             </li>
-            <li>
-              {downloadResponsesRender(brief, isPublished, isClosed)}
-              {briefResponseCount > 0 && (
-                <div className={styles.stageStatus}>
-                  {briefResponseCount} seller{briefResponseCount > 1 && `s`} responded
-                </div>
-              )}
-            </li>
-            <li>{awardContractRender(brief, isPublished, isClosed)}</li>
+            {(briefResponseCount > 0 || !isPublished || !isClosed) && (
+              <li>
+                {downloadResponsesRender(brief, isPublished, isClosed)}
+                {briefResponseCount > 0 && (
+                  <div className={styles.stageStatus}>
+                    {briefResponseCount} seller{briefResponseCount > 1 && `s`} responded
+                  </div>
+                )}
+              </li>
+            )}
+            {(briefResponseCount > 0 || !isPublished || !isClosed) && (
+              <li>{createWorkOrderRender(brief, isPublished, isClosed)}</li>
+            )}
+            {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
         </div>
       )
