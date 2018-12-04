@@ -19,6 +19,7 @@ const defaultBriefProps = {
     questions_close: '',
     published_date: ''
   },
+  status: '',
   summary: '',
   startDate: '',
   location: [],
@@ -242,6 +243,7 @@ const Opportunity = props => {
             <OpportunityInfoCard
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
+              isClosed={brief.status === 'closed'}
               closingDate={brief.dates.closing_time}
               isInvitedSeller={isInvitedSeller}
               hasResponded={hasResponded}
@@ -276,6 +278,7 @@ Opportunity.propTypes = {
       questions_close: PropTypes.string,
       published_date: PropTypes.string
     }),
+    status: PropTypes.string,
     summary: PropTypes.string,
     startDate: PropTypes.string,
     location: PropTypes.array,
