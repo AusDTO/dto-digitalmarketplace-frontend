@@ -52,7 +52,7 @@ class BuyerRFXMarketApproachStage extends Component {
         <Textarea
           model={`${model}.industryBriefing`}
           label="Industry briefing (optional)"
-          description="Make sure you include the date, time and access details of your briefing. This information will only be available to invited sellers."
+          description="Make sure you include the date, time and access details of your briefing."
           name="industryBriefing"
           id="industryBriefing"
           htmlFor="industryBriefing"
@@ -68,7 +68,7 @@ class BuyerRFXMarketApproachStage extends Component {
         <Textfield
           model={`${this.props.model}.contactNumber`}
           label="Contact number"
-          description="This number will not be visible to sellers. It will only be used by the Marketplace operations team in case they need to contact you."
+          description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you."
           name="contact"
           id="contact"
           htmlFor="contact"
