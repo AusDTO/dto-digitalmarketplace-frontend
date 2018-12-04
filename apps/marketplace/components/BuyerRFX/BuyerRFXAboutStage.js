@@ -119,7 +119,7 @@ const BuyerRFXAboutStage = props => (
     <Textarea
       model={`${props.model}.workingArrangements`}
       label="What are the working arrangements?"
-      description="Describe how you want to work and include any limits on expenses. For example, on site at least 3 days a week for face-to-face team meetings."
+      description="For example, on site at least 3 days a week for face-to-face team meetings."
       name="working_arrangements"
       id="working_arrangements"
       htmlFor="working_arrangements"
