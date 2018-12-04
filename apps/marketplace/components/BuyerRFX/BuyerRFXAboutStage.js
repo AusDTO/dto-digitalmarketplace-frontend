@@ -135,7 +135,7 @@ const BuyerRFXAboutStage = props => (
     <Textfield
       model={`${props.model}.securityClearance`}
       label="Security clearance (optional)"
-      description="Only request security clearance if access to classified material, environments and assets is required."
+      description="Only request security clearance if access to classified material, environments or assets is required."
       name="clearance"
       id="clearance"
       htmlFor="clearance"
