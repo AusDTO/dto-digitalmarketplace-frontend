@@ -49,11 +49,7 @@ const BuyerRFXIntroductionStage = props => (
         Contact us
       </a>
     </p>
-    <p>
-      All fields are mandatory unless marked optional.
-      <br />
-      Completing this form usually takes about 15 minutes.
-    </p>
+    <p>All fields are mandatory unless marked optional.</p>
     {props.formButtons}
   </Form>
 )
