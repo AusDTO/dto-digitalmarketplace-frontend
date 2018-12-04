@@ -45,9 +45,7 @@ const BriefOutcomeChoice = () => (
           <AUheading level="2" size="lg">
             Seek proposals and quotes
           </AUheading>
-          <p className={styles.largerText}>
-            Quickly seek quotes from selected sellers on the Digital Marketplace.
-          </p>
+          <p className={styles.largerText}>Quickly seek quotes from selected sellers on the Digital Marketplace.</p>
           <AUheading level="3" size="sm">
             What you get
           </AUheading>
