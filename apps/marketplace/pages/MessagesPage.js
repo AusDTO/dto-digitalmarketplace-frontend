@@ -18,10 +18,40 @@ class MessagesPage extends Component {
     this.props.getSupplierMessages(this.supplierCode)
   }
 
+  formatMessage(notification) {
+    let {
+      message,
+      links
+     } = notification
+
+    let messages = [message]
+    if (links) {
+      for (let link in links) {
+        let temp = []
+        messages.forEach(m => {
+          if (m.split){
+            m.split(`{${link}}`).forEach((v, i, a) => {
+              temp.push(v)
+              if (a.length != i + 1) {
+                temp.push(<a href={links[link]}>{link}</a>)
+              }
+            })
+          } else {
+            temp.push(m)
+          }
+        })
+        messages = temp
+      }
+    }
+    
+    return <li>{messages}</li>
+  }
+
   render() {
     const { currentlySending, data } = this.props
     const errors = data.errors || []
     const warnings = data.warnings || []
+
     return (
       <div>
         {currentlySending ? (
@@ -34,7 +64,7 @@ class MessagesPage extends Component {
               <div>
                 <div role="alert" className="au-body au-page-alerts au-page-alerts--error">
                   <h3 className="au-display-md">Profile errors</h3>
-                  <ul>{errors.map(i => <li key={i.message}>{i.message}</li>)}</ul>
+                  <ul>{errors.map(i => this.formatMessage(i))}</ul>
                 </div>
               </div>
             )}
@@ -42,7 +72,7 @@ class MessagesPage extends Component {
               <div>
                 <div role="alert" className="au-body au-page-alerts au-page-alerts--warning">
                   <h3 className="au-display-md">Warnings</h3>
-                  <ul>{warnings.map(i => <li key={i.message}>{i.message}</li>)}</ul>
+                  <ul>{warnings.map(i => this.formatMessage(i))}</ul>
                 </div>
               </div>
             )}
