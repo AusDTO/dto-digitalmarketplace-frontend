@@ -19,17 +19,14 @@ class MessagesPage extends Component {
   }
 
   formatMessage(notification) {
-    let {
-      message,
-      links
-     } = notification
+    let { message, links } = notification
 
     let messages = [message]
     if (links) {
       for (let link in links) {
         let temp = []
         messages.forEach(m => {
-          if (m.split){
+          if (m.split) {
             m.split(`{${link}}`).forEach((v, i, a) => {
               temp.push(v)
               if (a.length != i + 1) {
@@ -43,7 +40,7 @@ class MessagesPage extends Component {
         messages = temp
       }
     }
-    
+
     return <li>{messages}</li>
   }
 
