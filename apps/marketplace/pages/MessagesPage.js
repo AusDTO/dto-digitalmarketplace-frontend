@@ -19,17 +19,17 @@ class MessagesPage extends Component {
   }
 
   formatMessage(notification) {
-    let { message, links } = notification
+    const { message, links } = notification
 
     let messages = [message]
     if (links) {
-      for (let link in links) {
-        let temp = []
+      for (const link in links) {
+        const temp = []
         messages.forEach(m => {
           if (m.split) {
             m.split(`{${link}}`).forEach((v, i, a) => {
               temp.push(v)
-              if (a.length != i + 1) {
+              if (a.length !== i + 1) {
                 temp.push(<a href={links[link]}>{link}</a>)
               }
             })
