@@ -4,8 +4,17 @@ import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboardTeamBriefs } from 'marketplace/actions/dashboardActions'
 import { statusConvert } from 'marketplace/components/helpers'
+import { rootPath } from 'marketplace/routes'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
+
+const getLinkedBriefTitle = item => {
+  let url = `/digital-marketplace/opportunities/${item.id}`
+  if (item.lot === 'rfx') {
+    url = `${rootPath}${url}`
+  }
+  return <a href={url}>{item.name}</a>
+}
 
 export class BuyerDashboardTeamBriefs extends Component {
   componentDidMount() {
@@ -64,9 +73,7 @@ export class BuyerDashboardTeamBriefs extends Component {
               {this.props.items.map(item => (
                 <tr key={`item.${item.id}`}>
                   <td className={styles.colId}>{item.id}</td>
-                  <td className={styles.colName}>
-                    <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
-                  </td>
+                  <td className={styles.colName}>{getLinkedBriefTitle(item)}</td>
                   <td className={styles.colAuthor}>{item.author}</td>
                   <td className={`${item.status === 'live' ? '' : styles.empty} ${styles.colClosing}`}>
                     {item.status === 'live' && <ClosedDate countdown date={item.closed_at} />}

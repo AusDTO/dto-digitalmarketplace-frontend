@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import format from 'date-fns/format'
+import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
+import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import EvaluationCriteria from './EvalutationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
@@ -56,14 +58,22 @@ const getTrimmedFilename = fileName => {
 }
 
 const Opportunity = props => {
-  const { briefResponseCount, invitedSellerCount, isInvitedSeller, isBriefOwner, loggedIn, hasResponded } = props
+  const {
+    briefResponseCount,
+    invitedSellerCount,
+    isInvitedSeller,
+    isBriefOwner,
+    loggedIn,
+    hasResponded,
+    isBuyer
+  } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   return (
     <div>
       <div className="row">
         <div className={`col-xs-12 ${brief.status === 'draft' ? `col-md-9` : `col-md-8`}`}>
           {brief.status === 'draft' && (
-            <div className={styles.previewNotice}>
+            <NoticeBar className={styles.previewNotice}>
               <div>
                 <p>This is a preview of what invited sellers can see.</p>
               </div>
@@ -75,7 +85,7 @@ const Opportunity = props => {
                   Proceed to publish
                 </a>
               </div>
-            </div>
+            </NoticeBar>
           )}
           <small className={styles.organisation}>{brief.organisation}</small>
           <span>
@@ -153,14 +163,19 @@ const Opportunity = props => {
           </AUheading>
           <p>{brief.summary}</p>
           {loggedIn &&
-            (isInvitedSeller || isBriefOwner) && (
+            (isInvitedSeller || isBuyer) && (
               <AUheading level="3" size="sm">
                 Additional information
               </AUheading>
             )}
-          {isBriefOwner && <p className={styles.buyerNotice}>Only invited sellers can view documents:</p>}
+          {isBriefOwner && (
+            <NoticeBar heavyFont className={styles.noticeBar}>
+              <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+              <span>Only buyers and invited sellers can download and view this information</span>
+            </NoticeBar>
+          )}
           {loggedIn &&
-            (isInvitedSeller || isBriefOwner) && (
+            (isInvitedSeller || isBuyer) && (
               <ul>
                 {brief.requirementsDocument.map(requirementsDocument => (
                   <li key={requirementsDocument}>
@@ -181,13 +196,13 @@ const Opportunity = props => {
               </ul>
             )}
           {loggedIn &&
-            (isInvitedSeller || isBriefOwner) && (
+            (isInvitedSeller || isBuyer) && (
               <AUheading level="3" size="sm">
                 What sellers need to submit
               </AUheading>
             )}
           {loggedIn &&
-            (isInvitedSeller || isBriefOwner) && (
+            (isInvitedSeller || isBuyer) && (
               <ul className={styles.submitList}>
                 {brief.responseTemplate.map(responseTemplate => (
                   <li key={responseTemplate}>
@@ -204,7 +219,7 @@ const Opportunity = props => {
               </ul>
             )}
           {loggedIn &&
-            (isInvitedSeller || isBriefOwner) &&
+            (isInvitedSeller || isBuyer) &&
             (brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
               <div>
                 <AUheading level="3" size="sm">
@@ -218,14 +233,17 @@ const Opportunity = props => {
             )}
           <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
           {brief.industryBriefing &&
-            (isInvitedSeller || isBriefOwner) && (
+            (isInvitedSeller || isBuyer) && (
               <div>
                 <span />
                 <AUheading level="2" size="lg">
                   Industry briefing
                 </AUheading>
                 {isBriefOwner && (
-                  <p className={styles.buyerNotice}>Only invited sellers can view details of the industry briefing:</p>
+                  <NoticeBar heavyFont className={styles.noticeBar}>
+                    <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+                    <span>Only buyers and invited sellers can download and view this information</span>
+                  </NoticeBar>
                 )}
                 <p>{brief.industryBriefing}</p>
               </div>
@@ -263,6 +281,7 @@ Opportunity.defaultProps = {
   invitedSellerCount: 0,
   isInvitedSeller: false,
   isBriefOwner: false,
+  isBuyer: false,
   hasResponded: false,
   loggedIn: false
 }
@@ -299,6 +318,7 @@ Opportunity.propTypes = {
   invitedSellerCount: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
+  isBuyer: PropTypes.bool,
   hasResponded: PropTypes.bool,
   loggedIn: PropTypes.bool
 }

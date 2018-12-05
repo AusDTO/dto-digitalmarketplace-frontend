@@ -47,12 +47,15 @@ export class ClosingDate extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className={`row ${this.props.className}`}>
         <div className="col-xs-12">
           <label htmlFor="closing_date" className="question-heading au-text-input__label">
             Closing date
           </label>
-          <div>Responses will be available after 6pm Canberra time on this date.</div>
+          <div>
+            This date must be at least 2 days after you publish this request and responses will be available after 6pm
+            Canberra time.
+          </div>
         </div>
         <div id="closing_date" className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>
           <div>
@@ -105,12 +108,14 @@ export class ClosingDate extends Component {
 
 ClosingDate.defaultProps = {
   onDateChange: () => {},
-  value: ''
+  value: '',
+  className: ''
 }
 
 ClosingDate.propTypes = {
   onDateChange: PropTypes.func,
-  value: PropTypes.string
+  value: PropTypes.string,
+  className: PropTypes.string
 }
 
 const ClosingDateControl = props => (
@@ -119,6 +124,7 @@ const ClosingDateControl = props => (
     model={props.model}
     component={ClosingDate}
     onDateChange={props.onDateChange}
+    className={props.className}
     mapProps={{
       value: ownProps => ownProps.viewValue,
       formModel: ownProps => ownProps.model
@@ -127,13 +133,15 @@ const ClosingDateControl = props => (
 )
 
 ClosingDateControl.defaultProps = {
-  onDateChange: () => {}
+  onDateChange: () => {},
+  className: ''
 }
 
 ClosingDateControl.propTypes = {
   id: PropTypes.string.isRequired,
   model: PropTypes.string.isRequired,
-  onDateChange: PropTypes.func
+  onDateChange: PropTypes.func,
+  className: PropTypes.string
 }
 
 export default ClosingDateControl

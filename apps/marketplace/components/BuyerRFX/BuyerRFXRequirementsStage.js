@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
+import Textarea from 'shared/form/Textarea'
+import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
+import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
@@ -67,6 +70,10 @@ export class BuyerRFXRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Requirements
         </AUheadings>
+        <NoticeBar heavyFont className={styles.noticeBar}>
+          <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+          <span>Only buyers and invited sellers can download and view this information</span>
+        </NoticeBar>
         <ErrorAlert
           title="An error occurred"
           model={model}
@@ -75,16 +82,12 @@ export class BuyerRFXRequirementsStage extends Component {
             requiredResponseTemplate: 'You must upload a response template'
           }}
         />
-        <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
-        <p>
-          Documents can be viewed by anyone with a Digital Marketplace account. Do not include internal or confidential
-          information.
-        </p>
         <AUheadings level="2" size="sm">
           Requirements document
         </AUheadings>
         <FilesInput
           title="Requirements document"
+          hint="Documents must be in .DOC .XLS .PPT or .PDF format."
           fieldLabel="Upload document"
           name="requirementsDocument"
           model={`${model}.requirementsDocument.0`}
@@ -103,6 +106,7 @@ export class BuyerRFXRequirementsStage extends Component {
             </AUheadings>
             <FilesInput
               title="Response template"
+              hint="Documents must be in .DOC .XLS .PPT or .PDF format."
               fieldLabel="Upload template"
               name="responseTemplate"
               model={`${model}.responseTemplate.0`}
@@ -123,6 +127,7 @@ export class BuyerRFXRequirementsStage extends Component {
           <FilesInput
             key={i}
             title="Additional documents (optional)"
+            hint="Documents must be in .DOC .XLS .PPT or .PDF format."
             fieldLabel="Upload document"
             name="attachments"
             model={`${model}.attachments.${i}`}
@@ -150,6 +155,16 @@ export class BuyerRFXRequirementsStage extends Component {
             </p>
           </div>
         )}
+        <Textarea
+          model={`${model}.industryBriefing`}
+          label="Industry briefing (optional)"
+          description="Make sure you include the date, time and access details of your briefing."
+          name="industryBriefing"
+          id="industryBriefing"
+          htmlFor="industryBriefing"
+          defaultValue={this.props[model].industryBriefing}
+          controlProps={{ limit: 150 }}
+        />
         {this.props.formButtons}
       </Form>
     )

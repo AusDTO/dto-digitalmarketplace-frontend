@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { required, validPhoneNumber, validDate } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
-import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import ClosingDateControl from './ClosingDateControl'
+import styles from './BuyerRFXClosingStage.scss'
 
-class BuyerRFXMarketApproachStage extends Component {
+class BuyerRFXClosingStage extends Component {
   constructor(props) {
     super(props)
 
@@ -38,7 +38,7 @@ class BuyerRFXMarketApproachStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Briefing and closing date
+          Closing date
         </AUheading>
         <ErrorAlert
           title="An error occurred"
@@ -49,21 +49,12 @@ class BuyerRFXMarketApproachStage extends Component {
             contactValidPhone: 'Contact number must be a valid phone number including area code.'
           }}
         />
-        <Textarea
-          model={`${model}.industryBriefing`}
-          label="Industry briefing (optional)"
-          description="Make sure you include the date, time and access details of your briefing."
-          name="industryBriefing"
-          id="industryBriefing"
-          htmlFor="industryBriefing"
-          defaultValue={this.props[model].industryBriefing}
-          controlProps={{ limit: 150 }}
-        />
         <ClosingDateControl
           id="closed_at"
           model={`${model}.closedAt`}
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
+          className={styles.closingDateControl}
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}
@@ -84,12 +75,12 @@ class BuyerRFXMarketApproachStage extends Component {
   }
 }
 
-BuyerRFXMarketApproachStage.defaultProps = {
+BuyerRFXClosingStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXMarketApproachStage.propTypes = {
+BuyerRFXClosingStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -104,4 +95,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXMarketApproachStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXClosingStage)

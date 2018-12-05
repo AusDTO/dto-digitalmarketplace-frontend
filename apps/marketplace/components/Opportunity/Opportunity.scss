@@ -15,9 +15,6 @@ div.details > div {
 }
 
 .previewNotice {
-  padding: 1.5rem;
-  border-left: 10px solid #006392;
-  background-color: #daf3fe;
   margin-bottom: 3rem;
   display: flex;
   align-items: center;
@@ -45,8 +42,18 @@ ul.submitList li {
   margin-top: 0.5rem;
 }
 
-p.buyerNotice {
-  color: #CC0000;
+.noticeBar {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.noticeBar > span {
+  vertical-align: middle;
+}
+
+.noticeBarIcon {
+  margin-right: 0.75rem;
+  vertical-align: middle;
 }
 
 @media (max-width: 767px) {

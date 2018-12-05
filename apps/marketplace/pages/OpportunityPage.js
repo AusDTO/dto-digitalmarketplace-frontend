@@ -82,6 +82,7 @@ class OpportunityPage extends Component {
           invitedSellerCount={this.props.invitedSellerCount}
           isInvitedSeller={this.props.isInvitedSeller}
           isBriefOwner={this.props.isBriefOwner}
+          isBuyer={this.props.isBuyer}
           hasResponded={this.props.hasResponded}
           loggedIn={this.props.loggedIn}
         />
@@ -99,6 +100,7 @@ const mapResetStateToProps = state => ({
   loadBriefSuccess: state.brief.loadBriefSuccess,
   isInvitedSeller: state.brief.isInvitedSeller,
   isBriefOwner: state.brief.isBriefOwner,
+  isBuyer: state.brief.isBuyer,
   hasResponded: state.brief.hasResponded,
   errorMessage: state.app.errorMessage,
   loggedIn: state.app.loggedIn

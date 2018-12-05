@@ -4,7 +4,7 @@ import BuyerRFXAboutStage from './BuyerRFXAboutStage'
 import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
-import BuyerRFXMarketApproachStage from './BuyerRFXMarketApproachStage'
+import BuyerRFXClosingStage from './BuyerRFXClosingStage'
 import BuyerRFXResponseFormatsStage from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
 import BuyerRFXEvaluationCriteriaStage, {
@@ -71,9 +71,9 @@ const BuyerRFXStages = [
       weightingsAddUpTo100(formValues)
   },
   {
-    slug: 'approach',
-    title: 'Briefing and closing date',
-    component: BuyerRFXMarketApproachStage,
+    slug: 'closing',
+    title: 'Closing date',
+    component: BuyerRFXClosingStage,
     isDone: formValues =>
       validDate(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
   },

@@ -70,7 +70,7 @@ const BuyerRFXReviewStage = props => (
         <AUheading level="1" size="xl">
           Review and publish
         </AUheading>
-        <p>If you send this brief today, you must be aware of the following dates:</p>
+        <p>If you publish today, you must be aware of the following dates:</p>
         <div className={styles.milestones}>
           <div className="row">
             <div className="col-xs-12 col-sm-4">Today</div>
@@ -105,7 +105,12 @@ const BuyerRFXReviewStage = props => (
           Once you press publish
         </AUheading>
         <ul>
-          <li>Your request can be viewed by all sellers on the Digital Marketplace.</li>
+          <li>A summary of this request will be visible on the Digital Marketplace.</li>
+          <li>
+            Only buyers and invited sellers can view your attached documents{props[props.model].industryBriefing && (
+              <span> and industry briefing details</span>
+            )}.
+          </li>
           <li>An email is sent to the sellers&apos; business contacts inviting them to view and respond.</li>
         </ul>
         {props.formButtons}
