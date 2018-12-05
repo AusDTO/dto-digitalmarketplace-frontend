@@ -18,12 +18,12 @@ class MessagesPage extends Component {
     this.props.getSupplierMessages(this.supplierCode)
   }
 
-  formatMessage(notification) {
+  formatMessage = notification => {
     const { message, links } = notification
 
     let messages = [message]
     if (links) {
-      for (const link in links) {
+      Object.keys(links).forEach(link => {
         const temp = []
         messages.forEach(m => {
           if (m.split) {
@@ -38,7 +38,7 @@ class MessagesPage extends Component {
           }
         })
         messages = temp
-      }
+      })
     }
 
     return <li>{messages}</li>
