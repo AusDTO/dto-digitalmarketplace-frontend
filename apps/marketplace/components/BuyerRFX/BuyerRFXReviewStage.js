@@ -28,9 +28,12 @@ const nextWeekDay = date => {
 const getLastQuestionDate = closingDate => {
   const today = new Date()
   let lastQuestionDate = new Date()
-  if (closingDate < addDays(today, 2)) {
-    lastQuestionDate = closingDate
-  } else if (closingDate < addDays(today, 7)) {
+  if (closingDate < addDays(today, 3)) {
+    lastQuestionDate = nextWeekDay(subDays(closingDate, 1))
+    if (today > lastQuestionDate) {
+      lastQuestionDate = today
+    }
+  } else if (closingDate < addDays(today, 8)) {
     lastQuestionDate = nextWeekDay(addDays(today, 2))
   } else {
     lastQuestionDate = nextWeekDay(addDays(today, 5))

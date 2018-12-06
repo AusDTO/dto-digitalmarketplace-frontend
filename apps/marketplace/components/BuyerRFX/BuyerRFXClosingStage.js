@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
-import { required, validPhoneNumber, validDate } from 'marketplace/components/validators'
+import { required, validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -28,7 +28,7 @@ class BuyerRFXClosingStage extends Component {
         model={model}
         validators={{
           '': {
-            closingDateIsValid: formValues => formValues.closedAt && validDate(formValues.closedAt),
+            closingDateIsValid: formValues => formValues.closedAt && dateIs2DaysInFuture(formValues.closedAt),
             requiredContact: formValues => required(formValues.contactNumber),
             contactValidPhone: formValues => validPhoneNumber(formValues.contactNumber)
           }
@@ -44,7 +44,7 @@ class BuyerRFXClosingStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            closingDateIsValid: 'You must input a valid closing date in the future.',
+            closingDateIsValid: 'The closing date must be at least 2 days from now.',
             requiredContact: 'A contact number is required.',
             contactValidPhone: 'Contact number must be a valid phone number including area code.'
           }}

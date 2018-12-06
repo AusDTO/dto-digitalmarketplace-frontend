@@ -4,6 +4,9 @@ import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid'
 import isFuture from 'date-fns/is_future'
+import isAfter from 'date-fns/is_after'
+import addDays from 'date-fns/add_days'
+import endOfDay from 'date-fns/end_of_day'
 import { isValidABN } from 'abnacn-validator'
 import values from 'lodash/values'
 
@@ -35,6 +38,16 @@ export const validDate = val => {
     return false
   }
   if (isFuture(val)) {
+    return true
+  }
+  return false
+}
+
+export const dateIs2DaysInFuture = val => {
+  if (!validDate(val)) {
+    return false
+  }
+  if (isAfter(endOfDay(parse_date(val)), addDays(new Date(), 2))) {
     return true
   }
   return false
