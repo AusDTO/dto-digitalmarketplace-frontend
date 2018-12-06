@@ -70,7 +70,7 @@ export class BuyerRFXRequirementsStage extends Component {
           Requirements
         </AUheadings>
         <NoticeBar heavyFont className={styles.noticeBar}>
-          Only invited sellers and other buyers can view documents and industry briefing details you provide.
+          Only invited sellers and other buyers can view attached documents and industry briefing details you provide.
         </NoticeBar>
         <ErrorAlert
           title="An error occurred"
