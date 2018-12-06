@@ -17,7 +17,9 @@ export const handleSupplierMessageFailure = message => ({
 })
 
 export const getSupplierMessages = supplierCode => dispatch => {
-  const params = {}
+  const params = {
+    skip_application_check: false
+  }
   dispatch(sendingRequest(true))
   return dmapi({ url: `/supplier/${supplierCode}/messages`, params }).then(response => {
     if (!response || response.error) {
