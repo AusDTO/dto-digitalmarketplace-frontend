@@ -6,7 +6,6 @@ import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textarea from 'shared/form/Textarea'
 import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
-import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
@@ -71,8 +70,7 @@ export class BuyerRFXRequirementsStage extends Component {
           Requirements
         </AUheadings>
         <NoticeBar heavyFont className={styles.noticeBar}>
-          <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
-          <span>Only buyers and invited sellers can download and view this information</span>
+          Only invited sellers and other buyers can view documents and industry briefing details you provide.
         </NoticeBar>
         <ErrorAlert
           title="An error occurred"
