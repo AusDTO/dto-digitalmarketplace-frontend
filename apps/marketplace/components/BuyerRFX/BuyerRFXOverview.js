@@ -168,7 +168,9 @@ class BuyerRFXOverview extends Component {
                 </span>
               ) : (
                 <span>
-                  <a href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}>Create and publish request</a>
+                  <a href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}>
+                    {brief.title ? 'Edit and publish request' : 'Create and publish request'}
+                  </a>
                 </span>
               )}
             </li>
