@@ -84,6 +84,27 @@ ul.menu li a.active {
   border-bottom: solid 8px #00698f;
 }
 
+@media (max-width: 991px) {
+  nav.dashNav {
+    border-bottom: 0;
+  }
+
+  ul.menu li {
+    display: block;
+    border-top: 1px solid gray;
+  }
+  
+  ul.menu li:last-child {
+    border-bottom: 1px solid gray;
+  }
+
+  ul.menu li a.active {
+    font-weight: 700;
+    border-bottom: 0;
+    background-color: #dff5fd;
+  }
+}
+
 table.resultListing {
   border-collapse: collapse;
   margin-top: 2.5rem;
@@ -205,12 +226,6 @@ span.submissionCount {
   span.submissionCount {
     display: inline;
     visibility: visible;
-  }
-}
-
-@media (max-width: 599px) {
-  ul.menu li a {
-    font-size: 0.83rem;
   }
 }
 
