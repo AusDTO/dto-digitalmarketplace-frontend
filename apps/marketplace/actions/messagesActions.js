@@ -27,7 +27,7 @@ export const getSupplierMessages = supplierCode => dispatch => {
         handleSupplierMessageFailure({
           errors: [
             {
-              message: `A ${response.status} error has occured`
+              message: `A ${response.status} error has occurred`
             }
           ]
         })
