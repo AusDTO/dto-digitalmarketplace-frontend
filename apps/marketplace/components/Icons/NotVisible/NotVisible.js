@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const NotVisible = props => (
-  <svg width="34" height="22" xmlns="http://www.w3.org/2000/svg" className={props.className}>
+  <svg viewBox="0 0 34 22" width="28" xmlns="http://www.w3.org/2000/svg" className={props.className}>
     <defs>
       <path d="M0 .091h21.363v15.765H0z" />
     </defs>

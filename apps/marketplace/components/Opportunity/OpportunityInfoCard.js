@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import format from 'date-fns/format'
 import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
 import styles from './OpportunityInfoCard.scss'
@@ -22,20 +23,26 @@ const OpportunityInfoCard = props => (
       <div className="col-xs-12">
         {!props.isClosed && (
           <div>
+            <span>Closes in</span>
+            <br />
             <strong className={styles.stat}>
               <ClosedDate countdown date={props.closingDate} />
             </strong>
-            <span>
-              <br />
-              until closing
-            </span>
+            <br />
+            <span>({format(props.closingDate, 'D MMMM YYYY')} at 6PM in Canberra)</span>
           </div>
         )}
       </div>
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isClosed && <p className={styles.invitedStatus}>This opportunity is closed.</p>}
+        {props.isClosed && (
+          <p className={styles.invitedStatus}>
+            This opportunity closed on
+            <br />
+            {format(props.closingDate, 'D MMMM YYYY')}
+          </p>
+        )}
         {!props.isClosed &&
           props.isInvitedSeller && (
             <div>
