@@ -22,6 +22,9 @@ export const weightingsAddUpTo100 = formValues =>
     0
   ) === 100
 
+export const noZeroWeightings = formValues =>
+  !formValues.includeWeightings || formValues.evaluationCriteria.every(val => parseInt(val.weighting, 10) > 0)
+
 export const noEmptyCriteria = formValues => formValues.evaluationCriteria.every(val => val.criteria)
 
 class BuyerRFXEvaluationCriteriaStage extends Component {
@@ -67,7 +70,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
       <Form
         model={this.props.model}
         validators={{
-          '': { noEmptyWeightings, weightingsAddUpTo100, noEmptyCriteria }
+          '': { noEmptyWeightings, weightingsAddUpTo100, noZeroWeightings, noEmptyCriteria }
         }}
         onSubmit={this.props.onSubmit}
         onSubmitFailed={this.props.onSubmitFailed}
@@ -82,6 +85,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
           messages={{
             noEmptyWeightings: 'You must not have any empty weighting.',
             weightingsAddUpTo100: 'Weightings must add up to 100%.',
+            noZeroWeightings: 'Weightings must be greater than 0.',
             noEmptyCriteria: 'You must not have any empty criteria.'
           }}
         />
