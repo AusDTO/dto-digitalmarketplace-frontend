@@ -150,7 +150,7 @@ class BuyerRFXOverview extends Component {
             <div className={styles.deleteAlert}>
               <AUpageAlert as="warning">
                 <p>Are you sure you want to delete this opportunity?</p>
-                <AUbutton onClick={() => this.handleDeleteBrief(brief.id)}>Yes, delete brief</AUbutton>
+                <AUbutton onClick={() => this.handleDeleteBrief(brief.id)}>Yes, delete opportunity</AUbutton>
                 <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
                   Do not delete
                 </AUbutton>
