@@ -19,6 +19,7 @@ import BuyerRFXFlowPage from './pages/BuyerRFXFlowPage'
 import BuyerRFXOverviewPage from './pages/BuyerRFXOverviewPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
+import MessagesPage from './pages/MessagesPage'
 
 export const rootPath = '/2'
 
@@ -50,6 +51,8 @@ export const Routes = () => (
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
+    <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
+    <PrivateRoute path={`${rootPath}/messages`} component={MessagesPage} />
     <Route component={NotFound} />
   </Switch>
 )
