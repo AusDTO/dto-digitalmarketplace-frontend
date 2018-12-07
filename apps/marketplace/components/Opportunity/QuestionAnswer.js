@@ -10,14 +10,16 @@ const QuestionAnswer = props => (
     <AUheading level="2" size="lg">
       Question and answer
     </AUheading>
-    <div className={`${styles.deadline} row`}>
-      <div className="col-xs-12 col-sm-5">
-        <strong>Deadline for asking questions</strong>
+    {props.questionsClosingDate && (
+      <div className={`${styles.deadline} row`}>
+        <div className="col-xs-12 col-sm-5">
+          <strong>Deadline for asking questions</strong>
+        </div>
+        <div className="col-xs-12 col-sm-7">
+          {format(parse(props.questionsClosingDate), 'dddd D MMMM YYYY')} at 6PM (in Canberra)
+        </div>
       </div>
-      <div className="col-xs-12 col-sm-7">
-        {format(parse(props.questionsClosingDate), 'dddd D MMMM YYYY')} at 6PM (in Canberra)
-      </div>
-    </div>
+    )}
     {props.questions.map(qa => (
       <div className="row" key={qa.question}>
         <div className="col-xs-12 col-sm-5">{qa.question}</div>
