@@ -109,7 +109,7 @@ const BriefRFXResponseForm = ({
                   You <strong>cannot</strong> edit your application after submitting.
                 </li>
                 <li>
-                  The buyer will receive your response once the brief has closed on{' '}
+                  The buyer will receive your response once the opportunity has closed on{' '}
                   {format(new Date(brief.applicationsClosedAt), 'DD MMMM')}.
                 </li>
               </ul>
@@ -126,7 +126,7 @@ const BriefRFXResponseForm = ({
               <AUheading level="2" size="md">
                 There was a problem loading your details
               </AUheading>
-              <p>Only logged in sellers can respond to briefs</p>
+              <p>Only logged in sellers can respond to opportunities</p>
             </AUpageAlert>
           )}
         </article>

@@ -59,7 +59,7 @@ const BuyerRFXReviewStage = props => (
         <AUheading level="1" size="xl">
           Review and publish
         </AUheading>
-        <p>Before you publish your brief, you need to complete information in:</p>
+        <p>Before you publish your opportunity, you need to complete information in:</p>
         <ul>
           {props.stagesTodo.map(stage => (
             <li key={stage}>
@@ -78,7 +78,7 @@ const BuyerRFXReviewStage = props => (
           <div className="row">
             <div className="col-xs-12 col-sm-4">Today</div>
             <div className="col-xs-12 col-sm-8">
-              Invited sellers can ask questions about your requirements and apply for the brief.
+              Invited sellers can ask questions about your requirements and apply for the opportunity.
             </div>
           </div>
           <div className="row">

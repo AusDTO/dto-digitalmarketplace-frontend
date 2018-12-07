@@ -18,13 +18,15 @@ const BriefRFXResponseSubmitted = props => (
               <p>
                 {props.brief.sellerSelector && props.brief.sellerSelector === 'oneSeller' ? (
                   <span>
-                    The buyer will receive your response once the brief closes{props.brief.applicationsClosedAt && (
+                    The buyer will receive your response once the opportunity closes{props.brief
+                      .applicationsClosedAt && (
                       <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
                     )}.
                   </span>
                 ) : (
                   <span>
-                    The buyer will receive all responses once the brief closes{props.brief.applicationsClosedAt && (
+                    The buyer will receive all responses once the opportunity closes{props.brief
+                      .applicationsClosedAt && (
                       <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
                     )}.
                   </span>
@@ -36,8 +38,8 @@ const BriefRFXResponseSubmitted = props => (
           <Feedback
             app={props.app}
             handleSubmit={props.handleSubmit}
-            difficultyQuestion="How easy or difficult was it for you to respond to this brief?"
-            commentQuestion="How would you improve responding to a brief?"
+            difficultyQuestion="How easy or difficult was it for you to respond to this opportunity?"
+            commentQuestion="How would you improve responding to an opportunity?"
             objectAction="responded_to"
           />
         </article>
