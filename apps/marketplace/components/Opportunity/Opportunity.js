@@ -106,14 +106,12 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
             </div>
-            {brief.budgetRange && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Budget range</strong>
-                </div>
-                <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Budget range</strong>
               </div>
-            )}
+              <div className="col-xs-12 col-sm-8">{brief.budgetRange || 'None specified'}</div>
+            </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Location of work</strong>
