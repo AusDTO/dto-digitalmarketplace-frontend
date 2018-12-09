@@ -42,7 +42,7 @@ const BriefRFXResponseForm = ({
           <AUheading level="1" size="xl">
             Apply for &apos;{brief.title}&apos;
           </AUheading>
-          <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
+          <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
               {brief.evaluationType.includes('Response template') && (
