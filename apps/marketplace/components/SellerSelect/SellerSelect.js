@@ -29,6 +29,11 @@ const PanelCategorySelectView = props => (
 const SellerSelectView = props => (
   <div>
     <label htmlFor={props.id}>{props.label}</label>
+    {typeof props.description === 'string' ? (
+      <span className={styles.description}>{props.description}</span>
+    ) : (
+      props.description
+    )}
     <AUtextInput
       id={props.id}
       placeholder={props.placeholder}
@@ -155,6 +160,7 @@ export class SellerSelect extends Component {
               id={this.props.id}
               placeholder={this.props.placeholder}
               label={this.props.label}
+              description={this.props.description}
               handleSearchChange={this.handleSearchChange}
               inputValue={this.state.inputValue}
               className={this.props.showSearchButton ? styles.noRightRadius : ''}
@@ -183,6 +189,7 @@ SellerSelect.defaultProps = {
   id: 'seller-search',
   placeholder: '',
   label: '',
+  description: '',
   selectedCategory: '',
   showSelected: true,
   showSearchButton: true,
@@ -198,6 +205,7 @@ SellerSelect.propTypes = {
   id: PropTypes.string,
   placeholder: PropTypes.string,
   label: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   selectedCategory: PropTypes.string,
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,

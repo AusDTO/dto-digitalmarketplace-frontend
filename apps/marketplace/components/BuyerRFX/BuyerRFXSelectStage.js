@@ -78,17 +78,20 @@ export class BuyerRFXSelectStage extends Component {
             required: 'You must select at least one seller'
           }}
         />
-        <p>
-          Only sellers approved in the category you select can respond. You can see each seller&apos;s categories in the{' '}
-          <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
-            seller catalogue
-          </a>.
-        </p>
         <div className="row">
           <div className="col-xs-12 col-sm-9">
             <div className={styles.selectSellers}>
               <SellerSelect
                 label="Seller name"
+                description={
+                  <span>
+                    Only sellers approved in the category you have selected can respond. You can see each seller&apos;s
+                    categories in the{' '}
+                    <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
+                      seller catalogue
+                    </a>.
+                  </span>
+                }
                 showSelected={false}
                 showSearchButton={false}
                 categories={categories}
