@@ -47,7 +47,7 @@ const BriefRFXResponseForm = ({
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
               {brief.evaluationType.includes('Response template') && (
                 <FilesInput
-                  label="Response template"
+                  label="Completed response template"
                   fieldLabel="Upload response"
                   name="attachedDocumentURL"
                   model={`${model}.attachedDocumentURL.0`}
@@ -59,7 +59,7 @@ const BriefRFXResponseForm = ({
                     requiredFile
                   }}
                   messages={{
-                    requiredFile: 'Choose a file for your response'
+                    requiredFile: 'You must upload your completed response template'
                   }}
                   uploading={uploading}
                 />
@@ -79,7 +79,7 @@ const BriefRFXResponseForm = ({
                     requiredFile
                   }}
                   messages={{
-                    requiredFile: 'Choose a file for your written proposal'
+                    requiredFile: 'You must upload your written proposal'
                   }}
                   uploading={uploading}
                 />
@@ -97,8 +97,8 @@ const BriefRFXResponseForm = ({
                   validEmail
                 }}
                 messages={{
-                  required: 'A contact email is required',
-                  validEmail: 'A valid contact email is required'
+                  required: 'You must add a contact email',
+                  validEmail: 'You must add a valid contact email'
                 }}
               />
               <AUheading level="2" size="lg">
