@@ -5,7 +5,7 @@ import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
 import BuyerRFXClosingStage from './BuyerRFXClosingStage'
-import BuyerRFXResponseFormatsStage from './BuyerRFXResponseFormatsStage'
+import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
 import BuyerRFXEvaluationCriteriaStage, {
   weightingsAddUpTo100,
@@ -40,9 +40,7 @@ const BuyerRFXStages = [
     slug: 'formats',
     title: 'Response formats',
     component: BuyerRFXResponseFormatsStage,
-    isDone: formValues =>
-      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
-      formValues.proposalType.length > 0
+    isDone: formValues => atleastOneFormat(formValues) && atleastOneProposal(formValues)
   },
   {
     slug: 'requirements',

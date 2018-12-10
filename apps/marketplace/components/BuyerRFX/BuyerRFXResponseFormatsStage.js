@@ -9,18 +9,21 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXResponseFormatsStage.scss'
 
+export const atleastOneFormat = formValues =>
+  formValues.evaluationType &&
+  (formValues.evaluationType.includes('Written proposal') || formValues.evaluationType.includes('Response template'))
+
+export const atleastOneProposal = formValues =>
+  !formValues.evaluationType.includes('Written proposal') ||
+  (formValues.evaluationType.includes('Written proposal') &&
+    formValues.proposalType &&
+    formValues.proposalType.length > 0)
+
 const BuyerRFXResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
-      '': {
-        atleastOneFormat: formValues => formValues.evaluationType && formValues.evaluationType.length > 0,
-        atleastOneProposal: formValues =>
-          !formValues.evaluationType.includes('Written proposal') ||
-          (formValues.evaluationType.includes('Written proposal') &&
-            formValues.proposalType &&
-            formValues.proposalType.length > 0)
-      }
+      '': { atleastOneFormat, atleastOneProposal }
     }}
     onSubmit={props.onSubmit}
     onSubmitFailed={props.onSubmitFailed}
@@ -33,7 +36,7 @@ const BuyerRFXResponseFormatsStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        atleastOneFormat: 'You must select at least one response format',
+        atleastOneFormat: 'You must choose what you would like sellers to provide through the Marketplace',
         atleastOneProposal: 'You must select at least one proposal type.'
       }}
     />
