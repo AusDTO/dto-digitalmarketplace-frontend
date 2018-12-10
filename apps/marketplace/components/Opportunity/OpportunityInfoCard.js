@@ -47,7 +47,7 @@ const OpportunityInfoCard = props => (
           props.isInvitedSeller && (
             <div>
               {props.hasResponded ? (
-                <p className={styles.invitedStatus}>You have already applied for this brief.</p>
+                <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
               ) : (
                 <a href={`${rootPath}/brief/${props.briefId}/rfx/respond`} className={`${styles.button} au-btn`}>
                   Apply for opportunity
