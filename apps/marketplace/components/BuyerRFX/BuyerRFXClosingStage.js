@@ -44,9 +44,9 @@ class BuyerRFXClosingStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            closingDateIsValid: 'The closing date must be at least 2 days from now.',
-            requiredContact: 'A contact number is required.',
-            contactValidPhone: 'Contact number must be a valid phone number including area code.'
+            closingDateIsValid: 'You must add a closing date at least 2 days from now',
+            requiredContact: 'You must add a contact number',
+            contactValidPhone: 'Contact number must be a valid phone number, including an area code'
           }}
         />
         <ClosingDateControl
