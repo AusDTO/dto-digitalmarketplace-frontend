@@ -46,11 +46,11 @@ const BuyerRFXAboutStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        requiredTitle: 'Enter the title for your opportunity',
-        requiredOrg: 'Enter the name of your organisation',
-        requiredSummary: 'Enter a summary of your opportunity',
-        requiredWorkingArrangements: 'Enter the working arrangements for your opportunity',
-        atLeastOneLocation: 'You must select at least one location'
+        requiredTitle: 'You must add a title',
+        requiredOrg: 'You must add the name of your department, agency or organisation',
+        requiredSummary: 'You must add a summary of work to be done',
+        requiredWorkingArrangements: 'You must add the working arrangements',
+        atLeastOneLocation: 'You must select a location of where the work can be done'
       }}
     />
     <Textfield
