@@ -21,17 +21,18 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {!props.isClosed && (
-          <div>
-            <span>Closes in</span>
-            <br />
-            <strong className={styles.stat}>
-              <ClosedDate countdown date={props.closingDate} />
-            </strong>
-            <br />
-            <span>({format(props.closingDate, 'D MMMM YYYY')} at 6PM in Canberra)</span>
-          </div>
-        )}
+        {!props.isClosed &&
+          props.closingDate && (
+            <div>
+              <span>Closes in</span>
+              <br />
+              <strong className={styles.stat}>
+                <ClosedDate countdown date={props.closingDate} />
+              </strong>
+              <br />
+              <span>({format(props.closingDate, 'D MMMM YYYY')} at 6PM in Canberra)</span>
+            </div>
+          )}
       </div>
     </div>
     <div className="row">

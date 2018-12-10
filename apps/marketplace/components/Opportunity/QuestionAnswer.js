@@ -26,7 +26,7 @@ const QuestionAnswer = props => (
         <div className="col-xs-12 col-sm-7">{qa.answer}</div>
       </div>
     ))}
-    {props.questions.length === 0 && <p>No questions have been asked or answered yet.</p>}
+    {props.questions.length === 0 && <p className={styles.noqs}>No questions have been asked or answered yet.</p>}
     {props.showAskQuestionInfo &&
       !props.clarificationQuestionsAreClosed && (
         <p>

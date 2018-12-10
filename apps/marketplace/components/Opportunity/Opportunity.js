@@ -81,11 +81,11 @@ const Opportunity = props => {
   return (
     <div>
       <div className="row">
-        <div className={`col-xs-12 ${brief.status === 'draft' ? `col-md-9` : `col-md-8`}`}>
+        <div className="col-xs-12 col-md-8">
           {brief.status === 'draft' && (
             <NoticeBar className={styles.previewNotice}>
               <div>
-                <p>This is a preview of what invited sellers can see.</p>
+                <p>This is a preview of what invited sellers will see.</p>
               </div>
               <div className={styles.previewButtons}>
                 <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className="au-btn au-btn--secondary">
@@ -267,27 +267,25 @@ const Opportunity = props => {
             questionsClosingDate={
               brief.dates.questions_close
                 ? new Date(brief.dates.questions_close)
-                : getLastQuestionDate(new Date(getClosingTime(brief)))
+                : getLastQuestionDate(new Date(getClosingTime(brief) || ''))
             }
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
             briefId={brief.id}
             showAskQuestionInfo={isInvitedSeller}
           />
         </div>
-        {brief.status !== 'draft' && (
-          <div className="col-xs-12 col-md-4">
-            <OpportunityInfoCard
-              sellersInvited={invitedSellerCount}
-              sellersApplied={briefResponseCount}
-              isClosed={brief.status === 'closed'}
-              closingDate={brief.dates.closing_time}
-              isInvitedSeller={isInvitedSeller}
-              hasResponded={hasResponded}
-              briefId={brief.id}
-              loggedIn={loggedIn}
-            />
-          </div>
-        )}
+        <div className="col-xs-12 col-md-4">
+          <OpportunityInfoCard
+            sellersInvited={invitedSellerCount}
+            sellersApplied={briefResponseCount}
+            isClosed={brief.status === 'closed'}
+            closingDate={getClosingTime(brief)}
+            isInvitedSeller={isInvitedSeller}
+            hasResponded={hasResponded}
+            briefId={brief.id}
+            loggedIn={loggedIn}
+          />
+        </div>
       </div>
     </div>
   )

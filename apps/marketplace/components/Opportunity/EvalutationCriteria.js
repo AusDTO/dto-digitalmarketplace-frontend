@@ -12,7 +12,7 @@ const EvalutationCriteria = props => (
         className={props.showWeightings ? `col-xs-8 col-sm-9` : `col-xs-12`}
       >
         <AUheading level="2" size="lg">
-          Criteria
+          Evaluation criteria
         </AUheading>
       </div>
       {props.showWeightings && (

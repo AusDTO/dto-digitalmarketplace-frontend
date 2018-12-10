@@ -1,5 +1,5 @@
 div.container {
-  margin-top: 1.5rem;
+  margin-top: 3rem;
 }
 
 div.container > div {
@@ -10,6 +10,14 @@ div.container > div  {
   border-bottom: 1px solid #d0d0d0;
 }
 
+div.container > div:nth-child(odd) {
+  background-color: #fbfbfb;
+}
+
 div.container div.deadline {
   margin-top: 1.5rem;
+}
+
+p.noqs {
+  color: #747474;
 }
