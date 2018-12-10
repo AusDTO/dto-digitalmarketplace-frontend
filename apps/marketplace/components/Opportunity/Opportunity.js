@@ -4,6 +4,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
+import { getLastQuestionDate } from 'marketplace/components/BuyerRFX/BuyerRFXReviewStage'
 import EvaluationCriteria from './EvalutationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
@@ -39,6 +40,15 @@ const defaultBriefProps = {
   industryBriefing: '',
   clarificationQuestions: [],
   clarificationQuestionsAreClosed: true
+}
+
+const getClosingTime = brief => {
+  if (brief.dates.closing_time) {
+    return brief.dates.closing_time
+  } else if (brief.closedAt) {
+    return brief.closedAt
+  }
+  return null
 }
 
 const getTrimmedFilename = fileName => {
@@ -254,7 +264,11 @@ const Opportunity = props => {
           <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
           <QuestionAnswer
             questions={brief.clarificationQuestions}
-            questionsClosingDate={brief.dates.questions_close}
+            questionsClosingDate={
+              brief.dates.questions_close
+                ? new Date(brief.dates.questions_close)
+                : getLastQuestionDate(new Date(getClosingTime(brief)))
+            }
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
             briefId={brief.id}
             showAskQuestionInfo={isInvitedSeller}

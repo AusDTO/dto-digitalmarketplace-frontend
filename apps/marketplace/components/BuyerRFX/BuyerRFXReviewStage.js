@@ -25,7 +25,7 @@ const nextWeekDay = date => {
   return newDate
 }
 
-const getLastQuestionDate = closingDate => {
+export const getLastQuestionDate = closingDate => {
   const today = new Date()
   let lastQuestionDate = new Date()
   if (closingDate < addDays(today, 3)) {

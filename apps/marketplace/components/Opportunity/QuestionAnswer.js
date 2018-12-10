@@ -38,15 +38,14 @@ const QuestionAnswer = props => (
 
 QuestionAnswer.defaultProps = {
   questions: [],
-  showAskQuestionInfo: false,
-  questionsClosingDate: ''
+  showAskQuestionInfo: false
 }
 
 QuestionAnswer.propTypes = {
   questions: PropTypes.array,
   briefId: PropTypes.number.isRequired,
   showAskQuestionInfo: PropTypes.bool,
-  questionsClosingDate: PropTypes.string,
+  questionsClosingDate: PropTypes.instanceOf(Date).isRequired,
   clarificationQuestionsAreClosed: PropTypes.bool.isRequired
 }
 
