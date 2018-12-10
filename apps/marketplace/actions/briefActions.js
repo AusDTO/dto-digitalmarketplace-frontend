@@ -91,6 +91,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   invitedSellerCount: response.data.invited_seller_count,
   isInvitedSeller: response.data.is_invited_seller,
   isBriefOwner: response.data.is_brief_owner,
+  isBuyer: response.data.is_buyer,
+  hasResponded: response.data.has_responded,
   domains: response.data.domains
 })
 

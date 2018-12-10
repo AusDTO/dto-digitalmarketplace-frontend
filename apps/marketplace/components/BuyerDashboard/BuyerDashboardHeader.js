@@ -33,17 +33,17 @@ class BuyerDashboardHeader extends Component {
             </div>
           </div>
           <div className={`${styles.menuRow} row`}>
-            <div className="col-xs-12 col-sm-8">
+            <div className="col-xs-12 col-md-8">
               <nav className={styles.dashNav}>
                 <ul className={styles.menu}>
                   <li>
                     <NavLink id="my-briefs-link" to="/" activeClassName={styles.active} exact>
-                      My briefs
+                      My opportunities
                     </NavLink>
                   </li>
                   <li>
                     <NavLink id="team-briefs-link" to="/team-briefs" activeClassName={styles.active}>
-                      Team briefs
+                      Team opportunities
                     </NavLink>
                   </li>
                   <li>
@@ -54,7 +54,7 @@ class BuyerDashboardHeader extends Component {
                 </ul>
               </nav>
             </div>
-            <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-sm-4 buyer-dashboard-actions`}>
+            <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-md-4 buyer-dashboard-actions`}>
               <AUaccordion
                 header="Create new request"
                 open={this.state.createNewIsOpen}

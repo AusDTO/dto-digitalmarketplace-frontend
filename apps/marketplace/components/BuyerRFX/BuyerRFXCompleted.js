@@ -20,11 +20,7 @@ const BuyerRFXCompleted = props => (
     <ul>
       <li>
         While your opportunity is live, you&apos;ll need to{' '}
-        <a
-          href={`/buyers/frameworks/digital-marketplace/requirements/rfx/${
-            props.briefId
-          }/supplier-questions/answer-question`}
-        >
+        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011257447-Answer-questions" rel="external">
           answer seller questions
         </a>.
       </li>
@@ -41,7 +37,7 @@ const BuyerRFXCompleted = props => (
         Return to overview
       </a>
       <a href={`${rootPath}/digital-marketplace/opportunities/${props.briefId}`} className="au-btn">
-        View live brief
+        View live opportunity
       </a>
     </p>
   </div>

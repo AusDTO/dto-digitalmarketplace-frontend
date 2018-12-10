@@ -1,13 +1,17 @@
-import { validDate } from 'marketplace/components/validators'
+import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import BuyerRFXIntroductionStage from './BuyerRFXIntroductionStage'
 import BuyerRFXAboutStage from './BuyerRFXAboutStage'
 import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
-import BuyerRFXMarketApproachStage from './BuyerRFXMarketApproachStage'
-import BuyerRFXResponseFormatsStage from './BuyerRFXResponseFormatsStage'
+import BuyerRFXClosingStage from './BuyerRFXClosingStage'
+import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
-import BuyerRFXEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerRFXEvaluationCriteriaStage'
+import BuyerRFXEvaluationCriteriaStage, {
+  weightingsAddUpTo100,
+  noEmptyWeightings,
+  noEmptyCriteria
+} from './BuyerRFXEvaluationCriteriaStage'
 
 const BuyerRFXStages = [
   {
@@ -18,7 +22,7 @@ const BuyerRFXStages = [
   },
   {
     slug: 'select',
-    title: 'Select sellers',
+    title: 'Who can respond?',
     component: BuyerRFXSelectStage,
     isDone: formValues => Object.keys(formValues.sellers).length > 0 && formValues.sellerCategory
   },
@@ -36,9 +40,7 @@ const BuyerRFXStages = [
     slug: 'formats',
     title: 'Response formats',
     component: BuyerRFXResponseFormatsStage,
-    isDone: formValues =>
-      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
-      formValues.proposalType.length > 0
+    isDone: formValues => atleastOneFormat(formValues) && atleastOneProposal(formValues)
   },
   {
     slug: 'requirements',
@@ -62,14 +64,16 @@ const BuyerRFXStages = [
     component: BuyerRFXEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
-      formValues.evaluationCriteria.every(val => val.criteria) &&
-      weightingsAddUpTo100(formValues.evaluationCriteria)
+      noEmptyCriteria(formValues) &&
+      noEmptyWeightings(formValues) &&
+      weightingsAddUpTo100(formValues)
   },
   {
-    slug: 'approach',
-    title: 'Briefing and closing date',
-    component: BuyerRFXMarketApproachStage,
-    isDone: formValues => validDate(formValues.closedAt)
+    slug: 'closing',
+    title: 'Closing date',
+    component: BuyerRFXClosingStage,
+    isDone: formValues =>
+      dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
   },
   {
     slug: 'review',

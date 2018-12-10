@@ -6,12 +6,12 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { requiredFile } from 'marketplace/components/validators'
+import { requiredFile, required, validEmail } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
+import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
-import styles from './BriefRFXResponseForm.scss'
 
 const BriefRFXResponseForm = ({
   model,
@@ -42,62 +42,65 @@ const BriefRFXResponseForm = ({
           <AUheading level="1" size="xl">
             Apply for &apos;{brief.title}&apos;
           </AUheading>
-          <AUheading level="2" size="lg">
-            Upload documentation
-          </AUheading>
+          <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
               {brief.evaluationType.includes('Response template') && (
-                <div>
-                  <span />
-                  <AUheading level="3" size="sm">
-                    Response template
-                  </AUheading>
-                  <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
-                  <FilesInput
-                    fieldLabel="Upload response"
-                    name="attachedDocumentURL"
-                    model={`${model}.attachedDocumentURL.0`}
-                    formFields={1}
-                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                    api={dmapi}
-                    fileId={0}
-                    validators={{
-                      requiredFile
-                    }}
-                    messages={{
-                      requiredFile: 'Choose a file for your response'
-                    }}
-                    uploading={uploading}
-                  />
-                </div>
+                <FilesInput
+                  label="Completed response template"
+                  fieldLabel="Upload response"
+                  name="attachedDocumentURL"
+                  model={`${model}.attachedDocumentURL.0`}
+                  formFields={1}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                  fileId={0}
+                  validators={{
+                    requiredFile
+                  }}
+                  messages={{
+                    requiredFile: 'You must upload your completed response template'
+                  }}
+                  uploading={uploading}
+                />
               )}
               {brief.evaluationType.includes('Written proposal') && (
-                <div>
-                  <AUheading level="3" size="sm">
-                    Written proposal
-                  </AUheading>
-                  <p>Including:</p>
-                  <ul className={styles.proposalList}>{brief.proposalType.map(type => <li key={type}>{type}</li>)}</ul>
-                  <p>Attachment must be .DOC, .XLS, .PPT or .PDF format and a maximum of 20MB</p>
-                  <FilesInput
-                    fieldLabel="Upload written proposal"
-                    name="attachedDocumentURL"
-                    model={`${model}.attachedDocumentURL.1`}
-                    formFields={1}
-                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                    api={dmapi}
-                    fileId={1}
-                    validators={{
-                      requiredFile
-                    }}
-                    messages={{
-                      requiredFile: 'Choose a file for your written proposal'
-                    }}
-                    uploading={uploading}
-                  />
-                </div>
+                <FilesInput
+                  label="Written proposal"
+                  hint={`Your proposal must include: ${brief.proposalType.map(type => type.toLowerCase()).join(', ')}`}
+                  fieldLabel="Upload written proposal"
+                  name="attachedDocumentURL"
+                  model={`${model}.attachedDocumentURL.1`}
+                  formFields={1}
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                  fileId={1}
+                  validators={{
+                    requiredFile
+                  }}
+                  messages={{
+                    requiredFile: 'You must upload your written proposal'
+                  }}
+                  uploading={uploading}
+                />
               )}
+              <Textfield
+                model={`${model}.respondToEmailAddress`}
+                name="respondToEmailAddress"
+                id="respondToEmailAddress"
+                htmlFor="respondToEmailAddress"
+                label="Contact email"
+                description="All communication about your application will be sent to this address."
+                defaultValue={app.emailAddress}
+                validators={{
+                  required,
+                  validEmail
+                }}
+                messages={{
+                  required: 'You must add a contact email',
+                  validEmail: 'You must add a valid contact email'
+                }}
+              />
               <AUheading level="2" size="lg">
                 Once you submit this application
               </AUheading>
@@ -106,7 +109,7 @@ const BriefRFXResponseForm = ({
                   You <strong>cannot</strong> edit your application after submitting.
                 </li>
                 <li>
-                  The buyer will receive your response once the brief has closed on{' '}
+                  The buyer will receive your response once the opportunity has closed on{' '}
                   {format(new Date(brief.applicationsClosedAt), 'DD MMMM')}.
                 </li>
               </ul>
@@ -123,7 +126,7 @@ const BriefRFXResponseForm = ({
               <AUheading level="2" size="md">
                 There was a problem loading your details
               </AUheading>
-              <p>Only logged in sellers can respond to briefs</p>
+              <p>Only logged in sellers can respond to opportunities</p>
             </AUpageAlert>
           )}
         </article>

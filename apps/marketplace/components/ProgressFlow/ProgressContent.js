@@ -14,6 +14,7 @@ export class ProgressContent extends Component {
         model={this.props.model}
         saveModel={this.props.saveModel}
         onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
         formButtons={this.props.formButtons}
         stagesTodo={this.props.stagesTodo}
       />
@@ -25,6 +26,7 @@ ProgressContent.defaultProps = {
   setCurrentStage: () => {},
   saveModel: () => {},
   onSubmit: () => {},
+  onSubmitFailed: () => {},
   onStageMount: () => {},
   stagesTodo: []
 }
@@ -34,6 +36,7 @@ ProgressContent.propTypes = {
   setCurrentStage: PropTypes.func,
   saveModel: PropTypes.func,
   onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func,
   onStageMount: PropTypes.func,
   stagesTodo: PropTypes.array,
   stage: PropTypes.string.isRequired,

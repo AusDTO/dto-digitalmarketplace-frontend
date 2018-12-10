@@ -43,17 +43,14 @@ const BriefOutcomeChoice = () => (
       <div className="col-xs-12 col-md-5">
         <div className={styles.card}>
           <AUheading level="2" size="lg">
-            Get proposals/quotes
+            Seek proposals and quotes
           </AUheading>
-          <p className={styles.largerText}>
-            Quickly seek quotes based on researched user needs and prioritised technical requirements.
-          </p>
+          <p className={styles.largerText}>Quickly seek quotes from selected sellers on the Digital Marketplace.</p>
           <AUheading level="3" size="sm">
             What you get
           </AUheading>
           <ul className={styles.list}>
-            <li>Proposals in your requested format.</li>
-            <li>A template to conduct evaluations.</li>
+            <li>Proposals and/or a completed response template used by your agency.</li>
           </ul>
           <AUheading level="3" size="sm">
             Response timeframe

@@ -8,6 +8,7 @@ import dashboard from './dashboardReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
+import messages from './messagesReducers'
 
 export const BuyerRFXFormReducer = {
   id: 0,
@@ -24,13 +25,16 @@ export const BuyerRFXFormReducer = {
   evaluationType: [],
   proposalType: [],
   evaluationCriteria: [{ criteria: '', weighting: '' }],
-  includeWeightings: false,
+  includeWeightings: true,
   closedAt: '',
+  contactNumber: '',
   startDate: '',
   contractLength: '',
   contractExtensions: '',
+  keyDates: '',
   budgetRange: '',
-  workingArrangements: ''
+  workingArrangements: '',
+  securityClearance: ''
 }
 
 export const BuyerATMFormReducer = {
@@ -69,6 +73,7 @@ export default combineReducers({
   brief,
   dashboard,
   opportunities,
+  messages,
   form_options,
   errorMessage,
   ...createForms({

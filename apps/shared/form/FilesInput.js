@@ -13,13 +13,15 @@ const FilesInput = props => {
   const { fileId, label, description, hint, formFields, uploading, accept } = props
 
   return (
-    <div className="field">
+    <div className={label ? 'field' : styles.noLabel}>
       <div className={styles.fileInput}>
-        <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
-          {label}
-        </label>
+        {label && (
+          <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
+            {label}
+          </label>
+        )}
         <small>{hint}</small>
-        <p>{description}</p>
+        {description && <p>{description}</p>}
         {range(formFields).map(field => (
           <FileInput key={field} id={fileId} uploading={uploading} accept={accept} {...props} />
         ))}

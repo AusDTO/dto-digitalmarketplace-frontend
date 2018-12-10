@@ -9,7 +9,11 @@ import styles from './SellerSelect.scss'
 const PanelCategorySelectView = props => (
   <div className={styles.categorySelect}>
     <label htmlFor={`${props.id}-category-select`}>Panel category</label>
-    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy" rel="external">
+    <a
+      href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy"
+      rel="external noopener noreferrer"
+      target="_blank"
+    >
       What you can buy in each category
     </a>
     <AUselect
@@ -25,6 +29,11 @@ const PanelCategorySelectView = props => (
 const SellerSelectView = props => (
   <div>
     <label htmlFor={props.id}>{props.label}</label>
+    {typeof props.description === 'string' ? (
+      <span className={styles.description}>{props.description}</span>
+    ) : (
+      props.description
+    )}
     <AUtextInput
       id={props.id}
       placeholder={props.placeholder}
@@ -37,8 +46,20 @@ const SellerSelectView = props => (
 )
 
 const SellerSelectResultsView = props => (
-  <ul className={props.className}>
-    {props.noResults && props.searchFor && <li>Seller cannot be found in this category.</li>}
+  <ul
+    className={`${props.className} ${!props.noResults ? props.hasResultsClassName : ''} ${
+      props.sellers.length > 3 ? props.hasManyResultsClassName : ''
+    }`}
+  >
+    {props.noResults &&
+      props.searchFor && (
+        <li>
+          Seller cannot be found in this category.
+          <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+            Search all sellers
+          </a>
+        </li>
+      )}
     {props.sellers.map(seller => (
       <li key={seller.code}>
         <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
@@ -89,7 +110,7 @@ export class SellerSelect extends Component {
     }
 
     timeoutHandle = setTimeout(() => {
-      if (keyword && keyword.length > 2 && this.categoryIsValid()) {
+      if (keyword && keyword.length >= this.props.minimumSearchChars && this.categoryIsValid()) {
         findSuppliers(keyword, this.props.selectedCategory)
           .then(data => {
             const noResults = !data.sellers.length > 0
@@ -139,19 +160,24 @@ export class SellerSelect extends Component {
               id={this.props.id}
               placeholder={this.props.placeholder}
               label={this.props.label}
+              description={this.props.description}
               handleSearchChange={this.handleSearchChange}
               inputValue={this.state.inputValue}
               className={this.props.showSearchButton ? styles.noRightRadius : ''}
               showSearchButton={this.props.showSearchButton}
               handleSearchClick={this.handleSearchClick}
             />
-            <SellerSelectResultsView
-              className={styles.selectList}
-              sellers={this.state.sellers}
-              noResults={this.state.noResults}
-              searchFor={this.state.inputValue}
-              handleSellerSelectClick={this.handleSellerSelectClick}
-            />
+            {this.state.inputValue.length >= this.props.minimumSearchChars && (
+              <SellerSelectResultsView
+                className={styles.selectList}
+                hasResultsClassName={styles.hasResults}
+                hasManyResultsClassName={styles.manyResults}
+                sellers={this.state.sellers}
+                noResults={this.state.noResults}
+                searchFor={this.state.inputValue}
+                handleSellerSelectClick={this.handleSellerSelectClick}
+              />
+            )}
           </div>
         )}
       </div>
@@ -163,11 +189,13 @@ SellerSelect.defaultProps = {
   id: 'seller-search',
   placeholder: '',
   label: '',
+  description: '',
   selectedCategory: '',
   showSelected: true,
   showSearchButton: true,
   showCategorySelect: false,
   categories: [],
+  minimumSearchChars: 3,
   onSellerSelect: () => {},
   onSellerCategorySelect: () => {},
   onSearch: () => {}
@@ -177,11 +205,13 @@ SellerSelect.propTypes = {
   id: PropTypes.string,
   placeholder: PropTypes.string,
   label: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   selectedCategory: PropTypes.string,
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,
   showCategorySelect: PropTypes.bool,
   categories: PropTypes.array,
+  minimumSearchChars: PropTypes.number,
   onSellerSelect: PropTypes.func,
   onSellerCategorySelect: PropTypes.func,
   onSearch: PropTypes.func

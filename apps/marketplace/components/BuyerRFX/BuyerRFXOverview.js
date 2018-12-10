@@ -5,13 +5,12 @@ import PropTypes from 'prop-types'
 import { deleteBrief } from 'marketplace/actions/briefActions'
 import isValid from 'date-fns/is_valid'
 import { rootPath } from 'marketplace/routes'
+import Tick from 'marketplace/components/Icons/Tick/Tick'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './BuyerRFXOverview.scss'
-
-const GreenTick = () => <img className={styles.greenTick} src="/static/svg/green-tick.svg" alt="Success" />
 
 const answerSellerQuestionsRender = (brief, isPublished, questionsClosed) => {
   if (!isPublished) {
@@ -21,7 +20,7 @@ const answerSellerQuestionsRender = (brief, isPublished, questionsClosed) => {
   if (isPublished && questionsClosed) {
     return (
       <span>
-        <GreenTick />
+        <Tick className={styles.tick} colour="#17788D" />
         <span>Answer seller questions</span>
       </span>
     )
@@ -40,6 +39,23 @@ const downloadResponsesRender = (brief, isPublished, isClosed) => {
   }
 
   return <span>Download responses</span>
+}
+
+const createWorkOrderRender = (brief, isPublished, isClosed) => {
+  if (isPublished && isClosed) {
+    let url = ''
+    let title = ''
+    if (brief.work_order_id) {
+      url = `/work-orders/${brief.work_order_id}`
+      title = 'Edit work order'
+    } else {
+      url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/rfx/${brief.id}/work-orders/create`
+      title = 'Create work order'
+    }
+    return <a href={url}>{title}</a>
+  }
+
+  return <span>Create work order</span>
 }
 
 class BuyerRFXOverview extends Component {
@@ -85,7 +101,7 @@ class BuyerRFXOverview extends Component {
       const invitedSellers =
         brief.sellers && Object.keys(brief.sellers).length > 0 ? Object.keys(brief.sellers).length : 0
 
-      const questionsAsked =
+      const questionsAnswered =
         brief.clarificationQuestions && brief.clarificationQuestions.length > 0
           ? brief.clarificationQuestions.length
           : 0
@@ -110,13 +126,11 @@ class BuyerRFXOverview extends Component {
                   </div>
                 )}
               <ul>
-                <li>
-                  {isPublished ? (
-                    <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View live</a>
-                  ) : (
-                    <span>View live</span>
-                  )}
-                </li>
+                {isPublished && (
+                  <li>
+                    <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
+                  </li>
+                )}
                 {!isPublished && (
                   <li>
                     <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
@@ -125,7 +139,7 @@ class BuyerRFXOverview extends Component {
                 {!isPublished && (
                   <li>
                     <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
-                      Delete
+                      Delete draft
                     </a>
                   </li>
                 )}
@@ -135,8 +149,8 @@ class BuyerRFXOverview extends Component {
           {this.state.showDeleteAlert && (
             <div className={styles.deleteAlert}>
               <AUpageAlert as="warning">
-                <p>Are you sure you want to delete this brief?</p>
-                <AUbutton onClick={() => this.handleDeleteBrief(brief.id)}>Yes, delete brief</AUbutton>
+                <p>Are you sure you want to delete this opportunity?</p>
+                <AUbutton onClick={() => this.handleDeleteBrief(brief.id)}>Yes, delete opportunity</AUbutton>
                 <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
                   Do not delete
                 </AUbutton>
@@ -147,39 +161,41 @@ class BuyerRFXOverview extends Component {
             <li>
               {isPublished ? (
                 <span>
-                  <GreenTick />Create and publish request
+                  <Tick className={styles.tick} colour="#17788D" />Create and publish request
                   <div className={styles.stageStatus}>
                     {invitedSellers} seller{invitedSellers > 1 && `s`} invited
                   </div>
                 </span>
               ) : (
                 <span>
-                  <a href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}>Create and publish request</a>
+                  <a href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}>
+                    {brief.title ? 'Edit and publish request' : 'Create and publish request'}
+                  </a>
                 </span>
               )}
             </li>
             <li>
               {answerSellerQuestionsRender(brief, isPublished, brief.clarificationQuestionsAreClosed)}
-              {questionsAsked > 0 && (
+              {questionsAnswered > 0 && (
                 <div className={styles.stageStatus}>
-                  {questionsAsked} question{questionsAsked > 1 && `s`} asked
+                  {questionsAnswered} question{questionsAnswered > 1 && `s`} answered
                 </div>
               )}
             </li>
-            <li>
-              {downloadResponsesRender(brief, isPublished, isClosed)}
-              {briefResponseCount > 0 && (
-                <div className={styles.stageStatus}>
-                  {briefResponseCount} seller{briefResponseCount > 1 && `s`} responded
-                </div>
-              )}
-            </li>
-            <li>
-              <span>Evaluate responses</span>
-            </li>
-            <li>
-              <span>Award a contract</span>
-            </li>
+            {(briefResponseCount > 0 || !isPublished || !isClosed) && (
+              <li>
+                {downloadResponsesRender(brief, isPublished, isClosed)}
+                {briefResponseCount > 0 && (
+                  <div className={styles.stageStatus}>
+                    {briefResponseCount} seller{briefResponseCount > 1 && `s`} responded
+                  </div>
+                )}
+              </li>
+            )}
+            {(briefResponseCount > 0 || !isPublished || !isClosed) && (
+              <li>{createWorkOrderRender(brief, isPublished, isClosed)}</li>
+            )}
+            {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
         </div>
       )

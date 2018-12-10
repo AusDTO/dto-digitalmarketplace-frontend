@@ -14,6 +14,7 @@ import BriefAssessorsPage from './pages/BriefAssessorsPage'
 import BriefOverviewPage from './pages/BriefOverviewPage'
 import OpportunitiesPage from './pages/OpportunitiesPage'
 import BuyerRFXCreatePage from './pages/BuyerRFXCreatePage'
+import BuyerRFXCompletedPage from './pages/BuyerRFXCompletedPage'
 import BuyerRFXFlowPage from './pages/BuyerRFXFlowPage'
 import BuyerRFXOverviewPage from './pages/BuyerRFXOverviewPage'
 import BuyerATMCreatePage from './pages/BuyerATMCreatePage'
@@ -21,6 +22,7 @@ import BuyerATMFlowPage from './pages/BuyerATMFlowPage'
 import BuyerATMOverviewPage from './pages/BuyerATMOverviewPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
+import MessagesPage from './pages/MessagesPage'
 
 export const rootPath = '/2'
 
@@ -50,10 +52,17 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/create-brief`} component={BriefChoicePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={BuyerRFXCreatePage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-rfx/:briefId/completed`}
+      component={BuyerRFXCompletedPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
+    <PrivateRoute path={`${rootPath}/create-brief`} component={BriefChoicePage} />
+    <PrivateRoute path={`${rootPath}/messages`} component={MessagesPage} />
     <Route component={NotFound} />
   </Switch>
 )

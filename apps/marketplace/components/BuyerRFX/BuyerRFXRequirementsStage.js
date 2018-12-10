@@ -4,10 +4,13 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
+import Textarea from 'shared/form/Textarea'
+import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import ErrorAlert from './ErrorAlert'
+import styles from './BuyerRFXRequirementsStage.scss'
 
 export class BuyerRFXRequirementsStage extends Component {
   constructor(props) {
@@ -49,12 +52,15 @@ export class BuyerRFXRequirementsStage extends Component {
         validators={{
           '': {
             requiredRequirementsDocument: formValues =>
-              formValues.requirementsDocument && formValues.requirementsDocument.length > 0,
+              formValues.requirementsDocument &&
+              formValues.requirementsDocument.length > 0 &&
+              formValues.requirementsDocument.every(val => val),
             requiredResponseTemplate: formValues =>
               !formValues.evaluationType.includes('Response template') ||
               (formValues.evaluationType.includes('Response template') &&
                 formValues.responseTemplate &&
-                formValues.responseTemplate.length > 0)
+                formValues.responseTemplate.length > 0 &&
+                formValues.responseTemplate.every(val => val))
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -63,6 +69,9 @@ export class BuyerRFXRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Requirements
         </AUheadings>
+        <NoticeBar heavyFont className={styles.noticeBar}>
+          Only invited sellers and other buyers can view attached documents and industry briefing details you provide.
+        </NoticeBar>
         <ErrorAlert
           title="An error occurred"
           model={model}
@@ -71,16 +80,12 @@ export class BuyerRFXRequirementsStage extends Component {
             requiredResponseTemplate: 'You must upload a response template'
           }}
         />
-        <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
-        <p>
-          Documents can be viewed by anyone with a Digital Marketplace account. Do not include internal or private
-          information.
-        </p>
         <AUheadings level="2" size="sm">
           Requirements document
         </AUheadings>
         <FilesInput
           title="Requirements document"
+          hint="Documents must be in .DOC .XLS .PPT or .PDF format."
           fieldLabel="Upload document"
           name="requirementsDocument"
           model={`${model}.requirementsDocument.0`}
@@ -99,6 +104,7 @@ export class BuyerRFXRequirementsStage extends Component {
             </AUheadings>
             <FilesInput
               title="Response template"
+              hint="Documents must be in .DOC .XLS .PPT or .PDF format."
               fieldLabel="Upload template"
               name="responseTemplate"
               model={`${model}.responseTemplate.0`}
@@ -119,6 +125,7 @@ export class BuyerRFXRequirementsStage extends Component {
           <FilesInput
             key={i}
             title="Additional documents (optional)"
+            hint="Documents must be in .DOC .XLS .PPT or .PDF format."
             fieldLabel="Upload document"
             name="attachments"
             model={`${model}.attachments.${i}`}
@@ -132,18 +139,30 @@ export class BuyerRFXRequirementsStage extends Component {
           />
         ))}
         {this.state.fileCount < 10 && (
-          <p>
-            <a
-              href="#add"
-              onClick={e => {
-                e.preventDefault()
-                this.addFileField()
-              }}
-            >
-              Add another
-            </a>
-          </p>
+          <div className={styles.addAnother}>
+            <p>
+              <a
+                href="#add"
+                onClick={e => {
+                  e.preventDefault()
+                  this.addFileField()
+                }}
+              >
+                Add another
+              </a>
+            </p>
+          </div>
         )}
+        <Textarea
+          model={`${model}.industryBriefing`}
+          label="Industry briefing (optional)"
+          description="Make sure you include the date, time and access details of your briefing."
+          name="industryBriefing"
+          id="industryBriefing"
+          htmlFor="industryBriefing"
+          defaultValue={this.props[model].industryBriefing}
+          controlProps={{ limit: 150 }}
+        />
         {this.props.formButtons}
       </Form>
     )

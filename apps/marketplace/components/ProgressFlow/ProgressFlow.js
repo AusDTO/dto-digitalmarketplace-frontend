@@ -12,6 +12,10 @@ import ProgressContent from 'marketplace/components/ProgressFlow/ProgressContent
 import ProgressButtons from 'marketplace/components/ProgressFlow/ProgressButtons'
 import styles from './ProgressFlow.scss'
 
+const handleFormSubmitFailed = () => {
+  window.scrollTo(0, 0)
+}
+
 export class ProgressFlow extends Component {
   constructor(props) {
     super(props)
@@ -212,17 +216,17 @@ export class ProgressFlow extends Component {
     return (
       <Router history={this.props.history}>
         <div className="row">
-          <div className="col-sm-4" aria-live="polite" aria-relevant="additions removals">
+          <div className="col-sm-4 col-md-3" aria-live="polite" aria-relevant="additions removals">
             <div className={styles.desktopMenu}>
               <ProgressNavElement />
             </div>
             <div className={styles.mobileMenu}>
-              <AUaccordion header="Menu">
+              <AUaccordion header="Form sections">
                 <ProgressNavElement />
               </AUaccordion>
             </div>
           </div>
-          <div className="col-sm-8">
+          <div className="col-sm-8 col-md-8 col-md-offset-1">
             {this.state.saving && <LoadingIndicatorFullPage />}
             {!this.state.saving &&
               this.props.stages.map(stage => (
@@ -239,6 +243,7 @@ export class ProgressFlow extends Component {
                         component={stage.component}
                         stagesTodo={this.getTodoStages()}
                         onSubmit={this.handleFormSubmit}
+                        onSubmitFailed={handleFormSubmitFailed}
                         onStageMount={this.props.onStageMount}
                         formButtons={
                           <ProgressButtons

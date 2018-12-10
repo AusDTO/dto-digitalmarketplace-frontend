@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
+import { Redirect } from 'react-router-dom'
 import formProps from 'shared/form/formPropsSelector'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import BuyerRFXStages from 'marketplace/components/BuyerRFX/BuyerRFXStages'
-import BuyerRFXCompleted from 'marketplace/components/BuyerRFX/BuyerRFXCompleted'
 import { rootPath } from 'marketplace/routes'
-import { loadPublicBrief, saveBrief, handleErrorFailure } from 'marketplace/actions/briefActions'
+import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
+import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { BuyerRFXFormReducer } from 'marketplace/reducers'
 
@@ -49,9 +50,7 @@ export class BuyerRFXFlowPage extends Component {
         })
 
         if (response.data.brief.status && response.data.brief.status !== 'draft') {
-          this.props.setError(
-            `You can only edit draft RFX briefs, but this brief's status is "${response.data.brief.status}"`
-          )
+          this.props.setError('You cannot edit this opportunity as you have already published it.')
         }
 
         this.props.changeFormModel(data)
@@ -112,13 +111,7 @@ export class BuyerRFXFlowPage extends Component {
     }
 
     if (this.state.flowIsDone) {
-      return (
-        <BuyerRFXCompleted
-          contactEmail={this.props.emailAddress}
-          briefId={briefId}
-          closingDate={this.props[model].closedAt}
-        />
-      )
+      return <Redirect to={`${rootPath}/buyer-rfx/${briefId}/completed`} push />
     }
 
     return (
@@ -147,7 +140,7 @@ const mapDispatchToProps = dispatch => ({
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId)),
   saveBrief: (briefId, data) => dispatch(saveBrief(briefId, data)),
   resetFormValidity: () => dispatch(actions.resetValidity(model)),
-  setError: message => dispatch(handleErrorFailure({ message }))
+  setError: message => dispatch(setErrorMessage(message))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXFlowPage)

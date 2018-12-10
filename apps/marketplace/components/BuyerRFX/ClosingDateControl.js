@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react'
-import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './ClosingDateControl.scss'
 
 const parseValue = value => {
@@ -48,14 +47,17 @@ export class ClosingDate extends Component {
 
   render() {
     return (
-      <div className={`row ${styles.container}`}>
+      <div className={`row ${this.props.className}`}>
         <div className="col-xs-12">
-          <AUheading level="2" size="sm">
+          <label htmlFor="closing_date" className="question-heading au-text-input__label">
             Closing date
-          </AUheading>
-          <p>Responses will be available after 6pm Canberra time on this date.</p>
+          </label>
+          <div>
+            This date must be at least 2 days after you publish this request and responses will be available after 6pm
+            Canberra time.
+          </div>
         </div>
-        <div className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>
+        <div id="closing_date" className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>
           <div>
             <label htmlFor="day">Day</label>
             <AUtextInput
@@ -67,6 +69,7 @@ export class ClosingDate extends Component {
               onChange={this.handleChange}
               min="1"
               max="31"
+              placeholder="DD"
             />
           </div>
           <div>
@@ -80,6 +83,7 @@ export class ClosingDate extends Component {
               onChange={this.handleChange}
               min="1"
               max="12"
+              placeholder="MM"
             />
           </div>
           <div>
@@ -93,6 +97,7 @@ export class ClosingDate extends Component {
               onChange={this.handleChange}
               min="2018"
               max="2099"
+              placeholder="YYYY"
             />
           </div>
         </div>
@@ -103,12 +108,14 @@ export class ClosingDate extends Component {
 
 ClosingDate.defaultProps = {
   onDateChange: () => {},
-  value: ''
+  value: '',
+  className: ''
 }
 
 ClosingDate.propTypes = {
   onDateChange: PropTypes.func,
-  value: PropTypes.string
+  value: PropTypes.string,
+  className: PropTypes.string
 }
 
 const ClosingDateControl = props => (
@@ -117,6 +124,7 @@ const ClosingDateControl = props => (
     model={props.model}
     component={ClosingDate}
     onDateChange={props.onDateChange}
+    className={props.className}
     mapProps={{
       value: ownProps => ownProps.viewValue,
       formModel: ownProps => ownProps.model
@@ -125,13 +133,15 @@ const ClosingDateControl = props => (
 )
 
 ClosingDateControl.defaultProps = {
-  onDateChange: () => {}
+  onDateChange: () => {},
+  className: ''
 }
 
 ClosingDateControl.propTypes = {
   id: PropTypes.string.isRequired,
   model: PropTypes.string.isRequired,
-  onDateChange: PropTypes.func
+  onDateChange: PropTypes.func,
+  className: PropTypes.string
 }
 
 export default ClosingDateControl

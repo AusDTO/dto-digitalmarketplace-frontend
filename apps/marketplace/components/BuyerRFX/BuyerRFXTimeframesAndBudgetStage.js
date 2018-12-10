@@ -13,6 +13,7 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
   <Form
     model={props.model}
     onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
     validators={{
       '': {
@@ -28,8 +29,8 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        startDateRequired: 'Enter an estimated start date for the brief',
-        contractLengthRequired: 'Enter a contract length for the brief'
+        startDateRequired: 'You must add an estimated start date',
+        contractLengthRequired: 'You must add a contract length'
       }}
     />
     <Textfield
@@ -65,9 +66,20 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
       validators={{}}
       messages={{}}
     />
+    <Textfield
+      model={`${props.model}.keyDates`}
+      label="Key dates or milestones (optional)"
+      name="key_dates"
+      id="key_dates"
+      htmlFor="key_dates"
+      defaultValue={props[props.model].keyDates}
+      validators={{}}
+      messages={{}}
+    />
     <Textarea
       model={`${props.model}.budgetRange`}
       label="Budget range (optional)"
+      description="Please specify if your budget includes GST and if it covers travel and accommodation related expenses."
       name="budget_range"
       id="budget_range"
       htmlFor="budget_range"
@@ -83,13 +95,15 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
 )
 
 BuyerRFXTimeframesAndBudgetStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerRFXTimeframesAndBudgetStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

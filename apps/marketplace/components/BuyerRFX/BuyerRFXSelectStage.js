@@ -59,10 +59,11 @@ export class BuyerRFXSelectStage extends Component {
 
     return (
       <Form
-        model={`${this.props.model}.sellers`}
+        model={this.props.model}
         validators={{
           '': {
-            required: val => val && Object.keys(val).length > 0
+            requiredCategory: val => val.sellerCategory,
+            requiredSeller: val => val.sellers && Object.keys(val.sellers).length > 0
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -73,20 +74,26 @@ export class BuyerRFXSelectStage extends Component {
         </AUheading>
         <ErrorAlert
           title="An error occurred"
-          model={`${this.props.model}.sellers`}
+          model={this.props.model}
           messages={{
-            required: 'You must select at least one seller'
+            requiredCategory: 'You must select at least one panel category',
+            requiredSeller: 'You must select at least one seller'
           }}
         />
-        <p>
-          Only sellers approved in the category you select can respond. You can see each seller&apos;s categories in the{' '}
-          <a href="/search/sellers">seller catalogue</a>.
-        </p>
         <div className="row">
           <div className="col-xs-12 col-sm-9">
             <div className={styles.selectSellers}>
               <SellerSelect
                 label="Seller name"
+                description={
+                  <span>
+                    Only sellers approved in the category you have selected can respond. You can see each seller&apos;s
+                    categories in the{' '}
+                    <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
+                      seller catalogue
+                    </a>.
+                  </span>
+                }
                 showSelected={false}
                 showSearchButton={false}
                 categories={categories}

@@ -52,14 +52,14 @@ class OpportunityPage extends Component {
       )
     }
 
-    // only RFX and ATM can be displayed using this opportunity view
-    if (this.props.brief.lot && (this.props.brief.lot !== 'rfx' && this.props.brief.lot !== 'atm')) {
-      window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
-      return null
-    }
-
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    // only RFX can be displayed using this opportunity view
+    if (this.props.brief && this.props.brief.lot && (this.props.brief.lot !== 'rfx' && this.props.brief.lot !== 'atm')) {
+      window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
+      return null
     }
 
     // if the auth value is in the query string and the user is not authenticated, redirect to login
@@ -78,10 +78,13 @@ class OpportunityPage extends Component {
       return (
         <Opportunity
           brief={this.props.brief}
+          domains={this.props.domains}
           briefResponseCount={this.props.briefResponseCount}
           invitedSellerCount={this.props.invitedSellerCount}
           isInvitedSeller={this.props.isInvitedSeller}
           isBriefOwner={this.props.isBriefOwner}
+          isBuyer={this.props.isBuyer}
+          hasResponded={this.props.hasResponded}
           loggedIn={this.props.loggedIn}
         />
       )
@@ -93,11 +96,14 @@ class OpportunityPage extends Component {
 
 const mapResetStateToProps = state => ({
   brief: state.brief.brief,
+  domains: state.brief.domains,
   briefResponseCount: state.brief.briefResponseCount,
   invitedSellerCount: state.brief.invitedSellerCount,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   isInvitedSeller: state.brief.isInvitedSeller,
   isBriefOwner: state.brief.isBriefOwner,
+  isBuyer: state.brief.isBuyer,
+  hasResponded: state.brief.hasResponded,
   errorMessage: state.app.errorMessage,
   loggedIn: state.app.loggedIn
 })

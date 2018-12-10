@@ -36,6 +36,7 @@ const BuyerRFXAboutStage = props => (
       }
     }}
     onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
     <AUheadings level="1" size="xl">
@@ -45,23 +46,24 @@ const BuyerRFXAboutStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        requiredTitle: 'Enter the title for your brief',
-        requiredOrg: 'Enter the name of your organisation',
-        requiredSummary: 'Enter a summary of your brief',
-        requiredWorkingArrangements: 'Enter the working arrangements for your brief',
-        atLeastOneLocation: 'You must select at least one location'
+        requiredTitle: 'You must add a title',
+        requiredOrg: 'You must add the name of your department, agency or organisation',
+        requiredSummary: 'You must add a summary of work to be done',
+        requiredWorkingArrangements: 'You must add the working arrangements',
+        atLeastOneLocation: 'You must select a location of where the work can be done'
       }}
     />
     <Textfield
       model={`${props.model}.title`}
       label="Title"
-      description="Describe the outcome you need in 100 characters or less."
+      description="Describe the outcome you need."
       placeholder="For example, 'Website redesign and development'."
       name="title"
       id="title"
       htmlFor="title"
       defaultValue={props[props.model].title}
       maxLength={100}
+      showMaxLength
       validators={{
         required
       }}
@@ -76,6 +78,7 @@ const BuyerRFXAboutStage = props => (
       htmlFor="organisation"
       defaultValue={props[props.model].organisation}
       maxLength={100}
+      showMaxLength
       validators={{
         required
       }}
@@ -116,7 +119,7 @@ const BuyerRFXAboutStage = props => (
     <Textarea
       model={`${props.model}.workingArrangements`}
       label="What are the working arrangements?"
-      description="Describe how you want to work and include any limits on expenses. For example, on site at least 3 days a week for face-to-face team meetings."
+      description="For example, on site at least 3 days a week for face-to-face team meetings."
       name="working_arrangements"
       id="working_arrangements"
       htmlFor="working_arrangements"
@@ -129,18 +132,31 @@ const BuyerRFXAboutStage = props => (
         limitWords: 'Your working arrangements has exceeded the 150 word limit'
       }}
     />
+    <Textfield
+      model={`${props.model}.securityClearance`}
+      label="Security clearance (optional)"
+      description="Only request security clearance if access to classified material, environments or assets is required."
+      name="clearance"
+      id="clearance"
+      htmlFor="clearance"
+      defaultValue={props[props.model].securityClearance}
+      maxLength={100}
+      showMaxLength
+    />
     {props.formButtons}
   </Form>
 )
 
 BuyerRFXAboutStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerRFXAboutStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

@@ -4,18 +4,28 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
+import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXEvaluationCriteriaStage.scss'
 
-export const weightingsAddUpTo100 = evaluationCriteria =>
-  !evaluationCriteria.some(val => val.weighting) ||
-  evaluationCriteria.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10), 0) ===
-    100
+export const noEmptyWeightings = formValues =>
+  !formValues.includeWeightings || formValues.evaluationCriteria.every(val => val.weighting)
 
-export const noEmptyCriteria = evaluationCriteria => evaluationCriteria.every(val => val.criteria)
+export const weightingsAddUpTo100 = formValues =>
+  !formValues.includeWeightings ||
+  !noEmptyWeightings(formValues) ||
+  formValues.evaluationCriteria.reduce(
+    (accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10),
+    0
+  ) === 100
+
+export const noZeroWeightings = formValues =>
+  !formValues.includeWeightings || formValues.evaluationCriteria.every(val => parseInt(val.weighting, 10) > 0)
+
+export const noEmptyCriteria = formValues => formValues.evaluationCriteria.every(val => val.criteria)
 
 class BuyerRFXEvaluationCriteriaStage extends Component {
   constructor(props) {
@@ -58,11 +68,12 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
   render() {
     return (
       <Form
-        model={`${this.props.model}.evaluationCriteria`}
+        model={this.props.model}
         validators={{
-          '': { weightingsAddUpTo100, noEmptyCriteria }
+          '': { noEmptyWeightings, weightingsAddUpTo100, noZeroWeightings, noEmptyCriteria }
         }}
         onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
@@ -70,9 +81,11 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
         </AUheadings>
         <ErrorAlert
           title="An error occurred"
-          model={`${this.props.model}.evaluationCriteria`}
+          model={this.props.model}
           messages={{
-            weightingsAddUpTo100: 'The weightings must all have a value and they must all add up to exactly 100%.',
+            noEmptyWeightings: 'You must not have any empty weighting.',
+            weightingsAddUpTo100: 'Weightings must add up to 100%.',
+            noZeroWeightings: 'Weightings must be greater than 0.',
             noEmptyCriteria: 'You must not have any empty criteria.'
           }}
         />
@@ -98,19 +111,22 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
               <div className="row" key={`criteria_key_${i}`}>
                 <div className={styles.criteriaContainer}>
                   <div className="col-xs-12 col-sm-7">
-                    <Textfield
+                    <Textarea
                       model={`${this.props.model}.evaluationCriteria[${i}].criteria`}
                       label="Criteria"
                       name={`criteria_${i}`}
                       id={`criteria_${i}`}
                       htmlFor={`criteria_${i}`}
                       defaultValue={evaluationCriteria.criteria}
-                      maxLength={300}
+                      controlProps={{ limit: 50 }}
+                      messages={{
+                        limitWords: 'Your criteria has exceeded the 50 word limit'
+                      }}
                     />
                   </div>
                   {this.props[this.props.model].includeWeightings && (
-                    <div className="col-xs-12 col-sm-3">
-                      <div className={styles.weightingContainer}>
+                    <div className={styles.weightingContainer}>
+                      <div className="col-xs-12 col-sm-3">
                         <Textfield
                           model={`${this.props.model}.evaluationCriteria[${i}].weighting`}
                           label="Weighting (%)"
@@ -119,6 +135,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
                           htmlFor={`weighting_${i}`}
                           defaultValue={evaluationCriteria.weighting}
                           maxLength={3}
+                          type="number"
                         />
                         {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
                           <div className={styles.weightingRemaining}>{this.getRemainingWeighting()}% remaining</div>
@@ -139,19 +156,17 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
                       </a>
                     </div>
                   )}
-                  <div className="col-xs-12">
-                    {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
-                      <a href="#add" onClick={this.handleAddCriteriaClick}>
-                        Add another criteria
-                      </a>
-                    )}
-                  </div>
                 </div>
               </div>
             )
           }
           return null
         })}
+        <div className={styles.addCriteria}>
+          <a href="#add" onClick={this.handleAddCriteriaClick}>
+            Add another criteria
+          </a>
+        </div>
         {this.props.formButtons}
       </Form>
     )
@@ -162,7 +177,8 @@ BuyerRFXEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromCriteria: () => {},
   addEmptyEvalutationCriteria: () => {},
   removeCriteriaByIndex: () => {},
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerRFXEvaluationCriteriaStage.propTypes = {
@@ -171,6 +187,7 @@ BuyerRFXEvaluationCriteriaStage.propTypes = {
   addEmptyEvalutationCriteria: PropTypes.func,
   removeCriteriaByIndex: PropTypes.func,
   onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func,
   formButtons: PropTypes.node.isRequired
 }
 
