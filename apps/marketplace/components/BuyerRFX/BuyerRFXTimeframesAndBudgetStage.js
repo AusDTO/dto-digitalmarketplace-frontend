@@ -29,8 +29,8 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        startDateRequired: 'Enter an estimated start date for the opportunity',
-        contractLengthRequired: 'Enter a contract length for the opportunity'
+        startDateRequired: 'You must add an estimated start date',
+        contractLengthRequired: 'You must add a contract length'
       }}
     />
     <Textfield
