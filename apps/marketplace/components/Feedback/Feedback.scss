@@ -49,6 +49,10 @@ label.difficultButton {
   margin-right: 0;
 }
 
+.optIn label {
+  margin-left: 0.75rem;
+}
+
 @media screen and (max-width: 480px) {
   .difficulty label {
     width: 100% !important;
