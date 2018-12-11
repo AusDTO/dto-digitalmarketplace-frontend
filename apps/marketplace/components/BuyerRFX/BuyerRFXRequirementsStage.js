@@ -126,7 +126,6 @@ export class BuyerRFXRequirementsStage extends Component {
           <FilesInput
             key={i}
             title="Additional documents (optional)"
-            hint="Documents must be in .DOC .XLS .PPT or .PDF format."
             fieldLabel="Upload document"
             name="attachments"
             model={`${model}.attachments.${i}`}
