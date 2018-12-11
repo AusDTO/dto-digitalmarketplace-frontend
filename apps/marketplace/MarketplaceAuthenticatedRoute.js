@@ -59,7 +59,7 @@ PrivateRouteComponent.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   customRedirectPath: PropTypes.string,
   currentlySending: PropTypes.bool,
-  restrictedTo: PropTypes.oneOf(['buyer', 'supplier'])
+  restrictedTo: PropTypes.oneOf(['buyer', 'supplier', 'admin'])
 }
 
 const mapStateToProps = state => ({
