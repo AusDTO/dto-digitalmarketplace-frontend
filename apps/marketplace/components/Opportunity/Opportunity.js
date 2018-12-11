@@ -88,10 +88,10 @@ const Opportunity = props => {
                 <p>This is a preview of what invited sellers will see.</p>
               </div>
               <div className={styles.previewButtons}>
-                <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className="au-btn au-btn--secondary">
+                <a href={`${rootPath}/buyer-${brief.lotSlug}/${brief.id}/review`} className="au-btn au-btn--secondary">
                   Edit
                 </a>
-                <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className="au-btn">
+                <a href={`${rootPath}/buyer-${brief.lotSlug}/${brief.id}/review`} className="au-btn">
                   Proceed to publish
                 </a>
               </div>
@@ -288,6 +288,7 @@ const Opportunity = props => {
             isInvitedSeller={isInvitedSeller}
             hasResponded={hasResponded}
             briefId={brief.id}
+            briefLot={brief.lotSlug}
             loggedIn={loggedIn}
           />
         </div>

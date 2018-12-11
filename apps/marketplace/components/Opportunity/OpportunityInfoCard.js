@@ -50,7 +50,10 @@ const OpportunityInfoCard = props => (
               {props.hasResponded ? (
                 <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
               ) : (
-                <a href={`${rootPath}/brief/${props.briefId}/rfx/respond`} className={`${styles.button} au-btn`}>
+                <a
+                  href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
+                  className={`${styles.button} au-btn`}
+                >
                   Apply for opportunity
                 </a>
               )}
@@ -103,7 +106,8 @@ OpportunityInfoCard.propTypes = {
   hasResponded: PropTypes.bool,
   isClosed: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
-  briefId: PropTypes.number.isRequired
+  briefId: PropTypes.number.isRequired,
+  briefLot: PropTypes.string.isRequired
 }
 
 export default OpportunityInfoCard
