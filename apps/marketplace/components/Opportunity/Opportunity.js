@@ -233,7 +233,8 @@ const Opportunity = props => {
                   <ul className={styles.submitList}>
                     {brief.responseTemplate.map(responseTemplate => (
                       <li key={responseTemplate}>
-                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>Response template</a>
+                        Completed{' '}
+                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
                       </li>
                     ))}
                     {brief.evaluationType.includes('Written proposal') &&
