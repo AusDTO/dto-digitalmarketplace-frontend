@@ -193,7 +193,10 @@ const Opportunity = props => {
           {isBriefOwner && (
             <div className={styles.noticeBar}>
               <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
-              <span>Only invited sellers and other buyers can view additional information</span>
+              <span>
+                Only invited sellers and other buyers can view attached documents. Only invited sellers can view
+                industry briefing details you provide.
+              </span>
             </div>
           )}
           {loggedIn &&
@@ -253,12 +256,13 @@ const Opportunity = props => {
                     {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
                   </ul>
                 )}
-                {brief.industryBriefing && (
-                  <AUheading level="3" size="sm">
-                    Industry briefing
-                  </AUheading>
-                )}
-                {brief.industryBriefing && <p>{brief.industryBriefing}</p>}
+                {brief.industryBriefing &&
+                  (isInvitedSeller || isBriefOwner) && (
+                    <AUheading level="3" size="sm">
+                      Industry briefing
+                    </AUheading>
+                  )}
+                {brief.industryBriefing && (isInvitedSeller || isBriefOwner) && <p>{brief.industryBriefing}</p>}
               </div>
             )}
           <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
