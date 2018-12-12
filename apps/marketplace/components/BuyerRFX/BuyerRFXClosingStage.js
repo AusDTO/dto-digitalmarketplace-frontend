@@ -58,7 +58,7 @@ class BuyerRFXClosingStage extends Component {
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}
-          label="Contact number"
+          label="Contact number for Marketplace support"
           description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you."
           name="contact"
           id="contact"
