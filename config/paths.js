@@ -58,6 +58,7 @@ var config = {
     'casestudy': [resolveApp('src/bundles/CaseStudy/CaseStudyWidget')],
     'casestudy-view': [resolveApp('src/bundles/CaseStudy/CaseStudyViewWidget')],
     'casestudy-submit-confirmation': [resolveApp('src/bundles/CaseStudy/CaseStudySubmitConfirmationWidget')],
+    'case-study-assessments-admin': [resolveApp('src/bundles/CaseStudy/CaseStudyAssessmentsListWidget')],
     'shared': [resolveApp('src/shared/sharedEntry')],
     'yourinfo': [resolveApp('src/bundles/SellerRegistration/YourInfoWidget')],
     'seller-business-details': [resolveApp('src/bundles/SellerRegistration/BusinessDetailsWidget')],

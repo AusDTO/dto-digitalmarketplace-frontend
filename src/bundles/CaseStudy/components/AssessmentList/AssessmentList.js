@@ -43,41 +43,50 @@ class AssessmentList extends React.Component {
     } = this.props
 
     return (
-      <div>
-        <div className="row">
-          <div className="col-md-2"><b>supplier</b></div>
-          <div className="col-md-4"><b>title</b></div>
-          <div className="col-md-2"><b>domain</b></div>
-          <div className="col-md-2"><b>assessments</b></div>
-          <div className="col-md-2"><b>status</b></div>
-        </div>
-        {casestudies.map((cs, i) =>
-          <span>
+        casestudies.map((cs, i) =>
+          <div>
             <div className="row">
-              <div className="col-md-2">{cs.name}(#{cs.supplier_code})</div>
-              <div className="col-md-4"><a href={`casestudy-assessment/${cs.id}`}>{cs.data.title}(#{cs.id})</a></div>
-              <div className="col-md-2">{cs.data.service}</div>
-              <div className="col-md-2">{cs.assessment_count}</div>
-              <div className="col-md-2">{cs.status}</div>
+              <div className="col-md-2"><b>supplier</b></div>
+              <div className="col-md-4"><b>title</b></div>
+              <div className="col-md-2"><b>domain</b></div>
+              <div className="col-md-2"><b>assessments</b></div>
+              <div className="col-md-2"><b>status</b></div>
             </div>
-            <div className="row">
-              <div>
-                <div className="col-md-2"><b>assessors</b></div>
-                <div className="col-md-8"><b>comment</b></div>
-                <div className="col-md-2"><b>status</b></div>
-              </div>
-            </div>
-            {cs.assessment_count > 0 ? cs.assessment_results.map(ar =>
+            <span key={cs.id}>
               <div className="row">
-                <div className="col-md-2">{ar.username}</div>
-                <div className="col-md-8">{ar.comment}</div>
-                <div className="col-md-2">{ar.status}</div>
+                <div className="col-md-2">{cs.name}(#{cs.supplier_code})</div>
+                <div className="col-md-4"><a href={`casestudy-assessment/${cs.id}`}>{cs.data.title}(#{cs.id})</a></div>
+                <div className="col-md-2">{cs.data.service}</div>
+                <div className="col-md-2">{cs.assessment_count}</div>
+                <div className="col-md-2">{cs.status}</div>
               </div>
-            ) : <i>no assessments</i>}
-            <hr/>
-          </span>
-        )}
-      </div>
+              <div className="row">
+                <div>
+                  <div className="col-md-2"><b>assessors</b></div>
+                  <div className="col-md-4"><b>comment</b></div>
+                  <div className="col-md-4"><b>criterias met</b></div>
+                  <div className="col-md-2"><b>result</b></div>
+                </div>
+              </div>
+              {cs.assessment_count > 0 ? cs.assessment_results.map(ar =>
+                <div key={ar.id} className="row">
+                  <div className="col-md-2">{ar.username}</div>
+                  <div className="col-md-4">{ar.comment}</div>
+                  <div className="col-md-4">
+                  {ar.criterias_met.map(cm =>
+                    <div key={`${ar.id}-${cm.domain_criteria_id}`} styleName="tooltip">
+                      {`${cm.domain_criteria_id}`}
+                      <div styleName="tooltiptext">{cm.domain_criteria}</div>
+                    </div>
+                  )}
+                  </div>
+                  <div className="col-md-2">{ar.status}</div>
+                </div>
+              ) : <i>no assessments</i>}
+              <hr/>
+            </span>
+          </div>
+        )
     )
   }
 }
