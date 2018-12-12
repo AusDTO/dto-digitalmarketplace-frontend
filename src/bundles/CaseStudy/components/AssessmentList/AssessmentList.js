@@ -1,16 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-import format from 'date-fns/format'
-import distanceInWords from 'date-fns/distance_in_words'
-import isBefore from 'date-fns/is_before'
-
-import has from 'lodash/has'
-import orderBy from 'lodash/orderBy'
-import isEmpty from 'lodash/isEmpty'
-import values from 'lodash/values'
-import { Modal } from '../../../../shared/Modal/Modal'
-// import { approveAssessment, rejectAssessment } from '../../redux/modules/assessments'
+import { updateCaseStudyStatus } from '../../redux/modules/casestudies'
 
 import './AssessmentList.css'
 
@@ -39,7 +29,9 @@ class AssessmentList extends React.Component {
   }
   render() {
     const { 
-      casestudies
+      casestudies,
+      onApproveClick,
+      onRejectClick
     } = this.props
 
     return (
@@ -50,7 +42,7 @@ class AssessmentList extends React.Component {
               <div className="col-md-4"><b>title</b></div>
               <div className="col-md-2"><b>domain</b></div>
               <div className="col-md-2"><b>assessments</b></div>
-              <div className="col-md-2"><b>status</b></div>
+              <div className="col-md-2"><b>case study status</b></div>
             </div>
             <span key={cs.id}>
               <div className="row">
@@ -58,7 +50,19 @@ class AssessmentList extends React.Component {
                 <div className="col-md-4"><a href={`casestudy-assessment/${cs.id}`}>{cs.data.title}(#{cs.id})</a></div>
                 <div className="col-md-2">{cs.data.service}</div>
                 <div className="col-md-2">{cs.assessment_count}</div>
-                <div className="col-md-2">{cs.status}</div>
+                <div className="col-md-2">
+                  {cs.status}
+                  <br/>
+                  <a href="#" onClick={e => {
+                    e.preventDefault();
+                    onApproveClick(cs.id);
+                  }} name="approve">approve</a>
+                  {' '}
+                  <a href="#" onClick={e => {
+                    e.preventDefault();
+                    onRejectClick(cs.id);
+                  }} name="reject">reject</a>
+                </div>
               </div>
               <div className="row">
                 <div>
@@ -94,12 +98,21 @@ class AssessmentList extends React.Component {
 const mapStateToProps = ({ meta, casestudies }) => {
   return {
     meta,
-    casestudies
+    casestudies,
+    onApproveClick: () => {},
+    onRejectClick: () => {}
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    onApproveClick: (id) => {
+      dispatch(updateCaseStudyStatus(id, 'approved'))
+    },
+    onRejectClick: (id) => {
+      dispatch(updateCaseStudyStatus(id, 'rejected'))
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AssessmentList)
