@@ -6,9 +6,12 @@ import SubmitForm    from '../../../shared/form/SubmitForm';
 import ErrorBox      from '../../../shared/form/ErrorBox';
 import StatefulError from '../../../shared/form/StatefulError';
 import {Form, Control} from 'react-redux-form';
+import { Link } from 'react-router-dom';
 
 import {required} from '../../../validators';
 import formProps     from '../../../shared/reduxModules/formPropsSelector';
+import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from './ValidationSummary';
 
 import styles from './SellerRegistration.css'
 import submit from './Submit.css'
@@ -45,7 +48,7 @@ class SubmitStepForm extends BaseForm {
     }
 
     render() {
-        let {model, submitUrl, applicationValid, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit, stepsRemaining, submitClicked} = this.props;
+        let {model, submitUrl, name, abn, representative, userEmail, authoriseUrl, email, csrfToken, form, onSubmit, stepsRemaining, submitClicked, applicationErrors} = this.props;
         let message;
         const userIsAuthorised = userEmail && email && userEmail.toLowerCase() === email.toLowerCase();
         const title = userIsAuthorised ? 'Your declaration': 'Share with authorised representative';
@@ -754,7 +757,10 @@ class SubmitStepForm extends BaseForm {
         }
         return (
             <div>
-                <h1 className="au-display-xl" tabIndex="-1">{title}</h1>
+                <ValidationSummary form={form} applicationErrors={applicationErrors} title={'There is a problem to fix before you can submit'} />
+                <h1 className="au-display-xl" tabIndex="-1">  
+                  {title}
+                </h1>
                 <Form model={model}
                       action={action}
                       method="post"
@@ -764,15 +770,9 @@ class SubmitStepForm extends BaseForm {
                       onSubmit={onSubmit}
                 >
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
-                    {!applicationValid &&
-                    (<div ref="box" className="callout--warning" aria-describedby="validation-masthead-heading" tabIndex="-1" role="alert">
-                      <h4 id="validation-masthead-heading" className="au-display-sm">All steps must be completed before submitting.</h4>
-                      You are yet to complete the following sections: {stepsRemaining}</div>)
-                    }
-
                     <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
                     { message }
-                    {applicationValid
+                    {applicationErrors.length == 0
                         ? <button type="submit">{buttonText}</button>
                         : <button disabled="disabled">{buttonText}</button>
                     }
@@ -796,6 +796,7 @@ const mapStateToProps = (state, ownProps) => {
         userEmail: state.form_options.user_email,
         csrfToken: state.form_options.csrf_token,
         ...formProps(state, ownProps.formName || 'submitStepForm'),
+        applicationErrors: state.application_errors ? state.application_errors : []
     }
 }
 

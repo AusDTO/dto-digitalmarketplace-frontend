@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
 import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
 import isNumber from 'lodash/isNumber';
-import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from './ValidationSummary';
 
 import './Start.css';
 
-const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates}) => {
+const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors }) => {
     return (
         <div>
             {saved &&
@@ -56,12 +55,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, expiredLiabilityInsu
                 </div>
             ) : (type === 'edit' ? (
                     <div>
-                        { expiredLiabilityInsurance || expiredWorkersCompensation ?
-                          <PageAlert as="error"><p><strong>Not all your documents are up to date. <Link to="/documents">Please upload the necessary documents to continue</Link>.</strong></p></PageAlert>
-                        : '' }
-                        { missingDailyRates ?
-                          <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please <Link to="/pricing">add the daily rates to continue</Link>.</strong></p></PageAlert>
-                        : '' }
+                        <ValidationSummary applicationErrors={applicationErrors} title={'Application Errors'} />
                         <h1 className="au-display-xl">Update your profile</h1>
                         <p>If you are interested in applying for a brief, update your profile to show experience in the relevant area of expertise.
                            You can do this by adding more services with supporting case studies.</p>
@@ -134,9 +128,7 @@ const mapStateToProps = (state, ownProps) => {
         supplierCode: state.application.supplier_code,
         saved: state.application.saved,
         type: state.application.type,
-        expiredLiabilityInsurance: state.application.expiredLiabilityInsurance,
-        expiredWorkersCompensation: state.application.expiredWorkersCompensation,
-        missingDailyRates: state.application.missingDailyRates
+        applicationErrors: state.application_errors ? state.application_errors : []
     }
 }
 

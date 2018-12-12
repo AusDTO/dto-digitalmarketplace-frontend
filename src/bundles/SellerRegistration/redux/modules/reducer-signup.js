@@ -5,12 +5,14 @@ import steps from './steps';
 import application from './application';
 import errorMessage from '../../../../shared/reduxModules/errorMessage';
 import form_options from '../../../../shared/reduxModules/form_options';
+import application_errors from './application_errors';
 
 export default combineReducers({
   form_options,
   errorMessage,
   steps,
   application,
+  application_errors,
   options: (state = {}) => state,
   ...createForms({
     // We need to define the schemas of each form

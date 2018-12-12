@@ -54,7 +54,7 @@ describe('<DomainList />', () => {
     const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-          <DomainList services={{'Agile delivery and Governance': true}}/>
+          <DomainList services={{'Agile delivery and Governance': true}} />
       </Provider>
     </MemoryRouter>
     );

@@ -14,11 +14,10 @@ import formProps            from '../../../../shared/reduxModules/formPropsSelec
 import SubmitForm           from '../../../../shared/form/SubmitForm';
 
 import StepNav              from '../StepNav';
-import { findValidServices, isDailyRateMissing } from '../../redux/helpers'
-import { missingDailyRates } from '../../redux/modules/application'
+import { findValidServices } from '../../redux/helpers';
 import { required, notNegativeNumber, onlyWholeNumbers }         from '../../../../validators';
 
-import PageAlert from '@gov.au/page-alerts'
+import ValidationSummary from '../ValidationSummary';
 
 import styles from '../SellerRegistration.css';
 import pricing from './PricingForm.css';
@@ -39,16 +38,8 @@ class PricingForm extends BaseForm {
     submitClicked: PropTypes.bool,
   }
 
-  componentDidMount() {
-    if (this.props.pricingForm.pricing && isDailyRateMissing(this.props.pricingForm.pricing, this.props.services)) {
-      this.props.hasMissingDailyRates(true)
-    } else {
-      this.props.hasMissingDailyRates(false)
-    }
-  }
-
   render() {
-    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains } = this.props;
+    const { model, form, action, csrf_token, title, buttonText, services, children,  onSubmit, nextRoute, submitClicked, domains, applicationErrors, type } = this.props;
     let validServices = findValidServices(services);
 
     if (isEmpty(validServices)) {
@@ -76,9 +67,7 @@ class PricingForm extends BaseForm {
     return (
       <Layout>
         <header styleName="styles.content">
-            { this.props.missingDailyRates ?
-              <PageAlert as="error"><p><strong>Maximum daily rates are missing. Please add the daily rates to continue.</strong></p></PageAlert>
-            : '' }
+            <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'pricing' && type === 'edit'} />
             <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
             <p>
               The Marketplace asks for a comparable level of pricing across all sellers. This helps ensure that your 
@@ -86,7 +75,7 @@ class PricingForm extends BaseForm {
             </p>
             <p>
               To do this, we ask sellers to list their maximum daily rate (including GST) for each service, using {' '}
-              <a href="https://www.sfia-online.org/en/sfia-6/busskills/lr5" rel="external nofollow">
+              <a href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5" rel="external nofollow">
                  Skills Framework for the Information Age (SFIA) level 5
               </a>as a guide.
             </p>
@@ -167,16 +156,8 @@ const mapStateToProps = (state) => {
   return {
     ...formProps(state, 'pricingForm'),
     domainSelectorForm: state.domainSelectorForm,
-    missingDailyRates: state.application.missingDailyRates
+    applicationErrors: state.application_errors
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    hasMissingDailyRates: (bool) => {
-      return dispatch(missingDailyRates(bool))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PricingForm)
+export default connect(mapStateToProps)(PricingForm)
