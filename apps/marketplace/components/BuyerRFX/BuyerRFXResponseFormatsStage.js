@@ -106,14 +106,13 @@ const BuyerRFXResponseFormatsStage = props => (
         model={`${props.model}.evaluationType[]`}
         id={`response_format_template`}
         name={`response_format_template`}
-        label="Response template"
+        label="Completed response template"
         description={
           <span>
-            If you select this option, you will need to upload your own template. You can{' '}
+            You will need to upload your own template or the{' '}
             <a href="#template" target="_blank" rel="noreferer noopener">
-              download the Marketplace template
-            </a>{' '}
-            if you do not have your own.
+              Marketplace template
+            </a>.
           </span>
         }
         value="Response template"
