@@ -27,7 +27,6 @@ const defaultBriefProps = {
   location: [],
   contractLength: '',
   budgetRange: '',
-  keyDates: '',
   securityClearance: '',
   sellerCategory: '',
   includeWeightings: false,
@@ -153,14 +152,6 @@ const Opportunity = props => {
                   <strong>Contract extensions</strong>
                 </div>
                 <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
-              </div>
-            )}
-            {brief.keyDates && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Key dates or milestones</strong>
-                </div>
-                <div className="col-xs-12 col-sm-8">{brief.keyDates}</div>
               </div>
             )}
             {brief.securityClearance && (
@@ -325,7 +316,6 @@ Opportunity.propTypes = {
     startDate: PropTypes.string,
     location: PropTypes.array,
     contractLength: PropTypes.string,
-    keyDates: PropTypes.string,
     securityClearance: PropTypes.string,
     sellerCategory: PropTypes.string,
     budgetRange: PropTypes.string,

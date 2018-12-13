@@ -31,7 +31,6 @@ export const BuyerRFXFormReducer = {
   startDate: '',
   contractLength: '',
   contractExtensions: '',
-  keyDates: '',
   budgetRange: '',
   workingArrangements: '',
   securityClearance: ''
