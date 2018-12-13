@@ -6,7 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { requiredFile, required, validEmail } from 'marketplace/components/validators'
+import { requiredFile, required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
@@ -89,9 +89,11 @@ const BriefRFXResponseForm = ({
                 name="respondToEmailAddress"
                 id="respondToEmailAddress"
                 htmlFor="respondToEmailAddress"
-                label="Contact email"
+                label="Email"
                 description="All communication about your application will be sent to this address."
                 defaultValue={app.emailAddress}
+                maxLength={100}
+                showMaxLength
                 validators={{
                   required,
                   validEmail
@@ -99,6 +101,23 @@ const BriefRFXResponseForm = ({
                 messages={{
                   required: 'You must add a contact email',
                   validEmail: 'You must add a valid contact email'
+                }}
+              />
+              <Textfield
+                model={`${model}.respondToPhone`}
+                name="respondToPhone"
+                id="respondToPhone"
+                htmlFor="respondToPhone"
+                label="Phone number"
+                maxLength={100}
+                showMaxLength
+                validators={{
+                  required,
+                  validPhoneNumber
+                }}
+                messages={{
+                  required: 'You must add a contact number',
+                  validPhoneNumber: 'Your contact number must be a valid phone number'
                 }}
               />
               <AUheading level="2" size="lg">
