@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
-import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXResponseFormatsStage.scss'
@@ -46,89 +45,82 @@ const BuyerRFXResponseFormatsStage = props => (
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_template`}
-        name={`response_format_template`}
-        label="Response template"
-        description="If you select this option, you will need to upload your own template."
-        value="Response template"
-        detailsModel={props.model}
-        validators={{
-          required
-        }}
-        messages={{}}
-      />
-      <CheckboxDetailsField
-        model={`${props.model}.evaluationType[]`}
         id={`response_format_proposal`}
         name={`response_format_proposal`}
         label="Written proposal"
-        description={
-          props[props.model].evaluationType.includes('Written proposal')
-            ? 'Select what you would like sellers to include:'
-            : ''
-        }
+        description="Select what you would like sellers to include:"
         value="Written proposal"
         detailsModel={props.model}
-        validators={{
-          required
-        }}
+        validators={{}}
         messages={{}}
       />
-      {props[props.model].evaluationType.includes('Written proposal') && (
-        <div>
-          <div className={styles.subFormats}>
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_costings`}
-              name={`proposal_costings`}
-              label="Breakdown of costs"
-              value="Breakdown of costs"
-              detailsModel={props.model}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_casestudy`}
-              name={`proposal_casestudy`}
-              label="Case study"
-              value="Case study"
-              detailsModel={props.model}
-              disabled={!props[props.model].evaluationType.includes('Written proposal')}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_references`}
-              name={`proposal_references`}
-              label="References"
-              value="References"
-              detailsModel={props.model}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_resumes`}
-              name={`proposal_resumes`}
-              label="Résumés"
-              value="Résumés"
-              detailsModel={props.model}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-          </div>
+      <div>
+        <div className={styles.subFormats}>
+          <CheckboxDetailsField
+            model={`${props.model}.proposalType[]`}
+            id={`proposal_costings`}
+            name={`proposal_costings`}
+            label="Breakdown of costs"
+            value="Breakdown of costs"
+            detailsModel={props.model}
+            disabled={!props[props.model].evaluationType.includes('Written proposal')}
+            validators={{}}
+            messages={{}}
+          />
+          <CheckboxDetailsField
+            model={`${props.model}.proposalType[]`}
+            id={`proposal_casestudy`}
+            name={`proposal_casestudy`}
+            label="Case study"
+            value="Case study"
+            detailsModel={props.model}
+            disabled={!props[props.model].evaluationType.includes('Written proposal')}
+            validators={{}}
+            messages={{}}
+          />
+          <CheckboxDetailsField
+            model={`${props.model}.proposalType[]`}
+            id={`proposal_references`}
+            name={`proposal_references`}
+            label="References"
+            value="References"
+            detailsModel={props.model}
+            disabled={!props[props.model].evaluationType.includes('Written proposal')}
+            validators={{}}
+            messages={{}}
+          />
+          <CheckboxDetailsField
+            model={`${props.model}.proposalType[]`}
+            id={`proposal_resumes`}
+            name={`proposal_resumes`}
+            label="Résumés"
+            value="Résumés"
+            detailsModel={props.model}
+            disabled={!props[props.model].evaluationType.includes('Written proposal')}
+            validators={{}}
+            messages={{}}
+          />
         </div>
-      )}
+      </div>
+      <CheckboxDetailsField
+        model={`${props.model}.evaluationType[]`}
+        id={`response_format_template`}
+        name={`response_format_template`}
+        label="Response template"
+        description={
+          <span>
+            If you select this option, you will need to upload your own template. You can{' '}
+            <a href="#template" target="_blank" rel="noreferer noopener">
+              download the Marketplace template
+            </a>{' '}
+            if you do not have your own.
+          </span>
+        }
+        value="Response template"
+        detailsModel={props.model}
+        validators={{}}
+        messages={{}}
+      />
     </div>
     <AUheadings level="2" size="md">
       Select any additional assessment methods:
@@ -136,26 +128,13 @@ const BuyerRFXResponseFormatsStage = props => (
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_demonstration`}
-        name={`response_format_demonstration`}
-        label="Demonstration"
-        value="Demonstration"
-        detailsModel={props.model}
-        validators={{
-          required
-        }}
-        messages={{}}
-      />
-      <CheckboxDetailsField
-        model={`${props.model}.evaluationType[]`}
         id={`response_format_presentation`}
         name={`response_format_presentation`}
         label="Presentation"
+        description="A presentation can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
         value="Presentation"
         detailsModel={props.model}
-        validators={{
-          required
-        }}
+        validators={{}}
         messages={{}}
       />
     </div>
