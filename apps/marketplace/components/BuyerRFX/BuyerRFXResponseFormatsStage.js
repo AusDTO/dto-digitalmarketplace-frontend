@@ -40,7 +40,7 @@ const BuyerRFXResponseFormatsStage = props => (
       }}
     />
     <AUheadings level="2" size="md">
-      Select what you would like sellers to provide through the Marketplace:
+      Select what sellers need to provide through the Marketplace:
     </AUheadings>
     <div className={styles.formats}>
       <CheckboxDetailsField
