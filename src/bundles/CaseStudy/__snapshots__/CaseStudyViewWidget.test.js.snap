@@ -5,6 +5,9 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
   id="casestudy__view"
   styleName="view.case-study-summary"
 >
+  <div
+    className="row"
+  />
   <header
     className="row"
   >
