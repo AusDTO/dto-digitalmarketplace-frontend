@@ -12,6 +12,16 @@ import range from 'lodash/range'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXRequirementsStage.scss'
 
+const MarketplaceTemplateHint = (
+  <span>
+    You can use the{' '}
+    <a href="#template" target="_blank" rel="noreferer noopener">
+      Marketplace template
+    </a>{' '}
+    if you do not have your own. Make sure you update it with your Agency&apos;s requirements.
+  </span>
+)
+
 export class BuyerRFXRequirementsStage extends Component {
   constructor(props) {
     super(props)
@@ -81,12 +91,13 @@ export class BuyerRFXRequirementsStage extends Component {
             requiredResponseTemplate: 'You must upload a response template'
           }}
         />
+        <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         <AUheadings level="2" size="sm">
           Requirements document
         </AUheadings>
         <FilesInput
           title="Requirements document"
-          hint="Documents must be in .DOC .XLS .PPT or .PDF format."
+          hint={MarketplaceTemplateHint}
           fieldLabel="Upload document"
           name="requirementsDocument"
           model={`${model}.requirementsDocument.0`}
@@ -105,7 +116,7 @@ export class BuyerRFXRequirementsStage extends Component {
             </AUheadings>
             <FilesInput
               title="Response template"
-              hint="Documents must be in .DOC .XLS .PPT or .PDF format."
+              hint={MarketplaceTemplateHint}
               fieldLabel="Upload template"
               name="responseTemplate"
               model={`${model}.responseTemplate.0`}

@@ -66,7 +66,7 @@ CheckboxDetailsField.propTypes = {
   label: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   detailsModel: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-  description: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   validators: PropTypes.object,
   messages: PropTypes.object,
   onClick: PropTypes.func

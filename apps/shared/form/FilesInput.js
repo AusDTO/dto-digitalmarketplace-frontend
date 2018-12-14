@@ -20,7 +20,7 @@ const FilesInput = props => {
             {label}
           </label>
         )}
-        <small>{hint}</small>
+        {hint && <small>{hint}</small>}
         {description && <p>{description}</p>}
         {range(formFields).map(field => (
           <FileInput key={field} id={fileId} uploading={uploading} accept={accept} {...props} />
@@ -33,8 +33,8 @@ const FilesInput = props => {
 FilesInput.propTypes = {
   fileId: PropTypes.number,
   label: PropTypes.string,
-  hint: PropTypes.string,
-  description: PropTypes.string,
+  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   formFields: PropTypes.number.isRequired,
   uploading: PropTypes.func,
   accept: PropTypes.string
