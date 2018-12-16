@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './EvaluationCriteria.scss'
 
-const EvalutationCriteria = props => (
+const EvaluationCriteria = props => (
   <div className={styles.container}>
     <div className="row">
       <div
@@ -40,14 +40,14 @@ const EvalutationCriteria = props => (
   </div>
 )
 
-EvalutationCriteria.defaultProps = {
+EvaluationCriteria.defaultProps = {
   evaluationCriteria: [],
   showWeightings: true
 }
 
-EvalutationCriteria.propTypes = {
+EvaluationCriteria.propTypes = {
   evaluationCriteria: PropTypes.array,
   showWeightings: PropTypes.bool
 }
 
-export default EvalutationCriteria
+export default EvaluationCriteria
