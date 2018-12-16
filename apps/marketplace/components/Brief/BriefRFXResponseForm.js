@@ -99,8 +99,8 @@ const BriefRFXResponseForm = ({
                   validEmail
                 }}
                 messages={{
-                  required: 'You must add a contact email',
-                  validEmail: 'You must add a valid contact email'
+                  required: 'You must add an email',
+                  validEmail: 'You must add a valid email'
                 }}
               />
               <Textfield
@@ -116,8 +116,8 @@ const BriefRFXResponseForm = ({
                   validPhoneNumber
                 }}
                 messages={{
-                  required: 'You must add a contact number',
-                  validPhoneNumber: 'Your contact number must be a valid phone number'
+                  required: 'You must add a phone number',
+                  validPhoneNumber: 'Your must add a valid phone number'
                 }}
               />
               <AUheading level="2" size="lg">
