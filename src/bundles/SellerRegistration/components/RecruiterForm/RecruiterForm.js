@@ -11,6 +11,7 @@ import ErrorBox     from '../../../../shared/form/ErrorBox';
 import formProps    from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav      from '../StepNav';
 
+import ValidationSummary from '../ValidationSummary';
 import '../SellerRegistration.css';
 
 class RecruiterForm extends BaseForm {
@@ -23,7 +24,7 @@ class RecruiterForm extends BaseForm {
     }
 
     render() {
-        const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked} = this.props;
+        const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -34,8 +35,7 @@ class RecruiterForm extends BaseForm {
         return (
             <Layout>
                 <header>
-
-
+                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'recruiter' && type === 'edit'} />
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -94,7 +94,8 @@ RecruiterForm.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        ...formProps(state, 'recruiterForm')
+        ...formProps(state, 'recruiterForm'),
+        applicationErrors: state.application_errors
     }
 }
 

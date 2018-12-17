@@ -26,7 +26,7 @@ class Datefield extends React.Component {
       })
     }
     else {
-      setDate(model, '2017-01-01');
+      setDate(model, '');
     }
   }
 
@@ -42,7 +42,7 @@ class Datefield extends React.Component {
   }
 
   render() {
-    const { id, label, description } = this.props;
+    const { id, label, description, disabled } = this.props;
     const {
       day,
       month,
@@ -65,6 +65,7 @@ class Datefield extends React.Component {
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={day}
+            disabled={disabled}
           />
         </div>
 
@@ -79,6 +80,7 @@ class Datefield extends React.Component {
             maxLength="2"
             onChange={this.onChange.bind(this)}
             defaultValue={month}
+            disabled={disabled}
           />
         </div>
 
@@ -93,6 +95,7 @@ class Datefield extends React.Component {
             maxLength="4"
             onChange={this.onChange.bind(this)}
             defaultValue={year}
+            disabled={disabled}
           />
         </div>
       </div>

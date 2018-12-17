@@ -14,9 +14,8 @@ import NotFound from '../../../../shared/NotFound';
 import LocalNav from '../../../../shared/LocalNav';
 
 import { actions as stepActions, STATUS } from '../../redux/modules/steps';
-import { getStateForms, dispatchFormState, isDailyRateMissing } from '../../redux/helpers';
-import { actions, expiredLiabilityInsurance, expiredWorkersCompensation, missingDailyRates } from '../../redux/modules/application';
-import isPast from 'date-fns/is_past';
+import { getStateForms, dispatchFormState } from '../../redux/helpers';
+import { actions } from '../../redux/modules/application';
 
 // Step Components
 import Start                from '../Start';
@@ -65,17 +64,17 @@ class Signup extends React.Component {
 
   steps = [
     { id: 'start', label: 'Introduction', component: Start, pattern: '/start' },
-    { id: 'profile', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
-    { id: 'business', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
-    { id: 'info', label: 'Contacts', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
+    { id: 'business-details', label: 'Business basics', component: BusinessDetailsForm, pattern: '/business-details', formKey: 'businessDetailsForm' },
+    { id: 'business-info', label: 'Business details', component: BusinessInfoForm, pattern: '/business-info', formKey: 'businessInfoForm' },
+    { id: 'your-info', label: 'Contacts', component: YourInfoForm, pattern: '/your-info', formKey: 'yourInfoForm' },
     { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
     { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
-    { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
+    { id: 'domains', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { id: 'casestudy', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
+    { id: 'case-study', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
     { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
@@ -111,18 +110,12 @@ class Signup extends React.Component {
         actions.submitApplication();
         return;
       }
-      this.props.hasLiabilityDocExpired(false)
-      this.props.hasWorkersDocExpired(false)
-      this.props.hasMissingDailyRates(false)
       actions.stepNextPersist(this.nextStep.pattern, this.step);
     },
     onSubmitFailed: (e) => {
       if (e && 'preventDefault' in e) {
         e.preventDefault();
       }
-      this.props.hasLiabilityDocExpired(false)
-      this.props.hasWorkersDocExpired(false)
-      this.props.hasMissingDailyRates(false)
       const { actions } = this.props;
       actions.stepPartial(this.step.id);
     }
@@ -145,21 +138,7 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0)
-
-    if (this.props.application.documents && this.props.application.documents.liability && isPast(this.props.application.documents.liability.expiry)) {
-      this.props.hasLiabilityDocExpired(true)
-    } else {
-      this.props.hasLiabilityDocExpired(false)
-    }
-
-    if (this.props.application.documents && this.props.application.documents.workers && isPast(this.props.application.documents.workers.expiry)) {
-      this.props.hasWorkersDocExpired(true)
-    } else {
-      this.props.hasWorkersDocExpired(false)
-    }
-
-    this.props.hasMissingDailyRates(isDailyRateMissing(this.props.application.pricing, this.props.application.services))
+    window.scrollTo(0, 0);
   }
 
   componentWillMount() {
@@ -171,7 +150,7 @@ class Signup extends React.Component {
   }
 
   render() {
-    const { forms, location, steps = {}, actions } = this.props;
+    const { forms, location, steps = {}, actions, application } = this.props;
 
     let { recruiter = 'no'} = forms.recruiterForm;
     let filter = recruiter === 'yes' ? /\/pricing|\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
@@ -198,8 +177,7 @@ class Signup extends React.Component {
         return newServices;
       }, {});
 
-    const hasDocumentsWarning = this.props.application.expiredLiabilityInsurance || this.props.application.expiredWorkersCompensation
-    const hasPricingWarning = this.props.application.missingDailyRates
+    const applicationErrors = this.props.applicationErrors ? this.props.applicationErrors : [];
 
     return (
       <div className="row">
@@ -220,7 +198,7 @@ class Signup extends React.Component {
                       onClick={() => actions.navigateToStep(pattern)}
                       className={classNames({'is-active is-current': isActive})}
                     >
-                      { (hasDocumentsWarning && pattern == '/documents') || (hasPricingWarning && pattern == '/pricing') ?
+                      { (application.type == 'edit' && applicationErrors.map(ae => ae.step).indexOf(id) >= 0) ?
                         <Icon value="alert" size={34} aria-hidden="true"/>
                         :
                         <Icon value={classNames({
@@ -256,6 +234,7 @@ class Signup extends React.Component {
                 routerProps, {
                   applicationValid,
                   domains: this.props.application.domains,
+                  type: this.props.application.type,
                   stepsRemaining,
                   services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
@@ -294,15 +273,23 @@ Signup.propTypes = {
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   applicant: PropTypes.object,
+  applicationErrors: PropTypes.array,
   forms: PropTypes.object,
   filterSteps: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { application = {}, steps, options } = state;
+  const { 
+    application = {},
+    application_errors = [],
+    steps,
+    options
+  } = state;
+
   return {
     forms: getStateForms(state),
     application,
+    applicationErrors: application_errors,
     steps,
     options,
     ...ownProps
@@ -311,16 +298,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ ...actions, ...stepActions }, dispatch),
-  dispatch,
-  hasLiabilityDocExpired: (bool) => {
-    return dispatch(expiredLiabilityInsurance(bool));
-  },
-  hasWorkersDocExpired: (bool) => {
-    return dispatch(expiredWorkersCompensation(bool));
-  },
-  hasMissingDailyRates: (bool) => {
-    return dispatch(missingDailyRates(bool));
-  }
+  dispatch
 });
 
 export {
