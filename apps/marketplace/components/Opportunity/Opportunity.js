@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
@@ -47,7 +48,7 @@ const getClosingTime = brief => {
   } else if (brief.closedAt) {
     return brief.closedAt
   }
-  return null
+  return ''
 }
 
 const getTrimmedFilename = fileName => {
@@ -170,6 +171,14 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{category}</div>
               </div>
             )}
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Published</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(brief.dates.published_date ? brief.dates.published_date : new Date(), 'DD/MM/YYYY')}
+              </div>
+            </div>
           </div>
           <AUheading level="2" size="lg">
             Summary
