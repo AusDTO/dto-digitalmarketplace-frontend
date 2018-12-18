@@ -55,7 +55,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
 
   handleAddCriteriaClick(e) {
     e.preventDefault()
-    this.props.addEmptyEvalutationCriteria(this.props[this.props.model].evaluationCriteria)
+    this.props.addEmptyEvaluationCriteria(this.props[this.props.model].evaluationCriteria)
   }
 
   handleIncludeWeightingsChange(e) {
@@ -175,7 +175,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
 
 BuyerRFXEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromCriteria: () => {},
-  addEmptyEvalutationCriteria: () => {},
+  addEmptyEvaluationCriteria: () => {},
   removeCriteriaByIndex: () => {},
   onSubmit: () => {},
   onSubmitFailed: () => {}
@@ -184,7 +184,7 @@ BuyerRFXEvaluationCriteriaStage.defaultProps = {
 BuyerRFXEvaluationCriteriaStage.propTypes = {
   model: PropTypes.string.isRequired,
   clearWeightingsFromCriteria: PropTypes.func,
-  addEmptyEvalutationCriteria: PropTypes.func,
+  addEmptyEvaluationCriteria: PropTypes.func,
   removeCriteriaByIndex: PropTypes.func,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func,
@@ -204,7 +204,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     })
     dispatch(actions.change(`${props.model}.evaluationCriteria`, newData))
   },
-  addEmptyEvalutationCriteria: evaluationCriteria => {
+  addEmptyEvaluationCriteria: evaluationCriteria => {
     const newData = evaluationCriteria.slice(0)
     newData.push({
       criteria: '',
