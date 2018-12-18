@@ -45,10 +45,11 @@ const BriefRFXResponseForm = ({
           <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-              {brief.evaluationType.includes('Response template') && (
+              {brief.evaluationType.includes('Written proposal') && (
                 <FilesInput
-                  label="Completed response template"
-                  fieldLabel="Upload response"
+                  label="Written proposal"
+                  hint={`Your proposal must include: ${brief.proposalType.map(type => type.toLowerCase()).join(', ')}`}
+                  fieldLabel="Upload written proposal"
                   name="attachedDocumentURL"
                   model={`${model}.attachedDocumentURL.0`}
                   formFields={1}
@@ -59,16 +60,15 @@ const BriefRFXResponseForm = ({
                     requiredFile
                   }}
                   messages={{
-                    requiredFile: 'You must upload your completed response template'
+                    requiredFile: 'You must upload your written proposal'
                   }}
                   uploading={uploading}
                 />
               )}
-              {brief.evaluationType.includes('Written proposal') && (
+              {brief.evaluationType.includes('Response template') && (
                 <FilesInput
-                  label="Written proposal"
-                  hint={`Your proposal must include: ${brief.proposalType.map(type => type.toLowerCase()).join(', ')}`}
-                  fieldLabel="Upload written proposal"
+                  label="Completed response template"
+                  fieldLabel="Upload response"
                   name="attachedDocumentURL"
                   model={`${model}.attachedDocumentURL.1`}
                   formFields={1}
@@ -79,7 +79,7 @@ const BriefRFXResponseForm = ({
                     requiredFile
                   }}
                   messages={{
-                    requiredFile: 'You must upload your written proposal'
+                    requiredFile: 'You must upload your completed response template'
                   }}
                   uploading={uploading}
                 />
