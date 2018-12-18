@@ -60,7 +60,8 @@ const uploadDocument = (url, api, id, file, csrfToken) => () => {
       'X-CSRFToken': csrfToken,
       'Content-Type': 'application/json'
     },
-    data
+    data,
+    timeout: 600000
   }).then(response => {
     if (response.error) {
       if (response.status === 413) {
