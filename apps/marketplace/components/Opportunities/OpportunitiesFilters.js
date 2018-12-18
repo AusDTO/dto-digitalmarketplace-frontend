@@ -141,13 +141,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               header={`Location ${
                 this.getActiveFilterCount('location') > 0 ? `• ${this.getActiveFilterCount('location')}` : ''
               }`}
-              closed={this.state.locationAccordionClosed}
-              onOpen={() => {
-                this.changeAccordion('location', false)
-              }}
-              onClose={() => {
-                this.changeAccordion('location', true)
-              }}
+              closed
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                 <div className={styles.inputGroup}>
@@ -176,13 +170,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               header={`Status ${
                 this.getActiveFilterCount('status') > 0 ? `• ${this.getActiveFilterCount('status')}` : ''
               }`}
-              closed={this.state.statusAccordionClosed}
-              onOpen={() => {
-                this.changeAccordion('status', false)
-              }}
-              onClose={() => {
-                this.changeAccordion('status', true)
-              }}
+              closed
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                 <div className={styles.inputGroup}>
@@ -233,13 +221,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
               header={`Filter opportunities ${
                 this.getActiveFilterCount('all') > 0 ? `• ${this.getActiveFilterCount('all')}` : ''
               }`}
-              closed={this.state.mobileAccordionClosed}
-              onOpen={() => {
-                this.changeAccordion('mobile', false)
-              }}
-              onClose={() => {
-                this.changeAccordion('mobile', true)
-              }}
+              closed
             >
               <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                 <div className={styles.inputGroup}>
