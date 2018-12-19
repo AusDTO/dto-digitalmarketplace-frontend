@@ -45,45 +45,57 @@ const BriefRFXResponseForm = ({
           <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-              {brief.evaluationType.includes('Written proposal') && (
-                <FilesInput
-                  label="Written proposal"
-                  hint={`Your proposal must include: ${brief.proposalType.map(type => type.toLowerCase()).join(', ')}`}
-                  fieldLabel="Upload written proposal"
-                  name="attachedDocumentURL"
-                  model={`${model}.attachedDocumentURL.0`}
-                  formFields={1}
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
-                  fileId={0}
-                  validators={{
-                    requiredFile
-                  }}
-                  messages={{
-                    requiredFile: 'You must upload your written proposal'
-                  }}
-                  uploading={uploading}
-                />
-              )}
-              {brief.evaluationType.includes('Response template') && (
-                <FilesInput
-                  label="Completed response template"
-                  fieldLabel="Upload response"
-                  name="attachedDocumentURL"
-                  model={`${model}.attachedDocumentURL.1`}
-                  formFields={1}
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
-                  fileId={1}
-                  validators={{
-                    requiredFile
-                  }}
-                  messages={{
-                    requiredFile: 'You must upload your completed response template'
-                  }}
-                  uploading={uploading}
-                />
-              )}
+              {brief.evaluationType
+                .filter(evaluationType => ['Written proposal', 'Response template'].includes(evaluationType))
+                .map((evaluationType, index) => {
+                  if (evaluationType === 'Written proposal') {
+                    return (
+                      <FilesInput
+                        key={evaluationType}
+                        label="Written proposal"
+                        hint={`Your proposal must include: ${brief.proposalType
+                          .map(type => type.toLowerCase())
+                          .join(', ')}`}
+                        fieldLabel="Upload written proposal"
+                        name="attachedDocumentURL"
+                        model={`${model}.attachedDocumentURL.${index}`}
+                        formFields={1}
+                        url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                        api={dmapi}
+                        fileId={index}
+                        validators={{
+                          requiredFile
+                        }}
+                        messages={{
+                          requiredFile: 'You must upload your written proposal'
+                        }}
+                        uploading={uploading}
+                      />
+                    )
+                  } else if (evaluationType === 'Response template') {
+                    return (
+                      <FilesInput
+                        key={evaluationType}
+                        label="Completed response template"
+                        fieldLabel="Upload response"
+                        name="attachedDocumentURL"
+                        model={`${model}.attachedDocumentURL.${index}`}
+                        formFields={1}
+                        url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                        api={dmapi}
+                        fileId={index}
+                        validators={{
+                          requiredFile
+                        }}
+                        messages={{
+                          requiredFile: 'You must upload your completed response template'
+                        }}
+                        uploading={uploading}
+                      />
+                    )
+                  }
+                  return null
+                })}
               <Textfield
                 model={`${model}.respondToEmailAddress`}
                 name="respondToEmailAddress"
