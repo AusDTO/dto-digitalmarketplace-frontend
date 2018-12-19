@@ -112,6 +112,41 @@ const Opportunity = props => {
             </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
+                <strong>Deadline for asking questions</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(
+                  brief.dates.questions_close
+                    ? new Date(brief.dates.questions_close)
+                    : getLastQuestionDate(new Date(getClosingTime(brief) || new Date())),
+                  'dddd D MMMM YYYY'
+                )}{' '}
+                at 6PM (in Canberra)
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Application closing date</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(getClosingTime(brief) || new Date(), 'D MMMM YYYY')} at 6PM (in Canberra)
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Published</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(brief.dates.published_date ? brief.dates.published_date : new Date(), 'dddd D MMMM YYYY')}
+              </div>
+            </div>
+            <AUheading level="2" size="lg">
+              Overview
+            </AUheading>
+            <p>{brief.summary}</p>
+            <br />
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
                 <strong>Estimated start date</strong>
               </div>
               <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
@@ -171,19 +206,7 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{category}</div>
               </div>
             )}
-            <div className="row">
-              <div className="col-xs-12 col-sm-4">
-                <strong>Published</strong>
-              </div>
-              <div className="col-xs-12 col-sm-8">
-                {format(brief.dates.published_date ? brief.dates.published_date : new Date(), 'DD/MM/YYYY')}
-              </div>
-            </div>
           </div>
-          <AUheading level="2" size="lg">
-            Summary
-          </AUheading>
-          <p>{brief.summary}</p>
           {loggedIn &&
             (isInvitedSeller || isBuyer) && (
               <AUheading level="2" size="lg">
@@ -269,11 +292,6 @@ const Opportunity = props => {
           <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
           <QuestionAnswer
             questions={brief.clarificationQuestions}
-            questionsClosingDate={
-              brief.dates.questions_close
-                ? new Date(brief.dates.questions_close)
-                : getLastQuestionDate(new Date(getClosingTime(brief) || ''))
-            }
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
             briefId={brief.id}
             showAskQuestionInfo={isInvitedSeller}
