@@ -154,7 +154,7 @@ export const validPhoneNumber = val => {
   }
 
   const length = (val.match(/[0-9]/g) || []).length
-  return length >= 10
+  return val.length === length && length >= 10
 }
 
 export const passwordsMatch = vals => vals && vals.password === vals.confirmPassword
