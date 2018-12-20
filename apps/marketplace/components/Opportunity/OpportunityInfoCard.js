@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import format from 'date-fns/format'
 import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
 import styles from './OpportunityInfoCard.scss'
@@ -21,35 +20,31 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {!props.isClosed && (
-          <div>
-            <span>Closes in</span>
-            <br />
-            <strong className={styles.stat}>
-              <ClosedDate countdown date={props.closingDate} />
-            </strong>
-            <br />
-            <span>({format(props.closingDate, 'D MMMM YYYY')} at 6PM in Canberra)</span>
-          </div>
-        )}
+        {!props.isClosed &&
+          props.closingDate && (
+            <div>
+              <span>Closes in</span>
+              <br />
+              <strong className={styles.stat}>
+                <ClosedDate countdown date={props.closingDate} />
+              </strong>
+            </div>
+          )}
       </div>
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isClosed && (
-          <p className={styles.invitedStatus}>
-            This opportunity closed on
-            <br />
-            {format(props.closingDate, 'D MMMM YYYY')}
-          </p>
-        )}
+        {props.isClosed && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
         {!props.isClosed &&
           props.isInvitedSeller && (
             <div>
               {props.hasResponded ? (
                 <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
               ) : (
-                <a href={`${rootPath}/brief/${props.briefId}/rfx/respond`} className={`${styles.button} au-btn`}>
+                <a
+                  href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
+                  className={`${styles.button} au-btn`}
+                >
                   Apply for opportunity
                 </a>
               )}
@@ -102,7 +97,8 @@ OpportunityInfoCard.propTypes = {
   hasResponded: PropTypes.bool,
   isClosed: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
-  briefId: PropTypes.number.isRequired
+  briefId: PropTypes.number.isRequired,
+  briefLot: PropTypes.string.isRequired
 }
 
 export default OpportunityInfoCard

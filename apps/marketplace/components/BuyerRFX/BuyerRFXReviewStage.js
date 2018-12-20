@@ -109,10 +109,10 @@ const BuyerRFXReviewStage = props => (
         </AUheading>
         <ul>
           <li>A summary of this request will be visible on the Digital Marketplace.</li>
-          <li>
-            Only invited sellers and other buyers will be able to view attached documents{props[props.model]
-              .industryBriefing && <span> and industry briefing details</span>}.
-          </li>
+          <li>Only invited sellers and other buyers will be able to view attached documents.</li>
+          {props[props.model].industryBriefing && (
+            <li>Only invited sellers will be able to view industry briefing details you provide.</li>
+          )}
           <li>An email will be sent to the sellers&apos; business contacts inviting them to view and respond.</li>
         </ul>
         {props.formButtons}

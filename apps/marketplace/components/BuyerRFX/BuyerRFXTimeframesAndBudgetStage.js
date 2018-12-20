@@ -66,16 +66,6 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
       validators={{}}
       messages={{}}
     />
-    <Textfield
-      model={`${props.model}.keyDates`}
-      label="Key dates or milestones (optional)"
-      name="key_dates"
-      id="key_dates"
-      htmlFor="key_dates"
-      defaultValue={props[props.model].keyDates}
-      validators={{}}
-      messages={{}}
-    />
     <Textarea
       model={`${props.model}.budgetRange`}
       label="Budget range (optional)"

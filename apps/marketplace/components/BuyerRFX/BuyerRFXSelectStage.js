@@ -63,7 +63,7 @@ export class BuyerRFXSelectStage extends Component {
         validators={{
           '': {
             requiredCategory: val => val.sellerCategory,
-            requiredSeller: val => val.sellers && Object.keys(val.sellers).length > 0
+            requiredSeller: val => !val.sellerCategory || (val.sellers && Object.keys(val.sellers).length > 0)
           }
         }}
         onSubmit={this.props.onSubmit}

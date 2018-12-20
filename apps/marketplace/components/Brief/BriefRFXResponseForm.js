@@ -6,7 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { requiredFile, required, validEmail } from 'marketplace/components/validators'
+import { requiredFile, required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
@@ -45,60 +45,91 @@ const BriefRFXResponseForm = ({
           <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
           {app.supplierCode ? (
             <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-              {brief.evaluationType.includes('Response template') && (
-                <FilesInput
-                  label="Completed response template"
-                  fieldLabel="Upload response"
-                  name="attachedDocumentURL"
-                  model={`${model}.attachedDocumentURL.0`}
-                  formFields={1}
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
-                  fileId={0}
-                  validators={{
-                    requiredFile
-                  }}
-                  messages={{
-                    requiredFile: 'You must upload your completed response template'
-                  }}
-                  uploading={uploading}
-                />
-              )}
-              {brief.evaluationType.includes('Written proposal') && (
-                <FilesInput
-                  label="Written proposal"
-                  hint={`Your proposal must include: ${brief.proposalType.map(type => type.toLowerCase()).join(', ')}`}
-                  fieldLabel="Upload written proposal"
-                  name="attachedDocumentURL"
-                  model={`${model}.attachedDocumentURL.1`}
-                  formFields={1}
-                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                  api={dmapi}
-                  fileId={1}
-                  validators={{
-                    requiredFile
-                  }}
-                  messages={{
-                    requiredFile: 'You must upload your written proposal'
-                  }}
-                  uploading={uploading}
-                />
-              )}
+              {brief.evaluationType
+                .filter(evaluationType => ['Written proposal', 'Response template'].includes(evaluationType))
+                .map((evaluationType, index) => {
+                  if (evaluationType === 'Written proposal') {
+                    return (
+                      <FilesInput
+                        key={evaluationType}
+                        label="Written proposal"
+                        hint={`Your proposal must include: ${brief.proposalType
+                          .map(type => type.toLowerCase())
+                          .join(', ')}`}
+                        fieldLabel="Upload written proposal"
+                        name="attachedDocumentURL"
+                        model={`${model}.attachedDocumentURL.${index}`}
+                        formFields={1}
+                        url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                        api={dmapi}
+                        fileId={index}
+                        validators={{
+                          requiredFile
+                        }}
+                        messages={{
+                          requiredFile: 'You must upload your written proposal'
+                        }}
+                        uploading={uploading}
+                      />
+                    )
+                  } else if (evaluationType === 'Response template') {
+                    return (
+                      <FilesInput
+                        key={evaluationType}
+                        label="Completed response template"
+                        fieldLabel="Upload response"
+                        name="attachedDocumentURL"
+                        model={`${model}.attachedDocumentURL.${index}`}
+                        formFields={1}
+                        url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                        api={dmapi}
+                        fileId={index}
+                        validators={{
+                          requiredFile
+                        }}
+                        messages={{
+                          requiredFile: 'You must upload your completed response template'
+                        }}
+                        uploading={uploading}
+                      />
+                    )
+                  }
+                  return null
+                })}
               <Textfield
                 model={`${model}.respondToEmailAddress`}
                 name="respondToEmailAddress"
                 id="respondToEmailAddress"
                 htmlFor="respondToEmailAddress"
-                label="Contact email"
+                label="Email"
                 description="All communication about your application will be sent to this address."
                 defaultValue={app.emailAddress}
+                maxLength={100}
+                showMaxLength
                 validators={{
                   required,
                   validEmail
                 }}
                 messages={{
-                  required: 'You must add a contact email',
-                  validEmail: 'You must add a valid contact email'
+                  required: 'You must add an email',
+                  validEmail: 'You must add a valid email'
+                }}
+              />
+              <Textfield
+                model={`${model}.respondToPhone`}
+                name="respondToPhone"
+                id="respondToPhone"
+                htmlFor="respondToPhone"
+                label="Phone number"
+                maxLength={100}
+                showMaxLength
+                validators={{
+                  required,
+                  validPhoneNumber
+                }}
+                messages={{
+                  required: 'You must add a phone number',
+                  validPhoneNumber: 'Your must add a valid phone number'
                 }}
               />
               <AUheading level="2" size="lg">
@@ -110,7 +141,7 @@ const BriefRFXResponseForm = ({
                 </li>
                 <li>
                   The buyer will receive your response once the opportunity has closed on{' '}
-                  {format(new Date(brief.applicationsClosedAt), 'DD MMMM')}.
+                  {format(new Date(brief.applicationsClosedAt), 'DD MMMM YYYY')}.
                 </li>
               </ul>
               {currentlySending || loadingText ? (

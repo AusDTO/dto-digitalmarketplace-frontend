@@ -132,16 +132,16 @@ class BuyerRFXOverview extends Component {
                   </li>
                 )}
                 {!isPublished && (
-                  <li>
-                    <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
-                  </li>
-                )}
-                {!isPublished && (
-                  <li>
-                    <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
-                      Delete draft
-                    </a>
-                  </li>
+                  <div>
+                    <li>
+                      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
+                    </li>
+                    <li>
+                      <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
+                        Delete draft
+                      </a>
+                    </li>
+                  </div>
                 )}
               </ul>
             </div>

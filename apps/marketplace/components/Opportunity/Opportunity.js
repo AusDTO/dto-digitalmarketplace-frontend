@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import { getLastQuestionDate } from 'marketplace/components/BuyerRFX/BuyerRFXReviewStage'
-import EvaluationCriteria from './EvalutationCriteria'
+import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
 import styles from './Opportunity.scss'
@@ -27,7 +28,6 @@ const defaultBriefProps = {
   location: [],
   contractLength: '',
   budgetRange: '',
-  keyDates: '',
   securityClearance: '',
   sellerCategory: '',
   includeWeightings: false,
@@ -48,7 +48,7 @@ const getClosingTime = brief => {
   } else if (brief.closedAt) {
     return brief.closedAt
   }
-  return null
+  return ''
 }
 
 const getTrimmedFilename = fileName => {
@@ -81,17 +81,17 @@ const Opportunity = props => {
   return (
     <div>
       <div className="row">
-        <div className={`col-xs-12 ${brief.status === 'draft' ? `col-md-9` : `col-md-8`}`}>
+        <div className="col-xs-12 col-md-8">
           {brief.status === 'draft' && (
             <NoticeBar className={styles.previewNotice}>
               <div>
-                <p>This is a preview of what invited sellers can see.</p>
+                <p>This is a preview of what invited sellers will see.</p>
               </div>
               <div className={styles.previewButtons}>
-                <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className="au-btn au-btn--secondary">
+                <a href={`${rootPath}/buyer-${brief.lotSlug}/${brief.id}/review`} className="au-btn au-btn--secondary">
                   Edit
                 </a>
-                <a href={`${rootPath}/buyer-rfx/${brief.id}/review`} className="au-btn">
+                <a href={`${rootPath}/buyer-${brief.lotSlug}/${brief.id}/review`} className="au-btn">
                   Proceed to publish
                 </a>
               </div>
@@ -110,6 +110,41 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.id}</div>
             </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Deadline for asking questions</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(
+                  brief.dates.questions_close
+                    ? new Date(brief.dates.questions_close)
+                    : getLastQuestionDate(new Date(getClosingTime(brief) || new Date())),
+                  'dddd D MMMM YYYY'
+                )}{' '}
+                at 6PM (in Canberra)
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Application closing date</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(getClosingTime(brief) || new Date(), 'D MMMM YYYY')} at 6PM (in Canberra)
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Published</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">
+                {format(brief.dates.published_date ? brief.dates.published_date : new Date(), 'dddd D MMMM YYYY')}
+              </div>
+            </div>
+            <AUheading level="2" size="lg">
+              Overview
+            </AUheading>
+            <p>{brief.summary}</p>
+            <br />
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Estimated start date</strong>
@@ -155,14 +190,6 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
               </div>
             )}
-            {brief.keyDates && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Key dates or milestones</strong>
-                </div>
-                <div className="col-xs-12 col-sm-8">{brief.keyDates}</div>
-              </div>
-            )}
             {brief.securityClearance && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -180,10 +207,6 @@ const Opportunity = props => {
               </div>
             )}
           </div>
-          <AUheading level="2" size="lg">
-            Summary
-          </AUheading>
-          <p>{brief.summary}</p>
           {loggedIn &&
             (isInvitedSeller || isBuyer) && (
               <AUheading level="2" size="lg">
@@ -193,7 +216,10 @@ const Opportunity = props => {
           {isBriefOwner && (
             <div className={styles.noticeBar}>
               <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
-              <span>Only invited sellers and other buyers can view additional information</span>
+              <span>
+                Only invited sellers and other buyers can view attached documents. Only invited sellers can view
+                industry briefing details you provide.
+              </span>
             </div>
           )}
           {loggedIn &&
@@ -230,7 +256,8 @@ const Opportunity = props => {
                   <ul className={styles.submitList}>
                     {brief.responseTemplate.map(responseTemplate => (
                       <li key={responseTemplate}>
-                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>Response template</a>
+                        Completed{' '}
+                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
                       </li>
                     ))}
                     {brief.evaluationType.includes('Written proposal') &&
@@ -253,41 +280,36 @@ const Opportunity = props => {
                     {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
                   </ul>
                 )}
-                {brief.industryBriefing && (
-                  <AUheading level="3" size="sm">
-                    Industry briefing
-                  </AUheading>
-                )}
-                {brief.industryBriefing && <p>{brief.industryBriefing}</p>}
+                {brief.industryBriefing &&
+                  (isInvitedSeller || isBriefOwner) && (
+                    <AUheading level="3" size="sm">
+                      Industry briefing
+                    </AUheading>
+                  )}
+                {brief.industryBriefing && (isInvitedSeller || isBriefOwner) && <p>{brief.industryBriefing}</p>}
               </div>
             )}
           <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
           <QuestionAnswer
             questions={brief.clarificationQuestions}
-            questionsClosingDate={
-              brief.dates.questions_close
-                ? new Date(brief.dates.questions_close)
-                : getLastQuestionDate(new Date(getClosingTime(brief)))
-            }
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
             briefId={brief.id}
             showAskQuestionInfo={isInvitedSeller}
           />
         </div>
-        {brief.status !== 'draft' && (
-          <div className="col-xs-12 col-md-4">
-            <OpportunityInfoCard
-              sellersInvited={invitedSellerCount}
-              sellersApplied={briefResponseCount}
-              isClosed={brief.status === 'closed'}
-              closingDate={brief.dates.closing_time}
-              isInvitedSeller={isInvitedSeller}
-              hasResponded={hasResponded}
-              briefId={brief.id}
-              loggedIn={loggedIn}
-            />
-          </div>
-        )}
+        <div className="col-xs-12 col-md-4">
+          <OpportunityInfoCard
+            sellersInvited={invitedSellerCount}
+            sellersApplied={briefResponseCount}
+            isClosed={brief.status === 'closed'}
+            closingDate={getClosingTime(brief)}
+            isInvitedSeller={isInvitedSeller}
+            hasResponded={hasResponded}
+            briefId={brief.id}
+            briefLot={brief.lotSlug}
+            loggedIn={loggedIn}
+          />
+        </div>
       </div>
     </div>
   )
@@ -321,7 +343,6 @@ Opportunity.propTypes = {
     startDate: PropTypes.string,
     location: PropTypes.array,
     contractLength: PropTypes.string,
-    keyDates: PropTypes.string,
     securityClearance: PropTypes.string,
     sellerCategory: PropTypes.string,
     budgetRange: PropTypes.string,
