@@ -6,9 +6,9 @@ import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerATMResponseFormatsStage.scss'
-import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 
 const BuyerATMResponseFormatsStage = props => (
   <Form

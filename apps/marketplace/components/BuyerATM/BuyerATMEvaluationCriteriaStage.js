@@ -7,8 +7,8 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import ErrorAlert from './ErrorAlert'
 import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
+import ErrorAlert from './ErrorAlert'
 import styles from './BuyerATMEvaluationCriteriaStage.scss'
 
 export const weightingsAddUpTo100 = evaluationCriteria =>
