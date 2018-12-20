@@ -54,8 +54,8 @@ export class ClosingDate extends Component {
             Closing date
           </AUheading>
           <p>
-            We recommend publishing for at least 2 weeks to allow interested sellers to respond.
-            Responses will be available after 6pm Canberra time on this date.
+            We recommend publishing for at least 2 weeks to allow interested sellers to respond. Responses will be
+            available after 6pm Canberra time on this date.
           </p>
         </div>
         <div className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>

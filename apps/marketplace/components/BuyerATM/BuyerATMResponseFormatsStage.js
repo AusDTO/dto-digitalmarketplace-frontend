@@ -25,8 +25,8 @@ const BuyerATMResponseFormatsStage = props => (
       Response formats
     </AUheadings>
     <NoticeBar heavyFont className={styles.noticeBar}>
-      In this EOI/RFI process sellers submit up to 500 words to each criteria you provide. 
-      If you need proposals or quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
+      In this EOI/RFI process sellers submit up to 500 words to each criteria you provide. If you need proposals or
+      quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
     </NoticeBar>
     <ErrorAlert
       title="An error occurred"

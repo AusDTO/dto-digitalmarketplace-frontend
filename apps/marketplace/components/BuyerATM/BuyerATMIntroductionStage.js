@@ -9,9 +9,9 @@ const BuyerATMIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     <AUheadings level="1" size="xl">
       Ask the market
-    </AUheadings>        
+    </AUheadings>
     <NoticeBar heavyFont className={styles.noticeBar}>
-      This is an EOI/RFI process. In this stage, sellers can only submit up to 500 words to each criteria you provide. 
+      This is an EOI/RFI process. In this stage, sellers can only submit up to 500 words to each criteria you provide.
       If you need proposals or quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
     </NoticeBar>
     <AUheadings level="2" size="lg">
@@ -19,7 +19,8 @@ const BuyerATMIntroductionStage = props => (
     </AUheadings>
     <ul>
       <li>
-        You can use the <a href="#template">list of questions template[TODO]</a> to develop your request offline before publishing.
+        You can use the <a href="#template">list of questions template[TODO]</a> to develop your request offline before
+        publishing.
       </li>
       <li>Have your evaluation criteria and closing dates ready.</li>
       <li>Any documents you upload must be in DOC, XLS, PPT or PDF format.</li>
@@ -32,9 +33,7 @@ const BuyerATMIntroductionStage = props => (
       <br />
       <a href="#chat">Contact us[TODO]</a>
     </p>
-    <p>
-      All fields are mandatory unless marked optional.
-    </p>
+    <p>All fields are mandatory unless marked optional.</p>
     {props.formButtons}
   </Form>
 )

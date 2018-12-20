@@ -38,8 +38,7 @@ const BuyerATMStages = [
     slug: 'formats',
     title: 'Response formats',
     component: BuyerATMResponseFormatsStage,
-    isDone: formValues =>
-      (formValues.evaluationType.length > 0)
+    isDone: formValues => formValues.evaluationType.length > 0
   },
   {
     slug: 'objectives',

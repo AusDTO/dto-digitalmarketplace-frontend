@@ -70,8 +70,8 @@ class BuyerATMEvaluationCriteriaStage extends Component {
           Response criteria
         </AUheadings>
         <NoticeBar heavyFont className={styles.noticeBar}>
-          If you are seeking requests for information, you do not need to include criteria weightings.
-          For expressions of interest that may lead to another procurement, we recommend adding weightings.
+          If you are seeking requests for information, you do not need to include criteria weightings. For expressions
+          of interest that may lead to another procurement, we recommend adding weightings.
         </NoticeBar>
         <ErrorAlert
           title="An error occurred"
