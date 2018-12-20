@@ -8,6 +8,7 @@ import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import ErrorAlert from './ErrorAlert'
+import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import styles from './BuyerATMEvaluationCriteriaStage.scss'
 
 export const weightingsAddUpTo100 = evaluationCriteria =>
@@ -66,8 +67,12 @@ class BuyerATMEvaluationCriteriaStage extends Component {
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
-          Evaluation criteria
+          Response criteria
         </AUheadings>
+        <NoticeBar heavyFont className={styles.noticeBar}>
+          If you are seeking requests for information, you do not need to include criteria weightings.
+          For expressions of interest that may lead to another procurement, we recommend adding weightings.
+        </NoticeBar>
         <ErrorAlert
           title="An error occurred"
           model={`${this.props.model}.evaluationCriteria`}

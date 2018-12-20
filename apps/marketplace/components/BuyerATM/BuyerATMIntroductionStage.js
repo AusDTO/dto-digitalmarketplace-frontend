@@ -2,25 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
+import styles from './BuyerATMIntroductionStage.scss'
 
 const BuyerATMIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     <AUheadings level="1" size="xl">
       Ask the market
-    </AUheadings>
-    <AUheadings level="2" size="lg">
-      Are you seeking proposals now?
-    </AUheadings>
-    <p>
-      In this step, sellers can only submit up to 500 words to each criteria you provide. Use the{' '}
-      <a href="#request-proposals">request proposals[TODO]</a> approach if you need proposals or quotes upfront.
-    </p>
+    </AUheadings>        
+    <NoticeBar heavyFont className={styles.noticeBar}>
+      This is an EOI/RFI process. In this stage, sellers can only submit up to 500 words to each criteria you provide. 
+      If you need proposals or quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
+    </NoticeBar>
     <AUheadings level="2" size="lg">
       Before you start
     </AUheadings>
     <ul>
       <li>
-        You can use the <a href="#template">questions template[TODO]</a> to develop your request before publishing.
+        You can use the <a href="#template">list of questions template[TODO]</a> to develop your request offline before publishing.
       </li>
       <li>Have your evaluation criteria and closing dates ready.</li>
       <li>Any documents you upload must be in DOC, XLS, PPT or PDF format.</li>
@@ -35,8 +34,6 @@ const BuyerATMIntroductionStage = props => (
     </p>
     <p>
       All fields are mandatory unless marked optional.
-      <br />
-      Completing this form usually takes about 15 minutes.
     </p>
     {props.formButtons}
   </Form>

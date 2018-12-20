@@ -49,7 +49,7 @@ export const BuyerATMFormReducer = {
   evaluationType: [],
   proposalType: [],
   evaluationCriteria: [{ criteria: '', weighting: '' }],
-  includeWeightings: true,
+  includeWeightings: false,
   closedAt: '',
   startDate: '',
   contractLength: '',

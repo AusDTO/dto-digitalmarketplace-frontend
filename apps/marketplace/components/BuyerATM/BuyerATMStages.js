@@ -32,16 +32,14 @@ const BuyerATMStages = [
       formValues.title.length > 0 &&
       formValues.organisation.length > 0 &&
       formValues.summary.length > 0 &&
-      formValues.location.length > 0 &&
-      formValues.workingArrangements.length > 0
+      formValues.location.length > 0
   },
   {
     slug: 'formats',
     title: 'Response formats',
     component: BuyerATMResponseFormatsStage,
     isDone: formValues =>
-      (formValues.evaluationType.length && !formValues.evaluationType.includes('Written proposal')) ||
-      formValues.proposalType.length > 0
+      (formValues.evaluationType.length > 0)
   },
   {
     slug: 'objectives',
@@ -57,13 +55,13 @@ const BuyerATMStages = [
   },
   {
     slug: 'timeframes',
-    title: 'Timeframes and budget',
+    title: 'Timeframes',
     component: BuyerATMTimeframesAndBudgetStage,
-    isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
+    isDone: formValues => formValues.startDate.length > 0
   },
   {
     slug: 'criteria',
-    title: 'Evaluation criteria',
+    title: 'Response criteria',
     component: BuyerATMEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
@@ -72,7 +70,7 @@ const BuyerATMStages = [
   },
   {
     slug: 'approach',
-    title: 'Briefing and closing date',
+    title: 'Closing date',
     component: BuyerATMMarketApproachStage,
     isDone: formValues => validDate(formValues.closedAt) && formValues.contactNumber.length > 0
   },

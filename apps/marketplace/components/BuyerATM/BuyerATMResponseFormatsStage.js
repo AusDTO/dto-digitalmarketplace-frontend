@@ -8,18 +8,14 @@ import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerATMResponseFormatsStage.scss'
+import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 
 const BuyerATMResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
       '': {
-        atleastOneFormat: formValues => formValues.evaluationType && formValues.evaluationType.length > 0,
-        atleastOneProposal: formValues =>
-          !formValues.evaluationType.includes('Written proposal') ||
-          (formValues.evaluationType.includes('Written proposal') &&
-            formValues.proposalType &&
-            formValues.proposalType.length > 0)
+        atleastOneFormat: formValues => formValues.evaluationType && formValues.evaluationType.length > 0
       }
     }}
     onSubmit={props.onSubmit}
@@ -28,6 +24,10 @@ const BuyerATMResponseFormatsStage = props => (
     <AUheadings level="1" size="xl">
       Response formats
     </AUheadings>
+    <NoticeBar heavyFont className={styles.noticeBar}>
+      In this EOI/RFI process sellers submit up to 500 words to each criteria you provide. 
+      If you need proposals or quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
+    </NoticeBar>
     <ErrorAlert
       title="An error occurred"
       model={props.model}
@@ -36,26 +36,16 @@ const BuyerATMResponseFormatsStage = props => (
         atleastOneProposal: 'You must select at least one proposal type if you are requesting a written proposal.'
       }}
     />
-    <p>This is a multi-stage procurement process.</p>
-    <AUheadings level="2" size="lg">
-      Stage 1 EOI/RFI
+    <AUheadings level="2" size="md">
+      Select what sellers need to provide through the Marketplace
     </AUheadings>
-    <ul>
-      <li>Sellers can only submit up to 500 word responses to each evaluation criteria.</li>
-      <li>Once your opportunity closes, download their responses and create a shortlist.</li>
-    </ul>
-    <AUheadings level="2" size="lg">
-      Stage 2 RFP/Q
-    </AUheadings>
-    <p>Invite shortlisted sellers to provide:</p>
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_template`}
-        name={`response_format_template`}
-        label="Completed Response template"
-        description="If you select this option, you will need to upload your agency's template."
-        value="Response template"
+        id={`criteria_response`}
+        name={`criteria_response`}
+        label="500 word responses to your criteria"
+        value="criteria_response"
         detailsModel={props.model}
         validators={{
           required
@@ -64,94 +54,54 @@ const BuyerATMResponseFormatsStage = props => (
       />
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_proposal`}
-        name={`response_format_proposal`}
-        label="Written proposal"
-        value="Written proposal"
+        id={`casestudy`}
+        name={`casestudy`}
+        label="Case study"
+        value="casestudy"
         detailsModel={props.model}
         validators={{
           required
         }}
         messages={{}}
       />
-      {props[props.model].evaluationType.includes('Written proposal') && (
-        <div>
-          <p>Select what you would like sellers to include:</p>
-          <div className={styles.subFormats}>
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_costings`}
-              name={`proposal_costings`}
-              label="Costings"
-              value="Costings"
-              detailsModel={props.model}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_casestudy`}
-              name={`proposal_casestudy`}
-              label="Case study"
-              value="Case study"
-              detailsModel={props.model}
-              disabled={!props[props.model].evaluationType.includes('Written proposal')}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_references`}
-              name={`proposal_references`}
-              label="References"
-              value="References"
-              detailsModel={props.model}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${props.model}.proposalType[]`}
-              id={`proposal_resumes`}
-              name={`proposal_resumes`}
-              label="Résumés"
-              value="Résumés"
-              detailsModel={props.model}
-              validators={{
-                required
-              }}
-              messages={{}}
-            />
-          </div>
-        </div>
-      )}
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_demonstration`}
-        name={`response_format_demonstration`}
-        label="Demonstration"
-        value="Demonstration"
+        id={`references`}
+        name={`references`}
+        label="References"
+        value="references"
         detailsModel={props.model}
         validators={{
           required
         }}
         messages={{}}
       />
+      <CheckboxDetailsField
+        model={`${props.model}.evaluationType[]`}
+        id={`resumes`}
+        name={`resumes`}
+        label="Résumés"
+        value="resumes"
+        detailsModel={props.model}
+        validators={{
+          required
+        }}
+        messages={{}}
+      />
+    </div>
+    <AUheadings level="2" size="md">
+      What else do you need sellers to provide for the EOI/RFI? (optional)
+    </AUheadings>
+    <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
         id={`response_format_presentation`}
         name={`response_format_presentation`}
         label="Presentation"
-        value="Presentation"
+        value="presentation"
+        description="A presentation can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
         detailsModel={props.model}
-        validators={{
-          required
-        }}
+        validators={{}}
         messages={{}}
       />
       <CheckboxDetailsField
@@ -159,11 +109,9 @@ const BuyerATMResponseFormatsStage = props => (
         id={`response_format_prototype`}
         name={`response_format_prototype`}
         label="Prototype"
-        value="Prototype"
+        value="prototype"
         detailsModel={props.model}
-        validators={{
-          required
-        }}
+        validators={{}}
         messages={{}}
       />
     </div>

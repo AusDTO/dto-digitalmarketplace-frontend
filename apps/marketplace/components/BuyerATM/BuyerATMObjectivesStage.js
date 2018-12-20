@@ -80,7 +80,7 @@ export class BuyerATMRequirementsStage extends Component {
           id="backgroundInformation"
           htmlFor="backgroundInformation"
           defaultValue={this.props[this.props.model].backgroundInformation}
-          controlProps={{ limit: 300 }}
+          controlProps={{ limit: 500 }}
           validators={{
             required
           }}
@@ -95,7 +95,7 @@ export class BuyerATMRequirementsStage extends Component {
           id="outcome"
           htmlFor="outcome"
           defaultValue={this.props[this.props.model].outcome}
-          controlProps={{ limit: 300 }}
+          controlProps={{ limit: 500 }}
           validators={{
             required
           }}
@@ -110,7 +110,7 @@ export class BuyerATMRequirementsStage extends Component {
           id="endUsers"
           htmlFor="endUsers"
           defaultValue={this.props[this.props.model].endUsers}
-          controlProps={{ limit: 300 }}
+          controlProps={{ limit: 500 }}
           validators={{
             required
           }}
@@ -126,7 +126,7 @@ export class BuyerATMRequirementsStage extends Component {
           id="workAlreadyDone"
           htmlFor="workAlreadyDone"
           defaultValue={this.props[this.props.model].workAlreadyDone}
-          controlProps={{ limit: 300 }}
+          controlProps={{ limit: 500 }}
           validators={{
             required
           }}
@@ -190,6 +190,16 @@ export class BuyerATMRequirementsStage extends Component {
             </a>
           </p>
         )}
+        <Textarea
+          model={`${model}.industryBriefing`}
+          label="Industry briefing (optional)"
+          description="Make sure you include the information to be provided, date, time and access details of your briefing."
+          name="industryBriefing"
+          id="industryBriefing"
+          htmlFor="industryBriefing"
+          defaultValue={this.props[model].industryBriefing}
+          controlProps={{ limit: 150 }}
+        />
         {this.props.formButtons}
       </Form>
     )

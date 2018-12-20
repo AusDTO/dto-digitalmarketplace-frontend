@@ -7,3 +7,17 @@
 div.weightingRemaining {
   margin-top: -1.6em;
 }
+
+.noticeBar {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.noticeBar > span {
+  vertical-align: middle;
+}
+
+.noticeBarIcon {
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}

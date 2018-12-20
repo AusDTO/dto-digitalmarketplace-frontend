@@ -35,7 +35,7 @@ class BuyerATMMarketApproachStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Briefing and closing date
+          Closing date
         </AUheading>
         <ErrorAlert
           title="An error occurred"
@@ -43,16 +43,6 @@ class BuyerATMMarketApproachStage extends Component {
           messages={{
             closingDateIsValid: 'You must input a valid closing date in the future.'
           }}
-        />
-        <Textarea
-          model={`${model}.industryBriefing`}
-          label="Industry briefing (optional)"
-          description="Make sure you include the information to be provided, date, time and access details of your briefing."
-          name="industryBriefing"
-          id="industryBriefing"
-          htmlFor="industryBriefing"
-          defaultValue={this.props[model].industryBriefing}
-          controlProps={{ limit: 150 }}
         />
         <ClosingDateControl
           id="closed_at"
@@ -62,8 +52,8 @@ class BuyerATMMarketApproachStage extends Component {
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}
-          label="Contact number"
-          description="In case the Marketplace support team need to contact you. This is not visible to sellers."
+          label="Contact number for Marketplace support"
+          description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you."
           name="contactNumber"
           id="contactNumber"
           htmlFor="contactNumber"

@@ -31,7 +31,6 @@ const BuyerATMAboutStage = props => (
         requiredTitle: formValues => required(formValues.title),
         requiredOrg: formValues => required(formValues.organisation),
         requiredSummary: formValues => required(formValues.summary),
-        requiredWorkingArrangements: formValues => required(formValues.workingArrangements),
         atLeastOneLocation: formValues => formValues.location && formValues.location.length > 0
       }
     }}
@@ -55,7 +54,7 @@ const BuyerATMAboutStage = props => (
     <Textfield
       model={`${props.model}.title`}
       label="Title"
-      description="Describe the outcome you need in 100 characters or less."
+      description="Describe the outcome you need."
       placeholder="For example, 'Website redesign and development'."
       name="title"
       id="title"
@@ -113,33 +112,6 @@ const BuyerATMAboutStage = props => (
         />
       ))}
     </div>
-    <Textarea
-      model={`${props.model}.workingArrangements`}
-      label="What are the working arrangements?"
-      description="Describe how you want to work and include any limits on expenses. For example, on site at least 3 days a week for face-to-face team meetings."
-      name="working_arrangements"
-      id="working_arrangements"
-      htmlFor="working_arrangements"
-      defaultValue={props[props.model].workingArrangements}
-      controlProps={{ limit: 150 }}
-      validators={{
-        required
-      }}
-      messages={{
-        limitWords: 'Your working arrangements has exceeded the 150 word limit'
-      }}
-    />
-    <Textfield
-      model={`${props.model}.securityClearance`}
-      label="Security clearance (optional)"
-      description="Only request security clearance if access to classified material, environments or assets is required."
-      name="securityClearance"
-      id="securityClearance"
-      htmlFor="securityClearance"
-      defaultValue={props[props.model].securityClearance}
-      maxLength={100}
-      validators={{}}
-    />
     {props.formButtons}
   </Form>
 )
