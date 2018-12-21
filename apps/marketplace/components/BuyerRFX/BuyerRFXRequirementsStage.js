@@ -15,7 +15,7 @@ import styles from './BuyerRFXRequirementsStage.scss'
 const MarketplaceTemplateHint = (
   <span>
     You can use the{' '}
-    <a href="#template" target="_blank" rel="noreferer noopener">
+    <a href="/static/media/documents/Requirements-Document-template.docx" target="_blank" rel="noreferer noopener">
       Marketplace template
     </a>{' '}
     if you do not have your own. Make sure you update it with your Agency&apos;s requirements.

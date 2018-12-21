@@ -15,7 +15,7 @@ const BuyerRFXIntroductionStage = props => (
       <li>
         You can use the{' '}
         <a
-          href="https://marketplace.service.gov.au/static/media/documents/Seek-proposals%E2%80%93list-of-questions.xlsx"
+          href="/static/media/documents/Seek-proposals-list-of-questions.xlsx"
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -30,7 +30,7 @@ const BuyerRFXIntroductionStage = props => (
         </a>{' '}
         and{' '}
         <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy"
+          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
           rel="external noopener noreferrer"
           target="_blank"
         >
@@ -63,8 +63,12 @@ const BuyerRFXIntroductionStage = props => (
       Getting help
     </AUheadings>
     <p>
-      <a href="#guide" target="_blank" rel="external noopener noreferrer">
-        View help guide
+      <a
+        href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716"
+        rel="external noopener noreferrer"
+        target="_blank"
+      >
+        View step by step guide
       </a>
       <br />
       <a href="/contact-us" target="_blank">
