@@ -68,7 +68,7 @@ const BuyerRFXIntroductionStage = props => (
         rel="external noopener noreferrer"
         target="_blank"
       >
-        View step by step guide
+        View online guide
       </a>
       <br />
       <a href="/contact-us" target="_blank">
