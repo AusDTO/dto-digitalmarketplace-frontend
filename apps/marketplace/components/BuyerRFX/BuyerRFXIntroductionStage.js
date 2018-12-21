@@ -14,7 +14,11 @@ const BuyerRFXIntroductionStage = props => (
     <ul>
       <li>
         You can use the{' '}
-        <a href="#template" target="_blank">
+        <a
+          href="https://marketplace.service.gov.au/static/media/documents/Seek-proposals%E2%80%93list-of-questions.xlsx"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           list of questions
         </a>{' '}
         to develop your request offline before publishing.
@@ -34,7 +38,25 @@ const BuyerRFXIntroductionStage = props => (
         </a>{' '}
         that best meets your need.
       </li>
-      <li>Have your requirements, response format, evaluation criteria and closing date ready.</li>
+      <li>
+        Have your{' '}
+        <a
+          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000628796#outcomes"
+          rel="external noopener noreferrer"
+          target="_blank"
+        >
+          requirements
+        </a>
+        ,{' '}
+        <a
+          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000628796#outcomes"
+          rel="external noopener noreferrer"
+          target="_blank"
+        >
+          response format
+        </a>
+        , evaluation criteria and closing date ready.
+      </li>
       <li>Any documents you upload must be in DOC, XLS, PPT or PDF format.</li>
     </ul>
     <AUheadings level="2" size="lg">
