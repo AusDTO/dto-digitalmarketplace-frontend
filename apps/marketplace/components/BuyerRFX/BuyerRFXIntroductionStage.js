@@ -13,7 +13,7 @@ const BuyerRFXIntroductionStage = props => (
     </AUheadings>
     <ul>
       <li>
-        You can use the{' '}
+        You can download the{' '}
         <a
           href="/static/media/documents/Seek-proposals-list-of-questions.xlsx"
           rel="noopener noreferrer"
