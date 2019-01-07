@@ -5,9 +5,9 @@ import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textarea from 'shared/form/Textarea'
-import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import range from 'lodash/range'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXRequirementsStage.scss'
@@ -89,10 +89,12 @@ export class BuyerRFXRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Requirements
         </AUheadings>
-        <NoticeBar heavyFont className={styles.noticeBar}>
-          Only invited sellers and other buyers can view attached documents. Only invited sellers can view industry
-          briefing details you provide.
-        </NoticeBar>
+        <AUcallout description="" className={styles.noticeBar}>
+          <strong>
+            Only invited sellers and other buyers can view attached documents. Only invited sellers can view industry
+            briefing details you provide.
+          </strong>
+        </AUcallout>
         <ErrorAlert
           title="An error occurred"
           model={model}

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
-import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import { getLastQuestionDate } from 'marketplace/components/BuyerRFX/BuyerRFXReviewStage'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
@@ -83,7 +83,7 @@ const Opportunity = props => {
       <div className="row">
         <div className="col-xs-12 col-md-8">
           {brief.status === 'draft' && (
-            <NoticeBar className={styles.previewNotice}>
+            <AUcallout description="" className={styles.previewNotice}>
               <div>
                 <p>This is a preview of what invited sellers will see.</p>
               </div>
@@ -95,7 +95,7 @@ const Opportunity = props => {
                   Proceed to publish
                 </a>
               </div>
-            </NoticeBar>
+            </AUcallout>
           )}
           <small className={styles.organisation}>{brief.organisation}</small>
           <span>
