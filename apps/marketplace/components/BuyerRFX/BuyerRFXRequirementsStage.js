@@ -28,7 +28,7 @@ const ResponseTemplateHint = (
     <a href="/static/media/documents/Response-Template.docx" target="_blank" rel="noreferer noopener">
       Marketplace template
     </a>{' '}
-    if you do not have your own. Make sure you update it with your Agency&apos;s requirements.
+    if you do not have your own.
   </span>
 )
 
@@ -107,7 +107,7 @@ export class BuyerRFXRequirementsStage extends Component {
         </AUheadings>
         <FilesInput
           title="Requirements document"
-          hint={RequirementsTemplateHint}
+          description={RequirementsTemplateHint}
           fieldLabel="Upload document"
           name="requirementsDocument"
           model={`${model}.requirementsDocument.0`}
@@ -126,7 +126,7 @@ export class BuyerRFXRequirementsStage extends Component {
             </AUheadings>
             <FilesInput
               title="Response template"
-              hint={ResponseTemplateHint}
+              description={ResponseTemplateHint}
               fieldLabel="Upload template"
               name="responseTemplate"
               model={`${model}.responseTemplate.0`}
