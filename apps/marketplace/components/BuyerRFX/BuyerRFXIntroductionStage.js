@@ -13,15 +13,15 @@ const BuyerRFXIntroductionStage = props => (
     </AUheadings>
     <ul>
       <li>
-        You can download the{' '}
+        You can{' '}
         <a
           href="/static/media/documents/Seek-proposals-list-of-questions.xlsx"
           rel="noopener noreferrer"
           target="_blank"
         >
-          list of questions
+          download the list of questions
         </a>{' '}
-        to develop your request offline before publishing.
+        to prepare your request offline before publishing.
       </li>
       <li>
         Identify the{' '}
@@ -38,26 +38,26 @@ const BuyerRFXIntroductionStage = props => (
         </a>{' '}
         that best meets your need.
       </li>
+    </ul>
+    <AUheadings level="2" size="lg">
+      Publishing your requirements
+    </AUheadings>
+    <ul>
       <li>
-        Have your{' '}
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000628796#outcomes"
-          rel="external noopener noreferrer"
-          target="_blank"
-        >
-          requirements
+        You must upload a requirements document. You can use your version or the{' '}
+        <a href="/static/media/documents/Requirements-Document-template.docx" rel="noopener noreferrer" target="_blank">
+          Marketplace requirements template
         </a>
-        ,{' '}
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000628796#outcomes"
-          rel="external noopener noreferrer"
-          target="_blank"
-        >
-          response format
-        </a>
-        , evaluation criteria and closing date ready.
+        .
       </li>
-      <li>Any documents you upload must be in DOC, XLS, PPT or PDF format.</li>
+      <li>
+        You can ask sellers to complete a response template. Use your version or the{' '}
+        <a href="/static/media/documents/Response-Template.docx" rel="noopener noreferrer" target="_blank">
+          Marketplace response template
+        </a>
+        .
+      </li>
+      <li>Documents must be in DOC, XLS, PPT or PDF format.</li>
     </ul>
     <AUheadings level="2" size="lg">
       Getting help
@@ -68,7 +68,7 @@ const BuyerRFXIntroductionStage = props => (
         rel="external noopener noreferrer"
         target="_blank"
       >
-        View online guide
+        View support article
       </a>
       <br />
       <a href="/contact-us" target="_blank">
