@@ -24,11 +24,11 @@ const BuyerRFXIntroductionStage = props => (
         to prepare your request offline before publishing.
       </li>
       <li>
-        Identify the{' '}
+        Any{' '}
         <a href="/search/sellers" target="_blank">
           sellers
         </a>{' '}
-        and{' '}
+        you invite must be approved in the{' '}
         <a
           href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
           rel="external noopener noreferrer"
@@ -36,7 +36,7 @@ const BuyerRFXIntroductionStage = props => (
         >
           panel category
         </a>{' '}
-        that best meets your need.
+        you select.
       </li>
     </ul>
     <AUheadings level="2" size="lg">
