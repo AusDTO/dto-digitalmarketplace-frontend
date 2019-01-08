@@ -12,12 +12,12 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './BuyerRFXOverview.scss'
 
-const answerSellerQuestionsRender = (brief, isPublished, questionsClosed) => {
+const answerSellerQuestionsRender = (brief, isPublished, isClosed) => {
   if (!isPublished) {
     return <span>Answer seller questions</span>
   }
 
-  if (isPublished && questionsClosed) {
+  if (isPublished && isClosed) {
     return (
       <span>
         <Tick className={styles.tick} colour="#17788D" />
@@ -175,7 +175,7 @@ class BuyerRFXOverview extends Component {
               )}
             </li>
             <li>
-              {answerSellerQuestionsRender(brief, isPublished, brief.clarificationQuestionsAreClosed)}
+              {answerSellerQuestionsRender(brief, isPublished, isClosed)}
               {questionsAnswered > 0 && (
                 <div className={styles.stageStatus}>
                   {questionsAnswered} question{questionsAnswered > 1 && `s`} answered
