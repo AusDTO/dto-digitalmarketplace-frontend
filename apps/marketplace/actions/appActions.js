@@ -63,7 +63,7 @@ export const fetchAuth = () => dispatch => {
     if (response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      if (response.data.framework !== 'digital-marketplace') {
+      if (response.data.framework && response.data.framework !== 'digital-marketplace') {
         dispatch(setAuthFrameworkError(true))
       }
       dispatch(setAuthState(response.data))
@@ -88,7 +88,7 @@ export const login = data => (dispatch, getState) => {
       dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
       dispatch(clearErrorMessages())
-      if (response.data.framework !== 'digital-marketplace') {
+      if (response.data.framework && response.data.framework !== 'digital-marketplace') {
         dispatch(setAuthFrameworkError(true))
       }
       dispatch(setAuthState(response.data))

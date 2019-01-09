@@ -2,16 +2,42 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import AUselect from '@gov.au/select/lib/js/react.js'
 import findSuppliers from 'marketplace/actions/supplierActions'
 import styles from './SellerSelect.scss'
 
+const PanelCategorySelectView = props => (
+  <div className={styles.categorySelect}>
+    <label htmlFor={`${props.id}-category-select`}>Panel category</label>
+    <a
+      href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
+      rel="external noopener noreferrer"
+      target="_blank"
+    >
+      What you can buy in each category
+    </a>
+    <AUselect
+      block
+      id={`${props.id}-category-select`}
+      options={props.categories}
+      onChange={props.onChange}
+      defaultValue={props.selectedCategory}
+    />
+  </div>
+)
+
 const SellerSelectView = props => (
   <div>
-    <label htmlFor={props.id}>Select sellers</label>
+    <label htmlFor={props.id}>{props.label}</label>
+    {typeof props.description === 'string' ? (
+      <span className={styles.description}>{props.description}</span>
+    ) : (
+      props.description
+    )}
     <AUtextInput
       id={props.id}
       placeholder={props.placeholder}
-      onChange={props.handleOnChange}
+      onChange={props.handleSearchChange}
       value={props.inputValue}
       className={props.className}
     />
@@ -20,14 +46,25 @@ const SellerSelectView = props => (
 )
 
 const SellerSelectResultsView = props => (
-  <ul className={props.className}>
+  <ul
+    className={`${props.className} ${!props.noResults ? props.hasResultsClassName : ''} ${
+      props.sellers.length > 3 ? props.hasManyResultsClassName : ''
+    }`}
+  >
+    {props.noResults &&
+      props.searchFor && (
+        <li>
+          Seller cannot be found in this category.
+          <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+            Search all sellers
+          </a>
+        </li>
+      )}
     {props.sellers.map(seller => (
       <li key={seller.code}>
         <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
           {seller.name}
         </a>
-        {seller.panel && <span className={props.panelBadgeClassName}>✓ Panel</span>}
-        {seller.sme && <span className={props.smeBadgeClassName}>SME</span>}
       </li>
     ))}
   </ul>
@@ -40,17 +77,32 @@ export class SellerSelect extends Component {
     super(props)
     this.state = {
       sellers: [],
-      inputValue: ''
+      inputValue: '',
+      noResults: false
     }
-    this.handleOnChange = this.handleOnChange.bind(this)
+    this.handleCategoryChange = this.handleCategoryChange.bind(this)
+    this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleSellerSelectClick = this.handleSellerSelectClick.bind(this)
     this.handleSearchClick = this.handleSearchClick.bind(this)
   }
 
-  handleOnChange(e) {
+  categoryIsValid() {
+    return (this.props.showCategorySelect && this.props.selectedCategory) || !this.props.showCategorySelect
+  }
+
+  handleCategoryChange(e) {
+    this.props.onSellerCategorySelect(e.target.value)
+    this.setState({
+      inputValue: '',
+      sellers: []
+    })
+  }
+
+  handleSearchChange(e) {
     const keyword = e.target.value
     this.setState({
-      inputValue: keyword
+      inputValue: keyword,
+      noResults: false
     })
 
     if (timeoutHandle) {
@@ -58,11 +110,13 @@ export class SellerSelect extends Component {
     }
 
     timeoutHandle = setTimeout(() => {
-      if (keyword && keyword.length > 2) {
-        findSuppliers(keyword)
+      if (keyword && keyword.length >= this.props.minimumSearchChars && this.categoryIsValid()) {
+        findSuppliers(keyword, this.props.selectedCategory)
           .then(data => {
+            const noResults = !data.sellers.length > 0
             this.setState({
-              sellers: data.sellers
+              sellers: data.sellers,
+              noResults
             })
           })
           .catch(() => {})
@@ -92,22 +146,40 @@ export class SellerSelect extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <SellerSelectView
-          id={this.props.id}
-          placeholder={this.props.placeholder}
-          handleOnChange={this.handleOnChange}
-          inputValue={this.state.inputValue}
-          className={this.props.showSearchButton ? styles.noRightRadius : ''}
-          showSearchButton={this.props.showSearchButton}
-          handleSearchClick={this.handleSearchClick}
-        />
-        <SellerSelectResultsView
-          className={`${styles.selectList} ${this.state.sellers.length > 0 ? '' : styles.hide}`}
-          sellers={this.state.sellers}
-          handleSellerSelectClick={this.handleSellerSelectClick}
-          panelBadgeClassName={`${styles.badge} ${styles.panelBadge}`}
-          smeBadgeClassName={`${styles.badge} ${styles.smeBadge}`}
-        />
+        {this.props.showCategorySelect && (
+          <PanelCategorySelectView
+            id={this.props.id}
+            categories={this.props.categories}
+            onChange={this.handleCategoryChange}
+            selectedCategory={this.props.selectedCategory}
+          />
+        )}
+        {this.categoryIsValid() && (
+          <div>
+            <SellerSelectView
+              id={this.props.id}
+              placeholder={this.props.placeholder}
+              label={this.props.label}
+              description={this.props.description}
+              handleSearchChange={this.handleSearchChange}
+              inputValue={this.state.inputValue}
+              className={this.props.showSearchButton ? styles.noRightRadius : ''}
+              showSearchButton={this.props.showSearchButton}
+              handleSearchClick={this.handleSearchClick}
+            />
+            {this.state.inputValue.length >= this.props.minimumSearchChars && (
+              <SellerSelectResultsView
+                className={styles.selectList}
+                hasResultsClassName={styles.hasResults}
+                hasManyResultsClassName={styles.manyResults}
+                sellers={this.state.sellers}
+                noResults={this.state.noResults}
+                searchFor={this.state.inputValue}
+                handleSellerSelectClick={this.handleSellerSelectClick}
+              />
+            )}
+          </div>
+        )}
       </div>
     )
   }
@@ -116,18 +188,32 @@ export class SellerSelect extends Component {
 SellerSelect.defaultProps = {
   id: 'seller-search',
   placeholder: '',
+  label: '',
+  description: '',
+  selectedCategory: '',
   showSelected: true,
   showSearchButton: true,
+  showCategorySelect: false,
+  categories: [],
+  minimumSearchChars: 3,
   onSellerSelect: () => {},
+  onSellerCategorySelect: () => {},
   onSearch: () => {}
 }
 
 SellerSelect.propTypes = {
   id: PropTypes.string,
   placeholder: PropTypes.string,
+  label: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  selectedCategory: PropTypes.string,
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,
+  showCategorySelect: PropTypes.bool,
+  categories: PropTypes.array,
+  minimumSearchChars: PropTypes.number,
   onSellerSelect: PropTypes.func,
+  onSellerCategorySelect: PropTypes.func,
   onSearch: PropTypes.func
 }
 

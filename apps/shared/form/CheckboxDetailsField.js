@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Control, actions } from 'react-redux-form'
 import get from 'lodash/get'
 import StatefulError from './StatefulError'
+import styles from './CheckboxDetailsField.scss'
 
 class CheckboxDetailsField extends React.Component {
   constructor(props) {
@@ -22,13 +23,14 @@ class CheckboxDetailsField extends React.Component {
     this.setState({
       showField: e.target.checked === true
     })
+    this.props.onClick(e)
 
     const { detailsModel, revalidateDetails } = this.props
     revalidateDetails(detailsModel)
   }
 
   render() {
-    const { name, id, label, model, validators, messages, onChange } = this.props
+    const { name, id, label, model, validators, messages, onChange, value, description, disabled } = this.props
     /* eslint-disable jsx-a11y/label-has-for */
 
     return (
@@ -41,11 +43,13 @@ class CheckboxDetailsField extends React.Component {
           }}
           id={id}
           name={name}
-          value="yes"
+          value={value || 'yes'}
           model={model}
+          disabled={disabled}
           validators={validators}
         />
         <span className="au-control-input__text">{label}</span>
+        {description && <span className={styles.description}>{description}</span>}
         <StatefulError model={model} messages={messages} id={id} />
       </label>
     )
@@ -53,9 +57,11 @@ class CheckboxDetailsField extends React.Component {
 }
 
 CheckboxDetailsField.defaultProps = {
+  description: '',
   messages: null,
   validators: null,
   onChange: () => {}
+  onClick: () => {}
 }
 
 CheckboxDetailsField.propTypes = {
@@ -65,8 +71,10 @@ CheckboxDetailsField.propTypes = {
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   detailsModel: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   onChange: PropTypes.func,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   validators: PropTypes.object,
-  messages: PropTypes.object
+  messages: PropTypes.object,
+  onClick: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => ({

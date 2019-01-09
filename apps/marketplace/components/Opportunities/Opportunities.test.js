@@ -9,6 +9,8 @@ import Opportunities from './Opportunities'
 
 Enzyme.configure({ adapter: new Adapter() })
 
+jest.mock('shared/Icon/_getIcons')
+
 test('component mounts without any opportunities and shows a message', () => {
   const component = mount(<Opportunities opportunities={[]} />)
 

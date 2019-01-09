@@ -1,0 +1,15 @@
+div.container {
+  margin-top: 3rem;
+}
+
+div.container > div {
+  padding: 0.75rem 0;
+}
+
+div.container > div  {
+  border-bottom: 1px solid #d0d0d0;
+}
+
+div.container > div:nth-child(even) {
+  background-color: #fbfbfb;
+}
