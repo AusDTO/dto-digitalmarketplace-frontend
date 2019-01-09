@@ -60,7 +60,7 @@ CheckboxDetailsField.defaultProps = {
   description: '',
   messages: null,
   validators: null,
-  onChange: () => {}
+  onChange: () => {},
   onClick: () => {}
 }
 
