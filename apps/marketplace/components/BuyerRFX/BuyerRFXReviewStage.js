@@ -82,9 +82,9 @@ const BuyerRFXReviewStage = props => (
           <div className="row">
             <div className="col-xs-12 col-sm-4">{format(props[props.model].closedAt, 'D MMMM')}</div>
             <div className="col-xs-12 col-sm-8">
-              The last day sellers can apply.
-              <br />
               The last day you can publish answers to all sellers&apos; questions.
+              <br />
+              The last day sellers can apply.
               <br />
               The opportunity will close at 6pm Canberra time.
             </div>
