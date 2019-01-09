@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  & > div {
+  & > div, & > div > div {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -11,10 +11,28 @@
   label {
     width: 100%;
     padding: 0.5rem 0;
+    font-weight: bold;
   }
 
   input[type=text] {
     flex-grow: 1;
+    z-index: 1;
+  }
+
+  .categorySelect {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .categorySelect label {
+    display: inline-block;
+    width: auto;
+    margin-right: 1.5rem;
+  }
+
+  .categorySelect a {
+    padding: 0.5rem 0;
   }
 
   .noRightRadius {
@@ -30,38 +48,51 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    margin-top: -3px;
+    margin-top: -2px;
     list-style-type: none;
     border: 3px solid gray;
     border-radius: 0px 0px 4px 4px;
     border-top: 0;
   }
 
+  ul.selectList.hasResults {
+    max-height: 200px;
+  }
+
+  ul.selectList.hasResults.manyResults {
+    overflow-y: scroll;
+  }
+
   ul.selectList li {
     padding: 1rem;
+  }
+
+  ul.selectList.hasResults li {
+    padding: 0;
+  }
+
+  ul.selectList.hasResults li a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #313131;
+  }
+
+  ul.selectList.hasResults li a:hover {
+    background: #f4f4f4;
+  }
+
+  span.description {
+    display: block;
+    width: 100%;
+  }
+
+  a.searchAllLink {
+    float: right;
   }
 
   .hide {
     display: none;
     visibility: hidden;
-  }
-
-  .badge {
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    float: right;
-    margin-left: 0.5rem;
-  }
-
-  .smeBadge {
-    background-color: #199cbe;
-    color: white;
-  }
-
-  .panelBadge {
-    background-color: #6aa84f;
-    color: white;
   }
 }

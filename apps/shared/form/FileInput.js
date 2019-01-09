@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import { Control } from 'react-redux-form'
@@ -16,9 +17,7 @@ class FileInput extends React.Component {
     e.preventDefault()
     const { model, createDocument } = this.props
     createDocument(model)
-    this.setState({
-      file: undefined
-    })
+    this.setState({ file: undefined }, this.props.onReset)
   }
 
   onChange = e => {
@@ -43,11 +42,12 @@ class FileInput extends React.Component {
         this.setState({ errors: result.errorMessage })
         createDocument(model)
       }
+      this.props.onUploadSuccess()
       uploading(false)
     })
   }
   render() {
-    const { url, form, name, id, model, validators, messages, fieldLabel } = this.props
+    const { url, form, name, id, model, validators, messages, fieldLabel, title, accept } = this.props
     const fileField = `${id}`
     const doc = get(form, `${name}.${fileField}`, {})
     return (
@@ -66,10 +66,11 @@ class FileInput extends React.Component {
                   type="file"
                   id={`file_${fileField}`}
                   name={`file_${fileField}`}
-                  accept=".pdf,.odt"
+                  accept={accept}
                   onChange={this.onChange}
                   className={styles.hidden_input}
                   validators={validators}
+                  title={title || ''}
                 />
                 <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
                   <div className="au-btn au-btn--secondary">{fieldLabel}</div>
@@ -104,6 +105,16 @@ class FileInput extends React.Component {
       </div>
     )
   }
+}
+
+FileInput.defaultProps = {
+  onReset: () => {},
+  onUploadSuccess: () => {}
+}
+
+FileInput.propTypes = {
+  onReset: PropTypes.func,
+  onUploadSuccess: PropTypes.func
 }
 
 export default FileInput

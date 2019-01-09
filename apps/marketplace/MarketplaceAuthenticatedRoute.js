@@ -7,13 +7,26 @@ import { rootPath } from 'marketplace/routes'
 import FrameworkError from 'shared/FrameworkError/FrameworkError'
 
 const PrivateRouteComponent = props => {
-  const { component: Component, loggedIn, customRedirectPath, frameworkError, currentlySending, ...rest } = props
+  const {
+    component: Component,
+    loggedIn,
+    customRedirectPath,
+    frameworkError,
+    currentlySending,
+    userType,
+    restrictedTo,
+    ...rest
+  } = props
   return (
     <Route
       {...rest}
       render={values => {
         if (frameworkError) {
           return <FrameworkError framework="Digital Marketplace" {...values} />
+        }
+
+        if (restrictedTo && loggedIn && userType !== restrictedTo) {
+          return <FrameworkError framework="buyer" {...values} />
         }
 
         if (loggedIn) {
@@ -37,18 +50,21 @@ const PrivateRouteComponent = props => {
 
 PrivateRouteComponent.defaultProps = {
   customRedirectPath: null,
-  currentlySending: false
+  currentlySending: false,
+  restrictedTo: null
 }
 
 PrivateRouteComponent.propTypes = {
   component: PropTypes.func.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   customRedirectPath: PropTypes.string,
-  currentlySending: PropTypes.bool
+  currentlySending: PropTypes.bool,
+  restrictedTo: PropTypes.oneOf(['buyer', 'supplier', 'admin'])
 }
 
 const mapStateToProps = state => ({
   loggedIn: state.app.loggedIn,
+  userType: state.app.userType,
   currentlySending: state.app.currentlySending,
   frameworkError: state.app.frameworkError
 })

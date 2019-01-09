@@ -1,0 +1,17 @@
+@media (max-width: 767px) {
+  .desktopMenu {
+    display: none;
+    visibility: hidden;
+  }
+
+  .mobileMenu {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: none;
+    visibility: hidden;
+  }
+}

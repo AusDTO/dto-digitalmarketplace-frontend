@@ -10,6 +10,32 @@ import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
 
+export const BuyerRFXFormReducer = {
+  id: 0,
+  title: '',
+  organisation: '',
+  location: [],
+  summary: '',
+  industryBriefing: '',
+  sellerCategory: '',
+  sellers: {},
+  attachments: [],
+  requirementsDocument: [],
+  responseTemplate: [],
+  evaluationType: [],
+  proposalType: [],
+  evaluationCriteria: [{ criteria: '', weighting: '' }],
+  includeWeightings: true,
+  closedAt: '',
+  contactNumber: '',
+  startDate: '',
+  contractLength: '',
+  contractExtensions: '',
+  budgetRange: '',
+  workingArrangements: '',
+  securityClearance: ''
+}
+
 export default combineReducers({
   app: appReducer,
   user,
@@ -74,6 +100,7 @@ export default combineReducers({
         WA: false,
         Remote: false
       }
-    }
+    },
+    BuyerRFXForm: BuyerRFXFormReducer
   })
 })

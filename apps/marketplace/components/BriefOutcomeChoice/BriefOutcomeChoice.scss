@@ -1,0 +1,63 @@
+div.header {
+  display: flex;
+  align-items: center;
+}
+
+div.container {
+  display: flex;
+}
+
+div.container > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.newBadge {
+  border: 2px solid #009900;
+  border-radius: 5px;
+  color: #009900;
+  padding: 2px 5px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
+p.largerText {
+  font-size: 1.25rem;
+}
+
+@media screen and (max-width: 991px) {
+  div.container {
+    display: block;
+  }
+
+  div.container > div {
+    display: block;
+  }
+}
+
+.list {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.flexList {
+  flex-grow: 1;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+div.card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1.5rem;
+  background-color: white;
+  border: 1px solid grey;
+  margin-top: 1.5rem;
+}
+
+p.buttons {
+  display: flex;
+}

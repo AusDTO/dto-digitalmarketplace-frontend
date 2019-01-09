@@ -1,6 +1,9 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  BRIEF_SAVE_SUCCESS,
+  BRIEF_RFX_CREATE_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
@@ -22,7 +25,14 @@ const defaultBriefState = {
     sections: [],
     status: '',
     title: ''
-  }
+  },
+  briefResponseCount: 0,
+  invitedSellerCount: 0,
+  isInvitedSeller: false,
+  isBriefOwner: false,
+  isBuyer: false,
+  hasResponded: false,
+  domains: []
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -42,6 +52,33 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponses: action.briefResponses,
         specialistNumber: action.briefResponses.length + 1,
         loadedAt: new Date().valueOf()
+      }
+
+    case BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief,
+        briefResponseCount: action.briefResponseCount,
+        invitedSellerCount: action.invitedSellerCount,
+        isInvitedSeller: action.isInvitedSeller,
+        isBriefOwner: action.isBriefOwner,
+        isBuyer: action.isBuyer,
+        hasResponded: action.hasResponded,
+        domains: action.domains,
+        loadBriefSuccess: true,
+        loadedAt: new Date().valueOf()
+      }
+
+    case BRIEF_SAVE_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief
+      }
+
+    case BRIEF_RFX_CREATE_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief
       }
 
     case BRIEF_RESPONSE_SUCCESS:

@@ -25,9 +25,8 @@ export class Feedback extends React.Component {
       <span>
         {this.props.app && this.props.app.feedbackSuccess ? (
           <AUpageAlert as="success">
-            <h4 className="au-display-sm">
-              Your feedback has been sent, thank you for helping us improve the Marketplace.
-            </h4>
+            <h4 className="au-display-sm">Your feedback has been sent.</h4>
+            <p>Thank you for helping us improve the Marketplace.</p>
           </AUpageAlert>
         ) : (
           <LocalForm onSubmit={val => this.props.handleSubmit(val)}>
@@ -99,7 +98,7 @@ export class Feedback extends React.Component {
               controlProps={{ limit: 150 }}
             />
 
-            <span className="au-control-input au-control-input--full">
+            <span className={`${styles.optIn} au-control-input au-control-input--full`}>
               <Control.checkbox
                 model=".contact_for_user_research"
                 id="contact_for_user_research"
@@ -110,7 +109,7 @@ export class Feedback extends React.Component {
                 }}
               />
               <label className="au-control-input__text" htmlFor="contact_for_user_research">
-                You are happy to be contacted to test new designs.
+                You are happy for the Digital Marketplace team to contact you to test new Marketplace designs.
               </label>
             </span>
             <br />

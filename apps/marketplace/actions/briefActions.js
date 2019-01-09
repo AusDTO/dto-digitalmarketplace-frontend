@@ -1,7 +1,10 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  BRIEF_SAVE_SUCCESS,
+  BRIEF_RFX_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
@@ -80,6 +83,18 @@ export const handleBriefInfoSuccess = response => ({
   briefResponses: response.data.briefResponses
 })
 
+export const handlePublicBriefInfoSuccess = response => ({
+  type: BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
+  brief: response.data.brief,
+  briefResponseCount: response.data.brief_response_count,
+  invitedSellerCount: response.data.invited_seller_count,
+  isInvitedSeller: response.data.is_invited_seller,
+  isBriefOwner: response.data.is_brief_owner,
+  isBuyer: response.data.is_buyer,
+  hasResponded: response.data.has_responded,
+  domains: response.data.domains
+})
+
 export const handleErrorFailure = response => dispatch => {
   if (!response) {
     dispatch(setErrorMessage(GENERAL_ERROR))
@@ -99,9 +114,60 @@ export const handleErrorFailure = response => dispatch => {
   }
 }
 
+export const handleCreateRFXBriefSuccess = response => ({
+  type: BRIEF_RFX_CREATE_SUCCESS,
+  brief: response.data
+})
+
+export const createRFXBrief = () => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/brief/rfx',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateRFXBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleBriefSaveSuccess = response => ({
+  type: BRIEF_SAVE_SUCCESS,
+  brief: response.data.brief
+})
+
+export const saveBrief = (briefId, data) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}`,
+    method: 'PATCH',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefSaveSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
 export const loadBrief = briefId => dispatch => {
   dispatch(sendingRequest(true))
-  dmapi({ url: `/brief/${briefId}/responses` }).then(response => {
+  return dmapi({ url: `/brief/${briefId}/responses` }).then(response => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
@@ -109,6 +175,20 @@ export const loadBrief = briefId => dispatch => {
       dispatch(handleBriefInfoSuccess(response))
     }
     dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const loadPublicBrief = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({ url: `/brief/${briefId}` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handlePublicBriefInfoSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
   })
 }
 
