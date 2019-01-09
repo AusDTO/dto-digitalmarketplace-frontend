@@ -567,7 +567,6 @@ exports[`Signup renders empty Your Info form 1`] = `
           </ul>
         </div>
         <form
-          action={undefined}
           id="yourinfo"
           method="post"
           onReset={[Function]}
@@ -595,14 +594,11 @@ exports[`Signup renders empty Your Info form 1`] = `
               className=""
               disabled={false}
               id="representative"
-              maxLength={undefined}
               name="representative"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value=""
             />
@@ -620,14 +616,11 @@ exports[`Signup renders empty Your Info form 1`] = `
               className=""
               disabled={false}
               id="email"
-              maxLength={undefined}
               name="email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value=""
             />
@@ -651,14 +644,11 @@ exports[`Signup renders empty Your Info form 1`] = `
               className=""
               disabled={false}
               id="phone"
-              maxLength={undefined}
               name="phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value=""
             />
@@ -685,14 +675,11 @@ exports[`Signup renders empty Your Info form 1`] = `
               className=""
               disabled={false}
               id="contact_name"
-              maxLength={undefined}
               name="contact_name"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value=""
             />
@@ -710,14 +697,11 @@ exports[`Signup renders empty Your Info form 1`] = `
               className=""
               disabled={false}
               id="contact_email"
-              maxLength={undefined}
               name="contact_email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value=""
             />
@@ -741,14 +725,11 @@ exports[`Signup renders empty Your Info form 1`] = `
               className=""
               disabled={false}
               id="contact_phone"
-              maxLength={undefined}
               name="contact_phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value=""
             />
@@ -1092,14 +1073,11 @@ exports[`Signup renders populated Your Info form 1`] = `
               className=""
               disabled={false}
               id="representative"
-              maxLength={undefined}
               name="representative"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value="Paul Acron"
             />
@@ -1117,14 +1095,11 @@ exports[`Signup renders populated Your Info form 1`] = `
               className=""
               disabled={false}
               id="email"
-              maxLength={undefined}
               name="email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value="email@domain.com"
             />
@@ -1148,14 +1123,11 @@ exports[`Signup renders populated Your Info form 1`] = `
               className=""
               disabled={false}
               id="phone"
-              maxLength={undefined}
               name="phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
               value="0292000000"
             />
@@ -1182,16 +1154,12 @@ exports[`Signup renders populated Your Info form 1`] = `
               className=""
               disabled={false}
               id="contact_name"
-              maxLength={undefined}
               name="contact_name"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
-              value={undefined}
             />
           </div>
           <div
@@ -1207,16 +1175,12 @@ exports[`Signup renders populated Your Info form 1`] = `
               className=""
               disabled={false}
               id="contact_email"
-              maxLength={undefined}
               name="contact_email"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
-              value={undefined}
             />
           </div>
           <div
@@ -1238,16 +1202,12 @@ exports[`Signup renders populated Your Info form 1`] = `
               className=""
               disabled={false}
               id="contact_phone"
-              maxLength={undefined}
               name="contact_phone"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              pattern={undefined}
-              readOnly={undefined}
               type="text"
-              value={undefined}
             />
           </div>
           <input

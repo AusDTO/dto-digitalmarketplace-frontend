@@ -16,7 +16,6 @@ exports[`MultiInput with 4 default rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue=""
         id="test-0"
@@ -42,7 +41,6 @@ exports[`MultiInput with 4 default rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue=""
         id="test-1"
@@ -81,7 +79,6 @@ exports[`MultiInput with 4 default rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue=""
         id="test-2"
@@ -120,7 +117,6 @@ exports[`MultiInput with 4 default rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue=""
         id="test-3"
@@ -171,7 +167,6 @@ exports[`MultiInput with 4 rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue="One"
         id="test-0"
@@ -197,7 +192,6 @@ exports[`MultiInput with 4 rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue="Two"
         id="test-1"
@@ -236,7 +230,6 @@ exports[`MultiInput with 4 rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue="Three"
         id="test-2"
@@ -275,7 +268,6 @@ exports[`MultiInput with 4 rows 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue="Four"
         id="test-3"
@@ -326,7 +318,6 @@ exports[`MultiInput with no props 1`] = `
         .
       </label>
       <input
-        aria-describedby={undefined}
         className="text-box "
         defaultValue=""
         id="test-0"
