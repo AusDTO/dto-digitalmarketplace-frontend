@@ -10,7 +10,7 @@ const AUFooter = () => (
         <div className="col-md-offset-1 col-md-8 col-md-push-3">
           <ul className="au-link-list au-link-list--inline">
             <li>
-              <a href="/about-us">About us</a>
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000666496">About us</a>
             </li>
             <li>
               <a href="/contact-us">Contact us</a>
