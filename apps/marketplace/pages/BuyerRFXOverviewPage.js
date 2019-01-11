@@ -74,4 +74,9 @@ const mapDispatchToProps = dispatch => ({
   loadData: briefId => dispatch(loadBrief(briefId))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerRFXOverviewPage))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BuyerRFXOverviewPage)
+)

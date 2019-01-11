@@ -91,7 +91,8 @@ export class BuyerRFXSelectStage extends Component {
                     categories in the{' '}
                     <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
                       seller catalogue
-                    </a>.
+                    </a>
+                    .
                   </span>
                 }
                 showSelected={false}
@@ -138,4 +139,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXSelectStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXSelectStage)

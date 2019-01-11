@@ -90,4 +90,9 @@ const mapDispatchToProps = dispatch => ({
   reset: model => dispatch(actions.reset(model))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BriefAssessorsPage))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BriefAssessorsPage)
+)

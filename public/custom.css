@@ -356,6 +356,9 @@ label.text-box-number-label {
 .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
   margin-top: 7px;
 }
+.buyer-dashboard-actions .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--closed {
+  margin-top: 7px;
+}
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .opportunities-page .au-accordion, .buyer-dashboard-actions .au-accordion {
@@ -400,7 +403,7 @@ label.text-box-number-label {
     margin-left: -109px;
     z-index: 1;
   }
-  .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
+  .buyer-dashboard-actions .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--closed {
     position: relative;
     width: 225px;
     z-index: 1;
@@ -414,7 +417,7 @@ label.text-box-number-label {
     margin-left: -10px;
     z-index: 1;
   }
-  .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
+  .buyer-dashboard-actions .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--closed {
     position: absolute;
     width: 225px;
     margin-left: -10px;

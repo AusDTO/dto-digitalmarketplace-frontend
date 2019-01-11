@@ -48,7 +48,8 @@ const ReportView = props => {
             * Contract information is sourced from{' '}
             <a href="http://tenders.gov.au" rel="noopener noreferrer external" target="_blank">
               Austender
-            </a>. It excludes contracts awarded by entities that don&apos;t report through Austender and contracts under
+            </a>
+            . It excludes contracts awarded by entities that don&apos;t report through Austender and contracts under
             $10,000. Contracts may take up to 42 days to be published.
           </span>
         </div>

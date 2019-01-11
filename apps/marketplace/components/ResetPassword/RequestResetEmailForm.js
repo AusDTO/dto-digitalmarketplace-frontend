@@ -25,7 +25,8 @@ const RequestResetEmailForm = props => {
           {resetPasswordEmailSuccess ? (
             <AUpageAlert as="success">
               <span>
-                We have sent a link to reset the password.<br />
+                We have sent a link to reset the password.
+                <br />
                 Check your spam folder if it does not arrive.
               </span>
             </AUpageAlert>

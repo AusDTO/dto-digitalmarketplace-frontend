@@ -111,6 +111,11 @@ const mapDispatchToProps = dispatch => ({
   handleSubmit: values => dispatch(createUser(values))
 })
 
-const CreateUserPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPageComponent))
+const CreateUserPage = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CreateUserPageComponent)
+)
 
 export default CreateUserPage

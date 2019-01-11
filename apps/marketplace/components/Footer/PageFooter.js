@@ -121,7 +121,9 @@ const PageFooter = () => (
               <div dangerouslySetInnerHTML={{ __html: logoNisa }} />
             </div>
             <div className={styles.footerSmallText}>
-              This program forms part of the National Innovation and Science Agenda.<br />Visit{' '}
+              This program forms part of the National Innovation and Science Agenda.
+              <br />
+              Visit{' '}
               <strong>
                 <a href="https://innovation.gov.au/">Innovation.gov.au</a>
               </strong>{' '}

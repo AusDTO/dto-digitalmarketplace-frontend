@@ -16,7 +16,11 @@ const BriefResponseSubmittedSummary = ({ brief }) => (
       {brief && brief.evaluationType && <span> to evaluate you based on:</span>}
     </p>
     {brief.evaluationType && (
-      <ul>{brief.evaluationType.map(evaluationType => <li key={evaluationType}>{evaluationType}</li>)}</ul>
+      <ul>
+        {brief.evaluationType.map(evaluationType => (
+          <li key={evaluationType}>{evaluationType}</li>
+        ))}
+      </ul>
     )}
 
     <h2 className="au-display-lg">

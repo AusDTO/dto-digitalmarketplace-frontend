@@ -116,15 +116,14 @@ class BuyerRFXOverview extends Component {
               Overview
             </AUheading>
             <div className={styles.headerMenu}>
-              {isPublished &&
-                !isClosed && (
-                  <div className={styles.headerMenuClosingTime}>
-                    Closing{' '}
-                    <strong>
-                      <ClosedDate countdown date={brief.dates.closing_time} />
-                    </strong>
-                  </div>
-                )}
+              {isPublished && !isClosed && (
+                <div className={styles.headerMenuClosingTime}>
+                  Closing{' '}
+                  <strong>
+                    <ClosedDate countdown date={brief.dates.closing_time} />
+                  </strong>
+                </div>
+              )}
               <ul>
                 {isPublished && (
                   <li>
@@ -161,7 +160,8 @@ class BuyerRFXOverview extends Component {
             <li>
               {isPublished ? (
                 <span>
-                  <Tick className={styles.tick} colour="#17788D" />Create and publish request
+                  <Tick className={styles.tick} colour="#17788D" />
+                  Create and publish request
                   <div className={styles.stageStatus}>
                     {invitedSellers} seller{invitedSellers > 1 && `s`} invited
                   </div>
@@ -216,4 +216,7 @@ const mapDispatchToProps = dispatch => ({
   deleteBrief: briefId => dispatch(deleteBrief(briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXOverview)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXOverview)

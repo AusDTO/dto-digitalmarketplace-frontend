@@ -51,15 +51,14 @@ const SellerSelectResultsView = props => (
       props.sellers.length > 3 ? props.hasManyResultsClassName : ''
     }`}
   >
-    {props.noResults &&
-      props.searchFor && (
-        <li>
-          Seller cannot be found in this category.
-          <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
-            Search all sellers
-          </a>
-        </li>
-      )}
+    {props.noResults && props.searchFor && (
+      <li>
+        Seller cannot be found in this category.
+        <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+          Search all sellers
+        </a>
+      </li>
+    )}
     {props.sellers.map(seller => (
       <li key={seller.code}>
         <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>

@@ -57,50 +57,48 @@ class FileInput extends React.Component {
             <span>There was an error uploading the file: {this.state.errors}</span>
           </div>
         )}
-        {isEmpty(doc) &&
-          !this.state.uploading && (
+        {isEmpty(doc) && !this.state.uploading && (
+          <div>
             <div>
-              <div>
-                <Control.file
+              <Control.file
+                model={model}
+                type="file"
+                id={`file_${fileField}`}
+                name={`file_${fileField}`}
+                accept={accept}
+                onChange={this.onChange}
+                className={styles.hidden_input}
+                validators={validators}
+                title={title || ''}
+              />
+              <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
+                <div className="au-btn au-btn--secondary">{fieldLabel}</div>
+              </label>
+              {messages && (
+                <StatefulError
                   model={model}
-                  type="file"
+                  messages={messages}
+                  showMessagesDuringFocus="false"
                   id={`file_${fileField}`}
-                  name={`file_${fileField}`}
-                  accept={accept}
-                  onChange={this.onChange}
-                  className={styles.hidden_input}
-                  validators={validators}
-                  title={title || ''}
                 />
-                <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
-                  <div className="au-btn au-btn--secondary">{fieldLabel}</div>
-                </label>
-                {messages && (
-                  <StatefulError
-                    model={model}
-                    messages={messages}
-                    showMessagesDuringFocus="false"
-                    id={`file_${fileField}`}
-                  />
-                )}
-              </div>
+              )}
             </div>
-          )}
-        {!isEmpty(doc) &&
-          typeof doc === 'string' && (
-            <div className={styles.bordered_list__item}>
-              <div className="col-xs-9">
-                <a href={`/api/2${url}/${doc}`} target="_blank" rel="external">
-                  {doc}
-                </a>
-              </div>
-              <div className="col-xs-3">
-                <a href="#delete" onClick={this.onReset}>
-                  Delete
-                </a>
-              </div>
+          </div>
+        )}
+        {!isEmpty(doc) && typeof doc === 'string' && (
+          <div className={styles.bordered_list__item}>
+            <div className="col-xs-9">
+              <a href={`/api/2${url}/${doc}`} target="_blank" rel="external noopener noreferrer">
+                {doc}
+              </a>
             </div>
-          )}
+            <div className="col-xs-3">
+              <a href="#delete" onClick={this.onReset}>
+                Delete
+              </a>
+            </div>
+          </div>
+        )}
         {this.state.uploading && <p>Uploading...</p>}
       </div>
     )

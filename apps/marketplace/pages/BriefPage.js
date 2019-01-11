@@ -323,4 +323,9 @@ const mapResetDispatchToProps = dispatch => ({
   setInitial: model => dispatch(actions.setInitial(model))
 })
 
-export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(BriefPage))
+export default withRouter(
+  connect(
+    mapResetStateToProps,
+    mapResetDispatchToProps
+  )(BriefPage)
+)

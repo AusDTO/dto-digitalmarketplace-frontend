@@ -69,4 +69,7 @@ const mapDispatchToProps = dispatch => ({
   loadData: () => dispatch(loadBuyerDashboardTeamOverview())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardTeamOverview)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerDashboardTeamOverview)

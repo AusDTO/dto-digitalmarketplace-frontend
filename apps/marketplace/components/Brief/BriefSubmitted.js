@@ -29,13 +29,15 @@ const BriefSubmitted = props => (
               While your opportunity is live you’ll need to{' '}
               <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011257447-Answer-questions">
                 answer sellers questions
-              </a>.
+              </a>
+              .
             </li>
             <li>
               Once your opportunity closes, you can{' '}
               <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011257487-Shortlist-responses">
                 shortlist seller responses
-              </a>.
+              </a>
+              .
             </li>
             <li>
               If you need help at any time,{' '}
