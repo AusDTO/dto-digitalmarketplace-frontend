@@ -111,7 +111,7 @@ const BuyerRFXResponseFormatsStage = props => (
           <span>
             You will need to upload your own template or the{' '}
             <a href="/static/media/documents/Response-Template.docx" target="_blank" rel="noreferer noopener">
-              Marketplace template
+              Marketplace template DOCX 67 KB
             </a>
             . If you use the Marketplace template, make sure you update it with your Agency&apos;s requirements.
           </span>

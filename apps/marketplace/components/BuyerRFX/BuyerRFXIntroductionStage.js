@@ -19,7 +19,7 @@ const BuyerRFXIntroductionStage = props => (
           rel="noopener noreferrer"
           target="_blank"
         >
-          download the list of questions
+          download the list of questions XLSX 84 KB
         </a>{' '}
         to prepare your request offline before publishing.
       </li>
@@ -46,14 +46,14 @@ const BuyerRFXIntroductionStage = props => (
       <li>
         You must upload a requirements document. You can use your version or the{' '}
         <a href="/static/media/documents/Requirements-Document-template.docx" rel="noopener noreferrer" target="_blank">
-          Marketplace requirements template
+          Marketplace requirements template DOCX 58 KB
         </a>
         .
       </li>
       <li>
         You can ask sellers to complete a response template. Use your version or the{' '}
         <a href="/static/media/documents/Response-Template.docx" rel="noopener noreferrer" target="_blank">
-          Marketplace response template
+          Marketplace response template DOCX 67 KB
         </a>
         .
       </li>
