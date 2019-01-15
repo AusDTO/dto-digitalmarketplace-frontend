@@ -14,13 +14,7 @@
 .noticeBar {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.noticeBar > span {
-  vertical-align: middle;
-}
-
-.noticeBarIcon {
-  margin-right: 0.75rem;
-  vertical-align: middle;
+  border-left: 10px solid #00698F;
+  background-color: #daf3fe;
+  color: #00698F;
 }

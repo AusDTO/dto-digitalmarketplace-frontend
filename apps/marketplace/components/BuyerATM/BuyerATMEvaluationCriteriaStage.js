@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerATMEvaluationCriteriaStage.scss'
 
@@ -69,10 +69,12 @@ class BuyerATMEvaluationCriteriaStage extends Component {
         <AUheadings level="1" size="xl">
           Response criteria
         </AUheadings>
-        <NoticeBar heavyFont className={styles.noticeBar}>
-          If you are seeking requests for information, you do not need to include criteria weightings. For expressions
-          of interest that may lead to another procurement, we recommend adding weightings.
-        </NoticeBar>
+        <AUcallout description="" className={styles.noticeBar}>
+          <strong>
+            If you are seeking requests for information, you do not need to include criteria weightings. For expressions
+            of interest that may lead to another procurement, we recommend adding weightings.
+          </strong>
+        </AUcallout>
         <ErrorAlert
           title="An error occurred"
           model={`${this.props.model}.evaluationCriteria`}

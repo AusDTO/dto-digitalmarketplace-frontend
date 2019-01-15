@@ -6,7 +6,7 @@ import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerATMResponseFormatsStage.scss'
 
@@ -24,10 +24,12 @@ const BuyerATMResponseFormatsStage = props => (
     <AUheadings level="1" size="xl">
       Response formats
     </AUheadings>
-    <NoticeBar heavyFont className={styles.noticeBar}>
-      In this EOI/RFI process sellers submit up to 500 words to each criteria you provide. If you need proposals or
-      quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
-    </NoticeBar>
+    <AUcallout description="" className={styles.noticeBar}>
+      <strong>
+        In this EOI/RFI process sellers submit up to 500 words to each criteria you provide. If you need proposals or
+        quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
+      </strong>
+    </AUcallout>
     <ErrorAlert
       title="An error occurred"
       model={props.model}
