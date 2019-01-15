@@ -13,6 +13,7 @@ const BuyerATMTimeframesAndBudgetStage = props => (
   <Form
     model={props.model}
     onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
     validators={{
       '': {
@@ -57,13 +58,15 @@ const BuyerATMTimeframesAndBudgetStage = props => (
 )
 
 BuyerATMTimeframesAndBudgetStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerATMTimeframesAndBudgetStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

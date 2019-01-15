@@ -74,6 +74,7 @@ class BuyerATMEvaluationCriteriaStage extends Component {
           '': { noEmptyWeightings, weightingsAddUpTo100, noZeroWeightings, noEmptyCriteria }
         }}
         onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
@@ -183,7 +184,8 @@ BuyerATMEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromCriteria: () => {},
   addEmptyEvalutationCriteria: () => {},
   removeCriteriaByIndex: () => {},
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerATMEvaluationCriteriaStage.propTypes = {
@@ -192,6 +194,7 @@ BuyerATMEvaluationCriteriaStage.propTypes = {
   addEmptyEvalutationCriteria: PropTypes.func,
   removeCriteriaByIndex: PropTypes.func,
   onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func,
   formButtons: PropTypes.node.isRequired
 }
 

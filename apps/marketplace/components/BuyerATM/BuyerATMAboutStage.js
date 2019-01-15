@@ -35,6 +35,7 @@ const BuyerATMAboutStage = props => (
       }
     }}
     onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
     <AUheadings level="1" size="xl">
@@ -117,13 +118,15 @@ const BuyerATMAboutStage = props => (
 )
 
 BuyerATMAboutStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerATMAboutStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

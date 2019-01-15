@@ -71,6 +71,7 @@ export class BuyerATMSelectStage extends Component {
           }
         }}
         onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
@@ -135,14 +136,16 @@ export class BuyerATMSelectStage extends Component {
 }
 
 BuyerATMSelectStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerATMSelectStage.propTypes = {
   model: PropTypes.string.isRequired,
   saveModel: PropTypes.func.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

@@ -31,6 +31,7 @@ class BuyerATMMarketApproachStage extends Component {
           }
         }}
         onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
@@ -69,13 +70,15 @@ class BuyerATMMarketApproachStage extends Component {
 }
 
 BuyerATMMarketApproachStage.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerATMMarketApproachStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
