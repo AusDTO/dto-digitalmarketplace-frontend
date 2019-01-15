@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
-import { validDate, required } from 'marketplace/components/validators'
+import { required, validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import ClosingDateControl from './ClosingDateControl'
+import styles from './BuyerATMClosingStage.scss'
 
 class BuyerATMClosingStage extends Component {
   constructor(props) {
@@ -27,7 +28,9 @@ class BuyerATMClosingStage extends Component {
         model={model}
         validators={{
           '': {
-            closingDateIsValid: formValues => formValues.closedAt && validDate(formValues.closedAt)
+            closingDateIsValid: formValues => formValues.closedAt && dateIs2DaysInFuture(formValues.closedAt),
+            requiredContact: formValues => required(formValues.contactNumber),
+            contactValidPhone: formValues => validPhoneNumber(formValues.contactNumber)
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -41,7 +44,9 @@ class BuyerATMClosingStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            closingDateIsValid: 'You must input a valid closing date in the future.'
+            closingDateIsValid: 'You must add a closing date at least 2 days from now',
+            requiredContact: 'You must add a contact number',
+            contactValidPhone: 'Contact number must be a valid phone number, including an area code'
           }}
         />
         <ClosingDateControl
@@ -49,6 +54,7 @@ class BuyerATMClosingStage extends Component {
           model={`${model}.closedAt`}
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
+          className={styles.closingDateControl}
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}

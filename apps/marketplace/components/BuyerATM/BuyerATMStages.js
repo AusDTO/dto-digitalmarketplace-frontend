@@ -1,4 +1,4 @@
-import { validDate } from 'marketplace/components/validators'
+import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import BuyerATMIntroductionStage from './BuyerATMIntroductionStage'
 import BuyerATMAboutStage from './BuyerATMAboutStage'
 import BuyerATMSelectStage from './BuyerATMSelectStage'
@@ -74,7 +74,8 @@ const BuyerATMStages = [
     slug: 'closing',
     title: 'Closing date',
     component: BuyerATMClosingStage,
-    isDone: formValues => validDate(formValues.closedAt) && formValues.contactNumber.length > 0
+    isDone: formValues =>
+      dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
   },
   {
     slug: 'review',
