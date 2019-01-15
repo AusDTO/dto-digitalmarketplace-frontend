@@ -67,7 +67,7 @@ class BuyerATMEvaluationCriteriaStage extends Component {
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
-          Response criteria
+          Evaluation criteria
         </AUheadings>
         <AUcallout description="" className={styles.noticeBar}>
           <strong>

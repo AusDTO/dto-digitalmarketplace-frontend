@@ -50,13 +50,10 @@ export class BuyerATMRequirementsStage extends Component {
         model={model}
         validators={{
           '': {
-            // requiredRequirementsDocument: formValues =>
-            //   formValues.requirementsDocument && formValues.requirementsDocument.length > 0,
-            requiredResponseTemplate: formValues =>
-              !formValues.evaluationType.includes('Response template') ||
-              (formValues.evaluationType.includes('Response template') &&
-                formValues.responseTemplate &&
-                formValues.responseTemplate.length > 0)
+            requiredBackgroundInformation: formValues => required(formValues.backgroundInformation),
+            requiredOutcome: formValues => required(formValues.outcome),
+            requiredEndUsers: formValues => required(formValues.endUsers),
+            requiredWorkAlreadyDone: formValues => required(formValues.workAlreadyDone)
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -69,8 +66,10 @@ export class BuyerATMRequirementsStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            requiredRequirementsDocument: 'You must upload a requirements document',
-            requiredResponseTemplate: 'You must upload a response template'
+            requiredBackgroundInformation: 'Enter the background information for your brief',
+            requiredOutcome: 'Enter the desired outcome for your brief',
+            requiredEndUsers: 'Enter the user needs for your brief',
+            requiredWorkAlreadyDone: 'Enter the work already done for your brief'
           }}
         />
         <Textarea
@@ -85,7 +84,7 @@ export class BuyerATMRequirementsStage extends Component {
             required
           }}
           messages={{
-            limitWords: '"Why is the work being done?" has exceeded the 300 word limit'
+            limitWords: '"Why is the work being done?" has exceeded the 500 word limit'
           }}
         />
         <Textarea
@@ -100,7 +99,7 @@ export class BuyerATMRequirementsStage extends Component {
             required
           }}
           messages={{
-            limitWords: '"What\'s the key problem you need to solve?" has exceeded the 300 word limit'
+            limitWords: '"What\'s the key problem you need to solve?" has exceeded the 500 word limit'
           }}
         />
         <Textarea
@@ -115,7 +114,7 @@ export class BuyerATMRequirementsStage extends Component {
             required
           }}
           messages={{
-            limitWords: '"Describe the users and their needs" has exceeded the 300 word limit'
+            limitWords: '"Describe the users and their needs" has exceeded the 500 word limit'
           }}
         />
         <Textarea
@@ -131,7 +130,7 @@ export class BuyerATMRequirementsStage extends Component {
             required
           }}
           messages={{
-            limitWords: '"What work has already been done?" has exceeded the 300 word limit'
+            limitWords: '"What work has already been done?" has exceeded the 500 word limit'
           }}
         />
         {this.props[model].evaluationType.includes('Response template') && (

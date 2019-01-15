@@ -18,7 +18,7 @@ const BuyerATMStages = [
   },
   {
     slug: 'select',
-    title: 'Select sellers',
+    title: 'Who can respond?',
     component: BuyerATMSelectStage,
     isDone: formValues =>
       (formValues.sellerSelector.length > 0 && formValues.sellerSelector === 'allSellers') ||
@@ -48,9 +48,7 @@ const BuyerATMStages = [
       formValues.backgroundInformation.length > 0 &&
       formValues.outcome.length > 0 &&
       formValues.endUsers.length > 0 &&
-      formValues.workAlreadyDone.length > 0 &&
-      (!formValues.evaluationType.includes('Response template') ||
-        (formValues.responseTemplate.length > 0 && formValues.responseTemplate.every(val => val)))
+      formValues.workAlreadyDone.length > 0
   },
   {
     slug: 'timeframes',
@@ -60,7 +58,7 @@ const BuyerATMStages = [
   },
   {
     slug: 'criteria',
-    title: 'Response criteria',
+    title: 'Evaluation criteria',
     component: BuyerATMEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
