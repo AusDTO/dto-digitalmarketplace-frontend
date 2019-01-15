@@ -94,7 +94,7 @@ export class ClosingDate extends Component {
               name="year"
               value={this.state.year}
               onChange={this.handleChange}
-              min="2018"
+              min="2019"
               max="2099"
             />
           </div>

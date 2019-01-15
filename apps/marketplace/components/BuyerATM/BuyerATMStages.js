@@ -7,7 +7,11 @@ import BuyerATMReviewStage from './BuyerATMReviewStage'
 import BuyerATMMarketApproachStage from './BuyerATMMarketApproachStage'
 import BuyerATMResponseFormatsStage from './BuyerATMResponseFormatsStage'
 import BuyerATMTimeframesAndBudgetStage from './BuyerATMTimeframesAndBudgetStage'
-import BuyerATMEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerATMEvaluationCriteriaStage'
+import BuyerATMEvaluationCriteriaStage, {
+  weightingsAddUpTo100,
+  noEmptyWeightings,
+  noEmptyCriteria
+} from './BuyerATMEvaluationCriteriaStage'
 
 const BuyerATMStages = [
   {
@@ -62,8 +66,9 @@ const BuyerATMStages = [
     component: BuyerATMEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
-      formValues.evaluationCriteria.every(val => val.criteria) &&
-      weightingsAddUpTo100(formValues.evaluationCriteria)
+      noEmptyCriteria(formValues) &&
+      noEmptyWeightings(formValues) &&
+      weightingsAddUpTo100(formValues)
   },
   {
     slug: 'approach',
