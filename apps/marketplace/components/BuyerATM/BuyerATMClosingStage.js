@@ -9,7 +9,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from './ErrorAlert'
 import ClosingDateControl from './ClosingDateControl'
 
-class BuyerATMMarketApproachStage extends Component {
+class BuyerATMClosingStage extends Component {
   constructor(props) {
     super(props)
 
@@ -69,12 +69,12 @@ class BuyerATMMarketApproachStage extends Component {
   }
 }
 
-BuyerATMMarketApproachStage.defaultProps = {
+BuyerATMClosingStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerATMMarketApproachStage.propTypes = {
+BuyerATMClosingStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -89,4 +89,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMMarketApproachStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMClosingStage)
