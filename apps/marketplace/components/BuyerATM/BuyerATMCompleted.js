@@ -20,11 +20,7 @@ const BuyerATMCompleted = props => (
     <ul>
       <li>
         While your opportunity is live, you&apos;ll need to{' '}
-        <a
-          href={`/buyers/frameworks/digital-marketplace/requirements/rfx/${
-            props.briefId
-          }/supplier-questions/answer-question`}
-        >
+        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011257447-Answer-questions" rel="external">
           answer seller questions
         </a>.
       </li>
@@ -37,11 +33,11 @@ const BuyerATMCompleted = props => (
       If you need help at any time, <a href="/contact-us">contact us</a>.
     </p>
     <p className={styles.buttons}>
-      <a href={`${rootPath}/brief/${props.briefId}/overview/rfx`} className="au-btn au-btn--secondary">
+      <a href={`${rootPath}/brief/${props.briefId}/overview/atm`} className="au-btn au-btn--secondary">
         Return to overview
       </a>
       <a href={`${rootPath}/digital-marketplace/opportunities/${props.briefId}`} className="au-btn">
-        View live brief
+        View live opportunity
       </a>
     </p>
   </div>

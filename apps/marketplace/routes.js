@@ -18,6 +18,7 @@ import BuyerRFXCompletedPage from './pages/BuyerRFXCompletedPage'
 import BuyerRFXFlowPage from './pages/BuyerRFXFlowPage'
 import BuyerRFXOverviewPage from './pages/BuyerRFXOverviewPage'
 import BuyerATMCreatePage from './pages/BuyerATMCreatePage'
+import BuyerATMCompletedPage from './pages/BuyerATMCompletedPage'
 import BuyerATMFlowPage from './pages/BuyerATMFlowPage'
 import BuyerATMOverviewPage from './pages/BuyerATMOverviewPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
@@ -58,6 +59,11 @@ export const Routes = () => (
       component={BuyerRFXCompletedPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-atm/:briefId/completed`}
+      component={BuyerATMCompletedPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
