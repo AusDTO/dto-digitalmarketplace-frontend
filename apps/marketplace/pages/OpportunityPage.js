@@ -56,7 +56,7 @@ class OpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    // only RFX can be displayed using this opportunity view
+    // only RFX and ATM can be displayed using this opportunity view
     if (
       this.props.brief &&
       this.props.brief.lot &&

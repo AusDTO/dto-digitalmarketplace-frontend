@@ -10,7 +10,7 @@ const PanelCategorySelectView = props => (
   <div className={styles.categorySelect}>
     <label htmlFor={`${props.id}-category-select`}>Panel category</label>
     <a
-      href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy"
+      href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
       rel="external noopener noreferrer"
       target="_blank"
     >

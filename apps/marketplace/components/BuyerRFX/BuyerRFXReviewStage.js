@@ -44,14 +44,6 @@ export const getLastQuestionDate = closingDate => {
   return lastQuestionDate
 }
 
-const getLastAnswerDate = closingDate => {
-  let lastAnswerDate = subDays(closingDate, 1)
-  if (lastAnswerDate < getLastQuestionDate(closingDate)) {
-    lastAnswerDate = closingDate
-  }
-  return lastAnswerDate
-}
-
 const BuyerRFXReviewStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     {props.stagesTodo.length > 0 ? (
@@ -88,16 +80,10 @@ const BuyerRFXReviewStage = props => (
             <div className="col-xs-12 col-sm-8">The last day sellers can ask questions.</div>
           </div>
           <div className="row">
-            <div className="col-xs-12 col-sm-4">
-              {format(getLastAnswerDate(new Date(props[props.model].closedAt)), 'D MMMM')}
-            </div>
-            <div className="col-xs-12 col-sm-8">
-              The last day you can publish answers to all sellers&apos; questions.
-            </div>
-          </div>
-          <div className="row">
             <div className="col-xs-12 col-sm-4">{format(props[props.model].closedAt, 'D MMMM')}</div>
             <div className="col-xs-12 col-sm-8">
+              The last day you can publish answers to all sellers&apos; questions.
+              <br />
               The last day sellers can apply.
               <br />
               The opportunity will close at 6pm Canberra time.

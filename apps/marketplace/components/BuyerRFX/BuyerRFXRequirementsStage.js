@@ -5,20 +5,30 @@ import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textarea from 'shared/form/Textarea'
-import NoticeBar from 'marketplace/components/NoticeBar/NoticeBar'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import range from 'lodash/range'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXRequirementsStage.scss'
 
-const MarketplaceTemplateHint = (
+const RequirementsTemplateHint = (
   <span>
     You can use the{' '}
-    <a href="#template" target="_blank" rel="noreferer noopener">
+    <a href="/static/media/documents/Requirements-Document-template.docx" target="_blank" rel="noreferer noopener">
       Marketplace template
     </a>{' '}
     if you do not have your own. Make sure you update it with your Agency&apos;s requirements.
+  </span>
+)
+
+const ResponseTemplateHint = (
+  <span>
+    You can use the{' '}
+    <a href="/static/media/documents/Response-Template.docx" target="_blank" rel="noreferer noopener">
+      Marketplace template
+    </a>{' '}
+    if you do not have your own.
   </span>
 )
 
@@ -79,10 +89,12 @@ export class BuyerRFXRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Requirements
         </AUheadings>
-        <NoticeBar heavyFont className={styles.noticeBar}>
-          Only invited sellers and other buyers can view attached documents. Only invited sellers can view industry
-          briefing details you provide.
-        </NoticeBar>
+        <AUcallout description="" className={styles.noticeBar}>
+          <strong>
+            Only invited sellers and other buyers can view attached documents. Only invited sellers can view industry
+            briefing details you provide.
+          </strong>
+        </AUcallout>
         <ErrorAlert
           title="An error occurred"
           model={model}
@@ -97,7 +109,7 @@ export class BuyerRFXRequirementsStage extends Component {
         </AUheadings>
         <FilesInput
           title="Requirements document"
-          hint={MarketplaceTemplateHint}
+          description={RequirementsTemplateHint}
           fieldLabel="Upload document"
           name="requirementsDocument"
           model={`${model}.requirementsDocument.0`}
@@ -116,7 +128,7 @@ export class BuyerRFXRequirementsStage extends Component {
             </AUheadings>
             <FilesInput
               title="Response template"
-              hint={MarketplaceTemplateHint}
+              description={ResponseTemplateHint}
               fieldLabel="Upload template"
               name="responseTemplate"
               model={`${model}.responseTemplate.0`}

@@ -128,8 +128,8 @@ const BriefRFXResponseForm = ({
                   validPhoneNumber
                 }}
                 messages={{
-                  required: 'You must add a phone number',
-                  validPhoneNumber: 'Your must add a valid phone number'
+                  required: 'You must add a valid phone number',
+                  validPhoneNumber: 'You must add a valid phone number'
                 }}
               />
               <AUheading level="2" size="lg">

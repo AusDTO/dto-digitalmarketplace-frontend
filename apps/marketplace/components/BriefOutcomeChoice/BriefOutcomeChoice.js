@@ -18,8 +18,8 @@ const BriefOutcomeChoice = () => (
             Ask the market
           </AUheading>
           <p className={styles.largerText}>
-            EOI/RFI style suited to exploratory procurements. Uncover new expertise or run small scale technology
-            experiments.
+            EOI/RFI approach to find sellers, learn about potential solutions, or experiment with prototypes before
+            seeking proposals.
           </p>
           <AUheading level="3" size="sm">
             What you get

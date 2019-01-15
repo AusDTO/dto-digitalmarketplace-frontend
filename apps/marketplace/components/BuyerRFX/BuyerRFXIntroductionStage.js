@@ -13,36 +13,62 @@ const BuyerRFXIntroductionStage = props => (
     </AUheadings>
     <ul>
       <li>
-        You can use the{' '}
-        <a href="#template" target="_blank">
-          list of questions
+        You can{' '}
+        <a
+          href="/static/media/documents/Seek-proposals-list-of-questions.xlsx"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          download the list of questions
         </a>{' '}
-        to develop your request offline before publishing.
+        to prepare your request offline before publishing.
       </li>
       <li>
-        Identify the{' '}
+        Any{' '}
         <a href="/search/sellers" target="_blank">
           sellers
         </a>{' '}
-        and{' '}
+        you invite must be approved in the{' '}
         <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011271567-What-you-can-buy"
+          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
           rel="external noopener noreferrer"
           target="_blank"
         >
           panel category
         </a>{' '}
-        that best meets your need.
+        you select.
       </li>
-      <li>Have your requirements, response format, evaluation criteria and closing date ready.</li>
-      <li>Any documents you upload must be in DOC, XLS, PPT or PDF format.</li>
+    </ul>
+    <AUheadings level="2" size="lg">
+      Publishing your requirements
+    </AUheadings>
+    <ul>
+      <li>
+        You must upload a requirements document. You can use your version or the{' '}
+        <a href="/static/media/documents/Requirements-Document-template.docx" rel="noopener noreferrer" target="_blank">
+          Marketplace requirements template
+        </a>
+        .
+      </li>
+      <li>
+        You can ask sellers to complete a response template. Use your version or the{' '}
+        <a href="/static/media/documents/Response-Template.docx" rel="noopener noreferrer" target="_blank">
+          Marketplace response template
+        </a>
+        .
+      </li>
+      <li>Documents must be in DOC, XLS, PPT or PDF format.</li>
     </ul>
     <AUheadings level="2" size="lg">
       Getting help
     </AUheadings>
     <p>
-      <a href="#guide" target="_blank" rel="external noopener noreferrer">
-        View help guide
+      <a
+        href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716"
+        rel="external noopener noreferrer"
+        target="_blank"
+      >
+        View support article
       </a>
       <br />
       <a href="/contact-us" target="_blank">
