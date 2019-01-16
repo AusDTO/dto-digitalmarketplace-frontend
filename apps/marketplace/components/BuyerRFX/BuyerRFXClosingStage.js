@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
-import ClosingDateControl from './ClosingDateControl'
+import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
 import styles from './BuyerRFXClosingStage.scss'
 
 class BuyerRFXClosingStage extends Component {
@@ -55,6 +55,7 @@ class BuyerRFXClosingStage extends Component {
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
           className={styles.closingDateControl}
+          description="This date must be at least 2 days after you publish this request and responses will be available after 6pm Canberra time."
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}

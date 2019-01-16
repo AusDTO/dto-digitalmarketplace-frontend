@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
-import ClosingDateControl from './ClosingDateControl'
+import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
 import styles from './BuyerATMClosingStage.scss'
 
 class BuyerATMClosingStage extends Component {
@@ -55,6 +55,7 @@ class BuyerATMClosingStage extends Component {
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
           className={styles.closingDateControl}
+          description="We recommend publishing for at least 2 weeks to allow interested sellers to respond. Responses will be available after 6pm Canberra time on this date."
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}
