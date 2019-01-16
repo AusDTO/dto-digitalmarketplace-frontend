@@ -5,7 +5,7 @@ import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
-import SelectedSellersControl from './SelectedSellersControl'
+import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerRFXSelectStage.scss'
 
