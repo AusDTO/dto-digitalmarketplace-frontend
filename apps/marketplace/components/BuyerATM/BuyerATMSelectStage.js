@@ -7,7 +7,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import RadioList from 'shared/form/RadioList'
 import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
-import ErrorAlert from './ErrorAlert'
+import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import styles from './BuyerATMSelectStage.scss'
 
 export class BuyerATMSelectStage extends Component {

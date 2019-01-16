@@ -9,7 +9,7 @@ import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
-import ErrorAlert from './ErrorAlert'
+import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import styles from './BuyerATMEvaluationCriteriaStage.scss'
 
 export const noEmptyWeightings = formValues =>
