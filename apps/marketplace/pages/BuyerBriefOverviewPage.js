@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBrief } from 'marketplace/actions/briefActions'
+import { setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
-import BuyerATMOverview from 'marketplace/components/BuyerATM/BuyerATMOverview'
+import Overview from 'marketplace/components/BuyerBriefFlow/Overview'
 
-class BuyerATMOverviewPage extends Component {
+class BuyerBriefOverviewPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,6 +15,9 @@ class BuyerATMOverviewPage extends Component {
     }
   }
   componentDidMount() {
+    if (!['rfx', 'atm'].includes(this.props.match.params.flow)) {
+      this.props.setError('Unsupported flow.')
+    }
     if (this.props.match.params.briefId) {
       this.getBriefData()
     }
@@ -57,7 +61,13 @@ class BuyerATMOverviewPage extends Component {
     }
 
     if (this.props.brief) {
-      return <BuyerATMOverview brief={this.props.brief} briefResponses={this.props.briefResponses} />
+      return (
+        <Overview
+          brief={this.props.brief}
+          briefResponses={this.props.briefResponses}
+          flow={this.props.match.params.flow}
+        />
+      )
     }
 
     return null
@@ -71,7 +81,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: briefId => dispatch(loadBrief(briefId))
+  loadData: briefId => dispatch(loadBrief(briefId)),
+  setError: message => dispatch(setErrorMessage(message))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerATMOverviewPage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerBriefOverviewPage))
