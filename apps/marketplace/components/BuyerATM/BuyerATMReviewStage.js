@@ -25,12 +25,15 @@ const nextWeekDay = date => {
   return newDate
 }
 
-const getLastQuestionDate = closingDate => {
+export const getLastQuestionDate = closingDate => {
   const today = new Date()
   let lastQuestionDate = new Date()
-  if (closingDate < addDays(today, 2)) {
-    lastQuestionDate = closingDate
-  } else if (closingDate < addDays(today, 7)) {
+  if (closingDate < addDays(today, 3)) {
+    lastQuestionDate = nextWeekDay(subDays(closingDate, 1))
+    if (today > lastQuestionDate) {
+      lastQuestionDate = today
+    }
+  } else if (closingDate < addDays(today, 8)) {
     lastQuestionDate = nextWeekDay(addDays(today, 2))
   } else {
     lastQuestionDate = nextWeekDay(addDays(today, 5))
@@ -41,14 +44,6 @@ const getLastQuestionDate = closingDate => {
   return lastQuestionDate
 }
 
-const getLastAnswerDate = closingDate => {
-  let lastAnswerDate = subDays(closingDate, 1)
-  if (lastAnswerDate < getLastQuestionDate(closingDate)) {
-    lastAnswerDate = closingDate
-  }
-  return lastAnswerDate
-}
-
 const BuyerATMReviewStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     {props.stagesTodo.length > 0 ? (
@@ -56,7 +51,7 @@ const BuyerATMReviewStage = props => (
         <AUheading level="1" size="xl">
           Review and publish
         </AUheading>
-        <p>Before you publish your brief, you need to complete information in:</p>
+        <p>Before you publish your opportunity, you need to complete information in:</p>
         <ul>
           {props.stagesTodo.map(stage => (
             <li key={stage}>
@@ -70,31 +65,25 @@ const BuyerATMReviewStage = props => (
         <AUheading level="1" size="xl">
           Review and publish
         </AUheading>
-        <p>If you send this brief today, you must be aware of the following dates:</p>
+        <p>If you publish today, you must be aware of the following dates:</p>
         <div className={styles.milestones}>
           <div className="row">
             <div className="col-xs-12 col-sm-4">Today</div>
             <div className="col-xs-12 col-sm-8">
-              Invited sellers can ask questions about your requirements and apply for the brief.
+              Invited sellers can ask questions about your requirements and apply for the opportunity.
             </div>
           </div>
           <div className="row">
             <div className="col-xs-12 col-sm-4">
               {format(getLastQuestionDate(new Date(props[props.model].closedAt)), 'D MMMM')}
             </div>
-            <div className="col-xs-12 col-sm-8">The last day suppliers can ask questions.</div>
-          </div>
-          <div className="row">
-            <div className="col-xs-12 col-sm-4">
-              {format(getLastAnswerDate(new Date(props[props.model].closedAt)), 'D MMMM')}
-            </div>
-            <div className="col-xs-12 col-sm-8">
-              The last day you can publish answers to all sellers&apos; questions.
-            </div>
+            <div className="col-xs-12 col-sm-8">The last day sellers can ask questions.</div>
           </div>
           <div className="row">
             <div className="col-xs-12 col-sm-4">{format(props[props.model].closedAt, 'D MMMM')}</div>
             <div className="col-xs-12 col-sm-8">
+              The last day you can publish answers to all sellers&apos; questions.
+              <br />
               The last day sellers can apply.
               <br />
               The opportunity will close at 6pm Canberra time.
