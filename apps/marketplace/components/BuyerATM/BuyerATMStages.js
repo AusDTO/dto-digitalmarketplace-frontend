@@ -25,8 +25,7 @@ const BuyerATMStages = [
     title: 'Who can respond?',
     component: BuyerATMSelectStage,
     isDone: formValues =>
-      (formValues.sellerSelector.length > 0 && formValues.sellerSelector === 'allSellers') ||
-      (formValues.sellerSelector === 'someSellers' && Object.keys(formValues.sellers).length > 0)
+      formValues.openToAll === 'yes' || (Object.keys(formValues.sellers).length > 0 && formValues.sellerCategory)
   },
   {
     slug: 'about',

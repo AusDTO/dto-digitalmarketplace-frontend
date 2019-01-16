@@ -6,7 +6,6 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import RadioList from 'shared/form/RadioList'
-import { required } from 'marketplace/components/validators'
 import SelectedSellersControl from './SelectedSellersControl'
 import ErrorAlert from './ErrorAlert'
 import styles from './BuyerATMSelectStage.scss'
@@ -64,10 +63,8 @@ export class BuyerATMSelectStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            requiredWhoCanRespond: formValues => required(formValues.sellerSelector),
-            requiredSellers: formValues =>
-              formValues.sellerSelector === 'allSellers' ||
-              (formValues.sellerSelector === 'someSellers' && Object.keys(formValues.sellers).length > 0)
+            requiredCategory: formValues => formValues.openToAll === 'yes' || formValues.sellerCategory,
+            requiredSeller: formValues => formValues.openToAll === 'yes' || Object.keys(formValues.sellers).length > 0
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -81,53 +78,60 @@ export class BuyerATMSelectStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
-            requiredWhoCanRespond: 'Who can respond is required',
-            requiredSellers: 'You must select at least one seller'
+            requiredCategory: 'You must select at least one panel category',
+            requiredSeller: 'You must select at least one seller'
           }}
         />
         <div className={styles.sellerSelector}>
           <RadioList
-            id="sellerSelector"
+            id="openToAll"
             label=""
-            name="sellerSelector"
-            model={`${this.props.model}.sellerSelector`}
+            name="openToAll"
+            model={`${this.props.model}.openToAll`}
             options={[
               {
                 label: 'Accept responses from any seller on the panel',
-                value: 'allSellers'
+                value: 'yes'
               },
               {
                 label: 'Only accept responses from specific sellers',
-                value: 'someSellers'
+                value: 'no'
               }
             ]}
             messages={{}}
           />
         </div>
-        {this.props[this.props.model].sellerSelector === 'someSellers' && (
-          <span>
-            <div className="row">
-              <div className="col-xs-12 col-sm-9">
-                <div className={styles.selectSellers}>
-                  <SellerSelect
-                    label="Seller name"
-                    showSelected={false}
-                    showSearchButton={false}
-                    categories={categories}
-                    onSellerSelect={this.handleSellerSelect}
-                    onSellerCategorySelect={this.handleSellerCategorySelect}
-                    selectedCategory={this.props[this.props.model].sellerCategory}
-                    showCategorySelect={false}
-                  />
-                </div>
-                <SelectedSellersControl
-                  id="selected-sellers"
-                  model={`${this.props.model}.sellers`}
-                  onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
+        {this.props[this.props.model].openToAll === 'no' && (
+          <div className="row">
+            <div className="col-xs-12 col-sm-9">
+              <div className={styles.selectSellers}>
+                <SellerSelect
+                  label="Seller name"
+                  description={
+                    <span>
+                      Only sellers approved in the category you have selected can respond. You can see each
+                      seller&apos;s categories in the{' '}
+                      <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
+                        seller catalogue
+                      </a>.
+                    </span>
+                  }
+                  showSelected={false}
+                  showSearchButton={false}
+                  categories={categories}
+                  onSellerSelect={this.handleSellerSelect}
+                  onSellerCategorySelect={this.handleSellerCategorySelect}
+                  selectedCategory={this.props[this.props.model].sellerCategory}
+                  showCategorySelect
                 />
               </div>
+              <SelectedSellersControl
+                id="selected-sellers"
+                model={`${this.props.model}.sellers`}
+                onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
+              />
             </div>
-          </span>
+          </div>
         )}
         {this.props.formButtons}
       </Form>
