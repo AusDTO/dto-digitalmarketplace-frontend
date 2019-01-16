@@ -7,11 +7,13 @@ import styles from './OpportunityInfoCard.scss'
 const OpportunityInfoCard = props => (
   <div className={styles.container}>
     <div className="row">
-      <div className="col-xs-6">
-        <strong className={styles.stat}>{props.sellersInvited}</strong>
-        <br />
-        seller{props.sellersInvited === 1 ? '' : 's'} invited
-      </div>
+      {!props.isOpenToAll && (
+        <div className="col-xs-6">
+          <strong className={styles.stat}>{props.sellersInvited}</strong>
+          <br />
+          seller{props.sellersInvited === 1 ? '' : 's'} invited
+        </div>
+      )}
       <div className="col-xs-6">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
@@ -36,17 +38,21 @@ const OpportunityInfoCard = props => (
       <div className="col-xs-12">
         {props.isClosed && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
         {!props.isClosed &&
-          props.isInvitedSeller && (
+          (props.isOpenToAll || props.isInvitedSeller) && (
             <div>
               {props.hasResponded ? (
                 <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
               ) : (
-                <a
-                  href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
-                  className={`${styles.button} au-btn`}
-                >
-                  Apply for opportunity
-                </a>
+                <div>
+                  {props.loggedIn && (
+                    <a
+                      href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
+                      className={`${styles.button} au-btn`}
+                    >
+                      Apply for opportunity
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           )}
@@ -57,7 +63,7 @@ const OpportunityInfoCard = props => (
                 <p>Only invited sellers can apply.</p>
               ) : (
                 <span>
-                  <p>Only signed in invited sellers can apply.</p>
+                  <p>Only signed in {!props.isOpenToAll && `invited`} sellers can apply.</p>
                   <p>
                     <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
                       Create an account
@@ -84,6 +90,7 @@ OpportunityInfoCard.defaultProps = {
   sellersInvited: 0,
   sellersApplied: 0,
   isInvitedSeller: false,
+  isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
   isClosed: false
@@ -93,6 +100,7 @@ OpportunityInfoCard.propTypes = {
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
+  isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
   isClosed: PropTypes.bool,
