@@ -5,44 +5,10 @@ import { Link } from 'react-router-dom'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
 import format from 'date-fns/format'
-import subDays from 'date-fns/sub_days'
-import addDays from 'date-fns/add_days'
-import isWeekend from 'date-fns/is_weekend'
 import BuyerATMStages from './BuyerATMStages'
 import styles from './BuyerATMReviewStage.scss'
-
-const getStageNameBySlug = stageToFind => {
-  const match = BuyerATMStages.find(stage => stage.slug === stageToFind)
-  return match ? match.title : ''
-}
-
-const nextWeekDay = date => {
-  let newDate = date
-  while (isWeekend(newDate)) {
-    newDate = addDays(newDate, 1)
-  }
-  return newDate
-}
-
-export const getLastQuestionDate = closingDate => {
-  const today = new Date()
-  let lastQuestionDate = new Date()
-  if (closingDate < addDays(today, 3)) {
-    lastQuestionDate = nextWeekDay(subDays(closingDate, 1))
-    if (today > lastQuestionDate) {
-      lastQuestionDate = today
-    }
-  } else if (closingDate < addDays(today, 8)) {
-    lastQuestionDate = nextWeekDay(addDays(today, 2))
-  } else {
-    lastQuestionDate = nextWeekDay(addDays(today, 5))
-  }
-  if (lastQuestionDate > closingDate) {
-    lastQuestionDate = closingDate
-  }
-  return lastQuestionDate
-}
 
 const BuyerATMReviewStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
@@ -55,7 +21,7 @@ const BuyerATMReviewStage = props => (
         <ul>
           {props.stagesTodo.map(stage => (
             <li key={stage}>
-              <Link to={stage}>{getStageNameBySlug(stage)}</Link>
+              <Link to={stage}>{BuyerATMStages.find(s => s.slug === stage).title || ''}</Link>
             </li>
           ))}
         </ul>
@@ -75,7 +41,7 @@ const BuyerATMReviewStage = props => (
           </div>
           <div className="row">
             <div className="col-xs-12 col-sm-4">
-              {format(getLastQuestionDate(new Date(props[props.model].closedAt)), 'D MMMM')}
+              {format(getBriefLastQuestionDate(new Date(props[props.model].closedAt)), 'D MMMM')}
             </div>
             <div className="col-xs-12 col-sm-8">The last day sellers can ask questions.</div>
           </div>

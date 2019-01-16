@@ -4,7 +4,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
-import { getLastQuestionDate } from 'marketplace/components/BuyerRFX/BuyerRFXReviewStage'
+import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
@@ -119,7 +119,7 @@ const Opportunity = props => {
                 {format(
                   brief.dates.questions_close
                     ? new Date(brief.dates.questions_close)
-                    : getLastQuestionDate(new Date(getClosingTime(brief) || new Date())),
+                    : getBriefLastQuestionDate(new Date(getClosingTime(brief) || new Date())),
                   'dddd D MMMM YYYY'
                 )}{' '}
                 at 6PM (in Canberra)
