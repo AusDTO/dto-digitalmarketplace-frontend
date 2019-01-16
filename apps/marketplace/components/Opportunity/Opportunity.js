@@ -38,6 +38,11 @@ const defaultBriefProps = {
   attachments: [],
   proposalType: [],
   industryBriefing: '',
+  workAlreadyDone: '',
+  endUsers: '',
+  backgroundInformation: '',
+  outcome: '',
+  timeframeConstraints: '',
   clarificationQuestions: [],
   clarificationQuestionsAreClosed: true
 }
@@ -357,6 +362,11 @@ Opportunity.propTypes = {
     attachments: PropTypes.array,
     proposalType: PropTypes.array,
     industryBriefing: PropTypes.string,
+    workAlreadyDone: PropTypes.string,
+    endUsers: PropTypes.string,
+    backgroundInformation: PropTypes.string,
+    outcome: PropTypes.string,
+    timeframeConstraints: PropTypes.string,
     clarificationQuestions: PropTypes.array,
     clarificationQuestionsAreClosed: PropTypes.bool
   }),
