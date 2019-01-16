@@ -53,6 +53,10 @@ export class BuyerATMFlowPage extends Component {
           this.props.setError('You cannot edit this opportunity as you have already published it.')
         }
 
+        if (response.data.brief.lotSlug !== 'atm') {
+          this.props.setError('You can only edit ATM briefs using this flow.')
+        }
+
         this.props.changeFormModel(data)
       }
 
