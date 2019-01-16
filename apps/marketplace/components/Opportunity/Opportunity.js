@@ -315,6 +315,7 @@ const Opportunity = props => {
             briefId={brief.id}
             briefLot={brief.lotSlug}
             loggedIn={loggedIn}
+            isBuyer={isBuyer}
           />
         </div>
       </div>

@@ -44,14 +44,15 @@ const OpportunityInfoCard = props => (
                 <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
               ) : (
                 <div>
-                  {props.loggedIn && (
-                    <a
-                      href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
-                      className={`${styles.button} au-btn`}
-                    >
-                      Apply for opportunity
-                    </a>
-                  )}
+                  {props.loggedIn &&
+                    !props.isBuyer && (
+                      <a
+                        href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
+                        className={`${styles.button} au-btn`}
+                      >
+                        Apply for opportunity
+                      </a>
+                    )}
                 </div>
               )}
             </div>
@@ -60,7 +61,7 @@ const OpportunityInfoCard = props => (
           !props.isInvitedSeller && (
             <div className={styles.invitedStatus}>
               {props.loggedIn ? (
-                <p>Only invited sellers can apply.</p>
+                <p>Only {!props.isOpenToAll && `invited`} sellers can apply.</p>
               ) : (
                 <span>
                   <p>Only signed in {!props.isOpenToAll && `invited`} sellers can apply.</p>
@@ -93,7 +94,8 @@ OpportunityInfoCard.defaultProps = {
   isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
-  isClosed: false
+  isClosed: false,
+  isBuyer: false
 }
 
 OpportunityInfoCard.propTypes = {
@@ -104,6 +106,7 @@ OpportunityInfoCard.propTypes = {
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
   isClosed: PropTypes.bool,
+  isBuyer: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
   briefLot: PropTypes.string.isRequired
