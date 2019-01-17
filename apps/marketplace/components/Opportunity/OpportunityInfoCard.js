@@ -22,7 +22,7 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {!props.isClosed &&
+        {props.isOpen &&
           props.closingDate && (
             <div>
               <span>Closes in</span>
@@ -36,49 +36,58 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isClosed && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
-        {!props.isClosed &&
+        {!props.isOpen && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
+        {props.isOpen &&
+          !props.loggedIn && (
+            <span>
+              <p>Only signed in {!props.isOpenToAll && `invited`} sellers can apply.</p>
+              <p>
+                <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
+                  Create an account
+                </a>
+                <a
+                  href={`/login?next=${encodeURIComponent(
+                    `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                  )}`}
+                  className="au-btn au-btn--block"
+                >
+                  Login
+                </a>
+              </p>
+            </span>
+          )}
+        {props.isBuyer &&
+          !props.isBriefOwner && (
+            <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
+              Contact the buyer
+            </a>
+          )}
+        {props.isOpen &&
+          props.loggedIn &&
+          !props.isBuyer &&
+          !props.isOpenToAll &&
+          !props.isInvitedSeller && (
+            <div className={styles.invitedStatus}>
+              <p>Only invited sellers can apply.</p>
+            </div>
+          )}
+        {props.isOpen &&
+          !props.isBuyer &&
           (props.isOpenToAll || props.isInvitedSeller) && (
             <div>
               {props.hasResponded ? (
                 <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
               ) : (
                 <div>
-                  {props.loggedIn &&
-                    !props.isBuyer && (
-                      <a
-                        href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
-                        className={`${styles.button} au-btn`}
-                      >
-                        Apply for opportunity
-                      </a>
-                    )}
-                </div>
-              )}
-            </div>
-          )}
-        {!props.isClosed &&
-          !props.isInvitedSeller && (
-            <div className={styles.invitedStatus}>
-              {props.loggedIn ? (
-                <p>Only {!props.isOpenToAll && `invited`} sellers can apply.</p>
-              ) : (
-                <span>
-                  <p>Only signed in {!props.isOpenToAll && `invited`} sellers can apply.</p>
-                  <p>
-                    <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
-                      Create an account
-                    </a>
+                  {props.loggedIn && (
                     <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                      )}`}
-                      className="au-btn au-btn--block"
+                      href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
+                      className={`${styles.button} au-btn`}
                     >
-                      Login
+                      Apply for opportunity
                     </a>
-                  </p>
-                </span>
+                  )}
+                </div>
               )}
             </div>
           )}
@@ -88,25 +97,29 @@ const OpportunityInfoCard = props => (
 )
 
 OpportunityInfoCard.defaultProps = {
+  buyerEmail: '',
   sellersInvited: 0,
   sellersApplied: 0,
   isInvitedSeller: false,
   isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
-  isClosed: false,
-  isBuyer: false
+  isOpen: false,
+  isBuyer: false,
+  isBriefOwner: false
 }
 
 OpportunityInfoCard.propTypes = {
+  buyerEmail: PropTypes.string,
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
-  isClosed: PropTypes.bool,
+  isOpen: PropTypes.bool,
   isBuyer: PropTypes.bool,
+  isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
   briefLot: PropTypes.string.isRequired

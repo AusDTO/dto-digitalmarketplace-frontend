@@ -44,7 +44,8 @@ const defaultBriefProps = {
   outcome: '',
   timeframeConstraints: '',
   clarificationQuestions: [],
-  clarificationQuestionsAreClosed: true
+  clarificationQuestionsAreClosed: true,
+  contactEmail: ''
 }
 
 const getClosingTime = brief => {
@@ -307,7 +308,7 @@ const Opportunity = props => {
           <OpportunityInfoCard
             sellersInvited={invitedSellerCount}
             sellersApplied={briefResponseCount}
-            isClosed={brief.status === 'closed'}
+            isOpen={brief.status === 'live'}
             closingDate={getClosingTime(brief)}
             isInvitedSeller={isInvitedSeller}
             isOpenToAll={isOpenToAll}
@@ -316,6 +317,8 @@ const Opportunity = props => {
             briefLot={brief.lotSlug}
             loggedIn={loggedIn}
             isBuyer={isBuyer}
+            isBriefOwner={isBriefOwner}
+            buyerEmail={brief.contactEmail}
           />
         </div>
       </div>
