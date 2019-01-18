@@ -51,7 +51,7 @@ export const BuyerATMFormReducer = {
   includeWeightings: false,
   closedAt: '',
   startDate: '',
-  openToAll: 'yes',
+  openToAll: '',
   workAlreadyDone: '',
   endUsers: '',
   backgroundInformation: '',

@@ -15,8 +15,8 @@ const RadioList = props => {
           {options.map(option => {
             const fieldId = `${id}-${option.value}`
             return (
-              <span key={fieldId} className="radio-list-container">
-                <span className={`au-control-input au-control-input--full ${styles.control}`}>
+              <div key={fieldId} className="radio-list-container">
+                <div className={`au-control-input au-control-input--full ${styles.control}`}>
                   <Control.radio
                     model={model}
                     name={name}
@@ -30,8 +30,8 @@ const RadioList = props => {
                   <label className="au-control-input__text" htmlFor={fieldId}>
                     {option.label}
                   </label>
-                </span>
-              </span>
+                </div>
+              </div>
             )
           })}
         </div>
