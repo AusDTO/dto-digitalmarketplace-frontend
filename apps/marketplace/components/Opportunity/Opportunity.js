@@ -71,6 +71,13 @@ const getBriefCategory = (domains, briefCategory) => {
   return category ? category.name : null
 }
 
+const showATMObjectives = (isOpenToAll, loggedIn, isBuyer, isInvitedSeller) => {
+  if ((isOpenToAll && loggedIn) || isBuyer || isInvitedSeller) {
+    return true
+  }
+  return false
+}
+
 const Opportunity = props => {
   const {
     briefResponseCount,
@@ -222,35 +229,44 @@ const Opportunity = props => {
               </div>
             )}
           </div>
-          {brief.lotSlug === 'atm' && (
-            <AUheading level="2" size="lg">
-              Objectives
-            </AUheading>
-          )}
-          {brief.lotSlug === 'atm' && (
-            <AUheading level="3" size="md">
-              Why is the work being done?
-            </AUheading>
-          )}
-          {brief.lotSlug === 'atm' && <p>{brief.backgroundInformation}</p>}
-          {brief.lotSlug === 'atm' && (
-            <AUheading level="3" size="md">
-              What&apos;s the key problem you need to solve?
-            </AUheading>
-          )}
-          {brief.lotSlug === 'atm' && <p>{brief.outcome}</p>}
-          {brief.lotSlug === 'atm' && (
-            <AUheading level="3" size="md">
-              Describe the users and their needs
-            </AUheading>
-          )}
-          {brief.lotSlug === 'atm' && <p>{brief.endUsers}</p>}
-          {brief.lotSlug === 'atm' && (
-            <AUheading level="3" size="md">
-              What work has already been done?
-            </AUheading>
-          )}
-          {brief.lotSlug === 'atm' && <p>{brief.workAlreadyDone}</p>}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && (
+              <AUheading level="2" size="lg">
+                Objectives
+              </AUheading>
+            )}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && (
+              <AUheading level="3" size="md">
+                Why is the work being done?
+              </AUheading>
+            )}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && <p>{brief.backgroundInformation}</p>}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && (
+              <AUheading level="3" size="md">
+                What&apos;s the key problem you need to solve?
+              </AUheading>
+            )}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && <p>{brief.outcome}</p>}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && (
+              <AUheading level="3" size="md">
+                Describe the users and their needs
+              </AUheading>
+            )}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && <p>{brief.endUsers}</p>}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && (
+              <AUheading level="3" size="md">
+                What work has already been done?
+              </AUheading>
+            )}
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+            brief.lotSlug === 'atm' && <p>{brief.workAlreadyDone}</p>}
           {loggedIn &&
             (isInvitedSeller || isBuyer) && (
               <AUheading level="2" size="lg">
