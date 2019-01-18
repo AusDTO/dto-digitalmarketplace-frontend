@@ -48,7 +48,7 @@ const BuyerATMResponseFormatsStage = props => (
         id={`criteria_response`}
         name={`criteria_response`}
         label="500 word responses to your criteria"
-        value="criteria_response"
+        value="500 word responses to your criteria"
         detailsModel={props.model}
         validators={{
           required
@@ -60,7 +60,7 @@ const BuyerATMResponseFormatsStage = props => (
         id={`casestudy`}
         name={`casestudy`}
         label="Case study"
-        value="casestudy"
+        value="Case study"
         detailsModel={props.model}
         validators={{
           required
@@ -72,7 +72,7 @@ const BuyerATMResponseFormatsStage = props => (
         id={`references`}
         name={`references`}
         label="References"
-        value="references"
+        value="References"
         detailsModel={props.model}
         validators={{
           required
@@ -84,7 +84,7 @@ const BuyerATMResponseFormatsStage = props => (
         id={`resumes`}
         name={`resumes`}
         label="Résumés"
-        value="resumes"
+        value="Résumés"
         detailsModel={props.model}
         validators={{
           required
@@ -101,7 +101,7 @@ const BuyerATMResponseFormatsStage = props => (
         id={`response_format_presentation`}
         name={`response_format_presentation`}
         label="Presentation"
-        value="presentation"
+        value="Presentation"
         description="A presentation can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
         detailsModel={props.model}
         validators={{}}
@@ -112,7 +112,7 @@ const BuyerATMResponseFormatsStage = props => (
         id={`response_format_prototype`}
         name={`response_format_prototype`}
         label="Prototype"
-        value="prototype"
+        value="Prototype"
         detailsModel={props.model}
         validators={{}}
         messages={{}}

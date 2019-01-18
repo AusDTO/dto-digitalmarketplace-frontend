@@ -158,12 +158,14 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
             </div>
-            <div className="row">
-              <div className="col-xs-12 col-sm-4">
-                <strong>Budget range</strong>
+            {brief.lotSlug === 'rfx' && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Budget range</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">{brief.budgetRange || 'None specified'}</div>
               </div>
-              <div className="col-xs-12 col-sm-8">{brief.budgetRange || 'None specified'}</div>
-            </div>
+            )}
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Location of work</strong>
@@ -177,34 +179,40 @@ const Opportunity = props => {
                 ))}
               </div>
             </div>
-            <div className="row">
-              <div className="col-xs-12 col-sm-4">
-                <strong>Working arrangements</strong>
-              </div>
-              <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
-            </div>
-            <div className="row">
-              <div className="col-xs-12 col-sm-4">
-                <strong>Length of contract</strong>
-              </div>
-              <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
-            </div>
-            {brief.contractExtensions && (
+            {brief.lotSlug === 'rfx' && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
-                  <strong>Contract extensions</strong>
+                  <strong>Working arrangements</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+                <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
               </div>
             )}
-            {brief.securityClearance && (
+            {brief.lotSlug === 'rfx' && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
-                  <strong>Security clearance</strong>
+                  <strong>Length of contract</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
+                <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
               </div>
             )}
+            {brief.lotSlug === 'rfx' &&
+              brief.contractExtensions && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Contract extensions</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+                </div>
+              )}
+            {brief.lotSlug === 'rfx' &&
+              brief.securityClearance && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Security clearance</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
+                </div>
+              )}
             {category && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -214,23 +222,53 @@ const Opportunity = props => {
               </div>
             )}
           </div>
+          {brief.lotSlug === 'atm' && (
+            <AUheading level="2" size="lg">
+              Objectives
+            </AUheading>
+          )}
+          {brief.lotSlug === 'atm' && (
+            <AUheading level="3" size="md">
+              Why is the work being done?
+            </AUheading>
+          )}
+          {brief.lotSlug === 'atm' && <p>{brief.backgroundInformation}</p>}
+          {brief.lotSlug === 'atm' && (
+            <AUheading level="3" size="md">
+              What&apos;s the key problem you need to solve?
+            </AUheading>
+          )}
+          {brief.lotSlug === 'atm' && <p>{brief.outcome}</p>}
+          {brief.lotSlug === 'atm' && (
+            <AUheading level="3" size="md">
+              Describe the users and their needs
+            </AUheading>
+          )}
+          {brief.lotSlug === 'atm' && <p>{brief.endUsers}</p>}
+          {brief.lotSlug === 'atm' && (
+            <AUheading level="3" size="md">
+              What work has already been done?
+            </AUheading>
+          )}
+          {brief.lotSlug === 'atm' && <p>{brief.workAlreadyDone}</p>}
           {loggedIn &&
             (isInvitedSeller || isBuyer) && (
               <AUheading level="2" size="lg">
                 Additional information
               </AUheading>
             )}
-          {isBriefOwner && (
-            <div className={styles.noticeBar}>
-              <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
-              <span>
-                Only invited sellers and other buyers can view attached documents. Only invited sellers can view
-                industry briefing details you provide.
-              </span>
-            </div>
-          )}
+          {isBriefOwner &&
+            !isOpenToAll && (
+              <div className={styles.noticeBar}>
+                <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+                <span>
+                  Only invited sellers and other buyers can view attached documents. Only invited sellers can view
+                  industry briefing details you provide.
+                </span>
+              </div>
+            )}
           {loggedIn &&
-            (isInvitedSeller || isBuyer) && (
+            (isOpenToAll || isInvitedSeller || isBuyer) && (
               <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
                 {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
                   <ul>
@@ -274,6 +312,12 @@ const Opportunity = props => {
                           <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
                         </li>
                       )}
+                    {brief.evaluationType.includes('500 word responses to your criteria') && (
+                      <li>500 word responses to your criteria</li>
+                    )}
+                    {brief.evaluationType.includes('Case study') && <li>Case study</li>}
+                    {brief.evaluationType.includes('References') && <li>References</li>}
+                    {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
                   </ul>
                 )}
                 {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
@@ -281,10 +325,13 @@ const Opportunity = props => {
                     Buyers will later request
                   </AUheading>
                 )}
-                {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
+                {(brief.evaluationType.includes('Demonstration') ||
+                  brief.evaluationType.includes('Presentation') ||
+                  brief.evaluationType.includes('Prototype')) && (
                   <ul>
                     {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
                     {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
+                    {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
                   </ul>
                 )}
                 {brief.industryBriefing &&
