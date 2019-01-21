@@ -8,6 +8,7 @@ import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import { rootPath } from 'marketplace/routes'
 import styles from './BuyerATMResponseFormatsStage.scss'
 
 const BuyerATMResponseFormatsStage = props => (
@@ -28,7 +29,7 @@ const BuyerATMResponseFormatsStage = props => (
     <AUcallout description="" className={styles.noticeBar}>
       <strong>
         In this EOI/RFI process sellers submit up to 500 words to each criteria you provide. If you need proposals or
-        quotes now, go to <a href="#request proposals">request proposals[TODO]</a>.
+        quotes now, go to <a href={`${rootPath}/outcome-choice`}>seek proposals and quotes</a>.
       </strong>
     </AUcallout>
     <ErrorAlert
