@@ -124,6 +124,7 @@ const ClosingDateControl = props => (
     component={ClosingDate}
     onDateChange={props.onDateChange}
     className={props.className}
+    description={props.description}
     mapProps={{
       value: ownProps => ownProps.viewValue,
       formModel: ownProps => ownProps.model
