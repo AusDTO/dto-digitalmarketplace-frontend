@@ -63,8 +63,11 @@ export class BuyerATMSelectStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            requiredCategory: formValues => formValues.openToAll === 'yes' || formValues.sellerCategory,
-            requiredSeller: formValues => formValues.openToAll === 'yes' || Object.keys(formValues.sellers).length > 0
+            requiredChoice: formValues => formValues.openToAll,
+            requiredCategory: formValues =>
+              !formValues.openToAll || formValues.openToAll === 'yes' || formValues.sellerCategory,
+            requiredSeller: formValues =>
+              !formValues.openToAll || formValues.openToAll === 'yes' || Object.keys(formValues.sellers).length > 0
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -78,6 +81,7 @@ export class BuyerATMSelectStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
+            requiredChoice: 'You must select who can respond',
             requiredCategory: 'You must select at least one panel category',
             requiredSeller: 'You must select at least one seller'
           }}
