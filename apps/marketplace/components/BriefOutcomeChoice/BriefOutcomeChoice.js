@@ -25,13 +25,13 @@ const BriefOutcomeChoice = () => (
             What you get
           </AUheading>
           <ul className={styles.list}>
-            <li>500 word text responses from each seller in a spreadsheet for shortlisting.</li>
+            <li>Spreadsheet with up to 500 word responses to each criteria you provide.</li>
           </ul>
           <AUheading level="3" size="sm">
-            Get responses within
+            Response timeframe
           </AUheading>
           <ul className={styles.flexList}>
-            <li>Choose 5 or 10 business days</li>
+            <li>Set your own timeframes (5 days minimum)</li>
           </ul>
           <p className={styles.buttons}>
             <a href={`${rootPath}/buyer-atm/create`} className="au-btn">
