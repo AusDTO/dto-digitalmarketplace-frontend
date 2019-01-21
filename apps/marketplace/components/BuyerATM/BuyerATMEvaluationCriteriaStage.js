@@ -81,10 +81,9 @@ class BuyerATMEvaluationCriteriaStage extends Component {
           Evaluation criteria
         </AUheadings>
         <AUcallout description="" className={styles.noticeBar}>
-          <strong>
-            If you are seeking requests for information, you do not need to include criteria weightings. For expressions
-            of interest that may lead to another procurement, we recommend adding weightings.
-          </strong>
+          <strong>Sellers can only respond to each criteria you list here.</strong>
+          <br />
+          If you skip this step, e.g. by writing &quot;refer to requirements document&quot;, sellers cannot respond.
         </AUcallout>
         <ErrorAlert
           title="An error occurred"
