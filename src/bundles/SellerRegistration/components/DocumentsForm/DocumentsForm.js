@@ -199,7 +199,7 @@ class DocumentsForm extends BaseForm {
                             const doc = get(documentsForm, `documents.${key}`, {});
                             const expiry_date_field = `expiry_date_${key}`;
                             const errors = this.state.errors[key];
-                            const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents` : match.url.slice(1);
+                            const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents/${doc.filename}` : match.url.slice(1);
 
                             return (
                                 <div key={key} className="callout-no-margin">

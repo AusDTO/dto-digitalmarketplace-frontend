@@ -1,8 +1,9 @@
 import dmapi from '../services/apiClient'
 
-const findSuppliers = keyword => {
+const findSuppliers = (keyword, category) => {
   const params = {
-    keyword
+    keyword,
+    category
   }
   return dmapi({ url: `/suppliers/search`, params }).then(response => {
     if (!response || response.error) {

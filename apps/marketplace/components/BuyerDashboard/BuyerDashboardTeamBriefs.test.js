@@ -1,6 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import addDays from 'date-fns/add_days'
 import { BuyerDashboardTeamBriefs } from './BuyerDashboardTeamBriefs'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -32,10 +33,8 @@ test('Team briefs page shows a table of briefs', () => {
   expect(component.find('table tr').length).toEqual(3)
 })
 
-test('My briefs shows correctly formatted Canberra closing time for a future date', () => {
-  const date = new Date()
-  date.setFullYear(date.getFullYear() + 1)
-  date.setMonth(0)
+test('My briefs shows correctly formatted closing time for a future date', () => {
+  const date = addDays(new Date(), 14)
 
   const props = {
     items: [
@@ -50,7 +49,7 @@ test('My briefs shows correctly formatted Canberra closing time for a future dat
   }
 
   const component = mount(<BuyerDashboardTeamBriefs {...props} />)
-  const expectedDate = `6pm, ${date.getDate()} January ${date.getFullYear()}`
+  const expectedDate = '1w : 6d : 23h'
 
   expect(
     component
@@ -83,62 +82,4 @@ test('My briefs shows "Closed" for past date', () => {
       .at(3)
       .text()
   ).toEqual('Closed')
-})
-
-test('My briefs page shows appropriate actions for each brief in the table', () => {
-  const props = {
-    items: [
-      {
-        id: 1,
-        name: 'Brief 1',
-        status: 'live',
-        closed_at: ''
-      },
-      {
-        id: 2,
-        name: 'Brief 2',
-        status: 'closed',
-        closed_at: ''
-      },
-      {
-        id: 3,
-        name: 'Brief 3',
-        status: 'withdrawn',
-        closed_at: ''
-      }
-    ],
-    loadData: () => {}
-  }
-
-  const component = mount(<BuyerDashboardTeamBriefs {...props} />)
-
-  // the live brief
-  expect(
-    component
-      .find('table tr')
-      .at(1)
-      .find('td')
-      .at(5)
-      .text()
-  ).toEqual('Answer a question')
-
-  // the closed brief
-  expect(
-    component
-      .find('table tr')
-      .at(2)
-      .find('td')
-      .at(5)
-      .text()
-  ).toEqual('')
-
-  // the withdrawn brief
-  expect(
-    component
-      .find('table tr')
-      .at(3)
-      .find('td')
-      .at(5)
-      .text()
-  ).toEqual('')
 })

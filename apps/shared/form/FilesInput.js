@@ -10,17 +10,21 @@ import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { fileId, label, description, hint, formFields, uploading } = props
+  const { fileId, label, description, hint, formFields, uploading, accept } = props
 
   return (
-    <div className="field">
+    <div className={label ? 'field' : styles.noLabel}>
       <div className={styles.fileInput}>
-        <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
-          {label}
-        </label>
-        <small>{hint}</small>
-        <p>{description}</p>
-        {range(formFields).map(field => <FileInput key={field} id={fileId} uploading={uploading} {...props} />)}
+        {label && (
+          <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
+            {label}
+          </label>
+        )}
+        {hint && <small>{hint}</small>}
+        {description && <p>{description}</p>}
+        {range(formFields).map(field => (
+          <FileInput key={field} id={fileId} uploading={uploading} accept={accept} {...props} />
+        ))}
       </div>
     </div>
   )
@@ -29,10 +33,11 @@ const FilesInput = props => {
 FilesInput.propTypes = {
   fileId: PropTypes.number,
   label: PropTypes.string,
-  hint: PropTypes.string,
-  description: PropTypes.string,
+  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   formFields: PropTypes.number.isRequired,
-  uploading: PropTypes.func
+  uploading: PropTypes.func,
+  accept: PropTypes.string
 }
 
 FilesInput.defaultProps = {
@@ -40,7 +45,8 @@ FilesInput.defaultProps = {
   label: '',
   hint: '',
   description: '',
-  uploading: () => null
+  uploading: () => null,
+  accept: '.pdf,.odt'
 }
 
 const uploadDocument = (url, api, id, file, csrfToken) => () => {
@@ -54,7 +60,8 @@ const uploadDocument = (url, api, id, file, csrfToken) => () => {
       'X-CSRFToken': csrfToken,
       'Content-Type': 'application/json'
     },
-    data
+    data,
+    timeout: 600000
   }).then(response => {
     if (response.error) {
       if (response.status === 413) {

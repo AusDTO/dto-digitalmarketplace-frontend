@@ -1,5 +1,6 @@
 import React from 'react'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import { rootPath } from 'marketplace/routes'
 import styles from './BriefChoice.scss'
 
 const BriefChoice = () => (
@@ -29,7 +30,7 @@ const BriefChoice = () => (
         </AUheading>
         <span className={styles.flexGrow}>1 to 2 weeks</span>
         <p>
-          <a href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome">
+          <a href={`${rootPath}/outcome-choice`}>
             <button className="au-btn">Get started</button>
           </a>
         </p>

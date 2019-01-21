@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ClosedDate from 'shared/ClosedDate'
+import { rootPath } from 'marketplace/routes'
 import styles from './Opportunities.scss'
 
 const mapOpenTo = val => {
@@ -87,7 +88,11 @@ const Opportunities = props => (
                     {item.id}
                   </div>
                   <div className={`col-md-4 col-sm-4 ${styles.cell}`} role="cell" aria-labelledby="header_name">
-                    <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    {item.lot === 'rfx' ? (
+                      <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    ) : (
+                      <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    )}
                     {item.company && <div>At: {item.company}</div>}
                   </div>
                   <div className={`col-md-2 col-sm-2 ${styles.cell}`} role="cell" aria-labelledby="header_location">
@@ -119,7 +124,11 @@ const Opportunities = props => (
                     open to {mapOpenTo(item.openTo)}
                   </div>
                   <div className={styles.mobileName}>
-                    <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    {item.lot === 'rfx' ? (
+                      <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    ) : (
+                      <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
+                    )}
                     <div className={styles.companyMobile}>At: {item.company}</div>
                   </div>
                   <div className={`${styles.mobileDetails} row`}>

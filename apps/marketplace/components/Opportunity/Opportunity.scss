@@ -1,0 +1,105 @@
+.organisation {
+  opacity: 0.6;
+}
+
+div.details {
+  margin-top: 3rem;
+}
+
+div.details > div {
+  margin-bottom: 0.75rem;
+}
+
+.newLines {
+  white-space: pre-line;
+}
+
+.previewNotice {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 10px solid #00698F;
+  background-color: #daf3fe;
+  color: #00698F;
+}
+
+.previewNotice > div {
+  flex: 1;
+}
+
+.previewNotice .previewButtons {
+  text-align: right;
+}
+
+.previewNotice > div a:last-child {
+  margin-left: 1.5rem;
+}
+
+ul.submitList {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+ul.submitList li {
+  margin-top: 0.5rem;
+}
+
+.noticeBar {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: #00698F;
+}
+
+.noticeBar > span {
+  vertical-align: middle;
+}
+
+.noticeBarIcon {
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 767px) {
+  .previewNotice {
+    flex-direction: column;
+  }
+
+  .previewNotice > div {
+    width: 100%;
+  }
+
+  .previewNotice > div:last-child {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .previewNotice > div a {
+    display: block;
+    width: 100%;
+  }
+
+  .previewNotice > div a {
+    text-align: center;
+  }
+
+  .previewNotice > div a:first-child {
+    margin-bottom: 1.5rem;
+  }
+
+  .previewNotice > div a:last-child {
+    margin-left: 0;
+  }
+}
+
+div.additionalInfoOwner {
+  margin-top: 1.5rem;
+  padding: 0 1.5rem;
+  border-left: 10px solid #4ec9f2;
+}
+
+div.additionalInfo {
+  margin-top: 1.5rem;
+}
