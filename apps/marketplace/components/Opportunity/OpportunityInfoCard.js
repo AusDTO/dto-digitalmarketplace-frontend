@@ -40,20 +40,36 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           !props.loggedIn && (
             <span>
-              <p>Only signed in {!props.isOpenToAll && `invited`} sellers can apply.</p>
-              <p>
-                <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
-                  Create an account
-                </a>
-                <a
-                  href={`/login?next=${encodeURIComponent(
-                    `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                  )}`}
-                  className="au-btn au-btn--block"
-                >
-                  Login
-                </a>
-              </p>
+              {props.isOpenToAll ? (
+                <span>
+                  <p>Any assessed seller can respond.</p>
+                  <p>
+                    <a
+                      href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
+                      className="au-btn au-btn--block"
+                    >
+                      How to respond
+                    </a>
+                  </p>
+                </span>
+              ) : (
+                <span>
+                  <p>Only signed in invited sellers can apply.</p>
+                  <p>
+                    <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
+                      Create an account
+                    </a>
+                    <a
+                      href={`/login?next=${encodeURIComponent(
+                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                      )}`}
+                      className="au-btn au-btn--block"
+                    >
+                      Login
+                    </a>
+                  </p>
+                </span>
+              )}
             </span>
           )}
         {props.isBuyer &&
