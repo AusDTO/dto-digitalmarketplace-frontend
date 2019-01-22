@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateCaseStudyStatus } from '../../redux/modules/casestudies'
+import { updateCaseStudyStatus, searchAssessments } from '../../redux/modules/casestudies'
 
 import './AssessmentList.css'
 
@@ -31,12 +31,13 @@ class AssessmentList extends React.Component {
     const { 
       casestudies,
       onApproveClick,
-      onRejectClick
+      onRejectClick,
+      onKeywordChange
     } = this.props
 
     return (
       <div>
-        <input id="keyword" type="text" size="30" placeholder="id or name"/>
+        <input id="keyword" type="text" size="30" placeholder="id or name" onChange={onKeywordChange}/>
         <hr/>
       { 
         casestudies.map((cs, i) =>
@@ -105,7 +106,8 @@ const mapStateToProps = ({ meta, casestudies }) => {
     meta,
     casestudies,
     onApproveClick: () => {},
-    onRejectClick: () => {}
+    onRejectClick: () => {},
+    onKeywordChange: () => {},
   }
 }
 
@@ -116,6 +118,9 @@ const mapDispatchToProps = dispatch => {
     },
     onRejectClick: (id) => {
       dispatch(updateCaseStudyStatus(id, 'rejected'))
+    },
+    onKeywordChange: (event) => {
+      dispatch(searchAssessments(event.target.value));
     }
   }
 }
