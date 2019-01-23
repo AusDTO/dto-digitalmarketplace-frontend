@@ -52,7 +52,7 @@ class AssessmentList extends React.Component {
           <span key={cs.id}>
             <div className="row">
               <div className="col-md-2">{cs.name}(#{cs.supplier_code})</div>
-              <div className="col-md-4"><a href={`casestudy-assessment/${cs.id}`}>{cs.data.title}(#{cs.id})</a></div>
+              <div className="col-md-4"><a href={`casestudy/${cs.id}/assessment?role=manager`}>{cs.data.title}(#{cs.id})</a></div>
               <div className="col-md-2">{cs.data.service}</div>
               <div className="col-md-2">{cs.assessment_count}</div>
               <div className="col-md-2">
@@ -77,12 +77,12 @@ class AssessmentList extends React.Component {
                 <div className="col-md-2"><b>result</b></div>
               </div>
             </div>
-            {cs.assessment_count > 0 ? cs.assessment_results.map(ar =>
+            {cs.assessment_results && cs.assessment_count > 0 ? cs.assessment_results.map(ar =>
               <div key={ar.id} className="row">
-                <div className="col-md-2">{ar.username}</div>
+                <div className="col-md-2"><a href={`casestudy/${cs.id}/assessment/${ar.id}?role=assessor`}>{ar.username}</a></div>
                 <div className="col-md-4">{ar.comment}</div>
                 <div className="col-md-4">
-                {ar.criterias_met.map(cm =>
+                {ar.criterias_met && ar.criterias_met.map(cm =>
                   <div key={`${ar.id}-${cm.domain_criteria_id}`} styleName="tooltip">
                     {`${cm.domain_criteria_id}`}
                     <div styleName="tooltiptext">{cm.domain_criteria}</div>

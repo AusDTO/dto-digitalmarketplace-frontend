@@ -8,6 +8,9 @@ export default function reducer(state = {}, action = {}) {
       state.assessmentForm = {
         status: 'unassessed'
       }
+      state.assignToAssessorForm = {
+        assessor_user_id: null
+      }
       return state;
   }
 }
@@ -16,7 +19,7 @@ export default function reducer(state = {}, action = {}) {
 export const assessmentSave = (assessment) => {
   return (dispatch, getState, api) => {
     const state = getState();
-    let { 
+    let {
       casestudy
     } = state;
 
@@ -30,6 +33,50 @@ export const assessmentSave = (assessment) => {
       comment: assessment.comment
     }
     return api(state.meta.url_case_study_assessment_update, {
+      method: 'PUT',
+      body: JSON.stringify(toSave),
+      headers: {
+        'X-CSRFToken': state.form_options.csrf_token
+      }
+    })
+    .then((response) => {
+      if (response.status != 200) {
+        return response
+          .text()
+          .then((text) => {
+            return dispatch(assessmentSaveFailed({
+              error: text,
+              casestudy: casestudy
+            }));
+          });
+      }
+      return response
+        .json()
+        .then((json) => {
+          if (json.errors) {
+            return dispatch(assessmentSaveFailed({
+              error: json.errors.map(i => i.message).join('<br/>'),
+              casestudy: casestudy
+            }));
+          } else {
+            document.location.href = "/admin/casestudy-assessment"
+          }
+        })
+    })
+  }
+};
+
+export const assignToAssessorSave = (values) => {
+  return (dispatch, getState, api) => {
+    const state = getState();
+    let {
+      casestudy
+    } = state;
+
+    let toSave = {
+      assessor_user_id
+    } = values
+    return api(state.meta.url_case_study_assessment_add, {
       method: 'POST',
       body: JSON.stringify(toSave),
       headers: {
@@ -52,7 +99,7 @@ export const assessmentSave = (assessment) => {
         .then((json) => {
           if (json.errors) {
             return dispatch(assessmentSaveFailed({
-              error: json.errors.map(i=>i.message).join('<br/>'),
+              error: json.errors.map(i => i.message).join('<br/>'),
               casestudy: casestudy
             }));
           } else {
@@ -61,4 +108,4 @@ export const assessmentSave = (assessment) => {
         })
     })
   }
-};
+}

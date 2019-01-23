@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LocalForm, Control } from 'react-redux-form';
-import { assessmentSave } from '../../redux/modules/casestudy'
+import { assessmentSave, assignToAssessorSave } from '../../redux/modules/casestudy'
 
 import isEmpty from 'lodash/isEmpty';
 
@@ -18,7 +18,11 @@ class View extends React.Component {
       comment: null,
       approved_criteria: {}
     },
-    assessmentSaved: false
+    assignToAssessorForm: {
+      assessor_user_id: null
+    },
+    assessmentSaved: false,
+    role: null
   }
 
   toggleConfirm(show = true) {
@@ -43,12 +47,18 @@ class View extends React.Component {
       meta,
       confirmButton = null,
       returnLink = null,
-      admin,
       domain = {},
-      onAssessmentSubmit
+      onAssessmentSubmit,
+      onAssignToAssessorSubmit
     } = this.props;
-
-    const { showConfirm, assessmentForm } = this.state;
+    let {
+      
+    } = this.props;
+    const {
+      showConfirm,
+      assessmentForm,
+      assignToAssessorForm
+    } = this.state;
 
     return (
       <section id="casestudy__view" styleName="view.case-study-summary">
@@ -60,7 +70,28 @@ class View extends React.Component {
           </div>
         )}
         <div className="row">
-          {admin && (
+          {meta && meta.role === 'manager' && (
+            <div className="col-md-12">
+              <LocalForm onSubmit={onAssignToAssessorSubmit} initialState={assignToAssessorForm}>
+                <fieldset>
+                  <legend id="q-devices-owned">Assign to assessor</legend>
+                  <p>
+                    <label htmlFor="assessor_user_id">User</label>
+                    <Control.select model=".assessor_user_id" id="assessor_user_id">
+                      <option value="0">None</option>
+                      <option value="4854">Sam Lam</option>
+                    </Control.select>
+                  </p>
+                  <legend id="q-devices-owned">List of Assessments, delete unassessed ones</legend>
+                  <legend id="q-devices-owned">Approve or reject</legend>
+                </fieldset>
+                <button className="button-save">Save</button>
+              </LocalForm>
+            </div>
+          )}
+        </div>
+        <div className="row">
+          {meta && meta.role === 'assessor' && (
             <div className="col-md-12">
               <LocalForm onSubmit={onAssessmentSubmit} initialState={assessmentForm}>
                 <fieldset>
@@ -99,7 +130,7 @@ class View extends React.Component {
               <div className="col-xs-12 col-sm-7">
                 <p>by {supplier_url ? <a href={supplier_url}>{supplier_name}</a> : supplier_name}</p>
               </div>
-              {meta && (
+              {meta && meta.editLink && (
                 <div className="col-xs-12 col-sm-5 actions">
                   <a href={meta.editLink}>Edit case study</a>
                   <button className="button-secondary" onClick={this.toggleConfirm.bind(this)}>Delete</button>
@@ -179,14 +210,14 @@ View.propTypes = {
   returnLink: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]),
-  admin: PropTypes.bool
+  ])
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state.casestudy,
-    ...ownProps
+    ...ownProps,
+    meta: state.meta
   }
 }
 
@@ -194,6 +225,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAssessmentSubmit: (values) => {
       dispatch(assessmentSave(values))
+    },
+    onAssignToAssessorSubmit: (values) => {
+      dispatch(assignToAssessorSave(values))
     }
   }
 };
