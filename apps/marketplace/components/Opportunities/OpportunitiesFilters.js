@@ -63,21 +63,21 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   changeAccordion(type, isOpen) {
     switch (type) {
       case 'status':
-        this.setState({ 
+        this.setState({
           statusAccordionOpen: isOpen,
           locationAccordionOpen: false,
           typeAccordionOpen: false
         })
         break
       case 'location':
-        this.setState({ 
+        this.setState({
           locationAccordionOpen: isOpen,
           statusAccordionOpen: false,
           typeAccordionOpen: false
         })
         break
       case 'type':
-        this.setState({ 
+        this.setState({
           typeAccordionOpen: isOpen,
           locationAccordionOpen: false,
           statusAccordionOpen: false
