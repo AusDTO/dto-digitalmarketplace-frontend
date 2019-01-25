@@ -86,7 +86,7 @@ export default combineReducers({
       type: {
         outcomes: false,
         specialists: false,
-        innovation: false,
+        atm: false,
         training: false
       },
       location: {
