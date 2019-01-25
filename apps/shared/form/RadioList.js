@@ -6,7 +6,7 @@ import StatefulError from './StatefulError'
 import styles from './RadioList.scss'
 
 const RadioList = props => {
-  const { id, label, name, options, model, messages, validators } = props
+  const { id, label, name, options, model, messages, validators, onChange } = props
   return (
     <div className="field">
       <fieldset>
@@ -26,6 +26,7 @@ const RadioList = props => {
                     }}
                     value={option.value}
                     validators={validators}
+                    onChange={onChange}
                   />
                   <label className="au-control-input__text" htmlFor={fieldId}>
                     {option.label}

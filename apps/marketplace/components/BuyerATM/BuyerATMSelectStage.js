@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
+import SellerSelect, { PanelCategorySelect } from 'marketplace/components/SellerSelect/SellerSelect'
 import RadioList from 'shared/form/RadioList'
 import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
@@ -63,11 +63,17 @@ export class BuyerATMSelectStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            requiredChoice: formValues => formValues.openToAll,
+            requiredChoice: formValues => formValues.openTo,
             requiredCategory: formValues =>
-              !formValues.openToAll || formValues.openToAll === 'yes' || formValues.sellerCategory,
+              !formValues.openTo ||
+              formValues.openTo === 'all' ||
+              formValues.openTo === 'selected' ||
+              (formValues.openTo === 'category' && formValues.sellerCategory),
             requiredSeller: formValues =>
-              !formValues.openToAll || formValues.openToAll === 'yes' || Object.keys(formValues.sellers).length > 0
+              !formValues.openTo ||
+              formValues.openTo === 'all' ||
+              formValues.openTo === 'category' ||
+              Object.keys(formValues.sellers).length > 0
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -88,24 +94,37 @@ export class BuyerATMSelectStage extends Component {
         />
         <div className={styles.sellerSelector}>
           <RadioList
-            id="openToAll"
+            id="openTo"
             label=""
-            name="openToAll"
-            model={`${this.props.model}.openToAll`}
+            name="openTo"
+            model={`${this.props.model}.openTo`}
             options={[
               {
                 label: 'Accept responses from any seller on the panel',
-                value: 'yes'
+                value: 'all'
+              },
+              {
+                label: 'Any seller in a panel category',
+                value: 'category'
               },
               {
                 label: 'Only accept responses from specific sellers',
-                value: 'no'
+                value: 'selected'
               }
             ]}
             messages={{}}
+            onChange={() => this.props.resetSelectedSellerCategory()}
           />
         </div>
-        {this.props[this.props.model].openToAll === 'no' && (
+        {this.props[this.props.model].openTo === 'category' && (
+          <PanelCategorySelect
+            id="select-seller"
+            categories={categories}
+            onChange={e => this.handleSellerCategorySelect(e.target.value)}
+            selectedCategory={this.props[this.props.model].sellerCategory}
+          />
+        )}
+        {this.props[this.props.model].openTo === 'selected' && (
           <div className="row">
             <div className="col-xs-12 col-sm-9">
               <div className={styles.selectSellers}>
@@ -126,7 +145,6 @@ export class BuyerATMSelectStage extends Component {
                   onSellerSelect={this.handleSellerSelect}
                   onSellerCategorySelect={this.handleSellerCategorySelect}
                   selectedCategory={this.props[this.props.model].sellerCategory}
-                  showCategorySelect
                 />
               </div>
               <SelectedSellersControl
@@ -164,6 +182,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers)),
   resetSelectedSellers: () => dispatch(actions.change(`${props.model}.sellers`, {})),
+  resetSelectedSellerCategory: () => dispatch(actions.change(`${props.model}.sellerCategory`, '')),
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
