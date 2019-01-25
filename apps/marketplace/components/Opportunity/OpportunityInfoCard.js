@@ -7,13 +7,14 @@ import styles from './OpportunityInfoCard.scss'
 const OpportunityInfoCard = props => (
   <div className={styles.container}>
     <div className="row">
-      {!props.isOpenToAll && (
-        <div className="col-xs-6">
-          <strong className={styles.stat}>{props.sellersInvited}</strong>
-          <br />
-          seller{props.sellersInvited === 1 ? '' : 's'} invited
-        </div>
-      )}
+      {!props.isOpenToAll &&
+        !props.isOpenToCategory && (
+          <div className="col-xs-6">
+            <strong className={styles.stat}>{props.sellersInvited}</strong>
+            <br />
+            seller{props.sellersInvited === 1 ? '' : 's'} invited
+          </div>
+        )}
       <div className="col-xs-6">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
@@ -74,18 +75,32 @@ const OpportunityInfoCard = props => (
           )}
         {props.isBuyer &&
           !props.isBriefOwner && (
-            <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
+            <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--block">
               Contact the buyer
             </a>
           )}
         {props.isOpen &&
           props.loggedIn &&
           !props.isBuyer &&
-          !props.isOpenToAll &&
+          (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.isInvitedSeller && (
             <div className={styles.invitedStatus}>
               <p>Only invited sellers can apply.</p>
             </div>
+          )}
+        {props.isOpen &&
+          props.loggedIn &&
+          !props.isBuyer &&
+          props.isOpenToCategory &&
+          !props.isAssessedForCategory && (
+            <span>
+              <p className={styles.invitedStatus}>Only sellers approved in {props.category} can apply.</p>
+              <p>
+                <a href="#help" className="au-btn au-btn--block">
+                  Request assessment
+                </a>
+              </p>
+            </span>
           )}
         {props.isOpen &&
           !props.isBuyer &&
@@ -117,6 +132,8 @@ OpportunityInfoCard.defaultProps = {
   sellersInvited: 0,
   sellersApplied: 0,
   isInvitedSeller: false,
+  isAssessedForCategory: false,
+  isOpenToCategory: false,
   isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
@@ -130,6 +147,8 @@ OpportunityInfoCard.propTypes = {
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
+  isAssessedForCategory: PropTypes.bool,
+  isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
@@ -138,7 +157,8 @@ OpportunityInfoCard.propTypes = {
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
-  briefLot: PropTypes.string.isRequired
+  briefLot: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired
 }
 
 export default OpportunityInfoCard

@@ -20,7 +20,7 @@ const locations = {
   tas: 'Tasmania',
   vic: 'Victoria',
   wa: 'Western Australia',
-  remote: 'Can be delivered remotely'
+  remote: 'Offsite'
 }
 
 const BuyerATMAboutStage = props => (

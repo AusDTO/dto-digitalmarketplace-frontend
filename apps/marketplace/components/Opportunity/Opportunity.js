@@ -83,7 +83,9 @@ const Opportunity = props => {
     briefResponseCount,
     invitedSellerCount,
     isInvitedSeller,
+    isAssessedForCategory,
     isOpenToAll,
+    isOpenToCategory,
     isBriefOwner,
     loggedIn,
     hasResponded,
@@ -375,6 +377,8 @@ const Opportunity = props => {
             closingDate={getClosingTime(brief)}
             isInvitedSeller={isInvitedSeller}
             isOpenToAll={isOpenToAll}
+            isAssessedForCategory={isAssessedForCategory}
+            isOpenToCategory={isOpenToCategory}
             hasResponded={hasResponded}
             briefId={brief.id}
             briefLot={brief.lotSlug}
@@ -382,6 +386,7 @@ const Opportunity = props => {
             isBuyer={isBuyer}
             isBriefOwner={isBriefOwner}
             buyerEmail={brief.contactEmail}
+            category={category}
           />
         </div>
       </div>
@@ -395,6 +400,8 @@ Opportunity.defaultProps = {
   briefResponseCount: 0,
   invitedSellerCount: 0,
   isInvitedSeller: false,
+  isAssessedForCategory: false,
+  isOpenToCategory: false,
   isOpenToAll: false,
   isBriefOwner: false,
   isBuyer: false,
@@ -441,6 +448,8 @@ Opportunity.propTypes = {
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
   isInvitedSeller: PropTypes.bool,
+  isAssessedForCategory: PropTypes.bool,
+  isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   isBuyer: PropTypes.bool,
