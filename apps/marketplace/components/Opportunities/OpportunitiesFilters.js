@@ -66,9 +66,9 @@ export class OpportunitiesFiltersComponent extends BaseForm {
       case 'status':
       case 'type':
         this.setState({
-            locationAccordionOpen: type == 'location' ? isOpen : false,
-            statusAccordionOpen: type == 'status' ? isOpen : false,
-            typeAccordionOpen: type == 'type' ? isOpen : false
+          locationAccordionOpen: type == 'location' ? isOpen : false,
+          statusAccordionOpen: type == 'status' ? isOpen : false,
+          typeAccordionOpen: type == 'type' ? isOpen : false
         })
         break
       case 'mobile':
