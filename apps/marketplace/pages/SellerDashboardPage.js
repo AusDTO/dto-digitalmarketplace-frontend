@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter, Switch, Route } from 'react-router-dom'
-import SellerDashboard from 'marketplace/components/SellerDashboard/SellerDashboard'
+import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
+import SellerDashboardHeader from 'marketplace/components/SellerDashboard/SellerDashboardHeader'
+import Messages from 'marketplace/components/SellerDashboard/Messages'
+import Team from 'marketplace/components/SellerDashboard/Team'
 import { loadSellerDashboard } from 'marketplace/actions/dashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { rootPath } from 'marketplace/routes'
 
 class SellerDashboardPage extends Component {
   componentWillMount() {
@@ -19,9 +22,15 @@ class SellerDashboardPage extends Component {
     }
 
     return (
-      <Switch>
-        <Route exact path={match.url} render={() => <SellerDashboard {...this.props} />} />
-      </Switch>
+      <BrowserRouter basename={`${rootPath}/seller-dashboard`}>
+        <div>
+          <SellerDashboardHeader {...this.props} />
+          <Switch>
+            <Route exact path={match.url} render={() => <Messages {...this.props} />} />
+            <Route path="/team" render={() => <Team {...this.props} />} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     )
   }
 }

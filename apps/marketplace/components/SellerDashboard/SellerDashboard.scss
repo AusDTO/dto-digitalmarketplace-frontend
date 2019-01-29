@@ -130,3 +130,79 @@ table.resultListing td, table.resultListing th {
 .lightText {
   color: #6f6f6f;
 }
+
+nav.dashNav {
+  border-bottom: 8px solid #f5f5f5;
+  display: block;
+}
+
+.dashActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dashActions > * {
+  flex: 1;
+}
+
+.menuRow {
+  margin-top: 2.5rem;
+}
+
+ul.menu {
+  box-sizing: content-box;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: -8px;
+}
+
+ul.menu li {
+  display: inline-block;
+  margin: 0;
+}
+
+ul.menu li a {
+  font-size: 1.15rem;
+  display: block;
+  padding: 1rem;
+  border-bottom: 0;
+  text-decoration: none;
+}
+
+ul.menu li a:hover {
+  text-decoration: underline;
+}
+
+ul.menu li a.active:hover {
+  text-decoration: none;
+}
+
+ul.menu li a.active {
+  border-bottom: solid 8px #00698f;
+}
+
+@media (max-width: 991px) {
+  nav.dashNav {
+    border-bottom: 0;
+  }
+
+  ul.menu {
+    margin-bottom: 1.5rem;
+  }
+
+  ul.menu li {
+    display: block;
+    border-top: 1px solid gray;
+  }
+  
+  ul.menu li:last-child {
+    border-bottom: 1px solid gray;
+  }
+
+  ul.menu li a.active {
+    font-weight: 700;
+    border-bottom: 0;
+    background-color: #dff5fd;
+  }
+}
