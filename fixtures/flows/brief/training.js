@@ -1,6 +1,5 @@
 export const create = async (params) => {
     console.log('Starting to create training brief');
-    await selectLot('training');
     await createBrief();
     await fillTitle(params.title);
     await fillOrganisation();
@@ -32,12 +31,9 @@ export const create = async (params) => {
     await publishBrief();
 }
 
-const selectLot = async (lot) => {
-    await clickLink(lot, true);
-}
-
 const createBrief = async () => {
-    await clickButton('Create brief');
+    await clickLink('Training');
+    await clickButton('Create opportunity');
 }
 
 const fillTitle = async (role) => {
