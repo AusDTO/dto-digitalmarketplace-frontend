@@ -1,23 +1,34 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styles from './ProgressContent.scss'
 
 export class ProgressContent extends Component {
+  constructor(props) {
+    super(props)
+    this.element = React.createRef()
+  }
+
   componentDidMount() {
     this.props.setCurrentStage(this.props.stage)
     this.props.onStageMount(this.props.stage)
+    this.element.current.focus()
+    window.scrollTo(0, 0)
   }
 
   render() {
     const StageComponent = this.props.component
     return (
-      <StageComponent
-        model={this.props.model}
-        saveModel={this.props.saveModel}
-        onSubmit={this.props.onSubmit}
-        onSubmitFailed={this.props.onSubmitFailed}
-        formButtons={this.props.formButtons}
-        stagesTodo={this.props.stagesTodo}
-      />
+      <div tabIndex="0" ref={this.element} className={styles.container}>
+        <StageComponent
+          model={this.props.model}
+          saveModel={this.props.saveModel}
+          onSubmit={this.props.onSubmit}
+          onSubmitFailed={this.props.onSubmitFailed}
+          formButtons={this.props.formButtons}
+          stagesTodo={this.props.stagesTodo}
+        />
+      </div>
     )
   }
 }
