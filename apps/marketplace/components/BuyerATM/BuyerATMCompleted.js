@@ -1,16 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
+import formProps from 'shared/form/formPropsSelector'
 import styles from './BuyerATMCompleted.scss'
 
 const BuyerATMCompleted = props => (
   <div>
     <AUpageAlert as="success">
       <AUheading level="1" size="md">
-        Your opportunity is now live, and the invited sellers have been notified.
+        Your opportunity is now live
+        {props[props.model].openTo === 'selected' ? ', and the invited sellers have been notified.' : '.'}
       </AUheading>
       <p>It will be open until {format(props.closingDate, 'D MMMM, YYYY')} at 6pm Canberra time.</p>
     </AUpageAlert>
@@ -44,9 +47,14 @@ const BuyerATMCompleted = props => (
 )
 
 BuyerATMCompleted.propTypes = {
+  model: PropTypes.string.isRequired,
   briefId: PropTypes.string.isRequired,
   closingDate: PropTypes.string.isRequired,
   contactEmail: PropTypes.string.isRequired
 }
 
-export default BuyerATMCompleted
+const mapStateToProps = (state, props) => ({
+  ...formProps(state, props.model)
+})
+
+export default connect(mapStateToProps)(BuyerATMCompleted)

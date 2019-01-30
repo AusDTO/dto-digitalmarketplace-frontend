@@ -55,7 +55,7 @@ const OpportunityInfoCard = props => (
                 </span>
               ) : (
                 <span>
-                  <p>Only signed in {!props.isOpenToAll && !props.isOpenToCategory && 'invited'} sellers can apply.</p>
+                  <p>Only signed in {!props.isOpenToCategory && 'invited'} sellers can apply.</p>
                   <p>
                     <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
                       Create an account

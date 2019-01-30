@@ -71,6 +71,7 @@ class BuyerATMCompletedPage extends Component {
     if (this.props.brief && this.props.brief.closedAt) {
       return (
         <BuyerATMCompleted
+          model="BuyerATMForm"
           contactEmail={this.props.emailAddress}
           briefId={briefId}
           closingDate={this.props.brief.closedAt}
