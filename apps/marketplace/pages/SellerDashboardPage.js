@@ -15,7 +15,7 @@ class SellerDashboardPage extends Component {
   }
 
   render() {
-    const { match, currentlySending, supplier } = this.props
+    const { currentlySending, supplier } = this.props
 
     if (currentlySending && !supplier.code) {
       return <LoadingIndicatorFullPage />

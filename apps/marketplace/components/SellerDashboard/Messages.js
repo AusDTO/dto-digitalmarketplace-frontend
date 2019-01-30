@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { getSupplierMessages } from 'marketplace/actions/MessagesActions'
+import { loadMessages } from 'marketplace/actions/sellerDashboardActions'
 import styles from './SellerDashboard.scss'
 
 export class Messages extends Component {
+  componentDidMount() {
+    this.props.loadData()
+  }
+
   formatMessage = item => {
     const { message, links } = item
 
@@ -35,22 +39,12 @@ export class Messages extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    const { supplier, messages } = this.props
-
-    let items = []
-
-    if (supplier.code) {
-      if (messages) {
-        items = [...messages.errors, ...messages.warnings]
-      } else {
-        this.props.getSupplierMessages(supplier.code)
-      }
-    }
+    const { messages } = this.props
 
     return (
       <div className="row">
         <div className="col-xs-12">
-          {items ? (
+          {messages && messages.length > 0 ? (
             <table className={`${styles.resultListing} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
@@ -63,10 +57,10 @@ export class Messages extends Component {
                 </tr>
               </thead>
               <tbody>
-                {items.map(item => (
-                  <tr key={`item.${item.id}`}>
-                    <td className={styles.colMessage}>{this.formatMessage(item)}</td>
-                    <td className={styles.colSeverity}>{item.severity}</td>
+                {messages.map(message => (
+                  <tr key={`item.${message.id}`}>
+                    <td className={styles.colMessage}>{this.formatMessage(message)}</td>
+                    <td className={styles.colSeverity}>{message.severity}</td>
                   </tr>
                 ))}
               </tbody>
@@ -83,12 +77,11 @@ export class Messages extends Component {
 const mapStateToProps = state => ({
   loadedMessages: state.sellerDashboard.loadedMessages,
   currentlySending: state.app.currentlySending,
-  supplier: state.sellerDashboard.supplier,
-  messages: state.messages.data
+  messages: state.sellerDashboard.messages.items
 })
 
 const mapDispatchToProps = dispatch => ({
-  getSupplierMessages: supplierCode => dispatch(getSupplierMessages(supplierCode))
+  loadData: () => dispatch(loadMessages())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages)
