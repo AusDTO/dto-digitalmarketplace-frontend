@@ -9,7 +9,7 @@ export class Messages extends Component {
     this.props.loadData()
   }
 
-  formatMessage = item => {
+  formatMessage = (item, row) => {
     const { message, links } = item
 
     let messages = [message]
@@ -21,7 +21,11 @@ export class Messages extends Component {
             m.split(`{${link}}`).forEach((v, i, a) => {
               temp.push(v)
               if (a.length !== i + 1) {
-                temp.push(<a href={links[link]}>{link}</a>)
+                temp.push(
+                  <a key={`${row}.link.${link}`} href={links[link]}>
+                    {link}
+                  </a>
+                )
               }
             })
           } else {
@@ -57,9 +61,9 @@ export class Messages extends Component {
                 </tr>
               </thead>
               <tbody>
-                {messages.map(message => (
-                  <tr key={`item.${message.id}`}>
-                    <td className={styles.colMessage}>{this.formatMessage(message)}</td>
+                {messages.map((message, i) => (
+                  <tr key={`message.${message.message}`}>
+                    <td className={styles.colMessage}>{this.formatMessage(message, i)}</td>
                     <td className={styles.colSeverity}>{message.severity}</td>
                   </tr>
                 ))}

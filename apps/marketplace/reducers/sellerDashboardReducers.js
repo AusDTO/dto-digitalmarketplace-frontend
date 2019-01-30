@@ -19,7 +19,7 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
       return {
         ...state,
         messages: {
-          items: action.data.items
+          items: action.data.messages.items
         },
         loadMessageSuccess: true,
         loadMessageErrored: false
@@ -28,7 +28,7 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
       return {
         ...state,
         team: {
-          items: action.data.items
+          items: action.data.teams.items
         },
         loadTeamSuccess: true,
         loadTeamErrored: false

@@ -31,7 +31,7 @@ export class Team extends Component {
               </thead>
               <tbody>
                 {this.props.items.map(item => (
-                  <tr key={`item.${item.id}`}>
+                  <tr key={`team.${item.email}`}>
                     <td className={styles.colId}>{item.name}</td>
                     <td className={styles.colName}>{item.email}</td>
                   </tr>
