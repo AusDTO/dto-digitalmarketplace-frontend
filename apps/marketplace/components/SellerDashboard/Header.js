@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter, NavLink } from 'react-router-dom'
-import AUaccordion from '@gov.au/accordion/lib/js/react.js'
-import { rootPath } from 'marketplace/routes'
 import styles from './SellerDashboard.scss'
 
-class SellerDashboardHeader extends Component {
+class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -56,4 +54,4 @@ class SellerDashboardHeader extends Component {
   }
 }
 
-export default withRouter(SellerDashboardHeader)
+export default withRouter(Header)

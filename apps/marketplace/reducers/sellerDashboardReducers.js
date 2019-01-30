@@ -1,14 +1,9 @@
-import {
-  SELLER_DASHBOARD_SUCCESS,
-  MESSAGE_SUCCESS,
-  TEAM_SUCCESS,
-} from '../constants/sellerDashboard'
+import { SELLER_DASHBOARD_SUCCESS, MESSAGE_SUCCESS, TEAM_SUCCESS } from '../constants/sellerDashboard'
 
 const defaultUserState = {
-  sellerDashboard: { supplier: {} },
+  supplier: {},
   messages: { items: [] },
-  team: { items: [] },
-
+  team: { items: [] }
 }
 
 const sellerDashboardReducer = (state = defaultUserState, action) => {
@@ -16,21 +11,21 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
     case SELLER_DASHBOARD_SUCCESS:
       return {
         ...state,
-        sellerDashboard: action.data,
+        ...action.data,
         loadSellerDashboardSuccess: true,
         loadSellerDashboardErrored: false
       }
     case MESSAGE_SUCCESS:
       return {
         ...state,
-        messages: action.data,
+        sellerDashboard: action.data,
         loadMessageSuccess: true,
         loadMessageErrored: false
       }
     case TEAM_SUCCESS:
       return {
         ...state,
-        team: action.data,
+        sellerDashboard: action.data,
         loadTeamSuccess: true,
         loadTeamErrored: false
       }

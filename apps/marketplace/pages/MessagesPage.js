@@ -46,8 +46,8 @@ class MessagesPage extends Component {
 
   render() {
     const { currentlySending, data } = this.props
-    const errors = data.errors || []
-    const warnings = data.warnings || []
+    const errors = (data && data.errors) || []
+    const warnings = (data && data.warnings) || []
 
     return (
       <div>

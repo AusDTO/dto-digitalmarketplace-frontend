@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerDashboardMyBriefs } from 'marketplace/actions/dashboardActions'
-import { statusConvert } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
 import styles from './SellerDashboard.scss'
 
@@ -60,7 +59,7 @@ export class Team extends Component {
             <thead>
               <tr className={styles.headingRow}>
                 <th scope="col" className={styles.colId}>
-                  Notification
+                  Email
                 </th>
                 <th scope="col" className={styles.colName}>
                   Severity

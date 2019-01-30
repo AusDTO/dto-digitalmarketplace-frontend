@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
-import SellerDashboardHeader from 'marketplace/components/SellerDashboard/SellerDashboardHeader'
+import Header from 'marketplace/components/SellerDashboard/Header'
 import Messages from 'marketplace/components/SellerDashboard/Messages'
 import Team from 'marketplace/components/SellerDashboard/Team'
-import { loadSellerDashboard } from 'marketplace/actions/dashboardActions'
+import { loadSellerDashboard } from 'marketplace/actions/sellerDashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { rootPath } from 'marketplace/routes'
 
@@ -15,18 +15,19 @@ class SellerDashboardPage extends Component {
   }
 
   render() {
-    const { match, currentlySending } = this.props
+    const { match, currentlySending, supplier } = this.props
 
-    if (currentlySending) {
+    if (currentlySending && !supplier.code) {
       return <LoadingIndicatorFullPage />
     }
 
     return (
       <BrowserRouter basename={`${rootPath}/seller-dashboard`}>
         <div>
-          <SellerDashboardHeader {...this.props} />
+          {supplier.name}
+          <Header {...this.props} />
           <Switch>
-            <Route exact path={match.url} render={() => <Messages {...this.props} />} />
+            <Route exact path="/" render={() => <Messages {...this.props} />} />
             <Route path="/team" render={() => <Team {...this.props} />} />
           </Switch>
         </div>
@@ -40,10 +41,9 @@ SellerDashboardPage.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  items: state.dashboard.sellerDashboard.items,
-  loadSuccess: state.brief.loadSellerDashboardSuccess,
+  loadSuccess: state.sellerDashboard.loadSellerDashboardSuccess,
   currentlySending: state.app.currentlySending,
-  supplier: state.dashboard.sellerDashboard.supplier
+  supplier: state.sellerDashboard.supplier
 })
 
 const mapDispatchToProps = dispatch => ({

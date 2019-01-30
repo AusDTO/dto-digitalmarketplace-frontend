@@ -1,19 +1,10 @@
-import {
-  SELLER_DASHBOARD_SUCCESS,
-  MESSAGES_SUCCESS,
-  TEAM_SUCCESS
-} from '../constants/sellerDashboard'
+import { SELLER_DASHBOARD_SUCCESS, TEAM_SUCCESS } from '../constants/sellerDashboard'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleSellerDashboardSuccess = response => ({
   type: SELLER_DASHBOARD_SUCCESS,
-  data: response.data
-})
-
-export const handleMessagesSuccess = response => ({
-  type: MESSAGES_SUCCESS,
   data: response.data
 })
 
@@ -24,7 +15,7 @@ export const handleTeamSuccess = response => ({
 
 export const loadSellerDashboard = () => dispatch => {
   dispatch(sendingRequest(true))
-  dmapi({ url: `/supplier/871/dashboard` }).then(response => {
+  dmapi({ url: `/supplier/dashboard` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
@@ -34,21 +25,6 @@ export const loadSellerDashboard = () => dispatch => {
     dispatch(sendingRequest(false))
   })
 }
-
-
-export const loadMessages = () => dispatch => {
-  dispatch(sendingRequest(true))
-  dmapi({ url: `/supplier/871/messages` }).then(response => {
-    if (!response || response.error) {
-      dispatch(setErrorMessage(GENERAL_ERROR))
-    } else {
-      response.data.loadedAt = new Date().valueOf()
-      dispatch(handleMessagesSuccess(response))
-    }
-    dispatch(sendingRequest(false))
-  })
-}
-
 
 export const loadTeam = () => dispatch => {
   dispatch(sendingRequest(true))

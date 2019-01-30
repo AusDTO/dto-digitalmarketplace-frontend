@@ -1,35 +1,33 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadSellerMessages } from 'marketplace/actions/sellerdashboardActions'
-import { statusConvert } from 'marketplace/components/helpers'
-import { rootPath } from 'marketplace/routes'
+import { getSupplierMessages } from 'marketplace/actions/MessagesActions'
 import styles from './SellerDashboard.scss'
 
-const getLinkedBriefTitle = item => {
-  const name = item.name || 'Untitled outcome'
-  let url = ''
-  switch (item.lot) {
-    case 'rfx':
-      url = `${rootPath}/brief/${item.id}/overview/rfx`
-      break
-    case 'digital-outcome':
-      url = `/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`
-      break
-    case 'digital-professionals':
-    case 'training':
-      url = `${rootPath}/brief/${item.id}/overview`
-      break
-    default:
-      url = ''
-  }
-  return <a href={url}>{name}</a>
-}
-
 export class Messages extends Component {
-  componentDidMount() {
-    this.props.loadData()
+  formatMessage = item => {
+    const { message, links } = item
+
+    let messages = [message]
+    if (links) {
+      Object.keys(links).forEach(link => {
+        const temp = []
+        messages.forEach(m => {
+          if (m.split) {
+            m.split(`{${link}}`).forEach((v, i, a) => {
+              temp.push(v)
+              if (a.length !== i + 1) {
+                temp.push(<a href={links[link]}>{link}</a>)
+              }
+            })
+          } else {
+            temp.push(m)
+          }
+        })
+        messages = temp
+      })
+    }
+    return messages
   }
 
   render() {
@@ -37,59 +35,45 @@ export class Messages extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    // if (this.props.items.length === 0) {
-    //   return (
-    //     <div>
-    //       <div className="row">
-    //         <div className="col-xs-12">
-    //           <span />
-    //           <h2 className="au-display-lg">Start your first brief</h2>
-    //           <p>
-    //             <a href={`${rootPath}/create-brief`}>Create a new brief</a> on the Marketplace.
-    //           </p>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   )
-    // }
+    const { supplier, messages } = this.props
+
+    let items = []
+
+    if (supplier.code) {
+      if (messages) {
+        items = [...messages.errors, ...messages.warnings]
+      } else {
+        this.props.getSupplierMessages(supplier.code)
+      }
+    }
 
     return (
       <div className="row">
         <div className="col-xs-12">
-          <table className={`${styles.resultListing} col-xs-12`}>
-            <thead>
-              <tr className={styles.headingRow}>
-                <th scope="col" className={styles.colId}>
-                  Notification
-                </th>
-                <th scope="col" className={styles.colName}>
-                  Severity
-                </th>
-                <th scope="col" className={styles.colClosing}>
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.items.map(item => (
-                <tr key={`item.${item.id}`}>
-                  <td className={styles.colId}>{item.id}</td>
-                  <td className={styles.colName}>{getLinkedBriefTitle(item)}</td>
-                  <td
-                    className={`${item.status === 'live' || item.status !== 'draft' ? '' : styles.empty} ${
-                      styles.colClosing
-                    }`}
-                  >
-                    {item.status === 'live' && (
-                      <span className={styles.hideSmall}>
-                        <ClosedDate countdown date={item.closed_at} />
-                      </span>
-                    )}
-                  </td>
+          {items ? (
+            <table className={`${styles.resultListing} col-xs-12`}>
+              <thead>
+                <tr className={styles.headingRow}>
+                  <th scope="col" className={styles.colMessage}>
+                    Notification
+                  </th>
+                  <th scope="col" className={styles.colSeverity}>
+                    Severity
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {items.map(item => (
+                  <tr key={`item.${item.id}`}>
+                    <td className={styles.colMessage}>{this.formatMessage(item)}</td>
+                    <td className={styles.colSeverity}>{item.severity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            'No messages'
+          )}
         </div>
       </div>
     )
@@ -97,13 +81,14 @@ export class Messages extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.dashboard.buyerDashboardMyBriefs.items,
-  loadSuccess: state.dashboard.loadBuyerDashboardMyBriefsSuccess,
-  currentlySending: state.app.currentlySending
+  loadedMessages: state.sellerDashboard.loadedMessages,
+  currentlySending: state.app.currentlySending,
+  supplier: state.sellerDashboard.supplier,
+  messages: state.messages.data
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: () => dispatch(loadSellerMessages())
+  getSupplierMessages: supplierCode => dispatch(getSupplierMessages(supplierCode))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages)

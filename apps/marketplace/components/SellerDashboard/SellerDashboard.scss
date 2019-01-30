@@ -23,13 +23,13 @@ table.resultListing tr:nth-child(2n) {
   background-color: #fafafa;
 }
 
-table.resultListing .colId {
-  width: 30px;
+table.resultListing .colMessage {
+  width: 400px;
   padding-left: 20px;
 }
 
-table.resultListing .colName {
-  width: 400px;
+table.resultListing .colSeverity {
+  width: 30px;
 }
 
 table.resultListing .colClosing {
@@ -81,7 +81,7 @@ table.resultListing td, table.resultListing th {
     margin-bottom: 20px;
   }
 
-  table.resultListing thead, table.resultListing .empty, table.resultListing .colId, table.resultListing .colAuthor, .hideSmall {
+  table.resultListing thead, table.resultListing .empty, table.resultListing .colAuthor, .hideSmall {
     display: none !important;
   }
 
