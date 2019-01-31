@@ -71,8 +71,8 @@ const getBriefCategory = (domains, briefCategory) => {
   return category ? category.name : null
 }
 
-const showATMObjectives = (isOpenToAll, loggedIn, isBuyer, isInvitedSeller) => {
-  if ((isOpenToAll && loggedIn) || isBuyer || isInvitedSeller) {
+const showATMObjectives = (isOpenToAll, loggedIn, isBuyer, canRespond) => {
+  if ((isOpenToAll && loggedIn) || isBuyer || canRespond) {
     return true
   }
   return false
@@ -82,14 +82,18 @@ const Opportunity = props => {
   const {
     briefResponseCount,
     invitedSellerCount,
-    isInvitedSeller,
+    canRespond,
     isAssessedForCategory,
+    isAssessedForAnyCategory,
+    hasChosenBriefCategory,
     isOpenToAll,
     isOpenToCategory,
     isBriefOwner,
     loggedIn,
     hasResponded,
     isBuyer,
+    isApprovedSeller,
+    isApplicant,
     domains
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
@@ -231,46 +235,46 @@ const Opportunity = props => {
               </div>
             )}
           </div>
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && (
               <AUheading level="2" size="lg">
                 Objectives
               </AUheading>
             )}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && (
               <AUheading level="3" size="md">
                 Why is the work being done?
               </AUheading>
             )}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && <p>{brief.backgroundInformation}</p>}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && (
               <AUheading level="3" size="md">
                 What&apos;s the key problem you need to solve?
               </AUheading>
             )}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && <p>{brief.outcome}</p>}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && (
               <AUheading level="3" size="md">
                 Describe the users and their needs
               </AUheading>
             )}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && <p>{brief.endUsers}</p>}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && (
               <AUheading level="3" size="md">
                 What work has already been done?
               </AUheading>
             )}
-          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, isInvitedSeller) &&
+          {showATMObjectives(isOpenToAll, loggedIn, isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && <p>{brief.workAlreadyDone}</p>}
           {loggedIn &&
-            (isInvitedSeller || isBuyer) && (
+            (canRespond || isBuyer) && (
               <AUheading level="2" size="lg">
                 Additional information
               </AUheading>
@@ -286,7 +290,7 @@ const Opportunity = props => {
               </div>
             )}
           {loggedIn &&
-            (isOpenToAll || isInvitedSeller || isBuyer) && (
+            (isOpenToAll || canRespond || isBuyer) && (
               <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
                 {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
                   <ul>
@@ -353,12 +357,12 @@ const Opportunity = props => {
                   </ul>
                 )}
                 {brief.industryBriefing &&
-                  (isInvitedSeller || isBriefOwner) && (
+                  (canRespond || isBriefOwner) && (
                     <AUheading level="3" size="sm">
                       Industry briefing
                     </AUheading>
                   )}
-                {brief.industryBriefing && (isInvitedSeller || isBriefOwner) && <p>{brief.industryBriefing}</p>}
+                {brief.industryBriefing && (canRespond || isBriefOwner) && <p>{brief.industryBriefing}</p>}
               </div>
             )}
           <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
@@ -366,7 +370,7 @@ const Opportunity = props => {
             questions={brief.clarificationQuestions}
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
             briefId={brief.id}
-            showAskQuestionInfo={isInvitedSeller}
+            showAskQuestionInfo={canRespond}
           />
         </div>
         <div className="col-xs-12 col-md-4">
@@ -375,18 +379,23 @@ const Opportunity = props => {
             sellersApplied={briefResponseCount}
             isOpen={brief.status === 'live'}
             closingDate={getClosingTime(brief)}
-            isInvitedSeller={isInvitedSeller}
+            canRespond={canRespond}
             isOpenToAll={isOpenToAll}
             isAssessedForCategory={isAssessedForCategory}
+            isAssessedForAnyCategory={isAssessedForAnyCategory}
+            hasChosenBriefCategory={hasChosenBriefCategory}
             isOpenToCategory={isOpenToCategory}
             hasResponded={hasResponded}
             briefId={brief.id}
             briefLot={brief.lotSlug}
             loggedIn={loggedIn}
             isBuyer={isBuyer}
+            isApprovedSeller={isApprovedSeller}
+            isApplicant={isApplicant}
             isBriefOwner={isBriefOwner}
             buyerEmail={brief.contactEmail}
             category={category}
+            sellerCategory={brief.sellerCategory}
           />
         </div>
       </div>
@@ -399,12 +408,16 @@ Opportunity.defaultProps = {
   domains: [],
   briefResponseCount: 0,
   invitedSellerCount: 0,
-  isInvitedSeller: false,
+  canRespond: false,
   isAssessedForCategory: false,
+  isAssessedForAnyCategory: false,
+  hasChosenBriefCategory: false,
   isOpenToCategory: false,
   isOpenToAll: false,
   isBriefOwner: false,
   isBuyer: false,
+  isApprovedSeller: false,
+  isApplicant: false,
   hasResponded: false,
   loggedIn: false
 }
@@ -447,12 +460,16 @@ Opportunity.propTypes = {
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
-  isInvitedSeller: PropTypes.bool,
+  canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
+  isAssessedForAnyCategory: PropTypes.bool,
+  hasChosenBriefCategory: PropTypes.bool,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   isBuyer: PropTypes.bool,
+  isApprovedSeller: PropTypes.bool,
+  isApplicant: PropTypes.bool,
   hasResponded: PropTypes.bool,
   loggedIn: PropTypes.bool
 }

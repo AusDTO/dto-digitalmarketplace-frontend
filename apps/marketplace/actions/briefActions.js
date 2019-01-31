@@ -89,12 +89,16 @@ export const handlePublicBriefInfoSuccess = response => ({
   brief: response.data.brief,
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
-  isInvitedSeller: response.data.is_invited_seller,
+  canRespond: response.data.can_respond,
   isAssessedForCategory: response.data.is_assessed_for_category,
+  isAssessedForAnyCategory: response.data.is_assessed_in_any_category,
+  hasChosenBriefCategory: response.data.has_chosen_brief_category,
   isOpenToCategory: response.data.open_to_category,
   isOpenToAll: response.data.open_to_all,
   isBriefOwner: response.data.is_brief_owner,
   isBuyer: response.data.is_buyer,
+  isApprovedSeller: response.data.is_approved_seller,
+  isApplicant: response.data.is_applicant,
   hasResponded: response.data.has_responded,
   domains: response.data.domains
 })

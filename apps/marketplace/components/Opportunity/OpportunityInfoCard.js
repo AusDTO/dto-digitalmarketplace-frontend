@@ -51,15 +51,20 @@ const OpportunityInfoCard = props => (
                     >
                       How to respond
                     </a>
+                    <a
+                      href={`/login?next=${encodeURIComponent(
+                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                      )}`}
+                      className="au-btn au-btn--secondary au-btn--block"
+                    >
+                      Login
+                    </a>
                   </p>
                 </span>
               ) : (
                 <span>
                   <p>Only signed in {!props.isOpenToCategory && 'invited'} sellers can apply.</p>
                   <p>
-                    <a href={`${rootPath}/signup`} className="au-btn au-btn--secondary au-btn--block">
-                      Create an account
-                    </a>
                     <a
                       href={`/login?next=${encodeURIComponent(
                         `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
@@ -81,43 +86,87 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
-          !props.isBuyer &&
+          props.isApplicant && (
+            <span>
+              <p className={styles.invitedStatus}>Only approved sellers can apply.</p>
+              <p>
+                <a href="/sellers/application" className="au-btn au-btn--block">
+                  Continue application
+                </a>
+              </p>
+            </span>
+          )}
+        {props.isOpen &&
+          props.loggedIn &&
+          props.isApprovedSeller &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
-          !props.isInvitedSeller && (
+          !props.canRespond && (
             <div className={styles.invitedStatus}>
               <p>Only invited sellers can apply.</p>
             </div>
           )}
         {props.isOpen &&
           props.loggedIn &&
-          !props.isBuyer &&
+          props.isApprovedSeller &&
           props.isOpenToCategory &&
+          props.category &&
           !props.isAssessedForCategory && (
             <span>
-              <p className={styles.invitedStatus}>Only sellers approved in {props.category} can apply.</p>
+              {props.hasChosenBriefCategory ? (
+                <span>
+                  <p className={styles.invitedStatus}>Only sellers approved in {props.category} can apply.</p>
+                  <p>
+                    <a
+                      href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
+                      className="au-btn au-btn--block"
+                    >
+                      Request assessment
+                    </a>
+                  </p>
+                </span>
+              ) : (
+                <span>
+                  <p className={styles.invitedStatus}>
+                    Only sellers approved in {props.category} can apply. You must edit your profile to add this
+                    category.
+                  </p>
+                  <p>
+                    <a href="/sellers/edit" className="au-btn au-btn--block">
+                      Edit application
+                    </a>
+                  </p>
+                </span>
+              )}
+            </span>
+          )}
+        {props.isOpen &&
+          props.loggedIn &&
+          props.isApprovedSeller &&
+          props.isOpenToAll &&
+          !props.isAssessedForAnyCategory && (
+            <span>
+              <p className={styles.invitedStatus}>Only sellers with an assessed category can apply.</p>
               <p>
-                <a href="#help" className="au-btn au-btn--block">
+                <a href={`/sellers/opportunities/${props.briefId}/assessment/choose`} className="au-btn au-btn--block">
                   Request assessment
                 </a>
               </p>
             </span>
           )}
         {props.isOpen &&
-          !props.isBuyer &&
-          (props.isOpenToAll || props.isInvitedSeller) && (
+          props.isApprovedSeller &&
+          props.canRespond && (
             <div>
               {props.hasResponded ? (
                 <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
               ) : (
                 <div>
-                  {props.loggedIn && (
-                    <a
-                      href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
-                      className={`${styles.button} au-btn`}
-                    >
-                      Apply for opportunity
-                    </a>
-                  )}
+                  <a
+                    href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
+                    className={`${styles.button} au-btn`}
+                  >
+                    Apply for opportunity
+                  </a>
                 </div>
               )}
             </div>
@@ -129,16 +178,21 @@ const OpportunityInfoCard = props => (
 
 OpportunityInfoCard.defaultProps = {
   buyerEmail: '',
+  category: '',
   sellersInvited: 0,
   sellersApplied: 0,
-  isInvitedSeller: false,
+  canRespond: false,
   isAssessedForCategory: false,
+  isAssessedForAnyCategory: false,
+  hasChosenBriefCategory: false,
   isOpenToCategory: false,
   isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
   isOpen: false,
   isBuyer: false,
+  isApprovedSeller: false,
+  isApplicant: false,
   isBriefOwner: false
 }
 
@@ -146,19 +200,24 @@ OpportunityInfoCard.propTypes = {
   buyerEmail: PropTypes.string,
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
-  isInvitedSeller: PropTypes.bool,
+  canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
+  isAssessedForAnyCategory: PropTypes.bool,
+  hasChosenBriefCategory: PropTypes.bool,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
   isOpen: PropTypes.bool,
   isBuyer: PropTypes.bool,
+  isApprovedSeller: PropTypes.bool,
+  isApplicant: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
   briefLot: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired
+  category: PropTypes.string,
+  sellerCategory: PropTypes.string.isRequired
 }
 
 export default OpportunityInfoCard
