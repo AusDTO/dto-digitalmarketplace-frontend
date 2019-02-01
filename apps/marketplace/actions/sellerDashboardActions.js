@@ -1,4 +1,4 @@
-import { MESSAGES_SUCCESS, SELLER_DASHBOARD_SUCCESS, TEAM_SUCCESS } from '../constants/sellerDashboard'
+import { SELLER_DASHBOARD_MESSAGES_SUCCESS, SELLER_DASHBOARD_SUCCESS, SELLER_DASHBOARD_TEAM_SUCCESS } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -9,12 +9,12 @@ export const handleSellerDashboardSuccess = response => ({
 })
 
 export const handleMessagesSuccess = response => ({
-  type: MESSAGES_SUCCESS,
+  type: SELLER_DASHBOARD_MESSAGES_SUCCESS,
   data: response.data
 })
 
 export const handleTeamSuccess = response => ({
-  type: TEAM_SUCCESS,
+  type: SELLER_DASHBOARD_TEAM_SUCCESS,
   data: response.data
 })
 

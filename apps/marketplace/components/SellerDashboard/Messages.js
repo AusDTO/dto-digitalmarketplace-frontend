@@ -38,6 +38,35 @@ export class Messages extends Component {
     return messages
   }
 
+  messageIdToAction = (item) => {
+    const {
+      id
+    } = item
+    if (!id) {
+      return
+    }
+    let error_type = ''
+    let dashIndex = id.indexOf('-')
+    if (dashIndex > -1) {
+      error_type = id.substring(0, dashIndex)
+    } else {
+      error_type = id
+    }
+    switch(error_type) {
+      case 'S000':
+        return <a href={`/sellers/edit/?step=${item.step}`}>Preview and submit</a>
+      case 'S003':
+        return <a href={`/sellers/edit/?step=${item.step}`}>Update daily rate</a>
+      case 'S005':
+        return <a href={`/sellers/edit/?step=${item.step}`}>Update case study</a>
+      case 'S010':
+      case 'S011':
+        return <a href={`/sellers/edit/?step=${item.step}`}>Update documents</a>
+      default:
+        return ''
+    }
+  }
+
   render() {
     if (this.props.currentlySending) {
       return <LoadingIndicatorFullPage />
@@ -55,8 +84,8 @@ export class Messages extends Component {
                   <th scope="col" className={styles.colMessage}>
                     Notification
                   </th>
-                  <th scope="col" className={styles.colSeverity}>
-                    Severity
+                  <th scope="col" className={styles.colAction}>
+                    Actions
                   </th>
                 </tr>
               </thead>
@@ -64,14 +93,14 @@ export class Messages extends Component {
                 {messages.map((message, i) => (
                   <tr key={`message.${message.message}`}>
                     <td className={styles.colMessage}>{this.formatMessage(message, i)}</td>
-                    <td className={styles.colSeverity}>{message.severity}</td>
+                    <td className={styles.colAction}>{this.messageIdToAction(message, i)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            'No messages'
-          )}
+              'No messages'
+            )}
         </div>
       </div>
     )

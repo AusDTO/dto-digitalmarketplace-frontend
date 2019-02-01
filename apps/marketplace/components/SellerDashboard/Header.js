@@ -1,3 +1,4 @@
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './SellerDashboard.scss'
 
@@ -10,22 +11,36 @@ const Header = props => (
           <h1 className="au-display-xl">Dashboard</h1>
         </div>
       </div>
+      <div className="row">
+      </div>
       <div className={`${styles.menuRow} row`}>
         <div className="col-xs-12 col-md-8">
           <nav className={styles.dashNav}>
             <ul className={styles.menu}>
               <li>
-                <NavLink id="notifications-link" to="/" activeClassName={styles.active} exact>
-                  Notifications {props.messages && props.messages.items.length}
+                <NavLink id="team-link" to="/" activeClassName={styles.active} exact>
+                  People
                 </NavLink>
               </li>
               <li>
-                <NavLink id="team-link" to="/team" activeClassName={styles.active}>
-                  Team
+                <NavLink id="notifications-link" to="/notifications" activeClassName={styles.active} exact>
+                  Notifications 
+                    <span className={styles.notification}>
+                      <div className={styles.circle}></div>
+                      <div className={styles.count}>{props.messages && props.messages.items.length}</div>
+                    </span>
                 </NavLink>
               </li>
             </ul>
           </nav>
+        </div>
+        <div className="col-xs-12 col-md-4">
+            <a href={`/supplier/${props.supplier.code}`} className="au-btn right-button-margin">
+              View profile
+            </a>
+            <a href="/sellers/edit" className="au-btn au-btn--secondary">
+              Edit profile
+            </a>
         </div>
       </div>
     </div>

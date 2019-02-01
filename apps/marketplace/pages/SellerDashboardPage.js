@@ -27,8 +27,8 @@ class SellerDashboardPage extends Component {
           {supplier.name}
           <Header {...this.props} />
           <Switch>
-            <Route exact path="/" render={() => <Messages {...this.props} />} />
-            <Route path="/team" render={() => <Team {...this.props} />} />
+            <Route exact path="/" render={() => <Team {...this.props} />} />
+            <Route path="/notifications" render={() => <Messages {...this.props} />} />
           </Switch>
         </div>
       </BrowserRouter>
