@@ -55,6 +55,9 @@ export class Services extends Component {
   }
 
   serviceStatusToDisplay = item => {
+    if (item.active_assessment) {
+      return <div className={`${styles.badge} ${styles.requested}`}>Requested</div>
+    }
     switch (item.status) {
       case 'unassessed':
         return <div className={`${styles.unassessed}`}>Unassessed</div>
@@ -62,8 +65,6 @@ export class Services extends Component {
         return <div className={`${styles.badge} ${styles.approved}`}>Approved</div>
       case 'rejected':
         return <div className={`${styles.badge} ${styles.rejected}`}>Rejected</div>
-      case 'requested':
-        return <div className={`${styles.badge} ${styles.requested}`}>Requested</div>
       default:
         return ''
     }
@@ -98,6 +99,7 @@ export class Services extends Component {
                     <td className={styles.colService}>{item.service}</td>
                     <td className={styles.colAssessmentCriteria}>
                       <a
+                        target="_blank"
                         href={`https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria${this.serviceIdToHash(
                           item
                         )}`}
@@ -105,6 +107,7 @@ export class Services extends Component {
                         View criteria
                       </a>
                       <a
+                        target="_blank"
                         href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${this.serviceIdToHash(
                           item
                         )}`}
