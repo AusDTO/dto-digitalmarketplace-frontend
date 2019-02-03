@@ -5,6 +5,7 @@ import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
 import Header from 'marketplace/components/SellerDashboard/Header'
 import Messages from 'marketplace/components/SellerDashboard/Messages'
 import Team from 'marketplace/components/SellerDashboard/Team'
+import Services from 'marketplace/components/SellerDashboard/Services'
 import { loadSellerDashboard } from 'marketplace/actions/sellerDashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { rootPath } from 'marketplace/routes'
@@ -29,6 +30,7 @@ class SellerDashboardPage extends Component {
           <Switch>
             <Route exact path="/" render={() => <Team {...this.props} />} />
             <Route path="/notifications" render={() => <Messages {...this.props} />} />
+            <Route path="/services" render={() => <Services {...this.props} />} />
           </Switch>
         </div>
       </BrowserRouter>

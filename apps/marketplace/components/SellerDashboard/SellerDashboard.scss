@@ -29,20 +29,17 @@ table.resultListing .colMessage {
 }
 
 table.resultListing .colAction {
-  width: 30px;
+  width: 200px;
 }
 
-table.resultListing .colClosing {
-  width: 180px;
-  white-space: nowrap;
+table.resultListing .colName {
+  width: 600px;
+  padding-left: 20px;
 }
 
-table.resultListing .colAuthor {
-  width: 130px;
-}
-
-table.resultListing .colStatus {
-  width: 190px;
+table.resultListing .colEmail {
+  width: 600px;
+  padding-left: 20px;
 }
 
 table.resultListingTeamBriefs .colAction {
@@ -53,6 +50,23 @@ table.resultListingTeamBriefs .colAction {
 table.resultListing .colAction a {
   margin-right: 15px;
   white-space: nowrap;
+}
+
+table.resultListing .colService {
+  width: 600px;
+}
+
+table.resultListing .colAssessmentCriteria {
+  width: 250px;
+}
+
+table.resultListing .colAssessmentCriteria a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+table.resultListing .colStatus {
+  width: 250px;
 }
 
 table.resultListing td, table.resultListing th {
@@ -100,7 +114,7 @@ table.resultListing td, table.resultListing th {
     padding: 5px;
   }
 
-  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colStatus, table.resultListing .colAction {
+  table.resultListing .colName, table.resultListing .colStatus, table.resultListing .colAction {
     width: auto;
   }
 
@@ -143,6 +157,25 @@ table.resultListing td, table.resultListing th {
   color: #0A6FB6;
   padding: 2px 5px;
   width: fit-content;
+}
+
+.badge.approved {
+  border: solid 2px rgba(0, 128, 0, 1);
+  color: rgba(0, 128, 0, 1);
+}
+
+.badge.rejected {
+  border: solid 2px #FF0000;
+  color: #FF0000;
+}
+
+.badge.requested {
+  border: solid 2px rgba(204, 204, 204, 1);
+  color: black;
+}
+
+.unassessed {
+  color: #999999;
 }
 
 .disclaimer {

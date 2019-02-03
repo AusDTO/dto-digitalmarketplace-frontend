@@ -1,4 +1,9 @@
-import { SELLER_DASHBOARD_MESSAGES_SUCCESS, SELLER_DASHBOARD_SUCCESS, SELLER_DASHBOARD_TEAM_SUCCESS } from '../constants/constants'
+import {
+  SELLER_DASHBOARD_MESSAGES_SUCCESS,
+  SELLER_DASHBOARD_SUCCESS,
+  SELLER_DASHBOARD_TEAM_SUCCESS,
+  SELLER_DASHBOARD_SERVICES_SUCCESS
+} from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -10,6 +15,11 @@ export const handleSellerDashboardSuccess = response => ({
 
 export const handleMessagesSuccess = response => ({
   type: SELLER_DASHBOARD_MESSAGES_SUCCESS,
+  data: response.data
+})
+
+export const handleServicesSuccess = response => ({
+  type: SELLER_DASHBOARD_SERVICES_SUCCESS,
   data: response.data
 })
 
@@ -52,6 +62,19 @@ export const loadTeam = () => dispatch => {
     } else {
       response.data.loadedAt = new Date().valueOf()
       dispatch(handleTeamSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const loadServices = () => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: `/supplier/dashboard/services` }).then(response => {
+    if (!response || response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      response.data.loadedAt = new Date().valueOf()
+      dispatch(handleServicesSuccess(response))
     }
     dispatch(sendingRequest(false))
   })

@@ -38,21 +38,19 @@ export class Messages extends Component {
     return messages
   }
 
-  messageIdToAction = (item) => {
-    const {
-      id
-    } = item
+  messageIdToAction = item => {
+    const { id } = item
     if (!id) {
-      return
+      return ''
     }
-    let error_type = ''
-    let dashIndex = id.indexOf('-')
+    let errorType = ''
+    const dashIndex = id.indexOf('-')
     if (dashIndex > -1) {
-      error_type = id.substring(0, dashIndex)
+      errorType = id.substring(0, dashIndex)
     } else {
-      error_type = id
+      errorType = id
     }
-    switch(error_type) {
+    switch (errorType) {
       case 'S000':
         return <a href={`/sellers/edit/?step=${item.step}`}>Preview and submit</a>
       case 'S003':
@@ -99,8 +97,8 @@ export class Messages extends Component {
               </tbody>
             </table>
           ) : (
-              'No messages'
-            )}
+            'No messages'
+          )}
         </div>
       </div>
     )
