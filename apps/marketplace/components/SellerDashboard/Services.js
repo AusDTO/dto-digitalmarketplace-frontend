@@ -55,7 +55,7 @@ export class Services extends Component {
   }
 
   serviceStatusToDisplay = item => {
-    if (item.active_assessment) {
+    if (item.active_assessment && item.status === 'unassessed') {
       return <div className={`${styles.badge} ${styles.requested}`}>Requested</div>
     }
     switch (item.status) {

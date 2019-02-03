@@ -32,6 +32,11 @@ table.resultListing .colAction {
   width: 200px;
 }
 
+table.resultListing .colAction a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
 table.resultListing .colName {
   width: 600px;
   padding-left: 20px;
@@ -40,16 +45,6 @@ table.resultListing .colName {
 table.resultListing .colEmail {
   width: 600px;
   padding-left: 20px;
-}
-
-table.resultListingTeamBriefs .colAction {
-  width: 180px;
-  padding-right: 20px;
-}
-
-table.resultListing .colAction a {
-  margin-right: 15px;
-  white-space: nowrap;
 }
 
 table.resultListing .colService {
@@ -114,8 +109,9 @@ table.resultListing td, table.resultListing th {
     padding: 5px;
   }
 
-  table.resultListing .colName, table.resultListing .colStatus, table.resultListing .colAction {
+  table.resultListing .colName, table.resultListing .colEmail, table.resultListing .colMessage, table.resultListing .colAction, table.resultListing .colStatus {
     width: auto;
+    padding-left: 5px;
   }
 
   table.resultListing .colAction a::after {
