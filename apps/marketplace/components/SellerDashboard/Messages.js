@@ -56,7 +56,7 @@ export class Messages extends Component {
       case 'S000':
         return <a href={`/sellers/edit/?step=${item.step}`}>Preview and submit</a>
       case 'S003':
-        return <a href={`/sellers/edit/?step=${item.step}`}>Update daily rate</a>
+        return <a href={`/sellers/edit/?step=${item.step}`}>Update pricing</a>
       case 'S005':
         return <a href={`/sellers/edit/?step=${item.step}`}>Update case study</a>
       case 'S010':
