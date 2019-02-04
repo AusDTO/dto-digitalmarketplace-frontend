@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import { rootPath } from 'marketplace/routes'
 
 const DashBoardLink = props => {
-  const { userType } = props
+  const { 
+    userType,
+    notificationCount
+   } = props
   return (
     <span>
       {userType === 'buyer' ? (
@@ -12,14 +15,21 @@ const DashBoardLink = props => {
       ) : userType === 'applicant' ? (
         <a href="/sellers/application">Continue application</a>
       ) : (
-        <a href="/sellers">Dashboard</a>
+        <span>
+          <a href="/2/seller-dashboard">Dashboard</a>
+          <span className="notification">
+            <div className="circle" />
+            <div className="count">{notificationCount}</div>
+          </span>
+        </span>
       )}
     </span>
   )
 }
 
 DashBoardLink.propTypes = {
-  userType: PropTypes.string.isRequired
+  userType: PropTypes.string.isRequired,
+  notificationCount: PropTypes.number
 }
 
 export default DashBoardLink

@@ -583,6 +583,29 @@ li:first-child.au-marketplace-header-link-list a {
   display: block;
 }
 
+.notification {
+  position: relative;
+  margin-left: 5px;
+}
+.notification .circle {
+  border-radius: 50%;
+  border: solid 2px red;
+  padding: 1px 12px;
+  background-color: red;
+  display: inline;
+
+}
+.notification .count {
+  color: white;
+  width: 24px;
+  font-size: 1rem;
+  top: -3px;
+  left: 1px;
+  position: absolute;
+  text-align: center;
+}
+
+
 @media screen and (min-width: 768px) {
   .au-marketplace-header-logo {
     padding: 1.8rem 1rem;

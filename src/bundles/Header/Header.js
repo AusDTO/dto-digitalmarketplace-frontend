@@ -46,7 +46,14 @@ class Header extends React.Component {
                 <div id="react-bundle-auth-header">
                   <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
                     <li>
-                      {this.props.isAuthenticated ? <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
+                      {this.props.isAuthenticated ? 
+                      <span>
+                        <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
+                        <span className="notification">
+                          <div className="circle" />
+                          <div className="count">{this.props.notificationCount}</div>
+                        </span>
+                      </span> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
                     </li>
                     <li>
                       {this.props.isAuthenticated ? <a href={this.props.logoutUrl}>Sign out</a> : <a href="/login" className="au-btn au-btn--dark">Log in</a>}
@@ -109,7 +116,15 @@ class Header extends React.Component {
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     <div className="au-marketplace-header_mobile-link">
-                      {this.props.isAuthenticated ? <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a> : <a href="/2/signup">Sign up</a>}
+                      {this.props.isAuthenticated ? 
+                      <span>
+                        <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
+                        <span className="notification">
+                          <div className="circle" />
+                          <div className="count">{this.props.notificationCount}</div>
+                        </span>
+                      </span>
+                      : <a href="/2/signup">Sign up</a>}
                     </div>
                     <div className="au-marketplace-header_mobile-link">
                       {this.props.isAuthenticated ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
@@ -156,7 +171,8 @@ Header.propTypes = {
   loginUrl: PropTypes.string,
   dashboardUrl: PropTypes.string,
   logoutUrl: PropTypes.string,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  notificationCount: PropTypes.number
 }
 
 Header.defaultProps = {
@@ -171,7 +187,8 @@ const mapStateToProps = (state) => {
     loginUrl: state.loginUrl,
     dashboardUrl: state.dashboardUrl,
     logoutUrl: state.logoutUrl,
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.isAuthenticated,
+    notificationCount: state.notificationCount
   };
 };
 
