@@ -38,12 +38,12 @@ table.resultListing .colAction a {
 }
 
 table.resultListing .colName {
-  width: 600px;
+  width: 200px;
   padding-left: 20px;
 }
 
 table.resultListing .colEmail {
-  width: 600px;
+  width: 500px;
   padding-left: 20px;
 }
 
@@ -168,6 +168,11 @@ table.resultListing td, table.resultListing th {
 .badge.requested {
   border: solid 2px rgba(204, 204, 204, 1);
   color: black;
+}
+
+.badge.authorisedrepresentative {
+  position: relative;
+  margin-left: 10px;
 }
 
 .unassessed {

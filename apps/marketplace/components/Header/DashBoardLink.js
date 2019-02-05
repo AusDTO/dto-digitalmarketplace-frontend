@@ -4,10 +4,7 @@ import PropTypes from 'prop-types'
 import { rootPath } from 'marketplace/routes'
 
 const DashBoardLink = props => {
-  const { 
-    userType,
-    notificationCount
-   } = props
+  const { userType, notificationCount } = props
   return (
     <span>
       {userType === 'buyer' ? (
@@ -28,8 +25,7 @@ const DashBoardLink = props => {
 }
 
 DashBoardLink.propTypes = {
-  userType: PropTypes.string.isRequired,
-  notificationCount: PropTypes.number
+  userType: PropTypes.string.isRequired
 }
 
 export default DashBoardLink

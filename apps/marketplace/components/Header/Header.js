@@ -114,7 +114,11 @@ export class Header extends Component {
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     <div className="au-marketplace-header_mobile-link">
-                      {loggedIn ? <DashBoardLink userType={userType} notificationCount={notificationCount} /> : <a href="/2/signup">Sign up</a>}
+                      {loggedIn ? (
+                        <DashBoardLink userType={userType} notificationCount={notificationCount} />
+                      ) : (
+                        <a href="/2/signup">Sign up</a>
+                      )}
                     </div>
                     <div className="au-marketplace-header_mobile-link">
                       {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}

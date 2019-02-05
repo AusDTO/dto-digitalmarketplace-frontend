@@ -23,7 +23,7 @@ const Header = props => (
               </li>
               <li>
                 <NavLink id="team-link" to="/" activeClassName={styles.active} exact>
-                  People
+                  Team
                 </NavLink>
               </li>
               <li>
