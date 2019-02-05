@@ -39,6 +39,9 @@ const defaultBriefState = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isAwaitingApplicationAssessment: false,
+  isAwaitingDomainAssessment: false,
+  hasBeenAssessedForBrief: false,
   hasResponded: false,
   domains: []
 }
@@ -78,6 +81,9 @@ const briefReducer = (state = defaultBriefState, action) => {
         isBuyer: action.isBuyer,
         isApprovedSeller: action.isApprovedSeller,
         isApplicant: action.isApplicant,
+        isAwaitingApplicationAssessment: action.isAwaitingApplicationAssessment,
+        isAwaitingDomainAssessment: action.isAwaitingDomainAssessment,
+        hasBeenAssessedForBrief: action.hasBeenAssessedForBrief,
         hasResponded: action.hasResponded,
         domains: action.domains,
         loadBriefSuccess: true,

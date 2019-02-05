@@ -94,6 +94,9 @@ const Opportunity = props => {
     isBuyer,
     isApprovedSeller,
     isApplicant,
+    isAwaitingApplicationAssessment,
+    isAwaitingDomainAssessment,
+    hasBeenAssessedForBrief,
     domains
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
@@ -388,10 +391,14 @@ const Opportunity = props => {
             hasResponded={hasResponded}
             briefId={brief.id}
             briefLot={brief.lotSlug}
+            briefStatus={brief.status}
             loggedIn={loggedIn}
             isBuyer={isBuyer}
             isApprovedSeller={isApprovedSeller}
             isApplicant={isApplicant}
+            isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
+            isAwaitingDomainAssessment={isAwaitingDomainAssessment}
+            hasBeenAssessedForBrief={hasBeenAssessedForBrief}
             isBriefOwner={isBriefOwner}
             buyerEmail={brief.contactEmail}
             category={category}
@@ -418,6 +425,9 @@ Opportunity.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isAwaitingApplicationAssessment: false,
+  isAwaitingDomainAssessment: false,
+  hasBeenAssessedForBrief: false,
   hasResponded: false,
   loggedIn: false
 }
@@ -470,6 +480,9 @@ Opportunity.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
+  isAwaitingApplicationAssessment: PropTypes.bool,
+  isAwaitingDomainAssessment: PropTypes.bool,
+  hasBeenAssessedForBrief: PropTypes.bool,
   hasResponded: PropTypes.bool,
   loggedIn: PropTypes.bool
 }

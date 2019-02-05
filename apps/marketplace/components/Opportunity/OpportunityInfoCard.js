@@ -37,7 +37,8 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {!props.isOpen && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
+        {!props.isOpen &&
+          props.briefStatus !== 'draft' && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
         {props.isOpen &&
           !props.loggedIn && (
             <span>
@@ -114,26 +115,44 @@ const OpportunityInfoCard = props => (
             <span>
               {props.hasChosenBriefCategory ? (
                 <span>
-                  <p className={styles.invitedStatus}>Only sellers approved in {props.category} can apply.</p>
+                  <p className={styles.invitedStatus}>
+                    Only sellers approved in {props.category} can apply.
+                    {props.isAwaitingDomainAssessment && (
+                      <span> Your application for this category is currently being assessed.</span>
+                    )}
+                    {!props.isAwaitingDomainAssessment &&
+                      props.hasBeenAssessedForBrief && (
+                        <span> You have already submitted a request for assessment against this brief.</span>
+                      )}
+                  </p>
                   <p>
-                    <a
-                      href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
-                      className="au-btn au-btn--block"
-                    >
-                      Request assessment
-                    </a>
+                    {!props.isAwaitingDomainAssessment &&
+                      !props.hasBeenAssessedForBrief && (
+                        <a
+                          href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
+                          className="au-btn au-btn--block"
+                        >
+                          Request assessment
+                        </a>
+                      )}
                   </p>
                 </span>
               ) : (
                 <span>
                   <p className={styles.invitedStatus}>
-                    Only sellers approved in {props.category} can apply. You must edit your profile to add this
-                    category.
+                    Only sellers approved in {props.category} can apply.{' '}
+                    {props.isAwaitingApplicationAssessment ? (
+                      <span>Your seller profile is currently being assessed.</span>
+                    ) : (
+                      <span>You must edit your profile to add this category before you can request assessment.</span>
+                    )}
                   </p>
                   <p>
-                    <a href="/sellers/edit" className="au-btn au-btn--block">
-                      Edit application
-                    </a>
+                    {!props.isAwaitingApplicationAssessment && (
+                      <a href="/sellers/edit" className="au-btn au-btn--block">
+                        Edit application
+                      </a>
+                    )}
                   </p>
                 </span>
               )}
@@ -193,6 +212,9 @@ OpportunityInfoCard.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isAwaitingApplicationAssessment: false,
+  isAwaitingDomainAssessment: false,
+  hasBeenAssessedForBrief: false,
   isBriefOwner: false
 }
 
@@ -212,10 +234,14 @@ OpportunityInfoCard.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
+  isAwaitingApplicationAssessment: PropTypes.bool,
+  isAwaitingDomainAssessment: PropTypes.bool,
+  hasBeenAssessedForBrief: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
   briefLot: PropTypes.string.isRequired,
+  briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
   sellerCategory: PropTypes.string.isRequired
 }
