@@ -11,6 +11,10 @@ const BriefOutcomeChoice = () => (
         <span className={styles.newBadge}>NEW</span>
       </AUheading>
     </div>
+    <p className={styles.largerText}>
+      Check with your procurement team to ensure you comply with your agency rules and legal requirements before
+      approaching the market.
+    </p>
     <div className={`row ${styles.container}`}>
       <div className="col-xs-12 col-md-5">
         <div className={styles.card}>
