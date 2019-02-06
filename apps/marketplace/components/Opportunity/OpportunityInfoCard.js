@@ -89,12 +89,17 @@ const OpportunityInfoCard = props => (
           props.loggedIn &&
           props.isApplicant && (
             <span>
-              <p className={styles.invitedStatus}>Only approved sellers can apply.</p>
-              <p>
-                <a href="/sellers/application" className="au-btn au-btn--block">
-                  Continue application
-                </a>
+              <p className={styles.invitedStatus}>
+                Only approved sellers can apply.
+                {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
+              {!props.isAwaitingApplicationAssessment && (
+                <p>
+                  <a href="/sellers/application" className="au-btn au-btn--block">
+                    Continue application
+                  </a>
+                </p>
+              )}
             </span>
           )}
         {props.isOpen &&
@@ -125,17 +130,17 @@ const OpportunityInfoCard = props => (
                         <span> You have already submitted a request for assessment against this brief.</span>
                       )}
                   </p>
-                  <p>
-                    {!props.isAwaitingDomainAssessment &&
-                      !props.hasBeenAssessedForBrief && (
+                  {!props.isAwaitingDomainAssessment &&
+                    !props.hasBeenAssessedForBrief && (
+                      <p>
                         <a
                           href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
                           className="au-btn au-btn--block"
                         >
                           Request assessment
                         </a>
-                      )}
-                  </p>
+                      </p>
+                    )}
                 </span>
               ) : (
                 <span>
@@ -164,12 +169,25 @@ const OpportunityInfoCard = props => (
           props.isOpenToAll &&
           !props.isAssessedForAnyCategory && (
             <span>
-              <p className={styles.invitedStatus}>Only sellers with an assessed category can apply.</p>
-              <p>
-                <a href={`/sellers/opportunities/${props.briefId}/assessment/choose`} className="au-btn au-btn--block">
-                  Request assessment
-                </a>
+              <p className={styles.invitedStatus}>
+                Only sellers with an assessed category can apply.
+                {props.isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
+                {!props.isAwaitingDomainAssessment &&
+                  props.hasBeenAssessedForBrief && (
+                    <span> You have already submitted a request for assessment against this brief.</span>
+                  )}
               </p>
+              {!props.isAwaitingDomainAssessment &&
+                !props.hasBeenAssessedForBrief && (
+                  <p>
+                    <a
+                      href={`/sellers/opportunities/${props.briefId}/assessment/choose`}
+                      className="au-btn au-btn--block"
+                    >
+                      Request assessment
+                    </a>
+                  </p>
+                )}
             </span>
           )}
         {props.isOpen &&
