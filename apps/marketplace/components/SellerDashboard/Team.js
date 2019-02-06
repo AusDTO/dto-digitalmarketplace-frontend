@@ -3,6 +3,7 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadTeam, removeUser } from 'marketplace/actions/sellerDashboardActions'
 import styles from './SellerDashboard.scss'
 
@@ -18,7 +19,7 @@ export class Team extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.currentlySending) {
+    if (!this.props.loading && !this.props.errors) {
       this.props.loadData()
     }
   }
@@ -47,8 +48,26 @@ export class Team extends Component {
   }
 
   render() {
-    if (this.props.currentlySending) {
+    const {
+      items,
+      loading,
+      errors,
+      errorMessage
+    } = this.props
+
+    if (loading) {
       return <LoadingIndicatorFullPage />
+    }
+    if (errors) {
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the team details"
+          errorMessage={errorMessage}
+          setFocus={() => {}}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
     }
 
     return (
@@ -68,7 +87,7 @@ export class Team extends Component {
         )}
         <div className="row">
           <div className="col-xs-12">
-            {this.props.items.length > 0 ? (
+            {items.length > 0 ? (
               <table className={`${styles.resultListing} col-xs-12`}>
                 <thead>
                   <tr className={styles.headingRow}>
@@ -84,7 +103,7 @@ export class Team extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.items.map(item => (
+                  {items.map(item => (
                     <tr key={`team.${item.email}`}>
                       <td className={styles.colName}>{item.name}</td>
                       <td className={styles.colEmail}>
@@ -129,9 +148,9 @@ export class Team extends Component {
 
 const mapStateToProps = state => ({
   items: state.sellerDashboard.team.items,
-  loadedAt: state.sellerDashboard.team.loadedAt,
-  loadSuccess: state.sellerDashboard.loadTeamSuccess,
-  currentlySending: state.app.currentlySending
+  loading: state.sellerDashboard.team.loading,
+  errors: state.sellerDashboard.team.errors,
+  errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({

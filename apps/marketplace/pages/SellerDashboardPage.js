@@ -11,7 +11,7 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import { rootPath } from 'marketplace/routes'
 
 class SellerDashboardPage extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadInitialData()
   }
 

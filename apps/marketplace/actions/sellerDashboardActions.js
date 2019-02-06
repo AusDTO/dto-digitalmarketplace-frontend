@@ -1,8 +1,8 @@
 import {
-  SELLER_DASHBOARD_MESSAGES_SUCCESS,
+  SELLER_DASHBOARD_MESSAGES_LOAD,
   SELLER_DASHBOARD_SUCCESS,
-  SELLER_DASHBOARD_TEAM_SUCCESS,
-  SELLER_DASHBOARD_SERVICES_SUCCESS,
+  SELLER_DASHBOARD_TEAM_LOAD,
+  SELLER_DASHBOARD_SERVICES_LOAD,
   SELLER_DASHBOARD_REMOVE_USER_SUCCESS
 } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
@@ -14,24 +14,18 @@ export const handleSellerDashboardSuccess = response => ({
   data: response.data
 })
 
-export const handleMessagesSuccess = response => ({
-  type: SELLER_DASHBOARD_MESSAGES_SUCCESS,
-  data: response.data
-})
-
 export const handleRemoveUserSuccess = response => ({
   type: SELLER_DASHBOARD_REMOVE_USER_SUCCESS,
   data: response.data
 })
 
-export const handleServicesSuccess = response => ({
-  type: SELLER_DASHBOARD_SERVICES_SUCCESS,
-  data: response.data
-})
-
-export const handleTeamSuccess = response => ({
-  type: SELLER_DASHBOARD_TEAM_SUCCESS,
-  data: response.data
+export const load = (type, data) => ({
+  type: type,
+  data: {
+    items: data.items ? data.items : [],
+    errors: data.errors ? true: false,
+    loading: data.loading ? true : false
+  }
 })
 
 export const loadSellerDashboard = () => dispatch => {
@@ -48,13 +42,20 @@ export const loadSellerDashboard = () => dispatch => {
 }
 
 export const loadMessages = () => dispatch => {
-  dispatch(sendingRequest(true))
+  dispatch(sendingRequest(true))  
+  dispatch(load(SELLER_DASHBOARD_MESSAGES_LOAD, {
+    loading: true
+  }))
   dmapi({ url: `/supplier/dashboard/messages` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
+      dispatch(load(SELLER_DASHBOARD_MESSAGES_LOAD, {
+        errors: true
+      }))
     } else {
-      response.data.loadedAt = new Date().valueOf()
-      dispatch(handleMessagesSuccess(response))
+      dispatch(load(SELLER_DASHBOARD_MESSAGES_LOAD, {
+        items: response.data.messages.items
+      }))
     }
     dispatch(sendingRequest(false))
   })
@@ -62,12 +63,19 @@ export const loadMessages = () => dispatch => {
 
 export const loadTeam = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(load(SELLER_DASHBOARD_TEAM_LOAD, {
+    loading: true
+  }))
   dmapi({ url: `/supplier/dashboard/team` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
+      dispatch(load(SELLER_DASHBOARD_TEAM_LOAD, {
+        errors: true
+      }))
     } else {
-      response.data.loadedAt = new Date().valueOf()
-      dispatch(handleTeamSuccess(response))
+      dispatch(load(SELLER_DASHBOARD_TEAM_LOAD, {
+        items: response.data.teams.items
+      }))
     }
     dispatch(sendingRequest(false))
   })
@@ -75,12 +83,19 @@ export const loadTeam = () => dispatch => {
 
 export const loadServices = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(load(SELLER_DASHBOARD_SERVICES_LOAD, {
+    loading: true
+  }))
   dmapi({ url: `/supplier/dashboard/services` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
+      dispatch(load(SELLER_DASHBOARD_SERVICES_LOAD, {
+        errors: true
+      }))
     } else {
-      response.data.loadedAt = new Date().valueOf()
-      dispatch(handleServicesSuccess(response))
+      dispatch(load(SELLER_DASHBOARD_SERVICES_LOAD, {
+        items: response.data.services.items
+      }))
     }
     dispatch(sendingRequest(false))
   })

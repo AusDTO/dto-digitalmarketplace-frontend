@@ -6,7 +6,7 @@ import styles from './SellerDashboard.scss'
 
 export class Services extends Component {
   componentDidMount() {
-    if (!this.props.currentlySending) {
+    if (!this.props.loading && !this.props.errors) {
       this.props.loadData()
     }
   }
@@ -73,14 +73,32 @@ export class Services extends Component {
   }
 
   render() {
-    if (this.props.currentlySending) {
+    const {
+      items,
+      loading,
+      errors,
+      errorMessage
+    } = this.props
+
+    if (loading) {
       return <LoadingIndicatorFullPage />
+    }
+    if (errors) {
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the service details"
+          errorMessage={errorMessage}
+          setFocus={() => {}}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
     }
 
     return (
       <div className="row">
         <div className="col-xs-12">
-          {this.props.items.length > 0 ? (
+          {items.length > 0 ? (
             <table className={`${styles.resultListing} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
@@ -96,7 +114,7 @@ export class Services extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.items.map(item => (
+                {items.map(item => (
                   <tr key={`service.${item.id}`}>
                     <td className={styles.colService}>{item.service}</td>
                     <td className={styles.colAssessmentCriteria}>
@@ -133,8 +151,9 @@ export class Services extends Component {
 
 const mapStateToProps = state => ({
   items: state.sellerDashboard.services.items,
-  loadSuccess: state.sellerDashboard.loadServicesSuccess,
-  currentlySending: state.app.currentlySending
+  loading: state.sellerDashboard.services.loading,
+  errors: state.sellerDashboard.services.errors,
+  errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({

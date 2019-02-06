@@ -1,15 +1,15 @@
 import {
   SELLER_DASHBOARD_SUCCESS,
-  SELLER_DASHBOARD_MESSAGES_SUCCESS,
-  SELLER_DASHBOARD_TEAM_SUCCESS,
-  SELLER_DASHBOARD_SERVICES_SUCCESS
+  SELLER_DASHBOARD_MESSAGES_LOAD,
+  SELLER_DASHBOARD_TEAM_LOAD,
+  SELLER_DASHBOARD_SERVICES_LOAD
 } from '../constants/constants'
 
 const defaultUserState = {
   supplier: {},
-  messages: { items: [] },
-  team: { items: [] },
-  services: { items: [] }
+  messages: { items: [], loading: false, errors: false },
+  team: { items: [], loading: false, errors: false },
+  services: { items: [], loading: false, errors: false }
 }
 
 const sellerDashboardReducer = (state = defaultUserState, action) => {
@@ -17,36 +17,22 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
     case SELLER_DASHBOARD_SUCCESS:
       return {
         ...state,
-        ...action.data,
-        loadSellerDashboardSuccess: true,
-        loadSellerDashboardErrored: false
+        ...action.data
       }
-    case SELLER_DASHBOARD_MESSAGES_SUCCESS:
+    case SELLER_DASHBOARD_MESSAGES_LOAD:
+    return {
+      ...state,
+      messages: action.data
+    }
+    case SELLER_DASHBOARD_SERVICES_LOAD:
       return {
         ...state,
-        messages: {
-          items: action.data.messages.items
-        },
-        loadMessageSuccess: true,
-        loadMessageErrored: false
+        services: action.data
       }
-    case SELLER_DASHBOARD_SERVICES_SUCCESS:
+    case SELLER_DASHBOARD_TEAM_LOAD:
       return {
         ...state,
-        services: {
-          items: action.data.services.items
-        },
-        loadServicesSuccess: true,
-        loadServicesErrored: false
-      }
-    case SELLER_DASHBOARD_TEAM_SUCCESS:
-      return {
-        ...state,
-        team: {
-          items: action.data.teams.items
-        },
-        loadTeamSuccess: true,
-        loadTeamErrored: false
+        team: action.data
       }
 
     default:

@@ -6,7 +6,7 @@ import styles from './SellerDashboard.scss'
 
 export class Messages extends Component {
   componentDidMount() {
-    if (!this.props.currentlySending) {
+    if (!this.props.loading && !this.props.errors) {
       this.props.loadData()
     }
   }
@@ -68,16 +68,34 @@ export class Messages extends Component {
   }
 
   render() {
-    if (this.props.currentlySending) {
+    const {
+      items,
+      loading,
+      errors,
+      errorMessage
+    } = this.props
+
+    if (loading) {
       return <LoadingIndicatorFullPage />
     }
 
-    const { messages } = this.props
+    if (errors) {
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the notifications"
+          errorMessage={errorMessage}
+          setFocus={() => {}}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
+    }
+
 
     return (
       <div className="row">
         <div className="col-xs-12">
-          {messages && messages.length > 0 ? (
+          {items && items.length > 0 ? (
             <table className={`${styles.resultListing} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
@@ -90,7 +108,7 @@ export class Messages extends Component {
                 </tr>
               </thead>
               <tbody>
-                {messages.map((message, i) => (
+                {items.map((message, i) => (
                   <tr key={`message.${message.message}`}>
                     <td className={styles.colMessage}>{this.formatMessage(message, i)}</td>
                     <td className={styles.colAction}>{this.messageIdToAction(message, i)}</td>
@@ -99,7 +117,7 @@ export class Messages extends Component {
               </tbody>
             </table>
           ) : (
-            'No messages'
+            'No notifications'
           )}
         </div>
       </div>
@@ -108,9 +126,10 @@ export class Messages extends Component {
 }
 
 const mapStateToProps = state => ({
-  loadedMessages: state.sellerDashboard.loadedMessages,
-  currentlySending: state.app.currentlySending,
-  messages: state.sellerDashboard.messages.items
+  items: state.sellerDashboard.messages.items,
+  loading: state.sellerDashboard.messages.loading,
+  errors: state.sellerDashboard.messages.errors,
+  errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({
