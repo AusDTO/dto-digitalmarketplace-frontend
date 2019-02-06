@@ -12,11 +12,9 @@ const BuyerATMIntroductionStage = props => (
       Ask the market
     </AUheadings>
     <AUcallout description="" className={styles.noticeBar}>
-      <strong>
-        This approach is for expressions of interest or requests for information. Sellers submit up to 500 words to each
-        criteria you provide. If you need proposals, use{' '}
-        <a href={`${rootPath}/outcome-choice`}>seek proposals and quotes</a>.
-      </strong>
+      This approach is for expressions of interest or requests for information. Sellers submit up to 500 words to each
+      criteria you provide. If you need proposals, use{' '}
+      <a href={`${rootPath}/outcome-choice`}>seek proposals and quotes</a>.
     </AUcallout>
     <AUheadings level="2" size="lg">
       Before you start

@@ -60,7 +60,7 @@ export class BuyerATMSelectStage extends Component {
           model={this.props.model}
           messages={{
             requiredChoice: 'You must select who can respond',
-            requiredCategory: 'You must select at least one panel category'
+            requiredCategory: 'You must select a panel category'
           }}
         />
         <div className={styles.sellerSelector}>
