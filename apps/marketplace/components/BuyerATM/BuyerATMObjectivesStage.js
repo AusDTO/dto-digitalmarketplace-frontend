@@ -67,8 +67,8 @@ export class BuyerATMRequirementsStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            requiredBackgroundInformation: 'Enter the background information for your opportunity',
-            requiredOutcome: 'Enter the desired outcome for your opportunity',
+            requiredBackgroundInformation: 'Enter the reason the work is being done',
+            requiredOutcome: 'Enter the key problem to be solved',
             requiredEndUsers: 'Enter the user needs for your opportunity',
             requiredWorkAlreadyDone: 'Enter the work already done for your opportunity'
           }}

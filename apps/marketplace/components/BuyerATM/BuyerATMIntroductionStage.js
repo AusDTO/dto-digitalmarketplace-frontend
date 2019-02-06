@@ -21,23 +21,15 @@ const BuyerATMIntroductionStage = props => (
     </AUheadings>
     <ul>
       <li>
-        You can <a href="#template">download the list of questions XLSX 84KB</a> to prepare your request offline before
-        publishing.
-      </li>
-      <li>
-        If you are inviting responses from specific sellers, check they are on the{' '}
-        <a href="/search/sellers" target="_blank">
-          Digital Marketplace panel
-        </a>
-        . You can{' '}
+        Download the{' '}
         <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000669656-Getting-a-new-seller-on-the-panel"
-          rel="external noopener noreferrer"
+          href="/static/media/documents/Ask_the_Marketplace_draft_questions.docx"
+          rel="noopener noreferrer"
           target="_blank"
         >
-          encourage a seller to sign up
+          questions template DOC 52KB
         </a>{' '}
-        if they have yet to join.
+        to prepare offline before publishing.
       </li>
     </ul>
     <AUheadings level="2" size="lg">
