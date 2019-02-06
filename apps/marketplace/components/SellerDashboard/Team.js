@@ -1,5 +1,6 @@
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import differenceInSeconds from 'date-fns/difference_in_seconds'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -19,8 +20,13 @@ export class Team extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.loading && !this.props.errors) {
-      this.props.loadData()
+    const { loading, errors, loadedAt } = this.props
+
+    if (!loading && !errors) {
+      const difference = differenceInSeconds(new Date(), loadedAt)
+      if (difference > 60) {
+        this.props.loadData()
+      }
     }
   }
 
@@ -144,6 +150,7 @@ export class Team extends Component {
 const mapStateToProps = state => ({
   items: state.sellerDashboard.team.items,
   loading: state.sellerDashboard.team.loading,
+  loadedAt: state.sellerDashboard.team.loadedAt,
   errors: state.sellerDashboard.team.errors,
   errorMessage: state.app.errorMessage
 })

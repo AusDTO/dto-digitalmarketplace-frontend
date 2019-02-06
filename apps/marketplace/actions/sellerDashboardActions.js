@@ -9,12 +9,14 @@ import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
-export const handleSellerDashboardSuccess = response => ({
+export const loadSupplier = supplier => ({
   type: SELLER_DASHBOARD_SUCCESS,
-  data: response.data
+  data: {
+    supplier
+  }
 })
 
-export const handleRemoveUserSuccess = response => ({
+export const removeUserSuccess = response => ({
   type: SELLER_DASHBOARD_REMOVE_USER_SUCCESS,
   data: response.data
 })
@@ -24,7 +26,8 @@ export const load = (type, data) => ({
   data: {
     items: data.items ? data.items : [],
     errors: data.errors,
-    loading: data.loading
+    loading: data.loading,
+    loadedAt: new Date()
   }
 })
 
@@ -35,7 +38,17 @@ export const loadSellerDashboard = () => dispatch => {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
       response.data.loadedAt = new Date().valueOf()
-      dispatch(handleSellerDashboardSuccess(response))
+      dispatch(
+        loadSupplier({
+          supplier: response.data.supplier
+        })
+      )
+
+      dispatch(
+        load(SELLER_DASHBOARD_MESSAGES_LOAD, {
+          items: response.data.messages.items
+        })
+      )
     }
     dispatch(sendingRequest(false))
   })
@@ -132,8 +145,7 @@ export const removeUser = userId => (dispatch, getState) => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      response.data.loadedAt = new Date().valueOf()
-      dispatch(handleRemoveUserSuccess(response))
+      dispatch(removeUserSuccess(response))
       dispatch(loadTeam())
     }
     dispatch(sendingRequest(false))

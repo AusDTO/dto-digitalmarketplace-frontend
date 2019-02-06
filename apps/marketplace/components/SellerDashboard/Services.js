@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import differenceInSeconds from 'date-fns/difference_in_seconds'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadServices } from 'marketplace/actions/sellerDashboardActions'
 import styles from './SellerDashboard.scss'
 
 export class Services extends Component {
   componentDidMount() {
-    if (!this.props.loading && !this.props.errors) {
-      this.props.loadData()
+    const { loading, errors, loadedAt } = this.props
+
+    if (!loading && !errors) {
+      const difference = differenceInSeconds(new Date(), loadedAt)
+      if (difference > 60) {
+        this.props.loadData()
+      }
     }
   }
 
@@ -148,6 +154,7 @@ export class Services extends Component {
 const mapStateToProps = state => ({
   items: state.sellerDashboard.services.items,
   loading: state.sellerDashboard.services.loading,
+  loadedAt: state.sellerDashboard.services.loadedAt,
   errors: state.sellerDashboard.services.errors,
   errorMessage: state.app.errorMessage
 })

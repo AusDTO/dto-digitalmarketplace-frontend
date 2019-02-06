@@ -7,9 +7,9 @@ import {
 
 const defaultUserState = {
   supplier: {},
-  messages: { items: [], loading: false, errors: false },
-  team: { items: [], loading: false, errors: false },
-  services: { items: [], loading: false, errors: false }
+  messages: { items: [], loading: false, errors: false, loadedAt: null },
+  team: { items: [], loading: false, errors: false, loadedAt: null },
+  services: { items: [], loading: false, errors: false, loadedAt: null }
 }
 
 const sellerDashboardReducer = (state = defaultUserState, action) => {
@@ -17,7 +17,7 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
     case SELLER_DASHBOARD_SUCCESS:
       return {
         ...state,
-        ...action.data
+        supplier: action.data.supplier
       }
     case SELLER_DASHBOARD_MESSAGES_LOAD:
       return {
