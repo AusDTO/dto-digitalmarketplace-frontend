@@ -19,7 +19,7 @@ const BriefOutcomeChoice = () => (
       <div className="col-xs-12 col-md-5">
         <div className={styles.card}>
           <AUheading level="2" size="lg">
-            Ask the market
+            Ask the marketplace
           </AUheading>
           <p className={styles.largerText}>
             EOI/RFI approach to find sellers, learn about potential solutions, or experiment with prototypes before
