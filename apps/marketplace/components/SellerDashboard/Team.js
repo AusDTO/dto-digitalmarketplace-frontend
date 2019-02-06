@@ -18,7 +18,9 @@ export class Team extends Component {
   }
 
   componentDidMount() {
-    this.props.loadData()
+    if (!this.props.currentlySending) {
+      this.props.loadData()
+    }
   }
 
   handleYesClick = () => {
@@ -127,6 +129,7 @@ export class Team extends Component {
 
 const mapStateToProps = state => ({
   items: state.sellerDashboard.team.items,
+  loadedAt: state.sellerDashboard.team.loadedAt,
   loadSuccess: state.sellerDashboard.loadTeamSuccess,
   currentlySending: state.app.currentlySending
 })

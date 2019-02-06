@@ -6,7 +6,9 @@ import styles from './SellerDashboard.scss'
 
 export class Services extends Component {
   componentDidMount() {
-    this.props.loadData()
+    if (!this.props.currentlySending) {
+      this.props.loadData()
+    }
   }
 
   serviceIdToHash = item => {

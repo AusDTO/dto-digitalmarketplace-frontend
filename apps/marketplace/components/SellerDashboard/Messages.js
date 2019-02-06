@@ -6,7 +6,9 @@ import styles from './SellerDashboard.scss'
 
 export class Messages extends Component {
   componentDidMount() {
-    this.props.loadData()
+    if (!this.props.currentlySending) {
+      this.props.loadData()
+    }
   }
 
   formatMessage = (item, row) => {
