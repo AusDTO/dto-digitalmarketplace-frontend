@@ -14,14 +14,6 @@ import Textarea from 'shared/form/Textarea'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 
-const briefRequiresCriteriaResponses = brief => {
-  let requiresCriteriaResponses = false
-  if (brief.evaluationType.includes('500 word responses to your criteria') && brief.evaluationCriteria.length > 0) {
-    requiresCriteriaResponses = true
-  }
-  return requiresCriteriaResponses
-}
-
 const briefRequiresDocumentUpload = brief => {
   let mustUpload = false
   if (
@@ -84,28 +76,25 @@ const BriefATMResponseForm = ({
                   required: 'Enter a date for when you can start the project'
                 }}
               />
-              {briefRequiresCriteriaResponses(brief) && (
-                <AUheading level="2" size="lg">
-                  Evaluation criteria
-                </AUheading>
-              )}
-              {briefRequiresCriteriaResponses(brief) && <p>Demonstrate how you meet the buyer&apos;s needs.</p>}
-              {briefRequiresCriteriaResponses(brief) &&
-                brief.evaluationCriteria.map((evaluationCriteria, i) => (
-                  <Textarea
-                    key={evaluationCriteria.criteria}
-                    model={`${model}.criteria[${evaluationCriteria.criteria}]`}
-                    name={`criteria.${evaluationCriteria.criteria}`}
-                    id={`criteria.${i}`}
-                    controlProps={{ limit: 500 }}
-                    label={evaluationCriteria.criteria}
-                    validators={{ required }}
-                    showMessagesDuringFocus
-                    messages={{
-                      required: `The "${evaluationCriteria.criteria}" criteria response is required`
-                    }}
-                  />
-                ))}
+              <AUheading level="2" size="lg">
+                Evaluation criteria
+              </AUheading>
+              <p>Demonstrate how you meet the buyer&apos;s needs.</p>
+              {brief.evaluationCriteria.map((evaluationCriteria, i) => (
+                <Textarea
+                  key={evaluationCriteria.criteria}
+                  model={`${model}.criteria[${evaluationCriteria.criteria}]`}
+                  name={`criteria.${evaluationCriteria.criteria}`}
+                  id={`criteria.${i}`}
+                  controlProps={{ limit: 500 }}
+                  label={evaluationCriteria.criteria}
+                  validators={{ required }}
+                  showMessagesDuringFocus
+                  messages={{
+                    required: `The "${evaluationCriteria.criteria}" criteria response is required`
+                  }}
+                />
+              ))}
               {briefRequiresDocumentUpload(brief) && (
                 <AUheading level="2" size="lg">
                   Upload documentation

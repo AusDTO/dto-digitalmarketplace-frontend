@@ -45,6 +45,7 @@ export const BuyerATMFormReducer = {
   industryBriefing: '',
   sellerCategory: '',
   attachments: [],
+  requestMoreInfo: '',
   evaluationType: [],
   evaluationCriteria: [{ criteria: '', weighting: '' }],
   includeWeightings: false,
