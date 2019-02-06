@@ -48,12 +48,7 @@ export class Team extends Component {
   }
 
   render() {
-    const {
-      items,
-      loading,
-      errors,
-      errorMessage
-    } = this.props
+    const { items, loading, errors, errorMessage } = this.props
 
     if (loading) {
       return <LoadingIndicatorFullPage />

@@ -20,11 +20,11 @@ export const handleRemoveUserSuccess = response => ({
 })
 
 export const load = (type, data) => ({
-  type: type,
+  type,
   data: {
     items: data.items ? data.items : [],
-    errors: data.errors ? true: false,
-    loading: data.loading ? true : false
+    errors: data.errors,
+    loading: data.loading
   }
 })
 
@@ -42,20 +42,26 @@ export const loadSellerDashboard = () => dispatch => {
 }
 
 export const loadMessages = () => dispatch => {
-  dispatch(sendingRequest(true))  
-  dispatch(load(SELLER_DASHBOARD_MESSAGES_LOAD, {
-    loading: true
-  }))
+  dispatch(sendingRequest(true))
+  dispatch(
+    load(SELLER_DASHBOARD_MESSAGES_LOAD, {
+      loading: true
+    })
+  )
   dmapi({ url: `/supplier/dashboard/messages` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
-      dispatch(load(SELLER_DASHBOARD_MESSAGES_LOAD, {
-        errors: true
-      }))
+      dispatch(
+        load(SELLER_DASHBOARD_MESSAGES_LOAD, {
+          errors: true
+        })
+      )
     } else {
-      dispatch(load(SELLER_DASHBOARD_MESSAGES_LOAD, {
-        items: response.data.messages.items
-      }))
+      dispatch(
+        load(SELLER_DASHBOARD_MESSAGES_LOAD, {
+          items: response.data.messages.items
+        })
+      )
     }
     dispatch(sendingRequest(false))
   })
@@ -63,19 +69,25 @@ export const loadMessages = () => dispatch => {
 
 export const loadTeam = () => dispatch => {
   dispatch(sendingRequest(true))
-  dispatch(load(SELLER_DASHBOARD_TEAM_LOAD, {
-    loading: true
-  }))
+  dispatch(
+    load(SELLER_DASHBOARD_TEAM_LOAD, {
+      loading: true
+    })
+  )
   dmapi({ url: `/supplier/dashboard/team` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
-      dispatch(load(SELLER_DASHBOARD_TEAM_LOAD, {
-        errors: true
-      }))
+      dispatch(
+        load(SELLER_DASHBOARD_TEAM_LOAD, {
+          errors: true
+        })
+      )
     } else {
-      dispatch(load(SELLER_DASHBOARD_TEAM_LOAD, {
-        items: response.data.teams.items
-      }))
+      dispatch(
+        load(SELLER_DASHBOARD_TEAM_LOAD, {
+          items: response.data.teams.items
+        })
+      )
     }
     dispatch(sendingRequest(false))
   })
@@ -83,19 +95,25 @@ export const loadTeam = () => dispatch => {
 
 export const loadServices = () => dispatch => {
   dispatch(sendingRequest(true))
-  dispatch(load(SELLER_DASHBOARD_SERVICES_LOAD, {
-    loading: true
-  }))
+  dispatch(
+    load(SELLER_DASHBOARD_SERVICES_LOAD, {
+      loading: true
+    })
+  )
   dmapi({ url: `/supplier/dashboard/services` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
-      dispatch(load(SELLER_DASHBOARD_SERVICES_LOAD, {
-        errors: true
-      }))
+      dispatch(
+        load(SELLER_DASHBOARD_SERVICES_LOAD, {
+          errors: true
+        })
+      )
     } else {
-      dispatch(load(SELLER_DASHBOARD_SERVICES_LOAD, {
-        items: response.data.services.items
-      }))
+      dispatch(
+        load(SELLER_DASHBOARD_SERVICES_LOAD, {
+          items: response.data.services.items
+        })
+      )
     }
     dispatch(sendingRequest(false))
   })

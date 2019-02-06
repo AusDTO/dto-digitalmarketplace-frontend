@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadServices } from 'marketplace/actions/sellerDashboardActions'
 import styles from './SellerDashboard.scss'
 
@@ -73,12 +74,7 @@ export class Services extends Component {
   }
 
   render() {
-    const {
-      items,
-      loading,
-      errors,
-      errorMessage
-    } = this.props
+    const { items, loading, errors, errorMessage } = this.props
 
     if (loading) {
       return <LoadingIndicatorFullPage />

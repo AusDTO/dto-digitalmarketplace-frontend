@@ -20,10 +20,10 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
         ...action.data
       }
     case SELLER_DASHBOARD_MESSAGES_LOAD:
-    return {
-      ...state,
-      messages: action.data
-    }
+      return {
+        ...state,
+        messages: action.data
+      }
     case SELLER_DASHBOARD_SERVICES_LOAD:
       return {
         ...state,
