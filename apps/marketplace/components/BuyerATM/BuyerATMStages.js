@@ -60,7 +60,7 @@ const BuyerATMStages = [
   },
   {
     slug: 'criteria',
-    title: 'Evaluation criteria',
+    title: 'Response criteria',
     component: BuyerATMEvaluationCriteriaStage,
     isDone: formValues =>
       formValues.evaluationCriteria.length > 0 &&
