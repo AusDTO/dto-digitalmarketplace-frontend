@@ -67,10 +67,10 @@ export class BuyerATMRequirementsStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            requiredBackgroundInformation: 'Enter the background information for your brief',
-            requiredOutcome: 'Enter the desired outcome for your brief',
-            requiredEndUsers: 'Enter the user needs for your brief',
-            requiredWorkAlreadyDone: 'Enter the work already done for your brief'
+            requiredBackgroundInformation: 'Enter the background information for your opportunity',
+            requiredOutcome: 'Enter the desired outcome for your opportunity',
+            requiredEndUsers: 'Enter the user needs for your opportunity',
+            requiredWorkAlreadyDone: 'Enter the work already done for your opportunity'
           }}
         />
         <Textarea

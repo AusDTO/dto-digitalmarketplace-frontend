@@ -4,43 +4,21 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import SellerSelect, { PanelCategorySelect } from 'marketplace/components/SellerSelect/SellerSelect'
+import { PanelCategorySelect } from 'marketplace/components/SellerSelect/SellerSelect'
 import RadioList from 'shared/form/RadioList'
-import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import styles from './BuyerATMSelectStage.scss'
 
 export class BuyerATMSelectStage extends Component {
   constructor(props) {
     super(props)
-    this.handleSellerSelect = this.handleSellerSelect.bind(this)
     this.handleSellerCategorySelect = this.handleSellerCategorySelect.bind(this)
-  }
-
-  componentDidUpdate(prevProps) {
-    const { model } = this.props
-    if (JSON.stringify(prevProps[model].sellers) !== JSON.stringify(this.props[model].sellers)) {
-      this.props.saveModel()
-    }
-  }
-
-  handleSellerSelect(seller) {
-    const newState = { ...this.props[this.props.model].sellers }
-    newState[seller.code] = { name: seller.name }
-    this.props.updateSelectedSellers(newState)
   }
 
   handleSellerCategorySelect(category) {
     if (category !== this.props[this.props.model].sellerCategory) {
       this.props.updateSelectedSellerCategory(category)
-      this.props.resetSelectedSellers()
     }
-  }
-
-  removeSeller(sellerCode) {
-    const newState = { ...this.props[this.props.model].sellers }
-    delete newState[sellerCode]
-    this.props.updateSelectedSellers(newState)
   }
 
   render() {
@@ -67,13 +45,7 @@ export class BuyerATMSelectStage extends Component {
             requiredCategory: formValues =>
               !formValues.openTo ||
               formValues.openTo === 'all' ||
-              formValues.openTo === 'selected' ||
-              (formValues.openTo === 'category' && formValues.sellerCategory),
-            requiredSeller: formValues =>
-              !formValues.openTo ||
-              formValues.openTo === 'all' ||
-              formValues.openTo === 'category' ||
-              Object.keys(formValues.sellers).length > 0
+              (formValues.openTo === 'category' && formValues.sellerCategory)
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -88,8 +60,7 @@ export class BuyerATMSelectStage extends Component {
           model={this.props.model}
           messages={{
             requiredChoice: 'You must select who can respond',
-            requiredCategory: 'You must select at least one panel category',
-            requiredSeller: 'You must select at least one seller'
+            requiredCategory: 'You must select at least one panel category'
           }}
         />
         <div className={styles.sellerSelector}>
@@ -106,10 +77,6 @@ export class BuyerATMSelectStage extends Component {
               {
                 label: 'Any seller in a panel category',
                 value: 'category'
-              },
-              {
-                label: 'Only accept responses from specific sellers',
-                value: 'selected'
               }
             ]}
             messages={{}}
@@ -124,37 +91,6 @@ export class BuyerATMSelectStage extends Component {
             selectedCategory={this.props[this.props.model].sellerCategory}
           />
         )}
-        {this.props[this.props.model].openTo === 'selected' && (
-          <div className="row">
-            <div className="col-xs-12 col-sm-9">
-              <div className={styles.selectSellers}>
-                <SellerSelect
-                  label="Seller name"
-                  description={
-                    <span>
-                      Only sellers approved in the category you have selected can respond. You can see each
-                      seller&apos;s categories in the{' '}
-                      <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
-                        seller catalogue
-                      </a>.
-                    </span>
-                  }
-                  showSelected={false}
-                  showSearchButton={false}
-                  categories={categories}
-                  onSellerSelect={this.handleSellerSelect}
-                  onSellerCategorySelect={this.handleSellerCategorySelect}
-                  selectedCategory={this.props[this.props.model].sellerCategory}
-                />
-              </div>
-              <SelectedSellersControl
-                id="selected-sellers"
-                model={`${this.props.model}.sellers`}
-                onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
-              />
-            </div>
-          </div>
-        )}
         {this.props.formButtons}
       </Form>
     )
@@ -168,7 +104,6 @@ BuyerATMSelectStage.defaultProps = {
 
 BuyerATMSelectStage.propTypes = {
   model: PropTypes.string.isRequired,
-  saveModel: PropTypes.func.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func
@@ -180,8 +115,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers)),
-  resetSelectedSellers: () => dispatch(actions.change(`${props.model}.sellers`, {})),
   resetSelectedSellerCategory: () => dispatch(actions.change(`${props.model}.sellerCategory`, '')),
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
