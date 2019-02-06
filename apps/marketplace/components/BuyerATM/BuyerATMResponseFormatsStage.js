@@ -46,18 +46,6 @@ const BuyerATMResponseFormatsStage = props => (
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`criteria_response`}
-        name={`criteria_response`}
-        label="500 word responses to your criteria"
-        value="500 word responses to your criteria"
-        detailsModel={props.model}
-        validators={{
-          required
-        }}
-        messages={{}}
-      />
-      <CheckboxDetailsField
-        model={`${props.model}.evaluationType[]`}
         id={`casestudy`}
         name={`casestudy`}
         label="Case study"
