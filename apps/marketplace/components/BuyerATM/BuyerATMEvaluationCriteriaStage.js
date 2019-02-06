@@ -83,7 +83,7 @@ class BuyerATMEvaluationCriteriaStage extends Component {
         <AUcallout description="" className={styles.noticeBar}>
           <strong>Sellers can only respond to each criteria you list here.</strong>
           <br />
-          If you skip this step, e.g. by writing &quot;refer to requirements document&quot;, sellers cannot respond.
+          You must list each criteria separately so that sellers can respond to each one through the Marketplace.
         </AUcallout>
         <ErrorAlert
           title="An error occurred"
