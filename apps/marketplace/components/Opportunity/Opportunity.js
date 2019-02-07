@@ -163,6 +163,14 @@ const Opportunity = props => {
                 {format(brief.dates.published_date ? brief.dates.published_date : new Date(), 'dddd D MMMM YYYY')}
               </div>
             </div>
+            {category && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Panel category</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">{category}</div>
+              </div>
+            )}
             <AUheading level="2" size="lg">
               Overview
             </AUheading>
@@ -229,14 +237,6 @@ const Opportunity = props => {
                   <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
                 </div>
               )}
-            {category && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Panel category</strong>
-                </div>
-                <div className="col-xs-12 col-sm-8">{category}</div>
-              </div>
-            )}
           </div>
           {showATMObjectives(isBuyer, canRespond) &&
             brief.lotSlug === 'atm' && (
