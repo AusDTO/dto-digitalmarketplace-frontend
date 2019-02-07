@@ -1,6 +1,5 @@
 export const create = async (params) => {
     console.log(`Starting to create ${params.areaOfExpertise} brief`);
-    await selectLot('digital-professionals');
     await createBrief();
     await fillRole(params.title);
     await selectLocation(params.locations);
@@ -12,12 +11,9 @@ export const create = async (params) => {
     await publishBrief();
 }
 
-const selectLot = async (lot) => {
-    await clickLink(lot, true);
-}
-
 const createBrief = async () => {
-    await clickButton('Create brief');
+    await clickLink('Specialist');
+    await clickButton('Create opportunity');
 }
 
 const fillRole = async (role) => {
