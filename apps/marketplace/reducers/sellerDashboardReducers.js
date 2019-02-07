@@ -6,7 +6,7 @@ import {
 } from '../constants/constants'
 
 const defaultUserState = {
-  supplier: {},
+  supplier: { supplier: null, loading: false, errors: false, loadedAt: null },
   messages: { items: [], loading: false, errors: false, loadedAt: null },
   team: { items: [], loading: false, errors: false, loadedAt: null },
   services: { items: [], loading: false, errors: false, loadedAt: null }
@@ -17,7 +17,7 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
     case SELLER_DASHBOARD_SUCCESS:
       return {
         ...state,
-        supplier: action.data.supplier
+        supplier: action.data
       }
     case SELLER_DASHBOARD_MESSAGES_LOAD:
       return {

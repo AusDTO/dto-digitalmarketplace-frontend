@@ -9,10 +9,13 @@ import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
-export const loadSupplier = supplier => ({
+export const loadSupplier = data => ({
   type: SELLER_DASHBOARD_SUCCESS,
   data: {
-    supplier
+    supplier: data.supplier,
+    errors: data.errors,
+    loading: data.loading,
+    loadedAt: new Date()
   }
 })
 
@@ -33,11 +36,21 @@ export const load = (type, data) => ({
 
 export const loadSellerDashboard = () => dispatch => {
   dispatch(sendingRequest(true))
+  dispatch(
+    loadSupplier({
+      loading: true
+    })
+  )
   dmapi({ url: `/supplier/dashboard` }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
+      dispatch(
+        loadSupplier({
+          loading: false,
+          errors: true
+        })
+      )
     } else {
-      response.data.loadedAt = new Date().valueOf()
       dispatch(
         loadSupplier({
           supplier: response.data.supplier

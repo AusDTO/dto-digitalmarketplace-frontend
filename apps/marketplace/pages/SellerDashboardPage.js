@@ -8,6 +8,7 @@ import Team from 'marketplace/components/SellerDashboard/Team'
 import Services from 'marketplace/components/SellerDashboard/Services'
 import { loadSellerDashboard } from 'marketplace/actions/sellerDashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
 
 class SellerDashboardPage extends Component {
@@ -16,9 +17,21 @@ class SellerDashboardPage extends Component {
   }
 
   render() {
-    const { currentlySending, supplier } = this.props
+    const { loading, supplier, errors, errorMessage } = this.props
 
-    if (currentlySending && !supplier.code) {
+    if (errors) {
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred when loading the supplier"
+          errorMessage={errorMessage}
+          setFocus={() => {}}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
+    }
+
+    if (loading || !supplier) {
       return <LoadingIndicatorFullPage />
     }
 
@@ -43,9 +56,11 @@ SellerDashboardPage.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  loadSuccess: state.sellerDashboard.loadSellerDashboardSuccess,
-  currentlySending: state.app.currentlySending,
-  supplier: state.sellerDashboard.supplier,
+  supplier: state.sellerDashboard.supplier.supplier,
+  loading: state.sellerDashboard.supplier.loading,
+  loadedAt: state.sellerDashboard.supplier.loadedAt,
+  errors: state.sellerDashboard.supplier.errors,
+  errorMessage: state.app.errorMessage,
   messages: state.sellerDashboard.messages
 })
 
