@@ -19,24 +19,28 @@ const BuyerATMIntroductionStage = props => (
     <AUheadings level="2" size="lg">
       Before you start
     </AUheadings>
-    <ul>
-      <li>
-        Download the{' '}
-        <a
-          href="/static/media/documents/Ask_the_Marketplace_draft_questions.docx"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          questions template DOC 52KB
-        </a>{' '}
-        to prepare offline before publishing.
-      </li>
-    </ul>
+    <p>
+      Download the{' '}
+      <a
+        href="/static/media/documents/Ask_the_Marketplace_draft_questions.docx"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        questions template DOC 52KB
+      </a>{' '}
+      to prepare offline before publishing.
+    </p>
     <AUheadings level="2" size="lg">
       Getting help
     </AUheadings>
     <p>
-      <a href="#guide">View support article</a>
+      <a
+        href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000575036"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        View support article
+      </a>
       <br />
       <a href="/contact-us" target="_blank">
         Contact us

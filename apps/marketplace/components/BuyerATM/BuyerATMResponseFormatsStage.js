@@ -17,7 +17,9 @@ const BuyerATMResponseFormatsStage = props => (
     model={props.model}
     validators={{
       '': {
-        atleastOneFormat: formValues => formValues.requestMoreInfo === 'no' || formValues.evaluationType.length > 0
+        requiredChoice: formValues => formValues.requestMoreInfo,
+        atleastOneFormat: formValues =>
+          !formValues.requestMoreInfo || formValues.requestMoreInfo === 'no' || formValues.evaluationType.length > 0
       }
     }}
     onSubmit={props.onSubmit}
@@ -36,8 +38,8 @@ const BuyerATMResponseFormatsStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        atleastOneFormat: 'You must select at least one response format',
-        atleastOneProposal: 'You must select at least one proposal type if you are requesting a written proposal.'
+        requiredChoice: 'You must specify if you need sellers to supply any other information',
+        atleastOneFormat: 'You must select at least one response format'
       }}
     />
     <AUheadings level="2" size="lg">

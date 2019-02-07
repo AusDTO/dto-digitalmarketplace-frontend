@@ -77,7 +77,7 @@ const BriefATMResponseForm = ({
                 }}
               />
               <AUheading level="2" size="lg">
-                Evaluation criteria
+                Response criteria
               </AUheading>
               <p>Demonstrate how you meet the buyer&apos;s needs.</p>
               {brief.evaluationCriteria.map((evaluationCriteria, i) => (
