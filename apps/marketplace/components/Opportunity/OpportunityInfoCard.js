@@ -18,7 +18,8 @@ const OpportunityInfoCard = props => (
       <div className="col-xs-6">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
-        seller{props.sellersApplied === 1 ? '' : 's'} applied
+        seller{props.sellersApplied === 1 ? '' : 's'}
+        {props.briefLot === 'atm' ? ' responded' : ' applied'}
       </div>
     </div>
     <div className="row">

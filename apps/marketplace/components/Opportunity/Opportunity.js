@@ -364,7 +364,11 @@ const Opportunity = props => {
                 {brief.industryBriefing && (canRespond || isBriefOwner) && <p>{brief.industryBriefing}</p>}
               </div>
             )}
-          <EvaluationCriteria evaluationCriteria={brief.evaluationCriteria} showWeightings={brief.includeWeightings} />
+          <EvaluationCriteria
+            title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
+            evaluationCriteria={brief.evaluationCriteria}
+            showWeightings={brief.includeWeightings}
+          />
           <QuestionAnswer
             questions={brief.clarificationQuestions}
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
