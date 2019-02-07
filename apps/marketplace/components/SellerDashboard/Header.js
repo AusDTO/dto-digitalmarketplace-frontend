@@ -5,15 +5,8 @@ import styles from './SellerDashboard.scss'
 const Header = props => (
   <div className={`${styles.header} row`}>
     <div className="col-sm-12">
-      <small className={styles.organisation}>{props.organisation}</small>
-      <div className="row">
-        <div className="col-xs-12">
-          <h1 className="au-display-xl">Dashboard</h1>
-        </div>
-      </div>
-      <div className="row" />
-      <div className={`${styles.menuRow} row`}>
-        <div className="col-xs-12 col-md-8">
+      <div className={`row`}>
+        <div className="col-xs-12 col-md-12">
           <nav className={styles.dashNav}>
             <ul className={styles.menu}>
               <li>
@@ -32,14 +25,6 @@ const Header = props => (
               </li>
             </ul>
           </nav>
-        </div>
-        <div className="col-xs-12 col-md-4">
-          <a href={`/supplier/${props.supplier.code}`} className="au-btn right-button-margin">
-            View profile
-          </a>
-          <a href="/sellers/edit" className="au-btn au-btn--secondary">
-            Edit profile
-          </a>
         </div>
       </div>
     </div>

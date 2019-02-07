@@ -172,7 +172,8 @@ table.resultListing td, table.resultListing th {
 
 .badge.authorisedrepresentative {
   position: relative;
-  margin-left: 10px;
+  display: inline;
+  margin-left: 0.5rem;
 }
 
 .unassessed {
@@ -199,10 +200,6 @@ nav.dashNav {
 
 .dashActions > * {
   flex: 1;
-}
-
-.menuRow {
-  margin-top: 2.5rem;
 }
 
 ul.menu {
@@ -239,27 +236,18 @@ ul.menu li a.active {
 }
 
 @media (max-width: 991px) {
-  nav.dashNav {
-    border-bottom: 0;
+  .profileActionRow {
+    margin-top: 2.5rem;
   }
 
-  ul.menu {
-    margin-bottom: 1.5rem;
+  .profileActionRow a {
+    margin-top: 0.5rem;
   }
 
-  ul.menu li {
+  .badge.authorisedrepresentative {
     display: block;
-    border-top: 1px solid gray;
-  }
-  
-  ul.menu li:last-child {
-    border-bottom: 1px solid gray;
-  }
-
-  ul.menu li a.active {
-    font-weight: 700;
-    border-bottom: 0;
-    background-color: #dff5fd;
+    margin-left: 0rem;
+    margin-top: 0.1rem;
   }
 }
 

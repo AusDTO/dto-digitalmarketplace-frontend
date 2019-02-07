@@ -1,24 +1,13 @@
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import PropTypes from 'prop-types'
 import differenceInSeconds from 'date-fns/difference_in_seconds'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
-import { loadTeam, removeUser } from 'marketplace/actions/sellerDashboardActions'
+import { loadTeam } from 'marketplace/actions/sellerDashboardActions'
 import styles from './SellerDashboard.scss'
 
 export class Team extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showRemoveAlert: false,
-      toRemoveUser: null
-    }
-
-    this.handleRemoveClicked = this.handleRemoveClicked.bind(this)
-  }
-
   componentDidMount() {
     const { loading, errors, loadedAt } = this.props
 
@@ -28,29 +17,6 @@ export class Team extends Component {
         this.props.loadData()
       }
     }
-  }
-
-  handleYesClick = () => {
-    const { toRemoveUser } = this.state
-    this.props.handleRemoveClick(toRemoveUser.id)
-    this.setState({
-      toRemoveUser: null,
-      showRemoveAlert: false
-    })
-  }
-
-  handleRemoveClicked = item => {
-    this.setState({
-      toRemoveUser: item,
-      showRemoveAlert: true
-    })
-  }
-
-  handleNoClicked = () => {
-    this.setState({
-      toRemoveUser: null,
-      showRemoveAlert: false
-    })
   }
 
   render() {
@@ -73,19 +39,6 @@ export class Team extends Component {
 
     return (
       <div>
-        {this.state.showRemoveAlert && (
-          <div className="row">
-            <div className="col-xs-12">
-              <AUpageAlert as="warning">
-                <p>{`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}</p>
-                <AUbutton onClick={this.handleYesClick}>Yes, remove</AUbutton>
-                <AUbutton as="secondary" onClick={this.handleNoClicked}>
-                  Do not remove
-                </AUbutton>
-              </AUpageAlert>
-            </div>
-          </div>
-        )}
         <div className="row">
           <div className="col-xs-12">
             {items.length > 0 ? (
@@ -110,9 +63,9 @@ export class Team extends Component {
                       <td className={styles.colEmail}>
                         {item.email}
                         {item.type === 'ar' ? (
-                          <span className={`${styles.badge} ${styles.authorisedrepresentative}`}>
+                          <div className={`${styles.badge} ${styles.authorisedrepresentative}`}>
                             Authorised representative
-                          </span>
+                          </div>
                         ) : (
                           ''
                         )}
@@ -121,7 +74,7 @@ export class Team extends Component {
                         {item.type === 'ar' ? (
                           <a href="/sellers/edit/?step=your-info">Change representative</a>
                         ) : (
-                          <a href="#remove" onClick={() => this.handleRemoveClicked(item)}>
+                          <a href="#remove" onClick={() => this.props.removeClicked(item)}>
                             Remove
                           </a>
                         )}
@@ -136,7 +89,7 @@ export class Team extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-3">
+          <div className="col-xs-12 col-md-3">
             <a href="/sellers/invite-user" className="au-btn au-btn--secondary">
               Add new person
             </a>
@@ -145,6 +98,10 @@ export class Team extends Component {
       </div>
     )
   }
+}
+
+Team.propTypes = {
+  removeClicked: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -156,8 +113,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: () => dispatch(loadTeam()),
-  handleRemoveClick: userId => dispatch(removeUser(userId))
+  loadData: () => dispatch(loadTeam())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Team)
