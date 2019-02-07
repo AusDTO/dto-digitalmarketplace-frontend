@@ -17,11 +17,6 @@ const Header = props => (
           <nav className={styles.dashNav}>
             <ul className={styles.menu}>
               <li>
-                <NavLink id="notifications-link" to="/services" activeClassName={styles.active} exact>
-                  Services
-                </NavLink>
-              </li>
-              <li>
                 <NavLink id="team-link" to="/" activeClassName={styles.active} exact>
                   Team
                 </NavLink>
