@@ -167,7 +167,11 @@ class Overview extends Component {
                 <span>
                   <Tick className={styles.tick} colour="#17788D" />Create and publish request
                   <div className={styles.stageStatus}>
-                    {invitedSellers} seller{invitedSellers > 1 && `s`} invited
+                    {invitedSellers > 0 && (
+                      <span>
+                        {invitedSellers} seller{invitedSellers > 1 && `s`} invited
+                      </span>
+                    )}
                   </div>
                 </span>
               ) : (
