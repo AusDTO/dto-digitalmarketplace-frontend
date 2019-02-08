@@ -95,6 +95,7 @@ class OpportunityPage extends Component {
           isBuyer={this.props.isBuyer}
           isApprovedSeller={this.props.isApprovedSeller}
           isApplicant={this.props.isApplicant}
+          isRecruiterOnly={this.props.isRecruiterOnly}
           isAwaitingApplicationAssessment={this.props.isAwaitingApplicationAssessment}
           isAwaitingDomainAssessment={this.props.isAwaitingDomainAssessment}
           hasBeenAssessedForBrief={this.props.hasBeenAssessedForBrief}
@@ -124,6 +125,7 @@ const mapResetStateToProps = state => ({
   isBuyer: state.brief.isBuyer,
   isApprovedSeller: state.brief.isApprovedSeller,
   isApplicant: state.brief.isApplicant,
+  isRecruiterOnly: state.brief.isRecruiterOnly,
   isAwaitingApplicationAssessment: state.brief.isAwaitingApplicationAssessment,
   isAwaitingDomainAssessment: state.brief.isAwaitingDomainAssessment,
   hasBeenAssessedForBrief: state.brief.hasBeenAssessedForBrief,

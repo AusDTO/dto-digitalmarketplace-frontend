@@ -105,7 +105,41 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
+          props.isRecruiterOnly && (
+            <span>
+              <p className={styles.invitedStatus}>
+                Only approved sellers can apply.
+                {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+                {!props.isAwaitingApplicationAssessment && (
+                  <span>
+                    {' '}
+                    You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
+                    to be able to apply for this brief.
+                    {props.isOpenToCategory &&
+                      !props.hasChosenBriefCategory && (
+                        <span>
+                          {' '}
+                          You must also add {props.category} as a category you provide services for to apply for this
+                          brief.
+                        </span>
+                      )}
+                  </span>
+                )}
+                {}
+              </p>
+              {!props.isAwaitingApplicationAssessment && (
+                <p>
+                  <a href="/sellers/edit" className="au-btn au-btn--block">
+                    Edit application
+                  </a>
+                </p>
+              )}
+            </span>
+          )}
+        {props.isOpen &&
+          props.loggedIn &&
           props.isApprovedSeller &&
+          !props.isRecruiterOnly &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -115,6 +149,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          !props.isRecruiterOnly &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (
@@ -167,6 +202,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          !props.isRecruiterOnly &&
           props.isOpenToAll &&
           !props.isAssessedForAnyCategory && (
             <span>
@@ -193,6 +229,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.isApprovedSeller &&
+          !props.isRecruiterOnly &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (
@@ -231,6 +268,7 @@ OpportunityInfoCard.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
@@ -253,6 +291,7 @@ OpportunityInfoCard.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
+  isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
   hasBeenAssessedForBrief: PropTypes.bool,

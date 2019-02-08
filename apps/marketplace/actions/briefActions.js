@@ -99,6 +99,7 @@ export const handlePublicBriefInfoSuccess = response => ({
   isBuyer: response.data.is_buyer,
   isApprovedSeller: response.data.is_approved_seller,
   isApplicant: response.data.is_applicant,
+  isRecruiterOnly: response.data.is_recruiter_only,
   isAwaitingApplicationAssessment: response.data.is_awaiting_application_assessment,
   isAwaitingDomainAssessment: response.data.is_awaiting_domain_assessment,
   hasBeenAssessedForBrief: response.data.has_been_assessed_for_brief,

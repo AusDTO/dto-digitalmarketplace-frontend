@@ -94,6 +94,7 @@ const Opportunity = props => {
     isBuyer,
     isApprovedSeller,
     isApplicant,
+    isRecruiterOnly,
     isAwaitingApplicationAssessment,
     isAwaitingDomainAssessment,
     hasBeenAssessedForBrief,
@@ -396,6 +397,7 @@ const Opportunity = props => {
             isBuyer={isBuyer}
             isApprovedSeller={isApprovedSeller}
             isApplicant={isApplicant}
+            isRecruiterOnly={isRecruiterOnly}
             isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
             isAwaitingDomainAssessment={isAwaitingDomainAssessment}
             hasBeenAssessedForBrief={hasBeenAssessedForBrief}
@@ -425,6 +427,7 @@ Opportunity.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
@@ -480,6 +483,7 @@ Opportunity.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
+  isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
   hasBeenAssessedForBrief: PropTypes.bool,
