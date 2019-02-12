@@ -83,7 +83,7 @@ const BriefATMResponseForm = ({
               {brief.evaluationCriteria.map((evaluationCriteria, i) => (
                 <Textarea
                   key={evaluationCriteria.criteria}
-                  model={`${model}.criteria[${evaluationCriteria.criteria}]`}
+                  model={`${model}.criteria['${evaluationCriteria.criteria}']`}
                   name={`criteria.${evaluationCriteria.criteria}`}
                   id={`criteria.${i}`}
                   controlProps={{ limit: 500 }}
