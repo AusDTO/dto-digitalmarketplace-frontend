@@ -9,19 +9,8 @@ import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import locations from 'marketplace/components/BuyerBriefFlow/Locations'
 import styles from './BuyerATMAboutStage.scss'
-
-const locations = {
-  act: 'Australian Capital Territory',
-  nsw: 'New South Wales',
-  nt: 'Northern Territory',
-  qld: 'Queensland',
-  sa: 'South Australia',
-  tas: 'Tasmania',
-  vic: 'Victoria',
-  wa: 'Western Australia',
-  remote: 'Offsite'
-}
 
 const BuyerATMAboutStage = props => (
   <Form
