@@ -44,7 +44,6 @@ export class BuyerATMFlowPage extends Component {
         Object.keys(response.data.brief).map(property => {
           if (Object.keys(BuyerATMFormReducer).includes(property)) {
             data[property] = response.data.brief[property]
-            return true
           }
           return true
         })
