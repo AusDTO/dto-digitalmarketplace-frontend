@@ -120,8 +120,7 @@ export class BuyerATMRequirementsStage extends Component {
         />
         <Textarea
           model={`${this.props.model}.workAlreadyDone`}
-          label="What work has already been done?
-          "
+          label="What work has already been done?"
           name="workAlreadyDone"
           id="workAlreadyDone"
           htmlFor="workAlreadyDone"
