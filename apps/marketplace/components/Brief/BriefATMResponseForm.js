@@ -166,7 +166,7 @@ const BriefATMResponseForm = ({
                   validPhoneNumber
                 }}
                 messages={{
-                  required: 'You must add a valid phone number',
+                  required: 'You must add a phone number',
                   validPhoneNumber: 'You must add a valid phone number'
                 }}
               />
