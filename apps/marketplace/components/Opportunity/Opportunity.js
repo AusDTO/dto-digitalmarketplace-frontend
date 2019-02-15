@@ -71,8 +71,8 @@ const getBriefCategory = (domains, briefCategory) => {
   return category ? category.name : null
 }
 
-const showATMObjectives = (isBuyer, canRespond) => {
-  if (isBuyer || canRespond) {
+const showATMObjectives = (lotSlug, isBuyer, canRespond) => {
+  if (lotSlug === 'atm' && (isBuyer || canRespond)) {
     return true
   }
   return false
@@ -239,40 +239,35 @@ const Opportunity = props => {
                 </div>
               )}
           </div>
-          {showATMObjectives(isBuyer, canRespond) &&
-            brief.lotSlug === 'atm' && (
-              <AUheading level="2" size="lg">
-                Objectives
-              </AUheading>
-            )}
-          {showATMObjectives(isBuyer, canRespond) &&
-            brief.lotSlug === 'atm' && (
-              <AUheading level="3" size="md">
-                Why is the work being done?
-              </AUheading>
-            )}
-          {showATMObjectives(isBuyer, canRespond) && brief.lotSlug === 'atm' && <p>{brief.backgroundInformation}</p>}
-          {showATMObjectives(isBuyer, canRespond) &&
-            brief.lotSlug === 'atm' && (
-              <AUheading level="3" size="md">
-                What&apos;s the key problem you need to solve?
-              </AUheading>
-            )}
-          {showATMObjectives(isBuyer, canRespond) && brief.lotSlug === 'atm' && <p>{brief.outcome}</p>}
-          {showATMObjectives(isBuyer, canRespond) &&
-            brief.lotSlug === 'atm' && (
-              <AUheading level="3" size="md">
-                Describe the users and their needs
-              </AUheading>
-            )}
-          {showATMObjectives(isBuyer, canRespond) && brief.lotSlug === 'atm' && <p>{brief.endUsers}</p>}
-          {showATMObjectives(isBuyer, canRespond) &&
-            brief.lotSlug === 'atm' && (
-              <AUheading level="3" size="md">
-                What work has already been done?
-              </AUheading>
-            )}
-          {showATMObjectives(isBuyer, canRespond) && brief.lotSlug === 'atm' && <p>{brief.workAlreadyDone}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
+            <AUheading level="2" size="lg">
+              Objectives
+            </AUheading>
+          )}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
+            <AUheading level="3" size="md">
+              Why is the work being done?
+            </AUheading>
+          )}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.backgroundInformation}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
+            <AUheading level="3" size="md">
+              What&apos;s the key problem you need to solve?
+            </AUheading>
+          )}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.outcome}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
+            <AUheading level="3" size="md">
+              Describe the users and their needs
+            </AUheading>
+          )}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.endUsers}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
+            <AUheading level="3" size="md">
+              What work has already been done?
+            </AUheading>
+          )}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.workAlreadyDone}</p>}
           {loggedIn &&
             (canRespond || isBuyer) && (
               <AUheading level="2" size="lg">
