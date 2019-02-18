@@ -1,5 +1,3 @@
-import { sleep } from "../utils";
-
 export const create = async (params) => {
     console.log('Starting to create outcome brief');
     await createBrief();
@@ -26,9 +24,9 @@ const fillWhoCanRespond = async () => {
 }
 
 const fillAbout = async (role, locations) => {
-    await type('title', { value: role });
-    await type('organisation', { numberOfCharacters: 100 });
-    await type('summary', { numberOfWords: 150 });
+    await typeInReactInput('title', { value: role });
+    await typeInReactInput('organisation', { numberOfCharacters: 100 });
+    await typeInReactInput('summary', { numberOfWords: 150 });
 
     for (let i in locations) {
         let location = locations[i];
@@ -53,7 +51,7 @@ const fillObjectives = async () => {
     ]
     for (var i in fields) {
         let field = fields[i];
-        await type(field.id, field.options);
+        await typeInReactInput(field.id, field.options);
     }
     await clickSaveContinue();
 }
@@ -65,25 +63,25 @@ const fillTimeframes = async () => {
     ]
     for (var i in fields) {
         let field = fields[i];
-        await type(field.id, field.options);
+        await typeInReactInput(field.id, field.options);
     }
     await clickSaveContinue();
 }
 
 const fillResponseCriteria = async (evaluations) => {
     await selectCheck('yes');
-    await type('criteria_0', { numberOfWords:50 });
-    await type('weighting_0', { value: '100' });
+    await typeInReactInput('criteria_0', { numberOfWords:50 });
+    await typeInReactInput('weighting_0', { value: '100' });
     await clickSaveContinue();
 }
 
 const fillClosingDate = async () => {
     let now = new Date();
     let future = new Date(now.setDate(now.getDate() + 14));
-    await type('day', { value: `${future.getDate()}` });
-    await type('month', { value: `${future.getMonth() + 1}` });
-    await type('year', { value: `${future.getFullYear()}` });
-    await type('contactNumber', { value: '0123456789' });
+    await typeInReactInput('day', { value: `${future.getDate()}` });
+    await typeInReactInput('month', { value: `${future.getMonth() + 1}` });
+    await typeInReactInput('year', { value: `${future.getFullYear()}` });
+    await typeInReactInput('contactNumber', { value: '0123456789' });
     await clickSaveContinue();
 }
 

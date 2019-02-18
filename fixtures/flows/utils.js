@@ -28,24 +28,59 @@ export const selectRadio = async (value) => {
     await radio.press('Space');
 }
 
+export const typeInReactInput = async (id, options) => {
+    options['reactInput'] = true;
+    console.log(options);
+    await type(id, options);
+}
+
 export const type = async (id, options) => {
     console.log(`Typing in "//*[@id="${id}"]"`);
-    let { value, numberOfWords, numberOfCharacters } = options;
+    let {
+        value,
+        numberOfWords,
+        numberOfCharacters,
+        reactInput
+    } = options;
     if (value !== '' && !value) {
         if (numberOfCharacters) {
             numberOfWords = numberOfCharacters;
         }
         value = words(numberOfWords, numberOfCharacters);
     }
+    if (!reactInput) {
+        reactInput = false;
+    }
     let input = await getElementHandle(`//*[@id="${id}"]`);
     if (process.env.TYPE_INPUT === 'true') {
+        if (process.env.SHORTEN_TYPED_INPUT === 'true') {
+            if (value.length > 50) {
+                value = value.substring(0, 50);
+                console.log(`Shortened typed value to "${value}"`);
+            }
+        }
         await input.type(value, { delay: 0 });
-    } else {
+    } else if (process.env.USE_CLIPBOARD_FOR_TYPE_INPUT === 'true') {
         await clipboardy.write(value);
         await input.focus();
         await page.keyboard.down('ControlLeft');
         await page.keyboard.press('KeyV');
         await page.keyboard.up('ControlLeft');
+    } else {
+        if (reactInput) {
+            if (value.length > 50) {
+                value = value.substring(0, 50);
+                console.log(`Shortened typed value to "${value}"`);
+            }
+            await input.type(value, { delay: 0 });
+        } else {
+            await page.evaluate((el, v) => {
+                el.value = v;
+                let event = new Event('change', { bubbles: true });
+                event.simulated = true;
+                el.dispatchEvent(event);
+            }, input, value);
+        }
     }
 }
 
