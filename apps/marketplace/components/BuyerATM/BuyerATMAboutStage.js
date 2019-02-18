@@ -10,9 +10,9 @@ import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import locations from 'marketplace/components/BuyerBriefFlow/Locations'
-import styles from './BuyerRFXAboutStage.scss'
+import styles from './BuyerATMAboutStage.scss'
 
-const BuyerRFXAboutStage = props => (
+const BuyerATMAboutStage = props => (
   <Form
     model={props.model}
     validators={{
@@ -20,7 +20,6 @@ const BuyerRFXAboutStage = props => (
         requiredTitle: formValues => required(formValues.title),
         requiredOrg: formValues => required(formValues.organisation),
         requiredSummary: formValues => required(formValues.summary),
-        requiredWorkingArrangements: formValues => required(formValues.workingArrangements),
         atLeastOneLocation: formValues => formValues.location && formValues.location.length > 0
       }
     }}
@@ -35,11 +34,11 @@ const BuyerRFXAboutStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        requiredTitle: 'You must add a title',
-        requiredOrg: 'You must add the name of your department, agency or organisation',
-        requiredSummary: 'You must add a summary of work to be done',
-        requiredWorkingArrangements: 'You must add the working arrangements',
-        atLeastOneLocation: 'You must select a location of where the work can be done'
+        requiredTitle: 'Enter the title for your brief',
+        requiredOrg: 'Enter the name of your organisation',
+        requiredSummary: 'Enter a summary of your brief',
+        requiredWorkingArrangements: 'Enter the working arrangements for your brief',
+        atLeastOneLocation: 'You must select at least one location'
       }}
     />
     <Textfield
@@ -105,43 +104,16 @@ const BuyerRFXAboutStage = props => (
         />
       ))}
     </div>
-    <Textarea
-      model={`${props.model}.workingArrangements`}
-      label="What are the working arrangements?"
-      description="For example, on site at least 3 days a week for face-to-face team meetings."
-      name="working_arrangements"
-      id="working_arrangements"
-      htmlFor="working_arrangements"
-      defaultValue={props[props.model].workingArrangements}
-      controlProps={{ limit: 150 }}
-      validators={{
-        required
-      }}
-      messages={{
-        limitWords: 'Your working arrangements has exceeded the 150 word limit'
-      }}
-    />
-    <Textfield
-      model={`${props.model}.securityClearance`}
-      label="Security clearance (optional)"
-      description="Only request security clearance if access to classified material, environments or assets is required."
-      name="clearance"
-      id="clearance"
-      htmlFor="clearance"
-      defaultValue={props[props.model].securityClearance}
-      maxLength={100}
-      showMaxLength
-    />
     {props.formButtons}
   </Form>
 )
 
-BuyerRFXAboutStage.defaultProps = {
+BuyerATMAboutStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXAboutStage.propTypes = {
+BuyerATMAboutStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -152,4 +124,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFXAboutStage)
+export default connect(mapStateToProps)(BuyerATMAboutStage)

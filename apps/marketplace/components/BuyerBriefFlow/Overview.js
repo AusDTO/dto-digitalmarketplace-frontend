@@ -10,9 +10,9 @@ import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
-import styles from './BuyerRFXOverview.scss'
+import styles from './Overview.scss'
 
-const answerSellerQuestionsRender = (brief, isPublished, isClosed) => {
+const answerSellerQuestionsRender = (brief, flow, isPublished, isClosed) => {
   if (!isPublished) {
     return <span>Answer seller questions</span>
   }
@@ -27,7 +27,11 @@ const answerSellerQuestionsRender = (brief, isPublished, isClosed) => {
   }
 
   return (
-    <a href={`/buyers/frameworks/digital-marketplace/requirements/rfx/${brief.id}/supplier-questions/answer-question`}>
+    <a
+      href={`/buyers/frameworks/digital-marketplace/requirements/${flow}/${
+        brief.id
+      }/supplier-questions/answer-question`}
+    >
       Answer seller questions
     </a>
   )
@@ -41,7 +45,7 @@ const downloadResponsesRender = (brief, isPublished, isClosed) => {
   return <span>Download responses</span>
 }
 
-const createWorkOrderRender = (brief, isPublished, isClosed) => {
+const createWorkOrderRender = (brief, flow, isPublished, isClosed) => {
   if (isPublished && isClosed) {
     let url = ''
     let title = ''
@@ -49,7 +53,7 @@ const createWorkOrderRender = (brief, isPublished, isClosed) => {
       url = `/work-orders/${brief.work_order_id}`
       title = 'Edit work order'
     } else {
-      url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/rfx/${brief.id}/work-orders/create`
+      url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/${flow}/${brief.id}/work-orders/create`
       title = 'Create work order'
     }
     return <a href={url}>{title}</a>
@@ -58,7 +62,7 @@ const createWorkOrderRender = (brief, isPublished, isClosed) => {
   return <span>Create work order</span>
 }
 
-class BuyerRFXOverview extends Component {
+class Overview extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -91,7 +95,7 @@ class BuyerRFXOverview extends Component {
       return <Redirect to={`${rootPath}/buyer-dashboard`} />
     }
 
-    const { brief, briefResponses } = this.props
+    const { brief, briefResponses, flow } = this.props
 
     if (brief && brief.id && brief.dates) {
       const isPublished = brief.dates.published_date && isValid(new Date(brief.dates.published_date))
@@ -112,7 +116,7 @@ class BuyerRFXOverview extends Component {
         <div>
           <div className={styles.header}>
             <AUheading size="xl" level="1">
-              <small className={styles.briefTitle}>{brief.title || `New RFX request`}</small>
+              <small className={styles.briefTitle}>{brief.title || `New ${flow.toUpperCase()} request`}</small>
               Overview
             </AUheading>
             <div className={styles.headerMenu}>
@@ -163,19 +167,23 @@ class BuyerRFXOverview extends Component {
                 <span>
                   <Tick className={styles.tick} colour="#17788D" />Create and publish request
                   <div className={styles.stageStatus}>
-                    {invitedSellers} seller{invitedSellers > 1 && `s`} invited
+                    {invitedSellers > 0 && (
+                      <span>
+                        {invitedSellers} seller{invitedSellers > 1 && `s`} invited
+                      </span>
+                    )}
                   </div>
                 </span>
               ) : (
                 <span>
-                  <a href={`${rootPath}/buyer-rfx/${brief.id}/introduction`}>
+                  <a href={`${rootPath}/buyer-${flow}/${brief.id}/introduction`}>
                     {brief.title ? 'Edit and publish request' : 'Create and publish request'}
                   </a>
                 </span>
               )}
             </li>
             <li>
-              {answerSellerQuestionsRender(brief, isPublished, isClosed)}
+              {answerSellerQuestionsRender(brief, flow, isPublished, isClosed)}
               {questionsAnswered > 0 && (
                 <div className={styles.stageStatus}>
                   {questionsAnswered} question{questionsAnswered > 1 && `s`} answered
@@ -192,9 +200,10 @@ class BuyerRFXOverview extends Component {
                 )}
               </li>
             )}
-            {(briefResponseCount > 0 || !isPublished || !isClosed) && (
-              <li>{createWorkOrderRender(brief, isPublished, isClosed)}</li>
-            )}
+            {flow === 'rfx' &&
+              (briefResponseCount > 0 || !isPublished || !isClosed) && (
+                <li>{createWorkOrderRender(brief, flow, isPublished, isClosed)}</li>
+              )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
         </div>
@@ -204,8 +213,9 @@ class BuyerRFXOverview extends Component {
   }
 }
 
-BuyerRFXOverview.propTypes = {
-  brief: PropTypes.object.isRequired
+Overview.propTypes = {
+  brief: PropTypes.object.isRequired,
+  flow: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -216,4 +226,4 @@ const mapDispatchToProps = dispatch => ({
   deleteBrief: briefId => dispatch(deleteBrief(briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXOverview)
+export default connect(mapStateToProps, mapDispatchToProps)(Overview)

@@ -88,7 +88,7 @@ const Opportunities = props => (
                     {item.id}
                   </div>
                   <div className={`col-md-4 col-sm-4 ${styles.cell}`} role="cell" aria-labelledby="header_name">
-                    {item.lot === 'rfx' ? (
+                    {item.lot === 'rfx' || item.lot === 'atm' ? (
                       <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                     ) : (
                       <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
@@ -124,7 +124,7 @@ const Opportunities = props => (
                     open to {mapOpenTo(item.openTo)}
                   </div>
                   <div className={styles.mobileName}>
-                    {item.lot === 'rfx' ? (
+                    {item.lot === 'rfx' || item.lot === 'atm' ? (
                       <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                     ) : (
                       <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>

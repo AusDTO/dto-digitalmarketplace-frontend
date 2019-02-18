@@ -5,16 +5,16 @@ import { Redirect } from 'react-router-dom'
 import formProps from 'shared/form/formPropsSelector'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
-import BuyerRFXStages from 'marketplace/components/BuyerRFX/BuyerRFXStages'
+import BuyerATMStages from 'marketplace/components/BuyerATM/BuyerATMStages'
 import { rootPath } from 'marketplace/routes'
 import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { BuyerRFXFormReducer } from 'marketplace/reducers'
+import { BuyerATMFormReducer } from 'marketplace/reducers'
 
-const model = 'BuyerRFXForm'
+const model = 'BuyerATMForm'
 
-export class BuyerRFXFlowPage extends Component {
+export class BuyerATMFlowPage extends Component {
   constructor(props) {
     super(props)
 
@@ -39,12 +39,11 @@ export class BuyerRFXFlowPage extends Component {
     })
     this.props.loadInitialData(this.props.match.params.briefId).then(response => {
       // only accept data defined in the form reducer
-      const data = { ...BuyerRFXFormReducer }
+      const data = { ...BuyerATMFormReducer }
       if (response.data.brief) {
         Object.keys(response.data.brief).map(property => {
-          if (Object.keys(BuyerRFXFormReducer).includes(property)) {
+          if (Object.keys(BuyerATMFormReducer).includes(property)) {
             data[property] = response.data.brief[property]
-            return true
           }
           return true
         })
@@ -53,8 +52,8 @@ export class BuyerRFXFlowPage extends Component {
           this.props.setError('You cannot edit this opportunity as you have already published it.')
         }
 
-        if (response.data.brief.lotSlug !== 'rfx') {
-          this.props.setError('You can only edit RFX briefs using this flow.')
+        if (response.data.brief.lotSlug !== 'atm') {
+          this.props.setError('You can only edit ATM briefs using this flow.')
         }
 
         this.props.changeFormModel(data)
@@ -115,17 +114,17 @@ export class BuyerRFXFlowPage extends Component {
     }
 
     if (this.state.flowIsDone) {
-      return <Redirect to={`${rootPath}/buyer-rfx/${briefId}/completed`} push />
+      return <Redirect to={`${rootPath}/buyer-atm/${briefId}/completed`} push />
     }
 
     return (
       <ProgressFlow
         model={model}
-        basename={`${rootPath}/buyer-rfx/${briefId}`}
-        stages={BuyerRFXStages}
+        basename={`${rootPath}/buyer-atm/${briefId}`}
+        stages={BuyerATMStages}
         onStageMount={this.handleStageMount}
         saveModel={this.saveBrief}
-        returnPath={`${rootPath}/brief/${briefId}/overview/rfx`}
+        returnPath={`${rootPath}/brief/${briefId}/overview/atm`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
       />
     )
@@ -147,4 +146,4 @@ const mapDispatchToProps = dispatch => ({
   setError: message => dispatch(setErrorMessage(message))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXFlowPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMFlowPage)

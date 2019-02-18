@@ -4,6 +4,7 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
+  BRIEF_ATM_CREATE_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
@@ -28,9 +29,20 @@ const defaultBriefState = {
   },
   briefResponseCount: 0,
   invitedSellerCount: 0,
-  isInvitedSeller: false,
+  canRespond: false,
+  isAssessedForCategory: false,
+  isAssessedForAnyCategory: false,
+  hasChosenBriefCategory: false,
+  isOpenToCategory: false,
+  isOpenToAll: false,
   isBriefOwner: false,
   isBuyer: false,
+  isApprovedSeller: false,
+  isApplicant: false,
+  isRecruiterOnly: false,
+  isAwaitingApplicationAssessment: false,
+  isAwaitingDomainAssessment: false,
+  hasBeenAssessedForBrief: false,
   hasResponded: false,
   domains: []
 }
@@ -60,9 +72,20 @@ const briefReducer = (state = defaultBriefState, action) => {
         brief: action.brief,
         briefResponseCount: action.briefResponseCount,
         invitedSellerCount: action.invitedSellerCount,
-        isInvitedSeller: action.isInvitedSeller,
+        canRespond: action.canRespond,
+        isAssessedForCategory: action.isAssessedForCategory,
+        isAssessedForAnyCategory: action.isAssessedForAnyCategory,
+        hasChosenBriefCategory: action.hasChosenBriefCategory,
+        isOpenToCategory: action.isOpenToCategory,
+        isOpenToAll: action.isOpenToAll,
         isBriefOwner: action.isBriefOwner,
         isBuyer: action.isBuyer,
+        isApprovedSeller: action.isApprovedSeller,
+        isApplicant: action.isApplicant,
+        isRecruiterOnly: action.isRecruiterOnly,
+        isAwaitingApplicationAssessment: action.isAwaitingApplicationAssessment,
+        isAwaitingDomainAssessment: action.isAwaitingDomainAssessment,
+        hasBeenAssessedForBrief: action.hasBeenAssessedForBrief,
         hasResponded: action.hasResponded,
         domains: action.domains,
         loadBriefSuccess: true,
@@ -76,6 +99,12 @@ const briefReducer = (state = defaultBriefState, action) => {
       }
 
     case BRIEF_RFX_CREATE_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief
+      }
+
+    case BRIEF_ATM_CREATE_SUCCESS:
       return {
         ...state,
         brief: action.brief

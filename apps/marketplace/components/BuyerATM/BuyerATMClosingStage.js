@@ -8,9 +8,9 @@ import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
-import styles from './BuyerRFXClosingStage.scss'
+import styles from './BuyerATMClosingStage.scss'
 
-class BuyerRFXClosingStage extends Component {
+class BuyerATMClosingStage extends Component {
   constructor(props) {
     super(props)
 
@@ -55,15 +55,15 @@ class BuyerRFXClosingStage extends Component {
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
           className={styles.closingDateControl}
-          description="This date must be at least 2 days after you publish this request and responses will be available after 6pm Canberra time."
+          description="We recommend publishing for at least 2 weeks to allow interested sellers to respond. Responses will be available after 6pm Canberra time on this date."
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}
           label="Contact number for Marketplace support"
           description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you."
-          name="contact"
-          id="contact"
-          htmlFor="contact"
+          name="contactNumber"
+          id="contactNumber"
+          htmlFor="contactNumber"
           defaultValue={this.props[this.props.model].contactNumber}
           maxLength={100}
           validators={{
@@ -76,12 +76,12 @@ class BuyerRFXClosingStage extends Component {
   }
 }
 
-BuyerRFXClosingStage.defaultProps = {
+BuyerATMClosingStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXClosingStage.propTypes = {
+BuyerATMClosingStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -96,4 +96,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXClosingStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMClosingStage)

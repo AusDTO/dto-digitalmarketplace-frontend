@@ -7,10 +7,10 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
 import format from 'date-fns/format'
-import BuyerRFXStages from './BuyerRFXStages'
-import styles from './BuyerRFXReviewStage.scss'
+import BuyerATMStages from './BuyerATMStages'
+import styles from './BuyerATMReviewStage.scss'
 
-const BuyerRFXReviewStage = props => (
+const BuyerATMReviewStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     {props.stagesTodo.length > 0 ? (
       <div>
@@ -21,7 +21,7 @@ const BuyerRFXReviewStage = props => (
         <ul>
           {props.stagesTodo.map(stage => (
             <li key={stage}>
-              <Link to={stage}>{BuyerRFXStages.find(s => s.slug === stage).title || ''}</Link>
+              <Link to={stage}>{BuyerATMStages.find(s => s.slug === stage).title || ''}</Link>
             </li>
           ))}
         </ul>
@@ -60,12 +60,8 @@ const BuyerRFXReviewStage = props => (
           Once you press publish
         </AUheading>
         <ul>
-          <li>A summary of this request will be visible on the Digital Marketplace.</li>
+          <li>A summary of this request be will visible on the Digital Marketplace.</li>
           <li>Only invited sellers and other buyers will be able to view attached documents.</li>
-          {props[props.model].industryBriefing && (
-            <li>Only invited sellers will be able to view industry briefing details you provide.</li>
-          )}
-          <li>An email will be sent to the sellers&apos; business contacts inviting them to view and respond.</li>
         </ul>
         {props.formButtons}
       </div>
@@ -73,12 +69,12 @@ const BuyerRFXReviewStage = props => (
   </Form>
 )
 
-BuyerRFXReviewStage.defaultProps = {
+BuyerATMReviewStage.defaultProps = {
   onSubmit: () => {},
   stagesTodo: []
 }
 
-BuyerRFXReviewStage.propTypes = {
+BuyerATMReviewStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   stagesTodo: PropTypes.array,
@@ -89,4 +85,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFXReviewStage)
+export default connect(mapStateToProps)(BuyerATMReviewStage)

@@ -11,6 +11,10 @@ const BriefOutcomeChoice = () => (
         <span className={styles.newBadge}>NEW</span>
       </AUheading>
     </div>
+    <p className={styles.largerText}>
+      Check with your procurement team to ensure you comply with your agency rules and legal requirements before
+      approaching the market.
+    </p>
     <div className={`row ${styles.container}`}>
       <div className="col-xs-12 col-md-5">
         <div className={styles.card}>
@@ -25,16 +29,16 @@ const BriefOutcomeChoice = () => (
             What you get
           </AUheading>
           <ul className={styles.list}>
-            <li>150 word text responses from each seller in a spreadsheet for shortlisting.</li>
+            <li>Spreadsheet with up to 500 word responses to each criteria you provide.</li>
           </ul>
           <AUheading level="3" size="sm">
             Response timeframe
           </AUheading>
           <ul className={styles.flexList}>
-            <li>Choose 5 to 10 business days</li>
+            <li>Set your own timeframes (5 days minimum)</li>
           </ul>
           <p className={styles.buttons}>
-            <a href="/buyers/frameworks/digital-marketplace/requirements/digital-outcome" className="au-btn">
+            <a href={`${rootPath}/buyer-atm/create`} className="au-btn">
               Get started
             </a>
           </p>
