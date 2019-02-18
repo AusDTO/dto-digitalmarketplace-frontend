@@ -5,7 +5,7 @@ import * as utils from '../flows/utils';
 
 // puppeteer options
 const opts = {
-    headless: process.env.HEADLESS ? process.env.HEADLESS : false,
+    headless: process.env.HEADLESS == 'false' ? false : true,
     slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
 };
 
