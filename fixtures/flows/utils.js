@@ -30,7 +30,6 @@ export const selectRadio = async (value) => {
 
 export const typeInReactInput = async (id, options) => {
     options['reactInput'] = true;
-    console.log(options);
     await type(id, options);
 }
 
@@ -82,6 +81,12 @@ export const type = async (id, options) => {
             }, input, value);
         }
     }
+}
+
+export const upload = async (id, file) => {
+    console.log(`Uploading "//input[@id="${id}" and @type="file"]"`);
+    let input = await getElementHandle(`//input[@id="${id}" and @type="file"]`);
+    await input.uploadFile(file);
 }
 
 export const clickButton = async (value) => {
