@@ -7,6 +7,8 @@ import * as utils from '../flows/utils';
 const opts = {
     headless: process.env.HEADLESS == 'false' ? false : true,
     slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
+    defaultViewport: null,
+    pipe: true
 };
 
 // expose variables
@@ -16,15 +18,15 @@ before(async () => {
     for (let f in utils) {
         global[f] = utils[f];
     }
-    global.browser = await puppeteer.launch(opts);
-    global.page = await browser.newPage();
 });
 
 beforeEach(async () => {
+    global.browser = await puppeteer.launch(opts);
+    let page = await browser.newPage();
+    global.page = page
     await page.goto(process.env.FRONTEND_ADDRESS);
-    await page._client.send('Emulation.clearDeviceMetricsOverride');
 });
 
-after(async () => {
+afterEach(async () => {
     await browser.close();
 });
