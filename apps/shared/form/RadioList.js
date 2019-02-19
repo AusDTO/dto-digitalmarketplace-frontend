@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
 
 import StatefulError from './StatefulError'
+import styles from './RadioList.scss'
 
 const RadioList = props => {
-  const { id, label, name, options, model, messages, validators } = props
+  const { id, label, name, options, model, messages, validators, onChange } = props
   return (
     <div className="field">
       <fieldset>
@@ -14,8 +15,8 @@ const RadioList = props => {
           {options.map(option => {
             const fieldId = `${id}-${option.value}`
             return (
-              <span key={fieldId} className="radio-list-container">
-                <span className="au-control-input au-control-input--full">
+              <div key={fieldId} className="radio-list-container">
+                <div className={`au-control-input au-control-input--full ${styles.control}`}>
                   <Control.radio
                     model={model}
                     name={name}
@@ -25,12 +26,13 @@ const RadioList = props => {
                     }}
                     value={option.value}
                     validators={validators}
+                    onChange={onChange}
                   />
                   <label className="au-control-input__text" htmlFor={fieldId}>
                     {option.label}
                   </label>
-                </span>
-              </span>
+                </div>
+              </div>
             )
           })}
         </div>

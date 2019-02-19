@@ -15,6 +15,9 @@ const getLinkedBriefTitle = item => {
     case 'rfx':
       url = `${rootPath}/brief/${item.id}/overview/rfx`
       break
+    case 'atm':
+      url = `${rootPath}/brief/${item.id}/overview/atm`
+      break
     case 'digital-outcome':
       url = `/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`
       break

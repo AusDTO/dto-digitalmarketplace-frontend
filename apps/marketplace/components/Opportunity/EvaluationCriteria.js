@@ -12,7 +12,7 @@ const EvaluationCriteria = props => (
         className={props.showWeightings ? `col-xs-8 col-sm-9` : `col-xs-12`}
       >
         <AUheading level="2" size="lg">
-          Evaluation criteria
+          {props.title}
         </AUheading>
       </div>
       {props.showWeightings && (
@@ -42,12 +42,14 @@ const EvaluationCriteria = props => (
 
 EvaluationCriteria.defaultProps = {
   evaluationCriteria: [],
-  showWeightings: true
+  showWeightings: true,
+  title: 'Evaluation criteria'
 }
 
 EvaluationCriteria.propTypes = {
   evaluationCriteria: PropTypes.array,
-  showWeightings: PropTypes.bool
+  showWeightings: PropTypes.bool,
+  title: PropTypes.string
 }
 
 export default EvaluationCriteria
