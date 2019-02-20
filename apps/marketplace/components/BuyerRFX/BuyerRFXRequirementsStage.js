@@ -16,7 +16,7 @@ const RequirementsTemplateHint = (
   <span>
     You can use the{' '}
     <a href="/static/media/documents/Requirements-Document-template.docx" target="_blank" rel="noreferer noopener">
-      Marketplace template DOCX 58 KB
+      Marketplace template (DOCX 58 KB)
     </a>{' '}
     if you do not have your own. Make sure you update it with your Agency&apos;s requirements.
   </span>
@@ -26,7 +26,7 @@ const ResponseTemplateHint = (
   <span>
     You can use the{' '}
     <a href="/static/media/documents/Response-Template.docx" target="_blank" rel="noreferer noopener">
-      Marketplace template DOCX 67 KB
+      Marketplace template (DOCX 67 KB)
     </a>{' '}
     if you do not have your own.
   </span>
