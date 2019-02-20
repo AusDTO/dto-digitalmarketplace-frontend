@@ -1,5 +1,5 @@
 export const create = async (params) => {
-    console.log('Starting to create outcome brief');
+    console.log('Starting to create atm brief');
     await createBrief();
     await fillWhoCanRespond();
     await fillAbout(params.title, params.locations);
