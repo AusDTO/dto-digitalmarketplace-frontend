@@ -67,16 +67,17 @@ export const handleCreateUserSuccess = response => ({
   data: response.data
 })
 
-export const createUser = values => (dispatch, getState) => {
+export const createUser = (tokenString, emailAddress, password) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
-    url: '/create-user',
+    url: `/create-user/${tokenString}`,
+    params: { e: encodeURIComponent(emailAddress) },
     headers: {
       'X-CSRFToken': getState().app.csrfToken,
       'Content-Type': 'application/json'
     },
-    data: JSON.stringify(values)
+    data: { password }
   }).then(response => {
     if (response.error) {
       if (response.status === 409) {

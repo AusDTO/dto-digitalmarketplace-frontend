@@ -2,28 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import ErrorBox from 'shared/form/ErrorBox'
+import { parse } from 'qs'
 import BaseForm from 'shared/form/BaseForm'
 import formProps from 'shared/form/formPropsSelector'
 import CreateUserForm from '../components/CreateUser/CreateUserForm'
-import { loadSignup, createUser } from '../actions/memberActions'
+import { createUser } from '../actions/memberActions'
 import { rootPath } from '../routes'
 
 export class CreateUserPageComponent extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
-      submitClicked: null,
-      currentlySending: null
+      submitClicked: null
     }
-  }
 
-  componentWillMount() {
-    const tokenString = this.props.location.pathname.substring(
-      this.props.match.url.length + 1,
-      this.props.location.pathname.length
-    )
-    this.props.loadRegistrationData(tokenString)
+    this.onSubmitClicked = this.onSubmitClicked.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,47 +27,55 @@ export class CreateUserPageComponent extends BaseForm {
     }
   }
 
-  onSubmitClicked = () => {
+  onSubmitClicked() {
     this.setState({
       submitClicked: new Date().valueOf()
     })
   }
 
+  getTokenFromURL() {
+    const tokenString = this.props.location.pathname.substring(
+      this.props.match.url.length + 1,
+      this.props.location.pathname.length
+    )
+    return tokenString
+  }
+
+  getEmailFromQueryString() {
+    const parsed = parse(this.props.location.search.substr(1))
+    let emailAddress = ''
+    if (parsed.e) {
+      emailAddress = parsed.e
+    }
+    return emailAddress
+  }
+
+  handleSubmit = values => {
+    const token = this.getTokenFromURL()
+    const email = this.getEmailFromQueryString()
+    const password = values.password
+    this.props.createUser(token, email, password)
+  }
+
   render() {
     const {
       model,
-      loadSignupSuccess,
-      userRegisterDetails,
-      handleSubmit,
       createUserSuccess,
       currentlySending
     } = this.props
-
-    let hasFocused = false
-    const setFocus = e => {
-      if (!hasFocused) {
-        hasFocused = true
-        e.focus()
-      }
-    }
 
     return (
       <div className="row">
         <div className="col-sm-push-2 col-sm-8 col-xs-12">
           <article role="main">
-            {loadSignupSuccess ? (
-              <CreateUserForm
-                initialState={userRegisterDetails}
-                onSubmitClicked={this.onSubmitClicked}
-                submitClicked={this.state.submitClicked}
-                handleSubmit={handleSubmit}
-                createUserSuccess={createUserSuccess}
-                model={model}
-                currentlySending={currentlySending}
-              />
-            ) : (
-              <ErrorBox title="There was a problem loading your details" setFocus={setFocus} />
-            )}
+            <CreateUserForm
+              onSubmitClicked={this.onSubmitClicked}
+              submitClicked={this.state.submitClicked}
+              handleSubmit={this.handleSubmit}
+              createUserSuccess={createUserSuccess}
+              model={model}
+              currentlySending={currentlySending}
+            />
           </article>
         </div>
       </div>
@@ -84,31 +85,18 @@ export class CreateUserPageComponent extends BaseForm {
 
 CreateUserPageComponent.propTypes = {
   model: PropTypes.string.isRequired,
-  userRegisterDetails: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    email_address: PropTypes.string.isRequired,
-    manager_name: PropTypes.string,
-    manager_email: PropTypes.string
-  }),
-  loadSignupSuccess: PropTypes.bool,
-  loadRegistrationData: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   createUserSuccess: PropTypes.bool
 }
 
 const mapStateToProps = state => ({
   ...formProps(state, 'createUserForm'),
-  userRegisterDetails: state.user.userRegisterDetails,
-  loadSignupSuccess: state.user.loadSignupSuccess,
   createUserSuccess: state.user.createUserSuccess,
   currentlySending: state.app.currentlySending
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadRegistrationData: tokenString => {
-    dispatch(loadSignup(tokenString))
-  },
-  handleSubmit: values => dispatch(createUser(values))
+  createUser: (tokenString, emailAddress, password) =>
+    dispatch(createUser(tokenString, emailAddress, password))
 })
 
 const CreateUserPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPageComponent))
