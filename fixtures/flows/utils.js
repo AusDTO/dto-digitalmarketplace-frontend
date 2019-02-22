@@ -47,9 +47,7 @@ export const type = async (id, options) => {
         }
         value = words(numberOfWords, numberOfCharacters);
     }
-    if (!reactInput) {
-        reactInput = false;
-    }
+    reactInput = reactInput ? reactInput : false;
     let input = await getElementHandle(`//*[@id="${id}"]`);
     if (process.env.TYPE_INPUT === 'true') {
         if (process.env.SHORTEN_TYPED_INPUT === 'true') {
