@@ -179,7 +179,7 @@ const fillAdditionalTerms = async () => {
 }
 
 const fillNumberOfSellers = async () => {
-    await type('input-numberOfSuppliers', { value: 3 });
+    await type('input-numberOfSuppliers', { value: '3' });
     await clickSaveContinue();
 }
 
