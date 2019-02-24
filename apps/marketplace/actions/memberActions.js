@@ -82,6 +82,8 @@ export const createUser = (tokenString, emailAddress, password) => (dispatch, ge
     if (response.error) {
       if (response.status === 409) {
         dispatch(setErrorMessage(DUPLICATE_USER))
+      } else if (response.data && response.data.message) {
+        dispatch(setErrorMessage(response.data.message))
       } else {
         dispatch(setErrorMessage(USER_NOT_CREATED))
       }

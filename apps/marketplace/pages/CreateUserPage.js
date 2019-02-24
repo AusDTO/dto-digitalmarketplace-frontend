@@ -21,8 +21,8 @@ export class CreateUserPageComponent extends BaseForm {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.createUserSuccess !== nextProps.createUserSuccess) {
-      if (nextProps.createUserSuccess) {
-        this.props.history.push(`${rootPath}/signup/success/${nextProps.createUserForm.user_type}`)
+      if (nextProps.createUserSuccess && this.props.createdUser) {
+        this.props.history.push(`${rootPath}/signup/success/${nextProps.createdUser.role}`)
       }
     }
   }
@@ -91,6 +91,7 @@ CreateUserPageComponent.propTypes = {
 const mapStateToProps = state => ({
   ...formProps(state, 'createUserForm'),
   createUserSuccess: state.user.createUserSuccess,
+  createdUser: state.user.user,
   currentlySending: state.app.currentlySending
 })
 
