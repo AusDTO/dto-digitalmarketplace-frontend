@@ -145,7 +145,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     const typeConvertor = {
       outcomes: 'Seek proposals and quotes',
       specialists: 'Specialists',
-      atm: 'Ask the marketplace',
+      atm: 'Ask the market',
       training: 'Training'
     }
 

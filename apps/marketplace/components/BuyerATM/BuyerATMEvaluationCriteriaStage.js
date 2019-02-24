@@ -8,8 +8,9 @@ import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
-import styles from './BuyerRFXEvaluationCriteriaStage.scss'
+import styles from './BuyerATMEvaluationCriteriaStage.scss'
 
 export const noEmptyWeightings = formValues =>
   !formValues.includeWeightings || formValues.evaluationCriteria.every(val => val.weighting)
@@ -27,7 +28,7 @@ export const noZeroWeightings = formValues =>
 
 export const noEmptyCriteria = formValues => formValues.evaluationCriteria.every(val => val.criteria)
 
-class BuyerRFXEvaluationCriteriaStage extends Component {
+class BuyerATMEvaluationCriteriaStage extends Component {
   constructor(props) {
     super(props)
     this.handleIncludeWeightingsChange = this.handleIncludeWeightingsChange.bind(this)
@@ -55,7 +56,7 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
 
   handleAddCriteriaClick(e) {
     e.preventDefault()
-    this.props.addEmptyEvaluationCriteria(this.props[this.props.model].evaluationCriteria)
+    this.props.addEmptyEvalutationCriteria(this.props[this.props.model].evaluationCriteria)
   }
 
   handleIncludeWeightingsChange(e) {
@@ -77,8 +78,13 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
-          Evaluation criteria
+          Response criteria
         </AUheadings>
+        <AUcallout description="" className={styles.noticeBar}>
+          <strong>Sellers can only respond to each criteria you list here.</strong>
+          <br />
+          You must list each criteria separately so that sellers can respond to each one through the Marketplace.
+        </AUcallout>
         <ErrorAlert
           title="An error occurred"
           model={this.props.model}
@@ -173,18 +179,18 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
   }
 }
 
-BuyerRFXEvaluationCriteriaStage.defaultProps = {
+BuyerATMEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromCriteria: () => {},
-  addEmptyEvaluationCriteria: () => {},
+  addEmptyEvalutationCriteria: () => {},
   removeCriteriaByIndex: () => {},
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXEvaluationCriteriaStage.propTypes = {
+BuyerATMEvaluationCriteriaStage.propTypes = {
   model: PropTypes.string.isRequired,
   clearWeightingsFromCriteria: PropTypes.func,
-  addEmptyEvaluationCriteria: PropTypes.func,
+  addEmptyEvalutationCriteria: PropTypes.func,
   removeCriteriaByIndex: PropTypes.func,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func,
@@ -204,7 +210,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     })
     dispatch(actions.change(`${props.model}.evaluationCriteria`, newData))
   },
-  addEmptyEvaluationCriteria: evaluationCriteria => {
+  addEmptyEvalutationCriteria: evaluationCriteria => {
     const newData = evaluationCriteria.slice(0)
     newData.push({
       criteria: '',
@@ -219,4 +225,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXEvaluationCriteriaStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMEvaluationCriteriaStage)

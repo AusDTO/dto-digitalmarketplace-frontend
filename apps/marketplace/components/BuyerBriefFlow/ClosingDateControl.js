@@ -52,10 +52,7 @@ export class ClosingDate extends Component {
           <label htmlFor="closing_date" className="question-heading au-text-input__label">
             Closing date
           </label>
-          <div>
-            This date must be at least 2 days after you publish this request and responses will be available after 6pm
-            Canberra time.
-          </div>
+          <div>{this.props.description}</div>
         </div>
         <div id="closing_date" className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>
           <div>
@@ -109,13 +106,15 @@ export class ClosingDate extends Component {
 ClosingDate.defaultProps = {
   onDateChange: () => {},
   value: '',
-  className: ''
+  className: '',
+  description: ''
 }
 
 ClosingDate.propTypes = {
   onDateChange: PropTypes.func,
   value: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  description: PropTypes.string
 }
 
 const ClosingDateControl = props => (
@@ -125,6 +124,7 @@ const ClosingDateControl = props => (
     component={ClosingDate}
     onDateChange={props.onDateChange}
     className={props.className}
+    description={props.description}
     mapProps={{
       value: ownProps => ownProps.viewValue,
       formModel: ownProps => ownProps.model

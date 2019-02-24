@@ -47,7 +47,7 @@ test('My briefs shows a message and not a table when there is no briefs to show'
       .find('h2')
       .first()
       .text()
-  ).toEqual('Start your first brief')
+  ).toEqual('Need a hand?')
 })
 
 test('My briefs shows correctly formatted closing time for a future date', () => {

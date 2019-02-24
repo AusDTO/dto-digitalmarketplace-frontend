@@ -26,6 +26,29 @@ const PanelCategorySelectView = props => (
   </div>
 )
 
+export const PanelCategorySelect = props => (
+  <div className={styles.container}>
+    <PanelCategorySelectView
+      id={props.id}
+      categories={props.categories}
+      onChange={props.onChange}
+      selectedCategory={props.selectedCategory}
+    />
+  </div>
+)
+
+PanelCategorySelect.defaultProps = {
+  onChange: () => {},
+  selectedCategory: ''
+}
+
+PanelCategorySelect.propTypes = {
+  id: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired,
+  onChange: PropTypes.func,
+  selectedCategory: PropTypes.string
+}
+
 const SellerSelectView = props => (
   <div>
     <label htmlFor={props.id}>{props.label}</label>
@@ -54,7 +77,7 @@ const SellerSelectResultsView = props => (
     {props.noResults &&
       props.searchFor && (
         <li>
-          Seller cannot be found in this category.
+          {props.notFoundMessage}
           <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
             Search all sellers
           </a>
@@ -175,6 +198,7 @@ export class SellerSelect extends Component {
                 sellers={this.state.sellers}
                 noResults={this.state.noResults}
                 searchFor={this.state.inputValue}
+                notFoundMessage={this.props.notFoundMessage}
                 handleSellerSelectClick={this.handleSellerSelectClick}
               />
             )}
@@ -191,6 +215,7 @@ SellerSelect.defaultProps = {
   label: '',
   description: '',
   selectedCategory: '',
+  notFoundMessage: 'Seller cannot be found in this category.',
   showSelected: true,
   showSearchButton: true,
   showCategorySelect: false,
@@ -207,6 +232,7 @@ SellerSelect.propTypes = {
   label: PropTypes.string,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   selectedCategory: PropTypes.string,
+  notFoundMessage: PropTypes.string,
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,
   showCategorySelect: PropTypes.bool,
