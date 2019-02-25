@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { parse } from 'qs'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { sendInvite } from '../actions/memberActions'
 
 export class SendInvitePageComponent extends Component {
@@ -65,7 +66,7 @@ export class SendInvitePageComponent extends Component {
       )
     }
 
-    return <div />
+    return <LoadingIndicatorFullPage />
   }
 }
 
