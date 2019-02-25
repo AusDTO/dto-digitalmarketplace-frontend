@@ -58,11 +58,7 @@ export class CreateUserPageComponent extends BaseForm {
   }
 
   render() {
-    const {
-      model,
-      createUserSuccess,
-      currentlySending
-    } = this.props
+    const { model, createUserSuccess, currentlySending } = this.props
 
     return (
       <div className="row">
@@ -96,8 +92,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createUser: (tokenString, emailAddress, password) =>
-    dispatch(createUser(tokenString, emailAddress, password))
+  createUser: (tokenString, emailAddress, password) => dispatch(createUser(tokenString, emailAddress, password))
 })
 
 const CreateUserPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPageComponent))
