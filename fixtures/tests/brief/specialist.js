@@ -17,12 +17,6 @@ describe('should be able to create specialist brief', () => {
         'Data science',
         'Emerging technologies'
     ];
-    beforeEach(async () => {
-        await login();
-    });
-    afterEach(async () => {
-        await signOut();
-    });
     areaOfExpertises.forEach((areaOfExpertise) => {
         it('should create specialist brief of ' + areaOfExpertise, async () => {
             let now = Date.now();
