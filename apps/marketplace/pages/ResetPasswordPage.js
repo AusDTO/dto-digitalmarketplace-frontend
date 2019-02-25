@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { parse } from 'qs'
 import formProps from 'shared/form/formPropsSelector'
-
 import NotFound from '../components/NotFound'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
-import { sendResetPasswordEmail, submitResetPassword, getUserDataFromToken } from '../actions/resetPasswordActions'
+import { sendResetPasswordEmail, submitResetPassword } from '../actions/resetPasswordActions'
 import { setErrorMessage, logout } from '../actions/appActions'
 
 export class ResetPasswordPageComponent extends Component {
@@ -19,13 +19,6 @@ export class ResetPasswordPageComponent extends Component {
   }
 
   componentWillMount() {
-    const tokenString = this.props.location.pathname.substring(
-      this.props.match.url.length + 1,
-      this.props.location.pathname.length
-    )
-    if (tokenString.length > 0) {
-      this.props.loadInitialData(tokenString)
-    }
     this.props.logoutForPasswordReset()
   }
 
@@ -43,10 +36,27 @@ export class ResetPasswordPageComponent extends Component {
     })
   }
 
+  getTokenFromURL() {
+    const tokenString = this.props.location.pathname.substring(
+      this.props.match.url.length + 1,
+      this.props.location.pathname.length
+    )
+    return tokenString
+  }
+
+  getEmailFromQueryString() {
+    const parsed = parse(this.props.location.search.substr(1))
+    let emailAddress = ''
+    if (parsed.e) {
+      emailAddress = parsed.e
+    }
+    return emailAddress
+  }
+
   handleResetPasswordSubmit(values) {
     const { user } = this.props
     const payload = Object.assign({}, values, user.user, { framework: 'digital-marketplace' })
-    this.props.handleResetPasswordSubmit(payload)
+    this.props.handleResetPasswordSubmit(this.getTokenFromURL(), this.getEmailFromQueryString(), payload)
   }
 
   handleSendEmailSubmit(values) {
@@ -93,7 +103,6 @@ export class ResetPasswordPageComponent extends Component {
 
 ResetPasswordPageComponent.defaultProps = {
   passwordsMatchMessage: null,
-  loadInitialData: null,
   handleResetPasswordSubmit: null
 }
 
@@ -103,7 +112,6 @@ ResetPasswordPageComponent.propTypes = {
   }).isRequired,
   model: PropTypes.string.isRequired,
   passwordsMatchMessage: PropTypes.func,
-  loadInitialData: PropTypes.func,
   handleResetPasswordSubmit: PropTypes.func
 }
 
@@ -115,8 +123,7 @@ const mapResetStateToProps = state => ({
 
 const mapResetDispatchToProps = dispatch => ({
   handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
-  handleResetPasswordSubmit: payload => dispatch(submitResetPassword(payload)),
-  loadInitialData: token => dispatch(getUserDataFromToken(token)),
+  handleResetPasswordSubmit: (token, email, payload) => dispatch(submitResetPassword(token, email, payload)),
   passwordsMatchMessage: message => dispatch(setErrorMessage(message)),
   logoutForPasswordReset: () => dispatch(logout())
 })
