@@ -37,11 +37,11 @@ export class ResetPasswordPageComponent extends Component {
   }
 
   getTokenFromURL() {
-    const tokenString = this.props.location.pathname.substring(
+    const token = this.props.location.pathname.substring(
       this.props.match.url.length + 1,
       this.props.location.pathname.length
     )
-    return tokenString
+    return token
   }
 
   getEmailFromQueryString() {
@@ -83,7 +83,7 @@ export class ResetPasswordPageComponent extends Component {
           />
 
           <Route
-            path={`${match.url}/:tokenString`}
+            path={`${match.url}/:token`}
             render={() => (
               <ResetPasswordForm
                 model={model}

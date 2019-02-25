@@ -76,7 +76,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  sendInvite: (tokenString, emailAddress) => dispatch(sendInvite(tokenString, emailAddress))
+  sendInvite: (token, emailAddress) => dispatch(sendInvite(token, emailAddress))
 })
 
 const SendInvitePage = withRouter(connect(mapStateToProps, mapDispatchToProps)(SendInvitePageComponent))

@@ -46,11 +46,11 @@ export const handleCreateUserSuccess = response => ({
   data: response.data
 })
 
-export const createUser = (tokenString, emailAddress, password) => (dispatch, getState) => {
+export const createUser = (token, emailAddress, password) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
-    url: `/create-user/${tokenString}`,
+    url: `/create-user/${token}`,
     params: { e: encodeURIComponent(emailAddress) },
     headers: {
       'X-CSRFToken': getState().app.csrfToken,
@@ -78,11 +78,11 @@ export const handleSendInviteSuccess = response => ({
   data: response.data
 })
 
-export const sendInvite = (tokenString, emailAddress) => (dispatch, getState) => {
+export const sendInvite = (token, emailAddress) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
-    url: `/send-invite/${tokenString}`,
+    url: `/send-invite/${token}`,
     params: { e: encodeURIComponent(emailAddress) },
     headers: {
       'X-CSRFToken': getState().app.csrfToken,

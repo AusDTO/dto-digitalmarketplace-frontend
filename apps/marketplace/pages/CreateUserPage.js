@@ -34,11 +34,11 @@ export class CreateUserPageComponent extends BaseForm {
   }
 
   getTokenFromURL() {
-    const tokenString = this.props.location.pathname.substring(
+    const token = this.props.location.pathname.substring(
       this.props.match.url.length + 1,
       this.props.location.pathname.length
     )
-    return tokenString
+    return token
   }
 
   getEmailFromQueryString() {
@@ -92,7 +92,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createUser: (tokenString, emailAddress, password) => dispatch(createUser(tokenString, emailAddress, password))
+  createUser: (token, emailAddress, password) => dispatch(createUser(token, emailAddress, password))
 })
 
 const CreateUserPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPageComponent))
