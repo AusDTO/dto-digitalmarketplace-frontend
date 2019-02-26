@@ -1,6 +1,5 @@
 import { SIGNUP_SUCCESS, CREATE_USER_SUCCESS, SEND_INVITE_SUCCESS } from '../constants/constants'
 import {
-  DUPLICATE_USER,
   EMAIL_NOT_WHITELISTED,
   USER_NOT_CREATED,
   INVITE_NOT_SENT,
@@ -59,9 +58,7 @@ export const createUser = (token, emailAddress, password) => (dispatch, getState
     data: { password }
   }).then(response => {
     if (response.error) {
-      if (response.status === 409) {
-        dispatch(setErrorMessage(DUPLICATE_USER))
-      } else if (response.data && response.data.message) {
+      if (response.data && response.data.message) {
         dispatch(setErrorMessage(response.data.message))
       } else {
         dispatch(setErrorMessage(USER_NOT_CREATED))
