@@ -3,6 +3,7 @@
 import subDays from 'date-fns/sub_days'
 import addDays from 'date-fns/add_days'
 import isWeekend from 'date-fns/is_weekend'
+import { parse } from 'qs'
 
 export const uniqueID = () =>
   Math.floor((1 + Math.random()) * 0x10000)
@@ -55,4 +56,15 @@ export const getBriefLastQuestionDate = closingDate => {
     lastQuestionDate = closingDate
   }
   return lastQuestionDate
+}
+
+export const getTokenFromURL = (url, location) => location.pathname.substring(url.length + 1, location.pathname.length)
+
+export const getEmailFromQueryString = location => {
+  const parsed = parse(location.search.substr(1))
+  let emailAddress = ''
+  if (parsed.e) {
+    emailAddress = parsed.e
+  }
+  return emailAddress
 }

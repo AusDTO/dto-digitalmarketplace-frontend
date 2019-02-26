@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { parse } from 'qs'
 import BaseForm from 'shared/form/BaseForm'
 import formProps from 'shared/form/formPropsSelector'
+import { getTokenFromURL, getEmailFromQueryString } from 'marketplace/components/helpers'
 import CreateUserForm from '../components/CreateUser/CreateUserForm'
 import { createUser } from '../actions/memberActions'
 import { rootPath } from '../routes'
@@ -33,26 +33,9 @@ export class CreateUserPageComponent extends BaseForm {
     })
   }
 
-  getTokenFromURL() {
-    const token = this.props.location.pathname.substring(
-      this.props.match.url.length + 1,
-      this.props.location.pathname.length
-    )
-    return token
-  }
-
-  getEmailFromQueryString() {
-    const parsed = parse(this.props.location.search.substr(1))
-    let emailAddress = ''
-    if (parsed.e) {
-      emailAddress = parsed.e
-    }
-    return emailAddress
-  }
-
   handleSubmit = values => {
-    const token = this.getTokenFromURL()
-    const email = this.getEmailFromQueryString()
+    const token = getTokenFromURL(this.props.match.url, this.props.location)
+    const email = getEmailFromQueryString(this.props.location)
     const password = values.password
     this.props.createUser(token, email, password)
   }

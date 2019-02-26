@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { parse } from 'qs'
 import formProps from 'shared/form/formPropsSelector'
+import { getTokenFromURL, getEmailFromQueryString } from 'marketplace/components/helpers'
 import NotFound from '../components/NotFound'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
@@ -36,27 +36,14 @@ export class ResetPasswordPageComponent extends Component {
     })
   }
 
-  getTokenFromURL() {
-    const token = this.props.location.pathname.substring(
-      this.props.match.url.length + 1,
-      this.props.location.pathname.length
-    )
-    return token
-  }
-
-  getEmailFromQueryString() {
-    const parsed = parse(this.props.location.search.substr(1))
-    let emailAddress = ''
-    if (parsed.e) {
-      emailAddress = parsed.e
-    }
-    return emailAddress
-  }
-
   handleResetPasswordSubmit(values) {
     const { user } = this.props
     const payload = Object.assign({}, values, user.user, { framework: 'digital-marketplace' })
-    this.props.handleResetPasswordSubmit(this.getTokenFromURL(), this.getEmailFromQueryString(), payload)
+    this.props.handleResetPasswordSubmit(
+      getTokenFromURL(this.props.match.url, this.props.location),
+      getEmailFromQueryString(this.props.location),
+      payload
+    )
   }
 
   handleSendEmailSubmit(values) {
