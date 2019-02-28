@@ -86,7 +86,9 @@ export default combineReducers({
       attachedDocumentURL: []
     },
     resetPasswordEmailForm: {
-      email_address: ''
+      email_address: '',
+      password: '',
+      confirmPassword: ''
     },
     resetPasswordForm: {
       password: '',

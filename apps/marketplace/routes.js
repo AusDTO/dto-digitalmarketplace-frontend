@@ -4,6 +4,7 @@ import PrivateRoute from 'marketplace/MarketplaceAuthenticatedRoute'
 import SignupPage from './pages/SignupPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import CreateUserPage from './pages/CreateUserPage'
+import SendInvitePage from './pages/SendInvitePage'
 import BriefPage from './pages/BriefPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './components/NotFound'
@@ -30,6 +31,7 @@ export const Routes = () => (
     <Route exact path={rootPath} component={SignupPage} />
     <Route path={`${rootPath}/signup`} component={SignupPage} />
     <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
+    <PrivateRoute restrictedTo="admin" path={`${rootPath}/send-invite/:token`} component={SendInvitePage} />
     <PrivateRoute
       restrictedTo="buyer"
       path={`${rootPath}/brief/:briefId/overview/:flow`}

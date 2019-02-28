@@ -3,6 +3,7 @@ export const BRIEF_LOT_NOT_SUPPORTED = 'Lot not supported.'
 export const BRIEF_MUST_BE_DRAFT = 'Only draft briefs can be deleted.'
 export const DUPLICATE_USER = 'An account with this email address already exists.'
 export const USER_NOT_CREATED = 'The Digital Marketplace encountered an error trying to create your account.'
+export const INVITE_NOT_SENT = 'The Digital Marketplace encountered an error trying to send the invite.'
 export const REGISTRATION_NOT_FOUND =
   'The Digital Marketplace encountered an error trying to load user registration details.'
 export const GENERAL_ERROR = 'The Digital Marketplace encountered an error.'

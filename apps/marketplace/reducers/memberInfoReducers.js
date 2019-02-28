@@ -1,7 +1,7 @@
 import {
-  LOAD_SIGNUP_SUCCESS,
   SIGNUP_SUCCESS,
   CREATE_USER_SUCCESS,
+  SEND_INVITE_SUCCESS,
   SET_ERROR_MESSAGE,
   GET_RESET_DATA_SUCCESS,
   GET_RESET_DATA_FAILURE,
@@ -10,10 +10,10 @@ import {
 } from '../constants/constants'
 
 const defaultUserState = {
-  loadSignupSuccess: null,
   signupSuccess: null,
   userRegisterDetails: null,
   createUserSuccess: null,
+  sendInviteSuccess: null,
   resetPasswordEmailSuccess: null,
   resetPasswordSuccess: null,
   user: {}
@@ -21,14 +21,6 @@ const defaultUserState = {
 
 const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
-    case LOAD_SIGNUP_SUCCESS:
-      return {
-        ...state,
-        userRegisterDetails: action.data,
-        loadSignupSuccess: true,
-        loadSignupErrored: false
-      }
-
     case SIGNUP_SUCCESS:
       return {
         ...state,
@@ -42,6 +34,13 @@ const userReducer = (state = defaultUserState, action) => {
         user: action.data,
         createUserSuccess: true,
         createUserErrored: false
+      }
+
+    case SEND_INVITE_SUCCESS:
+      return {
+        ...state,
+        user: action.data,
+        sendInviteSuccess: true
       }
 
     case SET_ERROR_MESSAGE:
