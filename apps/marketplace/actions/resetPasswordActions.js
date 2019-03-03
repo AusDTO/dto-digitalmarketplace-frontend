@@ -1,11 +1,6 @@
-import {
-  GET_RESET_DATA_SUCCESS,
-  RESET_PASSWORD_EMAIL_SUCCESS,
-  RESET_PASSWORD_SUCCESS,
-  GET_RESET_DATA_FAILURE
-} from '../constants/constants'
+import { RESET_PASSWORD_EMAIL_SUCCESS, RESET_PASSWORD_SUCCESS } from '../constants/constants'
 
-import { GENERAL_ERROR, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
+import { UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -16,7 +11,7 @@ export const sendResetPasswordEmail = values => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
-    url: `/reset-password/framework/${values.framework}`,
+    url: `/reset-password`,
     headers: {
       'X-CSRFToken': getState().app.csrfToken,
       'Content-Type': 'application/json'
@@ -32,40 +27,17 @@ export const sendResetPasswordEmail = values => (dispatch, getState) => {
   })
 }
 
-export const handleGetResetDataSuccess = response => ({
-  type: GET_RESET_DATA_SUCCESS,
-  user: response.data
-})
-
-export const handleGetResetFailure = () => ({ type: GET_RESET_DATA_FAILURE })
-
-export const getUserDataFromToken = token => dispatch => {
-  dispatch(sendingRequest(true))
-  dmapi({ url: `/reset-password/${token}` }).then(response => {
-    if (response.error) {
-      if (response.data && response.data.message) {
-        dispatch(setErrorMessage(`${response.data.message}. Try resending reset password email.`))
-      } else {
-        dispatch(setErrorMessage(GENERAL_ERROR))
-      }
-      dispatch(handleGetResetFailure())
-    } else {
-      dispatch(handleGetResetDataSuccess(response))
-    }
-    dispatch(sendingRequest(false))
-  })
-}
-
 export const handleSubmitResetPasswordSuccess = response => ({
   type: RESET_PASSWORD_SUCCESS,
   user: response.data
 })
 
-export const submitResetPassword = values => (dispatch, getState) => {
+export const submitResetPassword = (token, emailAddress, values) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
     method: 'post',
-    url: `/reset-password/${values.token}`,
+    url: `/reset-password/${token}`,
+    params: { e: encodeURIComponent(emailAddress) },
     headers: {
       'X-CSRFToken': getState().app.csrfToken,
       'Content-Type': 'application/json'
@@ -73,7 +45,11 @@ export const submitResetPassword = values => (dispatch, getState) => {
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {
-      dispatch(setErrorMessage(UNABLE_TO_RESET))
+      if (response.data && response.data.message) {
+        dispatch(setErrorMessage(response.data.message))
+      } else {
+        dispatch(setErrorMessage(UNABLE_TO_RESET))
+      }
     } else {
       dispatch(handleSubmitResetPasswordSuccess(response))
     }

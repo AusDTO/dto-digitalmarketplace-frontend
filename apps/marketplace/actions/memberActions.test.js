@@ -1,6 +1,6 @@
 import expect from 'expect'
-import { handleSignupSuccess, handleLoadSignupSuccess, handleCreateUserSuccess } from './memberActions'
-import { LOAD_SIGNUP_SUCCESS, SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
+import { handleSignupSuccess, handleCreateUserSuccess } from './memberActions'
+import { SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
 
 // Test a sync action
 describe('Member Actions', () => {
@@ -20,29 +20,6 @@ describe('Member Actions', () => {
 
       // act
       const action = handleSignupSuccess(submitSignupResponse)
-
-      // assert
-      expect(action).toEqual(expectedAction)
-    })
-  })
-
-  describe('loading data to poplulate password entry form to complete new use creation', () => {
-    it('should create a MEMBER_INFO_FETCH_DATA_SUCCESS action', () => {
-      // arrange
-      const loadSignupResponse = {
-        status: 200,
-        data: {
-          name: 'Jeffrey Labowski',
-          email: 'the@dude.com'
-        }
-      }
-      const expectedAction = {
-        type: LOAD_SIGNUP_SUCCESS,
-        data: loadSignupResponse.data
-      }
-
-      // act
-      const action = handleLoadSignupSuccess(loadSignupResponse)
 
       // assert
       expect(action).toEqual(expectedAction)
