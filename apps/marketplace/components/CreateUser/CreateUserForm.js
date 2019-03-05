@@ -8,8 +8,7 @@ import styles from './CreateUserForm.scss'
 import LoadingButton from '../../components/LoadingButton/LoadingButton'
 
 const CreateUserForm = props => {
-  const { model, initialState, handleSubmit, onSubmitClicked, submitClicked, currentlySending } = props
-  const userType = initialState.user_type
+  const { model, handleSubmit, onSubmitClicked, submitClicked, currentlySending } = props
 
   let hasFocused = false
   const setFocus = e => {
@@ -27,31 +26,11 @@ const CreateUserForm = props => {
         submitClicked={submitClicked}
         setFocus={setFocus}
       />
-      {userType === 'buyer' ? (
-        <div>
-          <h1 className="au-display-xl">Add your name and password</h1>
-          <p>To finish creating your account please provide the following details.</p>
-        </div>
-      ) : (
-        <div>
-          <h1 className="au-display-xl">Add a password</h1>
-          <p>To finish creating your account please provide the following details.</p>
-        </div>
-      )}
+      <div>
+        <h1 className="au-display-xl">Add a password</h1>
+        <p>To finish creating your account please provide the following details.</p>
+      </div>
       <Form model={model} id="createuser" onSubmit={data => handleSubmit(data)}>
-        {userType === 'buyer' && (
-          <Textfield
-            model={`${model}.name`}
-            name="name"
-            id="name"
-            htmlFor="name"
-            label="Full name"
-            description="This name will be used throughout the Marketplace"
-            validators={{ required: val => val && val.length }}
-            messages={{ required: 'A name is required' }}
-          />
-        )}
-
         <Textfield
           model={`${model}.password`}
           name="password"
@@ -101,7 +80,6 @@ CreateUserForm.defaultProps = {
 
 CreateUserForm.propTypes = {
   model: PropTypes.string.isRequired,
-  initialState: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmitClicked: PropTypes.func.isRequired,
   submitClicked: PropTypes.number

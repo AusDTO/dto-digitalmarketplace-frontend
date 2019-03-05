@@ -12,7 +12,7 @@ describe('getBriefLastQuestionDate', () => {
   })
 
   test('When closing date is between 2 and 5 days away', () => {
-    const closingDate = addDays(now, 3)
+    const closingDate = nextWeekDay(addDays(now, 2))
     const lastQuestionDate = format(getBriefLastQuestionDate(closingDate), 'YYYY-MM-DD')
     expect(lastQuestionDate).toEqual(format(nextWeekDay(addDays(now, 2)), 'YYYY-MM-DD'))
   })

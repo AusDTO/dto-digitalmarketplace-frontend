@@ -9,7 +9,7 @@ export const login = async (email, password) => {
     }
     await type('input_email_address', { value: email });
     await type('input_password', { value: password });
-    await clickButton('Sign in');
+    await clickInputButton('Sign in');
 };
 
 export const signOut = async () => {
