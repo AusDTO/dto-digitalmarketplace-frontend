@@ -84,9 +84,9 @@ class PricingForm extends BaseForm {
               <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000054595-Seller-pricing" rel="external">
                  Seller Pricing FAQs
               </a>
-              and view the 
-              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000080555-Daily-rates-trend-charts" rel="external">
-                daily rates trend charts
+              and view 
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476" rel="external">
+                daily rates for areas of expertise
               </a>.
             </p>
         </header>
