@@ -12,7 +12,7 @@ import { loadSellerDashboard, removeUser } from 'marketplace/actions/sellerDashb
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
-import styles from '../components/sellerDashboard/SellerDashboard.scss'
+import styles from '../components/SellerDashboard/SellerDashboard.scss'
 
 class SellerDashboardPage extends Component {
   constructor(props) {
