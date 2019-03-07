@@ -33,6 +33,7 @@ const BuyerRFXStages = [
     isDone: formValues =>
       formValues.title.length > 0 &&
       formValues.organisation.length > 0 &&
+      formValues.summary.length > 0 &&
       formValues.location.length > 0 &&
       formValues.workingArrangements.length > 0
   },

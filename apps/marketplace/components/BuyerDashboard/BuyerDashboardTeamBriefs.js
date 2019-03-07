@@ -31,6 +31,7 @@ export class BuyerDashboardTeamBriefs extends Component {
         <div>
           <div className="row">
             <div className="col-xs-12">
+              <span />
               <p>There are no team briefs to show.</p>
             </div>
           </div>

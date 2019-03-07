@@ -8,20 +8,9 @@ import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import ErrorAlert from './ErrorAlert'
+import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import locations from 'marketplace/components/BuyerBriefFlow/Locations'
 import styles from './BuyerRFXAboutStage.scss'
-
-const locations = {
-  act: 'Australian Capital Territory',
-  nsw: 'New South Wales',
-  nt: 'Northern Territory',
-  qld: 'Queensland',
-  sa: 'South Australia',
-  tas: 'Tasmania',
-  vic: 'Victoria',
-  wa: 'Western Australia',
-  remote: 'Offsite'
-}
 
 const BuyerRFXAboutStage = props => (
   <Form

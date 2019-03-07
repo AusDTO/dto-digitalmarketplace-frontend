@@ -5,6 +5,7 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
+  BRIEF_ATM_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NUMBER,
@@ -88,9 +89,20 @@ export const handlePublicBriefInfoSuccess = response => ({
   brief: response.data.brief,
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
-  isInvitedSeller: response.data.is_invited_seller,
+  canRespond: response.data.can_respond,
+  isAssessedForCategory: response.data.is_assessed_for_category,
+  isAssessedForAnyCategory: response.data.is_assessed_in_any_category,
+  hasChosenBriefCategory: response.data.has_chosen_brief_category,
+  isOpenToCategory: response.data.open_to_category,
+  isOpenToAll: response.data.open_to_all,
   isBriefOwner: response.data.is_brief_owner,
   isBuyer: response.data.is_buyer,
+  isApprovedSeller: response.data.is_approved_seller,
+  isApplicant: response.data.is_applicant,
+  isRecruiterOnly: response.data.is_recruiter_only,
+  isAwaitingApplicationAssessment: response.data.is_awaiting_application_assessment,
+  isAwaitingDomainAssessment: response.data.is_awaiting_domain_assessment,
+  hasBeenAssessedForBrief: response.data.has_been_assessed_for_brief,
   hasResponded: response.data.has_responded,
   domains: response.data.domains
 })
@@ -119,6 +131,11 @@ export const handleCreateRFXBriefSuccess = response => ({
   brief: response.data
 })
 
+export const handleCreateATMBriefSuccess = response => ({
+  type: BRIEF_ATM_CREATE_SUCCESS,
+  brief: response.data
+})
+
 export const createRFXBrief = () => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
@@ -133,6 +150,26 @@ export const createRFXBrief = () => (dispatch, getState) => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleCreateRFXBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const createATMBrief = () => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/brief/atm',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateATMBriefSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response
