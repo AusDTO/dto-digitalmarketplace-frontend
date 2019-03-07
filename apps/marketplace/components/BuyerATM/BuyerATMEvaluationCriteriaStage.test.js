@@ -30,46 +30,6 @@ test('include weightings checkbox adds the weightings inputs', () => {
   expect(component.find('input#weighting_0').length).toEqual(1)
 })
 
-test('disabling weightings clears the current weighting values', () => {
-  const evaluationCriteria = [{ criteria: 'this', weighting: '50' }, { criteria: 'that', weighting: '50' }]
-  const state = {
-    BuyerATMForm: {
-      evaluationCriteria
-    }
-  }
-  const store = configureStore(state)
-
-  const component = mount(
-    <Provider store={store}>
-      <BuyerATMEvaluationCriteriaStage model="BuyerATMForm" BuyerATMForm={state.BuyerATMForm} />
-    </Provider>
-  )
-
-  component
-    .find('input#include_weightings')
-    .at(0)
-    .simulate('change', { target: { checked: true } })
-    .simulate('click')
-  expect(component.find('input#weighting_0').instance().value).toEqual('50')
-  expect(component.find('input#weighting_1').instance().value).toEqual('50')
-
-  component
-    .find('input#include_weightings')
-    .at(0)
-    .simulate('change', { target: { checked: false } })
-    .simulate('click')
-  expect(component.find('input#weighting_0').length).toEqual(0)
-  expect(component.find('input#weighting_1').length).toEqual(0)
-
-  component
-    .find('input#include_weightings')
-    .at(0)
-    .simulate('change', { target: { checked: true } })
-    .simulate('click')
-  expect(component.find('input#weighting_0').instance().value).toEqual('')
-  expect(component.find('input#weighting_1').instance().value).toEqual('')
-})
-
 test('removing a criteria', () => {
   const evaluationCriteria = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
   const state = {
