@@ -17,12 +17,14 @@ const Header = props => (
               <li>
                 <NavLink id="notifications-link" to="/notifications" activeClassName={styles.active} exact>
                   Notifications
-                  { (props.messages && props.messages.items.length !== 0) ?
+                  {props.messages && props.messages.items.length !== 0 ? (
                     <span className={styles.notification}>
                       <div className={styles.circle} />
                       <div className={styles.count}>{props.messages && props.messages.items.length}</div>
-                    </span> : ''
-                  }
+                    </span>
+                  ) : (
+                    ''
+                  )}
                 </NavLink>
               </li>
             </ul>

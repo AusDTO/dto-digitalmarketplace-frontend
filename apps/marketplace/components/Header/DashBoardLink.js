@@ -14,12 +14,14 @@ const DashBoardLink = props => {
       ) : (
         <span>
           <a href="/2/seller-dashboard">Dashboard</a>
-          { (notificationCount && notificationCount !== 0) ?
+          {notificationCount && notificationCount !== 0 ? (
             <span className="notification">
               <div className="circle" />
               <div className="count">{notificationCount}</div>
-            </span> : ''
-          }
+            </span>
+          ) : (
+            ''
+          )}
         </span>
       )}
     </span>
