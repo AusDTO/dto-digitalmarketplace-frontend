@@ -68,12 +68,12 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
       >
         Seller Pricing FAQs
       </a>
-      and view the
+      and view
       <a
-        href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000080555-Daily-rates-trend-charts"
+        href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476"
         rel="external"
       >
-        daily rates trend charts
+        daily rates for areas of expertise
       </a>
       .
     </p>
