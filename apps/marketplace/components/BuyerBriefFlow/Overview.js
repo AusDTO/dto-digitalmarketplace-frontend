@@ -200,10 +200,9 @@ class Overview extends Component {
                 )}
               </li>
             )}
-            {flow === 'rfx' &&
-              (briefResponseCount > 0 || !isPublished || !isClosed) && (
-                <li>{createWorkOrderRender(brief, flow, isPublished, isClosed)}</li>
-              )}
+            {flow === 'rfx' && (briefResponseCount > 0 || !isPublished || !isClosed) && (
+              <li>{createWorkOrderRender(brief, flow, isPublished, isClosed)}</li>
+            )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
         </div>
@@ -226,4 +225,7 @@ const mapDispatchToProps = dispatch => ({
   deleteBrief: briefId => dispatch(deleteBrief(briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Overview)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Overview)

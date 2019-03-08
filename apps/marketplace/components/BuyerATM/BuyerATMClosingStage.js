@@ -96,4 +96,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMClosingStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerATMClosingStage)

@@ -40,4 +40,7 @@ const mapDispatchToProps = dispatch => ({
   createATMBrief: () => dispatch(createATMBrief())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMCreatePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerATMCreatePage)
