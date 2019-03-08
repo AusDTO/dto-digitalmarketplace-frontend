@@ -374,8 +374,8 @@ label.text-box-number-label {
 
   .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: relative;
-    width: 310px;
-    margin-left: -147px;
+    width: 320px;
+    margin-left: -120px;
     z-index: 1;
   }
   .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
@@ -399,8 +399,8 @@ label.text-box-number-label {
 
   .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: relative;
-    width: 310px;
-    margin-left: -109px;
+    width: 320px;
+    margin-left: -120px;
     z-index: 1;
   }
   .buyer-dashboard-actions .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--closed {
@@ -413,7 +413,7 @@ label.text-box-number-label {
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: absolute;
-    width: 310px;
+    width: 320px;
     margin-left: -10px;
     z-index: 1;
   }
@@ -432,6 +432,10 @@ label.text-box-number-label {
 }
 .buyer-dashboard-actions .au-accordion__body-wrapper {
   padding: 0;
+}
+
+.opportunities-page .au-accordion__body, .buyer-dashboard-actions .au-accordion__body {
+  overflow: visible;
 }
 
 .opportunities-page .au-accordion__title:focus, .opportunities-page .au-accordion__title:hover {

@@ -16,10 +16,10 @@ export const OpportunitiesHeader = props => (
         <OpportunitiesFilters
           updateQueryString={props.updateQueryString}
           initialFilterValues={props.initialFilterValues}
-          statusAccordionOpen={false}
-          locationAccordionOpen={false}
-          mobileAccordionOpen={false}
-          typeAccordionOpen={false}
+          statusAccordionClosed
+          locationAccordionClosed
+          mobileAccordionClosed
+          typeAccordionClosed
         />
       </div>
     </div>
