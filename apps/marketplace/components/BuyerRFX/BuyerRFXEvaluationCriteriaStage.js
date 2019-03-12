@@ -8,7 +8,7 @@ import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import ErrorAlert from './ErrorAlert'
+import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import styles from './BuyerRFXEvaluationCriteriaStage.scss'
 
 export const noEmptyWeightings = formValues =>

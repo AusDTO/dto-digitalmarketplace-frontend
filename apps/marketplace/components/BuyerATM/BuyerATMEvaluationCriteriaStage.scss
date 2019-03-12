@@ -1,0 +1,29 @@
+div.weightingRemaining {
+  margin-top: -1.6em;
+}
+
+div.weightingContainer > div > div {
+  margin: 0;
+}
+
+div.criteriaContainer > div > div {
+  margin: 1.5rem 0 0 0;
+}
+
+div.addCriteria {
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  div.removeCriteria {
+    margin-top: 3.5rem;
+  }
+}
+
+.noticeBar {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 10px solid #00698F;
+  background-color: #daf3fe;
+  color: #00698F;
+}

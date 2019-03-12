@@ -1,6 +1,5 @@
 export const create = async (params) => {
     console.log('Starting to create training brief');
-    await selectLot('training');
     await createBrief();
     await fillTitle(params.title);
     await fillOrganisation();
@@ -32,12 +31,9 @@ export const create = async (params) => {
     await publishBrief();
 }
 
-const selectLot = async (lot) => {
-    await clickLink(lot, true);
-}
-
 const createBrief = async () => {
-    await clickButton('Create brief');
+    await clickLink('Training');
+    await clickInputButton('Create opportunity');
 }
 
 const fillTitle = async (role) => {
@@ -183,7 +179,7 @@ const fillAdditionalTerms = async () => {
 }
 
 const fillNumberOfSellers = async () => {
-    await type('input-numberOfSuppliers', { value: 3 });
+    await type('input-numberOfSuppliers', { value: '3' });
     await clickSaveContinue();
 }
 
@@ -225,10 +221,10 @@ const fillQuestionAnswer = async () => {
 
 const publishBrief = async () => {
     await clickLink('Review and publish your requirements');
-    await clickButton('Publish brief');
+    await clickInputButton('Publish brief');
     await matchText('h4', 'Your opportunity has been published');
 }
 
 const clickSaveContinue = async () => {
-    await clickButton('Save and continue');
+    await clickInputButton('Save and continue');
 }

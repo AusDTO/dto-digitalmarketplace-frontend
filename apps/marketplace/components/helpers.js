@@ -1,5 +1,10 @@
 // will add fns to this file over time
 /* eslint-disable import/prefer-default-export */
+import subDays from 'date-fns/sub_days'
+import addDays from 'date-fns/add_days'
+import isWeekend from 'date-fns/is_weekend'
+import { parse } from 'qs'
+
 export const uniqueID = () =>
   Math.floor((1 + Math.random()) * 0x10000)
     .toString(16)
@@ -24,4 +29,41 @@ export const getResponsesFileSizeAndType = (bytes, lot) => {
     result = 'csv'
   }
   return result
+}
+
+export const nextWeekDay = date => {
+  let newDate = date
+  while (isWeekend(newDate)) {
+    newDate = addDays(newDate, 1)
+  }
+  return newDate
+}
+
+export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
+  let lastQuestionDate = new Date()
+  if (closingDate < addDays(today, 3)) {
+    lastQuestionDate = nextWeekDay(subDays(closingDate, 1))
+    if (today > lastQuestionDate) {
+      lastQuestionDate = today
+    }
+  } else if (closingDate < addDays(today, 8)) {
+    lastQuestionDate = nextWeekDay(addDays(today, 2))
+  } else {
+    lastQuestionDate = nextWeekDay(addDays(today, 5))
+  }
+  if (lastQuestionDate > closingDate) {
+    lastQuestionDate = closingDate
+  }
+  return lastQuestionDate
+}
+
+export const getTokenFromURL = (url, location) => location.pathname.substring(url.length + 1, location.pathname.length)
+
+export const getEmailFromQueryString = location => {
+  const parsed = parse(location.search.substr(1))
+  let emailAddress = ''
+  if (parsed.e) {
+    emailAddress = parsed.e
+  }
+  return emailAddress
 }

@@ -20,12 +20,12 @@ const ResetPasswordForm = props => {
     }
   }
 
-  return (
-    <div className="row">
-      <DocumentTitle title="Reset Password - Digital Marketplace">
-        <div className="col-sm-push-2 col-sm-8 col-xs-12">
-          <article role="main">
-            {resetPasswordSuccess ? (
+  if (resetPasswordSuccess) {
+    return (
+      <div className="row">
+        <DocumentTitle title="Reset Password - Digital Marketplace">
+          <div className="col-sm-push-2 col-sm-8 col-xs-12">
+            <article role="main">
               <AUpageAlert as="success">
                 <h2 className="au-display-lg">You have successfully changed your password</h2>
                 <span>
@@ -34,7 +34,19 @@ const ResetPasswordForm = props => {
                   </p>
                 </span>
               </AUpageAlert>
-            ) : (
+            </article>
+          </div>
+        </DocumentTitle>
+      </div>
+    )
+  }
+
+  return (
+    <div className="row">
+      <DocumentTitle title="Reset Password - Digital Marketplace">
+        <div className="col-sm-push-2 col-sm-8 col-xs-12">
+          <article role="main">
+            {!resetPasswordSuccess && (
               <ErrorBox
                 title="There was a problem resetting your password"
                 model={model}

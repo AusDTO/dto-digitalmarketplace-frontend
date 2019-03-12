@@ -19,6 +19,7 @@ export const OpportunitiesHeader = props => (
           statusAccordionOpen={false}
           locationAccordionOpen={false}
           mobileAccordionOpen={false}
+          typeAccordionOpen={false}
         />
       </div>
     </div>

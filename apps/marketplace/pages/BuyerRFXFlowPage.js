@@ -53,6 +53,10 @@ export class BuyerRFXFlowPage extends Component {
           this.props.setError('You cannot edit this opportunity as you have already published it.')
         }
 
+        if (response.data.brief.lotSlug !== 'rfx') {
+          this.props.setError('You can only edit RFX briefs using this flow.')
+        }
+
         this.props.changeFormModel(data)
       }
 

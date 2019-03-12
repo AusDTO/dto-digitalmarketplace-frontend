@@ -1,4 +1,5 @@
 import randomWords from 'random-words';
+import clipboardy from 'clipboardy';
 
 export const getElementHandle = async (xpath) => {
     let elements = await getElementHandles(xpath);
@@ -16,41 +17,84 @@ export const getElementHandles = async (xpath) => {
 }
 
 export const selectCheck = async (value) => {
-    console.log(`Selecting check box "${value}"`);
+    console.log(`Selecting check box "//input[@value="${value}"]"`);
     let radio = await getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
 export const selectRadio = async (value) => {
-    console.log(`Selecting radio "${value}"`);
+    console.log(`Selecting radio "//input[@value="${value}"]"`);
     let radio = await getElementHandle(`//input[@value="${value}"]`);
     await radio.press('Space');
 }
 
+export const typeInReactInput = async (id, options) => {
+    options['reactInput'] = true;
+    await type(id, options);
+}
+
 export const type = async (id, options) => {
-    console.log(`Typing in ${id}`);
-    let { value, numberOfWords, numberOfCharacters } = options;
+    console.log(`Typing in "//*[@id="${id}"]"`);
+    let {
+        value,
+        numberOfWords,
+        numberOfCharacters,
+        reactInput
+    } = options;
     if (value !== '' && !value) {
         if (numberOfCharacters) {
             numberOfWords = numberOfCharacters;
         }
         value = words(numberOfWords, numberOfCharacters);
     }
+    reactInput = reactInput ? reactInput : false;
     let input = await getElementHandle(`//*[@id="${id}"]`);
     if (process.env.TYPE_INPUT === 'true') {
+        if (process.env.SHORTEN_TYPED_INPUT === 'true') {
+            if (value.length > 50) {
+                value = value.substring(0, 50);
+                console.log(`Shortened typed value to "${value}"`);
+            }
+        }
         await input.type(value, { delay: 0 });
+    } else if (process.env.USE_CLIPBOARD_FOR_TYPE_INPUT === 'true') {
+        await clipboardy.write(value);
+        await input.focus();
+        await page.keyboard.down('ControlLeft');
+        await page.keyboard.press('KeyV');
+        await page.keyboard.up('ControlLeft');
     } else {
-        await page.evaluate((el, v) => {
-            el.value = v;
-            let event = new Event('change', { bubbles: true });
-            event.simulated = true;
-            el.dispatchEvent(event);
-        }, input, value);
+        if (reactInput) {
+            if (value.length > 50) {
+                value = value.substring(0, 50);
+                console.log(`Shortened typed value to "${value}"`);
+            }
+            await input.type(value, { delay: 0 });
+        } else {
+            await page.evaluate((el, v) => {
+                el.value = v;
+                let event = new Event('change', { bubbles: true });
+                event.simulated = true;
+                el.dispatchEvent(event);
+            }, input, value);
+        }
     }
 }
 
+export const upload = async (id, file) => {
+    console.log(`Uploading "//input[@id="${id}" and @type="file"]"`);
+    let input = await getElementHandle(`//input[@id="${id}" and @type="file"]`);
+    await input.uploadFile(file);
+}
+
 export const clickButton = async (value) => {
-    console.log(`Clicking button ${value}`);
+    console.log(`Clicking button "//button[.="${value}"]"`);
+    let button = await getElementHandle(`//button[.="${value}"]`);
+    await button.click();
+}
+
+export const clickInputButton = async (value) => {
+    console.log(`Clicking input button "//input[@value="${value}"]"`);
     let button = await getElementHandle(`//input[@value="${value}"]`);
     await button.click();
 }
@@ -81,9 +125,9 @@ export const words = function (numberOfWords, numberOfCharacters) {
 }
 
 export const matchText = async (tag, text) => {
-    console.log(`matching text: '//${tag}["${text}"]'`);
+    console.log(`matching text: '//${tag}[contains(text(), "${text}")]'`);
     let elementHandles = await getElementHandles(`//${tag}[contains(text(), "${text}")]`);
-    expect(elementHandles.length).to.equal(1, `No text found using '//${tag}["${text}"]'`);
+    expect(elementHandles.length).to.equal(1, `No text found using '//${tag}[contains(text(), "${text}")]'`);
 }
 
 export const sleep = async (ms) => {

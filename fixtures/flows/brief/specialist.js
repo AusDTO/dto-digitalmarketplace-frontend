@@ -1,6 +1,5 @@
 export const create = async (params) => {
     console.log(`Starting to create ${params.areaOfExpertise} brief`);
-    await selectLot('digital-professionals');
     await createBrief();
     await fillRole(params.title);
     await selectLocation(params.locations);
@@ -12,12 +11,9 @@ export const create = async (params) => {
     await publishBrief();
 }
 
-const selectLot = async (lot) => {
-    await clickLink(lot, true);
-}
-
 const createBrief = async () => {
-    await clickButton('Create brief');
+    await clickLink('Specialist');
+    await clickInputButton('Create opportunity');
 }
 
 const fillRole = async (role) => {
@@ -115,12 +111,12 @@ const fillWhoCanRespond = async () => {
 
 const publishBrief = async () => {
     await clickLink('Review and publish your requirements');
-    await clickButton('Publish brief');
+    await clickInputButton('Publish brief');
     await matchText('h4', 'Your opportunity has been published');
 }
 
 const clickSaveContinue = async () => {
-    await clickButton('Save and continue');
+    await clickInputButton('Save and continue');
 }
 
 const clickReturnToOverview = async () => {

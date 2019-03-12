@@ -9,14 +9,14 @@ import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import range from 'lodash/range'
-import ErrorAlert from './ErrorAlert'
+import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import styles from './BuyerRFXRequirementsStage.scss'
 
 const RequirementsTemplateHint = (
   <span>
     You can use the{' '}
     <a href="/static/media/documents/Requirements-Document-template.docx" target="_blank" rel="noreferer noopener">
-      Marketplace template
+      Marketplace template (DOCX 58 KB)
     </a>{' '}
     if you do not have your own. Make sure you update it with your Agency&apos;s requirements.
   </span>
@@ -26,7 +26,7 @@ const ResponseTemplateHint = (
   <span>
     You can use the{' '}
     <a href="/static/media/documents/Response-Template.docx" target="_blank" rel="noreferer noopener">
-      Marketplace template
+      Marketplace template (DOCX 67 KB)
     </a>{' '}
     if you do not have your own.
   </span>

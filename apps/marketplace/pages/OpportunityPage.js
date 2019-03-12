@@ -56,8 +56,12 @@ class OpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    // only RFX can be displayed using this opportunity view
-    if (this.props.brief && this.props.brief.lot && this.props.brief.lot !== 'rfx') {
+    // only RFX and ATM can be displayed using this opportunity view
+    if (
+      this.props.brief &&
+      this.props.brief.lot &&
+      (this.props.brief.lot !== 'rfx' && this.props.brief.lot !== 'atm')
+    ) {
       window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
       return null
     }
@@ -81,9 +85,20 @@ class OpportunityPage extends Component {
           domains={this.props.domains}
           briefResponseCount={this.props.briefResponseCount}
           invitedSellerCount={this.props.invitedSellerCount}
-          isInvitedSeller={this.props.isInvitedSeller}
+          canRespond={this.props.canRespond}
+          isAssessedForCategory={this.props.isAssessedForCategory}
+          isAssessedForAnyCategory={this.props.isAssessedForAnyCategory}
+          hasChosenBriefCategory={this.props.hasChosenBriefCategory}
+          isOpenToCategory={this.props.isOpenToCategory}
+          isOpenToAll={this.props.isOpenToAll}
           isBriefOwner={this.props.isBriefOwner}
           isBuyer={this.props.isBuyer}
+          isApprovedSeller={this.props.isApprovedSeller}
+          isApplicant={this.props.isApplicant}
+          isRecruiterOnly={this.props.isRecruiterOnly}
+          isAwaitingApplicationAssessment={this.props.isAwaitingApplicationAssessment}
+          isAwaitingDomainAssessment={this.props.isAwaitingDomainAssessment}
+          hasBeenAssessedForBrief={this.props.hasBeenAssessedForBrief}
           hasResponded={this.props.hasResponded}
           loggedIn={this.props.loggedIn}
         />
@@ -100,9 +115,20 @@ const mapResetStateToProps = state => ({
   briefResponseCount: state.brief.briefResponseCount,
   invitedSellerCount: state.brief.invitedSellerCount,
   loadBriefSuccess: state.brief.loadBriefSuccess,
-  isInvitedSeller: state.brief.isInvitedSeller,
+  canRespond: state.brief.canRespond,
+  isAssessedForCategory: state.brief.isAssessedForCategory,
+  isAssessedForAnyCategory: state.brief.isAssessedForAnyCategory,
+  hasChosenBriefCategory: state.brief.hasChosenBriefCategory,
+  isOpenToCategory: state.brief.isOpenToCategory,
+  isOpenToAll: state.brief.isOpenToAll,
   isBriefOwner: state.brief.isBriefOwner,
   isBuyer: state.brief.isBuyer,
+  isApprovedSeller: state.brief.isApprovedSeller,
+  isApplicant: state.brief.isApplicant,
+  isRecruiterOnly: state.brief.isRecruiterOnly,
+  isAwaitingApplicationAssessment: state.brief.isAwaitingApplicationAssessment,
+  isAwaitingDomainAssessment: state.brief.isAwaitingDomainAssessment,
+  hasBeenAssessedForBrief: state.brief.hasBeenAssessedForBrief,
   hasResponded: state.brief.hasResponded,
   errorMessage: state.app.errorMessage,
   loggedIn: state.app.loggedIn

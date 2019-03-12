@@ -8,7 +8,6 @@ import { changeForm, loadOpportunities } from 'marketplace/actions/opportunities
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import TypeFilterControl from './TypeFilterControl'
 import styles from './Opportunities.scss'
 
 export class OpportunitiesFiltersComponent extends BaseForm {
@@ -17,6 +16,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     this.state = {
       statusAccordionOpen: props.statusAccordionOpen,
       locationAccordionOpen: props.locationAccordionOpen,
+      typeAccordionOpen: props.typeAccordionOpen,
       mobileAccordionOpen: props.mobileAccordionOpen
     }
     this.handleFilterCancelClick = this.handleFilterCancelClick.bind(this)
@@ -41,7 +41,8 @@ export class OpportunitiesFiltersComponent extends BaseForm {
     const typeFilterMap = {
       all: ['status', 'openTo', 'location', 'type'],
       status: ['status', 'openTo'],
-      location: ['location']
+      location: ['location'],
+      type: ['type']
     }
 
     if (typeFilterMap[type]) {
@@ -61,11 +62,14 @@ export class OpportunitiesFiltersComponent extends BaseForm {
 
   changeAccordion(type, isOpen) {
     switch (type) {
-      case 'status':
-        this.setState({ statusAccordionOpen: isOpen })
-        break
       case 'location':
-        this.setState({ locationAccordionOpen: isOpen })
+      case 'status':
+      case 'type':
+        this.setState({
+          locationAccordionOpen: type === 'location' ? isOpen : false,
+          statusAccordionOpen: type === 'status' ? isOpen : false,
+          typeAccordionOpen: type === 'type' ? isOpen : false
+        })
         break
       case 'mobile':
         this.setState({ mobileAccordionOpen: isOpen })
@@ -73,6 +77,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
       case 'all':
         this.setState({ statusAccordionOpen: isOpen })
         this.setState({ locationAccordionOpen: isOpen })
+        this.setState({ typeAccordionOpen: isOpen })
         this.setState({ mobileAccordionOpen: isOpen })
         break
       default:
@@ -90,6 +95,9 @@ export class OpportunitiesFiltersComponent extends BaseForm {
       case 'status':
         this.changeAccordion('status', false)
         break
+      case 'type':
+        this.changeAccordion('type', false)
+        break
       default:
         this.changeAccordion('all', false)
         break
@@ -106,6 +114,9 @@ export class OpportunitiesFiltersComponent extends BaseForm {
         break
       case 'status':
         this.changeAccordion('status', false)
+        break
+      case 'type':
+        this.changeAccordion('type', false)
         break
       default:
         this.changeAccordion('all', false)
@@ -130,6 +141,14 @@ export class OpportunitiesFiltersComponent extends BaseForm {
 
   render() {
     const { model } = this.props
+
+    const typeConvertor = {
+      outcomes: 'Seek proposals and quotes',
+      specialists: 'Specialists',
+      atm: 'Ask the market',
+      training: 'Training'
+    }
+
     return (
       <LocalForm
         model={model}
@@ -138,33 +157,48 @@ export class OpportunitiesFiltersComponent extends BaseForm {
         initialState={this.formValues}
       >
         <div className="row">
-          <div className={`col-md-6 col-lg-offset-1 col-lg-5 col-sm-12 ${styles.filtersSection} ${styles.hideMobile}`}>
-            <ul className="au-link-list au-link-list--inline">
-              <li className={styles.filterContainer}>
-                <TypeFilterControl
-                  name="Outcomes"
-                  filter="outcomes"
-                  model={`${model}.type.outcomes`}
-                  submitForm={this.handleTypeFilterSubmit}
-                />
-              </li>
-              <li className={styles.filterContainer}>
-                <TypeFilterControl
-                  name="Training"
-                  filter="training"
-                  model={`${model}.type.training`}
-                  submitForm={this.handleTypeFilterSubmit}
-                />
-              </li>
-              <li className={styles.filterContainer}>
-                <TypeFilterControl
-                  name="Specialists"
-                  filter="specialists"
-                  model={`${model}.type.specialists`}
-                  submitForm={this.handleTypeFilterSubmit}
-                />
-              </li>
-            </ul>
+          <div className={`col-lg-offset-3 col-md-3 col-sm-12 ${styles.hideMobile}`}>
+            <AUaccordion
+              header={`Type ${this.getActiveFilterCount('type') > 0 ? `• ${this.getActiveFilterCount('type')}` : ''}`}
+              open={this.state.typeAccordionOpen}
+              onOpen={() => {
+                this.changeAccordion('type', true)
+              }}
+              onClose={() => {
+                this.changeAccordion('type', false)
+              }}
+            >
+              <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
+                <div className={styles.inputGroup}>
+                  <AUheading size="sm" level="3">
+                    Type of opportunity
+                  </AUheading>
+                  {Object.keys(this.props.opportunitiesFilterForm.type).map(type => (
+                    <div className={styles.checkbox} key={type}>
+                      <CheckboxDetailsField
+                        model={`${model}.type.${type}`}
+                        id={type}
+                        name={type}
+                        label={typeConvertor[type]}
+                        detailsModel={model}
+                        messages={{}}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <span className={styles.cancelLink}>
+                  <a href="#cancel" data-type="type" onClick={this.handleFilterCancelClick}>
+                    Cancel
+                  </a>
+                </span>
+                <span className={styles.applyFilters}>
+                  <a href="#apply" data-type="type" onClick={this.handleFilterApplyClick}>
+                    Apply filters
+                  </a>
+                </span>
+                <div />
+              </div>
+            </AUaccordion>
           </div>
           <div className={`col-md-3 col-sm-12 ${styles.hideMobile}`}>
             <AUaccordion
@@ -294,36 +328,18 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   <AUheading size="sm" level="3">
                     Type of opportunity
                   </AUheading>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.type.outcomes`}
-                      id="outcomes"
-                      name="outcomes"
-                      label="Outcomes"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.type.training`}
-                      id="training"
-                      name="training"
-                      label="Training"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
-                  <div className={styles.checkbox}>
-                    <CheckboxDetailsField
-                      model={`${model}.type.specialists`}
-                      id="specialists"
-                      name="specialists"
-                      label="Specialists"
-                      detailsModel={model}
-                      messages={{}}
-                    />
-                  </div>
+                  {Object.keys(this.props.opportunitiesFilterForm.type).map(type => (
+                    <div className={styles.checkbox} key={type}>
+                      <CheckboxDetailsField
+                        model={`${model}.type.${type}`}
+                        id={type}
+                        name={type}
+                        label={typeConvertor[type]}
+                        detailsModel={model}
+                        messages={{}}
+                      />
+                    </div>
+                  ))}
                 </div>
                 <div className={styles.inputGroup}>
                   <AUheading size="sm" level="3">
@@ -406,6 +422,7 @@ OpportunitiesFiltersComponent.propTypes = {
   getOpportunities: PropTypes.func.isRequired,
   statusAccordionOpen: PropTypes.bool.isRequired,
   locationAccordionOpen: PropTypes.bool.isRequired,
+  typeAccordionOpen: PropTypes.bool.isRequired,
   mobileAccordionOpen: PropTypes.bool.isRequired,
   model: PropTypes.string.isRequired,
   updateQueryString: PropTypes.func,

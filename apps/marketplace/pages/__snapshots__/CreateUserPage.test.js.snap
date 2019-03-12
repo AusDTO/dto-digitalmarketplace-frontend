@@ -9,7 +9,111 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
   >
     <article
       role="main"
-    />
+    >
+      <div>
+        <div>
+          <h1
+            className="au-display-xl"
+          >
+            Add a password
+          </h1>
+          <p>
+            To finish creating your account please provide the following details.
+          </p>
+        </div>
+        <form
+          id="createuser"
+          noValidate={undefined}
+          onReset={[Function]}
+          onSubmit={[Function]}
+        >
+          <div
+            className="field"
+          >
+            <label
+              className="question-heading au-text-input__label"
+              htmlFor="password"
+              id="password-label"
+            >
+              Password
+            </label>
+            <div
+              className="au-text-input__hint"
+              id="password-hint"
+            >
+              At least 10 characters
+            </div>
+            <input
+              aria-describedby="password-label"
+              className="au-text-input au-text-input--block"
+              disabled={false}
+              id="password"
+              maxLength={undefined}
+              name="password"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              pattern={null}
+              placeholder=""
+              readOnly={false}
+              type="password"
+              value=""
+            />
+          </div>
+          <label
+            className="au-control-input"
+            htmlFor="agree"
+          >
+            <input
+              checked={false}
+              className="au-control-input__input"
+              disabled={false}
+              id="agree"
+              name="agree"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              type="checkbox"
+              value="agree"
+            />
+            <span
+              className="au-control-input__text"
+            >
+              <span>
+                <span>
+                  I accept the 
+                </span>
+                <a
+                  href="/terms-of-use"
+                  rel="external"
+                  target="_blank"
+                >
+                  Terms of Use
+                </a>
+              </span>
+            </span>
+            <span
+              className="description"
+            >
+              The terms of use
+            </span>
+          </label>
+          <div
+            className="formSubmitBtnWrapper"
+          >
+            <input
+              className="au-btn"
+              onClick={[Function]}
+              type="submit"
+              value="Join the Marketplace"
+            />
+          </div>
+        </form>
+      </div>
+    </article>
   </div>
 </div>
 `;
