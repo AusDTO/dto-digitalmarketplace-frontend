@@ -30,7 +30,7 @@ export const selectRadio = async (value) => {
 
 export const typeInReactInput = async (id, options) => {
     options['reactInput'] = true;
-    await type(id, options);
+    return await type(id, options);
 }
 
 export const type = async (id, options) => {
@@ -79,6 +79,7 @@ export const type = async (id, options) => {
             }, input, value);
         }
     }
+    return value;
 }
 
 export const upload = async (id, file) => {
