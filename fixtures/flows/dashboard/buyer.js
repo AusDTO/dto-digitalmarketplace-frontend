@@ -1,4 +1,4 @@
 export const startBrief = async () => {
     await clickLink('Dashboard');
-    await clickLink('Create new request');
+    await clickButton('Create new request');
 }
