@@ -24,3 +24,7 @@ export const applyForSpecialist = async (number) => {
         await clickLink('Add another specialist');
     }
 };
+
+export const applyForTraining = async () => {
+    await clickLink('Apply Now');
+};

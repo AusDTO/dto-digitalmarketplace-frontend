@@ -4,7 +4,7 @@ import { create } from '../../flows/brief/specialist';
 import { startBrief } from '../../flows/dashboard/buyer';
 import { respond } from '../../flows/briefResponse/specialist';
 
-describe.only('should be able to create and respond to specialist brief', () => {
+describe('should be able to create and respond to specialist brief', () => {
     let now = Date.now();
     let areaOfExpertise = 'Strategy and Policy';
     var title = `${areaOfExpertise} Role ${now.valueOf()}`;
