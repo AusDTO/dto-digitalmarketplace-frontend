@@ -118,7 +118,9 @@ export class Messages extends Component {
               </tbody>
             </table>
           ) : (
-            'No notifications'
+            <div className={styles.noRecords}>
+                No notifications
+            </div>
           )}
         </div>
       </div>
