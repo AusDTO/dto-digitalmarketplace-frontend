@@ -11,9 +11,15 @@ export const getElementHandle = async (xpath) => {
     return elements[0];
 }
 export const getElementHandles = async (xpath) => {
-    await page.waitForXPath(xpath, { visible: true });
+    await page.waitForXPath(xpath);
     let elements = await page.$x(xpath);
-    return elements;
+    let results = [];
+    for (let i = 0; i < elements.length; i++) {
+        if (await elements[i].boxModel()) {
+            results.push(elements[i]);
+        }
+    }
+    return results;
 }
 
 export const selectCheck = async (value) => {
