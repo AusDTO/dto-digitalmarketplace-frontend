@@ -1,5 +1,5 @@
 import { buyerLogin, sellerLogin } from '../../flows/login/actions';
-import { navigate, selectBrief, applyForAtm } from '../../flows/opportunities/actions';
+import { checkAppliedForAtm, navigate, selectBrief, applyForAtm } from '../../flows/opportunities/actions';
 import { respond } from '../../flows/briefResponse/atm';
 import { create } from '../../flows/brief/atm';
 import { startBrief } from '../../flows/dashboard/buyer';
@@ -22,5 +22,6 @@ describe('should be able to create and respond to ask the market brief', () => {
         await selectBrief(title);
         await applyForAtm();
         await respond(brief);
+        await checkAppliedForAtm(title);
     });
 });
