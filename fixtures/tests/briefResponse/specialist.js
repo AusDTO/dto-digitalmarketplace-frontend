@@ -1,5 +1,5 @@
 import { buyerLogin, sellerLogin } from '../../flows/login/actions';
-import { applyForSpecialist, navigate, selectBrief } from '../../flows/opportunities/actions';
+import { applyForSpecialist, navigate, selectBrief, viewSpecialistApplication } from '../../flows/opportunities/actions';
 import { create } from '../../flows/brief/specialist';
 import { startBrief } from '../../flows/dashboard/buyer';
 import { respond } from '../../flows/briefResponse/specialist';
@@ -33,5 +33,8 @@ describe('should be able to create and respond to specialist brief', () => {
                 specialistNumber: i
             });
         }
+        await navigate();
+        await selectBrief(title);
+        await viewSpecialistApplication(title);
     });
 })

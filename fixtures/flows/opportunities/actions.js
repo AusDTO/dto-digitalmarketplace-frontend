@@ -25,6 +25,11 @@ export const applyForSpecialist = async (number) => {
     }
 };
 
+export const viewSpecialistApplication = async (title) => {
+    await clickLink('View your application');
+    await matchText('h1', `Thanks for your application. You've now applied for ‘${title}’`);
+};
+
 export const applyForTraining = async () => {
     await clickLink('Apply Now');
 };
