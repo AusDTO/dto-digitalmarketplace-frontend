@@ -116,7 +116,6 @@ const OpportunityInfoCard = props => (
                   )}
                 </span>
               )}
-              {}
             </p>
             {!props.isAwaitingApplicationAssessment && (
               <p>

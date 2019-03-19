@@ -62,19 +62,13 @@ export class OpportunitiesFiltersComponent extends BaseForm {
   changeAccordion(type, isClosed) {
     switch (type) {
       case 'location':
-        this.setState({
-          locationAccordionClosed: type === 'location' ? isClosed : false
-        })
+        this.setState({ locationAccordionClosed: isClosed })
         break
       case 'status':
-        this.setState({
-          statusAccordionClosed: type === 'status' ? isClosed : false
-        })
+        this.setState({ statusAccordionClosed: isClosed })
         break
       case 'type':
-        this.setState({
-          typeAccordionClosed: type === 'type' ? isClosed : false
-        })
+        this.setState({ typeAccordionClosed: isClosed })
         break
       case 'mobile':
         this.setState({ mobileAccordionClosed: isClosed })
@@ -197,7 +191,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                     Apply filters
                   </a>
                 </span>
-                <div />
+                <br />
               </div>
             </AUaccordion>
           </div>
@@ -242,7 +236,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                     Apply filters
                   </a>
                 </span>
-                <div />
+                <br />
               </div>
             </AUaccordion>
           </div>
@@ -306,7 +300,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   Apply filters
                 </a>
               </span>
-              <div />
+              <br />
             </AUaccordion>
           </div>
         </div>
@@ -395,16 +389,16 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                   ))}
                 </div>
                 <span className={styles.cancelLink}>
-                  <a href="#cancel" data-type="" onClick={this.handleFilterCancelClick}>
+                  <a href="#cancel" onClick={this.handleFilterCancelClick}>
                     Cancel
                   </a>
                 </span>
                 <span className={styles.applyFilters}>
-                  <a href="#apply" data-type="" onClick={this.handleFilterApplyClick}>
+                  <a href="#apply" onClick={this.handleFilterApplyClick}>
                     Apply filters
                   </a>
                 </span>
-                <div />
+                <br />
               </div>
             </AUaccordion>
           </div>
