@@ -84,9 +84,7 @@ export class Team extends Component {
                 </tbody>
               </table>
             ) : (
-              <div className={styles.noRecords}>
-                No team members
-              </div>
+              <div className={styles.noRecords}>No team members</div>
             )}
           </div>
         </div>
