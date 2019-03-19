@@ -50,10 +50,7 @@ class Header extends React.Component {
                       <span>
                         <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
                         {(this.props.notificationCount && this.props.notificationCount !== 0) ?
-                          <span className="notification">
-                            <div className="circle" />
-                            <div className="count">{this.props.notificationCount}</div>
-                          </span> : ''
+                          <div className="notification">{this.props.notificationCount}</div> : ''
                         }
                       </span> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
                     </li>
@@ -122,10 +119,7 @@ class Header extends React.Component {
                       <span>
                         <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
                         { (this.props.notificationCount && this.props.notificationCount !== 0) &&
-                          <span className="notification">
-                            <div className="circle" />
-                            <div className="count">{this.props.notificationCount}</div>
-                          </span>
+                          <div className="notification">{this.props.notificationCount}</div>
                         }
                       </span>
                       : <a href="/2/signup">Sign up</a>}

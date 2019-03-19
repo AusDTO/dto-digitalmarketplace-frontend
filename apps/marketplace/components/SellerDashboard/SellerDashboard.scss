@@ -135,8 +135,10 @@ table.resultListing td, table.resultListing th {
   border-radius: 50%;
   background-color: red;
   color: white;
-  font-size: 1rem;
-  padding: 0.2rem;
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  text-align: center;
 }
 
 .badge {

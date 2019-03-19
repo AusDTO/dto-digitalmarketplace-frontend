@@ -588,8 +588,10 @@ li:first-child.au-marketplace-header-link-list a {
   border-radius: 50%;
   background-color: red;
   color: white;
-  font-size: 1rem;
-  padding: 0.2rem;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  text-align: center;
 }
 
 
