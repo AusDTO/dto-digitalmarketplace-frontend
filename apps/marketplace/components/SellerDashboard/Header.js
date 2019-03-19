@@ -19,7 +19,6 @@ const Header = props => (
                   Notifications
                   {props.messages && props.messages.items.length !== 0 ? (
                     <span className={styles.notification}>
-                      <div className={styles.circle} />
                       <div className={styles.count}>{props.messages && props.messages.items.length}</div>
                     </span>
                   ) : (

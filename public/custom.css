@@ -585,17 +585,13 @@ li:first-child.au-marketplace-header-link-list a {
 
 .notification {
   position: relative;
-  margin-left: 5px;
-}
-.notification .circle {
-  border-radius: 50%;
-  border: solid 2px red;
-  padding: 1px 12px;
-  background-color: red;
-  display: inline;
-
+  margin-left: 2px;
+  margin-right: 12px;
 }
 .notification .count {
+  border-radius: 50%;
+  border: solid 0px red;
+  background-color: red;
   color: white;
   width: 24px;
   font-size: 1rem;

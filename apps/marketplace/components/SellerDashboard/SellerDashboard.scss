@@ -132,17 +132,13 @@ table.resultListing td, table.resultListing th {
 
 .notification {
   position: relative;
-  margin-left: 5px;
+  margin-left: 2px;
 }
-.notification .circle {
-  border-radius: 50%;
-  border: solid 2px red;
-  padding: 1px 12px;
-  background-color: red;
-  display: inline;
 
-}
 .notification .count {
+  border-radius: 50%;
+  background-color: red;
+  border: solid 0px red;
   color: white;
   width: 24px;
   font-size: 1rem;

@@ -16,7 +16,6 @@ const DashBoardLink = props => {
           <a href="/2/seller-dashboard">Dashboard</a>
           {notificationCount && notificationCount !== 0 ? (
             <span className="notification">
-              <div className="circle" />
               <div className="count">{notificationCount}</div>
             </span>
           ) : (
