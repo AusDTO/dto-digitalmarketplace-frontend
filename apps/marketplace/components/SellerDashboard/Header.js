@@ -18,9 +18,7 @@ const Header = props => (
                 <NavLink id="notifications-link" to="/notifications" activeClassName={styles.active} exact>
                   Notifications
                   {props.messages && props.messages.items.length !== 0 ? (
-                    <span className={styles.notification}>
-                      <div className={styles.count}>{props.messages && props.messages.items.length}</div>
-                    </span>
+                    <span className={styles.notification}>{props.messages && props.messages.items.length}</span>
                   ) : (
                     ''
                   )}

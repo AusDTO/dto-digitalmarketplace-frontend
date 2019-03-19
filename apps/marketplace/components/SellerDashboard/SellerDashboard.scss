@@ -131,21 +131,12 @@ table.resultListing td, table.resultListing th {
 }
 
 .notification {
-  position: relative;
   margin-left: 2px;
-}
-
-.notification .count {
   border-radius: 50%;
   background-color: red;
-  border: solid 0px red;
   color: white;
-  width: 24px;
   font-size: 1rem;
-  top: 0px;
-  left: 1px;
-  position: absolute;
-  text-align: center;
+  padding: 0.2rem;
 }
 
 .badge {
