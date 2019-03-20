@@ -152,10 +152,20 @@ workflows:
               only: /[0-9]+(\.[0-9]+)*/
       - slack_approval:
           <<: *required_for_deploy
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
       - approval:
           type: approval
           requires:
             - slack_approval
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
       - deploy_to_rc:
           <<: *required_for_deploy
           filters:
