@@ -589,9 +589,10 @@ li:first-child.au-marketplace-header-link-list a {
   background-color: red;
   color: white;
   width: 25px;
-  height: 25px;
+  height: 0;
   display: inline-block;
   text-align: center;
+  padding-bottom: 25px;
 }
 
 
