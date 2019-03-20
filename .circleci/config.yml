@@ -157,13 +157,12 @@ workflows:
           requires:
             - slack_approval
       - deploy_to_rc:
-          requires:
-            - approval
+          <<: *required_for_deploy
           filters:
             tags:
               ignore: /.*/
             branches:
-              only: circleci-hold
+              only: rc
       - deploy_to_staging:
           <<: *required_for_deploy
           filters:
