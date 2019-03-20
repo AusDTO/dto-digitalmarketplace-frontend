@@ -70,6 +70,16 @@ jobs:
           command: |
             npm run eslint
 
+  slack_approval:
+    <<: *deploy_docker
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Slack about to go live
+          command: |
+            ./scripts/ci-notify-approval.sh
+
   deploy_to_rc:
     <<: *deploy_docker
     steps:
@@ -140,13 +150,20 @@ workflows:
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
-      - deploy_to_rc:
+      - slack_approval:
           <<: *required_for_deploy
+      - approval:
+          type: approval
+          requires:
+            - slack_approval
+      - deploy_to_rc:
+          requires:
+            - approval
           filters:
             tags:
               ignore: /.*/
             branches:
-              only: rc
+              only: circleci-hold
       - deploy_to_staging:
           <<: *required_for_deploy
           filters:
@@ -155,14 +172,16 @@ workflows:
             branches:
               only: master
       - deploy_to_production:
-          <<: *required_for_deploy
+          requires:
+            - approval
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
       - deploy_to_production_clone:
-          <<: *required_for_deploy
+          requires:
+            - approval
           filters:
             tags:
               only: /[0-9]+(\.[0-9]+)*/
