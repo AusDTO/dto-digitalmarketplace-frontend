@@ -62,12 +62,28 @@ export class Messages extends Component {
     switch (errorType) {
       case 'S000':
         return <a href={`/sellers/edit/?step=${item.step}`}>Preview and submit</a>
+      case 'S001':
+        return <a href={`/sellers/edit/?step=${item.step}`}>Update business details</a>
       case 'S002':
         return <a href={`/sellers/edit/?step=${item.step}`}>Update pricing</a>
+      case 'S003':
+        return (
+          <span>
+            <a href={`/sellers/edit/?step=pricing`}>Adjust pricing</a>
+            <br/>
+            <a href={`/sellers/edit/?step=case-study`}>Update case studies</a>
+          </span>
+        )
+      case 'S004':
       case 'S005':
         return <a href={`/sellers/edit/?step=${item.step}`}>Update case study</a>
+      case 'S006':
+      case 'S007':
+      case 'S008':
+      case 'S009':
       case 'S010':
       case 'S011':
+      case 'S012':
         return <a href={`/sellers/edit/?step=${item.step}`}>Update documents</a>
       default:
         return ''
