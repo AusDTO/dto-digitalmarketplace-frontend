@@ -70,7 +70,7 @@ export class Messages extends Component {
         return (
           <span>
             <a href={`/sellers/edit/?step=pricing`}>Adjust pricing</a>
-            <br/>
+            <br />
             <a href={`/sellers/edit/?step=case-study`}>Update case studies</a>
           </span>
         )
