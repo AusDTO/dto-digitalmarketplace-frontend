@@ -7,13 +7,13 @@ import { startBrief } from '../../flows/dashboard/buyer';
 //
 
 
-describe('create and respond to RFXs brief'), () =>{
+describe('create and respond to RFXs brief', () =>{
     //in order to get the right brief we are going for the 'today's date'.
     let today = Date.now();
     let title = `RFXs ${today.valueOf()}`;
     var brief =  null;
 
-    it('should be able to create ask the market brief', async () => {
+    it('should be able to create RFXs', async () => {
         await buyerLogin();
         await startBrief();
         brief = await create({
@@ -33,7 +33,4 @@ describe('create and respond to RFXs brief'), () =>{
         //really should be applyForRFX but ooporunities doesn't have one and is basically the same funciton as ATM
         await checkAppliedForAtm(title);
     });
-}
-
-
-
+});

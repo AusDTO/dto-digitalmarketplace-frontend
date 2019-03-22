@@ -84,9 +84,11 @@ const fillRequirements = async () =>{
     await clickSaveContinue();
     await matchText('li', 'You must upload a requirements document');
     await upload('file_0', 'document.pdf', 'Requirements document');
+    await upload('file_0', 'document.pdf', 'Response template');
     await upload('file_0', 'document.pdf', 'Additional documents (optional)');
     await typeInReactInput('industryBriefing', { numberOfWords: 150 });
     await clickSaveContinue();
+
 }
 const fillTimeframesAndBudget = async () =>{
     await clickSaveContinue();
@@ -106,9 +108,7 @@ const fillEvaluationCriteria = async () =>{
     await matchText('li', 'You must not have any empty criteria.');
     await matchText('li', 'Weightings must be greater than 0.');
     await matchText('li', 'You must not have any empty criteria.');
-
     await clickLink('Add another criteria');
-    //await selectCheck('yes');
     await typeInReactInput('criteria_0', { numberOfWords:50 });
     await typeInReactInput('weighting_0', { value: '50' });
     await typeInReactInput('criteria_1', { numberOfWords:50 });
@@ -134,7 +134,7 @@ const fillClosingDate = async() =>{
 
 const fillPublishBrief = async () => {
     await clickButton('Publish');
-    await matchText('h1', 'Your opportunity is now live.');
+    await matchText('h1', 'Your opportunity is now live, and the invited sellers have been notified.');
 }
 
 
