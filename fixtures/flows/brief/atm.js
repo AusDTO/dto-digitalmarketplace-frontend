@@ -1,4 +1,3 @@
-
 export const create = async (params) => {
     console.log('Starting to create atm brief');
     await createBrief();

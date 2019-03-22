@@ -11,9 +11,15 @@ export const getElementHandle = async (xpath) => {
     return elements[0];
 }
 export const getElementHandles = async (xpath) => {
-    await page.waitForXPath(xpath, { visible: true });
+    await page.waitForXPath(xpath);
     let elements = await page.$x(xpath);
-    return elements;
+    let results = [];
+    for (let i = 0; i < elements.length; i++) {
+        if (await elements[i].boxModel()) {
+            results.push(elements[i]);
+        }
+    }
+    return results;
 }
 
 export const selectCheck = async (value) => {
@@ -30,7 +36,7 @@ export const selectRadio = async (value) => {
 
 export const typeInReactInput = async (id, options) => {
     options['reactInput'] = true;
-    await type(id, options);
+    return await type(id, options);
 }
 
 export const type = async (id, options) => {
@@ -41,17 +47,13 @@ export const type = async (id, options) => {
         numberOfCharacters,
         reactInput
     } = options;
- 
-
     if (value !== '' && !value) {
         if (numberOfCharacters) {
             numberOfWords = numberOfCharacters;
         }
         value = words(numberOfWords, numberOfCharacters);
     }
-    if (!reactInput) {
-        reactInput = false;
-    }
+    reactInput = reactInput ? reactInput : false;
     let input = await getElementHandle(`//*[@id="${id}"]`);
     if (process.env.TYPE_INPUT === 'true') {
         if (process.env.SHORTEN_TYPED_INPUT === 'true') {
@@ -83,6 +85,7 @@ export const type = async (id, options) => {
             }, input, value);
         }
     }
+    return value;
 }
 
 export const upload = async (id, file, title) => {

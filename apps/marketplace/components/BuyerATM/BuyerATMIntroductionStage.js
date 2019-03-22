@@ -26,7 +26,7 @@ const BuyerATMIntroductionStage = props => (
         rel="noopener noreferrer"
         target="_blank"
       >
-        questions template DOC 52KB
+        questions template (DOC 52KB)
       </a>{' '}
       to prepare offline before publishing.
     </p>
