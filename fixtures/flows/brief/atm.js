@@ -1,3 +1,4 @@
+
 export const create = async (params) => {
     console.log('Starting to create outcome brief');
     await createBrief();
@@ -123,3 +124,5 @@ const publishBrief = async () => {
 const clickSaveContinue = async () => {
     await clickButton('Save and continue');
 }
+
+

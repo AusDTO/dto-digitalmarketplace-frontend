@@ -41,6 +41,8 @@ export const type = async (id, options) => {
         numberOfCharacters,
         reactInput
     } = options;
+ 
+
     if (value !== '' && !value) {
         if (numberOfCharacters) {
             numberOfWords = numberOfCharacters;
@@ -83,11 +85,16 @@ export const type = async (id, options) => {
     }
 }
 
-export const upload = async (id, file) => {
-    console.log(`Uploading "//input[@id="${id}" and @type="file"]"`);
-    let input = await getElementHandle(`//input[@id="${id}" and @type="file"]`);
+export const upload = async (id, file, title) => {
+    let xpath = `//input[@id="${id}" and @type="file"]`;
+    if (title) {
+        xpath = `//input[@id="${id}" and @type="file" and @title="${title}"]`;
+    }
+    console.log(`Uploading "${xpath}"`);
+    let input = await getElementHandle(xpath);
     await input.uploadFile(file);
 }
+
 
 export const clickButton = async (value) => {
     console.log(`Clicking button "//button[.="${value}"]"`);
@@ -116,6 +123,9 @@ export const clickLink = async (linkText, isUrl) => {
     }
     await links[0].click();
 }
+
+
+
 
 export const words = function (numberOfWords, numberOfCharacters) {
     let text = randomWords({ exactly: numberOfWords }).join(' ');
