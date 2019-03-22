@@ -1,8 +1,9 @@
 import { buyerLogin, sellerLogin } from '../../flows/login/actions';
-import { checkAppliedForAtm, navigate, selectBrief, applyForAtm } from '../../flows/opportunities/actions';
+import { checkAppliedForRfx, navigate, selectBrief, applyForRfx } from '../../flows/opportunities/actions';
 import { respond } from '../../flows/briefResponse/rfx';
 import { create } from '../../flows/brief/rfx';
 import { startBrief } from '../../flows/dashboard/buyer';
+import { sleep } from '../../flows/utils';
 
 //
 
@@ -25,12 +26,11 @@ describe('create and respond to RFXs brief', () =>{
         await sellerLogin();
         await navigate();
         await selectBrief(title);
-
-        //really should be applyForRFX but ooporunities doesn't have one and is basically the same funciton as ATM
-        await applyForAtm();
+        await sleep(1000);
+        await applyForRfx();
         await respond(brief);
 
         //really should be applyForRFX but ooporunities doesn't have one and is basically the same funciton as ATM
-        await checkAppliedForAtm(title);
+        await checkAppliedForRfx(title);
     });
 });

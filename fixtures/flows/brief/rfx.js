@@ -28,22 +28,31 @@ const fillWhoCanRespond = async () => {
 }
 
 const selectDropBox = async() => {
-    await page.select(`#seller-search-category-select`, '3');
-    await typeInReactInput('seller-search', { value: '%%%' });
-    let searchResult = await getElementHandles('//input[@id="seller-search"]/../../ul/li');
-    let resultCount =searchResult.length;
+    const rfxPanelCategory = process.env.RFX_PANEL_CATEGORY;
+    await page.select(`#seller-search-category-select`, rfxPanelCategory);
 
+    const rfxSellerName = process.env.RFX_SELLER_NAME;
+    await sleep(100);
+    await typeInReactInput('seller-search', { value: rfxSellerName });
+    let searchResult = await getElementHandles(`//input[@id="seller-search"]/../../ul/li[1]/a`);
+    let sr = searchResult[0];
+    sr.click();
+
+    await typeInReactInput('seller-search', { value: '%%%' });
+    searchResult = await getElementHandles('//input[@id="seller-search"]/../../ul/li');
+    let resultCount =searchResult.length;
     for (let i=1; i<=resultCount; i++) {
         if (i>1){
             await sleep(100);
-                await typeInReactInput('seller-search', { value: '%%%' });
+            await typeInReactInput('seller-search', { value: '%%%' });
         }
-        let searchResult = await getElementHandles(`//input[@id="seller-search"]/../../ul/li[${i}]/a`);
-        let sr = searchResult[0];
+        searchResult = await getElementHandles(`//input[@id="seller-search"]/../../ul/li[${i}]/a`);
+        sr = searchResult[0];
         sr.click();
     }
     await clickSaveContinue();
 }
+
 
 const fillAbout = async (role, locations) => {
 

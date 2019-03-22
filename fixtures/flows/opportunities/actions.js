@@ -14,7 +14,19 @@ export const checkAppliedForAtm = async (title) => {
     await navigate();
     await selectBrief(title);
     await matchText('p', 'You have already applied for this opportunity.');
-}
+};
+
+export const checkAppliedForRfx = async (title) => {
+    await navigate();
+    await selectBrief(title);
+    await matchText('p', 'You have already applied for this opportunity.');
+};
+
+
+
+export const applyForRfx = async () => {
+    await clickLink('Apply for opportunity');
+};
 
 export const applyForSpecialist = async (number) => {
     if (number === 0) {
