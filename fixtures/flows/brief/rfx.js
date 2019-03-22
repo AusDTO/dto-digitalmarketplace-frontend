@@ -35,6 +35,7 @@ const selectDropBox = async() => {
 
     for (let i=1; i<=resultCount; i++) {
         if (i>1){
+            await sleep(100);
                 await typeInReactInput('seller-search', { value: '%%%' });
         }
         let searchResult = await getElementHandles(`//input[@id="seller-search"]/../../ul/li[${i}]/a`);
