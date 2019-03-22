@@ -95,11 +95,7 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
                 </a>
               </span>
             </span>
-            <span
-              className="description"
-            >
-              The terms of use
-            </span>
+            
           </label>
           <div
             className="formSubmitBtnWrapper"
