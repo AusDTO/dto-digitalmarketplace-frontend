@@ -95,7 +95,6 @@ export const upload = async (id, file, title) => {
     await input.uploadFile(file);
 }
 
-
 export const clickButton = async (value) => {
     console.log(`Clicking button "//button[.="${value}"]"`);
     let button = await getElementHandle(`//button[.="${value}"]`);
@@ -123,9 +122,6 @@ export const clickLink = async (linkText, isUrl) => {
     }
     await links[0].click();
 }
-
-
-
 
 export const words = function (numberOfWords, numberOfCharacters) {
     let text = randomWords({ exactly: numberOfWords }).join(' ');
