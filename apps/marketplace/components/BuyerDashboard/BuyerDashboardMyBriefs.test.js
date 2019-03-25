@@ -51,7 +51,9 @@ test('My briefs shows a message and not a table when there is no briefs to show'
 })
 
 test('My briefs shows correctly formatted closing time for a future date', () => {
-  const date = addDays(new Date(), 14)
+  const curDate = new Date()
+  const futureDate = addDays(curDate, 14)
+  const offsetDiff = curDate.getTimezoneOffset() - futureDate.getTimezoneOffset()
 
   const props = {
     items: [
@@ -59,14 +61,26 @@ test('My briefs shows correctly formatted closing time for a future date', () =>
         id: 1,
         name: 'Brief 1',
         status: 'live',
-        closed_at: date.toISOString()
+        closed_at: futureDate.toISOString()
       }
     ],
     loadData: () => {}
   }
 
   const component = mount(<BuyerDashboardMyBriefs {...props} />)
-  const expectedDate = '1w : 6d : 23h'
+  let expectedDate = ''
+  switch (offsetDiff) {
+    case -60:
+      expectedDate = '2w : 0d : 0h'
+      break
+    case 60:
+      expectedDate = '1w : 6d : 22h'
+      break
+    case 0:
+    default:
+      expectedDate = '1w : 6d : 23h'
+      break
+  }
 
   expect(
     component
