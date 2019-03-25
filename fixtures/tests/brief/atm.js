@@ -1,9 +1,10 @@
-import { login, signOut } from '../../flows/login/buyer';
+import { buyerLogin } from '../../flows/login/actions';
 import { create } from '../../flows/brief/atm';
 import { startBrief } from '../../flows/dashboard/buyer';
 
 describe('should be able to ask the market brief', () => {
     it('should be able to ask the market brief', async () => {
+        await buyerLogin();
         let now = Date.now();
         await startBrief();
         await create({
