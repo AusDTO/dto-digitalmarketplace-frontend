@@ -87,6 +87,9 @@ export const buildQueryString = ({ search = {}, pagination = {} } = {}) => {
   return Object.keys(query).reduce((q, key) => {
     let target = query[key];
     let params = [];
+    if (key === 'keyword') {
+      target = encodeURIComponent(target)
+    }
     if (isObject(target)) {
       params = Object.keys(target).map((param) => `${key}=${param}`);
     } else {
