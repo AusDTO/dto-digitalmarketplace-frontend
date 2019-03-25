@@ -6,9 +6,12 @@ export const create = async (params) => {
     await fillResponseFormats();
     await fillObjectives();
     await fillTimeframes();
-    await fillResponseCriteria();
+    let criterias = await fillResponseCriteria(params.numberOfCriterias ? params.numberOfCriterias : 2);
     await fillClosingDate();
     await publishBrief();
+    return {
+        criterias
+    };
 }
 
 const createBrief = async () => {
@@ -28,8 +31,8 @@ const fillWhoCanRespond = async () => {
     await clickSaveContinue();
 }
 
-const fillAbout = async (role, locations) => {
-    await typeInReactInput('title', { value: role });
+const fillAbout = async (title, locations) => {
+    await typeInReactInput('title', { value: title });
     await typeInReactInput('organisation', { numberOfCharacters: 100 });
     await typeInReactInput('summary', { numberOfWords: 150 });
 
@@ -90,16 +93,24 @@ const fillTimeframes = async () => {
     await clickSaveContinue();
 }
 
-const fillResponseCriteria = async (evaluations) => {
+const fillResponseCriteria = async (numberOfCriterias) => {
     await clickSaveContinue();
     await matchText('li', 'You must not have any empty criteria.');
-    await clickLink('Add another criteria');
     await selectCheck('yes');
-    await typeInReactInput('criteria_0', { numberOfWords:50 });
-    await typeInReactInput('weighting_0', { value: '50' });
-    await typeInReactInput('criteria_1', { numberOfWords:50 });
-    await typeInReactInput('weighting_1', { value: '50' });
+    let criterias = [];
+    for (let i = 0; i < numberOfCriterias; i++) {
+        if (i > 0) {
+            await clickLink('Add another criteria');
+        }
+        let criteria = await typeInReactInput(`criteria_${i}`, { numberOfWords: 50 });
+        let weighting = await typeInReactInput(`weighting_${i}`, { value: '50' });
+        criterias.push({
+            criteria,
+            weighting
+        });
+    }
     await clickSaveContinue();
+    return criterias;
 }
 
 const fillClosingDate = async () => {

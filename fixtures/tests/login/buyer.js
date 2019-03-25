@@ -1,4 +1,4 @@
-import { login, signOut } from '../../flows/login/buyer';
+import { buyerLogin, sellerLogin, signOut } from '../../flows/login/actions';
 
 describe('should fail sign in', () => {
     let testCases = [
@@ -8,7 +8,7 @@ describe('should fail sign in', () => {
     ]
     testCases.forEach((test) => {
         it('sign in fails ' + test.args.length + ' args', async () => {
-            await login.apply(null, test.args);
+            await buyerLogin.apply(null, test.args);
             await matchText.apply(null, test.expected);
         });
     });
@@ -17,7 +17,7 @@ describe('should fail sign in', () => {
 
 describe('should sign in', () => {
     it('buyer should be able to login', async () => {
-        await login(process.env.BUYER_EMAIL, process.env.BUYER_PASSWORD);
+        await buyerLogin(process.env.BUYER_EMAIL, process.env.BUYER_PASSWORD);
         await matchText('h1', 'Dashboard');
         await signOut();
     });
