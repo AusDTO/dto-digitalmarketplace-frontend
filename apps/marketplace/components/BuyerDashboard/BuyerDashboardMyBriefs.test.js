@@ -53,7 +53,6 @@ test('My briefs shows a message and not a table when there is no briefs to show'
 test('My briefs shows correctly formatted closing time for a future date', () => {
   const curDate = new Date()
   const futureDate = addDays(curDate, 14)
-  const offsetDiff = curDate.getTimezoneOffset() - futureDate.getTimezoneOffset()
 
   const props = {
     items: [
@@ -68,6 +67,10 @@ test('My briefs shows correctly formatted closing time for a future date', () =>
   }
 
   const component = mount(<BuyerDashboardMyBriefs {...props} />)
+
+  // if the test happens to fall less than 2 weeks before a timezone change (e.g. day light saving), then adjust
+  // the expected output accordingly.
+  const offsetDiff = curDate.getTimezoneOffset() - futureDate.getTimezoneOffset()
   let expectedDate = ''
   switch (offsetDiff) {
     case -60:
