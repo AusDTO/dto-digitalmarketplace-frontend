@@ -52,7 +52,6 @@ const selectDropBox = async () => {
     await clickSaveContinue();
 }
 
-
 const fillAbout = async (role, locations) => {
 
     await clickSaveContinue();
