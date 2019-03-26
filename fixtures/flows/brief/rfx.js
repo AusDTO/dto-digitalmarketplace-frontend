@@ -53,7 +53,6 @@ const selectDropBox = async () => {
 }
 
 const fillAbout = async (role, locations) => {
-
     await clickSaveContinue();
     await matchText('li', 'You must add a title');
     await matchText('li', 'You must add the name of your department, agency or organisation');
