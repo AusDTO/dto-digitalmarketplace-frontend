@@ -29,6 +29,12 @@ class SellerDashboardPage extends Component {
     this.props.loadInitialData()
   }
 
+  componentDidUpdate = () => {
+    if (this.state.showRemoveAlert) {
+      window.scrollTo(0, this.deleteAlertRef.offsetTop)
+    }
+  }
+
   handleYesClick = () => {
     const { toRemoveUser } = this.state
     this.props.removeUser(toRemoveUser.id)
@@ -84,10 +90,19 @@ class SellerDashboardPage extends Component {
           </div>
           {this.state.showRemoveAlert && (
             <div className="row">
-              <div className="col-xs-12">
+              <div className="col-xs-12 col-sm-7">
                 <AUpageAlert as="warning">
-                  <p>{`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}</p>
-                  <AUbutton onClick={this.handleYesClick}>Yes, remove</AUbutton>
+                  <p
+                    ref={ref => {
+                      this.deleteAlertRef = ref
+                    }}
+                  >
+                    {`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}
+                  </p>
+                  <br />
+                  <AUbutton className={styles.confirmDelete} onClick={this.handleYesClick}>
+                    Yes, remove
+                  </AUbutton>
                   <AUbutton as="secondary" onClick={this.handleNoClicked}>
                     Do not remove
                   </AUbutton>

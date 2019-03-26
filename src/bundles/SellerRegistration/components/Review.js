@@ -26,7 +26,7 @@ const Review = ({
         <Switch>
             <Route path={match.url} exact render={() => (
                 <div id="preview-link" styleName="styles.content">
-                    <h1 className="au-display-xl" styleName="review.preview-heading" tabIndex="-1">Preview and submit</h1>
+                    <h1 className="au-display-xl" styleName="review.preview-heading" tabIndex="-1">Preview and submit updates</h1>
                     {supplierCode ? (<p>Preview your profile before submitting your updates.</p>)
                         : (<span><p>Take a moment to preview your new seller profile. This is what government buyers (and assessors, if you are offering new services) will see in the Digital Marketplace.</p></span>)}
 
@@ -34,8 +34,8 @@ const Review = ({
                     <div>
                         {confirmDiscard &&
                             <PageAlert as='warning'>
-                                <h4 tabIndex="-1">Are you sure you want to discard all updates?</h4>
-                                <a href={`/sellers/application/${applicationId}/discard`} className="button">Yes</a>
+                                <h4 tabIndex="-1">Are you sure you want to delete all updates?</h4>
+                                <a href={`/sellers/application/${applicationId}/discard`} className="button">Yes, delete all updates</a>
                                 <a styleName="review.skip-link"
                                     href="#discard-cancel"
                                     onClick={e => {
@@ -48,14 +48,14 @@ const Review = ({
                             '' :
                             <Link to={`${match.url}/profile`} className="button">Preview your profile</Link>
                         }
-                        {applicationType === 'edit' ?
+                        {applicationType === 'edit' && !confirmDiscard ?
                             <div styleName="review.skip">
                                 <a styleName="review.skip-link"
                                     href="#discard"
                                     onClick={e => {
                                         e.preventDefault();
                                         showConfirmDiscard(true);
-                                    }}>Discard all updates</a>
+                                    }}>Delete all updates</a>
                             </div>
                             : ''}
                     </div>

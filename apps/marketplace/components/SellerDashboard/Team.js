@@ -39,7 +39,7 @@ export class Team extends Component {
 
     return (
       <div>
-        <div className="row">
+        <div className={`${styles.tableMargin} row`}>
           <div className="col-xs-12">
             {items.length > 0 ? (
               <table className={`${styles.resultListing} col-xs-12`}>

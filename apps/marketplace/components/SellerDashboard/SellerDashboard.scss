@@ -7,6 +7,14 @@
   margin-bottom: 48px;
 }
 
+.tableMargin {
+  margin-top: 2.5rem;
+}
+
+.confirmDelete {
+  margin-right: 10px;
+}
+
 .headingRow {
   font-weight: bold;
   color: #202751;
@@ -122,12 +130,6 @@ table.resultListing td, table.resultListing th {
   table.resultListing .colAction a::after {
     content: "";
   }
-}
-
-.briefsFilter {
-  float: right;
-  text-align: right;
-  margin-top: -2.5em;
 }
 
 .notification {

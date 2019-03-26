@@ -110,7 +110,7 @@ export class Messages extends Component {
     }
 
     return (
-      <div className="row">
+      <div className={`${styles.tableMargin} row`}>
         <div className="col-xs-12">
           {items && items.length > 0 ? (
             <table className={`${styles.resultListing} col-xs-12`}>

@@ -78,7 +78,6 @@ main form textarea {
 }
 
 main form .validation-message span {
-  color: #c00;
   font-size: 0.875rem;
   font-weight: 400;
 }
@@ -95,6 +94,7 @@ main form .validation-message span {
 }
 
 main form .validation-message {
+  color: #c00;
   display: inline-block;
   border: 0;
 }
