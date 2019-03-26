@@ -11,7 +11,6 @@ export const create = async (params) => {
     await fillEvaluationCriteria();
     await fillClosingDate();
     await fillPublishBrief();
-    
 }
 
 const createBrief = async () => {
