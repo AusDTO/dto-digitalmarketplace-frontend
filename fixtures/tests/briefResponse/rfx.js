@@ -21,6 +21,7 @@ describe('create and respond to RFXs brief', () =>{
             locations: ['Australian Capital Territory', 'Tasmania']
         });
     });
+
     it('should be able to respond RFXs brief', async () => {
         await sellerLogin();
         await navigate();
