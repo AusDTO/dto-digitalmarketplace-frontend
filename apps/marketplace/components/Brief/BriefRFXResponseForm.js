@@ -141,7 +141,7 @@ const BriefRFXResponseForm = ({
                 </li>
                 <li>
                   The buyer will receive your response once the opportunity has closed on{' '}
-                  {format(new Date(brief.applicationsClosedAt), 'DD MMMM YYYY')}.
+                  {format(new Date(brief.applicationsClosedAt), 'dddd D MMMM YYYY')}.
                 </li>
               </ul>
               {currentlySending || loadingText ? (

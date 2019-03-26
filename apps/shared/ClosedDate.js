@@ -47,7 +47,7 @@ const ClosedDate = props => {
         final = <time dateTime={duration}>{text}</time>
       } else {
         final = (
-          <time dateTime={format(parsed, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}>{`6pm, ${format(parsed, 'D MMMM YYYY')}`}</time>
+          <time dateTime={format(parsed, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}>{`6pm, ${format(parsed, 'dddd D MMMM YYYY')}`}</time>
         )
       }
     }
