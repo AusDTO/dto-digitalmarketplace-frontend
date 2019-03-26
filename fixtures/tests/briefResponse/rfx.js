@@ -29,7 +29,7 @@ describe('create and respond to RFXs brief', () =>{
         await applyForRfx();
         await respond(brief);
 
-        //really should be applyForRFX but ooporunities doesn't have one and is basically the same funciton as ATM
+        //really should be applyForRFX but opportunities doesn't have one and is basically the same function as ATM
         await checkAppliedForRfx(title);
     });
 });
