@@ -13,6 +13,10 @@ h1.preview-heading {
   margin-right: 0;
 }
 
+.blurb {
+ margin-top: 2.5rem; 
+}
+
 @media (min-width: 768px) {
   .skip {
     text-align: right;
