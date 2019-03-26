@@ -18,7 +18,7 @@ const createBrief = async () => {
     await clickLink('/2/buyer-rfx/create', true);
     await clickLink('Create and publish request');
     await clickButton('Start now');
-    }
+}
 
 const fillWhoCanRespond = async () => {
     await clickSaveContinue();
