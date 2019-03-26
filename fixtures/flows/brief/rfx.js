@@ -26,7 +26,7 @@ const fillWhoCanRespond = async () => {
     await selectDropBox();
 }
 
-const selectDropBox = async() => {
+const selectDropBox = async () => {
     const rfxPanelCategory = process.env.RFX_PANEL_CATEGORY;
     await page.select(`#seller-search-category-select`, rfxPanelCategory);
 
