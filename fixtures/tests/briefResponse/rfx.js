@@ -7,7 +7,6 @@ import { sleep } from '../../flows/utils';
 
 //
 
-
 describe('create and respond to RFXs brief', () =>{
     //in order to get the right brief we are going for the 'today's date'.
     let today = Date.now();
