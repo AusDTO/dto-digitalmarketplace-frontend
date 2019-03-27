@@ -117,7 +117,7 @@ class SellerDashboardPage extends Component {
                 View profile
               </a>
               <a href="/sellers/edit" className="au-btn au-btn--secondary">
-                Edit profile
+                Update profile
               </a>
             </div>
           </div>
