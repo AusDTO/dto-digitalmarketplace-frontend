@@ -61,7 +61,7 @@ const Review = ({
                         {supplierCode && <div styleName="review.blurb">
                             <p>To submit your updates for review, select 'Preview and submit updates' then select 'Submit updates'.</p>
                             <p>The preview page will only show details visible to registered government buyers.</p>
-                            <p>If you did not make any changes, or you don't want to keep your saved updates, select 'Delete all updates'."</p>
+                            <p>If you did not make any changes, or you don't want to keep your saved updates, select 'Delete all updates'.</p>
                         </div>}
                     </div>
                 </div>
