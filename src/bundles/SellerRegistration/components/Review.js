@@ -34,8 +34,8 @@ const Review = ({
                     <div>
                         {confirmDiscard &&
                             <PageAlert as='warning'>
-                                <h4 tabIndex="-1">Are you sure you want to delete all updates?</h4>
-                                <a href={`/sellers/application/${applicationId}/discard`} className="button">Yes, delete all updates</a>
+                                <h4 tabIndex="-1">Are you sure you want to discard all updates?</h4>
+                                <a href={`/sellers/application/${applicationId}/discard`} className="button">Yes, discard all updates</a>
                                 <a styleName="review.skip-link"
                                     href="#discard-cancel"
                                     onClick={e => {
@@ -55,13 +55,13 @@ const Review = ({
                                     onClick={e => {
                                         e.preventDefault();
                                         showConfirmDiscard(true);
-                                    }}>Delete all updates</a>
+                                    }}>Discard all updates</a>
                             </div>
                             : ''}
                         {supplierCode && <div styleName="review.blurb">
                             <p>To submit your updates for review, select 'Preview and submit updates' then select 'Submit updates'.</p>
                             <p>The preview page will only show details visible to registered government buyers.</p>
-                            <p>If you did not make any changes, or you don't want to keep your saved updates, select 'Delete all updates'.</p>
+                            <p>If you did not make any changes, or you don't want to keep your saved updates, select 'Discard all updates'.</p>
                         </div>}
                     </div>
                 </div>
