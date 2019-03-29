@@ -27,6 +27,18 @@ const Review = ({
             <Route path={match.url} exact render={() => (
                 <div id="preview-link" styleName="styles.content">
                     <h1 className="au-display-xl" styleName="review.preview-heading" tabIndex="-1">Preview and submit</h1>
+                    {confirmDiscard &&
+                        <PageAlert as='warning'>
+                            <h4 tabIndex="-1">Are you sure you want to discard all updates?</h4>
+                            <a href={`/sellers/application/${applicationId}/discard`} className="button">Yes, discard all updates</a>
+                            <a styleName="review.skip-link"
+                                href="#discard-cancel"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    showConfirmDiscard(false);
+                                }}>Cancel</a>
+                        </PageAlert>
+                    }
                     {supplierCode ? (<div styleName="review.blurb">
                             <p>To submit your updates for review, select 'Preview and submit updates' then select 'Submit updates'.</p>
                             <p>The preview page will only show details visible to registered government buyers.</p>
@@ -36,18 +48,6 @@ const Review = ({
 
                     <ValidationSummary applicationErrors={applicationErrors} renderLink={true} title={'There is a problem to fix before you can submit'} />
                     <div>
-                        {confirmDiscard &&
-                            <PageAlert as='warning'>
-                                <h4 tabIndex="-1">Are you sure you want to discard all updates?</h4>
-                                <a href={`/sellers/application/${applicationId}/discard`} className="button">Yes, discard all updates</a>
-                                <a styleName="review.skip-link"
-                                    href="#discard-cancel"
-                                    onClick={e => {
-                                        e.preventDefault();
-                                        showConfirmDiscard(false);
-                                    }}>Cancel</a>
-                            </PageAlert>
-                        }
                         {applicationErrors && applicationErrors.length > 0 ?
                             '' :
                             <Link to={`${match.url}/profile`} className="button">Preview and submit updates</Link>
