@@ -90,7 +90,7 @@ class SellerDashboardPage extends Component {
           </div>
           {this.state.showRemoveAlert && (
             <div className="row">
-              <div className="col-xs-12 col-sm-7">
+              <div className={`${styles.confirmDelete} col-xs-12 col-sm-7`}>
                 <AUpageAlert as="warning">
                   <p
                     ref={ref => {
@@ -100,7 +100,7 @@ class SellerDashboardPage extends Component {
                     {`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}
                   </p>
                   <br />
-                  <AUbutton className={styles.confirmDelete} onClick={this.handleYesClick}>
+                  <AUbutton className={styles.confirmDeleteButton} onClick={this.handleYesClick}>
                     Yes, remove
                   </AUbutton>
                   <AUbutton as="secondary" onClick={this.handleNoClicked}>
