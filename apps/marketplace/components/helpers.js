@@ -41,13 +41,15 @@ export const nextWeekDay = date => {
 
 export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
   let lastQuestionDate = new Date()
-  if (closingDate <= addDays(today, 3)) {
+  if (closingDate < addDays(today, 3)) {
     lastQuestionDate = nextWeekDay(subDays(closingDate, 1))
     if (today > lastQuestionDate) {
       lastQuestionDate = today
     }
+  } else if (closingDate < addDays(today, 8)) {
+    lastQuestionDate = nextWeekDay(addDays(today, 2))
   } else {
-    lastQuestionDate = nextWeekDay(subDays(closingDate, 2))
+    lastQuestionDate = nextWeekDay(addDays(today, 5))
   }
   if (lastQuestionDate > closingDate) {
     lastQuestionDate = closingDate
