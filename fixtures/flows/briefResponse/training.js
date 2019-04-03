@@ -1,22 +1,28 @@
-export const respond = async (params) => {
-    console.log('Starting to respond to atm brief');
+import * as util from '../../flows/utils'
 
-    await clickSubmitResponse();
-    await matchText('a', 'Enter a date for when you can start the project');
-    await matchText('a', 'Choose a file for your written proposal');
-    await matchText('a', 'Choose a file for your project costs');
-    await matchText('a', 'Choose a file for your trainer résumés');
-    await matchText('a', 'A contact number is required');
-
-    await typeInReactInput('availability', { numberOfCharacters: 100 });
-    await upload('file_0', 'document.pdf');
-    await upload('file_1', 'document.pdf');
-    await upload('file_2', 'document.pdf');
-    await typeInReactInput('respondToPhone', { value: '0123456789' });
-
-    await clickSubmitResponse();
-}
+/* eslint-disable no-unused-vars */
 
 const clickSubmitResponse = async () => {
-    await clickInputButton('Submit response');
+  await util.clickInputButton('Submit response')
 }
+
+const respond = async () => {
+  console.log('Starting to respond to atm brief')
+
+  await clickSubmitResponse()
+  await util.matchText('a', 'Enter a date for when you can start the project')
+  await util.matchText('a', 'Choose a file for your written proposal')
+  await util.matchText('a', 'Choose a file for your project costs')
+  await util.matchText('a', 'Choose a file for your trainer résumés')
+  await util.matchText('a', 'A contact number is required')
+
+  await util.typeInReactInput('availability', { numberOfCharacters: 100 })
+  await util.upload('file_0', 'document.pdf')
+  await util.upload('file_1', 'document.pdf')
+  await util.upload('file_2', 'document.pdf')
+  await util.typeInReactInput('respondToPhone', { value: '0123456789' })
+
+  await clickSubmitResponse()
+}
+
+export default respond
