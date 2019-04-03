@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
 import Header from 'marketplace/components/SellerDashboard/Header'
@@ -32,6 +31,7 @@ class SellerDashboardPage extends Component {
   componentDidUpdate = () => {
     if (this.state.showRemoveAlert) {
       window.scrollTo(0, this.deleteAlertRef.offsetTop)
+      this.doNotRemove.focus()
     }
   }
 
@@ -100,12 +100,18 @@ class SellerDashboardPage extends Component {
                     {`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}
                   </p>
                   <br />
-                  <AUbutton className={styles.confirmDeleteButton} onClick={this.handleYesClick}>
+                  <button className={`${styles.confirmDeleteButton} au-btn`} onClick={this.handleYesClick}>
                     Yes, remove
-                  </AUbutton>
-                  <AUbutton as="secondary" onClick={this.handleNoClicked}>
+                  </button>
+                  <button
+                    className={`au-btn au-btn--secondary`}
+                    onClick={this.handleNoClicked}
+                    ref={ref => {
+                      this.doNotRemove = ref
+                    }}
+                  >
                     Do not remove
-                  </AUbutton>
+                  </button>
                 </AUpageAlert>
               </div>
             </div>
