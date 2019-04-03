@@ -85,7 +85,7 @@ class Review extends Component {
                 exact
                 path={`${match.url}/profile`}
                 render={(routerProps) => (
-                    <ApplicationPreview {...routerProps} {...rest} />
+                    <ApplicationPreview {...routerProps} {...this.props} />
                 )}
             />
 
