@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import * as util from '../../flows/utils'
 
 /* eslint-disable no-await-in-loop */
@@ -34,58 +33,6 @@ const selectDropBox = async () => {
     if (i > 1) {
       await util.sleep(100)
       await util.typeInReactInput('seller-search', { value: '%%%' })
-=======
-import { sleep } from "../utils";
-
-export const create = async (params) => {
-    console.log('Starting to create outcome RXF brief');
-    await createBrief();
-    await fillWhoCanRespond();
-    await fillAbout(params.title, params.locations);
-    await fillResponseFormats();
-    await fillRequirements();
-    await fillTimeframesAndBudget();
-    await fillEvaluationCriteria();
-    await fillClosingDate();
-    await fillPublishBrief();
-}
-
-const createBrief = async () => {
-    await clickLink('/2/outcome-choice', true);
-    await clickLink('/2/buyer-rfx/create', true);
-    await clickLink('Create and publish request');
-    await clickButton('Start now');
-}
-
-const fillWhoCanRespond = async () => {
-    await clickSaveContinue();
-    await matchText('li', 'You must select at least one panel category');
-    await selectDropBox();
-}
-
-const selectDropBox = async () => {
-    const rfxPanelCategory = process.env.RFX_PANEL_CATEGORY;
-    await page.select(`#seller-search-category-select`, rfxPanelCategory);
-
-    const rfxSellerName = process.env.RFX_SELLER_NAME;
-    await sleep(100);
-    await typeInReactInput('seller-search', { value: rfxSellerName });
-    let searchResult = await getElementHandles(`//input[@id="seller-search"]/../../ul/li[1]/a`);
-    let sr = searchResult[0];
-    sr.click();
-
-    await typeInReactInput('seller-search', { value: '%%%' });
-    searchResult = await getElementHandles('//input[@id="seller-search"]/../../ul/li');
-    let resultCount = searchResult.length;
-    for (let i=1; i<=resultCount; i++) {
-        if (i>1) {
-            await sleep(100);
-            await typeInReactInput('seller-search', { value: '%%%' });
-        }
-        searchResult = await getElementHandles(`//input[@id="seller-search"]/../../ul/li[${i}]/a`);
-        sr = searchResult[0];
-        sr.click();
->>>>>>> 00ec2611b054c474573a7c9305988ef011c85ef5
     }
     searchResult = await util.getElementHandles(`//input[@id="seller-search"]/../../ul/li[${i}]/a`)
     sr = searchResult[0]
@@ -94,7 +41,6 @@ const selectDropBox = async () => {
   await clickSaveContinue()
 }
 
-<<<<<<< HEAD
 const fillWhoCanRespond = async () => {
   await clickSaveContinue()
   await util.matchText('li', 'You must select at least one panel category')
@@ -127,26 +73,6 @@ const fillAbout = async (role, locations) => {
   await util.typeInReactInput('working_arrangements', { numberOfCharacters: 150 })
   await util.typeInReactInput('clearance', { numberOfCharacters: 100 })
   await clickSaveContinue()
-=======
-const fillAbout = async (role, locations) => {
-    await clickSaveContinue();
-    await matchText('li', 'You must add a title');
-    await matchText('li', 'You must add the name of your department, agency or organisation');
-    await matchText('li', 'You must add a summary of work to be done');
-    await matchText('li', 'You must add the working arrangements');
-    await matchText('li', 'You must select a location of where the work can be done');
-    await typeInReactInput('title', { value: role });
-    await typeInReactInput('organisation', { numberOfCharacters: 100 });
-    await typeInReactInput('summary', { numberOfWords: 150 });
-
-    for (let i in locations) {
-        let location = locations[i];
-        await selectCheck(location);
-    }
-    await typeInReactInput('working_arrangements', {numberOfCharacters: 150});
-    await typeInReactInput('clearance', {numberOfCharacters: 100});
-    await clickSaveContinue();
->>>>>>> 00ec2611b054c474573a7c9305988ef011c85ef5
 }
 
 const fillResponseFormats = async () => {
@@ -228,28 +154,4 @@ const create = async params => {
   await fillPublishBrief()
 }
 
-<<<<<<< HEAD
 export default create
-=======
-
-   
-
-
-  
-
-
-
-
-
-
-
-
-
-
-   
-    
-
-
-
-    
->>>>>>> 00ec2611b054c474573a7c9305988ef011c85ef5
