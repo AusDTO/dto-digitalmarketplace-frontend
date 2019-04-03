@@ -20,14 +20,14 @@ const BriefRFXResponseSubmitted = props => (
                   <span>
                     The buyer will receive your response once the opportunity closes{props.brief
                       .applicationsClosedAt && (
-                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
+                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
                     )}.
                   </span>
                 ) : (
                   <span>
                     The buyer will receive all responses once the opportunity closes{props.brief
                       .applicationsClosedAt && (
-                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
+                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
                     )}.
                   </span>
                 )}

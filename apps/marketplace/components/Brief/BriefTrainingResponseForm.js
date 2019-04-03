@@ -164,7 +164,7 @@ const BriefTrainingResponseForm = ({
                 </li>
                 <li>
                   The buyer will receive your response once the brief has closed on{' '}
-                  {format(new Date(brief.applicationsClosedAt), 'DD MMMM')}.
+                  {format(new Date(brief.applicationsClosedAt), 'dddd D MMMM YYYY')}.
                 </li>
               </ul>
               {currentlySending || loadingText ? (
