@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { Route, Link, Redirect, Switch } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
@@ -13,30 +14,45 @@ import { showConfirmDiscard } from '../redux/modules/application'
 import styles from './SellerRegistration.css';
 import review from './Review.css';
 
-const Review = ({
-    supplierCode,
-    match,
-    caseStudyForm,
-    applicationErrors,
-    applicationId,
-    applicationType,
-    confirmDiscard,
-    showConfirmDiscard,
-    ...rest }) => (
-        <Switch>
+class Review extends Component {
+    constructor(props) {
+      super(props)  
+    }
+
+    componentDidUpdate = () => {
+        if (this.props.confirmDiscard) {
+            window.scrollTo(0, this.discardConfirmRef.offsetTop)
+            this.doNotDiscardRef.focus()
+        }
+    }
+
+    render() {
+        const {
+            supplierCode,
+            match,
+            caseStudyForm,
+            applicationErrors,
+            applicationId,
+            applicationType,
+            confirmDiscard,
+            showConfirmDiscard
+        } = this.props
+    
+       return <Switch>
             <Route path={match.url} exact render={() => (
                 <div id="preview-link" styleName="styles.content">
                     <h1 className="au-display-xl" styleName="review.preview-heading" tabIndex="-1">Preview and submit</h1>
                     {confirmDiscard &&
                         <PageAlert as='warning'>
-                            <h4 tabIndex="-1">Are you sure you want to discard all updates?</h4>
+                            <h4 tabIndex="-1" ref={ref => { this.discardConfirmRef = ref }}>Are you sure you want to discard all updates?</h4>
                             <a href={`/sellers/application/${applicationId}/discard`} className="button">Yes, discard all updates</a>
                             <a styleName="review.skip-link"
                                 href="#discard-cancel"
+                                ref={ref => { this.doNotDiscardRef = ref }}
                                 onClick={e => {
                                     e.preventDefault();
                                     showConfirmDiscard(false);
-                                }}>Cancel</a>
+                                }}>Do not discard updates</a>
                         </PageAlert>
                     }
                     {supplierCode ? (<div styleName="review.blurb">
@@ -89,7 +105,19 @@ const Review = ({
                 )
             }} />
         </Switch>
-    );
+    
+        }
+
+    }
+
+Review.propTypes = {
+    supplierCode: PropTypes.number,
+    applicationId: PropTypes.number.isRequired,
+    applicationType: PropTypes.string,
+    caseStudyForm: PropTypes.object,
+    applicationErrors: PropTypes.array
+}
+          
 
 const mapStateToProps = (state, ownProps) => {
     return {
