@@ -155,4 +155,3 @@ const create = async params => {
 }
 
 export default create
-
