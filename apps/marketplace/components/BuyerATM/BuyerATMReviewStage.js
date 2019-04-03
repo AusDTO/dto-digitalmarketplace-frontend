@@ -41,12 +41,12 @@ const BuyerATMReviewStage = props => (
           </div>
           <div className="row">
             <div className="col-xs-12 col-sm-4">
-              {format(getBriefLastQuestionDate(new Date(props[props.model].closedAt)), 'D MMMM')}
+              {format(getBriefLastQuestionDate(new Date(props[props.model].closedAt)), 'dddd D MMMM YYYY')}
             </div>
             <div className="col-xs-12 col-sm-8">The last day sellers can ask questions.</div>
           </div>
           <div className="row">
-            <div className="col-xs-12 col-sm-4">{format(props[props.model].closedAt, 'D MMMM')}</div>
+            <div className="col-xs-12 col-sm-4">{format(props[props.model].closedAt, 'dddd D MMMM YYYY')}</div>
             <div className="col-xs-12 col-sm-8">
               The last day you can publish answers to all sellers&apos; questions.
               <br />

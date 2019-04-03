@@ -153,7 +153,7 @@ const Opportunity = props => {
                 <strong>Application closing date</strong>
               </div>
               <div className="col-xs-12 col-sm-8">
-                {format(getClosingTime(brief) || new Date(), 'D MMMM YYYY')} at 6PM (in Canberra)
+                {format(getClosingTime(brief) || new Date(), 'dddd D MMMM YYYY')} at 6PM (in Canberra)
               </div>
             </div>
             <div className="row">
