@@ -16,7 +16,7 @@ const BriefTrainingResponseSubmitted = props => (
             </AUheading>
             <p>
               The buyer receives all submitted responses once the brief closes{props.brief.applicationsClosedAt && (
-                <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
+                <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
               )}.
             </p>
           </AUpageAlert>
