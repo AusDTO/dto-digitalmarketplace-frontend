@@ -1,7 +1,5 @@
 import * as util from '../utils'
 
-/* eslint-disable no-await-in-loop */
-
 const clickSaveContinue = async () => {
   await util.clickButton('Save and continue')
 }
@@ -82,9 +80,12 @@ const fillResponseCriteria = async numberOfCriterias => {
   const criterias = []
   for (let i = 0; i < numberOfCriterias; i += 1) {
     if (i > 0) {
+      // eslint-disable-next-line no-await-in-loop
       await util.clickLink('Add another criteria')
     }
+    // eslint-disable-next-line no-await-in-loop
     const criteria = await util.typeInReactInput(`criteria_${i}`, { numberOfWords: 50 })
+    // eslint-disable-next-line no-await-in-loop
     const weighting = await util.typeInReactInput(`weighting_${i}`, { value: '50' })
     criterias.push({
       criteria,

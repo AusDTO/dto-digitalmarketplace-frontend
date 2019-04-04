@@ -1,7 +1,5 @@
 import * as util from '../../flows/utils'
 
-/* eslint-disable no-unused-vars */
-
 const clickSubmitResponse = async () => {
   await util.clickInputButton('Submit response')
 }
@@ -15,7 +13,6 @@ const respond = async () => {
   await util.matchText('a', 'Choose a file for your project costs')
   await util.matchText('a', 'Choose a file for your trainer résumés')
   await util.matchText('a', 'A contact number is required')
-
   await util.typeInReactInput('availability', { numberOfCharacters: 100 })
   await util.upload('file_0', 'document.pdf')
   await util.upload('file_1', 'document.pdf')

@@ -1,8 +1,5 @@
 import * as util from '../../flows/utils'
 
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-unused-vars */
-
 const clickSaveContinue = async () => {
   console.log('here')
   await util.clickButton('Save and continue')
@@ -31,9 +28,12 @@ const selectDropBox = async () => {
   const resultCount = searchResult.length
   for (let i = 1; i <= resultCount; i += 1) {
     if (i > 1) {
+      // eslint-disable-next-line no-await-in-loop
       await util.sleep(100)
+      // eslint-disable-next-line no-await-in-loop
       await util.typeInReactInput('seller-search', { value: '%%%' })
     }
+    // eslint-disable-next-line no-await-in-loop
     searchResult = await util.getElementHandles(`//input[@id="seller-search"]/../../ul/li[${i}]/a`)
     sr = searchResult[0]
     sr.click()

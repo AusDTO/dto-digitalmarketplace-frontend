@@ -1,7 +1,5 @@
 import * as util from '../../flows/utils'
 
-/* eslint-disable no-await-in-loop */
-
 const clickSaveContinue = async () => {
   await util.clickInputButton('Save and continue')
 }
