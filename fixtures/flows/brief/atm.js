@@ -62,23 +62,6 @@ const fillObjectives = async () => {
   await util.typeInReactInput('endUsers', { numberOfWords: 500 })
   await util.typeInReactInput('workAlreadyDone', { numberOfWords: 500 })
   await util.typeInReactInput('industryBriefing', { numberOfWords: 500 })
-
-  /*
-  
-  const fields = [
-    { id: 'backgroundInformation', options: { numberOfWords: 500 } },
-    { id: 'outcome', options: { numberOfWords: 500 } },
-    { id: 'endUsers', options: { numberOfWords: 500 } },
-    { id: 'workAlreadyDone', options: { numberOfWords: 500 } },
-    { id: 'industryBriefing', options: { numberOfWords: 150 } }
-  ]
-  fields.forEach(async field => {
-    await util.typeInReactInput(field.id, field.options)
-  })
-
-
-  */
-
   await util.upload('file_0', 'document.pdf')
   await clickSaveContinue()
 }
