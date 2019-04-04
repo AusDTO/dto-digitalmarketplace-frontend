@@ -72,18 +72,6 @@ const fillTimeframes = async () => {
 
   await util.typeInReactInput('start_date', { numberOfWords: 10 })
   await util.typeInReactInput('timeframeConstraints', { numberOfWords: 150 })
-
-  /* skips the first field 
-  const fields = [
-    { id: 'start_date', options: { numberOfWords: 10 } },
-    { id: 'timeframeConstraints', options: { numberOfWords: 150 } }
-  ]
-  fields.forEach(async field => {
-    await util.typeInReactInput(field.id, field.options)
-  })
-
-  */
-
   await clickSaveContinue()
 }
 
