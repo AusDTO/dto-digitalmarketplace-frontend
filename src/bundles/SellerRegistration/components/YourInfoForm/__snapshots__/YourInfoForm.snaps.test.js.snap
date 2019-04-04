@@ -41,6 +41,7 @@ exports[`YourInfoForm renders 1`] = `
       </ul>
     </div>
     <form
+      action={undefined}
       id="yourinfo"
       method="post"
       onReset={[Function]}
@@ -68,12 +69,16 @@ exports[`YourInfoForm renders 1`] = `
           className=""
           disabled={false}
           id="representative"
+          maxLength={undefined}
           name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -89,12 +94,16 @@ exports[`YourInfoForm renders 1`] = `
           className=""
           disabled={false}
           id="email"
+          maxLength={undefined}
           name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -116,12 +125,16 @@ exports[`YourInfoForm renders 1`] = `
           className=""
           disabled={false}
           id="phone"
+          maxLength={undefined}
           name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <h2>
@@ -146,12 +159,16 @@ exports[`YourInfoForm renders 1`] = `
           className=""
           disabled={false}
           id="contact_name"
+          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -167,12 +184,16 @@ exports[`YourInfoForm renders 1`] = `
           className=""
           disabled={false}
           id="contact_email"
+          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -194,12 +215,16 @@ exports[`YourInfoForm renders 1`] = `
           className=""
           disabled={false}
           id="contact_phone"
+          maxLength={undefined}
           name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -318,12 +343,16 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           className=""
           disabled={false}
           id="representative"
+          maxLength={undefined}
           name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -339,12 +368,16 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           className=""
           disabled={false}
           id="email"
+          maxLength={undefined}
           name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -366,12 +399,16 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           className=""
           disabled={false}
           id="phone"
+          maxLength={undefined}
           name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <h2>
@@ -396,12 +433,16 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           className=""
           disabled={false}
           id="contact_name"
+          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -417,12 +458,16 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           className=""
           disabled={false}
           id="contact_email"
+          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -444,12 +489,16 @@ exports[`YourInfoForm renders with edit mode 1`] = `
           className=""
           disabled={false}
           id="contact_phone"
+          maxLength={undefined}
           name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -568,12 +617,16 @@ exports[`YourInfoForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="representative"
+          maxLength={undefined}
           name="representative"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -589,12 +642,16 @@ exports[`YourInfoForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="email"
+          maxLength={undefined}
           name="email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -616,12 +673,16 @@ exports[`YourInfoForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="phone"
+          maxLength={undefined}
           name="phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <h2>
@@ -646,12 +707,16 @@ exports[`YourInfoForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="contact_name"
+          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -667,12 +732,16 @@ exports[`YourInfoForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="contact_email"
+          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div
@@ -694,12 +763,16 @@ exports[`YourInfoForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="contact_phone"
+          maxLength={undefined}
           name="contact_phone"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
+          pattern={undefined}
+          readOnly={undefined}
           type="text"
+          value={undefined}
         />
       </div>
       <div

@@ -3,7 +3,9 @@
 exports[`Textarea with limit 5, 10 words 1`] = `
 <div>
   <textarea
+    aria-describedby={undefined}
     className="under-50"
+    id={undefined}
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
@@ -22,7 +24,9 @@ exports[`Textarea with limit 5, 10 words 1`] = `
 exports[`Textarea with limit 100, 10 words 1`] = `
 <div>
   <textarea
+    aria-describedby={undefined}
     className="under-100"
+    id={undefined}
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
@@ -41,11 +45,14 @@ exports[`Textarea with limit 100, 10 words 1`] = `
 exports[`Textarea with limit 100, no words 1`] = `
 <div>
   <textarea
+    aria-describedby={undefined}
     className="under-100"
+    id={undefined}
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
+    value={undefined}
   />
   <span
     aria-live="polite"
@@ -59,11 +66,14 @@ exports[`Textarea with limit 100, no words 1`] = `
 exports[`Textarea with no words, no limit 1`] = `
 <div>
   <textarea
+    aria-describedby={undefined}
     className=""
+    id={undefined}
     name="test"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
+    value={undefined}
   />
   
 </div>
