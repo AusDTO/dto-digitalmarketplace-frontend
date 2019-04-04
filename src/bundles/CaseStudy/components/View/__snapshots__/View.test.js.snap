@@ -8,6 +8,9 @@ exports[`View with required attributes 1`] = `
   <div
     className="row"
   />
+  <div
+    className="row"
+  />
   <header
     className="row"
   >
@@ -34,7 +37,7 @@ exports[`View with required attributes 1`] = `
             by 
           </p>
         </div>
-        <div
+                <div
           className="col-xs-12 col-sm-5 actions"
         >
           <a
@@ -160,6 +163,9 @@ exports[`View with required attributes and meta links 1`] = `
   id="casestudy__view"
   styleName="view.case-study-summary"
 >
+  <div
+    className="row"
+  />
   <div
     className="row"
   />

@@ -8,6 +8,9 @@ exports[`CaseStudyViewWidget renders without errrors 1`] = `
   <div
     className="row"
   />
+  <div
+    className="row"
+  />
   <header
     className="row"
   >
