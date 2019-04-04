@@ -23,8 +23,6 @@ exports[`DomainAssessmentChoice renders 1`] = `
       </a>
     </p>
     <form
-      action={undefined}
-      noValidate={undefined}
       onReset={[Function]}
       onSubmit={[Function]}
     >
@@ -40,8 +38,6 @@ exports[`DomainAssessmentChoice renders 1`] = `
           <span>
             <input
               checked={false}
-              defaultChecked={undefined}
-              defaultValue={undefined}
               disabled={false}
               id="domain-1"
               name="domain"
@@ -65,8 +61,6 @@ exports[`DomainAssessmentChoice renders 1`] = `
           <span>
             <input
               checked={false}
-              defaultChecked={undefined}
-              defaultValue={undefined}
               disabled={false}
               id="domain-13"
               name="domain"

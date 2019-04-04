@@ -21,7 +21,6 @@ exports[`ProjectForm renders 1`] = `
     role="main"
   >
     <form
-      action={undefined}
       id="Project__create"
       method="post"
       onReset={[Function]}
@@ -40,16 +39,12 @@ exports[`ProjectForm renders 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -72,7 +67,6 @@ exports[`ProjectForm renders 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -100,16 +94,12 @@ exports[`ProjectForm renders 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <fieldset>
@@ -241,16 +231,12 @@ exports[`ProjectForm renders 1`] = `
           className=""
           disabled={false}
           id="service"
-          maxLength={undefined}
           name="service"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -273,7 +259,6 @@ exports[`ProjectForm renders 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -304,7 +289,6 @@ exports[`ProjectForm renders 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
-              defaultValue={undefined}
               id="about"
               name="about"
               onBlur={[Function]}
@@ -546,16 +530,12 @@ exports[`ProjectForm renders 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -571,16 +551,12 @@ exports[`ProjectForm renders 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -636,16 +612,12 @@ exports[`ProjectForm renders 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -661,16 +633,12 @@ exports[`ProjectForm renders 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -710,16 +678,12 @@ exports[`ProjectForm renders 1`] = `
           className=""
           disabled={false}
           id="contactName"
-          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -735,16 +699,12 @@ exports[`ProjectForm renders 1`] = `
           className=""
           disabled={false}
           id="contactEmail"
-          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -801,7 +761,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
     role="main"
   >
     <form
-      action={undefined}
       id="Project__create"
       method="post"
       onReset={[Function]}
@@ -820,16 +779,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -852,7 +807,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -880,16 +834,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <fieldset>
@@ -1021,16 +971,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="service"
-          maxLength={undefined}
           name="service"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1053,7 +999,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -1084,7 +1029,6 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
-              defaultValue={undefined}
               id="about"
               name="about"
               onBlur={[Function]}
@@ -1326,16 +1270,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -1351,16 +1291,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -1416,16 +1352,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -1441,16 +1373,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -1490,16 +1418,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="contactName"
-          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1515,16 +1439,12 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="contactEmail"
-          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -1582,7 +1502,6 @@ exports[`ProjectForm renders with errors 1`] = `
   >
     <div
       className="au-body au-page-alerts   au-page-alerts--error"
-      role="alert"
     >
       <h4
         id="validation-masthead-heading"
@@ -1709,16 +1628,12 @@ exports[`ProjectForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1754,7 +1669,6 @@ exports[`ProjectForm renders with errors 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="invalid under-50"
-            defaultValue={undefined}
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -1795,16 +1709,12 @@ exports[`ProjectForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <fieldset>
@@ -1962,16 +1872,12 @@ exports[`ProjectForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="service"
-          maxLength={undefined}
           name="service"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2007,7 +1913,6 @@ exports[`ProjectForm renders with errors 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="invalid under-200"
-            defaultValue={undefined}
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -2051,7 +1956,6 @@ exports[`ProjectForm renders with errors 1`] = `
             <textarea
               aria-describedby="about-label"
               className="invalid under-200"
-              defaultValue={undefined}
               id="about"
               name="about"
               onBlur={[Function]}
@@ -2306,16 +2210,12 @@ exports[`ProjectForm renders with errors 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -2331,16 +2231,12 @@ exports[`ProjectForm renders with errors 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -2396,16 +2292,12 @@ exports[`ProjectForm renders with errors 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -2421,16 +2313,12 @@ exports[`ProjectForm renders with errors 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -2483,16 +2371,12 @@ exports[`ProjectForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="contactName"
-          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2521,16 +2405,12 @@ exports[`ProjectForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="contactEmail"
-          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -2625,16 +2505,12 @@ exports[`ProjectForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2657,7 +2533,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -2685,16 +2560,12 @@ exports[`ProjectForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <fieldset>
@@ -2826,16 +2697,12 @@ exports[`ProjectForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="service"
-          maxLength={undefined}
           name="service"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2858,7 +2725,6 @@ exports[`ProjectForm renders with form_options 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -2889,7 +2755,6 @@ exports[`ProjectForm renders with form_options 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
-              defaultValue={undefined}
               id="about"
               name="about"
               onBlur={[Function]}
@@ -3131,16 +2996,12 @@ exports[`ProjectForm renders with form_options 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -3156,16 +3017,12 @@ exports[`ProjectForm renders with form_options 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -3221,16 +3078,12 @@ exports[`ProjectForm renders with form_options 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
                 <div
@@ -3246,16 +3099,12 @@ exports[`ProjectForm renders with form_options 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
-                    value={undefined}
                   />
                 </div>
               </div>
@@ -3295,16 +3144,12 @@ exports[`ProjectForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="contactName"
-          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -3320,16 +3165,12 @@ exports[`ProjectForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="contactEmail"
-          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -3405,16 +3246,12 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -3437,7 +3274,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
-            defaultValue={undefined}
             id="summary"
             name="summary"
             onBlur={[Function]}
@@ -3465,14 +3301,11 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
           value="The Client Name"
         />
@@ -3606,16 +3439,12 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="service"
-          maxLength={undefined}
           name="service"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -3638,7 +3467,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
-            defaultValue={undefined}
             id="aim"
             name="aim"
             onBlur={[Function]}
@@ -3669,7 +3497,6 @@ exports[`ProjectForm renders with populated fields 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
-              defaultValue={undefined}
               id="about"
               name="about"
               onBlur={[Function]}
@@ -3911,14 +3738,11 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
                     value="Cisco"
                   />
@@ -3936,14 +3760,11 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     className=""
                     disabled={false}
                     id="partner_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
                     value="http://www.cisco.com"
                   />
@@ -4001,14 +3822,11 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-title"
-                    maxLength={undefined}
                     name="title"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
                     value="Google"
                   />
@@ -4026,14 +3844,11 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     className=""
                     disabled={false}
                     id="project_links-0-url"
-                    maxLength={undefined}
                     name="url"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onKeyPress={[Function]}
-                    pattern={undefined}
-                    readOnly={undefined}
                     type="text"
                     value="http://www.google.com"
                   />
@@ -4075,16 +3890,12 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="contactName"
-          maxLength={undefined}
           name="contact_name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -4100,16 +3911,12 @@ exports[`ProjectForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="contactEmail"
-          maxLength={undefined}
           name="contact_email"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
