@@ -95,7 +95,4 @@ const mapDispatchToProps = dispatch => ({
 
 export { mapStateToProps }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FilesInput)
+export default connect(mapStateToProps, mapDispatchToProps)(FilesInput)

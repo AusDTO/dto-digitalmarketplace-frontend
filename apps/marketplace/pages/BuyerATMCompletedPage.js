@@ -93,7 +93,4 @@ const mapDispatchToProps = dispatch => ({
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BuyerATMCompletedPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMCompletedPage)

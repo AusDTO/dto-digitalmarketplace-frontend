@@ -220,22 +220,24 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
               </div>
             )}
-            {brief.lotSlug === 'rfx' && brief.contractExtensions && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Contract extensions</strong>
+            {brief.lotSlug === 'rfx' &&
+              brief.contractExtensions && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Contract extensions</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
-              </div>
-            )}
-            {brief.lotSlug === 'rfx' && brief.securityClearance && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Security clearance</strong>
+              )}
+            {brief.lotSlug === 'rfx' &&
+              brief.securityClearance && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Security clearance</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
-              </div>
-            )}
+              )}
           </div>
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
             <AUheading level="2" size="lg">
@@ -266,95 +268,98 @@ const Opportunity = props => {
             </AUheading>
           )}
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.workAlreadyDone}</p>}
-          {loggedIn && (canRespond || isBuyer) && (
-            <AUheading level="2" size="lg">
-              Additional information
-            </AUheading>
-          )}
-          {isBriefOwner && !isOpenToAll && (
-            <div className={styles.noticeBar}>
-              <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
-              <span>
-                Only invited sellers and other buyers can view attached documents. Only invited sellers can view
-                industry briefing details you provide.
-              </span>
-            </div>
-          )}
-          {loggedIn && (isOpenToAll || canRespond || isBuyer) && (
-            <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
-              {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
-                <ul>
-                  {brief.requirementsDocument.map(requirementsDocument => (
-                    <li key={requirementsDocument}>
-                      <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
-                    </li>
-                  ))}
-                  {brief.attachments.map(attachment => (
-                    <li key={attachment}>
-                      <a
-                        href={`/api/2/brief/${brief.id}/attachments/${attachment}`}
-                        aria-label={attachment}
-                        title={attachment}
-                      >
-                        {getTrimmedFilename(attachment)}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                <AUheading level="3" size="sm">
-                  What sellers need to submit
-                </AUheading>
-              )}
-              {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                <ul className={styles.submitList}>
-                  {brief.responseTemplate.map(responseTemplate => (
-                    <li key={responseTemplate}>
-                      Completed{' '}
-                      <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
-                    </li>
-                  ))}
-                  {brief.evaluationType.includes('Written proposal') && brief.proposalType.length > 0 && (
-                    <li>
-                      Written proposal, including:
-                      <ul>
-                        {brief.proposalType.map(proposalType => (
-                          <li key={proposalType}>{proposalType}</li>
-                        ))}
-                      </ul>
-                    </li>
+          {loggedIn &&
+            (canRespond || isBuyer) && (
+              <AUheading level="2" size="lg">
+                Additional information
+              </AUheading>
+            )}
+          {isBriefOwner &&
+            !isOpenToAll && (
+              <div className={styles.noticeBar}>
+                <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+                <span>
+                  Only invited sellers and other buyers can view attached documents. Only invited sellers can view
+                  industry briefing details you provide.
+                </span>
+              </div>
+            )}
+          {loggedIn &&
+            (isOpenToAll || canRespond || isBuyer) && (
+              <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
+                {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
+                  <ul>
+                    {brief.requirementsDocument.map(requirementsDocument => (
+                      <li key={requirementsDocument}>
+                        <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>
+                          Requirements document
+                        </a>
+                      </li>
+                    ))}
+                    {brief.attachments.map(attachment => (
+                      <li key={attachment}>
+                        <a
+                          href={`/api/2/brief/${brief.id}/attachments/${attachment}`}
+                          aria-label={attachment}
+                          title={attachment}
+                        >
+                          {getTrimmedFilename(attachment)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
+                  <AUheading level="3" size="sm">
+                    What sellers need to submit
+                  </AUheading>
+                )}
+                {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
+                  <ul className={styles.submitList}>
+                    {brief.responseTemplate.map(responseTemplate => (
+                      <li key={responseTemplate}>
+                        Completed{' '}
+                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
+                      </li>
+                    ))}
+                    {brief.evaluationType.includes('Written proposal') &&
+                      brief.proposalType.length > 0 && (
+                        <li>
+                          Written proposal, including:
+                          <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
+                        </li>
+                      )}
+                    {brief.evaluationType.includes('500 word responses to your criteria') && (
+                      <li>500 word responses to your criteria</li>
+                    )}
+                    {brief.evaluationType.includes('Case study') && <li>Case study</li>}
+                    {brief.evaluationType.includes('References') && <li>References</li>}
+                    {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
+                  </ul>
+                )}
+                {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
+                  <AUheading level="3" size="sm">
+                    Buyers will later request
+                  </AUheading>
+                )}
+                {(brief.evaluationType.includes('Demonstration') ||
+                  brief.evaluationType.includes('Presentation') ||
+                  brief.evaluationType.includes('Prototype')) && (
+                  <ul>
+                    {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
+                    {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
+                    {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
+                  </ul>
+                )}
+                {brief.industryBriefing &&
+                  (canRespond || isBriefOwner) && (
+                    <AUheading level="3" size="sm">
+                      Industry briefing
+                    </AUheading>
                   )}
-                  {brief.evaluationType.includes('500 word responses to your criteria') && (
-                    <li>500 word responses to your criteria</li>
-                  )}
-                  {brief.evaluationType.includes('Case study') && <li>Case study</li>}
-                  {brief.evaluationType.includes('References') && <li>References</li>}
-                  {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
-                </ul>
-              )}
-              {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
-                <AUheading level="3" size="sm">
-                  Buyers will later request
-                </AUheading>
-              )}
-              {(brief.evaluationType.includes('Demonstration') ||
-                brief.evaluationType.includes('Presentation') ||
-                brief.evaluationType.includes('Prototype')) && (
-                <ul>
-                  {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
-                  {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
-                  {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
-                </ul>
-              )}
-              {brief.industryBriefing && (canRespond || isBriefOwner) && (
-                <AUheading level="3" size="sm">
-                  Industry briefing
-                </AUheading>
-              )}
-              {brief.industryBriefing && (canRespond || isBriefOwner) && <p>{brief.industryBriefing}</p>}
-            </div>
-          )}
+                {brief.industryBriefing && (canRespond || isBriefOwner) && <p>{brief.industryBriefing}</p>}
+              </div>
+            )}
           <EvaluationCriteria
             title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
             evaluationCriteria={brief.evaluationCriteria}

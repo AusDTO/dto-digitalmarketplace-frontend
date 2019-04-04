@@ -108,9 +108,4 @@ const mapDispatchToProps = dispatch => ({
   getSupplierMessages: supplierCode => dispatch(getSupplierMessages(supplierCode))
 })
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MessagesPage)
-)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessagesPage))

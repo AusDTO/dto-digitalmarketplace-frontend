@@ -125,11 +125,6 @@ const mapDispatchToProps = dispatch => ({
   handleSignupSubmit: model => dispatch(handleSignupSubmit(model))
 })
 
-const SignupPage = withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SignupPageComponent)
-)
+const SignupPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(SignupPageComponent))
 
 export default SignupPage

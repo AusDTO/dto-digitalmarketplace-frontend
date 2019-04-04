@@ -80,11 +80,6 @@ const mapDispatchToProps = dispatch => ({
   sendInvite: (token, emailAddress) => dispatch(sendInvite(token, emailAddress))
 })
 
-const SendInvitePage = withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SendInvitePageComponent)
-)
+const SendInvitePage = withRouter(connect(mapStateToProps, mapDispatchToProps)(SendInvitePageComponent))
 
 export default SendInvitePage

@@ -433,9 +433,6 @@ const mapDispatchToProps = dispatch => ({
   getOpportunities: filters => dispatch(loadOpportunities(filters))
 })
 
-const OpportunitiesFilters = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OpportunitiesFiltersComponent)
+const OpportunitiesFilters = connect(mapStateToProps, mapDispatchToProps)(OpportunitiesFiltersComponent)
 
 export default OpportunitiesFilters

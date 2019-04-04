@@ -138,9 +138,4 @@ const mapResetDispatchToProps = dispatch => ({
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
 })
 
-export default withRouter(
-  connect(
-    mapResetStateToProps,
-    mapResetDispatchToProps
-  )(OpportunityPage)
-)
+export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(OpportunityPage))

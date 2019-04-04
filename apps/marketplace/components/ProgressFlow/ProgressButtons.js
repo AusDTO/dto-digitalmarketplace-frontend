@@ -7,30 +7,31 @@ const ProgressButtons = props => (
   <div className={styles.container}>
     <p>
       {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.startText}</AUbutton>}
-      {props.isLastStage && !props.isFirstStage && (
-        <span>
-          <AUbutton
-            onClick={e => {
-              e.preventDefault()
-              props.onPreview()
-            }}
-            as="secondary"
-            className={styles.button}
-          >
-            {props.previewText}
-          </AUbutton>
-          <AUbutton
-            type="submit"
-            disabled={!props.publishEnabled}
-            onClick={e => {
-              e.preventDefault()
-              props.onPublish()
-            }}
-          >
-            {props.publishText}
-          </AUbutton>
-        </span>
-      )}
+      {props.isLastStage &&
+        !props.isFirstStage && (
+          <span>
+            <AUbutton
+              onClick={e => {
+                e.preventDefault()
+                props.onPreview()
+              }}
+              as="secondary"
+              className={styles.button}
+            >
+              {props.previewText}
+            </AUbutton>
+            <AUbutton
+              type="submit"
+              disabled={!props.publishEnabled}
+              onClick={e => {
+                e.preventDefault()
+                props.onPublish()
+              }}
+            >
+              {props.publishText}
+            </AUbutton>
+          </span>
+        )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
       <AUbutton
         as="tertiary"

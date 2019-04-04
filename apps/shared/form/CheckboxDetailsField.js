@@ -88,7 +88,4 @@ export const mapStateToProps = (state, ownProps) => ({
   checked: get(state, ownProps.model)
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CheckboxDetailsField)
+export default connect(mapStateToProps, mapDispatchToProps)(CheckboxDetailsField)
