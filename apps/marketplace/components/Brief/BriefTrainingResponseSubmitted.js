@@ -15,11 +15,9 @@ const BriefTrainingResponseSubmitted = props => (
               Thanks, your response has been successfully submitted.
             </AUheading>
             <p>
-              The buyer receives all submitted responses once the brief closes
-              {props.brief.applicationsClosedAt && (
-                <span> on {format(new Date(props.brief.applicationsClosedAt), 'DD MMMM YYYY')}</span>
-              )}
-              .
+              The buyer receives all submitted responses once the brief closes{props.brief.applicationsClosedAt && (
+                <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
+              )}.
             </p>
           </AUpageAlert>
           <AUheading level="1" size="xl">

@@ -12,7 +12,7 @@ const BuyerATMCompleted = props => (
       <AUheading level="1" size="md">
         Your opportunity is now live.
       </AUheading>
-      <p>It will be open until {format(props.closingDate, 'D MMMM, YYYY')} at 6pm Canberra time.</p>
+      <p>It will be open until {format(props.closingDate, 'dddd D MMMM YYYY')} at 6pm Canberra time.</p>
     </AUpageAlert>
     <AUheading level="2" size="lg">
       What happens next?
