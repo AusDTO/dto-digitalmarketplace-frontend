@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
+import { LocalForm, Control } from 'react-redux-form';
 import { updateCaseStudyStatus, searchAssessments } from '../../redux/modules/casestudies'
 
 import './AssessmentList.css'
@@ -12,6 +14,16 @@ class AssessmentList extends React.Component {
       msg: '',
       updated: false,
       responseModalOpen: false
+    }
+  }
+  componentDidMount() {
+    const { 
+      meta,
+      onLoad
+    } = this.props
+    if (meta.searched_supplier_code) {
+      this.searchFieldRef.value = meta.searched_supplier_code
+      onLoad(meta.searched_supplier_code)
     }
   }
   toggleModal(application_id, msg) {
@@ -37,17 +49,17 @@ class AssessmentList extends React.Component {
 
     return (
       <div>
-        <input id="keyword" type="text" size="30" placeholder="id or name" onChange={onKeywordChange}/>
+        <input id="keyword" type="text" size="30" placeholder="Id or name" onChange={onKeywordChange} ref={ref => this.searchFieldRef = ref }/>
         <hr/>
       { 
         casestudies.map((cs, i) =>
         <div>
           <div className="row">
-            <div className="col-md-2"><b>supplier</b></div>
-            <div className="col-md-4"><b>title</b></div>
-            <div className="col-md-2"><b>domain</b></div>
-            <div className="col-md-2"><b>assessments</b></div>
-            <div className="col-md-2"><b>case study status</b></div>
+            <div className="col-md-2"><b>Supplier</b></div>
+            <div className="col-md-4"><b>Title</b></div>
+            <div className="col-md-2"><b>Domain</b></div>
+            <div className="col-md-2"><b>Assessments</b></div>
+            <div className="col-md-2"><b>Case study status</b></div>
           </div>
           <span key={cs.id}>
             <div className="row">
@@ -71,10 +83,10 @@ class AssessmentList extends React.Component {
             </div>
             <div className="row">
               <div>
-                <div className="col-md-2"><b>assessors</b></div>
-                <div className="col-md-4"><b>comment</b></div>
-                <div className="col-md-4"><b>criterias met</b></div>
-                <div className="col-md-2"><b>result</b></div>
+                <div className="col-md-2"><b>Assessors</b></div>
+                <div className="col-md-4"><b>Comment</b></div>
+                <div className="col-md-4"><b>Criteria met</b></div>
+                <div className="col-md-2"><b>Result</b></div>
               </div>
             </div>
             {cs.assessment_results && cs.assessment_count > 0 ? cs.assessment_results.map(ar =>
@@ -121,7 +133,11 @@ const mapDispatchToProps = dispatch => {
     },
     onKeywordChange: (event) => {
       dispatch(searchAssessments(event.target.value));
-    }
+
+    },
+    onLoad: (supplier_code) => {
+      dispatch(searchAssessments(supplier_code));
+    } 
   }
 }
 

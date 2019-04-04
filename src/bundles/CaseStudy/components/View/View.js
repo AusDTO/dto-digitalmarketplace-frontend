@@ -79,7 +79,9 @@ class View extends React.Component {
                     <label htmlFor="assessor_user_id">User</label>
                     <Control.select model=".assessor_user_id" id="assessor_user_id">
                       <option value="0">None</option>
-                      <option value="4854">Sam Lam</option>
+                      {Object.keys(meta.adminUserNameIdList).map(function(key,index) { 
+                        return <option value={key}>{meta.adminUserNameIdList[key]}</option>;})
+                      }
                     </Control.select>
                   </p>
                   <legend id="q-devices-owned">List of Assessments, delete unassessed ones</legend>
