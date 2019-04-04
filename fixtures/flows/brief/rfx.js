@@ -58,14 +58,6 @@ const fillAbout = async (role, locations) => {
   await util.typeInReactInput('organisation', { numberOfCharacters: 100 })
   await util.typeInReactInput('summary', { numberOfWords: 150 })
 
-  /*
-  for (let i; i < locations.length; i+=1) {
-    const location = locations[i]
-    await util.selectCheck(location)
-  }
-
-  */
-
   locations.forEach(async location => {
     await util.selectCheck(location)
   })
