@@ -12,11 +12,11 @@
     "plugin:react/recommended",
     "airbnb",
     "prettier",
-    "prettier/react",
+    "prettier/react"
   ],
   "rules": {
     "react/prop-types": "off",
-    "jsx-a11y/label-has-for": [ 2, {"required": {"some": [ "nesting", "id" ]},}],
+    "jsx-a11y/label-has-for": [ 2, {"required": {"some": [ "nesting", "id" ]}}],
     "prettier/prettier": ["error",{"singleQuote": true, "semi": false, "printWidth": 120}],
     "react/jsx-filename-extension": "off",
     "react/forbid-prop-types": "off",
@@ -24,7 +24,10 @@
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "react-native/no-inline-styles": 2,
-    "import/no-named-as-default": "off",
+    "import/no-named-as-default": "off"
+  },
+  "parserOptions": {
+    "sourceType": "module"
   },
   "globals": {
     "document": false,

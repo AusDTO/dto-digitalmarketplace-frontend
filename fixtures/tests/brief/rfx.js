@@ -1,14 +1,14 @@
 import { buyerLogin } from '../../flows/login/actions'
-import create from '../../flows/brief/atm'
+import create from '../../flows/brief/rfx.js'
 import startBrief from '../../flows/dashboard/buyer'
 
-describe('should be able to ask the market brief', () => {
-  it('should be able to ask the market brief', async () => {
-    await buyerLogin()
+describe('should be able to RFXs brief', () => {
+  it('should be able to RFXs brief', async () => {
     const now = Date.now()
+    await buyerLogin()
     await startBrief()
     await create({
-      title: `Ask the market ${now.valueOf()}`,
+      title: `RFXs ${now.valueOf()}`,
       locations: ['Australian Capital Territory', 'Tasmania']
     })
   })
