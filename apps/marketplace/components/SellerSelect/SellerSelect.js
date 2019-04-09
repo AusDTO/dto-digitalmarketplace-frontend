@@ -63,6 +63,7 @@ const SellerSelectView = props => (
       onChange={props.handleSearchChange}
       value={props.inputValue}
       className={props.className}
+      block
     />
     {props.showSearchButton && <AUbutton onClick={props.handleSearchClick}>Search</AUbutton>}
   </div>
