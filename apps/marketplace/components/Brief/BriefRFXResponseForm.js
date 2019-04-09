@@ -136,8 +136,9 @@ export class BriefRFXResponseForm extends Component {
                     return null
                   })}
                   <AUheading level="2" size="sm">
-                    Additional documents
+                    Additional documents (optional)
                   </AUheading>
+                  <p>If requested by the buyer, you can upload additional documents.</p>
                   {this.state.fileCount > 0 &&
                     range(this.state.fileCount - this.getBriefEvalualtionTypesForUpload().length).map(i => {
                       const index = this.getBriefEvalualtionTypesForUpload().length + i

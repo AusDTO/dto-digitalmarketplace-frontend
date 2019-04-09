@@ -155,8 +155,9 @@ export class BriefATMResponseForm extends Component {
                     />
                   )}
                   <AUheading level="2" size="sm">
-                    Additional documents
+                    Additional documents (optional)
                   </AUheading>
+                  <p>If requested by the buyer, you can upload additional documents.</p>
                   {range(this.state.fileCount).map(i => {
                     const index = briefRequiresDocumentUpload(brief) ? i + 1 : i
                     return (
