@@ -73,14 +73,13 @@ class OpportunitiesPage extends Component {
       <div>
         <OpportunitiesHeader initialFilterValues={this.queryStringValues} updateQueryString={this.updateQueryString} />
         {currentlySending ? <LoadingIndicatorFullPage /> : <Opportunities opportunities={opportunities} />}
-        {this.getPageCount() > 1 &&
-          !currentlySending && (
-            <OpportunitiesPagination
-              lastPage={this.getPageCount()}
-              currentPage={this.props.currentPage}
-              onPageClick={this.props.setCurrentPage}
-            />
-          )}
+        {this.getPageCount() > 1 && !currentlySending && (
+          <OpportunitiesPagination
+            lastPage={this.getPageCount()}
+            currentPage={this.props.currentPage}
+            onPageClick={this.props.setCurrentPage}
+          />
+        )}
       </div>
     )
   }
@@ -109,4 +108,9 @@ const mapDispatchToProps = dispatch => ({
   setCurrentPage: page => dispatch(setCurrentPage(page))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OpportunitiesPage))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(OpportunitiesPage)
+)

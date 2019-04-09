@@ -78,6 +78,11 @@ const mapDispatchToProps = dispatch => ({
   createUser: (token, emailAddress, password) => dispatch(createUser(token, emailAddress, password))
 })
 
-const CreateUserPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUserPageComponent))
+const CreateUserPage = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CreateUserPageComponent)
+)
 
 export default CreateUserPage

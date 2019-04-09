@@ -85,4 +85,9 @@ const mapDispatchToProps = dispatch => ({
   setError: message => dispatch(setErrorMessage(message))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerBriefOverviewPage))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BuyerBriefOverviewPage)
+)

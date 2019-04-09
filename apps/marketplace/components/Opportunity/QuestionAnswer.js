@@ -19,12 +19,11 @@ const QuestionAnswer = props => (
       </div>
     ))}
     {props.questions.length === 0 && <p className={styles.noqs}>No questions have been asked or answered yet.</p>}
-    {props.showAskQuestionInfo &&
-      !props.clarificationQuestionsAreClosed && (
-        <p>
-          <a href={`/sellers/opportunities/${props.briefId}/ask-a-question`}>Ask a question</a>
-        </p>
-      )}
+    {props.showAskQuestionInfo && !props.clarificationQuestionsAreClosed && (
+      <p>
+        <a href={`/sellers/opportunities/${props.briefId}/ask-a-question`}>Ask a question</a>
+      </p>
+    )}
   </div>
 )
 

@@ -7,14 +7,13 @@ import styles from './OpportunityInfoCard.scss'
 const OpportunityInfoCard = props => (
   <div className={styles.container}>
     <div className="row">
-      {!props.isOpenToAll &&
-        !props.isOpenToCategory && (
-          <div className="col-xs-6">
-            <strong className={styles.stat}>{props.sellersInvited}</strong>
-            <br />
-            seller{props.sellersInvited === 1 ? '' : 's'} invited
-          </div>
-        )}
+      {!props.isOpenToAll && !props.isOpenToCategory && (
+        <div className="col-xs-6">
+          <strong className={styles.stat}>{props.sellersInvited}</strong>
+          <br />
+          seller{props.sellersInvited === 1 ? '' : 's'} invited
+        </div>
+      )}
       <div className="col-xs-6">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
@@ -24,117 +23,109 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isOpen &&
-          props.closingDate && (
-            <div>
-              <span>Closes in</span>
-              <br />
-              <strong className={styles.stat}>
-                <ClosedDate countdown date={props.closingDate} />
-              </strong>
-            </div>
-          )}
+        {props.isOpen && props.closingDate && (
+          <div>
+            <span>Closes in</span>
+            <br />
+            <strong className={styles.stat}>
+              <ClosedDate countdown date={props.closingDate} />
+            </strong>
+          </div>
+        )}
       </div>
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {!props.isOpen &&
-          props.briefStatus !== 'draft' && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
-        {props.isOpen &&
-          !props.loggedIn && (
-            <span>
-              {props.isOpenToAll ? (
-                <span>
-                  <p>Any assessed seller can respond.</p>
-                  <p>
-                    <a
-                      href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
-                      className="au-btn au-btn--block"
-                    >
-                      How to respond
-                    </a>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                      )}`}
-                      className="au-btn au-btn--secondary au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              ) : (
-                <span>
-                  <p>Only signed in {!props.isOpenToCategory && 'invited'} sellers can apply.</p>
-                  <p>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                      )}`}
-                      className="au-btn au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              )}
-            </span>
-          )}
-        {props.isBuyer &&
-          !props.isBriefOwner && (
-            <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
-              Contact the buyer
-            </a>
-          )}
-        {props.isOpen &&
-          props.loggedIn &&
-          props.isApplicant && (
-            <span>
-              <p className={styles.invitedStatus}>
-                Only approved sellers can apply.
-                {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
-              </p>
-              {!props.isAwaitingApplicationAssessment && (
+        {!props.isOpen && props.briefStatus !== 'draft' && (
+          <p className={styles.invitedStatus}>This opportunity has closed.</p>
+        )}
+        {props.isOpen && !props.loggedIn && (
+          <span>
+            {props.isOpenToAll ? (
+              <span>
+                <p>Any assessed seller can respond.</p>
                 <p>
-                  <a href="/sellers/application" className="au-btn au-btn--block">
-                    Continue application
+                  <a
+                    href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
+                    className="au-btn au-btn--block"
+                  >
+                    How to respond
+                  </a>
+                  <a
+                    href={`/login?next=${encodeURIComponent(
+                      `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                    )}`}
+                    className="au-btn au-btn--secondary au-btn--block"
+                  >
+                    Login
                   </a>
                 </p>
-              )}
-            </span>
-          )}
-        {props.isOpen &&
-          props.loggedIn &&
-          props.isRecruiterOnly && (
-            <span>
-              <p className={styles.invitedStatus}>
-                Only approved sellers can apply.
-                {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
-                {!props.isAwaitingApplicationAssessment && (
-                  <span>
-                    {' '}
-                    You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
-                    to be able to apply for this brief.
-                    {props.isOpenToCategory &&
-                      !props.hasChosenBriefCategory && (
-                        <span>
-                          {' '}
-                          You must also add {props.category} as a category you provide services for to apply for this
-                          brief.
-                        </span>
-                      )}
-                  </span>
-                )}
-              </p>
-              {!props.isAwaitingApplicationAssessment && (
+              </span>
+            ) : (
+              <span>
+                <p>Only signed in {!props.isOpenToCategory && 'invited'} sellers can apply.</p>
                 <p>
-                  <a href="/sellers/edit" className="au-btn au-btn--block">
-                    Edit application
+                  <a
+                    href={`/login?next=${encodeURIComponent(
+                      `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                    )}`}
+                    className="au-btn au-btn--block"
+                  >
+                    Login
                   </a>
                 </p>
+              </span>
+            )}
+          </span>
+        )}
+        {props.isBuyer && !props.isBriefOwner && (
+          <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
+            Contact the buyer
+          </a>
+        )}
+        {props.isOpen && props.loggedIn && props.isApplicant && (
+          <span>
+            <p className={styles.invitedStatus}>
+              Only approved sellers can apply.
+              {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+            </p>
+            {!props.isAwaitingApplicationAssessment && (
+              <p>
+                <a href="/sellers/application" className="au-btn au-btn--block">
+                  Continue application
+                </a>
+              </p>
+            )}
+          </span>
+        )}
+        {props.isOpen && props.loggedIn && props.isRecruiterOnly && (
+          <span>
+            <p className={styles.invitedStatus}>
+              Only approved sellers can apply.
+              {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+              {!props.isAwaitingApplicationAssessment && (
+                <span>
+                  {' '}
+                  You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
+                  to be able to apply for this brief.
+                  {props.isOpenToCategory && !props.hasChosenBriefCategory && (
+                    <span>
+                      {' '}
+                      You must also add {props.category} as a category you provide services for to apply for this brief.
+                    </span>
+                  )}
+                </span>
               )}
-            </span>
-          )}
+            </p>
+            {!props.isAwaitingApplicationAssessment && (
+              <p>
+                <a href="/sellers/edit" className="au-btn au-btn--block">
+                  Edit application
+                </a>
+              </p>
+            )}
+          </span>
+        )}
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
@@ -160,22 +151,20 @@ const OpportunityInfoCard = props => (
                     {props.isAwaitingDomainAssessment && (
                       <span> Your application for this category is currently being assessed.</span>
                     )}
-                    {!props.isAwaitingDomainAssessment &&
-                      props.hasBeenAssessedForBrief && (
-                        <span> You have already submitted a request for assessment against this brief.</span>
-                      )}
-                  </p>
-                  {!props.isAwaitingDomainAssessment &&
-                    !props.hasBeenAssessedForBrief && (
-                      <p>
-                        <a
-                          href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
-                          className="au-btn au-btn--block"
-                        >
-                          Request assessment
-                        </a>
-                      </p>
+                    {!props.isAwaitingDomainAssessment && props.hasBeenAssessedForBrief && (
+                      <span> You have already submitted a request for assessment against this brief.</span>
                     )}
+                  </p>
+                  {!props.isAwaitingDomainAssessment && !props.hasBeenAssessedForBrief && (
+                    <p>
+                      <a
+                        href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
+                        className="au-btn au-btn--block"
+                      >
+                        Request assessment
+                      </a>
+                    </p>
+                  )}
                 </span>
               ) : (
                 <span>
@@ -208,43 +197,38 @@ const OpportunityInfoCard = props => (
               <p className={styles.invitedStatus}>
                 Only sellers with an assessed category can apply.
                 {props.isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
-                {!props.isAwaitingDomainAssessment &&
-                  props.hasBeenAssessedForBrief && (
-                    <span> You have already submitted a request for assessment against this brief.</span>
-                  )}
-              </p>
-              {!props.isAwaitingDomainAssessment &&
-                !props.hasBeenAssessedForBrief && (
-                  <p>
-                    <a
-                      href={`/sellers/opportunities/${props.briefId}/assessment/choose`}
-                      className="au-btn au-btn--block"
-                    >
-                      Request assessment
-                    </a>
-                  </p>
+                {!props.isAwaitingDomainAssessment && props.hasBeenAssessedForBrief && (
+                  <span> You have already submitted a request for assessment against this brief.</span>
                 )}
+              </p>
+              {!props.isAwaitingDomainAssessment && !props.hasBeenAssessedForBrief && (
+                <p>
+                  <a
+                    href={`/sellers/opportunities/${props.briefId}/assessment/choose`}
+                    className="au-btn au-btn--block"
+                  >
+                    Request assessment
+                  </a>
+                </p>
+              )}
             </span>
           )}
-        {props.isOpen &&
-          props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
-          props.canRespond && (
-            <div>
-              {props.hasResponded ? (
-                <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
-              ) : (
-                <div>
-                  <a
-                    href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
-                    className={`${styles.button} au-btn`}
-                  >
-                    Apply for opportunity
-                  </a>
-                </div>
-              )}
-            </div>
-          )}
+        {props.isOpen && props.isApprovedSeller && !props.isRecruiterOnly && props.canRespond && (
+          <div>
+            {props.hasResponded ? (
+              <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
+            ) : (
+              <div>
+                <a
+                  href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
+                  className={`${styles.button} au-btn`}
+                >
+                  Apply for opportunity
+                </a>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   </div>
