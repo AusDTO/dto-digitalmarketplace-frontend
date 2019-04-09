@@ -132,6 +132,7 @@ const BriefATMResponseForm = ({
                     requiredFile: 'You must upload your written proposal'
                   }}
                   uploading={uploading}
+                  accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                 />
               )}
               <Textfield
