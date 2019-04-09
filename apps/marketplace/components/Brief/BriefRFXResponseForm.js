@@ -70,6 +70,7 @@ const BriefRFXResponseForm = ({
                           requiredFile: 'You must upload your written proposal'
                         }}
                         uploading={uploading}
+                        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                       />
                     )
                   } else if (evaluationType === 'Response template') {
@@ -91,6 +92,7 @@ const BriefRFXResponseForm = ({
                           requiredFile: 'You must upload your completed response template'
                         }}
                         uploading={uploading}
+                        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                       />
                     )
                   }
