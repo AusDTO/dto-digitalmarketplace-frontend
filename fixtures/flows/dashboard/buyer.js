@@ -2,7 +2,7 @@ import * as util from '../../flows/utils'
 
 const startBrief = async () => {
   await util.clickLink('Dashboard')
-  await util.clickLink('Create new request')
+  await util.clickButton('Create new request')
 }
 
 export default startBrief
