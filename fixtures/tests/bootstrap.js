@@ -25,5 +25,7 @@ beforeEach(async () => {
 })
 
 afterEach(async () => {
-  await global.browser.close()
+  if (global.browser) {
+    await global.browser.close()
+  }
 })
