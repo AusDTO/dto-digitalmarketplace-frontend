@@ -9,7 +9,8 @@ const opts = {
   pipe: true
 }
 
-console.log(process.env)
+console.log(process.env.FRONTEND_ADDRESS)
+console.log(process.env.HEADLESS)
 
 // expose variables
 before(async () => {
