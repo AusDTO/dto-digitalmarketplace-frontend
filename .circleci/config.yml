@@ -81,7 +81,8 @@ jobs:
             ./scripts/ci-notify-approval.sh
 
   run_automation_tests:
-    <<: *deploy_docker
+    docker:
+      - image: buildkite/puppeteer:latest
     steps:
       - attach_workspace:
           at: .
