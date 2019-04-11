@@ -48,9 +48,7 @@ export class BriefResponseSupplierError extends Component {
                 <h4 className="au-display-sm">Please update your profile with:</h4>
                 <ul>
                   {Array.isArray(app.errorMessage) &&
-                    app.errorMessage.map((err, i) => {
-                      return <li key={i}>{this.formatMessage(err, i)}</li>
-                    })}
+                    app.errorMessage.map((err, i) => <li key={`${err.message}`}>{this.formatMessage(err, i)}</li>)}
                 </ul>
               </AUpageAlert>
               <br />
