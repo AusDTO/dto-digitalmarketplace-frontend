@@ -81,7 +81,8 @@ jobs:
             ./scripts/ci-notify-approval.sh
 
   run_automation_tests:
-    <<: *deploy_docker
+    docker:
+      - image: circleci/node:10.15.3-stretch-browsers
     steps:
       - attach_workspace:
           at: .
@@ -97,7 +98,7 @@ jobs:
             export BUYER_EMAIL=$AUTOMATION_BUYER_EMAIL_STAGING
             export BUYER_PASSWORD=$AUTOMATION_BUYER_PASSWORD_STAGING
             export TYPE_INPUT=true
-            export SHORTEN_TYPED_INPUT=false
+            export SHORTEN_TYPED_INPUT=true
             export USE_CLIPBOARD_FOR_TYPE_INPUT=false
             export HEADLESS=true
             export IGNORE_MULTIPLE_LINKS=true
