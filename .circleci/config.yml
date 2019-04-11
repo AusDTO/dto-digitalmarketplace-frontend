@@ -81,8 +81,7 @@ jobs:
             ./scripts/ci-notify-approval.sh
 
   run_automation_tests:
-    docker:
-      - image: alekzonder/puppeteer:latest
+    <<: *deploy_docker
     steps:
       - attach_workspace:
           at: .
