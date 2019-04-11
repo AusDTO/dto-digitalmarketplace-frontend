@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import classNames from 'classnames';
+import { validURL } from '../../helpers'
 
 const LiteHeader = (props) => {
 
@@ -32,7 +33,7 @@ const LiteHeader = (props) => {
         </div>
 
         <p>
-          <a href={website} target="_blank" rel="external">Visit seller's website</a>
+          {validURL(website) && <a href={website} target="_blank" rel="external">Visit seller's website</a>}
         </p>
       </article>
       <article className="col-xs-12 col-sm-5 col-sm-push-1">

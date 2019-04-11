@@ -1,32 +1,26 @@
-import puppeteer from 'puppeteer';
-import { expect } from 'chai';
-import * as utils from '../flows/utils';
-
+import puppeteer from 'puppeteer'
+import { expect } from 'chai'
 
 // puppeteer options
 const opts = {
-    headless: process.env.HEADLESS == 'false' ? false : true,
-    slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
-    defaultViewport: null,
-    pipe: true
-};
+  headless: process.env.HEADLESS !== 'false',
+  slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
+  defaultViewport: null,
+  pipe: true
+}
 
 // expose variables
 before(async () => {
-    global.expect = expect;
-    
-    for (let f in utils) {
-        global[f] = utils[f];
-    }
-});
+  global.expect = expect
+})
 
 beforeEach(async () => {
-    global.browser = await puppeteer.launch(opts);
-    let page = await browser.newPage();
-    global.page = page
-    await page.goto(process.env.FRONTEND_ADDRESS);
-});
+  global.browser = await puppeteer.launch(opts)
+  const page = await global.browser.newPage()
+  global.page = page
+  await page.goto(process.env.FRONTEND_ADDRESS)
+})
 
 afterEach(async () => {
-    await browser.close();
-});
+  await global.browser.close()
+})
