@@ -80,6 +80,19 @@ jobs:
           command: |
             ./scripts/ci-notify-approval.sh
 
+  run_automation_tests:
+    <<: *deploy_docker
+    steps:
+      - attach_workspace:
+          at: .
+      - checkout
+      - run: 
+          name: Run Tests
+          command: |
+            cd fixtures
+            npm install
+            npm test
+
   deploy_to_rc:
     <<: *deploy_docker
     steps:
@@ -196,3 +209,9 @@ workflows:
               only: /[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
+      - run_automation_tests:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: schedule-auto-test
