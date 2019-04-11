@@ -1,7 +1,7 @@
 import React, {createElement} from 'react';
 
 export const validURL = val => {
-  return val.match('^https?://')
+  return val.match('^(https?://|\/)')
 }
 
 export const newline = (val) => {
