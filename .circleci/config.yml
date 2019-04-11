@@ -82,7 +82,7 @@ jobs:
 
   run_automation_tests:
     docker:
-      - image: buildkite/puppeteer:latest
+      - image: alekzonder/puppeteer:latest
     steps:
       - attach_workspace:
           at: .
