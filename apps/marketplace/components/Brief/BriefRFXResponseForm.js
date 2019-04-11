@@ -109,6 +109,7 @@ export class BriefRFXResponseForm extends Component {
                             requiredFile: 'You must upload your written proposal'
                           }}
                           uploading={uploading}
+                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                         />
                       )
                     } else if (evaluationType === 'Response template') {
@@ -130,6 +131,7 @@ export class BriefRFXResponseForm extends Component {
                             requiredFile: 'You must upload your completed response template'
                           }}
                           uploading={uploading}
+                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                         />
                       )
                     }
@@ -153,6 +155,7 @@ export class BriefRFXResponseForm extends Component {
                           url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                           api={dmapi}
                           fileId={index}
+                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                         />
                       )
                     })}

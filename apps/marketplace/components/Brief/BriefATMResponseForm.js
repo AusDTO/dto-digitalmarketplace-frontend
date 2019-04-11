@@ -152,6 +152,7 @@ export class BriefATMResponseForm extends Component {
                         requiredFile: 'You must upload your written proposal'
                       }}
                       uploading={uploading}
+                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                     />
                   )}
                   <AUheading level="2" size="sm">
@@ -171,6 +172,7 @@ export class BriefATMResponseForm extends Component {
                         url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                         api={dmapi}
                         fileId={index}
+                        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                       />
                     )
                   })}
