@@ -4,7 +4,7 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 import head from 'lodash/head';
-import {newline} from '../../helpers';
+import { newline, validURL } from '../../helpers';
 
 import SimpleAccordion  from '../SimpleAccordion';
 import Icon             from '../Icon';
@@ -132,21 +132,27 @@ const Body = (props) => {
               return (
                 <div key={`product.${i}`} styleName="product">
                   <div className="col-xs-12">
-                    <h3 className="au-display-md" styleName="product-heading">
-                      <a  href={product.website} target="_blank"
-                        rel="external">{product.name}</a>
-                    </h3>
+                    {validURL(product.website) && (
+                      <h3 className="au-display-md" styleName="product-heading">
+                        <a  href={product.website} target="_blank"
+                          rel="external">{product.name}</a>
+                      </h3>
+                    )}
                     <p className="freetext">
                       {newline(product.summary)}
                     </p>
-                    <p>
-                      <a  href={product.pricing} target="_blank"
-                        rel="external">Product pricing</a>
-                    </p>
-                    <p>
-                      <a  href={product.support} target="_blank"
-                        rel="external">Product support</a>
-                    </p>
+                    {validURL(product.pricing) && (
+                      <p>
+                        <a  href={product.pricing} target="_blank"
+                          rel="external">Product pricing</a>
+                      </p>
+                    )}
+                    {validURL(product.support) && (
+                      <p>
+                        <a  href={product.support} target="_blank"
+                          rel="external">Product support</a>
+                      </p>
+                    )}
                   </div>
                   {i < Object.keys(products).length - 1 && (<hr styleName="productHr"/>)}
                 </div>
