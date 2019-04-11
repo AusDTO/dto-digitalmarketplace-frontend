@@ -5,8 +5,7 @@ import { expect } from 'chai'
 const opts = {
   headless: process.env.HEADLESS !== 'false',
   slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
-  defaultViewport: null,
-  pipe: true
+  defaultViewport: null
 }
 
 console.log(process.env.FRONTEND_ADDRESS)
