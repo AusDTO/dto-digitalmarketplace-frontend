@@ -9,6 +9,8 @@ const opts = {
   pipe: true
 }
 
+console.log(process.env)
+
 // expose variables
 before(async () => {
   global.expect = expect
