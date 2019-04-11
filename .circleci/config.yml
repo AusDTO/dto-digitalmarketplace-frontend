@@ -91,6 +91,19 @@ jobs:
           command: |
             cd fixtures
             npm install
+            export FRONTEND_ADDRESS=http://dm-dev.apps.y.cld.gov.au
+            export SELLER_EMAIL=$AUTOMATION_SELLER_EMAIL_STAGING
+            export SELLER_PASSWORD=$AUTOMATION_SELLER_PASSWORD_STAGING
+            export BUYER_EMAIL=$AUTOMATION_BUYER_EMAIL_STAGING
+            export BUYER_PASSWORD=$AUTOMATION_BUYER_PASSWORD_STAGING
+            export TYPE_INPUT=true
+            export SHORTEN_TYPED_INPUT=false
+            export USE_CLIPBOARD_FOR_TYPE_INPUT=false
+            export SLOW_MO=100
+            export HEADLESS=true
+            export IGNORE_MULTIPLE_LINKS=true
+            export RFX_PANEL_CATEGORY=[3]
+            export RFX_SELLER_NAME=[xyz]
             npm test
 
   deploy_to_rc:
