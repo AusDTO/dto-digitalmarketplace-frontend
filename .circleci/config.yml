@@ -100,7 +100,6 @@ jobs:
             export TYPE_INPUT=true
             export SHORTEN_TYPED_INPUT=false
             export USE_CLIPBOARD_FOR_TYPE_INPUT=false
-            export SLOW_MO=100
             export HEADLESS=true
             export IGNORE_MULTIPLE_LINKS=true
             export RFX_PANEL_CATEGORY=[3]
