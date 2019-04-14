@@ -223,9 +223,9 @@ workflows:
             branches:
               ignore: /.*/
   automation_test:
-    # triggers:
-      # - schedule:
-          # cron: "0 * * * *"
+    triggers:
+      - schedule:
+          cron: "0 * * * *"
     jobs:
       - run_automation_tests:
           filters:
