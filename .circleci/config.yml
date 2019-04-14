@@ -97,8 +97,8 @@ jobs:
             export SELLER_PASSWORD=$AUTOMATION_SELLER_PASSWORD_STAGING
             export BUYER_EMAIL=$AUTOMATION_BUYER_EMAIL_STAGING
             export BUYER_PASSWORD=$AUTOMATION_BUYER_PASSWORD_STAGING
-            export TYPE_INPUT=true
-            export SHORTEN_TYPED_INPUT=true
+            export TYPE_INPUT=false
+            export SHORTEN_TYPED_INPUT=false
             export USE_CLIPBOARD_FOR_TYPE_INPUT=false
             export HEADLESS=true
             export IGNORE_MULTIPLE_LINKS=true
@@ -222,6 +222,8 @@ workflows:
               only: /[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
+  automation_test:
+    jobs:
       - run_automation_tests:
           filters:
             tags:
