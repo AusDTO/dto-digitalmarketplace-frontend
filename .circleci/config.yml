@@ -223,10 +223,13 @@ workflows:
             branches:
               ignore: /.*/
   automation_test:
-    jobs:
-      - run_automation_tests:
+    triggers:
+      - schedule:
+          cron: "0 * * * *"
           filters:
             tags:
               ignore: /.*/
             branches:
               only: schedule-auto-test
+    jobs:
+      - run_automation_tests:
