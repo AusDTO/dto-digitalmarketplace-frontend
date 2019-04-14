@@ -5,11 +5,7 @@ import { expect } from 'chai'
 const opts = {
   headless: process.env.HEADLESS !== 'false',
   slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
-  defaultViewport: null//,
-  // args: [
-  //   '--no-sandbox',
-  //   '--disable-setuid-sandbox'
-  // ]
+  defaultViewport: null
 }
 
 console.log(process.env.FRONTEND_ADDRESS)
