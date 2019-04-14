@@ -226,6 +226,11 @@ workflows:
     triggers:
       - schedule:
           cron: "0 * * * *"
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: schedule-auto-test
     jobs:
       - run_automation_tests:
           filters:
