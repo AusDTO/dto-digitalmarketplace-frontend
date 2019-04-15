@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty';
-import { replaceMarkup } from '../../helpers'
+import { replaceMarkup, validURL } from '../../helpers'
 
 import Badges from '../Badges';
 
@@ -17,13 +17,13 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
           <h2 className="display-4">
             <span>
               {view === "products" ?
-                <a href={link} target="_blank" rel="external">{title}</a> :
-                <a href={link}>{title}</a> }
+                validURL(link) && <a href={link} target="_blank" rel="external">{title}</a> :
+                validURL(link) && <a href={link}>{title}</a> }
             </span>
           </h2>
 
           {view !== 'sellers' && <div styleName="author">
-            by <a href={supplier.profile_url}>{supplier.name}</a>
+            by {validURL(supplier.profile_url) && <a href={supplier.profile_url}>{supplier.name}</a>}
           </div>}
           {!isEmpty(badges) && (
             <div styleName="badges">
@@ -35,10 +35,10 @@ const Card = ({title, link, badges = {}, description, products = {}, services = 
           <div styleName="product-links">
             <div className="row">
                <span className="col-xs-6 col-sm-6">
-                 <a href={pricing} target="_blank" rel="external" styleName="product-link-item">Product pricing</a>
+                 {validURL(pricing) && <a href={pricing} target="_blank" rel="external" styleName="product-link-item">Product pricing</a>}
                </span>
               <span className="col-xs-6 col-sm-6">
-                 <a href={supplier.support_url} target="_blank" rel="external" styleName="product-link-item">Product support</a>
+                 {validURL(supplier.support_url) && <a href={supplier.support_url} target="_blank" rel="external" styleName="product-link-item">Product support</a>}
                </span>
             </div>
           </div>
