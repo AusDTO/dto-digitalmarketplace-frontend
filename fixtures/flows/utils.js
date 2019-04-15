@@ -27,13 +27,15 @@ export const getElementHandle = async xpath => {
 export const selectCheck = async value => {
   console.log(`Selecting check box "//input[@value="${value}"]"`)
   const radio = await getElementHandle(`//input[@value="${value}"]`)
-  await radio.press('Space')
+  // await radio.press('Space')
+  await radio.click()
 }
 
 export const selectRadio = async value => {
   console.log(`Selecting radio "//input[@value="${value}"]"`)
   const radio = await getElementHandle(`//input[@value="${value}"]`)
-  await radio.press('Space')
+  // await radio.press('Space')
+  await radio.click()
 }
 
 export const words = (numberOfWords, numberOfCharacters) => {

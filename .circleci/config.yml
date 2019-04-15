@@ -224,12 +224,12 @@ workflows:
             branches:
               ignore: /.*/
   automation_test:
-    triggers:
-      - schedule:
-          cron: "0 9 * * 2,4"
-          filters:
-            branches:
-              only: master
+    # triggers:
+    #   - schedule:
+    #       cron: "0 9 * * 2,4"
+    #       filters:
+    #         branches:
+    #           only: master
     jobs:
       - run_automation_tests:
           filters:
