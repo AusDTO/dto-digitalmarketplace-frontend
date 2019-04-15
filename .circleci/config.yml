@@ -228,8 +228,6 @@ workflows:
       - schedule:
           cron: "0 9 * * 2,4"
           filters:
-            tags:
-              ignore: /.*/
             branches:
               only: schedule-auto-test
     jobs:
