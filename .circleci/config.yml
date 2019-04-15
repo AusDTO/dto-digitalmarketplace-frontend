@@ -225,7 +225,7 @@ workflows:
   automation_test:
     triggers:
       - schedule:
-          cron: "*/15 * * * *"
+          cron: "0,20,40 * * * *"
           filters:
             tags:
               ignore: /.*/
