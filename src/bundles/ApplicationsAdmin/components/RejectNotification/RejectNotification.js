@@ -66,9 +66,13 @@ export default class RejectedNotificationForm extends Component {
           </b>
           <p>
             <pre>
-            Thanks for your interest in <em>opportunity name</em> which was posted on the Digital Marketplace, and for requesting assessment.
-
-            We've now reviewed your case study against our assessment criteria for <em>domain name</em>.
+              Hi <em>supplier name</em> team,
+              
+              We have completed an assessment you requested under <em>domain name</em> to demonstrate the assessment criteria.
+              
+              Assessment result: Not approved
+              
+              This means you are not currently eligible to respond to opportunities in this category.
             </pre>
           </p>
           <b>
@@ -80,20 +84,13 @@ export default class RejectedNotificationForm extends Component {
           </b>
           <p>
             <pre>
-            This means that you will not be able to respond to this opportunity or others in the <em>domain name</em> area. If you want to provide this service through the marketplace in the future, you will need to be assessed again.
-            
-            Therefore, please update your current case study, or remove it and replace it with a more comprehensive case study. You can then request assessment again for a future opportunity. Please note that we will not reassess a case study for this particular opportunity.
-            
-            We strongly recommend you read our support guides before updating your case study, to understand the process and what is required:
-            
-            - create a compelling case study to showcase your digital expertise
-            - understand the assessment criteria for each digital service
-            - see the range of digital areas of expertise in the marketplace
-            - read the useful Seller guide and FAQs to find out more
-            
-            Thanks,
-            
-            The Digital Marketplace team
+              If you wish to provide services under <em>domain name</em> through the Marketplace in the future, you must submit a new or updated case study for assessment.
+              
+              Please read our seller guide and consider the assessment criteria for the category before updating your case study.
+                            
+              Thank you
+              
+              The Digital Marketplace team
             </pre>
           </p>
         </label>

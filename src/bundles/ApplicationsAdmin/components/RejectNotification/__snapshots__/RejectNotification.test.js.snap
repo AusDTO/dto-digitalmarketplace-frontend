@@ -15,15 +15,15 @@ exports[`RejectedNotificationForm with required attributes 1`] = `
     </b>
     <p>
       <pre>
-        Thanks for your interest in 
+        Hi 
         <em>
-          opportunity name
+          supplier name
         </em>
-         which was posted on the Digital Marketplace, and for requesting assessment. We've now reviewed your case study against our assessment criteria for 
+         team, We have completed an assessment you requested under 
         <em>
           domain name
         </em>
-        .
+         to demonstrate the assessment criteria. Assessment result: Not approved This means you are not currently eligible to respond to opportunities in this category.
       </pre>
     </p>
     <b>
@@ -31,18 +31,23 @@ exports[`RejectedNotificationForm with required attributes 1`] = `
     </b>
     <textarea
       onChange={[Function]}
-      value="Unfortunately your case study does not meet our requirements as XXXX."
+      value="The  case study did not meet the requirements for the following  reason/s:
+
+• The case study provided information on what was done but requires more detail on how it was done. This made it difficult to relate service delivery back to the criteria for this area of expertise.
+• The case study did not clearly establish what role the seller had in the outcomes delivered and described in the case study.
+• An assessment of the case study and the pricing provided does not indicate value for money to buyers seeking similar services under the Digital Marketplace panel.
+• We recommend to check the overall quality of your case study prior to resubmitting your case study. Please note: Your case study is open to view when registered government buyers search for suitable sellers for their opportunities."
     />
     <b>
       Followed by:
     </b>
     <p>
       <pre>
-        This means that you will not be able to respond to this opportunity or others in the 
+        If you wish to provide services under 
         <em>
           domain name
         </em>
-         area. If you want to provide this service through the marketplace in the future, you will need to be assessed again. Therefore, please update your current case study, or remove it and replace it with a more comprehensive case study. You can then request assessment again for a future opportunity. Please note that we will not reassess a case study for this particular opportunity. We strongly recommend you read our support guides before updating your case study, to understand the process and what is required: - create a compelling case study to showcase your digital expertise - understand the assessment criteria for each digital service - see the range of digital areas of expertise in the marketplace - read the useful Seller guide and FAQs to find out more Thanks, The Digital Marketplace team
+         through the Marketplace in the future, you must submit a new or updated case study for assessment. Please read our seller guide and consider the assessment criteria for the category before updating your case study. Thank you The Digital Marketplace team
       </pre>
     </p>
   </label>
