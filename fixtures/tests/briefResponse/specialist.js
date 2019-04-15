@@ -22,7 +22,7 @@ describe('should be able to create and respond to specialist brief', () => {
   })
   it(`should be able to respond to ${areaOfExpertise} brief`, async () => {
     await sellerLogin()
-    for (let i = 0; i < 3; i = +1) {
+    for (let i = 0; i < 3; i += 1) {
       await navigate()
       await selectBrief(title)
       await applyForSpecialist(i)
