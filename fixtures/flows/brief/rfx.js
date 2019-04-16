@@ -1,7 +1,6 @@
 import * as util from '../../flows/utils'
 
 const clickSaveContinue = async () => {
-  console.log('here')
   await util.clickButton('Save and continue')
 }
 
