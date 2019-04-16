@@ -101,7 +101,6 @@ jobs:
             export SHORTEN_TYPED_INPUT=false
             export USE_CLIPBOARD_FOR_TYPE_INPUT=false
             export HEADLESS=true
-            export SLOW_MO=100
             export IGNORE_MULTIPLE_LINKS=true
             export RFX_PANEL_CATEGORY=3
             export RFX_SELLER_NAME=auto
@@ -224,16 +223,16 @@ workflows:
             branches:
               ignore: /.*/
   automation_test:
-    # triggers:
-    #   - schedule:
-    #       cron: "0 9 * * 2,4"
-    #       filters:
-    #         branches:
-    #           only: master
+    triggers:
+      - schedule:
+          cron: "0 9 * * 4"
+          filters:
+            branches:
+              only: master
     jobs:
       - run_automation_tests:
           filters:
             tags:
               ignore: /.*/
             branches:
-              only: schedule-auto-test
+              only: master
