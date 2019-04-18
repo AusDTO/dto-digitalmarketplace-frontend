@@ -6,7 +6,9 @@ import styles from './ProgressButtons.scss'
 const ProgressButtons = props => (
   <div className={styles.container}>
     <p>
-      {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.startText}</AUbutton>}
+      {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">
+        {props.startTextSameAsContinue === true ? props.continueText : props.startText }
+      </AUbutton>}
       {props.isLastStage &&
         !props.isFirstStage && (
           <span>
@@ -53,6 +55,7 @@ ProgressButtons.defaultProps = {
   publishText: 'Publish',
   returnText: 'Return to overview',
   publishEnabled: false,
+  startTextSameAsContinue: false,
   onPublish: () => {},
   onPreview: () => {},
   onReturn: () => {}
@@ -67,7 +70,8 @@ ProgressButtons.propTypes = {
   isFirstStage: PropTypes.bool.isRequired,
   publishEnabled: PropTypes.bool,
   onPublish: PropTypes.func,
-  onReturn: PropTypes.func
+  onReturn: PropTypes.func,
+  startTextSameAsContinue: PropTypes.bool
 }
 
 export default ProgressButtons

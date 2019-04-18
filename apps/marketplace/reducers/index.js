@@ -60,6 +60,38 @@ export const BuyerATMFormReducer = {
   contactNumber: ''
 }
 
+export const BuyerSpecialistFormReducer = {
+  id: 0,
+  title: '',
+  organisation: '',
+  specialistWork: '',
+  location: [],
+  attachments: [],
+  contactNumber: '',
+  internalReference: '',
+  includeWeightingsEssential: false,
+  essentialRequirements: [{ criteria: '', weighting: '' }],
+  includeWeightingsNiceToHave: false,
+  niceToHaveRequirements: [{ criteria: '', weighting: '' }],
+  numberOfSuppliers: '3',
+  evaluationType: [
+    'Responses to evaluation criteria',
+    'Résumés'
+  ],
+  preferredFormatForRates: 'dailyRate',
+  maxRate: null,
+  securityClearance: null,
+  securityClearanceCurrent: null,
+  securityClearanceOther: null,
+  sellerCategory: '',
+  openTo: '',
+  sellers: {},
+  startDate: '',
+  contractLength: '',
+  contractExtensions: '',
+  closingDate: ''
+}
+
 export default combineReducers({
   app: appReducer,
   user,
@@ -128,6 +160,7 @@ export default combineReducers({
       }
     },
     BuyerRFXForm: BuyerRFXFormReducer,
-    BuyerATMForm: BuyerATMFormReducer
+    BuyerATMForm: BuyerATMFormReducer,
+    BuyerSpecialistForm: BuyerSpecialistFormReducer
   })
 })
