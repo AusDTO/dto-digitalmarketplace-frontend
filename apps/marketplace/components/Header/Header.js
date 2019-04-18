@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import DashBoardLink from './DashBoardLink'
+import HeaderActions from './HeaderActions'
 import logoGovCrest from './Government_crest.svg'
 
 export class Header extends Component {
@@ -47,26 +48,7 @@ export class Header extends Component {
               <div className="au-marketplace-header-user-nav">
                 <div id="react-bundle-auth-header-state" />
                 <div id="react-bundle-auth-header">
-                  <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-                    <li>
-                      {loggedIn ? (
-                        <DashBoardLink userType={userType} />
-                      ) : (
-                        <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
-                          Sign up
-                        </a>
-                      )}
-                    </li>
-                    <li>
-                      {loggedIn ? (
-                        <a href="/logout">Sign out</a>
-                      ) : (
-                        <a href="/login" className="au-btn au-btn--dark">
-                          Log in
-                        </a>
-                      )}
-                    </li>
-                  </ul>
+                  <HeaderActions loggedIn={loggedIn} userType={userType} />
                 </div>
               </div>
             </div>
