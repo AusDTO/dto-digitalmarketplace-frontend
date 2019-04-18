@@ -87,6 +87,8 @@ export default class RejectedNotificationForm extends Component {
               If you wish to provide services under <em>domain name</em> through the Marketplace in the future, you must submit a new or updated case study for assessment.
               
               Please read our seller guide and consider the assessment criteria for the category before updating your case study.
+
+              If you have any questions or need guideance, contact the Marketplace.
                             
               Thank you
               
