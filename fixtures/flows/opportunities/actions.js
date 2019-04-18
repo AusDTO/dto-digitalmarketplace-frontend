@@ -13,14 +13,14 @@ export const applyForAtm = async () => {
 }
 
 export const checkAppliedForAtm = async title => {
-  await util.navigate()
-  await util.selectBrief(title)
+  await navigate()
+  await selectBrief(title)
   await util.matchText('p', 'You have already applied for this opportunity.')
 }
 
 export const checkAppliedForRfx = async title => {
-  await util.navigate()
-  await util.selectBrief(title)
+  await navigate()
+  await selectBrief(title)
   await util.matchText('p', 'You have already applied for this opportunity.')
 }
 
