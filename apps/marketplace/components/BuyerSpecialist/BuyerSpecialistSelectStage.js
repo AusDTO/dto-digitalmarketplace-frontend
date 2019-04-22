@@ -16,7 +16,7 @@ export const done = v =>
 
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
-const atLeastOneSeller = v => (!v.openTo || v.openTo === 'all') || (v.openTo === 'specific' && v.sellers && Object.keys(v.sellers).length > 0)
+const atLeastOneSeller = v => (!v.openTo || v.openTo === 'all') || (v.openTo === 'category' && v.sellers && Object.keys(v.sellers).length > 0)
 
 export class BuyerSpecialistSelectStage extends Component {
   constructor(props) {
@@ -107,14 +107,14 @@ export class BuyerSpecialistSelectStage extends Component {
                   },
                   {
                     label: 'Specific sellers in the panel category',
-                    value: 'specific'
+                    value: 'category'
                   }
                 ]}
                 messages={{}}
                 onChange={() => this.props.resetSelectedSellers()}
               />
             </div>
-            {this.props[this.props.model].openTo === 'specific' && (
+            {this.props[this.props.model].openTo === 'category' && (
               <div>
                 <div>
                   <SellerSelect

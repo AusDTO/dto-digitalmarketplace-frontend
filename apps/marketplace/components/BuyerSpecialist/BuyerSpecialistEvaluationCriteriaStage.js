@@ -149,8 +149,8 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
         <p>
           <CheckboxDetailsField
             model={`${this.props.model}.includeWeightingsEssential`}
-            id={`include_weightings_essential`}
-            name={`include_weightings_essential`}
+            id={`includeWeightingsEssential`}
+            name={`includeWeightingsEssential`}
             onClick={this.handleIncludeWeightingsEssentialChange}
             label="Include weightings"
             detailsModel={this.props.model}
@@ -232,8 +232,8 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
         <p>
           <CheckboxDetailsField
             model={`${this.props.model}.includeWeightingsNiceToHave`}
-            id={`include_weightings_nice_to_have`}
-            name={`include_weightings_nice_to_have`}
+            id={`includeWeightingsNiceToHave`}
+            name={`includeWeightingsNiceToHave`}
             onClick={this.handleIncludeWeightingsNiceToHaveChange}
             label="Include weightings"
             detailsModel={this.props.model}

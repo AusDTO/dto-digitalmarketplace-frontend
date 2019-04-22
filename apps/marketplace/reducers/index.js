@@ -79,17 +79,17 @@ export const BuyerSpecialistFormReducer = {
     'Résumés'
   ],
   preferredFormatForRates: 'dailyRate',
-  maxRate: null,
-  securityClearance: null,
-  securityClearanceCurrent: null,
-  securityClearanceOther: null,
+  maxRate: '',
+  securityClearance: '',
+  securityClearanceCurrent: '',
+  securityClearanceOther: '',
   sellerCategory: '',
   openTo: '',
   sellers: {},
   startDate: '',
   contractLength: '',
   contractExtensions: '',
-  closingDate: ''
+  closedAt: ''
 }
 
 export default combineReducers({

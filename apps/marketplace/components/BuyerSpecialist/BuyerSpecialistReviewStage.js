@@ -32,7 +32,7 @@ class BuyerSpecialistReviewStage extends Component {
         onSubmit={props.onSubmit}
         validators={{
           '': {
-            requiredClosingDate: v => required(v.closingDate)
+            requiredClosedAt: v => required(v.closedAt)
           }
         }}>
         <div>
@@ -43,17 +43,17 @@ class BuyerSpecialistReviewStage extends Component {
             title="An error occurred"
             model={props.model}
             messages={{
-              closingDateIsValid: 'You must add a closing date at least 2 days from now',
-              requiredClosingDate: 'You must enter the closing date for this opportunity',
+              closedAtIsValid: 'You must add a closing date at least 2 days from now',
+              requiredClosedAt: 'You must enter the closing date for this opportunity',
               contactValidPhone: 'Contact number must be a valid phone number, including an area code'
             }}
           />
           <DateControl
-            id="closingDate"
-            model={`${props.model}.closingDate`}
+            id="closedAt"
+            model={`${props.model}.closedAt`}
             onDateChange={this.handleDateChange}
-            defaultValue={props[props.model].closingDate}
-            className={styles.closingDateControl}
+            defaultValue={props[props.model].closedAt}
+            className={styles.closedAtControl}
             label="Closing date for opportunity"
             description="This date must be at least 2 days after you publish this request. Responses will be available after 6pm Canberra time."
           />
@@ -131,7 +131,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  setDate: date => dispatch(actions.change(`${props.model}.closingDate`, date))
+  setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistReviewStage)
