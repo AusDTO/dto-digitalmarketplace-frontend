@@ -9,14 +9,12 @@ import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/Select
 import RadioList from 'shared/form/RadioList'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 
-export const done = v =>
-  requiredCategory(v) &&
-  requiredChoice(v) &&
-  atLeastOneSeller(v)
-
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
-const atLeastOneSeller = v => (!v.openTo || v.openTo === 'all') || (v.openTo === 'category' && v.sellers && Object.keys(v.sellers).length > 0)
+const atLeastOneSeller = v =>
+  !v.openTo || v.openTo === 'all' || (v.openTo === 'category' && v.sellers && Object.keys(v.sellers).length > 0)
+
+export const done = v => requiredCategory(v) && requiredChoice(v) && atLeastOneSeller(v)
 
 export class BuyerSpecialistSelectStage extends Component {
   constructor(props) {
@@ -83,7 +81,7 @@ export class BuyerSpecialistSelectStage extends Component {
           messages={{
             requiredCategory: 'You must select a panel category',
             requiredChoice: 'You must select who can respond',
-            atLeastOneSeller: 'You must select at least one seller',
+            atLeastOneSeller: 'You must select at least one seller'
           }}
         />
         <PanelCategorySelect
@@ -121,8 +119,8 @@ export class BuyerSpecialistSelectStage extends Component {
                     label="Seller name"
                     description={
                       <span>
-                        Only sellers approved in the category you have selected can respond. You can see each seller&apos;s
-                        categories in the{' '}
+                        Only sellers approved in the category you have selected can respond. You can see each
+                        seller&apos;s categories in the{' '}
                         <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
                           seller catalogue
                         </a>.

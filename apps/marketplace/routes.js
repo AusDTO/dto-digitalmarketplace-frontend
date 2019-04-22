@@ -63,13 +63,21 @@ export const Routes = () => (
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-specialist/create`} component={BuyerSpecialistCreatePage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/create`}
+      component={BuyerSpecialistCreatePage}
+    />
     <PrivateRoute
       restrictedTo="buyer"
       path={`${rootPath}/buyer-specialist/:briefId/completed`}
       component={BuyerSpecialistCompletedPage}
     />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-specialist/:briefId/:stage?`} component={BuyerSpecialistFlowPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/:briefId/:stage?`}
+      component={BuyerSpecialistFlowPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
     <PrivateRoute path={`${rootPath}/messages`} component={MessagesPage} />
     <Route component={NotFound} />

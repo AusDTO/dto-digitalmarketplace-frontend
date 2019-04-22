@@ -12,16 +12,12 @@ import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import locations from 'marketplace/components/BuyerBriefFlow/Locations'
 import styles from './BuyerSpecialistAboutStage.scss'
 
-export const done = v =>
-  requiredTitle(v) &&
-  requiredOrg(v) &&
-  requiredSpecialistWork(v) &&
-  atLeastOneLocation(v)
-
 const requiredTitle = v => required(v.title)
 const requiredOrg = v => required(v.organisation)
 const requiredSpecialistWork = v => required(v.specialistWork)
 const atLeastOneLocation = v => v.location && v.location.length > 0
+
+export const done = v => requiredTitle(v) && requiredOrg(v) && requiredSpecialistWork(v) && atLeastOneLocation(v)
 
 const BuyerSpecialistAboutStage = props => (
   <Form

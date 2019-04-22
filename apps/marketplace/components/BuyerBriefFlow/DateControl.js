@@ -138,7 +138,9 @@ const DateControl = props => (
 
 DateControl.defaultProps = {
   onDateChange: () => {},
-  className: ''
+  className: '',
+  label: '',
+  validators: {}
 }
 
 DateControl.propTypes = {

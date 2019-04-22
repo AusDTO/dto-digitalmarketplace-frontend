@@ -1,17 +1,10 @@
-import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
-import BuyerSpecialistAboutStage, {
-  done as aboutDone
-} from './BuyerSpecialistAboutStage'
-import BuyerSpecialistSelectStage, {
-  done as selectDone
-} from './BuyerSpecialistSelectStage'
+import BuyerSpecialistAboutStage, { done as aboutDone } from './BuyerSpecialistAboutStage'
+import BuyerSpecialistSelectStage, { done as selectDone } from './BuyerSpecialistSelectStage'
 import BuyerSpecialistAdditionalInformationStage, {
   done as additionalDone
 } from './BuyerSpecialistAdditionalInformationStage'
 import BuyerSpecialistReviewStage from './BuyerSpecialistReviewStage'
-import BuyerSpecialistResponseFormatsStage, {
-  done as responseFormatDone
-} from './BuyerSpecialistResponseFormatsStage'
+import BuyerSpecialistResponseFormatsStage, { done as responseFormatDone } from './BuyerSpecialistResponseFormatsStage'
 import BuyerSpecialistTimeframesAndBudgetStage, {
   done as timeframesDone
 } from './BuyerSpecialistTimeframesAndBudgetStage'

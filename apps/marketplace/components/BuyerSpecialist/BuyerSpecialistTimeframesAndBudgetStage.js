@@ -3,19 +3,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form, actions } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
-import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
-export const done = v =>
-  startDateRequired(v) &&
-  contractLengthRequired(v)
-
 const startDateRequired = v => required(v.startDate)
 const contractLengthRequired = v => required(v.contractLength)
+
+export const done = v => startDateRequired(v) && contractLengthRequired(v)
 
 class BuyerSpecialistTimeframesAndBudgetStage extends Component {
   constructor(props) {
@@ -29,12 +26,12 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
   }
 
   render() {
-    const props = this.props
+    const { formButtons, model, onSubmit, onSubmitFailed } = this.props
     return (
       <Form
-        model={props.model}
-        onSubmit={props.onSubmit}
-        onSubmitFailed={props.onSubmitFailed}
+        model={model}
+        onSubmit={onSubmit}
+        onSubmitFailed={onSubmitFailed}
         validateOn="submit"
         validators={{
           '': {
@@ -48,7 +45,7 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
         </AUheadings>
         <ErrorAlert
           title="An error occurred"
-          model={props.model}
+          model={model}
           messages={{
             startDateRequired: 'Enter an estimated start date for the brief',
             contractLengthRequired: 'Enter a contract length for the brief'
@@ -56,9 +53,9 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
         />
         <DateControl
           id="startDate"
-          model={`${props.model}.startDate`}
+          model={`${model}.startDate`}
           onDateChange={this.handleDateChange}
-          defaultValue={props[props.model].startDate}
+          defaultValue={this.props[model].startDate}
           // className={styles.closingDateControl}
           label="Estimated start date"
           validators={{
@@ -66,35 +63,35 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           }}
         />
         <Textfield
-          model={`${props.model}.contractLength`}
+          model={`${model}.contractLength`}
           label="Contract length"
           name="contractLength"
           id="contractLength"
           htmlFor="contractLength"
-          defaultValue={props[props.model].contractLength}
+          defaultValue={this.props[model].contractLength}
           maxLength={100}
           validators={{
             required
           }}
         />
         <Textfield
-          model={`${props.model}.contractExtensions`}
+          model={`${model}.contractExtensions`}
           label="Contract extensions (optional)"
           name="contractExtensions"
           id="contractExtensions"
           htmlFor="contractExtensions"
-          defaultValue={props[props.model].contractExtensions}
+          defaultValue={this.props[model].contractExtensions}
           maxLength={100}
         />
-        {props.formButtons}
+        {formButtons}
       </Form>
     )
   }
 }
 
 BuyerSpecialistTimeframesAndBudgetStage.defaultProps = {
-  onSubmit: () => { },
-  onSubmitFailed: () => { }
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerSpecialistTimeframesAndBudgetStage.propTypes = {

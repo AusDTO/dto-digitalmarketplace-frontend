@@ -6,9 +6,12 @@ import styles from './ProgressButtons.scss'
 const ProgressButtons = props => (
   <div className={styles.container}>
     <p>
-      {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">
-        {props.startTextSameAsContinue === true ? props.continueText : props.startText }
-      </AUbutton>}
+      {props.isFirstStage &&
+        !props.isLastStage && (
+          <AUbutton type="submit">
+            {props.startTextSameAsContinue === true ? props.continueText : props.startText}
+          </AUbutton>
+        )}
       {props.isLastStage &&
         !props.isFirstStage && (
           <span>

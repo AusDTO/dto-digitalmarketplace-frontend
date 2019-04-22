@@ -4,27 +4,17 @@ import { connect } from 'react-redux'
 import { actions, Form, Control } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
-import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import RadioList from 'shared/form/RadioList'
 import AUselect from '@gov.au/select/lib/js/react.js'
-import { rootPath } from 'marketplace/routes'
 import styles from './BuyerSpecialistResponseFormatsStage.scss'
 
-export const done = v =>
-  requiredNumberOfSuppliers(v) &&
-  rangeNumberOfSuppliers(v) &&
-  isNumberMaxRate(v) &&
-  requiredSecurityClearance(v) &&
-  requiredSecurityClearanceCurrent(v) &&
-  requiredSecurityClearanceOther(v)
-
 const requiredNumberOfSuppliers = v => v.numberOfSuppliers
-const rangeNumberOfSuppliers = v => !v.numberOfSuppliers || (parseInt(v.numberOfSuppliers) > 0 && parseInt(v.numberOfSuppliers) <= 6)
+const rangeNumberOfSuppliers = v =>
+  !v.numberOfSuppliers || (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
 const isNumberMaxRate = v => !v.maxRate || (v.maxRate && parseFloat(v.maxRate))
 const requiredSecurityClearance = v => v.securityClearance
 const requiredSecurityClearanceCurrent = v => {
@@ -46,14 +36,18 @@ const requiredSecurityClearanceOther = v => {
   return true
 }
 
-class BuyerSpecialistResponseFormatsStage extends Component {
-  constructor(props) {
-    super(props)
-  }
+export const done = v =>
+  requiredNumberOfSuppliers(v) &&
+  rangeNumberOfSuppliers(v) &&
+  isNumberMaxRate(v) &&
+  requiredSecurityClearance(v) &&
+  requiredSecurityClearanceCurrent(v) &&
+  requiredSecurityClearanceOther(v)
 
+class BuyerSpecialistResponseFormatsStage extends Component {
   render() {
-    const props = this.props
-    const securityClearanceCurrent = p => 
+    const { model, formButtons, onSubmit, onSubmitFailed } = this.props
+    const securityClearanceCurrent = p => (
       <AUselect
         block
         id={`${p.id}-security-clearance-select`}
@@ -81,10 +75,11 @@ class BuyerSpecialistResponseFormatsStage extends Component {
         ]}
         {...p}
       />
+    )
 
     return (
       <Form
-        model={props.model}
+        model={model}
         validators={{
           '': {
             requiredNumberOfSuppliers,
@@ -95,8 +90,8 @@ class BuyerSpecialistResponseFormatsStage extends Component {
             requiredSecurityClearanceOther
           }
         }}
-        onSubmit={props.onSubmit}
-        onSubmitFailed={props.onSubmitFailed}
+        onSubmit={onSubmit}
+        onSubmitFailed={onSubmitFailed}
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
@@ -104,10 +99,11 @@ class BuyerSpecialistResponseFormatsStage extends Component {
         </AUheadings>
         <ErrorAlert
           title="An error occurred"
-          model={props.model}
+          model={model}
           messages={{
-            isNumberMaxRate: `Maximum ${this.props[this.props.model].preferredFormatForRates === 'dailyRate' ?  
-            'daily' : 'hourly'} rate must be a number`,
+            isNumberMaxRate: `Maximum ${
+              this.props[model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
+            } rate must be a number`,
             requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit',
             rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6',
             requiredSecurityClearance: 'You must select security clearance',
@@ -116,12 +112,12 @@ class BuyerSpecialistResponseFormatsStage extends Component {
           }}
         />
         <Textfield
-          model={`${props.model}.numberOfSuppliers`}
+          model={`${model}.numberOfSuppliers`}
           label="How many candidates can each seller submit?"
           name="number_of_suppliers"
           id="number_of_suppliers"
           htmlFor="number_of_suppliers"
-          defaultValue={props[props.model].numberOfSuppliers}
+          defaultValue={this.props[model].numberOfSuppliers}
           maxLength={100}
           validators={{}}
         />
@@ -129,64 +125,64 @@ class BuyerSpecialistResponseFormatsStage extends Component {
           <fieldset>
             <legend>What will you use to evaluate candidates?</legend>
             <CheckboxDetailsField
-              model={`${props.model}.evaluationType[]`}
+              model={`${model}.evaluationType[]`}
               id={`responses_to_evaluation_critiera`}
               name={`responses_to_evaluation_critiera`}
               label="Responses to evaluation criteria"
               value="Responses to evaluation criteria"
-              detailsModel={props.model}
-              disabled={true}
+              detailsModel={model}
+              disabled
               validators={{}}
               messages={{}}
             />
             <CheckboxDetailsField
-              model={`${props.model}.evaluationType[]`}
+              model={`${model}.evaluationType[]`}
               id={`resumes`}
               name={`resumes`}
               label="Résumés"
               value="Résumés"
-              detailsModel={props.model}
-              disabled={true}
+              detailsModel={model}
+              disabled
               validators={{}}
               messages={{}}
             />
             <CheckboxDetailsField
-              model={`${props.model}.evaluationType[]`}
+              model={`${model}.evaluationType[]`}
               id={`references`}
               name={`references`}
               label="References"
               value="References"
-              detailsModel={props.model}
+              detailsModel={model}
               validators={{}}
               messages={{}}
             />
             <CheckboxDetailsField
-              model={`${props.model}.evaluationType[]`}
+              model={`${model}.evaluationType[]`}
               id={`interviews`}
               name={`interviews`}
               label="Interviews"
               value="Interviews"
-              detailsModel={props.model}
+              detailsModel={model}
               validators={{}}
               messages={{}}
             />
             <CheckboxDetailsField
-              model={`${props.model}.evaluationType[]`}
+              model={`${model}.evaluationType[]`}
               id={`scenario_or_tests`}
               name={`scenario_or_tests`}
               label="Scenario or tests"
               value="Scenario or tests"
-              detailsModel={props.model}
+              detailsModel={model}
               validators={{}}
               messages={{}}
             />
             <CheckboxDetailsField
-              model={`${props.model}.evaluationType[]`}
+              model={`${model}.evaluationType[]`}
               id={`presentations`}
               name={`presentations`}
               label="Presentations"
               value="Presentations"
-              detailsModel={props.model}
+              detailsModel={model}
               validators={{}}
               messages={{}}
             />
@@ -196,7 +192,7 @@ class BuyerSpecialistResponseFormatsStage extends Component {
           id="preferredFormatForRates"
           label="What is your preferred format for rates?"
           name="preferredFormatForRates"
-          model={`${props.model}.preferredFormatForRates`}
+          model={`${model}.preferredFormatForRates`}
           options={[
             {
               label: 'Daily rate',
@@ -208,18 +204,17 @@ class BuyerSpecialistResponseFormatsStage extends Component {
             }
           ]}
           messages={{}}
-          onChange={() => props.preferredFormatForRatesChange(`${props.model}.preferredFormatForRates`)}
+          onChange={() => this.props.preferredFormatForRatesChange(`${model}.preferredFormatForRates`)}
         />
         <Textfield
-          model={`${props.model}.maxRate`}
+          model={`${model}.maxRate`}
           label={`Maximum ${
-            this.props[this.props.model].preferredFormatForRates === 'dailyRate' ?  
-            'daily' : 'hourly'
+            this.props[model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
           } rate, including GST (optional)`}
           name="maxRate"
           id="maxRate"
           htmlFor="maxRate"
-          defaultValue={props[props.model].maxRate}
+          defaultValue={this.props[model].maxRate}
           maxLength={100}
           validators={{}}
         />
@@ -227,7 +222,7 @@ class BuyerSpecialistResponseFormatsStage extends Component {
           id="securityClearance"
           label="What are the security clearance requirements?"
           name="securityClearance"
-          model={`${props.model}.securityClearance`}
+          model={`${model}.securityClearance`}
           options={[
             {
               label: 'None required',
@@ -247,39 +242,39 @@ class BuyerSpecialistResponseFormatsStage extends Component {
             }
           ]}
           messages={{}}
-          onChange={() => props.securityClearanceChange(`${props.model}.securityClearance`)}
+          onChange={() => this.props.securityClearanceChange(`${model}.securityClearance`)}
         />
-        {this.props[this.props.model].securityClearance === 'mustHave' && 
+        {this.props[model].securityClearance === 'mustHave' && (
           <Control
-            model={`${props.model}.securityClearanceCurrent`}
+            model={`${model}.securityClearanceCurrent`}
             component={securityClearanceCurrent}
             id="securityClearanceCurrent"
           />
-        }
-        {this.props[this.props.model].securityClearance === 'other' && 
+        )}
+        {this.props[model].securityClearance === 'other' && (
           <Textarea
-            model={`${props.model}.securityClearanceOther`}
+            model={`${model}.securityClearanceOther`}
             name="securityClearanceOther"
             label=""
             id="securityClearanceOther"
             htmlFor="securityClearanceOther"
-            defaultValue={props[props.model].securityClearanceOther}
+            defaultValue={this.props[model].securityClearanceOther}
             controlProps={{ limit: 1000 }}
             validators={{}}
             messages={{
               limitWords: 'Other security clearance do has exceeded the 1000 word limit'
             }}
           />
-        }
-        {props.formButtons}
+        )}
+        {formButtons}
       </Form>
     )
   }
 }
 
 BuyerSpecialistResponseFormatsStage.defaultProps = {
-  onSubmit: () => { },
-  onSubmitFailed: () => { }
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
 }
 
 BuyerSpecialistResponseFormatsStage.propTypes = {
@@ -294,8 +289,8 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  preferredFormatForRatesChange: (value) => dispatch(actions.change(`${props.model}.preferredFormatForRates`, value)),
-  securityClearanceChange: (value) => dispatch(actions.change(`${props.model}.securityClearance`, value))
+  preferredFormatForRatesChange: value => dispatch(actions.change(`${props.model}.preferredFormatForRates`, value)),
+  securityClearanceChange: value => dispatch(actions.change(`${props.model}.securityClearance`, value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistResponseFormatsStage)

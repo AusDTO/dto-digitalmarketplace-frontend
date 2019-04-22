@@ -271,7 +271,8 @@ export class ProgressFlow extends Component {
 ProgressFlow.defaultProps = {
   basename: '',
   saveModel: () => {},
-  onStageMount: () => {}
+  onStageMount: () => {},
+  startTextSameAsContinue: false
 }
 
 ProgressFlow.propTypes = {

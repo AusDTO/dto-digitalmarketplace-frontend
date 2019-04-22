@@ -19,7 +19,10 @@ test('include weightings checkbox adds the weightings inputs', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage model="BuyerSpecialistForm" BuyerSpecialistForm={state.BuyerSpecialistForm} />
+      <BuyerSpecialistEvaluationCriteriaStage
+        model="BuyerSpecialistForm"
+        BuyerSpecialistForm={state.BuyerSpecialistForm}
+      />
     </Provider>
   )
 
@@ -41,7 +44,10 @@ test('disabling weightings clears the current weighting values', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage model="BuyerSpecialistForm" BuyerSpecialistForm={state.BuyerSpecialistForm} />
+      <BuyerSpecialistEvaluationCriteriaStage
+        model="BuyerSpecialistForm"
+        BuyerSpecialistForm={state.BuyerSpecialistForm}
+      />
     </Provider>
   )
 
@@ -84,7 +90,10 @@ test('removing a criteria', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage model="BuyerSpecialistForm" BuyerSpecialistForm={state.BuyerSpecialistForm} />
+      <BuyerSpecialistEvaluationCriteriaStage
+        model="BuyerSpecialistForm"
+        BuyerSpecialistForm={state.BuyerSpecialistForm}
+      />
     </Provider>
   )
 
@@ -111,7 +120,10 @@ test('adding a criteria', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage model="BuyerSpecialistForm" BuyerSpecialistForm={state.BuyerSpecialistForm} />
+      <BuyerSpecialistEvaluationCriteriaStage
+        model="BuyerSpecialistForm"
+        BuyerSpecialistForm={state.BuyerSpecialistForm}
+      />
     </Provider>
   )
 

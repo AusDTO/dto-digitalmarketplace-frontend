@@ -11,16 +11,6 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import styles from './BuyerSpecialistEvaluationCriteriaStage.scss'
 
-export const done = v =>
-  noEmptyWeightingsEssential(v) &&
-  weightingsAddUpTo100Essential(v) &&
-  noZeroWeightingsEssential(v) &&
-  noEmptyCriteriaEssential(v) &&
-  noEmptyWeightingsNiceToHave(v) &&
-  weightingsAddUpTo100NiceToHave(v) &&
-  noZeroWeightingsNiceToHave(v) &&
-  noEmptyCriteriaNiceToHave(v)
-
 const noEmptyWeightingsEssential = v =>
   !v.includeWeightingsEssential || v.essentialRequirements.every(val => val.weighting)
 
@@ -38,9 +28,11 @@ const noZeroWeightingsEssential = v =>
 const noEmptyCriteriaEssential = v => v.essentialRequirements.every(val => val.criteria)
 
 const noEmptyWeightingsNiceToHave = v =>
-  !v.includeWeightingsNiceToHave || v.niceToHaveRequirements.every(val => val.criteria ? val.weighting : true)
+  !v.includeWeightingsNiceToHave || v.niceToHaveRequirements.every(val => (val.criteria ? val.weighting : true))
 
-const weightingsAddUpTo100NiceToHave = v => 
+const noEmptyCriteriaNiceToHave = v => v.niceToHaveRequirements.every(val => (val.weighting ? val.criteria : true))
+
+const weightingsAddUpTo100NiceToHave = v =>
   !v.includeWeightingsNiceToHave ||
   (noEmptyWeightingsNiceToHave(v) && noEmptyCriteriaNiceToHave(v)) ||
   v.niceToHaveRequirements.reduce(
@@ -48,11 +40,20 @@ const weightingsAddUpTo100NiceToHave = v =>
     0
   ) === 100
 
-
 const noZeroWeightingsNiceToHave = v =>
-  noEmptyCriteriaNiceToHave(v) || !v.includeWeightingsNiceToHave || v.niceToHaveRequirements.every(val => parseInt(val.weighting, 10) > 0)
+  noEmptyCriteriaNiceToHave(v) ||
+  !v.includeWeightingsNiceToHave ||
+  v.niceToHaveRequirements.every(val => parseInt(val.weighting, 10) > 0)
 
-const noEmptyCriteriaNiceToHave = v => v.niceToHaveRequirements.every(val => val.weighting ? val.criteria : true)
+export const done = v =>
+  noEmptyWeightingsEssential(v) &&
+  weightingsAddUpTo100Essential(v) &&
+  noZeroWeightingsEssential(v) &&
+  noEmptyCriteriaEssential(v) &&
+  noEmptyWeightingsNiceToHave(v) &&
+  weightingsAddUpTo100NiceToHave(v) &&
+  noZeroWeightingsNiceToHave(v) &&
+  noEmptyCriteriaNiceToHave(v)
 
 class BuyerSpecialistEvaluationCriteriaStage extends Component {
   constructor(props) {
@@ -62,9 +63,10 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
     this.handleAddEssentialCriteriaClick = this.handleAddEssentialCriteriaClick.bind(this)
     this.handleAddNiceToHaveCriteriaClick = this.handleAddNiceToHaveCriteriaClick.bind(this)
     this.removeCriteria = this.removeCriteria.bind(this)
+    this.getRemainingWeighting = this.getRemainingWeighting.bind(this)
   }
 
-  getRemainingWeighting(criteria) {
+  static getRemainingWeighting(criteria) {
     let remaining = 100
     criteria.map(evaluation => {
       if (evaluation.weighting && parseInt(evaluation.weighting, 10) > 0) {
@@ -89,7 +91,10 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
 
   handleAddNiceToHaveCriteriaClick(e) {
     e.preventDefault()
-    this.props.addEmptyEvalutationCriteria(this.props[this.props.model].niceToHaveRequirements, 'niceToHaveRequirements')
+    this.props.addEmptyEvalutationCriteria(
+      this.props[this.props.model].niceToHaveRequirements,
+      'niceToHaveRequirements'
+    )
   }
 
   handleIncludeWeightingsEssentialChange(e) {
@@ -195,9 +200,9 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                           type="number"
                         />
                         {i === this.props[this.props.model].essentialRequirements.length - 1 && (
-                          <div className={styles.weightingRemaining}>{
-                            this.getRemainingWeighting(this.props[this.props.model].essentialRequirements)
-                          }% remaining</div>
+                          <div className={styles.weightingRemaining}>
+                            {this.getRemainingWeighting(this.props[this.props.model].essentialRequirements)}% remaining
+                          </div>
                         )}
                       </div>
                     </div>
@@ -208,7 +213,11 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                         href="#remove"
                         onClick={e => {
                           e.preventDefault()
-                          this.removeCriteria(i, this.props[this.props.model].essentialRequirements, 'essentialRequirements')
+                          this.removeCriteria(
+                            i,
+                            this.props[this.props.model].essentialRequirements,
+                            'essentialRequirements'
+                          )
                         }}
                       >
                         Remove
@@ -278,9 +287,9 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                           type="number"
                         />
                         {i === this.props[this.props.model].niceToHaveRequirements.length - 1 && (
-                          <div className={styles.weightingRemaining}>{
-                            this.getRemainingWeighting(this.props[this.props.model].niceToHaveRequirements)
-                          }% remaining</div>
+                          <div className={styles.weightingRemaining}>
+                            {this.getRemainingWeighting(this.props[this.props.model].niceToHaveRequirements)}% remaining
+                          </div>
                         )}
                       </div>
                     </div>
@@ -291,7 +300,11 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                         href="#remove"
                         onClick={e => {
                           e.preventDefault()
-                          this.removeCriteria(i, this.props[this.props.model].niceToHaveRequirements, 'niceToHaveRequirements')
+                          this.removeCriteria(
+                            i,
+                            this.props[this.props.model].niceToHaveRequirements,
+                            'niceToHaveRequirements'
+                          )
                         }}
                       >
                         Remove

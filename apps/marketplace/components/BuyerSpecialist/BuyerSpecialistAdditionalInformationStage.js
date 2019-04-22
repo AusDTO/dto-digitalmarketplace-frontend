@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
-import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
@@ -12,10 +11,9 @@ import range from 'lodash/range'
 import { required } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 
-export const done = v =>
-  requiredContactNumber(v)
-
 const requiredContactNumber = v => required(v.contactNumber)
+
+export const done = v => requiredContactNumber(v)
 
 export class BuyerSpecialistRequirementsStage extends Component {
   constructor(props) {

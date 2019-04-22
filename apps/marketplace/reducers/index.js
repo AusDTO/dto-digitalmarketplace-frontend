@@ -74,10 +74,7 @@ export const BuyerSpecialistFormReducer = {
   includeWeightingsNiceToHave: false,
   niceToHaveRequirements: [{ criteria: '', weighting: '' }],
   numberOfSuppliers: '3',
-  evaluationType: [
-    'Responses to evaluation criteria',
-    'Résumés'
-  ],
+  evaluationType: ['Responses to evaluation criteria', 'Résumés'],
   preferredFormatForRates: 'dailyRate',
   maxRate: '',
   securityClearance: '',

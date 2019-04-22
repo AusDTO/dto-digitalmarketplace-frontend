@@ -7,11 +7,11 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
 import format from 'date-fns/format'
-import BuyerSpecialistStages from './BuyerSpecialistStages'
-import styles from './BuyerSpecialistReviewStage.scss'
 import { required } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
+import BuyerSpecialistStages from './BuyerSpecialistStages'
+import styles from './BuyerSpecialistReviewStage.scss'
 
 class BuyerSpecialistReviewStage extends Component {
   constructor(props) {
@@ -25,23 +25,24 @@ class BuyerSpecialistReviewStage extends Component {
   }
 
   render() {
-    const props = this.props
+    const { model, onSubmit, stagesTodo, formButtons } = this.props
     return (
       <Form
-        model={props.model}
-        onSubmit={props.onSubmit}
+        model={model}
+        onSubmit={onSubmit}
         validators={{
           '': {
             requiredClosedAt: v => required(v.closedAt)
           }
-        }}>
+        }}
+      >
         <div>
           <AUheading level="1" size="xl">
             Review and publish
-        </AUheading>
+          </AUheading>
           <ErrorAlert
             title="An error occurred"
-            model={props.model}
+            model={model}
             messages={{
               closedAtIsValid: 'You must add a closing date at least 2 days from now',
               requiredClosedAt: 'You must enter the closing date for this opportunity',
@@ -50,9 +51,9 @@ class BuyerSpecialistReviewStage extends Component {
           />
           <DateControl
             id="closedAt"
-            model={`${props.model}.closedAt`}
+            model={`${model}.closedAt`}
             onDateChange={this.handleDateChange}
-            defaultValue={props[props.model].closedAt}
+            defaultValue={this.props[model].closedAt}
             className={styles.closedAtControl}
             label="Closing date for opportunity"
             description="This date must be at least 2 days after you publish this request. Responses will be available after 6pm Canberra time."
@@ -69,45 +70,46 @@ class BuyerSpecialistReviewStage extends Component {
             </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
-                {format(getBriefLastQuestionDate(new Date(props[props.model].closedAt)), 'dddd D MMMM YYYY')}
+                {format(getBriefLastQuestionDate(new Date(this.props[model].closedAt)), 'dddd D MMMM YYYY')}
               </div>
               <div className="col-xs-12 col-sm-8">The last day sellers can ask questions.</div>
             </div>
             <div className="row">
-              <div className="col-xs-12 col-sm-4">{format(props[props.model].closedAt, 'dddd D MMMM YYYY')}</div>
+              <div className="col-xs-12 col-sm-4">{format(this.props[model].closedAt, 'dddd D MMMM YYYY')}</div>
               <div className="col-xs-12 col-sm-8">
                 The last day you can publish answers to all sellers&apos; questions.
-              <br />
+                <br />
                 The last day sellers can apply.
-              <br />
+                <br />
                 The opportunity will close at 6pm Canberra time.
-            </div>
+              </div>
             </div>
           </div>
-          {props.stagesTodo.length > 0 ? (
+          {stagesTodo.length > 0 ? (
             <div>
               <AUheading level="2" size="sm">
                 Before you publish your opportunity, you need to complete information in:
-            </AUheading>
+              </AUheading>
               <ul>
-                {props.stagesTodo.map(stage => (
+                {stagesTodo.map(stage => (
                   <li key={stage}>
                     <Link to={stage}>{BuyerSpecialistStages.find(s => s.slug === stage).title || ''}</Link>
                   </li>
                 ))}
               </ul>
-            </div>) : (
-              <div>
-                <AUheading level="2" size="lg">
-                  Once you press publish
-            </AUheading>
-                <ul>
-                  <li>A summary of this request be will visible on the Digital Marketplace.</li>
-                  <li>Only invited sellers and other buyers will be able to view attached documents.</li>
-                </ul>
-                {props.formButtons}
-              </div>
-            )}
+            </div>
+          ) : (
+            <div>
+              <AUheading level="2" size="lg">
+                Once you press publish
+              </AUheading>
+              <ul>
+                <li>A summary of this request be will visible on the Digital Marketplace.</li>
+                <li>Only invited sellers and other buyers will be able to view attached documents.</li>
+              </ul>
+              {formButtons}
+            </div>
+          )}
         </div>
       </Form>
     )
@@ -115,7 +117,7 @@ class BuyerSpecialistReviewStage extends Component {
 }
 
 BuyerSpecialistReviewStage.defaultProps = {
-  onSubmit: () => { },
+  onSubmit: () => {},
   stagesTodo: []
 }
 
