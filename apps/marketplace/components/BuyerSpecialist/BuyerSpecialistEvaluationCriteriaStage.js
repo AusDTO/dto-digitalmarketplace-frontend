@@ -14,7 +14,7 @@ import styles from './BuyerSpecialistEvaluationCriteriaStage.scss'
 const noEmptyWeightingsEssential = v =>
   !v.includeWeightingsEssential || v.essentialRequirements.every(val => val.weighting)
 
-const weightingsAddUpTo100Essential = v =>
+export const weightingsAddUpTo100Essential = v =>
   !v.includeWeightingsEssential ||
   !noEmptyWeightingsEssential(v) ||
   v.essentialRequirements.reduce(
@@ -63,7 +63,6 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
     this.handleAddEssentialCriteriaClick = this.handleAddEssentialCriteriaClick.bind(this)
     this.handleAddNiceToHaveCriteriaClick = this.handleAddNiceToHaveCriteriaClick.bind(this)
     this.removeCriteria = this.removeCriteria.bind(this)
-    this.getRemainingWeighting = this.getRemainingWeighting.bind(this)
   }
 
   static getRemainingWeighting(criteria) {
@@ -176,9 +175,9 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                     <Textarea
                       model={`${this.props.model}.essentialRequirements[${i}].criteria`}
                       label="Criteria"
-                      name={`criteria_${i}`}
-                      id={`criteria_${i}`}
-                      htmlFor={`criteria_${i}`}
+                      name={`essential_criteria_${i}`}
+                      id={`essential_criteria_${i}`}
+                      htmlFor={`essential_criteria_${i}`}
                       defaultValue={essentialRequirements.criteria}
                       controlProps={{ limit: 50 }}
                       messages={{
@@ -192,16 +191,18 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                         <Textfield
                           model={`${this.props.model}.essentialRequirements[${i}].weighting`}
                           label="Weighting (%)"
-                          name={`weighting_${i}`}
-                          id={`weighting_${i}`}
-                          htmlFor={`weighting_${i}`}
+                          name={`essential_weighting_${i}`}
+                          id={`essential_weighting_${i}`}
+                          htmlFor={`essential_weighting_${i}`}
                           defaultValue={essentialRequirements.weighting}
                           maxLength={3}
                           type="number"
                         />
                         {i === this.props[this.props.model].essentialRequirements.length - 1 && (
                           <div className={styles.weightingRemaining}>
-                            {this.getRemainingWeighting(this.props[this.props.model].essentialRequirements)}% remaining
+                            {BuyerSpecialistEvaluationCriteriaStage.getRemainingWeighting(
+                              this.props[this.props.model].essentialRequirements
+                            )}% remaining
                           </div>
                         )}
                       </div>
@@ -263,9 +264,9 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                     <Textarea
                       model={`${this.props.model}.niceToHaveRequirements[${i}].criteria`}
                       label="Criteria"
-                      name={`criteria_${i}`}
-                      id={`criteria_${i}`}
-                      htmlFor={`criteria_${i}`}
+                      name={`nice_to_have_criteria_${i}`}
+                      id={`nice_to_have_criteria_${i}`}
+                      htmlFor={`nice_to_have_criteria_${i}`}
                       defaultValue={niceToHaveRequirements.criteria}
                       controlProps={{ limit: 50 }}
                       messages={{
@@ -279,16 +280,18 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                         <Textfield
                           model={`${this.props.model}.niceToHaveRequirements[${i}].weighting`}
                           label="Weighting (%)"
-                          name={`weighting_${i}`}
-                          id={`weighting_${i}`}
-                          htmlFor={`weighting_${i}`}
+                          name={`nice_to_have_weighting_${i}`}
+                          id={`nice_to_have_weighting_${i}`}
+                          htmlFor={`nice_to_have_weighting_${i}`}
                           defaultValue={niceToHaveRequirements.weighting}
                           maxLength={3}
                           type="number"
                         />
                         {i === this.props[this.props.model].niceToHaveRequirements.length - 1 && (
                           <div className={styles.weightingRemaining}>
-                            {this.getRemainingWeighting(this.props[this.props.model].niceToHaveRequirements)}% remaining
+                            {BuyerSpecialistEvaluationCriteriaStage.getRemainingWeighting(
+                              this.props[this.props.model].niceToHaveRequirements
+                            )}% remaining
                           </div>
                         )}
                       </div>

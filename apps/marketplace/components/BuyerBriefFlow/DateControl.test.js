@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import format from 'date-fns/format'
 import configureStore from 'marketplace/store'
 import { Provider } from 'react-redux'
-import { Date } from './DateControl'
+import { DateComponent } from './DateControl'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -15,7 +15,7 @@ test('closing date control shows correct day, month and year values', () => {
 
   const component = mount(
     <Provider store={store}>
-      <Date id="test" value={format(date, 'YYYY-MM-DD')} formModel="test" />
+      <DateComponent id="test" value={format(date, 'YYYY-MM-DD')} formModel="test" />
     </Provider>
   )
 
@@ -30,7 +30,7 @@ test('date shows empty inputs on bad input data', () => {
 
   const component = mount(
     <Provider store={store}>
-      <Date id="test" value="thisisnotarealdate" formModel="test" />
+      <DateComponent id="test" value="thisisnotarealdate" formModel="test" />
     </Provider>
   )
 
@@ -47,7 +47,7 @@ test('date control calls the onDateChange property on value changes', () => {
 
   const component = mount(
     <Provider store={store}>
-      <Date id="test" value={format(date, 'YYYY-MM-DD')} formModel="test" onDateChange={onDateChange} />
+      <DateComponent id="test" value={format(date, 'YYYY-MM-DD')} formModel="test" onDateChange={onDateChange} />
     </Provider>
   )
 

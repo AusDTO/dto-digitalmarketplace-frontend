@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form, Control } from 'react-redux-form'
@@ -44,233 +44,228 @@ export const done = v =>
   requiredSecurityClearanceCurrent(v) &&
   requiredSecurityClearanceOther(v)
 
-class BuyerSpecialistResponseFormatsStage extends Component {
-  render() {
-    const { model, formButtons, onSubmit, onSubmitFailed } = this.props
-    const securityClearanceCurrent = p => (
-      <AUselect
-        block
-        id={`${p.id}-security-clearance-select`}
-        options={[
-          {
-            text: 'Select clearance required',
-            value: ''
-          },
-          {
-            text: 'Baseline clearance',
-            value: 'baseline'
-          },
-          {
-            text: 'Negative Vetting Level 1',
-            value: 'nv1'
-          },
-          {
-            text: 'Negative Vetting Level 1',
-            value: 'nv2'
-          },
-          {
-            text: 'Positive Vetting',
-            value: 'pv'
-          }
-        ]}
-        {...p}
-      />
-    )
+const securityClearanceCurrent = props => (
+  <AUselect
+    block
+    id={`${props.id}-security-clearance-select`}
+    options={[
+      {
+        text: 'Select clearance required',
+        value: ''
+      },
+      {
+        text: 'Baseline clearance',
+        value: 'baseline'
+      },
+      {
+        text: 'Negative Vetting Level 1',
+        value: 'nv1'
+      },
+      {
+        text: 'Negative Vetting Level 1',
+        value: 'nv2'
+      },
+      {
+        text: 'Positive Vetting',
+        value: 'pv'
+      }
+    ]}
+    {...props}
+  />
+)
 
-    return (
-      <Form
-        model={model}
-        validators={{
-          '': {
-            requiredNumberOfSuppliers,
-            rangeNumberOfSuppliers,
-            isNumberMaxRate,
-            requiredSecurityClearance,
-            requiredSecurityClearanceCurrent,
-            requiredSecurityClearanceOther
-          }
+const BuyerSpecialistResponseFormatsStage = props => (
+  <Form
+    model={props.model}
+    validators={{
+      '': {
+        requiredNumberOfSuppliers,
+        rangeNumberOfSuppliers,
+        isNumberMaxRate,
+        requiredSecurityClearance,
+        requiredSecurityClearanceCurrent,
+        requiredSecurityClearanceOther
+      }
+    }}
+    onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
+    validateOn="submit"
+  >
+    <AUheadings level="1" size="xl">
+      Seller responses
+    </AUheadings>
+    <ErrorAlert
+      title="An error occurred"
+      model={props.model}
+      messages={{
+        isNumberMaxRate: `Maximum ${
+          props[props.model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
+        } rate must be a number`,
+        requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit',
+        rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6',
+        requiredSecurityClearance: 'You must select security clearance',
+        requiredSecurityClearanceCurrent: 'You must select current security clearance',
+        requiredSecurityClearanceOther: 'You must enter security clearance details'
+      }}
+    />
+    <Textfield
+      model={`${props.model}.numberOfSuppliers`}
+      label="How many candidates can each seller submit?"
+      name="number_of_suppliers"
+      id="number_of_suppliers"
+      htmlFor="number_of_suppliers"
+      defaultValue={props[props.model].numberOfSuppliers}
+      maxLength={100}
+      validators={{}}
+    />
+    <div className={styles.formats}>
+      <fieldset>
+        <legend>What will you use to evaluate candidates?</legend>
+        <CheckboxDetailsField
+          model={`${props.model}.evaluationType[]`}
+          id={`responses_to_evaluation_critiera`}
+          name={`responses_to_evaluation_critiera`}
+          label="Responses to evaluation criteria"
+          value="Responses to evaluation criteria"
+          detailsModel={props.model}
+          disabled
+          validators={{}}
+          messages={{}}
+        />
+        <CheckboxDetailsField
+          model={`${props.model}.evaluationType[]`}
+          id={`resumes`}
+          name={`resumes`}
+          label="Résumés"
+          value="Résumés"
+          detailsModel={props.model}
+          disabled
+          validators={{}}
+          messages={{}}
+        />
+        <CheckboxDetailsField
+          model={`${props.model}.evaluationType[]`}
+          id={`references`}
+          name={`references`}
+          label="References"
+          value="References"
+          detailsModel={props.model}
+          validators={{}}
+          messages={{}}
+        />
+        <CheckboxDetailsField
+          model={`${props.model}.evaluationType[]`}
+          id={`interviews`}
+          name={`interviews`}
+          label="Interviews"
+          value="Interviews"
+          detailsModel={props.model}
+          validators={{}}
+          messages={{}}
+        />
+        <CheckboxDetailsField
+          model={`${props.model}.evaluationType[]`}
+          id={`scenario_or_tests`}
+          name={`scenario_or_tests`}
+          label="Scenario or tests"
+          value="Scenario or tests"
+          detailsModel={props.model}
+          validators={{}}
+          messages={{}}
+        />
+        <CheckboxDetailsField
+          model={`${props.model}.evaluationType[]`}
+          id={`presentations`}
+          name={`presentations`}
+          label="Presentations"
+          value="Presentations"
+          detailsModel={props.model}
+          validators={{}}
+          messages={{}}
+        />
+      </fieldset>
+    </div>
+    <RadioList
+      id="preferredFormatForRates"
+      label="What is your preferred format for rates?"
+      name="preferredFormatForRates"
+      model={`${props.model}.preferredFormatForRates`}
+      options={[
+        {
+          label: 'Daily rate',
+          value: 'dailyRate'
+        },
+        {
+          label: 'Hourly rate',
+          value: 'hourlyRate'
+        }
+      ]}
+      messages={{}}
+      onChange={() => props.preferredFormatForRatesChange(`${props.model}.preferredFormatForRates`)}
+    />
+    <Textfield
+      model={`${props.model}.maxRate`}
+      label={`Maximum ${
+        props[props.model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
+      } rate, including GST (optional)`}
+      name="maxRate"
+      id="maxRate"
+      htmlFor="maxRate"
+      defaultValue={props[props.model].maxRate}
+      maxLength={100}
+      validators={{}}
+    />
+    <RadioList
+      id="securityClearance"
+      label="What are the security clearance requirements?"
+      name="securityClearance"
+      model={`${props.model}.securityClearance`}
+      options={[
+        {
+          label: 'None required',
+          value: 'noneRequired'
+        },
+        {
+          label: 'Ability to obtain a security clearance',
+          value: 'abilityToObtain'
+        },
+        {
+          label: 'Must have a current security clearance',
+          value: 'mustHave'
+        },
+        {
+          label: 'Other',
+          value: 'other'
+        }
+      ]}
+      messages={{}}
+      onChange={() => props.securityClearanceChange(`${props.model}.securityClearance`)}
+    />
+    {props[props.model].securityClearance === 'mustHave' && (
+      <Control
+        model={`${props.model}.securityClearanceCurrent`}
+        component={securityClearanceCurrent}
+        id="securityClearanceCurrent"
+      />
+    )}
+    {props[props.model].securityClearance === 'other' && (
+      <Textarea
+        model={`${props.model}.securityClearanceOther`}
+        name="securityClearanceOther"
+        label=""
+        id="securityClearanceOther"
+        htmlFor="securityClearanceOther"
+        defaultValue={props[props.model].securityClearanceOther}
+        controlProps={{ limit: 1000 }}
+        validators={{}}
+        messages={{
+          limitWords: 'Other security clearance do has exceeded the 1000 word limit'
         }}
-        onSubmit={onSubmit}
-        onSubmitFailed={onSubmitFailed}
-        validateOn="submit"
-      >
-        <AUheadings level="1" size="xl">
-          Seller responses
-        </AUheadings>
-        <ErrorAlert
-          title="An error occurred"
-          model={model}
-          messages={{
-            isNumberMaxRate: `Maximum ${
-              this.props[model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
-            } rate must be a number`,
-            requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit',
-            rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6',
-            requiredSecurityClearance: 'You must select security clearance',
-            requiredSecurityClearanceCurrent: 'You must select current security clearance',
-            requiredSecurityClearanceOther: 'You must enter security clearance details'
-          }}
-        />
-        <Textfield
-          model={`${model}.numberOfSuppliers`}
-          label="How many candidates can each seller submit?"
-          name="number_of_suppliers"
-          id="number_of_suppliers"
-          htmlFor="number_of_suppliers"
-          defaultValue={this.props[model].numberOfSuppliers}
-          maxLength={100}
-          validators={{}}
-        />
-        <div className={styles.formats}>
-          <fieldset>
-            <legend>What will you use to evaluate candidates?</legend>
-            <CheckboxDetailsField
-              model={`${model}.evaluationType[]`}
-              id={`responses_to_evaluation_critiera`}
-              name={`responses_to_evaluation_critiera`}
-              label="Responses to evaluation criteria"
-              value="Responses to evaluation criteria"
-              detailsModel={model}
-              disabled
-              validators={{}}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${model}.evaluationType[]`}
-              id={`resumes`}
-              name={`resumes`}
-              label="Résumés"
-              value="Résumés"
-              detailsModel={model}
-              disabled
-              validators={{}}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${model}.evaluationType[]`}
-              id={`references`}
-              name={`references`}
-              label="References"
-              value="References"
-              detailsModel={model}
-              validators={{}}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${model}.evaluationType[]`}
-              id={`interviews`}
-              name={`interviews`}
-              label="Interviews"
-              value="Interviews"
-              detailsModel={model}
-              validators={{}}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${model}.evaluationType[]`}
-              id={`scenario_or_tests`}
-              name={`scenario_or_tests`}
-              label="Scenario or tests"
-              value="Scenario or tests"
-              detailsModel={model}
-              validators={{}}
-              messages={{}}
-            />
-            <CheckboxDetailsField
-              model={`${model}.evaluationType[]`}
-              id={`presentations`}
-              name={`presentations`}
-              label="Presentations"
-              value="Presentations"
-              detailsModel={model}
-              validators={{}}
-              messages={{}}
-            />
-          </fieldset>
-        </div>
-        <RadioList
-          id="preferredFormatForRates"
-          label="What is your preferred format for rates?"
-          name="preferredFormatForRates"
-          model={`${model}.preferredFormatForRates`}
-          options={[
-            {
-              label: 'Daily rate',
-              value: 'dailyRate'
-            },
-            {
-              label: 'Hourly rate',
-              value: 'hourlyRate'
-            }
-          ]}
-          messages={{}}
-          onChange={() => this.props.preferredFormatForRatesChange(`${model}.preferredFormatForRates`)}
-        />
-        <Textfield
-          model={`${model}.maxRate`}
-          label={`Maximum ${
-            this.props[model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
-          } rate, including GST (optional)`}
-          name="maxRate"
-          id="maxRate"
-          htmlFor="maxRate"
-          defaultValue={this.props[model].maxRate}
-          maxLength={100}
-          validators={{}}
-        />
-        <RadioList
-          id="securityClearance"
-          label="What are the security clearance requirements?"
-          name="securityClearance"
-          model={`${model}.securityClearance`}
-          options={[
-            {
-              label: 'None required',
-              value: 'noneRequired'
-            },
-            {
-              label: 'Ability to obtain a security clearance',
-              value: 'abilityToObtain'
-            },
-            {
-              label: 'Must have a current security clearance',
-              value: 'mustHave'
-            },
-            {
-              label: 'Other',
-              value: 'other'
-            }
-          ]}
-          messages={{}}
-          onChange={() => this.props.securityClearanceChange(`${model}.securityClearance`)}
-        />
-        {this.props[model].securityClearance === 'mustHave' && (
-          <Control
-            model={`${model}.securityClearanceCurrent`}
-            component={securityClearanceCurrent}
-            id="securityClearanceCurrent"
-          />
-        )}
-        {this.props[model].securityClearance === 'other' && (
-          <Textarea
-            model={`${model}.securityClearanceOther`}
-            name="securityClearanceOther"
-            label=""
-            id="securityClearanceOther"
-            htmlFor="securityClearanceOther"
-            defaultValue={this.props[model].securityClearanceOther}
-            controlProps={{ limit: 1000 }}
-            validators={{}}
-            messages={{
-              limitWords: 'Other security clearance do has exceeded the 1000 word limit'
-            }}
-          />
-        )}
-        {formButtons}
-      </Form>
-    )
-  }
-}
+      />
+    )}
+    {props.formButtons}
+  </Form>
+)
 
 BuyerSpecialistResponseFormatsStage.defaultProps = {
   onSubmit: () => {},

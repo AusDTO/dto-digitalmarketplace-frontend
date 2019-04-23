@@ -14,7 +14,7 @@ import BuyerSpecialistEvaluationCriteriaStage, {
 
 const BuyerSpecialistStages = [
   {
-    slug: 'about',
+    slug: 'introduction',
     title: 'About',
     component: BuyerSpecialistAboutStage,
     isDone: aboutDone

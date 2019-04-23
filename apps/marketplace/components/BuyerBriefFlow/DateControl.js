@@ -20,7 +20,7 @@ const parseValue = value => {
   return date
 }
 
-export class Date extends Component {
+export class DateComponent extends Component {
   constructor(props) {
     super(props)
 
@@ -103,7 +103,7 @@ export class Date extends Component {
   }
 }
 
-Date.defaultProps = {
+DateComponent.defaultProps = {
   onDateChange: () => {},
   value: '',
   label: '',
@@ -111,7 +111,7 @@ Date.defaultProps = {
   description: ''
 }
 
-Date.propTypes = {
+DateComponent.propTypes = {
   onDateChange: PropTypes.func,
   value: PropTypes.string,
   label: PropTypes.string,
@@ -123,7 +123,7 @@ const DateControl = props => (
   <Control
     id={props.id}
     model={props.model}
-    component={Date}
+    component={DateComponent}
     onDateChange={props.onDateChange}
     className={props.className}
     label={props.label}
