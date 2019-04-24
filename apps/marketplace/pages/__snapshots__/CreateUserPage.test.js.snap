@@ -48,7 +48,9 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
               className="au-text-input au-text-input--block"
               disabled={false}
               id="password"
+              max={null}
               maxLength={undefined}
+              min={null}
               name="password"
               onBlur={[Function]}
               onChange={[Function]}
@@ -57,6 +59,7 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
               pattern={null}
               placeholder=""
               readOnly={false}
+              step={null}
               type="password"
               value=""
             />
