@@ -115,8 +115,10 @@ const BuyerSpecialistResponseFormatsStage = props => (
       id="number_of_suppliers"
       htmlFor="number_of_suppliers"
       defaultValue={props[props.model].numberOfSuppliers}
-      maxLength={100}
       validators={{}}
+      type="number"
+      min={1}
+      max={6}
     />
     <div className={styles.formats}>
       <fieldset>
@@ -214,6 +216,8 @@ const BuyerSpecialistResponseFormatsStage = props => (
       defaultValue={props[props.model].maxRate}
       maxLength={100}
       validators={{}}
+      type="number"
+      step="any"
     />
     <RadioList
       id="securityClearance"

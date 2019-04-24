@@ -21,7 +21,10 @@ const Textfield = props => {
     readOnly,
     type,
     defaultValue,
-    placeholder
+    placeholder,
+    step,
+    min,
+    max
   } = props
   return (
     <div className="field">
@@ -52,6 +55,9 @@ const Textfield = props => {
         readOnly={readOnly}
         defaultValue={defaultValue}
         placeholder={placeholder}
+        step={step}
+        min={min}
+        max={max}
       />
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
       {showMaxLength && maxLength && <span className={styles.maxLength}>{maxLength} characters maximum</span>}
@@ -70,7 +76,10 @@ Textfield.defaultProps = {
   disabled: false,
   readOnly: false,
   showMaxLength: false,
-  placeholder: ''
+  placeholder: '',
+  step: null,
+  min: null,
+  max: null
 }
 
 Textfield.propTypes = {
@@ -88,7 +97,10 @@ Textfield.propTypes = {
   readOnly: PropTypes.bool,
   type: PropTypes.string,
   defaultValue: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  step: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number
 }
 
 export default Textfield

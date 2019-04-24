@@ -195,8 +195,9 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                           id={`essential_weighting_${i}`}
                           htmlFor={`essential_weighting_${i}`}
                           defaultValue={essentialRequirements.weighting}
-                          maxLength={3}
                           type="number"
+                          min={1}
+                          max={100}
                         />
                         {i === this.props[this.props.model].essentialRequirements.length - 1 && (
                           <div className={styles.weightingRemaining}>
@@ -284,8 +285,9 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                           id={`nice_to_have_weighting_${i}`}
                           htmlFor={`nice_to_have_weighting_${i}`}
                           defaultValue={niceToHaveRequirements.weighting}
-                          maxLength={3}
                           type="number"
+                          min={1}
+                          max={100}
                         />
                         {i === this.props[this.props.model].niceToHaveRequirements.length - 1 && (
                           <div className={styles.weightingRemaining}>
