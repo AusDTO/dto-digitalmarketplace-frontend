@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import DashBoardLink from './DashBoardLink'
+import HeaderActions from './HeaderActions'
 import logoGovCrest from './Government_crest.svg'
 
 export class Header extends Component {
@@ -57,17 +58,16 @@ export class Header extends Component {
                         </a>
                       )}
                     </li>
+                    {!loggedIn && (
                     <li>
-                      {loggedIn ? (
-                        <a href="/logout">Sign out</a>
-                      ) : (
-                        <a href="/login" className="au-btn au-btn--dark">
-                          Log in
-                        </a>
-                      )}
+                      <a href="/login" className="au-btn au-btn--dark">
+                        Log in
+                      </a>
                     </li>
+                    )}
                   </ul>
                 </div>
+                {loggedIn && <HeaderActions />}
               </div>
             </div>
           </div>
