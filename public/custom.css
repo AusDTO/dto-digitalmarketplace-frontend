@@ -664,6 +664,10 @@ li:first-child.au-marketplace-header-link-list a {
   text-decoration: none;
 }
 
+.au-marketplace-header-actions a.au-accordion__title {
+  background: none;
+}
+
 .au-marketplace-header-goverment-logo {
   vertical-align: middle;
   max-width: 14rem;
