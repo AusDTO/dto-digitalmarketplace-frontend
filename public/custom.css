@@ -659,9 +659,14 @@ li:first-child.au-marketplace-header-link-list a {
   margin: 0px;
 }
 
+.au-marketplace-header-actions {
+  position: relative;
+}
+
 .au-marketplace-header-actions .au-accordion {
   border: 2px solid white;
   border-radius: 4px;
+  position: absolute;
 }
 
 .au-marketplace-header-actions .au-accordion a {
