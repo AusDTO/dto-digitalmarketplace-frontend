@@ -315,13 +315,15 @@ const Opportunity = props => {
           )}
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.workAlreadyDone}</p>}
           {loggedIn &&
-            (canRespond || isBuyer) && (
+            (canRespond || isBuyer) &&
+            (brief.lotSlug !== 'specialist' || brief.attachments.length > 0) && (
               <AUheading level="2" size="lg">
                 Additional information
               </AUheading>
             )}
           {isBriefOwner &&
-            !isOpenToAll && (
+            !isOpenToAll &&
+            (brief.lotSlug !== 'specialist' || brief.attachments.length > 0) && (
               <div className={styles.noticeBar}>
                 <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
                 <span>
@@ -355,39 +357,40 @@ const Opportunity = props => {
                     ))}
                   </ul>
                 )}
-                {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                  <AUheading level="3" size="sm">
-                    What sellers need to submit
-                  </AUheading>
-                )}
-                {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                  <ul className={styles.submitList}>
-                    {brief.responseTemplate.map(responseTemplate => (
-                      <li key={responseTemplate}>
-                        Completed{' '}
-                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
-                      </li>
-                    ))}
-                    {brief.evaluationType.includes('Written proposal') &&
-                      brief.proposalType.length > 0 && (
-                        <li>
-                          Written proposal, including:
-                          <ul>{brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}</ul>
+                {brief.lotSlug !== 'specialist' &&
+                  (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
+                    <AUheading level="3" size="sm">
+                      What sellers need to submit
+                    </AUheading>
+                  )}
+                {brief.lotSlug !== 'specialist' &&
+                  (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
+                    <ul className={styles.submitList}>
+                      {brief.responseTemplate.map(responseTemplate => (
+                        <li key={responseTemplate}>
+                          Completed{' '}
+                          <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
                         </li>
+                      ))}
+                      {brief.evaluationType.includes('Written proposal') &&
+                        brief.proposalType.length > 0 && (
+                          <li>
+                            Written proposal, including:
+                            <ul>
+                              {brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}
+                            </ul>
+                          </li>
+                        )}
+                      {brief.evaluationType.includes('500 word responses to your criteria') && (
+                        <li>500 word responses to your criteria</li>
                       )}
-                    {brief.evaluationType.includes('500 word responses to your criteria') && (
-                      <li>500 word responses to your criteria</li>
-                    )}
-                    {brief.evaluationType.includes('Responses to evaluation criteria') && (
-                      <li>Responses to evaluation criteria</li>
-                    )}
-                    {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
-                    {brief.evaluationType.includes('References') && <li>References</li>}
-                    {brief.evaluationType.includes('Interviews') && <li>Interviews</li>}
-                    {brief.evaluationType.includes('Presentations') && <li>Presentations</li>}
-                    {brief.evaluationType.includes('Case study') && <li>Case study</li>}
-                  </ul>
-                )}
+                      {brief.evaluationType.includes('Responses to evaluation criteria') && (
+                        <li>Responses to evaluation criteria</li>
+                      )}
+                      {brief.evaluationType.includes('Case study') && <li>Case study</li>}
+                      {brief.evaluationType.includes('References') && <li>References</li>}
+                    </ul>
+                  )}
                 {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
                   <AUheading level="3" size="sm">
                     Buyers will later request
@@ -470,6 +473,8 @@ const Opportunity = props => {
             buyerEmail={brief.contactEmail}
             category={category}
             sellerCategory={brief.sellerCategory}
+            evaluationType={brief.evaluationType}
+            numberOfSuppliers={brief.numberOfSuppliers}
           />
         </div>
       </div>
@@ -534,7 +539,7 @@ Opportunity.propTypes = {
     timeframeConstraints: PropTypes.string,
     clarificationQuestions: PropTypes.array,
     clarificationQuestionsAreClosed: PropTypes.bool,
-    maxRate: PropTypes.number,
+    maxRate: PropTypes.string,
     preferredFormatForRates: PropTypes.string,
     securityClearanceObtain: PropTypes.string,
     securityClearanceCurrent: PropTypes.string,
@@ -542,7 +547,8 @@ Opportunity.propTypes = {
     includeWeightingsEssential: PropTypes.bool,
     essentialRequirements: PropTypes.array,
     includeWeightingsNiceToHave: PropTypes.bool,
-    niceToHaveRequirements: PropTypes.array
+    niceToHaveRequirements: PropTypes.array,
+    numberOfSuppliers: PropTypes.string
   }),
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,

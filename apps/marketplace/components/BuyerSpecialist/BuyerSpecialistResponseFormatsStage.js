@@ -111,9 +111,9 @@ const BuyerSpecialistResponseFormatsStage = props => (
     <Textfield
       model={`${props.model}.numberOfSuppliers`}
       label="How many candidates can each seller submit?"
-      name="number_of_suppliers"
-      id="number_of_suppliers"
-      htmlFor="number_of_suppliers"
+      name="numberOfSuppliers"
+      id="numberOfSuppliers"
+      htmlFor="numberOfSuppliers"
       defaultValue={props[props.model].numberOfSuppliers}
       validators={{}}
       type="number"
