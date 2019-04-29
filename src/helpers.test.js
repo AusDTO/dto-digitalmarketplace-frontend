@@ -12,4 +12,5 @@ test('validURL', () => {
   expect(validURL('http://neverssl.com/')).toBeTruthy()
   expect(validURL('ftp://abc')).toBeFalsy()
   expect(validURL('javascript:alert(1)')).toBeFalsy()
+  expect(validURL('/supplier/123')).toBeTruthy()
 })
