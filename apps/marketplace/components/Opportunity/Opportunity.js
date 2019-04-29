@@ -427,7 +427,8 @@ const Opportunity = props => {
           )}
           {brief.lotSlug === 'specialist' &&
             brief.niceToHaveRequirements &&
-            brief.niceToHaveRequirements.length > 0 && (
+            brief.niceToHaveRequirements.length > 0 &&
+            brief.niceToHaveRequirements[0].criteria && (
               <EvaluationCriteria
                 title={'Desirable evaluation criteria'}
                 evaluationCriteria={brief.niceToHaveRequirements}
