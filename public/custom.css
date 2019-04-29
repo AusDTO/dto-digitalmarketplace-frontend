@@ -699,6 +699,17 @@ li:first-child.au-marketplace-header-link-list a {
 }
 
 .au-marketplace-header-actions .au-accordion__body {
+  background-color: #ffffff;
+  width: 10rem;
+}
+
+.au-marketplace-header-actions .au-accordion__body li {
+  list-style-type: none;
+}
+
+.au-marketplace-header-actions .au-accordion__body a {
+  background-color: #ffffff;
+  color: #00698f;
   width: 10rem;
 }
 
