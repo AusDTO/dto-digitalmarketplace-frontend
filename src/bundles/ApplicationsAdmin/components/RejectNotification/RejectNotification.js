@@ -61,40 +61,7 @@ export default class RejectedNotificationForm extends Component {
           <h3 className="au-display-md">
             Reject domain assessment with optional email to seller
           </h3>
-          <b>
-            The email will begin with:
-          </b>
-          <p>
-            <pre>
-              Hi <em>supplier name</em> team,
-              
-              We have completed an assessment you requested under <em>domain name</em> to demonstrate the assessment criteria.
-              
-              Assessment result: Not approved
-              
-              This means you are not currently eligible to respond to opportunities in this category.
-            </pre>
-          </p>
-          <b>
-            Then the following text will be used:
-          </b>
           <textarea value={this.state.message} onChange={this.handleChange}/>
-          <b>
-            Followed by:
-          </b>
-          <p>
-            <pre>
-              If you wish to provide services under <em>domain name</em> through the Marketplace in the future, you must submit a new or updated case study for assessment.
-              
-              Please read our seller guide and consider the assessment criteria for the category before updating your case study.
-
-              If you have any questions or need guideance, contact the Marketplace.
-                            
-              Thank you
-              
-              The Digital Marketplace team
-            </pre>
-          </p>
         </label>
         <div styleName="form-button-group">
           <div styleName="form-button-wrapper">
