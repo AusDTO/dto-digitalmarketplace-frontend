@@ -620,6 +620,10 @@ li:first-child.au-marketplace-header-link-list a {
   color: #ffffff;
 }
 
+.au-marketplace-auth-header {
+  margin-left: auto;
+}
+
 .au-marketplace-header-inline-links {
   padding-left: 0;
   margin-top: 16px;
@@ -660,6 +664,7 @@ li:first-child.au-marketplace-header-link-list a {
 }
 
 .au-marketplace-header-actions {
+  margin: 0 auto 0 2rem;
   position: relative;
 }
 

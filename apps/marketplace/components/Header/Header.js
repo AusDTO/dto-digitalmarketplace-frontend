@@ -47,7 +47,7 @@ export class Header extends Component {
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
               <div className="au-marketplace-header-user-nav">
                 <div id="react-bundle-auth-header-state" />
-                <div id="react-bundle-auth-header">
+                <div id="react-bundle-auth-header" className="au-marketplace-auth-header">
                   <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
                     <li>
                       {loggedIn ? (
