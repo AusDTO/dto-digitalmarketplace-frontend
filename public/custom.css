@@ -676,6 +676,7 @@ li:first-child.au-marketplace-header-link-list a {
 
 .au-marketplace-header-actions a.au-accordion__title {
   background: none;
+  font-size: 1rem;
 }
 
 .au-marketplace-header-actions a.au-accordion__title:after,
