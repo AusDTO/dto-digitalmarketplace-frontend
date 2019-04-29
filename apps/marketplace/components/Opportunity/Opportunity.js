@@ -183,6 +183,20 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
             </div>
+            {brief.lotSlug === 'specialist' && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Maximum rate cap</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">
+                  {'$'}
+                  {brief.maxRate}
+                  {' per '}
+                  {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
+                  {', including GST'}
+                </div>
+              </div>
+            )}
             {brief.lotSlug === 'rfx' && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -212,23 +226,25 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
               </div>
             )}
-            {brief.lotSlug === 'rfx' && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Length of contract</strong>
-                </div>
-                <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
-              </div>
-            )}
-            {brief.lotSlug === 'rfx' &&
-              brief.contractExtensions && (
+            {brief.lotSlug === 'rfx' ||
+              (brief.lotSlug === 'specialist' && (
                 <div className="row">
                   <div className="col-xs-12 col-sm-4">
-                    <strong>Contract extensions</strong>
+                    <strong>Length of contract</strong>
                   </div>
-                  <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+                  <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
                 </div>
-              )}
+              ))}
+            {brief.lotSlug === 'rfx' ||
+              (brief.lotSlug === 'specialist' &&
+                brief.contractExtensions && (
+                  <div className="row">
+                    <div className="col-xs-12 col-sm-4">
+                      <strong>Contract extensions</strong>
+                    </div>
+                    <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+                  </div>
+                ))}
             {brief.lotSlug === 'rfx' &&
               brief.securityClearance && (
                 <div className="row">
@@ -236,6 +252,36 @@ const Opportunity = props => {
                     <strong>Security clearance</strong>
                   </div>
                   <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
+                </div>
+              )}
+            {brief.lotSlug === 'specialist' &&
+              brief.securityClearance && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Security clearance</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">
+                    {brief.securityClearance === 'noneRequired' && 'None required'}
+                    {brief.securityClearance === 'abilityToObtain' && (
+                      <span>
+                        {'Ability to obtain '}
+                        {brief.securityClearanceObtain === 'baseline' && 'baseline clearance'}
+                        {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
+                        {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
+                        {brief.securityClearanceObtain === 'pv' && 'positive vetting'}
+                      </span>
+                    )}
+                    {brief.securityClearance === 'mustHave' && (
+                      <span>
+                        {'Must have '}
+                        {brief.securityClearanceCurrent === 'baseline' && 'baseline clearance'}
+                        {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
+                        {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
+                        {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
+                      </span>
+                    )}
+                    {brief.securityClearance === 'other' && brief.securityClearanceOther}
+                  </div>
                 </div>
               )}
           </div>
@@ -332,9 +378,14 @@ const Opportunity = props => {
                     {brief.evaluationType.includes('500 word responses to your criteria') && (
                       <li>500 word responses to your criteria</li>
                     )}
-                    {brief.evaluationType.includes('Case study') && <li>Case study</li>}
-                    {brief.evaluationType.includes('References') && <li>References</li>}
+                    {brief.evaluationType.includes('Responses to evaluation criteria') && (
+                      <li>Responses to evaluation criteria</li>
+                    )}
                     {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
+                    {brief.evaluationType.includes('References') && <li>References</li>}
+                    {brief.evaluationType.includes('Interviews') && <li>Interviews</li>}
+                    {brief.evaluationType.includes('Presentations') && <li>Presentations</li>}
+                    {brief.evaluationType.includes('Case study') && <li>Case study</li>}
                   </ul>
                 )}
                 {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
@@ -360,11 +411,29 @@ const Opportunity = props => {
                 {brief.industryBriefing && (canRespond || isBriefOwner) && <p>{brief.industryBriefing}</p>}
               </div>
             )}
-          <EvaluationCriteria
-            title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
-            evaluationCriteria={brief.evaluationCriteria}
-            showWeightings={brief.includeWeightings}
-          />
+          {brief.lotSlug !== 'specialist' && (
+            <EvaluationCriteria
+              title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
+              evaluationCriteria={brief.evaluationCriteria}
+              showWeightings={brief.includeWeightings}
+            />
+          )}
+          {brief.lotSlug === 'specialist' && (
+            <EvaluationCriteria
+              title={'Essential evaluation criteria'}
+              evaluationCriteria={brief.essentialRequirements}
+              showWeightings={brief.includeWeightingsEssential}
+            />
+          )}
+          {brief.lotSlug === 'specialist' &&
+            brief.niceToHaveRequirements &&
+            brief.niceToHaveRequirements.length > 0 && (
+              <EvaluationCriteria
+                title={'Desirable evaluation criteria'}
+                evaluationCriteria={brief.niceToHaveRequirements}
+                showWeightings={brief.includeWeightingsNiceToHave}
+              />
+            )}
           <QuestionAnswer
             questions={brief.clarificationQuestions}
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
@@ -463,7 +532,16 @@ Opportunity.propTypes = {
     outcome: PropTypes.string,
     timeframeConstraints: PropTypes.string,
     clarificationQuestions: PropTypes.array,
-    clarificationQuestionsAreClosed: PropTypes.bool
+    clarificationQuestionsAreClosed: PropTypes.bool,
+    maxRate: PropTypes.number,
+    preferredFormatForRates: PropTypes.string,
+    securityClearanceObtain: PropTypes.string,
+    securityClearanceCurrent: PropTypes.string,
+    securityClearanceOther: PropTypes.string,
+    includeWeightingsEssential: PropTypes.bool,
+    essentialRequirements: PropTypes.array,
+    includeWeightingsNiceToHave: PropTypes.bool,
+    niceToHaveRequirements: PropTypes.array
   }),
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,

@@ -44,13 +44,13 @@ export const done = v =>
   requiredSecurityClearanceCurrent(v) &&
   requiredSecurityClearanceOther(v)
 
-const securityClearanceCurrent = props => (
+const securityClearanceDropDown = props => (
   <AUselect
     block
     id={`${props.id}-security-clearance-select`}
     options={[
       {
-        text: 'Select clearance required',
+        text: 'Select security clearance',
         value: ''
       },
       {
@@ -62,7 +62,7 @@ const securityClearanceCurrent = props => (
         value: 'nv1'
       },
       {
-        text: 'Negative Vetting Level 1',
+        text: 'Negative Vetting Level 2',
         value: 'nv2'
       },
       {
@@ -245,10 +245,17 @@ const BuyerSpecialistResponseFormatsStage = props => (
       messages={{}}
       onChange={() => props.securityClearanceChange(`${props.model}.securityClearance`)}
     />
+    {props[props.model].securityClearance === 'abilityToObtain' && (
+      <Control
+        model={`${props.model}.securityClearanceObtain`}
+        component={securityClearanceDropDown}
+        id="securityClearanceObtain"
+      />
+    )}
     {props[props.model].securityClearance === 'mustHave' && (
       <Control
         model={`${props.model}.securityClearanceCurrent`}
-        component={securityClearanceCurrent}
+        component={securityClearanceDropDown}
         id="securityClearanceCurrent"
       />
     )}

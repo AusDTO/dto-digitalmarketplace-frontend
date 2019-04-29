@@ -60,7 +60,7 @@ class OpportunityPage extends Component {
     if (
       this.props.brief &&
       this.props.brief.lot &&
-      (this.props.brief.lot !== 'rfx' && this.props.brief.lot !== 'atm')
+      (this.props.brief.lot !== 'rfx' && this.props.brief.lot !== 'atm' && this.props.brief.lot !== 'specialist')
     ) {
       window.location = `/digital-marketplace/opportunities/${this.props.brief.id}`
       return null

@@ -14,10 +14,10 @@ import styles from './BuyerSpecialistAboutStage.scss'
 
 const requiredTitle = v => required(v.title)
 const requiredOrg = v => required(v.organisation)
-const requiredSpecialistWork = v => required(v.specialistWork)
+const requiredSummary = v => required(v.summary)
 const atLeastOneLocation = v => v.location && v.location.length > 0
 
-export const done = v => requiredTitle(v) && requiredOrg(v) && requiredSpecialistWork(v) && atLeastOneLocation(v)
+export const done = v => requiredTitle(v) && requiredOrg(v) && requiredSummary(v) && atLeastOneLocation(v)
 
 const BuyerSpecialistAboutStage = props => (
   <Form
@@ -26,7 +26,7 @@ const BuyerSpecialistAboutStage = props => (
       '': {
         requiredTitle,
         requiredOrg,
-        requiredSpecialistWork,
+        requiredSummary,
         atLeastOneLocation
       }
     }}
@@ -43,7 +43,7 @@ const BuyerSpecialistAboutStage = props => (
       messages={{
         requiredTitle: 'Enter the title for your brief',
         requiredOrg: 'Enter the name of your organisation',
-        requiredSpecialistWork: 'Enter what will the specialist do of your brief',
+        requiredSummary: 'Enter what will the specialist do of your brief',
         atLeastOneLocation: 'You must select at least one location'
       }}
     />
@@ -76,13 +76,13 @@ const BuyerSpecialistAboutStage = props => (
       }}
     />
     <Textarea
-      model={`${props.model}.specialistWork`}
+      model={`${props.model}.summary`}
       label="What will the specialist do?"
       description="This can include the responsibilities of the specialist and expected deliverables."
-      name="specialistWork"
-      id="specialistWork"
-      htmlFor="specialistWork"
-      defaultValue={props[props.model].specialistWork}
+      name="summary"
+      id="summary"
+      htmlFor="summary"
+      defaultValue={props[props.model].summary}
       controlProps={{ limit: 1000 }}
       validators={{
         required
