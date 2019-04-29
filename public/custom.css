@@ -707,6 +707,7 @@ li:first-child.au-marketplace-header-link-list a {
 }
 
 .au-marketplace-header-user-nav {
+  display: flex;
   text-align: right;
 }
 
