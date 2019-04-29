@@ -4,7 +4,7 @@ import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 
 const HeaderActions = () => (
   <div className="au-marketplace-header-actions">
-    <AUaccordion header="DHS" speed={0.2}>
+    <AUaccordion header="Menu" speed={0.2}>
       <ul>
         <li>
           <a href="">Teams and people</a>
