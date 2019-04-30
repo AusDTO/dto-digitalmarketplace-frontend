@@ -711,6 +711,10 @@ li:first-child.au-marketplace-header-link-list a {
   list-style-type: none;
 }
 
+.au-marketplace-header-actions .au-accordion__body ul:not([class]) > li {
+  margin: 0;
+}
+
 .au-marketplace-header-actions .au-accordion__body a {
   background-color: #ffffff;
   color: #00698f;
