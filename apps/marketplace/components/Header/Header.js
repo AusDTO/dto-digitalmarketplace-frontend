@@ -58,16 +58,22 @@ export class Header extends Component {
                         </a>
                       )}
                     </li>
+                    {loggedIn &&
+                      userType === 'supplier' && (
+                        <li>
+                          <a href="/logout">Sign out</a>
+                        </li>
+                      )}
                     {!loggedIn && (
-                    <li>
-                      <a href="/login" className="au-btn au-btn--dark">
-                        Log in
-                      </a>
-                    </li>
+                      <li>
+                        <a href="/login" className="au-btn au-btn--dark">
+                          Log in
+                        </a>
+                      </li>
                     )}
                   </ul>
                 </div>
-                {loggedIn && <HeaderActions />}
+                {loggedIn && userType === 'buyer' && <HeaderActions />}
               </div>
             </div>
           </div>
