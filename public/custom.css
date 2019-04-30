@@ -703,6 +703,10 @@ li:first-child.au-marketplace-header-link-list a {
   width: 10rem;
 }
 
+.au-marketplace-header-actions .au-accordion__body-wrapper {
+  padding: 0;
+}
+
 .au-marketplace-header-actions .au-accordion__body li {
   list-style-type: none;
 }
