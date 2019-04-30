@@ -700,10 +700,13 @@ li:first-child.au-marketplace-header-link-list a {
 
 .au-marketplace-header-actions .au-accordion__body {
   background-color: #ffffff;
-  width: 10rem;
+  width: 10.5rem;
 }
 
 .au-marketplace-header-actions .au-accordion__body-wrapper {
+  border: 2px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
   padding: 0;
 }
 
