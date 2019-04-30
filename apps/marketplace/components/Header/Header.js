@@ -77,7 +77,7 @@ export class Header extends Component {
                     )}
                   </ul>
                 </div>
-                {loggedIn && userType === 'buyer' && <HeaderActions />}
+                {loggedIn && <HeaderActions />}
               </div>
             </div>
           </div>
