@@ -714,6 +714,8 @@ li:first-child.au-marketplace-header-link-list a {
 .au-marketplace-header-actions .au-accordion__body a {
   background-color: #ffffff;
   color: #00698f;
+  display: block;
+  padding: 0.75rem;
   width: 10rem;
 }
 
