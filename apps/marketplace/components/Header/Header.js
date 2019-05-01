@@ -46,7 +46,7 @@ export class Header extends Component {
             </div>
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
               <div className="au-marketplace-header-user-nav">
-                <HeaderActions />
+                <HeaderActions loggedIn={loggedIn} userType={userType} />
               </div>
             </div>
           </div>
