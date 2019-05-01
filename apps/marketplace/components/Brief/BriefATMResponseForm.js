@@ -14,6 +14,7 @@ import Textarea from 'shared/form/Textarea'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
+import styles from './BriefATMResponseForm.scss'
 
 const briefRequiresDocumentUpload = brief => {
   let mustUpload = false
@@ -158,7 +159,9 @@ export class BriefATMResponseForm extends Component {
                   <AUheading level="2" size="sm">
                     Additional documents (optional)
                   </AUheading>
-                  <p>If requested by the buyer, you can upload additional documents.</p>
+                  <small className={styles.smallText}>
+                    If requested by the buyer, you can upload additional documents
+                  </small>
                   {range(this.state.fileCount).map(i => {
                     const index = briefRequiresDocumentUpload(brief) ? i + 1 : i
                     return (

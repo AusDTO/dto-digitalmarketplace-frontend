@@ -13,6 +13,7 @@ import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
+import styles from './BriefRFXResponseForm.scss'
 
 export class BriefRFXResponseForm extends Component {
   constructor(props) {
@@ -140,7 +141,9 @@ export class BriefRFXResponseForm extends Component {
                   <AUheading level="2" size="sm">
                     Additional documents (optional)
                   </AUheading>
-                  <p>If requested by the buyer, you can upload additional documents.</p>
+                  <small className={styles.smallText}>
+                    If requested by the buyer, you can upload additional documents
+                  </small>
                   {this.state.fileCount > 0 &&
                     range(this.state.fileCount - this.getBriefEvalualtionTypesForUpload().length).map(i => {
                       const index = this.getBriefEvalualtionTypesForUpload().length + i
