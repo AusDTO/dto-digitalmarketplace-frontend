@@ -23,6 +23,7 @@ const HeaderActions = props => {
 }
 
 HeaderActions.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
   userType: PropTypes.string.isRequired
 }
 
