@@ -4,14 +4,20 @@ import PropTypes from 'prop-types'
 import ApplicantHeaderActions from './ApplicantHeaderActions'
 import BuyerHeaderActions from './BuyerHeaderActions'
 import SellerHeaderActions from './SellerHeaderActions'
+import UnauthenticatedHeaderActions from './UnauthenticatedHeaderActions'
 
 const HeaderActions = props => {
-  const { userType } = props
+  const { loggedIn, userType } = props
+
   return (
     <div className="au-marketplace-header-actions">
-      {userType === 'applicant' && <ApplicantHeaderActions />}
-      {userType === 'buyer' && <BuyerHeaderActions />}
-      {userType === 'seller' && <SellerHeaderActions />}
+      {loggedIn ? (
+        (userType === 'applicant' && <ApplicantHeaderActions />) ||
+        (userType === 'buyer' && <BuyerHeaderActions />) ||
+        (userType === 'seller' && <SellerHeaderActions />)
+      ) : (
+        <UnauthenticatedHeaderActions />
+      )}
     </div>
   )
 }
