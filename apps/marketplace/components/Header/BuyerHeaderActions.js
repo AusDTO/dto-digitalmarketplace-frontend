@@ -1,10 +1,14 @@
 import React from 'react'
 
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
+import { rootPath } from 'marketplace/routes'
 
 const BuyerHeaderActions = () => (
   <AUaccordion header="Menu" speed={0.2}>
     <ul>
+      <li>
+        <a href={`${rootPath}/buyer-dashboard`}>Dashboard</a>
+      </li>
       <li>
         <a href="">Teams and people</a>
       </li>
