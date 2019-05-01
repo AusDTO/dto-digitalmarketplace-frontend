@@ -14,7 +14,7 @@ const HeaderActions = props => {
       {loggedIn ? (
         (userType === 'applicant' && <ApplicantHeaderActions />) ||
         (userType === 'buyer' && <BuyerHeaderActions />) ||
-        (userType === 'seller' && <SellerHeaderActions />)
+        (userType === 'supplier' && <SellerHeaderActions />)
       ) : (
         <UnauthenticatedHeaderActions />
       )}
