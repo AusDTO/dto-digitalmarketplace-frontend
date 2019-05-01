@@ -663,19 +663,11 @@ li:first-child.au-marketplace-header-link-list a {
   margin: 0px;
 }
 
-.au-marketplace-header-buyer-nav {
-  display: flex;
-}
-
-.au-marketplace-header-actions {
-  margin: 0 10rem 0 2rem;
-  position: relative;
-}
-
 .au-marketplace-header-actions .au-accordion {
   border: 2px solid #ffffff;
   border-radius: 4px;
   position: absolute;
+  right: 0;
   text-align: left;
   z-index: 1;
 }
