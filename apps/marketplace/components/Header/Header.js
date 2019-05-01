@@ -45,39 +45,8 @@ export class Header extends Component {
               </a>
             </div>
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
-              <div
-                className={`au-marketplace-header-user-nav ${
-                  userType === 'buyer' ? 'au-marketplace-header-buyer-nav' : ''
-                }`}
-              >
-                <div id="react-bundle-auth-header-state" />
-                <div id="react-bundle-auth-header" className="au-marketplace-auth-header">
-                  <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-                    <li>
-                      {loggedIn ? (
-                        <DashBoardLink userType={userType} />
-                      ) : (
-                        <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
-                          Sign up
-                        </a>
-                      )}
-                    </li>
-                    {loggedIn &&
-                      userType === 'supplier' && (
-                        <li>
-                          <a href="/logout">Sign out</a>
-                        </li>
-                      )}
-                    {!loggedIn && (
-                      <li>
-                        <a href="/login" className="au-btn au-btn--dark">
-                          Log in
-                        </a>
-                      </li>
-                    )}
-                  </ul>
-                </div>
-                {loggedIn && <HeaderActions />}
+              <div className="au-marketplace-header-user-nav">
+                <HeaderActions />
               </div>
             </div>
           </div>
