@@ -26,6 +26,22 @@ class Header extends React.Component {
   }
 
   render() {
+    const buyerHeaderActions = (
+      <AUaccordion header="Menu" speed={0.2}>
+        <ul>
+          <li>
+            <a href="/2/buyer-dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="">Teams and people</a>
+          </li>
+          <li>
+            <a href="/logout">Sign out</a>
+          </li>
+        </ul>
+      </AUaccordion>
+    )
+
     return (
       <section className="au-marketplace-header">
         <div className="wrapper">
@@ -42,16 +58,8 @@ class Header extends React.Component {
             </div>
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
               <div className="au-marketplace-header-user-nav">
-                <div id="react-bundle-auth-header-state" />
-                <div id="react-bundle-auth-header">
-                  <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-                    <li>
-                      {this.props.isAuthenticated ? <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
-                    </li>
-                    <li>
-                      {this.props.isAuthenticated ? <a href={this.props.logoutUrl}>Sign out</a> : <a href="/login" className="au-btn au-btn--dark">Log in</a>}
-                    </li>
-                  </ul>
+                <div className="au-marketplace-header-actions">
+                  {this.props.userType === 'buyer' && buyerHeaderActions}
                 </div>
               </div>
             </div>
@@ -171,7 +179,8 @@ const mapStateToProps = (state) => {
     loginUrl: state.loginUrl,
     dashboardUrl: state.dashboardUrl,
     logoutUrl: state.logoutUrl,
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.isAuthenticated,
+    userType: state.userType
   };
 };
 
