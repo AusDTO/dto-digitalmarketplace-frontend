@@ -207,7 +207,8 @@ Header.propTypes = {
   loginUrl: PropTypes.string,
   dashboardUrl: PropTypes.string,
   logoutUrl: PropTypes.string,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  userType: PropTypes.string
 }
 
 Header.defaultProps = {
