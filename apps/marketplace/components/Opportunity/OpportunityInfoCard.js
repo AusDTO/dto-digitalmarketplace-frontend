@@ -36,24 +36,6 @@ const OpportunityInfoCard = props => (
           )}
       </div>
     </div>
-
-    {props.briefLot === 'specialist' && (
-      <div className="row">
-        <div className="col-xs-12">
-          Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role. They must submit:
-          <ul>
-            {props.evaluationType.includes('Responses to evaluation criteria') && (
-              <li>Responses to evaluation criteria</li>
-            )}
-            {props.evaluationType.includes('Résumés') && <li>Résumés</li>}
-            {props.evaluationType.includes('References') && <li>References</li>}
-            {props.evaluationType.includes('Interviews') && <li>Interviews</li>}
-            {props.evaluationType.includes('Presentations') && <li>Presentations</li>}
-            {props.evaluationType.includes('Case study') && <li>Case study</li>}
-          </ul>
-        </div>
-      </div>
-    )}
     <div className="row">
       <div className="col-xs-12">
         {!props.isOpen &&
@@ -290,9 +272,7 @@ OpportunityInfoCard.defaultProps = {
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
-  isBriefOwner: false,
-  evaluationType: [],
-  numberOfSuppliers: ''
+  isBriefOwner: false
 }
 
 OpportunityInfoCard.propTypes = {
@@ -321,9 +301,7 @@ OpportunityInfoCard.propTypes = {
   briefLot: PropTypes.string.isRequired,
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
-  sellerCategory: PropTypes.string.isRequired,
-  evaluationType: PropTypes.array,
-  numberOfSuppliers: PropTypes.string
+  sellerCategory: PropTypes.string.isRequired
 }
 
 export default OpportunityInfoCard
