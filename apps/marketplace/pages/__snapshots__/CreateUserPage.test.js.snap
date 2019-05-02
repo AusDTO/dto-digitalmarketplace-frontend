@@ -43,26 +43,30 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
             >
               At least 10 characters
             </div>
-            <input
-              aria-describedby="password-label"
-              className="au-text-input au-text-input--block"
-              disabled={false}
-              id="password"
-              max={null}
-              maxLength={undefined}
-              min={null}
-              name="password"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={null}
-              placeholder=""
-              readOnly={false}
-              step={null}
-              type="password"
-              value=""
-            />
+            <div
+              className="table"
+            >
+              <input
+                aria-describedby="password-label"
+                className="au-text-input au-text-input--block"
+                disabled={false}
+                id="password"
+                max={null}
+                maxLength={undefined}
+                min={null}
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyPress={[Function]}
+                pattern={null}
+                placeholder=""
+                readOnly={false}
+                step={null}
+                type="password"
+                value=""
+              />
+            </div>
           </div>
           <label
             className="au-control-input"

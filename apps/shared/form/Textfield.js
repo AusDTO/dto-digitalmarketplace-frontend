@@ -41,11 +41,7 @@ const Textfield = props => {
         </div>
       )}
       <div className={styles.table}>
-        {prefix &&
-          <span className={styles.prefix}>
-            {prefix}
-          </span>
-        }
+        {prefix && <span className={styles.prefix}>{prefix}</span>}
         <Control.input
           model={model}
           name={name}
@@ -70,11 +66,7 @@ const Textfield = props => {
           max={max}
           onChange={onChange}
         />
-        {postfix &&
-          <span className={styles.postfix}>
-            {postfix}
-          </span>
-        }
+        {postfix && <span className={styles.postfix}>{postfix}</span>}
       </div>
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
       {showMaxLength && maxLength && <span className={styles.maxLength}>{maxLength} characters maximum</span>}
