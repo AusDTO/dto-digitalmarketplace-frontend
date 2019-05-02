@@ -15,7 +15,7 @@ describe('BriefSpecialistResponseSubmitted', () => {
   test('shows button when 1 submitted response', () => {
     const tree = mount(
       <Provider store={store}>
-        <BriefSpecialistResponseSubmitted2 briefResponses={['test']} brief={{ applicationsClosedAt: '3/15/2018' }} />
+        <BriefSpecialistResponseSubmitted2 briefResponses={['test']} brief={{ applicationsClosedAt: '3/15/2018', numberOfSuppliers: '3' }} />
       </Provider>
     )
 

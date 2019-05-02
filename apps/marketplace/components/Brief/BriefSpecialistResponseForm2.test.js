@@ -14,7 +14,7 @@ describe('BriefSpecialistResponseForm2', () => {
     const tree = mount(
       <Provider store={store}>
         <BriefSpecialistResponseForm2
-          brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018' }}
+          brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '3' }}
           specialistNumber={1}
         />
       </Provider>
@@ -59,6 +59,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistSurname="Doe"
           specialistNumber={1}
           app={{ supplierCode: 1 }}
+          brief={{ numberOfSuppliers: '3' }}
         />
       </Provider>
     )
@@ -97,6 +98,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistSurname="Doe"
           specialistNumber={3}
           app={{ supplierCode: 1 }}
+          brief={{ numberOfSuppliers: '3' }}
         />
       </Provider>
     )
