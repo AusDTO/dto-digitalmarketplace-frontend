@@ -218,6 +218,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
       validators={{}}
       type="number"
       step="any"
+      prefix={'$'}
     />
     <RadioList
       id="securityClearance"

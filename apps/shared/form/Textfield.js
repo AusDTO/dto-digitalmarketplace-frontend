@@ -40,32 +40,42 @@ const Textfield = props => {
           {description}
         </div>
       )}
-      {prefix}
-      <Control.input
-        model={model}
-        name={name}
-        id={id}
-        type={type}
-        aria-describedby={`${id}-label`}
-        mapProps={{
-          className: ({ fieldValue }) =>
-            !fieldValue.valid && fieldValue.touched
-              ? 'au-text-input--invalid au-text-input au-text-input--block'
-              : 'au-text-input au-text-input--block'
-        }}
-        validators={validators}
-        pattern={pattern}
-        maxLength={maxLength}
-        disabled={disabled}
-        readOnly={readOnly}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        step={step}
-        min={min}
-        max={max}
-        onChange={onChange}
-      />
-      {postfix}
+      <div className={styles.table}>
+        {prefix &&
+          <span className={styles.prefix}>
+            {prefix}
+          </span>
+        }
+        <Control.input
+          model={model}
+          name={name}
+          id={id}
+          type={type}
+          aria-describedby={`${id}-label`}
+          mapProps={{
+            className: ({ fieldValue }) =>
+              !fieldValue.valid && fieldValue.touched
+                ? 'au-text-input--invalid au-text-input au-text-input--block'
+                : 'au-text-input au-text-input--block'
+          }}
+          validators={validators}
+          pattern={pattern}
+          maxLength={maxLength}
+          disabled={disabled}
+          readOnly={readOnly}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          step={step}
+          min={min}
+          max={max}
+          onChange={onChange}
+        />
+        {postfix &&
+          <span className={styles.postfix}>
+            {postfix}
+          </span>
+        }
+      </div>
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
       {showMaxLength && maxLength && <span className={styles.maxLength}>{maxLength} characters maximum</span>}
     </div>

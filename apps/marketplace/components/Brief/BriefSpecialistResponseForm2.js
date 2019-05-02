@@ -191,6 +191,7 @@ const BriefSpecialistResponseForm2 = ({
                           validPercentage: 'Enter only numbers eg. 600.00'
                         }}
                         onChange={data => onRateChange('hourRate', data.target.value)}
+                        prefix={'$'}
                       />
                     </div>
                     <div className="col-sm-6">
