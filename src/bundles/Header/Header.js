@@ -42,6 +42,21 @@ class Header extends React.Component {
       </AUaccordion>
     )
 
+    const unauthenticatedHeaderActions = (
+      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
+        <li>
+          <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
+            Sign up
+          </a>
+        </li>
+        <li>
+          <a href="/login" className="au-btn au-btn--dark">
+            Log in
+          </a>
+        </li>
+      </ul>
+    )
+
     return (
       <section className="au-marketplace-header">
         <div className="wrapper">
@@ -59,7 +74,11 @@ class Header extends React.Component {
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
               <div className="au-marketplace-header-user-nav">
                 <div className="au-marketplace-header-actions">
-                  {this.props.userType === 'buyer' && buyerHeaderActions}
+                  {this.props.isAuthenticated ? (
+                    (this.props.userType === 'buyer' && buyerHeaderActions)
+                  ) : (
+                    unauthenticatedHeaderActions
+                  )}
                 </div>
               </div>
             </div>
