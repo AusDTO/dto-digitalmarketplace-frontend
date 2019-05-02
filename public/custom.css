@@ -666,6 +666,7 @@ li:first-child.au-marketplace-header-link-list a {
 .au-marketplace-header-actions .au-accordion {
   border: 2px solid #ffffff;
   border-radius: 4px;
+  min-width: 10.5rem;
   position: absolute;
   right: 0;
   text-align: left;
