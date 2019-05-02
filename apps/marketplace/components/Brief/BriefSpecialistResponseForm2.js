@@ -19,8 +19,6 @@ import dmapi from 'marketplace/services/apiClient'
 
 import styles from './BriefSpecialistResponseForm2.scss'
 
-const MaxSpecialists = 3
-
 const BriefSpecialistResponseForm2 = ({
   model,
   brief,
@@ -48,8 +46,8 @@ const BriefSpecialistResponseForm2 = ({
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length >= MaxSpecialists ? (
-            <Redirect to={`${match.url}/specialist/respond/submitted`} />
+          {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length >= brief.numberOfSuppliers ? (
+            <Redirect to={`${match.url}/specialist2/respond/submitted`} />
           ) : (
             ''
           )}
@@ -67,7 +65,7 @@ const BriefSpecialistResponseForm2 = ({
                 <div>
                   <h1 className="au-display-xl">Apply for &lsquo;{brief.title}&rsquo;</h1>
                   <p>
-                    You can submit up to {MaxSpecialists} candidates for this role. This opportunity closes on{' '}
+                    You can submit up to {brief.numberOfSuppliers} candidates for this role. This opportunity closes on{' '}
                     {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.
                   </p>
                   <br />
@@ -120,7 +118,7 @@ const BriefSpecialistResponseForm2 = ({
           ) : (
             <div>
               <div className={styles.stepTitle}>
-                Specialist {specialistNumber} of {MaxSpecialists}
+                Specialist {specialistNumber} of {brief.numberOfSuppliers}
               </div>
               <h1 className="au-display-xl">{`${specialistGivenNames} ${specialistSurname}`}</h1>
               <h2 className="au-display-lg">About</h2>
@@ -394,7 +392,7 @@ const BriefSpecialistResponseForm2 = ({
                         submitClicked(e)
                       }}
                     />
-                    {specialistNumber < MaxSpecialists && (
+                    {specialistNumber < brief.numberOfSuppliers && (
                       <input
                         className="au-btn au-btn--secondary"
                         type="submit"

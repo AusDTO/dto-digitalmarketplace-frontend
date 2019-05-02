@@ -20,17 +20,18 @@ const BriefSpecialistResponseSubmitted2 = ({ setFocus, briefResponses, brief, ma
               </strong>
             </h1>
             <p>
-              {briefResponses.length < 3
-                ? `You can submit ${3 - briefResponses.length} more before the closing date (${format(
+              {briefResponses.length < parseInt(brief.numberOfSuppliers, 10)
+                ? `You can submit ${parseInt(brief.numberOfSuppliers, 10) -
+                    briefResponses.length} more before the closing date (${format(
                     new Date(brief.applicationsClosedAt),
                     'MMMM Do, YYYY'
                   )})`
                 : `This opportunity closes on ${format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')}`}
             </p>
           </AUpageAlert>
-          {briefResponses.length < 3 && (
+          {briefResponses.length < parseInt(brief.numberOfSuppliers, 10) && (
             <p>
-              <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist/respond`}>
+              <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist2/respond`}>
                 Add another specialist
               </a>
             </p>

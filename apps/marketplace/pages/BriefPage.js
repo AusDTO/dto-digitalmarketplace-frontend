@@ -80,13 +80,24 @@ class BriefPage extends Component {
       attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
       availability: values.availability,
       specialistName: values.specialistName ? values.specialistName : null,
-      dayRate: values.dayRate,
+      specialistGivenNames: values.specialistGivenNames ? values.specialistGivenNames : null,
+      specialistSurname: values.specialistSurname ? values.specialistSurname : null,
+      dayRate: values.dayRate ? values.dayRate : null,
+      hourRate: values.hourRate ? values.hourRate : null,
       essentialRequirements: values.essentialRequirements,
       niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null,
-      respondToEmailAddress: values.respondToEmailAddress ? values.respondToEmailAddress : null
+      respondToEmailAddress: values.respondToEmailAddress ? values.respondToEmailAddress : null,
+      visaStatus: values.visaStatus ? values.visaStatus : null,
+      securityClearance: values.securityClearance ? values.securityClearance : null,
+      previouslyWorked: values.previouslyWorked ? values.previouslyWorked : null
     }
     if (values.addAnother) {
-      this.props.handleBriefNameSubmit('')
+      if (values.specialistName) {
+        this.props.handleBriefNameSubmit('')
+      } else if (values.specialistSurname && values.specialistGivenNames) {
+        this.props.handleBriefNameSplitSubmit('', '')
+      }
+
       this.props.handleSpecialistNumberSubmit(1)
     }
 
