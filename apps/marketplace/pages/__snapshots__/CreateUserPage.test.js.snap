@@ -28,7 +28,7 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
           onSubmit={[Function]}
         >
           <div
-            className="field"
+            className="field "
           >
             <label
               className="question-heading au-text-input__label"

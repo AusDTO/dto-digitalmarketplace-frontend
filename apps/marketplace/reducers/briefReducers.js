@@ -6,6 +6,7 @@ import {
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
   SPECIALIST_NAME,
+  SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
   BRIEF_OVERVIEW_SUCCESS,
@@ -20,6 +21,8 @@ const defaultBriefState = {
   brief: {},
   briefResponses: [],
   specialistName: '',
+  specialistGivenNames: '',
+  specialistSurname: '',
   specialistNumber: 1,
   addAnotherSpecialist: false,
   overview: {
@@ -44,7 +47,8 @@ const defaultBriefState = {
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
   hasResponded: false,
-  domains: []
+  domains: [],
+  hasSupplierErrors: false
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -89,7 +93,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         hasResponded: action.hasResponded,
         domains: action.domains,
         loadBriefSuccess: true,
-        loadedAt: new Date().valueOf()
+        loadedAt: new Date().valueOf(),
+        hasSupplierErrors: action.hasSupplierErrors
       }
 
     case BRIEF_SAVE_SUCCESS:
@@ -126,6 +131,12 @@ const briefReducer = (state = defaultBriefState, action) => {
       return {
         ...state,
         specialistName: action.specialistName
+      }
+    case SPECIALIST_NAME_SPLIT:
+      return {
+        ...state,
+        specialistGivenNames: action.specialistGivenNames,
+        specialistSurname: action.specialistSurname
       }
 
     case SPECIALIST_NUMBER:

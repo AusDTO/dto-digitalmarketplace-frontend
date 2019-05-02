@@ -9,6 +9,7 @@ import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
+import OpportunitySpecialistInfoCard from './OpportunitySpecialistInfoCard'
 import styles from './Opportunity.scss'
 
 // defining default brief data up here so render() has access to it
@@ -98,7 +99,8 @@ const Opportunity = props => {
     isAwaitingApplicationAssessment,
     isAwaitingDomainAssessment,
     hasBeenAssessedForBrief,
-    domains
+    domains,
+    hasSupplierErrors
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
@@ -446,36 +448,66 @@ const Opportunity = props => {
           />
         </div>
         <div className="col-xs-12 col-md-4">
-          <OpportunityInfoCard
-            sellersInvited={invitedSellerCount}
-            sellersApplied={briefResponseCount}
-            isOpen={brief.status === 'live'}
-            closingDate={getClosingTime(brief)}
-            canRespond={canRespond}
-            isOpenToAll={isOpenToAll}
-            isAssessedForCategory={isAssessedForCategory}
-            isAssessedForAnyCategory={isAssessedForAnyCategory}
-            hasChosenBriefCategory={hasChosenBriefCategory}
-            isOpenToCategory={isOpenToCategory}
-            hasResponded={hasResponded}
-            briefId={brief.id}
-            briefLot={brief.lotSlug}
-            briefStatus={brief.status}
-            loggedIn={loggedIn}
-            isBuyer={isBuyer}
-            isApprovedSeller={isApprovedSeller}
-            isApplicant={isApplicant}
-            isRecruiterOnly={isRecruiterOnly}
-            isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
-            isAwaitingDomainAssessment={isAwaitingDomainAssessment}
-            hasBeenAssessedForBrief={hasBeenAssessedForBrief}
-            isBriefOwner={isBriefOwner}
-            buyerEmail={brief.contactEmail}
-            category={category}
-            sellerCategory={brief.sellerCategory}
-            evaluationType={brief.evaluationType}
-            numberOfSuppliers={brief.numberOfSuppliers}
-          />
+          {brief.lotSlug === 'specialist' ? (
+            <OpportunitySpecialistInfoCard
+              sellersInvited={invitedSellerCount}
+              sellersApplied={briefResponseCount}
+              isOpen={brief.status === 'live'}
+              closingDate={getClosingTime(brief)}
+              canRespond={canRespond}
+              isOpenToAll={isOpenToAll}
+              isAssessedForCategory={isAssessedForCategory}
+              hasChosenBriefCategory={hasChosenBriefCategory}
+              isOpenToCategory={isOpenToCategory}
+              hasResponded={hasResponded}
+              briefId={brief.id}
+              briefLot={brief.lotSlug}
+              briefStatus={brief.status}
+              loggedIn={loggedIn}
+              isBuyer={isBuyer}
+              isApprovedSeller={isApprovedSeller}
+              isApplicant={isApplicant}
+              isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
+              isAwaitingDomainAssessment={isAwaitingDomainAssessment}
+              hasBeenAssessedForBrief={hasBeenAssessedForBrief}
+              isBriefOwner={isBriefOwner}
+              buyerEmail={brief.contactEmail}
+              category={category}
+              sellerCategory={brief.sellerCategory}
+              evaluationType={brief.evaluationType}
+              numberOfSuppliers={brief.numberOfSuppliers}
+              hasSupplierErrors={hasSupplierErrors}
+            />
+          ) : (
+            <OpportunityInfoCard
+              sellersInvited={invitedSellerCount}
+              sellersApplied={briefResponseCount}
+              isOpen={brief.status === 'live'}
+              closingDate={getClosingTime(brief)}
+              canRespond={canRespond}
+              isOpenToAll={isOpenToAll}
+              isAssessedForCategory={isAssessedForCategory}
+              isAssessedForAnyCategory={isAssessedForAnyCategory}
+              hasChosenBriefCategory={hasChosenBriefCategory}
+              isOpenToCategory={isOpenToCategory}
+              hasResponded={hasResponded}
+              briefId={brief.id}
+              briefLot={brief.lotSlug}
+              briefStatus={brief.status}
+              loggedIn={loggedIn}
+              isBuyer={isBuyer}
+              isApprovedSeller={isApprovedSeller}
+              isApplicant={isApplicant}
+              isRecruiterOnly={isRecruiterOnly}
+              isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
+              isAwaitingDomainAssessment={isAwaitingDomainAssessment}
+              hasBeenAssessedForBrief={hasBeenAssessedForBrief}
+              isBriefOwner={isBriefOwner}
+              buyerEmail={brief.contactEmail}
+              category={category}
+              sellerCategory={brief.sellerCategory}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -502,7 +534,8 @@ Opportunity.defaultProps = {
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
   hasResponded: false,
-  loggedIn: false
+  loggedIn: false,
+  hasSupplierErrors: false
 }
 
 Opportunity.propTypes = {
@@ -568,7 +601,8 @@ Opportunity.propTypes = {
   isAwaitingDomainAssessment: PropTypes.bool,
   hasBeenAssessedForBrief: PropTypes.bool,
   hasResponded: PropTypes.bool,
-  loggedIn: PropTypes.bool
+  loggedIn: PropTypes.bool,
+  hasSupplierErrors: PropTypes.bool
 }
 
 export default Opportunity

@@ -101,6 +101,7 @@ class OpportunityPage extends Component {
           hasBeenAssessedForBrief={this.props.hasBeenAssessedForBrief}
           hasResponded={this.props.hasResponded}
           loggedIn={this.props.loggedIn}
+          hasSupplierErrors={this.props.hasSupplierErrors}
         />
       )
     }
@@ -131,7 +132,8 @@ const mapResetStateToProps = state => ({
   hasBeenAssessedForBrief: state.brief.hasBeenAssessedForBrief,
   hasResponded: state.brief.hasResponded,
   errorMessage: state.app.errorMessage,
-  loggedIn: state.app.loggedIn
+  loggedIn: state.app.loggedIn,
+  hasSupplierErrors: state.brief.hasSupplierErrors
 })
 
 const mapResetDispatchToProps = dispatch => ({

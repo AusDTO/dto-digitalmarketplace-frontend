@@ -9,6 +9,7 @@ import {
   BRIEF_SPECIALIST_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
+  SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
@@ -105,7 +106,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   isAwaitingDomainAssessment: response.data.is_awaiting_domain_assessment,
   hasBeenAssessedForBrief: response.data.has_been_assessed_for_brief,
   hasResponded: response.data.has_responded,
-  domains: response.data.domains
+  domains: response.data.domains,
+  hasSupplierErrors: response.data.has_supplier_errors
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -282,6 +284,14 @@ export const handleBriefResponseSubmit = (briefId, model) => (dispatch, getState
 
 export function handleBriefNameSubmit(specialistName) {
   return { type: SPECIALIST_NAME, specialistName }
+}
+
+export function handleBriefNameSplitSubmit(specialistGivenNames, specialistSurname) {
+  return {
+    type: SPECIALIST_NAME_SPLIT,
+    specialistGivenNames,
+    specialistSurname
+  }
 }
 
 export function handleSpecialistNumberSubmit(specialistNumber) {

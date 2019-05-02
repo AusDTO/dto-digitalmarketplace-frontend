@@ -8,6 +8,7 @@ import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
+import BriefSpecialistResponseForm2 from 'marketplace/components/Brief/BriefSpecialistResponseForm2'
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import BriefTrainingResponseSubmitted from 'marketplace/components/Brief/BriefTrainingResponseSubmitted'
 import BriefRFXResponseForm from 'marketplace/components/Brief/BriefRFXResponseForm'
@@ -19,11 +20,13 @@ import {
   loadBrief,
   handleBriefResponseSubmit,
   handleBriefNameSubmit,
+  handleBriefNameSplitSubmit,
   addAnotherSpecialistSubmit,
   handleSpecialistNumberSubmit
 } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted'
+import BriefSpecialistResponseSubmitted2 from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted2'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
@@ -34,7 +37,8 @@ class BriefPage extends Component {
     super(props)
     this.state = {
       submitClicked: null,
-      loadingText: null
+      loadingText: null,
+      otherDocumentFileCount: 2
     }
   }
 
@@ -99,6 +103,12 @@ class BriefPage extends Component {
     window.scrollTo(0, 0)
   }
 
+  handleBriefNameSplitSubmit = (giventNames, surname) => {
+    this.props.handleBriefNameSplitSubmit(giventNames, surname)
+    this.props.setInitial(this.props.model)
+    window.scrollTo(0, 0)
+  }
+
   showTrainingResumesFileUpload = () =>
     typeof this.props.brief.evaluationTypeSellerSubmissions !== 'undefined' &&
     this.props.brief.evaluationTypeSellerSubmissions.includes('Trainer résumés')
@@ -149,6 +159,17 @@ class BriefPage extends Component {
               )}
             />
             <Route
+              path={`${match.url}/specialist2/respond/submitted`}
+              render={() => (
+                <BriefSpecialistResponseSubmitted2
+                  setFocus={setFocus}
+                  submitClicked={this.state.submitClicked}
+                  handleSubmit={values => this.handleFeedbackSubmit(values)}
+                  {...this.props}
+                />
+              )}
+            />
+            <Route
               path={`${match.url}/respond/submitted`}
               render={() => (
                 <BriefResponseSubmitted
@@ -191,6 +212,38 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       loadingText={this.state.loadingText}
                       uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
+                      {...this.props}
+                    />
+                  ) : (
+                    errorScreen
+                  )}{' '}
+                </span>
+              )}
+            />
+            <Route
+              path={`${match.url}/specialist2/respond`}
+              render={() => (
+                <span>
+                  {loadBriefSuccess ? (
+                    <BriefSpecialistResponseForm2
+                      submitClicked={this.onSpecialistSubmitClicked}
+                      addAnotherClicked={this.onAddAnotherClicked}
+                      handleNameSubmit={(givenNames, surname) => this.handleBriefNameSplitSubmit(givenNames, surname)}
+                      handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
+                      setFocus={setFocus}
+                      loadingText={this.state.loadingText}
+                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
+                      onRateChange={(field, value) =>
+                        this.props.changeModel(`${this.props.model}.${field}`, `${parseFloat(value * 1.1).toFixed(2)}`)
+                      }
+                      fileCount={this.state.otherDocumentFileCount}
+                      addOtherDocument={() => {
+                        this.setState(curState => {
+                          const newState = { ...curState }
+                          newState.otherDocumentFileCount += 1
+                          return newState
+                        })
+                      }}
                       {...this.props}
                     />
                   ) : (
@@ -338,6 +391,8 @@ const mapResetStateToProps = state => ({
   loadBriefSuccess: state.brief.loadBriefSuccess,
   briefResponseSuccess: state.brief.briefResponseSuccess,
   currentlySending: state.app.currentlySending,
+  specialistGivenNames: state.brief.specialistGivenNames,
+  specialistSurname: state.brief.specialistSurname,
   specialistName: state.brief.specialistName,
   specialistNumber: state.brief.specialistNumber,
   addAnotherSpecialist: state.brief.addAnotherSpecialist
@@ -348,6 +403,7 @@ const mapResetDispatchToProps = dispatch => ({
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
+  handleBriefNameSplitSubmit: (givenNames, surname) => dispatch(handleBriefNameSplitSubmit(givenNames, surname)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
   clearModel: model => dispatch(actions.reset(model)),

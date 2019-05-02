@@ -24,10 +24,14 @@ const Textfield = props => {
     placeholder,
     step,
     min,
-    max
+    max,
+    className,
+    prefix,
+    postfix,
+    onChange
   } = props
   return (
-    <div className="field">
+    <div className={`field ${className}`}>
       <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading au-text-input__label">
         {label}
       </label>
@@ -36,6 +40,7 @@ const Textfield = props => {
           {description}
         </div>
       )}
+      {prefix}
       <Control.input
         model={model}
         name={name}
@@ -58,7 +63,9 @@ const Textfield = props => {
         step={step}
         min={min}
         max={max}
+        onChange={onChange}
       />
+      {postfix}
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
       {showMaxLength && maxLength && <span className={styles.maxLength}>{maxLength} characters maximum</span>}
     </div>
@@ -79,7 +86,11 @@ Textfield.defaultProps = {
   placeholder: '',
   step: null,
   min: null,
-  max: null
+  max: null,
+  className: '',
+  prefix: null,
+  postfix: null,
+  onChange: () => {}
 }
 
 Textfield.propTypes = {
@@ -100,7 +111,11 @@ Textfield.propTypes = {
   placeholder: PropTypes.string,
   step: PropTypes.string,
   min: PropTypes.number,
-  max: PropTypes.number
+  max: PropTypes.number,
+  className: PropTypes.string,
+  prefix: PropTypes.string,
+  postfix: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default Textfield
