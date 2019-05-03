@@ -1,3 +1,4 @@
+import BuyerSpecialistIntroductionStage from './BuyerSpecialistIntroductionStage'
 import BuyerSpecialistAboutStage, { done as aboutDone } from './BuyerSpecialistAboutStage'
 import BuyerSpecialistSelectStage, { done as selectDone } from './BuyerSpecialistSelectStage'
 import BuyerSpecialistAdditionalInformationStage, {
@@ -15,6 +16,12 @@ import BuyerSpecialistEvaluationCriteriaStage, {
 const BuyerSpecialistStages = [
   {
     slug: 'introduction',
+    title: 'Introduction',
+    component: BuyerSpecialistIntroductionStage,
+    isDone: () => true
+  },
+  {
+    slug: 'about',
     title: 'About',
     component: BuyerSpecialistAboutStage,
     isDone: aboutDone

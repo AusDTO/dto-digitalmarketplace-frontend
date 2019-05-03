@@ -253,7 +253,6 @@ export class ProgressFlow extends Component {
                             onPublish={this.handlePublish}
                             onPreview={this.handlePreview}
                             onReturn={this.handleReturn}
-                            startTextSameAsContinue={this.props.startTextSameAsContinue}
                           />
                         }
                       />
@@ -271,8 +270,7 @@ export class ProgressFlow extends Component {
 ProgressFlow.defaultProps = {
   basename: '',
   saveModel: () => {},
-  onStageMount: () => {},
-  startTextSameAsContinue: false
+  onStageMount: () => {}
 }
 
 ProgressFlow.propTypes = {
@@ -282,8 +280,7 @@ ProgressFlow.propTypes = {
   returnPath: PropTypes.string.isRequired,
   previewPath: PropTypes.string.isRequired,
   saveModel: PropTypes.func,
-  onStageMount: PropTypes.func,
-  startTextSameAsContinue: PropTypes.bool
+  onStageMount: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({

@@ -126,7 +126,6 @@ export class BuyerSpecialistFlowPage extends Component {
         saveModel={this.saveBrief}
         returnPath={`${rootPath}/brief/${briefId}/overview/specialist`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
-        startTextSameAsContinue
       />
     )
   }

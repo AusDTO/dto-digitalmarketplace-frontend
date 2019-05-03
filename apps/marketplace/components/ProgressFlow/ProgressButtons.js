@@ -9,7 +9,7 @@ const ProgressButtons = props => (
       {props.isFirstStage &&
         !props.isLastStage && (
           <AUbutton type="submit">
-            {props.startTextSameAsContinue === true ? props.continueText : props.startText}
+            {props.startText}
           </AUbutton>
         )}
       {props.isLastStage &&
@@ -58,7 +58,6 @@ ProgressButtons.defaultProps = {
   publishText: 'Publish',
   returnText: 'Return to overview',
   publishEnabled: false,
-  startTextSameAsContinue: false,
   onPublish: () => {},
   onPreview: () => {},
   onReturn: () => {}
@@ -73,8 +72,7 @@ ProgressButtons.propTypes = {
   isFirstStage: PropTypes.bool.isRequired,
   publishEnabled: PropTypes.bool,
   onPublish: PropTypes.func,
-  onReturn: PropTypes.func,
-  startTextSameAsContinue: PropTypes.bool
+  onReturn: PropTypes.func
 }
 
 export default ProgressButtons
