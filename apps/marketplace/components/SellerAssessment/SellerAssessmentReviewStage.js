@@ -31,9 +31,7 @@ const SellerAssessmentReviewStage = props => (
         <AUheading level="2" size="md">
           Maximum daily rate (including GST)
         </AUheading>
-        <p>
-          ${props[props.model].maxDailyRate}
-        </p>
+        <p>${props[props.model].maxDailyRate}</p>
         {props.formButtons}
       </div>
     )}

@@ -1,6 +1,7 @@
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
 import SellerAssessmentRateStage from './SellerAssessmentRateStage'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
+import SellerAssessmentCriteriaStage from './SellerAssessmentCriteriaStage'
 
 const SellerAssessmentStages = [
   {
@@ -13,7 +14,13 @@ const SellerAssessmentStages = [
     slug: 'rate',
     title: 'Rate',
     component: SellerAssessmentRateStage,
-    isDone: formValues => (formValues.maxDailyRate && formValues.maxDailyRate > 0)
+    isDone: formValues => formValues.maxDailyRate && formValues.maxDailyRate > 0
+  },
+  {
+    slug: 'criteria',
+    title: 'Criteria',
+    component: SellerAssessmentCriteriaStage,
+    isDone: formValues => formValues.criteria
   },
   {
     slug: 'review',

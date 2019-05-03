@@ -9,7 +9,6 @@ import SellerAssessmentStages from 'marketplace/components/SellerAssessment/Sell
 import { rootPath } from 'marketplace/routes'
 import { loadDomainData } from 'marketplace/actions/supplierActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { SellerAssessmentReducer } from 'marketplace/reducers'
 
 const model = 'SellerAssessmentForm'
 
@@ -33,23 +32,7 @@ export class SellerAssessmentFlowPage extends Component {
     this.setState({
       loading: true
     })
-    this.props.loadInitialData(this.props.match.params.domainId).then(response => {
-      // only accept data defined in the form reducer
-      const data = { ...SellerAssessmentReducer }
-      if (response.data) {
-        Object.keys(response.data).map(property => {
-          if (Object.keys(SellerAssessmentReducer).includes(property)) {
-            data[property] = response.data[property]
-          }
-          return true
-        })
-
-        this.props.changeFormModel(data)
-      }
-      this.setState({
-        loading: false
-      })
-    })
+    this.props.loadDomainData(this.props.match.params.domainId).then(() => this.setState({ loading: false }))
   }
 
   render() {
@@ -106,7 +89,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
-  loadInitialData: domainId => dispatch(loadDomainData(domainId))
+  loadDomainData: domainId => dispatch(loadDomainData(domainId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentFlowPage)
