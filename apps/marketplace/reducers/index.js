@@ -4,11 +4,25 @@ import { createForms } from 'react-redux-form'
 import appReducer from './appReducer'
 import brief from './briefReducers'
 import user from './memberInfoReducers'
+import domain from './domainReducers'
 import dashboard from './dashboardReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
+
+export const SellerAssessmentReducer = {
+  id: 0,
+  maxDailyRate: 0,
+  criteria: [],
+  evidence: {
+    from: '',
+    to: '',
+    client: '',
+    background: '',
+    criteriaResponses: []
+  }
+}
 
 export const BuyerRFXFormReducer = {
   id: 0,
@@ -65,6 +79,7 @@ export default combineReducers({
   user,
   brief,
   dashboard,
+  domain,
   opportunities,
   messages,
   form_options,
@@ -128,6 +143,7 @@ export default combineReducers({
       }
     },
     BuyerRFXForm: BuyerRFXFormReducer,
-    BuyerATMForm: BuyerATMFormReducer
+    BuyerATMForm: BuyerATMFormReducer,
+    SellerAssessmentForm: SellerAssessmentReducer
   })
 })
