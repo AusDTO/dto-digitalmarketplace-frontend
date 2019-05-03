@@ -131,7 +131,6 @@ export class BuyerSpecialistSelectStage extends Component {
                     categories={categories}
                     onSellerSelect={this.handleSellerSelect}
                     onSellerCategorySelect={this.handleSellerCategorySelect}
-                    selectedCategory={this.props[this.props.model].sellerCategory}
                     showCategorySelect={false}
                   />
                 </div>
