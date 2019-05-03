@@ -34,11 +34,12 @@ const noEmptyCriteriaNiceToHave = v => v.niceToHaveRequirements.every(val => (va
 
 const weightingsAddUpTo100NiceToHave = v =>
   !v.includeWeightingsNiceToHave ||
-  ((noEmptyWeightingsNiceToHave(v) && noEmptyCriteriaNiceToHave(v)) &&
-  v.niceToHaveRequirements.reduce(
-    (accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10),
-    0
-  ) === 100)
+  (noEmptyWeightingsNiceToHave(v) &&
+    noEmptyCriteriaNiceToHave(v) &&
+    v.niceToHaveRequirements.reduce(
+      (accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10),
+      0
+    ) === 100)
 
 const noZeroWeightingsNiceToHave = v =>
   noEmptyCriteriaNiceToHave(v) ||
