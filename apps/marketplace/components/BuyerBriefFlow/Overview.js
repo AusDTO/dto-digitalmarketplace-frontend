@@ -111,12 +111,13 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
+      const flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
 
       return (
         <div>
           <div className={styles.header}>
             <AUheading size="xl" level="1">
-              <small className={styles.briefTitle}>{brief.title || `New ${flow.toUpperCase()} request`}</small>
+              <small className={styles.briefTitle}>{brief.title || `New ${flowName} request`}</small>
               Overview
             </AUheading>
             <div className={styles.headerMenu}>
