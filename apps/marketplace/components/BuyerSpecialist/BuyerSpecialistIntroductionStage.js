@@ -12,15 +12,11 @@ const BuyerSpecialistIntroductionStage = props => (
       Before you start
     </AUheadings>
     <p>
-        Download the {' '}
-        <a
-          href="/static/media/documents/Seek-proposals-list-of-questions.xlsx"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          questions template (DOC XXKB)
-        </a>{' '}
-        to prepare offline before publishing.
+      Download the{' '}
+      <a href="/static/media/documents/Seek-proposals-list-of-questions.xlsx" rel="noopener noreferrer" target="_blank">
+        questions template (DOC XXKB)
+      </a>{' '}
+      to prepare offline before publishing.
     </p>
     <AUheadings level="2" size="lg">
       Getting help
