@@ -7,7 +7,6 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import Textfield from 'shared/form/Textfield'
-import Textarea from 'shared/form/Textarea'
 import RadioList from 'shared/form/RadioList'
 import AUselect from '@gov.au/select/lib/js/react.js'
 import styles from './BuyerSpecialistResponseFormatsStage.scss'
@@ -17,6 +16,15 @@ const rangeNumberOfSuppliers = v =>
   !v.numberOfSuppliers || (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
 const isNumberMaxRate = v => !v.maxRate || (v.maxRate && parseFloat(v.maxRate))
 const requiredSecurityClearance = v => v.securityClearance
+const requiredSecurityClearanceObtain = v => {
+  if (!v.securityClearance) {
+    return true
+  }
+  if (v.securityClearance === 'abilityToObtain' && !v.securityClearanceObtain) {
+    return false
+  }
+  return true
+}
 const requiredSecurityClearanceCurrent = v => {
   if (!v.securityClearance) {
     return true
@@ -41,6 +49,7 @@ export const done = v =>
   rangeNumberOfSuppliers(v) &&
   isNumberMaxRate(v) &&
   requiredSecurityClearance(v) &&
+  requiredSecurityClearanceObtain(v) &&
   requiredSecurityClearanceCurrent(v) &&
   requiredSecurityClearanceOther(v)
 
@@ -83,6 +92,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
         rangeNumberOfSuppliers,
         isNumberMaxRate,
         requiredSecurityClearance,
+        requiredSecurityClearanceObtain,
         requiredSecurityClearanceCurrent,
         requiredSecurityClearanceOther
       }
@@ -104,6 +114,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
         requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit',
         rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6',
         requiredSecurityClearance: 'You must select security clearance',
+        requiredSecurityClearanceObtain: 'You must select ability to obtain security clearance',
         requiredSecurityClearanceCurrent: 'You must select current security clearance',
         requiredSecurityClearanceOther: 'You must enter security clearance details'
       }}
@@ -259,17 +270,18 @@ const BuyerSpecialistResponseFormatsStage = props => (
       />
     )}
     {props[props.model].securityClearance === 'other' && (
-      <Textarea
+      <Textfield
         model={`${props.model}.securityClearanceOther`}
         name="securityClearanceOther"
         label=""
         id="securityClearanceOther"
         htmlFor="securityClearanceOther"
         defaultValue={props[props.model].securityClearanceOther}
-        controlProps={{ limit: 1000 }}
+        maxLength={100}
+        showMaxLength
         validators={{}}
         messages={{
-          limitWords: 'Other security clearance do has exceeded the 1000 word limit'
+          limitWords: 'Other security clearance do has exceeded the 100 character limit'
         }}
       />
     )}
