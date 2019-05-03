@@ -2,4 +2,10 @@
     h1.title {
         margin: 0;
     }
+
+    @media (min-width: 576px) {
+        .actions {
+            float: right;
+        }
+    }
 }
