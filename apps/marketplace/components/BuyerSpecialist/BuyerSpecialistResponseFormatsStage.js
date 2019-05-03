@@ -7,6 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import Textfield from 'shared/form/Textfield'
+import Textarea from 'shared/form/Textarea'
 import RadioList from 'shared/form/RadioList'
 import AUselect from '@gov.au/select/lib/js/react.js'
 import styles from './BuyerSpecialistResponseFormatsStage.scss'
@@ -270,18 +271,17 @@ const BuyerSpecialistResponseFormatsStage = props => (
       />
     )}
     {props[props.model].securityClearance === 'other' && (
-      <Textfield
+      <Textarea
         model={`${props.model}.securityClearanceOther`}
         name="securityClearanceOther"
         label=""
         id="securityClearanceOther"
         htmlFor="securityClearanceOther"
         defaultValue={props[props.model].securityClearanceOther}
-        maxLength={100}
-        showMaxLength
+        controlProps={{ limit: 50 }}
         validators={{}}
         messages={{
-          limitWords: 'Other security clearance do has exceeded the 100 character limit'
+          limitWords: 'Other security clearance do has exceeded the 50 word limit'
         }}
       />
     )}
