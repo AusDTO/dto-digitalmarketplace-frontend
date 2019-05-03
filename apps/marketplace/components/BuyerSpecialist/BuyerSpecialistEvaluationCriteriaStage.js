@@ -138,14 +138,14 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
-            noEmptyWeightingsEssential: 'Essential weighting is required.',
+            noEmptyWeightingsEssential: 'You cannot have blank essential weighting.',
             weightingsAddUpTo100Essential: 'Essential weightings must add up to 100%.',
             noZeroWeightingsEssential: 'Essential weightings must be greater than 0.',
-            noEmptyCriteriaEssential: 'Essential criteria is required.',
-            noEmptyWeightingsNiceToHave: 'Desirable weighting is required.',
+            noEmptyCriteriaEssential: 'You cannot have blank essential criteria.',
+            noEmptyWeightingsNiceToHave: 'You cannot have blank weighting when desirable criteria is specified.',
             weightingsAddUpTo100NiceToHave: 'Desirable must add up to 100%.',
             noZeroWeightingsNiceToHave: 'Desirable must be greater than 0.',
-            noEmptyCriteriaNiceToHave: 'Desirable criteria is required.'
+            noEmptyCriteriaNiceToHave: 'You cannot have blank desirable criteria when weighting is specified.'
           }}
         />
         <AUheadings level="2" size="lg">
