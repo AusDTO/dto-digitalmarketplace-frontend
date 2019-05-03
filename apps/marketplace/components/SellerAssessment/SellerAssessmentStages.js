@@ -20,7 +20,8 @@ const SellerAssessmentStages = [
     slug: 'criteria',
     title: 'Criteria',
     component: SellerAssessmentCriteriaStage,
-    isDone: formValues => formValues.criteria
+    isDone: (formValues, meta) =>
+      formValues.criteria && meta.criteriaNeeded && formValues.criteria.length >= meta.criteriaNeeded
   },
   {
     slug: 'review',

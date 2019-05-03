@@ -117,7 +117,7 @@ export class ProgressFlow extends Component {
     const stages = { ...this.state.stages }
     this.props.stages.map(stage => {
       if (typeof stage.isDone === 'function') {
-        stagesDone[stage.slug] = stage.isDone(this.props[this.props.model])
+        stagesDone[stage.slug] = stage.isDone(this.props[this.props.model], this.props.meta)
         if (stagesDone[stage.slug] && stages[stage.slug] !== 'doing') {
           stages[stage.slug] = 'done'
         }
