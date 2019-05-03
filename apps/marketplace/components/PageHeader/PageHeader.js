@@ -7,11 +7,11 @@ class PageHeader extends React.PureComponent {
 
     return (
       <div className={`${styles.pageHeader} row`}>
-        <div className="col-lg-6 col-md-9 col-sm-12">
+        <div className="col-sm-6">
           <small>{organisation}</small>
           <h1 className={`au-display-xl ${styles.title}`}>{title}</h1>
         </div>
-        <div className="col-lg-6 col-md-3 col-sm-12">
+        <div className="col-sm-6">
           <div className={styles.actions}>{actions.map(action => action)}</div>
         </div>
       </div>
