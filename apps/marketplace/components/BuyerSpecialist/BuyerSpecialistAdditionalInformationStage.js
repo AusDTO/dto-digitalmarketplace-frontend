@@ -116,6 +116,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           htmlFor="contactNumber"
           defaultValue={this.props[this.props.model].contactNumber}
           maxLength={100}
+          showMaxLength
           validators={{
             required
           }}
@@ -123,14 +124,13 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <Textfield
           model={`${this.props.model}.internalReference`}
           label="Internal reference (optional)"
-          description="For example, business unit or internal procurement ID number.
-
-          This will not be visible to anyone outside your organisation."
+          description="For example, business unit or internal procurement ID number. This will not be visible to anyone outside your organisation."
           name="internalReference"
           id="internalReference"
           htmlFor="internalReference"
           defaultValue={this.props[this.props.model].internalReference}
           maxLength={100}
+          showMaxLength
           validators={{}}
         />
         {this.props.formButtons}
