@@ -88,8 +88,9 @@ export class SellerAssessmentFlowPage extends Component {
         meta={this.props.domain}
         basename={`${rootPath}/seller-assessment/${domainId}`}
         stages={SellerAssessmentStages}
-        saveModel={() => {}}
+        saveModel={() => Promise.resolve()}
         showReturnButton={false}
+        showReviewButton={false}
       />
     )
   }

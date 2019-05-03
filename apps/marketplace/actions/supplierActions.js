@@ -21,7 +21,14 @@ export default findSuppliers
 
 export const handleDomainLoadSuccess = response => ({
   type: DOMAIN_LOAD_SUCCESS,
-  data: response.data
+  data: {
+    id: response.data.id,
+    name: response.data.name,
+    priceMinimum: response.data.price_minimum,
+    priceMaximum: response.data.price_maximum,
+    criteria: response.data.criteria,
+    criteriaNeeded: response.data.criteria_needed
+  }
 })
 
 export const handleErrorFailure = response => dispatch => {
