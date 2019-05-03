@@ -26,7 +26,7 @@ const PrivateRouteComponent = props => {
         }
 
         if (restrictedTo && loggedIn && userType !== restrictedTo) {
-          return <FrameworkError framework="buyer" {...values} />
+          return <FrameworkError framework={restrictedTo} {...values} />
         }
 
         if (loggedIn) {
