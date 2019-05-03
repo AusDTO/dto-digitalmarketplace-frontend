@@ -185,11 +185,11 @@ export class ProgressFlow extends Component {
   }
 
   render() {
-    if (this.state.activateReturn) {
+    if (this.state.activateReturn && this.props.returnPath) {
       return <Redirect to={this.props.returnPath} push />
     }
 
-    if (this.state.activatePreview) {
+    if (this.state.activatePreview && this.props.previewPath) {
       return <Redirect to={this.props.previewPath} push />
     }
 
@@ -238,6 +238,7 @@ export class ProgressFlow extends Component {
                       <ProgressContent
                         stage={stage.slug}
                         model={this.props.model}
+                        meta={this.props.meta}
                         setCurrentStage={this.setCurrentStage}
                         saveModel={this.props.saveModel}
                         component={stage.component}
@@ -253,6 +254,7 @@ export class ProgressFlow extends Component {
                             onPublish={this.handlePublish}
                             onPreview={this.handlePreview}
                             onReturn={this.handleReturn}
+                            showReturnButton={this.props.showReturnButton}
                           />
                         }
                       />
@@ -270,17 +272,23 @@ export class ProgressFlow extends Component {
 ProgressFlow.defaultProps = {
   basename: '',
   saveModel: () => {},
-  onStageMount: () => {}
+  onStageMount: () => {},
+  returnPath: '',
+  previewPath: '',
+  showReturnButton: true,
+  meta: {}
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
   stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
-  returnPath: PropTypes.string.isRequired,
-  previewPath: PropTypes.string.isRequired,
+  returnPath: PropTypes.string,
+  previewPath: PropTypes.string,
   saveModel: PropTypes.func,
-  onStageMount: PropTypes.func
+  onStageMount: PropTypes.func,
+  showReturnButton: PropTypes.bool,
+  meta: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({

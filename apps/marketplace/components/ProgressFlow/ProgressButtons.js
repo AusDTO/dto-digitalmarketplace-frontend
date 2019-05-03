@@ -33,15 +33,17 @@ const ProgressButtons = props => (
           </span>
         )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
-      <AUbutton
-        as="tertiary"
-        onClick={e => {
-          e.preventDefault()
-          props.onReturn()
-        }}
-      >
-        {props.returnText}
-      </AUbutton>
+      {props.showReturnButton && (
+        <AUbutton
+          as="tertiary"
+          onClick={e => {
+            e.preventDefault()
+            props.onReturn()
+          }}
+        >
+          {props.returnText}
+        </AUbutton>
+      )}
     </p>
   </div>
 )
@@ -55,7 +57,8 @@ ProgressButtons.defaultProps = {
   publishEnabled: false,
   onPublish: () => {},
   onPreview: () => {},
-  onReturn: () => {}
+  onReturn: () => {},
+  showReturnButton: true
 }
 
 ProgressButtons.propTypes = {
@@ -67,7 +70,8 @@ ProgressButtons.propTypes = {
   isFirstStage: PropTypes.bool.isRequired,
   publishEnabled: PropTypes.bool,
   onPublish: PropTypes.func,
-  onReturn: PropTypes.func
+  onReturn: PropTypes.func,
+  showReturnButton: PropTypes.bool
 }
 
 export default ProgressButtons

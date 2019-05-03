@@ -22,6 +22,7 @@ export class ProgressContent extends Component {
       <div tabIndex="0" ref={this.element} className={styles.container}>
         <StageComponent
           model={this.props.model}
+          meta={this.props.meta}
           saveModel={this.props.saveModel}
           onSubmit={this.props.onSubmit}
           onSubmitFailed={this.props.onSubmitFailed}
@@ -39,7 +40,8 @@ ProgressContent.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {},
   onStageMount: () => {},
-  stagesTodo: []
+  stagesTodo: [],
+  meta: {}
 }
 
 ProgressContent.propTypes = {
@@ -52,7 +54,8 @@ ProgressContent.propTypes = {
   stagesTodo: PropTypes.array,
   stage: PropTypes.string.isRequired,
   component: PropTypes.func.isRequired,
-  formButtons: PropTypes.node.isRequired
+  formButtons: PropTypes.node.isRequired,
+  meta: PropTypes.object
 }
 
 export default ProgressContent
