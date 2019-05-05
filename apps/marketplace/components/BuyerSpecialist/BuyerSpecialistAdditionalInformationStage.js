@@ -1,25 +1,64 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
+import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textfield from 'shared/form/Textfield'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import format from 'date-fns/format'
+import addDays from 'date-fns/add_days'
+import parse from 'date-fns/parse'
+import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
 import range from 'lodash/range'
 import { required } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
 const requiredContactNumber = v => required(v.contactNumber)
+const requiredClosedAt = v => required(v.closedAt)
+const closedAtIsValid = v => {
+  const closedAt = v.closedAt
+  try {
+    const closing = parse(closedAt)
+    if (format(closing, 'YYYY-MM-DD') !== closedAt) {
+      return false
+    }
+  } catch (e) {
+    return false
+  }
+  return true
+}
+const closedAtIs2DaysInFuture = v => {
+  const closedAt = v.closedAt
+  try {
+    const closing = parse(closedAt)
+    if (differenceInCalendarDays(closing, new Date()) < 2) {
+      return false
+    }
+  } catch (e) {
+    return false
+  }
+  return true
+}
 
-export const done = v => requiredContactNumber(v)
+export const done = v =>
+  requiredContactNumber(v) && requiredClosedAt(v) && closedAtIsValid(v) && closedAtIs2DaysInFuture(v)
 
 export class BuyerSpecialistRequirementsStage extends Component {
   constructor(props) {
     super(props)
     this.state = {
       fileCount: 1
+    }
+    this.handleDateChange = this.handleDateChange.bind(this)
+  }
+
+  componentWillMount() {
+    if (!this.props[this.props.model].closedAt) {
+      const date = addDays(new Date(), 7)
+      this.props.setDate(format(date, 'YYYY-MM-DD'))
     }
   }
 
@@ -29,6 +68,10 @@ export class BuyerSpecialistRequirementsStage extends Component {
 
   componentDidUpdate() {
     this.updateFileCountFromProps()
+  }
+
+  handleDateChange(date) {
+    this.props.setDate(`${date.year}-${date.month}-${date.day}`)
   }
 
   updateFileCountFromProps() {
@@ -54,7 +97,10 @@ export class BuyerSpecialistRequirementsStage extends Component {
         model={model}
         validators={{
           '': {
-            requiredContactNumber
+            requiredContactNumber,
+            requiredClosedAt,
+            closedAtIsValid,
+            closedAtIs2DaysInFuture
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -68,7 +114,10 @@ export class BuyerSpecialistRequirementsStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            requiredContactNumber: 'Contact number is required'
+            requiredContactNumber: 'Contact number is required',
+            closedAtIsValid: 'You must enter a valid closing date',
+            closedAtIs2DaysInFuture: 'You must add a closing date at least 2 days from now',
+            requiredClosedAt: 'You must enter the closing date for this opportunity'
           }}
         />
         <AUheadings level="2" size="sm">
@@ -133,6 +182,14 @@ export class BuyerSpecialistRequirementsStage extends Component {
           showMaxLength
           validators={{}}
         />
+        <DateControl
+          id="closedAt"
+          model={`${model}.closedAt`}
+          onDateChange={this.handleDateChange}
+          defaultValue={this.props[model].closedAt}
+          label="Closing date for opportunity"
+          description="This date must be at least 2 days after you publish this request. Responses will be available after 6pm Canberra time."
+        />
         {this.props.formButtons}
       </Form>
     )
@@ -156,4 +213,8 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerSpecialistRequirementsStage)
+const mapDispatchToProps = (dispatch, props) => ({
+  setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistRequirementsStage)
