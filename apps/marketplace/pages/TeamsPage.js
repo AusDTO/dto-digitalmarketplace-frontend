@@ -7,7 +7,7 @@ import AUbutton from '@gov.au/buttons'
 import PageHeader from '../components/PageHeader/PageHeader'
 
 const createTeamButton = (
-  <AUbutton as="secondary" href="#">
+  <AUbutton as="secondary" href="#" key="Create a team">
     Create a team
   </AUbutton>
 )
