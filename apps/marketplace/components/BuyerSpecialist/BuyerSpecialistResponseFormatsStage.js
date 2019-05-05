@@ -123,6 +123,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
     <Textfield
       model={`${props.model}.numberOfSuppliers`}
       label="How many candidates can each seller submit?"
+      description="You can request a maximum of 6 candidates"
       name="numberOfSuppliers"
       id="numberOfSuppliers"
       htmlFor="numberOfSuppliers"
