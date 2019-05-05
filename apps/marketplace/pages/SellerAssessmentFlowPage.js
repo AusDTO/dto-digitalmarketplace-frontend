@@ -20,6 +20,8 @@ export class SellerAssessmentFlowPage extends Component {
       loading: false,
       flowIsDone: false
     }
+
+    this.handleStageMount = this.handleStageMount.bind(this)
   }
 
   componentDidMount() {
@@ -33,6 +35,10 @@ export class SellerAssessmentFlowPage extends Component {
       loading: true
     })
     this.props.loadDomainData(this.props.match.params.domainId).then(() => this.setState({ loading: false }))
+  }
+
+  handleStageMount() {
+    this.props.resetFormValidity()
   }
 
   render() {
@@ -69,6 +75,7 @@ export class SellerAssessmentFlowPage extends Component {
       <ProgressFlow
         model={model}
         meta={this.props.domain}
+        onStageMount={this.handleStageMount}
         basename={`${rootPath}/seller-assessment/${domainId}`}
         stages={SellerAssessmentStages}
         saveModel={() => Promise.resolve()}
@@ -89,6 +96,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
+  resetFormValidity: () => dispatch(actions.resetValidity(model)),
   loadDomainData: domainId => dispatch(loadDomainData(domainId))
 })
 
