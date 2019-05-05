@@ -117,15 +117,6 @@ export class BuyerSpecialistSelectStage extends Component {
                 <div>
                   <SellerSelect
                     label="Seller name"
-                    description={
-                      <span>
-                        Only sellers approved in the category you have selected can respond. You can see each
-                        seller&apos;s categories in the{' '}
-                        <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
-                          seller catalogue
-                        </a>.
-                      </span>
-                    }
                     showSelected={false}
                     showSearchButton={false}
                     categories={categories}
