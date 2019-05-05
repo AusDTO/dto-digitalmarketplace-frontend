@@ -112,12 +112,12 @@ const BuyerSpecialistResponseFormatsStage = props => (
         isNumberMaxRate: `Maximum ${
           props[props.model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
         } rate must be a number`,
-        requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit',
-        rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6',
-        requiredSecurityClearance: 'You must select security clearance',
-        requiredSecurityClearanceObtain: 'You must select ability to obtain security clearance',
-        requiredSecurityClearanceCurrent: 'You must select current security clearance',
-        requiredSecurityClearanceOther: 'You must enter security clearance details'
+        requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit.',
+        rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6.',
+        requiredSecurityClearance: 'You must select security clearance.',
+        requiredSecurityClearanceObtain: 'You must select a type of security clearance.',
+        requiredSecurityClearanceCurrent: 'You must select a type of security clearance.',
+        requiredSecurityClearanceOther: 'You must enter security clearance details.'
       }}
     />
     <Textfield
