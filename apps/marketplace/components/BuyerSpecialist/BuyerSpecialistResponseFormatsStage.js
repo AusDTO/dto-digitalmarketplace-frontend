@@ -114,10 +114,10 @@ const BuyerSpecialistResponseFormatsStage = props => (
         } rate must be a number`,
         requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit.',
         rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6.',
-        requiredSecurityClearance: 'You must select security clearance.',
+        requiredSecurityClearance: 'You must define the security clearance requirements',
         requiredSecurityClearanceObtain: 'You must select a type of security clearance.',
         requiredSecurityClearanceCurrent: 'You must select a type of security clearance.',
-        requiredSecurityClearanceOther: 'You must enter security clearance details.'
+        requiredSecurityClearanceOther: 'You must enter security clearance requirements'
       }}
     />
     <Textfield
