@@ -275,7 +275,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
       <Textarea
         model={`${props.model}.securityClearanceOther`}
         name="securityClearanceOther"
-        label=""
+        label="Describe your security clearance requirements"
         id="securityClearanceOther"
         htmlFor="securityClearanceOther"
         defaultValue={props[props.model].securityClearanceOther}
