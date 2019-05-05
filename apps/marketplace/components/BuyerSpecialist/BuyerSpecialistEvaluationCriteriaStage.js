@@ -142,10 +142,10 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
             weightingsAddUpTo100Essential: 'Essential weightings must add up to 100%.',
             noZeroWeightingsEssential: 'Essential weightings must be greater than 0.',
             noEmptyCriteriaEssential: 'You cannot have blank essential criteria.',
-            noEmptyWeightingsNiceToHave: 'You cannot have blank weighting when desirable criteria is specified.',
-            weightingsAddUpTo100NiceToHave: 'Desirable must add up to 100%.',
+            noEmptyWeightingsNiceToHave: 'You cannot leave any weightings blank.',
+            weightingsAddUpTo100NiceToHave: 'Desirable weightings must add up to 100%.',
             noZeroWeightingsNiceToHave: 'Desirable must be greater than 0.',
-            noEmptyCriteriaNiceToHave: 'You cannot have blank desirable criteria when weighting is specified.'
+            noEmptyCriteriaNiceToHave: 'You cannot leave any weightings blank.'
           }}
         />
         <AUheadings level="2" size="lg">
