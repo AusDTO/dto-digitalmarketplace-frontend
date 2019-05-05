@@ -129,7 +129,6 @@ const BuyerSpecialistResponseFormatsStage = props => (
       htmlFor="numberOfSuppliers"
       defaultValue={props[props.model].numberOfSuppliers}
       validators={{}}
-      type="number"
     />
     <div className={styles.formats}>
       <fieldset>
