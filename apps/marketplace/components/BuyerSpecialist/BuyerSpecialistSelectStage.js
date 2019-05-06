@@ -81,7 +81,7 @@ export class BuyerSpecialistSelectStage extends Component {
           messages={{
             requiredCategory: 'You must select a panel category',
             requiredChoice: 'You must select who can respond',
-            atLeastOneSeller: 'You must select at least one seller'
+            atLeastOneSeller: 'You must add at least one seller'
           }}
         />
         <PanelCategorySelect
