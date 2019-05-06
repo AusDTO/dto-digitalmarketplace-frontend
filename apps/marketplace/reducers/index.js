@@ -77,6 +77,7 @@ export const BuyerSpecialistFormReducer = {
   evaluationType: ['Responses to evaluation criteria', 'Résumés'],
   preferredFormatForRates: 'dailyRate',
   maxRate: '',
+  budgetRange: '',
   securityClearance: '',
   securityClearanceObtain: '',
   securityClearanceCurrent: '',

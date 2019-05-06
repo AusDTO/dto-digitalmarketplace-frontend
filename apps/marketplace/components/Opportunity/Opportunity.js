@@ -205,6 +205,15 @@ const Opportunity = props => {
                   </div>
                 </div>
               )}
+            {brief.lotSlug === 'specialist' &&
+              brief.budgetRange && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Budget information</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+                </div>
+              )}
             {brief.lotSlug === 'rfx' && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -625,7 +634,6 @@ Opportunity.propTypes = {
     contractLength: PropTypes.string,
     securityClearance: PropTypes.string,
     sellerCategory: PropTypes.string,
-    budgetRange: PropTypes.string,
     includeWeightings: PropTypes.bool,
     evaluationCriteria: PropTypes.array,
     evaluationType: PropTypes.array,
@@ -642,6 +650,7 @@ Opportunity.propTypes = {
     clarificationQuestions: PropTypes.array,
     clarificationQuestionsAreClosed: PropTypes.bool,
     maxRate: PropTypes.string,
+    budgetRange: PropTypes.string,
     preferredFormatForRates: PropTypes.string,
     securityClearanceObtain: PropTypes.string,
     securityClearanceCurrent: PropTypes.string,

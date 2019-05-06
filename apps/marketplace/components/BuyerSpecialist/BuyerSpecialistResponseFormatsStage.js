@@ -230,6 +230,16 @@ const BuyerSpecialistResponseFormatsStage = props => (
       step="any"
       prefix={'$'}
     />
+    <Textfield
+      model={`${props.model}.budgetRange`}
+      label="Additional budget information (optional)"
+      name="budgetRange"
+      id="budgetRange"
+      htmlFor="budgetRange"
+      defaultValue={props[props.model].budgetRange}
+      maxLength={100}
+      validators={{}}
+    />
     <RadioList
       id="securityClearance"
       label="What are the security clearance requirements?"
