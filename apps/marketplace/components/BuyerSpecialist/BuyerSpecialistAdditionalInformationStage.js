@@ -23,7 +23,11 @@ const closedAtIsValid = v => validDate(v.closedAt)
 const closedAtIs2DaysInFuture = v => dateIs2DaysInFuture(v.closedAt)
 
 export const done = v =>
-  requiredContactNumber(v) && contactNumberFormat(v) && requiredClosedAt(v) && closedAtIsValid(v) && closedAtIs2DaysInFuture(v)
+  requiredContactNumber(v) &&
+  contactNumberFormat(v) &&
+  requiredClosedAt(v) &&
+  closedAtIsValid(v) &&
+  closedAtIs2DaysInFuture(v)
 
 export class BuyerSpecialistRequirementsStage extends Component {
   constructor(props) {
