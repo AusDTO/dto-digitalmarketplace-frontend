@@ -13,11 +13,16 @@ const createTeamButton = (
   </AUbutton>
 )
 
+const navLinks = [
+  { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
+  { exact: false, id: 'people-link', text: 'People', to: '/people' }
+]
+
 const TeamsPage = props => (
   <BrowserRouter basename={`${rootPath}/teams`}>
     <div>
       <PageHeader actions={[createTeamButton]} organisation={props.organisation} title="Teams and people" />
-      <PageNavigation />
+      <PageNavigation links={navLinks} />
     </div>
   </BrowserRouter>
 )
