@@ -6,8 +6,8 @@ import { rootPath } from 'marketplace/routes'
 import AUbutton from '@gov.au/buttons'
 import PageHeader from '../components/PageHeader/PageHeader'
 import PageNavigation from '../components/PageNavigation/PageNavigation'
-import People from '../components/Teams/People'
-import Teams from '../components/Teams/Teams'
+import PeopleOverview from '../components/Teams/PeopleOverview'
+import TeamsOverview from '../components/Teams/TeamsOverview'
 
 const createTeamButton = (
   <AUbutton as="secondary" href="#" key="Create a team">
@@ -27,8 +27,8 @@ const TeamsPage = props => (
       <PageNavigation links={navLinks} />
       <div>
         <Switch>
-          <Route exact path="/" render={() => <Teams {...props} />} />
-          <Route path="/people" render={() => <People {...props} />} />
+          <Route exact path="/" render={() => <TeamsOverview {...props} />} />
+          <Route path="/people" render={() => <PeopleOverview {...props} />} />
         </Switch>
       </div>
     </div>

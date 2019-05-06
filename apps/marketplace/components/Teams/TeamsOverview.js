@@ -2,9 +2,9 @@ import React from 'react'
 
 import AUbutton from '@gov.au/buttons'
 
-import styles from './Teams.scss'
+import styles from './TeamsOverview.scss'
 
-const Teams = () => (
+const TeamsOverview = () => (
   <div className={styles.teams}>
     <div className={styles.initial}>
       <p>Easily track and manage access to opportunities created within your organisation.</p>
@@ -16,4 +16,4 @@ const Teams = () => (
   </div>
 )
 
-export default Teams
+export default TeamsOverview
