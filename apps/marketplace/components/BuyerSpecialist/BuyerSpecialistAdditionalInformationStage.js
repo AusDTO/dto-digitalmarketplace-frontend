@@ -113,8 +113,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           Attach a document (optional)
         </AUheadings>
         <p>
-          Documents must be in .DOC .XLS .PPT or .PDF format and can be viewed by anyone with a Digital Marketplace
-          account. Do not include internal or private information.
+          Documents must be in .DOC .XLS .PPT or.PDF format.
         </p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
