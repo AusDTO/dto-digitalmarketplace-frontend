@@ -10,7 +10,7 @@ const PageNavigation = props => (
         <ul>
           {props.links.map(link => (
             <li key={link.text}>
-              <NavLink id={link.id} to={link.to} exact={link.exact}>
+              <NavLink activeClassName={styles.active} id={link.id} to={link.to} exact={link.exact}>
                 {link.text}
               </NavLink>
             </li>
