@@ -7,44 +7,23 @@ import FilesInput from 'shared/form/FilesInput'
 import Textfield from 'shared/form/Textfield'
 import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
-import parse from 'date-fns/parse'
-import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
 import range from 'lodash/range'
-import { required } from 'marketplace/components/validators'
+import { required, validPhoneNumber, validDate, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
+import styles from './BuyerSpecialistAdditionalInformationStage.scss'
 
 const requiredContactNumber = v => required(v.contactNumber)
+const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
 const requiredClosedAt = v => required(v.closedAt)
-const closedAtIsValid = v => {
-  const closedAt = v.closedAt
-  try {
-    const closing = parse(closedAt)
-    if (format(closing, 'YYYY-MM-DD') !== closedAt) {
-      return false
-    }
-  } catch (e) {
-    return false
-  }
-  return true
-}
-const closedAtIs2DaysInFuture = v => {
-  const closedAt = v.closedAt
-  try {
-    const closing = parse(closedAt)
-    if (differenceInCalendarDays(closing, new Date()) < 2) {
-      return false
-    }
-  } catch (e) {
-    return false
-  }
-  return true
-}
+const closedAtIsValid = v => validDate(v.closedAt)
+const closedAtIs2DaysInFuture = v => dateIs2DaysInFuture(v.closedAt)
 
 export const done = v =>
-  requiredContactNumber(v) && requiredClosedAt(v) && closedAtIsValid(v) && closedAtIs2DaysInFuture(v)
+  requiredContactNumber(v) && contactNumberFormat(v) && requiredClosedAt(v) && closedAtIsValid(v) && closedAtIs2DaysInFuture(v)
 
 export class BuyerSpecialistRequirementsStage extends Component {
   constructor(props) {
@@ -98,6 +77,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         validators={{
           '': {
             requiredContactNumber,
+            contactNumberFormat,
             requiredClosedAt,
             closedAtIsValid,
             closedAtIs2DaysInFuture
@@ -110,13 +90,18 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Additional information
         </AUheadings>
+        <AUcallout description="" className={styles.noticeBar}>
+          Only sellers you selected and other buyers can view attached documents. Buyers and sellers will not be able to
+          view your contact number or internal reference.
+        </AUcallout>
         <ErrorAlert
           title="An error occurred"
           model={model}
           messages={{
             requiredContactNumber: 'Contact number is required',
+            contactNumberFormat: 'Contact number must be a phone number',
             closedAtIsValid: 'You must enter a valid closing date',
-            closedAtIs2DaysInFuture: 'You must add a closing date at least 2 days from now',
+            closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity'
           }}
         />

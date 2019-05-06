@@ -4,49 +4,18 @@ import { connect } from 'react-redux'
 import { Form, actions } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required } from 'marketplace/components/validators'
-import format from 'date-fns/format'
-import parse from 'date-fns/parse'
-import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
+import { required, validDate, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
 const startDateRequired = v => required(v.startDate)
 const contractLengthRequired = v => required(v.contractLength)
-const startDateIsValid = v => {
-  if (!startDateRequired(v)) {
-    return true
-  }
-  const startDate = v.startDate
-  try {
-    const date = parse(startDate)
-    if (format(date, 'YYYY-MM-DD') !== startDate) {
-      return false
-    }
-  } catch (e) {
-    return false
-  }
-  return true
-}
-const startDateIsInFuture = v => {
-  if (!startDateIsValid(v)) {
-    return true
-  }
-  const startDate = v.startDate
-  try {
-    const date = parse(startDate)
-    if (differenceInCalendarDays(date, new Date()) < 2) {
-      return false
-    }
-  } catch (e) {
-    return false
-  }
-  return true
-}
+const startDateIsValid = v => validDate(v.startDate)
+const startDateIs2DaysInFuture = v => dateIs2DaysInFuture(v.startDate)
 
 export const done = v =>
-  startDateRequired(v) && contractLengthRequired(v) && startDateIsValid(v) && startDateIsInFuture(v)
+  startDateRequired(v) && contractLengthRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v)
 
 class BuyerSpecialistTimeframesAndBudgetStage extends Component {
   constructor(props) {
@@ -72,7 +41,7 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired,
             contractLengthRequired,
             startDateIsValid,
-            startDateIsInFuture
+            startDateIs2DaysInFuture
           }
         }}
       >
@@ -86,7 +55,7 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired: 'Enter an estimated start date for the opportunity',
             contractLengthRequired: 'Enter a contract length for the opportunity',
             startDateIsValid: 'You must enter a valid estimated start date',
-            startDateIsInFuture: 'You must enter an estimated start date in the future'
+            startDateIs2DaysInFuture: 'You must enter an estimated start date at least 2 days from now'
           }}
         />
         <DateControl
