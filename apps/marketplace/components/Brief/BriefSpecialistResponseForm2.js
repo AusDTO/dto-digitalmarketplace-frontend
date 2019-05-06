@@ -258,7 +258,7 @@ const BriefSpecialistResponseForm2 = ({
                   <RadioList
                     id="securityClearance"
                     label={`Does ${specialistGivenNames} ${specialistSurname} currently hold a 
-                      ${brief.securityClearanceCurrent === 'baseline' ? 'baseline clearance' : ''}
+                      ${brief.securityClearanceCurrent === 'baseline' ? 'baseline' : ''}
                       ${brief.securityClearanceCurrent === 'nv1' ? 'negative vetting level 1' : ''}
                       ${brief.securityClearanceCurrent === 'nv2' ? 'negative vetting level 2' : ''}
                       ${brief.securityClearanceCurrent === 'pv' ? 'positive vetting' : ''} security clearance?`}
