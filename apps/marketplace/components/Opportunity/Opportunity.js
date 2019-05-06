@@ -185,25 +185,26 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
             </div>
-            {brief.lotSlug === 'specialist' &&  brief.maxRate && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>
-                    {'Maximum '}
-                    {brief.preferredFormatForRates ? '' : 'rate'}
-                    {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
-                    {' cap'}
-                  </strong>
+            {brief.lotSlug === 'specialist' &&
+              brief.maxRate && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>
+                      {'Maximum '}
+                      {brief.preferredFormatForRates ? '' : 'rate'}
+                      {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
+                      {' cap'}
+                    </strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">
+                    {'$'}
+                    {brief.maxRate}
+                    {' per '}
+                    {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
+                    {', including GST'}
+                  </div>
                 </div>
-                <div className="col-xs-12 col-sm-8">
-                  {'$'}
-                  {brief.maxRate}
-                  {' per '}
-                  {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
-                  {', including GST'}
-                </div>
-              </div>
-            )}
+              )}
             {brief.lotSlug === 'rfx' && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -492,11 +493,9 @@ const Opportunity = props => {
                 )}
                 <li>have worked for {brief.organisation} in the past</li>
               </ul>
-              {(
-                brief.evaluationType.includes('Interviews') ||
+              {(brief.evaluationType.includes('Interviews') ||
                 brief.evaluationType.includes('Scenario or tests') ||
-                brief.evaluationType.includes('Presentations')
-              ) && (
+                brief.evaluationType.includes('Presentations')) && (
                 <React.Fragment>
                   <AUheading level="3" size="sm">
                     Buyers may request:
