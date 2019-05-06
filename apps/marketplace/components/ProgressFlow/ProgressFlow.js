@@ -256,6 +256,7 @@ export class ProgressFlow extends Component {
                             onReturn={this.handleReturn}
                             showReturnButton={this.props.showReturnButton}
                             showReviewButton={this.props.showReviewButton}
+                            publishText={this.props.publishText}
                           />
                         }
                       />
@@ -276,6 +277,7 @@ ProgressFlow.defaultProps = {
   onStageMount: () => {},
   returnPath: '',
   previewPath: '',
+  publishText: 'Publish',
   showReturnButton: true,
   showReviewButton: true,
   meta: {}
@@ -291,6 +293,7 @@ ProgressFlow.propTypes = {
   onStageMount: PropTypes.func,
   showReturnButton: PropTypes.bool,
   showReviewButton: PropTypes.bool,
+  publishText: PropTypes.string,
   meta: PropTypes.object
 }
 
