@@ -37,17 +37,7 @@ const OpportunitySpecialistInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role. They must submit:
-        <ul>
-          {props.evaluationType.includes('Responses to evaluation criteria') && (
-            <li>Responses to evaluation criteria</li>
-          )}
-          {props.evaluationType.includes('Résumés') && <li>Résumés</li>}
-          {props.evaluationType.includes('References') && <li>References</li>}
-          {props.evaluationType.includes('Interviews') && <li>Interviews</li>}
-          {props.evaluationType.includes('Presentations') && <li>Presentations</li>}
-          {props.evaluationType.includes('Case study') && <li>Case study</li>}
-        </ul>
+        Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
       </div>
     </div>
     <div className="row">

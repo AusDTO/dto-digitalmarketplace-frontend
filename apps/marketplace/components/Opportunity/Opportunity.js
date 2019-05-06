@@ -185,10 +185,15 @@ const Opportunity = props => {
               </div>
               <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
             </div>
-            {brief.lotSlug === 'specialist' && (
+            {brief.lotSlug === 'specialist' &&  brief.maxRate && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
-                  <strong>Maximum rate cap</strong>
+                  <strong>
+                    {'Maximum '}
+                    {brief.preferredFormatForRates ? '' : 'rate'}
+                    {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
+                    {' cap'}
+                  </strong>
                 </div>
                 <div className="col-xs-12 col-sm-8">
                   {'$'}
@@ -267,19 +272,21 @@ const Opportunity = props => {
                     {brief.securityClearance === 'abilityToObtain' && (
                       <span>
                         {'Ability to obtain '}
-                        {brief.securityClearanceObtain === 'baseline' && 'baseline clearance'}
+                        {brief.securityClearanceObtain === 'baselßine' && 'baseline'}
                         {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
                         {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
                         {brief.securityClearanceObtain === 'pv' && 'positive vetting'}
+                        {' clearance'}
                       </span>
                     )}
                     {brief.securityClearance === 'mustHave' && (
                       <span>
-                        {'Must have '}
-                        {brief.securityClearanceCurrent === 'baseline' && 'baseline clearance'}
+                        {'Must have current '}
+                        {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
                         {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
                         {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
                         {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
+                        {' clearance'}
                       </span>
                     )}
                     {brief.securityClearance === 'other' && brief.securityClearanceOther}
@@ -424,8 +431,15 @@ const Opportunity = props => {
             />
           )}
           {brief.lotSlug === 'specialist' && (
+            <AUheading level="2" size="lg">
+              Evaluation criteria
+            </AUheading>
+          )}
+          {brief.lotSlug === 'specialist' && (
             <EvaluationCriteria
-              title={'Essential evaluation criteria'}
+              title={'Essential criteria'}
+              titleLevel="3"
+              titleSize="sm"
               evaluationCriteria={brief.essentialRequirements}
               showWeightings={brief.includeWeightingsEssential}
             />
@@ -435,11 +449,67 @@ const Opportunity = props => {
             brief.niceToHaveRequirements.length > 0 &&
             brief.niceToHaveRequirements[0].criteria && (
               <EvaluationCriteria
-                title={'Desirable evaluation criteria'}
+                title={'Desirable criteria'}
+                titleLevel="3"
+                titleSize="sm"
                 evaluationCriteria={brief.niceToHaveRequirements}
                 showWeightings={brief.includeWeightingsNiceToHave}
               />
             )}
+          {brief.lotSlug === 'specialist' && (
+            <React.Fragment>
+              <AUheading level="2" size="lg">
+                What to submit
+              </AUheading>
+              <AUheading level="3" size="sm">
+                For each candidate, you must include:
+              </AUheading>
+              <ul>
+                <li>start date</li>
+                <li>
+                  {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
+                  rate (excluding GST)
+                </li>
+                <li>résume</li>
+                <li>responses to the evaluation criteria (up to 500 words per criteria)</li>
+                <li>references (this can be included in their résume)</li>
+                <li>any additional information if requested by {brief.organisation}</li>
+              </ul>
+              <AUheading level="3" size="sm">
+                Candidates will be asked if they:
+              </AUheading>
+              <ul>
+                <li>are eligible to work in Australia</li>
+                {brief.securityClearance === 'mustHave' && (
+                  <li>
+                    {'hold a '}
+                    {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
+                    {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
+                    {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
+                    {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
+                    {' clearance'}
+                  </li>
+                )}
+                <li>have worked for {brief.organisation} in the past</li>
+              </ul>
+              {(
+                brief.evaluationType.includes('Interviews') ||
+                brief.evaluationType.includes('Scenario or tests') ||
+                brief.evaluationType.includes('Presentations')
+              ) && (
+                <React.Fragment>
+                  <AUheading level="3" size="sm">
+                    Buyers may request:
+                  </AUheading>
+                  <ul>
+                    {brief.evaluationType.includes('Interviews') && <li>interviews</li>}
+                    {brief.evaluationType.includes('Scenario or tests') && <li>scenario or tests</li>}
+                    {brief.evaluationType.includes('Presentations') && <li>presentations</li>}
+                  </ul>
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          )}
           <QuestionAnswer
             questions={brief.clarificationQuestions}
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
