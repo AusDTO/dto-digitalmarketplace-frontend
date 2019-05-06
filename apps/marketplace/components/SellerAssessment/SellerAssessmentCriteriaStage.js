@@ -1,54 +1,81 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
+import { Form, actions } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import styles from './SellerAssessmentCriteriaStage.scss'
 
-const SellerAssessmentCriteriaStage = props => (
-  <Form
-    model={props.model}
-    validators={{
-      '': {
-        requiredMinimal: formValues => formValues.criteria && formValues.criteria.length >= props.meta.criteriaNeeded
+class SellerAssessmentCriteriaStage extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(e) {
+    if (!e.target.checked) {
+      // remove the deselected criteria from the responses model
+      const criteriaId = e.target.value
+      if (
+        this.props[this.props.model] &&
+        this.props[this.props.model].evidence &&
+        this.props[this.props.model].evidence.criteriaResponses[criteriaId]
+      ) {
+        const criteriaResponses = { ...this.props[this.props.model].evidence.criteriaResponses }
+        delete criteriaResponses[criteriaId]
+        this.props.updateCriteriaResponses(criteriaResponses)
       }
-    }}
-    onSubmit={props.onSubmit}
-    onSubmitFailed={props.onSubmitFailed}
-    validateOn="submit"
-  >
-    <AUheadings level="1" size="xl">
-      Assessment criteria
-    </AUheadings>
-    <ErrorAlert
-      title="An error occurred"
-      model={props.model}
-      messages={{
-        requiredMinimal: `You must select at least ${props.meta.criteriaNeeded} criteria`
-      }}
-    />
-    <p>Select the criteria you will provide evidence for ({props.meta.criteriaNeeded} minimum required)</p>
-    <div className={styles.criteria}>
-      {props.meta.criteria.map(criteria => (
-        <CheckboxDetailsField
-          key={criteria.id}
-          model={`${props.model}.criteria[]`}
-          id={`criteria_${criteria.id}`}
-          name={`criteria_${criteria.id}`}
-          label={criteria.name}
-          value={criteria.id}
-          detailsModel={props.model}
-          validators={{}}
-          messages={{}}
+    }
+  }
+
+  render() {
+    return (
+      <Form
+        model={this.props.model}
+        validators={{
+          '': {
+            requiredMinimal: formValues =>
+              formValues.criteria && formValues.criteria.length >= this.props.meta.criteriaNeeded
+          }
+        }}
+        onSubmit={this.props.onSubmit}
+        onSubmitFailed={this.props.onSubmitFailed}
+        validateOn="submit"
+      >
+        <AUheadings level="1" size="xl">
+          Assessment criteria
+        </AUheadings>
+        <ErrorAlert
+          title="An error occurred"
+          model={this.props.model}
+          messages={{
+            requiredMinimal: `You must select at least ${this.props.meta.criteriaNeeded} criteria`
+          }}
         />
-      ))}
-    </div>
-    {props.formButtons}
-  </Form>
-)
+        <p>Select the criteria you will provide evidence for ({this.props.meta.criteriaNeeded} minimum required)</p>
+        <div className={styles.criteria}>
+          {this.props.meta.criteria.map(criteria => (
+            <CheckboxDetailsField
+              key={criteria.id}
+              model={`${this.props.model}.criteria[]`}
+              id={`criteria_${criteria.id}`}
+              name={`criteria_${criteria.id}`}
+              label={criteria.name}
+              value={criteria.id}
+              detailsModel={this.props.model}
+              onClick={this.handleClick}
+              validators={{}}
+              messages={{}}
+            />
+          ))}
+        </div>
+        {this.props.formButtons}
+      </Form>
+    )
+  }
+}
 
 SellerAssessmentCriteriaStage.defaultProps = {
   onSubmit: () => {},
@@ -67,4 +94,8 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(SellerAssessmentCriteriaStage)
+const mapDispatchToProps = (dispatch, props) => ({
+  updateCriteriaResponses: data => dispatch(actions.change(`${props.model}.evidence.criteriaResponses`, data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentCriteriaStage)

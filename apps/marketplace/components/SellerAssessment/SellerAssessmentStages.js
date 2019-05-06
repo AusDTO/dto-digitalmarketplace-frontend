@@ -1,7 +1,9 @@
+import { required } from 'marketplace/components/validators'
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
 import SellerAssessmentRateStage from './SellerAssessmentRateStage'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentCriteriaStage from './SellerAssessmentCriteriaStage'
+import SellerAssessmentEvidenceStage, { validDates, requiredEvidence } from './SellerAssessmentEvidenceStage'
 
 const SellerAssessmentStages = [
   {
@@ -22,6 +24,16 @@ const SellerAssessmentStages = [
     component: SellerAssessmentCriteriaStage,
     isDone: (formValues, meta) =>
       formValues.criteria && meta.criteriaNeeded && formValues.criteria.length >= meta.criteriaNeeded
+  },
+  {
+    slug: 'evidence',
+    title: 'Evidence',
+    component: SellerAssessmentEvidenceStage,
+    isDone: formValues =>
+      validDates(formValues) &&
+      required(formValues.evidence.client) &&
+      required(formValues.evidence.background) &&
+      requiredEvidence(formValues)
   },
   {
     slug: 'review',

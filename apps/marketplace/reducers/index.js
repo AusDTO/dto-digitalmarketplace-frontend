@@ -16,11 +16,17 @@ export const SellerAssessmentReducer = {
   maxDailyRate: 0,
   criteria: [],
   evidence: {
-    from: '',
-    to: '',
+    from: {
+      month: '',
+      year: ''
+    },
+    to: {
+      month: '',
+      year: ''
+    },
     client: '',
     background: '',
-    criteriaResponses: []
+    criteriaResponses: {}
   }
 }
 
