@@ -41,10 +41,10 @@ const BuyerSpecialistAboutStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        requiredTitle: 'Enter the title for your brief',
-        requiredOrg: 'Enter the name of your organisation',
-        requiredSummary: 'Enter what will the specialist do of your brief',
-        atLeastOneLocation: 'You must select at least one location'
+        requiredTitle: 'Enter the title for your opportunity.',
+        requiredOrg: 'Enter the name of your organisation.',
+        requiredSummary: 'You must answer "what will the specialist do".',
+        atLeastOneLocation: 'You must select at least one location.'
       }}
     />
     <Textfield
