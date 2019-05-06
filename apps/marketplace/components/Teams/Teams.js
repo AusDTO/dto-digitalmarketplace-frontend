@@ -8,6 +8,7 @@ const Teams = () => (
     <AUbutton as="secondary" href="#">
       Create a team
     </AUbutton>
+    <a href="">How teams work</a>
   </div>
 )
 
