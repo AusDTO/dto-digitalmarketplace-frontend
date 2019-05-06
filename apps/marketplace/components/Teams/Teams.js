@@ -6,7 +6,7 @@ import styles from './Teams.scss'
 
 const Teams = () => (
   <div className={styles.teams}>
-    <div className={styles.teamsInitialView}>
+    <div className={styles.initial}>
       <p>Easily track and manage access to opportunities created within your organisation.</p>
       <AUbutton as="secondary" href="#">
         Create a team
