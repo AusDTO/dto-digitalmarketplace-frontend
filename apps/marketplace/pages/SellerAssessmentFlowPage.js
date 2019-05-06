@@ -81,6 +81,7 @@ export class SellerAssessmentFlowPage extends Component {
         saveModel={() => Promise.resolve()}
         showReturnButton={false}
         showReviewButton={false}
+        publishText="Request assessment"
       />
     )
   }
