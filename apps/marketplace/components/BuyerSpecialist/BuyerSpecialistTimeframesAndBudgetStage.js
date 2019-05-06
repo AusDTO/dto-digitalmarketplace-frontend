@@ -29,7 +29,7 @@ const startDateIsValid = v => {
   }
   return true
 }
-const startDateIs2DaysInFuture = v => {
+const startDateIsInFuture = v => {
   if (!startDateIsValid(v)) {
     return true
   }
@@ -46,7 +46,7 @@ const startDateIs2DaysInFuture = v => {
 }
 
 export const done = v =>
-  startDateRequired(v) && contractLengthRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v)
+  startDateRequired(v) && contractLengthRequired(v) && startDateIsValid(v) && startDateIsInFuture(v)
 
 class BuyerSpecialistTimeframesAndBudgetStage extends Component {
   constructor(props) {
@@ -72,7 +72,7 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired,
             contractLengthRequired,
             startDateIsValid,
-            startDateIs2DaysInFuture
+            startDateIsInFuture
           }
         }}
       >
@@ -86,7 +86,7 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired: 'Enter an estimated start date for the brief',
             contractLengthRequired: 'Enter a contract length for the brief',
             startDateIsValid: 'You must enter a valid estimated start date',
-            startDateIs2DaysInFuture: 'You must enter an estimated start date at least 2 days from now'
+            startDateIsInFuture: 'You must enter an estimated start date in the future'
           }}
         />
         <DateControl
