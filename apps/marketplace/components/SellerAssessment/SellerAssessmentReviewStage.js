@@ -6,6 +6,8 @@ import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerAssessmentStages from './SellerAssessmentStages'
+import styles from './SellerAssessmentReviewStage.scss'
+import { getCriteriaName } from './SellerAssessmentEvidenceStage'
 
 const SellerAssessmentReviewStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
@@ -30,8 +32,30 @@ const SellerAssessmentReviewStage = props => (
         </AUheading>
         <AUheading level="2" size="md">
           Maximum daily rate (including GST)
+          <Link to="rate" className={styles.change}>
+            Change
+          </Link>
         </AUheading>
         <p>${props[props.model].maxDailyRate}</p>
+        <AUheading level="2" size="lg">
+          Evidence
+          <Link to="evidence" className={styles.change}>
+            Change
+          </Link>
+        </AUheading>
+        <AUheading level="2" size="md">
+          Client
+        </AUheading>
+        <p>{props[props.model].evidence.client}</p>
+        {props[props.model].criteria.map(criteriaId => (
+          <div key={criteriaId}>
+            <span />
+            <AUheading level="2" size="md">
+              {getCriteriaName(criteriaId, props.meta.criteria)}
+            </AUheading>
+            <p>{props[props.model].evidence.criteriaResponses[criteriaId]}</p>
+          </div>
+        ))}
         {props.formButtons}
       </div>
     )}

@@ -12,7 +12,7 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import styles from './SellerAssessmentEvidenceStage.scss'
 
-const getCriteriaName = (id, criteria) => {
+export const getCriteriaName = (id, criteria) => {
   let name = ''
   const matching = criteria.find(c => c.id === id)
   if (matching && matching.name) {
