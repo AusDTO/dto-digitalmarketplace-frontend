@@ -45,7 +45,8 @@ const startDateIs2DaysInFuture = v => {
   return true
 }
 
-export const done = v => startDateRequired(v) && contractLengthRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v)
+export const done = v =>
+  startDateRequired(v) && contractLengthRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v)
 
 class BuyerSpecialistTimeframesAndBudgetStage extends Component {
   constructor(props) {
