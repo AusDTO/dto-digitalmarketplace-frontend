@@ -83,7 +83,10 @@ const BuyerSpecialistAboutStage = props => (
       id="summary"
       htmlFor="summary"
       defaultValue={props[props.model].summary}
-      controlProps={{ limit: 1000 }}
+      controlProps={{
+        limit: 1000,
+        rows: '10'
+      }}
       validators={{
         required
       }}
