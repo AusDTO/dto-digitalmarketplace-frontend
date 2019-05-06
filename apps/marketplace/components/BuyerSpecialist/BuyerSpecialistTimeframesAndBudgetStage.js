@@ -5,14 +5,47 @@ import { Form, actions } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
+import format from 'date-fns/format'
+import parse from 'date-fns/parse'
+import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
 const startDateRequired = v => required(v.startDate)
 const contractLengthRequired = v => required(v.contractLength)
+const startDateIsValid = v => {
+  if (!startDateRequired(v)) {
+    return true
+  }
+  const startDate = v.startDate
+  try {
+    const date = parse(startDate)
+    if (format(date, 'YYYY-MM-DD') !== startDate) {
+      return false
+    }
+  } catch (e) {
+    return false
+  }
+  return true
+}
+const startDateIs2DaysInFuture = v => {
+  if (!startDateIsValid(v)) {
+    return true
+  }
+  const startDate = v.startDate
+  try {
+    const date = parse(startDate)
+    if (differenceInCalendarDays(date, new Date()) < 2) {
+      return false
+    }
+  } catch (e) {
+    return false
+  }
+  return true
+}
 
-export const done = v => startDateRequired(v) && contractLengthRequired(v)
+export const done = v => startDateRequired(v) && contractLengthRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v)
 
 class BuyerSpecialistTimeframesAndBudgetStage extends Component {
   constructor(props) {
@@ -36,7 +69,9 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
         validators={{
           '': {
             startDateRequired,
-            contractLengthRequired
+            contractLengthRequired,
+            startDateIsValid,
+            startDateIs2DaysInFuture
           }
         }}
       >
@@ -48,7 +83,9 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           model={model}
           messages={{
             startDateRequired: 'Enter an estimated start date for the brief',
-            contractLengthRequired: 'Enter a contract length for the brief'
+            contractLengthRequired: 'Enter a contract length for the brief',
+            startDateIsValid: 'You must enter a valid estimated start date',
+            startDateIs2DaysInFuture: 'You must enter an estimated start date at least 2 days from now'
           }}
         />
         <DateControl
