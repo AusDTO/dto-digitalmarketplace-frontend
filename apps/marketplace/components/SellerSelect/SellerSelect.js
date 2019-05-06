@@ -134,7 +134,7 @@ export class SellerSelect extends Component {
 
     timeoutHandle = setTimeout(() => {
       if (keyword && keyword.length >= this.props.minimumSearchChars && this.categoryIsValid()) {
-        findSuppliers(keyword, this.props.selectedCategory)
+        findSuppliers(keyword, this.props.selectedCategory, this.props.allSuppliers ? 'true' : '')
           .then(data => {
             const noResults = !data.sellers.length > 0
             this.setState({
@@ -219,6 +219,7 @@ SellerSelect.defaultProps = {
   showSelected: true,
   showSearchButton: true,
   showCategorySelect: false,
+  allSuppliers: false,
   categories: [],
   minimumSearchChars: 3,
   onSellerSelect: () => {},
@@ -236,6 +237,7 @@ SellerSelect.propTypes = {
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,
   showCategorySelect: PropTypes.bool,
+  allSuppliers: PropTypes.bool,
   categories: PropTypes.array,
   minimumSearchChars: PropTypes.number,
   onSellerSelect: PropTypes.func,
