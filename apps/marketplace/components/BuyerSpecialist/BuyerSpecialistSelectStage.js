@@ -123,7 +123,7 @@ export class BuyerSpecialistSelectStage extends Component {
                     onSellerSelect={this.handleSellerSelect}
                     onSellerCategorySelect={this.handleSellerCategorySelect}
                     showCategorySelect={false}
-                    allSuppliers={true}
+                    allSuppliers
                   />
                 </div>
                 <SelectedSellersControl

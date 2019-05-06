@@ -226,7 +226,6 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
   isBriefOwner: false,
-  evaluationType: [],
   numberOfSuppliers: '',
   hasSupplierErrors: false
 }
@@ -255,7 +254,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
   sellerCategory: PropTypes.string.isRequired,
-  evaluationType: PropTypes.array,
   numberOfSuppliers: PropTypes.string,
   hasSupplierErrors: PropTypes.bool
 }
