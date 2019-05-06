@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const PeopleOverview = () => <div>People</div>
+export class PeopleOverview extends Component {
+  render() {
+    return <div>People</div>
+  }
+}
 
 export default PeopleOverview
