@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import styles from './PageNavigation.scss'
 
@@ -6,7 +7,15 @@ const PageNavigation = props => (
   <div className={`${styles.pageNav} row`}>
     <div className="col-sm-12">
       <nav>
-        <ul>{props.links.map(link => <li key={link.key}>{link}</li>)}</ul>
+        <ul>
+          {props.links.map(link => (
+            <li key={link.text}>
+              <NavLink id={link.id} to={link.to} exact={link.exact}>
+                {link.text}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </nav>
     </div>
   </div>
