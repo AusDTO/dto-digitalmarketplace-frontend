@@ -94,7 +94,6 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           model={`${model}.startDate`}
           onDateChange={this.handleDateChange}
           defaultValue={this.props[model].startDate}
-          // className={styles.closingDateControl}
           label="Estimated start date"
           validators={{
             required
