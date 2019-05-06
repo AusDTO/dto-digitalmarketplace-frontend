@@ -5,17 +5,23 @@
         border-bottom: 8px solid #f5f5f5;
     }
 
-    ul {
+    ul.pageNavList {
         list-style-type: none;
+        margin-bottom: -8px;
         padding: 0;
 
         li {
             display: inline-block;
-            padding: 1rem;            
         }
 
         a {
+            display: block;
+            padding: 1rem 2rem;
             text-decoration: none;
+        }
+
+        a.active {
+            border-bottom: 8px solid #00698f;
         }
 
         a.active:hover {
