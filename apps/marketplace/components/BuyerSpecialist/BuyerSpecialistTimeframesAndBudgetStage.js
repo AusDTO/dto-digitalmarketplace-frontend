@@ -83,8 +83,8 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           title="An error occurred"
           model={model}
           messages={{
-            startDateRequired: 'Enter an estimated start date for the brief',
-            contractLengthRequired: 'Enter a contract length for the brief',
+            startDateRequired: 'Enter an estimated start date for the opportunity',
+            contractLengthRequired: 'Enter a contract length for the opportunity',
             startDateIsValid: 'You must enter a valid estimated start date',
             startDateIsInFuture: 'You must enter an estimated start date in the future'
           }}
