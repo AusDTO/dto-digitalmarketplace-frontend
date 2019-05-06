@@ -13,7 +13,8 @@ const SellerAssessmentRateStage = props => (
     model={props.model}
     validators={{
       '': {
-        requiredRate: formValues => required(formValues.maxDailyRate)
+        requiredRate: formValues => required(formValues.maxDailyRate),
+        greaterThanZero: formValues => parseInt(formValues.maxDailyRate, 10) > 0
       }
     }}
     onSubmit={props.onSubmit}
@@ -27,7 +28,8 @@ const SellerAssessmentRateStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        requiredRate: 'You must add a maximum daily rate'
+        requiredRate: 'You must add a maximum daily rate',
+        greaterThanZero: 'The maximum daily rate must be greater than zero'
       }}
     />
     <Textfield
