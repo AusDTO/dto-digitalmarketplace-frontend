@@ -177,7 +177,7 @@ const Opportunity = props => {
             <AUheading level="2" size="lg">
               Overview
             </AUheading>
-            <p>{brief.summary}</p>
+            <p className={styles.newLines}>{brief.summary}</p>
             <br />
             <div className="row">
               <div className="col-xs-12 col-sm-4">
@@ -277,7 +277,7 @@ const Opportunity = props => {
                   <div className="col-xs-12 col-sm-4">
                     <strong>Security clearance</strong>
                   </div>
-                  <div className="col-xs-12 col-sm-8">
+                  <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>
                     {brief.securityClearance === 'noneRequired' && 'None required'}
                     {brief.securityClearance === 'abilityToObtain' && (
                       <span>

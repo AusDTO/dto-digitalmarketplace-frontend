@@ -26,7 +26,7 @@ const EvaluationCriteria = props => (
         <div
           role="cell"
           aria-labelledby="header_criteria"
-          className={props.showWeightings ? `col-xs-8 col-sm-9` : `col-xs-12`}
+          className={props.showWeightings ? `col-xs-8 col-sm-9 ${styles.newLines}` : `col-xs-12 ${styles.newLines}`}
         >
           {evaluationCriteria.criteria}
         </div>
