@@ -10,11 +10,13 @@ export class PeopleOverview extends Component {
   }
 
   render() {
-    if (this.props.currentlySending) {
+    const { currentlySending, items } = this.props
+
+    if (currentlySending) {
       return <LoadingIndicatorFullPage />
     }
 
-    if (this.props.items.length === 0) {
+    if (items.length === 0) {
       return (
         <div className="row">
           <div className="col-xs-12">
@@ -41,7 +43,7 @@ export class PeopleOverview extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.items.map(item => (
+              {items.map(item => (
                 <tr key={`item.${item.email}`}>
                   <td>{item.name}</td>
                   <td>
