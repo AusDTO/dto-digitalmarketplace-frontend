@@ -29,8 +29,6 @@ export class PeopleOverview extends Component {
     return (
       <div className="row">
         <div className="col-xs-12">
-          <span />
-          <h2 className="au-display-lg">Active team members</h2>
           <p>
             If someone has left your organisation, <a href="/contact-us">contact us</a> to have them removed.
           </p>
