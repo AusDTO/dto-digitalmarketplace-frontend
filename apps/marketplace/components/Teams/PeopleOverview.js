@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBuyerDashboardTeamOverview } from 'marketplace/actions/dashboardActions'
+import { loadBuyerTeamMembers } from '../../actions/teamActions'
 
 export class PeopleOverview extends Component {
   componentDidMount() {
@@ -58,12 +58,11 @@ export class PeopleOverview extends Component {
 
 const mapStateToProps = state => ({
   currentlySending: state.app.currentlySending,
-  loadSuccess: state.dashboard.loadBuyerDashboardTeamOverviewSuccess,
-  teamMembers: state.dashboard.buyerDashboardTeamOverview.items
+  teamMembers: state.team.buyerTeamMembers.items
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadTeamMembers: () => dispatch(loadBuyerDashboardTeamOverview())
+  loadTeamMembers: () => dispatch(loadBuyerTeamMembers())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PeopleOverview)
