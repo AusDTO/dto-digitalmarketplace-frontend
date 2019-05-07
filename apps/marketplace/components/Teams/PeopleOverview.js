@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerTeamMembers } from '../../actions/teamActions'
 
+import styles from './PeopleOverview.scss'
+
 export class PeopleOverview extends Component {
   componentDidMount() {
     this.props.loadTeamMembers()
@@ -32,7 +34,7 @@ export class PeopleOverview extends Component {
           <p>
             If someone has left your organisation, <a href="/contact-us">contact us</a> to have them removed.
           </p>
-          <table className={`col-xs-12`}>
+          <table className={`col-xs-12 ${styles.peopleOverview}`}>
             <thead>
               <tr>
                 <th scope="col">Name</th>
