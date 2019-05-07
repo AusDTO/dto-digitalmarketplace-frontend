@@ -49,7 +49,12 @@ export class SellerAssessmentFlowPage extends Component {
     return this.props.loadInitialData(this.props.match.params.evidenceId).then(response => {
       // only accept data defined in the form reducer
       const data = { ...SellerAssessmentFormReducer }
-      if (response.data) {
+      if (response.data && !response.error) {
+        if (response.data.status !== 'draft') {
+          this.props.setError('You can not edit submitted or approved assessments.')
+          return false
+        }
+
         Object.keys(response.data).map(property => {
           if (Object.keys(SellerAssessmentFormReducer).includes(property)) {
             data[property] = response.data[property]
@@ -57,10 +62,6 @@ export class SellerAssessmentFlowPage extends Component {
           }
           return true
         })
-
-        if (response.data.status !== 'draft') {
-          this.props.setError('You can not edit submitted or approved assessments.')
-        }
 
         this.props.changeFormModel(data)
       }
