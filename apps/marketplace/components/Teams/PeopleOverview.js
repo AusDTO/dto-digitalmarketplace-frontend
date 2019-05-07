@@ -10,13 +10,13 @@ export class PeopleOverview extends Component {
   }
 
   render() {
-    const { currentlySending, items } = this.props
+    const { currentlySending, teamMembers } = this.props
 
     if (currentlySending) {
       return <LoadingIndicatorFullPage />
     }
 
-    if (items.length === 0) {
+    if (teamMembers.length === 0) {
       return (
         <div className="row">
           <div className="col-xs-12">
@@ -40,11 +40,11 @@ export class PeopleOverview extends Component {
               </tr>
             </thead>
             <tbody>
-              {items.map(item => (
-                <tr key={`item.${item.email}`}>
-                  <td>{item.name}</td>
+              {teamMembers.map(teamMember => (
+                <tr key={`item.${teamMember.email}`}>
+                  <td>{teamMember.name}</td>
                   <td>
-                    <a href={`mailto:${item.email}`}>{item.email}</a>
+                    <a href={`mailto:${teamMember.email}`}>{teamMember.email}</a>
                   </td>
                 </tr>
               ))}
@@ -57,7 +57,7 @@ export class PeopleOverview extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.dashboard.buyerDashboardTeamOverview.items,
+  teamMembers: state.dashboard.buyerDashboardTeamOverview.items,
   loadSuccess: state.dashboard.loadBuyerDashboardTeamOverviewSuccess,
   currentlySending: state.app.currentlySending
 })
