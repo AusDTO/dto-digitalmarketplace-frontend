@@ -57,9 +57,9 @@ export class PeopleOverview extends Component {
 }
 
 const mapStateToProps = state => ({
-  teamMembers: state.dashboard.buyerDashboardTeamOverview.items,
+  currentlySending: state.app.currentlySending,
   loadSuccess: state.dashboard.loadBuyerDashboardTeamOverviewSuccess,
-  currentlySending: state.app.currentlySending
+  teamMembers: state.dashboard.buyerDashboardTeamOverview.items
 })
 
 const mapDispatchToProps = dispatch => ({
