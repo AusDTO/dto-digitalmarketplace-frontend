@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 import { rootPath } from 'marketplace/routes'
 
 import AUbutton from '@gov.au/buttons'
@@ -35,4 +36,8 @@ const TeamsPage = props => (
   </BrowserRouter>
 )
 
-export default TeamsPage
+const mapStateToProps = state => ({
+  organisation: state.team.organisation
+})
+
+export default withRouter(connect(mapStateToProps)(TeamsPage))
