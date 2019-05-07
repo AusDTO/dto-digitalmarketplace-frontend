@@ -10,9 +10,9 @@ export class PeopleOverview extends Component {
   }
 
   render() {
-    const { currentlySending, teamMembers } = this.props
+    const { loading, teamMembers } = this.props
 
-    if (currentlySending) {
+    if (loading) {
       return <LoadingIndicatorFullPage />
     }
 
@@ -57,7 +57,7 @@ export class PeopleOverview extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentlySending: state.app.currentlySending,
+  loading: state.app.currentlySending,
   teamMembers: state.team.buyerTeamMembers.items
 })
 
