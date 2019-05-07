@@ -1,4 +1,4 @@
-import { BUYER_TEAM_MEMBERS_SUCCESS, USER_ORGANISATION } from '../constants/constants'
+import { BUYER_TEAM_MEMBERS_SUCCESS, SET_ERROR_MESSAGE, USER_ORGANISATION } from '../constants/constants'
 
 const defaultUserState = {
   buyerTeamMembers: { items: [] },
@@ -12,6 +12,11 @@ const teamReducer = (state = defaultUserState, action) => {
         ...state,
         buyerTeamMembers: action.data,
         loadBuyerTeamMembersErrored: false
+      }
+    case SET_ERROR_MESSAGE:
+      return {
+        ...state,
+        message: action.message
       }
     case USER_ORGANISATION:
       return {
