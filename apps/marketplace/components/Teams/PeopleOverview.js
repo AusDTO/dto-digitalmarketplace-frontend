@@ -6,7 +6,7 @@ import { loadBuyerDashboardTeamOverview } from 'marketplace/actions/dashboardAct
 
 export class PeopleOverview extends Component {
   componentDidMount() {
-    this.props.loadData()
+    this.props.loadTeamMembers()
   }
 
   render() {
@@ -63,7 +63,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: () => dispatch(loadBuyerDashboardTeamOverview())
+  loadTeamMembers: () => dispatch(loadBuyerDashboardTeamOverview())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PeopleOverview)
