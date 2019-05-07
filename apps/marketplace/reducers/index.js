@@ -5,14 +5,16 @@ import appReducer from './appReducer'
 import brief from './briefReducers'
 import user from './memberInfoReducers'
 import domain from './domainReducers'
+import evidence from './evidenceReducers'
 import dashboard from './dashboardReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
 
-export const SellerAssessmentReducer = {
+export const SellerAssessmentFormReducer = {
   id: 0,
+  domainId: 0,
   maxDailyRate: 0,
   criteria: [],
   evidence: {
@@ -86,6 +88,7 @@ export default combineReducers({
   brief,
   dashboard,
   domain,
+  evidence,
   opportunities,
   messages,
   form_options,
@@ -150,6 +153,6 @@ export default combineReducers({
     },
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerATMForm: BuyerATMFormReducer,
-    SellerAssessmentForm: SellerAssessmentReducer
+    SellerAssessmentForm: SellerAssessmentFormReducer
   })
 })

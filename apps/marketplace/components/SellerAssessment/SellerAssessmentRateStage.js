@@ -4,17 +4,17 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+
+const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 10) > 0
 
 const SellerAssessmentRateStage = props => (
   <Form
     model={props.model}
     validators={{
       '': {
-        requiredRate: formValues => required(formValues.maxDailyRate),
-        greaterThanZero: formValues => parseInt(formValues.maxDailyRate, 10) > 0
+        greaterThanZero
       }
     }}
     onSubmit={props.onSubmit}
@@ -28,7 +28,6 @@ const SellerAssessmentRateStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        requiredRate: 'You must add a maximum daily rate',
         greaterThanZero: 'The maximum daily rate must be greater than zero'
       }}
     />
@@ -43,9 +42,6 @@ const SellerAssessmentRateStage = props => (
       defaultValue={props[props.model].maxDailyRate}
       maxLength={100}
       showMaxLength
-      validators={{
-        required
-      }}
     />
     {props.formButtons}
   </Form>

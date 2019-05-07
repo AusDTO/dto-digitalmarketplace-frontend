@@ -1,4 +1,9 @@
-import { DOMAIN_LOAD_SUCCESS } from '../constants/constants'
+import {
+  DOMAIN_LOAD_SUCCESS,
+  EVIDENCE_CREATE_SUCCESS,
+  EVIDENCE_LOAD_SUCCESS,
+  EVIDENCE_SAVE_SUCCESS
+} from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -57,6 +62,98 @@ export const loadDomainData = domainId => dispatch => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleDomainLoadSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleLoadEvidenceSuccess = response => ({
+  type: EVIDENCE_LOAD_SUCCESS,
+  data: {
+    id: response.data.id,
+    domainId: response.data.domainId,
+    supplierCode: response.data.supplierCode,
+    maxDailyRate: response.data.maxDailyRate,
+    submittedAt: response.data.submitted_at,
+    criteria: response.data.criteria,
+    evidence: response.data.evidence,
+    status: response.data.status
+  }
+})
+
+export const loadEvidenceData = evidenceId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({ url: `/evidence/${evidenceId}` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleLoadEvidenceSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleCreateEvidenceSuccess = response => ({
+  type: EVIDENCE_CREATE_SUCCESS,
+  data: {
+    id: response.data.id,
+    domainId: response.data.domainId,
+    supplierCode: response.data.supplierCode,
+    maxDailyRate: response.data.maxDailyRate,
+    submittedAt: response.data.submitted_at,
+    criteria: response.data.criteria,
+    evidence: response.data.evidence,
+    status: response.data.status
+  }
+})
+
+export const createEvidence = domainId => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/evidence/${domainId}`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateEvidenceSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleEvidenceSaveSuccess = response => ({
+  type: EVIDENCE_SAVE_SUCCESS,
+  data: {
+    id: response.data.id,
+    domainId: response.data.domain_id,
+    supplierCode: response.data.supplier_code,
+    maxDailyRate: response.data.maxDailyRate
+  }
+})
+
+export const saveEvidence = (evidenceId, data) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/evidence/${evidenceId}`,
+    method: 'PATCH',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleEvidenceSaveSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response

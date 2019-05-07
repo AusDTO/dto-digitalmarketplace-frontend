@@ -24,6 +24,8 @@ import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
 import MessagesPage from './pages/MessagesPage'
 import SellerAssessmentFlowPage from './pages/SellerAssessmentFlowPage'
+import SellerAssessmentCreatePage from './pages/SellerAssessmentCreatePage'
+import SellerAssessmentCompletedPage from './pages/SellerAssessmentCompletedPage'
 
 export const rootPath = '/2'
 
@@ -65,7 +67,17 @@ export const Routes = () => (
     <PrivateRoute path={`${rootPath}/messages`} component={MessagesPage} />
     <PrivateRoute
       restrictedTo="supplier"
-      path={`${rootPath}/seller-assessment/:domainId`}
+      path={`${rootPath}/seller-assessment/:evidenceId/completed`}
+      component={SellerAssessmentCompletedPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-assessment/create/:domainId`}
+      component={SellerAssessmentCreatePage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
       component={SellerAssessmentFlowPage}
     />
     <Route component={NotFound} />
