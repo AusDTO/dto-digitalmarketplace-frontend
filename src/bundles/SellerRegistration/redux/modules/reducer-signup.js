@@ -13,6 +13,7 @@ export default combineReducers({
   steps,
   application,
   application_errors,
+  confirmDiscard: false,
   options: (state = {}) => state,
   ...createForms({
     // We need to define the schemas of each form

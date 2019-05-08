@@ -195,7 +195,7 @@ exports[`Signup renders 1`] = `
             onClick={[Function]}
           >
             <span>
-              Preview and update
+              Preview and submit
             </span>
           </a>
         </li>
@@ -505,7 +505,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             onClick={[Function]}
           >
             <span>
-              Preview and update
+              Preview and submit
             </span>
           </a>
         </li>
@@ -996,7 +996,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
           >
             <span>
-              Preview and update
+              Preview and submit
             </span>
           </a>
         </li>
