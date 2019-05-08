@@ -169,7 +169,7 @@ const Opportunity = props => {
             {category && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
-                  <strong>Panel category</strong>
+                  <strong>{brief.lotSlug === 'specialist' ? 'Category' : 'Panel category'}</strong>
                 </div>
                 <div className="col-xs-12 col-sm-8">{category}</div>
               </div>
@@ -183,7 +183,9 @@ const Opportunity = props => {
               <div className="col-xs-12 col-sm-4">
                 <strong>Estimated start date</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
+              <div className="col-xs-12 col-sm-8">
+                {brief.lotSlug === 'specialist' ? format(brief.startDate, 'D-MM-YYYY') : brief.startDate}
+              </div>
             </div>
             {brief.lotSlug === 'specialist' &&
               brief.maxRate && (
@@ -193,7 +195,7 @@ const Opportunity = props => {
                       {'Maximum '}
                       {brief.preferredFormatForRates ? '' : 'rate'}
                       {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
-                      {' cap'}
+                      {' rate'}
                     </strong>
                   </div>
                   <div className="col-xs-12 col-sm-8">
@@ -342,13 +344,22 @@ const Opportunity = props => {
             )}
           {isBriefOwner &&
             !isOpenToAll &&
-            (brief.lotSlug !== 'specialist' || brief.attachments.length > 0) && (
+            brief.lotSlug !== 'specialist' &&
+            brief.attachments.length > 0 && (
               <div className={styles.noticeBar}>
                 <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
                 <span>
-                  Only invited sellers and other buyers can view attached documents. Only invited sellers can view
-                  industry briefing details you provide.
+                  {'Only invited sellers and other buyers can view attached documents. '}
+                  {'Only invited sellers can view industry briefing details you provide.'}
                 </span>
+              </div>
+            )}
+          {isBriefOwner &&
+            brief.lotSlug === 'specialist' &&
+            brief.attachments.length > 0 && (
+              <div className={styles.noticeBar}>
+                <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+                <span>{'Only invited sellers and other buyers can view attached documents. '}</span>
               </div>
             )}
           {loggedIn &&
@@ -478,7 +489,7 @@ const Opportunity = props => {
                 <li>start date</li>
                 <li>
                   {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
-                  rate (excluding GST)
+                  {' rate (excluding GST)'}
                 </li>
                 <li>résume</li>
                 <li>responses to the evaluation criteria (up to 500 words per criteria)</li>

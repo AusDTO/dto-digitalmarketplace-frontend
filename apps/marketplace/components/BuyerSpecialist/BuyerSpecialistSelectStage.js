@@ -12,7 +12,7 @@ import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
 const atLeastOneSeller = v =>
-  !v.openTo || v.openTo === 'all' || (v.openTo === 'category' && v.sellers && Object.keys(v.sellers).length > 0)
+  !v.openTo || v.openTo === 'all' || (v.openTo === 'selected' && v.sellers && Object.keys(v.sellers).length > 0)
 
 export const done = v => requiredCategory(v) && requiredChoice(v) && atLeastOneSeller(v)
 
@@ -105,14 +105,14 @@ export class BuyerSpecialistSelectStage extends Component {
                   },
                   {
                     label: 'Specific sellers in the panel category',
-                    value: 'category'
+                    value: 'selected'
                   }
                 ]}
                 messages={{}}
                 onChange={() => this.props.resetSelectedSellers()}
               />
             </div>
-            {this.props[this.props.model].openTo === 'category' && (
+            {this.props[this.props.model].openTo === 'selected' && (
               <div>
                 <div>
                   <SellerSelect
