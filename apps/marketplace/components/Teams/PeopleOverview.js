@@ -29,7 +29,7 @@ export class PeopleOverview extends Component {
     }
 
     return (
-      <div className="row">
+      <div className={`${styles.people} row`}>
         <div className="col-xs-12">
           <p>
             If someone has left your organisation, <a href="/contact-us">contact us</a> to have them removed.
