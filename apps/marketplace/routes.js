@@ -3,6 +3,7 @@ import { withRouter, Switch, Route } from 'react-router-dom'
 import PrivateRoute from 'marketplace/MarketplaceAuthenticatedRoute'
 import SignupPage from './pages/SignupPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
+import CreateTeamPage from './pages/Teams/CreateTeamPage'
 import CreateUserPage from './pages/CreateUserPage'
 import SendInvitePage from './pages/SendInvitePage'
 import BriefPage from './pages/BriefPage'
@@ -59,6 +60,7 @@ export const Routes = () => (
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams/create/:stage?`} component={CreateTeamPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
     <Route component={NotFound} />
   </Switch>
