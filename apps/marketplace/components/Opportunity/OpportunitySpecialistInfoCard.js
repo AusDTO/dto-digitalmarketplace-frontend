@@ -49,7 +49,7 @@ const OpportunitySpecialistInfoCard = props => (
             <span>
               {props.isOpenToAll ? (
                 <span>
-                  <p>Any assessed seller can respond.</p>
+                  <p>You must be signed in and approved in {props.category} to respond</p>
                   <p>
                     <a
                       href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
@@ -69,7 +69,7 @@ const OpportunitySpecialistInfoCard = props => (
                 </span>
               ) : (
                 <span>
-                  <p>Only signed in invited sellers can apply.</p>
+                  <p>You must be signed in and invited to respond</p>
                   <p>
                     <a
                       href={`/login?next=${encodeURIComponent(
@@ -95,7 +95,7 @@ const OpportunitySpecialistInfoCard = props => (
           props.isApplicant && (
             <span>
               <p className={styles.invitedStatus}>
-                Only approved sellers can apply.
+                You must complete your profile and be approved in {props.category} to respond.
                 {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
               {!props.isAwaitingApplicationAssessment && (
@@ -119,6 +119,8 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          props.isOpenToAll &&
+          props.canRespond &&
           props.category &&
           !props.isAssessedForCategory && (
             <span>
