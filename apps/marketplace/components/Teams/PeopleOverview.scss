@@ -25,3 +25,17 @@
         padding: 1.25rem;
     }
 }
+
+@media (max-width: 575px) {
+    .peopleOverview {
+        tr {
+            display: block;
+            padding: 1rem 0;
+        }
+
+        td {
+            display: block;
+            padding: 0.375rem;
+        }
+    }
+}
