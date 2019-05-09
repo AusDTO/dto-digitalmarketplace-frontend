@@ -10,6 +10,7 @@ const PermissionsStage = props => (
     <AUheadings level="1" size="xl">
       Permissions
     </AUheadings>
+    <p>Team members automatically see opportunities created by anyone in the team.</p>
   </Form>
 )
 
