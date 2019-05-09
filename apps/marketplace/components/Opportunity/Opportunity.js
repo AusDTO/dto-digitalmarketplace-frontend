@@ -83,6 +83,7 @@ const Opportunity = props => {
   const {
     briefResponseCount,
     invitedSellerCount,
+    supplierBriefResponseCount,
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
@@ -541,6 +542,7 @@ const Opportunity = props => {
             <OpportunitySpecialistInfoCard
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
+              sellerResponses={supplierBriefResponseCount}
               isOpen={brief.status === 'live'}
               closingDate={getClosingTime(brief)}
               canRespond={canRespond}
@@ -608,6 +610,7 @@ Opportunity.defaultProps = {
   domains: [],
   briefResponseCount: 0,
   invitedSellerCount: 0,
+  supplierBriefResponseCount: 0,
   canRespond: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
@@ -675,6 +678,7 @@ Opportunity.propTypes = {
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
+  supplierBriefResponseCount: PropTypes.number,
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,

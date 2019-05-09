@@ -37,7 +37,16 @@ const OpportunitySpecialistInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
+        {props.isApprovedSeller && props.canRespond ? 
+          <p>
+            {props.sellerResponses === 0 ?
+              `You have not submitted any candidates. ` :
+              `You have submitted ${props.sellerResponses} candidate${props.sellerResponses > 1 ? 's' : ''}. `
+            }
+            {`You can submit ${props.numberOfSuppliers - props.sellerResponses} more before the opportunity closes.`}
+          </p> :
+          <React.Fragment>Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.</React.Fragment>
+        }
       </div>
     </div>
     <div className="row">
@@ -172,33 +181,34 @@ const OpportunitySpecialistInfoCard = props => (
           props.isAssessedForCategory &&
           props.canRespond && (
             <div>
-              {props.hasResponded ? (
-                <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
-              ) : (
+              {props.hasSupplierErrors ? (
                 <div>
-                  {props.hasSupplierErrors ? (
-                    <div>
-                      <p className={styles.invitedStatus}>
-                        There is at least one error in your profile. You must update your profile before you can apply
-                        for this opportunity.
-                      </p>
-                      <p>
-                        <a href="/sellers/edit" className="au-btn au-btn--block">
-                          Update profile
-                        </a>
-                      </p>
-                    </div>
-                  ) : (
-                    <a
-                      href={`${rootPath}/brief/${props.briefId}/${
-                        props.briefLot === 'specialist' ? `${props.briefLot}2` : props.briefLot
-                      }/respond`}
-                      className={`${styles.button} au-btn`}
-                    >
-                      Apply for opportunity
+                  <p className={styles.invitedStatus}>
+                    There is at least one error in your profile. You must update your profile before you can apply
+                    for this opportunity.
+                  </p>
+                  <p>
+                    <a href="/sellers/edit" className="au-btn au-btn--block">
+                      Update profile
                     </a>
-                  )}
+                  </p>
                 </div>
+              ) : (
+                <React.Fragment>
+                  
+                  {!props.hasResponded && (
+                    <p>
+                      <a
+                        href={`${rootPath}/brief/${props.briefId}/${
+                          props.briefLot === 'specialist' ? `${props.briefLot}2` : props.briefLot
+                        }/respond`}
+                        className={`${styles.button} au-btn`}
+                      >
+                        Apply for opportunity
+                      </a>
+                    </p>
+                  )}
+                </React.Fragment>
               )}
             </div>
           )}
@@ -212,6 +222,7 @@ OpportunitySpecialistInfoCard.defaultProps = {
   category: '',
   sellersInvited: 0,
   sellersApplied: 0,
+  sellerResponses: 0,
   canRespond: false,
   isAssessedForCategory: false,
   hasChosenBriefCategory: false,
@@ -234,6 +245,7 @@ OpportunitySpecialistInfoCard.propTypes = {
   buyerEmail: PropTypes.string,
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
+  sellerResponses: PropTypes.number,
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   hasChosenBriefCategory: PropTypes.bool,
