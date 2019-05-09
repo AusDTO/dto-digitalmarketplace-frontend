@@ -1,3 +1,5 @@
-const createTeamForm = {}
+const createTeamForm = {
+  name: ''
+}
 
 export default createTeamForm

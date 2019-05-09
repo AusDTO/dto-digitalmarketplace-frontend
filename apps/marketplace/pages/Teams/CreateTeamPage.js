@@ -4,7 +4,7 @@ import TeamStages from '../../components/Teams/TeamStages'
 import ProgressFlow from '../../components/ProgressFlow/ProgressFlow'
 import { rootPath } from '../../routes'
 
-const model = 'CreateTeamForm'
+const model = 'createTeamForm'
 
 export class CreateTeamPage extends Component {
   render() {
