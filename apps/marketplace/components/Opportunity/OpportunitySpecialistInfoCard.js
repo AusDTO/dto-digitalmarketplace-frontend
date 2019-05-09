@@ -119,9 +119,7 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          props.isOpenToAll &&
           props.canRespond &&
-          props.category &&
           !props.isAssessedForCategory && (
             <span>
               {props.hasChosenBriefCategory ? (
