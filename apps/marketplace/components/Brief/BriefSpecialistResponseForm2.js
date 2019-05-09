@@ -120,9 +120,9 @@ const BriefSpecialistResponseForm2 = ({
               <div className={styles.stepTitle}>
                 Specialist {specialistNumber} of {brief.numberOfSuppliers}
               </div>
-              <h1 className="au-display-xl">{`${specialistGivenNames} ${specialistSurname}`}</h1>
-              <h2 className="au-display-lg">About</h2>
               <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
+                <h1 className="au-display-xl">{`${specialistGivenNames} ${specialistSurname}`}</h1>
+                <h2 className="au-display-lg">About</h2>
                 <Textfield
                   model={`${model}.availability`}
                   name="availability"
