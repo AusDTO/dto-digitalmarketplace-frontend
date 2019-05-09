@@ -1,7 +1,7 @@
 const createTeamForm = {
   emailAddress: '',
-  name: '',
-  teamLeadName: ''
+  teamLeadName: '',
+  teamName: ''
 }
 
 export default createTeamForm
