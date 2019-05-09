@@ -8,6 +8,13 @@ import Textfield from 'shared/form/Textfield'
 
 import styles from './TeamLeadsStage.scss'
 
+const teamLeadNameDescription = (
+  <span>
+    Team leads must already have a Digital Marketplace account in their name that ends in{' '}
+    <span className={styles.bold}>@humanservices.gov.au</span>
+  </span>
+)
+
 const TeamLeadsStage = props => (
   <Form model={props.model}>
     <AUheadings level="1" size="xl">
@@ -23,7 +30,7 @@ const TeamLeadsStage = props => (
     </div>
     <Textfield
       defaultValue={props[props.model].emailAddress}
-      description="Team leads must already have a Digital Marketplace account in their name that ends in @humanservices.gov.au"
+      description={teamLeadNameDescription}
       htmlFor="teamLeadName"
       id="teamLeadName"
       label="Team lead name"
