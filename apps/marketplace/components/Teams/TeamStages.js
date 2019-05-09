@@ -2,17 +2,17 @@ import AboutTeamStage from './AboutTeamStage'
 import TeamLeadsStage from './TeamLeadsStage'
 
 const aboutStage = {
-  slug: 'about',
-  title: 'About',
   component: AboutTeamStage,
-  isDone: true
+  isDone: true,
+  slug: 'about',
+  title: 'About'
 }
 
 const teamLeadsStage = {
-  slug: 'leads',
-  title: 'Team leads',
   component: TeamLeadsStage,
-  isDone: true
+  isDone: true,
+  slug: 'leads',
+  title: 'Team leads'
 }
 
 const CreateTeamStages = [aboutStage, teamLeadsStage]
