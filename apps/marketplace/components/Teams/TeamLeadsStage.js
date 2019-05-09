@@ -6,12 +6,14 @@ import AUheadings from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
+import styles from './TeamLeadsStage.scss'
+
 const TeamLeadsStage = props => (
   <Form model={props.model}>
     <AUheadings level="1" size="xl">
       Team leads
     </AUheadings>
-    <div>
+    <div className={styles.teamLeadPermissions}>
       <p>Team leads can:</p>
       <ul>
         <li>Add and remove members</li>
