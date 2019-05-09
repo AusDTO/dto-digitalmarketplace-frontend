@@ -238,6 +238,9 @@ const BriefSpecialistResponseForm2 = ({
                   label={`What is ${specialistGivenNames} ${specialistSurname}'s eligibility to work in Australia?`}
                   name="visaStatus"
                   model={`${model}.visaStatus`}
+                  validators={{
+                    required
+                  }}
                   options={[
                     {
                       label: 'Australian citizen',
@@ -252,7 +255,9 @@ const BriefSpecialistResponseForm2 = ({
                       value: 'ForeignNationalWithAValidVisa'
                     }
                   ]}
-                  messages={{}}
+                  messages={{
+                    required: `${specialistGivenNames} ${specialistSurname}'s eligibility to work in Australia is required`
+                  }}
                 />
                 {brief.securityClearance === 'mustHave' && (
                   <RadioList
@@ -264,6 +269,9 @@ const BriefSpecialistResponseForm2 = ({
                       ${brief.securityClearanceCurrent === 'pv' ? 'positive vetting' : ''} security clearance?`}
                     name="securityClearance"
                     model={`${model}.securityClearance`}
+                    validators={{
+                      required
+                    }}
                     options={[
                       {
                         label: 'Yes',
@@ -274,7 +282,9 @@ const BriefSpecialistResponseForm2 = ({
                         value: 'No'
                       }
                     ]}
-                    messages={{}}
+                    messages={{
+                      required: `${specialistGivenNames} ${specialistSurname}'s security clearance is required`
+                    }}
                   />
                 )}
                 <RadioList
@@ -284,6 +294,9 @@ const BriefSpecialistResponseForm2 = ({
                   }?`}
                   name="previouslyWorked"
                   model={`${model}.previouslyWorked`}
+                  validators={{
+                    required
+                  }}
                   options={[
                     {
                       label: 'Yes',
@@ -294,7 +307,9 @@ const BriefSpecialistResponseForm2 = ({
                       value: 'No'
                     }
                   ]}
-                  messages={{}}
+                  messages={{
+                    required: `${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation} is required`
+                  }}
                 />
                 <h2 className="au-display-lg">Essential evaluation criteria</h2>
                 {brief.essentialRequirements &&
@@ -311,7 +326,7 @@ const BriefSpecialistResponseForm2 = ({
                       messages={{
                         required: `${requirement.criteria} is required`
                       }}
-                      description={brief.includeWeightingsEssential && `Weighting: ${requirement.weighting}%`}
+                      description={brief.includeWeightingsEssential ? `Weighting: ${requirement.weighting}%` : ''}
                     />
                   ))}
                 <h2 className="au-display-lg">Desirable evaluation criteria</h2>
@@ -324,7 +339,7 @@ const BriefSpecialistResponseForm2 = ({
                       id={`niceToHaveRequirement.${i}`}
                       controlProps={{ limit: 500 }}
                       label={`${requirement.criteria} (optional)`}
-                      description={brief.includeWeightingsNiceToHave && `Weighting: ${requirement.weighting}%`}
+                      description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
                     />
                   ))}
                 <AUheadings level="2" size="sm">

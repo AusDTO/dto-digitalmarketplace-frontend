@@ -78,7 +78,7 @@ class BriefPage extends Component {
     const { model } = this.props
     const submitData = {
       attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
-      availability: values.availability,
+      availability: values.availability ? values.availability : null,
       specialistName: values.specialistName ? values.specialistName : null,
       specialistGivenNames: values.specialistGivenNames ? values.specialistGivenNames : null,
       specialistSurname: values.specialistSurname ? values.specialistSurname : null,
