@@ -4,6 +4,7 @@ import { Form } from 'react-redux-form'
 
 import AUheadings from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
+import Textfield from 'shared/form/Textfield'
 
 const TeamLeadsStage = props => (
   <Form model={props.model}>
@@ -18,6 +19,18 @@ const TeamLeadsStage = props => (
         <li>Create other team leads</li>
       </ul>
     </div>
+    <Textfield
+      defaultValue={props[props.model].emailAddress}
+      description="Team leads must already have a Digital Marketplace account in their name that ends in @humanservices.gov.au"
+      htmlFor="teamLeadName"
+      id="teamLeadName"
+      label="Team lead name"
+      maxLength={100}
+      model={`${props.model}.teamLeadName`}
+      name="teamLeadName"
+      placeholder=""
+      validators={{}}
+    />
   </Form>
 )
 
