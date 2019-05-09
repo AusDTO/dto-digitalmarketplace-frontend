@@ -6,6 +6,7 @@ export default combineReducers({
   project,
   dashboardText: (state = {}) => state,
   dashboardUrl: (state = {}) => state,
+  notificationCount: (state = {}) => state,
   form_options: (state = {}) => state,
   isAuthenticated: (state = {}) => state,
   loginUrl: (state = {}) => state,

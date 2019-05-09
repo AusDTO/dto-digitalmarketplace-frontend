@@ -7,6 +7,7 @@ import user from './memberInfoReducers'
 import domain from './domainReducers'
 import evidence from './evidenceReducers'
 import dashboard from './dashboardReducers'
+import sellerDashboard from './sellerDashboardReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
@@ -89,6 +90,7 @@ export default combineReducers({
   dashboard,
   domain,
   evidence,
+  sellerDashboard,
   opportunities,
   messages,
   form_options,

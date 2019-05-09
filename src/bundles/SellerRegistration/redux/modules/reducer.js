@@ -18,6 +18,7 @@ export default combineReducers({
   signup,
   form_options,
   errorMessage,
+  confirmDiscard: false,
   options: (state = {}) => state,
   ...createForms({
     yourInfoForm: {},
