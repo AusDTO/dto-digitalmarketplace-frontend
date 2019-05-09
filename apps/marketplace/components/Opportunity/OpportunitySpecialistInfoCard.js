@@ -37,16 +37,18 @@ const OpportunitySpecialistInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isApprovedSeller && props.canRespond ? 
+        {props.isApprovedSeller && props.canRespond ? (
           <p>
-            {props.sellerResponses === 0 ?
-              `You have not submitted any candidates. ` :
-              `You have submitted ${props.sellerResponses} candidate${props.sellerResponses > 1 ? 's' : ''}. `
-            }
+            {props.sellerResponses === 0
+              ? `You have not submitted any candidates. `
+              : `You have submitted ${props.sellerResponses} candidate${props.sellerResponses > 1 ? 's' : ''}. `}
             {`You can submit ${props.numberOfSuppliers - props.sellerResponses} more before the opportunity closes.`}
-          </p> :
-          <React.Fragment>Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.</React.Fragment>
-        }
+          </p>
+        ) : (
+          <React.Fragment>
+            Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
+          </React.Fragment>
+        )}
       </div>
     </div>
     <div className="row">
@@ -184,8 +186,8 @@ const OpportunitySpecialistInfoCard = props => (
               {props.hasSupplierErrors ? (
                 <div>
                   <p className={styles.invitedStatus}>
-                    There is at least one error in your profile. You must update your profile before you can apply
-                    for this opportunity.
+                    There is at least one error in your profile. You must update your profile before you can apply for
+                    this opportunity.
                   </p>
                   <p>
                     <a href="/sellers/edit" className="au-btn au-btn--block">
@@ -195,7 +197,6 @@ const OpportunitySpecialistInfoCard = props => (
                 </div>
               ) : (
                 <React.Fragment>
-                  
                   {!props.hasResponded && (
                     <p>
                       <a
