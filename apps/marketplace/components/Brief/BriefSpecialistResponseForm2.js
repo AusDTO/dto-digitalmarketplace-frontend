@@ -308,7 +308,9 @@ const BriefSpecialistResponseForm2 = ({
                     }
                   ]}
                   messages={{
-                    required: `${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation} is required`
+                    required: `${specialistGivenNames} ${specialistSurname} previously worked for the ${
+                      brief.organisation
+                    } is required`
                   }}
                 />
                 <h2 className="au-display-lg">Essential evaluation criteria</h2>
