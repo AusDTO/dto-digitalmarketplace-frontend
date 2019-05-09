@@ -7,11 +7,12 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
 import styles from './TeamLeadsStage.scss'
+import commonStyles from './TeamStages.scss'
 
 const teamLeadNameDescription = (
   <span>
     Team leads must already have a Digital Marketplace account in their name that ends in{' '}
-    <span className={styles.bold}>@humanservices.gov.au</span>
+    <span className={commonStyles.bold}>@humanservices.gov.au</span>
   </span>
 )
 
@@ -21,7 +22,7 @@ const TeamLeadsStage = props => (
       Team leads
     </AUheadings>
     <div className={styles.teamLeadPermissions}>
-      <p className={styles.bold}>Team leads can:</p>
+      <p className={commonStyles.bold}>Team leads can:</p>
       <ul className={styles.permissionList}>
         <li>Add and remove members</li>
         <li>Specify what each member can do</li>
