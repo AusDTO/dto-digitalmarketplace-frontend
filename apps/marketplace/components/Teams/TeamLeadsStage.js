@@ -29,7 +29,7 @@ const TeamLeadsStage = props => (
       </ul>
     </div>
     <Textfield
-      defaultValue={props[props.model].emailAddress}
+      defaultValue={props[props.model].teamLeadName}
       description={teamLeadNameDescription}
       htmlFor="teamLeadName"
       id="teamLeadName"
