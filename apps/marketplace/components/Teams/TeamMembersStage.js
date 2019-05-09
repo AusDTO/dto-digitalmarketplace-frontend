@@ -4,6 +4,7 @@ import { Form } from 'react-redux-form'
 
 import AUheadings from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
+import Textfield from 'shared/form/Textfield'
 
 import commonStyles from './TeamStages.scss'
 
@@ -18,6 +19,18 @@ const TeamMembersStage = props => (
         <span className={commonStyles.bold}>@humanservices.gov.au</span>
       </p>
     </div>
+    <Textfield
+      defaultValue={props[props.model].teamMemberName}
+      description=""
+      htmlFor="teamMemberName"
+      id="teamMemberName"
+      label="Name"
+      maxLength={100}
+      model={`${props.model}.teamMemberName`}
+      name="teamMemberName"
+      placeholder=""
+      validators={{}}
+    />
   </Form>
 )
 

@@ -1,6 +1,7 @@
 const createTeamForm = {
   emailAddress: '',
   teamLeadName: '',
+  teamMemberName: '',
   teamName: ''
 }
 
