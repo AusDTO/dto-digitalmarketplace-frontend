@@ -10,6 +10,14 @@ const TeamLeadsStage = props => (
     <AUheadings level="1" size="xl">
       Team leads
     </AUheadings>
+    <div>
+      <p>Team leads can:</p>
+      <ul>
+        <li>Add and remove members</li>
+        <li>Specify what each member can do</li>
+        <li>Create other team leads</li>
+      </ul>
+    </div>
   </Form>
 )
 
