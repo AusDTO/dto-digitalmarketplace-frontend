@@ -12,27 +12,27 @@ const AboutTeamStage = props => (
       Name and email
     </AUheadings>
     <Textfield
-      model={`${props.model}.name`}
-      label="Team name"
-      description=""
-      placeholder=""
-      name="name"
-      id="name"
-      htmlFor="name"
       defaultValue={props[props.model].name}
+      description=""
+      htmlFor="name"
+      id="name"
+      label="Team name"
       maxLength={100}
+      model={`${props.model}.name`}
+      name="name"
+      placeholder=""
       validators={{}}
     />
     <Textfield
-      model={`${props.model}.emailAddress`}
-      label="Team email address (optional)"
-      description="Receive emails about opportunities created by any team member"
-      placeholder=""
-      name="emailAddress"
-      id="emailAddress"
-      htmlFor="emailAddress"
       defaultValue={props[props.model].emailAddress}
+      description="Receive emails about opportunities created by any team member"
+      htmlFor="emailAddress"
+      id="emailAddress"
+      label="Team email address (optional)"
       maxLength={100}
+      model={`${props.model}.emailAddress`}
+      name="emailAddress"
+      placeholder=""
       validators={{}}
     />
   </Form>
