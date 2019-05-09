@@ -1,4 +1,5 @@
 import AboutTeamStage from './AboutTeamStage'
+import TeamLeadsStage from './TeamLeadsStage'
 
 const aboutStage = {
   slug: 'about',
@@ -7,6 +8,13 @@ const aboutStage = {
   isDone: true
 }
 
-const CreateTeamStages = [aboutStage]
+const teamLeadsStage = {
+  slug: 'leads',
+  title: 'Team leads',
+  component: TeamLeadsStage,
+  isDone: true
+}
+
+const CreateTeamStages = [aboutStage, teamLeadsStage]
 
 export default CreateTeamStages
