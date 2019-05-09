@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 
-import AUheadings from '@gov.au/headings'
+import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
@@ -17,9 +17,9 @@ const teamLeadNameDescription = (
 
 const TeamLeadsStage = props => (
   <Form model={props.model}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Team leads
-    </AUheadings>
+    </AUheading>
     <div className={commonStyles.stageContentContainer}>
       <p className={commonStyles.bold}>Team leads can:</p>
       <ul className={commonStyles.stageList}>

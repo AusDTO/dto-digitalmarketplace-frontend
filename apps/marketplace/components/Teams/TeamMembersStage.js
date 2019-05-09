@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 
-import AUheadings from '@gov.au/headings'
+import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
@@ -10,9 +10,9 @@ import commonStyles from './TeamStages.scss'
 
 const TeamMembersStage = props => (
   <Form model={props.model}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Team members
-    </AUheadings>
+    </AUheading>
     <div className={commonStyles.stageContentContainer}>
       <p>
         Members must already have a Digital Marketplace account in their name that ends in{' '}

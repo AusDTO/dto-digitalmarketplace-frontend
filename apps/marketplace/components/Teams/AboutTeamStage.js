@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 
-import AUheadings from '@gov.au/headings'
+import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
 const AboutTeamStage = props => (
   <Form model={props.model}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Name and email
-    </AUheadings>
+    </AUheading>
     <Textfield
       defaultValue={props[props.model].teamName}
       description=""
