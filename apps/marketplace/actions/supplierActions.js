@@ -22,20 +22,6 @@ export const findSuppliers = (keyword, category) => {
   })
 }
 
-export default findSuppliers
-
-export const handleDomainLoadSuccess = response => ({
-  type: DOMAIN_LOAD_SUCCESS,
-  data: {
-    id: response.data.id,
-    name: response.data.name,
-    priceMinimum: response.data.price_minimum,
-    priceMaximum: response.data.price_maximum,
-    criteria: response.data.criteria,
-    criteriaNeeded: response.data.criteria_needed
-  }
-})
-
 export const handleErrorFailure = response => dispatch => {
   if (!response) {
     dispatch(setErrorMessage(GENERAL_ERROR))
@@ -54,6 +40,18 @@ export const handleErrorFailure = response => dispatch => {
     }
   }
 }
+
+export const handleDomainLoadSuccess = response => ({
+  type: DOMAIN_LOAD_SUCCESS,
+  data: {
+    id: response.data.id,
+    name: response.data.name,
+    priceMinimum: response.data.price_minimum,
+    priceMaximum: response.data.price_maximum,
+    criteria: response.data.criteria,
+    criteriaNeeded: response.data.criteria_needed
+  }
+})
 
 export const loadDomainData = domainId => dispatch => {
   dispatch(sendingRequest(true))

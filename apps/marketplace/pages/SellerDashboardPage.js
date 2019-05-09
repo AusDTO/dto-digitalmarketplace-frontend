@@ -6,7 +6,7 @@ import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
 import Header from 'marketplace/components/SellerDashboard/Header'
 import Messages from 'marketplace/components/SellerDashboard/Messages'
 import Team from 'marketplace/components/SellerDashboard/Team'
-import Services from 'marketplace/components/SellerDashboard/Services'
+import Categories from 'marketplace/components/SellerDashboard/Categories'
 import { loadSellerDashboard, removeUser } from 'marketplace/actions/sellerDashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
@@ -131,7 +131,7 @@ class SellerDashboardPage extends Component {
           <Switch>
             <Route exact path="/" render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />} />
             <Route path="/notifications" render={() => <Messages {...this.props} />} />
-            <Route path="/services" render={() => <Services {...this.props} />} />
+            <Route path="/categories" render={() => <Categories {...this.props} />} />
           </Switch>
         </div>
       </BrowserRouter>

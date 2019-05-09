@@ -15,6 +15,11 @@ const Header = props => (
                 </NavLink>
               </li>
               <li>
+                <NavLink id="team-link" to="/categories" activeClassName={styles.active} exact>
+                  Categories
+                </NavLink>
+              </li>
+              <li>
                 <NavLink id="notifications-link" to="/notifications" activeClassName={styles.active} exact>
                   Notifications
                   {props.messages && props.messages.items.length !== 0 ? (
