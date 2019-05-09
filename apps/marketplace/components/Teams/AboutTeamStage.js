@@ -23,6 +23,18 @@ const AboutTeamStage = props => (
       maxLength={100}
       validators={{}}
     />
+    <Textfield
+      model={`${props.model}.emailAddress`}
+      label="Team email address (optional)"
+      description="Receive emails about opportunities created by any team member"
+      placeholder=""
+      name="emailAddress"
+      id="emailAddress"
+      htmlFor="emailAddress"
+      defaultValue={props[props.model].emailAddress}
+      maxLength={100}
+      validators={{}}
+    />
   </Form>
 )
 

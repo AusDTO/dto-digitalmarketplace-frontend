@@ -1,4 +1,5 @@
 const createTeamForm = {
+  emailAddress: '',
   name: ''
 }
 
