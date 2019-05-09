@@ -6,7 +6,6 @@ import AUheadings from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
-import styles from './TeamLeadsStage.scss'
 import commonStyles from './TeamStages.scss'
 
 const teamLeadNameDescription = (
@@ -21,9 +20,9 @@ const TeamLeadsStage = props => (
     <AUheadings level="1" size="xl">
       Team leads
     </AUheadings>
-    <div className={styles.teamLeadPermissions}>
+    <div className={commonStyles.stageContentContainer}>
       <p className={commonStyles.bold}>Team leads can:</p>
-      <ul className={styles.permissionList}>
+      <ul className={commonStyles.stageList}>
         <li>Add and remove members</li>
         <li>Specify what each member can do</li>
         <li>Create other team leads</li>
