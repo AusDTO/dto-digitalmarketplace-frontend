@@ -1,5 +1,6 @@
 import AboutTeamStage from './AboutTeamStage'
 import TeamLeadsStage from './TeamLeadsStage'
+import TeamMembersStage from './TeamMembersStage'
 
 const aboutStage = {
   component: AboutTeamStage,
@@ -15,6 +16,13 @@ const teamLeadsStage = {
   title: 'Team leads'
 }
 
-const CreateTeamStages = [aboutStage, teamLeadsStage]
+const teamMembersStage = {
+  component: TeamMembersStage,
+  isDone: true,
+  slug: 'members',
+  title: 'Team members'
+}
+
+const CreateTeamStages = [aboutStage, teamLeadsStage, teamMembersStage]
 
 export default CreateTeamStages
