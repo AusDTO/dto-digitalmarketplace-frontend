@@ -15,7 +15,7 @@ const TeamLeadsStage = props => (
     </AUheadings>
     <div className={styles.teamLeadPermissions}>
       <p>Team leads can:</p>
-      <ul>
+      <ul className={styles.permissionList}>
         <li>Add and remove members</li>
         <li>Specify what each member can do</li>
         <li>Create other team leads</li>
