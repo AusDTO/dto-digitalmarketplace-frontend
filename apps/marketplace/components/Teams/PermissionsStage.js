@@ -5,6 +5,7 @@ import { Form } from 'react-redux-form'
 import AUheading from '@gov.au/headings'
 import { AUcheckbox } from '@gov.au/control-input'
 import formProps from 'shared/form/formPropsSelector'
+import PermissionsTable from './PermissionsTable'
 
 import styles from './PermissionsStage.scss'
 import commonStyles from './TeamStages.scss'
@@ -24,6 +25,7 @@ const PermissionsStage = props => (
         name="permissions"
       />
     </div>
+    <PermissionsTable teamMembers={[]} />
   </Form>
 )
 
