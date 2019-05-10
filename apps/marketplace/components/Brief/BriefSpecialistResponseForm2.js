@@ -223,7 +223,7 @@ const BriefSpecialistResponseForm2 = ({
                       requiredFile
                     }}
                     messages={{
-                      requiredFile: 'Choose a file for your résumés'
+                      requiredFile: 'Upload a file for your résumés'
                     }}
                     uploading={uploading}
                   />
