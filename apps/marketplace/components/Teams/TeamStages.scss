@@ -11,6 +11,12 @@
 }
 
 .stageTable {
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: solid 1px #bebebe;
+    }
+
     tr:nth-child(2n) {
         background-color: #fafafa;
     }
