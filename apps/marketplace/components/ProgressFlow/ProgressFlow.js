@@ -28,7 +28,8 @@ export class ProgressFlow extends Component {
       currentStage: '',
       activateReturn: false,
       activatePreview: false,
-      saving: false
+      saving: false,
+      confirmationChecked: false
     }
 
     // populate the stage states
@@ -56,6 +57,7 @@ export class ProgressFlow extends Component {
     this.handlePublish = this.handlePublish.bind(this)
     this.handlePreview = this.handlePreview.bind(this)
     this.handleReturn = this.handleReturn.bind(this)
+    this.handleConfirmationClick = this.handleConfirmationClick.bind(this)
   }
 
   componentDidMount() {
@@ -165,13 +167,22 @@ export class ProgressFlow extends Component {
     })
   }
 
+  handleConfirmationClick(checked) {
+    this.setState({
+      confirmationChecked: checked
+    })
+  }
+
   allStagesDone() {
     // remove the final review stage if it exists
     const stages = { ...this.state.stagesDone }
     if (stages.review !== undefined) {
       delete stages.review
     }
-    return !Object.values(stages).some(val => val === false)
+    return (
+      !Object.values(stages).some(val => val === false) &&
+      (!this.props.showConfirmationCheckbox || (this.props.showConfirmationCheckbox && this.state.confirmationChecked))
+    )
   }
 
   isLastStage(stage) {
@@ -254,9 +265,12 @@ export class ProgressFlow extends Component {
                             onPublish={this.handlePublish}
                             onPreview={this.handlePreview}
                             onReturn={this.handleReturn}
+                            onConfirmationClick={this.handleConfirmationClick}
                             showReturnButton={this.props.showReturnButton}
                             showReviewButton={this.props.showReviewButton}
                             publishText={this.props.publishText}
+                            showConfirmationCheckbox={this.props.showConfirmationCheckbox}
+                            confirmationText={this.props.confirmationText}
                           />
                         }
                       />
@@ -278,8 +292,10 @@ ProgressFlow.defaultProps = {
   returnPath: '',
   previewPath: '',
   publishText: 'Publish',
+  confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
   showReturnButton: true,
   showReviewButton: true,
+  showConfirmationCheckbox: true,
   meta: {}
 }
 
@@ -293,7 +309,9 @@ ProgressFlow.propTypes = {
   onStageMount: PropTypes.func,
   showReturnButton: PropTypes.bool,
   showReviewButton: PropTypes.bool,
+  showConfirmationCheckbox: PropTypes.bool,
   publishText: PropTypes.string,
+  confirmationText: PropTypes.string,
   meta: PropTypes.object
 }
 

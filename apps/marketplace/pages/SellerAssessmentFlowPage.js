@@ -137,6 +137,7 @@ export class SellerAssessmentFlowPage extends Component {
         showReturnButton={false}
         showReviewButton={false}
         publishText="Request assessment"
+        showConfirmationCheckbox={false}
       />
     )
   }
