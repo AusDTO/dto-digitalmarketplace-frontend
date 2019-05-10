@@ -321,7 +321,10 @@ const BriefSpecialistResponseForm2 = ({
                       model={`${model}.essentialRequirements[${i}]`}
                       name={`essentialRequirement.${i}`}
                       id={`essentialRequirement.${i}`}
-                      controlProps={{ limit: 500 }}
+                      controlProps={{
+                        limit: 500,
+                        rows: '8'
+                      }}
                       label={requirement.criteria}
                       validators={{ required }}
                       showMessagesDuringFocus
@@ -339,7 +342,10 @@ const BriefSpecialistResponseForm2 = ({
                       model={`${model}.niceToHaveRequirements[${i}]`}
                       name={`niceToHaveRequirement.${i}`}
                       id={`niceToHaveRequirement.${i}`}
-                      controlProps={{ limit: 500 }}
+                      controlProps={{
+                        limit: 500,
+                        rows: '8'
+                      }}
                       label={`${requirement.criteria} (optional)`}
                       description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
                     />
