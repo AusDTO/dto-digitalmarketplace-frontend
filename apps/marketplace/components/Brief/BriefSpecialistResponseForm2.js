@@ -254,7 +254,7 @@ const BriefSpecialistResponseForm2 = ({
                     }
                   ]}
                   messages={{
-                    required: `${specialistGivenNames} ${specialistSurname}'s eligibility to work in Australia is required`
+                    required: `"What is ${specialistGivenNames} ${specialistSurname}'s eligibility to work in Australia?" is a required field`
                   }}
                 />
                 {brief.securityClearance === 'mustHave' && (
@@ -306,9 +306,9 @@ const BriefSpecialistResponseForm2 = ({
                     }
                   ]}
                   messages={{
-                    required: `${specialistGivenNames} ${specialistSurname} previously worked for the ${
+                    required: `"Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${
                       brief.organisation
-                    } is required`
+                    }?" is a required field`
                   }}
                 />
                 <h2 className="au-display-lg">Essential evaluation criteria</h2>
