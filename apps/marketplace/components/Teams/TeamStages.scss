@@ -9,3 +9,9 @@
         margin-top: 0;
     }
 }
+
+.stageTable {
+    tr:nth-child(2n) {
+        background-color: #fafafa;
+    }
+}
