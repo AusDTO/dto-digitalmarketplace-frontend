@@ -334,22 +334,25 @@ const BriefSpecialistResponseForm2 = ({
                       description={brief.includeWeightingsEssential ? `Weighting: ${requirement.weighting}%` : ''}
                     />
                   ))}
-                <h2 className="au-display-lg">Desirable evaluation criteria</h2>
-                {brief.niceToHaveRequirements &&
-                  brief.niceToHaveRequirements.map((requirement, i) => (
-                    <Textarea
-                      key={requirement.criteria}
-                      model={`${model}.niceToHaveRequirements[${i}]`}
-                      name={`niceToHaveRequirement.${i}`}
-                      id={`niceToHaveRequirement.${i}`}
-                      controlProps={{
-                        limit: 500,
-                        rows: '8'
-                      }}
-                      label={`${requirement.criteria} (optional)`}
-                      description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
-                    />
-                  ))}
+                {brief.niceToHaveRequirements && brief.niceToHaveRequirements.length > 0 && (
+                  <React.Fragment>
+                    <h2 className="au-display-lg">Desirable evaluation criteria</h2>
+                    {brief.niceToHaveRequirements.map((requirement, i) => (
+                      <Textarea
+                        key={requirement.criteria}
+                        model={`${model}.niceToHaveRequirements[${i}]`}
+                        name={`niceToHaveRequirement.${i}`}
+                        id={`niceToHaveRequirement.${i}`}
+                        controlProps={{
+                          limit: 500,
+                          rows: '8'
+                        }}
+                        label={`${requirement.criteria} (optional)`}
+                        description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
+                      />
+                    ))}
+                  </React.Fragment>
+                )}
                 <AUheadings level="2" size="sm">
                   Other documents (optional)
                 </AUheadings>
