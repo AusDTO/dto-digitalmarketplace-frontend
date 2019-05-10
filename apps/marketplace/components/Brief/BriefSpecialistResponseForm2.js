@@ -152,7 +152,7 @@ const BriefSpecialistResponseForm2 = ({
                           validPercentage
                         }}
                         messages={{
-                          required: 'A day rate is required',
+                          required: 'Daily rate is required',
                           validPercentage: 'Enter only numbers eg. 600.00'
                         }}
                         prefix={'$'}
@@ -187,7 +187,7 @@ const BriefSpecialistResponseForm2 = ({
                           validPercentage
                         }}
                         messages={{
-                          required: 'A hourly rate is required',
+                          required: 'Hourly rate is required',
                           validPercentage: 'Enter only numbers eg. 600.00'
                         }}
                         onChange={data => onRateChange('hourRate', data.target.value)}
