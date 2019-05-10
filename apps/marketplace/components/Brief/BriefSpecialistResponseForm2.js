@@ -74,9 +74,7 @@ const BriefSpecialistResponseForm2 = ({
               <div className="au-display-lg">
                 <strong>Candidate {specialistNumber}</strong>
               </div>
-              <span>
-                {"Enter the candidate's full legal name as it appears on their driver licence or passport."}
-              </span>
+              <span>{"Enter the candidate's full legal name as it appears on their driver licence or passport."}</span>
               <Form
                 model={model}
                 id="briefName"
@@ -334,25 +332,26 @@ const BriefSpecialistResponseForm2 = ({
                       description={brief.includeWeightingsEssential ? `Weighting: ${requirement.weighting}%` : ''}
                     />
                   ))}
-                {brief.niceToHaveRequirements && brief.niceToHaveRequirements.length > 0 && (
-                  <React.Fragment>
-                    <h2 className="au-display-lg">Desirable evaluation criteria</h2>
-                    {brief.niceToHaveRequirements.map((requirement, i) => (
-                      <Textarea
-                        key={requirement.criteria}
-                        model={`${model}.niceToHaveRequirements[${i}]`}
-                        name={`niceToHaveRequirement.${i}`}
-                        id={`niceToHaveRequirement.${i}`}
-                        controlProps={{
-                          limit: 500,
-                          rows: '8'
-                        }}
-                        label={`${requirement.criteria} (optional)`}
-                        description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
-                      />
-                    ))}
-                  </React.Fragment>
-                )}
+                {brief.niceToHaveRequirements &&
+                  brief.niceToHaveRequirements.length > 0 && (
+                    <React.Fragment>
+                      <h2 className="au-display-lg">Desirable evaluation criteria</h2>
+                      {brief.niceToHaveRequirements.map((requirement, i) => (
+                        <Textarea
+                          key={requirement.criteria}
+                          model={`${model}.niceToHaveRequirements[${i}]`}
+                          name={`niceToHaveRequirement.${i}`}
+                          id={`niceToHaveRequirement.${i}`}
+                          controlProps={{
+                            limit: 500,
+                            rows: '8'
+                          }}
+                          label={`${requirement.criteria} (optional)`}
+                          description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
+                        />
+                      ))}
+                    </React.Fragment>
+                  )}
                 <AUheadings level="2" size="sm">
                   Other documents (optional)
                 </AUheadings>

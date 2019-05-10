@@ -79,7 +79,7 @@ export class BuyerSpecialistSelectStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
-            requiredCategory: 'You must select a panel category',
+            requiredCategory: 'You must select a category',
             requiredChoice: 'You must select who can respond',
             atLeastOneSeller: 'You must add at least one seller'
           }}
@@ -89,6 +89,7 @@ export class BuyerSpecialistSelectStage extends Component {
           categories={categories}
           onChange={e => this.handleSellerCategorySelect(e.target.value)}
           selectedCategory={this.props[this.props.model].sellerCategory}
+          label="Category"
         />
         {this.props[this.props.model].sellerCategory && (
           <div>
@@ -100,11 +101,11 @@ export class BuyerSpecialistSelectStage extends Component {
                 model={`${this.props.model}.openTo`}
                 options={[
                   {
-                    label: 'Any seller in the panel category',
+                    label: 'Any seller in the category',
                     value: 'all'
                   },
                   {
-                    label: 'Specific sellers in the panel category',
+                    label: 'Specific sellers in the category',
                     value: 'selected'
                   }
                 ]}

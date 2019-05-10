@@ -8,7 +8,7 @@ import styles from './SellerSelect.scss'
 
 const PanelCategorySelectView = props => (
   <div className={styles.categorySelect}>
-    <label htmlFor={`${props.id}-category-select`}>Panel category</label>
+    <label htmlFor={`${props.id}-category-select`}>{props.label}</label>
     <a
       href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
       rel="external noopener noreferrer"
@@ -33,20 +33,23 @@ export const PanelCategorySelect = props => (
       categories={props.categories}
       onChange={props.onChange}
       selectedCategory={props.selectedCategory}
+      label={props.label}
     />
   </div>
 )
 
 PanelCategorySelect.defaultProps = {
   onChange: () => {},
-  selectedCategory: ''
+  selectedCategory: '',
+  label: 'Panel category'
 }
 
 PanelCategorySelect.propTypes = {
   id: PropTypes.string.isRequired,
   categories: PropTypes.array.isRequired,
   onChange: PropTypes.func,
-  selectedCategory: PropTypes.string
+  selectedCategory: PropTypes.string,
+  label: PropTypes.string
 }
 
 const SellerSelectView = props => (
