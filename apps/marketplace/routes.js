@@ -25,7 +25,6 @@ import BuyerSpecialistCompletedPage from './pages/BuyerSpecialistCompletedPage'
 import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
-import MessagesPage from './pages/MessagesPage'
 
 export const rootPath = '/2'
 
@@ -79,7 +78,6 @@ export const Routes = () => (
       component={BuyerSpecialistFlowPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
-    <PrivateRoute path={`${rootPath}/messages`} component={MessagesPage} />
     <Route component={NotFound} />
   </Switch>
 )
