@@ -13,6 +13,10 @@
 .stageTable {
     border-collapse: collapse;
 
+    th {
+        text-align: left;
+    }
+
     tr {
         border-bottom: solid 1px #bebebe;
     }
