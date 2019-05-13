@@ -10,6 +10,9 @@ const ReviewStage = props => (
     <AUheading level="1" size="xl">
       Review
     </AUheading>
+    <AUheading level="2" size="lg">
+      Golden State Warriors
+    </AUheading>
   </Form>
 )
 
