@@ -28,7 +28,7 @@ export class BriefRFXResponseForm extends Component {
   }
 
   // returns the types of evaluations in the brief that require a file upload response
-  getBriefEvalualtionTypesForUpload() {
+  getBriefEvaluationTypesForUpload() {
     let types = []
     if (this.props.brief && this.props.brief.evaluationType) {
       types = this.props.brief.evaluationType.filter(evaluationType =>
@@ -40,7 +40,7 @@ export class BriefRFXResponseForm extends Component {
 
   updateRequiredFileCount() {
     this.setState({
-      fileCount: this.getBriefEvalualtionTypesForUpload().length
+      fileCount: this.getBriefEvaluationTypesForUpload().length
     })
   }
 
@@ -87,7 +87,7 @@ export class BriefRFXResponseForm extends Component {
               <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
               {app.supplierCode ? (
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-                  {this.getBriefEvalualtionTypesForUpload().map((evaluationType, index) => {
+                  {this.getBriefEvaluationTypesForUpload().map((evaluationType, index) => {
                     if (evaluationType === 'Written proposal') {
                       return (
                         <FilesInput
@@ -145,8 +145,8 @@ export class BriefRFXResponseForm extends Component {
                     If requested by the buyer, you can upload additional documents
                   </small>
                   {this.state.fileCount > 0 &&
-                    range(this.state.fileCount - this.getBriefEvalualtionTypesForUpload().length).map(i => {
-                      const index = this.getBriefEvalualtionTypesForUpload().length + i
+                    range(this.state.fileCount - this.getBriefEvaluationTypesForUpload().length).map(i => {
+                      const index = this.getBriefEvaluationTypesForUpload().length + i
                       return (
                         <FilesInput
                           key={index}

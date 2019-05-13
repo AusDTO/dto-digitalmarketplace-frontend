@@ -117,44 +117,42 @@ export class BriefATMResponseForm extends Component {
                     />
                   ))}
                   {briefRequiresDocumentUpload(brief) && (
-                    <AUheading level="2" size="lg">
-                      Upload documentation
-                    </AUheading>
-                  )}
-                  {briefRequiresDocumentUpload(brief) && (
-                    <ul>
-                      <li>Documents must be in .DOC, .XLS, .PPT, or .PDF format and no more than 50MB.</li>
-                      <li>
-                        You need to provide:
-                        <ul>
-                          {brief.evaluationType.map(item => (
-                            <span key={item}>
-                              {['Case study', 'References', 'Résumés'].includes(item) && <li>{item}</li>}
-                            </span>
-                          ))}
-                        </ul>
-                      </li>
-                    </ul>
-                  )}
-                  {briefRequiresDocumentUpload(brief) && (
-                    <FilesInput
-                      label=""
-                      fieldLabel="Upload document"
-                      name="attachedDocumentURL"
-                      model={`${model}.attachedDocumentURL.0`}
-                      formFields={1}
-                      url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                      api={dmapi}
-                      fileId={0}
-                      validators={{
-                        requiredFile
-                      }}
-                      messages={{
-                        requiredFile: 'You must upload your written proposal'
-                      }}
-                      uploading={uploading}
-                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                    />
+                    <React.Fragment>
+                      <AUheading level="2" size="lg">
+                        Upload documentation
+                      </AUheading>
+                      <ul>
+                        <li>Documents must be in .DOC, .XLS, .PPT, or .PDF format and no more than 50MB.</li>
+                        <li>
+                          You need to provide:
+                          <ul>
+                            {brief.evaluationType.map(item => (
+                              <span key={item}>
+                                {['Case study', 'References', 'Résumés'].includes(item) && <li>{item}</li>}
+                              </span>
+                            ))}
+                          </ul>
+                        </li>
+                      </ul>
+                      <FilesInput
+                        label=""
+                        fieldLabel="Upload document"
+                        name="attachedDocumentURL"
+                        model={`${model}.attachedDocumentURL.0`}
+                        formFields={1}
+                        url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                        api={dmapi}
+                        fileId={0}
+                        validators={{
+                          requiredFile
+                        }}
+                        messages={{
+                          requiredFile: 'You must upload your written proposal'
+                        }}
+                        uploading={uploading}
+                        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                      />
+                    </React.Fragment>
                   )}
                   <AUheading level="2" size="sm">
                     Additional documents (optional)
