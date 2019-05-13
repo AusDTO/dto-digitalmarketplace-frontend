@@ -21,7 +21,7 @@ describe('<Review />', () => {
     </MemoryRouter>
     );
 
-    expect(wrapper.find('#preview-link').text()).toMatch(/Preview your profile before submitting your updates/);
+    expect(wrapper.find('#preview-link').text()).toMatch(/Preview and submitPreview and submit updates/);
   });
   
   it('should render a case study', () => {

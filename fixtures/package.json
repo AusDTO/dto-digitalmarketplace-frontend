@@ -9,7 +9,7 @@
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "clipboardy": "^1.2.3",
-    "puppeteer": "^1.12.2",
+    "puppeteer": "^1.14.0",
     "random-words": "^1.1.0"
   },
   "dependencies": {},

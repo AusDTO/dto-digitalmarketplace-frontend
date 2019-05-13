@@ -1,3 +1,24 @@
 h1.preview-heading {
     margin-bottom: 1.2rem;
+}
+
+.skip {
+  text-align: center;
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.skip-link {
+  font-size: 1.1rem;
+  margin-right: 0;
+}
+
+.blurb {
+ margin-top: 2.5rem; 
+}
+
+@media (min-width: 768px) {
+  .skip {
+    text-align: right;
   }
+}
