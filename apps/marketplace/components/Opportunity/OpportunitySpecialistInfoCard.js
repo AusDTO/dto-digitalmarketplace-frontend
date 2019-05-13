@@ -37,7 +37,7 @@ const OpportunitySpecialistInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isApprovedSeller && props.canRespond ? (
+        {props.isApprovedSeller && props.canRespond && props.isAssessedForCategory ? (
           <p>
             {props.sellerResponses === 0
               ? `You have not submitted any candidates. `
