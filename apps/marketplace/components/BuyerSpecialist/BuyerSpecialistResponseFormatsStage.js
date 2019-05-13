@@ -16,6 +16,7 @@ const requiredNumberOfSuppliers = v => v.numberOfSuppliers
 const rangeNumberOfSuppliers = v =>
   !v.numberOfSuppliers || (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
 const isNumberMaxRate = v => !v.maxRate || (v.maxRate && parseFloat(v.maxRate))
+const isNumberGreaterThanZero = v => !v.maxRate || !isNumberMaxRate(v) || parseFloat(v.maxRate) > 0
 const requiredSecurityClearance = v => v.securityClearance
 const requiredSecurityClearanceObtain = v => {
   if (!v.securityClearance) {
@@ -49,6 +50,7 @@ export const done = v =>
   requiredNumberOfSuppliers(v) &&
   rangeNumberOfSuppliers(v) &&
   isNumberMaxRate(v) &&
+  isNumberGreaterThanZero(v) &&
   requiredSecurityClearance(v) &&
   requiredSecurityClearanceObtain(v) &&
   requiredSecurityClearanceCurrent(v) &&
@@ -92,6 +94,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
         requiredNumberOfSuppliers,
         rangeNumberOfSuppliers,
         isNumberMaxRate,
+        isNumberGreaterThanZero,
         requiredSecurityClearance,
         requiredSecurityClearanceObtain,
         requiredSecurityClearanceCurrent,
@@ -112,6 +115,9 @@ const BuyerSpecialistResponseFormatsStage = props => (
         isNumberMaxRate: `Maximum ${
           props[props.model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
         } rate must be a number`,
+        isNumberGreaterThanZero: `Maximum ${
+          props[props.model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
+        } rate must be greater than zero`,
         requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit.',
         rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6.',
         requiredSecurityClearance: 'You must define the security clearance requirements',
