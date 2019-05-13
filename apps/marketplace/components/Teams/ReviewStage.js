@@ -6,7 +6,6 @@ import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import TeamTable from './TeamTable'
 
-import styles from './ReviewStage.scss'
 import commonStyles from './TeamStages.scss'
 
 const ReviewStage = props => (
