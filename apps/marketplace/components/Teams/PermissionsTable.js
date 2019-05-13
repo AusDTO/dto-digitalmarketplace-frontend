@@ -3,9 +3,10 @@ import React from 'react'
 import { AUcheckbox } from '@gov.au/control-input'
 
 import commonStyles from './TeamStages.scss'
+import styles from './PermissionsStage.scss'
 
 const PermissionsTable = props => (
-  <table className={commonStyles.stageTable}>
+  <table className={`${styles.permissionsTable} ${commonStyles.stageTable}`}>
     <thead>
       <tr>
         <th scope="col">Name</th>
