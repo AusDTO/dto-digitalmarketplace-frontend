@@ -316,8 +316,8 @@ const BriefSpecialistResponseForm2 = ({
                   brief.essentialRequirements.map((requirement, i) => (
                     <Textarea
                       key={requirement.criteria}
-                      model={`${model}.essentialRequirements[${i}]`}
-                      name={`essentialRequirement.${i}`}
+                      model={`${model}.essentialRequirements['${requirement.criteria}']`}
+                      name={`essentialRequirement.${requirement.criteria}`}
                       id={`essentialRequirement.${i}`}
                       controlProps={{
                         limit: 500,
@@ -339,8 +339,8 @@ const BriefSpecialistResponseForm2 = ({
                       {brief.niceToHaveRequirements.map((requirement, i) => (
                         <Textarea
                           key={requirement.criteria}
-                          model={`${model}.niceToHaveRequirements[${i}]`}
-                          name={`niceToHaveRequirement.${i}`}
+                          model={`${model}.niceToHaveRequirements['${requirement.criteria}']`}
+                          name={`niceToHaveRequirement.${requirement.criteria}`}
                           id={`niceToHaveRequirement.${i}`}
                           controlProps={{
                             limit: 500,
