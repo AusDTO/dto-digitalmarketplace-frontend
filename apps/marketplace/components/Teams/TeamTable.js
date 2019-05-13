@@ -2,7 +2,7 @@ import React from 'react'
 
 import commonStyles from './TeamStages.scss'
 
-const TeamTable = () => (
+const TeamTable = props => (
   <table className={commonStyles.stageTable}>
     <thead>
       <tr>
@@ -10,7 +10,14 @@ const TeamTable = () => (
         <th scope="col">Email</th>
       </tr>
     </thead>
-    <tbody />
+    <tbody>
+      {props.teamMembers.map(teamMember => (
+        <tr key={teamMember.email}>
+          <td>{teamMember.name}</td>
+          <td>{teamMember.email}</td>
+        </tr>
+      ))}
+    </tbody>
   </table>
 )
 
