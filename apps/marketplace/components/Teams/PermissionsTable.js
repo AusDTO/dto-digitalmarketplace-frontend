@@ -23,22 +23,52 @@ const PermissionsTable = props => (
         <tr key={`item.${teamMember.name}`}>
           <td>{teamMember.name}</td>
           <td>
-            <AUcheckbox id="create-drafts-checkbox" label="" name="permissions" />
+            <AUcheckbox
+              className={styles.permissionsTableCheckbox}
+              id="create-drafts-checkbox"
+              label=""
+              name="permissions"
+            />
           </td>
           <td>
-            <AUcheckbox id="publish-opportunities-checkbox" label="" name="permissions" />
+            <AUcheckbox
+              className={styles.permissionsTableCheckbox}
+              id="publish-opportunities-checkbox"
+              label=""
+              name="permissions"
+            />
           </td>
           <td>
-            <AUcheckbox id="answer-seller-questions-checkbox" label="" name="permissions" />
+            <AUcheckbox
+              className={styles.permissionsTableCheckbox}
+              id="answer-seller-questions-checkbox"
+              label=""
+              name="permissions"
+            />
           </td>
           <td>
-            <AUcheckbox id="download-responses-checkbox" label="" name="permissions" />
+            <AUcheckbox
+              className={styles.permissionsTableCheckbox}
+              id="download-responses-checkbox"
+              label=""
+              name="permissions"
+            />
           </td>
           <td>
-            <AUcheckbox id="create-work-orders-checkbox" label="" name="permissions" />
+            <AUcheckbox
+              className={styles.permissionsTableCheckbox}
+              id="create-work-orders-checkbox"
+              label=""
+              name="permissions"
+            />
           </td>
           <td>
-            <AUcheckbox id="download-reporting-data-checkbox" label="" name="permissions" />
+            <AUcheckbox
+              className={styles.permissionsTableCheckbox}
+              id="download-reporting-data-checkbox"
+              label=""
+              name="permissions"
+            />
           </td>
         </tr>
       ))}
