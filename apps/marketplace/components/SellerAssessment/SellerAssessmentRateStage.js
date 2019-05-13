@@ -14,13 +14,16 @@ export const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 1
 
 export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10) < maxDailyRateLimit
 
+export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
+
 const SellerAssessmentRateStage = props => (
   <Form
     model={props.model}
     validators={{
       '': {
         greaterThanZero,
-        lessThanLimit
+        lessThanLimit,
+        validWholeNumber
       }
     }}
     onSubmit={props.onSubmit}
@@ -35,7 +38,8 @@ const SellerAssessmentRateStage = props => (
       model={props.model}
       messages={{
         greaterThanZero: 'The maximum daily rate must be greater than zero',
-        lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`
+        lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
+        validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
       }}
     />
     <Textfield
@@ -45,7 +49,6 @@ const SellerAssessmentRateStage = props => (
       name="maxDailyRate"
       id="maxDailyRate"
       htmlFor="maxDailyRate"
-      type="number"
       defaultValue={props[props.model].maxDailyRate}
     />
     {parseInt(props[props.model].maxDailyRate, 10) > parseInt(props.meta.priceMaximum, 10) && (

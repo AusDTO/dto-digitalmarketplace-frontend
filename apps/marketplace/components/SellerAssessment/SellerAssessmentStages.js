@@ -1,6 +1,10 @@
 import { required } from 'marketplace/components/validators'
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
-import SellerAssessmentRateStage, { greaterThanZero, lessThanLimit } from './SellerAssessmentRateStage'
+import SellerAssessmentRateStage, {
+  greaterThanZero,
+  lessThanLimit,
+  validWholeNumber
+} from './SellerAssessmentRateStage'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentCriteriaStage, { getCriteriaNeeded } from './SellerAssessmentCriteriaStage'
 import SellerAssessmentEvidenceStage, { validDates, requiredEvidence } from './SellerAssessmentEvidenceStage'
@@ -16,7 +20,11 @@ const SellerAssessmentStages = [
     slug: 'rate',
     title: 'Rate',
     component: SellerAssessmentRateStage,
-    isDone: formValues => formValues.maxDailyRate && greaterThanZero(formValues) && lessThanLimit(formValues)
+    isDone: formValues =>
+      formValues.maxDailyRate &&
+      greaterThanZero(formValues) &&
+      lessThanLimit(formValues) &&
+      validWholeNumber(formValues)
   },
   {
     slug: 'criteria',
