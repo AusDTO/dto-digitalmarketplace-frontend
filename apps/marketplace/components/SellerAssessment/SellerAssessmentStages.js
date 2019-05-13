@@ -2,7 +2,7 @@ import { required } from 'marketplace/components/validators'
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
 import SellerAssessmentRateStage from './SellerAssessmentRateStage'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
-import SellerAssessmentCriteriaStage from './SellerAssessmentCriteriaStage'
+import SellerAssessmentCriteriaStage, { getCriteriaNeeded } from './SellerAssessmentCriteriaStage'
 import SellerAssessmentEvidenceStage, { validDates, requiredEvidence } from './SellerAssessmentEvidenceStage'
 
 const SellerAssessmentStages = [
@@ -23,7 +23,9 @@ const SellerAssessmentStages = [
     title: 'Criteria',
     component: SellerAssessmentCriteriaStage,
     isDone: (formValues, meta) =>
-      formValues.criteria && meta.criteriaNeeded && formValues.criteria.length >= meta.criteriaNeeded
+      formValues.criteria &&
+      meta.criteriaNeeded &&
+      formValues.criteria.length >= getCriteriaNeeded(meta.criteriaNeeded, meta.priceMaximum, formValues.maxDailyRate)
   },
   {
     slug: 'evidence',

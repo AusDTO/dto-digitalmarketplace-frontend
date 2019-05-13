@@ -6,6 +6,7 @@ import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 10) > 0
 
@@ -43,6 +44,14 @@ const SellerAssessmentRateStage = props => (
       maxLength={100}
       showMaxLength
     />
+    {parseInt(props[props.model].maxDailyRate, 10) > parseInt(props.meta.priceMaximum, 10) && (
+      <AUpageAlert as="info">
+        <p>
+          This price is above the upper limit for {props.meta.name} assessments. If you nominate a price beyond the
+          upper limit, you will need to match more criteria in this assessment.
+        </p>
+      </AUpageAlert>
+    )}
     {props.formButtons}
   </Form>
 )

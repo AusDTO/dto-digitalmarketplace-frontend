@@ -8,6 +8,14 @@ import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import styles from './SellerAssessmentCriteriaStage.scss'
 
+export const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
+  let adjustedCriteriaNeeded = parseInt(criteriaNeeded, 10)
+  if (parseInt(maxDailyRate, 10) > parseInt(priceMaximum, 10)) {
+    adjustedCriteriaNeeded += 1
+  }
+  return adjustedCriteriaNeeded
+}
+
 class SellerAssessmentCriteriaStage extends Component {
   constructor(props) {
     super(props)
@@ -37,7 +45,13 @@ class SellerAssessmentCriteriaStage extends Component {
         validators={{
           '': {
             requiredMinimal: formValues =>
-              formValues.criteria && formValues.criteria.length >= this.props.meta.criteriaNeeded
+              formValues.criteria &&
+              formValues.criteria.length >=
+                getCriteriaNeeded(
+                  this.props.meta.criteriaNeeded,
+                  this.props.meta.priceMaximum,
+                  this.props[this.props.model].maxDailyRate
+                )
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -51,10 +65,21 @@ class SellerAssessmentCriteriaStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
-            requiredMinimal: `You must select at least ${this.props.meta.criteriaNeeded} criteria`
+            requiredMinimal: `You must select at least ${getCriteriaNeeded(
+              this.props.meta.criteriaNeeded,
+              this.props.meta.priceMaximum,
+              this.props[this.props.model].maxDailyRate
+            )} criteria`
           }}
         />
-        <p>Select the criteria you will provide evidence for ({this.props.meta.criteriaNeeded} minimum required)</p>
+        <p>
+          Select the criteria you will provide evidence for ({getCriteriaNeeded(
+            this.props.meta.criteriaNeeded,
+            this.props.meta.priceMaximum,
+            this.props[this.props.model].maxDailyRate
+          )}{' '}
+          minimum required)
+        </p>
         <div className={styles.criteria}>
           {this.props.meta.criteria.map(criteria => (
             <CheckboxDetailsField
