@@ -27,14 +27,8 @@ const getMonths = () => {
 }
 
 const getYears = () => {
-  let year = parseInt(format(new Date(), 'YYYY'), 10) - 5
-  const curYear = parseInt(format(new Date(), 'YYYY'), 10)
-  const years = []
-  while (year <= curYear) {
-    years.push(`${year}`)
-    year += 1
-  }
-  return years
+  let year = parseInt(format(new Date(), 'YYYY'), 10)
+  return [year - 4, year - 3, year - 2, year - 1, year]
 }
 
 export const validDates = formValues =>
