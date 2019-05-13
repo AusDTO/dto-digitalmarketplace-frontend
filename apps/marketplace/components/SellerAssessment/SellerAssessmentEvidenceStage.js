@@ -27,7 +27,7 @@ const getMonths = () => {
 }
 
 const getYears = () => {
-  let year = parseInt(format(new Date(), 'YYYY'), 10)
+  const year = parseInt(format(new Date(), 'YYYY'), 10)
   return [year - 4, year - 3, year - 2, year - 1, year]
 }
 
