@@ -6,6 +6,8 @@ import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import TeamTable from './TeamTable'
 
+import styles from './ReviewStage.scss'
+
 const ReviewStage = props => (
   <Form model={props.model}>
     <AUheading level="1" size="xl">
@@ -21,6 +23,14 @@ const ReviewStage = props => (
         { name: 'Kevin Durant', email: 'kd@warriors.com' }
       ]}
     />
+    <AUheading level="2" size="lg">
+      What happens next
+    </AUheading>
+    <ul className={styles.nextStepsList}>
+      <li>We will email each member to sign in with the email you have provided.</li>
+      <li>Members will see any current opportunities created by other team members.</li>
+      <li>Members will see all new opportunities created by other team members.</li>
+    </ul>
   </Form>
 )
 
