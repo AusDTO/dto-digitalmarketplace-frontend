@@ -8,14 +8,19 @@ import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
-const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 10) > 0
+const maxDailyRateLimit = 99999
+
+export const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 10) > 0
+
+export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10) < maxDailyRateLimit
 
 const SellerAssessmentRateStage = props => (
   <Form
     model={props.model}
     validators={{
       '': {
-        greaterThanZero
+        greaterThanZero,
+        lessThanLimit
       }
     }}
     onSubmit={props.onSubmit}
@@ -29,7 +34,8 @@ const SellerAssessmentRateStage = props => (
       title="An error occurred"
       model={props.model}
       messages={{
-        greaterThanZero: 'The maximum daily rate must be greater than zero'
+        greaterThanZero: 'The maximum daily rate must be greater than zero',
+        lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`
       }}
     />
     <Textfield
@@ -41,14 +47,12 @@ const SellerAssessmentRateStage = props => (
       htmlFor="maxDailyRate"
       type="number"
       defaultValue={props[props.model].maxDailyRate}
-      maxLength={100}
-      showMaxLength
     />
     {parseInt(props[props.model].maxDailyRate, 10) > parseInt(props.meta.priceMaximum, 10) && (
       <AUpageAlert as="info">
         <p>
-          This price is above the upper limit for {props.meta.name} assessments. If you nominate a price beyond the
-          upper limit, you will need to match more criteria in this assessment.
+          This price is above the upper limit for {props.meta.name} assessments. If you nominate a price above the upper
+          limit, you will need to match more criteria in this assessment.
         </p>
       </AUpageAlert>
     )}
