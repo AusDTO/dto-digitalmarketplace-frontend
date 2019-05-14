@@ -114,8 +114,11 @@ const OpportunityInfoCard = props => (
                 {!props.isAwaitingApplicationAssessment && (
                   <span>
                     {' '}
-                    You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
-                    to be able to apply for this brief.
+                    {'You must edit your profile '}
+                    {props.briefLot === 'rfx'
+                      ? ''
+                      : 'to indicate you are a consultancy (or both a consultancy and a recruiter) '}
+                    {'to be able to apply for this brief.'}
                     {props.isOpenToCategory &&
                       !props.hasChosenBriefCategory && (
                         <span>
