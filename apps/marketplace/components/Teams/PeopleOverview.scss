@@ -1,0 +1,45 @@
+.people {
+    p {
+        margin: 1.25rem 0 0 1.25rem;
+    }
+}
+
+.peopleOverview {
+    border-collapse: collapse;
+    margin-top: 1.25rem;
+
+    th {
+        padding: 1.25rem;
+        text-align: left;
+    }
+
+    tr {
+        border-bottom: solid 1px #bebebe;
+    }
+
+    tr:nth-child(2n) {
+        background-color: #fafafa;
+    }
+
+    td {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .peopleOverview {
+        th {
+            padding: 0 0.375rem;
+        }
+
+        tr {
+            display: block;
+            padding: 1rem 0 1rem 1rem;
+        }
+
+        td {
+            display: block;
+            padding: 0.375rem;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.teams {
+    margin-bottom: 3rem;
+
+    .initial {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 10rem;
+        justify-content: space-between;
+        margin-top: 3rem;
+        text-align: center;
+
+        p {
+            width: 24rem;
+        }
+    }
+}

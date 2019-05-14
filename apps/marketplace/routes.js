@@ -22,6 +22,7 @@ import BuyerATMCompletedPage from './pages/BuyerATMCompletedPage'
 import BuyerATMFlowPage from './pages/BuyerATMFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
+import TeamsPage from './pages/TeamsPage'
 
 export const rootPath = '/2'
 
@@ -60,6 +61,7 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams`} component={TeamsPage} />
     <Route component={NotFound} />
   </Switch>
 )
