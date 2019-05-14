@@ -4,6 +4,7 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
+import Feedback from 'marketplace/components/Feedback/Feedback'
 import styles from './BuyerSpecialistCompleted.scss'
 
 const BuyerSpecialistCompleted = props => (
@@ -40,13 +41,25 @@ const BuyerSpecialistCompleted = props => (
         View live opportunity
       </a>
     </p>
+    <br />
+    <br />
+    <br />
+    <Feedback
+      app={props.app}
+      handleSubmit={props.handleSubmit}
+      difficultyQuestion="How easy or difficult was it for you to publish this opportunity?"
+      commentQuestion="How would you improve publishing an opportunity?"
+      objectAction="published"
+    />
   </div>
 )
 
 BuyerSpecialistCompleted.propTypes = {
   briefId: PropTypes.string.isRequired,
   closingDate: PropTypes.string.isRequired,
-  contactEmail: PropTypes.string.isRequired
+  contactEmail: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func,
+  app: PropTypes.object
 }
 
 export default BuyerSpecialistCompleted

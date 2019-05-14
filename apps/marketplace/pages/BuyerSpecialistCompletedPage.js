@@ -4,13 +4,17 @@ import { loadPublicBrief } from 'marketplace/actions/briefActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import BuyerSpecialistCompleted from 'marketplace/components/BuyerSpecialist/BuyerSpecialistCompleted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 
 class BuyerSpecialistCompletedPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      submitClicked: new Date(),
       loading: false
     }
+
+    this.handleFeedbackSubmit = this.handleFeedbackSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +31,16 @@ class BuyerSpecialistCompletedPage extends Component {
       this.setState({
         loading: false
       })
+    })
+  }
+
+  handleFeedbackSubmit(values) {
+    this.props.handleFeedbackSubmit({
+      timeToComplete: this.state.submitClicked ? this.state.submitClicked - this.props.loadedAt : null,
+      object_id: this.props.brief.id,
+      object_type: 'Brief',
+      userType: this.props.app.userType,
+      ...values
     })
   }
 
@@ -75,6 +89,8 @@ class BuyerSpecialistCompletedPage extends Component {
           contactEmail={this.props.emailAddress}
           briefId={briefId}
           closingDate={this.props.brief.closedAt}
+          app={this.props.app}
+          handleSubmit={this.handleFeedbackSubmit}
         />
       )
     }
@@ -85,11 +101,14 @@ class BuyerSpecialistCompletedPage extends Component {
 
 const mapStateToProps = state => ({
   brief: state.brief.brief,
+  loadedAt: state.brief.loadedAt,
   errorMessage: state.app.errorMessage,
-  emailAddress: state.app.emailAddress
+  emailAddress: state.app.emailAddress,
+  app: state.app
 })
 
 const mapDispatchToProps = dispatch => ({
+  handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
 })
 
