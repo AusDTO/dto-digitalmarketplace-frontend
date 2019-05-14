@@ -7,14 +7,14 @@ import SellerHeaderActions from './SellerHeaderActions'
 import UnauthenticatedHeaderActions from './UnauthenticatedHeaderActions'
 
 const HeaderActions = props => {
-  const { loggedIn, userType } = props
+  const { loggedIn, notificationCount, userType } = props
 
   return (
     <div className="au-marketplace-header-actions">
       {loggedIn ? (
         (userType === 'applicant' && <ApplicantHeaderActions />) ||
         (userType === 'buyer' && <BuyerHeaderActions />) ||
-        (userType === 'supplier' && <SellerHeaderActions />)
+        (userType === 'supplier' && <SellerHeaderActions notificationCount={notificationCount} />)
       ) : (
         <UnauthenticatedHeaderActions />
       )}

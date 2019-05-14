@@ -56,7 +56,10 @@ class Header extends React.Component {
     const sellerHeaderActions = (
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
-          <a href="/sellers">Dashboard</a>
+          <a href="/2/seller-dashboard">Dashboard</a>
+          {(this.props.notificationCount &&
+            this.props.notificationCount > 0 &&
+            <div className="notification">{this.props.notificationCount}</div>)}
         </li>
         <li>
           <a href="/logout">Sign out</a>
@@ -160,7 +163,14 @@ class Header extends React.Component {
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     <div className="au-marketplace-header_mobile-link">
-                      {this.props.isAuthenticated ? <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a> : <a href="/2/signup">Sign up</a>}
+                      {this.props.isAuthenticated ? 
+                      <span>
+                        <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
+                        { (this.props.notificationCount && this.props.notificationCount !== 0) &&
+                          <div className="notification">{this.props.notificationCount}</div>
+                        }
+                      </span>
+                      : <a href="/2/signup">Sign up</a>}
                     </div>
                     <div className="au-marketplace-header_mobile-link">
                       {this.props.isAuthenticated ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
@@ -208,7 +218,8 @@ Header.propTypes = {
   dashboardUrl: PropTypes.string,
   logoutUrl: PropTypes.string,
   isAuthenticated: PropTypes.bool,
-  userType: PropTypes.string
+  userType: PropTypes.string,
+  notificationCount: PropTypes.number
 }
 
 Header.defaultProps = {
@@ -224,7 +235,8 @@ const mapStateToProps = (state) => {
     dashboardUrl: state.dashboardUrl,
     logoutUrl: state.logoutUrl,
     isAuthenticated: state.isAuthenticated,
-    userType: state.userType
+    userType: state.userType,
+    notificationCount: state.notificationCount
   };
 };
 
