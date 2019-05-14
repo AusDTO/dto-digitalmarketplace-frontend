@@ -201,7 +201,7 @@ class Overview extends Component {
                 )}
               </li>
             )}
-            {flow === 'rfx' &&
+            {flow === 'rfx' || flow === 'specialist' &&
               (briefResponseCount > 0 || !isPublished || !isClosed) && (
                 <li>{createWorkOrderRender(brief, flow, isPublished, isClosed)}</li>
               )}
