@@ -62,7 +62,7 @@ test('Component mounts with specialist "responses"', () => {
   brief.lot = 'specialist'
   const component = mount(<BriefDownloadResponses brief={brief} briefResponses={responses} />)
   const heading = component.find('h1')
-  expect(heading.at(0).text()).toEqual("2 candidates have responded to your opportunity.Test Brief")
+  expect(heading.at(0).text()).toEqual('2 candidates have responded to your opportunity.Test Brief')
 })
 
 test('Component mounts with a download button with csv file type for outcome briefs', () => {
