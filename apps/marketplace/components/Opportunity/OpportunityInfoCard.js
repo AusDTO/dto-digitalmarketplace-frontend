@@ -105,7 +105,8 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
-          (props.briefLot !== 'rfx' && props.isRecruiterOnly) && (
+          ((props.briefLot === 'rfx' && !props.isAssessedForCategory) ||
+            (props.briefLot !== 'rfx' && props.isRecruiterOnly)) && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
@@ -229,7 +230,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.isApprovedSeller &&
-          (props.briefLot === 'rfx' || !props.isRecruiterOnly) &&
+          ((props.briefLot === 'rfx' && props.isAssessedForCategory) || !props.isRecruiterOnly) &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (
