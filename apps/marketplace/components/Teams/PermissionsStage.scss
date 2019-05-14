@@ -1,0 +1,23 @@
+.allPermissionsContainer {
+    margin-top: 1rem;
+
+    .allPermissionsCheckbox {
+        input {
+            top: 0.85rem;
+        }
+
+        span::before, span::after  {
+            top: 0.25rem;
+        }
+    }
+}
+
+.permissionsTable {
+    th:first-of-type {
+        width: 25%;
+    }
+
+    .permissionsTableCheckbox {
+        top: -0.325rem;
+    }
+}

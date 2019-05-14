@@ -1,5 +1,12 @@
 import { BUYER_TEAM_MEMBERS_SUCCESS, SET_ERROR_MESSAGE, USER_ORGANISATION } from '../constants/constants'
 
+export const createTeamForm = {
+  emailAddress: '',
+  teamLeadName: '',
+  teamMemberName: '',
+  teamName: ''
+}
+
 const defaultUserState = {
   buyerTeamMembers: { items: [] },
   organisation: ''
