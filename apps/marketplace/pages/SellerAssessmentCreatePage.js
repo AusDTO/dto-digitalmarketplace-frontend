@@ -16,7 +16,8 @@ export class SellerAssessmentCreatePage extends Component {
 
   componentDidMount() {
     if (this.props.match.params.domainId) {
-      this.props.createEvidence(this.props.match.params.domainId).then(response => {
+      const briefId = this.props.match.params.briefId ? this.props.match.params.briefId : null
+      this.props.createEvidence(this.props.match.params.domainId, briefId).then(response => {
         if (response.status === 200) {
           this.setState({
             evidenceId: parseInt(response.data.id, 10)
@@ -60,7 +61,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createEvidence: domainId => dispatch(createEvidence(domainId))
+  createEvidence: (domainId, briefId) => dispatch(createEvidence(domainId, briefId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentCreatePage)

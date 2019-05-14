@@ -107,10 +107,11 @@ export const handleCreateEvidenceSuccess = response => ({
   }
 })
 
-export const createEvidence = domainId => (dispatch, getState) => {
+export const createEvidence = (domainId, briefId = null) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
+  const url = briefId ? `/evidence/${domainId}/${briefId}` : `/evidence/${domainId}`
   return dmapi({
-    url: `/evidence/${domainId}`,
+    url,
     method: 'POST',
     headers: {
       'X-CSRFToken': getState().app.csrfToken,
