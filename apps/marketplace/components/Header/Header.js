@@ -25,7 +25,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { userType, location, loggedIn, notificationCount } = this.props
+    const { location, loggedIn, notificationCount, userType } = this.props
 
     return (
       <section className="au-marketplace-header">
@@ -129,15 +129,15 @@ export class Header extends Component {
 }
 
 Header.propTypes = {
-  userType: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  notificationCount: PropTypes.number
+  notificationCount: PropTypes.number,
+  userType: PropTypes.string.isRequired
 }
 
 const mapStateToProps = ({ app }) => ({
   loggedIn: app.loggedIn,
-  userType: app.userType,
-  notificationCount: app.notificationCount
+  notificationCount: app.notificationCount,
+  userType: app.userType
 })
 
 export default withRouter(connect(mapStateToProps)(Header))

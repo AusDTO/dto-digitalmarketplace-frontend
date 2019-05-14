@@ -212,31 +212,31 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  registerUrl: PropTypes.string,
-  registerText: PropTypes.string,
-  loginUrl: PropTypes.string,
   dashboardUrl: PropTypes.string,
-  logoutUrl: PropTypes.string,
   isAuthenticated: PropTypes.bool,
-  userType: PropTypes.string,
-  notificationCount: PropTypes.number
+  loginUrl: PropTypes.string,
+  logoutUrl: PropTypes.string,
+  notificationCount: PropTypes.number,
+  registerText: PropTypes.string,
+  registerUrl: PropTypes.string,
+  userType: PropTypes.string
 }
 
 Header.defaultProps = {
-    registerText: 'Register',
-    dashboardText: 'Dashboard'
+  dashboardText: 'Dashboard',
+  registerText: 'Register'
 }
 
 const mapStateToProps = (state) => {
   return {
-    registerUrl: state.registerUrl,
-    registerText: state.registerText,
-    loginUrl: state.loginUrl,
     dashboardUrl: state.dashboardUrl,
-    logoutUrl: state.logoutUrl,
     isAuthenticated: state.isAuthenticated,
-    userType: state.userType,
-    notificationCount: state.notificationCount
+    loginUrl: state.loginUrl,
+    logoutUrl: state.logoutUrl,
+    notificationCount: state.notificationCount,
+    registerText: state.registerText,
+    registerUrl: state.registerUrl,
+    userType: state.userType
   };
 };
 
