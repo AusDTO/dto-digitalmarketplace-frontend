@@ -105,7 +105,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
-          (props.briefLot === 'atm' && props.isRecruiterOnly) && (
+          ((props.briefLot === 'atm' && props.isRecruiterOnly) || props.briefLot === 'rfx') && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
@@ -139,7 +139,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -149,7 +149,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (
@@ -202,7 +202,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
           props.isOpenToAll &&
           !props.isAssessedForAnyCategory && (
             <span>
@@ -229,7 +229,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.isApprovedSeller &&
-          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (
