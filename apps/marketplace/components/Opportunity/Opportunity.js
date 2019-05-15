@@ -492,9 +492,9 @@ const Opportunity = props => {
                   {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
                   {' rate (excluding GST)'}
                 </li>
-                <li>résume</li>
+                <li>résumé</li>
                 <li>responses to the selection criteria (up to 500 words per criteria)</li>
-                <li>references (this can be included in their résume)</li>
+                <li>references (this can be included in their résumé)</li>
                 <li>any additional information if requested by {brief.organisation}</li>
               </ul>
               <AUheading level="3" size="sm">
