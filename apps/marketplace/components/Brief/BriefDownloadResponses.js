@@ -49,7 +49,7 @@ export class BriefDownloadResponses extends Component {
     return (
       <span>
         <AUheading size="xl" level="1">
-          {this.props.brief.lot == 'specialist' ? (
+          {this.props.brief.lot === 'specialist' ? (
             <React.Fragment>
               {this.props.briefResponses.length === 1 && `1 candidate has responded to your opportunity.`}
               {this.props.briefResponses.length > 1 &&

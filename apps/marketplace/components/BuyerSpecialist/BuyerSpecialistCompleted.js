@@ -58,8 +58,8 @@ BuyerSpecialistCompleted.propTypes = {
   briefId: PropTypes.string.isRequired,
   closingDate: PropTypes.string.isRequired,
   contactEmail: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func,
-  app: PropTypes.object
+  handleSubmit: PropTypes.func.isRequired,
+  app: PropTypes.object.isRequired
 }
 
 export default BuyerSpecialistCompleted
