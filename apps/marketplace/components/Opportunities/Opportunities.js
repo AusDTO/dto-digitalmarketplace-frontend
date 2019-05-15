@@ -13,11 +13,8 @@ const mapOpenTo = (val, lot) => {
     case 'rfx':
       value = 'selected'
       break
-    case 'digital-outcome':
-    case 'digital-professionals':
-    case 'specialist':
-    case 'training':
-      val === 'allSellers' ? (value = 'all') : (value = 'selected')
+    default:
+      value = val === 'allSellers' ? 'all' : 'selected'
       break
   }
   return value
@@ -32,11 +29,8 @@ const mapOpenToStyles = (val, lot) => {
     case 'rfx':
       value = styles.blue
       break
-    case 'digital-professionals':
-    case 'digital-outcome':
-    case 'specialist':
-    case 'training':
-      val === 'allSellers' ? (value = styles.green) : (value = styles.blue)
+    default:
+      value = val === 'allSellers' ? styles.green : styles.blue
       break
   }
   return value
