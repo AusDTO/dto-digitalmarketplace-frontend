@@ -415,8 +415,8 @@ const Opportunity = props => {
                       {brief.evaluationType.includes('500 word responses to your criteria') && (
                         <li>500 word responses to your criteria</li>
                       )}
-                      {brief.evaluationType.includes('Responses to evaluation criteria') && (
-                        <li>Responses to evaluation criteria</li>
+                      {brief.evaluationType.includes('Responses to selection criteria') && (
+                        <li>Responses to selection criteria</li>
                       )}
                       {brief.evaluationType.includes('Case study') && <li>Case study</li>}
                       {brief.evaluationType.includes('References') && <li>References</li>}
@@ -454,7 +454,7 @@ const Opportunity = props => {
           )}
           {brief.lotSlug === 'specialist' && (
             <AUheading level="2" size="lg">
-              Evaluation criteria
+              Selection criteria
             </AUheading>
           )}
           {brief.lotSlug === 'specialist' && (
@@ -493,7 +493,7 @@ const Opportunity = props => {
                   {' rate (excluding GST)'}
                 </li>
                 <li>résume</li>
-                <li>responses to the evaluation criteria (up to 500 words per criteria)</li>
+                <li>responses to the selection criteria (up to 500 words per criteria)</li>
                 <li>references (this can be included in their résume)</li>
                 <li>any additional information if requested by {brief.organisation}</li>
               </ul>

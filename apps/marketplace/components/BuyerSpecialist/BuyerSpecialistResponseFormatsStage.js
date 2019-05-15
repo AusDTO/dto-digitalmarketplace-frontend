@@ -143,8 +143,8 @@ const BuyerSpecialistResponseFormatsStage = props => (
           model={`${props.model}.evaluationType[]`}
           id={`responses_to_evaluation_critiera`}
           name={`responses_to_evaluation_critiera`}
-          label="Responses to evaluation criteria"
-          value="Responses to evaluation criteria"
+          label="Responses to selection criteria"
+          value="Responses to selection criteria"
           detailsModel={props.model}
           disabled
           validators={{}}

@@ -34,7 +34,7 @@ const BuyerSpecialistStages = [
   },
   {
     slug: 'criteria',
-    title: 'Evaluation criteria',
+    title: 'Selection criteria',
     component: BuyerSpecialistEvaluationCriteriaStage,
     isDone: evaluationDone
   },

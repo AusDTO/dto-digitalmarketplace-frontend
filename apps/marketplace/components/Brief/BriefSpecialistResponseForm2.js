@@ -312,7 +312,7 @@ const BriefSpecialistResponseForm2 = ({
                     }?" is a required field`
                   }}
                 />
-                <h2 className="au-display-lg">Essential evaluation criteria</h2>
+                <h2 className="au-display-lg">Essential selection criteria</h2>
                 {brief.essentialRequirements &&
                   brief.essentialRequirements.map((requirement, i) => (
                     <Textarea
@@ -336,7 +336,7 @@ const BriefSpecialistResponseForm2 = ({
                 {brief.niceToHaveRequirements &&
                   brief.niceToHaveRequirements.length > 0 && (
                     <React.Fragment>
-                      <h2 className="au-display-lg">Desirable evaluation criteria</h2>
+                      <h2 className="au-display-lg">Desirable selection criteria</h2>
                       {brief.niceToHaveRequirements.map((requirement, i) => (
                         <Textarea
                           key={requirement.criteria}

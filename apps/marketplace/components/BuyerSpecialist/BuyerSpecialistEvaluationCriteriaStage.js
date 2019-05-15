@@ -132,7 +132,7 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
-          Evaluation criteria
+          Selection criteria
         </AUheadings>
         <ErrorAlert
           title="An error occurred"
