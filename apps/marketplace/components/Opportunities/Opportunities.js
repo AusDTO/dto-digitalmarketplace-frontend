@@ -4,13 +4,42 @@ import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
 import styles from './Opportunities.scss'
 
-const mapOpenTo = val => {
-  const vals = {
-    allSellers: 'all',
-    someSellers: 'selected',
-    oneSeller: 'one'
+const mapOpenTo = (val, lot) => {
+  let value = ''
+  switch (lot) {
+    case 'atm':
+      value = 'all'
+      break
+    case 'rfx':
+      value = 'selected'
+      break
+    case 'digital-outcome':
+    case 'digital-professionals':
+    case 'specialist':
+    case 'training':
+      val === 'allSellers' ? value = 'all' : value = 'selected'
+      break
   }
-  return val in vals ? vals[val] : val
+  return value
+}
+
+const mapOpenToStyles = (val, lot) => {
+  let value = ''
+  switch (lot) {
+    case 'atm':
+      value = styles.green
+      break
+    case 'rfx':
+      value = styles.blue
+      break
+    case 'digital-professionals':
+    case 'digital-outcome':
+    case 'specialist':
+    case 'training':
+      val === 'allSellers' ? value = styles.green : value = styles.blue
+      break
+  }
+  return value
 }
 
 const mapStates = val => {
@@ -76,8 +105,8 @@ const Opportunities = props => (
                     role="cell"
                     aria-labelledby="header_opento"
                   >
-                    <div className={`${styles.badge} ${item.openTo === 'allSellers' ? styles.green : styles.blue}`}>
-                      {mapOpenTo(item.openTo)}
+                    <div className={`${styles.badge} ${mapOpenToStyles(item.openTo, item.lot)}`}>
+                      {mapOpenTo(item.openTo, item.lot)}
                     </div>
                   </div>
                   <div
