@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import styles from './BuyerSpecialistIntroductionStage.scss'
 
 const BuyerSpecialistIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
@@ -11,19 +12,23 @@ const BuyerSpecialistIntroductionStage = props => (
     <AUheadings level="2" size="lg">
       Before you start
     </AUheadings>
-    <p>
+    <p className={styles.textSpacing}>
       Download the{' '}
-      <a href="/static/media/documents/Seek-proposals-list-of-questions.xlsx" rel="noopener noreferrer" target="_blank">
-        questions template (DOC XXKB)
+      <a
+        href="https://marketplace.service.gov.au/static/media/documents/specialist_brief_draft_questions.xlsx"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        questions template (xlsx 68KB)
       </a>{' '}
       to prepare offline before publishing.
     </p>
     <AUheadings level="2" size="lg">
       Getting help
     </AUheadings>
-    <p>
+    <p className={styles.textSpacing}>
       <a
-        href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716"
+        href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000583195-Hire-a-digital-specialist"
         rel="external noopener noreferrer"
         target="_blank"
       >
@@ -34,7 +39,7 @@ const BuyerSpecialistIntroductionStage = props => (
         Contact us
       </a>
     </p>
-    <p>All fields are mandatory unless marked optional.</p>
+    <p>All fields are mandatory unless marked 'optional'.</p>
     {props.formButtons}
   </Form>
 )
