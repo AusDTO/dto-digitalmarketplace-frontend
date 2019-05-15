@@ -17,7 +17,7 @@ const mapOpenTo = (val, lot) => {
     case 'digital-professionals':
     case 'specialist':
     case 'training':
-      val === 'allSellers' ? value = 'all' : value = 'selected'
+      val === 'allSellers' ? (value = 'all') : (value = 'selected')
       break
   }
   return value
@@ -36,7 +36,7 @@ const mapOpenToStyles = (val, lot) => {
     case 'digital-outcome':
     case 'specialist':
     case 'training':
-      val === 'allSellers' ? value = styles.green : value = styles.blue
+      val === 'allSellers' ? (value = styles.green) : (value = styles.blue)
       break
   }
   return value
