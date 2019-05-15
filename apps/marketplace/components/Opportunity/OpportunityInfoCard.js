@@ -105,7 +105,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
-          ((props.briefLot === 'atm' && props.isRecruiterOnly) || props.briefLot === 'rfx') && (
+          (props.briefLot === 'atm' && props.isRecruiterOnly) && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
@@ -149,7 +149,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (
@@ -202,7 +202,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           props.isOpenToAll &&
           !props.isAssessedForAnyCategory && (
             <span>
