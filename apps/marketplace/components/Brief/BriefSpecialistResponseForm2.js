@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
+import parse from 'date-fns/parse'
 import DocumentTitle from 'react-document-title'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
@@ -66,7 +67,7 @@ const BriefSpecialistResponseForm2 = ({
                   <h1 className="au-display-xl">Apply for &lsquo;{brief.title}&rsquo;</h1>
                   <p>
                     You can submit up to {brief.numberOfSuppliers} candidates for this role. This opportunity closes on{' '}
-                    {format(new Date(brief.applicationsClosedAt), 'DD/MM/YYYY')}.
+                    {format(new Date(brief.applicationsClosedAt), 'DD-MM-YYYY')}.
                   </p>
                   <br />
                 </div>
@@ -134,7 +135,7 @@ const BriefSpecialistResponseForm2 = ({
                   messages={{
                     required: 'Enter a date for when you can start the project'
                   }}
-                  description={`Buyer has requested ${brief.startDate}`}
+                  description={`Buyer has requested ${format(parse(brief.startDate), 'DD-MM-YYYY')}`}
                 />
                 {brief.preferredFormatForRates === 'dailyRate' && (
                   <div className="row">
