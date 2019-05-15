@@ -105,8 +105,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
-          ((props.briefLot === 'rfx' && !props.isAssessedForCategory) ||
-            (props.briefLot !== 'rfx' && props.isRecruiterOnly)) && (
+          (props.briefLot === 'atm' && props.isRecruiterOnly) && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
@@ -114,11 +113,8 @@ const OpportunityInfoCard = props => (
                 {!props.isAwaitingApplicationAssessment && (
                   <span>
                     {' '}
-                    {'You must edit your profile '}
-                    {props.briefLot === 'rfx'
-                      ? ''
-                      : 'to indicate you are a consultancy (or both a consultancy and a recruiter) '}
-                    {'to be able to apply for this brief.'}
+                    You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
+                    to be able to apply for this brief.
                     {props.isOpenToCategory &&
                       !props.hasChosenBriefCategory && (
                         <span>
@@ -143,7 +139,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -153,7 +149,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (
@@ -206,7 +202,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           props.isOpenToAll &&
           !props.isAssessedForAnyCategory && (
             <span>
@@ -233,7 +229,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.isApprovedSeller &&
-          ((props.briefLot === 'rfx' && props.isAssessedForCategory) || !props.isRecruiterOnly) &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (
