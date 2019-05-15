@@ -26,7 +26,7 @@ describe('BriefSpecialistResponseForm2', () => {
         .text()
     ).toEqual('Apply for ‘test brief’')
     expect(
-      tree.contains(<p>You can submit up to 3 candidates for this role. This opportunity closes on 15/01/2018.</p>)
+      tree.contains(<p>You can submit up to 3 candidates for this role. This opportunity closes on 15-01-2018.</p>)
     ).toBeTruthy()
     expect(tree.contains(<strong>Candidate 1</strong>)).toBeTruthy()
     expect(
