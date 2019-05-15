@@ -39,7 +39,7 @@ const BuyerSpecialistIntroductionStage = props => (
         Contact us
       </a>
     </p>
-    <p>All fields are mandatory unless marked 'optional'.</p>
+    <p>{"All fields are mandatory unless marked 'optional'."}</p>
     {props.formButtons}
   </Form>
 )
