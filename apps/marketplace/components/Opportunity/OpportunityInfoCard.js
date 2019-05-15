@@ -202,9 +202,11 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
-          props.isOpenToAll &&
-          !props.isAssessedForAnyCategory && (
+          ((props.briefLot === 'atm' &&
+            !props.isRecruiterOnly &&
+            props.isOpenToAll &&
+            !props.isAssessedForAnyCategory) ||
+            (props.briefLot === 'rfx' && !props.isAssessedForCategory)) && (
             <span>
               <p className={styles.invitedStatus}>
                 Only sellers with an assessed category can apply.
@@ -229,7 +231,8 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.isApprovedSeller &&
-          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) ||
+            (props.briefLot === 'rfx' && props.isAssessedForCategory)) &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (
