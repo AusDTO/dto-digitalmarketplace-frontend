@@ -233,6 +233,7 @@ const OpportunityInfoCard = props => (
           props.loggedIn &&
           props.isApprovedSeller &&
           props.briefLot === 'rfx' &&
+          props.canRespond &&
           !props.isAssessedForCategory && (
             <span>
               <p className={styles.invitedStatus}>
