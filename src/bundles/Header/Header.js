@@ -44,7 +44,7 @@ class Header extends React.Component {
             <a href="/2/buyer-dashboard">Dashboard</a>
           </li>
           <li>
-            <a href="">Teams and people</a>
+            <a href="/2/teams">Teams and people</a>
           </li>
           <li>
             <a href="/logout">Sign out</a>

@@ -10,7 +10,7 @@ const BuyerHeaderActions = () => (
         <a href={`${rootPath}/buyer-dashboard`}>Dashboard</a>
       </li>
       <li>
-        <a href="">Teams and people</a>
+        <a href={`${rootPath}/teams`}>Teams and people</a>
       </li>
       <li>
         <a href="/logout">Sign out</a>
