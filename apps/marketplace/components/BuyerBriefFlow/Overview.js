@@ -196,7 +196,9 @@ class Overview extends Component {
                 {downloadResponsesRender(brief, isPublished, isClosed)}
                 {briefResponseCount > 0 && (
                   <div className={styles.stageStatus}>
-                    {briefResponseCount} seller{briefResponseCount > 1 && `s`} responded
+                    {flow === 'specialist'
+                      ? `${briefResponseCount} candidate${briefResponseCount > 1 ? `s` : ''} responded`
+                      : `${briefResponseCount} seller${briefResponseCount > 1 ? `s` : ''} responded`}
                   </div>
                 )}
               </li>
