@@ -15,7 +15,9 @@ import styles from './BuyerSpecialistResponseFormatsStage.scss'
 const requiredNumberOfSuppliers = v => v.numberOfSuppliers
 const validNumberOfSuppliers = v => !requiredNumberOfSuppliers(v) || Number.isInteger(v.numberOfSuppliers)
 const rangeNumberOfSuppliers = v =>
-  !requiredNumberOfSuppliers(v) || !validNumberOfSuppliers(v) || (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
+  !requiredNumberOfSuppliers(v) ||
+  !validNumberOfSuppliers(v) ||
+  (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
 const isNumberMaxRate = v => !v.maxRate || (v.maxRate && parseFloat(v.maxRate))
 const isNumberGreaterThanZero = v => !v.maxRate || !isNumberMaxRate(v) || parseFloat(v.maxRate) > 0
 const requiredSecurityClearance = v => v.securityClearance
