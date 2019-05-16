@@ -31,6 +31,10 @@ const getYears = () => {
   return [year - 4, year - 3, year - 2, year - 1, year]
 }
 
+const minimumWordRequirement = 200
+
+const minimumEvidenceWords = val => (val.match(/\S+/g) || []).length >= minimumWordRequirement
+
 export const validDates = formValues =>
   formValues.evidence &&
   formValues.evidence.from &&
@@ -49,7 +53,9 @@ export const requiredEvidence = formValues =>
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
       criteriaId =>
-        formValues.evidence.criteriaResponses[criteriaId] && required(formValues.evidence.criteriaResponses[criteriaId])
+        formValues.evidence.criteriaResponses[criteriaId] &&
+        required(formValues.evidence.criteriaResponses[criteriaId]) &&
+        minimumEvidenceWords(formValues.evidence.criteriaResponses[criteriaId])
     ))
 
 const SellerAssessmentEvidenceStage = props => (
@@ -85,7 +91,7 @@ const SellerAssessmentEvidenceStage = props => (
             validDates: 'You must supply dates for the evidence and the from date must be before the to date',
             requiredClient: 'You must add the name of the client',
             requiredBackground: 'You must add the background',
-            requiredEvidence: 'You must add evidence for all criteria selected'
+            requiredEvidence: `You must add evidence for all criteria selected and each response must be at least ${minimumWordRequirement} words in length`
           }}
         />
         <p>The information you provide will only be visible to the assessment team.</p>
@@ -185,12 +191,8 @@ const SellerAssessmentEvidenceStage = props => (
           id="background"
           htmlFor="background"
           defaultValue={props[props.model].evidence.background}
-          controlProps={{ limit: 150 }}
           validators={{
             required
-          }}
-          messages={{
-            limitWords: 'Your background has exceeded the 150 word limit'
           }}
         />
         <AUheadings level="2" size="lg">
@@ -205,12 +207,12 @@ const SellerAssessmentEvidenceStage = props => (
             id={`criteria_${criteriaId}`}
             htmlFor={`criteria_${criteriaId}`}
             defaultValue={props[props.model].evidence.criteriaResponses[criteriaId]}
-            controlProps={{ limit: 200 }}
+            controlProps={{ minimum: 200 }}
             validators={{
               required
             }}
             messages={{
-              limitWords: 'Your criteria response has exceeded the 200 word limit'
+              minimumWords: 'Your criteria response has not yet reached the 200 word minimum requirement'
             }}
           />
         ))}

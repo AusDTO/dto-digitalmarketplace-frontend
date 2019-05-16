@@ -150,6 +150,9 @@ export const minObjectLength = (object = {}, minLength = -1) => {
 
 export const limitWords = limit => (val = '') => val === undefined || ((val && val.match(/\S+/g)) || []).length <= limit
 
+export const minimumWords = minimum => (val = '') =>
+  val === undefined || ((val && val.match(/\S+/g)) || []).length >= minimum
+
 export const limitNumbers = limit => (val = '') => {
   const length = (val.match(/[0-9]/g) || []).length
   return length === limit && length === val.length
@@ -195,6 +198,7 @@ export default {
   dependantRequired,
   minObjectLength,
   limitWords,
+  minimumWords,
   limitNumbers,
   passwordsMatch,
   passwordLength,

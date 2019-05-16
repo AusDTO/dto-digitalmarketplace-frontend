@@ -73,12 +73,14 @@ class SellerAssessmentCriteriaStage extends Component {
           }}
         />
         <p>
-          Select the criteria you will provide evidence for ({getCriteriaNeeded(
-            this.props.meta.criteriaNeeded,
-            this.props.meta.priceMaximum,
-            this.props[this.props.model].maxDailyRate
-          )}{' '}
-          minimum required)
+          <strong>
+            Select the criteria you will provide evidence for ({getCriteriaNeeded(
+              this.props.meta.criteriaNeeded,
+              this.props.meta.priceMaximum,
+              this.props[this.props.model].maxDailyRate
+            )}{' '}
+            minimum required)
+          </strong>
         </p>
         <div className={styles.criteria}>
           {this.props.meta.criteria.map(criteria => (

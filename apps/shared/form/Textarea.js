@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form'
-import { limitWords } from 'shared/validators'
+import { limitWords, minimumWords } from 'shared/validators'
 
 import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
@@ -11,11 +11,20 @@ const Textarea = props => {
 
   let { validators, messages } = props
 
-  if (controlProps.limit) {
+  if (controlProps && controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
     if (!messages || !messages.limitWords) {
       messages = {
         limitWords: ` ${label} has exceeded the word limit.`,
+        ...messages
+      }
+    }
+  }
+  if (controlProps && controlProps.minimum) {
+    validators = { ...validators, minimumWords: minimumWords(controlProps.minimum) }
+    if (!messages || !messages.minimumWords) {
+      messages = {
+        minimumWords: ` ${label} has not yet reached the word count requirement.`,
         ...messages
       }
     }

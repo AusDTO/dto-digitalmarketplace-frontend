@@ -16,7 +16,13 @@ const SellerAssessmentIntroductionStage = props => (
       You will be asked for
     </AUheadings>
     <ul>
-      <li>A maximum daily rate for your services in {props.meta.name}. Use SFIA level 5 as a guide.</li>
+      <li>
+        A maximum daily rate for your services in {props.meta.name}. Use{' '}
+        <a href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5" rel="external noopener">
+          SFIA level 5
+        </a>{' '}
+        as a guide.
+      </li>
       <li>The assessment criteria that best demonstrate your expertise.</li>
       <li>Evidence of your expertise in these criteria.</li>
     </ul>
