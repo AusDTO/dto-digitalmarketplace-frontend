@@ -55,11 +55,11 @@ PanelCategorySelect.propTypes = {
 const SellerSelectView = props => (
   <div className={styles.sellerSelectView}>
     <label htmlFor={props.id}>{props.label}</label>
-    {props.showSellerCatalogueLink &&    
+    {props.showSellerCatalogueLink && (
       <a href="/search/sellers" rel="external noopener noreferrer" target="_blank" className={styles.searchAllLink}>
         View seller catalogue
       </a>
-    }
+    )}
     {typeof props.description === 'string' ? (
       <span className={styles.description}>{props.description}</span>
     ) : (

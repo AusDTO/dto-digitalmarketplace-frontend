@@ -33,6 +33,7 @@ const Textfield = props => {
       <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading au-text-input__label">
         {label}
       </label>
+      {props.topRightComponent && props.topRightComponent}
       {description && (
         <div className="au-text-input__hint" id={`${id}-hint`}>
           {description}
@@ -86,7 +87,8 @@ Textfield.defaultProps = {
   className: '',
   prefix: null,
   postfix: null,
-  onChange: () => {}
+  onChange: () => {},
+  topRightComponent: null
 }
 
 Textfield.propTypes = {
@@ -109,7 +111,8 @@ Textfield.propTypes = {
   className: PropTypes.string,
   prefix: PropTypes.string,
   postfix: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  topRightComponent: PropTypes.object
 }
 
 export default Textfield

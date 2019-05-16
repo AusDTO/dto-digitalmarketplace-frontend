@@ -235,6 +235,16 @@ const BuyerSpecialistResponseFormatsStage = props => (
       type="number"
       step="any"
       prefix={'$'}
+      className={styles.maxRate}
+      topRightComponent={
+        <a
+          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
+          rel="external noopener noreferrer"
+          target="_blank"
+        >
+          View market rate
+        </a>
+      }
     />
     <Textfield
       model={`${props.model}.budgetRange`}
