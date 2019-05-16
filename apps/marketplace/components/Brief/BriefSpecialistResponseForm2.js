@@ -234,7 +234,7 @@ const BriefSpecialistResponseForm2 = ({
                 )}
                 <RadioList
                   id="visaStatus"
-                  label={`What is ${specialistGivenNames} ${specialistSurname}'s eligibility to work in Australia?`}
+                  label={`What is ${specialistGivenNames} ${specialistSurname}'s citizenship status?`}
                   name="visaStatus"
                   model={`${model}.visaStatus`}
                   validators={{
@@ -255,7 +255,7 @@ const BriefSpecialistResponseForm2 = ({
                     }
                   ]}
                   messages={{
-                    required: `"What is ${specialistGivenNames} ${specialistSurname}'s eligibility to work in Australia?" is a required field`
+                    required: `"What is ${specialistGivenNames} ${specialistSurname}'s citizenship status?" is a required field`
                   }}
                 />
                 {brief.securityClearance === 'mustHave' && (
