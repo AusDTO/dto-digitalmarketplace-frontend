@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
-import Tick from 'marketplace/components/icons/Tick/Tick'
+import Tick from 'marketplace/components/Icons/Tick/Tick'
+import Cross from 'marketplace/components/Icons/Cross/Cross'
 import styles from './SellerAssessmentFeedback.scss'
 
 const getGoodCriteriaCount = criteria => {
@@ -60,6 +61,7 @@ const SellerAssessmentFeedback = props => (
           {Object.keys(props.feedback.criteria).map(criteriaId => (
             <li key={criteriaId}>
               {!props.feedback.criteria[criteriaId].has_feedback && <Tick colour="#36865f" className={styles.icon} />}
+              {props.feedback.criteria[criteriaId].has_feedback && <Cross colour="#FF0000" className={styles.icon} />}
               {props.feedback.criteria[criteriaId].name}
               {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
             </li>
