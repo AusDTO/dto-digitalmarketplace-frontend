@@ -55,9 +55,11 @@ PanelCategorySelect.propTypes = {
 const SellerSelectView = props => (
   <div className={styles.sellerSelectView}>
     <label htmlFor={props.id}>{props.label}</label>
-    <a href="/search/sellers" rel="external noopener noreferrer" target="_blank" className={styles.searchAllLink}>
-      View seller catalogue
-    </a>
+    {props.showSellerCatalogueLink &&    
+      <a href="/search/sellers" rel="external noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+        View seller catalogue
+      </a>
+    }
     {typeof props.description === 'string' ? (
       <span className={styles.description}>{props.description}</span>
     ) : (
@@ -195,6 +197,7 @@ export class SellerSelect extends Component {
               className={this.props.showSearchButton ? styles.noRightRadius : ''}
               showSearchButton={this.props.showSearchButton}
               handleSearchClick={this.handleSearchClick}
+              showSellerCatalogueLink={this.props.showSellerCatalogueLink}
             />
             {this.state.inputValue.length >= this.props.minimumSearchChars && (
               <SellerSelectResultsView
@@ -230,7 +233,8 @@ SellerSelect.defaultProps = {
   minimumSearchChars: 3,
   onSellerSelect: () => {},
   onSellerCategorySelect: () => {},
-  onSearch: () => {}
+  onSearch: () => {},
+  showSellerCatalogueLink: false
 }
 
 SellerSelect.propTypes = {
@@ -248,7 +252,8 @@ SellerSelect.propTypes = {
   minimumSearchChars: PropTypes.number,
   onSellerSelect: PropTypes.func,
   onSellerCategorySelect: PropTypes.func,
-  onSearch: PropTypes.func
+  onSearch: PropTypes.func,
+  showSellerCatalogueLink: PropTypes.bool
 }
 
 export default SellerSelect
