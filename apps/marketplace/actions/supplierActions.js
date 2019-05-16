@@ -2,6 +2,7 @@ import {
   DOMAIN_LOAD_SUCCESS,
   EVIDENCE_CREATE_SUCCESS,
   EVIDENCE_LOAD_SUCCESS,
+  EVIDENCE_FEEDBACK_LOAD_SUCCESS,
   EVIDENCE_SAVE_SUCCESS
 } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
@@ -87,6 +88,29 @@ export const loadEvidenceData = evidenceId => dispatch => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleLoadEvidenceSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleLoadEvidenceFeedbackSuccess = response => ({
+  type: EVIDENCE_FEEDBACK_LOAD_SUCCESS,
+  data: {
+    domainId: response.data.domain_id,
+    domainName: response.data.domain_name,
+    criteriaNeeded: response.data.criteria_needed,
+    criteria: response.data.criteria
+  }
+})
+
+export const loadEvidenceFeedbackData = evidenceId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({ url: `/evidence/${evidenceId}/feedback` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleLoadEvidenceFeedbackSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response

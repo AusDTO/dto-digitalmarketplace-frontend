@@ -1,0 +1,21 @@
+ul.feedbackList {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 1.5rem;
+  }
+
+  .icon {
+    margin-right: 0.75rem;
+  }
+
+  .reason {
+    color: #F00000;
+    margin-top: 0.75rem;
+  }
+
+  .feedback {
+    display: block;
+  }
+}

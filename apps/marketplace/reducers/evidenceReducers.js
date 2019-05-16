@@ -1,5 +1,10 @@
 import { SellerAssessmentFormReducer } from 'marketplace/reducers'
-import { EVIDENCE_CREATE_SUCCESS, EVIDENCE_LOAD_SUCCESS, EVIDENCE_SAVE_SUCCESS } from '../constants/constants'
+import {
+  EVIDENCE_CREATE_SUCCESS,
+  EVIDENCE_LOAD_SUCCESS,
+  EVIDENCE_SAVE_SUCCESS,
+  EVIDENCE_FEEDBACK_LOAD_SUCCESS
+} from '../constants/constants'
 
 const defaultEvidenceState = { ...SellerAssessmentFormReducer }
 
@@ -11,6 +16,12 @@ const evidenceReducer = (state = defaultEvidenceState, action) => {
       return {
         ...state,
         ...action.data
+      }
+
+    case EVIDENCE_FEEDBACK_LOAD_SUCCESS:
+      return {
+        ...state,
+        feedback: { ...action.data }
       }
 
     default:

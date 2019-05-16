@@ -39,7 +39,7 @@ export class Categories extends Component {
       case 'rejected':
         return (
           <React.Fragment>
-            <a href={`#feedback`}>View feedback</a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/feedback`}>View feedback</a>
             <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Resubmit</a>
           </React.Fragment>
         )

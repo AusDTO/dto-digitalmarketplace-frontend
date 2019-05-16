@@ -25,6 +25,7 @@ import OpportunityPage from './pages/OpportunityPage'
 import SellerAssessmentFlowPage from './pages/SellerAssessmentFlowPage'
 import SellerAssessmentCreatePage from './pages/SellerAssessmentCreatePage'
 import SellerAssessmentCompletedPage from './pages/SellerAssessmentCompletedPage'
+import SellerAssessmentFeedbackPage from './pages/SellerAssessmentFeedbackPage'
 
 export const rootPath = '/2'
 
@@ -67,6 +68,11 @@ export const Routes = () => (
       restrictedTo="supplier"
       path={`${rootPath}/seller-assessment/:evidenceId/completed`}
       component={SellerAssessmentCompletedPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-assessment/:evidenceId/feedback`}
+      component={SellerAssessmentFeedbackPage}
     />
     <PrivateRoute
       restrictedTo="supplier"
