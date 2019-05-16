@@ -125,7 +125,7 @@ export class BuyerSpecialistSelectStage extends Component {
                     onSellerCategorySelect={this.handleSellerCategorySelect}
                     showCategorySelect={false}
                     notFoundMessage="Seller is not on the Digital Marketplace"
-                    showSellerCatalogueLink={true}
+                    showSellerCatalogueLink
                     allSuppliers
                   />
                 </div>
