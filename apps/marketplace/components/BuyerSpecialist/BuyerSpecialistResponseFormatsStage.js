@@ -13,8 +13,9 @@ import AUselect from '@gov.au/select/lib/js/react.js'
 import styles from './BuyerSpecialistResponseFormatsStage.scss'
 
 const requiredNumberOfSuppliers = v => v.numberOfSuppliers
+const validNumberOfSuppliers = v => !requiredNumberOfSuppliers(v) || Number.isInteger(v.numberOfSuppliers)
 const rangeNumberOfSuppliers = v =>
-  !v.numberOfSuppliers || (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
+  !requiredNumberOfSuppliers(v) || !validNumberOfSuppliers(v) || (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
 const isNumberMaxRate = v => !v.maxRate || (v.maxRate && parseFloat(v.maxRate))
 const isNumberGreaterThanZero = v => !v.maxRate || !isNumberMaxRate(v) || parseFloat(v.maxRate) > 0
 const requiredSecurityClearance = v => v.securityClearance
@@ -48,6 +49,7 @@ const requiredSecurityClearanceOther = v => {
 
 export const done = v =>
   requiredNumberOfSuppliers(v) &&
+  validNumberOfSuppliers(v) &&
   rangeNumberOfSuppliers(v) &&
   isNumberMaxRate(v) &&
   isNumberGreaterThanZero(v) &&
@@ -92,6 +94,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
     validators={{
       '': {
         requiredNumberOfSuppliers,
+        validNumberOfSuppliers,
         rangeNumberOfSuppliers,
         isNumberMaxRate,
         isNumberGreaterThanZero,
@@ -119,6 +122,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
           props[props.model].preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'
         } rate must be greater than zero`,
         requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit.',
+        validNumberOfSuppliers: 'Number of candidates is an invalid number',
         rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6.',
         requiredSecurityClearance: 'You must define the security clearance requirements',
         requiredSecurityClearanceObtain: 'You must select a type of security clearance.',
