@@ -75,6 +75,5 @@ exports[`Textarea with no words, no limit 1`] = `
     onFocus={[Function]}
     value={undefined}
   />
-  
 </div>
 `;
