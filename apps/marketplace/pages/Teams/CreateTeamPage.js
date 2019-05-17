@@ -12,6 +12,7 @@ export class CreateTeamPage extends Component {
       <ProgressFlow
         model={model}
         basename={`${rootPath}/teams/create`}
+        showReturnButton={false}
         stages={TeamStages}
         returnPath={`${rootPath}/teams`}
         previewPath=""
