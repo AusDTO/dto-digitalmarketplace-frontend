@@ -13,7 +13,7 @@ import AUselect from '@gov.au/select/lib/js/react.js'
 import styles from './BuyerSpecialistResponseFormatsStage.scss'
 
 const requiredNumberOfSuppliers = v => v.numberOfSuppliers
-const validNumberOfSuppliers = v => !requiredNumberOfSuppliers(v) || Number.isInteger(v.numberOfSuppliers)
+const validNumberOfSuppliers = v => !requiredNumberOfSuppliers(v)
 const rangeNumberOfSuppliers = v =>
   !requiredNumberOfSuppliers(v) ||
   !validNumberOfSuppliers(v) ||
