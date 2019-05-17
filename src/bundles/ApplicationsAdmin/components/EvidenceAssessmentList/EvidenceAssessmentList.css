@@ -1,0 +1,39 @@
+.buttons {
+  white-space: nowrap;
+}
+
+.buttons button {
+  display: inline-block;
+  font-size: 1.1rem;
+  margin: 0 0.1rem;
+  padding: 0 0.1rem;
+  border: none;
+}
+
+.reject {
+  background: red;
+}
+
+.callout--info {
+margin: 1.6em 0;
+box-shadow: none;
+background-color: #e8f5fa;
+padding: 5px
+}
+
+.callout--info h4 {
+text-align: center;
+margin-top: 10px
+}
+
+.callout--warning {
+margin: 1.6em 0;
+box-shadow: none;
+background-color: rgba(255, 0, 0, 0.1);
+padding: 5px
+}
+
+.callout--warning h4 {
+text-align: center;
+margin-top: 10px
+}

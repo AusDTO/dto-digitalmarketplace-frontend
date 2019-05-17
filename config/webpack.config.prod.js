@@ -53,8 +53,7 @@ const loaders = [
     include: [
       paths.appSrc,
       paths.appServer,
-      paths.appNodeModules + '/@gov.au/page-alerts',
-      paths.appNodeModules + '/@gov.au/accordion'
+      paths.appNodeModules + '/@gov.au'
     ],
     loader: 'babel',
     query: {
