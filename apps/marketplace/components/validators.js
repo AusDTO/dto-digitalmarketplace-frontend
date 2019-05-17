@@ -5,6 +5,7 @@ import parse_date from 'date-fns/parse'
 import isValid from 'date-fns/is_valid'
 import isFuture from 'date-fns/is_future'
 import isAfter from 'date-fns/is_after'
+import isBefore from 'date-fns/is_before'
 import addDays from 'date-fns/add_days'
 import endOfDay from 'date-fns/end_of_day'
 import { isValidABN } from 'abnacn-validator'
@@ -48,6 +49,16 @@ export const dateIs2DaysInFuture = val => {
     return false
   }
   if (isAfter(endOfDay(parse_date(val)), addDays(new Date(), 2))) {
+    return true
+  }
+  return false
+}
+
+export const dateIsBefore = (val, before) => {
+  if (!validDate(val)) {
+    return false
+  }
+  if (isBefore(endOfDay(parse_date(val)), before)) {
     return true
   }
   return false

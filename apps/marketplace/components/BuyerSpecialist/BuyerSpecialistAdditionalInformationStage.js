@@ -10,8 +10,15 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
+import addYears from 'date-fns/add_years'
 import range from 'lodash/range'
-import { required, validPhoneNumber, validDate, dateIs2DaysInFuture } from 'marketplace/components/validators'
+import {
+  required,
+  validPhoneNumber,
+  validDate,
+  dateIs2DaysInFuture,
+  dateIsBefore
+} from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import styles from './BuyerSpecialistAdditionalInformationStage.scss'
@@ -20,14 +27,16 @@ const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
 const requiredClosedAt = v => required(v.closedAt)
 const closedAtIsValid = v => validDate(v.closedAt)
-const closedAtIs2DaysInFuture = v => dateIs2DaysInFuture(v.closedAt)
+const closedAtIs2DaysInFuture = v => !closedAtIsValid(v) || dateIs2DaysInFuture(v.closedAt)
+const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addYears(new Date(), 1))
 
 export const done = v =>
   requiredContactNumber(v) &&
   contactNumberFormat(v) &&
   requiredClosedAt(v) &&
   closedAtIsValid(v) &&
-  closedAtIs2DaysInFuture(v)
+  closedAtIs2DaysInFuture(v) &&
+  closedAtIsBefore(v)
 
 export class BuyerSpecialistRequirementsStage extends Component {
   constructor(props) {
@@ -84,7 +93,8 @@ export class BuyerSpecialistRequirementsStage extends Component {
             contactNumberFormat,
             requiredClosedAt,
             closedAtIsValid,
-            closedAtIs2DaysInFuture
+            closedAtIs2DaysInFuture,
+            closedAtIsBefore
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -106,7 +116,8 @@ export class BuyerSpecialistRequirementsStage extends Component {
             contactNumberFormat: 'Contact number must be a phone number',
             closedAtIsValid: 'You must enter a valid closing date',
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
-            requiredClosedAt: 'You must enter the closing date for this opportunity'
+            requiredClosedAt: 'You must enter the closing date for this opportunity',
+            closedAtIsBefore: 'You must enter a closing date not more than one year from now'
           }}
         />
         <AUheadings level="2" size="sm">
