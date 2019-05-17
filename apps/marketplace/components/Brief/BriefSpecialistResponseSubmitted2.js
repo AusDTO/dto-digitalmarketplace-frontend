@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import BriefResponseSubmittedSummary from './BriefResponseSubmittedSummary'
+import BriefResponseSubmittedSummary2 from './BriefResponseSubmittedSummary2'
 
 const BriefSpecialistResponseSubmitted2 = ({ setFocus, briefResponses, brief, match, app, handleSubmit }) => (
   <div className="row">
@@ -38,7 +38,7 @@ const BriefSpecialistResponseSubmitted2 = ({ setFocus, briefResponses, brief, ma
           )}
           <h2 className="au-display-lg">What happens next?</h2>
           <br />
-          <BriefResponseSubmittedSummary brief={brief} />
+          <BriefResponseSubmittedSummary2 brief={brief} />
           <h2 className="au-display-lg">How did you find submitting this application?</h2>
           <br />
           <Feedback
