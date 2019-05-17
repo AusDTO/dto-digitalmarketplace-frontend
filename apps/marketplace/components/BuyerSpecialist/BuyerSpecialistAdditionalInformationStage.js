@@ -10,7 +10,6 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
-import addYears from 'date-fns/add_years'
 import range from 'lodash/range'
 import {
   required,
@@ -28,7 +27,7 @@ const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
 const requiredClosedAt = v => required(v.closedAt)
 const closedAtIsValid = v => validDate(v.closedAt)
 const closedAtIs2DaysInFuture = v => !closedAtIsValid(v) || dateIs2DaysInFuture(v.closedAt)
-const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addYears(new Date(), 1))
+const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addDays(new Date(), 364))
 
 export const done = v =>
   requiredContactNumber(v) &&
