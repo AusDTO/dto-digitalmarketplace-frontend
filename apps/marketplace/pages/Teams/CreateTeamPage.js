@@ -13,6 +13,7 @@ export class CreateTeamPage extends Component {
         model={model}
         basename={`${rootPath}/teams/create`}
         showReturnButton={false}
+        showReviewButton={false}
         stages={TeamStages}
         returnPath={`${rootPath}/teams`}
         previewPath=""
