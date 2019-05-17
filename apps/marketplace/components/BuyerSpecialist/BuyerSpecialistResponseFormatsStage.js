@@ -239,8 +239,6 @@ const BuyerSpecialistResponseFormatsStage = props => (
       defaultValue={props[props.model].maxRate}
       maxLength={100}
       validators={{}}
-      type="number"
-      step="any"
       prefix={'$'}
       className={styles.maxRate}
       topRightComponent={
@@ -249,7 +247,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
           rel="external noopener noreferrer"
           target="_blank"
         >
-          View market rate
+          View market rates
         </a>
       }
     />
