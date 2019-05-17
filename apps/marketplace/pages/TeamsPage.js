@@ -46,7 +46,7 @@ const TeamsPage = props => (
       <PageNavigation links={navLinks} />
       <div>
         <Switch>
-          <Route exact path="/" render={() => <TeamsOverview {...props} />} />
+          <Route exact path="/" render={() => <TeamsOverview createTeamButton={getCreateTeamButton()} {...props} />} />
           <Route path="/people" render={() => <PeopleOverview {...props} />} />
         </Switch>
       </div>
