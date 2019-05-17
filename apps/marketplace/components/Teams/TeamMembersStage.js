@@ -31,6 +31,7 @@ const TeamMembersStage = props => (
       placeholder=""
       validators={{}}
     />
+    {props.formButtons}
   </Form>
 )
 

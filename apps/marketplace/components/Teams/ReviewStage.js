@@ -33,6 +33,7 @@ const ReviewStage = props => (
         <li>Members will see all new opportunities created by other team members.</li>
       </ul>
     </div>
+    {props.formButtons}
   </Form>
 )
 

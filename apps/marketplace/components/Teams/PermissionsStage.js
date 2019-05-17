@@ -26,6 +26,7 @@ const PermissionsStage = props => (
       />
     </div>
     <PermissionsTable teamMembers={[]} />
+    {props.formButtons}
   </Form>
 )
 
