@@ -12,7 +12,8 @@ const BriefResponseSubmittedSummary2 = ({ brief }) => (
       <b>If your candidate is short-listed</b>
     </h2>
     <p>
-      The buyer will get in contact after <b>{format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')}</b> to organise next steps.
+      The buyer will get in contact after <b>{format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')}</b> to
+      organise next steps.
     </p>
     <h2 className="au-display-lg">
       <Icon value="unsuccessful" color="#000000" size={24} className={styles.icon} />
