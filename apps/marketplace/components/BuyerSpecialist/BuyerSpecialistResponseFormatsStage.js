@@ -190,10 +190,10 @@ const BuyerSpecialistResponseFormatsStage = props => (
         />
         <CheckboxDetailsField
           model={`${props.model}.evaluationType[]`}
-          id={`scenario_or_tests`}
-          name={`scenario_or_tests`}
-          label="Scenario or tests"
-          value="Scenario or tests"
+          id={`scenarios_or_tests`}
+          name={`scenarios_or_tests`}
+          label="Scenarios or tests"
+          value="Scenarios or tests"
           detailsModel={props.model}
           validators={{}}
           messages={{}}
