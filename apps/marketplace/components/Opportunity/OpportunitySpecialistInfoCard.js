@@ -170,7 +170,7 @@ const OpportunitySpecialistInfoCard = props => (
                   <p>
                     {!props.isAwaitingApplicationAssessment && (
                       <a href="/sellers/edit" className="au-btn au-btn--block">
-                        Edit application
+                        Edit profile
                       </a>
                     )}
                   </p>
