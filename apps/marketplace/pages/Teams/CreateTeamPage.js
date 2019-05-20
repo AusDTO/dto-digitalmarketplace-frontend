@@ -16,6 +16,7 @@ export class CreateTeamPage extends Component {
         basename={`${rootPath}/teams/create`}
         model={model}
         previewPath=""
+        publishText="Create team"
         returnPath={`${rootPath}/teams`}
         saveModel={this.props.saveTeam}
         showConfirmationCheckbox={false}
